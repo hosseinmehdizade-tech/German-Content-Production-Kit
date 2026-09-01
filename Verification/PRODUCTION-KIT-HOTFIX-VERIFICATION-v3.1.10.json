@@ -1,0 +1,37 @@
+{
+  "hotfix_version": "v3.1.10",
+  "scope": "product-content-completeness-and-legacy-enrichment-semantic-safety",
+  "architecture_package_version": "v3.1.5",
+  "semantic_contract_version": "3.1.3",
+  "architecture_changed": false,
+  "local_pre_push_verification": {
+    "json_parse": "PASS",
+    "python_compile": "PASS",
+    "regression_tests": "PASS",
+    "regression_test_count": 8,
+    "tests": [
+      "missing collocations hard fail",
+      "three collocations plus explicit evidence pass hard gate",
+      "generic usage does not prove collocation",
+      "present synonym requires synonymy evidence",
+      "missing synonym is warning only",
+      "present rection requires rection evidence",
+      "explicit rection evidence passes",
+      "nvv does not count as collocation"
+    ]
+  },
+  "product_gate": {
+    "status_name": "PRODUCT_CONTENT_COMPLETE",
+    "menschen_a1_verb_collocation_minimum": 3,
+    "menschen_a1_verb_collocation_target": 4,
+    "menschen_a1_verb_collocation_preferred_maximum": 6,
+    "synonym_antonym_hard_required": false,
+    "legacy_nvv_blind_mapping_forbidden": true
+  },
+  "dataset_status": {
+    "current_known_menschen_a1": "FAIL_PRE_REPAIR",
+    "reason": "The known 276-unit dataset predates this gate and has missing collocation coverage/evidence. This hotfix must not relabel it Final without a repaired canonical artifact and rerun evidence.",
+    "repaired_dataset_not_claimed": true
+  },
+  "note": "The repository hotfix files were added directly to main after connector write access was verified. The full historical root PRODUCTION-KIT-MANIFEST.json remains the v3.1.9 baseline manifest; this file records the additive v3.1.10 hotfix verification until a full package manifest is regenerated from a complete local checkout."
+}

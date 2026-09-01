@@ -6,6 +6,7 @@ on:
     paths:
       - 'Verification/build_menschen_a1_v354_runtime_current.py'
       - 'Verification/build_menschen_a1_v354_runtime_current_v3.py'
+      - 'Verification/build_menschen_a1_v354_runtime_current_v4.py'
       - '.github/workflows/menschen-a1-v354-runtime-content.yml'
   workflow_dispatch:
 
@@ -26,9 +27,9 @@ jobs:
       - name: Build current-only sense-aware artifact
         run: |
           rm -rf out-v354
-          python Verification/build_menschen_a1_v354_runtime_current_v3.py \
+          python Verification/build_menschen_a1_v354_runtime_current_v4.py \
             --baseline Data/Menschen-A1/v3.1.9-baseline/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json \
-            --outdir out-v354 --delay 0.35
+            --outdir out-v354 --delay 0
       - name: Transport regression
         run: |
           python - <<'PY'

@@ -1,0 +1,55 @@
+name: Menschen A1 v354 runtime current-only
+on:
+  push:
+    branches:
+      - fix/menschen-a1-v354-runtime-content
+    paths:
+      - 'Verification/build_menschen_a1_v354_runtime_current.py'
+      - '.github/workflows/menschen-a1-v354-runtime-content.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Build current-only sense-aware artifact
+        run: |
+          rm -rf out-v354
+          python Verification/build_menschen_a1_v354_runtime_current.py \
+            --baseline Data/Menschen-A1/v3.1.9-baseline/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json \
+            --outdir out-v354 --delay 0.04
+      - name: Transport regression
+        run: |
+          python - <<'PY'
+          import csv,json
+          from pathlib import Path
+          p=Path('out-v354/MENSCHEN-A1-UNIVERSAL-v2-v354-CURRENT.tsv')
+          lines=p.read_text(encoding='utf-8').splitlines()
+          assert len(lines)==277
+          header=lines[0].split('\t'); assert len(header)==23
+          for i,line in enumerate(lines[1:],2): assert len(line.split('\t'))==23,(i,len(line.split('\t')))
+          first=dict(zip(header,lines[1].split('\t')))
+          ex=json.loads(first['examples']); rel=json.loads(first['related']); opp=json.loads(first['opposites']); cf=json.loads(first['custom_fields'])
+          assert isinstance(ex,list) and ex and isinstance(ex[0],dict)
+          assert ex[0]['text']=='Ich muss mir das noch überlegen.'
+          assert rel[:2]==['nachdenken','abwägen']
+          assert 'unterlegen' not in [x.casefold() for x in opp]
+          assert cf['canonical_unit']['id']=='MEN-A1-00001'
+          assert not any(x in first['custom_fields'] for x in ['überlegene','was machen überlegen','jemanden lange vor der Antwort überlegen'])
+          print('TRANSPORT PASS 276/276')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Menschen-A1-v354-CURRENT-RUNTIME-FIX
+          path: out-v354/
+          if-no-files-found: error

@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    if: github.event.issue.title == 'RUN:MENSCHEN-A1-CURRENT-ONLY-V3.1.10'
+    if: startsWith(github.event.issue.title, 'RUN:MENSCHEN-A1-CURRENT-ONLY-V3.1.10')
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -26,11 +26,11 @@ jobs:
       - name: Build current-only enrichment
         run: |
           rm -rf Data/Menschen-A1/v3.1.10-final
-          python Data/Menschen-A1/v3.1.10-repair/enrich_current_only.py \
+          python Data/Menschen-A1/v3.1.10-repair/enrich_current_only_v2.py \
             --baseline Data/Menschen-A1/v3.1.9-baseline/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json \
             --profile Architecture/03-PROFILES/MENSCHEN-A1.json \
             --outdir Data/Menschen-A1/v3.1.10-final \
-            --delay 0.12
+            --delay 0.08
       - name: Run product completeness gate
         run: |
           set +e
@@ -38,7 +38,6 @@ jobs:
             Data/Menschen-A1/v3.1.10-final/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json \
             Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.0.0.json \
             --output Data/Menschen-A1/v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json
-          echo $? > /tmp/completeness_exit
           exit 0
       - name: Package result
         run: |
@@ -51,24 +50,16 @@ jobs:
           passed=gate.get('status')=='PASS'
           status={
             'artifact':'Menschen A1 v3.1.10 current-only enrichment',
-            'prompt_version':'v3.1.10',
-            'architecture_version':'v3.1.5',
-            'semantic_contract':'3.1.3',
+            'prompt_version':'v3.1.10','architecture_version':'v3.1.5','semantic_contract':'3.1.3',
             'legacy_inputs_used':False,
-            'input_policy':'Only current v3.1.9 canonical baseline plus live Duden pages already referenced by that current baseline provenance.',
-            'learning_units':enrich.get('units_total'),
-            'verbs':enrich.get('verbs'),
-            'duden_pages_ok':enrich.get('duden_pages_ok'),
-            'duden_pages_failed':enrich.get('duden_pages_failed'),
-            'verbs_with_3plus_collocations':enrich.get('verbs_with_3plus_collocations'),
-            'collocations_added':enrich.get('collocations_added'),
-            'synonyms_added':enrich.get('synonyms_added'),
-            'antonyms_added':enrich.get('antonyms_added'),
-            'product_content_complete':gate.get('status'),
-            'errors':gate.get('errors'),
-            'warnings':gate.get('warnings'),
-            'final_status':'FINAL' if passed else 'NOT_FINAL',
-            'transport_projection_built':True
+            'input_policy':'Only current v3.1.9 canonical baseline plus live German Wiktionary pages fetched during this build.',
+            'learning_units':enrich.get('units_total'),'verbs':enrich.get('verbs'),
+            'wiktionary_pages_ok':enrich.get('wiktionary_pages_ok'),'wiktionary_pages_failed':enrich.get('wiktionary_pages_failed'),
+            'verbs_with_3plus_collocations':enrich.get('verbs_with_3plus_collocations'),'collocations_added':enrich.get('collocations_added'),
+            'synonyms_verified_or_added':enrich.get('synonyms_verified_or_added'),'antonyms_verified_or_added':enrich.get('antonyms_verified_or_added'),
+            'rection_claims_added':enrich.get('rection_claims_added'),
+            'product_content_complete':gate.get('status'),'errors':gate.get('errors'),'warnings':gate.get('warnings'),
+            'final_status':'FINAL' if passed else 'NOT_FINAL','transport_projection_built':True
           }
           (out/'FINAL-STATUS.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           manifest={'artifact':'menschen-a1-v3.1.10-current-only-package','status':status['final_status'],'files':{}}
@@ -79,8 +70,7 @@ jobs:
           z=out/'Menschen-A1-v3.1.10-CURRENT-ONLY-FINAL.zip'
           with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as f:
             for p in sorted(out.iterdir()):
-              if p.is_file() and p != z:
-                f.write(p,p.name)
+              if p.is_file() and p != z: f.write(p,p.name)
           print(json.dumps(status,ensure_ascii=False,indent=2))
           PY
       - name: Commit generated output to repair branch
@@ -97,4 +87,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           STATUS=$(python -c "import json; print(json.load(open('Data/Menschen-A1/v3.1.10-final/FINAL-STATUS.json'))['final_status'])")
-          gh issue comment "${{ github.event.issue.number }}" --body "Current-only build finished. Status: **${STATUS}**. Output committed to \`repair/menschen-a1-v3.1.10\` under \`Data/Menschen-A1/v3.1.10-final/\`. No legacy enrichment inputs were used."
+          gh issue comment "${{ github.event.issue.number }}" --body "Current-only build finished. Status: **${STATUS}**. Output committed to \`repair/menschen-a1-v3.1.10\`. No legacy enrichment inputs were used."

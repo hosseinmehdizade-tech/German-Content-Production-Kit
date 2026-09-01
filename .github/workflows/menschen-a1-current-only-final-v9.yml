@@ -5,7 +5,6 @@ on:
 permissions:
   contents: write
   issues: write
-  actions: read
 jobs:
   build:
     if: github.event.issue.title == 'RUN:MENSCHEN-A1-CURRENT-ONLY-FINAL-V9'
@@ -38,7 +37,8 @@ jobs:
             Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.0.0.json \
             --output Data/Menschen-A1/v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json
       - name: Fresh structural and delivery verification
-        run: python Data/Menschen-A1/v3.1.10-repair/verify_current_only_final.py Data/Menschen-A1/v3.1.10-final
+        run: |
+          python Data/Menschen-A1/v3.1.10-repair/verify_current_only_final.py Data/Menschen-A1/v3.1.10-final
       - name: Finalize metadata and package
         run: |
           python - <<'PY'
@@ -53,15 +53,14 @@ jobs:
           status={
             'artifact':'Menschen A1 v3.1.10 current-only FINAL','prompt_version':'v3.1.10','architecture_version':'v3.1.5','semantic_contract':'3.1.3',
             'legacy_inputs_used':False,
-            'input_policy':'Current canonical baseline as the repair target + live German Wiktionary + lexical combinations normalized only from the same current card examples + systematic grammar decoding only from current headwords. No legacy enrichment/NVV/mapping artifacts.',
+            'input_policy':'Current canonical baseline as repair target + live German Wiktionary + combinations normalized only from the same current card examples + grammar decoding only from current headwords. No legacy enrichment/NVV/mapping artifacts.',
             'learning_units':rep.get('units_total'),'verbs':rep.get('verbs'),'verbs_with_3plus_collocations':rep.get('verbs_with_3plus_collocations'),
             'product_content_complete':gate['status'],'product_errors':gate['errors'],'product_warnings':gate['warnings'],
             'full_gate':full['status'],'delivery_validation':delivery['status'],'deep_canonical_parity_rows':delivery['deep_canonical_parity_rows'],'example_parity_rows':delivery['example_parity_rows'],
             'final_status':'FINAL' if ok else 'NOT_FINAL'
           }
           (out/'FINAL-STATUS.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          # Manifest covers every payload file except itself and ZIP to avoid recursive hashes.
-          manifest={'artifact':'menschen-a1-v3.1.10-current-only-final-package','status':status['final_status'],'manifest_scope':'all package payload files except FINAL-PACKAGE-MANIFEST.json and the ZIP container itself','files':{}}
+          manifest={'artifact':'menschen-a1-v3.1.10-current-only-final-package','status':status['final_status'],'manifest_scope':'all payload files except manifest and ZIP container','files':{}}
           for p in sorted(out.iterdir()):
             if p.is_file() and p.name not in {'FINAL-PACKAGE-MANIFEST.json','Menschen-A1-v3.1.10-CURRENT-ONLY-FINAL.zip'}:
               manifest['files'][p.name]={'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
@@ -89,4 +88,5 @@ jobs:
       - name: Report final status
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue comment "${{ github.event.issue.number }}" --body "Verified current-only build finished: **FINAL**. Product completeness, fresh structural gate, and delivery/deep-parity validation all PASS. No legacy enrichment/NVV/mapping artifacts were used."
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Verified current-only build finished: **FINAL**. Product completeness, fresh structural gate, and delivery/deep-parity validation all PASS. No legacy enrichment/NVV/mapping artifacts were used."

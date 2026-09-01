@@ -1,0 +1,49 @@
+{
+  "profile_schema_version": "1.0.0",
+  "profile_id": "menschen-a1-rich-card@1.0.0",
+  "target": "flashcards-pro-german-rich-card",
+  "source_profile_id": "menschen-a1@2.1.0",
+  "policy": {
+    "no_fabrication_to_satisfy_minimums": true,
+    "structural_content_validated_is_not_product_complete": true,
+    "legacy_nvv_fields_are_untyped_candidates": true,
+    "legacy_nvv_must_not_be_blindly_relabelled_as_collocation": true
+  },
+  "by_type": {
+    "verb": {
+      "required_core_fields": ["auxiliary", "reflexive", "separability"],
+      "connections": [
+        {
+          "kind": "collocation",
+          "minimum": 3,
+          "preferred_minimum": 4,
+          "maximum": 6,
+          "evidence_claims": ["collocation", "collocations", "collocational_usage"]
+        }
+      ],
+      "details": [
+        {
+          "field": "synonyms",
+          "minimum": 0,
+          "preferred_minimum": 1,
+          "evidence_claims": ["synonymy", "synonyms"]
+        },
+        {
+          "field": "antonyms",
+          "minimum": 0,
+          "preferred_minimum": 1,
+          "evidence_claims": ["antonymy", "antonyms"]
+        }
+      ],
+      "rection_evidence_claims": ["rection", "valency", "government_pattern"],
+      "conditional_requirements": [
+        {
+          "if_headword_regex": "\\b(sich\\s+)?[^,;]+\\s+(an|auf|aus|bei|für|gegen|in|mit|nach|über|um|unter|von|vor|zu)\\s+",
+          "detail_field": "rection",
+          "minimum": 1,
+          "message": "A lexicalized/fixed-preposition verb construction requires explicit Rektion when the headword encodes the construction."
+        }
+      ]
+    }
+  }
+}

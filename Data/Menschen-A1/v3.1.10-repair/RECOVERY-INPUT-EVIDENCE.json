@@ -1,0 +1,91 @@
+{
+  "evidence_id": "menschen-a1-v3.1.10-legacy-recovery-input-discovery",
+  "status": "DISCOVERED_NOT_MOUNTED",
+  "purpose": "Record independently observed invariants for the complete legacy phase-4 enrichment artifacts before they are admitted as recovery inputs.",
+  "important_boundary": "This file records discovery evidence only. It is not a substitute for the complete legacy artifact bytes and must not be used to reconstruct omitted rows.",
+  "legacy_part_1": {
+    "artifact_name": "04-Angereichert.diff.json",
+    "file_library_created_at": "2026-07-30T17:17:36Z",
+    "mode": "diff",
+    "phase": 4,
+    "data_rows": 141,
+    "changed_rows": 141,
+    "forbidden_changes": 0,
+    "changed_columns_subset": {
+      "NVV1": 141,
+      "NVV2": 141,
+      "NVV3": 118,
+      "synonym1": 117,
+      "synonym2": 39,
+      "antonym1": 69,
+      "tags": 125,
+      "notes": 5
+    },
+    "known_anchor": {
+      "legacy_id": "MEN-A1-0001",
+      "legacy_headword": "überlegen",
+      "candidates": [
+        "sich etwas gut überlegen",
+        "eine Entscheidung überlegen",
+        "lange überlegen"
+      ]
+    }
+  },
+  "legacy_part_2": {
+    "artifact_name": "04-Angereichert-Teil-2.diff.json",
+    "file_library_created_at": "2026-07-30T18:44:59Z",
+    "mode": "diff",
+    "phase": 4,
+    "data_rows": 135,
+    "changed_rows": 135,
+    "forbidden_changes": 0,
+    "changed_columns_subset": {
+      "NVV1": 135,
+      "NVV2": 135,
+      "NVV3": 135,
+      "synonym1": 134,
+      "synonym2": 130,
+      "antonym1": 103,
+      "antonym2": 72,
+      "tags": 95,
+      "notes": 15
+    },
+    "known_anchor": {
+      "legacy_id": "MEN-A1-0142",
+      "legacy_headword": "lügen",
+      "candidates": [
+        "jdn. anlügen",
+        "eine Lüge erzählen",
+        "offen lügen"
+      ]
+    }
+  },
+  "historical_dataset_qa": {
+    "artifact_name": "FINAL-DATA-QA.json",
+    "cards": 276,
+    "columns": 33,
+    "first_id": "MEN-A1-0001",
+    "last_id": "MEN-A1-0276",
+    "unique_ids": 276,
+    "duplicate_ids": 0,
+    "empty_cells": 0,
+    "validator_version": "10.2.4",
+    "validator_passed": true,
+    "warning_count": 0,
+    "error_count": 0,
+    "required_identity_columns_observed": [
+      "id",
+      "lemma",
+      "infinitive_display",
+      "grammar_pattern",
+      "german"
+    ]
+  },
+  "admission_rules": [
+    "Complete artifact bytes must be present in the repository/workspace.",
+    "verify_recovery_inputs.py must PASS.",
+    "Historical numeric ID alone must never establish canonical identity.",
+    "Legacy NVV values remain untyped candidates until current-schema semantic classification.",
+    "No Final/PASS claim may be derived from this evidence record alone."
+  ]
+}

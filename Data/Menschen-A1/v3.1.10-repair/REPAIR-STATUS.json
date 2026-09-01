@@ -1,0 +1,83 @@
+{
+  "repair_id": "menschen-a1-v3.1.10-product-completeness-repair",
+  "branch": "repair/menschen-a1-v3.1.10",
+  "baseline": "Data/Menschen-A1/v3.1.9-baseline/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json",
+  "baseline_product_completeness": {
+    "status": "FAIL",
+    "errors": 324,
+    "warnings": 547,
+    "verb_units": 275
+  },
+  "hard_rules": {
+    "collocation_minimum": 3,
+    "collocation_target": 4,
+    "no_fabrication": true,
+    "legacy_nvv_is_untyped_candidate": true,
+    "legacy_id_only_mapping_forbidden": true,
+    "explicit_claim_evidence_required": true
+  },
+  "completed": [
+    "v3.1.10 completeness gate installed on main",
+    "validated v3.1.9 baseline preserved under immutable baseline directory",
+    "dedicated repair branch created",
+    "legacy semantic-safety rule enforced",
+    "legacy enrichment artifacts located in File Library"
+  ],
+  "evidence_discovery": {
+    "legacy_part_1": {
+      "artifact": "04-Angereichert.diff.json",
+      "rows": 141,
+      "nvv1_changes": 141,
+      "nvv2_changes": 141,
+      "nvv3_changes": 118
+    },
+    "legacy_part_2": {
+      "artifact": "04-Angereichert-Teil-2.diff.json",
+      "rows": 135,
+      "nvv1_changes": 135,
+      "nvv2_changes": 135,
+      "nvv3_changes": 135
+    }
+  },
+  "critical_finding": "Historical four-digit card IDs cannot be used as current canonical identity. Historical restructuring changed ID-to-headword alignment; recovery must match by semantic/headword identity and then classify each NVV candidate under the current Connection Schema.",
+  "safe_examples": [
+    {
+      "current_unit": "MEN-A1-00001",
+      "headword": "überlegen",
+      "legacy_unit": "MEN-A1-0001",
+      "legacy_candidates": ["sich etwas gut überlegen", "eine Entscheidung überlegen", "lange überlegen"],
+      "status": "REVIEW_REQUIRED",
+      "reason": "Candidate quality and canonical kind need semantic review; no blind collocation promotion."
+    },
+    {
+      "current_unit": "MEN-A1-00190",
+      "headword": "bügeln",
+      "legacy_unit": "MEN-A1-0159",
+      "legacy_candidates": ["ein Hemd bügeln", "die Wäsche bügeln", "glatt bügeln"],
+      "status": "RECOVERY_CANDIDATE"
+    },
+    {
+      "current_unit": "MEN-A1-00264",
+      "headword": "hinbringen",
+      "legacy_unit": "MEN-A1-0233",
+      "legacy_candidates": ["jdn. zur Arbeit hinbringen", "ein Paket hinbringen", "etw. an seinen Platz hinbringen"],
+      "status": "RECOVERY_CANDIDATE"
+    },
+    {
+      "current_unit": "MEN-A1-00265",
+      "headword": "anerkennen",
+      "legacy_unit": "MEN-A1-0234",
+      "legacy_candidates": ["einen Abschluss anerkennen", "eine Leistung anerkennen", "etw. offiziell anerkennen"],
+      "status": "RECOVERY_CANDIDATE"
+    }
+  ],
+  "execution_blocker": {
+    "code": "LEGACY_RECOVERY_BYTES_NOT_IN_REPOSITORY",
+    "detail": "The two complete legacy enrichment source artifacts are searchable in ChatGPT File Library but are not mounted as writable bytes and are not present in this Git repository. A full deterministic 276-card mutation cannot be produced from truncated search excerpts without fabricating or silently losing rows.",
+    "required_repository_inputs": [
+      "04-Angereichert.diff.json",
+      "04-Angereichert-Teil-2.diff.json"
+    ]
+  },
+  "final_claim": "NOT_FINAL"
+}

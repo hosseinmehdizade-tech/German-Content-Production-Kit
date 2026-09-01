@@ -26,11 +26,11 @@ jobs:
       - name: Build current-only enrichment
         run: |
           rm -rf Data/Menschen-A1/v3.1.10-final
-          python Data/Menschen-A1/v3.1.10-repair/enrich_current_only_v2.py \
+          python Data/Menschen-A1/v3.1.10-repair/enrich_current_only_v3.py \
             --baseline Data/Menschen-A1/v3.1.9-baseline/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json \
             --profile Architecture/03-PROFILES/MENSCHEN-A1.json \
             --outdir Data/Menschen-A1/v3.1.10-final \
-            --delay 0.08
+            --delay 0.05
       - name: Run product completeness gate
         run: |
           set +e

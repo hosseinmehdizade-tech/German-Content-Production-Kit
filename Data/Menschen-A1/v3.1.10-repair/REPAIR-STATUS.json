@@ -1,0 +1,133 @@
+{
+  "repair_id": "menschen-a1-v3.1.10-product-completeness-repair",
+  "branch": "repair/menschen-a1-v3.1.10",
+  "baseline": "Data/Menschen-A1/v3.1.9-baseline/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json",
+  "baseline_product_completeness": {
+    "status": "FAIL",
+    "errors": 324,
+    "warnings": 547,
+    "verb_units": 275
+  },
+  "hard_rules": {
+    "collocation_minimum": 3,
+    "collocation_target": 4,
+    "no_fabrication": true,
+    "legacy_nvv_is_untyped_candidate": true,
+    "legacy_id_only_mapping_forbidden": true,
+    "explicit_claim_evidence_required": true,
+    "recovery_input_preflight_required": true
+  },
+  "completed": [
+    "v3.1.10 completeness gate installed on main",
+    "validated v3.1.9 baseline preserved under immutable baseline directory",
+    "dedicated repair branch created",
+    "legacy semantic-safety rule enforced",
+    "legacy enrichment artifacts positively identified in File Library",
+    "legacy artifact row/change invariants recorded as non-substitutive evidence",
+    "fail-closed recovery input preflight added"
+  ],
+  "evidence_discovery": {
+    "legacy_part_1": {
+      "artifact": "04-Angereichert.diff.json",
+      "rows": 141,
+      "changed_rows": 141,
+      "forbidden_changes": 0,
+      "nvv1_changes": 141,
+      "nvv2_changes": 141,
+      "nvv3_changes": 118
+    },
+    "legacy_part_2": {
+      "artifact": "04-Angereichert-Teil-2.diff.json",
+      "rows": 135,
+      "changed_rows": 135,
+      "forbidden_changes": 0,
+      "nvv1_changes": 135,
+      "nvv2_changes": 135,
+      "nvv3_changes": 135
+    },
+    "historical_dataset_qa": {
+      "artifact": "FINAL-DATA-QA.json",
+      "cards": 276,
+      "columns": 33,
+      "unique_ids": 276,
+      "duplicate_ids": 0,
+      "empty_cells": 0,
+      "validator_version": "10.2.4",
+      "validator_passed": true
+    }
+  },
+  "critical_finding": "Historical four-digit card IDs cannot be used as current canonical identity. Historical restructuring changed ID-to-headword alignment; recovery must match by semantic/headword identity and then classify each NVV candidate under the current Connection Schema.",
+  "safe_examples": [
+    {
+      "current_unit": "MEN-A1-00001",
+      "headword": "überlegen",
+      "legacy_unit": "MEN-A1-0001",
+      "legacy_candidates": [
+        "sich etwas gut überlegen",
+        "eine Entscheidung überlegen",
+        "lange überlegen"
+      ],
+      "status": "REVIEW_REQUIRED",
+      "reason": "Candidate quality and canonical kind need semantic review; no blind collocation promotion."
+    },
+    {
+      "current_unit": "MEN-A1-00190",
+      "headword": "bügeln",
+      "legacy_unit": "MEN-A1-0159",
+      "legacy_candidates": [
+        "ein Hemd bügeln",
+        "die Wäsche bügeln",
+        "glatt bügeln"
+      ],
+      "status": "RECOVERY_CANDIDATE"
+    },
+    {
+      "current_unit": "MEN-A1-00264",
+      "headword": "hinbringen",
+      "legacy_unit": "MEN-A1-0233",
+      "legacy_candidates": [
+        "jdn. zur Arbeit hinbringen",
+        "ein Paket hinbringen",
+        "etw. an seinen Platz hinbringen"
+      ],
+      "status": "RECOVERY_CANDIDATE"
+    },
+    {
+      "current_unit": "MEN-A1-00265",
+      "headword": "anerkennen",
+      "legacy_unit": "MEN-A1-0234",
+      "legacy_candidates": [
+        "einen Abschluss anerkennen",
+        "eine Leistung anerkennen",
+        "etw. offiziell anerkennen"
+      ],
+      "status": "RECOVERY_CANDIDATE"
+    }
+  ],
+  "recovery_pipeline": {
+    "preflight": "Data/Menschen-A1/v3.1.10-repair/verify_recovery_inputs.py",
+    "recovery": "Data/Menschen-A1/v3.1.10-repair/recover_legacy_enrichment.py",
+    "evidence_record": "Data/Menschen-A1/v3.1.10-repair/RECOVERY-INPUT-EVIDENCE.json",
+    "sequence": [
+      "supply complete legacy phase-4 diff bytes",
+      "supply 276-row headword-bearing legacy TSV",
+      "run recovery input preflight and require PASS",
+      "resolve identity by headword/semantics",
+      "classify candidates under CONNECTION-SCHEMA.json",
+      "bind explicit evidence",
+      "apply canonical mutation",
+      "rerun product completeness and schema gates"
+    ]
+  },
+  "execution_blocker": {
+    "code": "LEGACY_RECOVERY_BYTES_NOT_IN_REPOSITORY",
+    "detail": "Artifact existence and historical invariants are now positively confirmed, but the complete legacy files are still File Library references rather than repository/workspace bytes. The repair must not reconstruct omitted rows from truncated excerpts.",
+    "required_repository_inputs": [
+      "04-Angereichert.diff.json",
+      "04-Angereichert-Teil-2.diff.json",
+      "a 276-row legacy TSV containing id plus infinitive_display, lemma, or german"
+    ],
+    "gate_to_clear": "verify_recovery_inputs.py must PASS"
+  },
+  "final_claim": "NOT_FINAL"
+}

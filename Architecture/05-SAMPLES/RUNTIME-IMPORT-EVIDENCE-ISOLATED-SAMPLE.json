@@ -1,0 +1,94 @@
+{
+  "evidence_version": "1.0",
+  "target_runtime": {
+    "product": "Architecture Proof Runtime",
+    "version": "fixture-1.0"
+  },
+  "verification_mode": "isolated-runtime",
+  "artifact": {
+    "file": "UNIVERSAL-v2-SAMPLE.tsv",
+    "sha256": "dbff538988d9ee1d1e75b45fe0dd7c4110bc9eb6d721a492f78d1474d663cf64",
+    "schema_profile": "universal-v2",
+    "row_count": 10
+  },
+  "import_mode": "add",
+  "artifact_status": "APP_COMPATIBLE",
+  "runtime_status": "CURRENT_RUNTIME_NOT_VERIFIED",
+  "scenarios": [
+    {
+      "name": "ready-empty-library",
+      "passed": true,
+      "pre_count": 0,
+      "post_count": 10,
+      "details": "schema fixture"
+    },
+    {
+      "name": "ready-existing-library",
+      "passed": true,
+      "pre_count": 25,
+      "post_count": 35,
+      "details": "schema fixture"
+    },
+    {
+      "name": "write-blocked-fail-closed",
+      "passed": true,
+      "pre_count": 25,
+      "post_count": 25,
+      "details": "schema fixture"
+    },
+    {
+      "name": "recovery-resolved-ready-import",
+      "passed": true,
+      "pre_count": 25,
+      "post_count": 35,
+      "details": "schema fixture"
+    },
+    {
+      "name": "reload-durability",
+      "passed": true,
+      "post_count": 35,
+      "details": "schema fixture"
+    },
+    {
+      "name": "roundtrip-export",
+      "passed": true,
+      "details": "schema fixture"
+    },
+    {
+      "name": "writer-concurrency-guard",
+      "passed": true,
+      "details": "schema fixture"
+    }
+  ],
+  "preflight": {
+    "checked": false,
+    "runtime_mode": null,
+    "writes_blocked": null,
+    "can_write": null,
+    "writer_authority": null,
+    "unresolved_recovery": null,
+    "pending_unverified_commit": null,
+    "existing_library_count": null,
+    "library_fingerprint": null,
+    "block_reason": null
+  },
+  "commit": {
+    "attempted": false,
+    "persistent_commit": null,
+    "verified": null,
+    "pre_count": null,
+    "post_count": null,
+    "expected_post_count": null,
+    "rollback_preserved_previous": null,
+    "error": null
+  },
+  "reload": {
+    "performed": false,
+    "persistence_verified": null,
+    "post_reload_count": null,
+    "post_reload_fingerprint": null
+  },
+  "notes": [
+    "Synthetic architecture-proof fixture only; not evidence about any user browser."
+  ]
+}

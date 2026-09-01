@@ -1,0 +1,17 @@
+{
+  "type_rule_schema_version": "2.0.0",
+  "rule_id": "pronomen-artikelwort@2.0.0",
+  "applies_to": ["pronomen", "artikelwort"],
+  "core_fields": {
+    "function": {"type": "string", "required": true, "nullable": false, "min_length": 1},
+    "class": {"type": "string", "required": false, "nullable": false, "enum": ["personal", "possessive", "demonstrative", "relative", "interrogative", "indefinite", "reflexive", "article_word", "other"]},
+    "paradigm_summary": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1}
+  },
+  "detail_fields": {
+    "declension_notes": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1}
+  },
+  "allow_undeclared_core_fields": false,
+  "allow_undeclared_detail_fields": false,
+  "conditional_requirements": [],
+  "linguistic_checks": ["Case, gender and number behavior is documented to the scope required by the Profile."]
+}

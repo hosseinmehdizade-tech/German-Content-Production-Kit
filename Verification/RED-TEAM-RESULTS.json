@@ -1,0 +1,245 @@
+{
+  "artifact_type": "gfp-v319-adversarial-red-team-results",
+  "prompt_version": "v3.1.9",
+  "architecture_package_version": "v3.1.5",
+  "semantic_contract_version": "3.1.3",
+  "fixture": "Architecture/05-SAMPLES/MULTI-TYPE-CANONICAL-SAMPLE.json",
+  "scenario_count": 16,
+  "all_checks_passed": true,
+  "results": [
+    {
+      "scenario": "5 examples -> 8",
+      "required_behavior": "Resolve exact desired_count=8; preserve the five objects and IDs; append three owner-valid IDs with orders 6..8.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "old_objects_preserved": true,
+        "delta": 3
+      }
+    },
+    {
+      "scenario": "8 examples -> 5",
+      "required_behavior": "Require authorized input-bound plan, ordered retain/deactivate lists, full external archive, retired_example_ids, and explicit old/new orders.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "retired_ids": [
+          "ARCH-0001-ex-006",
+          "ARCH-0001-ex-007",
+          "ARCH-0001-ex-008"
+        ],
+        "archive_sha256": "b94fd97436a02ce6b1c3ac520e8d91159027d00af5388922c11ac54e80e2d008",
+        "lossless_across_canonical_plus_archive": true
+      }
+    },
+    {
+      "scenario": "reorder examples",
+      "required_behavior": "Keep IDs; require authorization and complete before/after order mapping; transport must equal the post-reorder canonical mapping.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "order_mapping_before_after": [
+          {
+            "example_id": "ARCH-0001-ex-005",
+            "before": 5,
+            "after": 1
+          },
+          {
+            "example_id": "ARCH-0001-ex-004",
+            "before": 4,
+            "after": 2
+          },
+          {
+            "example_id": "ARCH-0001-ex-003",
+            "before": 3,
+            "after": 3
+          },
+          {
+            "example_id": "ARCH-0001-ex-002",
+            "before": 2,
+            "after": 4
+          },
+          {
+            "example_id": "ARCH-0001-ex-001",
+            "before": 1,
+            "after": 5
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "edit German Example",
+      "required_behavior": "Edit text in place and preserve Example ID/order unless an authorized reorder also occurs.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "id_preserved": true
+      }
+    },
+    {
+      "scenario": "edit FA/EN translation",
+      "required_behavior": "Edit the translation under the same German Example object and preserve its ID/order.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "id_preserved": true
+      }
+    },
+    {
+      "scenario": "split a multi-sense source record",
+      "required_behavior": "Keep one Unit as named survivor; allocate a new Unit ID; retire/archive any moved old Example ID and allocate an owner-valid new ID with explicit history mapping.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "example_mapping": {
+          "ARCH-0004-ex-002": "ARCH-0011-ex-001"
+        }
+      }
+    },
+    {
+      "scenario": "merge two Senses",
+      "required_behavior": "Choose the Sense survivor explicitly; tombstone the retired Sense externally; remap references while preserving Example IDs in the same Unit.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "PASS",
+          "error_codes": []
+        },
+        "example_ids_preserved": true,
+        "sense_mapping": {
+          "sense-02": "sense-01"
+        }
+      }
+    },
+    {
+      "scenario": "retire and reactivate a Sense",
+      "required_behavior": "Retire only with external tombstone/archive and resolved references. Reactivate the same scoped Sense ID only with explicit policy/plan and no active collision; retired Example IDs remain non-reusable and need new IDs.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "architecture_storage": "no canonical retired Sense registry",
+        "canonical_tombstone_invention_forbidden": true,
+        "unauthorized_reactivation": "REVIEW_REQUIRED/no mutation"
+      }
+    },
+    {
+      "scenario": "unknown optional field",
+      "required_behavior": "Because the canonical scope is closed, preserve source pointer/value in an external ledger and block canonical finality until mapped/upgraded; do not carry it into canonical JSON.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "validator": {
+          "status": "FAIL",
+          "error_codes": [
+            "EXAMPLE_FIELD_UNKNOWN"
+          ]
+        },
+        "expected_error": "EXAMPLE_FIELD_UNKNOWN",
+        "ledger_value_sha256": "2d412d06b71cc0488826e63240efa25ee425c5183cd13202d6f0a0d8ec29159c"
+      }
+    },
+    {
+      "scenario": "unknown required capability",
+      "required_behavior": "Reject fail-closed. A target/producer cannot invent it; a genuine Contract/Dataset-required but unregistered/unsupported capability blocks delivery/runtime negotiation.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "result": "CONFIGURATION_BLOCKED or REVIEW_REQUIRED; no compatibility/import claim"
+      }
+    },
+    {
+      "scenario": "Prompt version changes; semantic contract fixed",
+      "required_behavior": "Update prompt_version provenance only; keep canonical contract_version=3.1.3 and do not gate Runtime on Prompt version.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "prompt_version": "v3.2.0",
+        "contract_version": "3.1.3"
+      }
+    },
+    {
+      "scenario": "Architecture package version changes; semantic contract fixed",
+      "required_behavior": "Update architecture_package_version provenance only; resolve contract_version from the Contract file, still 3.1.3.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "architecture_package_version": "v3.1.6",
+        "contract_version": "3.1.3"
+      }
+    },
+    {
+      "scenario": "ZIP with two importable datasets",
+      "required_behavior": "Reject the Import ZIP before Runtime mutation; exactly one primary importable dataset is required.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "detected_importables": [
+          "a.json",
+          "b.json"
+        ],
+        "count": 2
+      }
+    },
+    {
+      "scenario": "stale validator report with different input hash",
+      "required_behavior": "Reject the report for every gate because input_sha256 does not equal the current artifact SHA-256.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "artifact_sha256": "fad8d38a38ed7beb2cce38cbe441643b2c06c2b5c91ae47a39f42a8c864586a7",
+        "report_input_sha256": "4f66c790fd942455e9d50118dd34f5c903739283f7d8a9e6088545838edf388d",
+        "binding_match": false
+      }
+    },
+    {
+      "scenario": "Linguistic Audit failed; Transport PASS",
+      "required_behavior": "Allow TRANSPORT_VALIDATED as a transport-only fact, forbid CONTENT_VALIDATED, preserve linguistic FAILED in the state vector, and make no content-quality/import-success overclaim.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "structure_status": "PASS",
+        "linguistic_status": "FAILED",
+        "transport_status": "PASS",
+        "content_validated": false,
+        "transport_validated": true
+      }
+    },
+    {
+      "scenario": "isolated-runtime PASS without actual-runtime reload",
+      "required_behavior": "At most APP_COMPATIBLE; current runtime remains CURRENT_RUNTIME_NOT_VERIFIED; IMPORT_VERIFIED and immediate-import advice are forbidden.",
+      "deterministic": true,
+      "observed": "PASS",
+      "evidence": {
+        "isolated_runtime_status": "PASS",
+        "actual_runtime_status": "NOT_RUN",
+        "artifact_status": "APP_COMPATIBLE",
+        "current_runtime_status": "CURRENT_RUNTIME_NOT_VERIFIED"
+      }
+    }
+  ]
+}

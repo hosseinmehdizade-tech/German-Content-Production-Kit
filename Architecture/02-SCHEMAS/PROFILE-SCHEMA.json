@@ -1,0 +1,441 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gfp.local/schemas/dataset-profile-v2.1.schema.json",
+  "title": "German Language Dataset Profile v2.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_schema_version",
+    "profile_id",
+    "dataset",
+    "cefr",
+    "id_policy",
+    "allowed_types",
+    "allow_generic_type_rule",
+    "required_unit_fields",
+    "definition_policy",
+    "languages",
+    "examples",
+    "type_requirements",
+    "source_policy",
+    "linguistic_strictness"
+  ],
+  "properties": {
+    "profile_schema_version": {
+      "const": "2.1.0"
+    },
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*@[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "cefr": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2",
+        null
+      ]
+    },
+    "id_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "card_id_pattern",
+        "example_id_suffix_pattern",
+        "derive_example_id_from_text",
+        "reuse_retired_example_ids"
+      ],
+      "properties": {
+        "card_id_pattern": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example_id_suffix_pattern": {
+          "type": "string",
+          "minLength": 1
+        },
+        "derive_example_id_from_text": {
+          "const": false
+        },
+        "reuse_retired_example_ids": {
+          "const": false
+        }
+      }
+    },
+    "allowed_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/typeId"
+      }
+    },
+    "allow_generic_type_rule": {
+      "type": "boolean"
+    },
+    "required_unit_fields": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "persian_meaning",
+          "english_gloss",
+          "definition_de"
+        ]
+      }
+    },
+    "definition_policy": {
+      "enum": [
+        "required",
+        "preferred",
+        "optional",
+        "forbidden"
+      ]
+    },
+    "languages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "translations"
+      ],
+      "properties": {
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "lang",
+            "required"
+          ],
+          "properties": {
+            "lang": {
+              "$ref": "#/$defs/languageTag"
+            },
+            "required": {
+              "type": "boolean"
+            }
+          }
+        },
+        "translations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lang",
+              "required"
+            ],
+            "properties": {
+              "lang": {
+                "$ref": "#/$defs/languageTag"
+              },
+              "required": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "examples": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default",
+        "by_type"
+      ],
+      "properties": {
+        "default": {
+          "$ref": "#/$defs/countPolicy"
+        },
+        "by_type": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/typeId"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/countOverride"
+          }
+        }
+      }
+    },
+    "type_requirements": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/typeId"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "required_core_fields",
+          "required_detail_fields"
+        ],
+        "properties": {
+          "required_core_fields": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/$defs/fieldName"
+            }
+          },
+          "required_detail_fields": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/$defs/fieldName"
+            }
+          }
+        }
+      }
+    },
+    "source_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_id",
+        "allowed_kinds",
+        "require_registered_source",
+        "require_approved_source",
+        "allow_test_only_sources",
+        "require_verified_source",
+        "minimum_verified_sources",
+        "risky_flags",
+        "claim_requirements"
+      ],
+      "properties": {
+        "registry_id": {
+          "const": "gfp-approved-language-sources@1.1.0"
+        },
+        "allowed_kinds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "book",
+              "course",
+              "lexicon",
+              "corpus",
+              "website",
+              "expert",
+              "generated",
+              "other"
+            ]
+          }
+        },
+        "require_registered_source": {
+          "type": "boolean"
+        },
+        "require_approved_source": {
+          "type": "boolean"
+        },
+        "allow_test_only_sources": {
+          "type": "boolean"
+        },
+        "require_verified_source": {
+          "type": "boolean"
+        },
+        "minimum_verified_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "risky_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "ambiguous_sense",
+              "multi_sense",
+              "disputed",
+              "high_risk"
+            ]
+          }
+        },
+        "claim_requirements": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "architecture_fixture",
+              "german_sense",
+              "german_definition",
+              "orthography",
+              "grammar",
+              "rection",
+              "morphology",
+              "usage",
+              "register",
+              "collocation",
+              "synonymy",
+              "antonymy",
+              "word_family",
+              "frequency",
+              "corpus_usage",
+              "etymology",
+              "bilingual_sense_match",
+              "persian_gloss",
+              "persian_wording",
+              "persian_example_translation",
+              "english_gloss",
+              "english_wording",
+              "english_example_translation",
+              "example_attestation"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "minimum_verified_sources",
+              "minimum_independent_sources_when_risky",
+              "required_roles"
+            ],
+            "properties": {
+              "minimum_verified_sources": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minimum_independent_sources_when_risky": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "required_roles": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "german_monolingual",
+                    "german_grammar_authority",
+                    "german_english_bilingual",
+                    "german_persian_bilingual",
+                    "english_learner_reference",
+                    "corpus_evidence",
+                    "test_fixture"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "linguistic_strictness": {
+      "enum": [
+        "strict",
+        "standard",
+        "exploratory"
+      ]
+    }
+  },
+  "$defs": {
+    "languageTag": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+    },
+    "typeId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "fieldName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "countPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "minimum",
+        "maximum",
+        "enforcement"
+      ],
+      "properties": {
+        "target": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "enforcement": {
+          "enum": [
+            "exact",
+            "range",
+            "advisory"
+          ]
+        }
+      }
+    },
+    "countOverride": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "target": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "enforcement": {
+          "enum": [
+            "exact",
+            "range",
+            "advisory"
+          ]
+        }
+      }
+    }
+  }
+}

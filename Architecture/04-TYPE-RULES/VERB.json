@@ -1,0 +1,61 @@
+{
+  "type_rule_schema_version": "2.0.0",
+  "rule_id": "verb@2.0.0",
+  "applies_to": ["verb"],
+  "core_fields": {
+    "present_3sg": {"type": "string", "required": true, "nullable": false, "min_length": 1},
+    "preterite_3sg": {"type": "string", "required": true, "nullable": false, "min_length": 1},
+    "perfect": {"type": "string", "required": true, "nullable": false, "min_length": 1},
+    "participle_i": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+    "participle_ii": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+    "subjunctive_ii": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+    "imperative": {
+      "type": "object",
+      "required": false,
+      "nullable": false,
+      "properties": {
+        "du": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+        "ihr": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+        "sie": {"type": "string", "required": false, "nullable": false, "min_length": 1}
+      },
+      "required_properties": [],
+      "additional_properties": false
+    },
+    "auxiliary": {"type": "string", "required": false, "nullable": false, "enum": ["haben", "sein", "haben_or_sein", "none"]},
+    "reflexive": {"type": "boolean", "required": false, "nullable": false},
+    "separability": {"type": "string", "required": false, "nullable": false, "enum": ["separable", "inseparable", "non_prefixed", "variable"]},
+    "modal": {"type": "boolean", "required": false, "nullable": false},
+    "morphology_variants": {
+      "type": "array",
+      "required": false,
+      "nullable": false,
+      "items": {
+        "type": "object",
+        "required": false,
+        "nullable": false,
+        "properties": {
+          "label": {"type": "string", "required": true, "nullable": false, "min_length": 1},
+          "form": {"type": "string", "required": true, "nullable": false, "min_length": 1}
+        },
+        "required_properties": ["label", "form"],
+        "additional_properties": false
+      },
+      "min_items": 1
+    }
+  },
+  "detail_fields": {
+    "rection": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true},
+    "grammar_notes": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1},
+    "synonyms": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true},
+    "antonyms": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true},
+    "variants": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true}
+  },
+  "allow_undeclared_core_fields": false,
+  "allow_undeclared_detail_fields": false,
+  "conditional_requirements": [],
+  "linguistic_checks": [
+    "All morphology belongs to the same learning-unit sense and construction.",
+    "Examples match valency and fixed rection.",
+    "Optional advanced forms are emitted only when verified."
+  ]
+}

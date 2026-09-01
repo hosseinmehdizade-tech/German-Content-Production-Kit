@@ -1,0 +1,23 @@
+{
+  "type_rule_schema_version": "2.0.0",
+  "rule_id": "adjektiv@2.0.0",
+  "applies_to": ["adjektiv"],
+  "core_fields": {
+    "gradable": {"type": "boolean", "required": true, "nullable": false},
+    "comparative": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+    "superlative": {"type": "string", "required": false, "nullable": false, "min_length": 1},
+    "predicative_only": {"type": "boolean", "required": false, "nullable": false},
+    "attributive_only": {"type": "boolean", "required": false, "nullable": false}
+  },
+  "detail_fields": {
+    "synonyms": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true},
+    "antonyms": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true},
+    "grammar_notes": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1}
+  },
+  "allow_undeclared_core_fields": false,
+  "allow_undeclared_detail_fields": false,
+  "conditional_requirements": [
+    {"scope": "core", "when_field": "gradable", "equals": true, "require_fields": ["comparative", "superlative"]}
+  ],
+  "linguistic_checks": ["Comparison forms are required only for gradable adjectives.", "Irregular and restricted comparison is represented accurately."]
+}

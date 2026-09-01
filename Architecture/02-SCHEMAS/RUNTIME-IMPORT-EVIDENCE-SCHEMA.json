@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gfp.local/schemas/runtime-import-evidence-v1.0.schema.json",
+  "title": "German Flashcards Pro Runtime Import Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_version",
+    "target_runtime",
+    "verification_mode",
+    "artifact",
+    "import_mode",
+    "artifact_status",
+    "runtime_status",
+    "scenarios",
+    "preflight",
+    "commit",
+    "reload"
+  ],
+  "properties": {
+    "evidence_version": {"const": "1.0"},
+    "target_runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product", "version"],
+      "properties": {
+        "product": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "package_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}
+      }
+    },
+    "verification_mode": {
+      "enum": ["none", "isolated-runtime", "actual-user-runtime"]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "sha256", "schema_profile"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+        "schema_profile": {"type": "string", "minLength": 1},
+        "row_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "import_mode": {"type": "string", "minLength": 1},
+    "artifact_status": {
+      "enum": ["CONTENT_VALIDATED", "TRANSPORT_VALIDATED", "APP_COMPATIBLE", "REVIEW_REQUIRED", "FAILED"]
+    },
+    "runtime_status": {
+      "enum": ["CURRENT_RUNTIME_NOT_VERIFIED", "RUNTIME_PREFLIGHT_PASS", "RUNTIME_BLOCKED", "IMPORT_VERIFIED"]
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/scenario"},
+      "uniqueItems": true
+    },
+    "preflight": {"$ref": "#/$defs/preflight"},
+    "commit": {"$ref": "#/$defs/commit"},
+    "reload": {"$ref": "#/$defs/reload"},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"artifact_status": {"const": "APP_COMPATIBLE"}}, "required": ["artifact_status"]},
+      "then": {
+        "properties": {
+          "scenarios": {
+            "allOf": [
+              {"contains": {"type": "object", "required": ["name", "passed"], "properties": {"name": {"const": "ready-existing-library"}, "passed": {"const": true}}}},
+              {"contains": {"type": "object", "required": ["name", "passed"], "properties": {"name": {"const": "reload-durability"}, "passed": {"const": true}}}},
+              {"contains": {"type": "object", "required": ["name", "passed"], "properties": {"name": {"const": "write-blocked-fail-closed"}, "passed": {"const": true}}}}
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"runtime_status": {"const": "RUNTIME_PREFLIGHT_PASS"}}, "required": ["runtime_status"]},
+      "then": {
+        "properties": {
+          "verification_mode": {"const": "actual-user-runtime"},
+          "preflight": {
+            "properties": {
+              "runtime_mode": {"const": "READY"},
+              "writes_blocked": {"const": false},
+              "can_write": {"const": true},
+              "writer_authority": {"const": true},
+              "unresolved_recovery": {"const": false}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"runtime_status": {"const": "RUNTIME_BLOCKED"}}, "required": ["runtime_status"]},
+      "then": {"properties": {"verification_mode": {"const": "actual-user-runtime"}}}
+    },
+    {
+      "if": {"properties": {"runtime_status": {"const": "IMPORT_VERIFIED"}}, "required": ["runtime_status"]},
+      "then": {
+        "properties": {
+          "verification_mode": {"const": "actual-user-runtime"},
+          "preflight": {
+            "properties": {
+              "runtime_mode": {"const": "READY"},
+              "writes_blocked": {"const": false},
+              "can_write": {"const": true},
+              "writer_authority": {"const": true},
+              "unresolved_recovery": {"const": false}
+            }
+          },
+          "commit": {
+            "properties": {
+              "attempted": {"const": true},
+              "persistent_commit": {"const": true},
+              "verified": {"const": true},
+              "rollback_preserved_previous": {"const": true}
+            }
+          },
+          "reload": {
+            "properties": {
+              "performed": {"const": true},
+              "persistence_verified": {"const": true}
+            }
+          }
+        },
+        "required": ["preflight", "commit", "reload"]
+      }
+    },
+    {
+      "if": {"properties": {"verification_mode": {"const": "isolated-runtime"}}, "required": ["verification_mode"]},
+      "then": {
+        "not": {"properties": {"runtime_status": {"enum": ["RUNTIME_PREFLIGHT_PASS", "RUNTIME_BLOCKED", "IMPORT_VERIFIED"]}}, "required": ["runtime_status"]}
+      }
+    }
+  ],
+  "$defs": {
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "passed"],
+      "properties": {
+        "name": {
+          "enum": [
+            "ready-empty-library",
+            "ready-existing-library",
+            "write-blocked-fail-closed",
+            "recovery-resolved-ready-import",
+            "reload-durability",
+            "roundtrip-export",
+            "writer-concurrency-guard"
+          ]
+        },
+        "passed": {"type": "boolean"},
+        "details": {"type": "string"},
+        "pre_count": {"type": "integer", "minimum": 0},
+        "post_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "preflight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checked"],
+      "properties": {
+        "checked": {"type": "boolean"},
+        "runtime_mode": {"type": ["string", "null"]},
+        "writes_blocked": {"type": ["boolean", "null"]},
+        "can_write": {"type": ["boolean", "null"]},
+        "writer_authority": {"type": ["boolean", "null"]},
+        "unresolved_recovery": {"type": ["boolean", "null"]},
+        "pending_unverified_commit": {"type": ["boolean", "null"]},
+        "existing_library_count": {"type": ["integer", "null"], "minimum": 0},
+        "library_fingerprint": {"type": ["string", "null"]},
+        "block_reason": {"type": ["string", "null"]}
+      }
+    },
+    "commit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempted"],
+      "properties": {
+        "attempted": {"type": "boolean"},
+        "persistent_commit": {"type": ["boolean", "null"]},
+        "verified": {"type": ["boolean", "null"]},
+        "pre_count": {"type": ["integer", "null"], "minimum": 0},
+        "post_count": {"type": ["integer", "null"], "minimum": 0},
+        "expected_post_count": {"type": ["integer", "null"], "minimum": 0},
+        "rollback_preserved_previous": {"type": ["boolean", "null"]},
+        "error": {"type": ["string", "null"]}
+      }
+    },
+    "reload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["performed"],
+      "properties": {
+        "performed": {"type": "boolean"},
+        "persistence_verified": {"type": ["boolean", "null"]},
+        "post_reload_count": {"type": ["integer", "null"], "minimum": 0},
+        "post_reload_fingerprint": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "profile_schema_version": "2.1.0",
+  "profile_id": "independent-b1@2.1.0",
+  "dataset": {
+    "id": "independent-b1",
+    "title": "Independent German B1 Units",
+    "tags": [
+      "independent",
+      "b1",
+      "mixed-types"
+    ]
+  },
+  "cefr": "B1",
+  "id_policy": {
+    "card_id_pattern": "^INDB1-[0-9]{5,}$",
+    "example_id_suffix_pattern": "-ex-[0-9]{3,}$",
+    "derive_example_id_from_text": false,
+    "reuse_retired_example_ids": false
+  },
+  "allowed_types": [
+    "verb",
+    "nomen",
+    "adjektiv",
+    "adverb",
+    "praeposition",
+    "konnektor",
+    "konjunktion",
+    "pronomen",
+    "artikelwort",
+    "partikel",
+    "interjektion",
+    "redemittel",
+    "phrase",
+    "idiom",
+    "redewendung",
+    "kollokation",
+    "nomen_verb_verbindung",
+    "satzmuster",
+    "satz",
+    "frage_antwort",
+    "grammatische_struktur",
+    "numeral",
+    "abkuerzung",
+    "generic"
+  ],
+  "allow_generic_type_rule": true,
+  "required_unit_fields": [
+    "persian_meaning",
+    "english_gloss",
+    "definition_de"
+  ],
+  "definition_policy": "required",
+  "languages": {
+    "source": {
+      "lang": "de-DE",
+      "required": true
+    },
+    "translations": [
+      {
+        "lang": "fa-IR",
+        "required": true
+      },
+      {
+        "lang": "en-US",
+        "required": true
+      }
+    ]
+  },
+  "examples": {
+    "default": {
+      "target": 5,
+      "minimum": 4,
+      "maximum": 6,
+      "enforcement": "range"
+    },
+    "by_type": {
+      "satz": {
+        "target": 3,
+        "minimum": 3,
+        "maximum": 4
+      },
+      "satzmuster": {
+        "target": 3,
+        "minimum": 3,
+        "maximum": 4
+      }
+    }
+  },
+  "type_requirements": {
+    "verb": {
+      "required_core_fields": [
+        "participle_ii"
+      ],
+      "required_detail_fields": [
+        "rection"
+      ]
+    },
+    "nomen": {
+      "required_core_fields": [
+        "article"
+      ],
+      "required_detail_fields": []
+    }
+  },
+  "source_policy": {
+    "registry_id": "gfp-approved-language-sources@1.1.0",
+    "allowed_kinds": [
+      "book",
+      "course",
+      "lexicon",
+      "corpus",
+      "website",
+      "expert"
+    ],
+    "require_registered_source": true,
+    "require_approved_source": true,
+    "allow_test_only_sources": false,
+    "require_verified_source": true,
+    "minimum_verified_sources": 1,
+    "risky_flags": [
+      "ambiguous_sense",
+      "multi_sense",
+      "disputed",
+      "high_risk"
+    ],
+    "claim_requirements": {
+      "german_sense": {
+        "minimum_verified_sources": 1,
+        "minimum_independent_sources_when_risky": 2,
+        "required_roles": [
+          "german_monolingual"
+        ]
+      },
+      "persian_gloss": {
+        "minimum_verified_sources": 1,
+        "minimum_independent_sources_when_risky": 2,
+        "required_roles": [
+          "german_persian_bilingual"
+        ]
+      },
+      "english_gloss": {
+        "minimum_verified_sources": 1,
+        "minimum_independent_sources_when_risky": 2,
+        "required_roles": [
+          "german_english_bilingual"
+        ]
+      }
+    }
+  },
+  "linguistic_strictness": "strict"
+}

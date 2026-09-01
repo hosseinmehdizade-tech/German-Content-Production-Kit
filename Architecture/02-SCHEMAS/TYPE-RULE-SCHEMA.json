@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gfp.local/schemas/type-rule-v2.schema.json",
+  "title": "Typed German Learning Unit Type Rule v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type_rule_schema_version",
+    "rule_id",
+    "applies_to",
+    "core_fields",
+    "detail_fields",
+    "allow_undeclared_core_fields",
+    "allow_undeclared_detail_fields",
+    "conditional_requirements",
+    "linguistic_checks"
+  ],
+  "properties": {
+    "type_rule_schema_version": {"const": "2.0.0"},
+    "rule_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*@[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "applies_to": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/typeId"}},
+    "core_fields": {"type": "object", "propertyNames": {"$ref": "#/$defs/fieldName"}, "additionalProperties": {"$ref": "#/$defs/fieldSpec"}},
+    "detail_fields": {"type": "object", "propertyNames": {"$ref": "#/$defs/fieldName"}, "additionalProperties": {"$ref": "#/$defs/fieldSpec"}},
+    "allow_undeclared_core_fields": {"type": "boolean"},
+    "allow_undeclared_detail_fields": {"type": "boolean"},
+    "conditional_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scope", "when_field", "equals", "require_fields"],
+        "properties": {
+          "scope": {"enum": ["core", "details"]},
+          "when_field": {"$ref": "#/$defs/fieldName"},
+          "equals": {},
+          "require_fields": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/fieldName"}}
+        }
+      }
+    },
+    "linguistic_checks": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "typeId": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "fieldName": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "fieldSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "required", "nullable"],
+      "properties": {
+        "type": {"enum": ["string", "boolean", "integer", "number", "array", "object"]},
+        "required": {"type": "boolean"},
+        "nullable": {"type": "boolean"},
+        "enum": {"type": "array", "minItems": 1, "uniqueItems": true},
+        "min_length": {"type": "integer", "minimum": 0},
+        "max_length": {"type": "integer", "minimum": 0},
+        "pattern": {"type": "string", "minLength": 1},
+        "minimum": {"type": "number"},
+        "maximum": {"type": "number"},
+        "min_items": {"type": "integer", "minimum": 0},
+        "max_items": {"type": "integer", "minimum": 0},
+        "unique_items": {"type": "boolean"},
+        "items": {"$ref": "#/$defs/fieldSpec"},
+        "properties": {"type": "object", "propertyNames": {"$ref": "#/$defs/fieldName"}, "additionalProperties": {"$ref": "#/$defs/fieldSpec"}},
+        "required_properties": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/fieldName"}},
+        "additional_properties": {"type": "boolean"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"type": {"const": "array"}}, "required": ["type"]},
+          "then": {"required": ["items"]}
+        },
+        {
+          "if": {"properties": {"type": {"const": "object"}}, "required": ["type"]},
+          "then": {"required": ["properties", "required_properties", "additional_properties"]}
+        }
+      ]
+    }
+  }
+}

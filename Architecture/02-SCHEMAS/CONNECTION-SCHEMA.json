@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gfp.local/schemas/connection-v1.schema.json",
+  "title": "German Learning Unit Connection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["text", "kind"],
+  "properties": {
+    "text": {"type": "string", "minLength": 1},
+    "kind": {
+      "enum": [
+        "collocation",
+        "nvv",
+        "pattern",
+        "fixed_expression",
+        "prepositional_pattern",
+        "common_combination",
+        "other"
+      ]
+    },
+    "sense_id": {"type": "string", "pattern": "^sense-[A-Za-z0-9][A-Za-z0-9._-]*$"}
+  }
+}

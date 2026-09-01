@@ -1,0 +1,96 @@
+{
+  "profile_schema_version": "2.1.0",
+  "profile_id": "architecture-proof@2.1.0",
+  "dataset": {
+    "id": "architecture-proof",
+    "title": "Multi-Type Architecture Proof",
+    "tags": [
+      "architecture",
+      "sample",
+      "clean-slate"
+    ]
+  },
+  "cefr": "A2",
+  "id_policy": {
+    "card_id_pattern": "^ARCH-[0-9]{4,}$",
+    "example_id_suffix_pattern": "-ex-[0-9]{3,}$",
+    "derive_example_id_from_text": false,
+    "reuse_retired_example_ids": false
+  },
+  "allowed_types": [
+    "verb",
+    "nomen",
+    "adjektiv",
+    "praeposition",
+    "konnektor",
+    "redemittel",
+    "nomen_verb_verbindung",
+    "satzmuster"
+  ],
+  "allow_generic_type_rule": false,
+  "required_unit_fields": [
+    "persian_meaning",
+    "english_gloss",
+    "definition_de"
+  ],
+  "definition_policy": "required",
+  "languages": {
+    "source": {
+      "lang": "de-DE",
+      "required": true
+    },
+    "translations": [
+      {
+        "lang": "fa-IR",
+        "required": true
+      },
+      {
+        "lang": "en-US",
+        "required": true
+      }
+    ]
+  },
+  "examples": {
+    "default": {
+      "target": 2,
+      "minimum": 2,
+      "maximum": 2,
+      "enforcement": "exact"
+    },
+    "by_type": {
+      "verb": {
+        "target": 3,
+        "minimum": 3,
+        "maximum": 3
+      }
+    }
+  },
+  "type_requirements": {
+    "nomen": {
+      "required_core_fields": [
+        "article",
+        "plural"
+      ],
+      "required_detail_fields": []
+    }
+  },
+  "source_policy": {
+    "registry_id": "gfp-approved-language-sources@1.1.0",
+    "allowed_kinds": [
+      "generated"
+    ],
+    "require_registered_source": true,
+    "require_approved_source": false,
+    "allow_test_only_sources": true,
+    "require_verified_source": false,
+    "minimum_verified_sources": 0,
+    "risky_flags": [
+      "ambiguous_sense",
+      "multi_sense",
+      "disputed",
+      "high_risk"
+    ],
+    "claim_requirements": {}
+  },
+  "linguistic_strictness": "standard"
+}

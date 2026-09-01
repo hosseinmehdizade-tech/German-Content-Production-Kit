@@ -1,0 +1,18 @@
+{
+  "type_rule_schema_version": "2.0.0",
+  "rule_id": "konnektor@2.0.0",
+  "applies_to": ["konnektor", "konjunktion"],
+  "core_fields": {
+    "function": {"type": "string", "required": true, "nullable": false, "min_length": 1},
+    "syntactic_class": {"type": "string", "required": true, "nullable": false, "enum": ["coordinating", "subordinating", "conjunctive_adverb", "other"]},
+    "verb_position": {"type": "string", "required": true, "nullable": false, "enum": ["verb_second", "verb_final", "unchanged", "variable"]}
+  },
+  "detail_fields": {
+    "punctuation_notes": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1},
+    "related_forms": {"type": "array", "required": false, "nullable": false, "items": {"type": "string", "required": false, "nullable": false, "min_length": 1}, "min_items": 1, "unique_items": true}
+  },
+  "allow_undeclared_core_fields": false,
+  "allow_undeclared_detail_fields": false,
+  "conditional_requirements": [],
+  "linguistic_checks": ["Clause class, finite-verb position and punctuation are represented accurately."]
+}

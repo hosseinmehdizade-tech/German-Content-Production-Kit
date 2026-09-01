@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gfp.local/schemas/content-completeness-profile-v1.0.0.schema.json",
+  "title": "GFP Product Content Completeness Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile_schema_version", "profile_id", "target", "by_type"],
+  "properties": {
+    "profile_schema_version": {"const": "1.0.0"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "target": {"type": "string", "minLength": 1},
+    "source_profile_id": {"type": "string", "minLength": 1},
+    "policy": {"type": "object"},
+    "by_type": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/typeRule"}}
+  },
+  "$defs": {
+    "connectionSpec": {
+      "type": "object", "additionalProperties": false, "required": ["kind"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1}, "minimum": {"type": "integer", "minimum": 0},
+        "preferred_minimum": {"type": "integer", "minimum": 0}, "maximum": {"type": "integer", "minimum": 0},
+        "evidence_claims": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "detailSpec": {
+      "type": "object", "additionalProperties": false, "required": ["field"],
+      "properties": {
+        "field": {"type": "string", "minLength": 1}, "minimum": {"type": "integer", "minimum": 0},
+        "preferred_minimum": {"type": "integer", "minimum": 0},
+        "evidence_claims": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "conditional": {
+      "type": "object", "additionalProperties": false, "required": ["if_headword_regex", "detail_field", "minimum"],
+      "properties": {
+        "if_headword_regex": {"type": "string", "minLength": 1}, "detail_field": {"type": "string", "minLength": 1},
+        "minimum": {"type": "integer", "minimum": 1}, "message": {"type": "string"}
+      }
+    },
+    "typeRule": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "required_core_fields": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "required_detail_fields_when_present_in_headword": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "connections": {"type": "array", "items": {"$ref": "#/$defs/connectionSpec"}},
+        "details": {"type": "array", "items": {"$ref": "#/$defs/detailSpec"}},
+        "rection_evidence_claims": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "conditional_requirements": {"type": "array", "items": {"$ref": "#/$defs/conditional"}}
+      }
+    }
+  }
+}

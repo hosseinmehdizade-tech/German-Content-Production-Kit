@@ -1,0 +1,40 @@
+name: Menschen A1 diagnostic 274
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+jobs:
+  diagnose:
+    if: github.event.issue.title == 'RUN:MENSCHEN-A1-DIAGNOSTIC-274'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a1-v3.1.10
+          fetch-depth: 0
+      - name: Extract unit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('Data/Menschen-A1/v3.1.10-final/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          u=next(x for x in data['learning_units'] if x.get('id')=='MEN-A1-00274')
+          out=Path('Data/Menschen-A1/v3.1.10-repair/MEN-A1-00274-diagnostic.json')
+          out.write_text(json.dumps(u,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Commit diagnostic
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Data/Menschen-A1/v3.1.10-repair/MEN-A1-00274-diagnostic.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Extract current MEN-A1-00274 diagnostic [skip ci]'
+            git push origin HEAD:repair/menschen-a1-v3.1.10
+          fi
+      - name: Report
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue comment "${{ github.event.issue.number }}" --body "Diagnostic extracted from the current v7 output only."

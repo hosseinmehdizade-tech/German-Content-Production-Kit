@@ -30,12 +30,49 @@ jobs:
             --profile Architecture/03-PROFILES/MENSCHEN-A1.json \
             --outdir Data/Menschen-A1/v3.1.10-final \
             --delay 0.04
-      - name: Product completeness gate
+      - name: Product completeness gate (capture report)
         run: |
           python Verification/validate_content_completeness_v1_0_0.py \
             Data/Menschen-A1/v3.1.10-final/MENSCHEN-A1-CANONICAL-CONTENT-VALIDATED.json \
             Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.0.0.json \
-            --output Data/Menschen-A1/v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json
+            --output Data/Menschen-A1/v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=Path('Data/Menschen-A1/v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json')
+          report=json.loads(src.read_text(encoding='utf-8'))
+          issues=report.get('issues',[])
+          hard=[x for x in issues if str(x.get('severity','')).lower()=='error']
+          diag={
+            'source':'v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json',
+            'status':report.get('status'),
+            'errors':report.get('errors'),
+            'warnings':report.get('warnings'),
+            'hard_errors':hard,
+          }
+          dst=Path('Data/Menschen-A1/v3.1.10-repair/LATEST-PRODUCT-GATE-DIAGNOSTIC.json')
+          dst.write_text(json.dumps(diag,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(diag,ensure_ascii=False,indent=2))
+          PY
+      - name: Persist product-gate diagnostic
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Data/Menschen-A1/v3.1.10-repair/LATEST-PRODUCT-GATE-DIAGNOSTIC.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Capture Menschen A1 v3.1.10 product-gate diagnostic [skip ci]'
+            git push origin HEAD:repair/menschen-a1-v3.1.10
+          fi
+      - name: Enforce product completeness
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('Data/Menschen-A1/v3.1.10-final/PRODUCT-CONTENT-COMPLETENESS.json')
+          r=json.loads(p.read_text(encoding='utf-8'))
+          if r.get('status')!='PASS':
+            raise SystemExit(f"Product completeness failed: errors={r.get('errors')} warnings={r.get('warnings')}")
+          PY
       - name: Fresh structural and delivery verification
         run: |
           python Data/Menschen-A1/v3.1.10-repair/verify_current_only_final.py Data/Menschen-A1/v3.1.10-final

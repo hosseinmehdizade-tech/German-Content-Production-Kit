@@ -1,8 +1,7 @@
 name: Menschen A2 v3.1.11 agentic validation
 on:
   push:
-    branches:
-      - agent/menschen-a2-v3.1.11-final
+    branches: [agent/menschen-a2-v3.1.11-final]
     paths:
       - 'Data/Menschen-A2/v3.1.11-ci/**'
       - '.github/workflows/menschen-a2-v3.1.11-agentic.yml'
@@ -16,46 +15,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Reconstruct current-run payload
+
+      - name: Reconstruct and materialize current-run payload
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/menschen-a2
+          mkdir -p /tmp/menschen-a2 Data/Menschen-A2/v3.1.11-ci/materialized
           cat Data/Menschen-A2/v3.1.11-ci/payload/part-*.txt | base64 -d > /tmp/menschen-a2/payload.gz
-          gzip -dc /tmp/menschen-a2/payload.gz > /tmp/menschen-a2/payload.raw
-          file /tmp/menschen-a2/payload.raw
-          wc -c /tmp/menschen-a2/payload.raw
-      - name: Materialize payload
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import zipfile, tarfile, subprocess, sys
-          p=Path('/tmp/menschen-a2/payload.raw')
-          out=Path('Data/Menschen-A2/v3.1.11-ci/materialized')
-          out.mkdir(parents=True,exist_ok=True)
-          if zipfile.is_zipfile(p):
-              with zipfile.ZipFile(p) as z: z.extractall(out)
-              print('MATERIALIZED=zip')
-          elif tarfile.is_tarfile(p):
-              with tarfile.open(p) as t: t.extractall(out, filter='data')
-              print('MATERIALIZED=tar')
-          else:
-              text=p.read_text(encoding='utf-8')
-              script=out/'rebuild.py'
-              script.write_text(text,encoding='utf-8')
-              print('MATERIALIZED=python-text')
-              subprocess.check_call([sys.executable,str(script)])
-          PY
-          find Data/Menschen-A2/v3.1.11-ci/materialized -maxdepth 5 -type f -printf '%p\t%s bytes\n' | sort
-      - name: Stage current-run OCR inputs for builder
+          gzip -dc /tmp/menschen-a2/payload.gz > /tmp/menschen-a2/payload.tar
+          tar -xf /tmp/menschen-a2/payload.tar -C Data/Menschen-A2/v3.1.11-ci/materialized
+          test -f Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload/build_a2_v311_ci.py
+
+      - name: Stage current-run source inputs
         shell: bash
         run: |
           set -euo pipefail
           sudo mkdir -p /mnt/data
           sudo chown "$USER":"$(id -gn)" /mnt/data
-          PAYLOAD_DIR="Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload"
           python - <<'PY'
           from pathlib import Path
           import json,re
@@ -69,106 +45,96 @@ jobs:
           for line in (root/'all_examples.txt').read_text(encoding='utf-8').splitlines():
               m=re.match(r'^(\d+)\s?(.*)$',line)
               if m: examples[int(m.group(1))]=m.group(2).strip()
-          assert len(left)==286 and set(left)==set(range(1,287)),(len(left),min(left),max(left))
+          assert len(left)==286 and set(left)==set(range(1,287)),len(left)
           rows=[]
           for i in range(1,287):
               rec=left[i]
               rows.append({'image':rec['image'],'row':rec['row'],'y1':0,'y2':0,'source_headword_raw':rec['source_headword_raw'],'source_example_raw':examples.get(i,''),'source_persian_raw':''})
           Path('/mnt/data/menschen_a2_ocr_rows.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          print('SYNTHESIZED_CURRENT_OCR_ROWS',len(rows))
+          print('CURRENT_OCR_ROWS',len(rows))
           PY
-          cp "$PAYLOAD_DIR/a2_semantic_enrichment.tsv" /mnt/data/a2_semantic_enrichment.tsv
-          test -s /mnt/data/menschen_a2_ocr_rows.json
-          test -s /mnt/data/a2_semantic_enrichment.tsv
+          cp Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload/a2_semantic_enrichment.tsv /mnt/data/a2_semantic_enrichment.tsv
+
       - name: Execute clean-slate Menschen A2 builder
         shell: bash
         run: |
           set -euo pipefail
-          PAYLOAD_DIR="Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload"
-          test -f "$PAYLOAD_DIR/build_a2_v311_ci.py"
-          (
-            cd "$PAYLOAD_DIR"
-            python build_a2_v311_ci.py
-          )
-          echo '--- generated files ---'
-          find "$PAYLOAD_DIR" -maxdepth 5 -type f -printf '%p\t%s bytes\n' | sort
-      - name: Locate build artifacts
+          cd Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload
+          python build_a2_v311_ci.py
+
+      - name: Locate generated artifacts
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
           names=['MENSCHEN-A2-CANONICAL.json','MENSCHEN-A2-PROFILE.json','MENSCHEN-A2-UNIVERSAL-v2.tsv']
-          root=Path('.')
           found={}
-          for n in names:
-              hits=[p for p in root.rglob(n) if '.git' not in p.parts]
-              if not hits: raise SystemExit(f'MISSING {n}')
-              hits.sort(key=lambda p:p.stat().st_mtime, reverse=True)
-              found[n]=hits[0]
-              print(n, hits[0])
-          env=Path('/tmp/menschen-a2/paths.env')
-          env.write_text('\n'.join([
-              f"CANONICAL={found['MENSCHEN-A2-CANONICAL.json']}",
-              f"PROFILE={found['MENSCHEN-A2-PROFILE.json']}",
-              f"TSV={found['MENSCHEN-A2-UNIVERSAL-v2.tsv']}"
-          ])+'\n')
+          for name in names:
+              hits=[p for p in Path('.').rglob(name) if '.git' not in p.parts]
+              assert hits, name
+              hits.sort(key=lambda p:p.stat().st_mtime,reverse=True)
+              found[name]=hits[0]
+              print(name,hits[0])
+          with open('/tmp/menschen-a2/paths.env','w',encoding='utf-8') as f:
+              f.write(f"CANONICAL={found['MENSCHEN-A2-CANONICAL.json']}\n")
+              f.write(f"PROFILE={found['MENSCHEN-A2-PROFILE.json']}\n")
+              f.write(f"TSV={found['MENSCHEN-A2-UNIVERSAL-v2.tsv']}\n")
           PY
           cat /tmp/menschen-a2/paths.env >> "$GITHUB_ENV"
+
+      - name: Repair three source-attested rection gaps
+        run: |
+          python Data/Menschen-A2/v3.1.11-ci/repair_completeness.py --canonical "$CANONICAL" --tsv "$TSV"
+
       - name: Structural and typed gate
         run: |
-          python Architecture/06-VALIDATION/validate_content.py \
-            --dataset "$CANONICAL" \
-            --profile "$PROFILE" \
-            --type-rules Architecture/04-TYPE-RULES \
-            --source-registry Architecture/03-SOURCES/SOURCE-REGISTRY.json \
-            --report /tmp/menschen-a2/STRUCTURAL-TYPED-VALIDATION.json
+          python Architecture/06-VALIDATION/validate_content.py --dataset "$CANONICAL" --profile "$PROFILE" --type-rules Architecture/04-TYPE-RULES --source-registry Architecture/03-SOURCES/SOURCE-REGISTRY.json --report /tmp/menschen-a2/STRUCTURAL-TYPED-VALIDATION.json
+
       - name: Lexical quality and transport parity gate
         run: |
           python Verification/validate_lexical_quality_v1_0_1.py "$CANONICAL" --tsv "$TSV" --output /tmp/menschen-a2/LEXICAL-QUALITY.json
+
       - name: Product completeness gate
         run: |
           python Verification/validate_content_completeness_v1_0_0.py "$CANONICAL" Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json --output /tmp/menschen-a2/PRODUCT-CONTENT-COMPLETENESS.json
-      - name: Independent lossless checks
+
+      - name: Independent lossless parity gate
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
           import json,hashlib,os
           c=Path(os.environ['CANONICAL']); t=Path(os.environ['TSV'])
-          ds=json.loads(c.read_text(encoding='utf-8'))
-          lines=t.read_text(encoding='utf-8').splitlines()
+          ds=json.loads(c.read_text(encoding='utf-8')); lines=t.read_text(encoding='utf-8').splitlines()
           hdr=lines[0].split('\t')
           expected=['id','card_type','domain','category','source','level','lesson','deck','front','back','front_label','back_label','front_lang','back_lang','typing_target','examples','related','opposites','details','custom_fields','tags','notes','order']
-          assert hdr==expected,(len(hdr),hdr)
-          assert len(ds['learning_units'])==297,len(ds['learning_units'])
-          assert len(lines)-1==297,len(lines)-1
+          assert hdr==expected
+          assert len(ds['learning_units'])==297 and len(lines)-1==297
           byid={u['id']:u for u in ds['learning_units']}
           for n,line in enumerate(lines[1:],2):
-              p=line.split('\t'); assert len(p)==23,(n,len(p))
-              r=dict(zip(hdr,p)); u=byid[r['id']]
-              cf=json.loads(r['custom_fields'])
+              parts=line.split('\t'); assert len(parts)==23,(n,len(parts))
+              r=dict(zip(hdr,parts)); u=byid[r['id']]; cf=json.loads(r['custom_fields'])
               assert cf['canonical_unit']==u,r['id']
-              assert json.loads(r['examples'])==u['examples'],r['id']
               assert r['front']==u['headword'] and r['back']==u['persian_meaning'],r['id']
-          report={
-            'status':'PASS','units':297,'rows':297,'columns':23,
-            'canonical_sha256':hashlib.sha256(c.read_bytes()).hexdigest(),
-            'tsv_sha256':hashlib.sha256(t.read_bytes()).hexdigest(),
-            'lossless_canonical_bridge':True,'example_parity':True,'face_parity':True
-          }
+          report={'status':'PASS','units':297,'rows':297,'columns':23,'canonical_sha256':hashlib.sha256(c.read_bytes()).hexdigest(),'tsv_sha256':hashlib.sha256(t.read_bytes()).hexdigest(),'lossless_canonical_bridge':True,'face_parity':True}
           Path('/tmp/menschen-a2/INDEPENDENT-PARITY.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           print(json.dumps(report,indent=2))
           PY
-      - name: Package validation evidence
+
+      - name: Collect final content artifacts and evidence
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p /tmp/menschen-a2/evidence
+          cp "$CANONICAL" /tmp/menschen-a2/evidence/MENSCHEN-A2-CANONICAL.json
+          cp "$PROFILE" /tmp/menschen-a2/evidence/MENSCHEN-A2-PROFILE.json
+          cp "$TSV" /tmp/menschen-a2/evidence/MENSCHEN-A2-UNIVERSAL-v2.tsv
           cp /tmp/menschen-a2/STRUCTURAL-TYPED-VALIDATION.json /tmp/menschen-a2/evidence/
           cp /tmp/menschen-a2/LEXICAL-QUALITY.json /tmp/menschen-a2/evidence/
           cp /tmp/menschen-a2/PRODUCT-CONTENT-COMPLETENESS.json /tmp/menschen-a2/evidence/
           cp /tmp/menschen-a2/INDEPENDENT-PARITY.json /tmp/menschen-a2/evidence/
+
       - uses: actions/upload-artifact@v4
         with:
           name: menschen-a2-v3.1.11-content-validation

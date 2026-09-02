@@ -53,14 +53,22 @@
     {
       "stage": 2,
       "name": "Canonicalization",
-      "state": "RUNNING",
+      "state": "PASS",
       "required_outputs": [
         "02-canonical/CANONICAL.json",
         "02-canonical/CANONICAL-VALIDATION.json",
         "02-canonical/NORMALIZATION-DECISIONS.json"
       ],
       "pass_commit": null,
-      "summary": "Canonical artifacts reconstructed; current Architecture/Contract gate is running."
+      "summary": "292 active Learning Units canonicalized from 297 authoritative rows; 3 exact duplicates retired, 1 malformed sentence retired into its verb survivor, 1 nonverb phrase excluded; source order preserved with gaps; Architecture v3.1.5 / semantic contract 3.1.3 PASS.",
+      "authoritative_outputs": [
+        "02-canonical/CANONICAL.json",
+        "02-canonical/NORMALIZATION-DECISIONS.json",
+        "02-canonical/MENSCHEN-A2-PROFILE.json"
+      ],
+      "gate_evidence": [
+        "02-canonical/CANONICAL-VALIDATION.json"
+      ]
     },
     {
       "stage": 3,
@@ -118,7 +126,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Run Stage 2 validation, then continue agentically through Stages 3-7.",
+  "resume_instruction": "Resume at Stage 3 Evidence & Enrichment.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

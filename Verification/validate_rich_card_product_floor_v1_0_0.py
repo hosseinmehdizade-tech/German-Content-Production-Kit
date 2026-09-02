@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, json
+import argparse, json, re
 from collections import Counter
 from pathlib import Path
 
 ABSENT=(None,"",[],{})
+FIXED_CASE_PREPS={'aus','außer','bei','mit','nach','seit','von','zu','gegenüber','durch','für','gegen','ohne','um'}
 
 def load(p): return json.loads(Path(p).read_text(encoding='utf-8'))
 def issue(severity,code,path,message): return {'severity':severity,'code':code,'path':path,'message':message}
-def strings(v): return [x for x in (v if isinstance(v,list) else []) if isinstance(x,str) and x.strip()]
 
 def get_path(unit,path):
     cur=unit
@@ -23,6 +23,19 @@ def detail_count(unit,spec):
     v=get_path(unit,spec)
     if isinstance(v,list): return len([x for x in v if (isinstance(x,str) and x.strip()) or isinstance(x,dict)])
     return 1 if v not in ABSENT else 0
+
+def translation_count(examples,lang):
+    n=0
+    for ex in examples:
+        if any(isinstance(t,dict) and t.get('lang')==lang and str(t.get('text','')).strip() for t in ex.get('translations',[])):
+            n+=1
+    return n
+
+def explicit_rection_required(unit):
+    text=' '.join(str(x or '') for x in [unit.get('headword'),(unit.get('core') or {}).get('structure')])
+    low=text.casefold()
+    if re.search(r'\[(?:\+)?[ad]\]|\((?:dat|akk)\.?\)|\b(?:jdn|jmdn|jdm|jmdm)\.?\b',low): return True
+    return any(re.search(rf'\b{re.escape(p)}\b',low) for p in FIXED_CASE_PREPS)
 
 def validate(dataset,floor,evidence):
     units=dataset.get('learning_units') if isinstance(dataset,dict) else None
@@ -44,12 +57,22 @@ def validate(dataset,floor,evidence):
             if core.get(f) in ABSENT: issues.append(issue('error','PRODUCT_REQUIRED_CORE_FIELD',f'{root}.core.{f}','Required rich-card core field is absent.'))
         exs=[x for x in u.get('examples',[]) if isinstance(x,dict) and str(x.get('text','')).strip()]
         er=rule.get('examples') or {}; mn=int(er.get('minimum',0)); mx=er.get('maximum')
-        if len(exs)<mn: issues.append(issue('error','PRODUCT_EXAMPLE_MINIMUM',f'{root}.examples',f'Need at least {mn} usable examples; found {len(exs)}.'))
+        if len(exs)<mn: issues.append(issue('error','PRODUCT_EXAMPLE_MINIMUM',f'{root}.examples',f'Need at least {mn} usable German examples; found {len(exs)}.'))
         if mx is not None and len(exs)>int(mx): issues.append(issue('warning','PRODUCT_EXAMPLE_MAXIMUM',f'{root}.examples',f'Preferred maximum is {mx}; found {len(exs)}.'))
         for lang in er.get('required_translation_languages',[]):
             for j,ex in enumerate(exs):
-                trs=[t for t in ex.get('translations',[]) if isinstance(t,dict) and t.get('lang')==lang and str(t.get('text','')).strip()]
-                if not trs: issues.append(issue('error','PRODUCT_EXAMPLE_TRANSLATION_MISSING',f'{root}.examples[{j}].translations',f'Missing required {lang} translation.'))
+                if not any(isinstance(t,dict) and t.get('lang')==lang and str(t.get('text','')).strip() for t in ex.get('translations',[])):
+                    issues.append(issue('error','PRODUCT_EXAMPLE_TRANSLATION_MISSING',f'{root}.examples[{j}].translations',f'Missing required {lang} translation.'))
+        for lang,minimum in (er.get('minimum_translated_examples') or {}).items():
+            found=translation_count(exs,lang)
+            if found<int(minimum):
+                issues.append(issue('error','PRODUCT_TRANSLATED_EXAMPLE_MINIMUM',f'{root}.examples',f'Need at least {minimum} example(s) with a {lang} translation; found {found}.'))
+        cr=rule.get('conditional_rection') or {}
+        if cr.get('when_structure_has_explicit_case_or_fixed_case_preposition') and explicit_rection_required(u):
+            found=detail_count(u,'details.rection')
+            minimum=int(cr.get('minimum',1))
+            if found<minimum:
+                issues.append(issue('error','PRODUCT_EXPLICIT_RECTION_MISSING',f'{root}.details.rection',f'Explicit learner-facing government/case notation requires at least {minimum} Rektion item; found {found}.'))
         ldr=rule.get('lexical_detail_coverage') or {}
         if ldr:
             total=sum(detail_count(u,p) for p in ldr.get('count_fields',[]))
@@ -60,7 +83,7 @@ def validate(dataset,floor,evidence):
         if isinstance(u,dict) and u.get('type') in eligible:
             uid=u.get('id'); a=attempts.get(uid)
             if not a:
-                issues.append(issue('error','PRODUCT_EXTERNAL_EVIDENCE_ATTEMPT_MISSING',f'learning_units[{i}]({uid}).provenance', 'No external lexical-evidence attempt is recorded for this eligible unit.'))
+                issues.append(issue('error','PRODUCT_EXTERNAL_EVIDENCE_ATTEMPT_MISSING',f'learning_units[{i}]({uid}).provenance','No external lexical-evidence attempt is recorded for this eligible unit.'))
             elif a.get('status') not in {'success','no_evidence','failed'}:
                 issues.append(issue('error','PRODUCT_EXTERNAL_EVIDENCE_ATTEMPT_INVALID',f'evidence.external_evidence_attempts[{uid}]','Attempt status must be success, no_evidence, or failed.'))
     verbs=type_counts.get('verb',0)

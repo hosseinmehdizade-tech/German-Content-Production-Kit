@@ -1,5 +1,6 @@
 {
-  "checkpoint_schema_version": "1.0.0",
+  "checkpoint_schema_version": "2.0.0",
+  "pipeline": "seven-stage-production@1.0.0",
   "dataset": {
     "id": "menschen-a2",
     "title": "Menschen A2",
@@ -32,28 +33,92 @@
     "physical_candidate_dataset_available_in_current_git": false,
     "note": "Historical outputs are evidence only until the physical candidate/canonical artifact is recovered and reverified under current contracts."
   },
-  "stages": {
-    "source_intake": "DONE",
-    "image_level_inventory_verification": "IN_PROGRESS",
-    "stable_ids": "RECOVERY_BASELINE_AVAILABLE",
-    "canonical_current_contract": "NOT_STARTED",
-    "external_evidence_enrichment": "NOT_STARTED",
-    "linguistic_qa": "NOT_STARTED",
-    "lexical_quality_gate": "NOT_STARTED",
-    "product_coverage": "NOT_STARTED",
-    "delivery_projection": "NOT_STARTED",
-    "runtime_import_acceptance": "NOT_STARTED",
-    "presentation_acceptance": "NOT_STARTED",
-    "packaging": "NOT_STARTED",
-    "post_package_verification": "NOT_STARTED"
-  },
+  "stages": [
+    {
+      "stage": 1,
+      "name": "Source & Inventory",
+      "state": "RUNNING",
+      "current_work": "Image-level verification of the 11 authoritative screenshots, duplicate/malformed/construction resolution, and durable stable-ID inventory.",
+      "required_outputs": [
+        "01-inventory/SOURCE-INVENTORY.json",
+        "01-inventory/STABLE-ID-MAP.json",
+        "01-inventory/INVENTORY-QA.json"
+      ],
+      "pass_commit": null
+    },
+    {
+      "stage": 2,
+      "name": "Canonicalization",
+      "state": "NOT_STARTED",
+      "required_outputs": [
+        "02-canonical/CANONICAL.json",
+        "02-canonical/CANONICAL-VALIDATION.json"
+      ],
+      "pass_commit": null
+    },
+    {
+      "stage": 3,
+      "name": "Evidence & Enrichment",
+      "state": "NOT_STARTED",
+      "required_outputs": [
+        "03-evidence/EVIDENCE-INDEX.json",
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
+      "pass_commit": null
+    },
+    {
+      "stage": 4,
+      "name": "Linguistic & Lexical QA",
+      "state": "NOT_STARTED",
+      "required_outputs": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json"
+      ],
+      "pass_commit": null
+    },
+    {
+      "stage": 5,
+      "name": "Delivery Projection",
+      "state": "NOT_STARTED",
+      "required_outputs": [
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
+        "05-delivery/DELIVERY-VALIDATION.json"
+      ],
+      "pass_commit": null
+    },
+    {
+      "stage": 6,
+      "name": "Runtime & Presentation Acceptance",
+      "state": "NOT_STARTED",
+      "required_outputs": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json"
+      ],
+      "pass_commit": null
+    },
+    {
+      "stage": 7,
+      "name": "Release & Post-Package Verification",
+      "state": "NOT_STARTED",
+      "required_outputs": [
+        "07-release/FINAL-STATUS.json",
+        "07-release/BUILD-METADATA.json",
+        "07-release/MANIFEST.json",
+        "07-release/SHA256SUMS.txt",
+        "07-release/final package or immutable release asset"
+      ],
+      "pass_commit": null
+    }
+  ],
   "blockers": [
     "The physical historical 278-card Menschen A2 candidate/canonical artifact has not been located in the current Git repositories.",
     "Do not reconstruct 278 cards from summaries; recover the actual artifact or rederive from the authoritative screenshots under current contracts."
   ],
-  "resume_instruction": "First inspect this checkpoint and current main of both repositories. If the historical 278-card artifact is recovered, import it only through the named recovery workflow and reverify against the 11 authoritative screenshots. Otherwise continue image-level inventory verification from the authoritative screenshots and rebuild deterministically. Persist every completed stage in this workspace before marking it DONE.",
+  "resume_instruction": "Resume Stage 1. First inspect this checkpoint and current main of both repositories. Recover the historical 278-card artifact if possible and treat it only as named-recovery evidence; otherwise finish deterministic image-level inventory verification from the 11 authoritative screenshots. Do not begin Stage 2 until Stage 1 artifacts and gate evidence are committed and Stage 1 is PASS. Then continue agentically through Stages 2-7 without manual batch stops.",
   "durability": {
     "checkpoint_is_git_backed": true,
-    "no_chat_only_done_states": true
+    "no_chat_only_pass_states": true,
+    "downstream_invalidation_required_on_upstream_change": true
   }
 }

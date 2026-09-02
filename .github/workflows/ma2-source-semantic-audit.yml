@@ -18,33 +18,43 @@ jobs:
         with:
           ref: repair/menschen-a2-rich-card-floor-v8
       - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - name: Audit phrase source/example structural alignment
+        with:
+          python-version: '3.12'
+      - name: Audit phrase source/example structural alignment and failed floor IDs
         run: |
           python - <<'PY'
           import json,re,pathlib
           p=pathlib.Path('Workspaces/menschen-a2/02-canonical/CANONICAL.json')
           ds=json.loads(p.read_text(encoding='utf-8'))
+          byid={u.get('id'):u for u in ds.get('learning_units',[]) if isinstance(u,dict)}
+          failed=['ma2-lu-0023','ma2-lu-0026','ma2-lu-0027','ma2-lu-0028','ma2-lu-0029','ma2-lu-0044','ma2-lu-0045','ma2-lu-0050','ma2-lu-0069','ma2-lu-0080','ma2-lu-0082','ma2-lu-0090','ma2-lu-0120','ma2-lu-0142','ma2-lu-0154','ma2-lu-0157','ma2-lu-0158','ma2-lu-0161','ma2-lu-0176','ma2-lu-0182','ma2-lu-0187','ma2-lu-0193','ma2-lu-0205','ma2-lu-0234','ma2-lu-0245','ma2-lu-0247','ma2-lu-0248','ma2-lu-0249','ma2-lu-0256','ma2-lu-0293']
+          residual=[]
+          for uid in failed:
+              u=byid[uid]; exs=u.get('examples') or []
+              residual.append({'id':uid,'type':u.get('type'),'headword':u.get('headword'),'source_examples':[e.get('text') for e in exs if isinstance(e,dict)],'core':u.get('core'),'details':u.get('details')})
+          print('=== RESIDUAL PRODUCT-FLOOR EXAMPLE FAILURES ===')
+          print(json.dumps(residual,ensure_ascii=False,indent=2))
           preps=('an','auf','aus','bei','durch','für','gegen','in','mit','nach','über','um','unter','von','vor','zu','zwischen','ohne','seit','außer','gegenüber')
           da={'an':('daran','woran'),'auf':('darauf','worauf'),'aus':('daraus','woraus'),'bei':('dabei','wobei'),'für':('dafür','wofür'),'gegen':('dagegen','wogegen'),'in':('darin','worin'),'mit':('damit','womit'),'nach':('danach','wonach'),'über':('darüber','worüber'),'um':('darum','worum'),'unter':('darunter','worunter'),'von':('davon','wovon'),'vor':('davor','wovor'),'zu':('dazu','wozu')}
-          refl=re.compile(r'\b(mich|dich|sich|uns|euch)\b',re.I)
+          refl=re.compile(r'(?<![A-Za-zÄÖÜäöüß])(mich|dich|sich|uns|euch)(?![A-Za-zÄÖÜäöüß])',re.I)
           findings=[]
           for u in ds.get('learning_units',[]):
               if u.get('type')!='phrase': continue
               h=str(u.get('headword') or '')
               exs=u.get('examples') or []
               ex=str(exs[0].get('text') or '') if exs and isinstance(exs[0],dict) else ''
-              low=ex.casefold()
-              issues=[]
+              low=ex.casefold(); issues=[]
               if h.casefold().startswith('sich ') and ex and not refl.search(ex): issues.append('REFLEXIVE_HEADWORD_PRIMARY_EXAMPLE_NOT_REFLEXIVE')
               hp=[x for x in preps if re.search(rf'\b{re.escape(x)}\b',h,re.I)]
               for x in hp[:1]:
                   forms=(x,)+da.get(x,())
-                  if ex and not any(re.search(rf'\b{re.escape(f)}\b',low) for f in forms): issues.append('EXPLICIT_PREPOSITION_MISSING_FROM_PRIMARY_EXAMPLE:'+x)
+                  contracted=(x=='zu' and bool(re.search(r'\b(zum|zur)\b',low)))
+                  if ex and not contracted and not any(re.search(rf'\b{re.escape(f)}\b',low) for f in forms): issues.append('EXPLICIT_PREPOSITION_MISSING_FROM_PRIMARY_EXAMPLE:'+x)
               bare_case=bool(re.search(r'\((?:Dat|Akk)\.?\)\s*$',h,re.I)) and not bool(re.search(r'\b(?:etw|etwas|jdn|jdm|jmdn|jmdm)\.?\s*\((?:Dat|Akk)\.?\)',h,re.I)) and not hp
               if bare_case: issues.append('BARE_TRAILING_CASE_WITHOUT_COMPLEMENT')
               if issues:
                   raw=' | '.join(str(s.get('evidence_note') or '') for s in (u.get('provenance') or {}).get('sources',[]) if isinstance(s,dict))
                   findings.append({'id':u.get('id'),'headword':h,'primary_example':ex,'issues':issues,'source_evidence':raw})
+          print('=== SOURCE SEMANTIC ALIGNMENT FINDINGS ===')
           print(json.dumps({'finding_count':len(findings),'findings':findings},ensure_ascii=False,indent=2))
           PY

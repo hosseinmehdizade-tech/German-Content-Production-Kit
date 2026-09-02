@@ -32,14 +32,18 @@ jobs:
           root=pathlib.Path('Workspaces/menschen-a2')
           cp=root/'02-canonical/CANONICAL.json'; np=root/'02-canonical/NORMALIZATION-DECISIONS.json'
           ds=json.loads(cp.read_text(encoding='utf-8')); nd=json.loads(np.read_text(encoding='utf-8'))
+          preps=('an','auf','aus','bei','durch','für','gegen','in','mit','nach','über','um','unter','von','vor','zu','zwischen','ohne','seit','außer','gegenüber')
           repairs=[]
           for u in ds.get('learning_units',[]):
               if u.get('type')!='phrase': continue
               h=str(u.get('headword') or '')
               m=re.search(r'\s+\((Dat|Akk)\.?\)\s*$',h,re.I)
               if not m: continue
-              # Case belongs to an explicit complement only when the complement is written.
+              # Keep case that is structurally bound to an explicit complement or preposition.
+              # Only bare source [+A]/[+D] shorthand with no learner-facing governor is stripped.
               if re.search(r'\b(?:etw|etwas|jdn|jdm|jmdn|jmdm)\.?\s*\((?:Dat|Akk)\.?\)',h,re.I): continue
+              stem=h[:m.start()].strip()
+              if any(re.search(rf'\b{re.escape(p)}\b',stem,re.I) for p in preps): continue
               old=h; new=re.sub(r'\s+\((?:Dat|Akk)\.?\)\s*$','',h,flags=re.I).strip()
               if not new or new==old: continue
               u['headword']=new
@@ -50,12 +54,12 @@ jobs:
               if not notes:
                   notes=[('Dativobjekt' if m.group(1).lower().startswith('dat') else 'Akkusativobjekt')+' (Quellennotation)']
                   details['grammar_notes']=notes
-              repairs.append({'id':u.get('id'),'old_headword':old,'new_headword':new,'case_marker':m.group(1),'preservation':'details.grammar_notes + provenance raw source bundle','reason':'Unbound [+A]/[+D] is source grammar shorthand, not part of learner-facing spelling/structure. Explicit complement-bound case notation remains untouched.'})
+              repairs.append({'id':u.get('id'),'old_headword':old,'new_headword':new,'case_marker':m.group(1),'preservation':'details.grammar_notes + provenance raw source bundle','reason':'Unbound [+A]/[+D] is source grammar shorthand, not part of learner-facing spelling/structure. Explicit complement- or preposition-bound case notation remains untouched.'})
           expected={'ma2-lu-0104','ma2-lu-0214','ma2-lu-0222','ma2-lu-0260','ma2-lu-0265','ma2-lu-0274'}
           found={x['id'] for x in repairs}
           assert found==expected,(found,expected)
           nd['semantic_repairs']=repairs
-          nd['learner_facing_policy']='Source shorthand is normalized for learner readability. Unbound [+A]/[+D] markers are preserved in details.grammar_notes and raw provenance, not appended to headword/structure. Complement-bound case notation remains explicit. No lexical claim is invented.'
+          nd['learner_facing_policy']='Source shorthand is normalized for learner readability. Unbound [+A]/[+D] markers are preserved in details.grammar_notes and raw provenance, not appended to headword/structure. Complement- and preposition-bound case notation remains explicit. No lexical claim is invented.'
           cp.write_text(json.dumps(ds,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           np.write_text(json.dumps(nd,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           report={'status':'PASS','stage':2,'dataset':'menschen-a2','repair':'unbound-case-shorthand-normalization','changed_units':repairs,'preserved_unit_count':len(ds.get('learning_units',[])),'stable_ids_preserved':True,'source_inventory_changed':False}
@@ -92,7 +96,7 @@ jobs:
           p=pathlib.Path('Workspaces/menschen-a2/CHECKPOINT.json');d=json.loads(p.read_text(encoding='utf-8'))
           s2=next(x for x in d['stages'] if x['stage']==2)
           s2['state']='PASS';s2['pass_commit']=os.environ['S2_REPAIR_COMMIT']
-          s2['summary']='PASS after targeted semantic normalization repair: six phrase units no longer expose unbound source [+A]/[+D] shorthand as learner headword/structure text; shorthand remains losslessly in grammar notes/provenance. Exact 292-unit canonical revalidated PASS with stable IDs/order unchanged.'
+          s2['summary']='PASS after targeted semantic normalization repair: six phrase units no longer expose unbound source [+A]/[+D] shorthand as learner headword/structure text; shorthand remains losslessly in grammar notes/provenance. Preposition-bound and explicit-complement case notation remains intact. Exact 292-unit canonical revalidated PASS with stable IDs/order unchanged.'
           s2['gate_evidence']=sorted(set((s2.get('gate_evidence') or [])+['02-canonical/STAGE2-SEMANTIC-REPAIR.json','02-canonical/CANONICAL-VALIDATION.json']))
           for s in d['stages']:
               if s['stage']>=3:

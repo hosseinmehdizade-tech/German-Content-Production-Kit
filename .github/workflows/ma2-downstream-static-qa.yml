@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/ma2-downstream-static-qa.yml'
       - '.github/workflows/ma2-stages4-7-rich-repair.yml'
+      - '.github/workflows/ma2-downstream-runtime-smoke.yml'
+      - '.github/workflows/ma2-stage7-rich-release-v2.yml'
       - 'Verification/validate_enriched_canonical_v1_0_0.py'
       - 'Workspaces/menschen-a2/tools/runtime_acceptance_rich_v2.py'
       - 'Workspaces/menschen-a2/tools/package_release_rich_v2.py'
@@ -40,9 +42,15 @@ jobs:
           python -m pip install pyyaml
           python - <<'PY'
           import pathlib,yaml
-          for rel in ['.github/workflows/ma2-stages4-7-rich-repair.yml','.github/workflows/ma2-downstream-static-qa.yml']:
-              p=pathlib.Path(rel); data=yaml.safe_load(p.read_text(encoding='utf-8'))
-              assert isinstance(data,dict) and 'jobs' in data, rel
+          files=[
+            '.github/workflows/ma2-stages4-7-rich-repair.yml',
+            '.github/workflows/ma2-downstream-runtime-smoke.yml',
+            '.github/workflows/ma2-stage7-rich-release-v2.yml',
+            '.github/workflows/ma2-downstream-static-qa.yml',
+          ]
+          for rel in files:
+              p=pathlib.Path(rel);data=yaml.safe_load(p.read_text(encoding='utf-8'))
+              assert isinstance(data,dict) and 'jobs' in data,rel
               print('PASS YAML',rel)
           PY
       - name: Verify required downstream files exist

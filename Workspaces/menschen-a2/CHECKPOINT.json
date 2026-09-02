@@ -91,13 +91,14 @@
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "NOT_STARTED",
+      "state": "RUNNING",
       "required_outputs": [
         "04-qa/LINGUISTIC-QA.json",
         "04-qa/LEXICAL-QUALITY.json",
         "04-qa/COVERAGE-REPORT.json"
       ],
-      "pass_commit": null
+      "pass_commit": null,
+      "summary": "Hard linguistic, lexical, source-marker and coverage gates are running on exact Stage 3 canonical bytes."
     },
     {
       "stage": 5,
@@ -134,7 +135,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 4 Linguistic & Lexical QA.",
+  "resume_instruction": "Run Stage 4 gates and repair affected units only if needed.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

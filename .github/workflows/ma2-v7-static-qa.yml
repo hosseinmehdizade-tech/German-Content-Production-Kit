@@ -1,0 +1,57 @@
+name: Menschen A2 v7 enrichment static QA
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths:
+      - '.github/workflows/ma2-v7-static-qa.yml'
+      - 'Workspaces/menschen-a2/tools/enrich_rich_card_v7.py'
+      - 'Verification/test_menschen_a2_rich_enrichment_semantics.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install parser dependencies
+        run: python -m pip install requests beautifulsoup4
+      - name: Compile v7 chain
+        run: |
+          python -m py_compile \
+            Workspaces/menschen-a2/tools/enrich_rich_card_v2.py \
+            Workspaces/menschen-a2/tools/enrich_rich_card_v4.py \
+            Workspaces/menschen-a2/tools/enrich_rich_card_v5.py \
+            Workspaces/menschen-a2/tools/enrich_rich_card_v6.py \
+            Workspaces/menschen-a2/tools/enrich_rich_card_v7.py \
+            Verification/validate_rich_card_product_floor_v1_0_0.py \
+            Verification/test_menschen_a2_rich_enrichment_semantics.py
+      - name: Run semantic regressions
+        run: |
+          python Verification/test_menschen_a2_rich_enrichment_semantics.py
+          python Verification/test_rich_card_product_floor_v1_0_0.py
+      - name: Assert repaired Stage 2 authority
+        run: |
+          python - <<'PY'
+          import json
+          cp=json.load(open('Workspaces/menschen-a2/CHECKPOINT.json',encoding='utf-8'))
+          s2=next(x for x in cp['stages'] if x['stage']==2);s3=next(x for x in cp['stages'] if x['stage']==3)
+          assert s2['state']=='PASS' and s2.get('pass_commit'),s2
+          assert s3['state']=='INVALIDATED' and not s3.get('pass_commit'),s3
+          ds=json.load(open('Workspaces/menschen-a2/02-canonical/CANONICAL.json',encoding='utf-8'))
+          assert len(ds['learning_units'])==292
+          byid={u['id']:u for u in ds['learning_units']}
+          assert byid['ma2-lu-0104']['headword']=='los sein'
+          assert byid['ma2-lu-0176']['headword']=='sich etw. (Dat.) verschließen'
+          assert byid['ma2-lu-0200']['headword']=='sich interessieren für (Akk.)'
+          print('PASS repaired Stage 2 authority and downstream invalidation')
+          PY

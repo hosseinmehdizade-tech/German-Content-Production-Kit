@@ -1,0 +1,69 @@
+name: Menschen A2 Seven-Stage E2E
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/menschen-a2-e2e.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-seven-stage-e2e
+  cancel-in-progress: false
+
+jobs:
+  produce-verify-release:
+    name: Stages 2-7 + v354 Runtime + Post-Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconstruct pinned orchestrator
+        run: |
+          set -euo pipefail
+          base64 -d Workspaces/menschen-a2/bootstrap/orchestrator.xz.b64 > /tmp/orchestrator.sh.xz
+          echo '488b6445b69ade759a5ba2aad14d54af725fd6de16e6c90bc071041038531ff0  /tmp/orchestrator.sh.xz' | sha256sum -c -
+          xz -dc /tmp/orchestrator.sh.xz > /tmp/run_ma2_e2e.sh
+          echo '24004eecb6439c5ab3bdb734a91262a473b4d3b3d63f17d4e1f6e03c6a6753ef  /tmp/run_ma2_e2e.sh' | sha256sum -c -
+          bash -n /tmp/run_ma2_e2e.sh
+
+      - name: Execute seven-stage production
+        run: bash /tmp/run_ma2_e2e.sh
+
+      - name: Upload final handoff
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Menschen-A2-German-Flashcards-Pro-v354-FINAL
+          path: |
+            Workspaces/menschen-a2/07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip
+            Workspaces/menschen-a2/05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv
+            Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json
+            Workspaces/menschen-a2/04-qa/LINGUISTIC-QA.json
+            Workspaces/menschen-a2/04-qa/LEXICAL-QUALITY.json
+            Workspaces/menschen-a2/04-qa/COVERAGE-REPORT.json
+            Workspaces/menschen-a2/06-runtime/RUNTIME-ACCEPTANCE.json
+            Workspaces/menschen-a2/06-runtime/PRESENTATION-ACCEPTANCE.json
+            Workspaces/menschen-a2/07-release/MANIFEST.json
+            Workspaces/menschen-a2/07-release/SHA256SUMS.txt
+            Workspaces/menschen-a2/07-release/POST-PACKAGE-VERIFICATION.json
+            Workspaces/menschen-a2/07-release/FINAL-STATUS.json
+            Workspaces/menschen-a2/CHECKPOINT.json
+          if-no-files-found: error
+          retention-days: 30

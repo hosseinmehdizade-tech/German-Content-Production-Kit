@@ -1,0 +1,65 @@
+name: Menschen A2 downstream runtime smoke
+
+on:
+  push:
+    branches: [repair/menschen-a2-downstream-v1]
+    paths:
+      - '.github/workflows/ma2-downstream-runtime-smoke.yml'
+      - 'Workspaces/menschen-a2/tools/runtime_acceptance_rich_v2.py'
+      - 'Workspaces/menschen-a2/tools/project_universal_v2_rich.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-downstream-v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build two-unit rich fixture and project Universal v2
+        run: |
+          mkdir -p /tmp/ma2-smoke
+          python - <<'PY'
+          import json,pathlib
+          def ex(uid,n,de,fa=None,en=None):
+              tr=[]
+              if fa: tr.append({'lang':'fa-IR','text':fa})
+              if en: tr.append({'lang':'en-US','text':en})
+              return {'id':f'{uid}-ex-{n:03d}','lang':'de-DE','text':de,'order':n,'translations':tr}
+          v='ma2-lu-0001'; p='ma2-lu-0002'
+          ds={'contract_version':'3.1.3','profile_id':'menschen-a2@2.1.0','learning_units':[
+            {'id':v,'type':'verb','headword':'lernen','persian_meaning':'یاد گرفتن','definition_de':'sich Wissen oder eine Fähigkeit aneignen','core':{'present_3sg':'lernt','preterite_3sg':'lernte','perfect':'hat gelernt','auxiliary':'haben','reflexive':False,'separability':'non_prefixed'},'details':{'synonyms':['studieren','üben'],'antonyms':['vergessen','verlernen'],'rection':['etwas + Akkusativ']},'connections':[{'kind':'collocation','text':'Deutsch lernen'},{'kind':'collocation','text':'gemeinsam lernen'}],'examples':[ex(v,1,'Ich lerne jeden Tag Deutsch.','من هر روز آلمانی یاد می‌گیرم.','I learn German every day.'),ex(v,2,'Wir lernen zusammen für die Prüfung.'),ex(v,3,'Sie lernt schnell neue Wörter.'),ex(v,4,'Er hat gestern lange gelernt.')],'metadata':{'dataset_id':'menschen-a2','unit_order':1,'tags':['smoke']},'provenance':{'sources':[]}},
+            {'id':p,'type':'phrase','headword':'sich auf etwas freuen','persian_meaning':'مشتاق چیزی بودن','definition_de':'','core':{'structure':'sich auf + Akkusativ freuen'},'details':{},'connections':[],'examples':[ex(p,1,'Ich freue mich auf das Wochenende.','من مشتاق آخر هفته هستم.','I am looking forward to the weekend.'),ex(p,2,'Wir freuen uns auf deinen Besuch.'),ex(p,3,'Sie freut sich auf die Reise.'),ex(p,4,'Freust du dich auf den Urlaub?')],'metadata':{'dataset_id':'menschen-a2','unit_order':2,'tags':['smoke']},'provenance':{'sources':[]}}
+          ]}
+          pathlib.Path('/tmp/ma2-smoke/canonical.json').write_text(json.dumps(ds,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          python Workspaces/menschen-a2/tools/project_universal_v2_rich.py --canonical /tmp/ma2-smoke/canonical.json --output /tmp/ma2-smoke/cards.tsv
+      - name: Install browser and resolve current Flashcards Pro main
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          git clone --depth 1 --branch main https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro.git /tmp/gfp
+          echo "RUNTIME_COMMIT=$(git -C /tmp/gfp rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Execute real importer and rendered Presentation smoke
+        run: |
+          python Workspaces/menschen-a2/tools/runtime_acceptance_rich_v2.py \
+            --app-root /tmp/gfp --app-html 01-App/index.html \
+            --tsv /tmp/ma2-smoke/cards.tsv --canonical /tmp/ma2-smoke/canonical.json \
+            --runtime-report /tmp/ma2-smoke/runtime.json \
+            --presentation-report /tmp/ma2-smoke/presentation.json \
+            --product-presentation-report /tmp/ma2-smoke/product.json \
+            --imported-canonical /tmp/ma2-smoke/imported.json \
+            --runtime-commit "$RUNTIME_COMMIT" --screenshots-dir /tmp/ma2-smoke/screenshots
+          python - <<'PY'
+          import json
+          for p in ['/tmp/ma2-smoke/runtime.json','/tmp/ma2-smoke/presentation.json','/tmp/ma2-smoke/product.json']:
+              d=json.load(open(p,encoding='utf-8')); assert d['status']=='PASS',(p,d)
+          print('PASS real current-main rich-card runtime smoke')
+          PY

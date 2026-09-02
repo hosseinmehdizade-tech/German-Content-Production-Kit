@@ -53,6 +53,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          sudo mkdir -p /mnt/data
+          sudo chown "$USER":"$(id -gn)" /mnt/data
           PAYLOAD_DIR="Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload"
           python - <<'PY'
           from pathlib import Path

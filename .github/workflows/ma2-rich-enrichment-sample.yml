@@ -22,10 +22,10 @@ jobs:
       - run: python -m pip install requests beautifulsoup4
       - name: Regression gate self-test
         run: python Verification/test_rich_card_product_floor_v1_0_0.py
-      - name: Enrich first 10 units with corrected Wiktionary parser
+      - name: Enrich first 10 units with current Wiktionary DOM parser
         run: |
           mkdir -p /tmp/ma2
-          python Workspaces/menschen-a2/tools/enrich_rich_card_v3.py \
+          python Workspaces/menschen-a2/tools/enrich_rich_card_v4.py \
             --canonical Workspaces/menschen-a2/02-canonical/CANONICAL.json \
             --seed Workspaces/menschen-a2/tools/ENRICHMENT-SEED.json \
             --out /tmp/ma2/CANONICAL-ENRICHED.json \
@@ -45,7 +45,7 @@ jobs:
           import json
           from pathlib import Path
           r=json.loads(Path('/tmp/ma2/PRODUCT-FLOOR.json').read_text())
-          print(json.dumps({'status':r['status'],'errors':r['errors'],'warnings':r['warnings'],'coverage':r['coverage'],'issues':r['issues'][:20]},ensure_ascii=False,indent=2))
+          print(json.dumps({'status':r['status'],'errors':r['errors'],'warnings':r['warnings'],'coverage':r['coverage'],'issues':r['issues'][:30]},ensure_ascii=False,indent=2))
           ds=json.loads(Path('/tmp/ma2/CANONICAL-ENRICHED.json').read_text())
           for u in ds['learning_units']:
               print(json.dumps({'id':u['id'],'headword':u['headword'],'type':u['type'],'definition_de':u.get('definition_de'),'examples':[(x.get('text'),next((t.get('text') for t in x.get('translations',[]) if t.get('lang')=='en-US'),None)) for x in u.get('examples',[])],'details':u.get('details'),'connections':u.get('connections')},ensure_ascii=False))

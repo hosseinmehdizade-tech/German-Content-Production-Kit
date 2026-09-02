@@ -1,0 +1,58 @@
+{
+  "status": "CONFIRMED_PRODUCT_DEFECT",
+  "dataset": "menschen-a2",
+  "date": "2026-09-02",
+  "observed_failure": "A verb such as klettern rendered as a sparse card with one German example and no supplementary lexical details, despite the release having been labeled FINAL.",
+  "root_causes": [
+    {
+      "id": "RC1_PROFILE_LAYER_CONFLATION",
+      "severity": "BLOCKER",
+      "finding": "The Stage 2 source-canonical profile was reused as though it were the final product-completeness profile.",
+      "evidence": "Workspaces/menschen-a2/02-canonical/MENSCHEN-A2-PROFILE.json allows definition_policy=optional and only one default example. That is acceptable as a sparse source-canonical intake profile, not as a final rich-card product contract."
+    },
+    {
+      "id": "RC2_STAGE3_DISABLED_ENRICHMENT",
+      "severity": "BLOCKER",
+      "finding": "Stage 3 explicitly expected exactly one example per unit and performed no external lexical enrichment, yet wrote status PASS.",
+      "evidence": "Workspaces/menschen-a2/tools/build_stage3.py asserts len(unit['examples']) == 1 and writes external_lexical_enrichment_used=false, connections_added=0, synonyms_added=0, antonyms_added=0, rection_added=0."
+    },
+    {
+      "id": "RC3_COVERAGE_WARNINGS_NOT_SYSTEM_HEALTH_FAILURE",
+      "severity": "HIGH",
+      "finding": "The generic completeness validator correctly reported 227 preferred collocation gaps but treated them only as warnings; it had no product-floor check for definitions/examples and no systemic zero-enrichment guard.",
+      "evidence": "04-qa/COVERAGE-REPORT.json reports status PASS with 227 warnings and zero hard errors."
+    },
+    {
+      "id": "RC4_RUNTIME_TESTED_TRANSPORT_NOT_RICHNESS",
+      "severity": "HIGH",
+      "finding": "Runtime acceptance proved import, persistence, morphology and Presentation queue compatibility, but did not assert learner-visible rich-card completeness after import.",
+      "evidence": "The corrected Stage 6 runtime test accepted the exact sparse artifact; it did not require verb definition coverage or minimum product example counts."
+    },
+    {
+      "id": "RC5_ANTI_REUSE_RULE_CREATED_A_REGRESSION_GAP",
+      "severity": "HIGH",
+      "finding": "The rule correctly prohibited reusing the Menschen A1 source-specific profile for A2, but the replacement generic rich-card policy covered lexical quality only and did not carry forward the source-independent pedagogical floor that made A1 cards rich (definition + multiple examples).",
+      "evidence": "Architecture/03-PROFILES/MENSCHEN-A1.json requires definition_de/english_gloss and four examples; GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json focuses on lexical details and allows zero collocations."
+    }
+  ],
+  "why_a1_did_not_fail_the_same_way": {
+    "summary": "A1 had an already-strict dataset profile and an enriched baseline. A2 was the first clean seven-stage source whose Stage 2 source sparsity needed to coexist with a separate final product floor. The pipeline had no explicit two-profile model, so the sparse intake profile accidentally became the product authority.",
+    "a1_profile": "Architecture/03-PROFILES/MENSCHEN-A1.json",
+    "a1_required_fields": ["persian_meaning", "english_gloss", "definition_de"],
+    "a1_examples": "exactly 4",
+    "a2_old_source_profile_examples": "target 1, min 0, max 3",
+    "a2_old_definition_policy": "optional"
+  },
+  "permanent_prevention": [
+    "Separate source_canonical_profile from product_completeness_profile in the active prompt/checkpoint model.",
+    "Make GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0 mandatory for rich-card targets unless the user explicitly waives it.",
+    "Run validate_rich_card_product_floor_v1_0_0.py in Stage 4; thin cards and missing external-evidence attempts are hard failures.",
+    "Treat systematic zero lexical enrichment as a broken enrichment path rather than successful low coverage.",
+    "Require Stage 6 to validate the product floor after import and assert visible richness on representative rendered cards."
+  ],
+  "repair_scope": {
+    "preserve": [1, 2],
+    "invalidate": [3, 4, 5, 6, 7],
+    "reason": "Source inventory and semantic source-only canonicalization remain valid; enrichment and all downstream artifacts were based on the wrong product-completeness interpretation."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "profile_schema_version": "1.0.0",
+  "profile_id": "german-rich-card@1.1.0",
+  "target": "flashcards-pro-german-rich-card",
+  "policy": {
+    "no_fabrication_to_satisfy_minimums": true,
+    "quality_over_density": true,
+    "source_absence_is_not_a_hard_failure": true,
+    "collocation_atomicity_required": true,
+    "sense_alignment_required": true,
+    "fixed_headword_anchor_filter_required": true,
+    "example_derived_phrase_must_not_be_labeled_collocation": true,
+    "broad_pos_synonym_antonym_extraction_is_not_sense_evidence": true,
+    "runtime_import_and_presentation_validation_required": true,
+    "incremental_source_cache_required": true,
+    "legacy_enrichment_default": "disabled",
+    "source_specific_profile_must_not_be_reused_for_another_source": true
+  },
+  "by_type": {
+    "verb": {
+      "required_core_fields": ["auxiliary", "reflexive", "separability"],
+      "connections": [
+        {
+          "kind": "collocation",
+          "minimum": 0,
+          "preferred_minimum": 3,
+          "maximum": 6,
+          "evidence_claims": ["collocation", "collocations", "collocational_usage"]
+        }
+      ],
+      "details": [
+        {
+          "field": "synonyms",
+          "minimum": 0,
+          "preferred_minimum": 0,
+          "evidence_claims": ["synonymy", "synonyms"]
+        },
+        {
+          "field": "antonyms",
+          "minimum": 0,
+          "preferred_minimum": 0,
+          "evidence_claims": ["antonymy", "antonyms"]
+        }
+      ],
+      "rection_evidence_claims": ["rection", "valency", "government_pattern"],
+      "conditional_requirements": [
+        {
+          "if_headword_regex": "\\b(sich\\s+)?[^,;]+\\s+(an|auf|aus|bei|für|gegen|in|mit|nach|über|um|unter|von|vor|zu)\\s+",
+          "detail_field": "rection",
+          "minimum": 1,
+          "message": "A learner-facing fixed/prepositional construction requires explicit Rektion."
+        }
+      ]
+    }
+  }
+}

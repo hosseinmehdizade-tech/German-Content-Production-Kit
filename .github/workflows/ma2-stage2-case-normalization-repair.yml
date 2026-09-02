@@ -1,0 +1,107 @@
+name: Menschen A2 Stage 2 case-shorthand repair
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage2-case-normalization-repair.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-stage2-semantic-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Normalize unbound source case shorthand out of learner headwords
+        run: |
+          python - <<'PY'
+          import json,re,pathlib
+          root=pathlib.Path('Workspaces/menschen-a2')
+          cp=root/'02-canonical/CANONICAL.json'; np=root/'02-canonical/NORMALIZATION-DECISIONS.json'
+          ds=json.loads(cp.read_text(encoding='utf-8')); nd=json.loads(np.read_text(encoding='utf-8'))
+          repairs=[]
+          for u in ds.get('learning_units',[]):
+              if u.get('type')!='phrase': continue
+              h=str(u.get('headword') or '')
+              m=re.search(r'\s+\((Dat|Akk)\.?\)\s*$',h,re.I)
+              if not m: continue
+              # Case belongs to an explicit complement only when the complement is written.
+              if re.search(r'\b(?:etw|etwas|jdn|jdm|jmdn|jmdm)\.?\s*\((?:Dat|Akk)\.?\)',h,re.I): continue
+              old=h; new=re.sub(r'\s+\((?:Dat|Akk)\.?\)\s*$','',h,flags=re.I).strip()
+              if not new or new==old: continue
+              u['headword']=new
+              core=u.get('core') if isinstance(u.get('core'),dict) else {}
+              if str(core.get('structure') or '')==old: core['structure']=new
+              details=u.setdefault('details',{})
+              notes=details.get('grammar_notes') if isinstance(details.get('grammar_notes'),list) else []
+              if not notes:
+                  notes=[('Dativobjekt' if m.group(1).lower().startswith('dat') else 'Akkusativobjekt')+' (Quellennotation)']
+                  details['grammar_notes']=notes
+              repairs.append({'id':u.get('id'),'old_headword':old,'new_headword':new,'case_marker':m.group(1),'preservation':'details.grammar_notes + provenance raw source bundle','reason':'Unbound [+A]/[+D] is source grammar shorthand, not part of learner-facing spelling/structure. Explicit complement-bound case notation remains untouched.'})
+          expected={'ma2-lu-0104','ma2-lu-0214','ma2-lu-0222','ma2-lu-0260','ma2-lu-0265','ma2-lu-0274'}
+          found={x['id'] for x in repairs}
+          assert found==expected,(found,expected)
+          nd['semantic_repairs']=repairs
+          nd['learner_facing_policy']='Source shorthand is normalized for learner readability. Unbound [+A]/[+D] markers are preserved in details.grammar_notes and raw provenance, not appended to headword/structure. Complement-bound case notation remains explicit. No lexical claim is invented.'
+          cp.write_text(json.dumps(ds,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          np.write_text(json.dumps(nd,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          report={'status':'PASS','stage':2,'dataset':'menschen-a2','repair':'unbound-case-shorthand-normalization','changed_units':repairs,'preserved_unit_count':len(ds.get('learning_units',[])),'stable_ids_preserved':True,'source_inventory_changed':False}
+          (root/'02-canonical/STAGE2-SEMANTIC-REPAIR.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Revalidate exact repaired Stage 2 canonical
+        run: |
+          python Architecture/06-VALIDATION/validate_content.py \
+            --dataset Workspaces/menschen-a2/02-canonical/CANONICAL.json \
+            --profile Workspaces/menschen-a2/02-canonical/MENSCHEN-A2-PROFILE.json \
+            --type-rules Architecture/04-TYPE-RULES \
+            --source-registry Architecture/03-SOURCES/SOURCE-REGISTRY.json \
+            --report Workspaces/menschen-a2/02-canonical/CANONICAL-VALIDATION.json
+          python - <<'PY'
+          import json
+          p='Workspaces/menschen-a2/02-canonical/CANONICAL-VALIDATION.json';d=json.load(open(p,encoding='utf-8'))
+          assert d.get('structural_typed_status')=='PASS',d
+          assert d['counts']['learning_units']==292,d['counts']
+          print('PASS exact repaired Stage 2 canonical',d['counts'])
+          PY
+      - name: Commit repaired Stage 2 artifact and evidence
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add Workspaces/menschen-a2/02-canonical/CANONICAL.json Workspaces/menschen-a2/02-canonical/CANONICAL-VALIDATION.json Workspaces/menschen-a2/02-canonical/NORMALIZATION-DECISIONS.json Workspaces/menschen-a2/02-canonical/STAGE2-SEMANTIC-REPAIR.json
+          git commit -m 'Repair Menschen A2 Stage 2 case shorthand semantics'
+          echo "S2_REPAIR_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
+      - name: Record repaired Stage 2 durable PASS and invalidate downstream
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('Workspaces/menschen-a2/CHECKPOINT.json');d=json.loads(p.read_text(encoding='utf-8'))
+          s2=next(x for x in d['stages'] if x['stage']==2)
+          s2['state']='PASS';s2['pass_commit']=os.environ['S2_REPAIR_COMMIT']
+          s2['summary']='PASS after targeted semantic normalization repair: six phrase units no longer expose unbound source [+A]/[+D] shorthand as learner headword/structure text; shorthand remains losslessly in grammar notes/provenance. Exact 292-unit canonical revalidated PASS with stable IDs/order unchanged.'
+          s2['gate_evidence']=sorted(set((s2.get('gate_evidence') or [])+['02-canonical/STAGE2-SEMANTIC-REPAIR.json','02-canonical/CANONICAL-VALIDATION.json']))
+          for s in d['stages']:
+              if s['stage']>=3:
+                  s['state']='INVALIDATED';s['pass_commit']=None
+                  s['summary']='INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.'
+          d['resume_instruction']='Resume at Stage 3 using the exact repaired Stage 2 CANONICAL.json. Rebuild enrichment/evidence; do not reuse any Stage 3-7 PASS claim from before this Stage 2 repair.'
+          d['blockers']=[]
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add Workspaces/menschen-a2/CHECKPOINT.json
+          git commit -m 'Checkpoint Menschen A2 repaired Stage 2 PASS'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8

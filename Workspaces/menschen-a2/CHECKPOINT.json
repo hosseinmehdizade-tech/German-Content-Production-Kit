@@ -130,13 +130,21 @@
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "FAIL",
+      "state": "PASS",
       "required_outputs": [
         "06-runtime/RUNTIME-ACCEPTANCE.json",
         "06-runtime/PRESENTATION-ACCEPTANCE.json"
       ],
       "pass_commit": null,
-      "summary": "Executing exact Stage 5 TSV against current Flashcards Pro main target v354 / 49a28187e82734e92bc407276eb0d2ee0cbbbd55."
+      "summary": "Exact v354 runtime PASS: 292-row import and ID set, canonical bridge/morphology/Persian face survive, transaction persists across reload, Presentation Model accepts word/sentence queues in study/quick/typing/audio.",
+      "authoritative_outputs": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json"
+      ],
+      "gate_evidence": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json"
+      ]
     },
     {
       "stage": 7,
@@ -152,33 +160,8 @@
       "pass_commit": null
     }
   ],
-  "blockers": [
-    {
-      "stage": 6,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    },
-    {
-      "stage": 6,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    },
-    {
-      "stage": 6,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    },
-    {
-      "stage": 6,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    },
-    {
-      "stage": 6,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    },
-    {
-      "stage": 6,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    }
-  ],
-  "resume_instruction": "Inspect GitHub Actions run 33665547971 for Stage 6 failure, repair the earliest failing gate, then rerun that stage and downstream dependents only.",
+  "blockers": [],
+  "resume_instruction": "Resume at Stage 7 packaging exact runtime-accepted artifacts.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

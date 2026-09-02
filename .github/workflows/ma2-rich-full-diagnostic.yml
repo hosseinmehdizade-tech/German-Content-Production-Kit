@@ -1,0 +1,55 @@
+name: MA2 rich full diagnostic
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-rich-full-diagnostic.yml']
+permissions:
+  contents: read
+jobs:
+  full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install requests beautifulsoup4
+      - name: Full 292-unit evidence enrichment diagnostic
+        run: |
+          mkdir -p /tmp/ma2
+          python Workspaces/menschen-a2/tools/enrich_rich_card_v5.py \
+            --canonical Workspaces/menschen-a2/02-canonical/CANONICAL.json \
+            --seed Workspaces/menschen-a2/tools/ENRICHMENT-SEED.json \
+            --out /tmp/ma2/CANONICAL-ENRICHED.json \
+            --evidence /tmp/ma2/EVIDENCE-INDEX.json \
+            --cache /tmp/ma2/EXTERNAL-EVIDENCE-CACHE.json \
+            --delay 0.02
+      - name: Product floor diagnostic
+        shell: bash
+        run: |
+          set +e
+          python Verification/validate_rich_card_product_floor_v1_0_0.py \
+            /tmp/ma2/CANONICAL-ENRICHED.json \
+            Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json \
+            /tmp/ma2/EVIDENCE-INDEX.json \
+            --output /tmp/ma2/PRODUCT-FLOOR.json
+          python - <<'PY'
+          import json,collections
+          from pathlib import Path
+          ds=json.loads(Path('/tmp/ma2/CANONICAL-ENRICHED.json').read_text())
+          ev=json.loads(Path('/tmp/ma2/EVIDENCE-INDEX.json').read_text())
+          pf=json.loads(Path('/tmp/ma2/PRODUCT-FLOOR.json').read_text())
+          attempts={x['id']:x for x in ev.get('external_evidence_attempts',[])}
+          below=[{'id':u['id'],'type':u['type'],'headword':u['headword'],'examples':len(u.get('examples',[])),'definition':bool(u.get('definition_de')),'sense':attempts.get(u['id'],{}).get('selected_wiktionary_sense'),'attempt':attempts.get(u['id'],{}).get('status')} for u in ds['learning_units'] if len(u.get('examples',[]))<4]
+          defs=[u['id'] for u in ds['learning_units'] if u['type']=='verb' and not u.get('definition_de')]
+          print('PRODUCT_FLOOR',json.dumps({'status':pf['status'],'errors':pf['errors'],'warnings':pf['warnings'],'coverage':pf['coverage']},ensure_ascii=False))
+          print('ISSUE_CODES',json.dumps(collections.Counter(x['code'] for x in pf['issues']),ensure_ascii=False))
+          print('BELOW4_COUNT',len(below));print(json.dumps(below,ensure_ascii=False,indent=2))
+          print('VERBS_WITHOUT_DEFINITION',len(defs),json.dumps(defs,ensure_ascii=False))
+          PY
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ma2-rich-full-diagnostic
+          path: /tmp/ma2
+          retention-days: 7

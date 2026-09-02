@@ -39,8 +39,14 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "authoritative_outputs": ["00-source/SOURCE-MANIFEST.json", "01-inventory/SOURCE-INVENTORY.json", "01-inventory/STABLE-ID-MAP.json"],
-      "gate_evidence": ["01-inventory/INVENTORY-QA.json"],
+      "authoritative_outputs": [
+        "00-source/SOURCE-MANIFEST.json",
+        "01-inventory/SOURCE-INVENTORY.json",
+        "01-inventory/STABLE-ID-MAP.json"
+      ],
+      "gate_evidence": [
+        "01-inventory/INVENTORY-QA.json"
+      ],
       "summary": "11 screenshots accounted for; 298 capture occurrences reduced by one explicit adjacent-screenshot overlap to 297 authoritative source rows; serial stable IDs ma2-lu-0001..ma2-lu-0297 are unique and persisted; unresolved semantic duplicate/construction/malformed cases were carried into Stage 2.",
       "pass_commit": "ecf8c6f994015a93f270d745da7ce0c3a6f62097"
     },
@@ -48,59 +54,130 @@
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "required_outputs": ["02-canonical/CANONICAL.json", "02-canonical/CANONICAL-VALIDATION.json", "02-canonical/NORMALIZATION-DECISIONS.json"],
+      "required_outputs": [
+        "02-canonical/CANONICAL.json",
+        "02-canonical/CANONICAL-VALIDATION.json",
+        "02-canonical/NORMALIZATION-DECISIONS.json"
+      ],
       "pass_commit": "813cf03b1804fdadeacaeb1a8ed240a73543deda",
       "summary": "292 active Learning Units canonicalized from 297 authoritative rows; 3 exact duplicates retired, 1 malformed sentence retired into its verb survivor, 1 nonverb phrase excluded; source order preserved with gaps; Architecture v3.1.5 / semantic contract 3.1.3 PASS.",
-      "authoritative_outputs": ["02-canonical/CANONICAL.json", "02-canonical/NORMALIZATION-DECISIONS.json", "02-canonical/MENSCHEN-A2-PROFILE.json"],
-      "gate_evidence": ["02-canonical/CANONICAL-VALIDATION.json"]
+      "authoritative_outputs": [
+        "02-canonical/CANONICAL.json",
+        "02-canonical/NORMALIZATION-DECISIONS.json",
+        "02-canonical/MENSCHEN-A2-PROFILE.json"
+      ],
+      "gate_evidence": [
+        "02-canonical/CANONICAL-VALIDATION.json"
+      ]
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
       "state": "PASS",
-      "required_outputs": ["03-evidence/EVIDENCE-INDEX.json", "02-canonical/CANONICAL-ENRICHED.json"],
+      "required_outputs": [
+        "03-evidence/EVIDENCE-INDEX.json",
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
       "pass_commit": "3901997bb66f287c86376931fed8da67441faa04",
       "summary": "292 units enriched without legacy data or fabricated density: 287 source examples retained, 5 minimal pedagogical examples explicitly marked generated, 584 reviewed FA/EN translations added.",
-      "authoritative_outputs": ["03-evidence/EVIDENCE-INDEX.json", "02-canonical/CANONICAL-ENRICHED.json"],
-      "gate_evidence": ["03-evidence/EVIDENCE-INDEX.json"]
+      "authoritative_outputs": [
+        "03-evidence/EVIDENCE-INDEX.json",
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
+      "gate_evidence": [
+        "03-evidence/EVIDENCE-INDEX.json"
+      ]
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
       "state": "PASS",
-      "required_outputs": ["04-qa/LINGUISTIC-QA.json", "04-qa/LEXICAL-QUALITY.json", "04-qa/COVERAGE-REPORT.json"],
+      "required_outputs": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json"
+      ],
       "pass_commit": "f8cc5f641104b3b11317d9d0d8a3ea31c729fa43",
       "summary": "Linguistic QA, lexical-quality v1.0.1, marker leakage, array integrity and generic rich-card completeness hard gates PASS. Preferred collocation gaps remain reported, never fabricated.",
-      "authoritative_outputs": ["02-canonical/CANONICAL-ENRICHED.json"],
-      "gate_evidence": ["04-qa/LINGUISTIC-QA.json", "04-qa/LEXICAL-QUALITY.json", "04-qa/COVERAGE-REPORT.json"]
+      "authoritative_outputs": [
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
+      "gate_evidence": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json"
+      ]
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
       "state": "PASS",
-      "required_outputs": ["05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv", "05-delivery/DELIVERY-VALIDATION.json"],
+      "required_outputs": [
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
+        "05-delivery/DELIVERY-VALIDATION.json"
+      ],
       "pass_commit": "5c8a4246e1c2da06dc949992b9f221d539535b3f",
       "summary": "Universal v2 PASS for 292 cards: exact 23-column literal-tab envelope, raw JSON cells, canonical deep-copy, relations, ID set and face parity, plus exact TSV SHA metadata.",
-      "authoritative_outputs": ["05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv", "05-delivery/BUILD-METADATA.json"],
-      "gate_evidence": ["05-delivery/DELIVERY-VALIDATION.json", "05-delivery/DELIVERY-LOSS-CHECK.json"]
+      "authoritative_outputs": [
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
+        "05-delivery/BUILD-METADATA.json"
+      ],
+      "gate_evidence": [
+        "05-delivery/DELIVERY-VALIDATION.json",
+        "05-delivery/DELIVERY-LOSS-CHECK.json"
+      ]
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
       "state": "PASS",
-      "required_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json"],
+      "required_outputs": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json"
+      ],
       "pass_commit": "aa8d77a4e174bf9ea53a985060c7d57f646b86ef",
       "summary": "Corrective Stage 6 PASS on exact German-Flashcards-Pro main commit 49a28187e82734e92bc407276eb0d2ee0cbbbd55 / v354. Exact Stage 5 TSV imported 292/292 IDs, canonical bridge/morphology/Persian face survived, transactional persistence survived reload, and Presentation Model word+stable-example queues passed in study/quick/typing/audio. GitHub Actions run 33666722731 concluded success.",
-      "authoritative_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json", "06-runtime/STAGE6-PROVENANCE.json"],
-      "gate_evidence": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json", "06-runtime/STAGE6-PROVENANCE.json", "06-runtime/PREVIOUS-PASS-INVALIDATION.json"]
+      "authoritative_outputs": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json",
+        "06-runtime/STAGE6-PROVENANCE.json"
+      ],
+      "gate_evidence": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json",
+        "06-runtime/STAGE6-PROVENANCE.json",
+        "06-runtime/PREVIOUS-PASS-INVALIDATION.json"
+      ]
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "INVALIDATED",
-      "required_outputs": ["07-release/FINAL-STATUS.json", "07-release/BUILD-METADATA.json", "07-release/MANIFEST.json", "07-release/SHA256SUMS.txt", "07-release/final package or immutable release asset"],
-      "pass_commit": null,
-      "summary": "Previous Stage 7 PASS remains invalidated. Rerun package creation and independent post-package verification now that corrected Stage 6 evidence is durably present."
+      "state": "PASS",
+      "required_outputs": [
+        "07-release/FINAL-STATUS.json",
+        "07-release/BUILD-METADATA.json",
+        "07-release/MANIFEST.json",
+        "07-release/SHA256SUMS.txt",
+        "07-release/final package or immutable release asset"
+      ],
+      "pass_commit": "b0b2a1345faafd3dfb554b224869a16d8f2eb1e0",
+      "summary": "Corrective FINAL package durably published after exact Stage 6 runtime/persistence/Presentation PASS; 20 payload files plus manifest/README packaged; internal and independent reopen/re-hash/re-parse verification PASS.",
+      "authoritative_outputs": [
+        "07-release/FINAL-STATUS.json",
+        "07-release/BUILD-METADATA.json",
+        "07-release/MANIFEST.json",
+        "07-release/SHA256SUMS.txt",
+        "07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip",
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv"
+      ],
+      "gate_evidence": [
+        "07-release/POST-PACKAGE-VERIFICATION.json",
+        "07-release/POST-PACKAGE-INDEPENDENT.json",
+        "07-release/RELEASE-PROVENANCE.json",
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json",
+        "06-runtime/STAGE6-PROVENANCE.json"
+      ]
     }
   ],
   "corrections": [
@@ -108,15 +185,24 @@
       "date": "2026-09-02",
       "kind": "false-pass-invalidation-and-repair",
       "evidence": "06-runtime/PREVIOUS-PASS-INVALIDATION.json",
-      "invalidated_stages": [6, 7],
-      "preserved_upstream_pass_stages": [1, 2, 3, 4, 5],
+      "invalidated_stages": [
+        6,
+        7
+      ],
+      "preserved_upstream_pass_stages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "corrective_stage6_run": 33666722731,
       "corrective_stage6_workflow_commit": "063dde0a632bfd0a3bdb8efff3a1d616287932b5",
       "corrective_stage6_result": "PASS"
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 7 only. Build the final package from the exact Stage 5 TSV/canonical/QA artifacts plus corrected Stage 6 runtime and presentation evidence; generate manifest, SHA-256 sums, final status, and independent post-package reopen/re-hash/re-parse verification; persist all release evidence and the package or immutable release asset, then mark Stage 7 PASS.",
+  "resume_instruction": "All seven stages are durably PASS after corrective Stage 6/7 verification. Deliver the committed final ZIP and direct TSV; do not reuse the invalidated earlier pseudo-final artifact.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

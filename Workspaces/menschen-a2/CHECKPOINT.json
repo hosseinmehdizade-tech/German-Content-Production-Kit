@@ -149,7 +149,7 @@
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "NOT_STARTED",
+      "state": "RUNNING",
       "required_outputs": [
         "07-release/FINAL-STATUS.json",
         "07-release/BUILD-METADATA.json",
@@ -157,11 +157,12 @@
         "07-release/SHA256SUMS.txt",
         "07-release/final package or immutable release asset"
       ],
-      "pass_commit": null
+      "pass_commit": null,
+      "summary": "Packaging exact runtime-accepted artifacts and independently reopening/re-hashing/re-parsing package."
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 7 packaging exact runtime-accepted artifacts.",
+  "resume_instruction": "Build final ZIP, manifest, SHA-256 and independent post-package verification.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

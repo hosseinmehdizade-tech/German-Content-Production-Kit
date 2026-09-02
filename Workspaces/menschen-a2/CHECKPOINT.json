@@ -130,7 +130,7 @@
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "RUNNING",
+      "state": "FAIL",
       "required_outputs": [
         "06-runtime/RUNTIME-ACCEPTANCE.json",
         "06-runtime/PRESENTATION-ACCEPTANCE.json"
@@ -152,8 +152,13 @@
       "pass_commit": null
     }
   ],
-  "blockers": [],
-  "resume_instruction": "Run importer, reload persistence, Presentation Model and all four practice-mode gates.",
+  "blockers": [
+    {
+      "stage": 6,
+      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
+    }
+  ],
+  "resume_instruction": "Inspect GitHub Actions run 33665547971 for Stage 6 failure, repair the earliest failing gate, then rerun that stage and downstream dependents only.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

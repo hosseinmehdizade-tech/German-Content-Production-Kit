@@ -44,8 +44,14 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "authoritative_outputs": ["00-source/SOURCE-MANIFEST.json", "01-inventory/SOURCE-INVENTORY.json", "01-inventory/STABLE-ID-MAP.json"],
-      "gate_evidence": ["01-inventory/INVENTORY-QA.json"],
+      "authoritative_outputs": [
+        "00-source/SOURCE-MANIFEST.json",
+        "01-inventory/SOURCE-INVENTORY.json",
+        "01-inventory/STABLE-ID-MAP.json"
+      ],
+      "gate_evidence": [
+        "01-inventory/INVENTORY-QA.json"
+      ],
       "summary": "11 screenshots accounted for; 297 authoritative source rows after one adjacent-screenshot overlap; stable source identities remain valid.",
       "pass_commit": "ecf8c6f994015a93f270d745da7ce0c3a6f62097"
     },
@@ -53,52 +59,91 @@
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "required_outputs": ["02-canonical/CANONICAL.json", "02-canonical/CANONICAL-VALIDATION.json", "02-canonical/NORMALIZATION-DECISIONS.json"],
-      "pass_commit": "813cf03b1804fdadeacaeb1a8ed240a73543deda",
-      "summary": "292 source-semantic Learning Units remain valid. The sparse MENSCHEN-A2-PROFILE is Stage 1/2 source-canonical authority only; it is not final product-completeness authority.",
-      "authoritative_outputs": ["02-canonical/CANONICAL.json", "02-canonical/NORMALIZATION-DECISIONS.json", "02-canonical/MENSCHEN-A2-PROFILE.json"],
-      "gate_evidence": ["02-canonical/CANONICAL-VALIDATION.json"]
+      "required_outputs": [
+        "02-canonical/CANONICAL.json",
+        "02-canonical/CANONICAL-VALIDATION.json",
+        "02-canonical/NORMALIZATION-DECISIONS.json"
+      ],
+      "pass_commit": "2eb79e8480b4d99d9e6893f3569b2580df41a5f8",
+      "summary": "PASS after targeted semantic normalization repair: six phrase units no longer expose unbound source [+A]/[+D] shorthand as learner headword/structure text; shorthand remains losslessly in grammar notes/provenance. Preposition-bound and explicit-complement case notation remains intact. Exact 292-unit canonical revalidated PASS with stable IDs/order unchanged.",
+      "authoritative_outputs": [
+        "02-canonical/CANONICAL.json",
+        "02-canonical/NORMALIZATION-DECISIONS.json",
+        "02-canonical/MENSCHEN-A2-PROFILE.json"
+      ],
+      "gate_evidence": [
+        "02-canonical/CANONICAL-VALIDATION.json",
+        "02-canonical/STAGE2-SEMANTIC-REPAIR.json"
+      ]
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "RUNNING",
+      "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Rebuilding all 292 units with the v6 sense-aligned evidence pipeline. First-10 regression sample passed the product floor after fixing Wiktionary DOM parsing, lemma resolution, polysemy/sense drift and exact-phrase evidence fallback. Full Git-backed run is still required before PASS.",
-      "required_outputs": ["03-evidence/EVIDENCE-INDEX.json", "03-evidence/EXTERNAL-EVIDENCE-CACHE.json", "03-evidence/ENRICHMENT-VALIDATION.json", "02-canonical/CANONICAL-ENRICHED.json"],
-      "gate_evidence": ["04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json", "Verification/test_rich_card_product_floor_v1_0_0.py", "Verification/test_menschen_a2_rich_enrichment_semantics.py"]
+      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "required_outputs": [
+        "03-evidence/EVIDENCE-INDEX.json",
+        "03-evidence/EXTERNAL-EVIDENCE-CACHE.json",
+        "03-evidence/ENRICHMENT-VALIDATION.json",
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
+      "gate_evidence": [
+        "04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json",
+        "Verification/test_rich_card_product_floor_v1_0_0.py",
+        "Verification/test_menschen_a2_rich_enrichment_semantics.py"
+      ]
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Waiting for repaired Stage 3. Prior QA lacked the pedagogical product floor and systemic zero-enrichment hard gate.",
-      "required_outputs": ["04-qa/LINGUISTIC-QA.json", "04-qa/LEXICAL-QUALITY.json", "04-qa/COVERAGE-REPORT.json", "04-qa/PRODUCT-FLOOR-VALIDATION.json"]
+      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "required_outputs": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json",
+        "04-qa/PRODUCT-FLOOR-VALIDATION.json"
+      ]
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Waiting for repaired Stage 4; prior TSV projected the thin artifact.",
-      "required_outputs": ["05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv", "05-delivery/DELIVERY-VALIDATION.json", "05-delivery/DELIVERY-LOSS-CHECK.json"]
+      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "required_outputs": [
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
+        "05-delivery/DELIVERY-VALIDATION.json",
+        "05-delivery/DELIVERY-LOSS-CHECK.json"
+      ]
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Waiting for repaired Stage 5. Corrected acceptance must validate product semantics after real current-main import, not merely transport/persistence.",
-      "required_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json", "06-runtime/PRODUCT-PRESENTATION-ACCEPTANCE.json"]
+      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "required_outputs": [
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json",
+        "06-runtime/PRODUCT-PRESENTATION-ACCEPTANCE.json"
+      ]
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Waiting for repaired Stages 3-6; prior package is invalidated and may not be reused as production input.",
-      "required_outputs": ["07-release/FINAL-STATUS.json", "07-release/BUILD-METADATA.json", "07-release/MANIFEST.json", "07-release/SHA256SUMS.txt", "07-release/final package or immutable release asset"]
+      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "required_outputs": [
+        "07-release/FINAL-STATUS.json",
+        "07-release/BUILD-METADATA.json",
+        "07-release/MANIFEST.json",
+        "07-release/SHA256SUMS.txt",
+        "07-release/final package or immutable release asset"
+      ]
     }
   ],
   "corrections": [
@@ -106,13 +151,28 @@
       "date": "2026-09-02",
       "kind": "thin-card-product-false-pass",
       "evidence": "04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json",
-      "invalidated_stages": [3,4,5,6,7],
-      "preserved_upstream_pass_stages": [1,2],
-      "root_cause_ids": ["RC1_PROFILE_LAYER_CONFLATION","RC2_STAGE3_DISABLED_ENRICHMENT","RC3_COVERAGE_WARNINGS_NOT_SYSTEM_HEALTH_FAILURE","RC4_RUNTIME_TESTED_TRANSPORT_NOT_RICHNESS","RC5_ANTI_REUSE_RULE_CREATED_A_REGRESSION_GAP"]
+      "invalidated_stages": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "preserved_upstream_pass_stages": [
+        1,
+        2
+      ],
+      "root_cause_ids": [
+        "RC1_PROFILE_LAYER_CONFLATION",
+        "RC2_STAGE3_DISABLED_ENRICHMENT",
+        "RC3_COVERAGE_WARNINGS_NOT_SYSTEM_HEALTH_FAILURE",
+        "RC4_RUNTIME_TESTED_TRANSPORT_NOT_RICHNESS",
+        "RC5_ANTI_REUSE_RULE_CREATED_A_REGRESSION_GAP"
+      ]
     }
   ],
   "blockers": [],
-  "resume_instruction": "Continue Stage 3 on repair/menschen-a2-rich-card-floor-v8. Complete the full 292-unit v6 evidence run; PASS only if exact committed enriched canonical + evidence index/cache + enrichment validation satisfy the product-floor preflight. Then run Stages 4-7. Do not use the invalidated prior final ZIP as input.",
+  "resume_instruction": "Resume at Stage 3 using the exact repaired Stage 2 CANONICAL.json. Rebuild enrichment/evidence; do not reuse any Stage 3-7 PASS claim from before this Stage 2 repair.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

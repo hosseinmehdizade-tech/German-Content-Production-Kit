@@ -87,11 +87,12 @@
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "INVALIDATED",
+      "state": "PASS",
       "required_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json"],
-      "pass_commit": null,
-      "summary": "Previous PASS claim invalidated after log audit: the private Flashcards Pro clone failed and the required runtime/presentation reports were never created. Corrective acceptance is being rerun inside German-Flashcards-Pro against exact main commit 49a28187e82734e92bc407276eb0d2ee0cbbbd55.",
-      "gate_evidence": ["06-runtime/PREVIOUS-PASS-INVALIDATION.json"]
+      "pass_commit": "aa8d77a4e174bf9ea53a985060c7d57f646b86ef",
+      "summary": "Corrective Stage 6 PASS on exact German-Flashcards-Pro main commit 49a28187e82734e92bc407276eb0d2ee0cbbbd55 / v354. Exact Stage 5 TSV imported 292/292 IDs, canonical bridge/morphology/Persian face survived, transactional persistence survived reload, and Presentation Model word+stable-example queues passed in study/quick/typing/audio. GitHub Actions run 33666722731 concluded success.",
+      "authoritative_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json", "06-runtime/STAGE6-PROVENANCE.json"],
+      "gate_evidence": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json", "06-runtime/STAGE6-PROVENANCE.json", "06-runtime/PREVIOUS-PASS-INVALIDATION.json"]
     },
     {
       "stage": 7,
@@ -99,20 +100,23 @@
       "state": "INVALIDATED",
       "required_outputs": ["07-release/FINAL-STATUS.json", "07-release/BUILD-METADATA.json", "07-release/MANIFEST.json", "07-release/SHA256SUMS.txt", "07-release/final package or immutable release asset"],
       "pass_commit": null,
-      "summary": "Previous PASS claim invalidated because Stage 6 evidence was missing and the packaging command explicitly failed; the uploaded Actions artifact contained only six upstream files rather than the claimed final package/evidence set. Stage 7 must rerun after corrected Stage 6 PASS."
+      "summary": "Previous Stage 7 PASS remains invalidated. Rerun package creation and independent post-package verification now that corrected Stage 6 evidence is durably present."
     }
   ],
   "corrections": [
     {
       "date": "2026-09-02",
-      "kind": "false-pass-invalidation",
+      "kind": "false-pass-invalidation-and-repair",
       "evidence": "06-runtime/PREVIOUS-PASS-INVALIDATION.json",
       "invalidated_stages": [6, 7],
-      "preserved_upstream_pass_stages": [1, 2, 3, 4, 5]
+      "preserved_upstream_pass_stages": [1, 2, 3, 4, 5],
+      "corrective_stage6_run": 33666722731,
+      "corrective_stage6_workflow_commit": "063dde0a632bfd0a3bdb8efff3a1d616287932b5",
+      "corrective_stage6_result": "PASS"
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume only at corrective Stage 6. Run exact importer + reload persistence + Presentation acceptance inside German-Flashcards-Pro at pinned main commit 49a28187e82734e92bc407276eb0d2ee0cbbbd55 using the exact Stage 5 TSV SHA 01ab4dabe5a27c636c977dfb8af4cdc60f8cf6b7148844cb4ca755d650aecd23 and enriched canonical SHA d6a83d0fb0a0771ee70146fc7e96573430ca0f6687f2a02344773da13b6f175e. Persist Stage 6 evidence here, then rerun Stage 7 and independently verify the final ZIP.",
+  "resume_instruction": "Resume at Stage 7 only. Build the final package from the exact Stage 5 TSV/canonical/QA artifacts plus corrected Stage 6 runtime and presentation evidence; generate manifest, SHA-256 sums, final status, and independent post-package reopen/re-hash/re-parse verification; persist all release evidence and the package or immutable release asset, then mark Stage 7 PASS.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

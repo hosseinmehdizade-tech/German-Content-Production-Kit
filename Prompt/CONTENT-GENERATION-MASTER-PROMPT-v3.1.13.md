@@ -36,7 +36,7 @@ For the active generic rich-card floor:
 
 - verbs require `persian_meaning`, `definition_de`, full required source-level core morphology, and at least 4 usable German examples;
 - phrases require their structure, Persian meaning and at least 4 usable German examples;
-- every counted product example requires an English translation;
+- each unit requires at least one learner-facing German example with an English translation; additional German examples may remain German-only when their evidence is stronger than any available translation;
 - collocation/synonym/antonym/Rektion content remains evidence-bound and must never be fabricated to hit a quota;
 - verb lexical-detail coverage has a dataset-level system-health floor to detect a disabled/broken enrichment path. This is not a per-card truth quota.
 
@@ -62,7 +62,7 @@ Stage 6 must prove both transport/runtime integrity and learner-visible product 
 
 - required definition is visible for verbs;
 - the minimum example count survived import and is rendered;
-- English example translations are present;
+- at least one English example translation is present per sampled unit;
 - morphology survived;
 - multi-value lexical details render as separate items;
 - no raw JSON leaks;

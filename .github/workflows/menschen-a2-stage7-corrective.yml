@@ -1,0 +1,259 @@
+name: Menschen A2 Corrective Stage 7 Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/menschen-a2-stage7-corrective.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-corrective-stage7
+  cancel-in-progress: false
+
+jobs:
+  release-and-verify:
+    name: Package + Independent Post-Package Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+      WS: Workspaces/menschen-a2
+      FINAL_ZIP: Workspaces/menschen-a2/07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip
+      TSV_SHA256: 01ab4dabe5a27c636c977dfb8af4cdc60f8cf6b7148844cb4ca755d650aecd23
+      CANONICAL_SHA256: d6a83d0fb0a0771ee70146fc7e96573430ca0f6687f2a02344773da13b6f175e
+      RUNTIME_COMMIT: 49a28187e82734e92bc407276eb0d2ee0cbbbd55
+    steps:
+      - name: Checkout current durable Content Kit main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pin repository bytes and verify Stage 6 durable PASS
+        run: |
+          set -euo pipefail
+          git config core.autocrlf false
+          git config core.eol lf
+          python - <<'PY'
+          import json,hashlib,pathlib,os
+          w=pathlib.Path(os.environ['WS'])
+          cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s6=next(x for x in cp['stages'] if x['stage']==6)
+          s7=next(x for x in cp['stages'] if x['stage']==7)
+          assert s6['state']=='PASS', s6
+          assert s7['state']=='INVALIDATED', s7
+          rr=json.loads((w/'06-runtime/RUNTIME-ACCEPTANCE.json').read_text(encoding='utf-8'))
+          pr=json.loads((w/'06-runtime/PRESENTATION-ACCEPTANCE.json').read_text(encoding='utf-8'))
+          sp=json.loads((w/'06-runtime/STAGE6-PROVENANCE.json').read_text(encoding='utf-8'))
+          assert rr['status']=='PASS' and rr['import_state']=='IMPORT_VERIFIED' and rr['persistence']=='reload-survived'
+          assert rr['runtime_commit']==os.environ['RUNTIME_COMMIT']
+          assert pr['status']=='PASS' and set(pr['modes'])=={'study','quick','typing','audio'}
+          assert sp['status']=='PASS' and sp['workflow_conclusion']=='success'
+          def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+          assert sha(w/'05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv')==os.environ['TSV_SHA256']
+          assert sha(w/'02-canonical/CANONICAL-ENRICHED.json')==os.environ['CANONICAL_SHA256']
+          print('PASS Stage 6 durable precondition')
+          PY
+
+      - name: Build final ZIP and first post-close verification
+        run: |
+          set -euo pipefail
+          python "$WS/tools/package_release_corrective.py" \
+            --workspace "$WS" \
+            --zip "$FINAL_ZIP" \
+            --manifest "$WS/07-release/MANIFEST.json" \
+            --sha256s "$WS/07-release/SHA256SUMS.txt" \
+            --postverify "$WS/07-release/POST-PACKAGE-VERIFICATION.json"
+          test -s "$FINAL_ZIP"
+          python - <<'PY'
+          import json,pathlib,os
+          p=pathlib.Path(os.environ['WS'])/'07-release/POST-PACKAGE-VERIFICATION.json'
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d['status']=='PASS' and d['verified_payload_files']>=20, d
+          PY
+
+      - name: Independent reopen re-hash re-parse verification
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,pathlib,tempfile,zipfile
+          w=pathlib.Path(os.environ['WS'])
+          zpath=pathlib.Path(os.environ['FINAL_ZIP'])
+          manifest=json.loads((w/'07-release/MANIFEST.json').read_text(encoding='utf-8'))
+          problems=[]
+          def h(b): return hashlib.sha256(b).hexdigest()
+          def hf(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          with zipfile.ZipFile(zpath,'r') as z:
+              names=z.namelist()
+              if len(names)!=len(set(names)): problems.append('duplicate ZIP member name')
+              for entry in manifest['payload']:
+                  path=entry['path']
+                  if path not in names:
+                      problems.append('missing '+path); continue
+                  data=z.read(path)
+                  if h(data)!=entry['sha256']: problems.append('manifest hash mismatch '+path)
+                  if len(data)!=entry['size']: problems.append('manifest size mismatch '+path)
+              embedded=json.loads(z.read('MANIFEST.json').decode('utf-8'))
+              if embedded!=manifest: problems.append('external/embedded manifest mismatch')
+              if 'README.txt' not in names: problems.append('README.txt missing')
+              tsvb=z.read('DIRECT-IMPORT/MENSCHEN-A2-UNIVERSAL-v2.tsv')
+              canb=z.read('CANONICAL/CANONICAL-ENRICHED.json')
+              if h(tsvb)!=os.environ['TSV_SHA256']: problems.append('TSV pinned SHA mismatch')
+              if h(canb)!=os.environ['CANONICAL_SHA256']: problems.append('canonical pinned SHA mismatch')
+              lines=tsvb.decode('utf-8-sig').splitlines()
+              headers=['id','card_type','domain','category','source','level','lesson','deck','front','back','front_label','back_label','front_lang','back_lang','typing_target','examples','related','opposites','details','custom_fields','tags','notes','order']
+              if not lines or lines[0].split('\t')!=headers: problems.append('Universal v2 header mismatch')
+              rows=[line.split('\t') for line in lines[1:]]
+              if len(rows)!=292: problems.append(f'TSV rows {len(rows)}')
+              if any(len(r)!=23 for r in rows): problems.append('TSV physical column mismatch')
+              tsv_ids=[r[0] for r in rows if len(r)==23]
+              if len(tsv_ids)!=len(set(tsv_ids)): problems.append('duplicate TSV IDs')
+              canonical=json.loads(canb.decode('utf-8'))
+              units=canonical.get('learning_units',[])
+              can_ids=[u.get('id') for u in units]
+              if len(units)!=292: problems.append(f'canonical units {len(units)}')
+              if set(can_ids)!=set(tsv_ids): problems.append('canonical/TSV ID set mismatch')
+              rr=json.loads(z.read('RUNTIME/RUNTIME-ACCEPTANCE.json').decode('utf-8'))
+              pr=json.loads(z.read('RUNTIME/PRESENTATION-ACCEPTANCE.json').decode('utf-8'))
+              sp=json.loads(z.read('RUNTIME/STAGE6-PROVENANCE.json').decode('utf-8'))
+              if not (rr.get('status')=='PASS' and rr.get('import_state')=='IMPORT_VERIFIED' and rr.get('persistence')=='reload-survived'): problems.append('runtime acceptance not final')
+              if rr.get('runtime_commit')!=os.environ['RUNTIME_COMMIT']: problems.append('runtime commit mismatch')
+              if not (pr.get('status')=='PASS' and set(pr.get('modes',[]))=={'study','quick','typing','audio'}): problems.append('presentation acceptance mismatch')
+              if not (sp.get('status')=='PASS' and sp.get('workflow_conclusion')=='success'): problems.append('Stage 6 provenance mismatch')
+              for q in ['QA/LINGUISTIC-QA.json','QA/LEXICAL-QUALITY.json','DELIVERY/DELIVERY-VALIDATION.json','DELIVERY/DELIVERY-LOSS-CHECK.json']:
+                  qd=json.loads(z.read(q).decode('utf-8-sig'))
+                  status=qd.get('status') or qd.get('structural_typed_status')
+                  if status!='PASS': problems.append(f'packaged gate not PASS: {q}={status}')
+          report={
+            'status':'PASS' if not problems else 'FAIL',
+            'verifier':'independent-stage7-workflow-v1',
+            'zip':zpath.name,
+            'zip_sha256':hf(zpath),
+            'zip_size':zpath.stat().st_size,
+            'payload_files_verified':len(manifest['payload']),
+            'tsv_rows':292,
+            'canonical_units':292,
+            'runtime_commit':os.environ['RUNTIME_COMMIT'],
+            'runtime_import_state':'IMPORT_VERIFIED',
+            'presentation_modes':['study','quick','typing','audio'],
+            'problems':problems
+          }
+          out=w/'07-release/POST-PACKAGE-INDEPENDENT.json'
+          out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if problems: raise SystemExit(1)
+          PY
+
+      - name: Generate corrected final status and release provenance
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,pathlib
+          w=pathlib.Path(os.environ['WS']); z=pathlib.Path(os.environ['FINAL_ZIP'])
+          def hf(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          pv=json.loads((w/'07-release/POST-PACKAGE-VERIFICATION.json').read_text(encoding='utf-8'))
+          pi=json.loads((w/'07-release/POST-PACKAGE-INDEPENDENT.json').read_text(encoding='utf-8'))
+          assert pv['status']=='PASS' and pi['status']=='PASS'
+          final={
+            'status':'PASS','finality':'FINAL','dataset':'menschen-a2','title':'Menschen A2','cards':292,'source_rows':297,
+            'direct_import':'MENSCHEN-A2-UNIVERSAL-v2.tsv','direct_import_sha256':os.environ['TSV_SHA256'],
+            'canonical':'CANONICAL-ENRICHED.json','canonical_sha256':os.environ['CANONICAL_SHA256'],
+            'runtime':'German Flashcards Pro v354','runtime_commit':os.environ['RUNTIME_COMMIT'],'runtime_acceptance':'IMPORT_VERIFIED','persistence':'reload-survived',
+            'presentation_acceptance':'PASS','package':z.name,'package_sha256':hf(z),'post_package_verification':'PASS','independent_post_package_verification':'PASS',
+            'corrective_release':True,'previous_false_pass_invalidated_by':'06-runtime/PREVIOUS-PASS-INVALIDATION.json'
+          }
+          (w/'07-release/FINAL-STATUS.json').write_text(json.dumps(final,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          prov={
+            'status':'PASS','workflow':'Menschen A2 Corrective Stage 7 Release','github_run_id':'${{ github.run_id }}','source_commit':'${{ github.sha }}',
+            'package_sha256':hf(z),'tsv_sha256':os.environ['TSV_SHA256'],'canonical_sha256':os.environ['CANONICAL_SHA256'],'runtime_commit':os.environ['RUNTIME_COMMIT']
+          }
+          (w/'07-release/RELEASE-PROVENANCE.json').write_text(json.dumps(prov,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+
+      - name: Commit exact release artifacts to main
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$WS/07-release"
+          git status --short
+          git commit -m 'Publish corrected Menschen A2 Stage 7 release artifacts'
+          RELEASE_COMMIT=$(git rev-parse HEAD)
+          echo "RELEASE_COMMIT=$RELEASE_COMMIT" >> "$GITHUB_ENV"
+          git push origin HEAD:main
+
+      - name: Mark Stage 7 durable PASS only after release commit
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ['WS'])/'CHECKPOINT.json'
+          d=json.loads(p.read_text(encoding='utf-8'))
+          s7=next(x for x in d['stages'] if x['stage']==7)
+          s7['state']='PASS'
+          s7['pass_commit']=os.environ['RELEASE_COMMIT']
+          s7['summary']='Corrective FINAL package durably published after exact Stage 6 runtime/persistence/Presentation PASS; 20 payload files plus manifest/README packaged; internal and independent reopen/re-hash/re-parse verification PASS.'
+          s7['authoritative_outputs']=[
+            '07-release/FINAL-STATUS.json','07-release/BUILD-METADATA.json','07-release/MANIFEST.json','07-release/SHA256SUMS.txt',
+            '07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip','05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv'
+          ]
+          s7['gate_evidence']=['07-release/POST-PACKAGE-VERIFICATION.json','07-release/POST-PACKAGE-INDEPENDENT.json','07-release/RELEASE-PROVENANCE.json','06-runtime/RUNTIME-ACCEPTANCE.json','06-runtime/PRESENTATION-ACCEPTANCE.json','06-runtime/STAGE6-PROVENANCE.json']
+          d['resume_instruction']='All seven stages are durably PASS after corrective Stage 6/7 verification. Deliver the committed final ZIP and direct TSV; do not reuse the invalidated earlier pseudo-final artifact.'
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add "$WS/CHECKPOINT.json"
+          git commit -m 'Mark corrected Menschen A2 Stage 7 durable PASS'
+          git push origin HEAD:main
+
+      - name: Final post-commit immutable checks
+        run: |
+          set -euo pipefail
+          test -s "$FINAL_ZIP"
+          grep -q '"finality": "FINAL"' "$WS/07-release/FINAL-STATUS.json"
+          grep -q '"status": "PASS"' "$WS/07-release/POST-PACKAGE-INDEPENDENT.json"
+          grep -q '"stage": 7' "$WS/CHECKPOINT.json"
+          python - <<'PY'
+          import json,pathlib,os,hashlib
+          w=pathlib.Path(os.environ['WS'])
+          cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s7=next(x for x in cp['stages'] if x['stage']==7)
+          assert s7['state']=='PASS' and s7['pass_commit']==os.environ['RELEASE_COMMIT']
+          fs=json.loads((w/'07-release/FINAL-STATUS.json').read_text(encoding='utf-8'))
+          assert fs['status']=='PASS' and fs['finality']=='FINAL'
+          z=w/'07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip'
+          assert hashlib.sha256(z.read_bytes()).hexdigest()==fs['package_sha256']
+          print('PASS final committed Stage 7 checkpoint and exact ZIP hash')
+          PY
+
+      - name: Upload complete final handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: Menschen-A2-German-Flashcards-Pro-v354-CORRECTED-FINAL
+          path: |
+            Workspaces/menschen-a2/07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip
+            Workspaces/menschen-a2/05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv
+            Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json
+            Workspaces/menschen-a2/01-inventory/SOURCE-INVENTORY.json
+            Workspaces/menschen-a2/01-inventory/STABLE-ID-MAP.json
+            Workspaces/menschen-a2/04-qa/LINGUISTIC-QA.json
+            Workspaces/menschen-a2/04-qa/LEXICAL-QUALITY.json
+            Workspaces/menschen-a2/04-qa/COVERAGE-REPORT.json
+            Workspaces/menschen-a2/05-delivery/DELIVERY-VALIDATION.json
+            Workspaces/menschen-a2/05-delivery/DELIVERY-LOSS-CHECK.json
+            Workspaces/menschen-a2/06-runtime/RUNTIME-ACCEPTANCE.json
+            Workspaces/menschen-a2/06-runtime/PRESENTATION-ACCEPTANCE.json
+            Workspaces/menschen-a2/06-runtime/STAGE6-PROVENANCE.json
+            Workspaces/menschen-a2/07-release/BUILD-METADATA.json
+            Workspaces/menschen-a2/07-release/MANIFEST.json
+            Workspaces/menschen-a2/07-release/SHA256SUMS.txt
+            Workspaces/menschen-a2/07-release/POST-PACKAGE-VERIFICATION.json
+            Workspaces/menschen-a2/07-release/POST-PACKAGE-INDEPENDENT.json
+            Workspaces/menschen-a2/07-release/FINAL-STATUS.json
+            Workspaces/menschen-a2/07-release/RELEASE-PROVENANCE.json
+            Workspaces/menschen-a2/CHECKPOINT.json
+          if-no-files-found: error
+          retention-days: 30

@@ -149,7 +149,7 @@
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "RUNNING",
+      "state": "FAIL",
       "required_outputs": [
         "07-release/FINAL-STATUS.json",
         "07-release/BUILD-METADATA.json",
@@ -161,8 +161,13 @@
       "summary": "Packaging exact runtime-accepted artifacts and independently reopening/re-hashing/re-parsing package."
     }
   ],
-  "blockers": [],
-  "resume_instruction": "Build final ZIP, manifest, SHA-256 and independent post-package verification.",
+  "blockers": [
+    {
+      "stage": 7,
+      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
+    }
+  ],
+  "resume_instruction": "Inspect GitHub Actions run 33665547971 for Stage 7 failure, repair the earliest failing gate, then rerun that stage and downstream dependents only.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

@@ -1,0 +1,54 @@
+name: MA2 rich enrichment sample
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor]
+    paths:
+      - '.github/workflows/ma2-rich-enrichment-sample.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Regression gate self-test
+        run: python Verification/test_rich_card_product_floor_v1_0_0.py
+      - name: Enrich first 30 units
+        run: |
+          mkdir -p /tmp/ma2
+          python Workspaces/menschen-a2/tools/enrich_rich_card_v2.py \
+            --canonical Workspaces/menschen-a2/02-canonical/CANONICAL.json \
+            --seed Workspaces/menschen-a2/tools/ENRICHMENT-SEED.json \
+            --out /tmp/ma2/CANONICAL-ENRICHED.json \
+            --evidence /tmp/ma2/EVIDENCE-INDEX.json \
+            --cache /tmp/ma2/EXTERNAL-EVIDENCE-CACHE.json \
+            --max-units 30 --delay 0.08
+      - name: Run product floor and print diagnostics
+        shell: bash
+        run: |
+          set +e
+          python Verification/validate_rich_card_product_floor_v1_0_0.py \
+            /tmp/ma2/CANONICAL-ENRICHED.json \
+            Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json \
+            /tmp/ma2/EVIDENCE-INDEX.json \
+            --output /tmp/ma2/PRODUCT-FLOOR.json
+          code=$?
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('/tmp/ma2/PRODUCT-FLOOR.json').read_text())
+          print(json.dumps({'status':r['status'],'errors':r['errors'],'warnings':r['warnings'],'coverage':r['coverage'],'first_issues':r['issues'][:30]},ensure_ascii=False,indent=2))
+          ds=json.loads(Path('/tmp/ma2/CANONICAL-ENRICHED.json').read_text())
+          for u in ds['learning_units'][:8]:
+              print(json.dumps({'id':u['id'],'headword':u['headword'],'type':u['type'],'definition_de':u.get('definition_de'),'examples':[(x.get('text'),next((t.get('text') for t in x.get('translations',[]) if t.get('lang')=='en-US'),None)) for x in u.get('examples',[])],'details':u.get('details'),'connections':u.get('connections')},ensure_ascii=False))
+          PY
+          exit 0

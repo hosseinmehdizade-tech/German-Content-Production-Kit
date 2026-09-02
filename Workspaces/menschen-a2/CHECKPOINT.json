@@ -111,13 +111,21 @@
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "RUNNING",
+      "state": "PASS",
       "required_outputs": [
         "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
         "05-delivery/DELIVERY-VALIDATION.json"
       ],
       "pass_commit": null,
-      "summary": "Projecting exact canonical bytes to literal-tab Universal v2 and running independent parity/loss checks."
+      "summary": "Universal v2 PASS for 292 cards: exact 23-column literal-tab envelope, raw JSON cells, canonical deep-copy, relations, ID set and face parity, plus exact TSV SHA metadata.",
+      "authoritative_outputs": [
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
+        "05-delivery/BUILD-METADATA.json"
+      ],
+      "gate_evidence": [
+        "05-delivery/DELIVERY-VALIDATION.json",
+        "05-delivery/DELIVERY-LOSS-CHECK.json"
+      ]
     },
     {
       "stage": 6,
@@ -144,7 +152,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Build and validate Universal v2, then continue to current runtime.",
+  "resume_instruction": "Resume at Stage 6 against Flashcards Pro v354 / 49a28187e82734e92bc407276eb0d2ee0cbbbd55.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

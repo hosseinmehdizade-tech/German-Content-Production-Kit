@@ -2,7 +2,7 @@ name: MA2 rich enrichment sample
 
 on:
   push:
-    branches: [repair/menschen-a2-rich-card-floor]
+    branches: [repair/menschen-a2-rich-card-floor-v8]
     paths:
       - '.github/workflows/ma2-rich-enrichment-sample.yml'
   workflow_dispatch:
@@ -22,10 +22,10 @@ jobs:
       - run: python -m pip install requests beautifulsoup4
       - name: Regression gate self-test
         run: python Verification/test_rich_card_product_floor_v1_0_0.py
-      - name: Enrich first 10 units with current Wiktionary DOM parser
+      - name: Enrich first 10 units with sense-aligned v5
         run: |
           mkdir -p /tmp/ma2
-          python Workspaces/menschen-a2/tools/enrich_rich_card_v4.py \
+          python Workspaces/menschen-a2/tools/enrich_rich_card_v5.py \
             --canonical Workspaces/menschen-a2/02-canonical/CANONICAL.json \
             --seed Workspaces/menschen-a2/tools/ENRICHMENT-SEED.json \
             --out /tmp/ma2/CANONICAL-ENRICHED.json \
@@ -47,7 +47,9 @@ jobs:
           r=json.loads(Path('/tmp/ma2/PRODUCT-FLOOR.json').read_text())
           print(json.dumps({'status':r['status'],'errors':r['errors'],'warnings':r['warnings'],'coverage':r['coverage'],'issues':r['issues'][:30]},ensure_ascii=False,indent=2))
           ds=json.loads(Path('/tmp/ma2/CANONICAL-ENRICHED.json').read_text())
+          ev=json.loads(Path('/tmp/ma2/EVIDENCE-INDEX.json').read_text())
+          byid={x['id']:x for x in ev['external_evidence_attempts']}
           for u in ds['learning_units']:
-              print(json.dumps({'id':u['id'],'headword':u['headword'],'type':u['type'],'definition_de':u.get('definition_de'),'examples':[(x.get('text'),next((t.get('text') for t in x.get('translations',[]) if t.get('lang')=='en-US'),None)) for x in u.get('examples',[])],'details':u.get('details'),'connections':u.get('connections')},ensure_ascii=False))
+              print(json.dumps({'id':u['id'],'headword':u['headword'],'type':u['type'],'sense':byid.get(u['id'],{}).get('selected_wiktionary_sense'),'definition_de':u.get('definition_de'),'examples':[(x.get('text'),next((t.get('text') for t in x.get('translations',[]) if t.get('lang')=='en-US'),None)) for x in u.get('examples',[])],'details':u.get('details'),'connections':u.get('connections')},ensure_ascii=False))
           PY
           exit 0

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "menschen-a2",
+  "stage": 1,
+  "status": "PASS",
+  "checks": {
+    "screenshot_count": {"expected":11,"actual":11,"pass":true},
+    "captured_row_occurrences": {"actual":298,"pass":true},
+    "boundary_overlap_count": {"actual":1,"pass":true},
+    "authoritative_source_rows": {"actual":297,"pass":true},
+    "source_order_contiguous": {"pass":true},
+    "source_item_ids_unique": {"pass":true},
+    "canonical_candidate_ids_unique": {"pass":true},
+    "source_text_nonempty": {"pass":true},
+    "lesson_chapter_inference_avoided": {"pass":true},
+    "legacy_content_not_used": {"pass":true}
+  },
+  "classification_counts": {
+    "verb_lemma_candidate":193,
+    "construction_candidate":52,
+    "multi_expression_bundle_candidate":8,
+    "reflexive_verb_or_construction_candidate":37,
+    "fixed_expression_with_forms":5,
+    "malformed_sentence":1,
+    "nonverb_phrase_candidate":1
+  },
+  "exact_source_duplicate_candidates": [
+    {"text":"eingeben [+A], gibt ein, gab ein, hat eingegeben / eintragen","source_orders":[12,266]},
+    {"text":"sich über jdn./etw. ärgern / sich aufregen über / wütend werden","source_orders":[59,203]},
+    {"text":"sich mit jdm. verabreden, verabredete sich, hat sich verabredet","source_orders":[74,292]}
+  ],
+  "notable_candidates": {
+    "malformed_sentence":[177],
+    "nonverb_phrase_candidate":[286],
+    "multi_expression_bundle_candidate":[11,40,53,62,116,181,182,288]
+  },
+  "gate": {
+    "pass": true,
+    "reason": "Source row inventory is source-authoritative, capture overlap is explicitly resolved, serial IDs are unique/persistable, and all unresolved duplicate/construction/malformed cases are carried forward to Stage 2 rather than silently normalized."
+  }
+}

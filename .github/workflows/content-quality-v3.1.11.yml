@@ -1,0 +1,27 @@
+name: Content quality v3.1.11
+on:
+  push:
+    branches: [main, fix/content-quality-v3.1.11]
+    paths:
+      - 'Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md'
+      - 'Prompt/START-PROMPT-v3.1.11.md'
+      - 'Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json'
+      - 'Verification/validate_lexical_quality_v1_0_0.py'
+      - 'Verification/test_lexical_quality_v1_0_0.py'
+      - '.github/workflows/content-quality-v3.1.11.yml'
+  pull_request:
+    paths:
+      - 'Prompt/**'
+      - 'Verification/**'
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Lexical quality regression
+        run: python Verification/test_lexical_quality_v1_0_0.py
+      - name: Validate completeness profile JSON
+        run: python -m json.tool Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json > /dev/null

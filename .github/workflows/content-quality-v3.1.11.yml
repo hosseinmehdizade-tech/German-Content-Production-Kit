@@ -1,0 +1,51 @@
+name: Content quality v3.1.11
+on:
+  push:
+    branches: [main, fix/content-quality-v3.1.11]
+    paths:
+      - 'README.md'
+      - 'Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md'
+      - 'Prompt/START-PROMPT-v3.1.11.md'
+      - 'Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md'
+      - 'Prompt/CHANGELOG-v3.1.11.md'
+      - 'Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json'
+      - 'Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json'
+      - 'Verification/validate_lexical_quality_v1_0_0.py'
+      - 'Verification/test_lexical_quality_v1_0_0.py'
+      - '.github/workflows/content-quality-v3.1.11.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'Prompt/**'
+      - 'Verification/**'
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Lexical quality regression
+        run: python Verification/test_lexical_quality_v1_0_0.py
+      - name: Validate completeness profiles
+        run: |
+          python -m json.tool Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json > /dev/null
+          python -m json.tool Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json > /dev/null
+      - name: Entrypoint consistency
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          readme=Path('README.md').read_text(encoding='utf-8')
+          start=Path('Prompt/START-PROMPT-v3.1.11.md').read_text(encoding='utf-8')
+          master=Path('Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md').read_text(encoding='utf-8')
+          runbook=Path('Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md').read_text(encoding='utf-8')
+          assert 'Prompt/START-PROMPT-v3.1.11.md' in readme
+          assert 'START-PROMPT-v3.1.10.md' not in readme
+          assert 'NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md' in start
+          assert 'GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json' in start
+          assert 'MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json' in start
+          assert 'repeated full-dataset refetch' in master.lower() or 'second full-dataset refetch' in master.lower()
+          assert 'direct tsv' in runbook.lower()
+          print('PASS v3.1.11 entrypoint consistency')
+          PY

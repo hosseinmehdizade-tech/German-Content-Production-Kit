@@ -32,91 +32,67 @@
     "historical_regression": "22/22 PASS",
     "historical_runtime_acceptance": "NOT_RUN",
     "physical_candidate_dataset_available_in_current_git": false,
-    "note": "Historical outputs are evidence only until the physical candidate/canonical artifact is recovered and reverified under current contracts."
+    "note": "Historical outputs remain regression evidence only. Stage 1 was independently rederived from the 11 authoritative screenshots under the current contracts; the missing historical 278-card artifact is no longer a production blocker."
   },
   "stages": [
     {
       "stage": 1,
       "name": "Source & Inventory",
-      "state": "RUNNING",
-      "current_work": "Image-level verification of the 11 authoritative screenshots, duplicate/malformed/construction resolution, and durable stable-ID inventory.",
-      "required_outputs": [
+      "state": "PASS",
+      "authoritative_outputs": [
+        "00-source/SOURCE-MANIFEST.json",
         "01-inventory/SOURCE-INVENTORY.json",
-        "01-inventory/STABLE-ID-MAP.json",
-        "01-inventory/INVENTORY-QA.json"
+        "01-inventory/STABLE-ID-MAP.json"
       ],
-      "pass_commit": null
+      "gate_evidence": ["01-inventory/INVENTORY-QA.json"],
+      "summary": "11 screenshots accounted for; 298 capture occurrences reduced by one explicit adjacent-screenshot overlap to 297 authoritative source rows; serial stable IDs ma2-lu-0001..ma2-lu-0297 are unique and persisted; unresolved semantic duplicate/construction/malformed cases are intentionally carried into Stage 2.",
+      "pass_commit": "ecf8c6f994015a93f270d745da7ce0c3a6f62097"
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "NOT_STARTED",
-      "required_outputs": [
-        "02-canonical/CANONICAL.json",
-        "02-canonical/CANONICAL-VALIDATION.json"
-      ],
+      "required_outputs": ["02-canonical/CANONICAL.json", "02-canonical/CANONICAL-VALIDATION.json", "02-canonical/NORMALIZATION-DECISIONS.json"],
       "pass_commit": null
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
       "state": "NOT_STARTED",
-      "required_outputs": [
-        "03-evidence/EVIDENCE-INDEX.json",
-        "02-canonical/CANONICAL-ENRICHED.json"
-      ],
+      "required_outputs": ["03-evidence/EVIDENCE-INDEX.json", "02-canonical/CANONICAL-ENRICHED.json"],
       "pass_commit": null
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
       "state": "NOT_STARTED",
-      "required_outputs": [
-        "04-qa/LINGUISTIC-QA.json",
-        "04-qa/LEXICAL-QUALITY.json",
-        "04-qa/COVERAGE-REPORT.json"
-      ],
+      "required_outputs": ["04-qa/LINGUISTIC-QA.json", "04-qa/LEXICAL-QUALITY.json", "04-qa/COVERAGE-REPORT.json"],
       "pass_commit": null
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
       "state": "NOT_STARTED",
-      "required_outputs": [
-        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
-        "05-delivery/DELIVERY-VALIDATION.json"
-      ],
+      "required_outputs": ["05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv", "05-delivery/DELIVERY-VALIDATION.json"],
       "pass_commit": null
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
       "state": "NOT_STARTED",
-      "required_outputs": [
-        "06-runtime/RUNTIME-ACCEPTANCE.json",
-        "06-runtime/PRESENTATION-ACCEPTANCE.json"
-      ],
+      "required_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json"],
       "pass_commit": null
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
       "state": "NOT_STARTED",
-      "required_outputs": [
-        "07-release/FINAL-STATUS.json",
-        "07-release/BUILD-METADATA.json",
-        "07-release/MANIFEST.json",
-        "07-release/SHA256SUMS.txt",
-        "07-release/final package or immutable release asset"
-      ],
+      "required_outputs": ["07-release/FINAL-STATUS.json", "07-release/BUILD-METADATA.json", "07-release/MANIFEST.json", "07-release/SHA256SUMS.txt", "07-release/final package or immutable release asset"],
       "pass_commit": null
     }
   ],
-  "blockers": [
-    "The physical historical 278-card Menschen A2 candidate/canonical artifact has not been located in the current Git repositories.",
-    "Do not reconstruct 278 cards from summaries; recover the actual artifact or rederive from the authoritative screenshots under current contracts."
-  ],
-  "resume_instruction": "Resume Stage 1 under active Content Kit v3.1.12. First inspect this checkpoint and current main of both repositories. Recover the historical 278-card artifact if possible and treat it only as named-recovery evidence; otherwise finish deterministic image-level inventory verification from the 11 authoritative screenshots. Do not begin Stage 2 until Stage 1 artifacts and gate evidence are committed and Stage 1 is PASS. Then continue agentically through Stages 2-7 without manual batch stops.",
+  "blockers": [],
+  "resume_instruction": "Resume at Stage 2 Canonicalization from the committed Stage 1 source inventory. Do not target the historical 278-card count. Resolve duplicate/construction/malformed candidates semantically, persist survivor/retirement decisions, validate Architecture v3.1.5 / semantic contract 3.1.3, commit Stage 2 artifacts, then continue agentically through Stages 3-7.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

@@ -1,7 +1,7 @@
 name: Content quality v3.1.11
 on:
   push:
-    branches: [main, fix/content-quality-v3.1.11]
+    branches: [main, fix/content-quality-v3.1.11, fix/source-sense-marker-and-tsv-contract]
     paths:
       - 'README.md'
       - 'Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md'
@@ -12,6 +12,8 @@ on:
       - 'Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json'
       - 'Verification/validate_lexical_quality_v1_0_0.py'
       - 'Verification/test_lexical_quality_v1_0_0.py'
+      - 'Verification/validate_lexical_quality_v1_0_1.py'
+      - 'Verification/test_lexical_quality_v1_0_1.py'
       - '.github/workflows/content-quality-v3.1.11.yml'
   pull_request:
     paths:
@@ -26,8 +28,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Lexical quality regression
+      - name: Lexical quality regression v1.0.0
         run: python Verification/test_lexical_quality_v1_0_0.py
+      - name: Source-marker and Universal TSV regression v1.0.1
+        run: python Verification/test_lexical_quality_v1_0_1.py
       - name: Validate completeness profiles
         run: |
           python -m json.tool Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json > /dev/null
@@ -45,6 +49,9 @@ jobs:
           assert 'NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md' in start
           assert 'GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json' in start
           assert 'MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json' in start
+          assert 'validate_lexical_quality_v1_0_1.py' in start
+          assert '[1a]' in start
+          assert 'csv-quoted' in start.lower() or 'csv writer' in start.lower()
           assert 'repeated full-dataset refetch' in master.lower() or 'second full-dataset refetch' in master.lower()
           assert 'direct tsv' in runbook.lower()
           print('PASS v3.1.11 entrypoint consistency')

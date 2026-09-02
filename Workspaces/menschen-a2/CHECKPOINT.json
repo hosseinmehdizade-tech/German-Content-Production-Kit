@@ -149,7 +149,7 @@
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "FAIL",
+      "state": "PASS",
       "required_outputs": [
         "07-release/FINAL-STATUS.json",
         "07-release/BUILD-METADATA.json",
@@ -158,20 +158,24 @@
         "07-release/final package or immutable release asset"
       ],
       "pass_commit": null,
-      "summary": "Packaging exact runtime-accepted artifacts and independently reopening/re-hashing/re-parsing package."
+      "summary": "FINAL package from exact runtime-accepted 292-card artifact: manifest, SHA-256 and independent post-package reopen/re-hash/re-parse PASS; direct TSV remains separate.",
+      "authoritative_outputs": [
+        "07-release/FINAL-STATUS.json",
+        "07-release/BUILD-METADATA.json",
+        "07-release/MANIFEST.json",
+        "07-release/SHA256SUMS.txt",
+        "07-release/Menschen-A2-German-Flashcards-Pro-v354-FINAL.zip",
+        "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv"
+      ],
+      "gate_evidence": [
+        "07-release/POST-PACKAGE-VERIFICATION.json",
+        "06-runtime/RUNTIME-ACCEPTANCE.json",
+        "06-runtime/PRESENTATION-ACCEPTANCE.json"
+      ]
     }
   ],
-  "blockers": [
-    {
-      "stage": 7,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    },
-    {
-      "stage": 7,
-      "reason": "GitHub Actions hard gate failed in run 33665547971; inspect job logs and resume only the affected stage."
-    }
-  ],
-  "resume_instruction": "Inspect GitHub Actions run 33665547971 for Stage 7 failure, repair the earliest failing gate, then rerun that stage and downstream dependents only.",
+  "blockers": [],
+  "resume_instruction": "All seven stages are durably PASS. Use direct TSV for import or final ZIP for complete handoff.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

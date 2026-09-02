@@ -91,14 +91,22 @@
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "RUNNING",
+      "state": "PASS",
       "required_outputs": [
         "04-qa/LINGUISTIC-QA.json",
         "04-qa/LEXICAL-QUALITY.json",
         "04-qa/COVERAGE-REPORT.json"
       ],
       "pass_commit": null,
-      "summary": "Hard linguistic, lexical, source-marker and coverage gates are running on exact Stage 3 canonical bytes."
+      "summary": "Linguistic QA, lexical-quality v1.0.1, marker leakage, array integrity and generic rich-card completeness hard gates PASS. Preferred collocation gaps remain reported, never fabricated.",
+      "authoritative_outputs": [
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
+      "gate_evidence": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json"
+      ]
     },
     {
       "stage": 5,
@@ -135,7 +143,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Run Stage 4 gates and repair affected units only if needed.",
+  "resume_instruction": "Resume at Stage 5 Delivery Projection.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

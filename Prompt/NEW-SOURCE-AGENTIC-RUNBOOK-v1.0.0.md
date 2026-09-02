@@ -2,6 +2,8 @@
 
 Use this runbook with `START-PROMPT-v3.1.11.md` whenever a new book/source is supplied.
 
+The human-trackable execution model is the mandatory seven-stage pipeline in `SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md`. Execution remains agentic and end-to-end; the stages are durable recovery/gate boundaries, not manual approval stops.
+
 ## 1. Resolve the source before generation
 
 - Treat the user-provided source as authoritative for inventory, source spelling, lesson/chapter placement, and source lineage.
@@ -43,7 +45,16 @@ Workspaces/<source-slug>/
 
 If a project-specific repository is explicitly designated for production datasets, the same logical layout may live there instead. The repository + branch + path must be recorded in `CHECKPOINT.json`.
 
-A stage is not considered durably `DONE` until its authoritative artifact(s) have been committed and pushed to the configured Git branch. A local file that has not reached Git is `LOCAL_ONLY`, never `DONE`.
+A stage is not considered durably `PASS` until its authoritative artifact(s) and gate evidence have been committed and pushed to the configured Git branch. A local file that has not reached Git is never `PASS`.
+
+Allowed stage states are exactly:
+
+- `NOT_STARTED`
+- `RUNNING`
+- `PASS`
+- `FAIL`
+- `BLOCKED`
+- `INVALIDATED`
 
 `CHECKPOINT.json` must record at least:
 
@@ -52,23 +63,25 @@ A stage is not considered durably `DONE` until its authoritative artifact(s) hav
 - source authority and source file/image inventory;
 - active Prompt/Architecture/Contract versions;
 - target Flashcards Pro repository, branch and commit SHA;
-- stage states (`NOT_STARTED`, `IN_PROGRESS`, `BLOCKED`, `DONE`);
+- the seven stage states from `SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md`;
 - paths + SHA-256 for authoritative artifacts created so far;
-- last durable Git commit SHA;
-- known blockers and exact resume instruction.
+- commit SHA establishing each latest durable PASS;
+- known blockers/failures/invalidations and exact resume instruction.
 
 Checkpoint policy:
 
-1. Commit source inventory + stable IDs immediately after inventory QA.
-2. Commit canonical data before external enrichment mutates downstream outputs.
-3. Commit evidence cache incrementally so successful external retrieval is never repeated merely because a later unit failed.
-4. Commit QA reports after each hard gate execution.
-5. Commit delivery projection and runtime evidence before packaging.
-6. Commit release ZIP manifest/hash evidence after post-package verification.
-7. Never mark a stage `DONE` in chat unless the corresponding durable Git commit exists.
-8. At the start of a new chat/session, inspect the Git workspace and resume from `CHECKPOINT.json`; do not reconstruct completed stages from conversation memory.
+1. Stage 1 PASS commits source inventory + stable IDs + inventory QA.
+2. Stage 2 PASS commits canonical data + Architecture/Contract validation before enrichment mutates downstream outputs.
+3. Stage 3 PASS commits evidence index/cache state + authoritative enriched canonical; successful external evidence retrieval is never repeated merely because a later unit failed.
+4. Stage 4 PASS commits linguistic QA + lexical quality + coverage evidence and any repaired canonical artifact.
+5. Stage 5 PASS commits selected delivery projection + validation/hash evidence.
+6. Stage 6 PASS commits exact target runtime identity + importer/runtime + presentation acceptance evidence.
+7. Stage 7 PASS commits release metadata/manifest/hash/post-package verification and the package or immutable release-asset identity.
+8. Never mark a stage `PASS` in chat unless the corresponding durable Git commit exists.
+9. At the start of a new chat/session, inspect the Git workspace and resume from `CHECKPOINT.json`; do not reconstruct completed stages from conversation memory.
+10. When an upstream authoritative artifact changes, mark all dependent downstream stages `INVALIDATED`; preserve unaffected upstream PASS stages.
 
-If Git write access is unavailable, continue only as far as is safe and mark the run `PERSISTENCE_BLOCKED`. Before the session ends, produce a recovery bundle and state explicitly that the checkpoint is not durable until committed. Do not silently rely on temporary storage.
+If Git write access is unavailable, continue only as far as is safe and mark the affected stage `BLOCKED` with reason `PERSISTENCE_BLOCKED`. Before the session ends, produce a recovery bundle and state explicitly that the checkpoint is not durable until committed. Do not silently rely on temporary storage.
 
 ## 3. Produce canonical content
 
@@ -111,25 +124,23 @@ Before Final, execute the actual target importer/presentation contract or an exa
 - verb forms and changed learner details render;
 - raw JSON is not exposed to the learner UI.
 
-If the target runtime cannot be executed or equivalently pinned, Runtime Acceptance is `NOT_RUN`/blocked and the artifact must not be called Final.
+If the target runtime cannot be executed or equivalently pinned, Stage 6 is `BLOCKED` and the artifact must not be called Final.
 
-Runtime acceptance artifacts and the exact target runtime commit SHA must be committed to the persistent workspace before Packaging can be marked `DONE`.
+Runtime acceptance artifacts and the exact target runtime commit SHA must be committed to the persistent workspace before Stage 6 may be `PASS`.
 
-## 7. Required gate order
+## 7. Required seven-stage gate order
 
-1. Source inventory QA
-2. Canonical / Architecture validation
-3. Linguistic audit
-4. Lexical Quality Gate
-5. Product Completeness / coverage report
-6. Delivery projection
-7. Target Runtime Acceptance
-8. Packaging + manifest/hash
-9. Independent post-package verification
+1. **Source & Inventory** — source inventory QA + stable IDs
+2. **Canonicalization** — canonical construction + Architecture/Contract validation
+3. **Evidence & Enrichment** — incremental evidence cache + evidence-linked enrichment
+4. **Linguistic & Lexical QA** — linguistic audit + lexical quality + product coverage
+5. **Delivery Projection** — Universal v2/selected transport + delivery validation
+6. **Runtime & Presentation Acceptance** — target importer/runtime + Presentation Model/practice acceptance
+7. **Release & Post-Package Verification** — packaging + manifest/hash + independent post-package verification
 
-A hard-gate failure triggers repair and rerun of affected stages. Do not stop every N cards and ask the user to say continue.
+A hard-gate failure triggers repair and rerun of the affected stage plus every downstream stage invalidated by the change. Do not restart valid upstream PASS stages without evidence they are invalid. Do not stop every N cards or after every stage to ask the user to say continue.
 
-Each `DONE` transition above must also satisfy the durable Git checkpoint rule in §2A.
+The detailed stage inputs/outputs/gates are normative in `SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md`.
 
 ## 8. Final deliverables
 
@@ -142,9 +153,10 @@ A completed source run should deliver, at minimum:
 - completeness/coverage report;
 - delivery validation;
 - runtime acceptance report;
+- presentation acceptance report;
 - final status + manifest/hash evidence;
 - final package ZIP;
 - direct TSV separately for normal Flashcards Pro import;
-- `CHECKPOINT.json` showing the final durable Git commit SHA and paths/hashes of all authoritative artifacts.
+- `CHECKPOINT.json` showing all seven stages as durable `PASS`, with the establishing Git commit SHA and paths/hashes of authoritative artifacts.
 
-Only call the package `Final` when every applicable hard gate actually executed and passed and the final authoritative artifacts are durably committed to Git.
+Only call the package `Final` when every applicable hard gate actually executed and passed and Stage 7 is durably committed to Git.

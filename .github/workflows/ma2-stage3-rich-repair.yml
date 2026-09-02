@@ -1,0 +1,141 @@
+name: Menschen A2 Stage 3 rich repair
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage3-rich-repair.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-rich-stage3-repair
+  cancel-in-progress: false
+
+jobs:
+  stage3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+    steps:
+      - name: Checkout repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install requests beautifulsoup4
+      - name: Run hard regressions before full enrichment
+        run: |
+          python Verification/test_rich_card_product_floor_v1_0_0.py
+          python Verification/test_menschen_a2_rich_enrichment_semantics.py
+      - name: Rebuild exact 292-unit Stage 3 artifacts
+        run: |
+          python Workspaces/menschen-a2/tools/enrich_rich_card_v6.py \
+            --canonical Workspaces/menschen-a2/02-canonical/CANONICAL.json \
+            --seed Workspaces/menschen-a2/tools/ENRICHMENT-SEED.json \
+            --out Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
+            --evidence Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
+            --cache Workspaces/menschen-a2/03-evidence/EXTERNAL-EVIDENCE-CACHE.json \
+            --delay 0.01
+      - name: Product-floor preflight on exact Stage 3 artifact
+        run: |
+          python Verification/validate_rich_card_product_floor_v1_0_0.py \
+            Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
+            Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json \
+            Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
+            --output Workspaces/menschen-a2/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json
+      - name: Build Stage 3 enrichment validation
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from collections import Counter
+          from pathlib import Path
+          root=Path('Workspaces/menschen-a2')
+          src=json.loads((root/'02-canonical/CANONICAL.json').read_text(encoding='utf-8'))
+          ds=json.loads((root/'02-canonical/CANONICAL-ENRICHED.json').read_text(encoding='utf-8'))
+          ev=json.loads((root/'03-evidence/EVIDENCE-INDEX.json').read_text(encoding='utf-8'))
+          pf=json.loads((root/'03-evidence/PRODUCT-FLOOR-PREFLIGHT.json').read_text(encoding='utf-8'))
+          su=src.get('learning_units') or []; units=ds.get('learning_units') or []; attempts=ev.get('external_evidence_attempts') or []
+          issues=[]
+          if len(units)!=292: issues.append(f'expected 292 units, found {len(units)}')
+          if [u.get('id') for u in units] != [u.get('id') for u in su]: issues.append('canonical ID/order parity changed')
+          if len(attempts)!=292: issues.append(f'expected 292 external-evidence attempt records, found {len(attempts)}')
+          if pf.get('status')!='PASS': issues.append('product-floor preflight did not PASS')
+          below=[u.get('id') for u in units if len(u.get('examples') or [])<4]
+          over=[u.get('id') for u in units if len(u.get('examples') or [])>6]
+          missing_defs=[u.get('id') for u in units if u.get('type')=='verb' and not str(u.get('definition_de') or '').strip()]
+          primary_en=[]; extra_en=[]
+          for u in units:
+              exs=u.get('examples') or []
+              if exs:
+                  en=[t for t in exs[0].get('translations',[]) if isinstance(t,dict) and t.get('lang')=='en-US' and str(t.get('text') or '').strip()]
+                  if not en: primary_en.append(u.get('id'))
+              for ex in exs[1:]:
+                  if any(isinstance(t,dict) and t.get('lang')=='en-US' and str(t.get('text') or '').strip() for t in ex.get('translations',[])):
+                      extra_en.append(u.get('id'))
+          if below: issues.append(f'{len(below)} units below 4 examples')
+          if over: issues.append(f'{len(over)} units above 6 examples')
+          if missing_defs: issues.append(f'{len(missing_defs)} verbs missing definition_de')
+          if primary_en: issues.append(f'{len(primary_en)} units missing reviewed primary English translation')
+          if extra_en: issues.append(f'{len(extra_en)} units retain non-primary English corpus translations')
+          status='PASS' if not issues else 'FAIL'
+          report={
+            'validator':'menschen-a2-stage3-rich-enrichment','validator_version':'1.0.0','status':status,
+            'source_canonical_sha256':hashlib.sha256((root/'02-canonical/CANONICAL.json').read_bytes()).hexdigest(),
+            'enriched_canonical_sha256':hashlib.sha256((root/'02-canonical/CANONICAL-ENRICHED.json').read_bytes()).hexdigest(),
+            'metrics':{
+              'units':len(units),'type_counts':dict(Counter(u.get('type') for u in units)),
+              'evidence_attempts':len(attempts),'attempt_statuses':dict(Counter(a.get('status') for a in attempts if isinstance(a,dict))),
+              'units_with_4plus_examples':sum(len(u.get('examples') or [])>=4 for u in units),
+              'verbs_with_definition':sum(u.get('type')=='verb' and bool(str(u.get('definition_de') or '').strip()) for u in units),
+              'primary_examples_with_english':len(units)-len(primary_en),
+              'nonprimary_english_translations':len(extra_en),
+              'collocations':sum(sum(1 for c in (u.get('connections') or []) if isinstance(c,dict) and c.get('kind')=='collocation') for u in units),
+              'synonyms':sum(len((u.get('details') or {}).get('synonyms') or []) for u in units),
+              'antonyms':sum(len((u.get('details') or {}).get('antonyms') or []) for u in units),
+              'rection_items':sum(len((u.get('details') or {}).get('rection') or []) for u in units)
+            },
+            'product_floor_status':pf.get('status'),'issues':issues,
+            'below4_ids':below,'over6_ids':over,'missing_definition_ids':missing_defs,'primary_english_missing_ids':primary_en,'nonprimary_english_ids':sorted(set(extra_en))
+          }
+          (root/'03-evidence/ENRICHMENT-VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if status!='PASS': raise SystemExit(1)
+          PY
+      - name: Commit authoritative Stage 3 artifacts
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add \
+            Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
+            Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
+            Workspaces/menschen-a2/03-evidence/EXTERNAL-EVIDENCE-CACHE.json \
+            Workspaces/menschen-a2/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json \
+            Workspaces/menschen-a2/03-evidence/ENRICHMENT-VALIDATION.json
+          git commit -m 'Pass Menschen A2 rich-card Stage 3 enrichment'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
+          echo "STAGE3_PASS_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Record durable Stage 3 PASS in checkpoint
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('Workspaces/menschen-a2/CHECKPOINT.json');cp=json.loads(p.read_text(encoding='utf-8'))
+          validation=json.loads(Path('Workspaces/menschen-a2/03-evidence/ENRICHMENT-VALIDATION.json').read_text(encoding='utf-8'))
+          s=next(x for x in cp['stages'] if x['stage']==3)
+          s['state']='PASS';s['pass_commit']=os.environ['STAGE3_PASS_COMMIT']
+          m=validation['metrics']
+          s['summary']=f"PASS: {m['units']} units; {m['units_with_4plus_examples']} with >=4 examples; {m['verbs_with_definition']} verbs with definition; {m['evidence_attempts']} external-evidence attempts. Exact enriched canonical passed product-floor preflight."
+          s['authoritative_outputs']=['02-canonical/CANONICAL-ENRICHED.json','03-evidence/EVIDENCE-INDEX.json','03-evidence/EXTERNAL-EVIDENCE-CACHE.json']
+          s['gate_evidence']=['03-evidence/ENRICHMENT-VALIDATION.json','03-evidence/PRODUCT-FLOOR-PREFLIGHT.json','Verification/test_rich_card_product_floor_v1_0_0.py','Verification/test_menschen_a2_rich_enrichment_semantics.py']
+          cp['resume_instruction']='Resume at Stage 4 on repair/menschen-a2-rich-card-floor-v8. Run rich linguistic QA, lexical-quality v1.0.2, coverage and exact product-floor validation; then continue Stages 5-7.'
+          p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add Workspaces/menschen-a2/CHECKPOINT.json
+          git commit -m 'Checkpoint Menschen A2 Stage 3 PASS'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8

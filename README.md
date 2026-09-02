@@ -1,80 +1,58 @@
-# German Content Production Kit v3.1.10
+# German Content Production Kit v3.1.11
 
 ```text
 Start here:
-Prompt/START-PROMPT-v3.1.10.md
+Prompt/START-PROMPT-v3.1.11.md
 ```
 
-v3.1.10 یک **Product Content Completeness Hotfix** روی baseline اجرایی v3.1.9 است. Architecture v3.1.5 و semantic contract v3.1.3 تغییر نکرده‌اند. این repository wrapper برای استفاده در ChatGPT/Codex است و **Flashcards Pro data-import ZIP نیست**.
+v3.1.11 is the active production overlay. It strengthens v3.1.10 with lexical-quality, source-adaptive agentic execution, incremental/cached enrichment, and version-pinned Flashcards Pro runtime acceptance. Architecture v3.1.5 and semantic contract 3.1.3 are unchanged.
 
-## اجزای مستقل
+## Active authority map
 
-| Component | Version / role |
-|---|---|
-| Active Prompt | `v3.1.10` — completeness overlay روی v3.1.9 |
-| Base Prompt | `v3.1.9` — producer/workflow baseline |
-| Architecture package | `architecture_package_version = v3.1.5` — package provenance |
-| Semantic contract | `contract_version = 3.1.3` / `gfp-german-language-content@3.1.3` — canonical semantics |
-| Architecture validator | `validator_version = 2.2.0` for canonical validator |
-| Product completeness validator | `gfp-content-completeness@1.0.0` |
+- Active entrypoint: `Prompt/START-PROMPT-v3.1.11.md`
+- Active overlay: `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md`
+- New-source runbook: `Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md`
+- Generic new-source rich-card policy: `Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json`
+- Menschen A1-specific policy: `Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json`
+- Base producer/workflow prompt: `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.9.md`
+- Architecture package: v3.1.5
+- Semantic contract: `gfp-german-language-content@3.1.3`
+- Universal transport authority: `Architecture/01-CORE/FLASHCARDS-PRO-UNIVERSAL-v2-DELIVERY-SPEC.md`
+- Lexical quality validator: `Verification/validate_lexical_quality_v1_0_0.py`
 
-این Versionها مستقل‌اند. هیچ‌کدام را از دیگری derive یا equal فرض نکن.
+Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. A new source without a dedicated profile starts from the generic rich-card policy and keeps its own source identity.
 
-## Authority map
+## v3.1.11 production rules
 
-- `Prompt/START-PROMPT-v3.1.10.md` entrypoint فعال است.
-- `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.10.md` completeness overlay است و v3.1.9 را strengthen می‌کند.
-- `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.9.md` workflow baseline اجرایی است.
-- `Architecture/01-CORE/GERMAN-LANGUAGE-CONTENT-CONTRACT-v3.1.3.md` semantic contract است.
-- `Architecture/02-SCHEMAS/`, `03-PROFILES/`, `04-TYPE-RULES/` shape/policy/type authority هستند.
-- `Architecture/01-CORE/FLASHCARDS-PRO-UNIVERSAL-v2-DELIVERY-SPEC.md` delivery authority برای Architecture v3.1.5 است.
-- `Architecture/01-CORE/CONTENT-GENERATION-MASTER-PROMPT-v3.1.5.md` سند bundled release قبلی است و entrypoint جاری را override نمی‌کند.
+- Quality outranks field density. Never fabricate learner content or evidence to satisfy a count.
+- Example-derived phrases are not collocations.
+- Included collocations must be atomic, sense-aligned and explicitly evidence-backed.
+- Synonym/antonym content is omitted when evidence cannot be bound to the selected sense.
+- Explicit valency notation in a learner headword requires explicit Rektion with evidence.
+- External source retrieval is cached and incremental. Retry only failed/missing/stale units; repeated full-dataset refetch is considered a pipeline defect.
+- Legacy enrichment, old NVV fields, historical mappings and previous enriched datasets are disabled unless the user explicitly opts into a named recovery workflow.
+- Final delivery requires actual target runtime/import + presentation acceptance or an exact version-pinned equivalent. Parse/transport-only PASS is not Final.
+- Resolve the current intended Flashcards Pro runtime at delivery time. v354 is the current verified baseline for this revision, not a permanent hardcoded target.
+- Continue agentically through QA, delivery, runtime acceptance, packaging and post-package verification. Do not stop every N cards.
 
-## Product completeness — v3.1.10
+## New-source execution
 
-`CONTENT_VALIDATED` دیگر به معنی کامل بودن محتوای قابل نمایش کارت نیست. Gate جداگانهٔ زیر اجباری است:
+When the user supplies a new book/source, follow `Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md`:
 
-```text
-PRODUCT_CONTENT_COMPLETE
-```
+1. Resolve source/book, level, units/types and target runtime.
+2. Freeze source inventory and stable canonical IDs once.
+3. Produce canonical content under Architecture v3.1.5 / semantic contract 3.1.3.
+4. Cache external evidence and enrich incrementally.
+5. Run canonical validation, linguistic audit and lexical-quality validation.
+6. Report product coverage without fabricating missing preferred content.
+7. Build Universal TSV/selected delivery.
+8. Execute target runtime importer/presentation acceptance.
+9. Package, hash, independently verify, and only then mark Final.
 
-برای Menschen A1 Verb rich-card، Profile فعال:
+Expected final handoff includes the direct import TSV separately, canonical JSON, QA reports, runtime evidence, manifest/hash evidence and the package ZIP.
 
-`Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.0.0.json`
+## Version/provenance note
 
-حداقل‌های کلیدی:
+The root `PRODUCTION-KIT-MANIFEST.json` and older full-package audit artifacts remain historical baseline evidence and must not be misrepresented as a newly regenerated full v3.1.11 package manifest. v3.1.11 is a production overlay and QA hardening layer; Architecture v3.1.5 is not rewritten.
 
-- auxiliary / reflexive / separability اجباری؛
-- Collocation حداقل 3، هدف 4، preferred max برابر 6؛
-- Collocation/Rektion/Synonym/Antonym موجود باید evidence claim متناسب داشته باشد؛
-- Synonym/Antonym preferred هستند، نه hard-required؛
-- ساختن داده یا evidence برای پر کردن count ممنوع است؛
-- legacy `NVV1..NVV6` بدون classification semantic به `nvv` یا `collocation` تبدیل نمی‌شود.
-
-Validator:
-
-```text
-Verification/validate_content_completeness_v1_0_0.py
-```
-
-Regression suite:
-
-```text
-Verification/test_content_completeness_v1_0_0.py
-```
-
-## استفاده
-
-1. Repo/Package را به ChatGPT/Codex بدهید و از entrypoint v3.1.10 شروع کنید.
-2. Source Dataset واقعی و Dataset Profile موردنظر را resolve کنید.
-3. Canonical/structural validation و Linguistic Audit را جدا اجرا کنید.
-4. Product Completeness را جدا اجرا کنید؛ PASS قبلی `CONTENT_VALIDATED` برای عبور از این Gate کافی نیست.
-5. اگر Delivery می‌خواهید، Target/Format را از Delivery Spec authoritative resolve کنید.
-6. statusهای Content / Product Completeness / Transport / isolated Runtime / current Runtime را جدا نگه دارید.
-
-## Audit and verification
-
-- `FINAL-ADVERSARIAL-AUDIT.md` و root `PRODUCTION-KIT-MANIFEST.json` مربوط به baseline کامل v3.1.9 هستند.
-- `Verification/PRODUCTION-KIT-HOTFIX-VERIFICATION-v3.1.10.json` evidence افزوده‌شدهٔ v3.1.10 را ثبت می‌کند.
-- تا زمانی که full checkout/package دوباره manifest/hash کامل تولید نکرده، root manifest v3.1.9 را به‌عنوان manifest کامل v3.1.10 جا نزن.
-- Architecture payload در v3.1.10 rewrite نشده است.
+See `Prompt/CHANGELOG-v3.1.11.md` for the current changes.

@@ -1,0 +1,59 @@
+{
+  "checkpoint_schema_version": "1.0.0",
+  "dataset": {
+    "id": "menschen-a2",
+    "title": "Menschen A2",
+    "level": "A2",
+    "authoritative_source": "11 user-provided screenshots"
+  },
+  "workspace": {
+    "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
+    "branch": "main",
+    "path": "Workspaces/menschen-a2"
+  },
+  "authorities": {
+    "content_kit_prompt": "v3.1.11",
+    "architecture": "v3.1.5",
+    "semantic_contract": "gfp-german-language-content@3.1.3",
+    "delivery_profile": "flashcards-pro-universal-v2@1.0.1",
+    "flashcards_pro_repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "flashcards_pro_branch": "main",
+    "flashcards_pro_commit": "600861f269d1552c7fc34b4032eef07ea1b91c14",
+    "flashcards_pro_runtime": "v354"
+  },
+  "historical_recovery_baseline": {
+    "mode": "named-recovery",
+    "known_source_images": 11,
+    "known_raw_rows": 297,
+    "known_candidate_cards": 278,
+    "known_examples": 1112,
+    "historical_regression": "22/22 PASS",
+    "historical_runtime_acceptance": "NOT_RUN",
+    "physical_candidate_dataset_available_in_current_git": false,
+    "note": "Historical outputs are evidence only until the physical candidate/canonical artifact is recovered and reverified under current contracts."
+  },
+  "stages": {
+    "source_intake": "DONE",
+    "image_level_inventory_verification": "IN_PROGRESS",
+    "stable_ids": "RECOVERY_BASELINE_AVAILABLE",
+    "canonical_current_contract": "NOT_STARTED",
+    "external_evidence_enrichment": "NOT_STARTED",
+    "linguistic_qa": "NOT_STARTED",
+    "lexical_quality_gate": "NOT_STARTED",
+    "product_coverage": "NOT_STARTED",
+    "delivery_projection": "NOT_STARTED",
+    "runtime_import_acceptance": "NOT_STARTED",
+    "presentation_acceptance": "NOT_STARTED",
+    "packaging": "NOT_STARTED",
+    "post_package_verification": "NOT_STARTED"
+  },
+  "blockers": [
+    "The physical historical 278-card Menschen A2 candidate/canonical artifact has not been located in the current Git repositories.",
+    "Do not reconstruct 278 cards from summaries; recover the actual artifact or rederive from the authoritative screenshots under current contracts."
+  ],
+  "resume_instruction": "First inspect this checkpoint and current main of both repositories. If the historical 278-card artifact is recovered, import it only through the named recovery workflow and reverify against the 11 authoritative screenshots. Otherwise continue image-level inventory verification from the authoritative screenshots and rebuild deterministically. Persist every completed stage in this workspace before marking it DONE.",
+  "durability": {
+    "checkpoint_is_git_backed": true,
+    "no_chat_only_done_states": true
+  }
+}

@@ -9,7 +9,8 @@
   },
   "workspace": {
     "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
-    "branch": "main",
+    "branch": "repair/menschen-a2-rich-card-floor-v8",
+    "final_target_branch": "main",
     "path": "Workspaces/menschen-a2"
   },
   "authorities": {
@@ -20,11 +21,12 @@
     "source_canonical_profile": "Workspaces/menschen-a2/02-canonical/MENSCHEN-A2-PROFILE.json (menschen-a2@2.1.0; Stage 1/2 only)",
     "product_completeness_profile": "Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json (german-rich-card-product-floor@1.0.0)",
     "lexical_completeness_profile": "Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json",
+    "lexical_quality_validator": "Verification/validate_lexical_quality_v1_0_2.py",
     "delivery_profile": "flashcards-pro-universal-v2@1.0.1",
     "flashcards_pro_repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
     "flashcards_pro_branch": "main",
     "flashcards_pro_commit": "49a28187e82734e92bc407276eb0d2ee0cbbbd55",
-    "flashcards_pro_runtime": "v354"
+    "flashcards_pro_runtime": "v354 (current resolved baseline; not permanently hardcoded)"
   },
   "historical_recovery_baseline": {
     "mode": "named-recovery",
@@ -53,34 +55,33 @@
       "state": "PASS",
       "required_outputs": ["02-canonical/CANONICAL.json", "02-canonical/CANONICAL-VALIDATION.json", "02-canonical/NORMALIZATION-DECISIONS.json"],
       "pass_commit": "813cf03b1804fdadeacaeb1a8ed240a73543deda",
-      "summary": "292 source-semantic Learning Units remain valid. The sparse MENSCHEN-A2-PROFILE is now explicitly classified as the Stage 1/2 source-canonical profile only; it is not product-completeness authority.",
+      "summary": "292 source-semantic Learning Units remain valid. The sparse MENSCHEN-A2-PROFILE is Stage 1/2 source-canonical authority only; it is not final product-completeness authority.",
       "authoritative_outputs": ["02-canonical/CANONICAL.json", "02-canonical/NORMALIZATION-DECISIONS.json", "02-canonical/MENSCHEN-A2-PROFILE.json"],
       "gate_evidence": ["02-canonical/CANONICAL-VALIDATION.json"]
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "INVALIDATED",
+      "state": "RUNNING",
       "pass_commit": null,
-      "summary": "Invalidated: previous Stage 3 explicitly preserved exactly one example per unit and performed zero external lexical enrichment while marking PASS. Rebuild against the non-relaxable rich-card product floor.",
-      "required_outputs": ["03-evidence/EVIDENCE-INDEX.json", "03-evidence/EXTERNAL-EVIDENCE-CACHE.json", "02-canonical/CANONICAL-ENRICHED.json"],
-      "gate_evidence": ["04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json"]
+      "summary": "Rebuilding all 292 units with the v6 sense-aligned evidence pipeline. First-10 regression sample passed the product floor after fixing Wiktionary DOM parsing, lemma resolution, polysemy/sense drift and exact-phrase evidence fallback. Full Git-backed run is still required before PASS.",
+      "required_outputs": ["03-evidence/EVIDENCE-INDEX.json", "03-evidence/EXTERNAL-EVIDENCE-CACHE.json", "03-evidence/ENRICHMENT-VALIDATION.json", "02-canonical/CANONICAL-ENRICHED.json"],
+      "gate_evidence": ["04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json", "Verification/test_rich_card_product_floor_v1_0_0.py", "Verification/test_menschen_a2_rich_enrichment_semantics.py"]
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Invalidated because prior QA validated lexical claim quality but lacked the pedagogical product floor and systemic zero-enrichment hard gate.",
-      "required_outputs": ["04-qa/LINGUISTIC-QA.json", "04-qa/LEXICAL-QUALITY.json", "04-qa/COVERAGE-REPORT.json", "04-qa/PRODUCT-FLOOR-VALIDATION.json"],
-      "gate_evidence": ["04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json"]
+      "summary": "Waiting for repaired Stage 3. Prior QA lacked the pedagogical product floor and systemic zero-enrichment hard gate.",
+      "required_outputs": ["04-qa/LINGUISTIC-QA.json", "04-qa/LEXICAL-QUALITY.json", "04-qa/COVERAGE-REPORT.json", "04-qa/PRODUCT-FLOOR-VALIDATION.json"]
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Invalidated because the projected TSV contains the thin enriched canonical artifact.",
+      "summary": "Waiting for repaired Stage 4; prior TSV projected the thin artifact.",
       "required_outputs": ["05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv", "05-delivery/DELIVERY-VALIDATION.json", "05-delivery/DELIVERY-LOSS-CHECK.json"]
     },
     {
@@ -88,7 +89,7 @@
       "name": "Runtime & Presentation Acceptance",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Invalidated: runtime import/persistence was real, but Acceptance did not prove learner-visible rich-card completeness. Corrected Stage 6 must validate the product floor after import and representative rendered richness.",
+      "summary": "Waiting for repaired Stage 5. Corrected acceptance must validate product semantics after real current-main import, not merely transport/persistence.",
       "required_outputs": ["06-runtime/RUNTIME-ACCEPTANCE.json", "06-runtime/PRESENTATION-ACCEPTANCE.json", "06-runtime/PRODUCT-PRESENTATION-ACCEPTANCE.json"]
     },
     {
@@ -96,7 +97,7 @@
       "name": "Release & Post-Package Verification",
       "state": "INVALIDATED",
       "pass_commit": null,
-      "summary": "Invalidated because the previously packaged artifact was product-incomplete despite transport/package integrity.",
+      "summary": "Waiting for repaired Stages 3-6; prior package is invalidated and may not be reused as production input.",
       "required_outputs": ["07-release/FINAL-STATUS.json", "07-release/BUILD-METADATA.json", "07-release/MANIFEST.json", "07-release/SHA256SUMS.txt", "07-release/final package or immutable release asset"]
     }
   ],
@@ -111,7 +112,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 3. Rebuild the 292 units with evidence attempts, rich-card product floor (verb definition + >=4 DE examples with EN translations, phrase >=4 examples), evidence-backed lexical details when available, then rerun Stages 4-7 including product-floor and rendered Presentation acceptance. Do not reuse the invalidated final ZIP as an input.",
+  "resume_instruction": "Continue Stage 3 on repair/menschen-a2-rich-card-floor-v8. Complete the full 292-unit v6 evidence run; PASS only if exact committed enriched canonical + evidence index/cache + enrichment validation satisfy the product-floor preflight. Then run Stages 4-7. Do not use the invalidated prior final ZIP as input.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

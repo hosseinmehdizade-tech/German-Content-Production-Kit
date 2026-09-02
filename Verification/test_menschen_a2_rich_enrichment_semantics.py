@@ -29,7 +29,7 @@ assert not v7.v5.structural_example_ok(phrase2,'Er besteht die Prüfung.')
 # complement creates direct-object Rektion; bare source shorthand may not reappear.
 assert v7.derive_rection_v7({'headword':'sich etw. (Dat.) verschließen','provenance':{'sources':[]}})==['etwas + Dativ']
 assert v7.derive_rection_v7({'headword':'los sein','provenance':{'sources':[{'evidence_note':'Raw German bundle: los sein [+A]'}]}})==[]
-assert 'auf + Dativ' in v7.derive_rection_v7({'headword':'bestehen aus (Dat.)','provenance':{'sources':[]}})
+assert 'aus + Dativ' in v7.derive_rection_v7({'headword':'bestehen aus (Dat.)','provenance':{'sources':[]}})
 assert 'für + Akkusativ' in v7.derive_rection_v7({'headword':'sich interessieren für (Akk.)','provenance':{'sources':[]}})
 
 # Residual Verbformen top-up is exact-lemma evidence plus conservative surface filters.

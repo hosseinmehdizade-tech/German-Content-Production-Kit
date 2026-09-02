@@ -23,12 +23,8 @@ jobs:
           mkdir -p /tmp/menschen-a2
           cat Data/Menschen-A2/v3.1.11-ci/payload/part-*.txt | base64 -d > /tmp/menschen-a2/payload.gz
           gzip -dc /tmp/menschen-a2/payload.gz > /tmp/menschen-a2/payload.raw
-          echo '--- payload type ---'
           file /tmp/menschen-a2/payload.raw
-          echo '--- payload bytes ---'
           wc -c /tmp/menschen-a2/payload.raw
-          echo '--- payload prefix ---'
-          head -c 160 /tmp/menschen-a2/payload.raw | xxd -g 1
       - name: Materialize payload
         shell: bash
         run: |
@@ -43,7 +39,7 @@ jobs:
               with zipfile.ZipFile(p) as z: z.extractall(out)
               print('MATERIALIZED=zip')
           elif tarfile.is_tarfile(p):
-              with tarfile.open(p) as t: t.extractall(out)
+              with tarfile.open(p) as t: t.extractall(out, filter='data')
               print('MATERIALIZED=tar')
           else:
               text=p.read_text(encoding='utf-8')
@@ -52,7 +48,19 @@ jobs:
               print('MATERIALIZED=python-text')
               subprocess.check_call([sys.executable,str(script)])
           PY
-          find Data/Menschen-A2/v3.1.11-ci -maxdepth 5 -type f -printf '%p\t%s bytes\n' | sort
+          find Data/Menschen-A2/v3.1.11-ci/materialized -maxdepth 5 -type f -printf '%p\t%s bytes\n' | sort
+      - name: Execute clean-slate Menschen A2 builder
+        shell: bash
+        run: |
+          set -euo pipefail
+          PAYLOAD_DIR="Data/Menschen-A2/v3.1.11-ci/materialized/a2-ci-payload"
+          test -f "$PAYLOAD_DIR/build_a2_v311_ci.py"
+          (
+            cd "$PAYLOAD_DIR"
+            python build_a2_v311_ci.py
+          )
+          echo '--- generated files ---'
+          find "$PAYLOAD_DIR" -maxdepth 5 -type f -printf '%p\t%s bytes\n' | sort
       - name: Locate build artifacts
         shell: bash
         run: |
@@ -95,8 +103,8 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          import csv,json,hashlib
-          c=Path('${{ env.CANONICAL }}'); t=Path('${{ env.TSV }}')
+          import json,hashlib,os
+          c=Path(os.environ['CANONICAL']); t=Path(os.environ['TSV'])
           ds=json.loads(c.read_text(encoding='utf-8'))
           lines=t.read_text(encoding='utf-8').splitlines()
           hdr=lines[0].split('\t')

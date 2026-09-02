@@ -1,0 +1,46 @@
+name: MA2 enrichment network diagnostic
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor]
+    paths:
+      - '.github/workflows/ma2-enrichment-network-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Wiktionary, Tatoeba and translation endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, urllib.parse, urllib.request
+          UA={'User-Agent':'German-Content-Production-Kit/3.1.13 diagnostic'}
+          def get(url):
+              req=urllib.request.Request(url,headers=UA)
+              with urllib.request.urlopen(req,timeout=20) as r:
+                  return r.status, r.read(200000)
+          urls={
+            'wiktionary':'https://de.wiktionary.org/wiki/klettern',
+            'tatoeba':'https://tatoeba.org/en/api_v0/search?from=deu&query='+urllib.parse.quote('klettern'),
+            'gtx_en':'https://translate.googleapis.com/translate_a/single?client=gtx&sl=de&tl=en&dt=t&q='+urllib.parse.quote('Wir klettern auf einen Baum.'),
+            'gtx_fa':'https://translate.googleapis.com/translate_a/single?client=gtx&sl=de&tl=fa&dt=t&q='+urllib.parse.quote('Wir klettern auf einen Baum.'),
+          }
+          result={}
+          for k,u in urls.items():
+              try:
+                  status,data=get(u)
+                  result[k]={'status':status,'bytes':len(data),'prefix':data[:500].decode('utf-8','replace')}
+              except Exception as e:
+                  result[k]={'error':type(e).__name__+': '+str(e)}
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          if result.get('wiktionary',{}).get('status')!=200: raise SystemExit('wiktionary unavailable')
+          if result.get('gtx_en',{}).get('status')!=200 or result.get('gtx_fa',{}).get('status')!=200: raise SystemExit('translation endpoint unavailable')
+          PY

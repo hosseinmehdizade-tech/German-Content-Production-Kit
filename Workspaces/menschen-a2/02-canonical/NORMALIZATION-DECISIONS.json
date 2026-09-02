@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "menschen-a2",
+  "stage": 2,
+  "source_rows": 297,
+  "active_canonical_units": 292,
+  "type_counts": {
+    "verb": 227,
+    "phrase": 65
+  },
+  "retirements": [
+    {
+      "retired_id": "ma2-lu-0203",
+      "source_order": 203,
+      "survivor_id": "ma2-lu-0059",
+      "reason": "exact source duplicate of the same reflexive construction"
+    },
+    {
+      "retired_id": "ma2-lu-0266",
+      "source_order": 266,
+      "survivor_id": "ma2-lu-0012",
+      "reason": "exact source duplicate of eingeben"
+    },
+    {
+      "retired_id": "ma2-lu-0292",
+      "source_order": 292,
+      "survivor_id": "ma2-lu-0074",
+      "reason": "exact source duplicate of sich verabreden"
+    },
+    {
+      "retired_id": "ma2-lu-0177",
+      "source_order": 177,
+      "survivor_id": "ma2-lu-0054",
+      "reason": "source headword cell is a sentence using abschicken, which is already source-listed as a variant of absenden; no separate verb identity emitted"
+    }
+  ],
+  "exclusions": [
+    {
+      "source_id": "ma2-src-0286",
+      "candidate_id": "ma2-lu-0286",
+      "source_order": 286,
+      "reason": "non-verb phrase 'in Vorbereitung auf ...'; user source is specifically the Menschen A2 verb set"
+    }
+  ],
+  "type_policy": {
+    "verb": "rows carrying a usable finite/perfect paradigm are canonical verb units",
+    "phrase": "construction/fixed-expression/multi-expression rows without a standalone finite verb paradigm remain phrase units; source wording is retained without inventing a verb paradigm"
+  },
+  "derived_present_3sg_orders": [
+    1,
+    14,
+    18,
+    22,
+    23,
+    26,
+    30,
+    33,
+    35,
+    44,
+    45,
+    47,
+    58,
+    63,
+    66,
+    69,
+    70,
+    72,
+    74,
+    80,
+    82,
+    84,
+    90,
+    93,
+    94,
+    99,
+    118,
+    119,
+    122,
+    126,
+    129,
+    134,
+    135,
+    137,
+    141,
+    145,
+    147,
+    149,
+    154,
+    155,
+    157,
+    161,
+    167,
+    172,
+    173,
+    175,
+    185,
+    191,
+    194,
+    195,
+    207,
+    216,
+    217,
+    227,
+    234,
+    238,
+    247,
+    249,
+    250,
+    256,
+    262,
+    268,
+    283,
+    284,
+    290,
+    294,
+    297
+  ],
+  "morphology_repairs": [
+    {
+      "source_order": 16,
+      "field": "perfect",
+      "source_value": "hat renoviert/das Renovieren",
+      "canonical_value": "hat renoviert",
+      "reason": "nominalization after slash is not part of perfect form"
+    },
+    {
+      "source_order": 18,
+      "field": "perfect",
+      "source_value": "sich gestellt",
+      "canonical_value": "hat sich gestellt",
+      "reason": "source omitted explicit auxiliary; recoverable from reflexive paradigm"
+    },
+    {
+      "source_order": 60,
+      "field": "preterite_3sg",
+      "source_value": "liess",
+      "canonical_value": "ließ",
+      "reason": "standard German orthography"
+    },
+    {
+      "source_order": 94,
+      "field": "perfect",
+      "source_value": "sich verletzt",
+      "canonical_value": "hat sich verletzt",
+      "reason": "source omitted explicit auxiliary; recoverable from reflexive paradigm"
+    },
+    {
+      "source_order": 297,
+      "field": "preterite_3sg",
+      "source_value": "rastete aus/ausrastete",
+      "canonical_value": "rastete aus",
+      "reason": "kept standard separated finite variant"
+    }
+  ],
+  "learner_facing_policy": "Source shorthand is normalized for headword readability; raw German source bundle remains losslessly in provenance.evidence_note. No collocations/synonyms/antonyms/rection were invented.",
+  "legacy_used": false,
+  "source_example_normalizations": [
+    {
+      "source_order": 242,
+      "canonical_id": "ma2-lu-0242",
+      "source_right_column": "nach: Stadt, Land etc.",
+      "decision": "usage_note_not_example",
+      "canonical_preservation": "details.grammar_notes",
+      "stage3_action": "generate one pedagogical German example with FA/EN translations"
+    }
+  ],
+  "order_policy": "metadata.unit_order preserves authoritative Stage-1 source order (with gaps for retired/excluded source rows); no active-card renumbering."
+}

@@ -1,0 +1,85 @@
+{
+  "profile_schema_version": "2.1.0",
+  "profile_id": "menschen-a2@2.1.0",
+  "dataset": {
+    "id": "menschen-a2",
+    "title": "Menschen A2",
+    "tags": [
+      "coursebook",
+      "a2",
+      "user-source"
+    ]
+  },
+  "cefr": "A2",
+  "id_policy": {
+    "card_id_pattern": "^ma2-lu-[0-9]{4}$",
+    "example_id_suffix_pattern": "-ex-[0-9]{3}$",
+    "derive_example_id_from_text": false,
+    "reuse_retired_example_ids": false
+  },
+  "allowed_types": [
+    "verb",
+    "phrase"
+  ],
+  "allow_generic_type_rule": false,
+  "required_unit_fields": [
+    "persian_meaning"
+  ],
+  "definition_policy": "optional",
+  "languages": {
+    "source": {
+      "lang": "de-DE",
+      "required": true
+    },
+    "translations": [
+      {
+        "lang": "fa-IR",
+        "required": false
+      },
+      {
+        "lang": "en-US",
+        "required": false
+      }
+    ]
+  },
+  "examples": {
+    "default": {
+      "target": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "enforcement": "range"
+    },
+    "by_type": {}
+  },
+  "type_requirements": {
+    "verb": {
+      "required_core_fields": [
+        "auxiliary",
+        "reflexive",
+        "separability"
+      ],
+      "required_detail_fields": []
+    }
+  },
+  "source_policy": {
+    "registry_id": "gfp-approved-language-sources@1.1.0",
+    "allowed_kinds": [
+      "course",
+      "other",
+      "generated"
+    ],
+    "require_registered_source": false,
+    "require_approved_source": false,
+    "allow_test_only_sources": false,
+    "require_verified_source": false,
+    "minimum_verified_sources": 0,
+    "risky_flags": [
+      "ambiguous_sense",
+      "multi_sense",
+      "disputed",
+      "high_risk"
+    ],
+    "claim_requirements": {}
+  },
+  "linguistic_strictness": "strict"
+}

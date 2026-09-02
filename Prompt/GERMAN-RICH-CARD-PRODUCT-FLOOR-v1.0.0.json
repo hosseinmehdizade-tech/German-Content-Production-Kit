@@ -1,0 +1,60 @@
+{
+  "profile_schema_version": "1.0.0",
+  "profile_id": "german-rich-card-product-floor@1.0.0",
+  "target": "flashcards-pro-german-rich-card",
+  "policy": {
+    "stage2_source_profile_is_not_product_profile": true,
+    "source_specific_profile_may_not_relax_this_floor": true,
+    "explicit_user_waiver_required_to_relax_floor": true,
+    "quality_over_density": true,
+    "no_fabrication_to_satisfy_minimums": true,
+    "external_evidence_attempt_is_mandatory_for_eligible_lexical_units": true,
+    "zero_external_lexical_enrichment_is_a_hard_failure_for_nonempty_verb_datasets": true,
+    "preferred_lexical_detail_counts_do_not_authorize_fabrication": true
+  },
+  "by_type": {
+    "verb": {
+      "required_unit_fields": ["persian_meaning", "definition_de"],
+      "required_core_fields": ["present_3sg", "preterite_3sg", "perfect", "auxiliary", "reflexive", "separability"],
+      "examples": {
+        "target": 5,
+        "minimum": 4,
+        "maximum": 6,
+        "required_translation_languages": ["en-US"]
+      },
+      "lexical_detail_coverage": {
+        "count_fields": ["connections.collocation", "details.rection", "details.synonyms", "details.antonyms", "details.variants"],
+        "minimum_dataset_fraction_with_any_detail": 0.5,
+        "purpose": "Systemic parser/enrichment health guard; this is not a per-card density quota."
+      }
+    },
+    "phrase": {
+      "required_unit_fields": ["persian_meaning"],
+      "required_core_fields": ["structure"],
+      "examples": {
+        "target": 5,
+        "minimum": 4,
+        "maximum": 6,
+        "required_translation_languages": ["en-US"]
+      }
+    }
+  },
+  "evidence_gate": {
+    "eligible_types": ["verb"],
+    "require_attempt_record_for_every_eligible_unit": true,
+    "allow_failed_attempts": true,
+    "failed_attempts_must_be_explicit": true,
+    "external_evidence_sources_may_include": ["lexicon", "corpus", "course", "website", "expert"],
+    "generated_pedagogical_examples_do_not_count_as_external_lexical_evidence": true
+  },
+  "runtime_presentation_gate": {
+    "assert_product_floor_after_import": true,
+    "representative_render_samples_required": true,
+    "sample_each_learning_unit_type": true,
+    "assert_definition_for_sampled_verbs": true,
+    "assert_minimum_examples_for_sampled_units": 4,
+    "assert_example_english_translation": true,
+    "assert_multi_value_items_render_separately": true,
+    "assert_no_raw_json_leak": true
+  }
+}

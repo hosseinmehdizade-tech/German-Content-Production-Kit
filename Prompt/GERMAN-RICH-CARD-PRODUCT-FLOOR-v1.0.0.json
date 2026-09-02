@@ -20,7 +20,7 @@
         "target": 5,
         "minimum": 4,
         "maximum": 6,
-        "required_translation_languages": ["en-US"]
+        "minimum_translated_examples": {"en-US": 1}
       },
       "lexical_detail_coverage": {
         "count_fields": ["connections.collocation", "details.rection", "details.synonyms", "details.antonyms", "details.variants"],
@@ -35,7 +35,12 @@
         "target": 5,
         "minimum": 4,
         "maximum": 6,
-        "required_translation_languages": ["en-US"]
+        "minimum_translated_examples": {"en-US": 1}
+      },
+      "conditional_rection": {
+        "when_structure_has_explicit_case_or_fixed_case_preposition": true,
+        "minimum": 1,
+        "ambiguous_two_way_preposition_case_must_not_be_guessed": true
       }
     }
   },
@@ -53,7 +58,7 @@
     "sample_each_learning_unit_type": true,
     "assert_definition_for_sampled_verbs": true,
     "assert_minimum_examples_for_sampled_units": 4,
-    "assert_example_english_translation": true,
+    "assert_at_least_one_english_example_translation": true,
     "assert_multi_value_items_render_separately": true,
     "assert_no_raw_json_leak": true
   }

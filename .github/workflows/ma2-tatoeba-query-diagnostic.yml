@@ -1,0 +1,28 @@
+name: MA2 Tatoeba query diagnostic
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-tatoeba-query-diagnostic.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install requests
+      - run: |
+          python - <<'PY'
+          import requests,json
+          from urllib.parse import quote
+          qs=['kuscheln an','kuschel* an','kuschel* sich an','"sich" "an" kuschel*','kuschel*','besteh* aus']
+          for q in qs:
+            url='https://tatoeba.org/en/api_v0/search?from=deu&query='+quote(q)+'&page=1'
+            r=requests.get(url,headers={'User-Agent':'GFP diagnostic'},timeout=20)
+            print('\nQUERY',q,'HTTP',r.status_code)
+            data=r.json(); rows=data.get('results') or []
+            print('COUNT',len(rows))
+            for x in rows[:20]: print(x.get('id'),x.get('text'))
+          PY

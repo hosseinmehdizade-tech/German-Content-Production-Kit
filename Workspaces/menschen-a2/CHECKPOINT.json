@@ -73,13 +73,20 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "RUNNING",
+      "state": "PASS",
       "required_outputs": [
         "03-evidence/EVIDENCE-INDEX.json",
         "02-canonical/CANONICAL-ENRICHED.json"
       ],
       "pass_commit": null,
-      "summary": "Adding reviewed example translations and five explicit pedagogical examples only; no lexical-density fabrication."
+      "summary": "292 units enriched without legacy data or fabricated density: 287 source examples retained, 5 minimal pedagogical examples explicitly marked generated, 584 reviewed FA/EN translations added.",
+      "authoritative_outputs": [
+        "03-evidence/EVIDENCE-INDEX.json",
+        "02-canonical/CANONICAL-ENRICHED.json"
+      ],
+      "gate_evidence": [
+        "03-evidence/EVIDENCE-INDEX.json"
+      ]
     },
     {
       "stage": 4,
@@ -127,7 +134,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Complete Stage 3 and commit enriched canonical/evidence index.",
+  "resume_instruction": "Resume at Stage 4 Linguistic & Lexical QA.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

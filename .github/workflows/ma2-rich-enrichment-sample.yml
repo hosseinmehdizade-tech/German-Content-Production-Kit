@@ -19,9 +19,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python -m pip install requests beautifulsoup4
-      - name: Regression gate self-test
+      - name: Product-floor regression self-test
         run: python Verification/test_rich_card_product_floor_v1_0_0.py
-      - name: Enrich first 10 units with sense-aligned v6
+      - name: Sense-alignment regression self-test
+        run: python Verification/test_menschen_a2_rich_enrichment_semantics.py
+      - name: Enrich first 10 units with quality-hardened sense-aligned v6
         run: |
           mkdir -p /tmp/ma2
           python Workspaces/menschen-a2/tools/enrich_rich_card_v6.py \

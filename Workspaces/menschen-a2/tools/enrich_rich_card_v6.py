@@ -31,6 +31,16 @@ def verbformen_fetch(session,lemma):
         seen.add(key);out.append({'text':de,'en':en})
     return {'url':url,'examples':out}
 
+
+def _looks_like_fragmentary_intransitive_collocation(unit,text,lemma):
+    # Conservative parser-health guard for compressed Wiktionary lists such as
+    # "im Freien, Hotel, Motel, Wohnwagen, Zelt übernachten" where splitting the
+    # list can leave a false learner-facing fragment "Zelt übernachten".
+    definition=base.norm(unit.get('definition_de')).casefold()
+    if 'intransitiv' not in definition:return False
+    tokens=base.norm(text).split()
+    return len(tokens)==2 and tokens[-1].casefold()==lemma.casefold() and bool(re.match(r'^[A-ZÄÖÜ]',tokens[0]))
+
 _orig_enrich=base.enrich
 
 def enrich_with_phrase_fallback(ds,seed,cache,max_units=None,delay=.12):
@@ -55,14 +65,37 @@ def enrich_with_phrase_fallback(ds,seed,cache,max_units=None,delay=.12):
             if len(u.get('examples',[]))>=5:break
             text=item['text']
             if text.casefold() in existing or not v5.structural_example_ok(u,text):continue
-            n=len(u.get('examples',[]))+1;trs=[]
-            if item.get('en'):trs=[{'lang':'en-US','text':item['en']}]
-            u.setdefault('examples',[]).append({'id':f"{u['id']}-ex-{n:03d}",'lang':'de-DE','text':text,'order':n,'translations':trs})
+            n=len(u.get('examples',[]))+1
+            u.setdefault('examples',[]).append({'id':f"{u['id']}-ex-{n:03d}",'lang':'de-DE','text':text,'order':n,'translations':[]})
             existing.add(text.casefold());picked.append(text);added+=1
         if picked:
-            base.add_source(u,'verbformen_examples',['example_attestation']+(['english_example_translation'] if any(x.get('en') for x in vf.get('examples',[])) else []),vf.get('url',''),'External conjugation/example corpus fallback. Only examples matching the explicit phrase preposition/reflexive structure are retained; it is not used as broad sense evidence.')
+            base.add_source(u,'verbformen_examples',['example_attestation'],vf.get('url',''),'External conjugation/example corpus fallback. Only German examples matching the explicit phrase preposition/reflexive structure are retained; English text on the source page is not projected as learner content because extra-example translation quality is not a product requirement.')
+    # Learner-facing English is intentionally the reviewed primary example only.
+    # Corpus English pairs can be noisy (including gender mismatches) and must not
+    # be retained merely because a corpus API returned them. Keep the external
+    # German attestations, which are the evidence needed for the rich-card floor.
+    extra_en_removed=0;fragment_collocations_removed=0
+    for u in processed:
+        exs=u.get('examples') if isinstance(u.get('examples'),list) else []
+        for ex in exs[1:]:
+            trs=ex.get('translations') if isinstance(ex.get('translations'),list) else []
+            if any(isinstance(t,dict) and t.get('lang')=='en-US' for t in trs):extra_en_removed+=1
+            ex['translations']=[t for t in trs if isinstance(t,dict) and t.get('lang')!='en-US']
+        if u.get('definition_de'):
+            u['definition_de']=re.sub(r'\s+([,;:.!?])',r'\1',base.norm(u['definition_de']))
+        lemma=v5.lookup_lemma(u.get('headword',''))
+        if lemma and isinstance(u.get('connections'),list):
+            kept=[]
+            for c in u['connections']:
+                if isinstance(c,dict) and c.get('kind')=='collocation' and _looks_like_fragmentary_intransitive_collocation(u,c.get('text',''),lemma):
+                    fragment_collocations_removed+=1;continue
+                kept.append(c)
+            if kept:u['connections']=kept
+            else:u.pop('connections',None)
     counts['verbformen_phrase_examples_added']=added
     counts['verbformen_phrase_units_attempted']=attempted
+    counts['extra_corpus_english_removed_for_quality']=extra_en_removed
+    counts['fragmentary_collocations_removed']=fragment_collocations_removed
     counts['processed_units_below_4_after_all_filters']=sum(len(u.get('examples',[]))<4 for u in processed)
     return out,attempts,failures,counts,cache
 

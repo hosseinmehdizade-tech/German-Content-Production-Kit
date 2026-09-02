@@ -111,12 +111,13 @@
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "NOT_STARTED",
+      "state": "RUNNING",
       "required_outputs": [
         "05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv",
         "05-delivery/DELIVERY-VALIDATION.json"
       ],
-      "pass_commit": null
+      "pass_commit": null,
+      "summary": "Projecting exact canonical bytes to literal-tab Universal v2 and running independent parity/loss checks."
     },
     {
       "stage": 6,
@@ -143,7 +144,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 5 Delivery Projection.",
+  "resume_instruction": "Build and validate Universal v2, then continue to current runtime.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

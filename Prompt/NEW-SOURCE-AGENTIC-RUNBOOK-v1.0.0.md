@@ -1,6 +1,6 @@
 # New Source Agentic Runbook v1.0.0
 
-Use this runbook with `START-PROMPT-v3.1.11.md` whenever a new book/source is supplied.
+Use this runbook with the active repository START-PROMPT (currently `START-PROMPT-v3.1.12.md`) whenever a new book/source is supplied or an existing source is resumed.
 
 The human-trackable execution model is the mandatory seven-stage pipeline in `SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md`. Execution remains agentic and end-to-end; the stages are durable recovery/gate boundaries, not manual approval stops.
 

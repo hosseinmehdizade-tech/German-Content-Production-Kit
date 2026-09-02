@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "menschen-a2",
+  "status": "INVALIDATED",
+  "invalidated_stages": [6, 7],
+  "detected_at": "2026-09-02",
+  "reason": "The first GitHub Actions orchestrator incorrectly converted Stage 6 and Stage 7 to PASS after their required gate commands had failed. The runtime repository clone failed, RUNTIME-ACCEPTANCE.json and PRESENTATION-ACCEPTANCE.json were absent, packaging then reported missing runtime evidence, and POST-PACKAGE-VERIFICATION.json was absent. The artifact upload contained only six files and not the claimed final inner ZIP/evidence set.",
+  "failed_run": {
+    "content_kit_trigger_commit": "1d8b95de571edb6e32c9bd6a61d17753263a0509",
+    "workflow_run_id": 33665547971,
+    "job_id": 100366268174,
+    "observed_errors": [
+      "fatal: could not read Username for https://github.com while cross-cloning private German-Flashcards-Pro",
+      "missing /tmp/flashcards-pro/01-App/German-Flashcards-Pro-v354.html",
+      "missing Workspaces/menschen-a2/06-runtime/RUNTIME-ACCEPTANCE.json",
+      "missing release payload: RUNTIME-ACCEPTANCE.json and PRESENTATION-ACCEPTANCE.json",
+      "missing Workspaces/menschen-a2/07-release/POST-PACKAGE-VERIFICATION.json"
+    ]
+  },
+  "upstream_validity": {
+    "stage_1": "PASS preserved",
+    "stage_2": "PASS preserved",
+    "stage_3": "PASS preserved",
+    "stage_4": "PASS preserved",
+    "stage_5": "PASS preserved",
+    "stage_5_tsv_sha256": "01ab4dabe5a27c636c977dfb8af4cdc60f8cf6b7148844cb4ca755d650aecd23",
+    "canonical_enriched_sha256": "d6a83d0fb0a0771ee70146fc7e96573430ca0f6687f2a02344773da13b6f175e"
+  },
+  "repair_plan": "Run corrective Stage 6 inside the private German-Flashcards-Pro repository against exact main commit 49a28187e82734e92bc407276eb0d2ee0cbbbd55, persist the resulting runtime and presentation reports back into the Content Kit, then rerun Stage 7 from those exact evidence files and independently verify the packaged ZIP."
+}

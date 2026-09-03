@@ -4,6 +4,7 @@ import argparse,json,re
 from pathlib import Path
 
 GENERATED_SOURCE_ID='assistant_pedagogical_example'
+TRANSLATION_REVIEW_SOURCE_ID='assistant_translation_review'
 GENERATED_LOCATOR_PREFIX='generated://menschen-a2/'
 MINIMUM=4
 MAXIMUM=6
@@ -28,43 +29,74 @@ def generated_texts(path:Path|None):
             if isinstance(row,dict) and row.get('text'): out.add(norm(row['text']))
     return out
 
-def remove_generated(unit,bad_texts):
-    before=len(unit.get('examples') or [])
-    unit['examples']=[ex for ex in (unit.get('examples') or []) if not (isinstance(ex,dict) and norm(ex.get('text')) in bad_texts)]
+def generated_sources(unit):
+    out=[]
+    for src in (unit.get('provenance') or {}).get('sources',[]) if isinstance(unit,dict) else []:
+        if not isinstance(src,dict): continue
+        if src.get('source_id')==GENERATED_SOURCE_ID or str(src.get('locator') or '').startswith(GENERATED_LOCATOR_PREFIX): out.append(src)
+    return out
+
+def strip_generated_provenance(unit,*,also_translation_review=False):
     prov=unit.get('provenance') if isinstance(unit.get('provenance'),dict) else {'sources':[]}
-    sources=[]
+    kept=[]
     for src in prov.get('sources') or []:
         if not isinstance(src,dict): continue
-        sid=str(src.get('source_id') or '')
-        loc=str(src.get('locator') or '')
+        sid=str(src.get('source_id') or '');loc=str(src.get('locator') or '')
         if sid==GENERATED_SOURCE_ID or loc.startswith(GENERATED_LOCATOR_PREFIX): continue
-        sources.append(src)
-    prov['sources']=sources;unit['provenance']=prov
-    return before-len(unit['examples'])
+        if also_translation_review and sid==TRANSLATION_REVIEW_SOURCE_ID: continue
+        kept.append(src)
+    prov['sources']=kept;unit['provenance']=prov
+
+def remove_generated(unit,bad_texts,*,replace_primary=False):
+    exs=list(unit.get('examples') or []);had_generated=bool(generated_sources(unit));removed=[]
+    # Five explicitly configured Stage-3 units were born without a usable
+    # source example. The pipeline inserted a generated primary example and
+    # recorded assistant_pedagogical_example provenance. Only those named units
+    # may remove position 0 by provenance; never infer this globally.
+    if replace_primary and had_generated and exs:
+        removed.append(exs.pop(0))
+    kept=[]
+    for ex in exs:
+        if isinstance(ex,dict) and norm(ex.get('text')) in bad_texts:
+            removed.append(ex);continue
+        kept.append(ex)
+    unit['examples']=kept
+    if removed and had_generated:
+        # The old translation-review record belonged to the removed generated
+        # primary only in the explicit replacement case. Residual v8 filler has
+        # no reviewed translation and must not delete a valid source-primary
+        # translation record.
+        strip_generated_provenance(unit,also_translation_review=replace_primary)
+    return removed,had_generated
 
 def add_provenance(unit,cand):
     prov=unit.setdefault('provenance',{});sources=prov.setdefault('sources',[])
     sid=cand['source_id'];url=cand['url']
-    if any(isinstance(x,dict) and x.get('source_id')==sid and x.get('locator')==url for x in sources): return
-    sources.append({
-      'source_id':sid,
-      'source_kind':cand.get('source_kind','website'),
-      'what_was_verified':['example_attestation','sense_alignment'],
-      'verification_status':cand.get('verification_status','verified'),
-      'locator':url,
-      'accessed_at':'2026-09-03',
-      'evidence_note':cand.get('evidence_note','Externally attested residual example used after source/corpus enrichment remained below the product floor.')
-    })
+    if not any(isinstance(x,dict) and x.get('source_id')==sid and x.get('locator')==url for x in sources):
+        sources.append({
+          'source_id':sid,
+          'source_kind':cand.get('source_kind','website'),
+          'what_was_verified':['example_attestation','sense_alignment'],
+          'verification_status':cand.get('verification_status','verified'),
+          'locator':url,
+          'accessed_at':'2026-09-03',
+          'evidence_note':cand.get('evidence_note','Externally attested residual example used after source/corpus enrichment remained below the product floor.')
+        })
+    translations=[t for t in cand.get('translations',[]) if isinstance(t,dict) and str(t.get('text') or '').strip()]
+    if translations and not any(isinstance(x,dict) and x.get('source_id')==TRANSLATION_REVIEW_SOURCE_ID for x in sources):
+        sources.append({
+          'source_id':TRANSLATION_REVIEW_SOURCE_ID,
+          'source_kind':'other',
+          'what_was_verified':['english_example_translation'],
+          'verification_status':'verified',
+          'accessed_at':'2026-09-03',
+          'evidence_note':'English translation for the externally attested replacement example was production-reviewed for sense alignment; the German example itself remains externally attested.'
+        })
 
 def repair_vorstellen(unit):
     if unit.get('id')!='ma2-lu-0187': return False
-    # Source row/example is the interpersonal introduction sense. Bind the
-    # learner definition to Wiktionary [3b], not the spatial first sense.
     unit['definition_de']='jemanden einem anderen, der ihn nicht kennt, bekannt machen'
     details=unit.get('details') if isinstance(unit.get('details'),dict) else {}
-    # v5/v7 may have harvested relations from a wrong first sense before the
-    # source-aware override existed. Remove only sense-risky lexical relations;
-    # keep source grammar/rection/variants if present.
     details.pop('synonyms',None);details.pop('antonyms',None)
     if details: unit['details']=details
     elif 'details' in unit: unit.pop('details',None)
@@ -97,25 +129,41 @@ def update_evidence(evidence,unit,candidates_used):
                 if a.get('status') in {None,'failed','no_evidence'}: a['status']='success'
                 break
 
+def merged_specs(residual_cfg,primary_cfg):
+    a=dict(residual_cfg.get('items') or {});b=dict(primary_cfg.get('items') or {}) if primary_cfg else {}
+    dup=set(a)&set(b)
+    if dup: raise ValueError('duplicate unit IDs across residual and primary replacement configs: '+','.join(sorted(dup)))
+    a.update(b);return a
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--dataset',required=True,type=Path)
     ap.add_argument('--evidence',required=True,type=Path)
     ap.add_argument('--residuals',required=True,type=Path)
+    ap.add_argument('--primary-replacements',type=Path)
     ap.add_argument('--generated-fallback',type=Path)
     ap.add_argument('--output',required=True,type=Path)
     ap.add_argument('--evidence-output',required=True,type=Path)
     ap.add_argument('--report',required=True,type=Path)
     ns=ap.parse_args()
-    ds=load(ns.dataset);ev=load(ns.evidence);cfg=load(ns.residuals);bad=generated_texts(ns.generated_fallback)
+    ds=load(ns.dataset);ev=load(ns.evidence);rcfg=load(ns.residuals);pcfg=load(ns.primary_replacements) if ns.primary_replacements else None
+    specs=merged_specs(rcfg,pcfg);bad=generated_texts(ns.generated_fallback);primary_ids={uid for uid,s in (pcfg.get('items') or {}).items() if s.get('replace_generated_primary')} if pcfg else set()
     units=ds.get('learning_units') or [];byid={u.get('id'):u for u in units if isinstance(u,dict)}
-    report={'status':'PASS','tool':'apply_residual_external_examples_v1','dataset':'menschen-a2','removed_generated_examples':{},'added_external_examples':{},'sense_overrides':[],'below_minimum':[],'problems':[]}
-    # First remove the now-prohibited v8 draft filler everywhere.
+    report={'status':'PASS','tool':'apply_residual_external_examples_v1','tool_version':'1.1.0','dataset':'menschen-a2','removed_generated_examples':{},'replaced_generated_primary':[],'added_external_examples':{},'sense_overrides':[],'below_minimum':[],'problems':[]}
+
+    # Remove only known generated content: exact v8 residual texts and the five
+    # explicitly configured generated-primary units. Unknown generated content
+    # is deliberately left visible and becomes a hard failure below.
     for u in units:
         if not isinstance(u,dict): continue
-        n=remove_generated(u,bad)
-        if n: report['removed_generated_examples'][u['id']]=n
-    for uid,spec in (cfg.get('items') or {}).items():
+        removed,had_generated=remove_generated(u,bad,replace_primary=u.get('id') in primary_ids)
+        if removed:
+            report['removed_generated_examples'][u['id']]=[str(x.get('text') or '') for x in removed if isinstance(x,dict)]
+            if u.get('id') in primary_ids: report['replaced_generated_primary'].append(u['id'])
+        elif u.get('id') in primary_ids and had_generated:
+            report['problems'].append(f"{u.get('id')} was configured for generated-primary replacement but no example was removed")
+
+    for uid,spec in specs.items():
         u=byid.get(uid)
         if not u:
             report['problems'].append(f'missing unit {uid}');continue
@@ -129,21 +177,23 @@ def main():
             if len(u.get('examples') or [])>=MINIMUM: break
             text=str(cand.get('text') or '').strip();key=norm(text)
             if not text or key in seen: continue
-            ex={'id':next_example_id(u),'lang':'de-DE','text':text,'order':len(u.get('examples') or [])+1,'translations':[]}
+            translations=[{'lang':str(t['lang']),'text':str(t['text'])} for t in cand.get('translations',[]) if isinstance(t,dict) and t.get('lang') and str(t.get('text') or '').strip()]
+            ex={'id':next_example_id(u),'lang':'de-DE','text':text,'order':len(u.get('examples') or [])+1,'translations':translations}
             u.setdefault('examples',[]).append(ex);seen.add(key);used.append(cand);add_provenance(u,cand)
         if used:
             report['added_external_examples'][uid]=[c['text'] for c in used];update_evidence(ev,u,used)
-    # Normalize order and enforce hard bounds; do not invent content if evidence is insufficient.
+
     for u in units:
         if not isinstance(u,dict): continue
         for i,ex in enumerate(u.get('examples') or [],1):
             if isinstance(ex,dict): ex['order']=i
         if len(u.get('examples') or [])<MINIMUM: report['below_minimum'].append({'id':u.get('id'),'count':len(u.get('examples') or [])})
         if len(u.get('examples') or [])>MAXIMUM: report['problems'].append(f"{u.get('id')} exceeds maximum {MAXIMUM}")
-        # Final safety: generated learner example provenance is forbidden.
-        for src in (u.get('provenance') or {}).get('sources',[]):
-            if isinstance(src,dict) and (src.get('source_id')==GENERATED_SOURCE_ID or str(src.get('locator') or '').startswith(GENERATED_LOCATOR_PREFIX)):
-                report['problems'].append(f"{u.get('id')} retains generated learner-example provenance")
+        if generated_sources(u): report['problems'].append(f"{u.get('id')} retains generated learner-example provenance")
+        if any(isinstance(ex,dict) and norm(ex.get('text')) in bad for ex in u.get('examples') or []): report['problems'].append(f"{u.get('id')} retains a known v8 generated fallback example")
+    for uid in primary_ids:
+        if uid not in report['replaced_generated_primary'] and generated_sources(byid.get(uid,{})):
+            report['problems'].append(f'{uid} generated primary was not durably replaced')
     if report['below_minimum'] or report['problems']: report['status']='FAIL'
     dump(ns.output,ds);dump(ns.evidence_output,ev);dump(ns.report,report)
     print(json.dumps(report,ensure_ascii=False,indent=2))

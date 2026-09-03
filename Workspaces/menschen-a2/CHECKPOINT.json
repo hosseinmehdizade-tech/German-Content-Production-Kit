@@ -105,10 +105,24 @@
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "INVALIDATED",
+      "state": "FAIL",
       "pass_commit": null,
-      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "summary": "FAIL: Stage 4 gate evidence is durable; repair only reported Stage 4 defects without rerunning Stage 3.",
       "required_outputs": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json",
+        "04-qa/PRODUCT-FLOOR-VALIDATION.json"
+      ],
+      "authoritative_outputs": [
+        "04-qa/LINGUISTIC-QA.json",
+        "04-qa/LEXICAL-QUALITY.json",
+        "04-qa/COVERAGE-REPORT.json",
+        "04-qa/PRODUCT-FLOOR-VALIDATION.json"
+      ],
+      "gate_evidence": [
+        "04-qa/CANONICAL-ENRICHED-VALIDATION.json",
+        "04-qa/STAGE4-AGGREGATE.json",
         "04-qa/LINGUISTIC-QA.json",
         "04-qa/LEXICAL-QUALITY.json",
         "04-qa/COVERAGE-REPORT.json",
@@ -180,7 +194,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 4 from this exact Stage 3 PASS artifact. Do not rerun Stage 3 or refetch its external evidence unless an upstream authority/cache version is explicitly invalidated.",
+  "resume_instruction": "Repair only Stage 4 aggregate failures from durable reports. Do not rerun Stage 3 or external enrichment.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

@@ -1,0 +1,133 @@
+name: Menschen A2 Stages 4-5 rich repair
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stages4-7-rich-repair.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-rich-stages4-5-repair
+  cancel-in-progress: false
+
+jobs:
+  qa-delivery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+      WS: Workspaces/menschen-a2
+      BRANCH: repair/menschen-a2-rich-card-floor-v8
+    steps:
+      - name: Checkout repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+
+      - name: Require durable Stage 3 PASS
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2')
+          d=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s3=next(x for x in d['stages'] if x['stage']==3)
+          assert s3['state']=='PASS' and s3.get('pass_commit'),s3
+          for rel in ['02-canonical/CANONICAL-ENRICHED.json','03-evidence/EVIDENCE-INDEX.json','03-evidence/EXTERNAL-EVIDENCE-CACHE.json','03-evidence/ENRICHMENT-VALIDATION.json','03-evidence/PRODUCT-FLOOR-PREFLIGHT.json']:
+              assert (w/rel).is_file(),rel
+          print('PASS durable Stage 3 precondition',s3['pass_commit'])
+          PY
+
+      - name: Install Stage 4 dependencies
+        run: python -m pip install jsonschema
+
+      - name: Stage 4 canonical + linguistic + lexical + coverage + product floor
+        run: |
+          set -euo pipefail
+          python Verification/validate_enriched_canonical_v1_0_0.py \
+            --dataset "$WS/02-canonical/CANONICAL-ENRICHED.json" \
+            --source-profile "$WS/02-canonical/MENSCHEN-A2-PROFILE.json" \
+            --type-rules Architecture/04-TYPE-RULES \
+            --previous "$WS/02-canonical/CANONICAL.json" \
+            --source-registry Architecture/03-SOURCES/SOURCE-REGISTRY.json \
+            --report "$WS/04-qa/CANONICAL-ENRICHED-VALIDATION.json"
+          python "$WS/tools/linguistic_qa_v2.py" "$WS/02-canonical/CANONICAL-ENRICHED.json" --output "$WS/04-qa/LINGUISTIC-QA.json"
+          python Verification/validate_lexical_quality_v1_0_2.py "$WS/02-canonical/CANONICAL-ENRICHED.json" --output "$WS/04-qa/LEXICAL-QUALITY.json"
+          python Verification/validate_content_completeness_v1_0_0.py "$WS/02-canonical/CANONICAL-ENRICHED.json" Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json --output "$WS/04-qa/COVERAGE-REPORT.json"
+          python Verification/validate_rich_card_product_floor_v1_0_0.py "$WS/02-canonical/CANONICAL-ENRICHED.json" Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json "$WS/03-evidence/EVIDENCE-INDEX.json" --output "$WS/04-qa/PRODUCT-FLOOR-VALIDATION.json"
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');checks={}
+          for rel in ['04-qa/CANONICAL-ENRICHED-VALIDATION.json','04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']:
+              d=json.loads((w/rel).read_text(encoding='utf-8-sig'));st=d.get('status') or d.get('structural_typed_status');checks[rel]=st;assert st=='PASS',(rel,st,d.get('issues') or d.get('problems'))
+          print(json.dumps(checks,indent=2))
+          PY
+
+      - name: Commit Stage 4 artifacts before checkpoint
+        run: |
+          set -euo pipefail
+          git config user.name 'gfp-production-bot';git config user.email 'actions@users.noreply.github.com'
+          git add "$WS/04-qa/CANONICAL-ENRICHED-VALIDATION.json" "$WS/04-qa/LINGUISTIC-QA.json" "$WS/04-qa/LEXICAL-QUALITY.json" "$WS/04-qa/COVERAGE-REPORT.json" "$WS/04-qa/PRODUCT-FLOOR-VALIDATION.json"
+          git commit -m 'Pass Menschen A2 rich-card Stage 4 QA'
+          echo "S4_PASS_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:$BRANCH
+
+      - name: Record durable Stage 4 PASS
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('Workspaces/menschen-a2/CHECKPOINT.json');d=json.loads(p.read_text(encoding='utf-8'));s=next(x for x in d['stages'] if x['stage']==4)
+          s['state']='PASS';s['pass_commit']=os.environ['S4_PASS_COMMIT'];s['summary']='PASS: enriched canonical structural validation, linguistic QA, lexical-quality v1.0.2, completeness coverage and mandatory rich-card Product Floor all passed on the exact Stage 3 artifact.'
+          s['authoritative_outputs']=['04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          s['gate_evidence']=['04-qa/CANONICAL-ENRICHED-VALIDATION.json','04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          d['resume_instruction']='Resume at Stage 5 using the exact Stage 4 PASS enriched canonical. Do not rerun Stage 3/4 unless their authoritative inputs change.'
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add "$WS/CHECKPOINT.json";git commit -m 'Checkpoint Menschen A2 Stage 4 PASS';git push origin HEAD:$BRANCH
+
+      - name: Stage 5 exact Universal v2 rich projection
+        run: |
+          set -euo pipefail
+          python "$WS/tools/project_universal_v2_rich.py" --canonical "$WS/02-canonical/CANONICAL-ENRICHED.json" --output "$WS/05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv"
+          python Architecture/06-VALIDATION/validate_flashcards_pro_universal_v2.py "$WS/05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv" --canonical "$WS/02-canonical/CANONICAL-ENRICHED.json" --report "$WS/05-delivery/DELIVERY-VALIDATION.json"
+          python "$WS/tools/delivery_loss_check.py" --tsv "$WS/05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv" --canonical "$WS/02-canonical/CANONICAL-ENRICHED.json" --output "$WS/05-delivery/DELIVERY-LOSS-CHECK.json"
+          python Verification/validate_lexical_quality_v1_0_2.py "$WS/02-canonical/CANONICAL-ENRICHED.json" --tsv "$WS/05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv" --output "$WS/05-delivery/LEXICAL-TRANSPORT-VALIDATION.json"
+          python - <<'PY'
+          import hashlib,json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');tsv=w/'05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv';can=w/'02-canonical/CANONICAL-ENRICHED.json'
+          rows=max(0,len(tsv.read_text(encoding='utf-8-sig').splitlines())-1)
+          assert rows==292,rows
+          meta={'status':'PASS','stage':5,'dataset':'menschen-a2','delivery_profile':'flashcards-pro-universal-v2@1.0.1','rows':rows,'tsv_sha256':hashlib.sha256(tsv.read_bytes()).hexdigest(),'canonical_sha256':hashlib.sha256(can.read_bytes()).hexdigest(),'projection':'project_universal_v2_rich.py','canonical_unit_bridge':'lossless-deep-copy'}
+          (w/'05-delivery/BUILD-METADATA.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          for rel in ['05-delivery/DELIVERY-VALIDATION.json','05-delivery/DELIVERY-LOSS-CHECK.json','05-delivery/LEXICAL-TRANSPORT-VALIDATION.json']:
+              d=json.loads((w/rel).read_text(encoding='utf-8-sig'));assert (d.get('status') or d.get('structural_typed_status'))=='PASS',(rel,d)
+          PY
+
+      - name: Commit Stage 5 artifacts before checkpoint
+        run: |
+          set -euo pipefail
+          git add "$WS/05-delivery"
+          git commit -m 'Pass Menschen A2 rich-card Stage 5 delivery'
+          echo "S5_PASS_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:$BRANCH
+
+      - name: Record durable Stage 5 PASS
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('Workspaces/menschen-a2/CHECKPOINT.json');d=json.loads(p.read_text(encoding='utf-8'));s=next(x for x in d['stages'] if x['stage']==5)
+          s['state']='PASS';s['pass_commit']=os.environ['S5_PASS_COMMIT'];s['summary']='PASS: Universal v2 TSV projected losslessly from the exact rich canonical; transport validator, canonical bridge parity, lexical transport and array parity passed.'
+          s['authoritative_outputs']=['05-delivery/MENSCHEN-A2-UNIVERSAL-v2.tsv','05-delivery/BUILD-METADATA.json']
+          s['gate_evidence']=['05-delivery/DELIVERY-VALIDATION.json','05-delivery/DELIVERY-LOSS-CHECK.json','05-delivery/LEXICAL-TRANSPORT-VALIDATION.json']
+          d['resume_instruction']='Resume at Stage 6 in German-Flashcards-Pro using the dedicated cross-repository acceptance workflow. Resolve actual runtime main there; do not clone the private runtime from Content Kit Actions.'
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add "$WS/CHECKPOINT.json";git commit -m 'Checkpoint Menschen A2 Stage 5 PASS';git push origin HEAD:$BRANCH

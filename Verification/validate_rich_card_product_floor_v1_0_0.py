@@ -6,6 +6,7 @@ from pathlib import Path
 
 ABSENT=(None,"",[],{})
 FIXED_CASE_PREPS={'aus','außer','bei','mit','nach','seit','von','zu','gegenüber','durch','für','gegen','ohne','um'}
+GENERATED_EXAMPLE_SOURCE_IDS={'assistant_pedagogical_example'}
 
 def load(p): return json.loads(Path(p).read_text(encoding='utf-8'))
 def issue(severity,code,path,message): return {'severity':severity,'code':code,'path':path,'message':message}
@@ -37,6 +38,21 @@ def explicit_rection_required(unit):
     if re.search(r'\[(?:\+)?[ad]\]|\((?:dat|akk)\.?\)|\b(?:jdn|jmdn|jdm|jmdm)\.?\b',low): return True
     return any(re.search(rf'\b{re.escape(p)}\b',low) for p in FIXED_CASE_PREPS)
 
+def generated_example_sources(unit):
+    out=[]
+    for src in (unit.get('provenance') or {}).get('sources',[]) if isinstance(unit,dict) else []:
+        if not isinstance(src,dict): continue
+        sid=str(src.get('source_id') or '')
+        locator=str(src.get('locator') or '')
+        note=str(src.get('evidence_note') or '')
+        if sid in GENERATED_EXAMPLE_SOURCE_IDS or locator.startswith('generated://'):
+            # Keep the guard scoped to learner-facing example generation, not to
+            # unrelated generated metadata. The current production source uses
+            # assistant_pedagogical_example specifically for learner examples.
+            if sid in GENERATED_EXAMPLE_SOURCE_IDS or 'example' in locator.casefold() or 'example' in note.casefold():
+                out.append(src)
+    return out
+
 def validate(dataset,floor,evidence):
     units=dataset.get('learning_units') if isinstance(dataset,dict) else None
     if not isinstance(units,list): raise ValueError('dataset.learning_units must be an array')
@@ -44,6 +60,7 @@ def validate(dataset,floor,evidence):
     attempts={}
     for a in evidence.get('external_evidence_attempts',[]) if isinstance(evidence,dict) else []:
         if isinstance(a,dict) and a.get('id'): attempts[a['id']]=a
+    no_fabrication=bool((floor.get('policy') or {}).get('no_fabrication_to_satisfy_minimums'))
     for i,u in enumerate(units):
         if not isinstance(u,dict):
             issues.append(issue('error','PRODUCT_UNIT_INVALID',f'learning_units[{i}]','Unit is not an object.')); continue
@@ -59,6 +76,11 @@ def validate(dataset,floor,evidence):
         er=rule.get('examples') or {}; mn=int(er.get('minimum',0)); mx=er.get('maximum')
         if len(exs)<mn: issues.append(issue('error','PRODUCT_EXAMPLE_MINIMUM',f'{root}.examples',f'Need at least {mn} usable German examples; found {len(exs)}.'))
         if mx is not None and len(exs)>int(mx): issues.append(issue('warning','PRODUCT_EXAMPLE_MAXIMUM',f'{root}.examples',f'Preferred maximum is {mx}; found {len(exs)}.'))
+        if no_fabrication:
+            generated=generated_example_sources(u)
+            if generated:
+                locators=[str(x.get('locator') or x.get('source_id') or 'generated') for x in generated]
+                issues.append(issue('error','PRODUCT_GENERATED_EXAMPLE_MINIMUM_FILL',f'{root}.examples','Generated/unverified pedagogical examples are present while the hard product floor forbids fabrication to satisfy minimums. Replace them with source- or externally-attested examples, or obtain an explicit named user waiver. Evidence: '+', '.join(locators)))
         for lang in er.get('required_translation_languages',[]):
             for j,ex in enumerate(exs):
                 if not any(isinstance(t,dict) and t.get('lang')==lang and str(t.get('text','')).strip() for t in ex.get('translations',[])):
@@ -98,7 +120,7 @@ def validate(dataset,floor,evidence):
             if frac<minimum:
                 issues.append(issue('error','PRODUCT_LEXICAL_DETAIL_SYSTEM_HEALTH',f'coverage.{typ}',f'Only {with_detail.get(typ,0)}/{type_counts[typ]} ({frac:.1%}) units have any evidence-backed lexical detail; systemic floor is {minimum:.0%}. This indicates a broken/disabled enrichment path, not permission to fabricate content.'))
     errors=sum(x['severity']=='error' for x in issues); warnings=sum(x['severity']=='warning' for x in issues)
-    return {'validator':'gfp-rich-card-product-floor','validator_version':'1.0.0','product_floor_id':floor.get('profile_id'),'status':'FAIL' if errors else 'PASS','errors':errors,'warnings':warnings,'coverage':{'type_counts':dict(type_counts),'with_any_lexical_detail':dict(with_detail),'external_attempts':len(attempts)},'issues':issues}
+    return {'validator':'gfp-rich-card-product-floor','validator_version':'1.0.1','product_floor_id':floor.get('profile_id'),'status':'FAIL' if errors else 'PASS','errors':errors,'warnings':warnings,'coverage':{'type_counts':dict(type_counts),'with_any_lexical_detail':dict(with_detail),'external_attempts':len(attempts)},'issues':issues}
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('dataset'); ap.add_argument('floor'); ap.add_argument('evidence'); ap.add_argument('--output'); a=ap.parse_args()

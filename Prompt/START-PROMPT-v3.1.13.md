@@ -16,12 +16,13 @@ Mandatory correction over v3.1.12:
 2. Never use a sparse source-canonical profile as proof that a Flashcards Pro rich card is product-complete.
 3. For rich-card targets, `GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json` is mandatory unless the user explicitly approves a named relaxation. Source-specific profiles may tighten/specialize it, never silently weaken it.
 4. Stage 3 may not PASS for a non-empty rich-card verb dataset if external lexical enrichment was never attempted. Record per-unit attempt results; missing evidence is allowed, a disabled enrichment path is not.
-5. Stage 4 must run `Verification/validate_rich_card_product_floor_v1_0_0.py` in addition to canonical, linguistic, lexical-quality and coverage validators.
-6. Runtime/Presentation acceptance must assert the product floor after import and learner-visible richness on representative cards: required verb definitions, minimum examples, English example translations, morphology, separate multi-value items and no raw JSON leakage.
-7. A transport/import PASS cannot rescue a thin-card product failure.
-8. If this defect is found in an existing release, preserve valid Stage 1/2 source work, invalidate Stage 3-7, repair, and rerun downstream gates.
-9. All v3.1.12 rules remain binding: Git-backed PASS only, current `main` inspection, source authority, no legacy reuse without named recovery, quality over density, no fabricated lexical claims, exact runtime acceptance and independent post-package verification.
-10. Execute agentically through Stage 7 and stop only for a real evidence/tooling/access blocker recorded in `CHECKPOINT.json`.
+5. Generated or unverified pedagogical examples may be used only as explicitly marked draft material. They do **not** satisfy a hard product-floor example minimum under `no_fabrication_to_satisfy_minimums`; before Stage 3/4 PASS they must be replaced by authoritative-source or externally attested examples, or covered by an explicit named user waiver.
+6. Stage 4 must run `Verification/validate_rich_card_product_floor_v1_0_0.py` in addition to canonical, linguistic, lexical-quality and coverage validators.
+7. Runtime/Presentation acceptance must assert the product floor after import and learner-visible richness on representative cards: required verb definitions, minimum examples, English example translations, morphology, separate multi-value items and no raw JSON leakage.
+8. A transport/import PASS cannot rescue a thin-card product failure.
+9. If this defect is found in an existing release, preserve valid Stage 1/2 source work, invalidate Stage 3-7, repair, and rerun downstream gates.
+10. All v3.1.12 rules remain binding: Git-backed PASS only, current `main` inspection, source authority, no legacy reuse without named recovery, quality over density, no fabricated lexical claims, exact runtime acceptance and independent post-package verification.
+11. Execute agentically through Stage 7 and stop only for a real evidence/tooling/access blocker recorded in `CHECKPOINT.json`.
 
 Current generic product authorities:
 

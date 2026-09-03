@@ -39,7 +39,12 @@ bad_phrase=phrase(with_rection=False)
 r=run([bad_phrase],[])
 assert r['status']=='FAIL' and 'PRODUCT_EXPLICIT_RECTION_MISSING' in {x['code'] for x in r['issues']}
 
+generated=verb('vgen')
+generated['provenance']={'sources':[{'source_id':'assistant_pedagogical_example','source_kind':'generated','verification_status':'unverified','locator':'generated://menschen-a2/vgen/product-floor-residual-v1','evidence_note':'Generated pedagogical example used to fill the minimum.'}]}
+r=run([generated],[{'id':'vgen','type':'verb','status':'success','sources':['de_wiktionary_live']}])
+assert r['status']=='FAIL' and 'PRODUCT_GENERATED_EXAMPLE_MINIMUM_FILL' in {x['code'] for x in r['issues']}, r
+
 good=verb(); p=phrase()
 r=run([good,p],[{'id':'v1','type':'verb','status':'success','sources':['de_wiktionary_live']}])
 assert r['status']=='PASS', r
-print('PASS thin-card + English-example + phrase-rection regressions')
+print('PASS thin-card + English-example + phrase-rection + generated-floor-bypass regressions')

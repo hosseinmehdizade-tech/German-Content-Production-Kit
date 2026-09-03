@@ -1,0 +1,170 @@
+name: Menschen A2 Stage 3 residual-only repair v9
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage3-residual-repair-v9.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-stage3-residual-v9
+  cancel-in-progress: false
+
+jobs:
+  residual-stage3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+      WS: Workspaces/menschen-a2
+      BRANCH: repair/menschen-a2-rich-card-floor-v8
+    steps:
+      - name: Checkout durable Stage 3 repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Require durable v8 WIP and exact three Product Floor failures
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2')
+          cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s3=next(x for x in cp['stages'] if x['stage']==3)
+          assert s3['state']=='FAIL' and s3.get('wip_commit'),s3
+          pf=json.loads((w/'03-evidence/PRODUCT-FLOOR-PREFLIGHT.json').read_text(encoding='utf-8'))
+          ids=[]
+          for x in pf.get('issues',[]):
+              p=x.get('path','')
+              if x.get('code')=='PRODUCT_EXAMPLE_MINIMUM' and '(' in p and ')' in p:
+                  ids.append(p.split('(',1)[1].split(')',1)[0])
+          assert pf.get('errors')==3 and set(ids)=={'ma2-lu-0050','ma2-lu-0157','ma2-lu-0247'},(pf.get('errors'),ids)
+          assert (w/'02-canonical/CANONICAL-ENRICHED.json').is_file()
+          assert (w/'03-evidence/EXTERNAL-EVIDENCE-CACHE.json').is_file()
+          print('PASS durable WIP precondition; repairing only',sorted(ids),'from',s3['wip_commit'])
+          PY
+
+      - name: Apply only externally attested residual examples
+        run: |
+          python "$WS/tools/repair_stage3_residual_v9.py" \
+            --dataset "$WS/02-canonical/CANONICAL-ENRICHED.json" \
+            --patches "$WS/tools/RESIDUAL-ATTESTED-EXAMPLES-v2.json" \
+            --report "$WS/03-evidence/RESIDUAL-REPAIR-v9.json"
+
+      - name: Re-run only the failed Product Floor gate
+        run: |
+          python Verification/validate_rich_card_product_floor_v1_0_0.py \
+            "$WS/02-canonical/CANONICAL-ENRICHED.json" \
+            Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json \
+            "$WS/03-evidence/EVIDENCE-INDEX.json" \
+            --output "$WS/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json"
+
+      - name: Build exact Stage 3 validation without network refetch
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib
+          from collections import Counter
+          w=pathlib.Path('Workspaces/menschen-a2')
+          src=json.loads((w/'02-canonical/CANONICAL.json').read_text(encoding='utf-8'))
+          ds=json.loads((w/'02-canonical/CANONICAL-ENRICHED.json').read_text(encoding='utf-8'))
+          ev=json.loads((w/'03-evidence/EVIDENCE-INDEX.json').read_text(encoding='utf-8'))
+          pf=json.loads((w/'03-evidence/PRODUCT-FLOOR-PREFLIGHT.json').read_text(encoding='utf-8'))
+          rp=json.loads((w/'03-evidence/RESIDUAL-REPAIR-v9.json').read_text(encoding='utf-8'))
+          su=src.get('learning_units') or []; units=ds.get('learning_units') or []; attempts=ev.get('external_evidence_attempts') or []
+          issues=[]
+          if len(units)!=292: issues.append(f'expected 292 units, found {len(units)}')
+          if [u.get('id') for u in units] != [u.get('id') for u in su]: issues.append('canonical ID/order parity changed')
+          if len(attempts)!=292: issues.append(f'expected 292 external-evidence attempt records, found {len(attempts)}')
+          if pf.get('status')!='PASS': issues.append('product-floor preflight did not PASS')
+          if rp.get('status')!='PASS': issues.append('targeted residual repair did not PASS')
+          below=[u.get('id') for u in units if len([x for x in (u.get('examples') or []) if isinstance(x,dict) and str(x.get('text') or '').strip()])<4]
+          over=[u.get('id') for u in units if len([x for x in (u.get('examples') or []) if isinstance(x,dict) and str(x.get('text') or '').strip()])>6]
+          missing_defs=[u.get('id') for u in units if u.get('type')=='verb' and not str(u.get('definition_de') or '').strip()]
+          primary_en=[]
+          for u in units:
+              exs=u.get('examples') or []
+              if not exs or not any(isinstance(t,dict) and t.get('lang')=='en-US' and str(t.get('text') or '').strip() for t in exs[0].get('translations',[])):
+                  primary_en.append(u.get('id'))
+          if below: issues.append(f'{len(below)} units below 4 examples')
+          if over: issues.append(f'{len(over)} units above 6 examples')
+          if missing_defs: issues.append(f'{len(missing_defs)} verbs missing definition_de')
+          if primary_en: issues.append(f'{len(primary_en)} units missing reviewed primary English translation')
+          status='PASS' if not issues else 'FAIL'
+          report={
+            'validator':'menschen-a2-stage3-rich-enrichment','validator_version':'1.1.0','status':status,
+            'repair_mode':'durable-v8-wip-plus-targeted-v9-residual-no-refetch',
+            'source_canonical_sha256':hashlib.sha256((w/'02-canonical/CANONICAL.json').read_bytes()).hexdigest(),
+            'enriched_canonical_sha256':hashlib.sha256((w/'02-canonical/CANONICAL-ENRICHED.json').read_bytes()).hexdigest(),
+            'metrics':{
+              'units':len(units),'type_counts':dict(Counter(u.get('type') for u in units)),
+              'evidence_attempts':len(attempts),'attempt_statuses':dict(Counter(a.get('status') for a in attempts if isinstance(a,dict))),
+              'units_with_4plus_examples':sum(len([x for x in (u.get('examples') or []) if isinstance(x,dict) and str(x.get('text') or '').strip()])>=4 for u in units),
+              'verbs_with_definition':sum(u.get('type')=='verb' and bool(str(u.get('definition_de') or '').strip()) for u in units),
+              'primary_examples_with_english':len(units)-len(primary_en),
+              'targeted_residual_units':3,
+              'targeted_external_examples_added':sum(len(x.get('inserted') or []) for x in rp.get('patched_units',[]))
+            },
+            'product_floor_status':pf.get('status'),'issues':issues,
+            'below4_ids':below,'over6_ids':over,'missing_definition_ids':missing_defs,'primary_english_missing_ids':primary_en
+          }
+          (w/'03-evidence/ENRICHMENT-VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if status!='PASS': raise SystemExit(1)
+          PY
+
+      - name: Commit authoritative Stage 3 repaired artifacts
+        run: |
+          set -euo pipefail
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add \
+            "$WS/02-canonical/CANONICAL-ENRICHED.json" \
+            "$WS/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json" \
+            "$WS/03-evidence/RESIDUAL-REPAIR-v9.json" \
+            "$WS/03-evidence/ENRICHMENT-VALIDATION.json"
+          git commit -m 'Pass Menschen A2 Stage 3 targeted residual repair'
+          echo "STAGE3_PASS_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:$BRANCH
+
+      - name: Record durable Stage 3 PASS
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('Workspaces/menschen-a2/CHECKPOINT.json')
+          cp=json.loads(p.read_text(encoding='utf-8'))
+          v=json.loads(pathlib.Path('Workspaces/menschen-a2/03-evidence/ENRICHMENT-VALIDATION.json').read_text(encoding='utf-8'))
+          s=next(x for x in cp['stages'] if x['stage']==3)
+          s['state']='PASS';s['pass_commit']=os.environ['STAGE3_PASS_COMMIT']
+          m=v['metrics']
+          s['summary']=f"PASS from durable v8 WIP plus targeted v9 residual repair: {m['units']} units; {m['units_with_4plus_examples']} with >=4 examples; {m['verbs_with_definition']} verbs with definition; {m['evidence_attempts']} external-evidence attempts. Only three residual units were patched from externally attested examples; full-source enrichment was not repeated."
+          s['authoritative_outputs']=['02-canonical/CANONICAL-ENRICHED.json','03-evidence/EVIDENCE-INDEX.json','03-evidence/EXTERNAL-EVIDENCE-CACHE.json']
+          s['gate_evidence']=['03-evidence/ENRICHMENT-VALIDATION.json','03-evidence/PRODUCT-FLOOR-PREFLIGHT.json','03-evidence/RESIDUAL-REPAIR-v9.json','Verification/test_rich_card_product_floor_v1_0_0.py','Verification/test_menschen_a2_rich_enrichment_semantics.py']
+          cp['resume_instruction']='Resume at Stage 4 from this exact Stage 3 PASS artifact. Do not rerun Stage 3 or refetch its external evidence unless an upstream authority/cache version is explicitly invalidated.'
+          p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add "$WS/CHECKPOINT.json"
+          git commit -m 'Checkpoint Menschen A2 Stage 3 targeted repair PASS'
+          git push origin HEAD:$BRANCH
+
+      - name: Final Stage 3 durable consistency
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2')
+          cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s3=next(x for x in cp['stages'] if x['stage']==3)
+          assert s3['state']=='PASS' and s3.get('pass_commit'),s3
+          assert json.loads((w/'03-evidence/PRODUCT-FLOOR-PREFLIGHT.json').read_text(encoding='utf-8'))['status']=='PASS'
+          assert json.loads((w/'03-evidence/ENRICHMENT-VALIDATION.json').read_text(encoding='utf-8'))['status']=='PASS'
+          print('PASS durable Stage 3; downstream may resume without Stage 3 refetch')
+          PY

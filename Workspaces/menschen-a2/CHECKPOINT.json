@@ -79,9 +79,9 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "RUNNING",
+      "state": "FAIL",
       "pass_commit": null,
-      "summary": "RUNNING: exact 292-unit enriched canonical, evidence index and external evidence cache are durably persisted before Product Floor. A downstream gate failure must resume from this WIP commit and may not refetch already-cached successful evidence.",
+      "summary": "FAIL after durable WIP persistence: Product Floor errors=3. Repair only reported residual units; reuse committed cache/artifact.",
       "required_outputs": [
         "03-evidence/EVIDENCE-INDEX.json",
         "03-evidence/EXTERNAL-EVIDENCE-CACHE.json",
@@ -89,9 +89,10 @@
         "02-canonical/CANONICAL-ENRICHED.json"
       ],
       "gate_evidence": [
+        "03-evidence/PRODUCT-FLOOR-PREFLIGHT.json",
         "04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json",
-        "Verification/test_rich_card_product_floor_v1_0_0.py",
-        "Verification/test_menschen_a2_rich_enrichment_semantics.py"
+        "Verification/test_menschen_a2_rich_enrichment_semantics.py",
+        "Verification/test_rich_card_product_floor_v1_0_0.py"
       ],
       "wip_commit": "cde8c5de1017a069a8d9b0d5c04b2a7dacd55b9c"
     },
@@ -173,7 +174,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume Stage 3 from its durable wip_commit. Reuse CANONICAL-ENRICHED.json and EXTERNAL-EVIDENCE-CACHE.json; repair only failing residual units/gates. Do not rerun the full external-evidence fetch unless the cache/source version is explicitly invalidated.",
+  "resume_instruction": "Repair only the exact Product Floor failures against the durable Stage 3 WIP; reuse committed enrichment/cache and rerun the failed gate. Do not repeat the 292-unit network enrichment.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

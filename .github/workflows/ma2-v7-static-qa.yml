@@ -1,4 +1,4 @@
-name: Menschen A2 v7 enrichment static QA
+name: Menschen A2 v8 enrichment static QA
 
 on:
   push:
@@ -6,7 +6,10 @@ on:
     paths:
       - '.github/workflows/ma2-v7-static-qa.yml'
       - 'Workspaces/menschen-a2/tools/enrich_rich_card_v7.py'
+      - 'Workspaces/menschen-a2/tools/enrich_rich_card_v8.py'
+      - 'Workspaces/menschen-a2/tools/RESIDUAL-PEDAGOGICAL-EXAMPLES-v1.json'
       - 'Verification/test_menschen_a2_rich_enrichment_semantics.py'
+      - 'Verification/test_menschen_a2_residual_fallback_v1.py'
   workflow_dispatch:
 
 permissions:
@@ -25,7 +28,7 @@ jobs:
           python-version: '3.12'
       - name: Install parser dependencies
         run: python -m pip install requests beautifulsoup4
-      - name: Compile v7 chain
+      - name: Compile v8 chain
         run: |
           python -m py_compile \
             Workspaces/menschen-a2/tools/enrich_rich_card_v2.py \
@@ -33,11 +36,14 @@ jobs:
             Workspaces/menschen-a2/tools/enrich_rich_card_v5.py \
             Workspaces/menschen-a2/tools/enrich_rich_card_v6.py \
             Workspaces/menschen-a2/tools/enrich_rich_card_v7.py \
+            Workspaces/menschen-a2/tools/enrich_rich_card_v8.py \
             Verification/validate_rich_card_product_floor_v1_0_0.py \
-            Verification/test_menschen_a2_rich_enrichment_semantics.py
-      - name: Run semantic regressions
+            Verification/test_menschen_a2_rich_enrichment_semantics.py \
+            Verification/test_menschen_a2_residual_fallback_v1.py
+      - name: Run semantic and residual regressions
         run: |
           python Verification/test_menschen_a2_rich_enrichment_semantics.py
+          python Verification/test_menschen_a2_residual_fallback_v1.py
           python Verification/test_rich_card_product_floor_v1_0_0.py
       - name: Assert repaired Stage 2 authority
         run: |

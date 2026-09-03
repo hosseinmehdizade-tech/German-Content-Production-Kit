@@ -79,9 +79,9 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "INVALIDATED",
+      "state": "RUNNING",
       "pass_commit": null,
-      "summary": "INVALIDATED by authoritative Stage 2 learner-facing case-shorthand normalization repair; rerun from Stage 3 against the exact repaired canonical.",
+      "summary": "RUNNING: exact 292-unit enriched canonical, evidence index and external evidence cache are durably persisted before Product Floor. A downstream gate failure must resume from this WIP commit and may not refetch already-cached successful evidence.",
       "required_outputs": [
         "03-evidence/EVIDENCE-INDEX.json",
         "03-evidence/EXTERNAL-EVIDENCE-CACHE.json",
@@ -92,7 +92,8 @@
         "04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json",
         "Verification/test_rich_card_product_floor_v1_0_0.py",
         "Verification/test_menschen_a2_rich_enrichment_semantics.py"
-      ]
+      ],
+      "wip_commit": "cde8c5de1017a069a8d9b0d5c04b2a7dacd55b9c"
     },
     {
       "stage": 4,
@@ -172,7 +173,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume at Stage 3 using the exact repaired Stage 2 CANONICAL.json. Rebuild enrichment/evidence; do not reuse any Stage 3-7 PASS claim from before this Stage 2 repair.",
+  "resume_instruction": "Resume Stage 3 from its durable wip_commit. Reuse CANONICAL-ENRICHED.json and EXTERNAL-EVIDENCE-CACHE.json; repair only failing residual units/gates. Do not rerun the full external-evidence fetch unless the cache/source version is explicitly invalidated.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

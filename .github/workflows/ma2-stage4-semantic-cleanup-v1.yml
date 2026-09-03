@@ -1,0 +1,49 @@
+name: Menschen A2 Stage 4 semantic cleanup v1
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage4-semantic-cleanup-v1.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install requests beautifulsoup4
+      - name: Repair only Stage 4 semantic mismatches from durable Stage 3 artifact/cache
+        shell: bash
+        run: |
+          set +e
+          python Workspaces/menschen-a2/tools/repair_stage4_semantic_alignment_v1.py \
+            --input Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
+            --cache Workspaces/menschen-a2/03-evidence/EXTERNAL-EVIDENCE-CACHE.json \
+            --generated-spec Workspaces/menschen-a2/tools/RESIDUAL-PEDAGOGICAL-EXAMPLES-v1.json \
+            --output Workspaces/menschen-a2/04-qa/CANONICAL-QA-REPAIRED.json \
+            --report Workspaces/menschen-a2/04-qa/SEMANTIC-ALIGNMENT-REPAIR.json
+          echo "REPAIR_RC=$?" >> "$GITHUB_ENV"
+          exit 0
+      - name: Persist repaired candidate and exact residual report even if incomplete
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add Workspaces/menschen-a2/04-qa/CANONICAL-QA-REPAIRED.json Workspaces/menschen-a2/04-qa/SEMANTIC-ALIGNMENT-REPAIR.json
+          git commit -m 'Persist A2 Stage 4 semantic cleanup candidate'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
+      - name: Report whether targeted external refill is still needed
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('Workspaces/menschen-a2/04-qa/SEMANTIC-ALIGNMENT-REPAIR.json',encoding='utf-8'))
+          print(json.dumps({'status':r['status'],'below4':r['below4_after_cache_refill'],'removed_examples':len(r['removed_examples']),'removed_collocations':len(r['removed_collocations']),'cache_refills':len(r['cache_refills'])},ensure_ascii=False,indent=2))
+          PY

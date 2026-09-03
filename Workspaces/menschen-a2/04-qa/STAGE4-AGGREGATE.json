@@ -1,0 +1,26 @@
+{
+  "status": "FAIL",
+  "stage": 4,
+  "validator_set": "v3.1.13-rich-card",
+  "checks": {
+    "04-qa/CANONICAL-ENRICHED-VALIDATION.json": "PASS",
+    "04-qa/LINGUISTIC-QA.json": "FAIL",
+    "04-qa/LEXICAL-QUALITY.json": "FAIL",
+    "04-qa/COVERAGE-REPORT.json": "PASS",
+    "04-qa/PRODUCT-FLOOR-VALIDATION.json": "PASS"
+  },
+  "exit_codes": {
+    "canonical": 0,
+    "linguistic": 1,
+    "lexical": 1,
+    "coverage": 0,
+    "product_floor": 0
+  },
+  "problems": [
+    "04-qa/LINGUISTIC-QA.json=FAIL",
+    "04-qa/LEXICAL-QUALITY.json=FAIL",
+    "nonzero validator exit codes: {\"canonical\": 0, \"coverage\": 0, \"lexical\": 1, \"linguistic\": 1, \"product_floor\": 0}"
+  ],
+  "phrase_rektion_compatibility_overlay": "Verification/validate_enriched_canonical_v1_0_1.py",
+  "architecture_mutated": false
+}

@@ -1,26 +1,35 @@
 {
-  "validator": "menschen-a2-linguistic-qa",
-  "validator_version": "1.0.0",
-  "status": "PASS",
-  "errors": 0,
+  "validator": "menschen-a2-rich-card-linguistic-qa",
+  "validator_version": "2.0.0",
+  "status": "FAIL",
+  "errors": 1,
   "warnings": 0,
-  "dataset_sha256": "d6a83d0fb0a0771ee70146fc7e96573430ca0f6687f2a02344773da13b6f175e",
+  "dataset_sha256": "4bf41f3bd75f14eee55f4b48d4275d5cdff2a617a7f253e1ca2d0bd191f41431",
   "metrics": {
     "units": 292,
     "verbs": 227,
     "phrases": 65,
-    "source_attested_examples": 287,
-    "generated_examples": 5,
-    "example_translations": 584,
-    "collocations": 0
+    "rich_units_4_to_6_examples": 292,
+    "source_attested_primary_examples": 287,
+    "generated_primary_examples": 5,
+    "primary_examples_with_fa_en": 292,
+    "additional_external_examples": 1153,
+    "collocations": 272
   },
   "generated_example_ids": [
-    "ma2-lu-0048",
-    "ma2-lu-0192",
-    "ma2-lu-0216",
-    "ma2-lu-0239",
-    "ma2-lu-0242"
+    "ma2-lu-0080",
+    "ma2-lu-0090",
+    "ma2-lu-0161",
+    "ma2-lu-0176",
+    "ma2-lu-0248"
   ],
-  "translation_review": "All 292 DE examples and their FA/EN translations were reviewed for direct semantic alignment during production; row 242 usage-note mismatch was explicitly repaired before enrichment.",
-  "issues": []
+  "issues": [
+    {
+      "severity": "error",
+      "code": "GENERATED_EXAMPLE_SET",
+      "id": "dataset",
+      "path": "provenance",
+      "message": "Expected generated-example IDs ['ma2-lu-0048', 'ma2-lu-0192', 'ma2-lu-0216', 'ma2-lu-0239', 'ma2-lu-0242']; found ['ma2-lu-0080', 'ma2-lu-0090', 'ma2-lu-0161', 'ma2-lu-0176', 'ma2-lu-0248']."
+    }
+  ]
 }

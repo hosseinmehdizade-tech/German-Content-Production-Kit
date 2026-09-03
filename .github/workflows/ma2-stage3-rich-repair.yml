@@ -33,22 +33,75 @@ jobs:
         run: |
           python Verification/test_rich_card_product_floor_v1_0_0.py
           python Verification/test_menschen_a2_rich_enrichment_semantics.py
+          python Verification/test_menschen_a2_residual_fallback_v1.py
       - name: Rebuild exact 292-unit Stage 3 artifacts
         run: |
-          python Workspaces/menschen-a2/tools/enrich_rich_card_v7.py \
+          python Workspaces/menschen-a2/tools/enrich_rich_card_v8.py \
             --canonical Workspaces/menschen-a2/02-canonical/CANONICAL.json \
             --seed Workspaces/menschen-a2/tools/ENRICHMENT-SEED.json \
             --out Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
             --evidence Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
             --cache Workspaces/menschen-a2/03-evidence/EXTERNAL-EVIDENCE-CACHE.json \
             --delay 0.01
+      - name: Durably persist Stage 3 WIP before any downstream gate
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add \
+            Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
+            Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
+            Workspaces/menschen-a2/03-evidence/EXTERNAL-EVIDENCE-CACHE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Persist Menschen A2 Stage 3 enrichment WIP before gates'
+            git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
+          fi
+          echo "STAGE3_WIP_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Record durable Stage 3 RUNNING checkpoint
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('Workspaces/menschen-a2/CHECKPOINT.json');cp=json.loads(p.read_text(encoding='utf-8'))
+          s=next(x for x in cp['stages'] if x['stage']==3)
+          s['state']='RUNNING';s['pass_commit']=None
+          s['wip_commit']=os.environ['STAGE3_WIP_COMMIT']
+          s['summary']='RUNNING: exact 292-unit enriched canonical, evidence index and external evidence cache are durably persisted before Product Floor. A downstream gate failure must resume from this WIP commit and may not refetch already-cached successful evidence.'
+          cp['resume_instruction']='Resume Stage 3 from its durable wip_commit. Reuse CANONICAL-ENRICHED.json and EXTERNAL-EVIDENCE-CACHE.json; repair only failing residual units/gates. Do not rerun the full external-evidence fetch unless the cache/source version is explicitly invalidated.'
+          p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add Workspaces/menschen-a2/CHECKPOINT.json
+          git commit -m 'Checkpoint Menschen A2 Stage 3 durable RUNNING WIP'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
       - name: Product-floor preflight on exact Stage 3 artifact
+        id: product_floor
         run: |
           python Verification/validate_rich_card_product_floor_v1_0_0.py \
             Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
             Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json \
             Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
             --output Workspaces/menschen-a2/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json
+      - name: Persist failed Product Floor evidence without losing WIP
+        if: failure() && steps.product_floor.conclusion == 'failure'
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('Workspaces/menschen-a2/CHECKPOINT.json');cp=json.loads(p.read_text(encoding='utf-8'))
+          pf=Path('Workspaces/menschen-a2/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json')
+          s=next(x for x in cp['stages'] if x['stage']==3)
+          s['state']='FAIL';s['pass_commit']=None
+          if pf.exists():
+              r=json.loads(pf.read_text(encoding='utf-8'))
+              s['summary']=f"FAIL after durable WIP persistence: Product Floor errors={r.get('errors')}. Repair only reported residual units; reuse committed cache/artifact."
+              s['gate_evidence']=sorted(set((s.get('gate_evidence') or [])+['03-evidence/PRODUCT-FLOOR-PREFLIGHT.json']))
+          cp['resume_instruction']='Repair only the exact Product Floor failures against the durable Stage 3 WIP; reuse committed enrichment/cache and rerun the failed gate. Do not repeat the 292-unit network enrichment.'
+          p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add Workspaces/menschen-a2/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json Workspaces/menschen-a2/CHECKPOINT.json
+          git commit -m 'Record Menschen A2 Stage 3 Product Floor failure durably'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
       - name: Build Stage 3 enrichment validation
         run: |
           python - <<'PY'
@@ -85,7 +138,7 @@ jobs:
           if extra_en: issues.append(f'{len(extra_en)} units retain non-primary English corpus translations')
           status='PASS' if not issues else 'FAIL'
           report={
-            'validator':'menschen-a2-stage3-rich-enrichment','validator_version':'1.0.0','status':status,
+            'validator':'menschen-a2-stage3-rich-enrichment','validator_version':'1.1.0','status':status,
             'source_canonical_sha256':hashlib.sha256((root/'02-canonical/CANONICAL.json').read_bytes()).hexdigest(),
             'enriched_canonical_sha256':hashlib.sha256((root/'02-canonical/CANONICAL-ENRICHED.json').read_bytes()).hexdigest(),
             'metrics':{
@@ -107,17 +160,14 @@ jobs:
           print(json.dumps(report,ensure_ascii=False,indent=2))
           if status!='PASS': raise SystemExit(1)
           PY
-      - name: Commit authoritative Stage 3 artifacts
+      - name: Commit authoritative Stage 3 gate evidence
         run: |
           git config user.name 'gfp-production-bot'
           git config user.email 'actions@users.noreply.github.com'
           git add \
-            Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json \
-            Workspaces/menschen-a2/03-evidence/EVIDENCE-INDEX.json \
-            Workspaces/menschen-a2/03-evidence/EXTERNAL-EVIDENCE-CACHE.json \
             Workspaces/menschen-a2/03-evidence/PRODUCT-FLOOR-PREFLIGHT.json \
             Workspaces/menschen-a2/03-evidence/ENRICHMENT-VALIDATION.json
-          git commit -m 'Pass Menschen A2 rich-card Stage 3 enrichment'
+          git commit -m 'Pass Menschen A2 rich-card Stage 3 gates'
           git push origin HEAD:repair/menschen-a2-rich-card-floor-v8
           echo "STAGE3_PASS_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - name: Record durable Stage 3 PASS in checkpoint
@@ -128,11 +178,11 @@ jobs:
           p=Path('Workspaces/menschen-a2/CHECKPOINT.json');cp=json.loads(p.read_text(encoding='utf-8'))
           validation=json.loads(Path('Workspaces/menschen-a2/03-evidence/ENRICHMENT-VALIDATION.json').read_text(encoding='utf-8'))
           s=next(x for x in cp['stages'] if x['stage']==3)
-          s['state']='PASS';s['pass_commit']=os.environ['STAGE3_PASS_COMMIT']
+          s['state']='PASS';s['pass_commit']=os.environ['STAGE3_PASS_COMMIT'];s.pop('wip_commit',None)
           m=validation['metrics']
           s['summary']=f"PASS: {m['units']} units; {m['units_with_4plus_examples']} with >=4 examples; {m['verbs_with_definition']} verbs with definition; {m['evidence_attempts']} external-evidence attempts. Exact enriched canonical passed product-floor preflight."
           s['authoritative_outputs']=['02-canonical/CANONICAL-ENRICHED.json','03-evidence/EVIDENCE-INDEX.json','03-evidence/EXTERNAL-EVIDENCE-CACHE.json']
-          s['gate_evidence']=['03-evidence/ENRICHMENT-VALIDATION.json','03-evidence/PRODUCT-FLOOR-PREFLIGHT.json','Verification/test_rich_card_product_floor_v1_0_0.py','Verification/test_menschen_a2_rich_enrichment_semantics.py']
+          s['gate_evidence']=['03-evidence/ENRICHMENT-VALIDATION.json','03-evidence/PRODUCT-FLOOR-PREFLIGHT.json','Verification/test_rich_card_product_floor_v1_0_0.py','Verification/test_menschen_a2_rich_enrichment_semantics.py','Verification/test_menschen_a2_residual_fallback_v1.py']
           cp['resume_instruction']='Resume at Stage 4 on repair/menschen-a2-rich-card-floor-v8. Run rich linguistic QA, lexical-quality v1.0.2, coverage and exact product-floor validation; then continue Stages 5-7.'
           p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY

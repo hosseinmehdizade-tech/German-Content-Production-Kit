@@ -1,0 +1,123 @@
+name: Menschen A2 Stage 4 rich QA v3
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage4-rich-qa-v3.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-stage4-rich-v3
+  cancel-in-progress: false
+
+jobs:
+  stage4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+      WS: Workspaces/menschen-a2
+      BRANCH: repair/menschen-a2-rich-card-floor-v8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install jsonschema
+
+      - name: Require exact durable Stage 3 PASS
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s3=next(x for x in cp['stages'] if x['stage']==3);s4=next(x for x in cp['stages'] if x['stage']==4)
+          assert s3['state']=='PASS' and s3.get('pass_commit'),s3
+          assert s4['state'] in {'INVALIDATED','FAIL'},s4
+          assert json.loads((w/'03-evidence/PRODUCT-FLOOR-PREFLIGHT.json').read_text(encoding='utf-8'))['status']=='PASS'
+          print('PASS Stage 3 authority',s3['pass_commit'])
+          PY
+
+      - name: Execute all Stage 4 gates and retain every report
+        id: qa
+        shell: bash
+        run: |
+          set +e
+          python Verification/validate_enriched_canonical_v1_0_1.py \
+            --dataset "$WS/02-canonical/CANONICAL-ENRICHED.json" \
+            --source-profile "$WS/02-canonical/MENSCHEN-A2-PROFILE.json" \
+            --type-rules Architecture/04-TYPE-RULES \
+            --previous "$WS/02-canonical/CANONICAL.json" \
+            --source-registry Architecture/03-SOURCES/SOURCE-REGISTRY.json \
+            --report "$WS/04-qa/CANONICAL-ENRICHED-VALIDATION.json"
+          C1=$?
+          python "$WS/tools/linguistic_qa_v2.py" "$WS/02-canonical/CANONICAL-ENRICHED.json" --output "$WS/04-qa/LINGUISTIC-QA.json"
+          C2=$?
+          python Verification/validate_lexical_quality_v1_0_2.py "$WS/02-canonical/CANONICAL-ENRICHED.json" --output "$WS/04-qa/LEXICAL-QUALITY.json"
+          C3=$?
+          python Verification/validate_content_completeness_v1_0_0.py "$WS/02-canonical/CANONICAL-ENRICHED.json" Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json --output "$WS/04-qa/COVERAGE-REPORT.json"
+          C4=$?
+          python Verification/validate_rich_card_product_floor_v1_0_0.py "$WS/02-canonical/CANONICAL-ENRICHED.json" Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json "$WS/03-evidence/EVIDENCE-INDEX.json" --output "$WS/04-qa/PRODUCT-FLOOR-VALIDATION.json"
+          C5=$?
+          printf '{"canonical":%s,"linguistic":%s,"lexical":%s,"coverage":%s,"product_floor":%s}\n' "$C1" "$C2" "$C3" "$C4" "$C5" > "$WS/04-qa/STAGE4-EXIT-CODES.json"
+          exit 0
+
+      - name: Build Stage 4 aggregate status
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');files=[
+            '04-qa/CANONICAL-ENRICHED-VALIDATION.json','04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          checks={};problems=[]
+          for rel in files:
+              p=w/rel
+              if not p.exists(): checks[rel]='MISSING';problems.append(rel+' missing');continue
+              d=json.loads(p.read_text(encoding='utf-8-sig'));st=d.get('status') or d.get('structural_typed_status');checks[rel]=st
+              if st!='PASS': problems.append(rel+'='+str(st))
+          exit_codes=json.loads((w/'04-qa/STAGE4-EXIT-CODES.json').read_text(encoding='utf-8'))
+          if any(int(x)!=0 for x in exit_codes.values()): problems.append('nonzero validator exit codes: '+json.dumps(exit_codes,sort_keys=True))
+          report={'status':'PASS' if not problems else 'FAIL','stage':4,'validator_set':'v3.1.13-rich-card','checks':checks,'exit_codes':exit_codes,'problems':problems,'phrase_rektion_compatibility_overlay':'Verification/validate_enriched_canonical_v1_0_1.py','architecture_mutated':False}
+          (w/'04-qa/STAGE4-AGGREGATE.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Commit Stage 4 evidence regardless of PASS or FAIL
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$WS/04-qa"
+          git commit -m 'Persist Menschen A2 Stage 4 QA evidence'
+          echo "S4_EVIDENCE_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:$BRANCH
+
+      - name: Record durable Stage 4 state
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');p=w/'CHECKPOINT.json';cp=json.loads(p.read_text(encoding='utf-8'));agg=json.loads((w/'04-qa/STAGE4-AGGREGATE.json').read_text(encoding='utf-8'))
+          s=next(x for x in cp['stages'] if x['stage']==4)
+          s['state']=agg['status'];s['pass_commit']=os.environ['S4_EVIDENCE_COMMIT'] if agg['status']=='PASS' else None
+          s['summary']=('PASS: all v3.1.13 Stage 4 canonical/linguistic/lexical/coverage/Product Floor gates passed on exact Stage 3 artifact.' if agg['status']=='PASS' else 'FAIL: Stage 4 gate evidence is durable; repair only reported Stage 4 defects without rerunning Stage 3.')
+          s['authoritative_outputs']=['04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          s['gate_evidence']=['04-qa/CANONICAL-ENRICHED-VALIDATION.json','04-qa/STAGE4-AGGREGATE.json','04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          cp['resume_instruction']=('Resume at Stage 5 from exact Stage 4 PASS. Do not rerun Stage 3.' if agg['status']=='PASS' else 'Repair only Stage 4 aggregate failures from durable reports. Do not rerun Stage 3 or external enrichment.')
+          p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add "$WS/CHECKPOINT.json"
+          git commit -m 'Checkpoint Menschen A2 Stage 4 state'
+          git push origin HEAD:$BRANCH
+
+      - name: Enforce PASS for workflow result
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open('Workspaces/menschen-a2/04-qa/STAGE4-AGGREGATE.json',encoding='utf-8'))
+          assert a['status']=='PASS',a
+          print('PASS durable Stage 4')
+          PY

@@ -9,8 +9,11 @@ on:
       - '.github/workflows/ma2-downstream-runtime-smoke.yml'
       - '.github/workflows/ma2-stage7-rich-release-v2.yml'
       - 'Verification/validate_enriched_canonical_v1_0_0.py'
+      - 'Verification/validate_rich_card_product_floor_v1_0_0.py'
+      - 'Verification/test_rich_card_product_floor_v1_0_0.py'
       - 'Workspaces/menschen-a2/tools/runtime_acceptance_rich_v2.py'
       - 'Workspaces/menschen-a2/tools/package_release_rich_v2.py'
+      - 'Prompt/START-PROMPT-v3.1.13.md'
   workflow_dispatch:
 
 permissions:
@@ -31,12 +34,16 @@ jobs:
         run: |
           python -m py_compile \
             Verification/validate_enriched_canonical_v1_0_0.py \
+            Verification/validate_rich_card_product_floor_v1_0_0.py \
+            Verification/test_rich_card_product_floor_v1_0_0.py \
             Workspaces/menschen-a2/tools/runtime_acceptance_rich_v2.py \
             Workspaces/menschen-a2/tools/package_release_rich_v2.py \
             Workspaces/menschen-a2/tools/project_universal_v2_rich.py \
             Workspaces/menschen-a2/tools/delivery_loss_check.py \
             Workspaces/menschen-a2/tools/linguistic_qa_v2.py \
             Verification/validate_lexical_quality_v1_0_2.py
+      - name: Run product-floor regression suite
+        run: python Verification/test_rich_card_product_floor_v1_0_0.py
       - name: Parse downstream workflow YAML
         run: |
           python -m pip install pyyaml

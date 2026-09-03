@@ -79,9 +79,9 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "FAIL",
-      "pass_commit": null,
-      "summary": "FAIL after durable WIP persistence: Product Floor errors=3. Repair only reported residual units; reuse committed cache/artifact.",
+      "state": "PASS",
+      "pass_commit": "37363b181402b650d09bccb6f43e747277be7b9f",
+      "summary": "PASS from durable v8 WIP plus targeted v9 residual repair: 292 units; 292 with >=4 examples; 227 verbs with definition; 292 external-evidence attempts. Only three residual units were patched from externally attested examples; full-source enrichment was not repeated.",
       "required_outputs": [
         "03-evidence/EVIDENCE-INDEX.json",
         "03-evidence/EXTERNAL-EVIDENCE-CACHE.json",
@@ -89,12 +89,18 @@
         "02-canonical/CANONICAL-ENRICHED.json"
       ],
       "gate_evidence": [
+        "03-evidence/ENRICHMENT-VALIDATION.json",
         "03-evidence/PRODUCT-FLOOR-PREFLIGHT.json",
-        "04-qa/THIN-CARD-ROOT-CAUSE-2026-09-02.json",
-        "Verification/test_menschen_a2_rich_enrichment_semantics.py",
-        "Verification/test_rich_card_product_floor_v1_0_0.py"
+        "03-evidence/RESIDUAL-REPAIR-v9.json",
+        "Verification/test_rich_card_product_floor_v1_0_0.py",
+        "Verification/test_menschen_a2_rich_enrichment_semantics.py"
       ],
-      "wip_commit": "cde8c5de1017a069a8d9b0d5c04b2a7dacd55b9c"
+      "wip_commit": "cde8c5de1017a069a8d9b0d5c04b2a7dacd55b9c",
+      "authoritative_outputs": [
+        "02-canonical/CANONICAL-ENRICHED.json",
+        "03-evidence/EVIDENCE-INDEX.json",
+        "03-evidence/EXTERNAL-EVIDENCE-CACHE.json"
+      ]
     },
     {
       "stage": 4,
@@ -174,7 +180,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Repair only the exact Product Floor failures against the durable Stage 3 WIP; reuse committed enrichment/cache and rerun the failed gate. Do not repeat the 292-unit network enrichment.",
+  "resume_instruction": "Resume at Stage 4 from this exact Stage 3 PASS artifact. Do not rerun Stage 3 or refetch its external evidence unless an upstream authority/cache version is explicitly invalidated.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

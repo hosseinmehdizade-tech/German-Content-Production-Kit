@@ -1,0 +1,133 @@
+name: Menschen A2 Stage 4 attested semantic final v4
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage4-attested-final-v4.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: menschen-a2-stage4-attested-v4
+  cancel-in-progress: false
+
+jobs:
+  stage4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+      WS: Workspaces/menschen-a2
+      BRANCH: repair/menschen-a2-rich-card-floor-v8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install jsonschema
+
+      - name: Require Stage 3 PASS and durable Stage 4 semantic-cleanup candidate
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'))
+          s3=next(x for x in cp['stages'] if x['stage']==3);s4=next(x for x in cp['stages'] if x['stage']==4)
+          assert s3['state']=='PASS' and s3.get('pass_commit'),s3
+          assert s4['state']=='FAIL' and not s4.get('pass_commit'),s4
+          assert (w/'04-qa/CANONICAL-QA-REPAIRED.json').is_file()
+          r=json.loads((w/'04-qa/SEMANTIC-ALIGNMENT-REPAIR.json').read_text(encoding='utf-8'))
+          assert r['network_refetch'] is False and r['generated_content_added'] is False
+          print('PASS durable Stage 4 repair candidate; Stage 3 will not be rerun')
+          PY
+
+      - name: Close only remaining Stage 4 gaps with externally attested examples
+        run: |
+          python "$WS/tools/repair_stage4_attested_residual_v2.py" \
+            --input "$WS/04-qa/CANONICAL-QA-REPAIRED.json" \
+            --spec "$WS/tools/STAGE4-ATTESTED-REFLEXIVE-EXAMPLES-v1.json" \
+            --output "$WS/04-qa/CANONICAL-QA-REPAIRED.json" \
+            --report "$WS/04-qa/ATTESTED-RESIDUAL-REPAIR-v2.json"
+
+      - name: Structural enriched-canonical validation with explicit Phrase Rektion compatibility overlay
+        run: |
+          python Verification/validate_enriched_canonical_v1_0_1.py \
+            --dataset "$WS/04-qa/CANONICAL-QA-REPAIRED.json" \
+            --source-profile "$WS/02-canonical/MENSCHEN-A2-PROFILE.json" \
+            --type-rules Architecture/04-TYPE-RULES \
+            --previous "$WS/02-canonical/CANONICAL.json" \
+            --source-registry Architecture/03-SOURCES/SOURCE-REGISTRY.json \
+            --report "$WS/04-qa/CANONICAL-ENRICHED-VALIDATION.json"
+
+      - name: Linguistic QA v3 and reflexive semantic surface audit
+        run: |
+          python "$WS/tools/linguistic_qa_v3.py" "$WS/04-qa/CANONICAL-QA-REPAIRED.json" --output "$WS/04-qa/LINGUISTIC-QA.json"
+          python "$WS/tools/audit_reflexive_alignment_v1.py" "$WS/04-qa/CANONICAL-QA-REPAIRED.json" --output "$WS/04-qa/REFLEXIVE-ALIGNMENT-AUDIT.json"
+
+      - name: Lexical quality coverage and Product Floor
+        run: |
+          python Verification/validate_lexical_quality_v1_0_2.py "$WS/04-qa/CANONICAL-QA-REPAIRED.json" --output "$WS/04-qa/LEXICAL-QUALITY.json"
+          python Verification/validate_content_completeness_v1_0_0.py "$WS/04-qa/CANONICAL-QA-REPAIRED.json" Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json --output "$WS/04-qa/COVERAGE-REPORT.json"
+          python Verification/validate_rich_card_product_floor_v1_0_0.py "$WS/04-qa/CANONICAL-QA-REPAIRED.json" Prompt/GERMAN-RICH-CARD-PRODUCT-FLOOR-v1.0.0.json "$WS/03-evidence/EVIDENCE-INDEX.json" --output "$WS/04-qa/PRODUCT-FLOOR-VALIDATION.json"
+
+      - name: Build exact Stage 4 aggregate
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');rels=[
+            '04-qa/ATTESTED-RESIDUAL-REPAIR-v2.json','04-qa/CANONICAL-ENRICHED-VALIDATION.json','04-qa/LINGUISTIC-QA.json','04-qa/REFLEXIVE-ALIGNMENT-AUDIT.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          checks={};problems=[]
+          for rel in rels:
+              d=json.loads((w/rel).read_text(encoding='utf-8-sig'));st=d.get('status') or d.get('structural_typed_status');checks[rel]=st
+              if st!='PASS':problems.append(rel+'='+str(st))
+          ds=json.loads((w/'04-qa/CANONICAL-QA-REPAIRED.json').read_text(encoding='utf-8'))
+          units=ds.get('learning_units') or []
+          if len(units)!=292:problems.append('unit count !=292')
+          generated=[]
+          for u in units:
+              if any(isinstance(s,dict) and s.get('source_id')=='assistant_pedagogical_example' for s in ((u.get('provenance') or {}).get('sources') or [])):generated.append(u.get('id'))
+          if generated:problems.append('generated learner fallback remains: '+','.join(generated))
+          report={'status':'PASS' if not problems else 'FAIL','stage':4,'authority':'v3.1.13 rich-card','dataset':'menschen-a2','canonical_authoritative_path':'04-qa/CANONICAL-QA-REPAIRED.json','canonical_sha256':hashlib.sha256((w/'04-qa/CANONICAL-QA-REPAIRED.json').read_bytes()).hexdigest(),'units':len(units),'checks':checks,'generated_fallback_units':generated,'stage3_rerun':False,'problems':problems}
+          (w/'04-qa/STAGE4-AGGREGATE.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if report['status']!='PASS':raise SystemExit(1)
+          PY
+
+      - name: Commit authoritative repaired Stage 4 canonical and gates
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$WS/04-qa"
+          git commit -m 'Pass Menschen A2 Stage 4 semantic and lexical QA'
+          echo "S4_PASS_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:$BRANCH
+
+      - name: Record durable Stage 4 PASS
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');p=w/'CHECKPOINT.json';cp=json.loads(p.read_text(encoding='utf-8'));s=next(x for x in cp['stages'] if x['stage']==4)
+          s['state']='PASS';s['pass_commit']=os.environ['S4_PASS_COMMIT']
+          s['summary']='PASS: Stage 4 removed generated density fillers and reflexive sense-mismatched examples/collocations, refilled only with externally attested examples, and passed structural enriched-canonical validation, linguistic QA v3, reflexive semantic audit, lexical-quality v1.0.2, completeness coverage and mandatory Product Floor. Stage 3 was not rerun.'
+          s['authoritative_outputs']=['04-qa/CANONICAL-QA-REPAIRED.json','04-qa/LINGUISTIC-QA.json','04-qa/LEXICAL-QUALITY.json','04-qa/COVERAGE-REPORT.json','04-qa/PRODUCT-FLOOR-VALIDATION.json']
+          s['gate_evidence']=['04-qa/ATTESTED-RESIDUAL-REPAIR-v2.json','04-qa/CANONICAL-ENRICHED-VALIDATION.json','04-qa/REFLEXIVE-ALIGNMENT-AUDIT.json','04-qa/STAGE4-AGGREGATE.json']
+          cp['resume_instruction']='Resume at Stage 5 from 04-qa/CANONICAL-QA-REPAIRED.json at this exact Stage 4 PASS. Do not rerun Stage 3 or external enrichment.'
+          p.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add "$WS/CHECKPOINT.json"
+          git commit -m 'Checkpoint Menschen A2 Stage 4 PASS'
+          git push origin HEAD:$BRANCH
+
+      - name: Final Stage 4 consistency
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          w=pathlib.Path('Workspaces/menschen-a2');cp=json.loads((w/'CHECKPOINT.json').read_text(encoding='utf-8'));s=next(x for x in cp['stages'] if x['stage']==4)
+          assert s['state']=='PASS' and s.get('pass_commit'),s
+          assert json.loads((w/'04-qa/STAGE4-AGGREGATE.json').read_text(encoding='utf-8'))['status']=='PASS'
+          print('PASS durable Stage 4; Stage 5 may proceed')
+          PY

@@ -1,0 +1,30 @@
+name: Menschen A2 Stage 4 reflexive semantic audit
+
+on:
+  push:
+    branches: [repair/menschen-a2-rich-card-floor-v8]
+    paths: ['.github/workflows/ma2-stage4-reflexive-audit.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: repair/menschen-a2-rich-card-floor-v8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Audit exact Stage 3 artifact
+        run: python Workspaces/menschen-a2/tools/audit_reflexive_alignment_v1.py Workspaces/menschen-a2/02-canonical/CANONICAL-ENRICHED.json --output Workspaces/menschen-a2/04-qa/REFLEXIVE-ALIGNMENT-AUDIT.json
+      - name: Persist audit evidence
+        run: |
+          git config user.name 'gfp-production-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add Workspaces/menschen-a2/04-qa/REFLEXIVE-ALIGNMENT-AUDIT.json
+          git commit -m 'Persist A2 reflexive semantic alignment audit'
+          git push origin HEAD:repair/menschen-a2-rich-card-floor-v8

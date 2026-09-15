@@ -1,0 +1,53 @@
+{
+  "workspace": "nomen-verb-verbindungen",
+  "updated_version": "v3.3.2-production-batch0002",
+  "status": "PRODUCTION_IN_PROGRESS",
+  "stages": {
+    "0_input_capability_profile_reference_availability": {
+      "state": "PASS",
+      "evidence": ["SOURCE-CONTRACT.json", "REFERENCE-AVAILABILITY-SESSION.json"],
+      "metrics": {"source_profile": "nomen-verb-verbindungen@1.0.0", "target_runtime": "GFP v411"}
+    },
+    "1_source_inventory": {
+      "state": "PASS",
+      "evidence": ["SOURCE-INVENTORY.json", "SOURCE-INVENTORY-REPAIRED.json", "SOURCE-INVENTORY-REVIEW.tsv", "STAGE1-REPAIR-REPORT.json"],
+      "metrics": {"items": 2475, "fvg": 859, "idiom": 519, "general_nvv": 1097, "slash_variant_items": 221, "missing_noun_header": 0, "extraction_repairs": 37}
+    },
+    "2_canonical_semantic_graph": {
+      "state": "RUNNING",
+      "evidence": ["STAGE2-VARIANT-DECISIONS.json", "STAGE2-CANONICAL-IDENTITY-GRAPH.json", "STAGE2-SOURCE-TO-EXPRESSION-MAP.tsv", "STAGE2-QA-REPORT.json", "STAGE2-EVIDENCE-SENSE-ISSUES.json"],
+      "subgates": {"source_slash_variant_review": "PASS", "evidence_driven_sense_resolution": "RUNNING"},
+      "metrics": {"source_items": 2475, "variant_source_items_reviewed": 221, "semantic_split_source_items": 17, "provisional_expression_identities": 2493, "lexeme_identities": 1512, "open_evidence_sense_issues": 1},
+      "note": "2493 is the current expression-surface identity count, not a claim that every polysemous expression has final sense resolution."
+    },
+    "3_lexical_enrichment_evidence": {
+      "state": "RUNNING",
+      "metrics": {"completed_expression_cards": 26, "provisional_expression_total": 2493, "definitions_de": 26, "translations_fa": 26, "translations_en": 26, "completed_batches": 2}
+    },
+    "4_examples_semantic_annotations": {
+      "state": "RUNNING",
+      "metrics": {"completed_expression_cards": 26, "examples": 104, "examples_per_completed_card": 4, "fa_sentence_translations": 104, "en_sentence_translations": 104, "completed_batches": 2}
+    },
+    "5_grammar_reading_exercise_domains": {"state": "NOT_STARTED", "note": "Not a required production domain for this NVV vocabulary source unless later explicitly requested."},
+    "6_full_system_qa": {
+      "state": "RUNNING",
+      "metrics": {"batch_0001_validator": "PASS", "batch_0002_validator": "PASS", "cumulative_validator": "PASS", "global_dataset_qa": "NOT_COMPLETE"}
+    },
+    "7_delivery_projection": {
+      "state": "RUNNING",
+      "metrics": {"batch_0001_projected_expression_cards": 13, "batch_0002_projected_expression_cards": 13, "cumulative_projected_expression_cards": 26, "duplicate_supporting_sense_cards": 0, "projection_contract": "GFP-V411-VOCABULARY-PROJECTION-v1.0.1"}
+    },
+    "8_build_integration_runtime_presentation_acceptance": {
+      "state": "RUNNING",
+      "metrics": {"batch_0001_node_graph_acceptance": "PASS", "batch_0002_node_graph_acceptance": "PASS", "cumulative_node_graph_acceptance": "PASS", "resolved_components": 52, "reverse_graph_links": 52, "runtime_js_syntax": "PASS", "runtime_assets": "PASS", "inline_script_syntax": "PASS", "live_browser_import": "NOT_RUN"}
+    },
+    "9_release_verification": {"state": "NOT_STARTED"}
+  },
+  "completed_expression_ids": [
+    "DAH-NVV-EXP-00149", "DAH-NVV-EXP-00314", "DAH-NVV-EXP-01694", "DAH-NVV-EXP-00345", "DAH-NVV-EXP-02137", "DAH-NVV-EXP-00111", "DAH-NVV-EXP-00374", "DAH-NVV-EXP-01891", "DAH-NVV-EXP-00265", "DAH-NVV-EXP-00266", "DAH-NVV-EXP-00190", "DAH-NVV-EXP-00078", "DAH-NVV-EXP-00077",
+    "DAH-NVV-EXP-00038", "DAH-NVV-EXP-00042", "DAH-NVV-EXP-00052", "DAH-NVV-EXP-00059", "DAH-NVV-EXP-00066", "DAH-NVV-EXP-00019", "DAH-NVV-EXP-00023", "DAH-NVV-EXP-00025", "DAH-NVV-EXP-00026", "DAH-NVV-EXP-00121", "DAH-NVV-EXP-00141", "DAH-NVV-EXP-00143", "DAH-NVV-EXP-00160"
+  ],
+  "pinned_app": {"version": "GFP v411 R37", "package": "GFP-v411-DEVELOPMENT-BASELINE-R37.zip", "sha256": "fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b"},
+  "production_cadence": {"safe_batch_size": "100-200", "ambiguous_items": "quarantine_review_queue", "checkpoint_after_each_successful_batch": true},
+  "next": "Before Batch 0003, switch from 13-card micro-batches to 100-200 safe evidence-backed cards per batch. Quarantine ambiguous/polysemous items instead of blocking the batch. Preserve Batch 0001/0002. Continue evidence-driven semantic resolution; do not collapse etw. / jdn. in Anspruch nehmen into one generic sense."
+}

@@ -11,6 +11,15 @@ This strategy is a workstream execution policy, not a separate project authority
 Always enter through the unified project chain:
 `PROJECT-BOOTSTRAP.md` → `PROJECT-STATE.json` → active prompt/source protocol/registry → this workstream `SOURCE-MANIFEST.json` + `CHECKPOINT.json` → production work.
 
+Raw-source lookup is part of that same chain and is not optional:
+1. explicitly newer/current source supplied by the user in the current chat
+2. **ChatGPT Project Sources**
+3. **ChatGPT Library**
+4. matching current-chat attachment
+5. ask the user only if unresolved
+
+Verify registered SHA-256 whenever raw bytes are available. Same-hash copies across Project Sources/Library are mirrors of one logical source and must not be processed twice.
+
 Auto-Mission is an optional executor under this hierarchy. It does not own project state.
 
 ## Decision

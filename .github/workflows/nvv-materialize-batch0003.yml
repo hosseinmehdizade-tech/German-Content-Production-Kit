@@ -4,44 +4,53 @@ on:
   push:
     branches: [nvv-production]
     paths:
-      - 'Workspaces/nomen-verb-verbindungen/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip'
+      - 'Workspaces/nomen-verb-verbindungen/_materialize-batch0003/READY-BATCH0003-FINAL.txt'
 
 permissions:
   contents: write
 
 jobs:
   materialize:
+    if: github.event.head_commit.message != 'Materialize NVV Batch0003 final checkpoint snapshot'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: nvv-production
           fetch-depth: 0
-      - name: Verify and materialize checkpoint
+      - name: Reassemble, verify and materialize final checkpoint
         shell: bash
         run: |
           set -euo pipefail
           ROOT='Workspaces/nomen-verb-verbindungen'
+          STAGE="$ROOT/_materialize-batch0003"
+          READY="$STAGE/READY-BATCH0003-FINAL.txt"
           ZIP="$ROOT/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip"
           SIDE="$ROOT/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip.sha256"
-          cd "$ROOT/07-release"
-          sha256sum -c "$(basename "$SIDE")"
-          cd "$GITHUB_WORKSPACE"
+          EXPECTED="$(sed -n 's/^sha256=//p' "$READY")"
+          test -n "$EXPECTED"
+          mkdir -p "$ROOT/07-release"
+          cat "$STAGE"/chunk*.b64 | base64 --decode > "$ZIP"
+          ACTUAL="$(sha256sum "$ZIP" | awk '{print $1}')"
+          test "$ACTUAL" = "$EXPECTED"
+          printf '%s  %s\n' "$ACTUAL" "$(basename "$ZIP")" > "$SIDE"
           TMP="$(mktemp -d)"
           unzip -q "$ZIP" -d "$TMP"
           cp -a "$TMP/." "$ROOT/"
-          rm -rf "$ROOT/_materialize-batch0003"
           python - <<'PY'
           from pathlib import Path
           import hashlib
           root=Path('Workspaces/nomen-verb-verbindungen')
+          verified=0
           for line in (root/'07-release/SHA256SUMS-BATCH0003.txt').read_text(encoding='utf-8').splitlines():
               expected, rel=line.split('  ',1)
               actual=hashlib.sha256((root/rel).read_bytes()).hexdigest()
               if actual != expected:
                   raise SystemExit(f'hash mismatch: {rel}: {actual} != {expected}')
-          print('PASS extracted checkpoint SHA256 manifest')
+              verified += 1
+          print(f'PASS extracted checkpoint SHA256 manifest: {verified} entries')
           PY
+          rm -rf "$STAGE"
       - name: Commit materialized Batch0003 snapshot
         shell: bash
         run: |

@@ -1,0 +1,103 @@
+{
+  "inventory_qa_schema": "grammar-inventory-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "1_source_inventory",
+  "overall_status": "PASS",
+  "executed_against": {
+    "source_manifest": "00-source/SOURCE-MANIFEST.json",
+    "raw_catalog": "01-inventory/CHAPTER-CATALOG.json",
+    "raw_catalog_blob_sha": "ee4ef53335db08ef4fe4249ff1d922bda87b2c4e",
+    "verified_inventory": "01-inventory/SOURCE-INVENTORY.json",
+    "stable_id_map": "01-inventory/STABLE-ID-MAP.json"
+  },
+  "checks": [
+    {"id":"chapter_count_total","expected":168,"actual":168,"status":"PASS"},
+    {"id":"chapter_count_a1_b1","expected":80,"actual":80,"status":"PASS"},
+    {"id":"chapter_count_b2_c1","expected":88,"actual":88,"status":"PASS"},
+    {"id":"stable_id_count","expected":168,"actual":168,"status":"PASS"},
+    {"id":"stable_id_uniqueness","duplicates":0,"status":"PASS"},
+    {"id":"chapter_number_contiguity_a1_b1","expected":"1..80","status":"PASS"},
+    {"id":"chapter_number_contiguity_b2_c1","expected":"1..88","status":"PASS"},
+    {"id":"source_order_and_printed_page_monotonicity","status":"PASS"},
+    {"id":"chapter_opening_verification","expected":168,"checked":168,"passed":168,"status":"PASS"},
+    {"id":"title_cefr_page_ambiguities_resolved","resolved":8,"unresolved":0,"status":"PASS"}
+  ],
+  "resolved_findings": [
+    {
+      "source_chapter_id": "ga-a1b1-ch017",
+      "field": "cefr_labels",
+      "from": ["A1"],
+      "to": ["A2"],
+      "evidence": "Chapter-opening page 44 carries an explicit A2 badge; the TOC row is unmarked."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch036",
+      "field": "source_title_de",
+      "from": "Ein netter Mann! Ich lieben den netten Mann",
+      "to": "Ein netter Mann! Ich liebe den netten Mann",
+      "evidence": "TOC reads 'Ich lieben ...'; chapter-opening page 88 reads 'Ich liebe ...'. Opening-page title resolves the discrepancy."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch045",
+      "field": "cefr_labels",
+      "from": ["A2"],
+      "to": ["A1"],
+      "evidence": "Neither TOC nor chapter-opening page has an A2/B1 level badge; prior A2 assignment was unsupported."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch047",
+      "field": "cefr_labels",
+      "from": ["A2"],
+      "to": ["A1"],
+      "evidence": "Neither TOC nor chapter-opening page has an A2/B1 level badge; prior A2 assignment was unsupported."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch048",
+      "field": "cefr_labels",
+      "from": ["A2"],
+      "to": ["A1"],
+      "evidence": "Neither TOC nor chapter-opening page has an A2/B1 level badge; prior A2 assignment was unsupported."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch055",
+      "field": "source_title_de",
+      "from": "War, hätte, würde ...",
+      "to": "Wäre, hätte, würde ...",
+      "evidence": "Chapter-opening page 130 reads 'Wäre, hätte, würde ...'."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch068",
+      "field": "source_title_de",
+      "from": "Es ist schön, zu feiern ...",
+      "to": "Es ist schön, zu feiern",
+      "evidence": "Chapter-opening page 160 has no trailing ellipsis."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch070",
+      "field": "source_title_de",
+      "from": "Das ist der Mann, der immer meine Nachbarin besucht.",
+      "to": "Das ist der Mann, der immer meine Nachbarin besucht",
+      "evidence": "Chapter-opening page 164 has no terminal period in the heading."
+    }
+  ],
+  "provenance_observations": [
+    {
+      "severity": "NONBLOCKING",
+      "finding": "Current-chat PDF bytes differ from SOURCE-MANIFEST.json hashes. They were not promoted to source authority because the user did not identify them as newer/current replacements.",
+      "disposition": "Manifest authority retained; current files used only for visual verification."
+    },
+    {
+      "severity": "NONBLOCKING",
+      "finding": "Current B2-C1 verification copy has 316 PDF pages versus 312 in the manifest.",
+      "disposition": "All 88 catalogued chapter openings, printed-page starts, titles and visible CEFR markers were verified in sequence; extra PDF pages are outside the chapter inventory gate."
+    },
+    {
+      "severity": "RESOLVED",
+      "finding": "A1-B1 chapter 36 TOC contains 'Ich lieben ...' while chapter opening contains 'Ich liebe ...'.",
+      "disposition": "Verified inventory uses the chapter-opening title and preserves the TOC discrepancy as evidence."
+    }
+  ],
+  "blocking_issues": [],
+  "gate_decision": "PASS",
+  "gate_rationale": "The authoritative 168-item TOC capture has complete stable IDs and source locators. Every chapter opening was visually checked; all identified title/CEFR discrepancies were explicitly resolved in SOURCE-INVENTORY.json without silently rewriting the raw TOC capture."
+}

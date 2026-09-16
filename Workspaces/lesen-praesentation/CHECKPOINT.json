@@ -39,7 +39,7 @@
     {
       "stage": 1,
       "name": "Source & Inventory",
-      "state": "RUNNING",
+      "state": "PASS",
       "authoritative_outputs": [
         "00-source/SOURCE-MANIFEST.json",
         "01-inventory/SOURCE-INVENTORY.json",
@@ -48,8 +48,8 @@
       "gate_evidence": [
         "01-inventory/INVENTORY-QA.json"
       ],
-      "summary": "Source inventory, stable ID map and inventory QA evidence are generated and pass local deterministic checks. Stage 1 remains RUNNING until this evidence is committed; a subsequent promotion commit must reference that durable evidence commit.",
-      "pass_commit": null
+      "summary": "Source identity and byte equivalence verified; source-faithful inventory has 68 topics across 76 PDF pages; stable IDs lesen-praes-0001..0068 are durable; inventory QA passes including continuation, blank, duplicate-occurrence and unnumbered-topic special cases.",
+      "pass_commit": "390403cc3d458c415ac33c863ef603a467389e7a"
     },
     {
       "stage": 2,
@@ -89,10 +89,16 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Commit Stage 1 inventory evidence, then promote Stage 1 to PASS using the exact evidence commit. Do not begin Stage 2 before that durable promotion.",
+  "resume_instruction": "Stage 1 is PASS. Continue with Stage 2 Canonicalization only when new canonical reading-content work is required; do not overwrite Grammar/Vocabulary workstreams. R45 may reuse already validated R43 derived runtime content while keeping this source lineage authoritative.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,
     "downstream_invalidation_required_on_upstream_change": true
-  }
+  },
+  "stage1_evidence_commit": "390403cc3d458c415ac33c863ef603a467389e7a",
+  "stage1_evidence": [
+    "01-inventory/SOURCE-INVENTORY.json",
+    "01-inventory/STABLE-ID-MAP.json",
+    "01-inventory/INVENTORY-QA.json"
+  ]
 }

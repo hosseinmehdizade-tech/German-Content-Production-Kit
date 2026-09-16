@@ -1,7 +1,10 @@
 # German Content Production Kit v3.1.12
 
+> **MANDATORY FIRST STEP FOR EVERY NEW CHAT:** read `PROJECT-BOOTSTRAP.md` first.
+
 ```text
 Start here:
+PROJECT-BOOTSTRAP.md
 PROJECT-STATE.json
 Prompt/START-PROMPT-v3.1.12.md
 ```
@@ -10,10 +13,11 @@ v3.1.12 is the active production overlay. It keeps the v3.1.11 lexical-quality/r
 
 ## Cross-chat startup protocol
 
-Before substantial project work, inspect `PROJECT-STATE.json`, this README, the active START-PROMPT, the relevant source/workstream `CHECKPOINT.json`, and `German-Flashcards-Pro/main` `PROJECT-STATE.json` when the work may touch runtime/import/presentation. GitHub is the durable coordination layer, not a blocker: if the user explicitly supplies a newer full artifact and identifies it as the current/latest version, that artifact is the immediate working authority for the task. Never silently downgrade from newer explicit user input to an older GitHub runtime. Persist the newer state back to Git when practical, but ordinary work may continue while GitHub temporarily lags.
+Before substantial project work, inspect `PROJECT-BOOTSTRAP.md`, `PROJECT-STATE.json`, this README, the active START-PROMPT, the relevant source/workstream `CHECKPOINT.json`, and `German-Flashcards-Pro/main` `PROJECT-BOOTSTRAP.md` + `PROJECT-STATE.json` when the work may touch runtime/import/presentation. GitHub is the durable coordination layer, not a blocker: if the user explicitly supplies a newer full artifact and identifies it as the current/latest version, that artifact is the immediate working authority for the task. Never silently downgrade from newer explicit user input to an older GitHub runtime. Persist the newer state back to Git when practical, but ordinary work may continue while GitHub temporarily lags.
 
 ## Active authority map
 
+- Mandatory cross-chat bootstrap: `PROJECT-BOOTSTRAP.md`
 - Cross-chat registry: `PROJECT-STATE.json`
 - Active entrypoint: `Prompt/START-PROMPT-v3.1.12.md`
 - Active overlay: `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.12.md`
@@ -37,7 +41,7 @@ Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. 
 - `PASS` requires authoritative artifacts + gate evidence committed to Git and recorded in the source `CHECKPOINT.json`.
 - Chat history, `/mnt/data`, local Codex workspaces and temporary ZIPs are not durable checkpoints, but an explicitly newer user-supplied artifact may still be the immediate working authority until Git catches up.
 - If Git persistence is unavailable, record the lag/blocker, but do not stop ordinary source work that can safely continue from a newer explicit artifact. Final release status still requires durable evidence.
-- At every resumed session, inspect current `main`, `PROJECT-STATE.json`, the active prompts, the source checkpoint, and current `German-Flashcards-Pro/main` before continuing.
+- At every resumed session, inspect current `main`, `PROJECT-BOOTSTRAP.md`, `PROJECT-STATE.json`, the active prompts, the source checkpoint, and current `German-Flashcards-Pro/main` before continuing.
 - Preserve valid upstream PASS stages; when an authoritative upstream artifact changes, mark dependent downstream stages `INVALIDATED` and rerun only affected work.
 - Quality outranks field density. Never fabricate learner content or evidence to satisfy a count.
 - Example-derived phrases are not collocations.

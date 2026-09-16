@@ -30,7 +30,7 @@ jobs:
           EXPECTED="$(sed -n 's/^sha256=//p' "$READY")"
           test -n "$EXPECTED"
           mkdir -p "$ROOT/07-release"
-          cat "$STAGE"/chunk*.b64 | base64 --decode > "$ZIP"
+          cat "$STAGE"/finalchunk*.b64 | base64 --decode > "$ZIP"
           ACTUAL="$(sha256sum "$ZIP" | awk '{print $1}')"
           test "$ACTUAL" = "$EXPECTED"
           printf '%s  %s\n' "$ACTUAL" "$(basename "$ZIP")" > "$SIDE"

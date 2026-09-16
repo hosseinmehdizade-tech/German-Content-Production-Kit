@@ -1,17 +1,27 @@
 # NVV Production Strategy — Scalable Hybrid Pipeline
 
-Updated: 2026-09-15
+Updated: 2026-09-16
 Branch: `nvv-production`
 Workspace: `Workspaces/nomen-verb-verbindungen`
 
+## Authority integration
+
+This strategy is a workstream execution policy, not a separate project authority system.
+
+Always enter through the unified project chain:
+`PROJECT-BOOTSTRAP.md` → `PROJECT-STATE.json` → active prompt/source protocol/registry → this workstream `SOURCE-MANIFEST.json` + `CHECKPOINT.json` → production work.
+
+Auto-Mission is an optional executor under this hierarchy. It does not own project state.
+
 ## Decision
+
 Use a **hybrid pipeline**:
 
 - Global structural work is done once across the full source.
 - Learner-content enrichment is produced in bounded end-to-end batches.
 - Ambiguous/polysemous cases are quarantined into a persistent review queue instead of blocking safe production.
 
-Do **not** use a pure field-by-field whole-corpus pipeline such as: all Persian meanings for 2,493 expressions -> all German definitions -> all examples -> all relations. That creates cross-field drift, delays QA feedback, and makes partial recovery harder.
+Do **not** use a pure field-by-field whole-corpus pipeline such as: all Persian meanings for 2,493 expressions → all German definitions → all examples → all relations. That creates cross-field drift, delays QA feedback, and makes partial recovery harder.
 
 Do **not** continue 13-card micro-batches. They were pilots only.
 
@@ -28,7 +38,7 @@ These fields/decisions should be completed or maintained globally before/while e
 7. lexical components (noun/verb etc.)
 8. unresolved sense/ambiguity queue
 
-Already established as of Batch 0002:
+Established as of Batch 0002:
 - 2,475 source bullet items
 - 2,493 provisional expression identities
 - 221 slash/variant source items reviewed
@@ -40,7 +50,7 @@ Already established as of Batch 0002:
 
 Default batch size: **100 expressions**.
 
-After two consecutive 100-card batches pass all validation and cumulative checks without systematic defects, batch size may increase to **150**. Do not exceed 200 without explicit evidence that quality and validation remain stable.
+After two consecutive 100-card batches pass all validation and cumulative checks without systematic defects, batch size may increase to **150**. Do not exceed 200 without explicit user approval.
 
 A batch is selected from safe expressions only. Ambiguous records go to the review queue and are replaced by the next safe records so the batch can still reach its target size.
 
@@ -106,7 +116,15 @@ Run batch-level and cumulative validation for:
 Any failing card is fixed or moved to review; do not lower the gate to hit the batch count.
 
 ### B6 — Projection + runtime regression
-Project completed cards to the app-facing format and run relevant importer/lexical graph/runtime regression tests against the current pinned/approved app baseline.
+Project completed cards to the app-facing format.
+
+At B6, resolve the actual current Flashcards runtime live from:
+- `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md`
+- `German-Flashcards-Pro/main/PROJECT-STATE.json`
+- current `main`
+- any explicitly newer user-supplied current app artifact
+
+Then run relevant importer/lexical graph/runtime regression tests against that exact resolved runtime. Historical R37 results remain evidence for Batch 0001/0002 but are never treated as permanent current runtime authority.
 
 This is a regression check, not a visual redesign step.
 
@@ -118,23 +136,10 @@ After a successful batch:
 - update review queue
 - update `CHECKPOINT.json`
 - update `HANDOFF-READ-FIRST.md`
-- update this strategy only if the strategy itself changes
 - persist text artifacts to `nvv-production`
-- create a downloadable cumulative checkpoint ZIP
+- create a downloadable cumulative checkpoint ZIP when practical
 
 No successful batch exists only in chat or `/mnt/data`.
-
-## Why this hybrid approach is preferred
-
-A pure whole-corpus field pass (for example 2,493 Persian meanings first, then 2,493 definitions, then 9,972 examples) is rejected because:
-- sense decisions made later can invalidate earlier translations
-- examples expose semantic/valency problems that should feed back immediately
-- relations depend on the final sense and canonical identity
-- QA feedback arrives too late
-- a chat/session failure leaves huge partially coherent layers
-- later contract changes can invalidate thousands of disconnected fields at once
-
-End-to-end batches keep every completed card internally coherent and immediately testable while the global identity layer preserves cross-card consistency.
 
 ## Quality-control cadence
 
@@ -160,4 +165,4 @@ Never report "percent complete" from source bullets when the production target i
 Batch 0003 is the first scalable production batch.
 Target: **100 safe expressions** end-to-end through B1–B7.
 
-Batch 0001 and Batch 0002 remain bounded PASS and are not regenerated unless a contract/schema change explicitly invalidates them.
+Batch 0001 and Batch 0002 remain bounded PASS and are not regenerated unless a source/contract change explicitly invalidates them.

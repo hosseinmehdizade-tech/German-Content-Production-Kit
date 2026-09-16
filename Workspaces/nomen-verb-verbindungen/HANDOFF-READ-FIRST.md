@@ -1,25 +1,37 @@
 # NVV Production — Persistent Handoff / READ FIRST
 
-Updated: 2026-09-15
-Canonical workspace: `nomen-verb-verbindungen`
-Persistent Git branch: `hosseinmehdizade-tech/German-Content-Production-Kit` → `nvv-production`
+Updated: 2026-09-16  
+Canonical workspace: `nomen-verb-verbindungen`  
+Workstream branch: `hosseinmehdizade-tech/German-Content-Production-Kit` → `nvv-production`
 
-## Non-negotiable resume rule
+## Unified project resume rule
 
-In every new chat/session, BEFORE producing or changing anything:
+This workstream no longer uses an NVV-only handoff hierarchy. It follows the same project-wide authority chain as Grammar, Lesen, Schreiben and other future workstreams.
 
-1. Read this file from branch `nvv-production`.
-2. Read `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json` from the same branch.
-3. Read the latest cumulative canonical/projected state and validation/acceptance reports.
-4. Inspect current `German-Flashcards-Pro/main` and compare against the pinned app baseline below; do not silently downgrade or overwrite newer valid app work.
-5. Preserve completed bounded batches. Do **not** regenerate Batch 0001 or Batch 0002 unless an upstream contract change explicitly invalidates them.
-6. Continue from the exact `next` action in CHECKPOINT.
+Before substantial work in every new/resumed chat:
 
-Chat history is never the source of truth. A local `/mnt/data` file is not the only source of truth. The Git-backed checkpoint + latest downloadable checkpoint ZIP are the continuation anchors.
+1. Read `German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md`.
+2. Read `German-Content-Production-Kit/main/PROJECT-STATE.json`, `README.md`, active `Prompt/START-PROMPT-v3.1.12.md`, `SOURCE-ACCESS-PROTOCOL-v1.0.0.md`, and `SOURCE-REGISTRY.json`.
+3. From `PROJECT-STATE.json`, resolve this workstream branch and read:
+   - `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
+   - `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
+4. Resolve the raw source using the Source Access Protocol: explicit newer current-chat source → Project Sources → Library → matching current-chat attachment.
+5. Only when runtime/import/presentation compatibility matters, read `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md` and `PROJECT-STATE.json`, plus any explicitly newer current app artifact.
+6. Continue from the exact `next` action in the live CHECKPOINT. Preserve bounded PASS work unless a real upstream change invalidates it.
+
+Chat history, old ZIP names and remembered runtime versions are not project authority.
+
+## Source identity
+
+- `source_id`: `deutsch-aber-hallo-nomen-verb-verbindungen`
+- canonical title: `Deutsch - Aber Hallo! Nomen-Verb-Verbindungen`
+- source SHA-256: `a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d`
+- PDF pages: 26
+- Source Manifest: `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
+
+If the same title resolves to different bytes, do not silently substitute it.
 
 ## Current production target
-
-Source: `nomen_verb_verbindungen.pdf` (Deutsch – Aber Hallo!, May 2023)
 
 Inventory / identity status:
 - source bullet items: 2,475
@@ -41,112 +53,82 @@ User-approved learning model:
 - structure/Rektion required where applicable
 - exactly 4 original German learner examples per completed card
 - every example gets FA + EN translation
-- Word Explorer and Wortnetz are universal lexical infrastructure for all vocabulary-card types, not only NVV
-- component and relation targets should be clickable only when they resolve safely; ambiguity must fail closed
-- do not materially redesign the existing flashcard appearance without user approval
+- Word Explorer and Wortnetz use the same canonical lexical graph
+- relation/component navigation must fail closed when ambiguous
+- no material flashcard visual redesign without user approval
 
-## Completed production work
+## Completed bounded PASS work
 
-Completed cards: 26 / 2,493
-Completed examples: 104 (4 per card)
-FA example translations: 104
-EN example translations: 104
-Completed batches: 2
+Completed cards: 26 / 2,493  
+Completed examples: 104  
+FA example translations: 104  
+EN example translations: 104  
+Completed pilot batches: 2
 
-Batch 0001 (13 cards):
-- DAH-NVV-EXP-00149 — einen Antrag stellen
-- DAH-NVV-EXP-00314 — einen Beitrag leisten
-- DAH-NVV-EXP-01694 — Rücksicht nehmen
-- DAH-NVV-EXP-00345 — einen Beschluss fassen
-- DAH-NVV-EXP-02137 — etw. zur Verfügung stellen
-- DAH-NVV-EXP-00111 — etw. in Angriff nehmen
-- DAH-NVV-EXP-00374 — etw. in Betracht ziehen
-- DAH-NVV-EXP-01891 — Stellung nehmen
-- DAH-NVV-EXP-00265 — den Ball flach halten
-- DAH-NVV-EXP-00266 — etw. auf die lange Bank schieben
-- DAH-NVV-EXP-00190 — jdn. auf den Arm nehmen
-- DAH-NVV-EXP-00078 — sich zum Affen machen
-- DAH-NVV-EXP-00077 — sich aus der Affäre ziehen
+Batch 0001 and Batch 0002 remain bounded PASS checkpoints. Do not regenerate them casually.
 
-Batch 0002 (13 cards):
-- DAH-NVV-EXP-00038 — Abschied nehmen von + Dat.
-- DAH-NVV-EXP-00042 — etw. zum Abschluss bringen
-- DAH-NVV-EXP-00052 — die Absicht haben
-- DAH-NVV-EXP-00059 — Abstand nehmen von + Dat.
-- DAH-NVV-EXP-00066 — etw. außer Acht lassen
-- DAH-NVV-EXP-00019 — ein Abkommen schließen mit + Dat.
-- DAH-NVV-EXP-00023 — eine Abmachung treffen mit + Dat.
-- DAH-NVV-EXP-00025 — eine Abneigung haben gegen + Akk.
-- DAH-NVV-EXP-00026 — eine Abneigung hegen gegen + Akk.
-- DAH-NVV-EXP-00121 — Anklage erheben gegen + Akk.
-- DAH-NVV-EXP-00141 — Anspruch erheben auf + Akk.
-- DAH-NVV-EXP-00143 — einen Anspruch haben auf + Akk.
-- DAH-NVV-EXP-00160 — zur Anwendung kommen
+## Runtime evidence vs current runtime authority
 
-These 26 cards are bounded PASS checkpoints and must not be recreated casually.
-
-## App state pinned for this production line
-
-Pinned tested app package: `GFP-v411-DEVELOPMENT-BASELINE-R37.zip`
-SHA-256: `fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b`
-
-Relevant verified behavior on the 26-card cumulative scope:
-- 52/52 structural component resolutions
+Historical bounded runtime evidence:
+- `GFP-v411-DEVELOPMENT-BASELINE-R37.zip`
+- SHA-256: `fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b`
+- 52/52 component resolutions
 - 52 reverse Wortnetz links
 - runtime JS syntax PASS
 - runtime asset references PASS
 - inline script syntax PASS
-- live browser import/persistence/reload: NOT RUN
+- live browser import/persistence/reload NOT RUN
 
-R37 contains fail-closed component resolution: prefer stable object ID; exact unique lexical fallback only; never guess an ambiguous target.
+R37 is historical evidence only. It is **not** the current runtime authority.
 
-## Current pipeline state
+At the 2026-09-16 migration, `German-Flashcards-Pro/main/PROJECT-STATE.json` reported durable runtime `v411-R44`. That observation is informational only; Stage 6 must always resolve the actual current runtime live at acceptance time.
 
-- source/input capability profile: PASS
-- source inventory: PASS
-- canonical semantic graph: RUNNING
-  - slash variant review: PASS
-  - evidence-driven sense resolution: RUNNING
-- lexical enrichment/evidence: RUNNING
-- examples/semantic annotations: RUNNING
-- global QA: RUNNING
-- delivery projection: RUNNING
-- runtime/presentation acceptance: RUNNING
-- release verification: NOT STARTED
+## Current seven-stage pipeline state
 
-Do not claim global completion while only bounded batches are PASS.
+1. Source & Inventory — PASS
+2. Canonicalization — RUNNING
+   - slash variant review PASS
+   - evidence-driven sense resolution RUNNING
+3. Evidence & Enrichment — RUNNING
+   - 26 completed cards
+4. Linguistic & Lexical QA — RUNNING
+   - Batch 0001 PASS
+   - Batch 0002 PASS
+   - cumulative 26-card validation PASS
+   - global dataset QA not complete
+5. Delivery Projection — RUNNING
+   - 26 cumulative projected cards
+6. Runtime & Presentation Acceptance — RUNNING
+   - historical R37 bounded acceptance retained
+   - current runtime acceptance must be resolved live
+7. Release & Post-Package Verification — NOT_STARTED
+
+## Scalable production cadence
+
+Batch 0003 is the first scalable batch:
+- target 100 safe expressions end-to-end
+- ambiguous/polysemous/conflicting items go to persistent REVIEW-QUEUE and are replaced by the next safe item
+- after two clean 100-card batches, cadence may increase to 150
+- never exceed 200 without explicit user approval
+- every 500 completed cards run a cross-batch global audit
+
+Per-batch stages:
+B1 Sense/Evidence Lock → B2 DE/FA/EN Meaning → B3 Structure/Lexical Graph → B4 Exactly 4 examples + FA/EN → B5 QA → B6 Live-resolved runtime projection/acceptance → B7 Git-backed persistent checkpoint.
+
+## Persistence protocol
+
+After every successful batch update:
+- `CHECKPOINT.json`
+- this `HANDOFF-READ-FIRST.md`
+- cumulative canonical data
+- cumulative projected data
+- QA/acceptance reports
+- persistent review queue
+- artifact/hash manifest
+- downloadable cumulative checkpoint ZIP when practical
+
+GitHub is the durable coordination layer. A local ZIP is a backup/handoff convenience, not a parallel source of truth.
 
 ## Exact next action
 
-Do NOT continue with 13-card micro-batches as the long-term strategy.
-
-Before Batch 0003, switch to a scalable production cadence:
-- normal safe/evidence-backed expressions: 100–200 cards per production batch
-- ambiguous/polysemous/conflicting items: quarantine into a review queue and do not block the safe batch
-- run validators automatically on each batch and cumulatively
-- checkpoint after each successful batch
-- update this READ-FIRST file, CHECKPOINT.json, cumulative canonical/projected artifacts, validation/acceptance reports, and downloadable checkpoint ZIP
-
-Next semantic blocker to preserve explicitly:
-`etw. / jdn. in Anspruch nehmen` has more than one supported sense and must not be collapsed into one generic meaning.
-
-## Persistence protocol after EVERY successful batch
-
-Required outputs:
-1. `CHECKPOINT.json` — machine-readable authoritative status and exact next action.
-2. `HANDOFF-READ-FIRST.md` — human-readable session handoff.
-3. cumulative canonical JSON — all completed cards, not only latest batch.
-4. cumulative projected cards — exact app-facing projection.
-5. cumulative validation + acceptance reports.
-6. unresolved/review queue — ambiguity must survive across chats.
-7. manifest with SHA-256 hashes.
-8. one downloadable checkpoint ZIP containing the pinned app package + current Content Kit checkpoint + handoff files.
-9. update the Git branch `nvv-production` with the current text artifacts before stopping a session whenever GitHub write access is available.
-
-## Rule for a new chat
-
-The user should be able to say only:
-
-> «NVV را از آخرین checkpoint ادامه بده. branch `nvv-production` را اول بخوان و هیچ PASS قبلی را دوباره نساز.»
-
-The assistant must recover the exact state from GitHub. If GitHub is unavailable, ask for the latest `NVV-Production-Checkpoint-*.zip`; do not reconstruct progress from memory.
+Start Batch 0003 with 100 safe expressions using the unified project startup chain. Preserve Batch 0001/0002. Keep `etw. / jdn. in Anspruch nehmen` quarantined until its supported senses are resolved. At B6 resolve the current Flashcards runtime live rather than treating R37 as current.

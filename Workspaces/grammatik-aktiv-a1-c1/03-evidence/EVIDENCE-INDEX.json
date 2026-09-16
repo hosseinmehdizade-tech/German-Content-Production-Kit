@@ -16,21 +16,33 @@
       }
     },
     "resolution_status": "EXACT_REGISTERED_BYTES_RESOLVED",
-    "resolution_note": "The materialized working copies were SHA-256 checked against SOURCE-REGISTRY.json before Stage 3 continuation."
+    "resolution_note": "The working copies were SHA-256 checked against SOURCE-REGISTRY.json before Stage 3 continuation."
   },
   "production_policy": {
     "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED",
     "repeat_full_source_extraction": false,
     "persist_successful_chapter_evidence": true,
     "source_derived_and_generated_content_separated": true,
-    "external_evidence_required_for_current_pilots": false
+    "external_evidence_required_for_current_batch": false
   },
   "coverage": {
     "source_chapters_total": 168,
-    "chapter_evidence_drafts_persisted": 6,
-    "source_major_rule_capture_complete_for_draft": 6,
-    "remaining_chapters": 162,
+    "chapter_evidence_drafts_persisted": 25,
+    "source_major_rule_capture_complete_for_draft": 25,
+    "remaining_chapters": 143,
     "stage3_pass": false
+  },
+  "source_order_progress": {
+    "grammatik-aktiv-a1-b1": {
+      "contiguous_complete_from_chapter": 1,
+      "contiguous_complete_through_chapter": 20,
+      "chapters_complete_in_range": 20,
+      "note": "Chapter 2 was the pre-existing pilot and was not reprocessed. Chapters 1 and 3-20 were produced from the exact registered source in source order."
+    },
+    "grammatik-aktiv-b2-c1": {
+      "pilot_chapters_complete": [1,14,82]
+    },
+    "additional_a1_b1_pilots_complete": [34,70]
   },
   "pilot_lessons": [
     {
@@ -89,16 +101,17 @@
     "strategy": "CONTIGUOUS_SOURCE_ORDER",
     "source_book_id": "grammatik-aktiv-a1-b1",
     "chapter_ids": [
-      "ga-a1b1-ch001",
-      "ga-a1b1-ch003",
-      "ga-a1b1-ch004",
-      "ga-a1b1-ch005",
-      "ga-a1b1-ch006",
-      "ga-a1b1-ch007",
-      "ga-a1b1-ch008",
-      "ga-a1b1-ch009",
-      "ga-a1b1-ch010"
+      "ga-a1b1-ch021",
+      "ga-a1b1-ch022",
+      "ga-a1b1-ch023",
+      "ga-a1b1-ch024",
+      "ga-a1b1-ch025",
+      "ga-a1b1-ch026",
+      "ga-a1b1-ch027",
+      "ga-a1b1-ch028",
+      "ga-a1b1-ch029",
+      "ga-a1b1-ch030"
     ],
-    "note": "ga-a1b1-ch002 is already persisted. Continue the opening A1 sequence without reprocessing it."
+    "note": "Continue directly from chapter 21; do not reprocess chapters 1-20 or any persisted pilot."
   }
 }

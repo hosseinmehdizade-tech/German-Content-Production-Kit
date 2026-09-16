@@ -1,0 +1,57 @@
+name: NVV materialize Batch0003 checkpoint
+
+on:
+  push:
+    branches: [nvv-production]
+    paths:
+      - 'Workspaces/nomen-verb-verbindungen/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nvv-production
+          fetch-depth: 0
+      - name: Verify and materialize checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='Workspaces/nomen-verb-verbindungen'
+          ZIP="$ROOT/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip"
+          SIDE="$ROOT/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip.sha256"
+          cd "$ROOT/07-release"
+          sha256sum -c "$(basename "$SIDE")"
+          cd "$GITHUB_WORKSPACE"
+          TMP="$(mktemp -d)"
+          unzip -q "$ZIP" -d "$TMP"
+          cp -a "$TMP/." "$ROOT/"
+          rm -rf "$ROOT/_materialize-batch0003"
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          root=Path('Workspaces/nomen-verb-verbindungen')
+          for line in (root/'07-release/SHA256SUMS-BATCH0003.txt').read_text(encoding='utf-8').splitlines():
+              expected, rel=line.split('  ',1)
+              actual=hashlib.sha256((root/rel).read_bytes()).hexdigest()
+              if actual != expected:
+                  raise SystemExit(f'hash mismatch: {rel}: {actual} != {expected}')
+          print('PASS extracted checkpoint SHA256 manifest')
+          PY
+      - name: Commit materialized Batch0003 snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Workspaces/nomen-verb-verbindungen
+          if git diff --cached --quiet; then
+            echo 'No materialization changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Materialize NVV Batch0003 final checkpoint snapshot'
+          git push origin HEAD:nvv-production

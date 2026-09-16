@@ -21,7 +21,8 @@
     "books": [
       "grammatik-aktiv-a1-b1",
       "grammatik-aktiv-b2-c1"
-    ]
+    ],
+    "verified_inventory": "Workspaces/grammatik-aktiv-a1-c1/01-inventory/SOURCE-INVENTORY.json"
   },
   "target_flashcards_pro": {
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
@@ -33,26 +34,34 @@
   },
   "stages": {
     "1_source_inventory": {
-      "state": "RUNNING",
+      "state": "PASS",
       "authoritative_artifacts": [
         "00-source/SOURCE-MANIFEST.json",
-        "01-inventory/CHAPTER-CATALOG.json"
+        "01-inventory/CHAPTER-CATALOG.json",
+        "01-inventory/SOURCE-INVENTORY.json",
+        "01-inventory/STABLE-ID-MAP.json",
+        "01-inventory/INVENTORY-QA.json"
       ],
       "progress": {
         "expected_chapters": 168,
         "captured_chapters": 168,
         "stable_ids_assigned": 168,
-        "catalog_status": "WIP_TOC_CAPTURED_REQUIRES_CHAPTER_OPENING_VERIFICATION"
+        "chapter_openings_verified": 168,
+        "resolved_inventory_findings": 8,
+        "unresolved_inventory_findings": 0,
+        "catalog_role": "RAW_TOC_CAPTURE_PRESERVED",
+        "verified_inventory_status": "PASS"
       },
-      "next_required_artifact": "01-inventory/INVENTORY-QA.json",
-      "next_action": "Verify chapter-opening pages against the TOC capture, resolve flagged title/CEFR/page ambiguities without silent correction, then run inventory QA.",
-      "pass_commit_sha": null
+      "gate_evidence": "01-inventory/INVENTORY-QA.json",
+      "pass_commit_sha": "d62bc54de20606e16fbee764334fccd0bfb3b453"
     },
     "2_canonicalization": {
-      "state": "NOT_STARTED",
+      "state": "RUNNING",
       "authoritative_artifacts": [
         "02-canonical/GRAMMAR-CONTENT-CONTRACT-v1.0.0.md"
       ],
+      "pilot_requirement": "Validate the grammar content contract against six deliberately different chapter types before mass-producing all 168 chapters.",
+      "next_action": "Select and canonicalize six contract-test pilots: A1 conjugation, A2 case/preposition, B1 relative clause, B2 word order, B2/C1 passive/tense complexity, and C1 nominalization. Then write CANONICAL.json, CANONICAL-VALIDATION.json, and NORMALIZATION-DECISIONS.json as applicable.",
       "pass_commit_sha": null
     },
     "3_evidence_enrichment": {
@@ -78,5 +87,5 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "At every new/resumed chat, read PROJECT-BOOTSTRAP.md first, then continue Stage 1 from the durable 168-chapter catalog. Verify chapter-opening pages and CEFR/page/title ambiguities, write INVENTORY-QA.json, then mark Stage 1 PASS only after the verified inventory and QA evidence are committed. Do not begin mass canonicalization/enrichment before Stage 1 PASS. GitHub runtime lag does not block Stages 1-5."
+  "resume_instruction": "Stage 1 is durable PASS. Continue Stage 2 from the six-chapter contract-test pilot defined by GRAMMAR-CONTENT-CONTRACT-v1.0.0.md. Do not redo the 168-chapter inventory. Preserve the raw TOC catalog and apply the explicit verified resolutions from SOURCE-INVENTORY.json. GitHub runtime lag does not block Stages 2-5."
 }

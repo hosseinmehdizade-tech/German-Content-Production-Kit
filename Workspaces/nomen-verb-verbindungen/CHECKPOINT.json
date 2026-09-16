@@ -1,53 +1,168 @@
 {
   "workspace": "nomen-verb-verbindungen",
-  "updated_version": "v3.3.2-production-batch0002",
+  "branch": "nvv-production",
+  "domain": "vocabulary",
+  "updated_at": "2026-09-16T18:05:00+02:00",
+  "updated_version": "unified-bootstrap-migration-v1",
   "status": "PRODUCTION_IN_PROGRESS",
-  "stages": {
-    "0_input_capability_profile_reference_availability": {
-      "state": "PASS",
-      "evidence": ["SOURCE-CONTRACT.json", "REFERENCE-AVAILABILITY-SESSION.json"],
-      "metrics": {"source_profile": "nomen-verb-verbindungen@1.0.0", "target_runtime": "GFP v411"}
-    },
+  "authority": {
+    "bootstrap": "German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md",
+    "project_state": "German-Content-Production-Kit/main/PROJECT-STATE.json",
+    "active_prompt": "Prompt/START-PROMPT-v3.1.12.md",
+    "source_access_protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
+    "source_registry": "SOURCE-REGISTRY.json",
+    "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
+    "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
+    "runtime_authority": "German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md + PROJECT-STATE.json + any explicitly newer user-supplied current artifact"
+  },
+  "source_identity": {
+    "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
+    "sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "pdf_pages": 26
+  },
+  "pipeline": {
     "1_source_inventory": {
       "state": "PASS",
-      "evidence": ["SOURCE-INVENTORY.json", "SOURCE-INVENTORY-REPAIRED.json", "SOURCE-INVENTORY-REVIEW.tsv", "STAGE1-REPAIR-REPORT.json"],
-      "metrics": {"items": 2475, "fvg": 859, "idiom": 519, "general_nvv": 1097, "slash_variant_items": 221, "missing_noun_header": 0, "extraction_repairs": 37}
+      "metrics": {
+        "items": 2475,
+        "fvg": 859,
+        "idiom": 519,
+        "general_nvv": 1097,
+        "slash_variant_items": 221,
+        "missing_noun_header": 0,
+        "extraction_repairs": 37
+      },
+      "note": "Preserve this PASS unless source identity/hash changes or explicit defect evidence invalidates it."
     },
-    "2_canonical_semantic_graph": {
+    "2_canonicalization": {
       "state": "RUNNING",
-      "evidence": ["STAGE2-VARIANT-DECISIONS.json", "STAGE2-CANONICAL-IDENTITY-GRAPH.json", "STAGE2-SOURCE-TO-EXPRESSION-MAP.tsv", "STAGE2-QA-REPORT.json", "STAGE2-EVIDENCE-SENSE-ISSUES.json"],
-      "subgates": {"source_slash_variant_review": "PASS", "evidence_driven_sense_resolution": "RUNNING"},
-      "metrics": {"source_items": 2475, "variant_source_items_reviewed": 221, "semantic_split_source_items": 17, "provisional_expression_identities": 2493, "lexeme_identities": 1512, "open_evidence_sense_issues": 1},
-      "note": "2493 is the current expression-surface identity count, not a claim that every polysemous expression has final sense resolution."
+      "subgates": {
+        "source_slash_variant_review": "PASS",
+        "evidence_driven_sense_resolution": "RUNNING"
+      },
+      "metrics": {
+        "source_items": 2475,
+        "variant_source_items_reviewed": 221,
+        "semantic_split_source_items": 17,
+        "provisional_expression_identities": 2493,
+        "lexeme_identities": 1512,
+        "open_evidence_sense_issues": 1
+      },
+      "note": "2493 is the current expression-identity target, not a claim that every polysemous expression has final sense resolution."
     },
-    "3_lexical_enrichment_evidence": {
+    "3_evidence_enrichment": {
       "state": "RUNNING",
-      "metrics": {"completed_expression_cards": 26, "provisional_expression_total": 2493, "definitions_de": 26, "translations_fa": 26, "translations_en": 26, "completed_batches": 2}
+      "metrics": {
+        "completed_expression_cards": 26,
+        "provisional_expression_total": 2493,
+        "definitions_de": 26,
+        "translations_fa": 26,
+        "translations_en": 26,
+        "examples": 104,
+        "examples_per_completed_card": 4,
+        "fa_sentence_translations": 104,
+        "en_sentence_translations": 104,
+        "completed_batches": 2
+      }
     },
-    "4_examples_semantic_annotations": {
+    "4_linguistic_lexical_qa": {
       "state": "RUNNING",
-      "metrics": {"completed_expression_cards": 26, "examples": 104, "examples_per_completed_card": 4, "fa_sentence_translations": 104, "en_sentence_translations": 104, "completed_batches": 2}
+      "metrics": {
+        "batch_0001_validator": "PASS",
+        "batch_0002_validator": "PASS",
+        "cumulative_26_card_validator": "PASS",
+        "global_dataset_qa": "NOT_COMPLETE"
+      }
     },
-    "5_grammar_reading_exercise_domains": {"state": "NOT_STARTED", "note": "Not a required production domain for this NVV vocabulary source unless later explicitly requested."},
-    "6_full_system_qa": {
+    "5_delivery_projection": {
       "state": "RUNNING",
-      "metrics": {"batch_0001_validator": "PASS", "batch_0002_validator": "PASS", "cumulative_validator": "PASS", "global_dataset_qa": "NOT_COMPLETE"}
+      "metrics": {
+        "batch_0001_projected_expression_cards": 13,
+        "batch_0002_projected_expression_cards": 13,
+        "cumulative_projected_expression_cards": 26,
+        "duplicate_supporting_sense_cards": 0,
+        "projection_contract": "GFP-V411-VOCABULARY-PROJECTION-v1.0.1"
+      }
     },
-    "7_delivery_projection": {
+    "6_runtime_presentation_acceptance": {
       "state": "RUNNING",
-      "metrics": {"batch_0001_projected_expression_cards": 13, "batch_0002_projected_expression_cards": 13, "cumulative_projected_expression_cards": 26, "duplicate_supporting_sense_cards": 0, "projection_contract": "GFP-V411-VOCABULARY-PROJECTION-v1.0.1"}
+      "resolution_mode": "LIVE_RESOLUTION",
+      "current_runtime_must_be_resolved_at_acceptance": true,
+      "last_observed_current_runtime": {
+        "observed_at": "2026-09-16",
+        "version": "v411-R44",
+        "source_name": "GFP-v411-R44-Grammar-Content-Foundation-CANDIDATE.zip",
+        "project_state_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
+        "nv_acceptance_status": "NOT_RUN"
+      },
+      "historical_bounded_acceptance": {
+        "runtime": "GFP v411 R37",
+        "package": "GFP-v411-DEVELOPMENT-BASELINE-R37.zip",
+        "sha256": "fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b",
+        "scope": "Batch 0001 + Batch 0002 cumulative 26-card lexical graph checks",
+        "resolved_components": 52,
+        "reverse_graph_links": 52,
+        "runtime_js_syntax": "PASS",
+        "runtime_assets": "PASS",
+        "inline_script_syntax": "PASS",
+        "live_browser_import": "NOT_RUN"
+      },
+      "note": "R37 is historical evidence only, not the current runtime authority. Before any new runtime/import/presentation acceptance, resolve the current Flashcards runtime live and test against that exact artifact."
     },
-    "8_build_integration_runtime_presentation_acceptance": {
-      "state": "RUNNING",
-      "metrics": {"batch_0001_node_graph_acceptance": "PASS", "batch_0002_node_graph_acceptance": "PASS", "cumulative_node_graph_acceptance": "PASS", "resolved_components": 52, "reverse_graph_links": 52, "runtime_js_syntax": "PASS", "runtime_assets": "PASS", "inline_script_syntax": "PASS", "live_browser_import": "NOT_RUN"}
-    },
-    "9_release_verification": {"state": "NOT_STARTED"}
+    "7_release_post_package_verification": {
+      "state": "NOT_STARTED"
+    }
   },
   "completed_expression_ids": [
-    "DAH-NVV-EXP-00149", "DAH-NVV-EXP-00314", "DAH-NVV-EXP-01694", "DAH-NVV-EXP-00345", "DAH-NVV-EXP-02137", "DAH-NVV-EXP-00111", "DAH-NVV-EXP-00374", "DAH-NVV-EXP-01891", "DAH-NVV-EXP-00265", "DAH-NVV-EXP-00266", "DAH-NVV-EXP-00190", "DAH-NVV-EXP-00078", "DAH-NVV-EXP-00077",
-    "DAH-NVV-EXP-00038", "DAH-NVV-EXP-00042", "DAH-NVV-EXP-00052", "DAH-NVV-EXP-00059", "DAH-NVV-EXP-00066", "DAH-NVV-EXP-00019", "DAH-NVV-EXP-00023", "DAH-NVV-EXP-00025", "DAH-NVV-EXP-00026", "DAH-NVV-EXP-00121", "DAH-NVV-EXP-00141", "DAH-NVV-EXP-00143", "DAH-NVV-EXP-00160"
+    "DAH-NVV-EXP-00149",
+    "DAH-NVV-EXP-00314",
+    "DAH-NVV-EXP-01694",
+    "DAH-NVV-EXP-00345",
+    "DAH-NVV-EXP-02137",
+    "DAH-NVV-EXP-00111",
+    "DAH-NVV-EXP-00374",
+    "DAH-NVV-EXP-01891",
+    "DAH-NVV-EXP-00265",
+    "DAH-NVV-EXP-00266",
+    "DAH-NVV-EXP-00190",
+    "DAH-NVV-EXP-00078",
+    "DAH-NVV-EXP-00077",
+    "DAH-NVV-EXP-00038",
+    "DAH-NVV-EXP-00042",
+    "DAH-NVV-EXP-00052",
+    "DAH-NVV-EXP-00059",
+    "DAH-NVV-EXP-00066",
+    "DAH-NVV-EXP-00019",
+    "DAH-NVV-EXP-00023",
+    "DAH-NVV-EXP-00025",
+    "DAH-NVV-EXP-00026",
+    "DAH-NVV-EXP-00121",
+    "DAH-NVV-EXP-00141",
+    "DAH-NVV-EXP-00143",
+    "DAH-NVV-EXP-00160"
   ],
-  "pinned_app": {"version": "GFP v411 R37", "package": "GFP-v411-DEVELOPMENT-BASELINE-R37.zip", "sha256": "fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b"},
-  "production_cadence": {"safe_batch_size": "100-200", "ambiguous_items": "quarantine_review_queue", "checkpoint_after_each_successful_batch": true},
-  "next": "Before Batch 0003, switch from 13-card micro-batches to 100-200 safe evidence-backed cards per batch. Quarantine ambiguous/polysemous items instead of blocking the batch. Preserve Batch 0001/0002. Continue evidence-driven semantic resolution; do not collapse etw. / jdn. in Anspruch nehmen into one generic sense."
+  "production_cadence": {
+    "default_safe_batch_size": 100,
+    "scale_to_150_after_consecutive_clean_100_card_batches": 2,
+    "hard_max_without_explicit_user_approval": 200,
+    "ambiguous_items": "quarantine_review_queue",
+    "global_audit_every_completed_cards": 500,
+    "checkpoint_after_each_successful_batch": true
+  },
+  "review_queue": {
+    "open_count": 1,
+    "known_items": [
+      {
+        "surface": "etw. / jdn. in Anspruch nehmen",
+        "reason": "supported polysemy; do not collapse into one generic meaning"
+      }
+    ]
+  },
+  "migration": {
+    "from": "NVV-specific handoff-first authority with R37 pinned baseline",
+    "to": "unified project bootstrap/state -> source registry/manifest -> live workstream checkpoint -> live runtime resolution",
+    "completed_at": "2026-09-16",
+    "completed_batches_invalidated": false
+  },
+  "next": "Start Batch 0003 as the first scalable 100-safe-expression end-to-end batch. Before production, resolve the raw source via SOURCE-MANIFEST/SOURCE-REGISTRY and the unified startup chain. Preserve Batch 0001/0002. Quarantine ambiguous/polysemous items. At B6 resolve the current German-Flashcards-Pro runtime live; do not reuse R37 as current authority."
 }

@@ -15,9 +15,10 @@ Before substantial work in every new/resumed chat:
 3. From `PROJECT-STATE.json`, resolve this workstream branch and read:
    - `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
    - `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
-4. Resolve the raw source using the Source Access Protocol: explicit newer current-chat source → Project Sources → Library → matching current-chat attachment.
-5. Only when runtime/import/presentation compatibility matters, read `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md` and `PROJECT-STATE.json`, plus any explicitly newer current app artifact.
-6. Continue from the exact `next` action in the live CHECKPOINT. Preserve bounded PASS work unless a real upstream change invalidates it.
+4. Resolve the raw source using the Source Access Protocol: explicit newer current-chat source → **ChatGPT Project Sources** → **ChatGPT Library** → matching current-chat attachment → ask the user only if unresolved.
+5. Verify the registered SHA-256 whenever raw bytes are available. Copies with the same hash across Project Sources and Library are one logical source; do not inventory/process them twice.
+6. Only when runtime/import/presentation compatibility matters, read `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md` and `PROJECT-STATE.json`, plus any explicitly newer current app artifact.
+7. Continue from the exact `next` action in the live CHECKPOINT. Preserve bounded PASS work unless a real upstream change invalidates it.
 
 Chat history, old ZIP names and remembered runtime versions are not project authority.
 
@@ -28,6 +29,9 @@ Chat history, old ZIP names and remembered runtime versions are not project auth
 - source SHA-256: `a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d`
 - PDF pages: 26
 - Source Manifest: `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
+- Project Sources copy: VERIFIED AVAILABLE 2026-09-16
+- ChatGPT Library copy: VERIFIED AVAILABLE 2026-09-16
+- mirror comparison: VERIFIED SAME BYTES / SAME SHA-256 2026-09-16
 
 If the same title resolves to different bytes, do not silently substitute it.
 

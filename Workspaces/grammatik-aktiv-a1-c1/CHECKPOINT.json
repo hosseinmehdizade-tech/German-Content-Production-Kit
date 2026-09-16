@@ -24,12 +24,14 @@
   },
   "target_flashcards_pro": {
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "state_file": "PROJECT-STATE.json",
     "github_branch_observed": "main",
-    "github_main_readme_observed_version": "v352",
-    "intended_runtime_artifact": "GFP v411 R43 supplied in chat",
-    "intended_runtime_sha256": "b06ec021b1f8a91329df8881e8bce56fc0d7236b6bf6d48aaccba7ea6ae35e2d",
-    "alignment_status": "MISMATCH_REQUIRES_RECONCILIATION_BEFORE_STAGE_6",
-    "commit_sha": null
+    "github_main_commit_observed": "2093759a20495c8c794244771b1d4e579df49542",
+    "latest_known_runtime_artifact": "GFP-v411-R44-Grammar-Content-Foundation-CANDIDATE.zip",
+    "latest_known_runtime_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
+    "runtime_location_status": "KNOWN_NEWER_ARTIFACT_NOT_YET_FULLY_EXPANDED_ON_GITHUB",
+    "resolution_policy": "Stages 1-5 continue independently. At Stage 6, use the newest explicit runtime authority: prefer an explicitly newer user-supplied app artifact over an older expanded GitHub runtime, then pin exact artifact SHA-256 and Git commit when synchronized.",
+    "alignment_status": "NOT_A_BLOCKER_FOR_STAGES_1_TO_5; EXACT_RUNTIME_PIN_REQUIRED_AT_STAGE_6"
   },
   "stages": {
     "1_source_inventory": {
@@ -69,7 +71,7 @@
     },
     "6_runtime_presentation_acceptance": {
       "state": "NOT_STARTED",
-      "known_blocker": "Connected Flashcards-Pro/main is not yet aligned with intended GFP v411 R43 runtime artifact.",
+      "requirement": "Resolve newest explicit runtime authority at execution time and pin both artifact SHA-256 and synchronized Git commit before PASS.",
       "pass_commit_sha": null
     },
     "7_release_post_package_verification": {
@@ -77,13 +79,6 @@
       "pass_commit_sha": null
     }
   },
-  "known_blockers": [
-    {
-      "code": "FLASHCARDS_GIT_RUNTIME_MISMATCH",
-      "affects_stage": 6,
-      "detail": "The uploaded intended runtime is GFP v411 R43, while the connected German-Flashcards-Pro/main README currently represents a v352-era baseline.",
-      "resume_instruction": "Before Stage 6, reconcile or publish the intended v411 R43 app baseline to a dedicated Git branch and pin the exact commit SHA."
-    }
-  ],
-  "resume_instruction": "Continue Stage 1 from the durable 168-chapter catalog. Verify chapter-opening pages and CEFR/page/title ambiguities, write INVENTORY-QA.json, then mark Stage 1 PASS only after the verified inventory and QA evidence are committed. Do not begin mass canonicalization/enrichment before Stage 1 PASS."
+  "known_blockers": [],
+  "resume_instruction": "Continue Stage 1 from the durable 168-chapter catalog. Verify chapter-opening pages and CEFR/page/title ambiguities, write INVENTORY-QA.json, then mark Stage 1 PASS only after the verified inventory and QA evidence are committed. Do not begin mass canonicalization/enrichment before Stage 1 PASS. GitHub runtime lag does not block Stages 1-5."
 }

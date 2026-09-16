@@ -1,13 +1,25 @@
 {
-  "schema": "gcpk-project-state@1.0.0",
+  "schema": "gcpk-project-state@1.1.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-16T16:56:00+02:00",
+  "updated_at": "2026-09-16T16:59:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
+  "source_access": {
+    "protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
+    "registry": "SOURCE-REGISTRY.json",
+    "primary_active_shelf": "ChatGPT Project Sources",
+    "fallback_shelf": "ChatGPT Library",
+    "identity": "source_id + SHA-256/source version",
+    "transient_file_ids_are_authoritative": false,
+    "registered_active_sources": 2,
+    "grammar_aktiv_mirrors_verified_same_bytes": true,
+    "verification_date": "2026-09-16"
+  },
   "startup_rule": [
     "Read PROJECT-BOOTSTRAP.md first in every new or resumed substantial project chat.",
-    "Read README.md, PROJECT-STATE.json, and Prompt/START-PROMPT-v3.1.12.md from current main.",
-    "Inspect German-Flashcards-Pro/main PROJECT-BOOTSTRAP.md and PROJECT-STATE.json before runtime/import/presentation work.",
-    "For a named source/workstream, read its own CHECKPOINT.json on the branch recorded here before continuing."
+    "Read README.md, PROJECT-STATE.json, Prompt/START-PROMPT-v3.1.12.md, SOURCE-ACCESS-PROTOCOL-v1.0.0.md and SOURCE-REGISTRY.json from current main.",
+    "For a named source/workstream, read its own CHECKPOINT.json and SOURCE-MANIFEST.json live from the branch recorded here before continuing.",
+    "Resolve registered raw sources from Project Sources first, then ChatGPT Library; do not ask the user to re-upload until both have been checked.",
+    "Inspect German-Flashcards-Pro/main PROJECT-BOOTSTRAP.md and PROJECT-STATE.json before runtime/import/presentation work."
   ],
   "authority_resolution": {
     "user_supplied_newer_artifact": "May become immediate working authority when the user explicitly says it is the latest/current artifact. Continue work without waiting for GitHub sync.",
@@ -22,31 +34,30 @@
     "architecture": "v3.1.5",
     "semantic_contract": "gfp-german-language-content@3.1.3"
   },
+  "workstream_resolution_policy": "Branch head and stage are resolved live from each workstream CHECKPOINT.json. Any last-observed stage in this file is informational only because parallel chats may advance independently.",
   "workstreams": {
     "grammar_aktiv_a1_c1": {
       "status": "ACTIVE",
       "branch": "grammar-aktiv-a1-c1-production",
-      "head_commit": "a4befe3820a8d3d0d7cc5402dcc4302e85f633ae",
       "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
-      "stage": "2_canonicalization",
-      "note": "Stage 1 is durable PASS: 168/168 chapter openings verified, stable IDs complete, inventory QA PASS, and eight explicit title/CEFR discrepancies resolved without rewriting the raw TOC capture. The six-type grammar contract pilot also passed for representational adequacy. Stage 2 is now mass canonicalization of the verified 168-chapter inventory into source-chapter mappings plus a semantic concept registry. Runtime resolution remains deferred until Stage 6."
+      "source_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
+      "resolution_mode": "LIVE_BRANCH_CHECKPOINT",
+      "last_observed_stage": "2_canonicalization",
+      "last_observed_note": "Stage 1 durable PASS; Stage 2 mass canonicalization RUNNING at the 2026-09-16 audit. Resolve the live checkpoint before acting; do not redo completed Stage 1 or the six-type pilot if a newer checkpoint preserves their PASS status."
     },
     "vocabulary": {
       "status": "PARALLEL_ALLOWED",
-      "branch": null,
-      "checkpoint": null,
-      "note": "Use source-specific workspaces/checkpoints. Do not inherit grammar state or legacy Menschen mappings implicitly."
+      "resolution_mode": "SOURCE_SPECIFIC_LIVE_CHECKPOINT",
+      "note": "Create/use source-specific workspaces/checkpoints. Do not inherit grammar state or legacy Menschen mappings implicitly."
     },
     "lesen": {
       "status": "PARALLEL_ALLOWED",
-      "branch": null,
-      "checkpoint": null,
+      "resolution_mode": "SOURCE_SPECIFIC_LIVE_CHECKPOINT",
       "note": "Keep Lesen production/runtime artifacts separate from vocabulary and grammar authorities."
     },
     "schreiben": {
       "status": "PARALLEL_ALLOWED",
-      "branch": null,
-      "checkpoint": null,
+      "resolution_mode": "SOURCE_SPECIFIC_LIVE_CHECKPOINT",
       "note": "May evolve independently until an explicit runtime integration checkpoint is created."
     }
   },

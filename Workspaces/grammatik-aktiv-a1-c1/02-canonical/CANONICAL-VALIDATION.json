@@ -1,0 +1,41 @@
+{
+  "canonical_validation_schema": "grammar-canonical-validation@1.2.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "root_artifact": "CANONICAL.json",
+  "storage_model": "COMPOSED_GIT_ARTIFACTS",
+  "overall_status": "IDENTITY_LAYER_PASS_STAGE2_GATE_PENDING",
+  "checks": [
+    {"id":"root_index_present","status":"PASS"},
+    {"id":"verified_source_chapter_count","expected":168,"actual":168,"status":"PASS"},
+    {"id":"semantic_concept_count","expected":156,"actual":156,"status":"PASS"},
+    {"id":"source_chapter_ids_unique","status":"PASS"},
+    {"id":"concept_ids_unique","status":"PASS"},
+    {"id":"chapter_concept_link_count","expected":168,"actual":168,"status":"PASS"},
+    {"id":"all_chapter_concept_refs_resolve","status":"PASS"},
+    {"id":"no_orphan_concepts","status":"PASS"},
+    {"id":"all_source_chapters_verified_by_stage1","status":"PASS"},
+    {"id":"eight_verified_inventory_resolutions_applied_by_composition_rule","status":"PASS"},
+    {"id":"all_required_canonical_concept_fields_present","status":"PASS"},
+    {"id":"cefr_ranges_ordered","status":"PASS"},
+    {"id":"concept_part_hashes_bound_in_root","parts":3,"status":"PASS"},
+    {"id":"semantic_deduplication_is_conservative","deliberately_shared_concepts":12,"status":"PASS"},
+    {"id":"learner_lesson_contract_complete_for_all_168","status":"PENDING","blocking_for_stage2_pass":true,"reason":"The identity layer intentionally does not fabricate source rules, structural patterns, German/Persian explanations, examples, common errors, exercises or provenance-rich learner lessons. The Grammar Content Contract requires these learner-lesson objects before the chapter content can be considered complete."}
+  ],
+  "counts": {
+    "source_chapters": 168,
+    "concepts": 156,
+    "chapter_concept_links": 168,
+    "concept_parts": 3,
+    "shared_concepts": 12,
+    "learner_lessons_contract_complete": 0
+  },
+  "semantic_policy": {
+    "source_chapter_identity_preserved": true,
+    "semantic_concept_deduplication_conservative": true,
+    "source_authority_preserved": true,
+    "learner_content_not_fabricated_to_force_stage_pass": true,
+    "empty_prerequisite_related_arrays_are_intentional": "No graph edge is invented solely to fill a field. Source/evidence-backed edges may be added later."
+  },
+  "gate_interpretation": "The canonical identity layer is internally consistent and durably persisted, but Stage 2 itself remains RUNNING. Stage 2 PASS requires the canonical learner-lesson layer demanded by GRAMMAR-CONTENT-CONTRACT-v1.0.0.md, with source-supported rule/pattern capture and provenance, before Stage 3 enrichment begins.",
+  "next_action": "Build the 168 canonical learner-lesson skeletons from the authoritative chapter source, extract source-supported major rules/patterns/exceptions with page provenance, keep generated enrichment out of Stage 2, and rerun the full contract validation."
+}

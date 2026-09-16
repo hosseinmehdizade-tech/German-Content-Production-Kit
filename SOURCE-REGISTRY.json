@@ -1,0 +1,50 @@
+{
+  "schema": "gcpk-source-registry@1.0.0",
+  "project": "German-Content-Production-Kit",
+  "protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
+  "identity_rule": "Durable source identity is source_id plus SHA-256/source version; transient ChatGPT file IDs are resolved live and are never durable identity.",
+  "storage_policy": {
+    "primary_active_shelf": "ChatGPT Project Sources",
+    "redundant_fallback_shelf": "ChatGPT Library",
+    "durable_metadata_layer": "GitHub",
+    "raw_copyrighted_sources_in_github": false,
+    "resolution_order": [
+      "explicit_newer_user_source_in_current_chat",
+      "project_sources",
+      "library",
+      "matching_current_chat_attachment",
+      "ask_user_only_if_unresolved"
+    ]
+  },
+  "registration_policy": "Register a source when it first becomes active in a workstream; do not require pre-registration of every book in the user's Library.",
+  "sources": [
+    {
+      "source_id": "grammatik-aktiv-a1-b1",
+      "canonical_title": "Grammatik aktiv A1-B1",
+      "aliases": ["Grammatik Aktiv A1-B1.pdf", "Grammatik Aktiv A1-B1(2).pdf", "Grammatik aktiv A1-B1"],
+      "sha256": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
+      "source_type": "pdf",
+      "domain": "grammar",
+      "levels": ["A1", "A2", "B1"],
+      "storage_expectation": ["project_sources", "library"],
+      "mirror_status": "VERIFIED_SAME_BYTES_2026-09-16",
+      "workstream": "grammatik-aktiv-a1-c1",
+      "workspace_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
+      "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json"
+    },
+    {
+      "source_id": "grammatik-aktiv-b2-c1",
+      "canonical_title": "Grammatik aktiv B2-C1",
+      "aliases": ["Grammatik Aktiv B2-C1.pdf", "Grammatik aktiv B2-C1"],
+      "sha256": "e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0",
+      "source_type": "pdf",
+      "domain": "grammar",
+      "levels": ["B2", "C1"],
+      "storage_expectation": ["project_sources", "library"],
+      "mirror_status": "VERIFIED_SAME_BYTES_2026-09-16",
+      "workstream": "grammatik-aktiv-a1-c1",
+      "workspace_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
+      "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json"
+    }
+  ]
+}

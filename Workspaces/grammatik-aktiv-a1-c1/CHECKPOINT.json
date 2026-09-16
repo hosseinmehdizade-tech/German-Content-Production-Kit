@@ -91,7 +91,7 @@
       "state": "RUNNING",
       "authoritative_artifacts": [
         "03-evidence/EVIDENCE-INDEX.json",
-        "03-evidence/lessons/ga-a1b1-ch002.json",
+        "03-evidence/lessons/ga-a1b1-ch001..ga-a1b1-ch020.json",
         "03-evidence/lessons/ga-a1b1-ch034.json",
         "03-evidence/lessons/ga-a1b1-ch070.json",
         "03-evidence/lessons/ga-b2c1-ch001.json",
@@ -100,14 +100,15 @@
       ],
       "progress": {
         "source_chapters_total": 168,
-        "source_chapters_evidence_complete_for_draft": 6,
-        "enriched_lesson_drafts_persisted": 6,
-        "remaining_chapters": 162,
+        "source_chapters_evidence_complete_for_draft": 25,
+        "enriched_lesson_drafts_persisted": 25,
+        "remaining_chapters": 143,
         "six_pilot_types_persisted": 6,
+        "a1_b1_contiguous_source_order_complete_through_chapter": 20,
         "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED"
       },
       "gate_evidence": "03-evidence/EVIDENCE-INDEX.json",
-      "next_action": "Continue in source order with the opening A1 sequence, skipping already-persisted ga-a1b1-ch002. Capture source-supported rules/patterns/exceptions with page provenance and persist each successful lesson incrementally. Do not repeat the six pilots or earlier stages.",
+      "next_action": "Continue the exact A1-B1 source in contiguous order with chapters 21-30. Capture source-supported rules/patterns/exceptions with page provenance, label generated learner examples explicitly, and persist every successful chapter incrementally. Do not repeat chapters 1-20 or any pilot.",
       "pass_commit_sha": null
     },
     "4_linguistic_lexical_qa": {"state": "NOT_STARTED", "pass_commit_sha": null},
@@ -120,5 +121,5 @@
     "7_release_post_package_verification": {"state": "NOT_STARTED", "pass_commit_sha": null}
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1 and 2 are durable PASS. Stage 3 has six evidence-linked pilot lessons durably persisted and indexed. Resume with the contiguous A1 source-order batch beginning ga-a1b1-ch001, ga-a1b1-ch003, ga-a1b1-ch004 ...; skip ga-a1b1-ch002 because it is already complete for the Stage-3 draft."
+  "resume_instruction": "Stages 1 and 2 are durable PASS. Stage 3 has 25 evidence-linked drafts persisted: A1-B1 chapters 1-20 continuously plus the previously selected pilots at A1-B1 chapters 34 and 70 and B2-C1 chapters 1, 14 and 82. Resume directly with A1-B1 chapters 21-30; do not redo completed evidence extraction."
 }

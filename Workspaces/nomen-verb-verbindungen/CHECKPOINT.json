@@ -2,7 +2,7 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-16T18:05:00+02:00",
+  "updated_at": "2026-09-16T18:20:00+02:00",
   "updated_version": "unified-bootstrap-migration-v1",
   "status": "PRODUCTION_IN_PROGRESS",
   "authority": {
@@ -18,7 +18,8 @@
   "source_identity": {
     "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
     "sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
-    "pdf_pages": 26
+    "pdf_pages": 26,
+    "project_source_status": "AVAILABLE_VERIFIED_2026-09-16"
   },
   "pipeline": {
     "1_source_inventory": {
@@ -92,8 +93,9 @@
         "observed_at": "2026-09-16",
         "version": "v411-R44",
         "source_name": "GFP-v411-R44-Grammar-Content-Foundation-CANDIDATE.zip",
-        "project_state_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
-        "nv_acceptance_status": "NOT_RUN"
+        "runtime_artifact_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
+        "app_project_state_file_sha": "8891655d0149a04311ac64b1ea704b381e53057c",
+        "nvv_acceptance_status": "NOT_RUN"
       },
       "historical_bounded_acceptance": {
         "runtime": "GFP v411 R37",
@@ -162,7 +164,16 @@
     "from": "NVV-specific handoff-first authority with R37 pinned baseline",
     "to": "unified project bootstrap/state -> source registry/manifest -> live workstream checkpoint -> live runtime resolution",
     "completed_at": "2026-09-16",
-    "completed_batches_invalidated": false
+    "completed_batches_invalidated": false,
+    "git_evidence": {
+      "content_main_project_state_commit": "bf684356e932791a909a4d7c66f0efe5e99b4434",
+      "content_main_source_registry_commit": "1b029d4b8765a5bbafecd9353e17ef6f3575b73b",
+      "nvv_source_manifest_commit": "372e4b55b6d52ed8834817db7d71621e5304517e",
+      "nvv_handoff_commit": "37678dfd417f6c4271428f0aef4daec3514eead5",
+      "nvv_strategy_commit": "0264a015e3de9ad17ce3eda1cede5fe1d1627cd2",
+      "nvv_auto_mission_doc_commit": "e1441808fd610dbd7e81930dbeea04eba206c383",
+      "auto_mission_v3_1_2_package_sha256": "09550930c431bc0c85283af7ca305e9e463a0997859d75f92c946eddbfe1a13a"
+    }
   },
   "next": "Start Batch 0003 as the first scalable 100-safe-expression end-to-end batch. Before production, resolve the raw source via SOURCE-MANIFEST/SOURCE-REGISTRY and the unified startup chain. Preserve Batch 0001/0002. Quarantine ambiguous/polysemous items. At B6 resolve the current German-Flashcards-Pro runtime live; do not reuse R37 as current authority."
 }

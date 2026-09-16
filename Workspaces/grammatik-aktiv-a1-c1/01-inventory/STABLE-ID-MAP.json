@@ -1,0 +1,37 @@
+{
+  "stable_id_map_schema": "grammar-stable-id-map@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "status": "VERIFIED",
+  "count": 168,
+  "mapping_model": "DETERMINISTIC_BIJECTION_BY_SOURCE_BOOK_AND_CHAPTER_NUMBER",
+  "ranges": [
+    {
+      "source_book_id": "grammatik-aktiv-a1-b1",
+      "chapter_number_from": 1,
+      "chapter_number_to": 80,
+      "stable_id_template": "ga-a1b1-ch{chapter_number:03d}",
+      "examples": {
+        "1": "ga-a1b1-ch001",
+        "80": "ga-a1b1-ch080"
+      }
+    },
+    {
+      "source_book_id": "grammatik-aktiv-b2-c1",
+      "chapter_number_from": 1,
+      "chapter_number_to": 88,
+      "stable_id_template": "ga-b2c1-ch{chapter_number:03d}",
+      "examples": {
+        "1": "ga-b2c1-ch001",
+        "88": "ga-b2c1-ch088"
+      }
+    }
+  ],
+  "validation": {
+    "expanded_ids_checked": 168,
+    "unique_ids": 168,
+    "duplicates": 0,
+    "missing_ids": 0,
+    "status": "PASS"
+  },
+  "expansion_rule": "For each inclusive chapter range, format chapter_number as three decimal digits and substitute it into stable_id_template. source_chapter_id equals stable_id."
+}

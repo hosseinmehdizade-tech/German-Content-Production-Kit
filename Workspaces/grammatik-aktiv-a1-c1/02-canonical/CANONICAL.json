@@ -1,0 +1,40 @@
+{
+  "canonical_schema": "grammar-canonical@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "dataset_title": "Grammatik aktiv A1-B1 + B2-C1",
+  "stage": "2_canonicalization",
+  "status": "CANONICAL_SOURCE_AND_CONCEPT_LAYER",
+  "storage_model": "SHARDED_JSON_WITH_HASHED_ROOT_INDEX",
+  "logical_document_note": "CANONICAL.json is the authoritative root index. Its listed parts together form the Stage-2 canonical logical document. Sharding is storage-only and does not alter semantic identity.",
+  "authority": {
+    "source_manifest": "../00-source/SOURCE-MANIFEST.json",
+    "verified_inventory": "../01-inventory/SOURCE-INVENTORY.json",
+    "chapter_catalog": "../01-inventory/CHAPTER-CATALOG.json",
+    "chapter_concept_map": "CHAPTER-CONCEPT-MAP-WIP.json",
+    "grammar_content_contract": "GRAMMAR-CONTENT-CONTRACT-v1.0.0.md",
+    "source_hashes": {
+      "grammatik-aktiv-a1-b1": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
+      "grammatik-aktiv-b2-c1": "e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0"
+    }
+  },
+  "scope_note": "This Stage-2 artifact freezes the verified source-chapter layer and semantic concept identity layer. Learner-facing lessons, rules, examples, Persian explanations and exercises are intentionally not fabricated here; they are produced/enriched with source/evidence provenance in downstream content work.",
+  "counts": {
+    "source_chapters": 168,
+    "concepts": 156,
+    "chapter_concept_links": 168
+  },
+  "source_chapter_parts": [
+    {"path":"CANONICAL-SOURCE-CHAPTERS-01.json","sha256":"2a7e30645bc44721d545909ef5862739638f7ced7d5a5e4201e021795d832e27","bytes":18492,"records":42,"first_id":"ga-a1b1-ch001","last_id":"ga-a1b1-ch042"},
+    {"path":"CANONICAL-SOURCE-CHAPTERS-02.json","sha256":"0c09c872024947ca791cb549532dd59ddf684d0c9cab238c6bbeee7e2b524b1e","bytes":18742,"records":42,"first_id":"ga-a1b1-ch043","last_id":"ga-b2c1-ch004"},
+    {"path":"CANONICAL-SOURCE-CHAPTERS-03.json","sha256":"c4fc93543c65795b06b80fe58280f89823b514ff96141e8c0ca581d2e8205473","bytes":20047,"records":42,"first_id":"ga-b2c1-ch005","last_id":"ga-b2c1-ch046"},
+    {"path":"CANONICAL-SOURCE-CHAPTERS-04.json","sha256":"07cf3e1008487bba5b1070f4adbe089eca020be0cc6cc93d9fa6b1cedd62d646","bytes":19078,"records":42,"first_id":"ga-b2c1-ch047","last_id":"ga-b2c1-ch088"}
+  ],
+  "concept_parts": [
+    {"path":"CANONICAL-CONCEPTS-01.json","sha256":"6586723240bfb73b02ac3ef1f3119f542d2f8e3de1a749b8c559c120fa282f63","bytes":11025,"records":26,"first_id":"grammar.adjektivdeklination.artikelwoerter","last_id":"grammar.indirekte_rede.vergangenheit"},
+    {"path":"CANONICAL-CONCEPTS-02.json","sha256":"c107e9846aff33069e52bc99c19bf396925b67a1c4b72314f7ffb0157ef7334d","bytes":11019,"records":26,"first_id":"grammar.infinitiv.dass_versus_zu","last_id":"grammar.lassen"},
+    {"path":"CANONICAL-CONCEPTS-03.json","sha256":"db5f430830e0e6b382f348cc1ba20dccdcdc86c4cefce5ee2fe3333c6a8bf9a5","bytes":11003,"records":26,"first_id":"grammar.modalpartikeln","last_id":"grammar.partizipien.als_adjektiv"},
+    {"path":"CANONICAL-CONCEPTS-04.json","sha256":"b411ddab3e5bfdcdd896f4b402df3a7c6d602ef8647e736ac8de2bcba3a3560b","bytes":10999,"records":26,"first_id":"grammar.passiv.alternativen","last_id":"grammar.praepositionen.redewiedergabe_referenz"},
+    {"path":"CANONICAL-CONCEPTS-05.json","sha256":"6b6b1c45d25557b1587a8897e860300434e4bd03d904e912c238390e0d045245","bytes":11302,"records":26,"first_id":"grammar.praepositionen.semantic_transparency","last_id":"grammar.tempus.vergangenheit_bildung"},
+    {"path":"CANONICAL-CONCEPTS-06.json","sha256":"544d09eb5cda24ef25f88a72ac9469811c3a5810dc6f60937f9ab4d38d5c2625","bytes":11163,"records":26,"first_id":"grammar.tempus.vergangenheit_gebrauch","last_id":"grammar.wortstellung.verbnahe_ergaenzungen"}
+  ]
+}

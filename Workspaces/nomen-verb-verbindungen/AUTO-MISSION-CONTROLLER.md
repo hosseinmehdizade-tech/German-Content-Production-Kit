@@ -1,18 +1,24 @@
 # NVV Auto-Mission Controller
 
-Recommended controller package: `ChatGPT-Auto-Mission-Controller-v3.1.1-NVV-PERSISTENT-BATCH-VERIFIED-CANDIDATE`
+Recommended controller package: `ChatGPT-Auto-Mission-Controller-v3.1.2-UNIFIED-PROJECT-BOOTSTRAP-VERIFIED-CANDIDATE`
 
 Recommended Mission Type: `NVV Long-Run Production — Persistent Batch`
 
-## Resume authority
-Before work in every chat/session, read:
-1. `Workspaces/nomen-verb-verbindungen/HANDOFF-READ-FIRST.md`
-2. `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
-3. latest cumulative canonical/projected/QA/review artifacts referenced there
-4. current `German-Content-Production-Kit/main` authority
-5. current `German-Flashcards-Pro/main` baseline
+## Controller role
 
-Chat memory is not authoritative.
+Auto-Mission is an optional **executor**, not a second project-state system.
+
+It must consume the same unified authority chain used by normal chats:
+1. `German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md`
+2. `German-Content-Production-Kit/main/PROJECT-STATE.json`
+3. current README + active START prompt + Source Access Protocol + Source Registry
+4. branch/workstream resolved from Project State
+5. `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
+6. `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
+7. cumulative artifacts/review queue referenced by the checkpoint
+8. `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md` + `PROJECT-STATE.json` only when runtime/import/presentation compatibility matters
+
+Chat memory, old ZIP names and the controller's localStorage are never durable project authority.
 
 ## Batch cadence
 - Default bounded production batch: 100 safe completed expression cards.
@@ -27,7 +33,7 @@ Chat memory is not authoritative.
 - B3 Lexical Graph / Structure / Relations
 - B4 Exactly 4 German Examples + FA/EN translations
 - B5 Batch QA + cumulative regression
-- B6 Projection / Word Explorer / Wortnetz acceptance at supported evidence depth
+- B6 Projection / Word Explorer / Wortnetz acceptance against the live-resolved current runtime
 - B7 Persistent Git + ZIP checkpoint
 
 ## Required persistence after every successful batch
@@ -38,7 +44,7 @@ Chat memory is not authoritative.
 - updated `CHECKPOINT.json`
 - updated `HANDOFF-READ-FIRST.md`
 - SHA-256 manifest
-- cumulative standalone checkpoint ZIP
+- cumulative standalone checkpoint ZIP when practical
 - Git update on branch `nvv-production` when write access is available
 
 If a chat/run ends mid-batch, persist exact B1..B7 counters, last completed record, next record/operation, current review queue and artifact hashes. A resumable checkpoint is the correct outcome; never force false completion because of a run limit.

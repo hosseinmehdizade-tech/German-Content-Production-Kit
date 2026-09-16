@@ -35,9 +35,17 @@
     "1_source_inventory": {
       "state": "RUNNING",
       "authoritative_artifacts": [
-        "00-source/SOURCE-MANIFEST.json"
+        "00-source/SOURCE-MANIFEST.json",
+        "01-inventory/CHAPTER-CATALOG.json"
       ],
-      "next_required_artifact": "01-inventory/CHAPTER-CATALOG.json",
+      "progress": {
+        "expected_chapters": 168,
+        "captured_chapters": 168,
+        "stable_ids_assigned": 168,
+        "catalog_status": "WIP_TOC_CAPTURED_REQUIRES_CHAPTER_OPENING_VERIFICATION"
+      },
+      "next_required_artifact": "01-inventory/INVENTORY-QA.json",
+      "next_action": "Verify chapter-opening pages against the TOC capture, resolve flagged title/CEFR/page ambiguities without silent correction, then run inventory QA.",
       "pass_commit_sha": null
     },
     "2_canonicalization": {
@@ -77,5 +85,5 @@
       "resume_instruction": "Before Stage 6, reconcile or publish the intended v411 R43 app baseline to a dedicated Git branch and pin the exact commit SHA."
     }
   ],
-  "resume_instruction": "Continue Stage 1 by building and verifying the complete 168-chapter source catalog with stable source_chapter_id values, source order, titles, sections, CEFR markers, and page locators. Do not start mass enrichment before Stage 1 PASS."
+  "resume_instruction": "Continue Stage 1 from the durable 168-chapter catalog. Verify chapter-opening pages and CEFR/page/title ambiguities, write INVENTORY-QA.json, then mark Stage 1 PASS only after the verified inventory and QA evidence are committed. Do not begin mass canonicalization/enrichment before Stage 1 PASS."
 }

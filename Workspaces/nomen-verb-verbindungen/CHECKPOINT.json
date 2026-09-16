@@ -2,8 +2,8 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-16T18:20:00+02:00",
-  "updated_version": "unified-bootstrap-migration-v1",
+  "updated_at": "2026-09-16T18:25:20+02:00",
+  "updated_version": "unified-source-shelf-hardening-v2",
   "status": "PRODUCTION_IN_PROGRESS",
   "authority": {
     "bootstrap": "German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md",
@@ -19,7 +19,16 @@
     "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
     "sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
     "pdf_pages": 26,
-    "project_source_status": "AVAILABLE_VERIFIED_2026-09-16"
+    "project_source_status": "AVAILABLE_VERIFIED_2026-09-16",
+    "library_status": "AVAILABLE_VERIFIED_2026-09-16",
+    "mirror_status": "VERIFIED_SAME_BYTES_2026-09-16",
+    "source_resolution_order": [
+      "explicit_newer_user_source_in_current_chat",
+      "ChatGPT Project Sources",
+      "ChatGPT Library",
+      "matching_current_chat_attachment",
+      "ask_user_only_if_unresolved"
+    ]
   },
   "pipeline": {
     "1_source_inventory": {
@@ -162,18 +171,18 @@
   },
   "migration": {
     "from": "NVV-specific handoff-first authority with R37 pinned baseline",
-    "to": "unified project bootstrap/state -> source registry/manifest -> live workstream checkpoint -> live runtime resolution",
+    "to": "unified project bootstrap/state -> source registry/manifest -> Project Sources/Library source resolution -> live workstream checkpoint -> live runtime resolution",
     "completed_at": "2026-09-16",
     "completed_batches_invalidated": false,
     "git_evidence": {
-      "content_main_project_state_commit": "bf684356e932791a909a4d7c66f0efe5e99b4434",
-      "content_main_source_registry_commit": "1b029d4b8765a5bbafecd9353e17ef6f3575b73b",
-      "nvv_source_manifest_commit": "372e4b55b6d52ed8834817db7d71621e5304517e",
-      "nvv_handoff_commit": "37678dfd417f6c4271428f0aef4daec3514eead5",
-      "nvv_strategy_commit": "0264a015e3de9ad17ce3eda1cede5fe1d1627cd2",
-      "nvv_auto_mission_doc_commit": "e1441808fd610dbd7e81930dbeea04eba206c383",
-      "auto_mission_v3_1_2_package_sha256": "09550930c431bc0c85283af7ca305e9e463a0997859d75f92c946eddbfe1a13a"
+      "content_main_project_state_commit": "649e34c213f155126c7e4bb6b6e9c4afd9e950a7",
+      "content_main_source_registry_commit": "e2c3d366aab4b3a210a0aa28830e82eac459d766",
+      "nvv_source_manifest_commit": "6d07c823b00c320849228a831be9c169b838a324",
+      "nvv_handoff_commit": "ccc625b30cc696e85c9b7a0b78cdd28d381fdf9f",
+      "nvv_strategy_commit": "2f5eb48cb44128df27e6123ade15602149a74a46",
+      "nvv_auto_mission_doc_commit": "8d62d005d3c4d441cdda8e79dc304cec04e949a1",
+      "auto_mission_v3_1_3_package_sha256": "b60fd1d63005538ef48a2cde22319cf240be3217385d2227e2f688f33bfc9c49"
     }
   },
-  "next": "Start Batch 0003 as the first scalable 100-safe-expression end-to-end batch. Before production, resolve the raw source via SOURCE-MANIFEST/SOURCE-REGISTRY and the unified startup chain. Preserve Batch 0001/0002. Quarantine ambiguous/polysemous items. At B6 resolve the current German-Flashcards-Pro runtime live; do not reuse R37 as current authority."
+  "next": "Start Batch 0003 as the first scalable 100-safe-expression end-to-end batch. Before production, resolve the raw source via the unified startup chain in this order: explicit newer current-chat source -> ChatGPT Project Sources -> ChatGPT Library -> matching current-chat attachment. Verify the registered SHA-256 when bytes are available. Preserve Batch 0001/0002. Quarantine ambiguous/polysemous items. At B6 resolve the current German-Flashcards-Pro runtime live; do not reuse R37 as current authority."
 }

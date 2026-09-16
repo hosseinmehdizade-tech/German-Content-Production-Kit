@@ -1,0 +1,59 @@
+{
+  "schema": "gcpk-project-state@1.0.0",
+  "project": "German-Content-Production-Kit",
+  "updated_at": "2026-09-16T15:51:00+02:00",
+  "startup_rule": [
+    "Read README.md and Prompt/START-PROMPT-v3.1.12.md from current main.",
+    "Read this PROJECT-STATE.json.",
+    "Inspect German-Flashcards-Pro/main PROJECT-STATE.json before runtime/import/presentation work.",
+    "For a named source/workstream, read its own CHECKPOINT.json on the branch recorded here before continuing."
+  ],
+  "authority_resolution": {
+    "user_supplied_newer_artifact": "May become immediate working authority when the user explicitly says it is the latest/current artifact. Continue work without waiting for GitHub sync.",
+    "github": "Durable checkpoint and cross-chat coordination layer.",
+    "conflict_rule": "Never silently replace newer explicit user input with older GitHub content. Record the discrepancy and work from the newer authority for the current task.",
+    "persistence_rule": "When GitHub is available, persist durable checkpoints at meaningful boundaries. GitHub lag must not block ordinary work."
+  },
+  "active_framework": {
+    "version": "v3.1.12",
+    "entrypoint": "Prompt/START-PROMPT-v3.1.12.md",
+    "architecture": "v3.1.5",
+    "semantic_contract": "gfp-german-language-content@3.1.3"
+  },
+  "workstreams": {
+    "grammar_aktiv_a1_c1": {
+      "status": "ACTIVE",
+      "branch": "grammar-aktiv-a1-c1-production",
+      "head_commit": "1266dba9df472dc334056b37be0d95a5264b7f01",
+      "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
+      "stage": "1_source_inventory",
+      "note": "168/168 chapters catalogued; chapter-opening verification remains before Stage 1 PASS."
+    },
+    "vocabulary": {
+      "status": "PARALLEL_ALLOWED",
+      "branch": null,
+      "checkpoint": null,
+      "note": "Use source-specific workspaces/checkpoints. Do not inherit grammar state or legacy Menschen mappings implicitly."
+    },
+    "lesen": {
+      "status": "PARALLEL_ALLOWED",
+      "branch": null,
+      "checkpoint": null,
+      "note": "Keep Lesen production/runtime artifacts separate from vocabulary and grammar authorities."
+    },
+    "schreiben": {
+      "status": "PARALLEL_ALLOWED",
+      "branch": null,
+      "checkpoint": null,
+      "note": "May evolve independently until an explicit runtime integration checkpoint is created."
+    }
+  },
+  "flashcards_runtime_dependency": {
+    "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "state_file": "PROJECT-STATE.json",
+    "latest_known_app_artifact": "v411-R44",
+    "latest_known_app_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
+    "rule": "Resolve the actual runtime at Stage 6. Do not hardcode an old runtime version into content production."
+  },
+  "user_time_policy": "This is a side project. Continue agentically, avoid repeated manual confirmations, and surface only material blockers or decisions that affect scope, data loss, architecture, or visible UX."
+}

@@ -1,0 +1,76 @@
+{
+  "pilot_validation_schema": "grammar-contract-pilot-validation@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "contract": "GRAMMAR-CONTENT-CONTRACT-v1.0.0.md",
+  "pilot_input": "CANONICAL-PILOT-WIP.json",
+  "status": "PASS_FOR_MASS_CANONICALIZATION",
+  "content_complete": false,
+  "scope_note": "This validates representational adequacy of the canonical grammar contract across six chapter types. It does not claim the six learner lessons are already CONTENT_COMPLETE and does not pass Stage 2 for the full 168-chapter dataset.",
+  "checks": [
+    {
+      "id": "source_chapter_identity_separate_from_concept_identity",
+      "status": "PASS",
+      "evidence": "All six pilots retain source chapter IDs while mapping to semantic concept IDs."
+    },
+    {
+      "id": "simple_conjugation_table_representable",
+      "pilot": "ga-a1b1-ch002",
+      "status": "PASS",
+      "evidence": "CONJUGATION pattern plus form-building exercise types represent person/number endings and stem-ending variants without chapter-specific schema fields."
+    },
+    {
+      "id": "case_preposition_contrast_representable",
+      "pilot": "ga-a1b1-ch034",
+      "status": "PASS",
+      "evidence": "CASE_MATRIX and TRANSFORMATION patterns represent Wo+Dativ/Wohin+Akkusativ and contractions."
+    },
+    {
+      "id": "relative_clause_structure_representable",
+      "pilot": "ga-a1b1-ch070",
+      "status": "PASS",
+      "evidence": "WORD_ORDER plus DECLENSION patterns represent verb-final structure, antecedent agreement and relative-pronoun behavior without over-merging later case concepts."
+    },
+    {
+      "id": "advanced_word_order_representable",
+      "pilot": "ga-b2c1-ch001",
+      "status": "PASS",
+      "evidence": "WORD_ORDER and CONNECTOR_POSITION patterns represent position fields, Satzklammer, postfield and verb-first sentence types."
+    },
+    {
+      "id": "passive_tense_matrix_representable",
+      "pilot": "ga-b2c1-ch014",
+      "status": "PASS",
+      "evidence": "TENSE_FORMATION plus TRANSFORMATION represents the multi-tense passive matrix and von/durch/mit complement distinctions."
+    },
+    {
+      "id": "c1_nominalization_transformations_representable",
+      "pilot": "ga-b2c1-ch082",
+      "status": "PASS",
+      "evidence": "TRANSFORMATION and DECLENSION patterns represent argument remapping, prepositional complements and connector-to-preposition conversion."
+    },
+    {
+      "id": "exercise_model_can_preserve_richer_types",
+      "status": "PASS",
+      "evidence": "Pilot requirements use both currently supported and richer canonical exercise types (for example ORDER_SENTENCE, TRANSFORM_SENTENCE, CASE_SELECTION and FORM_BUILDING) without dropping them."
+    },
+    {
+      "id": "provenance_model_adequate",
+      "status": "PASS_WITH_NOTE",
+      "evidence": "Printed-page and verification-copy PDF locators can be represented. Exact manifest-byte source authority remains separately preserved and must not be conflated with current verification-copy hashes."
+    },
+    {
+      "id": "bilingual_lesson_fields_adequate",
+      "status": "PASS_STRUCTURAL",
+      "evidence": "The contract has separate German explanation and Persian support fields at lesson/rule/error level; no additional field is required by the six pilot structures. Learner-facing bilingual content is produced downstream."
+    },
+    {
+      "id": "no_source_specific_schema_hack_required",
+      "status": "PASS",
+      "evidence": "None of the six pilots required a one-off chapter-specific field outside the contract object model."
+    }
+  ],
+  "contract_changes_required": [],
+  "blocking_issues": [],
+  "decision": "The draft grammar content contract is adequate for mass canonicalization of source chapters and semantic concept identities. Keep the contract version at v1.0.0 for this production run; do not weaken it to current runtime fields.",
+  "next_action": "Create the full 168-chapter canonical source-chapter layer and semantic concept registry, applying explicit deduplication decisions before Stage 2 validation."
+}

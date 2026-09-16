@@ -1,0 +1,95 @@
+{
+  "checkpoint_schema_version": "2.0.0",
+  "pipeline": "seven-stage-production@1.0.0",
+  "dataset": {
+    "id": "lesen-praesentation",
+    "title": "Präsentation",
+    "domain": "reading",
+    "levels": ["B2", "C1"],
+    "authoritative_source": "presentation-topics-b2-c1 / Präsentation.pdf / sha256:7abebcbf6bdcbb886675e3ed529c954149362b135bcf6d1f8a2d8901969fd8f1"
+  },
+  "workspace": {
+    "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
+    "branch": "lesen-praesentation-source-governance",
+    "path": "Workspaces/lesen-praesentation"
+  },
+  "authorities": {
+    "content_kit_prompt": "v3.1.12",
+    "seven_stage_pipeline": "SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0",
+    "source_access_protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0",
+    "architecture": "v3.1.5",
+    "semantic_contract": "gfp-german-language-content@3.1.3",
+    "flashcards_pro_repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "flashcards_pro_main_commit": "4ad67af53cad57f5cace7e992a7fcabc4b0110bb",
+    "flashcards_pro_main_runtime": "v4.1.1-R44",
+    "lesen_runtime_candidate_branch": "r45-modular-reading-content-packs"
+  },
+  "source_access": {
+    "source_id": "presentation-topics-b2-c1",
+    "sha256": "7abebcbf6bdcbb886675e3ed529c954149362b135bcf6d1f8a2d8901969fd8f1",
+    "project_source": "AVAILABLE_VERIFIED_2026-09-16",
+    "library": "AVAILABLE_VERIFIED_2026-09-16",
+    "mirror_status": "VERIFIED_SAME_BYTES_2026-09-16",
+    "raw_source_in_git": false
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "name": "Source & Inventory",
+      "state": "RUNNING",
+      "authoritative_outputs": [
+        "00-source/SOURCE-MANIFEST.json",
+        "01-inventory/SOURCE-INVENTORY.json",
+        "01-inventory/STABLE-ID-MAP.json"
+      ],
+      "gate_evidence": [
+        "01-inventory/INVENTORY-QA.json"
+      ],
+      "summary": "Source identity, Project Source availability, Library availability and byte equivalence are durably recorded. Topic/page inventory, stable IDs and inventory QA are not yet durably produced; therefore Stage 1 is not PASS.",
+      "pass_commit": null
+    },
+    {
+      "stage": 2,
+      "name": "Canonicalization",
+      "state": "NOT_STARTED",
+      "pass_commit": null
+    },
+    {
+      "stage": 3,
+      "name": "Evidence & Enrichment",
+      "state": "NOT_STARTED",
+      "pass_commit": null
+    },
+    {
+      "stage": 4,
+      "name": "Linguistic & Lexical QA",
+      "state": "NOT_STARTED",
+      "pass_commit": null
+    },
+    {
+      "stage": 5,
+      "name": "Delivery Projection",
+      "state": "NOT_STARTED",
+      "pass_commit": null
+    },
+    {
+      "stage": 6,
+      "name": "Runtime & Presentation Acceptance",
+      "state": "NOT_STARTED",
+      "pass_commit": null
+    },
+    {
+      "stage": 7,
+      "name": "Release & Post-Package Verification",
+      "state": "NOT_STARTED",
+      "pass_commit": null
+    }
+  ],
+  "blockers": [],
+  "resume_instruction": "Continue Stage 1 from the verified PDF source. Build a source-faithful inventory and stable ID map without inferring missing structure, then run inventory QA. Do not promote Stage 1 to PASS before all required artifacts and gate evidence are committed.",
+  "durability": {
+    "checkpoint_is_git_backed": true,
+    "no_chat_only_pass_states": true,
+    "downstream_invalidation_required_on_upstream_change": true
+  }
+}

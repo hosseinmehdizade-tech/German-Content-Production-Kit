@@ -6,6 +6,7 @@
   "branch": "grammar-aktiv-a1-c1-production",
   "workspace_path": "Workspaces/grammatik-aktiv-a1-c1",
   "active_authority": {
+    "bootstrap": "PROJECT-BOOTSTRAP.md",
     "start_prompt": "Prompt/START-PROMPT-v3.1.12.md",
     "production_overlay": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.12.md",
     "pipeline": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
@@ -24,13 +25,14 @@
   },
   "target_flashcards_pro": {
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "bootstrap_file": "PROJECT-BOOTSTRAP.md",
     "state_file": "PROJECT-STATE.json",
     "github_branch_observed": "main",
-    "github_main_commit_observed": "2093759a20495c8c794244771b1d4e579df49542",
+    "github_main_commit_observed": "27f1b1f63bfcf98151ca7df66f1a41965d766ef3",
     "latest_known_runtime_artifact": "GFP-v411-R44-Grammar-Content-Foundation-CANDIDATE.zip",
     "latest_known_runtime_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
     "runtime_location_status": "KNOWN_NEWER_ARTIFACT_NOT_YET_FULLY_EXPANDED_ON_GITHUB",
-    "resolution_policy": "Stages 1-5 continue independently. At Stage 6, use the newest explicit runtime authority: prefer an explicitly newer user-supplied app artifact over an older expanded GitHub runtime, then pin exact artifact SHA-256 and Git commit when synchronized.",
+    "resolution_policy": "Stages 1-5 continue independently. At Stage 6, follow both repositories' PROJECT-BOOTSTRAP.md files and use the newest explicit runtime authority: prefer an explicitly newer user-supplied app artifact over an older expanded GitHub runtime, then pin exact artifact SHA-256 and Git commit when synchronized.",
     "alignment_status": "NOT_A_BLOCKER_FOR_STAGES_1_TO_5; EXACT_RUNTIME_PIN_REQUIRED_AT_STAGE_6"
   },
   "stages": {
@@ -80,5 +82,5 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Continue Stage 1 from the durable 168-chapter catalog. Verify chapter-opening pages and CEFR/page/title ambiguities, write INVENTORY-QA.json, then mark Stage 1 PASS only after the verified inventory and QA evidence are committed. Do not begin mass canonicalization/enrichment before Stage 1 PASS. GitHub runtime lag does not block Stages 1-5."
+  "resume_instruction": "At every new/resumed chat, read PROJECT-BOOTSTRAP.md first, then continue Stage 1 from the durable 168-chapter catalog. Verify chapter-opening pages and CEFR/page/title ambiguities, write INVENTORY-QA.json, then mark Stage 1 PASS only after the verified inventory and QA evidence are committed. Do not begin mass canonicalization/enrichment before Stage 1 PASS. GitHub runtime lag does not block Stages 1-5."
 }

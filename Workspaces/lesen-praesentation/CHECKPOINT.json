@@ -5,7 +5,10 @@
     "id": "lesen-praesentation",
     "title": "Präsentation",
     "domain": "reading",
-    "levels": ["B2", "C1"],
+    "levels": [
+      "B2",
+      "C1"
+    ],
     "authoritative_source": "presentation-topics-b2-c1 / Präsentation.pdf / sha256:7abebcb70213a89a50a3bab35695618adde0b44a9975fdf9cdba33c296ef5523"
   },
   "workspace": {
@@ -45,7 +48,7 @@
       "gate_evidence": [
         "01-inventory/INVENTORY-QA.json"
       ],
-      "summary": "Source identity, Project Source availability, Library availability and byte equivalence are durably recorded. Topic/page inventory, stable IDs and inventory QA are not yet durably produced; therefore Stage 1 is not PASS.",
+      "summary": "Source inventory, stable ID map and inventory QA evidence are generated and pass local deterministic checks. Stage 1 remains RUNNING until this evidence is committed; a subsequent promotion commit must reference that durable evidence commit.",
       "pass_commit": null
     },
     {
@@ -86,7 +89,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Continue Stage 1 from the verified PDF source. Build a source-faithful inventory and stable ID map without inferring missing structure, then run inventory QA. Do not promote Stage 1 to PASS before all required artifacts and gate evidence are committed.",
+  "resume_instruction": "Commit Stage 1 inventory evidence, then promote Stage 1 to PASS using the exact evidence commit. Do not begin Stage 2 before that durable promotion.",
   "durability": {
     "checkpoint_is_git_backed": true,
     "no_chat_only_pass_states": true,

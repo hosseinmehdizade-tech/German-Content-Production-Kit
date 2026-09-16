@@ -3,7 +3,10 @@
   "dataset": "lesen-praesentation",
   "title": "Präsentation",
   "domain": "reading",
-  "levels": ["B2", "C1"],
+  "levels": [
+    "B2",
+    "C1"
+  ],
   "source_kind": "user-provided-pdf",
   "source_id": "presentation-topics-b2-c1",
   "canonical_filename": "Präsentation.pdf",
@@ -31,9 +34,35 @@
     "state": "RUNNING",
     "source_identity_verified": true,
     "project_library_byte_equivalence_verified": true,
-    "inventory_built": false,
-    "stable_id_map_built": false,
-    "inventory_qa_passed": false
+    "inventory_built": true,
+    "stable_id_map_built": true,
+    "inventory_qa_passed": true,
+    "evidence_committed": false
   },
-  "notes": "The PDF is available on both configured source shelves and both copies were verified byte-identical on 2026-09-16. This manifest deliberately does not claim page count, topic count, or Stage 1 PASS before inventory evidence is durably produced."
+  "notes": "Source identity and Project Source/Library byte equivalence are verified. Stage 1 evidence is generated from the committed source-faithful inventory; promotion to PASS is deferred until that evidence itself has a durable Git commit.",
+  "inventory": {
+    "pdf_pages": 76,
+    "topics": 68,
+    "topic_start_pages": 68,
+    "continuation_pages": [
+      18,
+      20,
+      22,
+      26,
+      32,
+      38
+    ],
+    "blank_pages": [
+      3
+    ],
+    "duplicate_occurrence_pages": [
+      69
+    ],
+    "unnumbered_topic_start_pages": [
+      35
+    ],
+    "source_inventory": "../01-inventory/SOURCE-INVENTORY.json",
+    "stable_id_map": "../01-inventory/STABLE-ID-MAP.json",
+    "inventory_qa": "../01-inventory/INVENTORY-QA.json"
+  }
 }

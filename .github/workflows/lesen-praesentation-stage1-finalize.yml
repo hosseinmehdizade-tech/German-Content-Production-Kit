@@ -1,0 +1,44 @@
+name: lesen-praesentation-stage1-finalize
+
+on:
+  push:
+    branches:
+      - lesen-praesentation-source-governance
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize-stage1:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: lesen-praesentation-source-governance
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Build deterministic Stage 1 evidence
+        run: python Tools/finalize-lesen-praesentation-stage1.py
+      - name: Commit source inventory evidence
+        id: evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Workspaces/lesen-praesentation/00-source/SOURCE-MANIFEST.json \
+                  Workspaces/lesen-praesentation/01-inventory/STABLE-ID-MAP.json \
+                  Workspaces/lesen-praesentation/01-inventory/INVENTORY-QA.json \
+                  Workspaces/lesen-praesentation/CHECKPOINT.json
+          git commit -m "Build Presentation Stage 1 inventory evidence"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Promote Stage 1 only after durable evidence commit
+        run: python Tools/finalize-lesen-praesentation-stage1.py --promote-pass "${{ steps.evidence.outputs.sha }}"
+      - name: Commit Stage 1 PASS checkpoint
+        run: |
+          git add Workspaces/lesen-praesentation/00-source/SOURCE-MANIFEST.json Workspaces/lesen-praesentation/CHECKPOINT.json
+          git commit -m "Promote Presentation Source and Inventory Stage 1 to PASS"
+          git push origin HEAD:lesen-praesentation-source-governance

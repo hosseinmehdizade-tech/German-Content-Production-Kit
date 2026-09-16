@@ -2,7 +2,17 @@
 
 Recommended controller package: `ChatGPT-Auto-Mission-Controller-v3.1.2-UNIFIED-PROJECT-BOOTSTRAP-VERIFIED-CANDIDATE`
 
+Package SHA-256: `abd94813baaa83fecb409b866856e7f6639bacdafd6dd600c06462794022c993`
+
 Recommended Mission Type: `NVV Long-Run Production — Persistent Batch`
+
+Verification boundary:
+- JavaScript syntax PASS
+- static protocol invariants PASS
+- v3.1 semantic invariants PASS
+- synthetic browser harness PASS
+- unified NVV bootstrap preset PASS
+- live ChatGPT + Tampermonkey UI NOT RUN
 
 ## Controller role
 

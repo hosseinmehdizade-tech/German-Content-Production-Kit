@@ -18,10 +18,7 @@
   "source_authority": {
     "manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
     "expected_total_chapters": 168,
-    "books": [
-      "grammatik-aktiv-a1-b1",
-      "grammatik-aktiv-b2-c1"
-    ],
+    "books": ["grammatik-aktiv-a1-b1", "grammatik-aktiv-b2-c1"],
     "verified_inventory": "Workspaces/grammatik-aktiv-a1-c1/01-inventory/SOURCE-INVENTORY.json"
   },
   "target_flashcards_pro": {
@@ -58,34 +55,34 @@
     "2_canonicalization": {
       "state": "RUNNING",
       "authoritative_artifacts": [
-        "02-canonical/GRAMMAR-CONTENT-CONTRACT-v1.0.0.md"
+        "02-canonical/GRAMMAR-CONTENT-CONTRACT-v1.0.0.md",
+        "02-canonical/PILOT-SELECTION.json",
+        "02-canonical/CANONICAL-PILOT-WIP.json",
+        "02-canonical/PILOT-CONTRACT-VALIDATION.json",
+        "02-canonical/NORMALIZATION-DECISIONS.json"
       ],
-      "pilot_requirement": "Validate the grammar content contract against six deliberately different chapter types before mass-producing all 168 chapters.",
-      "next_action": "Select and canonicalize six contract-test pilots: A1 conjugation, A2 case/preposition, B1 relative clause, B2 word order, B2/C1 passive/tense complexity, and C1 nominalization. Then write CANONICAL.json, CANONICAL-VALIDATION.json, and NORMALIZATION-DECISIONS.json as applicable.",
+      "progress": {
+        "pilot_required_types": 6,
+        "pilot_selected": 6,
+        "pilot_structures_captured": 6,
+        "pilot_contract_validation": "PASS_FOR_MASS_CANONICALIZATION",
+        "pilot_content_complete": false,
+        "mass_source_chapters_to_canonicalize": 168,
+        "mass_canonicalization_status": "NOT_STARTED"
+      },
+      "next_action": "Create the full 168-chapter canonical source-chapter layer and semantic concept registry, apply verified inventory resolutions, deduplicate semantic concepts deliberately, then write CANONICAL.json and CANONICAL-VALIDATION.json. Do not redo Stage 1 or the six-type contract pilot.",
       "pass_commit_sha": null
     },
-    "3_evidence_enrichment": {
-      "state": "NOT_STARTED",
-      "pass_commit_sha": null
-    },
-    "4_linguistic_lexical_qa": {
-      "state": "NOT_STARTED",
-      "pass_commit_sha": null
-    },
-    "5_delivery_projection": {
-      "state": "NOT_STARTED",
-      "pass_commit_sha": null
-    },
+    "3_evidence_enrichment": {"state": "NOT_STARTED", "pass_commit_sha": null},
+    "4_linguistic_lexical_qa": {"state": "NOT_STARTED", "pass_commit_sha": null},
+    "5_delivery_projection": {"state": "NOT_STARTED", "pass_commit_sha": null},
     "6_runtime_presentation_acceptance": {
       "state": "NOT_STARTED",
       "requirement": "Resolve newest explicit runtime authority at execution time and pin both artifact SHA-256 and synchronized Git commit before PASS.",
       "pass_commit_sha": null
     },
-    "7_release_post_package_verification": {
-      "state": "NOT_STARTED",
-      "pass_commit_sha": null
-    }
+    "7_release_post_package_verification": {"state": "NOT_STARTED", "pass_commit_sha": null}
   },
   "known_blockers": [],
-  "resume_instruction": "Stage 1 is durable PASS. Continue Stage 2 from the six-chapter contract-test pilot defined by GRAMMAR-CONTENT-CONTRACT-v1.0.0.md. Do not redo the 168-chapter inventory. Preserve the raw TOC catalog and apply the explicit verified resolutions from SOURCE-INVENTORY.json. GitHub runtime lag does not block Stages 2-5."
+  "resume_instruction": "Stage 1 is durable PASS and the six-type grammar contract pilot has passed for representational adequacy. Continue Stage 2 directly with mass canonicalization of the verified 168-chapter inventory into source-chapter mappings plus a semantic concept registry. Do not redo inventory or pilot selection."
 }

@@ -1,8 +1,8 @@
 # NVV Auto-Mission Controller
 
-Recommended controller package: `ChatGPT-Auto-Mission-Controller-v3.1.2-UNIFIED-PROJECT-BOOTSTRAP-VERIFIED-CANDIDATE`
+Recommended controller package: `ChatGPT-Auto-Mission-Controller-v3.1.3-SOURCE-SHELF-HARDENING-VERIFIED-CANDIDATE`
 
-Package SHA-256: `09550930c431bc0c85283af7ca305e9e463a0997859d75f92c946eddbfe1a13a`
+Package SHA-256: `b60fd1d63005538ef48a2cde22319cf240be3217385d2227e2f688f33bfc9c49`
 
 Recommended Mission Type: `NVV Long-Run Production — Persistent Batch`
 
@@ -12,6 +12,7 @@ Verification boundary:
 - v3.1 semantic invariants PASS
 - synthetic browser harness PASS
 - unified NVV bootstrap preset PASS
+- source-shelf hardening PASS
 - live ChatGPT + Tampermonkey UI NOT RUN
 
 ## Controller role
@@ -27,6 +28,17 @@ It must consume the same unified authority chain used by normal chats:
 6. `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
 7. cumulative artifacts/review queue referenced by the checkpoint
 8. `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md` + `PROJECT-STATE.json` only when runtime/import/presentation compatibility matters
+
+Raw-source resolution is explicit in v3.1.3 and must follow this order:
+1. explicitly newer/current source supplied by the user in the current chat
+2. **ChatGPT Project Sources**
+3. **ChatGPT Library**
+4. matching current-chat attachment
+5. ask the user only if unresolved
+
+Whenever raw bytes are available, verify the registered SHA-256. Same-hash copies in Project Sources and Library are one logical source and must not be processed twice.
+
+This same source-awareness rule is now hardened across the controller's App, generic Content, NVV, Content→App and project-aware Custom paths; historical hardcoded Content Kit version labels are not project authority.
 
 Chat memory, old ZIP names and the controller's localStorage are never durable project authority.
 

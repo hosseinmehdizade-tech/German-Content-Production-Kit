@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.0.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-16T16:06:00+02:00",
+  "updated_at": "2026-09-16T16:10:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "startup_rule": [
     "Read PROJECT-BOOTSTRAP.md first in every new or resumed substantial project chat.",
@@ -26,10 +26,10 @@
     "grammar_aktiv_a1_c1": {
       "status": "ACTIVE",
       "branch": "grammar-aktiv-a1-c1-production",
-      "head_commit": "c3d85e89b5a38efc8954e61420de266328fa5476",
+      "head_commit": "61490a33f7932c2c1c48d4e22cc7365daeda42d1",
       "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
       "stage": "1_source_inventory",
-      "note": "168/168 chapters catalogued; chapter-opening verification remains before Stage 1 PASS. Bootstrap and active START-PROMPT are present on the workstream branch. GitHub runtime lag does not block Stages 1-5. Runtime commit is intentionally resolved live only when compatibility matters."
+      "note": "168/168 chapters catalogued; chapter-opening verification remains before Stage 1 PASS. Bootstrap and active START-PROMPT are present on the workstream branch. GitHub runtime lag does not block Stages 1-5. Runtime version/hash/commit are intentionally resolved live only when compatibility matters."
     },
     "vocabulary": {
       "status": "PARALLEL_ALLOWED",
@@ -54,10 +54,8 @@
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
     "bootstrap_file": "PROJECT-BOOTSTRAP.md",
     "state_file": "PROJECT-STATE.json",
-    "latest_known_app_artifact": "v411-R44",
-    "latest_known_app_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
-    "verification_status": "CANDIDATE_ONLY",
-    "rule": "Resolve the actual runtime at Stage 6. Do not hardcode an old runtime version or long-lived observed app commit into content production."
+    "mode": "LIVE_RESOLUTION",
+    "rule": "Do not cache a Flashcards version/hash/commit here as authoritative. Resolve the actual runtime from the Flashcards repository and any newer explicit user artifact only when runtime/import/presentation compatibility matters."
   },
   "user_time_policy": "This is a side project. Continue agentically, avoid repeated manual confirmations, and surface only material blockers or decisions that affect scope, data loss, source fidelity, architecture, or visible UX."
 }

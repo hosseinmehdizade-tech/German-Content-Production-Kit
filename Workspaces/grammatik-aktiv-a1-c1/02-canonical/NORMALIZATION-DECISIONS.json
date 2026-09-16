@@ -1,0 +1,57 @@
+{
+  "normalization_decisions_schema": "grammar-normalization-decisions@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "status": "WIP_PILOT",
+  "decisions": [
+    {
+      "id": "ND-001",
+      "decision": "Keep raw TOC capture separate from verified inventory resolutions.",
+      "reason": "Source discrepancies must remain auditable; canonicalization consumes SOURCE-INVENTORY.json as the effective inventory rather than silently rewriting source evidence."
+    },
+    {
+      "id": "ND-002",
+      "decision": "Do not duplicate concepts solely because the same grammar topic reappears at a higher CEFR level.",
+      "reason": "The grammar contract defines concept identity semantically; source chapters and learner lessons preserve level/source identity separately."
+    },
+    {
+      "id": "ND-003",
+      "source_chapter_id": "ga-a1b1-ch002",
+      "concept_id": "grammar.verbkonjugation.praesens_regular",
+      "decision": "Model regular present-tense person/number endings as one concept; orthographic/stem-ending variants are rules/pattern notes, not separate concepts."
+    },
+    {
+      "id": "ND-004",
+      "source_chapter_id": "ga-a1b1-ch034",
+      "concept_id": "grammar.wechselpraepositionen.wo_wohin",
+      "decision": "Represent Wo+Dativ versus Wohin+Akkusativ as a contrast within one Wechselpräpositionen concept; contractions are patterns attached to the same concept."
+    },
+    {
+      "id": "ND-005",
+      "source_chapter_id": "ga-a1b1-ch070",
+      "concept_id": "grammar.relativsaetze.nominativ",
+      "decision": "Do not over-merge this B1 chapter into the later B2 concept for relative pronouns in Nominativ/Akkusativ/Dativ. This chapter primarily teaches nominative relative pronouns plus verb-final relative-clause structure."
+    },
+    {
+      "id": "ND-006",
+      "source_chapter_id": "ga-b2c1-ch001",
+      "concept_id": "grammar.verbposition.einfache_saetze",
+      "decision": "Represent finite-verb position, Satzklammer and verb-first sentence types as related rules under one simple-sentence word-order concept rather than separate chapter-shaped concepts."
+    },
+    {
+      "id": "ND-007",
+      "source_chapter_id": "ga-b2c1-ch014",
+      "concept_id": "grammar.passiv.vorgangspassiv.zeiten",
+      "decision": "Represent tense forms as a structured TENSE_FORMATION matrix under one Vorgangspassiv concept; von/durch/mit complements remain rule-level distinctions."
+    },
+    {
+      "id": "ND-008",
+      "source_chapter_id": "ga-b2c1-ch082",
+      "concept_id": "grammar.nominalisierung",
+      "decision": "Represent argument remapping and connector/preposition transformations as structured transformation rules under one nominalization concept; individual lexical nominalizations are examples, not separate concepts."
+    }
+  ],
+  "open_decisions": [
+    "After all six pilots are structurally captured, verify whether prerequisite and related-concept links can be expressed without adding contract fields.",
+    "Do not mass-produce remaining chapters until the six-type pilot confirms the contract can represent rules, patterns, exercises and provenance without loss."
+  ]
+}

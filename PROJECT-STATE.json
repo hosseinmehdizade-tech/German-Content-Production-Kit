@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.1.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-16T16:59:00+02:00",
+  "updated_at": "2026-09-16T18:05:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "source_access": {
     "protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
@@ -10,7 +10,7 @@
     "fallback_shelf": "ChatGPT Library",
     "identity": "source_id + SHA-256/source version",
     "transient_file_ids_are_authoritative": false,
-    "registered_active_sources": 2,
+    "registered_active_sources": 3,
     "grammar_aktiv_mirrors_verified_same_bytes": true,
     "verification_date": "2026-09-16"
   },
@@ -45,10 +45,21 @@
       "last_observed_stage": "2_canonicalization",
       "last_observed_note": "Stage 1 durable PASS; Stage 2 mass canonicalization RUNNING at the 2026-09-16 audit. Resolve the live checkpoint before acting; do not redo completed Stage 1 or the six-type pilot if a newer checkpoint preserves their PASS status."
     },
+    "nomen_verb_verbindungen": {
+      "status": "ACTIVE",
+      "domain": "vocabulary",
+      "branch": "nvv-production",
+      "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
+      "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
+      "resolution_mode": "LIVE_BRANCH_CHECKPOINT",
+      "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
+      "last_observed_stage": "3_evidence_enrichment",
+      "last_observed_note": "Stage 1 durable PASS. Stage 2 canonicalization remains RUNNING because evidence-driven sense resolution preserves an unresolved polysemy case. 26 expression cards are bounded PASS from Batch 0001-0002. Batch 0003 is the next scalable 100-safe-card end-to-end batch. Resolve the live branch checkpoint before acting."
+    },
     "vocabulary": {
       "status": "PARALLEL_ALLOWED",
       "resolution_mode": "SOURCE_SPECIFIC_LIVE_CHECKPOINT",
-      "note": "Create/use source-specific workspaces/checkpoints. Do not inherit grammar state or legacy Menschen mappings implicitly."
+      "note": "Use source-specific workspaces/checkpoints such as nomen_verb_verbindungen. Do not inherit grammar state or legacy Menschen mappings implicitly."
     },
     "lesen": {
       "status": "PARALLEL_ALLOWED",

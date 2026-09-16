@@ -2,13 +2,19 @@
 
 ```text
 Start here:
+PROJECT-STATE.json
 Prompt/START-PROMPT-v3.1.12.md
 ```
 
 v3.1.12 is the active production overlay. It keeps the v3.1.11 lexical-quality/runtime hardening and makes the seven-stage Git-backed production lifecycle normative for all current and future sources. Architecture v3.1.5 and semantic contract 3.1.3 are unchanged.
 
+## Cross-chat startup protocol
+
+Before substantial project work, inspect `PROJECT-STATE.json`, this README, the active START-PROMPT, the relevant source/workstream `CHECKPOINT.json`, and `German-Flashcards-Pro/main` `PROJECT-STATE.json` when the work may touch runtime/import/presentation. GitHub is the durable coordination layer, not a blocker: if the user explicitly supplies a newer full artifact and identifies it as the current/latest version, that artifact is the immediate working authority for the task. Never silently downgrade from newer explicit user input to an older GitHub runtime. Persist the newer state back to Git when practical, but ordinary work may continue while GitHub temporarily lags.
+
 ## Active authority map
 
+- Cross-chat registry: `PROJECT-STATE.json`
 - Active entrypoint: `Prompt/START-PROMPT-v3.1.12.md`
 - Active overlay: `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.12.md`
 - Seven-stage production authority: `Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md`
@@ -29,9 +35,9 @@ Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. 
 - Every source uses the mandatory seven-stage lifecycle: Source & Inventory → Canonicalization → Evidence & Enrichment → Linguistic & Lexical QA → Delivery Projection → Runtime & Presentation Acceptance → Release & Post-Package Verification.
 - Allowed stage states are `NOT_STARTED`, `RUNNING`, `PASS`, `FAIL`, `BLOCKED`, `INVALIDATED`.
 - `PASS` requires authoritative artifacts + gate evidence committed to Git and recorded in the source `CHECKPOINT.json`.
-- Chat history, `/mnt/data`, local Codex workspaces and temporary ZIPs are not durable checkpoints.
-- If Git persistence is unavailable, use `PERSISTENCE_BLOCKED`; local-only work is never Final.
-- At every resumed session, inspect current `main`, the active prompts, the source checkpoint, and current `German-Flashcards-Pro/main` before continuing.
+- Chat history, `/mnt/data`, local Codex workspaces and temporary ZIPs are not durable checkpoints, but an explicitly newer user-supplied artifact may still be the immediate working authority until Git catches up.
+- If Git persistence is unavailable, record the lag/blocker, but do not stop ordinary source work that can safely continue from a newer explicit artifact. Final release status still requires durable evidence.
+- At every resumed session, inspect current `main`, `PROJECT-STATE.json`, the active prompts, the source checkpoint, and current `German-Flashcards-Pro/main` before continuing.
 - Preserve valid upstream PASS stages; when an authoritative upstream artifact changes, mark dependent downstream stages `INVALIDATED` and rerun only affected work.
 - Quality outranks field density. Never fabricate learner content or evidence to satisfy a count.
 - Example-derived phrases are not collocations.
@@ -41,8 +47,10 @@ Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. 
 - External source retrieval is cached and incremental. Retry only failed/missing/stale units; repeated full-dataset refetch without invalidation is a pipeline defect.
 - Legacy enrichment, old NVV fields, historical mappings and previous enriched datasets are disabled unless the user explicitly opts into a named recovery workflow.
 - Final delivery requires target runtime/import + Presentation acceptance on the exact projected artifact. Parse/transport-only PASS is not Final.
-- Resolve the current intended Flashcards Pro runtime at delivery time. v354 is the verified baseline when v3.1.12 was introduced, not a permanent hardcoded target.
+- Resolve the current intended Flashcards Pro runtime at delivery time. Historical verified baselines are not permanent hardcoded targets.
 - Execute agentically through Stage 7. Do not stop every N cards or between stages for manual continuation.
+- Grammar, vocabulary, Lesen, Schreiben and app runtime may advance in parallel, each with its own checkpoint. Do not let one stream silently overwrite another stream's authority.
+- The project is a side project: avoid repeated routine confirmations; surface only real blockers or decisions that materially affect scope, data loss, architecture or visible UX.
 
 ## Seven-stage execution
 

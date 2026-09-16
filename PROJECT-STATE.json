@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.1.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-16T18:25:20+02:00",
+  "updated_at": "2026-09-16T21:35:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "source_access": {
     "protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
@@ -10,9 +10,10 @@
     "fallback_shelf": "ChatGPT Library",
     "identity": "source_id + SHA-256/source version",
     "transient_file_ids_are_authoritative": false,
-    "registered_active_sources": 3,
+    "registered_active_sources": 4,
     "grammar_aktiv_mirrors_verified_same_bytes": true,
     "nvv_mirrors_verified_same_bytes": true,
+    "presentation_mirrors_verified_same_bytes": true,
     "verification_date": "2026-09-16"
   },
   "startup_rule": [
@@ -57,6 +58,17 @@
       "last_observed_stage": "3_evidence_enrichment",
       "last_observed_note": "Stage 1 durable PASS. Stage 2 canonicalization remains RUNNING because evidence-driven sense resolution preserves an unresolved polysemy case. 26 expression cards are bounded PASS from Batch 0001-0002. Batch 0003 is the next scalable 100-safe-card end-to-end batch. Resolve the live branch checkpoint before acting."
     },
+    "lesen_praesentation": {
+      "status": "ACTIVE",
+      "domain": "reading",
+      "branch": "lesen-praesentation-source-governance",
+      "source_id": "presentation-topics-b2-c1",
+      "checkpoint": "Workspaces/lesen-praesentation/CHECKPOINT.json",
+      "source_manifest": "Workspaces/lesen-praesentation/00-source/SOURCE-MANIFEST.json",
+      "resolution_mode": "LIVE_BRANCH_CHECKPOINT",
+      "last_observed_stage": "1_source_inventory_pass",
+      "last_observed_note": "Stage 1 is durable PASS: 76 PDF pages classified into 68 source topics with stable IDs lesen-praes-0001..0068 and inventory QA PASS. Stage 2+ remain independent and must be resolved from the live checkpoint. The validated R43 derived runtime may be reused by R45 while this source lineage remains authoritative."
+    },
     "vocabulary": {
       "status": "PARALLEL_ALLOWED",
       "resolution_mode": "SOURCE_SPECIFIC_LIVE_CHECKPOINT",
@@ -65,7 +77,7 @@
     "lesen": {
       "status": "PARALLEL_ALLOWED",
       "resolution_mode": "SOURCE_SPECIFIC_LIVE_CHECKPOINT",
-      "note": "Keep Lesen production/runtime artifacts separate from vocabulary and grammar authorities."
+      "note": "Keep Lesen production/runtime artifacts separate from vocabulary and grammar authorities. Active source-specific state includes lesen_praesentation."
     },
     "schreiben": {
       "status": "PARALLEL_ALLOWED",

@@ -1,0 +1,104 @@
+{
+  "evidence_index_schema": "grammar-evidence-index@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "3_evidence_enrichment",
+  "status": "RUNNING",
+  "source_authority": {
+    "manifest": "../00-source/SOURCE-MANIFEST.json",
+    "registered_sources": {
+      "grammatik-aktiv-a1-b1": {
+        "sha256": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
+        "pdf_pages": 255
+      },
+      "grammatik-aktiv-b2-c1": {
+        "sha256": "e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0",
+        "pdf_pages": 312
+      }
+    },
+    "resolution_status": "EXACT_REGISTERED_BYTES_RESOLVED",
+    "resolution_note": "The materialized working copies were SHA-256 checked against SOURCE-REGISTRY.json before Stage 3 continuation."
+  },
+  "production_policy": {
+    "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED",
+    "repeat_full_source_extraction": false,
+    "persist_successful_chapter_evidence": true,
+    "source_derived_and_generated_content_separated": true,
+    "external_evidence_required_for_current_pilots": false
+  },
+  "coverage": {
+    "source_chapters_total": 168,
+    "chapter_evidence_drafts_persisted": 6,
+    "source_major_rule_capture_complete_for_draft": 6,
+    "remaining_chapters": 162,
+    "stage3_pass": false
+  },
+  "pilot_lessons": [
+    {
+      "source_chapter_id": "ga-a1b1-ch002",
+      "path": "lessons/ga-a1b1-ch002.json",
+      "git_blob_sha": "8f4c97702c6a02aed3137bce5889a8babffcb555",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "A1_SIMPLE_MORPHOLOGY_CONJUGATION"
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch034",
+      "path": "lessons/ga-a1b1-ch034.json",
+      "git_blob_sha": "5870c0906a1d89a8c9dba811aa63edb904fd157b",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "A2_CASE_PREPOSITION"
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch070",
+      "path": "lessons/ga-a1b1-ch070.json",
+      "git_blob_sha": "14cc6bc7097566f4ef21e6de7cef3e9dbbd47641",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "B1_RELATIVE_CLAUSE"
+    },
+    {
+      "source_chapter_id": "ga-b2c1-ch001",
+      "path": "lessons/ga-b2c1-ch001.json",
+      "git_blob_sha": "ae90cad1bb6e313dfcd7d6b70e920ddbee60ca54",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "B2_WORD_ORDER"
+    },
+    {
+      "source_chapter_id": "ga-b2c1-ch014",
+      "path": "lessons/ga-b2c1-ch014.json",
+      "git_blob_sha": "170a5a63efb7805cc4c23b6b4c576cdea75fdd4e",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "B2_C1_PASSIVE_TENSE_COMPLEXITY"
+    },
+    {
+      "source_chapter_id": "ga-b2c1-ch082",
+      "path": "lessons/ga-b2c1-ch082.json",
+      "git_blob_sha": "ea2ccd917e5cd6e394c2818ae259b064bd4e41af",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "C1_TRANSFORMATION_NOMINALIZATION"
+    }
+  ],
+  "pilot_gate": {
+    "six_required_types_present": true,
+    "all_six_persisted_to_git": true,
+    "all_six_have_german_and_persian_explanations": true,
+    "all_six_have_source_refs": true,
+    "all_six_separate_generated_examples_from_source_adapted_rules": true,
+    "content_complete_claim": false,
+    "reason": "Stage 3 is a 168-chapter production stage. The six pilots validate and seed the evidence/enrichment process but do not complete Stage 3."
+  },
+  "next_batch": {
+    "strategy": "CONTIGUOUS_SOURCE_ORDER",
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch001",
+      "ga-a1b1-ch003",
+      "ga-a1b1-ch004",
+      "ga-a1b1-ch005",
+      "ga-a1b1-ch006",
+      "ga-a1b1-ch007",
+      "ga-a1b1-ch008",
+      "ga-a1b1-ch009",
+      "ga-a1b1-ch010"
+    ],
+    "note": "ga-a1b1-ch002 is already persisted. Continue the opening A1 sequence without reprocessing it."
+  }
+}

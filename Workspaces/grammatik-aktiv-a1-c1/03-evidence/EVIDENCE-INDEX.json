@@ -6,17 +6,11 @@
   "source_authority": {
     "manifest": "../00-source/SOURCE-MANIFEST.json",
     "registered_sources": {
-      "grammatik-aktiv-a1-b1": {
-        "sha256": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
-        "pdf_pages": 255
-      },
-      "grammatik-aktiv-b2-c1": {
-        "sha256": "e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0",
-        "pdf_pages": 312
-      }
+      "grammatik-aktiv-a1-b1": {"sha256":"aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207","pdf_pages":255},
+      "grammatik-aktiv-b2-c1": {"sha256":"e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0","pdf_pages":312}
     },
     "resolution_status": "EXACT_REGISTERED_BYTES_RESOLVED",
-    "resolution_note": "The registered Grammar Aktiv mirrors were resolved from the persistent source shelves. Stage 3 continues against the registered source identity and source page sequence."
+    "resolution_note": "The A1-B1 registered PDF was locally re-hashed before the 31-40 continuation; SHA-256 matched the source registry exactly."
   },
   "production_policy": {
     "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED",
@@ -27,22 +21,20 @@
   },
   "coverage": {
     "source_chapters_total": 168,
-    "chapter_evidence_drafts_persisted": 35,
-    "source_major_rule_capture_complete_for_draft": 35,
-    "remaining_chapters": 133,
+    "chapter_evidence_drafts_persisted": 44,
+    "source_major_rule_capture_complete_for_draft": 44,
+    "remaining_chapters": 124,
     "stage3_pass": false
   },
   "source_order_progress": {
     "grammatik-aktiv-a1-b1": {
       "contiguous_complete_from_chapter": 1,
-      "contiguous_complete_through_chapter": 30,
-      "chapters_complete_in_contiguous_range": 30,
-      "additional_pilot_chapters_complete": [34,70],
-      "note": "Chapters 1-30 are now continuously persisted. Pre-existing pilots 34 and 70 remain valid and were not reprocessed."
+      "contiguous_complete_through_chapter": 40,
+      "chapters_complete_in_contiguous_range": 40,
+      "additional_pilot_chapters_complete": [70],
+      "note": "Chapters 1-40 are now continuously persisted. Chapter 34 was an earlier pilot and was reused rather than reprocessed. Chapter 70 remains an additional pilot."
     },
-    "grammatik-aktiv-b2-c1": {
-      "pilot_chapters_complete": [1,14,82]
-    }
+    "grammatik-aktiv-b2-c1": {"pilot_chapters_complete":[1,14,82]}
   },
   "pilot_lessons": [
     {"source_chapter_id":"ga-a1b1-ch002","path":"lessons/ga-a1b1-ch002.json","git_blob_sha":"8f4c97702c6a02aed3137bce5889a8babffcb555","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"A1_SIMPLE_MORPHOLOGY_CONJUGATION"},
@@ -54,10 +46,11 @@
   ],
   "current_batch": {
     "source_book_id": "grammatik-aktiv-a1-b1",
-    "chapter_range": "21-30",
-    "chapters_persisted": 10,
+    "chapter_range": "31-40",
+    "chapters_persisted_new": 9,
+    "reused_existing_pilot": [34],
     "status": "COMPLETE_FOR_STAGE3_DRAFT",
-    "source_pages_reviewed": "printed 52-75 as applicable; partner pages 56-57 and 72-73 treated as supplementary practice rather than separate chapter rule sources"
+    "source_pages_reviewed": "printed 76-99 as applicable; chapter 34 reused from the existing evidence-linked pilot; partner pages 86-87 and 96-97 are supplementary practice"
   },
   "pilot_gate": {
     "six_required_types_present": true,
@@ -66,23 +59,12 @@
     "all_six_have_source_refs": true,
     "all_six_separate_generated_examples_from_source_adapted_rules": true,
     "content_complete_claim": false,
-    "reason": "Stage 3 is a 168-chapter production stage. The six pilots validate and seed the evidence/enrichment process but do not complete Stage 3."
+    "reason": "Stage 3 is a 168-chapter production stage."
   },
   "next_batch": {
-    "strategy": "CONTIGUOUS_SOURCE_ORDER_WITH_EXISTING_PILOT_SKIP",
+    "strategy": "CONTIGUOUS_SOURCE_ORDER",
     "source_book_id": "grammatik-aktiv-a1-b1",
-    "chapter_ids": [
-      "ga-a1b1-ch031",
-      "ga-a1b1-ch032",
-      "ga-a1b1-ch033",
-      "ga-a1b1-ch035",
-      "ga-a1b1-ch036",
-      "ga-a1b1-ch037",
-      "ga-a1b1-ch038",
-      "ga-a1b1-ch039",
-      "ga-a1b1-ch040"
-    ],
-    "skip_existing": ["ga-a1b1-ch034"],
-    "note": "Chapter 34 is already a persisted A2 case/preposition pilot. Produce 31-33 and 35-40; then the contiguous A1-B1 evidence range can advance through chapter 40 without reprocessing chapter 34."
+    "chapter_ids": ["ga-a1b1-ch041","ga-a1b1-ch042","ga-a1b1-ch043","ga-a1b1-ch044","ga-a1b1-ch045","ga-a1b1-ch046","ga-a1b1-ch047","ga-a1b1-ch048","ga-a1b1-ch049","ga-a1b1-ch050"],
+    "note": "Apply the verified Stage-1 CEFR corrections for chapters 45, 47 and 48 rather than the raw TOC labels."
   }
 }

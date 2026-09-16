@@ -1,0 +1,121 @@
+{
+  "inventory_schema": "grammar-source-inventory@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "dataset_title": "Grammatik aktiv A1-B1 + B2-C1",
+  "status": "VERIFIED",
+  "base_catalog": {
+    "path": "01-inventory/CHAPTER-CATALOG.json",
+    "blob_sha": "ee4ef53335db08ef4fe4249ff1d922bda87b2c4e",
+    "role": "raw_toc_capture",
+    "captured_total_chapters": 168,
+    "preservation_rule": "Retain the raw TOC capture unchanged; effective inventory applies the explicit verified resolutions below."
+  },
+  "source_authority": {
+    "manifest_path": "00-source/SOURCE-MANIFEST.json",
+    "authority_rule": "The source manifest remains authoritative. Current-chat PDFs were used only as visual verification copies because the user did not identify them as replacement authority."
+  },
+  "books": [
+    {
+      "source_book_id": "grammatik-aktiv-a1-b1",
+      "expected_chapters": 80,
+      "verified_chapters": 80,
+      "stable_id_range": "ga-a1b1-ch001..ga-a1b1-ch080",
+      "opening_page_mapping_for_current_verification_copy": "printed_page = pdf_page + 2"
+    },
+    {
+      "source_book_id": "grammatik-aktiv-b2-c1",
+      "expected_chapters": 88,
+      "verified_chapters": 88,
+      "stable_id_range": "ga-b2c1-ch001..ga-b2c1-ch088",
+      "opening_page_mapping_for_current_verification_copy": "printed_page = pdf_page - 2"
+    }
+  ],
+  "effective_inventory_rule": {
+    "description": "Use every chapter record from CHAPTER-CATALOG.json, preserving stable ID/order/source locator, then apply only the field resolutions listed in verified_resolutions.",
+    "unlisted_records": "UNCHANGED_AND_OPENING_VERIFIED"
+  },
+  "verified_resolutions": [
+    {
+      "source_chapter_id": "ga-a1b1-ch017",
+      "field": "cefr_labels",
+      "from": ["A1"],
+      "to": ["A2"],
+      "evidence": "Chapter-opening page 44 carries an explicit A2 badge; the TOC row is unmarked."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch036",
+      "field": "source_title_de",
+      "from": "Ein netter Mann! Ich lieben den netten Mann",
+      "to": "Ein netter Mann! Ich liebe den netten Mann",
+      "evidence": "TOC reads 'Ich lieben ...'; chapter-opening page 88 reads 'Ich liebe ...'. Opening-page title resolves the discrepancy."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch045",
+      "field": "cefr_labels",
+      "from": ["A2"],
+      "to": ["A1"],
+      "evidence": "Neither TOC nor chapter-opening page has an A2/B1 level badge; prior A2 assignment was unsupported."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch047",
+      "field": "cefr_labels",
+      "from": ["A2"],
+      "to": ["A1"],
+      "evidence": "Neither TOC nor chapter-opening page has an A2/B1 level badge; prior A2 assignment was unsupported."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch048",
+      "field": "cefr_labels",
+      "from": ["A2"],
+      "to": ["A1"],
+      "evidence": "Neither TOC nor chapter-opening page has an A2/B1 level badge; prior A2 assignment was unsupported."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch055",
+      "field": "source_title_de",
+      "from": "War, hätte, würde ...",
+      "to": "Wäre, hätte, würde ...",
+      "evidence": "Chapter-opening page 130 reads 'Wäre, hätte, würde ...'."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch068",
+      "field": "source_title_de",
+      "from": "Es ist schön, zu feiern ...",
+      "to": "Es ist schön, zu feiern",
+      "evidence": "Chapter-opening page 160 has no trailing ellipsis."
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch070",
+      "field": "source_title_de",
+      "from": "Das ist der Mann, der immer meine Nachbarin besucht.",
+      "to": "Das ist der Mann, der immer meine Nachbarin besucht",
+      "evidence": "Chapter-opening page 164 has no terminal period in the heading."
+    }
+  ],
+  "verification_copies": [
+    {
+      "source_book_id": "grammatik-aktiv-a1-b1",
+      "chat_file_name": "Grammatik aktiv A1-B1(1).pdf",
+      "sha256": "5005d753d9f40474b6ffbcd11ac41a2cb5a7bd61cebef114434141465bd77a49",
+      "pdf_pages": 255,
+      "manifest_byte_identity": "DIFFERENT_SHA256",
+      "usage": "visual chapter-opening verification only"
+    },
+    {
+      "source_book_id": "grammatik-aktiv-b2-c1",
+      "chat_file_name": "grammatik-aktiv-b2-c1(1).pdf",
+      "sha256": "21f058e978bbbb76a31ee16182e34a5a05384b2686bf1b9af20a54b61d44775f",
+      "pdf_pages": 316,
+      "manifest_byte_identity": "DIFFERENT_SHA256_AND_PAGE_COUNT",
+      "usage": "visual chapter-opening verification only",
+      "note": "Four additional PDF pages do not alter the verified 88 chapter opening sequence/printed-page locators."
+    }
+  ],
+  "verification_summary": {
+    "expected_chapters": 168,
+    "opening_pages_checked": 168,
+    "opening_pages_pass": 168,
+    "field_resolutions": 8,
+    "unresolved_ambiguities": 0
+  }
+}

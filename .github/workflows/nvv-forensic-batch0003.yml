@@ -1,0 +1,123 @@
+name: NVV forensic Batch0003 staged payload
+
+on:
+  push:
+    branches: [nvv-production]
+    paths:
+      - '.github/workflows/nvv-forensic-batch0003.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    if: github.event.head_commit.message != 'Record NVV Batch0003 staged payload forensic report'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nvv-production
+          fetch-depth: 0
+
+      - name: Inspect staged finalchunk payload without promotion
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, json, zipfile, io
+
+          root = Path('Workspaces/nomen-verb-verbindungen')
+          stage = root / '_materialize-batch0003'
+          report_path = root / '07-release' / 'FORENSIC-REPORT-BATCH0003-STAGED.json'
+          report_path.parent.mkdir(parents=True, exist_ok=True)
+
+          chunks = sorted(stage.glob('finalchunk*.b64'))
+          encoded = ''.join(''.join(p.read_text(encoding='utf-8').split()) for p in chunks)
+          payload = base64.b64decode(encoded, validate=True)
+          report = {
+              'schema': 'nvv-staged-payload-forensic@1.0.0',
+              'candidate': 'finalchunk_glob',
+              'chunks': [p.name for p in chunks],
+              'encoded_length': len(encoded),
+              'decoded_bytes': len(payload),
+              'outer_sha256': hashlib.sha256(payload).hexdigest(),
+              'promotion': 'FORBIDDEN_BY_THIS_WORKFLOW',
+          }
+
+          try:
+              zf = zipfile.ZipFile(io.BytesIO(payload))
+              bad = zf.testzip()
+              report['zip_crc'] = 'PASS' if bad is None else f'FAIL:{bad}'
+              report['members'] = zf.namelist()
+              report['member_count'] = len(zf.infolist())
+
+              # Verify any packaged SHA256 manifest against members inside the candidate ZIP.
+              manifest_names = [n for n in zf.namelist() if n.endswith('SHA256SUMS-BATCH0003.txt')]
+              report['sha256_manifest_names'] = manifest_names
+              manifest_results = []
+              for mn in manifest_names:
+                  ok = 0
+                  errors = []
+                  for raw in zf.read(mn).decode('utf-8').splitlines():
+                      raw = raw.strip()
+                      if not raw:
+                          continue
+                      parts = raw.split(None, 1)
+                      if len(parts) != 2:
+                          errors.append({'line': raw, 'error': 'malformed'})
+                          continue
+                      sha, rel = parts
+                      rel = rel.strip().lstrip('*')
+                      candidates = [rel, rel.lstrip('./')]
+                      data = None
+                      chosen = None
+                      for c in candidates:
+                          if c in zf.namelist():
+                              data = zf.read(c)
+                              chosen = c
+                              break
+                      if data is None:
+                          errors.append({'path': rel, 'error': 'missing-member'})
+                          continue
+                      got = hashlib.sha256(data).hexdigest()
+                      if got != sha:
+                          errors.append({'path': chosen, 'expected': sha, 'actual': got, 'error': 'sha-mismatch'})
+                      else:
+                          ok += 1
+                  manifest_results.append({'manifest': mn, 'verified': ok, 'errors': errors, 'status': 'PASS' if not errors else 'FAIL'})
+              report['manifest_results'] = manifest_results
+
+              # Parse relevant JSON/text artifacts for state evidence, but do not trust/promote them here.
+              interesting = {}
+              for name in zf.namelist():
+                  base = name.rsplit('/',1)[-1]
+                  if base in {'CHECKPOINT.json','BATCH-0003-MANIFEST.json','ARTIFACT-MANIFEST-BATCH0003.json','QA-REPORT-BATCH0003.json','RUNTIME-ACCEPTANCE-BATCH0003.json'} or ('BATCH0003' in base.upper() and base.lower().endswith(('.json','.txt','.md'))):
+                      try:
+                          raw = zf.read(name)
+                          text = raw.decode('utf-8')
+                          if name.lower().endswith('.json'):
+                              interesting[name] = json.loads(text)
+                          else:
+                              interesting[name] = text[:12000]
+                      except Exception as exc:
+                          interesting[name] = {'read_error': str(exc)}
+              report['interesting_artifacts'] = interesting
+          except Exception as exc:
+              report['zip_open_error'] = str(exc)
+
+          report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Commit forensic report
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Workspaces/nomen-verb-verbindungen/07-release/FORENSIC-REPORT-BATCH0003-STAGED.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record NVV Batch0003 staged payload forensic report'
+            git push origin HEAD:nvv-production
+          fi

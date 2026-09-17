@@ -1,32 +1,35 @@
 # German Content Production Kit v3.1.12
 
-> **MANDATORY FIRST STEP FOR EVERY NEW CHAT:** read `PROJECT-BOOTSTRAP.md` first.
+> **MANDATORY FIRST STEP FOR EVERY NEW CHAT:** read `PROJECT-BOOTSTRAP.md` first, then `PROJECT-OPERATING-MODE-v2.md`.
 
 ```text
 Start here:
 PROJECT-BOOTSTRAP.md
+PROJECT-OPERATING-MODE-v2.md
 PROJECT-STATE.json
 Prompt/START-PROMPT-v3.1.12.md
 ```
 
-v3.1.12 is the active production overlay. It keeps the v3.1.11 lexical-quality/runtime hardening and makes the seven-stage Git-backed production lifecycle normative for all current and future sources. Architecture v3.1.5 and semantic contract 3.1.3 are unchanged.
+v3.1.12 remains the active production overlay. Architecture v3.1.5 and semantic contract 3.1.3 are unchanged. The active execution model is now **artifact-first / async Git**: the seven-stage production lifecycle remains normative, but live GitHub synchronization is no longer on the critical path of ordinary work.
 
 ## Cross-chat startup protocol
 
-Before substantial project work, inspect `PROJECT-BOOTSTRAP.md`, `PROJECT-STATE.json`, this README, the active START-PROMPT, the relevant source/workstream `CHECKPOINT.json`, and `German-Flashcards-Pro/main` `PROJECT-BOOTSTRAP.md` + `PROJECT-STATE.json` when the work may touch runtime/import/presentation. GitHub is the durable coordination layer, not a blocker: if the user explicitly supplies a newer full artifact and identifies it as the current/latest version, that artifact is the immediate working authority for the task. Never silently downgrade from newer explicit user input to an older GitHub runtime. Persist the newer state back to Git when practical, but ordinary work may continue while GitHub temporarily lags.
+Before substantial project work, resolve the newest verified state quickly: explicit newer current-chat artifact first, then a verified portable checkpoint/state bundle from Project Sources/current files/Library, then GitHub only as needed for ambiguity resolution or durability sync. Read `PROJECT-BOOTSTRAP.md`, `PROJECT-OPERATING-MODE-v2.md`, `PROJECT-STATE.json`, this README, the active START-PROMPT and the relevant source/workstream checkpoint rules. Inspect `German-Flashcards-Pro` only when runtime/import/presentation compatibility actually matters.
+
+GitHub is the durable asynchronous coordination/mirror layer, not the execution engine and not the default binary transport. Generated ZIPs/checkpoint packages should not be reconstructed through Base64 chunk commits or GitHub Actions merely for persistence. Store their exact filename/hash/manifest metadata in Git when useful and keep the actual package in Project/Library/user-delivery surfaces.
 
 ## Active authority map
 
 - Mandatory cross-chat bootstrap: `PROJECT-BOOTSTRAP.md`
+- Active operating model: `PROJECT-OPERATING-MODE-v2.md`
 - Cross-chat registry: `PROJECT-STATE.json`
 - Active entrypoint: `Prompt/START-PROMPT-v3.1.12.md`
 - Active overlay: `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.12.md`
 - Seven-stage production authority: `Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md`
 - New-source/resume runbook: `Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md`
-- Persistent source workspaces: `Workspaces/<source-slug>/CHECKPOINT.json`
+- Source/workstream checkpoints: `Workspaces/<source-slug>/CHECKPOINT.json`
 - Generic new-source rich-card policy: `Prompt/GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json`
 - Menschen A1-specific policy: `Prompt/MENSCHEN-A1-CONTENT-COMPLETENESS-v1.1.0.json`
-- Base lexical-quality overlay: `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md`
 - Architecture package: v3.1.5
 - Semantic contract: `gfp-german-language-content@3.1.3`
 - Universal transport authority: `Architecture/01-CORE/FLASHCARDS-PRO-UNIVERSAL-v2-DELIVERY-SPEC.md`
@@ -36,13 +39,15 @@ Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. 
 
 ## v3.1.12 production rules
 
-- Every source uses the mandatory seven-stage lifecycle: Source & Inventory → Canonicalization → Evidence & Enrichment → Linguistic & Lexical QA → Delivery Projection → Runtime & Presentation Acceptance → Release & Post-Package Verification.
-- Allowed stage states are `NOT_STARTED`, `RUNNING`, `PASS`, `FAIL`, `BLOCKED`, `INVALIDATED`.
-- `PASS` requires authoritative artifacts + gate evidence committed to Git and recorded in the source `CHECKPOINT.json`.
-- Chat history, `/mnt/data`, local Codex workspaces and temporary ZIPs are not durable checkpoints, but an explicitly newer user-supplied artifact may still be the immediate working authority until Git catches up.
-- If Git persistence is unavailable, record the lag/blocker, but do not stop ordinary source work that can safely continue from a newer explicit artifact. Final release status still requires durable evidence.
-- At every resumed session, inspect current `main`, `PROJECT-BOOTSTRAP.md`, `PROJECT-STATE.json`, the active prompts, the source checkpoint, and current `German-Flashcards-Pro/main` before continuing.
-- Preserve valid upstream PASS stages; when an authoritative upstream artifact changes, mark dependent downstream stages `INVALIDATED` and rerun only affected work.
+- Every source uses the seven-stage lifecycle: Source & Inventory → Canonicalization → Evidence & Enrichment → Linguistic & Lexical QA → Delivery Projection → Runtime & Presentation Acceptance → Release & Post-Package Verification.
+- Allowed quality states are `NOT_STARTED`, `RUNNING`, `PASS`, `FAIL`, `BLOCKED`, `INVALIDATED`.
+- **Quality state and Git persistence state are separate.** A stage may be locally/portably verified as PASS when its artifacts and gate evidence are complete and hash-bound. Track Git separately as `IN_SYNC`, `PENDING`, `FAILED` or `NOT_REQUIRED`.
+- Do not call a result **Git-backed PASS/FINAL/VERIFIED** unless the required Git synchronization actually completed.
+- Chat history alone is not a durable checkpoint. A self-verifying portable state bundle in Project/Library/current delivery is a valid resume authority when its manifest/hash and checkpoint are intact.
+- If Git persistence is unavailable or unhealthy, continue ordinary safe source work from the newest verified authority. Make at most one Git repair/sync attempt in a normal production turn unless the user explicitly asks for Git repair.
+- GitHub writes happen at meaningful batch/milestone boundaries, not per card or per small step.
+- Do not use GitHub Actions/Base64 chunking to materialize generated release/checkpoint ZIPs merely for persistence.
+- Preserve valid upstream PASS stages; when an authoritative upstream artifact changes, invalidate only affected downstream stages.
 - Quality outranks field density. Never fabricate learner content or evidence to satisfy a count.
 - Example-derived phrases are not collocations.
 - Included collocations must be atomic, sense-aligned and explicitly evidence-backed.
@@ -51,9 +56,9 @@ Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. 
 - External source retrieval is cached and incremental. Retry only failed/missing/stale units; repeated full-dataset refetch without invalidation is a pipeline defect.
 - Legacy enrichment, old NVV fields, historical mappings and previous enriched datasets are disabled unless the user explicitly opts into a named recovery workflow.
 - Final delivery requires target runtime/import + Presentation acceptance on the exact projected artifact. Parse/transport-only PASS is not Final.
-- Resolve the current intended Flashcards Pro runtime at delivery time. Historical verified baselines are not permanent hardcoded targets.
+- Resolve the current intended Flashcards Pro runtime at delivery time, not on every content turn. Historical verified baselines are not permanent hardcoded targets.
 - Execute agentically through Stage 7. Do not stop every N cards or between stages for manual continuation.
-- Grammar, vocabulary, Lesen, Schreiben and app runtime may advance in parallel, each with its own checkpoint. Do not let one stream silently overwrite another stream's authority.
+- Grammar, Vocabulary, Lesen, Schreiben and app runtime may advance in parallel, each with its own checkpoint/state bundle.
 - The project is a side project: avoid repeated routine confirmations; surface only real blockers or decisions that materially affect scope, data loss, architecture or visible UX.
 
 ## Seven-stage execution
@@ -66,10 +71,10 @@ Do not use `MENSCHEN-A1-*` product profiles as defaults for another book/level. 
 6. **Runtime & Presentation Acceptance** — current version-pinned Flashcards Pro importer, roundtrip, Presentation and relevant practice acceptance.
 7. **Release & Post-Package Verification** — direct TSV + canonical JSON + reports + ZIP + manifest/SHA-256 + independent verification.
 
-Expected final handoff includes the direct import TSV separately, canonical JSON, source inventory/stable-ID evidence, QA/coverage reports, runtime/presentation evidence, manifest/hash evidence, package ZIP and final Git-backed checkpoint.
+Expected final handoff includes the direct import TSV separately, canonical JSON, source inventory/stable-ID evidence, QA/coverage reports, runtime/presentation evidence, manifest/hash evidence, package ZIP and a portable final checkpoint/state bundle. Git synchronization is strongly preferred at meaningful boundaries but is tracked separately from package quality.
 
 ## Version/provenance note
 
-The root `PRODUCTION-KIT-MANIFEST.json` and older full-package audit artifacts remain historical baseline evidence and must not be misrepresented as a newly regenerated full v3.1.12 package manifest. v3.1.12 is a production orchestration/persistence overlay; Architecture v3.1.5 is not rewritten.
+The root `PRODUCTION-KIT-MANIFEST.json` and older full-package audit artifacts remain historical baseline evidence and must not be misrepresented as a newly regenerated full v3.1.12 package manifest. v3.1.12 remains a production orchestration overlay; Architecture v3.1.5 is not rewritten.
 
 See `Prompt/CHANGELOG-v3.1.12.md` for the current changes.

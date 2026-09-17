@@ -5,6 +5,7 @@ on:
     branches: [nvv-production]
     paths:
       - 'Workspaces/nomen-verb-verbindungen/_materialize-batch0003/READY-BATCH0003-FINAL.txt'
+      - '.github/workflows/nvv-materialize-batch0003.yml'
 
 permissions:
   contents: write
@@ -18,40 +19,124 @@ jobs:
         with:
           ref: nvv-production
           fetch-depth: 0
+
       - name: Reassemble, verify and materialize final checkpoint
+        id: recover
         shell: bash
         run: |
           set -euo pipefail
-          ROOT='Workspaces/nomen-verb-verbindungen'
-          STAGE="$ROOT/_materialize-batch0003"
-          READY="$STAGE/READY-BATCH0003-FINAL.txt"
-          ZIP="$ROOT/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip"
-          SIDE="$ROOT/07-release/NVV-Production-Checkpoint-Batch0003-FINAL.zip.sha256"
-          EXPECTED="$(sed -n 's/^sha256=//p' "$READY")"
-          test -n "$EXPECTED"
-          mkdir -p "$ROOT/07-release"
-          cat "$STAGE"/finalchunk*.b64 | base64 --decode > "$ZIP"
-          ACTUAL="$(sha256sum "$ZIP" | awk '{print $1}')"
-          test "$ACTUAL" = "$EXPECTED"
-          printf '%s  %s\n' "$ACTUAL" "$(basename "$ZIP")" > "$SIDE"
-          TMP="$(mktemp -d)"
-          unzip -q "$ZIP" -d "$TMP"
-          cp -a "$TMP/." "$ROOT/"
           python - <<'PY'
           from pathlib import Path
-          import hashlib
-          root=Path('Workspaces/nomen-verb-verbindungen')
-          verified=0
-          for line in (root/'07-release/SHA256SUMS-BATCH0003.txt').read_text(encoding='utf-8').splitlines():
-              expected, rel=line.split('  ',1)
-              actual=hashlib.sha256((root/rel).read_bytes()).hexdigest()
+          import base64, hashlib, json, shutil, tempfile, zipfile, os
+
+          root = Path('Workspaces/nomen-verb-verbindungen')
+          stage = root / '_materialize-batch0003'
+          ready = stage / 'READY-BATCH0003-FINAL.txt'
+          release = root / '07-release'
+          release.mkdir(parents=True, exist_ok=True)
+          out_zip = release / 'NVV-Production-Checkpoint-Batch0003-FINAL.zip'
+          side = release / 'NVV-Production-Checkpoint-Batch0003-FINAL.zip.sha256'
+          report_path = release / 'MATERIALIZATION-REPORT-BATCH0003-FINAL.json'
+
+          expected = ''
+          mission_id = ''
+          for line in ready.read_text(encoding='utf-8').splitlines():
+              if line.startswith('sha256='):
+                  expected = line.split('=', 1)[1].strip()
+              elif line.startswith('mission_id='):
+                  mission_id = line.split('=', 1)[1].strip()
+          if not expected:
+              raise SystemExit('READY marker has no sha256')
+
+          chunks = sorted(stage.glob('finalchunk*.b64'))
+          report = {
+              'schema': 'nvv-materialization-report@1.1.0',
+              'batch': '0003',
+              'mission_id': mission_id,
+              'expected_zip_sha256': expected,
+              'chunk_count': len(chunks),
+              'chunks': [{'name': p.name, 'size': p.stat().st_size} for p in chunks],
+              'status': 'FAIL',
+          }
+
+          try:
+              if not chunks:
+                  raise RuntimeError('no finalchunk*.b64 files found')
+
+              encoded = ''.join(''.join(p.read_text(encoding='utf-8').split()) for p in chunks)
+              report['encoded_length'] = len(encoded)
+              report['encoded_length_mod4'] = len(encoded) % 4
+              payload = base64.b64decode(encoded, validate=True)
+              actual = hashlib.sha256(payload).hexdigest()
+              report['actual_zip_sha256'] = actual
+              report['zip_bytes'] = len(payload)
+              report['zip_sha256_match'] = actual == expected
               if actual != expected:
-                  raise SystemExit(f'hash mismatch: {rel}: {actual} != {expected}')
-              verified += 1
-          print(f'PASS extracted checkpoint SHA256 manifest: {verified} entries')
+                  raise RuntimeError(f'ZIP SHA mismatch: {actual} != {expected}')
+
+              out_zip.write_bytes(payload)
+              side.write_text(f'{actual}  {out_zip.name}\n', encoding='utf-8')
+
+              with tempfile.TemporaryDirectory() as td:
+                  tmp = Path(td)
+                  with zipfile.ZipFile(out_zip) as zf:
+                      bad = zf.testzip()
+                      report['zip_member_count'] = len(zf.infolist())
+                      report['zip_test'] = 'PASS' if bad is None else f'FAIL:{bad}'
+                      if bad is not None:
+                          raise RuntimeError(f'ZIP CRC failure: {bad}')
+                      zf.extractall(tmp)
+
+                  sums = tmp / '07-release' / 'SHA256SUMS-BATCH0003.txt'
+                  if not sums.is_file():
+                      raise RuntimeError('missing extracted 07-release/SHA256SUMS-BATCH0003.txt')
+
+                  verified = 0
+                  for raw in sums.read_text(encoding='utf-8').splitlines():
+                      raw = raw.strip()
+                      if not raw:
+                          continue
+                      parts = raw.split(None, 1)
+                      if len(parts) != 2:
+                          raise RuntimeError(f'malformed SHA256 manifest line: {raw!r}')
+                      sha, rel = parts
+                      rel = rel.strip().lstrip('*')
+                      p = tmp / rel
+                      if not p.is_file():
+                          raise RuntimeError(f'missing extracted artifact: {rel}')
+                      got = hashlib.sha256(p.read_bytes()).hexdigest()
+                      if got != sha:
+                          raise RuntimeError(f'artifact SHA mismatch: {rel}: {got} != {sha}')
+                      verified += 1
+                  report['manifest_entries_verified'] = verified
+                  report['manifest_status'] = 'PASS'
+
+                  for child in tmp.iterdir():
+                      dest = root / child.name
+                      if child.is_dir():
+                          shutil.copytree(child, dest, dirs_exist_ok=True)
+                      else:
+                          shutil.copy2(child, dest)
+
+              report['status'] = 'PASS'
+              report['note'] = 'Recovered and materialized the exact staged Batch0003 FINAL payload only after outer ZIP SHA, ZIP CRC, and extracted SHA256 manifest all passed.'
+          except Exception as exc:
+              report['error'] = str(exc)
+              report['note'] = 'No Batch0003 PASS promotion is allowed from this recovery attempt. Staging evidence is intentionally retained.'
+
+          report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as fh:
+              fh.write(f"status={report['status']}\n")
           PY
-          rm -rf "$STAGE"
-      - name: Commit materialized Batch0003 snapshot
+
+      - name: Remove staging only after full verification
+        if: steps.recover.outputs.status == 'PASS'
+        shell: bash
+        run: rm -rf Workspaces/nomen-verb-verbindungen/_materialize-batch0003
+
+      - name: Commit recovery result
         shell: bash
         run: |
           set -euo pipefail
@@ -59,8 +144,19 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add Workspaces/nomen-verb-verbindungen
           if git diff --cached --quiet; then
-            echo 'No materialization changes to commit.'
-            exit 0
+            echo 'No recovery changes to commit.'
+          else
+            if [ '${{ steps.recover.outputs.status }}' = 'PASS' ]; then
+              git commit -m 'Materialize NVV Batch0003 final checkpoint snapshot'
+            else
+              git commit -m 'Record NVV Batch0003 materialization recovery diagnostics'
+            fi
+            git push origin HEAD:nvv-production
           fi
-          git commit -m 'Materialize NVV Batch0003 final checkpoint snapshot'
-          git push origin HEAD:nvv-production
+
+      - name: Enforce verification gate
+        if: steps.recover.outputs.status != 'PASS'
+        shell: bash
+        run: |
+          echo 'Batch0003 FINAL materialization did not pass verification. Diagnostic report was persisted; no PASS promotion occurred.'
+          exit 1

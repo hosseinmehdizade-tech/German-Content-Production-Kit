@@ -20,7 +20,7 @@ jobs:
           ref: nvv-production
           fetch-depth: 0
 
-      - name: Reassemble, verify and materialize final checkpoint
+      - name: Recover exact staged payload, verify and materialize
         id: recover
         shell: bash
         run: |
@@ -48,33 +48,80 @@ jobs:
           if not expected:
               raise SystemExit('READY marker has no sha256')
 
-          chunks = sorted(stage.glob('finalchunk*.b64'))
+          def cleaned(p: Path) -> str:
+              return ''.join(p.read_text(encoding='utf-8').split())
+
+          def files(*names):
+              ps = [stage / n for n in names]
+              return ps if all(p.is_file() for p in ps) else []
+
+          candidates = []
+          final_named = sorted(stage.glob('finalchunk*.b64'))
+          if final_named:
+              candidates.append(('finalchunk_glob', final_named))
+
+          c = files('finalchunk000.b64','finalchunk001.b64','finalchunk002.b64','finalchunk003.b64','finalchunk004.b64','tailA00.b64','tailA01.b64')
+          if c:
+              candidates.append(('final_000_004_plus_tailA00_tailA01', c))
+
+          c = files('finalchunk000.b64','finalchunk001.b64','finalchunk002.b64','finalchunk003.b64','finalchunk004.b64','tail00.b64')
+          if c:
+              candidates.append(('final_000_004_plus_tail00', c))
+
+          c = files('chunk000.b64','chunk001.b64','chunk002.b64','chunk003.b64','chunk004a.b64','chunk004b.b64','chunk005.b64','tail00.b64')
+          if c:
+              candidates.append(('legacy_split004_plus_chunk005_tail00', c))
+
+          c = files('chunk000.b64','chunk001.b64','chunk002.b64','chunk003.b64','chunk004.b64','chunk005.b64','tail00.b64')
+          if c:
+              candidates.append(('legacy_chunk004_plus_chunk005_tail00', c))
+
           report = {
-              'schema': 'nvv-materialization-report@1.1.0',
+              'schema': 'nvv-materialization-report@1.2.0',
               'batch': '0003',
               'mission_id': mission_id,
               'expected_zip_sha256': expected,
-              'chunk_count': len(chunks),
-              'chunks': [{'name': p.name, 'size': p.stat().st_size} for p in chunks],
+              'candidate_results': [],
               'status': 'FAIL',
           }
 
+          matched_payload = None
+          matched_name = None
+          matched_files = None
+          for name, ps in candidates:
+              item = {
+                  'name': name,
+                  'files': [p.name for p in ps],
+                  'file_sizes': [p.stat().st_size for p in ps],
+              }
+              try:
+                  encoded = ''.join(cleaned(p) for p in ps)
+                  item['encoded_length'] = len(encoded)
+                  item['encoded_length_mod4'] = len(encoded) % 4
+                  payload = base64.b64decode(encoded, validate=True)
+                  got = hashlib.sha256(payload).hexdigest()
+                  item['decoded_bytes'] = len(payload)
+                  item['sha256'] = got
+                  item['matches_expected'] = got == expected
+                  if got == expected and matched_payload is None:
+                      matched_payload = payload
+                      matched_name = name
+                      matched_files = [p.name for p in ps]
+              except Exception as exc:
+                  item['decode_error'] = str(exc)
+                  item['matches_expected'] = False
+              report['candidate_results'].append(item)
+
           try:
-              if not chunks:
-                  raise RuntimeError('no finalchunk*.b64 files found')
+              if matched_payload is None:
+                  raise RuntimeError('none of the staged candidate compositions matches the READY SHA-256')
 
-              encoded = ''.join(''.join(p.read_text(encoding='utf-8').split()) for p in chunks)
-              report['encoded_length'] = len(encoded)
-              report['encoded_length_mod4'] = len(encoded) % 4
-              payload = base64.b64decode(encoded, validate=True)
-              actual = hashlib.sha256(payload).hexdigest()
+              actual = hashlib.sha256(matched_payload).hexdigest()
+              report['matched_candidate'] = matched_name
+              report['matched_files'] = matched_files
               report['actual_zip_sha256'] = actual
-              report['zip_bytes'] = len(payload)
-              report['zip_sha256_match'] = actual == expected
-              if actual != expected:
-                  raise RuntimeError(f'ZIP SHA mismatch: {actual} != {expected}')
-
-              out_zip.write_bytes(payload)
+              report['zip_bytes'] = len(matched_payload)
+              out_zip.write_bytes(matched_payload)
               side.write_text(f'{actual}  {out_zip.name}\n', encoding='utf-8')
 
               with tempfile.TemporaryDirectory() as td:
@@ -119,14 +166,13 @@ jobs:
                           shutil.copy2(child, dest)
 
               report['status'] = 'PASS'
-              report['note'] = 'Recovered and materialized the exact staged Batch0003 FINAL payload only after outer ZIP SHA, ZIP CRC, and extracted SHA256 manifest all passed.'
+              report['note'] = 'Recovered the exact staged Batch0003 FINAL payload by SHA-256, then passed ZIP CRC and all extracted SHA256 manifest entries before materialization.'
           except Exception as exc:
               report['error'] = str(exc)
               report['note'] = 'No Batch0003 PASS promotion is allowed from this recovery attempt. Staging evidence is intentionally retained.'
 
           report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           print(json.dumps(report, ensure_ascii=False, indent=2))
-
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as fh:
               fh.write(f"status={report['status']}\n")
           PY

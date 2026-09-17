@@ -2,9 +2,16 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-16T18:25:20+02:00",
-  "updated_version": "unified-source-shelf-hardening-v2",
+  "updated_at": "2026-09-17T10:50:00+02:00",
+  "updated_version": "artifact-first-async-git-recovery-v1",
   "status": "PRODUCTION_IN_PROGRESS",
+  "operating_mode": {
+    "mode": "ARTIFACT_FIRST_ASYNC_GIT",
+    "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
+    "github_role": "durability_mirror_not_critical_path",
+    "git_retry_budget_per_normal_turn": 1,
+    "binary_materialization_via_git": false
+  },
   "authority": {
     "bootstrap": "German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md",
     "project_state": "German-Content-Production-Kit/main/PROJECT-STATE.json",
@@ -13,7 +20,7 @@
     "source_registry": "SOURCE-REGISTRY.json",
     "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
     "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
-    "runtime_authority": "German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md + PROJECT-STATE.json + any explicitly newer user-supplied current artifact"
+    "runtime_authority": "resolve only at actual Stage 6 integration/acceptance time from newest verified German-Flashcards-Pro artifact/state"
   },
   "source_identity": {
     "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
@@ -63,7 +70,7 @@
     "3_evidence_enrichment": {
       "state": "RUNNING",
       "metrics": {
-        "completed_expression_cards": 26,
+        "completed_expression_cards_durable_bounded": 26,
         "provisional_expression_total": 2493,
         "definitions_de": 26,
         "translations_fa": 26,
@@ -72,8 +79,9 @@
         "examples_per_completed_card": 4,
         "fa_sentence_translations": 104,
         "en_sentence_translations": 104,
-        "completed_batches": 2
-      }
+        "completed_batches_durable_bounded": 2
+      },
+      "note": "A newer portable Batch0003 checkpoint candidate exists in Library but is not promoted here until its ZIP SHA and internal manifest are independently verified."
     },
     "4_linguistic_lexical_qa": {
       "state": "RUNNING",
@@ -96,16 +104,8 @@
     },
     "6_runtime_presentation_acceptance": {
       "state": "RUNNING",
-      "resolution_mode": "LIVE_RESOLUTION",
+      "resolution_mode": "RESOLVE_WHEN_INTEGRATION_MATTERS",
       "current_runtime_must_be_resolved_at_acceptance": true,
-      "last_observed_current_runtime": {
-        "observed_at": "2026-09-16",
-        "version": "v411-R44",
-        "source_name": "GFP-v411-R44-Grammar-Content-Foundation-CANDIDATE.zip",
-        "runtime_artifact_sha256": "2c74093671108aac91dbddaabfd794c46c3ac262c04da680699c6912df7a96c4",
-        "app_project_state_file_sha": "8891655d0149a04311ac64b1ea704b381e53057c",
-        "nvv_acceptance_status": "NOT_RUN"
-      },
       "historical_bounded_acceptance": {
         "runtime": "GFP v411 R37",
         "package": "GFP-v411-DEVELOPMENT-BASELINE-R37.zip",
@@ -118,7 +118,7 @@
         "inline_script_syntax": "PASS",
         "live_browser_import": "NOT_RUN"
       },
-      "note": "R37 is historical evidence only, not the current runtime authority. Before any new runtime/import/presentation acceptance, resolve the current Flashcards runtime live and test against that exact artifact."
+      "note": "R37 is historical evidence only. Do not inspect or mutate the app repository during ordinary NVV production; resolve the current runtime only when B6 acceptance is actually reached."
     },
     "7_release_post_package_verification": {
       "state": "NOT_STARTED"
@@ -158,7 +158,8 @@
     "hard_max_without_explicit_user_approval": 200,
     "ambiguous_items": "quarantine_review_queue",
     "global_audit_every_completed_cards": 500,
-    "checkpoint_after_each_successful_batch": true
+    "portable_checkpoint_after_each_successful_batch": true,
+    "git_sync_after_each_successful_batch": "PREFERRED_NOT_BLOCKING"
   },
   "review_queue": {
     "open_count": 1,
@@ -169,20 +170,27 @@
       }
     ]
   },
-  "migration": {
-    "from": "NVV-specific handoff-first authority with R37 pinned baseline",
-    "to": "unified project bootstrap/state -> source registry/manifest -> Project Sources/Library source resolution -> live workstream checkpoint -> live runtime resolution",
-    "completed_at": "2026-09-16",
-    "completed_batches_invalidated": false,
-    "git_evidence": {
-      "content_main_project_state_commit": "649e34c213f155126c7e4bb6b6e9c4afd9e950a7",
-      "content_main_source_registry_commit": "e2c3d366aab4b3a210a0aa28830e82eac459d766",
-      "nvv_source_manifest_commit": "6d07c823b00c320849228a831be9c169b838a324",
-      "nvv_handoff_commit": "ccc625b30cc696e85c9b7a0b78cdd28d381fdf9f",
-      "nvv_strategy_commit": "2f5eb48cb44128df27e6123ade15602149a74a46",
-      "nvv_auto_mission_doc_commit": "8d62d005d3c4d441cdda8e79dc304cec04e949a1",
-      "auto_mission_v3_1_3_package_sha256": "b60fd1d63005538ef48a2cde22319cf240be3217385d2227e2f688f33bfc9c49"
-    }
+  "batch0003_recovery": {
+    "state": "PORTABLE_CANDIDATE_REQUIRES_INDEPENDENT_VERIFICATION",
+    "library_candidate": {
+      "name": "NVV-Production-Checkpoint-Batch0003.zip",
+      "observed_size_bytes": 132786,
+      "sidecar_name": "NVV-Production-Checkpoint-Batch0003.zip.sha256",
+      "sidecar_expected_sha256": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
+      "promotion_rule": "Verify raw ZIP SHA-256 and its internal SHA256 manifest before adopting it as working authority."
+    },
+    "git_materialization": {
+      "state": "FAILED_NOT_AUTHORITY",
+      "reason": "staged Base64 compositions did not match the READY SHA; automatic materialization workflows were disabled under artifact-first operating mode",
+      "do_not_retry_automatically": true
+    },
+    "fallback_authority_if_candidate_unavailable_or_fails": "bounded PASS Batch0001+Batch0002 = 26 cards"
   },
-  "next": "Start Batch 0003 as the first scalable 100-safe-expression end-to-end batch. Before production, resolve the raw source via the unified startup chain in this order: explicit newer current-chat source -> ChatGPT Project Sources -> ChatGPT Library -> matching current-chat attachment. Verify the registered SHA-256 when bytes are available. Preserve Batch 0001/0002. Quarantine ambiguous/polysemous items. At B6 resolve the current German-Flashcards-Pro runtime live; do not reuse R37 as current authority."
+  "persistence": {
+    "quality_authority": "portable_verified_artifacts",
+    "git": "SYNC_PENDING_FOR_BATCH0003_RECOVERY",
+    "binary_zip_in_git": "NOT_REQUIRED",
+    "automatic_base64_materialization": "DISABLED"
+  },
+  "next": "Do NOT repair GitHub first. Independently verify the Library/current portable candidate NVV-Production-Checkpoint-Batch0003.zip against SHA-256 7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df and its internal manifest. If it passes, adopt the checkpoint contained in that portable artifact as the working authority and continue NVV from its exact next action; Git sync may remain PENDING. If the candidate cannot be accessed or fails verification, resume from the preserved 26-card bounded PASS state and start Batch0003 production anew without any Git materialization workflow. Keep etw. / jdn. in Anspruch nehmen quarantined until sense resolution. Resolve Flashcards runtime only when Stage 6 acceptance is actually reached."
 }

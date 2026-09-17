@@ -1,0 +1,23 @@
+{
+  "schema": "gcpk-stage1-local-gate@1.0.0",
+  "workstream": "menschen-a1a2b1-memrise",
+  "gate_result": "PASS_CANDIDATE_LOCAL",
+  "durable_stage_state": "RUNNING",
+  "reason": "Source inventory and audio membership audit are complete and deterministic locally, but current v3.3.2 package/workspace has not yet been synchronized to GitHub; durable PASS is therefore not claimed.",
+  "metrics": {
+    "schema": "menschen-memrise-source-inventory@1.0.0",
+    "source_file": "menschen-a1a2b1-full-audio [5692974]_(9109).csv",
+    "source_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "columns": ["Learnable", "Definition", "Audio", "Beispiel", "Level tags", "Progress", "Learnable meta"],
+    "rows": 9109,
+    "levels": {"A1": 2548, "A2": 2546, "B1": 3733, "UNSCOPED": 282},
+    "unique_level_tags": 93,
+    "unique_learnable_surfaces": 7881,
+    "duplicate_surface_extra_occurrences": 1228,
+    "audio": {"rows_without_audio": 175, "audio_tag_occurrences": 8937, "unique_audio_filenames": 7719, "multi_audio_rows": [248, 1852, 3952], "archive_list_supplied": true, "archive_unique_mp3": 7719, "referenced_missing_from_archive": [], "archive_unreferenced": []},
+    "invalid_learnable_meta_rows": [],
+    "runtime_state_policy": "Progress excluded from inventory payload by design; Learnable meta distractors excluded; only learnable_id retained."
+  },
+  "golden_lesson": {"lesson_id": "A1-L01", "source_rows": 89, "source_row_range": [1, 89], "canonicalization_queue": {"lesson_id": "A1-L01", "rows": 89, "flags": {"SOURCE_ALTERNATIVES_REVIEW": 28, "SOURCE_EXAMPLE_MISSING": 3, "SOURCE_AUDIO_MISSING": 2}, "source_shapes": {"phrase_or_expression_like": 45, "noun_paradigm_like": 14, "single_token_like": 18, "verb_paradigm_like": 12}}},
+  "next_action": "Stage 2: canonicalize A1-L01 only; do not start A1-L02 until A1-L01 passes canonicalization/enrichment/QA/delivery/runtime acceptance."
+}

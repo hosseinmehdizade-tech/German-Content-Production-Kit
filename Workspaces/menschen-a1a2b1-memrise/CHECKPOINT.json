@@ -1,0 +1,20 @@
+{
+  "checkpoint_schema_version": "2.1.0",
+  "pipeline": "seven-stage-production@1.0.0",
+  "dataset": {"id": "menschen-a1a2b1-memrise", "title": "Menschen A1/A2/B1 Memrise Full Audio", "levels": ["A1", "A2", "B1"], "authoritative_source": "user-provided RAR + embedded CSV"},
+  "workspace": {"repository": "hosseinmehdizade-tech/German-Content-Production-Kit", "branch": "main", "path": "Workspaces/menschen-a1a2b1-memrise", "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_SYNCING"},
+  "authorities": {"content_kit_prompt": "v3.3.2 candidate", "app_capability": "gfp-v411-content-capabilities@1.1.0", "menschen_profiles": ["menschen-a1-memrise@1.0.0", "menschen-a2-memrise@1.0.0", "menschen-b1-memrise@1.0.0"], "course_contract": "MENSCHEN-MEMRISE-COURSE-SOURCE-CONTRACT-v1.0.0", "audio_contract": "GFP-SOURCE-AUDIO-REFERENCE-CONTRACT-v1.0.0"},
+  "stages": [
+    {"stage": 1, "name": "Source & Inventory", "state": "PASS", "local_gate": "PASS_CANDIDATE_LOCAL", "outputs": ["00-source/SOURCE-MANIFEST.json", "01-inventory/SOURCE-INVENTORY.json", "01-inventory/SOURCE-INVENTORY.tsv", "01-inventory/LESSON-SUMMARY.json", "01-inventory/AUDIO-AUDIT.json", "01-inventory/A1-L01-SOURCE-SLICE.json", "01-inventory/STAGE1-LOCAL-GATE.json"], "quality_state": "PASS", "persistence": {"portable": "IN_LIBRARY", "git_metadata": "SYNCING"}},
+    {"stage": 2, "name": "Canonicalization", "state": "PASS", "scope": "A1-L01 golden lesson only", "local_gate": "PASS_CANDIDATE_LOCAL", "outputs": ["02-canonical/A1-L01-CANONICAL-STUBS.json", "02-canonical/A1-L01-NORMALIZATION-DECISIONS.json", "02-canonical/A1-L01-SOURCE-TO-CANONICAL-MAP.json", "02-canonical/A1-L01-STAGE2-LOCAL-GATE.json"], "summary": "89 source occurrences mapped to 118 canonical targets (86 Sense, 32 Expression); 20 rows semantically split, 7 rows preserve same-function source variants; no source row lost.", "quality_state": "PASS", "persistence": {"portable": "IN_LIBRARY", "git_metadata": "SYNCING"}},
+    {"stage": 3, "name": "Evidence & Enrichment", "state": "RUNNING", "scope": "A1-L01 golden lesson only", "next_artifact": "03-evidence/A1-L01-ENRICHMENT-QUEUE.json"},
+    {"stage": 4, "name": "Linguistic & Lexical QA", "state": "NOT_STARTED"},
+    {"stage": 5, "name": "Delivery Projection", "state": "NOT_STARTED"},
+    {"stage": 6, "name": "Runtime & Presentation Acceptance", "state": "NOT_STARTED"},
+    {"stage": 7, "name": "Release & Post-Package Verification", "state": "NOT_STARTED"}
+  ],
+  "blockers": [],
+  "resume_instruction": "Continue Stage 3 Evidence & Enrichment for A1-L01 from the verified portable v3.3.2 artifact; do not start A1-L02 before A1-L01 completes Stages 3-7.",
+  "portable_state": {"filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip", "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f", "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip", "manifest_sha256": "4c087d551658853c8d7ededabf268b3c368ac9d06f6c36f4a9c79d00eac98336"},
+  "sync_note": "Large generated inventory/canonical payload remains in the verified portable artifact per PROJECT-OPERATING-MODE-v2; Git persists compact identity/hash/checkpoint metadata."
+}

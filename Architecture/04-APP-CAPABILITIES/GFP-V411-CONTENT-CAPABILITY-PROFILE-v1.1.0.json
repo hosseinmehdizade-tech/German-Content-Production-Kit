@@ -1,0 +1,58 @@
+{
+  "capability_profile_schema_version": "1.1.0",
+  "capability_profile_id": "gfp-v411-content-capabilities@1.1.0",
+  "product": "German Flashcards Pro",
+  "runtime_baseline": "v411 R36 Universal Lexical Graph development baseline",
+  "architecture_freeze": "v399",
+  "canonical_registry": "gfpVNextRegistryV36E",
+  "registry_bundle_version_observed": "content-v2.2-importer-v1-merged",
+  "snapshot_counts_informational_only": {
+    "lexemes": 142,
+    "senses": 163,
+    "expressions": 39,
+    "examples": 515,
+    "relations": 83,
+    "grammar_units": 13,
+    "reading_units": 13,
+    "exercises": 94,
+    "sources": 24
+  },
+  "canonical_collections": {
+    "sources": {"id_field": "source_id"},
+    "lexemes": {"id_field": "lexeme_id", "required_fields": ["language", "lemma", "pos", "morphology", "provenance"]},
+    "senses": {"id_field": "sense_id", "required_fields": ["lexeme_id", "definition_de", "translations", "cefr", "register", "topic_tags", "provenance"]},
+    "expressions": {"id_field": "expression_id", "required_fields": ["canonical_form", "expression_type", "definition_de", "translations", "cefr", "provenance"]},
+    "examples": {"id_field": "example_id", "required_fields": ["text_de", "translations", "annotations", "cefr", "register", "topic_tags", "provenance"]},
+    "relations": {"id_field": "relation_id", "required_fields": ["relation_type", "source_type", "source_id", "target_type", "target_id", "value", "provenance"]},
+    "grammar_units": {"id_field": "grammar_unit_id", "required_fields": ["title", "cefr", "short_explanation_de", "explanation_de", "common_errors", "skill_tags", "linked_object_ids", "example_ids", "exercise_ids", "prerequisite_ids", "provenance"]},
+    "reading_units": {"id_field": "reading_unit_id", "required_fields": ["title", "cefr", "text_type", "topic_tags", "passages", "vocabulary_target_ids", "grammar_unit_ids", "comprehension_exercise_ids", "provenance"]},
+    "exercises": {"id_field": "exercise_id", "required_fields": ["exercise_type", "prompt_de", "answer_spec", "feedback_rules", "skill_tags", "target_object_ids", "provenance"]}
+  },
+  "supported_expression_types_observed": ["multiword_expression", "reflexive_verb", "collocation", "nvv", "idiom"],
+  "supported_relation_types_observed": ["REKTION", "COLLOCATION", "RELATED", "SYNONYM", "ANTONYM", "NVV", "COMPONENT", "WORD_FAMILY"],
+  "supported_exercise_types": ["MULTIPLE_CHOICE", "TRUE_FALSE", "FILL_GAP", "SHORT_ANSWER"],
+  "feature_consumers": {
+    "vocabulary_practice": ["lexemes", "senses", "expressions", "examples", "relations"],
+    "wortdetails": ["lexemes", "senses", "expressions", "examples", "relations", "grammar_units", "sources", "expressions.structure.components"],
+    "clickable_words": ["examples.annotations", "reading_units.passages.annotations"],
+    "wortnetz": ["relations", "expressions.structure.components", "derived_reverse_navigation"],
+    "grammar": ["grammar_units", "exercises"],
+    "reading": ["reading_units", "exercises"],
+    "fehlerbuch_ready_feedback": ["exercises.feedback_rules", "exercises.skill_tags", "exercises.target_object_ids"],
+    "adaptive_learning_evidence_keys": ["skill_tags", "target_object_ids"]
+  },
+  "annotation_contract": {"offset_model": "javascript-utf16-code-units", "segment_end": "exclusive", "target_types": ["sense", "expression", "lexeme"], "verified_target_preferred": true, "surface_must_match_text_slice": true},
+  "adaptive_boundary": {
+    "content_may_define": ["skill_tags", "target_object_ids", "topic_tags", "cefr", "explicit_concept_keys_when_profiled"],
+    "content_must_not_define_runtime_state": ["fsrs_state", "due_at", "review_history", "attempt_history", "mastery_score", "weakness_score", "error_history", "recommendation_rank", "signal_confidence", "plan_progress"],
+    "cross_domain_fusion": "explicit-authoritative-keys-only",
+    "fuzzy_fusion_forbidden": true
+  },
+  "runtime_ownership_guardrails": {"practice_owner": "GFP_PRACTICE_V358", "persistence_owner": "GFP_PERSISTENCE_V365", "durable_mutation_owner": "GFP_DURABLE_MUTATION", "review_fsrs_owner": "GFP_REVIEW_V361", "content_pipeline_must_not_reimplement_runtime_owners": true},
+  "projection_rule": "Canonical semantic/domain content is authority; every lexical Sense/Expression may project to a vocabulary card. v411 consumes vnext_relations, vnext_source_refs and vnext_structure.components; reverse/inbound graph navigation is runtime-derived and is not a new canonical semantic claim.",
+  "ingestion_boundary": {
+    "dynamic_content_store": {"owners": ["GFP_DYNAMIC_CONTENT_V37", "GFP_DYNAMIC_CONTENT_V39"], "payload": "projected cards", "supports_card_add_merge_update_remove": true, "is_full_semantic_registry_importer": false},
+    "full_system_semantic_content": {"v400_delivery_mode": "build-time integration", "static_authorities": ["vnext-registry-v36e.json", "vnext-semantic-index-v36e.json", "vnext-explorer-index-v36e.json", "vnext-projected-cards-v36e.json", "vnext-semantic-bridge-v36e.js", "embedded JSON/card payloads in index.html and HTML twin"], "requires_consistent_regeneration": true, "card_pack_alone_updates_grammar_reading_registry": false, "v411_lexical_graph_runtime": "projected lexical cards expose navigable outgoing relations/components; reverse links are derived at runtime"},
+    "production_requirement": "A full-system source package must deliver a canonical registry patch plus projection/integration inputs. A card-only dynamic pack is vocabulary-compatible but not full-system-complete."
+  }
+}

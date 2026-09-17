@@ -1,0 +1,34 @@
+{
+  "matrix_schema_version": "1.1.0",
+  "matrix_id": "gfp-field-authority-matrix@1.1.0",
+  "registry_id": "gfp-approved-language-sources@1.1.0",
+  "rules": {
+    "lemma_pos_basic_meaning": {"primary": ["DUDEN_UNIVERSAL"], "secondary": ["DUDEN_BEDEUTUNG_10"], "notes": "Sense meaning may reverse priority to Bedeutungswörterbuch."},
+    "sense_definition_split": {"primary": ["DUDEN_BEDEUTUNG_10"], "secondary": ["DUDEN_UNIVERSAL"]},
+    "collocation_natural_combination": {"primary": ["DUDEN_STIL"], "secondary": ["DUDEN_UNIVERSAL"], "corpus_validation": ["SPIEGEL_CORPUS_2026"]},
+    "synonym": {"primary": ["DUDEN_SYNONYME"], "secondary": ["DUDEN_BEDEUTUNG_10"]},
+    "antonym": {"primary": ["GEGENWORT_2020"], "secondary": ["DUDEN_SYNONYME"]},
+    "idiom_redewendung": {"primary": ["DUDEN_REDEWENDUNGEN_5"], "secondary": ["SCHEMANN_IDIOMATIK", "NOMEN_VERB_VERBINDUNGEN"], "pedagogical": ["MUECKE_ELEFANTEN"], "rule": "Duden Redewendungen is primary for idiom meaning/usage. A user/source PDF may establish that a listed expression was source-marked idiomatic, but does not by itself replace a primary meaning authority."},
+    "grammar_rule": {"primary": ["DUDEN_GRAMMATIK_8"], "secondary": ["DUDEN_GRAMMATIKTABELLEN", "B_GRAMMATIK"], "pedagogical": ["GRAMMATIK_AKTIV_A1_B1", "GRAMMATIK_AKTIV_B2_C1"]},
+    "morphology_forms": {"primary": ["DUDEN_UNIVERSAL", "DUDEN_GRAMMATIK_8"], "secondary": ["DUDEN_GRAMMATIKTABELLEN", "VERBEN_4000_HUEBER", "VERBEN_501", "BIG_YELLOW_555"]},
+    "verb_rection": {"primary": ["DUDEN_UNIVERSAL"], "secondary": ["VERBEN_MIT_PRAEP_250", "VERBEN_4000_HUEBER"]},
+    "adjective_rection": {"primary": ["DUDEN_UNIVERSAL"], "secondary": ["ADJEKTIVE_MIT_PRAEP"]},
+    "nvv_funktionsverbgefuege": {"primary": ["FUNKTIONSVERBGEFUEGE", "NOMEN_VERB_VERBINDUNGEN"], "secondary": ["DUDEN_STIL", "DUDEN_UNIVERSAL"], "rule": "NVV must remain separate from generic collocation."},
+    "foreign_advanced_word": {"primary": ["DUDEN_FREMDWOERTER_10"], "secondary": ["DUDEN_UNIVERSAL"]},
+    "persian_translation": {"primary": [], "secondary": ["BEHZAD_DE_FA"], "rule": "Translation is sense-specific; generated bilingual output must be cross-checked against German meaning/context. Behzad is not sufficient alone for modern/context-sensitive usage."},
+    "english_translation": {"primary": [], "secondary": ["BILINGUAL_VISUAL_DICT"], "rule": "Use sense-consistent translation; a visual dictionary is only supplemental."},
+    "cefr_membership": {"primary": [], "secondary": [], "rule": "Prefer active source/coursebook or user-declared metadata. Do not infer CEFR from dictionary presence alone."},
+    "learner_examples": {"primary": [], "pedagogical": ["DUDEN_WORTSCHATZTRAINER_DAF", "GROSSES_UEBUNGSBUCH_WORTSCHATZ", "BILDWORT_2000", "CONVERSATIONS_101"], "corpus_validation": ["SPIEGEL_CORPUS_2026"], "rule": "Generate original examples; pedagogical/corpus sources guide patterns and naturalness, not verbatim reuse."},
+    "redemittel_writing": {"primary": ["DUDEN_BRIEFE"], "pedagogical": ["REDEMITTELSAMMLUNG", "PRO_CONTRA_70", "ARGUMENTATIONEN", "PRAESENTATION", "CONVERSATIONS_101"]},
+    "reading_generation": {"primary": [], "pedagogical": ["READING_100_SHORT", "READING_150_SHORT", "READING_SHORT_BEGINNERS", "READING_LEARN_GERMAN_STORIES"], "corpus_validation": ["SPIEGEL_CORPUS_2026"], "rule": "Generate new passages unless the active dataset explicitly requires source-preserving reading extraction."},
+    "landeskunde": {"primary": [], "pedagogical": ["DUDEN_ALLGEMEINBILDUNG", "DUDEN_DEUTSCHLANDWISSEN"], "rule": "For current civic/legal facts, validate against current official sources."},
+    "expression_component_structure": {"primary": ["NOMEN_VERB_VERBINDUNGEN", "FUNKTIONSVERBGEFUEGE"], "secondary": ["DUDEN_STIL", "DUDEN_UNIVERSAL"], "rule": "Source-visible component/pattern structure may establish the expression form. Resolved semantic component target IDs are identity links and must not be guessed."},
+    "word_family": {"primary": ["DUDEN_UNIVERSAL", "DUDEN_BEDEUTUNG_10"], "secondary": ["DUDEN_STIL"], "rule": "WORD_FAMILY is a lexical relation and requires evidence; superficial string similarity is insufficient."}
+  },
+  "conflict_resolution": [
+    "A newer authoritative edition supersedes an older edition for current standard-language claims unless historical comparison is the explicit task.",
+    "Primary authority wins over secondary/pedagogical/seed when claims conflict, unless the primary is outside its declared scope.",
+    "Two copies/editions from one lineage are not two independent confirmations.",
+    "If authoritative sources genuinely disagree and the distinction matters, preserve the disagreement and require review rather than averaging or guessing."
+  ]
+}

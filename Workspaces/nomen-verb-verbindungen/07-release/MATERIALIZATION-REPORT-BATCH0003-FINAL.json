@@ -1,45 +1,138 @@
 {
-  "schema": "nvv-materialization-report@1.1.0",
+  "schema": "nvv-materialization-report@1.2.0",
   "batch": "0003",
   "mission_id": "NVV-20260916-225825-5a33a9",
   "expected_zip_sha256": "da411adf44ebf32b162b4fe4b9d88151bda74a7500ff83230f46f6b789da2232",
-  "chunk_count": 7,
-  "chunks": [
+  "candidate_results": [
     {
-      "name": "finalchunk000.b64",
-      "size": 14000
+      "name": "finalchunk_glob",
+      "files": [
+        "finalchunk000.b64",
+        "finalchunk001.b64",
+        "finalchunk002.b64",
+        "finalchunk003.b64",
+        "finalchunk004.b64",
+        "finalchunk005.b64",
+        "finalchunk006.b64"
+      ],
+      "file_sizes": [
+        14000,
+        14000,
+        14000,
+        14000,
+        14000,
+        10000,
+        10000
+      ],
+      "encoded_length": 90000,
+      "encoded_length_mod4": 0,
+      "decoded_bytes": 67500,
+      "sha256": "2b857f3e8cf2beaa9f0aa80a5b82c12e7e4a0dc5b18196d227ab1c65c925efed",
+      "matches_expected": false
     },
     {
-      "name": "finalchunk001.b64",
-      "size": 14000
+      "name": "final_000_004_plus_tailA00_tailA01",
+      "files": [
+        "finalchunk000.b64",
+        "finalchunk001.b64",
+        "finalchunk002.b64",
+        "finalchunk003.b64",
+        "finalchunk004.b64",
+        "tailA00.b64",
+        "tailA01.b64"
+      ],
+      "file_sizes": [
+        14000,
+        14000,
+        14000,
+        14000,
+        14000,
+        10000,
+        15508
+      ],
+      "encoded_length": 95508,
+      "encoded_length_mod4": 0,
+      "decoded_bytes": 71631,
+      "sha256": "c472abb7ddb81ffd0d686a04fb887341e888ef0231d49d12d2d5b726d2a29b23",
+      "matches_expected": false
     },
     {
-      "name": "finalchunk002.b64",
-      "size": 14000
+      "name": "final_000_004_plus_tail00",
+      "files": [
+        "finalchunk000.b64",
+        "finalchunk001.b64",
+        "finalchunk002.b64",
+        "finalchunk003.b64",
+        "finalchunk004.b64",
+        "tail00.b64"
+      ],
+      "file_sizes": [
+        14000,
+        14000,
+        14000,
+        14000,
+        14000,
+        20024
+      ],
+      "encoded_length": 90022,
+      "encoded_length_mod4": 2,
+      "decode_error": "Only base64 data is allowed",
+      "matches_expected": false
     },
     {
-      "name": "finalchunk003.b64",
-      "size": 14000
+      "name": "legacy_split004_plus_chunk005_tail00",
+      "files": [
+        "chunk000.b64",
+        "chunk001.b64",
+        "chunk002.b64",
+        "chunk003.b64",
+        "chunk004a.b64",
+        "chunk004b.b64",
+        "chunk005.b64",
+        "tail00.b64"
+      ],
+      "file_sizes": [
+        14000,
+        14000,
+        14000,
+        14000,
+        7000,
+        7000,
+        14000,
+        20024
+      ],
+      "encoded_length": 104022,
+      "encoded_length_mod4": 2,
+      "decode_error": "Only base64 data is allowed",
+      "matches_expected": false
     },
     {
-      "name": "finalchunk004.b64",
-      "size": 14000
-    },
-    {
-      "name": "finalchunk005.b64",
-      "size": 10000
-    },
-    {
-      "name": "finalchunk006.b64",
-      "size": 10000
+      "name": "legacy_chunk004_plus_chunk005_tail00",
+      "files": [
+        "chunk000.b64",
+        "chunk001.b64",
+        "chunk002.b64",
+        "chunk003.b64",
+        "chunk004.b64",
+        "chunk005.b64",
+        "tail00.b64"
+      ],
+      "file_sizes": [
+        14000,
+        14000,
+        14000,
+        14000,
+        13999,
+        14000,
+        20024
+      ],
+      "encoded_length": 104021,
+      "encoded_length_mod4": 1,
+      "decode_error": "Only base64 data is allowed",
+      "matches_expected": false
     }
   ],
   "status": "FAIL",
-  "encoded_length": 90000,
-  "encoded_length_mod4": 0,
-  "actual_zip_sha256": "2b857f3e8cf2beaa9f0aa80a5b82c12e7e4a0dc5b18196d227ab1c65c925efed",
-  "zip_bytes": 67500,
-  "zip_sha256_match": false,
-  "error": "ZIP SHA mismatch: 2b857f3e8cf2beaa9f0aa80a5b82c12e7e4a0dc5b18196d227ab1c65c925efed != da411adf44ebf32b162b4fe4b9d88151bda74a7500ff83230f46f6b789da2232",
+  "error": "none of the staged candidate compositions matches the READY SHA-256",
   "note": "No Batch0003 PASS promotion is allowed from this recovery attempt. Staging evidence is intentionally retained."
 }

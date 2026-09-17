@@ -1,77 +1,18 @@
-name: NVV Batch0003 Materialize
+name: NVV Batch0003 legacy materializer (manual only)
 
 on:
-  push:
-    branches: [nvv-production]
-    paths:
-      - 'Workspaces/nomen-verb-verbindungen/07-release/NVV-Production-Checkpoint-Batch0003.zip'
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize:
+  legacy-disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: nvv-production
-          fetch-depth: 0
-      - name: Verify and materialize checkpoint
+      - name: Explain legacy workflow status
         shell: bash
         run: |
-          set -euo pipefail
-          python - <<'PY'
-          import hashlib, json, pathlib, zipfile
-          root = pathlib.Path('Workspaces/nomen-verb-verbindungen')
-          zp = root / '07-release/NVV-Production-Checkpoint-Batch0003.zip'
-          expected = '7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df'
-          got = hashlib.sha256(zp.read_bytes()).hexdigest()
-          if got != expected:
-              raise SystemExit(f'ZIP SHA mismatch: {got}')
-          with zipfile.ZipFile(zp) as z:
-              z.extractall(root)
-          sums = root / '07-release/SHA256SUMS-BATCH0003.txt'
-          verified = 0
-          for raw in sums.read_text(encoding='utf-8').splitlines():
-              raw = raw.strip()
-              if not raw:
-                  continue
-              sha, rel = raw.split(None, 1)
-              rel = rel.strip().lstrip('*')
-              p = root / rel
-              if not p.is_file():
-                  raise SystemExit(f'Missing extracted artifact: {rel}')
-              actual = hashlib.sha256(p.read_bytes()).hexdigest()
-              if actual != sha:
-                  raise SystemExit(f'Artifact SHA mismatch: {rel}: {actual} != {sha}')
-              verified += 1
-          report = {
-              'schema': 'nvv-materialization-report@1.0.0',
-              'batch': '0003',
-              'zip_sha256': got,
-              'zip_expected_sha256': expected,
-              'zip_sha256_match': True,
-              'manifest_entries_verified': verified,
-              'manifest_status': 'PASS',
-              'branch': 'nvv-production',
-              'note': 'Materialized from the exact locally post-extraction-verified Batch0003 checkpoint ZIP. This report proves byte-level Git materialization; it does not upgrade runtime acceptance beyond the evidence recorded in the checkpoint.'
-          }
-          (root / '07-release/MATERIALIZATION-REPORT-BATCH0003.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
-          PY
-      - name: Remove temporary staging chunks
-        shell: bash
-        run: rm -rf Workspaces/nomen-verb-verbindungen/_materialize-batch0003
-      - name: Commit durable Batch0003 artifacts
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add Workspaces/nomen-verb-verbindungen
-          if git diff --cached --quiet; then
-            echo 'No materialization changes to commit.'
-            exit 0
-          fi
-          git commit -m 'Materialize NVV Batch0003 durable checkpoint artifacts'
-          git push origin HEAD:nvv-production
+          echo 'Legacy automatic Batch0003 materialization is intentionally disabled.'
+          echo 'Generated checkpoint ZIPs are now handled as portable verified artifacts outside Git; Git stores compact checkpoint/hash metadata at milestone sync boundaries.'
+          exit 1

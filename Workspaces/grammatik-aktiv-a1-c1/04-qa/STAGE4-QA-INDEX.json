@@ -2,13 +2,13 @@
   "qa_index_schema": "grammar-stage4-qa-index@1.0.0",
   "dataset_id": "grammatik-aktiv-a1-c1",
   "stage": "4_linguistic_lexical_qa",
-  "status": "RUNNING",
+  "status": "PASS",
   "coverage": {
     "total_lessons": 168,
-    "reviewed_lessons": 130,
-    "passed_lessons": 130,
+    "reviewed_lessons": 168,
+    "passed_lessons": 168,
     "failed_lessons": 0,
-    "remaining_lessons": 38
+    "remaining_lessons": 0
   },
   "source_order_progress": {
     "grammatik-aktiv-a1-b1": {
@@ -18,8 +18,8 @@
     },
     "grammatik-aktiv-b2-c1": {
       "contiguous_reviewed_from": 1,
-      "contiguous_reviewed_through": 50,
-      "status": "RUNNING"
+      "contiguous_reviewed_through": 88,
+      "status": "COMPLETE"
     }
   },
   "batches": [
@@ -121,6 +121,34 @@
       "lessons": 10,
       "repairs": 34,
       "portable_checkpoint": "Grammar-Aktiv-v3.3.2-Stage4-Through-B2C1-Ch050-CHECKPOINT.zip"
+    },
+    {
+      "batch_id": "b2c1-051-060",
+      "path": "STAGE4-BATCH-B2C1-051-060.json",
+      "status": "PASS_AFTER_REPAIR",
+      "lessons": 10,
+      "repairs": 32
+    },
+    {
+      "batch_id": "b2c1-061-070",
+      "path": "STAGE4-BATCH-B2C1-061-070.json",
+      "status": "PASS_AFTER_REPAIR",
+      "lessons": 10,
+      "repairs": 22
+    },
+    {
+      "batch_id": "b2c1-071-080",
+      "path": "STAGE4-BATCH-B2C1-071-080.json",
+      "status": "PASS_AFTER_REPAIR",
+      "lessons": 10,
+      "repairs": 5
+    },
+    {
+      "batch_id": "b2c1-081-088",
+      "path": "STAGE4-BATCH-B2C1-081-088.json",
+      "status": "PASS_AFTER_REPAIR",
+      "lessons": 8,
+      "repairs": 10
     }
   ],
   "policy": {
@@ -129,15 +157,22 @@
     "preserve_stage3_source_authority": true,
     "do_not_regenerate_valid_stage3_content": true
   },
-  "next_action": "Review ga-b2c1-ch051..060.",
+  "next_action": "Stage 4 PASS. Begin Stage 5 delivery projection.",
   "semantic_target_hardening": {
     "scope": "ga-a1b1-ch061..080",
     "status": "PASS",
     "note": "Exercise target_object_ids checked for semantic rule alignment, not only referential existence; 0 unresolved target findings."
   },
   "semantic_target_hardening_b2c1": {
-    "scope": "ga-b2c1-ch001..050",
+    "scope": "ga-b2c1-ch001..088",
     "status": "PASS",
-    "note": "Exercise target_object_ids checked for semantic rule alignment through chapter 50; 0 unresolved target findings."
+    "note": "Exercise target_object_ids checked for semantic rule alignment across B2-C1; final Stage-4 batches report 0 unresolved target findings."
+  },
+  "cumulative_repairs": 317,
+  "final_portable_checkpoint": {
+    "filename": "Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
+    "sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
+    "post_package_verification": "PASS"
   }
 }

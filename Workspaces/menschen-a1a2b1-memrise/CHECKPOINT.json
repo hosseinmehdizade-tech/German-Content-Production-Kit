@@ -35,74 +35,59 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "A1-L03",
-      "source_rows": 46,
-      "audio_refs": 46
+      "scope": "A1-L04",
+      "source_rows": 53,
+      "audio_refs": 54,
+      "multi_audio_rows": 1,
+      "missing_audio_refs": 0
     },
     {
       "stage": 2,
       "name": "Canonicalization",
-      "state": "PASS",
-      "scope": "A1-L03",
-      "canonical_targets": 68,
-      "senses": 47,
+      "state": "PASS_CANDIDATE_LOCAL",
+      "scope": "A1-L04",
+      "canonical_targets": 71,
+      "senses": 50,
       "expressions": 21,
-      "split_source_rows": 20
+      "split_source_rows": 16,
+      "review_flags_pending_stage3": 22,
+      "stable_id_range": "ma1m-lu-0285..ma1m-lu-0355"
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "PASS",
-      "scope": "A1-L03",
-      "targets": 68,
-      "examples_de": 272,
-      "examples_fa": 272,
-      "examples_en": 272,
-      "relations": 27,
-      "review_resolutions": 17,
-      "source_audio_refs": 70
+      "state": "READY_TO_START",
+      "scope": "A1-L04"
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "PASS",
-      "scope": "A1-L03",
-      "checks": "25/25",
-      "errors": 0,
-      "warnings": 0
+      "state": "NOT_STARTED",
+      "scope": "A1-L04"
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "PASS",
-      "scope": "A1-L03",
-      "transport_rows": 68,
-      "card_types": {
-        "de-vocabulary": 67,
-        "german-verb": 1
-      },
-      "runtime_projection_target": "GFP-v416-R50"
+      "state": "NOT_STARTED",
+      "scope": "A1-L04"
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "PASS",
-      "scope": "A1-L03",
-      "runtime": "GFP-v416-R50",
-      "checks": 21,
-      "cumulative_cards": 284,
-      "same_tab_persistence": "PASS"
+      "state": "NOT_STARTED",
+      "scope": "A1-L04",
+      "runtime_policy": "Resolve newest German Flashcards Pro portable artifact at execution time."
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "PASS",
-      "scope": "A1-L03",
-      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
+      "state": "NOT_STARTED",
+      "scope": "A1-L04",
+      "delivery_gate": "Directly import outer LOCKED.zip; no nested extraction."
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01, A1-L02 and A1-L03 are locked. Start A1-L04 Stage 1/2 from existing course inventory. At Stage 6 resolve newest Flashcards Pro artifact again. From A1-L04 onward, Stage 7 MUST directly import the outer LOCKED.zip; never require the user to extract a nested content ZIP.",
+  "resume_instruction": "A1-L01, A1-L02 and A1-L03 remain locked. A1-L04 Stage 1 PASS and Stage 2 PASS_CANDIDATE_LOCAL: 53 source rows -> 71 canonical targets (50 senses, 21 expressions), stable IDs ma1m-lu-0285..ma1m-lu-0355. Start A1-L04 Stage 3 Evidence & Enrichment and resolve the 22 review flags before Stage 4. At Stage 6 resolve the newest Flashcards Pro portable artifact again. Stage 7 MUST directly import the outer LOCKED.zip using BUILD-METADATA authority.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -115,9 +100,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L03",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L03-v3.3.2-Stage1-2-CHECKPOINT.zip"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L04-v3.3.2-Stage1-2-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "3b97fc06064ae21e5057a34c22cfae8e82765273d4890b63f8d8ca348253dae9"
   },
-  "current_scope": "A1-L04 ready; A1-L01/A1-L02/A1-L03 locked",
+  "current_scope": "A1-L04 Stage1/2 PASS_CANDIDATE_LOCAL; Stage3 ready; A1-L01/A1-L02/A1-L03 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED_FOR_GFP_V416_R50",
   "locked_at": "2026-09-18",
   "release_artifact": {
@@ -187,8 +173,21 @@
     }
   },
   "a1_l04": {
-    "state": "READY_TO_START",
-    "rule": "Proceed lesson-by-lesson; preserve locked L01-L03 unless a real upstream incompatibility invalidates them."
+    "state": "STAGE1_2_PASS_CANDIDATE_LOCAL",
+    "source_rows": 53,
+    "audio_refs": 54,
+    "canonical_targets": 71,
+    "senses": 50,
+    "expressions": 21,
+    "split_source_rows": 16,
+    "review_flags_pending_stage3": 22,
+    "stable_id_range": "ma1m-lu-0285..ma1m-lu-0355",
+    "checkpoint": {
+      "filename": "Menschen-A1-L04-v3.3.2-Stage1-2-CHECKPOINT.zip",
+      "sha256": "3b97fc06064ae21e5057a34c22cfae8e82765273d4890b63f8d8ca348253dae9",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L04-v3.3.2-Stage1-2-CHECKPOINT.zip"
+    },
+    "next_action": "Stage 3 Evidence & Enrichment for all 71 targets; resolve 22 review flags before Stage 4."
   },
   "delivery_policy": {
     "contract": "Prompt/MENSCHEN-LOCKED-LESSON-DELIVERY-CONTRACT-v1.0.0.md",

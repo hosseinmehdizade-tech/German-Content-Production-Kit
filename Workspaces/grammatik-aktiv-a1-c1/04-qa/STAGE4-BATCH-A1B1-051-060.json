@@ -1,0 +1,87 @@
+{
+  "qa_schema": "grammar-stage4-batch-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "4_linguistic_lexical_qa",
+  "batch_id": "a1b1-051-060",
+  "scope": {
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch051",
+      "ga-a1b1-ch052",
+      "ga-a1b1-ch053",
+      "ga-a1b1-ch054",
+      "ga-a1b1-ch055",
+      "ga-a1b1-ch056",
+      "ga-a1b1-ch057",
+      "ga-a1b1-ch058",
+      "ga-a1b1-ch059",
+      "ga-a1b1-ch060"
+    ]
+  },
+  "status": "PASS_AFTER_REPAIR",
+  "review_mode": "FULL_LESSON_LINGUISTIC_REVIEW_PLUS_MACHINE_INTEGRITY_GATE",
+  "machine_gate": {
+    "status": "PASS",
+    "lessons": 10,
+    "rules": 34,
+    "patterns": 10,
+    "examples": 30,
+    "common_errors": 10,
+    "exercises": 20,
+    "source_refs": 124,
+    "source_id_mismatches": 0,
+    "source_page_range_errors": 0,
+    "printed_pdf_offset_errors": 0,
+    "answer_spec_errors": 0,
+    "runtime_srs_state_leaks": 0,
+    "missing_persian_script_fields": 0
+  },
+  "repairs": [
+    {
+      "lesson_id": "ga-a1b1-ch051",
+      "type": "RULE_SCOPE_AND_PERSIAN_NATURALNESS",
+      "summary": "Scoped the Dativ-reflexive rule to the constructions taught in the chapter and improved a clumsy Persian translation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch052",
+      "type": "COMMON_ERROR_EXPLANATION_ALIGNMENT",
+      "summary": "Changed the wrong example so it actually tests the no-ge rule explained by the feedback."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch053",
+      "type": "REKTION_PRECISION",
+      "summary": "Removed the overgeneralization that the preposition alone determines case; case is learned with the whole verb-preposition construction."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch055",
+      "type": "COMMON_ERROR_VALIDITY_AND_TRANSLATION",
+      "summary": "Replaced a merely dispreferred würde+haben construction with a genuine hatte/hätte form error and improved the polite-request Persian translation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch058",
+      "type": "COMMON_ERROR_VALIDITY",
+      "summary": "Added an explicit agent so worden vs geworden is tested unambiguously as passive perfect."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch060",
+      "type": "COMMON_ERROR_VALIDITY",
+      "summary": "Made the passive-perfect context explicit so the worden/geworden contrast cannot be reinterpreted as lexical werden."
+    }
+  ],
+  "unresolved_errors": [],
+  "unresolved_warnings": [],
+  "stage4_progress_after_batch": {
+    "reviewed_lessons": 60,
+    "total_lessons": 168,
+    "remaining_lessons": 108,
+    "contiguous_a1b1_reviewed_through": 60
+  },
+  "portable_checkpoint": {
+    "filename": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch060-CHECKPOINT.zip",
+    "sha256": "62beeaae1043c7552c93e6348568bf01ac539fb84c059868b285714b985830e8",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch060-CHECKPOINT.zip",
+    "mode": "CUMULATIVE_DELTA_OVERLAY",
+    "supersedes": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch050-CHECKPOINT.zip"
+  },
+  "next_action": "Continue Stage 4 with ga-a1b1-ch061..070."
+}

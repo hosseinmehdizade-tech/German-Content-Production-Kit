@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "Current A1-L10 lock milestone metadata is synchronized on main; exact release bytes are durable in ChatGPT Library."
+    "git_sync_note": "A1-L11 Stage1/2 checkpoint metadata is synchronized on main; exact checkpoint bytes are durable in ChatGPT Library."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -35,114 +35,50 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "A1-L10",
-      "source_rows": 93,
-      "audio_refs": 92,
+      "scope": "A1-L11",
+      "source_rows": 116,
+      "audio_refs": 110,
       "multi_audio_rows": 0,
-      "zero_audio_rows": 1,
+      "zero_audio_rows": 6,
       "zero_audio_source_rows": [
-        685
+        743,
+        766,
+        785,
+        791,
+        792,
+        811
       ],
       "missing_referenced_audio_files": 0,
-      "source_csv_ordinals": "639..731",
-      "rar_audio_presence": "92/92 PASS"
+      "source_csv_ordinals": "732..847",
+      "rar_audio_presence": "110/110 PASS"
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "scope": "A1-L10",
-      "lesson_target_mappings": 127,
-      "new_canonical_targets": 125,
-      "reused_canonical_targets": 2,
-      "senses": 55,
-      "expressions": 72,
-      "new_stable_id_range": "ma1m-lu-0873..ma1m-lu-0997",
+      "scope": "A1-L11",
+      "lesson_target_mappings": 165,
+      "new_canonical_targets": 164,
+      "reused_canonical_targets": 1,
+      "new_senses": 58,
+      "new_expressions": 106,
+      "reused_senses": 1,
+      "split_source_rows": 36,
+      "new_stable_id_range": "ma1m-lu-0998..ma1m-lu-1161",
       "reused_stable_ids": [
-        "ma1m-lu-0345",
-        "ma1m-lu-0362"
-      ]
+        "ma1m-lu-0747"
+      ],
+      "reuse_note": "Apfelsaft reuses locked A1-L09 canonical identity ma1m-lu-0747 rather than minting a duplicate ID."
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "PASS",
-      "scope": "A1-L10",
-      "targets": 127,
-      "examples_de": 508,
-      "examples_fa": 508,
-      "examples_en": 508,
-      "relations": 72,
-      "review_resolutions": 42,
-      "source_audio_refs": 129,
-      "intentional_zero_audio_targets": [
-        "ma1m-lu-0939",
-        "ma1m-lu-0940"
-      ]
-    },
-    {
-      "stage": 4,
-      "name": "Linguistic & Lexical QA",
-      "state": "PASS",
-      "scope": "A1-L10",
-      "checks": "39/39",
-      "official_bundle_validator": "PASS_127_TARGETS_EXACT4_0_WARNINGS",
-      "framework_regression": "47/47 pytest PASS",
-      "errors": 0
-    },
-    {
-      "stage": 5,
-      "name": "Delivery Projection",
-      "state": "PASS",
-      "scope": "A1-L10",
-      "transport_rows": 127,
-      "new_ids": 125,
-      "reused_ids": [
-        "ma1m-lu-0345",
-        "ma1m-lu-0362"
-      ],
-      "card_types": {
-        "de-vocabulary": 112,
-        "german-verb": 15
-      },
-      "final_dataset": "A1-L10-UNIVERSAL-v2.tsv",
-      "final_dataset_sha256": "90111774fc3d5680935a2ca7aa8e89b75134e0e73fdd15c98df0696c03cef208",
-      "runtime_projection_target": "GFP-v417-R51"
-    },
-    {
-      "stage": 6,
-      "name": "Runtime & Presentation Acceptance",
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "scope": "A1-L10",
-      "runtime": "GFP-v417-R51",
-      "exact_outer_direct_import": "PASS",
-      "exact_outer_runtime_checks": "27/27 PASS",
-      "standalone_persistence": "127/127 PASS",
-      "cumulative_l01_l10_checks": "16/16 production-parser identity/collision PASS",
-      "cumulative_unique_cards": 997,
-      "l10_new_ids": 125,
-      "l10_reused_ids": [
-        "ma1m-lu-0345",
-        "ma1m-lu-0362"
-      ],
-      "cumulative_unique_no_accidental_collision": true,
-      "browser_boundary": "Single sequential 997-card durable-persistence browser run not claimed."
-    },
-    {
-      "stage": 7,
-      "name": "Release & Post-Package Verification",
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "scope": "A1-L10",
-      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "artifact": "Menschen-A1-L10-v3.3.2-GFP-v417-LOCKED.zip",
-      "sha256": "cdae60b598b9a04b6b2d11c84fd24973a0b0915caa9f319132476ea9312c569b",
-      "direct_outer_import": "PASS_27_CHECKS_127_OF_127_PERSISTED",
-      "exact_final_cumulative_collision": "PASS_997_UNIQUE_125_NEW_2_EXPECTED_ECHT_REUSE",
-      "postpackage_manifest_rehash": "PASS_33_OF_33"
+      "state": "READY",
+      "scope": "A1-L11"
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L10 are locked. Start A1-L11 Stage 1/2 from the existing course inventory. At Stage 6 resolve the newest German Flashcards Pro portable artifact again. Stage 7 MUST directly import the outer LOCKED.zip using BUILD-METADATA authority; no nested user extraction workflow.",
+  "resume_instruction": "A1-L01 through A1-L10 remain locked. Resume A1-L11 at Stage 3 from the verified Stage1/2 checkpoint; do not redo Stage1/2 unless source or canonical-identity evidence changes. Preserve zero-source-audio rows 743, 766, 785, 791, 792 and 811 and reuse locked Apfelsaft ID ma1m-lu-0747. At Stage 6 resolve the newest German Flashcards Pro portable artifact again.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -158,8 +94,8 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-GFP-v417-LOCKED.zip",
     "latest_portable_checkpoint_sha256": "cdae60b598b9a04b6b2d11c84fd24973a0b0915caa9f319132476ea9312c569b"
   },
-  "current_scope": "A1-L11 ready; A1-L01 through A1-L10 locked",
-  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51",
+  "current_scope": "A1-L11 Stage3 ready; A1-L01 through A1-L10 locked",
+  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_STAGE1_2_PASS",
   "locked_at": "2026-09-19",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -484,9 +420,32 @@
     "next_action": "Start A1-L10 Stage 1/2."
   },
   "latest_stage12_checkpoint": {
-    "status": "SUPERSEDED_BY_LOCKED_A1_L10",
-    "scope": "A1-L10",
-    "note": "Final verified A1-L10 LOCKED release is the resume authority."
+    "status": "ACTIVE",
+    "scope": "A1-L11",
+    "filename": "Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
+    "sha256": "c82e81a76796d085fba34986a5fd59652ee8932926d3480766f193ab17bfab4e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
+    "source_rows": 116,
+    "source_audio_refs": 110,
+    "zero_audio_rows": [
+      743,
+      766,
+      785,
+      791,
+      792,
+      811
+    ],
+    "lesson_target_mappings": 165,
+    "new_canonical_targets": 164,
+    "reused_canonical_targets": 1,
+    "new_senses": 58,
+    "new_expressions": 106,
+    "reused_stable_ids": [
+      "ma1m-lu-0747"
+    ],
+    "new_stable_id_range": "ma1m-lu-0998..ma1m-lu-1161",
+    "next_new_id": "ma1m-lu-1162",
+    "next_action": "Stage 3 evidence/enrichment"
   },
   "a1_l10": {
     "state": "LOCKED",
@@ -520,5 +479,34 @@
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json"
     },
     "next_action": "Start A1-L11 Stage 1/2."
+  },
+  "a1_l11": {
+    "state": "STAGE1_2_PASS",
+    "source_rows": 116,
+    "source_audio_refs": 110,
+    "source_zero_audio_rows": 6,
+    "source_zero_audio_ordinals": [
+      743,
+      766,
+      785,
+      791,
+      792,
+      811
+    ],
+    "lesson_target_mappings": 165,
+    "new_canonical_targets": 164,
+    "reused_canonical_targets": 1,
+    "new_senses": 58,
+    "new_expressions": 106,
+    "reused_stable_ids": [
+      "ma1m-lu-0747"
+    ],
+    "new_stable_id_range": "ma1m-lu-0998..ma1m-lu-1161",
+    "checkpoint": {
+      "filename": "Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
+      "sha256": "c82e81a76796d085fba34986a5fd59652ee8932926d3480766f193ab17bfab4e",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip"
+    },
+    "next_action": "Continue Stage 3 evidence/enrichment."
   }
 }

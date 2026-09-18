@@ -136,7 +136,7 @@
       "pass_commit_sha": "21da1a08ee94bc86422fe1787cc13dd31dfdaa9b"
     },
     "4_linguistic_lexical_qa": {
-      "state": "RUNNING",
+      "state": "PASS",
       "authoritative_artifacts": [
         "04-qa/STAGE4-QA-INDEX.json",
         "04-qa/STAGE4-BATCH-A1B1-001-010.json",
@@ -152,22 +152,27 @@
         "04-qa/STAGE4-BATCH-B2C1-021-030.json",
         "04-qa/STAGE4-BATCH-B2C1-031-040.json",
         "04-qa/STAGE4-BATCH-B2C1-041-050.json",
-        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-Through-B2C1-Ch050-CHECKPOINT.zip"
+        "04-qa/STAGE4-BATCH-B2C1-051-060.json",
+        "04-qa/STAGE4-BATCH-B2C1-061-070.json",
+        "04-qa/STAGE4-BATCH-B2C1-071-080.json",
+        "04-qa/STAGE4-BATCH-B2C1-081-088.json",
+        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip"
       ],
       "progress": {
         "source_chapters_total": 168,
-        "reviewed_lessons": 130,
-        "passed_lessons": 130,
+        "reviewed_lessons": 168,
+        "passed_lessons": 168,
         "failed_lessons": 0,
-        "remaining_lessons": 38,
+        "remaining_lessons": 0,
         "a1_b1_contiguous_reviewed_through_chapter": 80,
         "a1_b1_stage4_status": "COMPLETE",
-        "b2_c1_contiguous_reviewed_through_chapter": 50,
-        "repairs_applied": 248
+        "b2_c1_contiguous_reviewed_through_chapter": 88,
+        "b2_c1_stage4_status": "COMPLETE",
+        "repairs_applied": 317
       },
-      "gate_evidence": "A1-B1 001-080 and B2-C1 001-050 PASS_AFTER_REPAIR. B2-C1 041-050 source visual review, answer-spec integrity, semantic exercise-target hardening and precise feedback gates passed with 0 unresolved findings.",
-      "next_action": "Continue Stage 4 with B2-C1 chapters 051-060.",
-      "pass_commit_sha": null
+      "gate_evidence": "Stage 4 complete: 17 source-order QA batches PASS_AFTER_REPAIR; final portable overlay 124 lessons has 0 unresolved integrity findings; 4 Git-resident Stage-4 pointer lessons PASS; final ZIP/post-package verification PASS.",
+      "next_action": "Begin Stage 5 delivery projection. Do not regenerate Stage-4 lessons.",
+      "pass_commit_sha": "8e7c449382a73d04d1fd5776d818428c1e5e6079"
     },
     "5_delivery_projection": {
       "state": "NOT_STARTED",
@@ -184,7 +189,7 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1-3 PASS. Stage 4 RUNNING: A1-B1 1-80 complete; B2-C1 1-50 reviewed and PASS_AFTER_REPAIR. Resume at ga-b2c1-ch051..060. Use the Through-B2C1-Ch050 portable checkpoint.",
+  "resume_instruction": "Stages 1-4 PASS. Stage 4 is complete for all 168 lessons (A1-B1 80/80, B2-C1 88/88) with 317 verified repairs. Resume at Stage 5 delivery projection using the final Stage4 COMPLETE portable checkpoint.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
@@ -194,11 +199,11 @@
     "git_base_head_with_44_repaired_lessons": "d43a69e26d2fc85952d0dba0bc891c0e1aff8c97",
     "git_note": "Stage 3 PASS metadata and Evidence Index are synchronized. The Git lesson tree intentionally remains a partial mirror; the 124 repaired lesson overlays remain portable artifact authority until a later content-tree sync.",
     "stage3_pass_metadata_commit": "21da1a08ee94bc86422fe1787cc13dd31dfdaa9b",
-    "stage4_latest_batch_commit": "19cf78d2839546c5b0599819d54eb17fe1ed1df0",
+    "stage4_latest_batch_commit": "8e7c449382a73d04d1fd5776d818428c1e5e6079",
     "stage4_portable_state": "VERIFIED_LIBRARY_UPLOADED",
-    "stage4_portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-Through-B2C1-Ch050-CHECKPOINT.zip",
-    "stage4_portable_sha256": "34ce8d8a6dc57281ee2454158fe9cf44e5a8be0e79ac557981c7401279f591f9",
-    "stage4_note": "Through-B2C1-Ch050 supersedes Through-B2C1-Ch040; B2-C1 041-050 QA metadata and portable authority are synchronized."
+    "stage4_portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
+    "stage4_portable_sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
+    "stage4_note": "Stage 4 final portable checkpoint supersedes Through-B2C1-Ch060 and completes 168/168 linguistic/pedagogical QA. Git-resident ch082 Stage-4 repair commit: d7fac6a7e3680dff5c80bfce1df12357fdd751d3."
   },
   "portable_checkpoint": {
     "name": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",

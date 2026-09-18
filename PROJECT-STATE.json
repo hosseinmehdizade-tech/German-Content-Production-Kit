@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T01:50:12+02:00",
+  "updated_at": "2026-09-19T02:00:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -68,8 +68,8 @@
       "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
       "source_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
-      "last_observed_stage": "5_delivery_projection_pass",
-      "last_observed_note": "Stages 1-5 PASS and durably persisted. Stage 4 is frozen at 168/168 with 317 cumulative repairs. Stage 5 resolves R44-v1 lossiness with additive grammar.content.v2 / grammar.runtime.v2, lossless canonical embedding, 168/168 authority coverage (124 portable + 44 Git), zero gap/overlap, no visible UI change.",
+      "last_observed_stage": "6_runtime_presentation_acceptance_running",
+      "last_observed_note": "Stages 1-5 PASS. Stage 6 engineering subgates PASS: 168/168 runtime v2 materialized, 346 exercises, lossless canonical roundtrip, semantic targets, prerequisite graph, grading, shared Fehlerbuch, existing Grammar-domain compatibility, deterministic no-UI overlay, and release-hygiene. Full Stage 6 PASS is withheld because exact v417-R51 App ZIP bytes are not currently materializable for exact browser/offline/post-package acceptance.",
       "latest_portable_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
         "sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
@@ -78,7 +78,7 @@
         "stage3_state": "PASS",
         "git_metadata_sync_commit": "aa53f98eb0c499a9d6c112fb5b52dc9144a895b5"
       },
-      "next_scope": "Stage 6 runtime/presentation acceptance against newest live German-Flashcards-Pro runtime.",
+      "next_scope": "Materialize or explicitly re-upload exact GFP-v417-R51 App ZIP (sha256 93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4), apply Stage6 Grammar v2 overlay to those exact bytes, then run browser/offline/regression/post-package verification.",
       "latest_stage4_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
         "sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
@@ -103,6 +103,22 @@
         "portable_state": "VERIFIED_LIBRARY_UPLOADED",
         "authority_coverage": "168/168",
         "visible_ui_change": "NONE"
+      },
+      "stage6": {
+        "state": "RUNNING_EXACT_APP_BOUNDARY",
+        "app_branch": "grammar-runtime-v2-stage6",
+        "engineering_acceptance_commit": "a72c4a2029583a175a54f8004cee06b2337b90d6",
+        "app_acceptance_report_commit": "ca613a355fccc2f8f4fa1a62d0130eedad06d24b",
+        "content_checkpoint_commit": "a541cdcf47e11c0c2acd8688072b16a70fd176b2",
+        "target_runtime": "v417-R51",
+        "target_app_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
+        "runtime_entries": 168,
+        "runtime_exercises": 346,
+        "entries_sha256": "cf4c656da75660d8ce39b1fbd45afaec9b94e72b460ff03c440d31c74c109aa1",
+        "engineering_ci": "PASS",
+        "release_hygiene": "PASS",
+        "visible_ui_change": "NONE",
+        "blocker": "EXACT_V417_APP_BYTES_UNAVAILABLE"
       }
     },
     "nomen_verb_verbindungen": {

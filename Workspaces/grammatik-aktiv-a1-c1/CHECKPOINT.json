@@ -99,31 +99,26 @@
     "3_evidence_enrichment": {
       "state": "RUNNING",
       "authoritative_artifacts": [
-        "03-evidence/EVIDENCE-INDEX.json (Git mirror through ch040; stale by design)",
-        "03-evidence/lessons/ga-a1b1-ch001..ga-a1b1-ch040.json",
-        "03-evidence/lessons/ga-a1b1-ch070.json",
-        "03-evidence/lessons/ga-b2c1-ch001.json",
-        "03-evidence/lessons/ga-b2c1-ch014.json",
-        "03-evidence/lessons/ga-b2c1-ch082.json",
-        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip"
+        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch081-CHECKPOINT.zip",
+        "GIT_MIRROR: 03-evidence lesson/index content may lag under async-Git",
+        "REUSED_PRIOR: A1-B1 ch001-ch080; B2-C1 ch001-ch081; B2-C1 pilot ch082"
       ],
       "progress": {
         "source_chapters_total": 168,
-        "source_chapters_evidence_complete_for_draft": 74,
-        "enriched_lesson_drafts_persisted": 74,
-        "remaining_chapters": 94,
+        "source_chapters_evidence_complete_for_draft": 162,
+        "enriched_lesson_drafts_persisted": 162,
+        "remaining_chapters": 6,
         "six_pilot_types_persisted": 6,
-        "a1_b1_contiguous_source_order_complete_through_chapter": 71,
-        "additional_a1_b1_pilots_complete": [],
-        "b2_c1_pilots_complete": [
-          1,
-          14,
+        "a1_b1_contiguous_source_order_complete_through_chapter": 80,
+        "a1_b1_stage3_draft_coverage": "COMPLETE",
+        "b2_c1_contiguous_source_order_complete_through_chapter": 81,
+        "b2_c1_additional_pilots_complete": [
           82
         ],
         "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED"
       },
-      "gate_evidence": "Portable checkpoint BATCH-0061-0071-VALIDATION.json + chained verified checkpoints through chapter 60",
-      "next_action": "Continue A1-B1 in source order with chapters 72-80. Do not redo chapters 1-71 or persisted B2-C1 pilots. Completing chapter 80 will finish A1-B1 Stage-3 draft coverage; Stage 3 remains RUNNING for the full 168-chapter dataset.",
+      "gate_evidence": "Verified Library portable checkpoint through B2-C1 chapter 81; BATCH-B2-0080-0081-VALIDATION PASS and dedicated source-fidelity review PASS.",
+      "next_action": "Reuse existing chapter-82 pilot without regeneration. Continue accuracy-first with B2-C1 chapters 83-85 only, then 86-88 in a separate source-reviewed batch. Do not redo chapters 1-81.",
       "pass_commit_sha": null
     },
     "4_linguistic_lexical_qa": {
@@ -145,24 +140,22 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1 and 2 remain PASS. Stage 3 working authority is the verified Library checkpoint with 74 evidence-linked drafts: A1-B1 chapters 1-71 continuously (chapter 70 reused from the prior pilot), plus B2-C1 pilots 1,14,82. Resume directly with A1-B1 chapters 72-80.",
+  "resume_instruction": "Stages 1 and 2 remain PASS. Stage 3 portable authority has 162 evidence-linked drafts: all A1-B1 chapters 1-80, B2-C1 chapters 1-81 continuously, plus existing B2-C1 pilot 82. Resume with B2-C1 chapters 83-85; do not reprocess 82.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
-    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip",
-    "portable_sha256": "c394ec69de9a4b2da0e3d67f630728786a7040f96ad7dd7f3fab9d896d9b6bc4",
+    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch081-CHECKPOINT.zip",
+    "portable_sha256": "2cca4ee8a78d52e5119b5e6f0998f4f86b5089db1c9379a5dffd0e3098c65c7b",
     "git": "IN_SYNC_METADATA_ONLY",
-    "git_metadata": "IN_SYNC_AFTER_THIS_COMMIT",
-    "git_content_delta": "PENDING_CH041_CH071",
-    "git_content_mirror_contiguous_through_chapter": 40,
-    "note": "Artifact-first authority is the verified Library checkpoint through chapter 71. The Git lesson/index tree remains through chapter 40; this checkpoint records that intentional async-Git lag."
+    "git_content_tree_contiguous_through_chapter": 40,
+    "git_note": "Artifact-first async-Git policy. Portable checkpoint is working authority; Git lesson/index content tree may lag."
   },
   "portable_checkpoint": {
-    "name": "Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip",
-    "sha256": "c394ec69de9a4b2da0e3d67f630728786a7040f96ad7dd7f3fab9d896d9b6bc4",
-    "parent": "Grammar-Aktiv-v3.3.2-Stage3-Through-Ch060-CHECKPOINT.zip",
-    "parent_sha256": "1201751c0d5678f61201e1e54cb44f74e8fa7f2542863609043d010a6768d863",
-    "contains": "chapters 61-69 and 71 delta + updated Evidence Index + updated CHECKPOINT + batch validation; chapter 70 reused from prior pilot",
+    "name": "Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch081-CHECKPOINT.zip",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch081-CHECKPOINT.zip",
+    "sha256": "2cca4ee8a78d52e5119b5e6f0998f4f86b5089db1c9379a5dffd0e3098c65c7b",
+    "parent": "Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch079-CHECKPOINT.zip",
+    "parent_sha256": "76f1e3dea3d6051b57065e5f511589d9d04855248c1a65224847b7204a89c476",
+    "contains": "B2-C1 chapters 80-81 delta + updated Evidence Index + structural validation + dedicated source-fidelity review",
     "status": "VERIFIED_LIBRARY_UPLOADED"
   }
 }

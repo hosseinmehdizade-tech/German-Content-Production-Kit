@@ -1,0 +1,70 @@
+{
+  "qa_schema": "grammar-stage4-batch-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "4_linguistic_lexical_qa",
+  "batch_id": "a1b1-031-040",
+  "scope": {
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch031",
+      "ga-a1b1-ch032",
+      "ga-a1b1-ch033",
+      "ga-a1b1-ch034",
+      "ga-a1b1-ch035",
+      "ga-a1b1-ch036",
+      "ga-a1b1-ch037",
+      "ga-a1b1-ch038",
+      "ga-a1b1-ch039",
+      "ga-a1b1-ch040"
+    ]
+  },
+  "status": "PASS_AFTER_REPAIR",
+  "review_mode": "FULL_LESSON_LINGUISTIC_REVIEW_PLUS_MACHINE_INTEGRITY_GATE",
+  "machine_gate": {
+    "status": "PASS",
+    "lessons": 10,
+    "rules": 41,
+    "patterns": 10,
+    "examples": 24,
+    "common_errors": 11,
+    "exercises": 20,
+    "source_refs": 130,
+    "source_id_mismatches": 0,
+    "source_page_range_errors": 0,
+    "printed_pdf_offset_errors": 0,
+    "answer_spec_errors": 0,
+    "runtime_srs_state_leaks": 0,
+    "missing_persian_script_fields": 0
+  },
+  "repairs": [
+    {
+      "lesson_id": "ga-a1b1-ch034",
+      "type": "EXERCISE_PROMPT_ANSWER_ALIGNMENT",
+      "summary": "Rewrote the static-location fill-gap prompt so the accepted full phrase 'im Schrank / in dem Schrank' no longer duplicates the noun already present in the prompt."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch035",
+      "type": "LOCAL_PREPOSITION_NATURALNESS",
+      "summary": "Replaced the unnatural destination phrase 'zum Büro' with idiomatic 'ins Büro' while preserving the Wo/Wohin contrast and contraction teaching goal."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch039",
+      "type": "SUPERLATIVE_MORPHOLOGY_PRECISION",
+      "summary": "Corrected the attributive-superlative explanation to Superlativstamm -(e)st- plus the appropriate adjective ending, avoiding a misleading '-ste plus ending' formulation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch039",
+      "type": "PERSIAN_NATURALNESS",
+      "summary": "Improved the Persian translation of 'Sara fährt am vorsichtigsten' to a natural superlative rendering."
+    }
+  ],
+  "unresolved_errors": [],
+  "unresolved_warnings": [],
+  "stage4_progress_after_batch": {
+    "reviewed_lessons": 40,
+    "total_lessons": 168,
+    "remaining_lessons": 128,
+    "contiguous_a1b1_reviewed_through": 40
+  },
+  "next_action": "Continue Stage 4 with ga-a1b1-ch041..050."
+}

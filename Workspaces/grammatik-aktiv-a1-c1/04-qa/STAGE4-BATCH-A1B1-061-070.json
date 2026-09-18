@@ -1,5 +1,5 @@
 {
-  "qa_schema": "grammar-stage4-batch-qa@1.1.0",
+  "qa_schema": "grammar-stage4-batch-qa@1.2.0",
   "dataset_id": "grammatik-aktiv-a1-c1",
   "stage": "4_linguistic_lexical_qa",
   "batch_id": "a1b1-061-070",
@@ -29,15 +29,18 @@
     "exercises": 20,
     "source_refs": 130,
     "answer_spec_errors": 0,
-    "unresolved_findings": 0
+    "unresolved_findings": 0,
+    "semantic_target_refs_checked": 33,
+    "semantic_target_ref_errors": 0
   },
-  "repairs": 12,
+  "repairs": 21,
   "repair_highlights": [
     "n-Deklination scope repaired to preserve the source exception das Herz",
     "substantivized-adjective case matrix completed through Genitiv",
     "Infinitiv-mit-zu subject-control rule repaired to fit empfehlen/raten constructions",
     "empty-string FILL_GAP replaced with machine-gradeable MC for schwimmen gehen",
-    "Relativsatz word-order matrix realigned with source structure"
+    "Relativsatz word-order matrix realigned with source structure",
+    "Retrospective semantic cross-reference hardening: exercise target_object_ids in ga-a1b1-ch061..069 were aligned to the exact rule(s) actually tested; ga-a1b1-ch070 was already semantically aligned."
   ],
   "source_authority": {
     "registered_sha256": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
@@ -49,16 +52,24 @@
     "total_lessons": 168,
     "remaining_lessons": 98,
     "contiguous_a1b1_reviewed_through": 70,
-    "cumulative_repairs": 56
+    "cumulative_repairs": 65
   },
   "portable_checkpoint": {
-    "filename": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch070-CHECKPOINT.zip",
-    "sha256": "83f9e69f758f1ed3015aa7ebeeb928c388126c06b1c65b644b21e13aea26171e",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch070-CHECKPOINT.zip"
+    "filename": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch080-CHECKPOINT.zip",
+    "sha256": "df59136e9958449ad1af028913f704fc8776d5d2156fa27c8cc1ca089bf376a0",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch080-CHECKPOINT.zip",
+    "note": "Current authority supersedes Through-Ch070 after semantic target hardening."
   },
   "git_resident_repaired_lesson": {
     "lesson_id": "ga-a1b1-ch070",
     "commit": "ecd5007e510bdd0c2effa52a975f4d7d11186b4d"
   },
-  "next_action": "Continue Stage 4 with ga-a1b1-ch071..080."
+  "next_action": "Continue Stage 4 with ga-a1b1-ch071..080.",
+  "retrospective_hardening": {
+    "trigger": "The chapter 71-80 audit exposed that Stage-3 structural validation guaranteed target existence but not target-to-exercise semantic alignment.",
+    "scope": "ga-a1b1-ch061..069",
+    "repaired_lessons": 9,
+    "result": "PASS — all exercise target_object_ids in scope reviewed; 0 unresolved semantic target findings.",
+    "supersedes_prior_report_claim": true
+  }
 }

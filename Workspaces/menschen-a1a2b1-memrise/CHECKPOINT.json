@@ -1,20 +1,118 @@
 {
-  "checkpoint_schema_version": "2.1.0",
+  "checkpoint_schema_version": "2.2.0",
   "pipeline": "seven-stage-production@1.0.0",
-  "dataset": {"id": "menschen-a1a2b1-memrise", "title": "Menschen A1/A2/B1 Memrise Full Audio", "levels": ["A1", "A2", "B1"], "authoritative_source": "user-provided RAR + embedded CSV"},
-  "workspace": {"repository": "hosseinmehdizade-tech/German-Content-Production-Kit", "branch": "main", "path": "Workspaces/menschen-a1a2b1-memrise", "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC", "git_sync_commit": "ff501c56340d86861e1055b8d3cf76529d7bff6b"},
-  "authorities": {"content_kit_prompt": "v3.3.2", "app_capability": "gfp-v411-content-capabilities@1.1.0", "menschen_profiles": ["menschen-a1-memrise@1.0.0", "menschen-a2-memrise@1.0.0", "menschen-b1-memrise@1.0.0"], "course_contract": "MENSCHEN-MEMRISE-COURSE-SOURCE-CONTRACT-v1.0.0", "audio_contract": "GFP-SOURCE-AUDIO-REFERENCE-CONTRACT-v1.0.0"},
+  "dataset": {
+    "id": "menschen-a1a2b1-memrise",
+    "title": "Menschen A1/A2/B1 Memrise Full Audio",
+    "levels": [
+      "A1",
+      "A2",
+      "B1"
+    ],
+    "authoritative_source": "user-provided RAR + embedded CSV"
+  },
+  "workspace": {
+    "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
+    "branch": "main",
+    "path": "Workspaces/menschen-a1a2b1-memrise",
+    "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
+    "git_sync_commit": "ff501c56340d86861e1055b8d3cf76529d7bff6b"
+  },
+  "authorities": {
+    "content_kit_prompt": "v3.3.2",
+    "app_capability": "gfp-v411-content-capabilities@1.1.0",
+    "menschen_profiles": [
+      "menschen-a1-memrise@1.0.0",
+      "menschen-a2-memrise@1.0.0",
+      "menschen-b1-memrise@1.0.0"
+    ],
+    "course_contract": "MENSCHEN-MEMRISE-COURSE-SOURCE-CONTRACT-v1.0.0",
+    "audio_contract": "GFP-SOURCE-AUDIO-REFERENCE-CONTRACT-v1.0.0",
+    "runtime_acceptance": "GFP-v413-R47 latest resolved artifact"
+  },
   "stages": [
-    {"stage": 1, "name": "Source & Inventory", "state": "PASS", "gate_evidence": "01-inventory/STAGE1-LOCAL-GATE.json", "outputs": ["00-source/SOURCE-MANIFEST.json", "01-inventory/SOURCE-INVENTORY.json", "01-inventory/SOURCE-INVENTORY.tsv", "01-inventory/LESSON-SUMMARY.json", "01-inventory/AUDIO-AUDIT.json", "01-inventory/A1-L01-SOURCE-SLICE.json"], "quality_state": "PASS", "persistence": {"portable": "IN_LIBRARY", "git_metadata": "IN_SYNC"}},
-    {"stage": 2, "name": "Canonicalization", "state": "PASS", "scope": "A1-L01 golden lesson only", "gate_evidence": "02-canonical/A1-L01-STAGE2-LOCAL-GATE.json", "outputs": ["02-canonical/A1-L01-CANONICAL-STUBS.json", "02-canonical/A1-L01-NORMALIZATION-DECISIONS.json", "02-canonical/A1-L01-SOURCE-TO-CANONICAL-MAP.json"], "summary": "89 source occurrences mapped to 118 canonical targets (86 Sense, 32 Expression); 20 rows semantically split, 7 rows preserve same-function source variants; no source row lost.", "quality_state": "PASS", "persistence": {"portable": "IN_LIBRARY", "git_metadata": "IN_SYNC"}},
-    {"stage": 3, "name": "Evidence & Enrichment", "state": "RUNNING", "scope": "A1-L01 golden lesson only", "next_artifact": "03-evidence/A1-L01-ENRICHMENT-QUEUE.json"},
-    {"stage": 4, "name": "Linguistic & Lexical QA", "state": "NOT_STARTED"},
-    {"stage": 5, "name": "Delivery Projection", "state": "NOT_STARTED"},
-    {"stage": 6, "name": "Runtime & Presentation Acceptance", "state": "NOT_STARTED"},
-    {"stage": 7, "name": "Release & Post-Package Verification", "state": "NOT_STARTED"}
+    {
+      "stage": 1,
+      "name": "Source & Inventory",
+      "state": "PASS",
+      "scope": "course inventory + A1-L01 source slice",
+      "quality_state": "PASS"
+    },
+    {
+      "stage": 2,
+      "name": "Canonicalization",
+      "state": "PASS",
+      "scope": "A1-L01",
+      "summary": "89 source occurrences mapped to 118 canonical targets (86 Sense, 32 Expression); no source row lost.",
+      "quality_state": "PASS"
+    },
+    {
+      "stage": 3,
+      "name": "Evidence & Enrichment",
+      "state": "PASS",
+      "scope": "A1-L01",
+      "summary": "118 targets, 472 DE examples, 472 FA example translations, 472 EN example translations; 21 review-flag instances explicitly resolved.",
+      "quality_state": "PASS"
+    },
+    {
+      "stage": 4,
+      "name": "Linguistic & Lexical QA",
+      "state": "PASS",
+      "scope": "A1-L01",
+      "summary": "25/25 final Stage-4 checks PASS; 0 errors; 0 warnings.",
+      "quality_state": "PASS"
+    },
+    {
+      "stage": 5,
+      "name": "Delivery Projection",
+      "state": "PASS",
+      "scope": "A1-L01",
+      "summary": "118 Universal-v2 rows; 20 german-verb + 98 de-vocabulary; projection target GFP-v413-R47.",
+      "quality_state": "PASS"
+    },
+    {
+      "stage": 6,
+      "name": "Runtime & Presentation Acceptance",
+      "state": "PASS",
+      "scope": "A1-L01 on GFP-v413-R47",
+      "summary": "20/20 integrated import/persistence/presentation checks PASS. Exact v413 app bytes unchanged. Source MP3 refs preserved; v413 Audio mode uses TTS.",
+      "quality_state": "PASS",
+      "environment_boundary": "Canonical v413 browser smoke is blocked by administrator loopback policy and is not claimed PASS."
+    },
+    {
+      "stage": 7,
+      "name": "Release & Post-Package Verification",
+      "state": "PASS",
+      "scope": "A1-L01 Golden Lesson",
+      "summary": "Fresh-extract release manifest PASS; app tree identity 117/117; Stage4 PASS; Stage6 PASS; v413 suite 9 executable gates PASS + 1 environment-blocked browser smoke.",
+      "quality_state": "PASS_WITH_ENV_BOUNDARY"
+    }
   ],
   "blockers": [],
-  "resume_instruction": "Continue Stage 3 Evidence & Enrichment for A1-L01 from the verified portable v3.3.2 artifact; do not start A1-L02 before A1-L01 completes Stages 3-7.",
-  "portable_state": {"filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip", "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f", "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip", "manifest_sha256": "4c087d551658853c8d7ededabf268b3c368ac9d06f6c36f4a9c79d00eac98336"},
-  "durability": {"quality_pass_is_backed_by_verified_portable_artifact": true, "git_metadata_in_sync": true, "large_payload_not_reconstructed_in_git_by_design": true}
+  "resume_instruction": "A1-L01 is locked. Start A1-L02 from the existing course inventory/source authority using the same v3.3.2 seven-stage pipeline. At Stage 6 resolve the newest Flashcards Pro artifact again; never permanently pin future lessons to v413.",
+  "portable_state": {
+    "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
+    "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
+    "manifest_sha256": "4c087d551658853c8d7ededabf268b3c368ac9d06f6c36f4a9c79d00eac98336"
+  },
+  "durability": {
+    "quality_pass_is_backed_by_verified_portable_artifact": true,
+    "git_metadata_in_sync": true,
+    "large_payload_not_reconstructed_in_git_by_design": true,
+    "release_in_library": true
+  },
+  "current_scope": "A1-L02 ready after A1-L01 Golden Lesson lock",
+  "lock_state": "A1-L01_LOCKED_FOR_GFP_V413_R47",
+  "locked_at": "2026-09-18",
+  "release_artifact": {
+    "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+    "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
+    "library_path": "/Flasch kart/German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+    "post_package_verification": "/Flasch kart/German-Flashcards-Pro-v413-R47-Menschen-A1-L01-POST-PACKAGE-VERIFICATION.json"
+  },
+  "a1_l02": {
+    "state": "READY_TO_START",
+    "rule": "Proceed lesson-by-lesson; do not invalidate A1-L01 unless a real upstream contract/source/runtime incompatibility requires it."
+  }
 }

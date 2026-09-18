@@ -97,31 +97,42 @@
       "pass_commit_sha": "6797af18de10fc4c86965ffcc1b25104d35e80fe"
     },
     "3_evidence_enrichment": {
-      "state": "RUNNING",
+      "state": "PASS",
       "authoritative_artifacts": [
-        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch085-CHECKPOINT.zip",
-        "POST_PACKAGE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch085-POST-PACKAGE-VERIFICATION.json",
-        "GIT_MIRROR: lesson/index content tree may lag under async-Git",
-        "REUSED_PRIOR: all A1-B1 ch001-ch080; B2-C1 ch001-ch085, including audited existing pilot ch082"
+        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
+        "PORTABLE_PARENT:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Draft-Coverage-168of168-CHECKPOINT.zip",
+        "GIT_BASE: 44 Git-resident repaired lessons through A1-B1 ch040 plus pilots ga-a1b1-ch070, ga-b2c1-ch001, ga-b2c1-ch014, ga-b2c1-ch082",
+        "PORTABLE_REPAIR_OVERLAY: 124 lessons / 256 exercises"
       ],
       "progress": {
         "source_chapters_total": 168,
-        "source_chapters_evidence_complete_for_draft": 165,
-        "enriched_lesson_drafts_persisted": 165,
-        "remaining_chapters": 3,
+        "source_chapters_evidence_complete_for_draft": 168,
+        "enriched_lesson_drafts_persisted": 168,
+        "remaining_chapters": 0,
         "six_pilot_types_persisted": 6,
         "a1_b1_contiguous_source_order_complete_through_chapter": 80,
         "a1_b1_stage3_draft_coverage": "COMPLETE",
-        "b2_c1_contiguous_source_order_complete_through_chapter": 85,
+        "b2_c1_contiguous_source_order_complete_through_chapter": 88,
+        "b2_c1_stage3_draft_coverage": "COMPLETE",
         "b2_c1_reused_pilots_in_contiguous_range": [
           1,
           14,
           82
         ],
+        "full_168_integrity_gate": "PASS",
+        "answer_spec_integrity": "346/346 PASS",
+        "exercise_type_inventory": {
+          "MULTIPLE_CHOICE": 66,
+          "TRUE_FALSE": 15,
+          "FILL_GAP": 142,
+          "SHORT_ANSWER": 123
+        },
+        "prerequisite_graph": "168 nodes / 231 edges / 0 cycles",
+        "object_id_integrity": "2282 checked / 0 duplicates / 0 namespace violations",
         "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED"
       },
-      "gate_evidence": "Verified Library checkpoint through B2-C1 chapter 85; BATCH-B2-0083-0085-VALIDATION PASS; dedicated source-fidelity review PASS; fresh-extract post-package verification PASS.",
-      "next_action": "Continue accuracy-first with B2-C1 chapters 86-88 only. Render and visually review their complete source scope before drafting. After persistence, run a full 168-chapter Stage-3 coverage/integrity validation before Stage 3 PASS.",
+      "gate_evidence": "Portable Stage3-INTEGRITY-PASS checkpoint: FULL-168-STAGE3-INTEGRITY-VALIDATION.json + EXERCISE-TYPE-INVENTORY.json + ANSWER-SPEC-REPAIR-LOG.json; fresh package verification PASS.",
+      "next_action": "Begin Stage 4 linguistic/lexical QA across all 168 lessons. Use the repaired 124-lesson portable overlay and current Git-resident 44 repaired lessons; do not revert to legacy answer_spec shapes.",
       "pass_commit_sha": null
     },
     "4_linguistic_lexical_qa": {
@@ -143,23 +154,23 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1 and 2 remain PASS. Stage 3 portable authority has 165 evidence-linked drafts: all A1-B1 chapters 1-80 and B2-C1 chapters 1-85 continuously. Chapter 82 was reused after an explicit source-fidelity and page-locator audit. Resume only with B2-C1 chapters 86-88.",
+  "resume_instruction": "Stages 1-3 PASS. Stage 3 covers all 168 chapters and the full integrity gate passed after repairing exercise answer_spec compatibility. Resume at Stage 4 linguistic/lexical QA; do not regenerate Stage-3 chapter drafts.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
-    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch085-CHECKPOINT.zip",
-    "portable_sha256": "1f8b9ea20f541c55cc36a3d0f08c7df0c2824b5c2f157b885b090ff8fa31a52a",
-    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch085-POST-PACKAGE-VERIFICATION.json",
-    "git": "IN_SYNC_METADATA_ONLY",
+    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
+    "portable_sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
+    "git": "METADATA_SYNC_IN_PROGRESS",
     "git_content_tree_contiguous_through_chapter": 40,
-    "git_note": "Artifact-first async-Git policy. Portable checkpoint is working authority; Git lesson/index content tree may lag."
+    "git_base_head_with_44_repaired_lessons": "d43a69e26d2fc85952d0dba0bc891c0e1aff8c97",
+    "git_note": "Stage 3 PASS metadata is being synchronized. The 124 repaired lesson overlays remain portable artifact authority until future content-tree mirroring."
   },
   "portable_checkpoint": {
-    "name": "Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch085-CHECKPOINT.zip",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch085-CHECKPOINT.zip",
-    "sha256": "1f8b9ea20f541c55cc36a3d0f08c7df0c2824b5c2f157b885b090ff8fa31a52a",
-    "parent": "Grammar-Aktiv-v3.3.2-Stage3-B2-Through-Ch081-CHECKPOINT.zip",
-    "parent_sha256": "2cca4ee8a78d52e5119b5e6f0998f4f86b5089db1c9379a5dffd0e3098c65c7b",
-    "contains": "B2-C1 chapters 83-85 delta + chapter-82 fidelity/page-locator audit + updated Evidence Index + structural validation + source-fidelity review",
+    "name": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
+    "sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
+    "parent": "Grammar-Aktiv-v3.3.2-Stage3-Draft-Coverage-168of168-CHECKPOINT.zip",
+    "parent_sha256": "b300f835597afa737c425bb45b90b6a6ba9e09e5714a996e12792898b05e169e",
+    "contains": "124 repaired portable lesson overlays + full 168-chapter integrity validation + exercise inventory + repair log",
     "status": "VERIFIED_LIBRARY_UPLOADED"
   }
 }

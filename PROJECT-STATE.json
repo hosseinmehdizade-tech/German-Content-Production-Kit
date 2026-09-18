@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T00:10:00+02:00",
+  "updated_at": "2026-09-19T01:18:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -122,9 +122,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L11 ready; A1-L01 through A1-L10 locked",
-      "last_observed_stage": "7_release_locked_A1_L10",
-      "last_observed_note": "A1-L10 completed all seven stages on GFP v417/R51: 93 source rows / 92 source audio refs with one explicit zero-audio source row -> 127 lesson targets (125 new canonical IDs + reused locked echt IDs ma1m-lu-0345 and ma1m-lu-0362), 55 senses + 72 expressions, 508 DE examples with FA+EN, 72 evidence-backed relations, 42 review flags resolved, Stage4 39/39 PASS, official validator 127 exact4 / 0 warnings, framework regression 47/47 PASS, exact final outer LOCKED.zip runtime acceptance 27/27 PASS with 127/127 standalone persistence. L01-L10 cumulative identity/collision acceptance is 997 unique canonical IDs: 125 new L10 IDs, expected echt reuse only, and prior Uhr reuse preserved. A single sequential 997-card durable-persistence browser run is intentionally not claimed due the managed environment boundary.",
+      "current_scope": "A1-L11 Stage3 ready; A1-L01 through A1-L10 locked",
+      "last_observed_stage": "2_canonicalization_pass_A1_L11",
+      "last_observed_note": "A1-L11 Stage1/2 PASS: source rows 732..847 = 116 rows; 110 source audio refs with explicit zero-audio rows 743, 766, 785, 791, 792 and 811; 110/110 referenced MP3 membership PASS. Canonical mapping produces 165 lesson targets: 164 new canonical IDs (58 senses + 106 expressions) in ma1m-lu-0998..ma1m-lu-1161 plus reuse of locked A1-L09 Apfelsaft ma1m-lu-0747. Thirty-six source rows split into multiple semantic targets. No new LOCKED claim is made for L11 yet.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L10-v3.3.2-GFP-v417-LOCKED.zip",
         "sha256": "cdae60b598b9a04b6b2d11c84fd24973a0b0915caa9f319132476ea9312c569b",
@@ -142,11 +142,21 @@
         "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
         "checkpoint_git_sync_commit": "7aa80bd26977f07f04ee9d3604cfdbc5444273db"
       },
-      "lock_state": "A1-L01_TO_A1-L10_LOCKED",
-      "next_scope": "A1-L11",
+      "lock_state": "A1-L01_TO_A1-L10_LOCKED__A1-L11_STAGE1_2_PASS",
+      "next_scope": "A1-L11 Stage3",
       "latest_stage12_checkpoint": {
-        "status": "SUPERSEDED_BY_LOCKED_A1_L10",
-        "note": "Final verified A1-L10 LOCKED release is the resume authority."
+        "filename": "Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "sha256": "c82e81a76796d085fba34986a5fd59652ee8932926d3480766f193ab17bfab4e",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "status": "VERIFIED_PORTABLE_GIT_METADATA_SYNCED",
+        "scope": "A1-L11",
+        "new_canonical_targets": 164,
+        "reused_canonical_targets": 1,
+        "reused_stable_ids": [
+          "ma1m-lu-0747"
+        ],
+        "next_new_id": "ma1m-lu-1162",
+        "checkpoint_git_sync_commit": "ebd4139304938c6a3047c805a867654a0a8bf02d"
       }
     },
     "vocabulary": {

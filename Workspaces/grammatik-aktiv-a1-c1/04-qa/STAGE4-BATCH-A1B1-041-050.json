@@ -1,0 +1,86 @@
+{
+  "qa_schema": "grammar-stage4-batch-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "4_linguistic_lexical_qa",
+  "batch_id": "a1b1-041-050",
+  "scope": {
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch041",
+      "ga-a1b1-ch042",
+      "ga-a1b1-ch043",
+      "ga-a1b1-ch044",
+      "ga-a1b1-ch045",
+      "ga-a1b1-ch046",
+      "ga-a1b1-ch047",
+      "ga-a1b1-ch048",
+      "ga-a1b1-ch049",
+      "ga-a1b1-ch050"
+    ]
+  },
+  "status": "PASS_AFTER_REPAIR",
+  "review_mode": "FULL_LESSON_LINGUISTIC_REVIEW_PLUS_MACHINE_INTEGRITY_GATE",
+  "machine_gate": {
+    "status": "PASS",
+    "lessons": 10,
+    "rules": 37,
+    "patterns": 10,
+    "examples": 30,
+    "common_errors": 10,
+    "exercises": 20,
+    "source_refs": 127,
+    "source_id_mismatches": 0,
+    "source_page_range_errors": 0,
+    "printed_pdf_offset_errors": 0,
+    "answer_spec_errors": 0,
+    "runtime_srs_state_leaks": 0,
+    "missing_persian_script_fields": 0
+  },
+  "repairs": [
+    {
+      "lesson_id": "ga-a1b1-ch042",
+      "type": "EXAMPLE_RULE_ALIGNMENT",
+      "summary": "Changed e3 so the subordinate clause itself contains the separable verb 'ankommt', matching the rule it cites."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch043",
+      "type": "PERSIAN_NATURALNESS",
+      "summary": "Refined the Persian rendering of 'gleich' to preserve near-future meaning."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch045",
+      "type": "COMMON_ERROR_VALIDITY",
+      "summary": "Put the Kaffeetasse article contrast into a nominative sentence because isolated 'der Kaffeetasse' can be grammatically valid."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch046",
+      "type": "COMMON_ERROR_VALIDITY",
+      "summary": "Contextualized the singular diminutive article error because isolated 'die Häuschen' is a valid plural noun phrase."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch047",
+      "type": "GRAMMAR_TERMINOLOGY",
+      "summary": "Reframed heterogeneous sein/haben combinations as spoken fixed connections instead of treating all of them as one separable-compound-verb type."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch048",
+      "type": "COMMON_ERROR_VALIDITY",
+      "summary": "Added nominative sentence context because isolated 'der Sonne' can be grammatical in dative/genitive contexts."
+    }
+  ],
+  "unresolved_errors": [],
+  "unresolved_warnings": [],
+  "stage4_progress_after_batch": {
+    "reviewed_lessons": 50,
+    "total_lessons": 168,
+    "remaining_lessons": 118,
+    "contiguous_a1b1_reviewed_through": 50
+  },
+  "portable_checkpoint": {
+    "filename": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch050-CHECKPOINT.zip",
+    "sha256": "d286f7d112388d6d9d033bd2b9b35a2b1fca5b139592803c91512d385c688fae",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch050-CHECKPOINT.zip",
+    "mode": "DELTA_OVERLAY"
+  },
+  "next_action": "Continue Stage 4 with ga-a1b1-ch051..060."
+}

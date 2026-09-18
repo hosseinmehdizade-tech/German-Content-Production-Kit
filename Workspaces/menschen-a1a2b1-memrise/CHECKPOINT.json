@@ -101,7 +101,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 and A1-L02 are locked. Start A1-L03 Stage 1/2 from the existing course inventory. At Stage 6 resolve the newest Flashcards Pro artifact again; do not pin future lessons permanently to v416.",
+  "resume_instruction": "A1-L01 and A1-L02 are locked. Resume A1-L03 at Stage 3 from the portable Stage1-2 checkpoint; do not redo Stages 1-2 unless source authority changes.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -113,9 +113,10 @@
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
-    "latest_locked_lesson": "A1-L02"
+    "latest_locked_lesson": "A1-L02",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L03-v3.3.2-Stage1-2-CHECKPOINT.zip"
   },
-  "current_scope": "A1-L03 ready; A1-L01 and A1-L02 locked",
+  "current_scope": "A1-L03 Stage 1-2 complete; Stage 3 ready",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED_FOR_GFP_V416_R50",
   "locked_at": "2026-09-18",
   "release_artifact": {
@@ -159,7 +160,30 @@
     }
   },
   "a1_l03": {
-    "state": "READY_TO_START",
-    "rule": "Proceed lesson-by-lesson; preserve locked L01/L02 unless a real upstream incompatibility invalidates them."
+    "state": "STAGE3_READY",
+    "stage1": {
+      "state": "PASS",
+      "source_rows": 46,
+      "audio_refs": 46,
+      "missing_audio_rows": 0
+    },
+    "stage2": {
+      "state": "PASS_CANDIDATE_LOCAL",
+      "canonical_targets": 68,
+      "senses": 47,
+      "expressions": 21,
+      "split_source_rows": 20,
+      "review_flagged_targets": 17,
+      "stable_id_range": [
+        "ma1m-lu-0217",
+        "ma1m-lu-0284"
+      ]
+    },
+    "portable_checkpoint": {
+      "filename": "Menschen-A1-L03-v3.3.2-Stage1-2-CHECKPOINT.zip",
+      "sha256": "0879826a4a92699d051d47f8b53038d6426b4b25f4d0fad9e944d38a47d9fa41",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L03-v3.3.2-Stage1-2-CHECKPOINT.zip"
+    },
+    "next_action": "Stage 3 Evidence & Enrichment for 68 targets; resolve 17 flagged targets before Stage 4."
   }
 }

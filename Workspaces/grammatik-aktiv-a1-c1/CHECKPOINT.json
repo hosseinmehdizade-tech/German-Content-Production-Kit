@@ -197,8 +197,45 @@
       "pass_commit_sha": "2813b1368e13ff3b30bbe2d6f3b134066259a0cb"
     },
     "6_runtime_presentation_acceptance": {
-      "state": "NOT_STARTED",
+      "state": "RUNNING",
       "requirement": "Resolve newest explicit runtime authority at execution time and pin both artifact SHA-256 and synchronized Git commit before PASS.",
+      "authoritative_artifacts": [
+        "06-runtime/STAGE6-RUNTIME-PRESENTATION-ACCEPTANCE.json",
+        "APP_BRANCH:hosseinmehdizade-tech/German-Flashcards-Pro@grammar-runtime-v2-stage6",
+        "TARGET_APP:GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip"
+      ],
+      "target_runtime": {
+        "release": "v417-R51",
+        "app_artifact": "GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip",
+        "app_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
+        "organized_delivery_sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
+        "grammar_baseline": "R44",
+        "raw_bytes_materializable": false
+      },
+      "progress": {
+        "authority_materialized": "168/168 PASS",
+        "runtime_entries": 168,
+        "runtime_exercises": 346,
+        "runtime_rules": 801,
+        "runtime_patterns": 189,
+        "runtime_examples": 560,
+        "runtime_common_errors": 208,
+        "semantic_target_refs": 490,
+        "prerequisite_graph": "168 nodes / 231 edges / 0 unresolved / 0 cycles",
+        "runtime_schema": "grammar.runtime.v2.0.0",
+        "runtime_version": "2.0.1-stage6",
+        "entries_sha256": "cf4c656da75660d8ce39b1fbd45afaec9b94e72b460ff03c440d31c74c109aa1",
+        "lossless_roundtrip": "PASS",
+        "provider_grading": "PASS",
+        "fehlerbuch_persistence": "PASS",
+        "existing_grammar_domain_compatibility": "PASS",
+        "deterministic_overlay_tool": "PASS",
+        "release_hygiene": "PASS",
+        "visible_ui_change": "NONE"
+      },
+      "engineering_gate_evidence": "PASS on Flashcards Stage6 branch: GitHub Actions run 35407525319 succeeded for Stage5 regression, 168-lesson roundtrip, provider/Fehlerbuch, existing Grammar-domain compatibility and no-UI overlay; release-hygiene run 35407525321 succeeded. Acceptance report persisted on app branch.",
+      "blocker": "EXACT_V417_APP_BYTES_UNAVAILABLE: exact v417-R51 filename/hash/post-package metadata are durable, but raw ZIP bytes are not materializable in the current Project/Library session. Git main is allowed to lag and cannot substitute for the exact portable runtime.",
+      "next_action": "Materialize or explicitly re-upload the exact v417-R51 App ZIP. Apply the deterministic Grammar v2 overlay to those exact bytes; run exact browser/offline/regression/post-package verification; then mark Stage 6 PASS.",
       "pass_commit_sha": null
     },
     "7_release_post_package_verification": {
@@ -206,8 +243,20 @@
       "pass_commit_sha": null
     }
   },
-  "known_blockers": [],
-  "resume_instruction": "Stages 1-5 PASS and durably persisted. Stage 4 remains frozen at 168/168. Resume at Stage 6: resolve newest Flashcards Pro runtime live, materialize all 168 authorities into grammar.runtime.v2, integrate without visible UI redesign, and test import/render/grading/Fehlerbuch/persistence/regressions.",
+  "known_blockers": [
+    {
+      "id": "EXACT_V417_APP_BYTES_UNAVAILABLE",
+      "stage": 6,
+      "severity": "BLOCKER_FOR_STAGE6_PASS_ONLY",
+      "description": "The exact v417-R51 App artifact identity is known and verified by metadata, but its raw ZIP bytes are not materializable in the current Project/Library session. Exact-artifact browser/offline/post-package acceptance therefore remains unexecuted.",
+      "does_not_invalidate": [
+        "stage4",
+        "stage5",
+        "stage6_engineering_subgates"
+      ]
+    }
+  ],
+  "resume_instruction": "Stages 1-5 PASS. Stage 6 RUNNING: full 168-lesson Grammar runtime v2 materialization, roundtrip, grading, Fehlerbuch, domain compatibility, no-UI overlay and release-hygiene subgates PASS. Resume only at the exact v417-R51 artifact boundary: materialize/re-upload the exact App ZIP, apply overlay, run browser/offline/post-package acceptance, then close Stage 6.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
@@ -227,7 +276,14 @@
     "stage5_metadata_commit": "2813b1368e13ff3b30bbe2d6f3b134066259a0cb",
     "stage5_portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "stage5_portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage5-Delivery-Projection-v2-PASS-CHECKPOINT.zip",
-    "stage5_portable_sha256": "4fc09d2b50d40ed0743c33e80696059ba18c409a4cfe2e6d0818aaf8d93ccecd"
+    "stage5_portable_sha256": "4fc09d2b50d40ed0743c33e80696059ba18c409a4cfe2e6d0818aaf8d93ccecd",
+    "stage6_app_branch": "grammar-runtime-v2-stage6",
+    "stage6_engineering_acceptance_commit": "a72c4a2029583a175a54f8004cee06b2337b90d6",
+    "stage6_app_acceptance_report_commit": "ca613a355fccc2f8f4fa1a62d0130eedad06d24b",
+    "stage6_content_report_commit": "ff06036d5cdd98fd0b1f5fc7491d2e18e124a7ed",
+    "stage6_runtime_entries_sha256": "cf4c656da75660d8ce39b1fbd45afaec9b94e72b460ff03c440d31c74c109aa1",
+    "stage6_target_app_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
+    "stage6_state": "RUNNING_EXACT_APP_BOUNDARY"
   },
   "portable_checkpoint": {
     "name": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",

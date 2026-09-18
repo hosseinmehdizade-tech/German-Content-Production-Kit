@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-18T19:50:00+02:00",
+  "updated_at": "2026-09-18T20:45:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -68,8 +68,8 @@
       "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
       "source_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
-      "last_observed_stage": "3_evidence_enrichment_pass",
-      "last_observed_note": "Stages 1-3 PASS. Stage 3 covers all 168/168 chapters. Full integrity gate PASS after repair of legacy exercise answer_spec compatibility: 346/346 exercises compatible, 2282 object IDs checked with 0 duplicates, prerequisite graph 168 nodes / 231 edges / 0 cycles. Stage 4 linguistic/lexical QA is next.",
+      "last_observed_stage": "4_linguistic_lexical_qa",
+      "last_observed_note": "Stages 1-3 PASS. Stage 4 is RUNNING: A1-B1 chapters 1-50 reviewed in source order and PASS_AFTER_REPAIR; 38 verified linguistic/pedagogical repairs applied cumulatively; supporting batch integrity gates report 0 unresolved findings. Chapters 41-50 are persisted as a verified portable Stage-4 delta overlay.",
       "latest_portable_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
         "sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
@@ -78,7 +78,16 @@
         "stage3_state": "PASS",
         "git_metadata_sync_commit": "aa53f98eb0c499a9d6c112fb5b52dc9144a895b5"
       },
-      "next_scope": "Stage 4 linguistic/lexical QA across ga-a1b1-ch001..080 and ga-b2c1-ch001..088"
+      "next_scope": "Stage 4: ga-a1b1-ch051..060",
+      "latest_stage4_checkpoint": {
+        "filename": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch050-CHECKPOINT.zip",
+        "sha256": "d286f7d112388d6d9d033bd2b9b35a2b1fca5b139592803c91512d385c688fae",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch050-CHECKPOINT.zip",
+        "coverage": "50/168",
+        "state": "RUNNING",
+        "mode": "DELTA_OVERLAY_PLUS_GIT_PRIOR_BATCHES",
+        "checkpoint_git_commit": "df1811eb70ab9d956dbdb725e7e0c8353129a204"
+      }
     },
     "nomen_verb_verbindungen": {
       "status": "ACTIVE",

@@ -7,18 +7,27 @@
   "workspace_path": "Workspaces/grammatik-aktiv-a1-c1",
   "active_authority": {
     "bootstrap": "PROJECT-BOOTSTRAP.md",
-    "start_prompt": "Prompt/START-PROMPT-v3.1.12.md",
-    "production_overlay": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.12.md",
+    "start_prompt": "Prompt/START-PROMPT-v3.3.2.md",
+    "production_overlay": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.2.md",
     "pipeline": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
     "runbook": "Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md",
-    "base_architecture": "v3.1.5",
+    "base_architecture": "v3.1.5 + v3.3.2 production overlays",
     "semantic_contract": "gfp-german-language-content@3.1.3",
-    "grammar_content_contract": "Workspaces/grammatik-aktiv-a1-c1/02-canonical/GRAMMAR-CONTENT-CONTRACT-v1.0.0.md"
+    "grammar_content_contract": "Workspaces/grammatik-aktiv-a1-c1/02-canonical/GRAMMAR-CONTENT-CONTRACT-v1.0.0.md",
+    "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
+    "portable_framework_artifact": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
+    "portable_framework_sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
+    "production_overlay_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
+    "app_capability": "gfp-v411-content-capabilities@1.1.0",
+    "grammar_contract_compatibility": "UNCHANGED_COMPATIBLE"
   },
   "source_authority": {
     "manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
     "expected_total_chapters": 168,
-    "books": ["grammatik-aktiv-a1-b1", "grammatik-aktiv-b2-c1"],
+    "books": [
+      "grammatik-aktiv-a1-b1",
+      "grammatik-aktiv-b2-c1"
+    ],
     "verified_inventory": "Workspaces/grammatik-aktiv-a1-c1/01-inventory/SOURCE-INVENTORY.json",
     "registered_hashes": {
       "grammatik-aktiv-a1-b1": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
@@ -91,37 +100,69 @@
       "state": "RUNNING",
       "authoritative_artifacts": [
         "03-evidence/EVIDENCE-INDEX.json",
-        "03-evidence/lessons/ga-a1b1-ch001..ga-a1b1-ch030.json",
-        "03-evidence/lessons/ga-a1b1-ch034.json",
+        "03-evidence/lessons/ga-a1b1-ch001..ga-a1b1-ch040.json",
         "03-evidence/lessons/ga-a1b1-ch070.json",
         "03-evidence/lessons/ga-b2c1-ch001.json",
         "03-evidence/lessons/ga-b2c1-ch014.json",
-        "03-evidence/lessons/ga-b2c1-ch082.json"
+        "03-evidence/lessons/ga-b2c1-ch082.json",
+        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip"
       ],
       "progress": {
         "source_chapters_total": 168,
-        "source_chapters_evidence_complete_for_draft": 35,
-        "enriched_lesson_drafts_persisted": 35,
-        "remaining_chapters": 133,
+        "source_chapters_evidence_complete_for_draft": 54,
+        "enriched_lesson_drafts_persisted": 54,
+        "remaining_chapters": 114,
         "six_pilot_types_persisted": 6,
-        "a1_b1_contiguous_source_order_complete_through_chapter": 30,
-        "additional_a1_b1_pilots_complete": [34,70],
-        "b2_c1_pilots_complete": [1,14,82],
+        "a1_b1_contiguous_source_order_complete_through_chapter": 50,
+        "additional_a1_b1_pilots_complete": [
+          70
+        ],
+        "b2_c1_pilots_complete": [
+          1,
+          14,
+          82
+        ],
         "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED"
       },
-      "gate_evidence": "03-evidence/EVIDENCE-INDEX.json",
-      "next_action": "Continue A1-B1 in source order with chapters 31-33 and 35-40. Skip ga-a1b1-ch034 because it is already a persisted pilot. Capture source-supported rules/patterns/exceptions with page provenance, label generated learner examples explicitly, and persist every successful chapter incrementally.",
+      "gate_evidence": "Portable checkpoint batch validation for chapters 41-50 + Git EVIDENCE-INDEX through chapter 40",
+      "next_action": "Continue A1-B1 in source order with chapters 51-60 from the exact registered source. Apply the verified Stage-1 title correction for chapter 55 ('Wäre, hätte, würde ...'). Do not redo chapters 1-50 or persisted pilots.",
       "pass_commit_sha": null
     },
-    "4_linguistic_lexical_qa": {"state": "NOT_STARTED", "pass_commit_sha": null},
-    "5_delivery_projection": {"state": "NOT_STARTED", "pass_commit_sha": null},
+    "4_linguistic_lexical_qa": {
+      "state": "NOT_STARTED",
+      "pass_commit_sha": null
+    },
+    "5_delivery_projection": {
+      "state": "NOT_STARTED",
+      "pass_commit_sha": null
+    },
     "6_runtime_presentation_acceptance": {
       "state": "NOT_STARTED",
       "requirement": "Resolve newest explicit runtime authority at execution time and pin both artifact SHA-256 and synchronized Git commit before PASS.",
       "pass_commit_sha": null
     },
-    "7_release_post_package_verification": {"state": "NOT_STARTED", "pass_commit_sha": null}
+    "7_release_post_package_verification": {
+      "state": "NOT_STARTED",
+      "pass_commit_sha": null
+    }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1 and 2 remain durable PASS. Stage 3 now has 35 evidence-linked drafts: A1-B1 chapters 1-30 continuously, existing A1-B1 pilots 34 and 70, and B2-C1 pilots 1, 14 and 82. Resume with A1-B1 chapters 31-33 and 35-40, skipping the already-persisted chapter 34 pilot."
+  "resume_instruction": "Stages 1 and 2 remain PASS. Stage 3 working authority is the verified Library checkpoint with 54 evidence-linked drafts: A1-B1 chapters 1-50 continuously, A1-B1 pilot 70, and B2-C1 pilots 1,14,82. Git lesson/index content remains through chapter 40 by design under async-Git. Resume directly with A1-B1 chapters 51-60; use the verified chapter-55 title 'Wäre, hätte, würde ...'.",
+  "persistence": {
+    "portable_state": "VERIFIED_LIBRARY_UPLOADED",
+    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip",
+    "portable_sha256": "c95cdfb57607e384104e98814e4817fc8b984319478aac9d5ebca13b58104a1e",
+    "git": "PENDING",
+    "git_metadata": "IN_SYNC_AFTER_THIS_COMMIT",
+    "git_content_delta": "PENDING_CH041_CH050",
+    "git_content_mirror_contiguous_through_chapter": 40,
+    "note": "Artifact-first authority is the verified Library checkpoint through chapter 50. The Git lesson/index tree remains through chapter 40; this checkpoint records that intentional async-Git lag."
+  },
+  "portable_checkpoint": {
+    "name": "Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip",
+    "sha256": "c95cdfb57607e384104e98814e4817fc8b984319478aac9d5ebca13b58104a1e",
+    "contains": "chapters 41-50 delta + updated Evidence Index + updated CHECKPOINT + batch validation",
+    "status": "VERIFIED_LIBRARY_UPLOADED"
+  }
 }

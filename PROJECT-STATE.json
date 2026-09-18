@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T01:42:00+02:00",
+  "updated_at": "2026-09-19T01:50:12+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -135,41 +135,30 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L11 Stage3 ready; A1-L01 through A1-L10 locked",
-      "last_observed_stage": "2_canonicalization_pass_A1_L11",
-      "last_observed_note": "A1-L11 Stage1/2 PASS: source rows 732..847 = 116 rows; 110 source audio refs with explicit zero-audio rows 743, 766, 785, 791, 792 and 811; 110/110 referenced MP3 membership PASS. Canonical mapping produces 165 lesson targets: 164 new canonical IDs (58 senses + 106 expressions) in ma1m-lu-0998..ma1m-lu-1161 plus reuse of locked A1-L09 Apfelsaft ma1m-lu-0747. Thirty-six source rows split into multiple semantic targets. No new LOCKED claim is made for L11 yet.",
+      "current_scope": "A1-L12 ready; A1-L01 through A1-L11 locked",
+      "last_observed_stage": "7_release_locked_A1_L11",
+      "last_observed_note": "A1-L11 completed all seven stages on GFP v417/R51: 116 source rows / 110 source audio refs with six explicit zero-audio source rows -> 165 lesson targets (164 new canonical IDs + reused locked Apfelsaft ma1m-lu-0747), 59 senses + 106 expressions, 660 DE examples with FA+EN, 80 evidence-backed relations, 51 review flags resolved, Stage4 43/43 PASS, official validator 165 exact4 / 0 warnings, framework regression 47/47 PASS, exact final outer LOCKED.zip runtime acceptance 27/27 PASS with 165/165 standalone persistence. L01-L11 cumulative identity/collision acceptance is 1161 unique canonical IDs: 164 new L11 IDs, expected Apfelsaft reuse only, with prior Uhr/echt reuses preserved. A single sequential 1161-card durable-persistence browser run is intentionally not claimed due the managed environment boundary. Fresh v417 synthetic baseline 8/8 PASS; prior full exact-app baseline 17/17 carried forward because the app artifact SHA is unchanged.",
       "latest_locked_release": {
-        "filename": "Menschen-A1-L10-v3.3.2-GFP-v417-LOCKED.zip",
-        "sha256": "cdae60b598b9a04b6b2d11c84fd24973a0b0915caa9f319132476ea9312c569b",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-GFP-v417-LOCKED.zip",
+        "filename": "Menschen-A1-L11-v3.3.2-GFP-v417-LOCKED.zip",
+        "sha256": "9c7ec3986091490cd0c16e2bb45b3a62a25344629855de39c8e988f53717c7b1",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-GFP-v417-LOCKED.zip",
         "runtime": "GFP-v417-R51",
-        "cards": 127,
-        "new_canonical_ids": 125,
+        "cards": 165,
+        "new_canonical_ids": 164,
         "reused_canonical_ids": [
-          "ma1m-lu-0345",
-          "ma1m-lu-0362"
-        ],
-        "cumulative_unique_cards": 997,
-        "standalone_persistence": "127/127 PASS",
-        "cumulative_collision": "997 unique / 125 new L10 / expected echt reuse only PASS_WITH_ENVIRONMENT_BOUNDARY",
-        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
-        "checkpoint_git_sync_commit": "7aa80bd26977f07f04ee9d3604cfdbc5444273db"
-      },
-      "lock_state": "A1-L01_TO_A1-L10_LOCKED__A1-L11_STAGE1_2_PASS",
-      "next_scope": "A1-L11 Stage3",
-      "latest_stage12_checkpoint": {
-        "filename": "Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "sha256": "c82e81a76796d085fba34986a5fd59652ee8932926d3480766f193ab17bfab4e",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "status": "VERIFIED_PORTABLE_GIT_METADATA_SYNCED",
-        "scope": "A1-L11",
-        "new_canonical_targets": 164,
-        "reused_canonical_targets": 1,
-        "reused_stable_ids": [
           "ma1m-lu-0747"
         ],
-        "next_new_id": "ma1m-lu-1162",
-        "checkpoint_git_sync_commit": "ebd4139304938c6a3047c805a867654a0a8bf02d"
+        "cumulative_unique_cards": 1161,
+        "standalone_persistence": "165/165 PASS",
+        "cumulative_collision": "1161 unique / 164 new L11 / expected Apfelsaft reuse only PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
+        "checkpoint_git_sync_commit": "e26486eb597a075eb3f714d88af3c89b624e7f4f"
+      },
+      "lock_state": "A1-L01_TO_A1-L11_LOCKED",
+      "next_scope": "A1-L12",
+      "latest_stage12_checkpoint": {
+        "status": "SUPERSEDED_BY_LOCKED_A1_L11",
+        "note": "Final verified A1-L11 LOCKED release is the resume authority."
       }
     },
     "vocabulary": {
@@ -196,7 +185,7 @@
     "latest_resolved_artifact": "GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip",
     "latest_resolved_artifact_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
     "latest_resolution_surface": "ChatGPT Library",
-    "git_mirror_note": "v417/R51 portable runtime is the resolved Stage 6 authority for A1-L10; runtime source-tree persistence remains a separate concern.",
+    "git_mirror_note": "v417/R51 portable runtime is the resolved Stage 6 authority for A1-L11; runtime source-tree persistence remains a separate concern.",
     "latest_delivery_bundle": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
     "latest_delivery_sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
     "latest_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",

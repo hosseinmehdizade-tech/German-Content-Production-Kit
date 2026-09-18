@@ -1,0 +1,125 @@
+{
+  "qa_schema": "grammar-stage4-batch-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "4_linguistic_lexical_qa",
+  "batch_id": "a1b1-001-010",
+  "scope": {
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch001",
+      "ga-a1b1-ch002",
+      "ga-a1b1-ch003",
+      "ga-a1b1-ch004",
+      "ga-a1b1-ch005",
+      "ga-a1b1-ch006",
+      "ga-a1b1-ch007",
+      "ga-a1b1-ch008",
+      "ga-a1b1-ch009",
+      "ga-a1b1-ch010"
+    ]
+  },
+  "status": "PASS_AFTER_REPAIR",
+  "review_mode": "FULL_LESSON_LINGUISTIC_REVIEW_PLUS_MACHINE_INTEGRITY_GATE",
+  "reviewed_fields": [
+    "title_de",
+    "short_explanation_de",
+    "explanation_de",
+    "explanation_fa",
+    "learning_goals",
+    "rules.statement_de",
+    "rules.explanation_fa",
+    "rules.positive_examples",
+    "patterns",
+    "examples.text_de",
+    "examples.translation_fa",
+    "common_errors",
+    "exercises.prompt_de",
+    "exercises.answer_spec",
+    "exercises.feedback_rules",
+    "source_refs"
+  ],
+  "contract_notes": {
+    "translation_en": "OPTIONAL_NOT_REQUIRED_BY_GRAMMAR_CONTENT_CONTRACT",
+    "lexical_relation_nvv_collocation_checks": "NOT_APPLICABLE_TO_GRAMMAR_LESSON_BATCH",
+    "source_content_fidelity": "Stage 3 source-fidelity authority preserved; Stage 4 did not silently rewrite source-derived claims beyond linguistic normalization.",
+    "source_visual_reinspection": "NOT_REPEATED_AS_A_STAGE4_REQUIREMENT_FOR_THIS_BATCH",
+    "provenance_integrity": "RECHECKED"
+  },
+  "machine_gate": {
+    "status": "PASS",
+    "lessons": 10,
+    "rules": 28,
+    "patterns": 12,
+    "examples": 43,
+    "common_errors": 18,
+    "exercises": 20,
+    "source_refs": 143,
+    "source_id_mismatches": 0,
+    "source_page_range_errors": 0,
+    "printed_pdf_offset_errors": 0,
+    "answer_spec_errors": 0,
+    "runtime_srs_state_leaks": 0,
+    "missing_persian_script_fields": 0
+  },
+  "repairs": [
+    {
+      "lesson_id": "ga-a1b1-ch001",
+      "type": "GERMAN_RULE_PRECISION",
+      "summary": "Clarified that personal pronouns replace nouns/nominal groups referring to people rather than 'replacing people'; improved common-error explanation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch002",
+      "type": "EXERCISE_PROMPT_ANSWER_ALIGNMENT",
+      "summary": "Changed partial-stem blank prompt to a whole-word blank so accepted answer 'arbeitet' matches the interaction."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch002",
+      "type": "GERMAN_RULE_PRECISION",
+      "summary": "Expanded the du-ending sibilant rule to -s/-ß/-x/-z, matching the included 'tanzt' example."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch004",
+      "type": "EXAMPLE_RULE_ALIGNMENT",
+      "summary": "Replaced an example that did not clearly illustrate the no-vowel-change contrast with 'Er macht heute Sport.' and aligned Persian translation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch004",
+      "type": "GERMAN_RULE_PRECISION",
+      "summary": "Specified e/a 'im Stamm' in the no-vowel-change limitation and aligned Persian explanation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch006",
+      "type": "PERSIAN_NATURALNESS",
+      "summary": "Improved Persian translation of 'Ich möchte bitte ein Wasser.' to idiomatic learner Persian."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch006",
+      "type": "SEMANTIC_ERROR_EXPLANATION",
+      "summary": "Clarified that 'nicht müssen' is not generally wrong; it is wrong only when a prohibition is intended, while it means lack of necessity."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch008",
+      "type": "GERMAN_STYLE_PRECISION",
+      "summary": "Removed clumsy 'haben haben' wording in the imperative rule without changing meaning."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch010",
+      "type": "PERSIAN_TRANSLATION_QUALITY",
+      "summary": "Repaired the polite-request translation for 'Würden Sie bitte langsamer sprechen?'."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch010",
+      "type": "PEDAGOGICAL_CLARITY",
+      "summary": "Expanded ja/nein/doch positive examples so the negative-answer meaning is explicit rather than context-ambiguous."
+    }
+  ],
+  "unresolved_errors": [],
+  "unresolved_warnings": [],
+  "stage4_progress_after_batch": {
+    "reviewed_lessons": 10,
+    "total_lessons": 168,
+    "remaining_lessons": 158,
+    "contiguous_a1b1_reviewed_through": 10
+  },
+  "next_action": "Continue Stage 4 in source order with ga-a1b1-ch011..020. Reuse valid Stage-3 evidence; repair only verified linguistic/pedagogical defects and rerun the batch integrity gate."
+}

@@ -2,8 +2,8 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-17T10:50:00+02:00",
-  "updated_version": "artifact-first-async-git-recovery-v1",
+  "updated_at": "2026-09-19T01:45:00+02:00",
+  "updated_version": "artifact-first-batch0003-portable-verified-v2",
   "status": "PRODUCTION_IN_PROGRESS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
@@ -79,9 +79,12 @@
         "examples_per_completed_card": 4,
         "fa_sentence_translations": 104,
         "en_sentence_translations": 104,
-        "completed_batches_durable_bounded": 2
+        "completed_batches_durable_bounded": 2,
+        "completed_or_bounded_pass_expression_cards": 126,
+        "batch0003_cards": 100,
+        "completed_content_batches": 3
       },
-      "note": "A newer portable Batch0003 checkpoint candidate exists in Library but is not promoted here until its ZIP SHA and internal manifest are independently verified."
+      "note": "Batch0003 portable checkpoint independently verified by ZIP SHA-256, CRC and 18/18 internal SHA256 manifest entries. B1-B5 are preserved; do not regenerate."
     },
     "4_linguistic_lexical_qa": {
       "state": "RUNNING",
@@ -89,7 +92,9 @@
         "batch_0001_validator": "PASS",
         "batch_0002_validator": "PASS",
         "cumulative_26_card_validator": "PASS",
-        "global_dataset_qa": "NOT_COMPLETE"
+        "global_dataset_qa": "NOT_COMPLETE",
+        "batch_0003_validator": "PASS",
+        "batch_0003_independent_verification": "PASS_2_ROUNDS"
       }
     },
     "5_delivery_projection": {
@@ -99,29 +104,32 @@
         "batch_0002_projected_expression_cards": 13,
         "cumulative_projected_expression_cards": 26,
         "duplicate_supporting_sense_cards": 0,
-        "projection_contract": "GFP-V411-VOCABULARY-PROJECTION-v1.0.1"
+        "projection_contract": "GFP-V411-VOCABULARY-PROJECTION-v1.0.1",
+        "batch_0003_projected_expression_cards": 100,
+        "batch_0003_transport_status": "PASS"
       }
     },
     "6_runtime_presentation_acceptance": {
-      "state": "RUNNING",
+      "state": "BLOCKED",
       "resolution_mode": "RESOLVE_WHEN_INTEGRATION_MATTERS",
-      "current_runtime_must_be_resolved_at_acceptance": true,
-      "historical_bounded_acceptance": {
-        "runtime": "GFP v411 R37",
-        "package": "GFP-v411-DEVELOPMENT-BASELINE-R37.zip",
-        "sha256": "fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b",
-        "scope": "Batch 0001 + Batch 0002 cumulative 26-card lexical graph checks",
-        "resolved_components": 52,
-        "reverse_graph_links": 52,
-        "runtime_js_syntax": "PASS",
-        "runtime_assets": "PASS",
-        "inline_script_syntax": "PASS",
-        "live_browser_import": "NOT_RUN"
+      "exact_runtime_bytes_materialized": true,
+      "current_runtime": {
+        "version": "v411-R45",
+        "artifact": "GFP-v411-R45-Modular-Lesen-VERIFIED.zip",
+        "sha256": "3ef754ae33d4af10e4ad6465ef23e0a79fb6cbddcefb840f0d8a8fbc125b5488",
+        "artifact_sha256_match": true,
+        "packaged_release_verification": "VERIFIED",
+        "packaged_canonical_full_app_v4": "PASS"
       },
-      "note": "R37 is historical evidence only. Do not inspect or mutate the app repository during ordinary NVV production; resolve the current runtime only when B6 acceptance is actually reached."
+      "batch0003_targeted_browser_acceptance": "BLOCKED_BY_ADMINISTRATOR",
+      "blocker": "This execution environment blocks Chromium navigation to both local HTTP and file origins before the actual app entrypoint loads. No Batch0003 content defect is inferred. Do not spend production turns retrying this environment-level block.",
+      "policy": "Defer cumulative targeted V4 import/persistence/reload acceptance until an execution environment permits the real app entrypoint; continue safe content production in parallel."
     },
     "7_release_post_package_verification": {
-      "state": "NOT_STARTED"
+      "state": "RUNNING",
+      "batch0003_portable_checkpoint": "PASS_SELF_VERIFYING",
+      "final_dataset_release": "NOT_APPLICABLE_YET_DATASET_INCOMPLETE",
+      "note": "Batch0003 checkpoint is a verified bounded production checkpoint, not the final 2493-expression dataset release."
     }
   },
   "completed_expression_ids": [
@@ -171,26 +179,28 @@
     ]
   },
   "batch0003_recovery": {
-    "state": "PORTABLE_CANDIDATE_REQUIRES_INDEPENDENT_VERIFICATION",
-    "library_candidate": {
+    "state": "VERIFIED_PORTABLE_AUTHORITY",
+    "artifact": {
       "name": "NVV-Production-Checkpoint-Batch0003.zip",
-      "observed_size_bytes": 132786,
-      "sidecar_name": "NVV-Production-Checkpoint-Batch0003.zip.sha256",
-      "sidecar_expected_sha256": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
-      "promotion_rule": "Verify raw ZIP SHA-256 and its internal SHA256 manifest before adopting it as working authority."
+      "size_bytes": 132786,
+      "sha256": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
+      "zip_crc": "PASS",
+      "internal_manifest_entries_verified": 18,
+      "internal_manifest_status": "PASS"
     },
-    "git_materialization": {
-      "state": "FAILED_NOT_AUTHORITY",
-      "reason": "staged Base64 compositions did not match the READY SHA; automatic materialization workflows were disabled under artifact-first operating mode",
-      "do_not_retry_automatically": true
+    "source_pdf": {
+      "sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+      "registered_hash_match": true
     },
-    "fallback_authority_if_candidate_unavailable_or_fails": "bounded PASS Batch0001+Batch0002 = 26 cards"
+    "working_authority": "portable_checkpoint",
+    "git_binary_required": false,
+    "old_git_base64_materialization": "RETIRED_FAILED_NOT_AUTHORITY"
   },
   "persistence": {
     "quality_authority": "portable_verified_artifacts",
-    "git": "SYNC_PENDING_FOR_BATCH0003_RECOVERY",
+    "git": "COMPACT_METADATA_IN_SYNC_AFTER_THIS_COMMIT",
     "binary_zip_in_git": "NOT_REQUIRED",
     "automatic_base64_materialization": "DISABLED"
   },
-  "next": "Do NOT repair GitHub first. Independently verify the Library/current portable candidate NVV-Production-Checkpoint-Batch0003.zip against SHA-256 7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df and its internal manifest. If it passes, adopt the checkpoint contained in that portable artifact as the working authority and continue NVV from its exact next action; Git sync may remain PENDING. If the candidate cannot be accessed or fails verification, resume from the preserved 26-card bounded PASS state and start Batch0003 production anew without any Git materialization workflow. Keep etw. / jdn. in Anspruch nehmen quarantined until sense resolution. Resolve Flashcards runtime only when Stage 6 acceptance is actually reached."
+  "next": "Start Batch0004 from the verified 126-card state. Select the next 100 safe expressions from the authoritative PDF while preserving source-bullet stable IDs, quarantine ambiguous/polysemous items, and run content/evidence/QA/delivery. Do not redo Batch0001-0003 B1-B5. Defer cumulative targeted V4 browser import/persistence/reload acceptance until the app entrypoint can execute in an allowed browser environment."
 }

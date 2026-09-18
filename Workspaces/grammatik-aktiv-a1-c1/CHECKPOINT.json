@@ -99,24 +99,22 @@
     "3_evidence_enrichment": {
       "state": "RUNNING",
       "authoritative_artifacts": [
-        "03-evidence/EVIDENCE-INDEX.json",
+        "03-evidence/EVIDENCE-INDEX.json (Git mirror through ch040; stale by design)",
         "03-evidence/lessons/ga-a1b1-ch001..ga-a1b1-ch040.json",
         "03-evidence/lessons/ga-a1b1-ch070.json",
         "03-evidence/lessons/ga-b2c1-ch001.json",
         "03-evidence/lessons/ga-b2c1-ch014.json",
         "03-evidence/lessons/ga-b2c1-ch082.json",
-        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip"
+        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip"
       ],
       "progress": {
         "source_chapters_total": 168,
-        "source_chapters_evidence_complete_for_draft": 54,
-        "enriched_lesson_drafts_persisted": 54,
-        "remaining_chapters": 114,
+        "source_chapters_evidence_complete_for_draft": 74,
+        "enriched_lesson_drafts_persisted": 74,
+        "remaining_chapters": 94,
         "six_pilot_types_persisted": 6,
-        "a1_b1_contiguous_source_order_complete_through_chapter": 50,
-        "additional_a1_b1_pilots_complete": [
-          70
-        ],
+        "a1_b1_contiguous_source_order_complete_through_chapter": 71,
+        "additional_a1_b1_pilots_complete": [],
         "b2_c1_pilots_complete": [
           1,
           14,
@@ -124,8 +122,8 @@
         ],
         "mode": "INCREMENTAL_SOURCE_FIRST_THEN_EXTERNAL_WHEN_NEEDED"
       },
-      "gate_evidence": "Portable checkpoint batch validation for chapters 41-50 + Git EVIDENCE-INDEX through chapter 40",
-      "next_action": "Continue A1-B1 in source order with chapters 51-60 from the exact registered source. Apply the verified Stage-1 title correction for chapter 55 ('Wäre, hätte, würde ...'). Do not redo chapters 1-50 or persisted pilots.",
+      "gate_evidence": "Portable checkpoint BATCH-0061-0071-VALIDATION.json + chained verified checkpoints through chapter 60",
+      "next_action": "Continue A1-B1 in source order with chapters 72-80. Do not redo chapters 1-71 or persisted B2-C1 pilots. Completing chapter 80 will finish A1-B1 Stage-3 draft coverage; Stage 3 remains RUNNING for the full 168-chapter dataset.",
       "pass_commit_sha": null
     },
     "4_linguistic_lexical_qa": {
@@ -147,22 +145,24 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1 and 2 remain PASS. Stage 3 working authority is the verified Library checkpoint with 54 evidence-linked drafts: A1-B1 chapters 1-50 continuously, A1-B1 pilot 70, and B2-C1 pilots 1,14,82. Git lesson/index content remains through chapter 40 by design under async-Git. Resume directly with A1-B1 chapters 51-60; use the verified chapter-55 title 'Wäre, hätte, würde ...'.",
+  "resume_instruction": "Stages 1 and 2 remain PASS. Stage 3 working authority is the verified Library checkpoint with 74 evidence-linked drafts: A1-B1 chapters 1-71 continuously (chapter 70 reused from the prior pilot), plus B2-C1 pilots 1,14,82. Resume directly with A1-B1 chapters 72-80.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
-    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip",
-    "portable_sha256": "c95cdfb57607e384104e98814e4817fc8b984319478aac9d5ebca13b58104a1e",
-    "git": "PENDING",
+    "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip",
+    "portable_sha256": "c394ec69de9a4b2da0e3d67f630728786a7040f96ad7dd7f3fab9d896d9b6bc4",
+    "git": "IN_SYNC_METADATA_ONLY",
     "git_metadata": "IN_SYNC_AFTER_THIS_COMMIT",
-    "git_content_delta": "PENDING_CH041_CH050",
+    "git_content_delta": "PENDING_CH041_CH071",
     "git_content_mirror_contiguous_through_chapter": 40,
-    "note": "Artifact-first authority is the verified Library checkpoint through chapter 50. The Git lesson/index tree remains through chapter 40; this checkpoint records that intentional async-Git lag."
+    "note": "Artifact-first authority is the verified Library checkpoint through chapter 71. The Git lesson/index tree remains through chapter 40; this checkpoint records that intentional async-Git lag."
   },
   "portable_checkpoint": {
-    "name": "Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch050-CHECKPOINT.zip",
-    "sha256": "c95cdfb57607e384104e98814e4817fc8b984319478aac9d5ebca13b58104a1e",
-    "contains": "chapters 41-50 delta + updated Evidence Index + updated CHECKPOINT + batch validation",
+    "name": "Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-Through-Ch071-CHECKPOINT.zip",
+    "sha256": "c394ec69de9a4b2da0e3d67f630728786a7040f96ad7dd7f3fab9d896d9b6bc4",
+    "parent": "Grammar-Aktiv-v3.3.2-Stage3-Through-Ch060-CHECKPOINT.zip",
+    "parent_sha256": "1201751c0d5678f61201e1e54cb44f74e8fa7f2542863609043d010a6768d863",
+    "contains": "chapters 61-69 and 71 delta + updated Evidence Index + updated CHECKPOINT + batch validation; chapter 70 reused from prior pilot",
     "status": "VERIFIED_LIBRARY_UPLOADED"
   }
 }

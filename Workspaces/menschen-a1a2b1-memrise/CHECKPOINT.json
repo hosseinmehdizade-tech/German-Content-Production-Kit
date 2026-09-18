@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "Current A1-L09 lock milestone metadata is synchronized on main; exact large release bytes remain in ChatGPT Library by design."
+    "git_sync_note": "A1-L10 Stage1/2 checkpoint metadata is synchronized on main; exact checkpoint bytes are durable in ChatGPT Library."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -35,99 +35,45 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "A1-L09",
-      "source_rows": 103,
-      "audio_refs": 103,
+      "scope": "A1-L10",
+      "source_rows": 93,
+      "audio_refs": 92,
       "multi_audio_rows": 0,
-      "zero_audio_rows": 0,
+      "zero_audio_rows": 1,
+      "zero_audio_source_rows": [
+        685
+      ],
       "missing_referenced_audio_files": 0,
-      "rar_audio_presence": "103/103 PASS"
+      "source_csv_ordinals": "639..731",
+      "rar_audio_presence": "92/92 PASS"
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "scope": "A1-L09",
-      "canonical_targets": 127,
-      "new_canonical_targets": 127,
-      "reused_canonical_targets": 0,
-      "senses": 87,
-      "expressions": 40,
-      "stable_id_range": "ma1m-lu-0746..ma1m-lu-0872"
+      "scope": "A1-L10",
+      "lesson_target_mappings": 127,
+      "new_canonical_targets": 125,
+      "reused_canonical_targets": 2,
+      "new_senses": 53,
+      "new_expressions": 72,
+      "reused_senses": 2,
+      "new_stable_id_range": "ma1m-lu-0873..ma1m-lu-0997",
+      "reused_stable_ids": [
+        "ma1m-lu-0345",
+        "ma1m-lu-0362"
+      ],
+      "reuse_note": "Row 720 echt reuses two locked A1-L04 canonical senses instead of minting duplicate IDs."
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "PASS",
-      "scope": "A1-L09",
-      "targets": 127,
-      "examples_de": 508,
-      "examples_fa": 508,
-      "examples_en": 508,
-      "relations": 43,
-      "review_resolutions": 16,
-      "source_audio_refs": 131,
-      "intentional_zero_audio_targets": 0,
-      "translation_evidence_boundary": "Behzad DE-FA available as secondary cross-check; source Persian seeds reviewed and unsupported glosses were not silently promoted."
-    },
-    {
-      "stage": 4,
-      "name": "Linguistic & Lexical QA",
-      "state": "PASS",
-      "scope": "A1-L09",
-      "checks": "29/29",
-      "official_bundle_validator": "PASS_127_TARGETS_EXACT4_0_WARNINGS",
-      "framework_regression": "47/47 pytest PASS",
-      "errors": 0
-    },
-    {
-      "stage": 5,
-      "name": "Delivery Projection",
-      "state": "PASS",
-      "scope": "A1-L09",
-      "transport_rows": 127,
-      "new_ids": 127,
-      "reused_ids": [],
-      "card_types": {
-        "de-vocabulary": 120,
-        "german-verb": 7
-      },
-      "final_dataset": "A1-L09-UNIVERSAL-v2.tsv",
-      "final_dataset_sha256": "ffaf5829ca730788b15b65c652d478b695641a9de3a4797ded2fd076d07ddc0a",
-      "runtime_projection_target": "GFP-v417-R51"
-    },
-    {
-      "stage": 6,
-      "name": "Runtime & Presentation Acceptance",
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "scope": "A1-L09",
-      "runtime": "GFP-v417-R51",
-      "exact_outer_direct_import": "PASS",
-      "exact_outer_runtime_checks": "24/24 PASS",
-      "standalone_persistence": "127/127 PASS",
-      "cumulative_l01_l09_checks": "14/14 PASS",
-      "cumulative_unique_cards": 872,
-      "l09_prior_overlap": 0,
-      "known_prior_reused_id": "ma1m-lu-0418 (L05/L08 Uhr)",
-      "cumulative_unique_no_accidental_collision": true,
-      "browser_boundary": "Single sequential 872-card durable-persistence browser run not claimed."
-    },
-    {
-      "stage": 7,
-      "name": "Release & Post-Package Verification",
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "scope": "A1-L09",
-      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "artifact": "Menschen-A1-L09-v3.3.2-GFP-v417-LOCKED.zip",
-      "sha256": "3d1dde64f36cd0150f473ce92740f888007df1106ec0b8d19fafa2f8daffe4c9",
-      "direct_outer_import": "PASS_24_CHECKS_127_OF_127_PERSISTED",
-      "exact_final_cumulative_collision": "PASS_14_CHECKS_872_UNIQUE_0_L09_PRIOR_OVERLAP",
-      "postpackage_manifest_rehash": "PASS_39_OF_39",
-      "packaging_harness_repair": "Stale pre-Uhr-aware cumulative test harness detected by first post-package rerun; harness only was replaced before finalization, archive rebuilt, and all exact-final gates rerun."
+      "state": "READY",
+      "scope": "A1-L10"
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L09 are locked. Start A1-L10 Stage 1/2 from the existing course inventory. At Stage 6 resolve the newest German Flashcards Pro portable artifact again. Stage 7 MUST directly import the outer LOCKED.zip using BUILD-METADATA authority; no nested user extraction workflow.",
+  "resume_instruction": "A1-L01 through A1-L09 remain locked. Resume A1-L10 at Stage 3 from the verified Stage1/2 checkpoint; do not redo Stage1/2 unless source or canonical-identity evidence changes. Preserve row 685 as explicit zero-source-audio and reuse locked echt IDs ma1m-lu-0345 and ma1m-lu-0362. At Stage 6 resolve the newest German Flashcards Pro portable artifact again.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -143,8 +89,8 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L09-v3.3.2-GFP-v417-LOCKED.zip",
     "latest_portable_checkpoint_sha256": "3d1dde64f36cd0150f473ce92740f888007df1106ec0b8d19fafa2f8daffe4c9"
   },
-  "current_scope": "A1-L10 ready; A1-L01 through A1-L09 locked",
-  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51",
+  "current_scope": "A1-L10 Stage3 ready; A1-L01 through A1-L09 locked",
+  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_STAGE1_2_PASS",
   "locked_at": "2026-09-18",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -450,5 +396,52 @@
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L09-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json"
     },
     "next_action": "Start A1-L10 Stage 1/2."
+  },
+  "latest_stage12_checkpoint": {
+    "status": "ACTIVE",
+    "scope": "A1-L10",
+    "filename": "Menschen-A1-L10-v3.3.2-Stage1-2-CHECKPOINT.zip",
+    "sha256": "fcba1111bc235fde10da6d67d1a6741fb5a3fb2e5541821d86f0b4bf323a8dc4",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-Stage1-2-CHECKPOINT.zip",
+    "source_rows": 93,
+    "source_audio_refs": 92,
+    "zero_audio_rows": [
+      685
+    ],
+    "lesson_target_mappings": 127,
+    "new_canonical_targets": 125,
+    "reused_canonical_targets": 2,
+    "new_stable_id_range": "ma1m-lu-0873..ma1m-lu-0997",
+    "reused_stable_ids": [
+      "ma1m-lu-0345",
+      "ma1m-lu-0362"
+    ],
+    "next_new_id": "ma1m-lu-0998",
+    "next_action": "Stage 3 evidence/enrichment"
+  },
+  "a1_l10": {
+    "state": "STAGE1_2_PASS",
+    "source_rows": 93,
+    "source_audio_refs": 92,
+    "source_zero_audio_rows": 1,
+    "source_zero_audio_ordinals": [
+      685
+    ],
+    "lesson_target_mappings": 127,
+    "new_canonical_targets": 125,
+    "reused_canonical_targets": 2,
+    "new_senses": 53,
+    "new_expressions": 72,
+    "reused_stable_ids": [
+      "ma1m-lu-0345",
+      "ma1m-lu-0362"
+    ],
+    "new_stable_id_range": "ma1m-lu-0873..ma1m-lu-0997",
+    "checkpoint": {
+      "filename": "Menschen-A1-L10-v3.3.2-Stage1-2-CHECKPOINT.zip",
+      "sha256": "fcba1111bc235fde10da6d67d1a6741fb5a3fb2e5541821d86f0b4bf323a8dc4",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.2-Stage1-2-CHECKPOINT.zip"
+    },
+    "next_action": "Continue Stage 3 evidence/enrichment."
   }
 }

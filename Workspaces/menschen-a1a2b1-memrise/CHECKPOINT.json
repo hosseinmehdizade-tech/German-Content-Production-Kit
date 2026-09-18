@@ -1,5 +1,5 @@
 {
-  "checkpoint_schema_version": "2.2.0",
+  "checkpoint_schema_version": "2.6.0",
   "pipeline": "seven-stage-production@1.0.0",
   "dataset": {
     "id": "menschen-a1a2b1-memrise",
@@ -28,68 +28,80 @@
     ],
     "course_contract": "MENSCHEN-MEMRISE-COURSE-SOURCE-CONTRACT-v1.0.0",
     "audio_contract": "GFP-SOURCE-AUDIO-REFERENCE-CONTRACT-v1.0.0",
-    "runtime_acceptance": "GFP-v413-R47 latest resolved artifact"
+    "runtime_acceptance": "GFP-v416-R50 latest resolved portable artifact"
   },
   "stages": [
     {
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "course inventory + A1-L01 source slice",
-      "quality_state": "PASS"
+      "scope": "A1-L02",
+      "source_rows": 67,
+      "audio_refs": 67
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "scope": "A1-L01",
-      "summary": "89 source occurrences mapped to 118 canonical targets (86 Sense, 32 Expression); no source row lost.",
-      "quality_state": "PASS"
+      "scope": "A1-L02",
+      "canonical_targets": 98,
+      "senses": 66,
+      "expressions": 32,
+      "split_source_rows": 29
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
       "state": "PASS",
-      "scope": "A1-L01",
-      "summary": "118 targets, 472 DE examples, 472 FA example translations, 472 EN example translations; 21 review-flag instances explicitly resolved.",
-      "quality_state": "PASS"
+      "scope": "A1-L02",
+      "targets": 98,
+      "examples_de": 392,
+      "examples_fa": 392,
+      "examples_en": 392,
+      "relations": 38,
+      "review_resolutions": 22
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
       "state": "PASS",
-      "scope": "A1-L01",
-      "summary": "25/25 final Stage-4 checks PASS; 0 errors; 0 warnings.",
-      "quality_state": "PASS"
+      "scope": "A1-L02",
+      "checks": "25/25",
+      "errors": 0,
+      "warnings": 0
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
       "state": "PASS",
-      "scope": "A1-L01",
-      "summary": "118 Universal-v2 rows; 20 german-verb + 98 de-vocabulary; projection target GFP-v413-R47.",
-      "quality_state": "PASS"
+      "scope": "A1-L02",
+      "transport_rows": 98,
+      "card_types": {
+        "de-vocabulary": 84,
+        "german-verb": 14
+      },
+      "runtime_projection_target": "GFP-v416-R50"
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
       "state": "PASS",
-      "scope": "A1-L01 on GFP-v413-R47",
-      "summary": "20/20 integrated import/persistence/presentation checks PASS. Exact v413 app bytes unchanged. Source MP3 refs preserved; v413 Audio mode uses TTS.",
-      "quality_state": "PASS",
-      "environment_boundary": "Canonical v413 browser smoke is blocked by administrator loopback policy and is not claimed PASS."
+      "scope": "A1-L02",
+      "runtime": "GFP-v416-R50",
+      "checks": 21,
+      "cumulative_cards": 216,
+      "same_tab_persistence": "PASS"
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
       "state": "PASS",
-      "scope": "A1-L01 Golden Lesson",
-      "summary": "Fresh-extract release manifest PASS; app tree identity 117/117; Stage4 PASS; Stage6 PASS; v413 suite 9 executable gates PASS + 1 environment-blocked browser smoke.",
-      "quality_state": "PASS_WITH_ENV_BOUNDARY"
+      "scope": "A1-L02",
+      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 is locked. Start A1-L02 from the existing course inventory/source authority using the same v3.3.2 seven-stage pipeline. At Stage 6 resolve the newest Flashcards Pro artifact again; never permanently pin future lessons to v413.",
+  "resume_instruction": "A1-L01 and A1-L02 are locked. Start A1-L03 Stage 1/2 from the existing course inventory. At Stage 6 resolve the newest Flashcards Pro artifact again; do not pin future lessons permanently to v416.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -100,10 +112,11 @@
     "quality_pass_is_backed_by_verified_portable_artifact": true,
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
-    "release_in_library": true
+    "release_in_library": true,
+    "latest_locked_lesson": "A1-L02"
   },
-  "current_scope": "A1-L02 ready after A1-L01 Golden Lesson lock",
-  "lock_state": "A1-L01_LOCKED_FOR_GFP_V413_R47",
+  "current_scope": "A1-L03 ready; A1-L01 and A1-L02 locked",
+  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED_FOR_GFP_V416_R50",
   "locked_at": "2026-09-18",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -112,7 +125,41 @@
     "post_package_verification": "/Flasch kart/German-Flashcards-Pro-v413-R47-Menschen-A1-L01-POST-PACKAGE-VERIFICATION.json"
   },
   "a1_l02": {
+    "state": "LOCKED",
+    "runtime": "GFP-v416-R50",
+    "artifact": {
+      "filename": "Menschen-A1-L02-v3.3.2-GFP-v416-LOCKED.zip",
+      "sha256": "dd46352044858cb8905bec1cb7455d657146d922e63960af126bf065d28da3d3",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L02-v3.3.2-GFP-v416-LOCKED.zip",
+      "runtime": "GFP-v416-R50",
+      "cards": 98,
+      "cumulative_a1_l01_l02_cards": 216,
+      "stage4": "25/25 PASS",
+      "stage6": "21/21 PASS",
+      "stage7": "PASS_WITH_ENVIRONMENT_BOUNDARY"
+    }
+  },
+  "locked_lessons": {
+    "A1-L01": {
+      "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+      "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
+      "library_path": "/Flasch kart/German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+      "post_package_verification": "/Flasch kart/German-Flashcards-Pro-v413-R47-Menschen-A1-L01-POST-PACKAGE-VERIFICATION.json"
+    },
+    "A1-L02": {
+      "filename": "Menschen-A1-L02-v3.3.2-GFP-v416-LOCKED.zip",
+      "sha256": "dd46352044858cb8905bec1cb7455d657146d922e63960af126bf065d28da3d3",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L02-v3.3.2-GFP-v416-LOCKED.zip",
+      "runtime": "GFP-v416-R50",
+      "cards": 98,
+      "cumulative_a1_l01_l02_cards": 216,
+      "stage4": "25/25 PASS",
+      "stage6": "21/21 PASS",
+      "stage7": "PASS_WITH_ENVIRONMENT_BOUNDARY"
+    }
+  },
+  "a1_l03": {
     "state": "READY_TO_START",
-    "rule": "Proceed lesson-by-lesson; do not invalidate A1-L01 unless a real upstream contract/source/runtime incompatibility requires it."
+    "rule": "Proceed lesson-by-lesson; preserve locked L01/L02 unless a real upstream incompatibility invalidates them."
   }
 }

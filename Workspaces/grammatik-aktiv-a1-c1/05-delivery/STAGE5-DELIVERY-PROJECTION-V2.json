@@ -1,0 +1,74 @@
+{
+  "schema": "grammar-stage5-delivery-projection@2.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "5_delivery_projection",
+  "status": "PASS",
+  "decision": "ADDITIVE_LOSSLESS_V2",
+  "stage4_authority": {
+    "artifact": "Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
+    "sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
+    "coverage": "168/168",
+    "state": "PASS"
+  },
+  "authority_resolution": {
+    "total_lessons": 168,
+    "portable_stage4_members": 124,
+    "git_resident_lessons": 44,
+    "overlap": 0,
+    "gaps": 0,
+    "portable_ranges": [
+      "ga-a1b1-ch041..069",
+      "ga-a1b1-ch071..080",
+      "ga-b2c1-ch002..013",
+      "ga-b2c1-ch015..081",
+      "ga-b2c1-ch083..088"
+    ],
+    "git_ranges": [
+      "ga-a1b1-ch001..040",
+      "ga-a1b1-ch070",
+      "ga-b2c1-ch001",
+      "ga-b2c1-ch014",
+      "ga-b2c1-ch082"
+    ]
+  },
+  "v2_contract": {
+    "content_schema": "grammar.content.v2.0.0",
+    "runtime_schema": "grammar.runtime.v2.0.0",
+    "compiler": "gfp-grammar-compiler-v2",
+    "canonical_embedding": "LOSSLESS",
+    "compatibility_view": "DERIVED_NON_AUTHORITY",
+    "exact_target_object_ids_preserved": true,
+    "fabricated_translation_fields_required": false,
+    "min_exercises_per_lesson": null,
+    "visible_ui_change": "NONE"
+  },
+  "app_implementation": {
+    "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "branch": "grammar-content-v2-stage5",
+    "head_commit": "0cd6999a6fd55011123006ddd9ea5063593dc1ab",
+    "base_runtime_main_at_design_time": "v417",
+    "files": [
+      "06-Content/grammar/schema/grammar-production-master-v2.schema.json",
+      "06-Content/grammar/schema/grammar-runtime-v2.schema.json",
+      "08-Release-Tools/grammar_projection_v2.py",
+      "08-Release-Tools/compile-grammar-runtime-v2.py",
+      "03-Tests/test-v417-grammar-v2-contract.py",
+      "07-Docs-and-Handoff/GRAMMAR-CONTENT-ARCHITECTURE-V2-STAGE5.md"
+    ]
+  },
+  "verification": {
+    "contract_unit_test": "PASS",
+    "roundtrip_design_invariant": "canonical_record byte-equivalent under canonical JSON roundtrip",
+    "stage4_portable_integrity_inherited": "124 lessons / 256 exercises / 371 target refs / 0 unresolved findings",
+    "stage4_full_authority_gate_inherited": "168/168 PASS",
+    "r44_v1_files_modified": false,
+    "current_ui_modified": false
+  },
+  "stage5_gate": {
+    "no_semantic_loss": "PASS_BY_V2_CANONICAL_EMBEDDING",
+    "unsupported_fields_silently_dropped": false,
+    "stage4_invalidated": false,
+    "stage6_runtime_pin_required": true
+  },
+  "next_action": "Stage 6: resolve the newest Flashcards Pro runtime authority live, materialize all 168 Stage-4 authorities into one grammar.runtime.v2 pack, integrate through the existing Grammar provider without visible UI redesign, then test import/render/grading/Fehlerbuch/persistence/regression."
+}

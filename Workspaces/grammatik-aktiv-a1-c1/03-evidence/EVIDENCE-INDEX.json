@@ -2,12 +2,18 @@
   "evidence_index_schema": "grammar-evidence-index@1.0.0",
   "dataset_id": "grammatik-aktiv-a1-c1",
   "stage": "3_evidence_enrichment",
-  "status": "RUNNING",
+  "status": "PASS",
   "source_authority": {
     "manifest": "../00-source/SOURCE-MANIFEST.json",
     "registered_sources": {
-      "grammatik-aktiv-a1-b1": {"sha256":"aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207","pdf_pages":255},
-      "grammatik-aktiv-b2-c1": {"sha256":"e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0","pdf_pages":312}
+      "grammatik-aktiv-a1-b1": {
+        "sha256": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
+        "pdf_pages": 255
+      },
+      "grammatik-aktiv-b2-c1": {
+        "sha256": "e3741cdd653ee648b2891a829739a32fae6df606e49e95fd8f6ef45f62e09eb0",
+        "pdf_pages": 312
+      }
     },
     "resolution_status": "EXACT_REGISTERED_BYTES_RESOLVED",
     "resolution_note": "The A1-B1 registered PDF was locally re-hashed before the 31-40 continuation; SHA-256 matched the source registry exactly."
@@ -21,36 +27,97 @@
   },
   "coverage": {
     "source_chapters_total": 168,
-    "chapter_evidence_drafts_persisted": 44,
-    "source_major_rule_capture_complete_for_draft": 44,
-    "remaining_chapters": 124,
-    "stage3_pass": false
+    "chapter_evidence_drafts_persisted": 168,
+    "source_major_rule_capture_complete_for_draft": 168,
+    "remaining_chapters": 0,
+    "stage3_pass": true,
+    "full_168_integrity_gate": "PASS",
+    "exercise_answer_specs": "346/346 PASS"
   },
   "source_order_progress": {
     "grammatik-aktiv-a1-b1": {
       "contiguous_complete_from_chapter": 1,
-      "contiguous_complete_through_chapter": 40,
-      "chapters_complete_in_contiguous_range": 40,
-      "additional_pilot_chapters_complete": [70],
-      "note": "Chapters 1-40 are now continuously persisted. Chapter 34 was an earlier pilot and was reused rather than reprocessed. Chapter 70 remains an additional pilot."
+      "contiguous_complete_through_chapter": 80,
+      "chapters_complete_in_contiguous_range": 80,
+      "additional_pilot_chapters_complete": [
+        70
+      ],
+      "note": "All A1-B1 chapters 1-80 are covered. Chapter 70 remains the original pilot identity but is part of the contiguous final coverage."
     },
-    "grammatik-aktiv-b2-c1": {"pilot_chapters_complete":[1,14,82]}
+    "grammatik-aktiv-b2-c1": {
+      "contiguous_complete_from_chapter": 1,
+      "contiguous_complete_through_chapter": 88,
+      "chapters_complete_in_contiguous_range": 88,
+      "reused_pilot_chapters": [
+        1,
+        14,
+        82
+      ],
+      "note": "All B2-C1 chapters 1-88 are covered; pilots 1,14,82 were reused and revalidated."
+    }
   },
   "pilot_lessons": [
-    {"source_chapter_id":"ga-a1b1-ch002","path":"lessons/ga-a1b1-ch002.json","git_blob_sha":"8f4c97702c6a02aed3137bce5889a8babffcb555","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"A1_SIMPLE_MORPHOLOGY_CONJUGATION"},
-    {"source_chapter_id":"ga-a1b1-ch034","path":"lessons/ga-a1b1-ch034.json","git_blob_sha":"5870c0906a1d89a8c9dba811aa63edb904fd157b","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"A2_CASE_PREPOSITION"},
-    {"source_chapter_id":"ga-a1b1-ch070","path":"lessons/ga-a1b1-ch070.json","git_blob_sha":"14cc6bc7097566f4ef21e6de7cef3e9dbbd47641","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"B1_RELATIVE_CLAUSE"},
-    {"source_chapter_id":"ga-b2c1-ch001","path":"lessons/ga-b2c1-ch001.json","git_blob_sha":"ae90cad1bb6e313dfcd7d6b70e920ddbee60ca54","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"B2_WORD_ORDER"},
-    {"source_chapter_id":"ga-b2c1-ch014","path":"lessons/ga-b2c1-ch014.json","git_blob_sha":"170a5a63efb7805cc4c23b6b4c576cdea75fdd4e","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"B2_C1_PASSIVE_TENSE_COMPLEXITY"},
-    {"source_chapter_id":"ga-b2c1-ch082","path":"lessons/ga-b2c1-ch082.json","git_blob_sha":"ea2ccd917e5cd6e394c2818ae259b064bd4e41af","status":"EVIDENCE_LINKED_DRAFT","pilot_slot":"C1_TRANSFORMATION_NOMINALIZATION"}
+    {
+      "source_chapter_id": "ga-a1b1-ch002",
+      "path": "lessons/ga-a1b1-ch002.json",
+      "git_blob_sha": "8f4c97702c6a02aed3137bce5889a8babffcb555",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "A1_SIMPLE_MORPHOLOGY_CONJUGATION"
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch034",
+      "path": "lessons/ga-a1b1-ch034.json",
+      "git_blob_sha": "5870c0906a1d89a8c9dba811aa63edb904fd157b",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "A2_CASE_PREPOSITION"
+    },
+    {
+      "source_chapter_id": "ga-a1b1-ch070",
+      "path": "lessons/ga-a1b1-ch070.json",
+      "git_blob_sha": "14cc6bc7097566f4ef21e6de7cef3e9dbbd47641",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "B1_RELATIVE_CLAUSE"
+    },
+    {
+      "source_chapter_id": "ga-b2c1-ch001",
+      "path": "lessons/ga-b2c1-ch001.json",
+      "git_blob_sha": "ae90cad1bb6e313dfcd7d6b70e920ddbee60ca54",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "B2_WORD_ORDER"
+    },
+    {
+      "source_chapter_id": "ga-b2c1-ch014",
+      "path": "lessons/ga-b2c1-ch014.json",
+      "git_blob_sha": "170a5a63efb7805cc4c23b6b4c576cdea75fdd4e",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "B2_C1_PASSIVE_TENSE_COMPLEXITY"
+    },
+    {
+      "source_chapter_id": "ga-b2c1-ch082",
+      "path": "lessons/ga-b2c1-ch082.json",
+      "git_blob_sha": "ea2ccd917e5cd6e394c2818ae259b064bd4e41af",
+      "status": "EVIDENCE_LINKED_DRAFT",
+      "pilot_slot": "C1_TRANSFORMATION_NOMINALIZATION"
+    }
   ],
   "current_batch": {
-    "source_book_id": "grammatik-aktiv-a1-b1",
-    "chapter_range": "31-40",
-    "chapters_persisted_new": 9,
-    "reused_existing_pilot": [34],
-    "status": "COMPLETE_FOR_STAGE3_DRAFT",
-    "source_pages_reviewed": "printed 76-99 as applicable; chapter 34 reused from the existing evidence-linked pilot; partner pages 86-87 and 96-97 are supplementary practice"
+    "scope": "FULL_168_STAGE3_INTEGRITY_GATE",
+    "status": "PASS",
+    "portable_checkpoint": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
+    "portable_sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
+    "validation_summary": {
+      "lessons": 168,
+      "rules": 799,
+      "patterns": 189,
+      "examples": 560,
+      "exercises": 346,
+      "source_refs": 2495,
+      "object_ids_checked": 2282,
+      "duplicate_object_ids": 0,
+      "prerequisite_edges": 231,
+      "prerequisite_cycles": 0,
+      "answer_spec_errors": 0
+    }
   },
   "pilot_gate": {
     "six_required_types_present": true,
@@ -59,12 +126,24 @@
     "all_six_have_source_refs": true,
     "all_six_separate_generated_examples_from_source_adapted_rules": true,
     "content_complete_claim": false,
-    "reason": "Stage 3 is a 168-chapter production stage."
+    "reason": "Stage 3 evidence/enrichment coverage and integrity are complete; linguistic/lexical final QA belongs to Stage 4."
   },
   "next_batch": {
-    "strategy": "CONTIGUOUS_SOURCE_ORDER",
-    "source_book_id": "grammatik-aktiv-a1-b1",
-    "chapter_ids": ["ga-a1b1-ch041","ga-a1b1-ch042","ga-a1b1-ch043","ga-a1b1-ch044","ga-a1b1-ch045","ga-a1b1-ch046","ga-a1b1-ch047","ga-a1b1-ch048","ga-a1b1-ch049","ga-a1b1-ch050"],
-    "note": "Apply the verified Stage-1 CEFR corrections for chapters 45, 47 and 48 rather than the raw TOC labels."
+    "strategy": "STAGE4_LINGUISTIC_LEXICAL_QA",
+    "source_book_id": "both",
+    "chapter_ids": "ga-a1b1-ch001..080 + ga-b2c1-ch001..088",
+    "note": "Use repaired answer-spec authority. Do not recreate Stage-3 chapter drafts."
+  },
+  "integrity_gate": {
+    "status": "PASS",
+    "portable_authority_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
+    "portable_sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
+    "exercise_types": {
+      "MULTIPLE_CHOICE": 66,
+      "TRUE_FALSE": 15,
+      "FILL_GAP": 142,
+      "SHORT_ANSWER": 123
+    },
+    "legacy_portable_lineage_note": "Through-Ch050 and Through-Ch060 predate explicit parent_sha256 metadata; stable-ID/source-hash/coverage continuity was validated with no gaps or collisions."
   }
 }

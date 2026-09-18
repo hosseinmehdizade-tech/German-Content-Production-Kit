@@ -28,7 +28,7 @@
     ],
     "course_contract": "MENSCHEN-MEMRISE-COURSE-SOURCE-CONTRACT-v1.0.0",
     "audio_contract": "GFP-SOURCE-AUDIO-REFERENCE-CONTRACT-v1.0.0",
-    "runtime_acceptance": "GFP-v416-R50 latest resolved portable artifact"
+    "runtime_acceptance": "GFP-v417-R51 latest resolved portable artifact"
   },
   "stages": [
     {
@@ -102,7 +102,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01, A1-L02 and A1-L03 are locked. Start A1-L04 Stage 1/2 from existing course inventory. At Stage 6 resolve newest Flashcards Pro artifact again.",
+  "resume_instruction": "A1-L01, A1-L02 and A1-L03 are locked. Start A1-L04 Stage 1/2 from existing course inventory. At Stage 6 resolve newest Flashcards Pro artifact again. From A1-L04 onward, Stage 7 MUST directly import the outer LOCKED.zip; never require the user to extract a nested content ZIP.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -189,5 +189,13 @@
   "a1_l04": {
     "state": "READY_TO_START",
     "rule": "Proceed lesson-by-lesson; preserve locked L01-L03 unless a real upstream incompatibility invalidates them."
+  },
+  "delivery_policy": {
+    "contract": "Prompt/MENSCHEN-LOCKED-LESSON-DELIVERY-CONTRACT-v1.0.0.md",
+    "locked_bundle_is_user_import_artifact": true,
+    "outer_locked_zip_direct_import_required": true,
+    "build_metadata_authority": "BUILD-METADATA.json -> data_file.filename",
+    "nested_zip_user_workflow_forbidden": true,
+    "stage7_required_gate": "Directly import the outer LOCKED.zip on the latest resolved runtime, verify lesson count + cumulative persistence, then LOCK."
   }
 }

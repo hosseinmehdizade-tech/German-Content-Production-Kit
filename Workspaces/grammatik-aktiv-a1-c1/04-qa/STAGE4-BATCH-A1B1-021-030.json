@@ -1,0 +1,100 @@
+{
+  "qa_schema": "grammar-stage4-batch-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "4_linguistic_lexical_qa",
+  "batch_id": "a1b1-021-030",
+  "scope": {
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch021",
+      "ga-a1b1-ch022",
+      "ga-a1b1-ch023",
+      "ga-a1b1-ch024",
+      "ga-a1b1-ch025",
+      "ga-a1b1-ch026",
+      "ga-a1b1-ch027",
+      "ga-a1b1-ch028",
+      "ga-a1b1-ch029",
+      "ga-a1b1-ch030"
+    ]
+  },
+  "status": "PASS_AFTER_REPAIR",
+  "review_mode": "FULL_LESSON_LINGUISTIC_REVIEW_PLUS_MACHINE_INTEGRITY_GATE",
+  "machine_gate": {
+    "status": "PASS",
+    "lessons": 10,
+    "rules": 38,
+    "patterns": 10,
+    "examples": 24,
+    "common_errors": 10,
+    "exercises": 20,
+    "source_refs": 122,
+    "source_id_mismatches": 0,
+    "source_page_range_errors": 0,
+    "printed_pdf_offset_errors": 0,
+    "answer_spec_errors": 0,
+    "runtime_srs_state_leaks": 0,
+    "missing_persian_script_fields": 0
+  },
+  "repairs": [
+    {
+      "lesson_id": "ga-a1b1-ch024",
+      "type": "GERMAN_USAGE_PRECISION",
+      "summary": "Rephrased the Perfekt usage rule to describe frequent use for past events rather than the unnatural 'Vergangenheitsaussage bilden' formulation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch025",
+      "type": "AUXILIARY_RULE_PRECISION",
+      "summary": "Restricted the Ortswechsel heuristic to intransitive verbs to avoid overgeneralizing sein selection."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch026",
+      "type": "RULE_EXAMPLE_ALIGNMENT",
+      "summary": "Removed 'bezahlt' from the ge-regular examples and moved it to the inseparable-prefix rule, where it belongs."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch027",
+      "type": "MORPHOLOGY_TERMINOLOGY",
+      "summary": "Corrected the modal Präteritum rule from calling konnte/musste/etc. stems to the actual stems plus weak past endings."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch027",
+      "type": "MOECHTEN_TENSE_PRECISION",
+      "summary": "Clarified the source's wollte contrast without presenting möchten as having its own Präteritum paradigm."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch028",
+      "type": "COMMON_ERROR_VALIDITY",
+      "summary": "Replaced a grammatical-but-less-typical Perfekt sentence that had been mislabeled as wrong with a genuinely tense-mismatched past sentence."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch029",
+      "type": "REFLEXIVE_CONSTRUCTION_PRECISION",
+      "summary": "Removed the overbroad 'obligatorily reflexive' label and tied reflexivity to the intended constructions."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch029",
+      "type": "WORD_ORDER_SCOPE",
+      "summary": "Limited reflexive-pronoun position guidance to pronominal subjects instead of stating an overgeneral rule."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch029",
+      "type": "RECIPROCAL_SEMANTICS",
+      "summary": "Made reciprocal sich unambiguous with 'ineinander', repaired the related exercise and improved Persian translation of sich auf etwas freuen."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch030",
+      "type": "TEMPORAL_PREPOSITION_ACCURACY",
+      "summary": "Removed standalone 'von Montag' as a start-time pattern; reserved ab for start and von...bis for a span."
+    }
+  ],
+  "unresolved_errors": [],
+  "unresolved_warnings": [],
+  "stage4_progress_after_batch": {
+    "reviewed_lessons": 30,
+    "total_lessons": 168,
+    "remaining_lessons": 138,
+    "contiguous_a1b1_reviewed_through": 30
+  },
+  "next_action": "Continue Stage 4 with ga-a1b1-ch031..040."
+}

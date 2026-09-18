@@ -1,0 +1,69 @@
+{
+  "schema": "grammar-stage6-runtime-presentation@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "6_runtime_presentation_acceptance",
+  "state": "RUNNING",
+  "engineering_acceptance": "PASS",
+  "exact_app_acceptance": "BLOCKED",
+  "target_runtime": {
+    "release": "v417-R51",
+    "organized_delivery": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
+    "organized_delivery_sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
+    "app_artifact": "GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip",
+    "app_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
+    "post_package_status": "PASS",
+    "raw_bytes_materializable": false,
+    "grammar_baseline": "R44"
+  },
+  "app_branch": {
+    "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "branch": "grammar-runtime-v2-stage6",
+    "engineering_acceptance_commit": "a72c4a2029583a175a54f8004cee06b2337b90d6",
+    "acceptance_report_commit": "ca613a355fccc2f8f4fa1a62d0130eedad06d24b",
+    "acceptance_report": "04-Reports/Stage6-Grammar-v2/STAGE6-GRAMMAR-V2-ACCEPTANCE.json"
+  },
+  "materialized_runtime": {
+    "lessons": 168,
+    "exercises": 346,
+    "rules": 801,
+    "patterns": 189,
+    "examples": 560,
+    "common_errors": 208,
+    "semantic_target_refs": 490,
+    "prerequisite_edges": 231,
+    "unresolved_prerequisites": 0,
+    "runtime_schema": "grammar.runtime.v2.0.0",
+    "runtime_version": "2.0.1-stage6",
+    "entries_sha256": "cf4c656da75660d8ce39b1fbd45afaec9b94e72b460ff03c440d31c74c109aa1",
+    "validation": "PASS"
+  },
+  "passed_subgates": [
+    "168/168 authority materialization",
+    "exact canonical roundtrip",
+    "346 exercise ID/integrity gate",
+    "semantic target preservation",
+    "231-edge prerequisite resolution/acyclic gate",
+    "R44 compatibility view for rules/examples/skills",
+    "all four exercise types grade correctly",
+    "shared Fehlerbuch continuity with exact target IDs",
+    "existing Grammar domain consumes the V2 provider",
+    "A1-C1 coverage",
+    "deterministic no-visible-UI-change integration overlay",
+    "Stage5 contract regression",
+    "release-hygiene regression"
+  ],
+  "ci": {
+    "stage6_run_id": 35407525319,
+    "stage6_conclusion": "success",
+    "release_hygiene_run_id": 35407525321,
+    "release_hygiene_conclusion": "success"
+  },
+  "blocker": {
+    "id": "EXACT_V417_APP_BYTES_UNAVAILABLE",
+    "severity": "BLOCKER_FOR_STAGE6_PASS_ONLY",
+    "explanation": "The durable v417-R51 artifact filename/hash and post-package verification are available, but the ZIP bytes are not materializable in the current Project/Library session. The Git main source tree is explicitly allowed to lag and cannot substitute for exact v417 bytes.",
+    "stage4_invalidated": false,
+    "stage5_invalidated": false
+  },
+  "next_action": "Resolve/materialize the exact v417-R51 App ZIP bytes or use an explicitly re-uploaded current copy. Apply the deterministic Stage6 overlay to those exact bytes; run browser/offline/regression/post-package verification; then and only then mark Stage 6 PASS."
+}

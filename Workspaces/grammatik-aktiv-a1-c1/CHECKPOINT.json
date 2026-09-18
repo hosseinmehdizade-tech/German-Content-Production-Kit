@@ -175,8 +175,26 @@
       "pass_commit_sha": "8e7c449382a73d04d1fd5776d818428c1e5e6079"
     },
     "5_delivery_projection": {
-      "state": "NOT_STARTED",
-      "pass_commit_sha": null
+      "state": "PASS",
+      "authoritative_artifacts": [
+        "05-delivery/STAGE5-DELIVERY-PROJECTION-V2.json",
+        "PORTABLE:/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage5-Delivery-Projection-v2-PASS-CHECKPOINT.zip",
+        "APP_BRANCH:hosseinmehdizade-tech/German-Flashcards-Pro@grammar-content-v2-stage5"
+      ],
+      "progress": {
+        "source_chapters_total": 168,
+        "authority_resolved": 168,
+        "portable_stage4_members": 124,
+        "git_resident_lessons": 44,
+        "projection_contract": "grammar.content.v2.0.0",
+        "runtime_contract": "grammar.runtime.v2.0.0",
+        "compiler": "gfp-grammar-compiler-v2",
+        "visible_ui_change": "NONE",
+        "stage4_invalidated": false
+      },
+      "gate_evidence": "Lossless v2 architecture persisted on Flashcards branch 0cd6999a6fd55011123006ddd9ea5063593dc1ab; Stage-4 authority 168/168 remains intact; v2 contract test PASS; no R44-v1 or visible UI changes.",
+      "next_action": "Begin Stage 6 runtime/presentation acceptance against the newest live Flashcards Pro runtime. Materialize all 168 authorities into grammar.runtime.v2 and test import/render/grading/Fehlerbuch/persistence/regressions.",
+      "pass_commit_sha": "e789713f4a752679b87988e947e2bfcb637bdf7b"
     },
     "6_runtime_presentation_acceptance": {
       "state": "NOT_STARTED",
@@ -189,7 +207,7 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1-4 PASS. Stage 4 is complete for all 168 lessons (A1-B1 80/80, B2-C1 88/88) with 317 verified repairs. Resume at Stage 5 delivery projection using the final Stage4 COMPLETE portable checkpoint.",
+  "resume_instruction": "Stages 1-5 PASS. Stage 4 is frozen at 168/168. Resume at Stage 6: resolve newest Flashcards Pro runtime live, then build/test the 168-lesson grammar.runtime.v2 integration without visible UI redesign.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
@@ -203,7 +221,10 @@
     "stage4_portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "stage4_portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
     "stage4_portable_sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
-    "stage4_note": "Stage 4 final portable checkpoint supersedes Through-B2C1-Ch060 and completes 168/168 linguistic/pedagogical QA. Git-resident ch082 Stage-4 repair commit: d7fac6a7e3680dff5c80bfce1df12357fdd751d3."
+    "stage4_note": "Stage 4 final portable checkpoint supersedes Through-B2C1-Ch060 and completes 168/168 linguistic/pedagogical QA. Git-resident ch082 Stage-4 repair commit: d7fac6a7e3680dff5c80bfce1df12357fdd751d3.",
+    "stage5_app_branch": "grammar-content-v2-stage5",
+    "stage5_app_branch_head": "0cd6999a6fd55011123006ddd9ea5063593dc1ab",
+    "stage5_metadata_commit": "e789713f4a752679b87988e947e2bfcb637bdf7b"
   },
   "portable_checkpoint": {
     "name": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",

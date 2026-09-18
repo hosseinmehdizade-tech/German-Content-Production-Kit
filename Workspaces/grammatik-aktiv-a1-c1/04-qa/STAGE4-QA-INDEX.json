@@ -5,15 +5,16 @@
   "status": "RUNNING",
   "coverage": {
     "total_lessons": 168,
-    "reviewed_lessons": 70,
-    "passed_lessons": 70,
+    "reviewed_lessons": 80,
+    "passed_lessons": 80,
     "failed_lessons": 0,
-    "remaining_lessons": 98
+    "remaining_lessons": 88
   },
   "source_order_progress": {
     "grammatik-aktiv-a1-b1": {
       "contiguous_reviewed_from": 1,
-      "contiguous_reviewed_through": 70
+      "contiguous_reviewed_through": 80,
+      "status": "COMPLETE"
     },
     "grammatik-aktiv-b2-c1": {
       "contiguous_reviewed_from": null,
@@ -70,7 +71,15 @@
       "path": "STAGE4-BATCH-A1B1-061-070.json",
       "status": "PASS_AFTER_REPAIR",
       "lessons": 10,
-      "repairs": 12
+      "repairs": 21
+    },
+    {
+      "batch_id": "a1b1-071-080",
+      "path": "STAGE4-BATCH-A1B1-071-080.json",
+      "status": "PASS_AFTER_REPAIR",
+      "lessons": 10,
+      "repairs": 14,
+      "portable_checkpoint": "Grammar-Aktiv-v3.3.2-Stage4-A1B1-Through-Ch080-CHECKPOINT.zip"
     }
   ],
   "policy": {
@@ -79,5 +88,10 @@
     "preserve_stage3_source_authority": true,
     "do_not_regenerate_valid_stage3_content": true
   },
-  "next_action": "Review ga-a1b1-ch071..080."
+  "next_action": "Review ga-b2c1-ch001..010.",
+  "semantic_target_hardening": {
+    "scope": "ga-a1b1-ch061..080",
+    "status": "PASS",
+    "note": "Exercise target_object_ids checked for semantic rule alignment, not only referential existence; 0 unresolved target findings."
+  }
 }

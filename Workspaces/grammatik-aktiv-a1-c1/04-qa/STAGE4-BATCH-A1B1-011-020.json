@@ -1,0 +1,90 @@
+{
+  "qa_schema": "grammar-stage4-batch-qa@1.0.0",
+  "dataset_id": "grammatik-aktiv-a1-c1",
+  "stage": "4_linguistic_lexical_qa",
+  "batch_id": "a1b1-011-020",
+  "scope": {
+    "source_book_id": "grammatik-aktiv-a1-b1",
+    "chapter_ids": [
+      "ga-a1b1-ch011",
+      "ga-a1b1-ch012",
+      "ga-a1b1-ch013",
+      "ga-a1b1-ch014",
+      "ga-a1b1-ch015",
+      "ga-a1b1-ch016",
+      "ga-a1b1-ch017",
+      "ga-a1b1-ch018",
+      "ga-a1b1-ch019",
+      "ga-a1b1-ch020"
+    ]
+  },
+  "status": "PASS_AFTER_REPAIR",
+  "review_mode": "FULL_LESSON_LINGUISTIC_REVIEW_PLUS_MACHINE_INTEGRITY_GATE",
+  "machine_gate": {
+    "status": "PASS",
+    "lessons": 10,
+    "rules": 23,
+    "patterns": 10,
+    "examples": 30,
+    "common_errors": 10,
+    "exercises": 20,
+    "source_refs": 114,
+    "source_id_mismatches": 0,
+    "source_page_range_errors": 0,
+    "printed_pdf_offset_errors": 0,
+    "answer_spec_errors": 0,
+    "runtime_srs_state_leaks": 0,
+    "missing_persian_script_fields": 0
+  },
+  "repairs": [
+    {
+      "lesson_id": "ga-a1b1-ch011",
+      "type": "GERMAN_RULE_SCOPE",
+      "summary": "Limited the inversion rule to simple declarative clauses and softened the subject-after-verb claim to avoid overgeneralization."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch012",
+      "type": "GRAMMAR_TERMINOLOGY",
+      "summary": "Separated true Satzklammer structures from Verb-Verb and noun-verb combinations; aligned German and Persian explanation."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch014",
+      "type": "EXAMPLE_RULE_ALIGNMENT",
+      "summary": "Replaced 'keine Zeit' with article-free 'Zeit' so the example actually illustrates zero-article usage."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch015",
+      "type": "NEGATION_SCOPE",
+      "summary": "Restricted kein to indefinite/zero-article nominal groups instead of presenting it as the negator for all nouns."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch017",
+      "type": "CASE_QUESTION_ACCURACY",
+      "summary": "Corrected the Dativ question model: mit wem? for people and commonly womit? for things; aligned short explanation, DE and FA."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch018",
+      "type": "REFERENCE_CLARITY",
+      "summary": "Disambiguated sie singular vs sie plural in the possessive-article mapping."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch019",
+      "type": "PERSIAN_NATURALNESS",
+      "summary": "Improved the Persian rendering of 'Ich nehme diesen Bus.' to idiomatic Persian."
+    },
+    {
+      "lesson_id": "ga-a1b1-ch020",
+      "type": "PERSIAN_SENSE_ALIGNMENT",
+      "summary": "Adjusted 'Ich mag dich' translation to preserve mögen=like rather than the stronger love reading."
+    }
+  ],
+  "unresolved_errors": [],
+  "unresolved_warnings": [],
+  "stage4_progress_after_batch": {
+    "reviewed_lessons": 20,
+    "total_lessons": 168,
+    "remaining_lessons": 148,
+    "contiguous_a1b1_reviewed_through": 20
+  },
+  "next_action": "Continue Stage 4 with ga-a1b1-ch021..030."
+}

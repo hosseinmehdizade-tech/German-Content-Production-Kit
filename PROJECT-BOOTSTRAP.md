@@ -18,21 +18,25 @@ Never silently downgrade a newer verified artifact because GitHub is older.
 4. For a named workstream, read its `CHECKPOINT.json` and source `SOURCE-MANIFEST.json`.
 5. Resolve raw sources via explicit current upload → Project Sources → Library, using `SOURCE-ACCESS-PROTOCOL-v1.0.0.md` and `SOURCE-REGISTRY.json`.
 6. Inspect `German-Flashcards-Pro` only when runtime/import/presentation compatibility matters.
-7. When runtime compatibility matters, read **German-Flashcards-Pro/`RUNTIME-AUTHORITY-PIN.json`** and materialize the pinned portable app artifact before any runtime/import/UI/browser/offline/package acceptance.
-8. If that pinned artifact cannot be materialized or its SHA mismatches, runtime acceptance is BLOCKED. **Never substitute the Flashcards Git runtime tree.**
+7. When runtime compatibility matters, read **`FLASHCARDS-RUNTIME-DEPENDENCY.json`**, then Flashcards Pro **`RUNTIME-CURRENTNESS-POLICY.json`** and **`RUNTIME-AUTHORITY-PIN.json`**.
+8. Resolve **CURRENT** and **LAST_FULLY_VERIFIED** separately. Target CURRENT for new integration/development even if it has blockers; LAST_FULLY_VERIFIED is regression/fallback evidence only.
+9. Materialize the CURRENT portable app artifact and verify SHA-256 before final runtime/import/UI/browser/offline/package acceptance.
+10. If CURRENT artifact cannot be materialized or final acceptance is blocked, mark acceptance BLOCKED but **do not retarget integration to an older LAST_FULLY_VERIFIED runtime**.
 
 ## 3. Artifact-first, async Git
 `PROJECT-OPERATING-MODE-v2.md` is active. GitHub is a durability/coordination mirror, not the binary transport or critical path. Large portable checkpoint/release bundles live in Project/Library/user-delivery surfaces; Git stores compact source identities, hashes, contracts, checkpoint summaries and sync metadata. Track quality state separately from Git persistence.
 
 ## 4. Cross-chat runtime hard gate
 For Stage 6 or any other runtime-sensitive acceptance:
-- the exact app/release artifact filename and SHA-256 must be recorded;
-- the artifact must be materialized directly from current chat/Project/Library;
-- acceptance evidence must state the portable artifact identity;
-- a stale Git runtime branch can be used only for engineering/diff work, never as final runtime authority;
-- FINAL/PASS requires testing the resulting overlay/package on the pinned portable artifact lineage.
+- CURRENT and LAST_FULLY_VERIFIED must be recorded separately;
+- CURRENT is always the integration/development target, regardless of verification blockers;
+- LAST_FULLY_VERIFIED is used only as a regression/fallback comparison;
+- the exact CURRENT app/release artifact filename and SHA-256 must be recorded;
+- CURRENT artifact must be materialized directly from current chat/Project/Library for final acceptance;
+- FINAL/PASS requires testing the resulting overlay/package on the CURRENT portable artifact lineage;
+- blockers may stop PASS, but they never cause a silent downgrade of the integration target.
 
-Content-only stages are not invalidated merely because the app runtime moves forward.
+Content-only stages are not invalidated merely because the app runtime moves forward. When runtime acceptance later occurs, it must re-resolve CURRENT at that time.
 
 ## 5. Content-production rules
 - Preserve source terminology, lesson/chapter placement, spelling, order and lineage.

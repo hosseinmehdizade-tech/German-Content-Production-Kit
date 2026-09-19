@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L13 Stage 1/2 milestone metadata is synchronized on main; exact checkpoint bytes are durable in ChatGPT Library. A1-L01 through A1-L12 remain LOCKED."
+    "git_sync_note": "A1-L13 Stage 3 cumulative Batch0001-0003 metadata is synchronized on main; exact checkpoint bytes are durable in ChatGPT Library. A1-L01 through A1-L12 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -72,14 +72,26 @@
           986,
           988
         ]
-      },
-      "reuse_note": "eine Frage stellen reuses locked A1-L01 expression ma1m-lu-0070; rows 986 and 988 share one newly minted A1-L13 unter anderem identity ma1m-lu-1376."
+      }
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "PENDING",
-      "scope": "A1-L13"
+      "state": "IN_PROGRESS",
+      "scope": "A1-L13",
+      "completed_batches": [
+        "0001",
+        "0002",
+        "0003"
+      ],
+      "target_range": "ma1m-lu-1294..ma1m-lu-1399",
+      "targets_complete": 106,
+      "targets_total": 211,
+      "targets_remaining": 105,
+      "examples_complete": 424,
+      "relations_complete": 68,
+      "review_resolutions_complete": 30,
+      "cumulative_gate": "PASS"
     },
     {
       "stage": 4,
@@ -109,7 +121,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L12 are locked. A1-L13 Stage 1/2 is PASS; continue A1-L13 Stage 3 evidence/enrichment from the verified portable checkpoint. At Stage 6 resolve the newest German Flashcards Pro portable artifact again. Stage 7 MUST directly import the outer LOCKED.zip using BUILD-METADATA authority; no nested user extraction workflow.",
+  "resume_instruction": "A1-L01 through A1-L12 are locked. A1-L13 Stage 1/2 PASS. Stage 3 cumulative Batches0001-0003 PASS through ma1m-lu-1399 (106/211 targets, 424 examples). Continue Stage 3 Batch0004 from ma1m-lu-1400; do not regenerate PASS batches unless invalidated.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -122,10 +134,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L12",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage1-2-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "99934b8094b610098ceb26fa0f01e1e6fa2d3243ecc70641c69e20941b9e1355"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "477c07d58466bb544ac1a79e755feee2a318779feef9f75208300385b2023318"
   },
-  "current_scope": "A1-L13 Stage 3 ready; A1-L01 through A1-L12 locked",
+  "current_scope": "A1-L13 Stage 3 Batch0004 ready; A1-L01 through A1-L12 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -621,6 +633,29 @@
       "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage1-2-CHECKPOINT.zip",
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage1-2-POST-PACKAGE-VERIFICATION.json"
     },
-    "next_action": "Continue A1-L13 Stage 3 evidence/enrichment."
+    "next_action": "Continue A1-L13 Stage 3 evidence/enrichment.",
+    "stage3": {
+      "state": "IN_PROGRESS",
+      "completed_batches": [
+        "0001",
+        "0002",
+        "0003"
+      ],
+      "target_range": "ma1m-lu-1294..ma1m-lu-1399",
+      "targets_complete": 106,
+      "targets_total": 211,
+      "targets_remaining": 105,
+      "examples_complete": 424,
+      "relations_complete": 68,
+      "review_resolutions_complete": 30,
+      "cumulative_gate": "PASS",
+      "artifact": {
+        "filename": "Menschen-A1-L13-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+        "sha256": "477c07d58466bb544ac1a79e755feee2a318779feef9f75208300385b2023318",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage3-Batch0003-POST-PACKAGE-VERIFICATION.json"
+      },
+      "next_action": "Continue Batch0004 from ma1m-lu-1400."
+    }
   }
 }

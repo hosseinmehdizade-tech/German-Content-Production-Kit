@@ -35,83 +35,44 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "A1-L13",
-      "source_rows": 124,
-      "audio_refs": 122,
-      "multi_audio_rows": 0,
-      "zero_audio_rows": 2,
-      "zero_audio_ordinals": [
-        954,
-        986
-      ],
-      "missing_referenced_audio_files": 0,
-      "source_csv_ordinals": "935..1058",
-      "rar_audio_presence": "122/122 PASS"
+      "scope": "A1-L13"
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "scope": "A1-L13",
-      "lesson_target_mappings": 212,
-      "new_canonical_targets": 210,
-      "reused_canonical_targets": 1,
-      "new_senses": 92,
-      "new_expressions": 118,
-      "reused_senses": 0,
-      "reused_expressions": 1,
-      "split_source_rows": 59,
-      "new_stable_id_range": "ma1m-lu-1294..ma1m-lu-1503",
-      "reused_stable_ids": [
-        "ma1m-lu-0070"
-      ],
-      "same_lesson_shared_identity": {
-        "id": "ma1m-lu-1376",
-        "headword": "unter anderem",
-        "source_rows": [
-          986,
-          988
-        ]
-      }
+      "scope": "A1-L13"
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
       "state": "PASS",
       "scope": "A1-L13",
-      "completed_batches": [
-        "0001",
-        "0002",
-        "0003",
-        "0004",
-        "0005",
-        "0006"
-      ],
-      "target_range": "ma1m-lu-1294..ma1m-lu-1503 + inherited ma1m-lu-0070",
       "targets_complete": 211,
-      "targets_total": 211,
-      "targets_remaining": 0,
       "examples_complete": 844,
       "relations_complete": 127,
-      "review_resolutions_complete": 66,
-      "gate": "PASS",
-      "locked_reuse": {
-        "id": "ma1m-lu-0070",
-        "source": "A1-L01",
-        "authority_sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
-        "inheritance": "exact semantics/examples preserved; A1-L13 membership/audio appended"
-      }
+      "review_resolutions_complete": 66
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "READY",
-      "scope": "A1-L13"
+      "state": "PASS",
+      "scope": "A1-L13",
+      "custom_checks": "43/43 PASS",
+      "official_bundle_validator": "PASS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "stage4_repaired_examples": 11,
+      "normalized_expression_types": 56,
+      "review_flags_closed": "67/67",
+      "advisories": 1
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "PENDING",
+      "state": "READY",
       "scope": "A1-L13"
     },
     {
@@ -125,12 +86,11 @@
       "stage": 7,
       "name": "Release & Post-Package Verification",
       "state": "PENDING",
-      "scope": "A1-L13",
-      "delivery_rule": "Directly import the final outer LOCKED.zip using BUILD-METADATA authority before LOCK."
+      "scope": "A1-L13"
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L12 are locked. A1-L13 Stage 1/2/3 PASS. Stage 3 complete: 211/211 target identities, 844 examples, 127 relations, 66 review resolutions. Start Stage 4 Linguistic & Lexical QA; do not regenerate Stage 3 unless a Stage 4 finding explicitly invalidates a target.",
+  "resume_instruction": "A1-L01 through A1-L12 are locked. A1-L13 Stages 1–4 PASS. Stage 4 QA: 43/43 custom checks PASS, official bundle/profile/reference validators PASS, 47/47 framework pytest PASS. Continue Stage 5 Delivery Projection from the exact Stage4 checkpoint; do not regenerate Stages 1–4 unless explicitly invalidated.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -143,10 +103,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L12",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage3-Batch0006-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "6daca33aaf34f2557c6ca1858274464c1e479b89260c61a3986b7dd18f7cc8f8"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage4-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "65f2cc94736b771bb12e3390efaee4ea2fcd749af0b8e57ecce1f2b9d1ad5b2e"
   },
-  "current_scope": "A1-L13 Stage 4 ready; Stage 3 PASS; A1-L01 through A1-L12 locked",
+  "current_scope": "A1-L13 Stage 5 ready; Stage 4 PASS; A1-L01 through A1-L12 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -670,8 +630,21 @@
       "next_action": "Start Stage 4 Linguistic & Lexical QA."
     },
     "stage4": {
-      "state": "READY",
-      "next_action": "Run German/FA/EN, morphology, relation, annotation, provenance and no-leakage QA on exact Stage3 artifact."
+      "state": "PASS",
+      "artifact": {
+        "filename": "Menschen-A1-L13-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "65f2cc94736b771bb12e3390efaee4ea2fcd749af0b8e57ecce1f2b9d1ad5b2e",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage4-CHECKPOINT.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage4-POST-PACKAGE-VERIFICATION.json"
+      },
+      "custom_checks": "43/43 PASS",
+      "official_validators": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "repairs_applied": 116,
+      "stage4_repaired_examples": 11,
+      "normalized_expression_types": 56,
+      "review_flags_closed": "67/67",
+      "advisory": "3 German example texts are reused across closely related targets; non-blocking."
     }
   }
 }

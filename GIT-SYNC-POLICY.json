@@ -1,0 +1,40 @@
+{
+  "schema": "gcpk-git-sync-policy@1.0.0",
+  "status": "ENFORCED",
+  "updated_at": "2026-09-19T11:30:00+02:00",
+  "mode": "BOUNDED_DEFERRED_COALESCED",
+  "purpose": "Keep GitHub useful for durable source/checkpoint coordination without making every content batch or runtime integration step depend on Git availability.",
+  "allowed_lightweight_automation": [
+    "detect that portable/current workstream state is newer than Git metadata",
+    "mark persistence.git=PENDING/DEFERRED",
+    "run small consistency checks",
+    "write compact checkpoint/manifest metadata at a meaningful boundary"
+  ],
+  "forbidden_or_default_off": [
+    "commit per card or per lexical item",
+    "commit per tiny content edit",
+    "block content production until GitHub Actions completes",
+    "retry Git in a loop",
+    "reconstruct/upload large checkpoint ZIPs through Git/Base64",
+    "deep Git history audit before every normal continuation"
+  ],
+  "sync_triggers": [
+    "completed batch or stage boundary",
+    "architecture/contract change",
+    "handoff where durable metadata materially helps",
+    "runtime acceptance boundary",
+    "explicit user request"
+  ],
+  "coalescing_rule": "If several content batches or runtime versions advance before the next sync boundary, synchronize the newest valid state directly; intermediate Git mirrors are not required when portable checkpoints preserve them.",
+  "turn_budget": {
+    "ordinary_turn_git_sync_attempts_max": 1,
+    "on_failure": "Record persistence.git=PENDING or FAILED, preserve artifact/hash/checkpoint/resume instructions, and continue production.",
+    "no_background_retry_loop": true
+  },
+  "runtime_dependency_rule": "Flashcards CURRENT may advance while Git mirror lags. Content integration targets CURRENT; Git lag never justifies fallback to LAST_FULLY_VERIFIED.",
+  "artifact_transport": "Large ZIP/checkpoint artifacts stay in Library/Project/user-delivery; Git stores compact metadata/hashes/source.",
+  "current_state": {
+    "persistence_git": "IN_SYNC_FOR_CURRENT_METADATA",
+    "deferred_sync_allowed": true
+  }
+}

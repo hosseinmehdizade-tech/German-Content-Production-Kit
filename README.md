@@ -2,20 +2,12 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L14 are LOCKED.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L14 are LOCKED.** A1-L15 Stages 1, 2 and 3 are **PASS**.
 
-A1-L14 completed all seven stages:
-- 186 lesson cards = 185 new canonical IDs + exact reused `ma1m-lu-0338 Zimmer`
-- 744 DE examples with FA+EN; 128 relations
-- Stage4 QA 45/45 PASS; official validator 186/186 exact-four, 0 warnings; framework regression 47/47 PASS
-- Stage5 projection 205/205 PASS; 176 `de-vocabulary` + 10 `german-verb`
-- Stage6/7 on CURRENT GFP-v417-R51: exact outer import 27/27 PASS; 186/186 standalone persistence
-- cumulative A1-L01..L14 identity/collision: 22/22 PASS; **1688 unique canonical cards**
-- fresh v417 locked-bundle baseline: 17/17 PASS
-- final Library rematerialization: exact SHA-256 match
-- environment boundary: no claim of one single sequential 1688-card durable browser persistence run
+A1-L15 Stage 3 completed **161/161** lesson target identities: **160 new IDs (`ma1m-lu-1689..1848`) + exact locked reuse `ma1m-lu-1343 — in der Nähe bleiben`**. It contains **644 DE examples with independent FA+EN translations**, **93 evidence-backed relations**, **39 review resolutions**, and **161 evidence claims**. The reused target preserves the locked A1-L13 semantic core and all four examples exactly; A1-L15 contributes membership/lineage only and its zero-audio source row is not backfilled with fabricated source audio.
 
-Final A1-L14 artifact: `Menschen-A1-L14-v3.3.2-GFP-v417-LOCKED.zip`
-SHA-256: `a68cc53f6eabf0298ff5a8e81f710f48ca6e3f930db84593b64f38bfed8a5232`
+Exact Stage3 checkpoint: `Menschen-A1-L15-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip`
+SHA-256: `ac7737aa5cd7b913922cb6eda6e449e599f15ae66ac6893d40ac6915ce5391af`
+Library rematerialization: exact SHA-256 match.
 
-**Next: A1-L15 Stage 1/2.**
+**Next: A1-L15 Stage 4 — Linguistic & Lexical QA.**

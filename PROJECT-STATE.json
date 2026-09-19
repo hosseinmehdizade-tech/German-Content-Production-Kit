@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T12:55:00+02:00",
+  "updated_at": "2026-09-19T12:19:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -175,28 +175,27 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L13 Stage 5 ready; Stage 4 PASS; A1-L01 through A1-L12 locked",
-      "last_observed_stage": "4_linguistic_lexical_QA_A1_L13_PASS",
-      "last_observed_note": "A1-L13 Stage 4 PASS. Custom QA 43/43; official GFP v411 bundle/profile/reference registry/reference availability validators PASS; framework pytest 47/47 PASS. Stage4 normalized 56 unsupported course expression categories into profile-supported multiword_expression while preserving course_form_type, normalized beide POS to pronoun with trace, completed two registry source IDs, repaired 11 weak examples/translation cases, and closed 67/67 review-flag instances including exact inherited A1-L01 resolution for ma1m-lu-0070. Three cross-target example reuses remain as non-blocking advisory.",
+      "current_scope": "A1-L14 Stage 1/2 ready; A1-L01 through A1-L13 locked",
+      "last_observed_stage": "7_release_locked_A1_L13",
+      "last_observed_note": "A1-L13 exact clean final outer LOCKED.zip passed fresh-extract manifest 42/42, Stage4 43/43, Stage5 230/230, exact v417 direct import 27/27 with 211/211 persistence, cumulative production-parser identity/collision 19/19 with 1503 unique cards, and fresh v417 locked-bundle baseline 17/17. Library rematerialization SHA-256 matched exactly. Environment boundary remains only for one single sequential 1503-card durable browser persistence run.",
       "latest_locked_release": {
-        "filename": "Menschen-A1-L12-v3.3.2-GFP-v417-LOCKED.zip",
-        "sha256": "1b4004cf3fc457c37a7c50ce47d988f76b6c6c8362757aee5715c0de037e5103",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L12-v3.3.2-GFP-v417-LOCKED.zip",
+        "filename": "Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+        "sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
         "runtime": "GFP-v417-R51",
-        "cards": 134,
-        "new_canonical_ids": 132,
+        "cards": 211,
+        "new_canonical_ids": 210,
         "reused_canonical_ids": [
-          "ma1m-lu-0150",
-          "ma1m-lu-0319"
+          "ma1m-lu-0070"
         ],
-        "cumulative_unique_cards": 1293,
-        "standalone_persistence": "134/134 PASS",
-        "cumulative_collision": "1293 unique / 132 new L12 / expected Mathematik studieren + groß reuse only PASS_WITH_ENVIRONMENT_BOUNDARY",
-        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L12-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
-        "checkpoint_git_sync_commit": "49fce782e152b4c5ccdffb853326ff372418d220"
+        "cumulative_unique_cards": 1503,
+        "direct_outer_import": "27/27 PASS",
+        "standalone_persistence": "211/211 PASS",
+        "cumulative_collision": "19/19 PASS; 1503 unique / 210 new L13 / expected ma1m-lu-0070 reuse only",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json"
       },
-      "lock_state": "A1-L01_TO_A1-L12_LOCKED",
-      "next_scope": "A1-L13 Stage 5 Delivery Projection",
+      "lock_state": "A1-L01_TO_A1-L13_LOCKED",
+      "next_scope": "A1-L14 Stage 1/2",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L13-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -233,6 +232,24 @@
         "examples": 844,
         "relations": 127,
         "next_action": "Start Stage 5 Delivery Projection"
+      },
+      "latest_stage5": {
+        "state": "PASS",
+        "rows": 211,
+        "card_types": {
+          "de-vocabulary": 188,
+          "german-verb": 23
+        },
+        "qa": "230/230 PASS",
+        "dataset_sha256": "94b861cb94b535d9f1224d4ba59f6bcf40c08dbb60fb534c93f0c7e59ddc8c09"
+      },
+      "latest_stage6": {
+        "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "runtime": "GFP-v417-R51",
+        "direct_outer_import": "27/27 PASS",
+        "standalone_persistence": "211/211 PASS",
+        "cumulative": "19/19 PASS / 1503 unique",
+        "baseline": "17/17 PASS"
       }
     },
     "vocabulary": {

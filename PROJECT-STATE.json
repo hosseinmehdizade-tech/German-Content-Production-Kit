@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T11:20:00+02:00",
+  "updated_at": "2026-09-19T12:08:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -69,8 +69,8 @@
       "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
       "source_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
-      "last_observed_stage": "6_runtime_presentation_acceptance_running",
-      "last_observed_note": "Stages 1-5 PASS. Stage 6 engineering subgates PASS. Exact v417-R51 portable runtime is materializable and SHA-verified. The Flashcards Git 01-App runtime subtree is now also synchronized byte-exact at Git blob level: 63/63 files match the same v417-R51 organized delivery. Final Stage 6 PASS still requires applying the Grammar v2 overlay to that exact portable lineage and running browser/offline/regression/post-package acceptance.",
+      "last_observed_stage": "6_runtime_presentation_acceptance_pass",
+      "last_observed_note": "Stages 1-6 PASS. Stage 6 exact v417 acceptance is PASS_WITH_ENVIRONMENT_BOUNDARY: exact v417 organized-delivery baseline, Grammar v2 168 lessons / 346 exercises, full-app Chromium set_content 24 checks PASS, offline/service-worker static contract 8 checks PASS, persistence/import/Lesen regressions PASS. Managed browser blocks live loopback/file navigation and live service-worker registration with ERR_BLOCKED_BY_ADMINISTRATOR. Two exact-app blockers were fixed: integrator now deploys grammar-domain-v42.js, and V2 suppresses the 13 legacy hub Grammar units so the full app shows exactly 168 rather than 181.",
       "latest_portable_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
         "sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
@@ -79,7 +79,7 @@
         "stage3_state": "PASS",
         "git_metadata_sync_commit": "aa53f98eb0c499a9d6c112fb5b52dc9144a895b5"
       },
-      "next_scope": "Stage 6 exact-artifact integration: use the pinned v417-R51 organized delivery (sha256 2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630), apply Grammar v2 overlay, then run browser/offline/regression/post-package acceptance.",
+      "next_scope": "Stage 7 release/post-package verification from the accepted Stage6 integration. The v417 version guard correctly rejects changed runtime bytes without a version bump; next visible app version must be exactly v418 before release packaging.",
       "latest_stage4_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
         "sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
@@ -106,7 +106,7 @@
         "visible_ui_change": "NONE"
       },
       "stage6": {
-        "state": "RUNNING_EXACT_APP_BOUNDARY",
+        "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
         "app_branch": "grammar-runtime-v2-stage6",
         "engineering_acceptance_commit": "a72c4a2029583a175a54f8004cee06b2337b90d6",
         "app_acceptance_report_commit": "ca613a355fccc2f8f4fa1a62d0130eedad06d24b",
@@ -116,8 +116,8 @@
         "runtime_entries": 168,
         "runtime_exercises": 346,
         "entries_sha256": "cf4c656da75660d8ce39b1fbd45afaec9b94e72b460ff03c440d31c74c109aa1",
-        "engineering_ci": "PASS",
-        "release_hygiene": "PASS",
+        "engineering_ci": "PASS_RUN_35436243110",
+        "release_hygiene": "PASS_RUN_35436243118",
         "visible_ui_change": "NONE",
         "blocker": null,
         "exact_artifact_available": true,
@@ -134,7 +134,15 @@
           "commit": "b25b2ddb1af95bc706d32db5ab9224f46a7ad6b3",
           "verification_file": "RUNTIME-MIRROR-VERIFICATION.json",
           "verification_commit": "4ffe51b2762eecf2e909fa5d503197b015091b27"
-        }
+        },
+        "app_acceptance_commit": "f33baa3bd7eb36f8df4934550e53b465fca791b1",
+        "full_app_browser": "PASS_24_CHECKS",
+        "offline_service_worker": "PASS_8_CHECKS_STATIC_CONTRACT",
+        "live_navigation": "BLOCKED_ENVIRONMENT_ERR_BLOCKED_BY_ADMINISTRATOR",
+        "portable_checkpoint": "Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+        "portable_sha256": "dca0e5bd790ea629bf2223d481af78bbe3319e5c630eae136fad1daff934282b",
+        "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+        "next_visible_app_version_required": 418
       }
     },
     "nomen_verb_verbindungen": {

@@ -12,7 +12,7 @@ Use this precedence order:
 Never silently downgrade a newer verified artifact because GitHub is older.
 
 ## 2. Mandatory startup
-1. Read this file and `PROJECT-OPERATING-MODE-v2.md`.
+1. Read this file, `PROJECT-OPERATING-MODE-v2.md`, `PROJECT-MEMORY.json`, and `GIT-SYNC-POLICY.json`.
 2. Read `PROJECT-STATE.json` to resolve the active framework/version; **do not hard-code an old START-PROMPT**.
 3. Resolve the active START-PROMPT and exact portable authority/hash recorded in project state.
 4. For a named workstream, read its `CHECKPOINT.json` and source `SOURCE-MANIFEST.json`.
@@ -51,3 +51,12 @@ The active framework is whatever `PROJECT-STATE.json -> active_framework` says. 
 
 ## 7. User-time rule
 Work agentically and minimize routine confirmations. Surface only material blockers or decisions involving data loss, architecture, scope, source fidelity or noticeable UI/UX changes.
+
+
+## 8. Project memory reconsideration rule
+
+Before recommending a process/automation/Git/authority/packaging/source-governance/UI change, read `PROJECT-MEMORY.json`.
+
+If the proposal conflicts with an ACTIVE prior incident/decision, explicitly tell Hossein that the idea revisits a previous failure mode, summarize what happened, state the safe default, and only ask for override approval if he still wants to supersede it. Do not rely on Hossein remembering the old incident.
+
+Git synchronization follows `GIT-SYNC-POLICY.json`: bounded, deferred, coalesced, and never required on every batch/version.

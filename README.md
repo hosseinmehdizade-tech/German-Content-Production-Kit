@@ -2,16 +2,11 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Start with:
-1. `PROJECT-BOOTSTRAP.md`
-2. `PROJECT-OPERATING-MODE-v2.md`
-3. `PROJECT-STATE.json`
-4. `Prompt/START-PROMPT-v3.3.2.md`
-5. the relevant workstream checkpoint
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L13 are LOCKED.** A1-L14 Stage 1/2 is **PASS**: 122 source rows, 122/122 source audio refs present, 186 lesson target mappings, 185 new canonical IDs (`ma1m-lu-1504..1688`) plus exact reuse `ma1m-lu-0338 Zimmer`. Stage 3 is **IN_PROGRESS**. Batch0001 is PASS through `ma1m-lu-1523`: **20/186 targets**, **80 DE examples with FA+EN**, **13 relations**, and **6 review resolutions**.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L13 are LOCKED.** A1-L13 completed all seven stages. Final lesson output contains **211 cards** (**210 new canonical IDs + exact reuse `ma1m-lu-0070`**), projected as **188 de-vocabulary + 23 german-verb**. Exact final acceptance on CURRENT **GFP-v417-R51** passed **27/27 direct-import checks**, **211/211 standalone persistence**, and **19/19 cumulative identity/collision checks** for **1503 unique A1 cards**. The managed-browser boundary remains only for a single sequential 1503-card durable-persistence run.
+Important identity guard: A1-L14 **die See = Meer/offene See** is a new semantic identity and must not be merged with prior `ma1m-lu-0530 der See = Binnensee`.
 
-Final A1-L13 artifact: `Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip`
-SHA-256: `0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75`
+Latest Stage3 checkpoint: `Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip`
+SHA-256: `d51158598393097f611dd3809b19128540c12dbfbfa4e6d89fac0bc906013535`
 
-**Next: A1-L14 Stage 1/2.**
+**Next: A1-L14 Stage3 Batch0002 from `ma1m-lu-1524`.**

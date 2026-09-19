@@ -1,7 +1,7 @@
 {
   "schema": "grammar-stage6-runtime-pin-resolution@1.0.0",
   "dataset_id": "grammatik-aktiv-a1-c1",
-  "status": "RESOLVED",
+  "status": "ACCEPTED",
   "resolved_at": "2026-09-19T02:34:00+02:00",
   "runtime_pin_source": "hosseinmehdizade-tech/German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json",
   "artifact": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
@@ -26,8 +26,8 @@
     "verification_file": "RUNTIME-MIRROR-VERIFICATION.json",
     "verification_commit": "4ffe51b2762eecf2e909fa5d503197b015091b27"
   },
-  "next_action": "Continue Stage 6 on CURRENT v417-R51. Use v411-R45 only for regression comparison. If a newer valid CURRENT appears before Stage 6 PASS, re-resolve and move the integration target forward.",
-  "updated_at": "2026-09-19T11:06:00+02:00",
+  "next_action": "Stage 7: bump visible app version exactly +1 to v418 before release packaging, then final post-package verification.",
+  "updated_at": "2026-09-19T12:05:00+02:00",
   "currentness_model": "CURRENT_AND_LAST_FULLY_VERIFIED_ARE_INDEPENDENT",
   "current_runtime": {
     "version": "v417-R51",
@@ -42,5 +42,18 @@
     "release_final": true,
     "role": "REGRESSION_REFERENCE_ONLY"
   },
-  "anti_downgrade_rule": "Verification blockers on CURRENT do not permit retargeting Stage 6 to LAST_FULLY_VERIFIED or any older runtime."
+  "anti_downgrade_rule": "Verification blockers on CURRENT do not permit retargeting Stage 6 to LAST_FULLY_VERIFIED or any older runtime.",
+  "stage6_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "stage6_app_commit": "f33baa3bd7eb36f8df4934550e53b465fca791b1",
+  "portable_checkpoint": {
+    "filename": "Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+    "sha256": "dca0e5bd790ea629bf2223d481af78bbe3319e5c630eae136fad1daff934282b",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+    "library_file_id": "file_00000000da70824696f64d4fa3c12b90"
+  },
+  "findings_fixed": [
+    "Integrator now deploys modified grammar-domain-v42.js.",
+    "Full-app legacy hub coexistence fixed: V2 authoritative inventory renders exactly 168 units, not 181."
+  ],
+  "environment_boundary": "Managed browser blocks loopback/file navigation and live service-worker registration; exact inlined browser execution and static offline contract passed."
 }

@@ -197,7 +197,7 @@
       "pass_commit_sha": "2813b1368e13ff3b30bbe2d6f3b134066259a0cb"
     },
     "6_runtime_presentation_acceptance": {
-      "state": "RUNNING",
+      "state": "PASS",
       "requirement": "Resolve newest explicit runtime authority at execution time and pin both artifact SHA-256 and synchronized Git commit before PASS.",
       "authoritative_artifacts": [
         "06-runtime/STAGE6-RUNTIME-PRESENTATION-ACCEPTANCE.json",
@@ -239,12 +239,35 @@
         "existing_grammar_domain_compatibility": "PASS",
         "deterministic_overlay_tool": "PASS",
         "release_hygiene": "PASS",
-        "visible_ui_change": "NONE"
+        "visible_ui_change": "NONE",
+        "full_app_browser_exact_inlined_bytes": "PASS_24_CHECKS",
+        "offline_service_worker_static_contract": "PASS_8_CHECKS",
+        "delete_refresh_regression": "PASS_5_OF_5",
+        "user_owned_library_regression": "PASS_22_CHECKS",
+        "locked_lesson_import_regression": "PASS_8_CHECKS",
+        "lesen_rollback_regression": "PASS_7_CHECKS",
+        "full_app_visible_grammar_units": "168_EXACT",
+        "legacy_hub_grammar_units_suppressed_when_v2_present": "PASS",
+        "integrator_deploys_modified_domain": "PASS",
+        "live_navigation": "BLOCKED_ENVIRONMENT_ERR_BLOCKED_BY_ADMINISTRATOR",
+        "live_service_worker_registration": "BLOCKED_ENVIRONMENT_ERR_BLOCKED_BY_ADMINISTRATOR"
       },
-      "engineering_gate_evidence": "PASS on Flashcards Stage6 branch: GitHub Actions run 35407525319 succeeded for Stage5 regression, 168-lesson roundtrip, provider/Fehlerbuch, existing Grammar-domain compatibility and no-UI overlay; release-hygiene run 35407525321 succeeded. Acceptance report persisted on app branch.",
+      "engineering_gate_evidence": "PASS on exact v417 organized-delivery baseline plus updated Stage6 branch. Exact overlay/full-app browser/offline static/regression acceptance PASS; managed browser loopback/file navigation remains environment-blocked. GitHub Stage6 workflow run 35436243110 PASS and release-hygiene run 35436243118 PASS at app commit f33baa3bd7eb36f8df4934550e53b465fca791b1.",
       "blocker": null,
-      "next_action": "Apply the deterministic Grammar v2 overlay to the exact pinned v417-R51 organized delivery; run browser/offline/regression/post-package verification; then mark Stage 6 PASS.",
-      "pass_commit_sha": null
+      "next_action": "Begin Stage 7 release/post-package verification. Build from the accepted Stage6 integration, bump visible app version exactly +1 to v418 before release packaging, preserve UI appearance, then run final release verification.",
+      "pass_commit_sha": "f33baa3bd7eb36f8df4934550e53b465fca791b1",
+      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "portable_checkpoint": {
+        "filename": "Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+        "sha256": "dca0e5bd790ea629bf2223d481af78bbe3319e5c630eae136fad1daff934282b",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+        "library_file_id": "file_00000000da70824696f64d4fa3c12b90"
+      },
+      "version_boundary": {
+        "v417_version_guard": "EXPECTED_FAIL_RUNTIME_CHANGED_WITHOUT_VERSION_BUMP",
+        "stage6_artifact_is_release": false,
+        "next_visible_app_version_required": 418
+      }
     },
     "7_release_post_package_verification": {
       "state": "NOT_STARTED",
@@ -252,7 +275,7 @@
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1-5 PASS. Stage 6 RUNNING: engineering subgates PASS; exact v417-R51 portable artifact is materializable and SHA-verified; Git 01-App runtime mirror is 63/63 exact. Resume by applying the Grammar v2 overlay to that exact portable lineage and completing browser/offline/regression/post-package acceptance.",
+  "resume_instruction": "Stages 1-6 PASS. Stage 6 quality is PASS_WITH_ENVIRONMENT_BOUNDARY: exact v417 baseline overlay, 168/168 Grammar UI, 346 exercises, full-app Chromium set_content 24 checks PASS, offline static/service-worker 8 checks PASS, regressions PASS; live loopback/service-worker registration is blocked by managed browser policy. Resume Stage 7 with required visible version bump to v418 before release packaging.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
@@ -279,13 +302,18 @@
     "stage6_content_report_commit": "ff06036d5cdd98fd0b1f5fc7491d2e18e124a7ed",
     "stage6_runtime_entries_sha256": "cf4c656da75660d8ce39b1fbd45afaec9b94e72b460ff03c440d31c74c109aa1",
     "stage6_target_app_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
-    "stage6_state": "RUNNING_EXACT_APP_BOUNDARY",
+    "stage6_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "stage6_exact_delivery_available": true,
     "stage6_exact_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
     "stage6_exact_delivery_sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
     "stage6_runtime_mirror_branch": "runtime-mirror/v417-r51-exact",
     "stage6_runtime_mirror_commit": "b25b2ddb1af95bc706d32db5ab9224f46a7ad6b3",
-    "stage6_runtime_mirror_verification": "63/63 exact"
+    "stage6_runtime_mirror_verification": "63/63 exact",
+    "stage6_app_acceptance_commit": "f33baa3bd7eb36f8df4934550e53b465fca791b1",
+    "stage6_portable_checkpoint": "Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+    "stage6_portable_sha256": "dca0e5bd790ea629bf2223d481af78bbe3319e5c630eae136fad1daff934282b",
+    "stage6_portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+    "stage6_portable_library_file_id": "file_00000000da70824696f64d4fa3c12b90"
   },
   "portable_checkpoint": {
     "name": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",

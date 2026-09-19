@@ -9,8 +9,9 @@ Start with:
 4. `Prompt/START-PROMPT-v3.3.2.md`
 5. the relevant workstream checkpoint
 
-Current v3.3.2 contract highlights: dedicated Menschen A1/A2/B1 Memrise profiles; exactly 4 German examples per final Sense/Expression with FA+EN sentence translations; FA+EN unit meaning/gloss; evidence-backed synonym/antonym/collocation/Rektion/NVV/Wortfamilie; preserved course/lesson/source-order and source MP3 references; no Memrise SRS/progress leakage; seven-stage lifecycle remains normative.
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L12 are LOCKED.** A1-L13 Stages 1–4 are **PASS**. Stage 3 completed **211/211** target identities with **844 examples** and **127 relations**. Stage 4 then passed **43/43 custom QA checks**, the official GFP v411 bundle/profile/reference validators, and the full **47/47 framework pytest** suite. It also applied profile-safe normalization and 11 targeted linguistic/example repairs without altering the locked A1-L01 semantic identity reused as `ma1m-lu-0070`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L12 are LOCKED.** A1-L13 Stage 1, 2 and 3 are **PASS**. Stage 3 completed all **211/211** lesson target identities (**210 new + exact inherited `ma1m-lu-0070` from locked A1-L01**), with **844 DE examples + FA+EN**, **127 relations**, and **66 review resolutions**. The exact Stage 3 checkpoint is `Menschen-A1-L13-v3.3.2-Stage3-Batch0006-CHECKPOINT.zip`, SHA-256 `6daca33aaf34f2557c6ca1858274464c1e479b89260c61a3986b7dd18f7cc8f8`. **Next: A1-L13 Stage 4 Linguistic & Lexical QA.**
+Exact Stage 4 checkpoint: `Menschen-A1-L13-v3.3.2-Stage4-CHECKPOINT.zip`
+SHA-256: `65f2cc94736b771bb12e3390efaee4ea2fcd749af0b8e57ecce1f2b9d1ad5b2e`
 
-The v3.3.2 portable framework candidate passed current acceptance and the full local regression suite: **47/47 pytest PASS**. Lesson-level LOCKED state is tracked independently in the Menschen workstream checkpoint.
+**Next: A1-L13 Stage 5 — Delivery Projection.**

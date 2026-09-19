@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L14 Stage1/2 and Stage3 Batch0001 metadata are synchronized on main. Exact checkpoint ZIPs are durable in ChatGPT Library; A1-L01 through A1-L13 remain LOCKED."
+    "git_sync_note": "A1-L14 Stage3 COMPLETE metadata is synchronized on main at the milestone boundary. Exact Stage3 checkpoint bytes are durable in ChatGPT Library; A1-L01 through A1-L13 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -64,24 +64,32 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "IN_PROGRESS",
+      "state": "PASS",
       "scope": "A1-L14",
       "completed_batches": [
-        "0001"
+        "0001",
+        "0002",
+        "0003",
+        "0004",
+        "0005",
+        "0006",
+        "0007",
+        "0008",
+        "0009"
       ],
-      "target_range": "ma1m-lu-1504..ma1m-lu-1523",
-      "targets_complete": 20,
+      "target_range": "ma1m-lu-1504..ma1m-lu-1688 + inherited ma1m-lu-0338",
+      "targets_complete": 186,
       "targets_total": 186,
-      "targets_remaining": 166,
-      "examples_complete": 80,
-      "relations_complete": 13,
-      "review_resolutions_complete": 6,
-      "cumulative_gate": "PASS"
+      "targets_remaining": 0,
+      "examples_complete": 744,
+      "relations_complete": 128,
+      "review_resolutions_complete": 29,
+      "gate": "PASS"
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "PENDING",
+      "state": "READY",
       "scope": "A1-L14"
     },
     {
@@ -106,7 +114,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L13 are locked. A1-L14 Stage 1/2 PASS and Stage 3 Batch0001 PASS through ma1m-lu-1523. Continue Stage3 Batch0002 from ma1m-lu-1524; do not regenerate PASS work unless explicitly invalidated. Locked reuse ma1m-lu-0338 Zimmer remains pending for exact inheritance merge later in Stage3.",
+  "resume_instruction": "A1-L01 through A1-L13 are locked. A1-L14 Stages 1/2/3 PASS. Stage3 complete: 186/186 lesson target identities (185 new + exact inherited ma1m-lu-0338), 744 DE examples with FA+EN, 128 relations, 29 review resolutions. Start Stage4 Linguistic & Lexical QA from the exact Stage3 COMPLETE checkpoint; do not regenerate Stage3 unless Stage4 explicitly invalidates a target.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -119,10 +127,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L13",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "d51158598393097f611dd3809b19128540c12dbfbfa4e6d89fac0bc906013535"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "e69343f59b5fb11cb71da6b6e1a080896b7ba5157210ea762ac85697f3a93318"
   },
-  "current_scope": "A1-L14 Stage 3 Batch0002 ready; A1-L01 through A1-L13 locked",
+  "current_scope": "A1-L14 Stage 4 ready; Stage 3 PASS; A1-L01 through A1-L13 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51;A1-L13_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -717,7 +725,7 @@
     }
   },
   "a1_l14": {
-    "state": "STAGE3_IN_PROGRESS",
+    "state": "STAGE3_PASS",
     "source_rows": 122,
     "source_audio_refs": 122,
     "source_zero_audio_rows": 0,
@@ -743,24 +751,43 @@
       ]
     },
     "stage3": {
-      "state": "IN_PROGRESS",
+      "state": "PASS",
       "completed_batches": [
-        "0001"
+        "0001",
+        "0002",
+        "0003",
+        "0004",
+        "0005",
+        "0006",
+        "0007",
+        "0008",
+        "0009"
       ],
-      "target_range": "ma1m-lu-1504..ma1m-lu-1523",
-      "targets_complete": 20,
+      "target_range": "ma1m-lu-1504..ma1m-lu-1688 + inherited ma1m-lu-0338",
+      "targets_complete": 186,
       "targets_total": 186,
-      "targets_remaining": 166,
-      "examples_complete": 80,
-      "relations_complete": 13,
-      "review_resolutions_complete": 6,
-      "cumulative_gate": "PASS",
+      "targets_remaining": 0,
+      "examples_complete": 744,
+      "relations_complete": 128,
+      "review_resolutions_complete": 29,
+      "gate": "PASS",
+      "important_resolutions": [
+        "ma1m-lu-0338 Zimmer inherited exactly from locked A1-L04; no semantic regeneration",
+        "die See=Meer/offene See remains distinct from prior der See=Binnensee ma1m-lu-0530",
+        "Pächter/Pacht kept distinct from ordinary Mieter/Miete scope despite loose synonymy",
+        "dringen split into physical penetration vs formal in jdn. dringen interpersonal pressure",
+        "source form die Eigennamen normalized to singular canonical Eigenname with raw source preserved",
+        "das Bewerten kept distinct from verb bewerten"
+      ],
       "artifact": {
-        "filename": "Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-        "sha256": "d51158598393097f611dd3809b19128540c12dbfbfa4e6d89fac0bc906013535",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip"
-      }
+        "filename": "Menschen-A1-L14-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "sha256": "e69343f59b5fb11cb71da6b6e1a080896b7ba5157210ea762ac85697f3a93318",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-COMPLETE-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "SHA256_EXACT_MATCH"
+      },
+      "next_action": "Start Stage4 Linguistic & Lexical QA."
     },
-    "next_action": "Continue Stage3 Batch0002 from ma1m-lu-1524."
+    "next_action": "Start Stage4 Linguistic & Lexical QA."
   }
 }

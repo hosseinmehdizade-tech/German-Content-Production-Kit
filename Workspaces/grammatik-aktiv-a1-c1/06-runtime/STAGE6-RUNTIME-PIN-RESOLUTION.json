@@ -26,6 +26,21 @@
     "verification_file": "RUNTIME-MIRROR-VERIFICATION.json",
     "verification_commit": "4ffe51b2762eecf2e909fa5d503197b015091b27"
   },
-  "next_action": "Apply the Stage6 Grammar v2 overlay to the exact pinned v417-R51 organized delivery lineage, then run browser/offline/regression/post-package acceptance. Git main is now safe for source-level v417 engineering, while portable artifact identity remains mandatory for final acceptance.",
-  "updated_at": "2026-09-19T03:08:00+02:00"
+  "next_action": "Continue Stage 6 on CURRENT v417-R51. Use v411-R45 only for regression comparison. If a newer valid CURRENT appears before Stage 6 PASS, re-resolve and move the integration target forward.",
+  "updated_at": "2026-09-19T11:06:00+02:00",
+  "currentness_model": "CURRENT_AND_LAST_FULLY_VERIFIED_ARE_INDEPENDENT",
+  "current_runtime": {
+    "version": "v417-R51",
+    "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "artifact": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
+    "sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
+    "role": "INTEGRATION_AND_DEVELOPMENT_BASE"
+  },
+  "last_fully_verified_runtime": {
+    "version": "v411-R45",
+    "verification_state": "VERIFIED",
+    "release_final": true,
+    "role": "REGRESSION_REFERENCE_ONLY"
+  },
+  "anti_downgrade_rule": "Verification blockers on CURRENT do not permit retargeting Stage 6 to LAST_FULLY_VERIFIED or any older runtime."
 }

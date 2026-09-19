@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T11:00:00+02:00",
+  "updated_at": "2026-09-19T11:34:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -25,20 +25,21 @@
     "verification_date": "2026-09-17"
   },
   "startup_rule": [
-    "Read PROJECT-BOOTSTRAP.md and PROJECT-OPERATING-MODE-v2.md first.",
-    "Prefer the newest verified portable state/checkpoint artifact from current chat, Project Sources or Library.",
+    "Read PROJECT-BOOTSTRAP.md, PROJECT-OPERATING-MODE-v2.md, PROJECT-MEMORY.json and GIT-SYNC-POLICY.json first.",
+    "Prefer the newest valid portable content/workstream state from current chat, Project Sources or Library; verification and Git persistence remain separate.",
     "Consult PROJECT-STATE.json and the relevant GitHub CHECKPOINT.json only as much as needed to resolve ambiguity or sync status.",
     "Resolve the active START-PROMPT from active_framework.entrypoint; do not hard-code an older prompt version.",
     "Resolve registered raw sources from Project Sources first, then Library; do not ask the user to re-upload until both have been checked.",
-    "When runtime/import/presentation compatibility matters, read German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json, materialize the pinned portable artifact, and verify SHA-256 before acceptance.",
-    "Never substitute the Flashcards Git runtime tree when the portable pin is newer."
+    "Before proposing automation/process/Git/authority/packaging/source-governance/UI changes, check PROJECT-MEMORY.json and warn if the proposal conflicts with an ACTIVE prior decision.",
+    "When runtime/import/presentation compatibility matters, resolve Flashcards CURRENT and LAST_FULLY_VERIFIED separately and target CURRENT.",
+    "Git sync may lag and coalesce intermediate batches/versions; never block production or downgrade authority because persistence.git is pending."
   ],
   "authority_resolution": {
     "user_supplied_newer_artifact": "Immediate working authority when explicitly identified as current/latest.",
     "portable_verified_state": "Preferred resume authority after an explicit current artifact; may live in current conversation, Project Sources or Library.",
     "github": "Durable asynchronous checkpoint/coordination mirror, not a blocker and not the default binary transport.",
     "conflict_rule": "Never silently replace newer verified work with older GitHub content. Mark Git sync pending instead.",
-    "persistence_rule": "Synchronize Git at meaningful boundaries. Git lag must not block ordinary safe work."
+    "persistence_rule": "Synchronize Git at meaningful boundaries with bounded/deferred/coalesced sync. Git lag must not block ordinary safe work or change current authority."
   },
   "active_framework": {
     "version": "v3.3.2",
@@ -60,7 +61,7 @@
       "git_sync_commit": "ff501c56340d86861e1055b8d3cf76529d7bff6b"
     }
   },
-  "workstream_resolution_policy": "Use the newest verified portable workstream checkpoint first. Git branch checkpoint remains the durable mirror and ambiguity resolver; its stage observation may lag parallel work.",
+  "workstream_resolution_policy": "Use the newest valid portable workstream checkpoint first. Git branch checkpoint remains a durable mirror/ambiguity resolver and may lag; intermediate states may be coalesced at the next meaningful sync boundary.",
   "workstreams": {
     "grammar_aktiv_a1_c1": {
       "status": "ACTIVE",
@@ -224,7 +225,7 @@
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
     "mode": "RESOLVE_WHEN_INTEGRATION_MATTERS",
     "current_observed_release": "v417-R51",
-    "rule": "Resolve newest runtime at Stage 6. v417/R51 directly imports outer LOCKED lesson bundles using BUILD-METADATA authority.",
+    "rule": "Target Flashcards CURRENT when integration matters. Verification blockers may block PASS but never retarget integration to an older LAST_FULLY_VERIFIED runtime.",
     "latest_resolved_artifact": "GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip",
     "latest_resolved_artifact_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
     "latest_resolution_surface": "ChatGPT Library",
@@ -241,7 +242,37 @@
     "runtime_mirror_branch": "runtime-mirror/v417-r51-exact",
     "runtime_mirror_commit": "b25b2ddb1af95bc706d32db5ab9224f46a7ad6b3",
     "runtime_mirror_verification": "PASS_63_OF_63_EXACT",
-    "runtime_mirror_verification_file": "RUNTIME-MIRROR-VERIFICATION.json"
+    "runtime_mirror_verification_file": "RUNTIME-MIRROR-VERIFICATION.json",
+    "dependency_file": "FLASHCARDS-RUNTIME-DEPENDENCY.json",
+    "currentness_policy": "CURRENT_AND_LAST_FULLY_VERIFIED_ARE_INDEPENDENT",
+    "current_runtime": {
+      "version": "v417-R51",
+      "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "integration_base": true
+    },
+    "last_fully_verified_runtime": {
+      "version": "v411-R45",
+      "verification_state": "VERIFIED",
+      "regression_reference": true,
+      "integration_base": false
+    },
+    "git_sync_timing": "Bounded/deferred/coalesced. Runtime mirror target follows CURRENT logically but actual Git sync may lag."
   },
-  "user_time_policy": "This is a side project. Continue agentically, avoid repeated manual confirmations, and surface only material blockers or decisions affecting scope, data loss, source fidelity, architecture or visible UX."
+  "user_time_policy": "This is a side project. Continue agentically. Use PROJECT-MEMORY.json so Hossein does not have to remember prior project incidents; surface conflicting past decisions before proposing a reversal.",
+  "project_memory": {
+    "file": "PROJECT-MEMORY.json",
+    "status": "ACTIVE_MANDATORY_READ",
+    "cross_project_canonical": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
+    "purpose": "Durable cross-chat incident/decision memory; conflicting proposals require warning/reconsideration before override."
+  },
+  "git_sync_policy": {
+    "file": "GIT-SYNC-POLICY.json",
+    "mode": "BOUNDED_DEFERRED_COALESCED",
+    "per_card_sync": false,
+    "per_tiny_edit_sync": false,
+    "coalesce_intermediate_states": true,
+    "ordinary_turn_sync_attempts_max": 1,
+    "git_on_critical_path": false,
+    "on_failure": "persistence.git=PENDING_OR_FAILED_AND_CONTINUE"
+  }
 }

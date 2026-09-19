@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T03:06:00+02:00",
+  "updated_at": "2026-09-19T10:58:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -166,41 +166,31 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L12 Stage3 ready; A1-L01 through A1-L11 locked",
-      "last_observed_stage": "2_canonicalization_pass_A1_L12",
-      "last_observed_note": "A1-L12 Stage1/2 PASS: source rows 848..934 = 87 rows; 87 source audio refs and 87/87 RAR membership, zero missing/zero-audio rows. Canonical mapping produces 134 lesson targets: 132 new canonical IDs (57 senses + 75 expressions) in ma1m-lu-1162..ma1m-lu-1293 plus reuse of locked A1-L02 Mathematik studieren ma1m-lu-0150 and A1-L04 groß ma1m-lu-0319. High-risk source conflations are explicitly separated (das Fliegen vs die Fliege; Tor gate vs sports goal; fliegen/springen polysemy). No new LOCKED claim is made for L12 yet.",
+      "current_scope": "A1-L13 ready; A1-L01 through A1-L12 locked",
+      "last_observed_stage": "7_release_locked_A1_L12",
+      "last_observed_note": "A1-L12 completed all seven stages on GFP v417/R51: 87 source rows / 87 source audio refs -> 134 lesson targets (132 new canonical IDs + reused locked Mathematik studieren ma1m-lu-0150 and groß ma1m-lu-0319), 58 senses + 76 expressions, 536 DE examples with FA+EN, 89 evidence-backed relations, 36 review flags resolved, Stage4 52/52 PASS, official validator 134 exact4 / 0 warnings, framework regression 47/47 PASS, exact final outer LOCKED.zip runtime acceptance 27/27 PASS with 134/134 standalone persistence. L01-L12 cumulative identity/collision acceptance is 1293 unique canonical IDs: 132 new L12 IDs, expected two L12 reuses only, with prior Uhr/echt/Apfelsaft reuses preserved. A single sequential 1293-card durable-persistence browser run is intentionally not claimed due the managed environment boundary.",
       "latest_locked_release": {
-        "filename": "Menschen-A1-L11-v3.3.2-GFP-v417-LOCKED.zip",
-        "sha256": "9c7ec3986091490cd0c16e2bb45b3a62a25344629855de39c8e988f53717c7b1",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-GFP-v417-LOCKED.zip",
+        "filename": "Menschen-A1-L12-v3.3.2-GFP-v417-LOCKED.zip",
+        "sha256": "1b4004cf3fc457c37a7c50ce47d988f76b6c6c8362757aee5715c0de037e5103",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L12-v3.3.2-GFP-v417-LOCKED.zip",
         "runtime": "GFP-v417-R51",
-        "cards": 165,
-        "new_canonical_ids": 164,
+        "cards": 134,
+        "new_canonical_ids": 132,
         "reused_canonical_ids": [
-          "ma1m-lu-0747"
-        ],
-        "cumulative_unique_cards": 1161,
-        "standalone_persistence": "165/165 PASS",
-        "cumulative_collision": "1161 unique / 164 new L11 / expected Apfelsaft reuse only PASS_WITH_ENVIRONMENT_BOUNDARY",
-        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L11-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
-        "checkpoint_git_sync_commit": "e26486eb597a075eb3f714d88af3c89b624e7f4f"
-      },
-      "lock_state": "A1-L01_TO_A1-L11_LOCKED__A1-L12_STAGE1_2_PASS",
-      "next_scope": "A1-L12 Stage3",
-      "latest_stage12_checkpoint": {
-        "filename": "Menschen-A1-L12-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "sha256": "0876ab4f1f7d3dcea9c5111efe818b1f0dc5c1a26cf411fef189d199ab554872",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L12-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "status": "VERIFIED_PORTABLE_GIT_METADATA_SYNCED",
-        "scope": "A1-L12",
-        "new_canonical_targets": 132,
-        "reused_canonical_targets": 2,
-        "reused_stable_ids": [
           "ma1m-lu-0150",
           "ma1m-lu-0319"
         ],
-        "next_new_id": "ma1m-lu-1294",
-        "checkpoint_git_sync_commit": "4e211f6745a897a85da99b1b6c86d8fc31452eba"
+        "cumulative_unique_cards": 1293,
+        "standalone_persistence": "134/134 PASS",
+        "cumulative_collision": "1293 unique / 132 new L12 / expected Mathematik studieren + groß reuse only PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L12-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
+        "checkpoint_git_sync_commit": "49fce782e152b4c5ccdffb853326ff372418d220"
+      },
+      "lock_state": "A1-L01_TO_A1-L12_LOCKED",
+      "next_scope": "A1-L13",
+      "latest_stage12_checkpoint": {
+        "status": "SUPERSEDED_BY_LOCKED_A1_L12",
+        "note": "Final verified A1-L12 LOCKED release is the resume authority."
       }
     },
     "vocabulary": {
@@ -227,7 +217,7 @@
     "latest_resolved_artifact": "GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip",
     "latest_resolved_artifact_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
     "latest_resolution_surface": "ChatGPT Library",
-    "git_mirror_note": "Flashcards Git main 01-App subtree and runtime-mirror/v417-r51-exact are now exact v417-R51 source mirrors: 63/63 runtime files match the pinned organized delivery by blob SHA. Portable artifact remains final acceptance/package authority.",
+    "git_mirror_note": "v417/R51 portable runtime is the resolved Stage 6 authority for A1-L12; Git 01-App exact mirror remains synchronized, while portable artifact stays final acceptance authority.",
     "latest_delivery_bundle": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
     "latest_delivery_sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
     "latest_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",

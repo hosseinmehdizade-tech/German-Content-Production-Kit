@@ -12,11 +12,11 @@ This operating mode removes GitHub from the critical path of ordinary project wo
 Use this order when resuming work:
 
 1. Explicitly newer user-supplied current/latest artifact in the current chat.
-2. Newest verified portable state/checkpoint artifact available from ChatGPT Project Sources, current conversation files, or ChatGPT Library.
-3. Current workstream `CHECKPOINT.json` / project state from GitHub when needed to resolve ambiguity or when no newer verified artifact is available.
+2. Newest valid portable state/checkpoint artifact available from ChatGPT Project Sources, current conversation files, or ChatGPT Library.
+3. Current workstream `CHECKPOINT.json` / project state from GitHub when needed to resolve ambiguity or when no newer portable state is available.
 4. Historical branches, old ZIPs and chat memory only for recovery/comparison.
 
-A newer verified artifact must never be downgraded merely because GitHub is older.
+A newer valid artifact/checkpoint must never be downgraded merely because GitHub is older or another state has stronger verification evidence.
 
 ## 2. GitHub role
 
@@ -51,7 +51,7 @@ Git failure must not erase or downgrade valid QA evidence. Do not call something
 Do not consume an entire user turn trying to repair GitHub.
 
 - Resolve the working state first.
-- Continue safe production from the newest verified authority.
+- Continue safe production from the newest valid/current authority.
 - Make at most one Git synchronization/recovery attempt in the same turn unless the user explicitly asks for Git repair.
 - If Git sync still fails, record `persistence.git=PENDING` or `FAILED`, preserve exact hashes/resume instructions, and continue the real project work.
 
@@ -85,8 +85,8 @@ A new/resumed chat should be able to continue from one sentence such as “conti
 
 ## 8. Conflict handling
 
-If GitHub and a newer verified state bundle disagree:
-- keep the newer verified artifact as working authority;
+If GitHub and a newer valid state bundle disagree:
+- keep the newer valid artifact as working authority;
 - mark Git synchronization pending;
 - do not spend the production turn performing destructive reconciliation;
 - sync deliberately at the next meaningful boundary.

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-19T15:20:00+02:00",
+  "updated_at": "2026-09-19T17:12:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -69,8 +69,8 @@
       "checkpoint": "Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json",
       "source_manifest": "Workspaces/grammatik-aktiv-a1-c1/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
-      "last_observed_stage": "6_runtime_presentation_acceptance_pass",
-      "last_observed_note": "Stages 1-6 PASS. Stage 6 exact v417 acceptance is PASS_WITH_ENVIRONMENT_BOUNDARY: exact v417 organized-delivery baseline, Grammar v2 168 lessons / 346 exercises, full-app Chromium set_content 24 checks PASS, offline/service-worker static contract 8 checks PASS, persistence/import/Lesen regressions PASS. Managed browser blocks live loopback/file navigation and live service-worker registration with ERR_BLOCKED_BY_ADMINISTRATOR. Two exact-app blockers were fixed: integrator now deploys grammar-domain-v42.js, and V2 suppresses the 13 legacy hub Grammar units so the full app shows exactly 168 rather than 181.",
+      "last_observed_stage": "7_release_post_package_verification_pass_with_environment_boundary",
+      "last_observed_note": "Stages 1-7 complete. Grammar Aktiv v2 is integrated into CURRENT GFP v422-R56 with 168 lessons / 346 exercises. v422 fixes the lazy-loader refresh loop, strict SHORT_ANSWER grading, memory release, and fresh-install offline precache. Authoritative suite 11/11 PASS and organized post-package verification PASS. Live localhost/service-worker registration remains blocked in the managed browser, so one local fresh-install offline smoke is still required before FINAL runtime status.",
       "latest_portable_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
         "sha256": "7fa79d40b64b675fc1d523df5b493720e45107e1d8e2c3f7d0aa88863654c5bf",
@@ -79,7 +79,7 @@
         "stage3_state": "PASS",
         "git_metadata_sync_commit": "aa53f98eb0c499a9d6c112fb5b52dc9144a895b5"
       },
-      "next_scope": "Stage 7 release/post-package verification from the accepted Stage6 integration. The v417 version guard correctly rejects changed runtime bytes without a version bump; next visible app version must be exactly v418 before release packaging.",
+      "next_scope": "Do not regenerate Grammar content. Preserve 168/346 authority. Next runtime-only action is local fresh-install offline/service-worker smoke on v422-R56; if it passes, finalize release confidence.",
       "latest_stage4_checkpoint": {
         "filename": "Grammar-Aktiv-v3.3.2-Stage4-COMPLETE-168of168-CHECKPOINT.zip",
         "sha256": "a4655be8ab3805cb18080d87304cf5d0486df3c1f9950df5db260aeb2e4d7f6a",
@@ -143,6 +143,19 @@
         "portable_sha256": "dca0e5bd790ea629bf2223d481af78bbe3319e5c630eae136fad1daff934282b",
         "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
         "next_visible_app_version_required": 418
+      },
+      "stage7": {
+        "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "target_runtime": "v422-R56",
+        "organized_delivery": "German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+        "sha256": "68904ffc5d751c29ead657fc8e561f8e91d570e2770e9d78cd491fef9bafd3b1",
+        "library_path": "/Flasch kart/German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+        "library_file_id": "file_00000000742081f4898437e46c863bfb",
+        "app_artifact": "GFP-v422-R56-App-GRAMMAR-RUNTIME-HARDENING-CANDIDATE.zip",
+        "app_sha256": "c731f8e97bb10273459e25ee651f71fb0e3c3bb90d2e222ce868f5237b43b5df",
+        "authoritative_suite": "11/11 PASS",
+        "organized_post_package": "PASS",
+        "live_offline_smoke": "PENDING_LOCAL_ENVIRONMENT"
       }
     },
     "nomen_verb_verbindungen": {
@@ -273,20 +286,20 @@
   "flashcards_runtime_dependency": {
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
     "mode": "RESOLVE_WHEN_INTEGRATION_MATTERS",
-    "current_observed_release": "v417-R51",
+    "current_observed_release": "v422-R56",
     "rule": "Target Flashcards CURRENT when integration matters. Verification blockers may block PASS but never retarget integration to an older LAST_FULLY_VERIFIED runtime.",
-    "latest_resolved_artifact": "GFP-v417-R51-App-LOCKED-LESSON-BUNDLE-IMPORT-VERIFIED-CANDIDATE.zip",
-    "latest_resolved_artifact_sha256": "93d0c0deb81007a1a95acd0aa1a0de7d12735efe955e0df2689b6dc5631303f4",
+    "latest_resolved_artifact": "German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+    "latest_resolved_artifact_sha256": "68904ffc5d751c29ead657fc8e561f8e91d570e2770e9d78cd491fef9bafd3b1",
     "latest_resolution_surface": "ChatGPT Library",
     "git_mirror_note": "v417/R51 portable runtime is the resolved Stage 6 authority for A1-L12; Git 01-App exact mirror remains synchronized, while portable artifact stays final acceptance authority.",
-    "latest_delivery_bundle": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
-    "latest_delivery_sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
-    "latest_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
+    "latest_delivery_bundle": "German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+    "latest_delivery_sha256": "68904ffc5d751c29ead657fc8e561f8e91d570e2770e9d78cd491fef9bafd3b1",
+    "latest_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
     "packaging_note": "Use organized expanded-App delivery; earlier nested-App ZIP delivery is superseded.",
     "locked_lesson_delivery_contract": "Prompt/MENSCHEN-LOCKED-LESSON-DELIVERY-CONTRACT-v1.0.0.md",
     "runtime_pin_file": "RUNTIME-AUTHORITY-PIN.json",
     "hard_pin_enforced": true,
-    "latest_delivery_library_file_id": "file_00000000e76881f484ecfb2267c51b58",
+    "latest_delivery_library_file_id": "file_00000000742081f4898437e46c863bfb",
     "latest_delivery_materialization_verified": true,
     "runtime_mirror_branch": "runtime-mirror/v417-r51-exact",
     "runtime_mirror_commit": "b25b2ddb1af95bc706d32db5ab9224f46a7ad6b3",
@@ -295,8 +308,8 @@
     "dependency_file": "FLASHCARDS-RUNTIME-DEPENDENCY.json",
     "currentness_policy": "CURRENT_AND_LAST_FULLY_VERIFIED_ARE_INDEPENDENT",
     "current_runtime": {
-      "version": "v417-R51",
-      "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "version": "v422-R56",
+      "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY_LOCAL_OFFLINE_SMOKE_REQUIRED",
       "integration_base": true
     },
     "last_fully_verified_runtime": {

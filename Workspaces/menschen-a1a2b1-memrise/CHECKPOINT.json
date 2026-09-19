@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L13 is LOCKED and final metadata is synchronized on main. A1-L01 through A1-L13 are now LOCKED; exact release bytes live in ChatGPT Library."
+    "git_sync_note": "A1-L14 Stage1/2 and Stage3 Batch0001 metadata are synchronized on main. Exact checkpoint ZIPs are durable in ChatGPT Library; A1-L01 through A1-L13 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -35,99 +35,78 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "A1-L13",
-      "source_rows": 124,
+      "scope": "A1-L14",
+      "source_rows": 122,
       "audio_refs": 122,
-      "zero_audio_rows": 2,
-      "zero_audio_ordinals": [
-        954,
-        986
-      ],
+      "zero_audio_rows": 0,
+      "multi_audio_rows": 0,
+      "source_csv_ordinals": "1059..1180",
       "rar_audio_presence": "122/122 PASS"
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "scope": "A1-L13",
-      "lesson_target_mappings": 212,
-      "new_canonical_targets": 210,
+      "scope": "A1-L14",
+      "lesson_target_mappings": 186,
+      "new_canonical_targets": 185,
       "reused_canonical_targets": 1,
-      "new_stable_id_range": "ma1m-lu-1294..ma1m-lu-1503",
+      "new_senses": 86,
+      "new_expressions": 99,
+      "reused_senses": 1,
+      "reused_expressions": 0,
+      "split_source_rows": 42,
+      "new_stable_id_range": "ma1m-lu-1504..ma1m-lu-1688",
       "reused_stable_ids": [
-        "ma1m-lu-0070"
+        "ma1m-lu-0338"
       ]
     },
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "PASS",
-      "scope": "A1-L13",
-      "targets_complete": 211,
-      "examples_complete": 844,
-      "relations_complete": 127,
-      "review_resolutions_complete": 66
+      "state": "IN_PROGRESS",
+      "scope": "A1-L14",
+      "completed_batches": [
+        "0001"
+      ],
+      "target_range": "ma1m-lu-1504..ma1m-lu-1523",
+      "targets_complete": 20,
+      "targets_total": 186,
+      "targets_remaining": 166,
+      "examples_complete": 80,
+      "relations_complete": 13,
+      "review_resolutions_complete": 6,
+      "cumulative_gate": "PASS"
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "PASS",
-      "scope": "A1-L13",
-      "custom_checks": "43/43 PASS",
-      "official_bundle_validator": "PASS",
-      "profile_validator": "PASS",
-      "reference_registry_validator": "PASS",
-      "reference_availability_validator": "PASS",
-      "framework_pytest": "47/47 PASS",
-      "advisories": 1
+      "state": "PENDING",
+      "scope": "A1-L14"
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "PASS",
-      "scope": "A1-L13",
-      "transport_rows": 211,
-      "new_ids": 210,
-      "reused_ids": [
-        "ma1m-lu-0070"
-      ],
-      "card_types": {
-        "de-vocabulary": 188,
-        "german-verb": 23
-      },
-      "projection_qa": "230/230 PASS",
-      "dataset": "A1-L13-UNIVERSAL-v2.tsv",
-      "dataset_sha256": "94b861cb94b535d9f1224d4ba59f6bcf40c08dbb60fb534c93f0c7e59ddc8c09"
+      "state": "PENDING",
+      "scope": "A1-L14"
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "scope": "A1-L13",
-      "runtime": "GFP-v417-R51",
-      "direct_outer_import": "27/27 PASS",
-      "standalone_persistence": "211/211 PASS",
-      "cumulative_identity_collision": "19/19 PASS; 1503 unique; 210 new L13; expected ma1m-lu-0070 reuse only",
-      "fresh_locked_bundle_baseline": "17/17 PASS",
-      "environment_boundary": "No single sequential 1503-card durable browser persistence run is claimed."
+      "state": "PENDING",
+      "scope": "A1-L14",
+      "runtime_rule": "Resolve CURRENT again at Stage 6; do not inherit historical runtime blindly."
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "scope": "A1-L13",
-      "artifact": "Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
-      "sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75",
-      "manifest_rehash": "42/42 PASS",
-      "exact_outer_import": "27/27 PASS",
-      "exact_persistence": "211/211 PASS",
-      "cumulative_identity_collision": "19/19 PASS",
-      "library_rematerialization": "SHA-256 exact match",
-      "delivery_rule": "Outer LOCKED.zip is the user import artifact; BUILD-METADATA.json -> data_file.filename is authoritative."
+      "state": "PENDING",
+      "scope": "A1-L14",
+      "delivery_rule": "Directly import final outer LOCKED.zip via BUILD-METADATA authority before LOCK."
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L13 are locked. Start A1-L14 Stage 1/2 from the authoritative Menschen course inventory. Do not regenerate locked lessons. At Stage 6 resolve Flashcards CURRENT again; at Stage 7 directly import the final outer LOCKED.zip using BUILD-METADATA authority.",
+  "resume_instruction": "A1-L01 through A1-L13 are locked. A1-L14 Stage 1/2 PASS and Stage 3 Batch0001 PASS through ma1m-lu-1523. Continue Stage3 Batch0002 from ma1m-lu-1524; do not regenerate PASS work unless explicitly invalidated. Locked reuse ma1m-lu-0338 Zimmer remains pending for exact inheritance merge later in Stage3.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -140,10 +119,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L13",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
-    "latest_portable_checkpoint_sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "d51158598393097f611dd3809b19128540c12dbfbfa4e6d89fac0bc906013535"
   },
-  "current_scope": "A1-L14 Stage 1/2 ready; A1-L01 through A1-L13 locked",
+  "current_scope": "A1-L14 Stage 3 Batch0002 ready; A1-L01 through A1-L13 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51;A1-L13_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -736,5 +715,52 @@
       "manifest_rehash": "42/42 PASS",
       "library_rematerialized_sha256": "PASS_EXACT_MATCH_0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75"
     }
+  },
+  "a1_l14": {
+    "state": "STAGE3_IN_PROGRESS",
+    "source_rows": 122,
+    "source_audio_refs": 122,
+    "source_zero_audio_rows": 0,
+    "lesson_target_mappings": 186,
+    "new_canonical_targets": 185,
+    "reused_canonical_targets": 1,
+    "new_senses": 86,
+    "new_expressions": 99,
+    "reused_stable_ids": [
+      "ma1m-lu-0338"
+    ],
+    "new_stable_id_range": "ma1m-lu-1504..ma1m-lu-1688",
+    "stage12": {
+      "state": "PASS",
+      "artifact": {
+        "filename": "Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "sha256": "daf65d045fd12a45e8366b9a63711cb1c8f010bc5b196a892ada37b9b5f94ba3",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip"
+      },
+      "important_identity_notes": [
+        "ma1m-lu-0338 Zimmer reused from locked A1-L04",
+        "A1-L14 die See=Meer is intentionally distinct from prior ma1m-lu-0530 der See=Binnensee"
+      ]
+    },
+    "stage3": {
+      "state": "IN_PROGRESS",
+      "completed_batches": [
+        "0001"
+      ],
+      "target_range": "ma1m-lu-1504..ma1m-lu-1523",
+      "targets_complete": 20,
+      "targets_total": 186,
+      "targets_remaining": 166,
+      "examples_complete": 80,
+      "relations_complete": 13,
+      "review_resolutions_complete": 6,
+      "cumulative_gate": "PASS",
+      "artifact": {
+        "filename": "Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "sha256": "d51158598393097f611dd3809b19128540c12dbfbfa4e6d89fac0bc906013535",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip"
+      }
+    },
+    "next_action": "Continue Stage3 Batch0002 from ma1m-lu-1524."
   }
 }

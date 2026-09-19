@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-19T11:46:00+02:00",
+  "updated_at": "2026-09-19T15:56:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -13,7 +13,7 @@
   "decisions": [
     {
       "id": "MEM-001-GITHUB-CRITICAL-PATH",
-      "status": "ACTIVE",
+      "status": "SUPERSEDED",
       "category": "git_workflow",
       "incident": "Frequent/heavy Git operations and Git as a live execution dependency caused interruptions/timeouts and wasted production turns.",
       "decision": "Artifact-first async Git with bounded/deferred/coalesced synchronization. Content work must continue when Git persistence is pending.",
@@ -51,6 +51,24 @@
       "status": "ACTIVE",
       "category": "artifact_transport",
       "decision": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction."
+    },
+    {
+      "id": "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
+      "status": "ACTIVE",
+      "date": "2026-09-19",
+      "category": "git_workflow",
+      "supersedes": [
+        "MEM-001-GITHUB-CRITICAL-PATH"
+      ],
+      "incident": "Deferred/coalesced Git persistence made parallel chats capable of seeing stale content checkpoints and forced Hossein to think about synchronization manually.",
+      "decision": "Every validated content milestone is synchronized automatically to its own workstream branch/checkpoint plus compact coordination metadata before handoff.",
+      "safe_default": "AUTO_SYNC_EVERY_VALIDATED_MILESTONE_LIGHTWEIGHT",
+      "preserved_guardrails": [
+        "large ZIPs stay in Library/Project, not Git",
+        "no unbounded retry loops",
+        "no blocking on GitHub Actions",
+        "workstreams remain isolated"
+      ]
     }
   ],
   "propagation_rule": {

@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L13 Stage 3 is complete and durably synchronized: 211/211 target identities (210 new + exact inherited ma1m-lu-0070 from locked A1-L01), 844 DE examples with FA+EN, 127 relations, 66 review resolutions. A1-L01 through A1-L12 remain LOCKED."
+    "git_sync_note": "A1-L13 is LOCKED and final metadata is synchronized on main. A1-L01 through A1-L13 are now LOCKED; exact release bytes live in ChatGPT Library."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -35,13 +35,28 @@
       "stage": 1,
       "name": "Source & Inventory",
       "state": "PASS",
-      "scope": "A1-L13"
+      "scope": "A1-L13",
+      "source_rows": 124,
+      "audio_refs": 122,
+      "zero_audio_rows": 2,
+      "zero_audio_ordinals": [
+        954,
+        986
+      ],
+      "rar_audio_presence": "122/122 PASS"
     },
     {
       "stage": 2,
       "name": "Canonicalization",
       "state": "PASS",
-      "scope": "A1-L13"
+      "scope": "A1-L13",
+      "lesson_target_mappings": 212,
+      "new_canonical_targets": 210,
+      "reused_canonical_targets": 1,
+      "new_stable_id_range": "ma1m-lu-1294..ma1m-lu-1503",
+      "reused_stable_ids": [
+        "ma1m-lu-0070"
+      ]
     },
     {
       "stage": 3,
@@ -64,33 +79,55 @@
       "reference_registry_validator": "PASS",
       "reference_availability_validator": "PASS",
       "framework_pytest": "47/47 PASS",
-      "stage4_repaired_examples": 11,
-      "normalized_expression_types": 56,
-      "review_flags_closed": "67/67",
       "advisories": 1
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "READY",
-      "scope": "A1-L13"
+      "state": "PASS",
+      "scope": "A1-L13",
+      "transport_rows": 211,
+      "new_ids": 210,
+      "reused_ids": [
+        "ma1m-lu-0070"
+      ],
+      "card_types": {
+        "de-vocabulary": 188,
+        "german-verb": 23
+      },
+      "projection_qa": "230/230 PASS",
+      "dataset": "A1-L13-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "94b861cb94b535d9f1224d4ba59f6bcf40c08dbb60fb534c93f0c7e59ddc8c09"
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "PENDING",
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
       "scope": "A1-L13",
-      "runtime_rule": "Resolve CURRENT again at Stage 6; do not inherit historical runtime blindly."
+      "runtime": "GFP-v417-R51",
+      "direct_outer_import": "27/27 PASS",
+      "standalone_persistence": "211/211 PASS",
+      "cumulative_identity_collision": "19/19 PASS; 1503 unique; 210 new L13; expected ma1m-lu-0070 reuse only",
+      "fresh_locked_bundle_baseline": "17/17 PASS",
+      "environment_boundary": "No single sequential 1503-card durable browser persistence run is claimed."
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "PENDING",
-      "scope": "A1-L13"
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "scope": "A1-L13",
+      "artifact": "Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+      "sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75",
+      "manifest_rehash": "42/42 PASS",
+      "exact_outer_import": "27/27 PASS",
+      "exact_persistence": "211/211 PASS",
+      "cumulative_identity_collision": "19/19 PASS",
+      "library_rematerialization": "SHA-256 exact match",
+      "delivery_rule": "Outer LOCKED.zip is the user import artifact; BUILD-METADATA.json -> data_file.filename is authoritative."
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L12 are locked. A1-L13 Stages 1–4 PASS. Stage 4 QA: 43/43 custom checks PASS, official bundle/profile/reference validators PASS, 47/47 framework pytest PASS. Continue Stage 5 Delivery Projection from the exact Stage4 checkpoint; do not regenerate Stages 1–4 unless explicitly invalidated.",
+  "resume_instruction": "A1-L01 through A1-L13 are locked. Start A1-L14 Stage 1/2 from the authoritative Menschen course inventory. Do not regenerate locked lessons. At Stage 6 resolve Flashcards CURRENT again; at Stage 7 directly import the final outer LOCKED.zip using BUILD-METADATA authority.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -102,12 +139,12 @@
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
-    "latest_locked_lesson": "A1-L12",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage4-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "65f2cc94736b771bb12e3390efaee4ea2fcd749af0b8e57ecce1f2b9d1ad5b2e"
+    "latest_locked_lesson": "A1-L13",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+    "latest_portable_checkpoint_sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75"
   },
-  "current_scope": "A1-L13 Stage 5 ready; Stage 4 PASS; A1-L01 through A1-L12 locked",
-  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51",
+  "current_scope": "A1-L14 Stage 1/2 ready; A1-L01 through A1-L13 locked",
+  "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51;A1-L13_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -286,6 +323,23 @@
       "stage6": "27/27 direct + 134/134 standalone persistence + 19/19 cumulative production-parser identity/collision acceptance",
       "stage7": "PASS_WITH_ENVIRONMENT_BOUNDARY",
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L12-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json"
+    },
+    "A1-L13": {
+      "filename": "Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+      "sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+      "runtime": "GFP-v417-R51",
+      "cards": 211,
+      "new_canonical_ids": 210,
+      "reused_canonical_ids": [
+        "ma1m-lu-0070"
+      ],
+      "cumulative_unique_a1_l01_l13_cards": 1503,
+      "stage4": "43/43 PASS",
+      "stage5": "230/230 PASS",
+      "stage6": "27/27 direct + 211/211 standalone persistence + 19/19 cumulative production-parser identity/collision acceptance",
+      "stage7": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json"
     }
   },
   "a1_l03": {
@@ -571,7 +625,7 @@
     "next_action": "Start A1-L13 Stage 1/2."
   },
   "a1_l13": {
-    "state": "STAGE1_2_PASS",
+    "state": "LOCKED",
     "source_rows": 124,
     "source_audio_refs": 122,
     "source_zero_audio_rows": 2,
@@ -602,7 +656,7 @@
       "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage1-2-CHECKPOINT.zip",
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-Stage1-2-POST-PACKAGE-VERIFICATION.json"
     },
-    "next_action": "Continue A1-L13 Stage 3 evidence/enrichment.",
+    "next_action": "Start A1-L14 Stage 1/2.",
     "stage3": {
       "state": "PASS",
       "completed_batches": [
@@ -645,6 +699,42 @@
       "normalized_expression_types": 56,
       "review_flags_closed": "67/67",
       "advisory": "3 German example texts are reused across closely related targets; non-blocking."
+    },
+    "runtime": "GFP-v417-R51",
+    "stage5": {
+      "state": "PASS",
+      "transport_rows": 211,
+      "new_ids": 210,
+      "reused_ids": [
+        "ma1m-lu-0070"
+      ],
+      "card_types": {
+        "de-vocabulary": 188,
+        "german-verb": 23
+      },
+      "projection_qa": "230/230 PASS",
+      "dataset": "A1-L13-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "94b861cb94b535d9f1224d4ba59f6bcf40c08dbb60fb534c93f0c7e59ddc8c09"
+    },
+    "stage6": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "runtime": "GFP-v417-R51",
+      "runtime_checks": "27/27 PASS",
+      "standalone_persistence": "211/211 PASS",
+      "cumulative_identity_collision": "19/19 PASS; 1503 unique; 210 new L13; expected reuse ma1m-lu-0070 only",
+      "fresh_baseline": "17/17 PASS",
+      "environment_boundary": "No single sequential 1503-card durable browser persistence claim."
+    },
+    "stage7": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "artifact": {
+        "filename": "Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+        "sha256": "0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L13-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json"
+      },
+      "manifest_rehash": "42/42 PASS",
+      "library_rematerialized_sha256": "PASS_EXACT_MATCH_0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75"
     }
   }
 }

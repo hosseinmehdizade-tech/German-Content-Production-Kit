@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-19T11:29:00+02:00",
+  "updated_at": "2026-09-19T11:46:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -52,5 +52,14 @@
       "category": "artifact_transport",
       "decision": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction."
     }
-  ]
+  ],
+  "propagation_rule": {
+    "strategy": "CENTRAL_MEMORY_WITH_MANDATORY_REFERENCES",
+    "rule": "Do not duplicate memory text inside every workstream folder because copies drift. Keep root PROJECT-MEMORY.json authoritative; every new workstream/checkpoint/handoff must reference PROJECT-MEMORY.json and GIT-SYNC-POLICY.json.",
+    "new_workstream_requirement": [
+      "CHECKPOINT.json includes project_memory=PROJECT-MEMORY.json",
+      "CHECKPOINT.json includes git_sync_policy=GIT-SYNC-POLICY.json"
+    ],
+    "existing_workstreams": "Root bootstrap applies this memory to existing workstreams even when older CHECKPOINT.json files do not yet contain explicit pointers."
+  }
 }

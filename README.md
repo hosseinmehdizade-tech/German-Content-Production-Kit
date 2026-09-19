@@ -9,9 +9,9 @@ Start with:
 4. `Prompt/START-PROMPT-v3.3.2.md`
 5. the relevant workstream checkpoint
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L12 are LOCKED.** A1-L13 Stages 1–4 are **PASS**. Stage 3 completed **211/211** target identities with **844 examples** and **127 relations**. Stage 4 then passed **43/43 custom QA checks**, the official GFP v411 bundle/profile/reference validators, and the full **47/47 framework pytest** suite. It also applied profile-safe normalization and 11 targeted linguistic/example repairs without altering the locked A1-L01 semantic identity reused as `ma1m-lu-0070`.
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L13 are LOCKED.** A1-L13 completed all seven stages. Final lesson output contains **211 cards** (**210 new canonical IDs + exact reuse `ma1m-lu-0070`**), projected as **188 de-vocabulary + 23 german-verb**. Exact final acceptance on CURRENT **GFP-v417-R51** passed **27/27 direct-import checks**, **211/211 standalone persistence**, and **19/19 cumulative identity/collision checks** for **1503 unique A1 cards**. The managed-browser boundary remains only for a single sequential 1503-card durable-persistence run.
 
-Exact Stage 4 checkpoint: `Menschen-A1-L13-v3.3.2-Stage4-CHECKPOINT.zip`
-SHA-256: `65f2cc94736b771bb12e3390efaee4ea2fcd749af0b8e57ecce1f2b9d1ad5b2e`
+Final A1-L13 artifact: `Menschen-A1-L13-v3.3.2-GFP-v417-LOCKED.zip`
+SHA-256: `0390de5d6d2c06a8c97c90a80a3b57d8c2dc5d1c271f463b11aafab532e77c75`
 
-**Next: A1-L13 Stage 5 — Delivery Projection.**
+**Next: A1-L14 Stage 1/2.**

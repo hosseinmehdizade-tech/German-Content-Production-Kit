@@ -270,12 +270,39 @@
       }
     },
     "7_release_post_package_verification": {
-      "state": "NOT_STARTED",
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "target_runtime": {
+        "release": "v422-R56",
+        "organized_delivery_artifact": "German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+        "organized_delivery_sha256": "68904ffc5d751c29ead657fc8e561f8e91d570e2770e9d78cd491fef9bafd3b1",
+        "organized_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+        "organized_delivery_library_file_id": "file_00000000742081f4898437e46c863bfb",
+        "app_artifact": "GFP-v422-R56-App-GRAMMAR-RUNTIME-HARDENING-CANDIDATE.zip",
+        "app_sha256": "c731f8e97bb10273459e25ee651f71fb0e3c3bb90d2e222ce868f5237b43b5df"
+      },
+      "verification": {
+        "grammar_authoritative_suite": "11/11 PASS",
+        "grammar_units": 168,
+        "grammar_exercises": 346,
+        "short_answer_partial_rejection": "124/124 PASS",
+        "organized_delivery_post_package": "PASS_228_MANIFEST_ENTRIES",
+        "clean_app_zip_post_package": "PASS",
+        "lifecycle_browser": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "offline_static_precache": "PASS",
+        "live_loopback_and_service_worker_registration": "BLOCKED_MANAGED_BROWSER_POLICY",
+        "visible_ui_change": "NONE"
+      },
+      "blocker": null,
+      "environment_boundary": "Managed browser cannot execute live localhost/service-worker registration; one local fresh-install offline smoke remains required before calling the runtime FINAL.",
+      "app_git_persistence": "PARTIAL_V422_R56_SOURCE_SYNC_EXACT_FULL_TREE_PENDING",
+      "release_final": false,
+      "completed_at": "2026-09-19T17:12:00+02:00",
       "pass_commit_sha": null
     }
   },
   "known_blockers": [],
-  "resume_instruction": "Stages 1-6 PASS. Stage 6 quality is PASS_WITH_ENVIRONMENT_BOUNDARY: exact v417 baseline overlay, 168/168 Grammar UI, 346 exercises, full-app Chromium set_content 24 checks PASS, offline static/service-worker 8 checks PASS, regressions PASS; live loopback/service-worker registration is blocked by managed browser policy. Resume Stage 7 with required visible version bump to v418 before release packaging.",
+  "resume_instruction": "Stages 1-7 are complete for Grammar Aktiv v2 at PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v422-R56. Content authority remains 168/168 lessons and 346 exercises. Runtime correctness/lazy lifecycle/post-package verification pass; only a local fresh-install offline/service-worker smoke is still required before FINAL runtime confidence. Do not regenerate Stages 1-6.",
   "persistence": {
     "portable_state": "VERIFIED_LIBRARY_UPLOADED",
     "portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",
@@ -313,7 +340,15 @@
     "stage6_portable_checkpoint": "Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
     "stage6_portable_sha256": "dca0e5bd790ea629bf2223d481af78bbe3319e5c630eae136fad1daff934282b",
     "stage6_portable_library_path": "/German-Content-Production-Kit/Checkpoints/Grammar-Aktiv-v3.3.2-Stage6-EXACT-v417-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
-    "stage6_portable_library_file_id": "file_00000000da70824696f64d4fa3c12b90"
+    "stage6_portable_library_file_id": "file_00000000da70824696f64d4fa3c12b90",
+    "stage7_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "stage7_runtime": "v422-R56",
+    "stage7_organized_delivery": "German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+    "stage7_organized_delivery_sha256": "68904ffc5d751c29ead657fc8e561f8e91d570e2770e9d78cd491fef9bafd3b1",
+    "stage7_organized_delivery_library_path": "/Flasch kart/German-Flashcards-Pro-v422-R56-ORGANIZED-DELIVERY.zip",
+    "stage7_app_artifact": "GFP-v422-R56-App-GRAMMAR-RUNTIME-HARDENING-CANDIDATE.zip",
+    "stage7_app_sha256": "c731f8e97bb10273459e25ee651f71fb0e3c3bb90d2e222ce868f5237b43b5df",
+    "stage7_app_git_state": "PARTIAL_SOURCE_SYNC_EXACT_RUNTIME_TREE_PENDING"
   },
   "portable_checkpoint": {
     "name": "Grammar-Aktiv-v3.3.2-Stage3-INTEGRITY-PASS-CHECKPOINT.zip",

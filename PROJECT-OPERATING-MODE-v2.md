@@ -96,3 +96,30 @@ If GitHub and a newer verified state bundle disagree:
 Never delete or overwrite a newer artifact merely to make repository history look clean. Reconciliation must preserve hashes, manifests and the newest valid state.
 
 This operating mode supersedes older project text that made live Git persistence a prerequisite for ordinary safe work. Git remains the durable mirror, not the blocker.
+
+## 10. Bounded / deferred / coalesced Git synchronization
+
+Git synchronization is deliberately **not continuous**.
+
+- Portable/current workstream state may advance while Git metadata/tree temporarily lags.
+- Multiple intermediate batches/versions should be coalesced and synchronized only at a meaningful boundary.
+- Do not commit every card, tiny edit, or runtime version.
+- Do not block content production on GitHub Actions.
+- At most one Git sync/recovery attempt is allowed in an ordinary production turn unless the user explicitly requests Git repair.
+- On failure, set `persistence.git=PENDING` or `FAILED`, preserve artifact/hash/checkpoint/resume instructions, and continue production.
+- Large ZIP/checkpoint artifacts stay in Library/Project/user-delivery; Git stores compact source/metadata/hashes.
+
+See `GIT-SYNC-POLICY.json`.
+
+## 11. Durable project memory / reconsideration gate
+
+`PROJECT-MEMORY.json` is mandatory cross-chat decision memory.
+
+Before proposing automation, Git workflow changes, authority/versioning changes, packaging changes, source-governance changes, or noticeable UI/UX changes:
+
+1. Read `PROJECT-MEMORY.json`.
+2. Check for an ACTIVE prior decision or incident that the proposal would conflict with.
+3. If there is a conflict, tell Hossein what happened before and recommend the recorded safe default instead of simply agreeing.
+4. Only supersede a guardrail after explicit user approval and record the superseding decision.
+
+The user should not need to remember old project failures for the system to avoid repeating them.

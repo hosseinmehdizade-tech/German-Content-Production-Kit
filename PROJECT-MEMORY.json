@@ -1,0 +1,56 @@
+{
+  "schema": "gcpk-project-memory@1.0.0",
+  "status": "ACTIVE_MANDATORY_READ",
+  "updated_at": "2026-09-19T11:29:00+02:00",
+  "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
+  "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
+  "reconsideration_protocol": {
+    "rule": "Before endorsing a proposal that conflicts with an ACTIVE decision below, surface the prior incident/conflict first instead of simply agreeing.",
+    "required_response_pattern": "Tell Hossein what happened previously, explain how the new proposal could recreate it, state the safe default, and ask for explicit approval only if he still wants to supersede the guardrail.",
+    "default_action": "KEEP_EXISTING_GUARDRAIL",
+    "override_rule": "Explicit user approval is required; record a new decision with supersedes=[old id]."
+  },
+  "decisions": [
+    {
+      "id": "MEM-001-GITHUB-CRITICAL-PATH",
+      "status": "ACTIVE",
+      "category": "git_workflow",
+      "incident": "Frequent/heavy Git operations and Git as a live execution dependency caused interruptions/timeouts and wasted production turns.",
+      "decision": "Artifact-first async Git with bounded/deferred/coalesced synchronization. Content work must continue when Git persistence is pending.",
+      "safe_default": "BOUNDED_DEFERRED_COALESCED_SYNC",
+      "required_warning": "Hossein, we previously reduced GitHub's role because continuous/heavy Git activity caused interruptions. This proposal could reintroduce that failure mode.",
+      "policy_files": [
+        "PROJECT-OPERATING-MODE-v2.md",
+        "GIT-SYNC-POLICY.json"
+      ]
+    },
+    {
+      "id": "MEM-002-CURRENT-VS-VERIFIED",
+      "status": "ACTIVE",
+      "category": "runtime_integration",
+      "incident": "A newer Flashcards runtime may advance beyond the last fully verified runtime.",
+      "decision": "When integration matters, target Flashcards CURRENT. LAST_FULLY_VERIFIED is regression/fallback reference only. Never downgrade integration because CURRENT has blockers.",
+      "safe_default": "TARGET_CURRENT_NO_DOWNGRADE"
+    },
+    {
+      "id": "MEM-003-SOURCE-FIDELITY",
+      "status": "ACTIVE",
+      "category": "content_authority",
+      "incident": "Source workstreams must not be silently rebuilt from memory/legacy mappings or unrelated sources.",
+      "decision": "Use registered source identity + newest portable checkpoint; preserve source terminology, order, provenance and workstream separation.",
+      "safe_default": "SOURCE_FIRST_STABLE_IDS_NO_SILENT_REPLACEMENT"
+    },
+    {
+      "id": "MEM-004-UI-PRESERVATION",
+      "status": "ACTIVE",
+      "category": "ui_ux",
+      "decision": "No significant visible Flashcards UI/UX change without informing Hossein and receiving approval."
+    },
+    {
+      "id": "MEM-005-NO-GIT-BINARY-TRANSPORT",
+      "status": "ACTIVE",
+      "category": "artifact_transport",
+      "decision": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction."
+    }
+  ]
+}

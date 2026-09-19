@@ -1,34 +1,35 @@
 {
-  "schema": "gcpk-git-sync-policy@1.0.0",
+  "schema": "gcpk-git-sync-policy@1.1.0",
   "status": "ENFORCED",
-  "updated_at": "2026-09-19T11:30:00+02:00",
-  "mode": "BOUNDED_DEFERRED_COALESCED",
-  "purpose": "Keep GitHub useful for durable source/checkpoint coordination without making every content batch or runtime integration step depend on Git availability.",
+  "updated_at": "2026-09-19T15:56:00+02:00",
+  "mode": "IMMEDIATE_VALIDATED_MILESTONE_SYNC",
+  "purpose": "Automatically synchronize Git metadata/source after every validated content milestone (for example a LOCKED lesson or stage checkpoint) so parallel chats do not resume from stale state. Large ZIP checkpoints remain in Library.",
   "allowed_lightweight_automation": [
-    "detect that portable/current workstream state is newer than Git metadata",
-    "mark persistence.git=PENDING/DEFERRED",
-    "run small consistency checks",
-    "write compact checkpoint/manifest metadata at a meaningful boundary"
+    "commit the affected workstream source/checkpoint after each validated milestone",
+    "update compact main PROJECT-STATE metadata when milestone identity changes",
+    "record exact Library checkpoint filename/path/hash",
+    "retry once on a concurrent fast-forward conflict"
   ],
   "forbidden_or_default_off": [
-    "commit per card or per lexical item",
-    "commit per tiny content edit",
-    "block content production until GitHub Actions completes",
-    "retry Git in a loop",
-    "reconstruct/upload large checkpoint ZIPs through Git/Base64",
-    "deep Git history audit before every normal continuation"
+    "uploading/reconstructing large ZIPs through Git/Base64",
+    "unbounded retry loops",
+    "blocking content production on GitHub Actions",
+    "cross-workstream overwrites"
   ],
   "sync_triggers": [
-    "completed batch or stage boundary",
-    "architecture/contract change",
-    "handoff where durable metadata materially helps",
-    "runtime acceptance boundary",
+    "every LOCKED lesson bundle",
+    "every stage PASS/checkpoint that becomes resume authority",
+    "every content contract/architecture version change",
     "explicit user request"
   ],
-  "coalescing_rule": "If several content batches or runtime versions advance before the next sync boundary, synchronize the newest valid state directly; intermediate Git mirrors are not required when portable checkpoints preserve them.",
+  "coalescing_rule": {
+    "enabled": false,
+    "rule": "Do not intentionally skip validated user-facing content milestones. Sync the affected branch/checkpoint after each one.",
+    "binary_artifacts": "Remain in Library/Project; Git records identities, hashes and source/metadata."
+  },
   "turn_budget": {
-    "ordinary_turn_git_sync_attempts_max": 1,
-    "on_failure": "Record persistence.git=PENDING or FAILED, preserve artifact/hash/checkpoint/resume instructions, and continue production.",
+    "ordinary_turn_git_sync_attempts_max": 2,
+    "on_failure": "Mark Git persistence PENDING and automatically retry before the next milestone in that workstream.",
     "no_background_retry_loop": true
   },
   "runtime_dependency_rule": "Flashcards CURRENT may advance while Git mirror lags. Content integration targets CURRENT; Git lag never justifies fallback to LAST_FULLY_VERIFIED.",
@@ -36,5 +37,15 @@
   "current_state": {
     "persistence_git": "IN_SYNC_FOR_CURRENT_METADATA",
     "deferred_sync_allowed": true
-  }
+  },
+  "target_semantics": {
+    "timing": "IMMEDIATE_AFTER_VALIDATED_MILESTONE_BEFORE_HANDOFF",
+    "scope": "only the affected workstream/branch plus compact main coordination metadata",
+    "note": "Do not wait for Hossein to request Git sync. Preserve workstream isolation so Menschen, Grammar, NVV, Lesen and runtime work do not overwrite one another."
+  },
+  "non_triggers": [
+    "temporary WIP edits before validation",
+    "scratch files",
+    "every chat response with no validated milestone"
+  ]
 }

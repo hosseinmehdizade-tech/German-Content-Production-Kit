@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L14 Stage3 COMPLETE metadata is synchronized on main at the milestone boundary. Exact Stage3 checkpoint bytes are durable in ChatGPT Library; A1-L01 through A1-L13 remain LOCKED."
+    "git_sync_note": "A1-L14 Stage4 PASS metadata is synchronized on main at the Stage4 milestone boundary. Exact checkpoint bytes are durable in ChatGPT Library and independently rematerialized with matching SHA-256."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -66,21 +66,7 @@
       "name": "Evidence & Enrichment",
       "state": "PASS",
       "scope": "A1-L14",
-      "completed_batches": [
-        "0001",
-        "0002",
-        "0003",
-        "0004",
-        "0005",
-        "0006",
-        "0007",
-        "0008",
-        "0009"
-      ],
-      "target_range": "ma1m-lu-1504..ma1m-lu-1688 + inherited ma1m-lu-0338",
       "targets_complete": 186,
-      "targets_total": 186,
-      "targets_remaining": 0,
       "examples_complete": 744,
       "relations_complete": 128,
       "review_resolutions_complete": 29,
@@ -89,13 +75,24 @@
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "READY",
-      "scope": "A1-L14"
+      "state": "PASS",
+      "scope": "A1-L14",
+      "checks": "45/45 PASS",
+      "repairs_applied": 91,
+      "stage4_repaired_examples": 8,
+      "normalized_expression_types": 56,
+      "verb_morphology_completed": 10,
+      "official_bundle_validator": "PASS_186_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "advisory_duplicate_texts": 2
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "PENDING",
+      "state": "READY",
       "scope": "A1-L14"
     },
     {
@@ -114,7 +111,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L13 are locked. A1-L14 Stages 1/2/3 PASS. Stage3 complete: 186/186 lesson target identities (185 new + exact inherited ma1m-lu-0338), 744 DE examples with FA+EN, 128 relations, 29 review resolutions. Start Stage4 Linguistic & Lexical QA from the exact Stage3 COMPLETE checkpoint; do not regenerate Stage3 unless Stage4 explicitly invalidates a target.",
+  "resume_instruction": "A1-L01 through A1-L13 are locked. A1-L14 Stages 1/2/3/4 PASS. Resume at Stage5 Delivery Projection from the exact Stage4 checkpoint; do not regenerate Stage3 or rerun Stage4 repairs unless Stage5 discovers a concrete contract issue.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -127,10 +124,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L13",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "e69343f59b5fb11cb71da6b6e1a080896b7ba5157210ea762ac85697f3a93318"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage4-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "2dbf83aaa3369fc66fa0ca095ba125d2d32483f2e0ea9f187d6448444054c45a"
   },
-  "current_scope": "A1-L14 Stage 4 ready; Stage 3 PASS; A1-L01 through A1-L13 locked",
+  "current_scope": "A1-L14 Stage 5 ready; Stage 4 PASS; A1-L01 through A1-L13 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51;A1-L13_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -725,7 +722,7 @@
     }
   },
   "a1_l14": {
-    "state": "STAGE3_PASS",
+    "state": "STAGE4_PASS",
     "source_rows": 122,
     "source_audio_refs": 122,
     "source_zero_audio_rows": 0,
@@ -788,6 +785,46 @@
       },
       "next_action": "Start Stage4 Linguistic & Lexical QA."
     },
-    "next_action": "Start Stage4 Linguistic & Lexical QA."
+    "next_action": "Start Stage5 Delivery Projection.",
+    "stage4": {
+      "state": "PASS",
+      "checks": "45/45 PASS",
+      "repairs_applied": 91,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 56,
+        "structure_component_contract_normalization": 1,
+        "pos_profile_normalization": 1,
+        "verb_morphology_completion": 10,
+        "usage_note": 12,
+        "translation_polish": 3,
+        "example_linguistic_repair": 8
+      },
+      "stage4_repaired_examples": 8,
+      "normalized_expression_types": 56,
+      "verb_morphology_completed": 10,
+      "stage3_resolution_records": 29,
+      "active_review_flags": 0,
+      "official_bundle_validator": "PASS_186_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "advisory": {
+        "global_example_reuse_count": 2,
+        "texts": [
+          "Die Tür ist hinten.",
+          "Ich muss dich dringend sprechen."
+        ],
+        "blocking": false
+      },
+      "artifact": {
+        "filename": "Menschen-A1-L14-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "2dbf83aaa3369fc66fa0ca095ba125d2d32483f2e0ea9f187d6448444054c45a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage4-CHECKPOINT.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage4-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "SHA256_EXACT_MATCH"
+      },
+      "next_action": "Start Stage5 Delivery Projection."
+    }
   }
 }

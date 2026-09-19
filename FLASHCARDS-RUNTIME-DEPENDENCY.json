@@ -1,0 +1,36 @@
+{
+  "schema": "gcpk-flashcards-runtime-dependency@1.0.0",
+  "status": "ENFORCED",
+  "updated_at": "2026-09-19T11:02:00+02:00",
+  "source_of_truth": {
+    "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "currentness_policy": "RUNTIME-CURRENTNESS-POLICY.json",
+    "runtime_pin": "RUNTIME-AUTHORITY-PIN.json"
+  },
+  "current_runtime": {
+    "version": "v417-R51",
+    "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "artifact": "German-Flashcards-Pro-v417-R51-ORGANIZED-DELIVERY.zip",
+    "sha256": "2d2ca876a1243cc4dd03b6b0650a499bac68164be776f4ea6ffd75f1f420e630",
+    "development_and_integration_base": true
+  },
+  "last_fully_verified_runtime": {
+    "version": "v411-R45",
+    "verification_state": "VERIFIED",
+    "release_final": true,
+    "regression_reference": true,
+    "development_and_integration_base": false
+  },
+  "integration_rules": [
+    "When runtime compatibility matters, resolve CURRENT and LAST_FULLY_VERIFIED separately from the Flashcards repo.",
+    "Target CURRENT for new runtime integration even if CURRENT has blockers or incomplete verification.",
+    "Never retarget integration to LAST_FULLY_VERIFIED solely because it is fully verified.",
+    "Use LAST_FULLY_VERIFIED only for regression/fallback comparison.",
+    "A blocker on CURRENT may block final acceptance but does not change the integration base.",
+    "If CURRENT advances, content runtime-acceptance work must re-resolve and target the newer CURRENT before PASS."
+  ],
+  "current_example": {
+    "integration_target": "v417-R51",
+    "regression_reference": "v411-R45"
+  }
+}

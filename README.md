@@ -2,20 +2,20 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L15 are LOCKED.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L15 are LOCKED. A1-L16 has passed Stages 1–4 and is ready for Stage 5 Delivery Projection.**
 
-A1-L15 completed all seven stages:
-- 161 lesson cards = 160 new canonical IDs + exact reused `ma1m-lu-1343 — in der Nähe bleiben`
-- 644 DE examples with FA+EN; 93 relations
-- Stage4 QA 49/49 PASS; official validator 161/161 exact-four, 0 warnings; framework regression 47/47 PASS
-- Stage5 projection 181/181 PASS; 152 `de-vocabulary` + 9 `german-verb`
-- Stage6/7 on CURRENT GFP-v417-R51: exact outer import 27/27 PASS; 161/161 standalone persistence
-- cumulative A1-L01..L15 identity/collision: 23/23 PASS; **1848 unique canonical cards**
-- fresh v417 locked-bundle baseline: 17/17 PASS
-- final Library rematerialization: exact SHA-256 match
-- environment boundary: no claim of one single sequential 1848-card durable browser persistence run
+A1-L16 current verified state:
+- 156 canonical lesson identities = 148 new + 8 exact reused locked identities
+- 72 senses + 84 expressions
+- 624 DE examples with FA+EN = exactly 4 per target
+- 93 relations; 49 Stage3 review resolutions
+- Stage4 QA 48/48 PASS; official bundle validator 156/156 exact-four with 0 warnings
+- profile, reference registry, and reference availability validators PASS
+- framework regression 47/47 PASS
+- Stage4 repairs: 86, including 41 expression-type normalizations, 20 verb morphology completions, 8 relation normalizations, and 3 example repairs
+- Stage4 portable artifact was rematerialized from Library with exact SHA-256 match
 
-Final A1-L15 artifact: `Menschen-A1-L15-v3.3.2-GFP-v417-LOCKED.zip`
-SHA-256: `1a8a36d941c7dfd7f43f5e512a0849098e5ae4895964a2d7c376fd987fa29353`
+Stage4 artifact: `Menschen-A1-L16-v3.3.2-Stage4-CHECKPOINT.zip`
+SHA-256: `813d0b148f3370f387ff8810de179064da273672040f09f577afc03bc000e0a8`
 
-**Next: A1-L16 Stage 1/2.**
+**Next: A1-L16 Stage 5 Delivery Projection.** Stage 6 must resolve and test the current Flashcards Pro runtime rather than assuming the historical v417 runtime.

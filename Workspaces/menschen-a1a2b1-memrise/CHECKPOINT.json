@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L16 Stage3 COMPLETE and Stage4 PASS metadata are synchronized on main. Exact Stage3 Batch0007/0008/COMPLETE and Stage4 artifacts, SHA-256 sidecars, and post-package verification are durable in ChatGPT Library."
+    "git_sync_note": "A1-L16 Stages 3–5 are synchronized on main. Exact Stage3, Stage4, and Stage5 artifacts, sidecars, and post-package verification are durable in ChatGPT Library."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -28,7 +28,7 @@
     ],
     "course_contract": "MENSCHEN-MEMRISE-COURSE-SOURCE-CONTRACT-v1.0.0",
     "audio_contract": "GFP-SOURCE-AUDIO-REFERENCE-CONTRACT-v1.0.0",
-    "runtime_acceptance": "GFP-v417-R51 latest resolved portable artifact"
+    "runtime_acceptance": "GFP-v423-R57 current resolved runtime for upcoming Stage6"
   },
   "stages": [
     {
@@ -97,15 +97,24 @@
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "READY",
-      "scope": "A1-L16"
+      "state": "PASS",
+      "scope": "A1-L16",
+      "transport_rows": 156,
+      "card_types": {
+        "de-vocabulary": 135,
+        "german-verb": 21
+      },
+      "projection_qa": "177/177 PASS",
+      "dataset": "A1-L16-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "b9b6ceda9e941fcdfffe78ff7c45b708b223ae923325fe2fc88107e84dafc276"
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "NOT_STARTED",
+      "state": "READY",
       "scope": "A1-L16",
-      "runtime_resolution_rule": "Resolve current Flashcards runtime at Stage6; do not pin to historical v417."
+      "runtime_resolution_rule": "Resolve current Flashcards runtime at Stage6; do not pin to historical v417.",
+      "runtime": "GFP-v423-R57"
     },
     {
       "stage": 7,
@@ -115,7 +124,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L15 are locked. A1-L16 Stages 1–4 PASS. Continue with A1-L16 Stage5 Delivery Projection from the verified Stage4 canonical artifact. Do not regenerate locked lessons.",
+  "resume_instruction": "A1-L01 through A1-L15 are locked. A1-L16 Stages 1–5 PASS. Continue Stage6 Runtime & Presentation Acceptance against CURRENT GFP-v423-R57. Do not regenerate locked lessons.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -131,7 +140,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L15-v3.3.2-GFP-v417-LOCKED.zip",
     "latest_portable_checkpoint_sha256": "1a8a36d941c7dfd7f43f5e512a0849098e5ae4895964a2d7c376fd987fa29353"
   },
-  "current_scope": "A1-L16 Stage4 PASS; Stage5 READY; A1-L01 through A1-L15 locked",
+  "current_scope": "A1-L16 Stage5 PASS; Stage6 READY on GFP-v423-R57; A1-L01 through A1-L15 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51;A1-L13_LOCKED_FOR_GFP_V417_R51;A1-L14_LOCKED_FOR_GFP_V417_R51;A1-L15_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -1101,6 +1110,27 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Start A1-L16 Stage5 Delivery Projection."
+    "next_action": "Start A1-L16 Stage6 Runtime & Presentation Acceptance against CURRENT GFP-v423-R57.",
+    "stage5": {
+      "state": "PASS",
+      "transport_rows": 156,
+      "card_types": {
+        "de-vocabulary": 135,
+        "german-verb": 21
+      },
+      "projection_qa": "177/177 PASS",
+      "dataset": "A1-L16-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "b9b6ceda9e941fcdfffe78ff7c45b708b223ae923325fe2fc88107e84dafc276",
+      "projected_cards_sha256": "5aaff621304e9d3ebd3708d32c2a61a5e6a44ff8d567027ae1ab5b4fe7911ad0",
+      "runtime_projection_target": "GFP-v423-R57",
+      "artifact": {
+        "filename": "Menschen-A1-L16-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4785648b9292246d99ecb82296b2e6d97547b132271ec7a8d8b657f8413c02bd",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.2-Stage5-CHECKPOINT.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.2-Stage5-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "file_000000001c708243b4a1ae39e3d7b92b",
+        "library_rematerialization": "SHA256_EXACT_MATCH"
+      }
+    }
   }
 }

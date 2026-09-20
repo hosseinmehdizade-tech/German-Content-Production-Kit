@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L15 final LOCKED metadata is synchronized on main. Exact Stage4, Stage5, Stage6 and final LOCKED bytes are durable in ChatGPT Library; the final LOCKED.zip was rematerialized with an exact SHA-256 match."
+    "git_sync_note": "A1-L16 Stage3 Batch0006 metadata is synchronized on main. Exact Batch0006 checkpoint bytes, SHA-256 sidecar, and post-package verification are durable in ChatGPT Library."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -130,7 +130,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L15 are locked. Start A1-L16 Stage 1/2 from the authoritative Menschen inventory. Do not regenerate locked lessons. At Stage 6 resolve CURRENT again; at Stage 7 directly import the exact final outer LOCKED.zip before lock.",
+  "resume_instruction": "A1-L01 through A1-L15 are locked. A1-L16 Stage1/2 PASS and Stage3 is complete through Batch0006 (120/156 targets). Continue Stage3 Batch0007 with source-order target positions 121..140. Do not regenerate locked lessons.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -146,7 +146,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L15-v3.3.2-GFP-v417-LOCKED.zip",
     "latest_portable_checkpoint_sha256": "1a8a36d941c7dfd7f43f5e512a0849098e5ae4895964a2d7c376fd987fa29353"
   },
-  "current_scope": "A1-L16 Stage 1/2 ready; A1-L01 through A1-L15 locked",
+  "current_scope": "A1-L16 Stage3 Batch0006 PASS; 120/156 targets complete; A1-L01 through A1-L15 locked",
   "lock_state": "A1-L01_LOCKED;A1-L02_LOCKED;A1-L03_LOCKED;A1-L04_LOCKED_FOR_GFP_V417_R51;A1-L05_LOCKED_FOR_GFP_V417_R51;A1-L06_LOCKED_FOR_GFP_V417_R51;A1-L07_LOCKED_FOR_GFP_V417_R51;A1-L08_LOCKED_FOR_GFP_V417_R51;A1-L09_LOCKED_FOR_GFP_V417_R51;A1-L10_LOCKED_FOR_GFP_V417_R51;A1-L11_LOCKED_FOR_GFP_V417_R51;A1-L12_LOCKED_FOR_GFP_V417_R51;A1-L13_LOCKED_FOR_GFP_V417_R51;A1-L14_LOCKED_FOR_GFP_V417_R51;A1-L15_LOCKED_FOR_GFP_V417_R51",
   "locked_at": "2026-09-19",
   "release_artifact": {
@@ -1021,6 +1021,60 @@
       },
       "manifest_rehash": "45/45 PASS",
       "library_rematerialized_sha256": "PASS_EXACT_MATCH_1a8a36d941c7dfd7f43f5e512a0849098e5ae4895964a2d7c376fd987fa29353"
+    }
+  },
+  "a1_l16": {
+    "state": "IN_PROGRESS",
+    "source_rows": 113,
+    "source_audio_refs": 111,
+    "source_zero_audio_rows": 2,
+    "source_zero_audio_ordinals": [
+      1347,
+      1351
+    ],
+    "lesson_target_mappings": 157,
+    "distinct_lesson_canonical_identities": 156,
+    "new_canonical_targets": 148,
+    "reused_canonical_targets": 8,
+    "new_stable_id_range": "ma1m-lu-1849..ma1m-lu-1996",
+    "reused_stable_ids": [
+      "ma1m-lu-0037",
+      "ma1m-lu-0210",
+      "ma1m-lu-0454",
+      "ma1m-lu-0455",
+      "ma1m-lu-1130",
+      "ma1m-lu-1406",
+      "ma1m-lu-1433",
+      "ma1m-lu-1639"
+    ],
+    "stage3": {
+      "state": "IN_PROGRESS",
+      "completed_batches": [
+        "0001",
+        "0002",
+        "0003",
+        "0004",
+        "0005",
+        "0006"
+      ],
+      "targets_complete": 120,
+      "targets_total": 156,
+      "targets_remaining": 36,
+      "examples_complete": 480,
+      "relations_complete": 72,
+      "review_resolutions_complete": 41,
+      "gate": "PASS",
+      "latest_artifact": {
+        "filename": "Menschen-A1-L16-v3.3.2-Stage3-Batch0006-CHECKPOINT.zip",
+        "sha256": "46ec766e63fcfe70066e1d391c873a1eecd79b29674c699898e7c6ea8a226b19",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.2-Stage3-Batch0006-CHECKPOINT.zip",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.2-Stage3-Batch0006-POST-PACKAGE-VERIFICATION.json"
+      },
+      "identity_preserving_repairs": [
+        "ma1m-lu-1951 Geschichte scoped to story/Erzählung sense without ID change",
+        "ma1m-lu-1957 wohl corrected from adverb to particle for conjectural sense without ID change"
+      ],
+      "next_action": "Continue Stage3 Batch0007 with target positions 121..140."
     }
   }
 }

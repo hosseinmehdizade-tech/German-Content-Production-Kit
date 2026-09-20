@@ -12,10 +12,10 @@ A1-L16 completed all seven stages:
 - Stage6/7 on CURRENT **GFP-v423-R57**: exact final outer import 35/35 PASS; standalone persistence 156/156 PASS
 - cumulative A1-L01..L16 production-v423 parser identity/collision: 22/22 PASS; **1996 unique canonical cards**
 - fresh v423 locked-bundle baseline: 19/19 PASS
-- final Library rematerialization: exact SHA-256 match
+- final package hygiene: no `__pycache__` / `.pyc`; Library rematerialization exact SHA-256 match
 - environment boundary: no claim of one single sequential 1996-card durable browser persistence run
 
 Final A1-L16 artifact: `Menschen-A1-L16-v3.3.2-GFP-v423-LOCKED.zip`
-SHA-256: `64ec3a87373b8a6df3cd5904d07dd8b16b9fbe7497fb0b736b77f94bb4ef7dc7`
+SHA-256: `b9d639ba04f324ddc02bef1279b84dd1b989dbb8b4a6dd580fd70732acad1daa`
 
 **Next: A1-L17 Stage 1/2.**

@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L17 Stage1/2 and Stage3 Batch0001 PASS are synchronized on main. Exact Batch0001 checkpoint is durable in ChatGPT Library and was rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
+    "git_sync_note": "A1-L17 Stage1/2 and Stage3 Batches0001-0002 PASS are synchronized on main. Exact cumulative Batch0002 checkpoint is durable in ChatGPT Library and was rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -67,12 +67,13 @@
       "state": "IN_PROGRESS",
       "scope": "A1-L17",
       "targets_total": 147,
-      "targets_complete": 20,
-      "targets_remaining": 127,
+      "targets_complete": 40,
+      "targets_remaining": 107,
       "completed_batches": [
-        "0001"
+        "0001",
+        "0002"
       ],
-      "latest_batch": "0001"
+      "latest_batch": "0002"
     },
     {
       "stage": 4,
@@ -101,7 +102,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS and Stage3 Batch0001 PASS (ma1m-lu-1997..ma1m-lu-2016). Continue Stage3 Batch0002 from ma1m-lu-2017; do not regenerate locked lessons or completed Batch0001.",
+  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS and Stage3 Batches0001-0002 PASS (ma1m-lu-1997..ma1m-lu-2036 cumulative). Continue Stage3 Batch0003 from ma1m-lu-2037; do not regenerate locked lessons or completed batches.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -114,10 +115,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L16",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "ea744f3430e40a7850a442434808d3f2ec901cc244bd65bb495f44e8e837b8e1"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "668d4b7e0d9aefafab20f64e4dd643d03ddabcc801fe1d7eef9433527a77bc67"
   },
-  "current_scope": "A1-L17 Stage3 IN_PROGRESS: 20/147 complete; Batch0002 next; A1-L01..L16 locked",
+  "current_scope": "A1-L17 Stage3 IN_PROGRESS: 40/147 complete; Batch0003 next; A1-L01..L16 locked",
   "lock_state": "A1-L01_TO_A1-L16_LOCKED",
   "locked_at": "2026-09-20",
   "release_artifact": {
@@ -1203,25 +1204,34 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Continue A1-L17 Stage3 Batch0002 from ma1m-lu-2017.",
+    "next_action": "Continue A1-L17 Stage3 Batch0003 from ma1m-lu-2037.",
     "stage3": {
       "state": "IN_PROGRESS",
       "completed_batches": [
-        "0001"
+        "0001",
+        "0002"
       ],
-      "targets_complete": 20,
+      "targets_complete": 40,
       "targets_total": 147,
-      "targets_remaining": 127,
+      "targets_remaining": 107,
       "latest_batch": {
-        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-        "sha256": "ea744f3430e40a7850a442434808d3f2ec901cc244bd65bb495f44e8e837b8e1",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-        "library_file_id": "file_00000000895881f583e8cc00cfa97235",
+        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+        "sha256": "668d4b7e0d9aefafab20f64e4dd643d03ddabcc801fe1d7eef9433527a77bc67",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+        "library_file_id": "file_000000007b0c81f4bc8d3d0468184677",
         "validator": "PASS",
         "post_package_verification": "PASS",
-        "library_rematerialization": "SHA256_EXACT_MATCH"
+        "library_rematerialization": "SHA256_EXACT_MATCH",
+        "cumulative": true
       },
-      "next_action": "Continue Batch0002 from ma1m-lu-2017."
+      "cumulative": {
+        "senses": 24,
+        "expressions": 16,
+        "examples": 160,
+        "relations": 14,
+        "review_resolutions": 29
+      },
+      "next_action": "Continue Batch0003 from ma1m-lu-2037."
     }
   }
 }

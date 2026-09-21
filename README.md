@@ -2,20 +2,21 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 has passed Stage 1/2 and is ready for Stage 3.**
 
-A1-L16 completed all seven stages:
-- 156 canonical lesson identities = 148 new + 8 exact reused locked identities
-- 72 senses + 84 expressions; 624 DE examples with FA+EN; 93 relations
-- Stage4 QA 48/48 PASS; official validator 156/156 exact-four with 0 warnings; framework regression 47/47 PASS
-- Stage5 projection 177/177 PASS; 135 `de-vocabulary` + 21 `german-verb`
-- Stage6/7 on CURRENT **GFP-v423-R57**: exact final outer import 35/35 PASS; standalone persistence 156/156 PASS
-- cumulative A1-L01..L16 production-v423 parser identity/collision: 22/22 PASS; **1996 unique canonical cards**
-- fresh v423 locked-bundle baseline: 19/19 PASS
-- final package hygiene: no `__pycache__` / `.pyc`; Library rematerialization exact SHA-256 match
-- environment boundary: no claim of one single sequential 1996-card durable browser persistence run
+A1-L17 Stage1/2:
+- source lesson: `A1-L17 — Wer will Popstar werden?`
+- source rows: **118** (`1407..1524`)
+- source audio: **118/118 present**, zero missing, zero multi-audio rows
+- Stage2: **147 distinct canonical lesson identities = 144 new + 3 exact locked reuses**
+- locked reuses: `ma1m-lu-0042` (gut), `ma1m-lu-0935` (ankommen), `ma1m-lu-0936` (auf etw. ankommen)
+- new stable IDs: `ma1m-lu-1997..ma1m-lu-2140`
+- Stage1/2 validator: **22/22 PASS**
+- package verification: **PASS**
+- Library rematerialization: exact SHA-256 match
+- 77 targets retain explicit Stage3 review flags where source polysemy, wording, naturalness or normalization still needs evidence review
 
-Final A1-L16 artifact: `Menschen-A1-L16-v3.3.2-GFP-v423-LOCKED.zip`
-SHA-256: `b9d639ba04f324ddc02bef1279b84dd1b989dbb8b4a6dd580fd70732acad1daa`
+Stage1/2 artifact: `Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip`
+SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 
-**Next: A1-L17 Stage 1/2.**
+**Next: A1-L17 Stage 3 — Evidence & Enrichment.**

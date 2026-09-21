@@ -196,9 +196,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L17 Stage3 IN_PROGRESS: 140/147 complete; final Batch0008 next",
-      "last_observed_stage": "3_evidence_enrichment_A1_L17_batch0007_pass",
-      "last_observed_note": "A1-L17 cumulative Stage3 Batch0007 PASS through ma1m-lu-2136: 140 targets (73 senses +67 expressions), 560 exact examples with FA+EN, 64 explicit-source/evidence-backed relations, 77 review resolutions, 140 evidence claims. Fresh validator/manifest rehash/package hygiene PASS; Library rematerialization exact SHA-256 match.",
+      "current_scope": "A1-L17 Stage3 COMPLETE PASS: 147/147; Stage4 next",
+      "last_observed_stage": "3_evidence_enrichment_A1_L17_complete_pass",
+      "last_observed_note": "A1-L17 Stage3 COMPLETE PASS: 147 targets (144 new + 3 exact locked reuses), 75 senses + 72 expressions, 588 exact examples with FA+EN, 64 evidence-backed relations, 84 review resolutions, 147 evidence claims. Exact locked reuse core/examples preserved. Fresh validator, manifest rehash, package hygiene and Library rematerialization all PASS.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L16-v3.3.2-GFP-v423-LOCKED.zip",
         "sha256": "b9d639ba04f324ddc02bef1279b84dd1b989dbb8b4a6dd580fd70732acad1daa",
@@ -225,7 +225,7 @@
         "package_hygiene": "PASS_NO_PYCACHE_PYC"
       },
       "lock_state": "A1-L01_TO_A1-L16_LOCKED",
-      "next_scope": "A1-L17 final Stage3 Batch0008 and locked reuse inheritance",
+      "next_scope": "A1-L17 Stage4 Linguistic & Lexical QA",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -293,13 +293,13 @@
         "library_file_id": "file_000000006a4c81f49389cfa50b81c16d"
       },
       "latest_checkpoint": {
-        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-        "sha256": "4e0eb3c8ddd2dc738203ffa2d08bbbf65ea08b49f17d4950490c9e75864af32e",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-        "library_file_id": "file_00000000adf081f69e7faac31e41388f",
-        "stage": "A1-L17 Stage3 Batch0007",
+        "filename": "Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "sha256": "f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "library_file_id": "file_00000000a5488210a67e6f552453f011",
+        "stage": "A1-L17 Stage3 COMPLETE",
         "quality_state": "PASS",
-        "cumulative_targets": 140
+        "cumulative_targets": 147
       }
     },
     "vocabulary": {
@@ -842,9 +842,9 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Final Batch0008: ma1m-lu-2137..2140 plus exact locked reuse inheritance for ma1m-lu-0042, ma1m-lu-0935 and ma1m-lu-0936.",
+    "next_action": "Stage4 Linguistic & Lexical QA.",
     "stage3": {
-      "state": "IN_PROGRESS",
+      "state": "PASS",
       "completed_batches": [
         "0001",
         "0002",
@@ -852,30 +852,43 @@
         "0004",
         "0005",
         "0006",
-        "0007"
+        "0007",
+        "0008",
+        "LOCKED_REUSE_MERGE"
       ],
-      "targets_complete": 140,
+      "targets_complete": 147,
       "targets_total": 147,
-      "targets_remaining": 7,
-      "latest_batch": {
-        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-        "sha256": "4e0eb3c8ddd2dc738203ffa2d08bbbf65ea08b49f17d4950490c9e75864af32e",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-        "library_file_id": "file_00000000adf081f69e7faac31e41388f",
+      "targets_remaining": 0,
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "sha256": "f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "library_file_id": "file_00000000a5488210a67e6f552453f011",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-POST-PACKAGE-VERIFICATION.json",
         "validator": "PASS",
-        "post_package_verification": "PASS",
+        "fresh_extract_manifest_rehash": "PASS",
         "library_rematerialization": "SHA256_EXACT_MATCH",
-        "cumulative": true
+        "package_hygiene": "PASS_NO_PYCACHE_PYC"
       },
       "cumulative": {
-        "senses": 73,
-        "expressions": 67,
-        "examples": 560,
+        "new_canonical_targets": 144,
+        "reused_canonical_targets": 3,
+        "senses": 75,
+        "expressions": 72,
+        "examples": 588,
         "relations": 64,
-        "review_resolutions": 77,
-        "evidence_claims": 140
+        "review_resolutions": 84,
+        "evidence_claims": 147
       },
-      "next_action": "Final Batch0008: ma1m-lu-2137..2140 plus exact locked reuse inheritance for ma1m-lu-0042, ma1m-lu-0935 and ma1m-lu-0936."
+      "locked_reuse": {
+        "ids": [
+          "ma1m-lu-0042",
+          "ma1m-lu-0935",
+          "ma1m-lu-0936"
+        ],
+        "status": "PASS_EXACT_CORE_AND_EXAMPLES"
+      },
+      "next_action": "Stage4 Linguistic & Lexical QA."
     }
   }
 }

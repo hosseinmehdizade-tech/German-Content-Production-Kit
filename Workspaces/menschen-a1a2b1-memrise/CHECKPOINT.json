@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L17 Stage1/2 and Stage3 Batches0001-0007 PASS are synchronized on main. Exact cumulative Batch0007 checkpoint is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
+    "git_sync_note": "A1-L17 Stage1/2 and Stage3 COMPLETE PASS are synchronized on main. Exact cumulative Stage3 COMPLETE checkpoint is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -64,11 +64,11 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "IN_PROGRESS",
+      "state": "PASS",
       "scope": "A1-L17",
       "targets_total": 147,
-      "targets_complete": 140,
-      "targets_remaining": 7,
+      "targets_complete": 147,
+      "targets_remaining": 0,
       "completed_batches": [
         "0001",
         "0002",
@@ -76,9 +76,23 @@
         "0004",
         "0005",
         "0006",
-        "0007"
+        "0007",
+        "0008",
+        "LOCKED_REUSE_MERGE"
       ],
-      "latest_batch": "0007"
+      "latest_batch": "COMPLETE",
+      "summary": {
+        "new_canonical_targets": 144,
+        "reused_canonical_targets": 3,
+        "senses": 75,
+        "expressions": 72,
+        "examples": 588,
+        "relations": 64,
+        "review_resolutions": 84,
+        "evidence_claims": 147,
+        "locked_reuse": "PASS_EXACT_CORE_AND_EXAMPLES",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC"
+      }
     },
     {
       "stage": 4,
@@ -107,7 +121,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS and Stage3 Batches0001-0007 PASS (140/147 cumulative). Continue final Stage3 Batch0008: ma1m-lu-2137..2140 plus exact locked reuse inheritance for ma1m-lu-0042, ma1m-lu-0935 and ma1m-lu-0936.",
+  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS and Stage3 COMPLETE PASS (147/147). Continue Stage4 Linguistic & Lexical QA from the exact Stage3 COMPLETE checkpoint; do not regenerate locked lessons or Stage3 content.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -120,10 +134,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L16",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "4e0eb3c8ddd2dc738203ffa2d08bbbf65ea08b49f17d4950490c9e75864af32e"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a"
   },
-  "current_scope": "A1-L17 Stage3 IN_PROGRESS: 140/147 complete; final Batch0008 next; A1-L01..L16 locked",
+  "current_scope": "A1-L17 Stage3 COMPLETE PASS: 147/147; Stage4 next; A1-L01..L16 locked",
   "lock_state": "A1-L01_TO_A1-L16_LOCKED",
   "locked_at": "2026-09-20",
   "release_artifact": {
@@ -1209,9 +1223,9 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Final Batch0008: ma1m-lu-2137..2140 plus exact locked reuse inheritance for ma1m-lu-0042, ma1m-lu-0935 and ma1m-lu-0936.",
+    "next_action": "Stage4 Linguistic & Lexical QA.",
     "stage3": {
-      "state": "IN_PROGRESS",
+      "state": "PASS",
       "completed_batches": [
         "0001",
         "0002",
@@ -1219,30 +1233,43 @@
         "0004",
         "0005",
         "0006",
-        "0007"
+        "0007",
+        "0008",
+        "LOCKED_REUSE_MERGE"
       ],
-      "targets_complete": 140,
+      "targets_complete": 147,
       "targets_total": 147,
-      "targets_remaining": 7,
-      "latest_batch": {
-        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-        "sha256": "4e0eb3c8ddd2dc738203ffa2d08bbbf65ea08b49f17d4950490c9e75864af32e",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-        "library_file_id": "file_00000000adf081f69e7faac31e41388f",
+      "targets_remaining": 0,
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "sha256": "f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+        "library_file_id": "file_00000000a5488210a67e6f552453f011",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-POST-PACKAGE-VERIFICATION.json",
         "validator": "PASS",
-        "post_package_verification": "PASS",
+        "fresh_extract_manifest_rehash": "PASS",
         "library_rematerialization": "SHA256_EXACT_MATCH",
-        "cumulative": true
+        "package_hygiene": "PASS_NO_PYCACHE_PYC"
       },
       "cumulative": {
-        "senses": 73,
-        "expressions": 67,
-        "examples": 560,
+        "new_canonical_targets": 144,
+        "reused_canonical_targets": 3,
+        "senses": 75,
+        "expressions": 72,
+        "examples": 588,
         "relations": 64,
-        "review_resolutions": 77,
-        "evidence_claims": 140
+        "review_resolutions": 84,
+        "evidence_claims": 147
       },
-      "next_action": "Final Batch0008: ma1m-lu-2137..2140 plus exact locked reuse inheritance for ma1m-lu-0042, ma1m-lu-0935 and ma1m-lu-0936."
+      "locked_reuse": {
+        "ids": [
+          "ma1m-lu-0042",
+          "ma1m-lu-0935",
+          "ma1m-lu-0936"
+        ],
+        "status": "PASS_EXACT_CORE_AND_EXAMPLES"
+      },
+      "next_action": "Stage4 Linguistic & Lexical QA."
     }
   }
 }

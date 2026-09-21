@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 has passed Stage 1/2 and is ready for Stage 3.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 3 is COMPLETE/PASS; Stage 4 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -19,12 +19,14 @@ A1-L17 Stage1/2:
 Stage1/2 artifact: `Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip`
 SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 
-**A1-L17 Stage 3 — Evidence & Enrichment is IN_PROGRESS.**
+**A1-L17 Stage 3 — Evidence & Enrichment: COMPLETE / PASS.**
 
-- **140/147** targets complete through Batch0007
-- **560** exact DE examples, each with FA + EN
-- **73 senses + 67 expressions**
-- **64** explicit-source/evidence-backed relations; **77** review resolutions
-- latest checkpoint: `Menschen-A1-L17-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip`
-- SHA-256: `4e0eb3c8ddd2dc738203ffa2d08bbbf65ea08b49f17d4950490c9e75864af32e`
-- next: final Batch0008 (`ma1m-lu-2137..2140` + exact locked reuse inheritance for `ma1m-lu-0042`, `ma1m-lu-0935`, `ma1m-lu-0936`)
+- **147/147** targets complete: **144 new + 3 exact locked reuses**
+- **588** exact DE examples, each with FA + EN
+- **75 senses + 72 expressions**
+- **64** evidence-backed relations; **84** review resolutions; **147** evidence claims
+- locked reuses: `ma1m-lu-0042`, `ma1m-lu-0935`, `ma1m-lu-0936` — exact semantic core and four examples preserved
+- final Stage3 checkpoint: `Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip`
+- SHA-256: `f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a`
+- fresh validator / manifest rehash / package hygiene / Library rematerialization: **PASS**
+- next: **Stage 4 — Linguistic & Lexical QA**

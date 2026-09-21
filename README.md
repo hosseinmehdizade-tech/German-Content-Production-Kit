@@ -20,3 +20,4 @@ Stage1/2 artifact: `Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip`
 SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 
 **Next: A1-L17 Stage 3 — Evidence & Enrichment.**
+\n- **A1-L17 Stage3:** IN_PROGRESS — **100/147** targets complete through Batch0005; 400 exact DE examples with FA+EN; next Batch0006 from `ma1m-lu-2097`.\n

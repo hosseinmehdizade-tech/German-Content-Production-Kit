@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-21T13:20:00+02:00",
+  "updated_at": "2026-09-21T13:45:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -196,9 +196,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L17 Stage1/2 PASS; Stage3 READY; A1-L01..L16 locked",
-      "last_observed_stage": "2_canonicalization_A1_L17",
-      "last_observed_note": "A1-L17 source rows 1407..1524: 118 rows, 118/118 source audio refs present, zero missing audio. Stage2 produced 147 distinct lesson identities = 144 new + 3 exact locked reuses; new stable IDs ma1m-lu-1997..ma1m-lu-2140. Validator 22/22 PASS; package post-verification PASS; Library rematerialization SHA-256 exact match.",
+      "current_scope": "A1-L17 Stage3 IN_PROGRESS: 20/147 complete; Batch0002 next",
+      "last_observed_stage": "3_evidence_enrichment_A1_L17_batch0001_pass",
+      "last_observed_note": "A1-L17 Stage3 Batch0001 PASS for ma1m-lu-1997..ma1m-lu-2016: 20 targets, 80 exact examples with FA+EN, 5 evidence-backed relations, 17 review resolutions. Library rematerialization matched SHA-256 exactly.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L16-v3.3.2-GFP-v423-LOCKED.zip",
         "sha256": "b9d639ba04f324ddc02bef1279b84dd1b989dbb8b4a6dd580fd70732acad1daa",
@@ -225,7 +225,7 @@
         "package_hygiene": "PASS_NO_PYCACHE_PYC"
       },
       "lock_state": "A1-L01_TO_A1-L16_LOCKED",
-      "next_scope": "A1-L17 Stage3 Evidence & Enrichment",
+      "next_scope": "A1-L17 Stage3 Batch0002 from ma1m-lu-2017",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -293,11 +293,11 @@
         "library_file_id": "file_000000006a4c81f49389cfa50b81c16d"
       },
       "latest_checkpoint": {
-        "filename": "Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "sha256": "388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "library_file_id": "file_0000000021ec81f4a578591d5e802779",
-        "stage": "A1-L17 Stage1/2",
+        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "sha256": "ea744f3430e40a7850a442434808d3f2ec901cc244bd65bb495f44e8e837b8e1",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "library_file_id": "file_00000000895881f583e8cc00cfa97235",
+        "stage": "A1-L17 Stage3 Batch0001",
         "quality_state": "PASS"
       }
     },
@@ -841,6 +841,25 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Start Stage3 Evidence & Enrichment in bounded batches."
+    "next_action": "Continue A1-L17 Stage3 Batch0002 from ma1m-lu-2017.",
+    "stage3": {
+      "state": "IN_PROGRESS",
+      "completed_batches": [
+        "0001"
+      ],
+      "targets_complete": 20,
+      "targets_total": 147,
+      "targets_remaining": 127,
+      "latest_batch": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "sha256": "ea744f3430e40a7850a442434808d3f2ec901cc244bd65bb495f44e8e837b8e1",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "library_file_id": "file_00000000895881f583e8cc00cfa97235",
+        "validator": "PASS",
+        "post_package_verification": "PASS",
+        "library_rematerialization": "SHA256_EXACT_MATCH"
+      },
+      "next_action": "Continue Batch0002 from ma1m-lu-2017."
+    }
   }
 }

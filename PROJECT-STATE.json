@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-21T12:45:00+02:00",
+  "updated_at": "2026-09-21T13:15:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -196,9 +196,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L16 LOCKED; A1-L17 Stage1/2 next",
-      "last_observed_stage": "7_release_locked_A1_L16",
-      "last_observed_note": "A1-L16 exact final LOCKED.zip passed Stage4 48/48, Stage5 177/177, exact-current-v423 outer import 35/35 with 156/156 standalone persistence, cumulative production-v423 parser identity/collision 22/22 with 1996 unique cards (148 new L16 + 8 expected reuses), fresh v423 locked-bundle baseline 19/19, and clean-package hygiene with no __pycache__/.pyc. Library rematerialization SHA-256 matched exactly. Environment boundary remains only for a single sequential 1996-card durable browser persistence run.",
+      "current_scope": "A1-L17 Stage1/2 PASS; Stage3 READY; A1-L01..L16 locked",
+      "last_observed_stage": "2_canonicalization_A1_L17",
+      "last_observed_note": "A1-L17 source rows 1407..1524: 118 rows, 118/118 source audio refs present, zero missing audio. Stage2 produced 147 distinct lesson identities = 144 new + 3 exact locked reuses; new stable IDs ma1m-lu-1997..ma1m-lu-2140. Validator 22/22 PASS; package post-verification PASS; Library rematerialization SHA-256 exact match.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L16-v3.3.2-GFP-v423-LOCKED.zip",
         "sha256": "b9d639ba04f324ddc02bef1279b84dd1b989dbb8b4a6dd580fd70732acad1daa",
@@ -225,7 +225,7 @@
         "package_hygiene": "PASS_NO_PYCACHE_PYC"
       },
       "lock_state": "A1-L01_TO_A1-L16_LOCKED",
-      "next_scope": "A1-L17 Stage 1/2",
+      "next_scope": "A1-L17 Stage3 Evidence & Enrichment",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -291,6 +291,14 @@
         "artifact": "Menschen-A1-L16-v3.3.2-Stage6-GFP-v423-CHECKPOINT.zip",
         "artifact_sha256": "46449c1602c8008f4180dc4a2d09e343498e048a236a8954d4a3566ada4940a1",
         "library_file_id": "file_000000006a4c81f49389cfa50b81c16d"
+      },
+      "latest_checkpoint": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "sha256": "388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "library_file_id": "file_0000000021ec81f4a578591d5e802779",
+        "stage": "A1-L17 Stage1/2",
+        "quality_state": "PASS"
       }
     },
     "vocabulary": {
@@ -802,5 +810,37 @@
       "integration_base": false
     },
     "git_sync_timing": "Flashcards v428 portable CURRENT is authoritative; main/01-App still v427 and source sync is PENDING after bounded failures."
+  },
+  "a1_l17": {
+    "state": "IN_PROGRESS",
+    "source_rows": 118,
+    "source_audio_refs": 118,
+    "source_zero_audio_rows": 0,
+    "source_zero_audio_ordinals": [],
+    "source_csv_ordinals": "1407..1524",
+    "lesson_target_mappings": 147,
+    "distinct_lesson_canonical_identities": 147,
+    "new_canonical_targets": 144,
+    "reused_canonical_targets": 3,
+    "new_stable_id_range": "ma1m-lu-1997..ma1m-lu-2140",
+    "reused_stable_ids": [
+      "ma1m-lu-0042",
+      "ma1m-lu-0935",
+      "ma1m-lu-0936"
+    ],
+    "review_flagged_targets": 77,
+    "stage12": {
+      "state": "PASS",
+      "validator": "22/22 PASS",
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "sha256": "388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "library_file_id": "file_0000000021ec81f4a578591d5e802779",
+        "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage1-2-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "SHA256_EXACT_MATCH"
+      }
+    },
+    "next_action": "Start Stage3 Evidence & Enrichment in bounded batches."
   }
 }

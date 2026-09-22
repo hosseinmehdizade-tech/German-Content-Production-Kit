@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-22T03:15:00+02:00",
+  "updated_at": "2026-09-22T14:40:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -196,9 +196,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L17 LOCKED; A1-L18 Stage1/2 next",
-      "last_observed_stage": "7_release_post_package_verification_A1_L17_locked",
-      "last_observed_note": "A1-L17 Stage7 LOCKED on CURRENT GFP-v428-R62: immutable final bundle SHA verified; package integrity/manifest/hygiene PASS; exact-final direct import 21/21 PASS; exact-final four-mode runtime/presentation 33/33 PASS; 147/147 persistence; cumulative identity 12/12 PASS with 2140 unique cards through L17 (144 new + expected 3 reuses); Library rematerialization exact SHA match. Runtime-level environment boundary remains only because v428 still requires the project-level fresh Windows/Chrome persistence+restart+offline/service-worker smoke.",
+      "current_scope": "A1-L18 Stage1/2 COMPLETE PASS; Stage3 next",
+      "last_observed_stage": "2_canonicalization_A1_L18_complete_pass",
+      "last_observed_note": "A1-L18 Stage1/2 COMPLETE PASS: 132 source rows (1525..1656), 130 source audio refs/unique with exact source gaps at 1533 and 1654, 130/130 referenced MP3 basenames present in supplied RAR, 177 distinct canonical identities = 177 new + 0 locked reuses, 101 senses + 76 expressions, IDs ma1m-lu-2141..2317, 109 Stage3 review-flagged targets. Independent validator 14/14 PASS; post-package manifest/hygiene PASS; Library rematerialization exact SHA match.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
         "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
@@ -225,21 +225,31 @@
         "content_state": "LOCKED"
       },
       "lock_state": "A1-L01_TO_A1-L17_LOCKED",
-      "next_scope": "A1-L18 Stage1/2 Source & Inventory + Canonicalization",
+      "next_scope": "A1-L18 Stage3 Evidence & Enrichment in bounded batches",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
-        "filename": "Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "sha256": "daf65d045fd12a45e8366b9a63711cb1c8f010bc5b196a892ada37b9b5f94ba3",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L14-v3.3.2-Stage1-2-CHECKPOINT.zip",
-        "source_rows": 122,
-        "audio_refs": 122,
-        "lesson_target_mappings": 186,
-        "new_canonical_targets": 185,
-        "reused_canonical_ids": [
-          "ma1m-lu-0338"
+        "filename": "Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "sha256": "a0be554f2c27cb8dfbb6206f06fa4fa7656fcc0c8317f5bfe68d6574cc02a8ae",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "library_file_id": "file_00000000479881f58834d96c1b89ddec",
+        "library_stable_id": "libfile_8151a90207848191a0a45f0ee7249155",
+        "source_rows": 132,
+        "audio_refs": 130,
+        "zero_audio_rows": [
+          1533,
+          1654
         ],
-        "new_stable_id_range": "ma1m-lu-1504..ma1m-lu-1688",
-        "next_action": "Stage3 evidence/enrichment"
+        "lesson_target_mappings": 177,
+        "new_canonical_targets": 177,
+        "reused_canonical_ids": [],
+        "new_senses": 101,
+        "new_expressions": 76,
+        "new_stable_id_range": "ma1m-lu-2141..ma1m-lu-2317",
+        "review_flagged_targets": 109,
+        "validator": "14/14 PASS",
+        "post_package_verification": "PASS",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "next_action": "Start Stage3 Evidence & Enrichment."
       },
       "latest_stage3_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -315,14 +325,13 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "latest_checkpoint": {
-        "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
-        "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
-        "library_file_id": "file_0000000058f0820a96d6b890822cc294",
-        "stage": "A1-L17 Stage7 LOCKED",
-        "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-        "content_state": "LOCKED",
-        "cumulative_targets": 147
+        "filename": "Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "sha256": "a0be554f2c27cb8dfbb6206f06fa4fa7656fcc0c8317f5bfe68d6574cc02a8ae",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip",
+        "library_file_id": "file_00000000479881f58834d96c1b89ddec",
+        "stage": "A1-L18 Stage1/2 COMPLETE",
+        "quality_state": "PASS",
+        "cumulative_targets": 177
       },
       "latest_stage7": {
         "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",

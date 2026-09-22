@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 1/2 is COMPLETE/PASS; Stage 3 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batch0001 PASS (20/177); Batch0002 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -103,3 +103,15 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip`, SHA-256 `a0be554f2c27cb8dfbb6206f06fa4fa7656fcc0c8317f5bfe68d6574cc02a8ae`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage 3 — Evidence & Enrichment in bounded batches**
+
+
+**A1-L18 Stage 3 — Batch0001: PASS.**
+
+- target range: `ma1m-lu-2141..ma1m-lu-2160` = **20/177** Stage3 targets complete
+- **8 senses + 12 expressions**; **80 exact DE examples**, each with independent FA + EN
+- **9 evidence-backed relations**, **15 review resolutions**, **20 evidence claims**
+- missing source audio for the Fieber source gap remains preserved; no audio invented
+- local + fresh-extract validator: **PASS**; manifest rehash/hygiene: **PASS**
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip`, SHA-256 `1d5a383614d6afa5de53372b3b05fc3a7579e017be593094b7f51654fcfca127`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage3 Batch0002 starting at ma1m-lu-2161**

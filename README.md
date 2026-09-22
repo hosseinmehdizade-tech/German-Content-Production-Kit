@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 3 is COMPLETE/PASS; Stage 4 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 4 is COMPLETE/PASS; Stage 5 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -30,3 +30,18 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - SHA-256: `f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a`
 - fresh validator / manifest rehash / package hygiene / Library rematerialization: **PASS**
 - next: **Stage 4 — Linguistic & Lexical QA**
+
+
+**A1-L17 Stage 4 — Linguistic & Lexical QA: COMPLETE / PASS.**
+
+- **33/33** custom QA checks PASS across **147** targets
+- **56** bounded repairs: 36 expression-type profile normalizations, 4 profile-metadata completions, 9 source-reference normalizations, 7 translation-linguistic repairs
+- source course order/identity preserved; no German example regeneration; L01-L16 remain untouched/LOCKED
+- locked reuses `ma1m-lu-0042`, `ma1m-lu-0935`, `ma1m-lu-0936`: semantic core + four examples preserved exactly
+- official bundle validator: **147/147 exact-4, 0 warnings**
+- profile / reference-registry / reference-availability validators: **PASS**
+- framework pytest: **47/47 PASS**
+- checkpoint: `Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip`
+- SHA-256: `81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage 5 — Delivery Projection**

@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 1/2 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 1/2 is COMPLETE/PASS; Stage 3 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -88,3 +88,18 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - content state: **LOCKED**; runtime-level environment boundary remains only because v428 still needs its project-level fresh Windows/Chrome offline/storage smoke
 - next: **A1-L18 Stage 1 — Source & Inventory + Stage 2 — Canonicalization**
+
+
+**A1-L18 Stage 1/2 — Source & Inventory + Canonicalization: COMPLETE / PASS.**
+
+- source lesson: `A1-L18 — Geben_Sie_ihm_doch_diesen_Tee!`
+- source rows: **132** (`1525..1656`); source audio **130 refs / 130 unique**, exactly two source gaps at rows **1533** and **1654**, zero multi-audio rows
+- supplied RAR membership: **130/130 referenced MP3 filenames present**; missing source audio was preserved, not invented
+- Stage2: **177 distinct canonical identities = 177 new + 0 locked reuses**
+- semantic target mix: **101 senses + 76 expressions**
+- new stable IDs: `ma1m-lu-2141..ma1m-lu-2317`
+- **109** targets carry explicit Stage3 review flags; broad/polysemous or malformed source material was split/normalized explicitly rather than silently overwritten
+- independent validator: **14/14 PASS**; package manifest/hygiene: **PASS**
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip`, SHA-256 `a0be554f2c27cb8dfbb6206f06fa4fa7656fcc0c8317f5bfe68d6574cc02a8ae`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage 3 — Evidence & Enrichment in bounded batches**

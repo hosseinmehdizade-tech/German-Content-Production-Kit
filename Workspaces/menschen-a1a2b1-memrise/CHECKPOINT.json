@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L17 Stage4 COMPLETE PASS is synchronized on main. Exact Stage4 checkpoint is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
+    "git_sync_note": "A1-L17 Stage5 COMPLETE PASS is synchronized on main. Exact Stage5 checkpoint is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -125,15 +125,31 @@
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "NOT_STARTED",
-      "scope": "A1-L17"
+      "state": "PASS",
+      "scope": "A1-L17",
+      "projection_qa": "172/172 PASS",
+      "transport_rows": 147,
+      "card_types": {
+        "de-vocabulary": 124,
+        "german-verb": 23
+      },
+      "dataset": "A1-L17-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "2a878f73ba3ed7acb091f5a0dc3bf779306be29c2da57b03274b20f71bdcd100",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4f5cbafd0bb9fa6bfb059c06e5e705d34d5f94f080f6742077447815a190d859",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_0000000005b0820a85dfeba364984acf",
+        "library_stable_id": "libfile_f6e20cf29fa8819198394aa1cfe71d76"
+      }
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
       "state": "NOT_STARTED",
       "scope": "A1-L17",
-      "runtime_resolution_rule": "Resolve current Flashcards runtime at Stage6; do not pin to historical v423."
+      "runtime_resolution_rule": "Resolve Flashcards CURRENT at Stage6; do not inherit historical v423/v417 acceptance."
     },
     {
       "stage": 7,
@@ -143,7 +159,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS, Stage3 COMPLETE PASS and Stage4 COMPLETE PASS. Continue Stage5 Delivery Projection from the exact Stage4 checkpoint; do not regenerate locked lessons, Stage3 content, or Stage4 QA.",
+  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stages1-5 PASS. Continue Stage6 Runtime & Presentation Acceptance from the exact Stage5 checkpoint and resolve Flashcards CURRENT at execution; do not regenerate locked lessons or Stages3-5.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -156,10 +172,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L16",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "4f5cbafd0bb9fa6bfb059c06e5e705d34d5f94f080f6742077447815a190d859"
   },
-  "current_scope": "A1-L17 Stage4 COMPLETE PASS: 33/33; Stage5 next; A1-L01..L16 locked",
+  "current_scope": "A1-L17 Stage5 COMPLETE PASS: 172/172; Stage6 next; A1-L01..L16 locked",
   "lock_state": "A1-L01_TO_A1-L16_LOCKED",
   "locked_at": "2026-09-20",
   "release_artifact": {
@@ -1245,7 +1261,7 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Stage5 Delivery Projection.",
+    "next_action": "Stage6 Runtime & Presentation Acceptance; resolve CURRENT.",
     "stage3": {
       "state": "PASS",
       "completed_batches": [
@@ -1320,14 +1336,41 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "next_action": "Start Stage5 Delivery Projection."
+    },
+    "stage5": {
+      "state": "PASS",
+      "transport_rows": 147,
+      "new_ids": 144,
+      "reused_ids": [
+        "ma1m-lu-0042",
+        "ma1m-lu-0935",
+        "ma1m-lu-0936"
+      ],
+      "card_types": {
+        "de-vocabulary": 124,
+        "german-verb": 23
+      },
+      "projection_qa": "172/172 PASS",
+      "final_dataset": "A1-L17-UNIVERSAL-v2.tsv",
+      "final_dataset_sha256": "2a878f73ba3ed7acb091f5a0dc3bf779306be29c2da57b03274b20f71bdcd100",
+      "projected_cards_sha256": "96a958403ed4fef42ab25a892e63a575fa17aac36140a3e9f110093da745b624",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4f5cbafd0bb9fa6bfb059c06e5e705d34d5f94f080f6742077447815a190d859",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_0000000005b0820a85dfeba364984acf",
+        "library_stable_id": "libfile_f6e20cf29fa8819198394aa1cfe71d76",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
-    "sha256": "81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
-    "library_file_id": "file_0000000068f881f4bc3f64e135019977",
-    "stage": "A1-L17 Stage4 COMPLETE",
+    "filename": "Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+    "sha256": "4f5cbafd0bb9fa6bfb059c06e5e705d34d5f94f080f6742077447815a190d859",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip",
+    "library_file_id": "file_0000000005b0820a85dfeba364984acf",
+    "stage": "A1-L17 Stage5 COMPLETE",
     "quality_state": "PASS",
     "cumulative_targets": 147
   }

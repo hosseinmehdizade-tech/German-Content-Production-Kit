@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L17 Stage1/2 and Stage3 COMPLETE PASS are synchronized on main. Exact cumulative Stage3 COMPLETE checkpoint is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
+    "git_sync_note": "A1-L17 Stage4 COMPLETE PASS is synchronized on main. Exact Stage4 checkpoint is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L16 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -97,8 +97,30 @@
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "NOT_STARTED",
-      "scope": "A1-L17"
+      "state": "PASS",
+      "scope": "A1-L17",
+      "custom_qa": "33/33 PASS",
+      "repairs_applied": 56,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 36,
+        "profile_metadata_completion": 4,
+        "source_reference_normalization": 9,
+        "translation_linguistic_repair": 7
+      },
+      "official_bundle_validator": "PASS_147_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "review_unresolved": 0,
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+        "library_file_id": "file_0000000068f881f4bc3f64e135019977",
+        "library_stable_id": "libfile_123da39b4da48191b7cd09ab58140be0",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
     },
     {
       "stage": 5,
@@ -121,7 +143,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS and Stage3 COMPLETE PASS (147/147). Continue Stage4 Linguistic & Lexical QA from the exact Stage3 COMPLETE checkpoint; do not regenerate locked lessons or Stage3 content.",
+  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stage1/2 PASS, Stage3 COMPLETE PASS and Stage4 COMPLETE PASS. Continue Stage5 Delivery Projection from the exact Stage4 checkpoint; do not regenerate locked lessons, Stage3 content, or Stage4 QA.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -134,10 +156,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L16",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "f203f476c8002fb202cfca4abb5864f458c30916855858dede239967f1186f2a"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c"
   },
-  "current_scope": "A1-L17 Stage3 COMPLETE PASS: 147/147; Stage4 next; A1-L01..L16 locked",
+  "current_scope": "A1-L17 Stage4 COMPLETE PASS: 33/33; Stage5 next; A1-L01..L16 locked",
   "lock_state": "A1-L01_TO_A1-L16_LOCKED",
   "locked_at": "2026-09-20",
   "release_artifact": {
@@ -1223,7 +1245,7 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Stage4 Linguistic & Lexical QA.",
+    "next_action": "Stage5 Delivery Projection.",
     "stage3": {
       "state": "PASS",
       "completed_batches": [
@@ -1270,6 +1292,43 @@
         "status": "PASS_EXACT_CORE_AND_EXAMPLES"
       },
       "next_action": "Stage4 Linguistic & Lexical QA."
+    },
+    "stage4": {
+      "state": "PASS",
+      "checks": "33/33 PASS",
+      "repairs_applied": 56,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 36,
+        "profile_metadata_completion": 4,
+        "source_reference_normalization": 9,
+        "translation_linguistic_repair": 7
+      },
+      "official_bundle_validator": "PASS_147_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "review_unresolved": 0,
+      "source_fidelity": "PASS_NO_GERMAN_EXAMPLE_REGENERATION",
+      "locked_reuse": "PASS_EXACT_CORE_AND_EXAMPLES",
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+        "library_file_id": "file_0000000068f881f4bc3f64e135019977",
+        "library_stable_id": "libfile_123da39b4da48191b7cd09ab58140be0",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Start Stage5 Delivery Projection."
     }
+  },
+  "latest_checkpoint": {
+    "filename": "Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+    "sha256": "81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage4-CHECKPOINT.zip",
+    "library_file_id": "file_0000000068f881f4bc3f64e135019977",
+    "stage": "A1-L17 Stage4 COMPLETE",
+    "quality_state": "PASS",
+    "cumulative_targets": 147
   }
 }

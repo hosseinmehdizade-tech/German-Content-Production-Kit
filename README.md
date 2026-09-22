@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0002 PASS (40/177); Batch0003 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0003 PASS (60/177); Batch0004 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -127,3 +127,15 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip`, SHA-256 `a2931e294b648edb32971ddcd20987c1be8834f17933af0a75dd1cf1d95928b2`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage3 Batch0003 starting at ma1m-lu-2181**
+
+
+**A1-L18 Stage 3 — Batch0003: PASS.**
+
+- target range: `ma1m-lu-2181..ma1m-lu-2200`; cumulative **60/177** Stage3 targets complete
+- cumulative: **29 senses + 31 expressions**, **240 exact DE examples** with independent FA + EN
+- cumulative **32 evidence-backed relations**, **55 review resolutions**, **60 evidence claims**
+- source-seed mismatches for `Das Auge isst mit!`, `Kapsel` and `Bein` were preserved in provenance and corrected only at the learner-meaning layer; no source row was silently rewritten
+- local + fresh-extract Stage3 validator, manifest rehash, package hygiene and Library rematerialization: **PASS**
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip`, SHA-256 `281e9b6fd7bff385fb80a00a0187489bbc6c64497139b972d59fbc4c049ecdf2`
+- full Stage4 bundle/profile normalization is intentionally not claimed during Stage3
+- next: **Stage3 Batch0004 starting at ma1m-lu-2201**

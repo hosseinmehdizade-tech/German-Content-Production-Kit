@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 4 is COMPLETE/PASS; Stage 5 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 5 is COMPLETE/PASS; Stage 6 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -45,3 +45,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - SHA-256: `81ab47d713b11bd1643a08a32d3643576252c5b0a623132ea77ee94f76f3b58c`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage 5 — Delivery Projection**
+
+
+**A1-L17 Stage 5 — Delivery Projection: COMPLETE / PASS.**
+
+- **147** projected cards = 144 new + 3 exact locked reuses
+- card types: **124 de-vocabulary + 23 german-verb**
+- examples: **588 DE + 588 FA + 588 EN**; relations: **64**
+- source audio: **148 target refs / 119 unique**, zero missing targets; source occurrence map **118/118** rows with audio
+- projection/loss-parity QA: **172/172 PASS**
+- direct-import dataset: `A1-L17-UNIVERSAL-v2.tsv`, SHA-256 `2a878f73ba3ed7acb091f5a0dc3bf779306be29c2da57b03274b20f71bdcd100`
+- Stage 5 is runtime-version agnostic; Stage 6 must resolve Flashcards CURRENT at execution time
+- checkpoint: `Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip`, SHA-256 `4f5cbafd0bb9fa6bfb059c06e5e705d34d5f94f080f6742077447815a190d859`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage 6 — Runtime & Presentation Acceptance**

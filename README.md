@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 6 is COMPLETE/PASS_WITH_ENVIRONMENT_BOUNDARY; Stage 7 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 1/2 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -74,3 +74,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - boundary: v428 still requires its project-level fresh Windows/Chrome persistence+restart+offline/service-worker smoke because storage semantics changed
 - next: **Stage 7 — final LOCKED release + exact-final direct import**
+
+
+**A1-L17 Stage 7 — Release & Post-Package Verification: LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY.**
+
+- final immutable bundle: `Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip`
+- SHA-256: `66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87`
+- final package integrity / manifest rehash / hygiene: **PASS** (52 manifest entries; no pycache/pyc)
+- exact-final direct import on CURRENT GFP v428-R62: **21/21 PASS**
+- exact-final four-mode runtime/presentation: **33/33 PASS**
+- standalone persistence: **147/147 VERIFIED**
+- cumulative identity/collision: **12/12 PASS; 2140 unique through L17; 144 new + expected 3 reuses**
+- Library rematerialization: **PASS — exact SHA-256 match**
+- content state: **LOCKED**; runtime-level environment boundary remains only because v428 still needs its project-level fresh Windows/Chrome offline/storage smoke
+- next: **A1-L18 Stage 1 — Source & Inventory + Stage 2 — Canonicalization**

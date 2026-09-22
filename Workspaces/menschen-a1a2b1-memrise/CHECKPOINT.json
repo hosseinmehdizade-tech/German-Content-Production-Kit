@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L17 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY is synchronized on main. Exact Stage6 checkpoint is durable in Library and rematerialized with exact SHA-256; A1-L01..L16 remain LOCKED."
+    "git_sync_note": "A1-L17 Stage7 LOCKED is synchronized on main. Exact final LOCKED bundle is durable in ChatGPT Library and rematerialized with exact SHA-256 match; A1-L01..L17 are now LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -169,12 +169,30 @@
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "NOT_STARTED",
-      "scope": "A1-L17"
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "scope": "A1-L17",
+      "lock_state": "LOCKED",
+      "runtime": "GFP-v428-R62",
+      "exact_outer_import": "21/21 PASS",
+      "runtime_presentation": "33/33 PASS",
+      "standalone_persistence": "147/147 VERIFIED",
+      "cumulative_identity_collision": "12/12 PASS; 2140 unique; 144 new L17; expected 3 reused IDs only",
+      "manifest_rehash": "PASS_52_ENTRIES",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "environment_boundary": "Fresh exact-package local Windows/Chrome persistence+restart+offline/service-worker smoke still required for v428-R62",
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+        "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+        "library_file_id": "file_0000000058f0820a96d6b890822cc294",
+        "library_stable_id": "libfile_c1c417cb58c481918cc04de811afa427",
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L17-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L16 are LOCKED. A1-L17 Stages1-5 PASS and Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v428-R62. Continue Stage7 Release & Post-Package Verification from exact Stage6 checkpoint; do not regenerate earlier stages.",
+  "resume_instruction": "A1-L01 through A1-L17 are LOCKED. Start A1-L18 Stage1 Source & Inventory and Stage2 Canonicalization from the registered Menschen source; do not regenerate locked lessons A1-L01..L17.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -186,13 +204,13 @@
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
-    "latest_locked_lesson": "A1-L16",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "430ce28b9ec95cf4056152008b6b15952306ef88303d3ee89dafcdf348140e13"
+    "latest_locked_lesson": "A1-L17",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+    "latest_portable_checkpoint_sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87"
   },
-  "current_scope": "A1-L17 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 next; A1-L01..L16 locked",
-  "lock_state": "A1-L01_TO_A1-L16_LOCKED",
-  "locked_at": "2026-09-20",
+  "current_scope": "A1-L17 LOCKED; A1-L18 Stage1/2 next",
+  "lock_state": "A1-L01_TO_A1-L17_LOCKED",
+  "locked_at": "2026-09-22",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
     "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
@@ -445,6 +463,29 @@
       "stage6": "35/35 direct + 156/156 standalone persistence + 22/22 cumulative production-v423 parser identity/collision acceptance",
       "stage7": "PASS_WITH_ENVIRONMENT_BOUNDARY",
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.2-GFP-v423-POST-PACKAGE-VERIFICATION.json",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    },
+    "A1-L17": {
+      "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+      "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+      "runtime": "GFP-v428-R62",
+      "cards": 147,
+      "new_canonical_ids": 144,
+      "reused_canonical_ids": [
+        "ma1m-lu-0042",
+        "ma1m-lu-0935",
+        "ma1m-lu-0936"
+      ],
+      "cumulative_unique_a1_l01_l17_cards": 2140,
+      "stage4": "33/33 PASS",
+      "stage5": "172/172 PASS",
+      "stage6": "21/21 direct + 33/33 presentation + 147/147 persistence + 12/12 cumulative identity PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "stage7": "LOCKED PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L17-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_0000000058f0820a96d6b890822cc294",
+      "library_stable_id": "libfile_c1c417cb58c481918cc04de811afa427",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     }
   },
@@ -1247,7 +1288,7 @@
     }
   },
   "a1_l17": {
-    "state": "IN_PROGRESS",
+    "state": "LOCKED",
     "source_rows": 118,
     "source_audio_refs": 118,
     "source_zero_audio_rows": 0,
@@ -1276,7 +1317,7 @@
         "library_rematerialization": "SHA256_EXACT_MATCH"
       }
     },
-    "next_action": "Stage7 Release & Post-Package Verification.",
+    "next_action": "Start A1-L18 Stage1/2.",
     "stage3": {
       "state": "PASS",
       "completed_batches": [
@@ -1397,15 +1438,38 @@
         "library_stable_id": "libfile_014b8d1ac6108191b6cdf890cf5fdc7f",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
+    },
+    "stage7": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "lock_state": "LOCKED",
+      "runtime": "GFP-v428-R62",
+      "exact_outer_import": "21/21 PASS",
+      "runtime_presentation": "33/33 PASS",
+      "standalone_persistence": "147/147 VERIFIED",
+      "cumulative_identity_collision": "12/12 PASS; 2140 unique; 144 new L17; expected 3 reuses only",
+      "manifest_rehash": "PASS_52_ENTRIES",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "artifact": {
+        "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+        "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+        "library_file_id": "file_0000000058f0820a96d6b890822cc294",
+        "library_stable_id": "libfile_c1c417cb58c481918cc04de811afa427",
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L17-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "environment_boundary": "No single sequential 2140-card durable browser persistence run is claimed; v428 project-level local offline/storage smoke still pending."
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-    "sha256": "430ce28b9ec95cf4056152008b6b15952306ef88303d3ee89dafcdf348140e13",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-    "library_file_id": "file_000000004c10821091ad8909d52fb0c6",
-    "stage": "A1-L17 Stage6 COMPLETE",
+    "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+    "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
+    "library_file_id": "file_0000000058f0820a96d6b890822cc294",
+    "stage": "A1-L17 Stage7 LOCKED",
     "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_state": "LOCKED",
     "cumulative_targets": 147
-  }
+  },
+  "next_action": "Start A1-L18 Stage1/2."
 }

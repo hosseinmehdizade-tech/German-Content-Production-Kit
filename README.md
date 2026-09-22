@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batch0001 PASS (20/177); Batch0002 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0002 PASS (40/177); Batch0003 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -115,3 +115,15 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip`, SHA-256 `1d5a383614d6afa5de53372b3b05fc3a7579e017be593094b7f51654fcfca127`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage3 Batch0002 starting at ma1m-lu-2161**
+
+
+**A1-L18 Stage 3 — Batch0002: PASS.**
+
+- target range: `ma1m-lu-2161..ma1m-lu-2180`; cumulative **40/177** Stage3 targets complete
+- cumulative: **18 senses + 22 expressions**, **160 exact DE examples** with independent FA + EN
+- cumulative **20 evidence-backed relations**, **32 review resolutions**, **40 evidence claims**
+- key polysemy kept separate: `einnehmen` medicine vs money/revenue vs physical-space senses; `Praxis` experience vs practice premises; `Körper` living-body vs physical-object branches
+- local + fresh-extract validator: **PASS**; manifest rehash/hygiene: **PASS**
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip`, SHA-256 `a2931e294b648edb32971ddcd20987c1be8834f17933af0a75dd1cf1d95928b2`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage3 Batch0003 starting at ma1m-lu-2181**

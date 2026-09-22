@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 5 is COMPLETE/PASS; Stage 6 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L16 are LOCKED. A1-L17 Stage 6 is COMPLETE/PASS_WITH_ENVIRONMENT_BOUNDARY; Stage 7 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -59,3 +59,18 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L17-v3.3.2-Stage5-CHECKPOINT.zip`, SHA-256 `4f5cbafd0bb9fa6bfb059c06e5e705d34d5f94f080f6742077447815a190d859`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage 6 — Runtime & Presentation Acceptance**
+
+
+**A1-L17 Stage 6 — Runtime & Presentation Acceptance: PASS_WITH_ENVIRONMENT_BOUNDARY.**
+
+- resolved **CURRENT = GFP v428-R62**; v423-R57 used only as regression reference
+- exact CURRENT organized delivery SHA-256 verified: `73beff1ea0da24bc35daa1e0ef0ffbf56f6cd2965e45ecd2fe235e972dc3e6e3`
+- exact Stage5 outer candidate direct import on v428: **21/21 PASS**
+- L17 runtime + four-mode presentation acceptance: **33/33 PASS**
+- persistence/runtime index: **147/147**; Universal authority roundtrip: **147/147**
+- cumulative identity L01-L17: **12/12 PASS; 2140 unique = prior 1996 + 144 new; expected 3 reuses only**
+- source audio refs preserved (**148 refs / 119 unique**); source-MP3 playback is explicitly unsupported by CURRENT and Audio practice uses browser TTS
+- checkpoint: `Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip`, SHA-256 `430ce28b9ec95cf4056152008b6b15952306ef88303d3ee89dafcdf348140e13`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- boundary: v428 still requires its project-level fresh Windows/Chrome persistence+restart+offline/service-worker smoke because storage semantics changed
+- next: **Stage 7 — final LOCKED release + exact-final direct import**

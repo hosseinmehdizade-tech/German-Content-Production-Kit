@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0004 PASS (80/177); Batch0005 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0005 PASS (100/177); Batch0006 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -151,3 +151,15 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0004-CHECKPOINT.zip`, SHA-256 `6afe37898e7004648e15c11b614a5d4a94ef643dfa282e2334ef88fe75137bef`
 - full Stage4 bundle/profile normalization is intentionally not claimed during Stage3
 - next: **Stage3 Batch0005 starting at ma1m-lu-2221**
+
+
+**A1-L18 Stage 3 — Batch0005: PASS.**
+
+- target range: `ma1m-lu-2221..ma1m-lu-2240`; cumulative **100/177** Stage3 targets complete
+- cumulative: **53 senses + 47 expressions**, **400 exact DE examples** with independent FA + EN
+- cumulative **65 evidence-backed relations**, **92 review resolutions**, **100 evidence claims**
+- source-fidelity repairs: Fingerring FA seed corrected only at learner layer; malformed/mixed/wrong-target source examples for Hand, Nasenloch and Rücken retained in audit but excluded from final examples; learner morphology normalized to `das Nasenloch, Nasenlöcher`; `sich die Nase putzen` records the Dative-reflexive pattern
+- local + fresh-extract Stage3 validator, manifest rehash, package hygiene and Library rematerialization: **PASS**
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip`, SHA-256 `c4fbfc6256f9814dc5b0df64bc38cf52c4a9c8b260676c3ca7085350b5c19e05`
+- full Stage4 bundle/profile normalization is intentionally not claimed during Stage3
+- next: **Stage3 Batch0006 starting at ma1m-lu-2241**

@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0007 PASS (140/177); Batch0008 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0008 PASS (160/177); Batch0009 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -187,3 +187,15 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip`, SHA-256 `c62a461506147936c37cb33dc1bb3ca9d1fd5c44642a26bba0e0b0f0d827df84`
 - full Stage4 bundle/profile normalization is intentionally not claimed during Stage3
 - next: **Stage3 Batch0008 starting at ma1m-lu-2281**
+
+
+**A1-L18 Stage 3 — Batch0008: PASS.**
+
+- target range: `ma1m-lu-2281..ma1m-lu-2300`; cumulative **160/177** Stage3 targets complete
+- cumulative: **89 senses + 71 expressions**, **640 exact DE examples** with independent FA + EN
+- cumulative **107 evidence-backed relations**, **165 review resolutions**, **160 evidence claims**
+- source-fidelity repairs: `Tipp` is narrowed from the raw FA hint/warning mix to evidence-backed hint/advice; `das Heilen` stays nominalized while the verbal source example remains audit-only; formal `Sie` imperatives receive formal Persian learner translations; `Furz/furzen` = **derb**, `Pupser` = **familiär**, `rülpsen` = **umgangssprachlich**; `Bauch leicht gespannt` is retained as the course phrase with an explicit registered-reference limitation rather than silently rewritten
+- local + fresh-extract Stage3 validator **27/27 PASS**, manifest rehash, package hygiene and Library rematerialization: **PASS**
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0008-CHECKPOINT.zip`, SHA-256 `3584690dbf329059a34a3ac4973d49b7e598c785955169f595fd12bf21d92b8d`
+- full Stage4 bundle/profile normalization is intentionally not claimed during Stage3
+- next: **Stage3 Batch0009 starting at ma1m-lu-2301**

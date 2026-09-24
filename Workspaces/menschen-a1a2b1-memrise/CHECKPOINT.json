@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L18 Stage4 Linguistic & Lexical QA is PASS. Exact Stage4 checkpoint is durable in Library and rematerialized with exact SHA-256; A1-L01..L17 remain LOCKED."
+    "git_sync_note": "A1-L18 Stage5 Delivery Projection is PASS. Exact Stage5 checkpoint is durable in Library and rematerialized with exact SHA-256; A1-L01..L17 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -163,38 +163,75 @@
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "READY",
+      "state": "PASS",
       "scope": "A1-L18",
-      "projection_qa": null,
-      "transport_rows": null,
-      "card_types": null,
-      "dataset": null,
-      "dataset_sha256": null,
+      "projection_qa": "207/207 PASS",
+      "transport_rows": 177,
+      "card_types": {
+        "de-vocabulary": 161,
+        "german-verb": 16
+      },
+      "dataset": "A1-L18-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "e7ef42cd1c471e1dcc52d08594ea50cbc0ee48845843f2e2f229281ea7e82fff",
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-      "artifact": null,
-      "next_action": "Project A1-L18 canonical Stage4 PASS content to Universal v2 TSV/cards using the v3.3.2 projection contract."
+      "artifact": {
+        "filename": "Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_000000009d148210888e3874b62f9957",
+        "library_stable_id": "libfile_2598d2e954488191ad1943a7049339f1",
+        "size_bytes": 563534,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L18-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Stage6: resolve CURRENT German Flashcards Pro runtime, then run exact import/roundtrip/persistence/four-mode presentation acceptance.",
+      "fresh_extract_validator": "13/13 PASS",
+      "semantic_identity_parity": "177/177 PASS",
+      "categories": {
+        "Noun": 77,
+        "Expression": 76,
+        "Verb": 16,
+        "Adjective": 6,
+        "Conjunction": 1,
+        "Adverb": 1
+      },
+      "examples": {
+        "de": 708,
+        "fa": 708,
+        "en": 708
+      },
+      "relations": 124,
+      "target_source_audio_refs": 174,
+      "target_source_audio_unique_refs": 130,
+      "zero_audio_targets": [
+        "ma1m-lu-2151",
+        "ma1m-lu-2152",
+        "ma1m-lu-2315"
+      ],
+      "source_rows": 132,
+      "source_zero_audio_ordinals": [
+        1533,
+        1654
+      ],
+      "projected_cards_sha256": "ef87c1a0bc992e19dc3ac9fe9d571166b258189dbf32b2ee3cc7cea57500f36b",
+      "projection_contract_fix": "value.form/value.pattern relation projection preserved; final 124/124 relation parity PASS"
     },
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "NOT_STARTED",
+      "state": "READY",
       "scope": "A1-L18",
-      "runtime_resolution_rule": "Resolve Flashcards CURRENT at Stage6; do not inherit historical v423/v417 acceptance.",
-      "runtime": "GFP-v428-R62",
-      "runtime_sha256": "73beff1ea0da24bc35daa1e0ef0ffbf56f6cd2965e45ecd2fe235e972dc3e6e3",
-      "direct_outer_import": "21/21 PASS",
-      "runtime_presentation": "33/33 PASS",
-      "standalone_persistence": "147/147 VERIFIED",
-      "universal_roundtrip": "147/147 PASS",
-      "cumulative_identity_collision": "12/12 PASS; 2140 unique; 144 new L17; expected 3 reused IDs only",
-      "environment_boundary": "Fresh local Windows/Chrome persistence+restart+offline/service-worker smoke still required for v428-R62",
-      "artifact": {
-        "filename": "Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-        "sha256": "430ce28b9ec95cf4056152008b6b15952306ef88303d3ee89dafcdf348140e13",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-        "library_file_id": "file_000000004c10821091ad8909d52fb0c6",
-        "library_stable_id": "libfile_014b8d1ac6108191b6cdf890cf5fdc7f"
-      }
+      "runtime_resolution_rule": "Resolve Flashcards CURRENT at Stage6 execution; do not inherit L17/v428 or any older runtime.",
+      "runtime": null,
+      "runtime_sha256": null,
+      "direct_outer_import": null,
+      "runtime_presentation": null,
+      "standalone_persistence": null,
+      "universal_roundtrip": null,
+      "cumulative_identity_collision": null,
+      "environment_boundary": null,
+      "artifact": null,
+      "next_action": "Resolve CURRENT runtime and materialize its exact portable artifact before acceptance."
     },
     {
       "stage": 7,
@@ -222,7 +259,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L17 are LOCKED. A1-L18 Stages1-4 PASS. Start Stage5 Delivery Projection from the exact verified Stage4 checkpoint; do not regenerate Stages1-4.",
+  "resume_instruction": "A1-L01 through A1-L17 are LOCKED. A1-L18 Stages1-5 PASS. Stage5 projected 177 cards to Universal v2 with 207/207 loss/parity QA and fresh-extract 13/13 PASS. Start Stage6 by resolving CURRENT Flashcards runtime; do not inherit a historical runtime pin.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -235,10 +272,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L17",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage4-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "63f093f01f40920581d2e721396960d39b0fdb432fe68e48ef563d9f4733df39"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86"
   },
-  "current_scope": "A1-L18 Stage4 COMPLETE/PASS; Stage5 READY",
+  "current_scope": "A1-L18 Stage5 COMPLETE/PASS; Stage6 READY",
   "lock_state": "A1-L01_TO_A1-L17_LOCKED",
   "locked_at": "2026-09-22",
   "release_artifact": {
@@ -1492,17 +1529,17 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L18-v3.3.2-Stage4-CHECKPOINT.zip",
-    "sha256": "63f093f01f40920581d2e721396960d39b0fdb432fe68e48ef563d9f4733df39",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage4-CHECKPOINT.zip",
-    "library_file_id": "file_0000000059b882438368037eb572f4e6",
-    "library_stable_id": "libfile_f79313c63b5c819193a043b755533ffb",
-    "size_bytes": 244648,
-    "stage": "A1-L18 Stage4",
+    "filename": "Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+    "sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+    "library_file_id": "file_000000009d148210888e3874b62f9957",
+    "library_stable_id": "libfile_2598d2e954488191ad1943a7049339f1",
+    "size_bytes": 563534,
+    "stage": "A1-L18 Stage5",
     "quality_state": "PASS",
     "cumulative_targets": 177
   },
-  "next_action": "Start A1-L18 Stage5 Delivery Projection.",
+  "next_action": "Start A1-L18 Stage6: resolve CURRENT runtime and run Runtime & Presentation Acceptance.",
   "a1_l18": {
     "state": "IN_PROGRESS",
     "source_rows": 132,
@@ -1577,7 +1614,7 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
     },
-    "next_action": "Start Stage5 Delivery Projection.",
+    "next_action": "Start Stage6 Runtime & Presentation Acceptance by resolving CURRENT runtime.",
     "stage4": {
       "state": "PASS",
       "checks": 46,
@@ -1610,6 +1647,52 @@
         "library_stable_id": "libfile_f79313c63b5c819193a043b755533ffb",
         "size_bytes": 244648,
         "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L18-STAGE4-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
+    },
+    "stage5": {
+      "state": "PASS",
+      "cards": 177,
+      "card_types": {
+        "de-vocabulary": 161,
+        "german-verb": 16
+      },
+      "examples": {
+        "de": 708,
+        "fa": 708,
+        "en": 708
+      },
+      "relations": 124,
+      "projection_qa": "207/207 PASS",
+      "fresh_extract_validator": "13/13 PASS",
+      "dataset": {
+        "filename": "A1-L18-UNIVERSAL-v2.tsv",
+        "sha256": "e7ef42cd1c471e1dcc52d08594ea50cbc0ee48845843f2e2f229281ea7e82fff"
+      },
+      "projected_cards_sha256": "ef87c1a0bc992e19dc3ac9fe9d571166b258189dbf32b2ee3cc7cea57500f36b",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "source_audio": {
+        "target_occurrence_refs": 174,
+        "unique_refs": 130,
+        "zero_audio_targets": [
+          "ma1m-lu-2151",
+          "ma1m-lu-2152",
+          "ma1m-lu-2315"
+        ],
+        "source_rows": 132,
+        "zero_audio_source_ordinals": [
+          1533,
+          1654
+        ]
+      },
+      "artifact": {
+        "filename": "Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_000000009d148210888e3874b62f9957",
+        "library_stable_id": "libfile_2598d2e954488191ad1943a7049339f1",
+        "size_bytes": 563534,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L18-STAGE5-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
     }

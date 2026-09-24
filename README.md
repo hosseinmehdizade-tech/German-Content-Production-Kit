@@ -452,3 +452,18 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - checkpoint: `Menschen-A1-L19-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip`, SHA-256 `f3b74328e390489869caec427b5a6c1ff0895b26c6a60c75984cddbcb779b2a2`
 - separate runtime boundary remains: Fresh exact-package same-profile Windows/Chrome v432 rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED.
 - next: **Stage 7 — exact-final A1-L19 LOCKED package + post-package import/presentation verification on CURRENT v432**
+
+
+**A1-L19 Stage 7 — LOCKED / exact-final PASS_WITH_ENVIRONMENT_BOUNDARY.**
+
+- exact final outer artifact: `Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip`
+- SHA-256: `99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d`
+- exact-final import/runtime/presentation on CURRENT **GFP v432/R66**: **33/33 PASS**
+- commit manifest/runtime index/Universal authority: **123/123 PASS** under deterministic IndexedDB test boundary
+- card types: **110 de-vocabulary + 13 german-verb**; relations **91/91**; source-audio lineage **126 refs / 93 unique**
+- cumulative identity L01-L19: **12/12 PASS; 2436 unique; 119 new L19 + 4 expected locked reuses**
+- final package manifest rehash: **55/55 PASS**; package hygiene **PASS_NO_PYCACHE_PYC**
+- Library rematerialization: **PASS — exact SHA-256 match**
+- content state: **LOCKED**
+- separate runtime boundary remains: Content A1-L19 is LOCKED. Separate runtime-level v432 same-profile Windows/Chrome rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before v432 itself can be FINAL/VERIFIED.
+- next: **A1-L20 Stage1/2**

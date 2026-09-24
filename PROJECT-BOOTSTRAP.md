@@ -60,3 +60,8 @@ Before recommending a process/automation/Git/authority/packaging/source-governan
 If the proposal conflicts with an ACTIVE prior incident/decision, explicitly tell Hossein that the idea revisits a previous failure mode, summarize what happened, state the safe default, and only ask for override approval if he still wants to supersede it. Do not rely on Hossein remembering the old incident.
 
 Git synchronization follows `GIT-SYNC-POLICY.json`: bounded, deferred, coalesced, and never required on every batch/version.
+
+
+## Execution safety / turn-boundary rule
+
+`EXECUTION-SAFETY-POLICY.json` is mandatory. By default, complete **one major durable milestone per turn**: resolve authority → work → validate → persist checkpoint/artifact → sync compact Git metadata → **send a visible final response**. Do not silently start the next major stage in the same turn. Respect the bounded external-tool budget and one corrected retry per failed external operation; if the next stage cannot be completed safely within the turn, stop at a durable checkpoint and report the exact next action.

@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage5 PASS / ready for Stage6 CURRENT Runtime & Presentation Acceptance",
+      "current_scope": "A1-L20 Stage5 PASS / controller recovery complete / ready for Stage6 next turn",
       "last_observed_stage": "5_delivery_projection_A1_L20_pass",
-      "last_observed_note": "A1-L20 Stage5 PASS: 133 cards = 129 new + 4 locked reuses; Universal v2 projection QA 167/167 PASS; 107 de-vocabulary + 26 german-verb; 532 DE/FA/EN examples; 76 relations; 133 target audio refs / 104 unique; 104/104 source rows have audio; fresh-extract validation and 44/44 manifest rehash PASS; Library rematerialization exact SHA PASS. Runtime binding remains RESOLVE_CURRENT_AT_STAGE6.",
+      "last_observed_note": "APP mission recovery APP-20260924-201820-615763 reconciled to exact Stage5 PASS artifact 9642d1fa...b292b. Stage4/5 not repeated; Stage6 not started. CURRENT must be re-resolved live next turn.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -1366,7 +1366,7 @@
     "stage": "A1-L20 Stage5",
     "state": "PASS"
   },
-  "next_action": "A1-L20 Stage6: resolve CURRENT runtime and run Runtime & Presentation Acceptance.",
+  "next_action": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade.",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -1848,5 +1848,43 @@
     "prior_checkpoint_issue": "controller rejected prior recovery checkpoint because controller_state.run_budget was omitted",
     "fix": "machine checkpoint re-emitted with complete run_budget policy; durable Stage4 content/artifact unchanged",
     "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6."
+  },
+  "autorun_app_mission_recovery": {
+    "schema": "a1-l20-autorun-recovery@1.0.0",
+    "protocol": "AUTORUN_PROTOCOL_V3_1",
+    "mission_id": "APP-20260924-201820-615763",
+    "recovered_controller_checkpoint_seq": 1,
+    "durable_milestone": "A1-L20 Stage5 Delivery Projection PASS",
+    "authority": {
+      "artifact": "Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
+      "sha256": "9642d1fa6854cc49bc8cf80ef80775b394579b1fd729db043953b3d6028b292b",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
+      "library_file_id": "file_0000000083b081f684fae1d13d4d8271",
+      "library_stable_id": "libfile_c5fb96173d20819182f73b2e9762ba64",
+      "local_hash_recheck": "PASS_EXACT_SHA256_MATCH",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "stage5": {
+      "status": "PASS",
+      "semantic_identity_parity": "133/133 PASS",
+      "projection_qa": "167/167 PASS",
+      "universal_v2_sha256": "813667e0a5eb57a390317921b79583c8546583d035e7f671fa15ef6f2efc476d",
+      "projected_cards_sha256": "142ba1d9ce29a2b6cfdff2a6d315e1020958354a69f295111a47057e4d584536",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "blocking_findings": 0,
+      "blocking_limitations": []
+    },
+    "preservation": {
+      "a1_l01_to_l19": "LOCKED_UNCHANGED",
+      "stage4_repeated": false,
+      "stage5_repeated": false,
+      "stage6_started": false
+    },
+    "runtime": {
+      "observed_pointer_during_recovery": "v432-R66",
+      "bound_for_stage6": false,
+      "rule": "Re-resolve CURRENT again at Stage6 execution; observed recovery pointer is not a Stage6 acceptance binding."
+    },
+    "next_operation": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade."
   }
 }

@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 3 is RUNNING: Batch0001 PASS; 20/119 new targets enriched + 4 locked reuses ready; Batch0002 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 3 is RUNNING: Batches0001-0002 PASS; 40/119 new targets enriched + 4 locked reuses ready; Batch0003 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -310,3 +310,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip`, SHA-256 `bd3e945e679ed48365b5648bd774b68a4d35102ca2d4f932b13b92020796c764`
 - full Stage4 linguistic/profile normalization is intentionally not claimed during Stage3
 - next: **Stage3 Batch0002 from ma1m-lu-2338**
+
+
+**A1-L19 Stage 3 — Batch0002: PASS.**
+
+- new target range: `ma1m-lu-2338..ma1m-lu-2357`; cumulative **40/119 new targets enriched**
+- **4/4 locked reuses** remain immutable; **44/123 lesson identities** are ready
+- cumulative **20 senses + 20 expressions**, **160 exact DE examples** with independent FA + EN
+- cumulative **39 evidence-backed relations**, **44 review resolutions**, **40 evidence claims**
+- key reviews: `hübsch` appearance sense narrowed; `dünn/dick` scoped to body/stature; `so` bound to its concluding discourse use; `mit jdm. freundlich umgehen` records **mit + Dativ**; `garstig` and `ausgelassen` remain distinct learner senses; `jdn. glücklich machen` records the Akkusativ person slot
+- exact standalone `flacher Bauch` was not located in the reviewed registered Duden excerpt; the Menschen course phrase is retained with an explicit limitation instead of fabricated attestation
+- fresh-extract validator **56/56 PASS**, manifest rehash **28/28 PASS**, package hygiene and Library rematerialization: **PASS**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip`, SHA-256 `1bbec3607e239b38076dbed0aec10f7a4a76b4692fe4901d0e7dc5b3622fc858`
+- full Stage4 linguistic/profile normalization is intentionally not claimed during Stage3
+- next: **Stage3 Batch0003 from ma1m-lu-2358**

@@ -26,6 +26,7 @@
   },
   "startup_rule": [
     "Read PROJECT-BOOTSTRAP.md, PROJECT-OPERATING-MODE-v2.md, PROJECT-MEMORY.json and GIT-SYNC-POLICY.json first.",
+    "Read EXECUTION-SAFETY-POLICY.json and enforce milestone → persist → visible final response → next major stage.",
     "Prefer the newest valid portable content/workstream state from current chat, Project Sources or Library; verification and Git persistence remain separate.",
     "Consult PROJECT-STATE.json and the relevant GitHub CHECKPOINT.json only as much as needed to resolve ambiguity or sync status.",
     "Resolve the active START-PROMPT from active_framework.entrypoint; do not hard-code an older prompt version.",
@@ -1388,5 +1389,14 @@
       "runtime": "RESOLVE_CURRENT_AT_EXECUTION",
       "next_action": "Resolve CURRENT runtime and run Stage6 Runtime & Presentation Acceptance."
     }
+  },
+  "execution_safety": {
+    "policy": "EXECUTION-SAFETY-POLICY.json",
+    "status": "ENFORCED",
+    "default_turn_boundary": "ONE_MAJOR_DURABLE_MILESTONE_PER_TURN",
+    "final_response_required_after_durable_boundary": true,
+    "soft_external_operations": 20,
+    "hard_external_operations": 30,
+    "retry_per_failed_operation": 1
   }
 }

@@ -308,7 +308,7 @@
       "interpretation": "Current environment cannot supply the required exact-final browser/storage execution. Stage7 PASS and content LOCKED must not be inferred from Stage6 or static parity."
     }
   ],
-  "resume_instruction": "Seq9: CURRENT remains v432-R66. Exact candidate revalidated at SHA da1d2528...928f and 409171 bytes. No external acceptance evidence is present. Do not repeat Stages1-6 or rebuild candidate; await user-device Windows/Chrome evidence.",
+  "resume_instruction": "Seq10: CURRENT remains v432-R66; exact candidate hash/size revalidated. Internal Stage7 metadata still explicitly says exact-final postpackage rerun pending, so it cannot be promoted to LOCKED without external evidence. Await user-device Windows/Chrome acceptance.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -2771,7 +2771,7 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 9,
+    "checkpoint_seq": 10,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
     "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
@@ -2783,6 +2783,11 @@
       "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
       "size_bytes": 409171,
       "current_turn_identity_validation": "PASS_EXACT_MATCH"
+    },
+    "packaged_internal_stage7_metadata": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "exact_final_postpackage": "PENDING_EXTERNAL_EXACT_FINAL_RERUN_AT_BUILD_TIME",
+      "interpretation": "Internal package metadata is pre-lock candidate metadata and does not satisfy the required external exact-final gate."
     },
     "external_acceptance_evidence_present": false,
     "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",

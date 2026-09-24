@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage7 BLOCKED / awaiting user-device acceptance evidence",
+      "current_scope": "A1-L20 Stage7 BLOCKED / output recovery reconciled",
       "last_observed_stage": "7_release_A1_L20_preflight_blocked_environment",
-      "last_observed_note": "Seq10: exact candidate SHA/size revalidated. Candidate internal Stage7 gate remains pre-lock PASS_WITH_ENVIRONMENT_BOUNDARY with exact-final rerun explicitly pending. No external Windows/Chrome evidence supplied; A1-L20 remains NOT LOCKED.",
+      "last_observed_note": "Seq11 recovery reconciles controller lag (accepted Seq9) to durable Seq10 without repeating Stage7. Exact candidate unchanged; no external acceptance evidence; A1-L20 remains NOT LOCKED.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -2099,7 +2099,7 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 10,
+    "checkpoint_seq": 11,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
     "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
@@ -2121,6 +2121,27 @@
     "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
     "work_repeated": false,
     "stage_advanced": false,
+    "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
+  },
+  "autorun_output_recovery": {
+    "protocol": "AUTORUN_PROTOCOL_V3_1",
+    "mission_id": "APP-20260924-201820-615763",
+    "checkpoint_seq": 11,
+    "recovery_kind": "OUTPUT_CHECKPOINT_RECOVERY_METADATA_ONLY",
+    "controller_latest_accepted_seq": 9,
+    "newest_durable_seq_found": 10,
+    "durable_stage": "A1-L20 Stage7 Exact-Final Release",
+    "stage_status": "BLOCKED",
+    "content_lock_state": "NOT_LOCKED",
+    "runtime_current": "v432-R66",
+    "runtime_current_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+    "exact_candidate_sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+    "exact_candidate_size_bytes": 409171,
+    "external_acceptance_evidence_present": false,
+    "work_repeated": false,
+    "stage_advanced": false,
+    "durable_seq10_preserved": true,
+    "recovery_action": "Reconcile controller to newest durable blocked state and emit a valid newer checkpoint; do not rerun Stage7 work.",
     "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
   }
 }

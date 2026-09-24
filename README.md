@@ -321,6 +321,9 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - key reviews: `hübsch` appearance sense narrowed; `dünn/dick` scoped to body/stature; `so` bound to its concluding discourse use; `mit jdm. freundlich umgehen` records **mit + Dativ**; `garstig` and `ausgelassen` remain distinct learner senses; `jdn. glücklich machen` records the Akkusativ person slot
 - exact standalone `flacher Bauch` was not located in the reviewed registered Duden excerpt; the Menschen course phrase is retained with an explicit limitation instead of fabricated attestation
 - fresh-extract validator **56/56 PASS**, manifest rehash **28/28 PASS**, package hygiene and Library rematerialization: **PASS**
-- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip`, SHA-256 `1bbec3607e239b38076dbed0aec10f7a4a76b4692fe4901d0e7dc5b3622fc858`
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip`, SHA-256 `3bba6ba8dcf1e5f050f8da4e9c5966409a5608a8ddcd7511311438ccd328f867`
 - full Stage4 linguistic/profile normalization is intentionally not claimed during Stage3
 - next: **Stage3 Batch0003 from ma1m-lu-2358**
+
+
+Batch0002 authority reconciliation: duplicate portable candidates were resolved to the richer evidence-backed **39 relations / 44 review resolutions / 56-of-56 fresh validation** state. Canonical Library bytes were re-materialized with exact SHA-256 `3bba6ba8dcf1e5f050f8da4e9c5966409a5608a8ddcd7511311438ccd328f867`; locked reuses were not regenerated.

@@ -423,3 +423,16 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - checkpoint: `Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip`, SHA-256 `4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a`
 - runtime binding remains intentionally **RESOLVE_CURRENT_AT_STAGE6**; no historical runtime was baked into Stage5
 - next: **Stage 6 — resolve CURRENT German Flashcards Pro runtime, then exact import/roundtrip/persistence/four-mode presentation acceptance**
+
+
+**A1-L19 Stage 6 — PREFLIGHT: BLOCKED on exact CURRENT v432/R66 portable runtime.**
+
+- CURRENT freshly resolved: **GFP v432/R66**; LAST_FULLY_VERIFIED remains **v423/R57** and is regression-only
+- required exact runtime artifact: `German-Flashcards-Pro-v432-R66-ORGANIZED-DELIVERY-CANDIDATE.zip`, SHA-256 `370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47`
+- Git `main/01-App` is recorded as **EXACT_V432_R66**, but the exact portable ZIP is **not available on an accessible ChatGPT Library/conversation surface**
+- policy therefore forbids downgrade to v430/v423 and forbids claiming final Stage6 PASS from Git source alone
+- safe preflight completed: Stage5 authority **123 cards PASS**; cumulative identity **12/12 PASS, 2436 unique through L19**; **119 new + 4 expected locked reuses**; exact-v432 test prepared
+- preflight checkpoint: `Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip`, SHA-256 `0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- **NOT claimed:** direct-import PASS, presentation PASS, persistence PASS, Universal roundtrip PASS, or final Stage6 PASS
+- next: make the exact pinned v432/R66 portable ZIP available, verify its SHA-256, then resume the prepared Stage6 acceptance

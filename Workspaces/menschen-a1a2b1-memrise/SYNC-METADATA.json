@@ -25,22 +25,22 @@
     "stage2": "PASS",
     "stage3": "PASS_COMPLETE",
     "scope": "A1-L19",
-    "progress": "Stage5 PASS / 123 Universal-v2 rows / 110 de-vocabulary + 13 german-verb / 157 of 157 validation",
-    "next": "Stage6 resolve CURRENT runtime and run acceptance",
+    "progress": "Stage6 preflight BLOCKED / CURRENT v432-R66 resolved / cumulative identity 12 of 12 PASS / exact portable runtime unavailable",
+    "next": "Resume Stage6 after exact v432-R66 portable ZIP is available and SHA-verified",
     "artifact": {
-      "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
-      "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
-      "library_file_id": "file_00000000fe64822f945874f56d779c5b",
-      "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
-      "size_bytes": 370781,
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
+      "filename": "Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+      "sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+      "library_file_id": "file_00000000dc5481f991b4212ca18dc3f5",
+      "library_stable_id": "libfile_5882bfd6f0ec8191815f849e2b691427",
+      "size_bytes": 384069,
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-PREFLIGHT-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "stage4": "PASS",
     "stage5": "PASS",
     "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-    "stage6": "NOT_STARTED",
+    "stage6": "BLOCKED_PREFLIGHT",
     "stage7": "NOT_STARTED",
     "stage12_summary": {
       "source_rows": 91,
@@ -105,12 +105,21 @@
       "fresh_validator": "157/157 PASS",
       "current_lesson_primary_projection": "123/123 A1-L19",
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6"
+    },
+    "stage6_preflight": {
+      "state": "BLOCKED",
+      "runtime": "v432-R66",
+      "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+      "cumulative_identity": "12/12 PASS; 2436 unique",
+      "preflight_checkpoint_sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "blocker": "EXACT_CURRENT_PORTABLE_RUNTIME_UNAVAILABLE"
     }
   },
   "git_sync": {
-    "status": "IN_SYNC_A1_L19_STAGE5_METADATA",
-    "content_sync_commit": "c3fd1cbdba91edbf5673a4d0205ddcd3d1643de7",
-    "note": "Stage5 ZIP is durable in Library and exact-rematerialized; runtime remains intentionally unbound until Stage6."
+    "status": "IN_SYNC_A1_L19_STAGE6_PREFLIGHT_BLOCKED_METADATA",
+    "content_sync_commit": "6bf9714d7ddf3c1defe0b9a6f99e7d3b04cd0e8e",
+    "note": "Stage6 preflight checkpoint is durable in Library; compact blocker/currentness metadata is in Git. No false runtime PASS claimed."
   },
   "note": "Large portable payload is intentionally not reconstructed in Git; see PROJECT-OPERATING-MODE-v2."
 }

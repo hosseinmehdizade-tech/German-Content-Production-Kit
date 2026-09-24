@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage5 PASS / controller recovery complete / ready for Stage6 next turn",
-      "last_observed_stage": "5_delivery_projection_A1_L20_pass",
-      "last_observed_note": "APP mission recovery APP-20260924-201820-615763 reconciled to exact Stage5 PASS artifact 9642d1fa...b292b. Stage4/5 not repeated; Stage6 not started. CURRENT must be re-resolved live next turn.",
+      "current_scope": "A1-L20 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY / ready for Stage7",
+      "last_observed_stage": "6_runtime_presentation_A1_L20_pass_with_environment_boundary",
+      "last_observed_note": "A1-L20 Stage6 resolved live CURRENT GFP v432-R66 exact SHA 370ae746...d47. Exact Library materialization + 177/177 internal rehash PASS; Stage5 outer production import/persistence 21/21 PASS; production presentation API 11/11 across 133 cards; fresh Stage6 validator 24/24; Stage5 regression 167/167; cumulative identity 12/12 -> 2565 unique (129 new + 4 expected reuses). Runtime-level same-profile Windows/Chrome restart/offline boundary remains separate.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -220,7 +220,7 @@
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
       "lock_state": "A1-L01_TO_A1-L19_LOCKED",
-      "next_scope": "A1-L20 Stage6 CURRENT Runtime & Presentation Acceptance",
+      "next_scope": "A1-L20 Stage7 exact-final LOCKED release",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "scope": "A1-L20",
@@ -478,25 +478,37 @@
       },
       "latest_stage6_checkpoint": {
         "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "scope": "A1-L20",
+        "verification_level": "V3",
+        "runtime_resolution_rule": "Resolve Flashcards CURRENT at Stage6 execution; do not inherit historical runtime.",
         "runtime": "v432-R66",
         "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
-        "direct_import": "21/21 PASS",
-        "presentation": "33/33 PASS",
-        "persistence": "123/123 VERIFIED",
-        "universal_roundtrip": "123/123 PASS",
-        "cumulative_identity": "12/12 PASS; 2436 unique",
+        "last_fully_verified_runtime": "v423-R57",
+        "runtime_package_rehash": "177/177 PASS",
+        "runtime_authoritative_suite": "PASS_29_OF_30_EXISTING_PLUS_10_OF_10_LOOKUP_PLUS_16_OF_16_RAPID_WITH_BASELINE_HARNESS_BOUNDARY",
+        "direct_outer_import": "21/21 PASS exact Stage5 outer",
+        "runtime_presentation": "11/11 PASS production presentation API across 133/133 cards; exact import/persistence separately 21/21 PASS",
+        "standalone_persistence": "133/133 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+        "runtime_index": "133/133 PASS",
+        "stage5_regression": "167/167 PASS fresh extraction",
+        "cumulative_identity_collision": "12/12 PASS; 2565 unique; 129 new L20 + 4 expected locked reuses",
+        "relation_parity": "76/76 items PASS",
+        "source_audio": "133 refs / 104 unique preserved; zero missing-audio targets; source-MP3 playback unsupported by CURRENT runtime; TTS used",
+        "package_manifest": "54/54 PASS",
+        "stage6_validator": "24/24 PASS fresh extraction",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC",
+        "environment_boundary": "Fresh exact-package same-profile Windows/Chrome v432 rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED. This does not block A1-L20 content Stage6 V3 acceptance.",
         "artifact": {
-          "filename": "Menschen-A1-L19-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
-          "sha256": "f3b74328e390489869caec427b5a6c1ff0895b26c6a60c75984cddbcb779b2a2",
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
-          "library_file_id": "file_0000000071ac81fa8b25079acf5d8a42",
-          "library_stable_id": "libfile_e34f87a07e3c81919123f86eb5b6097c",
-          "size_bytes": 416421,
-          "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-POST-PACKAGE-VERIFICATION.json",
+          "filename": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+          "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+          "library_file_id": "file_0000000073a88243ac0099c6391d2e2f",
+          "library_stable_id": "libfile_9f622896a910819183b3f5be817b720b",
+          "size_bytes": 424700,
+          "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L20-STAGE6-POST-PACKAGE-VERIFICATION.json",
           "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
         },
-        "environment_boundary": "Fresh exact-package same-profile Windows/Chrome v432 rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED.",
-        "next_action": "Stage7: package exact A1-L19 outer LOCKED.zip, rerun exact-final direct import/presentation on CURRENT v432, then lock content if post-package verification passes."
+        "next_action": "Stage7: package exact A1-L20 outer LOCKED.zip, rerun exact-final direct import/presentation checks on CURRENT v432, then lock content if post-package verification passes."
       },
       "locked_scope": "A1-L01..A1-L19",
       "previous_locked_scope": {
@@ -1358,15 +1370,15 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
-    "sha256": "9642d1fa6854cc49bc8cf80ef80775b394579b1fd729db043953b3d6028b292b",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
-    "library_file_id": "file_0000000083b081f684fae1d13d4d8271",
-    "library_stable_id": "libfile_c5fb96173d20819182f73b2e9762ba64",
-    "stage": "A1-L20 Stage5",
-    "state": "PASS"
+    "filename": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+    "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+    "library_file_id": "file_0000000073a88243ac0099c6391d2e2f",
+    "library_stable_id": "libfile_9f622896a910819183b3f5be817b720b",
+    "stage": "A1-L20 Stage6",
+    "state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade.",
+  "next_action": "Stage7: package exact A1-L20 outer LOCKED.zip, rerun exact-final direct import/presentation checks on CURRENT v432, then lock content if post-package verification passes.",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -1611,7 +1623,7 @@
     "retry_per_failed_operation": 1
   },
   "a1_l20": {
-    "state": "STAGE5_PASS",
+    "state": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L20",
@@ -1829,6 +1841,40 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "next_action": "Resolve German Flashcards Pro CURRENT at Stage6 execution and run Runtime & Presentation Acceptance; never inherit historical runtime."
+    },
+    "stage6": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "scope": "A1-L20",
+      "verification_level": "V3",
+      "runtime_resolution_rule": "Resolve Flashcards CURRENT at Stage6 execution; do not inherit historical runtime.",
+      "runtime": "v432-R66",
+      "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+      "last_fully_verified_runtime": "v423-R57",
+      "runtime_package_rehash": "177/177 PASS",
+      "runtime_authoritative_suite": "PASS_29_OF_30_EXISTING_PLUS_10_OF_10_LOOKUP_PLUS_16_OF_16_RAPID_WITH_BASELINE_HARNESS_BOUNDARY",
+      "direct_outer_import": "21/21 PASS exact Stage5 outer",
+      "runtime_presentation": "11/11 PASS production presentation API across 133/133 cards; exact import/persistence separately 21/21 PASS",
+      "standalone_persistence": "133/133 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+      "runtime_index": "133/133 PASS",
+      "stage5_regression": "167/167 PASS fresh extraction",
+      "cumulative_identity_collision": "12/12 PASS; 2565 unique; 129 new L20 + 4 expected locked reuses",
+      "relation_parity": "76/76 items PASS",
+      "source_audio": "133 refs / 104 unique preserved; zero missing-audio targets; source-MP3 playback unsupported by CURRENT runtime; TTS used",
+      "package_manifest": "54/54 PASS",
+      "stage6_validator": "24/24 PASS fresh extraction",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "environment_boundary": "Fresh exact-package same-profile Windows/Chrome v432 rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED. This does not block A1-L20 content Stage6 V3 acceptance.",
+      "artifact": {
+        "filename": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+        "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+        "library_file_id": "file_0000000073a88243ac0099c6391d2e2f",
+        "library_stable_id": "libfile_9f622896a910819183b3f5be817b720b",
+        "size_bytes": 424700,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L20-STAGE6-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Stage7: package exact A1-L20 outer LOCKED.zip, rerun exact-final direct import/presentation checks on CURRENT v432, then lock content if post-package verification passes."
     }
   },
   "autorun_recovery": {

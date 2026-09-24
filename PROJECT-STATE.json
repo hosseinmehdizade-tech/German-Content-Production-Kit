@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L19 Stage5 PASS; runtime-unbound Universal v2 delivery ready for Stage6",
-      "last_observed_stage": "5_delivery_projection_A1_L19_pass",
-      "last_observed_note": "A1-L19 Stage5 PASS: 123/123 identities projected to Universal v2; 110 de-vocabulary + 13 german-verb; 492 DE/FA/EN examples; 91 relations; current A1-L19 lesson field on 123/123 cards while all historical memberships remain preserved; 126 target audio refs / 93 unique / ma1m-lu-2409 zero audio; source row 1728 explicit. Fresh validator 157/157 and exact Library rematerialization PASS.",
+      "current_scope": "A1-L19 Stage6 PREFLIGHT BLOCKED on exact CURRENT v432-R66 portable runtime availability",
+      "last_observed_stage": "6_runtime_acceptance_A1_L19_preflight_blocked",
+      "last_observed_note": "A1-L19 Stage6 preflight resolved CURRENT v432-R66, cumulative identity 12/12 PASS with 2436 unique through L19, and prepared exact-current acceptance test. Final Stage6 is BLOCKED because the exact pinned v432 portable ZIP is unavailable on accessible ChatGPT surfaces. No downgrade to v430/v423 and no Git-source-only PASS.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
         "sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d",
@@ -222,7 +222,7 @@
         "content_state": "LOCKED"
       },
       "lock_state": "A1-L01_TO_A1-L18_LOCKED",
-      "next_scope": "A1-L19 Stage6 — resolve CURRENT runtime and run acceptance",
+      "next_scope": "A1-L19 Stage6 resume after exact v432-R66 portable ZIP availability + SHA verification",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L19-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -366,16 +366,16 @@
         "next_action": "Stage7 exact-final LOCKED package verification."
       },
       "latest_checkpoint": {
-        "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
-        "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
-        "library_file_id": "file_00000000fe64822f945874f56d779c5b",
-        "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
-        "size_bytes": 370781,
-        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "filename": "Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+        "sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "file_00000000dc5481f991b4212ca18dc3f5",
+        "library_stable_id": "libfile_5882bfd6f0ec8191815f849e2b691427",
+        "size_bytes": 384069,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-PREFLIGHT-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-        "stage": "A1-L19 Stage5",
-        "quality_state": "PASS",
+        "stage": "A1-L19 Stage6 PREFLIGHT",
+        "quality_state": "BLOCKED",
         "cumulative_targets": 123
       },
       "latest_stage7": {
@@ -396,6 +396,31 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
         "environment_boundary": "Content is LOCKED. Separate runtime-level v430 same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke remains required before v430 itself can be FINAL/VERIFIED.",
         "next_action": "Start A1-L19 Stage1/2."
+      },
+      "latest_stage6_preflight": {
+        "state": "BLOCKED",
+        "runtime": {
+          "version": "v432-R66",
+          "artifact": "German-Flashcards-Pro-v432-R66-ORGANIZED-DELIVERY-CANDIDATE.zip",
+          "sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+          "library_path": null,
+          "library_file_id": null,
+          "git_runtime_tree": "EXACT_V432_R66",
+          "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY_REAL_PROFILE_TEST_REQUIRED",
+          "last_fully_verified": "v423-R57"
+        },
+        "cumulative_identity": "12/12 PASS; 2436 unique; 119 new + 4 expected locked reuses",
+        "artifact": {
+          "filename": "Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+          "sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+          "library_file_id": "file_00000000dc5481f991b4212ca18dc3f5",
+          "library_stable_id": "libfile_5882bfd6f0ec8191815f849e2b691427",
+          "size_bytes": 384069,
+          "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-PREFLIGHT-POST-PACKAGE-VERIFICATION.json",
+          "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+        },
+        "next_action": "Make the exact pinned v432-R66 portable ZIP available in ChatGPT Library/conversation, verify SHA-256 370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47, then resume Stage6 using the prepared v432 test."
       }
     },
     "vocabulary": {
@@ -1183,19 +1208,19 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
-    "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
-    "library_file_id": "file_00000000fe64822f945874f56d779c5b",
-    "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
-    "size_bytes": 370781,
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
+    "filename": "Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+    "sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+    "library_file_id": "file_00000000dc5481f991b4212ca18dc3f5",
+    "library_stable_id": "libfile_5882bfd6f0ec8191815f849e2b691427",
+    "size_bytes": 384069,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-PREFLIGHT-POST-PACKAGE-VERIFICATION.json",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L19 Stage5",
-    "quality_state": "PASS",
+    "stage": "A1-L19 Stage6 PREFLIGHT",
+    "quality_state": "BLOCKED",
     "cumulative_targets": 123
   },
-  "next_action": "Resolve CURRENT German Flashcards Pro runtime and run A1-L19 Stage6 acceptance.",
+  "next_action": "Make the exact pinned v432-R66 portable ZIP available in ChatGPT Library/conversation, verify SHA-256 370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47, then resume Stage6 using the prepared v432 test.",
   "a1_l19": {
     "state": "IN_PROGRESS",
     "source_rows": 91,
@@ -1282,7 +1307,7 @@
       "stage3_complete_gate": "PASS",
       "next_action": "Stage4 Linguistic & Lexical QA"
     },
-    "next_action": "Resolve CURRENT runtime and run Stage6.",
+    "next_action": "Make the exact pinned v432-R66 portable ZIP available in ChatGPT Library/conversation, verify SHA-256 370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47, then resume Stage6 using the prepared v432 test.",
     "stage4": {
       "state": "PASS",
       "checks": 39,
@@ -1385,9 +1410,22 @@
       }
     },
     "stage6": {
-      "state": "NOT_STARTED",
-      "runtime": "RESOLVE_CURRENT_AT_EXECUTION",
-      "next_action": "Resolve CURRENT runtime and run Stage6 Runtime & Presentation Acceptance."
+      "state": "BLOCKED",
+      "runtime": "v432-R66",
+      "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+      "cumulative_identity_collision": "12/12 PASS; 2436 unique; 119 new + 4 locked reuses",
+      "blocker": "EXACT_CURRENT_PORTABLE_RUNTIME_UNAVAILABLE",
+      "preflight_artifact": {
+        "filename": "Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+        "sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "file_00000000dc5481f991b4212ca18dc3f5",
+        "library_stable_id": "libfile_5882bfd6f0ec8191815f849e2b691427",
+        "size_bytes": 384069,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-PREFLIGHT-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Make the exact pinned v432-R66 portable ZIP available in ChatGPT Library/conversation, verify SHA-256 370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47, then resume Stage6 using the prepared v432 test."
     }
   },
   "execution_safety": {

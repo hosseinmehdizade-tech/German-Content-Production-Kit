@@ -368,3 +368,26 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip`, SHA-256 `294bf13e4be283621ec3c163d553078f6f616200356efe357d94c41e532a35f5`
 - Stage4 is intentionally not claimed during Stage3
 - next: **Stage3 Batch0006 from `ma1m-lu-2418`**
+
+
+**A1-L19 Stage 3 — Batch0006: PASS.**
+
+- target range: `ma1m-lu-2418..ma1m-lu-2436`; cumulative **119/119 new targets enriched**
+- **4/4 locked reuses** remain immutable; **123/123 lesson identities** are ready
+- cumulative **54 senses + 65 expressions**, **476 exact DE examples** with independent FA + EN
+- cumulative **90 evidence-backed relations**, **148 review resolutions**, **119 evidence claims**
+- final batch reviews cover discourse/pragmatic forms, colloquial viewing expressions, surprise reactions, person-status vocabulary, shaving/beard phrasing and source-form normalization without rewriting raw provenance
+- latest-batch validator **175/175 PASS**; manifest rehash **54/54 PASS**; package hygiene and exact Library rematerialization **PASS**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0006-CHECKPOINT.zip`, SHA-256 `4ffb30343d93e190b8e4037ae6c4d4268297ce5ba1bff68fc6a159a50b27e054`
+
+
+**A1-L19 Stage 3 — Evidence & Enrichment: COMPLETE / PASS.**
+
+- **119/119 new targets** complete across Batches0001-0006; **4/4 locked reuses** preserved unchanged; **123/123 lesson identities** ready
+- final mix: **54 senses + 65 expressions**; **476 exact DE examples**, each with FA + EN
+- **90** evidence-backed relations; **148** review resolutions; **119** evidence claims
+- source rows **91** (`1657..1747`) and **90** source-audio refs preserved; known no-audio row **1728** remains explicit and no audio was invented
+- Stage3 complete validator **38/38 PASS**; manifest rehash **57/57 PASS**; package hygiene **PASS_NO_PYCACHE_PYC**
+- final Stage3 checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip`, SHA-256 `321e8380cf384f65546be1ed90f4290b5ffe35f0f6aa7098c048b84a572e6d89`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage 4 — Linguistic & Lexical QA**

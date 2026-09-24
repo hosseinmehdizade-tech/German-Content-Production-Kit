@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L19 Stage3 COMPLETE/PASS through Batch0006. Exact COMPLETE checkpoint is durable in Library and rematerialized with exact SHA-256; A1-L01..L18 remain LOCKED."
+    "git_sync_note": "A1-L19 Stage4 PASS. Exact Stage4 checkpoint is durable in Library, rematerialized with exact SHA-256, and fresh validators pass; A1-L01..L18 remain LOCKED."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -140,19 +140,37 @@
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "NOT_STARTED",
+      "state": "PASS",
       "scope": "A1-L19",
-      "custom_qa": null,
-      "repairs_applied": null,
-      "repair_breakdown": null,
-      "official_bundle_validator": null,
-      "profile_validator": null,
-      "reference_registry_validator": null,
-      "reference_availability_validator": null,
-      "framework_pytest": null,
-      "review_unresolved": null,
-      "artifact": null,
-      "next_action": "Start A1-L19 Stage4 Linguistic & Lexical QA."
+      "custom_qa": "39/39 PASS",
+      "repairs_applied": 61,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 23,
+        "locked_reuse_integration": 4,
+        "profile_metadata_completion": 34
+      },
+      "official_bundle_validator": "PASS_123_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "review_unresolved": 0,
+      "artifact": {
+        "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+        "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
+        "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
+        "size_bytes": 160941,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Start A1-L19 Stage5 Delivery Projection.",
+      "normalized_expression_types": 23,
+      "completed_missing_lexemes": 34,
+      "stage3_resolution_records": 148,
+      "review_flag_instances": 125,
+      "advisory_warnings": 0
     },
     {
       "stage": 5,
@@ -166,7 +184,7 @@
       "dataset_sha256": null,
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
       "artifact": null,
-      "next_action": "Wait for A1-L19 Stage4 PASS."
+      "next_action": "Start A1-L19 Stage5 Delivery Projection."
     },
     {
       "stage": 6,
@@ -204,7 +222,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L18 are LOCKED. A1-L19 Stage1/2 PASS and Stage3 COMPLETE/PASS across Batches0001-0006: 119/119 new targets enriched; 4/4 locked reuses unchanged; 123/123 lesson identities ready. Start Stage4 Linguistic & Lexical QA.",
+  "resume_instruction": "A1-L01 through A1-L18 are LOCKED. A1-L19 Stage1/2 PASS, Stage3 COMPLETE/PASS, and Stage4 PASS. Stage4 has 123 targets, 492 exact multilingual examples, 91 relations, 125/125 active review flags resolved, and all official validators PASS. Start Stage5 Delivery Projection.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -217,10 +235,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L18",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "321e8380cf384f65546be1ed90f4290b5ffe35f0f6aa7098c048b84a572e6d89"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e"
   },
-  "current_scope": "A1-L19 Stage3 COMPLETE/PASS; 119/119 new targets + 4 locked reuses = 123/123 lesson identities ready",
+  "current_scope": "A1-L19 Stage4 PASS; ready for Stage5 Delivery Projection",
   "lock_state": "A1-L01_TO_A1-L18_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1493,19 +1511,19 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "sha256": "321e8380cf384f65546be1ed90f4290b5ffe35f0f6aa7098c048b84a572e6d89",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "library_file_id": "file_000000006ac081f69910c5967453d848",
-    "library_stable_id": "libfile_f4fb67d17dc08191adb73095f0552ce6",
-    "size_bytes": 462824,
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/03-evidence/A1-L19-STAGE3-COMPLETE-POST-PACKAGE-VERIFICATION.json",
+    "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+    "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+    "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
+    "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
+    "size_bytes": 160941,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L19 Stage3 COMPLETE",
+    "stage": "A1-L19 Stage4",
     "quality_state": "PASS",
     "cumulative_targets": 123
   },
-  "next_action": "Start A1-L19 Stage4 Linguistic & Lexical QA.",
+  "next_action": "Start A1-L19 Stage5 Delivery Projection.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -1797,10 +1815,55 @@
       "stage3_complete_gate": "PASS",
       "next_action": "Stage4 Linguistic & Lexical QA"
     },
-    "next_action": "Start Stage4 Linguistic & Lexical QA.",
+    "next_action": "Start Stage5 Delivery Projection.",
     "stage4": {
+      "state": "PASS",
+      "checks": 39,
+      "pass": 39,
+      "fail": 0,
+      "repairs_applied": 61,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 23,
+        "locked_reuse_integration": 4,
+        "profile_metadata_completion": 34
+      },
+      "normalized_expression_types": 23,
+      "completed_missing_lexemes": 34,
+      "stage3_resolution_records": 148,
+      "review_flag_instances": 125,
+      "review_unresolved": 0,
+      "official_bundle_validator": "PASS_123_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "advisory_warnings": 0,
+      "targets": 123,
+      "senses": 57,
+      "expressions": 66,
+      "lexemes": 57,
+      "examples": 492,
+      "relations": 91,
+      "target_audio_occurrence_refs": 126,
+      "unique_audio_refs": 93,
+      "zero_audio_targets": [
+        "ma1m-lu-2409"
+      ],
+      "artifact": {
+        "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
+        "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
+        "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
+        "size_bytes": 160941,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
+    },
+    "stage5": {
       "state": "NOT_STARTED",
-      "next_action": "Start Stage4 Linguistic & Lexical QA."
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "next_action": "Stage5 Delivery Projection"
     }
   }
 }

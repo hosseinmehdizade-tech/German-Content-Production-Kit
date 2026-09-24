@@ -324,7 +324,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
     "latest_portable_checkpoint_sha256": "173711c038b3e947e4689a7b472085d6baefb9b3c39502fcf8d56292da56be30"
   },
-  "current_scope": "A1-L20 Stage7 BLOCKED / no new external acceptance evidence found",
+  "current_scope": "A1-L20 Stage7 BLOCKED / awaiting external acceptance",
   "lock_state": "A1-L01_TO_A1-L19_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1663,7 +1663,7 @@
     "stage": "A1-L20 Stage7 Preflight",
     "quality_state": "BLOCKED"
   },
-  "next_action": "User must execute the exact candidate in normal Windows/Chrome with a usable real origin/IndexedDB, complete import + Study/Quick/Typing/Audio checks + refresh persistence, and provide screenshots/report. Resume Stage7 only after that evidence exists.",
+  "next_action": "Await external Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2771,30 +2771,17 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 6,
+    "checkpoint_seq": 7,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
-    "stage": "A1-L20 Stage7 Exact-Final Release",
+    "stage": "A1-L20 Stage7",
     "stage_status": "BLOCKED",
     "content_lock_state": "NOT_LOCKED",
-    "exact_candidate": {
-      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
-      "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
-      "local_size_bytes": 409171,
-      "local_identity_validation": "PASS_EXACT_MATCH_TO_REGISTERED_STAGE7_CANDIDATE"
-    },
-    "external_acceptance_search": {
-      "searched_surfaces": [
-        "conversation",
-        "library"
-      ],
-      "exact_candidate_sha_search": true,
-      "windows_chrome_acceptance_search": true,
-      "matching_acceptance_evidence_found": false,
-      "unrelated_historical_windows_acceptance_artifacts_ignored": true
-    },
-    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
+    "exact_candidate_sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+    "candidate_size_bytes": 409171,
+    "identity_validation": "PASS_EXACT_MATCH",
+    "external_acceptance_evidence_present": false,
     "work_repeated": false,
     "stage_advanced": false,
-    "next_operation": "User must execute the exact candidate in normal Windows/Chrome with a usable real origin/IndexedDB, complete import + Study/Quick/Typing/Audio checks + refresh persistence, and provide screenshots/report. Resume Stage7 only after that evidence exists."
+    "next_operation": "Await external Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
   }
 }

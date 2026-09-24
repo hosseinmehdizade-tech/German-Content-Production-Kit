@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L20 Stage3 Batch0005 PASS; exact Library rematerialization verified and compact checkpoint/post-package metadata synced to Git. A1-L01..L19 remain LOCKED."
+    "git_sync_note": "A1-L20 Stage3 Batch0005 remains authoritative PASS. AUTORUN output/checkpoint recovery reconciled stale seq5 controller anchor to durable Batch0005 state; no work repeated. Next Batch0006 from ma1m-lu-2537."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -2242,5 +2242,19 @@
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "next_action": "Stage3 Batch0006 from ma1m-lu-2537; preserve locked reuses and all prior PASS batches immutable."
+  },
+  "autorun_recovery": {
+    "protocol": "AUTORUN_PROTOCOL_V3_1",
+    "mission_id": "LESSON-20260924-170559-2adfe5",
+    "recovered_checkpoint_seq": 7,
+    "recovery_kind": "OUTPUT_CHECKPOINT_RECOVERY_METADATA_ONLY",
+    "durable_work_state": "A1-L20 Stage3 Batch0005 PASS",
+    "artifact": "Menschen-A1-L20-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip",
+    "sha256": "102c2975822eed66a4f610ebc71b4dda8fbc5e41c3ebd1809601fb023bbad12a",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+    "git_state_reconciled": true,
+    "work_repeated": false,
+    "next_operation": "A1-L20 Stage3 Batch0006 starting at ma1m-lu-2537",
+    "note": "Recovery reconciled durable Batch0005 state after controller supplied stale seq5 anchor. No Stage3 work was repeated or advanced."
   }
 }

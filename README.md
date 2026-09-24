@@ -354,3 +354,17 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - Stage4 is intentionally not claimed during Stage3
 - next: **Stage3 Batch0005 from `ma1m-lu-2398`**
 
+
+
+**A1-L19 Stage 3 — Batch0005: PASS.**
+
+- target range: `ma1m-lu-2398..ma1m-lu-2417`; cumulative **100/119 new targets enriched**
+- **4/4 locked reuses** remain immutable; **104/123 lesson identities** are ready
+- cumulative **48 senses + 52 expressions**, **400 exact DE examples** with independent FA + EN
+- cumulative **78 evidence-backed relations**, **121 review resolutions**, **100 evidence claims**
+- key reviews: `Wahnsinn!` is scoped to the informal/emotive exclamation rather than a clinical sense; raw `verzögerter Reaktion` is preserved in provenance while learner morphology uses `verzögerte Reaktion`; no-audio source row 1728 stays explicit and no audio is invented; `über vergangens sprechen` is normalized only at learner layer to `über Vergangenes sprechen`; person-vs-neuter `Neue` identities remain separate; `Zeitschrift` and magazine-sense `Magazin` remain distinct
+- exact full registered-reference attestation was **not** located for `Wer schweigt, stimmt zu.` or standalone `Ach komm!`; both source phrases are preserved with explicit reference limitations rather than fabricated claims
+- fresh-extract Stage3 validator **156/156 PASS**; manifest rehash **47/47 PASS**; package hygiene and exact Library rematerialization **PASS**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip`, SHA-256 `294bf13e4be283621ec3c163d553078f6f616200356efe357d94c41e532a35f5`
+- Stage4 is intentionally not claimed during Stage3
+- next: **Stage3 Batch0006 from `ma1m-lu-2418`**

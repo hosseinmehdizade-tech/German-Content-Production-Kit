@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is RUNNING: Batches0001-0008 PASS (160/177); Batch0009 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is COMPLETE / PASS: Batches0001-0009, 177/177 targets; Stage 4 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -199,3 +199,26 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0008-CHECKPOINT.zip`, SHA-256 `3584690dbf329059a34a3ac4973d49b7e598c785955169f595fd12bf21d92b8d`
 - full Stage4 bundle/profile normalization is intentionally not claimed during Stage3
 - next: **Stage3 Batch0009 starting at ma1m-lu-2301**
+
+
+**A1-L18 Stage 3 — Batch0009: PASS.**
+
+- target range: `ma1m-lu-2301..ma1m-lu-2317`; cumulative **177/177** Stage3 targets complete
+- cumulative: **101 senses + 76 expressions**, **708 exact DE examples** with independent FA + EN
+- cumulative **124 evidence-backed relations**, **183 review resolutions**, **177 evidence claims**
+- final source-fidelity reviews include separated `Schulter/Schultergelenk` scopes, learner-layer repair of the malformed `Zehe` source example, foot/ankle scoping for `Knöchel`, Duden-backed register split for `pinkeln/pissen/scheißen`, and explicit preservation of the `Wer hat hier geschissen?` source/reference conflict
+- Batch0009 checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-Batch0009-CHECKPOINT.zip`, SHA-256 `6d0ed062953fbaac1b2760b564ab9d3c2f3c32e21d6323873d5cb692aeaf174d`
+- Library rematerialization: **PASS — exact SHA-256 match**
+
+
+**A1-L18 Stage 3 — Evidence & Enrichment: COMPLETE / PASS.**
+
+- **177/177** targets complete across Batches0001-0009 = **101 senses + 76 expressions**
+- **708** exact DE examples, each with FA + EN
+- **124** evidence-backed relations; **183** review resolutions; **177** evidence claims
+- source rows **132** (`1525..1656`) and source audio lineage preserved; known no-audio rows **1533** and **1654** remain explicit and no audio was invented
+- Stage3 complete validator: **35/35 PASS**; manifest rehash and package hygiene **PASS**
+- final Stage3 checkpoint: `Menschen-A1-L18-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip`
+- SHA-256: `abd1e83fe2c0d0a32804673058c91cf182dd7d4491d99b5c56307d7a425d38e8`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- full Stage4 linguistic/profile normalization is not claimed here; next: **Stage 4 — Linguistic & Lexical QA**

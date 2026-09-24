@@ -25,20 +25,20 @@
     "stage2": "PASS",
     "stage3": "PASS_COMPLETE",
     "scope": "A1-L19",
-    "progress": "Stage4 PASS / 123 identities / 39 of 39 custom QA / 125 of 125 active review flags resolved",
-    "next": "Stage5 Delivery Projection",
+    "progress": "Stage5 PASS / 123 Universal-v2 rows / 110 de-vocabulary + 13 german-verb / 157 of 157 validation",
+    "next": "Stage6 resolve CURRENT runtime and run acceptance",
     "artifact": {
-      "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-      "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-      "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
-      "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
-      "size_bytes": 160941,
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
+      "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+      "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+      "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+      "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+      "size_bytes": 370781,
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "stage4": "PASS",
-    "stage5": "NOT_STARTED",
+    "stage5": "PASS",
     "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED",
@@ -87,12 +87,30 @@
       "framework_pytest": "47/47 PASS",
       "manifest_rehash": "34/34 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    },
+    "stage5_summary": {
+      "rows": 123,
+      "card_types": {
+        "de-vocabulary": 110,
+        "german-verb": 13
+      },
+      "examples": {
+        "de": 492,
+        "fa": 492,
+        "en": 492
+      },
+      "relations": 91,
+      "dataset_sha256": "e3a9d6bb1ebe9e4a1db0d93d86900e6f15751ded863aec2e30bf8c8f78c9f0e7",
+      "projected_cards_sha256": "81d7fc6bda2f1c8062542a3a12603a350d1bcbede4ff9d486d608b47d2b6759e",
+      "fresh_validator": "157/157 PASS",
+      "current_lesson_primary_projection": "123/123 A1-L19",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6"
     }
   },
   "git_sync": {
-    "status": "IN_SYNC_A1_L19_STAGE4_METADATA",
-    "content_sync_commit": "8fb8d2e55010b15628dafc1a103a9a6d78015696",
-    "note": "Stage4 ZIP is durable in Library and exact-rematerialized; Git stores compact state and post-package verification. Stage5 remains runtime-unbound."
+    "status": "IN_SYNC_A1_L19_STAGE5_METADATA",
+    "content_sync_commit": "c3fd1cbdba91edbf5673a4d0205ddcd3d1643de7",
+    "note": "Stage5 ZIP is durable in Library and exact-rematerialized; runtime remains intentionally unbound until Stage6."
   },
   "note": "Large portable payload is intentionally not reconstructed in Git; see PROJECT-OPERATING-MODE-v2."
 }

@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 6 is COMPLETE / PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64; Stage 7 exact-final verification is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L18 Stage 7 exact-final verification PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64; A1-L19 Stage1/2 is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -267,3 +267,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - fresh-extract validator **24/24 PASS**, manifest/package hygiene PASS, Library rematerialization exact SHA match
 - v430 itself still has a separate real-profile environment boundary: exact-package same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke is required before the runtime can be FINAL/VERIFIED
 - next: **Stage 7 — exact-final A1-L18 LOCKED package + post-package import verification on CURRENT v430**
+
+
+**A1-L18 Stage 7 — LOCKED / exact-final PASS_WITH_ENVIRONMENT_BOUNDARY.**
+
+- exact final outer artifact: `Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip`
+- SHA-256: `0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d`
+- direct exact-final import/runtime presentation on CURRENT **GFP v430/R64**: **33/33 PASS**
+- commit manifest/runtime index/Universal authority: **177/177 PASS** under deterministic IndexedDB test boundary
+- cumulative identity L01-L18: **2317 unique cards**, **177 new L18**, **0 reuses/collisions**
+- final package manifest rehash: **52/52 PASS**; package hygiene **PASS_NO_PYCACHE_PYC**
+- Library rematerialization: **PASS — exact SHA-256 match**
+- content state: **LOCKED**
+- separate runtime boundary remains: v430 still needs the same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke before the runtime itself can be FINAL/VERIFIED
+- next: **A1-L19 Stage1/2**

@@ -1,20 +1,24 @@
 {
   "schema": "gcpk-flashcards-runtime-dependency@1.0.0",
   "status": "ENFORCED",
-  "updated_at": "2026-09-21T11:57:00Z",
+  "updated_at": "2026-09-24T15:19:00+02:00",
   "source_of_truth": {
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
     "currentness_policy": "RUNTIME-CURRENTNESS-POLICY.json",
     "runtime_pin": "RUNTIME-AUTHORITY-PIN.json",
     "project_memory": "PROJECT-MEMORY.json",
-    "git_sync_policy": "GIT-SYNC-POLICY.json"
+    "git_sync_policy": "GIT-SYNC-POLICY.json",
+    "execution_safety": "EXECUTION-SAFETY-POLICY.json"
   },
   "current_runtime": {
-    "version": "v428-R62",
-    "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY_LOCAL_OFFLINE_SMOKE_REQUIRED",
-    "artifact": "German-Flashcards-Pro-v428-R62-ORGANIZED-DELIVERY-CANDIDATE.zip",
-    "sha256": "73beff1ea0da24bc35daa1e0ef0ffbf56f6cd2965e45ecd2fe235e972dc3e6e3",
-    "development_and_integration_base": true
+    "version": "v432-R66",
+    "verification_state": "PASS_WITH_ENVIRONMENT_BOUNDARY_REAL_PROFILE_TEST_REQUIRED",
+    "artifact": "German-Flashcards-Pro-v432-R66-ORGANIZED-DELIVERY-CANDIDATE.zip",
+    "sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+    "development_and_integration_base": true,
+    "library_path": null,
+    "library_file_id": null,
+    "portable_materialized_sha256_verified": true
   },
   "last_fully_verified_runtime": {
     "version": "v423-R57",
@@ -34,7 +38,7 @@
     "After each validated Flashcards CURRENT update, source/metadata sync is attempted before handoff. If bounded sync attempts fail, portable CURRENT remains authoritative and Git persistence is marked PENDING without downgrading."
   ],
   "current_example": {
-    "integration_target": "v428-R62",
+    "integration_target": "v432-R66",
     "regression_reference": "v423-R57"
   },
   "git_sync": {
@@ -44,10 +48,12 @@
     "per_version_sync": true,
     "coalesce_intermediate_versions": false,
     "ordinary_turn_sync_attempts_max": 2,
-    "current_runtime": "v428-R62",
-    "current_git_runtime_mirror": "v428-R62",
+    "current_runtime": "v432-R66",
+    "current_git_runtime_mirror": "v432-R66",
     "persistence_git": "IN_SYNC",
     "pending_target": null,
-    "verification_commit": "4c7e943d690ae5c9e9c1d87609189b483120c713"
+    "verification_commit": "4b6b326f68c7f5919f8982cfb04558f4bd3b0147",
+    "runtime_match": "EXACT_V432_R66",
+    "note": "Resolved directly from German-Flashcards-Pro CURRENT pin and main runtime mirror on 2026-09-24; do not inherit stale v428 metadata."
   }
 }

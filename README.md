@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 3 is COMPLETE / PASS: Batches0001-0009, 177/177 targets; Stage 4 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 4 is COMPLETE / PASS; Stage 5 Delivery Projection is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -222,3 +222,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - SHA-256: `abd1e83fe2c0d0a32804673058c91cf182dd7d4491d99b5c56307d7a425d38e8`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - full Stage4 linguistic/profile normalization is not claimed here; next: **Stage 4 — Linguistic & Lexical QA**
+
+
+**A1-L18 Stage 4 — Linguistic & Lexical QA: COMPLETE / PASS.**
+
+- **46/46** custom QA checks PASS across **177** targets; **0 advisory warnings**
+- official bundle validator: **177/177 exact-4 examples, 0 warnings**; profile, reference registry and reference availability validators: **PASS**
+- framework regression: **47/47 pytest PASS**
+- **48 bounded repairs**: 21 expression-type profile normalizations, 3 registered-source completions, 11 source-reference normalizations, 12 example linguistic repairs, 1 target translation cleanup
+- all **180 active review-flag instances** are closed by the **183 Stage3 resolution records**; unresolved: **0**
+- source audio lineage preserved: **174 target occurrence refs / 130 unique**; the three split targets without audio remain `ma1m-lu-2151`, `ma1m-lu-2152`, and `ma1m-lu-2315`; no audio invented
+- the Menschen/Duden semantic conflict for `Wer hat hier geschissen?` remains explicit rather than silently reconciled
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage4-CHECKPOINT.zip`, SHA-256 `63f093f01f40920581d2e721396960d39b0fdb432fe68e48ef563d9f4733df39`
+- fresh-extract manifest/hygiene/custom QA and Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage 5 — Delivery Projection**

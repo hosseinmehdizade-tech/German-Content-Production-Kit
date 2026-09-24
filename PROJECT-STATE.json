@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage7 BLOCKED / exact candidate revalidated / waiting for user acceptance",
+      "current_scope": "A1-L20 Stage7 BLOCKED / no new external acceptance evidence found",
       "last_observed_stage": "7_release_A1_L20_preflight_blocked_environment",
-      "last_observed_note": "Current-chat Stage7 candidate upload SHA matches registered candidate exactly (da1d2528...928f, 409171 bytes). No user Windows/Chrome acceptance evidence yet; Stage7 remains BLOCKED and A1-L20 remains NOT LOCKED.",
+      "last_observed_note": "Seq6: searched conversation/Library for A1-L20 exact-candidate Windows/Chrome acceptance; none found. Current-chat candidate SHA and size revalidated exactly. Stage7 remains BLOCKED; A1-L20 NOT LOCKED.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -2099,7 +2099,7 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 5,
+    "checkpoint_seq": 6,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
     "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
@@ -2107,11 +2107,19 @@
     "exact_candidate": {
       "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
       "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
-      "current_chat_upload_sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
-      "current_chat_upload_size_bytes": 409171,
+      "local_size_bytes": 409171,
       "local_identity_validation": "PASS_EXACT_MATCH_TO_REGISTERED_STAGE7_CANDIDATE"
     },
-    "external_acceptance_evidence_present": false,
+    "external_acceptance_search": {
+      "searched_surfaces": [
+        "conversation",
+        "library"
+      ],
+      "exact_candidate_sha_search": true,
+      "windows_chrome_acceptance_search": true,
+      "matching_acceptance_evidence_found": false,
+      "unrelated_historical_windows_acceptance_artifacts_ignored": true
+    },
     "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
     "work_repeated": false,
     "stage_advanced": false,

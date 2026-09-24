@@ -408,3 +408,18 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - Library rematerialization: **PASS — exact SHA-256 match**
 - registered-reference limitations for `dickes Haar`, `flacher Bauch`, `Wer schweigt, stimmt zu.`, `Ach komm!`, `Das gibt's doch nicht!`, predicative `single`, and `Promi` remain explicit rather than being silently overstated
 - next: **Stage 5 — Delivery Projection**; runtime binding remains **RESOLVE_CURRENT_AT_STAGE6**
+
+
+**A1-L19 Stage 5 — Delivery Projection: COMPLETE / PASS.**
+
+- **123/123** Stage4 identities projected 1:1 to Universal v2: **110 de-vocabulary + 13 german-verb**
+- categories: **66 Expression, 29 Adjective, 14 Noun, 13 Verb, 1 Adverb**
+- **492 DE + 492 FA + 492 EN** examples; **91/91 relations** preserved
+- all four locked reuses retain their historical course memberships; **A1-L19 is the primary delivery lesson on 123/123 projected cards**
+- source audio lineage: **126 target refs / 93 unique**; only `ma1m-lu-2409` has no target audio; source row **1728** remains the explicit source gap
+- direct-import dataset: `A1-L19-UNIVERSAL-v2.tsv`, SHA-256 `e3a9d6bb1ebe9e4a1db0d93d86900e6f15751ded863aec2e30bf8c8f78c9f0e7`
+- projected cards SHA-256: `81d7fc6bda2f1c8062542a3a12603a350d1bcbede4ff9d486d608b47d2b6759e`
+- projection/fresh-extract validator: **157/157 PASS**; manifest rehash **44/44 PASS**; package hygiene and exact Library rematerialization **PASS**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip`, SHA-256 `4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a`
+- runtime binding remains intentionally **RESOLVE_CURRENT_AT_STAGE6**; no historical runtime was baked into Stage5
+- next: **Stage 6 — resolve CURRENT German Flashcards Pro runtime, then exact import/roundtrip/persistence/four-mode presentation acceptance**

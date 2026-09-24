@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage7 BLOCKED / no new external acceptance evidence found",
+      "current_scope": "A1-L20 Stage7 BLOCKED / waiting for user-device acceptance evidence",
       "last_observed_stage": "7_release_A1_L20_preflight_blocked_environment",
-      "last_observed_note": "Seq6: searched conversation/Library for A1-L20 exact-candidate Windows/Chrome acceptance; none found. Current-chat candidate SHA and size revalidated exactly. Stage7 remains BLOCKED; A1-L20 NOT LOCKED.",
+      "last_observed_note": "Seq8: current-chat exact candidate revalidated at SHA da1d2528...928f and 409171 bytes. No Windows/Chrome acceptance evidence supplied; Stage7 remains BLOCKED and A1-L20 remains NOT LOCKED.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -1424,7 +1424,7 @@
     "stage": "A1-L20 Stage7 Preflight",
     "state": "BLOCKED"
   },
-  "next_action": "Await external Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7.",
+  "next_action": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7.",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -2099,17 +2099,21 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 7,
+    "checkpoint_seq": 8,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
-    "stage": "A1-L20 Stage7",
+    "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
     "content_lock_state": "NOT_LOCKED",
-    "exact_candidate_sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
-    "candidate_size_bytes": 409171,
-    "identity_validation": "PASS_EXACT_MATCH",
+    "exact_candidate": {
+      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
+      "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+      "size_bytes": 409171,
+      "current_turn_identity_validation": "PASS_EXACT_MATCH"
+    },
     "external_acceptance_evidence_present": false,
     "work_repeated": false,
     "stage_advanced": false,
-    "next_operation": "Await external Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
+    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
+    "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
   }
 }

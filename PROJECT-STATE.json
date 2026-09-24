@@ -199,7 +199,7 @@
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
       "current_scope": "A1-L20 Stage7 BLOCKED / awaiting user-device acceptance evidence",
       "last_observed_stage": "7_release_A1_L20_preflight_blocked_environment",
-      "last_observed_note": "Seq9: CURRENT rechecked as v432-R66; exact Stage7 candidate revalidated at SHA da1d2528...928f and 409171 bytes. No external Windows/Chrome acceptance evidence supplied; A1-L20 remains NOT LOCKED.",
+      "last_observed_note": "Seq10: exact candidate SHA/size revalidated. Candidate internal Stage7 gate remains pre-lock PASS_WITH_ENVIRONMENT_BOUNDARY with exact-final rerun explicitly pending. No external Windows/Chrome evidence supplied; A1-L20 remains NOT LOCKED.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -2099,7 +2099,7 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 9,
+    "checkpoint_seq": 10,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
     "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
@@ -2111,6 +2111,11 @@
       "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
       "size_bytes": 409171,
       "current_turn_identity_validation": "PASS_EXACT_MATCH"
+    },
+    "packaged_internal_stage7_metadata": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "exact_final_postpackage": "PENDING_EXTERNAL_EXACT_FINAL_RERUN_AT_BUILD_TIME",
+      "interpretation": "Internal package metadata is pre-lock candidate metadata and does not satisfy the required external exact-final gate."
     },
     "external_acceptance_evidence_present": false,
     "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",

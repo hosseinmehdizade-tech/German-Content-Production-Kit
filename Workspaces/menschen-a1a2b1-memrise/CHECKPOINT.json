@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L19 Stage4 PASS. Exact Stage4 checkpoint is durable in Library, rematerialized with exact SHA-256, and fresh validators pass; A1-L01..L18 remain LOCKED."
+    "git_sync_note": "A1-L19 Stage5 PASS. Exact Stage5 checkpoint is durable in Library, rematerialized with exact SHA-256, and fresh projection validator passes; runtime remains deliberately unbound until Stage6."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -175,16 +175,53 @@
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "NOT_STARTED",
+      "state": "PASS",
       "scope": "A1-L19",
-      "projection_qa": null,
-      "transport_rows": null,
-      "card_types": null,
-      "dataset": null,
-      "dataset_sha256": null,
+      "projection_qa": "157/157 PASS",
+      "transport_rows": 123,
+      "card_types": {
+        "de-vocabulary": 110,
+        "german-verb": 13
+      },
+      "dataset": "A1-L19-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "e3a9d6bb1ebe9e4a1db0d93d86900e6f15751ded863aec2e30bf8c8f78c9f0e7",
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-      "artifact": null,
-      "next_action": "Start A1-L19 Stage5 Delivery Projection."
+      "artifact": {
+        "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+        "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+        "size_bytes": 370781,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Resolve CURRENT runtime at Stage6 and run acceptance.",
+      "categories": {
+        "Expression": 66,
+        "Adjective": 29,
+        "Noun": 14,
+        "Verb": 13,
+        "Adverb": 1
+      },
+      "examples": {
+        "de": 492,
+        "fa": 492,
+        "en": 492
+      },
+      "relations": 91,
+      "target_source_audio_refs": 126,
+      "target_source_audio_unique_refs": 93,
+      "zero_audio_targets": [
+        "ma1m-lu-2409"
+      ],
+      "source_rows": 91,
+      "source_zero_audio_ordinals": [
+        1728
+      ],
+      "projected_cards_sha256": "81d7fc6bda2f1c8062542a3a12603a350d1bcbede4ff9d486d608b47d2b6759e",
+      "semantic_identity_parity": "123/123 PASS",
+      "current_lesson_primary_projection": "A1-L19 for 123/123 cards"
     },
     {
       "stage": 6,
@@ -201,7 +238,7 @@
       "cumulative_identity_collision": null,
       "environment_boundary": null,
       "artifact": null,
-      "next_action": "Wait for A1-L19 Stage5 PASS, then resolve CURRENT runtime."
+      "next_action": "Resolve CURRENT runtime now and run A1-L19 Stage6 acceptance."
     },
     {
       "stage": 7,
@@ -222,7 +259,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L18 are LOCKED. A1-L19 Stage1/2 PASS, Stage3 COMPLETE/PASS, and Stage4 PASS. Stage4 has 123 targets, 492 exact multilingual examples, 91 relations, 125/125 active review flags resolved, and all official validators PASS. Start Stage5 Delivery Projection.",
+  "resume_instruction": "A1-L01 through A1-L18 are LOCKED. A1-L19 Stages1–5 PASS. Stage5 projects 123/123 identities to Universal v2 with 110 de-vocabulary + 13 german-verb, 492 DE/FA/EN examples, 91 relations, and preserved source/audio/membership lineage. Resolve CURRENT Flashcards runtime at Stage6.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -235,10 +272,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L18",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a"
   },
-  "current_scope": "A1-L19 Stage4 PASS; ready for Stage5 Delivery Projection",
+  "current_scope": "A1-L19 Stage5 PASS; runtime-unbound Universal v2 delivery ready for Stage6",
   "lock_state": "A1-L01_TO_A1-L18_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1511,19 +1548,19 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-    "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-    "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
-    "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
-    "size_bytes": 160941,
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
+    "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+    "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+    "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+    "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+    "size_bytes": 370781,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L19 Stage4",
+    "stage": "A1-L19 Stage5",
     "quality_state": "PASS",
     "cumulative_targets": 123
   },
-  "next_action": "Start A1-L19 Stage5 Delivery Projection.",
+  "next_action": "Resolve CURRENT German Flashcards Pro runtime and run A1-L19 Stage6 acceptance.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -1815,7 +1852,7 @@
       "stage3_complete_gate": "PASS",
       "next_action": "Stage4 Linguistic & Lexical QA"
     },
-    "next_action": "Start Stage5 Delivery Projection.",
+    "next_action": "Resolve CURRENT runtime and run Stage6.",
     "stage4": {
       "state": "PASS",
       "checks": 39,
@@ -1861,9 +1898,66 @@
       }
     },
     "stage5": {
-      "state": "NOT_STARTED",
+      "state": "PASS",
+      "cards": 123,
+      "new_ids": 119,
+      "reused_ids": [
+        "ma1m-lu-0180",
+        "ma1m-lu-1495",
+        "ma1m-lu-1920",
+        "ma1m-lu-1922"
+      ],
+      "card_types": {
+        "de-vocabulary": 110,
+        "german-verb": 13
+      },
+      "categories": {
+        "Expression": 66,
+        "Adjective": 29,
+        "Noun": 14,
+        "Verb": 13,
+        "Adverb": 1
+      },
+      "examples": {
+        "de": 492,
+        "fa": 492,
+        "en": 492
+      },
+      "relations": 91,
+      "projection_qa": "157/157 PASS",
+      "dataset": {
+        "filename": "A1-L19-UNIVERSAL-v2.tsv",
+        "sha256": "e3a9d6bb1ebe9e4a1db0d93d86900e6f15751ded863aec2e30bf8c8f78c9f0e7"
+      },
+      "projected_cards_sha256": "81d7fc6bda2f1c8062542a3a12603a350d1bcbede4ff9d486d608b47d2b6759e",
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-      "next_action": "Stage5 Delivery Projection"
+      "source_audio": {
+        "target_occurrence_refs": 126,
+        "unique_refs": 93,
+        "zero_audio_targets": [
+          "ma1m-lu-2409"
+        ],
+        "source_rows": 91,
+        "zero_audio_source_ordinals": [
+          1728
+        ]
+      },
+      "current_lesson_primary_projection": "A1-L19 for 123/123 cards",
+      "artifact": {
+        "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+        "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+        "size_bytes": 370781,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
+    },
+    "stage6": {
+      "state": "NOT_STARTED",
+      "runtime": "RESOLVE_CURRENT_AT_EXECUTION",
+      "next_action": "Resolve CURRENT runtime and run Stage6 Runtime & Presentation Acceptance."
     }
   }
 }

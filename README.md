@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 3 is RUNNING: Batches0001-0002 PASS; 40/119 new targets enriched + 4 locked reuses ready; Batch0003 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 3 is RUNNING: Batches0001-0003 PASS; 60/119 new targets enriched + 4 locked reuses ready; Batch0004 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -327,3 +327,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 
 
 Batch0002 authority reconciliation: duplicate portable candidates were resolved to the richer evidence-backed **39 relations / 44 review resolutions / 56-of-56 fresh validation** state. Canonical Library bytes were re-materialized with exact SHA-256 `3bba6ba8dcf1e5f050f8da4e9c5966409a5608a8ddcd7511311438ccd328f867`; locked reuses were not regenerated.
+
+
+**A1-L19 Stage 3 — Batch0003: PASS.**
+
+- new target range: `ma1m-lu-2358..ma1m-lu-2377`; cumulative **60/119 new targets enriched**
+- **4/4 locked reuses** carried unchanged; **64/123 lesson identities ready**
+- cumulative mix: **34 senses + 26 expressions**, **240 exact DE examples** with independent FA + EN
+- cumulative **54 evidence-backed relations**, **67 review resolutions**, **60 evidence claims**
+- key reviews: `Das kommt mir komisch vor.` is aligned to the strange/odd sense; `aussuchen` preserves optional Dativ + Akkusativ; `sich beschweren` records `bei + Dativ` and `über + Akkusativ`; raw `vergass` remains provenance while learner morphology uses standard `vergaß`
+- locked `traurig stimmen`, `komisch`, and `seltsam` identities are referenced by relations but were **not regenerated**
+- fresh-extract Stage3 validator **78/78 PASS**; manifest rehash **33/33 PASS**; package hygiene and Library rematerialization PASS
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip`, SHA-256 `4ef6b7fafcab7336d91cf7a680e43e6765285a8fff6420b9e81339f930bb9ef6`
+- Stage4 is intentionally not claimed during Stage3
+- next: **Stage3 Batch0004 from ma1m-lu-2378**

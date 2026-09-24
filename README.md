@@ -341,3 +341,16 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip`, SHA-256 `4ef6b7fafcab7336d91cf7a680e43e6765285a8fff6420b9e81339f930bb9ef6`
 - Stage4 is intentionally not claimed during Stage3
 - next: **Stage3 Batch0004 from ma1m-lu-2378**
+
+**A1-L19 Stage 3 — Batch0004: PASS.**
+
+- new target range: `ma1m-lu-2378..ma1m-lu-2397`; cumulative **80/119 new targets enriched**
+- **4/4 locked reuses** remain immutable; **84/123 lesson identities** are ready
+- cumulative **41 senses + 39 expressions**, **320 exact DE examples** with independent FA + EN
+- cumulative **68 evidence-backed relations**, **97 review resolutions**, **80 evidence claims**
+- key reviews: `erkennen` vs. `auseinanderhalten` are kept separate; `sich entschuldigen` records `bei + Dativ` and `für + Akkusativ`; `Sag mal!` gets a pragmatic learner-layer Persian repair while raw source remains in provenance; `lügen` vs. `Lügen erzählen` and the two `raten` senses remain separate; `Stimmt!`, `Hier stimmt etwas nicht!`, and `Da stimmt etwas nicht!` remain distinct redemittel
+- fresh-extract Stage3 validator **129/129 PASS**; manifest rehash **40/40 PASS**; package hygiene and exact Library rematerialization: **PASS**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0004-CHECKPOINT.zip`, SHA-256 `9b223a3775b80e6149040f568101231693febbe6983bf99ef51852da354bd0ba`
+- Stage4 is intentionally not claimed during Stage3
+- next: **Stage3 Batch0005 from `ma1m-lu-2398`**
+

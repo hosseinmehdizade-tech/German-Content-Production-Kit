@@ -391,3 +391,20 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - final Stage3 checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip`, SHA-256 `321e8380cf384f65546be1ed90f4290b5ffe35f0f6aa7098c048b84a572e6d89`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage 4 — Linguistic & Lexical QA**
+
+
+**A1-L19 Stage 4 — Linguistic & Lexical QA: COMPLETE / PASS.**
+
+- **39/39** custom QA checks PASS across **123** lesson identities; **0 warnings**
+- final canonical bundle: **57 senses + 66 expressions**, **57 lexemes**, **492 DE/FA/EN examples**, **91 relations**
+- all **125 active review-flag instances** are closed; unresolved: **0**
+- **61 bounded Stage4 operations**: 23 expression-type profile normalizations, 4 exact locked-reuse integrations, 34 profile-metadata completions
+- the four locked reuse identities preserve their exact semantic core and exact four examples while receiving only A1-L19 membership/audio/review/topic lineage metadata
+- source audio lineage: **126 target occurrence refs / 93 unique**; the single zero-audio target remains `ma1m-lu-2409` from source row 1728; no audio invented
+- official bundle validator: **123/123 exact-4 examples, 0 warnings**; profile, reference registry and reference availability validators: **PASS**
+- framework regression: **47/47 pytest PASS**
+- manifest rehash: **34/34 PASS**; package hygiene: **PASS_NO_PYCACHE_PYC**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip`, SHA-256 `5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- registered-reference limitations for `dickes Haar`, `flacher Bauch`, `Wer schweigt, stimmt zu.`, `Ach komm!`, `Das gibt's doch nicht!`, predicative `single`, and `Promi` remain explicit rather than being silently overstated
+- next: **Stage 5 — Delivery Projection**; runtime binding remains **RESOLVE_CURRENT_AT_STAGE6**

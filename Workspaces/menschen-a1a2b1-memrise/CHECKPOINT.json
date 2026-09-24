@@ -308,7 +308,7 @@
       "interpretation": "Current environment cannot supply the required exact-final browser/storage execution. Stage7 PASS and content LOCKED must not be inferred from Stage6 or static parity."
     }
   ],
-  "resume_instruction": "Do not repeat Stages1-6. Do not call A1-L20 LOCKED. Use exact candidate da1d2528...928f only. Resume Stage7 after external Windows/Chrome exact-final import/presentation evidence is available.",
+  "resume_instruction": "No new external acceptance evidence is present. Do not repeat Stages1-6 and do not rebuild the candidate. Await Windows/Chrome exact-final import/presentation evidence for exact candidate SHA da1d2528...928f; then resume Stage7.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -324,7 +324,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
     "latest_portable_checkpoint_sha256": "173711c038b3e947e4689a7b472085d6baefb9b3c39502fcf8d56292da56be30"
   },
-  "current_scope": "A1-L20 Stage7 BLOCKED / exact-final external browser acceptance required",
+  "current_scope": "A1-L20 Stage7 BLOCKED / awaiting external Windows/Chrome exact-final acceptance",
   "lock_state": "A1-L01_TO_A1-L19_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1663,7 +1663,7 @@
     "stage": "A1-L20 Stage7 Preflight",
     "quality_state": "BLOCKED"
   },
-  "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked.",
+  "next_action": "Run the exact candidate in user Windows/Chrome on a usable real origin with IndexedDB, complete exact-final import/presentation acceptance, and return the result/evidence. Only then resume Stage7.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2767,5 +2767,24 @@
       "v432 FINAL/VERIFIED"
     ],
     "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked."
+  },
+  "autorun_external_wait": {
+    "protocol": "AUTORUN_PROTOCOL_V3_1",
+    "mission_id": "APP-20260924-201820-615763",
+    "checkpoint_seq": 4,
+    "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
+    "durable_stage": "A1-L20 Stage7 Exact-Final Release",
+    "stage_status": "BLOCKED",
+    "content_lock_state": "NOT_LOCKED",
+    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
+    "exact_candidate": {
+      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
+      "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip"
+    },
+    "external_evidence_present": false,
+    "work_repeated": false,
+    "stage_advanced": false,
+    "next_operation": "Run the exact candidate in user Windows/Chrome on a usable real origin with IndexedDB, complete exact-final import/presentation acceptance, and return the result/evidence. Only then resume Stage7."
   }
 }

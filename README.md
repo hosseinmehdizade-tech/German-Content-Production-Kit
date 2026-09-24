@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 5 is COMPLETE / PASS; Stage 6 Runtime & Presentation Acceptance is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 6 is COMPLETE / PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64; Stage 7 exact-final verification is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -251,3 +251,19 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip`, SHA-256 `ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86`
 - manifest rehash, package hygiene and Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage 6 — resolve CURRENT Flashcards runtime, then exact import/roundtrip/persistence/four-mode presentation acceptance**
+
+
+**A1-L18 Stage 6 — Runtime & Presentation Acceptance: PASS_WITH_ENVIRONMENT_BOUNDARY.**
+
+- CURRENT resolved at execution: **GFP v430/R64**, organized artifact SHA-256 `518011abceb63e52c2cfe0739c7383df1fa62fae7ce4c8f71196079e73128913`; LAST_FULLY_VERIFIED remains v423/R57 and was not used as the integration base
+- current organized package internal checksum rehash: **262/262 PASS**
+- exact Stage5 outer ZIP direct import: **21/21 PASS**; runtime/presentation acceptance: **33/33 PASS**
+- **177/177** Universal-v2 authority roundtrip and runtime index; commit manifest VERIFIED under the deterministic IndexedDB test boundary
+- **161 de-vocabulary + 16 german-verb**, exact four-example presentation by mode (study=4, quick=2, typing=3, audio=3)
+- **124/124 relation items** with 124 unique relation IDs preserved
+- source audio lineage: **174 refs / 130 unique**; current Audio practice uses browser TTS and does not consume source MP3 files
+- cumulative identity through L18: **12/12 PASS; 2317 unique; 177 new L18; no reuses/collisions**
+- Stage6 checkpoint: `Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip`, SHA-256 `3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8`
+- fresh-extract validator **24/24 PASS**, manifest/package hygiene PASS, Library rematerialization exact SHA match
+- v430 itself still has a separate real-profile environment boundary: exact-package same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke is required before the runtime can be FINAL/VERIFIED
+- next: **Stage 7 — exact-final A1-L18 LOCKED package + post-package import verification on CURRENT v430**

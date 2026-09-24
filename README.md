@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 4 is COMPLETE / PASS; Stage 5 Delivery Projection is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L17 are LOCKED. A1-L18 Stage 5 is COMPLETE / PASS; Stage 6 Runtime & Presentation Acceptance is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -236,3 +236,18 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L18-v3.3.2-Stage4-CHECKPOINT.zip`, SHA-256 `63f093f01f40920581d2e721396960d39b0fdb432fe68e48ef563d9f4733df39`
 - fresh-extract manifest/hygiene/custom QA and Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage 5 — Delivery Projection**
+
+
+**A1-L18 Stage 5 — Delivery Projection: COMPLETE / PASS.**
+
+- **177/177** canonical identities projected 1:1 to Universal v2; **161 de-vocabulary + 16 german-verb**
+- **708 DE + 708 FA + 708 EN** examples; **124/124 relations** preserved
+- projection/loss-parity QA: **207/207 PASS**; fresh-extract validator: **13/13 PASS**
+- direct-import dataset: `A1-L18-UNIVERSAL-v2.tsv`, SHA-256 `e7ef42cd1c471e1dcc52d08594ea50cbc0ee48845843f2e2f229281ea7e82fff`
+- projected cards SHA-256: `ef87c1a0bc992e19dc3ac9fe9d571166b258189dbf32b2ee3cc7cea57500f36b`
+- source audio lineage: **174 target refs / 130 unique**; zero-audio split targets `ma1m-lu-2151`, `ma1m-lu-2152`, `ma1m-lu-2315`; source gaps **1533/1654** preserved, no audio invented
+- Stage5 parity QA caught and fixed a projection-helper gap for value-backed relations (`value.form` / `value.pattern`); final relation parity is **124/124**
+- runtime binding intentionally remains **RESOLVE_CURRENT_AT_STAGE6**; no historical v428/v423 runtime was baked into Stage5
+- checkpoint: `Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip`, SHA-256 `ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86`
+- manifest rehash, package hygiene and Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage 6 — resolve CURRENT Flashcards runtime, then exact import/roundtrip/persistence/four-mode presentation acceptance**

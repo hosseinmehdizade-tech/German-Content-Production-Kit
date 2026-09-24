@@ -436,3 +436,19 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - Library rematerialization: **PASS — exact SHA-256 match**
 - **NOT claimed:** direct-import PASS, presentation PASS, persistence PASS, Universal roundtrip PASS, or final Stage6 PASS
 - next: make the exact pinned v432/R66 portable ZIP available, verify its SHA-256, then resume the prepared Stage6 acceptance
+
+
+**A1-L19 Stage 6 — Runtime & Presentation Acceptance: PASS_WITH_ENVIRONMENT_BOUNDARY.**
+
+- exact CURRENT runtime: **GFP v432/R66**; outer SHA-256 `370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47` verified against the runtime pin
+- exact runtime archive is now persisted in Library and exact-rematerialized; no downgrade to v430/v423 was used
+- organized runtime internal rehash: **177/177 PASS**
+- exact Stage5 outer ZIP direct import: **21/21 PASS**; runtime/presentation acceptance: **33/33 PASS**
+- **123/123** commit manifest, runtime index and Universal-v2 authority roundtrip PASS under the deterministic IndexedDB test boundary
+- type projection: **110 de-vocabulary + 13 german-verb**; examples by mode: study=4, quick=2, typing=3, audio=3
+- relations: **91/91**; source-audio lineage: **126 occurrence refs / 93 unique**; `ma1m-lu-2409` remains the explicit zero-audio target
+- cumulative identity through L19: **12/12 PASS; 2436 unique; 119 new L19 + 4 expected locked reuses**
+- Stage6 fresh validator: **24/24 PASS**; package manifest rehash **56/56 PASS**; package hygiene and Library rematerialization **PASS**
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip`, SHA-256 `f3b74328e390489869caec427b5a6c1ff0895b26c6a60c75984cddbcb779b2a2`
+- separate runtime boundary remains: Fresh exact-package same-profile Windows/Chrome v432 rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED.
+- next: **Stage 7 — exact-final A1-L19 LOCKED package + post-package import/presentation verification on CURRENT v432**

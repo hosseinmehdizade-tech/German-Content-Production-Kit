@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 1/2 is COMPLETE / PASS; Stage 3 Evidence & Enrichment is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 3 is RUNNING: Batch0001 PASS; 20/119 new targets enriched + 4 locked reuses ready; Batch0002 next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -296,3 +296,17 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - checkpoint: `Menschen-A1-L19-v3.3.2-Stage1-2-CHECKPOINT.zip`, SHA-256 `6ef4000a6f2f97a51d44bad1fa19605758434c8243677eef7e90208cd99d8a0f`
 - Library rematerialization: **PASS — exact SHA-256 match**
 - next: **Stage3 Batch0001 from ma1m-lu-2318**, while locked reuses remain immutable
+
+
+**A1-L19 Stage 3 — Batch0001: PASS.**
+
+- new target range: `ma1m-lu-2318..ma1m-lu-2337` = **20/119 new targets enriched**
+- **4/4 locked reuses** remain immutable and ready; therefore **24/123 lesson identities** are ready
+- batch mix: **9 senses + 11 expressions**, **80 exact DE examples** with independent FA + EN
+- **18 evidence-backed relations**, **18 review resolutions**, **20 evidence claims**
+- important source-fidelity reviews: `schwarzes Haar` FA corrected only at learner layer; `wellig/gewellt` narrowed from broad “curly” to “wavy”; `glatt` scoped to the hair sense and its malformed source example kept audit-only; wrong-target source examples for `dunkles Haar`, `weißes Haar`, and `Blondine` were not reused as learner examples
+- `dickes Haar` remains the explicit Menschen course phrase; an exact standalone registered-Duden collocation was not found in the reviewed excerpt, so no fabricated reference claim was added
+- fresh-extract Stage3 validator **31/31 PASS**; manifest rehash **23/23 PASS**; package hygiene and Library rematerialization PASS
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip`, SHA-256 `bd3e945e679ed48365b5648bd774b68a4d35102ca2d4f932b13b92020796c764`
+- full Stage4 linguistic/profile normalization is intentionally not claimed during Stage3
+- next: **Stage3 Batch0002 from ma1m-lu-2338**

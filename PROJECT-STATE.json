@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-24T02:25:00+02:00",
+  "updated_at": "2026-09-24T03:00:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -196,9 +196,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L18 Stage5 COMPLETE/PASS; Stage6 READY",
-      "last_observed_stage": "5_delivery_projection_A1_L18_pass",
-      "last_observed_note": "A1-L18 Stage5 PASS: 177/177 semantic identities projected to Universal v2; 161 de-vocabulary + 16 german-verb; 708 DE/FA/EN examples; 124/124 relations; 207/207 loss/parity QA; fresh-extract 13/13 PASS; source audio lineage preserved. Runtime binding deliberately deferred to Stage6.",
+      "current_scope": "A1-L18 Stage6 COMPLETE/PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64; Stage7 READY",
+      "last_observed_stage": "6_runtime_presentation_acceptance_A1_L18_pass_with_environment_boundary",
+      "last_observed_note": "A1-L18 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64: exact organized runtime hash verified, 262/262 internal checksum rehash PASS, exact Stage5 outer ZIP import 21/21 PASS, presentation/runtime 33/33 PASS, 177/177 authority roundtrip and runtime index, 124 relation items, 174/130 audio lineage, cumulative identity 2317 unique. v430 real-profile Windows/Chrome smoke remains a runtime-level boundary.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L17-v3.3.2-GFP-v428-LOCKED.zip",
         "sha256": "66a8db008c7400f4827423a8ca96df55f873c3ac86bf8baf35d68d293816fb87",
@@ -225,7 +225,7 @@
         "content_state": "LOCKED"
       },
       "lock_state": "A1-L01_TO_A1-L17_LOCKED",
-      "next_scope": "A1-L18 Stage6 Runtime & Presentation Acceptance — resolve CURRENT runtime at execution",
+      "next_scope": "A1-L18 Stage7 exact-final Release & Post-Package Verification",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L18-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -349,32 +349,34 @@
         "next_action": "Resolve CURRENT runtime at Stage6 and run acceptance."
       },
       "latest_stage6": {
-        "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-        "runtime": "GFP-v428-R62",
-        "runtime_sha256": "73beff1ea0da24bc35daa1e0ef0ffbf56f6cd2965e45ecd2fe235e972dc3e6e3",
+        "state": "PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_METADATA_SYNCED",
+        "runtime": "GFP-v430-R64",
+        "runtime_sha256": "518011abceb63e52c2cfe0739c7383df1fa62fae7ce4c8f71196079e73128913",
         "direct_outer_import": "21/21 PASS",
         "runtime_presentation": "33/33 PASS",
-        "standalone_persistence": "147/147 VERIFIED",
-        "universal_roundtrip": "147/147 PASS",
-        "cumulative_identity_collision": "12/12 PASS; 2140 unique; 144 new L17; expected 3 reused IDs only",
-        "source_audio": "148 refs / 119 unique preserved; source-MP3 playback unsupported; TTS used",
-        "environment_boundary": "Fresh exact-package Windows/Chrome persistence + restart + offline/service-worker smoke still required for v428-R62",
-        "artifact": "Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-        "artifact_sha256": "430ce28b9ec95cf4056152008b6b15952306ef88303d3ee89dafcdf348140e13",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.2-Stage6-GFP-v428-CHECKPOINT.zip",
-        "library_file_id": "file_000000004c10821091ad8909d52fb0c6",
-        "library_stable_id": "libfile_014b8d1ac6108191b6cdf890cf5fdc7f",
-        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+        "standalone_persistence": "177/177 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+        "universal_roundtrip": "177/177 PASS",
+        "relations": "124/124 ITEMS_PASS",
+        "cumulative_identity_collision": "12/12 PASS; 2317 unique; 177 new L18; no reuses",
+        "environment_boundary": "Fresh exact-package same-profile Windows/Chrome v430 responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED.",
+        "artifact": "Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+        "artifact_sha256": "3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+        "library_file_id": "file_0000000068148210b6ae1483098284ea",
+        "library_stable_id": "libfile_d429f0c430188191afbdc0e53e20fcd9",
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L18-STAGE6-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "next_action": "Stage7 exact-final LOCKED package verification."
       },
       "latest_checkpoint": {
-        "filename": "Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
-        "sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
-        "library_file_id": "file_000000009d148210888e3874b62f9957",
-        "library_stable_id": "libfile_2598d2e954488191ad1943a7049339f1",
-        "size_bytes": 563534,
-        "stage": "A1-L18 Stage5",
-        "quality_state": "PASS",
+        "filename": "Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+        "sha256": "3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+        "library_file_id": "file_0000000068148210b6ae1483098284ea",
+        "library_stable_id": "libfile_d429f0c430188191afbdc0e53e20fcd9",
+        "size_bytes": 587805,
+        "stage": "A1-L18 Stage6",
+        "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
         "cumulative_targets": 177
       },
       "latest_stage7": {
@@ -1048,7 +1050,7 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
     },
-    "next_action": "Start Stage6 Runtime & Presentation Acceptance by resolving CURRENT runtime.",
+    "next_action": "Start Stage7 exact-final Release & Post-Package Verification.",
     "stage4": {
       "state": "PASS",
       "checks": 46,
@@ -1129,18 +1131,43 @@
         "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L18-STAGE5-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
+    },
+    "stage6": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "runtime": "GFP-v430-R64",
+      "runtime_sha256": "518011abceb63e52c2cfe0739c7383df1fa62fae7ce4c8f71196079e73128913",
+      "runtime_package_rehash": "262/262 PASS",
+      "runtime_authoritative_suite": "30/30 PASS",
+      "direct_outer_import": "21/21 PASS",
+      "runtime_presentation": "33/33 PASS",
+      "standalone_persistence": "177/177 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+      "universal_roundtrip": "177/177 PASS",
+      "relation_parity": "124/124 ITEMS_PASS",
+      "cumulative_identity_collision": "12/12 PASS; 2317 unique; 177 new L18; no reuses",
+      "source_audio": "174 refs / 130 unique preserved; source-MP3 playback unsupported; TTS used",
+      "environment_boundary": "Fresh exact-package same-profile Windows/Chrome v430 responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED.",
+      "artifact": {
+        "filename": "Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+        "sha256": "3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+        "library_file_id": "file_0000000068148210b6ae1483098284ea",
+        "library_stable_id": "libfile_d429f0c430188191afbdc0e53e20fcd9",
+        "size_bytes": 587805,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L18-STAGE6-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
-    "sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
-    "library_file_id": "file_000000009d148210888e3874b62f9957",
-    "library_stable_id": "libfile_2598d2e954488191ad1943a7049339f1",
-    "size_bytes": 563534,
-    "stage": "A1-L18 Stage5",
-    "quality_state": "PASS",
+    "filename": "Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+    "sha256": "3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
+    "library_file_id": "file_0000000068148210b6ae1483098284ea",
+    "library_stable_id": "libfile_d429f0c430188191afbdc0e53e20fcd9",
+    "size_bytes": 587805,
+    "stage": "A1-L18 Stage6",
+    "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "cumulative_targets": 177
   },
-  "next_action": "Start A1-L18 Stage6 by resolving CURRENT German Flashcards Pro runtime."
+  "next_action": "Start A1-L18 Stage7 exact-final Release & Post-Package Verification."
 }

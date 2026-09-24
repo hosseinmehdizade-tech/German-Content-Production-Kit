@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-24T17:30:00+02:00",
+  "updated_at": "2026-09-24T17:55:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage1/2 PASS / ready for Stage3 Batch0001",
-      "last_observed_stage": "2_canonicalization_A1_L20_pass",
-      "last_observed_note": "A1-L20 Stage1/2 PASS: 104 source rows 1748..1851, 104 unique audio refs, 133 lesson identities = 129 new + 4 exact locked reuses; new IDs ma1m-lu-2437..ma1m-lu-2565; 81 targets carry explicit Stage3 review flags. Library rematerialization exact SHA PASS.",
+      "current_scope": "A1-L20 Stage3 Batch0001 PASS / ready for Stage3 Batch0002",
+      "last_observed_stage": "3_evidence_A1_L20_batch0001_pass",
+      "last_observed_note": "A1-L20 Stage3 Batch0001 PASS: ma1m-lu-2437..2456, 20/129 new targets enriched + 4 locked reuses preserved, 80 exact DE examples with FA+EN, 15 evidence-backed relations, 23 review resolutions, 20 evidence claims. Fresh batch validator 34/34 PASS; Stage1/2 regression 14/14; Library rematerialization exact SHA PASS.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -220,7 +220,7 @@
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
       "lock_state": "A1-L01_TO_A1-L19_LOCKED",
-      "next_scope": "A1-L20 Stage3 Batch0001",
+      "next_scope": "A1-L20 Stage3 Batch0002",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "scope": "A1-L20",
@@ -266,38 +266,42 @@
         "library_stable_id": "libfile_00a0e92b69c08191be3a209eaba96af5"
       },
       "latest_stage3_checkpoint": {
-        "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
+        "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+        "scope": "A1-L20",
         "completed_batches": [
-          "0001",
-          "0002",
-          "0003",
-          "0004",
-          "0005",
-          "0006"
+          "0001"
         ],
-        "new_targets_complete": 119,
-        "new_targets_total": 119,
-        "new_targets_remaining": 0,
+        "latest_batch": "0001",
+        "new_targets_complete": 20,
+        "new_targets_total": 129,
+        "new_targets_remaining": 109,
         "locked_reuses_ready": 4,
         "locked_reuses_total": 4,
-        "lesson_identities_ready": 123,
-        "lesson_identities_total": 123,
-        "lesson_identities_remaining": 0,
-        "senses": 54,
-        "expressions": 65,
-        "examples_complete": 476,
-        "relations_complete": 90,
-        "review_resolutions_complete": 148,
-        "claims_complete": 119,
-        "filename": "Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-        "sha256": "321e8380cf384f65546be1ed90f4290b5ffe35f0f6aa7098c048b84a572e6d89",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-        "library_file_id": "file_000000006ac081f69910c5967453d848",
-        "library_stable_id": "libfile_f4fb67d17dc08191adb73095f0552ce6",
-        "size_bytes": 462824,
-        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/03-evidence/A1-L19-STAGE3-COMPLETE-POST-PACKAGE-VERIFICATION.json",
-        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-        "next_action": "Stage4 Linguistic & Lexical QA."
+        "lesson_identities_ready": 24,
+        "lesson_identities_total": 133,
+        "lesson_identities_remaining": 109,
+        "target_range": "ma1m-lu-2437..ma1m-lu-2456",
+        "senses": 12,
+        "expressions": 8,
+        "examples_complete": 80,
+        "relations_complete": 15,
+        "review_resolutions_complete": 23,
+        "claims_complete": 20,
+        "batch_validator": "34/34 PASS",
+        "stage12_regression": "14/14 PASS",
+        "manifest_rehash": "22/22 PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC",
+        "artifact": {
+          "filename": "Menschen-A1-L20-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+          "sha256": "ca423642f681c4de063d6e41d0fe157e71a76fbb3aec01bc020e5a8faeb5b385",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+          "library_file_id": "file_000000002bf88210aef7eec6e433cc83",
+          "library_stable_id": "libfile_3463059587d481919efc4c8aa6a674f6",
+          "size_bytes": 85368,
+          "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/03-evidence/A1-L20-STAGE3-Batch0001-POST-PACKAGE-VERIFICATION.json",
+          "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+        },
+        "next_action": "Stage3 Batch0002 from ma1m-lu-2457; preserve locked reuses immutable."
       },
       "latest_stage4_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -1247,15 +1251,15 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L20-v3.3.2-Stage1-2-CHECKPOINT.zip",
-    "sha256": "3ae0abf6ab108be1d2f471c75d0516b261b05fb35ba7432e8cdf2eff61d5c839",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage1-2-CHECKPOINT.zip",
-    "library_file_id": "file_000000003ec48206be2c1d0c4a6cba4f",
-    "library_stable_id": "libfile_00a0e92b69c08191be3a209eaba96af5",
-    "stage": "A1-L20 Stage1/2",
+    "filename": "Menschen-A1-L20-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+    "sha256": "ca423642f681c4de063d6e41d0fe157e71a76fbb3aec01bc020e5a8faeb5b385",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+    "library_file_id": "file_000000002bf88210aef7eec6e433cc83",
+    "library_stable_id": "libfile_3463059587d481919efc4c8aa6a674f6",
+    "stage": "A1-L20 Stage3 Batch0001",
     "state": "PASS"
   },
-  "next_action": "A1-L20 Stage3 Batch0001 from ma1m-lu-2437.",
+  "next_action": "A1-L20 Stage3 Batch0002 from ma1m-lu-2457.",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -1500,7 +1504,7 @@
     "retry_per_failed_operation": 1
   },
   "a1_l20": {
-    "state": "STAGE1_2_PASS",
+    "state": "STAGE3_RUNNING_BATCH0001_PASS",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L20",
@@ -1539,6 +1543,44 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "next_action": "Start Stage3 Batch0001 from ma1m-lu-2437; keep the four locked reuses immutable."
+    },
+    "stage3": {
+      "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+      "scope": "A1-L20",
+      "completed_batches": [
+        "0001"
+      ],
+      "latest_batch": "0001",
+      "new_targets_complete": 20,
+      "new_targets_total": 129,
+      "new_targets_remaining": 109,
+      "locked_reuses_ready": 4,
+      "locked_reuses_total": 4,
+      "lesson_identities_ready": 24,
+      "lesson_identities_total": 133,
+      "lesson_identities_remaining": 109,
+      "target_range": "ma1m-lu-2437..ma1m-lu-2456",
+      "senses": 12,
+      "expressions": 8,
+      "examples_complete": 80,
+      "relations_complete": 15,
+      "review_resolutions_complete": 23,
+      "claims_complete": 20,
+      "batch_validator": "34/34 PASS",
+      "stage12_regression": "14/14 PASS",
+      "manifest_rehash": "22/22 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "artifact": {
+        "filename": "Menschen-A1-L20-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "sha256": "ca423642f681c4de063d6e41d0fe157e71a76fbb3aec01bc020e5a8faeb5b385",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "library_file_id": "file_000000002bf88210aef7eec6e433cc83",
+        "library_stable_id": "libfile_3463059587d481919efc4c8aa6a674f6",
+        "size_bytes": 85368,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/03-evidence/A1-L20-STAGE3-Batch0001-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Stage3 Batch0002 from ma1m-lu-2457; preserve locked reuses immutable."
     }
   }
 }

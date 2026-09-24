@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-19T15:56:00+02:00",
+  "updated_at": "2026-09-24T15:19:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -68,6 +68,26 @@
         "no unbounded retry loops",
         "no blocking on GitHub Actions",
         "workstreams remain isolated"
+      ]
+    },
+    {
+      "id": "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+      "status": "ACTIVE",
+      "date": "2026-09-24",
+      "category": "execution_process",
+      "incident": "Long tool-heavy turns sometimes completed substantial work but ended before a visible final answer reached Hossein, making progress look lost and increasing ambiguity about the resume point.",
+      "decision": "Use durable turn boundaries: one major milestone per turn by default. After PASS/BLOCKED/durable checkpoint, persist state and send a visible final response before starting the next major stage. Use targeted reads, bounded tool-call budgets and one corrected retry per failed external operation.",
+      "safe_default": "MILESTONE_PERSIST_FINAL_RESPONSE_THEN_NEXT_STAGE",
+      "policy_files": [
+        "EXECUTION-SAFETY-POLICY.json",
+        "PROJECT-BOOTSTRAP.md",
+        "GIT-SYNC-POLICY.json"
+      ],
+      "preserved_guardrails": [
+        "GitHub remains lightweight durability, not a blocking execution dependency.",
+        "Large ZIPs remain outside Git.",
+        "CURRENT runtime is re-resolved when runtime compatibility matters.",
+        "No significant visible UI/UX change without approval."
       ]
     }
   ],

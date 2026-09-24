@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L20 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY on exact CURRENT GFP v432-R66. CURRENT artifact SHA/materialization/177-file rehash verified; exact Stage5 import 21/21, presentation API 11/11, Stage6 fresh validator 24/24, Stage5 regression 167/167, cumulative identity 12/12. A1-L01..L19 remain LOCKED."
+    "git_sync_note": "A1-L20 Stage7 preflight is BLOCKED by current container browser/storage environment. Exact unlocked candidate and blocked checkpoint are Library-persisted and rematerialized with exact SHA. A1-L20 is NOT LOCKED; latest locked lesson remains A1-L19."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -308,7 +308,7 @@
       "interpretation": "Current environment cannot supply the required exact-final browser/storage execution. Stage7 PASS and content LOCKED must not be inferred from Stage6 or static parity."
     }
   ],
-  "resume_instruction": "A1-L01..L19 remain LOCKED. A1-L20 Stage6 remains PASS_WITH_ENVIRONMENT_BOUNDARY. Stage7 exact-final candidate is durable but UNLOCKED; exact-final browser commit is environment-blocked in current container. Do not rerun Stages1-6 and do not mark A1-L20 LOCKED until the exact candidate SHA passes import/presentation in a usable browser origin/IndexedDB environment.",
+  "resume_instruction": "Do not repeat Stages1-6. Do not call A1-L20 LOCKED. Use exact candidate da1d2528...928f only. Resume Stage7 after external Windows/Chrome exact-final import/presentation evidence is available.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -324,7 +324,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
     "latest_portable_checkpoint_sha256": "173711c038b3e947e4689a7b472085d6baefb9b3c39502fcf8d56292da56be30"
   },
-  "current_scope": "A1-L20 Stage7 PREFLIGHT BLOCKED / A1-L20 NOT LOCKED",
+  "current_scope": "A1-L20 Stage7 BLOCKED / exact-final external browser acceptance required",
   "lock_state": "A1-L01_TO_A1-L19_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1660,10 +1660,10 @@
     "library_file_id": "file_00000000694081fdac1d38d5c9900ac2",
     "library_stable_id": "libfile_08e53a1eff588191a6663412ceeba5d3",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L20 Stage7 PREFLIGHT",
+    "stage": "A1-L20 Stage7 Preflight",
     "quality_state": "BLOCKED"
   },
-  "next_action": "Run exact candidate SHA da1d2528...928f in a browser environment with usable real origin/IndexedDB (prefer user Windows/Chrome). Lock A1-L20 only after exact-final import/presentation succeeds.",
+  "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2104,7 +2104,7 @@
     }
   },
   "a1_l20": {
-    "state": "STAGE7_PREFLIGHT_BLOCKED",
+    "state": "STAGE7_BLOCKED_ENVIRONMENT",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L20",
@@ -2405,6 +2405,52 @@
       },
       "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L20-STAGE7-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
       "next_action": "Run exact candidate SHA da1d2528...928f in a browser environment with usable real origin/IndexedDB (prefer user Windows/Chrome). Lock A1-L20 only after exact-final import/presentation succeeds."
+    },
+    "stage7_preflight": {
+      "state": "BLOCKED",
+      "scope": "A1-L20",
+      "content_lock_state": "NOT_LOCKED",
+      "required_gate": "Exact-final direct import/presentation on exact Stage7 candidate bytes",
+      "required_verification_level": "V3",
+      "achieved_verification_level": "V2_STATIC_PLUS_UPSTREAM_V3_ONLY",
+      "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
+      "blocker_reason": "Current container cannot complete exact-final browser/storage commit; known-good Stage5 control stalls the same way. Native IndexedDB is denied on the inlined origin and routed HTTPS origin is administrator-blocked.",
+      "candidate": {
+        "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
+        "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
+        "library_file_id": "file_0000000095648211aca4a5835d620a22",
+        "library_stable_id": "libfile_c616a0b8e44c819183d8184947725754",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "blocked_checkpoint": {
+        "filename": "Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+        "sha256": "173711c038b3e947e4689a7b472085d6baefb9b3c39502fcf8d56292da56be30",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "file_00000000694081fdac1d38d5c9900ac2",
+        "library_stable_id": "libfile_08e53a1eff588191a6663412ceeba5d3",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "upstream_stage6": {
+        "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "artifact": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+        "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde"
+      },
+      "validated_before_block": {
+        "candidate_manifest_rehash": "56/56 PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC",
+        "stage5_fresh_regression": "167/167 PASS",
+        "stage6_fresh_regression": "24/24 PASS",
+        "final_dataset_sha256": "813667e0a5eb57a390317921b79583c8546583d035e7f671fa15ef6f2efc476d",
+        "dataset_byte_parity_with_stage5": "PASS_EXACT"
+      },
+      "not_claimed": [
+        "Stage7 PASS",
+        "A1-L20 LOCKED",
+        "V4 user-visible acceptance",
+        "v432 FINAL/VERIFIED"
+      ],
+      "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked."
     }
   },
   "latest_stage3_checkpoint": {
@@ -2680,18 +2726,18 @@
     "state": "BLOCKED",
     "scope": "A1-L20",
     "content_lock_state": "NOT_LOCKED",
-    "runtime": "v432-R66",
-    "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
-    "upstream_stage6_sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde",
+    "required_gate": "Exact-final direct import/presentation on exact Stage7 candidate bytes",
+    "required_verification_level": "V3",
+    "achieved_verification_level": "V2_STATIC_PLUS_UPSTREAM_V3_ONLY",
+    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
+    "blocker_reason": "Current container cannot complete exact-final browser/storage commit; known-good Stage5 control stalls the same way. Native IndexedDB is denied on the inlined origin and routed HTTPS origin is administrator-blocked.",
     "candidate": {
       "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
-      "original_build_filename": "Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
       "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
       "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
       "library_file_id": "file_0000000095648211aca4a5835d620a22",
       "library_stable_id": "libfile_c616a0b8e44c819183d8184947725754",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-      "state": "UNLOCKED_CANDIDATE_ONLY"
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "blocked_checkpoint": {
       "filename": "Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
@@ -2701,6 +2747,11 @@
       "library_stable_id": "libfile_08e53a1eff588191a6663412ceeba5d3",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
+    "upstream_stage6": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "artifact": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+      "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde"
+    },
     "validated_before_block": {
       "candidate_manifest_rehash": "56/56 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC",
@@ -2709,20 +2760,12 @@
       "final_dataset_sha256": "813667e0a5eb57a390317921b79583c8546583d035e7f671fa15ef6f2efc476d",
       "dataset_byte_parity_with_stage5": "PASS_EXACT"
     },
-    "blocker": {
-      "code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
-      "status": "BLOCKED",
-      "required_gate": "Exact-final direct import/presentation on exact Stage7 candidate bytes",
-      "evidence": [
-        "Exact-final candidate preview completes with structural PASS, A1-L20-UNIVERSAL-v2.tsv selected, and VERIFIED SHA-256 provenance.",
-        "After commit click Chromium becomes non-responsive before any PASS/FAIL import report; exact-final harness timed out twice.",
-        "Known-good Stage5 control package exhibits the same post-click stall in the current container.",
-        "Native IndexedDB is denied on the inlined about:blank origin with SecurityError.",
-        "Routed HTTPS origin is blocked by administrator policy with net::ERR_BLOCKED_BY_ADMINISTRATOR."
-      ],
-      "interpretation": "Current environment cannot supply the required exact-final browser/storage execution. Stage7 PASS and content LOCKED must not be inferred from Stage6 or static parity."
-    },
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L20-STAGE7-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
-    "next_action": "Run exact candidate SHA da1d2528...928f in a browser environment with usable real origin/IndexedDB (prefer user Windows/Chrome). Lock A1-L20 only after exact-final import/presentation succeeds."
+    "not_claimed": [
+      "Stage7 PASS",
+      "A1-L20 LOCKED",
+      "V4 user-visible acceptance",
+      "v432 FINAL/VERIFIED"
+    ],
+    "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked."
   }
 }

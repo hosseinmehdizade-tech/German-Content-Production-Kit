@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-24T13:26:00+02:00",
+  "updated_at": "2026-09-24T13:47:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -196,9 +196,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L19 Stage4 PASS; ready for Stage5 Delivery Projection",
-      "last_observed_stage": "4_linguistic_lexical_qa_A1_L19_pass",
-      "last_observed_note": "A1-L19 Stage4 PASS: 39/39 custom QA; 123 targets; 57 senses + 66 expressions; 492 DE/FA/EN examples; 91 relations; 125/125 active review flags resolved; 61 bounded integration/profile repairs; official bundle/profile/reference validators PASS; framework 47/47 pytest; exact Library rematerialization PASS.",
+      "current_scope": "A1-L19 Stage5 PASS; runtime-unbound Universal v2 delivery ready for Stage6",
+      "last_observed_stage": "5_delivery_projection_A1_L19_pass",
+      "last_observed_note": "A1-L19 Stage5 PASS: 123/123 identities projected to Universal v2; 110 de-vocabulary + 13 german-verb; 492 DE/FA/EN examples; 91 relations; current A1-L19 lesson field on 123/123 cards while all historical memberships remain preserved; 126 target audio refs / 93 unique / ma1m-lu-2409 zero audio; source row 1728 explicit. Fresh validator 157/157 and exact Library rematerialization PASS.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
         "sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d",
@@ -221,7 +221,7 @@
         "content_state": "LOCKED"
       },
       "lock_state": "A1-L01_TO_A1-L18_LOCKED",
-      "next_scope": "A1-L19 Stage5 Delivery Projection",
+      "next_scope": "A1-L19 Stage6 — resolve CURRENT runtime and run acceptance",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "filename": "Menschen-A1-L19-v3.3.2-Stage1-2-CHECKPOINT.zip",
@@ -317,30 +317,30 @@
       },
       "latest_stage5": {
         "state": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
-        "rows": 177,
+        "rows": 123,
         "card_types": {
-          "de-vocabulary": 161,
-          "german-verb": 16
+          "de-vocabulary": 110,
+          "german-verb": 13
         },
-        "qa": "207/207 PASS",
-        "fresh_extract_validator": "13/13 PASS",
-        "dataset": "A1-L18-UNIVERSAL-v2.tsv",
-        "dataset_sha256": "e7ef42cd1c471e1dcc52d08594ea50cbc0ee48845843f2e2f229281ea7e82fff",
-        "projected_cards_sha256": "ef87c1a0bc992e19dc3ac9fe9d571166b258189dbf32b2ee3cc7cea57500f36b",
+        "qa": "157/157 PASS",
+        "fresh_extract_validator": "157/157 PASS",
+        "dataset": "A1-L19-UNIVERSAL-v2.tsv",
+        "dataset_sha256": "e3a9d6bb1ebe9e4a1db0d93d86900e6f15751ded863aec2e30bf8c8f78c9f0e7",
+        "projected_cards_sha256": "81d7fc6bda2f1c8062542a3a12603a350d1bcbede4ff9d486d608b47d2b6759e",
         "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-        "relations": 124,
+        "relations": 91,
         "examples": {
-          "de": 708,
-          "fa": 708,
-          "en": 708
+          "de": 492,
+          "fa": 492,
+          "en": 492
         },
-        "source_audio": "174 target refs / 130 unique; zero target audio IDs 2151/2152/2315; source gaps 1533/1654 preserved",
-        "artifact": "Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
-        "artifact_sha256": "ce52f1b11f1286bae31f94a7df8a2bd4d9eef303e730abe616b8bea26f390c86",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage5-CHECKPOINT.zip",
-        "library_file_id": "file_000000009d148210888e3874b62f9957",
-        "library_stable_id": "libfile_2598d2e954488191ad1943a7049339f1",
-        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L18-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "source_audio": "126 target refs / 93 unique; zero target ma1m-lu-2409; source gap 1728 preserved",
+        "artifact": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "artifact_sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+        "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
         "next_action": "Resolve CURRENT runtime at Stage6 and run acceptance."
       },
@@ -365,15 +365,15 @@
         "next_action": "Stage7 exact-final LOCKED package verification."
       },
       "latest_checkpoint": {
-        "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-        "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-        "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
-        "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
-        "size_bytes": 160941,
-        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
+        "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+        "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+        "size_bytes": 370781,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-        "stage": "A1-L19 Stage4",
+        "stage": "A1-L19 Stage5",
         "quality_state": "PASS",
         "cumulative_targets": 123
       },
@@ -1182,19 +1182,19 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-    "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-    "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
-    "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
-    "size_bytes": 160941,
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
+    "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+    "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+    "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+    "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+    "size_bytes": 370781,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L19 Stage4",
+    "stage": "A1-L19 Stage5",
     "quality_state": "PASS",
     "cumulative_targets": 123
   },
-  "next_action": "Start A1-L19 Stage5 Delivery Projection.",
+  "next_action": "Resolve CURRENT German Flashcards Pro runtime and run A1-L19 Stage6 acceptance.",
   "a1_l19": {
     "state": "IN_PROGRESS",
     "source_rows": 91,
@@ -1281,7 +1281,7 @@
       "stage3_complete_gate": "PASS",
       "next_action": "Stage4 Linguistic & Lexical QA"
     },
-    "next_action": "Start Stage5 Delivery Projection.",
+    "next_action": "Resolve CURRENT runtime and run Stage6.",
     "stage4": {
       "state": "PASS",
       "checks": 39,
@@ -1327,9 +1327,66 @@
       }
     },
     "stage5": {
-      "state": "NOT_STARTED",
+      "state": "PASS",
+      "cards": 123,
+      "new_ids": 119,
+      "reused_ids": [
+        "ma1m-lu-0180",
+        "ma1m-lu-1495",
+        "ma1m-lu-1920",
+        "ma1m-lu-1922"
+      ],
+      "card_types": {
+        "de-vocabulary": 110,
+        "german-verb": 13
+      },
+      "categories": {
+        "Expression": 66,
+        "Adjective": 29,
+        "Noun": 14,
+        "Verb": 13,
+        "Adverb": 1
+      },
+      "examples": {
+        "de": 492,
+        "fa": 492,
+        "en": 492
+      },
+      "relations": 91,
+      "projection_qa": "157/157 PASS",
+      "dataset": {
+        "filename": "A1-L19-UNIVERSAL-v2.tsv",
+        "sha256": "e3a9d6bb1ebe9e4a1db0d93d86900e6f15751ded863aec2e30bf8c8f78c9f0e7"
+      },
+      "projected_cards_sha256": "81d7fc6bda2f1c8062542a3a12603a350d1bcbede4ff9d486d608b47d2b6759e",
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-      "next_action": "Stage5 Delivery Projection"
+      "source_audio": {
+        "target_occurrence_refs": 126,
+        "unique_refs": 93,
+        "zero_audio_targets": [
+          "ma1m-lu-2409"
+        ],
+        "source_rows": 91,
+        "zero_audio_source_ordinals": [
+          1728
+        ]
+      },
+      "current_lesson_primary_projection": "A1-L19 for 123/123 cards",
+      "artifact": {
+        "filename": "Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "4370f99ca66344f3eeee9449dc865b498776dc542e47ba4febb47b7b5ce8426a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_00000000fe64822f945874f56d779c5b",
+        "library_stable_id": "libfile_e9e8814b09348191aef5b479b16d4f51",
+        "size_bytes": 370781,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L19-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
+    },
+    "stage6": {
+      "state": "NOT_STARTED",
+      "runtime": "RESOLVE_CURRENT_AT_EXECUTION",
+      "next_action": "Resolve CURRENT runtime and run Stage6 Runtime & Presentation Acceptance."
     }
   }
 }

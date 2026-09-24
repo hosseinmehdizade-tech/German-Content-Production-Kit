@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L20 Stage4 PASS; exact Library rematerialization verified, 54/54 custom QA, official bundle/profile/reference validators PASS, framework 47/47. A1-L01..L19 remain LOCKED."
+    "git_sync_note": "A1-L20 Stage4 PASS remains authoritative. AUTORUN recovery clarified LOCKED_LEGACY_ANNOTATION_BOUNDARY as advisory-only/non-blocking; no work repeated and Stage5 not started."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -294,7 +294,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L19 remain LOCKED. A1-L20 Stage4 PASS: 133/133 lesson identities, exact 4 examples each, review unresolved 0. Start Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6.",
+  "resume_instruction": "A1-L01 through A1-L19 remain LOCKED. A1-L20 Stage4 PASS with 0 blocking findings/limitations. The inherited A1-L11 annotation note is advisory-only. Start Stage5 Delivery Projection.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -2234,7 +2234,14 @@
         "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L20-STAGE4-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
-      "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6."
+      "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6.",
+      "blocking_findings": 0,
+      "blocking_limitations": [],
+      "advisory_classification": {
+        "severity": "ADVISORY",
+        "blocking": false,
+        "affects_stage4_pass": false
+      }
     }
   },
   "latest_stage3_checkpoint": {
@@ -2301,16 +2308,20 @@
   "autorun_recovery": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "LESSON-20260924-170559-2adfe5",
-    "recovered_checkpoint_seq": 7,
+    "recovered_checkpoint_seq": 11,
     "recovery_kind": "OUTPUT_CHECKPOINT_RECOVERY_METADATA_ONLY",
-    "durable_work_state": "A1-L20 Stage3 Batch0005 PASS",
-    "artifact": "Menschen-A1-L20-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip",
-    "sha256": "102c2975822eed66a4f610ebc71b4dda8fbc5e41c3ebd1809601fb023bbad12a",
+    "durable_work_state": "A1-L20 Stage4 PASS",
+    "artifact": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+    "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "git_state_reconciled": true,
     "work_repeated": false,
-    "next_operation": "A1-L20 Stage3 Batch0006 starting at ma1m-lu-2537",
-    "note": "Recovery reconciled durable Batch0005 state after controller supplied stale seq5 anchor. No Stage3 work was repeated or advanced."
+    "stage_advanced": false,
+    "blocking_findings": 0,
+    "blocking_limitations": 0,
+    "advisory_code": "LOCKED_LEGACY_ANNOTATION_BOUNDARY",
+    "advisory_is_blocking": false,
+    "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6.",
+    "note": "Recovered rejected seq10 machine checkpoint. Stage4 itself remains factual PASS; the inherited locked A1-L11 annotation note is explicitly advisory-only and must not be encoded as a requirement limitation."
   },
   "latest_stage4_checkpoint": {
     "state": "PASS",
@@ -2353,6 +2364,13 @@
       "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L20-STAGE4-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
-    "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6."
+    "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6.",
+    "blocking_findings": 0,
+    "blocking_limitations": [],
+    "advisory_classification": {
+      "severity": "ADVISORY",
+      "blocking": false,
+      "affects_stage4_pass": false
+    }
   }
 }

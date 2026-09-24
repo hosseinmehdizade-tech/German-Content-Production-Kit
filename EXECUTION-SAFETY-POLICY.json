@@ -1,0 +1,74 @@
+{
+  "schema": "flashcards-project-execution-safety@1.0.0",
+  "status": "ENFORCED",
+  "updated_at": "2026-09-24T15:19:00+02:00",
+  "purpose": "Prevent long tool-heavy production turns from completing work without delivering a visible final response, while preserving durable resumability across ChatGPT, Codex and Work.",
+  "canonical_source": "hosseinmehdizade-tech/German-Flashcards-Pro/EXECUTION-SAFETY-POLICY.json",
+  "applies_to": [
+    "German-Flashcards-Pro runtime/UI/importer/QA/packaging work",
+    "German-Content-Production-Kit content/QA/projection/runtime-acceptance work",
+    "cross-repository integration and release work"
+  ],
+  "core_flow": [
+    "RESOLVE_AUTHORITY",
+    "DO_CURRENT_MILESTONE",
+    "VALIDATE",
+    "PERSIST_PORTABLE_CHECKPOINT_OR_ARTIFACT",
+    "SYNC_COMPACT_GIT_STATE",
+    "SEND_VISIBLE_FINAL_RESPONSE",
+    "ONLY_THEN_START_NEXT_MAJOR_MILESTONE_IN_A_NEW_TURN_BY_DEFAULT"
+  ],
+  "turn_boundary": {
+    "default": "ONE_MAJOR_DURABLE_MILESTONE_PER_TURN",
+    "rule": "After a major stage/milestone reaches PASS, BLOCKED, or another durable resume boundary, persist it and send the user a final response before starting the next major stage.",
+    "allowed_same_turn_continuation": "Small cleanup/verification needed to make the current milestone durable is allowed. Do not silently roll into the next major stage.",
+    "user_override": "The user may explicitly request multi-stage execution, but the tool budget and intermediate-checkpoint rules still apply."
+  },
+  "tool_budget": {
+    "soft_external_operations": 20,
+    "action_at_soft_budget": "Stop at the next safe durable boundary, persist state, and answer the user.",
+    "hard_external_operations": 30,
+    "hard_rule": "Do not exceed the hard budget unless stopping would risk losing already-produced work; create an intermediate checkpoint first whenever possible.",
+    "retry_per_failed_operation": 1,
+    "retry_rule": "After one corrected retry, record PENDING/BLOCKED and answer instead of entering a retry loop."
+  },
+  "context_budget": {
+    "prefer_targeted_reads": true,
+    "rule": "Read only relevant keys/ranges/files when possible. Avoid dumping very large PROJECT-STATE/README/checkpoint files into context when a targeted read or parsed summary is sufficient.",
+    "large_output_rule": "If a tool response is truncated or very large, switch to targeted retrieval instead of repeatedly requesting the whole resource."
+  },
+  "persistence": {
+    "binary_artifacts": "Library/Project/user-delivery surfaces",
+    "git": "Source, small metadata, manifests, hashes, policy, checkpoint summaries and durable coordination state",
+    "git_not_blocker": true,
+    "git_failure_rule": "Respect bounded Git retry policy; mark persistence PENDING when needed and preserve the exact artifact/hash/resume point."
+  },
+  "runtime_currentness": {
+    "rule": "Re-resolve CURRENT whenever runtime compatibility matters. Never inherit an old runtime from a content checkpoint merely because it was current when that checkpoint was written.",
+    "source_of_truth": [
+      "German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json",
+      "German-Flashcards-Pro/RUNTIME-CURRENTNESS-POLICY.json"
+    ]
+  },
+  "final_response_contract": {
+    "required_after": [
+      "PASS milestone",
+      "BLOCKED milestone",
+      "durable checkpoint",
+      "material authority mismatch"
+    ],
+    "must_include": [
+      "what completed",
+      "PASS/BLOCKED/PENDING status",
+      "exact checkpoint/artifact or durable state location when applicable",
+      "next action"
+    ],
+    "anti_pattern": "Do not end a production turn after tool calls without a user-visible final response when a safe response can be sent."
+  },
+  "resume_rule": "A new chat/agent resumes from bootstrap + currentness/pins + PROJECT-STATE + relevant CHECKPOINT, not from reconstructing long chat history.",
+  "relationship_to_existing_policies": [
+    "PROJECT-MEMORY.json",
+    "GIT-SYNC-POLICY.json",
+    "PROJECT-OPERATING-MODE-v2.md"
+  ]
+}

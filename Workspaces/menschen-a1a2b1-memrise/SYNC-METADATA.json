@@ -25,22 +25,22 @@
     "stage2": "PASS",
     "stage3": "PASS_COMPLETE",
     "scope": "A1-L19",
-    "progress": "Stage6 preflight BLOCKED / CURRENT v432-R66 resolved / cumulative identity 12 of 12 PASS / exact portable runtime unavailable",
-    "next": "Resume Stage6 after exact v432-R66 portable ZIP is available and SHA-verified",
+    "progress": "Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY / exact CURRENT v432-R66 / 21 of 21 direct import / 33 of 33 presentation / 123 of 123 persistence+roundtrip / 2436 cumulative unique",
+    "next": "Stage7: package exact A1-L19 outer LOCKED.zip, rerun exact-final direct import/presentation on CURRENT v432, then lock content if post-package verification passes.",
     "artifact": {
-      "filename": "Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
-      "sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
-      "library_file_id": "file_00000000dc5481f991b4212ca18dc3f5",
-      "library_stable_id": "libfile_5882bfd6f0ec8191815f849e2b691427",
-      "size_bytes": 384069,
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-PREFLIGHT-POST-PACKAGE-VERIFICATION.json",
+      "filename": "Menschen-A1-L19-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+      "sha256": "f3b74328e390489869caec427b5a6c1ff0895b26c6a60c75984cddbcb779b2a2",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+      "library_file_id": "file_0000000071ac81fa8b25079acf5d8a42",
+      "library_stable_id": "libfile_e34f87a07e3c81919123f86eb5b6097c",
+      "size_bytes": 416421,
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L19-STAGE6-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "stage4": "PASS",
     "stage5": "PASS",
     "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
-    "stage6": "BLOCKED_PREFLIGHT",
+    "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "stage7": "NOT_STARTED",
     "stage12_summary": {
       "source_rows": 91,
@@ -114,12 +114,28 @@
       "preflight_checkpoint_sha256": "0a2e028f05f04faf141b53fa48be6e08d70c554ff7565464e1d393076a614506",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
       "blocker": "EXACT_CURRENT_PORTABLE_RUNTIME_UNAVAILABLE"
+    },
+    "stage6_summary": {
+      "runtime": "v432-R66",
+      "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+      "runtime_rehash": "177/177 PASS",
+      "direct_import": "21/21 PASS",
+      "presentation": "33/33 PASS",
+      "persistence": "123/123 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+      "universal_roundtrip": "123/123 PASS",
+      "relations": "91/91",
+      "audio": "126 refs / 93 unique",
+      "cumulative_identity": "12/12 PASS; 2436 unique",
+      "fresh_validator": "24/24 PASS",
+      "manifest_rehash": "56/56 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "environment_boundary": "Fresh exact-package same-profile Windows/Chrome v432 rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before runtime FINAL/VERIFIED."
     }
   },
   "git_sync": {
-    "status": "IN_SYNC_A1_L19_STAGE6_PREFLIGHT_BLOCKED_METADATA",
-    "content_sync_commit": "6bf9714d7ddf3c1defe0b9a6f99e7d3b04cd0e8e",
-    "note": "Stage6 preflight checkpoint is durable in Library; compact blocker/currentness metadata is in Git. No false runtime PASS claimed."
+    "status": "IN_SYNC_A1_L19_STAGE6_PASS_METADATA",
+    "content_sync_commit": "74364f6004daf0ff5fd539f9479ac1ae38f5bcaa",
+    "note": "Stage6 ZIP and exact v432 runtime are durable in Library; Git stores compact PASS_WITH_ENVIRONMENT_BOUNDARY state and post-package verification."
   },
   "note": "Large portable payload is intentionally not reconstructed in Git; see PROJECT-OPERATING-MODE-v2."
 }

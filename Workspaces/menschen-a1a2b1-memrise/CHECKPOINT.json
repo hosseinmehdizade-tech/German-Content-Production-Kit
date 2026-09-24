@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L20 Stage5 PASS; Universal v2 projection 167/167 PASS, exact Library rematerialization verified. Runtime remains unresolved until Stage6. A1-L01..L19 remain LOCKED."
+    "git_sync_note": "APP mission recovery reconciled controller to factual A1-L20 Stage5 PASS. Stage4/5 were not repeated; Stage6 not started. Exact Stage5 artifact SHA and Library rematerialization rechecked."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -294,7 +294,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L19 remain LOCKED. A1-L20 Stage5 PASS: 133/133 semantic identities projected losslessly to Universal v2. At Stage6, re-resolve German Flashcards Pro CURRENT from runtime authority and test that exact lineage; never inherit v432 merely from history.",
+  "resume_instruction": "Recovery complete for APP-20260924-201820-615763. Preserve A1-L01..L19 LOCKED and Stage5 artifact exact. Do not repeat Stage4/5. Next turn only: Stage6 live CURRENT resolution and Runtime & Presentation Acceptance.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -310,7 +310,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
     "latest_portable_checkpoint_sha256": "9642d1fa6854cc49bc8cf80ef80775b394579b1fd729db043953b3d6028b292b"
   },
-  "current_scope": "A1-L20 Stage5 PASS / ready for Stage6 CURRENT Runtime & Presentation Acceptance",
+  "current_scope": "A1-L20 Stage5 PASS / controller recovery complete / ready for Stage6 in next turn",
   "lock_state": "A1-L01_TO_A1-L19_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1651,7 +1651,7 @@
     "stage": "A1-L20 Stage5",
     "quality_state": "PASS"
   },
-  "next_action": "A1-L20 Stage6: resolve CURRENT runtime and run Runtime & Presentation Acceptance.",
+  "next_action": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2508,5 +2508,43 @@
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "next_action": "Resolve German Flashcards Pro CURRENT at Stage6 execution and run Runtime & Presentation Acceptance; never inherit historical runtime."
+  },
+  "autorun_app_mission_recovery": {
+    "schema": "a1-l20-autorun-recovery@1.0.0",
+    "protocol": "AUTORUN_PROTOCOL_V3_1",
+    "mission_id": "APP-20260924-201820-615763",
+    "recovered_controller_checkpoint_seq": 1,
+    "durable_milestone": "A1-L20 Stage5 Delivery Projection PASS",
+    "authority": {
+      "artifact": "Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
+      "sha256": "9642d1fa6854cc49bc8cf80ef80775b394579b1fd729db043953b3d6028b292b",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage5-CHECKPOINT.zip",
+      "library_file_id": "file_0000000083b081f684fae1d13d4d8271",
+      "library_stable_id": "libfile_c5fb96173d20819182f73b2e9762ba64",
+      "local_hash_recheck": "PASS_EXACT_SHA256_MATCH",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "stage5": {
+      "status": "PASS",
+      "semantic_identity_parity": "133/133 PASS",
+      "projection_qa": "167/167 PASS",
+      "universal_v2_sha256": "813667e0a5eb57a390317921b79583c8546583d035e7f671fa15ef6f2efc476d",
+      "projected_cards_sha256": "142ba1d9ce29a2b6cfdff2a6d315e1020958354a69f295111a47057e4d584536",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "blocking_findings": 0,
+      "blocking_limitations": []
+    },
+    "preservation": {
+      "a1_l01_to_l19": "LOCKED_UNCHANGED",
+      "stage4_repeated": false,
+      "stage5_repeated": false,
+      "stage6_started": false
+    },
+    "runtime": {
+      "observed_pointer_during_recovery": "v432-R66",
+      "bound_for_stage6": false,
+      "rule": "Re-resolve CURRENT again at Stage6 execution; observed recovery pointer is not a Stage6 acceptance binding."
+    },
+    "next_operation": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade."
   }
 }

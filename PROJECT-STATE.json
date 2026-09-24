@@ -199,7 +199,7 @@
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
       "current_scope": "A1-L20 Stage4 PASS / ready for Stage5 Delivery Projection",
       "last_observed_stage": "4_linguistic_lexical_qa_A1_L20_pass",
-      "last_observed_note": "A1-L20 Stage4 remains PASS after AUTORUN recovery. 0 blocking findings/limitations. LOCKED_LEGACY_ANNOTATION_BOUNDARY is advisory-only and inherited from immutable A1-L11 authority; Stage5 not started.",
+      "last_observed_note": "A1-L20 Stage4 PASS remains authoritative. Recovery seq12 is controller-output schema repair only (run_budget restored); no Stage5 work started.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -1698,19 +1698,19 @@
   "autorun_recovery": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "LESSON-20260924-170559-2adfe5",
-    "recovered_checkpoint_seq": 11,
+    "recovered_checkpoint_seq": 12,
     "recovery_kind": "OUTPUT_CHECKPOINT_RECOVERY_METADATA_ONLY",
     "durable_work_state": "A1-L20 Stage4 PASS",
     "artifact": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
     "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
+    "local_hash_recheck": "PASS_EXACT_SHA256_MATCH",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
     "work_repeated": false,
     "stage_advanced": false,
     "blocking_findings": 0,
     "blocking_limitations": 0,
-    "advisory_code": "LOCKED_LEGACY_ANNOTATION_BOUNDARY",
-    "advisory_is_blocking": false,
-    "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6.",
-    "note": "Recovered rejected seq10 machine checkpoint. Stage4 itself remains factual PASS; the inherited locked A1-L11 annotation note is explicitly advisory-only and must not be encoded as a requirement limitation."
+    "prior_checkpoint_issue": "controller rejected prior recovery checkpoint because controller_state.run_budget was omitted",
+    "fix": "machine checkpoint re-emitted with complete run_budget policy; durable Stage4 content/artifact unchanged",
+    "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6."
   }
 }

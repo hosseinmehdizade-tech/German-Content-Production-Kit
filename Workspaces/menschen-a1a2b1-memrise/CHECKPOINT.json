@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L20 Stage4 PASS remains authoritative. AUTORUN recovery clarified LOCKED_LEGACY_ANNOTATION_BOUNDARY as advisory-only/non-blocking; no work repeated and Stage5 not started."
+    "git_sync_note": "A1-L20 Stage4 PASS remains authoritative. Recovery seq12 records controller-schema repair only: run_budget will be present in visible machine checkpoint; no content work repeated and Stage5 not started."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -2308,20 +2308,20 @@
   "autorun_recovery": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "LESSON-20260924-170559-2adfe5",
-    "recovered_checkpoint_seq": 11,
+    "recovered_checkpoint_seq": 12,
     "recovery_kind": "OUTPUT_CHECKPOINT_RECOVERY_METADATA_ONLY",
     "durable_work_state": "A1-L20 Stage4 PASS",
     "artifact": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
     "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
+    "local_hash_recheck": "PASS_EXACT_SHA256_MATCH",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
     "work_repeated": false,
     "stage_advanced": false,
     "blocking_findings": 0,
     "blocking_limitations": 0,
-    "advisory_code": "LOCKED_LEGACY_ANNOTATION_BOUNDARY",
-    "advisory_is_blocking": false,
-    "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6.",
-    "note": "Recovered rejected seq10 machine checkpoint. Stage4 itself remains factual PASS; the inherited locked A1-L11 annotation note is explicitly advisory-only and must not be encoded as a requirement limitation."
+    "prior_checkpoint_issue": "controller rejected prior recovery checkpoint because controller_state.run_budget was omitted",
+    "fix": "machine checkpoint re-emitted with complete run_budget policy; durable Stage4 content/artifact unchanged",
+    "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6."
   },
   "latest_stage4_checkpoint": {
     "state": "PASS",

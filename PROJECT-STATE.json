@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage7 BLOCKED / awaiting external Windows/Chrome acceptance",
+      "current_scope": "A1-L20 Stage7 BLOCKED / exact candidate revalidated / waiting for user acceptance",
       "last_observed_stage": "7_release_A1_L20_preflight_blocked_environment",
-      "last_observed_note": "Auto-continue re-read durable state and found no new external browser acceptance evidence. Stage7 remains BLOCKED; exact candidate unchanged; A1-L20 NOT LOCKED.",
+      "last_observed_note": "Current-chat Stage7 candidate upload SHA matches registered candidate exactly (da1d2528...928f, 409171 bytes). No user Windows/Chrome acceptance evidence yet; Stage7 remains BLOCKED and A1-L20 remains NOT LOCKED.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -1424,7 +1424,7 @@
     "stage": "A1-L20 Stage7 Preflight",
     "state": "BLOCKED"
   },
-  "next_action": "Run the exact candidate in user Windows/Chrome on a usable real origin with IndexedDB, complete exact-final import/presentation acceptance, and return the result/evidence. Only then resume Stage7.",
+  "next_action": "User must execute the exact candidate in normal Windows/Chrome with a usable real origin/IndexedDB, complete import + Study/Quick/Typing/Audio checks + refresh persistence, and provide screenshots/report. Resume Stage7 only after that evidence exists.",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -2099,20 +2099,22 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 4,
+    "checkpoint_seq": 5,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
-    "durable_stage": "A1-L20 Stage7 Exact-Final Release",
+    "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
     "content_lock_state": "NOT_LOCKED",
-    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
     "exact_candidate": {
       "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
       "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip"
+      "current_chat_upload_sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+      "current_chat_upload_size_bytes": 409171,
+      "local_identity_validation": "PASS_EXACT_MATCH_TO_REGISTERED_STAGE7_CANDIDATE"
     },
-    "external_evidence_present": false,
+    "external_acceptance_evidence_present": false,
+    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
     "work_repeated": false,
     "stage_advanced": false,
-    "next_operation": "Run the exact candidate in user Windows/Chrome on a usable real origin with IndexedDB, complete exact-final import/presentation acceptance, and return the result/evidence. Only then resume Stage7."
+    "next_operation": "User must execute the exact candidate in normal Windows/Chrome with a usable real origin/IndexedDB, complete import + Study/Quick/Typing/Audio checks + refresh persistence, and provide screenshots/report. Resume Stage7 only after that evidence exists."
   }
 }

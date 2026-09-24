@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L18 Stage 7 exact-final verification PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64; A1-L19 Stage1/2 is next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 1/2 is COMPLETE / PASS; Stage 3 Evidence & Enrichment is next.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
@@ -281,3 +281,18 @@ SHA-256: `388a20e0ccd54da89fec7a252c12ad2019de6909a872609313cbe7cb084b9599`
 - content state: **LOCKED**
 - separate runtime boundary remains: v430 still needs the same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke before the runtime itself can be FINAL/VERIFIED
 - next: **A1-L19 Stage1/2**
+
+
+**A1-L19 Stage 1/2 — Source & Inventory + Canonicalization: COMPLETE / PASS.**
+
+- source lesson: `A1-L19 — Der hatte doch keinen Bauch!`
+- source rows: **91** (`1657..1747`); source audio **90 refs / 90 unique**, exactly one source gap at row **1728**, zero multi-audio rows
+- supplied RAR membership: **90/90 referenced MP3 filenames present**; missing source audio was preserved, not invented
+- Stage2 mappings: **124 source→target mappings**, **123 distinct lesson canonical identities**
+- identities: **119 new + 4 exact locked reuses** (`ma1m-lu-0180`, `ma1m-lu-1495`, `ma1m-lu-1920`, `ma1m-lu-1922`); one repeated in-lesson identity merged
+- new target mix: **54 senses + 65 expressions**; new stable IDs `ma1m-lu-2318..ma1m-lu-2436`
+- **92** identities carry explicit Stage3 review flags; malformed, broad or semantically conflicting source seeds remain visible in provenance rather than being silently rewritten
+- independent fresh-extract validator: **16/16 PASS**; manifest rehash **17/17 PASS**; package hygiene PASS
+- checkpoint: `Menschen-A1-L19-v3.3.2-Stage1-2-CHECKPOINT.zip`, SHA-256 `6ef4000a6f2f97a51d44bad1fa19605758434c8243677eef7e90208cd99d8a0f`
+- Library rematerialization: **PASS — exact SHA-256 match**
+- next: **Stage3 Batch0001 from ma1m-lu-2318**, while locked reuses remain immutable

@@ -1,0 +1,63 @@
+{
+  "schema": "menschen-a1-l20-stage7-preflight-blocked-post-package-verification@1.0.0",
+  "scope": "A1-L20-Stage7-Preflight",
+  "status": "BLOCKED",
+  "content_state": "NOT_LOCKED",
+  "blocked_checkpoint": {
+    "filename": "Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+    "sha256": "173711c038b3e947e4689a7b472085d6baefb9b3c39502fcf8d56292da56be30",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
+    "library_file_id": "file_00000000694081fdac1d38d5c9900ac2",
+    "library_stable_id": "libfile_08e53a1eff588191a6663412ceeba5d3",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+  },
+  "exact_final_candidate": {
+    "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
+    "original_build_filename": "Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+    "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
+    "library_file_id": "file_0000000095648211aca4a5835d620a22",
+    "library_stable_id": "libfile_c616a0b8e44c819183d8184947725754",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+    "state": "UNLOCKED_CANDIDATE_ONLY"
+  },
+  "runtime": {
+    "current": "v432-R66",
+    "current_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+    "last_fully_verified": "v423-R57",
+    "no_downgrade": true
+  },
+  "upstream_stage6": {
+    "filename": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+    "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde",
+    "state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
+  },
+  "validated_before_block": {
+    "candidate_manifest_rehash": "56/56 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "stage5_fresh_regression": "167/167 PASS",
+    "stage6_fresh_regression": "24/24 PASS",
+    "final_dataset_sha256": "813667e0a5eb57a390317921b79583c8546583d035e7f671fa15ef6f2efc476d",
+    "dataset_byte_parity_with_stage5": "PASS_EXACT"
+  },
+  "failed_required_gate": {
+    "name": "Exact-final direct import/presentation on exact Stage7 candidate bytes",
+    "required_verification_level": "V3",
+    "achieved_verification_level": "V2_STATIC_PLUS_UPSTREAM_V3_ONLY",
+    "reason": "Current environment cannot supply the required exact-final browser/storage execution. Stage7 PASS and content LOCKED must not be inferred from Stage6 or static parity."
+  },
+  "diagnostics": {
+    "candidate_preview": "Exact-final candidate preview completes with structural PASS, A1-L20-UNIVERSAL-v2.tsv selected, and VERIFIED SHA-256 provenance.",
+    "candidate_commit_attempt": "After commit click Chromium becomes non-responsive before any PASS/FAIL import report; exact-final harness timed out twice.",
+    "control_stage5_attempt": "Known-good Stage5 control package exhibits the same post-click stall in the current container.",
+    "native_indexeddb": "Native IndexedDB is denied on the inlined about:blank origin with SecurityError.",
+    "routed_origin": "Routed HTTPS origin is blocked by administrator policy with net::ERR_BLOCKED_BY_ADMINISTRATOR."
+  },
+  "not_claimed": [
+    "Stage7 PASS",
+    "A1-L20 LOCKED",
+    "V4 user-visible acceptance",
+    "v432 FINAL/VERIFIED"
+  ],
+  "next_action": "Run exact candidate SHA da1d2528...928f in a browser environment with usable real origin/IndexedDB (prefer user Windows/Chrome). Lock A1-L20 only after exact-final import/presentation succeeds."
+}

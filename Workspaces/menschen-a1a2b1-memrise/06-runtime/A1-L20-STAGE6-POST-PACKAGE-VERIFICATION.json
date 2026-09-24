@@ -1,0 +1,70 @@
+{
+  "schema": "menschen-a1-l20-stage6-post-package-verification@1.0.0",
+  "scope": "A1-L20-Stage6-GFP-v432",
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "artifact": {
+    "filename": "Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+    "sha256": "f8aae783b0c38da36036103a6434d35822652b9d26896563b25ef0f70401adde",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage6-GFP-v432-CHECKPOINT.zip",
+    "library_file_id": "file_0000000073a88243ac0099c6391d2e2f",
+    "library_stable_id": "libfile_9f622896a910819183b3f5be817b720b",
+    "size_bytes": 424700,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L20-STAGE6-POST-PACKAGE-VERIFICATION.json",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+  },
+  "runtime": {
+    "current": "v432-R66",
+    "current_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+    "last_fully_verified": "v423-R57",
+    "no_downgrade": true,
+    "runtime_internal_rehash": "177/177 PASS"
+  },
+  "validation": {
+    "stage6_fresh_validator": "24/24 PASS",
+    "stage5_fresh_regression": "167/167 PASS",
+    "direct_outer_import": "21/21 PASS on exact CURRENT production import path",
+    "presentation_component": "11/11 PASS across 133/133 cards using exact CURRENT production presentation API",
+    "cumulative_identity": "12/12 PASS; 2565 unique; 129 new + 4 expected reuses",
+    "manifest_rehash": "54/54 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "stage5_preservation": "42/45 prior files byte-identical; only README.md, CHECKPOINT.json, MANIFEST.json changed",
+    "fresh_extract": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+  },
+  "coverage": {
+    "cards": 133,
+    "new_ids": 129,
+    "reused_ids": 4,
+    "card_types": {
+      "de-vocabulary": 107,
+      "german-verb": 26
+    },
+    "examples": {
+      "de": 532,
+      "fa": 532,
+      "en": 532
+    },
+    "relations": 76,
+    "audio_refs": 133,
+    "unique_audio_refs": 104,
+    "zero_audio_targets": 0
+  },
+  "verification_depth": {
+    "stage6_requirement": "V3",
+    "achieved": "V3",
+    "basis": [
+      "V3 exact outer ZIP production import/persistence/index/full-authority lookup",
+      "V2 deterministic production presentation API over all 133 cards on exact CURRENT runtime"
+    ],
+    "not_claimed": [
+      "V4 same-profile real-user Chrome acceptance",
+      "V5 fresh-extraction user-visible acceptance"
+    ]
+  },
+  "environment_boundary": {
+    "blocking_for_content_stage6": false,
+    "blocking_for_runtime_final_verified": true,
+    "detail": "CURRENT v432/R66 still requires same affected normal Windows/Chrome profile rapid-interaction + persistence + browser restart + offline/service-worker acceptance before runtime FINAL/VERIFIED."
+  },
+  "next_action": "Stage7: package exact A1-L20 outer LOCKED.zip, rerun exact-final direct import/presentation checks on CURRENT v432, then lock content if post-package verification passes."
+}

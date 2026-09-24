@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage7 BLOCKED / output recovery reconciled to Seq11",
+      "current_scope": "A1-L20 Stage7 BLOCKED / output recovery reconciled to Seq12",
       "last_observed_stage": "7_release_A1_L20_preflight_blocked_environment",
-      "last_observed_note": "Seq12 recovery: controller lagged at Seq9 while durable Git held Seq11. Exact candidate re-hashed locally: da1d2528...928f, 409171 bytes. No external acceptance evidence; Stage7 remains BLOCKED; A1-L20 remains NOT LOCKED.",
+      "last_observed_note": "Seq13 recovery: controller reports Seq9 while durable Git holds Seq12. Candidate locally re-hashed exactly: da1d2528...928f, 409171 bytes. No external Windows/Chrome evidence; Stage7 remains BLOCKED; A1-L20 remains NOT LOCKED.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -2099,7 +2099,7 @@
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 12,
+    "checkpoint_seq": 13,
     "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
     "stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
@@ -2126,10 +2126,10 @@
   "autorun_output_recovery": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 12,
+    "checkpoint_seq": 13,
     "recovery_kind": "OUTPUT_CHECKPOINT_RECOVERY_METADATA_ONLY",
     "controller_latest_accepted_seq": 9,
-    "newest_durable_seq_found": 11,
+    "newest_durable_seq_found": 12,
     "durable_stage": "A1-L20 Stage7 Exact-Final Release",
     "stage_status": "BLOCKED",
     "content_lock_state": "NOT_LOCKED",
@@ -2144,7 +2144,8 @@
     "external_acceptance_evidence_present": false,
     "work_repeated": false,
     "stage_advanced": false,
-    "recovery_action": "Reconcile controller lag to durable Seq11 and emit a valid newer checkpoint only. Do not rerun Stage7 or prior stages.",
+    "durable_seq12_preserved": true,
+    "recovery_action": "Reconcile controller lag to durable Seq12 and emit a valid newer checkpoint only; do not rerun Stage7 or prior stages.",
     "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
   }
 }

@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L18 Stage6 Runtime & Presentation Acceptance is PASS_WITH_ENVIRONMENT_BOUNDARY on CURRENT v430-R64. Exact Stage6 checkpoint is durable in Library and rematerialized with exact SHA-256; A1-L01..L17 remain LOCKED."
+    "git_sync_note": "A1-L18 Stage7 exact-final post-package verification PASS_WITH_ENVIRONMENT_BOUNDARY; A1-L18 is LOCKED on CURRENT v430-R64. Exact LOCKED artifact is durable in Library and rematerialized with exact SHA-256."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -249,23 +249,33 @@
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "READY",
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
       "scope": "A1-L18",
-      "lock_state": "PENDING_STAGE7_EXACT_FINAL",
+      "lock_state": "LOCKED",
       "runtime": "GFP-v430-R64",
-      "exact_outer_import": null,
-      "runtime_presentation": null,
-      "standalone_persistence": null,
-      "cumulative_identity_collision": null,
-      "manifest_rehash": null,
-      "package_hygiene": null,
-      "environment_boundary": "Inherit v430 real-profile smoke requirement; content may lock after exact-final Stage7 pass without claiming runtime FINAL/VERIFIED.",
-      "artifact": null,
-      "next_action": "Build A1-L18 LOCKED outer package and rerun exact-final import/presentation acceptance on v430."
+      "exact_outer_import": "33/33 PASS exact final",
+      "runtime_presentation": "33/33 PASS exact final",
+      "standalone_persistence": "177/177 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+      "cumulative_identity_collision": "12/12 PASS; 2317 unique; 177 new L18; no reuses",
+      "manifest_rehash": "PASS_52_ENTRIES",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "environment_boundary": "Content is LOCKED. Separate runtime-level v430 same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke remains required before v430 itself can be FINAL/VERIFIED.",
+      "artifact": {
+        "filename": "Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+        "sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+        "library_file_id": "file_00000000f8d481f4bdd852764fdd918a",
+        "library_stable_id": "libfile_9d2c55e9d2708191af9bebf948b59ee2",
+        "size_bytes": 588037,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L18-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Start A1-L19 Stage1/2; preserve A1-L01..L18 locked.",
+      "universal_roundtrip": "177/177 PASS"
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L01 through A1-L17 are LOCKED. A1-L18 Stages1-6 PASS; Stage6 is PASS_WITH_ENVIRONMENT_BOUNDARY on exact CURRENT v430-R64. Start Stage7 exact-final package verification; do not regenerate Stages1-6.",
+  "resume_instruction": "A1-L01 through A1-L18 are LOCKED. A1-L18 exact-final outer ZIP passed Stage7 on CURRENT v430-R64 (33/33 exact-final acceptance; 52-entry manifest rehash; exact Library rematerialization). Start A1-L19 Stage1/2; do not regenerate locked lessons.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -277,13 +287,13 @@
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
-    "latest_locked_lesson": "A1-L17",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8"
+    "latest_locked_lesson": "A1-L18",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+    "latest_portable_checkpoint_sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d"
   },
-  "current_scope": "A1-L18 Stage6 COMPLETE/PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 READY",
-  "lock_state": "A1-L01_TO_A1-L17_LOCKED",
-  "locked_at": "2026-09-22",
+  "current_scope": "A1-L18 LOCKED / Stage7 PASS_WITH_ENVIRONMENT_BOUNDARY; A1-L19 Stage1/2 next",
+  "lock_state": "A1-L01_TO_A1-L18_LOCKED",
+  "locked_at": "2026-09-24",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
     "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
@@ -560,6 +570,25 @@
       "library_stable_id": "libfile_c1c417cb58c481918cc04de811afa427",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    },
+    "A1-L18": {
+      "filename": "Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+      "sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+      "runtime": "GFP-v430-R64",
+      "cards": 177,
+      "new_canonical_ids": 177,
+      "reused_canonical_ids": [],
+      "cumulative_unique_cards": 2317,
+      "exact_outer_import": "33/33 PASS exact final",
+      "runtime_presentation": "33/33 PASS exact final",
+      "standalone_persistence": "177/177 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+      "cumulative_collision": "12/12 PASS; 2317 unique / 177 new L18 / 0 reuses",
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L18-POST-PACKAGE-VERIFICATION.json",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "content_state": "LOCKED"
     }
   },
   "a1_l03": {
@@ -1535,19 +1564,19 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
-    "sha256": "3cc789c9f24aa9b0ba33a4ff6491becdfe3e4a63a5fd7546be6671014ca5d2d8",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-Stage6-GFP-v430-CHECKPOINT.zip",
-    "library_file_id": "file_0000000068148210b6ae1483098284ea",
-    "library_stable_id": "libfile_d429f0c430188191afbdc0e53e20fcd9",
-    "size_bytes": 587805,
-    "stage": "A1-L18 Stage6",
+    "filename": "Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+    "sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+    "library_file_id": "file_00000000f8d481f4bdd852764fdd918a",
+    "library_stable_id": "libfile_9d2c55e9d2708191af9bebf948b59ee2",
+    "size_bytes": 588037,
+    "stage": "A1-L18 Stage7 LOCKED",
     "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "cumulative_targets": 177
   },
-  "next_action": "Start A1-L18 Stage7 exact-final Release & Post-Package Verification.",
+  "next_action": "Start A1-L19 Stage1/2.",
   "a1_l18": {
-    "state": "IN_PROGRESS",
+    "state": "LOCKED",
     "source_rows": 132,
     "source_audio_refs": 130,
     "source_zero_audio_rows": 2,
@@ -1620,7 +1649,7 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
     },
-    "next_action": "Start Stage7 exact-final Release & Post-Package Verification.",
+    "next_action": "Locked; start A1-L19 Stage1/2.",
     "stage4": {
       "state": "PASS",
       "checks": 46,
@@ -1724,6 +1753,29 @@
         "library_stable_id": "libfile_d429f0c430188191afbdc0e53e20fcd9",
         "size_bytes": 587805,
         "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L18-STAGE6-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
+    },
+    "stage7": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "content_state": "LOCKED",
+      "runtime": "GFP-v430-R64",
+      "exact_outer_import": "33/33 PASS exact final",
+      "runtime_presentation": "33/33 PASS exact final",
+      "standalone_persistence": "177/177 VERIFIED_WITH_DETERMINISTIC_IDB_BOUNDARY",
+      "universal_roundtrip": "177/177 PASS",
+      "cumulative_identity_collision": "12/12 PASS; 2317 unique; 177 new L18; no reuses",
+      "manifest_rehash": "PASS_52_ENTRIES",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "environment_boundary": "Content is LOCKED. Separate runtime-level v430 same-profile Windows/Chrome responsiveness + Backup Vault + persistence + restart + offline/service-worker smoke remains required before v430 itself can be FINAL/VERIFIED.",
+      "artifact": {
+        "filename": "Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+        "sha256": "0c1cfece23cee4a50be538e64ff9d45a094adda7bf2744efda707bd72bd72b0d",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L18-v3.3.2-GFP-v430-LOCKED.zip",
+        "library_file_id": "file_00000000f8d481f4bdd852764fdd918a",
+        "library_stable_id": "libfile_9d2c55e9d2708191af9bebf948b59ee2",
+        "size_bytes": 588037,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L18-POST-PACKAGE-VERIFICATION.json",
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       }
     }

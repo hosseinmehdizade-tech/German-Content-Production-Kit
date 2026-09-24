@@ -197,9 +197,9 @@
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L20 Stage3 COMPLETE / ready for Stage4 Linguistic & Lexical QA",
-      "last_observed_stage": "3_evidence_A1_L20_complete",
-      "last_observed_note": "A1-L20 Stage3 COMPLETE: 129/129 new targets enriched + 4 locked reuses preserved; 133/133 lesson identities ready; 67 senses + 62 expressions; 516 exact DE examples with FA+EN; 74 evidence-backed relations; 109 review resolutions; 129 evidence claims. Batch0007 197/197 PASS; prior regressions PASS; manifest 59/59; Library rematerialization exact SHA PASS.",
+      "current_scope": "A1-L20 Stage4 PASS / ready for Stage5 Delivery Projection",
+      "last_observed_stage": "4_linguistic_lexical_qa_A1_L20_pass",
+      "last_observed_note": "A1-L20 Stage4 PASS: 133 identities = 129 new + 4 locked reuses; 69 senses + 64 expressions; 532 exact multilingual examples; 76 relations; 109/109 review flags resolved; custom QA 54/54 PASS; official bundle/profile/reference validators PASS; framework 47/47; one non-blocking locked-legacy annotation advisory.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L19-v3.3.2-GFP-v432-LOCKED.zip",
         "sha256": "99ccb0fc2a2536335eb5bbcd8e492c8a01cb0093add074424d44a17a0d9e697d",
@@ -220,7 +220,7 @@
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
       "lock_state": "A1-L01_TO_A1-L19_LOCKED",
-      "next_scope": "A1-L20 Stage4 Linguistic & Lexical QA",
+      "next_scope": "A1-L20 Stage5 Delivery Projection",
       "latest_stage12_checkpoint": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "scope": "A1-L20",
@@ -327,31 +327,47 @@
         "next_action": "Stage4 Linguistic & Lexical QA"
       },
       "latest_stage4_checkpoint": {
-        "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
-        "filename": "Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-        "sha256": "5ea0d183dff6034f64f1987ed6af01203c41afcc0d5626e198dd0ae388b9cc6e",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.2-Stage4-CHECKPOINT.zip",
-        "library_file_id": "file_000000009bcc822fbd54cc3db8a203f1",
-        "library_stable_id": "libfile_ff189554f3a48191a94821f8cf507b5c",
-        "size_bytes": 160941,
-        "custom_qa": "39/39 PASS",
-        "repairs_applied": 61,
+        "state": "PASS",
+        "scope": "A1-L20",
+        "custom_qa": "54/54 PASS",
+        "custom_qa_advisories": 1,
+        "repairs_applied": 22,
         "repair_breakdown": {
-          "expression_type_profile_normalization": 23,
+          "expression_type_profile_normalization": 18,
           "locked_reuse_integration": 4,
-          "profile_metadata_completion": 34
+          "profile_metadata_completion": 0
         },
-        "official_content_validator": "PASS_123_TARGETS_EXACT4_0_WARNINGS",
+        "official_bundle_validator": "PASS_133_TARGETS_EXACT4_0_WARNINGS",
         "profile_validator": "PASS",
         "reference_registry_validator": "PASS",
         "reference_availability_validator": "PASS",
         "framework_pytest": "47/47 PASS",
-        "review_closure": "125/125 ACTIVE FLAGS RESOLVED",
-        "manifest_rehash": "34/34 PASS",
-        "package_hygiene": "PASS_NO_PYCACHE_PYC",
-        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L19-STAGE4-POST-PACKAGE-VERIFICATION.json",
-        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-        "next_action": "Start Stage5 Delivery Projection."
+        "review_unresolved": 0,
+        "lesson_identities": 133,
+        "new_targets": 129,
+        "reused_targets": 4,
+        "senses": 69,
+        "expressions": 64,
+        "lexemes": 61,
+        "examples": 532,
+        "relations": 76,
+        "target_audio_occurrence_refs": 133,
+        "unique_audio_refs": 104,
+        "advisory": {
+          "code": "LOCKED_LEGACY_ANNOTATION_BOUNDARY",
+          "detail": "Three inherited A1-L11 examples of locked ma1m-lu-1022 have no occurrence annotation. Locked examples remain immutable; official bundle validator passes with zero warnings."
+        },
+        "artifact": {
+          "filename": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+          "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+          "library_file_id": "file_000000000244820889a0d0cdea96e7eb",
+          "library_stable_id": "libfile_c32257d34cf88191af7b8d9bc27efa92",
+          "size_bytes": 170789,
+          "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L20-STAGE4-POST-PACKAGE-VERIFICATION.json",
+          "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+        },
+        "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6."
       },
       "latest_stage5": {
         "state": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -1274,15 +1290,15 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L20-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-    "sha256": "a90b27a17718f5ec098a3977252853e988745f9b73042291aa704f60c2c2ac9b",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
-    "library_file_id": "file_000000001e488246a408c5fab28a71ad",
-    "library_stable_id": "libfile_0b49cb30941881919de341ed2ca9d9d1",
-    "stage": "A1-L20 Stage3 COMPLETE",
+    "filename": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+    "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+    "library_file_id": "file_000000000244820889a0d0cdea96e7eb",
+    "library_stable_id": "libfile_c32257d34cf88191af7b8d9bc27efa92",
+    "stage": "A1-L20 Stage4",
     "state": "PASS"
   },
-  "next_action": "A1-L20 Stage4 Linguistic & Lexical QA.",
+  "next_action": "A1-L20 Stage5 Delivery Projection.",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -1527,7 +1543,7 @@
     "retry_per_failed_operation": 1
   },
   "a1_l20": {
-    "state": "STAGE3_COMPLETE_PASS",
+    "state": "STAGE4_PASS",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L20",
@@ -1627,6 +1643,49 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "next_action": "Stage4 Linguistic & Lexical QA"
+    },
+    "stage4": {
+      "state": "PASS",
+      "scope": "A1-L20",
+      "custom_qa": "54/54 PASS",
+      "custom_qa_advisories": 1,
+      "repairs_applied": 22,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 18,
+        "locked_reuse_integration": 4,
+        "profile_metadata_completion": 0
+      },
+      "official_bundle_validator": "PASS_133_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "review_unresolved": 0,
+      "lesson_identities": 133,
+      "new_targets": 129,
+      "reused_targets": 4,
+      "senses": 69,
+      "expressions": 64,
+      "lexemes": 61,
+      "examples": 532,
+      "relations": 76,
+      "target_audio_occurrence_refs": 133,
+      "unique_audio_refs": 104,
+      "advisory": {
+        "code": "LOCKED_LEGACY_ANNOTATION_BOUNDARY",
+        "detail": "Three inherited A1-L11 examples of locked ma1m-lu-1022 have no occurrence annotation. Locked examples remain immutable; official bundle validator passes with zero warnings."
+      },
+      "artifact": {
+        "filename": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
+        "library_file_id": "file_000000000244820889a0d0cdea96e7eb",
+        "library_stable_id": "libfile_c32257d34cf88191af7b8d9bc27efa92",
+        "size_bytes": 170789,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L20-STAGE4-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6."
     }
   },
   "autorun_recovery": {

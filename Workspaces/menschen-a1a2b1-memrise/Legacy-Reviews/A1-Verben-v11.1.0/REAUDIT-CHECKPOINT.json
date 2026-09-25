@@ -1,0 +1,48 @@
+{
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.0.0",
+  "framework": "v3.3.2",
+  "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
+  "state": "STAGE1_SOURCE_RECONCILIATION_PASS__STAGE2_CANONICAL_REPAIR_QUEUE_READY",
+  "legacy_input": {
+    "cards": 279,
+    "source_rows": 276,
+    "zip_sha256": "054fa1b4a244197d52baf6ca89988dff26c1304e26179247b361e0a47d9fed51",
+    "tsv_sha256": "b33cc026094a620837640010ef88dacdc55aa69b78462a7bbe9a8326f0f3b024"
+  },
+  "current_authority": {
+    "content_framework": "v3.3.2",
+    "master_prompt_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
+    "portable_authority_sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
+    "source_rows": "A1 supplement ordinals 7850..8125"
+  },
+  "stage1": {
+    "source_reconciliation": "276/276 PASS",
+    "historical_provenance_rows_restored": 246,
+    "source_fa_available": "276/276",
+    "source_examples_available": "266/276",
+    "audio": "275 refs / 275 unique; source row 7855 intentionally zero-audio"
+  },
+  "current_contract_gaps": {
+    "cards_requiring_upgrade": 279,
+    "german_examples_present": 1116,
+    "missing_fa_example_sentence_translations": 1116,
+    "missing_en_example_sentence_translations": 1116,
+    "duplicate_lemma_groups": 35,
+    "cards_in_duplicate_lemma_groups": 76,
+    "legacy_nvv_values_requiring_evidence_and_retyping": 285,
+    "legacy_synonym_values_requiring_reverification": 23,
+    "legacy_antonym_values_requiring_reverification": 1,
+    "legacy_split_source_rows": ["RAW-A1-0158", "RAW-A1-0161", "RAW-A1-0163"]
+  },
+  "identity_policy": "ONE_CARD_MULTI_MEANING_BACK; keep separate only genuinely distinct homograph/POS/expression identity; reconcile against existing current Menschen canonical IDs before minting/releasing.",
+  "artifact": {
+    "filename": "Menschen-A1-Verben-v3.3.2-Stage1-2-REAUDIT-CHECKPOINT.zip",
+    "sha256": "3dff49a6810b968f661e160a94bb8866e3f3b3da567b66a3e6440150e57cc934",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage1-2-REAUDIT-CHECKPOINT.zip",
+    "library_file_id": "file_0000000005cc8208a62cd6b33f122840",
+    "library_stable_id": "libfile_d2f2e2e8c58c8191823c349706d7839e",
+    "sidecar_persistence": "PENDING_CONTAINER_SESSION_UNAVAILABLE_AFTER_ONE_CORRECTED_RETRY"
+  },
+  "content_state": "NOT_FINAL_NOT_IMPORT_LOCKED",
+  "next_action": "Canonical identity reconciliation against current Menschen authority, then Stage3 evidence/enrichment repair in bounded batches."
+}

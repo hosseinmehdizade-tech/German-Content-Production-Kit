@@ -2,7 +2,7 @@
   "schema": "menschen-b1-verben-migration-checkpoint@1.2.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "STAGE3_BATCH0001",
+  "milestone": "STAGE3_BATCH0002",
   "status": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
   "source_authority": {
     "artifact": "Menschen-B1-v11.3.1-Agentic-Example-Intelligence-DATA-PASS-APP-REVIEW.zip",
@@ -27,66 +27,95 @@
     "expression_targets": 129
   },
   "stage3": {
-    "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "status": "PASS_BATCH0002_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
-      "0001"
+      "0001",
+      "0002"
     ],
-    "original_queue_positions_complete": 20,
-    "current_units_enriched": 21,
-    "next_queue_target": "mb1m-lu-0021",
+    "current_units_enriched": 41,
+    "next_queue_target": "mb1m-lu-0041",
     "amended_graph": {
       "lexeme_anchors": 331,
       "canonical_targets": 483,
       "sense_targets": 354,
       "expression_targets": 129
     },
-    "examples": {
-      "de": 84,
-      "fa": 84,
-      "en": 84,
+    "batch0001": {
+      "original_queue_positions_complete": 20,
+      "current_units_enriched": 21,
+      "examples": {
+        "de": 84,
+        "fa": 84,
+        "en": 84
+      },
+      "evidence_claims": 21,
+      "relations": 23,
+      "review_resolutions": "5/5 CLOSED",
+      "validator": "19/19 PASS"
+    },
+    "batch0002": {
+      "target_range": "mb1m-lu-0021..mb1m-lu-0040",
+      "current_units_enriched": 20,
+      "examples": {
+        "de": 80,
+        "fa": 80,
+        "en": 80
+      },
       "exact_four_per_target": true,
-      "stable_ids_and_utf16_annotations": true
+      "stable_ids_and_utf16_annotations": true,
+      "evidence_claims": 20,
+      "relations": 20,
+      "relation_breakdown": {
+        "rektion": 20
+      },
+      "review_resolutions": "5/5 CLOSED",
+      "validator": "21/21 PASS",
+      "batch0001_regression": "19/19 PASS",
+      "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
+      "decisions": [
+        "zurechtkommen keeps source-aligned cope/get-along usages on one lexical card",
+        "rollen keeps verified transitive and intransitive usages on one lexical card with auxiliary-by-use",
+        "herrschen remains on the source-supported rule/govern meaning; unsupported prevail/exist sense is excluded",
+        "ziehen etw. is narrowed to pull/draw while overbroad relocation wording remains provenance-only",
+        "an etw. ziehen learner rection is normalized to an + Dativ; source OCR an etw.Akk. is preserved"
+      ]
     },
-    "evidence_claims": 21,
-    "relations": 23,
-    "relation_breakdown": {
-      "rektion": 21,
-      "synonym": 2
-    },
-    "review_resolutions": "5/5 CLOSED",
-    "validator": "19/19 PASS",
-    "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
-    "structural_repairs": [
-      "beherrschen Stage2 target split into skill/mastery and control/handling senses; reflexive source example retained only in provenance/audit",
-      "Umgang mit jdm./etw. rebound from verb umgehen anchor to a new noun lexeme Umgang",
-      "transitive aufregen remains isolated from legacy reflexive leakage",
-      "das Vertrauen verlieren learner-facing pattern normalized while source wording remains preserved"
-    ]
+    "cumulative": {
+      "examples": {
+        "de": 164,
+        "fa": 164,
+        "en": 164
+      },
+      "evidence_claims": 41,
+      "relations": 43,
+      "review_resolutions": 10
+    }
   },
   "artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-    "sha256": "5cbf517d45460d8b70bebed74540767313e50e980d8af0aae6d1208846803fd5",
-    "size_bytes": 267428,
-    "manifest_rehash": "27/27 PASS",
-    "fresh_validator": "19/19 PASS",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+    "sha256": "90a1483ebe5dc6c6319cb5c2780a5cc2c5895a1b35db8359a0bc2ebe8586c53d",
+    "size_bytes": 306974,
+    "manifest_rehash": "37/37 PASS",
+    "fresh_validator": "21/21 PASS",
+    "batch0001_regression": "19/19 PASS",
     "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
-    "library_file_id": "file_000000003eb881f4a490d19c5bbec56c",
-    "library_stable_id": "libfile_933b5ae59d208191b1da755f9e7d3a04",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+    "library_file_id": "file_000000005d0081f88f6dc379cae727c5",
+    "library_stable_id": "libfile_b11690071b308191abefcd2e077760e5",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0001-POST-PACKAGE-VERIFICATION.json"
+    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-POST-PACKAGE-VERIFICATION.json"
   },
   "content_lock_state": "NOT_LOCKED",
   "stage_state": {
     "migration_audit": "PASS",
     "stage1": "REOPENED_MEDIA_MAPPING_PENDING",
     "stage2": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
-    "stage3": "PASS_BATCH0001",
+    "stage3": "PASS_BATCH0002",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
   "runtime_note": "Do not bind runtime during Stage3. Resolve CURRENT again only at Stage6.",
-  "next_action": "Stage3 Batch0002 from mb1m-lu-0021 using this exact verified Batch0001 checkpoint; preserve completed Batch0001 units and structural repairs."
+  "next_action": "Stage3 Batch0003 from mb1m-lu-0041 using this exact verified Batch0002 checkpoint; preserve completed Batch0001/0002 units and all source-provenance decisions."
 }

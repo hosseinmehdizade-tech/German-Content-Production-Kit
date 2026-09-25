@@ -1,0 +1,90 @@
+{
+  "schema": "gcpk-final-audit-round1@1.0.0",
+  "scope": "A1-L01",
+  "audit_kind": "independent technical/contract/fidelity audit of exact locked artifact",
+  "audited_at": "2026-09-25",
+  "authority": {
+    "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+    "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
+    "size_bytes": 2271477,
+    "archive_members": 151,
+    "content_zip": "GFP-Menschen-A1-L01-v3.3.2-for-v413.zip",
+    "content_zip_sha256": "0cd1f0c41881f1614977f49cf1d8fbb41d77be1f23bcaf806b8101761fa400d7"
+  },
+  "status": "PASS_WITH_ADVISORIES",
+  "summary": {
+    "independent_checks_total": 59,
+    "pass": 57,
+    "advisory_checks": 2,
+    "fail": 0,
+    "blocking_findings": 0,
+    "advisory_findings": 4,
+    "packaged_stage4_rerun": "25/25 PASS"
+  },
+  "content": {
+    "cards": 118,
+    "senses": 86,
+    "expressions": 32,
+    "examples_de": 472,
+    "examples_fa": 472,
+    "examples_en": 472,
+    "relations": 21,
+    "card_types": {
+      "de-vocabulary": 98,
+      "german-verb": 20
+    },
+    "source_rows": 89,
+    "source_audio_refs": 113,
+    "missing_audio_targets": [
+      "ma1m-lu-0073",
+      "ma1m-lu-0074",
+      "ma1m-lu-0106",
+      "ma1m-lu-0107",
+      "ma1m-lu-0108"
+    ]
+  },
+  "passed_contracts": [
+    "Exact outer SHA-256 matches locked checkpoint authority.",
+    "Release manifest rehash 150/150 and coverage pass (manifest excludes itself by design).",
+    "Nested content ZIP SHA-256 and TSV/BUILD-METADATA byte parity pass.",
+    "118 canonical target identities are unique and cover ma1m-lu-0001..0118.",
+    "89 source rows map completely to 118 canonical targets.",
+    "Exactly 4 German examples per target; every example has Persian and English translation.",
+    "Known malformed/mismatched source examples are not promoted into learner-facing examples.",
+    "21 review flags are exactly closed by 21 review-resolution records.",
+    "21 relations have valid identities and traceable evidence.",
+    "Audio lineage from source mapping to canonical targets is exact; two zero-audio source rows explain five split targets with no invented audio.",
+    "Projected JSON and Universal-v2 TSV have exact field parity; 98 de-vocabulary + 20 german-verb.",
+    "Forbidden raw RAR/MP3/PDF and pycache/pyc payloads are absent."
+  ],
+  "advisories": [
+    {
+      "code": "VERB_MORPHOLOGY_COMPLETENESS_REVIEW",
+      "target_id": "ma1m-lu-0071",
+      "headword": "rückfragen",
+      "detail": "Historical locked payload has present_3sg=null and preterite=null while perfect=hat rückgefragt. Original locked validator allowed this; Round 2 must decide whether learner-facing morphology should be completed under current quality expectations."
+    },
+    {
+      "code": "STALE_FINALIZATION_METADATA",
+      "file": "RELEASE-FILE-MANIFEST.json",
+      "detail": "Embedded status still says LOCKED_CANDIDATE_PENDING_FINAL_ARCHIVE_HASH although final archive hash/post-package verification exist."
+    },
+    {
+      "code": "STALE_FINALIZATION_METADATA",
+      "file": "Reports/A1-L01-CHECKPOINT.json",
+      "detail": "Embedded next_action still says to verify the finalized outer archive and start L02; both happened later."
+    },
+    {
+      "code": "STALE_FINALIZATION_METADATA",
+      "file": "Docs/HANDOFF.md",
+      "detail": "Embedded pre-final Golden Lesson wording is stale after final post-package verification and subsequent lessons."
+    }
+  ],
+  "runtime_regression_evidence": {
+    "later_v433_actual_locked_import": "PASS; L01 incoming=118, total=118, sharedIds=0; cumulative L01-L12 reload=1293 with VERIFIED manifest",
+    "current_runtime_context": "GFP CURRENT/LAST_FULLY_VERIFIED v434-R68; runtime compatibility re-acceptance on v434 is a separate optional regression gate and is not claimed by this Round 1."
+  },
+  "round2_required": true,
+  "round2_scope": "Card-by-card linguistic/adversarial review of all 118 learner-facing cards: meanings, Persian/English fidelity, morphology, Rektion, register, relation quality, CEFR suitability, and example naturalness.",
+  "repair_policy": "Do not overwrite the historical locked ZIP. Any learner-facing defect confirmed in Round 2 gets a repaired successor artifact with a new SHA-256; historical L01 remains traceable."
+}

@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.0.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.1.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "CURRENT_PROMPT_CONFORMANCE_MIGRATION_AUDIT",
-  "status": "PASS_AUDIT__CONTENT_MIGRATION_REQUIRED",
+  "milestone": "STAGE2_CANONICALIZATION",
+  "status": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
   "source_authority": {
     "artifact": "Menschen-B1-v11.3.1-Agentic-Example-Intelligence-DATA-PASS-APP-REVIEW.zip",
     "artifact_sha256": "c10633dedfae0820531b03bf57de1ffa37562028131136214329a13cd115ef8a",
@@ -19,32 +19,50 @@
     "master_prompt_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
     "profile_id": "menschen-b1-memrise@1.0.0"
   },
-  "audit_artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Migration-Audit-CHECKPOINT.zip",
-    "sha256": "3f12021b95f0ff931116c13cd0a98d1a33c8ccb846681045bd2b80dcd20c2fb0",
-    "manifest_rehash": "8/8 PASS"
+  "stage2": {
+    "source_rows_mapped": 406,
+    "legacy_aliases_accounted": 377,
+    "lexeme_anchors": 330,
+    "canonical_targets": 482,
+    "sense_targets": 353,
+    "expression_targets": 129,
+    "legacy_split_aliases": 68,
+    "multi_source_merge_revalidation": "29/29 PASS",
+    "explicit_numbered_multi_sense_resolution": "26/26 PASS",
+    "confirmed_hard_defects_structurally_resolved": "6/6 PASS",
+    "local_gate": "13/13 PASS",
+    "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
+    "content_lock_state": "NOT_LOCKED",
+    "runtime_binding": "NOT_APPLICABLE_UNTIL_STAGE6"
   },
-  "findings": {
-    "sentence_translation_fields_missing": 3016,
-    "explicit_multi_sense_cards": 26,
-    "minimum_additional_semantic_branches_from_explicit_numbering": 33,
-    "confirmed_hard_semantic_defects": 6,
-    "legacy_multi_source_merges_to_revalidate": 29,
-    "current_canonical_graph_missing_for_legacy_cards": 377,
-    "current_evidence_ledger_missing_for_legacy_cards": 377,
-    "example_ids_annotations_missing": 1508
+  "artifact": {
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage2-CHECKPOINT.zip",
+    "sha256": "bf94e8abb091654163f3abebc627b8d87647496082ea58e6407f7ce8b8642ec3",
+    "size_bytes": 146164,
+    "manifest_rehash": "12/12 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "post_package_verification": "PASS_WITH_SOURCE_AUDIO_BOUNDARY"
   },
-  "content_lock_state": "NOT_LOCKED_UNDER_V3_3_2",
+  "major_repairs": [
+    "aufregen: transitive source identity isolated from wrong reflexive legacy example",
+    "vorbereiten: thing vs person construction split; source trainieren alternative recovered; reflexive legacy leakage excluded",
+    "berühren: physical vs emotional senses split",
+    "ausgehen: social / run-out / light-or-fire-go-out / von-etw-ausgehen separated",
+    "handeln: ordinary handeln separated from es handelt sich um",
+    "eintragen: transitive and reflexive source identities kept separate",
+    "zwingen source/canonical reflexivity swap repaired across RAW-B1-0348/0349",
+    "RAW-B1-0364 source defect 'die Bremse bestätigen' preserved and rejected without silent correction"
+  ],
   "stage_state": {
     "migration_audit": "PASS",
     "stage1": "REOPENED_MEDIA_MAPPING_PENDING",
-    "stage2": "REOPENED_NOT_STARTED",
+    "stage2": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
     "stage3": "NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "runtime_note": "Do not bind runtime during content canonicalization. Resolve CURRENT again only at Stage6.",
-  "next_action": "Stage2 canonicalization/reconciliation against all 406 source occurrences. Preserve source lineage and legacy IDs as aliases; split/merge under v3.3.2 before enrichment."
+  "runtime_note": "Do not bind runtime during content evidence/enrichment. Resolve CURRENT again only at Stage6.",
+  "next_action": "Stage3 Evidence & Enrichment from mb1m-lu-0001 in bounded batches (recommended 20 targets), with exact 4 DE examples + independent FA/EN sentence translations and evidence-backed claims/relations."
 }

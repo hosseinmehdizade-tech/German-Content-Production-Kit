@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.5.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.6.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE5_PASS",
+  "state": "STAGE6_BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE5_DELIVERY_PROJECTION_PASS__READY_FOR_STAGE6__NOT_RUNTIME_FINAL",
-  "next_action": "Stage6 Runtime & Presentation Acceptance; re-resolve Flashcards CURRENT and materialize the exact CURRENT portable runtime before acceptance.",
+  "content_state": "STAGE5_PASS__STAGE6_BLOCKED_BEFORE_EXACT_CURRENT_ACCEPTANCE",
+  "next_action": "Obtain an authorized raw-byte materialization path for the exact CURRENT v435-R69 FINAL portable ZIP, verify SHA-256 352b258f..., then resume Stage6 from the existing Stage5 dataset without regenerating content.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -233,5 +233,54 @@
       "Runtime version is deliberately not pinned at Stage5."
     ],
     "next_action": "Stage6 Runtime & Presentation Acceptance; re-resolve Flashcards CURRENT and materialize the exact CURRENT portable runtime before acceptance."
+  },
+  "stage6": {
+    "status": "BLOCKED",
+    "blocker_code": "CURRENT_PORTABLE_RAW_BYTES_NOT_MATERIALIZABLE_IN_MANAGED_PROJECT_CONTEXT",
+    "resolved_current": {
+      "version": "v435-R69",
+      "verification_state": "VERIFIED",
+      "release_final": true,
+      "artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
+      "expected_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+      "library_path": "/Flasch kart/German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
+      "library_file_id": "file_000000001f1081f58b26a4a8bc7a115b",
+      "library_stable_id": "libfile_e106474c9e2881919adb8f4ce30d6cdb",
+      "library_size_bytes": 5655145
+    },
+    "last_fully_verified": "v435-R69",
+    "runtime_source_mirror": "PASS_EXACT_V435_R69_FINAL_RUNTIME_SOURCE_SYNC; 64 runtime files",
+    "stale_content_dependency_note": "FLASHCARDS-RUNTIME-DEPENDENCY.json still records v432-R66; Stage6 correctly re-resolved from Flashcards runtime pin and did not downgrade.",
+    "materialization_attempts": [
+      "exact final file_id returned no artifact",
+      "duplicate FINAL(1) returned unauthorized raw-byte materialization path"
+    ],
+    "not_run": [
+      "exact-current portable SHA verification",
+      "direct outer import",
+      "runtime presentation",
+      "IndexedDB persistence/roundtrip",
+      "content-specific runtime regression"
+    ],
+    "upstream_stage5": {
+      "status": "PASS",
+      "dataset": "A1-VERBEN-UNIVERSAL-v2.tsv",
+      "dataset_sha256": "0c341b64aa20c25b4ec261995be2eb8fa3b60b2a30c99e94b72c6dfcb688410c",
+      "projection_qa": "342/342 PASS",
+      "cards": 310
+    },
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage6-CURRENT-v435-BLOCKED-CHECKPOINT.zip",
+      "sha256": "bcf6982a14836a621d30254193e8aa3612aa80e10344b2cd5436f3d08ea3b0d1",
+      "size_bytes": 1090828,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-CURRENT-v435-BLOCKED-CHECKPOINT.zip",
+      "library_file_id": "file_00000000c53c821180a548c0797174f2",
+      "library_stable_id": "libfile_8085fed1d448819187e9c9c5566057e7",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "manifest_rehash": "76/76 PASS",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-CURRENT-v435-BLOCKED-POST-PACKAGE-VERIFICATION.json"
+    },
+    "visible_ui_change": "NONE",
+    "next_action": "Obtain an authorized raw-byte materialization path for the exact CURRENT v435-R69 FINAL portable ZIP, verify SHA-256 352b258f..., then resume Stage6 from the existing Stage5 dataset without regenerating content."
   }
 }

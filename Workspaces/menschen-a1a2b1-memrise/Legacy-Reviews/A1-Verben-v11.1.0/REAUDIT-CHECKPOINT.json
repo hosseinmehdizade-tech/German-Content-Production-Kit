@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.3.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.4.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE4_PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "state": "STAGE4_PASS",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE4_COMPLETE_WITH_FRAMEWORK_PYTEST_TIMEOUT_BOUNDARY__NOT_IMPORT_FINAL",
-  "next_action": "Next turn: targeted completion/diagnostic of the v3.3.2 framework pytest timeout boundary. If clean, promote Stage4 to full PASS, then start Stage5 Delivery Projection.",
+  "content_state": "STAGE4_COMPLETE_PASS__READY_FOR_STAGE5__NOT_IMPORT_FINAL",
+  "next_action": "Stage5 Delivery Projection for the complete 310-identity successor deck.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -113,7 +113,7 @@
     "next_action": "Stage4 Linguistic & Lexical QA for the complete 310-identity successor deck; preserve Stage3 evidence and the 280 reused survivors."
   },
   "stage4": {
-    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "status": "PASS",
     "scope": "complete 310-identity successor deck",
     "targets": 310,
     "senses": 247,
@@ -127,6 +127,14 @@
     "profile_validator": "PASS",
     "reference_registry_validator": "PASS",
     "reference_availability_validator": "PASS",
+    "framework_pytest": {
+      "status": "PASS_SHARDED_47_OF_47",
+      "tests_collected": 47,
+      "tests_with_fresh_pass_evidence": 47,
+      "execution_mode": "module shards + isolated node tests",
+      "monolithic_runner_note": "Managed environment showed cumulative wall-time stalls without test failure output; targeted execution established fresh PASS evidence for all 47 nodes.",
+      "evidence_file": "04-qa/GCPK-v3.3.2-PYTEST-TARGETED-CLOSURE.json"
+    },
     "repairs": {
       "successor_gap_enrichment": 6,
       "l01_profile_metadata_objects_completed": 16,
@@ -136,45 +144,26 @@
       "expression_type_normalizations": 1,
       "inherited_annotation_containers_empty_only": 270
     },
-    "successor_only_gap_repairs": [
-      "ma1m-lu-2688 anlegen",
-      "ma1m-lu-2693 abstimmen",
-      "ma1m-lu-2694 über etw. abstimmen",
-      "ma1m-lu-2702 sich vorstellen",
-      "ma1m-lu-2707 vermuten",
-      "ma1m-lu-2713 aufstehen"
-    ],
     "boundaries": {
       "locked_l01_l20_mutated": false,
       "l21_artifact_mutated": false,
-      "inherited_examples_with_empty_annotation_arrays": 270,
       "annotation_offsets_fabricated": false,
-      "framework_pytest": {
-        "status": "TIMEOUT_ENVIRONMENT_BOUNDARY",
-        "tests_collected": 47,
-        "completed_progress_dots_before_timeout": 43,
-        "attempts": 2,
-        "timeouts_seconds": [
-          120,
-          240
-        ],
-        "failure_output_observed": false,
-        "prior_framework_baseline": "v3.3.2 authority records 47/47 PASS; fresh Stage4 rerun not completed"
-      }
+      "monolithic_pytest_environment_stall": "documented; no failing test; all 47 nodes passed targeted"
     },
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
-      "sha256": "5fcc6583e03e288c1385c36a1374bc2e8b50e673cc6c58010c7d5bb25b4f6c32",
-      "size_bytes": 443271,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
-      "library_file_id": "file_00000000f35c81f596bac77af259f895",
-      "library_stable_id": "libfile_75d9a25d9d308191bc664bfe1fda0f38",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage4-POST-PACKAGE-VERIFICATION.json",
-      "package_manifest": "45/45 rehash PASS",
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage4-PASS-CHECKPOINT.zip",
+      "sha256": "363f923147dae5b686814f7a7393d06771a13fbf7c27383dc07f8f49cae94715",
+      "size_bytes": 447961,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage4-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_000000009eac81f58c413b7cf13cb9f7",
+      "library_stable_id": "libfile_8d5ffe516cf881919eda7614def46e8b",
+      "library_upload": "PASS",
+      "library_rematerialization": "PENDING_INDEX_VISIBILITY_AFTER_UPLOAD",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage4-PASS-POST-PACKAGE-VERIFICATION.json",
+      "package_manifest": "64/64 rehash PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
-      "fresh_extract_validators": "local PASS + official 310/310 PASS"
+      "fresh_extract_local_validator": "PASS"
     },
-    "next_action": "Next turn: targeted completion/diagnostic of the v3.3.2 framework pytest timeout boundary. If clean, promote Stage4 to full PASS, then start Stage5 Delivery Projection."
+    "next_action": "Stage5 Delivery Projection for the complete 310-identity successor deck."
   }
 }

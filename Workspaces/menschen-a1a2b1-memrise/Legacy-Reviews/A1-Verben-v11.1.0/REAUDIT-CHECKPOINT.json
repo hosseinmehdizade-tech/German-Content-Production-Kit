@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.2.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.3.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE3_COMPLETE_PASS",
+  "state": "STAGE4_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE3_COMPLETE__READY_FOR_STAGE4__NOT_IMPORT_FINAL",
-  "next_action": "Stage4 Linguistic & Lexical QA for the complete 310-identity successor deck; preserve Stage3 evidence and the 280 reused survivors.",
+  "content_state": "STAGE4_COMPLETE_WITH_FRAMEWORK_PYTEST_TIMEOUT_BOUNDARY__NOT_IMPORT_FINAL",
+  "next_action": "Next turn: targeted completion/diagnostic of the v3.3.2 framework pytest timeout boundary. If clean, promote Stage4 to full PASS, then start Stage5 Delivery Projection.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -111,5 +111,70 @@
       "MEM-009 one-card multi-meaning policy is enforced for bergen."
     ],
     "next_action": "Stage4 Linguistic & Lexical QA for the complete 310-identity successor deck; preserve Stage3 evidence and the 280 reused survivors."
+  },
+  "stage4": {
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "scope": "complete 310-identity successor deck",
+    "targets": 310,
+    "senses": 247,
+    "expressions": 63,
+    "lexemes": 247,
+    "examples": 1240,
+    "in_scope_relations": 185,
+    "external_relation_carryover": 138,
+    "custom_qa": "31/31 PASS",
+    "official_bundle_validator": "310/310 exact-target PASS; 0 warnings; 0 errors",
+    "profile_validator": "PASS",
+    "reference_registry_validator": "PASS",
+    "reference_availability_validator": "PASS",
+    "repairs": {
+      "successor_gap_enrichment": 6,
+      "l01_profile_metadata_objects_completed": 16,
+      "l01_profile_metadata_fields_completed": 64,
+      "relation_metadata_records_typed": 16,
+      "relation_metadata_fields_completed": 30,
+      "expression_type_normalizations": 1,
+      "inherited_annotation_containers_empty_only": 270
+    },
+    "successor_only_gap_repairs": [
+      "ma1m-lu-2688 anlegen",
+      "ma1m-lu-2693 abstimmen",
+      "ma1m-lu-2694 über etw. abstimmen",
+      "ma1m-lu-2702 sich vorstellen",
+      "ma1m-lu-2707 vermuten",
+      "ma1m-lu-2713 aufstehen"
+    ],
+    "boundaries": {
+      "locked_l01_l20_mutated": false,
+      "l21_artifact_mutated": false,
+      "inherited_examples_with_empty_annotation_arrays": 270,
+      "annotation_offsets_fabricated": false,
+      "framework_pytest": {
+        "status": "TIMEOUT_ENVIRONMENT_BOUNDARY",
+        "tests_collected": 47,
+        "completed_progress_dots_before_timeout": 43,
+        "attempts": 2,
+        "timeouts_seconds": [
+          120,
+          240
+        ],
+        "failure_output_observed": false,
+        "prior_framework_baseline": "v3.3.2 authority records 47/47 PASS; fresh Stage4 rerun not completed"
+      }
+    },
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
+      "sha256": "5fcc6583e03e288c1385c36a1374bc2e8b50e673cc6c58010c7d5bb25b4f6c32",
+      "size_bytes": 443271,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
+      "library_file_id": "file_00000000f35c81f596bac77af259f895",
+      "library_stable_id": "libfile_75d9a25d9d308191bc664bfe1fda0f38",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage4-POST-PACKAGE-VERIFICATION.json",
+      "package_manifest": "45/45 rehash PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+      "fresh_extract_validators": "local PASS + official 310/310 PASS"
+    },
+    "next_action": "Next turn: targeted completion/diagnostic of the v3.3.2 framework pytest timeout boundary. If clean, promote Stage4 to full PASS, then start Stage5 Delivery Projection."
   }
 }

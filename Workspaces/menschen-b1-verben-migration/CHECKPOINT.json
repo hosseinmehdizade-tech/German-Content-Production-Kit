@@ -1,48 +1,102 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.3.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.4.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "MEM009_IDENTITY_RECONCILIATION_BEFORE_STAGE3_BATCH0003",
-  "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+  "milestone": "STAGE3_BATCH0003",
+  "status": "PASS_BATCH0003_LIBRARY_AND_GIT_METADATA_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "upstream": {
-    "artifact": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
-    "sha256": "90a1483ebe5dc6c6319cb5c2780a5cc2c5895a1b35db8359a0bc2ebe8586c53d",
-    "state": "PASS_BATCH0002"
+    "artifact": "Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-CHECKPOINT.zip",
+    "sha256": "06a9e95f6273e948ec5f2a3cc5343d87cfc8ea72a5155cd8759bf732dcb26212",
+    "state": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED"
   },
-  "policy": {
-    "id": "MEM-009-MULTI-MEANING-ONE-CARD",
-    "effect": "Same lexical word keeps multiple verified meanings on one learner card; genuinely distinct expression identities remain separate."
+  "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD",
+  "stage3": {
+    "completed_batches": [
+      "0001",
+      "0002",
+      "0003"
+    ],
+    "active_cards_complete": 58,
+    "active_cards_total": 408,
+    "remaining": 350,
+    "batch0003_active_ids": [
+      "mb1m-lu-0041",
+      "mb1m-lu-0042",
+      "mb1m-lu-0043",
+      "mb1m-lu-0044",
+      "mb1m-lu-0046",
+      "mb1m-lu-0047",
+      "mb1m-lu-0049",
+      "mb1m-lu-0050",
+      "mb1m-lu-0052",
+      "mb1m-lu-0053",
+      "mb1m-lu-0054",
+      "mb1m-lu-0055",
+      "mb1m-lu-0056",
+      "mb1m-lu-0057",
+      "mb1m-lu-0058",
+      "mb1m-lu-0059",
+      "mb1m-lu-0060",
+      "mb1m-lu-0061",
+      "mb1m-lu-0062",
+      "mb1m-lu-0063"
+    ],
+    "batch0003_examples": {
+      "de": 80,
+      "fa": 80,
+      "en": 80
+    },
+    "exact_four_per_target": true,
+    "stable_ids_and_utf16_annotations": true,
+    "batch0003_claims": 20,
+    "batch0003_relations": 22,
+    "relation_breakdown": {
+      "rektion": 20,
+      "synonym": 2
+    },
+    "batch0003_review_resolutions": "8/8 CLOSED",
+    "cumulative_examples": {
+      "de": 232,
+      "fa": 232,
+      "en": 232
+    },
+    "cumulative_claims": 58,
+    "cumulative_relations": 64,
+    "cumulative_review_resolution_records": 21,
+    "next_queue_target": "mb1m-lu-0065",
+    "validator": "29/29 PASS",
+    "mem009_regression": "22/22 PASS",
+    "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
+    "source_fidelity_repairs": [
+      "drücken: legacy aufdrücken example excluded from final learner examples",
+      "zurückrufen: learner Persian narrowed to callback meaning while raw source seed remains provenance",
+      "ansagen: legacy reflexive visit example excluded from transitive announcement target",
+      "ansagen and ankündigen remain distinct lexical cards with reciprocal sense-limited synonym relation",
+      "erhalten, rechnen, auffordern and fordern follow MEM-009 one-card multi-meaning/construction policy"
+    ]
   },
-  "reconciliation": {
+  "active_graph": {
     "lexeme_anchors": 331,
-    "targets_before": 483,
-    "targets_after": 408,
-    "senses_before": 354,
-    "senses_after": 279,
-    "expressions": 129,
-    "polysemy_groups_merged": 65,
-    "retired_ids": 75,
-    "source_rows_preserved": 406,
-    "legacy_aliases_preserved": 377,
-    "active_enriched_through_batch0002": 38,
-    "examples_active": 152,
-    "evidence_claims_active": 38,
-    "relations_active": 42,
-    "fresh_validator": "22/22 PASS",
-    "manifest_rehash": "50/50 PASS",
-    "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    "canonical_targets": 408,
+    "sense_targets": 279,
+    "expression_targets": 129,
+    "retired_ids": 75
   },
   "artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-CHECKPOINT.zip",
-    "sha256": "06a9e95f6273e948ec5f2a3cc5343d87cfc8ea72a5155cd8759bf732dcb26212",
-    "size_bytes": 437269,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-CHECKPOINT.zip",
-    "library_file_id": "file_00000000bba481f4a3fbcc013d27989b",
-    "library_stable_id": "libfile_a8c9fe7a6d408191a64f6a0df510c256",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+    "sha256": "62b03d5284b712ea614230205208c6de9e3140fc77e97a10f76bb4e18540274d",
+    "size_bytes": 517961,
+    "manifest_rehash": "66/66 PASS",
+    "fresh_validator": "29/29 PASS",
+    "fresh_mem009_regression": "22/22 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bad881f4b55b6ae7f6a54e27",
+    "library_stable_id": "libfile_6cf192bb42948191ba9fa589dcdfdfdf",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-POST-PACKAGE-VERIFICATION.json"
+    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0003-POST-PACKAGE-VERIFICATION.json"
   },
   "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
   "content_lock_state": "NOT_LOCKED",
@@ -50,12 +104,12 @@
     "migration_audit": "PASS",
     "stage1": "REOPENED_MEDIA_MAPPING_PENDING",
     "stage2": "PASS_RECONCILED_BY_MEM009",
-    "stage3": "BATCH0001_0002_PASS_RECONCILED_READY_BATCH0003",
+    "stage3": "PASS_BATCH0003",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
   "runtime_note": "Do not bind runtime during Stage3. Resolve CURRENT again only at Stage6.",
-  "next_action": "Stage3 Batch0003 from mb1m-lu-0041 using the MEM009 active graph/queue. Process the next 20 active pending IDs and skip all 75 retired IDs."
+  "next_action": "Stage3 Batch0004 from mb1m-lu-0065 using the MEM009 active queue; process next 20 active pending IDs and skip retired IDs."
 }

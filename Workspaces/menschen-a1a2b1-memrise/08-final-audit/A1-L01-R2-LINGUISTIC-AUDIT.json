@@ -1,0 +1,185 @@
+{
+  "schema": "gcpk-final-audit-round2-linguistic@1.0.0",
+  "scope": "A1-L01",
+  "audited_at": "2026-09-25",
+  "status": "REVIEW_REQUIRED",
+  "authority": {
+    "locked_artifact": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+    "locked_artifact_sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
+    "canonical_sha256": "48879903ed815eccaa235e01f801bdbeb12ef599aca18b5fa284e812fb22a726",
+    "projected_cards_sha256": "35d7e89617ae8d4511723d552483a815375ad548977df286c9c90909e72be064",
+    "universal_v2_tsv_sha256": "7d0de1ce07dbf2c066efa2e7cd68e9d88d8ac9ab58424800bc25021eda9c3290",
+    "profile": "menschen-a1-memrise@1.0.0",
+    "prompt": "v3.3.2"
+  },
+  "reviewed": {
+    "targets": 118,
+    "senses": 86,
+    "expressions": 32,
+    "examples_de": 472,
+    "translations_fa": 472,
+    "translations_en": 472,
+    "relations": 21
+  },
+  "result": {
+    "clean": 96,
+    "repair_required": 12,
+    "naturalness_repair": 6,
+    "identity_review_required": 1,
+    "advisory": 3,
+    "affected_targets": 22,
+    "finding_records": 37
+  },
+  "repair_required": [
+    [
+      "ma1m-lu-0004",
+      "Guten Abend!",
+      "English ex03 has redundant final period after quoted exclamation."
+    ],
+    [
+      "ma1m-lu-0005",
+      "Gute Nacht!",
+      "DE/FA ex03 direct-speech terminal punctuation."
+    ],
+    [
+      "ma1m-lu-0006",
+      "Auf Wiedersehen!",
+      "DE/FA/EN ex03 direct-speech terminal punctuation."
+    ],
+    [
+      "ma1m-lu-0007",
+      "Auf Wiederhören!",
+      "DE/FA/EN ex03 punctuation; tighten definition to telephone use."
+    ],
+    [
+      "ma1m-lu-0008",
+      "Tschüss!",
+      "DE/FA/EN ex03 direct-speech terminal punctuation."
+    ],
+    [
+      "ma1m-lu-0057",
+      "sie",
+      "Persian gloss standard spelling: مونث -> مؤنث."
+    ],
+    [
+      "ma1m-lu-0071",
+      "rückfragen",
+      "separable=false inconsistent; keep finite nulls usage-aware, set separable=true and document restricted common paradigm."
+    ],
+    [
+      "ma1m-lu-0073",
+      "ergänzen",
+      "FA ex04 uses ungrammatical singular construction یک اطلاعات."
+    ],
+    [
+      "ma1m-lu-0081",
+      "spielen",
+      "Piano example leaks into distinct instrument-playing sense; replace with game-playing example."
+    ],
+    [
+      "ma1m-lu-0091",
+      "Herkunft",
+      "Definition/example mix personal origin and origin-of-a-thing; keep source-scoped personal origin."
+    ],
+    [
+      "ma1m-lu-0094",
+      "null",
+      "ex01 'Wir sind null Personen' is pragmatically self-contradictory."
+    ],
+    [
+      "ma1m-lu-0095",
+      "eins",
+      "ex01/ex02 use eins before nouns; German and English are grammatically wrong."
+    ]
+  ],
+  "naturalness_repair": [
+    [
+      "ma1m-lu-0013",
+      "Wie ist Ihr Name?",
+      "FA ex03 stilted; prefer لطفاً بفرمایید نامتان چیست؟"
+    ],
+    [
+      "ma1m-lu-0020",
+      "Wie ist Ihr Familienname?",
+      "FA ex03 stilted; prefer لطفاً بفرمایید نام خانوادگی‌تان چیست؟"
+    ],
+    [
+      "ma1m-lu-0036",
+      "Schweizer",
+      "FA ex04 همکار مرد من... is unnatural; prefer همکارم سوئیسی است."
+    ],
+    [
+      "ma1m-lu-0050",
+      "ich",
+      "FA ex01 من مینا نام دارم is non-idiomatic; prefer اسم من میناست."
+    ],
+    [
+      "ma1m-lu-0069",
+      "fragen",
+      "Improve two FA nach+Dat examples; add evidence-backed REKTION nach + Dativ fragen."
+    ],
+    [
+      "ma1m-lu-0082",
+      "zocken",
+      "Persian gloss is non-idiomatic; blanket register=neutral needs review for explicitly colloquial target."
+    ]
+  ],
+  "identity_review_required": [
+    [
+      "ma1m-lu-0066",
+      "hören",
+      "Current target combines auditory perception and deliberate listening. Duden separates meanings; active profile says split when meaning changes, but source row intentionally spans both. Explicit identity/source-fidelity decision required before repair successor."
+    ]
+  ],
+  "advisories": [
+    [
+      "ma1m-lu-0016",
+      "Wer sind Sie?",
+      "Definition 'höfliche' is less precise than 'formelle'."
+    ],
+    [
+      "ma1m-lu-0090",
+      "sein",
+      "Futur I ex04 is grammatical but less A1-simple than present tense with future time reference."
+    ],
+    [
+      "ma1m-lu-0093",
+      "Kardinalzahl",
+      "ex04 is grammatical but pedagogically stiff."
+    ]
+  ],
+  "dataset_advisories": [
+    "ma1m-lu-0096..0118 reuse nearly identical four-example numeral templates; structurally valid but pedagogically repetitive.",
+    "All 472 examples carry register=neutral; blanket register metadata is not trustworthy for register-sensitive targets."
+  ],
+  "confirmed_nonissues": [
+    "Iran article behavior is legitimate; do not normalize away der/articleless use.",
+    "Persien articleless historical-name normalization is sound.",
+    "Noun article/plural inventory passed.",
+    "Existing 21 relation records are semantically sound; fragen nach + Dativ is a coverage addition, not correction of existing Akkusativ relation.",
+    "rückfragen finite nulls are not automatically defective; Duden notes Infinitiv/Partizip II are the usual forms."
+  ],
+  "key_external_evidence": [
+    "Duden Ein/eins usage",
+    "Duden spielen senses",
+    "Duden Herkunft senses",
+    "Duden rückfragen usage",
+    "Duden fragen nach + Dativ",
+    "Duden hören senses",
+    "Duden quotation punctuation",
+    "Purdue OWL English quotation punctuation",
+    "Vajehyab standard Persian spelling مؤنث"
+  ],
+  "repair_policy": {
+    "historical_locked_zip": "IMMUTABLE",
+    "successor_required": true,
+    "successor_sha256_must_change": true,
+    "blocker_before_successor": "Resolve ma1m-lu-0066 hören identity decision.",
+    "runtime_rule": "After semantic repair, re-resolve CURRENT Flashcards Pro at Stage6; do not pin to historical v413."
+  },
+  "local_detailed_reports": {
+    "markdown_sha256": "8b9324c1f6f53135dfc601ab95df3e8b2760009ef82fc11ee754c8f78961952c",
+    "json_sha256": "ed26d03f23ea75ca91b376ae85b60053ff7463d2f0b2c02818250cfdc6f73819",
+    "ledger_tsv_sha256": "3a2c87764b551512d2761ed5bf5430f2e807d20ac49b930b6d3e1e0c5c887089"
+  }
+}

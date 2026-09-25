@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.1.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.2.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "STAGE2_CANONICALIZATION",
+  "milestone": "STAGE3_BATCH0001",
   "status": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
   "source_authority": {
     "artifact": "Menschen-B1-v11.3.1-Agentic-Example-Intelligence-DATA-PASS-APP-REVIEW.zip",
@@ -19,50 +19,74 @@
     "master_prompt_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
     "profile_id": "menschen-b1-memrise@1.0.0"
   },
-  "stage2": {
-    "source_rows_mapped": 406,
-    "legacy_aliases_accounted": 377,
+  "stage2_baseline": {
+    "status": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
     "lexeme_anchors": 330,
     "canonical_targets": 482,
     "sense_targets": 353,
-    "expression_targets": 129,
-    "legacy_split_aliases": 68,
-    "multi_source_merge_revalidation": "29/29 PASS",
-    "explicit_numbered_multi_sense_resolution": "26/26 PASS",
-    "confirmed_hard_defects_structurally_resolved": "6/6 PASS",
-    "local_gate": "13/13 PASS",
+    "expression_targets": 129
+  },
+  "stage3": {
+    "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "completed_batches": [
+      "0001"
+    ],
+    "original_queue_positions_complete": 20,
+    "current_units_enriched": 21,
+    "next_queue_target": "mb1m-lu-0021",
+    "amended_graph": {
+      "lexeme_anchors": 331,
+      "canonical_targets": 483,
+      "sense_targets": 354,
+      "expression_targets": 129
+    },
+    "examples": {
+      "de": 84,
+      "fa": 84,
+      "en": 84,
+      "exact_four_per_target": true,
+      "stable_ids_and_utf16_annotations": true
+    },
+    "evidence_claims": 21,
+    "relations": 23,
+    "relation_breakdown": {
+      "rektion": 21,
+      "synonym": 2
+    },
+    "review_resolutions": "5/5 CLOSED",
+    "validator": "19/19 PASS",
     "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
-    "content_lock_state": "NOT_LOCKED",
-    "runtime_binding": "NOT_APPLICABLE_UNTIL_STAGE6"
+    "structural_repairs": [
+      "beherrschen Stage2 target split into skill/mastery and control/handling senses; reflexive source example retained only in provenance/audit",
+      "Umgang mit jdm./etw. rebound from verb umgehen anchor to a new noun lexeme Umgang",
+      "transitive aufregen remains isolated from legacy reflexive leakage",
+      "das Vertrauen verlieren learner-facing pattern normalized while source wording remains preserved"
+    ]
   },
   "artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage2-CHECKPOINT.zip",
-    "sha256": "bf94e8abb091654163f3abebc627b8d87647496082ea58e6407f7ce8b8642ec3",
-    "size_bytes": 146164,
-    "manifest_rehash": "12/12 PASS",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+    "sha256": "5cbf517d45460d8b70bebed74540767313e50e980d8af0aae6d1208846803fd5",
+    "size_bytes": 267428,
+    "manifest_rehash": "27/27 PASS",
+    "fresh_validator": "19/19 PASS",
     "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "post_package_verification": "PASS_WITH_SOURCE_AUDIO_BOUNDARY"
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+    "library_file_id": "file_000000003eb881f4a490d19c5bbec56c",
+    "library_stable_id": "libfile_933b5ae59d208191b1da755f9e7d3a04",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0001-POST-PACKAGE-VERIFICATION.json"
   },
-  "major_repairs": [
-    "aufregen: transitive source identity isolated from wrong reflexive legacy example",
-    "vorbereiten: thing vs person construction split; source trainieren alternative recovered; reflexive legacy leakage excluded",
-    "berühren: physical vs emotional senses split",
-    "ausgehen: social / run-out / light-or-fire-go-out / von-etw-ausgehen separated",
-    "handeln: ordinary handeln separated from es handelt sich um",
-    "eintragen: transitive and reflexive source identities kept separate",
-    "zwingen source/canonical reflexivity swap repaired across RAW-B1-0348/0349",
-    "RAW-B1-0364 source defect 'die Bremse bestätigen' preserved and rejected without silent correction"
-  ],
+  "content_lock_state": "NOT_LOCKED",
   "stage_state": {
     "migration_audit": "PASS",
     "stage1": "REOPENED_MEDIA_MAPPING_PENDING",
     "stage2": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
-    "stage3": "NOT_STARTED",
+    "stage3": "PASS_BATCH0001",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "runtime_note": "Do not bind runtime during content evidence/enrichment. Resolve CURRENT again only at Stage6.",
-  "next_action": "Stage3 Evidence & Enrichment from mb1m-lu-0001 in bounded batches (recommended 20 targets), with exact 4 DE examples + independent FA/EN sentence translations and evidence-backed claims/relations."
+  "runtime_note": "Do not bind runtime during Stage3. Resolve CURRENT again only at Stage6.",
+  "next_action": "Stage3 Batch0002 from mb1m-lu-0021 using this exact verified Batch0001 checkpoint; preserve completed Batch0001 units and structural repairs."
 }

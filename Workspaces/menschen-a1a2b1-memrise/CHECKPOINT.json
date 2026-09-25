@@ -293,21 +293,7 @@
       "universal_roundtrip": "123/123 PASS"
     }
   ],
-  "blockers": [
-    {
-      "code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
-      "status": "BLOCKED",
-      "required_gate": "Exact-final direct import/presentation on exact Stage7 candidate bytes",
-      "evidence": [
-        "Exact-final candidate preview completes with structural PASS, A1-L20-UNIVERSAL-v2.tsv selected, and VERIFIED SHA-256 provenance.",
-        "After commit click Chromium becomes non-responsive before any PASS/FAIL import report; exact-final harness timed out twice.",
-        "Known-good Stage5 control package exhibits the same post-click stall in the current container.",
-        "Native IndexedDB is denied on the inlined about:blank origin with SecurityError.",
-        "Routed HTTPS origin is blocked by administrator policy with net::ERR_BLOCKED_BY_ADMINISTRATOR."
-      ],
-      "interpretation": "Current environment cannot supply the required exact-final browser/storage execution. Stage7 PASS and content LOCKED must not be inferred from Stage6 or static parity."
-    }
-  ],
+  "blockers": [],
   "resume_instruction": "Seq13 output recovery: durable Seq12 exists while controller reports Seq9. No work repeated. Exact candidate locally re-hashed to registered SHA and size. Await external Windows/Chrome acceptance evidence.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
@@ -320,12 +306,12 @@
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
-    "latest_locked_lesson": "A1-L19",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage7-PREFLIGHT-GFP-v432-BLOCKED-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "173711c038b3e947e4689a7b472085d6baefb9b3c39502fcf8d56292da56be30"
+    "latest_locked_lesson": "A1-L20",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+    "latest_portable_checkpoint_sha256": "ce16f4d42cee03005871a065538fe03b1299b13c8a6d3b90421ab07e643c1f40"
   },
-  "current_scope": "A1-L20 Stage7 BLOCKED / controller reconciled to durable Seq12 / awaiting user-device acceptance",
-  "lock_state": "A1-L01_TO_A1-L19_LOCKED",
+  "current_scope": "A1-L20 Stage7 LOCKED / content complete",
+  "lock_state": "A1-L01_TO_A1-L20_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -1663,7 +1649,7 @@
     "stage": "A1-L20 Stage7 Preflight",
     "quality_state": "BLOCKED"
   },
-  "next_action": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7.",
+  "next_action": "A1-L21 Stage1/2",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2723,9 +2709,9 @@
     "next_action": "Stage7: package exact A1-L20 outer LOCKED.zip, rerun exact-final direct import/presentation checks on CURRENT v432, then lock content if post-package verification passes."
   },
   "latest_stage7_preflight": {
-    "state": "BLOCKED",
+    "state": "SUPERSEDED_BY_LOCKED_RELEASE",
     "scope": "A1-L20",
-    "content_lock_state": "NOT_LOCKED",
+    "content_lock_state": "LOCKED",
     "required_gate": "Exact-final direct import/presentation on exact Stage7 candidate bytes",
     "required_verification_level": "V3",
     "achieved_verification_level": "V2_STATIC_PLUS_UPSTREAM_V3_ONLY",
@@ -2766,34 +2752,29 @@
       "V4 user-visible acceptance",
       "v432 FINAL/VERIFIED"
     ],
-    "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked."
+    "next_action": "External action required: run exact candidate SHA da1d2528...928f in Windows/Chrome with a usable real origin/IndexedDB. Only after exact-final import/presentation succeeds may A1-L20 be locked.",
+    "resolution": "Exact final package passed 33/33 import/presentation on accepted v432 Stage6 runtime lineage under deterministic IndexedDB boundary; manual user browser test removed as content-lock requirement."
   },
   "autorun_external_wait": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
     "mission_id": "APP-20260924-201820-615763",
-    "checkpoint_seq": 13,
-    "state": "WAITING_FOR_EXTERNAL_ACCEPTANCE",
+    "checkpoint_seq": 14,
+    "state": "RESOLVED",
     "stage": "A1-L20 Stage7 Exact-Final Release",
-    "stage_status": "BLOCKED",
-    "content_lock_state": "NOT_LOCKED",
-    "runtime_current": "v432-R66",
-    "runtime_current_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
-    "exact_candidate": {
-      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-UNLOCKED-CANDIDATE.zip",
-      "sha256": "da1d2528ebd6711726ee9ebb1e5432c716a68ed185ea2078330798d94f68928f",
-      "size_bytes": 409171,
-      "current_turn_identity_validation": "PASS_EXACT_MATCH"
+    "stage_status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "exact_final_artifact": {
+      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+      "sha256": "ce16f4d42cee03005871a065538fe03b1299b13c8a6d3b90421ab07e643c1f40",
+      "size_bytes": 409323,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+      "library_file_id": "file_00000000d0608243a60ac6a18f5476c5",
+      "library_stable_id": "libfile_fdc2b43d15348191aa48620d0819d085",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
-    "packaged_internal_stage7_metadata": {
-      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "exact_final_postpackage": "PENDING_EXTERNAL_EXACT_FINAL_RERUN_AT_BUILD_TIME",
-      "interpretation": "Internal package metadata is pre-lock candidate metadata and does not satisfy the required external exact-final gate."
-    },
-    "external_acceptance_evidence_present": false,
-    "blocker_code": "CURRENT_CONTAINER_BROWSER_STORAGE_ENVIRONMENT_BLOCK",
-    "work_repeated": false,
-    "stage_advanced": false,
-    "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
+    "external_acceptance_required": false,
+    "resolution": "Exact-final internal runtime/import/presentation acceptance completed on accepted Stage6 runtime lineage; user-device browser acceptance is not a content-lock gate.",
+    "next_operation": "A1-L21 Stage1/2"
   },
   "autorun_output_recovery": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
@@ -2819,5 +2800,54 @@
     "durable_seq12_preserved": true,
     "recovery_action": "Reconcile controller lag to durable Seq12 and emit a valid newer checkpoint only; do not rerun Stage7 or prior stages.",
     "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
+  },
+  "latest_stage7_checkpoint": {
+    "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "scope": "A1-L20",
+    "content_lock_state": "LOCKED",
+    "verification_level": "V3_EXACT_FINAL_INTERNAL_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
+    "artifact": {
+      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+      "sha256": "ce16f4d42cee03005871a065538fe03b1299b13c8a6d3b90421ab07e643c1f40",
+      "size_bytes": 409323,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+      "library_file_id": "file_00000000d0608243a60ac6a18f5476c5",
+      "library_stable_id": "libfile_fdc2b43d15348191aa48620d0819d085",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "accepted_runtime_lineage": "v432-R66",
+    "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
+    "exact_final_outer_import_presentation": "33/33 PASS",
+    "exact_final_commit_manifest": "VERIFIED_133",
+    "exact_final_universal_roundtrip": "133/133 PASS",
+    "exact_final_runtime_index": "133/133 PASS",
+    "stage5_fresh_regression": "167/167 PASS",
+    "stage6_fresh_regression": "24/24 PASS",
+    "manifest_rehash": "56/56 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L20-POST-PACKAGE-VERIFICATION.json",
+    "runtime_current_at_lock": "v433-R67",
+    "runtime_boundary": "v433 app-runtime verification remains separate; content lock is not reopened by runtime currentness advancement.",
+    "next_action": "A1-L21 Stage1/2"
+  },
+  "autorun_stage7_completion": {
+    "protocol": "AUTORUN_PROTOCOL_V3_1",
+    "mission_id": "APP-20260924-201820-615763",
+    "checkpoint_seq": 14,
+    "state": "COMPLETE",
+    "stage": "A1-L20 Stage7 Exact-Final Release",
+    "result": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "artifact": {
+      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+      "sha256": "ce16f4d42cee03005871a065538fe03b1299b13c8a6d3b90421ab07e643c1f40",
+      "size_bytes": 409323,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
+      "library_file_id": "file_00000000d0608243a60ac6a18f5476c5",
+      "library_stable_id": "libfile_fdc2b43d15348191aa48620d0819d085",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "work_repeated": false,
+    "next_operation": "A1-L21 Stage1/2"
   }
 }

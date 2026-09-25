@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-24T15:19:00+02:00",
+  "updated_at": "2026-09-25T15:00:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -89,6 +89,20 @@
         "CURRENT runtime is re-resolved when runtime compatibility matters.",
         "No significant visible UI/UX change without approval."
       ]
+    },
+    {
+      "id": "MEM-009-MULTI-MEANING-ONE-CARD",
+      "status": "ACTIVE",
+      "date": "2026-09-25",
+      "category": "content_identity",
+      "incident": "During the A1-L01 re-audit, an automatic proposal to split hören into two flashcards because it covered hear/listen was explicitly rejected by Hossein.",
+      "decision": "For the same lexical word/target, multiple verified meanings stay on ONE flashcard and are all shown on the back. Do not create duplicate cards solely because a word is polysemous. Separate cards are allowed only when the source represents a genuinely distinct lexical target such as a different part of speech, homograph, or separate expression identity.",
+      "safe_default": "ONE_CARD_MULTI_MEANING_BACK",
+      "conflicts_with": [
+        "automatic sense split for polysemy",
+        "duplicate cards for hear/listen-style meaning distinctions"
+      ],
+      "required_behavior": "Preserve one stable lexical card ID and enrich its back/definition/examples with the verified meanings; never split merely because dictionary senses differ."
     }
   ],
   "propagation_rule": {

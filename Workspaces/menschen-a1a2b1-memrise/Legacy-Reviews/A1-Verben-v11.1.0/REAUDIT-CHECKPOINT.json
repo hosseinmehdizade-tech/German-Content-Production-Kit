@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.6.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.7.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE6_BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
+  "state": "STAGE5_LIBRARY_ORGANIZATION_PASS_STAGE6_BLOCKED_RAW_BYTES",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE5_PASS__STAGE6_BLOCKED_BEFORE_EXACT_CURRENT_ACCEPTANCE",
-  "next_action": "Obtain an authorized raw-byte materialization path for the exact CURRENT v435-R69 FINAL portable ZIP, verify SHA-256 352b258f..., then resume Stage6 from the existing Stage5 dataset without regenerating content.",
+  "content_state": "STAGE5_DYNAMIC_LIBRARY_PROJECTION_PASS__STAGE6_REQUIRES_REVISED_DATASET_AND_EXACT_CURRENT_RAW_BYTES",
+  "next_action": "Resume Stage6 from the revised dynamic-Library Stage5 checkpoint; use CURRENT v435-R69 and do not reuse the old Stage6 package as content authority. Exact CURRENT raw bytes + SHA verification remain required for final runtime acceptance.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -167,7 +167,7 @@
     "next_action": "Stage5 Delivery Projection for the complete 310-identity successor deck."
   },
   "stage5": {
-    "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "status": "PASS_DYNAMIC_LIBRARY_ORGANIZATION",
     "scope": "Menschen A1 Verben supplement successor",
     "targets": 310,
     "senses": 247,
@@ -182,11 +182,11 @@
       "en": 1240
     },
     "relations": 185,
-    "projection_qa": "342/342 PASS",
+    "projection_qa": "BASE 342/342 PASS + dynamic-library organization QA PASS",
     "semantic_identity_parity": "310/310 PASS",
     "dataset": "A1-VERBEN-UNIVERSAL-v2.tsv",
-    "dataset_sha256": "0c341b64aa20c25b4ec261995be2eb8fa3b60b2a30c99e94b72c6dfcb688410c",
-    "projected_cards_sha256": "0609a3f005efc2b028e2240613992edaedba116164aa2b5755412a894ab9ea56",
+    "dataset_sha256": "d8678289966b66559f492ddcf44f8c9ece241eb0e34ac7d2ff454dad954900e0",
+    "projected_cards_sha256": "88478e2d5e7c84acf00249beca1354cd0c407f81d9e4cb40c240dd54c797f1f4",
     "membership_projection": {
       "primary_section_1": 164,
       "primary_section_2": 146,
@@ -215,27 +215,35 @@
     },
     "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
-      "sha256": "37db7fcb440c9b0660083606833e7dea4bf0c43ca5b59443375045f53c275681",
-      "size_bytes": 1036844,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
-      "library_file_id": "file_00000000539081f48941c0d77b5a699a",
-      "library_stable_id": "libfile_54270a35027481918672291fdbeecd98",
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage5-LIBRARY-ORGANIZATION-PASS-CHECKPOINT.zip",
+      "sha256": "abaf4fc9575c2cc86052621235f8c20e55541114d7ead883bcc3cd67863d3dda",
+      "size_bytes": 1045444,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage5-LIBRARY-ORGANIZATION-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000e19481f48b0abe4275335da7",
+      "library_stable_id": "libfile_3c7c3a4bf7f081918d3eaeaa729e056b",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage5-POST-PACKAGE-VERIFICATION.json",
-      "manifest_entries": 73,
-      "manifest_rehash": "PASS",
-      "package_hygiene": "PASS"
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage5-LIBRARY-ORGANIZATION-PASS-CHECKPOINT-POST-PACKAGE-VERIFICATION.json",
+      "manifest_rehash": "76/76 PASS"
     },
     "boundaries": [
       "Stage5 did not mutate the Stage4 canonical semantic authority.",
       "Locked A1-L01..L20 and active A1-L21 artifacts remain untouched.",
       "Runtime version is deliberately not pinned at Stage5."
     ],
-    "next_action": "Stage6 Runtime & Presentation Acceptance; re-resolve Flashcards CURRENT and materialize the exact CURRENT portable runtime before acceptance."
+    "next_action": "Stage6 Runtime & Presentation Acceptance; re-resolve Flashcards CURRENT and materialize the exact CURRENT portable runtime before acceptance.",
+    "initial_library_seed": {
+      "book": "Menschen Verben",
+      "lesson": "Menschen A1 Verben",
+      "decks": {
+        "Verben mit Präpositionen 1": 164,
+        "Verben mit Präpositionen 2": 146
+      },
+      "mutable": true,
+      "hardcoded": false
+    }
   },
   "stage6": {
-    "status": "BLOCKED",
+    "status": "BLOCKED_REQUIRES_REFRESH_FROM_REVISED_STAGE5",
     "blocker_code": "CURRENT_PORTABLE_RAW_BYTES_NOT_MATERIALIZABLE_IN_MANAGED_PROJECT_CONTEXT",
     "resolved_current": {
       "version": "v435-R69",
@@ -281,6 +289,26 @@
       "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-CURRENT-v435-BLOCKED-POST-PACKAGE-VERIFICATION.json"
     },
     "visible_ui_change": "NONE",
-    "next_action": "Obtain an authorized raw-byte materialization path for the exact CURRENT v435-R69 FINAL portable ZIP, verify SHA-256 352b258f..., then resume Stage6 from the existing Stage5 dataset without regenerating content."
+    "next_action": "Obtain an authorized raw-byte materialization path for the exact CURRENT v435-R69 FINAL portable ZIP, verify SHA-256 352b258f..., then resume Stage6 from the existing Stage5 dataset without regenerating content.",
+    "current_runtime": "v435-R69",
+    "expected_runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+    "prior_blocked_checkpoint": "SUPERSEDED_AS_CONTENT_SNAPSHOT_BY_DYNAMIC_LIBRARY_STAGE5; raw-byte blocker evidence remains relevant",
+    "revised_upstream_dataset_sha256": "d8678289966b66559f492ddcf44f8c9ece241eb0e34ac7d2ff454dad954900e0"
+  },
+  "library_organization": {
+    "status": "PASS",
+    "memory_rule": "MEM-010-DYNAMIC-LIBRARY-ORGANIZATION",
+    "runtime_model": "card-derived mutable organization; no Menschen-specific hard-code",
+    "initial_seed": {
+      "book": "Menschen Verben",
+      "lesson": "Menschen A1 Verben",
+      "decks": {
+        "Verben mit Präpositionen 1": 164,
+        "Verben mit Präpositionen 2": 146
+      }
+    },
+    "canonical_identity_dependency": false,
+    "current_v435_note": "Books are derived from card source, lessons from card lesson, decks from card deck. Rename/delete manager is generic. Current delete semantics remove contained cards.",
+    "empty_container_support": "NOT_CLAIMED"
   }
 }

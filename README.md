@@ -2,7 +2,7 @@
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L18 are LOCKED. A1-L19 Stage 3 is RUNNING: Batches0001-0003 PASS; 60/119 new targets enriched + 4 locked reuses ready; Batch0004 next.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L20 are LOCKED. A1-L21 Stage 1/2 is PASS: 128 source rows → 151 canonical lesson identities = 148 new + 3 exact locked reuses; Stage3 Batch0001 starts at `ma1m-lu-2566`.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`

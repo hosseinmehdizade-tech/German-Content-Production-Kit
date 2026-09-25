@@ -1,0 +1,50 @@
+{
+  "schema": "menschen-b1-verben-migration-checkpoint@1.0.0",
+  "workstream": "menschen-b1-verben-migration",
+  "framework": "v3.3.2",
+  "milestone": "CURRENT_PROMPT_CONFORMANCE_MIGRATION_AUDIT",
+  "status": "PASS_AUDIT__CONTENT_MIGRATION_REQUIRED",
+  "source_authority": {
+    "artifact": "Menschen-B1-v11.3.1-Agentic-Example-Intelligence-DATA-PASS-APP-REVIEW.zip",
+    "artifact_sha256": "c10633dedfae0820531b03bf57de1ffa37562028131136214329a13cd115ef8a",
+    "final_tsv": "07-FINAL-CANDIDATE-IMPORT-Menschen-B1-v11.3.1.tsv",
+    "final_tsv_sha256": "19f30dd169f901be2b997496b9146fc30642b60673d9f5471e607108af78051d",
+    "source_rows": 406,
+    "legacy_cards": 377,
+    "source_images": 15
+  },
+  "prompt_authority": {
+    "package": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
+    "package_sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
+    "master_prompt_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
+    "profile_id": "menschen-b1-memrise@1.0.0"
+  },
+  "audit_artifact": {
+    "filename": "Menschen-B1-Verben-v3.3.2-Migration-Audit-CHECKPOINT.zip",
+    "sha256": "3f12021b95f0ff931116c13cd0a98d1a33c8ccb846681045bd2b80dcd20c2fb0",
+    "manifest_rehash": "8/8 PASS"
+  },
+  "findings": {
+    "sentence_translation_fields_missing": 3016,
+    "explicit_multi_sense_cards": 26,
+    "minimum_additional_semantic_branches_from_explicit_numbering": 33,
+    "confirmed_hard_semantic_defects": 6,
+    "legacy_multi_source_merges_to_revalidate": 29,
+    "current_canonical_graph_missing_for_legacy_cards": 377,
+    "current_evidence_ledger_missing_for_legacy_cards": 377,
+    "example_ids_annotations_missing": 1508
+  },
+  "content_lock_state": "NOT_LOCKED_UNDER_V3_3_2",
+  "stage_state": {
+    "migration_audit": "PASS",
+    "stage1": "REOPENED_MEDIA_MAPPING_PENDING",
+    "stage2": "REOPENED_NOT_STARTED",
+    "stage3": "NOT_STARTED",
+    "stage4": "NOT_STARTED",
+    "stage5": "NOT_STARTED",
+    "stage6": "NOT_STARTED",
+    "stage7": "NOT_STARTED"
+  },
+  "runtime_note": "Do not bind runtime during content canonicalization. Resolve CURRENT again only at Stage6.",
+  "next_action": "Stage2 canonicalization/reconciliation against all 406 source occurrences. Preserve source lineage and legacy IDs as aliases; split/merge under v3.3.2 before enrichment."
+}

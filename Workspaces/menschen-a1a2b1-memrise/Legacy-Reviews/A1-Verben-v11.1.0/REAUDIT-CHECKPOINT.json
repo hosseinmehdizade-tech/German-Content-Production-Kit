@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.4.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.5.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE4_PASS",
+  "state": "STAGE5_PASS",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE4_COMPLETE_PASS__READY_FOR_STAGE5__NOT_IMPORT_FINAL",
-  "next_action": "Stage5 Delivery Projection for the complete 310-identity successor deck.",
+  "content_state": "STAGE5_DELIVERY_PROJECTION_PASS__READY_FOR_STAGE6__NOT_RUNTIME_FINAL",
+  "next_action": "Stage6 Runtime & Presentation Acceptance; re-resolve Flashcards CURRENT and materialize the exact CURRENT portable runtime before acceptance.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -165,5 +165,73 @@
       "fresh_extract_local_validator": "PASS"
     },
     "next_action": "Stage5 Delivery Projection for the complete 310-identity successor deck."
+  },
+  "stage5": {
+    "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "scope": "Menschen A1 Verben supplement successor",
+    "targets": 310,
+    "senses": 247,
+    "expressions": 63,
+    "card_types": {
+      "german-verb": 247,
+      "de-vocabulary": 63
+    },
+    "examples": {
+      "de": 1240,
+      "fa": 1240,
+      "en": 1240
+    },
+    "relations": 185,
+    "projection_qa": "342/342 PASS",
+    "semantic_identity_parity": "310/310 PASS",
+    "dataset": "A1-VERBEN-UNIVERSAL-v2.tsv",
+    "dataset_sha256": "0c341b64aa20c25b4ec261995be2eb8fa3b60b2a30c99e94b72c6dfcb688410c",
+    "projected_cards_sha256": "0609a3f005efc2b028e2240613992edaedba116164aa2b5755412a894ab9ea56",
+    "membership_projection": {
+      "primary_section_1": 164,
+      "primary_section_2": 146,
+      "source_sections": [
+        "Verben_mit_Präpositionen_1",
+        "Verben_mit_Präpositionen_2"
+      ],
+      "historical_course_memberships": "PRESERVED_EXACT",
+      "supplement_occurrences": "ADDED_AT_PROJECTION_ONLY_NO_CANONICAL_MUTATION"
+    },
+    "source_audio": {
+      "source_rows": 276,
+      "source_audio_refs": 275,
+      "source_zero_audio_ordinals": [
+        7855
+      ],
+      "target_audio_refs": 310,
+      "target_unique_audio_refs": 275,
+      "zero_audio_targets": [
+        "ma1m-lu-0073",
+        "ma1m-lu-0074"
+      ]
+    },
+    "projection_repairs": {
+      "verb_perfect_display_derived_from_verified_auxiliary_plus_participle_ii": 5
+    },
+    "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+      "sha256": "37db7fcb440c9b0660083606833e7dea4bf0c43ca5b59443375045f53c275681",
+      "size_bytes": 1036844,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+      "library_file_id": "file_00000000539081f48941c0d77b5a699a",
+      "library_stable_id": "libfile_54270a35027481918672291fdbeecd98",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage5-POST-PACKAGE-VERIFICATION.json",
+      "manifest_entries": 73,
+      "manifest_rehash": "PASS",
+      "package_hygiene": "PASS"
+    },
+    "boundaries": [
+      "Stage5 did not mutate the Stage4 canonical semantic authority.",
+      "Locked A1-L01..L20 and active A1-L21 artifacts remain untouched.",
+      "Runtime version is deliberately not pinned at Stage5."
+    ],
+    "next_action": "Stage6 Runtime & Presentation Acceptance; re-resolve Flashcards CURRENT and materialize the exact CURRENT portable runtime before acceptance."
   }
 }

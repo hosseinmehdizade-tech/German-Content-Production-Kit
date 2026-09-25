@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-25T15:00:00+02:00",
+  "updated_at": "2026-09-25T18:59:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -103,6 +103,17 @@
         "duplicate cards for hear/listen-style meaning distinctions"
       ],
       "required_behavior": "Preserve one stable lexical card ID and enrich its back/definition/examples with the verified meanings; never split merely because dictionary senses differ."
+    },
+    {
+      "id": "MEM-010-DYNAMIC-LIBRARY-ORGANIZATION",
+      "status": "ACTIVE",
+      "date": "2026-09-25",
+      "category": "library_architecture",
+      "incident": "During Menschen A1 Verben finalization, wording about adding a fixed 'Menschen Verben' book raised concern that Book/Lesson names might become permanent or hard-coded.",
+      "decision": "Library Book/Lesson/Deck organization is mutable runtime metadata/membership, not canonical card identity and not a set of hard-coded project constants. Imported names are initial seed labels only. Cards retain stable canonical IDs when organization labels are renamed or when future lessons/books are added.",
+      "safe_default": "DYNAMIC_CARD_ORGANIZATION_NO_HARDCODED_BOOK_LESSON_NAMES",
+      "current_runtime_note": "v435-R69 derives Library containers generically from card source/lesson/deck values. A container exists when cards carry that label. Current delete actions remove contained cards; changing deletion to non-destructive unlinking is a separate data-loss/architecture decision and must not be changed silently.",
+      "required_behavior": "Content projection may supply initial organization labels, but runtime code must not special-case Menschen titles. Future imports may add labels such as Menschen A2 Verben without changing existing canonical IDs."
     }
   ],
   "propagation_rule": {

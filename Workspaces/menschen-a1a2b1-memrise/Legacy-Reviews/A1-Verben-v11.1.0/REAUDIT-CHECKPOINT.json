@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.0.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.1.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE1_SOURCE_RECONCILIATION_PASS__STAGE2_CANONICAL_REPAIR_QUEUE_READY",
+  "state": "STAGE2_CANONICALIZATION_PASS_WITH_CROSS_WORKSTREAM_MIGRATION_BOUNDARY",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -13,7 +13,8 @@
     "content_framework": "v3.3.2",
     "master_prompt_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
     "portable_authority_sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
-    "source_rows": "A1 supplement ordinals 7850..8125"
+    "source_rows": "A1 supplement ordinals 7850..8125",
+    "current_lesson_authority": "A1-L01 repaired successor + A1-L02..L20 LOCKED + A1-L21 Stage2 reserved IDs through ma1m-lu-2713"
   },
   "stage1": {
     "source_reconciliation": "276/276 PASS",
@@ -22,27 +23,46 @@
     "source_examples_available": "266/276",
     "audio": "275 refs / 275 unique; source row 7855 intentionally zero-audio"
   },
-  "current_contract_gaps": {
-    "cards_requiring_upgrade": 279,
-    "german_examples_present": 1116,
-    "missing_fa_example_sentence_translations": 1116,
-    "missing_en_example_sentence_translations": 1116,
-    "duplicate_lemma_groups": 35,
-    "cards_in_duplicate_lemma_groups": 76,
+  "stage2": {
+    "status": "PASS_WITH_CROSS_WORKSTREAM_MIGRATION_BOUNDARY",
+    "legacy_mapping": "279/279 unique",
+    "canonical_targets": 310,
+    "existing_survivors_reused": 280,
+    "new_canonical_targets": 30,
+    "new_id_range": "ma1m-lu-2714..ma1m-lu-2743",
+    "source_recovered_targets_missing_in_legacy": 33,
+    "current_non_survivor_consolidation_candidates": 38,
+    "unresolved_identity_ambiguities": 0,
+    "validation": "14/14 PASS",
+    "manifest_rehash": "17/17 PASS",
+    "identity_policy": "MEM-009 ONE_CARD_MULTI_MEANING_BACK; separate only genuine homograph/POS/expression identity.",
+    "reviewed_decisions": {
+      "schaffen": "weak ma1m-lu-1970 and strong ma1m-lu-1969 remain separate homographs",
+      "abschliessen": "ma1m-lu-2022 lexical survivor; ma1m-lu-2023 consolidation candidate; ma1m-lu-2024 separate mit-expression",
+      "anmelden": "legacy bei+Dat and für+Akk cards consolidate to expression ma1m-lu-2034",
+      "abtrocknen": "transitive/reflexive senses consolidate to lexical survivor ma1m-lu-2461 for successor deck",
+      "vorstellen": "L21 sense stubs ma1m-lu-2702/2703 consolidate on survivor ma1m-lu-2702 for successor deck"
+    },
+    "global_alias_retirement_applied": false,
+    "locked_lesson_artifacts_mutated": false
+  },
+  "remaining_contract_gaps_for_stage3": {
+    "german_examples_present_in_legacy": 1116,
+    "missing_fa_example_sentence_translations_in_legacy": 1116,
+    "missing_en_example_sentence_translations_in_legacy": 1116,
     "legacy_nvv_values_requiring_evidence_and_retyping": 285,
     "legacy_synonym_values_requiring_reverification": 23,
-    "legacy_antonym_values_requiring_reverification": 1,
-    "legacy_split_source_rows": ["RAW-A1-0158", "RAW-A1-0161", "RAW-A1-0163"]
+    "legacy_antonym_values_requiring_reverification": 1
   },
-  "identity_policy": "ONE_CARD_MULTI_MEANING_BACK; keep separate only genuinely distinct homograph/POS/expression identity; reconcile against existing current Menschen canonical IDs before minting/releasing.",
   "artifact": {
-    "filename": "Menschen-A1-Verben-v3.3.2-Stage1-2-REAUDIT-CHECKPOINT.zip",
-    "sha256": "3dff49a6810b968f661e160a94bb8866e3f3b3da567b66a3e6440150e57cc934",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage1-2-REAUDIT-CHECKPOINT.zip",
-    "library_file_id": "file_0000000005cc8208a62cd6b33f122840",
-    "library_stable_id": "libfile_d2f2e2e8c58c8191823c349706d7839e",
-    "sidecar_persistence": "PENDING_CONTAINER_SESSION_UNAVAILABLE_AFTER_ONE_CORRECTED_RETRY"
+    "filename": "Menschen-A1-Verben-v3.3.2-Stage2-CANONICALIZATION-PASS-CHECKPOINT.zip",
+    "sha256": "30b06e3eada2332caa84cc11a6018a5fd2a80470d7fa473d9508f46292b0f8fb",
+    "size_bytes": 149904,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage2-CANONICALIZATION-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000fdc08210968b040048aaf391",
+    "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
+    "library_persistence": "PASS"
   },
-  "content_state": "NOT_FINAL_NOT_IMPORT_LOCKED",
-  "next_action": "Canonical identity reconciliation against current Menschen authority, then Stage3 evidence/enrichment repair in bounded batches."
+  "content_state": "CANONICALIZATION_LOCKED_STAGE2__NOT_YET_STAGE3_ENRICHED__NOT_IMPORT_FINAL",
+  "next_action": "Stage3 Evidence & Enrichment Batch0001 on a bounded successor-target batch; verify meanings/morphology/rection and relations against registered/current authorities and user-provided references, then create exactly 4 DE examples with independent FA+EN translations."
 }

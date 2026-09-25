@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.1.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.2.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE2_CANONICALIZATION_PASS_WITH_CROSS_WORKSTREAM_MIGRATION_BOUNDARY",
+  "state": "STAGE3_BATCH0001_PASS",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,6 +63,47 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "CANONICALIZATION_LOCKED_STAGE2__NOT_YET_STAGE3_ENRICHED__NOT_IMPORT_FINAL",
-  "next_action": "Stage3 Evidence & Enrichment Batch0001 on a bounded successor-target batch; verify meanings/morphology/rection and relations against registered/current authorities and user-provided references, then create exactly 4 DE examples with independent FA+EN translations."
+  "content_state": "STAGE3_PARTIAL__BATCH0001_LOCKED__NOT_IMPORT_FINAL",
+  "next_action": "Stage3 Batch0002 for ma1m-lu-2734..ma1m-lu-2743 only; preserve Batch0001 and 280 existing survivors unchanged.",
+  "stage3": {
+    "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "completed_batches": [
+      "0001"
+    ],
+    "target_range": "ma1m-lu-2714..ma1m-lu-2733",
+    "new_targets_complete": 20,
+    "new_targets_total": 30,
+    "new_targets_remaining": 10,
+    "existing_survivors_reused_ready": 280,
+    "successor_identities_ready": 300,
+    "successor_identities_total": 310,
+    "senses": 16,
+    "expressions": 4,
+    "examples": 80,
+    "relations": 22,
+    "review_resolutions": 37,
+    "evidence_claims": 20,
+    "legacy_nvv_reviewed": 19,
+    "nvv_relations_emitted": 0,
+    "validator": "42/42 PASS",
+    "manifest_rehash": "23/23 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "source_audio": "20/20 target mappings have source audio; ma1m-lu-2714 and ma1m-lu-2715 intentionally share row 7990 audio",
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+      "sha256": "f08bc68b063f1e5d7e660f0c7edca13b13554f3b9bab5a42a2eda511d4dc77fd",
+      "size_bytes": 176705,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+      "library_file_id": "file_000000007b0881f492e67cc0d3d7b876",
+      "library_stable_id": "libfile_e020e31b2674819187a012b72fd72a6d",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage3-Batch0001-POST-PACKAGE-VERIFICATION.json"
+    },
+    "quality_findings": [
+      "All 19 legacy NVV values in Batch0001 were reviewed; zero were retained as NVV/FVG. Evidence-backed items were retyped as Rektion/Collocation; free contextual phrases were dropped.",
+      "Source/legacy target mismatches were repaired at learner layer for sich ausziehen, wegmachen, sammeln and setzen while raw evidence remains auditable.",
+      "MEM-009 one-card multi-meaning policy is enforced for anziehen and scheinen."
+    ],
+    "next_action": "Stage3 Batch0002 for ma1m-lu-2734..ma1m-lu-2743 only; preserve Batch0001 and 280 existing survivors unchanged."
+  }
 }

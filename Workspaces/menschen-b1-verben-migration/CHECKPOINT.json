@@ -1,121 +1,61 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.2.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.3.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "STAGE3_BATCH0002",
-  "status": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
-  "source_authority": {
-    "artifact": "Menschen-B1-v11.3.1-Agentic-Example-Intelligence-DATA-PASS-APP-REVIEW.zip",
-    "artifact_sha256": "c10633dedfae0820531b03bf57de1ffa37562028131136214329a13cd115ef8a",
-    "final_tsv": "07-FINAL-CANDIDATE-IMPORT-Menschen-B1-v11.3.1.tsv",
-    "final_tsv_sha256": "19f30dd169f901be2b997496b9146fc30642b60673d9f5471e607108af78051d",
-    "source_rows": 406,
-    "legacy_cards": 377,
-    "source_images": 15
+  "milestone": "MEM009_IDENTITY_RECONCILIATION_BEFORE_STAGE3_BATCH0003",
+  "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "upstream": {
+    "artifact": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+    "sha256": "90a1483ebe5dc6c6319cb5c2780a5cc2c5895a1b35db8359a0bc2ebe8586c53d",
+    "state": "PASS_BATCH0002"
   },
-  "prompt_authority": {
-    "package": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
-    "package_sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
-    "master_prompt_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
-    "profile_id": "menschen-b1-memrise@1.0.0"
+  "policy": {
+    "id": "MEM-009-MULTI-MEANING-ONE-CARD",
+    "effect": "Same lexical word keeps multiple verified meanings on one learner card; genuinely distinct expression identities remain separate."
   },
-  "stage2_baseline": {
-    "status": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
-    "lexeme_anchors": 330,
-    "canonical_targets": 482,
-    "sense_targets": 353,
-    "expression_targets": 129
-  },
-  "stage3": {
-    "status": "PASS_BATCH0002_LIBRARY_AND_GIT_METADATA_SYNCED",
-    "completed_batches": [
-      "0001",
-      "0002"
-    ],
-    "current_units_enriched": 41,
-    "next_queue_target": "mb1m-lu-0041",
-    "amended_graph": {
-      "lexeme_anchors": 331,
-      "canonical_targets": 483,
-      "sense_targets": 354,
-      "expression_targets": 129
-    },
-    "batch0001": {
-      "original_queue_positions_complete": 20,
-      "current_units_enriched": 21,
-      "examples": {
-        "de": 84,
-        "fa": 84,
-        "en": 84
-      },
-      "evidence_claims": 21,
-      "relations": 23,
-      "review_resolutions": "5/5 CLOSED",
-      "validator": "19/19 PASS"
-    },
-    "batch0002": {
-      "target_range": "mb1m-lu-0021..mb1m-lu-0040",
-      "current_units_enriched": 20,
-      "examples": {
-        "de": 80,
-        "fa": 80,
-        "en": 80
-      },
-      "exact_four_per_target": true,
-      "stable_ids_and_utf16_annotations": true,
-      "evidence_claims": 20,
-      "relations": 20,
-      "relation_breakdown": {
-        "rektion": 20
-      },
-      "review_resolutions": "5/5 CLOSED",
-      "validator": "21/21 PASS",
-      "batch0001_regression": "19/19 PASS",
-      "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
-      "decisions": [
-        "zurechtkommen keeps source-aligned cope/get-along usages on one lexical card",
-        "rollen keeps verified transitive and intransitive usages on one lexical card with auxiliary-by-use",
-        "herrschen remains on the source-supported rule/govern meaning; unsupported prevail/exist sense is excluded",
-        "ziehen etw. is narrowed to pull/draw while overbroad relocation wording remains provenance-only",
-        "an etw. ziehen learner rection is normalized to an + Dativ; source OCR an etw.Akk. is preserved"
-      ]
-    },
-    "cumulative": {
-      "examples": {
-        "de": 164,
-        "fa": 164,
-        "en": 164
-      },
-      "evidence_claims": 41,
-      "relations": 43,
-      "review_resolutions": 10
-    }
+  "reconciliation": {
+    "lexeme_anchors": 331,
+    "targets_before": 483,
+    "targets_after": 408,
+    "senses_before": 354,
+    "senses_after": 279,
+    "expressions": 129,
+    "polysemy_groups_merged": 65,
+    "retired_ids": 75,
+    "source_rows_preserved": 406,
+    "legacy_aliases_preserved": 377,
+    "active_enriched_through_batch0002": 38,
+    "examples_active": 152,
+    "evidence_claims_active": 38,
+    "relations_active": 42,
+    "fresh_validator": "22/22 PASS",
+    "manifest_rehash": "50/50 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC"
   },
   "artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
-    "sha256": "90a1483ebe5dc6c6319cb5c2780a5cc2c5895a1b35db8359a0bc2ebe8586c53d",
-    "size_bytes": 306974,
-    "manifest_rehash": "37/37 PASS",
-    "fresh_validator": "21/21 PASS",
-    "batch0001_regression": "19/19 PASS",
-    "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
-    "library_file_id": "file_000000005d0081f88f6dc379cae727c5",
-    "library_stable_id": "libfile_b11690071b308191abefcd2e077760e5",
+    "filename": "Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-CHECKPOINT.zip",
+    "sha256": "06a9e95f6273e948ec5f2a3cc5343d87cfc8ea72a5155cd8759bf732dcb26212",
+    "size_bytes": 437269,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bba481f4a3fbcc013d27989b",
+    "library_stable_id": "libfile_a8c9fe7a6d408191a64f6a0df510c256",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0002-POST-PACKAGE-VERIFICATION.json"
+    "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-MEM009-Identity-Reconciliation-POST-PACKAGE-VERIFICATION.json"
   },
+  "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION",
   "content_lock_state": "NOT_LOCKED",
   "stage_state": {
     "migration_audit": "PASS",
     "stage1": "REOPENED_MEDIA_MAPPING_PENDING",
-    "stage2": "PASS_WITH_SOURCE_AUDIO_BOUNDARY",
-    "stage3": "PASS_BATCH0002",
+    "stage2": "PASS_RECONCILED_BY_MEM009",
+    "stage3": "BATCH0001_0002_PASS_RECONCILED_READY_BATCH0003",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
   "runtime_note": "Do not bind runtime during Stage3. Resolve CURRENT again only at Stage6.",
-  "next_action": "Stage3 Batch0003 from mb1m-lu-0041 using this exact verified Batch0002 checkpoint; preserve completed Batch0001/0002 units and all source-provenance decisions."
+  "next_action": "Stage3 Batch0003 from mb1m-lu-0041 using the MEM009 active graph/queue. Process the next 20 active pending IDs and skip all 75 retired IDs."
 }

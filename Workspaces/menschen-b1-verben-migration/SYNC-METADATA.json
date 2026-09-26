@@ -1,59 +1,130 @@
 {
-  "schema": "menschen-b1-verben-sync-metadata@1.20.0",
-  "updated_milestone": "STAGE4_COMPLETE",
+  "schema": "menschen-b1-verben-sync-metadata@1.21.0",
+  "updated_milestone": "STAGE5_COMPLETE",
   "persistence_git": "SYNCED",
   "source_manifest": {
     "path": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
     "status": "SYNCED_UNCHANGED"
   },
   "portable_artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
-    "sha256": "db351d2e062a12750d4ccdce11cf3f7fb004439edaf9641c3b6db3d9e7573659",
-    "size_bytes": 768555,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
-    "library_file_id": "file_00000000976881f4981f1cf2966b808e",
-    "library_stable_id": "libfile_162d3f648e8c8191b779a14ba613c537",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+    "sha256": "f16dd2edbd0792b5639dbedf200ee6cce9d635ad66cd4bde306f9ef23858cd8b",
+    "size_bytes": 1753289,
+    "zip_file_count": 46,
+    "manifest_rehash": "43/43 PASS",
+    "checksums_rehash": "45/45 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bb4881f4b763c88e54b8818f",
+    "library_stable_id": "libfile_9179a6c4c42881918ecda5fa3183a7ad",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
   },
   "validation": {
-    "custom_qa": "41/41 PASS",
-    "official_bundle_validator": "PASS_400_TARGETS_EXACT4_0_WARNINGS",
-    "profile_validator": "PASS",
-    "reference_registry_validator": "PASS",
-    "reference_availability_validator": "PASS",
-    "framework_pytest": "47/47 PASS",
-    "manifest_rehash": "30/30 PASS",
-    "checksums_rehash": "32/32 PASS",
-    "zip_file_count": 33,
-    "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    "projection_qa": "441/441 PASS",
+    "semantic_identity_parity": "400/400 PASS",
+    "manifest_rehash": "43/43 PASS",
+    "checksums_rehash": "45/45 PASS",
+    "zip_file_count": 46,
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
   },
   "progress": {
     "active_cards_complete": 400,
     "active_cards_total": 400,
     "remaining": 0,
     "retired_ids": 83,
-    "next_stage": "STAGE5_DELIVERY_PROJECTION"
+    "next_stage": "STAGE6_RUNTIME_PRESENTATION_ACCEPTANCE"
   },
   "structural_change": {
     "canonical_identity_changes": 0,
     "graph_cardinality_changed": false,
-    "german_example_text_changes": 0,
-    "relation_semantic_changes": 0,
-    "repairs_total_records": 35,
-    "pos_profile_normalization": [
-      "mb1m-lu-0019"
-    ],
-    "nvv_subtype_profile_normalization": [
-      "mb1m-lu-0002",
-      "mb1m-lu-0099"
-    ],
-    "duden_source_alias_normalizations": 29,
-    "synthetic_negative_check_refs_removed": 3,
-    "learner_translation_fixes": [
-      "mb1m-ex-0053-03 EN: removed slash-gloss ambiguity"
-    ],
+    "stage4_canonical_mutated": false,
     "mem009_preserved": true,
-    "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION"
+    "mem010_dynamic_library_preserved": true,
+    "media_mapping_reopened_stage1_resolved": true,
+    "source_audio_status": "RESOLVED_EXACT_SOURCE_INVENTORY_MAPPING",
+    "raw_audio_bundled": false
   },
-  "next_action": "Stage5 — Delivery Projection from Stage4 PASS authority; preserve MEM-009/source lineage and defer runtime binding until Stage6."
+  "next_action": "Stage6 — resolve Flashcards CURRENT exact portable runtime, then run Runtime & Presentation Acceptance; never inherit or downgrade to a historical runtime.",
+  "stage5": {
+    "state": "COMPLETE_PASS",
+    "projection_qa": "441/441 PASS",
+    "transport_rows": 400,
+    "semantic_identity_parity": "400/400 PASS",
+    "card_types": {
+      "german-verb": 279,
+      "de-vocabulary": 121
+    },
+    "categories": {
+      "Verb": 279,
+      "Expression": 121
+    },
+    "examples": {
+      "de": 1600,
+      "fa": 1600,
+      "en": 1600
+    },
+    "relations": 472,
+    "final_dataset": "B1-VERBEN-UNIVERSAL-v2.tsv",
+    "final_dataset_sha256": "e478694fecc9394a3d6ae381ff47dbca8a200fddd388830f9114206d26911b71",
+    "projected_cards_sha256": "62ab706c8204a25ece35b7677a75dac8d0a41005a1dd17292899869c38c174c8",
+    "source_alignment": {
+      "legacy_screenshot_rows": 406,
+      "actual_memrise_source_rows": 405,
+      "source_row_range": "8423..8827",
+      "page_overlap": "RAW-B1-0308 and RAW-B1-0309 -> row 8730",
+      "alias_alignment_score_min": 66.666667,
+      "alias_alignment_score_average": 99.816796
+    },
+    "source_audio": {
+      "source_rows": 405,
+      "source_audio_refs": 403,
+      "unique_audio_files": 400,
+      "zero_audio_source_rows": [
+        8451,
+        8727
+      ],
+      "target_audio_occurrence_refs": 439,
+      "zero_audio_targets": [
+        "mb1m-lu-0030",
+        "mb1m-lu-0363"
+      ]
+    },
+    "primary_sections": {
+      "_Verben_mit_Präpositionen_1": 137,
+      "_Verben_mit_Präpositionen_2": 140,
+      "_Verben_mit_Präpositionen_3": 123
+    },
+    "target_source_occurrence_distribution": {
+      "1": 363,
+      "2": 33,
+      "3": 4
+    },
+    "organization": {
+      "model": "DYNAMIC_MUTABLE_SEED_MEM010",
+      "book": "Menschen Verben",
+      "lesson": "Menschen B1 Verben",
+      "deck_counts": {
+        "Verben mit Präpositionen 1": 137,
+        "Verben mit Präpositionen 2": 140,
+        "Verben mit Präpositionen 3": 123
+      }
+    },
+    "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+    "stage4_canonical_mutated": false,
+    "raw_audio_bundled": false,
+    "artifact": {
+      "filename": "Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+      "sha256": "f16dd2edbd0792b5639dbedf200ee6cce9d635ad66cd4bde306f9ef23858cd8b",
+      "size_bytes": 1753289,
+      "zip_file_count": 46,
+      "manifest_rehash": "43/43 PASS",
+      "checksums_rehash": "45/45 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+      "library_file_id": "file_00000000bb4881f4b763c88e54b8818f",
+      "library_stable_id": "libfile_9179a6c4c42881918ecda5fa3183a7ad",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    }
+  }
 }

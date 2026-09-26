@@ -1,0 +1,45 @@
+{
+  "schema": "menschen-a1-l21-stage6-preflight-blocked-post-package-verification@1.0.0",
+  "scope": "A1-L21-Stage6-PREFLIGHT",
+  "status": "BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
+  "artifact": {
+    "filename": "Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
+    "sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
+    "library_file_id": "file_0000000022e882109febd61f7a0da677",
+    "library_stable_id": "libfile_64fcb0665d848191ad9331c90df7e478",
+    "size_bytes": 493355,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L21-STAGE6-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+  },
+  "runtime_authority": {
+    "current": "v435-R69",
+    "last_fully_verified": "v435-R69",
+    "current_artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
+    "expected_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+    "git_mirror": "PASS_EXACT_64_FILE_V435_R69_SOURCE_SYNC",
+    "no_downgrade": true
+  },
+  "validation": {
+    "preflight_validator": "22/22 PASS",
+    "stage5_fresh_validator": "186/186 PASS",
+    "cumulative_identity": "12/12 PASS / 2713 combined unique",
+    "manifest_rehash": "52/52 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+    "library_exact_byte_match": true
+  },
+  "blocker": {
+    "code": "CURRENT_PORTABLE_RAW_BYTES_UNAVAILABLE",
+    "materialization_error": "This Project file does not have an authorized raw-byte materialization path.",
+    "effect": "Hard Stage6 acceptance gate prevents final runtime/import/presentation acceptance. Git mirror is currentness evidence only and is not substituted for the exact portable artifact."
+  },
+  "not_claimed": [
+    "exact CURRENT v435 direct import",
+    "CURRENT v435 IndexedDB persistence/index commit for A1-L21",
+    "CURRENT v435 Flashcards/Quick/Typing/Audio production presentation acceptance",
+    "Stage6 PASS",
+    "Stage7 release/lock"
+  ],
+  "next_action": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance."
+}

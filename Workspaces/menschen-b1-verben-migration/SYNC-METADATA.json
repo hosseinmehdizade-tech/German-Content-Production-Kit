@@ -1,55 +1,60 @@
 {
-  "schema": "menschen-b1-verben-sync-metadata@1.17.0",
-  "updated_milestone": "STAGE3_BATCH0019",
+  "schema": "menschen-b1-verben-sync-metadata@1.18.0",
+  "updated_milestone": "STAGE3_BATCH0020",
   "persistence_git": "SYNCED",
   "source_manifest": {
     "path": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
     "status": "SYNCED_UNCHANGED"
   },
   "portable_artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0019-CHECKPOINT.zip",
-    "sha256": "6da72ca7a6a00b67b19ac1ed82ca939a99660a57438c154be01118ddb3e0aeb8",
-    "size_bytes": 4605413,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0019-CHECKPOINT.zip",
-    "library_file_id": "file_0000000083848243aeb54295f71879e0",
-    "library_stable_id": "libfile_7889ee5760108191871a34b66f6a909b",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0020-CHECKPOINT.zip",
+    "sha256": "8e77a1ab8227b333b3b0bfd4202125d4dfe5e1e56082c1f8993dff694360c9d9",
+    "size_bytes": 5043941,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0020-CHECKPOINT.zip",
+    "library_file_id": "file_00000000a5488210b39e8af4e4a8f3cf",
+    "library_stable_id": "libfile_55fe8d1bde2881919522b330b461557a",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
     "auxiliary_library_persistence": "PASS"
   },
   "validation": {
-    "batch0019": "43/43 PASS",
+    "batch0020": "46/46 PASS",
     "mem009_regression": "28/28 PASS",
-    "prior_batch_immutability": "108/108 PASS",
-    "manifest_rehash": "352/352 PASS",
-    "checksums_rehash": "351/351 PASS",
+    "prior_batch_immutability": "114/114 PASS",
+    "manifest_rehash": "371/371 PASS",
+    "checksums_rehash": "370/370 PASS",
     "package_hygiene": "PASS_NO_PYCACHE_PYC",
     "control_character_hygiene": "PASS"
   },
   "progress": {
-    "active_cards_complete": 378,
+    "active_cards_complete": 398,
     "active_cards_total": 400,
-    "remaining": 22,
-    "next_queue_target": "mb1m-lu-0456",
+    "remaining": 2,
+    "next_queue_target": "mb1m-lu-0480",
     "retired_ids": 83
   },
   "structural_change": {
     "identity_retirements": 0,
     "graph_cardinality_changed": false,
-    "normalization_repairs": [],
-    "source_fidelity_limitations": [
-      "mb1m-lu-0435 bremsen: trailing source OCR noise remains provenance-only and is not promoted to learner content",
-      "mb1m-lu-0447/0448 durchführen ↔ ausführen: reciprocal synonymy is bounded to Duden-attested overlapping contexts and is not universal"
+    "normalization_repairs": [
+      "mb1m-lu-0458: raw source zufrieden stellen / hat zufrieden gestellt preserved; learner form normalized to zufriedenstellen / hat zufriedengestellt"
+    ],
+    "nvv_verified": [
+      "mb1m-lu-0476"
     ],
     "synonym_pairs": [
       [
-        "mb1m-lu-0445",
-        "mb1m-lu-0446"
+        "mb1m-lu-0456",
+        "mb1m-lu-0468"
       ],
       [
-        "mb1m-lu-0447",
-        "mb1m-lu-0448"
+        "mb1m-lu-0473",
+        "mb1m-lu-0475"
+      ],
+      [
+        "mb1m-lu-0473",
+        "mb1m-lu-0476"
       ]
     ]
   },
-  "next_action": "Stage3 Batch0020 from mb1m-lu-0456 using the MEM009 active queue; process next 20 active pending IDs and skip retired IDs."
+  "next_action": "Stage3 Batch0021 final tail from mb1m-lu-0480; process mb1m-lu-0480 and mb1m-lu-0481, validate Stage3 complete, persist checkpoint, then proceed to Stage4."
 }

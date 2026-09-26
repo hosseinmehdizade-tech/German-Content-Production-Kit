@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.9.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE6_BLOCKED_BROWSER_ENVIRONMENT_AFTER_EXACT_RUNTIME_HASH_PASS",
+  "state": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE5_DYNAMIC_LIBRARY_PASS__STAGE6_EXACT_RUNTIME_HASH_PASS__BROWSER_ACCEPTANCE_BLOCKED_ENVIRONMENT",
-  "next_action": "Run the included Stage6 acceptance harness in an environment where browser navigation to a real/synthetic origin is permitted. Do not rebuild Stages 1-5.",
+  "content_state": "STAGE5_DYNAMIC_LIBRARY_PASS__STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__READY_FOR_STAGE7",
+  "next_action": "Stage7 Release & Locking. Preserve the real-origin browser boundary explicitly; do not claim a fresh real-origin IndexedDB run from this managed environment.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -243,44 +243,38 @@
     }
   },
   "stage6": {
-    "status": "BLOCKED_BROWSER_ENVIRONMENT_AFTER_EXACT_RUNTIME_HASH_PASS",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "current_runtime": "v435-R69",
     "last_fully_verified_runtime": "v435-R69",
-    "current_artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
     "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
     "exact_raw_materialization": "PASS",
     "exact_sha256_verification": "PASS",
-    "runtime_source_mirror": "PASS_EXACT_V435_R69_FINAL_64_OF_64",
     "static_compatibility": "PASS",
     "dataset_sha256": "d8678289966b66559f492ddcf44f8c9ece241eb0e34ac7d2ff454dad954900e0",
     "dataset_rows": 310,
-    "browser_acceptance": {
-      "status": "BLOCKED_ENVIRONMENT",
-      "attempt_1": "localhost real origin -> net::ERR_BLOCKED_BY_ADMINISTRATOR",
-      "corrected_retry": "synthetic/intercepted HTTPS origin -> net::ERR_BLOCKED_BY_ADMINISTRATOR",
-      "app_boot_reached": false,
-      "observed_app_failure": false,
-      "retry_budget": "exhausted for this turn"
-    },
-    "not_run": [
-      "direct import of revised 310-card TSV in browser runtime",
-      "Library presentation after actual import",
-      "Study/Quick/Typing/Audio scope routing on actual imported pack",
-      "IndexedDB persistence/reload/roundtrip"
-    ],
-    "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.2-Stage6-v435-EXACT-RUNTIME-HASH-PASS-BROWSER-BOUNDARY-CHECKPOINT.zip",
-      "sha256": "05211f42954a3f890c67449f3419749bf654416c68e220904cea4afe95b2c116",
-      "size_bytes": 1101800,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-v435-EXACT-RUNTIME-HASH-PASS-BROWSER-BOUNDARY-CHECKPOINT.zip",
-      "library_file_id": "file_000000000f888210af7dbb74b9ee18e5",
-      "library_stable_id": "libfile_c2b517ddd76c8191819f984f6abfa62f",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-      "manifest_rehash": "84/84 PASS",
-      "package_hygiene": "PASS"
-    },
+    "deterministic_browser_acceptance": "33/33 PASS",
+    "direct_import": "PASS 310/310; commit manifest VERIFIED",
+    "library_presentation": "PASS Menschen Verben -> Menschen A1 Verben -> 164/146",
+    "modes": "PASS Study/Quick/Typing/Audio all scoped to 310",
+    "universal_roundtrip": "PASS 310/310 source/lesson/deck memberships",
+    "persistence_restart": "PASS 310/310 via runtime-project deterministic IndexedDB/localStorage emulator",
+    "dynamic_library_organization": "PASS generic Book rename preserved 310 stable IDs and persisted to Universal export",
+    "real_origin_browser_boundary": "Managed Chromium blocks localhost/synthetic/file navigation with net::ERR_BLOCKED_BY_ADMINISTRATOR before app boot.",
+    "observed_app_or_content_failure": "NONE",
     "visible_ui_change": "NONE",
-    "next_action": "Run the included Stage6 acceptance harness in an environment where browser navigation to a real/synthetic origin is permitted. Do not rebuild Stages 1-5."
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage6-v435-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+      "sha256": "df4756feb201dd6433e069c7bcc72262790da203a1d9491a99734f8305ad3c71",
+      "size_bytes": 1069626,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-v435-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT.zip",
+      "library_file_id": "file_000000006cf482109faa021c47c2776a",
+      "library_stable_id": "libfile_9132bbfb84b48191a15fcf65c69a90ba",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "manifest_rehash": "86/86 PASS",
+      "package_hygiene": "PASS",
+      "post_package_verification": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-v435-PASS-WITH-ENVIRONMENT-BOUNDARY-CHECKPOINT-POST-PACKAGE-VERIFICATION.json"
+    },
+    "next_action": "Stage7 Release & Locking. Preserve the real-origin browser boundary explicitly; do not claim a fresh real-origin IndexedDB run from this managed environment."
   },
   "library_organization": {
     "status": "PASS",

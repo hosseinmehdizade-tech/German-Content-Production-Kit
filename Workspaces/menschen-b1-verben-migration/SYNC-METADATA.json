@@ -1,53 +1,59 @@
 {
-  "schema": "menschen-b1-verben-sync-metadata@1.19.0",
-  "updated_milestone": "STAGE3_COMPLETE",
+  "schema": "menschen-b1-verben-sync-metadata@1.20.0",
+  "updated_milestone": "STAGE4_COMPLETE",
   "persistence_git": "SYNCED",
   "source_manifest": {
     "path": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
     "status": "SYNCED_UNCHANGED"
   },
   "portable_artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "sha256": "02bc9c4928c39018a630f81076001422bd7c414576d1e7087b4c73ed3af6ae1d",
-    "size_bytes": 5278777,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "library_file_id": "file_00000000adb08210bb2f1cf79a604fdc",
-    "library_stable_id": "libfile_18fc18fce8288191b73a881936f69e7e",
-    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "auxiliary_library_persistence": "PASS"
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
+    "sha256": "db351d2e062a12750d4ccdce11cf3f7fb004439edaf9641c3b6db3d9e7573659",
+    "size_bytes": 768555,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage4-CHECKPOINT.zip",
+    "library_file_id": "file_00000000976881f4981f1cf2966b808e",
+    "library_stable_id": "libfile_162d3f648e8c8191b779a14ba613c537",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
   },
   "validation": {
-    "batch0021": "41/41 PASS",
-    "mem009_regression": "29/29 PASS",
-    "stage3_complete": "28/28 PASS",
-    "prior_batch_immutability": "120/120 PASS",
-    "manifest_rehash": "395/395 PASS",
-    "checksums_rehash": "394/394 PASS",
-    "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "control_character_hygiene": "PASS"
+    "custom_qa": "41/41 PASS",
+    "official_bundle_validator": "PASS_400_TARGETS_EXACT4_0_WARNINGS",
+    "profile_validator": "PASS",
+    "reference_registry_validator": "PASS",
+    "reference_availability_validator": "PASS",
+    "framework_pytest": "47/47 PASS",
+    "manifest_rehash": "30/30 PASS",
+    "checksums_rehash": "32/32 PASS",
+    "zip_file_count": 33,
+    "package_hygiene": "PASS_NO_PYCACHE_PYC"
   },
   "progress": {
     "active_cards_complete": 400,
     "active_cards_total": 400,
     "remaining": 0,
-    "next_queue_target": null,
-    "retired_ids": 83
+    "retired_ids": 83,
+    "next_stage": "STAGE5_DELIVERY_PROJECTION"
   },
   "structural_change": {
-    "identity_retirements": 0,
+    "canonical_identity_changes": 0,
     "graph_cardinality_changed": false,
-    "source_fidelity_limitations": [
-      "mb1m-lu-0480 für jdn. da sein: exact source expression retained; no exact standalone registered-reference headword found, so no unsupported synonym expansion"
+    "german_example_text_changes": 0,
+    "relation_semantic_changes": 0,
+    "repairs_total_records": 35,
+    "pos_profile_normalization": [
+      "mb1m-lu-0019"
     ],
-    "mem009_finalization": [
-      "mb1m-lu-0481 erobern retains military conquest and figurative winning-over/gaining on one lexical card; mb1m-lu-0482 remains retired"
+    "nvv_subtype_profile_normalization": [
+      "mb1m-lu-0002",
+      "mb1m-lu-0099"
     ],
-    "synonym_pairs": [
-      [
-        "mb1m-lu-0481",
-        "mb1m-lu-0058"
-      ]
-    ]
+    "duden_source_alias_normalizations": 29,
+    "synthetic_negative_check_refs_removed": 3,
+    "learner_translation_fixes": [
+      "mb1m-ex-0053-03 EN: removed slash-gloss ambiguity"
+    ],
+    "mem009_preserved": true,
+    "source_audio_status": "UNRESOLVED_EXPLICIT_NO_INVENTION"
   },
-  "next_action": "Stage4 — Linguistic & Lexical QA over the complete 400-card Stage3 authority. Preserve MEM-009 and source lineage; runtime binding remains deferred until Stage6."
+  "next_action": "Stage5 — Delivery Projection from Stage4 PASS authority; preserve MEM-009/source lineage and defer runtime binding until Stage6."
 }

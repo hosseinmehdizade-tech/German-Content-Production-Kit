@@ -739,12 +739,12 @@
         "environment_boundary": "Fresh real-origin content-specific browser run unavailable in managed environment; deterministic exact-runtime acceptance PASS."
       },
       "b1_verben_migration": {
-        "status": "ACTIVE_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "status": "ACTIVE_STAGE7_PREFLIGHT_BLOCKED",
         "workstream": "menschen-b1-verben-migration",
         "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
         "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
-        "current_milestone": "STAGE6_COMPLETE",
-        "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "current_milestone": "STAGE7_PREFLIGHT_BLOCKED",
+        "quality_state": "BLOCKED_AFTER_PARTIAL_EXACT_FINAL_ACCEPTANCE",
         "content_lock_state": "NOT_LOCKED",
         "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
         "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD",
@@ -792,7 +792,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           }
         },
-        "next_action": "Stage7 Release & Post-Package Verification; exact-final lock only after final package acceptance.",
+        "next_action": "Run only the two remaining Stage7 tail checks on exact candidate SHA 5ed54308...7013; if PASS, create exact-final post-package PASS sidecar and promote the same candidate bytes to LOCKED.",
         "stage6": {
           "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
           "quality_state": "PASS_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
@@ -843,17 +843,74 @@
           }
         },
         "latest_checkpoint": {
-          "filename": "Menschen-B1-Verben-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
-          "sha256": "6e9a36ffa69685687b31e99b12b71adc7b4b7b36cff62ee71dc372f13d317aab",
-          "size_bytes": 1784363,
-          "zip_file_count": 58,
-          "manifest_rehash": "55/55 PASS",
-          "checksums_rehash": "57/57 PASS",
-          "package_hygiene": "PASS_NO_PYCACHE_PYC",
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
-          "library_file_id": "file_00000000d5f081f485e89ca16f8a8bdf",
-          "library_stable_id": "libfile_f1ad8115b7288191b2f3ab0ced56faa4",
+          "filename": "Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
+          "sha256": "716def0550c5be3319853801e61c7d16e27955abb521a5bd602b182b6060f1f8",
+          "size_bytes": 3770,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
+          "library_file_id": "file_0000000046f481f4abb53fa058668786",
+          "library_stable_id": "libfile_63aab6dae1c481919ac77b044f520aab",
           "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+        },
+        "stage7": {
+          "state": "BLOCKED_AFTER_PARTIAL_EXACT_FINAL_ACCEPTANCE",
+          "content_lock_state": "NOT_LOCKED",
+          "candidate": {
+            "filename": "German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-UNLOCKED-CANDIDATE.zip",
+            "internal_build_release_name": "German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-LOCKED",
+            "sha256": "5ed543085ee09e6a504d908f9beb70bac679534a23a2805799a8ddbc57247013",
+            "size_bytes": 7070962,
+            "zip_members": 388,
+            "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-UNLOCKED-CANDIDATE.zip",
+            "library_file_id": "file_00000000d5f881f4a19eae853112fde1",
+            "library_stable_id": "libfile_c2010ec5afe48191b5263f187d693a7d",
+            "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+          },
+          "blocked_checkpoint": {
+            "filename": "Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
+            "sha256": "716def0550c5be3319853801e61c7d16e27955abb521a5bd602b182b6060f1f8",
+            "size_bytes": 3770,
+            "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
+            "library_file_id": "file_0000000046f481f4abb53fa058668786",
+            "library_stable_id": "libfile_63aab6dae1c481919ac77b044f520aab",
+            "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+          },
+          "static_postpackage": {
+            "fresh_extract": "PASS",
+            "release_manifest_rehash": "386/386 PASS",
+            "content_checksums_rehash": "387/387 PASS",
+            "runtime_base_preservation": "353/353 PASS",
+            "dataset_sha256": "e478694fecc9394a3d6ae381ff47dbca8a200fddd388830f9114206d26911b71",
+            "package_hygiene": "PASS_NO_PYCACHE_PYC"
+          },
+          "exact_final_acceptance": {
+            "observed": "31/33 PASS",
+            "not_completed": [
+              "dynamic_book_rename_persisted_400",
+              "final_dynamic_state_valid"
+            ],
+            "reason": "Managed execution wall-time limit terminated the exact-final run after dynamic_book_rename_preserves_ids PASS; one corrected retry reached the same boundary and then terminated when the tool process was killed.",
+            "completed_boundaries": [
+              "400/400 direct import and stable ID set",
+              "400/400 commit manifest + runtime index",
+              "Library hierarchy 137/140/123",
+              "Study/Quick/Typing/Audio full 400-card scope",
+              "400/400 Universal roundtrip",
+              "400/400 deterministic restart persistence",
+              "dynamic book rename preserved all 400 canonical IDs"
+            ]
+          },
+          "verification_sidecar": {
+            "filename": "Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-VERIFICATION.json",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-VERIFICATION.json",
+            "library_file_id": "file_00000000f78081f49dc6501f5886ad89",
+            "library_stable_id": "libfile_c9d93dd3d84481918affd05a76d2f39d"
+          },
+          "not_claimed": [
+            "Stage7 PASS",
+            "content LOCKED",
+            "33/33 exact-final acceptance"
+          ],
+          "next_action": "Run only the two remaining Stage7 tail checks on exact candidate SHA 5ed54308...7013; if PASS, create exact-final post-package PASS sidecar and promote the same candidate bytes to LOCKED."
         }
       }
     },

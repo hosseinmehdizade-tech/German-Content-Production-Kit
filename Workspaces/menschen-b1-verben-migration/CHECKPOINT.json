@@ -1,16 +1,16 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.26.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.27.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "STAGE7_PREFLIGHT_BLOCKED",
-  "status": "BLOCKED_STAGE7_PARTIAL_31_OF_33_LIBRARY_AND_GIT_METADATA_SYNCED",
+  "milestone": "STAGE7_LOCKED_COMPLETE",
+  "status": "LOCKED_STAGE7_PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_METADATA_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
   "upstream": {
-    "artifact": "Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
-    "sha256": "f16dd2edbd0792b5639dbedf200ee6cce9d635ad66cd4bde306f9ef23858cd8b",
-    "state": "PASS_STAGE5_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED"
+    "artifact": "Menschen-B1-Verben-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
+    "sha256": "6e9a36ffa69685687b31e99b12b71adc7b4b7b36cff62ee71dc372f13d317aab",
+    "state": "PASS_STAGE6_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_METADATA_SYNCED"
   },
   "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD",
   "stage3": {
@@ -90,16 +90,16 @@
     "retired_ids": 83
   },
   "artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
-    "sha256": "716def0550c5be3319853801e61c7d16e27955abb521a5bd602b182b6060f1f8",
-    "size_bytes": 3770,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
-    "library_file_id": "file_0000000046f481f4abb53fa058668786",
-    "library_stable_id": "libfile_63aab6dae1c481919ac77b044f520aab",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage7-LOCKED-CHECKPOINT.zip",
+    "sha256": "a760063339366eb081d8ab73afa5ad848c77a8c8f232d079e1b3b11dce884064",
+    "size_bytes": 5576,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-LOCKED-CHECKPOINT.zip",
+    "library_file_id": "file_00000000f8c882108dd3e44969e1c6bf",
+    "library_stable_id": "libfile_a110da39cd848191b3d07fdc3cfa5c0f",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
   },
   "source_audio_status": "RESOLVED_EXACT_SOURCE_INVENTORY_MAPPING",
-  "content_lock_state": "NOT_LOCKED",
+  "content_lock_state": "LOCKED",
   "stage_state": {
     "migration_audit": "PASS",
     "stage1": "PASS_MEDIA_MAPPING_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
@@ -108,10 +108,10 @@
     "stage4": "COMPLETE_PASS",
     "stage5": "COMPLETE_PASS",
     "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-    "stage7": "BLOCKED_PARTIAL_31_OF_33"
+    "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
-  "runtime_note": "Stage6 accepted exact CURRENT v435-R69 under the deterministic IndexedDB boundary. Managed real-origin navigation is administrator-blocked before app boot; no runtime/content failure observed.",
-  "next_action": "Run only the two remaining Stage7 tail checks on exact candidate SHA 5ed54308...7013; if PASS, create exact-final post-package PASS sidecar and promote the same candidate bytes to LOCKED.",
+  "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
+  "next_action": "B1 Verben migration is complete and LOCKED. Continue only with the next explicitly selected Menschen Verben scope; do not regenerate B1.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -281,64 +281,92 @@
     }
   },
   "stage7": {
-    "state": "BLOCKED_AFTER_PARTIAL_EXACT_FINAL_ACCEPTANCE",
-    "content_lock_state": "NOT_LOCKED",
-    "candidate": {
-      "filename": "German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-UNLOCKED-CANDIDATE.zip",
-      "internal_build_release_name": "German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-LOCKED",
-      "sha256": "5ed543085ee09e6a504d908f9beb70bac679534a23a2805799a8ddbc57247013",
-      "size_bytes": 7070962,
-      "zip_members": 388,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-UNLOCKED-CANDIDATE.zip",
-      "library_file_id": "file_00000000d5f881f4a19eae853112fde1",
-      "library_stable_id": "libfile_c2010ec5afe48191b5263f187d693a7d",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "verification_level": "V3_EXACT_FINAL_INTERNAL_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
+    "verification_mode": "BOUNDED_SPLIT_EXACT_FINAL_EXECUTION",
+    "runtime": "v435-R69",
+    "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+    "runtime_verification_state": "VERIFIED",
+    "runtime_release_final": true,
+    "exact_final_acceptance": "33/33 PASS via durable 31-check preflight + bounded 2-check tail rerun on byte-identical exact candidate SHA",
+    "tail_checks": {
+      "dynamic_book_rename_persisted_400": "PASS",
+      "final_dynamic_state_valid": "PASS",
+      "final_manifest": "VERIFIED / 400 cards / commitRevision 2"
     },
-    "blocked_checkpoint": {
-      "filename": "Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
-      "sha256": "716def0550c5be3319853801e61c7d16e27955abb521a5bd602b182b6060f1f8",
-      "size_bytes": 3770,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-CHECKPOINT.zip",
-      "library_file_id": "file_0000000046f481f4abb53fa058668786",
-      "library_stable_id": "libfile_63aab6dae1c481919ac77b044f520aab",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
-    },
+    "corrected_retry_note": "First bounded tail attempt observed the final manifest transiently at PUBLISHED_PENDING_VERIFY immediately after rename. The single corrected retry waited for the normal asynchronous manifest verification transition; both remaining checks then passed without changing runtime, dataset, or release bytes.",
+    "exact_final_boundaries": [
+      "400/400 exact direct import and stable IDs",
+      "400/400 commit manifest/runtime index",
+      "Library hierarchy 137/140/123",
+      "Study/Quick/Typing/Audio full 400-card scope",
+      "400/400 Universal roundtrip",
+      "400/400 deterministic restart persistence",
+      "dynamic book rename preserves all 400 canonical IDs",
+      "dynamic book rename persisted in Universal authority rows 400/400",
+      "final dynamic state valid with VERIFIED manifest"
+    ],
     "static_postpackage": {
       "fresh_extract": "PASS",
       "release_manifest_rehash": "386/386 PASS",
       "content_checksums_rehash": "387/387 PASS",
       "runtime_base_preservation": "353/353 PASS",
-      "dataset_sha256": "e478694fecc9394a3d6ae381ff47dbca8a200fddd388830f9114206d26911b71",
+      "zip_crc": "PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
-    "exact_final_acceptance": {
-      "observed": "31/33 PASS",
-      "not_completed": [
-        "dynamic_book_rename_persisted_400",
-        "final_dynamic_state_valid"
-      ],
-      "reason": "Managed execution wall-time limit terminated the exact-final run after dynamic_book_rename_preserves_ids PASS; one corrected retry reached the same boundary and then terminated when the tool process was killed.",
-      "completed_boundaries": [
-        "400/400 direct import and stable ID set",
-        "400/400 commit manifest + runtime index",
-        "Library hierarchy 137/140/123",
-        "Study/Quick/Typing/Audio full 400-card scope",
-        "400/400 Universal roundtrip",
-        "400/400 deterministic restart persistence",
-        "dynamic book rename preserved all 400 canonical IDs"
-      ]
+    "dataset": {
+      "filename": "B1-VERBEN-UNIVERSAL-v2.tsv",
+      "sha256": "e478694fecc9394a3d6ae381ff47dbca8a200fddd388830f9114206d26911b71",
+      "cards": 400,
+      "card_types": {
+        "german-verb": 279,
+        "de-vocabulary": 121
+      },
+      "examples": {
+        "de": 1600,
+        "fa": 1600,
+        "en": 1600
+      },
+      "relations": 472
     },
-    "verification_sidecar": {
-      "filename": "Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-VERIFICATION.json",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-PREFLIGHT-BLOCKED-VERIFICATION.json",
-      "library_file_id": "file_00000000f78081f49dc6501f5886ad89",
-      "library_stable_id": "libfile_c9d93dd3d84481918affd05a76d2f39d"
+    "source_audio": "439 target occurrence refs; zero-audio targets mb1m-lu-0030 and mb1m-lu-0363 preserved",
+    "mem009": "PASS",
+    "mem010": "PASS including persisted dynamic book rename with stable canonical IDs",
+    "release": {
+      "filename": "German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-LOCKED.zip",
+      "sha256": "5ed543085ee09e6a504d908f9beb70bac679534a23a2805799a8ddbc57247013",
+      "size_bytes": 7070962,
+      "zip_members": 388,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-LOCKED.zip",
+      "library_file_id": "file_000000006c1c8243a988733eb71aa1ef",
+      "library_stable_id": "libfile_d491fccec4408191ae89cf6adeb488e4",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "byte_identity_with_preflight_candidate": "PASS_EXACT_SHA256_MATCH"
     },
-    "not_claimed": [
-      "Stage7 PASS",
-      "content LOCKED",
-      "33/33 exact-final acceptance"
-    ],
-    "next_action": "Run only the two remaining Stage7 tail checks on exact candidate SHA 5ed54308...7013; if PASS, create exact-final post-package PASS sidecar and promote the same candidate bytes to LOCKED."
+    "locked_checkpoint": {
+      "filename": "Menschen-B1-Verben-v3.3.2-Stage7-LOCKED-CHECKPOINT.zip",
+      "sha256": "a760063339366eb081d8ab73afa5ad848c77a8c8f232d079e1b3b11dce884064",
+      "size_bytes": 5576,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-LOCKED-CHECKPOINT.zip",
+      "library_file_id": "file_00000000f8c882108dd3e44969e1c6bf",
+      "library_stable_id": "libfile_a110da39cd848191b3d07fdc3cfa5c0f",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "exact_final_acceptance_report": {
+      "filename": "Menschen-B1-Verben-v3.3.2-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+      "library_file_id": "file_000000000d0081f49c54a674d5524d9d",
+      "library_stable_id": "libfile_67c6132bd7fc81918aa3d40685bf2495"
+    },
+    "post_package_verification": {
+      "filename": "Menschen-B1-Verben-v3.3.2-Stage7-POST-PACKAGE-VERIFICATION.json",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage7-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_0000000063008210909dc3bff2f283de",
+      "library_stable_id": "libfile_e8d10131eac8819190b9aa8fa6ecac10"
+    },
+    "environment_boundary": "Fresh real-origin B1-content-specific browser navigation remains unavailable in the managed environment. Exact v435-R69 is already VERIFIED/FINAL; exact release bytes passed deterministic IndexedDB acceptance and no app/content failure was observed.",
+    "visible_ui_change": "NONE",
+    "next_action": "B1 Verben migration is complete and LOCKED. Continue only with the next explicitly selected Menschen Verben scope; do not regenerate B1."
   }
 }

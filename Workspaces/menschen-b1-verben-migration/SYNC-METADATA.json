@@ -1,60 +1,53 @@
 {
-  "schema": "menschen-b1-verben-sync-metadata@1.18.0",
-  "updated_milestone": "STAGE3_BATCH0020",
+  "schema": "menschen-b1-verben-sync-metadata@1.19.0",
+  "updated_milestone": "STAGE3_COMPLETE",
   "persistence_git": "SYNCED",
   "source_manifest": {
     "path": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
     "status": "SYNCED_UNCHANGED"
   },
   "portable_artifact": {
-    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-Batch0020-CHECKPOINT.zip",
-    "sha256": "8e77a1ab8227b333b3b0bfd4202125d4dfe5e1e56082c1f8993dff694360c9d9",
-    "size_bytes": 5043941,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-Batch0020-CHECKPOINT.zip",
-    "library_file_id": "file_00000000a5488210b39e8af4e4a8f3cf",
-    "library_stable_id": "libfile_55fe8d1bde2881919522b330b461557a",
+    "filename": "Menschen-B1-Verben-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+    "sha256": "02bc9c4928c39018a630f81076001422bd7c414576d1e7087b4c73ed3af6ae1d",
+    "size_bytes": 5278777,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000adb08210bb2f1cf79a604fdc",
+    "library_stable_id": "libfile_18fc18fce8288191b73a881936f69e7e",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
     "auxiliary_library_persistence": "PASS"
   },
   "validation": {
-    "batch0020": "46/46 PASS",
-    "mem009_regression": "28/28 PASS",
-    "prior_batch_immutability": "114/114 PASS",
-    "manifest_rehash": "371/371 PASS",
-    "checksums_rehash": "370/370 PASS",
+    "batch0021": "41/41 PASS",
+    "mem009_regression": "29/29 PASS",
+    "stage3_complete": "28/28 PASS",
+    "prior_batch_immutability": "120/120 PASS",
+    "manifest_rehash": "395/395 PASS",
+    "checksums_rehash": "394/394 PASS",
     "package_hygiene": "PASS_NO_PYCACHE_PYC",
     "control_character_hygiene": "PASS"
   },
   "progress": {
-    "active_cards_complete": 398,
+    "active_cards_complete": 400,
     "active_cards_total": 400,
-    "remaining": 2,
-    "next_queue_target": "mb1m-lu-0480",
+    "remaining": 0,
+    "next_queue_target": null,
     "retired_ids": 83
   },
   "structural_change": {
     "identity_retirements": 0,
     "graph_cardinality_changed": false,
-    "normalization_repairs": [
-      "mb1m-lu-0458: raw source zufrieden stellen / hat zufrieden gestellt preserved; learner form normalized to zufriedenstellen / hat zufriedengestellt"
+    "source_fidelity_limitations": [
+      "mb1m-lu-0480 für jdn. da sein: exact source expression retained; no exact standalone registered-reference headword found, so no unsupported synonym expansion"
     ],
-    "nvv_verified": [
-      "mb1m-lu-0476"
+    "mem009_finalization": [
+      "mb1m-lu-0481 erobern retains military conquest and figurative winning-over/gaining on one lexical card; mb1m-lu-0482 remains retired"
     ],
     "synonym_pairs": [
       [
-        "mb1m-lu-0456",
-        "mb1m-lu-0468"
-      ],
-      [
-        "mb1m-lu-0473",
-        "mb1m-lu-0475"
-      ],
-      [
-        "mb1m-lu-0473",
-        "mb1m-lu-0476"
+        "mb1m-lu-0481",
+        "mb1m-lu-0058"
       ]
     ]
   },
-  "next_action": "Stage3 Batch0021 final tail from mb1m-lu-0480; process mb1m-lu-0480 and mb1m-lu-0481, validate Stage3 complete, persist checkpoint, then proceed to Stage4."
+  "next_action": "Stage4 — Linguistic & Lexical QA over the complete 400-card Stage3 authority. Preserve MEM-009 and source lineage; runtime binding remains deferred until Stage6."
 }

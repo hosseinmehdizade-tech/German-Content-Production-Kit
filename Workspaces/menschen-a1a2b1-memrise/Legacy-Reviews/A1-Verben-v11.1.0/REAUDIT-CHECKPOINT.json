@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.8.0",
+  "schema": "menschen-a1-verben-legacy-reaudit-checkpoint@1.9.0",
   "framework": "v3.3.2",
   "scope": "Menschen A1 supplement / Grundwortschatz-Verben legacy v11.1.0",
-  "state": "STAGE6_BLOCKED_AFTER_V435_STATIC_COMPAT_PASS",
+  "state": "STAGE6_BLOCKED_BROWSER_ENVIRONMENT_AFTER_EXACT_RUNTIME_HASH_PASS",
   "legacy_input": {
     "cards": 279,
     "source_rows": 276,
@@ -63,8 +63,8 @@
     "library_stable_id": "libfile_6f1492aeb180819197b76ecef8245c10",
     "library_persistence": "PASS"
   },
-  "content_state": "STAGE5_DYNAMIC_LIBRARY_PASS__STAGE6_STATIC_COMPAT_PASS__FINAL_RUNTIME_ACCEPTANCE_BLOCKED_RAW_CURRENT_BYTES",
-  "next_action": "Obtain/authorize raw bytes of the exact CURRENT v435-R69 FINAL ZIP, verify SHA-256, then run direct import + presentation + IndexedDB persistence/roundtrip using the revised Stage5 dynamic-Library dataset. Do not rebuild Stages 1-5.",
+  "content_state": "STAGE5_DYNAMIC_LIBRARY_PASS__STAGE6_EXACT_RUNTIME_HASH_PASS__BROWSER_ACCEPTANCE_BLOCKED_ENVIRONMENT",
+  "next_action": "Run the included Stage6 acceptance harness in an environment where browser navigation to a real/synthetic origin is permitted. Do not rebuild Stages 1-5.",
   "stage3": {
     "status": "PASS_COMPLETE_LIBRARY_AND_GIT_METADATA_SYNCED",
     "completed_batches": [
@@ -243,53 +243,44 @@
     }
   },
   "stage6": {
-    "status": "BLOCKED_AFTER_STATIC_COMPATIBILITY_PASS",
+    "status": "BLOCKED_BROWSER_ENVIRONMENT_AFTER_EXACT_RUNTIME_HASH_PASS",
     "current_runtime": "v435-R69",
     "last_fully_verified_runtime": "v435-R69",
     "current_artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
-    "expected_runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
-    "exact_git_runtime_mirror": "PASS_EXACT_V435_R69_FINAL_RUNTIME_SOURCE_SYNC_64_OF_64",
-    "static_compatibility": {
-      "status": "PASS",
-      "dataset_sha256": "d8678289966b66559f492ddcf44f8c9ece241eb0e34ac7d2ff454dad954900e0",
-      "rows": 310,
-      "exact_universal_headers": true,
-      "unique_ids": 310,
-      "book_seed": "Menschen Verben",
-      "lesson_seed": "Menschen A1 Verben",
-      "deck_counts": {
-        "Verben mit Präpositionen 1": 164,
-        "Verben mit Präpositionen 2": 146
-      },
-      "v435_mapping": "source/lesson/deck are generic normalized card metadata",
-      "v435_library_model": "Books/Lessons/Decks are derived generically from card metadata; no Menschen-specific hard-code"
+    "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+    "exact_raw_materialization": "PASS",
+    "exact_sha256_verification": "PASS",
+    "runtime_source_mirror": "PASS_EXACT_V435_R69_FINAL_64_OF_64",
+    "static_compatibility": "PASS",
+    "dataset_sha256": "d8678289966b66559f492ddcf44f8c9ece241eb0e34ac7d2ff454dad954900e0",
+    "dataset_rows": 310,
+    "browser_acceptance": {
+      "status": "BLOCKED_ENVIRONMENT",
+      "attempt_1": "localhost real origin -> net::ERR_BLOCKED_BY_ADMINISTRATOR",
+      "corrected_retry": "synthetic/intercepted HTTPS origin -> net::ERR_BLOCKED_BY_ADMINISTRATOR",
+      "app_boot_reached": false,
+      "observed_app_failure": false,
+      "retry_budget": "exhausted for this turn"
     },
-    "materialization": {
-      "status": "BLOCKED_RAW_BYTE_AUTHORIZATION",
-      "attempts": 2,
-      "exact_file_id": "file_000000001f1081f58b26a4a8bc7a115b",
-      "duplicate_file_id": "file_00000000e884820aafb1fe34efe5f2d0",
-      "result": "Both raw-byte materialization attempts were unauthorized in the managed Project context."
-    },
-    "not_run_due_blocker": [
-      "exact portable ZIP SHA recomputation in current environment",
-      "direct import of revised 310-card TSV on portable CURRENT",
-      "browser presentation acceptance of actual imported pack",
-      "IndexedDB persistence/reload/roundtrip of actual imported pack"
+    "not_run": [
+      "direct import of revised 310-card TSV in browser runtime",
+      "Library presentation after actual import",
+      "Study/Quick/Typing/Audio scope routing on actual imported pack",
+      "IndexedDB persistence/reload/roundtrip"
     ],
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.2-Stage6-v435-STATIC-COMPAT-PASS-RUNTIME-BLOCKED-CHECKPOINT.zip",
-      "sha256": "9c45350233bd824d7dd3044bc1bbec1836188ad07c6b374b8c0e06da2c926b0e",
-      "size_bytes": 1051795,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-v435-STATIC-COMPAT-PASS-RUNTIME-BLOCKED-CHECKPOINT.zip",
-      "library_file_id": "file_00000000273c81f496ce65db6ac8bedf",
-      "library_stable_id": "libfile_3b3c74e65fd081918cb1e2546a96f8f1",
+      "filename": "Menschen-A1-Verben-v3.3.2-Stage6-v435-EXACT-RUNTIME-HASH-PASS-BROWSER-BOUNDARY-CHECKPOINT.zip",
+      "sha256": "05211f42954a3f890c67449f3419749bf654416c68e220904cea4afe95b2c116",
+      "size_bytes": 1101800,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.2-Stage6-v435-EXACT-RUNTIME-HASH-PASS-BROWSER-BOUNDARY-CHECKPOINT.zip",
+      "library_file_id": "file_000000000f888210af7dbb74b9ee18e5",
+      "library_stable_id": "libfile_c2b517ddd76c8191819f984f6abfa62f",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-      "manifest_rehash": "80/80 PASS",
+      "manifest_rehash": "84/84 PASS",
       "package_hygiene": "PASS"
     },
     "visible_ui_change": "NONE",
-    "next_action": "Obtain/authorize raw bytes of the exact CURRENT v435-R69 FINAL ZIP, verify SHA-256, then run direct import + presentation + IndexedDB persistence/roundtrip using the revised Stage5 dynamic-Library dataset. Do not rebuild Stages 1-5."
+    "next_action": "Run the included Stage6 acceptance harness in an environment where browser navigation to a real/synthetic origin is permitted. Do not rebuild Stages 1-5."
   },
   "library_organization": {
     "status": "PASS",

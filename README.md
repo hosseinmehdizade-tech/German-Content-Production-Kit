@@ -1,4 +1,4 @@
-# German Content Production Kit — active v3.3.2
+\n\nSeparate **Menschen B1 Verben migration is now LOCKED**: 400 cards, Stage7 exact-final **33/33 PASS via bounded split execution on byte-identical v435-R69 release bytes**, Library rematerialization exact SHA PASS. Locked release: `German-Flashcards-Pro-v435-R69-Menschen-B1-Verben-v3.3.2-LOCKED.zip` (`5ed543085ee09e6a504d908f9beb70bac679534a23a2805799a8ddbc57247013`). Runtime/UI unchanged; managed real-origin content-specific navigation remains an environment boundary.\n# German Content Production Kit — active v3.3.2
 
 The active production framework is **v3.3.2 — Menschen Course Export Ready**. GitHub is the compact durability/coordination mirror; exact verified portable artifacts live in ChatGPT Library and are identified by SHA-256 in `PROJECT-STATE.json`.
 

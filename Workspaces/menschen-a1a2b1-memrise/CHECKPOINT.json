@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L20 remains locked authority. A1-L21 Stage6 preflight is blocked only by CURRENT v435-R69 portable raw-byte materialization; exact Stage5 content-side checks and cumulative identity pass."
+    "git_sync_note": "A1-L21 Stage7 LOCKED on exact CURRENT v435-R69; final ZIP rematerialized with exact SHA match; Git metadata synced."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -294,7 +294,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance. Preserve exact Stage5 authority and do not downgrade from CURRENT v435-R69.",
+  "resume_instruction": "A1-L22 Stage1/2 — Source & Inventory + Canonicalization",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -310,9 +310,9 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
     "latest_portable_checkpoint_sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97"
   },
-  "current_scope": "A1-L21 Stage6 PREFLIGHT BLOCKED",
-  "lock_state": "A1-L01_TO_A1-L20_LOCKED",
-  "locked_at": "2026-09-24",
+  "current_scope": "A1-L21 Stage7 LOCKED",
+  "lock_state": "A1-L01_TO_A1-L21_LOCKED",
+  "locked_at": "2026-09-26",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
     "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
@@ -631,6 +631,30 @@
       "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L19-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    },
+    "A1-L21": {
+      "filename": "Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+      "sha256": "3609cac630834bbfe37e43b2c9a710f8f6028fd4ba450c6389a0c6b911f40a10",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+      "library_file_id": "file_0000000008a481f497064dd7f7c8f35d",
+      "library_stable_id": "libfile_17b3877419d081918fdbc1b6d8f311d3",
+      "runtime": "GFP-v435-R69",
+      "cards": 151,
+      "new_canonical_ids": 148,
+      "reused_canonical_ids": [
+        "ma1m-lu-0875",
+        "ma1m-lu-2093",
+        "ma1m-lu-2108"
+      ],
+      "cumulative_unique_cards": 2713,
+      "stage4": "40/40 PASS",
+      "stage5": "186/186 PASS",
+      "stage6": "21/21 direct + 11/11 presentation + 151/151 persistence/index + 12/12 cumulative identity PASS",
+      "stage7": "PASS",
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L21-POST-PACKAGE-VERIFICATION.json",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "content_state": "LOCKED"
     }
   },
   "a1_l03": {
@@ -1645,18 +1669,18 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
-    "sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
-    "library_file_id": "file_0000000022e882109febd61f7a0da677",
-    "library_stable_id": "libfile_64fcb0665d848191ad9331c90df7e478",
-    "size_bytes": 493355,
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L21-STAGE6-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+    "filename": "Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+    "sha256": "3609cac630834bbfe37e43b2c9a710f8f6028fd4ba450c6389a0c6b911f40a10",
+    "size_bytes": 498860,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+    "library_file_id": "file_0000000008a481f497064dd7f7c8f35d",
+    "library_stable_id": "libfile_17b3877419d081918fdbc1b6d8f311d3",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L21 Stage6 PREFLIGHT",
-    "quality_state": "BLOCKED"
+    "stage": "A1-L21 Stage7",
+    "quality_state": "PASS",
+    "state": "LOCKED"
   },
-  "next_action": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance.",
+  "next_action": "A1-L22 Stage1/2 — Source & Inventory + Canonicalization",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2702,60 +2726,34 @@
     "next_operation": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade."
   },
   "latest_stage6_checkpoint": {
-    "status": "BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
-    "quality_state": "BLOCKED_BEFORE_EXACT_CURRENT_RUNTIME_ACCEPTANCE",
+    "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "quality_state": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE",
     "scope": "A1-L21",
     "runtime": "v435-R69",
     "runtime_verification_state": "VERIFIED",
     "runtime_release_final": true,
-    "expected_runtime_artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
-    "expected_runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+    "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
     "last_fully_verified_runtime": "v435-R69",
     "no_downgrade": true,
-    "git_runtime_mirror": "PASS_EXACT_64_FILE_V435_R69_SOURCE_SYNC",
-    "portable_materialization": {
-      "status": "BLOCKED",
-      "attempted_file_id": "file_000000001f1081f58b26a4a8bc7a115b",
-      "error": "This Project file does not have an authorized raw-byte materialization path.",
-      "corrected_library_lookup": "NO_EXACT_V435_FINAL_ZIP_RECORD_FOUND_IN_PERSONAL_LIBRARY_INDEX"
-    },
-    "content_side_preflight": {
-      "stage5_fresh_validation": "186/186 PASS",
-      "stage5_transport_rows": 151,
-      "cumulative_identity": "12/12 PASS",
-      "combined_unique_cards": 2713,
-      "new_l21_ids": 148,
-      "expected_reuses": [
-        "ma1m-lu-0875",
-        "ma1m-lu-2093",
-        "ma1m-lu-2108"
-      ],
-      "new_id_range": "ma1m-lu-2566..ma1m-lu-2713",
-      "dataset_sha256": "9b0b526782210cdb30fe0a9d560a103902ddf07d12db295cb44648e61ef018b8",
-      "projected_cards_sha256": "d241b16713b74c38ac3ab10b4d67d5c0c977b9dc03a36ee430ad59e80020a239"
-    },
-    "preflight_validator": "22/22 PASS",
-    "manifest_rehash": "52/52 PASS",
+    "runtime_file_count": 64,
+    "stage5_fresh_validation": "186/186 PASS",
+    "direct_outer_import": "21/21 PASS / 151 cards",
+    "runtime_persistence_index": "151/151 VERIFIED",
+    "runtime_presentation": "11/11 PASS / study4 quick2 typing3 audio3",
+    "cumulative_identity": "12/12 PASS / 2713 unique",
+    "environment_boundary": "NONE_CURRENT_V435_VERIFIED_FINAL",
+    "manifest_rehash": "56/56 PASS",
     "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "not_claimed": [
-      "exact CURRENT v435 direct import",
-      "CURRENT v435 IndexedDB persistence/index commit for A1-L21",
-      "CURRENT v435 Flashcards/Quick/Typing/Audio production presentation acceptance",
-      "Stage6 PASS",
-      "Stage7 release/lock"
-    ],
-    "blocker_code": "CURRENT_PORTABLE_RAW_BYTES_UNAVAILABLE",
     "artifact": {
-      "filename": "Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
-      "sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
-      "library_file_id": "file_0000000022e882109febd61f7a0da677",
-      "library_stable_id": "libfile_64fcb0665d848191ad9331c90df7e478",
-      "size_bytes": 493355,
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L21-STAGE6-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+      "filename": "Menschen-A1-L21-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
+      "sha256": "09d7fe9da64e192cf7e3f47739d4b98ef86d465d9b53e7baad7bb10a3290b7ce",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
+      "library_file_id": "file_00000000db208210b2854b774dc36f2d",
+      "library_stable_id": "libfile_613e017943a081919a15b5efa258e6ba",
+      "size_bytes": 498881,
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
-    "next_action": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance."
+    "next_action": "A1-L21 Stage7 Release & Post-Package Verification"
   },
   "latest_stage7_preflight": {
     "state": "SUPERSEDED_BY_LOCKED_RELEASE",
@@ -2851,33 +2849,37 @@
     "next_operation": "Await user-device Windows/Chrome acceptance evidence for the exact candidate, then resume Stage7."
   },
   "latest_stage7_checkpoint": {
-    "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-    "scope": "A1-L20",
+    "state": "PASS",
+    "scope": "A1-L21",
     "content_lock_state": "LOCKED",
     "verification_level": "V3_EXACT_FINAL_INTERNAL_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
     "artifact": {
-      "filename": "Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
-      "sha256": "ce16f4d42cee03005871a065538fe03b1299b13c8a6d3b90421ab07e643c1f40",
-      "size_bytes": 409323,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-GFP-v432-LOCKED.zip",
-      "library_file_id": "file_00000000d0608243a60ac6a18f5476c5",
-      "library_stable_id": "libfile_fdc2b43d15348191aa48620d0819d085",
+      "filename": "Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+      "sha256": "3609cac630834bbfe37e43b2c9a710f8f6028fd4ba450c6389a0c6b911f40a10",
+      "size_bytes": 498860,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+      "library_file_id": "file_0000000008a481f497064dd7f7c8f35d",
+      "library_stable_id": "libfile_17b3877419d081918fdbc1b6d8f311d3",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
-    "accepted_runtime_lineage": "v432-R66",
-    "runtime_sha256": "370ae746045cb0301b37e60a709e7c3a4ca324aa43037fffa867e0bacac63d47",
-    "runtime_current_at_lock": "v433-R67",
-    "exact_final_outer_import_presentation": "33/33 PASS",
-    "exact_final_commit_manifest": "VERIFIED_133",
-    "exact_final_universal_roundtrip": "133/133 PASS",
-    "exact_final_runtime_index": "133/133 PASS",
-    "stage5_fresh_regression": "167/167 PASS",
+    "accepted_runtime_lineage": "v435-R69",
+    "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+    "runtime_current_at_lock": "v435-R69",
+    "exact_final_outer_import_presentation_identity": "33/33 PASS",
+    "exact_final_commit_manifest": "VERIFIED_151",
+    "exact_final_universal_roundtrip": "151/151 PASS",
+    "exact_final_runtime_index": "151/151 PASS",
+    "exact_final_card_types": {
+      "de-vocabulary": 124,
+      "german-verb": 27
+    },
+    "stage5_fresh_regression": "186/186 PASS",
     "stage6_fresh_regression": "24/24 PASS",
-    "manifest_rehash": "56/56 PASS",
+    "manifest_rehash": "57/57 PASS",
     "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L20-POST-PACKAGE-VERIFICATION.json",
-    "runtime_boundary": "CURRENT v433/R67 app-runtime verification remains separate; it does not reopen this content lock.",
-    "next_action": "A1-L21 Stage1/2"
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L21-POST-PACKAGE-VERIFICATION.json",
+    "runtime_boundary": "NONE — CURRENT v435-R69 is VERIFIED/FINAL.",
+    "next_action": "A1-L22 Stage1/2 — Source & Inventory + Canonicalization"
   },
   "autorun_stage7_completion": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
@@ -2900,7 +2902,7 @@
     "next_operation": "A1-L21 Stage1/2"
   },
   "a1_l21": {
-    "state": "STAGE6_PREFLIGHT_BLOCKED",
+    "state": "LOCKED",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L21",
@@ -3145,60 +3147,67 @@
       "next_action": "A1-L21 Stage6 Runtime & Presentation Acceptance; resolve Flashcards CURRENT at execution"
     },
     "stage6": {
-      "status": "BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
-      "quality_state": "BLOCKED_BEFORE_EXACT_CURRENT_RUNTIME_ACCEPTANCE",
+      "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+      "quality_state": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE",
       "scope": "A1-L21",
       "runtime": "v435-R69",
       "runtime_verification_state": "VERIFIED",
       "runtime_release_final": true,
-      "expected_runtime_artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
-      "expected_runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+      "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
       "last_fully_verified_runtime": "v435-R69",
       "no_downgrade": true,
-      "git_runtime_mirror": "PASS_EXACT_64_FILE_V435_R69_SOURCE_SYNC",
-      "portable_materialization": {
-        "status": "BLOCKED",
-        "attempted_file_id": "file_000000001f1081f58b26a4a8bc7a115b",
-        "error": "This Project file does not have an authorized raw-byte materialization path.",
-        "corrected_library_lookup": "NO_EXACT_V435_FINAL_ZIP_RECORD_FOUND_IN_PERSONAL_LIBRARY_INDEX"
-      },
-      "content_side_preflight": {
-        "stage5_fresh_validation": "186/186 PASS",
-        "stage5_transport_rows": 151,
-        "cumulative_identity": "12/12 PASS",
-        "combined_unique_cards": 2713,
-        "new_l21_ids": 148,
-        "expected_reuses": [
-          "ma1m-lu-0875",
-          "ma1m-lu-2093",
-          "ma1m-lu-2108"
-        ],
-        "new_id_range": "ma1m-lu-2566..ma1m-lu-2713",
-        "dataset_sha256": "9b0b526782210cdb30fe0a9d560a103902ddf07d12db295cb44648e61ef018b8",
-        "projected_cards_sha256": "d241b16713b74c38ac3ab10b4d67d5c0c977b9dc03a36ee430ad59e80020a239"
-      },
-      "preflight_validator": "22/22 PASS",
-      "manifest_rehash": "52/52 PASS",
+      "runtime_file_count": 64,
+      "stage5_fresh_validation": "186/186 PASS",
+      "direct_outer_import": "21/21 PASS / 151 cards",
+      "runtime_persistence_index": "151/151 VERIFIED",
+      "runtime_presentation": "11/11 PASS / study4 quick2 typing3 audio3",
+      "cumulative_identity": "12/12 PASS / 2713 unique",
+      "environment_boundary": "NONE_CURRENT_V435_VERIFIED_FINAL",
+      "manifest_rehash": "56/56 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC",
-      "not_claimed": [
-        "exact CURRENT v435 direct import",
-        "CURRENT v435 IndexedDB persistence/index commit for A1-L21",
-        "CURRENT v435 Flashcards/Quick/Typing/Audio production presentation acceptance",
-        "Stage6 PASS",
-        "Stage7 release/lock"
-      ],
-      "blocker_code": "CURRENT_PORTABLE_RAW_BYTES_UNAVAILABLE",
       "artifact": {
-        "filename": "Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
-        "sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
-        "library_file_id": "file_0000000022e882109febd61f7a0da677",
-        "library_stable_id": "libfile_64fcb0665d848191ad9331c90df7e478",
-        "size_bytes": 493355,
-        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L21-STAGE6-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+        "filename": "Menschen-A1-L21-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
+        "sha256": "09d7fe9da64e192cf7e3f47739d4b98ef86d465d9b53e7baad7bb10a3290b7ce",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
+        "library_file_id": "file_00000000db208210b2854b774dc36f2d",
+        "library_stable_id": "libfile_613e017943a081919a15b5efa258e6ba",
+        "size_bytes": 498881,
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
-      "next_action": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance."
+      "next_action": "A1-L21 Stage7 Release & Post-Package Verification"
+    },
+    "stage7": {
+      "state": "PASS",
+      "scope": "A1-L21",
+      "content_lock_state": "LOCKED",
+      "verification_level": "V3_EXACT_FINAL_INTERNAL_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
+      "artifact": {
+        "filename": "Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+        "sha256": "3609cac630834bbfe37e43b2c9a710f8f6028fd4ba450c6389a0c6b911f40a10",
+        "size_bytes": 498860,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-GFP-v435-LOCKED.zip",
+        "library_file_id": "file_0000000008a481f497064dd7f7c8f35d",
+        "library_stable_id": "libfile_17b3877419d081918fdbc1b6d8f311d3",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "accepted_runtime_lineage": "v435-R69",
+      "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+      "runtime_current_at_lock": "v435-R69",
+      "exact_final_outer_import_presentation_identity": "33/33 PASS",
+      "exact_final_commit_manifest": "VERIFIED_151",
+      "exact_final_universal_roundtrip": "151/151 PASS",
+      "exact_final_runtime_index": "151/151 PASS",
+      "exact_final_card_types": {
+        "de-vocabulary": 124,
+        "german-verb": 27
+      },
+      "stage5_fresh_regression": "186/186 PASS",
+      "stage6_fresh_regression": "24/24 PASS",
+      "manifest_rehash": "57/57 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L21-POST-PACKAGE-VERIFICATION.json",
+      "runtime_boundary": "NONE — CURRENT v435-R69 is VERIFIED/FINAL.",
+      "next_action": "A1-L22 Stage1/2 — Source & Inventory + Canonicalization"
     }
   },
   "a1_l01_repaired_successor": {

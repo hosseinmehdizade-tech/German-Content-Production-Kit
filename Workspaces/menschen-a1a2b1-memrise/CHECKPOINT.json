@@ -294,7 +294,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "Resume A1-L21 at Stage4 Linguistic & Lexical QA using the verified Stage3 COMPLETE portable checkpoint; preserve locked reuse IDs ma1m-lu-0875, ma1m-lu-2093 and ma1m-lu-2108; preserve MEM-009 one-card multi-meaning identity.",
+  "resume_instruction": "Resume A1-L21 at Stage5 Delivery Projection using the verified Stage4 portable checkpoint; preserve locked reuse IDs ma1m-lu-0875, ma1m-lu-2093 and ma1m-lu-2108 and MEM-009 one-card multi-meaning identity.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -307,10 +307,10 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L20",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "8c064b1c74d71218cbaf069a1a162e2427665fe8b94ddfd60691128520005491"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "d906226343c081d9b5fc668075c5ac4d603c9e7e8b1b94e86ecb0705778c3f17"
   },
-  "current_scope": "A1-L21 Stage3 COMPLETE PASS",
+  "current_scope": "A1-L21 Stage4 PASS",
   "lock_state": "A1-L01_TO_A1-L20_LOCKED",
   "locked_at": "2026-09-24",
   "release_artifact": {
@@ -1645,19 +1645,18 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L21-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "sha256": "8c064b1c74d71218cbaf069a1a162e2427665fe8b94ddfd60691128520005491",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage3-COMPLETE-CHECKPOINT.zip",
-    "library_file_id": "file_0000000043248246b736d140584564dc",
-    "library_stable_id": "libfile_576c25d650088191ab131393135e93c7",
-    "size_bytes": 262863,
-    "manifest_rehash": "73/73 PASS",
-    "validator": "17/17 PASS",
+    "filename": "Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+    "sha256": "d906226343c081d9b5fc668075c5ac4d603c9e7e8b1b94e86ecb0705778c3f17",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+    "library_file_id": "file_00000000429481f4a11dc979d758de71",
+    "library_stable_id": "libfile_b296c050d7f0819197348c9e7f303d74",
+    "size_bytes": 197517,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L21-STAGE4-POST-PACKAGE-VERIFICATION.json",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L21 Stage3 COMPLETE",
+    "stage": "A1-L21 Stage4",
     "quality_state": "PASS"
   },
-  "next_action": "A1-L21 Stage4 Linguistic & Lexical QA",
+  "next_action": "A1-L21 Stage5 Delivery Projection",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2534,54 +2533,67 @@
     "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6."
   },
   "latest_stage4_checkpoint": {
-    "state": "PASS",
-    "scope": "A1-L20",
-    "custom_qa": "54/54 PASS",
-    "custom_qa_advisories": 1,
-    "repairs_applied": 22,
+    "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "scope": "A1-L21",
+    "custom_qa": "40/40 PASS",
+    "repairs_applied": 41,
     "repair_breakdown": {
-      "expression_type_profile_normalization": 18,
-      "locked_reuse_integration": 4,
+      "expression_type_profile_normalization": 6,
+      "relation_value_target_type_normalization": 31,
+      "source_registry_completion": 1,
+      "locked_reuse_integration": 3,
       "profile_metadata_completion": 0
     },
-    "official_bundle_validator": "PASS_133_TARGETS_EXACT4_0_WARNINGS",
+    "normalized_expression_types": 6,
+    "normalized_literal_relations": 31,
+    "completed_missing_lexemes": 0,
+    "stage3_resolution_records": 167,
+    "review_flag_instances": 35,
+    "review_unresolved": 0,
+    "official_bundle_validator": "PASS_151_TARGETS_EXACT4_0_WARNINGS",
     "profile_validator": "PASS",
     "reference_registry_validator": "PASS",
     "reference_availability_validator": "PASS",
     "framework_pytest": "47/47 PASS",
-    "review_unresolved": 0,
-    "lesson_identities": 133,
-    "new_targets": 129,
-    "reused_targets": 4,
-    "senses": 69,
-    "expressions": 64,
-    "lexemes": 61,
-    "examples": 532,
-    "relations": 76,
-    "target_audio_occurrence_refs": 133,
-    "unique_audio_refs": 104,
-    "advisory": {
-      "code": "LOCKED_LEGACY_ANNOTATION_BOUNDARY",
-      "detail": "Three inherited A1-L11 examples of locked ma1m-lu-1022 have no occurrence annotation. Locked examples remain immutable; official bundle validator passes with zero warnings."
+    "fresh_extract_custom_qa": "40/40 PASS",
+    "fresh_extract_official_validator": "PASS_151_TARGETS_EXACT4_0_WARNINGS",
+    "manifest_rehash": "34/34 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "coverage": {
+      "lesson_identities": 151,
+      "new_targets": 148,
+      "locked_reuses": 3,
+      "senses": 71,
+      "expressions": 80,
+      "lexemes": 71,
+      "examples": 604,
+      "relations": 186
     },
+    "source_audio": {
+      "target_occurrence_refs": 152,
+      "unique_refs": 128,
+      "zero_audio_targets": [
+        "ma1m-lu-2579",
+        "ma1m-lu-2580",
+        "ma1m-lu-2621"
+      ],
+      "source_zero_audio_rows": [
+        1860,
+        1900
+      ]
+    },
+    "identity_guard": "MEM-009 preserved: sich vorstellen remains one lexical card; ma1m-lu-2703 is an explicit rection expression.",
     "artifact": {
-      "filename": "Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
-      "sha256": "c84baade745fcc7eadf0874e4414b7935758f16bc2aaca959a0b9a014e457cf0",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.2-Stage4-CHECKPOINT.zip",
-      "library_file_id": "file_000000000244820889a0d0cdea96e7eb",
-      "library_stable_id": "libfile_c32257d34cf88191af7b8d9bc27efa92",
-      "size_bytes": 170789,
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L20-STAGE4-POST-PACKAGE-VERIFICATION.json",
+      "filename": "Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+      "sha256": "d906226343c081d9b5fc668075c5ac4d603c9e7e8b1b94e86ecb0705778c3f17",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+      "library_file_id": "file_00000000429481f4a11dc979d758de71",
+      "library_stable_id": "libfile_b296c050d7f0819197348c9e7f303d74",
+      "size_bytes": 197517,
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L21-STAGE4-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
-    "next_action": "Start A1-L20 Stage5 Delivery Projection; keep runtime binding RESOLVE_CURRENT_AT_STAGE6.",
-    "blocking_findings": 0,
-    "blocking_limitations": [],
-    "advisory_classification": {
-      "severity": "ADVISORY",
-      "blocking": false,
-      "affects_stage4_pass": false
-    }
+    "next_action": "A1-L21 Stage5 Delivery Projection"
   },
   "latest_stage5_checkpoint": {
     "state": "PASS",
@@ -2866,7 +2878,7 @@
     "next_operation": "A1-L21 Stage1/2"
   },
   "a1_l21": {
-    "state": "STAGE3_PASS",
+    "state": "STAGE4_PASS",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L21",
@@ -2978,6 +2990,69 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "next_action": "Stage4 Linguistic & Lexical QA"
+    },
+    "stage4": {
+      "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+      "scope": "A1-L21",
+      "custom_qa": "40/40 PASS",
+      "repairs_applied": 41,
+      "repair_breakdown": {
+        "expression_type_profile_normalization": 6,
+        "relation_value_target_type_normalization": 31,
+        "source_registry_completion": 1,
+        "locked_reuse_integration": 3,
+        "profile_metadata_completion": 0
+      },
+      "normalized_expression_types": 6,
+      "normalized_literal_relations": 31,
+      "completed_missing_lexemes": 0,
+      "stage3_resolution_records": 167,
+      "review_flag_instances": 35,
+      "review_unresolved": 0,
+      "official_bundle_validator": "PASS_151_TARGETS_EXACT4_0_WARNINGS",
+      "profile_validator": "PASS",
+      "reference_registry_validator": "PASS",
+      "reference_availability_validator": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "fresh_extract_custom_qa": "40/40 PASS",
+      "fresh_extract_official_validator": "PASS_151_TARGETS_EXACT4_0_WARNINGS",
+      "manifest_rehash": "34/34 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "coverage": {
+        "lesson_identities": 151,
+        "new_targets": 148,
+        "locked_reuses": 3,
+        "senses": 71,
+        "expressions": 80,
+        "lexemes": 71,
+        "examples": 604,
+        "relations": 186
+      },
+      "source_audio": {
+        "target_occurrence_refs": 152,
+        "unique_refs": 128,
+        "zero_audio_targets": [
+          "ma1m-lu-2579",
+          "ma1m-lu-2580",
+          "ma1m-lu-2621"
+        ],
+        "source_zero_audio_rows": [
+          1860,
+          1900
+        ]
+      },
+      "identity_guard": "MEM-009 preserved: sich vorstellen remains one lexical card; ma1m-lu-2703 is an explicit rection expression.",
+      "artifact": {
+        "filename": "Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+        "sha256": "d906226343c081d9b5fc668075c5ac4d603c9e7e8b1b94e86ecb0705778c3f17",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
+        "library_file_id": "file_00000000429481f4a11dc979d758de71",
+        "library_stable_id": "libfile_b296c050d7f0819197348c9e7f303d74",
+        "size_bytes": 197517,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L21-STAGE4-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "A1-L21 Stage5 Delivery Projection"
     }
   },
   "a1_l01_repaired_successor": {

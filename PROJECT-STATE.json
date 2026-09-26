@@ -1506,18 +1506,18 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
-    "sha256": "d906226343c081d9b5fc668075c5ac4d603c9e7e8b1b94e86ecb0705778c3f17",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
-    "library_file_id": "file_00000000429481f4a11dc979d758de71",
-    "library_stable_id": "libfile_b296c050d7f0819197348c9e7f303d74",
-    "size_bytes": 197517,
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L21-STAGE4-POST-PACKAGE-VERIFICATION.json",
+    "filename": "Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+    "sha256": "0465aa0708a7d2cf39b8a20ea34a534ad890347246563121e720488c8ff590cc",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+    "library_file_id": "file_00000000752881f4be297950634f217d",
+    "library_stable_id": "libfile_bcaea75963ec8191a7a27b493a71d752",
+    "size_bytes": 481580,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L21-STAGE5-POST-PACKAGE-VERIFICATION.json",
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
-    "stage": "A1-L21 Stage4",
+    "stage": "A1-L21 Stage5",
     "state": "PASS"
   },
-  "next_action": "A1-L21 Stage5 Delivery Projection",
+  "next_action": "A1-L21 Stage6 Runtime & Presentation Acceptance — resolve CURRENT",
   "a1_l19": {
     "state": "LOCKED",
     "source_rows": 91,
@@ -2168,11 +2168,11 @@
     "next_operation": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade."
   },
   "blockers": [],
-  "current_scope": "A1-L21 Stage4 PASS",
+  "current_scope": "A1-L21 Stage5 PASS",
   "lock_state": "A1-L01_TO_A1-L20_LOCKED",
   "durability": {
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage4-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "d906226343c081d9b5fc668075c5ac4d603c9e7e8b1b94e86ecb0705778c3f17",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "0465aa0708a7d2cf39b8a20ea34a534ad890347246563121e720488c8ff590cc",
     "latest_locked_lesson": "A1-L20",
     "quality_pass_is_backed_by_verified_portable_artifact": true,
     "git_metadata_in_sync": true,
@@ -2274,7 +2274,7 @@
     "next_operation": "A1-L21 Stage1/2"
   },
   "a1_l21": {
-    "state": "STAGE4_PASS",
+    "state": "STAGE5_PASS",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L21",
@@ -2449,6 +2449,74 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
       },
       "next_action": "A1-L21 Stage5 Delivery Projection"
+    },
+    "stage5": {
+      "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+      "scope": "A1-L21",
+      "projection_qa": "186/186 PASS",
+      "transport_rows": 151,
+      "semantic_identity_parity": "151/151 PASS",
+      "new_ids": 148,
+      "reused_ids": [
+        "ma1m-lu-0875",
+        "ma1m-lu-2093",
+        "ma1m-lu-2108"
+      ],
+      "card_types": {
+        "de-vocabulary": 124,
+        "german-verb": 27
+      },
+      "categories": {
+        "Expression": 80,
+        "Noun": 31,
+        "Verb": 27,
+        "Adjective": 9,
+        "Adverb": 2,
+        "Preposition": 2
+      },
+      "examples": {
+        "de": 604,
+        "fa": 604,
+        "en": 604
+      },
+      "relations": 186,
+      "source_audio": {
+        "target_occurrence_refs": 152,
+        "unique_refs": 128,
+        "zero_audio_targets": [
+          "ma1m-lu-2579",
+          "ma1m-lu-2580",
+          "ma1m-lu-2621"
+        ],
+        "source_rows": 128,
+        "source_audio_refs": 127,
+        "zero_audio_source_ordinals": [
+          1860,
+          1900
+        ],
+        "multi_audio_source_ordinals": [
+          1852
+        ]
+      },
+      "final_dataset": "A1-L21-UNIVERSAL-v2.tsv",
+      "final_dataset_sha256": "9b0b526782210cdb30fe0a9d560a103902ddf07d12db295cb44648e61ef018b8",
+      "projected_cards_sha256": "d241b16713b74c38ac3ab10b4d67d5c0c977b9dc03a36ee430ad59e80020a239",
+      "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+      "manifest_rehash": "44/44 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "library_organization_guard": "Book/Lesson/Deck labels are mutable seed metadata; canonical IDs remain independent per MEM-010.",
+      "identity_guard": "Stage5 is a lossless projection of Stage4 authority; MEM-009 canonical identity is not re-split in delivery.",
+      "artifact": {
+        "filename": "Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+        "sha256": "0465aa0708a7d2cf39b8a20ea34a534ad890347246563121e720488c8ff590cc",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+        "library_file_id": "file_00000000752881f4be297950634f217d",
+        "library_stable_id": "libfile_bcaea75963ec8191a7a27b493a71d752",
+        "size_bytes": 481580,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L21-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "A1-L21 Stage6 Runtime & Presentation Acceptance; resolve Flashcards CURRENT at execution"
     }
   },
   "latest_stage12_checkpoint": {
@@ -2626,5 +2694,73 @@
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "next_action": "A1-L21 Stage5 Delivery Projection"
+  },
+  "latest_stage5_checkpoint": {
+    "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "scope": "A1-L21",
+    "projection_qa": "186/186 PASS",
+    "transport_rows": 151,
+    "semantic_identity_parity": "151/151 PASS",
+    "new_ids": 148,
+    "reused_ids": [
+      "ma1m-lu-0875",
+      "ma1m-lu-2093",
+      "ma1m-lu-2108"
+    ],
+    "card_types": {
+      "de-vocabulary": 124,
+      "german-verb": 27
+    },
+    "categories": {
+      "Expression": 80,
+      "Noun": 31,
+      "Verb": 27,
+      "Adjective": 9,
+      "Adverb": 2,
+      "Preposition": 2
+    },
+    "examples": {
+      "de": 604,
+      "fa": 604,
+      "en": 604
+    },
+    "relations": 186,
+    "source_audio": {
+      "target_occurrence_refs": 152,
+      "unique_refs": 128,
+      "zero_audio_targets": [
+        "ma1m-lu-2579",
+        "ma1m-lu-2580",
+        "ma1m-lu-2621"
+      ],
+      "source_rows": 128,
+      "source_audio_refs": 127,
+      "zero_audio_source_ordinals": [
+        1860,
+        1900
+      ],
+      "multi_audio_source_ordinals": [
+        1852
+      ]
+    },
+    "final_dataset": "A1-L21-UNIVERSAL-v2.tsv",
+    "final_dataset_sha256": "9b0b526782210cdb30fe0a9d560a103902ddf07d12db295cb44648e61ef018b8",
+    "projected_cards_sha256": "d241b16713b74c38ac3ab10b4d67d5c0c977b9dc03a36ee430ad59e80020a239",
+    "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+    "manifest_rehash": "44/44 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC",
+    "library_organization_guard": "Book/Lesson/Deck labels are mutable seed metadata; canonical IDs remain independent per MEM-010.",
+    "identity_guard": "Stage5 is a lossless projection of Stage4 authority; MEM-009 canonical identity is not re-split in delivery.",
+    "artifact": {
+      "filename": "Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+      "sha256": "0465aa0708a7d2cf39b8a20ea34a534ad890347246563121e720488c8ff590cc",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
+      "library_file_id": "file_00000000752881f4be297950634f217d",
+      "library_stable_id": "libfile_bcaea75963ec8191a7a27b493a71d752",
+      "size_bytes": 481580,
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L21-STAGE5-POST-PACKAGE-VERIFICATION.json",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "next_action": "A1-L21 Stage6 Runtime & Presentation Acceptance; resolve Flashcards CURRENT at execution"
   }
 }

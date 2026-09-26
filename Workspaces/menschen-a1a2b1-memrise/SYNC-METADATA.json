@@ -25,22 +25,22 @@
     "stage1": "PASS",
     "stage2": "PASS",
     "stage3": "PASS_COMPLETE",
-    "progress": "Stage5 PASS / 151 of 151 projected identities / 186 of 186 projection QA / 604 trilingual examples / 186 relations / Universal v2 dataset ready",
-    "next": "A1-L21 Stage6 Runtime & Presentation Acceptance — resolve CURRENT at execution",
+    "progress": "Stage6 preflight BLOCKED / CURRENT v435-R69 resolved / Stage5 fresh QA 186/186 PASS / cumulative identity 12/12 PASS / exact CURRENT portable raw bytes unavailable",
+    "next": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance.",
     "artifact": {
-      "filename": "Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
-      "sha256": "0465aa0708a7d2cf39b8a20ea34a534ad890347246563121e720488c8ff590cc",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage5-CHECKPOINT.zip",
-      "library_file_id": "file_00000000752881f4be297950634f217d",
-      "library_stable_id": "libfile_bcaea75963ec8191a7a27b493a71d752",
-      "size_bytes": 481580,
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/05-delivery/A1-L21-STAGE5-POST-PACKAGE-VERIFICATION.json",
+      "filename": "Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
+      "sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
+      "library_file_id": "file_0000000022e882109febd61f7a0da677",
+      "library_stable_id": "libfile_64fcb0665d848191ad9331c90df7e478",
+      "size_bytes": 493355,
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L21-STAGE6-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
-    "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+    "runtime_projection_target": "CURRENT_v435_R69_NO_DOWNGRADE",
     "stage4": "PASS",
     "stage5": "PASS",
-    "stage6": "PENDING",
+    "stage6": "PREFLIGHT_BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
     "stage7": "PENDING",
     "stage12_summary": {
       "source_rows": 128,
@@ -186,15 +186,71 @@
       "projected_cards_sha256": "d241b16713b74c38ac3ab10b4d67d5c0c977b9dc03a36ee430ad59e80020a239",
       "manifest_rehash": "44/44 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    },
+    "stage6_summary": {
+      "status": "BLOCKED_CURRENT_PORTABLE_MATERIALIZATION",
+      "quality_state": "BLOCKED_BEFORE_EXACT_CURRENT_RUNTIME_ACCEPTANCE",
+      "scope": "A1-L21",
+      "runtime": "v435-R69",
+      "runtime_verification_state": "VERIFIED",
+      "runtime_release_final": true,
+      "expected_runtime_artifact": "German-Flashcards-Pro-v435-R69-ORGANIZED-DELIVERY-FINAL.zip",
+      "expected_runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
+      "last_fully_verified_runtime": "v435-R69",
+      "no_downgrade": true,
+      "git_runtime_mirror": "PASS_EXACT_64_FILE_V435_R69_SOURCE_SYNC",
+      "portable_materialization": {
+        "status": "BLOCKED",
+        "attempted_file_id": "file_000000001f1081f58b26a4a8bc7a115b",
+        "error": "This Project file does not have an authorized raw-byte materialization path.",
+        "corrected_library_lookup": "NO_EXACT_V435_FINAL_ZIP_RECORD_FOUND_IN_PERSONAL_LIBRARY_INDEX"
+      },
+      "content_side_preflight": {
+        "stage5_fresh_validation": "186/186 PASS",
+        "stage5_transport_rows": 151,
+        "cumulative_identity": "12/12 PASS",
+        "combined_unique_cards": 2713,
+        "new_l21_ids": 148,
+        "expected_reuses": [
+          "ma1m-lu-0875",
+          "ma1m-lu-2093",
+          "ma1m-lu-2108"
+        ],
+        "new_id_range": "ma1m-lu-2566..ma1m-lu-2713",
+        "dataset_sha256": "9b0b526782210cdb30fe0a9d560a103902ddf07d12db295cb44648e61ef018b8",
+        "projected_cards_sha256": "d241b16713b74c38ac3ab10b4d67d5c0c977b9dc03a36ee430ad59e80020a239"
+      },
+      "preflight_validator": "22/22 PASS",
+      "manifest_rehash": "52/52 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "not_claimed": [
+        "exact CURRENT v435 direct import",
+        "CURRENT v435 IndexedDB persistence/index commit for A1-L21",
+        "CURRENT v435 Flashcards/Quick/Typing/Audio production presentation acceptance",
+        "Stage6 PASS",
+        "Stage7 release/lock"
+      ],
+      "blocker_code": "CURRENT_PORTABLE_RAW_BYTES_UNAVAILABLE",
+      "artifact": {
+        "filename": "Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
+        "sha256": "3904253852274776cdd4ae0382f9ab3c2d2096e94e921a5ca809d9e90e7b9d97",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-PREFLIGHT-GFP-v435-BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "file_0000000022e882109febd61f7a0da677",
+        "library_stable_id": "libfile_64fcb0665d848191ad9331c90df7e478",
+        "size_bytes": 493355,
+        "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L21-STAGE6-PREFLIGHT-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "next_action": "Retry exact CURRENT v435-R69 portable materialization and SHA verification, then run Stage6 exact-runtime import/persistence/presentation acceptance."
     }
   },
   "git_sync": {
-    "status": "IN_SYNC_A1_L21_STAGE5_METADATA",
-    "content_sync_commit": "ded2eef44db4ca185ff1a60ca4d351379cbee0b0",
-    "verification_commit": "6869ddcf206c636d67e8d2de1160f1a24e5a6b6e",
-    "readme_commit": "a1ccec2fb52fa35710a9942455f645ca358dbfb0",
-    "checkpoint_commit": "0cdf9d023b3f4b81cc57f5605ae80757420682df",
-    "note": "A1-L21 Stage5 ZIP is durable in Library and exact-rematerialized; Git compact state, checkpoint, verification and README mirror are synchronized. Next scope is Stage6 CURRENT runtime acceptance."
+    "status": "IN_SYNC_A1_L21_STAGE6_PREFLIGHT_BLOCKED_METADATA",
+    "content_sync_commit": "a0170c5b73c0d2e3cbd911355653821ff9aa77e2",
+    "verification_commit": "f6aab9dfb8633f133fa7858d38ab4870db739509",
+    "readme_commit": "4efdc640e94df0d6ade975d48272e299121f883f",
+    "checkpoint_commit": "76bf0e4a83490cb478d137797fdf04ab52a38e96",
+    "note": "A1-L21 Stage6 preflight BLOCKED ZIP is durable in Library and exact-rematerialized. Git compact state, checkpoint, verification and README mirror are synchronized. Blocker is CURRENT v435 portable raw-byte materialization only."
   },
-  "note": "Large portable payload remains outside Git; exact A1-L21 Stage5 ZIP is durable in Library."
+  "note": "Stage6 final acceptance is not claimed. Exact CURRENT v435 portable artifact must be materialized and SHA-verified before runtime import/persistence/presentation acceptance."
 }

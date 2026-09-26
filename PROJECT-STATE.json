@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-24T18:50:00+02:00",
+  "updated_at": "2026-09-26T23:25:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -737,6 +737,62 @@
         "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
         "library_model": "dynamic mutable primary source/lesson/deck; historical memberships preserved in custom_fields",
         "environment_boundary": "Fresh real-origin content-specific browser run unavailable in managed environment; deterministic exact-runtime acceptance PASS."
+      },
+      "b1_verben_migration": {
+        "status": "ACTIVE_STAGE5_PASS",
+        "workstream": "menschen-b1-verben-migration",
+        "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
+        "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
+        "current_milestone": "STAGE5_COMPLETE",
+        "quality_state": "PASS",
+        "content_lock_state": "NOT_LOCKED",
+        "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
+        "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD",
+        "organization_policy": "MEM-010-DYNAMIC-LIBRARY-ORGANIZATION",
+        "cards": 400,
+        "senses": 279,
+        "expressions": 121,
+        "examples": {
+          "de": 1600,
+          "fa": 1600,
+          "en": 1600
+        },
+        "relations": 472,
+        "source_audio": {
+          "source_rows": 405,
+          "source_audio_refs": 403,
+          "unique_audio_files": 400,
+          "zero_audio_source_rows": [
+            8451,
+            8727
+          ],
+          "target_audio_occurrence_refs": 439,
+          "zero_audio_targets": [
+            "mb1m-lu-0030",
+            "mb1m-lu-0363"
+          ]
+        },
+        "stage5": {
+          "projection_qa": "441/441 PASS",
+          "final_dataset": "B1-VERBEN-UNIVERSAL-v2.tsv",
+          "final_dataset_sha256": "e478694fecc9394a3d6ae381ff47dbca8a200fddd388830f9114206d26911b71",
+          "projected_cards_sha256": "62ab706c8204a25ece35b7677a75dac8d0a41005a1dd17292899869c38c174c8",
+          "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
+          "artifact": {
+            "filename": "Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+            "sha256": "f16dd2edbd0792b5639dbedf200ee6cce9d635ad66cd4bde306f9ef23858cd8b",
+            "size_bytes": 1753289,
+            "zip_file_count": 46,
+            "manifest_rehash": "43/43 PASS",
+            "checksums_rehash": "45/45 PASS",
+            "package_hygiene": "PASS_NO_PYCACHE_PYC",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-Stage5-CHECKPOINT.zip",
+            "library_file_id": "file_00000000bb4881f4b763c88e54b8818f",
+            "library_stable_id": "libfile_9179a6c4c42881918ecda5fa3183a7ad",
+            "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+          }
+        },
+        "next_action": "Stage6 Runtime & Presentation Acceptance; resolve Flashcards CURRENT and exact portable runtime at execution."
       }
     },
     "vocabulary": {

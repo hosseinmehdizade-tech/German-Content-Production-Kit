@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE6_COMPLETE__PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "state": "STAGE7_COMPLETE__LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -643,14 +643,14 @@
     "cumulative_profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
     "stage3_cumulative_payload": "03-evidence/A2-VERBEN-STAGE3-CUMULATIVE-ENRICHED-292.json"
   },
-  "content_state": "NOT_IMPORT_FINAL__STAGE6_COMPLETE__STAGE7_PENDING",
+  "content_state": "IMPORT_FINAL__LOCKED",
   "persistence": {
-    "library": "PENDING_STAGE6_PORTABLE_UPLOAD__CURRENT_CHAT_ARTIFACT_AVAILABLE",
-    "library_auxiliary_sidecars": "PENDING_STAGE6_UPLOAD",
-    "git": "IN_SYNC_FOR_STAGE6_METADATA",
-    "binary_transport": "LIBRARY_OR_CONVERSATION_NOT_GIT"
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE7",
+    "library_auxiliary_sidecars": "IN_SYNC_STAGE7_REPORTS_AND_SHA256",
+    "git": "IN_SYNC_FOR_STAGE7_METADATA",
+    "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage7: re-resolve CURRENT, build exact-final A2 Verben LOCKED candidate, rerun exact-final import/presentation/post-package verification, and lock only if final bytes pass.",
+  "next_action": "Menschen A2 Verben content is complete and LOCKED. Do not regenerate without a real defect or explicit user scope change. Runtime may advance independently; future runtime compatibility must re-resolve CURRENT without changing canonical content.",
   "stage4_reaudit": {
     "state": "PASS_STAGE4_COMPLETE",
     "upstream_stage3_artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
@@ -820,8 +820,93 @@
       "manifest_rehash": "287/287 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC",
       "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage6-GFP-v444-CHECKPOINT.zip",
-      "persistence": "PENDING_LIBRARY_UPLOAD__CURRENT_CHAT_ARTIFACT_AVAILABLE"
+      "persistence": "LIBRARY_PASS_EXACT_SHA256_REMATERIALIZED",
+      "library_file_id": "file_00000000933081f484633b50d18dedf7",
+      "library_stable_id": "libfile_5651910df90c81918e23969e905d5199"
     },
     "next_action": "Stage7: re-resolve CURRENT, build exact-final A2 Verben LOCKED candidate, rerun exact-final import/presentation/post-package verification, and lock only if final bytes pass."
+  },
+  "content_lock_state": "LOCKED",
+  "stage7_lock": {
+    "state": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "verification_level": "V3_EXACT_FINAL_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
+    "runtime": "v444-R78",
+    "runtime_current_at_lock": "v444-R78",
+    "runtime_sha256": "2e3fa3ede9ac4da211949fcb9b16aab792895978793979087a0706af1ab95686",
+    "runtime_verification_state": "PASS_AUTOMATED_POST_PACKAGE_CANDIDATE",
+    "runtime_release_final": false,
+    "last_fully_verified_runtime": "v435-R69",
+    "no_downgrade": true,
+    "exact_final_acceptance": "33/33 PASS",
+    "exact_final_boundaries": [
+      "292/292 exact direct import and stable IDs",
+      "292/292 VERIFIED commit manifest and runtime index",
+      "Library hierarchy Menschen Verben > Menschen A2 Verben > Grundwortschatz Verben",
+      "Study/Quick/Typing/Audio full 292-card scope",
+      "292/292 Universal roundtrip membership parity",
+      "292/292 deterministic restart persistence",
+      "dynamic book rename preserves all 292 canonical IDs",
+      "dynamic book rename persisted in Universal authority rows 292/292",
+      "final dynamic state valid with VERIFIED manifest"
+    ],
+    "static_postpackage": {
+      "fresh_extract": "PASS",
+      "release_manifest_rehash": "297/297 PASS",
+      "content_checksums_rehash": "298/298 PASS",
+      "runtime_base_preservation": "255/255 PASS",
+      "zip_crc": "PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NEW_NESTED_CONTENT_ARCHIVES"
+    },
+    "dataset": {
+      "filename": "A2-VERBEN-UNIVERSAL-v2.tsv",
+      "sha256": "12e5c5ae9b5a4f72e2681e4e5efe37fd2b7690f06e5b7e5ecd841163b059fcdc",
+      "cards": 292,
+      "card_types": {
+        "german-verb": 228,
+        "de-vocabulary": 64
+      },
+      "examples": {
+        "de": 1168,
+        "fa": 1168,
+        "en": 1168
+      },
+      "relations": 894,
+      "source_audio_refs": 0
+    },
+    "release": {
+      "filename": "German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
+      "sha256": "984cc519057115da49ac2479330704f7ed767e47df38d049330180ff516848b2",
+      "size_bytes": 4128399,
+      "zip_members": 301,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
+      "library_file_id": "file_00000000e5b88210ad6a05e95c8bc139",
+      "library_stable_id": "libfile_c5ef1427dfec8191b1a92a8564a52d2d",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "locked_checkpoint": {
+      "filename": "Menschen-A2-Verben-v3.3.2-Stage7-LOCKED-CHECKPOINT.zip",
+      "sha256": "9d58ed2d5b729655b44f0cd4a5288ec885d1158d87dc8eb1399b9cd73dca0751",
+      "size_bytes": 9117,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage7-LOCKED-CHECKPOINT.zip",
+      "library_file_id": "file_00000000bf548210985f7cde106931b6",
+      "library_stable_id": "libfile_5b233e6ca2648191ae2c3b1e5ac6c70a",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "exact_final_acceptance_report": {
+      "filename": "Menschen-A2-Verben-v3.3.2-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+      "library_file_id": "file_00000000ffc882439c745f1d7c48c53e",
+      "library_stable_id": "libfile_722ad92c31f0819197e1d90f82769fd5"
+    },
+    "post_package_verification": {
+      "filename": "Menschen-A2-Verben-v3.3.2-Stage7-POST-PACKAGE-VERIFICATION.json",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage7-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_0000000079c88210a7b10fb2fc1bea20",
+      "library_stable_id": "libfile_06f9ccd9c29c8191b8c2d5766ac24795"
+    },
+    "environment_boundary": "Managed real-origin A2-specific browser navigation remains unavailable. Exact CURRENT v444 release bytes passed deterministic IndexedDB acceptance; v444 runtime-level same-profile/offline acceptance remains separate and runtime v444 remains a candidate.",
+    "visible_ui_change": "NONE",
+    "next_action": "Menschen A2 Verben content is complete and LOCKED. Do not regenerate without a real defect or explicit user scope change. Runtime may advance independently; future runtime compatibility must re-resolve CURRENT without changing canonical content."
   }
 }

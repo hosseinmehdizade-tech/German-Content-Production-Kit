@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.0.0",
+  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.2.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE2_REAUDIT_PASS__STAGE3_REPAIR_REQUIRED",
+  "state": "STAGE3_BATCH0002_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -59,6 +59,58 @@
     "library_file_id": "libfile_4cdb0596a5708191aae1bd38cdc22119",
     "validation": "PASS"
   },
-  "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_REPAIR_IN_PROGRESS",
-  "next_action": "Stage 3 evidence/enrichment in bounded batches over 292 successor identities; preserve source lineage and MEM-009; close example translations, morphology, Rektion and relations only with verified evidence."
+  "stage3_reaudit": {
+    "state": "PASS_BATCH0002",
+    "targets_total": 292,
+    "targets_complete": 40,
+    "targets_remaining": 252,
+    "latest_completed_range": "ma2-lu-0021..ma2-lu-0040",
+    "cumulative_batches": [
+      {
+        "batch": 1,
+        "target_range": "ma2-lu-0001..ma2-lu-0020",
+        "targets_complete": 20,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip",
+        "sha256": "3ce3e88eaac16019ee75737b0050c0a91593e52fc39dfb7816c8c118a1874d43",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0001-CHECKPOINT.zip"
+      },
+      {
+        "batch": 2,
+        "target_range": "ma2-lu-0021..ma2-lu-0040",
+        "targets_complete": 20,
+        "cumulative_complete": 40,
+        "examples": 80,
+        "relations": 47,
+        "review_resolutions": 61,
+        "legacy_relation_rows_reviewed": 51,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+        "sha256": "5ca235d64bcfbd8820ce32c4249acf6d9405dfb35e89ee8c5dc7cd27e0a18f29",
+        "size_bytes": 104726,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0002-CHECKPOINT.zip",
+        "library_file_id": "libfile_ae2ee39697548191930c95a47c82b191",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "manifest_rehash": "40/40 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0001_exact_preservation": "22/22 PASS",
+        "stage2_exact_preservation": "8/8 PASS"
+      }
+    ],
+    "quality_findings": [
+      "Strong/intransitive hängen preserved as hing / hat gehangen; weak transitive hängte / hat gehängt remains distinct.",
+      "ma2-lu-0026 source example belongs to the separate sich auf etw. einrichten construction and remains audit-visible only for that target.",
+      "sich erholen learner rection normalized to von + Dativ while raw source notation remains provenance-visible.",
+      "All 51 represented legacy relation rows in Batch0002 were reviewed; 12 legacy NVV labels were not emitted as false NVV and 11 unsupported antonym seeds were not preserved as antonymy.",
+      "MEM-009 preserved for erfahren; experience and information senses remain on one lexical card.",
+      "No source audio metadata was invented."
+    ]
+  },
+  "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
+  "persistence": {
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0002_METADATA",
+    "binary_transport": "LIBRARY_NOT_GIT"
+  },
+  "next_action": "Stage3 Batch0003 for ma2-lu-0041..ma2-lu-0060; preserve Stage2, Batch0001 and Batch0002 lineage unchanged."
 }

@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0010_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0011_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0010",
+    "state": "PASS_BATCH0011",
     "targets_total": 292,
-    "targets_complete": 200,
-    "targets_remaining": 92,
-    "latest_completed_range": "ma2-lu-0182..ma2-lu-0201",
+    "targets_complete": 220,
+    "targets_remaining": 72,
+    "latest_completed_range": "20 actual Stage2 successors: ma2-lu-0202, ma2-lu-0204..ma2-lu-0222; source-order 203 duplicate -> survivor ma2-lu-0059",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -412,26 +412,70 @@
         "reference_availability": "PASS",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0009_exact_preservation": "146/146 PASS"
+      },
+      {
+        "batch": 11,
+        "target_range": "20 actual successors: ma2-lu-0202, ma2-lu-0204..ma2-lu-0222",
+        "source_order_span": "202..222 excluding duplicate source-order 203",
+        "boundary_accounting": "source order 203 / MEN-A2-0055 -> ma2-lu-0059 already completed in Batch0003",
+        "targets_complete": 20,
+        "cumulative_complete": 220,
+        "targets_remaining": 72,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 14,
+          "phrase": 6
+        },
+        "relations": 58,
+        "relation_type_counts": {
+          "COLLOCATION": 29,
+          "REKTION": 20,
+          "RELATED": 4,
+          "SYNONYM": 5
+        },
+        "review_resolutions": 12,
+        "stage2_relation_queue_rows_reviewed": 6,
+        "stage2_relation_queue_kind_counts": {
+          "SYNONYM": 4,
+          "NVV": 2
+        },
+        "legacy_nvv_reviewed": 2,
+        "nvv_relations_emitted": 0,
+        "identity_map_rows": 18,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0011-CHECKPOINT.zip",
+        "sha256": "3144545390db48854abe11386d524a88894cd0faa1cebcc3cd0ce2d4a2489731",
+        "size_bytes": 471562,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0011-CHECKPOINT.zip",
+        "library_file_id": "libfile_84c620ebb7cc819199e85ffc8835a653",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "post_package_report_library_file_id": "libfile_ea0a9c5af44c819199ae9ecc1fe434e5",
+        "sha256_sidecar_library_file_id": "libfile_0e2826d911188191b7b52177afcbaeae",
+        "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
+        "manifest_rehash": "167/167 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS_OFFICIAL_VALIDATOR",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0010_exact_preservation": "161/161 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0010 uses the exact Stage2 identity map: 20 legacy mapping rows cover 20 current targets.",
-      "All 10 Stage2 relation-review queue rows represented by Batch0010 are resolved: 8 synonym, 1 antonym and 1 legacy-NVV row; zero NVV/FVG relation edges were emitted.",
-      "ma2-lu-0182 aufzeigen is repaired from Stage2 phrase projection to a separable lexical verb, preserving stable ID and source order while adding verified morphology zeigt auf / zeigte auf / hat aufgezeigt.",
-      "ma2-lu-0187 preserves the raw source example 'Ich stelle dir ihn vor.' in audit while learner examples use idiomatic Dativ+Akkusativ ordering.",
-      "ma2-lu-0188 wecken keeps both wake-from-sleep and figurative arouse-interest/memory senses on one lexical card under MEM-009.",
-      "ma2-lu-0189 preserves the explicit an jdm./etw. vorbei construction; legacy an jdm. vorbeigehen NVV is retyped as ordinary Rektion/Collocation.",
-      "ma2-lu-0196 wechseln preserves general change/replace and money-change senses on one card under MEM-009.",
-      "ma2-lu-0201 keeps über + Akkusativ as the target while preserving the source-example von + Dativ variant as related construction evidence.",
-      "No source audio metadata was invented."
+      "Batch0011 selects the next 20 actual Stage2 successor targets rather than consecutive numeric IDs; source order 203 is an exact duplicate migrated to already-completed survivor ma2-lu-0059.",
+      "All 6 Stage2 relation-review queue rows are resolved: 4 synonym and 2 legacy-NVV rows; zero NVV/FVG relation edges were emitted.",
+      "Pech haben remains a source fixed expression; the approved NVV reference does not list it, so the old NVV label is not promoted.",
+      "Recht haben is explicitly listed in the approved Nomen-Verb-Verbindungen reference; no self-relation edge is emitted.",
+      "ma2-lu-0214 repairs learner-facing rection to sich an etw. (Dat.) versuchen while preserving malformed raw source evidence in audit.",
+      "ma2-lu-0216 keeps sound/seem and listen-to uses on one lexical card under MEM-009.",
+      "ma2-lu-0218/0219/0220 preserve the Stage2 three-way split for sich einigen.",
+      "ma2-lu-0221 generic begeistern remains separate from ma2-lu-0223 jdn. für etw. begeistern, deferred to Batch0012.",
+      "Official profile and reference-availability validators PASS; no source audio metadata was invented."
     ]
   },
   "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0010_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0011_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0011 starting at ma2-lu-0202; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0010 lineage unchanged."
+  "next_action": "Stage3 Batch0012 begins at ma2-lu-0223; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0011 lineage unchanged."
 }

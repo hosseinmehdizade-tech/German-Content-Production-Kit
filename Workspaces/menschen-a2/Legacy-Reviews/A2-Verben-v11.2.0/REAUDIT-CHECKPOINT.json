@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE4_COMPLETE__PASS",
+  "state": "STAGE5_COMPLETE__PASS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -643,14 +643,14 @@
     "cumulative_profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
     "stage3_cumulative_payload": "03-evidence/A2-VERBEN-STAGE3-CUMULATIVE-ENRICHED-292.json"
   },
-  "content_state": "NOT_IMPORT_FINAL__STAGE4_COMPLETE__STAGE5_PENDING",
+  "content_state": "NOT_IMPORT_FINAL__STAGE5_COMPLETE__STAGE6_PENDING",
   "persistence": {
-    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE4",
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE5",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE4_METADATA",
+    "git": "IN_SYNC_FOR_STAGE5_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Begin Stage5 Delivery Projection from the Stage4 PASS canonical payload; do not skip to Stage6/7.",
+  "next_action": "Begin Stage6 Runtime & Presentation Acceptance from the exact Stage5 PASS artifact; re-resolve CURRENT at execution time and do not downgrade to LAST_FULLY_VERIFIED.",
   "stage4_reaudit": {
     "state": "PASS_STAGE4_COMPLETE",
     "upstream_stage3_artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
@@ -712,5 +712,79 @@
     "canonical_payload": "03-evidence/A2-VERBEN-STAGE4-CANONICAL-PASS.json",
     "content_lock_state": "NOT_LOCKED",
     "next_action": "Stage5 Delivery Projection from the Stage4 PASS canonical payload; runtime binding remains deferred until Stage6."
+  },
+  "stage5_projection": {
+    "state": "PASS_STAGE5_COMPLETE",
+    "upstream_stage4_artifact": "Menschen-A2-Verben-v3.3.2-Stage4-PASS-CHECKPOINT.zip",
+    "upstream_stage4_sha256": "73a6cbf18a6990a89792eb12a9718c4f2b8a475f7f6d64f886b8f996affac0e5",
+    "canonical_units": 292,
+    "projected_cards": 292,
+    "card_types": {
+      "german-verb": 228,
+      "de-vocabulary": 64
+    },
+    "direct_import_dataset": "A2-VERBEN-UNIVERSAL-v2.tsv",
+    "direct_import_rows": 292,
+    "direct_import_headers": [
+      "id",
+      "card_type",
+      "domain",
+      "category",
+      "source",
+      "level",
+      "lesson",
+      "deck",
+      "front",
+      "back",
+      "front_label",
+      "back_label",
+      "front_lang",
+      "back_lang",
+      "typing_target",
+      "examples",
+      "related",
+      "opposites",
+      "details",
+      "custom_fields",
+      "tags",
+      "notes",
+      "order"
+    ],
+    "examples": 1168,
+    "example_translations": 2336,
+    "relations": 894,
+    "source_to_canonical_rows": 297,
+    "source_audio_refs": 0,
+    "stable_identity_parity": "292/292 PASS",
+    "canonical_unit_embedding": "292/292 PASS",
+    "source_lesson_chapter": "NOT_PRESENT_IN_SCREENSHOT_SOURCE__NOT_INFERRED",
+    "organization_seed": {
+      "source": "Menschen Verben",
+      "lesson": "Menschen A2 Verben",
+      "deck": "Grundwortschatz Verben",
+      "semantics": "MUTABLE_RUNTIME_METADATA_NOT_CANONICAL_IDENTITY"
+    },
+    "validation": {
+      "profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
+      "a2_supplemental": "PASS",
+      "loss_parity": "PASS",
+      "universal_v2_tsv_parse": "292/292 PASS",
+      "fresh_manifest_rehash": "297/297 PASS",
+      "upstream_stage4_exact_preservation": "278/278 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES"
+    },
+    "artifact": {
+      "filename": "Menschen-A2-Verben-v3.3.2-Stage5-PASS-CHECKPOINT.zip",
+      "sha256": "3332b2ac2afdd0fc19b770265636fed2076e8cecf1d5532b431a1f13db8c4095",
+      "size_bytes": 1825975,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage5-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000f5d882108ec8b485cfb74636",
+      "library_stable_id": "libfile_de6bfbb9cf348191bdef1e89f725d074",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "post_package_report_library_stable_id": "libfile_caa1102540b08191966ab770855ed39d",
+      "sha256_sidecar_library_stable_id": "libfile_aa5d9569d0708191ab54e675b8d032de"
+    },
+    "runtime_binding": "DEFERRED_TO_STAGE6_CURRENT",
+    "next_action": "Stage6 Runtime & Presentation Acceptance: re-resolve German Flashcards Pro CURRENT and test the exact Stage5 TSV/projection."
   }
 }

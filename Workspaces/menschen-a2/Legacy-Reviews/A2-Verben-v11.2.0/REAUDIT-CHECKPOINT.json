@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.4.0",
+  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.5.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0004_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0005_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0004",
+    "state": "PASS_BATCH0005",
     "targets_total": 292,
-    "targets_complete": 80,
-    "targets_remaining": 212,
-    "latest_completed_range": "ma2-lu-0061..ma2-lu-0080",
+    "targets_complete": 100,
+    "targets_remaining": 192,
+    "latest_completed_range": "ma2-lu-0081..ma2-lu-0100",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -160,25 +160,64 @@
         "reference_availability": "PASS",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0003_exact_preservation": "58/58 PASS"
+      },
+      {
+        "batch": 5,
+        "target_range": "ma2-lu-0081..ma2-lu-0100",
+        "targets_complete": 20,
+        "cumulative_complete": 100,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 19,
+          "phrase": 1
+        },
+        "stage3_semantic_counts": {
+          "verb": 19,
+          "expression": 1
+        },
+        "relations": 70,
+        "relation_type_counts": {
+          "ANTONYM": 3,
+          "COLLOCATION": 6,
+          "REKTION": 23,
+          "RELATED": 10,
+          "SYNONYM": 28
+        },
+        "review_resolutions": 57,
+        "legacy_relation_rows_reviewed": 42,
+        "legacy_nvv_reviewed": 11,
+        "nvv_relations_emitted": 0,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip",
+        "sha256": "6d5a33756651fb9e65c04370feb4a2cf473a82e3b96098fc5fb6ed96e479cb63",
+        "size_bytes": 213718,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0005-CHECKPOINT.zip",
+        "library_file_id": "libfile_ffca6d353cb881919827a7fa635bbd18",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "manifest_rehash": "79/79 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0004_exact_preservation": "72/72 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0004 closes all 15 represented legacy relation rows. Three legacy NVV labels were reviewed and none was emitted as NVV without evidence.",
-      "ma2-lu-0070 faszinieren learner morphology repairs the source-bundle omission/Stage2 error to preterite 'faszinierte' while preserving the raw source lineage.",
-      "ma2-lu-0078 trainieren preserves transitive and intransitive uses under MEM-009 rather than splitting the lexeme from the source example.",
-      "ma2-lu-0079 abnehmen is kept scoped to the source Dativ+Akkusativ take-from/relieve construction; unrelated weight-loss senses are not injected.",
-      "ma2-lu-0072 sich halten and ma2-lu-0080 sich ausruhen normalize the source [+A] marker as reflexive accusative evidence rather than inventing an extra object.",
-      "ma2-lu-0064 anschreiben and ma2-lu-0069 nachspielen preserve their raw source examples in audit lineage while learner examples are construction-aligned.",
-      "ma2-lu-0080 keeps both source clauses in audit provenance and separates them into learner-facing examples.",
+      "Batch0005 closes all 42 represented legacy relation rows; all 11 legacy NVV labels were retyped/rejected and zero NVV/FVG relations were emitted.",
+      "ma2-lu-0086 teilnehmen learner core repairs Stage2 non_prefixed to separable from the attested forms nimmt teil / nahm teil / teilgenommen.",
+      "ma2-lu-0081 wiegen preserves transitive weight-measurement and intransitive weight-state senses under MEM-009; ma2-lu-0082 sich wiegen remains a separate reflexive identity.",
+      "Reflexive case markers are normalized without invented extra objects: sich wiegen [+A], sich vornehmen [+D], sich verletzen [+A], sich verbinden [+A].",
+      "ma2-lu-0090 sich verlieren is narrowed at learner layer to fading/disappearing plus registered sich in Details verlieren; sich verirren is related source vocabulary, not an unrestricted synonym.",
+      "ma2-lu-0095 bluten splits the source slash example into clean learner sentences; Blut verlieren is retained while Blutung stoppen is rejected as a synonym.",
+      "ma2-lu-0098 verbinden preserves connection and wound-bandaging senses under MEM-009; legacy NVV rows become Rektion/Collocation rather than false NVV.",
+      "ma2-lu-0100 sterben keeps neutral headword semantics and marks versterben as gehoben/feierlich.",
       "No source audio metadata was invented."
     ]
   },
   "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
-    "library_auxiliary_sidecars": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0004_METADATA",
+    "library_auxiliary_sidecars": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_UPLOAD_ATTEMPT",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0005_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0005 for ma2-lu-0081..ma2-lu-0100; preserve Stage2 and Batches0001-0004 lineage unchanged."
+  "next_action": "Stage3 Batch0006 for ma2-lu-0101..ma2-lu-0120; preserve Stage2 and Batches0001-0005 lineage unchanged."
 }

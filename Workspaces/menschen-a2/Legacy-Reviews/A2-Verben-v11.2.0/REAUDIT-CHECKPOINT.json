@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0013_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0014_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0013",
+    "state": "PASS_BATCH0014",
     "targets_total": 292,
-    "targets_complete": 260,
-    "targets_remaining": 32,
-    "latest_completed_range": "ma2-lu-0243..ma2-lu-0262",
+    "targets_complete": 280,
+    "targets_remaining": 12,
+    "latest_completed_range": "20 actual successors: ma2-lu-0263, ma2-lu-0264, ma2-lu-0265, ma2-lu-0267..ma2-lu-0283",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -536,25 +536,68 @@
         "reference_availability": "PASS_OFFICIAL_VALIDATOR",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0012_exact_preservation": "198/198 PASS"
+      },
+      {
+        "batch": 14,
+        "target_range": "20 actual successors: ma2-lu-0263, ma2-lu-0264, ma2-lu-0265, ma2-lu-0267..ma2-lu-0283",
+        "source_order_span": "263..283 excluding duplicate source-order 266",
+        "boundary_accounting": "source order 266 / MEN-A2-0010 generic eingeben -> ma2-lu-0012 already completed in Batch0001; explicit construction -> ma2-lu-0267 in Batch0014",
+        "targets_complete": 20,
+        "cumulative_complete": 280,
+        "targets_remaining": 12,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 15,
+          "phrase": 5
+        },
+        "relations": 55,
+        "relation_type_counts": {
+          "COLLOCATION": 25,
+          "NVV": 1,
+          "REKTION": 23,
+          "RELATED": 2,
+          "SYNONYM": 4
+        },
+        "review_resolutions": 11,
+        "stage2_relation_queue_rows_reviewed": 4,
+        "stage2_relation_queue_kind_counts": {
+          "SYNONYM": 4
+        },
+        "confirmed_nvv_relations_emitted": 1,
+        "identity_map_rows": 19,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0014-CHECKPOINT.zip",
+        "sha256": "112a0ca654f5bbd4fa5b8157951ca922cd932ed0ca11e2ba0e985495351a807d",
+        "size_bytes": 625749,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0014-CHECKPOINT.zip",
+        "library_file_id": "libfile_94d37f7539588191ac28d9d8631ea372",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "post_package_report_library_file_id": "libfile_4c2377ce83388191a7403a3b07c5aea2",
+        "sha256_sidecar_library_file_id": "libfile_f914de4a96688191bd9acaab0c5fd86a",
+        "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
+        "manifest_rehash": "217/217 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS_OFFICIAL_VALIDATOR",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0013_exact_preservation": "215/215 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0013 completes ma2-lu-0243..ma2-lu-0262 as the next 20 actual Stage2 successor targets.",
-      "The exact Stage2 relation-review queue contains zero rows for this scope; no synthetic queue items or NVV/FVG labels were invented.",
-      "ma2-lu-0247 aufschließen is learner-scoped to unlocking while ma2-lu-0248 preserves the separate catch-up construction zu jdm. aufschließen.",
-      "ma2-lu-0245 expands the raw [+D] marker into explicit learner rection vor + Dativ / von + Dativ while preserving source provenance.",
-      "ma2-lu-0252 sichern preserves both security/physical and data-saving meanings under MEM-009.",
-      "ma2-lu-0260 preserves the raw fingernail-cutting example only for audit because it mismatches the injury identity; learner examples are rebuilt for sich schneiden = cut oneself.",
-      "ma2-lu-0256 and ma2-lu-0262 treat source [+A] as reflexive Akkusativ rather than an additional object.",
-      "Official profile and reference-availability validators PASS; no source audio metadata was invented."
+      "Batch0014 selects the next 20 actual Stage2 successors rather than consecutive source orders; source order 266 is an exact duplicate generic eingeben occurrence and does not create ma2-lu-0266.",
+      "All 4 represented Stage2 relation-review rows are resolved: downloaden is accepted as synonym of herunterladen; beabsichtigen as synonym of vorhaben; eintragen is scoped/retyped to RELATED; Bericht erstatten is retyped to a reference-confirmed NVV.",
+      "ma2-lu-0265 interprets source [+A] as reflexive Akkusativ rather than an additional object.",
+      "ma2-lu-0271 erreichen preserves reach/achieve/contact senses under MEM-009.",
+      "ma2-lu-0273 teilen preserves divide/share senses under MEM-009; ma2-lu-0274 makes reciprocal/reflexive constructions explicit.",
+      "ma2-lu-0275 generic berichten and ma2-lu-0276 über + Akkusativ berichten remain separate source-bound identities; source von + Dativ remains an audit-visible related variant.",
+      "ma2-lu-0277 kündigen preserves resign/terminate/give-notice senses with explicit learner rection.",
+      "Official profile and reference-availability validators PASS; one evidence-backed NVV relation (Bericht erstatten) is emitted; no source audio metadata was invented."
     ]
   },
   "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0013_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0014_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0014 begins at ma2-lu-0263; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0013 lineage unchanged."
+  "next_action": "Stage3 Batch0015 final batch begins at ma2-lu-0284; complete the remaining 12 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0014 lineage unchanged."
 }

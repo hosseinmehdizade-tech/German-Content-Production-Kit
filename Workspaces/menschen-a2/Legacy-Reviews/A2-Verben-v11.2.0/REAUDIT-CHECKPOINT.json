@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE5_COMPLETE__PASS",
+  "state": "STAGE6_COMPLETE__PASS_WITH_ENVIRONMENT_BOUNDARY",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -643,14 +643,14 @@
     "cumulative_profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
     "stage3_cumulative_payload": "03-evidence/A2-VERBEN-STAGE3-CUMULATIVE-ENRICHED-292.json"
   },
-  "content_state": "NOT_IMPORT_FINAL__STAGE5_COMPLETE__STAGE6_PENDING",
+  "content_state": "NOT_IMPORT_FINAL__STAGE6_COMPLETE__STAGE7_PENDING",
   "persistence": {
-    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE5",
-    "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE5_METADATA",
-    "binary_transport": "LIBRARY_NOT_GIT"
+    "library": "PENDING_STAGE6_PORTABLE_UPLOAD__CURRENT_CHAT_ARTIFACT_AVAILABLE",
+    "library_auxiliary_sidecars": "PENDING_STAGE6_UPLOAD",
+    "git": "IN_SYNC_FOR_STAGE6_METADATA",
+    "binary_transport": "LIBRARY_OR_CONVERSATION_NOT_GIT"
   },
-  "next_action": "Begin Stage6 Runtime & Presentation Acceptance from the exact Stage5 PASS artifact; re-resolve CURRENT at execution time and do not downgrade to LAST_FULLY_VERIFIED.",
+  "next_action": "Stage7: re-resolve CURRENT, build exact-final A2 Verben LOCKED candidate, rerun exact-final import/presentation/post-package verification, and lock only if final bytes pass.",
   "stage4_reaudit": {
     "state": "PASS_STAGE4_COMPLETE",
     "upstream_stage3_artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
@@ -786,5 +786,42 @@
     },
     "runtime_binding": "DEFERRED_TO_STAGE6_CURRENT",
     "next_action": "Stage6 Runtime & Presentation Acceptance: re-resolve German Flashcards Pro CURRENT and test the exact Stage5 TSV/projection."
+  },
+  "stage6_acceptance": {
+    "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "verification_level": "V3_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
+    "runtime": "v444-R78",
+    "runtime_artifact": "German-Flashcards-Pro-v444-R78-ORGANIZED-DELIVERY-CANDIDATE-METADATA-CORRECTED.zip",
+    "runtime_sha256": "2e3fa3ede9ac4da211949fcb9b16aab792895978793979087a0706af1ab95686",
+    "runtime_verification_state": "PASS_AUTOMATED_POST_PACKAGE_CANDIDATE",
+    "runtime_release_final": false,
+    "last_fully_verified_runtime": "v435-R69",
+    "no_downgrade": true,
+    "runtime_package_rehash": "254/254 PASS",
+    "direct_tsv_import": "292/292 PASS",
+    "card_types": {
+      "german-verb": 228,
+      "de-vocabulary": 64
+    },
+    "persistence": "292/292 importedCards + VERIFIED commit manifest + 292/292 runtime index",
+    "library_hierarchy": "Menschen Verben > Menschen A2 Verben > Grundwortschatz Verben (292)",
+    "presentation": "Study 4 / Quick 2 / Typing 3 / Audio 3 across 292/292 cards",
+    "practice_modes": "Study/Quick/Typing/Audio full 292-card scope PASS",
+    "universal_roundtrip": "292/292 identity + source/lesson/deck parity PASS",
+    "canonical_relations": "894/894 preserved",
+    "source_audio": "0 refs; 292/292 zero-audio targets preserved",
+    "combined_checks": "47/47 PASS",
+    "page_errors": 0,
+    "environment_boundary": "Managed real-origin navigation is blocked before app boot. Exact v444 runtime code passed deterministic IndexedDB/localStorage acceptance. v444 itself remains CURRENT candidate; its real same-profile/offline storage gate is separate.",
+    "portable_checkpoint": {
+      "filename": "Menschen-A2-Verben-v3.3.2-Stage6-GFP-v444-CHECKPOINT.zip",
+      "sha256": "435cb6bddcb45c4898104153134db6e337affb8220f7c729af033d5a32b0be57",
+      "size_bytes": 1801524,
+      "manifest_rehash": "287/287 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage6-GFP-v444-CHECKPOINT.zip",
+      "persistence": "PENDING_LIBRARY_UPLOAD__CURRENT_CHAT_ARTIFACT_AVAILABLE"
+    },
+    "next_action": "Stage7: re-resolve CURRENT, build exact-final A2 Verben LOCKED candidate, rerun exact-final import/presentation/post-package verification, and lock only if final bytes pass."
   }
 }

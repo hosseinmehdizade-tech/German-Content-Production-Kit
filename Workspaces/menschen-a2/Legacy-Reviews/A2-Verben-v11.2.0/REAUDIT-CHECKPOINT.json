@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.3.0",
+  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.4.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0003_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0004_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0003",
+    "state": "PASS_BATCH0004",
     "targets_total": 292,
-    "targets_complete": 60,
-    "targets_remaining": 232,
-    "latest_completed_range": "ma2-lu-0041..ma2-lu-0060",
+    "targets_complete": 80,
+    "targets_remaining": 212,
+    "latest_completed_range": "ma2-lu-0061..ma2-lu-0080",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -122,21 +122,63 @@
         "reference_availability": "PASS",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0002_exact_preservation": "44/44 PASS"
+      },
+      {
+        "batch": 4,
+        "target_range": "ma2-lu-0061..ma2-lu-0080",
+        "targets_complete": 20,
+        "cumulative_complete": 80,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 15,
+          "phrase": 5
+        },
+        "stage3_semantic_counts": {
+          "verb": 14,
+          "expression": 6
+        },
+        "relations": 41,
+        "relation_type_counts": {
+          "REKTION": 21,
+          "SYNONYM": 9,
+          "RELATED": 8,
+          "COLLOCATION": 1,
+          "ANTONYM": 2
+        },
+        "review_resolutions": 24,
+        "legacy_relation_rows_reviewed": 15,
+        "legacy_nvv_reviewed": 3,
+        "nvv_relations_emitted": 0,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0004-CHECKPOINT.zip",
+        "sha256": "46c830241c248400a021aa9a1ad9c4c833ba8ba03029e4ff596d18b59c9a5e23",
+        "size_bytes": 173968,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0004-CHECKPOINT.zip",
+        "library_file_id": "libfile_254e881b2be88191b72b0bdded36abac",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "manifest_rehash": "66/66 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0003_exact_preservation": "58/58 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0003 closes all 37 represented legacy relation rows: 20 synonym, 7 antonym and 10 legacy-NVV-labelled rows; no unsupported antonym or false NVV relation was emitted.",
-      "Teaching unterrichten vs inform unterrichten, general sich beraten vs explicit mit+über construction, and generic hoffen vs auf+Akk hoffen remain separate source-bound identities.",
-      "Generic hoffen no longer leaks the source auf+Akk example into the generic target; absenden no longer presents an abschicken source example as target-form evidence; the mixed transitive/reflexive ärgern slash bundle remains audit-visible but not learner-facing.",
-      "Legacy abschicken is consolidated into ma2-lu-0054 without duplicate identity or self-relation.",
-      "MEM-009 remains intact for überfliegen, probieren, pressen and lassen; no source audio metadata was invented."
+      "Batch0004 closes all 15 represented legacy relation rows. Three legacy NVV labels were reviewed and none was emitted as NVV without evidence.",
+      "ma2-lu-0070 faszinieren learner morphology repairs the source-bundle omission/Stage2 error to preterite 'faszinierte' while preserving the raw source lineage.",
+      "ma2-lu-0078 trainieren preserves transitive and intransitive uses under MEM-009 rather than splitting the lexeme from the source example.",
+      "ma2-lu-0079 abnehmen is kept scoped to the source Dativ+Akkusativ take-from/relieve construction; unrelated weight-loss senses are not injected.",
+      "ma2-lu-0072 sich halten and ma2-lu-0080 sich ausruhen normalize the source [+A] marker as reflexive accusative evidence rather than inventing an extra object.",
+      "ma2-lu-0064 anschreiben and ma2-lu-0069 nachspielen preserve their raw source examples in audit lineage while learner examples are construction-aligned.",
+      "ma2-lu-0080 keeps both source clauses in audit provenance and separates them into learner-facing examples.",
+      "No source audio metadata was invented."
     ]
   },
   "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
   "persistence": {
-    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0003_METADATA",
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
+    "library_auxiliary_sidecars": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0004_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0004 for ma2-lu-0061..ma2-lu-0080; preserve Stage2 and Batches0001-0003 lineage unchanged."
+  "next_action": "Stage3 Batch0005 for ma2-lu-0081..ma2-lu-0100; preserve Stage2 and Batches0001-0004 lineage unchanged."
 }

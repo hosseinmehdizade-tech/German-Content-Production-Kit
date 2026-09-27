@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_COMPLETE__PASS_BATCH0015",
+  "state": "STAGE4_COMPLETE__PASS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -643,12 +643,74 @@
     "cumulative_profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
     "stage3_cumulative_payload": "03-evidence/A2-VERBEN-STAGE3-CUMULATIVE-ENRICHED-292.json"
   },
-  "content_state": "NOT_IMPORT_FINAL__STAGE3_COMPLETE__STAGE4_PENDING",
+  "content_state": "NOT_IMPORT_FINAL__STAGE4_COMPLETE__STAGE5_PENDING",
   "persistence": {
-    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE3_BATCH0015",
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE4",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0015_COMPLETE_METADATA",
+    "git": "IN_SYNC_FOR_STAGE4_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Begin Stage4 Linguistic & Lexical QA from the cumulative 292-target Stage3 payload in Batch0015; do not skip to Stage5/6/7."
+  "next_action": "Begin Stage5 Delivery Projection from the Stage4 PASS canonical payload; do not skip to Stage6/7.",
+  "stage4_reaudit": {
+    "state": "PASS_STAGE4_COMPLETE",
+    "upstream_stage3_artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
+    "upstream_stage3_sha256": "fb8cf76ff566631fa6d6ac640a37971e037eaf48c6d2042a0c9529a4e099f530",
+    "targets": 292,
+    "type_counts": {
+      "verb": 228,
+      "phrase": 64
+    },
+    "examples": 1168,
+    "example_translations": 2336,
+    "relations": 894,
+    "relation_type_counts": {
+      "ANTONYM": 16,
+      "COLLOCATION": 308,
+      "NVV": 1,
+      "REKTION": 295,
+      "RELATED": 86,
+      "SYNONYM": 188
+    },
+    "stage2_relation_queue": "269/269 RESOLVED",
+    "changed_targets": 38,
+    "exact_duplicate_relations_removed": [
+      "ma2-lu-0171-rel-b9-003",
+      "ma2-lu-0202-rel-b11-002"
+    ],
+    "key_repairs": [
+      "passieren core normalized to primary event-sense perfect ist passiert / auxiliary sein while preserving transitive branch in grammar notes",
+      "aufhören zu produzieren and sich lohnen examples repaired so all four learner examples realize the target form",
+      "sich bedienen self-service vs Genitiv make-use-of learner scope separated",
+      "transitive aufbrechen narrowed to break-open meaning; departure remains separate ma2-lu-0242",
+      "EDV eingeben learner rection normalized",
+      "internal Stage/source/audit wording removed or rewritten from learner-facing grammar notes"
+    ],
+    "annotations": "NOT_ACTIVATED_HISTORICAL_PROFILE_NO_ANNOTATION_OBJECTS",
+    "source_audio": "NO_SOURCE_AUDIO_INVENTED",
+    "validation": {
+      "custom_qa": "39/39 PASS",
+      "profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
+      "a2_supplemental": "PASS_0_ERRORS_0_WARNINGS",
+      "reference_registry": "PASS",
+      "reference_availability": "PASS",
+      "framework_pytest": "47/47 PASS",
+      "fresh_manifest_rehash": "260/260 PASS",
+      "upstream_stage3_exact_preservation": "255/255 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES"
+    },
+    "artifact": {
+      "filename": "Menschen-A2-Verben-v3.3.2-Stage4-PASS-CHECKPOINT.zip",
+      "sha256": "73a6cbf18a6990a89792eb12a9718c4f2b8a475f7f6d64f886b8f996affac0e5",
+      "size_bytes": 1071665,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage4-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000ea54821094990ceb1a0876c9",
+      "library_stable_id": "libfile_cfcba50939d8819189b755445114b44d",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "post_package_report_library_stable_id": "libfile_0fc62f4aa1e4819187e061277b6140d3",
+      "sha256_sidecar_library_stable_id": "libfile_9881adbe88f4819191490af6dae9c19e"
+    },
+    "canonical_payload": "03-evidence/A2-VERBEN-STAGE4-CANONICAL-PASS.json",
+    "content_lock_state": "NOT_LOCKED",
+    "next_action": "Stage5 Delivery Projection from the Stage4 PASS canonical payload; runtime binding remains deferred until Stage6."
+  }
 }

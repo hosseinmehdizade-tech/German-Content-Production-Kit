@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.8.0",
+  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0008_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0009_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0008",
+    "state": "PASS_BATCH0009",
     "targets_total": 292,
-    "targets_complete": 160,
-    "targets_remaining": 132,
-    "latest_completed_range": "ma2-lu-0141..ma2-lu-0160",
+    "targets_complete": 180,
+    "targets_remaining": 112,
+    "latest_completed_range": "20 new canonical targets: ma2-lu-0161..ma2-lu-0181 excluding ma2-lu-0177 (source order 177 consolidates to ma2-lu-0054)",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -322,16 +322,60 @@
         "reference_availability": "PASS",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0007_exact_preservation": "114/114 PASS"
+      },
+      {
+        "batch": 9,
+        "target_range": "ma2-lu-0161..ma2-lu-0181 excluding ma2-lu-0177",
+        "source_order_span": "161..181",
+        "boundary_accounting": "source order 177 / MEN-A2-0168 -> ma2-lu-0054 already completed in Batch0003",
+        "targets_complete": 20,
+        "cumulative_complete": 180,
+        "targets_remaining": 112,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 15,
+          "phrase": 5
+        },
+        "relations": 72,
+        "relation_type_counts": {
+          "COLLOCATION": 31,
+          "REKTION": 19,
+          "RELATED": 7,
+          "SYNONYM": 15
+        },
+        "review_resolutions": 14,
+        "stage2_relation_queue_rows_reviewed": 8,
+        "stage2_relation_queue_kind_counts": {
+          "SYNONYM": 7,
+          "NVV": 1
+        },
+        "legacy_nvv_reviewed": 1,
+        "nvv_relations_emitted": 0,
+        "source_order_177_prior_batch3_relation_rows": "5/5 RESOLVED_VERIFIED",
+        "identity_map_rows_for_new_targets": 20,
+        "boundary_consolidation_rows": 1,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0009-CHECKPOINT.zip",
+        "sha256": "e034a5ca4e5b32047ad321d66d7187b96107c5d20b27cdee4f17c11bd5e35bae",
+        "size_bytes": 376803,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0009-CHECKPOINT.zip",
+        "library_file_id": "libfile_2c9f1fe307988191b6c52e367312ca15",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
+        "manifest_rehash": "135/135 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0008_exact_preservation": "129/129 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0008 uses the exact Stage2 identity map rather than positional guessing: 19 legacy mapping rows cover 20 current targets; MEN-A2-0141 splits into ma2-lu-0149 and ma2-lu-0150.",
-      "All 6 Stage2 relation-review queue rows represented by Batch0008 are resolved: 3 synonym, 1 antonym and 2 legacy-NVV rows; zero NVV/FVG relation edges were emitted.",
-      "ma2-lu-0147 genügen preserves the raw source [+A] marker in audit but normalizes learner-facing valency to Dativ, supported by Duden and the legacy identity map.",
-      "ma2-lu-0154 abschmecken repairs the Stage2 preterite from erroneous 'schmeckt ab' to 'schmeckte ab', supported by Duden.",
-      "ma2-lu-0159 nachsprechen reconciles current raw [+D] with legacy [+D+A] and uses jdm. (Dat.) etw. (Akk.) nachsprechen in learner-facing rection.",
-      "ma2-lu-0149/0150 preserve the sich wundern identity split: standalone reflexive verb vs explicit über + Akkusativ phrase.",
-      "ma2-lu-0145 sich verbrauchen remains restricted to the Duden-supported wear-oneself-out sense.",
+      "Batch0009 corrects the prior numeric-range assumption: source order 177 / legacy MEN-A2-0168 is not a new canonical target; Stage2 consolidates it into already-completed ma2-lu-0054. The milestone therefore advances through ma2-lu-0181 to include 20 new canonical targets.",
+      "All five relation rows attached to source order 177 were already resolved in Batch0003 and were referenced rather than duplicated.",
+      "All 8 Stage2 relation-review queue rows for the 20 new targets were resolved: 7 synonym rows and 1 legacy-NVV row; zero NVV/FVG relation edges were emitted.",
+      "ma2-lu-0165 merken is learner-scoped to notice/realize, while the separate reflexive memory construction remains ma2-lu-0166; the raw source example on row 165 remains audit-visible.",
+      "ma2-lu-0169 uses strong morphology for the persuade/motivate sense (bewog / hat bewogen); the weak raw source form remains audit-visible only.",
+      "ma2-lu-0168 treats source [+A] as reflexive Akkusativ, not an additional object.",
+      "ma2-lu-0181 preserves the source stop-production expression bundle while retyping die Produktion einstellen as an ordinary lexical collocation/related expression rather than NVV/FVG.",
       "No source audio metadata was invented."
     ]
   },
@@ -339,8 +383,8 @@
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0008_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0009_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0009 for ma2-lu-0161..ma2-lu-0180; preserve Stage2 and Batches0001-0008 lineage unchanged."
+  "next_action": "Stage3 Batch0010 for ma2-lu-0182..ma2-lu-0201; preserve Stage2 and Batches0001-0009 lineage unchanged."
 }

@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0014_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_COMPLETE__PASS_BATCH0015",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0014",
+    "state": "PASS_STAGE3_COMPLETE",
     "targets_total": 292,
-    "targets_complete": 280,
-    "targets_remaining": 12,
-    "latest_completed_range": "20 actual successors: ma2-lu-0263, ma2-lu-0264, ma2-lu-0265, ma2-lu-0267..ma2-lu-0283",
+    "targets_complete": 292,
+    "targets_remaining": 0,
+    "latest_completed_range": "final 12 actual successors: ma2-lu-0284, ma2-lu-0285, ma2-lu-0287, ma2-lu-0288, ma2-lu-0289, ma2-lu-0290, ma2-lu-0291, ma2-lu-0293, ma2-lu-0294, ma2-lu-0295, ma2-lu-0296, ma2-lu-0297",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -579,25 +579,76 @@
         "reference_availability": "PASS_OFFICIAL_VALIDATOR",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0013_exact_preservation": "215/215 PASS"
+      },
+      {
+        "batch": 15,
+        "target_range": "final 12 actual successors: ma2-lu-0284, ma2-lu-0285, ma2-lu-0287, ma2-lu-0288, ma2-lu-0289, ma2-lu-0290, ma2-lu-0291, ma2-lu-0293, ma2-lu-0294, ma2-lu-0295, ma2-lu-0296, ma2-lu-0297",
+        "source_order_span": "284..297 excluding retired source-order 286 and duplicate source-order 292",
+        "boundary_accounting": "source order 286 / MEN-A2-0267 retired as nonverb phrase; source order 292 / MEN-A2-0070 migrates to survivor ma2-lu-0074 already completed",
+        "targets_complete": 12,
+        "cumulative_complete": 292,
+        "targets_remaining": 0,
+        "examples": 48,
+        "cumulative_examples": 1168,
+        "cumulative_example_translations": 2336,
+        "profile_type_counts": {
+          "verb": 9,
+          "phrase": 3
+        },
+        "relations": 31,
+        "relation_type_counts": {
+          "COLLOCATION": 15,
+          "REKTION": 8,
+          "RELATED": 3,
+          "SYNONYM": 5
+        },
+        "stage2_relation_queue_rows_represented": 3,
+        "stage2_relation_queue_rows_already_resolved_upstream": 2,
+        "stage2_relation_queue_rows_newly_resolved": 1,
+        "stage2_relation_queue_cumulative": "269/269 RESOLVED",
+        "morphology_repairs": {
+          "ma2-lu-0297": "hat ausgerastet(source raw) -> ist ausgerastet learner target sense"
+        },
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
+        "sha256": "fb8cf76ff566631fa6d6ac640a37971e037eaf48c6d2042a0c9529a4e099f530",
+        "size_bytes": 830823,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
+        "library_file_id": "libfile_6d0124a33be08191a37c2a01f06d3e8f",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "post_package_report_library_file_id": "libfile_62a983ca64ac81918706f9ed5389570e",
+        "sha256_sidecar_library_file_id": "libfile_46134781dcb481919bb6d5d4b94d6993",
+        "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
+        "manifest_rehash": "238/238 PASS",
+        "profile_contract_batch": "PASS_12_UNITS_48_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "profile_contract_cumulative": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS_OFFICIAL_VALIDATOR",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0014_exact_preservation": "233/233 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0014 selects the next 20 actual Stage2 successors rather than consecutive source orders; source order 266 is an exact duplicate generic eingeben occurrence and does not create ma2-lu-0266.",
-      "All 4 represented Stage2 relation-review rows are resolved: downloaden is accepted as synonym of herunterladen; beabsichtigen as synonym of vorhaben; eintragen is scoped/retyped to RELATED; Bericht erstatten is retyped to a reference-confirmed NVV.",
-      "ma2-lu-0265 interprets source [+A] as reflexive Akkusativ rather than an additional object.",
-      "ma2-lu-0271 erreichen preserves reach/achieve/contact senses under MEM-009.",
-      "ma2-lu-0273 teilen preserves divide/share senses under MEM-009; ma2-lu-0274 makes reciprocal/reflexive constructions explicit.",
-      "ma2-lu-0275 generic berichten and ma2-lu-0276 über + Akkusativ berichten remain separate source-bound identities; source von + Dativ remains an audit-visible related variant.",
-      "ma2-lu-0277 kündigen preserves resign/terminate/give-notice senses with explicit learner rection.",
-      "Official profile and reference-availability validators PASS; one evidence-backed NVV relation (Bericht erstatten) is emitted; no source audio metadata was invented."
-    ]
+      "Stage3 is complete: all 292 Stage2 successor targets are represented exactly once in the cumulative Stage3 payload.",
+      "Cumulative Stage3 contains 1168 German examples and 2336 FA/EN example translations; official cumulative profile validation passes with 0 errors and 0 warnings.",
+      "All 269 Stage2 legacy relation-review queue rows are resolved cumulatively. Batch0015 closes the last previously unresolved row: MEN-A2-0276 synonym1=Durchdrehen.",
+      "The two MEN-A2-0119 legacy NVV rows represented through ma2-lu-0288 were already resolved in Batch0007 and are referenced rather than duplicated or overwritten.",
+      "Source order 286 is excluded as a nonverb phrase candidate; source order 292 is an exact duplicate occurrence migrated to already-completed survivor ma2-lu-0074.",
+      "ma2-lu-0284 generic sich trennen and ma2-lu-0285 sich von jdm. trennen remain separate despite crossover in the raw source examples.",
+      "ma2-lu-0294 transitive informieren and ma2-lu-0295 reflexive sich über ... informieren remain separate; the mismatched raw 0295 example remains audit-visible.",
+      "ma2-lu-0297 learner morphology is repaired to standard target-sense 'ist ausgerastet' / auxiliary sein; source raw 'hat ausgerastet' remains preserved in audit.",
+      "No source audio metadata was invented. Stage4 has not yet started."
+    ],
+    "cumulative_examples": 1168,
+    "cumulative_example_translations": 2336,
+    "stage2_relation_queue": "269/269 RESOLVED",
+    "cumulative_profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
+    "stage3_cumulative_payload": "03-evidence/A2-VERBEN-STAGE3-CUMULATIVE-ENRICHED-292.json"
   },
-  "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
+  "content_state": "NOT_IMPORT_FINAL__STAGE3_COMPLETE__STAGE4_PENDING",
   "persistence": {
-    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE3_BATCH0015",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0014_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0015_COMPLETE_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0015 final batch begins at ma2-lu-0284; complete the remaining 12 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0014 lineage unchanged."
+  "next_action": "Begin Stage4 Linguistic & Lexical QA from the cumulative 292-target Stage3 payload in Batch0015; do not skip to Stage5/6/7."
 }

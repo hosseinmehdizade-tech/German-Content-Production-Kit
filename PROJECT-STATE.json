@@ -958,7 +958,7 @@
       "resolution_mode": "SOURCE_SPECIFIC_PORTABLE_STATE",
       "note": "Use source-specific workspaces/checkpoints such as nomen_verb_verbindungen and menschen_a1a2b1_memrise. Do not inherit grammar state or legacy mappings implicitly.",
       "menschen_a2_verben": {
-        "status": "STAGE7_COMPLETE__LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "status": "POSTLOCK_REPAIR1_COMPLETE__CONTENT_QA_PASS__RUNTIME_REACCEPT_PENDING",
         "framework": "v3.3.2",
         "checkpoint": "Workspaces/menschen-a2/Legacy-Reviews/A2-Verben-v11.2.0/REAUDIT-CHECKPOINT.json",
         "cards": 292,
@@ -971,9 +971,9 @@
           "fa": 1168,
           "en": 1168
         },
-        "relations": 894,
+        "relations": 999,
         "source_audio_refs": 0,
-        "content_lock_state": "LOCKED",
+        "content_lock_state": "UNLOCKED_FOR_USER_APPROVED_REPAIR__NOT_RELOCKED",
         "runtime_at_lock": "v444-R78",
         "runtime_release_final": false,
         "last_fully_verified_runtime": "v435-R69",
@@ -984,8 +984,18 @@
           "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
           "library_stable_id": "libfile_c5ef1427dfec8191b1a92a8564a52d2d"
         },
-        "durable_git_checkpoint_commit": "42cb343bb5d82f25426f112c59db888404df3fa6",
-        "next_action": "Locked. Reopen only for a real defect or explicit scope change; runtime compatibility re-resolves CURRENT independently."
+        "durable_git_checkpoint_commit": "e0e0a4d4810175c22711b284bc8347e3409223a4",
+        "next_action": "Re-resolve CURRENT and run runtime/presentation acceptance; only then exact-final re-lock.",
+        "repair1": {
+          "candidate": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
+          "sha256": "04a99671b62beb6900c7bd82789a59d2c28e2c70ce061efded1da751ed83ffaf",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
+          "library_stable_id": "libfile_468f381fdb70819184a51d2c646383cb",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+          "combination_coverage": "291/292 explicit; 162/292 with >=2",
+          "validation": "content QA PASS + profile PASS + supplemental PASS + 47/47 framework pytest",
+          "runtime_acceptance": "PENDING"
+        }
       }
     },
     "lesen": {

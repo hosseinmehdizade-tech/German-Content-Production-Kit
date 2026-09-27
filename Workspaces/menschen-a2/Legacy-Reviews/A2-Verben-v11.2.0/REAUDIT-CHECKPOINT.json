@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE7_COMPLETE__LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "state": "POSTLOCK_REPAIR1_COMPLETE__CONTENT_QA_PASS__RUNTIME_REACCEPT_PENDING",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -643,14 +643,14 @@
     "cumulative_profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
     "stage3_cumulative_payload": "03-evidence/A2-VERBEN-STAGE3-CUMULATIVE-ENRICHED-292.json"
   },
-  "content_state": "IMPORT_FINAL__LOCKED",
+  "content_state": "REPAIR_CANDIDATE__NOT_LOCKED",
   "persistence": {
-    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_STAGE7",
-    "library_auxiliary_sidecars": "IN_SYNC_STAGE7_REPORTS_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE7_METADATA",
+    "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_AND_BYTE_COMPARED_FOR_REPAIR1",
+    "library_auxiliary_sidecars": "EMBEDDED_IN_CANDIDATE__STANDALONE_UPLOAD_NOT_REQUIRED",
+    "git": "IN_SYNC_FOR_REPAIR1_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Menschen A2 Verben content is complete and LOCKED. Do not regenerate without a real defect or explicit user scope change. Runtime may advance independently; future runtime compatibility must re-resolve CURRENT without changing canonical content.",
+  "next_action": "Re-resolve German Flashcards Pro CURRENT, run Runtime & Presentation Acceptance on exact Repair1 candidate, then build/retest/re-lock exact-final bytes only if acceptance passes.",
   "stage4_reaudit": {
     "state": "PASS_STAGE4_COMPLETE",
     "upstream_stage3_artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
@@ -932,5 +932,78 @@
     },
     "lock_mutated": false,
     "next_action": "Controlled repair only if user approves: preserve stable IDs, repair projection + targeted combination enrichment, validate against CURRENT, then exact-final re-lock."
+  },
+  "postlock_repair1": {
+    "state": "CONTENT_QA_PASS__RUNTIME_REACCEPT_PENDING",
+    "authorization": "USER_APPROVED_CONTROLLED_UNLOCK_AFTER_POST_LOCK_PEDAGOGICAL_AUDIT",
+    "reason": [
+      "Uneven explicit Kombinationen/Kollokationen coverage across production batches",
+      "Historical relation value-shape projection losses",
+      "One missing übergeben Rektion projection",
+      "Learner-facing portability/label cleanup"
+    ],
+    "baseline_locked_release": {
+      "filename": "German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
+      "sha256": "984cc519057115da49ac2479330704f7ed767e47df38d049330180ff516848b2",
+      "status": "PRESERVED_UNMODIFIED_AS_HISTORICAL_BASELINE"
+    },
+    "identity_preservation": "292/292 canonical IDs and order preserved; 1168/1168 DE examples and all FA/EN translations preserved",
+    "enrichment": {
+      "true_gap_units_enriched": 53,
+      "redundant_headword_collocation_fillers_removed": 6,
+      "filler_units_replaced_with_stronger_chunks": 4,
+      "explicit_collocation_coverage": "291/292",
+      "two_plus_collocation_coverage": "162/292",
+      "intentional_zero_extra_collocation": [
+        "ma2-lu-0236"
+      ],
+      "note": "ma2-lu-0236 target jdn. zum Weinen bringen is itself a fixed multiword construction; no redundant/fabricated extra chunk added."
+    },
+    "projection_repairs": {
+      "restored_legacy_collocations": 6,
+      "restored_related_synonym_items": 18,
+      "restored_uebergeben_rektion": 1,
+      "value_shapes_supported": [
+        "term",
+        "text",
+        "pattern",
+        "string"
+      ],
+      "new_rektion": "ma2-lu-0135: sich auf + Akkusativ beschränken",
+      "verb_fronts_normalized": "228/228 headword-only",
+      "learner_facing_separability_labels": true,
+      "learner_facing_grammar_notes_repaired": 8
+    },
+    "relations_after_repair": {
+      "RELATED": 86,
+      "REKTION": 296,
+      "SYNONYM": 188,
+      "COLLOCATION": 412,
+      "NVV": 1,
+      "ANTONYM": 16
+    },
+    "validation": {
+      "custom_repair_qa": "PASS",
+      "profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
+      "a2_supplemental": "PASS_0_ERRORS_0_WARNINGS",
+      "framework_pytest": "47/47 PASS",
+      "universal_v2_parse": "292/292 PASS",
+      "post_package_manifest_rehash": "25/25 PASS",
+      "post_package_sha256sums_rehash": "26/26 PASS",
+      "zip_crc": "PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES"
+    },
+    "artifact": {
+      "filename": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
+      "sha256": "04a99671b62beb6900c7bd82789a59d2c28e2c70ce061efded1da751ed83ffaf",
+      "size_bytes": 901943,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
+      "library_file_id": "file_000000009eb88210b934779a30800725",
+      "library_stable_id": "libfile_468f381fdb70819184a51d2c646383cb",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "runtime_binding": "PENDING__RESOLVE_CURRENT_AT_EXECUTION",
+    "current_runtime_observed_at_repair_start": "v446-R80",
+    "next_action": "Re-resolve German Flashcards Pro CURRENT, run Runtime & Presentation Acceptance on exact Repair1 candidate, then build/retest/re-lock exact-final bytes only if acceptance passes."
   }
 }

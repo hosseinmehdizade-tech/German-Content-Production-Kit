@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.6.0",
+  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.7.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0006_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0007_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0006",
+    "state": "PASS_BATCH0007",
     "targets_total": 292,
-    "targets_complete": 120,
-    "targets_remaining": 172,
-    "latest_completed_range": "ma2-lu-0101..ma2-lu-0120",
+    "targets_complete": 140,
+    "targets_remaining": 152,
+    "latest_completed_range": "ma2-lu-0121..ma2-lu-0140",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -236,24 +236,68 @@
         "reference_availability": "PASS",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0005_exact_preservation": "86/86 PASS"
+      },
+      {
+        "batch": 7,
+        "target_range": "ma2-lu-0121..ma2-lu-0140",
+        "targets_complete": 20,
+        "cumulative_complete": 140,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 14,
+          "phrase": 6
+        },
+        "stage3_semantic_counts": {
+          "verb": 14,
+          "expression": 6
+        },
+        "relations": 67,
+        "relation_type_counts": {
+          "COLLOCATION": 29,
+          "REKTION": 14,
+          "RELATED": 4,
+          "SYNONYM": 20
+        },
+        "review_resolutions": 20,
+        "stage2_relation_queue_rows_reviewed": 11,
+        "stage2_relation_queue_kind_counts": {
+          "SYNONYM": 5,
+          "ANTONYM": 2,
+          "NVV": 4
+        },
+        "legacy_nvv_reviewed": 4,
+        "nvv_relations_emitted": 0,
+        "identity_map_rows": 18,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
+        "sha256": "2e89046156e703cd53281f40926218439a5c0853741605fad8393916c46c9731",
+        "size_bytes": 290915,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0007-CHECKPOINT.zip",
+        "library_file_id": "libfile_a9d79adb16d08191a7373f9d0ac32eee",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "manifest_rehash": "105/105 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0006_exact_preservation": "99/99 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0006 closes all 112 represented legacy relation cells; all 60 legacy NVV labels were retyped/rejected and zero NVV/FVG relation edges were emitted.",
-      "ma2-lu-0104 learner headword is repaired from 'los sein (Akk.)' to 'los sein'; source [+A] remains audit-visible but is not treated as a normal Akkusativ object.",
-      "ma2-lu-0111 sich ändern and ma2-lu-0118 sich verbessern normalize source [+A] as reflexive Akkusativ rather than an extra object.",
-      "ma2-lu-0116 Erfolg haben is independently confirmed in the supplied Nomen-Verb-Verbindungen reference and remains a phrase identity.",
-      "ma2-lu-0119 sich beschweren is enriched to bei + Dativ / über + Akkusativ from approved grammar references.",
-      "ma2-lu-0120 reklamieren preserves the screenshot construction while Duden verifies transitive and intransitive complaint use.",
+      "Batch0007 uses the exact Stage2 identity map rather than positional guessing: 18 legacy mapping rows cover 20 current targets, including three split mappings.",
+      "All 11 Stage2 relation-review queue rows represented by Batch0007 are resolved: 5 synonym, 2 antonym and 4 legacy-NVV rows; zero NVV/FVG relation edges were emitted.",
+      "ma2-lu-0125 preserves the split from legacy MEN-A2-0119; separate source phrase ma2-lu-0288 remains for its later Stage3 batch.",
+      "ma2-lu-0127 preserves source fidelity: target construction is über + Akkusativ while the raw source example also shows um/wegen variants.",
+      "ma2-lu-0128 unterhalten preserves financial-support and entertainment senses under MEM-009.",
+      "ma2-lu-0132 wachsen does not expose the suspicious source [+D] marker as learner-facing Dativ valency; raw lineage is preserved.",
+      "ma2-lu-0140 braten preserves both transitive and intransitive Duden-attested uses under MEM-009, both with haben.",
       "No source audio metadata was invented."
     ]
   },
   "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
-    "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_REPORT_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0006_METADATA",
+    "library_auxiliary_sidecars": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0007_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0007 for ma2-lu-0121..ma2-lu-0140; preserve Stage2 and Batches0001-0006 lineage unchanged."
+  "next_action": "Stage3 Batch0008 for ma2-lu-0141..ma2-lu-0160; preserve Stage2 and Batches0001-0007 lineage unchanged."
 }

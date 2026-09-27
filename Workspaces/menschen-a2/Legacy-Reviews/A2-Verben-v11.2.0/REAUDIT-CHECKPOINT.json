@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0012_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0013_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0012",
+    "state": "PASS_BATCH0013",
     "targets_total": 292,
-    "targets_complete": 240,
-    "targets_remaining": 52,
-    "latest_completed_range": "ma2-lu-0223..ma2-lu-0242",
+    "targets_complete": 260,
+    "targets_remaining": 32,
+    "latest_completed_range": "ma2-lu-0243..ma2-lu-0262",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -498,16 +498,54 @@
         "reference_availability": "PASS_OFFICIAL_VALIDATOR",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0011_exact_preservation": "180/180 PASS"
+      },
+      {
+        "batch": 13,
+        "target_range": "ma2-lu-0243..ma2-lu-0262",
+        "targets_complete": 20,
+        "cumulative_complete": 260,
+        "targets_remaining": 32,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 17,
+          "phrase": 3
+        },
+        "relations": 56,
+        "relation_type_counts": {
+          "COLLOCATION": 27,
+          "REKTION": 22,
+          "RELATED": 3,
+          "SYNONYM": 4
+        },
+        "review_resolutions": 7,
+        "stage2_relation_queue_rows_reviewed": 0,
+        "stage2_relation_queue_rows_present": 0,
+        "nvv_relations_emitted": 0,
+        "identity_map_rows": 20,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0013-CHECKPOINT.zip",
+        "sha256": "d4c8d937c7bb15cb0a7949d5f46d791fcf9f8e5c93dcac43d8919ee6f4d5a888",
+        "size_bytes": 571905,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0013-CHECKPOINT.zip",
+        "library_file_id": "libfile_8784e9e555288191979baa11a3a078fe",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "post_package_report_library_file_id": "libfile_03792192d8548191b33f919c4d061d77",
+        "sha256_sidecar_library_file_id": "libfile_2d1414bb87e4819190985490a3301ec9",
+        "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
+        "manifest_rehash": "200/200 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS_OFFICIAL_VALIDATOR",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0012_exact_preservation": "198/198 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0012 completes ma2-lu-0223..ma2-lu-0242 as the next 20 actual Stage2 successor targets.",
-      "All 6 represented Stage2 relation-review rows are resolved: 3 synonym, 1 antonym and 2 legacy-NVV rows; zero NVV/FVG relation edges were emitted.",
-      "ma2-lu-0223 completes the Stage2 begeistern split: generic begeistern and jdn. für etw. begeistern remain separate source-bound identities.",
-      "ma2-lu-0227 preserves malformed raw source imperative 'Beeil doch bitte!' in audit while learner examples use idiomatic 'Beeil dich bitte!'.",
-      "ma2-lu-0238 and ma2-lu-0239 preserve separate buffet/self-service and Genitiv make-use-of bedienen identities.",
-      "ma2-lu-0241 preserves transitive break-open morphology with haben; ma2-lu-0242 preserves departure use with sein.",
-      "Legacy 'nach ... aufbrechen' and 'zu ... aufbrechen' NVV labels were retyped as directional constructions, not NVV/FVG.",
+      "Batch0013 completes ma2-lu-0243..ma2-lu-0262 as the next 20 actual Stage2 successor targets.",
+      "The exact Stage2 relation-review queue contains zero rows for this scope; no synthetic queue items or NVV/FVG labels were invented.",
+      "ma2-lu-0247 aufschließen is learner-scoped to unlocking while ma2-lu-0248 preserves the separate catch-up construction zu jdm. aufschließen.",
+      "ma2-lu-0245 expands the raw [+D] marker into explicit learner rection vor + Dativ / von + Dativ while preserving source provenance.",
+      "ma2-lu-0252 sichern preserves both security/physical and data-saving meanings under MEM-009.",
+      "ma2-lu-0260 preserves the raw fingernail-cutting example only for audit because it mismatches the injury identity; learner examples are rebuilt for sich schneiden = cut oneself.",
+      "ma2-lu-0256 and ma2-lu-0262 treat source [+A] as reflexive Akkusativ rather than an additional object.",
       "Official profile and reference-availability validators PASS; no source audio metadata was invented."
     ]
   },
@@ -515,8 +553,8 @@
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0012_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0013_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0013 begins at ma2-lu-0243; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0012 lineage unchanged."
+  "next_action": "Stage3 Batch0014 begins at ma2-lu-0263; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0013 lineage unchanged."
 }

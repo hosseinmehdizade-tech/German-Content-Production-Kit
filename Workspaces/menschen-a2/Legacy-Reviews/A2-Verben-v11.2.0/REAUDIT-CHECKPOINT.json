@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.2.0",
+  "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@1.3.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0002_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0003_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0002",
+    "state": "PASS_BATCH0003",
     "targets_total": 292,
-    "targets_complete": 40,
-    "targets_remaining": 252,
-    "latest_completed_range": "ma2-lu-0021..ma2-lu-0040",
+    "targets_complete": 60,
+    "targets_remaining": 232,
+    "latest_completed_range": "ma2-lu-0041..ma2-lu-0060",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -95,22 +95,48 @@
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0001_exact_preservation": "22/22 PASS",
         "stage2_exact_preservation": "8/8 PASS"
+      },
+      {
+        "batch": 3,
+        "target_range": "ma2-lu-0041..ma2-lu-0060",
+        "targets_complete": 20,
+        "cumulative_complete": 60,
+        "examples": 80,
+        "relations": 54,
+        "relation_type_counts": {
+          "REKTION": 30,
+          "SYNONYM": 10,
+          "RELATED": 8,
+          "COLLOCATION": 6
+        },
+        "review_resolutions": 45,
+        "legacy_relation_rows_reviewed": 37,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+        "sha256": "7714c8571e5197bbccd2f66589825ccf135e223eaf6e826446c079e50dd2a24c",
+        "size_bytes": 139848,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0003-CHECKPOINT.zip",
+        "library_file_id": "libfile_7dc09ba610888191a410cde5b8206e6d",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "manifest_rehash": "53/53 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0002_exact_preservation": "44/44 PASS"
       }
     ],
     "quality_findings": [
-      "Strong/intransitive hängen preserved as hing / hat gehangen; weak transitive hängte / hat gehängt remains distinct.",
-      "ma2-lu-0026 source example belongs to the separate sich auf etw. einrichten construction and remains audit-visible only for that target.",
-      "sich erholen learner rection normalized to von + Dativ while raw source notation remains provenance-visible.",
-      "All 51 represented legacy relation rows in Batch0002 were reviewed; 12 legacy NVV labels were not emitted as false NVV and 11 unsupported antonym seeds were not preserved as antonymy.",
-      "MEM-009 preserved for erfahren; experience and information senses remain on one lexical card.",
-      "No source audio metadata was invented."
+      "Batch0003 closes all 37 represented legacy relation rows: 20 synonym, 7 antonym and 10 legacy-NVV-labelled rows; no unsupported antonym or false NVV relation was emitted.",
+      "Teaching unterrichten vs inform unterrichten, general sich beraten vs explicit mit+über construction, and generic hoffen vs auf+Akk hoffen remain separate source-bound identities.",
+      "Generic hoffen no longer leaks the source auf+Akk example into the generic target; absenden no longer presents an abschicken source example as target-form evidence; the mixed transitive/reflexive ärgern slash bundle remains audit-visible but not learner-facing.",
+      "Legacy abschicken is consolidated into ma2-lu-0054 without duplicate identity or self-relation.",
+      "MEM-009 remains intact for überfliegen, probieren, pressen and lassen; no source audio metadata was invented."
     ]
   },
   "content_state": "NOT_IMPORT_FINAL__CURRENT_PROMPT_STAGE3_REPAIR_IN_PROGRESS",
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0002_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0003_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0003 for ma2-lu-0041..ma2-lu-0060; preserve Stage2, Batch0001 and Batch0002 lineage unchanged."
+  "next_action": "Stage3 Batch0004 for ma2-lu-0061..ma2-lu-0080; preserve Stage2 and Batches0001-0003 lineage unchanged."
 }

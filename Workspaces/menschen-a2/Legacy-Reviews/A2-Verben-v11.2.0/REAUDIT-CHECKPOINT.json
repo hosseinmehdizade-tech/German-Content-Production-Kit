@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-legacy-reaudit-checkpoint@2.0.0",
   "framework": "v3.3.2",
   "scope": "Menschen A2 / Grundwortschatz-Verben legacy v11.2.0",
-  "state": "STAGE3_BATCH0011_PASS__STAGE3_IN_PROGRESS",
+  "state": "STAGE3_BATCH0012_PASS__STAGE3_IN_PROGRESS",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "user_supplied_authority": {
@@ -60,11 +60,11 @@
     "validation": "PASS"
   },
   "stage3_reaudit": {
-    "state": "PASS_BATCH0011",
+    "state": "PASS_BATCH0012",
     "targets_total": 292,
-    "targets_complete": 220,
-    "targets_remaining": 72,
-    "latest_completed_range": "20 actual Stage2 successors: ma2-lu-0202, ma2-lu-0204..ma2-lu-0222; source-order 203 duplicate -> survivor ma2-lu-0059",
+    "targets_complete": 240,
+    "targets_remaining": 52,
+    "latest_completed_range": "ma2-lu-0223..ma2-lu-0242",
     "cumulative_batches": [
       {
         "batch": 1,
@@ -456,17 +456,58 @@
         "reference_availability": "PASS_OFFICIAL_VALIDATOR",
         "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
         "batch0010_exact_preservation": "161/161 PASS"
+      },
+      {
+        "batch": 12,
+        "target_range": "ma2-lu-0223..ma2-lu-0242",
+        "targets_complete": 20,
+        "cumulative_complete": 240,
+        "targets_remaining": 52,
+        "examples": 80,
+        "profile_type_counts": {
+          "verb": 15,
+          "phrase": 5
+        },
+        "relations": 46,
+        "relation_type_counts": {
+          "COLLOCATION": 20,
+          "REKTION": 20,
+          "SYNONYM": 6
+        },
+        "review_resolutions": 12,
+        "stage2_relation_queue_rows_reviewed": 6,
+        "stage2_relation_queue_kind_counts": {
+          "SYNONYM": 3,
+          "ANTONYM": 1,
+          "NVV": 2
+        },
+        "legacy_nvv_reviewed": 2,
+        "nvv_relations_emitted": 0,
+        "identity_map_rows": 19,
+        "artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0012-CHECKPOINT.zip",
+        "sha256": "d3750915e1f8d4a26f7df7ed63ad7fdecd26f2c3b3f889f83c87709c7b038017",
+        "size_bytes": 522014,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.2-Stage3-Batch0012-CHECKPOINT.zip",
+        "library_file_id": "libfile_a7099f7923848191906e6df013ad2175",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+        "post_package_report_library_file_id": "libfile_67d726aa1970819189fce338a9b058b1",
+        "sha256_sidecar_library_file_id": "libfile_668b8f91c42481918fdf7934b40e3d6c",
+        "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
+        "manifest_rehash": "184/184 PASS",
+        "profile_contract": "PASS_20_UNITS_80_EXAMPLES_0_ERRORS_0_WARNINGS",
+        "reference_availability": "PASS_OFFICIAL_VALIDATOR",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_NO_NESTED_ARCHIVES",
+        "batch0011_exact_preservation": "180/180 PASS"
       }
     ],
     "quality_findings": [
-      "Batch0011 selects the next 20 actual Stage2 successor targets rather than consecutive numeric IDs; source order 203 is an exact duplicate migrated to already-completed survivor ma2-lu-0059.",
-      "All 6 Stage2 relation-review queue rows are resolved: 4 synonym and 2 legacy-NVV rows; zero NVV/FVG relation edges were emitted.",
-      "Pech haben remains a source fixed expression; the approved NVV reference does not list it, so the old NVV label is not promoted.",
-      "Recht haben is explicitly listed in the approved Nomen-Verb-Verbindungen reference; no self-relation edge is emitted.",
-      "ma2-lu-0214 repairs learner-facing rection to sich an etw. (Dat.) versuchen while preserving malformed raw source evidence in audit.",
-      "ma2-lu-0216 keeps sound/seem and listen-to uses on one lexical card under MEM-009.",
-      "ma2-lu-0218/0219/0220 preserve the Stage2 three-way split for sich einigen.",
-      "ma2-lu-0221 generic begeistern remains separate from ma2-lu-0223 jdn. für etw. begeistern, deferred to Batch0012.",
+      "Batch0012 completes ma2-lu-0223..ma2-lu-0242 as the next 20 actual Stage2 successor targets.",
+      "All 6 represented Stage2 relation-review rows are resolved: 3 synonym, 1 antonym and 2 legacy-NVV rows; zero NVV/FVG relation edges were emitted.",
+      "ma2-lu-0223 completes the Stage2 begeistern split: generic begeistern and jdn. für etw. begeistern remain separate source-bound identities.",
+      "ma2-lu-0227 preserves malformed raw source imperative 'Beeil doch bitte!' in audit while learner examples use idiomatic 'Beeil dich bitte!'.",
+      "ma2-lu-0238 and ma2-lu-0239 preserve separate buffet/self-service and Genitiv make-use-of bedienen identities.",
+      "ma2-lu-0241 preserves transitive break-open morphology with haben; ma2-lu-0242 preserves departure use with sein.",
+      "Legacy 'nach ... aufbrechen' and 'zu ... aufbrechen' NVV labels were retyped as directional constructions, not NVV/FVG.",
       "Official profile and reference-availability validators PASS; no source audio metadata was invented."
     ]
   },
@@ -474,8 +515,8 @@
   "persistence": {
     "library": "IN_SYNC_EXACT_SHA256_REMATERIALIZED_FOR_CHECKPOINT_ARTIFACT",
     "library_auxiliary_sidecars": "IN_SYNC_POST_PACKAGE_JSON_AND_SHA256",
-    "git": "IN_SYNC_FOR_STAGE3_BATCH0011_METADATA",
+    "git": "IN_SYNC_FOR_STAGE3_BATCH0012_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Stage3 Batch0012 begins at ma2-lu-0223; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0011 lineage unchanged."
+  "next_action": "Stage3 Batch0013 begins at ma2-lu-0243; select the next 20 actual canonical targets from the Stage2 identity map and preserve Stage2 plus Batches0001-0012 lineage unchanged."
 }

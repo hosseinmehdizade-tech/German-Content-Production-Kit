@@ -3,7 +3,7 @@
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
   "milestone": "STAGE7_LOCKED_COMPLETE",
-  "status": "POSTLOCK_REPAIR1_PHASE2_BATCH0007_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+  "status": "POSTLOCK_REPAIR1_PHASE2_BATCH0008_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Phase2 Batch0008: enrich the next 20 active targets; preserve Phase1 and Batches0001-0007 authorities exactly.",
+  "next_action": "Phase2 Batch0009: enrich the next 20 active targets; preserve Phase1 and Batches0001-0008 authorities exactly.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -413,7 +413,7 @@
     "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
     "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   },
-  "current_milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0007_COMPLETE",
+  "current_milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0008_COMPLETE",
   "repair_successor": {
     "phase1_identity_reconciliation": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -479,72 +479,76 @@
         "0004",
         "0005",
         "0006",
-        "0007"
+        "0007",
+        "0008"
       ],
       "latest_batch": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
-        "milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0007_COMPLETE",
+        "milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0008_COMPLETE",
         "phase": "Phase2 lexical enrichment",
-        "batch": "0007",
-        "target_range": "mb1m-lu-0133..mb1m-lu-0154 (20 active targets; retired/source-gap IDs skipped)",
+        "batch": "0008",
+        "target_range": "mb1m-lu-0155..mb1m-lu-0181 (20 active targets; retired/source-gap IDs skipped)",
         "targets_complete_this_batch": 20,
-        "cumulative_targets_complete": 140,
+        "cumulative_targets_complete": 160,
         "targets_total": 395,
-        "targets_remaining": 255,
+        "targets_remaining": 235,
         "identity_changes": 0,
         "examples_changed": 0,
         "source_audio_changes": 0,
-        "new_relations": 70,
+        "new_relations": 88,
         "new_relation_types": {
-          "COLLOCATION": 19,
-          "COMPONENT": 8,
+          "COLLOCATION": 40,
+          "COMPONENT": 9,
           "RELATED": 1,
-          "SYNONYM": 35,
-          "WORD_FAMILY": 7
+          "SYNONYM": 27,
+          "WORD_FAMILY": 11
         },
-        "relation_total_after": 892,
-        "structured_expressions": "5/5",
-        "argument_slot_expressions": "3/5",
-        "sense_scope_guards": [
-          "mb1m-lu-0136 sich aufklären: problem/clarification sense only; weather sense excluded"
+        "relation_total_after": 980,
+        "structured_expressions": "4/4",
+        "argument_slot_expressions": "2/4",
+        "scope_guards": [
+          "herabsetzen: lowering sense only; no demeaning-person sense mixed",
+          "gießen: liquid/plant-watering senses only; no casting/rain senses mixed",
+          "tippen: keyboard/tap senses only; no prediction/lottery sense mixed",
+          "einatmen/ausatmen: raw garbled Menschen source-visible wording preserved verbatim"
         ],
         "validation": {
           "active_cards": "395/395 PASS",
           "senses": "279 PASS",
           "expressions": "116 PASS",
           "examples": "1580 PASS / exact 4 per active card",
-          "relation_ids_unique": "892/892 PASS",
+          "relation_ids_unique": "980/980 PASS",
           "relation_endpoints": "PASS",
           "prior_authorities_byte_identity": "PASS",
           "lineage_byte_identity": "PASS",
           "zip_crc": "PASS",
-          "manifest_rehash": "45/45 PASS",
-          "checksums_rehash": "46/46 PASS",
-          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          "manifest_rehash": "50/50 PASS",
+          "checksums_rehash": "51/51 PASS",
+          "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
         },
         "artifact": {
-          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0007-CHECKPOINT.zip",
-          "sha256": "1b4ab006ba2ce2c611821fbc2334f8eda94b601eccfd81e5ac172b3f20791671",
-          "size_bytes": 2991444,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0007-CHECKPOINT.zip",
-          "library_file_id": "file_00000000e18081f484dcbdad7b6f016f",
-          "library_stable_id": "libfile_2d60218e75bc8191b34f08d28f7e27d8"
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0008-CHECKPOINT.zip",
+          "sha256": "9d81edf605a149b52dc714cf0447e8fbe95c8a17902bc4396861c3e9c009558d",
+          "size_bytes": 3361588,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0008-CHECKPOINT.zip",
+          "library_file_id": "file_0000000067b482109bb79f62127d9ff6",
+          "library_stable_id": "libfile_fdeb5ac0687481919734f595f58827ad"
         },
         "parent_locked_release_immutable": true,
         "content_state": "UNLOCKED_REPAIR_SUCCESSOR_CHECKPOINT",
-        "next_action": "Phase2 Batch0008: enrich the next 20 active targets; preserve Phase1 and Batches0001-0007 authorities exactly."
+        "next_action": "Phase2 Batch0009: enrich the next 20 active targets; preserve Phase1 and Batches0001-0008 authorities exactly."
       },
-      "targets_complete": 140,
+      "targets_complete": 160,
       "targets_total": 395,
-      "targets_remaining": 255
+      "targets_remaining": 235
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0007-CHECKPOINT.zip",
-    "sha256": "1b4ab006ba2ce2c611821fbc2334f8eda94b601eccfd81e5ac172b3f20791671",
-    "size_bytes": 2991444,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0007-CHECKPOINT.zip",
-    "library_file_id": "file_00000000e18081f484dcbdad7b6f016f",
-    "library_stable_id": "libfile_2d60218e75bc8191b34f08d28f7e27d8"
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0008-CHECKPOINT.zip",
+    "sha256": "9d81edf605a149b52dc714cf0447e8fbe95c8a17902bc4396861c3e9c009558d",
+    "size_bytes": 3361588,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0008-CHECKPOINT.zip",
+    "library_file_id": "file_0000000067b482109bb79f62127d9ff6",
+    "library_stable_id": "libfile_fdeb5ac0687481919734f595f58827ad"
   }
 }

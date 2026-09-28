@@ -26,3 +26,10 @@ Menschen A1/A2/B1 production requirements:
 8. Stage 6 must resolve and test the current Flashcards Pro runtime rather than a historical pinned version.
 
 Word Explorer/Wortnetz metadata remains first-class. NVV/FVG/idiom Expressions are normal vocabulary cards, not a separate learning silo.
+
+
+## Active mandatory projection overlay — 2026-09-28
+
+Before Stage 5/6 vocabulary projection or runtime presentation work, read and enforce `Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.0.0.md`.
+
+All ordinary German lexical cards use one neutral import/presentation envelope independent of POS. New production MUST emit `de-vocabulary` for ordinary lexical Sense/Expression cards; `german-verb` is legacy compatibility input only. POS/morphology/Rektion remain semantic data and must not select a different Study layout.

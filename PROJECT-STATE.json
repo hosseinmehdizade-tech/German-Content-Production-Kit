@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-28T15:25:00+02:00",
+  "updated_at": "2026-09-28T15:45:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -43,30 +43,31 @@
     "persistence_rule": "Synchronize Git at meaningful boundaries with bounded/deferred/coalesced sync. Git lag must not block ordinary safe work or change current authority."
   },
   "active_framework": {
-    "version": "v3.3.2",
-    "entrypoint": "Prompt/START-PROMPT-v3.3.2.md",
-    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.2.md",
-    "master_sha256": "5b83147991c9cf9d7f649f27a0a54bf824ea6d8f5a8052157535d25780431d2e",
+    "version": "v3.3.3",
+    "entrypoint": "Prompt/START-PROMPT-v3.3.3.md",
+    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.3.md",
+    "master_sha256": "9e87906e117eb5f0ea444fdac94e85f7d922c5b7fa5aca5bbf471b0b37feebff",
     "bootstrap": "PROJECT-BOOTSTRAP.md",
     "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
-    "architecture": "v3.1.5 + v3.3.2 production overlays",
+    "architecture": "v3.1.5 + v3.3.3 production overlays",
     "semantic_contract": "gfp-german-language-content@3.1.3",
     "app_capability": "gfp-v411-content-capabilities@1.1.0",
-    "verification": "47/47 pytest PASS + current acceptance PASS",
+    "verification": "53/53 pytest PASS + current acceptance PASS + unified projection parity PASS",
     "portable_authority": {
-      "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
-      "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
-      "manifest_sha256": "4c087d551658853c8d7ededabf268b3c368ac9d06f6c36f4a9c79d00eac98336",
+      "filename": "German-Content-Production-Kit-v3.3.3-Unified-Vocabulary-Projection-CANDIDATE.zip",
+      "sha256": "055e03c9ec4af4a5cc7fce7c3b92256048331d862233747330bc07752a8cf81a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.3-Unified-Vocabulary-Projection-CANDIDATE.zip",
+      "library_file_id": "file_000000003ab481f48da8aaa46ef2ff02",
+      "library_stable_id": "libfile_a676239b6160819197fa42d41acdf429",
+      "manifest_sha256": "8d4645ec0a0177e2be8aedf8090946dc9e939823292e28076abbf706c21db7a4",
       "status": "VERIFIED_PORTABLE_GIT_METADATA_SYNCED",
-      "git_sync_commit": "ff501c56340d86861e1055b8d3cf76529d7bff6b"
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "projection_overlay": {
       "policy": "Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.0.0.md",
-      "status": "ACTIVE_MANDATORY",
+      "status": "BAKED_INTO_V3.3.3",
       "rule": "One neutral de-vocabulary import/presentation envelope for all ordinary lexical POS; german-verb is legacy input only; semantic POS/morphology/Rektion preserved.",
-      "runtime_root_fix": "German-Flashcards-Pro v450-R84",
-      "portable_framework_note": "The v3.3.2 portable master package predates this overlay; START-PROMPT + PROJECT-STATE make the overlay mandatory until the next portable framework revision incorporates it."
+      "runtime_root_fix": "German-Flashcards-Pro v450-R84"
     }
   },
   "workstream_resolution_policy": "Use the newest valid portable workstream checkpoint first. Git branch checkpoint remains a durable mirror/ambiguity resolver and may lag; intermediate states may be coalesced at the next meaningful sync boundary.",
@@ -3323,5 +3324,16 @@
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "next_action": "A1-L21 Stage7 Release & Post-Package Verification"
+  },
+  "unified_vocabulary_projection_v333": {
+    "status": "PASS",
+    "projector_behavior": "ALL_ORDINARY_LEXICAL_CARDS_DE_VOCABULARY",
+    "validator": "JSON_AND_TSV_FAIL_NON_NEUTRAL_CARD_TYPE",
+    "clean_delivery_guard": "FAILS_NON_NEUTRAL_CARD_TYPE_WHEN_DECLARED",
+    "pytest": "53/53 PASS",
+    "projection_parity": "PASS_ONLY_CARDTYPE_CHANGED_ON_GOLDEN_AND_INTEGRATION_FIXTURES",
+    "historical_locked_artifacts_rewritten": false,
+    "runtime_counterpart": "German-Flashcards-Pro v450-R84",
+    "handoff": "Docs/V3.3.3-UNIFIED-VOCABULARY-PROJECTION-HANDOFF.md"
   }
 }

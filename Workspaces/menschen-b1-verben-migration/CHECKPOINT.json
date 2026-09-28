@@ -1,5 +1,5 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.27.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.28.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
   "milestone": "STAGE7_LOCKED_COMPLETE",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "B1 Verben migration is complete and LOCKED. Continue only with the next explicitly selected Menschen Verben scope; do not regenerate B1.",
+  "next_action": "Post-lock audit found identity and lexical-enrichment gaps. Keep the locked artifact immutable; next content action is an evidence-backed B1 Verben repair successor with MEM-009 reconciliation and collocation/WORD_FAMILY/COMPONENT enrichment.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -368,5 +368,49 @@
     "environment_boundary": "Fresh real-origin B1-content-specific browser navigation remains unavailable in the managed environment. Exact v435-R69 is already VERIFIED/FINAL; exact release bytes passed deterministic IndexedDB acceptance and no app/content failure was observed.",
     "visible_ui_change": "NONE",
     "next_action": "B1 Verben migration is complete and LOCKED. Continue only with the next explicitly selected Menschen Verben scope; do not regenerate B1."
+  },
+  "postlock_audit": {
+    "status": "REVIEW_REQUIRED_BEFORE_PEDAGOGICAL_FINALITY",
+    "artifact_integrity": "LOCKED_STAGE7_REMAINS_VALID",
+    "core_integrity": "PASS",
+    "enrichment_state": "UNDER_ENRICHED",
+    "identity_state": "REPAIR_REQUIRED",
+    "metrics": {
+      "cards": 400,
+      "relations_total": 472,
+      "rektion": 402,
+      "synonym": 64,
+      "antonym": 4,
+      "related": 2,
+      "collocation": 0,
+      "word_family": 0,
+      "component": 0,
+      "cards_only_rektion": 339,
+      "expression_components_nonempty": "0/121",
+      "expression_argument_slots_nonempty": "0/121"
+    },
+    "mem009_reconciliation_groups": [
+      [
+        "mb1m-lu-0033",
+        "mb1m-lu-0034",
+        "mb1m-lu-0392"
+      ],
+      [
+        "mb1m-lu-0072",
+        "mb1m-lu-0073"
+      ],
+      [
+        "mb1m-lu-0441",
+        "mb1m-lu-0442"
+      ],
+      [
+        "mb1m-lu-0276",
+        "mb1m-lu-0370"
+      ]
+    ],
+    "git_report": "Workspaces/menschen-b1-verben-migration/POSTLOCK-CONTENT-RICHNESS-AUDIT.md",
+    "library_report": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-POSTLOCK-CONTENT-RICHNESS-AUDIT.md",
+    "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
+    "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-25T18:59:00+02:00",
+  "updated_at": "2026-09-28T15:20:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -114,6 +114,22 @@
       "safe_default": "DYNAMIC_CARD_ORGANIZATION_NO_HARDCODED_BOOK_LESSON_NAMES",
       "current_runtime_note": "v435-R69 derives Library containers generically from card source/lesson/deck values. A container exists when cards carry that label. Current delete actions remove contained cards; changing deletion to non-destructive unlinking is a separate data-loss/architecture decision and must not be changed silently.",
       "required_behavior": "Content projection may supply initial organization labels, but runtime code must not special-case Menschen titles. Future imports may add labels such as Menschen A2 Verben without changing existing canonical IDs."
+    },
+    {
+      "id": "MEM-012-UNIFIED-VOCABULARY-IMPORT-PRESENTATION",
+      "status": "ACTIVE",
+      "date": "2026-09-28",
+      "category": "content_projection_ui_contract",
+      "incident": "Menschen Stage5 projections emitted mixed card types such as german-verb and de-vocabulary. Runtime legacy behavior used german-verb as a Study-layout discriminator, producing inconsistent geometry across otherwise ordinary vocabulary cards.",
+      "decision": "All ordinary German vocabulary projections share one neutral import/presentation envelope regardless of POS. POS/category/morphology/Rektion/expression metadata remain semantic fields only and must not choose a different Flashcard layout.",
+      "safe_default": "UNIFIED_VOCABULARY_IMPORT_AND_PRESENTATION",
+      "required_behavior": [
+        "Sense/Expression projection is presentation-neutral across noun, verb, adjective, adverb, phrase and expression.",
+        "Do not encode POS as a layout-selecting card_type.",
+        "Legacy german-verb may be accepted for backward compatibility but new projection must target the neutral ordinary vocabulary card envelope.",
+        "Stage5 projection QA and Stage6 runtime acceptance must assert cross-POS presentation parity."
+      ],
+      "related_runtime_fix": "German-Flashcards-Pro v450-R84"
     }
   ],
   "propagation_rule": {

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-28T15:45:00+02:00",
+  "updated_at": "2026-09-28T20:05:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -43,30 +43,29 @@
     "persistence_rule": "Synchronize Git at meaningful boundaries with bounded/deferred/coalesced sync. Git lag must not block ordinary safe work or change current authority."
   },
   "active_framework": {
-    "version": "v3.3.3",
-    "entrypoint": "Prompt/START-PROMPT-v3.3.3.md",
-    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.3.md",
-    "master_sha256": "9e87906e117eb5f0ea444fdac94e85f7d922c5b7fa5aca5bbf471b0b37feebff",
+    "version": "v3.3.4",
+    "entrypoint": "Prompt/START-PROMPT-v3.3.4.md",
+    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.4.md",
+    "master_sha256": "1ee37adefffb743f149e7ae60634fb719b0bf4540a3c00063c20fcd9d84b4dc3",
     "bootstrap": "PROJECT-BOOTSTRAP.md",
     "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
-    "architecture": "v3.1.5 + v3.3.3 production overlays",
+    "architecture": "v3.1.5 + v3.3.4 production overlays",
     "semantic_contract": "gfp-german-language-content@3.1.3",
     "app_capability": "gfp-v411-content-capabilities@1.1.0",
-    "verification": "53/53 pytest PASS + current acceptance PASS + unified projection parity PASS",
+    "verification": "62/62 pytest PASS + 9/9 targeted hard-gate + current acceptance PASS + post-package PASS",
     "portable_authority": {
-      "filename": "German-Content-Production-Kit-v3.3.3-Unified-Vocabulary-Projection-CANDIDATE.zip",
-      "sha256": "055e03c9ec4af4a5cc7fce7c3b92256048331d862233747330bc07752a8cf81a",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.3-Unified-Vocabulary-Projection-CANDIDATE.zip",
-      "library_file_id": "file_000000003ab481f48da8aaa46ef2ff02",
-      "library_stable_id": "libfile_a676239b6160819197fa42d41acdf429",
-      "manifest_sha256": "8d4645ec0a0177e2be8aedf8090946dc9e939823292e28076abbf706c21db7a4",
+      "filename": "German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
+      "sha256": "279c74946e900fe2b371427f400ab4de83d44d8883bcf7428e5474fb1839f0c3",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
+      "library_file_id": "file_000000005a6c81f4b4befc351772ea4e",
+      "library_stable_id": "libfile_9497778d75ec819191e710e52273fbd0",
       "status": "VERIFIED_PORTABLE_GIT_METADATA_SYNCED",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "projection_overlay": {
       "policy": "Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.0.0.md",
-      "status": "BAKED_INTO_V3.3.3",
-      "rule": "One neutral de-vocabulary import/presentation envelope for all ordinary lexical POS; german-verb is legacy input only; semantic POS/morphology/Rektion preserved.",
+      "status": "BAKED_INTO_V3.3.4_WITH_NON_BYPASSABLE_DELIVERY_GATE",
+      "rule": "One neutral de-vocabulary envelope for ordinary lexical POS; builder independently requires card_type/category, invokes canonical validator, and fails before ZIP creation on violations.",
       "runtime_root_fix": "German-Flashcards-Pro v450-R84"
     }
   },
@@ -3348,5 +3347,21 @@
     "historical_locked_artifacts_rewritten": false,
     "runtime_counterpart": "German-Flashcards-Pro v450-R84",
     "handoff": "Docs/V3.3.3-UNIFIED-VOCABULARY-PROJECTION-HANDOFF.md"
+  },
+  "unified_vocabulary_delivery_hard_gate_v334": {
+    "status": "PASS_POST_PACKAGE_VERIFIED_CANDIDATE",
+    "artifact": "German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
+    "artifact_sha256": "279c74946e900fe2b371427f400ab4de83d44d8883bcf7428e5474fb1839f0c3",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+    "hard_gate": "missing card_type/category, legacy german-verb, mixed/non-neutral types fail before ZIP creation",
+    "role_resolution": "CASE_INSENSITIVE_PASS_REAL_UNIVERSAL_FILENAME",
+    "pytest": "62/62 PASS",
+    "targeted": "9/9 PASS",
+    "hard_gate_cases": "5/5 PASS",
+    "post_package": "184/184 SHA256SUMS + fresh 9/9 PASS",
+    "protected_content_changed": false,
+    "historical_locked_artifacts_rewritten": false,
+    "runtime_counterpart": "German-Flashcards-Pro v450-R84"
   }
 }

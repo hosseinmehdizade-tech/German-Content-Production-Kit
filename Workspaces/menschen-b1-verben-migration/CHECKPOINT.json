@@ -3,7 +3,7 @@
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
   "milestone": "STAGE7_LOCKED_COMPLETE",
-  "status": "POSTLOCK_REPAIR1_PHASE1_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+  "status": "POSTLOCK_REPAIR1_PHASE2_BATCH0001_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Phase2 lexical enrichment on the 395-card successor: evidence-backed COLLLOCATION/WORD_FAMILY/COMPONENT/RELATED/ANTONYM/SYNONYM plus expression components/argument_slots; then fresh richness audit.",
+  "next_action": "Phase2 Batch0002: enrich the next 20 active targets; preserve Phase1 identity reconciliation and Batch0001 payload exactly.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -413,7 +413,7 @@
     "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
     "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   },
-  "current_milestone": "POSTLOCK_REPAIR1_PHASE1_IDENTITY_RECONCILIATION_COMPLETE",
+  "current_milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0001_COMPLETE",
   "repair_successor": {
     "phase1_identity_reconciliation": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -470,14 +470,69 @@
       },
       "runtime_migration_boundary": "Alias map is defined, but safe in-place migration from an already imported 400-card locked set is NOT yet claimed. Later delivery/runtime acceptance must verify retired duplicate IDs do not remain active.",
       "next_action": "Phase2 lexical enrichment on the 395-card successor: evidence-backed COLLLOCATION/WORD_FAMILY/COMPONENT/RELATED/ANTONYM/SYNONYM plus expression components/argument_slots; then fresh richness audit."
+    },
+    "phase2_enrichment": {
+      "completed_batches": [
+        "0001"
+      ],
+      "latest_batch": {
+        "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+        "milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0001_COMPLETE",
+        "phase": "Phase2 lexical enrichment",
+        "batch": "0001",
+        "target_range": "mb1m-lu-0001..mb1m-lu-0020",
+        "targets_complete": 20,
+        "targets_total": 395,
+        "targets_remaining": 375,
+        "identity_changes": 0,
+        "examples_changed": 0,
+        "source_audio_changes": 0,
+        "new_relations": 51,
+        "new_relation_types": {
+          "ANTONYM": 4,
+          "COLLOCATION": 16,
+          "RELATED": 1,
+          "SYNONYM": 13,
+          "WORD_FAMILY": 17
+        },
+        "relation_total_after": 521,
+        "structured_expressions": "8/8",
+        "argument_slot_expressions": "6/8",
+        "validation": {
+          "active_cards": "395/395 PASS",
+          "exact4_examples": "395/395 PASS",
+          "relation_ids_unique": "521/521 PASS",
+          "relation_endpoints": "PASS",
+          "phase1_lineage_byte_identity": "PASS",
+          "zip_crc": "PASS",
+          "fresh_extract": "PASS",
+          "manifest_rehash": "15/15 PASS",
+          "checksums_rehash": "16/16 PASS",
+          "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+        },
+        "artifact": {
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0001-CHECKPOINT.zip",
+          "sha256": "b4834185cd5581885a2377285f319a1585bfef0d76b64ebb27df9548b85df0ac",
+          "size_bytes": 841055,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0001-CHECKPOINT.zip",
+          "library_file_id": "file_00000000045882469232204e26374338",
+          "library_stable_id": "libfile_578f5f7ccc248191b949323c9c3b84bd"
+        },
+        "parent_locked_release_immutable": true,
+        "content_state": "UNLOCKED_REPAIR_SUCCESSOR_CHECKPOINT",
+        "next_action": "Phase2 Batch0002: enrich the next 20 active targets; preserve Phase1 identity reconciliation and Batch0001 payload exactly."
+      },
+      "targets_complete": 20,
+      "targets_total": 395,
+      "targets_remaining": 375
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase1-Identity-CHECKPOINT.zip",
-    "sha256": "31385f5ee061267410a7664d9bd74c9f4f9cf0f733e07eae5ad448203254a03a",
-    "size_bytes": 491514,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase1-Identity-CHECKPOINT.zip",
-    "library_file_id": "file_000000004db88243b7ea153804a21307",
-    "library_stable_id": "libfile_c76ae94c3624819190d3e37516dd9b6d"
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0001-CHECKPOINT.zip",
+    "sha256": "b4834185cd5581885a2377285f319a1585bfef0d76b64ebb27df9548b85df0ac",
+    "size_bytes": 841055,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0001-CHECKPOINT.zip",
+    "library_file_id": "file_00000000045882469232204e26374338",
+    "library_stable_id": "libfile_578f5f7ccc248191b949323c9c3b84bd"
   }
 }

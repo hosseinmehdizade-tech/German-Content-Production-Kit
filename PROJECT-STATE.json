@@ -1003,7 +1003,7 @@
       "resolution_mode": "SOURCE_SPECIFIC_PORTABLE_STATE",
       "note": "Use source-specific workspaces/checkpoints such as nomen_verb_verbindungen and menschen_a1a2b1_memrise. Do not inherit grammar state or legacy mappings implicitly.",
       "menschen_a2_verben": {
-        "status": "POSTLOCK_REPAIR1_COMPLETE__CONTENT_QA_PASS__RUNTIME_REACCEPT_PENDING",
+        "status": "POSTLOCK_REPAIR1_IMPORTFIX1_PASS__FULL_RUNTIME_PRESENTATION_REACCEPT_PENDING",
         "framework": "v3.3.2",
         "checkpoint": "Workspaces/menschen-a2/Legacy-Reviews/A2-Verben-v11.2.0/REAUDIT-CHECKPOINT.json",
         "cards": 292,
@@ -1030,7 +1030,7 @@
           "library_stable_id": "libfile_c5ef1427dfec8191b1a92a8564a52d2d"
         },
         "durable_git_checkpoint_commit": "e0e0a4d4810175c22711b284bc8347e3409223a4",
-        "next_action": "Re-resolve CURRENT and run runtime/presentation acceptance; only then exact-final re-lock.",
+        "next_action": "Run full Runtime & Presentation Acceptance on exact ImportFix1 ZIP under CURRENT v449-R83; only then exact-final re-lock.",
         "repair1": {
           "candidate": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
           "sha256": "04a99671b62beb6900c7bd82789a59d2c28e2c70ce061efded1da751ed83ffaf",
@@ -1039,7 +1039,19 @@
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
           "combination_coverage": "291/292 explicit; 162/292 with >=2",
           "validation": "content QA PASS + profile PASS + supplemental PASS + 47/47 framework pytest",
-          "runtime_acceptance": "PENDING"
+          "runtime_acceptance": "IMPORTER_COMPATIBILITY_PASS_ON_CURRENT_V449_R83__FULL_RUNTIME_PRESENTATION_REACCEPT_PENDING",
+          "importfix1": {
+            "candidate": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-IMPORTFIX1-CANDIDATE.zip",
+            "sha256": "767f60cd53494b2252f42f793d1c73d3a0b27c4a8b3e9fd9bf228d14d0ff6c39",
+            "delivery_surface": "current_chat_user_delivery",
+            "dataset_sha256": "208c14f26695d75881d7fddf2eb3c9988fd946ed2cab801bce2d4e25f358439d",
+            "current_runtime": "v449-R83",
+            "current_runtime_sha256": "fa37771d6f8dac090310d72f512e2fa98e857bb05f5a28a302d16329326e9f4b",
+            "importer_test": "17/17 PASS / 292 cards / sidecar hash verified / VERIFIED commit manifest / READY storage / 0 page errors",
+            "integrity": "ZIP CRC PASS; manifest 25/25; SHA256SUMS 26/26",
+            "full_runtime_presentation_acceptance": "PENDING",
+            "content_lock_state": "UNLOCKED_REPAIR_CANDIDATE__NOT_RELOCKED"
+          }
         }
       }
     },

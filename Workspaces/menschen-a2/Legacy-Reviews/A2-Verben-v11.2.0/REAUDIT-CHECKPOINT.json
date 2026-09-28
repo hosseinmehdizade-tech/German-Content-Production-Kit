@@ -650,7 +650,7 @@
     "git": "IN_SYNC_FOR_REPAIR1_METADATA",
     "binary_transport": "LIBRARY_NOT_GIT"
   },
-  "next_action": "Re-resolve German Flashcards Pro CURRENT, run Runtime & Presentation Acceptance on exact Repair1 candidate, then build/retest/re-lock exact-final bytes only if acceptance passes.",
+  "next_action": "Run full Runtime & Presentation Acceptance on the exact ImportFix1 ZIP under CURRENT v449-R83; only then build/retest/re-lock exact-final bytes if all gates pass.",
   "stage4_reaudit": {
     "state": "PASS_STAGE4_COMPLETE",
     "upstream_stage3_artifact": "Menschen-A2-Verben-v3.3.2-Stage3-Batch0015-CHECKPOINT.zip",
@@ -1002,8 +1002,46 @@
       "library_stable_id": "libfile_468f381fdb70819184a51d2c646383cb",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "runtime_binding": "PENDING__RESOLVE_CURRENT_AT_EXECUTION",
+    "runtime_binding": "CURRENT_RESOLVED_V449_R83_FOR_IMPORTER_COMPATIBILITY__FULL_REACCEPT_PENDING",
     "current_runtime_observed_at_repair_start": "v446-R80",
-    "next_action": "Re-resolve German Flashcards Pro CURRENT, run Runtime & Presentation Acceptance on exact Repair1 candidate, then build/retest/re-lock exact-final bytes only if acceptance passes."
+    "next_action": "Run full Runtime & Presentation Acceptance on the exact ImportFix1 ZIP under CURRENT v449-R83; only then build/retest/re-lock exact-final bytes if all gates pass.",
+    "importfix1": {
+      "state": "PASS_EXACT_ZIP_IMPORTER_COMPATIBILITY__FULL_RUNTIME_PRESENTATION_REACCEPT_PENDING",
+      "artifact": {
+        "filename": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-IMPORTFIX1-CANDIDATE.zip",
+        "sha256": "767f60cd53494b2252f42f793d1c73d3a0b27c4a8b3e9fd9bf228d14d0ff6c39",
+        "delivery_surface": "current_chat_user_delivery"
+      },
+      "dataset_sha256": "208c14f26695d75881d7fddf2eb3c9988fd946ed2cab801bce2d4e25f358439d",
+      "packaging_repairs": [
+        "BUILD-METADATA artifact_type -> gfp-data-build-metadata",
+        "top-level schema_profile -> universal-v2",
+        "prompt_version -> v3.3.2",
+        "validator_version -> menschen-a2-verben-postlock-repair1-qa@1.0.0",
+        "stable data_build_id added",
+        "data/projected/canonical SHA-256 values aligned to repaired payload",
+        "README and package manifest/SHA256SUMS regenerated"
+      ],
+      "runtime_test": {
+        "current_runtime": "v449-R83",
+        "current_runtime_sha256": "fa37771d6f8dac090310d72f512e2fa98e857bb05f5a28a302d16329326e9f4b",
+        "exact_zip_importer": "17/17 PASS",
+        "parsed_cards": 292,
+        "card_types": {
+          "german-verb": 228,
+          "de-vocabulary": 64
+        },
+        "sidecar_hash_verified": true,
+        "durable_commit_manifest": "VERIFIED_292",
+        "storage_state_after_import": "READY",
+        "page_errors": 0
+      },
+      "integrity": {
+        "zip_crc": "PASS",
+        "manifest_rehash": "25/25 PASS",
+        "sha256sums_rehash": "26/26 PASS"
+      },
+      "note": "This milestone repairs import packaging only. Content remains unlocked repair candidate; full Runtime & Presentation Acceptance and exact-final re-lock are still pending."
+    }
   }
 }

@@ -2,8 +2,8 @@
   "schema": "menschen-a1-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a1-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "STAGE3B_IN_PROGRESS__ARGUMENT_SLOTS_AND_COMPONENT_RELATIONS_CLOSED__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_ARGUMENT_COMPONENT_LINKS_PASS",
+  "status": "STAGE3B_IN_PROGRESS__REKTION_EXPLICIT_SOURCE_CLUSTER_PASS__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_REKTION_EXPLICIT_SOURCE_CLUSTER_PASS",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip",
     "sha256": "6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db",
@@ -12,12 +12,12 @@
     "immutable": true
   },
   "canonical": {
-    "sha256": "901151ac6b221d326c97e89d13b605156e89954fc26b3b76a96aa260679e6710",
+    "sha256": "e07a441bb1adb096e306dd4170f092f98a51ab7d8021eac4c053116a9fcaa634",
     "targets": 310,
     "senses": 247,
     "expressions": 63,
     "examples": 1240,
-    "relations": 185,
+    "relations": 279,
     "sources": 13
   },
   "stage2b": {
@@ -58,7 +58,7 @@
     }
   },
   "candidate_ledger": {
-    "state": "STAGE3B_IN_PROGRESS_122_ACCEPTED_36_REJECTED",
+    "state": "STAGE3B_IN_PROGRESS_216_ACCEPTED_41_REJECTED",
     "official_validator": "PASS"
   },
   "official_v336_validators": "4/4 PASS",
@@ -76,15 +76,16 @@
     "library_file_id": "file_00000000673882109397d9166360290c",
     "library_stable_id": "libfile_0e782923630c8191a0237a2cac7b99d7"
   },
-  "next_action": "Stage3B relation dimensions by semantic/evidence-route clusters: prioritize Rektion where source/canonical patterns expose valency, then synonym/antonym/collocation/word_family/related/NVV. Persist ACCEPTED/REJECTED decisions; close safely when routes are exhausted; no density chasing.",
+  "next_action": "Continue Stage3B Rektion closure for the remaining 141 unresolved cells using registered-reference routes (Duden-first where applicable). Preserve sense alignment; persist accepted/rejected/no-force decisions; no density chasing.",
   "stage3b": {
-    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
+    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_AND_REKTION_EXPLICIT_SOURCE_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
     "strategy": "gap-driven enrichment; semantic/evidence-route clusters; no arbitrary ID batches",
     "completed_clusters": [
       "definition_de MUST_HAVE wrong-language defects: 3/3 closed",
       "expression structure_components MUST_HAVE gaps: 57/57 closed; 63/63 expressions complete",
       "expression argument_slots REVIEW_TO_CLOSURE: 63/63 final",
-      "expression component_relations REVIEW_TO_CLOSURE: 63/63 final"
+      "expression component_relations REVIEW_TO_CLOSURE: 63/63 final",
+      "Rektion explicit-source / verified-argument-slot cluster: 94 newly VERIFIED; 5 unsafe raw-marker candidates REJECTED and left unresolved"
     ],
     "argument_slots": {
       "expressions_total": 63,
@@ -102,53 +103,74 @@
       "serialization_rule": "COMPONENT navigation is derived from structure.components.object_id; no duplicate canonical relation records added."
     },
     "candidate_ledger": {
-      "total": 158,
-      "accepted": 122,
-      "rejected": 36,
+      "total": 257,
+      "accepted": 216,
+      "rejected": 41,
       "deferred": 0,
       "validator": "PASS"
     },
     "richness": {
       "dimension_cells": 4776,
-      "final_cells": 2782,
-      "unresolved_cells": 1994,
+      "final_cells": 2876,
+      "unresolved_cells": 1900,
       "baseline_unresolved_cells": 2152
     },
     "validation": {
-      "argument_component_links": "PASS_43_ARGUMENT_VERIFIED_20_CLOSED__47_COMPONENT_VERIFIED_16_CLOSED",
-      "candidate_ledger": "PASS_158",
-      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1994_UNRESOLVED",
+      "rektion_explicit_source": "PASS_94_ACCEPTED_5_ROUTE_REJECTED",
+      "candidate_ledger": "PASS_257",
+      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1900_UNRESOLVED",
       "gfp_v411_profile": "PASS_310_TARGETS_EXACT4",
+      "mutation_boundary": "PASS_ONLY_94_REKTION_RELATIONS_PLUS_LEDGER_RICHNESS_STATE",
       "post_package": "PASS",
-      "sha256sums": "23/23 PASS",
-      "manifest_rehash": "22/22 PASS",
+      "sha256sums": "27/27 PASS",
+      "manifest_rehash": "26/26 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
-    "mutation_boundary": "Only structure.argument_slots and structure.components.object_id changed in canonical during this milestone; definitions/translations/examples/relations/identity unchanged.",
+    "mutation_boundary": "Added 94 evidence-backed REKTION relations and corresponding Stage3B ledger/richness state only; semantic targets, definitions, translations, examples, morphology, expression structure, identity, runtime and UI unchanged.",
     "parent_mutated": false,
     "identity_changed": false,
     "runtime_or_ui_changed": false,
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-CHECKPOINT.zip",
-      "sha256": "7a576633a6cc92f67b529fc02f82c6c41fbdacdb93af9c7154a22eaa96f91030",
-      "size_bytes": 485846,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000f10482469562ff1bba009bc6",
-      "library_stable_id": "libfile_683128bf0c0c819185d60a7277db8e1a",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-EXPLICIT-SOURCE-CHECKPOINT.zip",
+      "sha256": "04fbb7faf207618dea38e6eeec4a805b3b90a4326b979c9a761eaedf0c680f7c",
+      "size_bytes": 736208,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-EXPLICIT-SOURCE-CHECKPOINT.zip",
+      "library_file_id": "file_00000000ef9082438200112eec5b092e",
+      "library_stable_id": "libfile_e01a97e7c6508191b3a40fe1a049015a",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "post_package_verification": {
       "status": "PASS",
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-POST-PACKAGE-VERIFICATION.json",
-      "sha256": "cf6d3ea3d8d932537d4c5c364aaa96a6585fe65e2a95c7c2eb6a6917a9971952",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-POST-PACKAGE-VERIFICATION.json",
-      "library_file_id": "file_00000000f8288210aa46f6c4234d5b95",
-      "library_stable_id": "libfile_2e073f160a5881919312ff816b8d3d4d",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-EXPLICIT-SOURCE-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "03100a641c0365d13716c91409d964fb8ca7945d3097405be6a7905a6e0627ae",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-EXPLICIT-SOURCE-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000c57c8243bc352a0a9120afdc",
+      "library_stable_id": "libfile_a3fd57606d908191851be124ac49b991",
       "zip_crc": "PASS",
-      "sha256sums": "23/23 PASS",
-      "manifest_rehash": "22/22 PASS",
+      "sha256sums": "27/27 PASS",
+      "manifest_rehash": "26/26 PASS",
       "fresh_validators": "4/4 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
+    },
+    "rektion": {
+      "verified_targets_total": 169,
+      "unresolved_targets_remaining": 141,
+      "newly_verified": 94,
+      "newly_added_relations": 94,
+      "accepted_by_route": {
+        "sense_source_marker": 69,
+        "expression_argument_slots": 25
+      },
+      "route_rejections": 5,
+      "rejected_target_ids": [
+        "ma1m-lu-0480",
+        "ma1m-lu-0593",
+        "ma1m-lu-2042",
+        "ma1m-lu-2279",
+        "ma1m-lu-2383"
+      ],
+      "rejection_rule": "Do not promote a raw case marker when it is not safely aligned to the active semantic anchor; keep the completeness cell unresolved for another evidence route.",
+      "relation_records_total": 173
     }
   }
 }

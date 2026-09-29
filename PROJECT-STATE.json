@@ -746,11 +746,11 @@
         "environment_boundary": "Fresh real-origin content-specific browser run unavailable in managed environment; deterministic exact-runtime acceptance PASS."
       },
       "b1_verben_migration": {
-        "status": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED_LIBRARY_AND_GIT_SYNCED",
+        "status": "POSTLOCK_REPAIR1_PHASE3_AUDIT_FIX_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
         "workstream": "menschen-b1-verben-migration",
         "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
         "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
-        "current_milestone": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED",
+        "current_milestone": "POSTLOCK_REPAIR1_PHASE3_AUDIT_FIX_COMPLETE",
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
         "content_lock_state": "PARENT_STAGE7_LOCKED__REPAIR_SUCCESSOR_UNLOCKED",
         "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
@@ -799,7 +799,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           }
         },
-        "next_action": "PostLock Repair1 Phase3 audit-fix: normalize DUDEN_SYNONYM source IDs, add 8 missing COMPONENT link sets, resolve/document mb1m-lu-0037, then rerun full audit before any Stage5/Stage6/re-lock claim.",
+        "next_action": "Rerun the full fresh post-repair richness audit against the Phase3 successor. Do not re-lock or project to runtime until that audit passes.",
         "stage6": {
           "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
           "quality_state": "PASS_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
@@ -850,12 +850,12 @@
           }
         },
         "latest_checkpoint": {
-          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
-          "sha256": "d1f59c5ae01d0684521103081cf9afe595c45e8a56060bbe06c18d0892261f8c",
-          "size_bytes": 8149123,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
-          "library_file_id": "file_0000000000b882108ed8ee2e42cea676",
-          "library_stable_id": "libfile_cd2d9bcfe4bc8191bd73db6578cb221d",
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
+          "sha256": "38f31d50290ab9a541174a86eabd820652adfe330cbdee09bc78b24c5bdd6203",
+          "size_bytes": 8881591,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
+          "library_file_id": "file_00000000fb70820aa0f10fe42cddab2a",
+          "library_stable_id": "libfile_0ec5e9fec8e88191abf0fc7e4e2417d4",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "stage7": {
@@ -1002,7 +1002,7 @@
           "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
           "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
         },
-        "postlock_quality_state": "REPAIR_REQUIRED_BEFORE_RELOCK",
+        "postlock_quality_state": "PHASE3_FIXED_PENDING_FRESH_REAUDIT",
         "repair_successor": {
           "phase1_identity_reconciliation": {
             "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -1164,6 +1164,85 @@
             "targets_total": 395,
             "targets_remaining": 0,
             "state": "COMPLETE_AUDITED_REPAIR_REQUIRED_BEFORE_RELOCK"
+          },
+          "phase3_audit_fix": {
+            "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+            "milestone": "POSTLOCK_REPAIR1_PHASE3_AUDIT_FIX_COMPLETE",
+            "parent_checkpoint": {
+              "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+              "sha256": "d1f59c5ae01d0684521103081cf9afe595c45e8a56060bbe06c18d0892261f8c",
+              "canonical_sha256": "5cd664283f5cb9a4796a86efba5e65fb2f9322f36bd90c4f215091a873f168b8"
+            },
+            "repairs": {
+              "source_id_normalizations": 109,
+              "source_id_from": "DUDEN_SYNONYM",
+              "source_id_to": "DUDEN_SYNONYME",
+              "component_relations_added": 8,
+              "component_targets": [
+                "mb1m-lu-0001",
+                "mb1m-lu-0002",
+                "mb1m-lu-0005",
+                "mb1m-lu-0007",
+                "mb1m-lu-0009",
+                "mb1m-lu-0015",
+                "mb1m-lu-0016",
+                "mb1m-lu-0019"
+              ],
+              "sparse_target": "mb1m-lu-0037",
+              "sparse_resolution": "CLOSED_CONSERVATIVE_NO_FORCE"
+            },
+            "successor": {
+              "canonical_filename": "B1-VERBEN-CANONICAL-REPAIR1-PHASE3-AUDIT-FIX.json",
+              "canonical_sha256": "e431a855027bae94166be776c562704ace03e6607f47bdd555aa69d605a32273",
+              "active_cards": 395,
+              "senses": 279,
+              "expressions": 116,
+              "examples": 1580,
+              "relations": 2510,
+              "relation_types": {
+                "REKTION": 400,
+                "SYNONYM": 933,
+                "COLLOCATION": 637,
+                "WORD_FAMILY": 252,
+                "COMPONENT": 251,
+                "RELATED": 22,
+                "ANTONYM": 15
+              }
+            },
+            "validation": {
+              "bad_DUDEN_SYNONYM_refs": "0 PASS",
+              "component_fixes": "8/8 PASS",
+              "relation_ids_unique": "2510/2510 PASS",
+              "semantic_duplicate_keys": "0 PASS",
+              "examples_exact4": "395/395 PASS",
+              "all_7_rektion_only_targets_documented": "PASS",
+              "prior_2502_relation_ids_preserved": "PASS",
+              "intended_prior_relation_changes": "109/109 source-id normalization only",
+              "identity_examples_source_audio_expression_structures": "UNCHANGED PASS",
+              "historical_batch_files": "IMMUTABLE PASS",
+              "manifest_rehash": "115/115 PASS",
+              "checksums_rehash": "116/116 PASS",
+              "fresh_extract": "PASS",
+              "zip_crc": "PASS",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            },
+            "artifact": {
+              "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
+              "sha256": "38f31d50290ab9a541174a86eabd820652adfe330cbdee09bc78b24c5bdd6203",
+              "size_bytes": 8881591,
+              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
+              "library_file_id": "file_00000000fb70820aa0f10fe42cddab2a",
+              "library_stable_id": "libfile_0ec5e9fec8e88191abf0fc7e4e2417d4",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            },
+            "post_package_verification": {
+              "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-POST-PACKAGE-VERIFICATION.json",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-POST-PACKAGE-VERIFICATION.json",
+              "library_file_id": "file_00000000fdc4820abbab77d573801b88",
+              "library_stable_id": "libfile_a85782bf1f348191a83e77b7c067cb7a"
+            },
+            "framework_context": "Active framework v3.3.5; B1 repair lineage remains v3.3.2; canonical audit-fix only; no projection/card_type/runtime mutation.",
+            "next_action": "Rerun the full fresh post-repair richness audit against the Phase3 successor. Do not re-lock or project to runtime until that audit passes."
           }
         },
         "postrepair_richness_audit": {

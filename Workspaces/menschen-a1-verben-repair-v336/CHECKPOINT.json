@@ -2,8 +2,8 @@
   "schema": "menschen-a1-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a1-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "STAGE3B_IN_PROGRESS__DEFINITIONS_AND_STRUCTURE_COMPONENTS_CLOSED__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_STRUCTURE_COMPONENTS_PASS",
+  "status": "STAGE3B_IN_PROGRESS__ARGUMENT_SLOTS_AND_COMPONENT_RELATIONS_CLOSED__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_ARGUMENT_COMPONENT_LINKS_PASS",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip",
     "sha256": "6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db",
@@ -12,7 +12,7 @@
     "immutable": true
   },
   "canonical": {
-    "sha256": "d93f501f96784bf6a9007804ebd719b0109179696d1fdb735bef9d7f715e8f7b",
+    "sha256": "901151ac6b221d326c97e89d13b605156e89954fc26b3b76a96aa260679e6710",
     "targets": 310,
     "senses": 247,
     "expressions": 63,
@@ -58,7 +58,7 @@
     }
   },
   "candidate_ledger": {
-    "state": "STAGE3B_IN_PROGRESS_60_ACCEPTED",
+    "state": "STAGE3B_IN_PROGRESS_122_ACCEPTED_36_REJECTED",
     "official_validator": "PASS"
   },
   "official_v336_validators": "4/4 PASS",
@@ -76,76 +76,79 @@
     "library_file_id": "file_00000000673882109397d9166360290c",
     "library_stable_id": "libfile_0e782923630c8191a0237a2cac7b99d7"
   },
-  "next_action": "Stage3B argument_slots + component_relations: review the 63 expressions by construction/evidence-route clusters. Close fixed no-slot expressions explicitly; resolve component object IDs/COMPONENT links only where canonical identity is certain; do not mutate the locked parent or use arbitrary ID batches.",
+  "next_action": "Stage3B relation dimensions by semantic/evidence-route clusters: prioritize Rektion where source/canonical patterns expose valency, then synonym/antonym/collocation/word_family/related/NVV. Persist ACCEPTED/REJECTED decisions; close safely when routes are exhausted; no density chasing.",
   "stage3b": {
-    "status": "PASS_DEFINITION_AND_STRUCTURE_COMPONENT_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
+    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
     "strategy": "gap-driven enrichment; semantic/evidence-route clusters; no arbitrary ID batches",
     "completed_clusters": [
       "definition_de MUST_HAVE wrong-language defects: 3/3 closed",
-      "expression structure_components MUST_HAVE gaps: 57/57 closed"
+      "expression structure_components MUST_HAVE gaps: 57/57 closed; 63/63 expressions complete",
+      "expression argument_slots REVIEW_TO_CLOSURE: 63/63 final",
+      "expression component_relations REVIEW_TO_CLOSURE: 63/63 final"
     ],
-    "definition_repairs": [
-      "ma1m-lu-0540",
-      "ma1m-lu-0543",
-      "ma1m-lu-0544"
-    ],
-    "structure_components": {
+    "argument_slots": {
       "expressions_total": 63,
-      "preexisting_complete": 6,
-      "repaired": 57,
-      "complete": "63/63 VERIFIED_PRESENT",
-      "object_id_policy": "57 newly decomposed expressions keep object_id=null; component identity was not guessed"
+      "preexisting_verified": 28,
+      "newly_resolved_verified": 15,
+      "closed_no_force_fixed": 20,
+      "final": "63/63"
+    },
+    "component_relations": {
+      "expressions_total": 63,
+      "verified_via_structure_object_ids": 47,
+      "closed_no_force_no_safe_target": 16,
+      "resolved_object_ids": 47,
+      "final": "63/63",
+      "serialization_rule": "COMPONENT navigation is derived from structure.components.object_id; no duplicate canonical relation records added."
     },
     "candidate_ledger": {
-      "accepted": 60,
-      "rejected": 0,
+      "total": 158,
+      "accepted": 122,
+      "rejected": 36,
       "deferred": 0,
       "validator": "PASS"
     },
     "richness": {
       "dimension_cells": 4776,
-      "final_cells": 2684,
-      "unresolved_cells": 2092,
+      "final_cells": 2782,
+      "unresolved_cells": 1994,
       "baseline_unresolved_cells": 2152
     },
     "validation": {
-      "structure_components": "PASS_63_OF_63",
-      "mutation_boundary": "PASS_ONLY_STRUCTURE_COMPONENTS_CHANGED_IN_57_EXPRESSIONS",
-      "candidate_ledger": "PASS_60_ACCEPTED",
-      "completeness_working": "PASS_310_TARGETS_4776_CELLS_2092_UNRESOLVED",
+      "argument_component_links": "PASS_43_ARGUMENT_VERIFIED_20_CLOSED__47_COMPONENT_VERIFIED_16_CLOSED",
+      "candidate_ledger": "PASS_158",
+      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1994_UNRESOLVED",
       "gfp_v411_profile": "PASS_310_TARGETS_EXACT4",
       "post_package": "PASS",
-      "manifest_entries": 19,
-      "checksums_rehash": "20/20 PASS",
+      "sha256sums": "23/23 PASS",
+      "manifest_rehash": "22/22 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
-    "source_route": "Menschen source-visible forms + existing canonical pattern_de; no external component identity was invented",
+    "mutation_boundary": "Only structure.argument_slots and structure.components.object_id changed in canonical during this milestone; definitions/translations/examples/relations/identity unchanged.",
     "parent_mutated": false,
     "identity_changed": false,
-    "definitions_examples_relations_changed": false,
     "runtime_or_ui_changed": false,
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-COMPONENTS-CHECKPOINT.zip",
-      "sha256": "980aa9235e08f01cbbe085adbeace58c39e351c76324abd4c9117278437c0a60",
-      "size_bytes": 266200,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-COMPONENTS-CHECKPOINT.zip",
-      "library_file_id": "file_0000000016b88246a22dc3e7ebabe974",
-      "library_stable_id": "libfile_18a9057d0a2c8191937f10b553df4695",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-CHECKPOINT.zip",
+      "sha256": "7a576633a6cc92f67b529fc02f82c6c41fbdacdb93af9c7154a22eaa96f91030",
+      "size_bytes": 485846,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000f10482469562ff1bba009bc6",
+      "library_stable_id": "libfile_683128bf0c0c819185d60a7277db8e1a",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "post_package_verification": {
       "status": "PASS",
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-COMPONENTS-POST-PACKAGE-VERIFICATION.json",
-      "sha256": "fb9d08aee57506d284d23e1de1884ef1f376d42a2c1e65fe3fc5c67f72048998",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "cf6d3ea3d8d932537d4c5c364aaa96a6585fe65e2a95c7c2eb6a6917a9971952",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000f8288210aa46f6c4234d5b95",
+      "library_stable_id": "libfile_2e073f160a5881919312ff816b8d3d4d",
       "zip_crc": "PASS",
-      "sha256sums": "20/20 PASS",
-      "manifest_rehash": "19/19 PASS",
-      "fresh_structure_validator": "PASS_63_EXPRESSIONS_57_REPAIRED",
-      "fresh_candidate_ledger": "PASS_60_ACCEPTED",
-      "fresh_completeness_working": "PASS_310_TARGETS_4776_CELLS_2092_UNRESOLVED",
-      "gfp_v411_profile_validator": "PASS_310_TARGETS_EXACT4",
-      "package_hygiene": "PASS_NO_PYCACHE_PYC",
-      "sidecar_library_sync": "NOT_REQUIRED_RESULTS_PERSISTED_IN_CHECKPOINT"
+      "sha256sums": "23/23 PASS",
+      "manifest_rehash": "22/22 PASS",
+      "fresh_validators": "4/4 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC"
     }
   }
 }

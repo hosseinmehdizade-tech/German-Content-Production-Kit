@@ -2,8 +2,8 @@
   "schema": "menschen-a1-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a1-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "STAGE3B_IN_PROGRESS__REKTION_DUDEN_TRANSITIVE_CLUSTER_PASS__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_REKTION_DUDEN_TRANSITIVE_CLUSTER_PASS",
+  "status": "STAGE3B_IN_PROGRESS__REKTION_DUDEN_PREPOSITIONAL_CLUSTER_PASS__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_REKTION_DUDEN_PREPOSITIONAL_CLUSTER_PASS",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip",
     "sha256": "6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db",
@@ -12,12 +12,12 @@
     "immutable": true
   },
   "canonical": {
-    "sha256": "bc99b54168449273cb0cd8a9bb4301505ce0414f0066bd7808f48540e894803f",
+    "sha256": "b8db6e402414afd6b92376516cb2a9d7d9881d3baf390bb0203598b1cce18714",
     "targets": 310,
     "senses": 247,
     "expressions": 63,
     "examples": 1240,
-    "relations": 297,
+    "relations": 312,
     "sources": 13
   },
   "stage2b": {
@@ -58,7 +58,7 @@
     }
   },
   "candidate_ledger": {
-    "state": "STAGE3B_IN_PROGRESS_234_ACCEPTED_41_REJECTED",
+    "state": "STAGE3B_IN_PROGRESS_249_ACCEPTED_41_REJECTED",
     "official_validator": "PASS"
   },
   "official_v336_validators": "4/4 PASS",
@@ -76,9 +76,9 @@
     "library_file_id": "file_00000000673882109397d9166360290c",
     "library_stable_id": "libfile_0e782923630c8191a0237a2cac7b99d7"
   },
-  "next_action": "Continue Stage3B Rektion closure for the remaining 123 unresolved cells using Duden mixed/intransitive/prepositional frames. Do not close an itr. entry merely from intransitivity when a governed prepositional complement may exist. Persist accepted/rejected/no-force decisions; no density chasing.",
+  "next_action": "Continue Stage3B Rektion closure for the remaining 113 unresolved cells through Duden mixed/intransitive routes. Close CLOSED_NO_FORCE only after checking governed prepositional frames; then proceed to synonym/antonym/collocation/word_family/related/NVV.",
   "stage3b": {
-    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_REKTION_EXPLICIT_AND_DUDEN_TRANSITIVE_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
+    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_AND_REKTION_SOURCE_TRANSITIVE_PREPOSITIONAL_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
     "strategy": "gap-driven enrichment; semantic/evidence-route clusters; no arbitrary ID batches",
     "completed_clusters": [
       "definition_de MUST_HAVE wrong-language defects: 3/3 closed",
@@ -86,7 +86,8 @@
       "expression argument_slots REVIEW_TO_CLOSURE: 63/63 final",
       "expression component_relations REVIEW_TO_CLOSURE: 63/63 final",
       "Rektion explicit-source / verified-argument-slot cluster: 94 newly VERIFIED; 5 unsafe raw-marker candidates REJECTED and left unresolved",
-      "Rektion DUDEN_BEDEUTUNG_10 global-transitive cluster: 18 newly VERIFIED as + Akkusativ"
+      "Rektion DUDEN_BEDEUTUNG_10 global-transitive cluster: 18 newly VERIFIED as + Akkusativ",
+      "Rektion DUDEN_BEDEUTUNG_10 governed prepositional/case-frame cluster: 10 newly VERIFIED targets / 15 relations"
     ],
     "argument_slots": {
       "expressions_total": 63,
@@ -104,83 +105,89 @@
       "serialization_rule": "COMPONENT navigation is derived from structure.components.object_id; no duplicate canonical relation records added."
     },
     "candidate_ledger": {
-      "total": 275,
-      "accepted": 234,
+      "total": 290,
+      "accepted": 249,
       "rejected": 41,
       "deferred": 0,
       "validator": "PASS"
     },
     "richness": {
       "dimension_cells": 4776,
-      "final_cells": 2894,
-      "unresolved_cells": 1882,
+      "final_cells": 2904,
+      "unresolved_cells": 1872,
       "baseline_unresolved_cells": 2152
     },
     "validation": {
-      "rektion_duden_transitive": "PASS_18_ACCEPTED_18_RELATIONS",
-      "candidate_ledger": "PASS_275",
-      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1882_UNRESOLVED",
+      "rektion_duden_prepositional": "PASS_10_TARGETS_15_RELATIONS",
+      "candidate_ledger": "PASS_290",
+      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1872_UNRESOLVED",
       "gfp_v411_profile": "PASS_310_TARGETS_EXACT4",
-      "mutation_boundary": "PASS_ONLY_18_REKTION_RELATIONS_PLUS_LEDGER_RICHNESS_STATE",
+      "mutation_boundary": "PASS_ONLY_15_REKTION_RELATIONS_PLUS_LEDGER_RICHNESS_STATE",
       "post_package": "PASS",
-      "sha256sums": "32/32 PASS",
-      "manifest_rehash": "31/31 PASS",
+      "sha256sums": "36/36 PASS",
+      "manifest_rehash": "35/35 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
-    "mutation_boundary": "Added 18 Duden-backed REKTION relations (+ Akkusativ) plus corresponding Stage3B ledger/richness state only; all semantic targets, definitions, translations, examples, morphology, expression structure, identity, runtime and UI unchanged.",
+    "mutation_boundary": "Added 15 Duden-backed governed-frame REKTION relations for 10 targets plus corresponding Stage3B ledger/richness state only; semantic targets, definitions, translations, examples, morphology, expression structure, identity, runtime and UI unchanged.",
     "parent_mutated": false,
     "identity_changed": false,
     "runtime_or_ui_changed": false,
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-TRANSITIVE-CHECKPOINT.zip",
-      "sha256": "9a411d81bdb23b299fed2c43702259b265ec29629af7426de8708158e1ee16fa",
-      "size_bytes": 920588,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-TRANSITIVE-CHECKPOINT.zip",
-      "library_file_id": "file_00000000ef0081f49f527d419b1f133e",
-      "library_stable_id": "libfile_8607af1e54b0819188c7c42a3024a87e",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-CHECKPOINT.zip",
+      "sha256": "c3b53e1f8491f92684316576a06387af24d8d91cba3ce3065ad0689e2865e010",
+      "size_bytes": 1135985,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-CHECKPOINT.zip",
+      "library_file_id": "file_00000000354c81f4946dfc874bb65c09",
+      "library_stable_id": "libfile_9f6aa7e3e2748191b923ae605e48e03c",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "post_package_verification": {
       "status": "PASS",
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-TRANSITIVE-POST-PACKAGE-VERIFICATION.json",
-      "sha256": "0862a67de656a95bd2d72055f14b00a2853da4013d3327156ce4bfae2b356d04",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-TRANSITIVE-POST-PACKAGE-VERIFICATION.json",
-      "library_file_id": "file_00000000c6d08246bafe423583008dad",
-      "library_stable_id": "libfile_8620096a8b4c8191babcf52d2f403da1",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "c6fc8fb9d6176964bfda7b8c33ff70dd1959b65b62565c9ff8e13398e5285aaa",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000a5148210ab1bb96f25167aa1",
+      "library_stable_id": "libfile_aae9e5478fd481918ea691d23a7eb76f",
       "zip_crc": "PASS",
-      "sha256sums": "32/32 PASS",
-      "manifest_rehash": "31/31 PASS",
+      "sha256sums": "36/36 PASS",
+      "manifest_rehash": "35/35 PASS",
       "fresh_current_validators": "5/5 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
     "rektion": {
-      "verified_targets_total": 187,
-      "unresolved_targets_remaining": 123,
+      "verified_targets_total": 197,
+      "unresolved_targets_remaining": 113,
       "explicit_source_cluster_newly_verified": 94,
       "duden_global_transitive_newly_verified": 18,
-      "total_new_rektion_relations_since_argcomp": 112,
-      "relation_records_total": 191,
-      "duden_transitive_target_ids": [
-        "ma1m-lu-0466",
-        "ma1m-lu-0727",
-        "ma1m-lu-1401",
-        "ma1m-lu-1793",
-        "ma1m-lu-1879",
-        "ma1m-lu-1953",
-        "ma1m-lu-1990",
-        "ma1m-lu-2032",
-        "ma1m-lu-2089",
-        "ma1m-lu-2163",
-        "ma1m-lu-2376",
-        "ma1m-lu-2464",
-        "ma1m-lu-2512",
-        "ma1m-lu-2514",
-        "ma1m-lu-2524",
-        "ma1m-lu-2526",
-        "ma1m-lu-2588",
-        "ma1m-lu-2599"
+      "duden_governed_prepositional_newly_verified_targets": 10,
+      "duden_governed_prepositional_new_relations": 15,
+      "total_new_rektion_relations_since_argcomp": 127,
+      "relation_records_total": 206,
+      "governed_frame_targets": [
+        "ma1m-lu-1029",
+        "ma1m-lu-1040",
+        "ma1m-lu-1235",
+        "ma1m-lu-1238",
+        "ma1m-lu-1680",
+        "ma1m-lu-1908",
+        "ma1m-lu-2042",
+        "ma1m-lu-2373",
+        "ma1m-lu-2385",
+        "ma1m-lu-2407"
       ],
-      "safety_rule": "Only headword-level unambiguous transitive Duden entries aligned to the active sense were promoted; mixed/intransitive/prepositional entries remain unresolved pending dedicated review."
+      "frames": [
+        "lachen: über + Akkusativ",
+        "reden: mit + Dativ; über + Akkusativ",
+        "anfangen: + Akkusativ; mit + Dativ",
+        "aufhören: mit + Dativ",
+        "sich verstecken: vor + Dativ",
+        "warten: auf + Akkusativ",
+        "sich bewerben: um + Akkusativ; bei + Dativ",
+        "sich beschweren: bei + Dativ; über + Akkusativ; wegen + Genitiv",
+        "sich entschuldigen: für + Akkusativ",
+        "reagieren: auf + Akkusativ"
+      ],
+      "safety_rule": "Only Duden-attested governed frames aligned to the active canonical sense were promoted; unresolved mixed/intransitive entries remain open until their governed-frame routes are exhausted."
     }
   }
 }

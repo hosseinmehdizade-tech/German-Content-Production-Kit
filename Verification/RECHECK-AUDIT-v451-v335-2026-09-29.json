@@ -1,0 +1,84 @@
+{
+  "schema": "gfp-gcpk-recheck-audit@1.0.0",
+  "date": "2026-09-29",
+  "status": "PASS_CORE_ARCHITECTURE_WITH_APP_PORTABLE_CONTROL_DEFECTS",
+  "release_final": false,
+  "authorities": {
+    "app": {
+      "version": "v451-R85",
+      "artifact": "German-Flashcards-Pro-v451-R85-ORGANIZED-DELIVERY-CANDIDATE.zip",
+      "sha256": "6355f46cd3c30a9be5e8138a380a6cdd746154b385e4b2813ade55eff509d1d9",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    },
+    "content_kit": {
+      "version": "v3.3.5",
+      "artifact": "German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
+      "sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    }
+  },
+  "content_kit_verification": {
+    "sha256sums": "198/198 PASS",
+    "zip_entries": 199,
+    "hygiene": "PASS_NO_PYC_PYCACHE_NESTED_ARCHIVE_IN_ORIGINAL_ZIP",
+    "pytest": "74/74 PASS via independent bounded split: 62/62 + 12/12",
+    "active_prompt": "START-PROMPT-v3.3.5.md",
+    "master_sha256": "2644d03bba909ee11dcee94eafc2cc4a3378af5a0d0e76b8d0d6aba6321e13b4",
+    "semantic_presentation_contract": "gfp-vocabulary-neutral@1",
+    "finding": "NO_NEW_CONTENT_CONTRACT_BLOCKER_FOUND"
+  },
+  "app_functional_verification": {
+    "sha256sums": "297/297 PASS",
+    "zip_entries": 298,
+    "hygiene": "PASS 298 files / 71 runtime files",
+    "version_guard": "PASS sealed v451",
+    "external_js": "33/33 PASS",
+    "inline_js": "2/2 PASS",
+    "assets": "74 PASS",
+    "behavioral_checks": "272/272 functionally PASS",
+    "behavioral_breakdown": {
+      "fresh_unmodified_current_or_version_agnostic": 181,
+      "inherited_wrappers_requiring_version_assertion_only_adaptation": 91
+    },
+    "runtime_conclusion": "NO_RUNTIME_BEHAVIOR_REGRESSION_FOUND"
+  },
+  "app_portable_control_defects": [
+    {
+      "id": "A1_FINAL_STATUS_IDENTITY_STALE",
+      "severity": "HIGH_FOR_PORTABLE_RELEASE_CONTROL",
+      "detail": "FINAL-VERIFICATION-STATUS.json inside exact v451 artifact records stale app/service-worker/runtime-fingerprint hashes that do not match actual v451 bytes.",
+      "actual": {
+        "app_sha256": "4af3685083dd8aa4f576663f92b3775e0cad71abb65cc1ffa6f6bc5d447bd2ec",
+        "service_worker_sha256": "b1c547889d2542ea3db1b16a68f73801b39054091f47338410e1a9e8e51d36ff",
+        "runtime_fingerprint": "3c26c05c3ecb111eeab1eecd332af9b25bd29a4eb1db27c0bdb5f10fa2fcf830"
+      },
+      "packaged_final_status": {
+        "app_sha256": "f5f8db10729bdaaa4c0a03180d41708e3af3b95ba5d5ec5176865263d667f5e4",
+        "service_worker_sha256": "fa5d3968cac4a7ddc412590f1f6d00a2ac6dff3618fbc71e19e18e98a6961a7e",
+        "runtime_fingerprint": "5d59095c12c0bb3a25e114e4a4fb711cd81f5be3722e0cf2a7b20cec28895c29"
+      }
+    },
+    {
+      "id": "A2_CONTROL_VERIFIER_COVERAGE_GAP",
+      "severity": "HIGH_FOR_RELEASE_GATE",
+      "detail": "verify_runtime_control_consistency.py returns PASS but does not verify FINAL-VERIFICATION-STATUS app/service-worker hashes or runtime fingerprint; it also misses RELEASE-MANIFEST release_policy_version drift (3.17.0 vs RELEASE-POLICY 3.18.0)."
+    },
+    {
+      "id": "A3_PORTABLE_STATUS_STALE",
+      "severity": "MEDIUM",
+      "detail": "Packaged PROJECT-STATE/RELEASE-MANIFEST/FINAL fields remain partly prepackage/older-environment wording while Git control metadata was corrected later. Exact portable artifact and Git coordination state are not the same authority snapshot."
+    },
+    {
+      "id": "A4_PACKAGED_REGRESSION_HARNESS_STALE_VERSION_ASSERTIONS",
+      "severity": "MEDIUM",
+      "detail": "Four inherited packaged regression wrappers hard-code v450 identity and fail unmodified on v451. After changing only those identity assertions to v451 in an audit copy, all 91 functional checks PASS. Runtime is sound; portable test bundle is not fully self-runnable as claimed."
+    }
+  ],
+  "git_vs_portable": {
+    "git_current_metadata": "Git FINAL/RELEASE/PROJECT-STATE record correct v451 hashes and final adversarial audit state.",
+    "portable_artifact": "Exact Library/current v451 ZIP still contains the stale control/test-harness state above.",
+    "conclusion": "Previous B2 metadata blocker is resolved in Git coordination state but NOT fully resolved in the portable app artifact."
+  },
+  "overall_conclusion": "General semantic/presentation architecture works in both projects. GCPK v3.3.5 is technically coherent in this recheck. GFP v451 runtime behavior is coherent, but its portable release-control/test bundle is not yet clean enough to call the release pipeline fully correct or self-verifying.",
+  "recommended_next_milestone": "Create a metadata/test-harness-only corrected v451/R85 portable candidate with 01-App kept 71/71 byte-identical; strengthen runtime-control verifier to cover FINAL hashes/fingerprint and release-policy version; make inherited regression wrappers current-version-agnostic; rebuild, fresh-extract, rerun full checks, and verify exact Library SHA. Do not change runtime UI/content bytes."
+}

@@ -746,11 +746,11 @@
         "environment_boundary": "Fresh real-origin content-specific browser run unavailable in managed environment; deterministic exact-runtime acceptance PASS."
       },
       "b1_verben_migration": {
-        "status": "POSTLOCK_REPAIR1_PHASE2_BATCH0020_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+        "status": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED_LIBRARY_AND_GIT_SYNCED",
         "workstream": "menschen-b1-verben-migration",
         "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
         "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
-        "current_milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0020_COMPLETE",
+        "current_milestone": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED",
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
         "content_lock_state": "PARENT_STAGE7_LOCKED__REPAIR_SUCCESSOR_UNLOCKED",
         "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
@@ -799,7 +799,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           }
         },
-        "next_action": "Run the fresh post-repair richness audit across all 395 active targets; preserve Phase1 and Batches0001-0020 authorities exactly.",
+        "next_action": "PostLock Repair1 Phase3 audit-fix: normalize DUDEN_SYNONYM source IDs, add 8 missing COMPONENT link sets, resolve/document mb1m-lu-0037, then rerun full audit before any Stage5/Stage6/re-lock claim.",
         "stage6": {
           "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
           "quality_state": "PASS_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
@@ -1002,7 +1002,7 @@
           "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
           "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
         },
-        "postlock_quality_state": "REVIEW_REQUIRED_BEFORE_PEDAGOGICAL_FINALITY",
+        "postlock_quality_state": "REPAIR_REQUIRED_BEFORE_RELOCK",
         "repair_successor": {
           "phase1_identity_reconciliation": {
             "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -1163,8 +1163,125 @@
             "targets_complete": 395,
             "targets_total": 395,
             "targets_remaining": 0,
-            "state": "COMPLETE_PENDING_FRESH_POST_REPAIR_RICHNESS_AUDIT"
+            "state": "COMPLETE_AUDITED_REPAIR_REQUIRED_BEFORE_RELOCK"
           }
+        },
+        "postrepair_richness_audit": {
+          "status": "AUDIT_COMPLETE_REPAIR_REQUIRED_BEFORE_RELOCK",
+          "milestone": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED",
+          "audited_parent": {
+            "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+            "sha256": "d1f59c5ae01d0684521103081cf9afe595c45e8a56060bbe06c18d0892261f8c",
+            "canonical_sha256": "5cd664283f5cb9a4796a86efba5e65fb2f9322f36bd90c4f215091a873f168b8",
+            "immutable": true
+          },
+          "metrics": {
+            "active_cards": 395,
+            "senses": 279,
+            "expressions": 116,
+            "examples": 1580,
+            "relations": 2502,
+            "cards_enriched_beyond_rektion": "388/395 (98.23%)",
+            "cards_rektion_only": 7,
+            "expression_components": "116/116",
+            "expression_argument_slots": "86/116",
+            "relation_types": {
+              "REKTION": 400,
+              "SYNONYM": 933,
+              "COLLOCATION": 637,
+              "WORD_FAMILY": 252,
+              "COMPONENT": 243,
+              "RELATED": 22,
+              "ANTONYM": 15
+            }
+          },
+          "integrity": {
+            "active_ids_unique": "395/395 PASS",
+            "examples_exact4": "395/395 PASS / 1580 total",
+            "relation_ids_unique": "2502/2502 PASS",
+            "duplicate_relation_semantic_keys": "0 PASS",
+            "relation_endpoints": "PASS",
+            "self_relations": "0 PASS",
+            "resolved_component_object_ids": "95/95 PASS"
+          },
+          "findings": {
+            "AUDIT-F001": {
+              "severity": "BLOCKER_BEFORE_RELOCK",
+              "issue": "109 relations cite unregistered DUDEN_SYNONYM while source registry contains DUDEN_SYNONYME",
+              "batches": {
+                "0016": 58,
+                "0017": 51
+              },
+              "affected_cards": 32,
+              "relation_types": {
+                "SYNONYM": 101,
+                "WORD_FAMILY": 6,
+                "ANTONYM": 2
+              }
+            },
+            "AUDIT-F002": {
+              "severity": "REPAIR_REQUIRED_BEFORE_RELOCK",
+              "issue": "8 Batch0001 expressions have resolved structured component IDs but no explicit COMPONENT relations",
+              "affected": [
+                "mb1m-lu-0001",
+                "mb1m-lu-0002",
+                "mb1m-lu-0005",
+                "mb1m-lu-0007",
+                "mb1m-lu-0009",
+                "mb1m-lu-0015",
+                "mb1m-lu-0016",
+                "mb1m-lu-0019"
+              ]
+            },
+            "AUDIT-F003": {
+              "severity": "REVIEW_REQUIRED",
+              "issue": "7 cards remain Rektion-only; six are documented conservative exceptions, mb1m-lu-0037 lacks explicit no-force documentation",
+              "affected": [
+                "mb1m-lu-0030",
+                "mb1m-lu-0032",
+                "mb1m-lu-0037",
+                "mb1m-lu-0101",
+                "mb1m-lu-0130",
+                "mb1m-lu-0210",
+                "mb1m-lu-0262"
+              ]
+            }
+          },
+          "quality_conclusion": {
+            "core_integrity": "PASS",
+            "identity_reconciliation": "PASS",
+            "richness_improvement": "SUBSTANTIAL_PASS",
+            "evidence_reference_integrity": "FAIL_REPAIR_REQUIRED",
+            "component_link_completeness": "FAIL_REPAIR_REQUIRED",
+            "sparse_card_review": "REVIEW_REQUIRED_ONE_UNDOCUMENTED_EXCEPTION",
+            "relock_ready": false
+          },
+          "artifact": {
+            "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.zip",
+            "sha256": "4c72fcd963924ee83445a23675a44b6997474c68c4deb32a002e7661d343bc96",
+            "size_bytes": 15383,
+            "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.zip",
+            "library_file_id": "file_0000000026c081f48665439a30c9af1a",
+            "library_stable_id": "libfile_adef794a8dd48191a4e45f762a72ef8a",
+            "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+          },
+          "reports": {
+            "git_md": "Workspaces/menschen-b1-verben-migration/POSTREPAIR-RICHNESS-AUDIT.md",
+            "git_json": "Workspaces/menschen-b1-verben-migration/POSTREPAIR-RICHNESS-AUDIT.json",
+            "library_json": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.json",
+            "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-MATRIX.csv"
+          },
+          "framework_context": "Active framework v3.3.5; B1 repair lineage remains v3.3.2; no projection/card_type/runtime mutation in audit.",
+          "next_action": "PostLock Repair1 Phase3 audit-fix: normalize DUDEN_SYNONYM source IDs, add 8 missing COMPONENT link sets, resolve/document mb1m-lu-0037, then rerun full audit before any Stage5/Stage6/re-lock claim."
+        },
+        "latest_audit": {
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.zip",
+          "sha256": "4c72fcd963924ee83445a23675a44b6997474c68c4deb32a002e7661d343bc96",
+          "size_bytes": 15383,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.zip",
+          "library_file_id": "file_0000000026c081f48665439a30c9af1a",
+          "library_stable_id": "libfile_adef794a8dd48191a4e45f762a72ef8a",
+          "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
         }
       }
     },

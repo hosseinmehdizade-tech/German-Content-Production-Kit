@@ -43,30 +43,34 @@
     "persistence_rule": "Synchronize Git at meaningful boundaries with bounded/deferred/coalesced sync. Git lag must not block ordinary safe work or change current authority."
   },
   "active_framework": {
-    "version": "v3.3.5",
-    "entrypoint": "Prompt/START-PROMPT-v3.3.5.md",
-    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.5.md",
-    "master_sha256": "2644d03bba909ee11dcee94eafc2cc4a3378af5a0d0e76b8d0d6aba6321e13b4",
+    "version": "v3.3.6",
+    "entrypoint": "Prompt/START-PROMPT-v3.3.6.md",
+    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.6.md",
+    "master_sha256": "4cc68b5f42b1e38fd6d8ff9860832eb2bb6e76f85ca31d276724e65f896b1948",
     "bootstrap": "PROJECT-BOOTSTRAP.md",
     "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
-    "architecture": "v3.1.5 + v3.3.5 semantic/presentation separation",
+    "architecture": "v3.1.5 + v3.3.5 semantic/presentation separation + v3.3.6 source-agnostic completeness",
     "semantic_contract": "gfp-german-language-content@3.1.3",
     "app_capability": "gfp-v411-content-capabilities@1.1.0",
-    "verification": "v3.3.5 content contract PASS; 74/74 independent pytest PASS; app counterpart v451 control-corrected portable PASS with 292/292 fresh-extract behavioral checks.",
+    "verification": "v3.3.6 PASS; 84/84 pytest via bounded split; source/identity/enrichment/anti-bypass gates PASS; v3.3.5 presentation contract preserved.",
     "portable_authority": {
-      "filename": "German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
-      "sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
-      "library_file_id": "file_00000000886c820a9901d5168bc297c6",
-      "library_stable_id": "libfile_1896308ca8588191a0c53a7ed82f5c3a",
-      "status": "VERIFIED_PORTABLE_GIT_SOURCE_METADATA_SYNCED",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      "filename": "German-Content-Production-Kit-v3.3.6-Source-Agnostic-Completeness-CANDIDATE.zip",
+      "sha256": "61ecccdd1ae0819ae7e15b5d3335bc576dcb896a393765c257687b900ec3915c",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.6-Source-Agnostic-Completeness-CANDIDATE.zip",
+      "library_file_id": "file_0000000072848246913b127f035709af",
+      "library_stable_id": "libfile_be2f1858b18881918b61491cbe4806dc",
+      "status": "VERIFIED_PORTABLE_GIT_COMPACT_METADATA_SYNCED",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "enrichment_overlay": {
+      "policy": "Prompt/UNIVERSAL-SOURCE-AGNOSTIC-ENRICHMENT-POLICY-v1.0.0.md",
+      "status": "ACTIVE_V3_3_6",
+      "rule": "Source format ends at Stage1; identity closes before enrichment; Stage3 completes by explicit disposition; Stage4 re-audits; Stage5 fails closed."
     },
     "projection_overlay": {
       "policy": "Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.1.0.md",
-      "status": "BAKED_INTO_V3.3.5_SEMANTIC_PRESENTATION_ORTHOGONALITY",
-      "rule": "One neutral de-vocabulary presentation family; mandatory neutral presentation contract; recursive closed selector namespace; rich semantics remain presentation-neutral.",
-      "runtime_root_fix": "German-Flashcards-Pro v451-R85"
+      "status": "CARRIED_FORWARD_V3_3_5",
+      "rule": "One neutral de-vocabulary presentation family with gfp-vocabulary-neutral@1."
     }
   },
   "workstream_resolution_policy": "Use the newest valid portable workstream checkpoint first. Git branch checkpoint remains a durable mirror/ambiguity resolver and may lag; intermediate states may be coalesced at the next meaningful sync boundary.",
@@ -4008,5 +4012,30 @@
     "content_contract": "PASS",
     "release_final": false,
     "app_artifact_sha256": "27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4"
+  },
+  "source_agnostic_completeness_v336": {
+    "status": "PASS_POST_PACKAGE_VERIFIED_CANDIDATE",
+    "artifact": "German-Content-Production-Kit-v3.3.6-Source-Agnostic-Completeness-CANDIDATE.zip",
+    "artifact_sha256": "61ecccdd1ae0819ae7e15b5d3335bc576dcb896a393765c257687b900ec3915c",
+    "size_bytes": 1807103,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.6-Source-Agnostic-Completeness-CANDIDATE.zip",
+    "library_file_id": "file_0000000072848246913b127f035709af",
+    "library_stable_id": "libfile_be2f1858b18881918b61491cbe4806dc",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "active_master_sha256": "4cc68b5f42b1e38fd6d8ff9860832eb2bb6e76f85ca31d276724e65f896b1948",
+    "tests": "84/84 PASS via bounded split execution",
+    "new_v336_suite": "10/10 PASS",
+    "gates": {
+      "source_adapter": "STAGE1_ONLY",
+      "identity_closure": "STAGE2B_HARD_GATE",
+      "enrichment": "STAGE3A_BASELINE__STAGE3B_GAP_DRIVEN__STAGE3C_100_PERCENT_DISPOSITION",
+      "qa": "STAGE4_INDEPENDENT_REAUDIT",
+      "delivery": "STAGE5_COMPLETENESS_ANTI_BYPASS"
+    },
+    "done_definition": "100_PERCENT_FINAL_DISPOSITION_NOT_RELATION_DENSITY",
+    "historical_locked_artifacts_rewritten": false,
+    "visible_ui_change": "NONE",
+    "runtime_counterpart": "German-Flashcards-Pro v451-R85",
+    "sidecar_library_sync": "PENDING_CONTAINER_SESSION_EXPIRED_NON_BLOCKING"
   }
 }

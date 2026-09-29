@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.39.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.40.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
   "milestone": "STAGE7_LOCKED_COMPLETE",
-  "status": "POSTLOCK_REPAIR1_PHASE2_BATCH0019_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+  "status": "POSTLOCK_REPAIR1_PHASE2_BATCH0020_PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Phase2 Batch0020: enrich the final 15 active targets, then run the fresh post-repair richness audit; preserve Phase1 and Batches0001-0019 authorities exactly.",
+  "next_action": "Run the fresh post-repair richness audit across all 395 active targets; preserve Phase1 and Batches0001-0020 authorities exactly.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -413,7 +413,7 @@
     "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
     "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   },
-  "current_milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0019_COMPLETE",
+  "current_milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0020_COMPLETE",
   "repair_successor": {
     "phase1_identity_reconciliation": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -491,40 +491,44 @@
         "0016",
         "0017",
         "0018",
-        "0019"
+        "0019",
+        "0020"
       ],
       "latest_batch": {
         "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
-        "milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0019_COMPLETE",
+        "milestone": "POSTLOCK_REPAIR1_PHASE2_BATCH0020_COMPLETE",
         "phase": "Phase2 lexical enrichment",
-        "batch": "0019",
-        "target_range": "mb1m-lu-0441..mb1m-lu-0463 (20 active targets; retired/source-gap IDs skipped)",
-        "targets_complete_this_batch": 20,
-        "cumulative_targets_complete": 380,
+        "batch": "0020",
+        "target_range": "mb1m-lu-0464..mb1m-lu-0481 (final 15 active targets; retired/source-gap IDs skipped)",
+        "targets_complete_this_batch": 15,
+        "cumulative_targets_complete": 395,
         "targets_total": 395,
-        "targets_remaining": 15,
+        "targets_remaining": 0,
         "identity_changes": 0,
         "examples_changed": 0,
         "source_audio_changes": 0,
         "new_sources": 0,
-        "new_relations": 138,
+        "new_relations": 89,
         "new_relation_types": {
-          "COLLOCATION": 60,
-          "COMPONENT": 17,
-          "SYNONYM": 45,
-          "WORD_FAMILY": 16
+          "ANTONYM": 1,
+          "COLLOCATION": 30,
+          "COMPONENT": 19,
+          "RELATED": 1,
+          "SYNONYM": 25,
+          "WORD_FAMILY": 13
         },
-        "relation_total_after": 2413,
+        "relation_total_after": 2502,
         "structured_expressions": "6/6",
-        "argument_slot_expressions": "4/6",
+        "argument_slot_expressions": "6/6",
+        "global_expression_components": "116/116",
+        "global_argument_slot_expressions": "86/116",
         "framework_context": "Active framework v3.3.4; canonical Phase2 enrichment only. Unified de-vocabulary delivery hard gate remains a later Stage5/6 projection/package gate; v3.3.2 B1 repair lineage preserved.",
-        "evidence_context": "Evidence uses the existing DUDEN_ONLINE registry plus registered Menschen/NVV sources; no new source identity was added in Batch0019.",
+        "evidence_context": "Existing DUDEN_ONLINE plus registered Duden/Menschen/Nomen-Verb-Verbindungen authorities used; no new source identity added in Batch0020.",
         "scope_guards": [
-          "entscheiden and sich entscheiden remain distinct transitive vs reflexive choice constructions",
-          "umwandeln and verwandeln use only bounded, sense-compatible overlap",
-          "durchführen and ausführen enrichment stays on planned task/work execution branches",
-          "verwirklichen and sich verwirklichen remain distinct implementation vs self-development readings",
-          "reifen is constrained to maturation/development; unrelated homographs are excluded",
+          "pre-existing 0468↔0456, 0473↔0475, 0473↔0476 and 0481↔0058 links were not duplicated",
+          "für jdn. da sein received source-backed structure only; no unsupported synonym expansion or generic da sein split",
+          "abhängig sein / abhängig machen remain distinct constructions",
+          "erhöhen / sich erhöhen and vergrößern / sich vergrößern remain distinct transitive/reflexive identities",
           "no projection/card_type mutation"
         ],
         "validation": {
@@ -533,49 +537,53 @@
           "expressions": "116 PASS",
           "examples": "1580 PASS / exact 4 per active card",
           "sources": "10 unchanged",
-          "relation_ids_unique": "2413/2413 PASS",
+          "relation_ids_unique": "2502/2502 PASS",
           "relation_endpoints": "PASS",
-          "prior_content_files_byte_identity": "99/99 PASS",
+          "prior_content_files_byte_identity": "104/104 PASS",
           "lineage_byte_identity": "6/6 PASS",
-          "strict_authority_diff": "PASS — sources/lexemes/senses/examples unchanged; only 6 target expression structures changed; all 2275 prior relations exact; 138 evidence-backed relations appended",
+          "strict_authority_diff": "PASS — sources/lexemes/senses/examples unchanged; only 6 final target expression structures changed; all 2413 prior relations exact; 89 evidence-backed relations appended",
+          "global_expression_components": "116/116 PASS",
+          "global_argument_slots": "86/116",
           "independent_postpackage_validation": "PASS",
           "zip_crc": "PASS",
           "fresh_extract": "PASS",
-          "manifest_rehash": "105/105 PASS",
-          "checksums_rehash": "106/106 PASS",
+          "manifest_rehash": "110/110 PASS",
+          "checksums_rehash": "111/111 PASS",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "artifact": {
-          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0019-CHECKPOINT.zip",
-          "sha256": "7f635d311b5089c9d4c37eff2b1c4d2915cbefe5c4bec65f6bdca008622c5615",
-          "size_bytes": 7725599,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0019-CHECKPOINT.zip",
-          "library_file_id": "file_00000000b7ac8210808687ad84dac22a",
-          "library_stable_id": "libfile_0a60dd8fc0508191a4776f17eeeed4eb",
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+          "sha256": "d1f59c5ae01d0684521103081cf9afe595c45e8a56060bbe06c18d0892261f8c",
+          "size_bytes": 8149123,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+          "library_file_id": "file_0000000000b882108ed8ee2e42cea676",
+          "library_stable_id": "libfile_cd2d9bcfe4bc8191bd73db6578cb221d",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "post_package_verification": {
-          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0019-POST-PACKAGE-VERIFICATION.json",
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0019-POST-PACKAGE-VERIFICATION.json",
-          "library_file_id": "file_000000005e788210b505d59a23a7604f",
-          "library_stable_id": "libfile_39d676a97d708191a9a3e067efeece48"
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-POST-PACKAGE-VERIFICATION.json",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-POST-PACKAGE-VERIFICATION.json",
+          "library_file_id": "file_00000000406481f4a180bb463761f3a2",
+          "library_stable_id": "libfile_b102ca929c808191a694b88b660ceac5"
         },
         "parent_locked_release_immutable": true,
         "content_state": "UNLOCKED_REPAIR_SUCCESSOR_CHECKPOINT",
-        "next_action": "Phase2 Batch0020: enrich the final 15 active targets, then run the fresh post-repair richness audit; preserve Phase1 and Batches0001-0019 authorities exactly."
+        "phase2_state": "COMPLETE_PENDING_FRESH_POST_REPAIR_RICHNESS_AUDIT",
+        "next_action": "Run the fresh post-repair richness audit across all 395 active targets; preserve Phase1 and Batches0001-0020 authorities exactly."
       },
-      "targets_complete": 380,
+      "targets_complete": 395,
       "targets_total": 395,
-      "targets_remaining": 15
+      "targets_remaining": 0,
+      "state": "COMPLETE_PENDING_FRESH_POST_REPAIR_RICHNESS_AUDIT"
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0019-CHECKPOINT.zip",
-    "sha256": "7f635d311b5089c9d4c37eff2b1c4d2915cbefe5c4bec65f6bdca008622c5615",
-    "size_bytes": 7725599,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0019-CHECKPOINT.zip",
-    "library_file_id": "file_00000000b7ac8210808687ad84dac22a",
-    "library_stable_id": "libfile_0a60dd8fc0508191a4776f17eeeed4eb",
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+    "sha256": "d1f59c5ae01d0684521103081cf9afe595c45e8a56060bbe06c18d0892261f8c",
+    "size_bytes": 8149123,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+    "library_file_id": "file_0000000000b882108ed8ee2e42cea676",
+    "library_stable_id": "libfile_cd2d9bcfe4bc8191bd73db6578cb221d",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

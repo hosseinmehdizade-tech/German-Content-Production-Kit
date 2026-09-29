@@ -52,14 +52,14 @@
     "architecture": "v3.1.5 + v3.3.4 production overlays",
     "semantic_contract": "gfp-german-language-content@3.1.3",
     "app_capability": "gfp-v411-content-capabilities@1.1.0",
-    "verification": "62/62 pytest PASS + 9/9 targeted hard-gate + current acceptance PASS + post-package PASS",
+    "verification": "62/62 pytest PASS + normal hard-gate PASS; CROSS-REPO AUDIT BLOCKED on hidden legacy structured-verb bypass B1",
     "portable_authority": {
       "filename": "German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
       "sha256": "279c74946e900fe2b371427f400ab4de83d44d8883bcf7428e5474fb1839f0c3",
       "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
       "library_file_id": "file_000000005a6c81f4b4befc351772ea4e",
       "library_stable_id": "libfile_9497778d75ec819191e710e52273fbd0",
-      "status": "VERIFIED_PORTABLE_GIT_METADATA_SYNCED",
+      "status": "VERIFIED_PORTABLE_CANDIDATE_WITH_KNOWN_CONTRACT_BYPASS",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "projection_overlay": {
@@ -3360,5 +3360,16 @@
     "protected_content_changed": false,
     "historical_locked_artifacts_rewritten": false,
     "runtime_counterpart": "German-Flashcards-Pro v450-R84"
+  },
+  "cross_repository_full_audit_20260929": {
+    "status": "PASS_IMPLEMENTATION_WITH_TWO_BLOCKERS",
+    "report": "Verification/FULL-INTEGRATION-AUDIT-v3.3.4-v450-2026-09-29.json",
+    "app_runtime": "v450-R84",
+    "content_framework": "v3.3.4",
+    "content_pytest": "62/62 independently rerun PASS",
+    "standard_projection_integration": "PASS",
+    "blocker": "B1_UNIFIED_ENVELOPE_HIDDEN_LEGACY_BYPASS",
+    "detail": "A nominal de-vocabulary row carrying legacy de-verb-v8.5 structured markers passes v3.3.4 builder/validator but v450 reclassifies it to german-verb.",
+    "next_action": "Harden validator/builder against hidden legacy structured-verb markers and coordinate runtime normalization semantics before claiming non-bypassable unified envelope."
   }
 }

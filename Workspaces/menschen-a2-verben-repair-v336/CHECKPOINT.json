@@ -2,8 +2,8 @@
   "schema": "menschen-a2-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a2-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "PASS_STAGE3B_STRUCTURE_ARGUMENT_COMPONENT_CLUSTER__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_STRUCTURE_ARGUMENT_COMPONENT_CLUSTER_PASS",
+  "status": "PASS_STAGE3B_REKTION_CLOSED__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_REKTION_CLOSURE_PASS",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
     "sha256": "984cc519057115da49ac2479330704f7ed767e47df38d049330180ff516848b2",
@@ -14,14 +14,14 @@
     "sha256": "04a99671b62beb6900c7bd82789a59d2c28e2c70ce061efded1da751ed83ffaf"
   },
   "canonical": {
-    "sha256": "172e907a5059f7392dc90072c23082296346e300af48a53b3ab2d12832dedb2f",
+    "sha256": "44dd51a1bf6615a85526fe3ad107547d13b3f33a4ae24bc0e58d572ca23ff78f",
     "targets": 292,
     "verbs": 228,
-    "expressions": 64,
+    "phrases_or_expressions": 64,
     "examples_de": 1168,
     "examples_fa": 1168,
     "examples_en": 1168,
-    "existing_relations_unchanged": 999
+    "relations": 1010
   },
   "stage2b": {
     "status": "PASS_IDENTITY_CLOSED_NO_MUTATION",
@@ -99,12 +99,13 @@
     "package_hygiene": "PASS_NO_PYCACHE_PYC"
   },
   "artifact": {
-    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-ARGCOMP-CHECKPOINT.zip",
-    "sha256": "be7fd018bb6ef4b886924308625eb89d14b12a07f12c017752227bc08c3849b8",
-    "size_bytes": 631935,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-ARGCOMP-CHECKPOINT.zip",
-    "library_file_id": "file_000000006c408243a4fbb210dd7b39fb",
-    "library_stable_id": "libfile_05b4dbef66ac8191b3e05e6abc8c4973"
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-CLOSURE-CHECKPOINT.zip",
+    "sha256": "8043f16942fd6d61cfa67d22da8a98791b7047a0eef544bac5eb406bdbafbc35",
+    "size_bytes": 643424,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-CLOSURE-CHECKPOINT.zip",
+    "library_file_id": "file_0000000031fc81f4a5188aa5d9fefa0a",
+    "library_stable_id": "libfile_7c6c89319bcc8191a306b07049f31d7d",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "auxiliary_sidecars": {
     "post_package_json": "PENDING_LIBRARY_UPLOAD_CONTAINER_SESSION_UNAVAILABLE",
@@ -112,46 +113,60 @@
     "note": "Non-blocking: the self-verifying main portable checkpoint is durably stored and exact-rematerialized."
   },
   "runtime_binding": "NOT_APPLICABLE_TO_THIS_CONTENT_ONLY_MILESTONE__RESOLVE_CURRENT_AT_STAGE6",
-  "next_action": "Continue Stage3B with the 41 unresolved Rektion cells using existing source/Rektion evidence first, then registered references where needed. After Rektion closure proceed to synonym/antonym/collocation/word_family/related/NVV; persist ACCEPTED/REJECTED decisions and do not chase density.",
+  "next_action": "Stage3B lexical relation closure by evidence-route clusters. Start with synonym (149 unresolved), then collocation (38), related (218), antonym (278), word_family (292), and NVV (291), using CLOSED_NO_FORCE where no natural evidence-backed value exists.",
   "stage3b": {
-    "status": "STRUCTURE_ARGUMENT_COMPONENT_CLUSTER_COMPLETE__STAGE3B_REMAINS_IN_PROGRESS",
+    "status": "REKTION_CLOSED__OTHER_RELATION_DIMENSIONS_IN_PROGRESS",
     "strategy": "gap-driven enrichment; no density chasing; no fabricated relations",
     "completed_clusters": [
       "structure_components: 64/64 VERIFIED_PRESENT",
       "argument_slots: 54 VERIFIED_PRESENT + 10 CLOSED_NO_FORCE = 64/64 final",
-      "component_relations: 47 VERIFIED targets / 48 exact active-verb links + 17 CLOSED_NO_FORCE = 64/64 final"
+      "component_relations: 47 VERIFIED targets / 48 exact active-verb links + 17 CLOSED_NO_FORCE = 64/64 final",
+      "Rektion: 261 VERIFIED_PRESENT + 31 CLOSED_NO_FORCE = 292/292 final"
     ],
     "candidate_ledger": {
-      "total": 193,
-      "accepted": 165,
-      "rejected": 28,
-      "deferred": 0
+      "total": 235,
+      "accepted": 176,
+      "rejected": 59,
+      "deferred": 0,
+      "validator": "PASS"
     },
     "richness": {
       "dimension_cells": 4508,
-      "final_cells": 3201,
-      "unresolved_cells": 1307,
-      "baseline_unresolved_cells": 1499,
-      "closed_this_cluster": 192
+      "final_cells": 3242,
+      "unresolved_cells": 1266,
+      "baseline_unresolved_cells": 1499
     },
     "mutation_boundary": "Only additive structured expression metadata plus v3.3.6 ledger/richness state. Stable IDs/order, meanings, translations, examples, morphology, existing 999 relations, runtime and UI unchanged.",
     "validation": {
-      "custom": "PASS",
       "completeness_working": "PASS",
       "candidate_ledger": "PASS",
       "profile_contract": "PASS",
       "menschen_a2_supplemental": "PASS",
+      "reference_availability": "PASS",
+      "custom_rektion_closure": "PASS",
       "post_package": "PASS",
       "zip_crc": "PASS",
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      "manifest_rehash": "41/41 PASS",
+      "sha256sums": "42/42 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NESTED_ZIP"
     },
     "artifact": {
-      "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-ARGCOMP-CHECKPOINT.zip",
-      "sha256": "be7fd018bb6ef4b886924308625eb89d14b12a07f12c017752227bc08c3849b8",
-      "size_bytes": 631935,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-STRUCTURE-ARGCOMP-CHECKPOINT.zip",
-      "library_file_id": "file_000000006c408243a4fbb210dd7b39fb",
-      "library_stable_id": "libfile_05b4dbef66ac8191b3e05e6abc8c4973"
+      "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-CLOSURE-CHECKPOINT.zip",
+      "sha256": "8043f16942fd6d61cfa67d22da8a98791b7047a0eef544bac5eb406bdbafbc35",
+      "size_bytes": 643424,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-CLOSURE-CHECKPOINT.zip",
+      "library_file_id": "file_0000000031fc81f4a5188aa5d9fefa0a",
+      "library_stable_id": "libfile_7c6c89319bcc8191a306b07049f31d7d",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "rektion": {
+      "verified_targets": 261,
+      "closed_no_force": 31,
+      "unresolved": 0,
+      "new_relations_this_milestone": 11,
+      "relation_records_total": 307,
+      "evidence_route": "DUDEN_UNIVERSAL primary PASS; VERBEN_MIT_PRAEP_250 secondary available; exact source construction/case markers used only when active-sense aligned",
+      "safety_rule": "No density chasing; free locative/directional adjuncts and wrong-sense branches were not promoted."
     }
   }
 }

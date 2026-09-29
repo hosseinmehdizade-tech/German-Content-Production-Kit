@@ -1,6 +1,6 @@
 {
-  "policy_version": "1.1.0",
-  "kit_version": "3.3.4",
+  "policy_version": "1.2.0",
+  "kit_version": "3.3.5",
   "delivery_mode": "clean-staging-required",
   "rules": {
     "build_from_previous_delivery_zip_forbidden": true,
@@ -21,6 +21,14 @@
     "unified_vocabulary_neutral_card_type": "de-vocabulary",
     "legacy_german_verb_new_delivery_forbidden": true,
     "builder_must_invoke_projection_validator": true,
-    "builder_must_fail_before_zip_on_projection_violation": true
+    "builder_must_fail_before_zip_on_projection_violation": true,
+    "unified_vocabulary_custom_fields_column_required": true,
+    "neutral_presentation_contract_required": "gfp-vocabulary-neutral@1",
+    "semantic_morphology_allowed_inside_neutral_envelope": true,
+    "legacy_presentation_selectors_hidden_in_custom_fields_forbidden": true,
+    "explicit_outer_card_type_is_authoritative": true,
+    "presentation_selector_scan": "TOP_LEVEL_PLUS_RECURSIVE_CUSTOM_FIELDS_CASE_INSENSITIVE",
+    "source_schema_profile_provenance_exception": true,
+    "builder_validator": "Verification/validate_unified_vocabulary_projection_v1_1_0.py"
   }
 }

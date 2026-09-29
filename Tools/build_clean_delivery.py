@@ -45,11 +45,11 @@ cols=set(rows[0])
 if not {"id","front","back"}<=cols:
     raise SystemExit("direct import TSV must contain id/front/back columns")
 
-# Unified ordinary-vocabulary presentation guard (v3.3.4+).
+# Unified ordinary-vocabulary presentation guard (v3.3.5+).
 # This builder is itself a release gate: it MUST NOT rely on an upstream Stage 5
 # validator having been run. Every direct-import vocabulary TSV must declare the
 # neutral card_type explicitly and must pass the canonical validator here.
-required_projection_cols={"id","front","back","card_type","category"}
+required_projection_cols={"id","front","back","card_type","category","custom_fields"}
 missing_projection_cols=sorted(required_projection_cols-cols)
 if missing_projection_cols:
     raise SystemExit(
@@ -68,7 +68,7 @@ if non_neutral:
         f"unified vocabulary envelope violation: expected card_type=de-vocabulary; found {sample}"
     )
 
-validator=(Path(__file__).resolve().parents[1]/"Verification"/"validate_unified_vocabulary_projection_v1_0_0.py")
+validator=(Path(__file__).resolve().parents[1]/"Verification"/"validate_unified_vocabulary_projection_v1_1_0.py")
 if not validator.is_file():
     raise SystemExit(f"unified vocabulary validator missing: {validator}")
 validation=subprocess.run(
@@ -89,9 +89,12 @@ with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
 
     manifest={
       "artifact_type":"clean-content-delivery",
-      "delivery_policy":"v3.3.4-clean-staging-unified-vocabulary-hard-gate",
+      "delivery_policy":"v3.3.5-clean-staging-semantic-presentation-separation",
       "unified_vocabulary_validation":"PASS_EMBEDDED_BUILDER_GATE",
+      "unified_vocabulary_validator_version":"1.1.0",
       "required_card_type":"de-vocabulary",
+      "required_presentation_contract":"gfp-vocabulary-neutral@1",
+      "selector_scan":"TOP_LEVEL_PLUS_RECURSIVE_CUSTOM_FIELDS_CASE_INSENSITIVE",
       "roles":{
         "direct-import-tsv":direct.name,
         "canonical-json":canonical.name,

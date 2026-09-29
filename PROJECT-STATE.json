@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-28T20:05:00+02:00",
+  "updated_at": "2026-09-29T12:20:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -43,30 +43,30 @@
     "persistence_rule": "Synchronize Git at meaningful boundaries with bounded/deferred/coalesced sync. Git lag must not block ordinary safe work or change current authority."
   },
   "active_framework": {
-    "version": "v3.3.4",
-    "entrypoint": "Prompt/START-PROMPT-v3.3.4.md",
-    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.4.md",
-    "master_sha256": "1ee37adefffb743f149e7ae60634fb719b0bf4540a3c00063c20fcd9d84b4dc3",
+    "version": "v3.3.5",
+    "entrypoint": "Prompt/START-PROMPT-v3.3.5.md",
+    "master": "Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.5.md",
+    "master_sha256": "2644d03bba909ee11dcee94eafc2cc4a3378af5a0d0e76b8d0d6aba6321e13b4",
     "bootstrap": "PROJECT-BOOTSTRAP.md",
     "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
-    "architecture": "v3.1.5 + v3.3.4 production overlays",
+    "architecture": "v3.1.5 + v3.3.5 semantic/presentation separation",
     "semantic_contract": "gfp-german-language-content@3.1.3",
     "app_capability": "gfp-v411-content-capabilities@1.1.0",
-    "verification": "62/62 pytest PASS + normal hard-gate PASS; CROSS-REPO AUDIT BLOCKED on hidden legacy structured-verb bypass B1",
+    "verification": "74/74 pytest PASS + 9/9 profile/golden + 26/26 GFP v451 integration + post-package PASS",
     "portable_authority": {
-      "filename": "German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
-      "sha256": "279c74946e900fe2b371427f400ab4de83d44d8883bcf7428e5474fb1839f0c3",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
-      "library_file_id": "file_000000005a6c81f4b4befc351772ea4e",
-      "library_stable_id": "libfile_9497778d75ec819191e710e52273fbd0",
-      "status": "VERIFIED_PORTABLE_CANDIDATE_WITH_KNOWN_CONTRACT_BYPASS",
+      "filename": "German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
+      "sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
+      "library_file_id": "file_00000000886c820a9901d5168bc297c6",
+      "library_stable_id": "libfile_1896308ca8588191a0c53a7ed82f5c3a",
+      "status": "VERIFIED_PORTABLE_GIT_SOURCE_METADATA_SYNCED",
       "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
     },
     "projection_overlay": {
-      "policy": "Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.0.0.md",
-      "status": "BAKED_INTO_V3.3.4_WITH_NON_BYPASSABLE_DELIVERY_GATE",
-      "rule": "One neutral de-vocabulary envelope for ordinary lexical POS; builder independently requires card_type/category, invokes canonical validator, and fails before ZIP creation on violations.",
-      "runtime_root_fix": "German-Flashcards-Pro v450-R84"
+      "policy": "Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.1.0.md",
+      "status": "BAKED_INTO_V3.3.5_SEMANTIC_PRESENTATION_ORTHOGONALITY",
+      "rule": "One neutral de-vocabulary presentation family; mandatory neutral presentation contract; recursive closed selector namespace; rich semantics remain presentation-neutral.",
+      "runtime_root_fix": "German-Flashcards-Pro v451-R85"
     }
   },
   "workstream_resolution_policy": "Use the newest valid portable workstream checkpoint first. Git branch checkpoint remains a durable mirror/ambiguity resolver and may lag; intermediate states may be coalesced at the next meaningful sync boundary.",
@@ -3387,14 +3387,32 @@
     "runtime_counterpart": "German-Flashcards-Pro v450-R84"
   },
   "cross_repository_full_audit_20260929": {
-    "status": "PASS_IMPLEMENTATION_WITH_TWO_BLOCKERS",
+    "status": "CONTENT_SIDE_B1_RESOLVED_V335_APP_SIDE_RESOLVED_V451_FINAL_REAUDIT_PENDING",
     "report": "Verification/FULL-INTEGRATION-AUDIT-v3.3.4-v450-2026-09-29.json",
-    "app_runtime": "v450-R84",
-    "content_framework": "v3.3.4",
+    "app_runtime": "v451-R85",
+    "content_framework": "v3.3.5",
     "content_pytest": "62/62 independently rerun PASS",
     "standard_projection_integration": "PASS",
-    "blocker": "B1_UNIFIED_ENVELOPE_HIDDEN_LEGACY_BYPASS",
-    "detail": "A nominal de-vocabulary row carrying legacy de-verb-v8.5 structured markers passes v3.3.4 builder/validator but v450 reclassifies it to german-verb.",
-    "next_action": "Harden validator/builder against hidden legacy structured-verb markers and coordinate runtime normalization semantics before claiming non-bypassable unified envelope."
+    "blocker": null,
+    "detail": "v3.3.5 now enforces mandatory neutral contract and recursively closed selector namespaces; v451 keeps explicit supported type authoritative.",
+    "next_action": "Run final adversarial cross-repository re-audit; app same-profile local acceptance remains separate."
+  },
+  "semantic_presentation_separation_v335": {
+    "status": "PASS_POST_PACKAGE_VERIFIED_CANDIDATE",
+    "artifact": "German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
+    "artifact_sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
+    "library_file_id": "file_00000000886c820a9901d5168bc297c6",
+    "library_stable_id": "libfile_1896308ca8588191a0c53a7ed82f5c3a",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+    "presentation_contract": "gfp-vocabulary-neutral@1",
+    "validator": "Verification/validate_unified_vocabulary_projection_v1_1_0.py",
+    "selector_scan": "TOP_LEVEL_PLUS_RECURSIVE_CUSTOM_FIELDS_CASE_INSENSITIVE",
+    "tests": "74/74 PASS",
+    "profile_golden": "9/9 PASS",
+    "gfp_v451_integration": "26/26 PASS",
+    "sha256sums": "198/198 PASS",
+    "historical_locked_artifacts_rewritten": false,
+    "runtime_counterpart": "German-Flashcards-Pro v451-R85"
   }
 }

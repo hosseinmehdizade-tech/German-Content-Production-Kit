@@ -30,19 +30,19 @@ def project(data):
  def primary_membership(obj):
   ms=membership(obj); return ms[0] if ms else {}
  def media(obj): return [m for m in (obj.get("media_refs") or []) if isinstance(m,dict)]
- def common_card(tid,obj,title,pos,target_type,entry_type,definition,translations,structure,etype=None,esub=None):
+ def common_card(tid,obj,title,pos,target_type,entry_type,definition,translations,structure,etype=None,esub=None,morphology=None,gender=None):
   nonlocal order
   order+=1; exs=ex_projection(tid); srefs=source_refs(obj); pm=primary_membership(obj); allm=membership(obj); aud=media(obj)
   cefr=pm.get("cefr") or obj.get("cefr") or ""; lesson=pm.get("lesson_id") or pm.get("lesson_title") or ""; deck=(f"{pm.get('course')} {cefr}".strip() if pm.get("course") else "v411 Canonical")
   src_order=pm.get("source_row_ordinal"); ordval=src_order if isinstance(src_order,int) else order
-  cf={"entry_type":entry_type,"vnext_target_id":tid,"vnext_target_type":target_type,"vnext_definition_de":definition or "","vnext_translation_fa":translations.get("fa","") ,"vnext_translation_en":translations.get("en","") ,"vnext_structure":structure,"vnext_source_refs":srefs,"vnext_relations":relation_groups(tid),"presentation_examples":exs,"germanDefinition":definition or "","english":translations.get("en","") ,"typingCore":title,"course_memberships":allm,"source_audio_refs":aud}
+  cf={"presentation_contract":"gfp-vocabulary-neutral@1","entry_type":entry_type,"vnext_pos":pos,"vnext_morphology":morphology or {},"vnext_gender":gender,"vnext_target_id":tid,"vnext_target_type":target_type,"vnext_definition_de":definition or "","vnext_translation_fa":translations.get("fa","") ,"vnext_translation_en":translations.get("en","") ,"vnext_structure":structure,"vnext_source_refs":srefs,"vnext_relations":relation_groups(tid),"presentation_examples":exs,"germanDefinition":definition or "","english":translations.get("en","") ,"typingCore":title,"course_memberships":allm,"source_audio_refs":aud}
   if etype: cf["vnext_expression_type"]=etype
   if esub is not None: cf["vnext_expression_subtype"]=esub
   return {"id":tid,"cardType":"de-vocabulary","schemaProfile":"german-v411-lexical","domain":"German","category":pos.title() if target_type=='sense' else "Expression","source":(srefs[0].get("source_title") if srefs else (pm.get("course") or "Canonical v411")),"level":cefr,"lesson":lesson,"deck":deck,"front":title,"back":translations.get("fa","") ,"frontLabel":pos.title() if target_type=='sense' else "Expression","backLabel":"فارسی","frontLang":"de-DE","backLang":"fa-IR","frontDir":"ltr","backDir":"rtl","typingTarget":"custom:typingCore","examples":[x["de"] for x in exs],"related":[],"opposites":[],"details":[],"customFields":cf,"notes":definition or "","order":ordval}
  cards=[]; order=0
  for s in data.get("senses",[]):
   lx=lex.get(s.get("lexeme_id"),{}); tid=s["sense_id"]; pos=lx.get("pos") or "phrase"; title=lx.get("lemma") or tid; tr=s.get("translations") or {}
-  cards.append(common_card(tid,s,title,pos,"sense",pos,s.get("definition_de"),tr,s.get("structure")))
+  cards.append(common_card(tid,s,title,pos,"sense",pos,s.get("definition_de"),tr,s.get("structure"),morphology=lx.get("morphology") or {},gender=lx.get("gender")))
  for e in data.get("expressions",[]):
   tid=e["expression_id"]; tr=e.get("translations") or {}; etype=e.get("expression_type") or "multiword_expression"; entry={"nvv":"nvv","idiom":"idiom","collocation":"collocation"}.get(etype,"phrase")
   cards.append(common_card(tid,e,e.get("canonical_form") or tid,"expression","expression",entry,e.get("definition_de"),tr,e.get("structure"),etype,e.get("expression_subtype")))

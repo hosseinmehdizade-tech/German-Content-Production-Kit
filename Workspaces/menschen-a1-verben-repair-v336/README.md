@@ -2,25 +2,28 @@
 
 This workspace is a **delta repair successor** of the immutable locked A1 Verben release.
 
-Current durable milestone: **Stage3B in progress — definitions + structure + argument slots + component links PASS**.
+Current durable milestone: **Stage3B in progress — definitions + structure + argument/component links + explicit-source Rektion cluster PASS**.
 
 - Parent locked release: `German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip`
 - Parent SHA-256: `6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db`
 - Active canonical: **310 targets = 247 senses + 63 expressions**
-- Examples: **1240**; canonical relation records: **185**
-- Stage3A baseline: **4776** cells; **2624 final / 2152 unresolved**
-- Stage3B definition cluster: **3/3 repaired**
-- Stage3B structure cluster: **63/63 expressions complete**
-- Stage3B argument_slots: **63/63 final = 43 VERIFIED_PRESENT + 20 CLOSED_NO_FORCE**
-- Stage3B component_relations: **63/63 final = 47 VERIFIED_PRESENT + 16 CLOSED_NO_FORCE**
-- Resolved component object IDs: **47 exact lemma→canonical-lexeme links**
-- Candidate ledger: **158 = 122 ACCEPTED + 36 REJECTED + 0 DEFERRED**
-- Current richness: **2782 final / 1994 unresolved**
-- Current checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-ARGUMENT-COMPONENT-LINKS-CHECKPOINT.zip`
-- Checkpoint SHA-256: `7a576633a6cc92f67b529fc02f82c6c41fbdacdb93af9c7154a22eaa96f91030`
-- Canonical SHA-256: `901151ac6b221d326c97e89d13b605156e89954fc26b3b76a96aa260679e6710`
+- Examples: **1240** unchanged
+- Canonical relations: **279** = 185 predecessor relations + **94 new REKTION relations**
+- Stage3A baseline: **4776 cells; 2624 final / 2152 unresolved**
+- Definitions: **3/3 baseline defects repaired**
+- Structure components: **63/63 expressions complete**
+- Argument slots: **63/63 final = 43 VERIFIED_PRESENT + 20 CLOSED_NO_FORCE**
+- Component relations: **63/63 final = 47 VERIFIED_PRESENT + 16 CLOSED_NO_FORCE**
+- Rektion: **169/310 VERIFIED_PRESENT; 141 unresolved**
+- New Rektion in this milestone: **94 accepted = 69 source-marker Sense targets + 25 verified-argument-slot Expressions**
+- Five unsafe raw-marker promotions were rejected and remain unresolved: `ma1m-lu-0480`, `ma1m-lu-0593`, `ma1m-lu-2042`, `ma1m-lu-2279`, `ma1m-lu-2383`
+- Candidate ledger: **257 = 216 ACCEPTED + 41 REJECTED + 0 DEFERRED**
+- Current richness: **2876 final / 1900 unresolved**
+- Current checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-EXPLICIT-SOURCE-CHECKPOINT.zip`
+- Checkpoint SHA-256: `04fbb7faf207618dea38e6eeec4a805b3b90a4326b979c9a761eaedf0c680f7c`
+- Canonical SHA-256: `e07a441bb1adb096e306dd4170f092f98a51ab7d8021eac4c053116a9fcaa634`
 - Library rematerialization: **PASS exact SHA-256 + byte compare**
-- Post-package: **CRC PASS; SHA256SUMS 23/23; manifest 22/22; fresh validators 4/4 PASS**
+- Post-package: **CRC PASS; SHA256SUMS 27/27; manifest 26/26; fresh validators 4/4 PASS**
 - Historical locked bytes and prior checkpoints were not changed.
 
-Next Stage3B milestone: **relation dimensions by semantic/evidence-route clusters**, beginning with Rektion where the source/canonical pattern exposes valency, then synonym/antonym/collocation/word_family/related/NVV. Close safely when authority routes are exhausted; never chase density.
+Next Stage3B milestone: **finish Rektion review for the remaining 141 cells using registered-reference routes, Duden-first where applicable**. Preserve Sense/Expression alignment, persist rejected/no-force decisions, and do not chase relation density.

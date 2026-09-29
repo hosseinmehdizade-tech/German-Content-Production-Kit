@@ -1,0 +1,99 @@
+{
+  "schema": "gcpk-b1-verben-postrepair-richness-audit@1.0.0",
+  "status": "AUDIT_COMPLETE_REPAIR_REQUIRED_BEFORE_RELOCK",
+  "audited_on": "2026-09-29",
+  "framework_context": {
+    "active_framework": "v3.3.5 — Semantic/Presentation Separation",
+    "repair_lineage": "v3.3.2 preserved; canonical-content audit only; no projection/card_type/runtime mutation",
+    "runtime_current_at_audit": "v451-R85"
+  },
+  "parent_authority": {
+    "artifact": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase2-Batch0020-CHECKPOINT.zip",
+    "sha256": "d1f59c5ae01d0684521103081cf9afe595c45e8a56060bbe06c18d0892261f8c",
+    "canonical_sha256": "5cd664283f5cb9a4796a86efba5e65fb2f9322f36bd90c4f215091a873f168b8",
+    "mutated_by_audit": false
+  },
+  "metrics": {
+    "active_cards": 395,
+    "senses": 279,
+    "expressions": 116,
+    "examples": 1580,
+    "relations": 2502,
+    "relation_types": {
+      "REKTION": 400,
+      "SYNONYM": 933,
+      "COLLOCATION": 637,
+      "WORD_FAMILY": 252,
+      "COMPONENT": 243,
+      "RELATED": 22,
+      "ANTONYM": 15
+    },
+    "cards_enriched_beyond_rektion": 388,
+    "cards_enriched_beyond_rektion_pct": 98.23,
+    "cards_rektion_only": 7,
+    "expression_components_nonempty": "116/116",
+    "expression_argument_slots_nonempty": "86/116"
+  },
+  "integrity": {
+    "active_ids_unique": "395/395 PASS",
+    "examples_exact4": "395/395 PASS / 1580 total",
+    "relation_ids_unique": "2502/2502 PASS",
+    "duplicate_relation_semantic_keys": 0,
+    "relation_endpoints": "PASS",
+    "self_relations": 0,
+    "resolved_component_object_ids": "95/95 valid"
+  },
+  "findings": [
+    {
+      "id": "AUDIT-F001",
+      "severity": "BLOCKER_BEFORE_RELOCK",
+      "detail": "109 relations cite unregistered DUDEN_SYNONYM while registry contains DUDEN_SYNONYME; 58 in Batch0016 + 51 in Batch0017; 32 cards; types: 101 SYNONYM, 6 WORD_FAMILY, 2 ANTONYM."
+    },
+    {
+      "id": "AUDIT-F002",
+      "severity": "REPAIR_REQUIRED_BEFORE_RELOCK",
+      "detail": "8 Batch0001 expressions have resolved structure component IDs but no explicit COMPONENT relations.",
+      "affected": [
+        "mb1m-lu-0001",
+        "mb1m-lu-0002",
+        "mb1m-lu-0005",
+        "mb1m-lu-0007",
+        "mb1m-lu-0009",
+        "mb1m-lu-0015",
+        "mb1m-lu-0016",
+        "mb1m-lu-0019"
+      ]
+    },
+    {
+      "id": "AUDIT-F003",
+      "severity": "REVIEW_REQUIRED",
+      "detail": "7 cards are Rektion-only; six have documented conservative no-force decisions; mb1m-lu-0037 lacks an explicit exception record.",
+      "affected": [
+        "mb1m-lu-0030",
+        "mb1m-lu-0032",
+        "mb1m-lu-0037",
+        "mb1m-lu-0101",
+        "mb1m-lu-0130",
+        "mb1m-lu-0210",
+        "mb1m-lu-0262"
+      ]
+    }
+  ],
+  "conclusion": {
+    "core_integrity": "PASS",
+    "richness_improvement": "SUBSTANTIAL_PASS",
+    "evidence_reference_integrity": "FAIL_REPAIR_REQUIRED",
+    "component_link_completeness": "FAIL_REPAIR_REQUIRED",
+    "relock_ready": false
+  },
+  "library_artifact": {
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.zip",
+    "sha256": "4c72fcd963924ee83445a23675a44b6997474c68c4deb32a002e7661d343bc96",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-AUDIT.zip",
+    "library_file_id": "file_0000000026c081f48665439a30c9af1a",
+    "library_stable_id": "libfile_adef794a8dd48191a4e45f762a72ef8a",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+  },
+  "matrix_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-POST-REPAIR-RICHNESS-MATRIX.csv",
+  "next_action": "PostLock Repair1 Phase3 audit-fix: normalize DUDEN_SYNONYM, add 8 missing COMPONENT link sets, resolve/document mb1m-lu-0037, then rerun full audit before re-lock."
+}

@@ -2,8 +2,8 @@
   "schema": "menschen-a1-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a1-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "STAGE3B_IN_PROGRESS__REKTION_DUDEN_PREPOSITIONAL_CLUSTER_PASS__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_REKTION_DUDEN_PREPOSITIONAL_CLUSTER_PASS",
+  "status": "STAGE3B_IN_PROGRESS__REKTION_DUDEN_MIXED_POSITIVE_CLUSTER_PASS__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_REKTION_DUDEN_MIXED_POSITIVE_CLUSTER_PASS",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip",
     "sha256": "6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db",
@@ -12,12 +12,12 @@
     "immutable": true
   },
   "canonical": {
-    "sha256": "b8db6e402414afd6b92376516cb2a9d7d9881d3baf390bb0203598b1cce18714",
+    "sha256": "430d686cb2e66219abd51422038942c69ef61cb66768826b01c3234f22fe769e",
     "targets": 310,
     "senses": 247,
     "expressions": 63,
     "examples": 1240,
-    "relations": 312,
+    "relations": 341,
     "sources": 13
   },
   "stage2b": {
@@ -58,7 +58,7 @@
     }
   },
   "candidate_ledger": {
-    "state": "STAGE3B_IN_PROGRESS_249_ACCEPTED_41_REJECTED",
+    "state": "STAGE3B_IN_PROGRESS_278_ACCEPTED_41_REJECTED",
     "official_validator": "PASS"
   },
   "official_v336_validators": "4/4 PASS",
@@ -76,9 +76,9 @@
     "library_file_id": "file_00000000673882109397d9166360290c",
     "library_stable_id": "libfile_0e782923630c8191a0237a2cac7b99d7"
   },
-  "next_action": "Continue Stage3B Rektion closure for the remaining 113 unresolved cells through Duden mixed/intransitive routes. Close CLOSED_NO_FORCE only after checking governed prepositional frames; then proceed to synonym/antonym/collocation/word_family/related/NVV.",
+  "next_action": "Continue Stage3B Rektion closure for the remaining 88 unresolved cells. First exhaust remaining governed-frame routes using DUDEN_BEDEUTUNG_10 and VERBEN_MIT_PRAEP_250 secondary evidence where useful; only then record evidence-backed CLOSED_NO_FORCE for genuine no-governed-frame cases. Then proceed to synonym/antonym/collocation/word_family/related/NVV.",
   "stage3b": {
-    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_AND_REKTION_SOURCE_TRANSITIVE_PREPOSITIONAL_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
+    "status": "PASS_DEFINITION_STRUCTURE_ARGUMENT_COMPONENT_AND_REKTION_SOURCE_TRANSITIVE_PREPOSITIONAL_MIXED_POSITIVE_CLUSTERS__STAGE3B_REMAINS_IN_PROGRESS",
     "strategy": "gap-driven enrichment; semantic/evidence-route clusters; no arbitrary ID batches",
     "completed_clusters": [
       "definition_de MUST_HAVE wrong-language defects: 3/3 closed",
@@ -87,7 +87,8 @@
       "expression component_relations REVIEW_TO_CLOSURE: 63/63 final",
       "Rektion explicit-source / verified-argument-slot cluster: 94 newly VERIFIED; 5 unsafe raw-marker candidates REJECTED and left unresolved",
       "Rektion DUDEN_BEDEUTUNG_10 global-transitive cluster: 18 newly VERIFIED as + Akkusativ",
-      "Rektion DUDEN_BEDEUTUNG_10 governed prepositional/case-frame cluster: 10 newly VERIFIED targets / 15 relations"
+      "Rektion DUDEN_BEDEUTUNG_10 governed prepositional/case-frame cluster: 10 newly VERIFIED targets / 15 relations",
+      "Rektion DUDEN_BEDEUTUNG_10 mixed-entry active-sense positive cluster: 25 newly VERIFIED targets / 29 relations"
     ],
     "argument_slots": {
       "expressions_total": 63,
@@ -105,90 +106,69 @@
       "serialization_rule": "COMPONENT navigation is derived from structure.components.object_id; no duplicate canonical relation records added."
     },
     "candidate_ledger": {
-      "total": 290,
-      "accepted": 249,
+      "total": 319,
+      "accepted": 278,
       "rejected": 41,
       "deferred": 0,
       "validator": "PASS"
     },
     "richness": {
       "dimension_cells": 4776,
-      "final_cells": 2904,
-      "unresolved_cells": 1872,
+      "final_cells": 2929,
+      "unresolved_cells": 1847,
       "baseline_unresolved_cells": 2152
     },
     "validation": {
-      "rektion_duden_prepositional": "PASS_10_TARGETS_15_RELATIONS",
-      "candidate_ledger": "PASS_290",
-      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1872_UNRESOLVED",
+      "rektion_duden_mixed_positive": "PASS_25_TARGETS_29_RELATIONS",
+      "candidate_ledger": "PASS_319",
+      "completeness_working": "PASS_310_TARGETS_4776_CELLS_1847_UNRESOLVED",
       "gfp_v411_profile": "PASS_310_TARGETS_EXACT4",
-      "mutation_boundary": "PASS_ONLY_15_REKTION_RELATIONS_PLUS_LEDGER_RICHNESS_STATE",
+      "mutation_boundary": "PASS_ONLY_29_REKTION_RELATIONS_PLUS_LEDGER_RICHNESS_STATE",
       "post_package": "PASS",
-      "sha256sums": "36/36 PASS",
-      "manifest_rehash": "35/35 PASS",
+      "fresh_current_validators": "5/5 PASS",
+      "sha256sums": "29/29 PASS",
+      "manifest_rehash": "28/28 PASS",
       "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
-    "mutation_boundary": "Added 15 Duden-backed governed-frame REKTION relations for 10 targets plus corresponding Stage3B ledger/richness state only; semantic targets, definitions, translations, examples, morphology, expression structure, identity, runtime and UI unchanged.",
+    "mutation_boundary": "Added 29 Duden-backed REKTION relations for 25 mixed-entry/fixed-expression targets plus corresponding Stage3B ledger/richness state only; semantic identity, definitions, translations, examples, morphology, expression structure, runtime and UI unchanged.",
     "parent_mutated": false,
     "identity_changed": false,
     "runtime_or_ui_changed": false,
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-CHECKPOINT.zip",
-      "sha256": "c3b53e1f8491f92684316576a06387af24d8d91cba3ce3065ad0689e2865e010",
-      "size_bytes": 1135985,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-CHECKPOINT.zip",
-      "library_file_id": "file_00000000354c81f4946dfc874bb65c09",
-      "library_stable_id": "libfile_9f6aa7e3e2748191b923ae605e48e03c",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-MIXED-POSITIVE-CHECKPOINT.zip",
+      "sha256": "5f244414d427a2e564beb84339249708d9b4629e345cc4033a27bf0cc5786404",
+      "size_bytes": 1404387,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-MIXED-POSITIVE-CHECKPOINT.zip",
+      "library_file_id": "file_00000000501c81f4a653950d978bc558",
+      "library_stable_id": "libfile_65bc3e11a8f48191aa0ef47d0f5b35f8",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "post_package_verification": {
       "status": "PASS",
-      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-POST-PACKAGE-VERIFICATION.json",
-      "sha256": "efdf1f48d24070041569a504012b7fcaede2f9e45d5b5e96915e14552244c35b",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-PREPOSITIONAL-POST-PACKAGE-VERIFICATION.json",
-      "library_file_id": "file_00000000a5148210ab1bb96f25167aa1",
-      "library_stable_id": "libfile_aae9e5478fd481918ea691d23a7eb76f",
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-MIXED-POSITIVE-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "c3ead9712659881b46be5aa287da6ab0a27b0ccd2a11f71e18a75a297d4387a0",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-REKTION-DUDEN-MIXED-POSITIVE-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000de98821090687b61120318b8",
+      "library_stable_id": "libfile_c24b3bcd0a00819199edbdadcad598aa",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
       "zip_crc": "PASS",
-      "sha256sums": "36/36 PASS",
-      "manifest_rehash": "35/35 PASS",
+      "sha256sums": "29/29 PASS",
+      "manifest_rehash": "28/28 PASS",
       "fresh_current_validators": "5/5 PASS",
-      "package_hygiene": "PASS_NO_PYCACHE_PYC",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      "package_hygiene": "PASS_NO_PYCACHE_PYC"
     },
     "rektion": {
-      "verified_targets_total": 197,
-      "unresolved_targets_remaining": 113,
+      "verified_targets_total": 222,
+      "unresolved_targets_remaining": 88,
       "explicit_source_cluster_newly_verified": 94,
       "duden_global_transitive_newly_verified": 18,
       "duden_governed_prepositional_newly_verified_targets": 10,
       "duden_governed_prepositional_new_relations": 15,
-      "total_new_rektion_relations_since_argcomp": 127,
-      "relation_records_total": 206,
-      "governed_frame_targets": [
-        "ma1m-lu-1029",
-        "ma1m-lu-1040",
-        "ma1m-lu-1235",
-        "ma1m-lu-1238",
-        "ma1m-lu-1680",
-        "ma1m-lu-1908",
-        "ma1m-lu-2042",
-        "ma1m-lu-2373",
-        "ma1m-lu-2385",
-        "ma1m-lu-2407"
-      ],
-      "frames": [
-        "lachen: über + Akkusativ",
-        "reden: mit + Dativ; über + Akkusativ",
-        "anfangen: + Akkusativ; mit + Dativ",
-        "aufhören: mit + Dativ",
-        "sich verstecken: vor + Dativ",
-        "warten: auf + Akkusativ",
-        "sich bewerben: um + Akkusativ; bei + Dativ",
-        "sich beschweren: bei + Dativ; über + Akkusativ; wegen + Genitiv",
-        "sich entschuldigen: für + Akkusativ",
-        "reagieren: auf + Akkusativ"
-      ],
-      "safety_rule": "Only Duden-attested governed frames aligned to the active canonical sense were promoted; unresolved mixed/intransitive entries remain open until their governed-frame routes are exhausted."
+      "duden_mixed_positive_newly_verified_targets": 25,
+      "duden_mixed_positive_new_relations": 29,
+      "total_new_rektion_relations_since_argcomp": 156,
+      "relation_records_total": 235,
+      "safety_rule": "Only Duden-attested frames aligned to the active canonical sense/expression were promoted. Ambiguous or genuinely non-governed cases remain unresolved until evidence routes are exhausted; no density chasing."
     }
   }
 }

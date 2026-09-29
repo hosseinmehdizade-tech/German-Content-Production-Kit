@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.44.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.45.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
   "milestone": "STAGE7_LOCKED_COMPLETE",
-  "status": "POSTLOCK_REPAIR1_STAGE5_V335_PASS_LIBRARY_AND_GIT_SYNCED",
+  "status": "POSTLOCK_REPAIR1_STAGE6_V451_PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Stage6 Runtime & Presentation Acceptance: resolve Flashcards CURRENT exact portable artifact, then test 395-card import, retired-ID absence, persistence/index/roundtrip, neutral cross-POS presentation, legacy compatibility, and source/audio organization before any re-lock.",
+  "next_action": "Stage7: build and exact-final verify a B1 repair re-lock candidate on the same exact CURRENT v451/R85 lineage. Do not claim final app/runtime release while the v451 same-profile environment boundary remains open.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -413,7 +413,7 @@
     "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
     "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   },
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE5_DELIVERY_PROJECTION_COMPLETE",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE6_GFP_V451_RUNTIME_PRESENTATION_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "repair_successor": {
     "phase1_identity_reconciliation": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -844,18 +844,96 @@
         "rule": "Stage6 must resolve CURRENT again at execution; no fallback to LAST_FULLY_VERIFIED."
       },
       "next_action": "Stage6 Runtime & Presentation Acceptance: resolve Flashcards CURRENT exact portable artifact, then test 395-card import, retired-ID absence, persistence/index/roundtrip, neutral cross-POS presentation, legacy compatibility, and source/audio organization before any re-lock."
+    },
+    "stage6_runtime_acceptance": {
+      "status": "PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_SYNCED",
+      "milestone": "POSTLOCK_REPAIR1_STAGE6_GFP_V451_RUNTIME_PRESENTATION_PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "runtime": {
+        "current": "v451-R85",
+        "artifact": "German-Flashcards-Pro-v451-R85-ORGANIZED-DELIVERY-CANDIDATE.zip",
+        "sha256": "6355f46cd3c30a9be5e8138a380a6cdd746154b385e4b2813ade55eff509d1d9",
+        "verification_state": "PASS_AUTOMATED_POST_PACKAGE_CANDIDATE",
+        "release_final": false,
+        "last_fully_verified": "v435-R69",
+        "no_downgrade": true
+      },
+      "stage5": {
+        "checkpoint_sha256": "b4db23a170044ab1da92680351c4a9a97da32e0a49356a4729c98562291043ea",
+        "direct_import_dataset": "B1-VERBEN-UNIVERSAL-v2.tsv",
+        "dataset_sha256": "16321ecb5798b4fee6ff707f79d988f3cd18df70005f3b8fea158722043e44c6"
+      },
+      "acceptance": {
+        "targeted_checks": "93/93 PASS",
+        "b1_specific_checks": "52/52 PASS",
+        "v451_vocabulary_envelope": "21/21 PASS",
+        "v451_v450_layout_regression": "20/20 PASS",
+        "cards": "395/395",
+        "retired_ids_absent": "5/5",
+        "card_types": {
+          "de-vocabulary": 395
+        },
+        "categories": {
+          "Verb": 279,
+          "Expression": 116
+        },
+        "presentation_contract": "395/395 gfp-vocabulary-neutral@1",
+        "canonical_study_layout": "395/395 PASS / zero legacy v217 geometry",
+        "legacy_compatibility": "PASS",
+        "examples": "Study 4 / Quick 2 / Typing 3 / Audio 3 on all 395",
+        "commit_manifest": "VERIFIED / 395 cards",
+        "runtime_index": "395/395 PASS",
+        "storage": "READY / writesBlocked=false",
+        "library_organization": "Menschen Verben > Menschen B1 Verben > 135/140/120 PASS",
+        "practice_modes": "Study/Quick/Typing/Audio full 395-card scope PASS",
+        "universal_roundtrip": "395/395 identity + membership/type/category PASS",
+        "source_audio_roundtrip": "439 refs / exact zero-audio targets mb1m-lu-0030, mb1m-lu-0363"
+      },
+      "environment_boundary": {
+        "managed_real_origin": "BLOCKED_BY_ADMINISTRATOR",
+        "deterministic_exact_current_runtime": "PASS",
+        "user_same_profile_v451": "PENDING_RUNTIME_FINAL",
+        "full_real_profile_stage6": "NOT_CLAIMED",
+        "note": "v451 still requires same-profile Windows/Chrome visual/import/reload/PWA update/storage-offline acceptance before runtime FINAL."
+      },
+      "direct_import_note": "Stage5 clean-delivery bundle contains two TSV roles; runtime direct import correctly uses the manifest-declared direct-import-tsv B1-VERBEN-UNIVERSAL-v2.tsv.",
+      "validation": {
+        "parent_payload_byte_identity": "139/139 PASS",
+        "manifest_rehash": "151/151 PASS",
+        "checksums_rehash": "153/153 PASS",
+        "fresh_extract": "PASS",
+        "zip_crc": "PASS",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "artifact": {
+        "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-CHECKPOINT.zip",
+        "sha256": "9fd3e82dffc768509f3fa7e9c90324d159e7d571559ca47a94b3142970808e09",
+        "size_bytes": 10540586,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-CHECKPOINT.zip",
+        "library_file_id": "file_0000000004e48246b3d635769f6203dd",
+        "library_stable_id": "libfile_c0880cc840f881919778bde45bc6d1a0",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "post_package_verification": {
+        "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-POST-PACKAGE-VERIFICATION.json",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "file_00000000966481f4ae9cdec42aa805fa",
+        "library_stable_id": "libfile_f8e1c57821688191b4f99a67f87cce2d"
+      },
+      "visible_ui_change": "NONE",
+      "content_lock_state": "REPAIR_SUCCESSOR_UNLOCKED_STAGE6_PASS",
+      "next_action": "Stage7: build and exact-final verify a B1 repair re-lock candidate on the same exact CURRENT v451/R85 lineage. Do not claim final app/runtime release while the v451 same-profile environment boundary remains open."
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CHECKPOINT.zip",
-    "sha256": "b4db23a170044ab1da92680351c4a9a97da32e0a49356a4729c98562291043ea",
-    "size_bytes": 10918469,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CHECKPOINT.zip",
-    "library_file_id": "file_0000000079748210bfdbda6827f6795a",
-    "library_stable_id": "libfile_97c325238fc0819187b4b8577ed08877",
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-CHECKPOINT.zip",
+    "sha256": "9fd3e82dffc768509f3fa7e9c90324d159e7d571559ca47a94b3142970808e09",
+    "size_bytes": 10540586,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-CHECKPOINT.zip",
+    "library_file_id": "file_0000000004e48246b3d635769f6203dd",
+    "library_stable_id": "libfile_c0880cc840f881919778bde45bc6d1a0",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "postlock_quality_state": "STAGE5_PASS_READY_FOR_STAGE6",
+  "postlock_quality_state": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY_READY_FOR_STAGE7_CANDIDATE",
   "postrepair_richness_audit": {
     "status": "AUDIT_COMPLETE_REPAIR_REQUIRED_BEFORE_RELOCK",
     "milestone": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED",

@@ -1,0 +1,108 @@
+{
+  "schema": "menschen-a2-verben-repair-v336-stage2b-stage3a-summary@1.0.0",
+  "status": "STAGE2B_IDENTITY_CLOSED__STAGE3A_BASELINE_COMPLETE__LIBRARY_AND_GIT_SYNCED",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "lineage": {
+    "historical_locked_release": {
+      "filename": "German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
+      "sha256": "984cc519057115da49ac2479330704f7ed767e47df38d049330180ff516848b2",
+      "immutable": true
+    },
+    "repair1_parent": {
+      "filename": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
+      "sha256": "04a99671b62beb6900c7bd82789a59d2c28e2c70ce061efded1da751ed83ffaf"
+    },
+    "canonical_sha256": "9b6d628b173077102495203b3d64b63e906c345108ea4e9a525fb5a98cebdf26",
+    "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD"
+  },
+  "stage2b": {
+    "status": "PASS_IDENTITY_CLOSED_NO_MUTATION",
+    "authoritative_source_rows": 297,
+    "normalized_lexical_occurrences": 336,
+    "active_targets": 292,
+    "unique_active_ids": 292,
+    "unresolved_identity_questions": 0,
+    "identity_actions": {
+      "MIGRATE_1_TO_1": 253,
+      "SPLIT_REQUIRED_SOURCE_IDENTITIES": 17,
+      "CONSOLIDATE_LEGACY_SPLITS": 5,
+      "MIGRATE_TO_SURVIVOR": 2,
+      "RETIRE_LEGACY_CARD": 1
+    },
+    "note": "335 active source-to-canonical lexical mappings + 1 excluded nonverb source row. Historical locked bytes and Repair1 semantic content were not mutated."
+  },
+  "stage3a": {
+    "status": "PASS_BASELINE_COMPLETE",
+    "targets": 292,
+    "dimension_cells": 4508,
+    "final_cells": 3009,
+    "unresolved_cells": 1499,
+    "key_gaps": {
+      "structure_components": 64,
+      "argument_slots": 64,
+      "component_relations": 64,
+      "rektion": 41,
+      "synonym": 149,
+      "antonym": 278,
+      "collocation": 38,
+      "word_family": 292,
+      "related": 218,
+      "nvv_links": 291
+    },
+    "source_audio": {
+      "VERIFIED_PRESENT": 0,
+      "CLOSED_NO_FORCE_SOURCE_HAS_NO_AUDIO": 292
+    },
+    "baseline_status": {
+      "definition_de_verified": 292,
+      "meaning_fa_verified": 292,
+      "gloss_en_verified": 292,
+      "morphology_verified": 228,
+      "examples_de_verified": 292,
+      "example_translations_fa_verified": 292,
+      "example_translations_en_verified": 292,
+      "synonym_verified": 143,
+      "antonym_verified": 14,
+      "collocation_verified": 253,
+      "collocation_closed_no_force": 1,
+      "related_verified": 74,
+      "rektion_verified": 251,
+      "nvv_links_verified": 1,
+      "word_family_verified": 0
+    },
+    "candidate_ledger_seed": {
+      "rejected": 1,
+      "target": "ma2-lu-0236",
+      "dimension": "collocation",
+      "reason": "Target is already a fixed multiword construction; redundant self-collocation remains explicitly rejected."
+    }
+  },
+  "validation": {
+    "fresh_current_validators": "6/6 PASS",
+    "profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
+    "a2_supplemental": "PASS_0_ERRORS_0_WARNINGS",
+    "source_occurrence": "PASS",
+    "identity_closure": "PASS",
+    "enrichment_completeness_baseline": "PASS",
+    "candidate_ledger": "PASS",
+    "zip_crc": "PASS",
+    "sha256sums": "31/31 PASS",
+    "manifest_rehash": "30/30 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage2B-Stage3A-BASELINE-CHECKPOINT.zip",
+    "sha256": "6a9539be9e87ec508b6c05099d1d9492183f42f398fd3f59ba07a03579bfaa21",
+    "size_bytes": 293724,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage2B-Stage3A-BASELINE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000f5e48210b4fdee83d7208538",
+    "library_stable_id": "libfile_8036b1e58aa88191ad352db1958cef0c",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+  },
+  "auxiliary_sidecars": {
+    "post_package_json": "PENDING_LIBRARY_UPLOAD_CONTAINER_SESSION_UNAVAILABLE",
+    "sha256_sidecar": "PENDING_LIBRARY_UPLOAD_CONTAINER_SESSION_UNAVAILABLE",
+    "note": "Non-blocking: the self-verifying main portable checkpoint is durably stored and exact-rematerialized."
+  },
+  "next_action": "Stage3B gap-driven enrichment: close MUST_HAVE expression structure components first, then argument/component closure, then Rektion, then synonym/antonym/collocation/word_family/related/NVV by evidence route. Persist ACCEPTED/REJECTED decisions; no density chasing or fabricated relations."
+}

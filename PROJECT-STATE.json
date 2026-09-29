@@ -746,13 +746,13 @@
         "environment_boundary": "Fresh real-origin content-specific browser run unavailable in managed environment; deterministic exact-runtime acceptance PASS."
       },
       "b1_verben_migration": {
-        "status": "POSTLOCK_REPAIR1_STAGE6_V451_PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_SYNCED",
+        "status": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_V451_PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_SYNCED",
         "workstream": "menschen-b1-verben-migration",
         "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
         "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
-        "current_milestone": "POSTLOCK_REPAIR1_STAGE6_GFP_V451_RUNTIME_PRESENTATION_PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "current_milestone": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_ON_V451",
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-        "content_lock_state": "PARENT_STAGE7_LOCKED__REPAIR_SUCCESSOR_UNLOCKED",
+        "content_lock_state": "PARENT_STAGE7_LOCKED__REPAIR_SUCCESSOR_RELOCKED",
         "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
         "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD",
         "organization_policy": "MEM-010-DYNAMIC-LIBRARY-ORGANIZATION",
@@ -799,7 +799,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           }
         },
-        "next_action": "Stage7: build and exact-final verify a B1 repair re-lock candidate on the same exact CURRENT v451/R85 lineage. Do not claim final app/runtime release while the v451 same-profile environment boundary remains open.",
+        "next_action": "Menschen B1 Verben Repair1 content workstream is complete and RELOCKED. Do not regenerate B1 unless a real defect is found. Runtime v451 finality remains a separate app-level same-profile acceptance task.",
         "stage6": {
           "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
           "quality_state": "PASS_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
@@ -850,12 +850,12 @@
           }
         },
         "latest_checkpoint": {
-          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-CHECKPOINT.zip",
-          "sha256": "9fd3e82dffc768509f3fa7e9c90324d159e7d571559ca47a94b3142970808e09",
-          "size_bytes": 10540586,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage6-GFP-v451-CHECKPOINT.zip",
-          "library_file_id": "file_0000000004e48246b3d635769f6203dd",
-          "library_stable_id": "libfile_c0880cc840f881919778bde45bc6d1a0",
+          "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
+          "sha256": "689dbf2750167ce346fb582c0bb484855319fe1a197d2b8ed5096432aa682253",
+          "size_bytes": 8325,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
+          "library_file_id": "file_000000005b30821093bf91c5f7554e91",
+          "library_stable_id": "libfile_544bd850e64081918ad50cdf8cf53d05",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "stage7": {
@@ -1002,7 +1002,7 @@
           "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
           "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
         },
-        "postlock_quality_state": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY_READY_FOR_STAGE7_CANDIDATE",
+        "postlock_quality_state": "STAGE7_CONTENT_RELOCKED_RUNTIME_ENVIRONMENT_BOUNDARY_OPEN",
         "repair_successor": {
           "phase1_identity_reconciliation": {
             "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -1511,6 +1511,91 @@
             "visible_ui_change": "NONE",
             "content_lock_state": "REPAIR_SUCCESSOR_UNLOCKED_STAGE6_PASS",
             "next_action": "Stage7: build and exact-final verify a B1 repair re-lock candidate on the same exact CURRENT v451/R85 lineage. Do not claim final app/runtime release while the v451 same-profile environment boundary remains open."
+          },
+          "stage7_relock": {
+            "status": "PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_SYNCED",
+            "milestone": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_ON_V451",
+            "content_lock_state": "RELOCKED_REPAIR_SUCCESSOR",
+            "acceptance_mode": "BOUNDED_COMPOSITIONAL_EXACT_FINAL_ON_BYTE_IDENTICAL_STAGE6_RUNTIME_AND_DATASET",
+            "runtime": {
+              "current": "v451-R85",
+              "source_zip_sha256": "6355f46cd3c30a9be5e8138a380a6cdd746154b385e4b2813ade55eff509d1d9",
+              "release_final": false,
+              "last_fully_verified": "v435-R69",
+              "no_downgrade": true
+            },
+            "dataset": {
+              "cards": 395,
+              "senses": 279,
+              "expressions": 116,
+              "examples": 1580,
+              "relations": 2510,
+              "sha256": "16321ecb5798b4fee6ff707f79d988f3cd18df70005f3b8fea158722043e44c6",
+              "card_types": {
+                "de-vocabulary": 395
+              },
+              "categories": {
+                "Verb": 279,
+                "Expression": 116
+              },
+              "retired_ids_absent": [
+                "mb1m-lu-0034",
+                "mb1m-lu-0073",
+                "mb1m-lu-0370",
+                "mb1m-lu-0392",
+                "mb1m-lu-0442"
+              ],
+              "presentation_contract": "gfp-vocabulary-neutral@1"
+            },
+            "exact_final": {
+              "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+              "checks": "27/27 PASS",
+              "stage6_full_acceptance": "52/52 PASS",
+              "v451_presentation_regressions": "41/41 PASS (21 envelope + 20 layout)",
+              "exact_release_browser_smoke": "9/9 PASS",
+              "dynamic_tail_smoke": "7/7 PASS",
+              "release_hash_manifest": "660/660 PASS",
+              "runtime_tree_byte_identity": "298/298 PASS",
+              "stage6_delivery_byte_identity": "17/17 PASS",
+              "zip_crc": "PASS",
+              "package_hygiene": "PASS",
+              "corrected_retry_note": "A monolithic exact-release 395-card browser rerun reached actual direct-import Status: PASS but the tool window expired before tail checks. The bounded final proof inherits the durable Stage6 52/52 full-395 acceptance only after exact runtime/dataset byte identity was proven, then adds exact-release boot/preview/presentation and real-import restart/rename tail checks. No app/content failure was observed."
+            },
+            "release": {
+              "filename": "German-Flashcards-Pro-v451-R85-Menschen-B1-Verben-v3.3.2-Repair1-RELOCKED.zip",
+              "sha256": "8c25db09eadc5cf4d9bdecd95c07faf81ab727c87de51fcc3edd434b199a4014",
+              "size_bytes": 14272741,
+              "zip_members": 662,
+              "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v451-R85-Menschen-B1-Verben-v3.3.2-Repair1-RELOCKED.zip",
+              "library_file_id": "file_000000003a908243b7d1e73e1ecf5086",
+              "library_stable_id": "libfile_0ee080712ee881918420ce2192de14c2",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            },
+            "checkpoint": {
+              "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
+              "sha256": "689dbf2750167ce346fb582c0bb484855319fe1a197d2b8ed5096432aa682253",
+              "size_bytes": 8325,
+              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
+              "library_file_id": "file_000000005b30821093bf91c5f7554e91",
+              "library_stable_id": "libfile_544bd850e64081918ad50cdf8cf53d05",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            },
+            "exact_final_report": {
+              "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+              "library_file_id": "file_00000000bdf881f48de0e834488bd346",
+              "library_stable_id": "libfile_16860203623c81919d00f29627f7d02e"
+            },
+            "post_package_report": {
+              "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-POST-PACKAGE-VERIFICATION.json",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-POST-PACKAGE-VERIFICATION.json",
+              "library_file_id": "file_000000003b408246ac9fce889ce14404",
+              "library_stable_id": "libfile_f61c060ed3748191b7173f7be1d171de"
+            },
+            "environment_boundary": "B1 content is re-locked. GFP v451/R85 itself is not FINAL until the separate same-profile Windows/Chrome visual/import/reload/PWA update/storage-offline acceptance closes.",
+            "visible_ui_change": "NONE",
+            "parent_locked_release_immutable": true,
+            "next_action": "Menschen B1 Verben Repair1 content workstream is complete and RELOCKED. Do not regenerate B1 unless a real defect is found. Runtime v451 finality remains a separate app-level same-profile acceptance task."
           }
         },
         "postrepair_richness_audit": {
@@ -1637,6 +1722,16 @@
           "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CLEAN-DELIVERY.zip",
           "library_file_id": "file_000000005e0c8210858d174b3c155dab",
           "library_stable_id": "libfile_7ad6703659008191ae5f150c5d2b4e48",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "latest_release": {
+          "filename": "German-Flashcards-Pro-v451-R85-Menschen-B1-Verben-v3.3.2-Repair1-RELOCKED.zip",
+          "sha256": "8c25db09eadc5cf4d9bdecd95c07faf81ab727c87de51fcc3edd434b199a4014",
+          "size_bytes": 14272741,
+          "zip_members": 662,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v451-R85-Menschen-B1-Verben-v3.3.2-Repair1-RELOCKED.zip",
+          "library_file_id": "file_000000003a908243b7d1e73e1ecf5086",
+          "library_stable_id": "libfile_0ee080712ee881918420ce2192de14c2",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         }
       }

@@ -52,7 +52,7 @@
     "architecture": "v3.1.5 + v3.3.5 semantic/presentation separation",
     "semantic_contract": "gfp-german-language-content@3.1.3",
     "app_capability": "gfp-v411-content-capabilities@1.1.0",
-    "verification": "74/74 pytest PASS + 9/9 profile/golden + 26/26 GFP v451 integration + post-package PASS",
+    "verification": "PASS_POST_PACKAGE + 51/51 final adversarial cross-repository contract audit on GFP v451/R85",
     "portable_authority": {
       "filename": "German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
       "sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
@@ -3583,15 +3583,26 @@
     "runtime_counterpart": "German-Flashcards-Pro v450-R84"
   },
   "cross_repository_full_audit_20260929": {
-    "status": "CONTENT_SIDE_B1_RESOLVED_V335_APP_SIDE_RESOLVED_V451_FINAL_REAUDIT_PENDING",
-    "report": "Verification/FULL-INTEGRATION-AUDIT-v3.3.4-v450-2026-09-29.json",
+    "status": "PASS_AUTOMATED_CROSS_REPOSITORY_CONTRACT",
+    "release_final": false,
     "app_runtime": "v451-R85",
+    "app_artifact_sha256": "6355f46cd3c30a9be5e8138a380a6cdd746154b385e4b2813ade55eff509d1d9",
     "content_framework": "v3.3.5",
-    "content_pytest": "62/62 independently rerun PASS",
-    "standard_projection_integration": "PASS",
-    "blocker": null,
-    "detail": "v3.3.5 now enforces mandatory neutral contract and recursively closed selector namespaces; v451 keeps explicit supported type authoritative.",
-    "next_action": "Run final adversarial cross-repository re-audit; app same-profile local acceptance remains separate."
+    "content_artifact_sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
+    "presentation_contract": "gfp-vocabulary-neutral@1",
+    "adversarial_cross_repo": "51/51 PASS",
+    "app_envelope": "21/21 PASS",
+    "app_layout_regression": "20/20 PASS",
+    "content_targeted": "12/12 PASS",
+    "app_runtime_control_consistency": "PASS",
+    "blockers_resolved": [
+      "B1_UNIFIED_ENVELOPE_HIDDEN_LEGACY_BYPASS",
+      "B2_APP_CONTROL_METADATA_INCONSISTENCY"
+    ],
+    "report": "Verification/FINAL-ADVERSARIAL-CROSS-REPOSITORY-AUDIT-v451-v335.json",
+    "audit_library_path": "/German-Content-Production-Kit/Checkpoints/FINAL-ADVERSARIAL-CROSS-REPOSITORY-AUDIT-v451-v335.json",
+    "audit_sha256": "abe2c8a6214bcbd65e4c221644f10ef29633b4264692065977699f61578891e7",
+    "remaining_boundary": "User same-profile Windows/Chrome v451 visual/import/navigation/reload/PWA update/storage-offline acceptance before FINAL; v451 full coherent Git 01-App mirror remains pending."
   },
   "semantic_presentation_separation_v335": {
     "status": "PASS_POST_PACKAGE_VERIFIED_CANDIDATE",
@@ -3609,6 +3620,7 @@
     "gfp_v451_integration": "26/26 PASS",
     "sha256sums": "198/198 PASS",
     "historical_locked_artifacts_rewritten": false,
-    "runtime_counterpart": "German-Flashcards-Pro v451-R85"
+    "runtime_counterpart": "German-Flashcards-Pro v451-R85",
+    "final_adversarial_cross_repo": "51/51 PASS"
   }
 }

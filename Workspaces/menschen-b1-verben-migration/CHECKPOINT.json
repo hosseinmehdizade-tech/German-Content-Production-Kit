@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.43.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.44.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
   "milestone": "STAGE7_LOCKED_COMPLETE",
-  "status": "POSTLOCK_REPAIR1_PHASE3_FRESH_REAUDIT_PASS_LIBRARY_AND_GIT_SYNCED",
+  "status": "POSTLOCK_REPAIR1_STAGE5_V335_PASS_LIBRARY_AND_GIT_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Stage5 repair-successor delivery projection under active v3.3.5 with neutral de-vocabulary and gfp-vocabulary-neutral@1; Stage6 must resolve CURRENT at execution before runtime/presentation acceptance and re-lock.",
+  "next_action": "Stage6 Runtime & Presentation Acceptance: resolve Flashcards CURRENT exact portable artifact, then test 395-card import, retired-ID absence, persistence/index/roundtrip, neutral cross-POS presentation, legacy compatibility, and source/audio organization before any re-lock.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -413,7 +413,7 @@
     "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
     "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   },
-  "current_milestone": "POSTLOCK_REPAIR1_PHASE3_FRESH_REAUDIT_PASS",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE5_DELIVERY_PROJECTION_COMPLETE",
   "repair_successor": {
     "phase1_identity_reconciliation": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -730,18 +730,132 @@
         "relocked": false
       },
       "next_action": "Stage5 repair-successor delivery projection under active v3.3.5 with neutral de-vocabulary and gfp-vocabulary-neutral@1; Stage6 must resolve CURRENT at execution before runtime/presentation acceptance and re-lock."
+    },
+    "stage5_delivery_projection": {
+      "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
+      "milestone": "POSTLOCK_REPAIR1_STAGE5_DELIVERY_PROJECTION_COMPLETE",
+      "framework": {
+        "active": "v3.3.5 — Semantic/Presentation Separation",
+        "portable_artifact": "German-Content-Production-Kit-v3.3.5-Semantic-Presentation-Separation-CANDIDATE.zip",
+        "portable_sha256": "2886a565be2103b6c8b7ac1987302bde42f049a6f4fd0186a512c169beb85ae6",
+        "master_prompt_sha256": "2644d03bba909ee11dcee94eafc2cc4a3378af5a0d0e76b8d0d6aba6321e13b4",
+        "validator": "Verification/validate_unified_vocabulary_projection_v1_1_0.py",
+        "required_card_type": "de-vocabulary",
+        "required_presentation_contract": "gfp-vocabulary-neutral@1"
+      },
+      "upstream": {
+        "phase3_checkpoint": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
+        "phase3_checkpoint_sha256": "38f31d50290ab9a541174a86eabd820652adfe330cbdee09bc78b24c5bdd6203",
+        "canonical_sha256": "e431a855027bae94166be776c562704ace03e6607f47bdd555aa69d605a32273",
+        "phase3_reaudit": "PASS_CANONICAL_AUDIT_GATE_CLOSED"
+      },
+      "projection": {
+        "cards": 395,
+        "card_types": {
+          "de-vocabulary": 395
+        },
+        "categories": {
+          "Verb": 279,
+          "Expression": 116
+        },
+        "examples": {
+          "de": 1580,
+          "fa": 1580,
+          "en": 1580
+        },
+        "relations": 2510,
+        "dataset": "B1-VERBEN-UNIVERSAL-v2.tsv",
+        "dataset_sha256": "16321ecb5798b4fee6ff707f79d988f3cd18df70005f3b8fea158722043e44c6",
+        "projected_cards_sha256": "01fea98427ad8a95747d59e38e7e9a18022cd08f02ce6daa1ce34c114fb454b7",
+        "canonical_mutated": false
+      },
+      "source_audio": {
+        "source_rows": 405,
+        "source_audio_refs": 403,
+        "source_audio_unique_files": 400,
+        "zero_audio_source_rows": [
+          8451,
+          8727
+        ],
+        "target_source_occurrence_refs": 441,
+        "target_audio_occurrence_refs": 439,
+        "target_audio_unique_files": 400,
+        "zero_audio_targets": [
+          "mb1m-lu-0030",
+          "mb1m-lu-0363"
+        ]
+      },
+      "organization": {
+        "book": "Menschen Verben",
+        "lesson": "Menschen B1 Verben",
+        "deck_counts": {
+          "Verben mit Präpositionen 1": 135,
+          "Verben mit Präpositionen 2": 140,
+          "Verben mit Präpositionen 3": 120
+        },
+        "target_source_occurrence_distribution": {
+          "1": 354,
+          "2": 36,
+          "3": 5
+        },
+        "mem010": "PASS_MUTABLE_SEED"
+      },
+      "validation": {
+        "stage5_qa": "418/418 PASS",
+        "official_unified_projection_validator": "PASS",
+        "official_generic_v411_projector_semantic_parity": "395/395 PASS",
+        "clean_delivery_embedded_hard_gate": "PASS",
+        "checkpoint_parent_payload_byte_identity": "114/114 PASS",
+        "checkpoint_manifest_rehash": "141/141 PASS",
+        "checkpoint_checksums_rehash": "143/143 PASS",
+        "checkpoint_zip_crc": "PASS",
+        "checkpoint_fresh_extract": "PASS",
+        "checkpoint_library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "clean_delivery_library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "artifact": {
+        "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CHECKPOINT.zip",
+        "sha256": "b4db23a170044ab1da92680351c4a9a97da32e0a49356a4729c98562291043ea",
+        "size_bytes": 10918469,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CHECKPOINT.zip",
+        "library_file_id": "file_0000000079748210bfdbda6827f6795a",
+        "library_stable_id": "libfile_97c325238fc0819187b4b8577ed08877",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "clean_delivery": {
+        "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CLEAN-DELIVERY.zip",
+        "sha256": "0647efe6c351e1d0e33d1a453c277fbed7e75da154a751fa1e5d26ed7a540ef9",
+        "size_bytes": 1004166,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CLEAN-DELIVERY.zip",
+        "library_file_id": "file_000000005e0c8210858d174b3c155dab",
+        "library_stable_id": "libfile_7ad6703659008191ae5f150c5d2b4e48",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "post_package_verification": {
+        "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-POST-PACKAGE-VERIFICATION.json",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "file_00000000e0fc81f48d92824c2b13a917",
+        "library_stable_id": "libfile_2cd415e0266c819193b7eb8e595b2a7e"
+      },
+      "runtime_boundary": {
+        "stage5_runtime_version_agnostic": true,
+        "current_observed_at_stage5": "v451-R85",
+        "accepted_runtime": null,
+        "rule": "Stage6 must resolve CURRENT again at execution; no fallback to LAST_FULLY_VERIFIED."
+      },
+      "next_action": "Stage6 Runtime & Presentation Acceptance: resolve Flashcards CURRENT exact portable artifact, then test 395-card import, retired-ID absence, persistence/index/roundtrip, neutral cross-POS presentation, legacy compatibility, and source/audio organization before any re-lock."
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
-    "sha256": "38f31d50290ab9a541174a86eabd820652adfe330cbdee09bc78b24c5bdd6203",
-    "size_bytes": 8881591,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
-    "library_file_id": "file_00000000fb70820aa0f10fe42cddab2a",
-    "library_stable_id": "libfile_0ec5e9fec8e88191abf0fc7e4e2417d4",
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CHECKPOINT.zip",
+    "sha256": "b4db23a170044ab1da92680351c4a9a97da32e0a49356a4729c98562291043ea",
+    "size_bytes": 10918469,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CHECKPOINT.zip",
+    "library_file_id": "file_0000000079748210bfdbda6827f6795a",
+    "library_stable_id": "libfile_97c325238fc0819187b4b8577ed08877",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "postlock_quality_state": "CANONICAL_AUDIT_GATE_CLOSED_READY_FOR_STAGE5",
+  "postlock_quality_state": "STAGE5_PASS_READY_FOR_STAGE6",
   "postrepair_richness_audit": {
     "status": "AUDIT_COMPLETE_REPAIR_REQUIRED_BEFORE_RELOCK",
     "milestone": "POSTLOCK_REPAIR1_POSTREPAIR_RICHNESS_AUDIT_COMPLETE_REPAIR_REQUIRED",
@@ -857,6 +971,15 @@
     "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-PHASE3-REAUDIT-PASS.zip",
     "library_file_id": "file_00000000de888210b5defb37474b3965",
     "library_stable_id": "libfile_4f0b9733c11c8191abbb2a549528db7b",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "latest_delivery": {
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CLEAN-DELIVERY.zip",
+    "sha256": "0647efe6c351e1d0e33d1a453c277fbed7e75da154a751fa1e5d26ed7a540ef9",
+    "size_bytes": 1004166,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage5-v3.3.5-CLEAN-DELIVERY.zip",
+    "library_file_id": "file_000000005e0c8210858d174b3c155dab",
+    "library_stable_id": "libfile_7ad6703659008191ae5f150c5d2b4e48",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

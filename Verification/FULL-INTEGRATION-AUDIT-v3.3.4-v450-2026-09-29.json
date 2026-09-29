@@ -1,0 +1,50 @@
+{
+  "schema": "gfp-gcpk-full-integration-audit@1.0.0",
+  "date": "2026-09-29",
+  "overall_status": "PASS_IMPLEMENTATION_WITH_TWO_BLOCKERS",
+  "authorities": {
+    "app": {
+      "version": "v450-R84",
+      "artifact": "German-Flashcards-Pro-v450-R84-ORGANIZED-DELIVERY-CANDIDATE-METADATA-CORRECTED.zip",
+      "sha256": "2ace501e6f90dbe02e7f999a01ef2f729ceeac71e4a783698d0677c9e76545d4",
+      "last_fully_verified": "v435-R69"
+    },
+    "content_kit": {
+      "version": "v3.3.4",
+      "artifact": "German-Content-Production-Kit-v3.3.4-Unified-Vocabulary-Delivery-Hard-Gate-CANDIDATE.zip",
+      "sha256": "279c74946e900fe2b371427f400ab4de83d44d8883bcf7428e5474fb1839f0c3"
+    }
+  },
+  "independent_verification": {
+    "app": "ZIP/hash/hygiene/version/static checks PASS; 251/251 independently rerun browser/regression checks PASS",
+    "content_kit": "ZIP/hash/hygiene PASS; 62/62 independently rerun pytest PASS",
+    "library": "Both rematerialized Library copies match exact recorded SHA-256",
+    "standard_cross_project_projection": "PASS on six golden Noun/Verb/Adjective/Expression/NVV projected cards across Study/Quick/Typing/Audio"
+  },
+  "blockers": [
+    {
+      "id": "B1_UNIFIED_ENVELOPE_HIDDEN_LEGACY_BYPASS",
+      "severity": "HIGH",
+      "status": "CONFIRMED",
+      "problem": "v3.3.4 validates outer card_type/category but does not reject legacy structured-verb markers in custom_fields/schema_profile. v450 inferCardType checks structured-verb semantics before honoring explicit de-vocabulary, so a nominally neutral row can be silently reclassified to german-verb.",
+      "reproduction": "card_type=de-vocabulary + category=Verb + custom_fields.schemaProfile=de-verb-v8.5 + infinitiveDisplay/present/perfect passes validator and builder, then v450 normalizes it to cardType=german-verb.",
+      "required_fix": "Reject legacy structured-verb transport/schema markers in new neutral content and/or make explicit de-vocabulary authoritative in runtime normalization; add adversarial cross-project regression."
+    },
+    {
+      "id": "B2_APP_CONTROL_METADATA_INCONSISTENCY",
+      "severity": "HIGH_FOR_COORDINATION_LOW_FOR_RUNTIME_BYTES",
+      "status": "CONFIRMED",
+      "problem": "v450 runtime bytes are coherent but packaged/Git control metadata are inconsistent.",
+      "examples": [
+        "portable PROJECT-STATE authority_resolution and delivery_contract still point to v448",
+        "portable PROJECT-STATE git_sync_policy_state contains v449",
+        "portable RELEASE-MANIFEST post_package_verification_report points to V449-R83",
+        "portable LINEAGE phase is still R83 and parent_authority is v448",
+        "Git RUNTIME pin/currentness are v450 but Git RELEASE-MANIFEST and FINAL-VERIFICATION-STATUS remain v449; Git PROJECT-STATE contains older authority/delivery subtrees"
+      ],
+      "required_fix": "Metadata-only v450 reconciliation with 01-App 71/71 byte-identical proof and corrected post-package pointers."
+    }
+  ],
+  "pending_environment_acceptance": "v450 same-profile Windows/Chrome visual + import/navigation/reload + PWA update/storage-offline smoke",
+  "verdict": "Do not promote the unified-envelope work to final until B1 and B2 are fixed and re-audited."
+}

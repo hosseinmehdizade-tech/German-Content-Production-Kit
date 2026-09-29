@@ -1,0 +1,76 @@
+{
+  "schema": "gcpk-b1-verben-phase3-fresh-reaudit-report@1.0.0",
+  "status": "PASS_CANONICAL_AUDIT_GATE_CLOSED_LIBRARY_AND_GIT_SYNCED",
+  "milestone": "POSTLOCK_REPAIR1_PHASE3_FRESH_REAUDIT_PASS",
+  "audited_content_checkpoint": {
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Phase3-AuditFix-CHECKPOINT.zip",
+    "sha256": "38f31d50290ab9a541174a86eabd820652adfe330cbdee09bc78b24c5bdd6203",
+    "canonical_sha256": "e431a855027bae94166be776c562704ace03e6607f47bdd555aa69d605a32273"
+  },
+  "metrics": {
+    "active_cards": 395,
+    "senses": 279,
+    "expressions": 116,
+    "lexemes": 331,
+    "examples": 1580,
+    "relations": 2510,
+    "relation_types": {
+      "REKTION": 400,
+      "SYNONYM": 933,
+      "COLLOCATION": 637,
+      "COMPONENT": 251,
+      "WORD_FAMILY": 252,
+      "RELATED": 22,
+      "ANTONYM": 15
+    },
+    "cards_enriched_beyond_rektion": 388,
+    "cards_enriched_beyond_rektion_pct": 98.23,
+    "cards_rektion_only": 7,
+    "expression_components": "116/116",
+    "expressions_with_component_relation": "116/116",
+    "expression_argument_slots": "86/116"
+  },
+  "prior_findings": {
+    "F001": "PASS — 0 DUDEN_SYNONYM refs remain; exact 109 prior relations normalized only to DUDEN_SYNONYME",
+    "F002": "PASS — exact 8 COMPONENT relations appended; 116/116 expressions now have COMPONENT relation",
+    "F003": "PASS_CONSERVATIVE — mb1m-lu-0037 documented CLOSED_CONSERVATIVE_NO_FORCE; all 7 sparse cards documented"
+  },
+  "integrity": {
+    "active_ids_unique": "395/395 PASS",
+    "examples_exact4": "395/395 PASS",
+    "relation_ids_unique": "2510/2510 PASS",
+    "duplicate_semantic_relation_keys": "0 PASS",
+    "relation_source_owners_endpoints": "PASS",
+    "self_relations": "0 PASS",
+    "provenance_source_ids_registered": "PASS",
+    "resolved_component_object_ids": "95/95 PASS",
+    "bounded_diff_from_batch0020": "PASS — non-relation authority unchanged; 0 prior relation deletions; 109 source-id-only normalizations; 8 appended COMPONENT relations",
+    "inherited_common_files_byte_identity": "109 PASS",
+    "phase3_manifest_rehash": "115/115 PASS",
+    "phase3_checksums_rehash": "116/116 PASS",
+    "phase3_zip_crc": "PASS"
+  },
+  "audit_artifact": {
+    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-PHASE3-REAUDIT-PASS.zip",
+    "sha256": "db7e55667985956fc2e7324d4da4f12a05350ef70ff6b8ab58c7586caa26cd82",
+    "size_bytes": 11832,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-PHASE3-REAUDIT-PASS.zip",
+    "library_file_id": "file_00000000de888210b5defb37474b3965",
+    "library_stable_id": "libfile_4f0b9733c11c8191abbb2a549528db7b",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "matrix": {
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-PHASE3-REAUDIT-RICHNESS-MATRIX.csv",
+    "library_file_id": "file_00000000226081f4af23beef46a452e9",
+    "library_stable_id": "libfile_2dea43837d588191b20d0c1271abcb3c"
+  },
+  "framework_context": "Active framework v3.3.5; B1 repair lineage v3.3.2; re-audit is canonical-content-only and does not mutate projection/card_type/runtime.",
+  "conclusion": {
+    "canonical_reaudit": "PASS",
+    "canonical_audit_gate_closed": true,
+    "stage5_complete": false,
+    "stage6_runtime_accepted": false,
+    "relocked": false
+  },
+  "next_action": "Stage5 repair-successor delivery projection under active v3.3.5 with neutral de-vocabulary and gfp-vocabulary-neutral@1; Stage6 resolves CURRENT at execution before runtime/presentation acceptance and re-lock."
+}

@@ -2,8 +2,8 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T19:37:00+02:00",
-  "updated_version": "clean-restart-baseline-v1",
+  "updated_at": "2026-09-30T23:15:00+02:00",
+  "updated_version": "clean-restart-baseline-v1-autorun-longrun-v2",
   "status": "CLEAN_RESTART_BASELINE_READY",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
@@ -99,13 +99,20 @@
     "known_items": []
   },
   "production_cadence": {
-    "default_safe_batch_size": 100,
-    "scale_to_150_after_consecutive_clean_100_card_batches": 2,
-    "hard_max_without_explicit_user_approval": 200,
-    "ambiguous_items": "quarantine_review_queue",
-    "global_audit_every_completed_cards": 500,
-    "portable_checkpoint_after_each_successful_batch": true,
-    "git_sync_after_each_successful_batch": "REQUIRED_LIGHTWEIGHT_BOUNDED"
+    "atomic_shard_default": 100,
+    "atomic_shard_scale_after_clean_evidence": [
+      125,
+      150
+    ],
+    "atomic_shard_hard_max": 200,
+    "superbatch_target_safe_cards": 500,
+    "lightweight_resume_state_after_each_atomic_shard": true,
+    "portable_checkpoint_at_superbatch_boundary": true,
+    "cumulative_audit_every_completed_cards": 500,
+    "continue_across_shards_in_same_turn": true,
+    "continue_across_stage_boundaries_when_safe": true,
+    "git_sync": "BOUNDED_AT_MEANINGFUL_DURABLE_BOUNDARIES",
+    "ambiguous_items": "quarantine_review_queue"
   },
   "guardrails": [
     "Source-first. Do not seed the new run from old generated cards or chat memory.",
@@ -114,7 +121,10 @@
     "Use v3.3.6 Stage2 identity closure before Stage3 enrichment.",
     "Use explicit disposition closure; never fabricate relations.",
     "New ordinary vocabulary projection uses de-vocabulary + gfp-vocabulary-neutral@1.",
-    "Resolve GFP CURRENT only when runtime acceptance matters."
+    "Resolve GFP CURRENT only when runtime acceptance matters.",
+    "NVV clean-restart long-run user override permits multi-stage/multi-shard same-turn execution when safe; preserve durable shard checkpoints and do not weaken QA.",
+    "Do not stop after every 100-card shard merely to emit a visible response; a ~500-target superbatch is the normal Stage3 durable milestone.",
+    "Silent recovery must not fire merely because 75 seconds elapsed; recommended watchdog delay is 300 seconds and must reconcile durable state first."
   ],
   "historical_archive": {
     "previous_checkpoint_status": "RECOVERY_BLOCKED",
@@ -133,5 +143,21 @@
     "git": "COMPACT_METADATA_SYNCED",
     "binary_zip_in_git": "NOT_REQUIRED"
   },
-  "next": "Run fresh Stage1/N1 source inventory from the registered 26-page PDF and persist a new authoritative inventory checkpoint."
+  "next": "Run fresh Stage1/N1 source inventory from the registered 26-page PDF under NVV-AUTORUN-MASTER-MISSION-v2; continue into Stage2 in the same turn when safe.",
+  "autorun": {
+    "status": "ACTIVE",
+    "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
+    "mission_key": "NVV-CLEAN-LONGRUN-R2",
+    "mission_type": "PROJECT_AWARE_CUSTOM",
+    "mode": "nvv",
+    "execution_profile": "continuous_safe",
+    "turn_policy": "CONTINUOUS_SAFE",
+    "auto_continue_across_turns": true,
+    "user_confirmation_for_routine_continuation": false,
+    "silent_recovery_delay_seconds": 300,
+    "silent_recovery_attempts_max": 3,
+    "final_delivery_recovery_attempts_max": 3,
+    "recommended_auto_turn_budget_min": 20,
+    "historical_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART"
+  }
 }

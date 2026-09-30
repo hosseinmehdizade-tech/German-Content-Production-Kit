@@ -1,0 +1,87 @@
+{
+  "schema": "menschen-a1-verben-repair-v336-stage4-independent-reaudit-summary@1.0.0",
+  "status": "PASS_STAGE4_INDEPENDENT_LINGUISTIC_LEXICAL_REAUDIT__LIBRARY_AND_GIT_SYNCED",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "predecessor": {
+    "stage": "Stage3C Disposition Closure",
+    "canonical_sha256": "9b4a58b6002e8ea9d3c521367d4cdf14941af41b094511dd853a89703017e0b4",
+    "artifact_sha256": "aa41e69b33b31435562ec43a6382ef01f0ec7b9e900038c4653095dd2734cc73"
+  },
+  "successor": {
+    "canonical_sha256": "4a7b5a0d7dfa4d984e4afc375c237c80d8ea8f00f0afde6a3f86f6f11d75c0ce",
+    "relations_sha256": "bac4a38ff67bef41bce1b6d40a905e234e4dad6c1b34ecc69e29fb4d8a1a5ebe",
+    "cards": 310,
+    "senses": 247,
+    "expressions": 63,
+    "examples": {
+      "de": 1240,
+      "fa": 1240,
+      "en": 1240
+    },
+    "relations": 768,
+    "dimension_cells": 4776,
+    "unresolved_cells": 0,
+    "dispositions": {
+      "verified_present": 3303,
+      "closed_no_force": 1473,
+      "not_applicable": 0
+    },
+    "candidate_ledger": {
+      "total": 2185,
+      "accepted": 709,
+      "rejected": 1476,
+      "deferred": 0
+    }
+  },
+  "stage4_findings_and_repairs": {
+    "pre_repair_real_findings": [
+      "306 MENSCHEN_MEMRISE_EXPORT evidence refs were labeled registry=approved instead of source_authority.",
+      "The wählen sense morphology projection omitted auxiliary=haben although the source-backed morphology includes hat gewählt.",
+      "Expression eine Frage stellen had a redundant self-value COLLOCATION relation.",
+      "IDENTITY-CLOSURE canonical fingerprint required exact successor rebinding.",
+      "Unused unregistered DUDEN_WEB_NOTVERSORGUNG remained declared despite zero active provenance refs."
+    ],
+    "course_source_evidence_refs_reclassified_to_source_authority": 306,
+    "affected_candidates": 299,
+    "waehlen_morphology_projection_auxiliary_haben": 1,
+    "redundant_self_value_collocation_removed": 1,
+    "unused_unregistered_source_declaration_removed": 1,
+    "new_rejected_candidate": 1,
+    "collocation_disposition_verified_to_closed_no_force": 1,
+    "successor_fingerprints_rebound": true,
+    "bounded_diff": "PASS"
+  },
+  "validation": {
+    "independent_custom_audit": "42/42 PASS; 0 blockers; 0 repair_required; 0 review_required; 1 non-blocking multi-typing advisory",
+    "official_validators": "7/7 PASS",
+    "framework_pytest_v336": "10/10 PASS",
+    "post_package_custom": "42/42 PASS",
+    "post_package_official": "7/7 PASS",
+    "zip_crc": "PASS",
+    "manifest_rehash": "31/31 PASS",
+    "sha256sums": "32/32 PASS",
+    "json_reparse": "27/27 PASS",
+    "package_hygiene": "PASS_NO_PYCACHE_PYC_NESTED_ZIP",
+    "bounded_diff": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+    "sha256": "b3c1601b5583ed60db2c79acd80f38416f4e36078880fb24b8662e11decda634",
+    "size_bytes": 507164,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000412882438cb4c21f5fcb5425",
+    "library_stable_id": "libfile_c708f298662c8191afe6f011794789fa",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package_verification": {
+    "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "50fd67e5090b3d2f7e28256467cd4be6e984f50248962dfbe9703df40ba07358",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_00000000a20082108ff10817f3579a01",
+    "library_stable_id": "libfile_453723bcf34481918b9258f0b79c7f06"
+  },
+  "mutation_boundary": "Stable target/lexeme IDs and order, learner-facing definitions/translations, expression structure and all 1240 examples preserved. Changes are bounded to one source-backed morphology projection, one redundant self-value COLLOCATION removal, source/provenance classification cleanup, one rejected candidate/disposition transition, unused source-declaration removal and exact fingerprint rebinding. Runtime/UI unchanged.",
+  "runtime_binding": "NOT_APPLICABLE_TO_THIS_CONTENT_ONLY_MILESTONE__RESOLVE_CURRENT_AT_STAGE6",
+  "next_action": "Run Stage5 clean delivery projection through the v3.3.6 anti-bypass gate using neutral de-vocabulary + gfp-vocabulary-neutral@1; resolve Flashcards CURRENT only at Stage6."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-30T19:37:00+02:00",
+  "updated_at": "2026-09-30T23:15:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -162,6 +162,27 @@
         "neutral vocabulary presentation contract"
       ],
       "safe_default": "FRESH_SOURCE_DERIVATION_HISTORY_ARCHIVED"
+    },
+    {
+      "id": "MEM-NVV-002-LONGRUN-AUTORUN",
+      "status": "ACTIVE",
+      "date": "2026-09-30",
+      "category": "execution_process",
+      "scope": "standalone nomen-verb-verbindungen clean-restart workstream",
+      "incident": "The stage-safe controller plus a stale NVV preset caused repeated stop/recovery cycles and re-injected historical Batch0003/126-card recovery text. A 75-second orphan watchdog was also too aggressive for long reasoning/tool operations, making a ~2.5k-target workstream impractically chatty and slow.",
+      "decision": "Hossein explicitly approved a scoped long-run AUTORUN override for NVV. Use Project-aware Custom + continuous_safe/CONTINUOUS_SAFE. Process Stage3 as ~500-target superbatches composed of <=200-target atomic shards, persist lightweight resume state after each shard, keep full QA/checkpointing at meaningful boundaries, and auto-continue across turns without routine user confirmation. Historical pre-restart NVV output remains quarantine-only.",
+      "explicit_user_approval": "Hossein explicitly requested rebuilding the AUTORUN setup from scratch for the ~2000+ card NVV workload on 2026-09-30.",
+      "relationship_to_MEM_008": "SCOPED_USER_OVERRIDE_FOR_NVv_ONLY; preserves durable checkpoints and visible summaries at real turn boundaries while removing mandatory stop-after-every-shard behavior.",
+      "safe_default": "NVV_CONTINUOUS_SAFE_WITH_500_TARGET_SUPERBATCHES",
+      "preserved_guardrails": [
+        "source-first authority",
+        "no Git binary transport",
+        "no fabricated enrichment",
+        "MEM-009 one-card multi-meaning",
+        "v3.3.6 identity/disposition/anti-bypass gates",
+        "CURRENT runtime resolution only when integration matters",
+        "durable recovery before retry"
+      ]
     }
   ],
   "propagation_rule": {

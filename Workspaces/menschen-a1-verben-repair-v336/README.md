@@ -1,28 +1,27 @@
 # Menschen A1 Verben Repair v3.3.6
 
-This workspace is a **delta repair successor** of the immutable locked A1 Verben release.
+Current durable milestone: **Stage5 Clean Delivery PASS — v3.3.6 anti-bypass gate**.
 
-Current durable milestone: **Stage4 independent linguistic/lexical re-audit PASS**.
-
-- Active canonical: **310 targets = 247 senses + 63 expressions**
-- Examples: **1240 unchanged**
-- Canonical SHA-256: `4a7b5a0d7dfa4d984e4afc375c237c80d8ea8f00f0afde6a3f86f6f11d75c0ce`
-- Relations: **768**; relation-content SHA-256 `bac4a38ff67bef41bce1b6d40a905e234e4dad6c1b34ecc69e29fb4d8a1a5ebe`
-- Disposition: **4776/4776 final = 3303 VERIFIED_PRESENT + 1473 CLOSED_NO_FORCE; 0 unresolved**
-- Candidate ledger: **2185 = 709 ACCEPTED + 1476 REJECTED + 0 DEFERRED**
-- Independent Stage4 audit: **42/42 PASS**
-- Fresh official validators: **7/7 PASS**
-- v3.3.6 framework pytest: **10/10 PASS**
-- Post-package re-run: custom **42/42 PASS**, official **7/7 PASS**
-- ZIP CRC **PASS**; manifest **31/31**; SHA256SUMS **32/32**; JSON reparse **27/27**; hygiene **PASS**
+- Upstream Stage4 canonical: **310 targets = 247 senses + 63 expressions**
+- Stage4 canonical SHA-256: `4a7b5a0d7dfa4d984e4afc375c237c80d8ea8f00f0afde6a3f86f6f11d75c0ce`
+- Semantic relations preserved: **768**
+- Stage5 cards: **310/310 de-vocabulary**
+- Categories: **247 Verb + 63 Expression**
+- Presentation contract: **gfp-vocabulary-neutral@1 on 310/310**
+- Examples: **1240 DE + 1240 FA + 1240 EN**
+- Source mapping: **312 occurrences -> 310 active canonical targets**
+- Source audio: **310 refs / 275 unique; zero-audio targets ma1m-lu-0073, ma1m-lu-0074**
+- Candidate ledger closure: **2185 = 709 ACCEPTED + 1476 REJECTED + 0 DEFERRED**
+- Completeness: **4776/4776 final; 0 unresolved**
+- Stage5 QA: **338/338 PASS**
+- v3.3.6 anti-bypass gates: **source + identity + candidate ledger + completeness + unified projection all PASS**
+- Direct TSV SHA-256: `1aed97a626dcda6cb6abdfe8bcba7c808c8ae1a667ce4b1ffecad47c90b2752e`
+- Projected cards SHA-256: `3de053f870d67ede5bee5a7a0ecd46ad512a07027ef17658a9205172f5b9ec0f`
+- Stage5 checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage5-PASS-CHECKPOINT.zip`
+- Checkpoint SHA-256: `9eb1288c49f3cd1cd38dcf7988e4d805189468c8defafb62ae63822575fe6e35`
+- Clean delivery: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage5-CLEAN-DELIVERY.zip`
+- Clean-delivery SHA-256: `63271e5b4b49611c3b6873cabca7587882c4bfd503e74aca953d431a2fa92245`
 - Library rematerialization: **PASS exact SHA-256 + byte compare**
+- Runtime/UI changed: **NO**
 
-Stage4 found and closed bounded defects rather than rubber-stamping Stage3: 306 course-source evidence refs were reclassified from `approved` to `source_authority`; the source-backed `wählen` morphology projection gained `auxiliary=haben`; one redundant self-value `COLLOCATION` for `eine Frage stellen` was removed and its cell explicitly closed; one unused unregistered source declaration was removed; and exact successor fingerprints were rebound.
-
-Stable IDs/order, learner-facing definitions/translations, expression structure and all **1240 examples** remain preserved. Runtime/UI were not changed.
-
-Checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip`
-Checkpoint SHA-256: `b3c1601b5583ed60db2c79acd80f38416f4e36078880fb24b8662e11decda634`
-Post-package verification SHA-256: `50fd67e5090b3d2f7e28256467cd4be6e984f50248962dfbe9703df40ba07358`
-
-Next milestone: **Stage5 clean delivery projection through the v3.3.6 anti-bypass gate**. Runtime CURRENT is resolved only at Stage6.
+Stage5 remains runtime-version agnostic. **Resolve German Flashcards Pro CURRENT only at Stage6.**

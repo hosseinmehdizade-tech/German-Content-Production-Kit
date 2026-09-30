@@ -835,7 +835,7 @@
         "workstream": "menschen-b1-verben-migration",
         "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
         "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
-        "current_milestone": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_ON_V451",
+        "current_milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE2B_STAGE3A_PASS",
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
         "content_lock_state": "PARENT_STAGE7_LOCKED__REPAIR_SUCCESSOR_RELOCKED",
         "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
@@ -884,7 +884,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           }
         },
-        "next_action": "Menschen B1 Verben Repair1 content workstream is complete and RELOCKED. Do not regenerate B1 unless a real defect is found. Runtime v451 finality remains a separate app-level same-profile acceptance task.",
+        "next_action": "Continue v3.3.6 Stage3B gap-driven enrichment/revalidation from the exact Stage2B/Stage3A checkpoint. Close 1446 unresolved dimension cells without density forcing; re-evidence 331 source-governance-flagged existing relations against approved authorities where possible. Preserve the 395 active identities, examples and source-audio unless a real evidence-backed defect is found.",
         "stage6": {
           "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
           "quality_state": "PASS_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
@@ -1818,6 +1818,64 @@
           "library_file_id": "file_000000003a908243b7d1e73e1ecf5086",
           "library_stable_id": "libfile_0ee080712ee881918420ce2192de14c2",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "v336_compatibility_reaudit": {
+          "status": "PASS_STAGE2B_STAGE3A__STAGE3B_REQUIRED_LIBRARY_AND_GIT_SYNCED",
+          "framework": "v3.3.6",
+          "parent_release": {
+            "filename": "German-Flashcards-Pro-v451-R85-Menschen-B1-Verben-v3.3.2-Repair1-RELOCKED.zip",
+            "sha256": "8c25db09eadc5cf4d9bdecd95c07faf81ab727c87de51fcc3edd434b199a4014",
+            "immutable": true
+          },
+          "checkpoint": {
+            "filename": "Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage2B-Stage3A-PASS-CHECKPOINT.zip",
+            "sha256": "adc033712ceb09280cbfc53637b2133a1055243a58cf3f92a2ce711fe970611c",
+            "size_bytes": 1202430,
+            "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage2B-Stage3A-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_000000004f4082109e89e5639e4ef465",
+            "library_stable_id": "libfile_41a943c710108191a63b2117e893ea04",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "stage2b": {
+            "source_occurrences": 441,
+            "active_canonical_ids": 395,
+            "identity_unresolved": 0,
+            "status": "PASS"
+          },
+          "stage3a": {
+            "targets": 395,
+            "dimension_cells": 6157,
+            "unresolved_cells": 1446,
+            "unresolved_by_dimension": {
+              "synonym": 50,
+              "antonym": 373,
+              "collocation": 82,
+              "word_family": 148,
+              "related": 368,
+              "nvv_links": 395,
+              "argument_slots": 30
+            },
+            "status": "PASS_BASELINE"
+          },
+          "source_governance": {
+            "status": "REVALIDATION_REQUIRED_BEFORE_STAGE3C",
+            "flagged_existing_relations": 331,
+            "by_relation_type": {
+              "COLLOCATION": 174,
+              "SYNONYM": 113,
+              "WORD_FAMILY": 37,
+              "REKTION": 5,
+              "ANTONYM": 2
+            },
+            "current_source_sets": {
+              "DUDEN_ONLINE_only": 285,
+              "MENSCHEN_B1_SOURCE_only_or_duplicate": 46
+            },
+            "registry_mutated": false
+          },
+          "content_mutation": false,
+          "visible_ui_change": "NONE",
+          "report": "Workspaces/menschen-b1-verben-migration/V336-COMPATIBILITY-REAUDIT-STAGE3A.md"
         }
       }
     },

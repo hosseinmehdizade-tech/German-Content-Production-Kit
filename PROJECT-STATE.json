@@ -179,15 +179,24 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "ACTIVE",
+      "status": "RECOVERY_BLOCKED",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
       "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
       "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
-      "last_observed_stage": "3_evidence_enrichment",
-      "last_observed_note": "Stage 1 durable PASS. Batch 0001-0002 contain 26 bounded PASS cards. Batch0003 Git materialization became inconsistent; do not treat that Git recovery path as authority. Prefer a verified portable Batch0003 checkpoint if available, otherwise resume from the 26-card bounded PASS state."
+      "last_observed_stage": "N0_authority_recovery",
+      "last_observed_note": "2026-09-30 N0: source SHA a817...258d verified. Exact claimed Batch0003 portable NVV-Production-Checkpoint-Batch0003.zip SHA 7581...e1df not found on accessible current-chat/Project/Library surfaces; historical Git/Base64 materialization is failed/non-authoritative. Preserve 126-card claim as historical evidence only; do not start Batch0004.",
+      "recovery_blocked_checkpoint": {
+        "filename": "NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
+        "sha256": "8f079851ffb24cad7c63bf8f4acae0bab863e515a7486e50f3e364e04f30ef9a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "file_00000000e0e4820a9528f80c868ed8f4",
+        "library_stable_id": "libfile_cc4d0098b66c81919fffc8f809311ba2",
+        "status": "UPLOADED_SELF_VERIFYING_LOCAL_CRC_PASS"
+      },
+      "next_action": "Locate/provide exact Batch0003 portable SHA 7581cfc6...e1df or a provably complete canonical+projected+QA 126-card state; rerun N0 before Batch0004."
     },
     "lesen_praesentation": {
       "status": "ACTIVE",

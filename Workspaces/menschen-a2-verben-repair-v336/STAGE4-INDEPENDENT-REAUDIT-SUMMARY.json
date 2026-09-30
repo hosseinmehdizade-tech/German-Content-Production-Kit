@@ -1,0 +1,90 @@
+{
+  "schema": "menschen-a2-verben-repair-v336-stage4-independent-reaudit-summary@1.0.0",
+  "status": "PASS_STAGE4_INDEPENDENT_LINGUISTIC_LEXICAL_REAUDIT__LIBRARY_AND_GIT_SYNCED",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "predecessor": {
+    "stage": "Stage3C Disposition Closure",
+    "canonical_sha256": "724ca3639d612ee5d393f938589de3f6b5bd0e875bc009770bfe3f9ad17c3af2",
+    "artifact_sha256": "6ab9865ebedd8f04e9ecbf61a6c9d8bd47e484c600bf829f9ea68dac38d924c6"
+  },
+  "successor": {
+    "canonical_sha256": "5f0c831ffc44ac8a366f28182241e4b7a655d1ff9c1ece9ce3470c2537535b54",
+    "relations_sha256": "99a65eb19f3b8dbde3ca4b83aa660a7a5668d42227f24e9200ead7e675eb20ac",
+    "cards": 292,
+    "verbs": 228,
+    "expressions": 64,
+    "examples": {
+      "de": 1168,
+      "fa": 1168,
+      "en": 1168
+    },
+    "relations": 1205,
+    "dimension_cells": 4508,
+    "unresolved_cells": 0,
+    "dispositions": {
+      "verified_present": 3115,
+      "closed_no_force": 1393,
+      "not_applicable": 0
+    },
+    "candidate_ledger": {
+      "total": 1512,
+      "accepted": 411,
+      "rejected": 1101,
+      "deferred": 0
+    }
+  },
+  "stage4_findings_and_repairs": {
+    "pre_repair_real_findings": [
+      "Three accepted-candidate course references were marked as approved-reference registry entries instead of source-authority references.",
+      "Legacy external/source-authority aliases were not normalized to the current registered source IDs.",
+      "One REKTION relation had source_type=expression while its source target is a sense.",
+      "One CLOSED_NO_FORCE collocation cell lacked a pointer to its already-existing rejected candidate.",
+      "One synonym relation used legacy unregistered DUDEN_SCHREIBUNG evidence and was replaced by a directly attested current-source relation."
+    ],
+    "source_reference_normalizations": {
+      "menschen_a2_user_screenshots->MENSCHEN_A2_SCREENSHOTS": 1295,
+      "ABER_HALLO_A1A2->LISTEN_TABELLEN_SERIES": 25,
+      "ABER_HALLO_B1C2->LISTEN_TABELLEN_SERIES": 5,
+      "DUDEN_GRAMMATIK->DUDEN_GRAMMATIK_8": 5,
+      "DUDEN_REDEWENDUNGEN->DUDEN_REDEWENDUNGEN_5": 5,
+      "DUDEN_SCHREIBUNG->DUDEN_UNIVERSAL": 3,
+      "DUDEN_WORTSCHATZTRAINER->DUDEN_WORTSCHATZTRAINER_DAF": 2
+    },
+    "candidate_registry_fixes": 3,
+    "relation_typing_repairs": 1,
+    "no_force_traceability_repairs": 1,
+    "semantic_relation_repairs": 1,
+    "semantic_relation_change": "ma2-lu-0139-rel-b7-001: fortfahren -> sich fortsetzen",
+    "bounded_diff": "PASS — stable IDs/order/examples and relation ID set/count preserved; 436 provenance-only relation changes + 1 relation typing repair + 1 semantic relation repair."
+  },
+  "validation": {
+    "fresh_official_validators": "7/7 PASS",
+    "independent_custom_audit": "37/37 PASS; 0 blockers; 0 repair_required; 0 review_required",
+    "framework_pytest_v336": "10/10 PASS",
+    "zip_crc": "PASS",
+    "manifest": "31/31 PASS",
+    "sha256sums": "32/32 PASS",
+    "json_reparse": "28/28 PASS",
+    "package_hygiene": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+    "sha256": "7661c4daff6688e78446183b09e66251cb5c556986525a247e090928466cca95",
+    "size_bytes": 377382,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_0000000036bc81f4bcd79526ea7a3923",
+    "library_stable_id": "libfile_29c9f18027488191b7f4a0f38b252084",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package_verification": {
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage4-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "19bce764a8556cf85f4507c373213f56413a7b106cff2e5da33523b587030d34",
+    "library_file_id": "file_00000000799081f4bbe6a7007d10fb87",
+    "library_stable_id": "libfile_f2861e1e2bb88191bde0ee7334d5515c",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "mutation_boundary": "Stage4 changed bounded provenance/reference normalization, one relation typing field, one no-force traceability pointer and one evidence-backed synonym relation only. Stable IDs/order, learner-facing meanings, morphology, 1168×3 examples, relation count, runtime and UI were not changed.",
+  "runtime_binding": "NOT_APPLICABLE_TO_THIS_CONTENT_ONLY_MILESTONE__RESOLVE_CURRENT_AT_STAGE6",
+  "next_action": "Run Stage5 clean delivery projection through the v3.3.6 anti-bypass gate using neutral de-vocabulary + gfp-vocabulary-neutral@1; resolve Flashcards CURRENT only at Stage6."
+}

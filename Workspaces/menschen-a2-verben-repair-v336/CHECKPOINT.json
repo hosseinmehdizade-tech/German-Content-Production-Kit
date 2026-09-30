@@ -1,7 +1,7 @@
 {
   "schema": "menschen-a2-verben-repair-v336-checkpoint@1.0.0",
-  "status": "BLOCKED_STAGE7_EXACT_FINAL_ACCEPTANCE__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE7_EXACT_FINAL_BLOCKED_MANIFEST_VERIFY_TIMING",
+  "status": "PASS_STAGE7_EXACT_FINAL_RELOCKED__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_ON_V451",
   "framework": "v3.3.6",
   "canonical": {
     "sha256": "5f0c831ffc44ac8a366f28182241e4b7a655d1ff9c1ece9ce3470c2537535b54",
@@ -41,16 +41,14 @@
     "validation": "7/7 fresh validators PASS; closure-mode completeness + closure-mode candidate ledger PASS; CRC PASS; manifest 150/150; SHA256SUMS 151/151; Library exact SHA+bytes PASS"
   },
   "artifact": {
-    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-BLOCKED-CHECKPOINT.zip",
-    "sha256": "e2fcd6d06e60359f8acca546e8b10821e93ffc6d4ee6e59005726f87587a4302",
-    "size_bytes": 5429,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-BLOCKED-CHECKPOINT.zip",
-    "library_file_id": "file_00000000ef8882439c03f6323807fb8e",
-    "library_stable_id": "libfile_f378d5df20188191b37040915077fcc3",
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
+    "sha256": "df0a55042c8741560a601c29f57623ece8315adbfcc775990e39990a54844f33",
+    "library_file_id": "file_000000007a6c8243a301b962cfbd9714",
+    "library_stable_id": "libfile_50f2388ae8dc8191ba5fd70720fa1150",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "runtime_binding": "EXACT_CURRENT_V451_R85",
-  "next_action": "Resume from the exact candidate SHA-256 b6c28251625348122bdcb32e4b0df2b7074b44b67e9f097ecd6812f0ae866bfa without rebuilding. Rerun Stage7 Phase1 with an explicit wait for commitManifest.commitStatus === VERIFIED; then run Phase2 roundtrip, v451 neutral-envelope regression and final post-package verification. Only then rename/promote the same bytes to RELOCKED.",
+  "next_action": "Menschen A2 Verben Repair1 is complete and RELOCKED. Do not regenerate or mutate this release without a real defect or an explicitly opened repair successor. Runtime may advance independently.",
   "stage4": {
     "status": "PASS_INDEPENDENT_LINGUISTIC_LEXICAL_REAUDIT",
     "predecessor_canonical_sha256": "724ca3639d612ee5d393f938589de3f6b5bd0e875bc009770bfe3f9ad17c3af2",
@@ -281,67 +279,31 @@
     "next_action": "Stage7 — re-resolve CURRENT, build one exact-final organized A2 Verben release on that CURRENT lineage, rerun exact-final import/presentation/roundtrip/post-package verification, and re-lock only if final bytes pass."
   },
   "stage7": {
-    "status": "BLOCKED_EXACT_FINAL_ACCEPTANCE__NOT_RELOCKED",
-    "framework": "v3.3.6",
-    "runtime": {
-      "current": "v451-R85",
-      "last_fully_verified": "v451-R85",
-      "sha256": "27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4",
-      "verification_state": "VERIFIED",
-      "release_final": true
-    },
-    "candidate": {
-      "filename": "German-Flashcards-Pro-v451-R85-Menschen-A2-Verben-v3.3.6-Repair1-Stage7-CANDIDATE-BLOCKED.zip",
+    "status": "PASS_EXACT_FINAL_RELOCKED",
+    "lock_state": "RELOCKED",
+    "runtime": "v451-R85",
+    "exact_final_acceptance": "88/88 PASS = 47/47 Phase1 + 20/20 Phase2 + 21/21 v451 neutral-envelope regression",
+    "manifest_verification": "PASS / 292-card generation reached VERIFIED",
+    "release": {
+      "filename": "German-Flashcards-Pro-v451-R85-Menschen-A2-Verben-v3.3.6-Repair1-RELOCKED.zip",
       "sha256": "b6c28251625348122bdcb32e4b0df2b7074b44b67e9f097ecd6812f0ae866bfa",
       "size_bytes": 4135690,
-      "release_files": 325,
-      "zip_crc": "PASS",
-      "root_sha256sums": "324/324 PASS",
-      "runtime_01_app_identity": "71/71 byte-identical to exact v451",
-      "dataset_sha256": "704a928de4149c2c7e34cfd64f00ed9bf38008b421067a58e49c5c14a4a87172",
-      "import_ready_sha256": "749dabb510126612eb9951fc3437f0887b7de18f5c3417f71e834d0c971b4700",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v451-R85-Menschen-A2-Verben-v3.3.6-Repair1-Stage7-CANDIDATE-BLOCKED.zip",
-      "library_file_id": "file_000000002b3881f4999fa3f02c1c7a61",
-      "library_stable_id": "libfile_596b966a4a0481918fabe79cb3710fb0",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v451-R85-Menschen-A2-Verben-v3.3.6-Repair1-RELOCKED.zip",
+      "library_file_id": "file_0000000051a8821093735bdeb150d1ef",
+      "library_stable_id": "libfile_cbeacd7c44408191870cdc3d3dc11b42",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "exact_final_attempt": {
-      "static_postpackage": "PASS",
-      "phase1_pre_import_and_preview": "9/9 PASS through import permission",
-      "observed_after_publish": {
-        "cardCount": 292,
-        "commitStatus": "PUBLISHED_PENDING_VERIFY",
-        "generationChunkCount": 3,
-        "commitRevision": 2
-      },
-      "blocker": "Commit manifest was sampled before the normal asynchronous verification transition completed. Exact-final gate requires VERIFIED, so Stage7 was stopped rather than weakening the assertion.",
-      "classification": "HARNESS_TIMING_BOUNDARY__NOT_CONTENT_OR_RUNTIME_CORRUPTION",
-      "phase2": "NOT_RUN_AFTER_PHASE1_BLOCKER",
-      "v451_envelope_regression": "NOT_RUN_AFTER_PHASE1_BLOCKER"
-    },
-    "retry_history": [
-      "Initial Stage7 attempt stopped on brittle localized copy expectation (اجازه ورود vs اجازه Import).",
-      "One corrected retry accepted both equivalent strings, then stopped at the asynchronous PUBLISHED_PENDING_VERIFY manifest state."
-    ],
-    "blocked_checkpoint": {
-      "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-BLOCKED-CHECKPOINT.zip",
-      "sha256": "e2fcd6d06e60359f8acca546e8b10821e93ffc6d4ee6e59005726f87587a4302",
-      "size_bytes": 5429,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-BLOCKED-CHECKPOINT.zip",
-      "library_file_id": "file_00000000ef8882439c03f6323807fb8e",
-      "library_stable_id": "libfile_f378d5df20188191b37040915077fcc3",
+    "checkpoint": {
+      "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
+      "sha256": "df0a55042c8741560a601c29f57623ece8315adbfcc775990e39990a54844f33",
+      "library_file_id": "file_000000007a6c8243a301b962cfbd9714",
+      "library_stable_id": "libfile_50f2388ae8dc8191ba5fd70720fa1150",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "blocked_report": {
-      "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-BLOCKED-REPORT.json",
-      "sha256": "b893ae8d44aa01d84b5aa79accc907fcbf416dc92adea29b7b7def9736761aab",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage7-BLOCKED-REPORT.json",
-      "library_file_id": "file_00000000a5f082109afb26a906cd98dd",
-      "library_stable_id": "libfile_1e45bbf50c088191a5bf1d2634681fca",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-    },
-    "lock_state": "NOT_LOCKED",
-    "visible_ui_change": "NONE",
-    "next_action": "Resume from the exact candidate SHA-256 b6c28251625348122bdcb32e4b0df2b7074b44b67e9f097ecd6812f0ae866bfa without rebuilding. Rerun Stage7 Phase1 with an explicit wait for commitManifest.commitStatus === VERIFIED; then run Phase2 roundtrip, v451 neutral-envelope regression and final post-package verification. Only then rename/promote the same bytes to RELOCKED."
+    "exact_final_report_sha256": "d8a4605eef91aca4c77cd738343edce1d70b2818eaa246911dcdaa2885a5259d",
+    "post_package_sha256": "65150d20e64b71d57562626179419c92890cf899b9a662bb9ec630900681d585",
+    "static_postpackage": "ZIP CRC PASS; root SHA256SUMS 324/324; runtime 71/71 exact v451; JSON 138/138; hygiene PASS",
+    "byte_identity_with_prelock_candidate": "PASS",
+    "visible_ui_change": "NONE"
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-01T01:43:00+02:00",
+  "updated_at": "2026-10-01T01:51:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE3B_SUPERBATCH0005_SAFE_CORE2490_QA_PASS_RELATIONS_PENDING_REVIEW_QUEUE_3",
+      "status": "STAGE3C_DISPOSITION_CLOSURE_PASS_STAGE4_PENDING",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -189,7 +189,7 @@
       "restart_id": "NVV-RESTART-20260930-R1",
       "restart_scope": "from zero; historical batches are archive-only",
       "source_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
-      "current_new_run_completed_cards": 2490,
+      "current_new_run_completed_cards": 2492,
       "current_new_run_completed_batches": 5,
       "clean_restart_checkpoint": {
         "filename": "NVV-CLEAN-RESTART-BASELINE-v1.zip",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage3B corpus relation review plus disposition-closure preparation over 2490 safe targets; keep 3 source anomalies quarantined.",
+      "next_action": "Stage4 independent audit Round1 on exact Stage3C checkpoint SHA 42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b.",
       "autorun": {
         "status": "ACTIVE_CLEAN_LONGRUN_V2",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -215,20 +215,21 @@
         "silent_recovery_delay_seconds": 300,
         "old_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART"
       },
-      "last_observed_stage": "3B_gap_driven_enrichment_superbatch0005_safe_core2490",
-      "last_observed_note": "2490/2493 fresh canonical targets safely core-enriched after Superbatch0005. Three source-surface anomalies remain quarantined; relations remain deferred; independent Stage4 re-audit remains mandatory.",
+      "last_observed_stage": "3C_disposition_closure_pass",
+      "last_observed_note": "Clean-restart NVV Stage3C PASS: 2492 active targets after explicit source repair, all 2492 core-enriched, 42,364 completeness cells final, review queue 0, relation cells closed without fabrication. Stage4 independent re-audit is next.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
-        "sha256": "340de5782f8930b5a15c9e4259f37c7d4554c456662ecdb521a14192d5472e88",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
-        "library_file_id": "file_000000007f688210b83ece4b3342c1a4",
-        "library_stable_id": "libfile_b4f4e5029a7c8191ad3257e048ba0619",
+        "filename": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+        "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_0000000050988210b469b5777e339558",
+        "library_stable_id": "libfile_ee4b075d09dc81918b8260404f8f6c3d",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
       },
       "stage2": {
-        "canonical_targets": 2493,
-        "identity_fingerprint": "fba71d4131037d42bf3712b7c710658f48376bcc9cfca6c42d5e14b88680f458",
-        "unresolved": 0
+        "status": "PASS_REPAIRED_SUCCESSOR",
+        "active_canonical_targets": 2492,
+        "canonical_sha256": "d2f0cacc9f21809766cedb99df2726cc2c5e47a3d633690517083dc1eda27712",
+        "identity_fingerprint": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009"
       },
       "stage3a": {
         "targets": 2493,
@@ -237,18 +238,18 @@
         "resolved_policy_sha256": "9cfa9023a1e29e7b00827a36d6ea24af237fb1649f59d7a247cc5f9d77b57495"
       },
       "stage3b": {
-        "status": "IN_PROGRESS",
-        "core_enriched_targets": 2490,
-        "total_targets": 2493,
-        "safe_core_complete": true,
-        "relation_closure": "PENDING",
-        "review_queue_open": 3,
-        "review_queue_ids": [
-          "dah-nvv-exp-01550",
-          "dah-nvv-exp-01584",
-          "dah-nvv-exp-02208"
-        ],
+        "status": "PASS",
+        "core_enriched_targets": 2492,
+        "total_targets": 2492,
+        "relation_closure": "PASS_CLOSED_NO_FORCE_SOURCE_ROUTE_EXHAUSTED",
+        "review_queue_open": 0,
         "independent_stage4_semantic_reaudit_required": true
+      },
+      "stage3c": {
+        "status": "PASS",
+        "dimension_cells": 42364,
+        "unresolved_cells": 0,
+        "review_queue_open": 0
       }
     },
     "lesen_praesentation": {

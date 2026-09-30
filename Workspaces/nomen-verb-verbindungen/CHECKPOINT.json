@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T23:21:00+02:00",
-  "updated_version": "stage3b-superbatch0003-core1500-qa-pass-v1",
-  "status": "STAGE3B_SUPERBATCH0003_CORE500_QA_PASS_RELATIONS_PENDING",
+  "updated_at": "2026-10-01T01:34:00+02:00",
+  "updated_version": "stage3b-superbatch0004-core2000-qa-pass-v1",
+  "status": "STAGE3B_SUPERBATCH0004_CORE500_QA_PASS_RELATIONS_PENDING",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -108,45 +108,22 @@
     },
     "3B_gap_driven_enrichment": {
       "state": "IN_PROGRESS",
-      "superbatch_completed_through": "0003_CORE_ONLY",
-      "next_superbatch": "0004",
+      "superbatch_completed_through": "0004_CORE_ONLY",
+      "next_superbatch": "0005",
       "relation_closure": "PENDING",
-      "core_enriched_targets": 1500,
+      "core_enriched_targets": 2000,
       "total_targets": 2493,
-      "atomic_shards_completed": [
-        "0001",
-        "0002",
-        "0003",
-        "0004",
-        "0005",
-        "0006",
-        "0007",
-        "0008",
-        "0009",
-        "0010",
-        "0011",
-        "0012",
-        "0013",
-        "0014",
-        "0015"
-      ],
-      "last_target": "dah-nvv-exp-01490",
-      "next_target": "dah-nvv-exp-01491",
-      "review_queue_open": 0,
+      "next_target": "dah-nvv-exp-01990",
+      "review_queue_open": 2,
       "qa": {
-        "status": "PASS_CORE_PRESENCE_RELATIONS_PENDING_SEMANTIC_REAUDIT_REQUIRED",
-        "superbatch0003_unique_target_ids": 500,
-        "superbatch0003_core_fields_present": 500,
-        "superbatch0003_exactly_four_examples": 500,
-        "superbatch0003_aligned_fa_en_translation_sets": 500,
-        "superbatch0003_exact_duplicate_examples_de": 0,
-        "superbatch0003_exact_duplicate_examples_fa": 4,
-        "superbatch0003_exact_duplicate_examples_en": 24,
-        "sensitive_usage_neutralized_new400": 16,
+        "status": "PASS_CORE_PRESENCE_RELATIONS_PENDING_REVIEW_QUEUE_2",
+        "superbatch0004_cards": 500,
+        "identity_drift": 0,
+        "exactly_four_examples": 500,
         "source_provenance_present": 500,
-        "independent_stage4_semantic_reaudit_required": true
+        "independent_stage4_required": true
       },
-      "note": "Superbatch0003 recovered from verified Shard0011 delta and completed through Shard0015. Cumulative core enrichment is 1500/2493. Relation dimensions remain deferred and independent Stage4 semantic/example re-audit remains mandatory."
+      "note": "Superbatch0004 completed 500 safe core-enriched targets. Two source-surface anomalies were quarantined rather than silently corrected; relations remain deferred."
     },
     "3C_disposition_closure": {
       "state": "NOT_STARTED"
@@ -167,8 +144,17 @@
   },
   "completed_expression_ids": [],
   "review_queue": {
-    "open_count": 0,
-    "known_items": []
+    "open_count": 2,
+    "known_items": [
+      {
+        "target_id": "dah-nvv-exp-01550",
+        "reason_code": "SOURCE_SURFACE_GRAMMAR_IDENTITY_REVIEW"
+      },
+      {
+        "target_id": "dah-nvv-exp-01584",
+        "reason_code": "SOURCE_SURFACE_NOUN_HEADER_MISMATCH"
+      }
+    ]
   },
   "production_cadence": {
     "atomic_shard_default": 100,
@@ -209,21 +195,21 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
-    "portable_sha256": "6446a1a34b2e7b4deb386eaec2f24b84f979a54f25abd826e98684581b2a0b7c",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
-    "git": "COMPACT_METADATA_SYNCED",
+    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
+    "portable_sha256": "cb5815d0bcc663f6631eaf96a75b8d20febe4e30e4deda25784848a22135433d",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
+    "git": "SYNCING",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
-        "sha256": "6446a1a34b2e7b4deb386eaec2f24b84f979a54f25abd826e98684581b2a0b7c"
+        "filename": "NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
+        "sha256": "cb5815d0bcc663f6631eaf96a75b8d20febe4e30e4deda25784848a22135433d"
       },
       "latest_delta_checkpoint": null,
-      "cumulative_core_enriched": 1500
+      "cumulative_core_enriched": 2000
     }
   },
-  "next": "Start Stage3B Superbatch0004 core enrichment from dah-nvv-exp-01491. Preserve relation ledger as deferred; Stage3B/Stage3C closure and independent Stage4 remain mandatory.",
+  "next": "Start Stage3B Superbatch0005 core enrichment from dah-nvv-exp-01990; keep two source-anomaly items in review queue and preserve deferred relation ledger.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -338,6 +324,16 @@
     "library_stable_id": "libfile_9f054e7c666c81919be3a773d44e3e0a",
     "zip_crc": "PASS",
     "sha256sums": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3b_superbatch0004_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
+    "sha256": "cb5815d0bcc663f6631eaf96a75b8d20febe4e30e4deda25784848a22135433d",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
+    "library_file_id": "file_0000000094788210a0458901056bf11b",
+    "library_stable_id": "libfile_b0d1c7727d1081919d02a0c2420401c3",
+    "zip_crc": "PASS",
+    "sha256sums": "19/19 PASS",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

@@ -1,25 +1,25 @@
 # Menschen A2 Verben Repair v3.3.6
 
-Current durable milestone: **Stage4 independent linguistic & lexical re-audit PASS**.
+Current durable milestone: **Stage5 Clean Delivery Projection PASS**.
 
-- Active canonical: **292 targets = 228 verbs + 64 expressions**
+- Upstream Stage4 canonical remains authoritative: **292 targets = 228 verbs + 64 expressions**
 - Stable IDs/order: **292/292 preserved**
-- Examples: **1168 DE + 1168 FA + 1168 EN**, unchanged
-- Relations: **1205** total; relation ID set/count preserved
-- Enrichment matrix: **4508/4508 final; 0 unresolved**
-- Final dispositions remain **3115 VERIFIED_PRESENT + 1393 CLOSED_NO_FORCE + 0 NOT_APPLICABLE**
-- Candidate ledger remains **1512 = 411 ACCEPTED + 1101 REJECTED + 0 DEFERRED**
-- Stage4 did **not** trust Stage3 self-report. It independently caught registry/source-ID, relation typing and no-force traceability defects, then repaired them within a bounded mutation surface.
-- Source/provenance normalization: 1295 course-source aliases + 45 registered-reference aliases normalized to current authority IDs; 3 accepted-candidate registry classifications repaired.
-- Relation repairs: **1 source_type metadata repair + 1 evidence-backed semantic relation repair** (`fortfahren` → `sich fortsetzen` for `ma2-lu-0139-rel-b7-001`); relation count remains 1205.
-- No-force traceability: **1** missing rejected-candidate pointer repaired.
-- Independent Stage4 audit: **37/37 PASS**, 0 blockers, 0 repair-required, 0 review-required.
-- Fresh official validators: **7/7 PASS**; v3.3.6 framework pytest: **10/10 PASS**.
-- Package: CRC PASS; manifest **31/31**; SHA256SUMS **32/32**; JSON reparse **28/28**.
-- Library rematerialization: **PASS exact SHA-256 + byte compare**.
-- Stage4 checkpoint: `Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip`
-- SHA-256: `7661c4daff6688e78446183b09e66251cb5c556986525a247e090928466cca95`
-- Active canonical SHA-256: `5f0c831ffc44ac8a366f28182241e4b7a655d1ff9c1ece9ce3470c2537535b54`
+- Examples preserved: **1168 DE + 1168 FA + 1168 EN**
+- Semantic relation graph preserved: **1205 relations**
+- Stage5 projection: **292/292 de-vocabulary**
+- Presentation contract: **gfp-vocabulary-neutral@1 — 292/292**
+- Hidden/nested presentation selector conflicts: **0**
+- Dataset: `A2-VERBEN-UNIVERSAL-v2.tsv`
+- Dataset SHA-256: `704a928de4149c2c7e34cfd64f00ed9bf38008b421067a58e49c5c14a4a87172`
+- Projected-cards SHA-256: `15ff751500766608871618f2a12d780fccb066acdc64b1ae3a050e23a37022fe`
+- Source authority: **297 screenshot rows → 336 normalized occurrences → 335 mapped occurrences**, with one explicit retired occurrence; no source audio exists and `SOURCE_HAS_NO_AUDIO` remains explicit.
+- v3.3.6 anti-bypass gates: source occurrence PASS, identity closure PASS, candidate ledger PASS, completeness **4508/4508 / 0 unresolved**, unified vocabulary projection PASS.
+- Independent Stage5 QA: **319/319 PASS**.
+- Post-package: ZIP CRC PASS; manifest **33/33**; SHA256SUMS PASS; fresh unified validator PASS; JSON reparse **27/27**; hygiene PASS.
+- Checkpoint: `Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage5-PASS-CHECKPOINT.zip`
+- Checkpoint SHA-256: `9fe56aabeb55291e1bad0141b58b42d2cf952a70880c2af7b7615d23e522b76a`
+- Clean delivery SHA-256: `996ea2159fbe9d7908b57d4ac4d36ef711de99b71df7eddee0815ea209f14c8b`
+- Library rematerialization: **PASS exact SHA-256 + byte compare** for checkpoint, clean delivery and post-package report.
 - Runtime/UI were not changed.
 
-Next milestone: **Stage5 clean delivery projection** through the v3.3.6 anti-bypass gate, using neutral `de-vocabulary` + `gfp-vocabulary-neutral@1`. Resolve Flashcards CURRENT only at Stage6.
+Next milestone: **Stage6 Runtime & Presentation Acceptance**. Re-resolve Flashcards CURRENT at execution; do not bind Stage5 to an older runtime.

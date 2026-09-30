@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.50.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.51.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE5_CLEAN_DELIVERY_PASS",
-  "status": "V336_COMPATIBILITY_CONTENT_SIDE_COMPLETE_THROUGH_STAGE5__STAGE6_RUNTIME_NEXT",
+  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE6_BLOCKED_PROJECTION_LINEAGE_LOSS",
+  "status": "V336_STAGE6_BLOCKED_UPSTREAM_PROJECTION_LINEAGE_LOSS__LIBRARY_SYNCED",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -99,7 +99,7 @@
     "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
   },
   "source_audio_status": "RESOLVED_EXACT_SOURCE_INVENTORY_MAPPING",
-  "content_lock_state": "PARENT_STAGE7_LOCKED__REPAIR_SUCCESSOR_RELOCKED",
+  "content_lock_state": "PARENT_REPAIR1_RELOCKED__V336_SUCCESSOR_NOT_LOCKED_BLOCKED_STAGE6",
   "stage_state": {
     "migration_audit": "PASS",
     "stage1": "PASS_MEDIA_MAPPING_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Stage6 runtime/import/presentation acceptance on Flashcards CURRENT resolved at execution. Content-side v3.3.6 compatibility is complete through Stage5; preserve 395 identities, 1580 examples, 2526 relations, source audio, and the exact Stage3C canonical hash.",
+  "next_action": "Open a narrow v3.3.6 Stage5 delivery-lineage repair only. Preserve 395 IDs/front/back, 1580 examples, 2526 relations and canonical hash; restore canonical_unit/canonical_relations deep-copy fields, MEM-010 organization seed (Menschen Verben > Menschen B1 Verben > 135/140/120), and 439 source-audio refs with exactly mb1m-lu-0030 and mb1m-lu-0363 zero-audio. Rerun Stage5 anti-bypass, then Stage6 on exact v451-R85. Do not regenerate semantic content.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -413,7 +413,7 @@
     "library_matrix": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-CARD-RICHNESS-MATRIX.csv",
     "action_rule": "Do not mutate the locked artifact. Build a repair successor only after explicit continuation/approval."
   },
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_ON_V451",
+  "current_milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE6_BLOCKED_PROJECTION_LINEAGE_LOSS",
   "repair_successor": {
     "phase1_identity_reconciliation": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -1010,13 +1010,13 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
-    "sha256": "689dbf2750167ce346fb582c0bb484855319fe1a197d2b8ed5096432aa682253",
-    "size_bytes": 8325,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.2-PostLock-Repair1-Stage7-RELOCKED-CHECKPOINT.zip",
-    "library_file_id": "file_000000005b30821093bf91c5f7554e91",
-    "library_stable_id": "libfile_544bd850e64081918ad50cdf8cf53d05",
-    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-PROJECTION-LINEAGE-CHECKPOINT.zip",
+    "sha256": "787f1fca9829c679e28b527273c65ac0ae6ca0602ccd372e9f87555dc1fa9072",
+    "size_bytes": 20594,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-PROJECTION-LINEAGE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bdc0821091b956e062b26e5f",
+    "library_stable_id": "libfile_0b5d9af74e548191a5ea5999c9bdaaed",
+    "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
   },
   "postlock_quality_state": "STAGE7_CONTENT_RELOCKED_RUNTIME_ENVIRONMENT_BOUNDARY_OPEN",
   "postrepair_richness_audit": {
@@ -1329,6 +1329,75 @@
       "example_changes": 0,
       "relation_changes": 0,
       "source_audio_changes": 0
+    },
+    "stage6": {
+      "status": "BLOCKED_UPSTREAM_PROJECTION_LINEAGE_LOSS__LIBRARY_SYNCED",
+      "framework": "v3.3.6",
+      "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE6_BLOCKED_PROJECTION_LINEAGE_LOSS",
+      "runtime": {
+        "current": "v451-R85",
+        "artifact": "German-Flashcards-Pro-v451-R85-ORGANIZED-DELIVERY-CANDIDATE-CONTROL-CORRECTED.zip",
+        "sha256": "27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4",
+        "verification_state": "VERIFIED",
+        "release_final": true,
+        "last_fully_verified": "v451-R85",
+        "same_profile_acceptance": "PASS_VERIFIED_FINAL_INHERITED_FOR_CONTENT_ONLY_INTEGRATION"
+      },
+      "content": {
+        "stage5_checkpoint": "Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage5-COMPLETE-CHECKPOINT.zip",
+        "stage5_sha256": "3040e2ea8cb78d711df21c4809ccffbff505989c391edb42795cbd1f57ad0be2",
+        "clean_delivery_sha256": "a8fe83b5272dc516c55568a7adaceb69d72a78d1c9093a8233a3e6229db47820",
+        "dataset": "B1-VERBEN-UNIVERSAL-v3.3.6.tsv",
+        "dataset_sha256": "ecf6b85b06d120a55a911920f2f123a56770a44053f736f5e9c931db0321640c",
+        "cards": 395,
+        "categories": {
+          "Verb": 279,
+          "Expression": 116
+        },
+        "examples": 1580,
+        "relations": 2526,
+        "canonical_sha256": "f5213fc8dee198f58904e41ac3b6bc09dd9e334cef07abb4ef713ae6cd8e08db"
+      },
+      "acceptance": {
+        "checks": "43 PASS / 17 BLOCKERS",
+        "direct_import": "PASS / 395 added / 0 rejected",
+        "neutral_presentation": "PASS / 395 de-vocabulary / gfp-vocabulary-neutral@1 / zero legacy verb behavior / zero v217 Study geometry",
+        "examples": "Study 4 / Quick 2 / Typing 3 / Audio 3 on all 395",
+        "relations": "2526/2526 vnext relation items survived import",
+        "commit_manifest": "VERIFIED / 395",
+        "runtime_index": "395/395 PASS",
+        "storage": "READY / writesBlocked=false",
+        "global_practice_modes": "Study/Quick/Typing/Audio 395-card scope PASS",
+        "page_errors": 0
+      },
+      "blockers": {
+        "deep_copy_projection": "canonical_unit 0/395; canonical_relations 0/395; organization_seed 0/395",
+        "organization_seed": "Expected immutable-parent seed Menschen Verben > Menschen B1 Verben > 135/140/120; Stage5 instead emits evidence-source titles / blank lesson / deck Menschen B1, and runtime derives Lektion 01..17.",
+        "source_audio_lineage": "Expected 439 refs with only mb1m-lu-0030 and mb1m-lu-0363 zero-audio; Stage5 and roundtrip contain 0 refs and 395 zero-audio targets."
+      },
+      "artifact": {
+        "filename": "Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-PROJECTION-LINEAGE-CHECKPOINT.zip",
+        "sha256": "787f1fca9829c679e28b527273c65ac0ae6ca0602ccd372e9f87555dc1fa9072",
+        "size_bytes": 20594,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-PROJECTION-LINEAGE-CHECKPOINT.zip",
+        "library_file_id": "file_00000000bdc0821091b956e062b26e5f",
+        "library_stable_id": "libfile_0b5d9af74e548191a5ea5999c9bdaaed",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      },
+      "post_package": {
+        "embedded_in_checkpoint": true,
+        "filename": "Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-PROJECTION-LINEAGE-POST-PACKAGE-VERIFICATION.json",
+        "sha256": "e94910c98ab7a99fd4a75bcab6859863be5b944b39f26d654b0df2ad52624452",
+        "verification": "ZIP CRC PASS; SHA256SUMS PASS; JSON reparse PASS; hygiene PASS"
+      },
+      "protected_state": {
+        "ids": 395,
+        "examples": 1580,
+        "relations": 2526,
+        "semantic_content_mutated": false,
+        "runtime_ui_changed": false
+      },
+      "next_action": "Open a narrow v3.3.6 Stage5 delivery-lineage repair only. Preserve 395 IDs/front/back, 1580 examples, 2526 relations and canonical hash; restore canonical_unit/canonical_relations deep-copy fields, MEM-010 organization seed (Menschen Verben > Menschen B1 Verben > 135/140/120), and 439 source-audio refs with exactly mb1m-lu-0030 and mb1m-lu-0363 zero-audio. Rerun Stage5 anti-bypass, then Stage6 on exact v451-R85. Do not regenerate semantic content."
     }
   }
 }

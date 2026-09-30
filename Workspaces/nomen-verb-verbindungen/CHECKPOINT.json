@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T22:20:00+02:00",
-  "updated_version": "stage3a-baseline-richness-pass-v1",
-  "status": "STAGE3A_BASELINE_RICHNESS_PASS",
+  "updated_at": "2026-09-30T22:33:00+02:00",
+  "updated_version": "stage3b-superbatch0001-core200-inprogress-v1",
+  "status": "STAGE3B_SUPERBATCH0001_IN_PROGRESS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -107,10 +107,18 @@
       "note": "Complete v3.3.6 Stage3A matrix persisted before enrichment; source_audio is NOT_APPLICABLE for this no-media workstream and all remaining applicable gaps are explicit."
     },
     "3B_gap_driven_enrichment": {
-      "state": "NOT_STARTED",
-      "next_superbatch": "0001",
-      "target_start": "dah-nvv-exp-00001",
-      "superbatch_target_safe_cards": 500
+      "state": "IN_PROGRESS",
+      "superbatch": "0001",
+      "superbatch_target_safe_cards": 500,
+      "atomic_shards_completed": [
+        "0001",
+        "0002"
+      ],
+      "core_enriched_targets": 200,
+      "relation_review_status": "DEFERRED_WITHIN_STAGE3B_SUPERBATCH",
+      "next_target": "dah-nvv-exp-00199",
+      "review_queue_open": 0,
+      "note": "Two 100-target atomic core-enrichment shards completed and durably checkpointed. Relation dimensions remain deliberately deferred to the Superbatch0001 relation pass; no relation was fabricated."
     },
     "3C_disposition_closure": {
       "state": "NOT_STARTED"
@@ -173,13 +181,13 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
-    "portable_sha256": "2f6377feb9ced614d090d87be343c616b4b1f6a02f50b7d486d7f00041816a65",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
+    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0001-200CORE-INTRABATCH-CHECKPOINT.zip",
+    "portable_sha256": "ad9a2a297ab923da463b957daa8c4e2d8c5519ff06e61f313d04e5749347f633",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0001-200CORE-INTRABATCH-CHECKPOINT.zip",
     "git": "COMPACT_METADATA_SYNCED",
     "binary_zip_in_git": "NOT_REQUIRED"
   },
-  "next": "Stage3B Superbatch0001: gap-driven enrichment from dah-nvv-exp-00001, using atomic shards with ~500-target durable superbatch boundary.",
+  "next": "Continue Stage3B Superbatch0001 with Shard0003 from dah-nvv-exp-00199; target 500 safe core-enriched targets before relation pass and superbatch QA.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -247,5 +255,13 @@
     "library_stable_id": "libfile_95259040d5f48191a546511c8b7da0b6",
     "zip_crc": "PASS",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3b_intrabatch_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3B-Superbatch0001-200CORE-INTRABATCH-CHECKPOINT.zip",
+    "sha256": "ad9a2a297ab923da463b957daa8c4e2d8c5519ff06e61f313d04e5749347f633",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0001-200CORE-INTRABATCH-CHECKPOINT.zip",
+    "library_file_id": "file_00000000ec148210ad3cdfa3dae29110",
+    "library_stable_id": "libfile_ceaea2708160819187c93ff5c519cf70",
+    "zip_crc": "PASS"
   }
 }

@@ -19,3 +19,16 @@ Final durable state: **Stage7 exact-final RELOCKED PASS on German Flashcards Pro
 - Visible UI change: **NONE**
 
 This repair successor is complete. Do not regenerate or mutate the relocked content without a real defect or an explicitly opened new repair successor. Runtime may advance independently.
+
+
+## Post-relock overall review — 2026-09-30
+
+A fresh exact-v451 learner-facing presentation review found real projection defects despite prior structural/runtime PASS gates. Repair1 bytes remain immutable and RELOCKED, but a narrow Repair2 is recommended.
+
+- 247/247 Verb cards: front morphology core slots are empty although canonical morphology exists.
+- 69 cards / 71 values: canonical RELATED values are rendered under Synonyme.
+- 30 cards: literal `REKTION` is visible to the learner.
+- 24 cards / 28 values: internal structure-role tokens are visible.
+- 310/310 cards: German definition is duplicated as `Hinweis`.
+
+The canonical lexical authority remains broadly strong; the defects are concentrated in Stage5 projection / v451 presentation binding. Do not mutate Repair1; open Repair2 for these bounded fixes.

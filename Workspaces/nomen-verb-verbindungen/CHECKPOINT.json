@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T22:33:00+02:00",
-  "updated_version": "stage3b-superbatch0001-core200-inprogress-v1",
-  "status": "STAGE3B_SUPERBATCH0001_IN_PROGRESS",
+  "updated_at": "2026-09-30T22:50:00+02:00",
+  "updated_version": "stage3b-superbatch0001-core500-qa-pass-v1",
+  "status": "STAGE3B_SUPERBATCH0001_CORE500_QA_PASS_RELATIONS_PENDING",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -109,16 +109,35 @@
     "3B_gap_driven_enrichment": {
       "state": "IN_PROGRESS",
       "superbatch": "0001",
-      "superbatch_target_safe_cards": 500,
+      "superbatch_core_status": "PASS",
+      "relation_closure": "PENDING",
+      "core_enriched_targets": 500,
+      "total_targets": 2493,
       "atomic_shards_completed": [
         "0001",
-        "0002"
+        "0002",
+        "0003",
+        "0004",
+        "0005"
       ],
-      "core_enriched_targets": 200,
-      "relation_review_status": "DEFERRED_WITHIN_STAGE3B_SUPERBATCH",
-      "next_target": "dah-nvv-exp-00199",
+      "first_target": "dah-nvv-exp-00001",
+      "last_target": "dah-nvv-exp-00495",
+      "next_target": "dah-nvv-exp-00496",
       "review_queue_open": 0,
-      "note": "Two 100-target atomic core-enrichment shards completed and durably checkpointed. Relation dimensions remain deliberately deferred to the Superbatch0001 relation pass; no relation was fabricated."
+      "qa": {
+        "status": "PASS_CORE_ONLY_RELATION_CLOSURE_PENDING",
+        "identity_order_exact": true,
+        "unique_target_ids": 500,
+        "core_fields_present": 500,
+        "exactly_four_examples": 500,
+        "aligned_fa_en_translation_sets": 500,
+        "exact_duplicate_examples_de": 0,
+        "exact_duplicate_examples_fa": 12,
+        "exact_duplicate_examples_en": 10,
+        "sensitive_usage_neutralized": 10,
+        "source_provenance_present": 500
+      },
+      "note": "Superbatch0001 reached the 500-target core-enrichment milestone. Relation dimensions remain DEFERRED and are not claimed closed; Stage3B continues from dah-nvv-exp-00496."
     },
     "3C_disposition_closure": {
       "state": "NOT_STARTED"
@@ -181,13 +200,13 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0001-200CORE-INTRABATCH-CHECKPOINT.zip",
-    "portable_sha256": "ad9a2a297ab923da463b957daa8c4e2d8c5519ff06e61f313d04e5749347f633",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0001-200CORE-INTRABATCH-CHECKPOINT.zip",
+    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0001-CORE500-QA-CHECKPOINT.zip",
+    "portable_sha256": "696c594d6019e517634f80e84ec8e9c42616763d2cad5decf5c1911346958e80",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0001-CORE500-QA-CHECKPOINT.zip",
     "git": "COMPACT_METADATA_SYNCED",
     "binary_zip_in_git": "NOT_REQUIRED"
   },
-  "next": "Continue Stage3B Superbatch0001 with Shard0003 from dah-nvv-exp-00199; target 500 safe core-enriched targets before relation pass and superbatch QA.",
+  "next": "Continue Stage3B core enrichment with Superbatch0002 from dah-nvv-exp-00496. Preserve deferred relation ledger; relation/disposition closure remains mandatory before Stage3B/Stage3C final PASS.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -263,5 +282,14 @@
     "library_file_id": "file_00000000ec148210ad3cdfa3dae29110",
     "library_stable_id": "libfile_ceaea2708160819187c93ff5c519cf70",
     "zip_crc": "PASS"
+  },
+  "stage3b_superbatch0001_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3B-Superbatch0001-CORE500-QA-CHECKPOINT.zip",
+    "sha256": "696c594d6019e517634f80e84ec8e9c42616763d2cad5decf5c1911346958e80",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0001-CORE500-QA-CHECKPOINT.zip",
+    "library_file_id": "file_00000000aa7c8210b5e299728d10505b",
+    "library_stable_id": "libfile_68bac2395bbc8191b8ac026930f6e947",
+    "zip_crc": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

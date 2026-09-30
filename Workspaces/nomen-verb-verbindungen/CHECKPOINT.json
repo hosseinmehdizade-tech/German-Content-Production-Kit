@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T23:11:58+02:00",
-  "updated_version": "stage3b-superbatch0003-shard0011-core1100-pass-v1",
-  "status": "STAGE3B_SUPERBATCH0003_SHARD0011_CORE1100_PASS_RELATIONS_PENDING",
+  "updated_at": "2026-09-30T23:21:00+02:00",
+  "updated_version": "stage3b-superbatch0003-core1500-qa-pass-v1",
+  "status": "STAGE3B_SUPERBATCH0003_CORE500_QA_PASS_RELATIONS_PENDING",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -108,10 +108,10 @@
     },
     "3B_gap_driven_enrichment": {
       "state": "IN_PROGRESS",
-      "superbatch_completed_through": "0002_CORE_ONLY",
-      "next_superbatch": "0003_IN_PROGRESS",
+      "superbatch_completed_through": "0003_CORE_ONLY",
+      "next_superbatch": "0004",
       "relation_closure": "PENDING",
-      "core_enriched_targets": 1100,
+      "core_enriched_targets": 1500,
       "total_targets": 2493,
       "atomic_shards_completed": [
         "0001",
@@ -124,34 +124,29 @@
         "0008",
         "0009",
         "0010",
-        "0011"
+        "0011",
+        "0012",
+        "0013",
+        "0014",
+        "0015"
       ],
-      "last_target": "dah-nvv-exp-01092",
-      "next_target": "dah-nvv-exp-01093",
+      "last_target": "dah-nvv-exp-01490",
+      "next_target": "dah-nvv-exp-01491",
       "review_queue_open": 0,
       "qa": {
-        "status": "PASS_CORE_ONLY_RELATION_CLOSURE_PENDING",
-        "superbatch0002_unique_target_ids": 500,
-        "superbatch0002_core_fields_present": 500,
-        "superbatch0002_exactly_four_examples": 500,
-        "superbatch0002_aligned_fa_en_translation_sets": 500,
-        "superbatch0002_exact_duplicate_examples_de": 20,
-        "superbatch0002_exact_duplicate_examples_fa": 38,
-        "superbatch0002_exact_duplicate_examples_en": 56,
-        "sensitive_usage_neutralized": 12,
+        "status": "PASS_CORE_PRESENCE_RELATIONS_PENDING_SEMANTIC_REAUDIT_REQUIRED",
+        "superbatch0003_unique_target_ids": 500,
+        "superbatch0003_core_fields_present": 500,
+        "superbatch0003_exactly_four_examples": 500,
+        "superbatch0003_aligned_fa_en_translation_sets": 500,
+        "superbatch0003_exact_duplicate_examples_de": 0,
+        "superbatch0003_exact_duplicate_examples_fa": 4,
+        "superbatch0003_exact_duplicate_examples_en": 24,
+        "sensitive_usage_neutralized_new400": 16,
         "source_provenance_present": 500,
-        "independent_stage4_semantic_reaudit_required": true,
-        "latest_atomic_shard": "0011",
-        "shard0011_status": "PASS_CORE_RELATIONS_DEFERRED",
-        "shard0011_cards": 100,
-        "shard0011_unique_ids": 100,
-        "shard0011_exactly_four_examples": 100,
-        "shard0011_aligned_fa_en_translation_sets": 100,
-        "shard0011_exact_duplicate_examples_de": 0,
-        "shard0011_sensitive_usage_neutralized": 3,
-        "shard0011_source_provenance_present": 100
+        "independent_stage4_semantic_reaudit_required": true
       },
-      "note": "Superbatch0003 is in progress. Shard0011 added 100 source-ordered core-enriched targets; cumulative core enrichment is 1100/2493. Relation dimensions remain DEFERRED and are not claimed closed."
+      "note": "Superbatch0003 recovered from verified Shard0011 delta and completed through Shard0015. Cumulative core enrichment is 1500/2493. Relation dimensions remain deferred and independent Stage4 semantic/example re-audit remains mandatory."
     },
     "3C_disposition_closure": {
       "state": "NOT_STARTED"
@@ -214,28 +209,21 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0002-CORE1000-QA-CHECKPOINT.zip",
-    "portable_sha256": "75b7f066a09a7658dc1678e036cb7510057f266b85f949bf7050e9457b92a69e",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0002-CORE1000-QA-CHECKPOINT.zip",
+    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
+    "portable_sha256": "6446a1a34b2e7b4deb386eaec2f24b84f979a54f25abd826e98684581b2a0b7c",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
     "git": "COMPACT_METADATA_SYNCED",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3B-Superbatch0002-CORE1000-QA-CHECKPOINT.zip",
-        "sha256": "75b7f066a09a7658dc1678e036cb7510057f266b85f949bf7050e9457b92a69e"
+        "filename": "NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
+        "sha256": "6446a1a34b2e7b4deb386eaec2f24b84f979a54f25abd826e98684581b2a0b7c"
       },
-      "latest_delta_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3B-Superbatch0003-Shard0011-DELTA100-PASS-CHECKPOINT.zip",
-        "sha256": "9161b6d3fc838f86e06d19733b161ace6c67c8faefbc5f330d6687a065fcef93",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0003-Shard0011-DELTA100-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000a3e0821089f9d92e5491e637",
-        "library_stable_id": "libfile_664799aae8588191b74be9f50b7c1e4d",
-        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
-      },
-      "cumulative_core_enriched": 1100
+      "latest_delta_checkpoint": null,
+      "cumulative_core_enriched": 1500
     }
   },
-  "next": "Continue Stage3B Superbatch0003 with Shard0012 from dah-nvv-exp-01093. Parent full authority is Superbatch0002 CORE1000 plus the verified Shard0011 delta; preserve deferred relation ledger and do not use pre-restart historical output.",
+  "next": "Start Stage3B Superbatch0004 core enrichment from dah-nvv-exp-01491. Preserve relation ledger as deferred; Stage3B/Stage3C closure and independent Stage4 remain mandatory.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -341,5 +329,15 @@
     "first_id": "dah-nvv-exp-00994-a",
     "last_id": "dah-nvv-exp-01092",
     "next_id": "dah-nvv-exp-01093"
+  },
+  "stage3b_superbatch0003_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
+    "sha256": "6446a1a34b2e7b4deb386eaec2f24b84f979a54f25abd826e98684581b2a0b7c",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0003-CORE1500-QA-CHECKPOINT.zip",
+    "library_file_id": "file_0000000034c8820aaa557802953787b6",
+    "library_stable_id": "libfile_9f054e7c666c81919be3a773d44e3e0a",
+    "zip_crc": "PASS",
+    "sha256sums": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

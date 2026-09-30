@@ -92,3 +92,27 @@ Same-hash mirrors are one logical source.
 
 Runtime is resolved only when Stage6 actually requires it.
 Always target German-Flashcards-Pro CURRENT; LAST_FULLY_VERIFIED is regression evidence only.
+
+## Current controller build
+
+Version: `3.3.0`
+
+Tampermonkey/full package:
+- `ChatGPT-NVV-AutoMission-v3.3.0-CHROME-READY.zip`
+- SHA-256: `52dd28226e0d39bfd9a78a6b6fd600c0be6d75e019ed610d2238730ba2498315`
+- Library: `/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.0-CHROME-READY.zip`
+- Library stable id: `libfile_916a20edeebc8191a511b80f92820416`
+
+Chrome unpacked-extension package:
+- `ChatGPT-NVV-AutoMission-v3.3.0-Chrome-Extension.zip`
+- SHA-256: `ca95075a18f36cda8b78b9656ec59ffdcdaef5c1ea49a2d57ccdaa54e45f5187`
+- Library: `/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.0-Chrome-Extension.zip`
+- Library stable id: `libfile_f83be21f42208191849fe9069d834d01`
+
+Build verification:
+- JavaScript syntax: PASS (Tampermonkey + Chrome content script)
+- manifest JSON parse: PASS
+- static long-run invariants: PASS
+- live ChatGPT DOM acceptance: PENDING USER CHROME
+
+The 3.3.0 controller is rebuilt for `NVV-CLEAN-LONGRUN-R2`; it does not use the deprecated stage-safe preset as the active execution profile.

@@ -1,3 +1,17 @@
+# CURRENT RESUME GATE — N0 AUTHORITY RECOVERY BLOCKED (2026-09-30)
+
+Mission: `NVV-20260930-191703-62d9f3`
+
+The live main framework is **v3.3.6**. The older v3.1.12 references below are historical and must not override main.
+
+The exact claimed Batch0003 portable authority `NVV-Production-Checkpoint-Batch0003.zip` SHA-256 `7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df` is not currently accessible on current-chat/Project/Library surfaces. The historical 126-card claim is preserved as evidence but is **not** promoted to working bytes. The Git/Base64 reconstruction path is not authority and its staged forensic report failed.
+
+Durable recovery checkpoint: `/German-Content-Production-Kit/Checkpoints/NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip`, SHA-256 `8f079851ffb24cad7c63bf8f4acae0bab863e515a7486e50f3e364e04f30ef9a`.
+
+**Do not start Batch0004.** Resume N0 only when the exact Batch0003 portable bytes or an independently provable complete canonical+projected+QA 126-card state is available.
+
+---
+
 # NVV Production — Persistent Handoff / READ FIRST
 
 Updated: 2026-09-16  

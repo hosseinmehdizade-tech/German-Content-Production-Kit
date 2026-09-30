@@ -1,7 +1,7 @@
 {
   "schema": "menschen-a2-verben-repair-v336-checkpoint@1.0.0",
-  "status": "PASS_STAGE3B_NVV_CLOSED__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_NVV_CLOSURE_PASS",
+  "status": "PASS_STAGE3C_DISPOSITION_CLOSURE__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3C_DISPOSITION_CLOSURE_PASS",
   "framework": "v3.3.6",
   "canonical": {
     "sha256": "724ca3639d612ee5d393f938589de3f6b5bd0e875bc009770bfe3f9ad17c3af2",
@@ -14,41 +14,41 @@
     "relations": 1205
   },
   "stage3b": {
-    "status": "ALL_DIMENSIONS_FINAL__READY_FOR_STAGE3C",
-    "completed": {
-      "structure_components": "64/64 final",
-      "argument_slots": "64/64 final",
-      "component_relations": "64/64 final",
-      "rektion": "292/292 final",
-      "synonym": "292/292 final",
-      "collocation": "292/292 final",
-      "related": "292/292 final",
-      "antonym": "292/292 final",
-      "word_family": "292/292 final",
-      "nvv_links": "16 VERIFIED_PRESENT + 276 CLOSED_NO_FORCE = 292/292 final"
+    "status": "PASS_ALL_DIMENSIONS_FINAL",
+    "final_cells": 4508,
+    "unresolved_cells": 0,
+    "candidate_ledger": "1512 = 411 ACCEPTED / 1101 REJECTED / 0 DEFERRED"
+  },
+  "stage3c": {
+    "status": "PASS_DISPOSITION_CLOSURE",
+    "final_cells": 4508,
+    "unresolved_cells": 0,
+    "verified_present": 3115,
+    "closed_no_force": 1393,
+    "not_applicable": 0,
+    "must_have": "1816/1816 VERIFIED_PRESENT",
+    "review_to_closure": "1299 VERIFIED_PRESENT + 1101 CLOSED_NO_FORCE",
+    "optional": "292 CLOSED_NO_FORCE",
+    "dataset_level_exceptions": {
+      "source_audio": {
+        "reason_code": "SOURCE_HAS_NO_AUDIO",
+        "review_refs": [
+          "source-authority:source_audio_refs=0"
+        ],
+        "note": "Authoritative source inventory carries zero audio refs; explicit exception added because this dimension has zero VERIFIED_PRESENT targets."
+      }
     },
-    "candidate_ledger": {
-      "total": 1512,
-      "accepted": 411,
-      "rejected": 1101,
-      "deferred": 0
-    },
-    "richness": {
-      "dimension_cells": 4508,
-      "final_cells": 4508,
-      "unresolved_cells": 0
-    },
-    "validation": "8/8 fresh validators PASS; CRC PASS; manifest 138/138; SHA256SUMS 139/139; Library exact SHA+bytes PASS"
+    "validation": "7/7 fresh validators PASS; closure-mode completeness + closure-mode candidate ledger PASS; CRC PASS; manifest 150/150; SHA256SUMS 151/151; Library exact SHA+bytes PASS"
   },
   "artifact": {
-    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-NVV-CLOSURE-CHECKPOINT.zip",
-    "sha256": "cacc83815909224453d97367fef97a26c31df03dd508ee4c516bc4c3a4f80f82",
-    "size_bytes": 2507994,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-NVV-CLOSURE-CHECKPOINT.zip",
-    "library_file_id": "file_00000000bb4881f48ec5ab01c3f22d58",
-    "library_stable_id": "libfile_25f4e14d9ce08191bb078d8f5d44041a",
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
+    "sha256": "6ab9865ebedd8f04e9ecbf61a6c9d8bd47e484c600bf829f9ea68dac38d924c6",
+    "size_bytes": 2622252,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000214481f4b30a875686b364e6",
+    "library_stable_id": "libfile_f23ce23d0f2881919871ba949cd88545",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "runtime_binding": "NOT_APPLICABLE_TO_THIS_CONTENT_ONLY_MILESTONE__RESOLVE_CURRENT_AT_STAGE6",
-  "next_action": "Run Stage3C disposition closure over the fully final 4508-cell Stage3B matrix, then proceed to independent Stage4 re-audit if Stage3C passes."
+  "next_action": "Run Stage4 independent linguistic/lexical re-audit against the exact Stage3C canonical/evidence/disposition state; recompute applicability and verify source IDs, relation endpoints/duplicates, expression structure, fingerprints, no-force decisions and linguistic quality without trusting Stage3 self-report."
 }

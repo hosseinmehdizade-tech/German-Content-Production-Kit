@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-01T01:43:00+02:00",
-  "updated_version": "stage3b-superbatch0005-safe-core2490-qa-pass-v1",
-  "status": "STAGE3B_SUPERBATCH0005_SAFE_CORE2490_QA_PASS_RELATIONS_PENDING_REVIEW_QUEUE_3",
+  "updated_at": "2026-10-01T01:51:00+02:00",
+  "updated_version": "stage3c-disposition-closure-pass-v1",
+  "status": "STAGE3C_DISPOSITION_CLOSURE_PASS_STAGE4_PENDING",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -75,21 +75,18 @@
       "note": "Fresh clean-restart inventory derived from registered 26-page source under v3.3.6. Historical inventory used only for regression and exposed one omitted source-visible item plus header/wrapped-line defects."
     },
     "2_identity_closure": {
-      "state": "PASS",
+      "state": "PASS_REPAIRED_SUCCESSOR",
       "metrics": {
         "source_occurrences": 2476,
-        "active_canonical_ids": 2493,
-        "slash_variants_reviewed": 222,
-        "split_source_occurrences": 17,
-        "split_extra_identities": 17,
-        "slash_variants_kept_single_identity": 205,
-        "exact_duplicate_groups": 0,
+        "active_canonical_ids": 2492,
+        "excluded_source_typo_duplicates": 1,
+        "explicit_canonical_source_repairs": 2,
         "unresolved_count": 0
       },
-      "canonical_sha256": "e6fa15baf2dc42d0158d316cceb48722814e52ccde3eb48611cd53f6ef01a4d8",
-      "identity_fingerprint": "fba71d4131037d42bf3712b7c710658f48376bcc9cfca6c42d5e14b88680f458",
-      "validator": "PASS_2476_OCCURRENCES_2493_ACTIVE_IDS",
-      "note": "Fresh Stage2 derived only from fresh Stage1 occurrence authority. Historical generated cards/IDs were not used as seed authority; historical counts were compared only after closure."
+      "canonical_sha256": "d2f0cacc9f21809766cedb99df2726cc2c5e47a3d633690517083dc1eda27712",
+      "identity_fingerprint": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009",
+      "validator": "PASS_2476_OCCURRENCES_2492_ACTIVE_IDS",
+      "note": "Targeted evidence-backed successor repair after Stage3 source review: one source typo duplicate excluded, two canonical learning forms repaired while exact source surfaces remain preserved."
     },
     "3A_baseline_richness_audit": {
       "state": "PASS",
@@ -107,34 +104,32 @@
       "note": "Complete v3.3.6 Stage3A matrix persisted before enrichment; source_audio is NOT_APPLICABLE for this no-media workstream and all remaining applicable gaps are explicit."
     },
     "3B_gap_driven_enrichment": {
-      "state": "IN_PROGRESS",
-      "superbatch_completed_through": "0005_SAFE_CORE_ONLY",
-      "relation_closure": "PENDING",
-      "core_enriched_targets": 2490,
-      "total_targets": 2493,
-      "safe_core_complete": true,
-      "remaining_unenriched_targets": 3,
-      "review_queue_open": 3,
-      "qa": {
-        "status": "PASS_SAFE_CORE_PRESENCE_RELATIONS_PENDING_REVIEW_QUEUE_3",
-        "superbatch0005_safe_cards": 490,
-        "cumulative_safe_cards": 2490,
-        "identity_drift": 0,
-        "exactly_four_examples": 490,
-        "aligned_fa_en_translation_sets": 490,
-        "source_provenance_present": 490,
-        "exact_duplicate_examples_de": 16,
-        "exact_duplicate_examples_fa": 28,
-        "exact_duplicate_examples_en": 44,
-        "independent_stage4_required": true
-      },
-      "note": "Safe core enrichment reached 2490/2493 canonical targets. Three source-surface anomalies remain quarantined; relation dimensions remain deferred and no relation was fabricated."
+      "state": "PASS",
+      "core_enriched_targets": 2492,
+      "total_active_targets": 2492,
+      "relation_closure": "PASS_CLOSED_NO_FORCE_SOURCE_ROUTE_EXHAUSTED",
+      "relation_candidate_cells": 17444,
+      "review_queue_open": 0,
+      "candidate_ledger_validator": "PASS",
+      "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "NOT_STARTED"
+      "state": "PASS",
+      "targets": 2492,
+      "dimension_cells": 42364,
+      "unresolved_cells": 0,
+      "verified_present_cells": 18524,
+      "closed_no_force_cells": 21348,
+      "not_applicable_cells": 2492,
+      "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED",
+      "review_queue_open": 0,
+      "note": "Every applicable cell is final under v3.3.6: VERIFIED_PRESENT, CLOSED_NO_FORCE, or NOT_APPLICABLE."
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "NOT_STARTED"
+      "state": "NOT_STARTED",
+      "required_rounds_min": 3,
+      "required_consecutive_clean": 2,
+      "note": "Stage4 must independently re-audit semantics, register, example naturalness/diversity, translations, source repairs, structure/Rektion, relation no-force decisions and fingerprints."
     },
     "5_delivery_projection_anti_bypass": {
       "state": "NOT_STARTED"
@@ -149,19 +144,24 @@
   },
   "completed_expression_ids": [],
   "review_queue": {
-    "open_count": 3,
-    "known_items": [
+    "open_count": 0,
+    "known_items": [],
+    "resolved_items": [
       {
         "target_id": "dah-nvv-exp-01550",
-        "reason_code": "SOURCE_SURFACE_GRAMMAR_IDENTITY_REVIEW"
+        "status": "RESOLVED_EXCLUDED",
+        "reason_code": "SOURCE_TYPO_DUPLICATE",
+        "survivor_target_id": "dah-nvv-exp-01552"
       },
       {
         "target_id": "dah-nvv-exp-01584",
-        "reason_code": "SOURCE_SURFACE_NOUN_HEADER_MISMATCH"
+        "status": "RESOLVED_REPAIRED",
+        "canonical_form": "an Profil gewinnen"
       },
       {
         "target_id": "dah-nvv-exp-02208",
-        "reason_code": "SOURCE_SURFACE_GRAMMAR_REKTION_REVIEW"
+        "status": "RESOLVED_REPAIRED",
+        "canonical_form": "von einem Vertrag zurücktreten"
       }
     ]
   },
@@ -204,21 +204,21 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
-    "portable_sha256": "340de5782f8930b5a15c9e4259f37c7d4554c456662ecdb521a14192d5472e88",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
-    "git": "SYNCED",
+    "quality_authority": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+    "portable_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+    "git": "SYNCED_STAGE3C",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
-        "sha256": "340de5782f8930b5a15c9e4259f37c7d4554c456662ecdb521a14192d5472e88"
+        "filename": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+        "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
       },
       "latest_delta_checkpoint": null,
-      "cumulative_core_enriched": 2490
+      "active_targets": 2492
     }
   },
-  "next": "Run Stage3B corpus relation review plus disposition-closure preparation over 2490 safe core-enriched targets; keep 3 source anomalies in persistent review queue; do not fabricate relations.",
+  "next": "Run Stage4 independent audit Round1 on exact Stage3C artifact SHA 42f9bc9a...2961; do not redo Stage1-Stage3C unless a real upstream defect is found.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -353,6 +353,15 @@
     "library_stable_id": "libfile_b4f4e5029a7c8191ad3257e048ba0619",
     "zip_crc": "PASS",
     "sha256sums": "19/19 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3c_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+    "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_0000000050988210b469b5777e339558",
+    "library_stable_id": "libfile_ee4b075d09dc81918b8260404f8f6c3d",
+    "zip_crc": "PASS",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

@@ -2,7 +2,7 @@
   "schema": "menschen-a1-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a1-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "PASS_STAGE7_EXACT_FINAL_RELOCKED__LIBRARY_AND_GIT_SYNCED",
+  "status": "RELOCKED_WITH_POST_RELOCK_PRESENTATION_DEFECTS_FOUND__REPAIR2_RECOMMENDED",
   "current_milestone": "POSTLOCK_REPAIR1_STAGE7_CONTENT_RELOCKED_ON_V451",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip",
@@ -76,7 +76,7 @@
     "library_file_id": "file_00000000673882109397d9166360290c",
     "library_stable_id": "libfile_0e782923630c8191a0237a2cac7b99d7"
   },
-  "next_action": "Menschen A1 Verben Repair1 is complete and RELOCKED. Do not regenerate or mutate this release without a real defect or an explicitly opened repair successor. Runtime may advance independently.",
+  "next_action": "Open a narrow Repair2 successor from the immutable Repair1 authority to fix learner-facing projection/presentation defects only; do not mutate Repair1 bytes.",
   "stage3b": {
     "status": "PASS_ALL_STAGE3B_DIMENSIONS_100_PERCENT_DISPOSITION",
     "strategy": "gap-driven enrichment; semantic/evidence-route clusters; no arbitrary ID batches; no density chasing",
@@ -636,5 +636,61 @@
     "post_package_sha256": "ba76b49915ac2f10e5c883d8fc93e06211c2e320b63996f5afcfdc8d9957d691",
     "static_postpackage": "ZIP CRC PASS; root SHA256SUMS 326/326; package files 327; runtime 71/71 exact v451; JSON 140/140; hygiene PASS",
     "visible_ui_change": "NONE"
+  },
+  "post_relock_review": {
+    "schema": "menschen-a1-verben-post-relock-overall-review@1.0.0",
+    "date": "2026-09-30",
+    "status": "DEFECTS_FOUND__REPAIR2_RECOMMENDED",
+    "reviewed_release": {
+      "filename": "German-Flashcards-Pro-v451-R85-Menschen-A1-Verben-v3.3.6-Repair1-RELOCKED.zip",
+      "sha256": "cf3cc7e28f8af43369a2cf56d293f095c4524841e796a7d171d23d19b36036c3",
+      "runtime": "v451-R85"
+    },
+    "healthy_baseline": "310 cards; 247 Verb + 63 Expression; 1240 DE/FA/EN examples; 768 relations; 95/95 Stage7 acceptance; package integrity PASS",
+    "defects": [
+      {
+        "severity": "HIGH",
+        "code": "VERB_FRONT_CORE_MORPHOLOGY_NOT_RENDERED",
+        "scope": "247/247 Verb cards",
+        "detail": "Exact v451 Study presentation model returns front.core=[] despite canonical morphology."
+      },
+      {
+        "severity": "HIGH",
+        "code": "RELATED_VALUES_MISLABELED_AS_SYNONYMS",
+        "scope": "69 cards / 71 values",
+        "detail": "Generic related values are merged into Synonyme although canonical relation type is RELATED; includes self-surface schaffen cases."
+      },
+      {
+        "severity": "HIGH",
+        "code": "REKTION_PLACEHOLDER_VISIBLE",
+        "scope": "30 cards",
+        "detail": "Literal REKTION is rendered in learner-facing Rektion details."
+      },
+      {
+        "severity": "MEDIUM",
+        "code": "INTERNAL_STRUCTURE_ROLE_TOKENS_VISIBLE",
+        "scope": "24 cards / 28 tokens",
+        "detail": "Internal role names such as topic, complement, prepositional_object and comparison_target are rendered."
+      },
+      {
+        "severity": "MEDIUM",
+        "code": "GERMAN_DEFINITION_DUPLICATED_AS_NOTE",
+        "scope": "310/310 cards",
+        "detail": "notes duplicates Definition Deutsch and renders again as Hinweis."
+      }
+    ],
+    "interpretation": "Canonical Stage4 authority is broadly strong; defects concentrate in Stage5 projection / v451 presentation binding. Preserve Repair1 bytes and open a narrow Repair2 successor.",
+    "repair2_scope": [
+      "Bind canonical morphology to neutral verb front slots",
+      "Keep Synonyme type-safe; do not map RELATED into synonyms",
+      "Project human-readable Rektion patterns",
+      "Suppress/translate internal structure role tokens",
+      "Do not duplicate definition into notes"
+    ],
+    "report_library": {
+      "md_file_id": "file_00000000d20081f4b1edc982180ca94a",
+      "json_file_id": "file_00000000c34082109223f8c097d1ac4e"
+    },
+    "release_mutated": false
   }
 }

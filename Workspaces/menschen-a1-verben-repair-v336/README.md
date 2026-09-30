@@ -2,36 +2,31 @@
 
 This workspace is a **delta repair successor** of the immutable locked A1 Verben release.
 
-Current durable milestone: **Stage3B COMPLETE — NVV 100% disposition PASS; all 4776 enrichment cells final; Stage3C pending**.
+Current durable milestone: **Stage3C Disposition Closure PASS — 4776/4776 cells final, 0 unresolved**.
 
 - Parent locked release: `German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip`
-- Parent SHA-256: `6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db`
 - Active canonical: **310 targets = 247 senses + 63 expressions**
+- Canonical SHA-256: `9b4a58b6002e8ea9d3c521367d4cdf14941af41b094511dd853a89703017e0b4` — unchanged from Stage3B NVV
 - Examples: **1240 unchanged**
-- Canonical relations: **769**
-- Rektion: **260 VERIFIED_PRESENT + 50 CLOSED_NO_FORCE + 0 unresolved**
-- Synonym: **247 VERIFIED_PRESENT + 63 CLOSED_NO_FORCE + 0 unresolved**
-- Antonym: **23 VERIFIED_PRESENT + 287 CLOSED_NO_FORCE + 0 unresolved**
-- Collocation: **48 VERIFIED_PRESENT + 262 CLOSED_NO_FORCE + 0 unresolved**
-- Word Family: **54 VERIFIED_PRESENT + 256 CLOSED_NO_FORCE + 0 unresolved**
-- Related: **73 VERIFIED_PRESENT + 237 CLOSED_NO_FORCE + 0 unresolved**
-- NVV: **31 VERIFIED_PRESENT + 279 CLOSED_NO_FORCE + 0 unresolved**
-- NVV closure: **310 reviewed = 31 VERIFIED + 279 CLOSED_NO_FORCE; 28 new NVV relations; 3 canonical self-NVVs without redundant self relation**
+- Relations: **769 unchanged**; relation-content SHA-256 `c93e18fd030ae39b80f7a009e2022f6998c473ccd8a33a59bd7a1b10b158153d`
+- Stage3C disposition: **3304 VERIFIED_PRESENT + 1472 CLOSED_NO_FORCE + 0 NOT_APPLICABLE = 4776/4776**
+- MUST_HAVE: **1923/1923 VERIFIED_PRESENT**
+- REVIEW_TO_CLOSURE: **1073 VERIFIED_PRESENT + 1470 CLOSED_NO_FORCE**
+- OPTIONAL: **308 VERIFIED_PRESENT + 2 CLOSED_NO_FORCE**
 - Candidate ledger: **2184 = 709 ACCEPTED + 1475 REJECTED + 0 DEFERRED**
-- Richness: **4776 final / 0 unresolved of 4776**
-- Current checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-NVV-FINAL-CLOSURE-CHECKPOINT.zip`
-- Checkpoint SHA-256: `6f698b07e02be00c22b7d12187d32bf927bd21f4ea31cac7f1bca8904a92d4ae`
-- Canonical SHA-256: `9b4a58b6002e8ea9d3c521367d4cdf14941af41b094511dd853a89703017e0b4`
-- NVV source SHA-256: `a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d`
+- Fresh Stage3C validators: **7/7 PASS**
+- Post-package: **CRC PASS; SHA256SUMS 153/153; manifest 152/152; package hygiene PASS**
+- Canonical bytes, candidate ledger, and target-level disposition content are exact-preserved from the Stage3B NVV milestone.
 - Library rematerialization: **PASS exact SHA-256 + byte compare**
-- Post-package: **CRC PASS; SHA256SUMS 130/130; manifest 129/129; 5/5 fresh validators PASS**
-- Historical locked bytes and predecessor checkpoints were not changed.
-- Identity, definitions, translations, **1240 examples**, morphology, expression structure, completed prior relation dimensions, runtime and UI were not changed.
+- Current checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip`
+- Checkpoint SHA-256: `aa41e69b33b31435562ec43a6382ef01f0ec7b9e900038c4653095dd2734cc73`
 
-NVV evidence is conservative: exact source-listed Nomen-Verb-Verbindungen plus active-sense alignment only. Shared-verb collocations, wrong-sense phrases, and broad semantic associations were not promoted to NVV merely to increase relation density.
+Dependency fingerprints:
+- resolved enrichment policy: `147cf7c81d8e74b00ce7eb1d8833549729a7bb14f49bc9ae6f1daa71a52abc12`
+- identity closure: `bb3c099663a54015cf71b7be0e9ff7537177aca766a571a69c1e4e58c8dbd7c9`
+- dataset profile: `d0563205a66b181bbf06a51cf3b1320e171c16e3e3c7ae89b02b80f0605a22e5`
+- source occurrences: `c9a91a60ef234fffd091b3895c9205f356db4c1c42573eb315502b2e40b1cbed`
 
-Representative verified links include `fragen → jdm. die / eine Frage stellen`, `besuchen → einen Besuch abstatten`, `vorschlagen → einen Vorschlag machen`, `danken → jdm. Dank sagen`, `vergleichen → einen Vergleich anstellen`, `vereinbaren → eine Vereinbarung treffen`, `heiraten → die Ehe schließen`, `reisen → eine Reise machen / unternehmen`, `raten → jdm. den / einen Rat erteilen / geben`, `wählen → eine Wahl treffen`, `erlauben → die / eine Erlaubnis erteilen / geben`, `glauben → jdm. Glauben schenken`, `vermuten → Vermutungen anstellen`, `aussuchen → eine Auswahl treffen`, and `erleben → eine Erfahrung machen`.
+Stage3C is certification, not enrichment: no canonical lexical content, relations, examples, morphology, structure, runtime or UI were changed.
 
-Canonical expressions `eine Frage stellen`, `in Tränen ausbrechen`, and `vor jdm./etw. Angst haben` are themselves source-listed NVVs and are VERIFIED_PRESENT without redundant self-relations.
-
-Next milestone: **Stage3C Disposition Closure**. Do not start Stage4 until Stage3C independently confirms all 4776 cells are final.
+Next milestone: **Stage4 independent linguistic/lexical re-audit**. Stage4 must independently recompute applicability and recheck source IDs, relation endpoints/duplicates, expression structure, fingerprints, no-force decisions, German/FA/EN quality and example quality rather than trusting Stage3 self-report.

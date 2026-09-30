@@ -2,7 +2,7 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T22:22:00+02:00",
+  "updated_at": "2026-09-30T22:20:00+02:00",
   "updated_version": "stage3a-baseline-richness-pass-v1",
   "status": "STAGE3A_BASELINE_RICHNESS_PASS",
   "operating_mode": {
@@ -196,24 +196,27 @@
     "recommended_auto_turn_budget_min": 20,
     "historical_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART",
     "controller_build": {
-      "version": "3.3.0",
+      "version": "3.3.1",
+      "fix": "ASSISTANT_MESSAGE_STABILITY_AUTO_CONTINUE",
+      "prior_bug": "v3.3.0 generic main-DOM mutations could indefinitely reset response-settlement timing, preventing automatic continuation.",
       "tampermonkey_full_package": {
-        "filename": "ChatGPT-NVV-AutoMission-v3.3.0-CHROME-READY.zip",
-        "sha256": "52dd28226e0d39bfd9a78a6b6fd600c0be6d75e019ed610d2238730ba2498315",
-        "library_path": "/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.0-CHROME-READY.zip",
-        "library_stable_id": "libfile_916a20edeebc8191a511b80f92820416"
+        "filename": "ChatGPT-NVV-AutoMission-v3.3.1-CHROME-READY.zip",
+        "sha256": "801d972bdec3f371ddb336c6afabaf19c4d0ca628817953b3dbda9bc5ed3a9d8",
+        "library_path": "/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.1-CHROME-READY.zip",
+        "library_stable_id": "libfile_339bc4d5eadc81919878fd34dfa35676"
       },
       "chrome_extension_package": {
-        "filename": "ChatGPT-NVV-AutoMission-v3.3.0-Chrome-Extension.zip",
-        "sha256": "ca95075a18f36cda8b78b9656ec59ffdcdaef5c1ea49a2d57ccdaa54e45f5187",
-        "library_path": "/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.0-Chrome-Extension.zip",
-        "library_stable_id": "libfile_f83be21f42208191849fe9069d834d01"
+        "filename": "ChatGPT-NVV-AutoMission-v3.3.1-Chrome-Extension.zip",
+        "sha256": "e20785a250bae4924d2d2e4672989bc91762b5a9a2876c32c6a22dbf5564c205",
+        "library_path": "/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.1-Chrome-Extension.zip",
+        "library_stable_id": "libfile_4249eb4bca7c819194227699f711c616"
       },
-      "tampermonkey_userscript_sha256": "8afb5434d3697b91622c7253e962c6df647388e4a811b6a756e277f83c92711a",
+      "tampermonkey_userscript_sha256": "7fe4d5ce4ca25bc3a4a3354dd6c936ca2e6dc66555af2ba97407c0e7dcf69b82",
       "verification": {
         "js_syntax": "PASS",
         "manifest_json": "PASS",
-        "static_longrun_invariants": "PASS",
+        "zip_crc": "PASS",
+        "static_auto_continue_fix": "PASS",
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     }

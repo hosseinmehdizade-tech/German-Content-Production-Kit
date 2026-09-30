@@ -1,27 +1,32 @@
 # Menschen A1 Verben Repair v3.3.6
 
-Current durable milestone: **Stage5 Clean Delivery PASS — v3.3.6 anti-bypass gate**.
+Current durable milestone: **Stage6 Runtime & Presentation Acceptance PASS on exact CURRENT v451-R85**.
 
-- Upstream Stage4 canonical: **310 targets = 247 senses + 63 expressions**
-- Stage4 canonical SHA-256: `4a7b5a0d7dfa4d984e4afc375c237c80d8ea8f00f0afde6a3f86f6f11d75c0ce`
-- Semantic relations preserved: **768**
-- Stage5 cards: **310/310 de-vocabulary**
-- Categories: **247 Verb + 63 Expression**
+- Runtime: **German Flashcards Pro v451-R85**, CURRENT = LAST_FULLY_VERIFIED
+- Runtime artifact SHA-256: `27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4`
+- Internal runtime SHA256SUMS: **298/298 PASS**
+- Stage5 dataset: **310 cards = 247 Verb + 63 Expression**
+- Card type: **310/310 de-vocabulary**
 - Presentation contract: **gfp-vocabulary-neutral@1 on 310/310**
 - Examples: **1240 DE + 1240 FA + 1240 EN**
-- Source mapping: **312 occurrences -> 310 active canonical targets**
-- Source audio: **310 refs / 275 unique; zero-audio targets ma1m-lu-0073, ma1m-lu-0074**
-- Candidate ledger closure: **2185 = 709 ACCEPTED + 1476 REJECTED + 0 DEFERRED**
-- Completeness: **4776/4776 final; 0 unresolved**
-- Stage5 QA: **338/338 PASS**
-- v3.3.6 anti-bypass gates: **source + identity + candidate ledger + completeness + unified projection all PASS**
-- Direct TSV SHA-256: `1aed97a626dcda6cb6abdfe8bcba7c808c8ae1a667ce4b1ffecad47c90b2752e`
-- Projected cards SHA-256: `3de053f870d67ede5bee5a7a0ecd46ad512a07027ef17658a9205172f5b9ec0f`
-- Stage5 checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage5-PASS-CHECKPOINT.zip`
-- Checkpoint SHA-256: `9eb1288c49f3cd1cd38dcf7988e4d805189468c8defafb62ae63822575fe6e35`
-- Clean delivery: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage5-CLEAN-DELIVERY.zip`
-- Clean-delivery SHA-256: `63271e5b4b49611c3b6873cabca7587882c4bfd503e74aca953d431a2fa92245`
+- Relations: **768**
+- Source audio: **310 refs / 275 unique; zero-audio targets ma1m-lu-0073 and ma1m-lu-0074**
+- Import-ready package SHA-256: `ce86e7b3df447a77f6fdff74b8f2cd493804031ad4e4594070b634cdcd8029b7`
+- Phase1 import/presentation: **48/48 PASS**
+- Phase2 authority roundtrip: **26/26 PASS**
+- v451 neutral-envelope regression: **21/21 PASS**
+- Combined Stage6 checks: **95/95 PASS**
+- Commit manifest: **VERIFIED / 310**
+- Runtime index: **310/310**
+- Storage: **READY / writesBlocked=false**
+- Study / Quick / Typing / Audio all run on the full 310-card library scope.
+- Stage6 checkpoint SHA-256: `102dddf34c7ff862c99d07e470c57d8a0fc042113ac924a460afa823a3702e70`
+- Post-package: **CRC PASS; manifest 26/26; SHA256SUMS 27/27; JSON 20/20; hygiene PASS**
 - Library rematerialization: **PASS exact SHA-256 + byte compare**
 - Runtime/UI changed: **NO**
 
-Stage5 remains runtime-version agnostic. **Resolve German Flashcards Pro CURRENT only at Stage6.**
+A runtime TSV normalization collapsed one redundant space in the provenance-only Persian source seed of `ma1m-lu-1267`; learner-facing semantic content is unchanged.
+
+The same-profile Windows/Chrome visual/import/reload/PWA/offline acceptance is inherited from exact v451 FINAL because this Stage6 milestone changes content only and does not change runtime/offline/storage/deployment semantics.
+
+Next milestone: **Stage7 exact-final release + post-package verification + re-lock**.

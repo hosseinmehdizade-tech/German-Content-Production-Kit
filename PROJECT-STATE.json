@@ -1865,7 +1865,7 @@
           }
         },
         "v336_repair_successor": {
-          "status": "PASS_STAGE3B_ANTONYM_CLOSED__LIBRARY_AND_GIT_SYNCED",
+          "status": "PASS_STAGE3B_WORD_FAMILY_CLOSED__LIBRARY_AND_GIT_SYNCED",
           "framework": "v3.3.6",
           "workspace": "Workspaces/menschen-a2-verben-repair-v336",
           "historical_locked_parent_sha256": "984cc519057115da49ac2479330704f7ed767e47df38d049330180ff516848b2",
@@ -1889,7 +1889,7 @@
             "unresolved_cells": 1499
           },
           "stage3b": {
-            "status": "ANTONYM_CLOSED__WORD_FAMILY_AND_NVV_REMAIN",
+            "status": "WORD_FAMILY_CLOSED__NVV_REMAINS",
             "structure_components": "64/64 final",
             "argument_slots": "64/64 final",
             "component_relations": "64/64 final",
@@ -1898,60 +1898,31 @@
             "collocation": "291 VERIFIED_PRESENT + 1 CLOSED_NO_FORCE = 292/292 final",
             "related": "119 VERIFIED_PRESENT + 173 CLOSED_NO_FORCE = 292/292 final",
             "antonym": "22 VERIFIED_PRESENT + 270 CLOSED_NO_FORCE = 292/292 final",
-            "antonym_unresolved": 0,
-            "new_antonym_relations": 8,
-            "antonym_relation_records": 24,
-            "candidate_ledger": "929 = 336 ACCEPTED / 593 REJECTED / 0 DEFERRED",
-            "final_cells": 3925,
-            "unresolved_cells": 583,
-            "validation": "8/8 fresh validators PASS; CRC PASS; manifest 104/104; SHA256SUMS 105/105; Library exact SHA+bytes PASS",
+            "word_family": "60 VERIFIED_PRESENT + 232 CLOSED_NO_FORCE = 292/292 final",
+            "word_family_unresolved": 0,
+            "new_word_family_relations": 60,
+            "word_family_relation_records": 60,
+            "candidate_ledger": "1221 = 396 ACCEPTED / 825 REJECTED / 0 DEFERRED",
+            "final_cells": 4217,
+            "unresolved_cells": 291,
+            "validation": "8/8 fresh validators PASS; CRC PASS; manifest 121/121; SHA256SUMS 122/122; Library exact SHA+bytes PASS",
             "artifact": {
-              "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-              "sha256": "7180d8d2f50c3bd672a22046032a9d302926a64a554daf2600b5c741402dd4be",
-              "size_bytes": 1829667,
-              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-              "library_file_id": "file_00000000441482438fab81f8b1db1eca",
-              "library_stable_id": "libfile_354bb5e5cbe48191912d119a986d2d0c",
+              "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT.zip",
+              "sha256": "1b145eb0224e4471456e555c2ff3134cd6a1da286c68efa231e5502812800ce3",
+              "size_bytes": 2283924,
+              "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT.zip",
+              "library_file_id": "file_00000000656c81f48b75a97ebc62331d",
+              "library_stable_id": "libfile_ffe1b94aeeb081918266eb8fe32dc690",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
           },
-          "next_action": "On the next turn, rebuild once from the stable Antonym checkpoint with the validator wrapper accepting either top-level status or summary.status, then complete validators/package/Library/Git sync if PASS.",
-          "relations": 1132,
+          "next_action": "Continue Stage3B with NVV closure for the remaining 291 unresolved cells; then Stage3C disposition closure.",
+          "relations": 1192,
           "historical_repair1_relations_preserved": 999,
           "pre_synonym_relations_preserved": 1010,
-          "pending_word_family_attempt": {
-            "schema": "menschen-a2-verben-repair-v336-word-family-blocker@1.0.0",
-            "status": "BLOCKED_VALIDATION_WRAPPER_AFTER_ONE_CORRECTED_RETRY",
-            "stable_authority_unchanged": {
-              "status": "PASS_STAGE3B_ANTONYM_CLOSED__LIBRARY_AND_GIT_SYNCED",
-              "artifact": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-              "sha256": "7180d8d2f50c3bd672a22046032a9d302926a64a554daf2600b5c741402dd4be"
-            },
-            "attempted_word_family_state": {
-              "word_family": "60 VERIFIED_PRESENT + 232 CLOSED_NO_FORCE = 292/292",
-              "relations": "1132 -> 1192; prior 1132 preserved",
-              "candidate_ledger": "1221 = 396 ACCEPTED + 825 REJECTED + 0 DEFERRED",
-              "richness": "4217 final / 291 unresolved; NVV only remains",
-              "local_partial_output": "/mnt/data/a2fix/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT",
-              "accepted_reflexive_exclusions": [
-                "ma2-lu-0145",
-                "ma2-lu-0161",
-                "ma2-lu-0238",
-                "ma2-lu-0256"
-              ]
-            },
-            "validation": {
-              "source_occurrences": "PASS",
-              "identity_closure": "PASS",
-              "candidate_ledger": "PASS",
-              "completeness": "PASS",
-              "profile_contract_underlying_report": "PASS",
-              "wrapper_result": "BLOCKED because validator reports status under summary.status rather than top-level status",
-              "remaining_validators": "NOT_RUN_DUE_TO_EXECUTION_SAFETY_RETRY_LIMIT"
-            },
-            "failure": "Build wrapper expected obj.status == PASS for validate_profile_driven_product_contract_v1_0_1.py, but that validator returns summary.status == PASS.",
-            "safety_action": "Stopped after the one corrected full-build retry. No unvalidated ZIP was promoted or uploaded. Stable authority remains the Antonym checkpoint.",
-            "resume_action": "On the next turn, rebuild once from the stable Antonym checkpoint with the validator wrapper accepting either top-level status or summary.status, then complete validators/package/Library/Git sync if PASS."
+          "resolved_word_family_blocker": {
+            "status": "RESOLVED_BY_PASS",
+            "artifact_sha256": "1b145eb0224e4471456e555c2ff3134cd6a1da286c68efa231e5502812800ce3"
           }
         }
       }

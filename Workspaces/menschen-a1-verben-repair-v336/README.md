@@ -2,28 +2,28 @@
 
 This workspace is a **delta repair successor** of the immutable locked A1 Verben release.
 
-Current durable milestone: **Stage3B in progress — Synonym Duden core cluster PASS**.
+Current durable milestone: **Stage3B in progress — Synonym Duden direct-headword cluster PASS**.
 
 - Parent locked release: `German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip`
 - Parent SHA-256: `6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db`
 - Active canonical: **310 targets = 247 senses + 63 expressions**
 - Examples: **1240 unchanged**
-- Canonical relations: **402**
+- Canonical relations: **427**
 - Rektion: **260 VERIFIED_PRESENT + 50 CLOSED_NO_FORCE + 0 unresolved = 310**
-- Synonym: **49 VERIFIED_PRESENT + 261 unresolved = 310**
-- New synonym cluster: **23 newly VERIFIED targets / 23 relations**
-- SYNONYM relations total: **50**
-- Candidate ledger: **430 = 339 ACCEPTED + 91 REJECTED + 0 DEFERRED**
-- Current richness: **3040 final / 1736 unresolved**
-- Current checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-SYNONYM-DUDEN-CORE-CHECKPOINT.zip`
-- Checkpoint SHA-256: `7242d0b2b4270d2e7a3c965d45f1d5007fce1a436da744d9a31dbf9f8e492ae8`
-- Canonical SHA-256: `ac8f57c494a129ce00bedcc4be88e430752bc2ce4342093100f4a37aaeb01a38`
+- Synonym: **74 VERIFIED_PRESENT + 236 unresolved = 310**
+- New direct-headword synonym cluster: **25 newly VERIFIED targets / 25 relations**
+- SYNONYM relations total: **75**
+- Candidate ledger: **455 = 364 ACCEPTED + 91 REJECTED + 0 DEFERRED**
+- Current richness: **3065 final / 1711 unresolved**
+- Current checkpoint: `Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3B-SYNONYM-DUDEN-DIRECT-HEADWORD-CHECKPOINT.zip`
+- Checkpoint SHA-256: `c61792d2faa2174eab60580417e36a55eda4eb9c058c9e1d15ff3d7f7c7cd91f`
+- Canonical SHA-256: `2677faa687198eadb9ee5f1c9191fa1c38f5911072f0b07402cc8da4eb2e4243`
 - Library rematerialization: **PASS exact SHA-256 + byte compare**
-- Post-package: **CRC PASS; SHA256SUMS 59/59; manifest 58/58; 5/5 fresh current validators PASS**
+- Post-package: **CRC PASS; SHA256SUMS 66/66; manifest 65/65; 5/5 fresh current validators PASS**
 - Historical locked bytes and predecessor checkpoints were not changed.
 
-The first synonym cluster uses registered `DUDEN_SYNONYME` evidence with active-sense alignment. Accepted examples include `überlegen → nachdenken`, `sprechen ↔ reden`, `helfen → unterstützen`, `brauchen → benötigen`, `bummeln → schlendern`, `ankommen → eintreffen`, and `verschieben → verlegen`.
+The direct-headword cluster uses registered `DUDEN_SYNONYME` evidence aligned to each active canonical sense. Representative accepted claims include `fragen → nachfragen`, `zeichnen → skizzieren`, `markieren ↔ kennzeichnen`, `vorschlagen → empfehlen`, `kennenlernen → jemandes Bekanntschaft machen`, `anrufen → telefonieren`, `erzählen → berichten`, `bewerten → beurteilen`, `vereinbaren → abmachen`, `vermuten → annehmen`, `glauben → für wahr halten`, `erleben → erfahren`, `gratulieren → beglückwünschen`, `entwerfen → konzipieren`, `ausbessern → reparieren`, and `aufwachen → erwachen`.
 
-No relation-density target was used. Broader, stronger/weaker, or sense-shifted candidates remain open for review rather than being forced.
+Broader, stronger/weaker, reverse-only, or sense-shifted candidates remain open instead of being forced. No relation-density target was used.
 
-Next Stage3B milestone: **continue the remaining 261 synonym cells**, then antonym / collocation / word_family / related / NVV.
+Next Stage3B milestone: **continue the remaining 236 synonym cells with bounded evidence routes and explicit closure where justified**, then antonym / collocation / word_family / related / NVV.

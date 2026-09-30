@@ -95,24 +95,30 @@ Always target German-Flashcards-Pro CURRENT; LAST_FULLY_VERIFIED is regression e
 
 ## Current controller build
 
-Version: `3.3.0`
+Version: `3.3.1`
+
+Reason for update:
+- v3.3.0 could fail to auto-continue because generic ChatGPT DOM mutations reset `lastDomActivityAt`, while response settlement used `max(lastAssistantChangedAt,lastDomActivityAt)`. Ongoing harmless UI churn could therefore keep the controller in `awaitingResponse` forever after a completed answer.
+- v3.3.1 bases settlement on actual assistant-message text/signature stability, verifies prompt submission, migrates v3.3.0 state, and no longer hard-codes Stage1 as NOT_STARTED on Start/Resume.
 
 Tampermonkey/full package:
-- `ChatGPT-NVV-AutoMission-v3.3.0-CHROME-READY.zip`
-- SHA-256: `52dd28226e0d39bfd9a78a6b6fd600c0be6d75e019ed610d2238730ba2498315`
-- Library: `/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.0-CHROME-READY.zip`
-- Library stable id: `libfile_916a20edeebc8191a511b80f92820416`
+- `ChatGPT-NVV-AutoMission-v3.3.1-CHROME-READY.zip`
+- SHA-256: `801d972bdec3f371ddb336c6afabaf19c4d0ca628817953b3dbda9bc5ed3a9d8`
+- Library: `/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.1-CHROME-READY.zip`
+- Library stable id: `libfile_339bc4d5eadc81919878fd34dfa35676`
 
 Chrome unpacked-extension package:
-- `ChatGPT-NVV-AutoMission-v3.3.0-Chrome-Extension.zip`
-- SHA-256: `ca95075a18f36cda8b78b9656ec59ffdcdaef5c1ea49a2d57ccdaa54e45f5187`
-- Library: `/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.0-Chrome-Extension.zip`
-- Library stable id: `libfile_f83be21f42208191849fe9069d834d01`
+- `ChatGPT-NVV-AutoMission-v3.3.1-Chrome-Extension.zip`
+- SHA-256: `e20785a250bae4924d2d2e4672989bc91762b5a9a2876c32c6a22dbf5564c205`
+- Library: `/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.1-Chrome-Extension.zip`
+- Library stable id: `libfile_4249eb4bca7c819194227699f711c616`
+
+Tampermonkey userscript SHA-256:
+- `7fe4d5ce4ca25bc3a4a3354dd6c936ca2e6dc66555af2ba97407c0e7dcf69b82`
 
 Build verification:
 - JavaScript syntax: PASS (Tampermonkey + Chrome content script)
 - manifest JSON parse: PASS
-- static long-run invariants: PASS
+- ZIP CRC: PASS (Chrome extension + full package)
+- static auto-continuation fix inspection: PASS
 - live ChatGPT DOM acceptance: PENDING USER CHROME
-
-The 3.3.0 controller is rebuilt for `NVV-CLEAN-LONGRUN-R2`; it does not use the deprecated stage-safe preset as the active execution profile.

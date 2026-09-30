@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T17:22:10Z",
-  "updated_version": "n0-authority-recovery-blocked-v1",
-  "status": "RECOVERY_BLOCKED",
+  "updated_at": "2026-09-30T19:37:00+02:00",
+  "updated_version": "clean-restart-baseline-v1",
+  "status": "CLEAN_RESTART_BASELINE_READY",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -20,7 +20,7 @@
     "source_registry": "SOURCE-REGISTRY.json",
     "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
     "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
-    "runtime_authority": "resolve only at actual Stage 6 integration/acceptance time from newest verified German-Flashcards-Pro artifact/state",
+    "runtime_authority": "resolve only at actual Stage 6 integration/acceptance time from CURRENT German-Flashcards-Pro",
     "project_memory": "PROJECT-MEMORY.json",
     "git_sync_policy": "GIT-SYNC-POLICY.json"
   },
@@ -28,140 +28,76 @@
     "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
     "sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
     "pdf_pages": 26,
-    "project_source_status": "AVAILABLE_VERIFIED_2026-09-16",
-    "library_status": "AVAILABLE_VERIFIED_2026-09-16",
-    "mirror_status": "VERIFIED_SAME_BYTES_2026-09-16",
-    "source_resolution_order": [
-      "explicit_newer_user_source_in_current_chat",
-      "ChatGPT Project Sources",
-      "ChatGPT Library",
-      "matching_current_chat_attachment",
-      "ask_user_only_if_unresolved"
-    ]
+    "status": "REGISTERED_SOURCE_AUTHORITY",
+    "restart_rule": "Fresh production derives only from registered source bytes plus current framework; old generated cards are not seed authority."
   },
-  "pipeline": {
-    "1_source_inventory": {
-      "state": "PASS",
-      "metrics": {
-        "items": 2475,
-        "fvg": 859,
-        "idiom": 519,
-        "general_nvv": 1097,
-        "slash_variant_items": 221,
-        "missing_noun_header": 0,
-        "extraction_repairs": 37
-      },
-      "note": "Preserve this PASS unless source identity/hash changes or explicit defect evidence invalidates it."
-    },
-    "2_canonicalization": {
-      "state": "RUNNING",
-      "subgates": {
-        "source_slash_variant_review": "PASS",
-        "evidence_driven_sense_resolution": "RUNNING"
-      },
-      "metrics": {
-        "source_items": 2475,
-        "variant_source_items_reviewed": 221,
-        "semantic_split_source_items": 17,
-        "provisional_expression_identities": 2493,
-        "lexeme_identities": 1512,
-        "open_evidence_sense_issues": 1
-      },
-      "note": "2493 is the current expression-identity target, not a claim that every polysemous expression has final sense resolution."
-    },
-    "3_evidence_enrichment": {
-      "state": "RUNNING",
-      "metrics": {
-        "completed_expression_cards_durable_bounded": 26,
-        "provisional_expression_total": 2493,
-        "definitions_de": 26,
-        "translations_fa": 26,
-        "translations_en": 26,
-        "examples": 104,
-        "examples_per_completed_card": 4,
-        "fa_sentence_translations": 104,
-        "en_sentence_translations": 104,
-        "completed_batches_durable_bounded": 2,
-        "completed_or_bounded_pass_expression_cards": 126,
-        "batch0003_cards": 100,
-        "completed_content_batches": 3
-      },
-      "note": "Batch0003 portable checkpoint independently verified by ZIP SHA-256, CRC and 18/18 internal SHA256 manifest entries. B1-B5 are preserved; do not regenerate."
-    },
-    "4_linguistic_lexical_qa": {
-      "state": "RUNNING",
-      "metrics": {
-        "batch_0001_validator": "PASS",
-        "batch_0002_validator": "PASS",
-        "cumulative_26_card_validator": "PASS",
-        "global_dataset_qa": "NOT_COMPLETE",
-        "batch_0003_validator": "PASS",
-        "batch_0003_independent_verification": "PASS_2_ROUNDS"
-      }
-    },
-    "5_delivery_projection": {
-      "state": "RUNNING",
-      "metrics": {
-        "batch_0001_projected_expression_cards": 13,
-        "batch_0002_projected_expression_cards": 13,
-        "cumulative_projected_expression_cards": 26,
-        "duplicate_supporting_sense_cards": 0,
-        "projection_contract": "GFP-V411-VOCABULARY-PROJECTION-v1.0.1",
-        "batch_0003_projected_expression_cards": 100,
-        "batch_0003_transport_status": "PASS"
-      }
-    },
-    "6_runtime_presentation_acceptance": {
-      "state": "BLOCKED",
-      "resolution_mode": "RESOLVE_WHEN_INTEGRATION_MATTERS",
-      "exact_runtime_bytes_materialized": true,
-      "current_runtime": {
-        "version": "v411-R45",
-        "artifact": "GFP-v411-R45-Modular-Lesen-VERIFIED.zip",
-        "sha256": "3ef754ae33d4af10e4ad6465ef23e0a79fb6cbddcefb840f0d8a8fbc125b5488",
-        "artifact_sha256_match": true,
-        "packaged_release_verification": "VERIFIED",
-        "packaged_canonical_full_app_v4": "PASS"
-      },
-      "batch0003_targeted_browser_acceptance": "BLOCKED_BY_ADMINISTRATOR",
-      "blocker": "This execution environment blocks Chromium navigation to both local HTTP and file origins before the actual app entrypoint loads. No Batch0003 content defect is inferred. Do not spend production turns retrying this environment-level block.",
-      "policy": "Defer cumulative targeted V4 import/persistence/reload acceptance until an execution environment permits the real app entrypoint; continue safe content production in parallel."
-    },
-    "7_release_post_package_verification": {
-      "state": "RUNNING",
-      "batch0003_portable_checkpoint": "PASS_SELF_VERIFYING",
-      "final_dataset_release": "NOT_APPLICABLE_YET_DATASET_INCOMPLETE",
-      "note": "Batch0003 checkpoint is a verified bounded production checkpoint, not the final 2493-expression dataset release."
+  "restart_authority": {
+    "restart_id": "NVV-RESTART-20260930-R1",
+    "user_explicit_approval": true,
+    "scope": "Standalone NVV content workstream restart from zero",
+    "prior_content_state": "HISTORICAL_ONLY",
+    "prior_26_cards": "HISTORICAL_ONLY",
+    "prior_batch0003_100_cards": "HISTORICAL_ONLY",
+    "prior_126_card_claim": "HISTORICAL_ONLY",
+    "prior_completed_expression_ids": "HISTORICAL_ONLY",
+    "prior_review_queue": "HISTORICAL_ONLY",
+    "destructive_deletion": false,
+    "history_preserved": true,
+    "old_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_CLEAN_RESTART",
+    "clean_restart_artifact": {
+      "filename": "NVV-CLEAN-RESTART-BASELINE-v1.zip",
+      "sha256": "b207db91e59b69e4380105c4c4a5cd9f03da4af11b27a7124940148eb6c92a44",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-CLEAN-RESTART-BASELINE-v1.zip",
+      "library_file_id": "file_000000003614821098f42c12816ffb57",
+      "library_stable_id": "libfile_622aa85c3ab88191814a35d546053c57",
+      "zip_crc": "PASS",
+      "upload_status": "SUCCEEDED"
     }
   },
-  "completed_expression_ids": [
-    "DAH-NVV-EXP-00149",
-    "DAH-NVV-EXP-00314",
-    "DAH-NVV-EXP-01694",
-    "DAH-NVV-EXP-00345",
-    "DAH-NVV-EXP-02137",
-    "DAH-NVV-EXP-00111",
-    "DAH-NVV-EXP-00374",
-    "DAH-NVV-EXP-01891",
-    "DAH-NVV-EXP-00265",
-    "DAH-NVV-EXP-00266",
-    "DAH-NVV-EXP-00190",
-    "DAH-NVV-EXP-00078",
-    "DAH-NVV-EXP-00077",
-    "DAH-NVV-EXP-00038",
-    "DAH-NVV-EXP-00042",
-    "DAH-NVV-EXP-00052",
-    "DAH-NVV-EXP-00059",
-    "DAH-NVV-EXP-00066",
-    "DAH-NVV-EXP-00019",
-    "DAH-NVV-EXP-00023",
-    "DAH-NVV-EXP-00025",
-    "DAH-NVV-EXP-00026",
-    "DAH-NVV-EXP-00121",
-    "DAH-NVV-EXP-00141",
-    "DAH-NVV-EXP-00143",
-    "DAH-NVV-EXP-00160"
-  ],
+  "pipeline": {
+    "0_clean_restart_authority": {
+      "state": "PASS",
+      "note": "User explicitly authorized clean restart. Historical NVV outputs remain archived but are not working authority."
+    },
+    "1_source_inventory": {
+      "state": "NOT_STARTED",
+      "metrics": {
+        "items": 0
+      },
+      "note": "Recompute from the 26-page registered PDF under v3.3.6."
+    },
+    "2_identity_closure": {
+      "state": "NOT_STARTED",
+      "note": "No old provisional identity target is carried as authority."
+    },
+    "3A_baseline_richness_audit": {
+      "state": "NOT_STARTED"
+    },
+    "3B_gap_driven_enrichment": {
+      "state": "NOT_STARTED"
+    },
+    "3C_disposition_closure": {
+      "state": "NOT_STARTED"
+    },
+    "4_independent_linguistic_lexical_qa": {
+      "state": "NOT_STARTED"
+    },
+    "5_delivery_projection_anti_bypass": {
+      "state": "NOT_STARTED"
+    },
+    "6_runtime_presentation_acceptance": {
+      "state": "NOT_STARTED",
+      "resolution_mode": "RESOLVE_CURRENT_WHEN_INTEGRATION_MATTERS"
+    },
+    "7_final_release_post_package_verification": {
+      "state": "NOT_STARTED"
+    }
+  },
+  "completed_expression_ids": [],
+  "review_queue": {
+    "open_count": 0,
+    "known_items": []
+  },
   "production_cadence": {
     "default_safe_batch_size": 100,
     "scale_to_150_after_consecutive_clean_100_card_batches": 2,
@@ -169,79 +105,33 @@
     "ambiguous_items": "quarantine_review_queue",
     "global_audit_every_completed_cards": 500,
     "portable_checkpoint_after_each_successful_batch": true,
-    "git_sync_after_each_successful_batch": "PREFERRED_NOT_BLOCKING"
+    "git_sync_after_each_successful_batch": "REQUIRED_LIGHTWEIGHT_BOUNDED"
   },
-  "review_queue": {
-    "open_count": 1,
-    "known_items": [
-      {
-        "surface": "etw. / jdn. in Anspruch nehmen",
-        "reason": "supported polysemy; do not collapse into one generic meaning"
-      }
-    ]
-  },
-  "batch0003_recovery": {
-    "state": "VERIFIED_PORTABLE_AUTHORITY",
-    "artifact": {
-      "name": "NVV-Production-Checkpoint-Batch0003.zip",
-      "size_bytes": 132786,
-      "sha256": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
-      "zip_crc": "PASS",
-      "internal_manifest_entries_verified": 18,
-      "internal_manifest_status": "PASS"
-    },
-    "source_pdf": {
-      "sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
-      "registered_hash_match": true
-    },
-    "working_authority": "portable_checkpoint",
-    "git_binary_required": false,
-    "old_git_base64_materialization": "RETIRED_FAILED_NOT_AUTHORITY"
+  "guardrails": [
+    "Source-first. Do not seed the new run from old generated cards or chat memory.",
+    "History is preserved; no destructive cleanup is required.",
+    "Apply MEM-009 one-card/multi-meaning rule.",
+    "Use v3.3.6 Stage2 identity closure before Stage3 enrichment.",
+    "Use explicit disposition closure; never fabricate relations.",
+    "New ordinary vocabulary projection uses de-vocabulary + gfp-vocabulary-neutral@1.",
+    "Resolve GFP CURRENT only when runtime acceptance matters."
+  ],
+  "historical_archive": {
+    "previous_checkpoint_status": "RECOVERY_BLOCKED",
+    "previous_checkpoint_updated_version": "n0-authority-recovery-blocked-v1",
+    "previous_checkpoint_sha": "759e6da18ec33591ef2ce88efc10c061ba071205",
+    "previous_claimed_source_items": 2475,
+    "previous_claimed_expression_total": 2493,
+    "previous_claimed_completed_or_bounded_pass": 126,
+    "previous_batch0003_sha": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
+    "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "portable_verified_artifacts",
-    "git": "COMPACT_METADATA_IN_SYNC_AFTER_THIS_COMMIT",
-    "binary_zip_in_git": "NOT_REQUIRED",
-    "automatic_base64_materialization": "DISABLED"
+    "quality_authority": "NVV-CLEAN-RESTART-BASELINE-v1.zip",
+    "portable_sha256": "b207db91e59b69e4380105c4c4a5cd9f03da4af11b27a7124940148eb6c92a44",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-CLEAN-RESTART-BASELINE-v1.zip",
+    "git": "COMPACT_METADATA_SYNCED",
+    "binary_zip_in_git": "NOT_REQUIRED"
   },
-  "next": "Locate/provide exact Batch0003 portable SHA 7581cfc6...e1df or a provably complete canonical+projected+QA 126-card state; rerun N0.",
-  "n0_authority_recovery": {
-    "state": "RECOVERY_BLOCKED",
-    "mission_id": "NVV-20260930-191703-62d9f3",
-    "source_sha256_verified": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
-    "required_batch0003_artifact": {
-      "filename": "NVV-Production-Checkpoint-Batch0003.zip",
-      "sha256": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
-      "accessible_current_chat_project_library": false,
-      "promoted_to_working_authority": false
-    },
-    "historical_claims": {
-      "batch0001_0002_cards": 26,
-      "batch0003_cards": 100,
-      "cumulative_claimed_cards": 126,
-      "disposition": "PRESERVED_AS_HISTORICAL_EVIDENCE_NOT_WORKING_BYTES"
-    },
-    "git_recovery": {
-      "base64_binary_transport_authority": false,
-      "staged_materialization_status": "FAIL",
-      "forensic_zip_open": "FAIL_NOT_A_ZIP",
-      "policy": "MEM-005"
-    },
-    "portable_blocked_checkpoint": {
-      "filename": "NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
-      "sha256": "8f079851ffb24cad7c63bf8f4acae0bab863e515a7486e50f3e364e04f30ef9a",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
-      "library_file_id": "file_00000000e0e4820a9528f80c868ed8f4",
-      "library_stable_id": "libfile_cc4d0098b66c81919fffc8f809311ba2",
-      "upload_status": "SUCCEEDED",
-      "zip_crc_local": "PASS"
-    },
-    "blocker": "Exact Batch0003 portable authority is unavailable on accessible current-chat/Project/Library surfaces and no alternative complete canonical+projected+QA 126-card payload has been proven without loss.",
-    "no_loss_rules": [
-      "DO_NOT_START_BATCH0004",
-      "DO_NOT_REGENERATE_BATCH0003_FROM_MEMORY",
-      "DO_NOT_REPAIR_GIT_BASE64_AS_DEFAULT_RECOVERY"
-    ],
-    "next_action": "Locate/provide exact Batch0003 portable SHA 7581cfc6...e1df or a provably complete canonical+projected+QA 126-card state; rerun N0."
-  }
+  "next": "Run fresh Stage1/N1 source inventory from the registered 26-page PDF and persist a new authoritative inventory checkpoint."
 }

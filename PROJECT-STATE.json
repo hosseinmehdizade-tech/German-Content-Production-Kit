@@ -1250,12 +1250,12 @@
         }
       },
       "b1_verben_migration": {
-        "status": "V336_STAGE5_DELIVERY_LINEAGE_REPAIR_PASS__STAGE6_RUNTIME_NEXT_LIBRARY_AND_GIT_SYNCED",
+        "status": "V336_STAGE6_BLOCKED_TRANSACTIONAL_COMMIT_VERIFY__LIBRARY_AND_GIT_SYNCED",
         "workstream": "menschen-b1-verben-migration",
         "checkpoint": "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json",
         "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
-        "current_milestone": "V336_POSTLOCK_STAGE5_DELIVERY_LINEAGE_REPAIR_PASS",
-        "quality_state": "BLOCKED_UPSTREAM_PROJECTION_LINEAGE_LOSS",
+        "current_milestone": "V336_STAGE6_BLOCKED_V451_TRANSACTIONAL_COMMIT_VERIFY",
+        "quality_state": "BLOCKED_STAGE6_TRANSACTIONAL_COMMIT_VERIFY",
         "content_lock_state": "PARENT_REPAIR1_RELOCKED__V336_SUCCESSOR_NOT_LOCKED_BLOCKED_STAGE6",
         "stage1_media_mapping": "PASS_RESOLVED_AT_STAGE5_FROM_REGISTERED_MEMRISE_SOURCE",
         "identity_policy": "MEM-009-MULTI-MEANING-ONE-CARD",
@@ -1303,7 +1303,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           }
         },
-        "next_action": "Stage6 runtime/import/presentation/persistence/roundtrip acceptance on exact Flashcards CURRENT resolved at execution. Do not begin Stage7 until Stage6 PASS on this exact repaired dataset.",
+        "next_action": "Open a narrow Stage6 persistence-differential diagnosis. Isolate which repaired projection field/value causes v451 post-publish verification to fail, using the immutable repaired Stage5 dataset as authority. Do not regenerate semantic content and do not begin Stage7.",
         "stage6": {
           "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
           "quality_state": "PASS_EXACT_CURRENT_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
@@ -1354,12 +1354,12 @@
           }
         },
         "latest_checkpoint": {
-          "filename": "Menschen-B1-Verben-v3.3.6-Stage5-LINEAGE-REPAIR-PASS-CHECKPOINT.zip",
-          "sha256": "dbbb1387b77ce684de14cc3ebf377088211f736183ee0fa275d508d84ba4a581",
-          "size_bytes": 4221805,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Stage5-LINEAGE-REPAIR-PASS-CHECKPOINT.zip",
-          "library_file_id": "file_000000002734821088176c533c47833b",
-          "library_stable_id": "libfile_b36e1a237adc81919c708729dadd6f72",
+          "filename": "Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-TRANSACTIONAL-COMMIT-CHECKPOINT.zip",
+          "sha256": "5a2539bebfc2ecdb41a11494001d1cb79ca0292e1daa986a239f868db82053ee",
+          "size_bytes": 669386,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-TRANSACTIONAL-COMMIT-CHECKPOINT.zip",
+          "library_file_id": "file_000000005cd081f4995eec1247ca626f",
+          "library_stable_id": "libfile_503d4b14f320819181705ca720748840",
           "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
         },
         "stage7": {
@@ -2526,6 +2526,83 @@
             "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
           },
           "next_action": "Stage6 runtime/import/presentation/persistence/roundtrip acceptance on exact Flashcards CURRENT resolved at execution. Do not begin Stage7 until Stage6 PASS on this exact repaired dataset."
+        },
+        "v336_stage6_transactional_commit_blocked": {
+          "status": "BLOCKED_TRANSACTIONAL_COMMIT_VERIFICATION_ROLLBACK__LIBRARY_AND_GIT_SYNCED",
+          "milestone": "V336_STAGE6_BLOCKED_V451_TRANSACTIONAL_COMMIT_VERIFY",
+          "framework": "v3.3.6",
+          "runtime": {
+            "current": "v451-R85",
+            "artifact": "German-Flashcards-Pro-v451-R85-ORGANIZED-DELIVERY-CANDIDATE-CONTROL-CORRECTED.zip",
+            "sha256": "27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4",
+            "verification_state": "VERIFIED",
+            "release_final": true,
+            "last_fully_verified": "v451-R85",
+            "same_profile_acceptance": "PASS_FINAL"
+          },
+          "content": {
+            "stage5_checkpoint": "Menschen-B1-Verben-v3.3.6-Stage5-LINEAGE-REPAIR-PASS-CHECKPOINT.zip",
+            "stage5_checkpoint_sha256": "dbbb1387b77ce684de14cc3ebf377088211f736183ee0fa275d508d84ba4a581",
+            "clean_delivery": "B1-VERBEN-v3.3.6-STAGE5-LINEAGE-REPAIRED-CLEAN-DELIVERY.zip",
+            "clean_delivery_sha256": "92697e6615528a60bf5a8ebdae0abd362984a86b28fe3e56bbc101471679b27f",
+            "dataset": "B1-VERBEN-UNIVERSAL-v3.3.6-LINEAGE-REPAIRED.tsv",
+            "dataset_sha256": "1815dfcacf02dc9f08df3f6cad5060db7a46b3c8c7e1bbf3cca8f683972eec3a",
+            "import_ready": "Menschen-B1-Verben-v3.3.6-Stage6-IMPORT-READY.zip",
+            "import_ready_sha256": "f198db975fc68723b92d1327447b3eeacc94c6a1412e7c279abd8fe1481f1f8e",
+            "cards": 395,
+            "categories": {
+              "Verb": 279,
+              "Expression": 116
+            },
+            "examples": 1580,
+            "relations": 2526,
+            "source_audio_refs": 439,
+            "zero_audio_targets": [
+              "mb1m-lu-0030",
+              "mb1m-lu-0363"
+            ]
+          },
+          "passed_before_block": {
+            "runtime_v451_vocabulary_envelope": "21/21 PASS",
+            "runtime_v451_v450_layout_regression": "20/20 PASS",
+            "stage5_lineage_repair_qa": "436/436 PASS",
+            "import_package_preview": "PASS / 395 cards / de-vocabulary=395 / SHA sidecar verified / structural PASS / import allowed",
+            "precommit_phase1_checks": "18/18 PASS"
+          },
+          "blocker": {
+            "code": "V451_TRANSACTIONAL_COMMIT_POST_PUBLISH_VERIFY_FAILED",
+            "observed_sequence": [
+              "fresh verified empty manifest cardCount=0 commitRevision=1",
+              "395 cards become active in memory during import",
+              "published manifest reaches cardCount=395 / PUBLISHED_PENDING_VERIFY / commitRevision=2",
+              "verifyPublishedCommitV225 rejects post-publish verification",
+              "automatic rollback restores prior verified empty generation cardCount=0 / commitRevision=3"
+            ],
+            "runtime_message_fa": "تأیید count/hash/authorityHash پس از Publish ناموفق بود",
+            "data_loss": "NONE",
+            "classification": "DATASET_SPECIFIC_RUNTIME_PERSISTENCE_INTERACTION_NOT_YET_ISOLATED",
+            "not_claimed": [
+              "Stage6 PASS",
+              "395 persisted",
+              "Universal roundtrip PASS",
+              "Stage7 relock"
+            ]
+          },
+          "artifact": {
+            "filename": "Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-TRANSACTIONAL-COMMIT-CHECKPOINT.zip",
+            "sha256": "5a2539bebfc2ecdb41a11494001d1cb79ca0292e1daa986a239f868db82053ee",
+            "size_bytes": 669386,
+            "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Stage6-BLOCKED-TRANSACTIONAL-COMMIT-CHECKPOINT.zip",
+            "library_file_id": "file_000000005cd081f4995eec1247ca626f",
+            "library_stable_id": "libfile_503d4b14f320819181705ca720748840",
+            "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+          },
+          "protected_state": {
+            "semantic_content_mutated": false,
+            "runtime_code_mutated": false,
+            "stage5_repair_remains_authority": true
+          },
+          "next_action": "Open a narrow Stage6 persistence-differential diagnosis. Isolate which repaired projection field/value causes v451 post-publish verification to fail, using the immutable repaired Stage5 dataset as authority. Do not regenerate semantic content and do not begin Stage7."
         }
       }
     },

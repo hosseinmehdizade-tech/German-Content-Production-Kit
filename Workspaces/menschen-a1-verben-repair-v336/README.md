@@ -1,30 +1,21 @@
 # Menschen A1 Verben Repair v3.3.6
 
-Current durable milestone: **Stage6 Runtime & Presentation Acceptance PASS on exact CURRENT v451-R85**.
+Final durable state: **Stage7 exact-final RELOCKED PASS on German Flashcards Pro v451-R85**.
 
-- Runtime: **German Flashcards Pro v451-R85**, CURRENT = LAST_FULLY_VERIFIED
-- Runtime artifact SHA-256: `27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4`
-- Internal runtime SHA256SUMS: **298/298 PASS**
-- Stage5 dataset: **310 cards = 247 Verb + 63 Expression**
-- Card type: **310/310 de-vocabulary**
-- Presentation contract: **gfp-vocabulary-neutral@1 on 310/310**
+- Release: `German-Flashcards-Pro-v451-R85-Menschen-A1-Verben-v3.3.6-Repair1-RELOCKED.zip`
+- Release SHA-256: `cf3cc7e28f8af43369a2cf56d293f095c4524841e796a7d171d23d19b36036c3`
+- Runtime `01-App`: **71/71 byte-identical to exact VERIFIED/FINAL v451-R85**
+- Content: **310 cards = 247 Verb + 63 Expression**
+- Presentation: **310/310 de-vocabulary + gfp-vocabulary-neutral@1**
 - Examples: **1240 DE + 1240 FA + 1240 EN**
 - Relations: **768**
-- Source audio: **310 refs / 275 unique; zero-audio targets ma1m-lu-0073 and ma1m-lu-0074**
-- Import-ready SHA-256: `ce86e7b3df447a77f6fdff74b8f2cd493804031ad4e4594070b634cdcd8029b7`
-- Stage6 checkpoint SHA-256: `102dddf34c7ff862c99d07e470c57d8a0fc042113ac924a460afa823a3702e70`
-- Phase1 import/presentation: **48/48 PASS**
-- Phase2 authority roundtrip: **26/26 PASS**
-- v451 neutral-envelope regression: **21/21 PASS**
-- Combined: **95/95 PASS**
-- Commit manifest: **VERIFIED / 310**; runtime index **310/310**; storage **READY**
-- Study / Quick / Typing / Audio all cover the full 310-card library.
-- Post-package: **CRC PASS; manifest 26/26; SHA256SUMS 27/27; JSON 20/20; hygiene PASS**
-- Library rematerialization: **PASS exact SHA-256 + byte compare**
-- Runtime/UI changed: **NO**
+- Source audio: **310 refs / 275 unique**; zero-audio targets: `ma1m-lu-0073`, `ma1m-lu-0074`
+- Exact-final acceptance: **95/95 PASS = 48/48 Phase1 + 26/26 Phase2 + 21/21 v451 envelope**
+- Commit manifest: **VERIFIED / 310**
+- Static post-package: **CRC PASS; root SHA256SUMS 326/326; 327 package files; runtime 71/71 exact; JSON 140/140; hygiene PASS**
+- Library release rematerialization: **PASS exact SHA-256 + byte compare**
+- Stage7 checkpoint SHA-256: `3ae554eda62de03e8fe95a97fc3e85cfc7f33477a987ffe600790fb8976f02e1`
+- Content lock state: **RELOCKED**
+- Visible UI change: **NONE**
 
-Runtime normalization collapsed one redundant space in a provenance-only Persian source seed for `ma1m-lu-1267`; learner-facing semantic content is unchanged.
-
-Same-profile Windows/Chrome visual/import/reload/PWA/offline acceptance is inherited from exact v451 FINAL because Stage6 is content-only and does not change runtime/offline/storage/deployment semantics.
-
-Next milestone: **Stage7 exact-final release + post-package verification + re-lock**.
+This repair successor is complete. Do not regenerate or mutate the relocked content without a real defect or an explicitly opened new repair successor. Runtime may advance independently.

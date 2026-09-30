@@ -1,25 +1,20 @@
 # Menschen A2 Verben Repair v3.3.6
 
-Current durable milestone: **Stage5 Clean Delivery Projection PASS**.
+Current durable milestone: **Stage6 Runtime & Presentation Acceptance PASS on exact CURRENT v451-R85**.
 
-- Upstream Stage4 canonical remains authoritative: **292 targets = 228 verbs + 64 expressions**
-- Stable IDs/order: **292/292 preserved**
-- Examples preserved: **1168 DE + 1168 FA + 1168 EN**
-- Semantic relation graph preserved: **1205 relations**
-- Stage5 projection: **292/292 de-vocabulary**
-- Presentation contract: **gfp-vocabulary-neutral@1 — 292/292**
-- Hidden/nested presentation selector conflicts: **0**
-- Dataset: `A2-VERBEN-UNIVERSAL-v2.tsv`
-- Dataset SHA-256: `704a928de4149c2c7e34cfd64f00ed9bf38008b421067a58e49c5c14a4a87172`
-- Projected-cards SHA-256: `15ff751500766608871618f2a12d780fccb066acdc64b1ae3a050e23a37022fe`
-- Source authority: **297 screenshot rows → 336 normalized occurrences → 335 mapped occurrences**, with one explicit retired occurrence; no source audio exists and `SOURCE_HAS_NO_AUDIO` remains explicit.
-- v3.3.6 anti-bypass gates: source occurrence PASS, identity closure PASS, candidate ledger PASS, completeness **4508/4508 / 0 unresolved**, unified vocabulary projection PASS.
-- Independent Stage5 QA: **319/319 PASS**.
-- Post-package: ZIP CRC PASS; manifest **33/33**; SHA256SUMS PASS; fresh unified validator PASS; JSON reparse **27/27**; hygiene PASS.
-- Checkpoint: `Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage5-PASS-CHECKPOINT.zip`
-- Checkpoint SHA-256: `9fe56aabeb55291e1bad0141b58b42d2cf952a70880c2af7b7615d23e522b76a`
-- Clean delivery SHA-256: `996ea2159fbe9d7908b57d4ac4d36ef711de99b71df7eddee0815ea209f14c8b`
-- Library rematerialization: **PASS exact SHA-256 + byte compare** for checkpoint, clean delivery and post-package report.
-- Runtime/UI were not changed.
+- CURRENT = LAST_FULLY_VERIFIED = **v451-R85**; runtime ZIP SHA-256 `27da34ebecde9274aa7323a300aad979325914522460b914139e71f966131be4`.
+- Runtime integrity: **298/298 SHA256SUMS PASS**; app/service-worker hashes match the runtime pin.
+- Stage5 dataset SHA-256: `704a928de4149c2c7e34cfd64f00ed9bf38008b421067a58e49c5c14a4a87172`.
+- Stage6 import-ready ZIP: `749dabb510126612eb9951fc3437f0887b7de18f5c3417f71e834d0c971b4700`; its TSV is byte-identical to Stage5.
+- Import: **292/292 active + persisted**, BUILD-METADATA SHA verified, manifest VERIFIED, runtime index **292/292**, storage READY.
+- Presentation: **292/292 de-vocabulary + gfp-vocabulary-neutral@1**; 0 legacy verb behavior; 0 v217 Study geometry; 292/292 canonical Study columns.
+- Semantics preserved: **228 verb + 64 phrase**, **1168 DE + 1168 FA + 1168 EN**, **1205 relations**, 0 source-audio refs.
+- Study/Quick/Typing/Audio: full **292/292** scope.
+- Roundtrip: IDs/membership/faces exact; canonical_unit and canonical_relations deep parity **292/292**.
+- Acceptance: **47/47 + 20/20 + 21/21 = 88/88 PASS**.
+- Managed localhost navigation is blocked by administrator policy. Exact v451 is already VERIFIED/FINAL from same-profile Windows/Chrome visual/import-reload/PWA/offline acceptance, inherited here because Stage6 changes content only.
+- Checkpoint SHA-256: `da5e8d6e253f6f1948930791fb4fe1093651c2a48970cab3924585ccc112eded`.
+- Library rematerialization: **PASS exact SHA-256 + byte compare**.
+- Visible UI change: **none**. Content is **not re-locked yet**.
 
-Next milestone: **Stage6 Runtime & Presentation Acceptance**. Re-resolve Flashcards CURRENT at execution; do not bind Stage5 to an older runtime.
+Next: **Stage7 exact-final organized release + re-lock**.

@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-19T01:45:00+02:00",
-  "updated_version": "artifact-first-batch0003-portable-verified-v2",
-  "status": "PRODUCTION_IN_PROGRESS",
+  "updated_at": "2026-09-30T17:22:10Z",
+  "updated_version": "n0-authority-recovery-blocked-v1",
+  "status": "RECOVERY_BLOCKED",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -15,12 +15,14 @@
   "authority": {
     "bootstrap": "German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md",
     "project_state": "German-Content-Production-Kit/main/PROJECT-STATE.json",
-    "active_prompt": "Prompt/START-PROMPT-v3.1.12.md",
+    "active_prompt": "Prompt/START-PROMPT-v3.3.6.md",
     "source_access_protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
     "source_registry": "SOURCE-REGISTRY.json",
     "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
     "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
-    "runtime_authority": "resolve only at actual Stage 6 integration/acceptance time from newest verified German-Flashcards-Pro artifact/state"
+    "runtime_authority": "resolve only at actual Stage 6 integration/acceptance time from newest verified German-Flashcards-Pro artifact/state",
+    "project_memory": "PROJECT-MEMORY.json",
+    "git_sync_policy": "GIT-SYNC-POLICY.json"
   },
   "source_identity": {
     "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
@@ -202,5 +204,44 @@
     "binary_zip_in_git": "NOT_REQUIRED",
     "automatic_base64_materialization": "DISABLED"
   },
-  "next": "Start Batch0004 from the verified 126-card state. Select the next 100 safe expressions from the authoritative PDF while preserving source-bullet stable IDs, quarantine ambiguous/polysemous items, and run content/evidence/QA/delivery. Do not redo Batch0001-0003 B1-B5. Defer cumulative targeted V4 browser import/persistence/reload acceptance until the app entrypoint can execute in an allowed browser environment."
+  "next": "Locate/provide exact Batch0003 portable SHA 7581cfc6...e1df or a provably complete canonical+projected+QA 126-card state; rerun N0.",
+  "n0_authority_recovery": {
+    "state": "RECOVERY_BLOCKED",
+    "mission_id": "NVV-20260930-191703-62d9f3",
+    "source_sha256_verified": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "required_batch0003_artifact": {
+      "filename": "NVV-Production-Checkpoint-Batch0003.zip",
+      "sha256": "7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df",
+      "accessible_current_chat_project_library": false,
+      "promoted_to_working_authority": false
+    },
+    "historical_claims": {
+      "batch0001_0002_cards": 26,
+      "batch0003_cards": 100,
+      "cumulative_claimed_cards": 126,
+      "disposition": "PRESERVED_AS_HISTORICAL_EVIDENCE_NOT_WORKING_BYTES"
+    },
+    "git_recovery": {
+      "base64_binary_transport_authority": false,
+      "staged_materialization_status": "FAIL",
+      "forensic_zip_open": "FAIL_NOT_A_ZIP",
+      "policy": "MEM-005"
+    },
+    "portable_blocked_checkpoint": {
+      "filename": "NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
+      "sha256": "8f079851ffb24cad7c63bf8f4acae0bab863e515a7486e50f3e364e04f30ef9a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
+      "library_file_id": "file_00000000e0e4820a9528f80c868ed8f4",
+      "library_stable_id": "libfile_cc4d0098b66c81919fffc8f809311ba2",
+      "upload_status": "SUCCEEDED",
+      "zip_crc_local": "PASS"
+    },
+    "blocker": "Exact Batch0003 portable authority is unavailable on accessible current-chat/Project/Library surfaces and no alternative complete canonical+projected+QA 126-card payload has been proven without loss.",
+    "no_loss_rules": [
+      "DO_NOT_START_BATCH0004",
+      "DO_NOT_REGENERATE_BATCH0003_FROM_MEMORY",
+      "DO_NOT_REPAIR_GIT_BASE64_AS_DEFAULT_RECOVERY"
+    ],
+    "next_action": "Locate/provide exact Batch0003 portable SHA 7581cfc6...e1df or a provably complete canonical+projected+QA 126-card state; rerun N0."
+  }
 }

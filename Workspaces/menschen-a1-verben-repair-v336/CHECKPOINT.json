@@ -2,8 +2,8 @@
   "schema": "menschen-a1-verben-repair-v336-checkpoint@1.0.0",
   "workstream": "menschen-a1-verben-repair-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "STAGE3B_COMPLETE__NVV_100_PERCENT_DISPOSITION_PASS__ALL_4776_CELLS_FINAL__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_NVV_FINAL_CLOSURE_PASS",
+  "status": "STAGE3C_COMPLETE__DISPOSITION_CLOSURE_PASS__4776_OF_4776_FINAL__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3C_DISPOSITION_CLOSURE_PASS",
   "parent_locked": {
     "filename": "German-Flashcards-Pro-v435-R69-Menschen-A1-Verben-v3.3.2-LOCKED.zip",
     "sha256": "6651704a8a508f66cd850a88565be6a151e047d442e8c375c3860beff5b266db",
@@ -58,7 +58,7 @@
     }
   },
   "candidate_ledger": {
-    "state": "STAGE3B_COMPLETE_709_ACCEPTED_1475_REJECTED",
+    "state": "STAGE3C_CLOSED_709_ACCEPTED_1475_REJECTED_0_DEFERRED",
     "official_validator": "PASS"
   },
   "official_v336_validators": "4/4 PASS",
@@ -76,9 +76,9 @@
     "library_file_id": "file_00000000673882109397d9166360290c",
     "library_stable_id": "libfile_0e782923630c8191a0237a2cac7b99d7"
   },
-  "next_action": "Run Stage3C disposition closure over all 4776 final Stage3B cells; independently confirm VERIFIED_PRESENT/CLOSED_NO_FORCE/NOT_APPLICABLE and dependency fingerprints before Stage4.",
+  "next_action": "Run Stage4 independent linguistic/lexical re-audit against the exact Stage3C canonical/evidence/disposition state; do not trust Stage3 self-report.",
   "stage3b": {
-    "status": "PASS_ALL_STAGE3B_DIMENSIONS_100_PERCENT_DISPOSITION__STAGE3C_PENDING",
+    "status": "PASS_ALL_STAGE3B_DIMENSIONS_100_PERCENT_DISPOSITION",
     "strategy": "gap-driven enrichment; semantic/evidence-route clusters; no arbitrary ID batches; no density chasing",
     "completed_clusters": [
       "definition_de MUST_HAVE wrong-language defects: 3/3 closed",
@@ -133,7 +133,7 @@
       "final_cells": 4776,
       "unresolved_cells": 0,
       "baseline_unresolved_cells": 2152,
-      "status": "STAGE3B_ALL_DIMENSIONS_FINAL_PENDING_STAGE3C"
+      "status": "STAGE3B_COMPLETE"
     },
     "validation": {
       "nvv_final_closure": "PASS_310_REVIEWED_31_VERIFIED_279_CLOSED_NO_FORCE_28_RELATIONS_3_SELF",
@@ -301,6 +301,76 @@
       "source_route": "NOMEN_VERB_VERBINDUNGEN exact source-listed NVV/FVG connection + active-sense alignment",
       "source_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
       "safety_rule": "No shared-verb collocation, wrong-sense phrase, or broad semantic association was forced as NVV."
+    }
+  },
+  "stage3c": {
+    "status": "PASS_STAGE3C_DISPOSITION_CLOSURE",
+    "dimension_cells": 4776,
+    "final_cells": 4776,
+    "unresolved_cells": 0,
+    "verified_present": 3304,
+    "closed_no_force": 1472,
+    "not_applicable": 0,
+    "requirement_classes": {
+      "MUST_HAVE": {
+        "VERIFIED_PRESENT": 1923
+      },
+      "REVIEW_TO_CLOSURE": {
+        "VERIFIED_PRESENT": 1073,
+        "CLOSED_NO_FORCE": 1470
+      },
+      "OPTIONAL": {
+        "VERIFIED_PRESENT": 308,
+        "CLOSED_NO_FORCE": 2
+      }
+    },
+    "closed_no_force_reason_counts": {
+      "SOURCE_ROUTE_EXHAUSTED": 1417,
+      "SOURCE_HAS_NO_AUDIO": 2,
+      "NO_SENSE_SAFE_CANDIDATE": 18,
+      "CONSTRUCTION_FIXED_NO_SLOT": 35
+    },
+    "candidate_ledger": {
+      "total": 2184,
+      "accepted": 709,
+      "rejected": 1475,
+      "deferred": 0
+    },
+    "canonical_sha256": "9b4a58b6002e8ea9d3c521367d4cdf14941af41b094511dd853a89703017e0b4",
+    "relations": {
+      "count": 769,
+      "sha256": "c93e18fd030ae39b80f7a009e2022f6998c473ccd8a33a59bd7a1b10b158153d",
+      "unchanged": true
+    },
+    "dependency_fingerprints": {
+      "canonical_sha256": "9b4a58b6002e8ea9d3c521367d4cdf14941af41b094511dd853a89703017e0b4",
+      "resolved_policy_sha256": "147cf7c81d8e74b00ce7eb1d8833549729a7bb14f49bc9ae6f1daa71a52abc12",
+      "identity_closure_sha256": "bb3c099663a54015cf71b7be0e9ff7537177aca766a571a69c1e4e58c8dbd7c9",
+      "dataset_profile_sha256": "d0563205a66b181bbf06a51cf3b1320e171c16e3e3c7ae89b02b80f0605a22e5",
+      "source_occurrences_sha256": "c9a91a60ef234fffd091b3895c9205f356db4c1c42573eb315502b2e40b1cbed"
+    },
+    "mutation_boundary": "Disposition certification only. Canonical lexical content, 769 relation records, stable IDs/order, definitions, translations, morphology, 1240 examples, expression structure, runtime and UI are unchanged.",
+    "validation": {
+      "fresh_validators": "7/7 PASS",
+      "completeness_mode": "closure",
+      "candidate_ledger_mode": "closure",
+      "zip_crc": "PASS",
+      "manifest_rehash": "152/152 PASS",
+      "sha256sums": "153/153 PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_NESTED_ZIP",
+      "canonical_byte_compare_to_stage3b": "PASS",
+      "candidate_ledger_byte_compare_to_stage3b": "PASS",
+      "target_matrix_content_compare_to_stage3b": "PASS",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
+      "sha256": "aa41e69b33b31435562ec43a6382ef01f0ec7b9e900038c4653095dd2734cc73",
+      "size_bytes": 6547421,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-PostLock-Repair1-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
+      "library_file_id": "file_000000007e9881f4aedd8b9db3b1a0c1",
+      "library_stable_id": "libfile_b857171c1b448191ba3557610fa4005f",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
   }
 }

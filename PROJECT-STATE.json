@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-30T18:45:00+02:00",
+  "updated_at": "2026-09-30T23:15:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -201,7 +201,20 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Fresh Stage1/N1 source inventory from the registered 26-page PDF under active v3.3.6."
+      "next_action": "Fresh Stage1/N1 source inventory from the registered 26-page PDF under clean long-run v2; continue into Stage2 in the same turn when safe.",
+      "autorun": {
+        "status": "ACTIVE_CLEAN_LONGRUN_V2",
+        "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
+        "mission_key": "NVV-CLEAN-LONGRUN-R2",
+        "profile": "continuous_safe",
+        "turn_policy": "CONTINUOUS_SAFE",
+        "superbatch_target": 500,
+        "atomic_shard_default": 100,
+        "atomic_shard_hard_max": 200,
+        "auto_continue_across_turns": true,
+        "silent_recovery_delay_seconds": 300,
+        "old_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART"
+      }
     },
     "lesen_praesentation": {
       "status": "ACTIVE",

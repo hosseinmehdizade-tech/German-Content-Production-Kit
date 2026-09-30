@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-01T01:34:00+02:00",
-  "updated_version": "stage3b-superbatch0004-core2000-qa-pass-v1",
-  "status": "STAGE3B_SUPERBATCH0004_CORE500_QA_PASS_RELATIONS_PENDING",
+  "updated_at": "2026-10-01T01:43:00+02:00",
+  "updated_version": "stage3b-superbatch0005-safe-core2490-qa-pass-v1",
+  "status": "STAGE3B_SUPERBATCH0005_SAFE_CORE2490_QA_PASS_RELATIONS_PENDING_REVIEW_QUEUE_3",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -108,22 +108,27 @@
     },
     "3B_gap_driven_enrichment": {
       "state": "IN_PROGRESS",
-      "superbatch_completed_through": "0004_CORE_ONLY",
-      "next_superbatch": "0005",
+      "superbatch_completed_through": "0005_SAFE_CORE_ONLY",
       "relation_closure": "PENDING",
-      "core_enriched_targets": 2000,
+      "core_enriched_targets": 2490,
       "total_targets": 2493,
-      "next_target": "dah-nvv-exp-01990",
-      "review_queue_open": 2,
+      "safe_core_complete": true,
+      "remaining_unenriched_targets": 3,
+      "review_queue_open": 3,
       "qa": {
-        "status": "PASS_CORE_PRESENCE_RELATIONS_PENDING_REVIEW_QUEUE_2",
-        "superbatch0004_cards": 500,
+        "status": "PASS_SAFE_CORE_PRESENCE_RELATIONS_PENDING_REVIEW_QUEUE_3",
+        "superbatch0005_safe_cards": 490,
+        "cumulative_safe_cards": 2490,
         "identity_drift": 0,
-        "exactly_four_examples": 500,
-        "source_provenance_present": 500,
+        "exactly_four_examples": 490,
+        "aligned_fa_en_translation_sets": 490,
+        "source_provenance_present": 490,
+        "exact_duplicate_examples_de": 16,
+        "exact_duplicate_examples_fa": 28,
+        "exact_duplicate_examples_en": 44,
         "independent_stage4_required": true
       },
-      "note": "Superbatch0004 completed 500 safe core-enriched targets. Two source-surface anomalies were quarantined rather than silently corrected; relations remain deferred."
+      "note": "Safe core enrichment reached 2490/2493 canonical targets. Three source-surface anomalies remain quarantined; relation dimensions remain deferred and no relation was fabricated."
     },
     "3C_disposition_closure": {
       "state": "NOT_STARTED"
@@ -144,7 +149,7 @@
   },
   "completed_expression_ids": [],
   "review_queue": {
-    "open_count": 2,
+    "open_count": 3,
     "known_items": [
       {
         "target_id": "dah-nvv-exp-01550",
@@ -153,6 +158,10 @@
       {
         "target_id": "dah-nvv-exp-01584",
         "reason_code": "SOURCE_SURFACE_NOUN_HEADER_MISMATCH"
+      },
+      {
+        "target_id": "dah-nvv-exp-02208",
+        "reason_code": "SOURCE_SURFACE_GRAMMAR_REKTION_REVIEW"
       }
     ]
   },
@@ -195,21 +204,21 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
-    "portable_sha256": "cb5815d0bcc663f6631eaf96a75b8d20febe4e30e4deda25784848a22135433d",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
-    "git": "SYNCING",
+    "quality_authority": "NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
+    "portable_sha256": "340de5782f8930b5a15c9e4259f37c7d4554c456662ecdb521a14192d5472e88",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
+    "git": "SYNCED",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
-        "sha256": "cb5815d0bcc663f6631eaf96a75b8d20febe4e30e4deda25784848a22135433d"
+        "filename": "NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
+        "sha256": "340de5782f8930b5a15c9e4259f37c7d4554c456662ecdb521a14192d5472e88"
       },
       "latest_delta_checkpoint": null,
-      "cumulative_core_enriched": 2000
+      "cumulative_core_enriched": 2490
     }
   },
-  "next": "Start Stage3B Superbatch0005 core enrichment from dah-nvv-exp-01990; keep two source-anomaly items in review queue and preserve deferred relation ledger.",
+  "next": "Run Stage3B corpus relation review plus disposition-closure preparation over 2490 safe core-enriched targets; keep 3 source anomalies in persistent review queue; do not fabricate relations.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -332,6 +341,16 @@
     "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0004-CORE2000-QA-CHECKPOINT.zip",
     "library_file_id": "file_0000000094788210a0458901056bf11b",
     "library_stable_id": "libfile_b0d1c7727d1081919d02a0c2420401c3",
+    "zip_crc": "PASS",
+    "sha256sums": "19/19 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3b_superbatch0005_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
+    "sha256": "340de5782f8930b5a15c9e4259f37c7d4554c456662ecdb521a14192d5472e88",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3B-Superbatch0005-SAFE-CORE2490-QA-CHECKPOINT.zip",
+    "library_file_id": "file_000000007f688210b83ece4b3342c1a4",
+    "library_stable_id": "libfile_b4f4e5029a7c8191ad3257e048ba0619",
     "zip_crc": "PASS",
     "sha256sums": "19/19 PASS",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"

@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.49.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.50.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE3B_NVV_PASS",
-  "status": "V336_COMPATIBILITY_REAUDIT_STAGE3B_NVV_PASS__CONTINUE_STAGE3B",
+  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE5_CLEAN_DELIVERY_PASS",
+  "status": "V336_COMPATIBILITY_CONTENT_SIDE_COMPLETE_THROUGH_STAGE5__STAGE6_RUNTIME_NEXT",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Continue v3.3.6 Stage3B with synonym/antonym/collocation/word_family/related gaps and source-governance revalidation. 1021 unresolved cells remain. Preserve completed argument_slots and nvv_links dispositions, 395 active identities, examples, and source-audio.",
+  "next_action": "Stage6 runtime/import/presentation acceptance on Flashcards CURRENT resolved at execution. Content-side v3.3.6 compatibility is complete through Stage5; preserve 395 identities, 1580 examples, 2526 relations, source audio, and the exact Stage3C canonical hash.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -1284,6 +1284,51 @@
         "prior_relation_changes": 0
       },
       "unresolved_cells_remaining": 1021
+    }
+  },
+  "compatibility_framework": "v3.3.6",
+  "v336_postlock_compatibility": {
+    "status": "PASS_CONTENT_SIDE_COMPLETE_THROUGH_STAGE5",
+    "canonical_sha256": "f5213fc8dee198f58904e41ac3b6bc09dd9e334cef07abb4ef713ae6cd8e08db",
+    "canonical_byte_identical_to_stage3b_nvv_checkpoint": true,
+    "active_targets": 395,
+    "examples": 1580,
+    "relations": 2526,
+    "stage3c": {
+      "status": "PASS_100_PERCENT_DISPOSITION",
+      "newly_closed_cells": 1021,
+      "unresolved_cells": 0,
+      "candidate_ledger_candidates": 3991
+    },
+    "source_governance": {
+      "status": "PASS_ALL_331_DISPOSED",
+      "direct_print_revalidation": 257,
+      "explicit_inherited_governance_review": 74,
+      "semantic_mutations": 0
+    },
+    "stage4": {
+      "status": "PASS_INDEPENDENT_REAUDIT"
+    },
+    "stage5": {
+      "status": "PASS_CLEAN_DELIVERY_ANTI_BYPASS",
+      "clean_delivery_sha256": "a8fe83b5272dc516c55568a7adaceb69d72a78d1c9093a8233a3e6229db47820",
+      "cards": 395,
+      "card_type": "de-vocabulary",
+      "presentation_contract": "gfp-vocabulary-neutral@1"
+    },
+    "checkpoint": {
+      "filename": "Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage5-COMPLETE-CHECKPOINT.zip",
+      "sha256": "3040e2ea8cb78d711df21c4809ccffbff505989c391edb42795cbd1f57ad0be2",
+      "size_bytes": 3114183,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage5-COMPLETE-CHECKPOINT.zip",
+      "library_file_id": "file_000000002ec882109829c1fa3bee619c",
+      "library_stable_id": "libfile_3e1bcbbe086c81918f38210e0e27d62d"
+    },
+    "protected_state": {
+      "identity_changes": 0,
+      "example_changes": 0,
+      "relation_changes": 0,
+      "source_audio_changes": 0
     }
   }
 }

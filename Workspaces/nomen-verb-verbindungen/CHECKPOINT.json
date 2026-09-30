@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T21:10:00+02:00",
-  "updated_version": "clean-restart-baseline-v1-autorun-longrun-v2-controller-v3.3.0",
-  "status": "CLEAN_RESTART_BASELINE_READY",
+  "updated_at": "2026-09-30T21:26:00+02:00",
+  "updated_version": "stage1-fresh-inventory-pass-v1",
+  "status": "STAGE1_FRESH_INVENTORY_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -60,11 +60,19 @@
       "note": "User explicitly authorized clean restart. Historical NVV outputs remain archived but are not working authority."
     },
     "1_source_inventory": {
-      "state": "NOT_STARTED",
+      "state": "PASS",
       "metrics": {
-        "items": 0
+        "items": 2476,
+        "fvg": 859,
+        "idiom_redewendung": 519,
+        "general_nvv": 1098,
+        "slash_variant_review_required": 222,
+        "source_marker_anomalies": 1,
+        "missing_noun_header": 0
       },
-      "note": "Recompute from the 26-page registered PDF under v3.3.6."
+      "occurrence_stream_sha256": "6856c2801e742d02a88108dedc556a4aa7d54bb8cc18cb3a26032fb07fae5985",
+      "source_occurrences_validator": "PASS_2476",
+      "note": "Fresh clean-restart inventory derived from registered 26-page source under v3.3.6. Historical inventory used only for regression and exposed one omitted source-visible item plus header/wrapped-line defects."
     },
     "2_identity_closure": {
       "state": "NOT_STARTED",
@@ -137,13 +145,13 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-CLEAN-RESTART-BASELINE-v1.zip",
-    "portable_sha256": "b207db91e59b69e4380105c4c4a5cd9f03da4af11b27a7124940148eb6c92a44",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-CLEAN-RESTART-BASELINE-v1.zip",
-    "git": "COMPACT_METADATA_SYNCED",
+    "quality_authority": "NVV-v3.3.6-Stage1-FRESH-INVENTORY-PASS-CHECKPOINT.zip",
+    "portable_sha256": "c0e2e9be96e056f99afcc41993ed7ea7f5d9fa97b2d26434918b20d18a7725c1",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage1-FRESH-INVENTORY-PASS-CHECKPOINT.zip",
+    "git": "SYNCING_STAGE1_COMPACT_METADATA",
     "binary_zip_in_git": "NOT_REQUIRED"
   },
-  "next": "Run fresh Stage1/N1 source inventory from the registered 26-page PDF under NVV-AUTORUN-MASTER-MISSION-v2; continue into Stage2 in the same turn when safe.",
+  "next": "Run fresh Stage2 identity closure from Stage1 SOURCE-OCCURRENCES.json; historical generated IDs are not authority.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -181,5 +189,14 @@
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     }
+  },
+  "stage1_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage1-FRESH-INVENTORY-PASS-CHECKPOINT.zip",
+    "sha256": "c0e2e9be96e056f99afcc41993ed7ea7f5d9fa97b2d26434918b20d18a7725c1",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage1-FRESH-INVENTORY-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000c09481f49f5e737ba025f3c8",
+    "library_stable_id": "libfile_7e577a22ce308191a06583f570a04439",
+    "zip_crc": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

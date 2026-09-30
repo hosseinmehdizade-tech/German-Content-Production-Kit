@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-09-30T22:18:00+02:00",
-  "updated_version": "stage2-identity-closure-pass-v1",
-  "status": "STAGE2_IDENTITY_CLOSURE_PASS",
+  "updated_at": "2026-09-30T22:22:00+02:00",
+  "updated_version": "stage3a-baseline-richness-pass-v1",
+  "status": "STAGE3A_BASELINE_RICHNESS_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -92,10 +92,25 @@
       "note": "Fresh Stage2 derived only from fresh Stage1 occurrence authority. Historical generated cards/IDs were not used as seed authority; historical counts were compared only after closure."
     },
     "3A_baseline_richness_audit": {
-      "state": "NOT_STARTED"
+      "state": "PASS",
+      "metrics": {
+        "targets": 2493,
+        "dimension_cells": 42381,
+        "unresolved_cells": 39888,
+        "missing_actionable_cells": 39888,
+        "not_applicable_cells": 2493
+      },
+      "resolved_policy_id": "gfp-default-lexical-enrichment@1.0.0::resolved::nomen-verb-verbindungen@1.0.0",
+      "resolved_policy_sha256": "9cfa9023a1e29e7b00827a36d6ea24af237fb1649f59d7a247cc5f9d77b57495",
+      "canonical_sha256": "e6fa15baf2dc42d0158d316cceb48722814e52ccde3eb48611cd53f6ef01a4d8",
+      "validator": "PASS_BASELINE_2493_TARGETS_42381_CELLS",
+      "note": "Complete v3.3.6 Stage3A matrix persisted before enrichment; source_audio is NOT_APPLICABLE for this no-media workstream and all remaining applicable gaps are explicit."
     },
     "3B_gap_driven_enrichment": {
-      "state": "NOT_STARTED"
+      "state": "NOT_STARTED",
+      "next_superbatch": "0001",
+      "target_start": "dah-nvv-exp-00001",
+      "superbatch_target_safe_cards": 500
     },
     "3C_disposition_closure": {
       "state": "NOT_STARTED"
@@ -158,13 +173,13 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
-    "portable_sha256": "72a123ca47581e2b6816aa59d4b430898761ce03d66f0d9a9828dbf8170bf131",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
+    "quality_authority": "NVV-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
+    "portable_sha256": "2f6377feb9ced614d090d87be343c616b4b1f6a02f50b7d486d7f00041816a65",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
     "git": "COMPACT_METADATA_SYNCED",
     "binary_zip_in_git": "NOT_REQUIRED"
   },
-  "next": "Run Stage3A baseline richness/applicability audit over the fresh 2493-target Stage2 canonical authority.",
+  "next": "Stage3B Superbatch0001: gap-driven enrichment from dah-nvv-exp-00001, using atomic shards with ~500-target durable superbatch boundary.",
   "autorun": {
     "status": "ACTIVE",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -218,6 +233,15 @@
     "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
     "library_file_id": "file_00000000312482108f28249c11666225",
     "library_stable_id": "libfile_4d621e5555b88191b03bdd40c623c00c",
+    "zip_crc": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3a_checkpoint": {
+    "filename": "NVV-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
+    "sha256": "2f6377feb9ced614d090d87be343c616b4b1f6a02f50b7d486d7f00041816a65",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000eb508210abc5147ae78a7e76",
+    "library_stable_id": "libfile_95259040d5f48191a546511c8b7da0b6",
     "zip_crc": "PASS",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }

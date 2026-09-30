@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-09-30T15:47:00+02:00",
+  "updated_at": "2026-09-30T19:37:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,24 +179,29 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "RECOVERY_BLOCKED",
+      "status": "CLEAN_RESTART_BASELINE_READY",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
       "source_manifest": "Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json",
-      "resolution_mode": "PORTABLE_STATE_THEN_GIT",
+      "resolution_mode": "EXPLICIT_USER_RESTART_THEN_PORTABLE_STATE",
       "source_id": "deutsch-aber-hallo-nomen-verb-verbindungen",
-      "last_observed_stage": "N0_authority_recovery",
-      "last_observed_note": "2026-09-30 N0: source SHA a817...258d verified. Exact claimed Batch0003 portable NVV-Production-Checkpoint-Batch0003.zip SHA 7581...e1df not found on accessible current-chat/Project/Library surfaces; historical Git/Base64 materialization is failed/non-authoritative. Preserve 126-card claim as historical evidence only; do not start Batch0004.",
-      "recovery_blocked_checkpoint": {
-        "filename": "NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
-        "sha256": "8f079851ffb24cad7c63bf8f4acae0bab863e515a7486e50f3e364e04f30ef9a",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip",
-        "library_file_id": "file_00000000e0e4820a9528f80c868ed8f4",
-        "library_stable_id": "libfile_cc4d0098b66c81919fffc8f809311ba2",
-        "status": "UPLOADED_SELF_VERIFYING_LOCAL_CRC_PASS"
+      "restart_id": "NVV-RESTART-20260930-R1",
+      "restart_scope": "from zero; historical batches are archive-only",
+      "source_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+      "current_new_run_completed_cards": 0,
+      "current_new_run_completed_batches": 0,
+      "clean_restart_checkpoint": {
+        "filename": "NVV-CLEAN-RESTART-BASELINE-v1.zip",
+        "sha256": "b207db91e59b69e4380105c4c4a5cd9f03da4af11b27a7124940148eb6c92a44",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-CLEAN-RESTART-BASELINE-v1.zip",
+        "library_file_id": "file_000000003614821098f42c12816ffb57",
+        "library_stable_id": "libfile_622aa85c3ab88191814a35d546053c57",
+        "status": "PASS_SELF_VERIFYING_BASELINE"
       },
-      "next_action": "Locate/provide exact Batch0003 portable SHA 7581cfc6...e1df or a provably complete canonical+projected+QA 126-card state; rerun N0 before Batch0004."
+      "historical_state_preserved": true,
+      "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
+      "next_action": "Fresh Stage1/N1 source inventory from the registered 26-page PDF under active v3.3.6."
     },
     "lesen_praesentation": {
       "status": "ACTIVE",

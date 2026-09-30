@@ -1915,10 +1915,44 @@
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
           },
-          "next_action": "Continue Stage3B with word_family (292 unresolved), then NVV (291), using evidence-backed VERIFIED_PRESENT or explicit CLOSED_NO_FORCE; no density chasing.",
+          "next_action": "On the next turn, rebuild once from the stable Antonym checkpoint with the validator wrapper accepting either top-level status or summary.status, then complete validators/package/Library/Git sync if PASS.",
           "relations": 1132,
           "historical_repair1_relations_preserved": 999,
-          "pre_synonym_relations_preserved": 1010
+          "pre_synonym_relations_preserved": 1010,
+          "pending_word_family_attempt": {
+            "schema": "menschen-a2-verben-repair-v336-word-family-blocker@1.0.0",
+            "status": "BLOCKED_VALIDATION_WRAPPER_AFTER_ONE_CORRECTED_RETRY",
+            "stable_authority_unchanged": {
+              "status": "PASS_STAGE3B_ANTONYM_CLOSED__LIBRARY_AND_GIT_SYNCED",
+              "artifact": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
+              "sha256": "7180d8d2f50c3bd672a22046032a9d302926a64a554daf2600b5c741402dd4be"
+            },
+            "attempted_word_family_state": {
+              "word_family": "60 VERIFIED_PRESENT + 232 CLOSED_NO_FORCE = 292/292",
+              "relations": "1132 -> 1192; prior 1132 preserved",
+              "candidate_ledger": "1221 = 396 ACCEPTED + 825 REJECTED + 0 DEFERRED",
+              "richness": "4217 final / 291 unresolved; NVV only remains",
+              "local_partial_output": "/mnt/data/a2fix/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT",
+              "accepted_reflexive_exclusions": [
+                "ma2-lu-0145",
+                "ma2-lu-0161",
+                "ma2-lu-0238",
+                "ma2-lu-0256"
+              ]
+            },
+            "validation": {
+              "source_occurrences": "PASS",
+              "identity_closure": "PASS",
+              "candidate_ledger": "PASS",
+              "completeness": "PASS",
+              "profile_contract_underlying_report": "PASS",
+              "wrapper_result": "BLOCKED because validator reports status under summary.status rather than top-level status",
+              "remaining_validators": "NOT_RUN_DUE_TO_EXECUTION_SAFETY_RETRY_LIMIT"
+            },
+            "failure": "Build wrapper expected obj.status == PASS for validate_profile_driven_product_contract_v1_0_1.py, but that validator returns summary.status == PASS.",
+            "safety_action": "Stopped after the one corrected full-build retry. No unvalidated ZIP was promoted or uploaded. Stable authority remains the Antonym checkpoint.",
+            "resume_action": "On the next turn, rebuild once from the stable Antonym checkpoint with the validator wrapper accepting either top-level status or summary.status, then complete validators/package/Library/Git sync if PASS."
+          }
         }
       }
     },

@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.48.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.49.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE3B_ARGUMENT_SLOTS_PASS",
-  "status": "V336_COMPATIBILITY_REAUDIT_STAGE3B_ARGUMENT_SLOTS_PASS__CONTINUE_STAGE3B",
+  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE3B_NVV_PASS",
+  "status": "V336_COMPATIBILITY_REAUDIT_STAGE3B_NVV_PASS__CONTINUE_STAGE3B",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Continue v3.3.6 Stage3B from the argument-slots closure checkpoint. 1416 unresolved cells remain across synonym/antonym/collocation/word_family/related/NVV; revalidate flagged existing relation evidence against approved authorities. Preserve 395 active identities and the completed argument-slot dispositions.",
+  "next_action": "Continue v3.3.6 Stage3B with synonym/antonym/collocation/word_family/related gaps and source-governance revalidation. 1021 unresolved cells remain. Preserve completed argument_slots and nvv_links dispositions, 395 active identities, examples, and source-audio.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -1237,7 +1237,53 @@
           "bounded_diff": "PASS"
         },
         "report": "Workspaces/menschen-b1-verben-migration/V336-STAGE3B-ARGUMENT-SLOTS-CLOSURE.md"
-      }
+      },
+      "nvv_links": {
+        "status": "PASS_100_PERCENT_DISPOSITION_LIBRARY_AND_GIT_SYNCED",
+        "reviewed": 395,
+        "verified_present": 31,
+        "closed_no_force": 364,
+        "remaining": 0,
+        "intrinsic_nvv": 15,
+        "new_relations": 16,
+        "expression_type_repairs": {
+          "total": 4,
+          "to_nvv": [
+            "mb1m-lu-0016",
+            "mb1m-lu-0134",
+            "mb1m-lu-0222"
+          ],
+          "to_idiom": [
+            "mb1m-lu-0107"
+          ]
+        },
+        "successor_canonical_sha256": "f5213fc8dee198f58904e41ac3b6bc09dd9e334cef07abb4ef713ae6cd8e08db",
+        "unresolved_cells_after": 1021,
+        "checkpoint": {
+          "filename": "Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage3B-NVV-CLOSURE-CHECKPOINT.zip",
+          "sha256": "9cab2f96edee908cdf9675bcda1fd354ad44d71431a3ad96fe4feb7041420720",
+          "size_bytes": 2663647,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage3B-NVV-CLOSURE-CHECKPOINT.zip",
+          "library_file_id": "file_000000001bac82439e0b454f55956bd6",
+          "library_stable_id": "libfile_16cdef4c3f948191855ed53c5be54b3b",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "validators": {
+          "completeness_baseline": "PASS",
+          "candidate_ledger_working": "PASS",
+          "targeted_nvv_delta": "PASS",
+          "neutral_projection_395": "PASS",
+          "bounded_diff": "PASS",
+          "zip_crc": "PASS",
+          "checksums": "41/41 PASS"
+        },
+        "report": "Workspaces/menschen-b1-verben-migration/V336-STAGE3B-NVV-CLOSURE.md",
+        "identity_changes": 0,
+        "examples_changed": 0,
+        "source_audio_changed": 0,
+        "prior_relation_changes": 0
+      },
+      "unresolved_cells_remaining": 1021
     }
   }
 }

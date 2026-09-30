@@ -25,7 +25,7 @@ Dependency fingerprints:
 - resolved enrichment policy: `147cf7c81d8e74b00ce7eb1d8833549729a7bb14f49bc9ae6f1daa71a52abc12`
 - identity closure: `bb3c099663a54015cf71b7be0e9ff7537177aca766a571a69c1e4e58c8dbd7c9`
 - dataset profile: `d0563205a66b181bbf06a51cf3b1320e171c16e3e3c7ae89b02b80f0605a22e5`
-- source occurrences: `c9a91a60ef234fffd091b3895c9205f356db4c1c42573eb315502b2e40b1cbed`
+- source occurrences: `043b9a43cd95f0bd27cd4671822bd963e03780250939bfac336e74405456b6b4`
 
 Stage3C is certification, not enrichment: no canonical lexical content, relations, examples, morphology, structure, runtime or UI were changed.
 

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-29T12:20:00+02:00",
+  "updated_at": "2026-09-30T19:37:00+02:00",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -140,6 +140,28 @@
       "decision": "Presentation identity and linguistic semantics are orthogonal. New ordinary vocabulary uses explicit de-vocabulary plus gfp-vocabulary-neutral@1; POS/morphology/gender/Rektion/structure remain semantic. Presentation-selector namespaces are closed recursively and case-insensitively; source_schema_profile is provenance-only. Runtime inference is legacy fallback only when supported explicit type is absent.",
       "safe_default": "EXPLICIT_PRESENTATION_IDENTITY_SEMANTICS_NEVER_RECLASSIFY",
       "related_runtime": "German-Flashcards-Pro v451-R85"
+    },
+    {
+      "id": "MEM-NVV-001-CLEAN-RESTART",
+      "status": "ACTIVE",
+      "date": "2026-09-30",
+      "category": "content_authority",
+      "scope": "standalone nomen-verb-verbindungen workstream only",
+      "incident": "The old NVV run became blocked because the exact Batch0003 portable authority could no longer be materialized, while historical metadata still claimed 126 completed-or-bounded-PASS cards.",
+      "decision": "Hossein explicitly authorized restarting the standalone NVV production from zero. The registered source remains authoritative; all prior generated NVV batches/cards/checkpoints are archive/audit evidence only and do not seed the new run.",
+      "explicit_user_approval": "Hossein explicitly chose a clean restart from zero on 2026-09-30.",
+      "supersedes_workstream_rules": [
+        "NVV N0 no-regeneration recovery gate",
+        "previous Batch0001-0003 preservation as working authority"
+      ],
+      "preserves": [
+        "source fidelity and registered source identity",
+        "no Git binary transport",
+        "durable turn boundaries",
+        "MEM-009 one-card multi-meaning rule",
+        "neutral vocabulary presentation contract"
+      ],
+      "safe_default": "FRESH_SOURCE_DERIVATION_HISTORY_ARCHIVED"
     }
   ],
   "propagation_rule": {

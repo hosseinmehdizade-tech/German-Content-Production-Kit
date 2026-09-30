@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-b1-verben-migration-checkpoint@1.47.0",
+  "schema": "menschen-b1-verben-migration-checkpoint@1.48.0",
   "workstream": "menschen-b1-verben-migration",
   "framework": "v3.3.2",
-  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE2B_STAGE3A_PASS",
-  "status": "V336_COMPATIBILITY_REAUDIT_STAGE2B_STAGE3A_PASS__STAGE3B_REQUIRED_LIBRARY_AND_GIT_SYNCED",
+  "milestone": "V336_POSTLOCK_COMPATIBILITY_STAGE3B_ARGUMENT_SLOTS_PASS",
+  "status": "V336_COMPATIBILITY_REAUDIT_STAGE3B_ARGUMENT_SLOTS_PASS__CONTINUE_STAGE3B",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "source_manifest": "Workspaces/menschen-b1-verben-migration/SOURCE-MANIFEST.json",
@@ -111,7 +111,7 @@
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
   "runtime_note": "Exact CURRENT v435-R69 remains unchanged and VERIFIED/FINAL. Stage7 content acceptance completed 33/33 via bounded split exact-final execution on byte-identical release bytes.",
-  "next_action": "Continue v3.3.6 Stage3B gap-driven enrichment/revalidation from the exact Stage2B/Stage3A checkpoint. Close 1446 unresolved dimension cells without density forcing; re-evidence 331 source-governance-flagged existing relations against approved authorities where possible. Preserve the 395 active identities, examples and source-audio unless a real evidence-backed defect is found.",
+  "next_action": "Continue v3.3.6 Stage3B from the argument-slots closure checkpoint. 1416 unresolved cells remain across synonym/antonym/collocation/word_family/related/NVV; revalidate flagged existing relation evidence against approved authorities. Preserve 395 active identities and the completed argument-slot dispositions.",
   "stage4": {
     "state": "COMPLETE_PASS",
     "active_targets": 400,
@@ -1211,6 +1211,33 @@
     },
     "content_mutation": false,
     "visible_ui_change": "NONE",
-    "report": "Workspaces/menschen-b1-verben-migration/V336-COMPATIBILITY-REAUDIT-STAGE3A.md"
+    "report": "Workspaces/menschen-b1-verben-migration/V336-COMPATIBILITY-REAUDIT-STAGE3A.md",
+    "stage3b": {
+      "argument_slots": {
+        "status": "PASS_100_PERCENT_DISPOSITION_LIBRARY_AND_GIT_SYNCED",
+        "reviewed": 30,
+        "verified_present": 5,
+        "closed_no_force": 25,
+        "slots_added": 8,
+        "remaining": 0,
+        "successor_canonical_sha256": "e17c48ff99493eae9dc9e5ed32f9b0f853242170971f1f65d10fe00a4f6e375a",
+        "unresolved_cells_after": 1416,
+        "checkpoint": {
+          "filename": "Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage3B-ARGUMENT-SLOTS-CLOSURE-CHECKPOINT.zip",
+          "sha256": "73cb377d358dfda6523129d9b6310398afad131ef2d50d24766b00a849f30077",
+          "size_bytes": 1769246,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-PostLock-Compatibility-Stage3B-ARGUMENT-SLOTS-CLOSURE-CHECKPOINT.zip",
+          "library_file_id": "file_00000000bcf48210b0f43e2300836d28",
+          "library_stable_id": "libfile_d9846a7c724c8191a1460fb6984201a9",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "validators": {
+          "completeness_baseline": "PASS",
+          "candidate_ledger_working": "PASS",
+          "bounded_diff": "PASS"
+        },
+        "report": "Workspaces/menschen-b1-verben-migration/V336-STAGE3B-ARGUMENT-SLOTS-CLOSURE.md"
+      }
+    }
   }
 }

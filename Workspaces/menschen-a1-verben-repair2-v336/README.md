@@ -1,24 +1,23 @@
 # Menschen A1 Verben Repair2 v3.3.6
 
-Current milestone: **Stage6 exact CURRENT runtime acceptance PASS** on German Flashcards Pro **v451-R85**.
+Final durable state: **Stage7 exact-final RELOCKED PASS on German Flashcards Pro v451-R85**.
 
-Repair1 remains immutable; Repair2 Stage5 projection is unchanged during Stage6.
+- Release: `German-Flashcards-Pro-v451-R85-Menschen-A1-Verben-v3.3.6-Repair2-RELOCKED.zip`
+- Release SHA-256: `6b00aa750b182403bc6cd0cb33d45feca354d811501833cb9fa0960f1af4956c`
+- Runtime `01-App`: **71/71 byte-identical to exact VERIFIED/FINAL v451-R85**
+- Content: **310 cards = 247 Verb + 63 Expression**
+- Presentation: **310/310 de-vocabulary + gfp-vocabulary-neutral@1**
+- Examples: **1240 DE + 1240 FA + 1240 EN**
+- Relations: **768**
+- Source audio: **310 refs / 275 unique**; zero-audio targets: `ma1m-lu-0073`, `ma1m-lu-0074`
+- Repair2 defect closure: **247/247 verb core present; 0 literal REKTION; 0 internal structure tokens; 0 duplicate definition notes; 0 synonym type mismatch**
+- Exact-final acceptance: **104/104 PASS = 48/48 Phase1 + 26/26 Phase2 + 9/9 Repair2 defect regression + 21/21 v451 envelope**
+- Commit manifest: **VERIFIED / 310**
+- Static post-package: **CRC PASS; root SHA256SUMS 329/329; 330 files; 377 ZIP members; runtime 71/71 exact; JSON 143/143; hygiene PASS**
+- Library release rematerialization: **PASS exact SHA-256 + byte compare**
+- Stage7 checkpoint SHA-256: `a1c626cea604f6c49679a1f6eb016dd45ccb80519fcbf199e9c551d224c5b500`
+- Repair1 remains immutable.
+- Content lock state: **RELOCKED**
+- Visible UI change: **NONE**
 
-- Phase1 import/presentation: **48/48 PASS**
-- Phase2 persistence/roundtrip: **26/26 PASS**
-- Repair2 defect regression: **9/9 PASS**
-- v451 neutral-envelope regression: **21/21 PASS**
-- Combined: **104/104 PASS**
-- 310/310 cards persisted and indexed
-- 247/247 verb front morphology core present
-- 0 literal REKTION placeholders
-- 0 internal structure role tokens
-- 0 duplicate definition notes
-- 0 synonym type mismatches
-- 768/768 canonical relations preserved
-- Runtime/UI code changed: **NO**
-- Checkpoint SHA-256: `675d29f68dd4b88dd00742fd52e929e42212c2030c0338acd7b1f31793673920`
-- Import-ready SHA-256: `f64f9f2a2b5f6e7b9eb708a4855ed4a5d72aef80b8fc160d8e3c3b759f8e3685`
-- Library rematerialization: **PASS exact SHA-256 + byte compare**
-
-Next: **Repair2 Stage7 exact-final release + post-package verification + re-lock**.
+Repair2 is complete. Do not regenerate or mutate this relocked content without a real defect or an explicitly opened Repair3 successor. Runtime may advance independently.

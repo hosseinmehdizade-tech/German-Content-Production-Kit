@@ -1,18 +1,8 @@
 {
   "schema": "menschen-a2-verben-repair-v336-checkpoint@1.0.0",
-  "workstream": "menschen-a2-verben-repair-v336",
-  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "PASS_STAGE3B_ANTONYM_CLOSED__LIBRARY_AND_GIT_SYNCED",
-  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_ANTONYM_CLOSURE_PASS",
-  "parent_locked": {
-    "filename": "German-Flashcards-Pro-v444-R78-Menschen-A2-Verben-v3.3.2-LOCKED.zip",
-    "sha256": "984cc519057115da49ac2479330704f7ed767e47df38d049330180ff516848b2",
-    "immutable": true
-  },
-  "repair_parent": {
-    "filename": "Menschen-A2-Verben-v3.3.2-PostLock-Repair1-CANDIDATE.zip",
-    "sha256": "04a99671b62beb6900c7bd82789a59d2c28e2c70ce061efded1da751ed83ffaf"
-  },
+  "status": "PASS_STAGE3B_WORD_FAMILY_CLOSED__LIBRARY_AND_GIT_SYNCED",
+  "current_milestone": "POSTLOCK_REPAIR1_STAGE3B_WORD_FAMILY_CLOSURE_PASS",
+  "framework": "v3.3.6",
   "canonical": {
     "sha256": "724ca3639d612ee5d393f938589de3f6b5bd0e875bc009770bfe3f9ad17c3af2",
     "targets": 292,
@@ -21,223 +11,47 @@
     "examples_de": 1168,
     "examples_fa": 1168,
     "examples_en": 1168,
-    "relations": 1132
+    "relations": 1192
   },
-  "stage2b": {
-    "status": "PASS_IDENTITY_CLOSED_NO_MUTATION",
-    "authoritative_source_rows": 297,
-    "normalized_lexical_occurrences": 336,
-    "active_targets": 292,
-    "unique_active_ids": 292,
-    "unresolved_identity_questions": 0,
-    "identity_actions": {
-      "MIGRATE_1_TO_1": 253,
-      "SPLIT_REQUIRED_SOURCE_IDENTITIES": 17,
-      "CONSOLIDATE_LEGACY_SPLITS": 5,
-      "MIGRATE_TO_SURVIVOR": 2,
-      "RETIRE_LEGACY_CARD": 1
-    },
-    "note": "335 active source-to-canonical lexical mappings + 1 excluded nonverb source row. Historical locked bytes and Repair1 semantic content were not mutated."
-  },
-  "stage3a": {
-    "status": "PASS_BASELINE_COMPLETE",
-    "targets": 292,
-    "dimension_cells": 4508,
-    "final_cells": 3009,
-    "unresolved_cells": 1499,
-    "key_gaps": {
-      "structure_components": 64,
-      "argument_slots": 64,
-      "component_relations": 64,
-      "rektion": 41,
-      "synonym": 149,
-      "antonym": 278,
-      "collocation": 38,
-      "word_family": 292,
-      "related": 218,
-      "nvv_links": 291
-    },
-    "source_audio": {
-      "VERIFIED_PRESENT": 0,
-      "CLOSED_NO_FORCE_SOURCE_HAS_NO_AUDIO": 292
-    },
-    "baseline_status": {
-      "definition_de_verified": 292,
-      "meaning_fa_verified": 292,
-      "gloss_en_verified": 292,
-      "morphology_verified": 228,
-      "examples_de_verified": 292,
-      "example_translations_fa_verified": 292,
-      "example_translations_en_verified": 292,
-      "synonym_verified": 143,
-      "antonym_verified": 14,
-      "collocation_verified": 253,
-      "collocation_closed_no_force": 1,
-      "related_verified": 74,
-      "rektion_verified": 251,
-      "nvv_links_verified": 1,
-      "word_family_verified": 0
-    },
-    "candidate_ledger_seed": {
-      "rejected": 1,
-      "target": "ma2-lu-0236",
-      "dimension": "collocation",
-      "reason": "Target is already a fixed multiword construction; redundant self-collocation remains explicitly rejected."
-    }
-  },
-  "validation": {
-    "fresh_current_validators": "6/6 PASS",
-    "profile_contract": "PASS_292_UNITS_1168_EXAMPLES_0_ERRORS_0_WARNINGS",
-    "a2_supplemental": "PASS_0_ERRORS_0_WARNINGS",
-    "source_occurrence": "PASS",
-    "identity_closure": "PASS",
-    "enrichment_completeness_baseline": "PASS",
-    "candidate_ledger": "PASS",
-    "zip_crc": "PASS",
-    "sha256sums": "31/31 PASS",
-    "manifest_rehash": "30/30 PASS",
-    "package_hygiene": "PASS_NO_PYCACHE_PYC"
-  },
-  "artifact": {
-    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-    "sha256": "7180d8d2f50c3bd672a22046032a9d302926a64a554daf2600b5c741402dd4be",
-    "size_bytes": 1829667,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-    "library_file_id": "file_00000000441482438fab81f8b1db1eca",
-    "library_stable_id": "libfile_354bb5e5cbe48191912d119a986d2d0c",
-    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-  },
-  "auxiliary_sidecars": {
-    "post_package_json": "PENDING_LIBRARY_UPLOAD_CONTAINER_SESSION_UNAVAILABLE",
-    "sha256_sidecar": "PENDING_LIBRARY_UPLOAD_CONTAINER_SESSION_UNAVAILABLE",
-    "note": "Non-blocking: the self-verifying main portable checkpoint is durably stored and exact-rematerialized."
-  },
-  "runtime_binding": "NOT_APPLICABLE_TO_THIS_CONTENT_ONLY_MILESTONE__RESOLVE_CURRENT_AT_STAGE6",
-  "next_action": "On the next turn, rebuild once from the stable Antonym checkpoint with the validator wrapper accepting either top-level status or summary.status, then complete validators/package/Library/Git sync if PASS.",
   "stage3b": {
-    "status": "ANTONYM_CLOSED__WORD_FAMILY_AND_NVV_REMAIN",
-    "strategy": "gap-driven enrichment; no density chasing; no fabricated relations",
-    "completed_clusters": [
-      "structure_components: 64/64 VERIFIED_PRESENT",
-      "argument_slots: 54 VERIFIED_PRESENT + 10 CLOSED_NO_FORCE = 64/64 final",
-      "component_relations: 47 VERIFIED targets / 48 exact active-verb links + 17 CLOSED_NO_FORCE = 64/64 final",
-      "Rektion: 261 VERIFIED_PRESENT + 31 CLOSED_NO_FORCE = 292/292 final",
-      "Synonym: 201 VERIFIED_PRESENT + 91 CLOSED_NO_FORCE = 292/292 final",
-      "Collocation: 291 VERIFIED_PRESENT + 1 CLOSED_NO_FORCE = 292/292 final",
-      "Related: 119 VERIFIED_PRESENT + 173 CLOSED_NO_FORCE = 292/292 final",
-      "Antonym: 22 VERIFIED_PRESENT + 270 CLOSED_NO_FORCE = 292/292 final"
-    ],
+    "status": "WORD_FAMILY_CLOSED__NVV_REMAINS",
+    "completed": {
+      "structure_components": "64/64 final",
+      "argument_slots": "64/64 final",
+      "component_relations": "64/64 final",
+      "rektion": "292/292 final",
+      "synonym": "292/292 final",
+      "collocation": "292/292 final",
+      "related": "292/292 final",
+      "antonym": "292/292 final",
+      "word_family": "60 VERIFIED_PRESENT + 232 CLOSED_NO_FORCE = 292/292 final"
+    },
     "candidate_ledger": {
-      "total": 929,
-      "accepted": 336,
-      "rejected": 593,
-      "deferred": 0,
-      "validator": "PASS"
+      "total": 1221,
+      "accepted": 396,
+      "rejected": 825,
+      "deferred": 0
     },
     "richness": {
       "dimension_cells": 4508,
-      "final_cells": 3925,
-      "unresolved_cells": 583,
-      "baseline_unresolved_cells": 1499
+      "final_cells": 4217,
+      "unresolved_cells": 291
     },
-    "mutation_boundary": "Only 8 additive ANTONYM relation records plus Stage3B disposition/ledger metadata. Canonical lexical content, stable IDs/order, meanings, translations, 1168 examples, morphology, prior 1124 relations, runtime and UI are preserved.",
-    "validation": {
-      "fresh_validators": "8/8 PASS",
-      "zip_crc": "PASS",
-      "manifest_rehash": "104/104 PASS",
-      "sha256sums": "105/105 PASS",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-    },
-    "artifact": {
-      "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-      "sha256": "7180d8d2f50c3bd672a22046032a9d302926a64a554daf2600b5c741402dd4be",
-      "size_bytes": 1829667,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-      "library_file_id": "file_00000000441482438fab81f8b1db1eca",
-      "library_stable_id": "libfile_354bb5e5cbe48191912d119a986d2d0c",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-    },
-    "rektion": {
-      "verified_targets": 261,
-      "closed_no_force": 31,
-      "unresolved": 0,
-      "new_relations_this_milestone": 11,
-      "relation_records_total": 307,
-      "evidence_route": "DUDEN_UNIVERSAL primary PASS; VERBEN_MIT_PRAEP_250 secondary available; exact source construction/case markers used only when active-sense aligned",
-      "safety_rule": "No density chasing; free locative/directional adjuncts and wrong-sense branches were not promoted."
-    },
-    "synonym": {
-      "verified_targets": 201,
-      "closed_no_force": 91,
-      "unresolved": 0,
-      "new_relations_this_milestone": 58,
-      "synonym_relation_records_total": 246,
-      "evidence_route": "authoritative Menschen A2 source occurrences + DUDEN_BEDEUTUNG_10",
-      "safety_rule": "Active-sense alignment required; valency/register/polysemy/construction mismatches are not promoted."
-    },
-    "collocation": {
-      "verified_targets": 291,
-      "closed_no_force": 1,
-      "unresolved": 0,
-      "reclassified_existing_connections": 38,
-      "new_relations_this_milestone": 0,
-      "relation_records_total": 412,
-      "finding": "The 38 open collocation cells were Stage3A relation-only false negatives. Repair1 already contained learner-facing connection chunks for all 38, and its QA had already established explicit collocation coverage on 291/292 cards. Closure therefore re-verifies existing canonical evidence instead of duplicating COLLOCATION relations.",
-      "safety_rule": "No duplicate relation creation and no density chasing; existing Repair1 learner chunks are reused as canonical evidence."
-    },
-    "related": {
-      "verified_targets": 119,
-      "closed_no_force": 173,
-      "unresolved": 0,
-      "new_relations_this_milestone": 56,
-      "related_relation_records_total": 142,
-      "reverse_component_relations": 43,
-      "source_identity_sibling_relations": 13,
-      "evidence_route": "exact canonical component graph + authoritative Stage2 source-identity sibling graph",
-      "safety_rule": "No semantic-similarity guessing, no duplicate expression->base component relation, no density chasing."
-    },
-    "antonym": {
-      "verified_targets": 22,
-      "closed_no_force": 270,
-      "unresolved": 0,
-      "new_relations_this_milestone": 8,
-      "antonym_relation_records_total": 24,
-      "evidence_route": "DUDEN_BEDEUTUNG_10 explicit Ggs. markings + active-sense alignment",
-      "safety_rule": "No inferred opposites for broad/polysemous cards; no density chasing."
-    }
+    "validation": "8/8 fresh validators PASS; CRC PASS; manifest 121/121; SHA256SUMS 122/122; Library exact SHA+bytes PASS"
   },
-  "pending_word_family_attempt": {
-    "schema": "menschen-a2-verben-repair-v336-word-family-blocker@1.0.0",
-    "status": "BLOCKED_VALIDATION_WRAPPER_AFTER_ONE_CORRECTED_RETRY",
-    "stable_authority_unchanged": {
-      "status": "PASS_STAGE3B_ANTONYM_CLOSED__LIBRARY_AND_GIT_SYNCED",
-      "artifact": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-ANTONYM-CLOSURE-CHECKPOINT.zip",
-      "sha256": "7180d8d2f50c3bd672a22046032a9d302926a64a554daf2600b5c741402dd4be"
-    },
-    "attempted_word_family_state": {
-      "word_family": "60 VERIFIED_PRESENT + 232 CLOSED_NO_FORCE = 292/292",
-      "relations": "1132 -> 1192; prior 1132 preserved",
-      "candidate_ledger": "1221 = 396 ACCEPTED + 825 REJECTED + 0 DEFERRED",
-      "richness": "4217 final / 291 unresolved; NVV only remains",
-      "local_partial_output": "/mnt/data/a2fix/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT",
-      "accepted_reflexive_exclusions": [
-        "ma2-lu-0145",
-        "ma2-lu-0161",
-        "ma2-lu-0238",
-        "ma2-lu-0256"
-      ]
-    },
-    "validation": {
-      "source_occurrences": "PASS",
-      "identity_closure": "PASS",
-      "candidate_ledger": "PASS",
-      "completeness": "PASS",
-      "profile_contract_underlying_report": "PASS",
-      "wrapper_result": "BLOCKED because validator reports status under summary.status rather than top-level status",
-      "remaining_validators": "NOT_RUN_DUE_TO_EXECUTION_SAFETY_RETRY_LIMIT"
-    },
-    "failure": "Build wrapper expected obj.status == PASS for validate_profile_driven_product_contract_v1_0_1.py, but that validator returns summary.status == PASS.",
-    "safety_action": "Stopped after the one corrected full-build retry. No unvalidated ZIP was promoted or uploaded. Stable authority remains the Antonym checkpoint.",
-    "resume_action": "On the next turn, rebuild once from the stable Antonym checkpoint with the validator wrapper accepting either top-level status or summary.status, then complete validators/package/Library/Git sync if PASS."
-  }
+  "artifact": {
+    "filename": "Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT.zip",
+    "sha256": "1b145eb0224e4471456e555c2ff3134cd6a1da286c68efa231e5502812800ce3",
+    "size_bytes": 2283924,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-PostLock-Repair1-Stage3B-WORD-FAMILY-CLOSURE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000656c81f48b75a97ebc62331d",
+    "library_stable_id": "libfile_ffe1b94aeeb081918266eb8fe32dc690",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "runtime_binding": "NOT_APPLICABLE_TO_THIS_CONTENT_ONLY_MILESTONE__RESOLVE_CURRENT_AT_STAGE6",
+  "resolved_word_family_blocker": {
+    "status": "RESOLVED_BY_PASS",
+    "reason": "Validator wrapper accepts a PASS reported either at top level or inside summary.status."
+  },
+  "next_action": "Continue Stage3B with NVV closure for the remaining 291 unresolved cells; then Stage3C disposition closure."
 }

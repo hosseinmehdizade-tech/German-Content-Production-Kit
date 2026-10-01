@@ -1,0 +1,63 @@
+{
+  "schema": "nvv-stage4-repair-shard-report@1.0.0",
+  "status": "PASS_ATOMIC_SHARD_0001",
+  "created_at": "2026-10-01T20:19:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "repair_superbatch": "R1-FIRST500",
+    "shard": "0001",
+    "targets": 100,
+    "first_target": "dah-nvv-exp-00001",
+    "last_target": "dah-nvv-exp-00098",
+    "examples_de": 400,
+    "examples_fa": 400,
+    "examples_en": 400
+  },
+  "authority": {
+    "parent_stage3c_filename": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "rejected_predecessor": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip"
+  },
+  "repair": {
+    "method": "MANUAL_EXPRESSION_SPECIFIC_CONTEXTUAL_REGENERATION_FROM_STAGE3C_CANONICAL_SEMANTICS",
+    "changed_targets": 100,
+    "changed_content": "examples only; stage4_repair marker added",
+    "untouched_targets": 2392,
+    "identity_changes": 0,
+    "definition_changes": 0,
+    "meaning_fa_changes": 0,
+    "gloss_en_changes": 0,
+    "structure_changes": 0,
+    "provenance_changes": 0
+  },
+  "qa": {
+    "cards_exact4": "100/100 PASS",
+    "de_unique": "400/400",
+    "fa_unique": "400/400",
+    "en_unique": "400/400",
+    "old_parent_konnten_wir_hits": 196,
+    "new_konnten_wir_hits": 0,
+    "rejected_v7c_known_bad_context_hits": 0,
+    "max_repeated_three_token_sentence_start": 2,
+    "source_placeholders_in_examples": 0,
+    "terminal_punctuation_de": "400/400",
+    "manual_linguistic_review": "PASS_EXPRESSION_SPECIFIC_CONTEXTS_FOR_SHARD0001",
+    "bounded_diff": "PASS_ONLY_FIRST100_EXAMPLES_PLUS_REPAIR_MARKER"
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+    "sha256": "3d0634acab00b6f46326931f5a3392a1be3a00590d1d2cdadf6b9eebfeffad7a",
+    "size_bytes": 526919,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000a868821094eebf2ede41f40a",
+    "library_stable_id": "libfile_15e63e4054248191b9de4087602a8707",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundary": {
+    "r1_superbatch_pass": false,
+    "stage4_pass": false,
+    "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED"
+  },
+  "next_action": "Stage4 Repair R1 Shard0002: regenerate the next 100 active targets (positions 101-200) from the same Stage3C canonical authority; preserve Shard0001 exactly."
+}

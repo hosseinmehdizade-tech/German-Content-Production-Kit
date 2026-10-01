@@ -203,9 +203,9 @@
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
       "next_action": "Stage4 repair Superbatch R1: first 500 active targets, four natural DE examples + aligned FA/EN; then continue in ~500-target repair superbatches.",
       "autorun": {
-        "status": "ACTIVE_CLEAN_LONGRUN_V2",
-        "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
-        "mission_key": "NVV-CLEAN-LONGRUN-R2",
+        "status": "ACTIVE_RESILIENT_V3_4_0",
+        "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
+        "mission_key": "NVV-CLEAN-LONGRUN-R3",
         "profile": "continuous_safe",
         "turn_policy": "CONTINUOUS_SAFE",
         "superbatch_target": 500,
@@ -213,7 +213,22 @@
         "atomic_shard_hard_max": 200,
         "auto_continue_across_turns": true,
         "silent_recovery_delay_seconds": 300,
-        "old_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART"
+        "old_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART",
+        "routine_user_confirmation": false,
+        "watchdog_seconds": 420,
+        "recovery_attempts_max": 4,
+        "default_auto_turn_budget": 80,
+        "controller": {
+          "version": "3.4.0",
+          "full_package": "ChatGPT-NVV-AutoMission-v3.4.0-CHROME-READY.zip",
+          "full_package_sha256": "d1e57823df909ccfd491666c282ae48785081e6f976a93bf22b1f89533e0beab",
+          "chrome_extension": "ChatGPT-NVV-AutoMission-v3.4.0-Chrome-Extension.zip",
+          "chrome_extension_sha256": "869729e008520687470b781b7281075e8d15b2fe9de1169b45602e104b06ffcd",
+          "userscript_sha256": "c7e5144b13cd13e9f211a7024992cd9dbd8cab51a4ac8a57cf444b969e55b46b",
+          "git_metadata": "SYNCED_NVV_BRANCH",
+          "library_binary_sync": "PENDING_CONTAINER_SESSION_UNAVAILABLE",
+          "live_chatgpt_chrome": "PENDING_USER_CHROME"
+        }
       },
       "last_observed_stage": "4_independent_linguistic_lexical_qa_round1",
       "last_observed_note": "Stage4 Round1 findings remain open. The 36 explicit structure/argument-slot omissions now have a verified deterministic repair delta with zero remaining explicit-marker issues after simulated apply. Full 2492-card example + aligned FA/EN regeneration remains required.",

@@ -17,3 +17,7 @@ Mandatory architecture:
 - dependency fingerprints invalidate only affected work; historical LOCKED artifacts stay immutable.
 
 Normative full contracts/tools are inside the portable v3.3.6 authority recorded in PROJECT-STATE.json.
+
+Before production, read root `PROJECT-MEMORY.json` including `prevention` gates/limits. Run `python -B Verification/prevention_preflight.py memory`; new/updated checkpoint pointers must pass its `checkpoint` mode. At Stage5 run `projection` before packaging, and run `package` on final candidate archives. These supplemental checks do not replace the official portable completeness/anti-bypass gates or Stage6 exact-runtime presentation acceptance. Resolve app memory MEM-024 for bounded asynchronous commit readiness and exact-byte harness reruns.
+
+For projection-only successors, run `Verification/prevention_preflight.py lineage PROJECTED.json --baseline RESOLVED_PARENT.json` at Stage5. Resolve the immutable parent from its checkpoint first; retain current canonical parity and reviewed metadata/identity changes as separate gates.

@@ -8,7 +8,7 @@
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "github_role": "durability_mirror_not_critical_path",
     "binary_transport_via_git": false,
-    "git_retry_budget_per_normal_turn": 1,
+    "git_retry_budget_per_normal_turn": 2,
     "quality_and_git_persistence_are_separate": true
   },
   "source_access": {
@@ -33,14 +33,14 @@
     "Resolve registered raw sources from Project Sources first, then Library; do not ask the user to re-upload until both have been checked.",
     "Before proposing automation/process/Git/authority/packaging/source-governance/UI changes, check PROJECT-MEMORY.json and warn if the proposal conflicts with an ACTIVE prior decision.",
     "When runtime/import/presentation compatibility matters, resolve Flashcards CURRENT and LAST_FULLY_VERIFIED separately and target CURRENT.",
-    "Git sync may lag and coalesce intermediate batches/versions; never block production or downgrade authority because persistence.git is pending."
+    "Attempt lightweight Git sync after every validated milestone; bounded failure records PENDING without blocking production or downgrading authority."
   ],
   "authority_resolution": {
     "user_supplied_newer_artifact": "Immediate working authority when explicitly identified as current/latest.",
     "portable_verified_state": "Preferred resume authority after an explicit current artifact; may live in current conversation, Project Sources or Library.",
     "github": "Durable asynchronous checkpoint/coordination mirror, not a blocker and not the default binary transport.",
     "conflict_rule": "Never silently replace newer verified work with older GitHub content. Mark Git sync pending instead.",
-    "persistence_rule": "Synchronize Git at meaningful boundaries with bounded/deferred/coalesced sync. Git lag must not block ordinary safe work or change current authority."
+    "persistence_rule": "Follow GIT-SYNC-POLICY.json: lightweight sync after each validated milestone, bounded retries, PENDING on failure; no intentional coalescing of validated milestones."
   },
   "active_framework": {
     "version": "v3.3.6",
@@ -73,7 +73,7 @@
       "rule": "One neutral de-vocabulary presentation family with gfp-vocabulary-neutral@1."
     }
   },
-  "workstream_resolution_policy": "Use the newest valid portable workstream checkpoint first. Git branch checkpoint remains a durable mirror/ambiguity resolver and may lag; intermediate states may be coalesced at the next meaningful sync boundary.",
+  "workstream_resolution_policy": "Use the newest valid portable checkpoint first. Git is the durable mirror/ambiguity resolver; attempt lightweight sync after every validated milestone. Temporary WIP edits are not milestones; bounded failures remain PENDING.",
   "workstreams": {
     "grammar_aktiv_a1_c1": {
       "status": "ACTIVE",
@@ -3175,15 +3175,17 @@
     "file": "PROJECT-MEMORY.json",
     "status": "ACTIVE_MANDATORY_READ",
     "cross_project_canonical": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
-    "purpose": "Durable cross-chat incident/decision memory; conflicting proposals require warning/reconsideration before override."
+    "purpose": "Durable cross-chat incident/decision memory; conflicting proposals require warning/reconsideration before override.",
+    "lesson_contract": "incident-prevention@1.0.0",
+    "audit": "Docs/LESSONS-LEARNED-AUDIT-2026-10-01.md"
   },
   "git_sync_policy": {
     "file": "GIT-SYNC-POLICY.json",
-    "mode": "BOUNDED_DEFERRED_COALESCED",
+    "mode": "IMMEDIATE_VALIDATED_MILESTONE_SYNC",
     "per_card_sync": false,
     "per_tiny_edit_sync": false,
-    "coalesce_intermediate_states": true,
-    "ordinary_turn_sync_attempts_max": 1,
+    "coalesce_intermediate_states": false,
+    "ordinary_turn_sync_attempts_max": 2,
     "git_on_critical_path": false,
     "on_failure": "persistence.git=PENDING_OR_FAILED_AND_CONTINUE"
   },
@@ -5362,5 +5364,15 @@
     "visible_ui_change": "NONE",
     "runtime_counterpart": "German-Flashcards-Pro v451-R85",
     "sidecar_library_sync": "PENDING_CONTAINER_SESSION_EXPIRED_NON_BLOCKING"
+  },
+  "lessons_learned_milestone": {
+    "date": "2026-10-01",
+    "scope": "MEMORY_PREFLIGHT_ONLY",
+    "quality_state": "PASS",
+    "persistence": {
+      "git": "PENDING"
+    },
+    "runtime_and_final_content_mutated": false,
+    "next_action": "Bounded compact Git persistence, then stop this milestone; no runtime/content development."
   }
 }

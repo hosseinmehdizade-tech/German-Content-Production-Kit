@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-09-30T23:15:00+02:00",
+  "updated_at": "2026-10-01",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -22,6 +22,21 @@
       "policy_files": [
         "PROJECT-OPERATING-MODE-v2.md",
         "GIT-SYNC-POLICY.json"
+      ],
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "decision",
+          "id",
+          "incident",
+          "policy_files",
+          "required_warning",
+          "safe_default"
+        ],
+        "sha256": "ffda97ebb53d7d72a583eda1995f6257a1faaeaeedcf35a0180b309cc7c6fc3f"
+      },
+      "superseded_by": [
+        "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES"
       ]
     },
     {
@@ -30,7 +45,45 @@
       "category": "runtime_integration",
       "incident": "A newer Flashcards runtime may advance beyond the last fully verified runtime.",
       "decision": "When integration matters, target Flashcards CURRENT. LAST_FULLY_VERIFIED is regression/fallback reference only. Never downgrade integration because CURRENT has blockers.",
-      "safe_default": "TARGET_CURRENT_NO_DOWNGRADE"
+      "safe_default": "TARGET_CURRENT_NO_DOWNGRADE",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "The historical rationale is recorded in incident/decision; no additional proven causal claim is available.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "A newer Flashcards runtime may advance beyond the last fully verified runtime.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "TARGET_CURRENT_NO_DOWNGRADE",
+        "rule": "When integration matters, target Flashcards CURRENT. LAST_FULLY_VERIFIED is regression/fallback reference only. Never downgrade integration because CURRENT has blockers.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Requires human review; a passing structural test cannot establish intent or linguistic truth."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-002-CURRENT-VS-VERIFIED"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "973e98739957dfd17e1c51851b811b3e057f49d4178ff3e6ee300bd330a36eb1"
+      }
     },
     {
       "id": "MEM-003-SOURCE-FIDELITY",
@@ -38,19 +91,130 @@
       "category": "content_authority",
       "incident": "Source workstreams must not be silently rebuilt from memory/legacy mappings or unrelated sources.",
       "decision": "Use registered source identity + newest portable checkpoint; preserve source terminology, order, provenance and workstream separation.",
-      "safe_default": "SOURCE_FIRST_STABLE_IDS_NO_SILENT_REPLACEMENT"
+      "safe_default": "SOURCE_FIRST_STABLE_IDS_NO_SILENT_REPLACEMENT",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Legacy mappings or unregistered evidence can be mistaken for current source authority.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Source inventory/provenance can silently diverge.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "SOURCE_FIRST_STABLE_IDS_NO_SILENT_REPLACEMENT",
+        "rule": "Use registered source identity + newest portable checkpoint; preserve source terminology, order, provenance and workstream separation.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Requires human review; a passing structural test cannot establish intent or linguistic truth."
+        },
+        "evidence": [
+          "SOURCE-REGISTRY.json",
+          "SOURCE-ACCESS-PROTOCOL-v1.0.0.md"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "de87c48b95579ebc5617250e55029691e82e8e86c205953451a487248237a296"
+      }
     },
     {
       "id": "MEM-004-UI-PRESERVATION",
       "status": "ACTIVE",
       "category": "ui_ux",
-      "decision": "No significant visible Flashcards UI/UX change without informing Hossein and receiving approval."
+      "decision": "No significant visible Flashcards UI/UX change without informing Hossein and receiving approval.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "The historical rationale is recorded in incident/decision; no additional proven causal claim is available.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Explicit user/process decision; no separate incident cost recorded.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "No significant visible Flashcards UI/UX change without informing Hossein and receiving approval.",
+        "rule": "No significant visible Flashcards UI/UX change without informing Hossein and receiving approval.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Requires human review; a passing structural test cannot establish intent or linguistic truth."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-004-UI-PRESERVATION"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "decision",
+          "id"
+        ],
+        "sha256": "26c671e16be86a87182b695a493cbb63ac9a634c67eed0e1b4102ef7346bb093"
+      }
     },
     {
       "id": "MEM-005-NO-GIT-BINARY-TRANSPORT",
       "status": "ACTIVE",
       "category": "artifact_transport",
-      "decision": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction."
+      "decision": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "The historical rationale is recorded in incident/decision; no additional proven causal claim is available.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Explicit user/process decision; no separate incident cost recorded.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction.",
+        "rule": "Large ZIP/checkpoint artifacts live in Library/Project/user-delivery. Git stores source and compact metadata/hashes, not Base64 archive reconstruction.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Requires human review; a passing structural test cannot establish intent or linguistic truth."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-005-NO-GIT-BINARY-TRANSPORT"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "decision",
+          "id"
+        ],
+        "sha256": "de396fc9ee873b6a67a51f5384522151bf97ceb28f876dc666cecdf0a707e4c3"
+      }
     },
     {
       "id": "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -68,7 +232,48 @@
         "no unbounded retry loops",
         "no blocking on GitHub Actions",
         "workstreams remain isolated"
-      ]
+      ],
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "The historical rationale is recorded in incident/decision; no additional proven causal claim is available.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Deferred/coalesced Git persistence made parallel chats capable of seeing stale content checkpoints and forced Hossein to think about synchronization manually.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "AUTO_SYNC_EVERY_VALIDATED_MILESTONE_LIGHTWEIGHT",
+        "rule": "Every validated content milestone is synchronized automatically to its own workstream branch/checkpoint plus compact coordination metadata before handoff.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Requires human review; a passing structural test cannot establish intent or linguistic truth."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-006-AUTO-SYNC-VALIDATED-MILESTONES"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "preserved_guardrails",
+          "safe_default",
+          "supersedes"
+        ],
+        "sha256": "91610762c9145a13eb49c05137eee6a76977ab96efff9729976791984a876992"
+      }
     },
     {
       "id": "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
@@ -88,7 +293,48 @@
         "Large ZIPs remain outside Git.",
         "CURRENT runtime is re-resolved when runtime compatibility matters.",
         "No significant visible UI/UX change without approval."
-      ]
+      ],
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "The historical rationale is recorded in incident/decision; no additional proven causal claim is available.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Long tool-heavy turns sometimes completed substantial work but ended before a visible final answer reached Hossein, making progress look lost and increasing ambiguity about the resume point.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "MILESTONE_PERSIST_FINAL_RESPONSE_THEN_NEXT_STAGE",
+        "rule": "Use durable turn boundaries: one major milestone per turn by default. After PASS/BLOCKED/durable checkpoint, persist state and send a visible final response before starting the next major stage. Use targeted reads, bounded tool-call budgets and one corrected retry per failed external operation.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Requires human review; a passing structural test cannot establish intent or linguistic truth."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "policy_files",
+          "preserved_guardrails",
+          "safe_default"
+        ],
+        "sha256": "69096bb5e780f1f18c0e8070b889b8bd1d7ca962901329719de734ab92bb2c4f"
+      }
     },
     {
       "id": "MEM-009-MULTI-MEANING-ONE-CARD",
@@ -102,7 +348,50 @@
         "automatic sense split for polysemy",
         "duplicate cards for hear/listen-style meaning distinctions"
       ],
-      "required_behavior": "Preserve one stable lexical card ID and enrich its back/definition/examples with the verified meanings; never split merely because dictionary senses differ."
+      "required_behavior": "Preserve one stable lexical card ID and enrich its back/definition/examples with the verified meanings; never split merely because dictionary senses differ.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Semantic senses or mutable organization labels were mistaken for canonical lexical identity.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Duplicate cards or identity drift after organization changes; elapsed cost unknown.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "automatic sense split for polysemy",
+          "duplicate cards for hear/listen-style meaning distinctions"
+        ],
+        "correct_method": "ONE_CARD_MULTI_MEANING_BACK",
+        "rule": "Preserve one stable lexical card ID and enrich its back/definition/examples with the verified meanings; never split merely because dictionary senses differ.",
+        "gate": {
+          "kinds": [
+            "A",
+            "G"
+          ],
+          "status": "PARTIAL",
+          "tools": [],
+          "command": "",
+          "limits": "Duplicate IDs are machine-detectable. Equal fronts/polysemy/homographs need evidence-based identity review; no automatic front-based merge or fixed course-name blacklist."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-009-MULTI-MEANING-ONE-CARD"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "conflicts_with",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "required_behavior",
+          "safe_default"
+        ],
+        "sha256": "3b95e0c04dd4636164ef96928bf34a8072e50f2ddb730b4acdc8841841d8e6df"
+      }
     },
     {
       "id": "MEM-010-DYNAMIC-LIBRARY-ORGANIZATION",
@@ -113,7 +402,49 @@
       "decision": "Library Book/Lesson/Deck organization is mutable runtime metadata/membership, not canonical card identity and not a set of hard-coded project constants. Imported names are initial seed labels only. Cards retain stable canonical IDs when organization labels are renamed or when future lessons/books are added.",
       "safe_default": "DYNAMIC_CARD_ORGANIZATION_NO_HARDCODED_BOOK_LESSON_NAMES",
       "current_runtime_note": "v435-R69 derives Library containers generically from card source/lesson/deck values. A container exists when cards carry that label. Current delete actions remove contained cards; changing deletion to non-destructive unlinking is a separate data-loss/architecture decision and must not be changed silently.",
-      "required_behavior": "Content projection may supply initial organization labels, but runtime code must not special-case Menschen titles. Future imports may add labels such as Menschen A2 Verben without changing existing canonical IDs."
+      "required_behavior": "Content projection may supply initial organization labels, but runtime code must not special-case Menschen titles. Future imports may add labels such as Menschen A2 Verben without changing existing canonical IDs.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "Semantic senses or mutable organization labels were mistaken for canonical lexical identity.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Duplicate cards or identity drift after organization changes; elapsed cost unknown.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "DYNAMIC_CARD_ORGANIZATION_NO_HARDCODED_BOOK_LESSON_NAMES",
+        "rule": "Content projection may supply initial organization labels, but runtime code must not special-case Menschen titles. Future imports may add labels such as Menschen A2 Verben without changing existing canonical IDs.",
+        "gate": {
+          "kinds": [
+            "A",
+            "G"
+          ],
+          "status": "PARTIAL",
+          "tools": [],
+          "command": "",
+          "limits": "Duplicate IDs are machine-detectable. Equal fronts/polysemy/homographs need evidence-based identity review; no automatic front-based merge or fixed course-name blacklist."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-010-DYNAMIC-LIBRARY-ORGANIZATION"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "current_runtime_note",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "required_behavior",
+          "safe_default"
+        ],
+        "sha256": "0fb7480ac922a06f945a9e7c768bfc5bb94bfb0788f478406da054bd92bc0e50"
+      }
     },
     {
       "id": "MEM-012-UNIFIED-VOCABULARY-IMPORT-PRESENTATION",
@@ -129,7 +460,60 @@
         "Legacy german-verb may be accepted for backward compatibility but new projection must target the neutral ordinary vocabulary card envelope.",
         "Stage5 projection QA and Stage6 runtime acceptance must assert cross-POS presentation parity."
       ],
-      "related_runtime_fix": "German-Flashcards-Pro v450-R84"
+      "related_runtime_fix": "German-Flashcards-Pro v450-R84",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Presentation identity leaked from POS/legacy schemas or nested selectors.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Repeated inconsistent vocabulary geometry and downstream projection rework.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "UNIFIED_VOCABULARY_IMPORT_AND_PRESENTATION",
+        "rule": [
+          "Sense/Expression projection is presentation-neutral across noun, verb, adjective, adverb, phrase and expression.",
+          "Do not encode POS as a layout-selecting card_type.",
+          "Legacy german-verb may be accepted for backward compatibility but new projection must target the neutral ordinary vocabulary card envelope.",
+          "Stage5 projection QA and Stage6 runtime acceptance must assert cross-POS presentation parity."
+        ],
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "E",
+            "G"
+          ],
+          "status": "IMPLEMENTED",
+          "tools": [
+            "Verification/prevention_preflight.py",
+            "Verification/validate_unified_vocabulary_projection_v1_1_0.py"
+          ],
+          "command": "python -B Verification/prevention_preflight.py projection PROJECTED.json",
+          "limits": "Envelope preflight is static. Stage6 cross-POS exact-runtime geometry/parity is still required."
+        },
+        "evidence": [
+          "Verification/validate_unified_vocabulary_projection_v1_1_0.py",
+          "Docs/V3.3.5-SEMANTIC-PRESENTATION-SEPARATION-HANDOFF.md"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "related_runtime_fix",
+          "required_behavior",
+          "safe_default"
+        ],
+        "sha256": "e0ce11caa3a27e5b686b5a65104685fa1fd9a3c6e4ee9236ec8a5770b4ae56c1"
+      }
     },
     {
       "id": "MEM-013-PRESENTATION-SEMANTICS-ORTHOGONALITY",
@@ -139,7 +523,54 @@
       "incident": "A neutral outer type could previously coexist with hidden presentation selectors or rich verb metadata, allowing presentation identity to leak back out of semantics.",
       "decision": "Presentation identity and linguistic semantics are orthogonal. New ordinary vocabulary uses explicit de-vocabulary plus gfp-vocabulary-neutral@1; POS/morphology/gender/Rektion/structure remain semantic. Presentation-selector namespaces are closed recursively and case-insensitively; source_schema_profile is provenance-only. Runtime inference is legacy fallback only when supported explicit type is absent.",
       "safe_default": "EXPLICIT_PRESENTATION_IDENTITY_SEMANTICS_NEVER_RECLASSIFY",
-      "related_runtime": "German-Flashcards-Pro v451-R85"
+      "related_runtime": "German-Flashcards-Pro v451-R85",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Presentation identity leaked from POS/legacy schemas or nested selectors.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Repeated inconsistent vocabulary geometry and downstream projection rework.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Reintroduce a path contrary to this ACTIVE decision."
+        ],
+        "correct_method": "EXPLICIT_PRESENTATION_IDENTITY_SEMANTICS_NEVER_RECLASSIFY",
+        "rule": "Presentation identity and linguistic semantics are orthogonal. New ordinary vocabulary uses explicit de-vocabulary plus gfp-vocabulary-neutral@1; POS/morphology/gender/Rektion/structure remain semantic. Presentation-selector namespaces are closed recursively and case-insensitively; source_schema_profile is provenance-only. Runtime inference is legacy fallback only when supported explicit type is absent.",
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "E",
+            "G"
+          ],
+          "status": "IMPLEMENTED",
+          "tools": [
+            "Verification/prevention_preflight.py",
+            "Verification/validate_unified_vocabulary_projection_v1_1_0.py"
+          ],
+          "command": "python -B Verification/prevention_preflight.py projection PROJECTED.json",
+          "limits": "Envelope preflight is static. Stage6 cross-POS exact-runtime geometry/parity is still required."
+        },
+        "evidence": [
+          "Verification/validate_unified_vocabulary_projection_v1_1_0.py",
+          "Docs/V3.3.5-SEMANTIC-PRESENTATION-SEPARATION-HANDOFF.md"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "related_runtime",
+          "safe_default"
+        ],
+        "sha256": "ccd226a763347040d67f0e1e5583025db078e3d9b4d3e8b069464df83e9d8151"
+      }
     },
     {
       "id": "MEM-NVV-001-CLEAN-RESTART",
@@ -161,7 +592,52 @@
         "MEM-009 one-card multi-meaning rule",
         "neutral vocabulary presentation contract"
       ],
-      "safe_default": "FRESH_SOURCE_DERIVATION_HISTORY_ARCHIVED"
+      "safe_default": "FRESH_SOURCE_DERIVATION_HISTORY_ARCHIVED",
+      "prevention": {
+        "scope": "standalone nomen-verb-verbindungen workstream only",
+        "severity": "S3",
+        "root_cause": "Missing exact historical authority or stale controller recovery presets; explicit scoped user override is recorded in the decision.",
+        "root_cause_basis": "Recorded concurrent NVV decision, preserved exactly during reconciliation.",
+        "impact": "The old NVV run became blocked because the exact Batch0003 portable authority could no longer be materialized, while historical metadata still claimed 126 completed-or-bounded-PASS cards.",
+        "time_cost": "UNKNOWN; no elapsed hours recorded.",
+        "wrong_path": [
+          "Apply the generic turn cadence to this explicitly approved NVV exception",
+          "Reintroduce quarantined pre-restart generated output"
+        ],
+        "correct_method": "FRESH_SOURCE_DERIVATION_HISTORY_ARCHIVED",
+        "rule": "Hossein explicitly authorized restarting the standalone NVV production from zero. The registered source remains authoritative; all prior generated NVV batches/cards/checkpoints are archive/audit evidence only and do not seed the new run.",
+        "gate": {
+          "kinds": [
+            "A",
+            "F"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Scoped NVV override; controller/portable checkpoint evidence is required. This audit does not execute NVV or override its latest resilient autorun preset."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-NVV-001-CLEAN-RESTART"
+        ],
+        "affected_workstreams": [
+          "Standalone NVV only"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "explicit_user_approval",
+          "id",
+          "incident",
+          "preserves",
+          "safe_default",
+          "scope",
+          "supersedes_workstream_rules"
+        ],
+        "sha256": "3a746c9ca50a84a89942856856488bd6e316fe02036cd0f761eacec89eb35135"
+      }
     },
     {
       "id": "MEM-NVV-002-LONGRUN-AUTORUN",
@@ -182,7 +658,395 @@
         "v3.3.6 identity/disposition/anti-bypass gates",
         "CURRENT runtime resolution only when integration matters",
         "durable recovery before retry"
-      ]
+      ],
+      "prevention": {
+        "scope": "standalone nomen-verb-verbindungen clean-restart workstream",
+        "severity": "S2",
+        "root_cause": "Missing exact historical authority or stale controller recovery presets; explicit scoped user override is recorded in the decision.",
+        "root_cause_basis": "Recorded concurrent NVV decision, preserved exactly during reconciliation.",
+        "impact": "The stage-safe controller plus a stale NVV preset caused repeated stop/recovery cycles and re-injected historical Batch0003/126-card recovery text. A 75-second orphan watchdog was also too aggressive for long reasoning/tool operations, making a ~2.5k-target workstream impractically chatty and slow.",
+        "time_cost": "UNKNOWN; no elapsed hours recorded.",
+        "wrong_path": [
+          "Apply the generic turn cadence to this explicitly approved NVV exception",
+          "Reintroduce quarantined pre-restart generated output"
+        ],
+        "correct_method": "NVV_CONTINUOUS_SAFE_WITH_500_TARGET_SUPERBATCHES",
+        "rule": "Hossein explicitly approved a scoped long-run AUTORUN override for NVV. Use Project-aware Custom + continuous_safe/CONTINUOUS_SAFE. Process Stage3 as ~500-target superbatches composed of <=200-target atomic shards, persist lightweight resume state after each shard, keep full QA/checkpointing at meaningful boundaries, and auto-continue across turns without routine user confirmation. Historical pre-restart NVV output remains quarantine-only.",
+        "gate": {
+          "kinds": [
+            "A",
+            "F"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Scoped NVV override; controller/portable checkpoint evidence is required. This audit does not execute NVV or override its latest resilient autorun preset."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-NVV-002-LONGRUN-AUTORUN"
+        ],
+        "affected_workstreams": [
+          "Standalone NVV only"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "explicit_user_approval",
+          "id",
+          "incident",
+          "preserved_guardrails",
+          "relationship_to_MEM_008",
+          "safe_default",
+          "scope"
+        ],
+        "sha256": "0816b4655380ce5305964e0923efeb0bfa72c1711db7cfaef51acd32e1f2bf5d"
+      }
+    },
+    {
+      "id": "CP-MEM-001",
+      "status": "ACTIVE",
+      "date": "2026-10-01",
+      "category": "enrichment_completeness",
+      "incident": "B1 passed core/runtime QA with 339/400 cards containing only Rektion, zero word-family/collocation links and duplicate lexical fronts; the controlled successor reconciled 400 to 395 active targets.",
+      "decision": "100% justified final disposition, not density, determines completeness; consult rejected candidate/evidence fingerprints before retries.",
+      "safe_default": "Stage2 identity closure, Stage3A baseline, Stage3B only real gaps, Stage3C final dispositions including justified CLOSED_NO_FORCE and durable candidate decisions, independent Stage4 re-audit.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Structural counts and runtime success were used as a proxy for pedagogical completeness; identity closure came too late.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "B1 required twenty enrichment batches and later audit fixes. A1/A2 also needed post-lock repair successors; exact hours unknown.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Enrich before occurrence/identity closure",
+          "Treat examples/card counts as completeness",
+          "Force relation density",
+          "Re-propose rejected candidates without consulting the ledger"
+        ],
+        "correct_method": "Stage2 identity closure, Stage3A baseline, Stage3B only real gaps, Stage3C final dispositions including justified CLOSED_NO_FORCE and durable candidate decisions, independent Stage4 re-audit.",
+        "rule": "100% justified final disposition, not density, determines completeness; consult rejected candidate/evidence fingerprints before retries.",
+        "gate": {
+          "kinds": [
+            "A",
+            "F",
+            "G"
+          ],
+          "status": "PORTABLE_AUTHORITY_REQUIRED",
+          "tools": [],
+          "command": "Use the official v3.3.6 Stage2B/Stage3C/Stage4/Stage5 anti-bypass validators from the pinned portable authority.",
+          "limits": "The Git mirror contains compact v3.3.6 locators, not the complete authoritative validator suite. No claim of rerunning its 84 tests here; semantic identity/rejection applicability still requires review."
+        },
+        "evidence": [
+          "Workspaces/menschen-b1-verben-migration/POSTLOCK-CONTENT-RICHNESS-AUDIT.md",
+          "Workspaces/menschen-b1-verben-migration/V336-COMPATIBILITY-REAUDIT-STAGE3A.md",
+          "Workspaces/menschen-a1-verben-repair-v336/CHECKPOINT.json#stage5/v336_gates",
+          "Workspaces/menschen-a2-verben-repair-v336/CHECKPOINT.json#stage3c"
+        ],
+        "affected_workstreams": [
+          "Menschen A1/A2/B1 Verben",
+          "Future source workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "238aacee98a87e7612eb3c463cc0d4d4f063b14408f3b000b3ab4bd12bb8e441"
+      }
+    },
+    {
+      "id": "CP-MEM-002",
+      "status": "ACTIVE",
+      "date": "2026-10-01",
+      "category": "relation_projection",
+      "incident": "A2 post-lock audit found 6 collocations and 18 SYNONYM/RELATED items present canonically but missing from projection; A1 Repair1 placed RELATED values under Synonyme.",
+      "decision": "Prove loss/type parity at Stage5 and visible relation closure at Stage6; source rich data is not itself a presentation test.",
+      "safe_default": "Normalize supported value shapes without mutating canonical data; preserve relation ID/type and compare expected learner-visible groups on CURRENT.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Projection accepted only some historical value shapes and blurred relation types; preserved canonical data did not establish visibility.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "A1 Repair2 corrected 69 cards; A2 Repair2 closed 1205/1205 visible relations without changing canonical relations.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Drop value.text/term/pattern/string shapes",
+          "Treat all related items as synonyms",
+          "Claim visible fidelity from canonical counts alone"
+        ],
+        "correct_method": "Normalize supported value shapes without mutating canonical data; preserve relation ID/type and compare expected learner-visible groups on CURRENT.",
+        "rule": "Prove loss/type parity at Stage5 and visible relation closure at Stage6; source rich data is not itself a presentation test.",
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "G"
+          ],
+          "status": "PARTIAL",
+          "tools": [
+            "Verification/prevention_preflight.py"
+          ],
+          "command": "python -B Verification/prevention_preflight.py projection PROJECTED.json",
+          "limits": "Static preflight catches explicitly typed non-synonyms in synonym transport; complete shape/visibility parity requires canonical comparison and exact runtime probes. Untyped text is not semantically classified."
+        },
+        "evidence": [
+          "Workspaces/menschen-a2/Legacy-Reviews/A2-Verben-v11.2.0/POST-LOCK-CONTENT-AUDIT-2026-09-27.md",
+          "Workspaces/menschen-a1-verben-repair-v336/README.md",
+          "Workspaces/menschen-a2-verben-repair2-v336/STAGE5B-PRESENTATION-CLOSURE-SUMMARY.json"
+        ],
+        "affected_workstreams": [
+          "Menschen A1/A2/B1 Verben",
+          "Future source workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "26cf2d7e0744dff341df51a9b05b5ebda9d4eca3c98f1c6c0e147d881c5db328"
+      }
+    },
+    {
+      "id": "CP-MEM-003",
+      "status": "ACTIVE",
+      "date": "2026-10-01",
+      "category": "learner_projection",
+      "incident": "A1 Repair1 was relocked with missing front morphology on 247 verbs, literal REKTION on 30 cards, internal role tokens on 24 cards and duplicated definition notes on all 310 cards.",
+      "decision": "Neutral presentation identity does not waive field binding and learner-text QA.",
+      "safe_default": "Validate learner fields and declared morphology bridges early; preserve semantics/provenance unchanged, then probe actual front/back sections and all modes at Stage6.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Neutral envelope/structural tests passed while renderer-consumed bridges and learner text were not inspected.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "A1 needed a projection-only Repair2; A2 Repair2 also removed 292 duplicate notes and closed presentation defects.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Copy definitions into Hinweis",
+          "Expose enum/type fallbacks as learner text",
+          "Assume vnext morphology automatically reaches front slots"
+        ],
+        "correct_method": "Validate learner fields and declared morphology bridges early; preserve semantics/provenance unchanged, then probe actual front/back sections and all modes at Stage6.",
+        "rule": "Neutral presentation identity does not waive field binding and learner-text QA.",
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "G"
+          ],
+          "status": "PARTIAL",
+          "tools": [
+            "Verification/prevention_preflight.py"
+          ],
+          "command": "python -B Verification/prevention_preflight.py projection PROJECTED.json",
+          "limits": "Known literal enums, duplicate notes and missing declared morphology bridges are detectable. The scanner excludes raw vnext semantics/provenance; actual DOM visibility and unknown token spellings remain runtime QA."
+        },
+        "evidence": [
+          "Workspaces/menschen-a1-verben-repair-v336/README.md",
+          "Workspaces/menschen-a1-verben-repair2-v336/STAGE5-PROJECTION-REPAIR-SUMMARY.json",
+          "Workspaces/menschen-a2-verben-repair2-v336/README.md"
+        ],
+        "affected_workstreams": [
+          "Menschen A1/A2/B1 Verben",
+          "Future source workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "64a613dae234bb5b3686f7b6fdbe507c2b697bda53826d7151b5f03b4a591743"
+      }
+    },
+    {
+      "id": "CP-MEM-004",
+      "status": "ACTIVE",
+      "date": "2026-10-01",
+      "category": "package_hygiene",
+      "incident": "App v400 verification removed Python cache artifacts from Current Tests; subsequent A1/A2/B1 package evidence repeatedly requires no pycache/pyc.",
+      "decision": "Final package hygiene is checked on the archive itself; never modify locked bytes to retrofit a gate.",
+      "safe_default": "Run Python with -B, keep scratch/cache outputs outside clean staging, check final ZIP members and CRC after packaging.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "Running Python/QA inside package staging can introduce generated caches after an earlier inventory check.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Contaminated staging requires cleanup/repackaging; no measured production time recorded.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Package a mutable test workspace",
+          "Trust an earlier source-tree hygiene check",
+          "Carry caches/.git into delivery"
+        ],
+        "correct_method": "Run Python with -B, keep scratch/cache outputs outside clean staging, check final ZIP members and CRC after packaging.",
+        "rule": "Final package hygiene is checked on the archive itself; never modify locked bytes to retrofit a gate.",
+        "gate": {
+          "kinds": [
+            "A",
+            "D"
+          ],
+          "status": "IMPLEMENTED",
+          "tools": [
+            "Verification/prevention_preflight.py"
+          ],
+          "command": "python -B Verification/prevention_preflight.py package CANDIDATE.zip",
+          "limits": "Checks cache/.git contamination, duplicate members, unsafe paths and CRC; does not replace manifest rehash or exact-runtime acceptance."
+        },
+        "evidence": [
+          "Workspaces/menschen-a1-verben-repair2-v336/CHECKPOINT.json#stage7/static_postpackage",
+          "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json#stage7/static_postpackage"
+        ],
+        "affected_workstreams": [
+          "Menschen A1/A2/B1 Verben",
+          "Future source workstreams"
+        ],
+        "cross_project_evidence": [
+          {
+            "project": "German-Flashcards-Pro",
+            "path": "04-Reports/01-v400-Baseline/Verification-Hardening/PACKAGE-HYGIENE.md"
+          }
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "c67affc942eae152d446edf98cc3c4292da8d0f0ed2e839acbe659367f0cea21"
+      }
+    },
+    {
+      "id": "CP-MEM-005",
+      "status": "ACTIVE",
+      "date": "2026-10-01",
+      "category": "evidence_governance",
+      "incident": "B1 Phase3 fixed 109 DUDEN_SYNONYM reference typos; the later v3.3.6 compatibility audit found 331 existing claims without a globally approved evidence source under the current registry.",
+      "decision": "Evidence-required claims need a currently approved source or an explicit source-governance decision; authority is not changed to satisfy a test.",
+      "safe_default": "Validate registered reference identity when evidence is added; re-evidence only affected claims on registry/policy fingerprint changes, preserving locked predecessors.",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Historical source IDs or prior source approval were treated as sufficient under a changed evidence policy.",
+        "root_cause_basis": "Evidence-supported analysis; no measured duration inferred.",
+        "impact": "Repeated provenance normalization/re-evidencing was required; this does not establish semantic falsity.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "Silently expand the registry to pass",
+          "Treat source spelling/approval as immutable across framework versions",
+          "Fabricate reference locators"
+        ],
+        "correct_method": "Validate registered reference identity when evidence is added; re-evidence only affected claims on registry/policy fingerprint changes, preserving locked predecessors.",
+        "rule": "Evidence-required claims need a currently approved source or an explicit source-governance decision; authority is not changed to satisfy a test.",
+        "gate": {
+          "kinds": [
+            "A",
+            "B",
+            "G"
+          ],
+          "status": "PORTABLE_AUTHORITY_REQUIRED",
+          "tools": [],
+          "command": "Run reference-registry/evidence and dependency-fingerprint gates from exact v3.3.6 portable authority.",
+          "limits": "A registry spelling check cannot establish attestation, semantic truth or current approval. Full v3.3.6 evidence tooling is not mirrored locally."
+        },
+        "evidence": [
+          "Workspaces/menschen-b1-verben-migration/PHASE3-AUDIT-FIX-REPORT.md",
+          "Workspaces/menschen-b1-verben-migration/V336-COMPATIBILITY-REAUDIT-STAGE3A.md"
+        ],
+        "affected_workstreams": [
+          "Menschen A1/A2/B1 Verben",
+          "Future source workstreams"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "90d7f84fce273cda08fc376fee9201b863e316fa222c41fa6dfde06fe21bf80f"
+      }
+    },
+    {
+      "id": "CP-MEM-006",
+      "status": "ACTIVE",
+      "date": "2026-10-01",
+      "category": "projection_lineage",
+      "incident": "B1 v3.3.6 neutral Stage5 reached Stage6 with canonical_unit/canonical_relations/organization seed 0/395 and zero audio refs instead of 439. A controlled Stage5 lineage repair restored the approved parent envelope without regenerating semantics.",
+      "decision": "A projection-only successor preserves parent source audio, membership/seed and row-order lineage while carrying current canonical authority. Reconcile identity/organization changes explicitly; neutral envelope PASS alone is insufficient.",
+      "safe_default": "PARENT_LINEAGE_PARITY_AND_CURRENT_CANONICAL_PAYLOAD_BEFORE_STAGE6",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "A generic projection rebuilt transport from semantic/evidence records without carrying the immutable parent delivery envelope and source-audio lineage.",
+        "root_cause_basis": "B1 Stage6 projection-lineage blockers and exact Stage5 repair evidence.",
+        "impact": "Late Stage6 blocker and repeated projection/package acceptance; 395 affected cards and 439 audio refs. No measured hours.",
+        "time_cost": "UNKNOWN",
+        "wrong_path": [
+          "Assume neutral card type guarantees source fidelity",
+          "Derive course seed from reference-source titles",
+          "Drop audio/membership when enriching canonicals"
+        ],
+        "correct_method": "At Stage5 compare the successor against explicitly resolved parent transport; preserve audio/membership/approved seed/order and attach current canonical units/relations; then validate current authority parity and exact runtime roundtrip.",
+        "rule": "Canonical enrichment and delivery lineage are independently preserved. Renaming organization never changes card identity; approved metadata/identity changes require a reviewed baseline rather than silent equality bypass.",
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "status": "PARTIAL",
+          "tools": [
+            "Verification/prevention_preflight.py"
+          ],
+          "command": "python -B Verification/prevention_preflight.py lineage PROJECTED.json --baseline RESOLVED_PARENT.json",
+          "limits": "Supplemental gate checks identity-set, canonical payload presence and known parent audio/membership/seed/order survival. It cannot establish current canonical deep-copy truth or approve organizational changes; official portable authority/parity and Stage6 checks remain required."
+        },
+        "evidence": [
+          "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json#v336_postlock_compatibility/stage6/blockers",
+          "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json#v336_stage5_lineage_repair"
+        ],
+        "affected_workstreams": [
+          "B1 Verben repair successors",
+          "Future projection-only successors"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "25869015056507f077669fbe44ce068f7700b5e42411b3e75bcfd430d10ae2a7"
+      }
     }
   ],
   "propagation_rule": {
@@ -193,5 +1057,56 @@
       "CHECKPOINT.json includes git_sync_policy=GIT-SYNC-POLICY.json"
     ],
     "existing_workstreams": "Root bootstrap applies this memory to existing workstreams even when older CHECKPOINT.json files do not yet contain explicit pointers."
+  },
+  "lesson_contract": {
+    "version": "incident-prevention@1.0.0",
+    "extension_rule": "Additive extension of the existing decisions[] schema; historical fields and user decisions are preserved.",
+    "promotion_test": "Will this materially change a future engineering/content decision? Otherwise retain the incident locally.",
+    "lifecycle": [
+      "INCIDENT",
+      "ROOT_CAUSE",
+      "IMPACT_COST",
+      "WRONG_PATH",
+      "CORRECT_METHOD",
+      "PREVENTION_RULE",
+      "DETECTION_GATE",
+      "EVIDENCE",
+      "STATUS_SUPERSESSION"
+    ],
+    "severity": {
+      "S1": "Minor inconvenience",
+      "S2": "Measurable rework or quality risk",
+      "S3": "Major rework or release/content integrity risk",
+      "S4": "Authority/data-loss/major architecture risk"
+    },
+    "gate_kinds": {
+      "A": "Documentation/manual review",
+      "B": "Schema validation",
+      "C": "Static test",
+      "D": "Packaging test",
+      "E": "Runtime regression",
+      "F": "Checkpoint validation",
+      "G": "Production QA",
+      "H": "Authority/currentness"
+    },
+    "integrity_rule": "Original decision fields are sealed by decision_integrity. Supersession changes status/lineage, creates a new approved decision and retains the original rationale. Never recompute seals merely to accept an unauthorized rewrite.",
+    "cost_rule": "Record exact counts when known; unknown elapsed time remains UNKNOWN.",
+    "enforcement_rule": "IMPLEMENTED means a callable tool exists, not that all production paths invoke it. Portable-only tools and manual boundaries remain explicit."
+  },
+  "external_supersession_ids": [],
+  "cross_project_relationships": {
+    "local_owner": "PROJECT-MEMORY.json owns content-production lessons.",
+    "runtime_owner": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json owns runtime/authority/async-manifest lessons.",
+    "existing_shared_entries": "Retained compatibility records. Resolve authoritative runtime decisions in the app root; do not copy new lesson bodies into workstreams.",
+    "references": [
+      {
+        "project": "German-Flashcards-Pro",
+        "memory_id": "MEM-024-ASYNC-MANIFEST-READINESS",
+        "evidence": [
+          "Workspaces/menschen-a2-verben-repair-v336/STAGE7-BLOCKED-SUMMARY.json",
+          "Workspaces/menschen-b1-verben-migration/CHECKPOINT.json#stage7/corrected_retry_note"
+        ]
+      }
+    ]
   }
 }

@@ -52,7 +52,7 @@ Do not consume an entire user turn trying to repair GitHub.
 
 - Resolve the working state first.
 - Continue safe production from the newest valid/current authority.
-- Make at most one Git synchronization/recovery attempt in the same turn unless the user explicitly asks for Git repair.
+- Follow the attempt budget in GIT-SYNC-POLICY.json (currently two attempts maximum).
 - If Git sync still fails, record `persistence.git=PENDING` or `FAILED`, preserve exact hashes/resume instructions, and continue the real project work.
 
 The user should receive a normal answer even when GitHub is unhealthy.
@@ -74,7 +74,7 @@ The bundle may be a ZIP or organized folder stored in Project/Library. GitHub sh
 Sync to GitHub at meaningful boundaries, not continuously:
 - after a completed batch or milestone;
 - after architecture/contract changes;
-- before handoff when practical;
+- before handoff after every validated milestone;
 - when the user explicitly asks for repository synchronization.
 
 Do not write one commit per card or use GitHub Actions merely to materialize a local/Library ZIP.
@@ -97,19 +97,9 @@ Never delete or overwrite a newer artifact merely to make repository history loo
 
 This operating mode supersedes older project text that made live Git persistence a prerequisite for ordinary safe work. Git remains the durable mirror, not the blocker.
 
-## 10. Bounded / deferred / coalesced Git synchronization
+## 10. Validated-milestone synchronization with bounded failure handling
 
-Git synchronization is deliberately **not continuous**.
-
-- Portable/current workstream state may advance while Git metadata/tree temporarily lags.
-- Multiple intermediate batches/versions should be coalesced and synchronized only at a meaningful boundary.
-- Do not commit every card, tiny edit, or runtime version.
-- Do not block content production on GitHub Actions.
-- At most one Git sync/recovery attempt is allowed in an ordinary production turn unless the user explicitly requests Git repair.
-- On failure, set `persistence.git=PENDING` or `FAILED`, preserve artifact/hash/checkpoint/resume instructions, and continue production.
-- Large ZIP/checkpoint artifacts stay in Library/Project/user-delivery; Git stores compact source/metadata/hashes.
-
-See `GIT-SYNC-POLICY.json`.
+The ACTIVE `MEM-006-AUTO-SYNC-VALIDATED-MILESTONES` supersedes historical deferred/coalesced cadence. Attempt lightweight source/checkpoint/coordination sync after every validated milestone before handoff. Do not intentionally skip validated milestones. Temporary edits, individual cards and scratch output are not sync boundaries. Use the retry budget in `GIT-SYNC-POLICY.json`; record PENDING after bounded failure and preserve exact artifact hashes/resume instructions. GitHub remains asynchronous durability, never binary transport or an unbounded production dependency.
 
 ## 11. Durable project memory / reconsideration gate
 

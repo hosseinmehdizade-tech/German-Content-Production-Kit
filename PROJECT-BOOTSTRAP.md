@@ -59,9 +59,22 @@ Before recommending a process/automation/Git/authority/packaging/source-governan
 
 If the proposal conflicts with an ACTIVE prior incident/decision, explicitly tell Hossein that the idea revisits a previous failure mode, summarize what happened, state the safe default, and only ask for override approval if he still wants to supersede it. Do not rely on Hossein remembering the old incident.
 
-Git synchronization follows `GIT-SYNC-POLICY.json`: bounded, deferred, coalesced, and never required on every batch/version.
+Git synchronization follows the ACTIVE superseding `MEM-006-AUTO-SYNC-VALIDATED-MILESTONES` and `GIT-SYNC-POLICY.json`: attempt lightweight sync after every validated milestone before handoff; bounded failures record PENDING. Temporary edits are not milestones.
 
 
 ## Execution safety / turn-boundary rule
 
 `EXECUTION-SAFETY-POLICY.json` is mandatory. By default, complete **one major durable milestone per turn**: resolve authority → work → validate → persist checkpoint/artifact → sync compact Git metadata → **send a visible final response**. Do not silently start the next major stage in the same turn. Respect the bounded external-tool budget and one corrected retry per failed external operation; if the next stage cannot be completed safely within the turn, stop at a durable checkpoint and report the exact next action.
+
+
+## Failure-prevention lifecycle
+
+Read every applicable ACTIVE `PROJECT-MEMORY.json` entry, including its `prevention` lifecycle, gate status/limits and evidence. Root memory owns reusable lessons; checkpoints reference stable IDs and retain local counts/rejected candidates. Run applicable early gates before expensive downstream work. Schema/gate PASS is not linguistic or exact-runtime acceptance. Preserve original decision seals and reciprocal supersession lineage.
+
+- Startup/metadata: `python -B Verification/prevention_preflight.py memory`; validate new/updated checkpoints with its `checkpoint` mode.
+- Stage5 before packaging: run `projection PROJECTED.json` (or direct-import TSV) for envelope/ID/known learner-field defects; still use official v3.3.6 portable completeness/anti-bypass tooling.
+- Final archive: run `package CANDIDATE.zip`, then manifest/hash and exact-runtime gates where applicable.
+- Stage6/7 harness readiness: consume app memory `MEM-024-ASYNC-MANIFEST-READINESS`; wait for expected commit identity/count, reuse identical candidate bytes after harness-only failures.
+- Full v3.3.6 authority remains the pinned portable package. These supplemental preflights do not promote this compact Git mirror to full framework authority.
+
+For projection-only successors, run `Verification/prevention_preflight.py lineage PROJECTED.json --baseline RESOLVED_PARENT.json` at Stage5. Resolve the immutable parent from its checkpoint first; retain current canonical parity and reviewed metadata/identity changes as separate gates.

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-01T01:51:00+02:00",
+  "updated_at": "2026-10-01T02:04:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE3C_DISPOSITION_CLOSURE_PASS_STAGE4_PENDING",
+      "status": "STAGE4_ROUND1_FAIL_REPAIR_REQUIRED",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 independent audit Round1 on exact Stage3C checkpoint SHA 42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b.",
+      "next_action": "Build repaired successor Stage3 snapshot with full example regeneration and 36 structure repairs; recompute Stage3C before Stage4 Round2-equivalent restart.",
       "autorun": {
         "status": "ACTIVE_CLEAN_LONGRUN_V2",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -215,14 +215,14 @@
         "silent_recovery_delay_seconds": 300,
         "old_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART"
       },
-      "last_observed_stage": "3C_disposition_closure_pass",
-      "last_observed_note": "Clean-restart NVV Stage3C PASS: 2492 active targets after explicit source repair, all 2492 core-enriched, 42,364 completeness cells final, review queue 0, relation cells closed without fabrication. Stage4 independent re-audit is next.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_round1",
+      "last_observed_note": "Stage4 Round1 independently failed the Stage3C snapshot: systemic example grammar/naturalness/diversity defects plus 36 explicit structure/argument-slot omissions. Source identity/provenance, source-repair traceability, identity fingerprint and relation no-force policy were consistent. Clean streak remains 0.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
-        "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_0000000050988210b469b5777e339558",
-        "library_stable_id": "libfile_ee4b075d09dc81918b8260404f8f6c3d",
+        "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
+        "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
+        "library_file_id": "file_00000000c3a482108939812474da2c6d",
+        "library_stable_id": "libfile_d9f5eb2f42708191a26689a5ae05972c",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
       },
       "stage2": {
@@ -250,6 +250,14 @@
         "dimension_cells": 42364,
         "unresolved_cells": 0,
         "review_queue_open": 0
+      },
+      "stage4": {
+        "status": "ROUND1_FAIL_REPAIR_REQUIRED",
+        "rounds_completed": 1,
+        "clean_streak": 0,
+        "blocker_findings": 2,
+        "major_finding_categories": 6,
+        "next": "Repair successor Stage3 content, then restart Stage4 rounds."
       }
     },
     "lesen_praesentation": {

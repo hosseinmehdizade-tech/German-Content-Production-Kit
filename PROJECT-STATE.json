@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-01T02:04:00+02:00",
+  "updated_at": "2026-10-01T02:07:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_ROUND1_FAIL_REPAIR_REQUIRED",
+      "status": "STAGE4_ROUND1_FAIL_EXAMPLE_REPAIR_REQUIRED_STRUCTURE36_DELTA_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Build repaired successor Stage3 snapshot with full example regeneration and 36 structure repairs; recompute Stage3C before Stage4 Round2-equivalent restart.",
+      "next_action": "Stage4 repair Superbatch R1: first 500 active targets, four natural DE examples + aligned FA/EN; then continue in ~500-target repair superbatches.",
       "autorun": {
         "status": "ACTIVE_CLEAN_LONGRUN_V2",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
@@ -216,7 +216,7 @@
         "old_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART"
       },
       "last_observed_stage": "4_independent_linguistic_lexical_qa_round1",
-      "last_observed_note": "Stage4 Round1 independently failed the Stage3C snapshot: systemic example grammar/naturalness/diversity defects plus 36 explicit structure/argument-slot omissions. Source identity/provenance, source-repair traceability, identity fingerprint and relation no-force policy were consistent. Clean streak remains 0.",
+      "last_observed_note": "Stage4 Round1 findings remain open. The 36 explicit structure/argument-slot omissions now have a verified deterministic repair delta with zero remaining explicit-marker issues after simulated apply. Full 2492-card example + aligned FA/EN regeneration remains required.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -257,7 +257,18 @@
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Repair successor Stage3 content, then restart Stage4 rounds."
+        "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
+        "repair_progress": {
+          "structure36": "PASS_DELTA_READY",
+          "example_layer": "NOT_STARTED_FULL_CORPUS_REGENERATION_REQUIRED"
+        }
+      },
+      "latest_structure_repair_delta": {
+        "filename": "NVV-v3.3.6-Stage4-Structure36-REPAIR-DELTA-PASS.zip",
+        "sha256": "6ec00971d3cba9a4e177947b8bbaee8164dfaad3bfa57613345556f4676aa863",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Structure36-REPAIR-DELTA-PASS.zip",
+        "library_stable_id": "libfile_6ffda5072fcc8191848ade653c0cfe77",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
       }
     },
     "lesen_praesentation": {

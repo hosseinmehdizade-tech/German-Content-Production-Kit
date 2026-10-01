@@ -8,7 +8,15 @@
   "verification_method": "Successful push followed by live git ls-remote origin refs/heads/main exact hash match.",
   "sync_attempts_used": 2,
   "sync_attempts_max": 2,
-  "receipt_metadata_git": "PENDING",
-  "reason": "Source milestone is verified remotely; this subsequent sync receipt is local Git durability and queued for the next permitted sync boundary. No further network attempt in this turn.",
-  "next_action": "Push the local receipt commit before new project work; preserve remote advances and bounded retry policy."
+  "receipt_metadata_git": "IN_SYNC",
+  "reason": "Pending receipt commit pushed and live remote HEAD verified during persistence-only cleanup; original source commit unchanged.",
+  "next_action": "NONE. Lessons Learned milestone persistence cleanup complete.",
+  "receipt_commit": "6dae348f9f371d9dcda026bdd07d24567b9066b5",
+  "receipt_remote_head_verified": "6dae348f9f371d9dcda026bdd07d24567b9066b5",
+  "cleanup": {
+    "scope": "PERSISTENCE_HANDOFF_ONLY",
+    "receipt_sync_attempts_used": 1,
+    "sync_attempts_max": 2,
+    "unrelated_work_performed": false
+  }
 }

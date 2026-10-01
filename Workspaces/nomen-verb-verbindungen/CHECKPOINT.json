@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-01T02:07:00+02:00",
-  "updated_version": "stage4-round1-structure36-repair-delta-pass-v1",
-  "status": "STAGE4_ROUND1_FAIL_EXAMPLE_REPAIR_REQUIRED_STRUCTURE36_DELTA_PASS",
+  "updated_at": "2026-10-01T17:00:00+02:00",
+  "updated_version": "stage4-repair-r1-v7c-independent-reject-v1",
+  "status": "STAGE4_REPAIR_R1_V7C_REJECTED_REGEN_REQUIRED",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -163,10 +163,22 @@
           "source_occurrences_modified": false
         },
         "example_layer_repair": {
-          "status": "NOT_STARTED",
-          "scope": "FULL_CORPUS_REGENERATION_REQUIRED",
-          "target_cards": 2492,
-          "examples": 9968
+          "status": "R1_V7C_REJECTED_REGEN_REQUIRED",
+          "scope": "FIRST500_REGENERATION_REQUIRED",
+          "target_cards_total": 2492,
+          "examples_total": 9968,
+          "r1": {
+            "target_range": "first 500 active targets",
+            "candidate_filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
+            "candidate_sha256": "a8cc9a2af588c3be5a3a857b0177ec56acc51c1367305058728496327513de10",
+            "integrity": "PASS_SHA256SUMS_5_OF_5",
+            "content_quality": "FAIL",
+            "dominant_template_examples": 1784,
+            "dominant_template_ratio": 0.892,
+            "cards_all_four_same_modal_template": 446,
+            "promotion": "REJECTED_NOT_AUTHORITY",
+            "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
+          }
         }
       }
     },
@@ -246,7 +258,7 @@
     "quality_authority": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
     "portable_sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
     "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
-    "git": "SYNCED_STAGE4_ROUND1_PLUS_STRUCTURE36_DELTA",
+    "git": "SYNCED_STAGE4_R1_V7C_REJECTION",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
@@ -255,9 +267,16 @@
       },
       "latest_delta_checkpoint": null,
       "active_targets": 2492
+    },
+    "r1_candidate_v7c": {
+      "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
+      "sha256": "a8cc9a2af588c3be5a3a857b0177ec56acc51c1367305058728496327513de10",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
+      "state": "REJECTED_CONTENT_QUALITY",
+      "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
     }
   },
-  "next": "Start Stage4 repair Superbatch R1: regenerate four natural German learner examples plus aligned Persian/English translations for the first 500 active targets; preserve definitions/meanings/glosses unless a separate semantic finding proves a defect. After all 2492 are repaired, apply Structure36 delta, recompute Stage3C successor, and restart Stage4 clean rounds.",
+  "next": "Regenerate Stage4 Repair R1 for the first 500 active targets from the Stage3C canonical authority. Do not seed from v7c surface templates. Require expression-specific natural contexts, four DE examples per target with aligned FA/EN, varied grammar/discourse, and a fresh independent targeted audit before R1 PASS.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",

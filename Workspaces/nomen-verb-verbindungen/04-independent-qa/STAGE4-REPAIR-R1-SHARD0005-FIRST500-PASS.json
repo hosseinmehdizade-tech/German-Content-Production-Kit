@@ -1,0 +1,56 @@
+{
+  "schema": "nvv-stage4-repair-shard-report@1.0.0",
+  "status": "PASS_ATOMIC_SHARD_0005",
+  "created_at": "2026-10-02T00:10:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "repair_superbatch": "R1-FIRST500",
+    "shard": "0005",
+    "target_positions": "401-500",
+    "targets": 100,
+    "first_target": "dah-nvv-exp-00397",
+    "last_target": "dah-nvv-exp-00495",
+    "examples_de": 400,
+    "examples_fa": 400,
+    "examples_en": 400,
+    "cumulative_repaired_targets": 500,
+    "cumulative_examples": 2000
+  },
+  "authority": {
+    "parent_shard0004_filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0004-NEXT100-PASS-CHECKPOINT.zip",
+    "parent_shard0004_sha256": "a72de1e66ae35d9ac0f071cc195b668664af672ff928439fa7b4be7da491c777",
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
+  },
+  "qa": {
+    "cards_exact4": "100/100 PASS",
+    "de_unique": "400/400",
+    "fa_unique": "400/400",
+    "en_unique": "400/400",
+    "forbidden_rotating_template_hits_new": 0,
+    "first500_de_unique": "2000/2000",
+    "first500_fa_unique_after_bounded_translation_fix": "2000/2000",
+    "first500_en_unique": "2000/2000",
+    "first500_max_repeated_three_token_sentence_start": 4,
+    "bounded_diff": "PASS_SHARDS0001_0004_EXACT_AND_ONLY_POSITIONS401_500_EXAMPLES_PLUS_REPAIR_MARKER"
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0005-FIRST500-PASS-CHECKPOINT.zip",
+    "sha256": "2bc095ecac8cd52693e30dd944bfc5cba8bcf33054847273c7c194104ebae4d5",
+    "size_bytes": 581846,
+    "canonical_successor_sha256": "90e9a1666c2ab041f83a987e0dffdb30dc5bcd0aaa1bcae5822570a21dc6d8bd",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0005-FIRST500-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_000000005c7081f4ba1ba7a5fcf2c3a7",
+    "library_stable_id": "libfile_b0e3c8c835648191b39d464c93b89715",
+    "package_crc": "PASS",
+    "internal_sha256sums": "5/5 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundary": {
+    "r1_repaired_targets_complete": true,
+    "r1_cumulative_qa_required": true,
+    "stage4_pass": false,
+    "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED"
+  },
+  "next_action": "Use the cumulative R1 QA successor as authority; do not promote raw Shard0005 directly."
+}

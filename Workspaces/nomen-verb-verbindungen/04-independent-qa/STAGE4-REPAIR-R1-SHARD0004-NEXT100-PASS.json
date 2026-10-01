@@ -1,0 +1,71 @@
+{
+  "schema": "nvv-stage4-repair-shard-report@1.0.0",
+  "status": "PASS_ATOMIC_SHARD_0004",
+  "created_at": "2026-10-02T00:10:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "repair_superbatch": "R1-FIRST500",
+    "shard": "0004",
+    "target_positions": "301-400",
+    "targets": 100,
+    "first_target": "dah-nvv-exp-00297-b",
+    "last_target": "dah-nvv-exp-00396",
+    "examples_de": 400,
+    "examples_fa": 400,
+    "examples_en": 400,
+    "cumulative_repaired_targets": 400,
+    "cumulative_examples": 1600
+  },
+  "authority": {
+    "parent_shard0003_filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0003-NEXT100-PASS-CHECKPOINT.zip",
+    "parent_shard0003_sha256": "11db1729845460cc85a7aa0bdcc85a163b1389620c78e18a2cd09f189b46f332",
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
+  },
+  "repair": {
+    "method": "EXPRESSION_SPECIFIC_CONTEXTUAL_REGENERATION_FROM_CUMULATIVE_SHARD0003_SUCCESSOR",
+    "changed_targets": 100,
+    "changed_content": "examples only; stage4_repair marker added",
+    "preserved": {
+      "shards0001_0003": "EXACT",
+      "after_position400": "EXACT",
+      "identities": true,
+      "definitions": true,
+      "meaning_fa": true,
+      "gloss_en": true,
+      "structure": true,
+      "provenance": true
+    }
+  },
+  "qa": {
+    "cards_exact4": "100/100 PASS",
+    "de_unique": "400/400",
+    "fa_unique": "400/400",
+    "en_unique": "400/400",
+    "forbidden_rotating_template_hits_new": 0,
+    "max_repeated_three_token_sentence_start": 3,
+    "source_placeholders_in_examples": 0,
+    "terminal_punctuation_de": "400/400",
+    "first400_de_unique": "1600/1600",
+    "bounded_diff": "PASS_SHARDS0001_0003_EXACT_AND_ONLY_POSITIONS301_400_EXAMPLES_PLUS_REPAIR_MARKER",
+    "source_note": "dah-nvv-exp-00353 preserves source/canonical surface 'eine Beschwerden äußern'; grammatical examples use 'eine Beschwerde äußern' / 'Beschwerden äußern' without changing canonical identity."
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0004-NEXT100-PASS-CHECKPOINT.zip",
+    "sha256": "a72de1e66ae35d9ac0f071cc195b668664af672ff928439fa7b4be7da491c777",
+    "size_bytes": 556509,
+    "canonical_successor_sha256": "0d5b0922a4a7d9d2a423b49215b3346c1290650bddc8a77ca644535b15f1cdec",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0004-NEXT100-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000ba448246b5357f6a0946c493",
+    "library_stable_id": "libfile_4dfa289487288191b20b27ef5bf7c08a",
+    "package_crc": "PASS",
+    "internal_sha256sums": "5/5 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundary": {
+    "r1_superbatch_pass": false,
+    "stage4_pass": false,
+    "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED"
+  },
+  "next_action": "Stage4 Repair R1 Shard0005: regenerate active target positions 401-500, preserving Shards0001-0004 exactly; then run cumulative independent R1 QA."
+}

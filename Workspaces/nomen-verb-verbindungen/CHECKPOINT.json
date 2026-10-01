@@ -3,8 +3,8 @@
   "branch": "nvv-production",
   "domain": "vocabulary",
   "updated_at": "2026-10-02T00:10:00+02:00",
-  "updated_version": "stage4-repair-r1-shard0002-next100-pass-v1",
-  "status": "STAGE4_REPAIR_R1_SHARD0002_NEXT100_PASS",
+  "updated_version": "stage4-repair-r1-shard0003-next100-pass-v1",
+  "status": "STAGE4_REPAIR_R1_SHARD0003_NEXT100_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -163,7 +163,7 @@
           "source_occurrences_modified": false
         },
         "example_layer_repair": {
-          "status": "R1_SHARD0002_NEXT100_PASS",
+          "status": "R1_SHARD0003_NEXT100_PASS",
           "scope": "FULL_CORPUS_REGENERATION_REQUIRED",
           "target_cards_total": 2492,
           "examples_total": 9968,
@@ -171,11 +171,12 @@
             "superbatch_target_cards": 500,
             "completed_shards": [
               "0001",
-              "0002"
+              "0002",
+              "0003"
             ],
-            "completed_targets": 200,
-            "completed_examples": 800,
-            "remaining_targets_in_r1": 300,
+            "completed_targets": 300,
+            "completed_examples": 1200,
+            "remaining_targets_in_r1": 200,
             "prior_v7c": "REJECTED_NOT_AUTHORITY",
             "shard0001": {
               "first_target": "dah-nvv-exp-00001",
@@ -217,6 +218,28 @@
                 "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0002-NEXT100-PASS-CHECKPOINT.zip",
                 "library_file_id": "file_00000000f40481f4bd40478876a701a7",
                 "library_stable_id": "libfile_a290870f928881919442ad3c301ed8a7",
+                "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+              }
+            },
+            "shard0003": {
+              "target_positions": "201-300",
+              "first_target": "dah-nvv-exp-00199",
+              "last_target": "dah-nvv-exp-00297-a",
+              "de_unique": "400/400",
+              "fa_unique": "400/400",
+              "en_unique": "400/400",
+              "new_forbidden_template_hits": 0,
+              "max_repeated_three_token_sentence_start": 2,
+              "first300_de_unique": "1200/1200",
+              "bounded_diff": "PASS_SHARDS0001_0002_EXACT_AND_ONLY_POSITIONS201_300_EXAMPLES_PLUS_REPAIR_MARKER",
+              "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-SHARD0003-NEXT100-PASS.json",
+              "artifact": {
+                "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0003-NEXT100-PASS-CHECKPOINT.zip",
+                "sha256": "11db1729845460cc85a7aa0bdcc85a163b1389620c78e18a2cd09f189b46f332",
+                "canonical_successor_sha256": "566f72da35e1612774a21e62baffc6a81cec455cdc59f010c3bc128b6ef212f4",
+                "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0003-NEXT100-PASS-CHECKPOINT.zip",
+                "library_file_id": "file_00000000d32881f497df57b38167bb1b",
+                "library_stable_id": "libfile_b970b189f258819188aa1fc50e4779d6",
                 "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
               }
             }
@@ -297,10 +320,10 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage4-Repair-R1-Shard0002-NEXT100-PASS-CHECKPOINT.zip",
-    "portable_sha256": "46364090d9a5d631b368c155d1e1753e05231abc30cf097beb3f0d852f4c35cd",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0002-NEXT100-PASS-CHECKPOINT.zip",
-    "git": "SYNCED_STAGE4_REPAIR_R1_SHARD0002",
+    "quality_authority": "NVV-v3.3.6-Stage4-Repair-R1-Shard0003-NEXT100-PASS-CHECKPOINT.zip",
+    "portable_sha256": "11db1729845460cc85a7aa0bdcc85a163b1389620c78e18a2cd09f189b46f332",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0003-NEXT100-PASS-CHECKPOINT.zip",
+    "git": "SYNCED_STAGE4_REPAIR_R1_SHARD0003",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
@@ -308,8 +331,8 @@
         "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
       },
       "latest_delta_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0002-NEXT100-PASS-CHECKPOINT.zip",
-        "sha256": "46364090d9a5d631b368c155d1e1753e05231abc30cf097beb3f0d852f4c35cd"
+        "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0003-NEXT100-PASS-CHECKPOINT.zip",
+        "sha256": "11db1729845460cc85a7aa0bdcc85a163b1389620c78e18a2cd09f189b46f332"
       },
       "active_targets": 2492
     },
@@ -320,11 +343,11 @@
       "state": "REJECTED_CONTENT_QUALITY",
       "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
     },
-    "library_file_id": "file_00000000f40481f4bd40478876a701a7",
-    "library_stable_id": "libfile_a290870f928881919442ad3c301ed8a7",
+    "library_file_id": "file_00000000d32881f497df57b38167bb1b",
+    "library_stable_id": "libfile_b970b189f258819188aa1fc50e4779d6",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next": "Stage4 Repair R1 Shard0003: regenerate active target positions 201-300 from the cumulative Shard0002 successor; preserve Shards0001-0002 exactly. Continue until R1 reaches 500 targets, then run cumulative independent R1 QA before promotion.",
+  "next": "Stage4 Repair R1 Shard0004: regenerate active target positions 301-400 from the cumulative Shard0003 successor; preserve Shards0001-0003 exactly. Continue until R1 reaches 500 targets, then run cumulative independent R1 QA before promotion.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",

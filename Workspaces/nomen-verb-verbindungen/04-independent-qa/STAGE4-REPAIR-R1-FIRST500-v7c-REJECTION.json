@@ -1,0 +1,87 @@
+{
+  "schema": "nvv-stage4-repair-candidate-independent-audit@1.0.0",
+  "audited_at": "2026-10-01T17:00:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": "Stage4 Repair Superbatch R1 / first 500 active targets",
+  "candidate": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
+    "sha256": "a8cc9a2af588c3be5a3a857b0177ec56acc51c1367305058728496327513de10",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
+    "targets": 500,
+    "examples": 2000,
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "package_integrity": "PASS_SHA256SUMS_5_OF_5"
+  },
+  "result": "FAIL_REGENERATE_R1",
+  "blocking_findings": {
+    "dominant_modal_template": {
+      "phrase": "könnten wir",
+      "examples": 1784,
+      "total_examples": 2000,
+      "ratio": 0.892,
+      "cards_with_all_four_examples_using_same_phrase": 446,
+      "total_cards": 500,
+      "finding": "The candidate still exhibits the same systemic template dependence that Stage4 Round1 was supposed to repair."
+    },
+    "semantic_context_mismatch": {
+      "status": "FAIL",
+      "examples": [
+        {
+          "expression_id": "dah-nvv-exp-00467",
+          "canonical_form": "eine Brücke bauen / errichten",
+          "candidate_example": "Nach der Fehlersuche könnten wir eine Brücke bauen.",
+          "reason": "The context is a technical troubleshooting context and does not naturally license literal bridge construction."
+        },
+        {
+          "expression_id": "dah-nvv-exp-00469",
+          "canonical_form": "Buch führen",
+          "candidate_example": "Nach der redaktionellen Prüfung könnten wir ordnungsgemäß Buch führen.",
+          "reason": "The canonical meaning is bookkeeping/accounting, while the context is editorial."
+        },
+        {
+          "expression_id": "dah-nvv-exp-00425",
+          "canonical_form": "in Beziehung setzen zu+Dat.",
+          "candidate_example": "Im Gespräch mit der Familie könnten wir die Ergebnisse mit der Theorie in Beziehung setzen.",
+          "reason": "The analytical relation between results and theory is paired with an unrelated family-conversation context."
+        },
+        {
+          "expression_id": "dah-nvv-exp-00414",
+          "canonical_form": "Beweise aufnehmen",
+          "candidate_example": "In der Redaktionssitzung könnten wir Beweise aufnehmen.",
+          "reason": "The source-enriched meaning is official evidence collection/documentation; the editorial context is mismatched."
+        },
+        {
+          "expression_id": "dah-nvv-exp-00214",
+          "canonical_form": "in Aufruhr sein",
+          "candidate_example": "Nach dem Treffen mit Freunden könnten wir in Aufruhr sein.",
+          "reason": "The context does not naturally motivate a state of severe unrest/rebellion."
+        },
+        {
+          "expression_id": "dah-nvv-exp-00243",
+          "canonical_form": "Ausführungen machen",
+          "candidate_example": "Nach der Rückmeldung könnten wir ausführliche Ausführungen machen.",
+          "reason": "The example is stylistically poor/redundant and not a clean learner sentence."
+        }
+      ]
+    }
+  },
+  "passed_checks": [
+    "candidate ZIP SHA-256 computed",
+    "internal SHA256SUMS verified 5/5",
+    "500 target records present",
+    "2000 example triples present",
+    "exactly four examples per target according to candidate report",
+    "structure36 repair remains a separate verified delta and is not invalidated by this rejection"
+  ],
+  "decision": "Do not promote v7c to a PASS repair checkpoint and do not use it as seed authority for R2.",
+  "repair_contract_for_successor": [
+    "Regenerate all 500 R1 targets from Stage3C canonical semantics, not from v7c surface templates.",
+    "Use expression-specific, semantically licensed contexts rather than rotating domain prefixes.",
+    "Vary subject, tense, clause type and discourse situation; no dominant corpus-wide modal frame.",
+    "Preserve exactly four German examples per target with aligned Persian and English translations.",
+    "Preserve definitions, meanings, glosses, identities and provenance unless an independent semantic finding requires a bounded repair.",
+    "Run a fresh independent targeted naturalness/valency/translation audit before R1 can be marked PASS."
+  ],
+  "next_operation": "Regenerate Stage4 Repair R1 for the first 500 active targets from the Stage3C canonical authority; v7c is rejection evidence only."
+}

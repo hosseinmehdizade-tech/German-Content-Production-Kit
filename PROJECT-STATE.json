@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_REPAIR_R1_SHARD0002_NEXT100_PASS",
+      "status": "STAGE4_REPAIR_R1_FIRST500_CUMULATIVE_QA_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 Repair R1 Shard0003: active target positions 201-300 from cumulative Shard0002 successor, preserving Shards0001-0002 exactly.",
+      "next_action": "Stage4 repair Superbatch R2: regenerate active target positions 501-1000 from the cumulative R1 successor; preserve positions 1-500 exactly unless a later independent finding proves a defect. Continue in atomic shards and run cumulative R2 QA at 1000 repaired targets.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r1_shard0002",
-      "last_observed_note": "R1 Shard0002 repaired active target positions 101-200 / 400 DE examples + aligned FA/EN. 400/400 unique in each language; parent shard had 196 'könnten wir' hits, successor has 0; max repeated three-token start=2; first 200 repaired DE examples are 800/800 unique; Shard0001 preserved exactly. Library rematerialization exact SHA+byte compare PASS.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r1_first500_cumulative_qa_pass",
+      "last_observed_note": "Stage4 repair R1 completed the first 500 active targets / 2000 DE examples + aligned FA/EN. Cumulative QA PASS: 2000/2000 unique in each language, zero forbidden generic-template hits, immutable first500 semantic fields match Stage3C, positions 501-2492 remain exact, and 2 bounded target-bearing example corrections were applied. Stage4 clean-round credit remains 0.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "REPAIR_R1_SHARD0002_NEXT100_PASS",
+        "status": "REPAIR_R1_FIRST500_CUMULATIVE_QA_PASS",
         "rounds_completed": 1,
         "clean_streak": 0,
         "blocker_findings": 2,
@@ -275,7 +275,7 @@
         "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
-          "example_layer": "R1_200_OF_500_PASS__2292_TOTAL_STILL_REPAIRING"
+          "example_layer": "R1_FIRST500_PASS__500_OF_2492_REPAIRED"
         },
         "r1_rejected_candidate": {
           "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -287,30 +287,21 @@
           "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
         },
         "r1": {
-          "completed_targets": 200,
+          "completed_targets": 500,
           "target": 500,
-          "remaining": 300,
-          "shard0001": {
-            "first_target": "dah-nvv-exp-00001",
-            "last_target": "dah-nvv-exp-00098",
-            "artifact": "NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
-            "sha256": "3d0634acab00b6f46326931f5a3392a1be3a00590d1d2cdadf6b9eebfeffad7a",
-            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
-            "library_stable_id": "libfile_15e63e4054248191b9de4087602a8707",
-            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-          },
-          "shard0002": {
-            "target_positions": "101-200",
-            "first_target": "dah-nvv-exp-00099",
-            "last_target": "dah-nvv-exp-00198",
-            "artifact": "NVV-v3.3.6-Stage4-Repair-R1-Shard0002-NEXT100-PASS-CHECKPOINT.zip",
-            "sha256": "46364090d9a5d631b368c155d1e1753e05231abc30cf097beb3f0d852f4c35cd",
-            "canonical_successor_sha256": "e0dcf1b77894a61d2078217623a64a1a9ae7473dc734456114c424e56eac35f8",
-            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0002-NEXT100-PASS-CHECKPOINT.zip",
-            "library_stable_id": "libfile_a290870f928881919442ad3c301ed8a7",
+          "remaining": 0,
+          "cumulative_qa": "PASS",
+          "stage4_clean_round_credit": 0,
+          "artifact": {
+            "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+            "sha256": "014f2547109d9109f5e7e337faa3e75a78918c1d68477db75ac184c931d2e580",
+            "canonical_successor_sha256": "59633db46970e813992f045fde27d3bc1e10052e5b2a1eab784da7ea68b3cf78",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+            "library_stable_id": "libfile_58c1dbf1e03c81918231b39aab7ac568",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
-        }
+        },
+        "remaining_example_repair_targets": 1992
       },
       "latest_structure_repair_delta": {
         "filename": "NVV-v3.3.6-Stage4-Structure36-REPAIR-DELTA-PASS.zip",

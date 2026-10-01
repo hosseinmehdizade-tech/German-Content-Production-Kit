@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-01T17:00:00+02:00",
-  "updated_version": "stage4-repair-r1-v7c-independent-reject-v1",
-  "status": "STAGE4_REPAIR_R1_V7C_REJECTED_REGEN_REQUIRED",
+  "updated_at": "2026-10-01T20:19:00+02:00",
+  "updated_version": "stage4-repair-r1-shard0001-first100-pass-v1",
+  "status": "STAGE4_REPAIR_R1_SHARD0001_FIRST100_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -126,7 +126,7 @@
       "note": "Every applicable cell is final under v3.3.6: VERIFIED_PRESENT, CLOSED_NO_FORCE, or NOT_APPLICABLE."
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "IN_PROGRESS_FINDINGS_OPEN",
+      "state": "IN_PROGRESS_REPAIR",
       "rounds_completed": 1,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -163,21 +163,39 @@
           "source_occurrences_modified": false
         },
         "example_layer_repair": {
-          "status": "R1_V7C_REJECTED_REGEN_REQUIRED",
-          "scope": "FIRST500_REGENERATION_REQUIRED",
+          "status": "R1_SHARD0001_FIRST100_PASS",
+          "scope": "FULL_CORPUS_REGENERATION_REQUIRED",
           "target_cards_total": 2492,
           "examples_total": 9968,
           "r1": {
-            "target_range": "first 500 active targets",
-            "candidate_filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
-            "candidate_sha256": "a8cc9a2af588c3be5a3a857b0177ec56acc51c1367305058728496327513de10",
-            "integrity": "PASS_SHA256SUMS_5_OF_5",
-            "content_quality": "FAIL",
-            "dominant_template_examples": 1784,
-            "dominant_template_ratio": 0.892,
-            "cards_all_four_same_modal_template": 446,
-            "promotion": "REJECTED_NOT_AUTHORITY",
-            "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
+            "superbatch_target_cards": 500,
+            "completed_shards": [
+              "0001"
+            ],
+            "completed_targets": 100,
+            "completed_examples": 400,
+            "remaining_targets_in_r1": 400,
+            "prior_v7c": "REJECTED_NOT_AUTHORITY",
+            "shard0001": {
+              "first_target": "dah-nvv-exp-00001",
+              "last_target": "dah-nvv-exp-00098",
+              "de_unique": "400/400",
+              "fa_unique": "400/400",
+              "en_unique": "400/400",
+              "parent_konnten_wir_hits": 196,
+              "new_konnten_wir_hits": 0,
+              "max_repeated_three_token_sentence_start": 2,
+              "bounded_diff": "PASS_ONLY_FIRST100_EXAMPLES_PLUS_REPAIR_MARKER",
+              "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-SHARD0001-FIRST100-PASS.json",
+              "artifact": {
+                "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+                "sha256": "3d0634acab00b6f46326931f5a3392a1be3a00590d1d2cdadf6b9eebfeffad7a",
+                "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+                "library_file_id": "file_00000000a868821094eebf2ede41f40a",
+                "library_stable_id": "libfile_15e63e4054248191b9de4087602a8707",
+                "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+              }
+            }
           }
         }
       }
@@ -255,17 +273,20 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
-    "portable_sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
-    "git": "SYNCED_STAGE4_R1_V7C_REJECTION",
+    "quality_authority": "NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+    "portable_sha256": "3d0634acab00b6f46326931f5a3392a1be3a00590d1d2cdadf6b9eebfeffad7a",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+    "git": "SYNCED_STAGE4_REPAIR_R1_SHARD0001",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
         "filename": "NVV-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
         "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
       },
-      "latest_delta_checkpoint": null,
+      "latest_delta_checkpoint": {
+        "filename": "NVV-v3.3.6-Stage4-Repair-R1-Shard0001-FIRST100-PASS-CHECKPOINT.zip",
+        "sha256": "3d0634acab00b6f46326931f5a3392a1be3a00590d1d2cdadf6b9eebfeffad7a"
+      },
       "active_targets": 2492
     },
     "r1_candidate_v7c": {
@@ -274,9 +295,12 @@
       "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
       "state": "REJECTED_CONTENT_QUALITY",
       "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
-    }
+    },
+    "library_file_id": "file_00000000a868821094eebf2ede41f40a",
+    "library_stable_id": "libfile_15e63e4054248191b9de4087602a8707",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next": "Regenerate Stage4 Repair R1 for the first 500 active targets from the Stage3C canonical authority. Do not seed from v7c surface templates. Require expression-specific natural contexts, four DE examples per target with aligned FA/EN, varied grammar/discourse, and a fresh independent targeted audit before R1 PASS.",
+  "next": "Stage4 Repair R1 Shard0002: regenerate the next 100 active targets (positions 101-200) from the same Stage3C canonical authority; preserve Shard0001 exactly. Continue until R1 reaches 500 targets, then run cumulative independent R1 QA before promotion.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",

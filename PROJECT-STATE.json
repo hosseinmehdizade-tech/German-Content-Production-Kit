@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_ROUND1_FAIL_EXAMPLE_REPAIR_REQUIRED_STRUCTURE36_DELTA_PASS",
+      "status": "STAGE4_REPAIR_R1_V7C_REJECTED_REGEN_REQUIRED",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 repair Superbatch R1: first 500 active targets, four natural DE examples + aligned FA/EN; then continue in ~500-target repair superbatches.",
+      "next_action": "Regenerate Stage4 Repair R1 first 500 targets from Stage3C canonical semantics; v7c rejected for systemic template concentration and semantic-context mismatches.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_round1",
-      "last_observed_note": "Stage4 Round1 findings remain open. The 36 explicit structure/argument-slot omissions now have a verified deterministic repair delta with zero remaining explicit-marker issues after simulated apply. Full 2492-card example + aligned FA/EN regeneration remains required.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r1_candidate_rejected",
+      "last_observed_note": "R1 v7c package integrity passed, but content quality failed independent review: 1784/2000 examples (89.2%) still used the same 'könnten wir' frame and 446/500 cards used it in all four examples; multiple domain/context mismatches were confirmed. v7c is rejection evidence only.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "ROUND1_FAIL_REPAIR_REQUIRED",
+        "status": "ROUND1_FAIL_REPAIR_REQUIRED__R1_V7C_REJECTED",
         "rounds_completed": 1,
         "clean_streak": 0,
         "blocker_findings": 2,
@@ -275,7 +275,16 @@
         "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
-          "example_layer": "NOT_STARTED_FULL_CORPUS_REGENERATION_REQUIRED"
+          "example_layer": "R1_FIRST500_REGEN_REQUIRED"
+        },
+        "r1_rejected_candidate": {
+          "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
+          "sha256": "a8cc9a2af588c3be5a3a857b0177ec56acc51c1367305058728496327513de10",
+          "integrity": "PASS",
+          "content_quality": "FAIL",
+          "dominant_template_examples": "1784/2000",
+          "cards_all_four_same_template": "446/500",
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
         }
       },
       "latest_structure_repair_delta": {

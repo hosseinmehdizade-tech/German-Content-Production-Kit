@@ -1,0 +1,65 @@
+{
+  "schema": "nvv-stage4-repair-superbatch-report@1.0.0",
+  "status": "PASS_R1_FIRST500_CUMULATIVE_QA",
+  "created_at": "2026-10-02T00:10:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "superbatch": "R1-FIRST500",
+    "target_positions": "1-500",
+    "targets": 500,
+    "examples_de": 2000,
+    "examples_fa": 2000,
+    "examples_en": 2000
+  },
+  "parent": {
+    "stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "shard0005_sha256": "2bc095ecac8cd52693e30dd944bfc5cba8bcf33054847273c7c194104ebae4d5"
+  },
+  "cumulative_qa": {
+    "exact_four_examples": "500/500 PASS",
+    "unique_de": "2000/2000",
+    "unique_fa": "2000/2000",
+    "unique_en": "2000/2000",
+    "forbidden_generic_template_hits": 0,
+    "source_placeholder_hits": 0,
+    "terminal_punctuation_de": "2000/2000",
+    "max_repeated_three_token_sentence_start": 4,
+    "target_noun_anchor": "PASS_WITH_5_REVIEWED_NORMAL_INFLECTIONS",
+    "immutable_fields_vs_stage3c": "PASS_FIRST500",
+    "positions_501_2492_vs_stage3c": "PASS_EXACT",
+    "rejected_v7c_known_bad_context_hits": 0,
+    "bounded_post_shard_repairs": [
+      {
+        "position": 305,
+        "expression_id": "dah-nvv-exp-00301",
+        "reason": "Replace synonym Therapie with canonical target noun Behandlung in example 2."
+      },
+      {
+        "position": 477,
+        "expression_id": "dah-nvv-exp-00473-a",
+        "reason": "Replace narrower synonym Roman with canonical target noun Buch in example 2."
+      }
+    ],
+    "stage4_clean_round_credit": 0
+  },
+  "source_fidelity_note": {
+    "expression_id": "dah-nvv-exp-00353",
+    "canonical_surface": "eine Beschwerden äußern",
+    "action": "PRESERVED_CANONICAL_SOURCE_SURFACE; examples use grammatical singular/plural. Re-evaluate only in later independent source-fidelity QA."
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "sha256": "014f2547109d9109f5e7e337faa3e75a78918c1d68477db75ac184c931d2e580",
+    "size_bytes": 583021,
+    "canonical_successor_sha256": "59633db46970e813992f045fde27d3bc1e10052e5b2a1eab784da7ea68b3cf78",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_000000002ea88210bfd3cdc45e1e68d4",
+    "library_stable_id": "libfile_58c1dbf1e03c81918231b39aab7ac568",
+    "package_crc": "PASS",
+    "internal_sha256sums": "5/5 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "conclusion": "R1 repair superbatch is PASS as a repair milestone. This does not count as a Stage4 independent clean round.",
+  "next_action": "Stage4 repair Superbatch R2: active target positions 501-1000 from the cumulative R1 successor; preserve positions 1-500 exactly unless a later independent finding proves a defect."
+}

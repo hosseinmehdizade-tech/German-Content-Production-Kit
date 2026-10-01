@@ -259,42 +259,56 @@
   },
   "next": "Start Stage4 repair Superbatch R1: regenerate four natural German learner examples plus aligned Persian/English translations for the first 500 active targets; preserve definitions/meanings/glosses unless a separate semantic finding proves a defect. After all 2492 are repaired, apply Structure36 delta, recompute Stage3C successor, and restart Stage4 clean rounds.",
   "autorun": {
-    "status": "ACTIVE",
-    "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v2.md",
-    "mission_key": "NVV-CLEAN-LONGRUN-R2",
+    "status": "ACTIVE_RESILIENT_V3_4_0",
+    "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
+    "mission_key": "NVV-CLEAN-LONGRUN-R3",
     "mission_type": "PROJECT_AWARE_CUSTOM",
     "mode": "nvv",
     "execution_profile": "continuous_safe",
     "turn_policy": "CONTINUOUS_SAFE",
     "auto_continue_across_turns": true,
     "user_confirmation_for_routine_continuation": false,
-    "silent_recovery_delay_seconds": 300,
-    "silent_recovery_attempts_max": 3,
+    "silent_recovery_delay_seconds": 420,
+    "silent_recovery_attempts_max": 4,
     "final_delivery_recovery_attempts_max": 3,
-    "recommended_auto_turn_budget_min": 20,
+    "recommended_auto_turn_budget_min": 80,
     "historical_nvv_preset": "DEPRECATED_FOR_CURRENT_CLEAN_RESTART",
     "controller_build": {
-      "version": "3.3.1",
-      "fix": "ASSISTANT_MESSAGE_STABILITY_AUTO_CONTINUE",
-      "prior_bug": "v3.3.0 generic main-DOM mutations could indefinitely reset response-settlement timing, preventing automatic continuation.",
-      "tampermonkey_full_package": {
-        "filename": "ChatGPT-NVV-AutoMission-v3.3.1-CHROME-READY.zip",
-        "sha256": "801d972bdec3f371ddb336c6afabaf19c4d0ca628817953b3dbda9bc5ed3a9d8",
-        "library_path": "/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.1-CHROME-READY.zip",
-        "library_stable_id": "libfile_339bc4d5eadc81919878fd34dfa35676"
+      "version": "3.4.0",
+      "purpose": "RESILIENT_CHECKPOINT_FIRST_AUTO_CONTINUE",
+      "supersedes": "3.3.1",
+      "fixes": [
+        "bounded automatic retry after composer unavailable / active generation / unconfirmed send",
+        "single-tab leader lease prevents duplicate prompts",
+        "conversation-route binding prevents cross-chat prompt leakage",
+        "user-draft and manual-user-message guards prevent clobber/interference",
+        "offline/rate-limit/transient UI backoff",
+        "focus/online/visibility wake-up after browser sleep",
+        "smart state-preserving resume",
+        "checkpoint-first mission v3 removes stale fixed-stage startup",
+        "optional AUTORUN_STATE_V3_4 machine handoff"
+      ],
+      "full_package": {
+        "filename": "ChatGPT-NVV-AutoMission-v3.4.0-CHROME-READY.zip",
+        "sha256": "d1e57823df909ccfd491666c282ae48785081e6f976a93bf22b1f89533e0beab",
+        "persistence": "USER_DELIVERY_READY__LIBRARY_SYNC_PENDING_CONTAINER_SESSION_UNAVAILABLE"
       },
       "chrome_extension_package": {
-        "filename": "ChatGPT-NVV-AutoMission-v3.3.1-Chrome-Extension.zip",
-        "sha256": "e20785a250bae4924d2d2e4672989bc91762b5a9a2876c32c6a22dbf5564c205",
-        "library_path": "/Flasch kart/ChatGPT-NVV-AutoMission-v3.3.1-Chrome-Extension.zip",
-        "library_stable_id": "libfile_4249eb4bca7c819194227699f711c616"
+        "filename": "ChatGPT-NVV-AutoMission-v3.4.0-Chrome-Extension.zip",
+        "sha256": "869729e008520687470b781b7281075e8d15b2fe9de1169b45602e104b06ffcd",
+        "persistence": "USER_DELIVERY_READY__LIBRARY_SYNC_PENDING_CONTAINER_SESSION_UNAVAILABLE"
       },
-      "tampermonkey_userscript_sha256": "7fe4d5ce4ca25bc3a4a3354dd6c936ca2e6dc66555af2ba97407c0e7dcf69b82",
+      "tampermonkey_userscript": {
+        "filename": "ChatGPT-NVV-AutoMission-v3.4.0.user.js",
+        "sha256": "c7e5144b13cd13e9f211a7024992cd9dbd8cab51a4ac8a57cf444b969e55b46b"
+      },
+      "mission_source_sha256": "dcbc01770fdb887195f6ff143143faa6f56690510c35e24db7d277feab274804",
       "verification": {
-        "js_syntax": "PASS",
+        "js_syntax": "PASS_BOTH_VARIANTS",
         "manifest_json": "PASS",
-        "zip_crc": "PASS",
-        "static_auto_continue_fix": "PASS",
+        "zip_crc": "PASS_BOTH_PACKAGES",
+        "internal_sha256sums": "PASS",
+        "static_resilience_checks": "PASS",
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     }

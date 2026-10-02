@@ -1,0 +1,91 @@
+{
+  "schema": "nvv-stage4-round-summary@1.1.0",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "round": 3,
+  "status": "FAIL_SYSTEMIC_TARGET_BEARING_REPAIR_REQUIRED",
+  "audited_snapshot": {
+    "filename": "NVV-v3.3.6-Stage4-Round2-Repair01546-CANONICAL-PASS-CHECKPOINT.zip",
+    "sha256": "e3053cde3d1781030e97f3973bfc254b7943193341f40ae9a71e58a52615879c",
+    "successor_core_sha256": "fb76a1fbee830edba2e0fd5a8589a448a86a701c7516326426703007b12d549f"
+  },
+  "clean_streak": 0,
+  "passed_dimensions": [
+    "package_integrity",
+    "source_identity_and_provenance",
+    "source_surface_crosscheck",
+    "structure36",
+    "stage3c_closure",
+    "relation_no_force_policy_consistency",
+    "example_count_and_uniqueness",
+    "generic_template_elimination",
+    "meta_mention_adjudication",
+    "source_placeholder_elimination",
+    "german_missing_zu_adjudication",
+    "persian_finite_form_adjudication"
+  ],
+  "finding": {
+    "category": "EXAMPLE_TARGET_BEARING",
+    "severity": "BLOCKER_SYSTEMIC",
+    "contract": "Each German learner example must be target-bearing.",
+    "full_corpus_anchor_screen": {
+      "raw_candidate_examples": 1098,
+      "raw_candidate_cards": 532,
+      "note": "Overinclusive morphology screen. German inflection/separable/passive forms create false positives; candidates require shard-level linguistic adjudication and must not be blindly repaired."
+    },
+    "independent_round_sample_cards": 80,
+    "confirmed_examples": [
+      {
+        "expression_id": "dah-nvv-exp-00012",
+        "example": 3,
+        "canonical_form": "sich in Abhängigkeit befinden",
+        "finding": "uses bleiben instead of befinden"
+      },
+      {
+        "expression_id": "dah-nvv-exp-00030",
+        "example": 3,
+        "canonical_form": "eine Abreibung bekommen / kriegen",
+        "finding": "uses mit einer Abreibung rechnen instead of bekommen/kriegen"
+      },
+      {
+        "expression_id": "dah-nvv-exp-00035",
+        "example": 4,
+        "canonical_form": "eine Abscheu hegen",
+        "finding": "uses verbergen instead of hegen"
+      },
+      {
+        "expression_id": "dah-nvv-exp-00050",
+        "example": 3,
+        "canonical_form": "im Abseits stehen",
+        "finding": "uses sich fühlen instead of stehen"
+      },
+      {
+        "expression_id": "dah-nvv-exp-00057",
+        "example": 3,
+        "canonical_form": "eine Absprache treffen",
+        "finding": "noun-only construction without treffen"
+      },
+      {
+        "expression_id": "dah-nvv-exp-00097",
+        "example": 4,
+        "canonical_form": "eine Andeutung machen",
+        "finding": "noun-only construction without machen"
+      },
+      {
+        "expression_id": "dah-nvv-exp-02253",
+        "example": 3,
+        "canonical_form": "Vorbehalte haben",
+        "finding": "uses bestehen instead of haben"
+      },
+      {
+        "expression_id": "dah-nvv-exp-02355",
+        "example": 2,
+        "canonical_form": "durch den Wind sein",
+        "finding": "uses durch den Wind bringen instead of sein"
+      }
+    ]
+  },
+  "decision": "Round3 is not clean. Start bounded systematic target-bearing audit/repair in 100-position shards; do not blindly apply the raw morphology heuristic.",
+  "stage4_clean_round_credit": 0,
+  "next_operation": "R6 target-bearing Shard0026: adjudicate all 400 examples in positions 1-100 and repair confirmed non-target-bearing examples only; preserve all other content."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-02T15:05:00+02:00",
+  "updated_at": "2026-10-02T15:23:10+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_REPAIR_R3_FIRST1500_CUMULATIVE_QA_PASS",
+      "status": "STAGE4_REPAIR_R4_SHARD0016_POS1501_1600_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 Repair R4 Shard0016: active target positions 1501-1600 from the cumulative R3 successor; preserve positions 1-1500 exactly.",
+      "next_action": "Stage4 Repair R4 Shard0017: active target positions 1601-1700 from the cumulative Shard0016 successor; preserve positions 1-1600 exactly.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r3_first1500_cumulative_qa_pass",
-      "last_observed_note": "R3 completed positions 1001-1500. Shard0015 repaired positions 1401-1500 / 400 DE examples + aligned FA/EN; 400/400 unique in each language and noun-anchor 400/400 exact. Cumulative repaired positions 1-1500 now have 6000/6000 unique DE/FA/EN examples, zero forbidden generic-template hits, zero source-placeholder hits, zero meta-mention examples, zero actual German missing-zu findings, Persian finite-template PASS, immutable semantic fields vs Stage3C PASS for positions 1-1500, and positions 1501-2492 remain exact Stage3C. R3 cumulative portable checkpoint rematerialized exact SHA+byte compare PASS. This is a repair milestone, not a Stage4 clean round.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r4_shard0016",
+      "last_observed_note": "R4 Shard0016 repaired active target positions 1501-1600 / 400 DE examples + aligned FA/EN. New shard 400/400 unique in each language; cumulative first1600 is 6400/6400 unique in DE/FA/EN; zero forbidden generic-template hits, zero meta-mention examples, zero source-placeholder hits, target noun anchor 400/400, Persian finite-template check PASS, positions 1-1500 and 1601-2492 preserved exactly. Existing Stage2 source repairs in this scope ('einer Partei betreten' exclusion and 'an Profit gewinnen' -> canonical 'an Profil gewinnen') were preserved without re-decision. Library rematerialization exact SHA+byte compare PASS.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "REPAIR_R3_FIRST1500_CUMULATIVE_QA_PASS",
+        "status": "REPAIR_R4_SHARD0016_POS1501_1600_PASS",
         "rounds_completed": 1,
         "clean_streak": 0,
         "blocker_findings": 2,
@@ -275,7 +275,7 @@
         "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
-          "example_layer": "R3_500_OF_500_CUMULATIVE_QA_PASS__1500_OF_2492_REPAIRED"
+          "example_layer": "R4_100_OF_500_PASS__1600_OF_2492_REPAIRED"
         },
         "r1_rejected_candidate": {
           "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -301,7 +301,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
         },
-        "remaining_example_repair_targets": 992,
+        "remaining_example_repair_targets": 892,
         "r2": {
           "completed_targets": 500,
           "target": 500,
@@ -393,6 +393,23 @@
             "immutable_semantic_fields_vs_stage3c": "PASS_POSITIONS1_1500",
             "tail_vs_stage3c": "PASS_POSITIONS1501_2492_EXACT",
             "stage4_clean_round_credit": 0,
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          }
+        },
+        "r4": {
+          "completed_targets": 100,
+          "target": 500,
+          "remaining": 400,
+          "shard0016": {
+            "target_positions": "1501-1600",
+            "first_target": "dah-nvv-exp-01491",
+            "last_target": "dah-nvv-exp-01591",
+            "artifact": "NVV-v3.3.6-Stage4-Repair-R4-Shard0016-POS1501-1600-PASS-CHECKPOINT.zip",
+            "sha256": "435065370016d98d3b22c9de561cb7dc15402cd155557bb850e51bfe20c672c4",
+            "canonical_successor_sha256": "1b4651c0823b54d49de40017ad2edfa2b314b8264f71b04b68113c8627cf226d",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R4-Shard0016-POS1501-1600-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000201c81f49bf4ca3a64448acd",
+            "library_stable_id": "libfile_775685476f0881919ef15da43afb1540",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
         }

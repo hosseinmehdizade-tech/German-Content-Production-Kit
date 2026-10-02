@@ -1,0 +1,71 @@
+{
+  "schema": "nvv-stage4-repair-superbatch-report@1.0.0",
+  "status": "PASS_R3_FIRST1500_CUMULATIVE_QA",
+  "created_at": "2026-10-02T15:05:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "cumulative_repaired_targets": 1500,
+    "r3_target_positions": "1001-1500",
+    "r3_targets": 500,
+    "examples_de": 6000,
+    "examples_fa": 6000,
+    "examples_en": 6000
+  },
+  "parent": {
+    "stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "shard0015_sha256": "f83422bfc3d2377cc18a4b22b489f381f9df3d1442e0ea74b8b75edb47f19f62"
+  },
+  "cumulative_qa": {
+    "exact_four_examples": "1500/1500",
+    "unique_de": "6000/6000",
+    "unique_fa": "6000/6000",
+    "unique_en": "6000/6000",
+    "forbidden_generic_template_hits": 0,
+    "source_placeholder_hits": 0,
+    "meta_mention_examples": 0,
+    "german_missing_zu_findings": 0,
+    "german_missing_zu_heuristic_false_positives": [
+      {
+        "position": 62,
+        "example": 3,
+        "expression_id": "dah-nvv-exp-00061",
+        "sentence": "Wenn Gespräche nur noch aggressiv verlaufen, kann es sinnvoll sein, auf Abstand zu gehen.",
+        "review": "FALSE_POSITIVE_VALID_ZU_INFINITIVE_CLAUSE"
+      }
+    ],
+    "persian_finite_template": "PASS_NO_INFINITIVE_SENTENCE_ENDINGS",
+    "max_repeated_three_token_sentence_start": 9,
+    "max_repeated_four_token_sentence_start": 5,
+    "max_repeated_five_token_sentence_start": 4,
+    "target_noun_anchor": "PASS_5974_EXACT_PLUS_26_REVIEWED_INFLECTION_OR_SOURCE_NOTATION_VARIANTS",
+    "immutable_semantic_fields_vs_stage3c": "PASS_POSITIONS1_1500",
+    "positions_1501_2492_vs_stage3c": "PASS_EXACT",
+    "repair_marker_phase_partition": "PASS_R1_1_500_R2_501_1000_R3_1001_1500",
+    "stage4_clean_round_credit": 0
+  },
+  "source_fidelity_notes": [
+    {
+      "scope": "R3 positions 1001-1500",
+      "action": "Canonical source surfaces, definitions, meanings, structure, provenance, identity and relation/disposition fields preserved; only examples plus repair markers changed."
+    },
+    {
+      "scope": "structure36",
+      "action": "Separate Stage4 structure/Rektion repair delta remains unapplied and is not claimed closed by this example-layer milestone."
+    }
+  ],
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R3-FIRST1500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "sha256": "74094a8090c24e5703c342e48f0ec99645a54ed1b724622d19f8ed9a3933e83c",
+    "size_bytes": 887115,
+    "canonical_successor_sha256": "a2b550a5c4c010632873bff916d4d7297e9f19cb07934280c62d0eaf478b7041",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R3-FIRST1500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_000000007d1c81f49a516df015b5f2ff",
+    "library_stable_id": "libfile_cda83ccf913c8191b619697ae4bfbd11",
+    "package_crc": "PASS",
+    "internal_sha256sums": "4/4 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "conclusion": "R3 repair superbatch is PASS as a cumulative example-layer repair milestone. It does not count as an independent Stage4 clean round.",
+  "next_action": "Stage4 Repair R4 Shard0016: regenerate active target positions 1501-1600 from this cumulative R3 successor; preserve positions 1-1500 exactly."
+}

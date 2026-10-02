@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-02T19:17:23+02:00",
+  "updated_at": "2026-10-02T18:45:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_REPAIR_R5_ALL2492_CUMULATIVE_QA_PASS",
+      "status": "STAGE4_STRUCTURE36_APPLIED_STAGE3C_RECOMPUTE_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Apply the separate verified 36-target Stage4 structure/Rektion repair delta to the all-2492 repaired successor, recompute affected Stage3C evidence, then restart independent Stage4 clean-round auditing from clean_streak=0.",
+      "next_action": "Stage4 Clean Audit Round2 on the exact structure-fixed + all2492-example-repaired successor snapshot; clean_streak starts at 0.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r5_all2492_cumulative_qa_pass",
-      "last_observed_note": "R5 completed the final example-layer regeneration through active target 2492. Shard0025 repaired positions 2401-2492 / 368 DE examples + aligned FA/EN after rechecking registered PDF pages 25-26 (Zeichen through Zwietracht). Full repaired corpus now has exactly four examples for 2492/2492 targets and 9968/9968 unique examples in each of DE/FA/EN; zero forbidden generic-template hits, zero source-placeholder hits, zero instructional meta-mention hits, and full semantic-field parity vs Stage3C when examples/stage4_repair markers are excluded. Direct noun-anchor heuristic is 9936 exact + 32 manually reviewed morphology/source-notation variants. Library rematerialization exact SHA+byte compare PASS. Example-layer repair is complete, but Stage4 is NOT complete: the separate verified 36-target structure/Rektion delta remains unapplied, Stage3C affected evidence must be recomputed, and clean_streak remains 0.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_structure36_applied_stage3c_recompute",
+      "last_observed_note": "Verified 36-target structure/Rektion delta was applied to the all-2492 example-repaired successor. Exactly 36 cards changed and only structure.rektion + structure.argument_slots changed; 36 Rektion entries + 36 argument slots added, with 4 targets preserving pre-existing person slots. All 9968 DE/FA/EN examples were preserved exactly. Stage3C affected evidence was recomputed: 64 cells moved CLOSED_NO_FORCE→VERIFIED_PRESENT and 8 already-VERIFIED_PRESENT cells received refreshed successor evidence; totals are VERIFIED_PRESENT 18588, CLOSED_NO_FORCE 21284, NOT_APPLICABLE 2492, unresolved 0. Library rematerialization exact SHA+byte compare PASS. Stage4 clean_streak remains 0 and independent clean-round auditing is next.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "REPAIR_R5_ALL2492_CUMULATIVE_QA_PASS",
+        "status": "STRUCTURE36_APPLIED_STAGE3C_RECOMPUTE_PASS",
         "rounds_completed": 1,
         "clean_streak": 0,
         "blocker_findings": 2,
@@ -275,7 +275,8 @@
         "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
-          "example_layer": "R5_492_OF_492_CUMULATIVE_QA_PASS__2492_OF_2492_REPAIRED"
+          "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
+          "structure_argument_slot": "APPLIED_36_OF_36_STAGE3C_RECOMPUTED_PASS"
         },
         "r1_rejected_candidate": {
           "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -563,6 +564,29 @@
             "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
+        },
+        "structure36": {
+          "status": "APPLIED_PASS_STAGE3C_RECOMPUTED",
+          "patched_targets": 36,
+          "added_rektion_entries": 36,
+          "added_argument_slots": 36,
+          "closed_no_force_to_verified_present": 64,
+          "verified_present_evidence_refreshed": 8,
+          "unresolved_cells": 0,
+          "artifact": "NVV-v3.3.6-Stage4-Structure36-APPLIED-Stage3C-RECOMPUTE-PASS-CHECKPOINT.zip",
+          "sha256": "ef1970936f80f02f22186d00acd431d572fa019215f45cdbaec7578bff703f36",
+          "successor_core_sha256": "de133dae8ef0496d601c0a9b596a9b9d8333556e903587a60d7892a37ed332cd",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Structure36-APPLIED-Stage3C-RECOMPUTE-PASS-CHECKPOINT.zip",
+          "library_file_id": "file_000000008c4c81f494d68c63eeb82585",
+          "library_stable_id": "libfile_c89a40ffe85881918cd470205e9357f5",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "stage3c_recomputed": {
+          "verified_present_cells": 18588,
+          "closed_no_force_cells": 21284,
+          "not_applicable_cells": 2492,
+          "unresolved_cells": 0,
+          "affected_dimension_cells": 72
         }
       },
       "latest_structure_repair_delta": {

@@ -1,0 +1,64 @@
+{
+  "schema": "nvv-stage4-repair-superbatch-report@1.0.0",
+  "status": "PASS_R4_FIRST2000_CUMULATIVE_QA",
+  "created_at": "2026-10-02T16:18:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "cumulative_repaired_targets": 2000,
+    "r4_target_positions": "1501-2000",
+    "r4_targets": 500,
+    "examples_de": 8000,
+    "examples_fa": 8000,
+    "examples_en": 8000
+  },
+  "parent": {
+    "stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "shard0020_sha256": "4235a72757068720f0a0981bae2bfdf0b11a797c7e64c45efb06b5bae520e5f5"
+  },
+  "cumulative_qa": {
+    "exact_four_examples": "2000/2000",
+    "unique_de": "8000/8000",
+    "unique_fa": "8000/8000",
+    "unique_en": "8000/8000",
+    "forbidden_generic_template_hits": 0,
+    "source_placeholder_hits": 0,
+    "meta_mention_examples": 0,
+    "german_missing_zu_findings": 0,
+    "german_missing_zu_scope_note": "R3 prior cumulative independent QA retained; R4 positions 1501-2000 passed conservative trigger recheck and targeted shard review.",
+    "persian_finite_template": "PASS_NO_INFINITIVE_SENTENCE_ENDINGS",
+    "max_repeated_three_token_sentence_start": 12,
+    "max_repeated_four_token_sentence_start": 6,
+    "max_repeated_five_token_sentence_start": 5,
+    "target_noun_anchor": "PASS_7958_EXACT_PLUS_42_REVIEWED_INFLECTION_OR_SOURCE_NOTATION_VARIANTS",
+    "target_noun_anchor_evidence": "AGGREGATED_FROM_R3_CUMULATIVE_AND_R4_SHARD0016_0020_VALIDATED_QA",
+    "immutable_semantic_fields_vs_stage3c": "PASS_POSITIONS1_2000",
+    "positions_2001_2492_vs_stage3c": "PASS_EXACT",
+    "repair_marker_phase_partition": "PASS_R1_1_500_R2_501_1000_R3_1001_1500_R4_1501_2000",
+    "stage4_clean_round_credit": 0
+  },
+  "source_fidelity_notes": [
+    {
+      "scope": "R4 positions 1501-2000",
+      "action": "Canonical source surfaces, definitions, meanings, structure, provenance, identity and relation/disposition fields preserved; only examples plus repair markers changed."
+    },
+    {
+      "scope": "structure36",
+      "action": "Separate Stage4 structure/Rektion repair delta remains unapplied and is not claimed closed by this example-layer milestone."
+    }
+  ],
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R4-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "sha256": "ea54e21aa6a8f2394806745a282a88c794aeb199490e049aef803b036757339f",
+    "size_bytes": 1043757,
+    "canonical_successor_sha256": "d03d4e06f187bc713fbe112f7994533b9ec21760bfbfec2798fb33da12a379ca",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R4-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000578082108dc7e76962d1f88a",
+    "library_stable_id": "libfile_28d1ca27a7948191a4ff23a441d9e2ca",
+    "package_crc": "PASS",
+    "internal_sha256sums": "4/4 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "conclusion": "R4 repair superbatch is PASS as a cumulative example-layer repair milestone. It does not count as an independent Stage4 clean round.",
+  "next_action": "Stage4 Repair R5 Shard0021: regenerate active target positions 2001-2100 from this cumulative R4 successor; preserve positions 1-2000 exactly."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-02T20:50:00+02:00",
+  "updated_at": "2026-10-02T21:10:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_ROUND2_REPAIR01546_CANONICAL_PASS",
+      "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0026_POS1_100_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 Clean Audit Round3 on the exact Round2-repair01546 successor snapshot; clean_streak starts at 0.",
+      "next_action": "R6 target-bearing Shard0027: adjudicate active target positions 101-200, repair confirmed non-target-bearing examples, preserve all other content exactly, and refresh affected Stage3C example evidence.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_round2_bounded_canonical_repair",
-      "last_observed_note": "Stage4 Round2 independently re-audited the structure36 + all2492-example successor. Mechanical/source/structure/closure/relation/example checks passed, but one new canonical learning-form blocker was found at dah-nvv-exp-01546: source surface 'etw. in Papier einwicken' conflicts with all four correct examples and Duden 'einwickeln'. Bounded repair changed canonical form to 'etw. in Papier einwickeln' while preserving exact source_surface, examples, definitions, FA/EN meanings and IDs. Stage2 canonical SHA updated to 82f957...; identity fingerprint unchanged; one Stage3C structure_components evidence cell refreshed; unresolved remains 0. Library rematerialization exact SHA+byte compare PASS. Rounds completed=2, clean_streak=0.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_round3_target_bearing_repair_r6_shard0026",
+      "last_observed_note": "Stage4 Round3 found a systemic target-bearing example defect that prior noun-anchor QA had not caught: some examples contain the target noun/meaning but not the canonical target construction. The full-corpus morphology screen is deliberately overinclusive (1098 candidate examples / 532 cards) and therefore is not used blindly. R6 Shard0026 independently adjudicated all 400 examples in positions 1-100 and confirmed 8 affected cards / 12 non-target-bearing examples; those 12 DE examples and aligned FA/EN translations were replaced. All other cards and semantic fields were preserved exactly. Affected Stage3C example evidence was refreshed for 24 cells with zero status transitions and zero unresolved. Library rematerialization exact SHA+byte compare PASS. Round3 failed as a clean round; clean_streak remains 0.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,8 +267,8 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "ROUND2_REPAIR01546_CANONICAL_PASS",
-        "rounds_completed": 2,
+        "status": "ROUND3_TARGET_BEARING_R6_SHARD0026_POS1_100_PASS",
+        "rounds_completed": 3,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
@@ -606,6 +606,33 @@
           "library_file_id": "file_000000001e8c820a8d605b66c48ce935",
           "library_stable_id": "libfile_d9b8ce172d84819192ed7770e9c2f0c9",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "round3": {
+          "status": "FAIL_SYSTEMIC_TARGET_BEARING_REPAIR_REQUIRED",
+          "category": "EXAMPLE_TARGET_BEARING",
+          "raw_candidate_examples": 1098,
+          "raw_candidate_cards": 532,
+          "raw_screen_policy": "OVERINCLUSIVE_DO_NOT_BLIND_REPAIR",
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-SUMMARY.json"
+        },
+        "target_bearing_repair": {
+          "status": "R6_SHARD0026_POS1_100_PASS",
+          "reviewed_positions_completed": 100,
+          "total_positions": 2492,
+          "reviewed_examples": 400,
+          "affected_targets": 8,
+          "replaced_examples": 12,
+          "remaining_positions": 2392,
+          "shard0026": {
+            "positions": "1-100",
+            "artifact": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0026-POS1-100-PASS-CHECKPOINT.zip",
+            "sha256": "4f05d1d35a9d1f2fffe08cf890e014675031f3bc2ac909420ed86159e7ff56b6",
+            "successor_core_sha256": "d797ec435696fd7b791f30f78fdb80b1a0e89504eb1508292b3593b6a975c964",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0026-POS1-100-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_0000000030488210ad318a9613171229",
+            "library_stable_id": "libfile_ca32fbd31b548191befd4ebc898d1c07",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          }
         }
       },
       "latest_structure_repair_delta": {

@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-02T09:56:00+02:00",
-  "updated_version": "stage4-repair-r2-shard0008-pos701-800-pass-v1",
-  "status": "STAGE4_REPAIR_R2_SHARD0008_POS701_800_PASS",
+  "updated_at": "2026-10-02T11:17:00+02:00",
+  "updated_version": "stage4-repair-r2-shard0009-pos801-900-pass-v1",
+  "status": "STAGE4_REPAIR_R2_SHARD0009_POS801_900_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -163,13 +163,13 @@
           "source_occurrences_modified": false
         },
         "example_layer_repair": {
-          "status": "R2_SHARD0008_POS701_800_PASS",
+          "status": "R2_SHARD0009_POS801_900_PASS",
           "scope": "FULL_CORPUS_REGENERATION_REQUIRED",
           "target_cards_total": 2492,
           "examples_total": 9968,
-          "repaired_targets_total": 800,
-          "repaired_examples_total": 3200,
-          "remaining_targets_total": 1692,
+          "repaired_targets_total": 900,
+          "repaired_examples_total": 3600,
+          "remaining_targets_total": 1592,
           "r1": {
             "superbatch_target_cards": 500,
             "completed_shards": [
@@ -316,11 +316,12 @@
             "completed_shards": [
               "0006",
               "0007",
-              "0008"
+              "0008",
+              "0009"
             ],
-            "completed_targets": 300,
-            "completed_examples": 1200,
-            "remaining_targets_in_r2": 200,
+            "completed_targets": 400,
+            "completed_examples": 1600,
+            "remaining_targets_in_r2": 100,
             "shard0006": {
               "target_positions": "501-600",
               "first_target": "dah-nvv-exp-00496",
@@ -401,6 +402,33 @@
                 "library_stable_id": "libfile_8218813657388191ba0a9522d197df6f",
                 "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
               }
+            },
+            "shard0009": {
+              "target_positions": "801-900",
+              "first_target": "dah-nvv-exp-00796",
+              "last_target": "dah-nvv-exp-00893",
+              "de_unique": "400/400",
+              "fa_unique": "400/400",
+              "en_unique": "400/400",
+              "cumulative_first900_de_unique": "3600/3600",
+              "cumulative_first900_fa_unique": "3600/3600",
+              "cumulative_first900_en_unique": "3600/3600",
+              "forbidden_generic_template_hits": 0,
+              "meta_mention_examples": 0,
+              "source_placeholder_hits": 0,
+              "max_repeated_three_token_sentence_start_new": 2,
+              "target_noun_anchor_heuristic": "PASS_400_OF_400",
+              "bounded_diff": "PASS_POSITIONS1_800_EXACT_POSITIONS901_2492_EXACT_ONLY_POSITIONS801_900_EXAMPLES_PLUS_REPAIR_MARKER",
+              "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R2-SHARD0009-POS801-900-PASS.json",
+              "artifact": {
+                "filename": "NVV-v3.3.6-Stage4-Repair-R2-Shard0009-POS801-900-PASS-CHECKPOINT.zip",
+                "sha256": "b34f35807578d5e1c00e0677fa5b364bc4aafb8b5fae5b823f54b85f55a84dfe",
+                "canonical_successor_sha256": "3f01b3d181c7f8aa8f97731bfc20de525d31290f3089a0aa535c4abca26a81b6",
+                "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R2-Shard0009-POS801-900-PASS-CHECKPOINT.zip",
+                "library_file_id": "file_000000007bac81f4b3ee8e7209293957",
+                "library_stable_id": "libfile_19e5b704e1348191ab371fea9c3fb849",
+                "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+              }
             }
           }
         }
@@ -479,10 +507,10 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage4-Repair-R2-Shard0008-POS701-800-PASS-CHECKPOINT.zip",
-    "portable_sha256": "9fbdcec573a525f85776f927ed47680e29810c9671259a471aed9e57db79b03c",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R2-Shard0008-POS701-800-PASS-CHECKPOINT.zip",
-    "git": "SYNCED_STAGE4_REPAIR_R2_SHARD0008",
+    "quality_authority": "NVV-v3.3.6-Stage4-Repair-R2-Shard0009-POS801-900-PASS-CHECKPOINT.zip",
+    "portable_sha256": "b34f35807578d5e1c00e0677fa5b364bc4aafb8b5fae5b823f54b85f55a84dfe",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R2-Shard0009-POS801-900-PASS-CHECKPOINT.zip",
+    "git": "SYNCED_STAGE4_REPAIR_R2_SHARD0009",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
@@ -490,11 +518,11 @@
         "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
       },
       "latest_delta_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Repair-R2-Shard0008-POS701-800-PASS-CHECKPOINT.zip",
-        "sha256": "9fbdcec573a525f85776f927ed47680e29810c9671259a471aed9e57db79b03c"
+        "filename": "NVV-v3.3.6-Stage4-Repair-R2-Shard0009-POS801-900-PASS-CHECKPOINT.zip",
+        "sha256": "b34f35807578d5e1c00e0677fa5b364bc4aafb8b5fae5b823f54b85f55a84dfe"
       },
       "active_targets": 2492,
-      "repaired_targets": 800
+      "repaired_targets": 900
     },
     "r1_candidate_v7c": {
       "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -503,11 +531,11 @@
       "state": "REJECTED_CONTENT_QUALITY",
       "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
     },
-    "library_file_id": "file_00000000170882108fbf7fb463886ed3",
-    "library_stable_id": "libfile_8218813657388191ba0a9522d197df6f",
+    "library_file_id": "file_000000007bac81f4b3ee8e7209293957",
+    "library_stable_id": "libfile_19e5b704e1348191ab371fea9c3fb849",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next": "Stage4 Repair R2 Shard0009: regenerate active target positions 801-900 from the cumulative Shard0008 successor; preserve positions 1-800 exactly. Continue until R2 reaches 1000 repaired targets, then run cumulative independent R2 QA.",
+  "next": "Stage4 Repair R2 Shard0010: regenerate active target positions 901-1000 from the cumulative Shard0009 successor; preserve positions 1-900 exactly. Then run cumulative independent R2 QA before promotion.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",

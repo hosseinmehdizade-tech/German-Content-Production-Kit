@@ -2,8 +2,8 @@
   "schema": "gcpk-workstream-checkpoint@1.0.0",
   "workstream": "bildkarten-dk-visual-dictionary",
   "domain": "bildkarten",
-  "status": "PILOT_30_SOURCE_DERIVED_PASS",
-  "updated_at": "2026-10-02T10:00:00+02:00",
+  "status": "ARCHITECTURE_PREDESIGN_AUDIT_PASS",
+  "updated_at": "2026-10-02T16:20:00+02:00",
   "source_id": "dk-bilingual-visual-dictionary-german-english",
   "source_sha256": "42ea5e703ab14d639f11f6915d8ef371cea9dc6ccd8d8f3835f22e86d4fb280c",
   "source_pages_pdf": [
@@ -49,5 +49,22 @@
     "note": "Enrichment is not claimed as DK source content."
   },
   "rights_boundary": "PERSONAL_USE_TRANSFORMATION_PILOT; do not redistribute source imagery without permission/licensing.",
-  "next_action": "Import the exact 30-card JSON pack into CURRENT v452-R86 and run Cards/Audio/Typing/Quick + reload/export smoke before expanding to the next topic."
+  "next_action": "Design the production-side media registry, target-media-link, source/book membership and relation-bridge schemas; do not bulk-expand the legacy image-noun-card authority.",
+  "architecture_preflight": {
+    "status": "PASS_WITH_REQUIRED_ARCHITECTURE_DECISIONS",
+    "document": "Workspaces/bildkarten-dk-visual-dictionary/ARCHITECTURE-PREDESIGN-AUDIT.md",
+    "target_model": "NORMAL_VOCABULARY_PLUS_OPTIONAL_MEDIA",
+    "semantic_identity": "SENSE_OR_EXPRESSION_TARGET_ID",
+    "separate_runtime_authority": false,
+    "legacy_bildkarten_bulk_expansion": "PAUSED",
+    "current_app_inspected": "v454-R88",
+    "required_before_bulk": [
+      "media_registry_schema",
+      "target_media_link_schema",
+      "book_membership_schema",
+      "relation_overlay_bridge",
+      "visual_practice_evidence_policy",
+      "mixed_visual_pilot"
+    ]
+  }
 }

@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_REPAIR_R2_SHARD0007_POS601_700_PASS",
+      "status": "STAGE4_REPAIR_R2_SHARD0008_POS701_800_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 Repair R2 Shard0008: active target positions 701-800 from the cumulative Shard0007 successor; preserve positions 1-700 exactly.",
+      "next_action": "Stage4 Repair R2 Shard0009: active target positions 801-900 from the cumulative Shard0008 successor; preserve positions 1-800 exactly.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r2_shard0007",
-      "last_observed_note": "R2 Shard0007 repaired active target positions 601-700 / 400 DE examples + aligned FA/EN. 400/400 unique in each language; cumulative first700 is 2800/2800 unique in DE/FA/EN; zero forbidden generic-template hits, zero meta-mention examples, zero source-placeholder hits, max repeated three-token start=2, target noun anchor 400/400, positions 1-600 and 701-2492 preserved exactly. Library rematerialization exact SHA+byte compare PASS.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r2_shard0008",
+      "last_observed_note": "R2 Shard0008 repaired active target positions 701-800 / 400 DE examples + aligned FA/EN. New shard 400/400 unique in each language; cumulative first800 is 3200/3200 unique in DE/FA/EN; zero forbidden generic-template hits, zero meta-mention examples, zero source-placeholder hits, new-shard max repeated three-token start=2, target noun anchor 400/400, positions 1-700 and 801-2492 preserved exactly. Library rematerialization exact SHA+byte compare PASS.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "REPAIR_R2_SHARD0007_POS601_700_PASS",
+        "status": "REPAIR_R2_SHARD0008_POS701_800_PASS",
         "rounds_completed": 1,
         "clean_streak": 0,
         "blocker_findings": 2,
@@ -275,7 +275,7 @@
         "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
-          "example_layer": "R2_200_OF_500_PASS__700_OF_2492_REPAIRED"
+          "example_layer": "R2_300_OF_500_PASS__800_OF_2492_REPAIRED"
         },
         "r1_rejected_candidate": {
           "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -301,11 +301,11 @@
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
         },
-        "remaining_example_repair_targets": 1792,
+        "remaining_example_repair_targets": 1692,
         "r2": {
-          "completed_targets": 200,
+          "completed_targets": 300,
           "target": 500,
-          "remaining": 300,
+          "remaining": 200,
           "shard0006": {
             "target_positions": "501-600",
             "first_target": "dah-nvv-exp-00496",
@@ -326,6 +326,17 @@
             "canonical_successor_sha256": "b369725198c4a8c030adfb5037b86c20b5b1b8ecdacd2ce3af96a7c99d9cf464",
             "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R2-Shard0007-POS601-700-PASS-CHECKPOINT.zip",
             "library_stable_id": "libfile_0d7081953f888191beef2ef000b0e3d4",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "shard0008": {
+            "target_positions": "701-800",
+            "first_target": "dah-nvv-exp-00696",
+            "last_target": "dah-nvv-exp-00795",
+            "artifact": "NVV-v3.3.6-Stage4-Repair-R2-Shard0008-POS701-800-PASS-CHECKPOINT.zip",
+            "sha256": "9fbdcec573a525f85776f927ed47680e29810c9671259a471aed9e57db79b03c",
+            "canonical_successor_sha256": "80a1f1526e93d3093f70155a04b192a5290441e51f338e5ff4f70dafd0b32029",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R2-Shard0008-POS701-800-PASS-CHECKPOINT.zip",
+            "library_stable_id": "libfile_8218813657388191ba0a9522d197df6f",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
         }

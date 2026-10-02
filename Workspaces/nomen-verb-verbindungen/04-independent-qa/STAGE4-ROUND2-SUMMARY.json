@@ -1,0 +1,61 @@
+{
+  "schema": "nvv-stage4-round-summary@1.1.0",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "round": 2,
+  "status": "FAIL_BOUNDED_CANONICAL_REPAIR_REQUIRED",
+  "audited_snapshot": {
+    "filename": "NVV-v3.3.6-Stage4-Structure36-APPLIED-Stage3C-RECOMPUTE-PASS-CHECKPOINT.zip",
+    "sha256": "ef1970936f80f02f22186d00acd431d572fa019215f45cdbaec7578bff703f36",
+    "successor_core_sha256": "de133dae8ef0496d601c0a9b596a9b9d8333556e903587a60d7892a37ed332cd"
+  },
+  "audit_scope": {
+    "active_targets": 2492,
+    "example_triples": 9968,
+    "full_corpus_mechanical_checks": true,
+    "source_surface_pdf_crosscheck": true,
+    "structure_marker_reaudit": true,
+    "stage3c_disposition_reaudit": true,
+    "relation_no_force_reaudit": true,
+    "targeted_linguistic_spotcheck_cards": 60,
+    "heuristic_candidates_manually_adjudicated": 96
+  },
+  "passed_dimensions": {
+    "package_integrity": "PASS_ZIP_CRC_SHA256SUMS_8_OF_8",
+    "identity_ids": "PASS_2492_UNIQUE",
+    "source_occurrence_coverage": "PASS_2475_REFERENCED_SOURCE_OCCURRENCES_PLUS_1_EXCLUDED_TYPO_OCC01550",
+    "source_surface_crosscheck": "PASS_2474_DIRECT_PLUS_1_WRAPPED_LINE_RESOLVED",
+    "structure36": "PASS_36_OF_36_EXACT_DELTA_MATCH",
+    "explicit_argument_markers": "PASS_ZERO_OMISSIONS",
+    "stage3c": "PASS_42364_CELLS_ZERO_UNRESOLVED",
+    "relation_no_force": "PASS_ALL_7_RELATION_DIMENSIONS_CLOSED_NO_FORCE_2492_OF_2492",
+    "examples_exact4": "PASS_2492_OF_2492",
+    "examples_uniqueness": "PASS_9968_OF_9968_DE_FA_EN",
+    "generic_templates": "PASS_ZERO_DOMINANT_KOENNTEN_WIR_HITS",
+    "meta_mentions": "PASS_AFTER_ADJUDICATION_1_FALSE_POSITIVE_NORMAL_WORDING_SUBJECT",
+    "source_placeholders_in_examples": "PASS_ZERO",
+    "german_missing_zu": "PASS_AFTER_ADJUDICATION_21_FALSE_POSITIVES",
+    "persian_finite_form": "PASS_AFTER_ADJUDICATION_1_VALID_NOMINAL_COPULAR_CONSTRUCTION",
+    "parent_bounded_diff": "PASS_EXACTLY_36_STRUCTURE_ONLY_TARGETS_EXAMPLES_UNCHANGED"
+  },
+  "finding": {
+    "severity": "BLOCKER_CANONICAL_LEARNING_FORM",
+    "expression_id": "dah-nvv-exp-01546",
+    "source_occurrence_id": "dah-nvv-occ-01546",
+    "noun_header": "Papier n.",
+    "source_surface": "etw. in Papier einwicken",
+    "current_canonical_form": "etw. in Papier einwicken",
+    "expected_canonical_form": "etw. in Papier einwickeln",
+    "internal_evidence": "All four repaired German examples consistently use the lexical verb einwickeln (wickelte ... ein / einwickeln / eingewickelt); the current canonical form therefore conflicts with its own learner examples.",
+    "external_evidence": {
+      "provider": "Duden",
+      "url": "https://www.duden.de/rechtschreibung/einwickeln",
+      "note": "Duden records einwickeln and explicitly gives the meaning/example of wrapping something in paper."
+    },
+    "source_preservation_rule": "Keep exact source_surface 'etw. in Papier einwicken' in provenance; repair only the canonical learning form and dependent canonical structure/evidence."
+  },
+  "clean_streak": 0,
+  "stage4_clean_round_credit": 0,
+  "decision": "Round2 is not clean. Apply one bounded canonical source-typo repair, recompute canonical hash and affected Stage3C evidence, then restart clean-round auditing on the successor.",
+  "next_operation": "Repair dah-nvv-exp-01546 canonical form to 'etw. in Papier einwickeln' with source surface preserved; recompute Stage2 canonical SHA and affected successor evidence; clean_streak remains 0."
+}

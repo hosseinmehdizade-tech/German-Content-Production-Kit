@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-01T02:07:00+02:00",
+  "updated_at": "2026-10-02T10:00:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -3171,6 +3171,25 @@
       "status": "PARALLEL_ALLOWED",
       "resolution_mode": "SOURCE_SPECIFIC_PORTABLE_STATE",
       "note": "May evolve independently until an explicit runtime integration checkpoint is created."
+    },
+    "bildkarten_dk_visual_dictionary": {
+      "status": "PILOT_30_SOURCE_DERIVED_PASS",
+      "domain": "bildkarten",
+      "checkpoint": "Workspaces/bildkarten-dk-visual-dictionary/CHECKPOINT.json",
+      "source_manifest": "Workspaces/bildkarten-dk-visual-dictionary/00-source/SOURCE-MANIFEST.json",
+      "source_id": "dk-bilingual-visual-dictionary-german-english",
+      "source_sha256": "42ea5e703ab14d639f11f6915d8ef371cea9dc6ccd8d8f3835f22e86d4fb280c",
+      "pilot_cards": 30,
+      "pilot_topic": "Obst",
+      "target_runtime": "v452-R86",
+      "runtime_code_change": false,
+      "portable_checkpoint": {
+        "filename": "DK-Obst-Bildkarten-Pilot-30-CHECKPOINT.zip",
+        "sha256": "3c71daa27ef3cbdaa7bf0921baa850f1e93d215d151e7befd48208431376685b",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/DK-Obst-Bildkarten-Pilot-30-CHECKPOINT.zip",
+        "library_file_id": "libfile_47b816af87588191aa3522626d85180f"
+      },
+      "next_action": "Exact import/runtime smoke on CURRENT v452-R86, then expand only after pilot acceptance."
     }
   },
   "flashcards_runtime_dependency": {

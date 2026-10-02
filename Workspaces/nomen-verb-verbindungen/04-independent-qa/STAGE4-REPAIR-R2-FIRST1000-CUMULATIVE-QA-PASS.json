@@ -1,0 +1,64 @@
+{
+  "schema": "nvv-stage4-repair-superbatch-report@1.0.0",
+  "status": "PASS_R2_FIRST1000_CUMULATIVE_QA",
+  "created_at": "2026-10-02T11:17:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "cumulative_repaired_targets": 1000,
+    "r2_target_positions": "501-1000",
+    "r2_targets": 500,
+    "examples_de": 4000,
+    "examples_fa": 4000,
+    "examples_en": 4000
+  },
+  "parent": {
+    "stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "shard0010_sha256": "f1bd12a9ab8c3d8ef51a33adec3c78a7563434272c3749a763b34b62ee6e208b"
+  },
+  "cumulative_qa": {
+    "exact_four_examples": "1000/1000",
+    "unique_de": "4000/4000",
+    "unique_fa": "4000/4000",
+    "unique_en": "4000/4000",
+    "forbidden_generic_template_hits": 0,
+    "source_placeholder_hits": 0,
+    "meta_mention_examples": 0,
+    "german_missing_zu_findings": 0,
+    "persian_finite_template": "PASS_WITH_2_VERIFIED_FALSE_POSITIVES",
+    "max_repeated_three_token_sentence_start": 7,
+    "max_repeated_four_token_sentence_start": 3,
+    "max_repeated_five_token_sentence_start": 3,
+    "target_noun_anchor": "PASS_WITH_6_REVIEWED_INFLECTIONS",
+    "immutable_semantic_fields_vs_stage3c": "PASS_POSITIONS1_1000",
+    "positions_1001_2492_vs_stage3c": "PASS_EXACT",
+    "bounded_cumulative_corrections": 11,
+    "stage4_clean_round_credit": 0
+  },
+  "source_fidelity_notes": [
+    {
+      "expression_id": "dah-nvv-exp-00353",
+      "canonical_form": "eine Beschwerden äußern",
+      "action": "PRESERVED_SOURCE_CANONICAL_SURFACE; examples remain grammatical."
+    },
+    {
+      "expression_id": "dah-nvv-exp-00984",
+      "canonical_form": "eine Geschäft eröffnen",
+      "action": "PRESERVED_SOURCE_CANONICAL_SURFACE; examples use grammatical 'ein Geschäft'."
+    }
+  ],
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R2-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "sha256": "b64650c1678be0f7643a23295e0af0880491123ad964f0dde4c1b6d874a119bf",
+    "size_bytes": 738854,
+    "canonical_successor_sha256": "e4d3f4ee8eebb2a2f13c13a73a9c1019dbb2cba198a7d4975723eee887d86c57",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R2-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000645481f48a586ef1ef1072c6",
+    "library_stable_id": "libfile_38acf46d7e788191a1502fb5cd2ffa23",
+    "package_crc": "PASS",
+    "internal_sha256sums": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "conclusion": "R2 repair superbatch is PASS as a repair milestone. It does not count as an independent Stage4 clean round.",
+  "next_action": "Stage4 repair Superbatch R3: regenerate active target positions 1001-1500 from the cumulative R2 successor; preserve positions 1-1000 exactly unless a later independent finding proves a defect."
+}

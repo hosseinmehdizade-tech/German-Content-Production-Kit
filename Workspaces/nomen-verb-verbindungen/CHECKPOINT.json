@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-02T18:45:00+02:00",
-  "updated_version": "stage4-structure36-applied-stage3c-recompute-pass-v1",
-  "status": "STAGE4_STRUCTURE36_APPLIED_STAGE3C_RECOMPUTE_PASS",
+  "updated_at": "2026-10-02T20:50:00+02:00",
+  "updated_version": "stage4-round2-repair01546-canonical-pass-v1",
+  "status": "STAGE4_ROUND2_REPAIR01546_CANONICAL_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -75,18 +75,18 @@
       "note": "Fresh clean-restart inventory derived from registered 26-page source under v3.3.6. Historical inventory used only for regression and exposed one omitted source-visible item plus header/wrapped-line defects."
     },
     "2_identity_closure": {
-      "state": "PASS_REPAIRED_SUCCESSOR",
+      "state": "PASS_REPAIRED_SUCCESSOR_R3",
       "metrics": {
         "source_occurrences": 2476,
         "active_canonical_ids": 2492,
         "excluded_source_typo_duplicates": 1,
-        "explicit_canonical_source_repairs": 2,
+        "explicit_canonical_source_repairs": 3,
         "unresolved_count": 0
       },
-      "canonical_sha256": "d2f0cacc9f21809766cedb99df2726cc2c5e47a3d633690517083dc1eda27712",
+      "canonical_sha256": "82f9576307dee5e3cb9802b862cb3646d17381d7d5e640cb15a29d70f274ad08",
       "identity_fingerprint": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009",
       "validator": "PASS_2476_OCCURRENCES_2492_ACTIVE_IDS",
-      "note": "Targeted evidence-backed successor repair after Stage3 source review: one source typo duplicate excluded, two canonical learning forms repaired while exact source surfaces remain preserved."
+      "note": "Stage2 repaired successor now preserves three explicit canonical source repairs while source surfaces remain verbatim: 01584 Profit→Profil, 02208 malformed Vertrag construction→von einem Vertrag zurücktreten, and Round2 01546 einwicken→einwickeln. Active IDs unchanged by the new repair."
     },
     "3A_baseline_richness_audit": {
       "state": "PASS",
@@ -114,20 +114,20 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_STRUCTURE36_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND2_CANONICAL_REPAIR_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
       "verified_present_cells": 18588,
       "closed_no_force_cells": 21284,
       "not_applicable_cells": 2492,
-      "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__STRUCTURE36_RECOMPUTED",
+      "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND2_REPAIR01546_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Stage3C disposition evidence was recomputed after applying the verified 36-target Stage4 structure/Rektion repair: 64 cells moved CLOSED_NO_FORCE→VERIFIED_PRESENT, 8 already-verified cells received refreshed successor evidence; zero unresolved."
+      "note": "After Round2 bounded canonical repair 01546, the canonical SHA was recomputed and the one affected structure_components evidence cell was refreshed; disposition totals are unchanged and unresolved remains zero."
     },
     "4_independent_linguistic_lexical_qa": {
       "state": "IN_PROGRESS_CLEAN_AUDIT",
-      "rounds_completed": 1,
+      "rounds_completed": 2,
       "clean_streak": 0,
       "required_rounds_min": 3,
       "required_consecutive_clean": 2,
@@ -1059,7 +1059,56 @@
               }
             }
           }
+        },
+        "round2_canonical_repair": {
+          "status": "PASS",
+          "repair_id": "nvv-source-repair-01546",
+          "patched_targets": 1,
+          "canonical_sha256_before": "d2f0cacc9f21809766cedb99df2726cc2c5e47a3d633690517083dc1eda27712",
+          "canonical_sha256_after": "82f9576307dee5e3cb9802b862cb3646d17381d7d5e640cb15a29d70f274ad08",
+          "identity_fingerprint_preserved": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009",
+          "examples_modified": false,
+          "source_surface_modified": false,
+          "stage3c_evidence_refreshed_cells": 1,
+          "unresolved_cells": 0,
+          "artifact": {
+            "filename": "NVV-v3.3.6-Stage4-Round2-Repair01546-CANONICAL-PASS-CHECKPOINT.zip",
+            "sha256": "e3053cde3d1781030e97f3973bfc254b7943193341f40ae9a71e58a52615879c",
+            "successor_core_sha256": "fb76a1fbee830edba2e0fd5a8589a448a86a701c7516326426703007b12d549f",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round2-Repair01546-CANONICAL-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_000000001e8c820a8d605b66c48ce935",
+            "library_stable_id": "libfile_d9b8ce172d84819192ed7770e9c2f0c9",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          }
         }
+      },
+      "round2": {
+        "status": "FAIL_BOUNDED_CANONICAL_REPAIR_REQUIRED_THEN_REPAIRED",
+        "finding": {
+          "expression_id": "dah-nvv-exp-01546",
+          "source_surface": "etw. in Papier einwicken",
+          "repaired_canonical_form": "etw. in Papier einwickeln",
+          "source_preserved": true
+        },
+        "passed_dimensions": [
+          "package_integrity",
+          "identity_ids",
+          "source_occurrence_coverage",
+          "source_surface_crosscheck",
+          "structure36",
+          "explicit_argument_markers",
+          "stage3c_closure",
+          "relation_no_force_policy_consistency",
+          "example_exact4_and_uniqueness",
+          "generic_template_elimination",
+          "meta_mention_adjudication",
+          "source_placeholder_elimination",
+          "german_missing_zu_adjudication",
+          "persian_finite_form_adjudication"
+        ],
+        "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND2-SUMMARY.json",
+        "repair_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND2-REPAIR01546-PASS.json",
+        "stage4_clean_round_credit": 0
       }
     },
     "5_delivery_projection_anti_bypass": {
@@ -1135,10 +1184,10 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage4-Structure36-APPLIED-Stage3C-RECOMPUTE-PASS-CHECKPOINT.zip",
-    "portable_sha256": "ef1970936f80f02f22186d00acd431d572fa019215f45cdbaec7578bff703f36",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Structure36-APPLIED-Stage3C-RECOMPUTE-PASS-CHECKPOINT.zip",
-    "git": "SYNCED_STAGE4_STRUCTURE36_APPLIED_STAGE3C_RECOMPUTE",
+    "quality_authority": "NVV-v3.3.6-Stage4-Round2-Repair01546-CANONICAL-PASS-CHECKPOINT.zip",
+    "portable_sha256": "e3053cde3d1781030e97f3973bfc254b7943193341f40ae9a71e58a52615879c",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round2-Repair01546-CANONICAL-PASS-CHECKPOINT.zip",
+    "git": "SYNCED_STAGE4_ROUND2_REPAIR01546",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
@@ -1146,13 +1195,15 @@
         "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
       },
       "latest_delta_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Structure36-APPLIED-Stage3C-RECOMPUTE-PASS-CHECKPOINT.zip",
-        "sha256": "ef1970936f80f02f22186d00acd431d572fa019215f45cdbaec7578bff703f36"
+        "filename": "NVV-v3.3.6-Stage4-Round2-Repair01546-CANONICAL-PASS-CHECKPOINT.zip",
+        "sha256": "e3053cde3d1781030e97f3973bfc254b7943193341f40ae9a71e58a52615879c"
       },
       "active_targets": 2492,
       "repaired_targets": 2492,
       "structure_repair_applied_targets": 36,
-      "successor_core_sha256": "de133dae8ef0496d601c0a9b596a9b9d8333556e903587a60d7892a37ed332cd"
+      "successor_core_sha256": "fb76a1fbee830edba2e0fd5a8589a448a86a701c7516326426703007b12d549f",
+      "canonical_sha256": "82f9576307dee5e3cb9802b862cb3646d17381d7d5e640cb15a29d70f274ad08",
+      "identity_fingerprint": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009"
     },
     "r1_candidate_v7c": {
       "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -1161,11 +1212,11 @@
       "state": "REJECTED_CONTENT_QUALITY",
       "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
     },
-    "library_file_id": "file_000000008c4c81f494d68c63eeb82585",
-    "library_stable_id": "libfile_c89a40ffe85881918cd470205e9357f5",
+    "library_file_id": "file_000000001e8c820a8d605b66c48ce935",
+    "library_stable_id": "libfile_d9b8ce172d84819192ed7770e9c2f0c9",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next": "Stage4 Clean Audit Round2 on the exact structure-fixed + all2492-example-repaired successor snapshot; clean_streak starts at 0. Do not mutate content unless a new independent finding requires bounded repair.",
+  "next": "Stage4 Clean Audit Round3 on the exact Round2-repair01546 successor snapshot; clean_streak starts at 0. Do not mutate content unless an independent new finding requires bounded repair.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -1345,7 +1396,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Stage4 Clean Audit Round2 on the exact structure-fixed + all2492-example-repaired successor snapshot; clean_streak starts at 0. Do not mutate content unless a new independent finding requires bounded repair.",
+  "next_action": "Stage4 Clean Audit Round3 on the exact Round2-repair01546 successor snapshot; clean_streak starts at 0. Do not mutate content unless an independent new finding requires bounded repair.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"

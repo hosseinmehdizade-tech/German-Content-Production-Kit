@@ -1,0 +1,96 @@
+{
+  "schema": "nvv-stage4-repair-shard-report@1.0.0",
+  "status": "PASS_ATOMIC_SHARD_0016",
+  "created_at": "2026-10-02T15:23:10+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "repair_superbatch": "R4-POS1501-2000",
+    "shard": "0016",
+    "target_positions": "1501-1600",
+    "targets": 100,
+    "first_target": "dah-nvv-exp-01491",
+    "last_target": "dah-nvv-exp-01591",
+    "examples_de": 400,
+    "examples_fa": 400,
+    "examples_en": 400,
+    "cumulative_repaired_targets": 1600,
+    "cumulative_examples": 6400
+  },
+  "authority": {
+    "parent_r3_cumulative_filename": "NVV-v3.3.6-Stage4-Repair-R3-FIRST1500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "parent_r3_cumulative_sha256": "74094a8090c24e5703c342e48f0ec99645a54ed1b724622d19f8ed9a3933e83c",
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
+  },
+  "repair": {
+    "method": "EXPRESSION_SPECIFIC_CONTEXTUAL_REGENERATION_FROM_CUMULATIVE_R3_FIRST1500_SUCCESSOR",
+    "changed_targets": 100,
+    "changed_content": "examples only; stage4_repair marker added",
+    "preserved": {
+      "positions_1_1500": "EXACT",
+      "positions_1601_2492": "EXACT",
+      "identities": true,
+      "definitions": true,
+      "meaning_fa": true,
+      "gloss_en": true,
+      "structure": true,
+      "provenance": true
+    },
+    "source_fidelity": "PASS_REGISTERED_PDF_PAGES17_18_RECHECKED__PARTEI_TYPO_EXCLUSION_AND_PROFIL_REPAIR_PRESERVED"
+  },
+  "qa": {
+    "cards_exact4": "100/100 PASS",
+    "de_unique": "400/400",
+    "fa_unique": "400/400",
+    "en_unique": "400/400",
+    "cumulative_first1600_de_unique": "6400/6400",
+    "cumulative_first1600_fa_unique": "6400/6400",
+    "cumulative_first1600_en_unique": "6400/6400",
+    "forbidden_generic_template_hits": 0,
+    "meta_mention_examples": 0,
+    "source_placeholder_hits": 0,
+    "max_repeated_three_token_sentence_start_new": 3,
+    "max_repeated_four_token_sentence_start_new": 1,
+    "max_repeated_five_token_sentence_start_new": 1,
+    "cumulative_first1600_max_repeated_three_token_sentence_start": 10,
+    "cumulative_first1600_max_repeated_four_token_sentence_start": 5,
+    "cumulative_first1600_max_repeated_five_token_sentence_start": 4,
+    "target_noun_anchor_heuristic": "PASS_EXACT_400_OF_400",
+    "persian_finite_template_check": "PASS_NO_INFINITIVE_SENTENCE_ENDINGS",
+    "targeted_linguistic_review": "PASS_EXPRESSION_SPECIFIC_CONTEXTS_AND_ALIGNED_FA_EN",
+    "bounded_diff": "PASS_POSITIONS1_1500_EXACT_POSITIONS1601_2492_EXACT_ONLY_POSITIONS1501_1600_EXAMPLES_PLUS_REPAIR_MARKER",
+    "stage4_clean_round_credit": 0
+  },
+  "source_repairs_preserved": [
+    {
+      "source_occurrence_id": "dah-nvv-occ-01550",
+      "source_surface": "einer Partei betreten",
+      "state": "EXCLUDED_SOURCE_ERROR_DUPLICATE__PRESERVED_SOURCE_EVIDENCE"
+    },
+    {
+      "source_occurrence_id": "dah-nvv-occ-01584",
+      "source_surface": "an Profit gewinnen",
+      "canonical_form": "an Profil gewinnen",
+      "state": "EXISTING_CANONICAL_SOURCE_REPAIR_PRESERVED"
+    }
+  ],
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R4-Shard0016-POS1501-1600-PASS-CHECKPOINT.zip",
+    "sha256": "435065370016d98d3b22c9de561cb7dc15402cd155557bb850e51bfe20c672c4",
+    "size_bytes": 919905,
+    "canonical_successor_sha256": "1b4651c0823b54d49de40017ad2edfa2b314b8264f71b04b68113c8627cf226d",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R4-Shard0016-POS1501-1600-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000201c81f49bf4ca3a64448acd",
+    "library_stable_id": "libfile_775685476f0881919ef15da43afb1540",
+    "package_crc": "PASS",
+    "internal_sha256sums": "5/5 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundary": {
+    "r4_superbatch_pass": false,
+    "stage4_pass": false,
+    "stage4_clean_round_credit": 0,
+    "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED"
+  },
+  "next_action": "Stage4 Repair R4 Shard0017: regenerate active target positions 1601-1700 from this cumulative successor; preserve positions 1-1600 exactly."
+}

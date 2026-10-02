@@ -1,0 +1,78 @@
+{
+  "schema": "nvv-stage4-repair-shard-report@1.0.0",
+  "status": "PASS_ATOMIC_SHARD_0011",
+  "created_at": "2026-10-02T12:31:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "repair_superbatch": "R3-POS1001-1500",
+    "shard": "0011",
+    "target_positions": "1001-1100",
+    "targets": 100,
+    "first_target": "dah-nvv-exp-00994-a",
+    "last_target": "dah-nvv-exp-01092",
+    "examples_de": 400,
+    "examples_fa": 400,
+    "examples_en": 400,
+    "cumulative_repaired_targets": 1100,
+    "cumulative_examples": 4400
+  },
+  "authority": {
+    "parent_r2_filename": "NVV-v3.3.6-Stage4-Repair-R2-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "parent_r2_sha256": "b64650c1678be0f7643a23295e0af0880491123ad964f0dde4c1b6d874a119bf",
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
+  },
+  "repair": {
+    "method": "EXPRESSION_SPECIFIC_CONTEXTUAL_REGENERATION_FROM_CUMULATIVE_R2_SUCCESSOR",
+    "changed_targets": 100,
+    "changed_content": "examples only; stage4_repair marker added",
+    "preserved": {
+      "positions_1_1000": "EXACT",
+      "positions_1101_2492": "EXACT",
+      "identities": true,
+      "definitions": true,
+      "meaning_fa": true,
+      "gloss_en": true,
+      "structure": true,
+      "provenance": true
+    }
+  },
+  "qa": {
+    "cards_exact4": "100/100 PASS",
+    "de_unique": "400/400",
+    "fa_unique": "400/400",
+    "en_unique": "400/400",
+    "cumulative_first1100_de_unique": "4400/4400",
+    "cumulative_first1100_fa_unique": "4400/4400",
+    "cumulative_first1100_en_unique": "4400/4400",
+    "forbidden_generic_template_hits": 0,
+    "meta_mention_examples": 0,
+    "source_placeholder_hits": 0,
+    "max_repeated_three_token_sentence_start": 3,
+    "max_repeated_four_token_sentence_start": 2,
+    "max_repeated_five_token_sentence_start": 1,
+    "target_noun_anchor_heuristic": "PASS_398_EXACT_PLUS_2_REVIEWED_REGULAR_PLURAL_INFLECTIONS",
+    "targeted_linguistic_review": "PASS_EXPRESSION_SPECIFIC_CONTEXTS_AND_ALIGNED_FA_EN",
+    "bounded_diff": "PASS_POSITIONS1_1000_EXACT_POSITIONS1101_2492_EXACT_ONLY_POSITIONS1001_1100_EXAMPLES_PLUS_REPAIR_MARKER",
+    "source_canonical_note": "dah-nvv-exp-01067 canonical/source surface 'den Gürtel enger schnellen' preserved; examples use idiomatic 'schnallen' without mutating source identity."
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R3-Shard0011-POS1001-1100-PASS-CHECKPOINT.zip",
+    "sha256": "0f84bf28afb3cbda7f01c2dd164092978dccd8cd54b706b0ccc2ae79146c478a",
+    "size_bytes": 764939,
+    "canonical_successor_sha256": "5a5181dead8da135763d184d8ac96a03f668e187fee3c23f2519906f65243955",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R3-Shard0011-POS1001-1100-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_0000000096548210a7b533d46a8d31fc",
+    "library_stable_id": "libfile_df255ed75f208191be1704e09c0fc8ae",
+    "package_crc": "PASS",
+    "internal_sha256sums": "5/5 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundary": {
+    "r3_superbatch_pass": false,
+    "stage4_pass": false,
+    "stage4_clean_round_credit": 0,
+    "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED"
+  },
+  "next_action": "Stage4 Repair R3 Shard0012: regenerate active target positions 1101-1200 from this cumulative successor; preserve positions 1-1100 exactly."
+}

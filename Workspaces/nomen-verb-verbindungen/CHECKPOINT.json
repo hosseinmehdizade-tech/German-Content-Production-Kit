@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-02T23:05:05+02:00",
-  "updated_version": "stage4-round3-target-bearing-r6-first1000-cumulative-qa-pass-v1",
-  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_FIRST1000_CUMULATIVE_QA_PASS",
+  "updated_at": "2026-10-02T23:25:00+02:00",
+  "updated_version": "stage4-round3-target-bearing-r6-shard0036-pos1001-1100-pass-v1",
+  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0036_POS1001_1100_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -114,7 +114,7 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0035_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0036_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
@@ -123,7 +123,7 @@
       "not_applicable_cells": 2492,
       "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND3_TARGET_BEARING_SHARD0029_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Round3 target-bearing repairs through positions 1-1000 refreshed example-dimension evidence only; Shard0035 refreshed 12 cells for four affected targets. Cumulative first1000 target-bearing QA passed with 132 example-evidence refreshes, zero status transitions, and zero unresolved cells."
+      "note": "Round3 target-bearing repairs through positions 1-1100 refreshed example-dimension evidence only; Shard0036 refreshed 18 cells for six affected targets, with no disposition transitions and zero unresolved. Position 1075 retains its previously documented source/canonical 'schnellen' anomaly while learner examples use idiomatic 'schnallen'; source identity was not mutated."
     },
     "4_independent_linguistic_lexical_qa": {
       "state": "IN_PROGRESS_REPAIR",
@@ -1082,15 +1082,15 @@
           }
         },
         "target_bearing_repair": {
-          "status": "R6_FIRST1000_CUMULATIVE_QA_PASS",
+          "status": "R6_SHARD0036_POS1001_1100_PASS",
           "scope": "FULL_CORPUS_SHARD_ADJUDICATION_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 1000,
-          "reviewed_targets": 1000,
-          "reviewed_examples": 4000,
-          "confirmed_affected_targets_total": 44,
-          "replaced_examples_total": 49,
-          "remaining_positions": 1492,
+          "reviewed_positions_completed": 1100,
+          "reviewed_targets": 1100,
+          "reviewed_examples": 4400,
+          "confirmed_affected_targets_total": 50,
+          "replaced_examples_total": 56,
+          "remaining_positions": 1392,
           "completed_shards": [
             "0026",
             "0027",
@@ -1101,7 +1101,8 @@
             "0032",
             "0033",
             "0034",
-            "0035"
+            "0035",
+            "0036"
           ],
           "shard0026": {
             "positions": "1-100",
@@ -1334,6 +1335,32 @@
               "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
               "library_file_id": "file_00000000afdc81f4bd8889324d309bdc",
               "library_stable_id": "libfile_6bdb19cbf26c81919af2dae4ee96a3cd",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
+          },
+          "shard0036": {
+            "positions": "1001-1100",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "affected_targets": 6,
+            "examples_replaced": 7,
+            "target_bearing_after_adjudication": "PASS_400_OF_400_WITH_ONE_DOCUMENTED_SOURCE_CANONICAL_EXCEPTION",
+            "documented_source_exception": {
+              "position": 1075,
+              "expression_id": "dah-nvv-exp-01067",
+              "source_surface": "den Gürtel enger schnellen",
+              "learner_examples_surface": "den Gürtel enger schnallen",
+              "disposition": "PRESERVE_EXISTING_DOCUMENTED_SOURCE_CANONICAL_ANOMALY_NO_NEW_MUTATION"
+            },
+            "stage3c_evidence_refreshes": 18,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0036-POS1001-1100-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0036-POS1001-1100-PASS-CHECKPOINT.zip",
+              "sha256": "9eb60440dce9d30cb0e6be75582cddaaef166f26b341823c452e1850c38c728b",
+              "successor_core_sha256": "a65771066d3c77b97c6e69f6982ef3c0009af9044ee94d90256017e077c54637",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0036-POS1001-1100-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000c5ec8210b58ca07f008fbe68",
+              "library_stable_id": "libfile_d5b6df77fafc81918976f55a91b0f08e",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
           }
@@ -1669,17 +1696,17 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "R6 target-bearing Shard0036: adjudicate active target positions 1001-1100, repair confirmed non-target-bearing examples, and preserve all other content exactly.",
+  "next_action": "R6 target-bearing Shard0037: adjudicate active target positions 1101-1200, repair confirmed non-target-bearing examples, and preserve all other content exactly.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-    "sha256": "42e91ab842b34614874c2fd1c7f8f420369fed614d2a874e59115baf83d801cc",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000afdc81f4bd8889324d309bdc",
-    "library_stable_id": "libfile_6bdb19cbf26c81919af2dae4ee96a3cd",
+    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0036-POS1001-1100-PASS-CHECKPOINT.zip",
+    "sha256": "9eb60440dce9d30cb0e6be75582cddaaef166f26b341823c452e1850c38c728b",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0036-POS1001-1100-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000c5ec8210b58ca07f008fbe68",
+    "library_stable_id": "libfile_d5b6df77fafc81918976f55a91b0f08e",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
   }
 }

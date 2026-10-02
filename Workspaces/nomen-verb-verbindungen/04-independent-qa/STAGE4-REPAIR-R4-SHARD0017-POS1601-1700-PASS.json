@@ -1,0 +1,84 @@
+{
+  "schema": "nvv-stage4-repair-shard-report@1.0.0",
+  "status": "PASS_ATOMIC_SHARD_0017",
+  "created_at": "2026-10-02T15:57:07+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "repair_superbatch": "R4-POS1501-2000",
+    "shard": "0017",
+    "target_positions": "1601-1700",
+    "targets": 100,
+    "first_target": "dah-nvv-exp-01592",
+    "last_target": "dah-nvv-exp-01690",
+    "examples_de": 400,
+    "examples_fa": 400,
+    "examples_en": 400,
+    "cumulative_repaired_targets": 1700,
+    "cumulative_examples": 6800
+  },
+  "authority": {
+    "parent_shard0016_filename": "NVV-v3.3.6-Stage4-Repair-R4-Shard0016-POS1501-1600-PASS-CHECKPOINT.zip",
+    "parent_shard0016_sha256": "435065370016d98d3b22c9de561cb7dc15402cd155557bb850e51bfe20c672c4",
+    "parent_stage3c_sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b",
+    "registered_source_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d"
+  },
+  "repair": {
+    "method": "EXPRESSION_SPECIFIC_CONTEXTUAL_REGENERATION_FROM_CUMULATIVE_SHARD0016_SUCCESSOR",
+    "changed_targets": 100,
+    "changed_content": "examples only; stage4_repair marker added",
+    "preserved": {
+      "positions_1_1600": "EXACT",
+      "positions_1701_2492": "EXACT",
+      "identities": true,
+      "definitions": true,
+      "meaning_fa": true,
+      "gloss_en": true,
+      "structure": true,
+      "provenance": true
+    },
+    "source_fidelity": "PASS_REGISTERED_PDF_PAGES18_19_RECHECKED__PROJECT_THROUGH_RUECKEN_SCOPE_PRESERVED"
+  },
+  "qa": {
+    "cards_exact4": "100/100 PASS",
+    "de_unique": "400/400",
+    "fa_unique": "400/400",
+    "en_unique": "400/400",
+    "cumulative_first1700_de_unique": "6800/6800",
+    "cumulative_first1700_fa_unique": "6800/6800",
+    "cumulative_first1700_en_unique": "6800/6800",
+    "forbidden_generic_template_hits": 0,
+    "meta_mention_examples": 0,
+    "source_placeholder_hits": 0,
+    "max_repeated_three_token_sentence_start_new": 2,
+    "max_repeated_four_token_sentence_start_new": 2,
+    "max_repeated_five_token_sentence_start_new": 1,
+    "cumulative_first1700_max_repeated_three_token_sentence_start": 11,
+    "cumulative_first1700_max_repeated_four_token_sentence_start": 5,
+    "cumulative_first1700_max_repeated_five_token_sentence_start": 5,
+    "target_noun_anchor_heuristic": "PASS_EXACT_400_OF_400",
+    "persian_finite_template_check": "PASS_NO_INFINITIVE_SENTENCE_ENDINGS",
+    "targeted_linguistic_review": "PASS_EXPRESSION_SPECIFIC_CONTEXTS_AND_ALIGNED_FA_EN",
+    "bounded_diff": "PASS_POSITIONS1_1600_EXACT_POSITIONS1701_2492_EXACT_ONLY_POSITIONS1601_1700_EXAMPLES_PLUS_REPAIR_MARKER",
+    "package_crc": "PASS",
+    "internal_sha256sums": "5/5 PASS",
+    "stage4_clean_round_credit": 0
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Repair-R4-Shard0017-POS1601-1700-PASS-CHECKPOINT.zip",
+    "sha256": "4b2fd7fd174cb836e80e85b471e7c9410e0bf29423d06cc3a0a81bb63d9c0db8",
+    "size_bytes": 954772,
+    "canonical_successor_sha256": "f87555a0f837b224b28659fdb93cca3fa3e3a88ba9df9e81227389ff370dc917",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R4-Shard0017-POS1601-1700-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_0000000079a881f48d283a513790a1f9",
+    "library_stable_id": "libfile_93d6541ee610819190b1ca2695489111",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundary": {
+    "r4_superbatch_pass": false,
+    "stage4_pass": false,
+    "stage4_clean_round_credit": 0,
+    "structure36_delta": "PRESERVED_SEPARATE_UNAPPLIED"
+  },
+  "next_action": "Stage4 Repair R4 Shard0018: regenerate active target positions 1701-1800 from this cumulative successor; preserve positions 1-1700 exactly."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-02T17:22:00+02:00",
+  "updated_at": "2026-10-02T18:57:36+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_REPAIR_R5_SHARD0023_POS2201_2300_PASS",
+      "status": "STAGE4_REPAIR_R5_SHARD0024_POS2301_2400_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Stage4 Repair R5 Shard0024: active target positions 2301-2400 from the cumulative Shard0023 successor; preserve positions 1-2300 exactly.",
+      "next_action": "Stage4 Repair R5 Shard0025: final active target positions 2401-2492 from the cumulative Shard0024 successor; preserve positions 1-2400 exactly. Then run cumulative independent R5 QA.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,8 +230,8 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r5_shard0023",
-      "last_observed_note": "R5 Shard0023 repaired active target positions 2201-2300 / 400 DE examples + aligned FA/EN. New shard is 400/400 unique in each language; cumulative first2300 is 9200/9200 unique in DE/FA/EN; zero forbidden generic-template hits, zero meta-mention examples, zero source-placeholder hits, target noun anchor PASS with 399 exact hits plus 1 reviewed grammatical inflection, Persian finite-template check PASS, positions 1-2200 and 2301-2492 preserved exactly. Registered PDF pages 23-24 (Versteigerung through Vorteil scope) were rechecked. Library rematerialization exact SHA+byte compare PASS.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_repair_r5_shard0024",
+      "last_observed_note": "R5 Shard0024 repaired active target positions 2301-2400 / 400 DE examples + aligned FA/EN. New shard is 400/400 unique in each language; cumulative first2400 is 9600/9600 unique in DE/FA/EN; zero forbidden generic-template hits, zero meta-mention examples, zero source-placeholder hits, exact target noun anchor 400/400, Persian finite-template check PASS, positions 1-2300 and 2401-2492 preserved exactly. Registered PDF pages 24-25 (Vorteil through Zaunpfahl scope) were rechecked. Library rematerialization exact SHA+byte compare PASS.",
       "latest_portable_checkpoint": {
         "filename": "NVV-v3.3.6-Stage4-Round1-FINDINGS-OPEN-CHECKPOINT.zip",
         "sha256": "199e00e40df168180b5288466bb07db4b01f93f964db82d48384234990d24c75",
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "REPAIR_R5_SHARD0023_POS2201_2300_PASS",
+        "status": "REPAIR_R5_SHARD0024_POS2301_2400_PASS",
         "rounds_completed": 1,
         "clean_streak": 0,
         "blocker_findings": 2,
@@ -275,7 +275,7 @@
         "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
-          "example_layer": "R5_300_OF_492_PASS__2300_OF_2492_REPAIRED"
+          "example_layer": "R5_400_OF_492_PASS__2400_OF_2492_REPAIRED"
         },
         "r1_rejected_candidate": {
           "filename": "NVV-v3.3.6-Stage4-Repair-R1-FIRST500-CANDIDATE-v7c.zip",
@@ -301,7 +301,7 @@
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
         },
-        "remaining_example_repair_targets": 192,
+        "remaining_example_repair_targets": 92,
         "r2": {
           "completed_targets": 500,
           "target": 500,
@@ -480,9 +480,9 @@
           }
         },
         "r5": {
-          "completed_targets": 300,
+          "completed_targets": 400,
           "target": 492,
-          "remaining": 192,
+          "remaining": 92,
           "shard0021": {
             "target_positions": "2001-2100",
             "first_target": "dah-nvv-exp-01989",
@@ -517,6 +517,18 @@
             "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R5-Shard0023-POS2201-2300-PASS-CHECKPOINT.zip",
             "library_file_id": "file_00000000e92c81f4ac74159ca995e9db",
             "library_stable_id": "libfile_4217347bc1408191926ab66059bddf86",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "shard0024": {
+            "target_positions": "2301-2400",
+            "first_target": "dah-nvv-exp-02288",
+            "last_target": "dah-nvv-exp-02386",
+            "artifact": "NVV-v3.3.6-Stage4-Repair-R5-Shard0024-POS2301-2400-PASS-CHECKPOINT.zip",
+            "sha256": "e478cf14c8cb09f732be31a9fec31424ec38ab1c84c53eb542e4dcef49ceb060",
+            "canonical_successor_sha256": "a85c12f4916a992ff3eb95c4737e75768f0553590f7fe96a35dcd628ed54f221",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Repair-R5-Shard0024-POS2301-2400-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_0000000090ac82109e1a0cdfe70446f3",
+            "library_stable_id": "libfile_0cfa07d68e908191afc9a7436001abc7",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           }
         }

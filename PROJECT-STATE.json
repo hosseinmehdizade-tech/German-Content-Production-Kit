@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_ROUND3_TARGET_BEARING_R6_ALL2492_CUMULATIVE_QA_PASS",
+      "status": "STAGE4_ROUND4_REPAIR_R7_SHARD0051_POS1_100_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Start Stage4 Round4 clean audit pass 1 on the exact R6 ALL2492 successor artifact. Run a full independent target-bearing/linguistic audit without mutation unless a confirmed defect is found. If any repair is required, reset clean_streak to 0; otherwise record clean_streak=1.",
+      "next_action": "Continue Stage4 Round4 repair R7 with Shard0052: independently full-semantic-audit active target positions 101-200 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,14 +230,14 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_round3_target_bearing_repair_r6_all2492_cumulative",
-      "last_observed_note": "R6 target-bearing audit/repair is complete through all 2492 active targets / 9968 examples. Final Shard0050 (positions 2401-2492) received a full semantic pass over all 368 German examples; 10 cards / 11 examples were confirmed non-target-bearing and replaced. Cumulative R6 totals are 140 affected cards / 164 replaced examples. Positions 1701-2492 received full-semantic review; positions 1-1700 retain their earlier checkpointed R6 review depth and are not relabeled. All 2492 cards have exactly four examples; DE/FA/EN are each globally unique at 9968/9968; Stage3C remains at zero status transitions and zero unresolved cells. Shard0050 package CRC, 42/42 manifest, 43/43 SHA256SUMS PASS; cumulative package 43/43 manifest and 44/44 SHA256SUMS PASS; both Library rematerializations matched exact SHA and bytes. Stage4 remains open: clean_streak=0 and two consecutive clean passes on this exact artifact are still required.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_round4_repair_r7_shard0051",
+      "last_observed_note": "Stage4 Round4 clean-pass attempt immediately found residual target-bearing defects in positions 1-100, so the clean pass failed and clean_streak remains 0. A full semantic pass over all 400 German examples in positions 1-100 confirmed 13 affected cards / 15 examples, which were repaired with aligned Persian and English translations. Thirty-nine Stage3C example-evidence cells were refreshed, with zero status transitions and zero unresolved. All non-affected cards and positions 101-2492 remained exact. Continue Round4 as repair R7 before restarting clean-pass auditing.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-ALL2492-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-        "sha256": "4d4ce4120dc51d7b0960d5a74b30c35d0deaa97f7692c4aa04c42f3f06b0fad4",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-ALL2492-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000917481f4901ac1cd55ef4739",
-        "library_stable_id": "libfile_a02ba43b793881919975791ebda55610",
+        "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
+        "sha256": "1ca1e32ca77864d9e1d91beb9e63f95206dcf5d4f8da52cd504f79af834aa98f",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000579481f48089064cfb912806",
+        "library_stable_id": "libfile_f384538c79308191b7ddd26d9c3b8f59",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
       },
       "stage2": {
@@ -267,7 +267,7 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "STAGE4_ROUND3_TARGET_BEARING_R6_ALL2492_CUMULATIVE_QA_PASS",
+        "status": "STAGE4_ROUND4_REPAIR_R7_SHARD0051_POS1_100_PASS",
         "rounds_completed": 3,
         "clean_streak": 0,
         "blocker_findings": 2,

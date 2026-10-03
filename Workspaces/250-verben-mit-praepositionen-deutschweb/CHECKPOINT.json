@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE2_IDENTITY_CLOSURE_PASS",
+  "status": "STAGE3A_BASELINE_RICHNESS_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
-      "sha256": "4c7bf4c327763ac6ca3bf82352c61ea29f8a94be061b34e0bc14f1b0d307c741",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000709481f4b8f0a7af42fc2e52",
-      "library_stable_id": "libfile_ac529260e2e88191b70826e1aae8bc44"
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
+      "sha256": "93c81a43ae42d26eb988fa265b43b0d1f6b83d953a9d3c255da4fdac54a8c0ee",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_000000005514821095a5b4d6d80cc0b8",
+      "library_stable_id": "libfile_82380c4476d88191a1fbed7830fb09a0"
     },
     "git": "IN_SYNC",
     "branch": "250-verben-mit-praepositionen-production"
@@ -39,7 +39,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3A Richness Baseline Audit: resolve the v3.3.6 enrichment policy against the 292 active canonical targets, initialize ENRICHMENT-COMPLETENESS, and preserve the 3 identity-watch flags for evidence review before Stage3 closure.",
+  "next_action": "Stage3B: resolve the 3 identity-watch targets against DUDEN_UNIVERSAL first; reopen Stage2B only if evidence proves a material identity defect. If identity holds, continue gap-driven enrichment from the 3978 unresolved matrix cells.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -47,7 +47,9 @@
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
     "MEM-009-MULTI-MEANING-ONE-CARD",
-    "CP-MEM-004"
+    "CP-MEM-001",
+    "CP-MEM-004",
+    "CP-MEM-005"
   ],
   "stage1": {
     "state": "PASS",
@@ -112,6 +114,31 @@
     "title_count_guardrail": "PASS_NO_FORCING_TO_250",
     "slash_alternative_decision": "sparen auf/für + A remains one source-bundled target",
     "stage3_identity_watch_flags": 3,
+    "external_lexical_enrichment_added": false
+  },
+  "stage3A": {
+    "state": "PASS",
+    "targets": 292,
+    "senses": 201,
+    "expressions": 91,
+    "dimension_cells": 4562,
+    "unresolved_cells": 3978,
+    "verified_rektion_cells": 292,
+    "not_applicable_source_audio_cells": 292,
+    "must_have_cells": 1843,
+    "review_to_closure_cells": 2427,
+    "optional_cells": 292,
+    "identity_watch_targets": 3,
+    "candidate_ledger_candidates": 0,
+    "resolved_policy_id": "gfp-default-lexical-enrichment@1.0.0::resolved::user-input-adaptive@1.2.0",
+    "resolved_policy_sha256": "91196f9951639da3dec49a8e628021a6a13654446abf98bd85413074da2d1d4f",
+    "completeness_sha256": "a357e37e050e73cf4f88ee1bda37fc8e1a37513dd3f782d41a08781b291603f7",
+    "candidate_ledger_sha256": "ab02e6c45b7191a67e3af124ebc2e87de99cbca1ed71161d20ed46ca02a98219",
+    "reference_source_byte_match": "PASS_EXACT_SHA256_MATCH",
+    "official_enrichment_baseline_validator": "PASS_292_TARGETS_4562_CELLS_3978_UNRESOLVED",
+    "official_candidate_ledger_validator": "PASS_WORKING_0_CANDIDATES",
+    "independent_stage3a_verification": "PASS",
+    "post_package_verification": "PASS",
     "external_lexical_enrichment_added": false
   }
 }

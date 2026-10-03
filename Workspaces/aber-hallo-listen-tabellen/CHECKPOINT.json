@@ -23,7 +23,11 @@
     "authoritative_sources": [
       "deutsch-aber-hallo-listen-tabellen-a1-a2 / sha256:4125ed49efa3c4e72500a9c80b8d39021c8933d9a387fc96a637fd4b457e3cf3",
       "deutsch-aber-hallo-listen-tabellen-b1-c2 / sha256:ebaa3896c3c383808b832241afaf6c38ef4f498eb4dc1b38f26c12087cc97a04"
-    ]
+    ],
+    "requested_page_scope": {
+      "A1-A2": "PDF pages 3-4",
+      "B1-C2": "PDF pages 8-26"
+    }
   },
   "workspace": {
     "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
@@ -50,11 +54,12 @@
         "source identity resolved",
         "local SHA-256 and page counts verified",
         "source-level table-of-contents inventory recorded",
-        "source registry entries created"
+        "source registry entries created",
+        "user-selected page scope frozen: A1-A2 pages 3-4; B1-C2 pages 8-26"
       ],
       "remaining": [
-        "occurrence-level inventory",
-        "overlap/duplicate map across the two books",
+        "occurrence-level inventory for selected pages only",
+        "overlap/duplicate map inside selected corpus",
         "stable source occurrence IDs",
         "Stage1 inventory QA and portable checkpoint"
       ]
@@ -91,10 +96,14 @@
     }
   ],
   "scope_boundary": {
-    "issue": "The advanced source is titled B1-C2 while the requested project scope is B1-C1.",
-    "safe_default": "Preserve the full source inventory, but do not include C2-only content in delivery unless an explicit evidence-backed level classification places it at C1 or below.",
-    "source_item_level_cefr_labels_present": false
+    "scope_decision": "USER_SELECTED_PDF_PAGES_ONLY",
+    "included": [
+      "A1-A2 PDF pages 3-4",
+      "B1-C2 PDF pages 8-26"
+    ],
+    "excluded": "All other pages unless the user explicitly adds them later.",
+    "level_note": "The B1-C2 source title remains source metadata; delivery is driven by the selected pages, not by automatically ingesting the whole book."
   },
   "blockers": [],
-  "resume_instruction": "Continue Stage1 by building the complete occurrence inventory and stable source IDs from both current-chat PDFs. Do not start Stage2 enrichment until overlap and identity questions are closed."
+  "resume_instruction": "Continue Stage1 only on the frozen user-selected scope: A1-A2 PDF pages 3-4 and B1-C2 PDF pages 8-26. Build occurrence inventory + stable IDs, then close overlap/identity questions before Stage2. Do not ingest unselected pages."
 }

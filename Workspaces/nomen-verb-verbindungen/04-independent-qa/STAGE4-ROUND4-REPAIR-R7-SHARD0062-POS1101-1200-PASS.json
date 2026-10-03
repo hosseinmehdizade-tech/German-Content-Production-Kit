@@ -1,0 +1,98 @@
+{
+  "schema": "nvv-stage4-round4-repair-shard@1.0.0",
+  "status": "PASS_ROUND4_REPAIR_R7_SHARD0062_POS1101_1200",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "positions": "1101-1200",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+    "confirmed_affected_targets": 1,
+    "examples_replaced": 1
+  },
+  "clean_pass_attempt": {
+    "round": 4,
+    "attempt": 1,
+    "result": "FAILED_REPAIR_REQUIRED",
+    "clean_streak_before": 0,
+    "clean_streak_after": 0
+  },
+  "changed_targets": [
+    {
+      "position": 1111,
+      "expression_id": "dah-nvv-exp-01103",
+      "canonical_form": "jds. Hass erregen",
+      "examples_replaced": [
+        2
+      ]
+    }
+  ],
+  "adjudication_findings": [
+    {
+      "position": 1111,
+      "example": 2,
+      "finding": "The source registers jds. Hass erregen, with an explicit genitive possessor slot. The old example used bare Hass with no possessor; it was repaired to den Hass vieler Zuhörer."
+    }
+  ],
+  "review_notes": {
+    "full_semantic_review": "All 400 German examples in positions 1101-1200 were read and adjudicated against their canonical constructions.",
+    "accepted_variations": [
+      {
+        "position": 1110,
+        "canonical_form": "einen Hass haben / hegen",
+        "decision": "KEEP_ALL_4",
+        "basis": "Article/negative-determiner variation and bare mass-noun use preserve the Hass + haben/hegen target relation."
+      },
+      {
+        "position": 1157,
+        "canonical_form": "jdn. wie einen Hund behandeln",
+        "example": 1,
+        "decision": "KEEP",
+        "basis": "Plural Hunde agrees naturally with plural object Aushilfen and preserves the registered construction."
+      },
+      {
+        "position": 1169,
+        "canonical_form": "eine Hypothese aufstellen",
+        "example": 3,
+        "decision": "KEEP",
+        "basis": "The sich-lassen construction is a normal passive-like realization and still explicitly instantiates Hypothese aufstellen."
+      }
+    ]
+  },
+  "qa": {
+    "all_examples_positions1101_1200_after_repair": "PASS_400_OF_400",
+    "exactly_four_examples_per_target": "100/100 PASS",
+    "global_exactly_four_examples": "2492/2492 PASS",
+    "global_de_unique": "9968/9968",
+    "global_fa_unique": "9968/9968",
+    "global_en_unique": "9968/9968",
+    "aligned_fa_en_for_replacements": "1/1 PASS",
+    "all_non_affected_cards": "EXACT",
+    "positions1_1100_and1201_2492": "EXACT",
+    "definitions_meanings_glosses_structure_identity_provenance": "EXACT",
+    "stage3c_evidence_refreshes": 3,
+    "stage3c_status_transitions": 0,
+    "unresolved_cells": 0,
+    "clean_streak": 0
+  },
+  "source_checks": [
+    {
+      "position": 1111,
+      "source_surface": "jds. Hass erregen",
+      "source_file": "nomen_verb_verbindungen.pdf",
+      "source_page": 13
+    }
+  ],
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
+    "sha256": "b1463479c816fb11e8891d619ba218ac7b3d21b34402f6ea58cd07037be52a5d",
+    "size_bytes": 1607458,
+    "successor_core_sha256": "4c8c72c6d28d6468a8e792b53e530b8d7876fc222a600ca41837ac111a96d4e3",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_000000005b608210935c4527aa74255c",
+    "library_stable_id": "libfile_7cda132119cc8191bed43ce84709d316",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "Continue Stage4 Round4 repair R7 with Shard0063: independently full-semantic-audit active target positions 1201-1300 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved."
+}

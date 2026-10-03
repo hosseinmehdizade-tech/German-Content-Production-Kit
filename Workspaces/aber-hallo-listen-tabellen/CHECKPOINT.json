@@ -133,7 +133,35 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "NOT_STARTED"
+      "state": "RUNNING",
+      "phase_status": {
+        "3A_baseline": "PASS",
+        "3B_gap_driven_enrichment": "NOT_STARTED",
+        "3C_disposition_closure": "NOT_STARTED"
+      },
+      "targets": 788,
+      "dimension_cells": 10097,
+      "source_verified_partial_seed_cells": 2334,
+      "unresolved_cells": 7763,
+      "final_dispositions_claimed": 0,
+      "authoritative_outputs": [
+        "portable:03-evidence/STAGE3A-COMPLETENESS-BASELINE.json",
+        "portable:03-evidence/CANDIDATE-LEDGER.json",
+        "Git:03-evidence/STAGE3A-BASELINE-SUMMARY.json"
+      ],
+      "gate_evidence": [
+        "portable:03-evidence/STAGE3A-VALIDATION.json",
+        "portable:STAGE3A-REPORT.md"
+      ],
+      "portable_artifact": {
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3A-CHECKPOINT.zip",
+        "sha256": "bb098e42d82b66c968e48e6fbede1825f025e18a8b24417acd274b3d0f5159fd",
+        "size_bytes": 184134,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3A-CHECKPOINT.zip",
+        "library_file_id": "libfile_d1dfe1c5a2808191bac25aee4bb2e78b",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "claim_boundary": "Stage3A baseline PASS only; Stage3 overall remains RUNNING."
     },
     {
       "stage": 4,
@@ -166,11 +194,11 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "PASS",
+  "quality_state": "RUNNING",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256",
     "git": "IN_SYNC"
   },
-  "next_action": "Stage3A completeness baseline for all 788 canonical units, followed by Stage3B gap-driven enrichment and Stage3C disposition closure. Do not re-ingest unselected pages.",
-  "resume_instruction": "Stages 1-2 are PASS. Resume from the exact Stage2 portable checkpoint at Stage3A; preserve the 788 canonical identities and all 911 source-occurrence lineage records."
+  "next_action": "Stage3B gap-driven enrichment from the exact Stage3A 10,097-cell matrix; preserve candidate decisions and do not fabricate density or guess exact item-level CEFR.",
+  "resume_instruction": "Stages 1-2 PASS; Stage3A PASS. Resume at Stage3B from the exact Stage3A portable checkpoint; preserve all 788 canonical identities and all selected-source lineage."
 }

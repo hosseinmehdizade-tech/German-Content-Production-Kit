@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_PRIORITY0_IDENTITY_WATCH_PASS",
+  "status": "STAGE3B_BATCH0001_CORE_ENRICHMENT_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Priority0-IDENTITY-WATCH-PASS-CHECKPOINT.zip",
-      "sha256": "5724a2f01ca969bd90f2f8d46be91703958980c85f283c60cd039bfbe5066452",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Priority0-IDENTITY-WATCH-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_000000001c24821084221504a593eef0",
-      "library_stable_id": "libfile_c927f03c99808191bcade6f7d0e589b5"
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0001-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "sha256": "e825b30c79bda150d2b1293693824a9a66793610e5bf7a22ecb525d1457cbf9c",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0001-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000b5fc8210be0083b90b6943fb",
+      "library_stable_id": "libfile_e7ae8a04878c81919ac252c42409617e"
     },
     "git": "IN_SYNC",
     "branch": "250-verben-mit-praepositionen-production"
@@ -39,7 +39,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B Batch0001: enrich the first bounded source-order batch using the approved claim routes; identity watch is fully closed.",
+  "next_action": "Stage3B Batch0002 core enrichment for source_order 11..20 using the same approved evidence routes; preserve unresolved relation dimensions for later explicit evidence review/closure.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -159,5 +159,57 @@
     "official_candidate_ledger_regression": "PASS",
     "post_package_verification": "PASS",
     "external_lexical_enrichment_added": false
+  },
+  "stage3B_batch0001": {
+    "state": "PASS",
+    "scope": "core_lexical_and_pedagogical_enrichment",
+    "source_order_range": [
+      1,
+      10
+    ],
+    "targets": 10,
+    "target_ids": [
+      "usrin-vmp-u-0001",
+      "usrin-vmp-u-0002",
+      "usrin-vmp-u-0003",
+      "usrin-vmp-u-0004",
+      "usrin-vmp-u-0005",
+      "usrin-vmp-u-0006",
+      "usrin-vmp-u-0007",
+      "usrin-vmp-u-0008",
+      "usrin-vmp-u-0009",
+      "usrin-vmp-u-0010"
+    ],
+    "examples": 40,
+    "examples_de_fa_en": "40/40/40",
+    "source_examples_preserved_exact": "10/10",
+    "core_dimension_cells_closed": 72,
+    "unresolved_richness_cells_before": 3978,
+    "unresolved_richness_cells_after": 3906,
+    "verified_dimensions_added": {
+      "definition_de": 10,
+      "meaning_fa": 10,
+      "gloss_en": 10,
+      "morphology": 9,
+      "examples_de": 10,
+      "example_translations_fa": 10,
+      "example_translations_en": 10,
+      "structure_components": 1,
+      "argument_slots": 1,
+      "component_relations": 1
+    },
+    "canonical_identity_unchanged": true,
+    "canonical_sha256": "d87aed4c15eaa812b3a880f557e1f8f65054e28e041cc2698020e435a1a49519",
+    "content_sha256": "56d7a7f0035e13fbe1024be5750517de9efbb5717730565da51f89aa865b581f",
+    "completeness_sha256": "c762f4a48bae250616012048e6ef0cb62559105b6e051efd23b664cba46ea644",
+    "candidate_ledger_sha256": "951a656bc8256bcef74f160f5b6b1b1a5d9ae910347e99524cdc1a485daa8db2",
+    "official_source_occurrence_regression": "PASS_1_SOURCE_292_OCCURRENCES",
+    "official_identity_closure_regression": "PASS_292_SOURCE_292_ACTIVE",
+    "official_enrichment_baseline_validator": "PASS_292_TARGETS_4562_CELLS_3906_UNRESOLVED",
+    "official_candidate_ledger_validator": "PASS_WORKING_0_CANDIDATES",
+    "independent_batch_validation": "PASS",
+    "post_package_verification": "PASS",
+    "relation_dimensions": "DEFERRED_FOR_EVIDENCE_REVIEW_NO_DENSITY_FABRICATION",
+    "runtime_binding_required_now": false
   }
 }

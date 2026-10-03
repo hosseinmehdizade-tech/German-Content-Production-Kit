@@ -48,7 +48,8 @@
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
-    "MEM-003-SOURCE-FIDELITY"
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-009-MULTI-MEANING-ONE-CARD"
   ],
   "stages": [
     {
@@ -87,7 +88,47 @@
     {
       "stage": 2,
       "name": "Canonicalization",
-      "state": "NOT_STARTED"
+      "state": "PASS",
+      "source_occurrences": 911,
+      "source_to_canonical_mappings": 926,
+      "canonical_units": 788,
+      "unresolved_identity_questions": 0,
+      "type_counts": {
+        "verb": 647,
+        "adjektiv": 140,
+        "grammatische_struktur": 1
+      },
+      "multi_occurrence_canonical_units": 102,
+      "cross_source_canonical_units": 49,
+      "split_source_rows": 14,
+      "source_morphology_units": 69,
+      "identity_policy": [
+        "MEM-003-SOURCE-FIDELITY",
+        "MEM-009-MULTI-MEANING-ONE-CARD"
+      ],
+      "validation": "PASS_STAGE2_IDENTITY_AND_CONTRACT_ENVELOPE",
+      "completeness_boundary": "Full enriched type/profile validation is deferred to Stage3/Stage4; no source-absent facts were invented.",
+      "authoritative_outputs": [
+        "portable:02-canonical/CANONICAL.json",
+        "portable:02-canonical/SOURCE-TO-CANONICAL-MAP.json",
+        "portable:02-canonical/SOURCE-FACTS.json",
+        "portable:02-canonical/NORMALIZATION-DECISIONS.json",
+        "portable:02-canonical/COMPLETENESS-PROFILE.json",
+        "Git:02-canonical/STAGE2-CANONICAL-SUMMARY.json"
+      ],
+      "gate_evidence": [
+        "portable:02-canonical/CANONICAL-VALIDATION.json",
+        "portable:STAGE2-REPORT.md"
+      ],
+      "portable_artifact": {
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage2-CHECKPOINT.zip",
+        "sha256": "5f01dc1b1fe86fc7674712b6b14d98cfc3dc37b64de90164fa4f9019ca3613a7",
+        "size_bytes": 142387,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage2-CHECKPOINT.zip",
+        "library_file_id": "libfile_92441252a09081918e29e4eaf8f9d49d",
+        "file_id": "file_000000009b1081f4ae7f3c2a71ef5c9d",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      }
     },
     {
       "stage": 3,
@@ -130,6 +171,6 @@
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256",
     "git": "IN_SYNC"
   },
-  "next_action": "Stage2 identity closure and canonicalization: review the 86 repeated-label groups, explicitly resolve zureden and beziehen sich duplicates, preserve source/level memberships, and split or merge only when valency/sense evidence supports it.",
-  "resume_instruction": "Stage1 is PASS. Resume at Stage2 identity closure/canonicalization from the exact portable Stage1 checkpoint; do not re-read unselected pages."
+  "next_action": "Stage3A completeness baseline for all 788 canonical units, followed by Stage3B gap-driven enrichment and Stage3C disposition closure. Do not re-ingest unselected pages.",
+  "resume_instruction": "Stages 1-2 are PASS. Resume from the exact Stage2 portable checkpoint at Stage3A; preserve the 788 canonical identities and all 911 source-occurrence lineage records."
 }

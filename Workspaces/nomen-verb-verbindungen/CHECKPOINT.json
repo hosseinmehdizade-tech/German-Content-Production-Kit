@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-03T02:21:00+02:00",
-  "updated_version": "stage4-round3-target-bearing-r6-shard0044-pos1801-1900-pass-v1",
-  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0044_POS1801_1900_PASS",
+  "updated_at": "2026-10-03T09:26:00+02:00",
+  "updated_version": "stage4-round3-target-bearing-r6-first2000-cumulative-qa-pass-v1",
+  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_FIRST2000_CUMULATIVE_QA_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -114,7 +114,7 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0044_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0045_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
@@ -123,7 +123,7 @@
       "not_applicable_cells": 2492,
       "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND3_TARGET_BEARING_SHARD0029_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Round3 target-bearing repairs through positions 1-1900 refreshed example-dimension evidence only; Shard0044 refreshed 18 cells for six affected targets, with zero disposition transitions and zero unresolved. Shard0044 used a full semantic pass over all 400 German examples and enforced source-registered complement slots."
+      "note": "Round3 target-bearing repairs through positions 1-2000 remain closure-consistent. Shard0045 full-semantic review refreshed 12 example-dimension evidence cells for four changed targets; cumulative R6 repair history represents 309 example-dimension evidence refreshes, zero status transitions, and zero unresolved cells."
     },
     "4_independent_linguistic_lexical_qa": {
       "state": "IN_PROGRESS_REPAIR",
@@ -1082,15 +1082,15 @@
           }
         },
         "target_bearing_repair": {
-          "status": "R6_SHARD0044_POS1801_1900_PASS",
+          "status": "R6_FIRST2000_CUMULATIVE_QA_PASS",
           "scope": "FULL_CORPUS_SHARD_ADJUDICATION_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 1900,
-          "reviewed_targets": 1900,
-          "reviewed_examples": 7600,
-          "confirmed_affected_targets_total": 99,
-          "replaced_examples_total": 118,
-          "remaining_positions": 592,
+          "reviewed_positions_completed": 2000,
+          "reviewed_targets": 2000,
+          "reviewed_examples": 8000,
+          "confirmed_affected_targets_total": 103,
+          "replaced_examples_total": 123,
+          "remaining_positions": 492,
           "completed_shards": [
             "0026",
             "0027",
@@ -1110,7 +1110,8 @@
             "0041",
             "0042",
             "0043",
-            "0044"
+            "0044",
+            "0045"
           ],
           "shard0026": {
             "positions": "1-100",
@@ -1547,6 +1548,55 @@
               "library_stable_id": "libfile_df451dd8f9a48191883ecc30dc37059b",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
+          },
+          "shard0045": {
+            "positions": "1901-2000",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+            "affected_targets": 4,
+            "examples_replaced": 5,
+            "target_bearing_after_adjudication": "PASS_400_OF_400_WITH_ONE_DOCUMENTED_SOURCE_TYPO_EXCEPTION",
+            "documented_source_exception": {
+              "position": 1991,
+              "expression_id": "dah-nvv-exp-01979",
+              "source_surface": "eine Termin verpassen / versäumen",
+              "disposition": "PRESERVE_SOURCE_CANONICAL_TYPO_NO_STAGE4_IDENTITY_MUTATION"
+            },
+            "stage3c_evidence_refreshes": 12,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0045-POS1901-2000-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0045-POS1901-2000-PASS-CHECKPOINT.zip",
+              "sha256": "6658dd0e2659876f06022476a19a0a7c0407f4bd62673c62aa1f9d2a125ac0a5",
+              "size_bytes": 1557285,
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0045-POS1901-2000-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000d70481f4a8e1d3d0fc6dc919",
+              "library_stable_id": "libfile_5ea7981cb04881919b3de4d5da2f5738",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
+          },
+          "cumulative_first2000": {
+            "status": "PASS_INTEGRITY_COVERAGE_QA",
+            "positions": "1-2000",
+            "targets_covered": 2000,
+            "examples_covered": 8000,
+            "affected_targets": 103,
+            "examples_replaced": 123,
+            "review_depth": {
+              "positions_1701_2000": "FULL_SEMANTIC_PASS_ALL_EXAMPLES",
+              "positions_1_1700": "PRIOR_R6_CHECKPOINTED_REVIEW_DEPTH"
+            },
+            "stage3c_evidence_refreshes": 309,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-FIRST2000-CUMULATIVE-QA-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+              "sha256": "b528777449bfb89d93780cb3430c1d3554c030874b754786bb60f8cb36ae2dd5",
+              "size_bytes": 1559158,
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_000000004454821098daaee2c59f2ac2",
+              "library_stable_id": "libfile_08a630680f8c81918877b43cd963bb15",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
           }
         }
       },
@@ -1880,17 +1930,17 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "R6 target-bearing Shard0045: adjudicate active target positions 1901-2000 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, preserve all other content exactly. Then run cumulative R6 first2000 target-bearing QA.",
+  "next_action": "R6 target-bearing Shard0046: adjudicate active target positions 2001-2100 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, and preserve all other content exactly.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
-    "sha256": "834bb7e14e38c4a45da80cd16a2b4c6448e1ad21c55a6b0aeb4231d50852f9b6",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000f5d88210b4227f1d87c9c774",
-    "library_stable_id": "libfile_df451dd8f9a48191883ecc30dc37059b",
+    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "sha256": "b528777449bfb89d93780cb3430c1d3554c030874b754786bb60f8cb36ae2dd5",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_000000004454821098daaee2c59f2ac2",
+    "library_stable_id": "libfile_08a630680f8c81918877b43cd963bb15",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
   }
 }

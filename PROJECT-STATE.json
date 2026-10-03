@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-03T19:33:00+02:00",
+  "updated_at": "2026-10-03T19:53:03+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -3538,7 +3538,7 @@
       "next_action": "Exact import/runtime smoke on CURRENT v452-R86, then expand only after pilot acceptance."
     },
     "250_verben_mit_praepositionen_deutschweb": {
-      "status": "STAGE3B_BATCH0014_CORE_ENRICHMENT_PASS",
+      "status": "STAGE3B_BATCH0015_CORE_ENRICHMENT_PASS",
       "domain": "vocabulary",
       "branch": "250-verben-mit-praepositionen-production",
       "checkpoint": "Workspaces/250-verben-mit-praepositionen-deutschweb/CHECKPOINT.json",
@@ -3553,14 +3553,15 @@
       "framework": "v3.3.6",
       "dataset_profile": "user-input-adaptive@1.2.0",
       "latest_portable_checkpoint": {
-        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0014-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
-        "sha256": "724bf81531fe446d131fa5ff12b2ed5da1305ccbd7ed24544fb6a20be38166dc",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0014-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000182882108284d8c5fa6f81b4",
-        "library_stable_id": "libfile_6297a4f826b88191950352143a974634"
+        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0015-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+        "sha256": "e0b463b9df64e13d66bdd51e2019d36eeac606a52fa4b6b6161ed8328e3b2751",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0015-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_0000000016988243a6079c78256ead73",
+        "library_stable_id": "libfile_3e0e583cc2d08191a6096939381ad39d",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "source_fidelity_guard": "Do not assume the advertised 250 equals final canonical card count; Stage1 inventories source occurrences and Stage2 closes identity.",
-      "next_action": "Stage3B Batch0015 core enrichment for source_order 141..150 using the same approved evidence routes; preserve unresolved relation dimensions for later explicit evidence review/closure.",
+      "next_action": "Stage3B Batch0016 core enrichment for source_order 151..160 using the same approved evidence routes; preserve unresolved relation dimensions for later explicit evidence review/closure.",
       "distinct_displayed_head_forms": 252,
       "stage1": {
         "status": "PASS",
@@ -3926,6 +3927,33 @@
         "candidate_ledger_sha256": "e13c3de892ca3005b36e19d47701456c6ca8ec9fe92572fb92777974a0b2b57d",
         "validators": "PASS",
         "post_package_verification": "PASS_REHASH_CRC_FRESH_VALIDATORS"
+      },
+      "stage3B_batch0015": {
+        "status": "PASS",
+        "source_order_range": [
+          141,
+          150
+        ],
+        "targets": 10,
+        "senses": 6,
+        "expressions": 4,
+        "examples": 40,
+        "core_dimension_cells_closed": 78,
+        "cumulative_core_targets_enriched": 150,
+        "unresolved_richness_cells": 2814,
+        "identity_watch_remaining": 0,
+        "canonical_targets": 292,
+        "construction_guards": {
+          "informieren": "sich informieren bei + D and sich informieren über + A remain separate canonical targets under one base lexeme",
+          "source_example_0147": "Exact source example 'Wir sind über den Unfall informiert.' is preserved although it realizes passive/adjectival informiert sein rather than the reflexive canonical surface; generated examples instantiate sich informieren über + A."
+        },
+        "canonical_sha256": "d87aed4c15eaa812b3a880f557e1f8f65054e28e041cc2698020e435a1a49519",
+        "content_sha256": "cb61b2e754a0f5ad25313786fb55892b47ada04e6608f71cbf610b4ce7db4953",
+        "evidence_sha256": "d8a8fdc7604bc46eff6443104dd51b96ee494492dccdfd290f982e977e096819",
+        "completeness_sha256": "4cf78745321dc319b1a0a1ecc41faa4645a88a52c48f606f3ed7c57665b770e9",
+        "candidate_ledger_sha256": "e13c3de892ca3005b36e19d47701456c6ca8ec9fe92572fb92777974a0b2b57d",
+        "validators": "PASS",
+        "post_package_verification": "PASS_233/233_REHASH_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE"
       }
     }
   },

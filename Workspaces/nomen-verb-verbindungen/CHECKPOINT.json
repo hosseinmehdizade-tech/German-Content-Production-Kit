@@ -4,7 +4,7 @@
   "domain": "vocabulary",
   "updated_at": "2026-10-03T10:31:00+02:00",
   "updated_version": "stage4-round3-target-bearing-r6-shard0047-pos2101-2200-pass-v1",
-  "status": "STAGE4_ROUND4_REPAIR_R7_SHARD0051_POS1_100_PASS",
+  "status": "STAGE4_ROUND4_REPAIR_R7_SHARD0052_POS101_200_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -126,8 +126,8 @@
       "note": "Round3 target-bearing repairs through positions 1-2400 refreshed example-dimension evidence only; Shard0049 refreshed 27 cells for nine affected targets, with zero disposition transitions and zero unresolved cells."
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "IN_PROGRESS_REPAIR",
-      "rounds_completed": 3,
+      "state": "STAGE4_ROUND4_REPAIR_R7_SHARD0052_POS101_200_PASS",
+      "rounds_completed": 4,
       "clean_streak": 0,
       "required_rounds_min": 3,
       "required_consecutive_clean": 2,
@@ -1734,17 +1734,18 @@
           }
         },
         "round4_repair_r7": {
-          "status": "R7_SHARD0051_POS1_100_PASS",
+          "status": "R7_SHARD0052_POS101_200_PASS",
           "scope": "FULL_CORPUS_INDEPENDENT_SEMANTIC_REAUDIT_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 100,
-          "reviewed_targets": 100,
-          "reviewed_examples": 400,
-          "confirmed_affected_targets_total": 13,
-          "replaced_examples_total": 15,
-          "remaining_positions": 2392,
+          "reviewed_positions_completed": 200,
+          "reviewed_targets": 200,
+          "reviewed_examples": 800,
+          "confirmed_affected_targets_total": 20,
+          "replaced_examples_total": 25,
+          "remaining_positions": 2292,
           "completed_shards": [
-            "0051"
+            "0051",
+            "0052"
           ],
           "shard0051": {
             "positions": "1-100",
@@ -1765,6 +1766,28 @@
               "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
               "library_file_id": "file_00000000579481f48089064cfb912806",
               "library_stable_id": "libfile_f384538c79308191b7ddd26d9c3b8f59",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
+          },
+          "shard0052": {
+            "positions": "101-200",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+            "affected_targets": 7,
+            "examples_replaced": 10,
+            "target_bearing_after_repair": "PASS_400_OF_400",
+            "clean_pass_attempt": "FAILED_REPAIR_REQUIRED",
+            "stage3c_evidence_refreshes": 21,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND4-REPAIR-R7-SHARD0052-POS101-200-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0052-POS101-200-PASS-CHECKPOINT.zip",
+              "sha256": "acb72421f101e51c0c715331ca7ebde3b697e2509541b6fa2105aacec8544032",
+              "size_bytes": 1580514,
+              "successor_core_sha256": "b2a5d3093970e3b20289dff09e98502c434a4c98ab702978ad99dbc1c570fa29",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0052-POS101-200-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000159481f49cdbd27335011881",
+              "library_stable_id": "libfile_d0552c87d4408191828e870a95c96390",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
           }
@@ -2100,17 +2123,17 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Continue Stage4 Round4 repair R7 with Shard0052: independently full-semantic-audit active target positions 101-200 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved.",
+  "next_action": "Continue Stage4 Round4 repair R7 with Shard0053: independently full-semantic-audit active target positions 201-300 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
-    "sha256": "1ca1e32ca77864d9e1d91beb9e63f95206dcf5d4f8da52cd504f79af834aa98f",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000579481f48089064cfb912806",
-    "library_stable_id": "libfile_f384538c79308191b7ddd26d9c3b8f59",
+    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0052-POS101-200-PASS-CHECKPOINT.zip",
+    "sha256": "acb72421f101e51c0c715331ca7ebde3b697e2509541b6fa2105aacec8544032",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0052-POS101-200-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000159481f49cdbd27335011881",
+    "library_stable_id": "libfile_d0552c87d4408191828e870a95c96390",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
   }
 }

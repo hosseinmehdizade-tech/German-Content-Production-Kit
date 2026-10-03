@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-03T12:05:00+02:00",
+  "updated_at": "2026-10-03T12:20:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -3530,7 +3530,7 @@
       "next_action": "Exact import/runtime smoke on CURRENT v452-R86, then expand only after pilot acceptance."
     },
     "250_verben_mit_praepositionen_deutschweb": {
-      "status": "STAGE3A_BASELINE_RICHNESS_PASS",
+      "status": "STAGE3B_PRIORITY0_IDENTITY_WATCH_PASS",
       "domain": "vocabulary",
       "branch": "250-verben-mit-praepositionen-production",
       "checkpoint": "Workspaces/250-verben-mit-praepositionen-deutschweb/CHECKPOINT.json",
@@ -3545,14 +3545,14 @@
       "framework": "v3.3.6",
       "dataset_profile": "user-input-adaptive@1.2.0",
       "latest_portable_checkpoint": {
-        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
-        "sha256": "93c81a43ae42d26eb988fa265b43b0d1f6b83d953a9d3c255da4fdac54a8c0ee",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3A-BASELINE-RICHNESS-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_000000005514821095a5b4d6d80cc0b8",
-        "library_stable_id": "libfile_82380c4476d88191a1fbed7830fb09a0"
+        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Priority0-IDENTITY-WATCH-PASS-CHECKPOINT.zip",
+        "sha256": "5724a2f01ca969bd90f2f8d46be91703958980c85f283c60cd039bfbe5066452",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Priority0-IDENTITY-WATCH-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_000000001c24821084221504a593eef0",
+        "library_stable_id": "libfile_c927f03c99808191bcade6f7d0e589b5"
       },
       "source_fidelity_guard": "Do not assume the advertised 250 equals final canonical card count; Stage1 inventories source occurrences and Stage2 closes identity.",
-      "next_action": "Stage3B: resolve the 3 identity-watch targets against DUDEN_UNIVERSAL first; reopen Stage2B only if evidence proves a material identity defect. If identity holds, continue gap-driven enrichment from the 3978 unresolved matrix cells.",
+      "next_action": "Stage3B Batch0001: enrich the first bounded source-order batch using the approved claim routes; identity watch is fully closed.",
       "distinct_displayed_head_forms": 252,
       "stage1": {
         "status": "PASS",
@@ -3590,6 +3590,18 @@
         "reference_source_byte_match": "PASS_EXACT_SHA256_MATCH",
         "baseline_validator": "PASS",
         "independent_verification": "PASS"
+      },
+      "stage3B_priority0": {
+        "status": "PASS",
+        "identity_watch_reviewed": 3,
+        "resolved_keep_identity": 3,
+        "stage2_reopened": 0,
+        "remaining_identity_watch": 0,
+        "canonical_targets": 292,
+        "canonical_sha256": "d87aed4c15eaa812b3a880f557e1f8f65054e28e041cc2698020e435a1a49519",
+        "unresolved_richness_cells": 3978,
+        "authority": "DUDEN_UNIVERSAL",
+        "post_package_verification": "PASS"
       }
     }
   },

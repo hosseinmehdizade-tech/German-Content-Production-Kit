@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE1_SOURCE_INVENTORY_PASS",
+  "status": "STAGE2_IDENTITY_CLOSURE_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage1-SOURCE-INVENTORY-PASS-CHECKPOINT.zip",
-      "sha256": "62f218f4980d11271371972ec6aafd4b12d69ba3594f5410ddf9c49ca4ab93ab",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage1-SOURCE-INVENTORY-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000d44881f4a5a5105af0f09024",
-      "library_stable_id": "libfile_1c599efac6b8819180d411cbb9d431cb"
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
+      "sha256": "4c7bf4c327763ac6ca3bf82352c61ea29f8a94be061b34e0bc14f1b0d307c741",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage2-IDENTITY-CLOSURE-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000709481f4b8f0a7af42fc2e52",
+      "library_stable_id": "libfile_ac529260e2e88191b70826e1aae8bc44"
     },
     "git": "IN_SYNC",
     "branch": "250-verben-mit-praepositionen-production"
@@ -26,7 +26,7 @@
     "pages": 4,
     "advertised_title_count": 250,
     "inventory_count": 292,
-    "final_target_count": null,
+    "final_target_count": 292,
     "distinct_displayed_head_forms": 252
   },
   "stage0_checks": {
@@ -39,13 +39,14 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage2 Identity Closure: give all 292 source occurrences an explicit identity disposition and decide canonical targets/splits/merges/reuses without forcing the advertised title count.",
+  "next_action": "Stage3A Richness Baseline Audit: resolve the v3.3.6 enrichment policy against the 292 active canonical targets, initialize ENRICHMENT-COMPLETENESS, and preserve the 3 identity-watch flags for evidence review before Stage3 closure.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
     "CP-MEM-004"
   ],
   "stage1": {
@@ -80,5 +81,37 @@
     "title_count_reconciliation": "292 visible construction lines and 252 distinct displayed head forms; do not force 250 at Stage1 or Stage2.",
     "source_fidelity": "Only print-line hyphenation/whitespace normalized; no enrichment or identity decisions."
   },
-  "runtime_binding_required_now": false
+  "runtime_binding_required_now": false,
+  "stage2": {
+    "state": "PASS",
+    "lexemes": 247,
+    "active_canonical_targets": 292,
+    "senses": 201,
+    "expressions": 91,
+    "occurrence_dispositions": {
+      "ACTIVE": 292,
+      "MERGED_ALIAS": 0,
+      "RETIRED": 0,
+      "EXCLUDED": 0,
+      "BLOCKED": 0
+    },
+    "review_candidates_total": 46,
+    "review_breakdown": {
+      "same_base_lexeme_split_reviews": 42,
+      "source_slash_alternative_reviews": 1,
+      "source_example_reflexivity_reviews": 3
+    },
+    "unresolved_count": 0,
+    "identity_fingerprint": "eae914dc9ea1c4d21fc3775dc16f4b9bcbb2edd80898f7054a7d8710965a4600",
+    "canonical_sha256": "d87aed4c15eaa812b3a880f557e1f8f65054e28e041cc2698020e435a1a49519",
+    "source_occurrences_sha256": "3656a272d906402c517d30d94f5c1ddca690b8081b9be62e40ecbce29c44dbcd",
+    "official_source_occurrence_validator": "PASS_1_SOURCE_292_OCCURRENCES",
+    "official_identity_closure_validator": "PASS_292_SOURCE_292_ACTIVE",
+    "independent_stage2_verification": "PASS",
+    "multi_meaning_guardrail": "PASS_NO_SPLIT_SOLELY_FOR_POLYSEMY",
+    "title_count_guardrail": "PASS_NO_FORCING_TO_250",
+    "slash_alternative_decision": "sparen auf/für + A remains one source-bundled target",
+    "stage3_identity_watch_flags": 3,
+    "external_lexical_enrichment_added": false
+  }
 }

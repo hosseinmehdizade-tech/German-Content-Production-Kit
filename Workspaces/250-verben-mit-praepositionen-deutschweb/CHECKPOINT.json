@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_BATCH0021_CORE_ENRICHMENT_PASS",
+  "status": "STAGE3B_BATCH0022_CORE_ENRICHMENT_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0021-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
-      "sha256": "090ba8efd37b94e3cef4a239aa4dba5a63c63e627eb3f6442a4b3040a6421928",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0021-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000e3fc81f4a08d39d7f791306d",
-      "library_stable_id": "libfile_3cfa943aec78819181447fbf91dd0d58"
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0022-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "sha256": "8342890a05a177b8075c8f39eeba9db514a9c0b7547a92a38894a5e92c985513",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0022-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000279882469b79f8fa6ef1f05d",
+      "library_stable_id": "libfile_e48d3a5133188191a3fc9445edb33b4a"
     },
     "git": "IN_SYNC",
     "branch": "250-verben-mit-praepositionen-production"
@@ -39,7 +39,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B Batch0022 core enrichment for source_order 211..220 using the same approved evidence routes; preserve unresolved relation dimensions for later explicit evidence review/closure.",
+  "next_action": "Stage3B Batch0023 core enrichment for source_order 221..230 using the same approved evidence routes; preserve unresolved relation dimensions for later explicit evidence review/closure.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -1314,6 +1314,66 @@
     "construction_guards": {
       "sprechen": "sprechen mit + D (202), sprechen über + A (203) and sprechen von + D (204) remain separate canonical targets under one base lexeme with distinct governed uses.",
       "streben": "streben nach + D (210) is resolved to the abstract goal/aspiration sense established by the source example; morphology uses hat gestrebt, not the directional movement use with sein."
+    },
+    "relation_dimensions": "DEFERRED_FOR_EVIDENCE_REVIEW_NO_DENSITY_FABRICATION",
+    "runtime_binding_required_now": false
+  },
+  "stage3B_batch0022": {
+    "state": "PASS",
+    "scope": "core_lexical_and_pedagogical_enrichment",
+    "source_order_range": [
+      211,
+      220
+    ],
+    "targets": 10,
+    "target_ids": [
+      "usrin-vmp-u-0211",
+      "usrin-vmp-u-0212",
+      "usrin-vmp-u-0213",
+      "usrin-vmp-u-0214",
+      "usrin-vmp-u-0215",
+      "usrin-vmp-u-0216",
+      "usrin-vmp-u-0217",
+      "usrin-vmp-u-0218",
+      "usrin-vmp-u-0219",
+      "usrin-vmp-u-0220"
+    ],
+    "senses": 8,
+    "expressions": 2,
+    "examples": 40,
+    "examples_de_fa_en": "40/40/40",
+    "source_examples_preserved_exact": "10/10",
+    "core_dimension_cells_closed": 74,
+    "unresolved_richness_cells_before": 2374,
+    "unresolved_richness_cells_after": 2300,
+    "verified_dimensions_added": {
+      "definition_de": 10,
+      "meaning_fa": 10,
+      "gloss_en": 10,
+      "morphology": 8,
+      "examples_de": 10,
+      "example_translations_fa": 10,
+      "example_translations_en": 10,
+      "structure_components": 2,
+      "argument_slots": 2,
+      "component_relations": 2
+    },
+    "canonical_identity_unchanged": true,
+    "canonical_sha256": "d87aed4c15eaa812b3a880f557e1f8f65054e28e041cc2698020e435a1a49519",
+    "content_sha256": "8aaa8af6ac0c846d8c6d39867bb5b5927dd507ae8047379433090c09468f61c6",
+    "evidence_sha256": "4222ea39d3b7f3c24d3376a96bd749081eeae5ccfccb1444532a6ccb1185c274",
+    "completeness_sha256": "aab2e8f00507c74a4c7390c046a88c343a9333f914f9d87d056083a3c0c57398",
+    "candidate_ledger_sha256": "e13c3de892ca3005b36e19d47701456c6ca8ec9fe92572fb92777974a0b2b57d",
+    "official_source_occurrence_regression": "PASS_1_SOURCE_292_OCCURRENCES",
+    "official_identity_closure_regression": "PASS_292_SOURCE_292_ACTIVE",
+    "official_enrichment_baseline_validator": "PASS_292_TARGETS_4562_CELLS_2300_UNRESOLVED",
+    "official_candidate_ledger_validator": "PASS_WORKING_0_CANDIDATES",
+    "independent_batch_validation": "PASS",
+    "post_package_verification": "PASS_331/331_MANIFEST_REHASH_333_ZIP_MEMBERS_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+    "prior_batch_specific_files_immutable": "PASS_282/282",
+    "construction_guards": {
+      "streiten": "sich streiten mit + D (212) and sich streiten über + A (213) remain separate canonical targets under one lexeme. Their exact source examples omit the reflexive pronoun; source surface is preserved verbatim while generated examples instantiate the Stage2 reflexive identities.",
+      "träumen": "träumen von + D (220) is resolved to the wish/aspiration sense established by the source example, not the sleep-dream sense."
     },
     "relation_dimensions": "DEFERRED_FOR_EVIDENCE_REVIEW_NO_DENSITY_FABRICATION",
     "runtime_binding_required_now": false

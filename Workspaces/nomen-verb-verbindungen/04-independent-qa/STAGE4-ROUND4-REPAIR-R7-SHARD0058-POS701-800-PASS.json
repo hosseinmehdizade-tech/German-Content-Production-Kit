@@ -1,0 +1,99 @@
+{
+  "schema": "nvv-stage4-round4-repair-shard@1.0.0",
+  "status": "PASS_ROUND4_REPAIR_R7_SHARD0058_POS701_800",
+  "created_at": "2026-10-03T12:00:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "positions": "701-800",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+    "confirmed_affected_targets": 1,
+    "examples_replaced": 1
+  },
+  "clean_pass_attempt": {
+    "round": 4,
+    "attempt": 1,
+    "result": "FAILED_REPAIR_REQUIRED",
+    "clean_streak_before": 0,
+    "clean_streak_after": 0
+  },
+  "changed_targets": [
+    {
+      "position": 743,
+      "expression_id": "dah-nvv-exp-00738",
+      "canonical_form": "Erz abbauen",
+      "examples_replaced": [
+        1
+      ]
+    }
+  ],
+  "adjudication_findings": [
+    {
+      "position": 743,
+      "example": 1,
+      "finding": "The source registers the lexical noun phrase Erz abbauen. The old example used Eisenerz solely as a compound substitute for Erz. Under the established strict compound-substitution rule, the target noun must be explicit."
+    }
+  ],
+  "review_notes": {
+    "accepted_variations": [
+      {
+        "position": 739,
+        "canonical_form": "Erwartungen hegen",
+        "example": 2,
+        "decision": "KEEP",
+        "basis": "Singular Erwartung is ordinary number inflection; the target predicate hegen remains explicit."
+      },
+      {
+        "position": 759,
+        "canonical_form": "(jdm.) eine Fahrkarte ausstellen",
+        "example": 4,
+        "decision": "KEEP",
+        "basis": "The dative recipient is explicitly optional in the registered source form, and Fahrkarten is ordinary plural inflection."
+      },
+      {
+        "position": 776,
+        "canonical_form": "(einer Sache) Farbe verleihen",
+        "decision": "KEEP_ALL_4",
+        "basis": "The parenthetical dative placeholder is optional; each example explicitly instantiates Farbe verleihen."
+      }
+    ]
+  },
+  "qa": {
+    "all_examples_positions701_800_after_repair": "PASS_400_OF_400",
+    "exactly_four_examples_per_target": "100/100 PASS",
+    "global_exactly_four_examples": "2492/2492 PASS",
+    "global_de_unique": "9968/9968",
+    "global_fa_unique": "9968/9968",
+    "global_en_unique": "9968/9968",
+    "aligned_fa_en_for_replacements": "1/1 PASS",
+    "all_non_affected_cards": "EXACT",
+    "positions1_700_and801_2492": "EXACT",
+    "definitions_meanings_glosses_structure_identity_provenance": "EXACT",
+    "stage3c_evidence_refreshes": 3,
+    "stage3c_status_transitions": 0,
+    "unresolved_cells": 0,
+    "clean_streak": 0
+  },
+  "source_checks": [
+    {
+      "position": 743,
+      "source_surface": "Erz abbauen",
+      "source_file": "nomen_verb_verbindungen.pdf",
+      "source_page": 10
+    }
+  ],
+  "successor_core_sha256": "b42576cf895ea93b351dc88c3a80c9df40e90d0e0cf10068113b29270ef19cb1",
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0058-POS701-800-PASS-CHECKPOINT.zip",
+    "sha256": "daf0f89fe246d2a4124f530334ed3d7cab4fad3c065163be6db077281975b071",
+    "size_bytes": 1597107,
+    "successor_core_sha256": "b42576cf895ea93b351dc88c3a80c9df40e90d0e0cf10068113b29270ef19cb1",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0058-POS701-800-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000f8e881f4996397a6d2e0d587",
+    "library_stable_id": "libfile_680fa01d8ad881919b7ad333facda647",
+    "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
+  },
+  "next_action": "Continue Stage4 Round4 repair R7 with Shard0059: independently full-semantic-audit active target positions 801-900 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved."
+}

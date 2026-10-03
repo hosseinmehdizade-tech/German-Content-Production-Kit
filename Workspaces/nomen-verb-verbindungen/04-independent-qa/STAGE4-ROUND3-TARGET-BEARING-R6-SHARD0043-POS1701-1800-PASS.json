@@ -1,0 +1,132 @@
+{
+  "schema": "nvv-stage4-target-bearing-repair-shard@1.0.0",
+  "status": "PASS_R6_SHARD0043_POS1701_1800",
+  "created_at": "2026-10-03T01:40:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "positions": "1701-1800",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES_PLUS_STRUCTURAL_SCREENING",
+    "confirmed_affected_targets": 5,
+    "examples_replaced": 6
+  },
+  "changed_targets": [
+    {
+      "position": 1749,
+      "expression_id": "dah-nvv-exp-01739",
+      "canonical_form": "Scheuklappen tragen",
+      "examples_replaced": [
+        4
+      ]
+    },
+    {
+      "position": 1757,
+      "expression_id": "dah-nvv-exp-01747",
+      "canonical_form": "eine Schlange bilden",
+      "examples_replaced": [
+        1,
+        4
+      ]
+    },
+    {
+      "position": 1761,
+      "expression_id": "dah-nvv-exp-01751",
+      "canonical_form": "ins Schleudern geraten / kommen",
+      "examples_replaced": [
+        4
+      ]
+    },
+    {
+      "position": 1776,
+      "expression_id": "dah-nvv-exp-01766",
+      "canonical_form": "sich im Schmutz wälzen",
+      "examples_replaced": [
+        4
+      ]
+    },
+    {
+      "position": 1799,
+      "expression_id": "dah-nvv-exp-01789",
+      "canonical_form": "Schulden haben",
+      "examples_replaced": [
+        4
+      ]
+    }
+  ],
+  "adjudication_findings": [
+    {
+      "position": 1749,
+      "example": 4,
+      "finding": "Scheuklappen is present but the registered support verb tragen is absent; the example uses denken instead."
+    },
+    {
+      "position": 1757,
+      "example": 1,
+      "finding": "uses the anticausative/reflexive sich eine Schlange bilden rather than the registered transitive construction eine Schlange bilden."
+    },
+    {
+      "position": 1757,
+      "example": 4,
+      "finding": "uses the anticausative/reflexive sich eine Schlange bilden rather than the registered transitive construction eine Schlange bilden."
+    },
+    {
+      "position": 1761,
+      "example": 4,
+      "finding": "uses the causative ins Schleudern bringen instead of either registered variant geraten or kommen."
+    },
+    {
+      "position": 1776,
+      "example": 4,
+      "finding": "Schmutz is mentioned in the preceding predicate and replaced by the anaphoric darin with wälzen; the target noun+predicate is not explicitly instantiated."
+    },
+    {
+      "position": 1799,
+      "example": 4,
+      "finding": "haben governs Kredite while Schulden appears only in an über-phrase; the registered construction Schulden haben is not instantiated."
+    }
+  ],
+  "review_notes": {
+    "accepted_borderline_example": {
+      "position": 1727,
+      "canonical_form": "in einer Sackgasse stecken",
+      "example": 4,
+      "decision": "KEEP",
+      "basis": "The exact target phrase in einer Sackgasse stecken remains explicitly instantiated as the infinitival predicate complement inside bleibt ... stecken; the registered lexical predicate stecken is present."
+    }
+  },
+  "qa": {
+    "all_examples_target_bearing_after_adjudication": "PASS_400_OF_400_FULL_SEMANTIC_PASS",
+    "exactly_four_examples_per_target": "100/100 PASS",
+    "global_exactly_four_examples": "2492/2492 PASS",
+    "global_de_unique": "9968/9968",
+    "global_fa_unique": "9968/9968",
+    "global_en_unique": "9968/9968",
+    "aligned_fa_en_for_replacements": "6/6 PASS",
+    "all_non_affected_cards": "EXACT",
+    "positions_outside_shard": "EXACT",
+    "definitions_meanings_glosses_structure_identity_provenance": "EXACT",
+    "stage3c_evidence_refreshes": 15,
+    "stage3c_status_transitions": 0,
+    "unresolved_cells": 0,
+    "package_crc": "PASS",
+    "internal_manifest_entries": "34/34 PASS",
+    "internal_sha256sums": "35/35 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "clean_streak": 0,
+    "stage4_clean_round_credit": 0
+  },
+  "method_note": "All 400 German examples in positions 1701-1800 received a full semantic review against the exact registered target predicate/construction, followed by structural/package checks. Six confirmed near-misses across five cards were changed; all other content remained exact.",
+  "successor_core_sha256": "28feb2b256cac861189ede41ca95971dcee1dbe406c2431b4be26efcc9d25963",
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0043-POS1701-1800-PASS-CHECKPOINT.zip",
+    "sha256": "b7a9b019b8f645fca2b9d68ac7edf7c468fe345518879e590a3b39b48ad887f3",
+    "size_bytes": 1551535,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0043-POS1701-1800-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000844882109f0583a1cd5d75ca",
+    "library_stable_id": "libfile_43afb4d0a33c81919883a87dd767612a",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "R6 target-bearing Shard0044: adjudicate active target positions 1801-1900 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, and preserve all other content exactly."
+}

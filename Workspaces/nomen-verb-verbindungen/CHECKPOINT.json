@@ -4,7 +4,7 @@
   "domain": "vocabulary",
   "updated_at": "2026-10-03T12:05:00+02:00",
   "updated_version": "stage4-round3-target-bearing-r6-shard0047-pos2101-2200-pass-v1",
-  "status": "STAGE4_ROUND4_REPAIR_R7_SHARD0062_POS1101_1200_PASS",
+  "status": "STAGE4_ROUND4_REPAIR_R7_SHARD0063_POS1201_1300_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -114,7 +114,7 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0049_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND4_REPAIR_R7_SHARD0063_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
@@ -123,10 +123,11 @@
       "not_applicable_cells": 2492,
       "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND3_TARGET_BEARING_SHARD0029_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Round3 target-bearing repairs through positions 1-2400 refreshed example-dimension evidence only; Shard0049 refreshed 27 cells for nine affected targets, with zero disposition transitions and zero unresolved cells."
+      "note": "Round4 R7 Shard0063 repaired 10 targets / 20 examples in positions 1201-1300; 30 example-dimension evidence cells refreshed, zero disposition transitions, zero unresolved cells.",
+      "last_recompute": "ROUND4_REPAIR_R7_SHARD0063"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_ROUND4_REPAIR_R7_SHARD0062_POS1101_1200_PASS",
+      "state": "STAGE4_ROUND4_REPAIR_R7_SHARD0063_POS1201_1300_PASS",
       "rounds_completed": 4,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -1734,15 +1735,15 @@
           }
         },
         "round4_repair_r7": {
-          "status": "R7_SHARD0062_POS1101_1200_PASS",
+          "status": "R7_SHARD0063_POS1201_1300_PASS",
           "scope": "FULL_CORPUS_INDEPENDENT_SEMANTIC_REAUDIT_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 1200,
-          "reviewed_targets": 1200,
-          "reviewed_examples": 4800,
-          "confirmed_affected_targets_total": 66,
-          "replaced_examples_total": 93,
-          "remaining_positions": 1292,
+          "reviewed_positions_completed": 1300,
+          "reviewed_targets": 1300,
+          "reviewed_examples": 5200,
+          "confirmed_affected_targets_total": 76,
+          "replaced_examples_total": 113,
+          "remaining_positions": 1192,
           "completed_shards": [
             "0051",
             "0052",
@@ -1755,7 +1756,8 @@
             "0059",
             "0060",
             "0061",
-            "0062"
+            "0062",
+            "0063"
           ],
           "shard0051": {
             "positions": "1-100",
@@ -1955,8 +1957,8 @@
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
           },
-          "affected_targets": 65,
-          "replaced_examples": 92,
+          "affected_targets": 76,
+          "replaced_examples": 113,
           "shard0060": {
             "positions": "901-1000",
             "targets_reviewed": 100,
@@ -1981,13 +1983,13 @@
           },
           "clean_streak": 0,
           "latest_artifact": {
-            "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
-            "sha256": "b1463479c816fb11e8891d619ba218ac7b3d21b34402f6ea58cd07037be52a5d",
-            "size_bytes": 1607458,
-            "successor_core_sha256": "4c8c72c6d28d6468a8e792b53e530b8d7876fc222a600ca41837ac111a96d4e3",
-            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
-            "library_file_id": "file_000000005b608210935c4527aa74255c",
-            "library_stable_id": "libfile_7cda132119cc8191bed43ce84709d316",
+            "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0063-POS1201-1300-PASS-CHECKPOINT.zip",
+            "sha256": "892eccba4f807e40d56b8995166e971c539f6a7d3a089e5f9aec7654b595c13f",
+            "size_bytes": 1610740,
+            "successor_core_sha256": "84a97727e1612c6b26805c5429dd9f1a645b7c366c9372bffb4f6efb1e8f4811",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0063-POS1201-1300-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000f34c81f4a9c85b6e0642f91c",
+            "library_stable_id": "libfile_f27438bb2e3c8191a096bd252785601a",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           },
           "shard0061": {
@@ -2031,6 +2033,28 @@
               "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
               "library_file_id": "file_000000005b608210935c4527aa74255c",
               "library_stable_id": "libfile_7cda132119cc8191bed43ce84709d316",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
+          },
+          "shard0063": {
+            "positions": "1201-1300",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+            "affected_targets": 10,
+            "examples_replaced": 20,
+            "target_bearing_after_repair": "PASS_400_OF_400",
+            "clean_pass_attempt": "FAILED_REPAIR_REQUIRED",
+            "stage3c_evidence_refreshes": 30,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND4-REPAIR-R7-SHARD0063-POS1201-1300-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0063-POS1201-1300-PASS-CHECKPOINT.zip",
+              "sha256": "892eccba4f807e40d56b8995166e971c539f6a7d3a089e5f9aec7654b595c13f",
+              "size_bytes": 1610740,
+              "successor_core_sha256": "84a97727e1612c6b26805c5429dd9f1a645b7c366c9372bffb4f6efb1e8f4811",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0063-POS1201-1300-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000f34c81f4a9c85b6e0642f91c",
+              "library_stable_id": "libfile_f27438bb2e3c8191a096bd252785601a",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
           }
@@ -2366,17 +2390,17 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Continue Stage4 Round4 repair R7 with Shard0063: independently full-semantic-audit active target positions 1201-1300 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved.",
+  "next_action": "Continue Stage4 Round4 repair R7 with Shard0064: independently full-semantic-audit active target positions 1301-1400 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
-    "sha256": "b1463479c816fb11e8891d619ba218ac7b3d21b34402f6ea58cd07037be52a5d",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0062-POS1101-1200-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_000000005b608210935c4527aa74255c",
-    "library_stable_id": "libfile_7cda132119cc8191bed43ce84709d316",
+    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0063-POS1201-1300-PASS-CHECKPOINT.zip",
+    "sha256": "892eccba4f807e40d56b8995166e971c539f6a7d3a089e5f9aec7654b595c13f",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0063-POS1201-1300-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000f34c81f4a9c85b6e0642f91c",
+    "library_stable_id": "libfile_f27438bb2e3c8191a096bd252785601a",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
   }
 }

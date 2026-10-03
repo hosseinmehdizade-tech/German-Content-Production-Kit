@@ -58,5 +58,35 @@
     "freeze_inventory_once": true
   },
   "created_at": "2026-10-03",
-  "status": "SOURCE_AUTHORITY_RESOLVED_STAGE1_RUNNING"
+  "status": "SOURCE_AUTHORITY_RESOLVED_SCOPE_FROZEN_STAGE1_RUNNING",
+  "selection_scope": {
+    "selection_mode": "USER_SELECTED_PDF_PAGES_ONLY",
+    "selected_at": "2026-10-03",
+    "pdf_page_numbering": "1-indexed PDF pages",
+    "selections": [
+      {
+        "source_id": "deutsch-aber-hallo-listen-tabellen-a1-a2",
+        "pdf_pages": [
+          3,
+          4
+        ],
+        "included_content_summary": [
+          "Deklination",
+          "Verben mit Dativobjekt",
+          "Verben mit Dativobjekt + Akkusativobjekt"
+        ]
+      },
+      {
+        "source_id": "deutsch-aber-hallo-listen-tabellen-b1-c2",
+        "pdf_page_range": "8-26",
+        "included_content_summary": [
+          "tail of Stammformen der starken und gemischten Verben",
+          "Verben und Objekte (Dativ, Dativ+Akkusativ, Genitiv, Präpositionalobjekt, als-Prädikativum, gegenüber)",
+          "Adjektive (Partizipien): Genitiv-, Dativ-, Akkusativ- und Präpositionalobjekte through PDF page 26"
+        ]
+      }
+    ],
+    "exclusion_rule": "All unselected pages are out of production scope unless the user later expands the selection.",
+    "source_fidelity_rule": "Keep full-source identity/provenance registered, but inventory/canonicalize/enrich only the selected pages."
+  }
 }

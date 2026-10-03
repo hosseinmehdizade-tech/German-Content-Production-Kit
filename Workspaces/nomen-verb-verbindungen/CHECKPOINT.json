@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-03T01:40:00+02:00",
-  "updated_version": "stage4-round3-target-bearing-r6-shard0043-pos1701-1800-pass-v1",
-  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0043_POS1701_1800_PASS",
+  "updated_at": "2026-10-03T02:21:00+02:00",
+  "updated_version": "stage4-round3-target-bearing-r6-shard0044-pos1801-1900-pass-v1",
+  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0044_POS1801_1900_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -114,7 +114,7 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0043_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0044_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
@@ -123,7 +123,7 @@
       "not_applicable_cells": 2492,
       "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND3_TARGET_BEARING_SHARD0029_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Round3 target-bearing repairs through positions 1-1800 refreshed example-dimension evidence only; Shard0043 used a full semantic pass over all 400 examples and refreshed 15 cells for five affected targets, with zero disposition transitions and zero unresolved cells."
+      "note": "Round3 target-bearing repairs through positions 1-1900 refreshed example-dimension evidence only; Shard0044 refreshed 18 cells for six affected targets, with zero disposition transitions and zero unresolved. Shard0044 used a full semantic pass over all 400 German examples and enforced source-registered complement slots."
     },
     "4_independent_linguistic_lexical_qa": {
       "state": "IN_PROGRESS_REPAIR",
@@ -1082,15 +1082,15 @@
           }
         },
         "target_bearing_repair": {
-          "status": "R6_SHARD0043_POS1701_1800_PASS",
+          "status": "R6_SHARD0044_POS1801_1900_PASS",
           "scope": "FULL_CORPUS_SHARD_ADJUDICATION_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 1800,
-          "reviewed_targets": 1800,
-          "reviewed_examples": 7200,
-          "confirmed_affected_targets_total": 93,
-          "replaced_examples_total": 104,
-          "remaining_positions": 692,
+          "reviewed_positions_completed": 1900,
+          "reviewed_targets": 1900,
+          "reviewed_examples": 7600,
+          "confirmed_affected_targets_total": 99,
+          "replaced_examples_total": 118,
+          "remaining_positions": 592,
           "completed_shards": [
             "0026",
             "0027",
@@ -1109,7 +1109,8 @@
             "0040",
             "0041",
             "0042",
-            "0043"
+            "0043",
+            "0044"
           ],
           "shard0026": {
             "positions": "1-100",
@@ -1526,6 +1527,26 @@
               "library_stable_id": "libfile_43afb4d0a33c81919883a87dd767612a",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
+          },
+          "shard0044": {
+            "positions": "1801-1900",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+            "affected_targets": 6,
+            "examples_replaced": 14,
+            "target_bearing_after_adjudication": "PASS_400_OF_400_FULL_SEMANTIC_PASS",
+            "stage3c_evidence_refreshes": 18,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0044-POS1801-1900-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
+              "sha256": "834bb7e14e38c4a45da80cd16a2b4c6448e1ad21c55a6b0aeb4231d50852f9b6",
+              "successor_core_sha256": "b6fe3b777d0d20cf85c2353e0a82b861c710db6ccbcad1cbf538849ad8b2bdd2",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000f5d88210b4227f1d87c9c774",
+              "library_stable_id": "libfile_df451dd8f9a48191883ecc30dc37059b",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
           }
         }
       },
@@ -1859,17 +1880,17 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "R6 target-bearing Shard0044: adjudicate active target positions 1801-1900 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, and preserve all other content exactly.",
+  "next_action": "R6 target-bearing Shard0045: adjudicate active target positions 1901-2000 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, preserve all other content exactly. Then run cumulative R6 first2000 target-bearing QA.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0043-POS1701-1800-PASS-CHECKPOINT.zip",
-    "sha256": "b7a9b019b8f645fca2b9d68ac7edf7c468fe345518879e590a3b39b48ad887f3",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0043-POS1701-1800-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000844882109f0583a1cd5d75ca",
-    "library_stable_id": "libfile_43afb4d0a33c81919883a87dd767612a",
+    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
+    "sha256": "834bb7e14e38c4a45da80cd16a2b4c6448e1ad21c55a6b0aeb4231d50852f9b6",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000f5d88210b4227f1d87c9c774",
+    "library_stable_id": "libfile_df451dd8f9a48191883ecc30dc37059b",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
   }
 }

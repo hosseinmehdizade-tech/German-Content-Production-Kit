@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0049_POS2301_2400_PASS",
+      "status": "STAGE4_ROUND3_TARGET_BEARING_R6_ALL2492_CUMULATIVE_QA_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "R6 target-bearing final Shard0050: adjudicate active target positions 2401-2492 with a full semantic pass over all 368 German examples, repair only confirmed non-target-bearing examples, preserve all other content exactly, then run full-corpus R6 cumulative QA.",
+      "next_action": "Start Stage4 Round4 clean audit pass 1 on the exact R6 ALL2492 successor artifact. Run a full independent target-bearing/linguistic audit without mutation unless a confirmed defect is found. If any repair is required, reset clean_streak to 0; otherwise record clean_streak=1.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,14 +230,14 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "4_independent_linguistic_lexical_qa_round3_target_bearing_repair_r6_shard0049",
-      "last_observed_note": "R6 target-bearing audit/repair progressed through positions 1-2400. Shard0049 received a full semantic pass over all 400 German examples in positions 2301-2400; nine cards / eleven examples were confirmed non-target-bearing and replaced. Cumulative totals are 130 affected cards / 153 replaced examples across 9600 reviewed examples. All 2492 cards still have exactly four examples and DE/FA/EN remain globally unique at 9968/9968 each. Twenty-seven Stage3C example-evidence cells were refreshed with zero status transitions and zero unresolved. All non-affected cards and all positions outside the shard remained exact; package CRC, 41/41 manifest verification, 42/42 SHA256SUMS verification, and Library rematerialization exact SHA+byte compare PASS. Round3 remains a repair round and clean_streak remains 0.",
+      "last_observed_stage": "4_independent_linguistic_lexical_qa_round3_target_bearing_repair_r6_all2492_cumulative",
+      "last_observed_note": "R6 target-bearing audit/repair is complete through all 2492 active targets / 9968 examples. Final Shard0050 (positions 2401-2492) received a full semantic pass over all 368 German examples; 10 cards / 11 examples were confirmed non-target-bearing and replaced. Cumulative R6 totals are 140 affected cards / 164 replaced examples. Positions 1701-2492 received full-semantic review; positions 1-1700 retain their earlier checkpointed R6 review depth and are not relabeled. All 2492 cards have exactly four examples; DE/FA/EN are each globally unique at 9968/9968; Stage3C remains at zero status transitions and zero unresolved cells. Shard0050 package CRC, 42/42 manifest, 43/43 SHA256SUMS PASS; cumulative package 43/43 manifest and 44/44 SHA256SUMS PASS; both Library rematerializations matched exact SHA and bytes. Stage4 remains open: clean_streak=0 and two consecutive clean passes on this exact artifact are still required.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0049-POS2301-2400-PASS-CHECKPOINT.zip",
-        "sha256": "39088fa68367671a7a7b196471c884252ccdedb9aa75b6b8d743f17325ab5ca1",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0049-POS2301-2400-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000d3808243959398a9fdbb0cbe",
-        "library_stable_id": "libfile_c83fc6da4da48191ad778b15dfb8b2da",
+        "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-ALL2492-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+        "sha256": "4d4ce4120dc51d7b0960d5a74b30c35d0deaa97f7692c4aa04c42f3f06b0fad4",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-ALL2492-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000917481f4901ac1cd55ef4739",
+        "library_stable_id": "libfile_a02ba43b793881919975791ebda55610",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
       },
       "stage2": {
@@ -267,12 +267,12 @@
         "review_queue_open": 0
       },
       "stage4": {
-        "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0049_POS2301_2400_PASS",
+        "status": "STAGE4_ROUND3_TARGET_BEARING_R6_ALL2492_CUMULATIVE_QA_PASS",
         "rounds_completed": 3,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Repair successor Stage3 content, then restart Stage4 rounds.",
+        "next": "Start Stage4 Round4 clean audit pass 1 on the exact R6 ALL2492 successor artifact. Run a full independent target-bearing/linguistic audit without mutation unless a confirmed defect is found. If any repair is required, reset clean_streak to 0; otherwise record clean_streak=1.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
           "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
@@ -616,563 +616,24 @@
           "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-SUMMARY.json"
         },
         "target_bearing_repair": {
-          "status": "R6_SHARD0047_POS2101_2200_PASS",
-          "scope": "FULL_CORPUS_SHARD_ADJUDICATION_AND_BOUNDED_REPAIR",
-          "total_targets": 2492,
-          "reviewed_positions_completed": 2200,
-          "reviewed_targets": 2200,
-          "reviewed_examples": 8800,
-          "confirmed_affected_targets_total": 108,
-          "replaced_examples_total": 129,
-          "remaining_positions": 292,
-          "completed_shards": [
-            "0026",
-            "0027",
-            "0028",
-            "0029",
-            "0030",
-            "0031",
-            "0032",
-            "0033",
-            "0034",
-            "0035",
-            "0036",
-            "0037",
-            "0038",
-            "0039",
-            "0040",
-            "0041",
-            "0042",
-            "0043",
-            "0044",
-            "0045",
-            "0046",
-            "0047"
-          ],
-          "shard0026": {
-            "positions": "1-100",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 8,
-            "examples_replaced": 12,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 24,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0026-POS1-100-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0026-POS1-100-PASS-CHECKPOINT.zip",
-              "sha256": "4f05d1d35a9d1f2fffe08cf890e014675031f3bc2ac909420ed86159e7ff56b6",
-              "successor_core_sha256": "d797ec435696fd7b791f30f78fdb80b1a0e89504eb1508292b3593b6a975c964",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0026-POS1-100-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_0000000030488210ad318a9613171229",
-              "library_stable_id": "libfile_ca32fbd31b548191befd4ebc898d1c07",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
+          "status": "R6_ALL2492_CUMULATIVE_QA_PASS",
+          "reviewed_targets": 2492,
+          "reviewed_examples": 9968,
+          "affected_targets": 140,
+          "replaced_examples": 164,
+          "stage3c_evidence_refreshes": 420,
+          "review_depth": {
+            "positions_1701_2492": "FULL_SEMANTIC_PASS_ALL_EXAMPLES",
+            "positions_1_1700": "PRIOR_R6_CHECKPOINTED_REVIEW_DEPTH"
           },
-          "shard0027": {
-            "positions": "101-200",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "strict_morphology_candidates_adjudicated": 67,
-            "affected_targets": 5,
-            "examples_replaced": 5,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 15,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0027-POS101-200-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0027-POS101-200-PASS-CHECKPOINT.zip",
-              "sha256": "4cd5686aef9d1ec88b3524a32ec751de2a47a6ec1d3788c92a862e999cc26076",
-              "successor_core_sha256": "06f4092188f82178fb774491bff090b9978d338b7ee75181e7179820eae5157e",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0027-POS101-200-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_0000000020e082109f2ee8e8c761ba30",
-              "library_stable_id": "libfile_00e5ceb40b38819195efb705bcc068a5",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0028": {
-            "positions": "201-300",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "strict_morphology_candidates_adjudicated": 46,
-            "affected_targets": 1,
-            "examples_replaced": 1,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 3,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0028-POS201-300-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0028-POS201-300-PASS-CHECKPOINT.zip",
-              "sha256": "62d89eab12e737ce2e5d844e8ce49ade8fda4751b8fc4ce4f984aa1c75d2fa41",
-              "successor_core_sha256": "57b3a8b1ddbed9892ead6586d49f7043a9b3dae591ca39ad8147a2cc8b1bc5ed",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0028-POS201-300-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_000000002e2c82108ebdca3733237711",
-              "library_stable_id": "libfile_814c4a34bcd081919dc8b33f0a86f150",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0029": {
-            "positions": "301-400",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "strict_morphology_candidates_adjudicated": 60,
-            "affected_targets": 4,
-            "examples_replaced": 4,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 12,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0029-POS301-400-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0029-POS301-400-PASS-CHECKPOINT.zip",
-              "sha256": "c8348cca47670b187440fe9c36e3dad55b7b86d236e09ae25be0b202b7a54a8e",
-              "successor_core_sha256": "3aeea7e0ee545e35e618e6d806c4c3b76ee0420aa780d4d8a9b5f89eb11c9c62",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0029-POS301-400-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000ba548210a4568ec6f9dc2fe0",
-              "library_stable_id": "libfile_4e01b17093208191a8cd7b07ef4e63d7",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0030": {
-            "positions": "401-500",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "strict_morphology_candidates_adjudicated": 72,
-            "affected_targets": 4,
-            "examples_replaced": 4,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 12,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0030-POS401-500-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0030-POS401-500-PASS-CHECKPOINT.zip",
-              "sha256": "218acf5d0f580e3d6819a1f1774bdd218866d521b60858cbb89d00013f147249",
-              "successor_core_sha256": "fc8d5c11724a76b4e05042b3db8131823687fd7daade1030c80617a2b11b549b",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0030-POS401-500-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000641481f4bad61259fb96194c",
-              "library_stable_id": "libfile_88f0e8b266308191bc3fbc48c9d578e6",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "cumulative_first500": {
-            "status": "PASS",
-            "positions": "1-500",
-            "targets_reviewed": 500,
-            "examples_reviewed": 2000,
-            "affected_targets": 22,
-            "examples_replaced": 26,
-            "target_bearing_after_adjudication": "PASS_2000_OF_2000",
-            "stage3c_evidence_refreshes": 66,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-FIRST500-CUMULATIVE-QA-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "sha256": "e31f86330a527dae175fea45aed9a2d21837b2fabe78cb7a5c4422b5d3dbd865",
-              "successor_core_sha256": "fc8d5c11724a76b4e05042b3db8131823687fd7daade1030c80617a2b11b549b",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_0000000027dc8210942d5836788edacc",
-              "library_stable_id": "libfile_e5d92ae03cb48191976ba77d86ae29d2",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0031": {
-            "positions": "501-600",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 7,
-            "examples_replaced": 8,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 21,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0031-POS501-600-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0031-POS501-600-PASS-CHECKPOINT.zip",
-              "sha256": "47a0c43d700e3563705d3a30fbc137721e40dc4c74830df9ea26ef15c2a1a1b6",
-              "successor_core_sha256": "5dd3384f006c5e6eea9d5f23882b2878df82b1c85992075a3d96f2da14dbcd5c",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0031-POS501-600-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000543081f4a28519aaa65fdf4c",
-              "library_stable_id": "libfile_70423696a5d48191afc4a65209b029c5",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0032": {
-            "positions": "601-700",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 7,
-            "examples_replaced": 7,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 21,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0032-POS601-700-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0032-POS601-700-PASS-CHECKPOINT.zip",
-              "sha256": "4106f961a92c18feb262ea4ea5ecbab24121791d61b28f94f7360c0b0fdca9f8",
-              "successor_core_sha256": "1d47ddce9c3d017906041387295bcb69e65eed6d88a611a69ab9a79941bb58a7",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0032-POS601-700-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000c28881f4b6ee89ae2179a455",
-              "library_stable_id": "libfile_b04a535ab43c81918b98f01f452a9f28",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0033": {
-            "positions": "701-800",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 0,
-            "examples_replaced": 0,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 0,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0033-POS701-800-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0033-POS701-800-PASS-CHECKPOINT.zip",
-              "sha256": "7705513e550182c0b03b54daa7c9b4e26ecf2681a344d88acc4c456a75808fed",
-              "successor_core_sha256": "1d47ddce9c3d017906041387295bcb69e65eed6d88a611a69ab9a79941bb58a7",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0033-POS701-800-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000bb408210bba5becf5e9ab91d",
-              "library_stable_id": "libfile_1b1c2a8410ec8191b1b4a58cc1ee9178",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0034": {
-            "positions": "801-900",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 4,
-            "examples_replaced": 4,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 12,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0034-POS801-900-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0034-POS801-900-PASS-CHECKPOINT.zip",
-              "sha256": "b7680e3e46502400da71ac2c66534350da27442b1aefe8406335585a88fe900d",
-              "successor_core_sha256": "75de89f8b72df9329e74267f480f318be534ce7cd371dd1f6b24b8f7c3492b47",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0034-POS801-900-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000bc588210afdd0578ab2caa54",
-              "library_stable_id": "libfile_984e4fb3467481919fe0e37bf556f9d4",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0035": {
-            "positions": "901-1000",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 4,
-            "examples_replaced": 4,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 12,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0035-POS901-1000-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0035-POS901-1000-PASS-CHECKPOINT.zip",
-              "sha256": "692aa820060986e8f70028d5156235f6107fce3f91c8e6c14f326eb1b44e745e",
-              "successor_core_sha256": "1b21d0a875b896a7b0f9736c47296388e019d622b577fac9b803a5591270f332",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0035-POS901-1000-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000678481f4af3a8afbc27fde01",
-              "library_stable_id": "libfile_fb31a2a7bca881918f7f5b2a68db4984",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "cumulative_first1000": {
-            "status": "PASS",
-            "positions": "1-1000",
-            "targets_reviewed": 1000,
-            "examples_reviewed": 4000,
-            "affected_targets": 44,
-            "examples_replaced": 49,
-            "target_bearing_after_adjudication": "PASS_4000_OF_4000",
-            "stage3c_evidence_refreshes": 132,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-FIRST1000-CUMULATIVE-QA-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "sha256": "42e91ab842b34614874c2fd1c7f8f420369fed614d2a874e59115baf83d801cc",
-              "successor_core_sha256": "1b21d0a875b896a7b0f9736c47296388e019d622b577fac9b803a5591270f332",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000afdc81f4bd8889324d309bdc",
-              "library_stable_id": "libfile_6bdb19cbf26c81919af2dae4ee96a3cd",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0036": {
-            "positions": "1001-1100",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 6,
-            "examples_replaced": 7,
-            "target_bearing_after_adjudication": "PASS_400_OF_400_WITH_ONE_DOCUMENTED_SOURCE_CANONICAL_EXCEPTION",
-            "documented_source_exception": {
-              "position": 1075,
-              "expression_id": "dah-nvv-exp-01067",
-              "source_surface": "den Gürtel enger schnellen",
-              "learner_examples_surface": "den Gürtel enger schnallen",
-              "disposition": "PRESERVE_EXISTING_DOCUMENTED_SOURCE_CANONICAL_ANOMALY_NO_NEW_MUTATION"
-            },
-            "stage3c_evidence_refreshes": 18,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0036-POS1001-1100-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0036-POS1001-1100-PASS-CHECKPOINT.zip",
-              "sha256": "9eb60440dce9d30cb0e6be75582cddaaef166f26b341823c452e1850c38c728b",
-              "successor_core_sha256": "a65771066d3c77b97c6e69f6982ef3c0009af9044ee94d90256017e077c54637",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0036-POS1001-1100-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000c5ec8210b58ca07f008fbe68",
-              "library_stable_id": "libfile_d5b6df77fafc81918976f55a91b0f08e",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0037": {
-            "positions": "1101-1200",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 11,
-            "examples_replaced": 13,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 33,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0037-POS1101-1200-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0037-POS1101-1200-PASS-CHECKPOINT.zip",
-              "sha256": "f630628e7061f53a94f5dc0c6eb737f90160ad17b970b2f44e3477d8957c10dc",
-              "successor_core_sha256": "8d486ba9e90f07c202da25aa78138023efa670599f292f5dd900984f767c125c",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0037-POS1101-1200-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000fcfc81f4b0fca8dbcc41c655",
-              "library_stable_id": "libfile_32a1c0970db48191943cdf42e66a15ae",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0038": {
-            "positions": "1201-1300",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 7,
-            "examples_replaced": 8,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 21,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0038-POS1201-1300-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0038-POS1201-1300-PASS-CHECKPOINT.zip",
-              "sha256": "40b84c45848d53a9a6ba836dfe5f0ea0e84910254e11234aab9b589593d87df1",
-              "successor_core_sha256": "d3d078a38c0f416b67ee0832293a6b2faca3aac800cb0890898982dd023aa659",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0038-POS1201-1300-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_000000002f208210bc70de560baf73f1",
-              "library_stable_id": "libfile_2e37c940a1f88191b287a98b74e59b98",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0039": {
-            "positions": "1301-1400",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 3,
-            "examples_replaced": 3,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 9,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0039-POS1301-1400-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0039-POS1301-1400-PASS-CHECKPOINT.zip",
-              "sha256": "908c9f45f145fc4bd430a418c222b874194b4f07dff76521ca91c4c438964354",
-              "successor_core_sha256": "3938e362dac8b4ded36f1eed22479029e77f7351a4f7707d9b43cd69040be9af",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0039-POS1301-1400-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000cac48210916a2942608415fa",
-              "library_stable_id": "libfile_d34641f8d1208191915e8ea7599f6efb",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0040": {
-            "positions": "1401-1500",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 8,
-            "examples_replaced": 9,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 24,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0040-POS1401-1500-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0040-POS1401-1500-PASS-CHECKPOINT.zip",
-              "sha256": "c3b688a0027d0306d4218c1e90e00df18e39e2ba4e4da542f7056ab416bd596f",
-              "size_bytes": 1542150,
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0040-POS1401-1500-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_0000000003ec8210949ae68273702985",
-              "library_stable_id": "libfile_99904db3f0e081918752834c6328e3f9",
-              "successor_core_sha256": "10b78932ce9b274cf63700f4b50752753f677b712492fc44c72ec2a7914bebf3",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "cumulative_first1500": {
-            "status": "PASS",
-            "positions": "1-1500",
-            "targets_reviewed": 1500,
-            "examples_reviewed": 6000,
-            "affected_targets": 79,
-            "examples_replaced": 89,
-            "target_bearing_after_adjudication": "PASS_6000_OF_6000",
-            "stage3c_evidence_refreshes": 237,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-FIRST1500-CUMULATIVE-QA-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "sha256": "511f7f1e060acc491932b9be19613be1e6d38a570b0f286f900eb84447099e5b",
-              "size_bytes": 1543681,
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST1500-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000c66c8243a8fe4740673cd7f7",
-              "library_stable_id": "libfile_a4118acde6608191b08f95f5c8e9a303",
-              "successor_core_sha256": "10b78932ce9b274cf63700f4b50752753f677b712492fc44c72ec2a7914bebf3",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0041": {
-            "positions": "1501-1600",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 4,
-            "examples_replaced": 4,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 12,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0041-POS1501-1600-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0041-POS1501-1600-PASS-CHECKPOINT.zip",
-              "sha256": "52c4abd7f73bc4c882572b88cc2b6571be13057dcc3dfb6b1a18ec4bd3b99738",
-              "successor_core_sha256": "227a0fb6749a2d1637af93e147abc8409918f9ecbcbd70b9e88b7208d3aea606",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0041-POS1501-1600-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_0000000099c08210b6bf79f94001b189",
-              "library_stable_id": "libfile_4991576256688191bd770fe408ee488d",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0042": {
-            "positions": "1601-1700",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "affected_targets": 5,
-            "examples_replaced": 5,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 15,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0042-POS1601-1700-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0042-POS1601-1700-PASS-CHECKPOINT.zip",
-              "sha256": "5cb32ffd20149778aa47fdf45eedd8e54b7361e517d6a829173dc3414e3747ae",
-              "successor_core_sha256": "e79ba89bc487a5adf3fbce9084f4259200a8a5ec9dbd0a3dac32715694a4d2d3",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0042-POS1601-1700-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000e4e082439c2b5ca84adc1e50",
-              "library_stable_id": "libfile_45dc48b6ec5c8191a1dbda9fbb3431d8",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0043": {
-            "positions": "1701-1800",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES_PLUS_STRUCTURAL_SCREENING",
-            "affected_targets": 5,
-            "examples_replaced": 6,
-            "target_bearing_after_adjudication": "PASS_400_OF_400_FULL_SEMANTIC_PASS",
-            "stage3c_evidence_refreshes": 15,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0043-POS1701-1800-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0043-POS1701-1800-PASS-CHECKPOINT.zip",
-              "sha256": "b7a9b019b8f645fca2b9d68ac7edf7c468fe345518879e590a3b39b48ad887f3",
-              "successor_core_sha256": "28feb2b256cac861189ede41ca95971dcee1dbe406c2431b4be26efcc9d25963",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0043-POS1701-1800-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000844882109f0583a1cd5d75ca",
-              "library_stable_id": "libfile_43afb4d0a33c81919883a87dd767612a",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0044": {
-            "positions": "1801-1900",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
-            "affected_targets": 6,
-            "examples_replaced": 14,
-            "target_bearing_after_adjudication": "PASS_400_OF_400_FULL_SEMANTIC_PASS",
-            "stage3c_evidence_refreshes": 18,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0044-POS1801-1900-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
-              "sha256": "834bb7e14e38c4a45da80cd16a2b4c6448e1ad21c55a6b0aeb4231d50852f9b6",
-              "successor_core_sha256": "b6fe3b777d0d20cf85c2353e0a82b861c710db6ccbcad1cbf538849ad8b2bdd2",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0044-POS1801-1900-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000f5d88210b4227f1d87c9c774",
-              "library_stable_id": "libfile_df451dd8f9a48191883ecc30dc37059b",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0045": {
-            "positions": "1901-2000",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
-            "affected_targets": 4,
-            "examples_replaced": 5,
-            "target_bearing_after_adjudication": "PASS_400_OF_400_WITH_ONE_DOCUMENTED_SOURCE_TYPO_EXCEPTION",
-            "documented_source_exception": {
-              "position": 1991,
-              "expression_id": "dah-nvv-exp-01979",
-              "source_surface": "eine Termin verpassen / versäumen",
-              "disposition": "PRESERVE_SOURCE_CANONICAL_TYPO_NO_STAGE4_IDENTITY_MUTATION"
-            },
-            "stage3c_evidence_refreshes": 12,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0045-POS1901-2000-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0045-POS1901-2000-PASS-CHECKPOINT.zip",
-              "sha256": "6658dd0e2659876f06022476a19a0a7c0407f4bd62673c62aa1f9d2a125ac0a5",
-              "size_bytes": 1557285,
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0045-POS1901-2000-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000d70481f4a8e1d3d0fc6dc919",
-              "library_stable_id": "libfile_5ea7981cb04881919b3de4d5da2f5738",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "cumulative_first2000": {
-            "status": "PASS_INTEGRITY_COVERAGE_QA",
-            "positions": "1-2000",
-            "targets_covered": 2000,
-            "examples_covered": 8000,
-            "affected_targets": 103,
-            "examples_replaced": 123,
-            "review_depth": {
-              "positions_1701_2000": "FULL_SEMANTIC_PASS_ALL_EXAMPLES",
-              "positions_1_1700": "PRIOR_R6_CHECKPOINTED_REVIEW_DEPTH"
-            },
-            "stage3c_evidence_refreshes": 309,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-FIRST2000-CUMULATIVE-QA-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "sha256": "b528777449bfb89d93780cb3430c1d3554c030874b754786bb60f8cb36ae2dd5",
-              "size_bytes": 1559158,
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-FIRST2000-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_000000004454821098daaee2c59f2ac2",
-              "library_stable_id": "libfile_08a630680f8c81918877b43cd963bb15",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0046": {
-            "positions": "2001-2100",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES_PLUS_STRUCTURAL_SCREENING",
-            "affected_targets": 2,
-            "examples_replaced": 2,
-            "target_bearing_after_adjudication": "PASS_400_OF_400_FULL_SEMANTIC_PASS",
-            "stage3c_evidence_refreshes": 6,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0046-POS2001-2100-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0046-POS2001-2100-PASS-CHECKPOINT.zip",
-              "sha256": "bfc6efcbebbd62a44e7317d59712821ec67dec1c387fe2f1c10a0ea6b7783363",
-              "successor_core_sha256": "01cbac03d18ea2046ac2417f2b07011ce457119234f46e1f01cd4d7abf3e2c4e",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0046-POS2001-2100-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_0000000029b0821083ac32cb307d2b86",
-              "library_stable_id": "libfile_814fa4fed24c8191b2790bc860f21b3d",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
-          },
-          "shard0047": {
-            "positions": "2101-2200",
-            "targets_reviewed": 100,
-            "examples_reviewed": 400,
-            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
-            "affected_targets": 3,
-            "examples_replaced": 4,
-            "target_bearing_after_adjudication": "PASS_400_OF_400",
-            "stage3c_evidence_refreshes": 9,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0047-POS2101-2200-PASS.json",
-            "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
-              "sha256": "43e667a26bf79447ba15d92bd97e3d5bb870fe38a6ff31f94edd82e0636601ad",
-              "successor_core_sha256": "8133bde9f90c7ac6e5b8676c524c80569ee8bbce896e33d688d6780d96ee03c8",
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000bb448210945eee11974bee4a",
-              "library_stable_id": "libfile_282135fd57d48191b131894c45920a2f",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-            }
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-ALL2492-CUMULATIVE-QA-PASS.json",
+          "artifact": {
+            "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-ALL2492-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+            "sha256": "4d4ce4120dc51d7b0960d5a74b30c35d0deaa97f7692c4aa04c42f3f06b0fad4",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-ALL2492-CUMULATIVE-QA-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000917481f4901ac1cd55ef4739",
+            "library_stable_id": "libfile_a02ba43b793881919975791ebda55610",
+            "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
           }
         }
       },

@@ -33,7 +33,7 @@
     "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
     "branch": "main",
     "path": "Workspaces/aber-hallo-listen-tabellen",
-    "persistence_status": "GIT_METADATA_IN_SYNC"
+    "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC"
   },
   "authorities": {
     "content_kit_prompt": "v3.3.6",
@@ -45,24 +45,44 @@
     "flashcards_current_seen_at_initialization": "v455-R89",
     "flashcards_last_fully_verified_seen_at_initialization": "v451-R85"
   },
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY"
+  ],
   "stages": [
     {
       "stage": 1,
       "name": "Source & Inventory",
-      "state": "RUNNING",
-      "completed": [
-        "source identity resolved",
-        "local SHA-256 and page counts verified",
-        "source-level table-of-contents inventory recorded",
-        "source registry entries created",
-        "user-selected page scope frozen: A1-A2 pages 3-4; B1-C2 pages 8-26"
+      "state": "PASS",
+      "source_occurrences": 911,
+      "lexical_or_rection_occurrences": 905,
+      "grammar_structure_occurrences": 6,
+      "distinct_literal_headword_labels": 790,
+      "repeated_literal_label_groups": 86,
+      "same_source_same_section_duplicate_candidates": 2,
+      "authoritative_outputs": [
+        "portable:00-source/SOURCE-MANIFEST.json",
+        "portable:01-inventory/SOURCE-INVENTORY.json",
+        "portable:01-inventory/STABLE-ID-MAP.json",
+        "portable:01-inventory/DUPLICATE-OVERLAP-REPORT.json",
+        "Git:01-inventory/STAGE1-INVENTORY-SUMMARY.json"
       ],
-      "remaining": [
-        "occurrence-level inventory for selected pages only",
-        "overlap/duplicate map inside selected corpus",
-        "stable source occurrence IDs",
-        "Stage1 inventory QA and portable checkpoint"
-      ]
+      "gate_evidence": [
+        "portable:01-inventory/INVENTORY-QA.json",
+        "portable:01-inventory/PREVENTION-CHECKPOINT-GATE.json",
+        "portable:STAGE1-REPORT.md"
+      ],
+      "identity_note": "Stable source-occurrence IDs frozen. Final semantic/canonical identity remains intentionally pending Stage2 v3.3.6 identity closure.",
+      "portable_artifact": {
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage1-CHECKPOINT.zip",
+        "sha256": "e8a23e517f99ae785f4fb42166c344e4345d65fdad8e547ed6429bba4c0b5837",
+        "size_bytes": 59398,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage1-CHECKPOINT.zip",
+        "library_file_id": "libfile_8176dc29136c81918e6a97e5b48067d0",
+        "file_id": "file_00000000e76c820a87613df9d7d1511a",
+        "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+      }
     },
     {
       "stage": 2,
@@ -102,8 +122,14 @@
       "B1-C2 PDF pages 8-26"
     ],
     "excluded": "All other pages unless the user explicitly adds them later.",
-    "level_note": "The B1-C2 source title remains source metadata; delivery is driven by the selected pages, not by automatically ingesting the whole book."
+    "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "resume_instruction": "Continue Stage1 only on the frozen user-selected scope: A1-A2 PDF pages 3-4 and B1-C2 PDF pages 8-26. Build occurrence inventory + stable IDs, then close overlap/identity questions before Stage2. Do not ingest unselected pages."
+  "quality_state": "PASS",
+  "persistence": {
+    "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256",
+    "git": "IN_SYNC"
+  },
+  "next_action": "Stage2 identity closure and canonicalization: review the 86 repeated-label groups, explicitly resolve zureden and beziehen sich duplicates, preserve source/level memberships, and split or merge only when valency/sense evidence supports it.",
+  "resume_instruction": "Stage1 is PASS. Resume at Stage2 identity closure/canonicalization from the exact portable Stage1 checkpoint; do not re-read unselected pages."
 }

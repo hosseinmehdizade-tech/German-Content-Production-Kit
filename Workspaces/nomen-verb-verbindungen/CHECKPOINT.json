@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-03T09:40:00+02:00",
-  "updated_version": "stage4-round3-target-bearing-r6-shard0046-pos2001-2100-pass-v1",
-  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0046_POS2001_2100_PASS",
+  "updated_at": "2026-10-03T09:50:00+02:00",
+  "updated_version": "stage4-round3-target-bearing-r6-shard0047-pos2101-2200-pass-v1",
+  "status": "STAGE4_ROUND3_TARGET_BEARING_R6_SHARD0047_POS2101_2200_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -114,7 +114,7 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0046_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND3_TARGET_BEARING_SHARD0047_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
@@ -123,7 +123,7 @@
       "not_applicable_cells": 2492,
       "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND3_TARGET_BEARING_SHARD0029_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Round3 target-bearing repairs through positions 1-2100 refreshed example-dimension evidence only; Shard0046 refreshed 6 cells for two affected targets, with zero disposition transitions and zero unresolved cells."
+      "note": "Round3 target-bearing repairs through positions 1-2200 refreshed example-dimension evidence only; Shard0047 refreshed 9 cells for three affected targets, with zero disposition transitions and zero unresolved cells."
     },
     "4_independent_linguistic_lexical_qa": {
       "state": "IN_PROGRESS_REPAIR",
@@ -1082,15 +1082,15 @@
           }
         },
         "target_bearing_repair": {
-          "status": "R6_SHARD0046_POS2001_2100_PASS",
+          "status": "R6_SHARD0047_POS2101_2200_PASS",
           "scope": "FULL_CORPUS_SHARD_ADJUDICATION_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 2100,
-          "reviewed_targets": 2100,
-          "reviewed_examples": 8400,
-          "confirmed_affected_targets_total": 105,
-          "replaced_examples_total": 125,
-          "remaining_positions": 392,
+          "reviewed_positions_completed": 2200,
+          "reviewed_targets": 2200,
+          "reviewed_examples": 8800,
+          "confirmed_affected_targets_total": 108,
+          "replaced_examples_total": 129,
+          "remaining_positions": 292,
           "completed_shards": [
             "0026",
             "0027",
@@ -1112,7 +1112,8 @@
             "0043",
             "0044",
             "0045",
-            "0046"
+            "0046",
+            "0047"
           ],
           "shard0026": {
             "positions": "1-100",
@@ -1618,6 +1619,26 @@
               "library_stable_id": "libfile_814fa4fed24c8191b2790bc860f21b3d",
               "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
             }
+          },
+          "shard0047": {
+            "positions": "2101-2200",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+            "affected_targets": 3,
+            "examples_replaced": 4,
+            "target_bearing_after_adjudication": "PASS_400_OF_400",
+            "stage3c_evidence_refreshes": 9,
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND3-TARGET-BEARING-R6-SHARD0047-POS2101-2200-PASS.json",
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
+              "sha256": "43e667a26bf79447ba15d92bd97e3d5bb870fe38a6ff31f94edd82e0636601ad",
+              "successor_core_sha256": "8133bde9f90c7ac6e5b8676c524c80569ee8bbce896e33d688d6780d96ee03c8",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000bb448210945eee11974bee4a",
+              "library_stable_id": "libfile_282135fd57d48191b131894c45920a2f",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
           }
         }
       },
@@ -1951,17 +1972,17 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "R6 target-bearing Shard0047: adjudicate active target positions 2101-2200 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, and preserve all other content exactly.",
+  "next_action": "R6 target-bearing Shard0048: adjudicate active target positions 2201-2300 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, and preserve all other content exactly.",
   "prevention_refs": [
     "MEM-NVV-001-CLEAN-RESTART",
     "MEM-NVV-002-LONGRUN-AUTORUN"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0046-POS2001-2100-PASS-CHECKPOINT.zip",
-    "sha256": "bfc6efcbebbd62a44e7317d59712821ec67dec1c387fe2f1c10a0ea6b7783363",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0046-POS2001-2100-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_0000000029b0821083ac32cb307d2b86",
-    "library_stable_id": "libfile_814fa4fed24c8191b2790bc860f21b3d",
+    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
+    "sha256": "43e667a26bf79447ba15d92bd97e3d5bb870fe38a6ff31f94edd82e0636601ad",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bb448210945eee11974bee4a",
+    "library_stable_id": "libfile_282135fd57d48191b131894c45920a2f",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
   }
 }

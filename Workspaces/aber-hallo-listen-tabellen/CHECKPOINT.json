@@ -1,0 +1,100 @@
+{
+  "checkpoint_schema_version": "2.6.0",
+  "pipeline": "seven-stage-production@1.0.0",
+  "dataset": {
+    "id": "aber-hallo-listen-tabellen",
+    "title": "Deutsch - Aber Hallo! Listen & Tabellen",
+    "domain": "grammar",
+    "requested_delivery_levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1"
+    ],
+    "source_coverage_levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1",
+      "C2"
+    ],
+    "authoritative_sources": [
+      "deutsch-aber-hallo-listen-tabellen-a1-a2 / sha256:4125ed49efa3c4e72500a9c80b8d39021c8933d9a387fc96a637fd4b457e3cf3",
+      "deutsch-aber-hallo-listen-tabellen-b1-c2 / sha256:ebaa3896c3c383808b832241afaf6c38ef4f498eb4dc1b38f26c12087cc97a04"
+    ]
+  },
+  "workspace": {
+    "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
+    "branch": "main",
+    "path": "Workspaces/aber-hallo-listen-tabellen",
+    "persistence_status": "GIT_METADATA_IN_SYNC"
+  },
+  "authorities": {
+    "content_kit_prompt": "v3.3.6",
+    "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
+    "new_source_runbook": "Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md",
+    "seven_stage_pipeline": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
+    "source_access_protocol": "SOURCE-ACCESS-PROTOCOL-v1.0.0.md",
+    "flashcards_runtime": "RESOLVE_CURRENT_AT_STAGE6",
+    "flashcards_current_seen_at_initialization": "v455-R89",
+    "flashcards_last_fully_verified_seen_at_initialization": "v451-R85"
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "name": "Source & Inventory",
+      "state": "RUNNING",
+      "completed": [
+        "source identity resolved",
+        "local SHA-256 and page counts verified",
+        "source-level table-of-contents inventory recorded",
+        "source registry entries created"
+      ],
+      "remaining": [
+        "occurrence-level inventory",
+        "overlap/duplicate map across the two books",
+        "stable source occurrence IDs",
+        "Stage1 inventory QA and portable checkpoint"
+      ]
+    },
+    {
+      "stage": 2,
+      "name": "Canonicalization",
+      "state": "NOT_STARTED"
+    },
+    {
+      "stage": 3,
+      "name": "Evidence & Enrichment",
+      "state": "NOT_STARTED"
+    },
+    {
+      "stage": 4,
+      "name": "Linguistic & Lexical QA",
+      "state": "NOT_STARTED"
+    },
+    {
+      "stage": 5,
+      "name": "Delivery Projection",
+      "state": "NOT_STARTED"
+    },
+    {
+      "stage": 6,
+      "name": "Runtime & Presentation Acceptance",
+      "state": "NOT_STARTED"
+    },
+    {
+      "stage": 7,
+      "name": "Release & Post-Package Verification",
+      "state": "NOT_STARTED"
+    }
+  ],
+  "scope_boundary": {
+    "issue": "The advanced source is titled B1-C2 while the requested project scope is B1-C1.",
+    "safe_default": "Preserve the full source inventory, but do not include C2-only content in delivery unless an explicit evidence-backed level classification places it at C1 or below.",
+    "source_item_level_cefr_labels_present": false
+  },
+  "blockers": [],
+  "resume_instruction": "Continue Stage1 by building the complete occurrence inventory and stable source IDs from both current-chat PDFs. Do not start Stage2 enrichment until overlap and identity questions are closed."
+}

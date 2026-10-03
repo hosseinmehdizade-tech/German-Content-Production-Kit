@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-source-section-inventory@1.0.0",
   "dataset": "aber-hallo-listen-tabellen",
-  "inventory_scope": "source-level section inventory; occurrence/card-level inventory and stable semantic IDs are not yet complete",
+  "inventory_scope": "user-selected PDF pages only; occurrence/card-level inventory and stable semantic IDs are not yet complete",
   "sources": [
     {
       "source_id": "deutsch-aber-hallo-listen-tabellen-a1-a2",
@@ -101,7 +101,21 @@
     "page_counts_verified_locally": true,
     "section_order_transcribed_from_source_table_of_contents": true,
     "occurrence_inventory_complete": false,
-    "stable_id_map_complete": false
+    "stable_id_map_complete": false,
+    "selection_scope_frozen": true,
+    "unselected_pages_excluded": true
   },
-  "next_action": "Build the occurrence-level inventory from both PDFs, deduplicate overlaps across A1-A2 and B1-C2 without losing source lineage, then assign stable source occurrence IDs before Stage2 canonicalization."
+  "next_action": "Build the complete occurrence-level inventory only from A1-A2 PDF pages 3-4 and B1-C2 PDF pages 8-26; close duplicate/overlap questions within that selected corpus; assign stable source occurrence IDs before Stage2 canonicalization.",
+  "selected_pages": {
+    "deutsch-aber-hallo-listen-tabellen-a1-a2": {
+      "pages": [
+        3,
+        4
+      ]
+    },
+    "deutsch-aber-hallo-listen-tabellen-b1-c2": {
+      "start_page": 8,
+      "end_page": 26
+    }
+  }
 }

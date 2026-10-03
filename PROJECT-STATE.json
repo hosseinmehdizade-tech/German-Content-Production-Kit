@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-03T10:18:00+02:00",
+  "updated_at": "2026-10-03T10:42:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -4050,7 +4050,7 @@
       "next_action": "Exact import/runtime smoke on CURRENT v452-R86, then expand only after pilot acceptance."
     },
     "250_verben_mit_praepositionen_deutschweb": {
-      "status": "STAGE0_SOURCE_AUTHORITY_REGISTERED_PASS",
+      "status": "STAGE1_SOURCE_INVENTORY_PASS",
       "domain": "vocabulary",
       "branch": "250-verben-mit-praepositionen-production",
       "checkpoint": "Workspaces/250-verben-mit-praepositionen-deutschweb/CHECKPOINT.json",
@@ -4060,19 +4060,28 @@
       "source_sha256": "4ba6c979f2350a986f92969cfbcacf1bad4ed0502a79ab3ae8632fd2d87b5560",
       "source_pages": 4,
       "advertised_title_count": 250,
-      "inventory_count": null,
+      "inventory_count": 292,
       "final_target_count": null,
       "framework": "v3.3.6",
       "dataset_profile": "user-input-adaptive@1.2.0",
       "latest_portable_checkpoint": {
-        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage0-SOURCE-AUTHORITY-PASS-CHECKPOINT.zip",
-        "sha256": "e61a70c037764f677f63c92c911c2d699de65db80949c2040361da41c0fafaac",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage0-SOURCE-AUTHORITY-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_000000006f8c8246b1215218c27604a8",
-        "library_stable_id": "libfile_48f83b715b0c8191bdf4586d824b728a"
+        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage1-SOURCE-INVENTORY-PASS-CHECKPOINT.zip",
+        "sha256": "62f218f4980d11271371972ec6aafd4b12d69ba3594f5410ddf9c49ca4ab93ab",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage1-SOURCE-INVENTORY-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000d44881f4a5a5105af0f09024",
+        "library_stable_id": "libfile_1c599efac6b8819180d411cbb9d431cb"
       },
       "source_fidelity_guard": "Do not assume the advertised 250 equals final canonical card count; Stage1 inventories source occurrences and Stage2 closes identity.",
-      "next_action": "Stage1 Source & Inventory: exact transcription of every construction/example with page+column+order and reconciliation to the advertised count before Stage2."
+      "next_action": "Stage2 Identity Closure for all 292 source occurrences.",
+      "distinct_displayed_head_forms": 252,
+      "stage1": {
+        "status": "PASS",
+        "visible_construction_occurrences": 292,
+        "distinct_displayed_head_forms": 252,
+        "source_occurrence_validator": "PASS",
+        "independent_visual_review": "PASS",
+        "title_count_reconciliation": "Advertised 250 is not a hard row/card count: source has 292 visible construction lines; Stage2 identity closure decides final canonical targets."
+      }
     }
   },
   "flashcards_runtime_dependency": {

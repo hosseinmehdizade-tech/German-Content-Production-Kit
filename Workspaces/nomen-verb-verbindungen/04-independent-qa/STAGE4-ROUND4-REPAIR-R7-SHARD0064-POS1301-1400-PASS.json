@@ -1,0 +1,169 @@
+{
+  "schema": "nvv-stage4-round4-repair-shard@1.0.0",
+  "status": "PASS_ROUND4_REPAIR_R7_SHARD0064_POS1301_1400",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "positions": "1301-1400",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+    "confirmed_affected_targets": 6,
+    "examples_replaced": 11
+  },
+  "clean_pass_attempt": {
+    "round": 4,
+    "attempt": 1,
+    "result": "FAILED_REPAIR_REQUIRED",
+    "clean_streak_before": 0,
+    "clean_streak_after": 0
+  },
+  "changed_targets": [
+    {
+      "position": 1321,
+      "expression_id": "dah-nvv-exp-01311",
+      "canonical_form": "sich eine Krankheit zuziehen",
+      "examples_replaced": [
+        1
+      ]
+    },
+    {
+      "position": 1326,
+      "expression_id": "dah-nvv-exp-01316",
+      "canonical_form": "jdn. aufs Kreuz legen",
+      "examples_replaced": [
+        3
+      ]
+    },
+    {
+      "position": 1328,
+      "expression_id": "dah-nvv-exp-01318",
+      "canonical_form": "Krieg führen mit+Dat.",
+      "examples_replaced": [
+        3
+      ]
+    },
+    {
+      "position": 1329,
+      "expression_id": "dah-nvv-exp-01319",
+      "canonical_form": "sich im Krieg befinden mit+Dat.",
+      "examples_replaced": [
+        1,
+        3
+      ]
+    },
+    {
+      "position": 1380,
+      "expression_id": "dah-nvv-exp-01370",
+      "canonical_form": "seine Lehren ziehen aus+Dat.",
+      "examples_replaced": [
+        1,
+        3
+      ]
+    },
+    {
+      "position": 1400,
+      "expression_id": "dah-nvv-exp-01390",
+      "canonical_form": "jdn. über den Löffel balbieren",
+      "examples_replaced": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "adjudication_findings": [
+    {
+      "position": 1321,
+      "example": 1,
+      "finding": "Magen-Darm-Krankheit used Krankheit only inside a compound; strict target-bearing requires the registered lexical noun to be explicit."
+    },
+    {
+      "position": 1326,
+      "example": 3,
+      "finding": "The source slot jdn. denotes a person; die Firma was replaced with den Firmeninhaber."
+    },
+    {
+      "position": 1328,
+      "example": 3,
+      "finding": "The source explicitly registers Krieg führen mit+Dat.; reciprocal miteinander was replaced with an explicit nominal mit+Dat. partner."
+    },
+    {
+      "position": 1329,
+      "examples": [
+        1,
+        3
+      ],
+      "finding": "The source explicitly registers sich im Krieg befinden mit+Dat.; reciprocal miteinander was replaced with explicit nominal mit+Dat. partners."
+    },
+    {
+      "position": 1380,
+      "examples": [
+        1,
+        3
+      ],
+      "finding": "The source registers seine Lehren ziehen aus+Dat.; klare/wichtige Lehren lacked the registered possessive element and were repaired to seine Lehren."
+    },
+    {
+      "position": 1400,
+      "examples": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "finding": "The source surface has balbieren; source/canonical identity was preserved while learner examples were corrected to standard idiomatic barbieren."
+    }
+  ],
+  "documented_source_exceptions": [
+    {
+      "position": 1325,
+      "expression_id": "dah-nvv-exp-01315",
+      "source_surface": "jdn. einen Kredit einräumen",
+      "disposition": "PRESERVE_SOURCE_CANONICAL_CASE_TYPO_NO_IDENTITY_MUTATION",
+      "learner_examples": "grammatically correct dative recipients retained"
+    },
+    {
+      "position": 1367,
+      "expression_id": "dah-nvv-exp-01357",
+      "source_surface": "ein (gutes, schlechtes Leben führen",
+      "disposition": "PRESERVE_SOURCE_CANONICAL_PARENTHESIS_TYPO_NO_IDENTITY_MUTATION",
+      "learner_examples": "grammatically correct Leben führen realizations retained"
+    },
+    {
+      "position": 1400,
+      "expression_id": "dah-nvv-exp-01390",
+      "source_surface": "jdn. über den Löffel balbieren",
+      "disposition": "PRESERVE_SOURCE_CANONICAL_SPELLING_TYPO_NO_IDENTITY_MUTATION",
+      "learner_examples": "idiomatic standard barbieren realizations used"
+    }
+  ],
+  "qa": {
+    "all_examples_positions1301_1400_after_repair": "PASS_400_OF_400_WITH_THREE_DOCUMENTED_SOURCE_EXCEPTIONS",
+    "exactly_four_examples_per_target": "100/100 PASS",
+    "global_exactly_four_examples": "2492/2492 PASS",
+    "global_de_unique": "9968/9968",
+    "global_fa_unique": "9968/9968",
+    "global_en_unique": "9968/9968",
+    "aligned_fa_en_for_replacements": "11/11 PASS",
+    "all_non_affected_cards": "EXACT",
+    "positions1_1300_and1401_2492": "EXACT",
+    "definitions_meanings_glosses_structure_identity_provenance": "EXACT",
+    "stage3c_evidence_refreshes": 18,
+    "stage3c_status_transitions": 0,
+    "unresolved_cells": 0,
+    "clean_streak": 0
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0064-POS1301-1400-PASS-CHECKPOINT.zip",
+    "sha256": "f93ff203b6160ac2172f9d515fffa5e561aca0b8436b7014fda318e01df64a30",
+    "size_bytes": 1613732,
+    "successor_core_sha256": "78f7b810fe09cbfbbd06015635390537bafac0839ed625162cd09b29f68869fc",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0064-POS1301-1400-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000c9b481f4b8a3fab3fdfc069f",
+    "library_stable_id": "libfile_5485b3c5ac10819186559d2cc6fab215",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "Continue Stage4 Round4 repair R7 with Shard0065: independently full-semantic-audit active target positions 1401-1500 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved."
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "nvv-stage4-target-bearing-repair-shard@1.0.0",
+  "status": "PASS_R6_SHARD0047_POS2101_2200",
+  "created_at": "2026-10-03T09:50:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "positions": "2101-2200",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES_PLUS_STRUCTURAL_SCREENING",
+    "confirmed_affected_targets": 3,
+    "examples_replaced": 4
+  },
+  "changed_targets": [
+    {
+      "position": 2119,
+      "expression_id": "dah-nvv-exp-02106",
+      "canonical_form": "jdn. mit Verachtung strafen",
+      "examples_replaced": [
+        4
+      ]
+    },
+    {
+      "position": 2172,
+      "expression_id": "dah-nvv-exp-02159",
+      "canonical_form": "eine Verletzung erleiden",
+      "examples_replaced": [
+        1
+      ]
+    },
+    {
+      "position": 2188,
+      "expression_id": "dah-nvv-exp-02175",
+      "canonical_form": "eine Versicherung abschließen",
+      "examples_replaced": [
+        1,
+        3
+      ]
+    }
+  ],
+  "adjudication_findings": [
+    {
+      "position": 2119,
+      "example": 4,
+      "finding": "The accusative object of strafen was an inanimate remark, while the source registers jdn. mit Verachtung strafen. The repaired example restores an explicit human accusative target."
+    },
+    {
+      "position": 2172,
+      "example": 1,
+      "finding": "The target noun Verletzung appeared only inside the compound Schulterverletzung. Under the established strict target-bearing rule, a compound substituting the registered noun phrase does not count as explicit instantiation; the repaired example uses eine Verletzung an der Schulter."
+    },
+    {
+      "position": 2188,
+      "examples": [
+        1,
+        3
+      ],
+      "finding": "The target noun Versicherung appeared only inside the compounds Vollkasko-Versicherung and Haftpflichtversicherung. Both were replaced with explicit instances of eine Versicherung abschließen while retaining the intended coverage information."
+    }
+  ],
+  "qa": {
+    "all_examples_target_bearing_after_adjudication": "PASS_400_OF_400_FULL_SEMANTIC_PASS",
+    "exactly_four_examples_per_target": "100/100 PASS",
+    "global_exactly_four_examples": "2492/2492 PASS",
+    "global_de_unique": "9968/9968",
+    "global_fa_unique": "9968/9968",
+    "global_en_unique": "9968/9968",
+    "aligned_fa_en_for_replacements": "4/4 PASS",
+    "all_non_affected_cards": "EXACT",
+    "positions_outside_shard": "EXACT",
+    "definitions_meanings_glosses_structure_identity_provenance": "EXACT",
+    "stage3c_evidence_refreshes": 9,
+    "stage3c_status_transitions": 0,
+    "unresolved_cells": 0,
+    "package_crc": "PASS",
+    "internal_manifest_entries": "39/39 PASS",
+    "internal_sha256sums": "40/40 PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "clean_streak": 0,
+    "stage4_clean_round_credit": 0
+  },
+  "successor_core_sha256": "8133bde9f90c7ac6e5b8676c524c80569ee8bbce896e33d688d6780d96ee03c8",
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
+    "sha256": "43e667a26bf79447ba15d92bd97e3d5bb870fe38a6ff31f94edd82e0636601ad",
+    "size_bytes": 1564214,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round3-TargetBearing-R6-Shard0047-POS2101-2200-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bb448210945eee11974bee4a",
+    "library_stable_id": "libfile_282135fd57d48191b131894c45920a2f",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "R6 target-bearing Shard0048: adjudicate active target positions 2201-2300 with a full semantic pass over all 400 German examples, repair only confirmed non-target-bearing examples, and preserve all other content exactly."
+}

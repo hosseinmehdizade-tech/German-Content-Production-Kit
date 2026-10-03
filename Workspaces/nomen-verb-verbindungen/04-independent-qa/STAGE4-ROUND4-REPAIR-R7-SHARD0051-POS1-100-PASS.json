@@ -1,0 +1,86 @@
+{
+  "schema": "nvv-stage4-round4-repair-shard@1.0.0",
+  "status": "PASS_ROUND4_REPAIR_R7_SHARD0051_POS1_100",
+  "created_at": "2026-10-03T10:31:00+02:00",
+  "restart_id": "NVV-RESTART-20260930-R1",
+  "framework": "v3.3.6",
+  "scope": {
+    "positions": "1-100",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+    "confirmed_affected_targets": 13,
+    "examples_replaced": 15
+  },
+  "clean_pass_attempt": {
+    "round": 4,
+    "attempt": 1,
+    "result": "FAILED_REPAIR_REQUIRED",
+    "clean_streak_before": 0,
+    "clean_streak_after": 0
+  },
+  "changed_positions": [
+    18,
+    19,
+    23,
+    26,
+    27,
+    45,
+    57,
+    58,
+    61,
+    68,
+    84,
+    89,
+    100
+  ],
+  "finding_categories": {
+    "missing_registered_argument_slot": [
+      18,
+      19,
+      23,
+      58,
+      61,
+      100
+    ],
+    "wrong_predicate_or_predicate_attachment": [
+      26,
+      57,
+      89
+    ],
+    "compound_substitution_for_registered_noun_phrase": [
+      27,
+      45,
+      84
+    ],
+    "alternate_argument_realization_for_jds_slot": [
+      68
+    ]
+  },
+  "qa": {
+    "all_examples_positions1_100_target_bearing_after_repair": "PASS_400_OF_400",
+    "global_exactly_four_examples": "2492/2492 PASS",
+    "global_de_unique": "9968/9968",
+    "global_fa_unique": "9968/9968",
+    "global_en_unique": "9968/9968",
+    "aligned_fa_en_for_replacements": "15/15 PASS",
+    "all_non_affected_cards": "EXACT",
+    "positions101_2492": "EXACT",
+    "definitions_meanings_glosses_structure_identity_provenance": "EXACT",
+    "stage3c_evidence_refreshes": 39,
+    "stage3c_status_transitions": 0,
+    "unresolved_cells": 0,
+    "clean_streak": 0
+  },
+  "artifact": {
+    "filename": "NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
+    "sha256": "1ca1e32ca77864d9e1d91beb9e63f95206dcf5d4f8da52cd504f79af834aa98f",
+    "size_bytes": 1577721,
+    "successor_core_sha256": "03b5387d6aad8907b0f740e5acacc3da580d9441a03eb5eb56ebcc32fc5d2797",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round4-Repair-R7-Shard0051-POS1-100-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000579481f48089064cfb912806",
+    "library_stable_id": "libfile_f384538c79308191b7ddd26d9c3b8f59",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "Continue Stage4 Round4 repair R7 with Shard0052: independently full-semantic-audit active target positions 101-200 on this repaired successor, repair only confirmed defects, preserve all other content exactly. Clean streak remains 0 until a complete no-repair pass over all 2492 targets is achieved."
+}

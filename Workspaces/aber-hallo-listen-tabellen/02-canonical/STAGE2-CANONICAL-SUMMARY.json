@@ -1,0 +1,55 @@
+{
+  "schema": "gcpk-stage2-canonical-summary@1.0.0",
+  "dataset": "aber-hallo-listen-tabellen",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "scope": {
+    "A1-A2": "PDF pages 3-4",
+    "B1-C2": "PDF pages 8-26",
+    "unselected_pages": "EXCLUDED"
+  },
+  "identity_closure": {
+    "status": "PASS",
+    "source_occurrences": 911,
+    "source_to_canonical_mappings": 926,
+    "canonical_units": 788,
+    "unresolved_identity_questions": 0,
+    "type_counts": {
+      "verb": 647,
+      "adjektiv": 140,
+      "grammatische_struktur": 1
+    },
+    "multi_occurrence_canonical_units": 102,
+    "cross_source_canonical_units": 49,
+    "split_source_rows": 14,
+    "selected_source_morphology_units": 69
+  },
+  "key_decisions": [
+    "Six declension source occurrences consolidated into one grammar concept cluster.",
+    "zureden exact duplicate rows consolidated; both source occurrences preserved in provenance.",
+    "beziehen sich near-duplicate rows consolidated; both source occurrences preserved in provenance.",
+    "Distinct lexemes in slash rows split; original source occurrence remains preserved.",
+    "nützen / nutzen retained as one lexical target with a source variant.",
+    "recht/Recht geben retained as a separate expression identity from general geben.",
+    "MEM-009 applied: repeated usages/rections of the same lexical word remain one card unless distinct lexical/POS/expression identity is explicit.",
+    "erfahren remains separate Verb and Adjektiv identities.",
+    "No item-level CEFR invented from broad A1-A2 / B1-C2 source bands."
+  ],
+  "validation": {
+    "stage2_identity_and_contract_envelope": "PASS",
+    "full_enriched_type_profile_validation": "DEFERRED_TO_STAGE3_STAGE4",
+    "package_crc": "PASS",
+    "package_members": 16,
+    "internal_sha256_manifest": "PASS_15_OF_15",
+    "package_hygiene": "PASS"
+  },
+  "artifact": {
+    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage2-CHECKPOINT.zip",
+    "sha256": "5f01dc1b1fe86fc7674712b6b14d98cfc3dc37b64de90164fa4f9019ca3613a7",
+    "size_bytes": 142387,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage2-CHECKPOINT.zip",
+    "library_file_id": "libfile_92441252a09081918e29e4eaf8f9d49d",
+    "file_id": "file_000000009b1081f4ae7f3c2a71ef5c9d",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "Stage3A completeness baseline across all 788 canonical units; then Stage3B gap-driven evidence enrichment and Stage3C disposition closure."
+}

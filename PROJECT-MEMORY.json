@@ -1047,6 +1047,69 @@
         ],
         "sha256": "25869015056507f077669fbe44ce068f7700b5e42411b3e75bcfd430d10ae2a7"
       }
+    },
+    {
+      "id": "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA",
+      "status": "ACTIVE",
+      "date": "2026-10-04",
+      "category": "content_qa_process",
+      "scope": "standalone nomen-verb-verbindungen Stage4 workstream",
+      "incident": "Round5 completed a full 2492-target repair audit, yet Round6 still found 42 affected targets in its first 300 positions. Recurrent families such as circular German definitions, English calques/false friends, Persian calques and incomplete sense/range coverage were being rediscovered locally across shards.",
+      "decision": "After a defect family is confirmed as recurrent in the standalone NVV Stage4 QA, run a corpus-wide root-cause sweep for that family before relying on another sequential clean-pass attempt. Screening may be overinclusive, but repairs require independent linguistic adjudication. Any systemic repair keeps clean credit at 0 and the next clean-pass attempt must restart from position 1 on the exact final repaired snapshot.",
+      "explicit_user_approval": "Hossein explicitly approved this change on 2026-10-04 after the recurring-error explanation by replying «خب پس ادامه بده».",
+      "safe_default": "SYSTEMIC_CATEGORY_SWEEP_THEN_RESTART_CLEAN_PASS",
+      "preserved_guardrails": [
+        "registered source identity and source surfaces remain authoritative and immutable unless separately evidence-backed",
+        "stable IDs/canonical forms/structure are not changed by a learner-layer sweep unless a separate source/structure finding proves it necessary",
+        "heuristic screening is candidate generation only, never blind repair",
+        "two consecutive full clean passes on the same final repaired snapshot remain required before Stage4 can close"
+      ],
+      "prevention": {
+        "scope": "standalone nomen-verb-verbindungen Stage4 workstream",
+        "severity": "S3",
+        "root_cause": "Repeated shard-local repair can leave the same semantic defect family elsewhere in the corpus, causing later QA rounds to rediscover structurally similar defects.",
+        "root_cause_basis": "Evidence from completed Round5 plus Round6 Shards0101-0103 and explicit user-approved process change.",
+        "impact": "QA can fail to converge efficiently even when individual shard repairs are correct.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "continue only local shard-by-shard repair after a recurrent defect family is established",
+          "blindly rewrite every heuristic candidate without linguistic adjudication"
+        ],
+        "correct_method": "SYSTEMIC_CATEGORY_SWEEP_THEN_RESTART_CLEAN_PASS",
+        "rule": "Once a recurrent defect family is established, screen the full current corpus for that family, adjudicate candidates, repair only confirmed defects, recompute affected closure evidence, then restart clean-pass auditing from position 1 after systemic repair families are exhausted.",
+        "gate": {
+          "kinds": [
+            "A",
+            "G"
+          ],
+          "status": "PARTIAL",
+          "tools": [],
+          "command": "",
+          "limits": "Structural screening can generate candidates, but linguistic truth remains manual/model adjudication; a machine score alone cannot prove a defect."
+        },
+        "evidence": [
+          "PROJECT-STATE.json#workstreams.nomen_verb_verbindungen.stage4.round5_repair_r8",
+          "PROJECT-STATE.json#workstreams.nomen_verb_verbindungen.stage4.round6_repair_r9",
+          "PROJECT-MEMORY.json#MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA"
+        ],
+        "affected_workstreams": [
+          "Standalone NVV only"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "explicit_user_approval",
+          "id",
+          "incident",
+          "preserved_guardrails",
+          "safe_default",
+          "scope"
+        ],
+        "sha256": "d8b8f6993ff1d687d805c61c41078047999303aca9f4675e037e063b4a6fcc2d"
+      }
     }
   ],
   "propagation_rule": {

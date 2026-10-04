@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_RELATED_FINAL_CLOSURE_PASS",
+  "status": "STAGE3B_NVV_FINAL_CLOSURE_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-RELATED-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "sha256": "d0cdbae4d85ef38c11ad8628be03ff7edb134fe8b3e34771223ef58eed48b89a",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-RELATED-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_0000000024348210a17f493aa970e8eb",
-      "library_stable_id": "libfile_c993629319bc81919a48d91482613f1d",
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-NVV-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "sha256": "4f3e644b2e4c46708afdbc6a294a3ce3dff3e34b80bd2729c7b5e557219d4edd",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-NVV-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_000000002cbc81f48e3a881d6a230ede",
+      "library_stable_id": "libfile_3178b5e925448191b8c80e0545e9a98f",
       "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "git": "IN_SYNC",
@@ -40,7 +40,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B NVV final closure across all 292 targets using FUNKTIONSVERBGEFUEGE + NOMEN_VERB_VERBINDUNGEN primary and DUDEN_STIL/DUDEN_UNIVERSAL secondary; keep NVV separate from generic collocation; then proceed to Stage3C disposition closure.",
+  "next_action": "Stage3C disposition closure over all 4562 final cells; Stage4 independent re-audit only after Stage3C PASS.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -2050,5 +2050,37 @@
     "repairs_sha256": "da12495a9188a9c5359c2388a2b16d3ffc017d399d12b988fbebe21507836ab9",
     "validators": "PASS_4_OF_4_LOCAL_CLOSURE_MUTATION_LEDGER_COMPLETENESS",
     "post_package_verification": "PASS_MANIFEST_499_OF_499_SHA256SUMS_500_OF_500_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE"
+  },
+  "stage3B_nvv_final_closure": {
+    "state": "PASS",
+    "scope": "nvv_relation_disposition_closure",
+    "targets": 292,
+    "verified_present": 45,
+    "closed_no_force": 247,
+    "unresolved": 0,
+    "new_nvv_relations": 45,
+    "canonical_relations_total": 592,
+    "candidate_ledger": {
+      "total": 1752,
+      "accepted": 592,
+      "rejected": 1160,
+      "deferred": 0
+    },
+    "richness": {
+      "dimension_cells": 4562,
+      "final_cells": 4562,
+      "unresolved_cells": 0,
+      "status": "STAGE3B_ALL_DIMENSIONS_FINAL_PENDING_STAGE3C"
+    },
+    "source_id": "NOMEN_VERB_VERBINDUNGEN",
+    "source_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "rule": "Exact source-listed NVV/FVG connection plus active-sense alignment; no shared-verb or density chasing.",
+    "canonical_sha256": "97660b337f2c26692bbcd08e06643bdfecbc0202cbcc2c24df9b3a3e707813ba",
+    "completeness_sha256": "3b8b90b420c47bf574e97af538932d61ab757f961f4f62d87d6356e193e9d255",
+    "candidate_ledger_sha256": "c7d3b39979bd864c91cd24293c81eb7b15153cd6de24736df19d15a8ab39b165",
+    "repairs_sha256": "fbd63af25ae3e392a2a4de3187990e9e6c42d605dff7aba97921e18832bd71d0",
+    "validators": "PASS_NVV_CLOSURE_MUTATION_BOUNDARY_INDEPENDENT_STRUCTURAL",
+    "post_package_verification": "PASS_MANIFEST_508_508_SHA256SUMS_509_509_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+    "runtime_binding_required_now": false
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-10-01",
+  "updated_at": "2026-10-04",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -857,7 +857,8 @@
         "evidence": [
           "Workspaces/menschen-a1-verben-repair-v336/README.md",
           "Workspaces/menschen-a1-verben-repair2-v336/STAGE5-PROJECTION-REPAIR-SUMMARY.json",
-          "Workspaces/menschen-a2-verben-repair2-v336/README.md"
+          "Workspaces/menschen-a2-verben-repair2-v336/README.md",
+          "Workspaces/menschen-verben-bounded-repair-2026-10-03/REPORT.md#e-aud-005--closed"
         ],
         "affected_workstreams": [
           "Menschen A1/A2/B1 Verben",
@@ -1109,6 +1110,120 @@
           "scope"
         ],
         "sha256": "d8b8f6993ff1d687d805c61c41078047999303aca9f4675e037e063b4a6fcc2d"
+      }
+    },
+    {
+      "id": "CP-MEM-007",
+      "status": "ACTIVE",
+      "date": "2026-10-04",
+      "category": "finite_principal_form",
+      "incident": "AUD-003: five A1 perfect fields used infinitive haben despite the third-person singular principal-form contract.",
+      "decision": "Nonempty morphology is insufficient: validate declared finite principal-form agreement at the canonical/projection owner while respecting auxiliary sein and explicitly reviewed mixed contracts.",
+      "safe_default": "CONTROLLED_FINITE_PRINCIPAL_FORM_AND_BRIDGE_PARITY",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "Fallback joined an infinitive auxiliary to participle; slot-existence checks accepted it.",
+        "root_cause_basis": "Confirmed independent audit plus exact immutable-parent differential and runtime/source acceptance.",
+        "impact": "AUD-003: five A1 perfect fields used infinitive haben despite the third-person singular principal-form contract.",
+        "time_cost": "UNKNOWN",
+        "wrong_path": [
+          "Treat a populated field as contractual correctness",
+          "Reconstruct evidence or erase canonical authority to satisfy display checks"
+        ],
+        "correct_method": "Prefer explicit canonical principal form and mirror the controlled bridge; compare unaffected fronts.",
+        "rule": "Nonempty morphology is insufficient: validate declared finite principal-form agreement at the canonical/projection owner while respecting auxiliary sein and explicitly reviewed mixed contracts.",
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "status": "PARTIAL",
+          "tools": [
+            "Verification/bounded_content_preflight.py",
+            "Verification/prevention_preflight.py"
+          ],
+          "command": "python -B Verification/bounded_content_preflight.py projection PROJECTED.json",
+          "limits": "Checks known haben/sein finite heads and explicit bridge equality only; not a general grammar engine or linguistic truth certification. Runtime front acceptance remains required."
+        },
+        "evidence": [
+          "Workspaces/menschen-verben-bounded-repair-2026-10-03/REPORT.md",
+          "Workspaces/menschen-verben-bounded-repair-2026-10-03/CHECKPOINT.json"
+        ],
+        "affected_workstreams": [
+          "Menschen Verben repair successors",
+          "Future workstreams using controlled principal forms or attested raw transcription"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "94066c2da9eec9334de1096fa86ded0fc7d954df9ae4bfdaa239662740aff26c"
+      }
+    },
+    {
+      "id": "CP-MEM-008",
+      "status": "ACTIVE",
+      "date": "2026-10-04",
+      "category": "attested_raw_source_binding",
+      "incident": "AUD-004: two A2 raw_text observations were reconstructed from normalized morphology rather than source screenshots.",
+      "decision": "Raw evidence must remain the attested source observation; bind transcription, locator and source image hashes independently from enriched normalized content.",
+      "safe_default": "IMMUTABLE_ATTESTED_RAW_BINDING_SEPARATE_FROM_NORMALIZATION",
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S3",
+        "root_cause": "The normalized/enriched layer was used as a raw transcription source.",
+        "root_cause_basis": "Confirmed independent audit plus exact immutable-parent differential and runtime/source acceptance.",
+        "impact": "AUD-004: two A2 raw_text observations were reconstructed from normalized morphology rather than source screenshots.",
+        "time_cost": "UNKNOWN",
+        "wrong_path": [
+          "Treat a populated field as contractual correctness",
+          "Reconstruct evidence or erase canonical authority to satisfy display checks"
+        ],
+        "correct_method": "Recover exact registered evidence, visually attest the transcription, seal its binding receipt externally, then validate raw strings without rewriting normalized forms.",
+        "rule": "Raw evidence must remain the attested source observation; bind transcription, locator and source image hashes independently from enriched normalized content.",
+        "gate": {
+          "kinds": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "status": "PARTIAL",
+          "tools": [
+            "Verification/bounded_content_preflight.py",
+            "Verification/prevention_preflight.py"
+          ],
+          "command": "python -B Verification/bounded_content_preflight.py source SOURCE-OCCURRENCES.json --binding SOURCE-RAW-BINDING.json --binding-sha256 PINNED_SHA --evidence-root REGISTERED_IMAGES",
+          "limits": "Exact gate applies only to independently attested/pinned bindings. It cannot OCR-certify every source row; image proof needs registered bytes and visual transcription review."
+        },
+        "evidence": [
+          "Workspaces/menschen-verben-bounded-repair-2026-10-03/REPORT.md",
+          "Workspaces/menschen-verben-bounded-repair-2026-10-03/CHECKPOINT.json"
+        ],
+        "affected_workstreams": [
+          "Menschen Verben repair successors",
+          "Future workstreams using controlled principal forms or attested raw transcription"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "id",
+          "incident",
+          "safe_default"
+        ],
+        "sha256": "741abb6be938955636004df28ec915d6ac944a206fa90bee6baa86174b212410"
       }
     }
   ],

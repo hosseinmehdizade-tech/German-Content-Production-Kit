@@ -9,6 +9,7 @@ import zipfile
 from collections import Counter
 from pathlib import Path, PurePosixPath
 from validate_unified_vocabulary_projection_v1_1_0 import load_rows, parse_custom, validate
+from bounded_content_preflight import projection_errors as bounded_projection_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -129,6 +130,7 @@ def projection_errors(rows):
         for item in related if isinstance(related, list) else []:
             if isinstance(item, dict) and item.get("relation_type", item.get("type", "SYNONYM")).upper() != "SYNONYM":
                 errors.append(f"{cid}: NON_SYNONYM_IN_SYNONYM_TRANSPORT")
+    errors.extend(bounded_projection_errors(rows))
     return errors
 
 
@@ -149,7 +151,18 @@ def lineage_errors(rows, baseline):
             continue
         cf, _ = parse_custom(row)
         prior, _ = parse_custom(parent)
-        if not isinstance(cf.get("canonical_unit"), dict) or not cf.get("canonical_unit"):
+        # Preserve supported split v411 authority instead of forcing a native
+        # canonical_unit conversion. The parent must establish that contract.
+        split = (isinstance(prior.get("canonical_target"), dict)
+                 and isinstance(prior.get("canonical_examples"), list)
+                 and isinstance(cf.get("canonical_target"), dict)
+                 and bool(cf.get("canonical_target"))
+                 and isinstance(cf.get("canonical_examples"), list)
+                 and bool(cf.get("canonical_examples"))
+                 and (not isinstance(prior.get("canonical_lexeme"), dict)
+                      or (isinstance(cf.get("canonical_lexeme"), dict)
+                          and bool(cf.get("canonical_lexeme")))))
+        if not split and (not isinstance(cf.get("canonical_unit"), dict) or not cf.get("canonical_unit")):
             errors.append(f"{cid}: MISSING_CANONICAL_UNIT")
         if not isinstance(cf.get("canonical_relations"), list):
             errors.append(f"{cid}: MISSING_CANONICAL_RELATIONS")

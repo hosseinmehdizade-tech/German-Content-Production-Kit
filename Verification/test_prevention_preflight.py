@@ -17,6 +17,19 @@ def card():
 
 
 class PreventionTests(unittest.TestCase):
+    def test_split_authority_lineage_and_loss(self):
+        prior=card();cf=prior['customFields'];cf.pop('canonical_unit')
+        cf.update(canonical_target={'sense_id':'target-1'},canonical_lexeme={'lemma':'hören'},canonical_examples=[{'example_id':'example-1'}],canonical_relations=[],present='hört',preterite='hörte',perfect='hat gehört')
+        self.assertEqual(gate.lineage_errors([copy.deepcopy(prior)],[prior]),[])
+        missing=copy.deepcopy(prior);missing['customFields'].pop('canonical_examples')
+        self.assertTrue(any('MISSING_CANONICAL_UNIT' in e for e in gate.lineage_errors([missing],[prior])))
+
+    def test_finite_perfect_and_synonym_surface_gate(self):
+        prior=card();cf=prior['customFields'];cf['vnext_morphology']['auxiliary']='haben';cf['perfect']='haben gehört'
+        self.assertTrue(any('NONFINITE_OR_MISMATCHED_PERFECT' in e for e in gate.projection_errors([prior])))
+        cf['perfect']='hat gehört';prior['related']=['vernehmen','vernehmen']
+        self.assertTrue(any('DUPLICATE_RELATION_DISPLAY' in e for e in gate.projection_errors([prior])))
+
     def test_positive_semantic_enums_preserved(self):
         self.assertEqual(gate.projection_errors([card()]), [])
 

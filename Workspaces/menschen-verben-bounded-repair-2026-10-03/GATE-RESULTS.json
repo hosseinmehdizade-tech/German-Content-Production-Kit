@@ -1,0 +1,419 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "name": "kit-memory",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "memory"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\kit-memory.txt"
+    },
+    {
+      "name": "kit-checkpoint",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "checkpoint",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\CHECKPOINT.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\kit-checkpoint.txt"
+    },
+    {
+      "name": "app-currentness",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Flashcards-Pro\\03-Tests\\test-runtime-currentness-policy.py"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\app-currentness.txt"
+    },
+    {
+      "name": "app-prevention",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Flashcards-Pro\\03-Tests\\test-prevention-gates.py"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\app-prevention.txt"
+    },
+    {
+      "name": "repair-negative-fixtures",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\bounded_content_preflight.py",
+        "self-test"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\repair-negative-fixtures.txt"
+    },
+    {
+      "name": "A1-source",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_source_occurrences_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-SOURCE-OCCURRENCES.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-source.txt"
+    },
+    {
+      "name": "A1-identity",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_identity_closure_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-SOURCE-OCCURRENCES.json",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-IDENTITY-CLOSURE.json",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-CANONICAL-STAGE4.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-identity.txt"
+    },
+    {
+      "name": "A1-candidates",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_enrichment_candidate_ledger_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-ENRICHMENT-CANDIDATE-LEDGER.json",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-CANONICAL-STAGE4.json",
+        "--policy",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-RESOLVED-ENRICHMENT-POLICY.json",
+        "--source-registry",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Architecture\\06-REFERENCE-SOURCES\\GFP-APPROVED-LANGUAGE-SOURCES-v1.1.0.json",
+        "--mode",
+        "closure"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-candidates.txt"
+    },
+    {
+      "name": "A1-completeness",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_enrichment_completeness_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-ENRICHMENT-COMPLETENESS.json",
+        "--policy",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-RESOLVED-ENRICHMENT-POLICY.json",
+        "--mode",
+        "closure",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-CANONICAL-STAGE4.json",
+        "--source-registry",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Architecture\\06-REFERENCE-SOURCES\\GFP-APPROVED-LANGUAGE-SOURCES-v1.1.0.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-completeness.txt"
+    },
+    {
+      "name": "A1-envelope",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_unified_vocabulary_projection_v1_1_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-UNIVERSAL-v2.tsv"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-envelope.txt"
+    },
+    {
+      "name": "A1-projection",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "projection",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-UNIVERSAL-v2.tsv"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-projection.txt"
+    },
+    {
+      "name": "A1-lineage",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "lineage",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A1\\A1-VERBEN-UNIVERSAL-v2.tsv",
+        "--baseline",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\A1-parent-rows.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A1-lineage.txt"
+    },
+    {
+      "name": "A1-strict-differential",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "name": "A2-source",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_source_occurrences_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-SOURCE-OCCURRENCES.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-source.txt"
+    },
+    {
+      "name": "A2-identity",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_identity_closure_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-SOURCE-OCCURRENCES.json",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-IDENTITY-CLOSURE.json",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-CANONICAL-STAGE4.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-identity.txt"
+    },
+    {
+      "name": "A2-candidates",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_enrichment_candidate_ledger_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-ENRICHMENT-CANDIDATE-LEDGER.json",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-CANONICAL-STAGE4.json",
+        "--policy",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-RESOLVED-ENRICHMENT-POLICY.json",
+        "--source-registry",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Architecture\\06-REFERENCE-SOURCES\\GFP-APPROVED-LANGUAGE-SOURCES-v1.1.0.json",
+        "--mode",
+        "closure"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-candidates.txt"
+    },
+    {
+      "name": "A2-completeness",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_enrichment_completeness_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-ENRICHMENT-COMPLETENESS.json",
+        "--policy",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-RESOLVED-ENRICHMENT-POLICY.json",
+        "--mode",
+        "closure",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-CANONICAL-STAGE4.json",
+        "--source-registry",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Architecture\\06-REFERENCE-SOURCES\\GFP-APPROVED-LANGUAGE-SOURCES-v1.1.0.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-completeness.txt"
+    },
+    {
+      "name": "A2-envelope",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_unified_vocabulary_projection_v1_1_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-UNIVERSAL-v2.tsv"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-envelope.txt"
+    },
+    {
+      "name": "A2-projection",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "projection",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-UNIVERSAL-v2.tsv"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-projection.txt"
+    },
+    {
+      "name": "A2-lineage",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "lineage",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-UNIVERSAL-v2.tsv",
+        "--baseline",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\A2-parent-rows.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-lineage.txt"
+    },
+    {
+      "name": "A2-source-binding",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\bounded_content_preflight.py",
+        "source",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\A2-VERBEN-SOURCE-OCCURRENCES.json",
+        "--binding",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\A2\\SOURCE-RAW-BINDING.json",
+        "--binding-sha256",
+        "dc434393d10d36a9cae86dc510a1b8d9972474ec057e0daec1985f1b1dbfceda",
+        "--evidence-root",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Audit-Menschen-Final-2026-10-01\\source-evidence\\A2"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\A2-source-binding.txt"
+    },
+    {
+      "name": "A2-strict-differential",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "name": "B1-source",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_source_occurrences_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-SOURCE-OCCURRENCES-v3.3.6.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-source.txt"
+    },
+    {
+      "name": "B1-identity",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_identity_closure_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-SOURCE-OCCURRENCES-v3.3.6.json",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-IDENTITY-CLOSURE-v3.3.6-STAGE5-REBOUND.json",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-CANONICAL-v3.3.6-STAGE3C-FINAL.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-identity.txt"
+    },
+    {
+      "name": "B1-candidates",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_enrichment_candidate_ledger_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-ENRICHMENT-CANDIDATE-LEDGER-v3.3.6-STAGE3C-FINAL.json",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-CANONICAL-v3.3.6-STAGE3C-FINAL.json",
+        "--policy",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-ENRICHMENT-POLICY-RESOLVED-v3.3.6.json",
+        "--source-registry",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Architecture\\06-REFERENCE-SOURCES\\GFP-APPROVED-LANGUAGE-SOURCES-v1.1.0.json",
+        "--mode",
+        "closure"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-candidates.txt"
+    },
+    {
+      "name": "B1-completeness",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_enrichment_completeness_v1_0_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-ENRICHMENT-COMPLETENESS-v3.3.6-STAGE3C-FINAL.json",
+        "--policy",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-ENRICHMENT-POLICY-RESOLVED-v3.3.6.json",
+        "--mode",
+        "closure",
+        "--canonical",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-CANONICAL-v3.3.6-STAGE3C-FINAL.json",
+        "--source-registry",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Architecture\\06-REFERENCE-SOURCES\\GFP-APPROVED-LANGUAGE-SOURCES-v1.1.0.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-completeness.txt"
+    },
+    {
+      "name": "B1-envelope",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\framework\\Verification\\validate_unified_vocabulary_projection_v1_1_0.py",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-UNIVERSAL-v3.3.6-LINEAGE-REPAIRED.tsv"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-envelope.txt"
+    },
+    {
+      "name": "B1-projection",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "projection",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-UNIVERSAL-v3.3.6-LINEAGE-REPAIRED.tsv"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-projection.txt"
+    },
+    {
+      "name": "B1-lineage",
+      "command": [
+        "C:\\Users\\hosse\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\German-Content-Production-Kit\\Verification\\prevention_preflight.py",
+        "lineage",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\staging\\B1\\B1-VERBEN-UNIVERSAL-v3.3.6-LINEAGE-REPAIRED.tsv",
+        "--baseline",
+        "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\B1-parent-rows.json"
+      ],
+      "exit_status": 0,
+      "status": "PASS",
+      "log": "C:\\Users\\hosse\\Documents\\German-Flashcards-Workspace\\Content-Repair-2026-10-03\\gate-logs\\B1-lineage.txt"
+    },
+    {
+      "name": "B1-strict-differential",
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}

@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_ANTONYM_FINAL_CLOSURE_PASS",
+  "status": "STAGE3B_COLLOCATION_FINAL_CLOSURE_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-ANTONYM-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "sha256": "ffb2f36aac41b70ac420588f673c83a595084ffb2338f05787f904041738b5a7",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-ANTONYM-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_0000000069408210a369802cf8478708",
-      "library_stable_id": "libfile_83581ba687948191813f32569332f439",
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-COLLOCATION-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "sha256": "1ccfa45dd643039fdf33ddf6722cad60a88465eceb7ac5fa5b50843055606c7d",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-COLLOCATION-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_0000000049408243996722e243c4bd36",
+      "library_stable_id": "libfile_08217ccfb2b48191a78b8899f87f92b2",
       "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "git": "IN_SYNC",
@@ -40,7 +40,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B collocation final closure across all 292 targets using DUDEN_STIL primary, DUDEN_UNIVERSAL secondary and corpus validation only where needed; record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication.",
+  "next_action": "Stage3B word-family final closure across all 292 targets using DUDEN_UNIVERSAL + DUDEN_BEDEUTUNG_10 primary and DUDEN_STIL secondary; WORD_FAMILY requires lexical evidence and superficial string similarity is insufficient; record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -1932,6 +1932,46 @@
     "source_materialization": {
       "GEGENWORT_2020": "0a8a4935c009fd2021fa20d854aa9a5bae7dd5e7983bae510e789bb9a52fe1c0",
       "DUDEN_SYNONYME": "5642885bcc9d783fe08a3895bc0217e947d53ce027ac5470d3bd40e47532272d"
+    }
+  },
+  "stage3B_collocation_final_closure": {
+    "state": "PASS",
+    "scope": "collocation_relation_disposition_closure",
+    "targets": 292,
+    "verified_present": 61,
+    "closed_no_force": 231,
+    "unresolved": 0,
+    "new_collocation_relations": 61,
+    "canonical_relations_total": 362,
+    "candidate_ledger": {
+      "total": 876,
+      "accepted": 362,
+      "rejected": 514,
+      "deferred": 0
+    },
+    "richness": {
+      "dimension_cells": 4562,
+      "final_cells": 3686,
+      "unresolved_cells": 876
+    },
+    "approved_routes": [
+      "DUDEN_STIL",
+      "DUDEN_UNIVERSAL"
+    ],
+    "corpus_validation_route": "SPIEGEL_CORPUS_2026_IF_AMBIGUITY",
+    "corpus_escalations": 0,
+    "no_density_fabrication": true,
+    "core_content_mutation": "NONE",
+    "runtime_binding_required_now": false,
+    "canonical_sha256": "e6fa482fc3cf2671c89d7e34b464ed096f09b7ab109c1d8e6a60e0ea71e8dd51",
+    "completeness_sha256": "071aa06e34d5cb3fce793b313ec44111e32d4b7cd087fafd53abca92c9e879a0",
+    "candidate_ledger_sha256": "1f5f4b72be4bdb8f1de6c31987adb2c9ac1a374ff27384f0285f73e93c31d47b",
+    "repairs_sha256": "7c3718debabe829567b48a46517a993c8fe884792c1d381a0f208579028d1311",
+    "validators": "PASS_LOCAL_CLOSURE_MUTATION_LEDGER_COMPLETENESS",
+    "post_package_verification": "PASS_MANIFEST_REHASH_SHA256SUMS_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+    "source_materialization": {
+      "DUDEN_STIL": "83f2e2e9eb349939505b841584a32f7f4f682a391acd67f45498807cafa188d5",
+      "DUDEN_UNIVERSAL": "19c8fd9644d2e3acc7314bb04c4fde379d95747c4f1f21fde27a80d23f30ce33"
     }
   }
 }

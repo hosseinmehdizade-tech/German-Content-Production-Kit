@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L22 Stage3A PASS under v3.3.6; 101 targets / 1603 cells baseline matrix persisted; Library bytes rematerialized exact; compact Git state synced."
+    "git_sync_note": "A1-L22 Stage3B Batch0001 PASS under v3.3.6; 20/99 new targets core-enriched, Library rematerialization exact, compact Git state synced."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -294,7 +294,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L22 Stage3B — reference-availability preflight, then gap-driven evidence enrichment from unresolved cells; no forced relation density.",
+  "resume_instruction": "A1-L22 Stage3B Batch0002 — continue gap-driven core enrichment from ma1m-lu-2734; preserve source-first evidence and leave unsupported relation cells unresolved.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -307,11 +307,11 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L21",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage3A-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "0f6790fa2836784b922dccde0c64d8e944d647af2c7f94eb2a5fc85835d9456c"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "792c29aa4d4dcd7a30f155e89a77c6384c7d815db60d44663cf2ea76f7c0f798"
   },
-  "current_scope": "A1-L22 Stage3A PASS",
-  "lock_state": "A1-L01_TO_A1-L21_LOCKED__A1-L22_STAGE3A_PASS",
+  "current_scope": "A1-L22 Stage3B Batch0001 PASS",
+  "lock_state": "A1-L01_TO_A1-L21_LOCKED__A1-L22_STAGE3B_IN_PROGRESS",
   "locked_at": "2026-09-26",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -3254,7 +3254,7 @@
     "next_action": "Optional separate Stage6 acceptance on exact CURRENT v434-R68 portable artifact when available; do not reopen linguistic content unless a new defect is proven."
   },
   "a1_l22": {
-    "state": "STAGE3A_PASS",
+    "state": "STAGE3B_IN_PROGRESS",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L22",
@@ -3342,6 +3342,47 @@
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "next_action": "A1-L22 Stage3B — reference-availability preflight, then gap-driven evidence enrichment from unresolved cells; no forced relation density."
+    },
+    "stage3b": {
+      "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+      "scope": "A1-L22",
+      "framework": "v3.3.6",
+      "substage": "Stage3B Batch0001",
+      "completed_batches": [
+        "0001"
+      ],
+      "latest_batch": "0001",
+      "target_range": "ma1m-lu-2714..ma1m-lu-2733",
+      "core_targets_complete": 20,
+      "new_targets_total": 99,
+      "new_targets_remaining_core": 79,
+      "senses": 12,
+      "expressions": 8,
+      "examples_complete": 80,
+      "relations_accepted": 14,
+      "review_resolutions": 14,
+      "claims_complete": 20,
+      "reference_availability": "PASS",
+      "candidate_ledger_validator": "PASS_14_ACCEPTED",
+      "completeness_baseline": "PASS_101_TARGETS_1603_CELLS_1331_UNRESOLVED",
+      "stage3a_unresolved_before": 1486,
+      "unresolved_after_batch0001": 1331,
+      "framework_regression": "10/10 PASS",
+      "custom_qa": "PASS_20_TARGETS_80_EXAMPLES_14_RELATIONS_20_AUDIO_REFS",
+      "manifest_rehash": "55/55 PASS",
+      "package_hygiene": "PASS",
+      "no_stage3c_closure_claim": true,
+      "artifact": {
+        "filename": "Menschen-A1-L22-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+        "sha256": "792c29aa4d4dcd7a30f155e89a77c6384c7d815db60d44663cf2ea76f7c0f798",
+        "size_bytes": 127479,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+        "library_file_id": "file_000000002a7481f49488f32ca8569130",
+        "library_stable_id": "libfile_8a9fd5f2a0b881918701cbb0518b0661",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "post_package_static": "PASS_NO_PYCACHE_PYC_GIT_UNSAFE_DUPLICATE_CRC"
+      },
+      "next_action": "A1-L22 Stage3B Batch0002 — continue gap-driven core enrichment from ma1m-lu-2734; preserve source-first evidence and leave unsupported relation cells unresolved."
     }
   },
   "latest_stage3a_checkpoint": {
@@ -3388,5 +3429,46 @@
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "next_action": "A1-L22 Stage3B — reference-availability preflight, then gap-driven evidence enrichment from unresolved cells; no forced relation density."
+  },
+  "latest_stage3b_checkpoint": {
+    "status": "PASS_BATCH0001_LIBRARY_AND_GIT_METADATA_SYNCED",
+    "scope": "A1-L22",
+    "framework": "v3.3.6",
+    "substage": "Stage3B Batch0001",
+    "completed_batches": [
+      "0001"
+    ],
+    "latest_batch": "0001",
+    "target_range": "ma1m-lu-2714..ma1m-lu-2733",
+    "core_targets_complete": 20,
+    "new_targets_total": 99,
+    "new_targets_remaining_core": 79,
+    "senses": 12,
+    "expressions": 8,
+    "examples_complete": 80,
+    "relations_accepted": 14,
+    "review_resolutions": 14,
+    "claims_complete": 20,
+    "reference_availability": "PASS",
+    "candidate_ledger_validator": "PASS_14_ACCEPTED",
+    "completeness_baseline": "PASS_101_TARGETS_1603_CELLS_1331_UNRESOLVED",
+    "stage3a_unresolved_before": 1486,
+    "unresolved_after_batch0001": 1331,
+    "framework_regression": "10/10 PASS",
+    "custom_qa": "PASS_20_TARGETS_80_EXAMPLES_14_RELATIONS_20_AUDIO_REFS",
+    "manifest_rehash": "55/55 PASS",
+    "package_hygiene": "PASS",
+    "no_stage3c_closure_claim": true,
+    "artifact": {
+      "filename": "Menschen-A1-L22-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+      "sha256": "792c29aa4d4dcd7a30f155e89a77c6384c7d815db60d44663cf2ea76f7c0f798",
+      "size_bytes": 127479,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+      "library_file_id": "file_000000002a7481f49488f32ca8569130",
+      "library_stable_id": "libfile_8a9fd5f2a0b881918701cbb0518b0661",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "post_package_static": "PASS_NO_PYCACHE_PYC_GIT_UNSAFE_DUPLICATE_CRC"
+    },
+    "next_action": "A1-L22 Stage3B Batch0002 — continue gap-driven core enrichment from ma1m-lu-2734; preserve source-first evidence and leave unsupported relation cells unresolved."
   }
 }

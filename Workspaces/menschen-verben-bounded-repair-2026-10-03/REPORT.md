@@ -109,7 +109,9 @@ Added CP-MEM-007 for finite principal-form correctness beyond slot nonemptiness;
 
 **N. Git persistence**
 
-Compact content checkpoint, artifact identities, deterministic differentials, small acceptance summaries, replay scripts and prevention/memory updates are staged for content Git sync. ZIPs/screenshots/large authority/runtime test dumps stay outside Git. App source and app remote remain unchanged at `32659a6eda14851f8443a14a0781708c3c13e030`. Actual content commit/remote verification receipt is recorded in `GIT-PERSISTENCE.json` after sync; until then persistence is PENDING.
+Source/content commit `6d4bcb7f8bcfda71ef1c3a50d6b2153143cd9a97` pushed successfully; actual remote `refs/heads/main` matched exactly. Git persistence: IN_SYNC. A compact receipt/checkpoint follow-up records that verification; resolve its own commit through Git history as documented in `GIT-PERSISTENCE.json`. Final handoff remote verification is recorded in the outside-Git report after the receipt push. App source/main remains unchanged at `32659a6eda14851f8443a14a0781708c3c13e030`.
+
+Preserved parallel remote updates through `3867ecb56d0a854cbd51d349bc980ddc68854d13`; all other root state keys and existing memory seals were preserved. Git contains only compact checkpoint/artifact/differential/acceptance metadata and replay/prevention source; no ZIPs/screenshots/large canonical/runtime dumps. Memory and checkpoint gates passed, and all 23 prevention tests passed after the durable updates.
 
 **O. Unexecuted / blocked boundaries**
 

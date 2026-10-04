@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_WORD_FAMILY_FINAL_CLOSURE_PASS",
+  "status": "STAGE3B_RELATED_FINAL_CLOSURE_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-WORD-FAMILY-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "sha256": "854b2b7812c0e8d056670fa8d0f1f5895b8576d1614895537b43657c173e2cf2",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-WORD-FAMILY-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000a3c88246ac975d7aa06dc51f",
-      "library_stable_id": "libfile_8bc4413535e88191a6e1ff0b74dd5773",
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-RELATED-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "sha256": "d0cdbae4d85ef38c11ad8628be03ff7edb134fe8b3e34771223ef58eed48b89a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-RELATED-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_0000000024348210a17f493aa970e8eb",
+      "library_stable_id": "libfile_c993629319bc81919a48d91482613f1d",
       "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "git": "IN_SYNC",
@@ -40,7 +40,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B related final closure across all 292 targets using approved registered semantic-reference evidence; record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication. Then close NVV links and proceed to Stage3C disposition closure.",
+  "next_action": "Stage3B NVV final closure across all 292 targets using FUNKTIONSVERBGEFUEGE + NOMEN_VERB_VERBINDUNGEN primary and DUDEN_STIL/DUDEN_UNIVERSAL secondary; keep NVV separate from generic collocation; then proceed to Stage3C disposition closure.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -2014,5 +2014,41 @@
       "DUDEN_BEDEUTUNG_10": "a7c65e270e73eb799d535c3084431061adffeb45118b532f84b023a4342edb71",
       "DUDEN_STIL": "83f2e2e9eb349939505b841584a32f7f4f682a391acd67f45498807cafa188d5"
     }
+  },
+  "stage3B_related_final_closure": {
+    "state": "PASS",
+    "scope": "related_relation_disposition_closure",
+    "targets": 292,
+    "verified_present": 87,
+    "closed_no_force": 205,
+    "unresolved": 0,
+    "new_related_relations": 87,
+    "canonical_relations_total": 547,
+    "candidate_ledger": {
+      "total": 1460,
+      "accepted": 547,
+      "rejected": 913,
+      "deferred": 0
+    },
+    "richness": {
+      "dimension_cells": 4562,
+      "final_cells": 4270,
+      "unresolved_cells": 292
+    },
+    "authority_route": [
+      "STAGE2_SHARED_LEXEME_IDENTITY",
+      "WORKSTREAM_SOURCE_OCCURRENCE",
+      "ATTACHED_REGISTERED_DUDEN_SEMANTIC_EVIDENCE"
+    ],
+    "policy": "RELATED limited to evidence-backed distinct source/Stage2 construction siblings under same frozen lexeme; generic semantic association not forced and specific relation types remain separate.",
+    "no_density_fabrication": true,
+    "core_content_mutation": "NONE",
+    "runtime_binding_required_now": false,
+    "canonical_sha256": "7aab8d8d89c44161e1c43d845409b46c9fddc90962dab076196075ddc03bb44c",
+    "completeness_sha256": "b72e20a995970792812f2bff79a0d76c2e3dc2076b733e0e55597d98298ba9ad",
+    "candidate_ledger_sha256": "7e11ae7bce6f2de9be6d0e7d47bea6e3423cd4425d769fb0fc43a53fb72e4bd5",
+    "repairs_sha256": "3ec06fd468f1fc0436ec0daf7bc19db43345a45ac477f839c3cc215952bd5a70",
+    "validators": "PASS_4_OF_4_LOCAL_CLOSURE_MUTATION_LEDGER_COMPLETENESS",
+    "post_package_verification": "PASS_MANIFEST_499_OF_499_SHA256SUMS_500_OF_500_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE"
   }
 }

@@ -1,26 +1,36 @@
 {
-  "status": "PENDING",
+  "status": "IN_SYNC",
   "app": {
     "source_metadata_commit": "0fd4f3c8f770de1d7b0ac2b0b3783dc9430e2358",
-    "source_remote_head_verified_before_receipt": "0fd4f3c8f770de1d7b0ac2b0b3783dc9430e2358",
-    "receipt_commit_resolution": "git log -1 --format=%H -- 04-Reports/AUD006-Runtime-Repair-2026-10-04/GIT-PERSISTENCE.json",
-    "status": "PENDING_METADATA_RECEIPT_ONLY",
+    "status": "IN_SYNC",
     "runtime_source_status": "IN_SYNC",
-    "verified_remote_head": "ca815a18664384f44a42738d0e847b98fb37d5a4"
+    "verified_remote_head_before_receipt": "ca815a18664384f44a42738d0e847b98fb37d5a4",
+    "receipt_commit_resolution": "git log -1 --format=%H -- 04-Reports/AUD006-Runtime-Repair-2026-10-04/GIT-PERSISTENCE.json"
   },
   "content": {
-    "source_metadata_commit": "205597607670f42ef0fd9fd0875f2a6c42560d30",
-    "original_pre_rebase_commit": "438ea9d2395c0e63c968eb6e6f6677b93f152deb",
-    "preserved_parallel_remote_head": "d42f21da85166973f569db78277baa26ca309da2",
+    "source_metadata_commit": "a880a54ab5fa7c246fa66f807ed6d155bbf912f3",
+    "status": "IN_SYNC",
+    "verified_remote_head_before_receipt": "bac6782fd8216c9ef3ef1e1f9d2d0008a369af59",
+    "preserved_parallel_remote_head": "0ef68803d116b2d3eb4f97af6fdc5b70649fa76d",
     "receipt_commit_resolution": "git log -1 --format=%H -- Workspaces/menschen-verben-aud006-runtime-acceptance-2026-10-04/GIT-PERSISTENCE.json",
-    "status": "PENDING",
-    "verified_remote_head": "0ef68803d116b2d3eb4f97af6fdc5b70649fa76d",
-    "unpublished_receipt_commit": "4555a69326a87d6e6f776a40fb99aa25ac3b49fa",
-    "sync_attempts": 2,
-    "last_error": "Both pushes rejected as non-fast-forward due to parallel main advancement; no force push."
+    "replayed_commits": [
+      [
+        "205597607670f42ef0fd9fd0875f2a6c42560d30",
+        "a880a54ab5fa7c246fa66f807ed6d155bbf912f3"
+      ],
+      [
+        "4555a69326a87d6e6f776a40fb99aa25ac3b49fa",
+        "64619c1183d2a13484e2704709855ef0ed5d5936"
+      ],
+      [
+        "e4745ab038c4e2d5191a6805042bbe9805a92e8c",
+        "bac6782fd8216c9ef3ef1e1f9d2d0008a369af59"
+      ]
+    ],
+    "conflicts": []
   },
-  "verification": "Actual remote heads read via git ls-remote after both content rejections. App accepted runtime source/receipt was published and verified; the corrective cross-project PENDING receipt is local only. Runtime/quality acceptance and Git persistence remain independent.",
+  "verification": "Source remote verified via git ls-remote. Final receipt commits are resolved from Git history and verified after normal push in the external final receipt; self-containing commit hashes are not embedded.",
   "binary_transport": false,
-  "git_retry": "Content source first push rejected; corrected retry rebases parallel main and publishes source plus compact receipt together.",
-  "next_action": "Next project turn: fetch/rebase unpublished compact content commits onto latest main preserving parallel work, retry bounded sync, then publish corrective app/content metadata receipts. Do not rebuild runtime/content or downgrade CURRENT."
+  "accepted_bytes_changed": false,
+  "next_action": "NONE; persistence cleanup complete; AUD001-AUD006 remain CLOSED."
 }

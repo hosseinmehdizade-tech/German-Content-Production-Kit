@@ -3599,7 +3599,7 @@
       "next_action": "Exact import/runtime smoke on CURRENT v452-R86, then expand only after pilot acceptance."
     },
     "250_verben_mit_praepositionen_deutschweb": {
-      "status": "STAGE3C_DISPOSITION_CLOSURE_PASS",
+      "status": "STAGE4_INDEPENDENT_REAUDIT_PASS",
       "domain": "vocabulary",
       "branch": "250-verben-mit-praepositionen-production",
       "checkpoint": "Workspaces/250-verben-mit-praepositionen-deutschweb/CHECKPOINT.json",
@@ -3614,16 +3614,16 @@
       "framework": "v3.3.6",
       "dataset_profile": "user-input-adaptive@1.2.0",
       "latest_portable_checkpoint": {
-        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
-        "sha256": "209173f3513d7c9163cbd2a1191eb374322e2e2e30b00762587da8c52170338d",
-        "size_bytes": 3769562,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000cbdc82439880c6b0caf1fda2",
-        "library_stable_id": "libfile_47a3e199ce8c81919db21d233719a39e",
+        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+        "sha256": "9d70550aced284f9a3ed0e98e1f610b28179503874da13c6b768234ccf42c7f9",
+        "size_bytes": 3817992,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000e99c81f4ad2150604b38fdf0",
+        "library_stable_id": "libfile_88e9b8915630819196c8e1a09b25fa38",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "source_fidelity_guard": "Do not assume the advertised 250 equals final canonical card count; Stage1 inventories source occurrences and Stage2 closes identity.",
-      "next_action": "Stage4 independent linguistic/lexical re-audit of the exact Stage3C canonical/evidence/disposition state; recompute applicability and verify source IDs, relation endpoints/duplicates, expression structure, dependency fingerprints, no-force decisions and linguistic quality without trusting Stage3 self-report.",
+      "next_action": "Stage5 clean-delivery projection under v3.3.6 anti-bypass using de-vocabulary + gfp-vocabulary-neutral@1; do not begin Stage6 until Stage5 passes, then re-resolve exact German Flashcards Pro CURRENT.",
       "distinct_displayed_head_forms": 252,
       "stage1": {
         "status": "PASS",
@@ -4703,6 +4703,113 @@
         "mutation_boundary": "CANONICAL_AND_592_RELATIONS_UNCHANGED; CANDIDATE_LEDGER_BYTE_IDENTICAL; ONLY_630_REASON_CODE_NORMALIZATIONS_PLUS_SOURCE_AUDIO_DATASET_EXCEPTION",
         "post_package_verification": "PASS_MANIFEST_520_OF_520_SHA256SUMS_521_OF_521_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
         "runtime_binding_required_now": false
+      },
+      "stage4": {
+        "state": "PASS",
+        "scope": "independent_linguistic_lexical_reaudit",
+        "audit_mode": "INDEPENDENT_DO_NOT_TRUST_STAGE3_SELF_REPORT",
+        "targets": 292,
+        "lexemes": 247,
+        "senses": 201,
+        "expressions": 91,
+        "examples": 1168,
+        "relations": 592,
+        "relation_types": {
+          "SYNONYM": 257,
+          "ANTONYM": 44,
+          "COLLOCATION": 61,
+          "WORD_FAMILY": 98,
+          "RELATED": 87,
+          "NVV": 45
+        },
+        "candidate_ledger": {
+          "total": 1752,
+          "accepted": 592,
+          "rejected": 1160,
+          "deferred": 0
+        },
+        "disposition": {
+          "dimension_cells": 4562,
+          "final_cells": 4562,
+          "unresolved_cells": 0,
+          "verified_present": 3110,
+          "closed_no_force": 1160,
+          "not_applicable": 292,
+          "requirement_classes": {
+            "MUST_HAVE": {
+              "VERIFIED_PRESENT": 1843
+            },
+            "REVIEW_TO_CLOSURE": {
+              "VERIFIED_PRESENT": 1267,
+              "CLOSED_NO_FORCE": 1160
+            },
+            "OPTIONAL": {
+              "NOT_APPLICABLE": 292
+            }
+          },
+          "reason_counts": {
+            "SOURCE_ROUTE_EXHAUSTED": 1160,
+            "SOURCE_HAS_NO_AUDIO": 292
+          }
+        },
+        "findings_and_repairs": {
+          "mixed_reflexive_base_lexeme_morphology_repaired": 2,
+          "lexemes": [
+            "usrin-vmp-lex-0111 (halten)",
+            "usrin-vmp-lex-0218 (verstehen)"
+          ],
+          "identity_closure_current_canonical_fingerprint_rebound": 1,
+          "candidate_ledger_canonical_fingerprint_rebound": 1,
+          "completeness_dependency_fingerprints_rebound": 1,
+          "learner_definitions_translations_examples_changed": false,
+          "relations_changed": false,
+          "candidate_decisions_changed": false,
+          "disposition_cells_changed": false,
+          "runtime_ui_changed": false
+        },
+        "independent_validation": {
+          "custom_reaudit": "47/47 PASS",
+          "reference_locators_checked": 1089,
+          "reference_locator_findings": 0,
+          "official_source": "PASS_292_OCCURRENCES",
+          "official_identity": "PASS_292_ACTIVE",
+          "official_candidate_ledger": "PASS_1752_CLOSURE",
+          "official_completeness": "PASS_4562_FINAL_0_UNRESOLVED",
+          "official_reference_registry": "PASS",
+          "framework_pytest_v336": "10/10 PASS",
+          "post_extract_custom_reaudit": "47/47 PASS",
+          "post_extract_official_validators": "5/5 PASS",
+          "package": "CRC PASS; manifest 541/541; SHA256SUMS 542/542; hygiene PASS",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "hashes": {
+          "canonical_sha256": "8eeb2ff7446dae7bfdd6174bb7bd3e7d1041a7c02631c7f5118c67074fd6de53",
+          "relations_sha256": "514da501851ddad0ec3f780ca1fbed7905cfbb6d2c9247f1436b6a8ccead9dc0",
+          "identity_closure_sha256": "1c2fcad28f0c9793caeebe4abee39d0ec7d7ac77b24c7f77957770990d40f368",
+          "completeness_sha256": "171878da7032490634d89379dde3425950f7e4e8b51ae72be7e6d280d621bde3",
+          "candidate_ledger_sha256": "3554446a244c0b4c379a42517447847bcba97d9dd9bef607cdfadbf60692e9fe",
+          "candidate_decisions_sha256": "e6f85d790fc34567b754b76afa64d95eb54d1e553c37ee295d986a6ad4bc5c9f",
+          "source_occurrences_sha256": "3656a272d906402c517d30d94f5c1ddca690b8081b9be62e40ecbce29c44dbcd",
+          "resolved_policy_sha256": "91196f9951639da3dec49a8e628021a6a13654446abf98bd85413074da2d1d4f"
+        },
+        "mutation_boundary": "Only base lexeme morphology/provenance for halten and verstehen plus dependent successor fingerprints/Stage4 metadata changed. Stable target/lexeme IDs and order, source occurrences, senses, expressions, learner definitions/translations, 1168 examples, 592 relations, 1752 candidate decisions and 4562 disposition cells are preserved.",
+        "runtime_binding_required_now": false,
+        "artifact": {
+          "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+          "sha256": "9d70550aced284f9a3ed0e98e1f610b28179503874da13c6b768234ccf42c7f9",
+          "size_bytes": 3817992,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+          "library_file_id": "file_00000000e99c81f4ad2150604b38fdf0",
+          "library_stable_id": "libfile_88e9b8915630819196c8e1a09b25fa38",
+          "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "post_package_verification": {
+          "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage4-INDEPENDENT-REAUDIT-POST-PACKAGE-VERIFICATION.json",
+          "sha256": "c6070782c7015dfc54cb75dcaada8297c7bfab0f1a49c13b4ba2bb8b00145be1",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage4-INDEPENDENT-REAUDIT-POST-PACKAGE-VERIFICATION.json",
+          "library_file_id": "file_00000000c19481f494c8ff8741b23330",
+          "library_stable_id": "libfile_78f07076c6708191a3fa6cce1c465b5f"
+        }
       }
     }
   },

@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-04T13:10:00+02:00",
-  "updated_version": "stage4-round5-repair-r8-shard0092-pos1601-1700-pass-v1",
-  "status": "STAGE4_ROUND5_REPAIR_R8_SHARD0092_POS1601_1700_PASS",
+  "updated_at": "2026-10-04T14:24:00+02:00",
+  "updated_version": "stage4-round5-repair-r8-shard0093-pos1701-1800-pass-v1",
+  "status": "STAGE4_ROUND5_REPAIR_R8_SHARD0093_POS1701_1800_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -75,18 +75,18 @@
       "note": "Fresh clean-restart inventory derived from registered 26-page source under v3.3.6. Historical inventory used only for regression and exposed one omitted source-visible item plus header/wrapped-line defects."
     },
     "2_identity_closure": {
-      "state": "PASS_REPAIRED_SUCCESSOR_R13",
+      "state": "PASS_REPAIRED_SUCCESSOR_R14",
       "metrics": {
         "source_occurrences": 2476,
         "active_canonical_ids": 2492,
         "excluded_source_typo_duplicates": 1,
-        "explicit_canonical_source_repairs": 13,
+        "explicit_canonical_source_repairs": 14,
         "unresolved_count": 0
       },
-      "canonical_sha256": "5d979358cb5c6baa48dc680dfa5bd7c177b5594b86b75c3d233590b258c35386",
+      "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9",
       "identity_fingerprint": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009",
-      "validator": "PASS_2476_OCCURRENCES_2492_ACTIVE_IDS_REPAIRED_SUCCESSOR_R13",
-      "note": "Stage2 repaired successor now records thirteen explicit canonical learner-layer source repairs while exact source occurrences remain verbatim. Shard0089 adds 01315 jdn. einen Kredit einräumen → jdm. einen Kredit einräumen (standard dative rection) and 01357 ein (gutes, schlechtes Leben führen → ein (gutes, schlechtes) Leben führen (balanced learner-layer punctuation). Active IDs and identity fingerprint remain unchanged; source bytes are untouched."
+      "validator": "PASS_2476_OCCURRENCES_2492_ACTIVE_IDS_REPAIRED_SUCCESSOR_R14",
+      "note": "Stage2 repaired successor now records fourteen explicit canonical learner-layer source repairs while exact source occurrences remain verbatim. Shard0093 adds 01753 jdn. auf den Schlips treten → jdm. auf den Schlips treten (standard dative idiom). Active IDs and identity fingerprint remain unchanged; source bytes are untouched."
     },
     "3A_baseline_richness_audit": {
       "state": "PASS",
@@ -114,21 +114,21 @@
       "note": "All active targets have core enrichment. Relation dimensions were explicitly reviewed and closed without forced endpoints because the active registered source establishes no canonical relation graph; no relation was fabricated."
     },
     "3C_disposition_closure": {
-      "state": "PASS_RECOMPUTED_ROUND5_REPAIR_R8_SHARD0092_SUCCESSOR",
+      "state": "PASS_RECOMPUTED_ROUND5_REPAIR_R8_SHARD0093_SUCCESSOR",
       "targets": 2492,
       "dimension_cells": 42364,
       "unresolved_cells": 0,
       "verified_present_cells": 18590,
       "closed_no_force_cells": 21282,
       "not_applicable_cells": 2492,
-      "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND5_SHARD0092_RECOMPUTED",
+      "validator": "PASS_2492_TARGETS_42364_CELLS_0_UNRESOLVED__ROUND5_SHARD0093_RECOMPUTED",
       "review_queue_open": 0,
-      "note": "Round5 R8 Shard0092 independently full-semantic-audited positions 1601-1700 and repaired 21 targets / 37 example bundles plus 7 learner semantic fields. No source occurrence, canonical identity/form, provenance or structure changes were required. Stage3C refreshed 32 affected dimension cells with zero status transitions and zero unresolved cells. Round5 has already required repairs, so it earns no clean-pass credit; clean streak remains 0.",
-      "last_recompute": "ROUND5_REPAIR_R8_SHARD0092",
-      "canonical_sha256": "5d979358cb5c6baa48dc680dfa5bd7c177b5594b86b75c3d233590b258c35386"
+      "note": "Round5 R8 Shard0093 independently full-semantic-audited positions 1701-1800 and repaired 18 targets / 29 example bundles plus 15 learner semantic fields. It also repaired the learner canonical/structure for source occurrence 01753 from accusative jdn. to standard dative jdm. while preserving the exact source surface. Stage3C refreshed 32 affected dimension cells with zero status transitions and zero unresolved cells. Round5 earns no clean-pass credit; clean streak remains 0.",
+      "last_recompute": "ROUND5_REPAIR_R8_SHARD0093",
+      "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_ROUND5_REPAIR_R8_SHARD0092_POS1601_1700_PASS",
+      "state": "STAGE4_ROUND5_REPAIR_R8_SHARD0093_POS1701_1800_PASS",
       "rounds_completed": 5,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -2401,18 +2401,18 @@
           }
         },
         "round5_repair_r8": {
-          "status": "R8_SHARD0092_POS1601_1700_PASS_REPAIRS_REQUIRED",
+          "status": "R8_SHARD0093_POS1701_1800_PASS_REPAIRS_REQUIRED",
           "scope": "FULL_CORPUS_INDEPENDENT_SEMANTIC_REAUDIT_AND_BOUNDED_REPAIR",
           "total_targets": 2492,
-          "reviewed_positions_completed": 1700,
-          "reviewed_targets": 1700,
-          "reviewed_examples": 6800,
-          "confirmed_affected_targets_total": 274,
-          "modified_example_bundles_total": 420,
-          "semantic_field_repairs_total": 197,
-          "structure_repairs_total": 2,
-          "canonical_source_repairs_total": 2,
-          "remaining_positions": 792,
+          "reviewed_positions_completed": 1800,
+          "reviewed_targets": 1800,
+          "reviewed_examples": 7200,
+          "confirmed_affected_targets_total": 292,
+          "modified_example_bundles_total": 449,
+          "semantic_field_repairs_total": 212,
+          "structure_repairs_total": 3,
+          "canonical_source_repairs_total": 3,
+          "remaining_positions": 692,
           "completed_shards": [
             "0076",
             "0077",
@@ -2430,7 +2430,8 @@
             "0089",
             "0090",
             "0091",
-            "0092"
+            "0092",
+            "0093"
           ],
           "clean_streak": 0,
           "clean_credit": 0,
@@ -2450,13 +2451,13 @@
             "clean_pass_attempt": "FAILED_REPAIR_REQUIRED_THEN_PASS"
           },
           "latest_artifact": {
-            "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-            "sha256": "f7e4eaef687004b734e432804ea68062577decbb1ca1bc7c26a28e5aceaa9c05",
-            "size_bytes": 1769783,
-            "successor_core_sha256": "81f2006d166b810cd178d81c2b1a0fc8e7139b1c2d3feecb160f07d331ba8619",
-            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-            "library_file_id": "file_00000000cff482439e393828266cf941",
-            "library_stable_id": "libfile_03f3193721208191aeb351223d9c33d4",
+            "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+            "sha256": "37d99e99f56352bf30a2ed57f563762fca92fe780874588f0b4e49d05f5f6e09",
+            "size_bytes": 1818583,
+            "successor_core_sha256": "2449dec02688e4826cbb50e3e88f80df444cc4f7aa804063440d65f9ea8eb696",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_0000000084b081f484ae56364a9895a1",
+            "library_stable_id": "libfile_43392b43f1348191a6ceec15c9151ba4",
             "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
           },
           "shard0077": {
@@ -2747,6 +2748,21 @@
             "stage3c_evidence_refreshes": 32,
             "stage3c_status_transitions": 0,
             "clean_pass_attempt": "FAILED_REPAIR_REQUIRED_THEN_PASS"
+          },
+          "shard0093": {
+            "positions": "1701-1800",
+            "targets_reviewed": 100,
+            "examples_reviewed": 400,
+            "review_mode": "FULL_SEMANTIC_PASS_ALL_400_EXAMPLES",
+            "affected_targets": 18,
+            "example_bundles_modified": 29,
+            "semantic_field_repairs": 15,
+            "structure_repairs": 1,
+            "canonical_source_repairs": 1,
+            "stage3c_affected_dimension_cells": 32,
+            "stage3c_evidence_refreshes": 32,
+            "stage3c_status_transitions": 0,
+            "clean_pass_attempt": "FAILED_REPAIR_REQUIRED_THEN_PASS"
           }
         }
       },
@@ -2865,10 +2881,10 @@
     "note": "Retained for audit only; not working authority after explicit clean restart."
   },
   "persistence": {
-    "quality_authority": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-    "portable_sha256": "f7e4eaef687004b734e432804ea68062577decbb1ca1bc7c26a28e5aceaa9c05",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-    "git": "SYNCED_STAGE4_ROUND5_REPAIR_R8_SHARD0092",
+    "quality_authority": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+    "portable_sha256": "37d99e99f56352bf30a2ed57f563762fca92fe780874588f0b4e49d05f5f6e09",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+    "git": "SYNCED_STAGE4_ROUND5_REPAIR_R8_SHARD0093",
     "binary_zip_in_git": "NOT_REQUIRED",
     "resume_authority_chain": {
       "parent_full_checkpoint": {
@@ -2876,14 +2892,14 @@
         "sha256": "42f9bc9a3bf4fee614921bb8e71d46c34f03cb72fc433ac1a737a3c9ad92961b"
       },
       "latest_delta_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-        "sha256": "f7e4eaef687004b734e432804ea68062577decbb1ca1bc7c26a28e5aceaa9c05"
+        "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+        "sha256": "37d99e99f56352bf30a2ed57f563762fca92fe780874588f0b4e49d05f5f6e09"
       },
       "active_targets": 2492,
       "repaired_targets": 2492,
       "structure_repair_applied_targets": 36,
-      "successor_core_sha256": "81f2006d166b810cd178d81c2b1a0fc8e7139b1c2d3feecb160f07d331ba8619",
-      "canonical_sha256": "5d979358cb5c6baa48dc680dfa5bd7c177b5594b86b75c3d233590b258c35386",
+      "successor_core_sha256": "2449dec02688e4826cbb50e3e88f80df444cc4f7aa804063440d65f9ea8eb696",
+      "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9",
       "identity_fingerprint": "b78a6c566971eea1b4481d69c9426b802b0ea3797bd7f918e717f699f2047009",
       "target_bearing_reviewed_positions": 400,
       "target_bearing_repaired_targets": 18,
@@ -2895,15 +2911,15 @@
       "round4_full_corpus_complete": true,
       "round4_clean_credit": 0,
       "stage4_clean_streak": 0,
-      "round5_reviewed_positions": 1700,
-      "round5_repaired_targets": 274,
-      "round5_modified_example_bundles": 420,
-      "round5_semantic_field_repairs": 197,
-      "round5_structure_repairs": 2,
+      "round5_reviewed_positions": 1800,
+      "round5_repaired_targets": 292,
+      "round5_modified_example_bundles": 449,
+      "round5_semantic_field_repairs": 212,
+      "round5_structure_repairs": 3,
       "round5_clean_credit": 0,
       "round5_first500_complete": true,
       "round5_first1000_complete": true,
-      "round5_canonical_source_repairs": 2,
+      "round5_canonical_source_repairs": 3,
       "round5_first1500_complete": true
     },
     "r1_candidate_v7c": {
@@ -2913,11 +2929,11 @@
       "state": "REJECTED_CONTENT_QUALITY",
       "audit_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-REPAIR-R1-FIRST500-v7c-REJECTION.json"
     },
-    "library_file_id": "file_00000000cff482439e393828266cf941",
-    "library_stable_id": "libfile_03f3193721208191aeb351223d9c33d4",
+    "library_file_id": "file_0000000084b081f484ae56364a9895a1",
+    "library_stable_id": "libfile_43392b43f1348191a6ceec15c9151ba4",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next": "Continue Stage4 Round5 repair R8 with Shard0093: independently full-semantic-audit active target positions 1701-1800 on this repaired successor. Round5 has required repairs, so it cannot earn clean-pass credit; clean streak remains 0.",
+  "next": "Continue Stage4 Round5 repair R8 with Shard0094: independently full-semantic-audit active target positions 1801-1900 on this repaired successor. Round5 has required repairs, so it cannot earn clean-pass credit; clean streak remains 0.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -3097,7 +3113,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Continue Stage4 Round5 repair R8 with Shard0093: independently full-semantic-audit active target positions 1701-1800 on this repaired successor. Round5 has required repairs, so it cannot earn clean-pass credit; clean streak remains 0.",
+  "next_action": "Continue Stage4 Round5 repair R8 with Shard0094: independently full-semantic-audit active target positions 1801-1900 on this repaired successor. Round5 has required repairs, so it cannot earn clean-pass credit; clean streak remains 0.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -3106,11 +3122,11 @@
     "MEM-NVV-001-CLEAN-RESTART"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-    "sha256": "f7e4eaef687004b734e432804ea68062577decbb1ca1bc7c26a28e5aceaa9c05",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0092-POS1601-1700-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000cff482439e393828266cf941",
-    "library_stable_id": "libfile_03f3193721208191aeb351223d9c33d4",
+    "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+    "sha256": "37d99e99f56352bf30a2ed57f563762fca92fe780874588f0b4e49d05f5f6e09",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0093-POS1701-1800-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_0000000084b081f484ae56364a9895a1",
+    "library_stable_id": "libfile_43392b43f1348191a6ceec15c9151ba4",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

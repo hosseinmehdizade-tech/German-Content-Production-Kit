@@ -3599,7 +3599,7 @@
       "next_action": "Exact import/runtime smoke on CURRENT v452-R86, then expand only after pilot acceptance."
     },
     "250_verben_mit_praepositionen_deutschweb": {
-      "status": "STAGE3B_NVV_FINAL_CLOSURE_PASS",
+      "status": "STAGE3C_DISPOSITION_CLOSURE_PASS",
       "domain": "vocabulary",
       "branch": "250-verben-mit-praepositionen-production",
       "checkpoint": "Workspaces/250-verben-mit-praepositionen-deutschweb/CHECKPOINT.json",
@@ -3614,15 +3614,16 @@
       "framework": "v3.3.6",
       "dataset_profile": "user-input-adaptive@1.2.0",
       "latest_portable_checkpoint": {
-        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-NVV-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-        "sha256": "4f3e644b2e4c46708afdbc6a294a3ce3dff3e34b80bd2729c7b5e557219d4edd",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-NVV-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_000000002cbc81f48e3a881d6a230ede",
-        "library_stable_id": "libfile_3178b5e925448191b8c80e0545e9a98f",
+        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+        "sha256": "209173f3513d7c9163cbd2a1191eb374322e2e2e30b00762587da8c52170338d",
+        "size_bytes": 3769562,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000cbdc82439880c6b0caf1fda2",
+        "library_stable_id": "libfile_47a3e199ce8c81919db21d233719a39e",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "source_fidelity_guard": "Do not assume the advertised 250 equals final canonical card count; Stage1 inventories source occurrences and Stage2 closes identity.",
-      "next_action": "Stage3C disposition closure over all 4562 final cells; Stage4 independent re-audit only after Stage3C PASS.",
+      "next_action": "Stage4 independent linguistic/lexical re-audit of the exact Stage3C canonical/evidence/disposition state; recompute applicability and verify source IDs, relation endpoints/duplicates, expression structure, dependency fingerprints, no-force decisions and linguistic quality without trusting Stage3 self-report.",
       "distinct_displayed_head_forms": 252,
       "stage1": {
         "status": "PASS",
@@ -4646,6 +4647,61 @@
         "repairs_sha256": "fbd63af25ae3e392a2a4de3187990e9e6c42d605dff7aba97921e18832bd71d0",
         "validators": "PASS_NVV_CLOSURE_MUTATION_BOUNDARY_INDEPENDENT_STRUCTURAL",
         "post_package_verification": "PASS_MANIFEST_508_508_SHA256SUMS_509_509_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+        "runtime_binding_required_now": false
+      },
+      "stage3C": {
+        "state": "PASS",
+        "scope": "disposition_closure_certification",
+        "targets": 292,
+        "dimension_cells": 4562,
+        "final_cells": 4562,
+        "unresolved_cells": 0,
+        "verified_present": 3110,
+        "closed_no_force": 1160,
+        "not_applicable": 292,
+        "requirement_classes": {
+          "MUST_HAVE": {
+            "VERIFIED_PRESENT": 1843
+          },
+          "REVIEW_TO_CLOSURE": {
+            "VERIFIED_PRESENT": 1267,
+            "CLOSED_NO_FORCE": 1160
+          },
+          "OPTIONAL": {
+            "NOT_APPLICABLE": 292
+          }
+        },
+        "dataset_level_exception": "source_audio => SOURCE_HAS_NO_AUDIO; source-occurrences 292/292 media_refs=[]",
+        "disposition_reason_code_normalizations": 630,
+        "normalization_breakdown": {
+          "collocation": 231,
+          "related": 205,
+          "word_family": 194
+        },
+        "candidate_ledger": {
+          "total": 1752,
+          "accepted": 592,
+          "rejected": 1160,
+          "deferred": 0
+        },
+        "relation_records": 592,
+        "relation_types": {
+          "SYNONYM": 257,
+          "ANTONYM": 44,
+          "COLLOCATION": 61,
+          "WORD_FAMILY": 98,
+          "RELATED": 87,
+          "NVV": 45
+        },
+        "canonical_sha256": "97660b337f2c26692bbcd08e06643bdfecbc0202cbcc2c24df9b3a3e707813ba",
+        "relations_sha256": "514da501851ddad0ec3f780ca1fbed7905cfbb6d2c9247f1436b6a8ccead9dc0",
+        "completeness_sha256": "2ceff8a0195911a5cc5070a103767e962bce6973aad746c621764fb8773379b1",
+        "candidate_ledger_sha256": "c7d3b39979bd864c91cd24293c81eb7b15153cd6de24736df19d15a8ab39b165",
+        "resolved_policy_sha256": "91196f9951639da3dec49a8e628021a6a13654446abf98bd85413074da2d1d4f",
+        "validators": "PASS_7_OF_7_FRESH_STAGE3C",
+        "official_v336_post_extract_gates": "PASS_4_OF_4_SOURCE_IDENTITY_CANDIDATE_COMPLETENESS",
+        "mutation_boundary": "CANONICAL_AND_592_RELATIONS_UNCHANGED; CANDIDATE_LEDGER_BYTE_IDENTICAL; ONLY_630_REASON_CODE_NORMALIZATIONS_PLUS_SOURCE_AUDIO_DATASET_EXCEPTION",
+        "post_package_verification": "PASS_MANIFEST_520_OF_520_SHA256SUMS_521_OF_521_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
         "runtime_binding_required_now": false
       }
     }

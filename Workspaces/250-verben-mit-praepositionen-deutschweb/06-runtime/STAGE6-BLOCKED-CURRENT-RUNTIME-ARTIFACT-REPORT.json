@@ -1,0 +1,80 @@
+{
+  "schema": "vmp-stage6-blocked-current-runtime-artifact-report@1.0.0",
+  "status": "BLOCKED_CURRENT_RUNTIME_PORTABLE_ARTIFACT_UNAVAILABLE__LIBRARY_AND_GIT_SYNCED",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "workstream": "250-verben-mit-praepositionen-deutschweb",
+  "stage6": {
+    "state": "BLOCKED",
+    "milestone": "STAGE6_RUNTIME_AND_PRESENTATION_ACCEPTANCE",
+    "blocker_code": "CURRENT_RUNTIME_EXACT_PORTABLE_NOT_MATERIALIZABLE",
+    "runtime": {
+      "current": "v455-R89",
+      "current_artifact": "German-Flashcards-Pro-v455-R89-ORGANIZED-DELIVERY-ENGINEERING-CANDIDATE.zip",
+      "required_sha256": "d571005eee6a5445d31569ed55c106ac754a42ba1736bad978c26d152e9bae2e",
+      "app_sha256": "9d3d7f2e7e6a8d45b14900595e6415d3fa6f7c643db30ddbc21e9e85d3ee2d07",
+      "last_fully_verified": "v451-R85",
+      "no_downgrade": true,
+      "git_runtime_source_mirror": "PASS_72_OF_72_EXACT_PACKAGED_RUNTIME_SOURCE_MIRROR",
+      "git_runtime_tree_sha": "43dc853057158daf7755fc0610dee36ad5bcd295",
+      "git_source_commit": "01d78a8a7a289b03456c4dbb488dbd755fb91d89",
+      "library_materialization": "BLOCKED_NO_CURRENT_V455_PORTABLE_FILE"
+    },
+    "content_input": {
+      "stage5_checkpoint_sha256": "ebaaa916e36df3f388519c3468bd85fcf6878995a430ac8a73c5479b8fcf8400",
+      "clean_delivery": "250-Verben-mit-Praepositionen-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+      "clean_delivery_sha256": "b62bc1ec39abf2b17524201d2dd9d09d696e65437f5dcdc8854ac48ea6f785fd",
+      "dataset_sha256": "156a21278c60ad692f320b5a84e15201273bf6ff1708cb4cb5ba37f43d9bfa97",
+      "cards": 292,
+      "verbs": 201,
+      "expressions": 91,
+      "examples": 1168,
+      "relations": 592,
+      "card_type": "de-vocabulary",
+      "presentation_contract": "gfp-vocabulary-neutral@1",
+      "source_audio_refs": 0,
+      "source_audio_exception": "SOURCE_HAS_NO_AUDIO",
+      "immutable": true
+    },
+    "passed_before_block": {
+      "stage5_clean_delivery_library_bytes": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "stage5_anti_bypass": "PASS_5_OF_5_PLUS_310_OF_310_QA",
+      "v455_automated_runtime_evidence": "PASS_AUTOMATED_EXACT_POSTPACKAGE",
+      "v455_generic_vocabulary_import_boundary": "PASS_EXISTING_A1_A2_B1_AUTOMATED_EVIDENCE",
+      "git_runtime_source_mirror": "PASS_EXACT"
+    },
+    "mem024": "REUSE_EXACT_CANDIDATE_BYTES_AND_WAIT_FOR_EXPECTED_VERIFIED_MANIFEST_ON_RESUME",
+    "not_claimed": [
+      "Stage6 PASS",
+      "exact v455 portable materialization",
+      "292-card exact-v455 persistence/index/roundtrip",
+      "Stage7 relock"
+    ],
+    "protected_state": {
+      "semantic_content_mutated": false,
+      "runtime_code_mutated": false,
+      "stage5_remains_content_authority": true
+    },
+    "artifact": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-CURRENT-RUNTIME-ARTIFACT-CHECKPOINT.zip",
+      "sha256": "36870757e7789d29cc727bb90c4c5752ebf58431e763576b253c4cd1ca3925d1",
+      "size_bytes": 7782,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-CURRENT-RUNTIME-ARTIFACT-CHECKPOINT.zip",
+      "library_file_id": "file_00000000b3e48210a30af86ba78b0ef5",
+      "library_stable_id": "libfile_823b0248673c8191862aa196b86591ae",
+      "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "583d9a1307ae237ba221f7156a84263addade00d7360a5ba575f5c9b747984f5",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_000000000f8c8210be3ed12e8fb553d1",
+      "library_stable_id": "libfile_683c1ba224c4819192d35f9e2fce6e11"
+    }
+  },
+  "exact_runtime_policy_basis": [
+    "CURRENT=v455-R89 is mandatory; LAST_FULLY_VERIFIED=v451-R85 is regression reference only.",
+    "Final runtime/import/UI acceptance requires materializing CURRENT portable artifact and verifying its SHA-256.",
+    "Git 01-App is exact source mirror but is not a substitute for the required portable-artifact materialization gate."
+  ],
+  "next_action": "Make the exact CURRENT v455-R89 portable ZIP available in ChatGPT Library/current conversation, verify SHA-256 d571005eee6a5445d31569ed55c106ac754a42ba1736bad978c26d152e9bae2e, then resume Stage6 using the unchanged Stage5 clean-delivery SHA b62bc1ec39abf2b17524201d2dd9d09d696e65437f5dcdc8854ac48ea6f785fd. Under MEM-024, wait with a bounded deadline for the expected VERIFIED manifest/cardCount and rerun the exact same candidate bytes if the harness times out."
+}

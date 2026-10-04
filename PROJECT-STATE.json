@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_ROUND5_REPAIR_R8_SHARD0100_POS2401_2492_PASS__FULL_CORPUS_COMPLETE_WITH_REPAIRS",
+      "status": "STAGE4_ROUND6_REPAIR_R9_SHARD0101_POS1_100_PASS__REPAIRS_REQUIRED_NO_CLEAN_CREDIT",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Start Stage4 Round6 clean-pass attempt with Shard0101: independently re-audit active target positions 1-100 on this exact repaired Round5 successor. Round5 covered all 2492 targets but required repairs, so it earns no clean-pass credit; clean streak remains 0. A complete no-repair full pass over all 2492 targets is required before clean streak can advance to 1.",
+      "next_action": "Continue Stage4 Round6 repair R9 with Shard0102: independently full-semantic-audit active target positions 101-200 on this repaired successor. Shard0101 required confirmed repairs, so Round6 cannot earn clean-pass credit and clean streak remains 0. Complete the Round6 repair pass, then restart the next clean-pass attempt from position 1 on the final repaired snapshot.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,14 +230,14 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "Stage4 Round5 repair R8 — Shard0100 positions 2401-2492 (full corpus complete with repairs)",
-      "last_observed_note": "Shard0100 independently full-semantic-audited positions 2401-2492: 92 targets / 368 examples reviewed; 36 affected targets, 18 modified example bundles and 27 learner semantic fields repaired; no canonical/source/structure changes. Round5 is now complete across all 2492 targets / 9968 examples with 475 affected targets, 714 modified example bundles, 350 semantic-field repairs, 3 structure repairs and 3 canonical source repairs. Stage3C remains 42364 cells / 0 unresolved. Because Round5 required repairs, it earns no clean-pass credit and clean streak remains 0.",
+      "last_observed_stage": "Stage4 Round6 repair R9 — Shard0101 positions 1-100",
+      "last_observed_note": "Shard0101 independently re-audited positions 1-100 on the exact repaired Round5 successor: 100 targets / 400 examples reviewed; 9 affected targets, 9 modified example bundles and 12 learner semantic fields repaired; no identity/canonical/source/structure changes. Confirmed fixes include English calque cleanup, source-explicit literal+figurative sense restoration for im Abseits stehen and auf Abstand gehen, and multi-meaning alignment for jdn. zur Ader lassen. Stage3C remains 42364 cells / 0 unresolved. Because Shard0101 required repairs, Round6 cannot earn clean-pass credit and clean streak remains 0.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0100-POS2401-2492-PASS-CHECKPOINT.zip",
-        "sha256": "302def8487eb718764ec51908a68cb427bdfd070e2f8d35d75c9d3b068cbdda6",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round5-Repair-R8-Shard0100-POS2401-2492-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000865081f486083edadc1fdd49",
-        "library_stable_id": "libfile_7a7e27922f04819196f6bf269cafc3d1",
+        "filename": "NVV-v3.3.6-Stage4-Round6-Repair-R9-Shard0101-POS1-100-PASS-CHECKPOINT.zip",
+        "sha256": "f7cce60ab384ac85868a0453d0b986f819106d2be5fcc508d05ec05c59db8626",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round6-Repair-R9-Shard0101-POS1-100-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000e80481f48269c12f1cfc4be7",
+        "library_stable_id": "libfile_82285f2cf82c81919fb028d695c08dbd",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "stage2": {
@@ -266,19 +266,19 @@
         "dimension_cells": 42364,
         "unresolved_cells": 0,
         "review_queue_open": 0,
-        "last_recompute": "ROUND5_REPAIR_R8_SHARD0100",
+        "last_recompute": "ROUND6_REPAIR_R9_SHARD0101",
         "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9",
         "verified_present_cells": 18590,
         "closed_no_force_cells": 21282,
         "not_applicable_cells": 2492
       },
       "stage4": {
-        "status": "STAGE4_ROUND5_REPAIR_R8_SHARD0100_POS2401_2492_PASS__FULL_CORPUS_COMPLETE_WITH_REPAIRS",
-        "rounds_completed": 5,
+        "status": "STAGE4_ROUND6_REPAIR_R9_SHARD0101_POS1_100_PASS__REPAIRS_REQUIRED_NO_CLEAN_CREDIT",
+        "rounds_completed": 6,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Start Stage4 Round6 clean-pass attempt with Shard0101: independently re-audit active target positions 1-100 on this exact repaired Round5 successor. Round5 covered all 2492 targets but required repairs, so it earns no clean-pass credit; clean streak remains 0. A complete no-repair full pass over all 2492 targets is required before clean streak can advance to 1.",
+        "next": "Continue Stage4 Round6 repair R9 with Shard0102: independently full-semantic-audit active target positions 101-200 on this repaired successor. Shard0101 required confirmed repairs, so Round6 cannot earn clean-pass credit and clean streak remains 0. Complete the Round6 repair pass, then restart the next clean-pass attempt from position 1 on the final repaired snapshot.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
           "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
@@ -721,6 +721,45 @@
             "structure_repairs": 3,
             "canonical_source_repairs": 3,
             "full_corpus_complete": true,
+            "clean_streak": 0,
+            "clean_credit": 0
+          }
+        },
+        "round6_repair_r9": {
+          "status": "SHARD0101_POS1_100_PASS_WITH_REPAIRS__NO_CLEAN_CREDIT",
+          "latest_shard": {
+            "id": "0101",
+            "positions": "1-100",
+            "reviewed_targets": 100,
+            "reviewed_examples": 400,
+            "affected_targets": 9,
+            "modified_example_bundles": 9,
+            "semantic_field_repairs": 12,
+            "structure_repairs": 0,
+            "canonical_source_repairs": 0,
+            "stage3c_affected_dimension_cells": 24,
+            "stage3c_status_transitions": 0,
+            "stage3c_evidence_refreshes": 24,
+            "clean_credit": 0,
+            "artifact": {
+              "filename": "NVV-v3.3.6-Stage4-Round6-Repair-R9-Shard0101-POS1-100-PASS-CHECKPOINT.zip",
+              "sha256": "f7cce60ab384ac85868a0453d0b986f819106d2be5fcc508d05ec05c59db8626",
+              "successor_core_sha256": "6a86d679bb723a84a216c99d8d694359a14130f68a841c28eecc67e060c81135",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round6-Repair-R9-Shard0101-POS1-100-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000e80481f48269c12f1cfc4be7",
+              "library_stable_id": "libfile_82285f2cf82c81919fb028d695c08dbd",
+              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            }
+          },
+          "cumulative": {
+            "reviewed_positions": 100,
+            "reviewed_targets": 100,
+            "reviewed_examples": 400,
+            "affected_targets": 9,
+            "modified_example_bundles": 9,
+            "semantic_field_repairs": 12,
+            "structure_repairs": 0,
+            "canonical_source_repairs": 0,
             "clean_streak": 0,
             "clean_credit": 0
           }

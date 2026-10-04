@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_POST_S4_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW_PASS__CLEAN_PASS_RESTART_READY",
+      "status": "STAGE4_ROUND7_CLEAN_PASS_R10_SHARD0104_POS1_100__REPAIRS_REQUIRED_NO_CLEAN_CREDIT",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Start the next full Stage4 clean-pass attempt from position 1 on this exact S4 successor snapshot. Review all 2492 targets independently. If any repair is required, the pass earns no clean credit and any recurrent defect family must again follow MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA; if the entire pass is clean, award clean-streak credit 1 of 2 on this unchanged snapshot.",
+      "next_action": "Continue Stage4 Round7 clean-pass repair attempt R10 with positions 101-200 on this exact repaired successor. Round7 already required repairs, so it cannot earn clean credit. If the same defect family becomes recurrent in later shards, invoke MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA before relying on another clean pass. After the full 2492-position repair pass completes, restart the next clean-pass attempt from position 1 on the final repaired snapshot.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,15 +230,15 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "Stage4 post-S4 systemic-family exhaustion review",
-      "last_observed_note": "No additional recurrent defect family is currently evidenced strongly enough to justify another corpus-wide systemic sweep. Residual structural screens are clean; source-marker residuals were reviewed without new systemic repairs. S4 core bytes remain unchanged; Round6 clean credit remains 0. Next full clean pass restarts at position 1 on the exact S4 snapshot.",
+      "last_observed_stage": "Stage4 Round7 clean-pass attempt R10 — Shard0104 positions 1-100",
+      "last_observed_note": "100 targets / 400 examples independently re-audited. Three confirmed learner-layer repairs: position 3 English idiomaticity, position 23 Persian naturalness, position 30 multilingual one-card multi-meaning coverage. Identity/canonical/structure/source surfaces unchanged; Stage3C 42364 cells / 0 unresolved. Round7 clean credit is 0 because repairs were required.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-PostS4-SystemicFamilyExhaustion-PASS-CHECKPOINT.zip",
-        "sha256": "976065bd2cfee23bd1c0ee73bf2b80770be81881416d78ce940a56c17283d3b7",
-        "successor_core_sha256": "2a6b6595f72c172639b418332bd3339ef9850653d4d8b4b8a430c21e6f9c2f41",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PostS4-SystemicFamilyExhaustion-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000ad0c82109037dbce20cc8faf",
-        "library_stable_id": "libfile_95126b90c8288191894416dade19e56e",
+        "filename": "NVV-v3.3.6-Stage4-Round7-CleanPass-R10-Shard0104-POS1-100-3REPAIRS-PASS-CHECKPOINT.zip",
+        "sha256": "097bce306cab6d8166325dfb7eda2a600719ccc06c621b5359ed9073f8585498",
+        "successor_core_sha256": "d0eceb5268a65be9021bdfca38fe1698854e96c735f76c8131d1d77d9f695799",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round7-CleanPass-R10-Shard0104-POS1-100-3REPAIRS-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000d558821093acd1be8d2971b5",
+        "library_stable_id": "libfile_2ad9dfcc3c708191ba1c402a749c4326",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "stage2": {
@@ -274,12 +274,12 @@
         "not_applicable_cells": 2492
       },
       "stage4": {
-        "status": "STAGE4_POST_S4_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW_PASS__CLEAN_PASS_RESTART_READY",
+        "status": "STAGE4_ROUND7_CLEAN_PASS_R10_SHARD0104_POS1_100__REPAIRS_REQUIRED_NO_CLEAN_CREDIT",
         "rounds_completed": 6,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Start the next full Stage4 clean-pass attempt from position 1 on this exact S4 successor snapshot. Review all 2492 targets independently. If any repair is required, the pass earns no clean credit and any recurrent defect family must again follow MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA; if the entire pass is clean, award clean-streak credit 1 of 2 on this unchanged snapshot.",
+        "next": "Continue Stage4 Round7 clean-pass repair attempt R10 with positions 101-200 on this exact repaired successor. Round7 already required repairs, so it cannot earn clean credit. If the same defect family becomes recurrent in later shards, invoke MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA before relying on another clean pass. After the full 2492-position repair pass completes, restart the next clean-pass attempt from position 1 on the final repaired snapshot.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
           "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
@@ -889,6 +889,22 @@
             "next_clean_pass_start_position": 1,
             "exact_parent_core_sha256": "2a6b6595f72c172639b418332bd3339ef9850653d4d8b4b8a430c21e6f9c2f41"
           }
+        },
+        "round7_clean_pass_r10": {
+          "status": "IN_PROGRESS_REPAIRS_REQUIRED_NO_CLEAN_CREDIT",
+          "positions_completed": 100,
+          "targets_reviewed": 100,
+          "examples_reviewed": 400,
+          "affected_targets": 3,
+          "modified_example_bundles": 3,
+          "individual_example_rows_modified": 4,
+          "semantic_field_repairs": 3,
+          "structure_repairs": 0,
+          "canonical_source_repairs": 0,
+          "clean_credit": 0,
+          "latest_shard": "0104",
+          "next_positions": "101-200",
+          "successor_core_sha256": "d0eceb5268a65be9021bdfca38fe1698854e96c735f76c8131d1d77d9f695799"
         }
       },
       "latest_structure_repair_delta": {

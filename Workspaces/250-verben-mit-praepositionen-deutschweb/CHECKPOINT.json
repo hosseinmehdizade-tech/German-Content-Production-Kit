@@ -7,15 +7,16 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_BATCH0028_CORE_ENRICHMENT_PASS",
+  "status": "STAGE3B_BATCH0029_CORE_ENRICHMENT_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0028-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
-      "sha256": "cb4b68a2950c2c303e0b4ee3df1034131e47a1735cd0c24f1852f9d03d79e14f",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0028-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_0000000030e8821092c86c6dea4e222d",
-      "library_stable_id": "libfile_caa7421fc26c8191be78e0e75b4eefb2"
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0029-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "sha256": "ae520bcdaf45f600e14284abdb963440ff36e77611c21ff1e0791551075f80be",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0029-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000d5148210825c758e354fdb0e",
+      "library_stable_id": "libfile_023cbbd37d688191a520c72d5f2bb663",
+      "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "git": "IN_SYNC",
     "branch": "250-verben-mit-praepositionen-production"
@@ -39,7 +40,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B Batch0029 core enrichment for source_order 281..290 using the same approved evidence routes; preserve unresolved relation dimensions for later explicit evidence review/closure.",
+  "next_action": "Stage3B Batch0030 core enrichment for source_order 291..292; then begin explicit relation-dimension evidence review/closure without density fabrication.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -1737,5 +1738,72 @@
     },
     "relation_dimensions": "DEFERRED_FOR_EVIDENCE_REVIEW_NO_DENSITY_FABRICATION",
     "runtime_binding_required_now": false
+  },
+  "stage3B_batch0029": {
+    "state": "PASS",
+    "scope": "core_lexical_and_pedagogical_enrichment",
+    "source_order_range": [
+      281,
+      290
+    ],
+    "targets": 10,
+    "target_ids": [
+      "usrin-vmp-u-0281",
+      "usrin-vmp-u-0282",
+      "usrin-vmp-u-0283",
+      "usrin-vmp-u-0284",
+      "usrin-vmp-u-0285",
+      "usrin-vmp-u-0286",
+      "usrin-vmp-u-0287",
+      "usrin-vmp-u-0288",
+      "usrin-vmp-u-0289",
+      "usrin-vmp-u-0290"
+    ],
+    "senses": 8,
+    "expressions": 2,
+    "examples": 40,
+    "examples_de_fa_en": "40/40/40",
+    "source_examples_preserved_exact": "10/10",
+    "core_dimension_cells_closed": 74,
+    "unresolved_richness_cells_before": 1840,
+    "unresolved_richness_cells_after": 1766,
+    "verified_dimensions_added": {
+      "definition_de": 10,
+      "meaning_fa": 10,
+      "gloss_en": 10,
+      "morphology": 8,
+      "examples_de": 10,
+      "example_translations_fa": 10,
+      "example_translations_en": 10,
+      "structure_components": 2,
+      "argument_slots": 2,
+      "component_relations": 2
+    },
+    "canonical_identity_unchanged": true,
+    "canonical_sha256": "d87aed4c15eaa812b3a880f557e1f8f65054e28e041cc2698020e435a1a49519",
+    "content_sha256": "d6b2226c55aeaadc6c767d35a127d4937353cab8e45c0a27f6cb94439314215d",
+    "evidence_sha256": "eb2f0bd09b2a40801e7240fbf9e4248fa366c1b7fe36a350f3cffb9633235c18",
+    "completeness_sha256": "af1bf15317ee5b9bc1b6a27ba7c57d896c7a0f98b58875328321492504df6156",
+    "candidate_ledger_sha256": "e13c3de892ca3005b36e19d47701456c6ca8ec9fe92572fb92777974a0b2b57d",
+    "official_source_occurrence_regression": "PASS_1_SOURCE_292_OCCURRENCES",
+    "official_identity_closure_regression": "PASS_292_SOURCE_292_ACTIVE",
+    "official_enrichment_baseline_validator": "PASS_292_TARGETS_4562_CELLS_1766_UNRESOLVED",
+    "official_candidate_ledger_validator": "PASS_WORKING_0_CANDIDATES",
+    "independent_batch_validation": "PASS",
+    "post_package_verification": "PASS_429/429_MANIFEST_REHASH_431_ZIP_MEMBERS_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+    "prior_batch_specific_files_immutable": "PASS_380/380",
+    "construction_guards": {
+      "wissen": "wissen über + A (281) and wissen von + D (282) remain separate canonical targets under one base lexeme: topical knowledge/information versus awareness or knowledge of a fact/existence.",
+      "zufrieden_sein": "zufrieden sein mit + D (287) remains a multiword predicative expression with sein + zufrieden; it is not collapsed to a plain verb sense."
+    },
+    "relation_dimensions": "DEFERRED_FOR_EVIDENCE_REVIEW_NO_DENSITY_FABRICATION",
+    "runtime_binding_required_now": false,
+    "artifact": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0029-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "sha256": "ae520bcdaf45f600e14284abdb963440ff36e77611c21ff1e0791551075f80be",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0029-CORE-ENRICHMENT-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000d5148210825c758e354fdb0e",
+      "library_stable_id": "libfile_023cbbd37d688191a520c72d5f2bb663"
+    }
   }
 }

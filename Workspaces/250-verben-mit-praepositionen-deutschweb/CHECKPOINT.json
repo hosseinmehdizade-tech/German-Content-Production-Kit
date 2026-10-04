@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_BATCH0030_CORE_ENRICHMENT_COMPLETE_PASS",
+  "status": "STAGE3B_ANTONYM_FINAL_CLOSURE_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0030-CORE-ENRICHMENT-COMPLETE-PASS-CHECKPOINT.zip",
-      "sha256": "55ef76621c0666272b4107e2ea1bbdae32275971fb27e81f3e81f664e6ebc027",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-Batch0030-CORE-ENRICHMENT-COMPLETE-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000f8dc8210be4d059e38636f0d",
-      "library_stable_id": "libfile_208dae87680c819187be6ec2d34303c8",
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-ANTONYM-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "sha256": "ffb2f36aac41b70ac420588f673c83a595084ffb2338f05787f904041738b5a7",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-ANTONYM-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_0000000069408210a369802cf8478708",
+      "library_stable_id": "libfile_83581ba687948191813f32569332f439",
       "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "git": "IN_SYNC",
@@ -40,7 +40,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Begin Stage3B explicit relation-dimension evidence review/closure across all 292 targets, starting with synonym; use approved relation authorities and record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication.",
+  "next_action": "Stage3B collocation final closure across all 292 targets using DUDEN_STIL primary, DUDEN_UNIVERSAL secondary and corpus validation only where needed; record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -1862,6 +1862,76 @@
       "library_file_id": "file_00000000f8dc8210be4d059e38636f0d",
       "library_stable_id": "libfile_208dae87680c819187be6ec2d34303c8",
       "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
+  },
+  "stage3B_synonym_final_closure": {
+    "state": "PASS",
+    "scope": "synonym_relation_disposition_closure",
+    "targets": 292,
+    "verified_present": 257,
+    "closed_no_force": 35,
+    "unresolved": 0,
+    "new_synonym_relations": 257,
+    "canonical_relations_total": 257,
+    "candidate_ledger": {
+      "total": 292,
+      "accepted": 257,
+      "rejected": 35,
+      "deferred": 0
+    },
+    "richness": {
+      "dimension_cells": 4562,
+      "final_cells": 3102,
+      "unresolved_cells": 1460
+    },
+    "approved_routes": [
+      "DUDEN_SYNONYME",
+      "DUDEN_BEDEUTUNG_10"
+    ],
+    "no_density_fabrication": true,
+    "core_content_mutation": "NONE",
+    "runtime_binding_required_now": false,
+    "canonical_sha256": "9deb66f41dec9d41cad85feaed95e71f03dae02ff8d6a674858272c554371896",
+    "completeness_sha256": "1797777689c6263db623d3325b5a1878c9b26275867cf5e5728ee26c59177cc1",
+    "candidate_ledger_sha256": "26c378938c6e3990a606b17e4ba43aff4b4862323fa5c03d4cbaa9e32d165961",
+    "validators": "PASS_5_OF_5",
+    "post_package_verification": "PASS_PARENT_LIBRARY_REMATERIALIZATION"
+  },
+  "stage3B_antonym_final_closure": {
+    "state": "PASS",
+    "scope": "antonym_relation_disposition_closure",
+    "targets": 292,
+    "verified_present": 44,
+    "closed_no_force": 248,
+    "unresolved": 0,
+    "new_antonym_relations": 44,
+    "canonical_relations_total": 301,
+    "candidate_ledger": {
+      "total": 584,
+      "accepted": 301,
+      "rejected": 283,
+      "deferred": 0
+    },
+    "richness": {
+      "dimension_cells": 4562,
+      "final_cells": 3394,
+      "unresolved_cells": 1168
+    },
+    "approved_routes": [
+      "GEGENWORT_2020",
+      "DUDEN_SYNONYME"
+    ],
+    "no_density_fabrication": true,
+    "core_content_mutation": "NONE",
+    "runtime_binding_required_now": false,
+    "canonical_sha256": "ffcd8db2150113c2d93513bf3f3c7cf24e68b9a7ad2c749fe8d530100e4e6cd2",
+    "completeness_sha256": "79e32ea4f60fa238ba6769e8fe62c6394cbf39e825976852199f8c1e6cd07757",
+    "candidate_ledger_sha256": "878900b7ed3ccc819641e6bb3a06c9f148cded0f3c5be18851dfe34821747342",
+    "validators": "PASS_LOCAL_CLOSURE_MUTATION_LEDGER_COMPLETENESS",
+    "post_package_verification": "PASS_MANIFEST_REHASH_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+    "source_materialization": {
+      "GEGENWORT_2020": "0a8a4935c009fd2021fa20d854aa9a5bae7dd5e7983bae510e789bb9a52fe1c0",
+      "DUDEN_SYNONYME": "5642885bcc9d783fe08a3895bc0217e947d53ce027ac5470d3bd40e47532272d"
     }
   }
 }

@@ -7,15 +7,15 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE3B_COLLOCATION_FINAL_CLOSURE_PASS",
+  "status": "STAGE3B_WORD_FAMILY_FINAL_CLOSURE_PASS",
   "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-COLLOCATION-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "sha256": "1ccfa45dd643039fdf33ddf6722cad60a88465eceb7ac5fa5b50843055606c7d",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-COLLOCATION-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_0000000049408243996722e243c4bd36",
-      "library_stable_id": "libfile_08217ccfb2b48191a78b8899f87f92b2",
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage3B-WORD-FAMILY-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "sha256": "854b2b7812c0e8d056670fa8d0f1f5895b8576d1614895537b43657c173e2cf2",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage3B-WORD-FAMILY-FINAL-CLOSURE-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000a3c88246ac975d7aa06dc51f",
+      "library_stable_id": "libfile_8bc4413535e88191a6e1ff0b74dd5773",
       "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "git": "IN_SYNC",
@@ -40,7 +40,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Stage3B word-family final closure across all 292 targets using DUDEN_UNIVERSAL + DUDEN_BEDEUTUNG_10 primary and DUDEN_STIL secondary; WORD_FAMILY requires lexical evidence and superficial string similarity is insufficient; record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication.",
+  "next_action": "Stage3B related final closure across all 292 targets using approved registered semantic-reference evidence; record VERIFIED_PRESENT or justified CLOSED_NO_FORCE without density fabrication. Then close NVV links and proceed to Stage3C disposition closure.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -1972,6 +1972,47 @@
     "source_materialization": {
       "DUDEN_STIL": "83f2e2e9eb349939505b841584a32f7f4f682a391acd67f45498807cafa188d5",
       "DUDEN_UNIVERSAL": "19c8fd9644d2e3acc7314bb04c4fde379d95747c4f1f21fde27a80d23f30ce33"
+    }
+  },
+  "stage3B_word_family_final_closure": {
+    "state": "PASS",
+    "scope": "word_family_relation_disposition_closure",
+    "targets": 292,
+    "verified_present": 98,
+    "closed_no_force": 194,
+    "unresolved": 0,
+    "new_word_family_relations": 98,
+    "canonical_relations_total": 460,
+    "candidate_ledger": {
+      "total": 1168,
+      "accepted": 460,
+      "rejected": 708,
+      "deferred": 0
+    },
+    "richness": {
+      "dimension_cells": 4562,
+      "final_cells": 3978,
+      "unresolved_cells": 584
+    },
+    "approved_routes": [
+      "DUDEN_UNIVERSAL",
+      "DUDEN_BEDEUTUNG_10",
+      "DUDEN_STIL"
+    ],
+    "rule": "Explicit lexical derivation/word-formation evidence plus active-target semantic safety; superficial string similarity is insufficient.",
+    "no_density_fabrication": true,
+    "core_content_mutation": "NONE",
+    "runtime_binding_required_now": false,
+    "canonical_sha256": "522e012331d1a1abf05b4b7f8c284e3c0faf1a5064efc2cd6133124a217711c1",
+    "completeness_sha256": "e730a8c8af18ced860f284eac52a5c43b99512cfc9f4d6b23bbd9d1787795694",
+    "candidate_ledger_sha256": "31496bb71c30426d7772ad11946c68281e87b7e790a3392901f81a30b8dbfa26",
+    "repairs_sha256": "bb0941f3790c5bf70691ee98faabc95ebdae33e63215c84783c9a896bfa215f7",
+    "validators": "PASS_LOCAL_CLOSURE_MUTATION_LEDGER_COMPLETENESS",
+    "post_package_verification": "PASS_MANIFEST_REHASH_SHA256SUMS_CRC_HYGIENE_LIBRARY_REMATERIALIZATION_EXACT_SHA256_BYTE_COMPARE",
+    "source_materialization": {
+      "DUDEN_UNIVERSAL": "19c8fd9644d2e3acc7314bb04c4fde379d95747c4f1f21fde27a80d23f30ce33",
+      "DUDEN_BEDEUTUNG_10": "a7c65e270e73eb799d535c3084431061adffeb45118b532f84b023a4342edb71",
+      "DUDEN_STIL": "83f2e2e9eb349939505b841584a32f7f4f682a391acd67f45498807cafa188d5"
     }
   }
 }

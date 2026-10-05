@@ -2,25 +2,32 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE5_NEUTRAL_PROJECTION_MIGRATION",
+  "milestone": "STAGE5_OFFICIAL_V3_3_6_CLEAN_DELIVERY_ANTI_BYPASS_PASS",
   "quality_state": "PASS",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
   "counts": {
     "cards": 174,
+    "source_occurrences": 258,
+    "active_canonical_ids": 174,
     "examples_de": 696,
     "examples_fa": 696,
     "examples_en": 696,
-    "relations": 902
+    "relations": 902,
+    "dimension_cells": 2262,
+    "unresolved_cells": 0,
+    "new_candidates": 0
   },
   "gates": {
-    "parent_identity": "PASS",
-    "canonical_deep_copy": "174/174 PASS",
-    "neutral_projection": "174/174 PASS; 0 legacy; 0 selector conflicts",
-    "prevention_projection_lineage": "PASS",
-    "post_package": "PASS",
-    "official_v336_clean_delivery": "PENDING_LEGACY_AUTHORITY_BRIDGE",
-    "stage6_runtime_acceptance": "NOT_RUN"
+    "lossless_parent_parity": "PASS / 0 semantic mutations",
+    "canonical_v411": "PASS / 55 non-blocking legacy NVV literal-target warnings",
+    "unified_projection": "PASS / 174 de-vocabulary / 174 presentation contract",
+    "source_occurrences": "PASS / 7 sources / 258 occurrences",
+    "identity_closure": "PASS / 258 dispositions / 174 active IDs / 0 unresolved",
+    "candidate_ledger": "PASS / 0 new candidates",
+    "enrichment_completeness": "PASS / 174 targets / 2262 cells / 0 unresolved",
+    "official_clean_delivery_builder": "PASS",
+    "fresh_post_package": "PASS / CRC + SHA256SUMS + all official v3.3.6 gates"
   },
   "artifact": {
     "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-Neutral-Projection-PASS-CHECKPOINT.zip",
@@ -40,8 +47,25 @@
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
   ],
   "persistence": {
-    "git": "IN_SYNC_WORKSTREAM_BRANCH",
-    "binary": "USER_DELIVERY_PENDING_LIBRARY"
+    "git": "IN_SYNC_WORKSTREAM_BRANCH_FOR_STAGE5_METADATA",
+    "library": "CLEAN_DELIVERY_AND_POST_PACKAGE_IN_SYNC"
   },
-  "next_action": "Build the v3.3.6 legacy-authority bridge ledgers from the immutable v1.2.0 parent and run the official v3.3.6 clean-delivery anti-bypass builder. Re-resolve GFP CURRENT only at Stage6."
+  "next_action": "Stage6 runtime acceptance only: re-resolve German-Flashcards-Pro CURRENT and LAST_FULLY_VERIFIED separately; materialize exact CURRENT portable artifact; test import/persistence/reload/presentation/export-reimport. Do not downgrade to older runtime.",
+  "clean_delivery": {
+    "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+    "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
+    "library_file_id": "libfile_8c636189c66081919606f3acc0001a88",
+    "sha256": "9914a3b22ecb32cf73cb8cc44335dc3887327a47e4c01f6493f37058875506ed",
+    "size_bytes": 356989
+  },
+  "post_package_verification": {
+    "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-POST-PACKAGE-VERIFICATION.json",
+    "file_id": "file_00000000a8ec81f4b5c49fc2af3ddfed",
+    "library_file_id": "libfile_2fcc5db1ea90819183d9cd9570199782"
+  },
+  "legacy_bridge_boundary": {
+    "source_image_bytes_reverified": false,
+    "fresh_external_linguistic_recertification": false,
+    "nvv_literal_target_warnings": 55
+  }
 }

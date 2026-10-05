@@ -1,0 +1,145 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-05T23:04:00+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0010",
+    "positions": "901-1000",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "confirmed_findings": [
+    {
+      "position": 930,
+      "target_id": "dah-nvv-exp-00923",
+      "canonical_form": "in Gefahr geraten / kommen",
+      "severity": "MINOR",
+      "category": "ENGLISH_IDIOMATICITY",
+      "fields": [
+        "gloss_en",
+        "examples[0].en",
+        "examples[1].en",
+        "examples[2].en",
+        "examples[3].en"
+      ],
+      "finding": "Repeated English 'get into danger' is understandable but non-idiomatic.",
+      "repair_direction": "Use natural context-specific English such as 'get into a dangerous situation', 'become endangered', or 'be put at risk'."
+    },
+    {
+      "position": 973,
+      "target_id": "dah-nvv-exp-00966",
+      "canonical_form": "zu Geld kommen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS",
+      "fields": [
+        "examples[2].fa"
+      ],
+      "finding": "Persian 'خودکار پولدار نمی‌شود' is an unnatural calque of 'automatisch'.",
+      "repair_direction": "Use 'خودبه‌خود پولدار نمی‌شود' or equivalent natural Persian."
+    },
+    {
+      "position": 988,
+      "target_id": "dah-nvv-exp-00981",
+      "canonical_form": "ins Geschäft kommen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_IDIOMATICITY",
+      "fields": [
+        "examples[1].en",
+        "examples[3].en"
+      ],
+      "finding": "English 'get into business' is awkward for reaching a deal / starting a commercial relationship.",
+      "repair_direction": "Use 'start doing business with' and context-specific 'win business / secure contracts'."
+    },
+    {
+      "position": 991,
+      "target_id": "dah-nvv-exp-00984",
+      "canonical_form": "eine Geschäft eröffnen",
+      "severity": "MAJOR",
+      "category": "CANONICAL_SOURCE_TYPO_REPAIR_REQUIRED",
+      "fields": [
+        "canonical_form",
+        "structure.pattern_de"
+      ],
+      "finding": "Source has the grammatical typo 'Geschäft f.' / 'eine Geschäft eröffnen'. Standard learner form is neuter: 'ein Geschäft eröffnen'.",
+      "repair_direction": "Preserve raw source provenance, add explicit source-repair evidence, correct learner canonical/structure to 'ein Geschäft eröffnen'."
+    },
+    {
+      "position": 994,
+      "target_id": "dah-nvv-exp-00987",
+      "canonical_form": "den Geschmack verletzen",
+      "severity": "MINOR",
+      "category": "GERMAN_EXAMPLE_NATURALNESS",
+      "fields": [
+        "examples[0].de"
+      ],
+      "finding": "'Die grelle Dekoration verletzt für viele Gäste den guten Geschmack.' is awkward German.",
+      "repair_direction": "Rephrase naturally, e.g. with 'nach Ansicht vieler Gäste'."
+    },
+    {
+      "position": 999,
+      "target_id": "dah-nvv-exp-00992",
+      "canonical_form": "Gesellschaft bekommen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_IDIOMATICITY",
+      "fields": [
+        "examples[0].en"
+      ],
+      "finding": "'Have company from her neighbor' is not idiomatic English.",
+      "repair_direction": "Use 'Her neighbor will keep her company...' or 'She will have her neighbor for company'."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 6,
+    "blocker": 0,
+    "major": 1,
+    "minor": 5,
+    "clean_targets": 94,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "100/100",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 100,
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 1,
+    "source_repair_positions": [
+      991
+    ]
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "content_edits_applied": 0
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1000,
+    "positions_remaining": 1492,
+    "confirmed_finding_targets": 87,
+    "blocker_findings": 0,
+    "major_findings": 24,
+    "minor_findings": 63,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1001-1100. Do not repair any logged finding until all 2492 targets have been audited."
+}

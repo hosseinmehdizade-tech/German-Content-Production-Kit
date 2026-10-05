@@ -138,7 +138,7 @@
       "state": "RUNNING",
       "phase_status": {
         "3A_baseline": "PASS",
-        "3B_gap_driven_enrichment": "PASS_COMPLETE_WITH_EXPLICIT_REMAINDERS",
+        "3B_gap_driven_enrichment": "RUNNING_CLOSURE_AFTER_BATCH0040",
         "3C_disposition_closure": "NOT_STARTED"
       },
       "targets": 788,
@@ -671,22 +671,29 @@
         "portable:03-evidence/EVIDENCE-INDEX.json",
         "portable:03-evidence/CANDIDATE-LEDGER.json",
         "portable:03-evidence/STAGE3B-PROGRESS.json",
-        "portable:03-evidence/STAGE3B-BATCH0040-VALIDATION.json",
-        "Git:03-evidence/STAGE3B-BATCH0040-SUMMARY.json"
+        "portable:03-evidence/STAGE3B-CEFR-CLOSURE-VALIDATION.json",
+        "Git:03-evidence/STAGE3B-CEFR-CLOSURE-SUMMARY.json"
       ],
       "gate_evidence": [
-        "portable:03-evidence/STAGE3B-BATCH0040-VALIDATION.json",
-        "portable:STAGE3B-BATCH0040-REPORT.md"
+        "portable:03-evidence/STAGE3B-CEFR-CLOSURE-VALIDATION.json",
+        "portable:STAGE3B-CEFR-CLOSURE-REPORT.md"
       ],
-      "claim_boundary": "Stage3B COMPLETE at 788/788. 431 cumulative Persian direct-bilingual evidence gaps and 32 cumulative English bilingual gaps remain explicit. Relation density and exact item-level CEFR were not fabricated; Stage3C and Stage4 have not run.",
+      "claim_boundary": "Stage3B target enrichment coverage is 788/788, but Stage3B closure remains RUNNING. Exact item-level CEFR is reviewed and CLOSED_NO_FORCE for 788/788. Bilingual provisional cells and relation dimensions still require Stage3B review; Stage3C and Stage4 are not claimed.",
       "portable_artifact": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-Batch0040-CHECKPOINT.zip",
-        "sha256": "eb88a3015065679fd4e65fdd080f690fcb44bcd97ec2ec58f19aeda9c3bf8a65",
-        "size_bytes": 753619,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-Batch0040-CHECKPOINT.zip",
-        "library_file_id": "libfile_1140d6f582948191b0fc53865bc9ba56",
-        "library_file_snapshot_id": "file_00000000be1481f4a7776ac4943645b9",
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-CEFR-CLOSURE-CHECKPOINT.zip",
+        "sha256": "936969251cb71b2ce183a7fc6ed756012054c38eb87c1fa323c6e2cc7dc27529",
+        "size_bytes": 761179,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-CEFR-CLOSURE-CHECKPOINT.zip",
+        "library_file_id": "libfile_3231fc76230c8191855f64464c5074c3",
+        "library_file_snapshot_id": "file_000000001f50821081a8419a55e343fe",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "cefr_closure": {
+        "state": "PASS",
+        "reviewed": 788,
+        "closed_no_force": 788,
+        "unresolved": 0,
+        "reason_code": "SOURCE_ROUTE_EXHAUSTED_BROAD_BAND_ONLY"
       }
     },
     {
@@ -720,15 +727,15 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE3B_COMPLETE_788_OF_788_PASS_WITH_EXPLICIT_REMAINDERS",
+  "quality_state": "STAGE3B_CEFR_CLOSURE_PASS__STAGE3B_STILL_RUNNING",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Run Stage3C disposition closure on the complete 788-target Stage3B authority.",
-  "resume_instruction": "Use the exact Batch0040 portable artifact as the Stage3B-complete authority; do not ingest unselected pages. Begin Stage3C only.",
+  "next_action": "Continue Stage3B closure on provisional bilingual core fields; then review relation dimensions. Do not start Stage3C until no unreviewed/deferred cells remain.",
+  "resume_instruction": "Use the exact CEFR-closure portable artifact as authority. Preserve canonical bytes and selected-page scope. Continue Stage3B closure only.",
   "stage3b_batch": "0040",
-  "stage3b_status": "PASS_COMPLETE_WITH_EXPLICIT_REMAINDERS",
+  "stage3b_status": "RUNNING_AFTER_CEFR_CLOSURE",
   "stage3b_targets_processed": 788,
   "stage3b_next_target": null,
   "stage3b_provisional_targets": [
@@ -1163,5 +1170,6 @@
     "ahl-lu-0785",
     "ahl-lu-0786",
     "ahl-lu-0787"
-  ]
+  ],
+  "stage3b_cefr_closure": "PASS_788_OF_788_CLOSED_NO_FORCE"
 }

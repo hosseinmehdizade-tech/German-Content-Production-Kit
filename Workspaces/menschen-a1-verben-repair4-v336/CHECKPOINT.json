@@ -1,0 +1,60 @@
+{
+  "schema": "menschen-a1-verben-repair4-v336-checkpoint@1.0.0",
+  "workstream": "menschen-a1-verben-repair4-v336",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "status": "PASS_REPAIR4_CONTENT_RELOCKED__EXACT_RUNTIME_ACCEPTANCE_PENDING",
+  "parent_repair3": {
+    "filename": "Menschen-A1-Verben-v3.3.6-Repair3-GFP-v455-RELOCKED.zip",
+    "sha256": "99d1f27d1beb91a69c2160ba2e7f2accf364779017cb346f39a9843c28a034dd",
+    "bytes": 802281,
+    "immutable": true
+  },
+  "canonical_authority": {
+    "sha256": "aa42e830d8f3ed15785fac52fb4cdaa51556a36f595364843c9e3be72d3dcdb9",
+    "changed": false,
+    "cards": 310,
+    "verbs": 247,
+    "expressions": 63,
+    "examples": 1240,
+    "relations": 768
+  },
+  "repair_scope": {
+    "AUD-003_visible_formen_perfekt": "5/5 fixed",
+    "all_verb_visible_perfekt": "247/247 PASS",
+    "finite_perfekt_heads": "247/247 PASS",
+    "single_auxiliary_alignment": "166/166 PASS",
+    "missing_auxiliary_metadata": "80 retained; finite-head/display validation added without fabrication",
+    "reviewed_mixed_auxiliary": "1/1 PASS (ausziehen)",
+    "source_authority_filename_reference": "fixed",
+    "metadata_scope_note": "fixed to AUD-003",
+    "absent_builder_reference": "removed; self-contained verify_repair4.py packaged",
+    "local_absolute_paths": "removed from Repair4 lineage/differential"
+  },
+  "projection": {
+    "parent_sha256": "5a750111d4c680200d23cd8215ea9aaf8009ea8974a5286a1c9c34ebc6875106",
+    "repair4_sha256": "466a84e0e0dd72993ec96b9832ca3c703c5a6a66ec7aa7431c9ff3866c78e586",
+    "semantic_changed_cells": 5,
+    "changed_column": "details"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-Verben-v3.3.6-Repair4-GFP-v455-CONTENT-RELOCKED.zip",
+    "sha256": "d048120f4e7de9f021eb9465fd4c4bd587d433ff5bedcc4fda2dfb5fa1b41a20",
+    "bytes": 807130,
+    "zip_members": 19,
+    "sha256sum_entries": 18,
+    "zip_crc": "PASS",
+    "self_contained_verifier": "PASS"
+  },
+  "runtime": {
+    "inherited_target": "v455-R89",
+    "exact_runtime_acceptance_after_repair4": "PENDING_REQUIRED",
+    "reason": "Repair4 changes visible presentation bytes. Content is relocked, but exact runtime acceptance must be rerun before runtime-final claims."
+  },
+  "intentional_non_changes": {
+    "ausziehen": "Retains reviewed dual Perfekt display string; no scalar-parser claim.",
+    "identity_closure_parent_v435": "Historical provenance evidence retained.",
+    "duplicate_examples": "Not treated as correctness defects.",
+    "front_label_etw_auseinanderhalten": "Not changed; label convention not proven defective."
+  },
+  "next_action": "Run exact-current-runtime import/presentation acceptance on the Repair4 artifact; only then issue a runtime-accepted final/relocked successor if required."
+}

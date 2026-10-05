@@ -138,7 +138,7 @@
       "state": "RUNNING",
       "phase_status": {
         "3A_baseline": "PASS",
-        "3B_gap_driven_enrichment": "RUNNING",
+        "3B_gap_driven_enrichment": "PASS_COMPLETE_WITH_EXPLICIT_REMAINDERS",
         "3C_disposition_closure": "NOT_STARTED"
       },
       "targets": 788,
@@ -185,17 +185,18 @@
           "0036",
           "0037",
           "0038",
-          "0039"
+          "0039",
+          "0040"
         ],
-        "latest_batch": "0039",
+        "latest_batch": "0040",
         "batch0010_status": "PASS_WITH_EXPLICIT_REMAINDERS",
-        "targets_processed": 780,
+        "targets_processed": 788,
         "targets_total": 788,
-        "next_target": "ahl-lu-0781",
-        "cumulative_examples_de": 3120,
-        "cumulative_example_translations_fa": 3120,
-        "cumulative_example_translations_en": 3120,
-        "cumulative_core_dimension_cells_addressed": 4679,
+        "next_target": null,
+        "cumulative_examples_de": 3152,
+        "cumulative_example_translations_fa": 3152,
+        "cumulative_example_translations_en": 3152,
+        "cumulative_core_dimension_cells_addressed": 4727,
         "cumulative_provisional_persian_targets": [
           "ahl-lu-0003",
           "ahl-lu-0008",
@@ -622,7 +623,12 @@
           "ahl-lu-0773",
           "ahl-lu-0775",
           "ahl-lu-0776",
-          "ahl-lu-0778"
+          "ahl-lu-0778",
+          "ahl-lu-0783",
+          "ahl-lu-0784",
+          "ahl-lu-0785",
+          "ahl-lu-0786",
+          "ahl-lu-0787"
         ],
         "resolved_prior_provisional_targets": [
           "ahl-lu-0035",
@@ -656,7 +662,8 @@
         "batch0036_status": "PASS_WITH_EXPLICIT_REMAINDERS",
         "batch0037_status": "PASS_WITH_EXPLICIT_REMAINDERS",
         "batch0038_status": "PASS_WITH_EXPLICIT_REMAINDERS",
-        "batch0039_status": "PASS_WITH_EXPLICIT_REMAINDERS"
+        "batch0039_status": "PASS_WITH_EXPLICIT_REMAINDERS",
+        "batch0040_status": "PASS_COMPLETE_WITH_EXPLICIT_REMAINDERS"
       },
       "stage3c_final_dispositions": 0,
       "authoritative_outputs": [
@@ -664,21 +671,21 @@
         "portable:03-evidence/EVIDENCE-INDEX.json",
         "portable:03-evidence/CANDIDATE-LEDGER.json",
         "portable:03-evidence/STAGE3B-PROGRESS.json",
-        "portable:03-evidence/STAGE3B-BATCH0039-VALIDATION.json",
-        "Git:03-evidence/STAGE3B-BATCH0039-SUMMARY.json"
+        "portable:03-evidence/STAGE3B-BATCH0040-VALIDATION.json",
+        "Git:03-evidence/STAGE3B-BATCH0040-SUMMARY.json"
       ],
       "gate_evidence": [
-        "portable:03-evidence/STAGE3B-BATCH0039-VALIDATION.json",
-        "portable:STAGE3B-BATCH0039-REPORT.md"
+        "portable:03-evidence/STAGE3B-BATCH0040-VALIDATION.json",
+        "portable:STAGE3B-BATCH0040-REPORT.md"
       ],
-      "claim_boundary": "Batch0039 PASS only. Stage3 remains RUNNING. 426 cumulative Persian core evidence gaps and 32 cumulative English bilingual gaps remain explicit. Relation density and exact item-level CEFR were not fabricated; Stage3C and Stage4 have not run.",
+      "claim_boundary": "Stage3B COMPLETE at 788/788. 431 cumulative Persian direct-bilingual evidence gaps and 32 cumulative English bilingual gaps remain explicit. Relation density and exact item-level CEFR were not fabricated; Stage3C and Stage4 have not run.",
       "portable_artifact": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-Batch0039-CHECKPOINT.zip",
-        "sha256": "acfc5249caca4a802ecf3716b06d4491eee211a48ec0efb6551035ca7ec5f5e8",
-        "size_bytes": 748519,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-Batch0039-CHECKPOINT.zip",
-        "library_file_id": "libfile_bd6d74d994088191b7ba850e0e57d89f",
-        "library_file_snapshot_id": "file_0000000030e4820ab0f25b56d43b5765",
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-Batch0040-CHECKPOINT.zip",
+        "sha256": "eb88a3015065679fd4e65fdd080f690fcb44bcd97ec2ec58f19aeda9c3bf8a65",
+        "size_bytes": 753619,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-Batch0040-CHECKPOINT.zip",
+        "library_file_id": "libfile_1140d6f582948191b0fc53865bc9ba56",
+        "library_file_snapshot_id": "file_00000000be1481f4a7776ac4943645b9",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       }
     },
@@ -713,17 +720,17 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE3B_BATCH0039_PASS_WITH_EXPLICIT_REMAINDERS",
+  "quality_state": "STAGE3B_COMPLETE_788_OF_788_PASS_WITH_EXPLICIT_REMAINDERS",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Continue final Stage3B Batch0040 from ahl-lu-0781.",
-  "resume_instruction": "Use the exact Batch0039 portable artifact and resume at ahl-lu-0781; do not ingest unselected pages.",
-  "stage3b_batch": "0039",
-  "stage3b_status": "PASS_WITH_EXPLICIT_REMAINDERS",
-  "stage3b_targets_processed": 780,
-  "stage3b_next_target": "ahl-lu-0781",
+  "next_action": "Run Stage3C disposition closure on the complete 788-target Stage3B authority.",
+  "resume_instruction": "Use the exact Batch0040 portable artifact as the Stage3B-complete authority; do not ingest unselected pages. Begin Stage3C only.",
+  "stage3b_batch": "0040",
+  "stage3b_status": "PASS_COMPLETE_WITH_EXPLICIT_REMAINDERS",
+  "stage3b_targets_processed": 788,
+  "stage3b_next_target": null,
   "stage3b_provisional_targets": [
     "ahl-lu-0003",
     "ahl-lu-0008",
@@ -1150,6 +1157,11 @@
     "ahl-lu-0773",
     "ahl-lu-0775",
     "ahl-lu-0776",
-    "ahl-lu-0778"
+    "ahl-lu-0778",
+    "ahl-lu-0783",
+    "ahl-lu-0784",
+    "ahl-lu-0785",
+    "ahl-lu-0786",
+    "ahl-lu-0787"
   ]
 }

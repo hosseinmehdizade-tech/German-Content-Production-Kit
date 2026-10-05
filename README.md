@@ -1,3 +1,7 @@
+# Global verb Kombinationen policy
+
+**ACTIVE:** `Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` is the mandatory overlay for applicable German verb targets. Learners see one section, **Kombinationen**; backend subtype/provenance remains structured. New work adopts immediately; active work adopts at the next safe Stage3B/Stage4 boundary; historical LOCKED artifacts remain immutable and use successor enrichment for retrofits.
+
 
 
 **Menschen B1 Verben Repair1 successor is now RELOCKED**: 395 active cards, 1580 examples, 2510 relations, Stage7 exact-final **27/27 bounded compositional PASS** on byte-identical CURRENT v451-R85 runtime/content bytes, with Library release/checkpoint rematerialization exact SHA + byte compare PASS. Re-locked organized release: `German-Flashcards-Pro-v451-R85-Menschen-B1-Verben-v3.3.2-Repair1-RELOCKED.zip` (`8c25db09eadc5cf4d9bdecd95c07faf81ab727c87de51fcc3edd434b199a4014`). **Content is re-locked; runtime v451 itself is not FINAL** while its separate same-profile Windows/Chrome acceptance remains open. The historical 400-card v435 locked release remains immutable predecessor.

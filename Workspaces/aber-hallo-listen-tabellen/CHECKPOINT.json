@@ -33,7 +33,7 @@
     "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
     "branch": "main",
     "path": "Workspaces/aber-hallo-listen-tabellen",
-    "persistence_status": "PORTABLE_USER_DELIVERY_READY_LIBRARY_PENDING__GIT_IN_SYNC"
+    "persistence_status": "PORTABLE_LIBRARY_VERIFIED_GIT_METADATA_IN_SYNC"
   },
   "authorities": {
     "content_kit_prompt": "v3.3.6",
@@ -138,7 +138,7 @@
       "state": "RUNNING",
       "phase_status": {
         "3A_baseline": "PASS",
-        "3B_gap_driven_enrichment": "RUNNING_AFTER_FA_BILINGUAL_CLOSURE_BATCH003",
+        "3B_gap_driven_enrichment": "RUNNING_AFTER_FA_BILINGUAL_CLOSURE_BATCH004",
         "3C_disposition_closure": "NOT_STARTED"
       },
       "targets": 788,
@@ -613,22 +613,22 @@
         "portable:03-evidence/EVIDENCE-INDEX.json",
         "portable:03-evidence/CANDIDATE-LEDGER.json",
         "portable:03-evidence/STAGE3B-PROGRESS.json",
-        "portable:03-evidence/STAGE3B-FA-BILINGUAL-CLOSURE-BATCH003-VALIDATION.json",
-        "Git:03-evidence/STAGE3B-FA-BILINGUAL-CLOSURE-BATCH003-SUMMARY.json"
+        "portable:03-evidence/STAGE3B-FA-BILINGUAL-CLOSURE-BATCH004-VALIDATION.json",
+        "Git:03-evidence/STAGE3B-FA-BILINGUAL-CLOSURE-BATCH004-SUMMARY.json"
       ],
       "gate_evidence": [
-        "portable:03-evidence/STAGE3B-FA-BILINGUAL-CLOSURE-BATCH003-VALIDATION.json",
-        "portable:STAGE3B-FA-BILINGUAL-CLOSURE-BATCH003-REPORT.md"
+        "portable:03-evidence/STAGE3B-FA-BILINGUAL-CLOSURE-BATCH004-VALIDATION.json",
+        "portable:STAGE3B-FA-BILINGUAL-CLOSURE-BATCH004-REPORT.md"
       ],
-      "claim_boundary": "Persian closure Batch003 verified 30/30 reviewed provisional meaning_fa cells using approved BEHZAD_DE_FA evidence routes. 343 Persian provisional targets remain; spleißen and wägen remain unresolved from Batch001. Relation dimensions remain open; Stage3C and Stage4 are not claimed.",
+      "claim_boundary": "Persian closure Batch004 verified 30/30 reviewed provisional meaning_fa cells using approved BEHZAD_DE_FA direct routes. 313 Persian provisional targets remain; spleißen and wägen remain unresolved from Batch001. Relation dimensions remain open; Stage3C and Stage4 are not claimed.",
       "portable_artifact": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-FA-BILINGUAL-CLOSURE-BATCH003-CHECKPOINT.zip",
-        "sha256": "2e1c28d7fa0b002f17f11e7519efd68f5bf2680d191f6f713a20d03648cbf64c",
-        "size_bytes": 789702,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-FA-BILINGUAL-CLOSURE-BATCH003-CHECKPOINT.zip",
-        "library_file_id": null,
-        "library_file_snapshot_id": null,
-        "library_rematerialization": "PENDING_CONTAINER_SESSION_UNAVAILABLE__USER_DELIVERY_ARTIFACT_READY"
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-FA-BILINGUAL-CLOSURE-BATCH004-CHECKPOINT.zip",
+        "sha256": "4fdd46c1cd4a75afbc820dcea8f75465062cfeed1fa4ba295af6a125977d5e62",
+        "size_bytes": 796247,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-FA-BILINGUAL-CLOSURE-BATCH004-CHECKPOINT.zip",
+        "library_file_id": "libfile_a3df7821df248191b78d2ca922b0be76",
+        "library_file_snapshot_id": "file_00000000660c821090b319c1b2cd5630",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "cefr_closure": {
         "state": "PASS",
@@ -725,6 +725,26 @@
         "learner_wording_changed": false,
         "canonical_change_scope": "provenance-only",
         "canonical_sha256_after": "d0419d64fce9865f3cb69e15185793cfd8ef8bb1741bb57f9e7c50059d03e507"
+      },
+      "persian_bilingual_closure_batch004": {
+        "state": "PASS",
+        "reviewed": 30,
+        "verified_present": 30,
+        "held_open": 0,
+        "provisional_before": 343,
+        "provisional_after": 313,
+        "direct_routes": 30,
+        "cross_reference_routes": 0,
+        "sense_aligned_equivalent_routes": 0,
+        "retained_open_from_batch001": [
+          "ahl-lu-0077",
+          "ahl-lu-0102"
+        ],
+        "source_id": "BEHZAD_DE_FA",
+        "source_sha256": "8c4dfeb58c3f23664f3a421145a02362dc1205b0587f7632a26dec0f46e7ff52",
+        "learner_wording_changed": false,
+        "canonical_change_scope": "provenance-only",
+        "canonical_sha256_after": "b148fbb1348062c227e483facc13c2e19aea1c65c511326343f47a6a807f3af0"
       }
     },
     {
@@ -758,50 +778,20 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE3B_FA_BILINGUAL_CLOSURE_BATCH003_PASS__STAGE3B_STILL_RUNNING",
+  "quality_state": "STAGE3B_FA_BILINGUAL_CLOSURE_BATCH004_PASS__STAGE3B_STILL_RUNNING",
   "persistence": {
-    "portable": "USER_DELIVERY_READY_LIBRARY_PENDING_CONTAINER_SESSION_UNAVAILABLE",
+    "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Continue Stage3B Persian bilingual closure from the remaining 343 provisional targets; retain spleißen and wägen open until sufficient approved Persian evidence exists. Then continue relation-review dimensions.",
-  "resume_instruction": "Use the exact FA-Bilingual-Closure-Batch003 portable artifact SHA 2e1c28d7...cbf64c as authority. Preserve learner wording, selected-page scope, stable IDs and source facts. Continue Stage3B only.",
+  "next_action": "Continue Stage3B Persian bilingual closure from the remaining 313 provisional targets; retain spleißen and wägen open until sufficient approved Persian evidence exists. Then continue relation-review dimensions.",
+  "resume_instruction": "Use the exact FA-Bilingual-Closure-Batch004 portable artifact SHA 4fdd46c1...77d5e62 as authority. Preserve learner wording, selected-page scope, stable IDs and source facts. Continue Stage3B only.",
   "stage3b_batch": "0040",
-  "stage3b_status": "RUNNING_AFTER_FA_BILINGUAL_CLOSURE_BATCH003",
+  "stage3b_status": "RUNNING_AFTER_FA_BILINGUAL_CLOSURE_BATCH004",
   "stage3b_targets_processed": 788,
   "stage3b_next_target": null,
   "stage3b_provisional_targets": [
     "ahl-lu-0077",
     "ahl-lu-0102",
-    "ahl-lu-0198",
-    "ahl-lu-0199",
-    "ahl-lu-0200",
-    "ahl-lu-0201",
-    "ahl-lu-0202",
-    "ahl-lu-0203",
-    "ahl-lu-0204",
-    "ahl-lu-0206",
-    "ahl-lu-0207",
-    "ahl-lu-0210",
-    "ahl-lu-0211",
-    "ahl-lu-0215",
-    "ahl-lu-0217",
-    "ahl-lu-0219",
-    "ahl-lu-0220",
-    "ahl-lu-0222",
-    "ahl-lu-0224",
-    "ahl-lu-0225",
-    "ahl-lu-0227",
-    "ahl-lu-0228",
-    "ahl-lu-0229",
-    "ahl-lu-0230",
-    "ahl-lu-0231",
-    "ahl-lu-0233",
-    "ahl-lu-0234",
-    "ahl-lu-0235",
-    "ahl-lu-0236",
-    "ahl-lu-0237",
-    "ahl-lu-0238",
-    "ahl-lu-0240",
     "ahl-lu-0241",
     "ahl-lu-0247",
     "ahl-lu-0248",
@@ -1117,8 +1107,9 @@
   "stage3b_cefr_closure": "PASS_788_OF_788_CLOSED_NO_FORCE",
   "stage3b_english_bilingual_closure": "PASS_788_OF_788_VERIFIED_PRESENT",
   "stage3b_adjective_core_repair1": "PASS_48_OF_48_RESTORED__FULL_CORE_788_OF_788",
-  "stage3b_persian_provisional_targets": 343,
+  "stage3b_persian_provisional_targets": 313,
   "stage3b_persian_bilingual_closure_batch001": "PASS_28_VERIFIED_2_HELD_OPEN__403_REMAIN",
   "stage3b_persian_bilingual_closure_batch002": "PASS_30_OF_30_VERIFIED__373_REMAIN",
-  "stage3b_persian_bilingual_closure_batch003": "PASS_30_OF_30_VERIFIED__343_REMAIN"
+  "stage3b_persian_bilingual_closure_batch003": "PASS_30_OF_30_VERIFIED__343_REMAIN",
+  "stage3b_persian_bilingual_closure_batch004": "PASS_30_OF_30_VERIFIED__313_REMAIN"
 }

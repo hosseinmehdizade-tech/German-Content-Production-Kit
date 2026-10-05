@@ -2,7 +2,7 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R2_READY",
+  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R3_READY",
   "quality_state": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
@@ -48,9 +48,9 @@
   ],
   "persistence": {
     "git": "IN_SYNC_PENDING_METADATA_COMMIT",
-    "library": "R2_KIT_AND_BUILD_REPORT_IN_SYNC"
+    "library": "R3_KIT_AND_BUILD_REPORT_IN_SYNC"
   },
-  "next_action": "Download UV-Stage6-R2.zip, extract normally, then run Runtime\\GFP-v458-R92\\Stage6-Harness\\RUN-STAGE6-ACCEPTANCE.cmd. If final report PASS is generated, persist it and close Stage6.",
+  "next_action": "Download/extract UV-Stage6-R3.zip and run Runtime\\GFP-v458-R92\\Stage6-Harness\\RUN-STAGE6-ACCEPTANCE.cmd. If PASS, upload the generated STAGE6-FINAL-LOCAL-ACCEPTANCE-*.json; if FAIL, preserve phase report for bounded harness/runtime diagnosis.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -115,18 +115,21 @@
     "blocker": "Managed browser rejects both localhost and file navigation with ERR_BLOCKED_BY_ADMINISTRATOR, so exact-origin import/persistence/reload/default-UI export/clean-reimport cannot be claimed.",
     "semantic_content_mutated": false,
     "local_acceptance_kit": {
-      "filename": "UV-Stage6-R2.zip",
-      "sha256": "7f2ade5a420665e2d51b94aa2296eb40a0ec7a7a3bddb86f0a0ed0324d2d7618",
-      "size_bytes": 3622335,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/UV-Stage6-R2.zip",
-      "library_file_id": "libfile_70b513f824088191b581334b195bbed8",
-      "build_validation": {
+      "filename": "UV-Stage6-R3.zip",
+      "sha256": "3a7981b54766d09bb79c13e446571341c85d1ac4e87c55a0b9b7ed946966cd85",
+      "size_bytes": 3552738,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/UV-Stage6-R3.zip",
+      "file_id": "file_00000000809c8210b8b4ee9d4813221b",
+      "library_file_id": "libfile_8d02d07215648191adf1404948fef16b",
+      "build_report_path": "/German-Content-Production-Kit/Checkpoints/UV-Stage6-R3-BUILD-REPORT.json",
+      "build_report_library_file_id": "libfile_770c17e96a208191b2ff4536784f9aac",
+      "validation": {
         "zip_crc": "PASS",
         "runtime_file_hashes": "72/72 PASS",
-        "runtime_byte_mismatches": 0,
+        "runtime_hash_mismatches": 0,
         "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
-        "content_bytes_changed": false,
-        "runtime_bytes_changed": false
+        "runtime_bytes_changed": false,
+        "content_bytes_changed": false
       }
     },
     "managed_environment_blocker": "Chromium enterprise URLBlocklist=['*']; localhost/file navigation returns ERR_BLOCKED_BY_ADMINISTRATOR. Guardrail respected; no policy bypass attempted.",
@@ -164,6 +167,35 @@
         "repair": "Short artifact/root layout and Input/input.zip; ZIP starts directly at Runtime/",
         "runtime_bytes_changed": false,
         "content_bytes_changed": false
+      },
+      {
+        "id": "HARNESS-003-CANONICAL-APP-ROOT",
+        "severity": "HARNESS_ONLY",
+        "status": "FIXED_IN_R3",
+        "observed_on": "real Windows Phase1",
+        "error": "Harness served package parent and loaded /01-App/index.html instead of canonical /index.html.",
+        "repair": "Serve exact 01-App as web root and expose harness through a same-origin virtual /Stage6-Harness route.",
+        "runtime_bytes_changed": false,
+        "content_bytes_changed": false
+      },
+      {
+        "id": "HARNESS-004-GFP-TEST-MODE-QUERY",
+        "severity": "HARNESS_ONLY",
+        "status": "FIXED_IN_R3",
+        "observed_on": "real Windows Phase1",
+        "error": "GFP_TEST_API is intentionally created only in GFP test mode; R2 did not pass gfp-test=1, so the boot-ready predicate could never succeed.",
+        "repair": "Load canonical /index.html with gfp-test=1 plus Stage6 query parameters.",
+        "runtime_bytes_changed": false,
+        "content_bytes_changed": false
+      },
+      {
+        "id": "HARNESS-005-SHORT-INPUT-ROUTE",
+        "severity": "HARNESS_ONLY",
+        "status": "FIXED_IN_R3",
+        "error": "R2 packaging shortened the input filename but the harness URL still referenced the historical long name.",
+        "repair": "Use /Stage6-Harness/Input/input.zip.",
+        "runtime_bytes_changed": false,
+        "content_bytes_changed": false
       }
     ],
     "superseded_local_acceptance_kits": [
@@ -173,8 +205,19 @@
       },
       {
         "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
-        "reason": "HARNESS-002-WINDOWS-MAX-PATH extraction loss"
+        "reason": "HARNESS-002-WINDOWS-MAX-PATH"
+      },
+      {
+        "filename": "UV-Stage6-R2.zip",
+        "reason": "HARNESS-003-CANONICAL-APP-ROOT_AND_HARNESS-004_TEST_MODE"
       }
-    ]
+    ],
+    "last_local_failure": {
+      "run_id": "unreg20261005184918c0427df8",
+      "phase": 1,
+      "status": "FAIL",
+      "error": "Timeout waiting for GFP boot-ready: undefined",
+      "disposition": "HARNESS_DEFECT_FIXED_IN_R3"
+    }
   }
 }

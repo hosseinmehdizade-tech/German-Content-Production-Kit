@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-05T11:02:59+02:00",
-  "updated_version": "stage4-round9-r12-shard0107-repairs-pass-systemic-s8-required-v1",
-  "status": "STAGE4_ROUND9_R12_SHARD0107_REPAIRS_PASS__SYSTEMIC_S8_REQUIRED",
+  "updated_at": "2026-10-05T11:56:00+02:00",
+  "updated_version": "stage4-round9-systemic-s8-persian-naturalness-alignment-pass-v1",
+  "status": "STAGE4_ROUND9_SYSTEMIC_S8_PERSIAN_NATURALNESS_ALIGNMENT_PASS__POST_S8_EXHAUSTION_REVIEW_REQUIRED",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -128,7 +128,7 @@
       "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_ROUND9_R12_SHARD0107_REPAIRS_PASS__SYSTEMIC_S8_REQUIRED",
+      "state": "STAGE4_ROUND9_SYSTEMIC_S8_PERSIAN_NATURALNESS_ALIGNMENT_PASS__POST_S8_EXHAUSTION_REVIEW_REQUIRED",
       "rounds_completed": 6,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -2867,60 +2867,84 @@
         "successor_core_sha256": "dae55e8c751629b5571e97d150657373af70ea3ba12812cf203b75f5043f9f98"
       },
       "round9_clean_pass_r12": {
-        "status": "PAUSED_SYSTEMIC_SWEEP_S8_REQUIRED",
+        "status": "CLOSED_REPAIRS_REQUIRED_NO_CLEAN_CREDIT",
         "positions_completed": 100,
         "targets_reviewed": 100,
         "examples_reviewed": 400,
-        "affected_targets": 7,
-        "recurrent_family_targets": 6,
-        "modified_example_bundles": 7,
-        "individual_example_rows_modified": 9,
-        "semantic_field_repairs": 1,
-        "structure_repairs": 0,
-        "canonical_source_repairs": 0,
+        "pre_s8_successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
+        "s8_successor_core_sha256": "8f3f048cc8ce89ce95876fbe111a6f8dfbebe886e440e8fd613153d873ca4d4e",
         "clean_credit": 0,
-        "latest_shard": "0107",
-        "exact_parent_core_sha256": "dae55e8c751629b5571e97d150657373af70ea3ba12812cf203b75f5043f9f98",
-        "successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
-        "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND9-CLEAN-PASS-R12-SHARD0107-POS1-100-PASS.json",
-        "artifact": {
-          "filename": "NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
-          "sha256": "1a7c52c21abafc6744492f0d7ff6eca58ab5ad7975c8e1fffccf7f7ab2f47d8b",
-          "successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
-          "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
-          "library_file_id": "file_00000000a9d881f490dd258a8e070c7c",
-          "library_stable_id": "libfile_807dfb9415bc8191b0df4c948ba26e90",
-          "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
-        },
-        "next_operation": "SYSTEMIC_SWEEP_S8_BEFORE_ROUND9_RESTART_FROM_POSITION_1"
+        "clean_streak": 0,
+        "next_operation": "POST_S8_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW"
       },
       "systemic_root_cause_qa": {
-        "status": "ROUND9_RECURRENCE_EVIDENCED__SYSTEMIC_S8_REQUIRED",
-        "next_family": "PERSIAN_NATURALNESS_VALENCY_MODALITY_TRANSLATION_ALIGNMENT_RESIDUALS",
+        "status": "S8_COMPLETED__POST_S8_EXHAUSTION_REVIEW_REQUIRED",
+        "next_family": null,
         "post_s7_recurrence": {
-          "status": "S8_REQUIRED",
+          "status": "S8_COMPLETED_REVIEW_PENDING",
           "triggering_round": 9,
           "triggering_shard": "0107",
           "positions": "1-100",
           "family": "PERSIAN_NATURALNESS_VALENCY_MODALITY_TRANSLATION_ALIGNMENT_RESIDUALS",
-          "confirmed_residual_targets": 6,
-          "positions_confirmed": [
-            4,
-            12,
-            25,
-            26,
-            38,
-            77
-          ],
-          "separate_nonfamily_repair": {
-            "position": 14,
-            "target_id": "dah-nvv-exp-00014",
-            "category": "GERMAN_COLLOCATION_NATURALNESS_SINGLE_CASE"
-          },
-          "required_next_action": "CORPUS_WIDE_SYSTEMIC_SWEEP_S8_BEFORE_SEQUENTIAL_CONTINUATION",
-          "exact_successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
-          "systemic_sweep": "S8"
+          "confirmed_residual_targets_in_trigger_shard": 6,
+          "systemic_sweep": "S8",
+          "systemic_repairs": 17,
+          "systemic_successor_core_sha256": "8f3f048cc8ce89ce95876fbe111a6f8dfbebe886e440e8fd613153d873ca4d4e",
+          "required_next_action": "POST_S8_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW"
+        },
+        "post_s8_exhaustion_review": {
+          "status": "REQUIRED_NOT_YET_RUN",
+          "decision_ref": "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA",
+          "exact_parent_core_sha256": "8f3f048cc8ce89ce95876fbe111a6f8dfbebe886e440e8fd613153d873ca4d4e",
+          "next_operation": "POST_S8_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW"
         }
+      },
+      "round9_systemic_s8": {
+        "status": "PASS_WITH_REPAIRS_NO_CLEAN_CREDIT",
+        "family": "PERSIAN_NATURALNESS_VALENCY_MODALITY_TRANSLATION_ALIGNMENT_RESIDUALS",
+        "targets_screened": 2492,
+        "learner_persian_fields_screened": 12460,
+        "screen_candidates": 75,
+        "confirmed_repairs": 17,
+        "confirmed_positions": [
+          41,
+          581,
+          702,
+          864,
+          871,
+          1471,
+          1486,
+          1704,
+          1805,
+          1806,
+          1980,
+          2046,
+          2065,
+          2268,
+          2423,
+          2435,
+          2469
+        ],
+        "deferred_adequate_or_false_positive": 58,
+        "example_target_bundles": 17,
+        "individual_example_rows": 19,
+        "meaning_fa_fields_repaired": 0,
+        "structure_repairs": 0,
+        "canonical_source_repairs": 0,
+        "stage3c_affected_dimension_cells": 17,
+        "stage3c_status_transitions": 0,
+        "stage3c_evidence_refreshes": 17,
+        "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND9-SYSTEMIC-ROOT-CAUSE-SWEEP-S8-PERSIAN-NATURALNESS-ALIGNMENT-PASS.json",
+        "artifact": {
+          "filename": "NVV-v3.3.6-Stage4-Round9-SystemicSweep-S8-PersianNaturalnessAlignment-17REPAIRS-PASS-CHECKPOINT.zip",
+          "sha256": "39924b1458cbbea510df69ff7ce02182215d93d494f83a3e54cf9968cff2d6f4",
+          "successor_core_sha256": "8f3f048cc8ce89ce95876fbe111a6f8dfbebe886e440e8fd613153d873ca4d4e",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round9-SystemicSweep-S8-PersianNaturalnessAlignment-17REPAIRS-PASS-CHECKPOINT.zip",
+          "library_file_id": "file_00000000a2148210b6a79d9d3f0d930f",
+          "library_stable_id": "libfile_24ed0c486fc48191b4d30e71e568c8f8",
+          "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "successor_core_sha256": "8f3f048cc8ce89ce95876fbe111a6f8dfbebe886e440e8fd613153d873ca4d4e"
       }
     },
     "5_delivery_projection_anti_bypass": {
@@ -3335,7 +3359,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Run Stage4 systemic root-cause sweep S8 across all 2492 targets for the recurrent Persian naturalness/translation-alignment family on this exact R12-Shard0107 successor. Do not continue sequential Round9 shards before S8. After S8 repair/exhaustion review, restart clean-pass auditing from position 1; Round9 clean credit remains 0.",
+  "next_action": "Run Stage4 post-S8 systemic-family exhaustion review on this exact S8 successor. If no additional recurrent defect family is evidenced, start Round10 clean-pass R13 from position 1 on the unchanged S8 successor; clean streak remains 0/2.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -3345,12 +3369,12 @@
     "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
-    "sha256": "1a7c52c21abafc6744492f0d7ff6eca58ab5ad7975c8e1fffccf7f7ab2f47d8b",
-    "successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000a9d881f490dd258a8e070c7c",
-    "library_stable_id": "libfile_807dfb9415bc8191b0df4c948ba26e90",
+    "filename": "NVV-v3.3.6-Stage4-Round9-SystemicSweep-S8-PersianNaturalnessAlignment-17REPAIRS-PASS-CHECKPOINT.zip",
+    "sha256": "39924b1458cbbea510df69ff7ce02182215d93d494f83a3e54cf9968cff2d6f4",
+    "successor_core_sha256": "8f3f048cc8ce89ce95876fbe111a6f8dfbebe886e440e8fd613153d873ca4d4e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round9-SystemicSweep-S8-PersianNaturalnessAlignment-17REPAIRS-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000a2148210b6a79d9d3f0d930f",
+    "library_stable_id": "libfile_24ed0c486fc48191b4d30e71e568c8f8",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "systemic_root_cause_qa": {
@@ -3681,6 +3705,6 @@
       "next_clean_pass_start_position": 1
     }
   },
-  "last_observed_stage": "Stage4 Round9 clean-pass R12 shard0107 positions 1-100",
-  "last_observed_note": "Independent review of positions 1-100 found 7 affected targets. Six belong to recurrent Persian naturalness/translation-alignment family and one is an isolated German collocation repair. Round9 clean credit remains 0; corpus-wide systemic sweep S8 is mandatory before further sequential clean-pass review."
+  "last_observed_stage": "Stage4 Round9 systemic root-cause sweep S8",
+  "last_observed_note": "S8 screened all 2492 targets / 12460 Persian learner fields, adjudicated 75 candidates, repaired 17 targets / 19 Persian example rows, preserved source/identity/canonical/structure, and kept Stage3C at 42364 cells with 0 unresolved. Round9 clean credit remains 0. Post-S8 exhaustion review is required before the next clean-pass restart."
 }

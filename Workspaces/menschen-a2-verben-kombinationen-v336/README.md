@@ -72,8 +72,30 @@ Batch01 Library persistence is now recovered and exact-byte verified. Batch02 Ca
 
 Accepted SHA-256: `7a75914d69a0d654b7aae6d62727d818e098b495a906eaf873290c8ec6fa1193`
 
+## Batch04 — ma2-lu-0061..ma2-lu-0080
+
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+
+- 20 cards
+- 105 Candidate items → 105 accepted unchanged
+- 14 explicit `REGISTERED_SOURCE` items with real evidence refs
+- origins: 68 parent generated examples / 16 parent canonical relations / 14 registered-source / 7 curated
+- 5–6 items per card (avg 5.25); no quota-forced filler
+- 272/272 non-target rows unchanged from cumulative Batch03
+- target changes limited to `details` + `custom_fields`
+- canonical_unit and canonical_relations parity: 20/20
+- source/lesson/deck membership and examples preserved
+- exactly one learner-visible **Kombinationen** section on each target card
+- separate visible Rektion/Kollokationen/Nomen-Verb-Verbindungen: 0/20
+- cumulative visible Kombinationen coverage: 80/292
+- ZIP CRC/internal SHA256/fresh TSV QA: PASS
+- Candidate/ACCEPTED/post-package artifacts persisted in Library and rematerialized with exact SHA-256 + byte parity
+- runtime-final claim: **NO**
+
+Accepted SHA-256: `a3beec055f1bfade92c81d1eeed4ccf07490a5296da2b1742750768be58f9bfa`
+
 ## Cumulative state
 
-**60/292 A2 cards accepted, 287 accepted Kombinationen.**
+**80/292 A2 cards accepted, 392 accepted Kombinationen.**
 
-Next: continue cumulatively with **ma2-lu-0061..ma2-lu-0080**. Final A2 delivery remains one cumulative output containing all **292** A2 cards, not separate batch-only files.
+Next: continue cumulatively with **ma2-lu-0081..ma2-lu-0100**. Final A2 delivery remains one cumulative output containing all **292** A2 cards, not separate batch-only files.

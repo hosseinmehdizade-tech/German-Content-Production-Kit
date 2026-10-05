@@ -2,7 +2,7 @@
 
 Learner-facing design: exactly one visible section, **Kombinationen**.
 
-Rektion, collocations, Nomen-Verb-Verbindungen, typical objects, manner/adverbial patterns, contexts and useful fixed expressions may coexist in that one visible bucket. Internal type information remains structured for QA and future filtering.
+This verb-retrofit lineage remains intentionally verb-only. The broader project policy is now `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md`, which applies the same one-section idea to all lexical targets in the unified production pipeline.
 
 ## Batch01 — A1-L01..A1-L04
 **ACCEPTED** — 34 cards / 297 Kombinationen.
@@ -17,23 +17,23 @@ Rektion, collocations, Nomen-Verb-Verbindungen, typical objects, manner/adverbia
 **ACCEPTED** — 59 cards / 353 Kombinationen.
 
 ## Batch05 — A1-L17..A1-L20
-**CANDIDATE / STRUCTURAL QA PASS**
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
 
 - lesson scope: 73 cards
-- 70 newly changed cards
-- 3 reused cards already had accepted Kombinationen from earlier lessons and remain unchanged
-- 350 new candidate Kombinationen
-- exactly 5 new items per changed card
-- all new items deliberately remain `CURATED_PEDAGOGICAL` at candidate stage
-- no new `REGISTERED_SOURCE` claim before the separate linguistic/source acceptance pass
-- exactly one learner-visible `Kombinationen` section on every changed card
+- 70 newly enriched cards + 3 inherited already-accepted cards
+- 350 final accepted Kombinationen
+- 315 accepted unchanged
+- 35 linguistic/type/provenance/translation corrections
+- 14 explicit registered-source items
+- 0 rejected
 - 0 non-target rows changed
 - Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
+- Library persistence PASS
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-CANDIDATE.zip`  
-SHA-256: `72322eb29e09966ff8f1539c88f8b9ed651455fd376a093c7e5ed4299adcafac`
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-ACCEPTED.zip`  
+SHA-256: `f302f4557ab3eb10b80c9b9b185af3b44fe6096a29ddf71d8f83fea17086d9c3`
 
-Accepted cumulative before Batch05: **183 cards / 1300 Kombinationen**.
+Cumulative through L20: **253 cards / 1650 accepted Kombinationen**.
 
-Next: linguistic/source accept-reject pass for Batch05, then A1-L21.
+Next: **Batch06 beginning with A1-L21**.

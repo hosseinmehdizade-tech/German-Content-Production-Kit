@@ -234,8 +234,29 @@ Accepted SHA-256: `3102cb703eec37039bb0345c24e27f0b5158cec7e5b6d63df6eb2cb1f1c01
 
 Accepted SHA-256: `c14c439adefc3eb37586fd302c82c5b96cd5149638e41d94765d6e641dcdc3fa`
 
+## Batch11 — ma2-lu-0201..ma2-lu-0220
+
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+
+- Numeric scope: `ma2-lu-0201..ma2-lu-0220`
+- 19 actual cards; `ma2-lu-0203` is absent/retired in the canonical dataset
+- 94 Candidate items → 94 accepted unchanged
+- 10 explicit `REGISTERED_SOURCE` items with evidence refs
+- 4 registered source identities re-hashed and matched `SOURCE-REGISTRY.json`
+- origins: 45 parent generated examples / 35 parent canonical relations / 10 registered-source / 4 curated
+- 4–6 items per card (avg 4.95); no quota-forced filler
+- 273/273 non-target rows unchanged from cumulative Batch10
+- target changes limited to `details` + `custom_fields`
+- Repair3 canonical lineage: 292/292 PASS
+- Unified Projection Validator + Bounded Projection Preflight: PASS on Candidate and ACCEPTED
+- exactly one learner-visible **Kombinationen** section on each target card
+- Candidate/ACCEPTED/post-package artifacts persisted in Library and rematerialized with exact SHA-256 + byte parity
+- runtime-final claim: **NO**
+
+Accepted SHA-256: `7208e7f37f3e3b3dc64d62f1c612455eda4915168639c924b48dab8f61dd0906`
+
 ## Cumulative state
 
-**199/292 A2 cards accepted, 977 accepted Kombinationen.**
+**218/292 A2 cards accepted, 1071 accepted Kombinationen.**
 
-Next: continue cumulatively with numeric scope **ma2-lu-0201..ma2-lu-0220** from the exact Batch10 ACCEPTED artifact, resolving actual existing IDs first. Final A2 delivery remains one cumulative output containing all **292** A2 cards.
+Next: continue cumulatively with numeric scope **ma2-lu-0221..ma2-lu-0240** from the exact Batch11 ACCEPTED artifact, resolving actual existing IDs first.

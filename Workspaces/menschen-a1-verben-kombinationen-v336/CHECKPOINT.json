@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.3.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.4.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH02_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
+  "status": "BATCH03_CANDIDATE_QA_PASS__GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": [
@@ -20,48 +20,43 @@
     "status": "ACCEPTED",
     "cards": 34,
     "accepted_items": 297,
-    "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch01-L01-L04-ACCEPTED.zip",
-      "sha256": "d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3"
-    }
+    "artifact_sha256": "d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3"
   },
   "batch02": {
     "scope": "A1-L05..A1-L08",
-    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
+    "status": "ACCEPTED",
     "cards": 35,
-    "input_candidates": 268,
     "accepted_items": 266,
-    "accepted_unchanged": 248,
-    "accepted_modified": 18,
-    "rejected": 2,
-    "registered_source_items": 12,
+    "artifact_sha256": "fe26c3de78a68b4c64a191bb2082b285045612344f3bebbcf58f23df7603d5db"
+  },
+  "batch03": {
+    "scope": "A1-L09..A1-L12",
+    "status": "CANDIDATE_QA_PASS",
+    "cards": 55,
+    "combination_items": 384,
     "items_per_card_min": 5,
-    "items_per_card_max": 9,
-    "items_per_card_avg": 7.6,
-    "qa": "PASS",
+    "items_per_card_max": 8,
+    "registered_source_items": 22,
+    "parent_generated_example_items": 177,
+    "parent_canonical_relation_items": 4,
+    "curated_pedagogical_items": 181,
+    "changed_rows": 55,
+    "changed_columns": [
+      "details",
+      "custom_fields"
+    ],
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
+    "qa": "PASS",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch02-L05-L08-ACCEPTED.zip",
-      "sha256": "fe26c3de78a68b4c64a191bb2082b285045612344f3bebbcf58f23df7603d5db",
-      "bytes": 393592,
-      "zip_members": 9,
-      "sha256sum_entries": 8,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch03-L09-L12-CANDIDATE.zip",
+      "sha256": "54d2b0870c1c4c7e08a984ea701445bd998378fba5f0df7d7487c504bc5aff9e",
+      "bytes": 387550,
+      "zip_members": 8,
+      "sha256sum_entries": 7,
       "crc": "PASS"
     },
-    "tsv_sha256": "7b76802798a4d887de0bf9c9b3f6813eacab5e5b83d4cfa45ce169064dfe316a",
-    "notable_repairs": [
-      "Rejected redundant langsam bummeln.",
-      "Rejected overly generic etwas zusammen machen können.",
-      "regelmäßig besuchen -> jemanden regelmäßig besuchen.",
-      "durch ... bummeln/wandern backend type normalized from rection to direction.",
-      "verwenden manner patterns now include explicit etwas placeholder.",
-      "jemandem absagen promoted to registered-source evidence.",
-      "eine Strecke schwimmen -> source-backed einen Kilometer schwimmen.",
-      "registered-source wording normalized to exact einen Besuch abstatten.",
-      "registered-source wording normalized to exact alte Lampen gegen neue LED-Lichter tauschen.",
-      "Kuchen gegen Brot tauschen -> ein Buch gegen ein anderes tauschen."
-    ]
+    "tsv_sha256": "aba95cbefac8343d65c7fc12e0855bb22cae5fc8130dbb52dd5d3fb1c9b6b604"
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -70,14 +65,14 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ACCEPTED_AS_CURATED_PEDAGOGICAL_AFTER_LINGUISTIC_REVIEW",
+    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
     "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
     "canonical_stage4": "UNCHANGED"
   },
-  "cumulative_through_batch02": {
+  "cumulative_accepted_before_batch03": {
     "scope": "A1-L01..A1-L08",
     "cards": 69,
     "accepted_combination_items": 563
   },
-  "next_action": "Start Batch03 at A1-L09 using the accepted single-section Kombinationen contract and exact source/provenance boundary."
+  "next_action": "Run linguistic/source accept-reject pass for Batch03 A1-L09..A1-L12, then promote accepted items and continue at A1-L13."
 }

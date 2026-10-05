@@ -1,0 +1,49 @@
+{
+  "schema": "verb-kombinationen-adoption-matrix@1.0.0",
+  "status": "ACTIVE",
+  "policy": "Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+  "framework": "v3.3.6",
+  "default_rule": {
+    "new_applicable_workstream": "ADOPT_FROM_FIRST_ENRICHMENT_STAGE",
+    "active_before_stage5": "ADOPT_AT_NEXT_SAFE_STAGE3B_OR_STAGE4_BOUNDARY",
+    "active_projected_not_locked": "USE_EXPLICIT_SUCCESSOR_AND_INVALIDATE_ONLY_AFFECTED_DOWNSTREAM",
+    "locked_or_final": "KEEP_IMMUTABLE; FUTURE_SUCCESSOR_ADOPTS"
+  },
+  "workstreams": {
+    "menschen-a1-verben-kombinationen-v336": {
+      "action": "CONTINUE_UNDER_POLICY",
+      "note": "Current A1 retrofit pilot; Batch05 candidate remains the next acceptance target."
+    },
+    "menschen-a1a2b1-memrise": {
+      "action": "ADOPT_NOW",
+      "note": "Apply to remaining A1-L22 Stage3B verb targets and audit/backfill already checkpointed A1-L22 verb targets before Stage4/Stage5. Future A2/B1 adopts from first applicable verb target."
+    },
+    "250-verben-mit-praepositionen-deutschweb": {
+      "action": "CURRENT_REPAIR_UNCHANGED; NEXT_SEMANTIC_SUCCESSOR_ADOPTS",
+      "note": "The current projection compatibility repair stays bounded. Later verb-card enrichment uses the policy."
+    },
+    "aber-hallo-listen-tabellen": {
+      "action": "ADOPT_AT_NEXT_SAFE_BATCH_FOR_VERB_TARGETS",
+      "note": "Completed batch bytes remain stable; applicable verb targets are audited/backfilled before Stage4/Stage5 closure."
+    },
+    "unregelmaessige-verben": {
+      "action": "CURRENT_FINAL_IMMUTABLE; FUTURE_SUCCESSOR_ADOPTS"
+    },
+    "nomen-verb-verbindungen": {
+      "action": "SOURCE_AUTHORITY_UNCHANGED",
+      "note": "Downstream verb-card workstreams may use NVV as registered evidence."
+    },
+    "grammar-aktiv-a1-c1": {
+      "action": "NOT_APPLICABLE"
+    },
+    "lesen": {
+      "action": "CONDITIONAL_IF_STANDALONE_VERB_CARDS_ARE_CREATED"
+    },
+    "schreiben": {
+      "action": "CONDITIONAL_IF_STANDALONE_VERB_CARDS_ARE_CREATED"
+    },
+    "bildkarten-dk-visual-dictionary": {
+      "action": "CONDITIONAL_AT_NEXT_CONTENT_ENRICHMENT"
+    }
+  }
+}

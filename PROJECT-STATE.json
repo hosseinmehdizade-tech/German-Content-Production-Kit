@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T18:58:00+02:00",
+  "updated_at": "2026-10-05T19:20:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -5743,12 +5743,12 @@
       "next_scope": "Stage3B Batch0039 from ahl-lu-0761"
     },
     "unregelmaessige_verben": {
-      "status": "ACTIVE",
+      "status": "FINAL_CONTENT_DELIVERY",
       "branch": "unregelmaessige-verben-v336-migration",
       "checkpoint": "Workspaces/unregelmaessige-verben/CHECKPOINT.json",
       "source_manifest": "Workspaces/unregelmaessige-verben/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "EXPLICIT_CURRENT_PARENT_THEN_PORTABLE_STATE_THEN_GIT",
-      "current_milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R4_READY",
+      "current_milestone": "FINAL_CONTENT_DELIVERY_HANDOFF",
       "content_authority": "v1.2.0 immutable semantic parent",
       "content_counts": {
         "cards": 174,
@@ -5783,7 +5783,7 @@
         "nvv_literal_target_warnings": "55 non-blocking preserved-legacy warnings",
         "stage6_runtime": "NOT_RUN"
       },
-      "next_action": "Run UV-Stage6-R4 on Windows/Chrome; return generated final report.",
+      "next_action": "NONE unless explicit runtime certification is requested later.",
       "clean_delivery": {
         "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
         "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -5808,34 +5808,8 @@
       "current_runtime": "v458-R92",
       "last_fully_verified_runtime": "v451-R85",
       "stage6": {
-        "status": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
-        "partial_acceptance": "10/10 static exact + 21/21 neutral envelope PASS",
-        "import_ready_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
-        "blocked_checkpoint_sha256": "16f22b964639c900a15207a1532f616935e62cd36c7255518da946a68c4f749e",
-        "blocker": "ERR_BLOCKED_BY_ADMINISTRATOR on localhost and file navigation",
-        "semantic_content_mutated": false,
-        "local_acceptance_kit": {
-          "filename": "UV-Stage6-R4.zip",
-          "sha256": "81e5b0a076889b7d01ed9353cb5a2e434a89d5d21cbf27cf26a6f62fcc0fbc98",
-          "size_bytes": 3619749,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/UV-Stage6-R4.zip",
-          "library_file_id": "libfile_6706f99d579481919967a78619e72f39",
-          "build_report_library_file_id": "libfile_d07eee937940819199f7ac9d8d5c058b",
-          "validation": {
-            "zip_crc": "PASS",
-            "runtime_files": "72/72 exact",
-            "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
-            "node_syntax": "PASS",
-            "runtime_or_content_changed": false
-          },
-          "harness": "DIRECT_PLAYWRIGHT_GFP_TEST_API"
-        },
-        "managed_environment_blocker": "ERR_BLOCKED_BY_ADMINISTRATOR from enforced Chromium URLBlocklist; no bypass attempted.",
-        "harness_repair": {
-          "id": "HARNESS-006-R3-IFRAME-REPORT-POST",
-          "status": "SUPERSEDED_BY_R4_DIRECT_PLAYWRIGHT",
-          "runtime_or_content_changed": false
-        }
+        "status": "NOT_COMPLETED_HANDOFF_STOPPED",
+        "disposition": "Optional runtime certification only; not a blocker for content delivery."
       },
       "git_stage6_checkpoint_commit": "6af932bc095cdeca17a0508db018ff5bb1e8a6e8",
       "git_stage6_readme_commit": "4ac5c8980cd4e93286e2a674b886875660ca2da3",
@@ -5845,7 +5819,24 @@
       "git_stage6_r1_readme_commit": "f456b85511a0b15130c9ae3d6b0f969624dfe21d",
       "git_stage6_r2_checkpoint_commit": "301bdfbd87e57f5c362b36d92cf3a49ece63e715",
       "git_stage6_r3_checkpoint_commit": "d1cface5dee17d2c77cb985d484f7427f6237883",
-      "git_stage6_r4_checkpoint_commit": "57c8cd8d629c47b32650375abd78f7e50ff4b24b"
+      "git_stage6_r4_checkpoint_commit": "57c8cd8d629c47b32650375abd78f7e50ff4b24b",
+      "final_delivery": {
+        "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-DELIVERY.zip",
+        "sha256": "656f7477e65e6c090ee17a11c2c4d8644b7e829386635c3afe94b7daaca61dcb",
+        "size_bytes": 537946,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-DELIVERY.zip",
+        "library_file_id": "libfile_17fd1e3e17d88191a1e1ef140995e677",
+        "direct_import": {
+          "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-IMPORT.tsv",
+          "sha256": "5ec6770bfab47e0d0876b6e4bac2175315a67db2fd48a79f624b700538e51bd6",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-IMPORT.tsv",
+          "library_file_id": "libfile_200cf4bca00c8191a060d8fd503ddc63"
+        },
+        "content_status": "OFFICIAL_V3_3_6_STAGE5_PASS",
+        "runtime_acceptance": "NOT_COMPLETED; NOT_REQUIRED_FOR_CONTENT_HANDOFF",
+        "semantic_mutations": 0
+      },
+      "git_final_delivery_checkpoint_commit": "befe7c732d432457c7cf6ddd0bf27c6ed8e02a71"
     }
   },
   "flashcards_runtime_dependency": {

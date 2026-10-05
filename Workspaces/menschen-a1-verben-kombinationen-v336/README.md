@@ -11,23 +11,26 @@ Rektion, collocations, Nomen-Verb-Verbindungen, typical objects, manner/adverbia
 **ACCEPTED** — 35 cards / 266 Kombinationen.
 
 ## Batch03 — A1-L09..A1-L12
-**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+**ACCEPTED** — 55 cards / 384 Kombinationen.
 
-- 55 cards
-- 384 input candidates
-- 384 final accepted Kombinationen
-- 369 accepted unchanged
-- 15 linguistic/type/provenance/translation corrections
-- 23 explicit registered-source items
+## Batch04 — A1-L13..A1-L16
+**CANDIDATE / STRUCTURAL QA PASS**
+
+- 59 cards
+- 353 Kombinationen
+- 5–6 items per card
+- 17 explicit registered-source items
+- 212 parent generated-example-derived items
+- 4 parent canonical-relation-derived items
+- 120 curated pedagogical candidates
+- exactly one learner-visible `Kombinationen` section on every target card
 - 0 non-target rows changed
-- legacy Stage4 canonical unchanged
+- Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
 
-Notable source correction: `im Reisebüro anrufen` was repaired to source-exact `beim Reisebüro anrufen` after direct scan inspection.
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-CANDIDATE.zip`  
+SHA-256: `30e04082095aea19c42797e45b6b2b5c5cd8be1a8ba4c17f9e848299d1e7acd6`
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch03-L09-L12-ACCEPTED.zip`  
-SHA-256: `9a64d1ac4ca015459c3f3659eff6cc559d1ed2eef6bc2e290296c12f51675dd6`
+Accepted cumulative before Batch04: **124 cards / 947 Kombinationen**.
 
-Cumulative through L12: **124 cards / 947 accepted Kombinationen**.
-
-Next: **Batch04 beginning with A1-L13**.
+Next: linguistic/source accept-reject pass for Batch04, then A1-L17.

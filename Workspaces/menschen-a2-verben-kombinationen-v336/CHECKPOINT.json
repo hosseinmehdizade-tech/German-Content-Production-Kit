@@ -108,19 +108,22 @@
     "final_delivery_rule": "CUMULATIVE_A2_OUTPUT_INCLUDES_ALL_292_CARDS"
   },
   "persistence": {
-    "git": "IN_SYNC_WORKSTREAM_BRANCH",
-    "main_coordination": "PENDING_RETRY_AFTER_WORKSTREAM_SYNC",
+    "git": "IN_SYNC",
+    "main_coordination": "IN_SYNC",
     "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "batch01_library": "PASS",
     "batch02_library": "PASS",
     "batch03_library": "PASS",
     "batch04_library": "PASS",
     "batch05_library": "PASS",
-    "binary_delivery_surface": "Library + current conversation generated artifacts"
+    "binary_delivery_surface": "Library + current conversation generated artifacts",
+    "workstream_checkpoint_commit": "8fda1e45f84c3783d2cf3c03fd661e51fbfa2178",
+    "workstream_readme_commit": "c95e89604ba43074cb0973d95a9976c9644f8466",
+    "main_project_state_commit": "42471ef151e498b21e75b6929ea3620750964946"
   },
   "runtime_acceptance": "NOT_RUN",
   "runtime_final_claim": false,
-  "next_action": "Retry compact main PROJECT-STATE coordination for the Batch04/Batch05 state, then continue cumulative Batch06 with ma2-lu-0101..ma2-lu-0120 from the exact Batch05 ACCEPTED artifact. Do not mutate Repair3 parent; runtime acceptance stays separate until explicitly run.",
+  "next_action": "Continue cumulative Batch06 with ma2-lu-0101..ma2-lu-0120 from the exact Batch05 ACCEPTED artifact. Do not mutate Repair3 parent; runtime acceptance stays separate until explicitly run.",
   "batch02": {
     "scope": "ma2-lu-0021..ma2-lu-0040",
     "lesson_membership": "Menschen A2 Verben",

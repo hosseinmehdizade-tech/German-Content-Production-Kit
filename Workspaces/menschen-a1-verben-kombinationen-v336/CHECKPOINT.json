@@ -1,13 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.2.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.3.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH02_CANDIDATE_QA_PASS__GIT_SYNCED",
-  "parent": {
-    "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch01-L01-L04-ACCEPTED.zip",
-    "sha256": "d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3",
-    "immutable": true
-  },
+  "status": "BATCH02_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": [
@@ -32,32 +27,41 @@
   },
   "batch02": {
     "scope": "A1-L05..A1-L08",
-    "status": "CANDIDATE_QA_PASS",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
     "cards": 35,
-    "combination_items": 268,
+    "input_candidates": 268,
+    "accepted_items": 266,
+    "accepted_unchanged": 248,
+    "accepted_modified": 18,
+    "rejected": 2,
+    "registered_source_items": 12,
     "items_per_card_min": 5,
     "items_per_card_max": 9,
-    "registered_source_items": 10,
-    "parent_generated_example_items": 122,
-    "parent_canonical_relation_items": 9,
-    "curated_pedagogical_items": 127,
-    "changed_rows": 35,
-    "changed_columns": [
-      "details",
-      "custom_fields"
-    ],
+    "items_per_card_avg": 7.6,
+    "qa": "PASS",
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
-    "qa": "PASS",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch02-L05-L08-CANDIDATE.zip",
-      "sha256": "a1f445105cb12f200084f382d856f42476577aaa23c19696d390bf5f09956d3d",
-      "bytes": 370147,
-      "zip_members": 8,
-      "sha256sum_entries": 7,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch02-L05-L08-ACCEPTED.zip",
+      "sha256": "fe26c3de78a68b4c64a191bb2082b285045612344f3bebbcf58f23df7603d5db",
+      "bytes": 393592,
+      "zip_members": 9,
+      "sha256sum_entries": 8,
       "crc": "PASS"
     },
-    "tsv_sha256": "f1f34e796825eb97eb2e5ed55d714f11146d1e6bfc0fd6b5a54333ccc21b73ec"
+    "tsv_sha256": "7b76802798a4d887de0bf9c9b3f6813eacab5e5b83d4cfa45ce169064dfe316a",
+    "notable_repairs": [
+      "Rejected redundant langsam bummeln.",
+      "Rejected overly generic etwas zusammen machen können.",
+      "regelmäßig besuchen -> jemanden regelmäßig besuchen.",
+      "durch ... bummeln/wandern backend type normalized from rection to direction.",
+      "verwenden manner patterns now include explicit etwas placeholder.",
+      "jemandem absagen promoted to registered-source evidence.",
+      "eine Strecke schwimmen -> source-backed einen Kilometer schwimmen.",
+      "registered-source wording normalized to exact einen Besuch abstatten.",
+      "registered-source wording normalized to exact alte Lampen gegen neue LED-Lichter tauschen.",
+      "Kuchen gegen Brot tauschen -> ein Buch gegen ein anderes tauschen."
+    ]
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -66,8 +70,14 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
+    "curated_manner_context_patterns": "ACCEPTED_AS_CURATED_PEDAGOGICAL_AFTER_LINGUISTIC_REVIEW",
+    "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
     "canonical_stage4": "UNCHANGED"
   },
-  "next_action": "Run linguistic/source accept-reject pass for Batch02 A1-L05..A1-L08, then promote accepted items and continue at A1-L09."
+  "cumulative_through_batch02": {
+    "scope": "A1-L01..A1-L08",
+    "cards": 69,
+    "accepted_combination_items": 563
+  },
+  "next_action": "Start Batch03 at A1-L09 using the accepted single-section Kombinationen contract and exact source/provenance boundary."
 }

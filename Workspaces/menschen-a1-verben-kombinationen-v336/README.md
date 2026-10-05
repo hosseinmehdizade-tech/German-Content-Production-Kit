@@ -23,24 +23,28 @@ This verb-retrofit lineage remains intentionally verb-only. The broader project 
 **ACCEPTED** — 27 cards / 135 Kombinationen.
 
 ## Batch07 — A1 supplement-only
-**CANDIDATE / STRUCTURAL + INITIAL LINGUISTIC QA PASS**
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
 
-- final 30 A1 cards without prior accepted Kombinationen
-- 150 candidate Kombinationen
-- exactly 5 items per target card
+- final 30 A1 cards
+- 150 input candidates
+- 149 final accepted Kombinationen
+- 147 accepted unchanged
+- 2 accepted modified
+- 1 rejected as low-value generic filler
 - 10 explicit registered-source items
-- 102 parent generated-example-derived items
-- 11 parent canonical-relation-derived items
-- 27 curated pedagogical candidates
-- exactly one learner-visible `Kombinationen` section on every target card
+- 4–5 items per card; no quota-forced replacement
 - 0 non-target rows changed
 - Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
 - Library persistence PASS
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-CANDIDATE.zip`  
-SHA-256: `c4848fce86b538886098c7dc9880f6527e3c7378a14923424d88fe8c11583865`
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-ACCEPTED.zip`  
+SHA-256: `0fc47ac4c4a4fcf4c27576314665dbaca4fd9caa90ac45a85abd8fb78d557c1b`
 
-Accepted cumulative before Batch07: **280 cards / 1785 accepted Kombinationen**.
+## A1 content completion
 
-With the Batch07 candidate projection, all **310/310 A1 cards** now have a visible Kombinationen section. The final content milestone is the explicit linguistic/source accept-modify-reject pass for these 30 cards.
+**COMPLETE: 310/310 A1 cards accepted, 1934 accepted Kombinationen.**
+
+This is a **content-complete** state, not a runtime-final claim. Any later runtime/import/presentation acceptance must re-resolve Flashcards CURRENT at execution time.
+
+Next: keep this retrofit closed unless a bounded repair is needed; continue the broader lexical Kombinationen rollout in the unified Menschen vocabulary pipeline.

@@ -1,13 +1,14 @@
 # Unregelmäßige Verben — v3.3.6 migration
 
-Current milestone: **Stage5 official clean-delivery anti-bypass PASS**.
+Stage5 official clean delivery remains **PASS**.
 
-Immutable semantic parent: v1.2.0. The migration preserves 174 stable cards, 696 trilingual examples and 902 legacy structured connections with zero semantic mutation.
+Stage6 targeted **GFP CURRENT v458-R92** (artifact SHA-256 `94d9f7cce53d1cda50a05bcf3d1be2132e42f63deef6d5048356bdf1d7a194af`). LAST_FULLY_VERIFIED v451-R85 is regression reference only and was not used as the integration target.
 
-The v3.3.6 legacy-authority bridge now contains 258 normalized source occurrences, closed identity for 174 canonical IDs and a 2262-cell completeness matrix with 0 unresolved cells. The exact neutral direct-import TSV is byte-identical to the preceding neutral-projection milestone.
+Partial CURRENT-runtime evidence passes:
+- static exact projection: 174 cards, 696 examples, 1392 translations, 902 relation items, 0 legacy-v217, 0 page errors;
+- neutral vocabulary envelope regression: 21/21 PASS;
+- Stage6 import-ready wrapper is byte-identical to the Stage5 TSV.
 
-Official `Tools/build_clean_delivery_v3_3_6.py` PASSed, and a fresh extraction re-PASSed CRC, SHA256SUMS and all embedded v3.3.6 gates. Clean delivery SHA-256: `9914a3b22ecb32cf73cb8cc44335dc3887327a47e4c01f6493f37058875506ed`.
+Exact-origin acceptance is **BLOCKED by environment**. Both localhost and file navigation return `ERR_BLOCKED_BY_ADMINISTRATOR` in the managed browser, so import persistence/reload, native persisted Study flow, default UI Content Package export, clean-profile reimport and runtime sidecar-lineage readback are not claimed.
 
-Boundary: this is a contractual migration of the immutable reviewed v1.2.0 authority. It does **not** claim fresh source-image byte verification or fresh external linguistic recertification. 55 NVV literal-target warnings are preserved legacy-value warnings and are non-blocking; no expression identities were invented merely to silence them.
-
-Stage6 has not started. It must re-resolve German Flashcards Pro CURRENT at execution time; LAST_FULLY_VERIFIED is comparison evidence only.
+No semantic content was changed. Resume by re-resolving CURRENT and running the exact real-origin Stage6 harness when the environment permits it.

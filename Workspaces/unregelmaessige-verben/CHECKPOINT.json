@@ -2,7 +2,7 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_READY",
+  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R1_READY",
   "quality_state": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
@@ -47,10 +47,10 @@
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
   ],
   "persistence": {
-    "git": "IN_SYNC_PENDING_CURRENT_METADATA_WRITE",
-    "library": "IN_SYNC_LOCAL_ACCEPTANCE_KIT_EXACT_READBACK"
+    "git": "IN_SYNC_PENDING_METADATA_COMMIT",
+    "library": "R1_KIT_AND_BUILD_REPORT_IN_SYNC_EXACT_READBACK"
   },
-  "next_action": "Run Stage6-Harness/RUN-STAGE6-ACCEPTANCE.cmd on Windows with Chrome after closing any GFP server using port 8765. If the generated final report is PASS, persist that report and close Stage6; otherwise preserve the failure report and repair only the bounded defect.",
+  "next_action": "Download and extract Stage6-LOCAL-ACCEPTANCE-KIT-R1. Run Runtime\\GFP-v458-R92\\Stage6-Harness\\RUN-STAGE6-ACCEPTANCE.cmd on Windows/Chrome. If final report PASS is generated, persist it and close Stage6.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -115,18 +115,19 @@
     "blocker": "Managed browser rejects both localhost and file navigation with ERR_BLOCKED_BY_ADMINISTRATOR, so exact-origin import/persistence/reload/default-UI export/clean-reimport cannot be claimed.",
     "semantic_content_mutated": false,
     "local_acceptance_kit": {
-      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
-      "sha256": "86119e20a01a045c68646f18425292124ef67a4b955c21285f3b4d9f78bc4789",
-      "size_bytes": 3594568,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
-      "file_id": "file_00000000c738821094c5fc16acf160fc",
-      "library_file_id": "libfile_2a8afb90ad308191838f2beb78d44d7a",
+      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
+      "sha256": "8d8128736ca8e01b8aa1e163ceb0ef44e9966bc7ec418f6e5958f14767969c33",
+      "size_bytes": 3596976,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
+      "file_id": "file_0000000058dc821097edfd8e988af979",
+      "library_file_id": "libfile_c8c8e7d3267c81918c99b5d403d79486",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
       "build_validation": {
         "zip_crc": "PASS",
         "runtime_file_hashes": "72/72 PASS",
         "exact_01_app_byte_compare": "72/72 PASS",
-        "acceptance_js_syntax": "PASS",
+        "changed_files": "3 harness-only files",
+        "unchanged_files": 329,
         "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a"
       }
     },
@@ -137,6 +138,24 @@
       "run phase1 in disposable Chrome profile: real-origin import, IndexedDB persistence/reload, neutral presentation, 696 examples, 1392 translations, 902 visible relations, native Study interaction, default UI Content Package export",
       "run phase2 in a second disposable Chrome profile: clean-profile reimport, reload, protected authority parity, verified sidecar lineage on all 174 cards",
       "never touch normal Chrome profile or existing GFP library"
+    ],
+    "superseded_local_acceptance_kit": {
+      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
+      "sha256": "86119e20a01a045c68646f18425292124ef67a4b955c21285f3b4d9f78bc4789",
+      "status": "SUPERSEDED_HARNESS_BUG",
+      "finding": "HARNESS-001-FIND-CHROME-SCALAR-COUNT"
+    },
+    "harness_findings": [
+      {
+        "id": "HARNESS-001-FIND-CHROME-SCALAR-COUNT",
+        "severity": "HARNESS_ONLY",
+        "status": "FIXED_IN_R1",
+        "observed_on": "Windows PowerShell with one discovered Chrome installation",
+        "error": "PropertyNotFoundStrict: Count cannot be found on scalar result under Set-StrictMode Latest",
+        "repair": "Find-Chrome iterates candidate paths directly; runtime verification counter also no longer depends on .Count",
+        "runtime_bytes_changed": false,
+        "content_bytes_changed": false
+      }
     ]
   }
 }

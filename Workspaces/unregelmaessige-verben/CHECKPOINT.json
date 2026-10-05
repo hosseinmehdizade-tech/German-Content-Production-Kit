@@ -2,8 +2,8 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE6_CURRENT_RUNTIME_ACCEPTANCE_BLOCKED_ENVIRONMENT",
-  "quality_state": "BLOCKED",
+  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_READY",
+  "quality_state": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
   "counts": {
@@ -47,10 +47,10 @@
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
   ],
   "persistence": {
-    "git": "IN_SYNC_PENDING_THIS_COMMIT",
-    "library": "IMPORT_READY_AND_BLOCKED_CHECKPOINT_IN_SYNC"
+    "git": "IN_SYNC_PENDING_CURRENT_METADATA_WRITE",
+    "library": "IN_SYNC_LOCAL_ACCEPTANCE_KIT_EXACT_READBACK"
   },
-  "next_action": "Re-resolve GFP CURRENT and run exact Stage6 real-origin import/reload/Study/export/reimport in an environment where navigation is permitted. Never downgrade to v451.",
+  "next_action": "Run Stage6-Harness/RUN-STAGE6-ACCEPTANCE.cmd on Windows with Chrome after closing any GFP server using port 8765. If the generated final report is PASS, persist that report and close Stage6; otherwise preserve the failure report and repair only the bounded defect.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -89,7 +89,7 @@
     "role": "REGRESSION_REFERENCE_ONLY"
   },
   "stage6": {
-    "status": "BLOCKED_ENVIRONMENT_EXACT_ORIGIN_ACCEPTANCE",
+    "status": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
     "import_ready": {
       "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-IMPORT-READY.zip",
       "sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
@@ -113,6 +113,30 @@
       "page_errors": 0
     },
     "blocker": "Managed browser rejects both localhost and file navigation with ERR_BLOCKED_BY_ADMINISTRATOR, so exact-origin import/persistence/reload/default-UI export/clean-reimport cannot be claimed.",
-    "semantic_content_mutated": false
+    "semantic_content_mutated": false,
+    "local_acceptance_kit": {
+      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
+      "sha256": "86119e20a01a045c68646f18425292124ef67a4b955c21285f3b4d9f78bc4789",
+      "size_bytes": 3594568,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
+      "file_id": "file_00000000c738821094c5fc16acf160fc",
+      "library_file_id": "libfile_2a8afb90ad308191838f2beb78d44d7a",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "build_validation": {
+        "zip_crc": "PASS",
+        "runtime_file_hashes": "72/72 PASS",
+        "exact_01_app_byte_compare": "72/72 PASS",
+        "acceptance_js_syntax": "PASS",
+        "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a"
+      }
+    },
+    "managed_environment_blocker": "Chromium enterprise URLBlocklist=['*']; localhost/file navigation returns ERR_BLOCKED_BY_ADMINISTRATOR. Guardrail respected; no policy bypass attempted.",
+    "local_kit_behavior": [
+      "verify exact CURRENT v458-R92 01-App file hashes before launch",
+      "verify exact Stage6 import-ready ZIP SHA-256",
+      "run phase1 in disposable Chrome profile: real-origin import, IndexedDB persistence/reload, neutral presentation, 696 examples, 1392 translations, 902 visible relations, native Study interaction, default UI Content Package export",
+      "run phase2 in a second disposable Chrome profile: clean-profile reimport, reload, protected authority parity, verified sidecar lineage on all 174 cards",
+      "never touch normal Chrome profile or existing GFP library"
+    ]
   }
 }

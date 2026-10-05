@@ -1,11 +1,11 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.1.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.2.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH01_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
+  "status": "BATCH02_CANDIDATE_QA_PASS__GIT_SYNCED",
   "parent": {
-    "filename": "Menschen-A1-Verben-v3.3.6-Repair4-GFP-v455-CONTENT-RELOCKED.zip",
-    "sha256": "d048120f4e7de9f021eb9465fd4c4bd587d433ff5bedcc4fda2dfb5fa1b41a20",
+    "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch01-L01-L04-ACCEPTED.zip",
+    "sha256": "d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3",
     "immutable": true
   },
   "design_contract": {
@@ -22,35 +22,52 @@
   },
   "batch01": {
     "scope": "A1-L01..A1-L04",
+    "status": "ACCEPTED",
     "cards": 34,
-    "input_candidates": 295,
     "accepted_items": 297,
-    "accepted_unchanged": 137,
-    "accepted_modified_or_provenance_normalized": 156,
-    "accepted_source_backed_additions": 4,
-    "rejected_near_duplicates": 2,
-    "qa": "PASS",
-    "untouched_cards_changed_vs_candidate": 0,
-    "canonical_mutated": false,
-    "provenance_correction": "COURSE_EXAMPLE overclaim removed. Repair4 canonical examples are generated_checked; example-derived items are now PARENT_GENERATED_EXAMPLE unless independently backed by a registered source.",
-    "accepted_zip": {
+    "artifact": {
       "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch01-L01-L04-ACCEPTED.zip",
-      "sha256": "d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3",
-      "bytes": 386853
+      "sha256": "d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3"
+    }
+  },
+  "batch02": {
+    "scope": "A1-L05..A1-L08",
+    "status": "CANDIDATE_QA_PASS",
+    "cards": 35,
+    "combination_items": 268,
+    "items_per_card_min": 5,
+    "items_per_card_max": 9,
+    "registered_source_items": 10,
+    "parent_generated_example_items": 122,
+    "parent_canonical_relation_items": 9,
+    "curated_pedagogical_items": 127,
+    "changed_rows": 35,
+    "changed_columns": [
+      "details",
+      "custom_fields"
+    ],
+    "non_target_rows_changed": 0,
+    "canonical_mutated": false,
+    "qa": "PASS",
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch02-L05-L08-CANDIDATE.zip",
+      "sha256": "a1f445105cb12f200084f382d856f42476577aaa23c19696d390bf5f09956d3d",
+      "bytes": 370147,
+      "zip_members": 8,
+      "sha256sum_entries": 7,
+      "crc": "PASS"
     },
-    "preview_tsv_sha256": "3a2836fc295ac4253a4a089bdede10c231716df74ce47416c5d915982148bc58"
+    "tsv_sha256": "f1f34e796825eb97eb2e5ed55d714f11146d1e6bfc0fd6b5a54333ccc21b73ec"
   },
   "source_boundary": {
-    "parent_generated_examples": "USED_WITH_CORRECTED_PROVENANCE",
     "registered_reference_sources": [
       "deutsch-aber-hallo-listen-tabellen-a1-a2",
+      "deutsch-aber-hallo-listen-tabellen-b1-c2",
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "user_requested_curated_manner_patterns": "USED",
-    "registered_source_items_in_batch": 20,
-    "canonical_stage4": "UNCHANGED",
-    "reason": "The combination layer intentionally supports useful manner/context patterns beyond the legacy canonical relation taxonomy without fabricating canonical relation evidence."
+    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
+    "canonical_stage4": "UNCHANGED"
   },
-  "next_action": "Start Batch02 at A1-L05 using the accepted single-section Kombinationen contract and the corrected provenance/evidence boundary."
+  "next_action": "Run linguistic/source accept-reject pass for Batch02 A1-L05..A1-L08, then promote accepted items and continue at A1-L09."
 }

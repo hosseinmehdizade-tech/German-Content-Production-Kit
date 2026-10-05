@@ -3,8 +3,8 @@
   "branch": "nvv-production",
   "domain": "vocabulary",
   "updated_at": "2026-10-05T14:43:00+02:00",
-  "updated_version": "stage4-round10-systemic-s9-english-idiomaticity-pass-v1",
-  "status": "STAGE4_ROUND10_SYSTEMIC_S9_ENGLISH_IDIOMATICITY_PASS__POST_S9_EXHAUSTION_REVIEW_REQUIRED",
+  "updated_version": "stage4-final-comprehensive-audit-frozen-s9-shard0001-pos1-100-v1",
+  "status": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__POS1_100_REVIEWED_FINDINGS_LOGGED",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -128,7 +128,7 @@
       "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_ROUND10_SYSTEMIC_S9_ENGLISH_IDIOMATICITY_PASS__POST_S9_EXHAUSTION_REVIEW_REQUIRED",
+      "state": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__POS1_100_REVIEWED_FINDINGS_LOGGED",
       "rounds_completed": 6,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -2878,7 +2878,7 @@
         "next_operation": "ROUND10_CLEAN_PASS_R13_FROM_POSITION_1"
       },
       "systemic_root_cause_qa": {
-        "status": "S9_COMPLETED__POST_S9_EXHAUSTION_REVIEW_REQUIRED",
+        "status": "SYSTEMIC_SWEEPS_PRESERVED__FULL_AUDIT_FINDINGS_ONLY_PHASE_ACTIVE",
         "next_family": null,
         "post_s7_recurrence": {
           "status": "S8_COMPLETED_REVIEW_PENDING",
@@ -2945,10 +2945,9 @@
           "systemic_successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
         },
         "post_s9_exhaustion_review": {
-          "status": "REQUIRED_NOT_YET_RUN",
-          "decision_ref": "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA",
+          "status": "SUPERSEDED_BY_MEM-NVV-003_FINAL_COMPREHENSIVE_AUDIT_CONVERGENCE",
           "exact_parent_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-          "next_operation": "POST_S9_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW"
+          "note": "No standalone post-S9 exhaustion round is required before the frozen full audit. Recurrent families found by the comprehensive audit are handled corpus-wide after batch repair."
         }
       },
       "round9_systemic_s8": {
@@ -3068,6 +3067,38 @@
           "status": "PASS_LOCAL_PACKAGE_VALIDATION__LIBRARY_PERSISTENCE_PENDING_CONTAINER_SESSION_EXPIRED"
         },
         "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+      },
+      "legacy_two_consecutive_clean_pass_rule": "SUPERSEDED_FOR_SCOPED_FINAL_CONVERGENCE_BY_MEM-NVV-003",
+      "next": "Continue the user-approved Stage4 Final Comprehensive Audit on the immutable post-S9 core at positions 101-200. Use the fixed all-dimension rubric. Log confirmed findings only; do not repair learner content until the full audit reaches 2492/2492.",
+      "final_comprehensive_audit": {
+        "status": "IN_PROGRESS_FROZEN_BASELINE_NO_EDITS",
+        "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+        "protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
+        "frozen_baseline": {
+          "artifact": "NVV-v3.3.6-Stage4-Round10-SystemicSweep-S9-EnglishIdiomaticity-12REPAIRS-PASS-CHECKPOINT.zip",
+          "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+          "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+        },
+        "targets_total": 2492,
+        "positions_completed": 100,
+        "positions_remaining": 2392,
+        "confirmed_finding_targets": 7,
+        "blocker_findings": 0,
+        "major_findings": 4,
+        "minor_findings": 3,
+        "content_edits_applied": 0,
+        "latest_shard": "FA-0001",
+        "latest_shard_positions": "1-100",
+        "latest_shard_report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-FINAL-COMPREHENSIVE-AUDIT-SHARD0001-POS1-100-FINDINGS.json",
+        "batch_repair_gate": "LOCKED_UNTIL_2492_OF_2492_AUDITED",
+        "verification_after_batch_repair": {
+          "changed_targets": "100_PERCENT",
+          "recurrent_families": "CORPUS_WIDE_SWEEP",
+          "unchanged_sample_clean_targets": 500,
+          "sample_method": "DETERMINISTIC_STRATIFIED_5_POSITION_BANDS_X_SOURCE_CLASSIFICATION",
+          "second_full_2492_clean_pass_required": false
+        },
+        "next_position": 101
       }
     },
     "5_delivery_projection_anti_bypass": {
@@ -3301,9 +3332,9 @@
     "library_file_id": "file_00000000e18c81f4861fd1118a8bf211",
     "library_stable_id": "libfile_1a8eb5b247c081918fd049b19f04994c",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "latest_binary_library_sync": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+    "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "latest_git_metadata": "SYNCED",
-    "latest_local_artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b"
+    "latest_local_artifact_sha256": "28760489a8a18a0ffe79c2b36e26e264847b62115f790bf82d7e2bbb401c7f87"
   },
   "next": "Start Stage4 Round9 full clean-pass attempt R12 from position 1 on this exact S7 successor snapshot. Review all 2492 targets independently. If any repair is required, Round9 earns no clean credit and any recurrent defect family must again follow MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA; if the entire pass is clean, award clean-streak credit 1 of 2 on this unchanged snapshot.",
   "autorun": {
@@ -3359,7 +3390,11 @@
         "static_resilience_checks": "PASS",
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
-    }
+    },
+    "current_operation": "FINAL_COMPREHENSIVE_AUDIT_NO_EDITS",
+    "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
+    "atomic_shard_default": 100,
+    "routine_user_confirmation": false
   },
   "stage1_checkpoint": {
     "filename": "NVV-v3.3.6-Stage1-FRESH-INVENTORY-PASS-CHECKPOINT.zip",
@@ -3485,23 +3520,24 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Run Stage4 post-S9 systemic-family exhaustion review on this exact S9 successor. If no additional recurrent defect family is evidenced, restart the next full clean-pass attempt from position 1 on the unchanged S9 successor. Clean streak remains 0/2.",
+  "next_action": "Continue the user-approved Stage4 Final Comprehensive Audit on the immutable post-S9 core at positions 101-200. Use the fixed all-dimension rubric. Log confirmed findings only; do not repair learner content until the full audit reaches 2492/2492.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-NVV-001-CLEAN-RESTART",
-    "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA"
+    "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA",
+    "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-Round10-SystemicSweep-S9-EnglishIdiomaticity-12REPAIRS-PASS-CHECKPOINT.zip",
-    "sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "filename": "NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0001-POS1-100-FINDINGS-CHECKPOINT.zip",
+    "sha256": "28760489a8a18a0ffe79c2b36e26e264847b62115f790bf82d7e2bbb401c7f87",
     "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round10-SystemicSweep-S9-EnglishIdiomaticity-12REPAIRS-PASS-CHECKPOINT.zip",
-    "library_file_id": null,
-    "library_stable_id": null,
-    "status": "PASS_LOCAL_PACKAGE_VALIDATION__LIBRARY_PERSISTENCE_PENDING_CONTAINER_SESSION_EXPIRED"
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0001-POS1-100-FINDINGS-CHECKPOINT.zip",
+    "library_file_id": "file_000000002be48210b2f0f517030c9f91",
+    "library_stable_id": "libfile_778a4fcad5d881918f257f97c467ba8a",
+    "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "systemic_root_cause_qa": {
     "status": "POST_S7_EXHAUSTION_REVIEW_PASS_ROUND9_CLEAN_RESTART_READY",
@@ -3831,6 +3867,6 @@
       "next_clean_pass_start_position": 1
     }
   },
-  "last_observed_stage": "Stage4 Round10 systemic root-cause sweep S9",
-  "last_observed_note": "S9 screened all 2492 targets / 12460 English learner fields, adjudicated 73 candidates, repaired 12 targets (25 English example rows + 3 gloss_en fields), and deferred 61 adequate/false-positive candidates. Official v3.3.6 closure remains 42364 cells / 0 unresolved; source, identity, canonical forms, structures, DE examples and FA examples remain unchanged. Round10 clean credit stays 0. Library persistence is pending because the container-backed upload session expired after the bounded retry."
+  "last_observed_stage": "Stage4 Final Comprehensive Audit — frozen post-S9 baseline — shard FA-0001 positions 1-100",
+  "last_observed_note": "User-approved convergence protocol is active. The exact post-S9 core is frozen and was not edited. Positions 1-100 were reviewed once with the fixed all-dimension rubric; 7 confirmed finding targets were logged (4 major, 3 minor), 93 targets had no confirmed finding. All repairs are deferred until 2492/2492 audit coverage is complete."
 }

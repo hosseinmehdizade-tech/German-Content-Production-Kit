@@ -1,0 +1,116 @@
+{
+  "schema": "vmp-stage6-blocked-presentation-example-schema-report@1.0.0",
+  "status": "BLOCKED_STAGE5_PRESENTATION_EXAMPLE_SCHEMA_INCOMPATIBLE__CHECKPOINT_LIBRARY_AND_GIT_SYNCED",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "workstream": "250-verben-mit-praepositionen-deutschweb",
+  "stage6": {
+    "state": "BLOCKED",
+    "milestone": "STAGE6_RUNTIME_AND_PRESENTATION_ACCEPTANCE",
+    "blocker_code": "STAGE5_PRESENTATION_EXAMPLE_SCHEMA_NOT_RUNTIME_COMPATIBLE",
+    "runtime": {
+      "current": "v457-R91",
+      "current_artifact": "German-Flashcards-Pro-v457-R91-ORGANIZED-DELIVERY-ENGINEERING-CANDIDATE.zip",
+      "artifact_sha256": "1d37fc72f632f1756c96b3c3c2bd95ee14a50ca5f1c84877ee4124b715790180",
+      "app_sha256": "fce7dba046993ee20c43975a6b6500c372530b6ea6d5744c08e5f0c65f43af7c",
+      "exact_user_upload_materialization": "PASS_SHA256_MATCH",
+      "internal_sha256s": "323/323 PASS",
+      "git_runtime_source_mirror": "PASS_72_OF_72_EXACT",
+      "git_runtime_tree_sha": "de10cd3b365ee364e1e6e7f4d0345563526f04fa",
+      "git_source_commit": "63f994eb93423d8ccf177e4535c4becaa8065359",
+      "last_fully_verified": "v451-R85",
+      "no_downgrade": true
+    },
+    "content_input": {
+      "stage5_checkpoint_sha256": "ebaaa916e36df3f388519c3468bd85fcf6878995a430ac8a73c5479b8fcf8400",
+      "clean_delivery_sha256": "b62bc1ec39abf2b17524201d2dd9d09d696e65437f5dcdc8854ac48ea6f785fd",
+      "dataset_sha256": "156a21278c60ad692f320b5a84e15201273bf6ff1708cb4cb5ba37f43d9bfa97",
+      "cards": 292,
+      "verbs": 201,
+      "expressions": 91,
+      "relations": 592,
+      "german_examples": 1168,
+      "card_type": "de-vocabulary",
+      "presentation_contract": "gfp-vocabulary-neutral@1",
+      "source_audio_refs": 0,
+      "source_audio_exception": "SOURCE_HAS_NO_AUDIO",
+      "stage5_predecessor_immutable": true
+    },
+    "passed_before_block": {
+      "runtime_vocabulary_envelope_regression": "21/21 PASS",
+      "production_import_preview": "PASS",
+      "production_import": "PASS",
+      "manifest": "VERIFIED / 292 after bounded MEM-024 wait",
+      "persistence": "PASS / 292",
+      "runtime_index": "PASS / 292",
+      "state_only_commit": "PASS",
+      "runtime_retained_roundtrip": "PASS / 292",
+      "neutral_presentation": "PASS / 292",
+      "relations": "PASS / 592",
+      "zero_audio_boundary": "PASS / 0 refs",
+      "page_errors": 0
+    },
+    "blocker": {
+      "raw_stage5_presentation_examples_schema": [
+        "id",
+        "de",
+        "fa",
+        "en",
+        "annotations"
+      ],
+      "exact_runtime_required_schema": "object must provide text/value/sentence; translations are [{lang,text}]; id and annotations supported",
+      "raw_counts": {
+        "examples": 1168,
+        "stable_example_ids": 1168,
+        "fa_translations": 1168,
+        "en_translations": 1168,
+        "annotation_objects": 1168,
+        "annotation_segments": 1315
+      },
+      "runtime_retained_counts": {
+        "german_examples": 1168,
+        "stable_example_ids": 0,
+        "fa_translations": 0,
+        "en_translations": 0,
+        "annotation_objects": 0
+      },
+      "loss": {
+        "stable_example_ids": 1168,
+        "fa_translations": 1168,
+        "en_translations": 1168,
+        "annotation_objects": 1168,
+        "annotation_segments": 1315
+      },
+      "german_example_texts_lost": 0,
+      "classification": "PROJECTION_SCHEMA_INCOMPATIBILITY_DISCOVERED_BY_EXACT_CURRENT_RUNTIME",
+      "organization_lesson_fallback_not_blocker": "Blank lesson seed becomes generic Lektion 01..10 mutable runtime metadata under MEM-010."
+    },
+    "repair_boundary": "Projection-only Stage5 Repair1: map each presentation example to {id,lang:'de-DE',text:de,order,translations:[fa-IR,en-US],annotations} while preserving semantic bytes/IDs/annotations/canonical/relations. No lexical regeneration and no runtime code change.",
+    "mem024": "Exact candidate bytes reused and assertions waited for the expected 292-card generation to reach VERIFIED.",
+    "not_claimed": [
+      "Stage6 PASS",
+      "Stage7 final/re-lock"
+    ],
+    "protected_state": {
+      "semantic_content_mutated": false,
+      "runtime_code_mutated": false,
+      "stage5_predecessor_preserved": true
+    },
+    "artifact": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-CHECKPOINT.zip",
+      "sha256": "9733a57d32007c476e6b3f2ec78e00a3b07a2a2608b9fcacbebfcc385bd3240d",
+      "size_bytes": 264411,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-CHECKPOINT.zip",
+      "library_file_id": "file_000000009d6081f4a20c2f7ab02ec075",
+      "library_stable_id": "libfile_31159ac7d9908191956c86898fa7eaa3",
+      "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "d39c46b8e38af53315c89c02a7e577cefce98987852e982b636d97a7bcae4814",
+      "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+      "local_container_path": "/mnt/data/250vmp/250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-POST-PACKAGE-VERIFICATION.json"
+    }
+  },
+  "evidence_note": "The uploaded v457-R91 artifact exactly matches CURRENT and removes the prior runtime-artifact blocker. Exact-runtime import then exposed a Stage5 presentation_examples envelope mismatch: German example text survives through fallback, while example IDs, FA/EN translations and annotations are not parsed.",
+  "next_action": "Create a controlled Stage5 Repair1 projection-only successor that converts presentation_examples from {id,de,fa,en,annotations} to the exact runtime-compatible {id,lang,text,order,translations,annotations} envelope without semantic regeneration; rerun v3.3.6 Stage5 anti-bypass, then rerun exact v457-R91 Stage6 using unchanged lexical/canonical authority."
+}

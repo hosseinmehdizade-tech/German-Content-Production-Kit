@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@2.2.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@2.3.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH07_CANDIDATE_QA_PASS__LIBRARY_AND_GIT_SYNCED",
+  "status": "A1_VERB_KOMBINATIONEN_CONTENT_COMPLETE__310_OF_310__RUNTIME_ACCEPTANCE_NOT_RUN",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": [
@@ -103,8 +103,8 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
-    "registered_source_claims": "NONE_FOR_NEW_BATCH05_ITEMS_UNTIL_ACCEPTANCE",
+    "curated_manner_context_patterns": "ALLOWED_AFTER_LINGUISTIC_REVIEW",
+    "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
     "canonical_stage4": "UNCHANGED"
   },
   "cumulative_accepted_before_batch05": {
@@ -112,7 +112,7 @@
     "cards": 183,
     "accepted_combination_items": 1300
   },
-  "next_action": "Run the final linguistic/source accept-modify-reject pass for Batch07 supplement-only cards; if PASS, close the A1 verb-retrofit content workstream at 310/310 cards before any separate runtime acceptance.",
+  "next_action": "Content workstream is complete at 310/310 cards. Keep it closed unless a bounded repair is needed. Any runtime/import/presentation acceptance must separately resolve CURRENT at execution time. Continue the broader lexical Kombinationen policy in the unified Menschen pipeline.",
   "global_policy_overlay": {
     "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
     "adoption_matrix": "Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json",
@@ -182,40 +182,43 @@
   },
   "batch07": {
     "scope": "A1-SUPPLEMENT-ONLY",
-    "status": "CANDIDATE_QA_PASS",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
     "cards": 30,
-    "combination_items": 150,
-    "items_per_card_min": 5,
-    "items_per_card_max": 5,
-    "items_per_card_avg": 5,
+    "input_candidates": 150,
+    "accepted_items": 149,
+    "accepted_unchanged": 147,
+    "accepted_modified": 2,
+    "rejected": 1,
     "registered_source_items": 10,
     "origin_counts": {
-      "PARENT_GENERATED_EXAMPLE": 102,
+      "PARENT_GENERATED_EXAMPLE": 101,
       "REGISTERED_SOURCE": 10,
-      "CURATED_PEDAGOGICAL": 27,
-      "PARENT_CANONICAL_RELATION": 11
+      "CURATED_PEDAGOGICAL": 28,
+      "PARENT_CANONICAL_RELATION": 10
     },
-    "changed_rows": 30,
-    "changed_columns": [
-      "details",
-      "custom_fields"
-    ],
+    "items_per_card_min": 4,
+    "items_per_card_max": 5,
+    "items_per_card_avg": 4.9667,
+    "qa": "PASS",
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
-    "qa": "PASS",
+    "tsv_sha256": "825d8150e094c81614d6d0eebbb8ad634ad0b4be840f9c914adf3ad0a8bb782d",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-CANDIDATE.zip",
-      "sha256": "c4848fce86b538886098c7dc9880f6527e3c7378a14923424d88fe8c11583865",
-      "bytes": 415326,
-      "zip_members": 8,
-      "sha256sum_entries": 7,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-ACCEPTED.zip",
+      "sha256": "0fc47ac4c4a4fcf4c27576314665dbaca4fd9caa90ac45a85abd8fb78d557c1b",
+      "bytes": 416516,
+      "zip_members": 9,
+      "sha256sum_entries": 8,
       "crc": "PASS",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-CANDIDATE.zip",
-      "library_file_id": "libfile_69a7efb08ca081919cd168acb8978256",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-ACCEPTED.zip",
+      "library_file_id": "libfile_26c30c9a83848191ad640a1803430ddb",
       "library_persistence": "PASS"
     },
-    "tsv_sha256": "2bc37ee110d097420ade617884787c79525c4a4e36a8f762d53198be758fa6f1",
-    "coverage_note": "These are the final 30 A1 supplement-only cards that had no accepted Kombinationen after Batch06."
+    "final_decisions": [
+      "heftig regnen -> leicht regnen to remove a near-duplicate of stark regnen and add contrast.",
+      "Rejected etwas schnell wegmachen as low-value generic filler.",
+      "sich vor dem Essen umziehen -> sich vor einer Feier umziehen for a more natural context."
+    ]
   },
   "cumulative_accepted_before_batch07": {
     "scope": "A1-L01..A1-L21",
@@ -229,5 +232,15 @@
     "cards_with_visible_kombinationen_projection": 310,
     "accepted_combination_items": 1785,
     "candidate_combination_items": 150
+  },
+  "content_completion": {
+    "scope": "A1 verb-retrofit lineage",
+    "cards_accepted": 310,
+    "cards_total": 310,
+    "accepted_combination_items": 1934,
+    "learner_visible_section": "Kombinationen",
+    "canonical_stage4_mutated": false,
+    "runtime_acceptance": "NOT_RUN",
+    "runtime_final_claim": false
   }
 }

@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@2.0.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@2.1.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH06_CANDIDATE_QA_PASS__LIBRARY_AND_GIT_SYNCED",
+  "status": "BATCH06_LINGUISTIC_ACCEPTANCE_PASS__LIBRARY_AND_GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": [
@@ -112,7 +112,7 @@
     "cards": 183,
     "accepted_combination_items": 1300
   },
-  "next_action": "Run linguistic/source accept-reject pass for Batch06 A1-L21, then continue with the remaining A1 supplement-only cards as Batch07.",
+  "next_action": "Build Batch07 candidate for the remaining 30 A1 supplement-only verb cards, then run its separate linguistic/source acceptance pass.",
   "global_policy_overlay": {
     "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
     "adoption_matrix": "Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json",
@@ -127,43 +127,57 @@
   },
   "batch06": {
     "scope": "A1-L21",
-    "status": "CANDIDATE_QA_PASS",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
     "cards": 27,
-    "combination_items": 135,
+    "input_candidates": 135,
+    "accepted_items": 135,
+    "accepted_unchanged": 124,
+    "accepted_modified": 11,
+    "rejected": 0,
+    "registered_source_items": 8,
+    "origin_counts": {
+      "REGISTERED_SOURCE": 8,
+      "PARENT_GENERATED_EXAMPLE": 81,
+      "PARENT_CANONICAL_RELATION": 5,
+      "CURATED_PEDAGOGICAL": 41
+    },
     "items_per_card_min": 5,
     "items_per_card_max": 5,
     "items_per_card_avg": 5,
-    "registered_source_items": 6,
-    "origin_counts": {
-      "REGISTERED_SOURCE": 6,
-      "PARENT_GENERATED_EXAMPLE": 84,
-      "PARENT_CANONICAL_RELATION": 5,
-      "CURATED_PEDAGOGICAL": 40
-    },
-    "changed_rows": 27,
-    "changed_columns": [
-      "details",
-      "custom_fields"
-    ],
+    "qa": "PASS",
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
-    "qa": "PASS",
+    "tsv_sha256": "e57cd46f79acc3f8dc358c02b8b3347108101e004ff2f16e251c3d90665145a6",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-CANDIDATE.zip",
-      "sha256": "bf99e8c75f67413bae5c81ffc3d8a5c238d8c7dd327cf922d86a87316e1c6308",
-      "bytes": 417846,
-      "zip_members": 8,
-      "sha256sum_entries": 7,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-ACCEPTED.zip",
+      "sha256": "4ded369c511b6065fe41147c526b5c7bb1d9e8f4ed16cff9b4c7c85b68cf08c3",
+      "bytes": 410840,
+      "zip_members": 9,
+      "sha256sum_entries": 8,
       "crc": "PASS",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-CANDIDATE.zip",
-      "library_file_id": "libfile_b64560edcf18819193da1d4f82c4bbf7",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-ACCEPTED.zip",
+      "library_file_id": "libfile_c2dfd4304878819192957494e096bd1c",
       "library_persistence": "PASS"
     },
-    "tsv_sha256": "fcc96f50728f87233f6ba7d9d0c365bd598556b976d8b692906d1df6405aa4d0"
+    "notable_repairs": [
+      "vor dem Krankenhaus nicht hupen -> vor einem Krankenhaus nicht hupen.",
+      "etwas klar regeln -> etwas eindeutig regeln.",
+      "leicht irgendwo anstoßen -> versehentlich an etwas anstoßen.",
+      "jemanden in warmem Wasser baden -> parent-faithful den Hund in warmem Wasser baden.",
+      "etwas nicht dürfen -> etwas nicht machen dürfen.",
+      "etwas unbedingt tun müssen -> unbedingt etwas tun müssen.",
+      "Persian glosses polished for verstehen, erlauben and aufstehen.",
+      "Both über einen Antrag abstimmen items promoted to registered-source evidence."
+    ]
   },
   "cumulative_accepted_before_batch06": {
     "scope": "A1-L01..A1-L20",
     "cards": 253,
     "accepted_combination_items": 1650
+  },
+  "cumulative_through_batch06": {
+    "scope": "A1-L01..A1-L21",
+    "cards": 280,
+    "accepted_combination_items": 1785
   }
 }

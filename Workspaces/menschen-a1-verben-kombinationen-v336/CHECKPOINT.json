@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@2.1.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@2.2.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH06_LINGUISTIC_ACCEPTANCE_PASS__LIBRARY_AND_GIT_SYNCED",
+  "status": "BATCH07_CANDIDATE_QA_PASS__LIBRARY_AND_GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": [
@@ -112,7 +112,7 @@
     "cards": 183,
     "accepted_combination_items": 1300
   },
-  "next_action": "Build Batch07 candidate for the remaining 30 A1 supplement-only verb cards, then run its separate linguistic/source acceptance pass.",
+  "next_action": "Run the final linguistic/source accept-modify-reject pass for Batch07 supplement-only cards; if PASS, close the A1 verb-retrofit content workstream at 310/310 cards before any separate runtime acceptance.",
   "global_policy_overlay": {
     "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
     "adoption_matrix": "Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json",
@@ -179,5 +179,55 @@
     "scope": "A1-L01..A1-L21",
     "cards": 280,
     "accepted_combination_items": 1785
+  },
+  "batch07": {
+    "scope": "A1-SUPPLEMENT-ONLY",
+    "status": "CANDIDATE_QA_PASS",
+    "cards": 30,
+    "combination_items": 150,
+    "items_per_card_min": 5,
+    "items_per_card_max": 5,
+    "items_per_card_avg": 5,
+    "registered_source_items": 10,
+    "origin_counts": {
+      "PARENT_GENERATED_EXAMPLE": 102,
+      "REGISTERED_SOURCE": 10,
+      "CURATED_PEDAGOGICAL": 27,
+      "PARENT_CANONICAL_RELATION": 11
+    },
+    "changed_rows": 30,
+    "changed_columns": [
+      "details",
+      "custom_fields"
+    ],
+    "non_target_rows_changed": 0,
+    "canonical_mutated": false,
+    "qa": "PASS",
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-CANDIDATE.zip",
+      "sha256": "c4848fce86b538886098c7dc9880f6527e3c7378a14923424d88fe8c11583865",
+      "bytes": 415326,
+      "zip_members": 8,
+      "sha256sum_entries": 7,
+      "crc": "PASS",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-CANDIDATE.zip",
+      "library_file_id": "libfile_69a7efb08ca081919cd168acb8978256",
+      "library_persistence": "PASS"
+    },
+    "tsv_sha256": "2bc37ee110d097420ade617884787c79525c4a4e36a8f762d53198be758fa6f1",
+    "coverage_note": "These are the final 30 A1 supplement-only cards that had no accepted Kombinationen after Batch06."
+  },
+  "cumulative_accepted_before_batch07": {
+    "scope": "A1-L01..A1-L21",
+    "cards": 280,
+    "accepted_combination_items": 1785
+  },
+  "coverage_after_batch07_candidate": {
+    "total_a1_cards": 310,
+    "accepted_cards": 280,
+    "candidate_cards": 30,
+    "cards_with_visible_kombinationen_projection": 310,
+    "accepted_combination_items": 1785,
+    "candidate_combination_items": 150
   }
 }

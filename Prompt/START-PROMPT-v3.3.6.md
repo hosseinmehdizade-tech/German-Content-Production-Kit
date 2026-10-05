@@ -26,6 +26,6 @@ For projection-only successors, run `Verification/prevention_preflight.py lineag
 ## Mandatory verb Kombinationen overlay
 
 For every applicable German verb target, read and apply:
-`Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md`.
+`Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` and resolve current-workstream adoption from `Prompt/VERB-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json`.
 
 This overlay is ACTIVE for new work and for active workstreams at the next safe enrichment/QA boundary. It requires one learner-visible `Kombinationen` section, preserves backend typing/provenance, permits reviewed curated manner/context combinations, forbids false source claims and density-forced fabrication, and leaves historical LOCKED artifacts immutable.

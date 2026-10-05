@@ -1,0 +1,59 @@
+{
+  "schema": "gcpk-stage3b-adjective-core-repair-summary@1.0.0",
+  "dataset": "aber-hallo-listen-tabellen",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "status": "PASS_STAGE3B_ADJECTIVE_CORE_REPAIR1__STAGE3B_STILL_RUNNING",
+  "parent_checkpoint": {
+    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-EN-BILINGUAL-CLOSURE-CHECKPOINT.zip",
+    "sha256": "82565a73a21decf2913ab4662e39e85afe78848329be1bccc7d49f7992d2a5c7"
+  },
+  "defect": {
+    "affected_targets": "ahl-lu-0741..ahl-lu-0788",
+    "affected_count": 48,
+    "description": "Accepted Stage3B semantic/evidence decisions and examples existed, but learner-facing definition_de, persian_meaning, english_gloss and details.rection were omitted from CANONICAL-ENRICHED.json for the final 48 adjective targets.",
+    "prior_false_positive": "Earlier validation had reported required learner fields nonempty although only 740/788 units actually carried these fields."
+  },
+  "repair": {
+    "definition_de_restored": 48,
+    "persian_meaning_restored": 48,
+    "english_gloss_restored": 48,
+    "rection_restored": 48,
+    "full_dataset_definition_de_nonempty": "788/788",
+    "full_dataset_persian_meaning_nonempty": "788/788",
+    "full_dataset_english_gloss_nonempty": "788/788",
+    "affected_range_persian_evidence_verified": 27,
+    "affected_range_persian_evidence_provisional": 21,
+    "global_persian_provisional_targets": 431,
+    "evidence_status_upgrades": 0
+  },
+  "immutable_boundaries": {
+    "prior_targets_0001_0740": "DEEP_EQUAL",
+    "examples_de_and_translations": "UNCHANGED_3152",
+    "provenance": "UNCHANGED",
+    "metadata": "UNCHANGED",
+    "source_facts": "UNCHANGED",
+    "candidate_ledger": "UNCHANGED",
+    "evidence_index": "UNCHANGED",
+    "runtime_ui": "UNCHANGED"
+  },
+  "validation": {
+    "canonical_targets": "788/788",
+    "canonical_sha256": "e4152d6c7b758007b6e2331da44847c025c9dbe4f657205814e5600caed17797",
+    "source_facts_sha256": "8c17d6f0364cb177562c8a96906e984750d7eb364d6375bafa86ba7e3a31f5ad",
+    "manifest_rehash": "108/108 PASS",
+    "zip_crc": "PASS",
+    "package_hygiene": "PASS",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "stage3c_not_claimed": true
+  },
+  "artifact": {
+    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-ADJECTIVE-CORE-REPAIR1-CHECKPOINT.zip",
+    "sha256": "c2743eb643023e59af11937954d0872953a294065d457324169db8bdc448a1f7",
+    "size_bytes": 778320,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-ADJECTIVE-CORE-REPAIR1-CHECKPOINT.zip",
+    "library_file_id": "libfile_ae8965b87df88191b6698ad3b09dc1cd",
+    "library_file_snapshot_id": "file_000000001b4481f48d2ae60b2f331616",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action": "Continue Stage3B Persian bilingual evidence closure from this repaired canonical authority; then relation-review dimensions. Do not start Stage3C until no unreviewed/deferred cells remain."
+}

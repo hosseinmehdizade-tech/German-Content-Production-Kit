@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T20:36:00+02:00",
+  "updated_at": "2026-10-05T20:52:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -71,6 +71,18 @@
       "policy": "Prompt/UNIFIED-VOCABULARY-IMPORT-PRESENTATION-POLICY-v1.1.0.md",
       "status": "CARRIED_FORWARD_V3_3_5",
       "rule": "One neutral de-vocabulary presentation family with gfp-vocabulary-neutral@1."
+    },
+    "verb_kombinationen_overlay": {
+      "status": "ACTIVE",
+      "policy": "Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+      "version": "1.0.0",
+      "scope": "All applicable German verb targets in new and active content workstreams",
+      "learner_visible_section": "Kombinationen",
+      "backend_typing": "PRESERVE",
+      "source_claim_rule": "REGISTERED_SOURCE requires explicit registered evidence refs",
+      "density_rule": "NO_HARD_QUOTA_CLOSED_NO_FORCE_ALLOWED",
+      "locked_artifact_rule": "IMMUTABLE_USE_SUCCESSOR_ENRICHMENT",
+      "active_workstream_adoption": "NEXT_SAFE_STAGE3B_OR_STAGE4_BOUNDARY_BEFORE_STAGE5_CLOSURE"
     }
   },
   "workstream_resolution_policy": "Use the newest valid portable checkpoint first. Git is the durable mirror/ambiguity resolver; attempt lightweight sync after every validated milestone. Temporary WIP edits are not milestones; bounded failures remain PENDING.",

@@ -2,7 +2,7 @@
   "schema": "menschen-a2-verben-kombinationen-v336-checkpoint@1.15.0",
   "workstream": "menschen-a2-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "CONTENT_FINAL_PASS__292_OF_292__RUNTIME_ACCEPTANCE_NOT_RUN__LIBRARY_PERSISTED",
+  "status": "CONTENT_FINAL_CONSOLIDATED_PASS__292_OF_292__RUNTIME_ACCEPTANCE_NOT_RUN__LIBRARY_PERSISTED",
   "authority": {
     "parent_filename": "Menschen-A2-Verben-v3.3.6-Repair3-GFP-v455-RELOCKED.zip",
     "parent_sha256": "30abc51f98762e6b47d8e2b3bea7e99d629f84c7a5c4bcf3f3d4234e3d84bc84",
@@ -108,8 +108,8 @@
     "final_delivery_rule": "CUMULATIVE_A2_OUTPUT_INCLUDES_ALL_292_CARDS"
   },
   "persistence": {
-    "git": "IN_SYNC_AT_CONTENT_FINAL",
-    "main_coordination": "IN_SYNC_AT_CONTENT_FINAL",
+    "git": "IN_SYNC_AT_CONSOLIDATED_CONTENT_FINAL",
+    "main_coordination": "IN_SYNC_AT_CONSOLIDATED_CONTENT_FINAL",
     "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "batch01_library": "PASS",
     "batch02_library": "PASS",
@@ -128,11 +128,12 @@
     "batch15_library": "PASS",
     "binary_delivery_surface": "Library + current conversation generated artifacts",
     "workstream_readme_commit": "eeb4cc9633f6b5269e1df7376929dabeac934214",
-    "workstream_checkpoint_commit": "SELF_COMMIT_CONTAINS_CONTENT_FINAL_STATE"
+    "workstream_checkpoint_commit": "SELF_COMMIT_CONTAINS_CONTENT_FINAL_STATE",
+    "final_consolidated_library": "PASS"
   },
   "runtime_acceptance": "NOT_RUN",
   "runtime_final_claim": false,
-  "next_action": "Run separate CURRENT-runtime acceptance against German Flashcards Pro v458-R92 using the exact Batch15 CONTENT-FINAL artifact. Do not claim runtime-final/release-final until that acceptance passes.",
+  "next_action": "Use the final consolidated content package as the preferred single archive. Run separate CURRENT-runtime acceptance against v458-R92 before any runtime-final/release-final claim.",
   "batch02": {
     "scope": "ma2-lu-0021..ma2-lu-0040",
     "lesson_membership": "Menschen A2 Verben",
@@ -1335,5 +1336,21 @@
     },
     "cumulative_input_sha256": "897bf63629ab6ba08c1842949bc5ce3c27b02777a41e24d241d1fb74cf781ab9"
   },
-  "content_final_claim": true
+  "content_final_claim": true,
+  "final_consolidated_package": {
+    "filename": "Menschen-A2-Verben-v3.3.6-FINAL-CONSOLIDATED-CONTENT-PACKAGE.zip",
+    "sha256": "fb240cd05fe7ec99e2816fff8e4337dde0b7fdac2dc9f6f21caf8ddaab4d2332",
+    "size_bytes": 955677,
+    "library_file_id": "libfile_1bf5d3d9c6408191b84db110d5ea9c49",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "verification_filename": "FINAL-CONSOLIDATED-VERIFICATION.json",
+    "verification_sha256": "88bff4b7d1fd1649df8ab3c1a5b500dd16404900d4318def65cd7b3b74bbd064",
+    "verification_library_file_id": "libfile_74ba4fc173608191a6d1676cabb4e973",
+    "current_authority_path": "Current-Content-Final/A2-VERBEN-UNIVERSAL-v2-KOMBINATIONEN-BATCH15-ACCEPTED.tsv",
+    "embedded_parent_role": "IMMUTABLE_HISTORICAL_BASELINE",
+    "embedded_current_role": "ACTIVE_CONTENT_AUTHORITY",
+    "repair3_members_preserved_exactly": true,
+    "content_final_members_preserved_exactly": true,
+    "nested_archives": 0
+  }
 }

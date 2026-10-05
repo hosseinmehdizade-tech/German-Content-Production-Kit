@@ -21,3 +21,21 @@ Final durable state: **Stage7 exact-final RELOCKED PASS on German Flashcards Pro
 - Visible UI change: **NONE**
 
 Repair2 is complete. Do not regenerate or mutate this relocked content without a real defect or an explicitly opened Repair3 successor. Runtime may advance independently.
+
+## Final consolidated content package
+
+A single durable content archive combines the current Repair2 content authority with the full Repair1 Stage5 provenance/QA parent.
+
+- Package: `Menschen-A1-Verben-v3.3.6-FINAL-CONSOLIDATED-CONTENT-PACKAGE.zip`
+- SHA-256: `0cc8d64711e74764d428170a22db4d09188ee27c38e7770a09c45fee1b27603f`
+- Size: 2,556,294 bytes
+- Active content authority: `Current-Repair2-Content/CONTENT-DELIVERY/A1-VERBEN-UNIVERSAL-v2.tsv`
+- Active TSV SHA-256: `d46a3dd7aa7294db0970af50e79d45bc6ed075c52a799da932c6aa56b98179f4`
+- Content: **310 cards = 247 Verb + 63 Expression; 1240 DE/FA/EN examples; 768 relations**
+- Repair2 CLEAN DELIVERY members preserved byte-exact
+- Repair1 Stage5 PASS parent members preserved byte-exact
+- Library rematerialization: **PASS exact SHA-256 + byte compare**
+- Latest RELOCKED runtime acceptance remains **104/104 PASS on v451-R85**
+- Current app runtime is **v458-R92**; fresh v458 acceptance is **NOT RUN** by this content consolidation.
+
+Use this consolidated ZIP as the preferred single-file A1 Verben content archive. The historical Repair1 bytes remain inside it for rollback/provenance.

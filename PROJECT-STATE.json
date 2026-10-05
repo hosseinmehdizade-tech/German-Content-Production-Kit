@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T18:24:00+02:00",
+  "updated_at": "2026-10-05T18:45:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -5748,7 +5748,7 @@
       "checkpoint": "Workspaces/unregelmaessige-verben/CHECKPOINT.json",
       "source_manifest": "Workspaces/unregelmaessige-verben/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "EXPLICIT_CURRENT_PARENT_THEN_PORTABLE_STATE_THEN_GIT",
-      "current_milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_READY",
+      "current_milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R1_READY",
       "content_authority": "v1.2.0 immutable semantic parent",
       "content_counts": {
         "cards": 174,
@@ -5783,7 +5783,7 @@
         "nvv_literal_target_warnings": "55 non-blocking preserved-legacy warnings",
         "stage6_runtime": "NOT_RUN"
       },
-      "next_action": "Run the exact local acceptance kit on Windows/Chrome; persist PASS/failure report, then close or repair Stage6 without semantic regeneration.",
+      "next_action": "Run corrected R1 kit on Windows/Chrome; persist final PASS/failure report.",
       "clean_delivery": {
         "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
         "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -5815,27 +5815,35 @@
         "blocker": "ERR_BLOCKED_BY_ADMINISTRATOR on localhost and file navigation",
         "semantic_content_mutated": false,
         "local_acceptance_kit": {
-          "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
-          "sha256": "86119e20a01a045c68646f18425292124ef67a4b955c21285f3b4d9f78bc4789",
-          "size_bytes": 3594568,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
-          "file_id": "file_00000000c738821094c5fc16acf160fc",
-          "library_file_id": "libfile_2a8afb90ad308191838f2beb78d44d7a",
+          "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
+          "sha256": "8d8128736ca8e01b8aa1e163ceb0ef44e9966bc7ec418f6e5958f14767969c33",
+          "size_bytes": 3596976,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
+          "file_id": "file_0000000058dc821097edfd8e988af979",
+          "library_file_id": "libfile_c8c8e7d3267c81918c99b5d403d79486",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
           "build_validation": {
             "zip_crc": "PASS",
             "runtime_file_hashes": "72/72 PASS",
             "exact_01_app_byte_compare": "72/72 PASS",
-            "acceptance_js_syntax": "PASS",
+            "changed_files": "3 harness-only files",
+            "unchanged_files": 329,
             "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a"
           }
         },
-        "managed_environment_blocker": "ERR_BLOCKED_BY_ADMINISTRATOR from enforced Chromium URLBlocklist; no bypass attempted."
+        "managed_environment_blocker": "ERR_BLOCKED_BY_ADMINISTRATOR from enforced Chromium URLBlocklist; no bypass attempted.",
+        "harness_repair": {
+          "id": "HARNESS-001-FIND-CHROME-SCALAR-COUNT",
+          "status": "FIXED_IN_R1",
+          "runtime_or_content_changed": false
+        }
       },
       "git_stage6_checkpoint_commit": "6af932bc095cdeca17a0508db018ff5bb1e8a6e8",
       "git_stage6_readme_commit": "4ac5c8980cd4e93286e2a674b886875660ca2da3",
       "git_stage6_local_kit_checkpoint_commit": "371f46bb30f1a2e70bc49d5866e371ab95feda3d",
-      "git_stage6_local_kit_readme_commit": "698b11b08b04e5ee02a6ca9095def2eef7eafe3f"
+      "git_stage6_local_kit_readme_commit": "698b11b08b04e5ee02a6ca9095def2eef7eafe3f",
+      "git_stage6_r1_checkpoint_commit": "5205c0b3ea45b84551766ba336e392aa7415b319",
+      "git_stage6_r1_readme_commit": "f456b85511a0b15130c9ae3d6b0f969624dfe21d"
     }
   },
   "flashcards_runtime_dependency": {

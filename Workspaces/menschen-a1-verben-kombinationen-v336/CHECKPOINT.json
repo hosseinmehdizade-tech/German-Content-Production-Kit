@@ -1,19 +1,15 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.4.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.5.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH03_CANDIDATE_QA_PASS__GIT_SYNCED",
+  "status": "BATCH03_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
-    "separate_visible_sections": [
-      "Rektion",
-      "Kollokationen",
-      "Nomen-Verb-Verbindungen"
-    ],
+    "separate_visible_sections": ["Rektion","Kollokationen","Nomen-Verb-Verbindungen"],
     "separate_visible_sections_policy": "MERGED_INTO_KOMBINATIONEN",
     "backend_typing": "PRESERVED_IN_TYPED_COMBINATION_ITEMS",
     "ui_component_change": false,
-    "canonical_relation_policy": "Do not coerce manner/context/free combinations into legacy relation types. Keep them in typed Kombinationen authority/projection unless they genuinely satisfy an existing canonical relation contract."
+    "canonical_relation_policy": "Do not coerce manner/context/free combinations into legacy relation types."
   },
   "batch01": {
     "scope": "A1-L01..A1-L04",
@@ -31,32 +27,41 @@
   },
   "batch03": {
     "scope": "A1-L09..A1-L12",
-    "status": "CANDIDATE_QA_PASS",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
     "cards": 55,
-    "combination_items": 384,
+    "input_candidates": 384,
+    "accepted_items": 384,
+    "accepted_unchanged": 369,
+    "accepted_modified": 15,
+    "rejected": 0,
+    "registered_source_items": 23,
     "items_per_card_min": 5,
     "items_per_card_max": 8,
-    "registered_source_items": 22,
-    "parent_generated_example_items": 177,
-    "parent_canonical_relation_items": 4,
-    "curated_pedagogical_items": 181,
-    "changed_rows": 55,
-    "changed_columns": [
-      "details",
-      "custom_fields"
-    ],
+    "qa": "PASS",
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
-    "qa": "PASS",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch03-L09-L12-CANDIDATE.zip",
-      "sha256": "54d2b0870c1c4c7e08a984ea701445bd998378fba5f0df7d7487c504bc5aff9e",
-      "bytes": 387550,
-      "zip_members": 8,
-      "sha256sum_entries": 7,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch03-L09-L12-ACCEPTED.zip",
+      "sha256": "9a64d1ac4ca015459c3f3659eff6cc559d1ed2eef6bc2e290296c12f51675dd6",
+      "bytes": 402257,
+      "zip_members": 9,
+      "sha256sum_entries": 8,
       "crc": "PASS"
     },
-    "tsv_sha256": "aba95cbefac8343d65c7fc12e0855bb22cae5fc8130dbb52dd5d3fb1c9b6b604"
+    "tsv_sha256": "8268ca27f6d3216869effb94e87844649cf62a4e810a6c868e3d595fe6cad64a",
+    "notable_repairs": [
+      "Source-exact repair: im Reisebüro anrufen -> beim Reisebüro anrufen.",
+      "normal verkehren -> wieder normal verkehren.",
+      "jemanden schnell holen -> schnell jemanden holen.",
+      "freundlich lachen -> über sich selbst lachen.",
+      "genau denken -> klar denken.",
+      "etwas zu einem Vorschlag meinen -> etwas nicht so meinen.",
+      "vor Freude springen -> vor Freude in die Luft springen.",
+      "hoch über etwas springen -> mit Anlauf über etwas springen.",
+      "regelmäßig stattfinden backend type -> frequency.",
+      "jemandem eine Chance geben promoted to registered-source evidence.",
+      "Persian glosses for umsteigen/nehmen polished."
+    ]
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -65,14 +70,14 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
+    "curated_manner_context_patterns": "ACCEPTED_AS_CURATED_PEDAGOGICAL_AFTER_LINGUISTIC_REVIEW",
     "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
     "canonical_stage4": "UNCHANGED"
   },
-  "cumulative_accepted_before_batch03": {
-    "scope": "A1-L01..A1-L08",
-    "cards": 69,
-    "accepted_combination_items": 563
+  "cumulative_through_batch03": {
+    "scope": "A1-L01..A1-L12",
+    "cards": 124,
+    "accepted_combination_items": 947
   },
-  "next_action": "Run linguistic/source accept-reject pass for Batch03 A1-L09..A1-L12, then promote accepted items and continue at A1-L13."
+  "next_action": "Start Batch04 at A1-L13 using the accepted single-section Kombinationen contract."
 }

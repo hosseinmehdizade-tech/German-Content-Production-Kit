@@ -300,8 +300,57 @@ Accepted SHA-256: `37a81b842b8179a0f3caf7b610c05ab1a6e4cf781552874046a15db29d2f3
 
 Accepted SHA-256: `ffd9ed14ba58a11845caa00df5ee1c1417c5ec5ab6c7a9162cb6f2ce3d34b438`
 
+## Batch14 — ma2-lu-0261..ma2-lu-0280
+
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+
+- Numeric scope: `ma2-lu-0261..ma2-lu-0280`
+- 19 actual cards; `ma2-lu-0266` is absent/retired in the canonical dataset
+- 95 Candidate items → 94 accepted unchanged, 1 rejected
+- rejected: `eine Datei kopieren` as a near-duplicate with low additional lexical value; no quota replacement
+- 9 explicit `REGISTERED_SOURCE` items with evidence refs
+- registered source identities: 3/3 current uploads match `SOURCE-REGISTRY.json`
+- origins: 43 parent canonical relations / 42 parent generated examples / 9 registered-source
+- 4–6 items per card (avg 4.95); no quota-forced filler
+- 273/273 non-target rows unchanged from cumulative Batch13
+- target changes limited to `details` + `custom_fields`
+- canonical_unit / canonical_relations / presentation examples preserved
+- full Repair3 lineage: 292/292 PASS
+- exactly one learner-visible **Kombinationen** section on each target card
+- unified projection + bounded projection preflight: PASS on Candidate and ACCEPTED
+- Candidate/ACCEPTED/post-package artifacts persisted in Library and rematerialized with exact SHA-256 + byte parity
+- runtime-final claim: **NO**
+
+Accepted SHA-256: `897bf63629ab6ba08c1842949bc5ce3c27b02777a41e24d241d1fb74cf781ab9`
+
+## Batch15 — final remaining 15 cards
+
+**CONTENT FINAL / LINGUISTIC-PROVENANCE ACCEPTED PASS**
+
+- actual final cards: 15
+- absent/retired numeric IDs: `ma2-lu-0286`, `ma2-lu-0292`, `ma2-lu-0298`, `ma2-lu-0299`, `ma2-lu-0300`
+- 74 Candidate items → 74 accepted unchanged
+- 7 explicit `REGISTERED_SOURCE` items with exact evidence refs
+- registered source identities: 3/3 current uploads match `SOURCE-REGISTRY.json`
+- origins: 28 parent canonical relations / 37 parent generated examples / 7 registered-source / 2 curated
+- 4–6 items per card (avg 4.93); no quota-forced filler
+- 277/277 non-target rows unchanged from cumulative Batch14
+- target changes limited to `details` + `custom_fields`
+- canonical_unit / canonical_relations / presentation examples preserved
+- full immutable Repair3 lineage: **292/292 PASS**
+- learner-visible **Kombinationen**: **292/292 PASS**
+- separate visible Rektion/Kollokationen/Nomen-Verb-Verbindungen: **0/292**
+- cumulative accepted Kombinationen: **1439**
+- unified projection + bounded projection preflight: PASS on Candidate and ACCEPTED
+- Candidate/CONTENT-FINAL ACCEPTED/post-package artifacts persisted in Library and rematerialized with exact SHA-256 + byte parity
+- content-final claim: **YES**
+- runtime acceptance: **NOT RUN**
+- runtime-final claim: **NO**
+
+Content-final accepted SHA-256: `ab990a400b5f9cb479cd1ff1422e57b09c47869a019f8ee3c5437f39f7a941df`
+
 ## Cumulative state
 
-**258/292 A2 cards accepted, 1271 accepted Kombinationen.**
+**292/292 A2 cards accepted, 1439 accepted Kombinationen. CONTENT FINAL PASS.**
 
-Next: continue cumulatively with numeric scope **ma2-lu-0261..ma2-lu-0280** from the exact Batch13 ACCEPTED artifact, resolving actual existing IDs first. Final A2 delivery remains one cumulative output containing all **292** A2 cards.
+Next: run a **separate CURRENT-runtime acceptance** against Flashcards runtime **v458-R92** before any runtime-final/release-final claim. The content artifact itself is complete and cumulative.

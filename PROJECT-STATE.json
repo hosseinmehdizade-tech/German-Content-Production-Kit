@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T22:11:00+02:00",
+  "updated_at": "2026-10-05T22:55:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -4296,28 +4296,45 @@
         }
       },
       "menschen_a2_verben_kombinationen": {
-        "status": "BATCH01_ACCEPTED_PASS__20_OF_292__LIBRARY_PERSISTENCE_PENDING",
+        "status": "BATCH02_ACCEPTED_PASS__40_OF_292__LIBRARY_AND_GIT_SYNCED",
         "framework": "v3.3.6",
         "branch": "menschen-a2-verben-kombinationen-v336",
         "checkpoint": "Workspaces/menschen-a2-verben-kombinationen-v336/CHECKPOINT.json",
         "parent": {
           "filename": "Menschen-A2-Verben-v3.3.6-Repair3-GFP-v455-RELOCKED.zip",
           "sha256": "30abc51f98762e6b47d8e2b3bea7e99d629f84c7a5c4bcf3f3d4234e3d84bc84",
+          "canonical_sha256": "5f0c831ffc44ac8a366f28182241e4b7a655d1ff9c1ece9ce3470c2537535b54",
           "immutable": true
         },
         "coverage": {
-          "cards_accepted": 20,
+          "cards_accepted": 40,
           "cards_total": 292,
-          "accepted_combination_items": 97
+          "accepted_combination_items": 185
         },
-        "accepted_artifact": {
-          "filename": "Menschen-A2-Verben-v3.3.6-Kombinationen-Batch01-ma2-lu-0001-0020-ACCEPTED.zip",
-          "sha256": "b66d872abe3ff2c81e748502b7e0c5713c08dad675f3682fad645cb9e81919de",
-          "persistence_library": "PENDING_ENVIRONMENT_BLOCKER"
+        "batch01": {
+          "accepted_sha256": "b66d872abe3ff2c81e748502b7e0c5713c08dad675f3682fad645cb9e81919de",
+          "persistence_library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "batch02": {
+          "scope": "ma2-lu-0021..ma2-lu-0040",
+          "items": 88,
+          "registered_source_items": 10,
+          "accepted_artifact": {
+            "filename": "Menschen-A2-Verben-v3.3.6-Kombinationen-Batch02-ma2-lu-0021-0040-ACCEPTED.zip",
+            "sha256": "11d95b6f7a9ade0d835e27e18b08ae9dd1eddc5b1da82959215f2f992329a51b",
+            "library_file_id": "libfile_ed19dfec05fc819185f4f9503381e90f",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "post_package_sha256": "3a44a936d40c12c3c0a116ce2c73dba4334f79dae5c0916a537e749529906522"
+        },
+        "persistence": {
+          "git": "IN_SYNC",
+          "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+          "workstream_checkpoint_commit": "d28b4e8c780553ffc99d0129bc994c5974ba9fbe"
         },
         "runtime_acceptance": "NOT_RUN",
         "runtime_final_claim": false,
-        "next_action": "Persist the exact Batch01 accepted bytes to Library when the bridge is available, then continue cumulative Batch02 ma2-lu-0021..ma2-lu-0040."
+        "next_action": "Continue cumulative Batch03 ma2-lu-0041..ma2-lu-0060 from exact Batch02 ACCEPTED artifact. Final delivery must remain one cumulative 292-card A2 output."
       }
     },
     "lesen": {

@@ -2,7 +2,7 @@
 
 Learner-facing design: exactly one visible section, **Kombinationen**.
 
-This verb-retrofit lineage remains intentionally verb-only. The broader project policy is `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md`, which applies the same one-section idea to all lexical targets in the unified production pipeline.
+This verb-retrofit lineage remains intentionally verb-only. The broader project policy is `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md`, which applies the same one-section model to all lexical targets in the unified production pipeline.
 
 ## Batch01 — A1-L01..A1-L04
 **ACCEPTED** — 34 cards / 297 Kombinationen.
@@ -20,23 +20,27 @@ This verb-retrofit lineage remains intentionally verb-only. The broader project 
 **ACCEPTED** — 70 newly enriched cards + 3 inherited / 350 new Kombinationen.
 
 ## Batch06 — A1-L21
-**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+**ACCEPTED** — 27 cards / 135 Kombinationen.
 
-- 27 cards
-- 135 input candidates
-- 135 final accepted Kombinationen
-- 124 accepted unchanged
-- 11 linguistic/provenance/translation corrections
-- 8 explicit registered-source items
-- 0 rejected
+## Batch07 — A1 supplement-only
+**CANDIDATE / STRUCTURAL + INITIAL LINGUISTIC QA PASS**
+
+- final 30 A1 cards without prior accepted Kombinationen
+- 150 candidate Kombinationen
+- exactly 5 items per target card
+- 10 explicit registered-source items
+- 102 parent generated-example-derived items
+- 11 parent canonical-relation-derived items
+- 27 curated pedagogical candidates
+- exactly one learner-visible `Kombinationen` section on every target card
 - 0 non-target rows changed
 - Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
 - Library persistence PASS
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-ACCEPTED.zip`
-SHA-256: `4ded369c511b6065fe41147c526b5c7bb1d9e8f4ed16cff9b4c7c85b68cf08c3`
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch07-SUPPLEMENT-CANDIDATE.zip`  
+SHA-256: `c4848fce86b538886098c7dc9880f6527e3c7378a14923424d88fe8c11583865`
 
-Cumulative through L21: **280 cards / 1785 accepted Kombinationen**.
+Accepted cumulative before Batch07: **280 cards / 1785 accepted Kombinationen**.
 
-Next: **Batch07 for the remaining 30 A1 supplement-only verb cards**.
+With the Batch07 candidate projection, all **310/310 A1 cards** now have a visible Kombinationen section. The final content milestone is the explicit linguistic/source accept-modify-reject pass for these 30 cards.

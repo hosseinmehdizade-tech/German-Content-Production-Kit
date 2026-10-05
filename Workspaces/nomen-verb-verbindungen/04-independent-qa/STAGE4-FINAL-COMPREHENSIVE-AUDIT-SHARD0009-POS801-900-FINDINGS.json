@@ -1,0 +1,238 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-05T22:45:43+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0009",
+    "positions": "801-900",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      11,
+      12
+    ],
+    "printed_pages": [
+      9,
+      10
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual check confirmed two source-internal learner typos at positions 812 and 828 and one stored transcription drift at position 893 where the PDF has 'etw.' but the occurrence/canonical stores 'etw,'."
+  },
+  "confirmed_findings": [
+    {
+      "position": 803,
+      "target_id": "dah-nvv-exp-00798-a",
+      "canonical_form": "eine gute Figur abgeben",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_SEMANTIC_OVEREXPANSION",
+      "fields": [
+        "examples[0].fa"
+      ],
+      "evidence": {
+        "example_de": "Bei der Präsentation gab sie trotz ihrer Nervosität eine gute Figur ab.",
+        "example_fa": "او با وجود اضطرابش در ارائه عملکرد و ظاهر خوبی داشت."
+      },
+      "finding": "The Persian rendering adds both performance and physical appearance. In this presentation context, eine gute Figur abgeben means making a good showing/impression; explicit physical appearance is unsupported.",
+      "repair_direction": "Use natural Persian for making a good showing / appearing competent in the presentation, without adding a physical-appearance claim."
+    },
+    {
+      "position": 812,
+      "target_id": "dah-nvv-exp-00805",
+      "canonical_form": "sich die Fingern verbrennen",
+      "severity": "MAJOR",
+      "category": "CANONICAL_SOURCE_TYPO_REPAIR_REQUIRED",
+      "fields": [
+        "canonical_form",
+        "structure.pattern_de"
+      ],
+      "evidence": {
+        "source_surface": "sich die Fingern verbrennen",
+        "source_visual": "PDF page 11 / printed page 9 visibly has the typo",
+        "correct_examples": "All four learner examples correctly use 'die Finger verbrennen'."
+      },
+      "finding": "The source contains a grammatical typo ('die Fingern'). The learner canonical layer copied it instead of recording a source repair. Standard German is 'sich die Finger verbrennen'.",
+      "repair_direction": "Preserve exact source surface in provenance, add a source-repair ledger entry, and correct learner canonical/structure to 'sich die Finger verbrennen'."
+    },
+    {
+      "position": 825,
+      "target_id": "dah-nvv-exp-00818",
+      "canonical_form": "auf der Flucht sein",
+      "severity": "MAJOR",
+      "category": "GERMAN_DEFINITION_CIRCULARITY_RESIDUAL",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "definition_de": "vor Verfolgung oder Gefahr auf der Flucht sein"
+      },
+      "finding": "The definition repeats the target phrase itself and therefore does not independently explain the meaning; this is a residual circular-definition defect.",
+      "repair_direction": "Replace with a non-circular definition such as 'vor Verfolgung oder Gefahr fliehen und noch nicht in Sicherheit sein'."
+    },
+    {
+      "position": 828,
+      "target_id": "dah-nvv-exp-00821",
+      "canonical_form": "ein Flucht planen",
+      "severity": "MAJOR",
+      "category": "CANONICAL_SOURCE_TYPO_REPAIR_REQUIRED",
+      "fields": [
+        "canonical_form",
+        "structure.pattern_de"
+      ],
+      "evidence": {
+        "source_surface": "ein Flucht planen",
+        "source_visual": "PDF page 11 / printed page 9 visibly reads 'ein Flucht planen'",
+        "noun_header": "Flucht f.",
+        "correct_examples": "Examples correctly use 'die/eine/ihre Flucht'."
+      },
+      "finding": "The source has the wrong article for feminine Flucht ('ein Flucht'); the learner canonical layer copied the typo. Standard German is 'eine Flucht planen'.",
+      "repair_direction": "Preserve verbatim source surface in provenance, record an explicit source repair, and correct learner canonical/structure to 'eine Flucht planen'."
+    },
+    {
+      "position": 830,
+      "target_id": "dah-nvv-exp-00823",
+      "canonical_form": "jdm. zur Flucht verhelfen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_VALENCY_NATURALNESS",
+      "fields": [
+        "examples[0].fa",
+        "examples[2].fa",
+        "examples[3].fa"
+      ],
+      "evidence": {
+        "examples_fa": [
+          "یک کمک‌کننده به زندانی برای فرار کمک کرد.",
+          "چند نفر از اهالی روستا مخفیانه به افراد تحت تعقیب برای فرار کمک کردند.",
+          "راننده متهم شد که به مظنون برای فرار کمک کرده است."
+        ]
+      },
+      "finding": "Several Persian examples calque the German valency as 'به ... برای فرار کمک کردن'; understandable but noticeably German-shaped.",
+      "repair_direction": "Recast into natural Persian while preserving agent, beneficiary, tense and escape-assistance meaning."
+    },
+    {
+      "position": 844,
+      "target_id": "dah-nvv-exp-00837",
+      "canonical_form": "Form annehmen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_GRAMMAR_NATURALNESS",
+      "fields": [
+        "examples[1].fa"
+      ],
+      "evidence": {
+        "example_de": "Die Idee für ein gemeinsames Projekt nimmt konkrete Form an.",
+        "example_fa": "ایدهٔ یک پروژهٔ مشترک دارد شکل مشخصی به خود می‌گیرد."
+      },
+      "finding": "The Persian progressive construction is clumsy and less natural than the German original.",
+      "repair_direction": "Use a natural form such as 'ایدهٔ یک پروژهٔ مشترک کم‌کم شکل مشخصی به خود می‌گیرد'."
+    },
+    {
+      "position": 862,
+      "target_id": "dah-nvv-exp-00855",
+      "canonical_form": "einen Freund haben in jdm.",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_IDIOMATICITY",
+      "fields": [
+        "examples[3].en"
+      ],
+      "evidence": {
+        "example_de": "Wer in einem Menschen einen Freund hat, fühlt sich in schwierigen Zeiten weniger allein.",
+        "example_en": "Anyone who has a friend in someone feels less alone in difficult times."
+      },
+      "finding": "The generic English phrase 'has a friend in someone' is formulaic and non-idiomatic in this sentence.",
+      "repair_direction": "Use natural English such as 'Anyone who has a true friend by their side...' while preserving meaning."
+    },
+    {
+      "position": 893,
+      "target_id": "dah-nvv-exp-00886",
+      "canonical_form": "etw, in Gang bringen / setzen",
+      "severity": "MINOR",
+      "category": "SOURCE_TRANSCRIPTION_AND_CANONICAL_NOTATION_DRIFT",
+      "fields": [
+        "provenance.source_surface",
+        "canonical_form",
+        "structure.pattern_de"
+      ],
+      "evidence": {
+        "stored_surface": "etw, in Gang bringen / setzen",
+        "source_visual": "PDF page 11 / printed page 9 visibly reads 'etw. in Gang bringen / setzen'"
+      },
+      "finding": "Stored source/canonical uses a comma after 'etw' although the PDF has the abbreviation period 'etw.'.",
+      "repair_direction": "Correct the source occurrence transcription to 'etw. in Gang bringen / setzen' and align provenance/canonical/structure without changing identity."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 8,
+    "blocker": 0,
+    "major": 3,
+    "minor": 5,
+    "clean_targets": 92,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "96/100 (four expected slash-split identities at positions 803-806)",
+    "structure_pattern_equals_canonical": "100/100",
+    "explicit_plus_case_structure_evidence": "3/3",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 96,
+    "expected_split_surface_mismatches": 4,
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 3,
+    "source_repair_positions": [
+      812,
+      828,
+      893
+    ]
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 900,
+    "positions_remaining": 1592,
+    "confirmed_finding_targets": 81,
+    "blocker_findings": 0,
+    "major_findings": 23,
+    "minor_findings": 58,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 901-1000. Do not repair any logged finding until all 2492 targets have been audited."
+}

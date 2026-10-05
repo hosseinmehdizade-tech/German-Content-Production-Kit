@@ -2,7 +2,7 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R1_READY",
+  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R2_READY",
   "quality_state": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
@@ -48,9 +48,9 @@
   ],
   "persistence": {
     "git": "IN_SYNC_PENDING_METADATA_COMMIT",
-    "library": "R1_KIT_AND_BUILD_REPORT_IN_SYNC_EXACT_READBACK"
+    "library": "R2_KIT_AND_BUILD_REPORT_IN_SYNC"
   },
-  "next_action": "Download and extract Stage6-LOCAL-ACCEPTANCE-KIT-R1. Run Runtime\\GFP-v458-R92\\Stage6-Harness\\RUN-STAGE6-ACCEPTANCE.cmd on Windows/Chrome. If final report PASS is generated, persist it and close Stage6.",
+  "next_action": "Download UV-Stage6-R2.zip, extract normally, then run Runtime\\GFP-v458-R92\\Stage6-Harness\\RUN-STAGE6-ACCEPTANCE.cmd. If final report PASS is generated, persist it and close Stage6.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -115,20 +115,18 @@
     "blocker": "Managed browser rejects both localhost and file navigation with ERR_BLOCKED_BY_ADMINISTRATOR, so exact-origin import/persistence/reload/default-UI export/clean-reimport cannot be claimed.",
     "semantic_content_mutated": false,
     "local_acceptance_kit": {
-      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
-      "sha256": "8d8128736ca8e01b8aa1e163ceb0ef44e9966bc7ec418f6e5958f14767969c33",
-      "size_bytes": 3596976,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
-      "file_id": "file_0000000058dc821097edfd8e988af979",
-      "library_file_id": "libfile_c8c8e7d3267c81918c99b5d403d79486",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "filename": "UV-Stage6-R2.zip",
+      "sha256": "7f2ade5a420665e2d51b94aa2296eb40a0ec7a7a3bddb86f0a0ed0324d2d7618",
+      "size_bytes": 3622335,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/UV-Stage6-R2.zip",
+      "library_file_id": "libfile_70b513f824088191b581334b195bbed8",
       "build_validation": {
         "zip_crc": "PASS",
         "runtime_file_hashes": "72/72 PASS",
-        "exact_01_app_byte_compare": "72/72 PASS",
-        "changed_files": "3 harness-only files",
-        "unchanged_files": 329,
-        "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a"
+        "runtime_byte_mismatches": 0,
+        "input_sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
+        "content_bytes_changed": false,
+        "runtime_bytes_changed": false
       }
     },
     "managed_environment_blocker": "Chromium enterprise URLBlocklist=['*']; localhost/file navigation returns ERR_BLOCKED_BY_ADMINISTRATOR. Guardrail respected; no policy bypass attempted.",
@@ -155,6 +153,27 @@
         "repair": "Find-Chrome iterates candidate paths directly; runtime verification counter also no longer depends on .Count",
         "runtime_bytes_changed": false,
         "content_bytes_changed": false
+      },
+      {
+        "id": "HARNESS-002-WINDOWS-MAX-PATH",
+        "severity": "HARNESS_ONLY",
+        "status": "FIXED_IN_R2",
+        "observed_on": "Windows extraction under Downloads",
+        "error": "Nested Stage6 input ZIP missing because extracted path exceeded traditional Windows MAX_PATH",
+        "measured_path_length": 273,
+        "repair": "Short artifact/root layout and Input/input.zip; ZIP starts directly at Runtime/",
+        "runtime_bytes_changed": false,
+        "content_bytes_changed": false
+      }
+    ],
+    "superseded_local_acceptance_kits": [
+      {
+        "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT.zip",
+        "reason": "HARNESS-001-FIND-CHROME-SCALAR-COUNT"
+      },
+      {
+        "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-LOCAL-ACCEPTANCE-KIT-R1.zip",
+        "reason": "HARNESS-002-WINDOWS-MAX-PATH extraction loss"
       }
     ]
   }

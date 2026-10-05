@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T21:31:49+02:00",
+  "updated_at": "2026-10-05T21:40:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -5741,36 +5741,46 @@
       "checkpoint": "Workspaces/aber-hallo-listen-tabellen/CHECKPOINT.json",
       "source_manifest": "Workspaces/aber-hallo-listen-tabellen/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
-      "last_observed_stage": "STAGE3B_ADJECTIVE_CORE_REPAIR1_PASS__STAGE3B_STILL_RUNNING",
+      "last_observed_stage": "STAGE3B_FA_BILINGUAL_CLOSURE_BATCH001_PASS__STAGE3B_STILL_RUNNING",
       "targets_processed": 788,
       "targets_total": 788,
       "latest_portable_checkpoint": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-ADJECTIVE-CORE-REPAIR1-CHECKPOINT.zip",
-        "sha256": "c2743eb643023e59af11937954d0872953a294065d457324169db8bdc448a1f7",
-        "size_bytes": 778320,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-ADJECTIVE-CORE-REPAIR1-CHECKPOINT.zip",
-        "library_file_id": "libfile_ae8965b87df88191b6698ad3b09dc1cd",
-        "library_file_snapshot_id": "file_000000001b4481f48d2ae60b2f331616",
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-FA-BILINGUAL-CLOSURE-BATCH001-CHECKPOINT.zip",
+        "sha256": "affb1f99faca6518dd67feaed72d75a433bc40b5aa8e39fa9c9741b3f3ef8c0d",
+        "size_bytes": 778778,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-FA-BILINGUAL-CLOSURE-BATCH001-CHECKPOINT.zip",
+        "library_file_id": "libfile_4c608c92c9e88191a2d73e4ba0617b70",
+        "library_file_snapshot_id": "file_00000000b9ec81f48e9427d37b60ae13",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "persistence": {
         "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
         "git": "IN_SYNC"
       },
-      "next_scope": "Stage3B Persian bilingual evidence closure from repaired canonical authority; then relation-review closure. Stage3C remains blocked until all deferred/unreviewed cells are final.",
+      "next_scope": "Continue Stage3B Persian bilingual closure from 403 provisional targets; keep spleißen and wägen unresolved from Batch001; relation-review closure follows. Stage3C remains blocked.",
       "stage3b_closure_correction": {
         "target_coverage": "788/788 COMPLETE",
         "semantic_core_presence": "788/788 COMPLETE_AFTER_REPAIR1",
-        "repaired_targets": "ahl-lu-0741..ahl-lu-0788 (48 targets)",
         "item_level_cefr": "788/788 CLOSED_NO_FORCE",
         "gloss_en_evidence": "788/788 VERIFIED_PRESENT",
-        "gloss_en_canonical_presence": "788/788 AFTER_REPAIR1",
-        "persian_meaning_canonical_presence": "788/788 AFTER_REPAIR1",
-        "persian_provisional_targets": 431,
-        "remaining_open_candidate_cells": 4881,
+        "persian_meaning_canonical_presence": "788/788",
+        "persian_evidence_batch001": "28 verified / 2 held open",
+        "persian_provisional_targets": 403,
+        "batch001_held_open": [
+          "ahl-lu-0077 spleißen",
+          "ahl-lu-0102 wägen"
+        ],
+        "candidate_ledger": {
+          "accepted": 4103,
+          "rejected": 788,
+          "open": 4853,
+          "rejected_or_deferred": 267
+        },
         "relation_dimensions": "OPEN",
         "disposition_closure": "NOT_COMPLETE",
-        "note": "A real serialization omission in the last 48 adjective canonical units was repaired. Candidate/evidence decisions and all examples remained unchanged. Persian evidence and relation dimensions still require Stage3B closure before Stage3C."
+        "canonical_sha256": "b232d497aa35009af0986aa1d0c09e7031c144c9cea8e61518b9ca156ed9afb7",
+        "source_facts_sha256": "8c17d6f0364cb177562c8a96906e984750d7eb364d6375bafa86ba7e3a31f5ad",
+        "note": "Persian bilingual Batch001 closed 28 cells with approved Behzad DE-FA evidence plus existing German-sense alignment. Learner wording and source facts were unchanged. Stage3B continues."
       }
     },
     "unregelmaessige_verben": {

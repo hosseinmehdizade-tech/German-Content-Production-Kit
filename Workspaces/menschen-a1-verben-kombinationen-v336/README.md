@@ -1,11 +1,28 @@
 # Menschen A1 Verben — Kombinationen v3.3.6
 
-Active design: the learner sees exactly one combination bucket, **Kombinationen**.
+Active learner-facing design: exactly one visible section, **Kombinationen**.
 
-Rektion, collocations, Nomen-Verb-Verbindungen, typical object patterns, manner/adverbial patterns, contexts and useful fixed expressions may all appear in that one visible section. Their internal type remains structured in backend metadata for QA and future filtering.
+Rektion, collocations, Nomen-Verb-Verbindungen, typical objects, manner/adverbial patterns, contexts and useful fixed expressions may coexist in that one visible bucket. Internal type information remains structured for QA and future filtering.
 
-Batch01 covers A1-L01 through A1-L04: 34 verbs, 295 reviewed candidate combinations. Structural QA passes; non-target cards are byte-field unchanged. The parent Repair4 artifact remains immutable.
+## Batch01 — A1-L01..A1-L04
 
-Batch01 is deliberately a **candidate**, not a relocked final: source/linguistic acceptance is still required before adding the new semantic items to canonical relations and completeness/ledger state.
+Status: **LINGUISTIC/PROVENANCE ACCEPTED PASS**.
 
-Candidate artifact SHA-256: `92201961ec7dbf8da606d984d089890c80c4ea3ad6bffe25b9f263ccb38bc635`
+- 34 cards
+- 295 input candidates
+- 297 final accepted items
+- 137 accepted unchanged
+- 156 accepted with wording/provenance normalization
+- 4 source-backed additions
+- 2 low-value near-duplicates rejected
+- 20 items carry explicit registered-source evidence
+- 276 non-target cards unchanged versus the candidate preview
+- legacy Stage4 canonical remains immutable
+
+Important correction: the earlier Candidate label `COURSE_EXAMPLE` was too strong because Repair4 canonical examples are `generated_checked`. Example-derived items now use `PARENT_GENERATED_EXAMPLE` unless a registered source independently supports the pattern.
+
+Accepted artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch01-L01-L04-ACCEPTED.zip`
+
+SHA-256: `d1a95c47bd5267af96bdf6cddda536861c01c7001e0a17f35834db523ddc20f3`
+
+Next: **Batch02 beginning with A1-L05**.

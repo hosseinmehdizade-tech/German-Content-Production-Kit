@@ -1,6 +1,6 @@
-# Global verb Kombinationen policy
+# Global lexical Kombinationen policy
 
-**ACTIVE:** `Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` is the mandatory overlay for applicable German verb targets. Current-workstream rollout is defined in `Prompt/VERB-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json`. Learners see one section, **Kombinationen**; backend subtype/provenance remains structured. New work adopts immediately; active work adopts at the next safe Stage3B/Stage4 boundary; historical LOCKED artifacts remain immutable and use successor enrichment for retrofits.
+**ACTIVE:** `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` is the mandatory overlay for applicable lexical targets: verbs, nouns, adjectives, adverbs and lexical expressions. Current-workstream rollout is defined in `Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json`, with `Prompt/KOMBINATIONEN-ACTIVE-POLICY.json` as the machine-readable pointer. Learners see one section, **Kombinationen**; backend subtype/provenance remains structured; `CLOSED_NO_FORCE` is allowed; historical LOCKED artifacts remain immutable.
 
 
 

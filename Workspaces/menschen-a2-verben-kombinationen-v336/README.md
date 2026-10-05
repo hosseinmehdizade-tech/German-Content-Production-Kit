@@ -255,8 +255,31 @@ Accepted SHA-256: `c14c439adefc3eb37586fd302c82c5b96cd5149638e41d94765d6e641dcdc
 
 Accepted SHA-256: `7208e7f37f3e3b3dc64d62f1c612455eda4915168639c924b48dab8f61dd0906`
 
+## Batch12 — ma2-lu-0221..ma2-lu-0240
+
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+
+- 20 cards
+- 100 Candidate items → 99 accepted (91 unchanged, 8 modified), 1 rejected
+- rejected: `einen Film zum Weinen bringen?` because the argument structure is unnatural; no quota replacement
+- 13 explicit `REGISTERED_SOURCE` items with real evidence refs
+- registered source identities: 3/3 current uploads match `SOURCE-REGISTRY.json`
+- origins: 38 parent canonical relations / 45 parent generated examples / 13 registered-source / 3 curated
+- 4–5 items per card (avg 4.95); no quota-forced filler
+- 272/272 non-target rows unchanged from cumulative Batch11
+- target changes limited to `details` + `custom_fields`
+- canonical_unit / canonical_relations / presentation examples preserved
+- full Repair3 lineage: 292/292 PASS
+- exactly one learner-visible **Kombinationen** section on each target card
+- separate visible Rektion/Kollokationen/Nomen-Verb-Verbindungen: 0/20
+- unified projection + bounded projection preflight: PASS on Candidate and ACCEPTED
+- Candidate/ACCEPTED/post-package artifacts persisted in Library and rematerialized with exact SHA-256 + byte parity
+- runtime-final claim: **NO**
+
+Accepted SHA-256: `37a81b842b8179a0f3caf7b610c05ab1a6e4cf781552874046a15db29d2f301f`
+
 ## Cumulative state
 
-**218/292 A2 cards accepted, 1071 accepted Kombinationen.**
+**238/292 A2 cards accepted, 1170 accepted Kombinationen.**
 
-Next: continue cumulatively with numeric scope **ma2-lu-0221..ma2-lu-0240** from the exact Batch11 ACCEPTED artifact, resolving actual existing IDs first.
+Next: continue cumulatively with numeric scope **ma2-lu-0241..ma2-lu-0260** from the exact Batch12 ACCEPTED artifact, resolving actual existing IDs first. Final A2 delivery remains one cumulative output containing all **292** A2 cards.

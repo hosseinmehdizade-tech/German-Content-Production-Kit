@@ -1233,6 +1233,75 @@
         ],
         "sha256": "741abb6be938955636004df28ec915d6ac944a206fa90bee6baa86174b212410"
       }
+    },
+    {
+      "id": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+      "status": "ACTIVE",
+      "date": "2026-10-05",
+      "category": "content_qa_process",
+      "scope": "standalone nomen-verb-verbindungen Stage4 convergence after systemic S9",
+      "incident": "Repeated category-specific Stage4 passes and restart-after-repair clean-pass rules continued to surface late residuals without efficiently converging. The round number overstated the number of truly comprehensive full-corpus audits because many rounds were bounded or category-specific. Requiring two additional 2492-target clean passes after every repair created diminishing returns and a potentially unbounded loop.",
+      "decision": "Freeze the exact post-S9 successor as the immutable Final Audit baseline. Run one comprehensive full-corpus audit over all 2492 targets with one fixed rubric covering source/canonical identity, German definition and examples, Persian meaning/examples, English gloss/examples, structure/valency, sense coverage, register, naturalness, cross-language alignment and example diversity. During this full audit, do not modify learner content; record confirmed findings only. After all 2492 targets have been audited, apply all confirmed repairs in one bounded batch, recompute affected closure evidence, and create one repaired successor. Then verify 100% of changed targets, run corpus-wide root-cause sweeps for every recurrent defect family, and verify a deterministic stratified sample of at least 500 unchanged targets from the repaired snapshot. A sampled target that needs repair leaves the unchanged sample, is repaired and reverified, and is replaced so at least 500 unchanged targets remain independently clean. A recurrent family found during verification triggers a corpus-wide family sweep, not another full 2492-target restart. Stage4 may close when the full audit is complete, every confirmed finding is closed, all changed targets pass re-audit, all recurrent families are exhausted, the deterministic unchanged sample has 500 clean targets with no unresolved finding, structural/source/identity invariants pass, and the official v3.3.6 closure gate remains PASS. Two consecutive full 2492-target clean passes are no longer required for this scoped final-convergence phase.",
+      "explicit_user_approval": "Hossein explicitly approved replacing the repeated full-clean-pass loop with this frozen-snapshot comprehensive final audit and bounded verification method on 2026-10-05 by replying «آره همینکاری که گفتی رو انجام بده».",
+      "relationship_to_MEM_NVV_002_SYSTEMIC_ROOT_CAUSE_QA": "PRESERVES_SYSTEMIC_FAMILY_SWEEPS; supersedes only the repeated full-corpus restart/two-consecutive-clean-pass convergence rule after the frozen S9 baseline.",
+      "safe_default": "FROZEN_S9_ONE_FULL_AUDIT_BATCH_REPAIR_CHANGED_TARGET_VERIFY_SYSTEMIC_SWEEPS_STRATIFIED500_UNCHANGED",
+      "preserved_guardrails": [
+        "registered source identity and exact source surfaces remain authoritative",
+        "stable IDs/canonical forms/structure change only with separate evidence-backed findings",
+        "no fabricated enrichment or relations",
+        "heuristic screening is candidate generation only and repairs require linguistic adjudication",
+        "findings are logged before repair so the full-audit baseline remains immutable",
+        "official v3.3.6 completeness/closure validation remains mandatory",
+        "Git stores compact metadata; binary checkpoints remain on Library/Project/user-delivery surfaces",
+        "runtime resolution remains deferred until runtime compatibility matters"
+      ],
+      "prevention": {
+        "scope": "standalone nomen-verb-verbindungen Stage4 convergence after systemic S9",
+        "severity": "S3",
+        "root_cause": "Repeated narrow QA lenses and immediate repair/restart cycles changed the artifact before a single stable all-dimension review could finish, so later passes continued to discover residuals outside the lens of earlier passes.",
+        "root_cause_basis": "Evidence from Stage4 history through Round10/S9 plus the user-approved process correction on 2026-10-05.",
+        "impact": "Late residual findings, inflated round count, repeated full-pass restarts, and poor convergence despite substantial earlier repair work.",
+        "time_cost": "UNKNOWN; repository evidence does not measure elapsed hours.",
+        "wrong_path": [
+          "restart a new 2492-target clean pass immediately after every local or systemic repair",
+          "treat category-specific sweeps as equivalent to a comprehensive all-dimension full audit",
+          "edit cards during the comprehensive audit and thereby invalidate the frozen baseline",
+          "require two further full 2492-target clean passes regardless of defect locality or systemic evidence"
+        ],
+        "correct_method": "ONE_FROZEN_COMPREHENSIVE_AUDIT_THEN_BOUNDED_VERIFICATION",
+        "rule": "Freeze the post-S9 snapshot, audit all 2492 targets once with a fixed all-dimension rubric without editing, batch-apply confirmed repairs only after full coverage, then verify all changed targets, sweep any recurrent families corpus-wide, and complete a deterministic stratified sample of at least 500 unchanged targets. Isolated verification repairs do not trigger another full-corpus restart.",
+        "gate": {
+          "kinds": [
+            "A",
+            "G"
+          ],
+          "status": "PARTIAL",
+          "tools": [],
+          "command": "",
+          "limits": "Structural and sampling coverage can be machine-checked, but linguistic correctness and defect-family adjudication remain model/human review. The 500-target sample must be deterministic and stratified from the exact repaired snapshot."
+        },
+        "evidence": [
+          "PROJECT-MEMORY.json#MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE"
+        ],
+        "affected_workstreams": [
+          "Standalone NVV only"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "explicit_user_approval",
+          "id",
+          "incident",
+          "preserved_guardrails",
+          "relationship_to_MEM_NVV_002_SYSTEMIC_ROOT_CAUSE_QA",
+          "safe_default",
+          "scope"
+        ],
+        "sha256": "c6ea0311a98c6844cab14ea82e509f93ce56ca9197d3da63bd45ae8b5ca6f09a"
+      }
     }
   ],
   "propagation_rule": {

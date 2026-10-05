@@ -2,8 +2,8 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE6_LOCAL_ACCEPTANCE_KIT_R4_READY",
-  "quality_state": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
+  "milestone": "FINAL_CONTENT_DELIVERY_HANDOFF",
+  "quality_state": "PASS",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
   "counts": {
@@ -47,10 +47,10 @@
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
   ],
   "persistence": {
-    "git": "IN_SYNC_PENDING_METADATA_COMMIT",
-    "library": "R4_KIT_AND_BUILD_REPORT_IN_SYNC"
+    "git": "IN_SYNC_PENDING_THIS_COMMIT",
+    "library": "FINAL_DELIVERY_AND_DIRECT_IMPORT_IN_SYNC"
   },
-  "next_action": "Download/extract UV-Stage6-R4.zip and run Runtime\\GFP-v458-R92\\Stage6-Harness\\RUN-STAGE6-ACCEPTANCE.cmd. R4 uses direct Playwright on the real app page and writes progress/final reports directly to disk. Return the generated final report.",
+  "next_action": "NONE for content delivery. Optional future runtime certification may resume from Stage6 if explicitly requested.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -89,7 +89,7 @@
     "role": "REGRESSION_REFERENCE_ONLY"
   },
   "stage6": {
-    "status": "BLOCKED_PENDING_LOCAL_EXACT_ORIGIN_ACCEPTANCE",
+    "status": "NOT_COMPLETED_HANDOFF_STOPPED",
     "import_ready": {
       "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-IMPORT-READY.zip",
       "sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
@@ -229,6 +229,23 @@
       "status": "FAIL",
       "error": "Timed out waiting for phase1 report file",
       "disposition": "CUSTOM_R3_HARNESS_SUPERSEDED_BY_R4_DIRECT_PLAYWRIGHT"
-    }
+    },
+    "disposition": "User requested final file handoff instead of further local harness debugging. Stage5 content PASS remains authoritative."
+  },
+  "final_delivery": {
+    "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-DELIVERY.zip",
+    "sha256": "656f7477e65e6c090ee17a11c2c4d8644b7e829386635c3afe94b7daaca61dcb",
+    "size_bytes": 537946,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-DELIVERY.zip",
+    "library_file_id": "libfile_17fd1e3e17d88191a1e1ef140995e677",
+    "direct_import": {
+      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-IMPORT.tsv",
+      "sha256": "5ec6770bfab47e0d0876b6e4bac2175315a67db2fd48a79f624b700538e51bd6",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-FINAL-IMPORT.tsv",
+      "library_file_id": "libfile_200cf4bca00c8191a060d8fd503ddc63"
+    },
+    "content_status": "OFFICIAL_V3_3_6_STAGE5_PASS",
+    "runtime_acceptance": "NOT_COMPLETED; NOT_REQUIRED_FOR_CONTENT_HANDOFF",
+    "semantic_mutations": 0
   }
 }

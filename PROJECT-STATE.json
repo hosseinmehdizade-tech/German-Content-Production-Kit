@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T10:14:00+02:00",
+  "updated_at": "2026-10-05T11:02:59+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -179,7 +179,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_POST_S7_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW_PASS__ROUND9_CLEAN_PASS_RESTART_READY",
+      "status": "STAGE4_ROUND9_R12_SHARD0107_REPAIRS_PASS__SYSTEMIC_S8_REQUIRED",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -201,7 +201,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Start Stage4 Round9 full clean-pass attempt R12 from position 1 on this exact S7 successor snapshot. Review all 2492 targets independently. If any repair is required, Round9 earns no clean credit and any recurrent defect family must again follow MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA; if the entire pass is clean, award clean-streak credit 1 of 2 on this unchanged snapshot.",
+      "next_action": "Run Stage4 systemic root-cause sweep S8 across all 2492 targets for the recurrent Persian naturalness/translation-alignment family on this exact R12-Shard0107 successor. Do not continue sequential Round9 shards before S8. After S8 repair/exhaustion review, restart clean-pass auditing from position 1; Round9 clean credit remains 0.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -230,15 +230,15 @@
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         }
       },
-      "last_observed_stage": "Stage4 post-S7 systemic-family exhaustion review",
-      "last_observed_note": "No additional recurrent defect family is evidenced after S7. Structural regression checks remain clean; S7 candidate dispositions are closed with no residual seeded phrase or modality-reversal hits; strict circularity has no new confirmed defects; the Round8 English alarm repair remains isolated. Round8 clean credit is 0. Round9 clean-pass R12 is ready from position 1 on the unchanged S7 core.",
+      "last_observed_stage": "Stage4 Round9 clean-pass R12 shard0107 positions 1-100",
+      "last_observed_note": "Independent review found 7 affected targets: 6 recurrent Persian naturalness/translation-alignment residuals and 1 isolated German collocation repair. Clean streak remains 0/2. S8 is required before sequential continuation.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-PostS7-SystemicFamilyExhaustion-PASS-Round9-CleanRestartReady-CHECKPOINT.zip",
-        "sha256": "6aaef4f145eec743bedf3f3c2eaa5e770bf34d22065396258d3e51d0d5dc6f8d",
-        "successor_core_sha256": "dae55e8c751629b5571e97d150657373af70ea3ba12812cf203b75f5043f9f98",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PostS7-SystemicFamilyExhaustion-PASS-Round9-CleanRestartReady-CHECKPOINT.zip",
-        "library_file_id": "file_00000000e18c81f4861fd1118a8bf211",
-        "library_stable_id": "libfile_1a8eb5b247c081918fd049b19f04994c",
+        "filename": "NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
+        "sha256": "1a7c52c21abafc6744492f0d7ff6eca58ab5ad7975c8e1fffccf7f7ab2f47d8b",
+        "successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000a9d881f490dd258a8e070c7c",
+        "library_stable_id": "libfile_807dfb9415bc8191b0df4c948ba26e90",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "stage2": {
@@ -274,12 +274,12 @@
         "not_applicable_cells": 2492
       },
       "stage4": {
-        "status": "STAGE4_POST_S7_SYSTEMIC_FAMILY_EXHAUSTION_REVIEW_PASS__ROUND9_CLEAN_PASS_RESTART_READY",
+        "status": "STAGE4_ROUND9_R12_SHARD0107_REPAIRS_PASS__SYSTEMIC_S8_REQUIRED",
         "rounds_completed": 6,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Start Stage4 Round9 full clean-pass attempt R12 from position 1 on this exact S7 successor snapshot. Review all 2492 targets independently. If any repair is required, Round9 earns no clean credit and any recurrent defect family must again follow MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA; if the entire pass is clean, award clean-streak credit 1 of 2 on this unchanged snapshot.",
+        "next": "Run Stage4 systemic root-cause sweep S8 across all 2492 targets for the recurrent Persian naturalness/translation-alignment family on this exact R12-Shard0107 successor. Do not continue sequential Round9 shards before S8. After S8 repair/exhaustion review, restart clean-pass auditing from position 1; Round9 clean credit remains 0.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
           "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
@@ -768,7 +768,7 @@
           }
         },
         "systemic_root_cause_qa": {
-          "status": "POST_S7_EXHAUSTION_REVIEW_PASS_ROUND9_CLEAN_RESTART_READY",
+          "status": "ROUND9_RECURRENCE_EVIDENCED__SYSTEMIC_S8_REQUIRED",
           "decision_ref": "MEM-NVV-002-SYSTEMIC-ROOT-CAUSE-QA",
           "completed_sweeps": [
             {
@@ -963,7 +963,7 @@
               }
             }
           ],
-          "next_family": null,
+          "next_family": "PERSIAN_NATURALNESS_VALENCY_MODALITY_TRANSLATION_ALIGNMENT_RESIDUALS",
           "exhaustion_review": {
             "status": "PASS_NO_ADDITIONAL_RECURRENT_DEFECT_FAMILY_EVIDENCED",
             "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-POST-S4-SYSTEMIC-FAMILY-EXHAUSTION-REVIEW-PASS.json",
@@ -1080,6 +1080,30 @@
             "next_clean_pass_round": 9,
             "next_clean_pass_repair_wave": "R12",
             "next_clean_pass_start_position": 1
+          },
+          "post_s7_recurrence": {
+            "status": "S8_REQUIRED",
+            "triggering_round": 9,
+            "triggering_shard": "0107",
+            "positions": "1-100",
+            "family": "PERSIAN_NATURALNESS_VALENCY_MODALITY_TRANSLATION_ALIGNMENT_RESIDUALS",
+            "confirmed_residual_targets": 6,
+            "positions_confirmed": [
+              4,
+              12,
+              25,
+              26,
+              38,
+              77
+            ],
+            "separate_nonfamily_repair": {
+              "position": 14,
+              "target_id": "dah-nvv-exp-00014",
+              "category": "GERMAN_COLLOCATION_NATURALNESS_SINGLE_CASE"
+            },
+            "required_next_action": "CORPUS_WIDE_SYSTEMIC_SWEEP_S8_BEFORE_SEQUENTIAL_CONTINUATION",
+            "exact_successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
+            "systemic_sweep": "S8"
           }
         },
         "round7_clean_pass_r10": {
@@ -1117,12 +1141,26 @@
           "next_operation": "ROUND9_CLEAN_PASS_R12_FROM_POSITION_1"
         },
         "round9_clean_pass_r12": {
-          "status": "READY_TO_START",
-          "start_position": 1,
-          "targets_total": 2492,
-          "exact_parent_core_sha256": "dae55e8c751629b5571e97d150657373af70ea3ba12812cf203b75f5043f9f98",
-          "clean_credit_if_full_pass_clean": 1,
-          "required_consecutive_clean_total": 2
+          "status": "PAUSED_SYSTEMIC_SWEEP_S8_REQUIRED",
+          "positions_completed": 100,
+          "targets_reviewed": 100,
+          "examples_reviewed": 400,
+          "affected_targets": 7,
+          "recurrent_family_targets": 6,
+          "clean_credit": 0,
+          "latest_shard": "0107",
+          "successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-ROUND9-CLEAN-PASS-R12-SHARD0107-POS1-100-PASS.json",
+          "artifact": {
+            "filename": "NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
+            "sha256": "1a7c52c21abafc6744492f0d7ff6eca58ab5ad7975c8e1fffccf7f7ab2f47d8b",
+            "successor_core_sha256": "58635bc8b9e53c32834e8ee66fe911ec481f3f7338ac63f6389d95db0496cf48",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-Round9-CleanPass-R12-Shard0107-POS1-100-REPAIRS-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000a9d881f490dd258a8e070c7c",
+            "library_stable_id": "libfile_807dfb9415bc8191b0df4c948ba26e90",
+            "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "next_operation": "SYSTEMIC_SWEEP_S8_BEFORE_ROUND9_RESTART_FROM_POSITION_1"
         }
       },
       "latest_structure_repair_delta": {

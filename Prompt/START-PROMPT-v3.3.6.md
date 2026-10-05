@@ -23,9 +23,9 @@ Before production, read root `PROJECT-MEMORY.json` including `prevention` gates/
 For projection-only successors, run `Verification/prevention_preflight.py lineage PROJECTED.json --baseline RESOLVED_PARENT.json` at Stage5. Resolve the immutable parent from its checkpoint first; retain current canonical parity and reviewed metadata/identity changes as separate gates.
 
 
-## Mandatory verb Kombinationen overlay
+## Mandatory lexical Kombinationen overlay
 
-For every applicable German verb target, read and apply:
-`Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` and resolve current-workstream adoption from `Prompt/VERB-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json`.
+For every lexical target, read and apply:
+`Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` and resolve current-workstream adoption from `Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json`.
 
-This overlay is ACTIVE for new work and for active workstreams at the next safe enrichment/QA boundary. It requires one learner-visible `Kombinationen` section, preserves backend typing/provenance, permits reviewed curated manner/context combinations, forbids false source claims and density-forced fabrication, and leaves historical LOCKED artifacts immutable.
+This overlay is ACTIVE for verbs, nouns, adjectives, adverbs and lexical expressions in new work and active workstreams at the next safe enrichment/QA boundary. It requires at most one learner-visible `Kombinationen` section, preserves backend typing/provenance, permits reviewed curated lexical combinations, forbids false source claims and density-forced fabrication, allows `CLOSED_NO_FORCE`, and leaves historical LOCKED artifacts immutable.

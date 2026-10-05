@@ -354,3 +354,30 @@ Content-final accepted SHA-256: `ab990a400b5f9cb479cd1ff1422e57b09c47869a019f8ee
 **292/292 A2 cards accepted, 1439 accepted Kombinationen. CONTENT FINAL PASS.**
 
 Next: run a **separate CURRENT-runtime acceptance** against Flashcards runtime **v458-R92** before any runtime-final/release-final claim. The content artifact itself is complete and cumulative.
+
+
+## Final Consolidated Content Package
+
+**CONTENT FINAL CONSOLIDATED PASS**
+
+A single self-contained content archive now preserves both:
+- the exact immutable Repair3 parent package members under `Parent-Repair3/`
+- the exact Batch15 cumulative content-final package members under `Current-Content-Final/`
+
+Current content authority inside the archive:
+`Current-Content-Final/A2-VERBEN-UNIVERSAL-v2-KOMBINATIONEN-BATCH15-ACCEPTED.tsv`
+
+Consolidated package:
+- filename: `Menschen-A2-Verben-v3.3.6-FINAL-CONSOLIDATED-CONTENT-PACKAGE.zip`
+- SHA-256: `fb240cd05fe7ec99e2816fff8e4337dde0b7fdac2dc9f6f21caf8ddaab4d2332`
+- Library: `libfile_1bf5d3d9c6408191b84db110d5ea9c49`
+- Library rematerialization: **PASS exact SHA-256 + byte parity**
+- content coverage: **292/292**
+- accepted Kombinationen: **1439**
+- nested archives: **0**
+- parent Repair3 exact member preservation: **PASS**
+- Batch15 Content-Final exact member preservation: **PASS**
+- runtime acceptance: **NOT RUN**
+- runtime-final claim: **NO**
+
+This consolidated package is the preferred single archive to keep for the completed Menschen A2 Verben content workstream. The embedded Repair3 tree remains historical/immutable; the embedded Current-Content-Final tree is the active content authority.

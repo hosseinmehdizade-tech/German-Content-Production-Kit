@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.6.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.7.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH04_CANDIDATE_QA_PASS__GIT_SYNCED",
+  "status": "BATCH04_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": ["Rektion","Kollokationen","Nomen-Verb-Verbindungen"],
@@ -34,30 +34,47 @@
   },
   "batch04": {
     "scope": "A1-L13..A1-L16",
-    "status": "CANDIDATE_QA_PASS",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
     "cards": 59,
-    "combination_items": 353,
+    "input_candidates": 353,
+    "accepted_items": 353,
+    "accepted_unchanged": 338,
+    "accepted_modified": 15,
+    "rejected": 0,
+    "registered_source_items": 17,
+    "origin_counts": {
+      "PARENT_GENERATED_EXAMPLE": 208,
+      "CURATED_PEDAGOGICAL": 124,
+      "REGISTERED_SOURCE": 17,
+      "PARENT_CANONICAL_RELATION": 4
+    },
     "items_per_card_min": 5,
     "items_per_card_max": 6,
     "items_per_card_avg": 5.98,
-    "registered_source_items": 17,
-    "parent_generated_example_items": 212,
-    "parent_canonical_relation_items": 4,
-    "curated_pedagogical_items": 120,
-    "changed_rows": 59,
-    "changed_columns": ["details","custom_fields"],
+    "qa": "PASS",
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
-    "qa": "PASS",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-CANDIDATE.zip",
-      "sha256": "30e04082095aea19c42797e45b6b2b5c5cd8be1a8ba4c17f9e848299d1e7acd6",
-      "bytes": 399722,
-      "zip_members": 8,
-      "sha256sum_entries": 7,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-ACCEPTED.zip",
+      "sha256": "3593c698a8876ff80c4781b559703351cee33922ce1db000adf49f0f6ecf82a7",
+      "bytes": 412806,
+      "zip_members": 9,
+      "sha256sum_entries": 8,
       "crc": "PASS"
     },
-    "tsv_sha256": "4f872e63f05ec7e6545e40ad3292b91437e072b026b822a9348e47016ed27558"
+    "tsv_sha256": "eacacba4a85674ada4a64be9d88437ce87f9da6d1d458c3112fff4bc4d63e0fa",
+    "notable_repairs": [
+      "einen Termin bestimmen -> einen Zeitpunkt bestimmen.",
+      "ehrlich erzählen -> spannend erzählen.",
+      "etwas heimlich verstecken -> etwas an einem sicheren Ort verstecken.",
+      "für die Zeit danken -> jemandem für seine Zeit danken.",
+      "Weak sich-vergleichen pairings normalized to sich direkt vergleichen / sich mit anderen vergleichen / sich mit Freunden vergleichen.",
+      "ein Gespräch vereinbaren -> einen Gesprächstermin vereinbaren.",
+      "gemeinsam etwas vereinbaren -> etwas schriftlich vereinbaren.",
+      "etwas verschiebt sich nach hinten -> der Termin verschiebt sich nach hinten.",
+      "Registered source item sich um Kinder kümmern -> source-exact sich um Haustiere kümmern.",
+      "Persian glosses polished for wenden, hinkommen, warten and Bescheid geben."
+    ]
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -66,14 +83,14 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
+    "curated_manner_context_patterns": "ACCEPTED_AS_CURATED_PEDAGOGICAL_AFTER_LINGUISTIC_REVIEW",
     "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
     "canonical_stage4": "UNCHANGED"
   },
-  "cumulative_accepted_before_batch04": {
-    "scope": "A1-L01..A1-L12",
-    "cards": 124,
-    "accepted_combination_items": 947
+  "cumulative_through_batch04": {
+    "scope": "A1-L01..A1-L16",
+    "cards": 183,
+    "accepted_combination_items": 1300
   },
-  "next_action": "Run linguistic/source accept-reject pass for Batch04 A1-L13..A1-L16, then promote accepted items and continue at A1-L17."
+  "next_action": "Start Batch05 at A1-L17 using the accepted single-section Kombinationen contract."
 }

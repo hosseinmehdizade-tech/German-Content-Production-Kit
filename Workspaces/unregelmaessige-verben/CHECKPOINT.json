@@ -2,8 +2,8 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "STAGE5_OFFICIAL_V3_3_6_CLEAN_DELIVERY_ANTI_BYPASS_PASS",
-  "quality_state": "PASS",
+  "milestone": "STAGE6_CURRENT_RUNTIME_ACCEPTANCE_BLOCKED_ENVIRONMENT",
+  "quality_state": "BLOCKED",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
   "counts": {
@@ -47,11 +47,10 @@
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
   ],
   "persistence": {
-    "git": "IN_SYNC",
-    "library": "IN_SYNC_CLEAN_DELIVERY_POST_PACKAGE_AND_PORTABLE_CHECKPOINT",
-    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "git": "IN_SYNC_PENDING_THIS_COMMIT",
+    "library": "IMPORT_READY_AND_BLOCKED_CHECKPOINT_IN_SYNC"
   },
-  "next_action": "Stage6 runtime acceptance only: re-resolve German-Flashcards-Pro CURRENT and LAST_FULLY_VERIFIED separately; materialize exact CURRENT portable artifact; test import/persistence/reload/presentation/export-reimport. Do not downgrade to older runtime.",
+  "next_action": "Re-resolve GFP CURRENT and run exact Stage6 real-origin import/reload/Study/export/reimport in an environment where navigation is permitted. Never downgrade to v451.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -77,5 +76,43 @@
     "file_id": "file_0000000014fc81f4af381701285ffc97",
     "library_file_id": "libfile_a9a339c2dde4819189c3397766361d67",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "current_runtime": {
+    "version": "v458-R92",
+    "artifact": "German-Flashcards-Pro-v458-R92-ORGANIZED-DELIVERY-FLASHCARD-UX-CANDIDATE.zip",
+    "sha256": "94d9f7cce53d1cda50a05bcf3d1be2132e42f63deef6d5048356bdf1d7a194af",
+    "verification_state": "PASS_AUTOMATED_POST_PACKAGE_CANDIDATE",
+    "release_final": false
+  },
+  "last_fully_verified_runtime": {
+    "version": "v451-R85",
+    "role": "REGRESSION_REFERENCE_ONLY"
+  },
+  "stage6": {
+    "status": "BLOCKED_ENVIRONMENT_EXACT_ORIGIN_ACCEPTANCE",
+    "import_ready": {
+      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-IMPORT-READY.zip",
+      "sha256": "48f11f8ba48bb3285ff8264a8945f97316ceacbf2c482ebd433716ac40e14a5a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-IMPORT-READY.zip",
+      "library_file_id": "libfile_b9d8236ba8508191aa475d28ea3d92f8"
+    },
+    "portable_checkpoint": {
+      "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+      "sha256": "16f22b964639c900a15207a1532f616935e62cd36c7255518da946a68c4f749e",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+      "library_file_id": "libfile_dca798bc039481918961280d3de3000c"
+    },
+    "partial_acceptance": {
+      "static_exact_projection": "10/10 PASS",
+      "neutral_envelope_runtime_regression": "21/21 PASS",
+      "cards": "174/174",
+      "examples": "696/696",
+      "translations": "1392/1392",
+      "relations": "902/902",
+      "legacy_v217": 0,
+      "page_errors": 0
+    },
+    "blocker": "Managed browser rejects both localhost and file navigation with ERR_BLOCKED_BY_ADMINISTRATOR, so exact-origin import/persistence/reload/default-UI export/clean-reimport cannot be claimed.",
+    "semantic_content_mutated": false
   }
 }

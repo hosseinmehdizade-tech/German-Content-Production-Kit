@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.5.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.6.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH03_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
+  "status": "BATCH04_CANDIDATE_QA_PASS__GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": ["Rektion","Kollokationen","Nomen-Verb-Verbindungen"],
@@ -27,41 +27,37 @@
   },
   "batch03": {
     "scope": "A1-L09..A1-L12",
-    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
+    "status": "ACCEPTED",
     "cards": 55,
-    "input_candidates": 384,
     "accepted_items": 384,
-    "accepted_unchanged": 369,
-    "accepted_modified": 15,
-    "rejected": 0,
-    "registered_source_items": 23,
+    "artifact_sha256": "9a64d1ac4ca015459c3f3659eff6cc559d1ed2eef6bc2e290296c12f51675dd6"
+  },
+  "batch04": {
+    "scope": "A1-L13..A1-L16",
+    "status": "CANDIDATE_QA_PASS",
+    "cards": 59,
+    "combination_items": 353,
     "items_per_card_min": 5,
-    "items_per_card_max": 8,
-    "qa": "PASS",
+    "items_per_card_max": 6,
+    "items_per_card_avg": 5.98,
+    "registered_source_items": 17,
+    "parent_generated_example_items": 212,
+    "parent_canonical_relation_items": 4,
+    "curated_pedagogical_items": 120,
+    "changed_rows": 59,
+    "changed_columns": ["details","custom_fields"],
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
+    "qa": "PASS",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch03-L09-L12-ACCEPTED.zip",
-      "sha256": "9a64d1ac4ca015459c3f3659eff6cc559d1ed2eef6bc2e290296c12f51675dd6",
-      "bytes": 402257,
-      "zip_members": 9,
-      "sha256sum_entries": 8,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-CANDIDATE.zip",
+      "sha256": "30e04082095aea19c42797e45b6b2b5c5cd8be1a8ba4c17f9e848299d1e7acd6",
+      "bytes": 399722,
+      "zip_members": 8,
+      "sha256sum_entries": 7,
       "crc": "PASS"
     },
-    "tsv_sha256": "8268ca27f6d3216869effb94e87844649cf62a4e810a6c868e3d595fe6cad64a",
-    "notable_repairs": [
-      "Source-exact repair: im Reisebüro anrufen -> beim Reisebüro anrufen.",
-      "normal verkehren -> wieder normal verkehren.",
-      "jemanden schnell holen -> schnell jemanden holen.",
-      "freundlich lachen -> über sich selbst lachen.",
-      "genau denken -> klar denken.",
-      "etwas zu einem Vorschlag meinen -> etwas nicht so meinen.",
-      "vor Freude springen -> vor Freude in die Luft springen.",
-      "hoch über etwas springen -> mit Anlauf über etwas springen.",
-      "regelmäßig stattfinden backend type -> frequency.",
-      "jemandem eine Chance geben promoted to registered-source evidence.",
-      "Persian glosses for umsteigen/nehmen polished."
-    ]
+    "tsv_sha256": "4f872e63f05ec7e6545e40ad3292b91437e072b026b822a9348e47016ed27558"
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -70,14 +66,14 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ACCEPTED_AS_CURATED_PEDAGOGICAL_AFTER_LINGUISTIC_REVIEW",
+    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
     "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
     "canonical_stage4": "UNCHANGED"
   },
-  "cumulative_through_batch03": {
+  "cumulative_accepted_before_batch04": {
     "scope": "A1-L01..A1-L12",
     "cards": 124,
     "accepted_combination_items": 947
   },
-  "next_action": "Start Batch04 at A1-L13 using the accepted single-section Kombinationen contract."
+  "next_action": "Run linguistic/source accept-reject pass for Batch04 A1-L13..A1-L16, then promote accepted items and continue at A1-L17."
 }

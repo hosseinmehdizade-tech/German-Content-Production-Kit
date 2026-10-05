@@ -20,24 +20,23 @@ This verb-retrofit lineage remains intentionally verb-only. The broader project 
 **ACCEPTED** — 70 newly enriched cards + 3 inherited / 350 new Kombinationen.
 
 ## Batch06 — A1-L21
-**CANDIDATE / STRUCTURAL QA PASS**
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
 
-- 27 target cards
-- 135 candidate Kombinationen
-- exactly 5 items per target card
-- 6 explicit registered-source items
-- 84 parent-generated-example-derived items
-- 5 parent canonical-relation-derived items
-- 40 curated pedagogical candidates
-- exactly one learner-visible `Kombinationen` section on every target card
+- 27 cards
+- 135 input candidates
+- 135 final accepted Kombinationen
+- 124 accepted unchanged
+- 11 linguistic/provenance/translation corrections
+- 8 explicit registered-source items
+- 0 rejected
 - 0 non-target rows changed
 - Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
 - Library persistence PASS
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-CANDIDATE.zip`
-SHA-256: `bf99e8c75f67413bae5c81ffc3d8a5c238d8c7dd327cf922d86a87316e1c6308`
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch06-L21-ACCEPTED.zip`
+SHA-256: `4ded369c511b6065fe41147c526b5c7bb1d9e8f4ed16cff9b4c7c85b68cf08c3`
 
-Accepted cumulative before Batch06: **253 cards / 1650 accepted Kombinationen**.
+Cumulative through L21: **280 cards / 1785 accepted Kombinationen**.
 
-Next: linguistic/source accept-reject pass for Batch06, then the remaining A1 supplement-only cards as Batch07.
+Next: **Batch07 for the remaining 30 A1 supplement-only verb cards**.

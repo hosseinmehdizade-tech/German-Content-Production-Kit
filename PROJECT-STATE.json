@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T11:02:59+02:00",
+  "updated_at": "2026-10-05T11:14:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -5526,6 +5526,39 @@
         "git": "IN_SYNC"
       },
       "next_scope": "Stage3B Batch0027 from ahl-lu-0521"
+    },
+    "unregelmaessige_verben": {
+      "status": "ACTIVE",
+      "branch": "unregelmaessige-verben-v336-migration",
+      "checkpoint": "Workspaces/unregelmaessige-verben/CHECKPOINT.json",
+      "source_manifest": "Workspaces/unregelmaessige-verben/00-source/SOURCE-MANIFEST.json",
+      "resolution_mode": "EXPLICIT_CURRENT_PARENT_THEN_PORTABLE_STATE_THEN_GIT",
+      "current_milestone": "STAGE5_NEUTRAL_PROJECTION_MIGRATION_PASS",
+      "content_authority": "v1.2.0 immutable semantic parent",
+      "content_counts": {
+        "cards": 174,
+        "examples": 696,
+        "relations": 902
+      },
+      "framework": "v3.3.6",
+      "projection_contract": "de-vocabulary + gfp-vocabulary-neutral@1",
+      "projected_tsv_sha256": "5ec6770bfab47e0d0876b6e4bac2175315a67db2fd48a79f624b700538e51bd6",
+      "portable_checkpoint": {
+        "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-Neutral-Projection-PASS-CHECKPOINT.zip",
+        "sha256": "1dfb4644f6a4230ff161a8539a3f40f92ab013b66b17f0d5d1eb60db5e1713ac",
+        "bytes": 527758,
+        "storage": "current_conversation_user_delivery",
+        "library_upload": "PENDING_USER_DECISION"
+      },
+      "verification": {
+        "canonical_deep_copy": "174/174 PASS",
+        "unified_projection": "174/174 PASS; 0 legacy; 0 selector conflicts",
+        "prevention_projection_lineage": "PASS",
+        "post_package": "PASS",
+        "official_v336_clean_delivery": "PENDING_LEGACY_AUTHORITY_BRIDGE",
+        "stage6_runtime": "NOT_RUN"
+      },
+      "next_action": "Build v3.3.6 legacy-authority bridge ledgers from the immutable v1.2.0 parent, then run official Stage5 clean-delivery anti-bypass. Resolve GFP CURRENT only at Stage6."
     }
   },
   "flashcards_runtime_dependency": {

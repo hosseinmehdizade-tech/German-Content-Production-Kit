@@ -1,7 +1,8 @@
 # VERB KOMBINATIONEN ENRICHMENT POLICY v1.0.0
 
-Status: **ACTIVE**  
-Framework overlay: **German Content Production Kit v3.3.6**  
+Status: **SUPERSEDED**  
+Framework overlay: **German Content Production Kit v3.3.6**
+Superseded by: `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md`  
 Applies to: German verb targets and verb expressions in vocabulary/content workstreams.
 
 ## 1. Purpose

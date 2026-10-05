@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a2-verben-kombinationen-v336-checkpoint@1.3.0",
+  "schema": "menschen-a2-verben-kombinationen-v336-checkpoint@1.4.0",
   "workstream": "menschen-a2-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH04_ACCEPTED_PASS__80_OF_292__RUNTIME_ACCEPTANCE_NOT_RUN__LIBRARY_PERSISTED",
+  "status": "BATCH05_ACCEPTED_PASS__100_OF_292__RUNTIME_ACCEPTANCE_NOT_RUN__LIBRARY_PERSISTED",
   "authority": {
     "parent_filename": "Menschen-A2-Verben-v3.3.6-Repair3-GFP-v455-RELOCKED.zip",
     "parent_sha256": "30abc51f98762e6b47d8e2b3bea7e99d629f84c7a5c4bcf3f3d4234e3d84bc84",
@@ -102,23 +102,25 @@
     }
   },
   "coverage": {
-    "cards_accepted": 80,
+    "cards_accepted": 100,
     "cards_total": 292,
-    "accepted_combination_items": 392,
+    "accepted_combination_items": 492,
     "final_delivery_rule": "CUMULATIVE_A2_OUTPUT_INCLUDES_ALL_292_CARDS"
   },
   "persistence": {
-    "git": "SYNCING_THIS_MILESTONE",
+    "git": "IN_SYNC_WORKSTREAM_BRANCH",
+    "main_coordination": "PENDING_RETRY_AFTER_WORKSTREAM_SYNC",
     "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "batch01_library": "PASS",
     "batch02_library": "PASS",
     "batch03_library": "PASS",
     "batch04_library": "PASS",
+    "batch05_library": "PASS",
     "binary_delivery_surface": "Library + current conversation generated artifacts"
   },
   "runtime_acceptance": "NOT_RUN",
   "runtime_final_claim": false,
-  "next_action": "Continue cumulative Batch05 with ma2-lu-0081..ma2-lu-0100 from the exact Batch04 ACCEPTED artifact. Do not mutate Repair3 parent; runtime acceptance stays separate until explicitly run.",
+  "next_action": "Retry compact main PROJECT-STATE coordination for the Batch04/Batch05 state, then continue cumulative Batch06 with ma2-lu-0101..ma2-lu-0120 from the exact Batch05 ACCEPTED artifact. Do not mutate Repair3 parent; runtime acceptance stays separate until explicitly run.",
   "batch02": {
     "scope": "ma2-lu-0021..ma2-lu-0040",
     "lesson_membership": "Menschen A2 Verben",
@@ -386,5 +388,90 @@
       "sha256": "7a75914d69a0d654b7aae6d62727d818e098b495a906eaf873290c8ec6fa1193"
     },
     "mutation_boundary": "Batch04 preserves Batches01-03 cumulatively; Repair3 canonical authority, IDs/order, examples/translations, morphology, source/lesson/deck membership, runtime and UI remain unchanged."
+  },
+  "batch05": {
+    "scope": "ma2-lu-0081..ma2-lu-0100",
+    "lesson_membership": "Menschen A2 Verben",
+    "deck_membership": "Grundwortschatz Verben",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
+    "cards": 20,
+    "input_candidates": 100,
+    "accepted_items": 100,
+    "accepted_unchanged": 100,
+    "accepted_modified": 0,
+    "rejected": 0,
+    "registered_source_items": 13,
+    "origin_counts": {
+      "PARENT_GENERATED_EXAMPLE": 61,
+      "PARENT_CANONICAL_RELATION": 25,
+      "REGISTERED_SOURCE": 13,
+      "CURATED_PEDAGOGICAL": 1
+    },
+    "kind_counts": {
+      "object": 27,
+      "rection": 25,
+      "context": 8,
+      "time": 7,
+      "manner": 7,
+      "pattern": 6,
+      "location": 5,
+      "degree": 4,
+      "frequency": 4,
+      "noun_verb": 4,
+      "duration": 2,
+      "fixed_expression": 1
+    },
+    "items_per_card": {
+      "min": 4,
+      "max": 6,
+      "avg": 5
+    },
+    "qa": {
+      "rows": "292/292",
+      "unique_ids": "292/292",
+      "cumulative_input_sha256": "a3beec055f1bfade92c81d1eeed4ccf07490a5296da2b1742750768be58f9bfa",
+      "non_target_rows_exact": "272/272 PASS",
+      "target_change_boundary": "details+custom_fields only",
+      "canonical_unit_parity": "20/20 PASS",
+      "canonical_relations_parity": "20/20 PASS",
+      "examples_identity_membership_parity": "20/20 PASS",
+      "single_visible_kombinationen": "20/20 PASS",
+      "separate_visible_rektion_collocation_nvv": "0/20",
+      "registered_source_evidence_refs": "13/13 PASS",
+      "candidate_to_acceptance": "100 -> 100 ACCEPTED + 0 REJECTED",
+      "no_quota_forced_replacement": "PASS",
+      "cumulative_visible_kombinationen_cards": "100/292",
+      "zip_crc_and_internal_sha256": "PASS",
+      "package_hygiene": "PASS"
+    },
+    "candidate": {
+      "filename": "Menschen-A2-Verben-v3.3.6-Kombinationen-Batch05-ma2-lu-0081-0100-CANDIDATE.zip",
+      "sha256": "8d705c54c1753966435cec1c976485e789420da1a9999c39e4d6df2ac2311a6b",
+      "size_bytes": 349113,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-Kombinationen-Batch05-ma2-lu-0081-0100-CANDIDATE.zip",
+      "library_file_id": "libfile_950d0e9cdda081919628cdfc3df66f4c",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "accepted": {
+      "filename": "Menschen-A2-Verben-v3.3.6-Kombinationen-Batch05-ma2-lu-0081-0100-ACCEPTED.zip",
+      "sha256": "c9ef9e707d157944048e85a99e1d3d6a7478089abf8ff928a63ea02bb6f4d71a",
+      "size_bytes": 349190,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-Kombinationen-Batch05-ma2-lu-0081-0100-ACCEPTED.zip",
+      "library_file_id": "libfile_eb08fecbe98c819183c831c8344c0274",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "Menschen-A2-Verben-v3.3.6-Kombinationen-Batch05-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "f1b210e6e63a47f6a6a5a6eac37902dc964785cc3341132dbf0fd40a092bf764",
+      "size_bytes": 3015,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-v3.3.6-Kombinationen-Batch05-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "libfile_0dc9e69906d08191b4712c476a6a92ff",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "cumulative_input": {
+      "artifact": "Menschen-A2-Verben-v3.3.6-Kombinationen-Batch04-ma2-lu-0061-0080-ACCEPTED.zip",
+      "sha256": "a3beec055f1bfade92c81d1eeed4ccf07490a5296da2b1742750768be58f9bfa"
+    },
+    "mutation_boundary": "Batch05 preserves Batches01-04 cumulatively; Repair3 canonical authority, IDs/order, examples/translations, morphology, source/lesson/deck membership, runtime and UI remain unchanged."
   }
 }

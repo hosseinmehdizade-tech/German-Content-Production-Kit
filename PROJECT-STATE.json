@@ -73,16 +73,21 @@
       "rule": "One neutral de-vocabulary presentation family with gfp-vocabulary-neutral@1."
     },
     "verb_kombinationen_overlay": {
+      "status": "SUPERSEDED",
+      "superseded_by": "lexical_kombinationen_overlay",
+      "historical_policy": "Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+      "historical_adoption_matrix": "Prompt/VERB-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json"
+    },
+    "lexical_kombinationen_overlay": {
       "status": "ACTIVE",
-      "policy": "Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
-      "version": "1.0.0",
-      "scope": "All applicable German verb targets in new and active content workstreams",
+      "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+      "adoption_matrix": "Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json",
+      "active_pointer": "Prompt/KOMBINATIONEN-ACTIVE-POLICY.json",
+      "scope": "ALL_LEXICAL_TARGETS",
       "learner_visible_section": "Kombinationen",
-      "backend_typing": "PRESERVE",
-      "source_claim_rule": "REGISTERED_SOURCE requires explicit registered evidence refs",
-      "density_rule": "NO_HARD_QUOTA_CLOSED_NO_FORCE_ALLOWED",
-      "locked_artifact_rule": "IMMUTABLE_USE_SUCCESSOR_ENRICHMENT",
-      "active_workstream_adoption": "NEXT_SAFE_STAGE3B_OR_STAGE4_BOUNDARY_BEFORE_STAGE5_CLOSURE"
+      "no_hard_quota": true,
+      "closed_no_force_allowed": true,
+      "locked_artifacts_immutable": true
     }
   },
   "workstream_resolution_policy": "Use the newest valid portable checkpoint first. Git is the durable mirror/ambiguity resolver; attempt lightweight sync after every validated milestone. Temporary WIP edits are not milestones; bounded failures remain PENDING.",

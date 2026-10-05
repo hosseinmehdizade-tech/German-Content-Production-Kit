@@ -138,7 +138,7 @@
       "state": "RUNNING",
       "phase_status": {
         "3A_baseline": "PASS",
-        "3B_gap_driven_enrichment": "RUNNING_CLOSURE_AFTER_BATCH0040",
+        "3B_gap_driven_enrichment": "RUNNING_CLOSURE_AFTER_EN_BILINGUAL",
         "3C_disposition_closure": "NOT_STARTED"
       },
       "targets": 788,
@@ -671,21 +671,21 @@
         "portable:03-evidence/EVIDENCE-INDEX.json",
         "portable:03-evidence/CANDIDATE-LEDGER.json",
         "portable:03-evidence/STAGE3B-PROGRESS.json",
-        "portable:03-evidence/STAGE3B-CEFR-CLOSURE-VALIDATION.json",
-        "Git:03-evidence/STAGE3B-CEFR-CLOSURE-SUMMARY.json"
+        "portable:03-evidence/STAGE3B-EN-BILINGUAL-CLOSURE-VALIDATION.json",
+        "Git:03-evidence/STAGE3B-EN-BILINGUAL-CLOSURE-SUMMARY.json"
       ],
       "gate_evidence": [
-        "portable:03-evidence/STAGE3B-CEFR-CLOSURE-VALIDATION.json",
-        "portable:STAGE3B-CEFR-CLOSURE-REPORT.md"
+        "portable:03-evidence/STAGE3B-EN-BILINGUAL-CLOSURE-VALIDATION.json",
+        "portable:STAGE3B-EN-BILINGUAL-CLOSURE-REPORT.md"
       ],
-      "claim_boundary": "Stage3B target enrichment coverage is 788/788, but Stage3B closure remains RUNNING. Exact item-level CEFR is reviewed and CLOSED_NO_FORCE for 788/788. Bilingual provisional cells and relation dimensions still require Stage3B review; Stage3C and Stage4 are not claimed.",
+      "claim_boundary": "Stage3B target coverage is 788/788. item_level_cefr is final 788/788 CLOSED_NO_FORCE and gloss_en is final 788/788 VERIFIED_PRESENT. Persian bilingual provisional cells and relation dimensions remain open; Stage3C and Stage4 are not claimed.",
       "portable_artifact": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-CEFR-CLOSURE-CHECKPOINT.zip",
-        "sha256": "936969251cb71b2ce183a7fc6ed756012054c38eb87c1fa323c6e2cc7dc27529",
-        "size_bytes": 761179,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-CEFR-CLOSURE-CHECKPOINT.zip",
-        "library_file_id": "libfile_3231fc76230c8191855f64464c5074c3",
-        "library_file_snapshot_id": "file_000000001f50821081a8419a55e343fe",
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-EN-BILINGUAL-CLOSURE-CHECKPOINT.zip",
+        "sha256": "82565a73a21decf2913ab4662e39e85afe78848329be1bccc7d49f7992d2a5c7",
+        "size_bytes": 772605,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-EN-BILINGUAL-CLOSURE-CHECKPOINT.zip",
+        "library_file_id": "libfile_c8f828a3e2388191a59a06391eabe475",
+        "library_file_snapshot_id": "file_0000000027dc81f4b0dc9fe58d90a61c",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "cefr_closure": {
@@ -694,6 +694,17 @@
         "closed_no_force": 788,
         "unresolved": 0,
         "reason_code": "SOURCE_ROUTE_EXHAUSTED_BROAD_BAND_ONLY"
+      },
+      "english_bilingual_closure": {
+        "state": "PASS",
+        "applicable_cells": 788,
+        "verified_present": 788,
+        "unresolved": 0,
+        "accepted_status_metadata_reconciled": 219,
+        "ledger_decisions_reconciled": 20,
+        "provisional_reviewed": 32,
+        "grammar_source_derived": 1,
+        "canonical_unchanged": true
       }
     },
     {
@@ -727,15 +738,15 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE3B_CEFR_CLOSURE_PASS__STAGE3B_STILL_RUNNING",
+  "quality_state": "STAGE3B_EN_BILINGUAL_CLOSURE_PASS__STAGE3B_STILL_RUNNING",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Continue Stage3B closure on provisional bilingual core fields; then review relation dimensions. Do not start Stage3C until no unreviewed/deferred cells remain.",
-  "resume_instruction": "Use the exact CEFR-closure portable artifact as authority. Preserve canonical bytes and selected-page scope. Continue Stage3B closure only.",
+  "next_action": "Continue Stage3B with Persian bilingual core-field closure; then relation-review dimensions. Do not start Stage3C until no unreviewed/deferred cells remain.",
+  "resume_instruction": "Use the exact English-bilingual-closure portable artifact. Preserve selected-page scope and canonical bytes. Continue Stage3B closure only.",
   "stage3b_batch": "0040",
-  "stage3b_status": "RUNNING_AFTER_CEFR_CLOSURE",
+  "stage3b_status": "RUNNING_AFTER_EN_BILINGUAL_CLOSURE",
   "stage3b_targets_processed": 788,
   "stage3b_next_target": null,
   "stage3b_provisional_targets": [
@@ -1171,5 +1182,6 @@
     "ahl-lu-0786",
     "ahl-lu-0787"
   ],
-  "stage3b_cefr_closure": "PASS_788_OF_788_CLOSED_NO_FORCE"
+  "stage3b_cefr_closure": "PASS_788_OF_788_CLOSED_NO_FORCE",
+  "stage3b_english_bilingual_closure": "PASS_788_OF_788_VERIFIED_PRESENT"
 }

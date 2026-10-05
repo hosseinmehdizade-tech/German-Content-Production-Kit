@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-05T11:41:00+02:00",
+  "updated_at": "2026-10-05T12:15:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -5622,12 +5622,15 @@
       "checkpoint": "Workspaces/unregelmaessige-verben/CHECKPOINT.json",
       "source_manifest": "Workspaces/unregelmaessige-verben/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "EXPLICIT_CURRENT_PARENT_THEN_PORTABLE_STATE_THEN_GIT",
-      "current_milestone": "STAGE5_NEUTRAL_PROJECTION_MIGRATION_PASS",
+      "current_milestone": "STAGE5_OFFICIAL_V3_3_6_CLEAN_DELIVERY_ANTI_BYPASS_PASS",
       "content_authority": "v1.2.0 immutable semantic parent",
       "content_counts": {
         "cards": 174,
+        "source_occurrences": 258,
         "examples": 696,
-        "relations": 902
+        "relations": 902,
+        "dimension_cells": 2262,
+        "unresolved_cells": 0
       },
       "framework": "v3.3.6",
       "projection_contract": "de-vocabulary + gfp-vocabulary-neutral@1",
@@ -5642,12 +5645,31 @@
       "verification": {
         "canonical_deep_copy": "174/174 PASS",
         "unified_projection": "174/174 PASS; 0 legacy; 0 selector conflicts",
-        "prevention_projection_lineage": "PASS",
-        "post_package": "PASS",
-        "official_v336_clean_delivery": "PENDING_LEGACY_AUTHORITY_BRIDGE",
+        "source_occurrences": "PASS 7/258",
+        "identity_closure": "PASS 258 -> 174; 0 unresolved",
+        "enrichment_completeness": "PASS 174 targets / 2262 cells / 0 unresolved",
+        "candidate_ledger": "PASS 0 new candidates",
+        "official_v336_clean_delivery": "PASS",
+        "fresh_post_package": "PASS",
+        "semantic_mutations": 0,
+        "nvv_literal_target_warnings": "55 non-blocking preserved-legacy warnings",
         "stage6_runtime": "NOT_RUN"
       },
-      "next_action": "Build v3.3.6 legacy-authority bridge ledgers from the immutable v1.2.0 parent, then run official Stage5 clean-delivery anti-bypass. Resolve GFP CURRENT only at Stage6."
+      "next_action": "Stage6 runtime acceptance: re-resolve GFP CURRENT and LAST_FULLY_VERIFIED; materialize exact CURRENT artifact and test this exact clean delivery. Never downgrade to older runtime.",
+      "clean_delivery": {
+        "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+        "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
+        "library_file_id": "libfile_8c636189c66081919606f3acc0001a88",
+        "sha256": "9914a3b22ecb32cf73cb8cc44335dc3887327a47e4c01f6493f37058875506ed",
+        "size_bytes": 356989
+      },
+      "post_package_verification": {
+        "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-POST-PACKAGE-VERIFICATION.json",
+        "file_id": "file_00000000a8ec81f4b5c49fc2af3ddfed",
+        "library_file_id": "libfile_2fcc5db1ea90819183d9cd9570199782"
+      },
+      "git_stage5_checkpoint_commit": "2de69d7ecbd1f2043f351c7959731c16bc24926f",
+      "git_stage5_readme_commit": "b7b4393a154f122708e0ed73f71a84da693a7b0f"
     }
   },
   "flashcards_runtime_dependency": {

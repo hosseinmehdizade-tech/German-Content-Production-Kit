@@ -14,22 +14,26 @@ Rektion, collocations, Nomen-Verb-Verbindungen, typical objects, manner/adverbia
 **ACCEPTED** — 55 cards / 384 Kombinationen.
 
 ## Batch04 — A1-L13..A1-L16
-**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+**ACCEPTED** — 59 cards / 353 Kombinationen.
 
-- 59 cards
-- 353 input candidates
-- 353 final accepted Kombinationen
-- 338 accepted unchanged
-- 15 linguistic/type/provenance/translation corrections
-- 17 explicit registered-source items
+## Batch05 — A1-L17..A1-L20
+**CANDIDATE / STRUCTURAL QA PASS**
+
+- lesson scope: 73 cards
+- 70 newly changed cards
+- 3 reused cards already had accepted Kombinationen from earlier lessons and remain unchanged
+- 350 new candidate Kombinationen
+- exactly 5 new items per changed card
+- all new items deliberately remain `CURATED_PEDAGOGICAL` at candidate stage
+- no new `REGISTERED_SOURCE` claim before the separate linguistic/source acceptance pass
+- exactly one learner-visible `Kombinationen` section on every changed card
 - 0 non-target rows changed
-- legacy Stage4 canonical unchanged
+- Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
-- source-exact correction: `sich um Kinder kümmern` → `sich um Haustiere kümmern` for the registered A1-A2 evidence item
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-ACCEPTED.zip`  
-SHA-256: `3593c698a8876ff80c4781b559703351cee33922ce1db000adf49f0f6ecf82a7`
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-CANDIDATE.zip`  
+SHA-256: `72322eb29e09966ff8f1539c88f8b9ed651455fd376a093c7e5ed4299adcafac`
 
-Cumulative through L16: **183 cards / 1300 accepted Kombinationen**.
+Accepted cumulative before Batch05: **183 cards / 1300 Kombinationen**.
 
-Next: **Batch05 beginning with A1-L17**.
+Next: linguistic/source accept-reject pass for Batch05, then A1-L21.

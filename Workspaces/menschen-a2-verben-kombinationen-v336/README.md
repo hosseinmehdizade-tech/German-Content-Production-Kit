@@ -139,8 +139,34 @@ Accepted SHA-256: `c9ef9e707d157944048e85a99e1d3d6a7478089abf8ff928a63ea02bb6f4d
 
 Accepted SHA-256: `e9f22949c0a42a6fdfaaae2dea53e73349367a950ac42b9506a5d9c1d98dc797`
 
+## Batch07 — ma2-lu-0121..ma2-lu-0140
+
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
+
+- 20 cards
+- 98 Candidate items → 98 accepted unchanged
+- 11 explicit `REGISTERED_SOURCE` items with real evidence refs
+- all four registered source files re-hashed from current uploads and matched `SOURCE-REGISTRY.json` exactly
+- origins: 41 parent canonical relations / 46 parent generated examples / 11 registered-source
+- 4–5 items per card (avg 4.90); no quota-forced filler
+- 272/272 non-target rows unchanged from cumulative Batch06
+- target changes limited to `details` + `custom_fields`
+- canonical_unit and canonical_relations parity: 20/20
+- full Repair3 lineage parity: 292/292 for canonical units/relations, identity and presentation examples
+- cards `ma2-lu-0141..ma2-lu-0292` remain exact to the immutable Repair3 parent
+- unified projection validator: PASS on Candidate and ACCEPTED
+- bounded projection preflight: PASS on Candidate and ACCEPTED
+- exactly one learner-visible **Kombinationen** section on each target card
+- separate visible Rektion/Kollokationen/Nomen-Verb-Verbindungen: 0/20
+- cumulative visible Kombinationen coverage: 140/292
+- ZIP CRC/internal SHA256/package hygiene: PASS
+- Candidate/ACCEPTED/post-package artifacts persisted in Library and rematerialized with exact SHA-256 + byte parity
+- runtime-final claim: **NO**
+
+Accepted SHA-256: `75b920e53ff4d275c216e9d7933394971805f20d5e3f3b637a73bc33c9de8e2b`
+
 ## Cumulative state
 
-**120/292 A2 cards accepted, 587 accepted Kombinationen.**
+**140/292 A2 cards accepted, 685 accepted Kombinationen.**
 
-Next: continue cumulatively with **ma2-lu-0121..ma2-lu-0140** from the exact Batch06 ACCEPTED artifact. Final A2 delivery remains one cumulative output containing all **292** A2 cards.
+Next: continue cumulatively with **ma2-lu-0141..ma2-lu-0160** from the exact Batch07 ACCEPTED artifact. Final A2 delivery remains one cumulative output containing all **292** A2 cards.

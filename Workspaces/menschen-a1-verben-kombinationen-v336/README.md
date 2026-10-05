@@ -14,23 +14,22 @@ Rektion, collocations, Nomen-Verb-Verbindungen, typical objects, manner/adverbia
 **ACCEPTED** — 55 cards / 384 Kombinationen.
 
 ## Batch04 — A1-L13..A1-L16
-**CANDIDATE / STRUCTURAL QA PASS**
+**LINGUISTIC/PROVENANCE ACCEPTED PASS**
 
 - 59 cards
-- 353 Kombinationen
-- 5–6 items per card
+- 353 input candidates
+- 353 final accepted Kombinationen
+- 338 accepted unchanged
+- 15 linguistic/type/provenance/translation corrections
 - 17 explicit registered-source items
-- 212 parent generated-example-derived items
-- 4 parent canonical-relation-derived items
-- 120 curated pedagogical candidates
-- exactly one learner-visible `Kombinationen` section on every target card
 - 0 non-target rows changed
-- Stage4 canonical unchanged
+- legacy Stage4 canonical unchanged
 - ZIP CRC + internal SHA256SUMS PASS
+- source-exact correction: `sich um Kinder kümmern` → `sich um Haustiere kümmern` for the registered A1-A2 evidence item
 
-Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-CANDIDATE.zip`  
-SHA-256: `30e04082095aea19c42797e45b6b2b5c5cd8be1a8ba4c17f9e848299d1e7acd6`
+Artifact: `Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-ACCEPTED.zip`  
+SHA-256: `3593c698a8876ff80c4781b559703351cee33922ce1db000adf49f0f6ecf82a7`
 
-Accepted cumulative before Batch04: **124 cards / 947 Kombinationen**.
+Cumulative through L16: **183 cards / 1300 accepted Kombinationen**.
 
-Next: linguistic/source accept-reject pass for Batch04, then A1-L17.
+Next: **Batch05 beginning with A1-L17**.

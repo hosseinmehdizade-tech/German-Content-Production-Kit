@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.8.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.9.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH05_CANDIDATE_QA_PASS__LIBRARY_AND_GIT_SYNCED",
+  "status": "BATCH05_LINGUISTIC_ACCEPTANCE_PASS__LIBRARY_AND_GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": [
@@ -45,7 +45,7 @@
   },
   "batch05": {
     "scope": "A1-L17..A1-L20",
-    "status": "CANDIDATE_QA_PASS",
+    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
     "lesson_scope_cards": 73,
     "changed_cards": 70,
     "inherited_already_accepted_cards": 3,
@@ -54,33 +54,47 @@
       "ma1m-lu-1022",
       "ma1m-lu-0936"
     ],
-    "combination_items": 350,
+    "input_candidates": 350,
+    "accepted_items": 350,
+    "accepted_unchanged": 315,
+    "accepted_modified": 35,
+    "rejected": 0,
+    "registered_source_items": 14,
+    "origin_counts": {
+      "CURATED_PEDAGOGICAL": 336,
+      "REGISTERED_SOURCE": 14
+    },
     "items_per_changed_card_min": 5,
     "items_per_changed_card_max": 5,
     "items_per_changed_card_avg": 5,
-    "origin_counts": {
-      "CURATED_PEDAGOGICAL": 350
-    },
-    "changed_columns": [
-      "details",
-      "custom_fields"
-    ],
+    "qa": "PASS",
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
-    "qa": "PASS",
-    "source_claim_policy": "No new Batch05 item is labeled REGISTERED_SOURCE at candidate stage. Curated combinations require the separate linguistic/source acceptance pass before any evidence promotion.",
+    "tsv_sha256": "76fd6f5cbabe26da523b9214ccd7f924a2756beb20a0be4edc615666f09df3e5",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-CANDIDATE.zip",
-      "sha256": "72322eb29e09966ff8f1539c88f8b9ed651455fd376a093c7e5ed4299adcafac",
-      "bytes": 411129,
-      "zip_members": 8,
-      "sha256sum_entries": 7,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-ACCEPTED.zip",
+      "sha256": "f302f4557ab3eb10b80c9b9b185af3b44fe6096a29ddf71d8f83fea17086d9c3",
+      "bytes": 417527,
+      "zip_members": 9,
+      "sha256sum_entries": 8,
       "crc": "PASS",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-CANDIDATE.zip",
-      "library_file_id": "libfile_79046d65ede08191b6f9d586d1af7a1b",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-ACCEPTED.zip",
+      "library_file_id": "libfile_de282caa41c88191b326688f02ee52af",
       "library_persistence": "PASS"
     },
-    "tsv_sha256": "184620ddd5d47be96830d8172c314f9edb235f28f141c5e26aefa00aa66f86f3"
+    "notable_repairs": [
+      "Persian infinitive glosses repaired for wollen, lügen, zu Fuß gehen, runterkommen and reinkommen.",
+      "unhöflich rülpsen -> aus Versehen rülpsen.",
+      "aus mehreren Angeboten aussuchen -> etwas aus mehreren Angeboten aussuchen.",
+      "etwas kaum auseinanderhalten -> zwei Dinge kaum auseinanderhalten.",
+      "raten combinations strengthened; zu einer Diät raten promoted to registered-source evidence.",
+      "für Besucher öffnen -> ein Museum für Besucher öffnen.",
+      "nach oben heraufkommen -> vom Erdgeschoss heraufkommen.",
+      "früh aufstehen hassen -> frühes Aufstehen hassen.",
+      "sich bei der Schule anmelden -> sich bei der Sekretärin anmelden and source-backed.",
+      "an einen Menschen glauben -> an jemanden glauben.",
+      "weak/vague complaint and recognition patterns tightened."
+    ]
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -98,12 +112,17 @@
     "cards": 183,
     "accepted_combination_items": 1300
   },
-  "next_action": "Run linguistic/source accept-reject pass for Batch05 A1-L17..A1-L20, promote supported items/evidence, then continue at A1-L21.",
+  "next_action": "Start Batch06 at A1-L21 for the verb-retrofit lineage; keep broader lexical Kombinationen rollout separate in the unified Menschen pipeline.",
   "global_policy_overlay": {
-    "policy": "Prompt/VERB-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
-    "status": "ACTIVE_PILOT_CONFORMANT",
-    "role": "Retrofit/successor authority for already-produced A1 verb cards",
-    "learner_visible_section": "Kombinationen",
-    "adoption_note": "Continue existing Batch05 acceptance and later A1 coverage under the global policy; do not rewrite historical LOCKED artifacts."
+    "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+    "adoption_matrix": "Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json",
+    "active_pointer": "Prompt/KOMBINATIONEN-ACTIVE-POLICY.json",
+    "status": "ACTIVE_VERB_RETROFIT_UNDER_BROADER_LEXICAL_POLICY",
+    "role": "This lineage remains verb-only; broader Menschen production applies Kombinationen to all lexical targets."
+  },
+  "cumulative_through_batch05": {
+    "scope": "A1-L01..A1-L20",
+    "cards": 253,
+    "accepted_combination_items": 1650
   }
 }

@@ -1,8 +1,8 @@
 {
-  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.7.0",
+  "schema": "menschen-a1-verben-kombinationen-v336-checkpoint@1.8.0",
   "workstream": "menschen-a1-verben-kombinationen-v336",
   "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
-  "status": "BATCH04_LINGUISTIC_ACCEPTANCE_PASS__GIT_SYNCED",
+  "status": "BATCH05_CANDIDATE_QA_PASS__GIT_SYNCED",
   "design_contract": {
     "learner_visible_section": "Kombinationen",
     "separate_visible_sections": ["Rektion","Kollokationen","Nomen-Verb-Verbindungen"],
@@ -34,47 +34,39 @@
   },
   "batch04": {
     "scope": "A1-L13..A1-L16",
-    "status": "LINGUISTIC_PROVENANCE_ACCEPTED_PASS",
+    "status": "ACCEPTED",
     "cards": 59,
-    "input_candidates": 353,
     "accepted_items": 353,
-    "accepted_unchanged": 338,
-    "accepted_modified": 15,
-    "rejected": 0,
-    "registered_source_items": 17,
+    "artifact_sha256": "3593c698a8876ff80c4781b559703351cee33922ce1db000adf49f0f6ecf82a7"
+  },
+  "batch05": {
+    "scope": "A1-L17..A1-L20",
+    "status": "CANDIDATE_QA_PASS",
+    "lesson_scope_cards": 73,
+    "changed_cards": 70,
+    "inherited_already_accepted_cards": 3,
+    "inherited_ids": ["ma1m-lu-0935","ma1m-lu-1022","ma1m-lu-0936"],
+    "combination_items": 350,
+    "items_per_changed_card_min": 5,
+    "items_per_changed_card_max": 5,
+    "items_per_changed_card_avg": 5.0,
     "origin_counts": {
-      "PARENT_GENERATED_EXAMPLE": 208,
-      "CURATED_PEDAGOGICAL": 124,
-      "REGISTERED_SOURCE": 17,
-      "PARENT_CANONICAL_RELATION": 4
+      "CURATED_PEDAGOGICAL": 350
     },
-    "items_per_card_min": 5,
-    "items_per_card_max": 6,
-    "items_per_card_avg": 5.98,
-    "qa": "PASS",
+    "changed_columns": ["details","custom_fields"],
     "non_target_rows_changed": 0,
     "canonical_mutated": false,
+    "qa": "PASS",
+    "source_claim_policy": "No new Batch05 item is labeled REGISTERED_SOURCE at candidate stage. Curated combinations require the separate linguistic/source acceptance pass before any evidence promotion.",
     "artifact": {
-      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch04-L13-L16-ACCEPTED.zip",
-      "sha256": "3593c698a8876ff80c4781b559703351cee33922ce1db000adf49f0f6ecf82a7",
-      "bytes": 412806,
-      "zip_members": 9,
-      "sha256sum_entries": 8,
+      "filename": "Menschen-A1-Verben-v3.3.6-Kombinationen-Batch05-L17-L20-CANDIDATE.zip",
+      "sha256": "72322eb29e09966ff8f1539c88f8b9ed651455fd376a093c7e5ed4299adcafac",
+      "bytes": 411129,
+      "zip_members": 8,
+      "sha256sum_entries": 7,
       "crc": "PASS"
     },
-    "tsv_sha256": "eacacba4a85674ada4a64be9d88437ce87f9da6d1d458c3112fff4bc4d63e0fa",
-    "notable_repairs": [
-      "einen Termin bestimmen -> einen Zeitpunkt bestimmen.",
-      "ehrlich erzählen -> spannend erzählen.",
-      "etwas heimlich verstecken -> etwas an einem sicheren Ort verstecken.",
-      "für die Zeit danken -> jemandem für seine Zeit danken.",
-      "Weak sich-vergleichen pairings normalized to sich direkt vergleichen / sich mit anderen vergleichen / sich mit Freunden vergleichen.",
-      "ein Gespräch vereinbaren -> einen Gesprächstermin vereinbaren.",
-      "gemeinsam etwas vereinbaren -> etwas schriftlich vereinbaren.",
-      "etwas verschiebt sich nach hinten -> der Termin verschiebt sich nach hinten.",
-      "Registered source item sich um Kinder kümmern -> source-exact sich um Haustiere kümmern.",
-      "Persian glosses polished for wenden, hinkommen, warten and Bescheid geben."
-    ]
+    "tsv_sha256": "184620ddd5d47be96830d8172c314f9edb235f28f141c5e26aefa00aa66f86f3"
   },
   "source_boundary": {
     "registered_reference_sources": [
@@ -83,14 +75,14 @@
       "deutsch-perfekt-250-verben-mit-praepositionen",
       "deutsch-aber-hallo-nomen-verb-verbindungen"
     ],
-    "curated_manner_context_patterns": "ACCEPTED_AS_CURATED_PEDAGOGICAL_AFTER_LINGUISTIC_REVIEW",
-    "registered_source_claims": "REQUIRE_EXPLICIT_EVIDENCE_REFS",
+    "curated_manner_context_patterns": "ALLOWED_AS_CANDIDATE_NOT_SOURCE_FACT",
+    "registered_source_claims": "NONE_FOR_NEW_BATCH05_ITEMS_UNTIL_ACCEPTANCE",
     "canonical_stage4": "UNCHANGED"
   },
-  "cumulative_through_batch04": {
+  "cumulative_accepted_before_batch05": {
     "scope": "A1-L01..A1-L16",
     "cards": 183,
     "accepted_combination_items": 1300
   },
-  "next_action": "Start Batch05 at A1-L17 using the accepted single-section Kombinationen contract."
+  "next_action": "Run linguistic/source accept-reject pass for Batch05 A1-L17..A1-L20, promote supported items/evidence, then continue at A1-L21."
 }

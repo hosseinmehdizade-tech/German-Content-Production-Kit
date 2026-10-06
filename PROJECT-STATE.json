@@ -8710,10 +8710,10 @@
     "next_action": "NONE; stop AUD006 scope"
   },
   "workstream": {
-    "status": "STAGE5_ANTI_BYPASS_CLEAN_DELIVERY_PASS_STAGE6_ALLOWED",
+    "status": "STAGE7_PASS_CONTENT_RELOCKED_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
     "checkpoint": "Workspaces/menschen-b1-verben-kombinationen-v336/CHECKPOINT.json",
-    "checkpoint_status": "LEGACY_STALE_AT_BATCH23_OVERSIZED_REFRESH_PENDING",
-    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE5.json",
+    "checkpoint_status": "CURRENT_STAGE7_RELOCKED",
+    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE7.json",
     "cards": 395,
     "progress": {
       "accepted_cards": 395,
@@ -8735,13 +8735,14 @@
       "stage5_allowed": false
     },
     "latest_artifact": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage5-ANTI-BYPASS-CHECKPOINT-PASS.zip",
-      "sha256": "18d9a2e7b4b81be1690c77e774c80a1bee65a5e68f4f2b86dfcded4140df1a20",
-      "size_bytes": 1744759,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage5-ANTI-BYPASS-CHECKPOINT-PASS.zip",
-      "library_file_id": "file_0000000016848243884cbc0809fdfe2e",
-      "library_stable_id": "libfile_4566d734c3308191b4ce377e2474af13",
-      "quality_state": "PASS"
+      "filename": "German-Flashcards-Pro-v465-R99-Menschen-B1-Verben-v3.3.6-Kombinationen-RELOCKED.zip",
+      "sha256": "fb7c08e08f00b7522bfe0086d412e2bf1534e85a53b7094c2ac2606e69116913",
+      "size_bytes": 5035796,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v465-R99-Menschen-B1-Verben-v3.3.6-Kombinationen-RELOCKED.zip",
+      "library_file_id": "file_000000006d9c8210ae63e700c3838a12",
+      "library_stable_id": "libfile_23eacb878a9081919c63e4fb3f1a0d90",
+      "library_rematerialization": "PASS_EXACT_SHA256_MATCH",
+      "quality_state": "PASS_EXACT_FINAL_CONTENT_RELOCKED_WITH_RUNTIME_ENVIRONMENT_BOUNDARY"
     },
     "repair_map": {
       "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-REPAIR-MAP.json",
@@ -8750,8 +8751,10 @@
       "library_stable_id": "libfile_4762d60a36308191b9065e28067bd358"
     },
     "persistence": {
-      "library": "PASS_ACCEPTED_EXACT_REMATERIALIZATION",
-      "git": "IN_SYNC"
+      "library": "PASS_FINAL_RELEASE_EXACT_REMATERIALIZATION",
+      "git": "IN_SYNC",
+      "sidecars": "PARTIAL_LIBRARY_SYNC_AFTER_BOUNDED_CONTAINER_SESSION_FAILURE__GIT_METADATA_AUTHORITATIVE_FOR_STAGE7",
+      "report_stage7_library_stable_id": "libfile_0de961cfe63c8191939f933be2feb9b8"
     },
     "prior_stage4": {
       "status": "FAIL_REPAIR_REQUIRED",
@@ -8760,13 +8763,14 @@
       "findings": 9,
       "disposition": "ALL_9_REPAIRED_AND_CONFIRMED_BY_STAGE4_RERUN1_PASS; historical audit remains immutable"
     },
-    "runtime_note": "Content-only Stage5. CURRENT last observed v465-R99; runtime acceptance not run. Stage6 must re-resolve CURRENT and LAST_FULLY_VERIFIED separately and target CURRENT.",
-    "next_action": "Stage6 Runtime & Presentation Acceptance: re-resolve CURRENT and LAST_FULLY_VERIFIED, materialize exact CURRENT portable runtime, and test this exact Stage5 CLEAN-DELIVERY-ACCEPTED package. Do not start Stage7 until Stage6 acceptance completes.",
+    "runtime_note": "Stage7 integrates exact CURRENT v465-R99 bytes; no runtime/UI mutation. v465 same-profile Windows/Chrome acceptance remains app-level pending.",
+    "next_action": "NONE for Menschen B1 Verben Kombinationen content; app-level v465 same-profile acceptance is separate.",
     "content_authority": {
       "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage5-CLEAN-DELIVERY-ACCEPTED.zip",
       "sha256": "c0862281e3b092e54bdb447e498e73cad96cdd8bdeef9811628608cef3f1c086",
       "tsv_sha256": "469d21a0d26db81f90b0e4dbaeca6aa9e9e19bc12a93d54eb9e17792cdebdee6",
-      "quality_state": "PASS_STAGE5_CLEAN_DELIVERY"
+      "canonical_sha256": "f5213fc8dee198f58904e41ac3b6bc09dd9e334cef07abb4ef713ae6cd8e08db",
+      "quality_state": "RELOCKED_STAGE7"
     },
     "stage4_rerun1": {
       "quality_state": "PASS",
@@ -8806,6 +8810,29 @@
       "source_audio_refs": 439,
       "unique_audio_refs": 400,
       "stage6_allowed": true
+    },
+    "stage6": {
+      "quality_state": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
+      "CURRENT": "v465-R99",
+      "LAST_FULLY_VERIFIED": "v451-R85",
+      "import_persistence": "395/395 PASS",
+      "roundtrip": "395/395 PASS",
+      "one_visible_kombinationen": "395/395",
+      "legacy_visible_sections": "0/395",
+      "kombinationen": "2123/2123",
+      "stage7_allowed": true
+    },
+    "stage7": {
+      "quality_state": "PASS_EXACT_FINAL_CONTENT_RELOCKED_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+      "release_sha256": "fb7c08e08f00b7522bfe0086d412e2bf1534e85a53b7094c2ac2606e69116913",
+      "root_sha256s": "359/359 PASS",
+      "runtime_01_app_identity": "72/72 byte-identical",
+      "stage5_content_identity": "11/11 byte-identical",
+      "json_reparse": "147/147 PASS",
+      "package_hygiene": "PASS",
+      "runtime_regressions": "runtime assets + 21/21 + 16/16 + 16/16 + 11/11 PASS",
+      "content_lock_state": "RELOCKED",
+      "runtime_finality": "v465 remains CANDIDATE; same-profile acceptance pending"
     }
   }
 }

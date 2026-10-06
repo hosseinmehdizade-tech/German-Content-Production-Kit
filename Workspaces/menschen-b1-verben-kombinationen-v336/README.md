@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage3B Batch21 PASS — 345/395 cards accepted**.
+Current state: **Stage3B Batch22 PASS — 360/395 cards accepted**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -29,14 +29,15 @@ Completed cumulative batches:
 - Batch19 `mb1m-lu-0361..mb1m-lu-0380`: 16 active cards / 89 items; absent IDs 0364, 0370, 0375, 0377.
 - Batch20 `mb1m-lu-0381..mb1m-lu-0400`: 13 active cards / 68 items; absent IDs 0381, 0384, 0386, 0387, 0389, 0390, 0392.
 - Batch21 `mb1m-lu-0401..mb1m-lu-0420`: 16 active cards / 92 items; absent IDs 0403, 0406, 0407, 0419.
+- Batch22 `mb1m-lu-0421..mb1m-lu-0440`: 15 active cards / 89 items; absent IDs 0421, 0424, 0427, 0433, 0437.
 
-Current cumulative coverage: **345/395 cards**, **1828 accepted Kombinationen items**, **50 cards remaining**.
+Current cumulative coverage: **360/395 cards**, **1917 accepted Kombinationen items**, **35 cards remaining**.
 
 Invariant: exactly one learner-visible `Kombinationen` section on processed cards; no separate visible Rektion/Kollokationen/NVV sections; backend kind/provenance, canonical relations, examples and source lineage remain preserved. No hard density quota is used.
 
-Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch21-mb1m-lu-0401-0420-ACCEPTED.zip`  
-SHA-256: `303b8f8c33b367538d3c584983608f159fffcfd6cb25a810596f42335248f7d6`
+Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch22-mb1m-lu-0421-0440-ACCEPTED.zip`  
+SHA-256: `bdd459eda2cc73f06f9dd15e79e53f50b6f94fafb58cac1d45457baa6ea732db`
 
 Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256 exact.
 
-Next: Stage3B Batch22 nominal range `mb1m-lu-0421..mb1m-lu-0440`, starting from the exact Batch21 ACCEPTED bytes.
+Next: Stage3B Batch23 nominal range `mb1m-lu-0441..mb1m-lu-0460`, starting from the exact Batch22 ACCEPTED bytes.

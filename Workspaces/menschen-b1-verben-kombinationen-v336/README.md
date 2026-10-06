@@ -160,3 +160,19 @@ SHA-256:
 - runtime v465 itself remains **CANDIDATE** until its independent same-profile acceptance is closed.
 
 Next action for this content workstream: **NONE**.
+
+
+## Stage7 Repair1 — final packaging/control repair PASS
+
+The first integrated RELOCKED package was independently audited and found to have correct B1/runtime bytes but stale release-policy/control metadata. It is superseded by `German-Flashcards-Pro-v465-R99-Menschen-B1-Verben-v3.3.6-Kombinationen-Repair1-RELOCKED.zip` (SHA-256 `3ef8d7599f72ada99e72ad2de0c719cb685eda766de9806d62eae8ea9aaa14b0`). Repair1 changes no `01-App` runtime bytes and no Stage5 content-authority bytes.
+
+- official strict release hygiene: **PASS** (360 files / 47,334,164 uncompressed bytes)
+- root checksum coverage: **359/359 PASS**, including the nested B1 checksum file
+- runtime identity: **72/72 byte-identical** to CURRENT v465-R99
+- Stage5 content identity: **11/11 byte-identical**
+- B1: **395 cards / 1580 examples / 2123 Kombinationen**
+- evidence binding: **2123/2123**, 5160 evidence refs, 0 errors
+- source audio: **400/400 unique referenced MP3s present** in the supplied Menschen archive
+- Library rematerialization: exact SHA + byte compare **PASS**
+
+Content/package state: **RELOCKED / PASS**. Runtime v465 remains a separate app-level CANDIDATE pending same-profile Windows/Chrome acceptance.

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-06T12:25:00+02:00",
+  "updated_at": "2026-10-06T13:05:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -5978,6 +5978,13 @@
         "direct_import_sha256": "5ec6770bfab47e0d0876b6e4bac2175315a67db2fd48a79f624b700538e51bd6",
         "status": "PASS_PACKAGING_ONLY_REORGANIZATION__IMPORT_BYTES_UNCHANGED",
         "git_checkpoint_commit": "a00d74c59cef3640d21f9cc6aeaeb9c948526015"
+      },
+      "successor_kombinationen": {
+        "workstream": "unregelmaessige-verben-v1.3.0-kombinationen",
+        "branch": "unregelmaessige-verben-v130-kombinationen",
+        "checkpoint": "Workspaces/unregelmaessige-verben-kombinationen-v130/CHECKPOINT.json",
+        "status": "STAGE3A_BASELINE_PASS",
+        "parent_remains_immutable": true
       }
     },
     "menschen_b1_verben_kombinationen_v336": {
@@ -6031,6 +6038,44 @@
       },
       "runtime_note": "Content-only Stage3B. CURRENT observed as v459-R93 in app state; runtime acceptance not run and CURRENT must be re-resolved at Stage6.",
       "next_action": "Stage3B Batch05 nominal range mb1m-lu-0081..mb1m-lu-0100 from exact Batch04 ACCEPTED bytes; preserve Repair2 canonical/examples/source lineage and change only details+custom_fields."
+    },
+    "unregelmaessige_verben_kombinationen": {
+      "status": "ACTIVE_STAGE3A_BASELINE_PASS",
+      "domain": "vocabulary",
+      "branch": "unregelmaessige-verben-v130-kombinationen",
+      "checkpoint": "Workspaces/unregelmaessige-verben-kombinationen-v130/CHECKPOINT.json",
+      "parent_workstream": "unregelmaessige_verben",
+      "parent_version": "v1.2.0 immutable final content delivery",
+      "successor_version": "v1.3.0-Kombinationen WIP",
+      "active_policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+      "learner_visible_section": "Kombinationen",
+      "stage3a": {
+        "status": "PASS",
+        "cards": "174/174",
+        "examples": 696,
+        "legacy_collocations": 521,
+        "legacy_nvv": 55,
+        "legacy_rektion_patterns": 231,
+        "raw_combination_signals": 807,
+        "distinct_exact_normalized_signals": 784,
+        "exact_duplicate_or_overlap_findings": 23,
+        "direct_combination_relations_blank_meaning": 576,
+        "registered_supporting_source_bytes": "4/4 exact registry SHA-256 match",
+        "semantic_mutations": 0,
+        "stable_id_changes": 0
+      },
+      "portable_checkpoint": {
+        "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage3A-BASELINE-CHECKPOINT.zip",
+        "sha256": "c19b414910d24b8884bc79bd80a57e740dd15b7faf0c6976ed39731051b4d54c",
+        "size_bytes": 20930,
+        "storage": "current_conversation_user_delivery"
+      },
+      "git_persistence": {
+        "branch_checkpoint_commit": "4a8dfa43918b0322336e94445969db9413e27c05",
+        "branch_audit_commit": "1798503c09206647c4357f44c64f642815b3ea67",
+        "branch_authority_commit": "d3c164eb89a201269057949d35e265c7544c061d"
+      },
+      "next_action": "Stage3B item-level review/enrichment, dedupe, backend-kind classification, registered-source verification where useful, FA/EN item translations, then Stage3C closure."
     }
   },
   "flashcards_runtime_dependency": {

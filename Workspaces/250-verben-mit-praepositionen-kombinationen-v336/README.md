@@ -1,10 +1,10 @@
 # 250 Verben mit Präpositionen — Kombinationen successor
 
-Status: **Stage3B COMPLETE — Batch15 PASS** under German Content Production Kit v3.3.6.
+Status: **WORKSTREAM COMPLETE / LOCKED — Stage7 + final independent audit PASS** under German Content Production Kit v3.3.6.
 
 This workstream is an explicit semantic successor to the immutable 292-card LOCKED release. It adopts `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` without mutating the historical parent.
 
-Current coverage: **292/292 cards**, **1255 accepted Kombinationen**, **0 Stage3B cards remaining**.
+Final locked coverage: **292/292 cards**, **1250 accepted Kombinationen** after Stage4 independent bounded repair; **0 unresolved targets**.
 
 Batch15 covers `usrin-vmp-u-0281..0292`. It changes only `details` + `custom_fields` on those 12 targets; the other **280/280** raw TSV lines are byte-identical to Batch14 ACCEPTED, and prior Batch01–14 rows **280/280** remain byte-identical. Canonical identity, examples, relations and source lineage remain unchanged.
 
@@ -102,3 +102,17 @@ Stage3B is complete. Next major stage: **Stage3C disposition closure** across al
 - Content lock state: **LOCKED**
 - App-level boundary remains separate: v465 same-profile lifecycle/visual acceptance is still **PENDING_USER_SAME_PROFILE_V465**; no global app FINAL claim is made.
 - Workstream complete; future integration must use the exact locked bytes/hash above.
+
+## Final independent audit
+
+- Status: **PASS_WITH_NONBLOCKING_CAVEATS / 0 blocking defects**
+- Locked release SHA-256: `7998ac6930d3c4985c4a1e1043b1001e9102633a452066ed5b39a8e97d91f8eb`
+- Independent audit SHA-256: `de1caea5553ce7a37d9c9a999786bc348b13344da7372ddf8f9c69b802fc7a8b`
+- Library rematerialization: **PASS exact SHA-256 + byte compare**
+- Package integrity: **630 members / CRC PASS / manifest 626/626 / root checksums 627/627**
+- Runtime base preservation: **339/339 byte-identical with CURRENT v465-R99**
+- Content: **292 cards / 1168 DE+FA+EN examples / 592 relations / 1250 Kombinationen**
+- Runtime acceptance: **Stage6 37/37 PASS; Stage7 exact-final 34/34 PASS**
+- Expanded render audit: **1168 card-renders / 5000 Kombinationen visibility checks / 0 missing / 0 page errors**
+- Content state: **LOCKED**; do not mutate these bytes. Future metadata/import-UX changes require a successor.
+- Separate app boundary: **PENDING_USER_SAME_PROFILE_V465**; this does not invalidate the locked content workstream.

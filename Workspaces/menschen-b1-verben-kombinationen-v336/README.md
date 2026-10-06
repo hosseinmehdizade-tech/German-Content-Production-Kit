@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage3B Batch23 PASS — 378/395 cards accepted**.
+Current state: **Stage3B Batch24 PASS — 394/395 cards accepted**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -31,14 +31,15 @@ Completed cumulative batches:
 - Batch21 `mb1m-lu-0401..mb1m-lu-0420`: 16 active cards / 92 items; absent IDs 0403, 0406, 0407, 0419.
 - Batch22 `mb1m-lu-0421..mb1m-lu-0440`: 15 active cards / 89 items; absent IDs 0421, 0424, 0427, 0433, 0437.
 - Batch23 `mb1m-lu-0441..mb1m-lu-0460`: 18 active cards / 106 items; absent IDs 0442, 0451.
+- Batch24 `mb1m-lu-0461..mb1m-lu-0480`: 16 active cards / 94 items; absent IDs 0461, 0467, 0469, 0474.
 
-Current cumulative coverage: **378/395 cards**, **2023 accepted Kombinationen items**, **17 cards remaining**.
+Current cumulative coverage: **394/395 cards**, **2117 accepted Kombinationen items**, **1 card remaining** (`mb1m-lu-0481`).
 
 Invariant: exactly one learner-visible `Kombinationen` section on processed cards; no separate visible Rektion/Kollokationen/NVV sections; backend kind/provenance, canonical relations, examples and source lineage remain preserved. No hard density quota is used.
 
-Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch23-mb1m-lu-0441-0460-ACCEPTED.zip`  
-SHA-256: `39b03319994fb4fd4ab2b9017ee78850ae085bf6eff0f9d973d7215fa680649b`
+Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch24-mb1m-lu-0461-0480-ACCEPTED.zip`  
+SHA-256: `7e31c6cb1431f04a0e6a87ca108ec97281828e40afbb904fcd1ec987dda282de`
 
 Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256 exact.
 
-Next: Stage3B Batch24 nominal range `mb1m-lu-0461..mb1m-lu-0480`, starting from the exact Batch23 ACCEPTED bytes.
+Next: Stage3B Batch25 nominal range `mb1m-lu-0481..mb1m-lu-0500`, starting from the exact Batch24 ACCEPTED bytes. Only `mb1m-lu-0481` remains unprocessed in the current 395-card authority.

@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage4 INDEPENDENT REAUDIT FAIL — 9 Kombinationen evidence-binding defects require bounded provenance repair**.
+Current state: **Stage4 Rerun1 INDEPENDENT REAUDIT PASS — all 9 prior evidence-binding findings resolved; Stage5 is now allowed**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -38,8 +38,8 @@ Current cumulative coverage: **395/395 cards**, **2123 accepted Kombinationen it
 
 Invariant: exactly one learner-visible `Kombinationen` section on processed cards; no separate visible Rektion/Kollokationen/NVV sections; backend kind/provenance, canonical relations, examples and source lineage remain preserved. No hard density quota is used.
 
-Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSURE-ACCEPTED.zip`  
-SHA-256: `4715a43019c0e99d91f0f256938655e7dd2063ec172b61951c100976da5bedc7`
+Latest content authority: `Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip`  
+SHA-256: `357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce`
 
 Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256 exact.
 
@@ -80,4 +80,24 @@ Post-repair: **2123/2123 evidence bindings PASS**, **6552/6552 disposition cells
 Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip`  
 SHA-256: `357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce`
 
-Next: **rerun Stage4 independently from the exact Repair1 ACCEPTED bytes**. Stage5 remains blocked until that Stage4 rerun passes.
+Stage4 Rerun1 result: **PASS**. Independent evidence-binding is **2123/2123 PASS** and all **9/9** prior findings are confirmed resolved. Stage5 is now allowed.
+
+Next: **Stage5 anti-bypass / clean-delivery gate** from the exact Stage3C Repair1 content authority plus the Stage4 Rerun1 PASS audit. Do not start Stage6 until Stage5 PASS.
+
+
+## Stage4 Rerun1 PASS
+
+Independent rerun from exact Stage3C Repair1 bytes: **PASS**.
+
+- Official v3.3.6 source-occurrence, identity, enrichment-completeness and candidate-ledger validators: PASS.
+- 395 targets / 6552 final cells / 0 unresolved.
+- 2526 relations: endpoints, exact duplicates and provenance PASS.
+- 1580/1580 examples and translations PASS; UTF-16 annotations PASS.
+- 395/395 cards: exactly one visible `Kombinationen`; 0/395 separate visible Rektion/Kollokationen/NVV.
+- 2123/2123 Kombinationen candidate-ledger parity PASS.
+- Independent semantic evidence binding: **2123/2123 PASS**.
+- Previous Stage4 findings: **9/9 resolved**.
+- No learner-visible or canonical content was mutated by Stage4.
+- Audit artifact SHA-256: `07d6fba865c351d11c2bcc00cfbc62f8d6800f76d1a8177361eb0a3ef3e2accd`.
+
+Stage5 is now allowed.

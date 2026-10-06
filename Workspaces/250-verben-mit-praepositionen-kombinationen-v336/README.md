@@ -18,3 +18,17 @@ Portable Batch15 artifact:
 - Library rematerialization: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**
 
 Stage3B is complete. Next major stage: **Stage3C disposition closure** across all 292 targets. Stage4 must not start until Stage3C explicitly closes every Kombinationen disposition.
+
+
+## Stage3C disposition closure
+
+- Status: **PASS / COMPLETE**
+- Dispositions: **292 VERIFIED_PRESENT / 0 CLOSED_NO_FORCE / 0 NOT_APPLICABLE / 0 unresolved**
+- Accepted Kombinationen: **1255**
+- Learner-visible projection: **292/292 exactly one Kombinationen; 0 separate Rektion/Kollokationen/NVV**
+- Stage3C artifact: `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSED.zip`
+- SHA-256: `663be2a46e608001b6e3bc2ae9f99432d2858bc04c9a037ff0e1983981be6806`
+- Library rematerialization: **PASS exact SHA-256 + byte compare**
+- Content mutation vs Batch15: **NONE**; accepted TSV byte-identical
+- Rejection/non-surfacing memory persisted: **30 records / 31 target instances**
+- Next: **Stage4 independent linguistic/provenance/completeness re-audit**.

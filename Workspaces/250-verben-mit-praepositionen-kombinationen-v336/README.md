@@ -86,3 +86,19 @@ Stage3B is complete. Next major stage: **Stage3C disposition closure** across al
 - Project-level v465 same-profile lifecycle/visual boundary remains pending and is not converted into a global runtime-final claim
 - Next: **Stage7 immutable successor release + exact-final post-package re-acceptance**.
 
+
+
+## Stage7 immutable successor lock
+
+- Status: **LOCKED / PASS_WITH_PROJECT_RUNTIME_BOUNDARY**
+- Exact final release: `German-Flashcards-Pro-v465-R99-250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-LOCKED-CONTENT.zip`
+- SHA-256: `7998ac6930d3c4985c4a1e1043b1001e9102633a452066ed5b39a8e97d91f8eb`
+- Exact-final content acceptance on exact CURRENT **v465-R99**: **34/34 PASS**
+- Static post-package: **630 members; CRC PASS; release manifest 626/626; SHA256SUMS 627/627; runtime base 339/339 exact; hygiene PASS**
+- Content: **292 cards = 201 Verb + 91 Expression; 1168 DE + FA + EN examples; 592 relations; 1250 Kombinationen**
+- Kombinationen origins: **1154 parent-example + 74 parent-relation + 22 curated**
+- Learner-visible projection: **292/292 exactly one Kombinationen; 0 visible Rektion/Kollokationen/NVV**
+- Library persistence/rematerialization: **PASS exact SHA-256 + byte compare**
+- Content lock state: **LOCKED**
+- App-level boundary remains separate: v465 same-profile lifecycle/visual acceptance is still **PENDING_USER_SAME_PROFILE_V465**; no global app FINAL claim is made.
+- Workstream complete; future integration must use the exact locked bytes/hash above.

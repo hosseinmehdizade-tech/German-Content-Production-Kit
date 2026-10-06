@@ -1,10 +1,10 @@
 {
   "schema": "vmp-kombinationen-checkpoint@1.0.0",
-  "status": "STAGE3C_DISPOSITION_CLOSURE_PASS_LIBRARY_AND_GIT_SYNCED",
+  "status": "STAGE4_INDEPENDENT_REAUDIT_PASS_GIT_SYNCED_LIBRARY_PENDING",
   "quality_state": "PASS",
   "framework": "v3.3.6",
   "workstream": "250-verben-mit-praepositionen-kombinationen-v336",
-  "stage": "3C_DISPOSITION_CLOSURE_COMPLETE",
+  "stage": "4_INDEPENDENT_LINGUISTIC_PROVENANCE_COMPLETENESS_QA",
   "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
   "branch": "250-verben-mit-praepositionen-kombinationen-v336",
   "immutable_parent": {
@@ -14,8 +14,8 @@
     "status": "LOCKED"
   },
   "immediate_parent": {
-    "artifact": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Batch15-usrin-vmp-u-0281-0292-ACCEPTED.zip",
-    "sha256": "f10fd5c20008b3a2564f946d43ea56e49cb62b610a8fdda57d30b17164c3d251",
+    "artifact": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSED.zip",
+    "sha256": "663be2a46e608001b6e3bc2ae9f99432d2858bc04c9a037ff0e1983981be6806",
     "verification": "PASS_EXACT_SHA256"
   },
   "stage3b": {
@@ -54,18 +54,15 @@
     "content_mutation_relative_to_batch15": "NONE",
     "qa": "PASS"
   },
-  "mutation_boundary": "Stage3C is metadata/disposition closure only. Accepted TSV is byte-identical to exact Batch15; no card content, canonical identity, examples, relations, IDs/order or source lineage changed.",
+  "mutation_boundary": "Stage4 changed only details+custom_fields on 5 audited target rows to remove weak/redundant Kombinationen; 287/287 other raw TSV rows are byte-identical to Stage3C. Canonical/examples/relations/IDs/order/source lineage unchanged.",
   "artifact": {
-    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSED.zip",
-    "sha256": "663be2a46e608001b6e3bc2ae9f99432d2858bc04c9a037ff0e1983981be6806",
-    "size_bytes": 343807,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSED.zip",
-    "library_file_id": "file_0000000010408208922fa016fa80e0eb",
-    "library_stable_id": "libfile_84e377d8c6ac81918ceafc48520e67ed",
-    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "sha256": "b254d17d84097ade53854ae541693cbb895bac0d37d5e75b3e7501080fa3d19a",
+    "size_bytes": 346168,
+    "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY"
   },
   "persistence": {
-    "library": "PASS",
+    "library": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
     "git": "PASS"
   },
   "runtime": {
@@ -74,5 +71,33 @@
     "stage3c_runtime_acceptance": "NOT_APPLICABLE_CONTENT_ONLY",
     "stage6_rule": "Re-resolve CURRENT at Stage6; never downgrade."
   },
-  "next_action": "Stage4 independent linguistic/provenance/completeness re-audit from exact Stage3C CLOSED artifact. Stage4 must not trust Stage3C self-report."
+  "next_action": "Retry exact Stage4 Library persistence/rematerialization before Stage5. After Library PASS, Stage5 projection and clean-delivery anti-bypass/package gates.",
+  "stage4": {
+    "targets": 292,
+    "items_before": 1255,
+    "rejected_removed": 5,
+    "items_after": 1250,
+    "origin_counts": {
+      "PARENT_GENERATED_EXAMPLE": 1154,
+      "PARENT_CANONICAL_RELATION": 74,
+      "CURATED_PEDAGOGICAL": 22
+    },
+    "dispositions": {
+      "VERIFIED_PRESENT": 292,
+      "CLOSED_NO_FORCE": 0,
+      "NOT_APPLICABLE": 0,
+      "UNRESOLVED": 0
+    },
+    "translations": "1250/1250 DE+FA+EN PASS",
+    "provenance": "PASS",
+    "learner_visible_kombinationen": "292/292 exactly one",
+    "learner_visible_legacy_sections": 0,
+    "repaired_target_ids": [
+      "usrin-vmp-u-0056",
+      "usrin-vmp-u-0112",
+      "usrin-vmp-u-0132",
+      "usrin-vmp-u-0177",
+      "usrin-vmp-u-0247"
+    ]
+  }
 }

@@ -7,20 +7,23 @@
     "presentation_family_later": "de-vocabulary",
     "presentation_contract_later": "gfp-vocabulary-neutral@1"
   },
-  "status": "STAGE6_BLOCKED_PRESENTATION_EXAMPLE_SCHEMA_INCOMPATIBLE",
-  "quality_state": "BLOCKED",
+  "status": "STAGE5_REPAIR1_PASS_LIBRARY_PERSISTENCE_PENDING",
+  "quality_state": "PASS",
   "persistence": {
     "portable_checkpoint": {
-      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-CHECKPOINT.zip",
-      "sha256": "9733a57d32007c476e6b3f2ec78e00a3b07a2a2608b9fcacbebfcc385bd3240d",
-      "size_bytes": 264411,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-CHECKPOINT.zip",
-      "library_file_id": "file_000000009d6081f4a20c2f7ab02ec075",
-      "library_stable_id": "libfile_31159ac7d9908191956c86898fa7eaa3",
-      "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-PASS-CHECKPOINT.zip",
+      "sha256": "7de75dd67b9b21515de4b4d7769468787d55c75d7f10002ae71070e79f5c6c00",
+      "size_bytes": 1102955,
+      "library_path_target": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-PASS-CHECKPOINT.zip",
+      "library_file_id": null,
+      "library_stable_id": null,
+      "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+      "conversation_path": "/mnt/data/250vmp/stage5_repair1/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-PASS-CHECKPOINT.zip",
+      "status": "PASS_VALIDATED_ARTIFACT__LIBRARY_PERSISTENCE_PENDING"
     },
     "git": "IN_SYNC",
-    "branch": "250-verben-mit-praepositionen-production"
+    "branch": "250-verben-mit-praepositionen-production",
+    "library": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY"
   },
   "source": {
     "source_id": "deutsch-perfekt-250-verben-mit-praepositionen",
@@ -41,7 +44,7 @@
     "runtime_binding_required_now": false
   },
   "scope_decision": "Treat each visible verb+preposition+case construction as a source occurrence in Stage1. Stage2 will decide splits/merges and canonical targets. Multiple constructions under one verb are not silently collapsed.",
-  "next_action": "Create a controlled Stage5 Repair1 projection-only successor that converts presentation_examples from {id,de,fa,en,annotations} to the exact runtime-compatible {id,lang,text,order,translations,annotations} envelope without semantic regeneration; rerun v3.3.6 Stage5 anti-bypass, then rerun exact v457-R91 Stage6 using unchanged lexical/canonical authority.",
+  "next_action": "First retry Library persistence of the exact Stage5 Repair1 bytes when the file transport session is healthy. Then re-resolve German Flashcards Pro CURRENT (do not pin v464 if CURRENT advances) and run Stage6 exact-runtime import/persistence/index/roundtrip/presentation acceptance using the unchanged Stage5 Repair1 artifact bytes.",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -2335,7 +2338,7 @@
     "visible_ui_change": "NONE"
   },
   "stage6": {
-    "state": "BLOCKED",
+    "state": "SUPERSEDED_BY_STAGE5_REPAIR1_PENDING_RETEST",
     "milestone": "STAGE6_RUNTIME_AND_PRESENTATION_ACCEPTANCE",
     "blocker_code": "STAGE5_PRESENTATION_EXAMPLE_SCHEMA_NOT_RUNTIME_COMPATIBLE",
     "runtime": {
@@ -2440,6 +2443,88 @@
       "sha256": "d39c46b8e38af53315c89c02a7e577cefce98987852e982b636d97a7bcae4814",
       "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
       "local_container_path": "/mnt/data/250vmp/250-Verben-mit-Praepositionen-v3.3.6-Stage6-BLOCKED-PRESENTATION-EXAMPLE-SCHEMA-POST-PACKAGE-VERIFICATION.json"
+    },
+    "superseded_reason": "Stage5 projection schema repaired; Stage6 must be rerun on freshly resolved CURRENT."
+  },
+  "stage5_repair1": {
+    "state": "PASS",
+    "scope": "stage5_projection_only_repair1",
+    "reason": "Exact runtime Stage6 exposed incompatible rich-example envelope; current prevention preflight also exposed inherited missing morphology projection bridges.",
+    "predecessor_stage5": {
+      "checkpoint_sha256": "ebaaa916e36df3f388519c3468bd85fcf6878995a430ac8a73c5479b8fcf8400",
+      "clean_delivery_sha256": "b62bc1ec39abf2b17524201d2dd9d09d696e65437f5dcdc8854ac48ea6f785fd"
+    },
+    "mutation_boundary": {
+      "presentation_examples": "{id,de,fa,en,annotations} -> {id,lang:'de-DE',text,order,translations:[fa-IR,en-US],annotations}",
+      "morphology_projection_bridges": "201 verb cards x 3 fields (present/preterite/perfect), exact-copied from existing vnext_morphology",
+      "semantic_regeneration": "NONE",
+      "canonical_mutation": "NONE",
+      "relation_mutation": "NONE",
+      "runtime_code_mutation": "NONE",
+      "visible_ui_change": "NONE"
+    },
+    "counts": {
+      "cards": 292,
+      "verbs": 201,
+      "expressions": 91,
+      "examples": 1168,
+      "stable_example_ids": 1168,
+      "fa_translations": 1168,
+      "en_translations": 1168,
+      "annotation_objects": 1168,
+      "annotation_segments": 1315,
+      "morphology_bridge_cards": 201,
+      "morphology_bridge_fields": 603,
+      "relations": 592,
+      "source_audio_refs": 0
+    },
+    "hashes": {
+      "direct_import_tsv_sha256": "89eb9b504a752036080457fdddb80702ae8892d8e326028a2a1b9a85f1236d61",
+      "projected_cards_sha256": "d45ca493d1cc0574a70971b84ffb0d25ef06224366b476b77d105b6c3376e195",
+      "canonical_sha256": "8eeb2ff7446dae7bfdd6174bb7bd3e7d1041a7c02631c7f5118c67074fd6de53"
+    },
+    "validation": {
+      "official_v336_source_identity_candidate_completeness_projection": "5/5 PASS",
+      "fresh_clean_delivery_official_v336": "5/5 PASS",
+      "strict_parent_lineage": "PASS_ALLOWED_PATHS_ONLY",
+      "supplemental_prevention_projection": "PASS",
+      "supplemental_prevention_lineage": "PASS",
+      "supplemental_prevention_package": "PASS_CHECKPOINT_AND_CLEAN_DELIVERY",
+      "checkpoint_manifest_rehash": "34/34 PASS",
+      "checkpoint_crc": "PASS",
+      "package_hygiene": "PASS"
+    },
+    "runtime_schema_probe": {
+      "observed_current_at_repair": "v464-R98",
+      "artifact_sha256": "35bf341978df645a5c92d328e8180f7a4b04b3ce7c9621a93a60d403a812555d",
+      "app_sha256": "ebe19a43047bd76f16f4de25a83704e331353826a7b8ca6f2bbf6d58ee9e3536",
+      "exact_runtime_parser_contract": "normalizeRichExampleEntryV340 / normalizeExampleTranslationsV401"
+    },
+    "artifact": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-PASS-CHECKPOINT.zip",
+      "sha256": "7de75dd67b9b21515de4b4d7769468787d55c75d7f10002ae71070e79f5c6c00",
+      "size_bytes": 1102955,
+      "library_path_target": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-PASS-CHECKPOINT.zip",
+      "library_file_id": null,
+      "library_stable_id": null,
+      "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+      "conversation_path": "/mnt/data/250vmp/stage5_repair1/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-PASS-CHECKPOINT.zip",
+      "status": "PASS_VALIDATED_ARTIFACT__LIBRARY_PERSISTENCE_PENDING"
+    },
+    "clean_delivery": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-CLEAN-DELIVERY.zip",
+      "sha256": "765d96d55e1bfac8650499081a47cd6f1461a131b23ccb260011448ec7c38370",
+      "size_bytes": 718633,
+      "library_path_target": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-CLEAN-DELIVERY.zip",
+      "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+      "conversation_path": "/mnt/data/250vmp/stage5_repair1/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-CLEAN-DELIVERY.zip"
+    },
+    "post_package_verification": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "72366f64aed18837104a761ca6e6bcc831d4fdc29838ebe458fa52c55eadfbd7",
+      "library_path_target": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-POST-PACKAGE-VERIFICATION.json",
+      "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+      "conversation_path": "/mnt/data/250vmp/stage5_repair1/250-Verben-mit-Praepositionen-v3.3.6-Stage5-Repair1-POST-PACKAGE-VERIFICATION.json"
     }
   }
 }

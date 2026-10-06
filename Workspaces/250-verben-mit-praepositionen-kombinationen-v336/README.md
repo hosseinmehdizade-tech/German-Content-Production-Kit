@@ -65,3 +65,24 @@ Stage3B is complete. Next major stage: **Stage3C disposition closure** across al
 - Both Library rematerializations: **PASS exact SHA-256 + byte compare**
 - Runtime binding: **deferred to Stage6 CURRENT**
 - Next: **Stage6 exact CURRENT runtime import/presentation/persistence acceptance; never downgrade.**
+
+
+## Stage6 exact CURRENT runtime acceptance
+
+- Status: **PASS on exact CURRENT v465-R99**
+- CURRENT runtime ZIP SHA-256: `8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17`
+- App SHA-256: `0ea6cb1b670f0f70677cc4a810e91336fa8b783e7db809ae0cb6489853abdcd8`
+- LAST_FULLY_VERIFIED remains **v451-R85**; no downgrade used
+- Initial adapter v1 was correctly blocked because BUILD-METADATA omitted `validator_version` and explicit `schema_profile=universal-v2`
+- Adapter v2: `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-RUNTIME-IMPORT-ADAPTER-v2.zip`, SHA-256 `fab1a7b29d2e49532133f4befdab801ac4204754cab2390cb5ec58684b980bba`; semantic TSV bytes unchanged
+- Dynamic runtime/import/persistence/presentation acceptance: **37/37 PASS**
+- Import manifest: **VERIFIED / 292 cards**; runtime cards/index/authority: **292/292/292**
+- Kombinationen: **1250 = 1154 parent-example + 74 parent-relation + 22 curated**
+- Visible projection: **292/292 Kombinationen; 0 legacy visible Rektion/Kollokationen/NVV**
+- Four-mode samples (study/quick/typing/audio), state-only commit, IndexedDB readiness and page-error gate: **PASS**
+- Stage6 checkpoint: `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-GFP-v465-PASS-CHECKPOINT.zip`, SHA-256 `21f14abdfe5b2b37ef234a89ee25c1e8ef9060a157787562f1c4254a985fbcfe`
+- Adapter + checkpoint Library rematerialization: **PASS exact SHA-256 + byte compare**
+- Small post-report Library upload remains **PENDING** after the allowed corrected retry; Git metadata is authoritative for that persistence note
+- Project-level v465 same-profile lifecycle/visual boundary remains pending and is not converted into a global runtime-final claim
+- Next: **Stage7 immutable successor release + exact-final post-package re-acceptance**.
+

@@ -476,3 +476,12 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - content state: **LOCKED**
 - separate runtime boundary remains: Content A1-L19 is LOCKED. Separate runtime-level v432 same-profile Windows/Chrome rapid-interaction + persistence + browser restart + offline/service-worker smoke remains required before v432 itself can be FINAL/VERIFIED.
 - next: **A1-L20 Stage1/2**
+
+
+**250 VMP Kombinationen Batch14: PASS.**
+- scope: `usrin-vmp-u-0261..usrin-vmp-u-0280`; cumulative **280/292** cards
+- **84** accepted items in Batch14; cumulative **1201**; **12** cards remain
+- parent-grounded only: **80** parent examples + **4** inherited canonical relations; **0** curated/source-claim additions
+- **260/260** prior enriched rows exact; **272/272** non-target rows byte-identical to Batch13; target mutation limited to `details` + `custom_fields`
+- Library rematerialization: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**; artifact SHA-256 `127ffb9a3f873e6154a5741f64768bf608869c56b8cc14a2e7f5c9e3cce805c5`
+- next: **Batch15 FINAL = usrin-vmp-u-0281..usrin-vmp-u-0292** from exact Batch14 bytes

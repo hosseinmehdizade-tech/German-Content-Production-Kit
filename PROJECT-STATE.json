@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-06T19:52:00+02:00",
+  "updated_at": "2026-10-06T20:55:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -8710,10 +8710,10 @@
     "next_action": "NONE; stop AUD006 scope"
   },
   "workstream": {
-    "status": "STAGE4_RERUN1_INDEPENDENT_REAUDIT_PASS_STAGE5_ALLOWED",
+    "status": "STAGE5_ANTI_BYPASS_CLEAN_DELIVERY_PASS_STAGE6_ALLOWED",
     "checkpoint": "Workspaces/menschen-b1-verben-kombinationen-v336/CHECKPOINT.json",
     "checkpoint_status": "LEGACY_STALE_AT_BATCH23_OVERSIZED_REFRESH_PENDING",
-    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE4-RERUN1.json",
+    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE5.json",
     "cards": 395,
     "progress": {
       "accepted_cards": 395,
@@ -8735,13 +8735,13 @@
       "stage5_allowed": false
     },
     "latest_artifact": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-RERUN1-INDEPENDENT-REAUDIT-PASS.zip",
-      "sha256": "07d6fba865c351d11c2bcc00cfbc62f8d6800f76d1a8177361eb0a3ef3e2accd",
-      "size_bytes": 1649464,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-RERUN1-INDEPENDENT-REAUDIT-PASS.zip",
-      "library_file_id": "file_00000000e6c882468f7848893a275c79",
-      "library_stable_id": "libfile_4feb04b81ed081918d510da6ce991c3b",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage5-ANTI-BYPASS-CHECKPOINT-PASS.zip",
+      "sha256": "18d9a2e7b4b81be1690c77e774c80a1bee65a5e68f4f2b86dfcded4140df1a20",
+      "size_bytes": 1744759,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage5-ANTI-BYPASS-CHECKPOINT-PASS.zip",
+      "library_file_id": "file_0000000016848243884cbc0809fdfe2e",
+      "library_stable_id": "libfile_4566d734c3308191b4ce377e2474af13",
+      "quality_state": "PASS"
     },
     "repair_map": {
       "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-REPAIR-MAP.json",
@@ -8750,7 +8750,7 @@
       "library_stable_id": "libfile_4762d60a36308191b9065e28067bd358"
     },
     "persistence": {
-      "library": "PASS_EXACT_REMATERIALIZATION",
+      "library": "PASS_ACCEPTED_EXACT_REMATERIALIZATION",
       "git": "IN_SYNC"
     },
     "prior_stage4": {
@@ -8760,13 +8760,13 @@
       "findings": 9,
       "disposition": "ALL_9_REPAIRED_AND_CONFIRMED_BY_STAGE4_RERUN1_PASS; historical audit remains immutable"
     },
-    "runtime_note": "Content-only Stage4 rerun. CURRENT observed v465-R99; runtime acceptance not run. Re-resolve CURRENT at Stage6.",
-    "next_action": "Stage5 anti-bypass / clean-delivery gate from exact Stage3C Repair1 content authority plus Stage4 Rerun1 PASS audit. Do not start Stage6 until Stage5 PASS.",
+    "runtime_note": "Content-only Stage5. CURRENT last observed v465-R99; runtime acceptance not run. Stage6 must re-resolve CURRENT and LAST_FULLY_VERIFIED separately and target CURRENT.",
+    "next_action": "Stage6 Runtime & Presentation Acceptance: re-resolve CURRENT and LAST_FULLY_VERIFIED, materialize exact CURRENT portable runtime, and test this exact Stage5 CLEAN-DELIVERY-ACCEPTED package. Do not start Stage7 until Stage6 acceptance completes.",
     "content_authority": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip",
-      "sha256": "357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce",
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage5-CLEAN-DELIVERY-ACCEPTED.zip",
+      "sha256": "c0862281e3b092e54bdb447e498e73cad96cdd8bdeef9811628608cef3f1c086",
       "tsv_sha256": "469d21a0d26db81f90b0e4dbaeca6aa9e9e19bc12a93d54eb9e17792cdebdee6",
-      "quality_state": "PASS_RECLOSED"
+      "quality_state": "PASS_STAGE5_CLEAN_DELIVERY"
     },
     "stage4_rerun1": {
       "quality_state": "PASS",
@@ -8792,6 +8792,20 @@
       "library_file_id": "file_000000006ab882439a2650785ad4570a",
       "library_stable_id": "libfile_4b01ac2828dc8191a1c2a6be8324ee04",
       "status": "PASS"
+    },
+    "stage5": {
+      "quality_state": "PASS",
+      "clean_delivery_sha256": "c0862281e3b092e54bdb447e498e73cad96cdd8bdeef9811628608cef3f1c086",
+      "neutral_envelope": "395/395 PASS",
+      "presentation_contract": "395/395 PASS",
+      "direct_import_byte_identical_to_stage3c_repair1": true,
+      "preflights": "projection PASS / lineage PASS / package PASS",
+      "embedded_builder_gates": "5/5 PASS",
+      "negative_controls": "2/2 PASS",
+      "membership_records": 836,
+      "source_audio_refs": 439,
+      "unique_audio_refs": 400,
+      "stage6_allowed": true
     }
   }
 }

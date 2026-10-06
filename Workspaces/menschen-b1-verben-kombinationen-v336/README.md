@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage3B Batch24 PASS — 394/395 cards accepted**.
+Current state: **Stage3B COMPLETE — Batch25 PASS — 395/395 cards accepted**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -32,14 +32,17 @@ Completed cumulative batches:
 - Batch22 `mb1m-lu-0421..mb1m-lu-0440`: 15 active cards / 89 items; absent IDs 0421, 0424, 0427, 0433, 0437.
 - Batch23 `mb1m-lu-0441..mb1m-lu-0460`: 18 active cards / 106 items; absent IDs 0442, 0451.
 - Batch24 `mb1m-lu-0461..mb1m-lu-0480`: 16 active cards / 94 items; absent IDs 0461, 0467, 0469, 0474.
+- Batch25 `mb1m-lu-0481..mb1m-lu-0500`: 1 active card / 6 items; only `mb1m-lu-0481` exists in this nominal range.
 
-Current cumulative coverage: **394/395 cards**, **2117 accepted Kombinationen items**, **1 card remaining** (`mb1m-lu-0481`).
+Current cumulative coverage: **395/395 cards**, **2123 accepted Kombinationen items**, **0 cards remaining**.
 
 Invariant: exactly one learner-visible `Kombinationen` section on processed cards; no separate visible Rektion/Kollokationen/NVV sections; backend kind/provenance, canonical relations, examples and source lineage remain preserved. No hard density quota is used.
 
-Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch24-mb1m-lu-0461-0480-ACCEPTED.zip`  
-SHA-256: `7e31c6cb1431f04a0e6a87ca108ec97281828e40afbb904fcd1ec987dda282de`
+Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch25-mb1m-lu-0481-0500-ACCEPTED.zip`  
+SHA-256: `2811a87b4faa197b4c0a96b0d193afdcac2bb2f93ba06c382498e81fb72ec27f`
 
 Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256 exact.
 
-Next: Stage3B Batch25 nominal range `mb1m-lu-0481..mb1m-lu-0500`, starting from the exact Batch24 ACCEPTED bytes. Only `mb1m-lu-0481` remains unprocessed in the current 395-card authority.
+Next: **Stage3C disposition closure** over all 395 cards from the exact Batch25 ACCEPTED bytes, followed by Stage4 independent reaudit.
+
+Stage3B completion gate: **395/395 cards have exactly one learner-visible `Kombinationen`; 0/395 retain separate visible Rektion/Kollokationen/NVV; all 395 dispositions are `VERIFIED_PRESENT`.**

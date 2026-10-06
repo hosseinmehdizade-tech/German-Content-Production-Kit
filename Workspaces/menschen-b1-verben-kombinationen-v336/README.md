@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage5 ANTI-BYPASS / CLEAN DELIVERY PASS — Stage6 runtime acceptance is now allowed**.
+Current state: **Stage7 PASS — content RELOCKED on exact CURRENT v465-R99; v465 same-profile Windows/Chrome acceptance remains a separate runtime boundary**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -121,3 +121,42 @@ Status: **PASS**.
 - Content mutation at Stage5: none. Runtime acceptance: not run.
 
 Next: **Stage6 Runtime & Presentation Acceptance**. Re-resolve CURRENT at execution time and test the exact Stage5 ACCEPTED clean-delivery artifact. Never downgrade to LAST_FULLY_VERIFIED; do not start Stage7 until Stage6 completes.
+
+
+## Stage6 exact-CURRENT acceptance
+
+Status: **PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY**.
+
+- CURRENT: **v465-R99**; LAST_FULLY_VERIFIED: **v451-R85**.
+- Exact Stage5 content imported/persisted **395/395**.
+- Parser/export roundtrip **395/395**, 0 semantic payload mismatches.
+- Neutral presentation **395/395**; exactly one visible `Kombinationen` on **395/395**; legacy visible Rektion/Kollokationen/NVV **0/395**.
+- Kombinationen **2123/2123** preserve DE + FA + EN + evidence.
+- Study / Quick / Typing / Audio full-set presentation PASS.
+- Current-runtime regression gates PASS.
+- Container canonical-origin navigation is administrator-blocked; established deterministic IndexedDB boundary used.
+- Separate v465 same-profile Windows/Chrome acceptance remains pending; Stage6 still allows Stage7 content release.
+
+## Stage7 exact-final content relock
+
+Status: **PASS — CONTENT RELOCKED**.
+
+Final organized release:
+`German-Flashcards-Pro-v465-R99-Menschen-B1-Verben-v3.3.6-Kombinationen-RELOCKED.zip`
+
+SHA-256:
+`fb7c08e08f00b7522bfe0086d412e2bf1534e85a53b7094c2ac2606e69116913`
+
+- exact CURRENT v465 `01-App`: **72/72 byte-identical**
+- exact Stage5 accepted content: **11/11 byte-identical**
+- ZIP CRC: PASS
+- root hashes: **359/359 PASS**
+- JSON reparse: **147/147 PASS**
+- package hygiene: PASS
+- 395-row direct-import TSV hash preserved
+- targeted regressions: runtime assets + v451 envelope + v462 single-scroll + v464 flat-settle + v465 lifecycle PASS
+- Library final release rematerialization: exact SHA-256 PASS
+- content lock state: **RELOCKED**
+- runtime v465 itself remains **CANDIDATE** until its independent same-profile acceptance is closed.
+
+Next action for this content workstream: **NONE**.

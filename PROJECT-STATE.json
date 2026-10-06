@@ -8674,10 +8674,10 @@
     "next_action": "NONE; stop AUD006 scope"
   },
   "workstream": {
-    "status": "STAGE3C_REPAIR1_RECLOSURE_PASS_STAGE4_RERUN_REQUIRED",
+    "status": "STAGE4_RERUN1_INDEPENDENT_REAUDIT_PASS_STAGE5_ALLOWED",
     "checkpoint": "Workspaces/menschen-b1-verben-kombinationen-v336/CHECKPOINT.json",
     "checkpoint_status": "LEGACY_STALE_AT_BATCH23_OVERSIZED_REFRESH_PENDING",
-    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE3C-REPAIR1.json",
+    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE4-RERUN1.json",
     "cards": 395,
     "progress": {
       "accepted_cards": 395,
@@ -8699,12 +8699,12 @@
       "stage5_allowed": false
     },
     "latest_artifact": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip",
-      "sha256": "357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce",
-      "size_bytes": 1593545,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip",
-      "library_file_id": "file_000000003f488210a1856fada603701d",
-      "library_stable_id": "libfile_d75e280adcd481919a7e7a1699f0cc5a",
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-RERUN1-INDEPENDENT-REAUDIT-PASS.zip",
+      "sha256": "07d6fba865c351d11c2bcc00cfbc62f8d6800f76d1a8177361eb0a3ef3e2accd",
+      "size_bytes": 1649464,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-RERUN1-INDEPENDENT-REAUDIT-PASS.zip",
+      "library_file_id": "file_00000000e6c882468f7848893a275c79",
+      "library_stable_id": "libfile_4feb04b81ed081918d510da6ce991c3b",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "repair_map": {
@@ -8714,18 +8714,48 @@
       "library_stable_id": "libfile_4762d60a36308191b9065e28067bd358"
     },
     "persistence": {
-      "library": "PASS_ACCEPTED_EXACT_REMATERIALIZATION",
-      "git": "IN_SYNC",
-      "post_report_overwrite": "PENDING_AFTER_ONE_CONTAINER_SESSION_EXPIRED; initial PASS report already persisted"
+      "library": "PASS_EXACT_REMATERIALIZATION",
+      "git": "IN_SYNC"
     },
     "prior_stage4": {
       "status": "FAIL_REPAIR_REQUIRED",
       "audit_sha256": "ed57097768c95e25a3fab0ad818477b7fc22cc0bcfca8d181d97cb118908b73e",
       "findings_sha256": "e6582ab01ebd78bd634ff8185350f124392ec5588b1a93b064b42c6c7288be70",
       "findings": 9,
-      "disposition": "ALL_9_REPAIRED_IN_STAGE3C_REPAIR1; historical audit remains immutable"
+      "disposition": "ALL_9_REPAIRED_AND_CONFIRMED_BY_STAGE4_RERUN1_PASS; historical audit remains immutable"
     },
-    "runtime_note": "Content-only repair. CURRENT observed v465-R99; runtime acceptance not run. Re-resolve CURRENT at Stage6.",
-    "next_action": "Independent Stage4 rerun from exact Stage3C Repair1 ACCEPTED bytes; Stage5 remains blocked until Stage4 PASS."
+    "runtime_note": "Content-only Stage4 rerun. CURRENT observed v465-R99; runtime acceptance not run. Re-resolve CURRENT at Stage6.",
+    "next_action": "Stage5 anti-bypass / clean-delivery gate from exact Stage3C Repair1 content authority plus Stage4 Rerun1 PASS audit. Do not start Stage6 until Stage5 PASS.",
+    "content_authority": {
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip",
+      "sha256": "357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce",
+      "tsv_sha256": "469d21a0d26db81f90b0e4dbaeca6aa9e9e19bc12a93d54eb9e17792cdebdee6",
+      "quality_state": "PASS_RECLOSED"
+    },
+    "stage4_rerun1": {
+      "quality_state": "PASS",
+      "audit_execution": "PASS",
+      "prior_findings_resolved": 9,
+      "evidence_binding": "2123/2123 PASS",
+      "dimension_cells": 6552,
+      "unresolved_cells": 0,
+      "official_validators": "4/4 PASS",
+      "learner_text_changed": false,
+      "canonical_changed": false,
+      "stage5_allowed": true
+    },
+    "audit_json": {
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-RERUN1-AUDIT.json",
+      "sha256": "4d2b1fd60fe73e46e8a81ed1ca0946e9d7800b7babe283408ae5500deca65406",
+      "library_file_id": "file_00000000e91881f49fbd9f9054400bc6",
+      "library_stable_id": "libfile_c6c2b6dd841c8191b49acda8d7c4dcff"
+    },
+    "post_package_verification": {
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-RERUN1-POST-PACKAGE-VERIFICATION.json",
+      "local_augmented_sha256": "3d854e80477330f93d3956e573dd648cba157e0d59b95bf2561dccae0beb751d",
+      "library_file_id": "file_000000006ab882439a2650785ad4570a",
+      "library_stable_id": "libfile_4b01ac2828dc8191a1c2a6be8324ee04",
+      "status": "PASS"
+    }
   }
 }

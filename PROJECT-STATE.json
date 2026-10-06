@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-06",
+  "updated_at": "2026-10-06T19:52:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -6172,7 +6172,7 @@
       }
     },
     "250_verben_mit_praepositionen_kombinationen": {
-      "status": "STAGE6_BLOCKED_ENVIRONMENT_BROWSER_HARNESS_TIMEOUT_LIBRARY_AND_GIT_SYNCED",
+      "status": "STAGE6_EXACT_CURRENT_RUNTIME_PASS",
       "domain": "vocabulary",
       "branch": "250-verben-mit-praepositionen-kombinationen-v336",
       "checkpoint": "Workspaces/250-verben-mit-praepositionen-kombinationen-v336/CHECKPOINT.json",
@@ -6187,13 +6187,13 @@
       "total_cards": 292,
       "accepted_combination_items": 1250,
       "latest_artifact": {
-        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-BLOCKED-CHECKPOINT.zip",
-        "sha256": "8e39296133f297ef9e0db66ef91dc5ca642705206b59a91d5760e7c9a41c0279",
-        "library_file_id": "file_00000000d68881f49a919b35b408cca7",
-        "library_stable_id": "libfile_0ea99620ebcc8191b8949d065b30c88e",
+        "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-GFP-v465-PASS-CHECKPOINT.zip",
+        "sha256": "21f14abdfe5b2b37ef234a89ee25c1e8ef9060a157787562f1c4254a985fbcfe",
+        "library_file_id": "file_00000000b15481f4a1cd9e2e2accccc6",
+        "library_stable_id": "libfile_50e5062778088191a7b89d21a71f413e",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
-      "next_action": "Resume Stage6 only from exact persisted adapter + exact v465 CURRENT artifact; rerun dynamic browser import/presentation/persistence acceptance. Do not regenerate Stage5 and do not downgrade.",
+      "next_action": "Stage7 immutable LOCKED successor release + exact-final post-package re-acceptance from exact Stage6 PASS lineage. Do not claim the app runtime globally FINAL.",
       "stage3b": "COMPLETE_292_OF_292_PASS",
       "stage3c": {
         "status": "COMPLETE_PASS_HISTORICAL_INPUT",
@@ -6258,33 +6258,66 @@
         "runtime_binding": "STAGE5_RUNTIME_VERSION_AGNOSTIC__RESOLVE_CURRENT_AT_STAGE6"
       },
       "persistence": {
-        "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "library": "PASS_ADAPTER_AND_CHECKPOINT_EXACT_SHA256_AND_BYTE_COMPARE__POST_REPORT_LIBRARY_PENDING",
         "git": "IN_SYNC"
       },
       "stage6": {
-        "status": "BLOCKED_ENVIRONMENT_BROWSER_HARNESS_TIMEOUT",
+        "schema": "vmp-kombinationen-stage6-summary@1.0.0",
+        "status": "PASS_EXACT_CURRENT_RUNTIME",
         "current_runtime": "v465-R99",
-        "current_artifact_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+        "current_runtime_artifact_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
         "current_app_sha256": "0ea6cb1b670f0f70677cc4a810e91336fa8b783e7db809ae0cb6489853abdcd8",
         "last_fully_verified_runtime": "v451-R85",
-        "exact_current_materialization": "PASS",
-        "static_preflight": "PASS",
-        "runtime_import_adapter": {
-          "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-RUNTIME-IMPORT-ADAPTER.zip",
-          "sha256": "26c4f1c74163990f528e81ee957cd6456522eed2c0668817562d9f7ff2b50286",
-          "library_file_id": "file_00000000713c8210bcd7b3a56f035802",
-          "library_stable_id": "libfile_c44351270cfc8191a036c04229bea71d",
+        "stage5_checkpoint_sha256": "8f472a96fefd2b89716d50de3b3f4cb0896102f03657044cfa21a9966b1d5623",
+        "stage5_clean_delivery_sha256": "a7f59a910cb468e0bad61136bdedbc024fda88c886d6aa3fc5fb4f361ed8b690",
+        "adapter": {
+          "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-RUNTIME-IMPORT-ADAPTER-v2.zip",
+          "sha256": "fab1a7b29d2e49532133f4befdab801ac4204754cab2390cb5ec58684b980bba",
+          "library_file_id": "file_0000000054d881f4bad9a492a4049555",
+          "library_stable_id": "libfile_ba14fbfe19bc81919c098eaace1a5420",
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-          "semantic_content_mutated": false
+          "semantic_tsv_mutated": false,
+          "v1_blocker": "Missing validator_version and explicit universal-v2 schema_profile in BUILD-METADATA; runtime correctly blocked import.",
+          "repair": "Metadata/checksum-only adapter revision; Stage5 TSV bytes unchanged."
         },
-        "browser_harness": {
-          "attempts": 2,
-          "initial": "TIMEOUT",
-          "corrected_retry": "TIMEOUT",
-          "acceptance_report_produced": false,
-          "application_failure_established": false
+        "acceptance": {
+          "report_sha256": "bbd0d230c7c0dae399167e01dc8990f292d9d41039bfd37bff17707a4ca21210",
+          "checks": "37/37 PASS",
+          "manifest": "VERIFIED / 292",
+          "runtime_cards": 292,
+          "runtime_index": 292,
+          "authority_cards": 292,
+          "categories": {
+            "Verb": 201,
+            "Expression": 91
+          },
+          "examples": 1168,
+          "fa_translations": 1168,
+          "en_translations": 1168,
+          "relations": 592,
+          "kombinationen_items": 1250,
+          "kombinationen_origins": {
+            "PARENT_GENERATED_EXAMPLE": 1154,
+            "PARENT_CANONICAL_RELATION": 74,
+            "CURATED_PEDAGOGICAL": 22
+          },
+          "visible_kombinationen": 292,
+          "visible_legacy_sections": 0,
+          "four_mode_samples": "PASS",
+          "state_only_commit": "PASS",
+          "storage": "READY",
+          "page_errors": 0
         },
-        "stage6_pass_claimed": false
+        "checkpoint": {
+          "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage6-GFP-v465-PASS-CHECKPOINT.zip",
+          "sha256": "21f14abdfe5b2b37ef234a89ee25c1e8ef9060a157787562f1c4254a985fbcfe",
+          "library_file_id": "file_00000000b15481f4a1cd9e2e2accccc6",
+          "library_stable_id": "libfile_50e5062778088191a7b89d21a71f413e",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "project_runtime_boundary": "PENDING_USER_SAME_PROFILE_V465 (project-level lifecycle/visual boundary; content-specific exact-current Stage6 passed)",
+        "post_report_library": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+        "next_action": "Stage7 immutable LOCKED successor release + exact-final post-package re-acceptance from exact Stage6 PASS lineage. Do not claim the app runtime globally FINAL."
       }
     }
   },

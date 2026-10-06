@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-06T17:30:00+02:00",
+  "updated_at": "2026-10-06",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -8641,10 +8641,10 @@
     "next_action": "NONE; stop AUD006 scope"
   },
   "workstream": {
-    "status": "STAGE3C_DISPOSITION_CLOSURE_PASS",
+    "status": "STAGE4_INDEPENDENT_REAUDIT_FAIL_REPAIR_REQUIRED",
     "checkpoint": "Workspaces/menschen-b1-verben-kombinationen-v336/CHECKPOINT.json",
     "checkpoint_status": "LEGACY_STALE_AT_BATCH23_OVERSIZED_REFRESH_PENDING",
-    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE3C.json",
+    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE4.json",
     "cards": 395,
     "progress": {
       "accepted_cards": 395,
@@ -8652,45 +8652,44 @@
       "remaining_cards": 0,
       "accepted_items": 2123
     },
-    "latest_artifact": {
+    "stage3c_parent": {
       "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSURE-ACCEPTED.zip",
       "sha256": "4715a43019c0e99d91f0f256938655e7dd2063ec172b61951c100976da5bedc7",
-      "size_bytes": 1593445,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSURE-ACCEPTED.zip",
-      "library_file_id": "file_000000007ea48210b9f66aaeae60ef6f",
-      "library_stable_id": "libfile_6b07741bc6ac8191ae63d2605f1763d0",
+      "quality_state": "PASS"
+    },
+    "stage4": {
+      "quality_state": "FAIL_REPAIR_REQUIRED",
+      "audit_execution": "PASS",
+      "findings": 9,
+      "failing_gate": "KOMBINATIONEN_EVIDENCE_BINDING",
+      "passed_items": 2114,
+      "total_items": 2123,
+      "learner_text_change_required": false,
+      "canonical_change_required": false,
+      "stage5_allowed": false
+    },
+    "latest_artifact": {
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-FAIL.zip",
+      "sha256": "ed57097768c95e25a3fab0ad818477b7fc22cc0bcfca8d181d97cb118908b73e",
+      "size_bytes": 1649977,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-FAIL.zip",
+      "library_file_id": "file_000000006f1881f49426bdb8f66b1004",
+      "library_stable_id": "libfile_ba5803fb5a10819180f0dcb9b4273d3c",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "post_package_verification": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-POST-PACKAGE-VERIFICATION.json",
-      "sha256": "7d164cfcbe7c8f0af575b2fa10e8b1de420891a43601c20ff2c02e7281614836",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-POST-PACKAGE-VERIFICATION.json",
-      "library_file_id": "file_000000004c4081f4b08288420392b078",
-      "library_stable_id": "libfile_a38facad67c881919a612127f40c3b8a",
-      "status": "PASS"
+    "findings_artifact": {
+      "count": 9,
+      "file": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-FINDINGS.json",
+      "sha256": "e6582ab01ebd78bd634ff8185350f124392ec5588b1a93b064b42c6c7288be70",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-FINDINGS.json",
+      "library_file_id": "file_00000000e3ac821090216b8fc28dda00",
+      "library_stable_id": "libfile_7f1261fe6e3481918bf4342eaf8d23aa",
+      "type": "KOMBINATIONEN_EVIDENCE_BINDING",
+      "learner_text_change_required": false,
+      "canonical_change_required": false
     },
-    "stage3b_global_closure": {
-      "single_visible_kombinationen": "395/395 PASS",
-      "separate_visible_legacy_sections": "0/395 PASS",
-      "disposition_verified_present": "395/395 PASS"
-    },
-    "stage3c": {
-      "status": "PASS_100_PERCENT_FINAL_DISPOSITION",
-      "dimension_cells": 6552,
-      "unresolved_cells": 0,
-      "verified_present_cells": 5105,
-      "closed_no_force_cells": 1447,
-      "not_applicable_cells": 0,
-      "kombinationen_targets_verified_present": 395,
-      "kombinationen_items": 2123,
-      "candidate_ledger_total": 6114,
-      "candidate_ledger_deferred": 0,
-      "tsv_sha256": "41286b02462568c09ac3cc9bbca9f11641de24548e2807b763eac357f96f97f0",
-      "content_mutation": false,
-      "official_validators": "PASS"
-    },
-    "git_sync_note": "STAGE3C.json + README + PROJECT-STATE synced. Legacy CHECKPOINT.json remains stale at Batch23; compact Stage3C metadata and portable artifact are the newest authority.",
-    "runtime_note": "Content-only Stage3C. CURRENT observed as v465-R99; runtime acceptance not run and CURRENT must be re-resolved at Stage6.",
-    "next_action": "Stage4 independent reaudit from exact Stage3C ACCEPTED bytes; Stage4 must recompute completeness/evidence/structure and not trust Stage3C self-report."
+    "git_sync_note": "STAGE4.json + README + PROJECT-STATE synced. Legacy CHECKPOINT.json remains stale at Batch23; compact Stage4 metadata and Library audit artifact are newest authority.",
+    "runtime_note": "Content-only Stage4 audit. CURRENT observed v465-R99; runtime acceptance not run. Re-resolve CURRENT at Stage6.",
+    "next_action": "Bounded evidence-only repair of S4-KOMB-EVID-001..009; update exact 9 Kombinationen evidence_refs and matching Stage3C candidate-ledger refs; regenerate Stage3C closure/hashes; rerun Stage4. Stage5 remains blocked."
   }
 }

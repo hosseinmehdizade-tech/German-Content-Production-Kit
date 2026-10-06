@@ -8641,10 +8641,10 @@
     "next_action": "NONE; stop AUD006 scope"
   },
   "workstream": {
-    "status": "STAGE4_INDEPENDENT_REAUDIT_FAIL_REPAIR_REQUIRED",
+    "status": "STAGE3C_REPAIR1_RECLOSURE_PASS_STAGE4_RERUN_REQUIRED",
     "checkpoint": "Workspaces/menschen-b1-verben-kombinationen-v336/CHECKPOINT.json",
     "checkpoint_status": "LEGACY_STALE_AT_BATCH23_OVERSIZED_REFRESH_PENDING",
-    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE4.json",
+    "compact_latest_metadata": "Workspaces/menschen-b1-verben-kombinationen-v336/STAGE3C-REPAIR1.json",
     "cards": 395,
     "progress": {
       "accepted_cards": 395,
@@ -8652,44 +8652,47 @@
       "remaining_cards": 0,
       "accepted_items": 2123
     },
-    "stage3c_parent": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSURE-ACCEPTED.zip",
-      "sha256": "4715a43019c0e99d91f0f256938655e7dd2063ec172b61951c100976da5bedc7",
-      "quality_state": "PASS"
-    },
-    "stage4": {
-      "quality_state": "FAIL_REPAIR_REQUIRED",
-      "audit_execution": "PASS",
-      "findings": 9,
-      "failing_gate": "KOMBINATIONEN_EVIDENCE_BINDING",
-      "passed_items": 2114,
-      "total_items": 2123,
-      "learner_text_change_required": false,
-      "canonical_change_required": false,
+    "repair1": {
+      "quality_state": "PASS",
+      "source_stage4_findings": 9,
+      "items_rebound": 9,
+      "target_rows": 8,
+      "learner_text_changed": false,
+      "canonical_changed": false,
+      "evidence_binding": "2123/2123 PASS",
+      "dimension_cells": 6552,
+      "unresolved_cells": 0,
+      "official_validators": "PASS",
       "stage5_allowed": false
     },
     "latest_artifact": {
-      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-FAIL.zip",
-      "sha256": "ed57097768c95e25a3fab0ad818477b7fc22cc0bcfca8d181d97cb118908b73e",
-      "size_bytes": 1649977,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-FAIL.zip",
-      "library_file_id": "file_000000006f1881f49426bdb8f66b1004",
-      "library_stable_id": "libfile_ba5803fb5a10819180f0dcb9b4273d3c",
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip",
+      "sha256": "357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce",
+      "size_bytes": 1593545,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip",
+      "library_file_id": "file_000000003f488210a1856fada603701d",
+      "library_stable_id": "libfile_d75e280adcd481919a7e7a1699f0cc5a",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "findings_artifact": {
-      "count": 9,
-      "file": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-FINDINGS.json",
-      "sha256": "e6582ab01ebd78bd634ff8185350f124392ec5588b1a93b064b42c6c7288be70",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-Kombinationen-Stage4-FINDINGS.json",
-      "library_file_id": "file_00000000e3ac821090216b8fc28dda00",
-      "library_stable_id": "libfile_7f1261fe6e3481918bf4342eaf8d23aa",
-      "type": "KOMBINATIONEN_EVIDENCE_BINDING",
-      "learner_text_change_required": false,
-      "canonical_change_required": false
+    "repair_map": {
+      "filename": "Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-REPAIR-MAP.json",
+      "sha256": "d9cd52401642ac59528957304baa4c0bb07d19b84ea7e60d4b0f00b26090a785",
+      "library_file_id": "file_00000000acb8821094b7044041405d77",
+      "library_stable_id": "libfile_4762d60a36308191b9065e28067bd358"
     },
-    "git_sync_note": "STAGE4.json + README + PROJECT-STATE synced. Legacy CHECKPOINT.json remains stale at Batch23; compact Stage4 metadata and Library audit artifact are newest authority.",
-    "runtime_note": "Content-only Stage4 audit. CURRENT observed v465-R99; runtime acceptance not run. Re-resolve CURRENT at Stage6.",
-    "next_action": "Bounded evidence-only repair of S4-KOMB-EVID-001..009; update exact 9 Kombinationen evidence_refs and matching Stage3C candidate-ledger refs; regenerate Stage3C closure/hashes; rerun Stage4. Stage5 remains blocked."
+    "persistence": {
+      "library": "PASS_ACCEPTED_EXACT_REMATERIALIZATION",
+      "git": "IN_SYNC",
+      "post_report_overwrite": "PENDING_AFTER_ONE_CONTAINER_SESSION_EXPIRED; initial PASS report already persisted"
+    },
+    "prior_stage4": {
+      "status": "FAIL_REPAIR_REQUIRED",
+      "audit_sha256": "ed57097768c95e25a3fab0ad818477b7fc22cc0bcfca8d181d97cb118908b73e",
+      "findings_sha256": "e6582ab01ebd78bd634ff8185350f124392ec5588b1a93b064b42c6c7288be70",
+      "findings": 9,
+      "disposition": "ALL_9_REPAIRED_IN_STAGE3C_REPAIR1; historical audit remains immutable"
+    },
+    "runtime_note": "Content-only repair. CURRENT observed v465-R99; runtime acceptance not run. Re-resolve CURRENT at Stage6.",
+    "next_action": "Independent Stage4 rerun from exact Stage3C Repair1 ACCEPTED bytes; Stage5 remains blocked until Stage4 PASS."
   }
 }

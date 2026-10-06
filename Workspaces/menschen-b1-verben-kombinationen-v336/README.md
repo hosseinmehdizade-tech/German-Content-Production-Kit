@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage3C DISPOSITION CLOSURE PASS — 395/395 targets closed, 0 unresolved cells**.
+Current state: **Stage4 INDEPENDENT REAUDIT FAIL — 9 Kombinationen evidence-binding defects require bounded provenance repair**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -45,9 +45,26 @@ Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256
 
 Stage3C closure: **6552/6552 dimension cells final; 5105 VERIFIED_PRESENT; 1447 CLOSED_NO_FORCE; 0 unresolved.** Kombinationen overlay: **395/395 VERIFIED_PRESENT, 2123 accepted items**. The Stage3C TSV is byte-identical to Batch25.
 
-Next: **Stage4 independent reaudit** from the exact Stage3C ACCEPTED bytes. Stage4 must recompute and must not trust Stage3C self-report.
+Next: **bounded provenance-only repair of the 9 Stage4 findings**, then Stage3C reclosure and Stage4 rerun. Do not start Stage5 yet.
 
 Stage3B completion gate: **395/395 cards have exactly one learner-visible `Kombinationen`; 0/395 retain separate visible Rektion/Kollokationen/NVV; all 395 dispositions are `VERIFIED_PRESENT`.**
 
 
 Official v3.3.6 Stage3C validators: enrichment completeness **PASS** (395 targets / 6552 cells / 0 unresolved); candidate ledger **PASS** (6114 candidates / 0 deferred at closure).
+
+
+## Stage4 independent reaudit finding
+
+Stage4 recomputed the exact Stage3C authority independently. Structural/source/identity/completeness validators PASS, but the semantic evidence-binding gate found **9 incorrect parent relation references** on otherwise-correct Kombinationen learner text:
+
+- mb1m-lu-0007: relation mb1m-r1p2-b0001-013 -> mb1m-r1p2-b0001-014
+- mb1m-lu-0008: relation mb1m-r1p2-b0001-015 -> mb1m-r1p2-b0001-017
+- mb1m-lu-0009: relation mb1m-r1p2-b0001-018 -> mb1m-r1p2-b0001-021
+- mb1m-lu-0010: relation mb1m-r1p2-b0001-021 -> mb1m-r1p2-b0001-024
+- mb1m-lu-0011: relation mb1m-r1p2-b0001-024 -> mb1m-r1p2-b0001-027
+- mb1m-lu-0012: relation mb1m-r1p2-b0001-027 -> mb1m-r1p2-b0001-030
+- mb1m-lu-0013: relation mb1m-r1p2-b0001-030 -> mb1m-r1p2-b0001-032
+- mb1m-lu-0014 item 1: relation mb1m-r1p2-b0001-033 -> mb1m-r1p2-b0001-035
+- mb1m-lu-0014 item 2: relation mb1m-r1p2-b0001-032 -> mb1m-r1p2-b0001-034
+
+No DE/FA/EN learner text or immutable canonical relation needs to change. Stage5 is blocked until these 9 evidence_refs and their matching Stage3C candidate-ledger refs are repaired, Stage3C is reclosed on the new exact hashes, and Stage4 is rerun.

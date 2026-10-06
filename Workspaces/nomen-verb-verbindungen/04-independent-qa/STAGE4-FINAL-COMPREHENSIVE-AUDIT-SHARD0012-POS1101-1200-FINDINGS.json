@@ -1,0 +1,328 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T00:51:00+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0012",
+    "positions": "1101-1200",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [13, 14],
+    "printed_pages": [11, 12],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers Hand through Jahre. No new source transcription/canonical defect was confirmed. Positions 1189-1190 are the expected two-way canonical split of the source surface 'im Internet suchen / recherchieren'."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1107,
+      "target_id": "dah-nvv-exp-01099",
+      "canonical_form": "einen Handel abschließen",
+      "severity": "MINOR",
+      "category": "GERMAN_DEFINITION_NATURALNESS_REDUNDANCY",
+      "fields": ["definition_de"],
+      "evidence": {"definition_de": "ein Geschäft oder eine Vereinbarung verbindlich vereinbaren"},
+      "finding": "The German definition contains the redundant and noticeably awkward collocation 'eine Vereinbarung ... vereinbaren'. The meaning is recoverable, but the explanatory sentence is not clean learner German.",
+      "repair_direction": "Rewrite the definition with a natural construction such as 'ein Geschäft verbindlich vereinbaren oder eine Vereinbarung abschließen', without changing the target expression or source surface."
+    },
+    {
+      "position": 1110,
+      "target_id": "dah-nvv-exp-01102",
+      "canonical_form": "einen Hass haben / hegen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": ["examples[2].fa"],
+      "evidence": {
+        "example_de": "Der Roman zeigt, wie gefährlich es ist, Hass gegen ganze Gruppen zu hegen.",
+        "example_fa": "رمان نشان می‌دهد که نفرت‌داشتن از گروه‌های کامل چقدر خطرناک است."
+      },
+      "finding": "«گروه‌های کامل» is a literal and unnatural rendering of German 'ganze Gruppen' in this context; it sounds like 'complete groups' rather than hatred directed at entire groups as a whole.",
+      "repair_direction": "Use natural Persian expressing 'کل گروه‌ها / یک گروه را به‌طور کلی' according to the final sentence wording, while preserving the scope of the German example."
+    },
+    {
+      "position": 1116,
+      "target_id": "dah-nvv-exp-01108",
+      "canonical_form": "Haut zeigen",
+      "severity": "MAJOR",
+      "category": "PERSIAN_MEANING_AND_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": ["meaning_fa", "examples[0].fa", "examples[1].fa", "examples[2].fa", "examples[3].fa"],
+      "evidence": {
+        "meaning_fa": "پوست بدن را نشان دادن",
+        "examples_fa": [
+          "او در لباس تابستانی پوست زیادی نشان می‌دهد، بدون اینکه لباس نامناسب به نظر برسد.",
+          "برای عکاسی، مدل می‌خواست پوست کمتری نشان دهد.",
+          "بازیگر روی فرش قرمز به‌طور غیرمعمولی پوست زیادی نشان داد.",
+          "اینکه کسی چقدر از پوست بدنش را نشان دهد، تصمیمی شخصی است."
+        ]
+      },
+      "finding": "The Persian learner layer repeatedly translates German 'Haut zeigen' word-for-word as 'پوست ... نشان دادن'. In clothing/body-visibility contexts this is understandable but markedly translation-shaped Persian and does not provide a natural learner equivalent.",
+      "repair_direction": "Use context-appropriate Persian built around visible/exposed parts of the body or revealing clothing, rather than mechanically 'showing skin', while keeping the German sense neutral and nonjudgmental."
+    },
+    {
+      "position": 1122,
+      "target_id": "dah-nvv-exp-01114",
+      "canonical_form": "am Herzen liegen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": ["structure.pattern_de", "structure.argument_slots"],
+      "evidence": {
+        "definition_de": "für jemanden persönlich sehr wichtig sein",
+        "examples_de": [
+          "Der Schutz der Kinder liegt ihr besonders am Herzen.",
+          "Mir liegt am Herzen, dass alle im Team fair behandelt werden.",
+          "Die Zukunft des Vereins liegt vielen Mitgliedern am Herzen.",
+          "Wenn dir dieses Thema am Herzen liegt, solltest du dich an der Diskussion beteiligen."
+        ],
+        "current_argument_slots": []
+      },
+      "finding": "The learner structure omits the central dative experiencer of the idiom (jdm. am Herzen liegen). The definition explicitly refers to 'für jemanden', and all four examples realize the dative role, but structured valency exposes no slot.",
+      "repair_direction": "Preserve the raw source surface 'am Herzen liegen' in provenance, but enrich learner structure with a dative person/experiencer and an explicit pattern such as 'jdm. am Herzen liegen'."
+    },
+    {
+      "position": 1123,
+      "target_id": "dah-nvv-exp-01115",
+      "canonical_form": "ans Herz legen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": ["structure.pattern_de", "structure.argument_slots"],
+      "evidence": {
+        "definition_de": "jemandem etwas besonders empfehlen oder eindringlich nahebringen",
+        "examples_de": [
+          "Ich möchte dir dieses Buch wirklich ans Herz legen.",
+          "Die Ärztin legte ihm regelmäßige Bewegung ans Herz.",
+          "Unsere Professorin hat uns den Besuch der Ausstellung ans Herz gelegt.",
+          "Wer neu in der Stadt ist, dem kann ich den Wochenmarkt ans Herz legen."
+        ],
+        "current_argument_slots": []
+      },
+      "finding": "The idiom is stored without its core participant frame although the definition and every example realize it: someone recommends something to a dative recipient (jdm. etw. ans Herz legen). The learner structure therefore hides important valency.",
+      "repair_direction": "Keep the source surface unchanged in provenance and expose at least the dative recipient plus the recommended thing/content in learner structure, e.g. 'jdm. etw. ans Herz legen'."
+    },
+    {
+      "position": 1126,
+      "target_id": "dah-nvv-exp-01118",
+      "canonical_form": "jdn. ins Herz schließen",
+      "severity": "MINOR",
+      "category": "GERMAN_DEFINITION_COLLOCATION_NATURALNESS",
+      "fields": ["definition_de"],
+      "evidence": {"definition_de": "jemanden sehr gern gewinnen und emotional annehmen"},
+      "finding": "'jemanden sehr gern gewinnen' is a malformed/unnatural blend in the German definition. Idiomatic German uses 'jemanden lieb gewinnen' or 'jemanden sehr gernhaben'.",
+      "repair_direction": "Replace the defective collocation with a natural definition such as 'jemanden lieb gewinnen und sehr gernhaben', without changing the target expression."
+    },
+    {
+      "position": 1145,
+      "target_id": "dah-nvv-exp-01137",
+      "canonical_form": "jdn. in den Himmel heben",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_IDIOMATICITY_CALQUE",
+      "fields": ["examples[1].fa"],
+      "evidence": {
+        "example_de": "Seine Fans heben ihn in den Himmel, obwohl auch er Fehler macht.",
+        "example_fa": "طرفدارانش او را تا آسمان بالا می‌برند، با اینکه او هم اشتباه می‌کند."
+      },
+      "finding": "The Persian sentence literalizes the spatial image ('او را تا آسمان بالا می‌برند') instead of conveying the idiomatic meaning of praising/idealizing someone excessively.",
+      "repair_direction": "Use a natural Persian praise/idealization equivalent while preserving the contrast that he also makes mistakes."
+    },
+    {
+      "position": 1147,
+      "target_id": "dah-nvv-exp-01139",
+      "canonical_form": "jdm. den Hof machen",
+      "severity": "MAJOR",
+      "category": "PERSIAN_SENSE_ALIGNMENT",
+      "fields": ["meaning_fa", "examples[0].fa", "examples[2].fa"],
+      "evidence": {
+        "definition_de": "um jemanden werben oder ihm besondere Aufmerksamkeit zeigen",
+        "meaning_fa": "به کسی ابراز علاقهٔ عاشقانه کردن / از او خواستگاری کردن",
+        "examples_fa": [
+          "افسر جوان به دختر شهردار ابراز علاقه و خواستگاری می‌کرد.",
+          "در رمان، هم‌زمان دو مرد از یک زن خواستگاری می‌کنند."
+        ]
+      },
+      "finding": "The Persian layer partly equates 'jdm. den Hof machen' with 'خواستگاری کردن' (making a marriage proposal). That is substantially narrower and stronger than the stored German sense of courting/wooing or seeking someone's romantic favor, and two examples teach the narrowed meaning.",
+      "repair_direction": "Use Persian wording for courting/wooing/trying to win someone's affection; reserve 'خواستگاری' only for contexts that explicitly involve a marriage proposal."
+    },
+    {
+      "position": 1158,
+      "target_id": "dah-nvv-exp-01150",
+      "canonical_form": "wie ein Hund kläffen",
+      "severity": "MINOR",
+      "category": "EXAMPLE_DIVERSITY_NEAR_DUPLICATE",
+      "fields": ["examples[1]", "examples[2]"],
+      "evidence": {
+        "example2_de": "Im Streit kläffte er wie ein Hund, statt ruhig mit mir zu sprechen.",
+        "example3_de": "Im Streit kläffte der Mann wie ein Hund und ließ niemanden ausreden."
+      },
+      "finding": "Examples 2 and 3 are near-duplicates: both begin with the same dispute setting and use the same figurative barking behavior, differing mainly in the consequence. This weakens the four-example diversity requirement across all three languages.",
+      "repair_direction": "Retain one dispute example and replace the other with a genuinely different social/contextual use of the same expression."
+    },
+    {
+      "position": 1159,
+      "target_id": "dah-nvv-exp-01151",
+      "canonical_form": "sich vor dem Hund hüten",
+      "severity": "MINOR",
+      "category": "GERMAN_DEFINITION_SEMANTIC_ALIGNMENT",
+      "fields": ["definition_de"],
+      "evidence": {
+        "definition_de": "vorsichtig sein, damit der Hund nicht gefährlich wird",
+        "examples_de": [
+          "Am Gartentor hängt ein Schild: „Vor dem Hund hüten!“",
+          "Besucher sollten sich vor dem Hund hüten, weil er Fremde nicht kennt."
+        ]
+      },
+      "finding": "The definition gives the wrong causal relation: 'sich vor dem Hund hüten' means to be wary of / take care around the dog, not to be careful so that the dog does not become dangerous.",
+      "repair_direction": "Define the expression as 'sich vor dem Hund in Acht nehmen / vorsichtig sein, weil der Hund gefährlich sein kann', preserving the source target."
+    },
+    {
+      "position": 1171,
+      "target_id": "dah-nvv-exp-01163",
+      "canonical_form": "auf eine Idee bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": ["structure.pattern_de", "structure.argument_slots"],
+      "evidence": {
+        "definition_de": "bewirken, dass jemand einen bestimmten Gedanken bekommt",
+        "examples_de": [
+          "Dein Hinweis hat mich auf eine gute Idee gebracht.",
+          "Das Gespräch mit der Kundin brachte ihn auf die Idee, den Ablauf zu vereinfachen.",
+          "Ein alter Zeitungsartikel brachte die Journalistin auf eine neue Idee.",
+          "Wer hat dich eigentlich auf diese ungewöhnliche Idee gebracht?"
+        ],
+        "current_argument_slots": []
+      },
+      "finding": "The learner structure omits the required affected person of the causative frame (jdn. auf eine Idee bringen). All four examples realize that accusative participant, while the stored structure exposes no slot.",
+      "repair_direction": "Preserve the raw source surface in provenance and add the accusative person/experiencer to learner structure, e.g. 'jdn. auf eine Idee bringen'."
+    },
+    {
+      "position": 1177,
+      "target_id": "dah-nvv-exp-01169",
+      "canonical_form": "einen Infarkt erleiden / bekommen",
+      "severity": "MAJOR",
+      "category": "ENGLISH_SENSE_COVERAGE_ALIGNMENT",
+      "fields": ["gloss_en", "examples[0].en", "examples[1].en", "examples[2].en", "examples[3].en"],
+      "evidence": {
+        "definition_de": "einen Herzinfarkt oder vergleichbaren Infarkt bekommen",
+        "gloss_en": "to suffer a heart attack",
+        "examples_en": [
+          "The patient suffered a heart attack during the walk.",
+          "While at work, she suddenly suffered a heart attack and was taken to the hospital immediately.",
+          "His father had suffered a heart attack two years earlier.",
+          "His uncle had a heart attack a few years ago but recovered well from it."
+        ]
+      },
+      "finding": "The English learner layer collapses the broader German medical term 'Infarkt' entirely to 'heart attack'. The card's own German definition explicitly includes a heart attack or a comparable infarction, so English loses the non-cardiac sense across the gloss and all four examples.",
+      "repair_direction": "Restore the broader infarction sense in the English summary and ensure the example set does not teach 'Infarkt' as necessarily cardiac; keep heart-attack examples only where the context explicitly supports that reading."
+    },
+    {
+      "position": 1198,
+      "target_id": "dah-nvv-exp-01189",
+      "canonical_form": "in (völliger) Isolation leben",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_SEMANTIC_COVERAGE",
+      "fields": ["meaning_fa"],
+      "evidence": {
+        "canonical_form": "in (völliger) Isolation leben",
+        "definition_de": "ohne oder mit sehr wenig Kontakt zu anderen leben",
+        "meaning_fa": "در انزوای کامل زندگی کردن",
+        "examples_fa": [
+          "پژوهشگر چند ماه در انزوای کامل زندگی کرد.",
+          "پس از دعوا، او تقریباً در انزوای کامل از خانواده‌اش زندگی می‌کرد.",
+          "هیچ‌کس نباید مجبور باشد برای مدت طولانی در انزوای کامل زندگی کند.",
+          "در طول مأموریت، تیم هفته‌ها جدا از دنیای بیرون در انزوا زندگی کرد."
+        ]
+      },
+      "finding": "The Persian summary encodes only 'complete isolation', while the canonical form explicitly makes völliger optional and the German definition covers living with little as well as no contact. The summary is therefore narrower than the target.",
+      "repair_direction": "Broaden the Persian meaning to 'در انزوا / در انزوای کامل زندگی کردن' or an equivalent formulation that preserves both the general and intensified variants."
+    },
+    {
+      "position": 1200,
+      "target_id": "dah-nvv-exp-01191",
+      "canonical_form": "in die Jahre kommen",
+      "severity": "MINOR",
+      "category": "PERSIAN_SENSE_COVERAGE_AND_EXAMPLE_NATURALNESS",
+      "fields": ["meaning_fa", "examples[0].fa"],
+      "evidence": {
+        "definition_de": "älter werden und Alterserscheinungen zeigen",
+        "meaning_fa": "پا به سن گذاشتن",
+        "gloss_en": "to get on in years; to show its age",
+        "example_de": "Das alte Auto ist sichtbar in die Jahre gekommen.",
+        "example_fa": "ماشین قدیمی به‌وضوح پا به سن گذاشته و فرسوده شده است.",
+        "other_object_examples_fa": [
+          "ساختمان هم کم‌کم قدیمی شده و به بازسازی نیاز دارد.",
+          "نرم‌افزار از نظر فنی قدیمی شده و به‌زودی جایگزین می‌شود."
+        ]
+      },
+      "finding": "The Persian summary 'پا به سن گذاشتن' is naturally animate and does not cover the established object-extension of the idiom, although the card itself uses a car, building, and software. The first Persian example then anthropomorphizes the car with the same animate phrase, while the other object examples already use natural 'قدیمی شدن'.",
+      "repair_direction": "Broaden the Persian summary to cover both people/animals and things that are showing their age, and rewrite the car example with natural object-aging wording."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 14,
+    "blocker": 0,
+    "major": 6,
+    "minor": 8,
+    "clean_targets": 86,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "98/100 (two expected split identities at positions 1189-1190)",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 98,
+    "expected_split_surface_mismatches": 2,
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 0,
+    "source_repair_positions": []
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1200,
+    "positions_remaining": 1292,
+    "confirmed_finding_targets": 105,
+    "blocker_findings": 0,
+    "major_findings": 32,
+    "minor_findings": 73,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1201-1300. Do not repair any logged finding until all 2492 targets have been audited."
+}

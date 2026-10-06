@@ -50,3 +50,18 @@ Stage3B is complete. Next major stage: **Stage3C disposition closure** across al
 - SHA-256: `b254d17d84097ade53854ae541693cbb895bac0d37d5e75b3e7501080fa3d19a`
 - Library persistence: **PENDING** because the Library upload bridge returned `container_session_expired` twice; no further retry was made this turn.
 - Next: retry exact Stage4 Library persistence/rematerialization, then **Stage5 projection + clean-delivery anti-bypass/package gates**.
+
+
+## Stage5 projection + clean delivery
+
+- Status: **PASS**
+- Stage4 Library durability repaired first: **PASS exact SHA-256 + byte compare**
+- Projection: **292/292 `de-vocabulary` + `gfp-vocabulary-neutral@1`**
+- Kombinationen: **1250 accepted items**, **292/292 exactly one visible `Kombinationen` section**, **0 visible legacy Rektion/Kollokationen/NVV**
+- v3.3.6 clean-delivery builder: **PASS** (source occurrence, identity closure, candidate ledger, enrichment completeness, unified vocabulary)
+- Successor projection + lineage preflight: **PASS**
+- Stage5 checkpoint: `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-PASS-CHECKPOINT.zip`, SHA-256 `8f472a96fefd2b89716d50de3b3f4cb0896102f03657044cfa21a9966b1d5623`
+- Clean delivery: `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-CLEAN-DELIVERY.zip`, SHA-256 `a7f59a910cb468e0bad61136bdedbc024fda88c886d6aa3fc5fb4f361ed8b690`
+- Both Library rematerializations: **PASS exact SHA-256 + byte compare**
+- Runtime binding: **deferred to Stage6 CURRENT**
+- Next: **Stage6 exact CURRENT runtime import/presentation/persistence acceptance; never downgrade.**

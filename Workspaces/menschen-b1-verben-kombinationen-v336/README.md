@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage4 Rerun1 INDEPENDENT REAUDIT PASS — all 9 prior evidence-binding findings resolved; Stage5 is now allowed**.
+Current state: **Stage5 ANTI-BYPASS / CLEAN DELIVERY PASS — Stage6 runtime acceptance is now allowed**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -101,3 +101,23 @@ Independent rerun from exact Stage3C Repair1 bytes: **PASS**.
 - Audit artifact SHA-256: `07d6fba865c351d11c2bcc00cfbc62f8d6800f76d1a8177361eb0a3ef3e2accd`.
 
 Stage5 is now allowed.
+
+
+## Stage5 anti-bypass / clean delivery PASS
+
+Status: **PASS**.
+
+- Exact content parent: Stage3C Repair1 ACCEPTED SHA-256 357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce.
+- Stage4 Rerun1 authority: PASS, evidence binding 2123/2123, prior findings 9/9 resolved.
+- Direct-import TSV remains byte-identical to Stage3C Repair1: 469d21a0d26db81f90b0e4dbaeca6aa9e9e19bc12a93d54eb9e17792cdebdee6.
+- Neutral vocabulary envelope: 395/395 de-vocabulary; presentation contract 395/395 gfp-vocabulary-neutral@1.
+- Normative Tools/build_clean_delivery_v3_3_6.py reran unified vocabulary, source-occurrence, identity-closure, candidate-ledger and enrichment-completeness gates: PASS.
+- Prevention projection, immutable-parent lineage and package preflights: PASS.
+- Fail-closed controls: missing completeness rejected; non-neutral german-verb rejected before delivery.
+- Explicit Stage5 membership projection: 395 cards / 836 membership records.
+- Explicit Stage5 audio projection: 393 cards with audio, 2 without audio, 439 audio-reference records, 400 unique audio refs.
+- Clean-delivery ACCEPTED SHA-256: c0862281e3b092e54bdb447e498e73cad96cdd8bdeef9811628608cef3f1c086; Library rematerialization exact-byte PASS.
+- Stage5 checkpoint SHA-256: 18d9a2e7b4b81be1690c77e774c80a1bee65a5e68f4f2b86dfcded4140df1a20.
+- Content mutation at Stage5: none. Runtime acceptance: not run.
+
+Next: **Stage6 Runtime & Presentation Acceptance**. Re-resolve CURRENT at execution time and test the exact Stage5 ACCEPTED clean-delivery artifact. Never downgrade to LAST_FULLY_VERIFIED; do not start Stage7 until Stage6 completes.

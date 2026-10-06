@@ -32,3 +32,21 @@ Stage3B is complete. Next major stage: **Stage3C disposition closure** across al
 - Content mutation vs Batch15: **NONE**; accepted TSV byte-identical
 - Rejection/non-surfacing memory persisted: **30 records / 31 target instances**
 - Next: **Stage4 independent linguistic/provenance/completeness re-audit**.
+
+
+## Stage4 independent re-audit
+
+- Status: **PASS AFTER BOUNDED REPAIR**
+- Input: exact Stage3C CLOSED artifact, SHA-256 `663be2a46e608001b6e3bc2ae9f99432d2858bc04c9a037ff0e1983981be6806`
+- Independently reviewed: **292 targets / 1255 Stage3C Kombinationen**
+- Removed after Stage4 review: **5** weak/redundant items
+- Accepted after repair: **1250**
+- Origins: **1154 parent examples + 74 parent canonical relations + 22 curated**
+- Dispositions remain: **292 VERIFIED_PRESENT / 0 CLOSED_NO_FORCE / 0 NOT_APPLICABLE / 0 unresolved**
+- Projection: **292/292 exactly one Kombinationen section; 0 visible legacy Rektion/Kollokationen/NVV**
+- Differential vs Stage3C: **5 rows changed; 287/287 other rows byte-identical; only details + custom_fields changed**
+- Canonical identity, examples, relations, IDs/order and source lineage: **UNCHANGED**
+- Artifact: `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-PASS.zip`
+- SHA-256: `b254d17d84097ade53854ae541693cbb895bac0d37d5e75b3e7501080fa3d19a`
+- Library persistence: **PENDING** because the Library upload bridge returned `container_session_expired` twice; no further retry was made this turn.
+- Next: retry exact Stage4 Library persistence/rematerialization, then **Stage5 projection + clean-delivery anti-bypass/package gates**.

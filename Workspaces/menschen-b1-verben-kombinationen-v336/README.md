@@ -68,3 +68,16 @@ Stage4 recomputed the exact Stage3C authority independently. Structural/source/i
 - mb1m-lu-0014 item 2: relation mb1m-r1p2-b0001-032 -> mb1m-r1p2-b0001-034
 
 No DE/FA/EN learner text or immutable canonical relation needs to change. Stage5 is blocked until these 9 evidence_refs and their matching Stage3C candidate-ledger refs are repaired, Stage3C is reclosed on the new exact hashes, and Stage4 is rerun.
+
+## Stage3C Repair1 reclosure
+
+Status: **PASS — provenance-only repair/reclosure**.
+
+The independent Stage4 audit found 9 wrong neighboring canonical relation bindings. Repair1 changes only those 9 Kombinationen evidence refs across 8 cards and mirrors the same 9 refs in the accepted candidate ledger. Learner-visible DE/FA/EN text, details, canonical objects/relations/examples, IDs, order, lessons and decks are unchanged. 387/387 non-target TSV rows remain byte-identical to the previous Stage3C.
+
+Post-repair: **2123/2123 evidence bindings PASS**, **6552/6552 disposition cells FINAL**, **0 unresolved**, official completeness and candidate-ledger closure validators **PASS**.
+
+Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-Repair1-DISPOSITION-CLOSURE-ACCEPTED.zip`  
+SHA-256: `357531af0f4719e4e1db0587dbba1c5e1b85d14e2511bac9ff3cb25f0307dbce`
+
+Next: **rerun Stage4 independently from the exact Repair1 ACCEPTED bytes**. Stage5 remains blocked until that Stage4 rerun passes.

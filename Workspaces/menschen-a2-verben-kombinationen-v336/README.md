@@ -381,3 +381,21 @@ Consolidated package:
 - runtime-final claim: **NO**
 
 This consolidated package is the preferred single archive to keep for the completed Menschen A2 Verben content workstream. The embedded Repair3 tree remains historical/immutable; the embedded Current-Content-Final tree is the active content authority.
+
+
+## v459-R93 runtime presentation acceptance
+
+**AUTOMATED PASS; real-profile confirmation pending**
+
+- CURRENT runtime: `v459-R93`
+- runtime artifact SHA-256: `5d2bf1a345b25ab9acc5cdfa7f8eab028bed9a504e6bd2bf11d0942f1026d120`
+- exact A2 import pack SHA-256: `5b81d3a0008de948c0a2f418f6e6568398f9420ce7de6c6ad8849e1ba9a26143`
+- import TSV is byte-exact to the Content-Final authority (`facc902209744736979a923a4c61a764402d479beaa3938e741f6170e0174abd`)
+- production TSV parser: **292/292 cards, 1439/1439 Kombinationen, 0 parse errors**
+- Study: **292/292 exactly one Kombinationen**, separate Rektion/Kollokationen/NVV = **0**
+- Quick: **292/292 exactly one Kombinationen**, separate Rektion/Kollokationen/NVV = **0**
+- targeted browser regression: **17/17 PASS**; vocabulary envelope **21/21 PASS**; layout regression **20/20 PASS**
+- runtime package CRC/checksums/assets/JS syntax/shell cohort: **PASS**
+- Library rematerialization of runtime/import/report: **exact byte parity PASS**
+- semantic/canonical authority mutation: **NONE**
+- remaining boundary: user same-profile import + visual/reload confirmation; `release_final=false` until that passes.

@@ -1,17 +1,20 @@
 # 250 Verben mit Präpositionen — Kombinationen successor
 
-Status: **Stage3B Batch13 PASS** under German Content Production Kit v3.3.6.
+Status: **Stage3B COMPLETE — Batch15 PASS** under German Content Production Kit v3.3.6.
 
 This workstream is an explicit semantic successor to the immutable 292-card LOCKED release. It adopts `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` without mutating the historical parent.
 
-Current coverage: **260/292 cards**, **1117 accepted Kombinationen**, **32 cards remaining**.
+Current coverage: **292/292 cards**, **1255 accepted Kombinationen**, **0 Stage3B cards remaining**.
 
-Batch13 covers `usrin-vmp-u-0241..0260`. It changes only `details` + `custom_fields` on those 20 targets; the other **272/272** raw TSV lines are byte-identical to Batch12 ACCEPTED, and prior Batch01–12 rows **240/240** remain byte-identical. Canonical identity, examples, relations and source lineage remain unchanged.
+Batch15 covers `usrin-vmp-u-0281..0292`. It changes only `details` + `custom_fields` on those 12 targets; the other **280/280** raw TSV lines are byte-identical to Batch14 ACCEPTED, and prior Batch01–14 rows **280/280** remain byte-identical. Canonical identity, examples, relations and source lineage remain unchanged.
 
-Batch13: **20 cards / 85 accepted items / 85 FA + EN translations / 20/20 one visible Kombinationen section / QA PASS**. Provenance is parent-grounded only: **80 parent-example items + 5 parent-canonical-relation items + 0 curated items**.
+Batch15: **12 cards / 54 accepted items / 54 FA + EN translations / 12/12 one visible Kombinationen section / QA PASS**. Provenance is parent-grounded only: **48 parent-example items + 6 parent-canonical-relation items + 0 curated items**.
 
-Useful inherited relations surfaced in this batch include `einen Vergleich anstellen`, `Klage erheben`, `eine Forderung stellen`, `eine Sache auf einen späteren Zeitpunkt verschieben`, and `eine Versicherung abschließen`. Near-duplicate inherited collocations remain backend-only.
+Global Stage3B projection: **292/292 cards** have exactly one learner-visible `Kombinationen` section; visible legacy `Rektion` / `Kollokationen` / `Nomen-Verb-Verbindungen` sections are **0**. Backend typing/provenance and preserved parent sections remain structured.
 
-Learner-facing rule: exactly one section titled **Kombinationen**. Legacy visible Rektion/Kollokationen/NVV entries are preserved in backend metadata instead of separate visible subsections.
+Portable Batch15 artifact:
+- `250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Batch15-usrin-vmp-u-0281-0292-ACCEPTED.zip`
+- SHA-256 `f10fd5c20008b3a2564f946d43ea56e49cb62b610a8fdda57d30b17164c3d251`
+- Library rematerialization: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**
 
-Next: Batch14 `usrin-vmp-u-0261..usrin-vmp-u-0280`.
+Stage3B is complete. Next major stage: **Stage3C disposition closure** across all 292 targets. Stage4 must not start until Stage3C explicitly closes every Kombinationen disposition.

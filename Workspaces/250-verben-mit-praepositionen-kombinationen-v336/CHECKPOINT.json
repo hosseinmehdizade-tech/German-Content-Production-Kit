@@ -1,10 +1,10 @@
 {
   "schema": "vmp-kombinationen-checkpoint@1.0.0",
-  "status": "STAGE4_INDEPENDENT_REAUDIT_PASS_GIT_SYNCED_LIBRARY_PENDING",
+  "status": "STAGE5_PROJECTION_CLEAN_DELIVERY_PASS_LIBRARY_AND_GIT_SYNCED",
   "quality_state": "PASS",
   "framework": "v3.3.6",
   "workstream": "250-verben-mit-praepositionen-kombinationen-v336",
-  "stage": "4_INDEPENDENT_LINGUISTIC_PROVENANCE_COMPLETENESS_QA",
+  "stage": "5_PROJECTION_CLEAN_DELIVERY",
   "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
   "branch": "250-verben-mit-praepositionen-kombinationen-v336",
   "immutable_parent": {
@@ -14,9 +14,9 @@
     "status": "LOCKED"
   },
   "immediate_parent": {
-    "artifact": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSED.zip",
-    "sha256": "663be2a46e608001b6e3bc2ae9f99432d2858bc04c9a037ff0e1983981be6806",
-    "verification": "PASS_EXACT_SHA256"
+    "artifact": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "sha256": "b254d17d84097ade53854ae541693cbb895bac0d37d5e75b3e7501080fa3d19a",
+    "verification": "PASS_EXACT_SHA256_AND_LIBRARY_BYTE_COMPARE"
   },
   "stage3b": {
     "status": "COMPLETE_292_OF_292_PASS",
@@ -56,48 +56,74 @@
   },
   "mutation_boundary": "Stage4 changed only details+custom_fields on 5 audited target rows to remove weak/redundant Kombinationen; 287/287 other raw TSV rows are byte-identical to Stage3C. Canonical/examples/relations/IDs/order/source lineage unchanged.",
   "artifact": {
-    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
-    "sha256": "b254d17d84097ade53854ae541693cbb895bac0d37d5e75b3e7501080fa3d19a",
-    "size_bytes": 346168,
-    "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY"
+    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-PASS-CHECKPOINT.zip",
+    "sha256": "8f472a96fefd2b89716d50de3b3f4cb0896102f03657044cfa21a9966b1d5623",
+    "size_bytes": 780777,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000234881f4b13ac50c0ae033d2",
+    "library_stable_id": "libfile_e733b362d18881919e36643b494de48d",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "persistence": {
-    "library": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_ONE_CORRECTED_RETRY",
+    "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "PASS"
   },
   "runtime": {
     "CURRENT_observed_for_context": "v465-R99",
     "LAST_FULLY_VERIFIED": "v451-R85",
-    "stage3c_runtime_acceptance": "NOT_APPLICABLE_CONTENT_ONLY",
-    "stage6_rule": "Re-resolve CURRENT at Stage6; never downgrade."
+    "stage5_runtime_acceptance": "DEFERRED_TO_STAGE6",
+    "stage6_rule": "Re-resolve CURRENT and exact portable artifact at Stage6; never downgrade."
   },
-  "next_action": "Retry exact Stage4 Library persistence/rematerialization before Stage5. After Library PASS, Stage5 projection and clean-delivery anti-bypass/package gates.",
+  "next_action": "Stage6 exact CURRENT runtime presentation/import acceptance. Re-resolve CURRENT and exact runtime artifact at Stage6; never downgrade.",
   "stage4": {
+    "status": "PASS_AFTER_BOUNDED_REPAIR_LIBRARY_VERIFIED",
     "targets": 292,
-    "items_before": 1255,
-    "rejected_removed": 5,
-    "items_after": 1250,
-    "origin_counts": {
-      "PARENT_GENERATED_EXAMPLE": 1154,
-      "PARENT_CANONICAL_RELATION": 74,
-      "CURATED_PEDAGOGICAL": 22
+    "accepted_items": 1250,
+    "artifact_sha256": "b254d17d84097ade53854ae541693cbb895bac0d37d5e75b3e7501080fa3d19a",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage5": {
+    "status": "PASS",
+    "projection": {
+      "cards": 292,
+      "accepted_kombinationen": 1250,
+      "card_type": "de-vocabulary 292/292",
+      "presentation_contract": "gfp-vocabulary-neutral@1 292/292",
+      "learner_visible_kombinationen": "292/292 exactly one",
+      "learner_visible_legacy_sections": 0,
+      "successor_lineage": "PASS",
+      "canonical_examples_relations_ids_order_source_lineage": "UNCHANGED"
     },
-    "dispositions": {
-      "VERIFIED_PRESENT": 292,
-      "CLOSED_NO_FORCE": 0,
-      "NOT_APPLICABLE": 0,
-      "UNRESOLVED": 0
+    "gates": {
+      "official_v3_3_6_clean_delivery_builder": "PASS",
+      "source_occurrences": "PASS",
+      "identity_closure": "PASS",
+      "candidate_ledger": "PASS",
+      "enrichment_completeness": "PASS",
+      "unified_vocabulary_projection": "PASS",
+      "successor_projection_preflight": "PASS",
+      "successor_lineage_preflight": "PASS",
+      "clean_delivery_crc_sha256_hygiene": "PASS",
+      "checkpoint_crc_sha256_hygiene": "PASS"
     },
-    "translations": "1250/1250 DE+FA+EN PASS",
-    "provenance": "PASS",
-    "learner_visible_kombinationen": "292/292 exactly one",
-    "learner_visible_legacy_sections": 0,
-    "repaired_target_ids": [
-      "usrin-vmp-u-0056",
-      "usrin-vmp-u-0112",
-      "usrin-vmp-u-0132",
-      "usrin-vmp-u-0177",
-      "usrin-vmp-u-0247"
-    ]
+    "checkpoint": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-PASS-CHECKPOINT.zip",
+      "sha256": "8f472a96fefd2b89716d50de3b3f4cb0896102f03657044cfa21a9966b1d5623",
+      "size_bytes": 780777,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000234881f4b13ac50c0ae033d2",
+      "library_stable_id": "libfile_e733b362d18881919e36643b494de48d",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "clean_delivery": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-CLEAN-DELIVERY.zip",
+      "sha256": "a7f59a910cb468e0bad61136bdedbc024fda88c886d6aa3fc5fb4f361ed8b690",
+      "size_bytes": 782367,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Stage5-CLEAN-DELIVERY.zip",
+      "library_file_id": "file_00000000102881f48a0cba84ed532bd0",
+      "library_stable_id": "libfile_fe3cd3cea8208191b61c179b990df23d",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "runtime_binding": "DEFERRED_TO_STAGE6_CURRENT"
   }
 }

@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage3B COMPLETE — Batch25 PASS — 395/395 cards accepted**.
+Current state: **Stage3C DISPOSITION CLOSURE PASS — 395/395 targets closed, 0 unresolved cells**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -38,11 +38,16 @@ Current cumulative coverage: **395/395 cards**, **2123 accepted Kombinationen it
 
 Invariant: exactly one learner-visible `Kombinationen` section on processed cards; no separate visible Rektion/Kollokationen/NVV sections; backend kind/provenance, canonical relations, examples and source lineage remain preserved. No hard density quota is used.
 
-Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch25-mb1m-lu-0481-0500-ACCEPTED.zip`  
-SHA-256: `2811a87b4faa197b4c0a96b0d193afdcac2bb2f93ba06c382498e81fb72ec27f`
+Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Stage3C-DISPOSITION-CLOSURE-ACCEPTED.zip`  
+SHA-256: `4715a43019c0e99d91f0f256938655e7dd2063ec172b61951c100976da5bedc7`
 
 Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256 exact.
 
-Next: **Stage3C disposition closure** over all 395 cards from the exact Batch25 ACCEPTED bytes, followed by Stage4 independent reaudit.
+Stage3C closure: **6552/6552 dimension cells final; 5105 VERIFIED_PRESENT; 1447 CLOSED_NO_FORCE; 0 unresolved.** Kombinationen overlay: **395/395 VERIFIED_PRESENT, 2123 accepted items**. The Stage3C TSV is byte-identical to Batch25.
+
+Next: **Stage4 independent reaudit** from the exact Stage3C ACCEPTED bytes. Stage4 must recompute and must not trust Stage3C self-report.
 
 Stage3B completion gate: **395/395 cards have exactly one learner-visible `Kombinationen`; 0/395 retain separate visible Rektion/Kollokationen/NVV; all 395 dispositions are `VERIFIED_PRESENT`.**
+
+
+Official v3.3.6 Stage3C validators: enrichment completeness **PASS** (395 targets / 6552 cells / 0 unresolved); candidate ledger **PASS** (6114 candidates / 0 deferred at closure).

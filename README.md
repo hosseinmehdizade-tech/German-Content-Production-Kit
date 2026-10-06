@@ -485,3 +485,13 @@ Batch0002 authority reconciliation: duplicate portable candidates were resolved 
 - **260/260** prior enriched rows exact; **272/272** non-target rows byte-identical to Batch13; target mutation limited to `details` + `custom_fields`
 - Library rematerialization: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**; artifact SHA-256 `127ffb9a3f873e6154a5741f64768bf608869c56b8cc14a2e7f5c9e3cce805c5`
 - next: **Batch15 FINAL = usrin-vmp-u-0281..usrin-vmp-u-0292** from exact Batch14 bytes
+
+## 250 Verben mit Präpositionen — Kombinationen final independent audit
+
+- status: **PASS_WITH_NONBLOCKING_CAVEATS / CONTENT LOCKED**
+- final release SHA-256: `7998ac6930d3c4985c4a1e1043b1001e9102633a452066ed5b39a8e97d91f8eb`
+- independent audit SHA-256: `de1caea5553ce7a37d9c9a999786bc348b13344da7372ddf8f9c69b802fc7a8b`
+- blocking defects: **0**
+- 292 cards; 1250 Kombinationen; Stage6 37/37 PASS; Stage7 exact-final 34/34 PASS
+- Library rematerialization of the final audit: **PASS exact SHA + byte compare**
+- keep LOCKED bytes immutable; any future packaging/import-metadata improvement is a successor workstream.

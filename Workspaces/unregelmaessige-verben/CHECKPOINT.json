@@ -2,7 +2,7 @@
   "schema": "unregelmaessige-verben-migration-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
   "date": "2026-10-05",
-  "milestone": "FINAL_CONTENT_DELIVERY_HANDOFF",
+  "milestone": "ORGANIZED_FINAL_CONTENT_DELIVERY_HANDOFF",
   "quality_state": "PASS",
   "framework": "v3.3.6",
   "parent_content_version": "v1.2.0",
@@ -47,10 +47,10 @@
     "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES"
   ],
   "persistence": {
-    "git": "IN_SYNC_PENDING_THIS_COMMIT",
+    "git": "IN_SYNC_PENDING_ORGANIZED_DELIVERY_COMMIT",
     "library": "FINAL_DELIVERY_AND_DIRECT_IMPORT_IN_SYNC"
   },
-  "next_action": "NONE for content delivery. Optional future runtime certification may resume from Stage6 if explicitly requested.",
+  "next_action": "NONE for content delivery. Optional future Stage6 runtime certification must re-resolve CURRENT runtime.",
   "clean_delivery": {
     "path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.2.0-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
     "file_id": "file_000000001ee88210a2dcccf1e2c599b7",
@@ -247,5 +247,22 @@
     "content_status": "OFFICIAL_V3_3_6_STAGE5_PASS",
     "runtime_acceptance": "NOT_COMPLETED; NOT_REQUIRED_FOR_CONTENT_HANDOFF",
     "semantic_mutations": 0
+  },
+  "organized_final_delivery": {
+    "filename": "Unregelmaessige-Verben-v1.2.0-v3.3.6-ORGANIZED-FINAL-DELIVERY.zip",
+    "sha256": "c5f87fb275ba8e4ea413843cfa321bb7a8ae3257c9d33bbbca53a7df5e5e001d",
+    "size_bytes": 363779,
+    "basis_original_final_delivery_sha256": "656f7477e65e6c090ee17a11c2c4d8644b7e829386635c3afe94b7daaca61dcb",
+    "authoritative_direct_import_sha256": "5ec6770bfab47e0d0876b6e4bac2175315a67db2fd48a79f624b700538e51bd6",
+    "direct_import_byte_identity_preserved": true,
+    "packaging_only_reorganization": true,
+    "semantic_content_changed": false,
+    "organization": "single top-level directory; 01-IMPORT contains the only import TSV; technical provenance is isolated under 02-TECHNICAL-AUDIT; redundant inner duplicate TSV removed",
+    "validation": {
+      "zip_crc": "PASS",
+      "fresh_extract_sha256sums": "PASS",
+      "import_byte_identity": "PASS",
+      "structural_audit": "174 rows / 23 columns / unique IDs / order 1..174 / 696 DE+FA+EN examples / 902 canonical relations / 0 dangling relation targets"
+    }
   }
 }

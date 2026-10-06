@@ -1,6 +1,6 @@
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
-Current state: **Stage3B Batch14 PASS — 236/395 cards accepted**.
+Current state: **Stage3B Batch15 PASS — 252/395 cards accepted**.
 
 Immutable root parent: `Menschen-B1-Verben-v3.3.6-Repair2-GFP-v456-RELOCKED.zip`  
 SHA-256: `588f0ef9ef81668383c7186936472584f1063bccb5a888c8ff75a9526343261a`
@@ -22,14 +22,15 @@ Completed cumulative batches:
 - Batch12 `mb1m-lu-0221..mb1m-lu-0240`: 17 active cards / 85 items.
 - Batch13 `mb1m-lu-0241..mb1m-lu-0260`: 15 active cards / 86 items; absent IDs 0245, 0250, 0252, 0256, 0259.
 - Batch14 `mb1m-lu-0261..mb1m-lu-0280`: 15 active cards / 79 items; absent IDs 0271, 0273, 0274, 0278, 0279.
+- Batch15 `mb1m-lu-0281..mb1m-lu-0300`: 16 active cards / 86 items; absent IDs 0284, 0298, 0299, 0300.
 
-Current cumulative coverage: **236/395 cards**, **1229 accepted Kombinationen items**, **159 cards remaining**.
+Current cumulative coverage: **252/395 cards**, **1315 accepted Kombinationen items**, **143 cards remaining**.
 
 Invariant: exactly one learner-visible `Kombinationen` section on processed cards; no separate visible Rektion/Kollokationen/NVV sections; backend kind/provenance, canonical relations, examples and source lineage remain preserved. No hard density quota is used.
 
-Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch14-mb1m-lu-0261-0280-ACCEPTED.zip`  
-SHA-256: `6f2ca056ab0690c2c61f5a7cb4ec98f4fe2036dedc081fd0b0066faf8ffd4dc1`
+Latest accepted artifact: `Menschen-B1-Verben-v3.3.6-Kombinationen-Batch15-mb1m-lu-0281-0300-ACCEPTED.zip`  
+SHA-256: `148401438614f9948b1c8908d251ec7a37dc6a68a1d6db48c4e5280f04d65903`
 
 Library rematerialization of the ACCEPTED artifact is byte-identical and SHA-256 exact.
 
-Next: Stage3B Batch15 nominal range `mb1m-lu-0281..mb1m-lu-0300`, starting from the exact Batch14 ACCEPTED bytes.
+Next: Stage3B Batch16 nominal range `mb1m-lu-0301..mb1m-lu-0320`, starting from the exact Batch15 ACCEPTED bytes.

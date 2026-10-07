@@ -196,7 +196,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_PHASE_B_CHANGED333_100PCT_VERIFIED__33_RESIDUALS_REPAIR_REQUIRED",
+      "status": "STAGE4_PHASE_B_RESIDUAL33_REPAIRED_100PCT_REVERIFIED_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -218,7 +218,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Repair the 33 confirmed residual targets on the exact Phase B successor, restore source fidelity for occurrence 00886 without editing frozen Phase A reports, recompute only affected Stage3C cells, then reverify all 33 residual targets.",
+      "next_action": "Run corpus-wide recurrent-family sweeps for every defect family evidenced by the Final Comprehensive Audit and changed-target verification. Do not start the deterministic >=500 unchanged-target sample until all recurrent-family sweeps are exhausted.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -246,19 +246,21 @@
           "library_binary_sync": "PENDING_CONTAINER_SESSION_UNAVAILABLE",
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         },
-        "current_operation": "PHASE_B_REPAIR_VERIFICATION_RESIDUALS",
+        "current_operation": "PHASE_B_CORPUS_WIDE_RECURRENT_FAMILY_SWEEPS",
         "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md"
       },
-      "last_observed_stage": "Stage4 Phase B — 100% verification of all 333 changed targets complete; 33 residual targets confirmed",
-      "last_observed_note": "Verification gate is intentionally FAIL_REPAIR_REQUIRED, not PASS. 300/333 changed targets are clean; 33 residuals remain. One is a source-fidelity error at occurrence 00886: the PDF really contains 'etw,' and raw source/provenance must not be rewritten to 'etw.'.",
+      "last_observed_stage": "Stage4 Phase B — 33 changed-target verification residuals repaired and 100% reverified PASS",
+      "last_observed_note": "All 33 residual targets are closed: 6 learner-language, 1 source-fidelity, and 26 structure repairs. Source occurrence 00886 now preserves raw 'etw,' while learner canonical remains normalized 'etw.'. Stage3C remains closed with 0 unresolved cells.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
-        "sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
-        "size_bytes": 3568114,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000beb081f4bfb1f2996084ab85",
-        "library_stable_id": "libfile_89b768af8efc8191b2a9cb80e6dc2ef9",
-        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        "filename": "NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
+        "sha256": "523c83aab725ea00bfb53d220ce3fd947302e924be2de9c5d7d3db1aa324b7b5",
+        "size_bytes": 4950796,
+        "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+        "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000de6c81f4bccf7549fd568485",
+        "library_stable_id": "libfile_34b725f573948191b36ca4c8d7682e40",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "stage2": {
         "status": "PASS_REPAIRED_SUCCESSOR_R14",
@@ -293,12 +295,12 @@
         "not_applicable_cells": 2492
       },
       "stage4": {
-        "status": "STAGE4_PHASE_B_CHANGED333_100PCT_VERIFIED__33_RESIDUALS_REPAIR_REQUIRED",
+        "status": "STAGE4_PHASE_B_RESIDUAL33_REPAIRED_100PCT_REVERIFIED_PASS",
         "rounds_completed": 6,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Repair the 33 confirmed residual targets on the exact Phase B successor, restore source fidelity for occurrence 00886 without editing frozen Phase A reports, recompute only affected Stage3C cells, then reverify all 33 residual targets.",
+        "next": "Run corpus-wide recurrent-family sweeps for every defect family evidenced by the Final Comprehensive Audit and changed-target verification. Do not start the deterministic >=500 unchanged-target sample until all recurrent-family sweeps are exhausted.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
           "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
@@ -1357,7 +1359,7 @@
           ]
         },
         "phase_b": {
-          "status": "PASS_ALL333_APPLIED_STAGE3C_RECOMPUTED",
+          "status": "PASS_ALL333_APPLIED_CHANGED333_VERIFIED_RESIDUAL33_CLOSED",
           "findings_applied": 333,
           "unique_targets_changed": 333,
           "severity": {
@@ -1366,20 +1368,17 @@
             "blocker": 0
           },
           "frozen_parent_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-          "successor_core_sha256": "a905d490ae408d2ec6c0b068b654ec16edb0e2c07dc53a3ec9bae2f8c563eb4a",
-          "canonical_sha256": "3742ef5de7630c22a648bfd6bc517fae8f762f67456b93a93eefe55c3d9ab720",
+          "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+          "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
           "binding_errata": 1,
           "source_canonical_repairs_added": 9,
           "stage3c": {
-            "affected_dimension_cells": 621,
-            "status_transitions": 212,
-            "evidence_refreshes": 409,
-            "unresolved_cells": 0,
             "statuses": {
               "VERIFIED_PRESENT": 18802,
               "CLOSED_NO_FORCE": 21070,
               "NOT_APPLICABLE": 2492
-            }
+            },
+            "unresolved_cells": 0
           },
           "content_edits_applied": 333,
           "artifact": {
@@ -1394,64 +1393,28 @@
           "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-ALL333-BATCH-REPAIR-PASS.json",
           "next_action_id": "PHASE_B_VERIFY_CHANGED_TARGETS",
           "changed_target_verification": {
-            "status": "FAIL_REPAIR_REQUIRED",
+            "status": "PASS_AFTER_RESIDUAL33_REPAIR_REVERIFICATION",
             "changed_targets_verified": 333,
             "coverage_percent": 100,
-            "clean_targets": 300,
-            "residual_targets": 33,
-            "residual_original_severity": {
-              "major": 29,
-              "minor": 4,
-              "blocker": 0
-            },
-            "residual_repair_seqs": [
-              3,
-              58,
-              81,
-              105,
-              106,
-              115,
-              140,
-              143,
-              151,
-              194,
-              198,
-              200,
-              202,
-              238,
-              243,
-              246,
-              247,
-              248,
-              257,
-              261,
-              267,
-              288,
-              289,
-              295,
-              305,
-              306,
-              314,
-              315,
-              316,
-              325,
-              326,
-              327,
-              329
-            ],
-            "deterministic_invariants": "PASS",
-            "source_fidelity_failure_seq81": true,
-            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-CHANGED333-100PCT-VERIFICATION-FINDINGS.json",
+            "clean_targets": 333,
+            "residual_targets": 0,
+            "initial_residual_targets": 33,
+            "residual_repair_wave_targets": 33,
+            "residual_reverified": 33,
+            "source_fidelity_corrections": 1,
             "artifact": {
-              "filename": "NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
-              "sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
-              "size_bytes": 3568114,
-              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
-              "library_file_id": "file_00000000beb081f4bfb1f2996084ab85",
-              "library_stable_id": "libfile_89b768af8efc8191b2a9cb80e6dc2ef9",
-              "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+              "filename": "NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
+              "sha256": "523c83aab725ea00bfb53d220ce3fd947302e924be2de9c5d7d3db1aa324b7b5",
+              "size_bytes": 4950796,
+              "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+              "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+              "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
+              "library_file_id": "file_00000000de6c81f4bccf7549fd568485",
+              "library_stable_id": "libfile_34b725f573948191b36ca4c8d7682e40",
+              "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
             },
-            "next_action_id": "PHASE_B_REPAIR_VERIFICATION_RESIDUALS"
+            "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-RESIDUAL33-REPAIRED-100PCT-REVERIFIED-PASS.json",
+            "next_action_id": "PHASE_B_CORPUS_WIDE_RECURRENT_FAMILY_SWEEPS"
           }
         }
       },
@@ -1465,13 +1428,13 @@
       "persistence": {
         "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "latest_git_metadata": "SYNCED",
-        "latest_local_artifact_sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
+        "latest_local_artifact_sha256": "523c83aab725ea00bfb53d220ce3fd947302e924be2de9c5d7d3db1aa324b7b5",
         "git": "IN_SYNC",
         "latest_stage4_final_audit_checkpoint_commit": "533bb2eef7e599c9ce274507a3b46f41d8fd6d43",
         "latest_portable_checkpoint_library": "PASS_UPLOAD"
       },
       "phase_b": {
-        "status": "PASS_ALL333_APPLIED_STAGE3C_RECOMPUTED",
+        "status": "PASS_ALL333_APPLIED_CHANGED333_VERIFIED_RESIDUAL33_CLOSED",
         "findings_applied": 333,
         "unique_targets_changed": 333,
         "severity": {
@@ -1480,20 +1443,17 @@
           "blocker": 0
         },
         "frozen_parent_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-        "successor_core_sha256": "a905d490ae408d2ec6c0b068b654ec16edb0e2c07dc53a3ec9bae2f8c563eb4a",
-        "canonical_sha256": "3742ef5de7630c22a648bfd6bc517fae8f762f67456b93a93eefe55c3d9ab720",
+        "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+        "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
         "binding_errata": 1,
         "source_canonical_repairs_added": 9,
         "stage3c": {
-          "affected_dimension_cells": 621,
-          "status_transitions": 212,
-          "evidence_refreshes": 409,
-          "unresolved_cells": 0,
           "statuses": {
             "VERIFIED_PRESENT": 18802,
             "CLOSED_NO_FORCE": 21070,
             "NOT_APPLICABLE": 2492
-          }
+          },
+          "unresolved_cells": 0
         },
         "content_edits_applied": 333,
         "artifact": {
@@ -1508,64 +1468,28 @@
         "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-ALL333-BATCH-REPAIR-PASS.json",
         "next_action_id": "PHASE_B_VERIFY_CHANGED_TARGETS",
         "changed_target_verification": {
-          "status": "FAIL_REPAIR_REQUIRED",
+          "status": "PASS_AFTER_RESIDUAL33_REPAIR_REVERIFICATION",
           "changed_targets_verified": 333,
           "coverage_percent": 100,
-          "clean_targets": 300,
-          "residual_targets": 33,
-          "residual_original_severity": {
-            "major": 29,
-            "minor": 4,
-            "blocker": 0
-          },
-          "residual_repair_seqs": [
-            3,
-            58,
-            81,
-            105,
-            106,
-            115,
-            140,
-            143,
-            151,
-            194,
-            198,
-            200,
-            202,
-            238,
-            243,
-            246,
-            247,
-            248,
-            257,
-            261,
-            267,
-            288,
-            289,
-            295,
-            305,
-            306,
-            314,
-            315,
-            316,
-            325,
-            326,
-            327,
-            329
-          ],
-          "deterministic_invariants": "PASS",
-          "source_fidelity_failure_seq81": true,
-          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-CHANGED333-100PCT-VERIFICATION-FINDINGS.json",
+          "clean_targets": 333,
+          "residual_targets": 0,
+          "initial_residual_targets": 33,
+          "residual_repair_wave_targets": 33,
+          "residual_reverified": 33,
+          "source_fidelity_corrections": 1,
           "artifact": {
-            "filename": "NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
-            "sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
-            "size_bytes": 3568114,
-            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
-            "library_file_id": "file_00000000beb081f4bfb1f2996084ab85",
-            "library_stable_id": "libfile_89b768af8efc8191b2a9cb80e6dc2ef9",
-            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+            "filename": "NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
+            "sha256": "523c83aab725ea00bfb53d220ce3fd947302e924be2de9c5d7d3db1aa324b7b5",
+            "size_bytes": 4950796,
+            "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+            "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000de6c81f4bccf7549fd568485",
+            "library_stable_id": "libfile_34b725f573948191b36ca4c8d7682e40",
+            "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
           },
-          "next_action_id": "PHASE_B_REPAIR_VERIFICATION_RESIDUALS"
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-RESIDUAL33-REPAIRED-100PCT-REVERIFIED-PASS.json",
+          "next_action_id": "PHASE_B_CORPUS_WIDE_RECURRENT_FAMILY_SWEEPS"
         }
       }
     },

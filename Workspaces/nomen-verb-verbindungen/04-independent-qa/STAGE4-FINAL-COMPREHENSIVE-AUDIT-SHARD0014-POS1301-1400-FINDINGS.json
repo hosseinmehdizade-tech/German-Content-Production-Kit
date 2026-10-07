@@ -1,0 +1,360 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T02:01:00+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0014",
+    "positions": "1301-1400",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      15,
+      16
+    ],
+    "printed_pages": [
+      13,
+      14
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers the K–L range relevant to this shard. Positions 1325 and 1367 retain previously documented learner-layer source repairs. A new source-level case defect is confirmed at position 1388: the PDF/source surface has 'jdm. hinters Licht führen', while standard valency and all four learner examples require accusative 'jdn.'."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1312,
+      "target_id": "dah-nvv-exp-01302",
+      "canonical_form": "außer Kraft setzen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "die Gültigkeit einer Regel oder Vorschrift beenden",
+        "current_argument_slots": [],
+        "example_objects": [
+          "die umstrittene Vorschrift",
+          "mehrere alte Bestimmungen",
+          "die Genehmigung",
+          "die frühere Regelung"
+        ],
+        "stage3c_disposition": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The learner structure treats the construction as slotless although the thing whose validity is ended is a central variable object in the definition and all four examples.",
+      "repair_direction": "Preserve the raw source surface in provenance and expose the theme/object in learner structure, e.g. 'etw. außer Kraft setzen'."
+    },
+    {
+      "position": 1314,
+      "target_id": "dah-nvv-exp-01304",
+      "canonical_form": "in Kraft setzen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas gültig oder wirksam machen",
+        "current_argument_slots": [],
+        "example_objects": [
+          "die neue Regelung",
+          "die geänderte Richtlinie",
+          "die neue Parkordnung",
+          "die Verordnung"
+        ],
+        "stage3c_disposition": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The learner structure omits the variable object that is put into force, despite the definition and every example explicitly realizing that role.",
+      "repair_direction": "Preserve the source surface and add the theme/object to learner structure, e.g. 'etw. in Kraft setzen'."
+    },
+    {
+      "position": 1328,
+      "target_id": "dah-nvv-exp-01318",
+      "canonical_form": "Krieg führen mit+Dat.",
+      "severity": "MINOR",
+      "category": "ENGLISH_GLOSS_AND_EXAMPLE_IDIOMATICITY",
+      "fields": [
+        "gloss_en",
+        "examples[0].en",
+        "examples[1].en",
+        "examples[2].en",
+        "examples[3].en"
+      ],
+      "evidence": {
+        "definition_de": "militärisch gegen einen anderen Staat oder Gegner kämpfen",
+        "gloss_en": "to wage war with someone",
+        "example_pattern": "wage(d) war with ..."
+      },
+      "finding": "The English learner layer calques German mit+Dat. as 'wage war with'. In ordinary English the action is naturally expressed as waging war against/on an opponent; 'be at war with' is a different construction.",
+      "repair_direction": "Keep the German source rection unchanged, but make the English gloss/examples idiomatic with 'wage war against/on ...' where appropriate."
+    },
+    {
+      "position": 1343,
+      "target_id": "dah-nvv-exp-01333",
+      "canonical_form": "in der Lage sein",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "examples[1].fa"
+      ],
+      "evidence": {
+        "example_de": "Nach der Schulung war sie in der Lage, das Programm selbstständig zu bedienen.",
+        "example_fa": "او پس از آموزش قادر بود برنامه را مستقلاً کار کند."
+      },
+      "finding": "The Persian sentence is grammatically and idiomatically awkward: 'برنامه را ... کار کند' is a German-shaped rendering rather than natural Persian for operating/using a program.",
+      "repair_direction": "Use natural Persian such as working with/using the program independently, while preserving the German content."
+    },
+    {
+      "position": 1351,
+      "target_id": "dah-nvv-exp-01341",
+      "canonical_form": "an Land bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas vom Wasser ans Ufer oder an festen Boden bringen",
+        "current_argument_slots": [],
+        "example_objects": [
+          "den Fang",
+          "die Kisten",
+          "die Verletzten",
+          "das beschädigte Boot"
+        ],
+        "stage3c_disposition": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The learner structure hides the central variable person/thing being brought ashore, even though the definition and all four examples realize it.",
+      "repair_direction": "Add the theme/object participant (jdn./etw.) to learner structure while preserving the exact source surface in provenance."
+    },
+    {
+      "position": 1354,
+      "target_id": "dah-nvv-exp-01344",
+      "canonical_form": "Land gewinnen",
+      "severity": "MAJOR",
+      "category": "SOURCE_CLASSIFICATION_IDIOM_SENSE_COVERAGE_ALIGNMENT",
+      "fields": [
+        "definition_de",
+        "meaning_fa",
+        "gloss_en",
+        "examples[0]",
+        "examples[1]",
+        "examples[2]",
+        "examples[3]"
+      ],
+      "evidence": {
+        "source_classification": "idiom",
+        "definition_de": "zusätzliches Gebiet oder neuen Boden gewinnen",
+        "meaning_fa": "زمین یا قلمرو به دست آوردن",
+        "gloss_en": "to gain land",
+        "example_scope": "all four examples are literal land-reclamation/territory uses"
+      },
+      "finding": "The registered source classifies this target as an idiom, but the learner layer teaches only the literal land/territory sense. The idiomatic colloquial sense is absent, so source classification and learner sense coverage are misaligned.",
+      "repair_direction": "Preserve the one-card identity and source classification. Add the idiomatic sense and suitable examples; retain the literal sense only as an additional meaning if intentionally supported."
+    },
+    {
+      "position": 1355,
+      "target_id": "dah-nvv-exp-01345",
+      "canonical_form": "an Land ziehen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas erfolgreich beschaffen oder gewinnen",
+        "current_argument_slots": [],
+        "example_objects": [
+          "einen großen Sponsor",
+          "einen wichtigen Auftrag",
+          "einen erfahrenen Experten",
+          "einen Investor"
+        ],
+        "stage3c_disposition": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The structure is marked as slotless although the idiom requires a variable person/thing obtained or recruited; every example realizes that object.",
+      "repair_direction": "Expose jdn./etw. as the learner argument slot while leaving the source surface unchanged in provenance."
+    },
+    {
+      "position": 1370,
+      "target_id": "dah-nvv-exp-01360",
+      "canonical_form": "ins Leben rufen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas gründen, schaffen oder erstmals organisieren",
+        "current_argument_slots": [],
+        "example_objects": [
+          "eine Initiative",
+          "dieses Austauschprogramm",
+          "einen Hilfsfonds",
+          "das Projekt"
+        ],
+        "stage3c_disposition": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The variable entity that is founded/created is core to the construction, yet learner structure exposes no object slot.",
+      "repair_direction": "Add the theme/object, e.g. 'etw. ins Leben rufen', without altering source provenance."
+    },
+    {
+      "position": 1373,
+      "target_id": "dah-nvv-exp-01363",
+      "canonical_form": "vom Leder ziehen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_GRAMMAR_NATURALNESS",
+      "fields": [
+        "meaning_fa"
+      ],
+      "evidence": {
+        "meaning_fa": "شدیداً انتقاد یا بدوبیراه گفتن"
+      },
+      "finding": "The Persian coordination is grammatically incomplete: 'انتقاد' lacks its verb while it is coordinated with 'بدوبیراه گفتن'.",
+      "repair_direction": "Use a complete idiomatic Persian formulation such as 'شدیداً انتقاد کردن یا بدوبیراه گفتن'."
+    },
+    {
+      "position": 1388,
+      "target_id": "dah-nvv-exp-01378",
+      "canonical_form": "jdm. hinters Licht führen",
+      "severity": "MAJOR",
+      "category": "CANONICAL_SOURCE_CASE_REPAIR_REQUIRED",
+      "fields": [
+        "canonical_form",
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots",
+        "provenance.source_surface"
+      ],
+      "evidence": {
+        "source_surface": "jdm. hinters Licht führen",
+        "current_case": "dative",
+        "current_argument_slots": [
+          {
+            "role": "person",
+            "case": "dative",
+            "source_evidence": "jdm."
+          }
+        ],
+        "examples_de": [
+          "Der Verkäufer führte die Kundin mit falschen Angaben hinters Licht.",
+          "Er hatte seine Kollegen monatelang hinters Licht geführt.",
+          "Mit der gefälschten Website wurden viele Nutzer hinters Licht geführt.",
+          "Sie merkte erst später, dass man sie bei der Abrechnung hinters Licht geführt hatte."
+        ]
+      },
+      "finding": "The source/canonical layer encodes dative 'jdm.', but standard German uses accusative 'jdn. hinters Licht führen'. All four learner examples already use the accusative, creating a direct canonical/structure-versus-example contradiction.",
+      "repair_direction": "Preserve the raw source surface verbatim in provenance, add an explicit evidence-backed source-repair record, and normalize learner canonical/structure to accusative 'jdn.'."
+    },
+    {
+      "position": 1389,
+      "target_id": "dah-nvv-exp-01379",
+      "canonical_form": "in der ersten / zweiten … Liga spielen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_IDIOMATICITY",
+      "fields": [
+        "examples[0].en",
+        "examples[2].en"
+      ],
+      "evidence": {
+        "example1_en": "The club has been playing in the first league since this season.",
+        "example3_en": "In sporting terms, the team only plays in the second league, but financially it is doing well."
+      },
+      "finding": "In generic English sports wording, 'first league/second league' is German-influenced; 'top/first division' and 'second division' are the natural generic terms unless an official league name is meant.",
+      "repair_direction": "Rewrite the literal sports examples with idiomatic English division terminology; the metaphorical 'same/different league' examples can remain."
+    },
+    {
+      "position": 1391,
+      "target_id": "dah-nvv-exp-01381",
+      "canonical_form": "sich auf die Lippe beißen",
+      "severity": "MAJOR",
+      "category": "GERMAN_DEFINITION_CIRCULARITY_RESIDUAL",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "definition_de": "sich auf die Lippe beißen, oft um eine Äußerung oder Reaktion zurückzuhalten"
+      },
+      "finding": "The German definition repeats the target expression as its own definition and only adds a common purpose. It therefore does not independently explain the action and is a residual circular-definition defect.",
+      "repair_direction": "Replace the circular opening with an independent explanation of biting/pressing one's lip with the teeth, optionally retaining the pragmatic purpose of suppressing speech or reaction."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 12,
+    "blocker": 0,
+    "major": 8,
+    "minor": 4,
+    "clean_targets": 88,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_canonical_mismatches": "2/100 (positions 1325 and 1367; both previously documented source repairs)",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "new_identity_findings": 0,
+    "preexisting_repaired_source_mismatches": [
+      1325,
+      1367
+    ],
+    "new_source_repair_findings": 1,
+    "source_repair_positions": [
+      1388
+    ]
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1400,
+    "positions_remaining": 1092,
+    "confirmed_finding_targets": 130,
+    "blocker_findings": 0,
+    "major_findings": 48,
+    "minor_findings": 82,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1401-1500. Do not repair any logged finding until all 2492 targets have been audited."
+}

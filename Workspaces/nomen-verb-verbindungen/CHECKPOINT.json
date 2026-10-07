@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-07T12:00:00+02:00",
-  "updated_version": "stage4-phase-b-all333-applied-stage3c-recomputed-v1",
-  "status": "STAGE4_PHASE_B_ALL333_APPLIED_STAGE3C_RECOMPUTED_PASS",
+  "updated_at": "2026-10-07T12:25:00+02:00",
+  "updated_version": "stage4-phase-b-changed333-100pct-verification-33residuals-v1",
+  "status": "STAGE4_PHASE_B_CHANGED333_100PCT_VERIFIED__33_RESIDUALS_REPAIR_REQUIRED",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -128,7 +128,7 @@
       "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_PHASE_B_ALL333_APPLIED_STAGE3C_RECOMPUTED_PASS",
+      "state": "STAGE4_PHASE_B_CHANGED333_100PCT_VERIFIED__33_RESIDUALS_REPAIR_REQUIRED",
       "rounds_completed": 6,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -3069,7 +3069,7 @@
         "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
       },
       "legacy_two_consecutive_clean_pass_rule": "SUPERSEDED_FOR_SCOPED_FINAL_CONVERGENCE_BY_MEM-NVV-003",
-      "next": "Verify 100% of the 333 changed targets on the exact Phase B successor before recurrent-family sweeps and the deterministic unchanged-target sample.",
+      "next": "Repair the 33 confirmed residual targets on the exact Phase B successor, restore source fidelity for occurrence 00886 without editing frozen Phase A reports, recompute only affected Stage3C cells, then reverify all 33 residual targets.",
       "final_comprehensive_audit": {
         "status": "COMPLETE_2492_OF_2492_FINDINGS_LOGGED__PHASE_B_READY",
         "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
@@ -3341,7 +3341,67 @@
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-ALL333-BATCH-REPAIR-PASS.json",
-        "next_action_id": "PHASE_B_VERIFY_CHANGED_TARGETS"
+        "next_action_id": "PHASE_B_VERIFY_CHANGED_TARGETS",
+        "changed_target_verification": {
+          "status": "FAIL_REPAIR_REQUIRED",
+          "changed_targets_verified": 333,
+          "coverage_percent": 100,
+          "clean_targets": 300,
+          "residual_targets": 33,
+          "residual_original_severity": {
+            "major": 29,
+            "minor": 4,
+            "blocker": 0
+          },
+          "residual_repair_seqs": [
+            3,
+            58,
+            81,
+            105,
+            106,
+            115,
+            140,
+            143,
+            151,
+            194,
+            198,
+            200,
+            202,
+            238,
+            243,
+            246,
+            247,
+            248,
+            257,
+            261,
+            267,
+            288,
+            289,
+            295,
+            305,
+            306,
+            314,
+            315,
+            316,
+            325,
+            326,
+            327,
+            329
+          ],
+          "deterministic_invariants": "PASS",
+          "source_fidelity_failure_seq81": true,
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-CHANGED333-100PCT-VERIFICATION-FINDINGS.json",
+          "artifact": {
+            "filename": "NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
+            "sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
+            "size_bytes": 3568114,
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000beb081f4bfb1f2996084ab85",
+            "library_stable_id": "libfile_89b768af8efc8191b2a9cb80e6dc2ef9",
+            "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "next_action_id": "PHASE_B_REPAIR_VERIFICATION_RESIDUALS"
+        }
       }
     },
     "5_delivery_projection_anti_bypass": {
@@ -3419,9 +3479,9 @@
   "persistence": {
     "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "latest_git_metadata": "SYNCED",
-    "latest_local_artifact_sha256": "003b4b0e85fbdae60b817df7b26f97c66b46cf808b7e39d4e04039b887ff723e"
+    "latest_local_artifact_sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde"
   },
-  "next": "Verify 100% of the 333 changed targets on the exact Phase B successor before recurrent-family sweeps and the deterministic unchanged-target sample.",
+  "next": "Repair the 33 confirmed residual targets on the exact Phase B successor, restore source fidelity for occurrence 00886 without editing frozen Phase A reports, recompute only affected Stage3C cells, then reverify all 33 residual targets.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -3476,7 +3536,7 @@
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     },
-    "current_operation": "PHASE_B_VERIFY_CHANGED_TARGETS",
+    "current_operation": "PHASE_B_REPAIR_VERIFICATION_RESIDUALS",
     "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
     "atomic_shard_default": 100,
     "routine_user_confirmation": false
@@ -3605,7 +3665,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Verify 100% of the 333 changed targets on the exact Phase B successor before recurrent-family sweeps and the deterministic unchanged-target sample.",
+  "next_action": "Repair the 33 confirmed residual targets on the exact Phase B successor, restore source fidelity for occurrence 00886 without editing frozen Phase A reports, recompute only affected Stage3C cells, then reverify all 33 residual targets.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -3616,12 +3676,12 @@
     "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-PhaseB-ALL333-APPLIED-Stage3C-RECOMPUTED-PASS-CHECKPOINT.zip",
-    "sha256": "003b4b0e85fbdae60b817df7b26f97c66b46cf808b7e39d4e04039b887ff723e",
-    "size_bytes": 3563549,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-ALL333-APPLIED-Stage3C-RECOMPUTED-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000d84882109dc040ce808aa2ab",
-    "library_stable_id": "libfile_6d0778e468f88191b1eda6e444aab161",
+    "filename": "NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
+    "sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
+    "size_bytes": 3568114,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000beb081f4bfb1f2996084ab85",
+    "library_stable_id": "libfile_89b768af8efc8191b2a9cb80e6dc2ef9",
     "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "systemic_root_cause_qa": {
@@ -3952,8 +4012,8 @@
       "next_clean_pass_start_position": 1
     }
   },
-  "last_observed_stage": "Stage4 Phase B — all 333 confirmed findings applied; affected Stage3C evidence recomputed PASS",
-  "last_observed_note": "333/333 findings were applied to 333 unique targets on the exact frozen S9 parent. One audit evidence-binding error (seq31) was explicitly rebound from 00411 to 00407 without altering frozen audit reports. Stage3C has 0 unresolved cells. Portable artifact rematerialized byte-identically from Library.",
+  "last_observed_stage": "Stage4 Phase B — 100% verification of all 333 changed targets complete; 33 residual targets confirmed",
+  "last_observed_note": "Verification gate is intentionally FAIL_REPAIR_REQUIRED, not PASS. 300/333 changed targets are clean; 33 residuals remain. One is a source-fidelity error at occurrence 00886: the PDF really contains 'etw,' and raw source/provenance must not be rewritten to 'etw.'.",
   "phase_b": {
     "status": "PASS_ALL333_APPLIED_STAGE3C_RECOMPUTED",
     "findings_applied": 333,
@@ -3990,6 +4050,66 @@
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-ALL333-BATCH-REPAIR-PASS.json",
-    "next_action_id": "PHASE_B_VERIFY_CHANGED_TARGETS"
+    "next_action_id": "PHASE_B_VERIFY_CHANGED_TARGETS",
+    "changed_target_verification": {
+      "status": "FAIL_REPAIR_REQUIRED",
+      "changed_targets_verified": 333,
+      "coverage_percent": 100,
+      "clean_targets": 300,
+      "residual_targets": 33,
+      "residual_original_severity": {
+        "major": 29,
+        "minor": 4,
+        "blocker": 0
+      },
+      "residual_repair_seqs": [
+        3,
+        58,
+        81,
+        105,
+        106,
+        115,
+        140,
+        143,
+        151,
+        194,
+        198,
+        200,
+        202,
+        238,
+        243,
+        246,
+        247,
+        248,
+        257,
+        261,
+        267,
+        288,
+        289,
+        295,
+        305,
+        306,
+        314,
+        315,
+        316,
+        325,
+        326,
+        327,
+        329
+      ],
+      "deterministic_invariants": "PASS",
+      "source_fidelity_failure_seq81": true,
+      "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-CHANGED333-100PCT-VERIFICATION-FINDINGS.json",
+      "artifact": {
+        "filename": "NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
+        "sha256": "15327e6e891b055575327654d564e7c1cb040ed1e038236072d7222c450f7bde",
+        "size_bytes": 3568114,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Changed333-100PCT-Verification-33RESIDUALS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000beb081f4bfb1f2996084ab85",
+        "library_stable_id": "libfile_89b768af8efc8191b2a9cb80e6dc2ef9",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "next_action_id": "PHASE_B_REPAIR_VERIFICATION_RESIDUALS"
+    }
   }
 }

@@ -1,0 +1,359 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T02:01:00+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0013",
+    "positions": "1201-1300",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      14,
+      15
+    ],
+    "printed_pages": [
+      12,
+      13
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers Jahrestag through Korrektur. Positions 1261-1262 are the expected two-way canonical split of source surface 'die Konsequenzen ziehen / tragen'. One new source-level case defect is confirmed at position 1298: the PDF prints 'jdn. einen Korb geben', while standard valency and all four learner examples require dative 'jdm.'."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1212,
+      "target_id": "dah-nvv-exp-01203",
+      "canonical_form": "eine Karte ausspielen",
+      "severity": "MAJOR",
+      "category": "SOURCE_CLASSIFICATION_LITERAL_SENSE_COVERAGE_ALIGNMENT",
+      "fields": [
+        "definition_de",
+        "meaning_fa",
+        "gloss_en",
+        "examples[0]",
+        "examples[1]",
+        "examples[2]",
+        "examples[3]"
+      ],
+      "evidence": {
+        "source_classification": "general_nvv",
+        "source_surface": "eine Karte ausspielen",
+        "source_pdf_page": 14,
+        "printed_page": 12,
+        "definition_de": "eine Möglichkeit oder einen Vorteil strategisch einsetzen",
+        "meaning_fa": "یک برگ برنده یا گزینه را به کار انداختن",
+        "gloss_en": "to play a card"
+      },
+      "finding": "The source lists 'eine Karte ausspielen' as a general (non-idiom) connection next to the literal 'eine Karte ziehen', but the learner card has been narrowed entirely to the figurative strategic sense. The ordinary literal card-game sense is absent from the German definition and all four examples; Persian is likewise figurative-only.",
+      "repair_direction": "Preserve the raw source surface and identity. Restore the literal card-playing sense in the learner semantic layer and examples, while retaining the figurative sense as an additional meaning if desired under the one-card/multi-meaning rule."
+    },
+    {
+      "position": 1216,
+      "target_id": "dah-nvv-exp-01207",
+      "canonical_form": "zur Katastrophe kommen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_NATURALNESS_CALQUE",
+      "fields": [
+        "meaning_fa",
+        "examples[2].fa"
+      ],
+      "evidence": {
+        "meaning_fa": "به فاجعه رسیدن",
+        "example_de": "Wenn niemand eingreift, kann es zur Katastrophe kommen.",
+        "example_fa": "اگر کسی دخالت نکند، ممکن است کار به فاجعه برسد."
+      },
+      "finding": "The Persian summary and one example mirror German 'zu ... kommen' too literally. The wording is understandable but translation-shaped Persian; natural equivalents use forms such as 'کار به فاجعه کشیدن' or 'به فاجعه انجامیدن'.",
+      "repair_direction": "Use a natural Persian result construction while preserving the German meaning and modality."
+    },
+    {
+      "position": 1221,
+      "target_id": "dah-nvv-exp-01212",
+      "canonical_form": "zum Kauf anbieten",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas zum Verkauf bereitstellen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The construction is not slotless: anbieten requires the thing being offered (etw. zum Kauf anbieten), and every example realizes that accusative/theme role. Stage3C currently hides core learner valency.",
+      "repair_direction": "Keep the source surface 'zum Kauf anbieten' in provenance, but expose the variable offered thing in learner structure, e.g. 'etw. zum Kauf anbieten'."
+    },
+    {
+      "position": 1243,
+      "target_id": "dah-nvv-exp-01234",
+      "canonical_form": "etw. übers Knie brechen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_SEMANTIC_ALIGNMENT",
+      "fields": [
+        "examples[0].fa"
+      ],
+      "evidence": {
+        "example_de": "So eine weitreichende Entscheidung darf man nicht übers Knie brechen.",
+        "example_fa": "نباید چنین تصمیم مهمی را عجولانه تحمیل کرد.",
+        "example_en": "Such a far-reaching decision must not be rushed."
+      },
+      "finding": "The Persian verb 'تحمیل کرد' adds the meaning 'impose' and does not faithfully express the idiom's haste/rushing component.",
+      "repair_direction": "Translate the example with a natural Persian construction for making or pushing through a decision hastily, without adding imposition."
+    },
+    {
+      "position": 1245,
+      "target_id": "dah-nvv-exp-01236",
+      "canonical_form": "einen Knochen abnagen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_SEMANTIC_ALIGNMENT",
+      "fields": [
+        "examples[2].fa"
+      ],
+      "evidence": {
+        "example_de": "Das Tier hatte den Knochen fast vollständig abgenagt.",
+        "example_fa": "حیوان تقریباً تمام استخوان را جویده بود.",
+        "example_en": "The animal had gnawed the bone almost completely clean."
+      },
+      "finding": "The Persian sentence says the animal chewed almost the entire bone, whereas the German here means gnawing it clean/removing what remains on it.",
+      "repair_direction": "Render the bone-as-gnawed-clean meaning naturally in Persian rather than implying that almost the entire bone itself was chewed away."
+    },
+    {
+      "position": 1249,
+      "target_id": "dah-nvv-exp-01240",
+      "canonical_form": "zum Kochen bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas so erhitzen, dass es kocht",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The learner structure omits the required theme/object of the causative construction: etw. zum Kochen bringen. The definition and all four examples explicitly realize that variable object.",
+      "repair_direction": "Preserve the source surface in provenance and add the accusative/theme slot to learner structure."
+    },
+    {
+      "position": 1255,
+      "target_id": "dah-nvv-exp-01246",
+      "canonical_form": "einen Kompromiss eingehen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_AND_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "meaning_fa",
+        "examples[0].fa"
+      ],
+      "evidence": {
+        "meaning_fa": "وارد یک سازش شدن",
+        "example_fa": "هر دو طرف برای پایان دادن به اختلاف وارد سازش شدند."
+      },
+      "finding": "'وارد یک سازش شدن / وارد سازش شدند' is a direct German-shaped rendering of eingehen and is noticeably unnatural Persian for agreeing to or accepting a compromise.",
+      "repair_direction": "Use idiomatic Persian such as 'سازش کردن' or 'تن به سازش دادن' according to context."
+    },
+    {
+      "position": 1258,
+      "target_id": "dah-nvv-exp-01249",
+      "canonical_form": "in Konkurrenz stehen zu+Dat.",
+      "severity": "MINOR",
+      "category": "ENGLISH_GLOSS_SEMANTIC_COVERAGE",
+      "fields": [
+        "gloss_en"
+      ],
+      "evidence": {
+        "definition_de": "mit jemandem oder etwas im Wettbewerb stehen",
+        "meaning_fa": "در رقابت با کسی یا چیزی بودن",
+        "gloss_en": "to be in competition with someone"
+      },
+      "finding": "The English gloss restricts the complement to a person, while the German definition and Persian meaning explicitly allow both people and things and the examples include products, brands, a process, and a solution.",
+      "repair_direction": "Broaden the English gloss to 'to be in competition with someone or something' or equivalent."
+    },
+    {
+      "position": 1263,
+      "target_id": "dah-nvv-exp-01253",
+      "canonical_form": "in Kontakt bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "Personen oder Dinge miteinander in Verbindung bringen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The construction has a core participant frame (typically jdn./etw. mit jdm./etw. in Kontakt bringen), but learner structure exposes no argument slot at all. All four examples realize variable entities being connected.",
+      "repair_direction": "Preserve the source surface in provenance and encode the variable contact participants in learner structure, with the mit-complement where appropriate."
+    },
+    {
+      "position": 1271,
+      "target_id": "dah-nvv-exp-01261",
+      "canonical_form": "unter Kontrolle bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas wieder beherrschbar machen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The causative expression requires the thing/person brought under control (jdn./etw. unter Kontrolle bringen), but learner structure is marked slotless even though every example supplies that variable object.",
+      "repair_direction": "Add the accusative/theme participant to learner structure while leaving the exact source surface untouched in provenance."
+    },
+    {
+      "position": 1273,
+      "target_id": "dah-nvv-exp-01263",
+      "canonical_form": "unter Kontrolle stellen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas einer Kontrolle oder Überwachung unterstellen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The learner structure omits the variable object of the construction (jdn./etw. unter Kontrolle stellen). The definition and all four examples make this role explicit, so CONSTRUCTION_FIXED_NO_SLOT is not justified.",
+      "repair_direction": "Expose the controlled person/thing as an argument slot and retain the raw source surface in provenance."
+    },
+    {
+      "position": 1296,
+      "target_id": "dah-nvv-exp-01286",
+      "canonical_form": "jdm. Kopfschmerzen bereiten",
+      "severity": "MAJOR",
+      "category": "SOURCE_CLASSIFICATION_LITERAL_SENSE_COVERAGE_ALIGNMENT",
+      "fields": [
+        "definition_de",
+        "examples[0]",
+        "examples[1]",
+        "examples[2]",
+        "examples[3]"
+      ],
+      "evidence": {
+        "source_classification": "general_nvv",
+        "source_surface": "jdm. Kopfschmerzen bereiten",
+        "source_pdf_page": 15,
+        "printed_page": 13,
+        "definition_de": "jemandem Sorgen oder Schwierigkeiten verursachen",
+        "meaning_fa": "برای کسی دردسر و سردرد درست کردن",
+        "gloss_en": "to give someone a headache"
+      },
+      "finding": "The source classifies this as a general non-idiom connection under physical 'Kopfschmerzen', but the German learner definition and all four examples are narrowed to the figurative 'cause worries/difficulties' sense. The literal physical-headache sense is missing from German learner coverage.",
+      "repair_direction": "Restore literal physical-headache coverage in the learner semantic/example layer and retain the figurative extension as an additional sense if useful."
+    },
+    {
+      "position": 1298,
+      "target_id": "dah-nvv-exp-01288",
+      "canonical_form": "jdn. einen Korb geben",
+      "severity": "MAJOR",
+      "category": "CANONICAL_SOURCE_CASE_REPAIR_REQUIRED",
+      "fields": [
+        "canonical_form",
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots",
+        "provenance.source_surface"
+      ],
+      "evidence": {
+        "source_pdf_page": 15,
+        "printed_page": 13,
+        "source_surface": "jdn. einen Korb geben",
+        "canonical_form": "jdn. einen Korb geben",
+        "current_argument_slots": [
+          {
+            "role": "person",
+            "case": "accusative",
+            "source_evidence": "jdn."
+          }
+        ],
+        "examples_de": [
+          "Sie gab ihm einen Korb, weil sie keine Beziehung wollte.",
+          "Der Vermieter gab dem Interessenten schließlich einen Korb.",
+          "Ich musste dem Anbieter einen Korb geben, weil der Preis zu hoch war.",
+          "Nach kurzer Überlegung gab die Firma dem Bewerber einen Korb."
+        ]
+      },
+      "finding": "The source itself prints 'jdn. einen Korb geben', but standard German requires a dative recipient: jdm. einen Korb geben. The current canonical and structured slot therefore preserve a source case error, while all four learner examples already use the correct dative. This creates a direct canonical-vs-example contradiction.",
+      "repair_direction": "Preserve the raw source surface verbatim in provenance, but create an explicit evidence-backed source-repair record and normalize learner canonical/structure to 'jdm. einen Korb geben' with a dative recipient."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 13,
+    "blocker": 0,
+    "major": 8,
+    "minor": 5,
+    "clean_targets": 87,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "98/100 (two expected split identities at positions 1261-1262)",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 98,
+    "expected_split_surface_mismatches": 2,
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 1,
+    "source_repair_positions": [
+      1298
+    ]
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1300,
+    "positions_remaining": 1192,
+    "confirmed_finding_targets": 118,
+    "blocker_findings": 0,
+    "major_findings": 40,
+    "minor_findings": 78,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1301-1400. Do not repair any logged finding until all 2492 targets have been audited."
+}

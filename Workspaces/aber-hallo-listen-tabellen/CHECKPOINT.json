@@ -135,7 +135,7 @@
     {
       "stage": 3,
       "name": "Evidence & Enrichment",
-      "state": "RUNNING",
+      "state": "PASS",
       "phase_status": {
         "3A_baseline": "PASS",
         "3B_gap_driven_enrichment": "RUNNING_AFTER_RELATIONS_KOMBINATIONEN_BATCH038",
@@ -1910,17 +1910,31 @@
         "evidence_index_sha256": "c2bb9674fcb457b4b15eb6d61b48e5e3878bdd9906c684da7481eb1170e560d5",
         "stage3b_progress_sha256": "24120d286734df2cf21fd84e900090e291ab7823f1b8f22f78596dd63a1cea39",
         "source_facts_sha256": "8c17d6f0364cb177562c8a96906e984750d7eb364d6375bafa86ba7e3a31f5ad"
-      }
+      },
+      "unresolved_cells": 0
     },
     {
       "stage": 4,
       "name": "Linguistic & Lexical QA",
-      "state": "NOT_STARTED"
+      "state": "PASS",
+      "summary": "Independent Stage4 re-audit PASS after bounded Repair1."
     },
     {
       "stage": 5,
       "name": "Delivery Projection",
-      "state": "NOT_STARTED"
+      "state": "PASS",
+      "summary": "Stage5 clean delivery PASS through official v3.3.6 anti-bypass builder: 787 neutral lexical cards + 1 grammar semantic sidecar.",
+      "claim_boundary": "Stage5 PASS. Lexical transport is 787/787 de-vocabulary + gfp-vocabulary-neutral@1 with canonical deep-copy preserved. The non-lexical grammar unit is carried as a semantic grammar sidecar; runtime ingestion is deferred to Stage6.",
+      "portable_artifact": {
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
+        "sha256": "7e1392221e8d9bb1dcec50f42102f720e56c85fc47c30070fdd2be3f3ae17810",
+        "size_bytes": 1745776,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
+        "library_file_id": "libfile_91939b00cd3c8191984f4091cee5f6ae",
+        "library_file_snapshot_id": "file_0000000022f4824685272a9f1a83bc04",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "status": "PASS_LIBRARY_UPLOAD"
+      }
     },
     {
       "stage": 6,
@@ -1943,15 +1957,15 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE3B_RELATIONS_KOMBINATIONEN_BATCH038_PASS__STAGE3B_STILL_RUNNING",
+  "quality_state": "STAGE5_CLEAN_DELIVERY_PASS__STAGE6_NOT_STARTED",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Continue Stage3B relation-review and lexical Kombinationen closure from ahl-lu-0761. Preserve the five route-exhausted Persian holds for Stage3C disposition unless new approved evidence appears.",
-  "resume_instruction": "Use the exact Relations-Kombinationen-Batch038 portable artifact SHA a10898352cced700a64796065e650aa205eea2638ee9628d79e6eaac1f703d43 from Library. Continue Stage3B from ahl-lu-0761; do not reopen ahl-lu-0002..0760 unless QA finds a concrete defect.",
+  "next_action": "Stage6 exact CURRENT runtime/import/presentation acceptance. Re-resolve Flashcards CURRENT at execution time; do not downgrade to an older verified runtime.",
+  "resume_instruction": "Use exact Stage5 checkpoint SHA 7e1392221e8d9bb1dcec50f42102f720e56c85fc47c30070fdd2be3f3ae17810 and clean-delivery SHA 15a99ca00dea023cccb59ebe43465c5bf1baa528eccd8bf74698d74f2b4d9170 from Library. Re-resolve Flashcards CURRENT at Stage6, validate lexical TSV import/roundtrip/presentation and resolve the grammar-sidecar ingestion path against CURRENT capabilities.",
   "stage3b_batch": "0040",
-  "stage3b_status": "RUNNING_AFTER_RELATIONS_KOMBINATIONEN_BATCH038",
+  "stage3b_status": "PASS_COMPLETE",
   "stage3b_targets_processed": 788,
   "stage3b_next_target": null,
   "stage3b_provisional_targets": [
@@ -2021,5 +2035,23 @@
   "stage3b_relation_kombinationen_batch035": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
   "stage3b_relation_kombinationen_batch036": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
   "stage3b_relation_kombinationen_batch037": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
-  "stage3b_relation_kombinationen_batch038": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED"
+  "stage3b_relation_kombinationen_batch038": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
+  "stage3c_status": "PASS_REBOUND_AFTER_STAGE4_REPAIR1",
+  "stage4_status": "PASS",
+  "stage5_status": "PASS",
+  "stage5_clean_delivery": {
+    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+    "sha256": "15a99ca00dea023cccb59ebe43465c5bf1baa528eccd8bf74698d74f2b4d9170",
+    "size_bytes": 1699060,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+    "library_file_id": "libfile_3cbf0131d5108191bd3501ccdc123646",
+    "library_file_snapshot_id": "file_000000000c3c8210b400295acb6b1668",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage5_direct_import": {
+    "filename": "ABER-HALLO-LISTEN-TABELLEN-UNIVERSAL-v2-STAGE5.tsv",
+    "sha256": "9339b09e0edf6344fbce961e0968398d998007eeb6348e96931e4af4fdcdabde",
+    "rows": 787,
+    "library_file_id": "libfile_24da7b0b3f1481918f917442a82f8598"
+  }
 }

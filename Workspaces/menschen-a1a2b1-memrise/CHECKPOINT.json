@@ -16,7 +16,7 @@
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
     "persistence_status": "PORTABLE_ARTIFACT_PLUS_WORKSTREAM_GIT_SYNCED__ROOT_SYNC_ATTEMPTED",
-    "git_sync_note": "A1-L23 Stage6 PASS. Exact Stage6 checkpoint and import-ready artifact are Library-persisted with byte-parity rematerialization; Stage6 Git report and workstream checkpoint synchronized. Stage5 Git-report gap is superseded for resume by this newer Stage6 authority, without rewriting Stage5 history."
+    "git_sync_note": "A1-L23 Stage7 exact-final content lock PASS. Final LOCKED ZIP is persisted in Library; workstream/root coordination metadata and Stage7 post-package report synchronized to Git. Runtime v465 same-profile boundary remains separate."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -307,12 +307,12 @@
     "git_metadata_in_sync": true,
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
-    "latest_locked_lesson": "A1-L21",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "e736dadc2411afcfc0d6b3201fee8274f0c20dcb99eea4963ef82f7d345b9eeb"
+    "latest_locked_lesson": "A1-L23",
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+    "latest_portable_checkpoint_sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0"
   },
-  "current_scope": "A1-L23 Stage6 Runtime & Presentation Acceptance PASS_WITH_ENVIRONMENT_BOUNDARY",
-  "lock_state": "A1-L01_TO_A1-L22_LOCKED__A1-L23_STAGE6_PASS_PENDING_STAGE7",
+  "current_scope": "A1-L23 Stage7 LOCKED / exact-final PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "lock_state": "A1-L01_TO_A1-L23_LOCKED",
   "locked_at": "2026-10-07",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -1669,18 +1669,18 @@
     }
   },
   "latest_checkpoint": {
-    "filename": "Menschen-A1-L23-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
-    "sha256": "9b65ff8f8e31a2d27b6697183b7147a5baa5b983cce509dd77548a3e836bcbbb",
-    "size_bytes": 1918413,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
-    "library_file_id": "file_00000000183c81f4ba4843fe7775ddd1",
-    "library_stable_id": "libfile_4c1546ea82688191ade80b21e9e38f80",
-    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L23-STAGE6-POST-PACKAGE-VERIFICATION.json",
-    "stage": "A1-L23 Stage6",
-    "quality_state": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE_WITH_RUNTIME_ENVIRONMENT_BOUNDARY"
+    "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+    "sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+    "library_file_id": "file_00000000d9408210ba6d9a1b593fa4b8",
+    "library_stable_id": "libfile_d7309b28556081918cd2d1eb4e078b24",
+    "size_bytes": 2153579,
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L23-STAGE7-POST-PACKAGE-VERIFICATION.json",
+    "stage": "A1-L23 Stage7 LOCKED",
+    "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "cumulative_targets": 175
   },
-  "next_action": "A1-L23 Stage7 — re-resolve German Flashcards Pro CURRENT; if still v465-R99, package exact A1-L23 LOCKED candidate from the Stage6 bridge-successor authority and rerun exact-final import/presentation/identity checks on final bytes. If CURRENT advanced, rerun Stage6 acceptance first.",
+  "next_action": "A1-L24 Stage1/2 when requested; preserve A1-L01..A1-L23 as locked authority.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2902,57 +2902,65 @@
   },
   "latest_stage7_checkpoint": {
     "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-    "scope": "A1-L22",
-    "content_lock_state": "LOCKED",
-    "verification_level": "V3_EXACT_FINAL_INTERNAL_RUNTIME_DETERMINISTIC_IDB_BOUNDARY",
+    "status": "PASS_EXACT_FINAL_CONTENT_LOCKED_WITH_PROJECT_RUNTIME_BOUNDARY",
+    "scope": "A1-L23",
     "framework": "v3.3.6",
-    "runtime": {
-      "current": "v465-R99",
-      "role": "CURRENT",
-      "sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
-      "last_fully_verified": "v451-R85",
-      "no_downgrade": true,
-      "release_final": false,
-      "same_profile_acceptance": "PENDING_USER_SAME_PROFILE_V465"
-    },
-    "exact_final_outer_import": "25/25 PASS",
-    "exact_final_runtime_presentation": "26/26 PASS",
-    "exact_final_combined": "51/51 PASS",
-    "exact_final_static_postpackage": "20/20 PASS",
-    "cards": 101,
-    "new_ids": 99,
-    "reused_ids": [
-      "ma1m-lu-2611",
-      "ma1m-lu-2612"
-    ],
-    "runtime_index": "101/101 VERIFIED",
-    "mode_examples": {
-      "study": 4,
-      "quick": 2,
-      "typing": 3,
-      "audio": 3
-    },
-    "kombinationen": 279,
-    "relations": "67/67 ID/type parity",
-    "cumulative_identity": "12/12 PASS / 2812 unique",
-    "dataset_sha256": "bd9ded08c178356f43cafca25c459452ebab25f267ce1249a37fc9c82d43b910",
-    "semantic_mutation_from_stage5": "NONE",
+    "content_lock_state": "LOCKED",
+    "runtime": "v465-R99",
+    "runtime_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+    "runtime_release_final": false,
+    "runtime_same_profile_boundary": "PENDING_USER_SAME_PROFILE_V465",
     "artifact": {
-      "filename": "Menschen-A1-L22-v3.3.6-GFP-v465-LOCKED.zip",
-      "sha256": "1dd950e6ef2b0b9f5f81d4baa713150ac27d8caf2a8e677cc40a3ab362248ac2",
-      "size_bytes": 1117121,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-GFP-v465-LOCKED.zip",
-      "library_file_id": "file_00000000f2f882109c4903326ba5ccea",
-      "library_stable_id": "libfile_2a30665147cc8191aa3f68fe6ebdd287",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L22-STAGE7-POST-PACKAGE-VERIFICATION.json"
+      "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+      "sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0",
+      "size_bytes": 2153579,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+      "library_file_id": "file_00000000d9408210ba6d9a1b593fa4b8",
+      "library_stable_id": "libfile_d7309b28556081918cd2d1eb4e078b24",
+      "library_rematerialization": "PERSISTED_EXACT_GENERATED_BYTES__POST_UPLOAD_REMATERIALIZATION_NOT_REPEATED_IN_THIS_TURN"
     },
-    "environment_boundary": {
-      "code": "CURRENT_V465_SAME_PROFILE_WINDOWS_CHROME_PENDING",
-      "blocking_for_content_lock": false,
-      "blocking_for_runtime_final_verified": true
+    "final_dataset": {
+      "filename": "07-release/A1-L23-UNIVERSAL-v2-FINAL.tsv",
+      "sha256": "b84e9810a3a5efe781a408dab2ad25cb77dcdb8fc977db2ce7683e987551aece",
+      "stage5_parent_sha256": "69d3fa9c49cacf0ad0967a7fd9ab7d5ede3ac2563bfae52cec009511b7dddd40",
+      "source": "STAGE6_BRIDGE_SUCCESSOR"
     },
-    "next_action": "A1-L23 Stage1/2 — Source & Inventory + Canonicalization; preserve A1-L01..A1-L22 as locked authority."
+    "exact_final_direct_import": "25/25 PASS",
+    "exact_final_presentation": "26/26 PASS",
+    "exact_final_total": "51/51 PASS",
+    "runtime_index": "175/175 VERIFIED",
+    "cumulative_identity": "12/12 PASS / 2982 unique",
+    "cards": 175,
+    "new_canonical_ids": 170,
+    "reused_canonical_ids": [
+      "ma1m-lu-0610",
+      "ma1m-lu-1639",
+      "ma1m-lu-1914",
+      "ma1m-lu-2492",
+      "ma1m-lu-2749"
+    ],
+    "examples": {
+      "de": 700,
+      "fa": 700,
+      "en": 700
+    },
+    "kombinationen": 530,
+    "relations": "341/341 ID/type parity",
+    "source_audio": "175 target refs / zero missing-audio targets",
+    "transport_bridge": "6 rows / +9 cross-lesson relation transport links / canonical semantics unchanged / Stage5 immutable",
+    "package_verification": {
+      "zip_crc": "PASS",
+      "duplicate_members": 0,
+      "manifest_rehash": "93/93 PASS",
+      "sha256sums_rehash": "94/94 PASS",
+      "json_parse": "PASS",
+      "package_hygiene": "PASS_NO_PYCACHE_PYC_GIT",
+      "build_metadata_count": 1,
+      "final_dataset_count": 1
+    },
+    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L23-STAGE7-POST-PACKAGE-VERIFICATION.json",
+    "visible_ui_change": "NONE",
+    "next_action": "A1-L24 Stage1/2 when requested; preserve A1-L01..A1-L23 as locked authority."
   },
   "autorun_stage7_completion": {
     "protocol": "AUTORUN_PROTOCOL_V3_1",
@@ -4064,7 +4072,7 @@
     "next_action": "A1-L23 Stage4 independent linguistic/lexical/provenance re-audit of the exact Stage3C state; recompute applicability and challenge source IDs, relation endpoints/duplicates, expression structure, no-force decisions, fingerprints and linguistic quality without trusting Stage3 self-report."
   },
   "a1_l23": {
-    "state": "STAGE6_PASS_PENDING_STAGE7",
+    "state": "STAGE7_LOCKED",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_WORKSTREAM_SYNCED",
       "quality_state": "PASS_STAGE1_2_IDENTITY_CLOSURE",
@@ -4480,19 +4488,79 @@
         "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/06-runtime/A1-L23-STAGE6-POST-PACKAGE-VERIFICATION.json"
       },
       "next_action": "A1-L23 Stage7 — re-resolve German Flashcards Pro CURRENT; if still v465-R99, package exact A1-L23 LOCKED candidate from the Stage6 bridge-successor authority and rerun exact-final import/presentation/identity checks on final bytes. If CURRENT advanced, rerun Stage6 acceptance first."
+    },
+    "stage7": {
+      "state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "status": "PASS_EXACT_FINAL_CONTENT_LOCKED_WITH_PROJECT_RUNTIME_BOUNDARY",
+      "scope": "A1-L23",
+      "framework": "v3.3.6",
+      "content_lock_state": "LOCKED",
+      "runtime": "v465-R99",
+      "runtime_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+      "runtime_release_final": false,
+      "runtime_same_profile_boundary": "PENDING_USER_SAME_PROFILE_V465",
+      "artifact": {
+        "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+        "sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0",
+        "size_bytes": 2153579,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+        "library_file_id": "file_00000000d9408210ba6d9a1b593fa4b8",
+        "library_stable_id": "libfile_d7309b28556081918cd2d1eb4e078b24",
+        "library_rematerialization": "PERSISTED_EXACT_GENERATED_BYTES__POST_UPLOAD_REMATERIALIZATION_NOT_REPEATED_IN_THIS_TURN"
+      },
+      "final_dataset": {
+        "filename": "07-release/A1-L23-UNIVERSAL-v2-FINAL.tsv",
+        "sha256": "b84e9810a3a5efe781a408dab2ad25cb77dcdb8fc977db2ce7683e987551aece",
+        "stage5_parent_sha256": "69d3fa9c49cacf0ad0967a7fd9ab7d5ede3ac2563bfae52cec009511b7dddd40",
+        "source": "STAGE6_BRIDGE_SUCCESSOR"
+      },
+      "exact_final_direct_import": "25/25 PASS",
+      "exact_final_presentation": "26/26 PASS",
+      "exact_final_total": "51/51 PASS",
+      "runtime_index": "175/175 VERIFIED",
+      "cumulative_identity": "12/12 PASS / 2982 unique",
+      "cards": 175,
+      "new_canonical_ids": 170,
+      "reused_canonical_ids": [
+        "ma1m-lu-0610",
+        "ma1m-lu-1639",
+        "ma1m-lu-1914",
+        "ma1m-lu-2492",
+        "ma1m-lu-2749"
+      ],
+      "examples": {
+        "de": 700,
+        "fa": 700,
+        "en": 700
+      },
+      "kombinationen": 530,
+      "relations": "341/341 ID/type parity",
+      "source_audio": "175 target refs / zero missing-audio targets",
+      "transport_bridge": "6 rows / +9 cross-lesson relation transport links / canonical semantics unchanged / Stage5 immutable",
+      "package_verification": {
+        "zip_crc": "PASS",
+        "duplicate_members": 0,
+        "manifest_rehash": "93/93 PASS",
+        "sha256sums_rehash": "94/94 PASS",
+        "json_parse": "PASS",
+        "package_hygiene": "PASS_NO_PYCACHE_PYC_GIT",
+        "build_metadata_count": 1,
+        "final_dataset_count": 1
+      },
+      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/07-release/A1-L23-STAGE7-POST-PACKAGE-VERIFICATION.json",
+      "visible_ui_change": "NONE",
+      "next_action": "A1-L24 Stage1/2 when requested; preserve A1-L01..A1-L23 as locked authority."
     }
   },
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A1-L23-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
-    "sha256": "e736dadc2411afcfc0d6b3201fee8274f0c20dcb99eea4963ef82f7d345b9eeb",
-    "size_bytes": 299402,
-    "canonical_sha256": "8f7a367b704d5d1149cd515fccf58c497cc635b0ef3d278f8923573b6ee89460",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-Stage4-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_000000004a1081f4bf8bbdbfea9d876b",
-    "library_stable_id": "libfile_e890bbd47e8c81919da2870d1e40ea3e",
-    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/04-qa/A1-L23-STAGE4-POST-PACKAGE-VERIFICATION.json",
-    "stage": "A1-L23 Stage4",
-    "quality_state": "PASS_STAGE4_INDEPENDENT_LINGUISTIC_LEXICAL_REAUDIT"
+    "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+    "sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0",
+    "size_bytes": 2153579,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
+    "library_file_id": "file_00000000d9408210ba6d9a1b593fa4b8",
+    "library_stable_id": "libfile_d7309b28556081918cd2d1eb4e078b24",
+    "library_rematerialization": "PERSISTED_EXACT_GENERATED_BYTES__POST_UPLOAD_REMATERIALIZATION_NOT_REPEATED_IN_THIS_TURN",
+    "stage": "A1-L23 Stage7",
+    "quality_state": "PASS_EXACT_FINAL_CONTENT_LOCKED_WITH_PROJECT_RUNTIME_BOUNDARY"
   }
 }

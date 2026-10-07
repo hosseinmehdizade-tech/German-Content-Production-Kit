@@ -1,152 +1,93 @@
-# CURRENT RESUME GATE — N0 AUTHORITY RECOVERY BLOCKED (2026-09-30)
+# NVV — FINAL LOCKED HANDOFF / READ FIRST
 
-Mission: `NVV-20260930-191703-62d9f3`
+Updated: 2026-10-07  
+Workstream: `nomen-verb-verbindungen`  
+Branch: `nvv-production`  
+Framework: **v3.3.6**  
+State: **STAGE7_EXACT_FINAL_CONTENT_LOCKED**
 
-The live main framework is **v3.3.6**. The older v3.1.12 references below are historical and must not override main.
+## Authority
 
-The exact claimed Batch0003 portable authority `NVV-Production-Checkpoint-Batch0003.zip` SHA-256 `7581cfc69bd9ffa9ba6842ef1f1253bf632f3390b44de2c99ff7fb2492a4e1df` is not currently accessible on current-chat/Project/Library surfaces. The historical 126-card claim is preserved as evidence but is **not** promoted to working bytes. The Git/Base64 reconstruction path is not authority and its staged forensic report failed.
+Global project authority lives on `main`:
+- `PROJECT-BOOTSTRAP.md`
+- `PROJECT-STATE.json`
+- `Prompt/START-PROMPT-v3.3.6.md`
+- `FLASHCARDS-RUNTIME-DEPENDENCY.json`
 
-Durable recovery checkpoint: `/German-Content-Production-Kit/Checkpoints/NVV-N0-Authority-Recovery-RECOVERY_BLOCKED-CHECKPOINT.zip`, SHA-256 `8f079851ffb24cad7c63bf8f4acae0bab863e515a7486e50f3e364e04f30ef9a`.
+NVV workstream authority:
+- `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
+- `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
+- `Workspaces/nomen-verb-verbindungen/07-release/STAGE7.json`
+- `Workspaces/nomen-verb-verbindungen/07-release/STAGE7-POST-PACKAGE-VERIFICATION.json`
+- `Workspaces/nomen-verb-verbindungen/07-release/FINAL-INDEPENDENT-AUDIT.json`
 
-**Do not start Batch0004.** Resume N0 only when the exact Batch0003 portable bytes or an independently provable complete canonical+projected+QA 126-card state is available.
+Do **not** resume from historical Batch0001/0002/0003, N0 recovery, v3.1.12, or old runtime notes. Those are historical only.
 
----
+## Final locked release
 
-# NVV Production — Persistent Handoff / READ FIRST
+`German-Flashcards-Pro-v465-R99-Nomen-Verb-Verbindungen-v3.3.6-LOCKED-CONTENT.zip`
 
-Updated: 2026-09-16  
-Canonical workspace: `nomen-verb-verbindungen`  
-Workstream branch: `hosseinmehdizade-tech/German-Content-Production-Kit` → `nvv-production`
+SHA-256:  
+`917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f`
 
-## Unified project resume rule
+Library path:  
+`/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v465-R99-Nomen-Verb-Verbindungen-v3.3.6-LOCKED-CONTENT.zip`
 
-This workstream no longer uses an NVV-only handoff hierarchy. It follows the same project-wide authority chain as Grammar, Lesen, Schreiben and other future workstreams.
+Library stable ID:  
+`libfile_c309354fb5c08191a604296de78a5f2d`
 
-Before substantial work in every new/resumed chat:
+Library rematerialization: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**
 
-1. Read `German-Content-Production-Kit/main/PROJECT-BOOTSTRAP.md`.
-2. Read `German-Content-Production-Kit/main/PROJECT-STATE.json`, `README.md`, active `Prompt/START-PROMPT-v3.1.12.md`, `SOURCE-ACCESS-PROTOCOL-v1.0.0.md`, and `SOURCE-REGISTRY.json`.
-3. From `PROJECT-STATE.json`, resolve this workstream branch and read:
-   - `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
-   - `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
-4. Resolve the raw source using the Source Access Protocol: explicit newer current-chat source → **ChatGPT Project Sources** → **ChatGPT Library** → matching current-chat attachment → ask the user only if unresolved.
-5. Verify the registered SHA-256 whenever raw bytes are available. Copies with the same hash across Project Sources and Library are one logical source; do not inventory/process them twice.
-6. Only when runtime/import/presentation compatibility matters, read `German-Flashcards-Pro/main/PROJECT-BOOTSTRAP.md` and `PROJECT-STATE.json`, plus any explicitly newer current app artifact.
-7. Continue from the exact `next` action in the live CHECKPOINT. Preserve bounded PASS work unless a real upstream change invalidates it.
+## Final content state
 
-Chat history, old ZIP names and remembered runtime versions are not project authority.
-
-## Source identity
-
-- `source_id`: `deutsch-aber-hallo-nomen-verb-verbindungen`
-- canonical title: `Deutsch - Aber Hallo! Nomen-Verb-Verbindungen`
+- source authority: registered 26-page user-supplied PDF
 - source SHA-256: `a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d`
-- PDF pages: 26
-- Source Manifest: `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
-- Project Sources copy: VERIFIED AVAILABLE 2026-09-16
-- ChatGPT Library copy: VERIFIED AVAILABLE 2026-09-16
-- mirror comparison: VERIFIED SAME BYTES / SAME SHA-256 2026-09-16
+- source occurrences: **2476**
+- active cards: **2492**
+- examples: **9968**
+- unresolved completeness cells: **0**
+- Stage4: **PASS / CLOSED**
+- Stage5: **PASS / CLEAN DELIVERY**
+- Stage6: **PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY**
+- Stage7: **PASS_EXACT_FINAL_CONTENT_LOCKED_WITH_PROJECT_RUNTIME_BOUNDARY**
+- content lock: **LOCKED**
 
-If the same title resolves to different bytes, do not silently substitute it.
+Learner content is immutable at this point. Any future content change requires a new successor release; do not mutate this locked artifact in place.
 
-## Current production target
+## Runtime boundary
 
-Inventory / identity status:
-- source bullet items: 2,475
-- FVG: 859
-- Idiom/Redewendung: 519
-- general NVV: 1,097
-- slash/variant source items reviewed: 221
-- semantic split source items: 17
-- current provisional expression identities: 2,493
-- lexeme identities: 1,512
-- open evidence/sense issues: 1 (`etw. / jdn. in Anspruch nehmen` polysemy)
+Stage6/7 integration target: **German Flashcards Pro v465-R99**  
+Exact runtime artifact SHA-256:  
+`8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17`
 
-User-approved learning model:
-- each final expression = one vocabulary card
-- NVV/FVG/Idiom stays inside Wortschatz; no separate NVV practice silo
-- German definition (`definition_de`) required
-- Persian meaning required
-- English gloss required
-- structure/Rektion required where applicable
-- exactly 4 original German learner examples per completed card
-- every example gets FA + EN translation
-- Word Explorer and Wortnetz use the same canonical lexical graph
-- relation/component navigation must fail closed when ambiguous
-- no material flashcard visual redesign without user approval
+Content-specific runtime acceptance is complete:
+- 2492/2492 import + persistence PASS
+- 2492/2492 runtime index PASS
+- exhaustive presentation/roundtrip PASS
+- final package direct import/restart PASS
+- runtime base preservation 339/339 exact
 
-## Completed bounded PASS work
+Separate app-level boundary remains:
+`PENDING_USER_SAME_PROFILE_V465`
 
-Completed cards: 26 / 2,493  
-Completed examples: 104  
-FA example translations: 104  
-EN example translations: 104  
-Completed pilot batches: 2
+That boundary belongs to the global app runtime, not to NVV content. Do not reopen NVV because of it.
 
-Batch 0001 and Batch 0002 remain bounded PASS checkpoints. Do not regenerate them casually.
+## Exact resume rule
 
-## Runtime evidence vs current runtime authority
+For NVV content/package work, there is **no next production action**. Preserve the exact locked release SHA.
 
-Historical bounded runtime evidence:
-- `GFP-v411-DEVELOPMENT-BASELINE-R37.zip`
-- SHA-256: `fc8c9c82216cb8fe3699bbd293618e91599e24038f9ac1c2b8eaa74589e3cc0b`
-- 52/52 component resolutions
-- 52 reverse Wortnetz links
-- runtime JS syntax PASS
-- runtime asset references PASS
-- inline script syntax PASS
-- live browser import/persistence/reload NOT RUN
+Only if the user explicitly requests a successor, content correction, source change, or re-integration against a newer CURRENT runtime should a new NVV work item begin.
 
-R37 is historical evidence only. It is **not** the current runtime authority.
+If runtime compatibility is revisited, resolve CURRENT from German-Flashcards-Pro live at that time. Never downgrade to an older LAST_FULLY_VERIFIED runtime merely because it is final.
 
-At the 2026-09-16 migration, `German-Flashcards-Pro/main/PROJECT-STATE.json` reported durable runtime `v411-R44`. That observation is informational only; Stage 6 must always resolve the actual current runtime live at acceptance time.
+## Durable Git state
 
-## Current seven-stage pipeline state
+Stage7 lock workstream commit:
+`6e3fa962dfcfbbd79607e49539d358b004c5f19c`
 
-1. Source & Inventory — PASS
-2. Canonicalization — RUNNING
-   - slash variant review PASS
-   - evidence-driven sense resolution RUNNING
-3. Evidence & Enrichment — RUNNING
-   - 26 completed cards
-4. Linguistic & Lexical QA — RUNNING
-   - Batch 0001 PASS
-   - Batch 0002 PASS
-   - cumulative 26-card validation PASS
-   - global dataset QA not complete
-5. Delivery Projection — RUNNING
-   - 26 cumulative projected cards
-6. Runtime & Presentation Acceptance — RUNNING
-   - historical R37 bounded acceptance retained
-   - current runtime acceptance must be resolved live
-7. Release & Post-Package Verification — NOT_STARTED
+Main project-state sync commit:
+`535eff71e26498b98873741d35bb687df025f4a1`
 
-## Scalable production cadence
+Runtime dependency sync commit:
+`addda19ea029188ab58f57c0365421cd79dac92a`
 
-Batch 0003 is the first scalable batch:
-- target 100 safe expressions end-to-end
-- ambiguous/polysemous/conflicting items go to persistent REVIEW-QUEUE and are replaced by the next safe item
-- after two clean 100-card batches, cadence may increase to 150
-- never exceed 200 without explicit user approval
-- every 500 completed cards run a cross-batch global audit
-
-Per-batch stages:
-B1 Sense/Evidence Lock → B2 DE/FA/EN Meaning → B3 Structure/Lexical Graph → B4 Exactly 4 examples + FA/EN → B5 QA → B6 Live-resolved runtime projection/acceptance → B7 Git-backed persistent checkpoint.
-
-## Persistence protocol
-
-After every successful batch update:
-- `CHECKPOINT.json`
-- this `HANDOFF-READ-FIRST.md`
-- cumulative canonical data
-- cumulative projected data
-- QA/acceptance reports
-- persistent review queue
-- artifact/hash manifest
-- downloadable cumulative checkpoint ZIP when practical
-
-GitHub is the durable coordination layer. A local ZIP is a backup/handoff convenience, not a parallel source of truth.
-
-## Exact next action
-
-Start Batch 0003 with 100 safe expressions using the unified project startup chain. Preserve Batch 0001/0002. Keep `etw. / jdn. in Anspruch nehmen` quarantined until its supported senses are resolved. At B6 resolve the current Flashcards runtime live rather than treating R37 as current.

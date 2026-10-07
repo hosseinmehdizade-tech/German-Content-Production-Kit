@@ -1,0 +1,29 @@
+{
+  "schema": "gcpk-git-sync-pending@1.0.0",
+  "scope": "A1-L22 Stage6",
+  "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "content_stage6_quality": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+  "runtime": {
+    "current": "v465-R99",
+    "sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+    "last_fully_verified": "v451-R85"
+  },
+  "checkpoint": {
+    "filename": "Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
+    "sha256": "a4c498d1897e03bc40ecd448a2c4fc03b668161a01cc3d55181d0b493b29e765",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip"
+  },
+  "import_ready": {
+    "filename": "Menschen-A1-L22-v3.3.6-Stage6-IMPORT-READY.zip",
+    "sha256": "4c26e9b66be74f77992f9d43237cf906c914b3a3d5859c7e7076cf16446bc6da"
+  },
+  "workstream_checkpoint_commit": "3ae3b44fefcf645a45e76e3832b92cc5658e12fb",
+  "pending": [
+    "PROJECT-STATE.json root coordination summary",
+    "README.md status summary"
+  ],
+  "reason": "Root PROJECT-STATE is a very large whole-file mutation and prior connector replacement was safety-blocked. Per artifact-first/async-Git policy, the verified portable artifact plus the newer workstream CHECKPOINT are authoritative and work continues without downgrade.",
+  "quality_impact": "NONE",
+  "resume_rule": "Resolve the Menschen workstream from Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json plus the exact Library Stage6 artifact; do not let a stale root summary downgrade the workstream.",
+  "next_action": "A1-L22 Stage7 — re-resolve CURRENT; if still v465-R99, package exact LOCKED candidate and rerun exact-final acceptance; otherwise rerun Stage6 on the newer CURRENT first."
+}

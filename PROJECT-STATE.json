@@ -196,7 +196,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_FINAL_CONVERGENCE_CLOSED_PASS",
+      "status": "STAGE5_DELIVERY_PROJECTION_ANTI_BYPASS_PASS",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -218,7 +218,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Proceed to Stage5 delivery projection and anti-bypass validation from the exact Stage4 closed successor. Do not resolve or bind the Flashcards runtime until Stage6.",
+      "next_action": "Stage6 Runtime & Presentation Acceptance: re-resolve Flashcards CURRENT and its exact portable artifact at execution time, verify the runtime artifact SHA-256, then test the exact Stage5 clean delivery for direct import, 2492-card persistence/index/roundtrip, neutral presentation parity and organization. Never downgrade to LAST_FULLY_VERIFIED.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -246,20 +246,19 @@
           "library_binary_sync": "PENDING_CONTAINER_SESSION_UNAVAILABLE",
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         },
-        "current_operation": "STAGE5_DELIVERY_PROJECTION_ANTI_BYPASS",
+        "current_operation": "STAGE6_LIVE_CURRENT_RUNTIME_PRESENTATION_ACCEPTANCE",
         "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md"
       },
-      "last_observed_stage": "Stage4 Final Convergence — CLOSE GATE PASS",
-      "last_observed_note": "Stage4 is closed on the exact successor core. Fresh v3.3.6 source, identity, candidate-ledger, and completeness validators are 4/4 PASS; 66/66 close checks pass; Stage3C has 0 unresolved cells; changed-target verification, recurrent-family exhaustion, and 500-clean unchanged sample all pass.",
+      "last_observed_stage": "Stage5 — Delivery Projection / Anti-Bypass PASS",
+      "last_observed_note": "Exact Stage4 closed learner core projected to 2492 neutral de-vocabulary cards with gfp-vocabulary-neutral@1. Fresh extracted v3.3.6 gates are 5/5 PASS; Library rematerialization is exact for checkpoint and clean delivery. Runtime binding remains deferred to Stage6.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-FINAL-CONVERGENCE-CLOSE-GATE-PASS-CHECKPOINT.zip",
-        "sha256": "8930c40885fdae577bfbe3f9b1f89136d9361c6729bf42afb92629b174ba70f9",
-        "size_bytes": 8568849,
-        "successor_core_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
-        "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-FINAL-CONVERGENCE-CLOSE-GATE-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_000000001d6082109d49aa805ab6b46c",
-        "library_stable_id": "libfile_249174d7c7a0819185fb0079943853d6",
+        "filename": "NVV-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
+        "sha256": "abbd63db0d1519e952634e2328a11939d26ad59ce6d40c65b178be4bdabb6680",
+        "size_bytes": 6057486,
+        "stage4_closed_core_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000302081f4aba3f71c94b8b240",
+        "library_stable_id": "libfile_3b9ed5409fa48191abfa1a90fc90fdb3",
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "stage2": {
@@ -1526,7 +1525,7 @@
       "persistence": {
         "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "latest_git_metadata": "SYNCED",
-        "latest_local_artifact_sha256": "8930c40885fdae577bfbe3f9b1f89136d9361c6729bf42afb92629b174ba70f9",
+        "latest_local_artifact_sha256": "abbd63db0d1519e952634e2328a11939d26ad59ce6d40c65b178be4bdabb6680",
         "git": "IN_SYNC",
         "latest_stage4_final_audit_checkpoint_commit": "533bb2eef7e599c9ce274507a3b46f41d8fd6d43",
         "latest_portable_checkpoint_library": "PASS_UPLOAD"
@@ -1701,6 +1700,41 @@
           "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "next_action_id": "STAGE5_DELIVERY_PROJECTION_ANTI_BYPASS"
+      },
+      "stage5": {
+        "state": "PASS",
+        "status": "STAGE5_DELIVERY_PROJECTION_ANTI_BYPASS_PASS",
+        "stage4_closed_core_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
+        "cards": 2492,
+        "examples": 9968,
+        "source_occurrences": 2476,
+        "source_output_active_pairs": 2492,
+        "card_type": "de-vocabulary",
+        "presentation_contract": "gfp-vocabulary-neutral@1",
+        "official_v336_fresh_extract_gates": "5/5 PASS",
+        "clean_delivery": {
+          "filename": "NVV-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+          "sha256": "0a393c1e807010e962aaab1810a7b0d5ba9c46fb67170c9c5a9bf0bd702cb9ec",
+          "size_bytes": 3885535,
+          "canonical_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+          "library_file_id": "file_0000000066e081f48f1df0b26e8a341e",
+          "library_stable_id": "libfile_98c4233b91dc8191952a75d88a5368f0",
+          "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "checkpoint": {
+          "filename": "NVV-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
+          "sha256": "abbd63db0d1519e952634e2328a11939d26ad59ce6d40c65b178be4bdabb6680",
+          "size_bytes": 6057486,
+          "stage4_closed_core_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
+          "library_file_id": "file_00000000302081f4aba3f71c94b8b240",
+          "library_stable_id": "libfile_3b9ed5409fa48191abfa1a90fc90fdb3",
+          "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "report": "Workspaces/nomen-verb-verbindungen/05-delivery/STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "runtime_binding": "DEFERRED_TO_STAGE6_LIVE_CURRENT",
+        "next_action_id": "STAGE6_LIVE_CURRENT_RUNTIME_PRESENTATION_ACCEPTANCE"
       }
     },
     "lesen_praesentation": {

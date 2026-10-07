@@ -1,0 +1,390 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T03:04:00+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0017",
+    "positions": "1601-1700",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      18,
+      19
+    ],
+    "printed_pages": [
+      16,
+      17
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers Projekt through Rücken for positions 1601-1700. Ninety-six stored source surfaces equal the frozen canonical surface. Positions 1605-1606 are the expected two-way split of source surface 'ein Projekt vereiteln / verwerfen'. Positions 1644 and 1699 are pre-existing documented source repairs (jdm.→jdn. zur Rechenschaft ziehen; jdn.→jdm. den Rücken stärken). No new source/canonical repair is confirmed in this shard."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1601,
+      "target_id": "dah-nvv-exp-01592",
+      "canonical_form": "ein Projekt ausführen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_IDIOMATICITY_REDUNDANCY",
+      "fields": [
+        "examples[1].en"
+      ],
+      "evidence": {
+        "example_de": "Für die technische Umsetzung soll ein erfahrenes Team das Projekt ausführen.",
+        "example_en": "An experienced team is to execute the project for the technical implementation."
+      },
+      "finding": "The English sentence is translation-shaped and semantically redundant: 'execute the project for the technical implementation' repeats the implementation idea instead of rendering the German purpose phrase naturally.",
+      "repair_direction": "Use idiomatic English that preserves both the experienced-team subject and the technical-implementation context without repeating 'execute/implementation'."
+    },
+    {
+      "position": 1607,
+      "target_id": "dah-nvv-exp-01597",
+      "canonical_form": "Protest einlegen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_NATURALNESS",
+      "fields": [
+        "meaning_fa"
+      ],
+      "evidence": {
+        "meaning_fa": "اعتراض رسمی کردن",
+        "definition_de": "formell widersprechen oder protestieren"
+      },
+      "finding": "The Persian summary 'اعتراض رسمی کردن' is understandable but is not a natural collocation for formally lodging or registering a protest.",
+      "repair_direction": "Use an idiomatic Persian formulation such as 'اعتراض رسمی ثبت/مطرح کردن' or another natural equivalent consistent with the examples."
+    },
+    {
+      "position": 1610,
+      "target_id": "dah-nvv-exp-01600",
+      "canonical_form": "zu Protokoll geben",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "eine Aussage offiziell protokollieren lassen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Der Zeuge gab zu Protokoll, dass er das Fahrzeug gegen Mitternacht gesehen hatte.",
+          "Sie wollte ausdrücklich zu Protokoll geben, dass sie dem Beschluss nicht zugestimmt hatte.",
+          "Der Betriebsrat gab seine Einwände vollständig zu Protokoll.",
+          "Vor Beginn der Abstimmung gab der Vorsitzende zu Protokoll, wer wegen Befangenheit nicht teilnehmen durfte."
+        ]
+      },
+      "finding": "The construction has a variable content/theme (statement, objections, dass/wer clause), but learner structure exposes no argument slot.",
+      "repair_direction": "Preserve the raw source surface and encode the variable content/theme in learner structure, e.g. 'etw./dass ... zu Protokoll geben'."
+    },
+    {
+      "position": 1614,
+      "target_id": "dah-nvv-exp-01604",
+      "canonical_form": "kurzen Prozess machen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "eine Angelegenheit sehr schnell und ohne lange Diskussion erledigen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Der Hausmeister machte mit dem kaputten Schrank kurzen Prozess und entsorgte ihn sofort.",
+          "Die Mannschaft machte mit dem schwachen Gegner kurzen Prozess und gewann 4:0.",
+          "Statt noch länger zu diskutieren, machte die Chefin mit dem unklaren Entwurf kurzen Prozess.",
+          "Wenn eine Datei eindeutig beschädigt ist, mache ich damit kurzen Prozess und stelle die Sicherung wieder her."
+        ]
+      },
+      "finding": "All four examples realize the target of the idiom with 'mit + Dativ' or pronominal 'damit', but learner structure is marked slotless.",
+      "repair_direction": "Expose the productive 'mit + Dativ' complement in learner structure while keeping the source surface unchanged."
+    },
+    {
+      "position": 1616,
+      "target_id": "dah-nvv-exp-01606",
+      "canonical_form": "eine Prüfung abnehmen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "eine Prüfung bei jemandem durchführen und bewerten",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Die Professorin nimmt morgen die praktische Prüfung bei zwölf Studierenden ab.",
+          "Nur dafür qualifizierte Prüfer dürfen diese Prüfung abnehmen.",
+          "Bei mir nahm ein externer Dozent die Prüfung ab.",
+          "Während der Ausbildung nimmt der Meister regelmäßig eine Prüfung bei den Auszubildenden ab."
+        ]
+      },
+      "finding": "The learner structure omits the examinee/person role that is explicit in the definition and in three of four examples.",
+      "repair_direction": "Encode the examinee/person participant according to the final structure policy (e.g. 'bei jdm. eine Prüfung abnehmen'), while preserving source provenance."
+    },
+    {
+      "position": 1632,
+      "target_id": "dah-nvv-exp-01622",
+      "canonical_form": "den / einen Rat bekommen / erhalten",
+      "severity": "MAJOR",
+      "category": "GERMAN_DEFINITION_CIRCULARITY_RESIDUAL",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "definition_de": "von jemandem einen Rat bekommen"
+      },
+      "finding": "The German definition repeats an exact target branch ('einen Rat bekommen') and therefore does not independently explain the expression.",
+      "repair_direction": "Replace the circular wording with an independent explanation such as receiving a recommendation, guidance, or advice from someone."
+    },
+    {
+      "position": 1633,
+      "target_id": "dah-nvv-exp-01623",
+      "canonical_form": "jdm. den / einen Rat erteilen / geben",
+      "severity": "MAJOR",
+      "category": "GERMAN_DEFINITION_CIRCULARITY_RESIDUAL",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "definition_de": "jemandem einen Rat geben"
+      },
+      "finding": "The definition is circular because it repeats one of the target's exact verb alternatives ('Rat geben') rather than independently explaining the action.",
+      "repair_direction": "Define the expression independently, for example as giving someone a recommendation or guidance."
+    },
+    {
+      "position": 1636,
+      "target_id": "dah-nvv-exp-01626",
+      "canonical_form": "um Rat bitten",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden ausdrücklich um eine Empfehlung oder Beratung ersuchen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Sie bat ihre Kollegin um Rat, bevor sie auf das Angebot antwortete.",
+          "Bei technischen Problemen bittet er zuerst den erfahrensten Mitarbeiter um Rat.",
+          "Ich habe meinen Vermieter um Rat gebeten, weil die Heizung ständig ausfiel.",
+          "Bevor du kündigst, könntest du jemanden aus der Personalabteilung um Rat bitten."
+        ]
+      },
+      "finding": "All four examples realize the person asked for advice as an accusative object, but learner structure exposes no person slot.",
+      "repair_direction": "Add the accusative person role, e.g. 'jdn. um Rat bitten', without altering the raw source surface."
+    },
+    {
+      "position": 1643,
+      "target_id": "dah-nvv-exp-01633",
+      "canonical_form": "Rechenschaft ablegen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "sein Handeln erklären und verantworten",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Der Vorstand muss den Mitgliedern einmal im Jahr Rechenschaft über seine Arbeit ablegen.",
+          "Vor dem Parlament legte die Ministerin Rechenschaft über die Verwendung der Mittel ab.",
+          "Wer öffentliche Gelder verwaltet, muss über deren Einsatz Rechenschaft ablegen.",
+          "Am Ende des Projekts legte die Leitung Rechenschaft über Kosten und Ergebnisse ab."
+        ]
+      },
+      "finding": "All four examples realize the account/topic with 'über + Akk.', but learner structure omits that governed complement.",
+      "repair_direction": "Expose the productive 'über + Akk.' content/topic complement in learner structure while preserving source provenance."
+    },
+    {
+      "position": 1648,
+      "target_id": "dah-nvv-exp-01638",
+      "canonical_form": "in Rechnung stellen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "einen Betrag berechnen und abrechnen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Die Anfahrt wird zusätzlich in Rechnung gestellt.",
+          "Der Anbieter stellte uns zwei zusätzliche Arbeitsstunden in Rechnung.",
+          "Für die Änderung des Tickets darf keine weitere Gebühr in Rechnung gestellt werden.",
+          "Die Materialkosten wurden dem Kunden vollständig in Rechnung gestellt."
+        ]
+      },
+      "finding": "The construction has a central variable charge/theme and may also realize a dative recipient, yet learner structure exposes no argument slot at all.",
+      "repair_direction": "Encode at least the charged item/amount as the core variable theme and, if supported by the structure schema, the optional dative recipient."
+    },
+    {
+      "position": 1649,
+      "target_id": "dah-nvv-exp-01639",
+      "canonical_form": "einer Sache Rechnung tragen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_CASE_SLOT_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "source_surface": "einer Sache Rechnung tragen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Bei der Planung muss man den Bedürfnissen älterer Menschen Rechnung tragen.",
+          "Die neue Regelung trägt den gestiegenen Energiekosten Rechnung.",
+          "Wir haben der begrenzten Raumhöhe bei der Auswahl der Anlage Rechnung getragen.",
+          "Ein realistischer Zeitplan muss möglichen Lieferverzögerungen Rechnung tragen."
+        ]
+      },
+      "finding": "The canonical/source form itself contains a variable dative participant ('einer Sache'), and every example realizes that dative role, but learner structure records no slot.",
+      "repair_direction": "Encode the dative thing/content role explicitly while preserving the canonical/source wording."
+    },
+    {
+      "position": 1659,
+      "target_id": "dah-nvv-exp-01649",
+      "canonical_form": "ins Regal stellen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas in einem Regal unterbringen oder dort einordnen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Bitte stell die neuen Ordner ins Regal neben dem Drucker.",
+          "Nach dem Lesen stellte sie das Buch wieder ins Regal.",
+          "Die Mitarbeiterin stellte die Waren nach Kategorien ins Regal.",
+          "Bevor der Laden öffnet, müssen alle Produkte ordentlich ins Regal gestellt werden."
+        ]
+      },
+      "finding": "The thing being placed on the shelf is a central variable object in the definition and all four examples, but learner structure is slotless.",
+      "repair_direction": "Add the theme/object role, e.g. 'etw. ins Regal stellen', without changing source provenance."
+    },
+    {
+      "position": 1675,
+      "target_id": "dah-nvv-exp-01665",
+      "canonical_form": "einen Reiz ausüben auf jdn.",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_ENCODING_DEFECT",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "source_surface": "einen Reiz ausüben auf jdn.",
+        "current_rektion": [
+          {
+            "role": "accusative_person",
+            "case": "accusative",
+            "source_evidence": "jdn."
+          }
+        ],
+        "current_argument_slots": [
+          {
+            "role": "accusative_person",
+            "case": "accusative",
+            "source_evidence": "jdn."
+          }
+        ],
+        "examples_de": [
+          "Die alte Hafenstadt übt auf viele Besucher einen besonderen Reiz aus.",
+          "Technische Herausforderungen üben auf ihn einen starken Reiz aus.",
+          "Das Unbekannte übt auf Kinder oft einen großen Reiz aus.",
+          "Warum übt gerade dieses einfache Spiel auf so viele Menschen einen Reiz aus?"
+        ]
+      },
+      "finding": "The source/canonical pattern explicitly requires 'auf + Akk.', but the structured slot keeps only the accusative person and drops the governing preposition 'auf'.",
+      "repair_direction": "Encode the complement as 'auf + Akk.' in rektion/argument_slots while preserving the exact source surface."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 13,
+    "blocker": 0,
+    "major": 11,
+    "minor": 2,
+    "clean_targets": 87,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "96/100 (two expected split identities at positions 1605-1606; two pre-existing documented source repairs at positions 1644 and 1699)",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 96,
+    "expected_split_surface_mismatches": 2,
+    "preexisting_repaired_source_mismatches": [
+      {
+        "position": 1644,
+        "source_repair_id": "nvv-source-repair-01634"
+      },
+      {
+        "position": 1699,
+        "source_repair_id": "nvv-source-repair-01689"
+      }
+    ],
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 0,
+    "source_repair_positions": []
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1700,
+    "positions_remaining": 792,
+    "confirmed_finding_targets": 178,
+    "blocker_findings": 0,
+    "major_findings": 81,
+    "minor_findings": 97,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1701-1800. Do not repair any logged finding until all 2492 targets have been audited."
+}

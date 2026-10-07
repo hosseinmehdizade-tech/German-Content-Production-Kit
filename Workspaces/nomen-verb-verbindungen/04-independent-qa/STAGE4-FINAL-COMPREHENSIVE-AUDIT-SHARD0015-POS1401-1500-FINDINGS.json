@@ -1,0 +1,514 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T02:41:35+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0015",
+    "positions": "1401-1500",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      16,
+      17
+    ],
+    "printed_pages": [
+      14,
+      15
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers the L–N range relevant to positions 1401-1500. All 100 stored source surfaces match the frozen canonical surface exactly in this shard; no new source/canonical repair is required."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1402,
+      "target_id": "dah-nvv-exp-01392",
+      "canonical_form": "aus der Luft greifen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas ohne ausreichende Grundlage behaupten oder erfinden",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Die Zahl von zehn Millionen hat der Sprecher offenbar aus der Luft gegriffen.",
+          "Diese Behauptung ist nicht belegt; sie wirkt völlig aus der Luft gegriffen.",
+          "Der Gutachter darf seine Schätzung nicht einfach aus der Luft greifen.",
+          "Woher kommt diese Frist, oder ist sie nur aus der Luft gegriffen?"
+        ]
+      },
+      "finding": "The learner structure hides the variable content/theme of the idiom. In active use the construction is etw. aus der Luft greifen, and the definition plus examples 1 and 3 explicitly realize that object; the participial uses in examples 2 and 4 refer to the same semantic role.",
+      "repair_direction": "Preserve the source surface in provenance and expose the variable content/theme in learner structure, e.g. etw. aus der Luft greifen."
+    },
+    {
+      "position": 1407,
+      "target_id": "dah-nvv-exp-01397",
+      "canonical_form": "an die Luft setzen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden entlassen oder hinauswerfen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Nach mehreren schweren Verstößen setzte die Firma den Mitarbeiter an die Luft.",
+          "Der Wirt setzte den aggressiven Gast schließlich an die Luft.",
+          "Wer Kundendaten verkauft, muss damit rechnen, an die Luft gesetzt zu werden.",
+          "Die Vereinsleitung wollte niemanden ohne Anhörung einfach an die Luft setzen."
+        ]
+      },
+      "finding": "The person being dismissed/thrown out is a core accusative participant, but learner structure exposes no slot although every example realizes that role.",
+      "repair_direction": "Add the affected person as an accusative learner slot (jdn. an die Luft setzen) while retaining the exact source surface in provenance."
+    },
+    {
+      "position": 1418,
+      "target_id": "dah-nvv-exp-01408",
+      "canonical_form": "(schwer) im Magen liegen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "körperlich oder übertragen unangenehm belasten",
+        "current_argument_slots": [],
+        "dative_examples": [
+          "mir",
+          "ihr",
+          "allen Gästen",
+          "ihm"
+        ]
+      },
+      "finding": "All four examples encode the experiencer in the dative, the same participant captured by the English gloss “to weigh on someone”, but learner structure marks the expression as slotless.",
+      "repair_direction": "Expose the dative experiencer as a learner slot, e.g. jdm. (schwer) im Magen liegen, while preserving source provenance."
+    },
+    {
+      "position": 1419,
+      "target_id": "dah-nvv-exp-01409",
+      "canonical_form": "Mangel haben",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "nicht genug von etwas Wichtigem besitzen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Das Dorf hat im Sommer oft Mangel an sauberem Trinkwasser.",
+          "Die Werkstatt hatte plötzlich Mangel an passenden Ersatzteilen.",
+          "Wer dauerhaft Mangel an Schlaf hat, arbeitet meist unkonzentrierter.",
+          "Im Lager haben wir derzeit Mangel an geeigneter Schutzkleidung."
+        ]
+      },
+      "finding": "The recurring governed complement an + Dativ is absent from learner structure even though all four examples realize it and it carries the content of what is lacking.",
+      "repair_direction": "Record the an+Dat. complement in learner structure without changing the raw source surface."
+    },
+    {
+      "position": 1420,
+      "target_id": "dah-nvv-exp-01410",
+      "canonical_form": "Mangel leiden",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "wichtige Dinge nicht in ausreichender Menge haben",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Viele Pflanzen litten während der Trockenheit Mangel an Wasser.",
+          "Das kleine Krankenhaus leidet Mangel an Fachpersonal.",
+          "In der Übergangszeit mussten die Bewohner Mangel an Heizenergie leiden.",
+          "Kinder sollten keinen Mangel an wichtigen Nährstoffen leiden."
+        ]
+      },
+      "finding": "The learner structure omits the an + Dativ complement that specifies the shortage; every example contains that pattern.",
+      "repair_direction": "Expose the an+Dat. complement in learner structure while leaving the registered source surface unchanged."
+    },
+    {
+      "position": 1423,
+      "target_id": "dah-nvv-exp-01413",
+      "canonical_form": "in die Mangel nehmen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden streng befragen oder unter Druck setzen; etwas sehr kritisch prüfen",
+        "current_argument_slots": []
+      },
+      "finding": "The idiom requires the person or thing being subjected to pressure/scrutiny, yet learner structure exposes no object slot although all four examples realize one.",
+      "repair_direction": "Add a jdn./etw. object slot to learner structure and preserve the source surface in provenance."
+    },
+    {
+      "position": 1425,
+      "target_id": "dah-nvv-exp-01415",
+      "canonical_form": "etwas auf den Markt bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "source_surface": "etwas auf den Markt bringen",
+        "current_argument_slots": [],
+        "definition_de": "ein Produkt erstmals oder erneut zum Verkauf anbieten"
+      },
+      "finding": "The canonical/source surface itself explicitly contains etwas, but the structured learner representation has no argument slot. This is a direct loss of valency information.",
+      "repair_direction": "Encode the explicit etwas/theme as an accusative learner slot while keeping the canonical/source wording unchanged."
+    },
+    {
+      "position": 1435,
+      "target_id": "dah-nvv-exp-01425",
+      "canonical_form": "jdn. ans Messer liefern",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "examples[0].fa",
+        "examples[2].fa"
+      ],
+      "evidence": {
+        "example1_de": "Der Informant wollte seinen Kollegen nicht ans Messer liefern.",
+        "example1_fa": "خبرچین نمی‌خواست همکارش را تحویل خطر بدهد.",
+        "example3_de": "Niemand darf einen Unschuldigen ans Messer liefern, nur um sich selbst zu retten.",
+        "example3_fa": "هیچ‌کس نباید فقط برای نجات خودش یک بی‌گناه را تحویل خطر بدهد."
+      },
+      "finding": "“تحویل خطر دادن” is a literal, non-idiomatic Persian construction. The card summary and the other examples already show the intended betrayal/exposure meaning naturally.",
+      "repair_direction": "Use natural Persian such as لو دادن / به خطر انداختن / در معرض خطر قرار دادن according to each sentence."
+    },
+    {
+      "position": 1446,
+      "target_id": "dah-nvv-exp-01436",
+      "canonical_form": "in Mitleidenschaft ziehen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden oder etwas ebenfalls schädigen oder negativ betreffen",
+        "current_argument_slots": []
+      },
+      "finding": "The affected person/thing is a central object of the construction and is present in every example, but no learner argument slot is exposed.",
+      "repair_direction": "Add a jdn./etw. affected-theme slot to learner structure; preserve the source surface in provenance."
+    },
+    {
+      "position": 1447,
+      "target_id": "dah-nvv-exp-01437",
+      "canonical_form": "eine Mitschuld tragen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION_WITH_PERSIAN_ALIGNMENT_DEFECT",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots",
+        "examples[0].fa",
+        "examples[1].fa"
+      ],
+      "evidence": {
+        "definition_de": "einen Teil der Verantwortung oder Schuld mittragen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Der Veranstalter trägt eine Mitschuld an dem chaotischen Ablauf.",
+          "Auch die fehlerhafte Planung trug eine Mitschuld am Schaden.",
+          "Sie gab zu, an dem Missverständnis eine Mitschuld zu tragen.",
+          "Mehrere Beteiligte tragen eine Mitschuld daran, dass die Frist verpasst wurde."
+        ],
+        "examples_fa": [
+          "برگزارکننده بخشی از تقصیر روند آشفته را بر عهده دارد.",
+          "برنامه‌ریزی اشتباه نیز بخشی از تقصیر خسارت را داشت."
+        ]
+      },
+      "finding": "All four German examples realize the responsibility target with an/daran, but learner structure omits that complement. In addition, the first two Persian examples drop the needed relation and become unnatural/semantically malformed (“تقصیرِ روند/خسارت”).",
+      "repair_direction": "Expose the an+Dat./daran complement in learner structure and rewrite the affected Persian rows with a natural “در ... مقصر بودن / بخشی از تقصیر را در ... بر عهده داشتن” relation."
+    },
+    {
+      "position": 1454,
+      "target_id": "dah-nvv-exp-01444",
+      "canonical_form": "Mühe bereiten / machen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "schwierig oder anstrengend sein und Arbeit verursachen",
+        "current_argument_slots": [],
+        "dative_examples": [
+          "mir",
+          "den älteren Wanderern",
+          "erfahrenen Studierenden",
+          "ihr"
+        ]
+      },
+      "finding": "The experiencer is realized in the dative in all four examples, but the learner structure is slotless. This hides a central valency pattern of Mühe bereiten/machen.",
+      "repair_direction": "Expose the dative experiencer in learner structure, e.g. jdm. Mühe bereiten / machen."
+    },
+    {
+      "position": 1461,
+      "target_id": "dah-nvv-exp-01451",
+      "canonical_form": "nach dem Mund reden",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemandem nur das sagen, was er gern hören möchte",
+        "current_argument_slots": [],
+        "dative_examples": [
+          "dem Chef",
+          "ihr",
+          "uns",
+          "dem Publikum"
+        ]
+      },
+      "finding": "The idiom centrally selects a dative person (jdm. nach dem Mund reden); all four examples show it, while learner structure exposes no slot.",
+      "repair_direction": "Add the dative person/recipient to learner structure while preserving the raw source surface."
+    },
+    {
+      "position": 1476,
+      "target_id": "dah-nvv-exp-01466",
+      "canonical_form": "Nachricht geben",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemandem eine Information übermitteln",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Gib mir bitte Nachricht, sobald du sicher angekommen bist.",
+          "Der Hausmeister gab uns Nachricht, dass das Wasser wieder läuft.",
+          "Sie versprach, sofort Nachricht zu geben, wenn sich etwas ändert.",
+          "Nach der Untersuchung gab der Arzt der Familie Nachricht."
+        ]
+      },
+      "finding": "The recipient is a core dative role in the definition and is explicit in three of four examples, but learner structure does not expose it.",
+      "repair_direction": "Add a dative recipient slot (jdm. Nachricht geben); allow contextual omission in examples such as example 3."
+    },
+    {
+      "position": 1481,
+      "target_id": "dah-nvv-exp-01471",
+      "canonical_form": "Nachsicht üben an+Dat.",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_SEMANTIC_COVERAGE",
+      "fields": [
+        "meaning_fa"
+      ],
+      "evidence": {
+        "definition_de": "gegenüber jemandem oder etwas Nachsicht zeigen",
+        "meaning_fa": "در حق کسی اغماض کردن",
+        "example4_de": "Der Trainer wollte an wiederholtem Zuspätkommen keine Nachsicht mehr üben.",
+        "example4_fa": "مربی دیگر نمی‌خواست در برابر دیرکرد تکراری اغماض کند."
+      },
+      "finding": "The Persian summary restricts the target to a person (“در حق کسی”), while the German definition explicitly covers a person or a thing/situation and example 4 uses repeated lateness.",
+      "repair_direction": "Broaden the Persian meaning to cover both people and situations/things without changing the German source pattern."
+    },
+    {
+      "position": 1488,
+      "target_id": "dah-nvv-exp-01478",
+      "canonical_form": "auf den Nägeln brennen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemandem sehr dringend oder wichtig sein und ihn stark beschäftigen",
+        "current_argument_slots": [],
+        "dative_examples": [
+          "der Projektleiterin",
+          "mir",
+          "dem Team",
+          "dir"
+        ]
+      },
+      "finding": "The idiom’s experiencer is consistently dative and appears in all four examples, but learner structure is marked slotless.",
+      "repair_direction": "Expose the dative experiencer in learner structure, e.g. jdm. auf den Nägeln brennen."
+    },
+    {
+      "position": 1489,
+      "target_id": "dah-nvv-exp-01479",
+      "canonical_form": "eine Narbe hinterlassen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "examples[2].fa"
+      ],
+      "evidence": {
+        "example_de": "Auch eine gut verheilte Verletzung kann eine sichtbare Narbe hinterlassen.",
+        "example_fa": "حتی یک آسیب خوب بهبود‌یافته هم می‌تواند جای زخم قابل‌دیدنی باقی بگذارد."
+      },
+      "finding": "“جای زخم قابل‌دیدنی” is an unnatural rendering of sichtbare Narbe; دیدنی commonly means worth seeing and the compound sounds translation-shaped here.",
+      "repair_direction": "Use natural Persian such as جای زخم قابل مشاهده / مشهود."
+    },
+    {
+      "position": 1490,
+      "target_id": "dah-nvv-exp-01480",
+      "canonical_form": "jdm. eine Narbe zufügen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "examples[3].fa"
+      ],
+      "evidence": {
+        "example_de": "Die Verletzung fügte dem Spieler eine deutlich sichtbare Narbe zu.",
+        "example_fa": "آن آسیب جای زخم کاملاً قابل‌دیدنی برای بازیکن ایجاد کرد."
+      },
+      "finding": "The same “قابل‌دیدنی” calque appears here for deutlich sichtbare Narbe and is unnatural Persian in this medical/body context.",
+      "repair_direction": "Use a natural equivalent such as جای زخم کاملاً مشهود / به‌وضوح قابل مشاهده."
+    },
+    {
+      "position": 1492,
+      "target_id": "dah-nvv-exp-01482",
+      "canonical_form": "(sich) zum Narren machen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "sich selbst oder jemanden lächerlich machen bzw. als Narren erscheinen lassen",
+        "current_argument_slots": [],
+        "example_scope": "Examples include both reflexive self-reference and transitive affected-person uses."
+      },
+      "finding": "The learner structure fails to expose the construction’s reflexive/transitive participant alternation even though the canonical form marks (sich) and the examples teach both self-directed and other-directed uses.",
+      "repair_direction": "Encode the reflexive/accusative affected-person frame explicitly while preserving the source surface."
+    },
+    {
+      "position": 1493,
+      "target_id": "dah-nvv-exp-01483",
+      "canonical_form": "zum Narren halten",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden täuschen und ihn für dumm verkaufen",
+        "current_argument_slots": [],
+        "examples_de": [
+          "Der Betrüger hielt seine Opfer monatelang zum Narren.",
+          "Willst du mich zum Narren halten, oder meinst du das ernst?",
+          "Mit immer neuen Ausreden hielt der Anbieter die Kunden zum Narren.",
+          "Sie merkte schnell, dass man sie nur zum Narren halten wollte."
+        ]
+      },
+      "finding": "The deceived person is an obligatory/central accusative participant in all four examples, but learner structure exposes no object slot.",
+      "repair_direction": "Add an accusative person slot (jdn. zum Narren halten) while preserving source provenance."
+    },
+    {
+      "position": 1494,
+      "target_id": "dah-nvv-exp-01484",
+      "canonical_form": "auf die Nase fallen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_SCOPE_ALIGNMENT",
+      "fields": [
+        "meaning_fa"
+      ],
+      "evidence": {
+        "definition_de": "scheitern oder sich durch einen Fehler blamieren",
+        "meaning_fa": "زمین خوردن یا شکست خوردن",
+        "gloss_en": "to fall flat on one's face",
+        "example_scope": "All four examples are figurative failure/setback uses."
+      },
+      "finding": "The Persian summary adds the literal physical meaning “زمین خوردن”, while the German definition and all four learner examples define this card as the figurative failure/embarrassment idiom.",
+      "repair_direction": "Align the Persian summary with the card’s figurative sense (e.g. شکست خوردن / ناکام ماندن / خراب کردن) unless literal coverage is deliberately added across the card."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 20,
+    "blocker": 0,
+    "major": 15,
+    "minor": 5,
+    "clean_targets": 80,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "100/100",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 100,
+    "expected_split_surface_mismatches": 0,
+    "preexisting_repaired_source_mismatches": [],
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 0,
+    "source_repair_positions": []
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1500,
+    "positions_remaining": 992,
+    "confirmed_finding_targets": 150,
+    "blocker_findings": 0,
+    "major_findings": 63,
+    "minor_findings": 87,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1501-1600. Do not repair any logged finding until all 2492 targets have been audited."
+}

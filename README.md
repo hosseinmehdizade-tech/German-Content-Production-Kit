@@ -11,9 +11,7 @@
 
 The active production framework is **v3.3.6 — Source-Agnostic Completeness Gate**. It carries forward v3.3.5 semantic/presentation separation and adds universal source adapters, Stage2 identity closure, Stage3A/3B/3C disposition completeness, independent Stage4 re-audit, and a Stage5 anti-bypass gate. New ordinary vocabulary has one explicit `de-vocabulary` presentation family with mandatory `gfp-vocabulary-neutral@1`; POS/morphology/gender/Rektion remain semantic data. The validator and builder reject top-level or recursively nested presentation selector namespaces case-insensitively. Runtime counterpart is GFP v451/R85, where explicit supported type is authoritative.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L22 are LOCKED. A1-L23 Stage3A is PASS under v3.3.6: 175 active targets, 2,777 applicable enrichment cells, 211 VERIFIED_PRESENT and 2,566 explicit unresolved gaps; all 175 current targets have attested source audio. The active lexical Kombinationen overlay is baselined separately (1 inherited-present target / 3 items / 174 unreviewed). Portable Library rematerialization exact SHA + byte compare PASS. Next: Stage3B reference-availability preflight + gap-driven enrichment; no forced relation density.**
-
-A1-L17 Stage1/2:
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L22 are LOCKED. A1-L23 Stage3B Batch0001 is PASS under v3.3.6: 20/170 new targets core-enriched (`ma1m-lu-2813..ma1m-lu-2832`), 80 DE/FA/EN examples, 22 accepted relations, 23 candidate decisions (22 accepted + 1 rejected), and 20/20 batch identities reviewed for Kombinationen with 56 accepted items. Working completeness is 175 targets / 2,777 cells / 2,399 unresolved, as expected before later Stage3B/Stage3C. Library rematerialization exact SHA + byte compare PASS. Next: Stage3B Batch0002 from `ma1m-lu-2833`; no forced relation density.**\n\nA1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`
 - source rows: **118** (`1407..1524`)
 - source audio: **118/118 present**, zero missing, zero multi-audio rows

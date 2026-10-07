@@ -2,8 +2,8 @@
   "schema": "uv-kombinationen-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben-v1.3.0-kombinationen",
   "date": "2026-10-07",
-  "milestone": "STAGE7_IMMUTABLE_LOCKED_SUCCESSOR_RELEASE_EXACT_FINAL_ACCEPTANCE",
-  "status": "LOCKED_PASS_WITH_PROJECT_RUNTIME_BOUNDARY",
+  "milestone": "FINAL_INDEPENDENT_AUDIT",
+  "status": "WORKSTREAM_COMPLETE_LOCKED_FINAL_INDEPENDENT_AUDIT_PASS",
   "parent": {
     "version": "v1.2.0-v3.3.6 FINAL CONTENT DELIVERY",
     "immutable": true,
@@ -41,7 +41,7 @@
     "size_bytes": 20930,
     "storage": "current_conversation_user_delivery"
   },
-  "next_action": "Final independent audit of exact LOCKED artifact; preserve exact release bytes.",
+  "next_action": "No further content production required. Preserve exact LOCKED release SHA; global v465 same-profile app acceptance remains separate.",
   "do_not_claim": [
     "global app runtime FINAL",
     "same-profile v465 user acceptance"
@@ -276,6 +276,14 @@
       "library_file_id": "libfile_4ee2e10863808191af9d3801018004d2",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
+    "runtime": {
+      "CURRENT": "v465-R99",
+      "LAST_FULLY_VERIFIED": "v451-R85",
+      "content_specific_stage6": "36/36 PASS",
+      "content_specific_stage7": "34/34 PASS",
+      "project_same_profile_boundary": "PENDING_USER_SAME_PROFILE_V465",
+      "global_app_finality_claimed": false
+    },
     "content": {
       "cards": 174,
       "kombinationen": 525,
@@ -284,18 +292,51 @@
       "visible_kombinationen": "174/174 exactly one",
       "legacy_visible": 0
     },
-    "runtime": {
-      "CURRENT": "v465-R99",
-      "CURRENT_artifact_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
-      "CURRENT_app_sha256": "0ea6cb1b670f0f70677cc4a810e91336fa8b783e7db809ae0cb6489853abdcd8",
-      "LAST_FULLY_VERIFIED": "v451-R85",
-      "content_specific_stage6": "36/36 PASS",
-      "content_specific_stage7": "34/34 PASS",
-      "project_same_profile_boundary": "PENDING_USER_SAME_PROFILE_V465",
-      "global_app_finality_claimed": false
+    "supersedes_candidate_release_sha256": "52e050532329f5c9c86583a430f8468e1d59801103fb997ab166fd69a2bff531"
+  },
+  "final_independent_audit": {
+    "schema": "uv-kombinationen-final-independent-audit-summary@1.0.0",
+    "date": "2026-10-07",
+    "status": "PASS_WITH_NONBLOCKING_CAVEATS",
+    "content_lock_state": "LOCKED",
+    "artifact": {
+      "filename": "German-Flashcards-Pro-v465-R99-Unregelmaessige-Verben-v1.3.0-v3.3.6-Kombinationen-LOCKED-CONTENT-FINAL.zip",
+      "sha256": "0a9505327c817c48ecd1dad70e66bea9436b0172b0f07b0ec06709da68e269a4",
+      "size_bytes": 4509618,
+      "library_byte_parity": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "visible_ui_change": "NONE",
-    "supersedes_candidate_release_sha256": "52e050532329f5c9c86583a430f8468e1d59801103fb997ab166fd69a2bff531",
-    "next_action": "Final independent audit of exact LOCKED artifact; preserve exact release bytes."
+    "audit_report": {
+      "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-FINAL-INDEPENDENT-AUDIT.json",
+      "sha256": "656dd1c1a9f5dad2ce3abf1f3807ea4314d05a9ac52a15f3e9a7558474c8d498",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.0-Kombinationen-FINAL-INDEPENDENT-AUDIT.json",
+      "library_file_id": "libfile_63b4f39219e48191a59a20487b8ff81f",
+      "rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "checks": {
+      "package_crc": "PASS",
+      "zip_members": "630/630 unique",
+      "root_sha256sums": "627/627 PASS",
+      "package_hygiene": "PASS",
+      "runtime_base": "339/339 byte-identical CURRENT v465-R99",
+      "cards": "174/174 unique IDs / order 1..174",
+      "examples": "696 DE + 696 FA + 696 EN",
+      "relations": "902 / 0 dangling",
+      "kombinationen": "525 / 174 visible sections / 0 legacy visible / 0 exact duplicates",
+      "translations": "525/525 FA + 525/525 EN",
+      "registered_source_supported_items": 57,
+      "stage4_projection_parity": "525/525 PASS",
+      "official_framework_validators": "5/5 PASS",
+      "stage7_exact_final_rerun": "34/34 PASS",
+      "expanded_render_audit": "696 card-mode renders / 2100 combination visibility checks / 0 missing / 0 legacy / 0 page errors",
+      "registered_source_bytes": "4/4 exact registry SHA-256 match"
+    },
+    "blocking_defects_found": 0,
+    "nonblocking_caveats": [
+      "Embedded lock/release metadata remains conditional/candidate because locked bytes are intentionally unchanged; external Stage7 sidecars and this final audit are authoritative for LOCKED status.",
+      "Global app v465-R99 same-profile lifecycle/visual acceptance remains pending separately.",
+      "Use the locked package or verified adapter lineage for verified import/provenance metadata; detached raw TSV alone is not the release authority."
+    ],
+    "conclusion": "Content successor is complete/LOCKED. Do not mutate locked bytes; any future content change requires a new successor.",
+    "next_action": "No further content production required. Preserve exact LOCKED release SHA; global v465 same-profile app acceptance remains separate."
   }
 }

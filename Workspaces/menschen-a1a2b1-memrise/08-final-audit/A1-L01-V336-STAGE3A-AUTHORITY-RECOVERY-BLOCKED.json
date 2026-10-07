@@ -1,0 +1,81 @@
+{
+  "schema": "menschen-a1-l01-v336-stage3a-authority-recovery@1.0.0",
+  "workstream": "menschen-a1a2b1-memrise",
+  "lesson": "A1-L01",
+  "audited_at": "2026-10-08",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate + Lexical Kombinationen overlay",
+  "milestone": "STAGE3A_CARD_LEVEL_BASELINE_AUTHORITY_RECOVERY",
+  "quality_state": "BLOCKED",
+  "reason": "Exact repaired 118-card payload is not currently retrievable from Library/Project. Completing a card-by-card Stage3A without it would require reconstruction/guessing and is therefore forbidden.",
+  "required_authority": {
+    "repaired_successor_filename": "Menschen-A1-L01-v3.3.2-REPAIRED-CONTENT-LOCKED.zip",
+    "repaired_successor_sha256": "1c634f7398e14f4973c33e487e8d1bf516647fd4af32af5067bd6179f84285d6",
+    "direct_import_filename": "GFP-Menschen-A1-L01-v3.3.2-REPAIRED.zip",
+    "direct_import_sha256": "9d8a2d86ebdd467f987e61d20923c4791c02afc2ac441d46db0821e934b3342b",
+    "historical_golden_filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+    "historical_golden_sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075"
+  },
+  "verified_metadata": {
+    "source_occurrences": 89,
+    "canonical_targets": 118,
+    "senses": 86,
+    "expressions": 32,
+    "examples_de": 472,
+    "examples_fa": 472,
+    "examples_en": 472,
+    "historical_relations": 21,
+    "exact_four_examples_per_target": true,
+    "repaired_post_package_verification": "PASS"
+  },
+  "recovery_attempts": [
+    "Library semantic search by repaired ZIP filename and both known SHA-256 values returned only verification metadata and current runtime backup, not the ZIP bytes.",
+    "Library /German-Content-Production-Kit/Checkpoints currently exposes A1-L01-REPAIRED-POST-PACKAGE-VERIFICATION.json but not the repaired ZIP or direct-import ZIP.",
+    "Library /Flasch kart listing no longer exposes the historical v413 L01 archive at the checkpoint-recorded location.",
+    "Library /memrise is currently empty; registered source CSV/RAR bytes are not recoverable there.",
+    "Current flashcards-pro-full-backup-2026-10-06-0136.json contains only a partial subset of this lineage and cannot substitute for the repaired 118-card lesson authority."
+  ],
+  "partial_current_backup_evidence": {
+    "exact_card_objects_found": 17,
+    "ids": [
+      "ma1m-lu-0038",
+      "ma1m-lu-0066",
+      "ma1m-lu-0067",
+      "ma1m-lu-0068",
+      "ma1m-lu-0069",
+      "ma1m-lu-0070",
+      "ma1m-lu-0073",
+      "ma1m-lu-0074",
+      "ma1m-lu-0078",
+      "ma1m-lu-0079",
+      "ma1m-lu-0080",
+      "ma1m-lu-0081",
+      "ma1m-lu-0082",
+      "ma1m-lu-0083",
+      "ma1m-lu-0085",
+      "ma1m-lu-0086",
+      "ma1m-lu-0090"
+    ],
+    "note": "These are predominantly the separate Menschen A1 Verben retrofit lineage in the current backup. They are insufficient to certify A1-L01 Stage3A across all 118 lesson targets."
+  },
+  "preserved_decisions": {
+    "identity_mapping": "89 source occurrences -> 118 canonical targets remains preserved; no regeneration authorized.",
+    "hoeren": "ma1m-lu-0066 remains one lexical card with multiple verified meanings on the back.",
+    "historical_locked_bytes": "IMMUTABLE",
+    "density_quota": "FORBIDDEN",
+    "closed_no_force": "VALID_FIRST_CLASS_OUTCOME"
+  },
+  "blocked_stage_state": {
+    "stage3a_card_level_inventory": "BLOCKED_MISSING_EXACT_118_CARD_AUTHORITY",
+    "stage3b_gap_enrichment": "NOT_STARTED",
+    "stage3c_disposition_closure": "NOT_STARTED",
+    "stage4_independent_reaudit": "NOT_STARTED",
+    "stage5_successor_projection": "NOT_STARTED",
+    "stage6_exact_runtime_acceptance": "NOT_STARTED"
+  },
+  "unblock_conditions": [
+    "Restore/upload/materialize the exact repaired successor ZIP with SHA-256 1c634f7398e14f4973c33e487e8d1bf516647fd4af32af5067bd6179f84285d6, OR",
+    "Restore the direct-import repaired ZIP with SHA-256 9d8a2d86ebdd467f987e61d20923c4791c02afc2ac441d46db0821e934b3342b, OR",
+    "Restore the registered Menschen Memrise source bytes plus the exact prior canonical/repaired payload needed to reproduce the 118 targets without identity drift."
+  ],
+  "next_action": "Recover one exact L01 authority artifact. Then run Stage3A over all 118 canonical IDs and record Kombinationen baseline disposition per target before generating any new candidates."
+}

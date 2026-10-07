@@ -11,7 +11,7 @@
 
 The active production framework is **v3.3.6 — Source-Agnostic Completeness Gate**. It carries forward v3.3.5 semantic/presentation separation and adds universal source adapters, Stage2 identity closure, Stage3A/3B/3C disposition completeness, independent Stage4 re-audit, and a Stage5 anti-bypass gate. New ordinary vocabulary has one explicit `de-vocabulary` presentation family with mandatory `gfp-vocabulary-neutral@1`; POS/morphology/gender/Rektion remain semantic data. The validator and builder reject top-level or recursively nested presentation selector namespaces case-insensitively. Runtime counterpart is GFP v451/R85, where explicit supported type is authoritative.
 
-Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L21 are LOCKED. A1-L22 Stage3 is now COMPLETE under v3.3.6: Stage3C closed all 1704 applicable enrichment cells (1009 VERIFIED_PRESENT + 695 CLOSED_NO_FORCE, 0 unresolved) without canonical mutation or density forcing; exact Library checkpoint rematerialization PASS. Next: A1-L22 Stage4 independent Linguistic & Lexical QA / completeness re-audit.**
+Current Menschen workstream: `Workspaces/menschen-a1a2b1-memrise/`. **A1-L01 through A1-L21 are LOCKED. A1-L22 Stage4 independent QA is PASS under v3.3.6: 101 identities, 404 DE/FA/EN examples, 67 relations, 279 reviewed Kombinationen, and 1704/1704 completeness cells with 0 unresolved; exact Library checkpoint rematerialization PASS. A nonblocking pinned-framework test-harness advisory remains because legacy bundled tests still assert the old v3.3.5 ACTIVE-PROMPT while current v3.3.6 tests pass 10/10. Next: A1-L22 Stage5 Delivery Projection.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`

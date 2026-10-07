@@ -1,0 +1,65 @@
+{
+  "schema": "menschen-a1-l01-v336-delta-reaudit-scope@1.0.0",
+  "workstream": "menschen-a1a2b1-memrise",
+  "lesson": "A1-L01",
+  "created_at": "2026-10-08",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "milestone": "CURRENT_PROMPT_DELTA_SCOPE_RESOLUTION",
+  "quality_state": "PASS",
+  "persistence": {
+    "git": "IN_SYNC"
+  },
+  "authority": {
+    "historical_locked": {
+      "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
+      "sha256": "0507cf3209942af303b8dfdb25bbf57fbc9c8e468dad76eaebea4f661a9d8075",
+      "immutable": true
+    },
+    "repaired_successor": {
+      "filename": "Menschen-A1-L01-v3.3.2-REPAIRED-CONTENT-LOCKED.zip",
+      "sha256": "1c634f7398e14f4973c33e487e8d1bf516647fd4af32af5067bd6179f84285d6",
+      "cards": 118,
+      "immutable": true
+    },
+    "current_prompt_pointer": "Prompt/ACTIVE-PROMPT.txt -> START-PROMPT-v3.3.6.md",
+    "current_overlay": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+    "adoption_matrix": "Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json"
+  },
+  "identity": {
+    "source_occurrences": 89,
+    "canonical_targets": 118,
+    "stage2_mapping": "PRESERVE_AND_VERIFY_ONLY",
+    "hoeren": {
+      "target_id": "ma1m-lu-0066",
+      "decision": "ONE_CARD_MULTIPLE_VERIFIED_MEANINGS_ON_BACK",
+      "split_forbidden_without_new_distinct_lexical_identity": true
+    }
+  },
+  "delta_findings": [
+    "Historical L01 was produced/repaired under v3.3.2 and remains immutable.",
+    "Current v3.3.6 lexical Kombinationen overlay now applies to all lexical targets, not verbs only.",
+    "The separate Menschen A1 verb Kombinationen retrofit is accepted and reusable only where stable canonical target IDs match; do not infer lesson overlap from filenames or card-type counts.",
+    "A Library file named Menschen-A1-Lektion-1-GFP-v400-dynamic-pack.json was inspected and rejected as authority for this lineage because its target namespace/content differs from ma1m-lu-*.",
+    "No identity regeneration is justified by the prompt change. The current gap is enrichment/disposition/presentation completeness."
+  ],
+  "invariants": {
+    "learner_visible_combination_sections_max": 1,
+    "allowed_empty_disposition": "CLOSED_NO_FORCE",
+    "density_quota_forbidden": true,
+    "registered_source_claim_requires_evidence": true,
+    "backend_type_and_provenance_preserved": true,
+    "historical_locked_bytes_must_not_change": true
+  },
+  "current_completion": {
+    "stage1_source_inventory": "INHERITED_VERIFIED",
+    "stage2_identity": "INHERITED_VERIFIED_REAUDIT_ONLY",
+    "stage3a_current_prompt_delta_scope": "PASS",
+    "stage3a_card_level_kombinationen_inventory": "NOT_STARTED",
+    "stage3b_gap_enrichment": "NOT_STARTED",
+    "stage3c_disposition_closure": "NOT_STARTED",
+    "stage4_independent_reaudit": "NOT_STARTED",
+    "stage5_successor_projection": "NOT_STARTED",
+    "stage6_exact_runtime_acceptance": "NOT_STARTED"
+  },
+  "next_action": "Run A1-L01 card-level Stage3A inventory across all 118 ma1m-lu-* targets. Reuse accepted verb-Kombinationen only by exact canonical ID/provenance match; inspect every remaining lexical target and record VERIFIED_PRESENT, CLOSED_NO_FORCE, or NOT_APPLICABLE before generating any new candidate."
+}

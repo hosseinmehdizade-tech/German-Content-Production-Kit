@@ -1,0 +1,78 @@
+{
+  "schema": "nvv-stage6-blocked@1.0.0",
+  "status": "STAGE6_BLOCKED_ENVIRONMENT_DYNAMIC_ACCEPTANCE",
+  "framework": "v3.3.6",
+  "content_authority": {
+    "stage5_clean_delivery": "NVV-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+    "sha256": "0a393c1e807010e962aaab1810a7b0d5ba9c46fb67170c9c5a9bf0bd702cb9ec",
+    "cards": 2492,
+    "examples": 9968,
+    "card_type": "de-vocabulary",
+    "presentation_contract": "gfp-vocabulary-neutral@1"
+  },
+  "runtime_authority": {
+    "CURRENT": "v465-R99",
+    "artifact": "German-Flashcards-Pro-v465-R99-ORGANIZED-DELIVERY-STUDY-BACK-LIFECYCLE-CANDIDATE.zip",
+    "artifact_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+    "materialization": "PASS_EXACT_LIBRARY_SHA256",
+    "LAST_FULLY_VERIFIED": "v451-R85",
+    "current_release_final": false,
+    "same_profile_acceptance": "PENDING_USER_SAME_PROFILE_V465",
+    "development_base": "v465-R99",
+    "regression_reference": "v451-R85"
+  },
+  "runtime_import_adapter": {
+    "filename": "NVV-v3.3.6-Stage6-RUNTIME-IMPORT.zip",
+    "sha256": "c2cd79b9eba7273f105dd605b111e5924ec122a209764fb33a775abefcf2a1b0",
+    "size_bytes": 2025122,
+    "stage5_tsv_sha256": "f3a5206b05146566a2ea4a083c7a7996408b25c2ec3bf9f8f795b1f684ae684a",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-RUNTIME-IMPORT.zip",
+    "library_file_id": "file_00000000d02c8210933ca653e87358dc",
+    "library_stable_id": "libfile_71e119779f7c819194cb25a8b2e4226a",
+    "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "static_runtime_regressions": {
+    "status": "PASS_5_OF_5",
+    "checks": [
+      "runtime-assets PASS 136 refs / 61 static resources",
+      "v451 vocabulary-envelope authority browser PASS 21/21",
+      "v462 single-scroll extent PASS 16/16",
+      "v464 flat-settle PASS 16/16",
+      "v465 lifecycle cleanup PASS 11/11"
+    ]
+  },
+  "dynamic_attempts": {
+    "status": "BLOCKED_AFTER_BOUNDED_CORRECTED_RETRY",
+    "attempts": [
+      {
+        "mode": "real-origin localhost exact runtime + Chromium",
+        "result": "BLOCKED",
+        "error": "net::ERR_BLOCKED_BY_ADMINISTRATOR"
+      },
+      {
+        "mode": "flattened exact production runtime + deterministic IndexedDB boundary",
+        "result": "BLOCKED_TIMEOUT",
+        "timeout_seconds": 300
+      }
+    ],
+    "application_failure_established": false,
+    "content_failure_established": false
+  },
+  "not_claimed": [
+    "Stage6 PASS",
+    "2492-card verified runtime commit/reload persistence",
+    "full 2492-card presentation and roundtrip PASS",
+    "Stage7/LOCKED/FINAL"
+  ],
+  "checkpoint": {
+    "filename": "NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+    "sha256": "5a71d845359b3cc03aa24be240048bed9a1490996e1fb683ded9daf333f485bb",
+    "size_bytes": 2028132,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+    "library_file_id": "file_000000009a4c82109e1c8096227b83a1",
+    "library_stable_id": "libfile_d5d1de846a1c8191afd2abc21fe250b1",
+    "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "next_action_id": "STAGE6_RETRY_EXACT_BYTES_BROWSER_CAPABLE_ENVIRONMENT",
+  "next_action": "Retry the exact Stage6 runtime-import adapter and exact CURRENT v465-R99 portable runtime bytes in a browser-capable or longer-execution environment. Reuse the same bytes; do not regenerate Stage5 content, do not start Stage7, and do not downgrade to v451-R85."
+}

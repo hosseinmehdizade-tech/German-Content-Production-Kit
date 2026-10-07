@@ -6250,13 +6250,13 @@
       "next_action": "Stage3B Batch18 nominal range mb1m-lu-0341..mb1m-lu-0360 from exact Batch17 ACCEPTED bytes."
     },
     "unregelmaessige_verben_kombinationen": {
-      "status": "WORKSTREAM_COMPLETE_LOCKED_STAGE7_PASS_PENDING_FINAL_INDEPENDENT_AUDIT",
+      "status": "WORKSTREAM_COMPLETE_LOCKED_FINAL_INDEPENDENT_AUDIT_PASS",
       "domain": "vocabulary",
       "branch": "unregelmaessige-verben-v130-kombinationen",
       "checkpoint": "Workspaces/unregelmaessige-verben-kombinationen-v130/CHECKPOINT.json",
       "parent_workstream": "unregelmaessige_verben",
       "parent_version": "v1.2.0 immutable final content delivery",
-      "successor_version": "v1.3.0-Kombinationen WIP",
+      "successor_version": "v1.3.0-Kombinationen LOCKED",
       "active_policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
       "learner_visible_section": "Kombinationen",
       "stage3a": {
@@ -6285,7 +6285,7 @@
         "branch_checkpoint_commit": "8aca1e930077da627b2950a1de8a7cfc707e51de",
         "branch_readme_commit": "bd7b993840f47b15c33211e2df1425e338c0ce11"
       },
-      "next_action": "Final independent audit of exact LOCKED artifact; preserve exact release bytes.",
+      "next_action": "No further content production required. Preserve exact LOCKED release SHA; global v465 same-profile app acceptance remains separate.",
       "stage3b": {
         "cumulative_targets": "174/174",
         "latest_batch": "0009",
@@ -6493,7 +6493,55 @@
       },
       "persistence": {
         "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-        "git": "PASS"
+        "git": "PASS",
+        "branch_checkpoint_commit": "b4d47bba6ed886845d23522ccbfe4e9b1ace6fe2",
+        "branch_final_audit_commit": "8044a34e5554f31ae9137184ce983b50ab5528ea",
+        "branch_readme_commit": "044152818419d21afb4a946b6216eeb3db5d1d43"
+      },
+      "final_independent_audit": {
+        "schema": "uv-kombinationen-final-independent-audit-summary@1.0.0",
+        "date": "2026-10-07",
+        "status": "PASS_WITH_NONBLOCKING_CAVEATS",
+        "content_lock_state": "LOCKED",
+        "artifact": {
+          "filename": "German-Flashcards-Pro-v465-R99-Unregelmaessige-Verben-v1.3.0-v3.3.6-Kombinationen-LOCKED-CONTENT-FINAL.zip",
+          "sha256": "0a9505327c817c48ecd1dad70e66bea9436b0172b0f07b0ec06709da68e269a4",
+          "size_bytes": 4509618,
+          "library_byte_parity": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "audit_report": {
+          "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-FINAL-INDEPENDENT-AUDIT.json",
+          "sha256": "656dd1c1a9f5dad2ce3abf1f3807ea4314d05a9ac52a15f3e9a7558474c8d498",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.0-Kombinationen-FINAL-INDEPENDENT-AUDIT.json",
+          "library_file_id": "libfile_63b4f39219e48191a59a20487b8ff81f",
+          "rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "checks": {
+          "package_crc": "PASS",
+          "zip_members": "630/630 unique",
+          "root_sha256sums": "627/627 PASS",
+          "package_hygiene": "PASS",
+          "runtime_base": "339/339 byte-identical CURRENT v465-R99",
+          "cards": "174/174 unique IDs / order 1..174",
+          "examples": "696 DE + 696 FA + 696 EN",
+          "relations": "902 / 0 dangling",
+          "kombinationen": "525 / 174 visible sections / 0 legacy visible / 0 exact duplicates",
+          "translations": "525/525 FA + 525/525 EN",
+          "registered_source_supported_items": 57,
+          "stage4_projection_parity": "525/525 PASS",
+          "official_framework_validators": "5/5 PASS",
+          "stage7_exact_final_rerun": "34/34 PASS",
+          "expanded_render_audit": "696 card-mode renders / 2100 combination visibility checks / 0 missing / 0 legacy / 0 page errors",
+          "registered_source_bytes": "4/4 exact registry SHA-256 match"
+        },
+        "blocking_defects_found": 0,
+        "nonblocking_caveats": [
+          "Embedded lock/release metadata remains conditional/candidate because locked bytes are intentionally unchanged; external Stage7 sidecars and this final audit are authoritative for LOCKED status.",
+          "Global app v465-R99 same-profile lifecycle/visual acceptance remains pending separately.",
+          "Use the locked package or verified adapter lineage for verified import/provenance metadata; detached raw TSV alone is not the release authority."
+        ],
+        "conclusion": "Content successor is complete/LOCKED. Do not mutate locked bytes; any future content change requires a new successor.",
+        "next_action": "No further content production required. Preserve exact LOCKED release SHA; global v465 same-profile app acceptance remains separate."
       }
     },
     "250_verben_mit_praepositionen_kombinationen": {

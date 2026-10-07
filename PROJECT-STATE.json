@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-07T06:45:00+02:00",
+  "updated_at": "2026-10-07T03:45:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -6250,7 +6250,7 @@
       "next_action": "Stage3B Batch18 nominal range mb1m-lu-0341..mb1m-lu-0360 from exact Batch17 ACCEPTED bytes."
     },
     "unregelmaessige_verben_kombinationen": {
-      "status": "ACTIVE_STAGE3C_CLOSURE_PASS_PENDING_STAGE4",
+      "status": "ACTIVE_STAGE4_PASS_AFTER_BOUNDED_REPAIR_PENDING_STAGE5",
       "domain": "vocabulary",
       "branch": "unregelmaessige-verben-v130-kombinationen",
       "checkpoint": "Workspaces/unregelmaessige-verben-kombinationen-v130/CHECKPOINT.json",
@@ -6282,11 +6282,12 @@
       },
       "git_persistence": {
         "status": "IN_SYNC",
-        "branch_checkpoint_commit": "79b1382e98ac2e5e682fd33db3260ac2a3bdc367",
-        "branch_summary_commit": "84fc9258a13bc772c59ec277d71dfdf266c7c055",
-        "branch_readme_commit": "e084f9e5a6edcde377831e3deb5e0274b9320af1"
+        "branch_checkpoint_commit": "eeaec9f2a758181e4ca3466c17868309c4e50817",
+        "branch_readme_commit": "92b278cd52e1c7f6a1c505a10722ad54a0635ddd",
+        "branch_stage4_summary_commit": "80f335e80e055d24c4879c19bbbc5f94616537b0",
+        "branch_stage4_repair_summary_commit": "b4695ff973932176a412519f0bbbf2106f1b6115"
       },
-      "next_action": "Stage4 independent linguistic/provenance QA over all 530 accepted Kombinationen plus the structural near-duplicate risk queue.",
+      "next_action": "Stage5 project the 525 Stage4-passed Kombinationen into exactly one learner-visible Kombinationen section under de-vocabulary + gfp-vocabulary-neutral@1.",
       "stage3b": {
         "cumulative_targets": "174/174",
         "latest_batch": "0009",
@@ -6314,12 +6315,12 @@
         "stable_id_mutations": 0
       },
       "latest_portable_checkpoint": {
-        "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage3C-CLOSURE-CHECKPOINT.zip",
-        "sha256": "09c948725c24a36bb0ff23ccb9c27b96d6eba6178950054b64608bc367b91680",
-        "size_bytes": 88452,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage3C-CLOSURE-CHECKPOINT.zip",
-        "library_file_id": "libfile_4725266c47c48191a49ba8026a3351c8",
-        "verification": "ZIP_CRC_PASS__PACKAGE_HYGIENE_PASS__FRESH_EXTRACT_SHA256SUMS_PASS__CHECKPOINT_PREFLIGHT_PASS"
+        "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage4-QA-CHECKPOINT.zip",
+        "sha256": "5a46bda95358e2f0e6021cb38b52a5f975bcba4bda56a2e6c1679ccdafe08094",
+        "size_bytes": 68664,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage4-QA-CHECKPOINT.zip",
+        "library_file_id": "libfile_d244bd016eb08191930dbe872875df33",
+        "verification": "ZIP_CRC_PASS__PACKAGE_HYGIENE_PASS__INTERNAL_SHA256SUMS_PASS"
       },
       "stage3c": {
         "status": "PASS_CLOSURE_PENDING_STAGE4",
@@ -6343,6 +6344,27 @@
         "parent_semantic_mutations": 0,
         "stable_id_mutations": 0,
         "learner_visible_projection_mutations": 0
+      },
+      "stage4": {
+        "status": "PASS_AFTER_BOUNDED_REPAIR",
+        "input_stage3c_combinations": 530,
+        "final_stage4_combinations": 525,
+        "retired_after_independent_qa": 5,
+        "text_identity_repairs": 4,
+        "translation_repairs": 6,
+        "provenance_locator_repairs": 1,
+        "targets_with_content": "174/174",
+        "unresolved_items": 0,
+        "exact_duplicates_remaining": 0,
+        "combination_id_collisions": 0,
+        "registered_source_supported_items": 57,
+        "source_claims_unresolved": 0,
+        "stage3c_near_duplicate_pairs": 40,
+        "stage3c_near_pairs_resolved_by_stage4_rejection": 4,
+        "post_repair_structural_near_pairs": 40,
+        "parent_semantic_mutations": 0,
+        "stable_card_id_mutations": 0,
+        "learner_visible_parent_projection_mutations": 0
       }
     },
     "250_verben_mit_praepositionen_kombinationen": {

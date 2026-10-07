@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-07T13:20:00+02:00",
-  "updated_version": "stage5-delivery-projection-anti-bypass-pass-v1",
-  "status": "STAGE5_DELIVERY_PROJECTION_ANTI_BYPASS_PASS",
+  "updated_at": "2026-10-07T13:54:00+02:00",
+  "updated_version": "stage6-blocked-environment-dynamic-acceptance-v1",
+  "status": "STAGE6_BLOCKED_ENVIRONMENT_DYNAMIC_ACCEPTANCE",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -3488,8 +3488,28 @@
       }
     },
     "6_runtime_presentation_acceptance": {
-      "state": "NOT_STARTED",
-      "resolution_mode": "RESOLVE_CURRENT_WHEN_INTEGRATION_MATTERS"
+      "state": "BLOCKED_ENVIRONMENT",
+      "resolution_mode": "RESOLVE_CURRENT_WHEN_INTEGRATION_MATTERS",
+      "next": "Retry the exact Stage6 runtime-import adapter and exact CURRENT v465-R99 portable runtime bytes in a browser-capable or longer-execution environment. Reuse the same bytes; do not regenerate Stage5 content, do not start Stage7, and do not downgrade to v451-R85.",
+      "artifact": {
+        "filename": "NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+        "sha256": "5a71d845359b3cc03aa24be240048bed9a1490996e1fb683ded9daf333f485bb",
+        "size_bytes": 2028132,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+        "library_file_id": "file_000000009a4c82109e1c8096227b83a1",
+        "library_stable_id": "libfile_d5d1de846a1c8191afd2abc21fe250b1",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "runtime_import_adapter": {
+        "filename": "NVV-v3.3.6-Stage6-RUNTIME-IMPORT.zip",
+        "sha256": "c2cd79b9eba7273f105dd605b111e5924ec122a209764fb33a775abefcf2a1b0",
+        "size_bytes": 2025122,
+        "stage5_tsv_sha256": "f3a5206b05146566a2ea4a083c7a7996408b25c2ec3bf9f8f795b1f684ae684a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-RUNTIME-IMPORT.zip",
+        "library_file_id": "file_00000000d02c8210933ca653e87358dc",
+        "library_stable_id": "libfile_71e119779f7c819194cb25a8b2e4226a",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+      }
     },
     "7_final_release_post_package_verification": {
       "state": "NOT_STARTED"
@@ -3559,9 +3579,9 @@
   "persistence": {
     "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "latest_git_metadata": "SYNCED",
-    "latest_local_artifact_sha256": "abbd63db0d1519e952634e2328a11939d26ad59ce6d40c65b178be4bdabb6680"
+    "latest_local_artifact_sha256": "5a71d845359b3cc03aa24be240048bed9a1490996e1fb683ded9daf333f485bb"
   },
-  "next": "Stage6 Runtime & Presentation Acceptance: re-resolve Flashcards CURRENT and its exact portable artifact at execution time, verify the runtime artifact SHA-256, then test the exact Stage5 clean delivery for direct import, 2492-card persistence/index/roundtrip, neutral presentation parity and organization. Never downgrade to LAST_FULLY_VERIFIED.",
+  "next": "Retry the exact Stage6 runtime-import adapter and exact CURRENT v465-R99 portable runtime bytes in a browser-capable or longer-execution environment. Reuse the same bytes; do not regenerate Stage5 content, do not start Stage7, and do not downgrade to v451-R85.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -3616,7 +3636,7 @@
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     },
-    "current_operation": "STAGE6_LIVE_CURRENT_RUNTIME_PRESENTATION_ACCEPTANCE",
+    "current_operation": "STAGE6_RETRY_EXACT_BYTES_BROWSER_CAPABLE_ENVIRONMENT",
     "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
     "atomic_shard_default": 100,
     "routine_user_confirmation": false
@@ -3745,7 +3765,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Stage6 Runtime & Presentation Acceptance: re-resolve Flashcards CURRENT and its exact portable artifact at execution time, verify the runtime artifact SHA-256, then test the exact Stage5 clean delivery for direct import, 2492-card persistence/index/roundtrip, neutral presentation parity and organization. Never downgrade to LAST_FULLY_VERIFIED.",
+  "next_action": "Retry the exact Stage6 runtime-import adapter and exact CURRENT v465-R99 portable runtime bytes in a browser-capable or longer-execution environment. Reuse the same bytes; do not regenerate Stage5 content, do not start Stage7, and do not downgrade to v451-R85.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -3756,13 +3776,12 @@
     "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
-    "sha256": "abbd63db0d1519e952634e2328a11939d26ad59ce6d40c65b178be4bdabb6680",
-    "size_bytes": 6057486,
-    "stage4_closed_core_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000302081f4aba3f71c94b8b240",
-    "library_stable_id": "libfile_3b9ed5409fa48191abfa1a90fc90fdb3",
+    "filename": "NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+    "sha256": "5a71d845359b3cc03aa24be240048bed9a1490996e1fb683ded9daf333f485bb",
+    "size_bytes": 2028132,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+    "library_file_id": "file_000000009a4c82109e1c8096227b83a1",
+    "library_stable_id": "libfile_d5d1de846a1c8191afd2abc21fe250b1",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "systemic_root_cause_qa": {
@@ -4093,8 +4112,8 @@
       "next_clean_pass_start_position": 1
     }
   },
-  "last_observed_stage": "Stage5 — Delivery Projection / Anti-Bypass PASS",
-  "last_observed_note": "Exact Stage4 closed learner core projected to 2492 neutral de-vocabulary cards with gfp-vocabulary-neutral@1. Fresh extracted v3.3.6 gates are 5/5 PASS; Library rematerialization is exact for checkpoint and clean delivery. Runtime binding remains deferred to Stage6.",
+  "last_observed_stage": "Stage6 Runtime & Presentation Acceptance — BLOCKED by execution environment after bounded corrected retry",
+  "last_observed_note": "CURRENT v465-R99 exact Library artifact SHA matched. Five exact-current regression gates PASS and the Stage6 runtime-import adapter preserves exact Stage5 TSV bytes. Real-origin browser navigation is blocked by administrator policy; the single corrected deterministic IndexedDB fallback timed out at 300s on the 2492-card payload. No content or application defect was established.",
   "phase_b": {
     "status": "PASS_ALL333_APPLIED_CHANGED333_VERIFIED_RESIDUAL33_CLOSED",
     "findings_applied": 333,
@@ -4300,5 +4319,38 @@
     "report": "Workspaces/nomen-verb-verbindungen/05-delivery/STAGE5-POST-PACKAGE-VERIFICATION.json",
     "runtime_binding": "DEFERRED_TO_STAGE6_LIVE_CURRENT",
     "next_action_id": "STAGE6_LIVE_CURRENT_RUNTIME_PRESENTATION_ACCEPTANCE"
+  },
+  "stage6": {
+    "state": "BLOCKED",
+    "status": "STAGE6_BLOCKED_ENVIRONMENT_DYNAMIC_ACCEPTANCE",
+    "current_runtime": "v465-R99",
+    "runtime_artifact_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+    "last_fully_verified_runtime": "v451-R85",
+    "exact_runtime_materialization": "PASS",
+    "runtime_regressions": "5/5 PASS",
+    "runtime_import_adapter": {
+      "filename": "NVV-v3.3.6-Stage6-RUNTIME-IMPORT.zip",
+      "sha256": "c2cd79b9eba7273f105dd605b111e5924ec122a209764fb33a775abefcf2a1b0",
+      "size_bytes": 2025122,
+      "stage5_tsv_sha256": "f3a5206b05146566a2ea4a083c7a7996408b25c2ec3bf9f8f795b1f684ae684a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-RUNTIME-IMPORT.zip",
+      "library_file_id": "file_00000000d02c8210933ca653e87358dc",
+      "library_stable_id": "libfile_71e119779f7c819194cb25a8b2e4226a",
+      "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "dynamic_acceptance": "BLOCKED_ENVIRONMENT",
+    "application_failure_established": false,
+    "content_failure_established": false,
+    "checkpoint": {
+      "filename": "NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+      "sha256": "5a71d845359b3cc03aa24be240048bed9a1490996e1fb683ded9daf333f485bb",
+      "size_bytes": 2028132,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage6-BLOCKED-ENVIRONMENT-CHECKPOINT.zip",
+      "library_file_id": "file_000000009a4c82109e1c8096227b83a1",
+      "library_stable_id": "libfile_d5d1de846a1c8191afd2abc21fe250b1",
+      "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "report": "Workspaces/nomen-verb-verbindungen/06-runtime/STAGE6-BLOCKED.json",
+    "next_action_id": "STAGE6_RETRY_EXACT_BYTES_BROWSER_CAPABLE_ENVIRONMENT"
   }
 }

@@ -1,0 +1,604 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T04:02:30+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0019",
+    "positions": "1801-1900",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      20
+    ],
+    "printed_pages": [
+      18
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers Schulter through Stelle on printed page 18 for positions 1801-1900. Ninety-eight stored source surfaces equal the frozen canonical surface. Positions 1848 and 1849 are the expected two-way split of source surface 'auf Sicht fahren / fliegen'. No new source/canonical repair is confirmed in this shard."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1801,
+      "target_id": "dah-nvv-exp-01791",
+      "canonical_form": "jdm. auf die Schulter klopfen",
+      "severity": "MAJOR",
+      "category": "GERMAN_DEFINITION_CIRCULARITY_RESIDUAL",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "definition_de": "jemandem anerkennend oder ermutigend auf die Schulter klopfen",
+        "canonical_form": "jdm. auf die Schulter klopfen",
+        "source_classification": "idiom"
+      },
+      "finding": "The German definition repeats the target construction itself and only adds the pragmatic modifiers 'anerkennend oder ermutigend'. It therefore does not independently explain what the gesture communicates.",
+      "repair_direction": "Replace the circular wording with an independent explanation of signaling recognition, praise, or encouragement to someone by patting/tapping their shoulder."
+    },
+    {
+      "position": 1805,
+      "target_id": "dah-nvv-exp-01795",
+      "canonical_form": "einen Schuss abgeben",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_NATURALNESS_COLLOCATION",
+      "fields": [
+        "examples[2].fa",
+        "examples[3].fa"
+      ],
+      "evidence": {
+        "example3_de": "Der Jäger gab einen Schuss ab und senkte danach sofort das Gewehr.",
+        "example3_fa": "شکارچی یک شلیک کرد و بعد فوراً تفنگ را پایین آورد.",
+        "example4_de": "Im Training darf ein Schuss erst nach dem klaren Signal abgegeben werden.",
+        "example4_fa": "در تمرین فقط پس از علامت روشن اجازه شلیک وجود دارد."
+      },
+      "finding": "Two Persian example renderings are translation-shaped: 'یک شلیک کرد' is an awkward count construction for firing one shot, and 'علامت روشن' is an unnatural equivalent of German 'klares Signal' in this context.",
+      "repair_direction": "Use natural Persian such as 'یک تیر شلیک کرد' and 'پس از علامت/نشانهٔ مشخص ...' while preserving the source event and modality."
+    },
+    {
+      "position": 1807,
+      "target_id": "dah-nvv-exp-01797",
+      "canonical_form": "(wieder) in Schuss bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas wieder in einen guten, funktionsfähigen Zustand bringen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die Werkstatt brachte das alte Fahrrad wieder in Schuss.",
+          "Vor dem Winter ließ sie die Heizung gründlich prüfen und in Schuss bringen.",
+          "Mit etwas Farbe und neuen Dichtungen brachten sie das Gartenhaus wieder in Schuss.",
+          "Der Techniker brauchte zwei Tage, um die alte Anlage wieder in Schuss zu bringen."
+        ]
+      },
+      "finding": "The thing restored to good condition is a central variable object in the definition and in all four examples, but learner structure is marked slotless.",
+      "repair_direction": "Expose the theme/object in learner structure, e.g. 'etw. (wieder) in Schuss bringen', while preserving the exact source surface in provenance."
+    },
+    {
+      "position": 1812,
+      "target_id": "dah-nvv-exp-01802",
+      "canonical_form": "Schutz gewähren / geben",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden oder etwas schützen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die Gemeinde gewährte den Evakuierten Schutz in einer Turnhalle.",
+          "Das Gesetz gibt Beschäftigten Schutz vor willkürlicher Kündigung.",
+          "Die Burg gewährte den Bewohnern früher Schutz vor Angriffen.",
+          "Ein stabiles Geländer gibt auf der steilen Treppe zusätzlichen Schutz."
+        ]
+      },
+      "finding": "The person/entity receiving protection is a productive dative participant in 'Schutz gewähren/geben' and is explicit in three examples, but learner structure exposes no slot.",
+      "repair_direction": "Encode the optional/productive dative protected recipient/entity (jdm. Schutz gewähren/geben) while retaining absolute use such as example 4 and preserving source provenance."
+    },
+    {
+      "position": 1819,
+      "target_id": "dah-nvv-exp-01809",
+      "canonical_form": "Schwierigkeiten bereiten / machen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "Probleme verursachen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die neue Software bereitet einigen älteren Geräten Schwierigkeiten.",
+          "Die enge Zufahrt machte dem Fahrer des Lieferwagens erhebliche Schwierigkeiten.",
+          "Unklare Anweisungen bereiteten dem Team bei der Montage Schwierigkeiten.",
+          "Der starke Wind machte den Piloten beim Landeanflug Schwierigkeiten."
+        ]
+      },
+      "finding": "The affected recipient/entity is realized in the dative in all four examples, but learner structure exposes no argument slot.",
+      "repair_direction": "Add a dative affected-recipient/entity slot, e.g. 'jdm./etw. Schwierigkeiten bereiten/machen', preserving the source surface."
+    },
+    {
+      "position": 1839,
+      "target_id": "dah-nvv-exp-01829",
+      "canonical_form": "in Sicherheit bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden oder etwas an einen sicheren Ort bringen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die Feuerwehr brachte die Bewohner des Hauses in Sicherheit.",
+          "Der Kapitän ließ zuerst die Kinder in Sicherheit bringen.",
+          "Die Einsatzkräfte brachten wichtige Dokumente vor dem Wasser in Sicherheit.",
+          "Bevor das Dach einstürzte, konnten alle Personen in Sicherheit gebracht werden."
+        ]
+      },
+      "finding": "The person or thing brought to safety is a core variable accusative/theme role in the definition and every example, but learner structure is slotless.",
+      "repair_direction": "Expose the affected person/thing, e.g. 'jdn./etw. in Sicherheit bringen', while preserving source provenance."
+    },
+    {
+      "position": 1853,
+      "target_id": "dah-nvv-exp-01842",
+      "canonical_form": "im Sinn behalten",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas im Gedächtnis behalten",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Behalte im Sinn, dass der letzte Bus schon um Mitternacht fährt.",
+          "Bei der Planung sollten wir das begrenzte Budget im Sinn behalten.",
+          "Sie behielt im Sinn, dass nicht alle Teilnehmer Deutsch als Muttersprache sprechen.",
+          "Bitte behalte den ursprünglichen Sinn der Aussage bei der Übersetzung im Sinn."
+        ]
+      },
+      "finding": "The content that must be kept in mind is a central variable object or clause and is realized in all four examples, but learner structure exposes no content/theme slot.",
+      "repair_direction": "Encode the content/theme role, allowing nominal and clausal realizations, while preserving the raw source surface."
+    },
+    {
+      "position": 1854,
+      "target_id": "dah-nvv-exp-01843",
+      "canonical_form": "im Sinn haben",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas beabsichtigen oder gedanklich planen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Ich habe im Sinn, die Wohnung im Frühjahr zu renovieren.",
+          "Was hast du für das Wochenende im Sinn?",
+          "Die Geschäftsleitung hat eine umfassende Umstrukturierung im Sinn.",
+          "Mit dieser Änderung hatte die Autorin offenbar eine klarere Aussage im Sinn."
+        ]
+      },
+      "finding": "The intended or mentally planned content is a central variable object/infinitival content in all four examples, yet learner structure is marked slotless.",
+      "repair_direction": "Expose the content/theme role for 'etw. im Sinn haben' (including infinitival content) while preserving source provenance."
+    },
+    {
+      "position": 1855,
+      "target_id": "dah-nvv-exp-01844",
+      "canonical_form": "nicht aus dem Sinn gehen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_DATIVE_EXPERIENCER_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "ständig im Gedächtnis bleiben",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Das Gespräch mit dem Arzt ging ihr den ganzen Abend nicht aus dem Sinn.",
+          "Der ungewöhnliche Satz ging mir tagelang nicht aus dem Sinn.",
+          "Die Bilder aus dem Bericht gingen ihm nicht aus dem Sinn.",
+          "Seit dem Vorstellungsgespräch geht ihr eine Frage nicht aus dem Sinn."
+        ]
+      },
+      "finding": "All four examples realize the experiencer in the dative (ihr, mir, ihm, ihr), but learner structure contains no dative experiencer slot.",
+      "repair_direction": "Encode the dative experiencer, e.g. 'jdm. nicht aus dem Sinn gehen', without changing the raw source surface."
+    },
+    {
+      "position": 1859,
+      "target_id": "dah-nvv-exp-01848",
+      "canonical_form": "mit Skepsis begegnen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_DATIVE_COMPLEMENT_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemandem oder etwas skeptisch gegenübertreten",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Viele Experten begegneten der Prognose mit Skepsis.",
+          "Die Bevölkerung begegnete den neuen Versprechen mit Skepsis.",
+          "Seine Kollegen begegneten dem ungewöhnlichen Plan zunächst mit Skepsis.",
+          "Nach früheren Enttäuschungen begegnete sie jeder schnellen Lösung mit Skepsis."
+        ],
+        "current_rektion": [],
+        "stage3c_rektion_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The verb 'begegnen' selects a dative target, and every example realizes one (der Prognose, den Versprechen, dem Plan, jeder Lösung), but learner structure is slotless.",
+      "repair_direction": "Encode the dative target of skepticism in rektion/argument_slots while preserving source provenance."
+    },
+    {
+      "position": 1860,
+      "target_id": "dah-nvv-exp-01849",
+      "canonical_form": "mit Skepsis betrachten",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_ACCUSATIVE_OBJECT_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas skeptisch beurteilen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die Wissenschaftler betrachten die ersten Ergebnisse noch mit Skepsis.",
+          "Er betrachtete die sehr niedrige Kostenschätzung mit Skepsis.",
+          "Viele Beschäftigte betrachten die geplante Umstrukturierung mit Skepsis.",
+          "Die Ärztin betrachtete das angebliche Wundermittel mit großer Skepsis."
+        ]
+      },
+      "finding": "The person/thing viewed skeptically is a central accusative object and appears in all four examples, but learner structure exposes no object slot.",
+      "repair_direction": "Add a jdn./etw. object/theme slot for 'mit Skepsis betrachten' while preserving source provenance."
+    },
+    {
+      "position": 1861,
+      "target_id": "dah-nvv-exp-01850",
+      "canonical_form": "Sorge tragen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "für jemanden oder etwas sorgen; dafür sorgen, dass etwas geschieht",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Der Betreiber muss dafür Sorge tragen, dass die Fluchtwege frei bleiben.",
+          "Die Eltern tragen Sorge dafür, dass das Kind regelmäßig seine Medikamente bekommt.",
+          "Die Verwaltung trägt Sorge für die Wartung der öffentlichen Anlagen.",
+          "Ein Sicherheitsbeauftragter trägt Sorge dafür, dass die Vorschriften eingehalten werden."
+        ],
+        "current_rektion": [],
+        "stage3c_rektion_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT"
+      },
+      "finding": "The learner structure omits the productive complements of 'Sorge tragen': 'für + Akk.' and pronominal 'dafür, dass ...'. All four examples realize one of these content/responsibility frames.",
+      "repair_direction": "Encode the supported 'für + Akk.' / 'dafür, dass ...' complement pattern in learner structure without altering the source surface."
+    },
+    {
+      "position": 1863,
+      "target_id": "dah-nvv-exp-01852",
+      "canonical_form": "in Sorge versetzen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden besorgt machen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die ungewöhnlichen Messwerte versetzten das Forschungsteam in Sorge.",
+          "Sein langes Schweigen versetzte die Familie in Sorge.",
+          "Die Warnung vor starkem Hochwasser versetzte viele Anwohner in Sorge.",
+          "Ein plötzlicher Druckabfall versetzte die Bediener der Anlage in Sorge."
+        ]
+      },
+      "finding": "The person or group caused to worry is a central accusative/theme role and is explicit in every example, but learner structure is marked slotless.",
+      "repair_direction": "Expose the affected person/group, e.g. 'jdn. in Sorge versetzen', while preserving source provenance."
+    },
+    {
+      "position": 1869,
+      "target_id": "dah-nvv-exp-01858",
+      "canonical_form": "aufs Spiel setzen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "etwas Wichtiges riskieren",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Für einen kurzfristigen Gewinn setzte die Firma ihren guten Ruf aufs Spiel.",
+          "Wer ohne Sicherung arbeitet, setzt seine Gesundheit aufs Spiel.",
+          "Sie wollte die Freundschaft nicht wegen eines kleinen Streits aufs Spiel setzen.",
+          "Der Fahrer setzte mit dem riskanten Manöver das Leben anderer aufs Spiel."
+        ]
+      },
+      "finding": "The important thing being risked is a core variable accusative/theme role and is explicit in every example, but learner structure exposes no slot.",
+      "repair_direction": "Encode the variable theme, e.g. 'etw. aufs Spiel setzen', while preserving the raw source surface."
+    },
+    {
+      "position": 1871,
+      "target_id": "dah-nvv-exp-01860",
+      "canonical_form": "ins Spiel bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden oder etwas einbeziehen, einsetzen oder als Faktor bzw. Möglichkeit ins Gespräch bringen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Im Meeting brachte sie eine externe Lösung ins Spiel.",
+          "Der Berater brachte einen Standortwechsel ins Spiel.",
+          "Als die Kosten stiegen, wurde eine kleinere Anlage ins Spiel gebracht.",
+          "Der Trainer brachte kurz vor Schluss einen jungen Stürmer ins Spiel."
+        ]
+      },
+      "finding": "The person/thing introduced into play, discussion, or a process is a central variable object in the definition and every example, but learner structure is slotless.",
+      "repair_direction": "Expose a jdn./etw. theme/object slot for 'ins Spiel bringen' while preserving source provenance."
+    },
+    {
+      "position": 1892,
+      "target_id": "dah-nvv-exp-01881",
+      "canonical_form": "zum Stehen bringen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "bewirken, dass etwas anhält",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Der Lokführer brachte den Zug rechtzeitig zum Stehen.",
+          "Eine Notbremsung brachte das Fahrzeug wenige Meter vor dem Hindernis zum Stehen.",
+          "Die Polizei brachte den flüchtenden Wagen an der nächsten Kreuzung zum Stehen.",
+          "Der Techniker drückte den Notschalter und brachte die Anlage sofort zum Stehen."
+        ]
+      },
+      "finding": "The person/thing caused to stop is a central variable accusative/theme role and is explicit in all four examples, but learner structure exposes no slot.",
+      "repair_direction": "Encode the affected theme, e.g. 'jdn./etw. zum Stehen bringen', while preserving the source surface."
+    },
+    {
+      "position": 1813,
+      "target_id": "dah-nvv-exp-01803",
+      "canonical_form": "Schutz suchen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_IDIOMATICITY",
+      "fields": [
+        "examples[3].en"
+      ],
+      "evidence": {
+        "example_de": "Die Familie suchte nach dem Brand Schutz bei Freunden.",
+        "example_en": "After the fire, the family sought protection with friends.",
+        "example_fa": "خانواده پس از آتش‌سوزی نزد دوستانشان پناه گرفتند."
+      },
+      "finding": "English 'sought protection with friends' is grammatically possible but unnatural and ambiguous for German 'Schutz bei Freunden suchen', which here means finding refuge/shelter at friends' place or with friends.",
+      "repair_direction": "Use an idiomatic English equivalent such as 'sought refuge/shelter with friends' while preserving the post-fire context."
+    },
+    {
+      "position": 1816,
+      "target_id": "dah-nvv-exp-01806",
+      "canonical_form": "ein Schwein sein",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_GRAMMAR_NATURALNESS",
+      "fields": [
+        "meaning_fa"
+      ],
+      "evidence": {
+        "meaning_fa": "آدم بسیار بدجنس یا بی‌انصافی بودن",
+        "definition_de": "sich besonders gemein oder unanständig verhalten"
+      },
+      "finding": "The Persian summary 'آدم بسیار بدجنس یا بی‌انصافی بودن' is grammatically malformed because 'بی‌انصافی' is a noun where an adjective/person description is required.",
+      "repair_direction": "Use a natural adjectival formulation such as 'آدم بسیار بدجنس یا بی‌انصاف بودن' while preserving the insulting register."
+    },
+    {
+      "position": 1843,
+      "target_id": "dah-nvv-exp-01833",
+      "canonical_form": "in Sicht kommen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_AND_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "meaning_fa",
+        "examples[0].fa",
+        "examples[1].fa",
+        "examples[2].fa",
+        "examples[3].fa"
+      ],
+      "evidence": {
+        "meaning_fa": "در دید ظاهر شدن",
+        "examples_fa": [
+          "پس از پیچ، روستا ناگهان در دید ظاهر شد.",
+          "وقتی مه رقیق‌تر شد، قله کوه دوباره در دید ظاهر شد.",
+          "چند دقیقه بعد قایق نجات در دید ظاهر شد.",
+          "پشت درختان بالاخره ایستگاه قطار در دید ظاهر شد."
+        ]
+      },
+      "finding": "The Persian phrase 'در دید ظاهر شدن' is repeated in the summary and all four examples and is a German-shaped rendering of 'in Sicht kommen'. Natural Persian would normally use wording such as becoming visible/coming into view.",
+      "repair_direction": "Replace the repeated calque with natural Persian such as 'پدیدار شدن / در دیدرس قرار گرفتن / نمایان شدن' as context requires, keeping the same events and tense."
+    },
+    {
+      "position": 1849,
+      "target_id": "dah-nvv-exp-01838-b",
+      "canonical_form": "auf Sicht fliegen",
+      "severity": "MINOR",
+      "category": "EXAMPLE_DIVERSITY_NEAR_DUPLICATE",
+      "fields": [
+        "examples[0]",
+        "examples[1]"
+      ],
+      "evidence": {
+        "example1": {
+          "de": "Bei gutem Wetter durfte der Pilot auf Sicht fliegen.",
+          "fa": "در هوای خوب خلبان اجازه داشت با دید مستقیم پرواز کند.",
+          "en": "In good weather, the pilot was allowed to fly by visual reference."
+        },
+        "example2": {
+          "de": "Bei gutem Wetter durfte der Pilot mit dem kleinen Sportflugzeug auf Sicht fliegen.",
+          "fa": "در هوای خوب، خلبان اجازه داشت با هواپیمای ورزشی کوچک به روش پرواز دیداری پرواز کند.",
+          "en": "In good weather, the pilot was allowed to fly the small light aircraft under visual flight rules."
+        }
+      },
+      "finding": "Examples 1 and 2 are near-duplicates: both begin 'Bei gutem Wetter durfte der Pilot ... auf Sicht fliegen', with example 2 merely adding the small sport aircraft. This weakens the required four-example contextual diversity.",
+      "repair_direction": "Keep one good-weather permission example and replace the other with a distinct visual-flight context while preserving the target sense and source identity."
+    },
+    {
+      "position": 1865,
+      "target_id": "dah-nvv-exp-01854",
+      "canonical_form": "Sorgen haben",
+      "severity": "MINOR",
+      "category": "GERMAN_DEFINITION_PARTIAL_CIRCULARITY_REDUNDANCY",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "canonical_form": "Sorgen haben",
+        "definition_de": "Sorgen oder Befürchtungen haben"
+      },
+      "finding": "The German definition starts by repeating the target itself ('Sorgen ... haben') and only adds 'Befürchtungen' as an alternative, making it partially circular and unnecessarily redundant.",
+      "repair_direction": "Define the state independently, for example as being worried or having fears/concerns about a possible problem, without repeating the target phrase."
+    },
+    {
+      "position": 1887,
+      "target_id": "dah-nvv-exp-01876",
+      "canonical_form": "die Spur wechseln",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "examples[2].en"
+      ],
+      "evidence": {
+        "example_de": "Bei dichtem Verkehr sollte man die Spur nur mit genügend Abstand wechseln.",
+        "example_en": "In heavy traffic, one should change lanes only with sufficient distance."
+      },
+      "finding": "English 'change lanes only with sufficient distance' is a direct calque of German 'mit genügend Abstand' and is not idiomatic driving English.",
+      "repair_direction": "Use natural wording such as changing lanes only when there is enough space/clearance or after leaving sufficient room, preserving the dense-traffic safety condition."
+    },
+    {
+      "position": 1896,
+      "target_id": "dah-nvv-exp-01885",
+      "canonical_form": "eine Stelle annehmen (Arbeit)",
+      "severity": "MINOR",
+      "category": "CROSS_LANGUAGE_TRANSLATION_NATURALNESS",
+      "fields": [
+        "examples[0].fa",
+        "examples[0].en"
+      ],
+      "evidence": {
+        "example_de": "Nach kurzer Überlegung nahm sie die Stelle in Köln an.",
+        "example_fa": "او پس از کمی فکر، شغل در کلن را پذیرفت.",
+        "example_en": "After a short consideration, she accepted the position in Cologne."
+      },
+      "finding": "Example 1 is natural in German, but both translations are awkward: Persian 'شغل در کلن را پذیرفت' lacks a natural definite/indefinite noun phrase, and English 'After a short consideration' is an unnatural rendering of 'Nach kurzer Überlegung'.",
+      "repair_direction": "Use natural equivalents such as Persian 'آن شغل در کلن را پذیرفت / شغلی در کلن را پذیرفت' as context permits and English 'After some thought / After a brief consideration'."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 23,
+    "blocker": 0,
+    "major": 15,
+    "minor": 8,
+    "clean_targets": 77,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "98/100 (two expected split identities at positions 1848-1849)",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 98,
+    "expected_split_surface_mismatches": 2,
+    "preexisting_repaired_source_mismatches": [],
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 0,
+    "source_repair_positions": []
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1900,
+    "positions_remaining": 592,
+    "confirmed_finding_targets": 213,
+    "blocker_findings": 0,
+    "major_findings": 99,
+    "minor_findings": 114,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1901-2000. Do not repair any logged finding until all 2492 targets have been audited."
+}

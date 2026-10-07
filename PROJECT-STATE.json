@@ -6865,29 +6865,29 @@
       }
     },
     "aber_hallo_listen_tabellen": {
-      "status": "ACTIVE",
+      "status": "BLOCKED_DECISION_REQUIRED",
       "branch": "main",
       "checkpoint": "Workspaces/aber-hallo-listen-tabellen/CHECKPOINT.json",
       "source_manifest": "Workspaces/aber-hallo-listen-tabellen/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT",
-      "last_observed_stage": "STAGE5_CLEAN_DELIVERY_PASS__STAGE6_NOT_STARTED",
+      "last_observed_stage": "STAGE6_BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION__LEXICAL_PASS",
       "targets_processed": 788,
       "targets_total": 788,
       "latest_portable_checkpoint": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
-        "sha256": "7e1392221e8d9bb1dcec50f42102f720e56c85fc47c30070fdd2be3f3ae17810",
-        "size_bytes": 1745776,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage5-PASS-CHECKPOINT.zip",
-        "library_file_id": "libfile_91939b00cd3c8191984f4091cee5f6ae",
-        "library_file_snapshot_id": "file_0000000022f4824685272a9f1a83bc04",
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+        "sha256": "8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87",
+        "size_bytes": 2580338,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "libfile_32c162ec74288191a31e350f4b9569cc",
+        "library_file_snapshot_id": "file_00000000ebb081f481f1ead1c977098c",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-        "status": "PASS_LIBRARY_UPLOAD"
+        "status": "BLOCKED_QUALITY_GATE_WITH_VERIFIED_PORTABLE"
       },
       "persistence": {
         "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
         "git": "IN_SYNC"
       },
-      "next_scope": "Stage6 exact CURRENT runtime/import/presentation acceptance. Re-resolve Flashcards CURRENT at execution time; do not downgrade to an older verified runtime.",
+      "next_scope": "Architecture decision required for the one grammar unit: approve integration into the existing grammar.runtime.v2 bundled pack in a v465-derived successor build (recommended, no visible UI redesign), or explicitly accept sidecar-only/non-runtime-visible grammar scope. Then rerun Stage6 and proceed to Stage7 only after PASS.",
       "stage3b_closure_correction": {
         "target_coverage": "788/788 COMPLETE",
         "semantic_core_presence": "788/788 COMPLETE_AFTER_REPAIR1",
@@ -6938,7 +6938,7 @@
         "relation_open_remaining": 0,
         "persian_route_exhausted_holds": []
       },
-      "last_observed_note": "Stage5 PASS through the official v3.3.6 anti-bypass builder. 787 lexical rows use neutral de-vocabulary + gfp-vocabulary-neutral@1; full canonical deep-copy and relations preserved. One grammar structure is carried as a semantic grammar sidecar, with runtime ingestion deferred to Stage6 CURRENT acceptance.",
+      "last_observed_note": "Stage6 reached the real architecture boundary. Original Stage5 29-column TSV triggers v465 adaptive fallback; transport-only Repair1 fixes lexical runtime envelope and presentation ownership with canonical parity. 787 lexical cards PASS exact-CURRENT import/persistence/presentation. The selected grammar unit is runtime-compatible in memory but cannot be deployed through exact CURRENT because grammar content is bundled and the generic importer rejects the sidecar. User architecture/scope approval is required.",
       "stage3c_disposition_closure": {
         "status": "PASS_REBOUND_AFTER_STAGE4_REPAIR1",
         "official_lexical_targets": 787,
@@ -6977,6 +6977,28 @@
           "status": "PASS_LIBRARY_UPLOAD"
         },
         "runtime_binding": "DEFERRED_TO_STAGE6_CURRENT"
+      },
+      "stage6_runtime_presentation": {
+        "status": "BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION",
+        "runtime_current": "v465-R99",
+        "runtime_outer_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+        "lexical": {
+          "status": "PASS",
+          "cards": 787,
+          "verbs": 647,
+          "adjectives": 140,
+          "static_presentation": "23/23 PASS",
+          "dynamic_import_persistence": "11/11 PASS",
+          "runtime_regressions": "5/5 PASS",
+          "adapter_sha256": "a1a3d950bed0b04e62da4db741261f4fee54aa5df00d7ed101d37189be3ead5e"
+        },
+        "grammar": {
+          "units": 1,
+          "compatibility": "PASS 10/10 in-memory; domain renders title + 4 examples",
+          "external_ingestion": "BLOCKED by exact CURRENT generic importer",
+          "visible_ui_changed": false
+        },
+        "stage7_allowed": false
       }
     },
     "unregelmaessige_verben": {

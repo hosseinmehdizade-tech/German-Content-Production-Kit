@@ -1,0 +1,48 @@
+{
+  "schema": "gcpk-stage6-runtime-presentation-summary@1.0.0",
+  "dataset": "aber-hallo-listen-tabellen",
+  "status": "BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION",
+  "runtime": {
+    "CURRENT": "v465-R99",
+    "outer_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+    "last_fully_verified": "v451-R85",
+    "same_profile_boundary": "PENDING_USER_SAME_PROFILE_V465"
+  },
+  "stage5_transport_finding": "29-column Stage5 TSV triggers v465 adaptive fallback and loses intended primary semantic/presentation ownership; repaired by Stage6 transport-only 23-column adapter + kombinationen_v1.",
+  "lexical": {
+    "status": "PASS",
+    "cards": 787,
+    "verbs": 647,
+    "adjectives": 140,
+    "adapter_sha256": "a1a3d950bed0b04e62da4db741261f4fee54aa5df00d7ed101d37189be3ead5e",
+    "static_checks": "23/23 PASS",
+    "dynamic_import_checks": "11/11 PASS",
+    "runtime_regressions": "5/5 PASS",
+    "visible_kombinationen_sections": "787/787",
+    "canonical_translated_kombinationen": 1574,
+    "backend_metadata_leak": 0
+  },
+  "grammar": {
+    "status": "BLOCKED_DEPLOYMENT",
+    "unit_id": "ahl-lu-0001",
+    "compatibility_probe": "10/10 PASS; 169-unit in-memory provider/domain",
+    "generic_import": "BLOCKED",
+    "runtime_mutation_performed": false,
+    "ui_redesign_performed": false
+  },
+  "checkpoint": {
+    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+    "sha256": "8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87",
+    "size_bytes": 2580338,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+    "library_file_id": "libfile_32c162ec74288191a31e350f4b9569cc",
+    "library_file_snapshot_id": "file_00000000ebb081f481f1ead1c977098c",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "status": "BLOCKED_QUALITY_GATE_WITH_VERIFIED_PORTABLE"
+  },
+  "decision_required": {
+    "recommended": "Integrate grammar unit into existing grammar.runtime.v2 bundled pack in a v465-derived successor build, preserving visible UI.",
+    "alternative": "Explicitly accept grammar sidecar as non-runtime-visible and release only lexical scope."
+  },
+  "next_action": "Architecture decision required for the one grammar unit: approve integration into the existing grammar.runtime.v2 bundled pack in a v465-derived successor build (recommended, no visible UI redesign), or explicitly accept sidecar-only/non-runtime-visible grammar scope. Then rerun Stage6 and proceed to Stage7 only after PASS."
+}

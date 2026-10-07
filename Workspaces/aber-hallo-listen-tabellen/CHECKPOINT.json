@@ -1939,7 +1939,33 @@
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "NOT_STARTED"
+      "state": "BLOCKED",
+      "summary": "Lexical subgate PASS on exact CURRENT v465 runtime bytes after transport-only Repair1; the one grammar unit is compatible with grammar.runtime.v2 in-memory but exact CURRENT exposes no deployable external grammar ingestion route.",
+      "authoritative_outputs": [
+        "06-runtime/ABER-HALLO-LISTEN-TABELLEN-UNIVERSAL-v2-v465-IMPORT-REPAIR1.tsv",
+        "06-runtime/RUNTIME-PRESENTATION-ACCEPTANCE.json",
+        "06-runtime/GRAMMAR-COMPATIBILITY-PROBE.json",
+        "06-runtime/GRAMMAR-EXTERNAL-INGESTION-PROBE.json",
+        "06-runtime/RUNTIME-AUTHORITY.json"
+      ],
+      "gate_evidence": [
+        "06-runtime/LEXICAL-STATIC-PRESENTATION.json",
+        "06-runtime/LEXICAL-IMPORT-PERSISTENCE.json",
+        "06-runtime/runtime-regressions/",
+        "06-runtime/V465-R99-EXACT-APP-LINEAGE-ATTESTATION.json"
+      ],
+      "blocker": "ARCHITECTURE_DECISION_REQUIRED_FOR_ONE_GRAMMAR_UNIT",
+      "claim_boundary": "Stage6 overall is BLOCKED, not PASS. Lexical 787/787 import/persistence/presentation is PASS; grammar compatibility is PASS in-memory; external/deployable grammar ingestion on exact CURRENT is unsupported without changing runtime bytes or scope.",
+      "portable_artifact": {
+        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+        "sha256": "8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87",
+        "size_bytes": 2580338,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+        "library_file_id": "libfile_32c162ec74288191a31e350f4b9569cc",
+        "library_file_snapshot_id": "file_00000000ebb081f481f1ead1c977098c",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "status": "BLOCKED_QUALITY_GATE_WITH_VERIFIED_PORTABLE"
+      }
     },
     {
       "stage": 7,
@@ -1957,13 +1983,13 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE5_CLEAN_DELIVERY_PASS__STAGE6_NOT_STARTED",
+  "quality_state": "STAGE6_BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION__LEXICAL_PASS",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Stage6 exact CURRENT runtime/import/presentation acceptance. Re-resolve Flashcards CURRENT at execution time; do not downgrade to an older verified runtime.",
-  "resume_instruction": "Use exact Stage5 checkpoint SHA 7e1392221e8d9bb1dcec50f42102f720e56c85fc47c30070fdd2be3f3ae17810 and clean-delivery SHA 15a99ca00dea023cccb59ebe43465c5bf1baa528eccd8bf74698d74f2b4d9170 from Library. Re-resolve Flashcards CURRENT at Stage6, validate lexical TSV import/roundtrip/presentation and resolve the grammar-sidecar ingestion path against CURRENT capabilities.",
+  "next_action": "Architecture decision required for the one grammar unit: approve integration into the existing grammar.runtime.v2 bundled pack in a v465-derived successor build (recommended, no visible UI redesign), or explicitly accept sidecar-only/non-runtime-visible grammar scope. Then rerun Stage6 and proceed to Stage7 only after PASS.",
+  "resume_instruction": "Use exact Stage6 blocked checkpoint SHA 8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87 from Library. The 787 lexical cards are accepted on CURRENT v465-R99 with runtime adapter Repair1; do not reopen lexical content unless a concrete defect appears. Resolve the one grammar-unit architecture decision and rerun Stage6.",
   "stage3b_batch": "0040",
   "stage3b_status": "PASS_COMPLETE",
   "stage3b_targets_processed": 788,
@@ -2012,8 +2038,8 @@
   "stage3b_relation_kombinationen_batch016": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
   "stage3b_relation_kombinationen_batch017": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
   "portable_artifact_pending_external_identity": {
-    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage3B-RELATIONS-KOMBINATIONEN-BATCH038-CHECKPOINT.zip",
-    "note": "Outer ZIP identity is externally recorded and Library-rematerialized; embedded checkpoint avoids recursive self-hash."
+    "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
+    "note": "Outer identity recorded in Git/Library; embedded checkpoint intentionally avoids recursive self-hash."
   },
   "stage3b_relation_kombinationen_batch018": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
   "stage3b_relation_kombinationen_batch019": "PASS_20_TARGETS_40_KOMBINATIONEN_120_LEGACY_RELATION_CANDIDATES_DISPOSITIONED",
@@ -2053,5 +2079,14 @@
     "sha256": "9339b09e0edf6344fbce961e0968398d998007eeb6348e96931e4af4fdcdabde",
     "rows": 787,
     "library_file_id": "libfile_24da7b0b3f1481918f917442a82f8598"
+  },
+  "stage6_status": "BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION",
+  "stage6_runtime_adapter": {
+    "lexical_tsv": "ABER-HALLO-LISTEN-TABELLEN-UNIVERSAL-v2-v465-IMPORT-REPAIR1.tsv",
+    "lexical_tsv_sha256": "a1a3d950bed0b04e62da4db741261f4fee54aa5df00d7ed101d37189be3ead5e",
+    "adapter_zip": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-RUNTIME-IMPORT-ADAPTER.zip",
+    "adapter_zip_sha256": "aff4de85cca72874144e36ae4e16e14e95a448894dcec520e309666887fbcff1",
+    "runtime": "v465-R99",
+    "runtime_outer_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17"
   }
 }

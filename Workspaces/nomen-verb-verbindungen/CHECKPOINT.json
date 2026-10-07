@@ -3,8 +3,8 @@
   "branch": "nvv-production",
   "domain": "vocabulary",
   "updated_at": "2026-10-07T12:32:00+02:00",
-  "updated_version": "stage4-phase-b-residual33-repaired-100pct-reverified-v1",
-  "status": "STAGE4_PHASE_B_RESIDUAL33_REPAIRED_100PCT_REVERIFIED_PASS",
+  "updated_version": "stage4-phase-c-recurrent-family-sweeps-1repair-pass-v1",
+  "status": "STAGE4_PHASE_C_RECURRENT_FAMILY_SWEEPS_PASS",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -128,7 +128,7 @@
       "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_PHASE_B_RESIDUAL33_REPAIRED_100PCT_REVERIFIED_PASS",
+      "state": "STAGE4_PHASE_C_RECURRENT_FAMILY_SWEEPS_PASS",
       "rounds_completed": 6,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -3069,7 +3069,7 @@
         "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
       },
       "legacy_two_consecutive_clean_pass_rule": "SUPERSEDED_FOR_SCOPED_FINAL_CONVERGENCE_BY_MEM-NVV-003",
-      "next": "Run corpus-wide recurrent-family sweeps for every defect family evidenced by the Final Comprehensive Audit and changed-target verification. Do not start the deterministic >=500 unchanged-target sample until all recurrent-family sweeps are exhausted.",
+      "next": "Run the deterministic stratified sample of at least 500 unchanged targets from the exact recurrent-family-sweep successor core. Five position bands must contribute 100 clean unchanged targets each with source-classification quotas; any sampled defect moves to the changed set, is repaired/reverified, and is replaced from the same stratum.",
       "final_comprehensive_audit": {
         "status": "COMPLETE_2492_OF_2492_FINDINGS_LOGGED__PHASE_B_READY",
         "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
@@ -3363,6 +3363,37 @@
           "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-RESIDUAL33-REPAIRED-100PCT-REVERIFIED-PASS.json",
           "next_action_id": "PHASE_B_CORPUS_WIDE_RECURRENT_FAMILY_SWEEPS"
         }
+      },
+      "phase_c": {
+        "recurrent_family_sweeps": {
+          "status": "PASS_ALL_RECURRENT_FAMILIES_EXHAUSTED_AFTER_ONE_STRUCTURE_REPAIR",
+          "families_exhausted": 8,
+          "targets_screened": 2492,
+          "examples_screened": 9968,
+          "confirmed_new_findings": 1,
+          "repaired_target": "dah-nvv-exp-00886",
+          "successor_core_sha256": "edc21b3f4f682ec76ae848fb7eee596c8b243dcbfd0151b8f382981f6e807c22",
+          "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+          "stage3c": {
+            "VERIFIED_PRESENT": 18804,
+            "CLOSED_NO_FORCE": 21068,
+            "NOT_APPLICABLE": 2492,
+            "unresolved_cells": 0
+          },
+          "artifact": {
+            "filename": "NVV-v3.3.6-Stage4-PhaseC-RecurrentFamilySweeps-1REPAIR-PASS-CHECKPOINT.zip",
+            "sha256": "82fbae903bd1fc1da3c12ec996663f8a5bc423015f5b356d89b8cb99f65c2cb3",
+            "size_bytes": 6248151,
+            "successor_core_sha256": "edc21b3f4f682ec76ae848fb7eee596c8b243dcbfd0151b8f382981f6e807c22",
+            "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+            "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseC-RecurrentFamilySweeps-1REPAIR-PASS-CHECKPOINT.zip",
+            "library_file_id": "file_00000000b418824399792c0ecf60b271",
+            "library_stable_id": "libfile_17738e325e7c8191bb3b0603a675133a",
+            "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+          },
+          "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-C-RECURRENT-FAMILY-SWEEPS-PASS.json",
+          "next_action_id": "PHASE_C_UNCHANGED500_DETERMINISTIC_STRATIFIED_SAMPLE"
+        }
       }
     },
     "5_delivery_projection_anti_bypass": {
@@ -3440,9 +3471,9 @@
   "persistence": {
     "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "latest_git_metadata": "SYNCED",
-    "latest_local_artifact_sha256": "523c83aab725ea00bfb53d220ce3fd947302e924be2de9c5d7d3db1aa324b7b5"
+    "latest_local_artifact_sha256": "82fbae903bd1fc1da3c12ec996663f8a5bc423015f5b356d89b8cb99f65c2cb3"
   },
-  "next": "Run corpus-wide recurrent-family sweeps for every defect family evidenced by the Final Comprehensive Audit and changed-target verification. Do not start the deterministic >=500 unchanged-target sample until all recurrent-family sweeps are exhausted.",
+  "next": "Run the deterministic stratified sample of at least 500 unchanged targets from the exact recurrent-family-sweep successor core. Five position bands must contribute 100 clean unchanged targets each with source-classification quotas; any sampled defect moves to the changed set, is repaired/reverified, and is replaced from the same stratum.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -3497,7 +3528,7 @@
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     },
-    "current_operation": "PHASE_B_CORPUS_WIDE_RECURRENT_FAMILY_SWEEPS",
+    "current_operation": "PHASE_C_UNCHANGED500_DETERMINISTIC_STRATIFIED_SAMPLE",
     "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
     "atomic_shard_default": 100,
     "routine_user_confirmation": false
@@ -3626,7 +3657,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Run corpus-wide recurrent-family sweeps for every defect family evidenced by the Final Comprehensive Audit and changed-target verification. Do not start the deterministic >=500 unchanged-target sample until all recurrent-family sweeps are exhausted.",
+  "next_action": "Run the deterministic stratified sample of at least 500 unchanged targets from the exact recurrent-family-sweep successor core. Five position bands must contribute 100 clean unchanged targets each with source-classification quotas; any sampled defect moves to the changed set, is repaired/reverified, and is replaced from the same stratum.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -3637,14 +3668,14 @@
     "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
-    "sha256": "523c83aab725ea00bfb53d220ce3fd947302e924be2de9c5d7d3db1aa324b7b5",
-    "size_bytes": 4950796,
-    "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+    "filename": "NVV-v3.3.6-Stage4-PhaseC-RecurrentFamilySweeps-1REPAIR-PASS-CHECKPOINT.zip",
+    "sha256": "82fbae903bd1fc1da3c12ec996663f8a5bc423015f5b356d89b8cb99f65c2cb3",
+    "size_bytes": 6248151,
+    "successor_core_sha256": "edc21b3f4f682ec76ae848fb7eee596c8b243dcbfd0151b8f382981f6e807c22",
     "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-Residual33-REPAIRED-100PCT-REVERIFIED-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000de6c81f4bccf7549fd568485",
-    "library_stable_id": "libfile_34b725f573948191b36ca4c8d7682e40",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseC-RecurrentFamilySweeps-1REPAIR-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000b418824399792c0ecf60b271",
+    "library_stable_id": "libfile_17738e325e7c8191bb3b0603a675133a",
     "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "systemic_root_cause_qa": {
@@ -3975,8 +4006,8 @@
       "next_clean_pass_start_position": 1
     }
   },
-  "last_observed_stage": "Stage4 Phase B — 33 changed-target verification residuals repaired and 100% reverified PASS",
-  "last_observed_note": "All 33 residual targets are closed: 6 learner-language, 1 source-fidelity, and 26 structure repairs. Source occurrence 00886 now preserves raw 'etw,' while learner canonical remains normalized 'etw.'. Stage3C remains closed with 0 unresolved cells.",
+  "last_observed_stage": "Stage4 Phase C — corpus-wide recurrent-family sweeps exhausted PASS after one additional structure repair",
+  "last_observed_note": "All recurrent families are exhausted on the current successor. One new structure omission was found at target 00886 and repaired/reverified. Stage3C remains closed with 0 unresolved cells; source/provenance exact-surface comparison has 0 mismatches.",
   "phase_b": {
     "status": "PASS_ALL333_APPLIED_CHANGED333_VERIFIED_RESIDUAL33_CLOSED",
     "findings_applied": 333,
@@ -3987,7 +4018,7 @@
       "blocker": 0
     },
     "frozen_parent_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-    "successor_core_sha256": "56bac52d70beb1363bc30995b34233c8d9c912cc205b18bfa4d05e721326954f",
+    "successor_core_sha256": "edc21b3f4f682ec76ae848fb7eee596c8b243dcbfd0151b8f382981f6e807c22",
     "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
     "binding_errata": 1,
     "source_canonical_repairs_added": 9,
@@ -4034,6 +4065,37 @@
       },
       "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-B-RESIDUAL33-REPAIRED-100PCT-REVERIFIED-PASS.json",
       "next_action_id": "PHASE_B_CORPUS_WIDE_RECURRENT_FAMILY_SWEEPS"
+    }
+  },
+  "phase_c": {
+    "recurrent_family_sweeps": {
+      "status": "PASS_ALL_RECURRENT_FAMILIES_EXHAUSTED_AFTER_ONE_STRUCTURE_REPAIR",
+      "families_exhausted": 8,
+      "targets_screened": 2492,
+      "examples_screened": 9968,
+      "confirmed_new_findings": 1,
+      "repaired_target": "dah-nvv-exp-00886",
+      "successor_core_sha256": "edc21b3f4f682ec76ae848fb7eee596c8b243dcbfd0151b8f382981f6e807c22",
+      "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+      "stage3c": {
+        "VERIFIED_PRESENT": 18804,
+        "CLOSED_NO_FORCE": 21068,
+        "NOT_APPLICABLE": 2492,
+        "unresolved_cells": 0
+      },
+      "artifact": {
+        "filename": "NVV-v3.3.6-Stage4-PhaseC-RecurrentFamilySweeps-1REPAIR-PASS-CHECKPOINT.zip",
+        "sha256": "82fbae903bd1fc1da3c12ec996663f8a5bc423015f5b356d89b8cb99f65c2cb3",
+        "size_bytes": 6248151,
+        "successor_core_sha256": "edc21b3f4f682ec76ae848fb7eee596c8b243dcbfd0151b8f382981f6e807c22",
+        "canonical_sha256": "ecdcabeccd27c2094292d9aa73f67cb707f52a99d1ba8eabcce173adb386040a",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseC-RecurrentFamilySweeps-1REPAIR-PASS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000b418824399792c0ecf60b271",
+        "library_stable_id": "libfile_17738e325e7c8191bb3b0603a675133a",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "report": "Workspaces/nomen-verb-verbindungen/04-independent-qa/STAGE4-PHASE-C-RECURRENT-FAMILY-SWEEPS-PASS.json",
+      "next_action_id": "PHASE_C_UNCHANGED500_DETERMINISTIC_STRATIFIED_SAMPLE"
     }
   }
 }

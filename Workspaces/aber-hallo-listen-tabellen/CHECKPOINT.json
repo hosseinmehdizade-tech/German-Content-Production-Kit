@@ -1939,8 +1939,8 @@
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "BLOCKED",
-      "summary": "Lexical subgate PASS on exact CURRENT v465 runtime bytes after transport-only Repair1; the one grammar unit is compatible with grammar.runtime.v2 in-memory but exact CURRENT exposes no deployable external grammar ingestion route.",
+      "state": "BLOCKED_REBASE_REQUIRED",
+      "summary": "Historical v466 grammar-bundled integration passed, but that parallel v466 runtime is not byte-identical to later CURRENT/LAST_FULLY_VERIFIED Pomodoro v466. Rebase exact tested grammar extension onto CURRENT v466 as v467-R101.",
       "authoritative_outputs": [
         "06-runtime/ABER-HALLO-LISTEN-TABELLEN-UNIVERSAL-v2-v465-IMPORT-REPAIR1.tsv",
         "06-runtime/RUNTIME-PRESENTATION-ACCEPTANCE.json",
@@ -1955,7 +1955,7 @@
         "06-runtime/V465-R99-EXACT-APP-LINEAGE-ATTESTATION.json"
       ],
       "blocker": "ARCHITECTURE_DECISION_REQUIRED_FOR_ONE_GRAMMAR_UNIT",
-      "claim_boundary": "Stage6 overall is BLOCKED, not PASS. Lexical 787/787 import/persistence/presentation is PASS; grammar compatibility is PASS in-memory; external/deployable grammar ingestion on exact CURRENT is unsupported without changing runtime bytes or scope.",
+      "claim_boundary": "Lexical content and grammar extension remain accepted/locked. Exact-current runtime acceptance must be rerun on a v467-R101 successor based on current v466.",
       "portable_artifact": {
         "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
         "sha256": "8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87",
@@ -1970,7 +1970,16 @@
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "NOT_STARTED"
+      "state": "HISTORICAL_PASS_SUPERSEDED_RUNTIME_IDENTITY",
+      "summary": "Portable Stage7 content-lock artifact exists and is internally PASS, but its parallel v466 runtime bytes are not the later project CURRENT v466. Treat as immutable content/integration evidence only.",
+      "portable_artifact": {
+        "filename": "German-Flashcards-Pro-v466-R100-Aber-Hallo-v3.3.6-LOCKED-CONTENT.zip",
+        "sha256": "799ae7fce8c10965b62fb1288f1e1494617a575249aef6abe63af6955a47f175",
+        "size_bytes": 6956424,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v466-R100-Aber-Hallo-v3.3.6-LOCKED-CONTENT.zip",
+        "library_file_id": "libfile_1fca683c39708191af4fd1cd33eba7eb",
+        "status": "CONTENT_LOCKED__RUNTIME_BASE_SUPERSEDED"
+      }
     }
   ],
   "scope_boundary": {
@@ -1983,13 +1992,13 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "STAGE6_BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION__LEXICAL_PASS",
+  "quality_state": "BLOCKED_REBASE_REQUIRED_RUNTIME_IDENTITY_COLLISION__CONTENT_LOCK_PRESERVED",
   "persistence": {
     "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
     "git": "IN_SYNC"
   },
-  "next_action": "Architecture decision required for the one grammar unit: approve integration into the existing grammar.runtime.v2 bundled pack in a v465-derived successor build (recommended, no visible UI redesign), or explicitly accept sidecar-only/non-runtime-visible grammar scope. Then rerun Stage6 and proceed to Stage7 only after PASS.",
-  "resume_instruction": "Use exact Stage6 blocked checkpoint SHA 8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87 from Library. The 787 lexical cards are accepted on CURRENT v465-R99 with runtime adapter Repair1; do not reopen lexical content unless a concrete defect appears. Resolve the one grammar-unit architecture decision and rerun Stage6.",
+  "next_action": "Build v467-R101 from exact CURRENT/LAST_FULLY_VERIFIED v466-R100, transplant only the tested Aber Hallo grammar extension, preserve Pomodoro/current runtime bytes, reseal version/shell cohort, rerun Stage6 and Stage7 exact-final gates.",
+  "resume_instruction": "Start from current v466-R100 artifact SHA 506fcdd4...861a8, not the historical Aber-Hallo v466 runtime. Reuse the immutable tested ahl-lu-0001 grammar extension and 787 locked lexical cards. Next runtime identity must be v467-R101.",
   "stage3b_batch": "0040",
   "stage3b_status": "PASS_COMPLETE",
   "stage3b_targets_processed": 788,
@@ -2088,5 +2097,50 @@
     "adapter_zip_sha256": "aff4de85cca72874144e36ae4e16e14e95a448894dcec520e309666887fbcff1",
     "runtime": "v465-R99",
     "runtime_outer_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17"
+  },
+  "runtime_reconciliation_20261008": {
+    "status": "CONTENT_LOCK_PRESERVED_RUNTIME_REBASE_REQUIRED",
+    "report": "Workspaces/aber-hallo-listen-tabellen/RUNTIME-AUTHORITY-RECONCILIATION-2026-10-08.md",
+    "historical_stage7_artifact": {
+      "filename": "German-Flashcards-Pro-v466-R100-Aber-Hallo-v3.3.6-LOCKED-CONTENT.zip",
+      "sha256": "799ae7fce8c10965b62fb1288f1e1494617a575249aef6abe63af6955a47f175",
+      "size_bytes": 6956424,
+      "library_file_id": "libfile_1fca683c39708191af4fd1cd33eba7eb",
+      "status": "IMMUTABLE_HISTORICAL_CONTENT_LOCK_EVIDENCE__NOT_CURRENT_RUNTIME_BASE"
+    },
+    "historical_runtime": {
+      "label": "v466-R100",
+      "app_sha256": "cafb71d29f59f8ac74326cc875cfedcbbdcefed23145cfe562be07077cd4d00c",
+      "service_worker_sha256": "12843e5cbd8dc51e03fdab544f9c51b7062d6d554babf229734df40ae7687792",
+      "runtime_files": 72,
+      "pomodoro_module_present": false
+    },
+    "current_runtime": {
+      "label": "v466-R100",
+      "artifact_sha256": "506fcdd4d062550a907ef6ef58d3a3fa185ee850631977d40145d6c7100861a8",
+      "app_sha256": "f99fecf1587f4fc93d59f1321a3ef347917068602a3f81a4c74f72843dfe4194",
+      "service_worker_sha256": "2d3a06abd1ad0d4b2799182e37b4f04c940c0a8e8530d8133bffc7861d754efa",
+      "runtime_files": 73,
+      "pomodoro_module_sha256": "5c7573c03cf80379e5fa730aa521bdf8629bf6bb86cb4ce195683396c9331de9",
+      "verification_state": "VERIFIED",
+      "release_final": true
+    },
+    "runtime_diff_paths": [
+      "01-App/index.html",
+      "01-App/German-Flashcards-Pro-v466.html",
+      "01-App/service-worker.js",
+      "01-App/modules/grammar-bundled-runtime-v2.js",
+      "01-App/modules/pomodoro-runtime-v466.js"
+    ],
+    "content_authority": {
+      "lexical_cards": 787,
+      "verbs": 647,
+      "adjectives": 140,
+      "grammar_units": 1,
+      "grammar_source_lesson_id": "ahl-lu-0001",
+      "content_lock_state": "LOCKED"
+    },
+    "required_successor": "v467-R101",
+    "rule": "Rebase tested grammar extension onto exact CURRENT v466; preserve Pomodoro/current runtime and do not reuse v466 identity."
   }
 }

@@ -11,7 +11,7 @@
 
 The active production framework is **v3.3.6 — Source-Agnostic Completeness Gate**. It carries forward v3.3.5 semantic/presentation separation and adds universal source adapters, Stage2 identity closure, Stage3A/3B/3C disposition completeness, independent Stage4 re-audit, and a Stage5 anti-bypass gate. New ordinary vocabulary has one explicit `de-vocabulary` presentation family with mandatory `gfp-vocabulary-neutral@1`; POS/morphology/gender/Rektion remain semantic data. The validator and builder reject top-level or recursively nested presentation selector namespaces case-insensitively. Runtime counterpart is GFP v451/R85, where explicit supported type is authoritative.
 
-Current Menschen workstream: **A1-L23 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY — CURRENT v465-R99 exact runtime acceptance; 175/175 import+persistence, 26/26 presentation, 341/341 relation projection after bounded 9-link cross-lesson bridge repair, 530 Kombinationen, cumulative 2982 unique; Stage7 next.**
+Current Menschen workstream: **A1-L23 Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY — exact-final outer ZIP passed 25/25 direct import + 26/26 presentation on CURRENT v465-R99; 175/175 runtime index, 341/341 relation parity, 530 Kombinationen, cumulative 2982 unique. Final artifact `Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip` SHA-256 `e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0`. Runtime v465 same-profile boundary remains separate.**
 
 A1-L17 Stage1/2:
 - source lesson: `A1-L17 — Wer will Popstar werden?`

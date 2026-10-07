@@ -2,9 +2,9 @@
   "workspace": "nomen-verb-verbindungen",
   "branch": "nvv-production",
   "domain": "vocabulary",
-  "updated_at": "2026-10-07T11:29:00+02:00",
-  "updated_version": "stage4-final-comprehensive-audit-frozen-s9-shard0025-pos2401-2492-v1",
-  "status": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__FULL2492_REVIEWED_FINDINGS_LOGGED",
+  "updated_at": "2026-10-07T11:48:00+02:00",
+  "updated_version": "stage4-phase-b-repair-plan-333-findings-v1",
+  "status": "STAGE4_PHASE_B_REPAIR_PLAN_PASS__333_FINDINGS_READY_TO_APPLY",
   "operating_mode": {
     "mode": "ARTIFACT_FIRST_ASYNC_GIT",
     "policy": "German-Content-Production-Kit/main/PROJECT-OPERATING-MODE-v2.md",
@@ -128,7 +128,7 @@
       "canonical_sha256": "99f15e76692be85c54ced76b476c0343a259e7e1216c3c3ef93f7c75c72ab5d9"
     },
     "4_independent_linguistic_lexical_qa": {
-      "state": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__FULL2492_REVIEWED_FINDINGS_LOGGED",
+      "state": "STAGE4_PHASE_B_REPAIR_PLAN_PASS__333_FINDINGS_READY_TO_APPLY",
       "rounds_completed": 6,
       "clean_streak": 0,
       "required_rounds_min": 3,
@@ -3069,7 +3069,7 @@
         "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
       },
       "legacy_two_consecutive_clean_pass_rule": "SUPERSEDED_FOR_SCOPED_FINAL_CONVERGENCE_BY_MEM-NVV-003",
-      "next": "Phase A full audit is complete. Begin the user-approved Phase B bounded batch repair of all 333 confirmed findings against the frozen S9 baseline; do not change source identity or frozen audit evidence.",
+      "next": "Apply all 333 confirmed Phase A findings against the exact frozen S9 core in one bounded successor wave, then recompute only affected Stage3C closure evidence.",
       "final_comprehensive_audit": {
         "status": "COMPLETE_2492_OF_2492_FINDINGS_LOGGED__PHASE_B_READY",
         "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
@@ -3304,6 +3304,21 @@
         "shards_completed": 25,
         "phase_a_status": "COMPLETE_2492_OF_2492",
         "phase_b_ready": true
+      },
+      "phase_b": {
+        "status": "REPAIR_PLAN_PASS_NO_CONTENT_EDIT",
+        "findings_total": 333,
+        "unique_targets": 333,
+        "repair_plan_artifact": {
+          "filename": "NVV-v3.3.6-Stage4-PhaseB-RepairPlan-333FINDINGS-PASS-CHECKPOINT.zip",
+          "sha256": "63c7121a699a6052e4c10b1a5969348c13cc165ffc17e215d0f53b3dd8a6412b",
+          "size_bytes": 92223,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-RepairPlan-333FINDINGS-PASS-CHECKPOINT.zip",
+          "library_file_id": "file_00000000d23c8243bfd32576f68bd525",
+          "library_stable_id": "libfile_4826f823538081918039836ca5f94871",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "next_action_id": "PHASE_B_APPLY_ALL_333"
       }
     },
     "5_delivery_projection_anti_bypass": {
@@ -3381,9 +3396,9 @@
   "persistence": {
     "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "latest_git_metadata": "SYNCED",
-    "latest_local_artifact_sha256": "a3c82a9e6b958288c3f870ddd66f17b9934537a6bffab0af1458b37c2e6e9b33"
+    "latest_local_artifact_sha256": "63c7121a699a6052e4c10b1a5969348c13cc165ffc17e215d0f53b3dd8a6412b"
   },
-  "next": "Phase A full audit is complete. Begin the user-approved Phase B bounded batch repair of all 333 confirmed findings against the frozen S9 baseline; do not change source identity or frozen audit evidence.",
+  "next": "Apply all 333 confirmed Phase A findings against the exact frozen S9 core in one bounded successor wave, then recompute only affected Stage3C closure evidence.",
   "autorun": {
     "status": "ACTIVE_RESILIENT_V3_4_0",
     "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -3438,7 +3453,7 @@
         "live_chatgpt_chrome": "PENDING_USER_CHROME"
       }
     },
-    "current_operation": "FINAL_COMPREHENSIVE_AUDIT_PHASE_A_COMPLETE__PHASE_B_READY",
+    "current_operation": "PHASE_B_APPLY_ALL_333",
     "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md",
     "atomic_shard_default": 100,
     "routine_user_confirmation": false
@@ -3567,7 +3582,7 @@
   },
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "next_action": "Phase A full audit is complete. Begin the user-approved Phase B bounded batch repair of all 333 confirmed findings against the frozen S9 baseline; do not change source identity or frozen audit evidence.",
+  "next_action": "Apply all 333 confirmed Phase A findings against the exact frozen S9 core in one bounded successor wave, then recompute only affected Stage3C closure evidence.",
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
     "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
@@ -3578,14 +3593,13 @@
     "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE"
   ],
   "latest_portable_checkpoint": {
-    "filename": "NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0025-POS2401-2492-FINDINGS-CHECKPOINT.zip",
-    "sha256": "a3c82a9e6b958288c3f870ddd66f17b9934537a6bffab0af1458b37c2e6e9b33",
-    "size_bytes": 2122937,
-    "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0025-POS2401-2492-FINDINGS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000fc8c81f48918ba84a4278169",
-    "library_stable_id": "libfile_ece29add65248191a490deaa20177928",
-    "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "NVV-v3.3.6-Stage4-PhaseB-RepairPlan-333FINDINGS-PASS-CHECKPOINT.zip",
+    "sha256": "63c7121a699a6052e4c10b1a5969348c13cc165ffc17e215d0f53b3dd8a6412b",
+    "size_bytes": 92223,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-RepairPlan-333FINDINGS-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000d23c8243bfd32576f68bd525",
+    "library_stable_id": "libfile_4826f823538081918039836ca5f94871",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "systemic_root_cause_qa": {
     "status": "POST_S7_EXHAUSTION_REVIEW_PASS_ROUND9_CLEAN_RESTART_READY",
@@ -3915,6 +3929,34 @@
       "next_clean_pass_start_position": 1
     }
   },
-  "last_observed_stage": "Stage4 Final Comprehensive Audit — frozen post-S9 baseline — shard FA-0025 positions 2401-2492 — Phase A complete",
-  "last_observed_note": "Positions 2401-2492 were audited on the unchanged frozen S9 core. Twenty-one confirmed finding targets were logged (18 major, 3 minor, 0 blocker); cumulative coverage is 2492/2492 with 333 confirmed findings (191 major, 142 minor). No learner content was edited."
+  "last_observed_stage": "Stage4 Phase B — repair adjudication plan frozen for all 333 confirmed findings",
+  "last_observed_note": "The 333 Phase A findings are normalized into one conflict-free repair ledger with 333 unique targets. No learner content has been edited yet. Library rematerialization matches the repair-plan artifact SHA-256 exactly.",
+  "phase_b": {
+    "status": "REPAIR_PLAN_PASS_NO_CONTENT_EDIT",
+    "plan_findings": 333,
+    "unique_targets": 333,
+    "severity": {
+      "major": 191,
+      "minor": 142,
+      "blocker": 0
+    },
+    "repair_modes": {
+      "learner_language_repair": 174,
+      "structure_evidence_repair": 144,
+      "source_canonical_evidence_repair": 9,
+      "mixed_structure_and_learner_language": 6
+    },
+    "frozen_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "content_edits_applied": 0,
+    "repair_plan_artifact": {
+      "filename": "NVV-v3.3.6-Stage4-PhaseB-RepairPlan-333FINDINGS-PASS-CHECKPOINT.zip",
+      "sha256": "63c7121a699a6052e4c10b1a5969348c13cc165ffc17e215d0f53b3dd8a6412b",
+      "size_bytes": 92223,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-PhaseB-RepairPlan-333FINDINGS-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000d23c8243bfd32576f68bd525",
+      "library_stable_id": "libfile_4826f823538081918039836ca5f94871",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "next_action_id": "PHASE_B_APPLY_ALL_333"
+  }
 }

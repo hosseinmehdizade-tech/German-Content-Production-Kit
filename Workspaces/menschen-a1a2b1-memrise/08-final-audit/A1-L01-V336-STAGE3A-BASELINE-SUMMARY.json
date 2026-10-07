@@ -1,0 +1,130 @@
+{
+  "schema": "menschen-a1-l01-v336-stage3a-baseline-summary@1.0.0",
+  "workstream": "menschen-a1a2b1-memrise",
+  "lesson": "A1-L01",
+  "audited_at": "2026-10-08",
+  "framework": "v3.3.6 — Source-Agnostic Completeness Gate",
+  "overlay": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+  "status": "PASS_STAGE3A_BASELINE_118_OF_118",
+  "supersedes": "Workspaces/menschen-a1a2b1-memrise/08-final-audit/A1-L01-V336-STAGE3A-AUTHORITY-RECOVERY-BLOCKED.json",
+  "authority": {
+    "repaired_successor": {
+      "filename": "Menschen-A1-L01-v3.3.2-REPAIRED-CONTENT-LOCKED.zip",
+      "sha256": "1c634f7398e14f4973c33e487e8d1bf516647fd4af32af5067bd6179f84285d6",
+      "size_bytes": 292814,
+      "recovered_historical_file_id": "file_00000000b2d881fd9ff26c7b4f26c377",
+      "sha256_reverified": true
+    },
+    "direct_import": {
+      "filename": "GFP-Menschen-A1-L01-v3.3.2-REPAIRED.zip",
+      "sha256": "9d8a2d86ebdd467f987e61d20923c4791c02afc2ac441d46db0821e934b3342b",
+      "size_bytes": 63879,
+      "recovered_historical_file_id": "file_00000000f2d0821083f3c215c9db83bb",
+      "sha256_reverified": true
+    }
+  },
+  "verified_invariants": {
+    "targets": "118 unique ma1m-lu-0001..ma1m-lu-0118",
+    "canonical_examples": "472 total; exactly 4 per target",
+    "relations": 22,
+    "identity_regenerated": false,
+    "historical_locked_bytes_mutated": false,
+    "hoeren": "ma1m-lu-0066 stays one card with multiple verified meanings"
+  },
+  "baseline": {
+    "applicable_for_kombinationen_review": 81,
+    "applicable_classes": {
+      "redemittel": 26,
+      "structure": 4,
+      "noun": 22,
+      "verb": 20,
+      "adjective": 1,
+      "adverb": 4,
+      "particle": 2,
+      "idiom": 1,
+      "multiword_expression": 1
+    },
+    "no_force_candidate_review": 37,
+    "no_force_candidate_classes": {
+      "pronoun": 11,
+      "conjunction": 1,
+      "numeral": 25
+    },
+    "targets_with_combination_relevant_canonical_relation": 8,
+    "targets_with_any_canonical_relation": 20,
+    "targets_with_parent_source_example_seed": 115,
+    "targets_without_parent_source_example_seed": [
+      "ma1m-lu-0032",
+      "ma1m-lu-0044",
+      "ma1m-lu-0065"
+    ],
+    "parent_projection_visible_kombinationen_sections": 0,
+    "parent_projection_legacy_relation_sections": 8,
+    "legacy_relation_section_targets": [
+      [
+        "ma1m-lu-0038",
+        "überlegen",
+        "Rektion"
+      ],
+      [
+        "ma1m-lu-0068",
+        "sprechen",
+        "Rektion"
+      ],
+      [
+        "ma1m-lu-0069",
+        "fragen",
+        "Rektion"
+      ],
+      [
+        "ma1m-lu-0070",
+        "eine Frage stellen",
+        "Kollokationen"
+      ],
+      [
+        "ma1m-lu-0071",
+        "rückfragen",
+        "Rektion"
+      ],
+      [
+        "ma1m-lu-0075",
+        "ankreuzen",
+        "Kollokationen"
+      ],
+      [
+        "ma1m-lu-0076",
+        "zuordnen",
+        "Rektion"
+      ],
+      [
+        "ma1m-lu-0083",
+        "zeigen",
+        "Rektion"
+      ]
+    ]
+  },
+  "interpretation": {
+    "applicable": "All 81 have reviewed parent-example evidence sufficient to enter gap-driven Stage3B. This is evidence availability, not automatic acceptance of learner-visible Kombinationen.",
+    "no_force": "Pronouns, conjunction und and numerals must not receive filler combinations merely to satisfy coverage. Stage3C decides CLOSED_NO_FORCE vs NOT_APPLICABLE.",
+    "numerals": "The 25 numeral cards are heavily templated; density-forced lexical combinations would be artificial.",
+    "verbs": "Use the already accepted A1 verb Kombinationen retrofit only by exact canonical ID/provenance match; then enrich only real gaps.",
+    "projection": "The repaired v3.3.2 parent has zero visible Kombinationen sections. The eight legacy Rektion/Kollokationen sections must be folded into one coherent Kombinationen section in the successor if retained."
+  },
+  "durable_artifact": {
+    "filename": "A1-L01-V336-STAGE3A-PASS.zip",
+    "sha256": "c963d6704de2c8a7fec505a3c905383dcd31ec9fdc042f9da9c50f30e2ff4953",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L01-V336-STAGE3A-PASS.zip",
+    "library_file_id": "libfile_874ca4c6e6f081919fabfa7209895c89",
+    "contents": [
+      [
+        "A1-L01-V336-STAGE3A-BASELINE.json",
+        "5561dab8dbd4d6e1b000e4b2d8d48555133050c234437b96a8458a5e3ecf1111"
+      ],
+      [
+        "A1-L01-V336-STAGE3A-LEDGER.tsv",
+        "d274a6e66e96e17df9d195ef4d0fe87de02052b0e752836240150c4f7a03670f"
+      ]
+    ]
+  },
+  "next_action": "Stage3B: merge the accepted verb retrofit by exact ma1m-lu ID; derive non-verb candidates first from parent examples, relations and source seeds; use curated/registered sources only for genuine gaps; keep the 37 no-force candidates out of enrichment unless Stage3C review proves a useful lexical dimension."
+}

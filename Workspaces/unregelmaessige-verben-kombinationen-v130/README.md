@@ -1,6 +1,6 @@
 # Unregelmäßige Verben v1.3.0 — Kombinationen successor
 
-Status: **Stage3B Batch0004 PASS — 80/174 targets reviewed**
+Status: **Stage3B Batch0005 PASS — 100/174 targets reviewed**
 
 Parent authority remains immutable: `Unregelmaessige-Verben-v1.2.0-v3.3.6-ORGANIZED-FINAL-DELIVERY.zip` SHA-256 `c5f87fb275ba8e4ea413843cfa321bb7a8ae3257c9d33bbbca53a7df5e5e001d`.
 
@@ -11,24 +11,22 @@ Stage3B progress:
 - Batch0002: `uv-lu-0021..uv-lu-0040` — 89 reviewed, 55 accepted, 21 merged, 13 rejected
 - Batch0003: `uv-lu-0041..uv-lu-0060` — 92 reviewed, 63 accepted, 17 merged, 12 rejected
 - Batch0004: `uv-lu-0061..uv-lu-0080` — 95 reviewed, 59 accepted, 14 merged, 22 rejected
-- cumulative target coverage: **80/174**
-- all accepted Batch0004 items have Persian + English translations
+- Batch0005: `uv-lu-0081..uv-lu-0100` — 91 reviewed, 57 accepted, 19 merged, 15 rejected
+- cumulative target coverage: **100/174**
+- all accepted Batch0005 items have Persian + English translations
 - parent semantic mutations: **0**
 - stable-ID mutations: **0**
 
-Batch0004 notable corrections:
-- `in Frage kommen` and `zum Einsatz kommen` are valid but excluded from the movement sense of `kommen`;
-- `eine Batterie laden` is a separate charging sense;
-- `etw. außer Acht lassen` is a valid idiom but outside the current `lassen` sense;
-- `eine Maschine läuft` is outside the move-on-foot sense;
-- causal `an etw. liegen` and figurative `in der Verantwortung liegen` are outside the physical/location `liegen` sense;
-- `mitnehmen` is a separate verb; `Medikamente nehmen`, `Platz nehmen`, `Rücksicht nehmen`, and `Einfluss nehmen` are outside the physical `nehmen` sense;
-- `ein Spiel pfeifen` and wind `durch ... pfeifen` are outside the human-whistling sense;
-- one concrete physical-taking candidate, `etw. vom Teller nehmen`, was added from the immutable parent example.
+Batch0005 notable corrections:
+- separate lexemes `aufquellen`, `abraten`, `herunterrinnen`, `sich betrinken`, `ansaugen`, `aufsaugen`, and `hinscheißen` were not projected as free combinations of the base-card lemmas;
+- `Käse reiben` was excluded from the immutable rubbing sense because grating is another sense;
+- the legacy `scheinen` structure `als + Prädikativ` was rejected as a misleading standalone pattern while valid predicative and `als ob` constructions remain;
+- the legacy `scheißen` visible signals were outside the literal parent definition, so two literal parent-example-backed combinations were added instead;
+- `Wolle scheren` was rejected as a weak standalone object collocation.
 
 Latest portable checkpoint:
-`Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage3B-Batch0004-CHECKPOINT.zip`
-SHA-256 `3969d3ec5299836b39cc8f695b3af47156cb878eacf8289c2ceaca7478aca12c`
+`Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage3B-Batch0005-CHECKPOINT.zip`
+SHA-256 `a1c59b05241bad0ccfca03876e74d180444c638bcfdf8d4a560999494b7f6c17`
 Library + package CRC + fresh-extract SHA256SUMS: **PASS**.
 
-Next: **Stage3B Batch0005 — uv-lu-0081..uv-lu-0100**. Stage3C/Stage4/Stage5 are not claimed yet.
+Next: **Stage3B Batch0006 — uv-lu-0101..uv-lu-0120**. Stage3C/Stage4/Stage5 are not claimed yet.

@@ -6250,7 +6250,7 @@
       "next_action": "Stage3B Batch18 nominal range mb1m-lu-0341..mb1m-lu-0360 from exact Batch17 ACCEPTED bytes."
     },
     "unregelmaessige_verben_kombinationen": {
-      "status": "ACTIVE_STAGE5_PASS_PENDING_STAGE6",
+      "status": "WORKSTREAM_COMPLETE_LOCKED_STAGE7_PASS_PENDING_FINAL_INDEPENDENT_AUDIT",
       "domain": "vocabulary",
       "branch": "unregelmaessige-verben-v130-kombinationen",
       "checkpoint": "Workspaces/unregelmaessige-verben-kombinationen-v130/CHECKPOINT.json",
@@ -6285,7 +6285,7 @@
         "branch_checkpoint_commit": "8aca1e930077da627b2950a1de8a7cfc707e51de",
         "branch_readme_commit": "bd7b993840f47b15c33211e2df1425e338c0ce11"
       },
-      "next_action": "Stage6 exact CURRENT runtime presentation/import acceptance. Re-resolve CURRENT at Stage6; never downgrade.",
+      "next_action": "Final independent audit of exact LOCKED artifact; preserve exact release bytes.",
       "stage3b": {
         "cumulative_targets": "174/174",
         "latest_batch": "0009",
@@ -6402,6 +6402,87 @@
           "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
         "runtime_binding": "DEFERRED_TO_STAGE6_CURRENT"
+      },
+      "framework": "v3.3.6",
+      "parent_content": "v1.2.0 immutable",
+      "successor": "v1.3.0-Kombinationen LOCKED",
+      "content_lock_state": "LOCKED",
+      "stage6": {
+        "status": "PASS_EXACT_CURRENT_RUNTIME",
+        "current_runtime": "v465-R99",
+        "current_runtime_artifact_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+        "current_app_sha256": "0ea6cb1b670f0f70677cc4a810e91336fa8b783e7db809ae0cb6489853abdcd8",
+        "last_fully_verified_runtime": "v451-R85",
+        "adapter": {
+          "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage6-RUNTIME-IMPORT-ADAPTER-v1.zip",
+          "sha256": "8b2bae9b7a81d78364b5633020ca91166eb7f4b70ba052408777c615c2f1f9e6",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage6-RUNTIME-IMPORT-ADAPTER-v1.zip",
+          "library_file_id": "libfile_b814d2a1c1b88191b8e4724b885ece23",
+          "semantic_tsv_mutated": false
+        },
+        "acceptance": {
+          "checks": "36/36 PASS",
+          "cards": 174,
+          "examples": 696,
+          "relations": 902,
+          "kombinationen_items": 525,
+          "visible_kombinationen": 174,
+          "visible_legacy_sections": 0,
+          "four_mode_samples": "PASS",
+          "state_only_commit": "PASS",
+          "storage": "READY",
+          "page_errors": 0
+        },
+        "checkpoint": {
+          "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage6-GFP-v465-PASS-CHECKPOINT.zip",
+          "sha256": "9533c3acd1c56b3b7ee078ed5e777c148db438889397b6a67de042d3163a1024",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage6-GFP-v465-PASS-CHECKPOINT.zip",
+          "library_file_id": "libfile_43bc9ecf3b7481919e614c2a47610b9a"
+        },
+        "project_runtime_boundary": "PENDING_USER_SAME_PROFILE_V465"
+      },
+      "stage7": {
+        "status": "LOCKED_PASS_WITH_PROJECT_RUNTIME_BOUNDARY",
+        "content_lock_state": "LOCKED",
+        "release": {
+          "filename": "German-Flashcards-Pro-v465-R99-Unregelmaessige-Verben-v1.3.0-v3.3.6-Kombinationen-LOCKED-CONTENT.zip",
+          "sha256": "52e050532329f5c9c86583a430f8468e1d59801103fb997ab166fd69a2bff531",
+          "size_bytes": 4509618,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v465-R99-Unregelmaessige-Verben-v1.3.0-v3.3.6-Kombinationen-LOCKED-CONTENT.zip",
+          "library_file_id": "libfile_99b025409dc88191aaf5255458f724cd"
+        },
+        "exact_final_acceptance": {
+          "filename": "Unregelmaessige-Verben-v1.3.0-Kombinationen-Stage7-EXACT-FINAL-ACCEPTANCE.json",
+          "sha256": "72187ef69127284f561c844979d4c7a932a9aabc754cb2cd00292bc881ffe2da",
+          "checks": "34/34 PASS",
+          "status": "PASS_WITH_PROJECT_RUNTIME_BOUNDARY"
+        },
+        "post_package": {
+          "zip_crc": "PASS",
+          "duplicate_members": "PASS",
+          "release_manifest_rehash": "628/628 PASS",
+          "sha256sums_rehash": "627/627 PASS",
+          "runtime_base_preservation": "339/339 EXACT CURRENT v465-R99",
+          "package_hygiene": "PASS_NO_NESTED_ZIP_CACHE_PYC_RAW_PDF_UNSAFE_PATHS",
+          "dataset_sha256": "f41b360ef306658627343d0a71428c3bb35a0e6c239450888673a186a2e7618a"
+        },
+        "content": {
+          "cards": 174,
+          "kombinationen": 525,
+          "examples": 696,
+          "relations": 902,
+          "visible_kombinationen": "174/174 exactly one",
+          "legacy_visible": 0
+        },
+        "runtime": {
+          "CURRENT": "v465-R99",
+          "LAST_FULLY_VERIFIED": "v451-R85",
+          "content_specific_stage6": "36/36 PASS",
+          "content_specific_stage7": "34/34 PASS",
+          "project_same_profile_boundary": "PENDING_USER_SAME_PROFILE_V465",
+          "global_app_finality_claimed": false
+        },
+        "next_action": "Final independent audit of exact LOCKED artifact; preserve exact release bytes."
       }
     },
     "250_verben_mit_praepositionen_kombinationen": {

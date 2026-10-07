@@ -15,8 +15,8 @@
     "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
     "branch": "main",
     "path": "Workspaces/menschen-a1a2b1-memrise",
-    "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_METADATA_IN_SYNC",
-    "git_sync_note": "A1-L22 Stage5 PASS: 101 neutral projections; official anti-bypass builder PASS; clean delivery/checkpoint byte-identical after Library rematerialization."
+    "persistence_status": "PORTABLE_ARTIFACT_PLUS_GIT_WORKSTREAM_SYNC__ROOT_COORDINATION_MAY_LAG",
+    "git_sync_note": "A1-L22 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY on exact CURRENT v465-R99. Workstream checkpoint synced; Stage6 artifact/import wrapper exact-rematerialized. Root PROJECT-STATE may lag due prior connector size boundary and must not override this newer workstream authority."
   },
   "authorities": {
     "content_kit_prompt": "v3.3.2",
@@ -295,7 +295,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L22 Stage6 — re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its pinned SHA-256, then run direct import/presentation/persistence/roundtrip acceptance on the Stage5 clean delivery.",
+  "resume_instruction": "A1-L22 Stage7 — re-resolve German Flashcards Pro CURRENT; if still v465-R99, package exact A1-L22 LOCKED candidate and rerun exact-final import/presentation/identity checks on final bytes. If CURRENT advanced, rerun Stage6 acceptance first.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -308,11 +308,11 @@
     "large_payload_not_reconstructed_in_git_by_design": true,
     "release_in_library": true,
     "latest_locked_lesson": "A1-L21",
-    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage5-CHECKPOINT.zip",
-    "latest_portable_checkpoint_sha256": "82964e8c4025ed0d5b92eca0603a1d43b67fd909aa23522426ed58e4ec53dda4"
+    "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
+    "latest_portable_checkpoint_sha256": "a4c498d1897e03bc40ecd448a2c4fc03b668161a01cc3d55181d0b493b29e765"
   },
-  "current_scope": "A1-L22 Stage5 PASS",
-  "lock_state": "A1-L01_TO_A1-L21_LOCKED__A1-L22_STAGE5_PASS_PENDING_STAGE6",
+  "current_scope": "A1-L22 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "lock_state": "A1-L01_TO_A1-L21_LOCKED__A1-L22_STAGE6_PASS_PENDING_STAGE7",
   "locked_at": "2026-09-26",
   "release_artifact": {
     "filename": "German-Flashcards-Pro-v413-R47-Menschen-A1-L01-GOLDEN.zip",
@@ -2748,34 +2748,59 @@
     "next_operation": "Stage6 only: re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its SHA-256 against runtime authority, then run Runtime & Presentation Acceptance without downgrade."
   },
   "latest_stage6_checkpoint": {
-    "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
-    "quality_state": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE",
-    "scope": "A1-L21",
-    "runtime": "v435-R69",
-    "runtime_verification_state": "VERIFIED",
-    "runtime_release_final": true,
-    "runtime_sha256": "352b258f81bfeabbbebe9c0cb95b74aa4c7704e94fea5aaa97f9ada11ec9b96e",
-    "last_fully_verified_runtime": "v435-R69",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_WORKSTREAM_SYNCED",
+    "quality_state": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+    "scope": "A1-L22",
+    "framework": "v3.3.6",
+    "runtime": "v465-R99",
+    "runtime_role": "CURRENT",
+    "runtime_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+    "runtime_verification_state": "PASS_AUTOMATED_POST_PACKAGE_CANDIDATE",
+    "runtime_release_final": false,
+    "last_fully_verified_runtime": "v451-R85",
     "no_downgrade": true,
-    "runtime_file_count": 64,
-    "stage5_fresh_validation": "186/186 PASS",
-    "direct_outer_import": "21/21 PASS / 151 cards",
-    "runtime_persistence_index": "151/151 VERIFIED",
-    "runtime_presentation": "11/11 PASS / study4 quick2 typing3 audio3",
-    "cumulative_identity": "12/12 PASS / 2713 unique",
-    "environment_boundary": "NONE_CURRENT_V435_VERIFIED_FINAL",
-    "manifest_rehash": "56/56 PASS",
-    "package_hygiene": "PASS_NO_PYCACHE_PYC",
-    "artifact": {
-      "filename": "Menschen-A1-L21-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
-      "sha256": "09d7fe9da64e192cf7e3f47739d4b98ef86d465d9b53e7baad7bb10a3290b7ce",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.2-Stage6-GFP-v435-CHECKPOINT.zip",
-      "library_file_id": "file_00000000db208210b2854b774dc36f2d",
-      "library_stable_id": "libfile_613e017943a081919a15b5efa258e6ba",
-      "size_bytes": 498881,
-      "library_rematerialization": "PASS_EXACT_SHA256_MATCH"
+    "runtime_file_count": 72,
+    "runtime_internal_rehash": "338/338 PASS",
+    "stage5_fresh_validation": "17/17 PASS",
+    "direct_outer_import": "25/25 PASS / 101 cards",
+    "runtime_persistence_index": "101/101 VERIFIED; storage READY",
+    "runtime_presentation": "26/26 PASS / production presentation APIs across 101/101 cards",
+    "mode_examples": "study4 quick2 typing3 audio3",
+    "neutral_projection": "101/101 de-vocabulary + gfp-vocabulary-neutral@1",
+    "lexical_kombinationen": "279 items / exactly one visible Kombinationen section on 101/101 / no legacy visible combination sections",
+    "relations": "67 canonical -> 67 runtime projected / 0 ID-type parity misses",
+    "source_audio": "99 target refs / 80 unique / zero-audio targets ma1m-lu-2803 and ma1m-lu-2804 preserved",
+    "cumulative_identity": "12/12 PASS / 2812 unique",
+    "runtime_regression": "v451 envelope 21/21 + AUD006 relation presentation 10/10 + v465 lifecycle cleanup 11/11 PASS",
+    "environment_boundary": {
+      "code": "CURRENT_V465_SAME_PROFILE_WINDOWS_CHROME_PENDING",
+      "blocking_for_content_stage6": false,
+      "blocking_for_runtime_final_verified": true,
+      "note": "v465 still requires its already-recorded same-profile reveal/scroll/advance/undo confirmation; this does not fail L22 content Stage6."
     },
-    "next_action": "A1-L21 Stage7 Release & Post-Package Verification"
+    "import_ready": {
+      "filename": "Menschen-A1-L22-v3.3.6-Stage6-IMPORT-READY.zip",
+      "sha256": "4c26e9b66be74f77992f9d43237cf906c914b3a3d5859c7e7076cf16446bc6da",
+      "size_bytes": 114975,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage6-IMPORT-READY.zip",
+      "library_file_id": "file_0000000074e88210a5b39b5a4373a0ef",
+      "library_stable_id": "libfile_86506e77bb84819188ac561a908727e6",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "semantic_mutation": "NONE"
+    },
+    "artifact": {
+      "filename": "Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
+      "sha256": "a4c498d1897e03bc40ecd448a2c4fc03b668161a01cc3d55181d0b493b29e765",
+      "size_bytes": 1119097,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
+      "library_file_id": "file_000000003be8824382419c98b48b7570",
+      "library_stable_id": "libfile_f23f9a3d393c819183569d98725b1f9c",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "manifest_rehash": "205/205 PASS + 206 SHA entries",
+      "package_hygiene": "PASS",
+      "prevention_package_preflight": "PASS"
+    },
+    "next_action": "A1-L22 Stage7 — re-resolve German Flashcards Pro CURRENT; if still v465-R99, package exact A1-L22 LOCKED candidate and rerun exact-final import/presentation/identity checks on final bytes. If CURRENT advanced, rerun Stage6 acceptance first."
   },
   "latest_stage7_preflight": {
     "state": "SUPERSEDED_BY_LOCKED_RELEASE",
@@ -3277,7 +3302,7 @@
     "next_action": "Optional separate Stage6 acceptance on exact CURRENT v434-R68 portable artifact when available; do not reopen linguistic content unless a new defect is proven."
   },
   "a1_l22": {
-    "state": "STAGE5_PASS_PENDING_STAGE6",
+    "state": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY_PENDING_STAGE7",
     "stage12": {
       "status": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
       "scope": "A1-L22",
@@ -3645,6 +3670,61 @@
       "framework_test_harness_advisory": "PINNED_V336_LEGACY_TEST_ACTIVE_POINTER_DRIFT_NONBLOCKING",
       "runtime_projection_target": "RESOLVE_CURRENT_AT_STAGE6",
       "next_action": "A1-L22 Stage6 — re-resolve German Flashcards Pro CURRENT, materialize exact CURRENT portable artifact, verify its pinned SHA-256, then run direct import/presentation/persistence/roundtrip acceptance on the Stage5 clean delivery."
+    },
+    "stage6": {
+      "status": "PASS_WITH_ENVIRONMENT_BOUNDARY_LIBRARY_AND_GIT_WORKSTREAM_SYNCED",
+      "quality_state": "PASS_EXACT_CURRENT_RUNTIME_ACCEPTANCE_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+      "scope": "A1-L22",
+      "framework": "v3.3.6",
+      "runtime": "v465-R99",
+      "runtime_role": "CURRENT",
+      "runtime_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17",
+      "runtime_verification_state": "PASS_AUTOMATED_POST_PACKAGE_CANDIDATE",
+      "runtime_release_final": false,
+      "last_fully_verified_runtime": "v451-R85",
+      "no_downgrade": true,
+      "runtime_file_count": 72,
+      "runtime_internal_rehash": "338/338 PASS",
+      "stage5_fresh_validation": "17/17 PASS",
+      "direct_outer_import": "25/25 PASS / 101 cards",
+      "runtime_persistence_index": "101/101 VERIFIED; storage READY",
+      "runtime_presentation": "26/26 PASS / production presentation APIs across 101/101 cards",
+      "mode_examples": "study4 quick2 typing3 audio3",
+      "neutral_projection": "101/101 de-vocabulary + gfp-vocabulary-neutral@1",
+      "lexical_kombinationen": "279 items / exactly one visible Kombinationen section on 101/101 / no legacy visible combination sections",
+      "relations": "67 canonical -> 67 runtime projected / 0 ID-type parity misses",
+      "source_audio": "99 target refs / 80 unique / zero-audio targets ma1m-lu-2803 and ma1m-lu-2804 preserved",
+      "cumulative_identity": "12/12 PASS / 2812 unique",
+      "runtime_regression": "v451 envelope 21/21 + AUD006 relation presentation 10/10 + v465 lifecycle cleanup 11/11 PASS",
+      "environment_boundary": {
+        "code": "CURRENT_V465_SAME_PROFILE_WINDOWS_CHROME_PENDING",
+        "blocking_for_content_stage6": false,
+        "blocking_for_runtime_final_verified": true,
+        "note": "v465 still requires its already-recorded same-profile reveal/scroll/advance/undo confirmation; this does not fail L22 content Stage6."
+      },
+      "import_ready": {
+        "filename": "Menschen-A1-L22-v3.3.6-Stage6-IMPORT-READY.zip",
+        "sha256": "4c26e9b66be74f77992f9d43237cf906c914b3a3d5859c7e7076cf16446bc6da",
+        "size_bytes": 114975,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage6-IMPORT-READY.zip",
+        "library_file_id": "file_0000000074e88210a5b39b5a4373a0ef",
+        "library_stable_id": "libfile_86506e77bb84819188ac561a908727e6",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "semantic_mutation": "NONE"
+      },
+      "artifact": {
+        "filename": "Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
+        "sha256": "a4c498d1897e03bc40ecd448a2c4fc03b668161a01cc3d55181d0b493b29e765",
+        "size_bytes": 1119097,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage6-GFP-v465-CHECKPOINT.zip",
+        "library_file_id": "file_000000003be8824382419c98b48b7570",
+        "library_stable_id": "libfile_f23f9a3d393c819183569d98725b1f9c",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "manifest_rehash": "205/205 PASS + 206 SHA entries",
+        "package_hygiene": "PASS",
+        "prevention_package_preflight": "PASS"
+      },
+      "next_action": "A1-L22 Stage7 — re-resolve German Flashcards Pro CURRENT; if still v465-R99, package exact A1-L22 LOCKED candidate and rerun exact-final import/presentation/identity checks on final bytes. If CURRENT advanced, rerun Stage6 acceptance first."
     }
   },
   "latest_stage3a_checkpoint": {

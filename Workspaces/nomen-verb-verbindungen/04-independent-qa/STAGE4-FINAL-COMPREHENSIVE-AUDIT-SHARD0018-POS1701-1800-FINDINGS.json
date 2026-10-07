@@ -1,0 +1,330 @@
+{
+  "schema": "nvv-stage4-final-comprehensive-audit-shard@1.0.0",
+  "status": "PASS_REVIEW_COMPLETE_FINDINGS_LOGGED_NO_CONTENT_EDIT",
+  "created_at": "2026-10-07T03:04:00+02:00",
+  "decision_ref": "MEM-NVV-003-FINAL-COMPREHENSIVE-AUDIT-CONVERGENCE",
+  "protocol_ref": "Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-PROTOCOL-v1.json",
+  "frozen_baseline": {
+    "artifact_sha256": "8a1199b8e88d4f063184e989205987e24d4c22e63d93f1d7c4a008142a3a762b",
+    "core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+  },
+  "shard": {
+    "id": "FA-0018",
+    "positions": "1701-1800",
+    "targets_reviewed": 100,
+    "examples_reviewed": 400,
+    "learner_example_cells_reviewed": 1200,
+    "semantic_summary_fields_reviewed": 300,
+    "content_edits_applied": 0
+  },
+  "rubric_dimensions_reviewed": [
+    "identity/source",
+    "definition_de",
+    "meaning_fa",
+    "gloss_en",
+    "structure/valency",
+    "examples_de",
+    "examples_fa",
+    "examples_en",
+    "cross-language alignment",
+    "register/sense coverage",
+    "example diversity"
+  ],
+  "source_pdf_visual_check": {
+    "pdf_pages": [
+      19,
+      20
+    ],
+    "printed_pages": [
+      17,
+      18
+    ],
+    "status": "PASS_SOURCE_LIST_VISUALLY_CHECKED_FOR_THIS_SHARD",
+    "notes": "Visual source check covers Rückfall through Schulden for positions 1701-1800. Ninety-seven stored source surfaces equal the frozen canonical surface. Positions 1705, 1741 and 1763 are pre-existing documented source repairs (Rücksicht üben+Akk.→Rücksicht üben; einen Schatten vorauswerfen→seine Schatten vorauswerfen; jdn.→jdm. auf den Schlips treten). No new source/canonical repair is confirmed in this shard."
+  },
+  "confirmed_findings": [
+    {
+      "position": 1706,
+      "target_id": "dah-nvv-exp-01696",
+      "canonical_form": "in Rückstand geraten",
+      "severity": "MINOR",
+      "category": "GERMAN_EXAMPLE_NATURALNESS_REKTION",
+      "fields": [
+        "examples[3].de"
+      ],
+      "evidence": {
+        "example_de": "Wenn wir diese Woche nicht liefern, geraten wir gegenüber dem Vertrag in Rückstand.",
+        "example_fa": "اگر این هفته تحویل ندهیم، نسبت به تعهد قراردادی عقب می‌افتیم.",
+        "example_en": "If we do not deliver this week, we will fall behind our contractual schedule."
+      },
+      "finding": "The German phrase 'gegenüber dem Vertrag in Rückstand geraten' is not idiomatic for falling behind contractual obligations or schedule. The intended relation is clear, but the complement is malformed.",
+      "repair_direction": "Use an idiomatic German complement such as 'mit unseren vertraglichen Verpflichtungen in Rückstand geraten' or wording tied to the contractual schedule, then realign FA/EN only if needed."
+    },
+    {
+      "position": 1713,
+      "target_id": "dah-nvv-exp-01703",
+      "canonical_form": "im Ruf stehen",
+      "severity": "MINOR",
+      "category": "PERSIAN_MEANING_NATURALNESS_REDUNDANCY",
+      "fields": [
+        "meaning_fa"
+      ],
+      "evidence": {
+        "meaning_fa": "به داشتن شهرتی معروف بودن",
+        "definition_de": "als jemand oder etwas mit einem bestimmten Ruf gelten",
+        "gloss_en": "to have a reputation for something"
+      },
+      "finding": "The Persian summary literally says 'to be famous for having a reputation', which is redundant and translation-shaped rather than idiomatic Persian.",
+      "repair_direction": "Use a natural Persian equivalent such as 'به چیزی شهرت داشتن / معروف بودن' while preserving the target's reputation meaning."
+    },
+    {
+      "position": 1720,
+      "target_id": "dah-nvv-exp-01710",
+      "canonical_form": "jdn. in Ruhe lassen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_NATURALNESS_CALQUE",
+      "fields": [
+        "examples[3].en"
+      ],
+      "evidence": {
+        "example_de": "Wenn du konzentriert arbeiten willst, lasse ich dich eine Stunde in Ruhe.",
+        "example_en": "If you want to work with concentration, I will leave you alone for an hour."
+      },
+      "finding": "The English phrase 'work with concentration' is a German-shaped calque and is not idiomatic in this context.",
+      "repair_direction": "Use natural English such as 'If you want to concentrate on your work...' while preserving the one-hour and leave-alone meaning."
+    },
+    {
+      "position": 1724,
+      "target_id": "dah-nvv-exp-01714",
+      "canonical_form": "zum Ruin führen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "wirtschaftlich oder existenziell zugrunde richten",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Die hohen Zinsen können kleine Betriebe zum Ruin führen.",
+          "Eine Serie falscher Entscheidungen führte das Unternehmen zum Ruin.",
+          "Unkontrollierte Spielsucht kann eine Familie finanziell zum Ruin führen.",
+          "Der Vertrag war so ungünstig, dass er den Betrieb fast zum Ruin führte."
+        ]
+      },
+      "finding": "The causative construction requires the person/entity led to ruin. All four examples realize that variable accusative/theme role, but learner structure is marked slotless.",
+      "repair_direction": "Preserve the raw source surface in provenance and expose the affected person/entity in learner structure, e.g. 'jdn./etw. zum Ruin führen'."
+    },
+    {
+      "position": 1747,
+      "target_id": "dah-nvv-exp-01737",
+      "canonical_form": "jdm. die Schau stehlen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_SEMANTIC_ALIGNMENT",
+      "fields": [
+        "examples[3].fa"
+      ],
+      "evidence": {
+        "example_de": "Niemand hatte erwartet, dass das kleine Team den Favoriten die Schau stehlen würde.",
+        "example_fa": "هیچ‌کس انتظار نداشت تیم کوچک تیم‌های محبوب را تحت‌الشعاع قرار دهد.",
+        "example_en": "Nobody expected the small team to steal the show from the favorites."
+      },
+      "finding": "In this sports context, German 'Favoriten' means the favorites/front-runners expected to win, not 'popular teams'. Persian 'تیم‌های محبوب' shifts the sense to popularity.",
+      "repair_direction": "Use a Persian equivalent for sporting favorites/front-runners (for example 'مدعیان اصلی' or 'تیم‌های بخت اول') while preserving the upstaging relation."
+    },
+    {
+      "position": 1750,
+      "target_id": "dah-nvv-exp-01740",
+      "canonical_form": "Schiffbruch erleiden",
+      "severity": "MINOR",
+      "category": "ENGLISH_GLOSS_SEMANTIC_OVEREXTENSION",
+      "fields": [
+        "gloss_en"
+      ],
+      "evidence": {
+        "source_classification": "idiom",
+        "definition_de": "mit einem Vorhaben oder Unternehmen schwer scheitern",
+        "gloss_en": "to suffer shipwreck / fail badly",
+        "example_scope": "all four learner examples are figurative failure/foundering uses"
+      },
+      "finding": "The learner card is explicitly defined and exemplified as the figurative idiom, but the English gloss additionally introduces the literal maritime sense 'to suffer shipwreck'. That literal sense is unsupported by this card's German learner layer.",
+      "repair_direction": "Keep the English gloss on the figurative failure/foundering sense unless the card is deliberately broadened with corresponding German definition and examples."
+    },
+    {
+      "position": 1752,
+      "target_id": "dah-nvv-exp-01742",
+      "canonical_form": "auf die Schippe nehmen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_VALENCY_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "jemanden scherzhaft necken oder aufziehen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Meine Kollegen nahmen mich wegen meines neuen Hutes auf die Schippe.",
+          "Nimm ihn nicht zu ernst; er nimmt gern alle auf die Schippe.",
+          "Sie merkte erst später, dass die Freunde sie nur auf die Schippe genommen hatten.",
+          "Der Moderator nahm den Politiker mit einer harmlosen Bemerkung auf die Schippe."
+        ]
+      },
+      "finding": "The person being teased is a central accusative participant and is explicit in every German example, but learner structure exposes no person slot.",
+      "repair_direction": "Preserve the source surface and encode the affected person in learner structure, e.g. 'jdn. auf die Schippe nehmen'."
+    },
+    {
+      "position": 1759,
+      "target_id": "dah-nvv-exp-01749",
+      "canonical_form": "den Schleier ablegen",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_LEXICAL_NATURALNESS",
+      "fields": [
+        "examples[1].fa"
+      ],
+      "evidence": {
+        "example_de": "Im warmen Raum legte sie den Schleier vor dem Gesicht ab.",
+        "example_fa": "او در اتاق گرم پرده جلوی صورتش را کنار زد.",
+        "example_en": "In the warm room, she removed the veil from her face."
+      },
+      "finding": "Persian 'پرده جلوی صورت' uses the ordinary word for a curtain and is unnatural for a worn facial veil/covering in this literal context.",
+      "repair_direction": "Use an idiomatic Persian clothing/face-covering term such as 'نقاب/پوشش صورت' as appropriate to the intended scene."
+    },
+    {
+      "position": 1769,
+      "target_id": "dah-nvv-exp-01759",
+      "canonical_form": "einen Schlussstrich ziehen",
+      "severity": "MAJOR",
+      "category": "STRUCTURE_REKTION_OMISSION",
+      "fields": [
+        "structure.pattern_de",
+        "structure.rektion",
+        "structure.argument_slots"
+      ],
+      "evidence": {
+        "definition_de": "eine Angelegenheit endgültig abschließen und hinter sich lassen",
+        "current_argument_slots": [],
+        "stage3c_argument_slots_status": "CLOSED_NO_FORCE / CONSTRUCTION_FIXED_NO_SLOT",
+        "examples_de": [
+          "Nach Jahren des Streits wollte die Familie endlich einen Schlussstrich ziehen.",
+          "Mit dem Verkauf der Firma zog er einen Schlussstrich unter dieses Kapitel.",
+          "Wir sollten aus dem Fehler lernen und dann einen Schlussstrich ziehen.",
+          "Sie konnte erst nach dem Gespräch einen Schlussstrich unter die alte Beziehung ziehen."
+        ]
+      },
+      "finding": "The productive target/topic complement 'unter + Akk.' is absent from learner structure even though it is explicitly realized in two examples and represents what is being definitively closed; the other two examples omit it only because the referent is contextually recoverable.",
+      "repair_direction": "Encode the optional/productive 'unter + Akk.' complement in learner structure while retaining absolute contextual use and preserving the raw source surface."
+    },
+    {
+      "position": 1785,
+      "target_id": "dah-nvv-exp-01775",
+      "canonical_form": "der letzte Schrei sein",
+      "severity": "MINOR",
+      "category": "PERSIAN_EXAMPLE_ORTHOGRAPHY_NATURALNESS",
+      "fields": [
+        "examples[3].fa"
+      ],
+      "evidence": {
+        "example_de": "Was heute der letzte Schrei ist, kann nächstes Jahr schon altmodisch wirken.",
+        "example_fa": "چیزی که امروز آخرین مد است ممکن است سال بعد ازمدافتاده به نظر برسد."
+      },
+      "finding": "The Persian compound is incorrectly fused as 'ازمدافتاده'. Standard readable Persian writes the expression with word spacing ('از مد افتاده').",
+      "repair_direction": "Correct the Persian orthography without changing the meaning or sentence structure."
+    },
+    {
+      "position": 1794,
+      "target_id": "dah-nvv-exp-01784",
+      "canonical_form": "in jds. Schuld stehen",
+      "severity": "MINOR",
+      "category": "ENGLISH_EXAMPLE_NATURALNESS_REDUNDANCY",
+      "fields": [
+        "examples[1].en"
+      ],
+      "evidence": {
+        "example_de": "Für seine Unterstützung stand sie lange in der Schuld ihres Mentors.",
+        "example_en": "She was indebted to her mentor for a long time for his support."
+      },
+      "finding": "The English row is grammatically understandable but awkward because the two adjacent 'for' phrases ('for a long time for his support') create avoidable repetition and poor flow.",
+      "repair_direction": "Reorder the sentence idiomatically, e.g. place the duration elsewhere while preserving both the mentor's support and the long duration."
+    },
+    {
+      "position": 1799,
+      "target_id": "dah-nvv-exp-01789",
+      "canonical_form": "Schulden haben",
+      "severity": "MINOR",
+      "category": "GERMAN_DEFINITION_PARTIAL_CIRCULARITY_REDUNDANCY",
+      "fields": [
+        "definition_de"
+      ],
+      "evidence": {
+        "definition_de": "finanzielle Schulden haben oder verschuldet sein"
+      },
+      "finding": "The definition begins by repeating the target itself ('Schulden haben') and only then supplies the independent synonym 'verschuldet sein'. It is usable but partially circular and unnecessarily redundant.",
+      "repair_direction": "Define the state independently, for example in terms of owing money / being financially indebted, without repeating the target phrase."
+    }
+  ],
+  "finding_summary": {
+    "confirmed_targets": 12,
+    "blocker": 0,
+    "major": 3,
+    "minor": 9,
+    "clean_targets": 88,
+    "repairs_deferred_until_full_audit_complete": true
+  },
+  "structural_review": {
+    "targets": "100/100",
+    "unique_expression_ids": "100/100",
+    "exact_four_examples": "100/100",
+    "examples_de_unique": "400/400",
+    "examples_fa_unique": "400/400",
+    "examples_en_unique": "400/400",
+    "required_core_fields_present": "100/100",
+    "source_surface_present": "100/100",
+    "source_surface_equal_canonical": "97/100 (three pre-existing documented source repairs at positions 1705, 1741, 1763)",
+    "structure_pattern_equals_canonical": "100/100",
+    "script_sanity": "PASS"
+  },
+  "source_canonical_identity_review": {
+    "source_surface_equal_canonical": 97,
+    "expected_split_surface_mismatches": 0,
+    "preexisting_repaired_source_mismatches": [
+      {
+        "position": 1705,
+        "source_repair_id": "nvv-source-repair-01695"
+      },
+      {
+        "position": 1741,
+        "source_repair_id": "nvv-source-repair-01731"
+      },
+      {
+        "position": 1763,
+        "source_repair_id": "nvv-source-repair-01753"
+      }
+    ],
+    "new_identity_findings": 0,
+    "new_source_repair_findings": 0,
+    "source_repair_positions": []
+  },
+  "invariants": {
+    "core_sha256_before": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "core_sha256_after": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+    "baseline_unchanged": true,
+    "source_surfaces_unchanged": true,
+    "identity_set_unchanged": true,
+    "canonical_forms_unchanged": true,
+    "structures_unchanged": true
+  },
+  "cumulative_after_shard": {
+    "positions_completed": 1800,
+    "positions_remaining": 692,
+    "confirmed_finding_targets": 190,
+    "blocker_findings": 0,
+    "major_findings": 84,
+    "minor_findings": 106,
+    "content_edits_applied": 0
+  },
+  "next_action": "Continue the frozen-baseline comprehensive audit at positions 1801-1900. Do not repair any logged finding until all 2492 targets have been audited."
+}

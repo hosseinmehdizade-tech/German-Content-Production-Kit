@@ -196,7 +196,7 @@
       }
     },
     "nomen_verb_verbindungen": {
-      "status": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__POS1_2400_REVIEWED_FINDINGS_LOGGED",
+      "status": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__FULL2492_REVIEWED_FINDINGS_LOGGED",
       "domain": "vocabulary",
       "branch": "nvv-production",
       "checkpoint": "Workspaces/nomen-verb-verbindungen/CHECKPOINT.json",
@@ -218,7 +218,7 @@
       },
       "historical_state_preserved": true,
       "old_n0_recovery_blocker": "SUPERSEDED_BY_EXPLICIT_USER_CLEAN_RESTART",
-      "next_action": "Continue the user-approved Stage4 Final Comprehensive Audit on the immutable post-S9 core at positions 2401-2492 (final shard of 92 targets). Use the fixed all-dimension rubric. Log confirmed findings only; do not repair learner content until the full audit reaches 2492/2492.",
+      "next_action": "Phase A full audit is complete. Begin the user-approved Phase B bounded batch repair of all 333 confirmed findings against the frozen S9 baseline; do not change source identity or frozen audit evidence.",
       "autorun": {
         "status": "ACTIVE_RESILIENT_V3_4_0",
         "mission_file": "Workspaces/nomen-verb-verbindungen/NVV-AUTORUN-MASTER-MISSION-v3.md",
@@ -246,20 +246,20 @@
           "library_binary_sync": "PENDING_CONTAINER_SESSION_UNAVAILABLE",
           "live_chatgpt_chrome": "PENDING_USER_CHROME"
         },
-        "current_operation": "FINAL_COMPREHENSIVE_AUDIT_NO_EDITS",
+        "current_operation": "FINAL_COMPREHENSIVE_AUDIT_PHASE_A_COMPLETE__PHASE_B_READY",
         "final_audit_protocol": "Workspaces/nomen-verb-verbindungen/NVV-FINAL-AUDIT-CONVERGENCE-PROTOCOL-v1.md"
       },
-      "last_observed_stage": "Stage4 Final Comprehensive Audit — frozen post-S9 baseline — shard FA-0024 positions 2301-2400",
-      "last_observed_note": "Positions 2301-2400 were audited on the unchanged frozen S9 core. Eighteen confirmed finding targets were logged (13 major, 5 minor); cumulative coverage is 2400/2492 with 312 confirmed findings. No learner content was edited.",
+      "last_observed_stage": "Stage4 Final Comprehensive Audit — frozen post-S9 baseline — shard FA-0025 positions 2401-2492 — Phase A complete",
+      "last_observed_note": "Final comprehensive audit coverage is 2492/2492. Cumulative confirmed findings: 333 = 191 major + 142 minor + 0 blocker. No learner content was edited during Phase A.",
       "latest_portable_checkpoint": {
-        "filename": "NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0024-POS2301-2400-FINDINGS-CHECKPOINT.zip",
-        "sha256": "153caed6d55e0f4da2b30b7b8738f9175ef5e5703c0e34138211329e2172d5b8",
-        "size_bytes": 2114061,
+        "filename": "NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0025-POS2401-2492-FINDINGS-CHECKPOINT.zip",
+        "sha256": "a3c82a9e6b958288c3f870ddd66f17b9934537a6bffab0af1458b37c2e6e9b33",
+        "size_bytes": 2122937,
         "successor_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0024-POS2301-2400-FINDINGS-CHECKPOINT.zip",
-        "library_file_id": "file_00000000def081f48a1ed430300bc8aa",
-        "library_stable_id": "libfile_bc966460eaf8819180bd806a8885926a",
-        "status": "PASS_LIBRARY_UPLOAD"
+        "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-Stage4-FinalComprehensiveAudit-FROZEN-S9-Shard0025-POS2401-2492-FINDINGS-CHECKPOINT.zip",
+        "library_file_id": "file_00000000fc8c81f48918ba84a4278169",
+        "library_stable_id": "libfile_ece29add65248191a490deaa20177928",
+        "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "stage2": {
         "status": "PASS_REPAIRED_SUCCESSOR_R14",
@@ -294,12 +294,12 @@
         "not_applicable_cells": 2492
       },
       "stage4": {
-        "status": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__POS1_2400_REVIEWED_FINDINGS_LOGGED",
+        "status": "STAGE4_FINAL_COMPREHENSIVE_AUDIT_FROZEN_S9__FULL2492_REVIEWED_FINDINGS_LOGGED",
         "rounds_completed": 6,
         "clean_streak": 0,
         "blocker_findings": 2,
         "major_finding_categories": 6,
-        "next": "Continue the user-approved Stage4 Final Comprehensive Audit on the immutable post-S9 core at positions 2401-2492 (final shard of 92 targets). Use the fixed all-dimension rubric. Log confirmed findings only; do not repair learner content until the full audit reaches 2492/2492.",
+        "next": "Phase A full audit is complete. Begin the user-approved Phase B bounded batch repair of all 333 confirmed findings against the frozen S9 baseline; do not change source identity or frozen audit evidence.",
         "repair_progress": {
           "structure36": "PASS_DELTA_READY",
           "example_layer": "COMPLETE_2492_OF_2492_R5_CUMULATIVE_QA_PASS",
@@ -1328,18 +1328,34 @@
         },
         "legacy_two_consecutive_clean_pass_rule": "SUPERSEDED_FOR_SCOPED_FINAL_CONVERGENCE_BY_MEM-NVV-003",
         "final_comprehensive_audit": {
-          "status": "IN_PROGRESS_FROZEN_BASELINE_NO_EDITS",
-          "positions_completed": 2400,
-          "positions_remaining": 92,
-          "confirmed_finding_targets": 312,
+          "status": "COMPLETE_2492_OF_2492_FINDINGS_LOGGED__PHASE_B_READY",
+          "positions_completed": 2492,
+          "positions_remaining": 0,
+          "confirmed_finding_targets": 333,
           "blocker_findings": 0,
-          "major_findings": 173,
-          "minor_findings": 139,
+          "major_findings": 191,
+          "minor_findings": 142,
           "content_edits_applied": 0,
-          "latest_shard": "FA-0024",
-          "latest_shard_positions": "2301-2400",
-          "next_position": 2401,
-          "frozen_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153"
+          "latest_shard": "FA-0025",
+          "latest_shard_positions": "2401-2492",
+          "next_position": null,
+          "frozen_core_sha256": "1ccc2e98906eee23f3aea313e4f3a48fbf182c7677a97b20dbfa3d9d4a5f7153",
+          "targets_total": 2492,
+          "shards_completed": 25,
+          "latest_shard_report": "PORTABLE_ARTIFACT:Reports/STAGE4-FINAL-COMPREHENSIVE-AUDIT-SHARD0025-POS2401-2492-FINDINGS.json",
+          "batch_repair_gate": "OPEN_AFTER_2492_OF_2492_AUDITED",
+          "phase_a_status": "COMPLETE_2492_OF_2492",
+          "phase_b_ready": true,
+          "cumulative_shards": [
+            {
+              "id": "FA-0025",
+              "positions": "2401-2492",
+              "confirmed_targets": 21,
+              "blocker": 0,
+              "major": 18,
+              "minor": 3
+            }
+          ]
         }
       },
       "latest_structure_repair_delta": {
@@ -1350,9 +1366,9 @@
         "status": "PASS_LIBRARY_REMATERIALIZATION_EXACT"
       },
       "persistence": {
-        "latest_binary_library_sync": "PASS_UPLOAD",
+        "latest_binary_library_sync": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "latest_git_metadata": "SYNCED",
-        "latest_local_artifact_sha256": "153caed6d55e0f4da2b30b7b8738f9175ef5e5703c0e34138211329e2172d5b8",
+        "latest_local_artifact_sha256": "a3c82a9e6b958288c3f870ddd66f17b9934537a6bffab0af1458b37c2e6e9b33",
         "git": "IN_SYNC",
         "latest_stage4_final_audit_checkpoint_commit": "533bb2eef7e599c9ce274507a3b46f41d8fd6d43",
         "latest_portable_checkpoint_library": "PASS_UPLOAD"

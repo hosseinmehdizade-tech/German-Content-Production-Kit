@@ -1,0 +1,69 @@
+{
+  "schema": "gcpk-content-output-delivery-policy@1.0.0",
+  "status": "ACTIVE",
+  "effective_date": "2026-10-08",
+  "decision_authority": "Explicit user request: user-facing uploaded ZIP should contain only the final content output; no Flashcards Pro app.",
+  "applies_to": [
+    "German-Content-Production-Kit",
+    "Menschen A1/A2/B1",
+    "Grammar",
+    "Vocabulary",
+    "Lesen",
+    "Schreiben",
+    "NVV",
+    "other content-only workstreams"
+  ],
+  "task_class": "USER_FACING_CONTENT_ONLY_DELIVERY",
+  "default_format": "ONE_ZIP_ONE_FINAL_OUTPUT_FILE",
+  "rules": {
+    "prefer_single_final_file": true,
+    "archive_members_count": 1,
+    "archive_root": "single deliverable file at the ZIP root; no enclosing directory",
+    "allowed_content_example": "Universal-v2 TSV for flashcard content imports",
+    "no_nesting": true,
+    "do_not_include": [
+      "Flashcards Pro runtime source or binaries",
+      "app launchers/installers",
+      "runtime folders",
+      "tests",
+      "QA reports",
+      "checkpoints",
+      "source mirrors",
+      "raw source archives",
+      "build tools",
+      "README/sidecars",
+      "another ZIP",
+      "duplicate copies of same output"
+    ],
+    "preserve_output_bytes": true,
+    "if_multiple_files_are_technically_essential": "Include only genuinely indispensable user-consumable output files; never omit required assets or split/degrade working import schema. State the exception explicitly in handoff.",
+    "do_not_fake_import_acceptance": true,
+    "user_override": "If the user expressly requests a full app release, full technical checkpoint, source/audit evidence bundle, or multiple artifacts, honor that scope rather than forcing a one-file archive."
+  },
+  "engineering_persistence": {
+    "retain_full_internal_source_and_qa_artifacts": true,
+    "support_artifacts_location": "Library/Project or a separate internal checkpoint; Git contains compact metadata/hashes",
+    "do_not_delete_historical_locked_artifacts": true,
+    "stage5_completeness_and_exact_runtime_gates_unchanged": true,
+    "packaging_preflight": [
+      "ZIP opens, CRC PASS",
+      "No forbidden app/runtime/support members",
+      "Exactly one root-level final output where self-contained",
+      "Extracted bytes SHA-256 equal verified content parent",
+      "IDs/structure and content counts remain unchanged",
+      "Persist full source/QA verification outside user-facing ZIP"
+    ]
+  },
+  "relation_to_app_release_contract": "Does not change German-Flashcards-Pro complete application release ZIP policy. The mandatory App+Content+Source+Tests+Reports+Docs+Tools release structure applies only when delivering a full app/runtime release, not content-only output.",
+  "precedent": {
+    "example_workstream": "Menschen-A1-L01",
+    "source_stage5_sha256": "e30b01fe9926f05bb486176f12bf5a63f49c04bdf83b7ed637d5eb0ce91f57d4",
+    "expected_single_output_name": "Menschen-A1-L01-UNIVERSAL-v2.tsv",
+    "expected_data_sha256": "d81dad0544d008dd9296a25d7713afc130065ee1430769c9eed6c066e40da1f9",
+    "minimal_zip_name": "Menschen-A1-L01-v3.3.6-FINAL-OUTPUT-ONLY.zip",
+    "minimal_zip_sha256": "c977ba950c0cc9da3aead604a3f1deb5e3a4975da11d3b2b9865a360e2bc6a73",
+    "bytes": 78527,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L01-v3.3.6-FINAL-OUTPUT-ONLY.zip",
+    "library_file_id": "libfile_1c7656a2b894819195098096b0548af5"
+  }
+}

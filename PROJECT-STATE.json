@@ -1850,15 +1850,15 @@
       "last_observed_note": "Stage 1 is durable PASS: 76 PDF pages classified into 68 source topics with stable IDs lesen-praes-0001..0068 and inventory QA PASS. Stage 2+ remain independent."
     },
     "menschen_a1a2b1_memrise": {
-      "status": "A1_L24_STAGE3C_CLOSURE_PASS_STAGE4_PENDING",
+      "status": "A1_L24_STAGE4_INDEPENDENT_AUDIT_FAIL_REPAIR_REQUIRED",
       "domain": "vocabulary",
       "branch": "main",
       "source_id": "menschen-a1a2b1-memrise-full-audio",
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L24 Stage3C Batch0007 closed 95/95 remaining; 1303/1303 final dispositions; L01-L23 locked lineage unchanged",
-      "last_observed_stage": "A1-L24 Stage3C Batch0007 CLOSURE / independent Stage4 pending",
+      "current_scope": "A1-L24 Stage4 independently audited; 22/22 structural PASS but 3 confirmed learner-layer blockers and 4 review risks",
+      "last_observed_stage": "A1-L24 Stage4 FAIL_REPAIR_REQUIRED",
       "last_observed_note": "12 targets 3037..3048 (nine ordinal adjectives, Was geschah am achten Januar?, Badesachen, Wegbeschreibung). 86 independently checked decisions; 1 RELATED edge to den Weg beschreiben, 1 interrogative expression parse, 9 ordinal morphology reviews. Matrix 850 VERIFIED_PRESENT + 358 CLOSED_NO_FORCE + 95 MISSING_ACTIONABLE across 1303 cells and 83 identities. Official v3.3.6 baseline and working candidate ledger PASS_PARTIAL only; Stage3C final closure and independent Stage4 NOT done. Package independently verified 189 Manifest SHA entries, 190 SHA256SUMS, 176 parent file exact-byte parity, 86 genuine matrix changes and 1 valid edge. Uploaded Library and re-materialized exact bytes/SHA. Source archive identity and earlier locked L01-L23 unchanged.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
@@ -1884,7 +1884,7 @@
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
       "lock_state": "A1-L01_TO_A1-L23_LOCKED",
-      "next_scope": "A1-L24 Stage4 independently re-audit language, source/spelling/naturalness, zero-verification synonym/antonym exceptions, 7 editorial risks; no Stage5 before PASS",
+      "next_scope": "Stage4 Repair1: fix L24-S4-B001/B002/B003 and independently adjudicate R004–R007. Preserve source, stable IDs, and historical LOCKED L01–L23. Stage5 blocked.",
       "latest_stage12_checkpoint": {
         "scope": "A1-L24",
         "status": "PASS_GIT_METADATA_SYNCED",
@@ -1964,72 +1964,25 @@
         "next_action": "Stage4 Linguistic & Lexical QA"
       },
       "latest_stage4_checkpoint": {
-        "state": "PASS_WITH_FRAMEWORK_TEST_HARNESS_ADVISORY",
-        "scope": "A1-L22",
-        "framework": "v3.3.6",
-        "independent_reaudit": true,
-        "lesson_identities": 101,
-        "new_targets": 99,
-        "reused_targets": [
-          "ma1m-lu-2611",
-          "ma1m-lu-2612"
-        ],
-        "lexemes": 54,
-        "senses": 54,
-        "expressions": 47,
-        "examples": 404,
-        "relations": 67,
-        "lexical_kombinationen": {
-          "reviewed_identities": 101,
-          "accepted_items": 279
-        },
-        "completeness": {
-          "dimension_cells": 1704,
-          "verified_present_cells": 1009,
-          "closed_no_force_cells": 695,
-          "unresolved_cells": 0
-        },
-        "custom_qa": "38/38 PASS",
-        "official_source_occurrence": "PASS_81_OCCURRENCES",
-        "official_identity_closure": "PASS_101_ACTIVE_IDS",
-        "official_completeness": "PASS_101_TARGETS_1704_CELLS_0_UNRESOLVED",
-        "official_candidate_ledger": "PASS_166_CANDIDATES_NO_DEFERRED",
-        "official_profile": "PASS_V1_1",
-        "official_bundle_validator": "PASS_101_TARGETS_EXACT4_0_WARNINGS",
-        "reference_registry": "PASS",
-        "reference_availability": "PASS",
-        "current_framework_tests": "10/10 PASS",
-        "framework_test_harness_advisory": {
-          "code": "PINNED_V336_LEGACY_TEST_ACTIVE_POINTER_DRIFT",
-          "blocking": false,
-          "detail": "Fresh historical test groups in the exact pinned v3.3.6 authority contain stale assertions expecting START-PROMPT-v3.3.5.md while ACTIVE-PROMPT correctly points to START-PROMPT-v3.3.6.md. This does not fail L22 content validators; do not claim a fresh 84/84 full-suite run."
-        },
-        "repairs": {
-          "locked_reuse_integration": 2,
-          "lexical_kombinationen_overlay_materialization_targets": 101,
-          "lexical_kombinationen_items": 279,
-          "expression_type_profile_normalization": 11,
-          "relation_value_target_type_normalization": 8,
-          "optional_domain_empty_collections": 3,
-          "linguistic_source_vs_learner_normalization": 1,
-          "canonical_binding_refreshes": 3
-        },
-        "linguistic_repair": "ma1m-lu-2796 learner-facing 'das genaue Gegenteil' -> 'genau das Gegenteil'; raw source/provenance preserved.",
-        "canonical_sha256": "15a5b48a8f6c9631102bc220d8291ea88a5a522587343217a08d13e5d5f84f4c",
-        "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
+        "status": "FAIL_REPAIR_REQUIRED",
+        "quality_state": "STRUCTURAL_PASS_LINGUISTIC_FAIL",
+        "scope": "A1-L24",
         "artifact": {
-          "filename": "Menschen-A1-L22-v3.3.6-Stage4-CHECKPOINT.zip",
-          "sha256": "3171b200788b9156b74756ee1750704c81a0eb203d0807c1f9a493e695560e9d",
-          "size_bytes": 732527,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-Stage4-CHECKPOINT.zip",
-          "library_file_id": "file_0000000010308246a657d25e3cf198e2",
-          "library_stable_id": "libfile_95bc982010888191bc77d8b5e7086b19",
-          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-          "prevention_checkpoint_preflight": "PASS",
-          "prevention_package_preflight": "PASS",
-          "zip_crc": "PASS"
+          "filename": "Menschen-A1-L24-v3.3.6-Stage4-INDEPENDENT-AUDIT-REPAIR-REQUIRED.zip",
+          "sha256": "50db12234761f077f6bd6b15da4c7edb0f281e1f3e24c9e4530ab9a2ee7707ba",
+          "size_bytes": 749043,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-INDEPENDENT-AUDIT-REPAIR-REQUIRED.zip",
+          "library_file_id": "file_00000000aec882439270d7cabf8ccfc5",
+          "library_stable_id": "libfile_f7a3c9a62fac819196189f67f6c1e262",
+          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         },
-        "next_action": "A1-L22 Stage5 — Delivery Projection under v3.3.6 neutral de-vocabulary envelope; use build_clean_delivery_v3_3_6 anti-bypass and preserve runtime binding RESOLVE_CURRENT_AT_STAGE6."
+        "independent_checks": "22/22 PASS",
+        "official_validators": "4/4 PASS",
+        "findings": {
+          "BLOCKER": 3,
+          "REVIEW_REQUIRED": 4
+        },
+        "stage5_allowed": false
       },
       "latest_stage5": {
         "state": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -4392,12 +4345,12 @@
       },
       "resume_instruction": "A1-L23 Stage4 independent linguistic/lexical/provenance re-audit of the exact Stage3C state; recompute applicability and challenge source IDs, relation endpoints/duplicates, expression structure, no-force decisions, fingerprints and linguistic quality without trusting Stage3 self-report.",
       "latest_portable_checkpoint": {
-        "filename": "Menschen-A1-L24-v3.3.6-Stage3C-Batch0007-CHECKPOINT.zip",
-        "sha256": "232c4864b9080ba8d30d41b904cb0475e601f6f6ff1080dc35808547bd965008",
-        "size_bytes": 808493,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage3C-Batch0007-CHECKPOINT.zip",
-        "library_file_id": "file_00000000dad88243af331a83d698cfbe",
-        "library_stable_id": "libfile_c935e689f5388191957ac1450a8e2b9e",
+        "filename": "Menschen-A1-L24-v3.3.6-Stage4-INDEPENDENT-AUDIT-REPAIR-REQUIRED.zip",
+        "sha256": "50db12234761f077f6bd6b15da4c7edb0f281e1f3e24c9e4530ab9a2ee7707ba",
+        "size_bytes": 749043,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-INDEPENDENT-AUDIT-REPAIR-REQUIRED.zip",
+        "library_file_id": "file_00000000aec882439270d7cabf8ccfc5",
+        "library_stable_id": "libfile_f7a3c9a62fac819196189f67f6c1e262",
         "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "git_metadata_sync_commit": "c8663e84114f48792ed57b41c85b264857c8e8b1",
@@ -10018,19 +9971,20 @@
   },
   "menschen_a1_l24_current": {
     "framework": "v3.3.6",
-    "status": "A1_L24_STAGE3C_CLOSURE_PASS_STAGE4_PENDING",
+    "status": "A1_L24_STAGE4_INDEPENDENT_AUDIT_FAIL_REPAIR_REQUIRED",
     "scope": "A1-L24",
     "workstream_checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
     "latest_portable_checkpoint": {
-      "filename": "Menschen-A1-L24-v3.3.6-Stage3C-Batch0007-CHECKPOINT.zip",
-      "sha256": "232c4864b9080ba8d30d41b904cb0475e601f6f6ff1080dc35808547bd965008",
-      "size_bytes": 808493,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage3C-Batch0007-CHECKPOINT.zip",
-      "library_file_id": "file_00000000dad88243af331a83d698cfbe",
-      "library_stable_id": "libfile_c935e689f5388191957ac1450a8e2b9e",
+      "filename": "Menschen-A1-L24-v3.3.6-Stage4-INDEPENDENT-AUDIT-REPAIR-REQUIRED.zip",
+      "sha256": "50db12234761f077f6bd6b15da4c7edb0f281e1f3e24c9e4530ab9a2ee7707ba",
+      "size_bytes": 749043,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-INDEPENDENT-AUDIT-REPAIR-REQUIRED.zip",
+      "library_file_id": "file_00000000aec882439270d7cabf8ccfc5",
+      "library_stable_id": "libfile_f7a3c9a62fac819196189f67f6c1e262",
       "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "stage4": "NOT_STARTED",
-    "next_action": "A1-L24 Stage4 independently re-audit language, source/spelling/naturalness, zero-verification synonym/antonym exceptions, 7 editorial risks; no Stage5 before PASS"
+    "stage3c_status": "PASS_DISPOSITION_CLOSED",
+    "stage4": "FAIL_REPAIR_REQUIRED",
+    "next_action": "Stage4 Repair1: fix L24-S4-B001/B002/B003 and independently adjudicate R004–R007. Preserve source, stable IDs, and historical LOCKED L01–L23. Stage5 blocked."
   }
 }

@@ -1,0 +1,70 @@
+{
+  "schema": "menschen-a1-l01-v336-stage6-r8-l08-historical-collision-review@1.0.0",
+  "as_of": "2026-10-08",
+  "lesson": "A1-L01",
+  "scope": "Close only the uncertainty about historical A1-L08 canonical ID overlap, without claiming new runtime acceptance.",
+  "status": "PASS_INDIRECT_HISTORICAL_IDENTITY_EVIDENCE__L08_RAW_LOCKED_ZIP_UNAVAILABLE",
+  "sources": {
+    "direct_l08_postpackage_verification": {
+      "filename": "Menschen-A1-L08-v3.3.2-GFP-v417-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000cba881f486045df8b2dc4dc6",
+      "referenced_release": "Menschen-A1-L08-v3.3.2-GFP-v417-LOCKED.zip",
+      "referenced_release_sha256": "080f582691b1db88c11570dd745e650c620f79836f566950ebdc1ba8922ed7d0",
+      "file_dataset_sha256": "63243e05ca45dc3a2bbec12e8de1803ff5542863877f92bf8c8dc21dc1a34f89",
+      "reported_cards": 104,
+      "reported_new_ids": 103,
+      "reported_reused_ids": 1,
+      "reported_intentional_reuse": "Uhr shared between A1-L05 and A1-L08",
+      "reported_cumulative": "745 distinct cards across A1-L01..A1-L08, zero accidental identity collisions",
+      "caveat": "Source report states a runtime environment boundary. This turn did not re-run the raw L08 ZIP."
+    },
+    "library_backup_2026_10_06": {
+      "filename": "flashcards-pro-full-backup-2026-10-06-0136.json",
+      "file_id": "file_000000007e788210b6ac22b5863fc873",
+      "scanned_method": "read/find only; unmaterializable 75MB source. 10 distinct observed A1-L08 verb IDs in two duplicate-containing text regions.",
+      "l08_observed_ids": [
+        "ma1m-lu-0706",
+        "ma1m-lu-0707",
+        "ma1m-lu-0710",
+        "ma1m-lu-0711",
+        "ma1m-lu-0727",
+        "ma1m-lu-0728",
+        "ma1m-lu-0729",
+        "ma1m-lu-0741",
+        "ma1m-lu-0742",
+        "ma1m-lu-0743"
+      ],
+      "overlap_with_new_l01_of_observed_ids": 0,
+      "caveat": "Only 10 observable verb IDs, NOT a 104/104 reconstruction of L08."
+    },
+    "l01_stage5_r1": {
+      "filename": "Menschen-A1-L01-v3.3.6-Stage5-R1-CUMULATIVE-LINEAGE-SAFE-TRANSPORT-VALIDATED.zip",
+      "sha256": "e30b01fe9926f05bb486176f12bf5a63f49c04bdf83b7ed637d5eb0ce91f57d4",
+      "stable_cards": 118,
+      "contains_headword_uhr": false,
+      "archive_crc": "PASS"
+    },
+    "stage6_r7_kit": {
+      "filename": "Menschen-A1-L01-v3.3.6-Stage6-R7-WINDOWS-CUMULATIVE-SAFE-ACCEPTANCE-KIT.zip",
+      "sha256": "294022d03d796378b5bc654cb596a96d3d76865dd8d7182aa08ab46b61941bf7",
+      "archive_crc": "PASS",
+      "currently_recommended_windows_test_kit": true
+    }
+  },
+  "revised_assessment": {
+    "old_gap": "A1-L08 historical locked ZIP cannot be materialized; direct collision unknown.",
+    "new_evidence": "Official L08 postpackage report explicitly identifies a single reuse with A1-L05 (Uhr), not A1-L01; the available subset of L08 verb IDs from backup also has no L01 overlap.",
+    "conclusion": "No reported historical L01-L08 ID conflict. The source-level gap is reduced but not closed by an independent exact-byte 104-card L08 audit.",
+    "full_l01_l23_live_cumulative_transactional_import": "NOT_RUN",
+    "original_l08_binary_recovered": false
+  },
+  "gates": {
+    "stage5": "R1_TRANSPORT_VALIDATED",
+    "stage6": "R7_STATIC_AND_SYNTHETIC_PASS__REAL_CHROME_DISK_PERSISTENCE_PENDING",
+    "stage7": "NOT_STARTED",
+    "live_user_profile_test": "NOT_RUN",
+    "user_action_needed": "Run R7 Windows isolated test kit and upload the two JSON reports for commit/reopen validation."
+  },
+  "policy": "No historical LOCKED original, app release, or user profile data mutated.",
+  "next_action": "Do not create more test versions without new evidence. Wait for real Windows R7 reports; verify independent Chrome profile, exact app/ZIP authority, persisted generation and data on cold reopen. Then decide Stage6 and Stage7."
+}

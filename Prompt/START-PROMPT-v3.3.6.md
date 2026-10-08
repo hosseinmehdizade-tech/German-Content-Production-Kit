@@ -29,3 +29,12 @@ For every lexical target, read and apply:
 `Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md` and resolve current-workstream adoption from `Prompt/LEXICAL-KOMBINATIONEN-ADOPTION-MATRIX-v1.0.0.json`.
 
 This overlay is ACTIVE for verbs, nouns, adjectives, adverbs and lexical expressions in new work and active workstreams at the next safe enrichment/QA boundary. It requires at most one learner-visible `Kombinationen` section, preserves backend typing/provenance, permits reviewed curated lexical combinations, forbids false source claims and density-forced fabrication, allows `CLOSED_NO_FORCE`, and leaves historical LOCKED artifacts immutable.
+
+## Mandatory vocabulary delivery / output contract
+
+For EVERY user-facing lexical/vocabulary content production handoff (Menschen lessons, verbs, nouns, expressions, NVV lexical decks, or future word card outputs), enforce `CONTENT-OUTPUT-DELIVERY-POLICY.json` v2.0.0 before packaging:
+- Deliver ONE organized complete **vocabulary content-production ZIP** containing the import-ready final output **plus** canonical/working data, source/provenance mappings, enrichment/disposition ledgers, QA/tests, reports, portable checkpoint/manifest and content-only tools/docs needed for updates and future repair.
+- **Exclude the Flashcards Pro app, app runtime, UI assets, installers and app launchers.** App/runtime release ZIPs are separate and unchanged.
+- Do **NOT** simplify the vocabulary delivery to one TSV, do **NOT** silently omit the editable/source/QA lineage, and do **NOT** confuse import-only output with a complete portable production handoff.
+- Preserve the exact approved content bytes and stable IDs; full-source licensing/size exceptions require explicit hash/locator/dependency accounting. Stage 6 real-browser import status must remain honest.
+- User overrides apply only when they explicitly ask for an import-only file, whole-app release, or alternate scope. Nonlexical content delivery follows its own policies.

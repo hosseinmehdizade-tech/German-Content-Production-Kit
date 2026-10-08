@@ -22,7 +22,7 @@ Never silently downgrade a newer verified artifact because GitHub is older.
 8. Resolve **CURRENT** and **LAST_FULLY_VERIFIED** separately. Target CURRENT for new integration/development even if it has blockers; LAST_FULLY_VERIFIED is regression/fallback evidence only.
 9. Materialize the CURRENT portable app artifact and verify SHA-256 before final runtime/import/UI/browser/offline/package acceptance.
 10. If CURRENT artifact cannot be materialized or final acceptance is blocked, mark acceptance BLOCKED but **do not retarget integration to an older LAST_FULLY_VERIFIED runtime**.
-11. For any user-facing content-only ZIP, read and enforce `CONTENT-OUTPUT-DELIVERY-POLICY.json` (default: one final output file only; no app or QA/support files).
+11. **Mandatory vocabulary output/handoff:** for all new vocabulary/lexical workstreams and lessons, read and enforce `CONTENT-OUTPUT-DELIVERY-POLICY.json` v2.0.0. Deliver ONE organized **complete content-production ZIP** retaining final import-ready data **and** canonical/source/provenance/enrichment/QA/tests/reports/checkpoints/docs/content tools needed for future maintenance. **Never bundle the Flashcards Pro app/runtime.** The previous one-TSV-only simplification is superseded. Nonlexical workstreams retain their own delivery contracts; full app releases retain their separate organized app release contract.
 
 ## 3. Artifact-first, async Git
 `PROJECT-OPERATING-MODE-v2.md` is active. GitHub is a durability/coordination mirror, not the binary transport or critical path. Large portable checkpoint/release bundles live in Project/Library/user-delivery surfaces; Git stores compact source identities, hashes, contracts, checkpoint summaries and sync metadata. Track quality state separately from Git persistence.

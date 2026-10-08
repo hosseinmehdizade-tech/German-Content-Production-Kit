@@ -1,0 +1,69 @@
+{
+  "schema": "menschen-a1-l01-stage6-r5-windows-kit-hardened-checkpoint@1.0.0",
+  "lesson": "A1-L01",
+  "created_at": "2026-10-08",
+  "framework": "v3.3.6",
+  "previous_stage6_checkpoint": "A1-L01-V336-STAGE6-R4-REAL-ORIGIN-WINDOWS-ACCEPTANCE-KIT.json",
+  "milestone": "R5_LAUNCH_INTEGRITY_AND_SERVER_IDENTITY_HARDENING",
+  "status": "STATIC_QA_PASS__WINDOWS_REAL_ORIGIN_IMPORT_AND_PERSISTENCE_NOT_RUN",
+  "defects_fixed": [
+    {
+      "r4": "Launcher trusted ANY listener on port 47868",
+      "r5": "Launcher verifies exact /__stage6_health kit identity before opening Chrome; unexpected listener blocks navigation"
+    },
+    {
+      "r4": "No independent file-integrity check at launch",
+      "r5": "PowerShell preflight validates SHA256SUMS.txt for every 85 tracked files before starting Chrome"
+    },
+    {
+      "r4": "Chrome process enumerator suppressed errors, potentially misclassifying a failed query as all browser processes closed",
+      "r5": "Enumeration failure now fails closed and blocks the restart acceptance"
+    },
+    {
+      "r5": "Chrome test profile explicitly launches with --disable-sync for further isolation"
+    }
+  ],
+  "test_results": {
+    "zip_crc": "PASS",
+    "all_manifest_entries": "85/85 PASS",
+    "file_modification_negative_test": "PASS",
+    "file_deletion_negative_test": "PASS",
+    "original_source_app_and_content_files": "77/77 BYTE IDENTICAL TO R4",
+    "original_stage5_content_sha256": "41a2a3d9b647ae58ae2e421bf384eb11950463655e3a6da0f0d75c1c778628d6",
+    "original_v468_app_sha256": "2b5bc910e7ce07cf923d8949cf55e7788000c4938abfaa6e7591bcc0bf2ff1bf",
+    "launcher_precheck_order": "PASS_STATIC",
+    "local_port_health_id": "L01-R5-V468-3CED6C3E56CE3E520A65F8F6",
+    "local_server_binding": "127.0.0.1 only",
+    "node_check_acceptance_js": "PASS",
+    "win32_powershell_execution": "NOT_RUN",
+    "real_chrome_data_persistence": "NOT_RUN",
+    "current_user_profile": "NOT_TOUCHED",
+    "stage6_final": "PENDING",
+    "stage7_final": "NOT_STARTED"
+  },
+  "packaging": {
+    "file": "Menschen-A1-L01-v3.3.6-Stage6-R5-WINDOWS-ACCEPTANCE-KIT-VERIFIED-LAUNCHER.zip",
+    "zip_sha256": "5ff11c5806945a7d3592f7a486792699908d5b8cfe02df9d58b66113881e60f4",
+    "byte_size": 2278115,
+    "members": 86,
+    "sha256_manifest_entries": 85,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L01-v3.3.6-Stage6-R5-WINDOWS-ACCEPTANCE-KIT-VERIFIED-LAUNCHER.zip",
+    "library_file_id": "libfile_6cb96ce008a4819194e00b304641f24e",
+    "library_persistence": "PASS",
+    "replaces_old_r4_kit_for_user_testing": true
+  },
+  "test_steps": [
+    "Inspect and extract R5 ZIP, then run 01-START-IMPORT.cmd in ordinary Windows user context",
+    "At the isolated Chrome page, click first Import button; download complete JSON report",
+    "Fully close isolated test Chrome, keep the local test server running",
+    "Run 02-VERIFY-AFTER-CHROME-RESTART.cmd; verify stable generation and 118/47/168/71 targets; download second JSON report",
+    "Submit both JSON reports for evidence evaluation; do NOT claim Stage6 PASS before successful cold persistence"
+  ],
+  "caveats": [
+    "The bundled Windows PowerShell and CMD launch scripts have not been executed on Windows by the model.",
+    "Managed Chromium in the assistant environment blocks real-origin navigation; no policy was bypassed.",
+    "The test uses a separate profile and loopback server; it is not equivalent to import acceptance in the user's normal app origin.",
+    "v468 is a standalone test candidate, not CURRENT/LOCKED; historical releases remain immutable."
+  ],
+  "next_action": "Wait for the two Windows Chrome reports; check genuine restart generation matching, full content counts and no errors. Do not relock content until Stage6 and Stage7 live-runtime gates pass."
+}

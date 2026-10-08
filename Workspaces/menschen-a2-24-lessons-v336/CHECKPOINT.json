@@ -3,7 +3,7 @@
   "workstream": "menschen-a2-24-lessons-v336",
   "scope": "A2-L01-of-24",
   "framework": "v3.3.6",
-  "status": "PASS_STAGE2A_SOURCE_MAPPING__STAGE2B_IDENTITY_CLOSURE_PENDING",
+  "status": "PASS_STAGE2B_IDENTITY_CLOSURE__STAGE3A_PENDING",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -19,13 +19,14 @@
     "source_examples_and_persian": "RAW_NOT_LINGUISTICALLY_APPROVED"
   },
   "portable_checkpoint": {
-    "filename": "Menschen-A2-L01-v3.3.6-Stage2A-MAPPED-CHECKPOINT.zip",
-    "sha256": "60fee89c3bef269649e2567cbea030018bf890372df27d9ac06d96000f83d0ea",
-    "size_bytes": 30321,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage2A-MAPPED-CHECKPOINT.zip",
-    "library_file_id": "libfile_bf5512bbf70c81919996f9ca150670ca",
-    "library_upload": "SUCCEEDED",
-    "exact_rematerialization": "PASS_SHA256_AND_BYTE_COMPARE"
+    "filename": "Menschen-A2-L01-v3.3.6-Stage2B-IDENTITY-CLOSURE-CHECKPOINT.zip",
+    "sha256": "a6fc9c37c18b4a8c1fc1229efb3d064fe1fb8a2e2b455fc137be1b1dc03622d5",
+    "size_bytes": 108524,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage2B-IDENTITY-CLOSURE-CHECKPOINT.zip",
+    "library_file_id": "libfile_fadbdde470588191a949097b7099a76b",
+    "library_upload": "PASS",
+    "exact_rematerialization": "PASS_SHA256_AND_BYTE_COMPARE",
+    "members": 26
   },
   "separation": {
     "menschen_a1_l01_to_l24": "UNCHANGED",
@@ -40,8 +41,8 @@
     "6": "NOT_STARTED",
     "7": "NOT_STARTED",
     "2A": "PASS_PRECANONICAL_CANDIDATES",
-    "2B": "PENDING_HISTORICAL_IDENTITY_CLOSURE",
-    "3A": "NOT_STARTED",
+    "2B": "PASS_IDENTITY_CLOSED",
+    "3A": "NEXT_NOT_STARTED",
     "3B": "NOT_STARTED",
     "3C": "NOT_STARTED"
   },
@@ -51,9 +52,9 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP",
-  "next_action": "Stage2B: construct or retrieve complete historical A1 canonical index (3059 IDs), resolve exact reuse vs new/sense merges against 88 A2 L01 source occurrences, use separate A2 Verben only as reference, then assign stable A2 IDs and generate identity closure evidence; only afterward Stage3.",
+  "next_action": "Stage3A A2-L01 baseline richness and linguistic review for 75 units (71 new + 4 referenced A1), then Stage3B gap-driven enrichment and Stage3C zero-unresolved final disposition; retain original 88 source rows and A1 immutable identities. No final card/import claims yet.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
-  "stage": "Stage2A",
+  "stage": "Stage2B",
   "stage1_portable_checkpoint": {
     "filename": "Menschen-A2-L01-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
     "sha256": "d5c61390452b7bff2e8833f36a507390835058886e519deb887aa6f997a21e0c",
@@ -66,7 +67,7 @@
     "verified_library_sha256": "d5c61390452b7bff2e8833f36a507390835058886e519deb887aa6f997a21e0c"
   },
   "stage2a": {
-    "status": "PASS_PRE_CANONICAL_MAPPING_ONLY",
+    "status": "PASS_PRE_CANONICAL_MAPPING_SUPERSEDED_BY_STAGE2B",
     "source_rows_mapped": 88,
     "identity_head_occurrences": 105,
     "editorial_risk_rows": 17,
@@ -76,5 +77,30 @@
     "assigned_stable_IDs": 0,
     "qa": "PASS_14_OF_14_SHA256_POST_EXTRACT"
   },
-  "quality_boundary": "Stage2A structural source mapping PASS; Stage2B cross-lesson canonical reuse and sense closure PENDING; no Stage3/Stage5/Stage6/FINAL claim."
+  "quality_boundary": "STAGE2B_IDENTITY_ONLY_PASS__NOT_STAGE3_LINGUISTIC_QA_OR_STAGE6_RUNTIME_OR_FINAL_RELEASE",
+  "stage2b": {
+    "status": "PASS_IDENTITY_CLOSURE_WITH_STAGE3_SEMANTIC_BOUNDARY",
+    "source_rows_mapped": 88,
+    "source_to_canonical_bindings": 96,
+    "historical_a1_canonical_count": 3059,
+    "historical_a1_id_range": "ma1m-lu-0001..ma1m-lu-3059",
+    "historical_a1_l01_authority": "2026-10-08 v3.3.6 SOURCE_AUDITED_SUCCESSOR_IDENTITY_SET_UNCHANGED",
+    "archived_a1_l02_l23_original_authorities_verified": true,
+    "archived_a1_l24_production_candidate_verified": true,
+    "stable_canonical_identities": 75,
+    "new_a2_targets": 71,
+    "new_a2_ids": "ma2m-lu-0001..ma2m-lu-0071",
+    "reused_a1_targets": 4,
+    "reused_ids": [
+      "ma1m-lu-0264",
+      "ma1m-lu-0267",
+      "ma1m-lu-1241",
+      "ma1m-lu-2786"
+    ],
+    "source_audio_refs": "88/88 preserved",
+    "identity_unresolved": 0,
+    "semantic_enrichment": "NOT_STARTED_STAGE3",
+    "qa": "PASS_SELF_CHECK_25/25_SOURCE_PARITY_88/88_FRESH_EXTRACT_NEGATIVE_TAMPER",
+    "no_content_or_runtime_mutation": true
+  }
 }

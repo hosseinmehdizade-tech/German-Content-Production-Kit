@@ -1,0 +1,52 @@
+{
+  "schema": "menschen-a1-l01-r7-independent-static-preflight@1.0.0",
+  "date": "2026-10-08",
+  "milestone": "Independent Stage5-R1 & Stage6-R7 static preflight",
+  "quality_state": "PASS_STATIC_25_OF_25__RUNTIME_BROWSER_NOT_VERIFIED",
+  "package": {
+    "stage5_r1": {
+      "filename": "Menschen-A1-L01-v3.3.6-Stage5-R1-CUMULATIVE-LINEAGE-SAFE-TRANSPORT-VALIDATED.zip",
+      "sha256": "e30b01fe9926f05bb486176f12bf5a63f49c04bdf83b7ed637d5eb0ce91f57d4"
+    },
+    "stage6_r7": {
+      "filename": "Menschen-A1-L01-v3.3.6-Stage6-R7-WINDOWS-CUMULATIVE-SAFE-ACCEPTANCE-KIT.zip",
+      "sha256": "294022d03d796378b5bc654cb596a96d3d76865dd8d7182aa08ab46b61941bf7"
+    }
+  },
+  "checks": {
+    "independent_static": "25/25 PASS",
+    "zip_inner_sha": "stage5=13/13, r7=85/85 PASS",
+    "content_identity": "Stage6 APP/L01-CONTENT.zip byte-exact Stage5-R1",
+    "cards": 118,
+    "examples_fa_en": 472,
+    "kombinationen_cards": 47,
+    "kombinationen_items": 168,
+    "closed_no_force": 71,
+    "source_audio_refs": 115,
+    "cumulative_shared_ids": [
+      "ma1m-lu-0037",
+      "ma1m-lu-0042",
+      "ma1m-lu-0070"
+    ]
+  },
+  "browser_attempt": {
+    "platform": "Linux Chromium Playwright isolated profile",
+    "outcome": "BLOCKED_BY_ADMINISTRATOR",
+    "urls": [
+      "http://127.0.0.1:47868",
+      "http://localhost:47868"
+    ],
+    "real_import_not_executed": true,
+    "windows_chrome_not_executed": true
+  },
+  "runtime_caveat": "R7 embedded v468-R102 TEST CANDIDATE does not supersede Git-pinned v467-R101 CURRENT",
+  "limitations": [
+    "R7 tests fresh isolated 118-card import and lineage metadata, not full multi-lesson cumulative merge or existing SRS progress preservation",
+    "A1-L08 historical archive unavailable to this acceptance evidence",
+    "Do not use daily browser profile before acceptance"
+  ],
+  "next_action": "User to execute R7 01-START-IMPORT.cmd then close isolated Chrome entirely, run 02-VERIFY-AFTER-CHROME-RESTART.cmd, upload both generated JSON reports; app/release Stage6 remains BLOCKED_PENDING_WINDOWS_EVIDENCE.",
+  "independent_report_sha256": "8645392240e82e76f2f85a41e3fa03feab5de3b3300568eb87b4609f2a522a05",
+  "supersedes_historical_artifacts": false,
+  "content_mutation": false
+}

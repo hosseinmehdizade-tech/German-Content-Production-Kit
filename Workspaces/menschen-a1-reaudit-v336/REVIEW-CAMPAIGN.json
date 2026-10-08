@@ -25,19 +25,22 @@
   "progress": {
     "total_lessons": 23,
     "reaudit_complete": 0,
-    "reaudit_in_progress": 0,
-    "queued": 23,
+    "reaudit_in_progress": 1,
+    "queued": 22,
     "active_lesson": "A1-L02",
-    "overall_state": "FOCUS_ACTIVATED_REAUDIT_NOT_YET_EXECUTED",
-    "git_persistence": "IN_SYNC_GITHUB_READBACK_VERIFIED"
+    "overall_state": "A1_L02_STAGE1_2_PASS__STAGE3A_PENDING",
+    "git_persistence": "IN_SYNC_AFTER_COMPACT_CHECKPOINT"
   },
   "lessons": [
     {
       "id": "A1-L02",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE1_2_PASS_STAGE3A_PENDING",
       "old_content_status": "LOCKED",
       "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "independent_quality": "SOURCE_IDENTITY_29_OF_29_PASS_ONLY",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L02-STAGE1-2-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "2ca9496b1bb069ae2be1cac0ae1faf052adbca66860185c9590c5b893a97967f",
+      "stage3a": "NOT_STARTED"
     },
     {
       "id": "A1-L03",
@@ -213,8 +216,17 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "START_A1_L02_SOURCE_BASELINE_AND_DIFFERENTIAL_QA_V336",
+  "next_action": "A1-L02 Stage3A richness baseline under active v3.3.6, use immutable locked parent and newest Stage1/2 verified portable checkpoint.",
   "quality_state": "PLAN_ONLY_NO_NEW_L02_CONTENT_ACCEPTANCE",
   "changed_app_runtime": false,
-  "changed_original_lessons": false
+  "changed_original_lessons": false,
+  "last_validated_milestone": {
+    "scope": "A1-L02",
+    "stage": "Stage1+Stage2",
+    "state": "PASS",
+    "checks": "29/29 PASS",
+    "artifact_sha256": "2ca9496b1bb069ae2be1cac0ae1faf052adbca66860185c9590c5b893a97967f",
+    "library_roundtrip": "PASS_EXACT_BYTES",
+    "commit_checkpoint": "98d8b97d36ed4939b8258a995c7a8ec06cc06f94"
+  }
 }

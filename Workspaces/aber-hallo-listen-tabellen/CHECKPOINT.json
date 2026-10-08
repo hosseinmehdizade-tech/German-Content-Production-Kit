@@ -1939,8 +1939,8 @@
     {
       "stage": 6,
       "name": "Runtime & Presentation Acceptance",
-      "state": "BLOCKED_REBASE_REQUIRED",
-      "summary": "Historical v466 grammar-bundled integration passed, but that parallel v466 runtime is not byte-identical to later CURRENT/LAST_FULLY_VERIFIED Pomodoro v466. Rebase exact tested grammar extension onto CURRENT v466 as v467-R101.",
+      "state": "PASS",
+      "summary": "Exact-current rebase onto fully verified Pomodoro v466 completed as v467-R101. 787 locked lexical cards unchanged; one tested grammar unit bundled; exact candidate fresh-extract verification PASS.",
       "authoritative_outputs": [
         "06-runtime/ABER-HALLO-LISTEN-TABELLEN-UNIVERSAL-v2-v465-IMPORT-REPAIR1.tsv",
         "06-runtime/RUNTIME-PRESENTATION-ACCEPTANCE.json",
@@ -1955,31 +1955,21 @@
         "06-runtime/V465-R99-EXACT-APP-LINEAGE-ATTESTATION.json"
       ],
       "blocker": "ARCHITECTURE_DECISION_REQUIRED_FOR_ONE_GRAMMAR_UNIT",
-      "claim_boundary": "Lexical content and grammar extension remain accepted/locked. Exact-current runtime acceptance must be rerun on a v467-R101 successor based on current v466.",
+      "claim_boundary": "Stage6 exact postpackage PASS on v467-R101 candidate. LAST_FULLY_VERIFIED remains v466-R100 until Stage7/finality promotion.",
       "portable_artifact": {
-        "filename": "Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
-        "sha256": "8e0e85ea0ef09ecf19df7b9686abb452553135ab6142692dbb75a8c3514eef87",
-        "size_bytes": 2580338,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-Selected-Pages-v3.3.6-Stage6-BLOCKED-CHECKPOINT.zip",
-        "library_file_id": "libfile_32c162ec74288191a31e350f4b9569cc",
-        "library_file_snapshot_id": "file_00000000ebb081f481f1ead1c977098c",
-        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-        "status": "BLOCKED_QUALITY_GATE_WITH_VERIFIED_PORTABLE"
+        "filename": "German-Flashcards-Pro-v467-R101-Aber-Hallo-v3.3.6-Stage6-SUCCESSOR-CANDIDATE.zip",
+        "sha256": "28c255cf898ca8e4bbea346c396c966d11a8dc50be514dedc457474dcf272104",
+        "size_bytes": 5203239,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v467-R101-Aber-Hallo-v3.3.6-Stage6-SUCCESSOR-CANDIDATE.zip",
+        "library_file_id": "libfile_add22ee7a0048191bca0a4a73a6f10fd",
+        "status": "PASS_EXACT_POSTPACKAGE"
       }
     },
     {
       "stage": 7,
       "name": "Release & Post-Package Verification",
-      "state": "HISTORICAL_PASS_SUPERSEDED_RUNTIME_IDENTITY",
-      "summary": "Portable Stage7 content-lock artifact exists and is internally PASS, but its parallel v466 runtime bytes are not the later project CURRENT v466. Treat as immutable content/integration evidence only.",
-      "portable_artifact": {
-        "filename": "German-Flashcards-Pro-v466-R100-Aber-Hallo-v3.3.6-LOCKED-CONTENT.zip",
-        "sha256": "799ae7fce8c10965b62fb1288f1e1494617a575249aef6abe63af6955a47f175",
-        "size_bytes": 6956424,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/German-Flashcards-Pro-v466-R100-Aber-Hallo-v3.3.6-LOCKED-CONTENT.zip",
-        "library_file_id": "libfile_1fca683c39708191af4fd1cd33eba7eb",
-        "status": "CONTENT_LOCKED__RUNTIME_BASE_SUPERSEDED"
-      }
+      "state": "NOT_STARTED",
+      "summary": "Ready to build exact-final LOCKED-CONTENT release from the validated v467-R101 Stage6 candidate bytes without content/runtime semantic changes."
     }
   ],
   "scope_boundary": {
@@ -1992,13 +1982,15 @@
     "level_note": "The B1-C2 source title remains source metadata; delivery is driven by selected pages rather than ingesting the whole book."
   },
   "blockers": [],
-  "quality_state": "BLOCKED_REBASE_REQUIRED_RUNTIME_IDENTITY_COLLISION__CONTENT_LOCK_PRESERVED",
+  "quality_state": "STAGE6_PASS_EXACT_V467_CURRENT_REBASE__STAGE7_READY",
   "persistence": {
-    "portable": "IN_LIBRARY_VERIFIED_EXACT_SHA256_AND_BYTE_COMPARE",
-    "git": "IN_SYNC"
+    "portable": "IN_LIBRARY",
+    "portable_sha256_verified": true,
+    "git": "IN_SYNC_STAGE6_METADATA",
+    "app_runtime_source_mirror": "PENDING_IN_APP_REPO"
   },
-  "next_action": "Build v467-R101 from exact CURRENT/LAST_FULLY_VERIFIED v466-R100, transplant only the tested Aber Hallo grammar extension, preserve Pomodoro/current runtime bytes, reseal version/shell cohort, rerun Stage6 and Stage7 exact-final gates.",
-  "resume_instruction": "Start from current v466-R100 artifact SHA 506fcdd4...861a8, not the historical Aber-Hallo v466 runtime. Reuse the immutable tested ahl-lu-0001 grammar extension and 787 locked lexical cards. Next runtime identity must be v467-R101.",
+  "next_action": "Stage7 only: build LOCKED-CONTENT release from exact v467-R101 Stage6 candidate bytes, perform exact-final fresh-extract verification, then promote finality if all gates pass.",
+  "resume_instruction": "Use exact Stage6 candidate SHA 28c255cf898ca8e4bbea346c396c966d11a8dc50be514dedc457474dcf272104 from Library. Do not regenerate the 787 lexical cards or ahl-lu-0001. Stage7 must preserve exact validated runtime/content bytes.",
   "stage3b_batch": "0040",
   "stage3b_status": "PASS_COMPLETE",
   "stage3b_targets_processed": 788,
@@ -2089,7 +2081,7 @@
     "rows": 787,
     "library_file_id": "libfile_24da7b0b3f1481918f917442a82f8598"
   },
-  "stage6_status": "BLOCKED_ARCHITECTURE_GRAMMAR_EXTERNAL_INGESTION",
+  "stage6_status": "PASS_EXACT_POSTPACKAGE_V467_R101",
   "stage6_runtime_adapter": {
     "lexical_tsv": "ABER-HALLO-LISTEN-TABELLEN-UNIVERSAL-v2-v465-IMPORT-REPAIR1.tsv",
     "lexical_tsv_sha256": "a1a3d950bed0b04e62da4db741261f4fee54aa5df00d7ed101d37189be3ead5e",
@@ -2099,7 +2091,7 @@
     "runtime_outer_sha256": "8b4921ebb7b1189e93336e3b0497aa3c1f05945abd130cb15e1b1fa3ceb08b17"
   },
   "runtime_reconciliation_20261008": {
-    "status": "CONTENT_LOCK_PRESERVED_RUNTIME_REBASE_REQUIRED",
+    "status": "RESOLVED_BY_V467_CURRENT_REBASE",
     "report": "Workspaces/aber-hallo-listen-tabellen/RUNTIME-AUTHORITY-RECONCILIATION-2026-10-08.md",
     "historical_stage7_artifact": {
       "filename": "German-Flashcards-Pro-v466-R100-Aber-Hallo-v3.3.6-LOCKED-CONTENT.zip",
@@ -2141,6 +2133,20 @@
       "content_lock_state": "LOCKED"
     },
     "required_successor": "v467-R101",
-    "rule": "Rebase tested grammar extension onto exact CURRENT v466; preserve Pomodoro/current runtime and do not reuse v466 identity."
+    "rule": "Rebase tested grammar extension onto exact CURRENT v466; preserve Pomodoro/current runtime and do not reuse v466 identity.",
+    "successor": {
+      "runtime": "v467-R101",
+      "parent": "v466-R100",
+      "candidate": "German-Flashcards-Pro-v467-R101-Aber-Hallo-v3.3.6-Stage6-SUCCESSOR-CANDIDATE.zip",
+      "sha256": "28c255cf898ca8e4bbea346c396c966d11a8dc50be514dedc457474dcf272104",
+      "size_bytes": 5203239,
+      "library_file_id": "libfile_add22ee7a0048191bca0a4a73a6f10fd",
+      "app_sha256": "fa73eacf0223cc5d2b5bda222216f1d36219e710eecce37c91e34e4d8111dec0",
+      "service_worker_sha256": "f3199f029e151d911e3b0e548f42d04320f23b6b9d2321c6ce515ade031cae84",
+      "runtime_fingerprint": "3137afdc261748824465a17466bda0f88ade71e6daa4a8623fb58f7dd55542f0",
+      "runtime_files": 73,
+      "content_lock_state": "LOCKED",
+      "stage6_gate": "PASS_EXACT_POSTPACKAGE"
+    }
   }
 }

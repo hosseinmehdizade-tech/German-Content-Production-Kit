@@ -1,0 +1,96 @@
+{
+  "schema": "a1-l01-v336-stage6-r7-cumulative-lineage-safety-checkpoint@1.0.0",
+  "date": "2026-10-08",
+  "status": "PASS_REVISED_STAGE5_TRANSPORT_AND_R7_SYNTHETIC_CHROMIUM__REAL_WINDOWS_PERSISTENCE_NOT_RUN",
+  "lesson": "A1-L01",
+  "framework": "v3.3.6",
+  "discovery": {
+    "r6_merge_order_recommendation": "SUPERSEDED_AS_INCOMPLETE",
+    "problem": "Importing enriched L01 last with merge retained 4 combinations on 3 shared IDs, but overwrote wider L13/L16/L17 course_memberships, historical source audio refs and a RELATED relation.",
+    "evidence_lessons": [
+      "A1-L13",
+      "A1-L16",
+      "A1-L17"
+    ],
+    "source_unavailable": "A1-L08 historical LOCKED ZIP and 2026-10-06 backup raw materialization inaccessible; possible extra overlaps not excluded."
+  },
+  "successor": {
+    "name": "Menschen-A1-L01-v3.3.6-Stage5-R1-CUMULATIVE-LINEAGE-SAFE-TRANSPORT-VALIDATED.zip",
+    "sha256": "e30b01fe9926f05bb486176f12bf5a63f49c04bdf83b7ed637d5eb0ce91f57d4",
+    "bytes": 231957,
+    "library_file_id": "libfile_f49c1e8b494081918c2f56a78d930d85",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L01-v3.3.6-Stage5-R1-CUMULATIVE-LINEAGE-SAFE-TRANSPORT-VALIDATED.zip",
+    "original_stage5_unchanged": true,
+    "changed_ids": [
+      "ma1m-lu-0037",
+      "ma1m-lu-0042",
+      "ma1m-lu-0070"
+    ],
+    "other_115_cards_field_by_field_identical": true,
+    "canonical_unit_original_118_unchanged": true,
+    "added_known_lesson_memberships": 3,
+    "recovered_old_audio_refs": 2,
+    "recovered_legacy_related_links": 1,
+    "added_historical_source_ref_locators": 3,
+    "total_audio_refs": 115,
+    "total_course_membership_objects": 121,
+    "combinations": 168,
+    "combinations_cards": 47,
+    "closed_no_force": 71,
+    "transport_status": "PASS_NOT_RUNTIME_ACCEPTED"
+  },
+  "windows_acceptance": {
+    "name": "Menschen-A1-L01-v3.3.6-Stage6-R7-WINDOWS-CUMULATIVE-SAFE-ACCEPTANCE-KIT.zip",
+    "sha256": "294022d03d796378b5bc654cb596a96d3d76865dd8d7182aa08ab46b61941bf7",
+    "bytes": 2292491,
+    "library_file_id": "libfile_1979c3c489248191aee59b2b63e5db1f",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L01-v3.3.6-Stage6-R7-WINDOWS-CUMULATIVE-SAFE-ACCEPTANCE-KIT.zip",
+    "replaces_previous_r5_test_kit": true,
+    "source_v468_program_files_unchanged": 74,
+    "chrome_test_profile_isolated": true,
+    "tests_tsv_import_local_origin_on_windows": "NOT_RUN",
+    "tests_commit_persistence_after_reopen": "NOT_RUN",
+    "full_zip_manifest_sha": "85/85 PASS",
+    "zip_crc": "PASS",
+    "scripts_static_check": "PASS",
+    "javascript_node_syntax": "PASS",
+    "server_identity_self_check": "PASS",
+    "safety_invariants": [
+      "118 cards",
+      "47 Kombinationen sections",
+      "168 items",
+      "71 CLOSED_NO_FORCE",
+      "115 source audio references",
+      "3 known dual-lesson memberships",
+      "1 related edge"
+    ]
+  },
+  "isolated_chromium_model": {
+    "status": "PASS_WITH_FAKE_INDEXEDDB",
+    "checks": "20/20 PASS",
+    "verified_counts": {
+      "cards": 118,
+      "combination_cards": 47,
+      "items": 168,
+      "closed_no_force": 71,
+      "audio_refs": 115
+    },
+    "all_four_mode_display": "PASS",
+    "shared_ids_lineage": "3/3 PASS",
+    "related_to_ma1m_lu_1934": "PASS",
+    "js_errors": 0,
+    "persistent_profile": "NOT_TESTED"
+  },
+  "deliverable_verification": {
+    "original_and_library_byte_identity": "2/2 PASS",
+    "original_and_library_zip_crc": "2/2 PASS"
+  },
+  "gate_status": {
+    "stage5": "R1_CUMULATIVE_SAFE_TRANSPORT_VALIDATED",
+    "stage6": "PARTIAL_SYNTHETIC_PASS__LIVE_WINDOWS_ORIGIN_PENDING",
+    "stage7": "NOT_STARTED",
+    "locked": false,
+    "current_app_modified": false
+  },
+  "next_action": "Use only revised R7 Windows test kit, extract and run 01-START-IMPORT.cmd then 02-VERIFY-AFTER-CHROME-RESTART.cmd in isolated test profile; upload two generated JSON reports. Then validate native persistent commit, reload, three shared memberships and progress preservation. DO NOT authorize normal-profile import or mark LOCKED before runtime tests."
+}

@@ -311,7 +311,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
     "latest_portable_checkpoint_sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0"
   },
-  "current_scope": "A1-L24 Stage3B all 77 new targets AUTHORED; Stage3C 663 unresolved; L01-L23 LOCKED unchanged",
+  "current_scope": "A1-L24 Stage3C Batch0001 104 cells reviewed; 559 unresolved; A1-L01..L23 LOCKED preserved",
   "lock_state": "A1-L01_TO_A1-L23_LOCKED; A1-L24_STAGE2_PASS_NOT_LOCKED",
   "locked_at": "2026-10-07",
   "release_artifact": {
@@ -1651,7 +1651,7 @@
     "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "cumulative_targets": 175
   },
-  "next_action": "Stage3C: review and disposition all 663 unresolved enrichment dimensions across all 83 identities, with evidence-based VERIFIED_PRESENT/CLOSED_NO_FORCE/NOT_APPLICABLE; then independently re-audit in Stage4. Do not mark Stage3 PASS until unresolved=0.",
+  "next_action": "Stage3C Batch0002: review remaining 559 cells without forced relations; Stage4 only when unresolved=0.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -3820,48 +3820,18 @@
     }
   },
   "latest_stage3c_checkpoint": {
-    "status": "PASS_LIBRARY_AND_GIT_WORKSTREAM_SYNCED",
-    "quality_state": "PASS_STAGE3C_DISPOSITION_CLOSURE",
-    "scope": "A1-L23",
-    "framework": "v3.3.6",
-    "targets": 175,
-    "dimension_cells": 2777,
-    "verified_present": 1732,
-    "closed_no_force": 1045,
-    "not_applicable": 0,
-    "unresolved_cells": 0,
-    "candidate_ledger": {
-      "total": 1412,
-      "accepted": 341,
-      "rejected": 1071,
-      "deferred": 0,
-      "stage3b_prefix_objects": 363,
-      "stage3c_appended": 1049
-    },
-    "nvv_links": {
-      "verified_present": 2,
-      "closed_no_force": 173,
-      "accepted_targets": [
-        "ma1m-lu-2829",
-        "ma1m-lu-2944"
-      ]
-    },
-    "canonical_sha256": "a6fdf63264e4e63b0e390aadcfb7c427df2b5735166cc9b5ad50d903f91405e0",
-    "canonical_byte_identical_to_stage3b": true,
-    "predecessor_immutable_files": "213/213 BYTE_IDENTICAL",
-    "validators": "5/5 PASS",
-    "artifact": {
-      "filename": "Menschen-A1-L23-v3.3.6-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
-      "sha256": "bc5e0e1350071af7f78030028e8dd9c830208b940d72bb7b6e54424ba96be851",
-      "size_bytes": 1477556,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
-      "library_file_id": "file_000000002b1082108e9393ef60b943b4",
-      "library_stable_id": "libfile_07aefee09bc48191ab40093531353ebb",
-      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/03-evidence/A1-L23-STAGE3C-POST-PACKAGE-VERIFICATION.json"
-    },
-    "no_stage4_claim": true,
-    "next_action": "A1-L23 Stage4 independent linguistic/lexical/provenance re-audit of the exact Stage3C state; recompute applicability and challenge source IDs, relation endpoints/duplicates, expression structure, no-force decisions, fingerprints and linguistic quality without trusting Stage3 self-report."
+    "scope": "A1-L24",
+    "batch": "0001",
+    "status": "PASS_PARTIAL",
+    "filename": "Menschen-A1-L24-v3.3.6-Stage3C-Batch0001-CHECKPOINT.zip",
+    "sha256": "cfc53c2bc6f5f90428bebcafdeaab90e3bc051ad331e48bf0a6ce7cd9591eef6",
+    "size_bytes": 524018,
+    "current_conversation_file_id": "file_000000005b2882109c157694e28be260",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage3C-Batch0001-CHECKPOINT.zip",
+    "library_file_id": "file_00000000c0448210816cac8f49ab27b7",
+    "library_stable_id": "libfile_4aa2fc17a5708191a25ab67e21e5e5f0",
+    "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "library_status": "UPLOADED_VERIFIED"
   },
   "a1_l23": {
     "state": "STAGE7_LOCKED",
@@ -4430,7 +4400,7 @@
       },
       "next_action": "A1-L24 Stage3A baseline richness audit, Stage3B targeted enrichment, Stage3C closed disposition."
     },
-    "stage3to7": "STAGE3B_AUTHORSHIP_COMPLETE__STAGE3C_663_OPEN__STAGE4_TO_7_NOT_STARTED",
+    "stage3to7": "STAGE3C_BATCH0001_PASS_PARTIAL_559_UNRESOLVED_STAGE4_NOT_STARTED",
     "stage3a": {
       "status": "PASS_BASELINE_ONLY",
       "scope": "A1-L24",
@@ -4537,8 +4507,42 @@
       "next_action": "Stage3C: review and disposition all 663 unresolved enrichment dimensions across all 83 identities, with evidence-based VERIFIED_PRESENT/CLOSED_NO_FORCE/NOT_APPLICABLE; then independently re-audit in Stage4. Do not mark Stage3 PASS until unresolved=0."
     },
     "stage3c": {
-      "status": "PENDING",
-      "unresolved_cells": 663
+      "status": "PASS_BATCH0001_PARTIAL_CLOSURE",
+      "framework": "v3.3.6",
+      "parent_stage3b_zip_sha256": "a08a0551f128ec75978022d5cdc63b42283de8e265f57c299a161c673e433193",
+      "batch": "0001",
+      "focus_identities": 12,
+      "verified_late_batch0007_fields_without_edit": 5,
+      "source_audio_gaps_reviewed": 2,
+      "disposition_cells_closed_this_batch": 104,
+      "unresolved_before": 663,
+      "unresolved_after": 559,
+      "total_targets": 83,
+      "total_cells": 1303,
+      "verified_present_after": 686,
+      "closed_no_force_after": 58,
+      "new_reviewed_relations": 16,
+      "new_expression_structure_records": 6,
+      "official_stage3c_closure": "NOT_PASSED_559_UNRESOLVED",
+      "official_baseline_validator": "PASS_PARTIAL",
+      "official_candidate_ledger_validator": "PASS_WORKING",
+      "independent_package_qa": "PASS_126_MANIFEST_HASHES_116_PARENT_FILE_BYTE_PARITY_RELATED_ENDPOINTS",
+      "source_and_prior_locked_l01_l23": "PRESERVED_NO_CHANGES",
+      "stage4": "NOT_STARTED",
+      "final": false,
+      "current_matrix": "03-evidence/Stage3C/ENRICHMENT-COMPLETENESS.json",
+      "artifact": {
+        "filename": "Menschen-A1-L24-v3.3.6-Stage3C-Batch0001-CHECKPOINT.zip",
+        "sha256": "cfc53c2bc6f5f90428bebcafdeaab90e3bc051ad331e48bf0a6ce7cd9591eef6",
+        "size_bytes": 524018,
+        "current_conversation_file_id": "file_000000005b2882109c157694e28be260",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage3C-Batch0001-CHECKPOINT.zip",
+        "library_file_id": "file_00000000c0448210816cac8f49ab27b7",
+        "library_stable_id": "libfile_4aa2fc17a5708191a25ab67e21e5e5f0",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "library_status": "UPLOADED_VERIFIED"
+      },
+      "next_action": "Stage3C Batch0002: review remaining 559 cells without forced relations; Stage4 only when unresolved=0."
     }
   },
   "latest_stage1_checkpoint": {

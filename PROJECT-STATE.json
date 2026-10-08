@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-08T00:39:22.525Z",
+  "updated_at": "2026-10-08T00:46:21.842Z",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -1850,16 +1850,16 @@
       "last_observed_note": "Stage 1 is durable PASS: 76 PDF pages classified into 68 source topics with stable IDs lesen-praes-0001..0068 and inventory QA PASS. Stage 2+ remain independent."
     },
     "menschen_a1a2b1_memrise": {
-      "status": "A1_L24_STAGE3B_AUTHORSHIP_COMPLETE_STAGE3C_PENDING",
+      "status": "A1_L24_STAGE3C_BATCH0001_PARTIAL_PASS",
       "domain": "vocabulary",
       "branch": "main",
       "source_id": "menschen-a1a2b1-memrise-full-audio",
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L24 Stage3B Batch0007 PASS_AUTHORSHIP_77_OF_77; Stage3C 663 review cells open; L01-L23 LOCKED",
-      "last_observed_stage": "A1-L24 Stage3B Batch0007 — all 77 new lexical targets authored",
-      "last_observed_note": "Batch0007 5 new targets 3055..3059, 20 independently curated DE/FA/EN examples, 10 curated combinations; cumulative 77/77 new targets, 308 examples, 162 combinations. Official v3.3.6 baseline and candidate ledger working checks PASS. 640/1303 richness cells verified, 663 still UNRESOLVED; Stage3C not started and Stage4/5/6/7 not run. Independent package audit 114/114 manifest, 115/115 SHA256SUMS and 96/96 immutable parent files PASS; library rematerialization exact SHA and byte comparison PASS. Source rows and prior L01-L23 LOCKED unchanged.",
+      "current_scope": "A1-L24 Stage3C Batch0001 104/663 open cells disposed, 559 remain; L01..L23 immutable",
+      "last_observed_stage": "A1-L24 Stage3C Batch0001 PARTIAL",
+      "last_observed_note": "Reviewed first 12 canonical identities, 104 source/curated-referenced disposition cells including 16 typed relation edges and 6 structured expressions; independently reconfirmed five last new targets' existing required fields without edits; accounted for two row2232 audio omissions. Matrix now 686 VERIFIED_PRESENT + 58 CLOSED_NO_FORCE + 559 MISSING_ACTIONABLE across 1303 cells/83 targets. Official v3.3.6 baseline and working candidate ledger PASS, Stage3C final closure NOT PASSED. Independent package 126 manifest entries/116 parent files exact parity, library rematerialized SHA+bytes PASS. No Stage4 yet.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
         "sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0",
@@ -1884,7 +1884,7 @@
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
       "lock_state": "A1-L01_TO_A1-L23_LOCKED",
-      "next_scope": "A1-L24 Stage3C: review 663 remaining dimension cells across 83 identities, with explicit evidence-based closure before independent Stage4 QA. No forced density.",
+      "next_scope": "A1-L24 Stage3C Batch0002 from remaining 559 review cells, maintain source/locked parity; Stage4 only after all dispositions closed.",
       "latest_stage12_checkpoint": {
         "scope": "A1-L24",
         "status": "PASS_GIT_METADATA_SYNCED",
@@ -4428,46 +4428,18 @@
         "remaining_unresolved_dimension_cells": 663
       },
       "latest_stage3c_checkpoint": {
-        "status": "PASS_LIBRARY_AND_GIT_WORKSTREAM_SYNCED",
-        "quality_state": "PASS_STAGE3C_DISPOSITION_CLOSURE",
-        "scope": "A1-L23",
-        "framework": "v3.3.6",
-        "targets": 175,
-        "dimension_cells": 2777,
-        "verified_present": 1732,
-        "closed_no_force": 1045,
-        "not_applicable": 0,
-        "unresolved_cells": 0,
-        "candidate_ledger": {
-          "total": 1412,
-          "accepted": 341,
-          "rejected": 1071,
-          "deferred": 0
-        },
-        "nvv_links": {
-          "verified_present": 2,
-          "closed_no_force": 173,
-          "accepted_targets": [
-            "ma1m-lu-2829",
-            "ma1m-lu-2944"
-          ]
-        },
-        "canonical_sha256": "a6fdf63264e4e63b0e390aadcfb7c427df2b5735166cc9b5ad50d903f91405e0",
-        "canonical_byte_identical_to_stage3b": true,
-        "predecessor_immutable_files": "213/213 BYTE_IDENTICAL",
-        "validators": "5/5 PASS",
-        "artifact": {
-          "filename": "Menschen-A1-L23-v3.3.6-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
-          "sha256": "bc5e0e1350071af7f78030028e8dd9c830208b940d72bb7b6e54424ba96be851",
-          "size_bytes": 1477556,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
-          "library_file_id": "file_000000002b1082108e9393ef60b943b4",
-          "library_stable_id": "libfile_07aefee09bc48191ab40093531353ebb",
-          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-          "post_package_verification": "Workspaces/menschen-a1a2b1-memrise/03-evidence/A1-L23-STAGE3C-POST-PACKAGE-VERIFICATION.json"
-        },
-        "no_stage4_claim": true,
-        "next_action": "A1-L23 Stage4 independent linguistic/lexical/provenance re-audit of the exact Stage3C state; recompute applicability and challenge source IDs, relation endpoints/duplicates, expression structure, no-force decisions, fingerprints and linguistic quality without trusting Stage3 self-report."
+        "scope": "A1-L24",
+        "batch": "0001",
+        "status": "PASS_PARTIAL",
+        "filename": "Menschen-A1-L24-v3.3.6-Stage3C-Batch0001-CHECKPOINT.zip",
+        "sha256": "cfc53c2bc6f5f90428bebcafdeaab90e3bc051ad331e48bf0a6ce7cd9591eef6",
+        "size_bytes": 524018,
+        "library_file_id": "file_00000000c0448210816cac8f49ab27b7",
+        "library_stable_id": "libfile_4aa2fc17a5708191a25ab67e21e5e5f0",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage3C-Batch0001-CHECKPOINT.zip",
+        "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+        "checkpoint_path": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
+        "remaining_unresolved_cells": 559
       },
       "a1_l23": {
         "stage12": {

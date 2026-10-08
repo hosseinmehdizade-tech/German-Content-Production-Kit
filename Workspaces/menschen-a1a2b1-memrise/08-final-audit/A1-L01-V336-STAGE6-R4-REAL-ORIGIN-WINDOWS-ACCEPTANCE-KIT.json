@@ -1,0 +1,72 @@
+{
+  "schema": "menschen-a1-l01-stage6-r4-real-origin-windows-acceptance-kit@1.0.0",
+  "workstream": "menschen-a1a2b1-memrise",
+  "lesson": "A1-L01",
+  "date": "2026-10-08",
+  "framework": "v3.3.6",
+  "previous_checkpoint": "Workspaces/menschen-a1a2b1-memrise/08-final-audit/A1-L01-V336-STAGE6-R3-POSTIMPORT-SYNTHETIC-CHROMIUM-ACCEPTANCE.json",
+  "status": "R4_WINDOWS_REAL_CHROME_ACCEPTANCE_KIT_STATIC_PASS__RUNTIME_IMPORT_PENDING",
+  "browser_environment_blocker": {
+    "tested_navigations": [
+      "https://app.test.example/",
+      "https://example.com/probe-idb",
+      "http://127.0.0.1:7654/probe"
+    ],
+    "results": "ALL ERR_BLOCKED_BY_ADMINISTRATOR",
+    "environment_chromium_policy": "URLBlocklist '*' (managed)",
+    "about_blank_indexeddb": "SecurityError access to IndexedDB denied",
+    "policy_not_modified": true,
+    "no_browser_origin_bypass": true
+  },
+  "tested_authorities": {
+    "app": "German-Flashcards-Pro-v468-R102-L01-KOMBINATIONEN-PRESENTATION-BRIDGE-TEST-CANDIDATE.zip",
+    "app_sha256": "2b5bc910e7ce07cf923d8949cf55e7788000c4938abfaa6e7591bcc0bf2ff1bf",
+    "lesson": "Menschen-A1-L01-v3.3.6-Stage5-TRANSPORT-VALIDATED.zip",
+    "lesson_sha256": "41a2a3d9b647ae58ae2e421bf384eb11950463655e3a6da0f0d75c1c778628d6",
+    "app_original_files_unchanged": 74,
+    "protected_locked_originals_unchanged": true
+  },
+  "deliverable": {
+    "name": "Menschen-A1-L01-v3.3.6-Stage6-R4-REAL-CHROME-PERSISTENCE-ACCEPTANCE-KIT.zip",
+    "sha256": "9ef3ed776792edfc10ec6cf8dbc7e6344ba0b45dfa80df91bf36d3740326afe5",
+    "bytes": 2276522,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L01-v3.3.6-Stage6-R4-REAL-CHROME-PERSISTENCE-ACCEPTANCE-KIT.zip",
+    "library_file_id": "libfile_ed87e97f43708191abeda57da6dfb1b3",
+    "final_backing_file_id": "file_0000000050c0821096ef06f1e97a0822",
+    "library_rematerialization_sha256": "MATCH",
+    "crc": "PASS",
+    "hash_manifest": "83/83 PASS",
+    "zip_entries": 85,
+    "source_app_files_unchanged": 74,
+    "acceptance_js_node_syntax": "PASS",
+    "windows_powershell_runtime": "UNTESTED",
+    "real_chrome_origin": "UNTESTED",
+    "actual_indexeddb_persistence": "UNTESTED",
+    "iframe_import_flow": "UNTESTED_ON_REAL_ORIGIN",
+    "no_stage6_runtime_pass_claim": true
+  },
+  "kit_operation": {
+    "platform": "Windows with Google Chrome + built-in PowerShell",
+    "first_script": "01-START-IMPORT.cmd",
+    "second_script": "02-VERIFY-AFTER-CHROME-RESTART.cmd",
+    "server": "PowerShell TcpListener restricted to IPv4 loopback 127.0.0.1:47868",
+    "browser_profile": "TEST-CHROME-PROFILE inside extracted kit (never the standard user profile)",
+    "app_contents": "APP directory byte-for-byte original 74 v468 app files + acceptance.html and acceptance.js test harness + exact L01-CONTENT.zip",
+    "real_import": "user clicks button 1, native app ZIP select, SHA preview, Import, VERIFIED commit, card/combination checks",
+    "restart": "user closes all isolated Chrome windows; script 2 checks for remaining test-profile Chrome processes and opens the same origin/profile",
+    "cold_verification": "user clicks button 2, program reads persisted commit generation and full authority, compares to first result, checks all four presentation modes",
+    "output": "Two user-downloaded JSON reports with statuses, counts, origin, and activeGeneration",
+    "no_internet_dependencies": true,
+    "original_app_modified": false,
+    "no_user_profile_access": true
+  },
+  "target_counts": {
+    "stable_cards": 118,
+    "examples": 472,
+    "kombinationen_cards": 47,
+    "kombinationen_items": 168,
+    "closed_no_force_cards": 71,
+    "source_audio_refs": 113
+  },
+  "next_action": "Have user run the Windows kit (after inspecting its scripts) and upload two JSON reports. Verify actual real-origin IndexedDB persistence and same generation after full Chrome exit/reopen. Stage6 final PASS only if checks truly pass, then Stage7 release/LOCKED gating. Never present test-kit as final."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-07T18:15:00+02:00",
+  "updated_at": "2026-10-08T02:00:00+02:00",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -1850,16 +1850,16 @@
       "last_observed_note": "Stage 1 is durable PASS: 76 PDF pages classified into 68 source topics with stable IDs lesen-praes-0001..0068 and inventory QA PASS. Stage 2+ remain independent."
     },
     "menschen_a1a2b1_memrise": {
-      "status": "A1_L24_STAGE2_IDENTITY_CLOSURE_PASS",
+      "status": "A1_L24_STAGE3A_BASELINE_PASS",
       "domain": "vocabulary",
       "branch": "main",
       "source_id": "menschen-a1a2b1-memrise-full-audio",
       "checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "resolution_mode": "PORTABLE_STATE_THEN_GIT_METADATA",
-      "current_scope": "A1-L24 Stage1/2 PASS; L01-L23 remain LOCKED",
-      "last_observed_stage": "A1-L24 Stage2 Canonicalization and Identity Closure",
-      "last_observed_note": "Source 74 rows (2199..2272), 73/73 audio present, row 2232 no audio; 89 occurrence-target mappings -> 83 active lexical identities: 77 new contiguous ma1m-lu-2983..3059, six exact immutable reuses; 2982 prior unique, 3059 cumulative; zero unresolved, official Stage2 identity validator and package checks PASS. Stage3 not started.",
+      "current_scope": "A1-L24 Stage3A baseline PASS; A1-L01..L23 remain LOCKED",
+      "last_observed_stage": "A1-L24 Stage3A richness baseline",
+      "last_observed_note": "Stage3A official v3.3.6 baseline 83 targets, 1303 cells, 122 VERIFIED_PRESENT, 1181 unresolved; Kombinations overlay 1 verified / 82 pending; exact parent L01-L23 unchanged; Stage3B/3C not started.",
       "latest_locked_release": {
         "filename": "Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
         "sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0",
@@ -1884,7 +1884,7 @@
         "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
       "lock_state": "A1-L01_TO_A1-L23_LOCKED",
-      "next_scope": "A1-L24 Stage3A baseline audit, then Stage3B/3C evidence and disposition closure; preserve L01-L23 locked.",
+      "next_scope": "A1-L24 Stage3B gap-driven enrichment, then Stage3C disposition closure; do not call Stage3 final until unresolved zero.",
       "latest_stage12_checkpoint": {
         "scope": "A1-L24",
         "status": "PASS_GIT_METADATA_SYNCED",
@@ -4400,128 +4400,17 @@
       },
       "git_metadata_sync_commit": "c8663e84114f48792ed57b41c85b264857c8e8b1",
       "latest_stage3a_checkpoint": {
-        "status": "PASS_LIBRARY_AND_GIT_WORKSTREAM_SYNCED",
-        "quality_state": "PASS_STAGE3A_BASELINE_RICHNESS",
-        "scope": "A1-L23",
-        "framework": "v3.3.6",
-        "active_targets": 175,
-        "new_targets": 170,
-        "locked_reuses": 5,
-        "dimension_cells": 2777,
-        "verified_present_cells": 211,
-        "closed_no_force_cells": 0,
-        "unresolved_cells": 2566,
-        "gaps_by_dimension": {
-          "antonym": 174,
-          "argument_slots": 79,
-          "collocation": 175,
-          "component_relations": 79,
-          "definition_de": 170,
-          "example_translations_en": 170,
-          "example_translations_fa": 170,
-          "examples_de": 170,
-          "gloss_en": 170,
-          "meaning_fa": 170,
-          "morphology": 88,
-          "nvv_links": 175,
-          "rektion": 174,
-          "related": 173,
-          "structure_components": 79,
-          "synonym": 175,
-          "word_family": 175
-        },
-        "already_verified_by_dimension": {
-          "antonym": 1,
-          "definition_de": 5,
-          "example_translations_en": 5,
-          "example_translations_fa": 5,
-          "examples_de": 5,
-          "gloss_en": 5,
-          "meaning_fa": 5,
-          "morphology": 2,
-          "rektion": 1,
-          "related": 2,
-          "source_audio": 175
-        },
-        "source_audio": {
-          "targets_with_audio": 175,
-          "targets_without_audio": 0,
-          "zero_audio_target_ids": []
-        },
-        "locked_reuse_detection": {
-          "ma1m-lu-1914": [
-            "antonym",
-            "definition_de",
-            "example_translations_en",
-            "example_translations_fa",
-            "examples_de",
-            "gloss_en",
-            "meaning_fa",
-            "related",
-            "source_audio"
-          ],
-          "ma1m-lu-1639": [
-            "definition_de",
-            "example_translations_en",
-            "example_translations_fa",
-            "examples_de",
-            "gloss_en",
-            "meaning_fa",
-            "source_audio"
-          ],
-          "ma1m-lu-2749": [
-            "definition_de",
-            "example_translations_en",
-            "example_translations_fa",
-            "examples_de",
-            "gloss_en",
-            "meaning_fa",
-            "morphology",
-            "source_audio"
-          ],
-          "ma1m-lu-0610": [
-            "definition_de",
-            "example_translations_en",
-            "example_translations_fa",
-            "examples_de",
-            "gloss_en",
-            "meaning_fa",
-            "related",
-            "source_audio"
-          ],
-          "ma1m-lu-2492": [
-            "definition_de",
-            "example_translations_en",
-            "example_translations_fa",
-            "examples_de",
-            "gloss_en",
-            "meaning_fa",
-            "morphology",
-            "rektion",
-            "source_audio"
-          ]
-        },
-        "lexical_kombinationen": {
-          "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
-          "reviewed_present_targets": 1,
-          "inherited_items": 3,
-          "unreviewed_targets": 174,
-          "density_quota": "NONE"
-        },
-        "official_completeness_baseline": "PASS 175 targets / 2777 cells / 2566 unresolved",
-        "official_candidate_ledger": "PASS working mode / 0 candidates",
-        "framework_regression": "10/10 PASS",
-        "package_hygiene": "PASS_NO_PYCACHE_PYC_GIT_CRC",
-        "artifact": {
-          "filename": "Menschen-A1-L23-v3.3.6-Stage3A-CHECKPOINT.zip",
-          "sha256": "3d656fd6d332eb5b9f8aa43129e4ac3047c77785ebd3c5fd69595fe6432e800d",
-          "size_bytes": 122441,
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-Stage3A-CHECKPOINT.zip",
-          "library_file_id": "file_00000000971082109e2514a916a92351",
-          "library_stable_id": "libfile_31fb2fd7024c8191b90784e6488124e0",
-          "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-        },
-        "next_action": "A1-L23 Stage3B — reference-availability preflight, then gap-driven evidence enrichment from the 2566 unresolved cells plus Kombinationen review; do not force relation density."
+        "scope": "A1-L24",
+        "filename": "Menschen-A1-L24-v3.3.6-Stage3A-BASELINE-CHECKPOINT.zip",
+        "sha256": "9ada6f91f6566174993718e2a76072d8d8fcd54adfda55f727f9a6daf96a44a8",
+        "size_bytes": 85908,
+        "chat_file_id": "file_00000000c5bc81f4b1b02528f2561cdf",
+        "current_git_checkpoint": "Workspaces/menschen-a1a2b1-memrise/CHECKPOINT.json",
+        "stage": "3A",
+        "state": "PASS_BASELINE_ONLY",
+        "stage3b": "NOT_STARTED",
+        "stage3c": "NOT_STARTED",
+        "library_status": "NOT_UPLOADED"
       },
       "latest_stage3b_checkpoint": {
         "scope": "A1-L23",

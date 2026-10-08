@@ -1,0 +1,97 @@
+{
+  "schema": "a1-l01-v336-stage6-r5-cumulative-identity-preflight@1.0.0",
+  "date": "2026-10-08",
+  "lesson": "A1-L01",
+  "status": "PASS_SCOPED_STATIC_IDENTITY_COMPATIBILITY__LIVE_RUNTIME_AND_CUMULATIVE_IMPORT_NOT_VERIFIED",
+  "authorities": {
+    "lesson": "Menschen-A1-L01-v3.3.6-Stage5-TRANSPORT-VALIDATED.zip",
+    "app": "German-Flashcards-Pro-v468-R102-L01-KOMBINATIONEN-PRESENTATION-BRIDGE-TEST-CANDIDATE.zip",
+    "historical_locks_mutated": false
+  },
+  "static_audit": {
+    "inspected_lesson_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "unavailable": [
+      8
+    ],
+    "total_rows": 2916,
+    "distinct_ids": 2879,
+    "canonical_ids_reused": 36,
+    "additional_occurrences": 37,
+    "core_semantic_id_conflicts": 0,
+    "lesson_metadata_drift_on_reused_ids": 18,
+    "zip_crc_pass": 22,
+    "authoritative_dataset_sha_pass": 22
+  },
+  "shared_l01": [
+    {
+      "id": "ma1m-lu-0037",
+      "front": "die Stunde, Stunden",
+      "also_in": "A1-L16",
+      "new_kombinationen_items": 2,
+      "old_copy_has_kombinationen_v336": false,
+      "core_semantics_match": true
+    },
+    {
+      "id": "ma1m-lu-0042",
+      "front": "gut",
+      "also_in": "A1-L17",
+      "new_kombinationen_items": 1,
+      "old_copy_has_kombinationen_v336": false,
+      "core_semantics_match": true
+    },
+    {
+      "id": "ma1m-lu-0070",
+      "front": "eine Frage stellen",
+      "also_in": "A1-L13",
+      "new_kombinationen_items": 1,
+      "old_copy_has_kombinationen_v336": false,
+      "core_semantics_match": true
+    }
+  ],
+  "v468_import_code_path": {
+    "default_mode": "merge",
+    "merge": "overwrites matched-ID card fields including details/custom_fields",
+    "add": "skips matched-ID cards",
+    "risk": "Importing older duplicates after enriched L01 using merge can remove its newer combinations; importing enriched L01 after old copies using add can skip the enrichment.",
+    "controlled_future_test": "Import old lessons first; then merge new L01 successor last in isolated runtime, checking shared IDs and progress preservation. Not authorization for production import.",
+    "sequential_runtime_test": "INCONCLUSIVE_TIMEOUT__NOT_PASS"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L01-v3.3.6-Stage6-R5-CUMULATIVE-IDENTITY-PREFLIGHT.zip",
+    "sha256": "5257a3c41243d20cfdb189fd2c4a9d060964aed112aa4430bcec1b02239f9cd7",
+    "library_file_id": "libfile_1e44c4040bf48191b085eeb98af720b5",
+    "sha_manifest": "2/2 PASS",
+    "crc": "PASS",
+    "library_uploaded": true
+  },
+  "pending": [
+    "A1-L08 unmaterializable",
+    "Windows R5 real IndexedDB import and reopen reports absent",
+    "Cumulative transaction and progress retention not proved",
+    "Stage6 not PASS",
+    "Stage7 not LOCKED"
+  ]
+}

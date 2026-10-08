@@ -1,0 +1,62 @@
+{
+  "schema": "menschen-a1-l01-v336-stage6-r6-three-id-import-order@1.0.0",
+  "date": "2026-10-08",
+  "lesson": "A1-L01",
+  "status": "PASS_EXACT_SOURCE_FUNCTION_ISOLATED_ORDER_REGRESSION__STAGE6_LIVE_PENDING",
+  "authorities": {
+    "app": "German-Flashcards-Pro-v468-R102-L01-KOMBINATIONEN-PRESENTATION-BRIDGE-TEST-CANDIDATE.zip",
+    "lesson": "Menschen-A1-L01-v3.3.6-Stage5-TRANSPORT-VALIDATED.zip",
+    "historical_old_lessons": [
+      "A1-L13 LOCKED",
+      "A1-L16 LOCKED",
+      "A1-L17 LOCKED"
+    ],
+    "source_app_html_sha256": "86ffc8fb2270a5a3299b7bf45690e4174256a0ef2ddce1ceb05aa654a3d6dbfd",
+    "original_archives_modified": false
+  },
+  "reproduction": {
+    "reviewed_shared_ids": [
+      "ma1m-lu-0037",
+      "ma1m-lu-0042",
+      "ma1m-lu-0070"
+    ],
+    "exact_input_from_signed_package_data_file": true,
+    "importer_source_functions": [
+      "semanticIdentityTextV175",
+      "cardSemanticIdentityV191",
+      "sameCardSemanticIdentityV191",
+      "per-field merge mutator"
+    ],
+    "exact_source_extraction_matches": true,
+    "checks_passed": 25,
+    "checks_total": 25,
+    "semantic_identity_agrees_for_three": true,
+    "new_l01_items_on_shared_ids": 4,
+    "old_lesson_items_on_shared_ids": 0,
+    "old_lessons_merged_after_new_l01_items_remaining": 0,
+    "new_l01_merged_after_old_lessons_items_remaining": 4,
+    "new_l01_added_after_old_lessons_items_remaining": 0,
+    "progress_preservation": "EXPECTED_FROM_SAME_IDENTITY_IN_CODE_NOT_RUNTIME_VERIFIED",
+    "transactional_import": "NOT_RUN",
+    "native_indexeddb_commit": "NOT_RUN",
+    "browser_user_profile": "NOT_RUN"
+  },
+  "scoped_safe_order_proposal": "Import older lessons before the enriched L01 successor and merge the enriched successor LAST, in isolated test runtime. Follow with explicit validation of 3 shared IDs, learning progress, and persistence. Do not approve production import before runtime checks.",
+  "remaining_gates": [
+    "R5 Windows two JSON reports not supplied",
+    "L08 historical LOCKED source unrecoverable",
+    "Sequential native cumulative two-ZIP transactional test not passed",
+    "No live-origin IndexedDB after-restart proof",
+    "Stage 6 not PASS, Stage 7 not LOCKED"
+  ],
+  "artifact": {
+    "filename": "Menschen-A1-L01-v3.3.6-Stage6-R6-THREE-ID-IMPORT-ORDER-PROOF.zip",
+    "sha256": "e957c714baaf78eb18d098a5f11d88260c18661697cbca22300a0c5a823f37f6",
+    "bytes": 17239,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L01-v3.3.6-Stage6-R6-THREE-ID-IMPORT-ORDER-PROOF.zip",
+    "library_file_id": "libfile_94fa47990b8881918156b5aef8b96eb0",
+    "crc": "PASS",
+    "sha256_manifest": "5/5 PASS"
+  },
+  "next_action": "On a real isolated Chrome origin, run direct R5 kit import and cold restart. Then implement/run cumulative import order scenario (L13/L16/L17 then enriched L01 with merge), verify 3 IDs and progress; no production changes before passing."
+}

@@ -295,7 +295,7 @@
     }
   ],
   "blockers": [],
-  "resume_instruction": "A1-L24 Stage4 Repair1: correct L24-S4-B001 (museum visits guest), B002 (Ordinalzahl example), B003 (Generalsekretär non-target-bearing Kombination); adjudicate zero-synonym exception and four editorial review risks, preserve source and L01-L23 LOCKED; rerun independent language QA and official gates. No Stage5 until Stage4 PASS.",
+  "resume_instruction": "A1-L24: re-open only 3 Duden-attested synonym candidates through explicit Stage3C semantic successor (register/valency, evidence eligibility, candidate ledger, matrix and relation graph), then independently re-run Stage4; do not mark Stage4/Stage5 PASS before semantic gate.",
   "portable_state": {
     "filename": "German-Content-Production-Kit-v3.3.2-Menschen-Course-Export-Ready-CANDIDATE.zip",
     "sha256": "da1090dd6983c5081b47dedf619b27ddb3b420c890e4e70fd874c0217462306f",
@@ -311,7 +311,7 @@
     "latest_portable_checkpoint": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L23-v3.3.6-GFP-v465-LOCKED.zip",
     "latest_portable_checkpoint_sha256": "e6a99d17e73dac52c248e162303e14fe5687c70d3bee6b406b88ea31254cd3b0"
   },
-  "current_scope": "A1-L24 Stage4 Repair1 BOUNDED PASS; full editorial QA pending",
+  "current_scope": "A1-L24 Stage4 editorial full review completed; three semantic synonyms require Stage3C successor, final Stage4 blocked",
   "lock_state": "A1-L01_TO_A1-L23_LOCKED; A1-L24_STAGE2_PASS_NOT_LOCKED",
   "locked_at": "2026-10-07",
   "release_artifact": {
@@ -1651,7 +1651,7 @@
     "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "cumulative_targets": 175
   },
-  "next_action": "Independent comprehensive editorial QA of all 308 trilingual examples and 162 combinations; preserve source and locked lessons.",
+  "next_action": "A1-L24: re-open only 3 Duden-attested synonym candidates through explicit Stage3C semantic successor (register/valency, evidence eligibility, candidate ledger, matrix and relation graph), then independently re-run Stage4; do not mark Stage4/Stage5 PASS before semantic gate.",
   "a1_l18": {
     "state": "LOCKED",
     "source_rows": 132,
@@ -2528,24 +2528,19 @@
     "next_operation": "A1-L20 Stage5 Delivery Projection; runtime remains RESOLVE_CURRENT_AT_STAGE6."
   },
   "latest_stage4_checkpoint": {
-    "status": "PASS_BOUNDED_REPAIR1_STAGE4_FULL_EDITORIAL_PENDING",
-    "artifact": {
-      "filename": "Menschen-A1-L24-v3.3.6-Stage4-Repair1-BOUNDED-PASS-CHECKPOINT.zip",
-      "sha256": "6ae060810a303dff62dd0d954bbeddac54a16dc61df6110b19b50093fb84d24c",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-Repair1-BOUNDED-PASS-CHECKPOINT.zip",
-      "library_file_id": "file_00000000d93c8243a6cc767178ae082e",
-      "size_bytes": 1547533
+    "scope": "A1-L24",
+    "status": "BLOCKED_SEMANTIC_REOPEN_REQUIRED",
+    "archive": {
+      "filename": "Menschen-A1-L24-v3.3.6-Stage4-FULL-EDITORIAL-AUDIT-SEMANTIC-REOPEN-REQUIRED.zip",
+      "sha256": "08f77e255c10c1ce49533275714a53347d726ad941f7dfe497a7bce06ef14ed0",
+      "size_bytes": 1613788,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-FULL-EDITORIAL-AUDIT-SEMANTIC-REOPEN-REQUIRED.zip",
+      "library_file_id": "file_0000000057e881f4af3b1e22f505d854",
+      "library_stable_id": "libfile_8b348ae390d48191b24f46504bb3f971",
+      "library_roundtrip": "PASS_SHA256_AND_BYTE_COMPARE"
     },
-    "validation": {
-      "official": "4/4 PASS",
-      "bounded": "22/22 PASS",
-      "exact_library_rematerialization": "PASS"
-    },
-    "repaired_blockers": 3,
-    "adjudicated_review_items": 4,
-    "stage4_final": false,
     "stage5_allowed": false,
-    "next_action": "Independent comprehensive editorial QA of all 308 trilingual examples and 162 combinations; preserve source and locked lessons."
+    "next_action": "A1-L24: re-open only 3 Duden-attested synonym candidates through explicit Stage3C semantic successor (register/valency, evidence eligibility, candidate ledger, matrix and relation graph), then independently re-run Stage4; do not mark Stage4/Stage5 PASS before semantic gate."
   },
   "latest_stage5_checkpoint": {
     "state": "PASS_LIBRARY_AND_GIT_METADATA_SYNCED",
@@ -4266,11 +4261,13 @@
     }
   },
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A1-L24-v3.3.6-Stage4-Repair1-BOUNDED-PASS-CHECKPOINT.zip",
-    "sha256": "6ae060810a303dff62dd0d954bbeddac54a16dc61df6110b19b50093fb84d24c",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-Repair1-BOUNDED-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000d93c8243a6cc767178ae082e",
-    "size_bytes": 1547533
+    "filename": "Menschen-A1-L24-v3.3.6-Stage4-FULL-EDITORIAL-AUDIT-SEMANTIC-REOPEN-REQUIRED.zip",
+    "sha256": "08f77e255c10c1ce49533275714a53347d726ad941f7dfe497a7bce06ef14ed0",
+    "size_bytes": 1613788,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-FULL-EDITORIAL-AUDIT-SEMANTIC-REOPEN-REQUIRED.zip",
+    "library_file_id": "file_0000000057e881f4af3b1e22f505d854",
+    "library_stable_id": "libfile_8b348ae390d48191b24f46504bb3f971",
+    "library_roundtrip": "PASS_SHA256_AND_BYTE_COMPARE"
   },
   "a1_l24": {
     "stage1": {
@@ -4347,7 +4344,7 @@
       },
       "next_action": "A1-L24 Stage3A baseline richness audit, Stage3B targeted enrichment, Stage3C closed disposition."
     },
-    "stage3to7": "STAGE4_INDEPENDENT_AUDIT_FAIL_REPAIR_REQUIRED",
+    "stage3to7": "STAGE4_FULL_EDITORIAL_REVIEW_COMPLETE_BUT_SEMANTIC_REOPEN_REQUIRED",
     "stage3a": {
       "status": "PASS_BASELINE_ONLY",
       "scope": "A1-L24",
@@ -4582,6 +4579,39 @@
       "stage4_final": false,
       "stage5_allowed": false,
       "next_action": "Independent comprehensive editorial QA of all 308 trilingual examples and 162 combinations; preserve source and locked lessons."
+    },
+    "stage4_full_editorial": {
+      "status": "PASS_EDITORIAL_COVERAGE__SEMANTIC_REOPEN_REQUIRED",
+      "framework": "v3.3.6",
+      "scope": "A1-L24",
+      "reviewed": {
+        "new_targets": 77,
+        "trilingual_example_groups": 308,
+        "example_language_texts": 924,
+        "kombinationen": 162,
+        "kombinationen_language_texts": 486
+      },
+      "repair2": {
+        "field_changes": 20,
+        "source_changes": 0,
+        "locked_l01_l23_changes": 0
+      },
+      "independent_checks": "24/24 PASS",
+      "official_parent_validators": "4/4 PASS_EXACT_IMMUTABLE_STAGE3C",
+      "blocking_semantic_evidence_candidates": 3,
+      "stage3c_synonym_dimensions_before": "83/83 CLOSED_NO_FORCE",
+      "status_stage4_final": "BLOCKED_NOT_PASS",
+      "stage5_allowed": false,
+      "archive": {
+        "filename": "Menschen-A1-L24-v3.3.6-Stage4-FULL-EDITORIAL-AUDIT-SEMANTIC-REOPEN-REQUIRED.zip",
+        "sha256": "08f77e255c10c1ce49533275714a53347d726ad941f7dfe497a7bce06ef14ed0",
+        "size_bytes": 1613788,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L24-v3.3.6-Stage4-FULL-EDITORIAL-AUDIT-SEMANTIC-REOPEN-REQUIRED.zip",
+        "library_file_id": "file_0000000057e881f4af3b1e22f505d854",
+        "library_stable_id": "libfile_8b348ae390d48191b24f46504bb3f971",
+        "library_roundtrip": "PASS_SHA256_AND_BYTE_COMPARE"
+      },
+      "next_action": "A1-L24: re-open only 3 Duden-attested synonym candidates through explicit Stage3C semantic successor (register/valency, evidence eligibility, candidate ledger, matrix and relation graph), then independently re-run Stage4; do not mark Stage4/Stage5 PASS before semantic gate."
     }
   },
   "latest_stage1_checkpoint": {

@@ -1,8 +1,8 @@
 {
-  "schema": "flashcards-project-execution-safety@1.0.0",
+  "schema": "flashcards-project-execution-safety@1.1.0",
   "status": "ENFORCED",
-  "updated_at": "2026-09-24T15:19:00+02:00",
-  "purpose": "Prevent long tool-heavy production turns from completing work without delivering a visible final response, while preserving durable resumability across ChatGPT, Codex and Work.",
+  "updated_at": "2026-10-10T01:30:00+02:00",
+  "purpose": "Prevent lost work while allowing continuation turns to finish a real major stage instead of stopping on tiny PARTIAL checkpoints.",
   "canonical_source": "hosseinmehdizade-tech/German-Flashcards-Pro/EXECUTION-SAFETY-POLICY.json",
   "applies_to": [
     "German-Flashcards-Pro runtime/UI/importer/QA/packaging work",
@@ -11,26 +11,28 @@
   ],
   "core_flow": [
     "RESOLVE_AUTHORITY",
-    "DO_CURRENT_MILESTONE",
+    "DO_CURRENT_MAJOR_MILESTONE",
     "VALIDATE",
-    "PERSIST_PORTABLE_CHECKPOINT_OR_ARTIFACT",
-    "SYNC_COMPACT_GIT_STATE",
-    "SEND_VISIBLE_FINAL_RESPONSE",
+    "PERSIST_DURABLE_STATE",
+    "SYNC_COMPACT_GIT_STATE_AT_VALIDATED_MILESTONE",
+    "SEND_VISIBLE_FINAL_RESPONSE_AT_REAL_BOUNDARY",
     "ONLY_THEN_START_NEXT_MAJOR_MILESTONE_IN_A_NEW_TURN_BY_DEFAULT"
   ],
   "turn_boundary": {
-    "default": "ONE_MAJOR_DURABLE_MILESTONE_PER_TURN",
-    "rule": "After a major stage/milestone reaches PASS, BLOCKED, or another durable resume boundary, persist it and send the user a final response before starting the next major stage.",
-    "allowed_same_turn_continuation": "Small cleanup/verification needed to make the current milestone durable is allowed. Do not silently roll into the next major stage.",
-    "user_override": "The user may explicitly request multi-stage execution, but the tool budget and intermediate-checkpoint rules still apply."
+    "default": "ONE_MAJOR_STAGE_OR_EXPLICIT_DELIVERABLE_PER_TURN",
+    "major_milestone_definition": "A major milestone is a named stage or explicit deliverable reaching a real terminal state for that turn, such as Stage2B CLOSED/PASS, Stage3C PASS, Stage4 PASS, Stage5 delivery, Stage6 acceptance, or a genuine BLOCKED state. Preflights, partial audits, shards, candidate tables, review batches and PARTIAL checkpoints are not major milestones by themselves.",
+    "continue_request_rule": "When the user asks to continue/resume (including repeated unattended continuation turns), keep working on the currently active major stage until it reaches PASS/CLOSED, a genuine BLOCKED state, a material authority conflict, or the hard tool/safety boundary. Do not intentionally stop merely because a sub-checkpoint was created.",
+    "partial_checkpoint_rule": "Intermediate checkpoints are recovery/resume aids. They may be persisted silently or compactly, but they must not be treated as completion, must not advance latest_completed_milestone, and must not trigger a user-facing ZIP/handoff unless the hard boundary, a real blocker, or the user explicitly requires it.",
+    "after_major_completion": "After the current major stage reaches PASS/CLOSED/BLOCKED, persist and send a visible final response before silently entering the next major stage, unless the user explicitly requested multi-stage execution.",
+    "user_override": "The user may explicitly request multi-stage execution; hard safety/tool limits and durable recovery still apply."
   },
   "tool_budget": {
     "soft_external_operations": 20,
-    "action_at_soft_budget": "Stop at the next safe durable boundary, persist state, and answer the user.",
+    "action_at_soft_budget": "Do not stop solely because the soft budget was reached. Persist a lightweight in-progress resume point if useful, then continue the current major stage while the hard budget and safety constraints allow.",
     "hard_external_operations": 30,
-    "hard_rule": "Do not exceed the hard budget unless stopping would risk losing already-produced work; create an intermediate checkpoint first whenever possible.",
+    "hard_rule": "Do not exceed the hard external-operation budget unless stopping would risk losing already-produced work. If the current major stage is incomplete at the hard boundary, persist an exact IN_PROGRESS resume point and answer honestly; the next continuation turn resumes from it.",
     "retry_per_failed_operation": 1,
-    "retry_rule": "After one corrected retry, record PENDING/BLOCKED and answer instead of entering a retry loop."
+    "retry_rule": "After one corrected retry, record the failed operation as PENDING/BLOCKED only if it genuinely prevents the current stage; otherwise continue unaffected work."
   },
   "context_budget": {
     "prefer_targeted_reads": true,
@@ -52,23 +54,48 @@
   },
   "final_response_contract": {
     "required_after": [
-      "PASS milestone",
-      "BLOCKED milestone",
-      "durable checkpoint",
+      "major PASS/CLOSED milestone",
+      "genuine BLOCKED milestone",
+      "hard-budget forced IN_PROGRESS resume boundary",
       "material authority mismatch"
     ],
     "must_include": [
-      "what completed",
-      "PASS/BLOCKED/PENDING status",
-      "exact checkpoint/artifact or durable state location when applicable",
+      "what materially completed",
+      "PASS/BLOCKED/IN_PROGRESS status",
+      "exact checkpoint/artifact or durable resume state when applicable",
       "next action"
     ],
-    "anti_pattern": "Do not end a production turn after tool calls without a user-visible final response when a safe response can be sent."
+    "anti_pattern": "Do not end a continuation turn just because a PARTIAL/preflight/checkpoint exists. Do not present serial tiny checkpoints as meaningful progress."
   },
   "resume_rule": "A new chat/agent resumes from bootstrap + currentness/pins + PROJECT-STATE + relevant CHECKPOINT, not from reconstructing long chat history.",
   "relationship_to_existing_policies": [
     "PROJECT-MEMORY.json",
     "GIT-SYNC-POLICY.json",
     "PROJECT-OPERATING-MODE-v2.md"
-  ]
+  ],
+  "unattended_continuation_mode": {
+    "status": "ACTIVE",
+    "trigger": "An explicit continue/resume request in an active workstream, including repeated automated user turns such as Tampermonkey sending ادامه بده / continue.",
+    "goal": "Maximize meaningful progress on the current named stage, not maximize checkpoint count.",
+    "behavior": [
+      "Resume from the newest valid state and continue the same major stage.",
+      "Do not emit a user-facing PARTIAL package merely because an intermediate analysis table or recovery checkpoint exists.",
+      "At soft budget, persist lightweight resume state when useful and continue.",
+      "At hard budget, persist exact resume state and answer IN_PROGRESS if the stage is still open.",
+      "On the next continuation turn, resume from that exact point rather than restarting analysis."
+    ],
+    "forbidden_patterns": [
+      "Treating preflight, overlap scan, editorial batch, dependency review, semantic routing or similar substeps as completed major milestones.",
+      "Producing serial PARTIAL ZIPs that do not materially advance the named stage.",
+      "Stopping at the soft tool budget solely because a durable sub-checkpoint exists."
+    ],
+    "no_background_claim": "This mode advances only on actual user turns; it does not claim background execution between turns."
+  },
+  "rollback": {
+    "previous_policy_schema": "flashcards-project-execution-safety@1.0.0",
+    "previous_policy_blob_sha": "501d390259c87ecc708bc626bc2f45cf2a5825ae",
+    "archived_copy": "Policy-History/EXECUTION-SAFETY-POLICY-v1.0.0-2026-09-24.json",
+    "reason_preserved": "The previous mode protected visible handoff after long turns. It is preserved intact in case the refined continuation mode causes worse reliability or overlong turns.",
+    "procedure": "Restore the archived copy to EXECUTION-SAFETY-POLICY.json in both repositories, then mark MEM-025-CONTINUE-UNTIL-MAJOR-STAGE as ROLLED_BACK or SUPERSEDED. Do not delete the v1.1.0 history."
+  }
 }

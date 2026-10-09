@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L01_STAGE3A_PASS__STAGE3B_NOT_STARTED",
+  "status": "B1_L01_STAGE3B_BATCH0001_PASS__PARTIAL",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -124,13 +124,13 @@
   "stages": {
     "stage1": "PASS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3A_PASS__STAGE3B_NOT_STARTED",
+    "stage3": "STAGE3B_BATCH0001_PASS__PARTIAL",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "DEFER_RUNTIME_RESOLUTION_UNTIL_NEEDED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Stage3B reference-availability preflight and gap-driven enrichment over the 2198 unresolved cells plus Kombinationen review for all 146 targets. Do not start B1-L02.",
+  "next_action": "Stage3B Batch0002 from mb1m-lu-0500; do not start B1-L02.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -247,5 +247,52 @@
     },
     "execution_boundary": "Stage3A only. No learner-facing definitions, translations, examples, relations, morphology, Rektion or Kombinationen accepted yet.",
     "next_action": "Stage3B reference-availability preflight and gap-driven enrichment over the 2198 unresolved cells plus Kombinationen review for all 146 targets. Do not start B1-L02."
+  },
+  "stage3b": {
+    "status": "PARTIAL_PASS",
+    "latest_batch": "0001",
+    "completed_core_targets": 20,
+    "lesson_targets": 146,
+    "remaining_core_targets": 126,
+    "cumulative": {
+      "senses": 10,
+      "expressions": 10,
+      "examples_de_fa_en": 80,
+      "kombinationen_items": 53,
+      "relations": 6,
+      "candidate_decisions": 8,
+      "rejected_candidates": 2,
+      "review_resolutions": 15,
+      "evidence_claims": 20,
+      "verified_present_cells": 310,
+      "unresolved_cells": 2034
+    },
+    "authority_resolution": {
+      "portable_reference_matrix": "gfp-field-authority-matrix@1.0.0",
+      "current_additive_matrix": "gfp-field-authority-matrix@1.1.0",
+      "conflict": "NONE_FOR_BATCH0001_USED_FIELDS",
+      "note": "Official portable v1.0 availability validator used; v1.1 extra routes are additive only."
+    },
+    "validators": {
+      "reference_availability": "PASS",
+      "candidate_ledger": "PASS",
+      "completeness_working": "PASS",
+      "independent_qa": "PASS",
+      "framework_v336_pytest": "10/10 PASS",
+      "fresh_package": "PASS",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "artifact": {
+      "filename": "Menschen-B1-L01-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+      "sha256": "c9a2ba61c6473acfec6d488a0da8272bf78bf7eef96cf1399fa0ca9c05a37d5a",
+      "size_bytes": 165791,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage3B-Batch0001-CHECKPOINT.zip",
+      "library_file_id": "file_00000000c2c882469e38e37dff7b0534",
+      "library_stable_id": "libfile_b01bd537f77481918b5a28f6d8cbd1ee",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "stage3c_full_gate": "NOT_RUN",
+    "stage4": "NOT_RUN",
+    "next_action": "Stage3B Batch0002 from mb1m-lu-0500; do not start B1-L02."
   }
 }

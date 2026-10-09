@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L01_STAGE1_2_PASS__STAGE3_NOT_STARTED",
+  "status": "B1_L01_STAGE3A_PASS__STAGE3B_NOT_STARTED",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -124,13 +124,13 @@
   "stages": {
     "stage1": "PASS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "NOT_STARTED",
+    "stage3": "STAGE3A_PASS__STAGE3B_NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "DEFER_RUNTIME_RESOLUTION_UNTIL_NEEDED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "B1-L01 Stage3A baseline richness audit over all 146 active identities, then Stage3B gap-driven enrichment and Stage3C full disposition closure. Do not start B1-L02.",
+  "next_action": "Stage3B reference-availability preflight and gap-driven enrichment over the 2198 unresolved cells plus Kombinationen review for all 146 targets. Do not start B1-L02.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -167,5 +167,85 @@
       "package": "CRC PASS; manifest 12/12; SHA256SUMS 13/13; duplicate members 0; unsafe paths 0"
     },
     "quality_boundary": "Stage1/2 only. Source errors are preserved in provenance and flagged; definitions/translations/examples/Kombinationen remain Stage3/4 work."
+  },
+  "stage3a": {
+    "status": "PASS",
+    "framework": "v3.3.6",
+    "profile": "menschen-b1-memrise@1.0.0",
+    "active_targets": 146,
+    "new_targets": 133,
+    "identity_only_reuses": 13,
+    "target_kinds": {
+      "sense": 67,
+      "expression": 79
+    },
+    "subtypes": {
+      "collocation": 45,
+      "adjective": 31,
+      "redemittel": 23,
+      "noun": 19,
+      "verb": 13,
+      "multiword_expression": 5,
+      "reflexive_verb": 4,
+      "adverb": 4,
+      "nvv": 1,
+      "idiom": 1
+    },
+    "dimension_cells": 2344,
+    "verified_present_cells": 146,
+    "verified_present_by_dimension": {
+      "source_audio": 146
+    },
+    "unresolved_cells": 2198,
+    "closed_no_force_cells": 0,
+    "gaps_by_dimension": {
+      "antonym": 146,
+      "argument_slots": 79,
+      "collocation": 146,
+      "component_relations": 79,
+      "definition_de": 146,
+      "example_translations_en": 146,
+      "example_translations_fa": 146,
+      "examples_de": 146,
+      "gloss_en": 146,
+      "meaning_fa": 146,
+      "morphology": 63,
+      "nvv_links": 146,
+      "rektion": 146,
+      "related": 146,
+      "structure_components": 79,
+      "synonym": 146,
+      "word_family": 146
+    },
+    "kombinationen": {
+      "targets": 146,
+      "status": "146/146 UNREVIEWED",
+      "inherited_items": 0,
+      "no_hard_quota": true
+    },
+    "semantic_inheritance_from_b1_verben": 0,
+    "identity_only_reuse_ids": "mb1m-lu-0001..mb1m-lu-0013",
+    "validators": {
+      "source_occurrences": "PASS 126/126",
+      "identity_closure": "PASS 126 occurrences / 146 active IDs",
+      "enrichment_completeness_baseline": "PASS 2344 cells",
+      "candidate_ledger_working": "PASS 0 candidates",
+      "independent_qa": "PASS",
+      "fresh_extract_manifest": "43/43 PASS",
+      "fresh_extract_sha256s": "PASS",
+      "archive_crc": "PASS",
+      "package_hygiene": "PASS"
+    },
+    "artifact": {
+      "filename": "Menschen-B1-L01-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "55ef46416f0ff21a003a2d591e2edd6484f90652808e0897edf23cd8b5eac071",
+      "size_bytes": 112386,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "library_file_id": "file_00000000a7e881f4860e4921e1d3645c",
+      "library_stable_id": "libfile_648d16e65f188191bd0da89699ef2767",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "execution_boundary": "Stage3A only. No learner-facing definitions, translations, examples, relations, morphology, Rektion or Kombinationen accepted yet.",
+    "next_action": "Stage3B reference-availability preflight and gap-driven enrichment over the 2198 unresolved cells plus Kombinationen review for all 146 targets. Do not start B1-L02."
   }
 }

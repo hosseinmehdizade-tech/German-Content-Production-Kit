@@ -1,0 +1,50 @@
+{
+  "schema": "gcpk-workstream-resume-currentness-policy@1.0.0",
+  "status": "ACTIVE",
+  "effective_date": "2026-10-09",
+  "incident": "Menschen A2 L01 was falsely reported as Stage2B because PROJECT-STATE.json and central CHECKPOINT.json lagged behind workstream LATEST.json at Stage3C Batch0008.",
+  "applies_to": [
+    "named content-workstream startup",
+    "continue/resume requests",
+    "status reporting",
+    "cross-project content work in German-Flashcards-Pro"
+  ],
+  "authority_order": [
+    "Explicit user-designated newer artifact in current chat; validate identity/integrity",
+    "Newest accessible validated portable workstream artifact/checkpoint in current chat, Project Sources or Library, based on actual milestone/lineage not filename or timestamp alone",
+    "Workstream-local LATEST.json if present, paired with its cited batch/milestone receipt and artifact identity/hash",
+    "Workstream CHECKPOINT.json, only if not contradicted by higher-priority evidence",
+    "Global PROJECT-STATE.json summary, only if not contradicted by higher-priority evidence",
+    "Historical branches and old reports for recovery/comparison only"
+  ],
+  "startup_gate": {
+    "named_workstream_required": true,
+    "derive_directory_from": "PROJECT-STATE.json workstream.checkpoint path OR direct workstream path",
+    "fetch_workstream_latest_before_reporting": true,
+    "follow_latest_receipt": true,
+    "verify_receipt_milestone_and_sha256_match_latest": true,
+    "check_newer_verified_portable_artifact": true,
+    "compare_central_checkpoint_and_root_summary": true,
+    "stale_central_disposition": "LABEL_STALE_AND_IGNORE_FOR_PROGRESS; do not downgrade to central status",
+    "absence_of_latest": "fall back to verified portable, then CHECKPOINT/root summary; record missing pointer, do not invent",
+    "conflict_or_hash_mismatch": "REPORT_CONFLICT_OR_BLOCKED; do not guess or certify PASS",
+    "reporting": "Report latest *verified scope* (e.g. Stage3C Batch0008 PARTIAL), open dimensions, explicit blockers, next action, and distinguish Git-recorded tests from tests rerun now",
+    "no_forced_sync": "Read/check via lightweight metadata; Git is an async durability mirror, not binary transport or production blocker",
+    "stage_acceptance": "Do not promote bounded batch PASS into full Stage PASS, Stage4 or runtime FINAL"
+  },
+  "persistence_gate": {
+    "after_each_validated_workstream_milestone": "Persist portable checkpoint and independent QA; update milestone receipt and workstream LATEST.json; attempt bounded Git sync before handoff",
+    "central_checkpoint": "Update when safe; if stale keep explicit LATEST pointer authoritative and declare stale",
+    "global_project_state": "Refresh when safe; staleness must never hide newer workstream-local progress",
+    "git_failure": "Record PENDING/FAILED with exact hash and resume from newest valid portable artifact; no destructive fallback",
+    "parallelism": "Re-read the current LATEST SHA before pointer writes; never overwrite a concurrent newer milestone; preserve lesson/source/workstream isolation"
+  },
+  "known_example": {
+    "workstream": "menschen-a2-24-lessons-v336",
+    "latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
+    "central_path": "Workspaces/menschen-a2-24-lessons-v336/CHECKPOINT.json",
+    "lesson": "A2-L01",
+    "note": "Example paths only; do not pin Stage3C Batch0008 as a permanently current result"
+  },
+  "automation_boundary": "Rules are enforced whenever a connected agent begins/resumes work and reads startup policy. This does not launch unattended periodic jobs or force other live chats to refresh automatically."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "RESTART_BASELINE_PASS__NO_LESSON_CONTENT_GENERATED_YET",
+  "status": "B1_L01_STAGE1_2_PASS__STAGE3_NOT_STARTED",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -122,14 +122,50 @@
     "learnable_meta_only_source_lineage_not_srs_evidence": true
   },
   "stages": {
-    "stage1": "NOT_STARTED_PRODUCTION__SOURCE_BASELINE_RESOLVED",
-    "stage2": "NOT_STARTED",
+    "stage1": "PASS",
+    "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "DEFER_RUNTIME_RESOLUTION_UNTIL_NEEDED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "B1-L01 Stage1 Source/Inventory + Stage2 identity closure from the exact 126 source rows. Do not enrich until all occurrence split/merge/reuse/expression identities are explicitly closed.",
-  "created_at": "2026-10-09T12:15:00+02:00"
+  "next_action": "B1-L01 Stage3A baseline richness audit over all 146 active identities, then Stage3B gap-driven enrichment and Stage3C full disposition closure. Do not start B1-L02.",
+  "created_at": "2026-10-09T12:15:00+02:00",
+  "stage12": {
+    "status": "PASS",
+    "framework": "v3.3.6",
+    "source_rows": 126,
+    "source_ordinals": "4522..4647",
+    "source_audio": "126 refs / 126 unique / 126 present / 0 missing",
+    "source_occurrence_validator": "PASS 126 occurrences / 0 errors",
+    "active_canonical_units": 146,
+    "new_canonical_units": 133,
+    "reused_exact_locked_units": 13,
+    "reused_ids": "mb1m-lu-0001..mb1m-lu-0013",
+    "reuse_authority": {
+      "workstream": "menschen-b1-verben-kombinationen-v336",
+      "artifact_sha256": "3ef8d7599f72ada99e72ad2de0c719cb685eda766de9806d62eae8ea9aaa14b0",
+      "role": "IDENTITY_AND_COLLISION_REGISTRY_ONLY__NO_SEMANTIC_ENRICHMENT_COPIED"
+    },
+    "prior_existing_b1_max_id": "mb1m-lu-0481",
+    "new_id_range": "mb1m-lu-0482..mb1m-lu-0614",
+    "identity_closure_validator": "PASS 126 source occurrences / 146 active canonical IDs / 0 errors",
+    "unresolved_identity": 0,
+    "independent_qa": "PASS",
+    "known_source_review_flag_instances": 110,
+    "old_failed_lessonwise_semantics_consumed": false,
+    "stage3_started": false,
+    "artifact": {
+      "filename": "Menschen-B1-L01-v3.3.6-Stage1-2-CHECKPOINT.zip",
+      "sha256": "cf3314f612b874f7412e5b23f39c8835828275e34f8a61b0f69cbb34ee2e69c3",
+      "size_bytes": 57273,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage1-2-CHECKPOINT.zip",
+      "library_file_id": "file_00000000a5dc81f4b32fc0a58b29e2b1",
+      "library_stable_id": "libfile_b8e02dfb49188191a783ca21dd3de35c",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "package": "CRC PASS; manifest 12/12; SHA256SUMS 13/13; duplicate members 0; unsafe paths 0"
+    },
+    "quality_boundary": "Stage1/2 only. Source errors are preserved in provenance and flagged; definitions/translations/examples/Kombinationen remain Stage3/4 work."
+  }
 }

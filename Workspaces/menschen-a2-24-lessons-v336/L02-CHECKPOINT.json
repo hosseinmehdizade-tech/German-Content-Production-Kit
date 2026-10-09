@@ -1,49 +1,68 @@
 {
-  "schema": "menschen-a2-l02-stage2b-git-receipt@1.0.0",
+  "schema": "menschen-a2-l02-stage3a-git-receipt@1.0.0",
   "scope": "A2-L02",
   "framework": "v3.3.6",
-  "stage": "2B",
-  "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
-  "source": {
-    "rows": 88,
-    "ordinal_start": 2361,
-    "ordinal_end": 2448,
-    "source_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222"
-  },
-  "identity": {
-    "units_total": 62,
-    "new_a2": 59,
-    "reused_a1": 3,
-    "new_id_range": "ma2m-lu-0072..ma2m-lu-0130",
-    "bindings": 94,
-    "candidate_dispositions": 112,
-    "unresolved": 0,
+  "stage": "3A",
+  "status": "PASS_RICHNESS_BASELINE_COMPLETE__STAGE3B_NOT_STARTED",
+  "parent": {
+    "stage2b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE2B.json",
+    "stage2b_artifact_sha256": "f3ab2e51f7014fe1a4b1729427a30c088477301f58e46f0e3be0aef70f9f6507",
     "identity_fingerprint": "52889c90eb21d5f6e77650924f9b13d1745bf9ef54810d5202ab165d4244d26b"
   },
-  "a1_reuse_ids": [
-    "ma1m-lu-3018",
-    "ma1m-lu-3019",
-    "ma1m-lu-2667"
-  ],
-  "artifact": {
-    "filename": "Menschen-A2-L02-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "sha256": "f3ab2e51f7014fe1a4b1729427a30c088477301f58e46f0e3be0aef70f9f6507",
-    "bytes": 114145,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "library_file_id": "libfile_00d00de808948191aa7c33a91d454a25",
-    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  "baseline": {
+    "targets": 62,
+    "senses": 56,
+    "expressions": 6,
+    "new_a2": 59,
+    "locked_a1_dependencies": 3,
+    "dimension_cells": 940,
+    "verified_present_cells": 62,
+    "unresolved_cells": 878,
+    "verified_by_dimension": {
+      "source_audio": 62
+    },
+    "targets_with_persian_seed": 62,
+    "targets_with_any_german_example_seed": 60,
+    "targets_without_any_german_example_seed": [
+      "ma2m-lu-0109",
+      "ma2m-lu-0114"
+    ],
+    "source_alternative_relation_candidates": 18,
+    "canonical_sha256": "10b65005584124e29db4f35d62d5b4314603c5c7bc02b0e8099eff15254435b4",
+    "resolved_policy_sha256": "32c85398c465629ab5e7dc830efbe304199589539141cc06c4bba23b875028de"
   },
   "qa": {
-    "custom_verifier": "PASS",
-    "generic_identity_closure_validator": "PASS",
-    "manifest": "16/16",
-    "source_occurrences": "88/88"
+    "source_occurrences": "PASS_88_OF_88",
+    "identity_closure": "PASS_62_ACTIVE_IDS",
+    "official_enrichment_baseline_validator": "PASS_940_CELLS_878_UNRESOLVED_EXPECTED",
+    "custom_stage3a_verifier": "PASS",
+    "package_manifest": "PASS_22_OF_22",
+    "package_crc": "PASS",
+    "portable_self_verifier": "PASS_AFTER_FRESH_EXTRACT",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "separation": {
-    "A2_L01": "UNCHANGED__STAGE6_INDEPENDENTLY_OPEN",
-    "A1": "UNCHANGED",
-    "A2_verben": "UNCHANGED",
+  "artifact": {
+    "filename": "Menschen-A2-L02-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
+    "sha256": "9774e02d04ae74583a84800e9067579bac29db2f7c86b9ae0e1de5c75dabf68f",
+    "bytes": 176882,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
+    "library_file_id": "libfile_dee1d5a6bce48191ab9d5de257fe3c96",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundaries": {
+    "raw_persian_and_source_examples": "SEEDS_NOT_AUTO_APPROVED",
+    "relations": "NO_AUTO_PROMOTION_NO_FABRICATION",
+    "locked_a1_dependencies": "LOAD_VERIFY_PARENT_COMPATIBILITY_NO_IN_PLACE_MUTATION",
+    "A2_L01": "UNCHANGED__STAGE6_SEPARATE_OPEN_TRACK",
     "runtime_ui": "UNCHANGED"
   },
-  "next_action": "A2-L02 Stage3A richness baseline audit for all 62 active identities; do not reopen Stage2B unless new identity evidence appears."
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "next_action": "A2-L02 Stage3B gap-driven evidence enrichment across 878 unresolved cells. Prioritize MUST_HAVE definition/FA/EN/examples and locked-parent compatibility, then morphology/structure/relations; persist accepted/rejected candidates. Do not reopen Stage2B absent new identity evidence."
 }

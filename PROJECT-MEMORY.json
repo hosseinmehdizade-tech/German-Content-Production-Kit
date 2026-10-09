@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-10-04",
+  "updated_at": "2026-10-10",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -1301,6 +1301,79 @@
           "scope"
         ],
         "sha256": "c6ea0311a98c6844cab14ea82e509f93ce56ca9197d3da63bd45ae8b5ca6f09a"
+      }
+    },
+    {
+      "id": "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE",
+      "status": "ACTIVE",
+      "date": "2026-10-10",
+      "category": "execution_process",
+      "scope": "All project workstreams when the user explicitly requests continue/resume or uses repeated unattended continuation turns.",
+      "incident": "Repeated continuation turns were being terminated after tiny PARTIAL checkpoints instead of completing the current named stage. In Menschen A2 L02 this produced many one-minute partial ZIPs and failed to complete Stage2B during an eight-hour unattended window.",
+      "decision": "A continuation request must keep working on the current major stage until that stage reaches PASS/CLOSED, a real BLOCKED state, or the hard safety/tool boundary. Preflights, partial audits, shards and intermediate checkpoints are resume aids, not user-facing milestones and must not intentionally terminate the turn. Reaching the soft tool budget alone is not a stop condition; persist lightweight resume state and continue. A user-facing partial handoff is allowed only for a real blocker, hard-boundary forced stop, material authority conflict, or explicit user request.",
+      "explicit_user_approval": "On 2026-10-10 the user explicitly asked to fix the continuation behavior while preserving a rollback path if the new mode performs worse.",
+      "relationship_to_MEM_008": "REFINES_NOT_DELETES. MEM-008 remains the safety foundation and rollback baseline; this decision corrects milestone granularity and continuation behavior without removing hard budgets, durable recovery, or visible handoff at real boundaries.",
+      "safe_default": "CONTINUE_CURRENT_MAJOR_STAGE_NO_PARTIAL_STOP",
+      "rollback": {
+        "policy_archive": "Policy-History/EXECUTION-SAFETY-POLICY-v1.0.0-2026-09-24.json",
+        "previous_policy_blob_sha": "501d390259c87ecc708bc626bc2f45cf2a5825ae",
+        "rollback_action": "Restore the archived v1.0.0 policy to EXECUTION-SAFETY-POLICY.json in both repositories and mark this decision ROLLED_BACK/SUPERSEDED; do not delete the v1.1.0 history."
+      },
+      "preserved_guardrails": [
+        "One major stage/deliverable per turn by default; do not silently begin the next major stage after completion.",
+        "Hard external-operation budget and bounded retry rules remain enforced.",
+        "Source-first authority and stable-ID/source-fidelity rules remain unchanged.",
+        "GitHub remains lightweight durability rather than binary transport or a production blocker.",
+        "No fabricated linguistic enrichment or forced relations.",
+        "CURRENT runtime resolution remains required only when runtime compatibility matters."
+      ],
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "explicit_user_approval",
+          "id",
+          "incident",
+          "preserved_guardrails",
+          "relationship_to_MEM_008",
+          "rollback",
+          "safe_default",
+          "scope"
+        ],
+        "sha256": "8426300dd87f7e28b1a8dd9977179b37493decbabdc3637fc79e053e8ab0411a"
+      },
+      "prevention": {
+        "scope": "CONTENT",
+        "severity": "S2",
+        "root_cause": "Sub-checkpoints were misclassified as major milestones, and the soft tool budget was treated as a stop signal rather than a continuation checkpoint.",
+        "root_cause_basis": "Observed in Menschen A2 L02 continuation history and confirmed against EXECUTION-SAFETY-POLICY v1.0.0 semantics.",
+        "impact": "Automated continuation spent many turns creating small PARTIAL artifacts while the named Stage2B remained unfinished.",
+        "time_cost": "User reported an eight-hour unattended window without Stage2B completion.",
+        "wrong_path": [
+          "Stop after a preflight/PARTIAL artifact while the current named stage is still safely actionable.",
+          "Treat the soft external-operation budget as a mandatory handoff boundary.",
+          "Generate serial user-facing partial ZIPs instead of progressing the current major stage."
+        ],
+        "correct_method": "CONTINUE_CURRENT_MAJOR_STAGE_NO_PARTIAL_STOP",
+        "rule": "On explicit continue/resume, keep progressing the current named major stage until PASS/CLOSED, genuine BLOCKED, material authority conflict, or the hard safety/tool boundary. Intermediate checkpoints are resume aids, not completion milestones.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Hard safety/tool budget, source fidelity, no-fabrication, and real blocker rules remain enforced."
+        },
+        "evidence": [
+          "EXECUTION-SAFETY-POLICY.json",
+          "Policy-History/EXECUTION-SAFETY-POLICY-v1.0.0-2026-09-24.json",
+          "PROJECT-MEMORY.json#MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+        ],
+        "affected_workstreams": [
+          "All applicable project workstreams"
+        ]
       }
     }
   ],

@@ -1,0 +1,49 @@
+{
+  "schema": "menschen-a2-stage6-git-receipt@1.0.0",
+  "scope": "A2-L01",
+  "framework": "v3.3.6",
+  "stage": "6",
+  "status": "BLOCKED_EXACT_CURRENT_RUNTIME_PORTABLE_MATERIALIZATION_UNAVAILABLE",
+  "stage5_authority": {
+    "status": "PASS",
+    "artifact": "Menschen-A2-L01-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "fb4d9fa41ddce275d302a322aaad75cdd2b6fc82c11d7a46a8236025a0def504",
+    "dataset_sha256": "458b8c5a73a70a11b87b2649c125b1c223355fb5917aa725cb8fa54fa9866755",
+    "cards": 75
+  },
+  "target_runtime": {
+    "current": "v472-R106",
+    "artifact": "GFP-v472-R106-ACTIVE-IMPORT-STORAGE-RECOVERY.zip",
+    "sha256": "796e8518a201c7cd01664416df817b1ca4217cdbd2642848d5224999d9d9d2e9",
+    "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v472-R106-ACTIVE-IMPORT-STORAGE-RECOVERY.zip",
+    "library_file_id": "libfile_6b3a5ac8a6608191b8264efa9bb92a6f",
+    "last_fully_verified_runtime": "v466-R100",
+    "substitution_forbidden": true
+  },
+  "blocker": {
+    "code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
+    "attempts": 2,
+    "message": "This Project file does not have an authorized raw-byte materialization path.",
+    "policy": "Exact CURRENT portable artifact is mandatory for Stage6 final runtime/import acceptance."
+  },
+  "checkpoint_artifact": {
+    "filename": "Menschen-A2-L01-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+    "sha256": "47d9804be233d089cb6549473ab102940a114eaf32bf199c7842cab326ac5fdf",
+    "bytes": 4567,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+    "library_file_id": "libfile_b53273df9aa48191916eeb6a35f92d26",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "acceptance": {
+    "exact_current_runtime_materialized": false,
+    "exact_current_runtime_sha256_verified_here": false,
+    "direct_import": "NOT_RUN_BLOCKED",
+    "presentation": "NOT_RUN_BLOCKED",
+    "persistence": "NOT_RUN_BLOCKED",
+    "roundtrip": "NOT_RUN_BLOCKED",
+    "real_browser": "NOT_RUN_BLOCKED"
+  },
+  "content_mutation": false,
+  "runtime_mutation": false,
+  "next_action": "Make the exact CURRENT runtime ZIP accessible, re-resolve CURRENT again, verify its pinned SHA-256, then rerun Stage6 against the unchanged Stage5 dataset. Do not downgrade to v466 or substitute Git source mirror."
+}

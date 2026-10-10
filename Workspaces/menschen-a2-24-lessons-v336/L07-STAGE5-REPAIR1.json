@@ -1,0 +1,64 @@
+{
+  "schema": "menschen-a2-l07-stage5-repair1-git-receipt@1.0.0",
+  "scope": "A2-L07",
+  "framework": "v3.3.6",
+  "stage": "5-Repair1",
+  "status": "PASS_BOUNDED_PROJECTION_REPAIR__STAGE6_ACCEPTED_ON_REPAIR1",
+  "parent": {
+    "original_stage5_receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE5.json",
+    "original_stage5_artifact_sha256": "5d739eb14f2dfc113d3e43d9d907a0e76adf80e024c0b3c4f76d3da189f2afd1",
+    "stage4_artifact_sha256": "96c95ff905ebe4fc55579251691d66bbbdff1f40fcfe03dee9b7a2dfeeaeb252"
+  },
+  "repair": {
+    "trigger": "Stage6 cumulative exact-runtime acceptance exposed two prior-A2 reuse failures: semantic-core parity and prior lesson memberships were lost.",
+    "defect_code": "A2L07-S5-R1-001",
+    "affected_ids": [
+      "ma2m-lu-0110",
+      "ma2m-lu-0349"
+    ],
+    "root_cause": "The original Stage5 locked-reuse path rebuilt reduced semantic envelopes instead of preserving the exact neutral prior-A2 locked parent row with a transport-only A2-L07 membership bridge.",
+    "fix": "Restore exact locked parent rows for the two PRIOR_A2 reuses and overlay only A2-L07 lesson/order, merged course memberships, current L07 source-audio refs, source bridge and immutable-parent markers.",
+    "bounded_delta": {
+      "changed_rows": 2,
+      "unchanged_rows": 73,
+      "semantic_authority_changed": false,
+      "source_authority_changed": false,
+      "identity_changed": false,
+      "runtime_ui_changed": false
+    },
+    "original_stage5_preserved": true
+  },
+  "projection": {
+    "cards": 75,
+    "examples": 300,
+    "kombinationen_visible_items": 157,
+    "import_dataset_sha256": "0dd8a90bed30af6bfde4d35699692580d04b7fcdbda691e0af7b33ece9007176",
+    "projected_cards_sha256": "ec98caf90f96bd1e6c2ec0d7ba9708f60d4f5b40c3a53bc7c219c51f869587e7",
+    "canonical_sha256": "fa43418cfa63a2653f3cf53f35edc2bd76176f8d98562d6b628dcd45d6e0cc90"
+  },
+  "qa": {
+    "repair_qa": "8/8 PASS",
+    "unified_projection": "PASS_75",
+    "source_occurrences": "PASS_93",
+    "identity_closure": "PASS_75_ACTIVE_IDS",
+    "candidate_ledger": "PASS_1058",
+    "completeness_upstream_unchanged": "PASS_75_TARGETS_1133_CELLS_0_UNRESOLVED",
+    "package": "PASS_59_MEMBERS_49_MANIFEST_50_SHA256SUMS_CRC",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "stage6_rerun": "PASS_114_OF_114_CUMULATIVE__32_OF_32_TARGET"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L07-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "39a5d36a8ba82a4df6940a65de116c6790cb9590a84da3e61ae24249d7d4515d",
+    "size_bytes": 488917,
+    "members": 59,
+    "manifest_entries": 49,
+    "sha256sum_entries": 50,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L07-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_00000000cf18820ab6abb7f4789445c0",
+    "library_stable_id": "libfile_dc0fdda925ac8191904d611504e97f51",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "supersedes_for_runtime_acceptance": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE5.json",
+  "next_action": "Use Repair1 as the Stage5 authority. Stage6 has passed on exact CURRENT v475-R109; proceed to A2-L07 Stage7."
+}

@@ -1,11 +1,11 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L02_STAGE5_PASS_CLEAN_PROJECTION",
-  "quality": "PASS_STAGE5_IMPORT_READY_CONTENT__STAGE6_NOT_RUN",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE5.json",
-  "artifact_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-  "artifact_library_file_id": "libfile_a77e6e87b62081919cf816f794da8cd3",
+  "latest_completed_milestone": "A2-L02_STAGE6_BLOCKED_RUNTIME_MATERIALIZATION",
+  "quality": "STAGE5_PASS__STAGE6_BLOCKED_CURRENT_RUNTIME_ARTIFACT_UNAVAILABLE",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
+  "artifact_sha256": "d75894d5dd8037b6e91281ec3d6c9a7d4176606757fe68f7c33885ed8f65319b",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+  "artifact_library_file_id": "libfile_7a02e749703081918eabede221bf2dac",
   "cumulative_authored": 59,
   "lesson_target_total": 62,
   "stage3c_ledger": {
@@ -17,10 +17,10 @@
   },
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "CENTRAL_CHECKPOINT_AND_PROJECT_STATE_RECONCILED_TO_STAGE6_BLOCKED",
-  "next_action": "Run A2-L02 Stage6 on exact Flashcards CURRENT resolved at execution time; materialize and SHA-verify CURRENT before import/presentation/persistence/roundtrip acceptance.",
+  "next_action": "Make the exact CURRENT portable runtime artifact accessible; then re-resolve CURRENT. If CURRENT is still v473-R107, verify SHA-256 7ad616c8...f817 and run Stage6 on unchanged Stage5 content. If CURRENT advanced, use the newer CURRENT. Never substitute v466 or the Git source mirror.",
   "central_checkpoint_sha": "8e7f44413ea7939ef78078da6b9da9cd58fe088e",
   "root_project_state_sha": "65e9c7d8dd7337844082c50145b75acbaec0df0d",
-  "last_git_coordination": "A2_L02_STAGE5_RECEIPT_CHECKPOINT_LATEST_SYNCED__A2_L01_STATE_PRESERVED",
+  "last_git_coordination": "A2_L02_STAGE6_BLOCKED_RECEIPT_CHECKPOINT_LATEST_SYNCED__A2_L01_STATE_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -135,11 +135,12 @@
       "note": "A2-L01 content remains unchanged; L02 progression does not close or overwrite L01 Stage6."
     },
     "A2-L02": {
-      "status": "STAGE5_PASS_IMPORT_READY_CONTENT__STAGE6_NOT_RUN",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE5.json",
-      "artifact_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
-      "cards": 62,
-      "stage6": "NOT_RUN"
+      "status": "STAGE5_PASS__STAGE6_BLOCKED_CURRENT_RUNTIME_MATERIALIZATION",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
+      "checkpoint_artifact_sha256": "d75894d5dd8037b6e91281ec3d6c9a7d4176606757fe68f7c33885ed8f65319b",
+      "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
+      "target_runtime": "v473-R107",
+      "blocker_code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE"
     }
   },
   "stage3a": {
@@ -242,7 +243,7 @@
   },
   "metadata_scope_notes": {
     "current_focus": "A2-L02",
-    "legacy_top_level_stage4_stage5_stage6_blocks": "Historical A2-L01 state retained for compatibility; authoritative A2-L02 Stage5 is stage5_l02 + L02-STAGE5.json.",
+    "legacy_top_level_stage4_stage5_stage6_blocks": "Historical A2-L01 state retained for compatibility; authoritative A2-L02 Stage6 blocker is stage6_l02 + L02-STAGE6.json.",
     "a2_l01": "Preserved under parallel_lesson_states.A2-L01."
   },
   "stage5_l02": {
@@ -275,5 +276,21 @@
       "library_file_id": "libfile_a77e6e87b62081919cf816f794da8cd3",
       "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
+  },
+  "stage6_l02": {
+    "status": "BLOCKED",
+    "blocker_code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
+    "target_runtime": "v473-R107",
+    "target_runtime_artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+    "target_runtime_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
+    "last_fully_verified_runtime": "v466-R100",
+    "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
+    "exact_current_runtime_materialized": false,
+    "direct_import": "NOT_RUN_BLOCKED",
+    "presentation": "NOT_RUN_BLOCKED",
+    "persistence": "NOT_RUN_BLOCKED",
+    "roundtrip": "NOT_RUN_BLOCKED",
+    "real_browser": "NOT_RUN_BLOCKED",
+    "runtime_substitution_permitted": false
   }
 }

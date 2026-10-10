@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "LOCKED__B1_L06_STAGE1_PENDING",
+  "status": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY__STAGE2_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -14,9 +14,9 @@
     "level": "B1",
     "lessons": 24,
     "production_order": "B1-L01..B1-L24",
-    "current_lesson": "B1-L05",
-    "lesson_title": "Bald wird in fast jedem Haushalt ein PC stehen.",
-    "next_lesson": "B1-L06"
+    "current_lesson": "B1-L06",
+    "lesson_title": "Fühlen Sie sich wie zu Hause.",
+    "next_lesson": "B1-L07"
   },
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
@@ -46,55 +46,25 @@
   },
   "source_quality_preflight": {
     "status": "PASS_WITH_SOURCE_QUALITY_FINDINGS_TO_REVIEW_IN_STAGE2_3_4",
-    "note": "The raw Memrise source is authoritative for inventory/membership/provenance, not automatically for learner-facing semantic correctness.",
+    "note": "The raw Memrise source is authoritative for inventory/membership/provenance, not automatically learner-facing semantic correctness.",
     "representative_findings": [
       {
-        "ordinal": 4522,
-        "kind": "GERMAN_SOURCE_EXAMPLE_TYPO",
-        "raw": "Der Abschied von meinen Freunden viel mir schwer",
-        "review": "fiel vs. viel"
+        "ordinal": 5102,
+        "kind": "SOURCE_AUDIO_GAP",
+        "raw": "Manchmal muss man eine Freundschaft beenden.",
+        "review": "Source row has no audio reference; preserve gap and do not fabricate."
       },
       {
-        "ordinal": 4556,
-        "kind": "DEFINITION_SCOPE_INCOMPLETE",
-        "raw": "organisiert / unorganisiert / desorganisiert",
-        "review": "Persian seed does not cover the full target set"
-      },
-      {
-        "ordinal": 4574,
-        "kind": "GERMAN_SOURCE_EXAMPLE_GRAMMAR",
-        "raw": "Aber ich kann kein Erfolg versprechen.",
-        "review": "Akkusativ masculine requires keinen Erfolg"
-      },
-      {
-        "ordinal": 4578,
-        "kind": "WRONG_TARGET_SOURCE_EXAMPLE",
-        "raw": "die Stärke -> Du hast ein starkes Herz, Mädchen.",
-        "review": "example uses adjective stark, not noun Stärke"
-      },
-      {
-        "ordinal": 4614,
+        "ordinal": 5129,
         "kind": "MIXED_LANGUAGE_SOURCE_EXAMPLE",
-        "raw": "Nachhilfe bekommen معلم خصوصی گرفتن",
-        "review": "not acceptable as a final German example"
+        "raw": "ausstopfen  پر کردن",
+        "review": "Preserve raw provenance; not acceptable unchanged as a final German example."
       },
       {
-        "ordinal": 4629,
-        "kind": "PERSIAN_SEMANTIC_MISTRANSLATION",
-        "raw": "Dem Sieger winkt eine Flasche Sekt.",
-        "review": "source Persian seed does not match German meaning"
-      },
-      {
-        "ordinal": 4630,
-        "kind": "RAW_TARGET_ORTHOGRAPHY",
-        "raw": "mit lächeln im gesischt",
-        "review": "preserve raw provenance; normalize only learner layer after identity review"
-      },
-      {
-        "ordinal": 4635,
-        "kind": "PERSIAN_TIME_MEANING_MISMATCH",
-        "raw": "Ich habe ihn vor zwei Jahren kennengelernt.",
-        "review": "means met/got to know him two years ago, not have known him for two years"
+        "ordinal": 5246,
+        "kind": "MIXED_LANGUAGE_SOURCE_EXAMPLE",
+        "raw": "Geh dadurch!    از میان آن برو!",
+        "review": "Preserve raw provenance; not acceptable unchanged as a final German example."
       }
     ]
   },
@@ -124,14 +94,14 @@
   },
   "stages": {
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
-    "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "PASS_CLOSURE",
-    "stage4": "PASS_AFTER_BOUNDED_REPAIR1",
+    "stage2": "NOT_STARTED",
+    "stage3": "NOT_STARTED",
+    "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "B1-L05 is locked. Start B1-L06 Stage1 from the registered Menschen source under v3.3.6.",
+  "next_action": "Run B1-L06 Stage2 identity closure under v3.3.6. Use B1-L01..L05 locked identities and the specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L07.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -2356,5 +2326,57 @@
     },
     "boundary": "B1-L05 content is LOCKED. The app runtime itself remains non-final: CURRENT v475-R109, LAST_FULLY_VERIFIED v466-R100, populated-profile confirmation pending at runtime-project level.",
     "next_action": "B1-L05 is locked. Start B1-L06 Stage1 from the registered Menschen source under v3.3.6."
+  },
+  "b1_l06_stage1": {
+    "status": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY__STAGE2_PENDING",
+    "framework": "v3.3.6",
+    "lesson_title": "Fühlen Sie sich wie zu Hause.",
+    "topic": "Einladungen",
+    "source_rows": 159,
+    "source_ordinals": "5092..5250",
+    "raw_german_nonempty": 159,
+    "raw_persian_nonempty": 159,
+    "source_examples_present": 105,
+    "source_examples_missing": 54,
+    "mixed_script_source_examples": 2,
+    "mixed_script_source_example_rows": [
+      5129,
+      5246
+    ],
+    "source_audio_refs": 158,
+    "source_audio_unique": 158,
+    "source_audio_present": "158/158",
+    "source_no_audio_rows": [
+      5102
+    ],
+    "exact_raw_german_duplicates": 0,
+    "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "export_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "raw_crosscheck": "159/159 exact across B1-v0.7/B1-v0.6/B1-v0.4 source-preserving snapshots plus Lektion-06 Original* columns",
+    "source_recovery_boundary": "Direct registered RAR5 CSV decompression unavailable in current container; raw Level tags not directly recovered and not fabricated.",
+    "historical_editorial_semantics_consumed": false,
+    "official_source_occurrences_validator": "PASS 159/159 / 0 errors",
+    "independent_qa": "PASS 20/20",
+    "package_verification": "PASS CRC / 12 manifest / 13 SHA256SUMS / 11 JSON / hygiene / checkpoint preflight",
+    "artifact": {
+      "filename": "Menschen-B1-L06-v3.3.6-Stage1-CHECKPOINT.zip",
+      "sha256": "014d7987dfb88148aecddcdad801a20651a3eef9fc4e019e76e2a7c3ff856f0b",
+      "size_bytes": 38329,
+      "members": 14,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-Stage1-CHECKPOINT.zip",
+      "library_file_id": "file_000000003ab081f49f4df489cb474898",
+      "library_stable_id": "libfile_1997123300a48191babb4bf7f6960be0",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L06-STAGE1-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "4b1a4503075bc25eb4e10a2494d1fe810291512369c9a7a1bf7ecdc31372ff27",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L06-STAGE1-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_000000005e2082109a7c1b8bd4c293bb",
+      "library_stable_id": "libfile_7bb9d7ca4a288191917125e8d8d3c335",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "stage2_started": false,
+    "next_action": "Run B1-L06 Stage2 identity closure under v3.3.6. Use B1-L01..L05 locked identities and the specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L07."
   }
 }

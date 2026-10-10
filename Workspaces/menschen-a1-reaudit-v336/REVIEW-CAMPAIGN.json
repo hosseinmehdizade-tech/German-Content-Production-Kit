@@ -25,11 +25,11 @@
   "progress": {
     "total_lessons": 23,
     "reaudit_complete": 6,
-    "reaudit_in_progress": 0,
-    "queued": 17,
+    "reaudit_in_progress": 1,
+    "queued": 16,
     "active_lesson": "A1-L08",
-    "overall_state": "A1_L07_STAGE7_LOCKED__A1_L08_NEXT",
-    "git_persistence": "STAGE7_IN_SYNC"
+    "overall_state": "A1_L08_STAGE1_2_PASS__STAGE3A_NEXT",
+    "git_persistence": "STAGE1_2_IN_SYNC"
   },
   "lessons": [
     {
@@ -690,10 +690,31 @@
     },
     {
       "id": "A1-L08",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE1_2_COMPLETE__STAGE3A_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "new_successor_artifact": "Menschen-A1-L08-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "independent_quality": "PASS_STAGE1_2__58_OF_58__OFFICIAL_SOURCE_IDENTITY_GATES_PASS",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L08-STAGE1-2-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "02f8cb4bbf3351d97c3bf80f9865cd65e7daee80ce9e8f42e067cb163ad2af72",
+      "latest_artifact_filename": "Menschen-A1-L08-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
+      "stage12_source_rows": 75,
+      "stage12_source_ordinals": "461..535",
+      "stage12_audio_refs": 74,
+      "stage12_zero_audio_rows": [
+        535
+      ],
+      "stage12_active_targets": 104,
+      "stage12_new_ids": 103,
+      "stage12_reused_ids": [
+        "ma1m-lu-0418"
+      ],
+      "stage12_senses": 56,
+      "stage12_expressions": 48,
+      "stage12_unresolved_identity": 0,
+      "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
+      "runtime_at_lock": null
     },
     {
       "id": "A1-L09",
@@ -827,21 +848,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L08 Stage1/2 under v3.3.6; resolve exact historical parent/source occurrence authority and preserve all A1-L02..L07 re-audit successors.",
-  "quality_state": "A1_L07_STAGE7_LOCKED__A1_L08_NEXT",
+  "next_action": "A1-L08 Stage3A: build the explicit v3.3.6 completeness baseline for all 104 active lesson identities before any Stage3B enrichment.",
+  "quality_state": "A1_L08_STAGE1_2_PASS__STAGE3A_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
-    "scope": "A1-L07",
-    "stage": "Stage7 Locked Re-audit Successor",
-    "quality": "PASS_STAGE7_LOCKED_POSTPACKAGE_25_OF_25_WITH_EXPLICIT_PERSISTENCE_BOUNDARY",
-    "artifact_sha256": "28c89244dd911ae94b786ea7113a39e446b93276d7b6dbe7566e413d3eee2032",
+    "scope": "A1-L08",
+    "stage": "Stage1/2 Source & Identity Closure",
+    "quality": "PASS_STAGE1_2__EXACT_SOURCE__104_IDENTITY_CLOSURE__58_OF_58",
+    "artifact_sha256": "02f8cb4bbf3351d97c3bf80f9865cd65e7daee80ce9e8f42e067cb163ad2af72",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "7ea13989f1ed17ada0e02c5f8711253474dd4cab",
-    "receipt_commit": "8d7ed51545ee9aa1ab2461c6548591ba317fcf48",
-    "prevention_commit": "9802081f58736e21e14f8ffad3a2810ad9db4445",
-    "runtime": "v475-R109",
-    "content_lock_state": "LOCKED",
-    "exact_persistence": "NOT_CERTIFIED__USER_ACCEPTED_BOUNDARY"
+    "checkpoint_commit": "32e2db43380b2f6436c9e6c950d8cd9b4271f0a2",
+    "receipt_commit": "f51232d75dbb7b38ce625d322974f079ac4b4975",
+    "prevention_commit": "dbd84ceffade4c17117faefb1e5a56d449e6fda4",
+    "runtime": "NOT_RUN_CONTENT_ONLY",
+    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
   }
 }

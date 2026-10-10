@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L02_STAGE1_2_PASS__STAGE3A_PENDING",
+  "status": "B1_L02_STAGE3A_PASS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -124,13 +124,13 @@
   "stages": {
     "stage1": "PASS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "NOT_STARTED",
+    "stage3": "PASS_STAGE3A",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L02 Stage3A baseline richness audit under v3.3.6. Do not start B1-L03.",
+  "next_action": "Run B1-L02 Stage3B reference-availability preflight and gap-driven enrichment across 1688 unresolved cells plus Kombinationen review for all 112 targets. Do not start B1-L03.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -604,5 +604,41 @@
       "library_stable_id": "libfile_6a3146772f3c8191b54c352b867552b7"
     },
     "next_action": "Run B1-L02 Stage3A baseline richness audit under v3.3.6. Do not start B1-L03."
+  },
+  "b1_l02_stage3a": {
+    "status": "PASS",
+    "upstream_stage12_sha256": "e656df87bd359c3d2ddc8d836eed74267da46416b61feab0ccd2bfbfe68bf661",
+    "canonical_sha256": "3de53da539b88c9df591f637fce2c79280fa5f5a37ef549eaeec34c8daeeabae",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "targets": 112,
+    "new_targets": 94,
+    "identity_only_reuses": 18,
+    "senses": 51,
+    "expressions": 61,
+    "dimension_cells": 1797,
+    "verified_present_cells": 109,
+    "unresolved_cells": 1688,
+    "source_audio": "109 verified / 3 missing",
+    "source_seed_audit": "112 Persian seeds / 88 German-example seeds / 24 without German-example seed; raw seeds not semantically promoted",
+    "kombinationen": "112/112 UNREVIEWED; 0 inherited",
+    "validators": "source PASS; identity PASS; completeness baseline PASS; candidate ledger working PASS; independent QA PASS; package/checkpoint prevention PASS; fresh postpackage PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L02-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "36f2b7d80297aa8e8de009b042d70e0488010e61486ed07869ffb217374ef407",
+      "size_bytes": 104078,
+      "package_members": 46,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L02-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "library_file_id": "file_0000000000b4820ab7c9afaa304f4cd8",
+      "library_stable_id": "libfile_dc98fafdc0288191bd46ab295c0ae6b3",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L02-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "22a6fb013aceea9351658553521c251e0440384255760be7fb0c25a2092b0412",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L02-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000e7c88210b3852b551df25540",
+      "library_stable_id": "libfile_fc53e8f352cc8191894b4270fa73dcc3"
+    },
+    "next_action": "Run B1-L02 Stage3B reference-availability preflight and gap-driven enrichment across 1688 unresolved cells plus Kombinationen review for all 112 targets. Do not start B1-L03."
   }
 }

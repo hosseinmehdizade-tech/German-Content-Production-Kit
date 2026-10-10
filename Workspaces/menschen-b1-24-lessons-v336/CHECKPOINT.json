@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L01_STAGE6_BLOCKED__CURRENT_V473_IMPORT_REGRESSION",
+  "status": "B1_L01_STAGE7_LOCKED__B1_L02_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -127,10 +127,10 @@
     "stage3": "PASS_STAGE3C",
     "stage4": "PASS",
     "stage5": "PASS",
-    "stage6": "BLOCKED",
-    "stage7": "NOT_STARTED"
+    "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "stage7": "LOCKED"
   },
-  "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun B1-L01 Stage6 from exact Stage5 TSV SHA-256 0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942. Do not start B1-L02 or Stage7 while this blocker remains.",
+  "next_action": "On next explicit continuation, start B1-L02 Stage1/2 after re-resolving currentness. Preserve B1-L01 immutable unless an explicit successor or repair is opened.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -486,6 +486,18 @@
     "next_action": "B1-L01 Stage6 — re-resolve German Flashcards Pro CURRENT, materialize the exact CURRENT portable artifact, verify its pinned SHA-256, then run direct-import/presentation/persistence/roundtrip acceptance on the exact Stage5 clean delivery; do not start B1-L02."
   },
   "stage6": {
+    "status": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
+    "current_runtime": "v474-R108",
+    "runtime_artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+    "stage5_tsv_sha256": "0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942",
+    "stage6_checkpoint_sha256": "983692ef4acb3c0689c2a669d73886f76c87d4b29c76d8736838b01017f20469",
+    "presentation": "Study/Quick/Typing/Audio 584/584 PASS",
+    "reused_progress": "13/13 PASS",
+    "backup_restore": "146/146 PASS",
+    "environment_boundary": "canonical-origin durable IndexedDB commit/reload not claimed; app-level populated-profile confirmation remains separate",
+    "stage7_allowed": true
+  },
+  "stage6_v473_blocked": {
     "status": "BLOCKED_CURRENT_RUNTIME_V473_STATE_DEPENDENT_IMPORT_REGRESSION_AND_EXACT_ARTIFACT_MATERIALIZATION_BOUNDARY",
     "latest_completed_milestone": "B1_L01_STAGE5_PASS",
     "current_runtime": "v473-R107",
@@ -537,5 +549,22 @@
     },
     "stage7": "NOT_ALLOWED_WHILE_BLOCKED",
     "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun B1-L01 Stage6 from exact Stage5 TSV SHA-256 0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942. Do not start B1-L02 or Stage7 while this blocker remains."
+  },
+  "stage7": {
+    "status": "LOCKED",
+    "artifact": {
+      "filename": "Menschen-B1-L01-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "783c40cd94113c30264d4850dc77477f59a9223f09ae107372bf302ea786ce33",
+      "size_bytes": 2347012,
+      "members": 298,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "library_file_id": "file_00000000b6f081f4b7e5c1408d78c844",
+      "library_stable_id": "libfile_383d4ad46bc88191a2ed6511baaa3771",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "verification": "CRC PASS; manifest 296/296; SHA256SUMS 297/297; JSON 225/225; official validators PASS; prevention gates PASS; final Stage6 harness 24/24",
+    "content_lock_state": "LOCKED",
+    "runtime_boundary": "GFP v474-R108 remains globally non-final",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE7.json"
   }
 }

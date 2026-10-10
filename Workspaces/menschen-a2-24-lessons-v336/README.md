@@ -1,27 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage4 INDEPENDENT QA = PASS; Stage5 is next.**
+**CURRENT lesson focus: A2-L04 Stage5 = PASS; Stage6 is next.**
 
 - Lesson: **A2-L04 — Was darf es sein?**
-- Independently re-audited identities: **85 = 67 new A2 + 18 immutable reuse dependencies**.
-- Stage3C closure independently recomputed: **1291/1291 cells closed, 0 pending**.
-- Stage4 effective examples: **268 DE/FA/EN**, exactly four per new A2 card.
-- Registered-source-exact German examples after Stage4: **63**.
-- Stage4 effective Kombinationen: **203**.
-- Effective graph relations: **10 stable relations**; no fabricated endpoints.
-- Stage4 applied **23 forward-only repair actions on 21 new A2 identities**.
-- Status distribution: **46 PASS_NO_REPAIR + 21 PASS_REPAIR_APPLIED + 18 PASS_LOCKED_DEPENDENCY_COMPATIBILITY**.
-- Immutable reuse verification: **7/7 parent ZIP hashes PASS; 18/18 parent projected rows exact/read-only**.
-- Raw source mutation: **0**; Stage3C parent mutation: **0**; locked-parent mutation: **0**.
-- Source anomalies/gaps remain preserved. The learner-facing `abnorme Situation` example was intentionally replaced forward-only with a neutral curated `ungewöhnliche Situation` example, reducing the source-exact count from 64 to 63 without rewriting the source.
-- Package/fresh-extract verifier, candidate-ledger closure and completeness closure all PASS.
-- Audio playback was **not tested** at Stage4; filename/provenance mapping only.
-- Stage5 has **NOT run**; A2-L04 is not yet final/import-ready.
-- A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains its separate runtime track.
+- Final Stage5 projection: **85 neutral de-vocabulary cards = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
+- Examples: **340 DE/FA/EN**, exactly four per card.
+- Registered-source-exact German examples on new A2 cards: **63**.
+- Kombinationen: **209 visible items** = 203 new-A2 items + 6 valid locked-reuse items; legacy stable-ID relation pointers are backend-only and not exposed as learner combinations.
+- Effective graph relations: **10**.
+- Source occurrences: **108**; source-output bindings: **117**.
+- Candidate ledger: **1206 final decisions, 0 deferred**.
+- Completeness: **1291 cells, 0 unresolved**.
+- Official v3.3.6 unified/source/identity/candidate/completeness gates: PASS.
+- Framework v3.3.6 regression: **10/10 PASS** via bounded 9+1 execution.
+- Official Stage5 delivery builder, final package checks and negative-tamper check: PASS.
+- Stage5 content is **import-ready**; Stage6 runtime acceptance has **not** run.
+- A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains a separate runtime track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE4.json](./L04-STAGE4.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE5.json](./L04-STAGE5.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Next major stage: **Stage5 clean projection + anti-bypass validation + complete content-production delivery**.
+Next major stage: **Stage6 exact-current-runtime acceptance**. Runtime currentness must be resolved again at Stage6 execution time.
 
 ---
 

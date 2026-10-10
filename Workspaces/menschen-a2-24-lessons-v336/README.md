@@ -1,23 +1,20 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage2B = PASS / identity closed; Stage3A is next.**
+**CURRENT lesson focus: A2-L06 Stage3A = PASS; Stage3B is next.**
 
 - A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 lesson: **Meine Lieblingsveranstaltung**; exact source rows **2742..2835 = 94 occurrences**.
-- Stage2B canonical identities: **61 = 53 new A2 + 8 immutable A1 reuses + 0 prior-A2 reuses**.
-- New stable IDs: **ma2m-lu-0308..ma2m-lu-0360**.
-- Source→canonical bindings: **97**; candidate dispositions: **180 final**; editorial reviews: **76 closed**; unresolved identity states: **0**.
-- Slash alternatives were reviewed, not blindly split. `Mittelalter` / `Mittelalterfest` is the explicit distinct-lexeme split.
-- `halten` stays one lexical identity across the source meanings/reflexive usage under MEM-009.
-- Immutable A1 reuses: Ausstellung, mal sehen, bis, dauern, bleiben, Konzert, Verbindung, einen Fehler machen.
-- Runtime-projected cumulative unique IDs through L06: **422** = prior 361 + 53 new + 8 A1 IDs entering A2 for the first time.
-- Official source-occurrence and identity-closure validators PASS; negative tamper rejected; v3.3.6 framework tests **10/10 PASS**.
-- Stage2B artifact SHA-256: `1490e6c85dd474b6e0906f39fe9206edfd82b70b7464cfe15d66b7ff76c65c7d`; Library exact byte roundtrip PASS.
-- Stage3 semantic/enrichment work has **not** started.
+- A2-L06 **Meine Lieblingsveranstaltung** keeps the Stage2B identity set frozen: **61 identities = 53 new A2 + 8 immutable A1 reuses**.
+- Stage3A richness baseline: **936 completeness cells**; **61 VERIFIED_PRESENT** at baseline (`source_audio` only); **875 MISSING_ACTIONABLE** for Stage3B review/authorship.
+- Raw Persian seeds: **61/61**; mapped German example seeds: **61/61**. They remain unapproved seeds, not learner-ready content.
+- Stage2B supplies **83 source alternative/combination candidates across 47 targets** for Stage3 relation/Kombinationen review; none is auto-promoted.
+- Conservative explicit source-form morphology hints occur on **37 targets / 39 source occurrences**; morphology itself remains unresolved until Stage3B.
+- Official v3.3.6 baseline validator PASS: **61 targets / 936 cells / 875 unresolved**; source-occurrence validator PASS **94/94**; custom verifier PASS.
+- Stage3A artifact SHA-256: `96810a1a651467bff5ab94b85a6847defb1f790b3c1767d1515d758384401be4`; fresh-extract rehash/JSON parse PASS; Library exact byte roundtrip PASS.
+- No learner-visible semantic content was produced and runtime/UI was not touched.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE2B.json](./L06-STAGE2B.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE3A.json](./L06-STAGE3A.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage3A richness baseline audit** for all 61 closed identities. Preserve L01-L05 LOCKED.
+Next major stage: **A2-L06 Stage3B gap-driven enrichment** across the 875 unresolved cells. Preserve L01-L05 LOCKED.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

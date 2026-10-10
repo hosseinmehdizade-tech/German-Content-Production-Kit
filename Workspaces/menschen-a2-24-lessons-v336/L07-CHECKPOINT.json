@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l07-stage1-checkpoint@1.0.0",
+  "schema": "gcpk-a2-l07-stage7-locked-checkpoint@1.0.0",
   "scope": "A2-L07",
   "framework": "v3.3.6",
-  "stage": "Stage6 COMPLETE",
-  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
+  "stage": "Stage7 LOCKED",
+  "status": "STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_rows": 93,
   "source_row_range": [
@@ -42,7 +42,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L07 Stage7 exact-final content-only lock/post-package verification. Re-resolve CURRENT first.",
+  "next_action": "A2-L07 is immutable. Start A2-L08 Stage1 source inventory from the registered Menschen A2 source; preserve A2-L01..L07 LOCKED.",
   "stage2b_closed": true,
   "identities": 75,
   "new_a2": 71,
@@ -122,7 +122,7 @@
     "repair_actions": 20,
     "repaired_identities": 19
   },
-  "quality_boundary": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE5_REPAIR1__STAGE7_NEXT",
+  "quality_boundary": "STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY__EXACT_CURRENT_V475",
   "stage4_started": true,
   "stage4_complete": true,
   "stage4": {
@@ -180,34 +180,35 @@
       "prior_membership_retention": "2/2 PASS"
     }
   },
-  "stage6": {
-    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE6.json",
-    "current_runtime": "v475-R109",
-    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
-    "cumulative": "114/114 PASS",
-    "target_persistence": "32/32 PASS",
-    "cumulative_unique": 495,
-    "prior_retained": "422/422 PASS",
-    "overlap_semantic_core": "2/2 PASS",
-    "overlap_memberships": "2/2 prior retained + L07 added",
-    "lesson_filtering": {
-      "A2-L01": 75,
-      "A2-L02": 62,
-      "A2-L03": 81,
-      "A2-L04": 85,
-      "A2-L05": 61,
-      "A2-L06": 61,
-      "A2-L07": 75
-    },
-    "artifact": {
-      "filename": "Menschen-A2-L07-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
-      "sha256": "a788b910dc59455861e14c61fc27094c43fe41e1963e9dfb84ea222ab855522f",
-      "library_file_id": "file_00000000274881f492bee0318c8d5dab",
-      "library_stable_id": "libfile_4509db6913f08191a01d14aa125ad948",
-      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-    }
+  "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "runtime_binding": "EXACT_CURRENT_V475_R109",
+  "stage6_complete": true,
+  "stage7_complete": true,
+  "content_lock_state": "LOCKED",
+  "runtime": "v475-R109",
+  "runtime_artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+  "stage5_artifact_sha256": "39a5d36a8ba82a4df6940a65de116c6790cb9590a84da3e61ae24249d7d4515d",
+  "stage5_projection": "REPAIR1",
+  "stage6_checkpoint_sha256": "a788b910dc59455861e14c61fc27094c43fe41e1963e9dfb84ea222ab855522f",
+  "import_dataset_sha256": "0dd8a90bed30af6bfde4d35699692580d04b7fcdbda691e0af7b33ece9007176",
+  "cumulative_unique_through_l07_runtime_verified": 495,
+  "stage7_artifact": {
+    "filename": "Menschen-A2-L07-v3.3.6-GFP-v475-LOCKED.zip",
+    "sha256": "62df3f80726d0893e39819162b37d13d8eeaf04acbe08ca01eb936a6fe6a8e45",
+    "size_bytes": 474404,
+    "members": 55,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L07-v3.3.6-GFP-v475-LOCKED.zip",
+    "library_file_id": "file_00000000f67082109ff3b71a60ed0ffb",
+    "library_stable_id": "libfile_9a533e81645881918494ec7186255e04",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "runtime_binding": "EXACT_CURRENT_v475-R109",
-  "stage6_complete": true
+  "exact_final_acceptance": {
+    "target_only": "32/32 PASS",
+    "cumulative": "114/114 PASS",
+    "page_errors": 0,
+    "prior_cards_retained": "422/422 PASS",
+    "overlap_semantic_core": "2/2 PASS",
+    "overlap_memberships": "2/2 prior retained + A2-L07 added",
+    "verified_import_provenance": "Prompt v3.3.6 / Validator gcpk-v3.3.6-stage7-a2-l07-locked / Provenance VERIFIED SHA-256"
+  }
 }

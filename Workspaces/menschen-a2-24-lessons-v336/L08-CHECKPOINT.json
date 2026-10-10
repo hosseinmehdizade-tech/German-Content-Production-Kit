@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l08-stage2b-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l08-stage3a-checkpoint@1.0.0",
   "scope": "A2-L08",
   "framework": "v3.3.6",
-  "stage": "Stage2B COMPLETE",
-  "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
+  "stage": "Stage3A COMPLETE",
+  "status": "PASS_RICHNESS_BASELINE_COMPLETE__STAGE3B_NOT_STARTED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "01-Source/SOURCE-MANIFEST-SNAPSHOT.json",
   "source_occurrences": "01-Source/A2-L08-SOURCE-OCCURRENCES.json",
@@ -44,7 +44,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L08 Stage3A richness baseline audit across all 79 closed identities; preserve Stage2B IDs and reopen identity only for genuinely new evidence.",
+  "next_action": "Run A2-L08 Stage3B gap-driven enrichment across all 1123 unresolved cells. Prioritize MUST_HAVE definition/FA/EN/examples and locked-parent compatibility, then morphology/structure/relations and lexical Kombinationen. Persist accepted/rejected candidates; do not reopen Stage2B absent genuinely new identity evidence.",
   "parent_stage1_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
   "stage2b_complete": true,
   "stage3_started": false,
@@ -87,5 +87,42 @@
     "library_file_id": "file_0000000082f88243b3acbde2f58b9dd8",
     "library_stable_id": "libfile_710a1c8a3184819199594eded7972348",
     "status": "PASS"
+  },
+  "stage3a_complete": true,
+  "stage3b_started": false,
+  "parent_stage2b_sha256": "845442eb9456095b736e8c56b540922bcb9849eaf369b2c55f862059bb2dcbc0",
+  "identity_fingerprint": "3557ab510999af7c5aa64e15e9ecdfd42a75af48ba9a7d01aad31e3964ebded1",
+  "canonical_sha256": "8064bfc59964d979bb52cc222a03d0f8769689bd2364471d939901957d98ce99",
+  "resolved_policy_sha256": "dd8a4473162153b9816134ecc5c1f7ead65d8dbd8b72cb3b804ad69d02fcf2d2",
+  "targets": 79,
+  "sense_targets": 69,
+  "expression_targets": 10,
+  "dimension_cells": 1202,
+  "verified_present_cells": 79,
+  "unresolved_cells": 1123,
+  "locked_a1_dependencies": [
+    "ma1m-lu-1724"
+  ],
+  "locked_prior_a2_dependencies": [
+    "ma2m-lu-0029",
+    "ma2m-lu-0378"
+  ],
+  "stage3a_artifact": {
+    "filename": "Menschen-A2-L08-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
+    "sha256": "153993a61e3d000fd39197d1d0307f255a299db4579173761461b43125f3699f",
+    "bytes": 290039,
+    "members": 33,
+    "checksum_entries": 23,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
+    "library_file_id": "file_00000000147c8210b4871bcef2dcd965",
+    "library_stable_id": "libfile_32fd465c16b08191bb881d8d1d5f67ea",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "kombinationen_policy": {
+    "policy": "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+    "scope": "ALL_79_LEXICAL_TARGETS",
+    "stage3a_status": "BASELINE_REVIEWED__NO_LEARNER_VISIBLE_ACCEPTED_ITEMS_CLAIMED",
+    "no_hard_quota": true,
+    "closed_no_force_allowed": true
   }
 }

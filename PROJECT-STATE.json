@@ -7754,11 +7754,11 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "B1_L01_STAGE6_BLOCKED__CURRENT_V473_IMPORT_REGRESSION",
+      "status": "B1_L01_STAGE7_LOCKED__B1_L02_PENDING",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
-      "latest_receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE6-BLOCKED.json",
+      "latest_receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE7.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "source_id": "menschen-a1a2b1-memrise-full-audio",
       "framework": "v3.3.6",
@@ -7785,22 +7785,17 @@
         "stage3c": "PASS"
       },
       "latest_portable_checkpoint": {
-        "filename": "Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
-        "sha256": "7fec3d05fb0aed3d8d3aa668bfadecd48e89c994b2d60be352e7878ecf6885eb",
-        "size_bytes": 394440,
-        "package_members": 18,
-        "sha256s": "16/16 PASS",
-        "manifest": "15/15 PASS",
-        "json_reparse": "13/13 PASS",
-        "crc": "PASS",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
-        "library_file_id": "file_000000004b1881f4b42a59aefd3b845e",
-        "library_stable_id": "libfile_b69f6837f03481918293ba21c85bb24a",
+        "filename": "Menschen-B1-L01-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "sha256": "783c40cd94113c30264d4850dc77477f59a9223f09ae107372bf302ea786ce33",
+        "size_bytes": 2347012,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "file_00000000b6f081f4b7e5c1408d78c844",
+        "library_stable_id": "libfile_383d4ad46bc88191a2ed6511baaa3771",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "semantic_inheritance_from_historical_bad_b1_lessonwise": 0,
       "semantic_inheritance_from_b1_verben": 0,
-      "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun B1-L01 Stage6 from exact Stage5 TSV SHA-256 0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942. Do not start B1-L02 or Stage7 while this blocker remains.",
+      "next_action": "On next explicit continuation, start B1-L02 Stage1/2 after re-resolving currentness. Preserve B1-L01 immutable unless an explicit successor or repair is opened.",
       "stage3c": {
         "status": "PASS",
         "targets": 146,
@@ -7854,28 +7849,25 @@
         "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6"
       },
       "stage6": {
-        "status": "BLOCKED",
-        "latest_completed_milestone": "B1_L01_STAGE5_PASS",
-        "current_runtime": "v473-R107",
-        "current_artifact_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
-        "last_fully_verified": "v466-R100",
-        "blocker": "STATE_DEPENDENT_INVALID_STRING_LENGTH_AT_1097_ACTIVE_CARDS_PLUS_EXACT_PORTABLE_MATERIALIZATION_BOUNDARY",
-        "direct_import_tsv_sha256": "0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942",
-        "stage7": "NOT_ALLOWED",
-        "artifact": {
-          "filename": "Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
-          "sha256": "7fec3d05fb0aed3d8d3aa668bfadecd48e89c994b2d60be352e7878ecf6885eb",
-          "size_bytes": 394440,
-          "package_members": 18,
-          "sha256s": "16/16 PASS",
-          "manifest": "15/15 PASS",
-          "json_reparse": "13/13 PASS",
-          "crc": "PASS",
-          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
-          "library_file_id": "file_000000004b1881f4b42a59aefd3b845e",
-          "library_stable_id": "libfile_b69f6837f03481918293ba21c85bb24a",
-          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-        }
+        "status": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
+        "current_runtime": "v474-R108",
+        "runtime_artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+        "stage6_checkpoint_sha256": "983692ef4acb3c0689c2a669d73886f76c87d4b29c76d8736838b01017f20469",
+        "final_harness": "24/24 PASS",
+        "runtime_release_final": false
+      },
+      "stage7": {
+        "status": "LOCKED",
+        "content_lock_state": "LOCKED",
+        "cards": 146,
+        "examples": 584,
+        "kombinationen_items": 472,
+        "relations": 59,
+        "source_occurrences": 126,
+        "final_import_tsv_sha256": "0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942",
+        "canonical_sha256": "e882e8b630cfbed590ebd71c1af75fb52c11c32de0bfbc2b1e8533d6600e9e66",
+        "artifact_sha256": "783c40cd94113c30264d4850dc77477f59a9223f09ae107372bf302ea786ce33",
+        "verification": "PASS_WITH_PROJECT_RUNTIME_BOUNDARY"
       }
     }
   },

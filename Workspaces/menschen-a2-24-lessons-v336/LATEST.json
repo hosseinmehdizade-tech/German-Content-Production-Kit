@@ -1,11 +1,11 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L02_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY_V474",
-  "quality": "LOCKED__PASS_WITH_ENVIRONMENT_BOUNDARY__CURRENT_V474__RUNTIME_GLOBAL_FINAL_PENDING_SEPARATELY",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE7.json",
-  "artifact_sha256": "342416a73507a385e31c964bb253f4b76f7046d38e8ace780f962bb47a8b2218",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-GFP-v474-LOCKED.zip",
-  "artifact_library_file_id": "libfile_f8d57e35c4588191aa2c6419d2b18213",
+  "latest_completed_milestone": "A2-L03_STAGE1_SOURCE_INVENTORY_PASS",
+  "quality": "STAGE1_PASS__83_SOURCE_OCCURRENCES__83_OF_83_AUDIO_PRESENT__STAGE2_NOT_STARTED",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE1.json",
+  "artifact_sha256": "7d3d1c9efad114f1af1fe4c8c90f4e96b70d117a94ef802ca30a6a62487e36c2",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L03-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+  "artifact_library_file_id": "libfile_b411e62b6e6c8191bcdf309371e5efd6",
   "cumulative_authored": 59,
   "lesson_target_total": 62,
   "stage3c_ledger": {
@@ -17,10 +17,10 @@
   },
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "CENTRAL_CHECKPOINT_AND_PROJECT_STATE_RECONCILED_TO_STAGE6_BLOCKED",
-  "next_action": "No further A2-L02 content work. Preserve this LOCKED release immutable; any future correction/enrichment must be an explicit successor. Continue another lesson/workstream separately.",
+  "next_action": "Stage2 canonicalization and mandatory Stage2B identity closure for A2-L03. Compare the 83 normalized source occurrences against immutable A1 authorities plus prior A2-L01/L02 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not begin Stage3 until identity closure has zero unresolved states.",
   "central_checkpoint_sha": "8e7f44413ea7939ef78078da6b9da9cd58fe088e",
   "root_project_state_sha": "65e9c7d8dd7337844082c50145b75acbaec0df0d",
-  "last_git_coordination": "A2_L02_STAGE7_LOCKED__EXACT_FINAL_54_OF_54_PASS__LIBRARY_ROUNDTRIP_EXACT__A2_L01_PRESERVED",
+  "last_git_coordination": "A2_L03_STAGE1_PASS__LIBRARY_ROUNDTRIP_EXACT__A2_L02_LOCKED_PRESERVED__A2_L01_STAGE6_OPEN_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -144,6 +144,23 @@
       "content_lock_state": "LOCKED",
       "stage7_complete": true,
       "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY"
+    },
+    "A2-L03": {
+      "status": "STAGE1_PASS__STAGE2_NOT_STARTED",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L03-CHECKPOINT.json",
+      "artifact_sha256": "7d3d1c9efad114f1af1fe4c8c90f4e96b70d117a94ef802ca30a6a62487e36c2",
+      "source_rows": 83,
+      "row_range": [
+        2449,
+        2531
+      ],
+      "audio": "83/83 PRESENT",
+      "missing_source_example_rows": [
+        2505,
+        2526
+      ],
+      "stage2_started": false
     }
   },
   "stage3a": {
@@ -245,13 +262,15 @@
     "stage5_import_ready": false
   },
   "metadata_scope_notes": {
-    "current_focus": "A2-L02",
+    "current_focus": "A2-L03",
     "legacy_top_level_stage4_stage5_stage6_blocks": "Historical A2-L01 state retained for compatibility; authoritative A2-L02 Stage6 state is stage6_l02 + L02-STAGE6.json.",
-    "a2_l01": "Preserved under parallel_lesson_states.A2-L01.",
+    "a2_l01": "Stage6 remains separately open; not overwritten by L03 progression.",
     "runtime_rebase": "A2-L02 Stage6 remains bound to CURRENT v474-R108; Stage5 bytes unchanged.",
     "deterministic_boundary": "54/54 deterministic Chromium/fake-IDB checks PASS. This does not substitute for real-origin Windows Chrome restart persistence.",
     "stage6_closure": "Content Stage6 is closed PASS_WITH_ENVIRONMENT_BOUNDARY on exact CURRENT v474. The remaining 1097+ populated-profile confirmation is an app/runtime-level boundary and does not promote v474 to FINAL.",
-    "stage7": "A2-L02 is LOCKED. A2-L01 remains separate and unchanged. Runtime v474 global populated-profile acceptance remains separate from content lock."
+    "stage7": "A2-L02 is LOCKED. A2-L01 remains separate and unchanged. Runtime v474 global populated-profile acceptance remains separate from content lock.",
+    "a2_l02": "LOCKED and immutable; preserved under parallel_lesson_states.A2-L02.",
+    "l03_stage1": "Exact registered source slice only; no canonicalization or source correction performed."
   },
   "stage5_l02": {
     "status": "PASS_CLEAN_PROJECTION_ANTI_BYPASS__STAGE6_NOT_RUN",

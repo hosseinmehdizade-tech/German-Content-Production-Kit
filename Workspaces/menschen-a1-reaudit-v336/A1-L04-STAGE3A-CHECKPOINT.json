@@ -1,0 +1,72 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage3a-checkpoint@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L04",
+  "framework": "v3.3.6",
+  "status": "PASS_STAGE3A_RICHNESS_BASELINE_WITH_MEM009_CARRYFORWARD__STAGE3B_EDITORIAL_PENDING",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "CP-MEM-001",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "previous_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L04-STAGE1-2-CHECKPOINT.json",
+  "prior_portable_sha256": "de9b2924165cd03bc63d898c6343cdcf2ea259c90652a0727b8b659198ac68d5",
+  "locked_parent_sha256": "c39b2cfdf1685001e64aee2d27bb5056b36633987b00e06a3f55b62fd1629309",
+  "counts": {
+    "targets": 71,
+    "lexical_senses": 50,
+    "expressions": 21,
+    "active_examples_trilingual": 284,
+    "retired_examples_preserved_as_carryforward_evidence": 28,
+    "typed_legacy_relation_claims_after_identity_remap": 31,
+    "relations_with_remapped_endpoint": 2,
+    "original_source_review_flag_targets": 23,
+    "mem009_retired_meaning_ids": 7,
+    "dimension_count": 17,
+    "matrix_cells": 1207,
+    "technical_parity_verified_cells": 213,
+    "legacy_present_unadjudicated_cells": 312,
+    "review_required_cells": 637,
+    "conditional_na_pending_cells": 45,
+    "cells_pending_semantic_adjudication": 994,
+    "priority_p1": 23,
+    "priority_p2": 32,
+    "priority_p3": 16,
+    "legacy_kombinationen_sections": 0,
+    "legacy_collocation_sections": 2
+  },
+  "gates": {
+    "source_stage12": "37/37 PASS inherited; raw archive exact and historical parent unchanged",
+    "stage3a_matrix": "71/71 x 17 dimension inventory PASS",
+    "four_example_annotations": "284/284 span exact",
+    "trilingual_translation_presence": "284/284 present",
+    "mem009_carryforward": "7/7 retired meanings + 28 retired examples retained as provisional evidence; relation endpoints normalized to active identities",
+    "independent_baseline_checks": "26/26 PASS",
+    "archive_verifier": "PASS",
+    "tamper_negative_control": "PASS_MUST_FAIL",
+    "library_exact_roundtrip": "PASS_EXACT_BYTES_SHA256",
+    "semantic_quality": "PENDING_STAGE3B_STAGE3C_STAGE4",
+    "combination_finality": "NOT_CLOSED",
+    "runtime_browser": "NOT_RUN"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L04-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
+    "sha256": "b8cf2204c769e2cb953d2f92437ae8f80b1b377d5cc39ba82917a0ef2fd2b510",
+    "size_bytes": 225069,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L04-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
+    "library_file_id": "file_000000004bd8821081068f3c6a01e19f",
+    "library_stable_id": "libfile_ae1f72e5b6ac8191abe76850ccd7def5",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "limitations": [
+    "This PASS proves complete baseline inventory, technical parity and lossless carryforward of the seven retired same-lexeme meaning records only; it is not semantic approval.",
+    "The 28 retired-sense examples are evidence, not extra final learner examples. Stage3B must keep exactly four final examples per active card while preserving verified meaning coverage.",
+    "Historical LOCKED A1-L04 and all downstream historical lesson artifacts remain immutable until their own re-audits.",
+    "No app/runtime acceptance is claimed."
+  ],
+  "next_action": "A1-L04 Stage3B: independently adjudicate all 71 active targets, beginning with 23 P1 flagged/merge-sensitive targets, then 32 P2 expression/verb/relation-bearing targets and 16 P3 simple targets. For the seven MEM-009 survivors, merge all verified retired meanings into the single-card learner back without silently discarding meaning coverage; select/repair exactly four examples per active card. Preserve rejected candidates and justified CLOSED_NO_FORCE; Stage3C only after all 1207 cells can be final-dispositioned.",
+  "parent_mutation": false
+}

@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-menschen-a2-lessonwise-checkpoint@1.2.0",
   "workstream": "menschen-a2-24-lessons-v336",
-  "scope": "A2-L01/L02/L03/L04-of-24",
+  "scope": "A2-L01/L02/L03/L04 locked; A2-L05 next",
   "framework": "v3.3.6",
-  "status": "A2_L01_L02_L03_STAGE7_LOCKED__A2_L04_STAGE6_PASS_STAGE7_NEXT",
+  "status": "A2_L01_L02_L03_L04_STAGE7_LOCKED__A2_L05_STAGE1_NEXT",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -36,8 +36,8 @@
     "1": "PASS_SOURCE_INVENTORY",
     "4": "PASS_INDEPENDENT_LESSON_SCALE_QA",
     "5": "PASS",
-    "6": "NOT_RUN_FOR_A2_L04",
-    "7": "NOT_STARTED_FOR_A2_L04",
+    "6": "PASS_WITH_ENVIRONMENT_BOUNDARY_FOR_A2_L04_ON_V475",
+    "7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY_FOR_A2_L04",
     "2A": "PASS_PRECANONICAL_REVIEW_WITHIN_STAGE2B",
     "2B": "PASS_IDENTITY_CLOSED",
     "3A": "PASS_BASELINE_COMPLETE",
@@ -50,7 +50,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "A2-L04 Stage7 content-only final package and post-package lock on exact CURRENT v475-R109. Preserve A2-L01/L02/L03 LOCKED.",
+  "next_action": "Run A2-L05 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L04 LOCKED.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
   "stage": "Stage5 COMPLETE",
   "stage1_portable_checkpoint": {
@@ -75,7 +75,7 @@
     "assigned_stable_IDs": 0,
     "qa": "PASS_14_OF_14_SHA256_POST_EXTRACT"
   },
-  "quality_boundary": "L01_L02_L03_LOCKED__L04_STAGE6_PASS_V475_56_OF_56__STAGE7_NEXT",
+  "quality_boundary": "A2_L01_L02_L03_L04_STAGE7_LOCKED__A2_L05_STAGE1_NEXT",
   "stage2b": {
     "status": "PASS_IDENTITY_CLOSURE_WITH_STAGE3_SEMANTIC_BOUNDARY",
     "source_rows_mapped": 88,
@@ -102,14 +102,19 @@
     "no_content_or_runtime_mutation": true
   },
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A2-L04-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
-    "sha256": "e58e5d355743c8038b3688f5aee497eff645e163603b6af4dd51a3d3589c4b41",
-    "bytes": 184941,
-    "members": 12,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
-    "library_file_id": "file_000000003184821087afefcc2620f4f9",
-    "library_stable_id": "libfile_e5f86f7fa67081919961c37d7d007225",
-    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "Menschen-A2-L04-v3.3.6-GFP-v475-LOCKED.zip",
+    "sha256": "a4268064cc7d3fa51b3c0b77b86cbf685b4377a2fd8bc5202812308c1cd82251",
+    "size_bytes": 698490,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-GFP-v475-LOCKED.zip",
+    "library_file_id": "file_0000000078fc81f484ed7a9fccee9344",
+    "library_stable_id": "libfile_eaa6573f55bc8191a91317e98d2b4ede",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "zip_members": 44,
+    "manifest_entries": 42,
+    "sha256sum_entries": 43,
+    "single_top_level": true,
+    "nested_zip_count": 0,
+    "flashcards_app_runtime_members": 0
   },
   "current_workstream_latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
   "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/STAGE6.json",
@@ -216,8 +221,8 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
   },
-  "current_lesson": "A2-L04",
-  "current_focus": "A2-L04_STAGE6_PASS__STAGE7_NEXT",
+  "current_lesson": "A2-L05",
+  "current_focus": "A2-L05_STAGE1_SOURCE_INVENTORY_NEXT",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -266,29 +271,22 @@
       "identity_fingerprint": "65c9d378e4a82d05c0e0c9bf6aec7bb327ef15b7d44681d9804c6c74639e5fc0"
     },
     "A2-L04": {
-      "status": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE6.json",
+      "status": "STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE7.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L04-CHECKPOINT.json",
+      "locked_artifact_sha256": "a4268064cc7d3fa51b3c0b77b86cbf685b4377a2fd8bc5202812308c1cd82251",
       "stage5_repair2_sha256": "c40e6e3c1b48628f946f7c6527ed9c29e28132a05cd11f15f128f42a1a5f1b59",
-      "dataset_sha256": "7f8ae3505d472b7a1ce7e98cc8ac6b6d3ebfd4ef8a2095734adf7ce538695795",
+      "stage6_checkpoint_sha256": "e58e5d355743c8038b3688f5aee497eff645e163603b6af4dd51a3d3589c4b41",
       "current_runtime": "v475-R109",
-      "runtime_sha256": "2969685daaa9c79f15519c5f3ae6e2626bfe18482e75b59f7cdd10b56eb9f23c",
-      "cumulative": "56/56 PASS",
-      "target_persistence": "7/7 PASS",
-      "lesson_filtering": {
-        "A2_L01": 75,
-        "A2_L02": 62,
-        "A2_L03": 81,
-        "A2_L04": 85
-      },
-      "stage6_closed": true,
-      "stage7_lock_allowed": true,
-      "checkpoint_artifact_sha256": "e58e5d355743c8038b3688f5aee497eff645e163603b6af4dd51a3d3589c4b41",
+      "runtime_artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+      "exact_final_acceptance": "56/56 cumulative + 7/7 persistence + 8/8 final package selection",
+      "content_lock_state": "LOCKED",
+      "stage7_complete": true,
       "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY"
     }
   },
-  "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L04-CHECKPOINT.json",
-  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE6.json",
+  "current_lesson_checkpoint": null,
+  "current_lesson_receipt": null,
   "stage2b_l03": {
     "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
     "source_rows": 83,
@@ -837,5 +835,115 @@
     "stage7_lock_allowed": true,
     "checkpoint_artifact_sha256": "e58e5d355743c8038b3688f5aee497eff645e163603b6af4dd51a3d3589c4b41",
     "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY"
+  },
+  "l04_stage7": {
+    "schema": "gcpk-a2-l04-stage7-post-package-verification@1.0.0",
+    "scope": "A2-L04",
+    "framework": "v3.3.6",
+    "stage": "7",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "stage7_complete": true,
+    "artifact": {
+      "filename": "Menschen-A2-L04-v3.3.6-GFP-v475-LOCKED.zip",
+      "sha256": "a4268064cc7d3fa51b3c0b77b86cbf685b4377a2fd8bc5202812308c1cd82251",
+      "size_bytes": 698490,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-GFP-v475-LOCKED.zip",
+      "library_file_id": "file_0000000078fc81f484ed7a9fccee9344",
+      "library_stable_id": "libfile_eaa6573f55bc8191a91317e98d2b4ede",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "zip_members": 44,
+      "manifest_entries": 42,
+      "sha256sum_entries": 43,
+      "single_top_level": true,
+      "nested_zip_count": 0,
+      "flashcards_app_runtime_members": 0
+    },
+    "runtime": {
+      "CURRENT": "v475-R109",
+      "CURRENT_artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+      "CURRENT_app_sha256": "367ebdbca257a1161339f80574bb93e32bb55d806ed3b3cdc3874987ace3d407",
+      "LAST_FULLY_VERIFIED": "v466-R100",
+      "no_downgrade": true,
+      "global_runtime_finality_claimed": false,
+      "current_verification_state": "PASS_DETERMINISTIC_MULTI_MEMBERSHIP_INDEX__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+      "same_profile_populated_profile_boundary": "PENDING_SEPARATE_APP_BOUNDARY",
+      "git_source_mirror": "PENDING_V475_SOURCE_MIRROR__EXACT_LIBRARY_ARTIFACT_VERIFIED"
+    },
+    "content": {
+      "cards": 85,
+      "new_a2": 67,
+      "reused_locked": 18,
+      "reused_a1": 17,
+      "reused_prior_a2": 1,
+      "examples_de": 340,
+      "examples_fa": 340,
+      "examples_en": 340,
+      "kombinationen_nonempty_sections": 69,
+      "kombinationen_items": 209,
+      "source_audio_refs": 117,
+      "final_dataset_sha256": "7f8ae3505d472b7a1ce7e98cc8ac6b6d3ebfd4ef8a2095734adf7ce538695795",
+      "projected_cards_sha256": "cf2e45e79943254c2e50adad665e5d3df2afeb311fc040bbb28d4529be0f0390",
+      "canonical_sha256": "825d01f02c44e13356b3e09583115e81897d12fca3e977bb591866e8e2ee9455",
+      "stage5_repair2_artifact_sha256": "c40e6e3c1b48628f946f7c6527ed9c29e28132a05cd11f15f128f42a1a5f1b59",
+      "stage6_checkpoint_sha256": "e58e5d355743c8038b3688f5aee497eff645e163603b6af4dd51a3d3589c4b41",
+      "stage7_semantics_changed": false,
+      "stage7_import_bytes_changed": false
+    },
+    "exact_final_acceptance": {
+      "outer_zip_selected_by_production_archive_reader": true,
+      "outer_package_selection": "8/8 PASS",
+      "verified_import_provenance": "Prompt v3.3.6 / Validator gcpk-v3.3.6-stage7-a2-l04-locked / Provenance VERIFIED SHA-256",
+      "stage6_cumulative_runtime": "56/56 PASS",
+      "target_persistence": "7/7 PASS",
+      "commit_manifest": "VERIFIED_85",
+      "page_errors": 0,
+      "merged_unique_cards": 302,
+      "prior_cards_preserved": "218/218 PASS",
+      "lesson_filtering": "A2-L01 75 / A2-L02 62 / A2-L03 81 / A2-L04 85",
+      "target_cards": 85,
+      "mode_kombinationen": {
+        "study": "69 sections / 209 items",
+        "quick": "69 / 209",
+        "typing": "69 / 209",
+        "audio": "69 / 209"
+      }
+    },
+    "independent_release_validation": {
+      "fresh_extract_rehash_reparse": "PASS",
+      "tsv_rows": 85,
+      "tsv_columns": 23,
+      "hygiene": "PASS_NO_UNSAFE_PATHS_NO_NESTED_ZIPS_NO_APP",
+      "manifest_rehash": "42/42 PASS",
+      "sha256sums_rehash": "43/43 PASS",
+      "zip_crc": "PASS",
+      "library_rematerialization": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "architecture_resolution": {
+      "prior_blocker": "MULTI_MEMBERSHIP_LIBRARY_INDEX_SINGLE_LESSON_ONLY",
+      "resolved_by_runtime": "v475-R109",
+      "stable_card_identity_preserved": true,
+      "duplicate_cards_created": false,
+      "hardcoded_menschen_names": false,
+      "visible_ui_change": "VERSION_LABEL_ONLY",
+      "delete_semantics_changed": false
+    },
+    "delivery": {
+      "one_organized_content_production_zip": true,
+      "contains_app": false,
+      "standalone_importable_data": true,
+      "full_editable_restartable_content_authority": true,
+      "raw_source_external_dependency": true,
+      "raw_copyrighted_payload_bundled": false
+    },
+    "environment_boundary": {
+      "code": "CURRENT_V475_REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+      "blocking_for_content_lock": false,
+      "blocking_for_runtime_final_verified": true,
+      "offline_storage_acceptance": "INHERITED_FROM_V466_PER_ENFORCED_CURRENTNESS_POLICY_BECAUSE_STORAGE_AND_SHELL_SEMANTICS_UNCHANGED",
+      "git_runtime_source_mirror": "PENDING_SEPARATE_DURABILITY_BOUNDARY"
+    },
+    "result": "A2-L04 content/package is LOCKED on exact CURRENT v475-R109. The v474 multi-membership Library-index blocker is resolved by v475. Runtime project-level FINAL/VERIFIED and exact Git source mirror remain separate.",
+    "next_action": "A2-L04 is immutable. Continue A2-L05 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L04 LOCKED."
   }
 }

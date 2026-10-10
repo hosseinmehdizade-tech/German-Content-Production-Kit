@@ -1,0 +1,90 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage12-checkpoint@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L04",
+  "framework": "v3.3.6",
+  "status": "PASS_STAGE1_2_WITH_CURRENT_IDENTITY_CLOSURE__STAGE3A_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "parent": {
+    "filename": "Menschen-A1-L04-v3.3.2-GFP-v417-LOCKED.zip",
+    "sha256": "c39b2cfdf1685001e64aee2d27bb5056b36633987b00e06a3f55b62fd1629309",
+    "size_bytes": 227925,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L04-v3.3.2-GFP-v417-LOCKED.zip",
+    "library_file_id": "file_00000000fdc0821080de566671c354f9",
+    "library_stable_id": "libfile_2e11e5f047ac819199e8992901d1ca09",
+    "immutable": true
+  },
+  "source": {
+    "source_id": "menschen-a1a2b1-memrise-full-audio",
+    "archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "archive_size_bytes": 113754051,
+    "uploaded_archive_exact_registry_match": true,
+    "csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "csv_rows": 9109,
+    "lesson_rows": 53,
+    "ordinals": "203..255",
+    "audio_refs": 54,
+    "unique_audio_refs": 54,
+    "zero_audio_rows": 0,
+    "multi_audio_rows": [
+      248
+    ],
+    "current_rar_audio_membership": "54/54 PASS",
+    "fresh_csv_decompression": "NOT_RUN_NO_RAR_DECOMPRESSOR"
+  },
+  "identity": {
+    "historical_parent_targets": 78,
+    "active_targets": 71,
+    "senses": 50,
+    "expressions": 21,
+    "active_ids": "ma1m-lu-0285..ma1m-lu-0355 contiguous",
+    "retired_merged_ids": {
+      "ma1m-lu-0356": "ma1m-lu-0308",
+      "ma1m-lu-0357": "ma1m-lu-0325",
+      "ma1m-lu-0358": "ma1m-lu-0327",
+      "ma1m-lu-0359": "ma1m-lu-0328",
+      "ma1m-lu-0360": "ma1m-lu-0330",
+      "ma1m-lu-0361": "ma1m-lu-0340",
+      "ma1m-lu-0362": "ma1m-lu-0345"
+    },
+    "rule": "MEM-009-MULTI-MEANING-ONE-CARD",
+    "distinct_split_source_rows": 16,
+    "review_flagged_active_targets": 23,
+    "canonical_audio_refs": 73,
+    "unresolved_identity": 0,
+    "current_l02_l03_collision": "NONE",
+    "downstream_dependency_note": "Historical A1-L10 reused ma1m-lu-0362. Historical A1-L10 remains immutable; its future re-audit must reconcile that occurrence to ma1m-lu-0345."
+  },
+  "validation": {
+    "independent": "37/37 PASS",
+    "official_source_occurrences": "PASS 53/53",
+    "official_identity_closure": "PASS 71 active / 0 unresolved",
+    "fresh_extract_verifier": "PASS",
+    "crc": "PASS",
+    "package_sha256sums": "PASS_ALL",
+    "historical_parent_unchanged": true
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L04-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+    "sha256": "de9b2924165cd03bc63d898c6343cdcf2ea259c90652a0727b8b659198ac68d5",
+    "size_bytes": 44487,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L04-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000d3e881f4a857a70202b7d4e5",
+    "library_stable_id": "libfile_76b67e6c6094819182fd0babb23c26d0",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "limitations": [
+    "Stage1/2 does not inherit historical Stage3/4 semantic closure.",
+    "Seven historical v3.3.2 same-lexeme sense cards were retired in this successor under active MEM-009; their meanings must be merged into the surviving single cards during Stage3 and are not discarded.",
+    "The exact raw RAR was freshly hash-verified and all 54 lesson audio filenames were verified by archive directory membership; the compressed CSV was not freshly decompressed in this environment.",
+    "Historical LOCKED A1-L04 and all downstream historical lessons remain immutable until their own re-audits.",
+    "No runtime acceptance is claimed."
+  ],
+  "next_action": "A1-L04 Stage3A: initialize the full v3.3.6 completeness baseline for 71 active cards. Carry the source-supported meanings from retired historical IDs ma1m-lu-0356..0362 onto surviving cards ma1m-lu-0308/0325/0327/0328/0330/0340/0345 under MEM-009, assess mandatory lexical Kombinationen and all other applicable dimensions, and do not start Stage3B until baseline coverage is explicit."
+}

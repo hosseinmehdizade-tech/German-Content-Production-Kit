@@ -1,0 +1,14 @@
+{
+  "schema": "gcpk-stage7-user-boundary-override@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L06",
+  "user_instruction_fa": "استیج 7 رو کاملل کن و ادامه بده",
+  "context": "A1-L06 Stage6 content/runtime/presentation had already passed 17/17 plus selected v475 runtime static checks 9/9 on exact CURRENT v475-R109 and exact Stage5 TSV. The only remaining blocker was exact A1-L06 durable IndexedDB commit and cold Chrome-process readback. The managed environment blocks usable local origins with net::ERR_BLOCKED_BY_ADMINISTRATOR and denies IndexedDB on the opaque fallback origin. The user was explicitly told Stage7 would not start without either a persistence PASS or explicit acceptance of this boundary, and then instructed to complete Stage7 and continue.",
+  "effect": {
+    "allow_stage7_content_lock": true,
+    "exact_l06_indexeddb_persistence_certified": false,
+    "runtime_finality_promoted": false,
+    "content_or_runtime_bytes_changed": false
+  },
+  "invariant": "This override is not evidence that exact A1-L06 durable persistence passed. It authorizes the Stage7 content lock while retaining the unresolved persistence boundary explicitly."
+}

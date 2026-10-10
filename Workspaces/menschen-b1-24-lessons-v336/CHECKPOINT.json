@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L03_STAGE4_PASS_REPAIR1__STAGE5_PENDING",
+  "status": "B1_L03_STAGE5_PASS__STAGE6_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -126,11 +126,11 @@
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "PASS_STAGE3C_CLOSURE",
     "stage4": "PASS_INDEPENDENT_REAUDIT_AFTER_BOUNDED_REPAIR1",
-    "stage5": "NOT_STARTED",
+    "stage5": "PASS_ANTI_BYPASS_CLEAN_DELIVERY",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L03 Stage5 anti-bypass clean-delivery projection from this exact Stage4 successor. Do not start B1-L04.",
+  "next_action": "Run B1-L03 Stage6 runtime and presentation acceptance against exact CURRENT runtime resolved at execution time. Do not start B1-L04.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -1144,5 +1144,73 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "next_action": "Run B1-L03 Stage5 anti-bypass clean-delivery projection from this exact Stage4 successor. Do not start B1-L04."
+  },
+  "b1_l03_stage5": {
+    "status": "PASS__STAGE6_PENDING",
+    "framework": "v3.3.6",
+    "upstream_stage4_sha256": "4f570828e26399a523d97aa7784d76c6558daa601834ee2a3e2b284c98e33d94",
+    "canonical_sha256": "d20770b2489fef602337d60d8c5ee623d68cdf4f00207495229f871222463d2f",
+    "final_targets_sha256": "b1fb3b8380cd9fa34f7d1f914a342a738bd08ebe0ca74a06ed346a4a873beea6",
+    "cards": 138,
+    "categories": {
+      "Noun": 44,
+      "Expression": 80,
+      "Adjective": 4,
+      "Verb": 5,
+      "Adverb": 5
+    },
+    "examples_de_fa_en": 552,
+    "relations": 117,
+    "accepted_kombinationen": 101,
+    "rejected_kombinationen": 3,
+    "source_occurrences": 112,
+    "source_output_map_rows": 143,
+    "locked_identity_reuse_rows": 11,
+    "lesson_internal_reuse_rows": 2,
+    "source_audio_targets": 138,
+    "card_type": "de-vocabulary 138/138",
+    "presentation_contract": "gfp-vocabulary-neutral@1 138/138",
+    "semantic_parity": "138/138 PASS",
+    "completeness": "2225/2225 final / 0 unresolved",
+    "official_gates": "unified projection PASS; source occurrences PASS; identity closure PASS; candidate ledger PASS; completeness PASS",
+    "supplemental_prevention": "projection PASS; package PASS",
+    "negative_controls": "illegal presentation selector rejected; unresolved completeness rejected",
+    "custom_projection_audit": "32/32 PASS",
+    "content_mutated": false,
+    "runtime_acceptance": "NOT_RUN_CONTENT_ONLY",
+    "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
+    "artifact": {
+      "filename": "Menschen-B1-L03-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+      "sha256": "6b91cbc0a18b56f173ce8bad5700fdd03ee16a1af7ef65b8eb90d146b31cc9d2",
+      "tsv_sha256": "89a6e3aff5edd42a1571eea8f3fc15714c90b326f551e7ddf10d7bc94acd4413",
+      "size_bytes": 232762,
+      "members": 11,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L03-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
+      "library_file_id": "file_0000000011f8824396d2daf21802bbcb",
+      "library_stable_id": "libfile_5d3d6aa42f348191a8171e8b9928cdb1",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "reports": {
+      "checkpoint": {
+        "filename": "B1-L03-STAGE5-CHECKPOINT.json",
+        "sha256": "46b0ca849da94ca09c540757cc66f432c47f7d692661cd925cb42adc91366dea",
+        "library_file_id": "file_00000000c17881f48fac1032c0559f9b",
+        "library_stable_id": "libfile_4477cd4434708191909ed68d781f41ab"
+      },
+      "anti_bypass": {
+        "filename": "B1-L03-STAGE5-ANTI-BYPASS-AUDIT.json",
+        "sha256": "0b7f12ea6896dd8ac2b61180a6a5dcedce527e37f72bfed8d08f151ed3aa47c0",
+        "library_file_id": "file_000000001fec81f4835281e843f2d5b1",
+        "library_stable_id": "libfile_96b3dd2a4a14819185618b71f622f511"
+      },
+      "post_package": {
+        "filename": "B1-L03-STAGE5-POST-PACKAGE-VERIFICATION.json",
+        "sha256": "93797dd8bcb5e237da5149dac643303018f95695cc3cbd75eb8dab21753a08ad",
+        "library_file_id": "file_00000000b458824390406937405da0dd",
+        "library_stable_id": "libfile_bedf97ae4a3481918d5fc6c0da2c0dc9"
+      }
+    },
+    "stage6_allowed": true,
+    "next_action": "Run B1-L03 Stage6 runtime and presentation acceptance against exact CURRENT runtime resolved at execution time. Do not start B1-L04."
   }
 }

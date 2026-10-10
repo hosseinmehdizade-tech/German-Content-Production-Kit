@@ -1,21 +1,21 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT completed lesson: A2-L05 Stage7 = LOCKED PASS_WITH_ENVIRONMENT_BOUNDARY. A2-L06 Stage1 is next.**
+**CURRENT lesson focus: A2-L06 Stage1 = PASS; Stage2 is next.**
 
-- A2-L01 through A2-L05 are now immutable **Stage7 LOCKED**.
-- A2-L05 final content: **61 cards = 50 new A2 + 9 A1 reuses + 2 prior-A2 reuses**, 244 trilingual examples, 131 Kombinationen items and 2 graph relations.
-- Stage5 authority is **Repair1**; the original Stage5 is superseded because it flattened locked structured Kombinationen provenance and copied Lektion-4 tags onto L05.
-- Final import SHA-256: `b29c5819aa8f87a8acdd1b654274e8217722ee15da335d307e88b407279a8a7b`.
-- Exact CURRENT runtime at lock: **v475-R109**, artifact SHA-256 `18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746`.
-- Stage6 acceptance: **95/95 cumulative PASS + 12/12 target persistence PASS**, zero page errors.
-- Runtime cumulative A2 library through L05: **361 unique stable IDs**; all 302 prior cards retained.
-- Stage7 package verification: CRC PASS, **38/38 manifest**, **39/39 SHA256SUMS**, **8/8 exact package selection**, 61×23 TSV, unified neutral projection PASS.
-- Final locked artifact SHA-256: `9403e272c049a4f8f80f79a02123df48292dbd79ceb6fb57bf2120acde79949e`; Library roundtrip exact byte-for-byte PASS.
-- Flashcards app/runtime is **not bundled** in the content ZIP. v475 global populated-profile finality remains a separate app boundary.
+- A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
+- A2-L06 lesson: **Meine Lieblingsveranstaltung**.
+- Registered source tag: `Menschen_A1/A2/B1_(Full_Audio)::30_A2:_6.Meine_Lieblingsveranstaltung`.
+- Exact source rows: **2742..2835 = 94 source occurrences**.
+- Audio: **94/94 references present in the exact registered RAR**; no missing-audio rows.
+- Empty source examples are preserved at rows **2807, 2831, 2833**; no example was invented.
+- **60** slash-separated source rows are queued for Stage2 identity/canonicalization review; Stage1 makes no split/merge/reuse decisions.
+- Exact duplicate raw-text groups: **0**. Control-whitespace rows: **0**.
+- Stage1 package: CRC/path safety/manifest/SHA256SUMS/fresh-extract/self-validation PASS; Library exact byte roundtrip PASS.
+- Stage1 artifact SHA-256: `18c85a1345dc7dcf31ffe25d824781535e8c26ba9126cdecaeda7584d928bcac`.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L05-STAGE7.json](./L05-STAGE7.json), and [L05-CHECKPOINT.json](./L05-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE1.json](./L06-STAGE1.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage1 source inventory** from the registered Menschen A2 source. Preserve L01-L05 LOCKED.
+Next major stage: **A2-L06 Stage2 canonicalization + mandatory Stage2B identity closure**. Preserve L01-L05 LOCKED.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

@@ -1,23 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT status: A2-L03 is Stage7 LOCKED; A2-L04 Stage1 is next.**
+**CURRENT lesson focus: A2-L04 Stage1 SOURCE INVENTORY = PASS; Stage2 is next.**
 
-- A2-L03 final content: **81 cards = 60 new A2 + 21 immutable A1 reuses**.
-- Final examples: **324 DE/FA/EN**.
-- Final Kombinationen: **151 items** across **62 non-empty sections**.
-- Exact Stage6 runtime acceptance on CURRENT **v474-R108**: **74/74 PASS**.
-- Cumulative unique cards through L03: **218 = 75 L01 + 62 L02 + 81 L03**.
-- Final import SHA-256: **e49a1c4fbba7d825395212c1038b9bf204287f5524909394ee4a5516522beb2f**.
-- LOCKED release SHA-256: **183e93dc3ea7f4765ed58cfe3dd36190acaac2a09554600196b1e83a7bdb0a1e**.
-- Final package: single organized content-production ZIP, no nested ZIPs, no Flashcards app/runtime.
-- Library roundtrip: exact SHA-256 and byte compare PASS.
-- App-level v474 1097+ populated-profile confirmation remains a separate runtime boundary and does not invalidate the L03 content lock.
-- A2-L02 remains immutable Stage7 LOCKED.
-- A2-L01 remains its separate runtime track.
+- Lesson: **A2-L04 — Was darf es sein?**
+- Exact registered source rows: **2532..2639** = **108 occurrences**.
+- Exact registered source: Menschen A1/A2/B1 Full Audio export; archive and CSV hashes match the source registry.
+- Audio: **108/108 referenced MP3s present** in the exact RAR; no missing or multi-audio rows.
+- Empty German source examples are preserved at rows **2538, 2549, 2550, 2555, 2569, 2597, 2599, 2606, 2626, 2635**; nothing was invented.
+- Source rows containing slash-separated alternatives requiring Stage2 identity review: **51**.
+- Exact duplicate raw Learnable rows inside L04: **0**.
+- Progress/SRS/distractor metadata is excluded from the source-occurrence payload.
+- Stage1 made **no** split/merge/reuse/canonical-ID decision.
+- A2-L03 remains **Stage7 LOCKED** and immutable.
+- A2-L02 remains **Stage7 LOCKED** and immutable.
+- A2-L01 remains a separate runtime-acceptance track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE7.json](./L03-STAGE7.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE1.json](./L04-STAGE1.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Future changes to L03 require an explicit successor; do not mutate the locked release in place.
+Next major stage: **Stage2 canonicalization + mandatory Stage2B identity closure**. Do not begin Stage3 until identity closure reaches zero unresolved states.
 
 ---
 

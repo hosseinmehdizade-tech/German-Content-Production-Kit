@@ -1,25 +1,20 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage5 = PASS; Stage6 is next.**
+**CURRENT lesson focus: A2-L05 Stage4 = PASS; Stage5 is next.**
 
-- Lesson: **A2-L04 — Was darf es sein?**
-- Final Stage5 projection: **85 neutral de-vocabulary cards = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
-- Examples: **340 DE/FA/EN**, exactly four per card.
-- Registered-source-exact German examples on new A2 cards: **63**.
-- Kombinationen: **209 visible items** = 203 new-A2 items + 6 valid locked-reuse items; legacy stable-ID relation pointers are backend-only and not exposed as learner combinations.
-- Effective graph relations: **10**.
-- Source occurrences: **108**; source-output bindings: **117**.
-- Candidate ledger: **1206 final decisions, 0 deferred**.
-- Completeness: **1291 cells, 0 unresolved**.
-- Official v3.3.6 unified/source/identity/candidate/completeness gates: PASS.
-- Framework v3.3.6 regression: **10/10 PASS** via bounded 9+1 execution.
-- Official Stage5 delivery builder, final package checks and negative-tamper check: PASS.
-- Stage5 content is **import-ready**; Stage6 runtime acceptance has **not** run.
-- A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains a separate runtime track.
+- Lesson: **A2-L05 — Schaut mal, der schöne Dom!**
+- Stage4 independently re-audited **61 identities = 50 new A2 + 9 immutable A1 reuses + 2 immutable prior-A2 reuses**.
+- Stage3C completeness remains **933/933 closed, 0 pending**.
+- Stage4 applied **14 forward-only repairs across 11 new A2 identities**; raw source, Stage3C parent and locked reuse rows were not mutated.
+- New-A2 learner content: **200 DE/FA/EN examples**, **41 registered-source-exact German examples**, **121 Kombinationen**, **2 graph relations**.
+- Official candidate-ledger/completeness validation: PASS; targeted v3.3.6 framework tests: **10/10 PASS**.
+- Stage4 portable checkpoint: `Menschen-A2-L05-v3.3.6-Stage4-COMPLETE-CHECKPOINT.zip`, SHA-256 `35838b8dc23cf7d0f944d72c94cd5f8bcf751718a3c4352534fadf9585256448`; Library roundtrip exact SHA + byte compare PASS.
+- A2-L01 through A2-L04 remain immutable Stage7 LOCKED.
+- Stage5 has **not** run; L05 is not yet import-ready/final.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE5.json](./L04-STAGE5.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L05-STAGE4.json](./L05-STAGE4.json), and [L05-CHECKPOINT.json](./L05-CHECKPOINT.json).
 
-Next major stage: **Stage6 exact-current-runtime acceptance**. Runtime currentness must be resolved again at Stage6 execution time.
+Next major stage: **Stage5 clean projection + v3.3.6 anti-bypass validation + complete content-production delivery**. Runtime currentness is re-resolved only at Stage6.
 
 ---
 

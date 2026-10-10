@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "STAGE3B_TARGET_COVERAGE_COMPLETE__STAGE3C_PENDING",
+  "status": "STAGE3C_PASS__STAGE4_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3B_TARGET_COVERAGE_COMPLETE__STAGE3C_PENDING",
+    "stage3": "PASS_CLOSURE__STAGE4_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L06 Stage3C disposition closure over all 177 targets / 2849 cells from this exact checkpoint. Do not start B1-L07.",
+  "next_action": "Run B1-L06 Stage4 independent linguistic and enrichment-completeness re-audit on exact Stage3C artifact cbc373a3eeee7e0c5f26d1e4f8a733385b794456838b25e6261850e576a25a0b. Do not start B1-L07.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -2513,5 +2513,82 @@
     },
     "boundary": "Stage3B target coverage is complete, but Stage3C evidence/disposition closure and Stage4 independent linguistic QA are not yet claimed.",
     "next_action": "Run B1-L06 Stage3C disposition closure over all 177 targets / 2849 cells from this exact checkpoint. Do not start B1-L07."
+  },
+  "b1_l06_stage3c": {
+    "status": "PASS_CLOSURE__STAGE4_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage3b_sha256": "e86a9dcd8da0f87787620e8b20243799fdd19873e1abb409b4346ad74ef221be",
+    "canonical_sha256": "58ac6f1d9cc85e1271ab82bba530aa2c281009033b3bd21a40708a6b8093fe0d",
+    "targets": 177,
+    "senses": 74,
+    "expressions": 103,
+    "examples": 708,
+    "dimension_cells": 2849,
+    "verified_present_cells": 1593,
+    "closed_no_force_cells": 1256,
+    "unresolved_cells": 0,
+    "candidate_ledger_entries": 2849,
+    "kombinationen_accepted_items": 74,
+    "kombinationen_rejected_items": 3,
+    "kombinationen_verified_targets": 74,
+    "kombinationen_closed_no_force_targets": 103,
+    "relation_items": 32,
+    "relation_dimension_verified_targets": {
+      "synonym": 10,
+      "word_family": 8,
+      "related": 13,
+      "nvv_links": 0
+    },
+    "structural_dimension_verified_targets": {
+      "morphology": 62,
+      "rektion": 25,
+      "structure_components": 103,
+      "argument_slots": 4,
+      "component_relations": 56,
+      "source_audio": 176
+    },
+    "source_audio_closed_no_force_targets": [
+      "mb1m-lu-1067"
+    ],
+    "dataset_exceptions": {
+      "antonym": "177/177 reviewed CLOSED_NO_FORCE; no sense-safe candidate forced",
+      "nvv_links": "177/177 reviewed CLOSED_NO_FORCE; no safe NVV link forced"
+    },
+    "stage3c_repairs": {
+      "source_form_normalizations": [
+        "mb1m-lu-0090 learner-standard grüßt while raw grüsst provenance preserved",
+        "mb1m-lu-1085 learner-standard der Weizen while raw das Weizen provenance preserved"
+      ],
+      "kombinationen_replacements": [
+        "mb1m-lu-0101 das Glas nachschenken -> jemandem etwas nachschenken",
+        "mb1m-lu-1134 schweißgebadet sein -> in Schweiß gebadet sein",
+        "mb1m-lu-1153 über etwas unwissend sein -> völlig unwissend sein"
+      ]
+    },
+    "identity_mutated": false,
+    "stage2_reopen_required": false,
+    "semantic_inheritance_from_locked_prior_work": 0,
+    "source_recovery_boundary": "PRESERVED_FROM_STAGE1",
+    "validators": "candidate ledger PASS 2849/0 errors; completeness closure PASS 177 targets / 2849 cells / 0 unresolved; bounded structural QA PASS; fresh-extract package CRC/manifest/SHA/JSON PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L06-v3.3.6-Stage3C-CLOSURE-CANDIDATE.zip",
+      "sha256": "cbc373a3eeee7e0c5f26d1e4f8a733385b794456838b25e6261850e576a25a0b",
+      "size_bytes": 218341,
+      "members": 27,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-Stage3C-CLOSURE-CANDIDATE.zip",
+      "library_file_id": "file_00000000397481f486903397818436cf",
+      "library_stable_id": "libfile_1ea19e88973c819180881bf093626055",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L06-STAGE3C-CLOSURE-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "bf82c4f09d93667f6d3ee4fbbd68785bbb3eb4db30ce6d46a9c987a7a06abe3a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L06-STAGE3C-CLOSURE-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000b92c8210b5525090d87efedc",
+      "library_stable_id": "libfile_3767f6f4dc4881918fc33f2b91671a20",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "boundary": "Stage3C disposition closure PASS only. Stage4 independent linguistic/cross-language/relation/provenance re-audit remains mandatory; no Stage4/5/6/7 claim.",
+    "next_action": "Run B1-L06 Stage4 independent linguistic and enrichment-completeness re-audit on exact Stage3C artifact cbc373a3eeee7e0c5f26d1e4f8a733385b794456838b25e6261850e576a25a0b. Do not start B1-L07."
   }
 }

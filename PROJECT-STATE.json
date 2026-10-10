@@ -7720,11 +7720,11 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "B1_L01_STAGE5_PASS__STAGE6_PENDING",
+      "status": "B1_L01_STAGE6_BLOCKED__CURRENT_V473_IMPORT_REGRESSION",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
-      "latest_receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE5.json",
+      "latest_receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE6-BLOCKED.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "source_id": "menschen-a1a2b1-memrise-full-audio",
       "framework": "v3.3.6",
@@ -7751,21 +7751,22 @@
         "stage3c": "PASS"
       },
       "latest_portable_checkpoint": {
-        "filename": "Menschen-B1-L01-v3.3.6-Stage5-CHECKPOINT.zip",
-        "sha256": "840e0bd1ebd199e0684c1b67ea34d7c36b8593370dab639c6fb83bcda19067ee",
-        "size_bytes": 2394980,
-        "package_members": 269,
-        "manifest": "267/267 PASS",
-        "sha256s": "268/268 PASS",
-        "json_reparse": "207/207 PASS",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage5-CHECKPOINT.zip",
-        "library_file_id": "file_0000000085188246a615661196ca6b98",
-        "library_stable_id": "libfile_54ddd24f16708191a3f36954dd2c25bd",
+        "filename": "Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
+        "sha256": "7fec3d05fb0aed3d8d3aa668bfadecd48e89c994b2d60be352e7878ecf6885eb",
+        "size_bytes": 394440,
+        "package_members": 18,
+        "sha256s": "16/16 PASS",
+        "manifest": "15/15 PASS",
+        "json_reparse": "13/13 PASS",
+        "crc": "PASS",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
+        "library_file_id": "file_000000004b1881f4b42a59aefd3b845e",
+        "library_stable_id": "libfile_b69f6837f03481918293ba21c85bb24a",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "semantic_inheritance_from_historical_bad_b1_lessonwise": 0,
       "semantic_inheritance_from_b1_verben": 0,
-      "next_action": "Use an authorized raw-byte copy/user upload of exact GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip; verify SHA-256 7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817; continue Stage6 without restarting Stage1-5 and without downgrading to v466.",
+      "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun B1-L01 Stage6 from exact Stage5 TSV SHA-256 0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942. Do not start B1-L02 or Stage7 while this blocker remains.",
       "stage3c": {
         "status": "PASS",
         "targets": 146,
@@ -7819,13 +7820,28 @@
         "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6"
       },
       "stage6": {
-        "status": "IN_PROGRESS_HARD_TOOL_BOUNDARY",
+        "status": "BLOCKED",
         "latest_completed_milestone": "B1_L01_STAGE5_PASS",
-        "resume_receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE6-INPROGRESS.json",
         "current_runtime": "v473-R107",
         "current_artifact_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
-        "portable_materialization": "BLOCKED_BY_FILE_SURFACE_RAW_BYTE_ACCESS",
-        "acceptance": "NOT_CLAIMED"
+        "last_fully_verified": "v466-R100",
+        "blocker": "STATE_DEPENDENT_INVALID_STRING_LENGTH_AT_1097_ACTIVE_CARDS_PLUS_EXACT_PORTABLE_MATERIALIZATION_BOUNDARY",
+        "direct_import_tsv_sha256": "0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942",
+        "stage7": "NOT_ALLOWED",
+        "artifact": {
+          "filename": "Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
+          "sha256": "7fec3d05fb0aed3d8d3aa668bfadecd48e89c994b2d60be352e7878ecf6885eb",
+          "size_bytes": 394440,
+          "package_members": 18,
+          "sha256s": "16/16 PASS",
+          "manifest": "15/15 PASS",
+          "json_reparse": "13/13 PASS",
+          "crc": "PASS",
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
+          "library_file_id": "file_000000004b1881f4b42a59aefd3b845e",
+          "library_stable_id": "libfile_b69f6837f03481918293ba21c85bb24a",
+          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        }
       }
     }
   },

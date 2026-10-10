@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l08-stage3a-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l08-stage3b-checkpoint@1.0.0",
   "scope": "A2-L08",
   "framework": "v3.3.6",
-  "stage": "Stage3A COMPLETE",
-  "status": "PASS_RICHNESS_BASELINE_COMPLETE__STAGE3B_NOT_STARTED",
+  "stage": "Stage3B COMPLETE",
+  "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "01-Source/SOURCE-MANIFEST-SNAPSHOT.json",
   "source_occurrences": "01-Source/A2-L08-SOURCE-OCCURRENCES.json",
@@ -44,7 +44,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L08 Stage3B gap-driven enrichment across all 1123 unresolved cells. Prioritize MUST_HAVE definition/FA/EN/examples and locked-parent compatibility, then morphology/structure/relations and lexical Kombinationen. Persist accepted/rejected candidates; do not reopen Stage2B absent genuinely new identity evidence.",
+  "next_action": "Run A2-L08 Stage3C independent disposition closure across all 79 identities / 1202 dimension cells. Independently verify every Stage3B candidate and resolve every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE; preserve all 3 locked dependencies immutable. Do not start Stage4 until pending=0.",
   "parent_stage1_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
   "stage2b_complete": true,
   "stage3_started": false,
@@ -81,12 +81,12 @@
     "locked_reuses": "STERBEN_A1__BESTEHEN_A2L01__MINDESTENS_A2L07"
   },
   "post_package_verification": {
-    "filename": "A2-L08-STAGE2B-POST-PACKAGE-VERIFICATION.json",
-    "sha256": "962214972d15fbea516d9679ad1146b7da08af970a57826b016f6ab4b211525e",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L08-STAGE2B-POST-PACKAGE-VERIFICATION.json",
-    "library_file_id": "file_0000000082f88243b3acbde2f58b9dd8",
-    "library_stable_id": "libfile_710a1c8a3184819199594eded7972348",
-    "status": "PASS"
+    "filename": "A2-L08-STAGE3B-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "21cdaed11d5ba4194ea5306d100a13c5151ac0230daf5c1f27c0816d152991d3",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L08-STAGE3B-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_0000000077c4820a9e02f8a69fe28af1",
+    "library_stable_id": "libfile_5d2a435fd8dc8191bfc631ca3fd61c3b",
+    "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED"
   },
   "stage3a_complete": true,
   "stage3b_started": false,
@@ -135,5 +135,40 @@
     "library_file_id": "file_00000000cf6081f4857bf479e7824551",
     "library_stable_id": "libfile_cdf1130003ac8191bc40493943dc85b0",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-  }
+  },
+  "stage3b_complete": true,
+  "stage3c_started": false,
+  "stage3b_artifact": {
+    "filename": "Menschen-A2-L08-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "sha256": "6b9fd04f7bb991c0c3bd49f338b7d3e9b8f40408ef5565a3af5d2fff9a2eedfa",
+    "size_bytes": 419231,
+    "members": 26,
+    "checksum_entries": 25,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "library_file_id": "file_00000000cdcc81f4a8c899b9c10f8670",
+    "library_stable_id": "libfile_28f2e1bbcc508191a4c3d9d196a490d7",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3b_authorship": {
+    "lesson_identities": 79,
+    "new_a2_cards": 76,
+    "immutable_a1_reuse": 1,
+    "immutable_prior_a2_reuse": 2,
+    "new_id_range": "ma2m-lu-0432..ma2m-lu-0507",
+    "trilingual_examples": 304,
+    "registered_source_exact_german_examples": 12,
+    "curated_pedagogical_examples": 292,
+    "kombinationen_candidates": 170,
+    "relation_candidates": 74,
+    "candidate_ledger": {
+      "candidates": 1123,
+      "accepted": 681,
+      "rejected": 0,
+      "deferred": 442,
+      "mode": "working",
+      "validator": "PASS"
+    },
+    "stage3c_pending_cells": 1202
+  },
+  "quality_boundary": "STAGE3B_AUTHORSHIP_PASS_ONLY__ALL_1202_DIMENSION_CELLS_PENDING_INDEPENDENT_STAGE3C__STAGE4_NOT_RUN__STAGE5_NOT_RUN__NOT_IMPORT_READY"
 }

@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L08_STAGE7_LOCKED",
-  "quality": "L01_L08_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY__A2_L09_STAGE1_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE7.json",
-  "artifact_sha256": "2752ac47cb12c8b64737fe5d8b4fc8e531fc8da5413dedf8c675cba42a5de506",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-GFP-v475-LOCKED.zip",
-  "artifact_library_file_id": "file_000000003ad481f4b8d245af9054ee50",
+  "latest_completed_milestone": "A2-L09_STAGE1_PASS",
+  "quality": "L01_L08_STAGE7_LOCKED__L09_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE1.json",
+  "artifact_sha256": "8185308863d872e8b421d88282a8632f707a91f505ebaddba7288c71423f7e76",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L09-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+  "artifact_library_file_id": "file_0000000073d88210abe966cebcc1a9f8",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "A2-L08 is immutable. Start A2-L09 Stage1 source inventory from the registered Menschen A2 source in the next major stage. Preserve A2-L01 through A2-L08 LOCKED.",
-  "central_checkpoint_sha": "518ddb5d17d50c42814c045dfc891f23c72a51b9",
-  "root_project_state_sha": "ae41b9f0ad4149f4335511d43f3bd2eb49a2e479",
-  "last_git_coordination": "A2_L08_STAGE7_LOCKED__L01_L08_LOCKED_PRESERVED",
+  "next_action": "Run A2-L09 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 93 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L08 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not start Stage3 until identity closure has zero unresolved states.",
+  "central_checkpoint_sha": "48dfc4dc3c2339b06a795dca651a3ee52eeffd99",
+  "root_project_state_sha": "d36ded5b5c19dae2c8ae25979f89cfa24f5a2794",
+  "last_git_coordination": "A2_L09_STAGE1_PASS__L01_L08_LOCKED_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -217,6 +217,15 @@
       "content_lock_state": "LOCKED",
       "stage7_complete": true,
       "current_runtime": "v475-R109"
+    },
+    "A2-L09": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L09-CHECKPOINT.json",
+      "artifact_sha256": "8185308863d872e8b421d88282a8632f707a91f505ebaddba7288c71423f7e76",
+      "source_occurrences": 93,
+      "stage2_started": false,
+      "content_lock_state": "NOT_LOCKED"
     }
   },
   "stage3a": {
@@ -728,10 +737,10 @@
     "overlap_memberships": "2/2 prior retained + L08 added",
     "remaining_app_runtime_boundary": "PENDING_USER_POPULATED_PROFILE_V475"
   },
-  "current_lesson": "A2-L08",
-  "current_stage": "A2_L08_STAGE7_LOCKED__A2_L09_STAGE1_NEXT",
-  "current_lesson_source_occurrences": 113,
-  "current_lesson_identity_total": 79,
+  "current_lesson": "A2-L09",
+  "current_stage": "A2_L09_STAGE1_PASS__STAGE2_NEXT",
+  "current_lesson_source_occurrences": 93,
+  "current_lesson_identity_total": null,
   "stage1_current": {
     "status": "PASS_SOURCE_INVENTORY__STAGE2_NOT_STARTED",
     "lesson": "A2-L04",
@@ -1376,7 +1385,7 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
   },
-  "artifact_library_stable_id": "libfile_0e5f0fb91b088191851e83571e093c1e",
+  "artifact_library_stable_id": "libfile_3a2d7d59143881918d14da7655930b53",
   "stage7_l06": {
     "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
     "artifact_sha256": "7a00139b0f89ecd909fd98beff973b55ead0dbdc2a50e8696687ad12a458062b",
@@ -1693,5 +1702,34 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "stage6": "NOT_STARTED"
   },
-  "stage7_receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE7.json"
+  "stage7_receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE7.json",
+  "l09_stage1_receipt_sha": "3c4fd14e986c3812233c11ae73054e8832f6b31c",
+  "l09_checkpoint_sha": "fbe8650bfbaeab4b12c85bcbcd1979e47f8327d5",
+  "stage1_l09": {
+    "status": "PASS",
+    "lesson": "A2-L09",
+    "lesson_title": "Bei guten Autos sind wir ganz vorn.",
+    "source_occurrences": 93,
+    "source_row_range": [
+      3042,
+      3134
+    ],
+    "audio_refs": 92,
+    "rows_without_audio": [
+      3043
+    ],
+    "missing_example_rows": [
+      3057,
+      3110,
+      3124
+    ],
+    "source_alternatives_review_rows": 62,
+    "exact_duplicate_raw_text_groups": 0,
+    "source_text_control_char_rows": [],
+    "official_source_occurrences": "PASS_1_SOURCE_93_OCCURRENCES_0_ERRORS",
+    "source_payload_hash_binding": "93/93 PASS",
+    "artifact_sha256": "8185308863d872e8b421d88282a8632f707a91f505ebaddba7288c71423f7e76",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "stage2": "NOT_STARTED"
+  }
 }

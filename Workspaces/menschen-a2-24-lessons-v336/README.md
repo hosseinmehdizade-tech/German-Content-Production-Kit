@@ -1,22 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage2B is PASS; Stage3A is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage3A is PASS; Stage3B is next.**
 
-- A2-L08 **Hoffentlich ist es nicht das Herz!**: source inventory remains 113 rows (`2929..3041`) with 113/113 audio present.
-- Stage2B closed **all 113 source occurrences** into **79 active identities** with **0 unresolved**.
-- New A2 identities: **76**, stable range `ma2m-lu-0432..ma2m-lu-0507`.
-- Immutable reuse: **1 A1** (`ma1m-lu-1724` sterben) and **2 prior A2** (`ma2m-lu-0029` bestehen, `ma2m-lu-0378` mindestens).
-- Source-to-canonical bindings: **129**; candidate dispositions: **196**; editorial reviews closed: **98**.
-- Projected cumulative A2 runtime identities through L08: **572 unique IDs**.
-- Slash alternatives were reviewed rather than blindly split. Synonym-only alternatives remain Stage3 relation evidence; distinct compounds/contrasts and different-POS targets were separated. MEM-009 one-card multi-meaning behavior is preserved.
-- Official source-occurrences: **113 / 0 errors**; official identity closure: **113 source / 79 active / 0 errors**.
-- Framework v3.3.6 Stage2-relevant suite: **10/10 PASS**; negative tamper tests fail closed.
-- Stage2B ZIP SHA-256: `845442eb9456095b736e8c56b540922bcb9849eaf369b2c55f862059bb2dcbc0`; Library roundtrip exact-byte PASS.
-- Stage3 enrichment has **not started**.
+- A2-L08 **Hoffentlich ist es nicht das Herz!** remains identity-closed at **79 targets**: 76 new A2, 1 immutable A1 reuse, 2 immutable prior-A2 reuses.
+- Stage3A whole-lesson richness matrix: **1202 dimension cells**.
+- Baseline verified: **79** cells, all `source_audio`; **1123** cells remain `MISSING_ACTIONABLE`.
+- Target kinds: **69 senses + 10 expressions**.
+- Source seeds: Persian **79/79**; German example seed **78/79**. `ma2m-lu-0457` (`Risikofaktoren für Lungenkrebs`) has no raw German example seed.
+- Stage2B relation candidates available for Stage3 review: **67** across **46** targets.
+- Conservative morphology seeds: **46/79 targets**, **56 source occurrences**; these are review hints only, not approved morphology.
+- Active lexical Kombinationen overlay applies to **all 79 lexical targets**; no item is auto-accepted and no density quota is used.
+- Official Stage3A validator: **79 targets / 1202 cells / 1123 unresolved / 0 errors**.
+- Official source-occurrence validator: **113 occurrences / 0 errors**.
+- Stage3A package SHA-256: `153993a61e3d000fd39197d1d0307f255a299db4579173761461b43125f3699f`; Library roundtrip exact-byte PASS.
+- Stage3B enrichment has **not started**.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE2B.json](./L08-STAGE2B.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE3A.json](./L08-STAGE3A.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage3A — richness baseline audit** across all 79 closed identities.
+Next major stage: **A2-L08 Stage3B — gap-driven enrichment** across all 1123 unresolved cells.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

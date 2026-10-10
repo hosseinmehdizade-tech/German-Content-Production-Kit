@@ -2,8 +2,8 @@
   "schema": "gcpk-menschen-a2-l04-stage1-checkpoint@1.0.0",
   "scope": "A2-L04",
   "framework": "v3.3.6",
-  "stage": "Stage5 Repair1 COMPLETE",
-  "status": "A2_L04_STAGE5_REPAIR1_PASS__STAGE6_NOT_CLOSED",
+  "stage": "Stage5 Repair2 COMPLETE",
+  "status": "A2_L04_STAGE5_REPAIR2_PASS__STAGE6_NOT_CLOSED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_rows": 108,
   "source_row_range": [
@@ -29,13 +29,14 @@
   "source_alternatives_review_rows": 51,
   "stage2_started": true,
   "portable_checkpoint": {
-    "filename": "Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
-    "sha256": "658d2094702ff0e85a13ed19906e1cb8bf63105fba7572040cdb3fdb42d9d499",
-    "bytes": 511700,
-    "members": 38,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
-    "library_file_id": "file_0000000079dc8210a198cb60e737be01",
-    "library_stable_id": "libfile_543800bf94288191b394b94c9e1f82e4",
+    "filename": "Menschen-A2-L04-v3.3.6-Stage5-Repair2-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "c40e6e3c1b48628f946f7c6527ed9c29e28132a05cd11f15f128f42a1a5f1b59",
+    "bytes": 688440,
+    "members": 41,
+    "sha256_entries": 40,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage5-Repair2-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_00000000a7dc81f487496ea08d850b19",
+    "library_stable_id": "libfile_fe912aefcf708191b70255f32008a579",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "prior_locked_lessons": {
@@ -52,7 +53,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L04 Stage6 against exact Repair1 TSV/artifact on CURRENT v474-R108. Do not use the superseded original Stage5 bytes. Stage7 remains blocked until Stage6 closes.",
+  "next_action": "Run full A2-L04 Stage6 cumulative acceptance against L01-L03 seed + exact Repair2 target on CURRENT v474-R108. Do not use original Stage5 or Repair1 bytes. Stage7 remains blocked until Stage6 closes.",
   "identity": {
     "units_total": 85,
     "new_a2": 67,
@@ -841,5 +842,87 @@
       "flashcards_runtime": "UNCHANGED"
     },
     "next_action": "Run A2-L04 Stage6 against exact Repair1 TSV/artifact on CURRENT v474-R108. Do not use the superseded original Stage5 bytes. Stage7 remains blocked until Stage6 closes."
+  },
+  "stage5_repair2": {
+    "schema": "menschen-a2-l04-stage5-repair2-git-receipt@1.0.0",
+    "scope": "A2-L04",
+    "framework": "v3.3.6",
+    "stage": "5-Repair2",
+    "status": "PASS_BOUNDED_PROJECTION_REPAIR__STAGE6_NOT_CLOSED",
+    "parent_repair1": {
+      "artifact": "Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "658d2094702ff0e85a13ed19906e1cb8bf63105fba7572040cdb3fdb42d9d499",
+      "superseded_for_runtime_acceptance": true
+    },
+    "artifact": {
+      "filename": "Menschen-A2-L04-v3.3.6-Stage5-Repair2-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "c40e6e3c1b48628f946f7c6527ed9c29e28132a05cd11f15f128f42a1a5f1b59",
+      "bytes": 688440,
+      "members": 41,
+      "sha256_entries": 40,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage5-Repair2-CONTENT-PRODUCTION-DELIVERY.zip",
+      "library_file_id": "file_00000000a7dc81f487496ea08d850b19",
+      "library_stable_id": "libfile_fe912aefcf708191b70255f32008a579",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "projection": {
+      "cards": 85,
+      "new_a2": 67,
+      "reused_locked": 18,
+      "reused_a1": 17,
+      "reused_prior_a2": 1,
+      "examples": 340,
+      "source_audio_refs": 117,
+      "kombinationen_visible_items": 209,
+      "nonempty_kombinationen_sections": 69,
+      "import_dataset": "01-Final-Import/A2-L04-UNIVERSAL-v2.tsv",
+      "import_dataset_sha256": "7f8ae3505d472b7a1ce7e98cc8ac6b6d3ebfd4ef8a2095734adf7ce538695795",
+      "projected_cards_sha256": "cf2e45e79943254c2e50adad665e5d3df2afeb311fc040bbb28d4529be0f0390",
+      "canonical_sha256": "825d01f02c44e13356b3e09583115e81897d12fca3e977bb591866e8e2ee9455",
+      "identity_fingerprint": "cd18f1123d67d5e683059b6f903366f0d5a55c83d6eb379d5a001dfcf3ab7de0"
+    },
+    "defect_closed": {
+      "code": "A2L04-S5-R2-001",
+      "issue": "Repair1 still leaked a learner-visible Kollokationen section on ma1m-lu-0790 and ma1m-lu-2648 because CURRENT v474 falls back to canonical_unit.connections when Kombinationen is intentionally empty.",
+      "affected_ids": [
+        "ma1m-lu-0790",
+        "ma1m-lu-2648"
+      ],
+      "resolution": "Preserve the exact locked parent canonical_unit in locked_parent_canonical_unit_transport_v1, while filtering only collocation connections from the active runtime-facing canonical_unit. No visible item was invented and no source/identity/semantic authority was changed."
+    },
+    "bounded_delta": {
+      "changed_rows": [
+        "ma1m-lu-0790",
+        "ma1m-lu-2648"
+      ],
+      "changed_columns": [
+        "custom_fields"
+      ],
+      "semantic_authority_changed": false,
+      "source_authority_changed": false,
+      "identity_changed": false,
+      "learner_visible_kombinationen_count_changed": false,
+      "runtime_ui_changed": false,
+      "exact_parent_canonical_unit_archived": true
+    },
+    "validation": {
+      "content_projection_qa": "PASS",
+      "unified_projection": "PASS_85",
+      "exact_current_runtime_target_only_preflight": "PASS_19_OF_19",
+      "exact_current_runtime": "v474-R108",
+      "exact_current_runtime_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+      "page_errors": 0,
+      "zip_crc_manifest_sha256": "PASS",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "stage6_status": "NOT_CLOSED"
+    },
+    "separation": {
+      "A2_L01": "LOCKED_UNCHANGED",
+      "A2_L02": "LOCKED_UNCHANGED",
+      "A2_L03": "LOCKED_UNCHANGED",
+      "A2_verben": "UNCHANGED",
+      "flashcards_runtime": "UNCHANGED"
+    },
+    "next_action": "Run full A2-L04 Stage6 cumulative acceptance against L01-L03 seed + exact Repair2 target on CURRENT v474-R108. Do not use original Stage5 or Repair1 bytes. Stage7 remains blocked until Stage6 closes."
   }
 }

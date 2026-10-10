@@ -1,0 +1,90 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage7-checkpoint@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L03",
+  "framework": "v3.3.6",
+  "status": "PASS_STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
+  "content_lock_state": "LOCKED",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-005-NO-GIT-BINARY-TRANSPORT",
+    "MEM-006-AUTO-SYNC-VALIDATED-MILESTONES",
+    "CP-MEM-004",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "upstream": {
+    "stage5": {
+      "artifact": "Menschen-A1-L03-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+      "sha256": "fba0f7665febc592aca9948bdc163ba1760bdfddbb76f98a7fce2d36dfa3f4fd",
+      "direct_import_sha256": "d99b3358959ed3f55d113a9d1013b4e9bbeb6c36f741b3139b135ea245788fa7"
+    },
+    "stage6": {
+      "artifact": "Menschen-A1-L03-v3.3.6-REAUDIT-Stage6-v474-PERSISTENCE-BLOCKED.zip",
+      "sha256": "d642df2923a3ae33cb7554b756001e3c3ba529a5c5752d3266dcf846fdb4e8ac",
+      "content_runtime_presentation": "15/15 PASS",
+      "exact_l03_persistence": "NOT_CERTIFIED__USER_ACCEPTED_BOUNDARY"
+    }
+  },
+  "runtime": {
+    "current": "v474-R108",
+    "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+    "last_fully_verified": "v466-R100",
+    "release_final": false,
+    "exact_l03_persistence_certified": false,
+    "real_populated_profile": "PENDING_USER_POPULATED_PROFILE_V474"
+  },
+  "release": {
+    "filename": "Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
+    "sha256": "70c41966876c46d62e26edadf5afaa6f90434dba14ef0ce42ea5e11dce109c79",
+    "size_bytes": 394347,
+    "zip_members": 57,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
+    "library_file_id": "file_00000000947881f4a793a3fe5d3d45d2",
+    "library_stable_id": "libfile_72e8cd99e91c81918662c97825642211",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "content": {
+    "cards": 68,
+    "stable_ids": "ma1m-lu-0217..ma1m-lu-0284 contiguous",
+    "examples": "272 DE / 272 FA / 272 EN",
+    "kombinationen": "73 on 44 cards",
+    "canonical_relations": 27,
+    "source_audio_refs": 70,
+    "dimension_closure": "1156/1156 FINAL; official 1059/1059 PASS; 0 unresolved"
+  },
+  "exact_final": {
+    "outer_zip_resolution": "PASS",
+    "exact_stage5_tsv": "PASS_SHA256_d99b3358959ed3f55d113a9d1013b4e9bbeb6c36f741b3139b135ea245788fa7",
+    "stage6_exact_current_content_runtime_presentation": "15/15 PASS",
+    "presentation": "68/68 Study + Quick + Typing + Audio",
+    "same_id_progress_in_memory": "PASS",
+    "exact_l03_durable_persistence": "NOT_CERTIFIED__EXPLICIT_USER_ACCEPTED_BOUNDARY",
+    "package_structural_content_checks": "19/19 PASS",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "identity_successor": {
+    "predecessor": "Menschen-A1-L03-v3.3.2-GFP-v416-LOCKED.zip",
+    "predecessor_sha256": "8315c66b8c924f3563b6baa453f37c790c4e75d4b5f1691f209e836700c765a2",
+    "predecessor_mutated": false,
+    "new_ids": 0,
+    "other_locked_lessons_mutated": false,
+    "rule": "Historical predecessor remains immutable; this re-audit successor is current A1-L03 content authority."
+  },
+  "user_boundary_override": {
+    "path": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE7-USER-BOUNDARY-OVERRIDE.json",
+    "commit": "7993c397c648bbc281b529d1390b33ebc3e987f7"
+  },
+  "post_package_verification": {
+    "path": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE7-POST-PACKAGE-VERIFICATION.json",
+    "commit": "30497e7e56a924e356ed6c2648064dd480503d44"
+  },
+  "environment_boundary": {
+    "content_lock_blocked": false,
+    "runtime_persistence_certified": false,
+    "detail": "Stage7 content lock is authorized by explicit user instruction despite the unresolved exact L03 persistence acceptance. This does not promote the persistence result or v474 runtime finality."
+  },
+  "next_action": "A1-L04 Stage1/2: resolve the existing locked A1-L04 authority and exact registered Menschen source slice, verify source-to-card coverage and canonical identity under v3.3.6, preserve A1-L02 and A1-L03 successors plus all historical LOCKED artifacts immutable, and do not regenerate accepted prior lessons."
+}

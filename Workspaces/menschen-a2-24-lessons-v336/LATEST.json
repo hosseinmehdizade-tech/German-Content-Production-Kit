@@ -1,26 +1,28 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L03_STAGE3B_AUTHORSHIP_COMPLETE_PASS",
-  "quality": "STAGE3B_PASS__81_IDENTITIES__60_NEW_AUTHORED__21_A1_IMMUTABLE__240_TRILINGUAL_EXAMPLES__147_KOMBINATIONEN__1244_STAGE3C_PENDING",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE3B.json",
-  "artifact_sha256": "907b0a0ec5d9b6cca04eff44e6fdd92f8f6d9885a257ce532d44e13275f8a089",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L03-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
-  "artifact_library_file_id": "libfile_91956fabe0408191b3efc9509abbc2ec",
+  "latest_completed_milestone": "A2-L03_STAGE3C_DISPOSITION_CLOSURE_PASS",
+  "quality": "STAGE3C_PASS__81_IDENTITIES__1244_CELLS_CLOSED__0_PENDING__STAGE4_NOT_RUN",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE3C.json",
+  "artifact_sha256": "f556300bbb236a65a443bb5e2b6a4544f2403082d6f34b621d3bf56fe7f665b6",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L03-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS.zip",
+  "artifact_library_file_id": "libfile_7f8da005c4208191884997bab7210be6",
   "cumulative_authored": 60,
   "lesson_target_total": 81,
   "stage3c_ledger": {
     "total_cells": 1244,
-    "closed_cells": 0,
-    "pending_cells": 1244,
-    "fully_reviewed_ids": 0,
-    "stage3c_complete": false
+    "closed_cells": 1244,
+    "pending_cells": 0,
+    "fully_reviewed_ids": 81,
+    "stage3c_complete": true,
+    "verified_present": 782,
+    "closed_no_force": 462
   },
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "CENTRAL_CHECKPOINT_AND_PROJECT_STATE_RECONCILED_TO_STAGE6_BLOCKED",
-  "next_action": "Run A2-L03 Stage3C independent disposition closure across all 81 identities / 1244 dimension cells. Verify each Stage3B candidate; resolve every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE. Preserve the 21 A1 dependencies immutable. Do not start Stage4 until pending=0.",
+  "next_action": "Run independent A2-L03 Stage4 linguistic/source/structure re-audit on the exact Stage3C reviewed cards and closure matrix. Stage4 must not trust Stage3C self-report and may reopen defects.",
   "central_checkpoint_sha": "8e7f44413ea7939ef78078da6b9da9cd58fe088e",
   "root_project_state_sha": "65e9c7d8dd7337844082c50145b75acbaec0df0d",
-  "last_git_coordination": "A2_L03_STAGE3B_PASS__LIBRARY_ROUNDTRIP_EXACT__A2_L01_L02_PRESERVED",
+  "last_git_coordination": "A2_L03_STAGE3C_PASS__LIBRARY_ROUNDTRIP_EXACT__A2_L01_L02_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -146,17 +148,29 @@
       "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY"
     },
     "A2-L03": {
-      "status": "STAGE3B_PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE3B.json",
+      "status": "STAGE3C_PASS_COMPLETE__STAGE4_NOT_RUN",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE3C.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L03-CHECKPOINT.json",
-      "artifact_sha256": "907b0a0ec5d9b6cca04eff44e6fdd92f8f6d9885a257ce532d44e13275f8a089",
+      "artifact_sha256": "f556300bbb236a65a443bb5e2b6a4544f2403082d6f34b621d3bf56fe7f665b6",
       "identities": 81,
       "new_a2": 60,
       "reused_a1": 21,
+      "dimension_cells": 1244,
+      "verified_present": 782,
+      "closed_no_force": 462,
+      "pending": 0,
       "trilingual_examples": 240,
-      "kombinationen_candidates": 147,
-      "relation_candidates": 80,
-      "stage3c_pending_cells": 1244,
+      "kombinationen": 147,
+      "relations": {
+        "accepted": 49,
+        "rejected": 31
+      },
+      "candidate_ledger": {
+        "candidates": 1163,
+        "accepted": 701,
+        "rejected": 462,
+        "deferred": 0
+      },
       "identity_fingerprint": "65c9d378e4a82d05c0e0c9bf6aec7bb327ef15b7d44681d9804c6c74639e5fc0"
     }
   },
@@ -583,6 +597,32 @@
     },
     "stage3c_pending_cells": 1244,
     "artifact_sha256": "907b0a0ec5d9b6cca04eff44e6fdd92f8f6d9885a257ce532d44e13275f8a089",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3c_current": {
+    "status": "PASS_COMPLETE_1244_OF_1244_CLOSED__STAGE4_NOT_RUN",
+    "identities": 81,
+    "new_a2": 60,
+    "immutable_a1_reuse": 21,
+    "dimension_cells": 1244,
+    "verified_present": 782,
+    "closed_no_force": 462,
+    "pending": 0,
+    "candidate_ledger": {
+      "candidates": 1163,
+      "accepted": 701,
+      "rejected": 462,
+      "deferred": 0
+    },
+    "trilingual_examples": 240,
+    "source_exact_german_examples": 43,
+    "kombinationen": 147,
+    "relation_candidates": {
+      "accepted": 49,
+      "rejected": 31
+    },
+    "repairs_applied": 5,
+    "artifact_sha256": "f556300bbb236a65a443bb5e2b6a4544f2403082d6f34b621d3bf56fe7f665b6",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

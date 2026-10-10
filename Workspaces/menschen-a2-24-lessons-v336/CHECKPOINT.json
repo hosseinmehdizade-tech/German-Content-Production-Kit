@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-menschen-a2-lessonwise-checkpoint@1.2.0",
   "workstream": "menschen-a2-24-lessons-v336",
-  "scope": "A2-L01/L02/L03/L04/L05 locked; A2-L06 Stage6 exact CURRENT runtime acceptance complete",
+  "scope": "A2-L01..L06 locked; A2-L07 Stage1 source inventory complete",
   "framework": "v3.3.6",
-  "status": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_NEXT",
+  "status": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -20,7 +20,13 @@
     "a2_l05_rows": 102,
     "rows_without_audio": [
       2702
-    ]
+    ],
+    "a2_l07_rows": 93,
+    "a2_l07_row_range": [
+      2836,
+      2928
+    ],
+    "a2_l07_audio_refs": 93
   },
   "portable_checkpoint": {
     "filename": "Menschen-A2-L06-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
@@ -56,7 +62,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Start A2-L07 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L06 LOCKED.",
+  "next_action": "Run A2-L07 Stage2 canonicalization and mandatory Stage2B identity closure. Preserve source order/memberships, compare against immutable A1 and LOCKED A2-L01..L06 identities, and keep MEM-009 one-card multi-meaning behavior.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
   "stage": "Stage5 COMPLETE",
   "stage1_portable_checkpoint": {
@@ -225,7 +231,7 @@
     }
   },
   "current_lesson": "A2-L07",
-  "current_focus": "A2-L06_STAGE7_LOCKED__A2-L07_STAGE1_NEXT",
+  "current_focus": "A2-L07_STAGE1_PASS__STAGE2_NEXT",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -314,6 +320,23 @@
       "exact_final_acceptance": "98/98 cumulative + 32/32 target persistence + 9/9 package selection",
       "content_lock_state": "LOCKED",
       "stage7_complete": true
+    },
+    "A2-L07": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NOT_STARTED",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L07-CHECKPOINT.json",
+      "artifact_sha256": "c2cd2f25f471571a2f7571d8864d52d70ce9ba7926548b1b2bede3605dc47bc6",
+      "source_rows": 93,
+      "row_range": [
+        2836,
+        2928
+      ],
+      "audio_refs": 93,
+      "missing_examples": [
+        2856,
+        2857
+      ],
+      "stage2": "NOT_STARTED"
     }
   },
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L06-CHECKPOINT.json",
@@ -1214,10 +1237,10 @@
     "stage7_complete": true
   },
   "git_coordination": {
-    "milestone": "A2_L06_STAGE7_LOCKED",
+    "milestone": "A2_L07_STAGE1_PASS",
     "status": "SYNCED",
-    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE7.json",
-    "artifact_sha256": "7a00139b0f89ecd909fd98beff973b55ead0dbdc2a50e8696687ad12a458062b"
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE1.json",
+    "artifact_sha256": "c2cd2f25f471571a2f7571d8864d52d70ce9ba7926548b1b2bede3605dc47bc6"
   },
   "stage1_l06": {
     "status": "PASS_SOURCE_INVENTORY__STAGE2_NOT_STARTED",

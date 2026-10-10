@@ -1,49 +1,126 @@
 {
-  "schema": "menschen-a2-stage6-git-receipt@1.0.0",
+  "schema": "menschen-a2-stage6-git-receipt@1.1.0",
   "scope": "A2-L01",
   "framework": "v3.3.6",
   "stage": "6",
-  "status": "BLOCKED_EXACT_CURRENT_RUNTIME_PORTABLE_MATERIALIZATION_UNAVAILABLE",
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "stage6_closed": true,
+  "stage7_lock_allowed": true,
   "stage5_authority": {
     "status": "PASS",
     "artifact": "Menschen-A2-L01-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
     "sha256": "fb4d9fa41ddce275d302a322aaad75cdd2b6fc82c11d7a46a8236025a0def504",
     "dataset_sha256": "458b8c5a73a70a11b87b2649c125b1c223355fb5917aa725cb8fa54fa9866755",
-    "cards": 75
+    "cards": 75,
+    "content_mutated_in_stage6": false
+  },
+  "previous_blocker": {
+    "code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
+    "runtime": "v472-R106",
+    "status": "RESOLVED_BY_EXACT_CURRENT_V474_MATERIALIZATION"
   },
   "target_runtime": {
-    "current": "v472-R106",
-    "artifact": "GFP-v472-R106-ACTIVE-IMPORT-STORAGE-RECOVERY.zip",
-    "sha256": "796e8518a201c7cd01664416df817b1ca4217cdbd2642848d5224999d9d9d2e9",
-    "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v472-R106-ACTIVE-IMPORT-STORAGE-RECOVERY.zip",
-    "library_file_id": "libfile_6b3a5ac8a6608191b8264efa9bb92a6f",
+    "current": "v474-R108",
+    "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+    "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "library_stable_id": "libfile_1b05f691bf3481919c58e9b943f32cc3",
+    "exact_current_runtime_materialized": true,
+    "exact_current_runtime_sha256_verified": true,
+    "verification_state": "PASS_DETERMINISTIC_BOUNDED_SELECTION__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+    "same_profile_acceptance": "PENDING_USER_POPULATED_PROFILE_V474",
     "last_fully_verified_runtime": "v466-R100",
     "substitution_forbidden": true
   },
-  "blocker": {
-    "code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
-    "attempts": 2,
-    "message": "This Project file does not have an authorized raw-byte materialization path.",
-    "policy": "Exact CURRENT portable artifact is mandatory for Stage6 final runtime/import acceptance."
+  "static_preflight": {
+    "runtime_external_javascript_syntax": "PASS_37_FILES",
+    "runtime_asset_references": "PASS_142_REFERENCES_64_RESOURCES",
+    "shell_cohort": "PASS_64_RESOURCES_3_NEGATIVE_CONTROLS",
+    "inline_script_syntax": "PASS_3",
+    "runtime_app_files": "76",
+    "stage5_sha256sums_rehash": "PASS_36_OF_36"
+  },
+  "deterministic_acceptance": {
+    "status": "PASS",
+    "checks_passed": 36,
+    "checks_total": 36,
+    "page_javascript_errors": 0,
+    "runtime": "v474-R108",
+    "exact_runtime_artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+    "stage5_artifact_sha256": "fb4d9fa41ddce275d302a322aaad75cdd2b6fc82c11d7a46a8236025a0def504",
+    "stage5_dataset_sha256": "458b8c5a73a70a11b87b2649c125b1c223355fb5917aa725cb8fa54fa9866755",
+    "deterministic_storage_boundary": "IN_MEMORY_FAKE_INDEXEDDB_WITH_PRODUCTION_COMMIT_APIS",
+    "target_cards": 75,
+    "runtime_source_parity": "75/75 PASS",
+    "target_examples": 300,
+    "target_trilingual_examples": 300,
+    "target_audio_refs": 96,
+    "target_lesson_memberships": 75,
+    "target_neutral_envelopes": 75,
+    "target_neutral_contracts": 75,
+    "target_kombinationen_nonempty_sections": 72,
+    "target_kombinationen_items": 220,
+    "modes": {
+      "study": "PASS_72_SECTIONS_220_ITEMS",
+      "quick": "PASS_72_SECTIONS_220_ITEMS",
+      "typing": "PASS_72_SECTIONS_220_ITEMS",
+      "audio": "PASS_72_SECTIONS_220_ITEMS"
+    },
+    "pos_inventory": {
+      "Noun": 30,
+      "Expression": 18,
+      "Verb": 12,
+      "Pronoun": 7,
+      "Adverb": 6,
+      "Adjective": 2
+    },
+    "lesson_filtering": {
+      "A2_L01": 75
+    },
+    "srs_state_readback": "PASS_9_FIELDS",
+    "commit_manifest": "VERIFIED_75",
+    "content_mutation": false,
+    "runtime_mutation": false
+  },
+  "normalization_note": "Stage5 carries 75 Kombinationen detail shells; 3 are empty (mein, dein, passieren). Active runtime omits those empty shells and preserves all 220 actual items as 72 nonempty sections in Study, Quick, Typing and Audio. No lexical item is lost.",
+  "provenance_preview_note": "The exact Stage5 production ZIP preview reports MANUAL / UNVERIFIED for the import TSV. The exact outer artifact SHA-256 and exact TSV SHA-256 are independently verified and the production commit manifest reaches VERIFIED. Stage7 must close final import provenance/post-package verification before LOCK.",
+  "real_origin_attempt": {
+    "status": "BLOCKED_BY_ADMIN_POLICY",
+    "observed_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+    "not_app_failure": true
+  },
+  "environment_acceptance": {
+    "policy_status": "ENFORCED",
+    "basis_runtime": "v466-R100",
+    "basis_result": "PASS_USER_CONFIRMED_SAME_PROFILE_PWA_OFFLINE",
+    "current_runtime": "v474-R108",
+    "current_storage_semantics_changed": false,
+    "current_shell_composition_changed": false,
+    "inherited_acceptance_allowed": true,
+    "interpretation": "Offline/storage environment acceptance is inherited under the currentness policy. The separate v474 1097+ populated-profile confirmation remains app-level."
+  },
+  "remaining_app_runtime_boundary": {
+    "status": "OPEN_SEPARATE_FROM_CONTENT_STAGE6",
+    "same_profile_acceptance": "PENDING_USER_POPULATED_PROFILE_V474",
+    "reason": "v474 1097+ populated-profile import-selection confirmation remains app-level and is not a 75-card lesson-content blocker."
   },
   "checkpoint_artifact": {
-    "filename": "Menschen-A2-L01-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
-    "sha256": "47d9804be233d089cb6549473ab102940a114eaf32bf199c7842cab326ac5fdf",
-    "bytes": 4567,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
-    "library_file_id": "libfile_b53273df9aa48191916eeb6a35f92d26",
-    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+    "sha256": "022039f1b5bb56be50e9142839de3a71b848b4f09171b3c5d7e86224548ce466",
+    "bytes": 23134,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+    "library_file_id": "file_00000000a09482109db10f094efbcb7d",
+    "library_stable_id": "libfile_34d1ddf4b16481919145a7b53c962dd5",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "acceptance": {
-    "exact_current_runtime_materialized": false,
-    "exact_current_runtime_sha256_verified_here": false,
-    "direct_import": "NOT_RUN_BLOCKED",
-    "presentation": "NOT_RUN_BLOCKED",
-    "persistence": "NOT_RUN_BLOCKED",
-    "roundtrip": "NOT_RUN_BLOCKED",
-    "real_browser": "NOT_RUN_BLOCKED"
+  "quality_boundary": "A2_L01_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__EXACT_CURRENT_V474__DETERMINISTIC_36_OF_36__INHERITED_STORAGE_OFFLINE_ACCEPTANCE__FINAL_IMPORT_PROVENANCE_TO_CLOSE_AT_STAGE7",
+  "separation": {
+    "A2_L02": "UNCHANGED_STAGE7_LOCKED",
+    "A2_L03": "UNCHANGED_STAGE7_LOCKED",
+    "A2_L04": "UNCHANGED_STAGE5_PASS_HELD",
+    "A1": "UNCHANGED",
+    "A2_verben": "UNCHANGED",
+    "runtime_ui": "UNCHANGED"
   },
-  "content_mutation": false,
-  "runtime_mutation": false,
-  "next_action": "Make the exact CURRENT runtime ZIP accessible, re-resolve CURRENT again, verify its pinned SHA-256, then rerun Stage6 against the unchanged Stage5 dataset. Do not downgrade to v466 or substitute Git source mirror."
+  "next_action": "A2-L01 Stage7 content-only final package, exact-final import provenance closure and post-package verification on CURRENT v474-R108. Do not start A2-L04 until A2-L01 is LOCKED."
 }

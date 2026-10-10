@@ -1,20 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage3A = PASS; Stage3B is next.**
+**CURRENT lesson focus: A2-L06 Stage3B = PASS / authorship complete; Stage3C is next.**
 
 - A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 **Meine Lieblingsveranstaltung** keeps the Stage2B identity set frozen: **61 identities = 53 new A2 + 8 immutable A1 reuses**.
-- Stage3A richness baseline: **936 completeness cells**; **61 VERIFIED_PRESENT** at baseline (`source_audio` only); **875 MISSING_ACTIONABLE** for Stage3B review/authorship.
-- Raw Persian seeds: **61/61**; mapped German example seeds: **61/61**. They remain unapproved seeds, not learner-ready content.
-- Stage2B supplies **83 source alternative/combination candidates across 47 targets** for Stage3 relation/Kombinationen review; none is auto-promoted.
-- Conservative explicit source-form morphology hints occur on **37 targets / 39 source occurrences**; morphology itself remains unresolved until Stage3B.
-- Official v3.3.6 baseline validator PASS: **61 targets / 936 cells / 875 unresolved**; source-occurrence validator PASS **94/94**; custom verifier PASS.
-- Stage3A artifact SHA-256: `96810a1a651467bff5ab94b85a6847defb1f790b3c1767d1515d758384401be4`; fresh-extract rehash/JSON parse PASS; Library exact byte roundtrip PASS.
-- No learner-visible semantic content was produced and runtime/UI was not touched.
+- A2-L06 keeps the frozen Stage2B identity set: **61 identities = 53 new A2 + 8 immutable A1 reuses**.
+- Stage3B authored **53 new learner-card candidates** with **212 trilingual examples** (exactly 4 per new card).
+- **55** German examples are exact registered-source German matches; their FA/EN translations are curated and are not falsely source-claimed.
+- Lexical enrichment authored **158 Kombinationen candidates** and **41 relation candidates**; all remain subject to Stage3C/Stage4 review.
+- Candidate ledger: **875 = 514 ACCEPTED + 361 DEFERRED + 0 REJECTED** in Stage3B working mode. Deferred means no forced/fabricated relation or field.
+- Stage3C preparation contains **936/936 PENDING_STAGE3C** dimension cells; Stage3B is not import-ready and is not a final linguistic lock.
+- Official validators PASS: candidate ledger **875**, source occurrences **94**, Stage3A baseline recheck **61 targets / 936 cells / 875 unresolved**; framework test **10/10 PASS**.
+- Fresh package verification PASS: **27 ZIP members / 26 manifest hashes / 20 JSON reparses**, portable self-verifier PASS, Library exact SHA/byte roundtrip PASS.
+- Stage3B artifact SHA-256: `11b80324cbbb4df6328334c1394c9a5be4a9ac3d7be1408a374b55d2f7c620dd`.
+- Runtime/UI was not touched.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE3A.json](./L06-STAGE3A.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE3B.json](./L06-STAGE3B.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage3B gap-driven enrichment** across the 875 unresolved cells. Preserve L01-L05 LOCKED.
+Next major stage: **A2-L06 Stage3C independent disposition closure** over all 936 cells. Preserve L01-L05 LOCKED.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

@@ -9582,29 +9582,28 @@
       }
     },
     "menschen_a2_24_lessons_v336": {
-      "status": "ACTIVE_A2_L01_L02_L03_L04_STAGE7_LOCKED__A2_L05_STAGE5_PASS_STAGE6_NEXT",
+      "status": "ACTIVE_A2_L01_L02_L03_L04_STAGE7_LOCKED__A2_L05_STAGE6_PASS_STAGE7_NEXT",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/CHECKPOINT.json",
       "latest": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
       "current_lesson": "A2-L05",
-      "current_stage": "5_PASS__STAGE6_NEXT",
-      "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE5.json",
+      "current_stage": "6_PASS__STAGE7_NEXT",
+      "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE6.json",
       "latest_artifact": {
-        "filename": "Menschen-A2-L05-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-        "sha256": "015dbfee138bbd6e6398d8f5a271514a1ff0a79ed5bbeba3f57a889b6bf27b0a",
-        "bytes": 418716,
-        "members": 36,
-        "sha256sum_entries": 35,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-        "library_file_id": "file_00000000ed8c81f4a4474b612d50a301",
-        "library_stable_id": "libfile_42cfe911b97c819193c50020211eeb83",
-        "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-        "status": "PASS_IMPORT_READY_CONTENT__STAGE6_NOT_RUN"
+        "filename": "Menschen-A2-L05-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+        "sha256": "a180858a6741298030d3610848f1feea730a9b943d7ffb4e5030edddb53ed88e",
+        "size_bytes": 2365679,
+        "members": 17,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+        "library_file_id": "file_0000000038208210a516db61223c6b6e",
+        "library_stable_id": "libfile_a38b2d7af62881918bcb03847d211907",
+        "library_upload": "PASS",
+        "status": "PASS_WITH_ENVIRONMENT_BOUNDARY"
       },
-      "next_action": "Run A2-L05 Stage6 by re-resolving Flashcards CURRENT at execution time, materializing and SHA-verifying the exact CURRENT portable runtime, then run direct import, presentation, persistence and roundtrip acceptance on the exact Stage5 TSV. Never substitute LAST_FULLY_VERIFIED for CURRENT.",
-      "current_runtime": "v474-R108",
-      "stage6_closed": false,
-      "stage7_lock_allowed": false,
-      "content_lock_state": "L01_L04_LOCKED__L05_NOT_LOCKED",
+      "next_action": "Run A2-L05 Stage7 exact-final content-only lock/post-package verification. Re-resolve CURRENT first; preserve Repair1 bytes and do not promote v475 itself to FINAL while its separate populated-profile boundary remains open.",
+      "current_runtime": "v475-R109",
+      "stage6_closed": true,
+      "stage7_lock_allowed": true,
+      "content_lock_state": "L01_L04_LOCKED__L05_STAGE6_PASS_NOT_LOCKED",
       "stage7_complete": false,
       "current_lesson_source_occurrences": 102,
       "current_lesson_title": "Schaut mal, der schöne Dom!",
@@ -9666,7 +9665,7 @@
           "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
         }
       },
-      "scope": "A2-L01/L02/L03/L04 locked; A2-L05 Stage5 complete/import-ready",
+      "scope": "A2-L01/L02/L03/L04 locked; A2-L05 Stage6 PASS with environment boundary",
       "latest_stage7_l01": {
         "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
         "content_lock_state": "LOCKED",
@@ -9897,7 +9896,7 @@
         "framework_v3_3_6_targeted_tests": "10/10 PASS",
         "stage5": "NOT_RUN"
       },
-      "metadata_scope_note": "Current A2 authority is A2-L05 Stage5 PASS/import-ready. L01-L04 remain immutable Stage7 LOCKED; older generic L04 fields are historical compatibility metadata only.",
+      "metadata_scope_note": "Current A2 authority is A2-L05 Stage6 PASS on exact v475 using Stage5 Repair1. L01-L04 remain immutable Stage7 LOCKED; historical Stage2B cumulative 352 is corrected at runtime acceptance to 361 because nine A1 reuse IDs first enter the A2 library in L05.",
       "latest_stage5_l05": {
         "status": "PASS_CLEAN_PROJECTION__STAGE6_NOT_RUN",
         "artifact": {
@@ -9932,6 +9931,130 @@
         "official_gates": "UNIFIED_61__SOURCE_102__IDENTITY_61__LEDGER_872__COMPLETENESS_933__PYTEST_10_OF_10__ANTI_BYPASS_PASS",
         "stage5_import_ready": true,
         "stage6": "NOT_RUN"
+      },
+      "cumulative_unique_through_l05": 361,
+      "latest_stage5_repair1_l05": {
+        "status": "PASS_BOUNDED_PROJECTION_REPAIR__STAGE6_ACCEPTED_ON_REPAIR1",
+        "artifact": {
+          "filename": "Menschen-A2-L05-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+          "sha256": "769935ac1ec01b6bc8ca074f02c1716643b53ae1196dea7a668501a042a396c7",
+          "size_bytes": 419876,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+          "library_file_id": "file_000000003e108210be8f318be11a7011",
+          "library_stable_id": "libfile_043edb58515481918fa6d58c211f274e"
+        },
+        "import_dataset_sha256": "b29c5819aa8f87a8acdd1b654274e8217722ee15da335d307e88b407279a8a7b",
+        "projected_cards_sha256": "01b1c2ab3060d1bcb547c489213566e68849d154e13e3d8bf4c098ef062ebdeb",
+        "qa": "20/20 PASS",
+        "original_stage5_superseded": true
+      },
+      "latest_stage6_l05": {
+        "schema": "menschen-a2-l05-stage6-git-receipt@1.0.0",
+        "scope": "A2-L05",
+        "framework": "v3.3.6",
+        "stage": "6",
+        "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "stage6_closed": true,
+        "stage7_lock_allowed": true,
+        "stage5_authority": {
+          "status": "PASS_REPAIR1",
+          "artifact": "Menschen-A2-L05-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+          "sha256": "769935ac1ec01b6bc8ca074f02c1716643b53ae1196dea7a668501a042a396c7",
+          "dataset_sha256": "b29c5819aa8f87a8acdd1b654274e8217722ee15da335d307e88b407279a8a7b",
+          "projected_cards_sha256": "01b1c2ab3060d1bcb547c489213566e68849d154e13e3d8bf4c098ef062ebdeb",
+          "cards": 61,
+          "content_mutated_in_stage6": false
+        },
+        "target_runtime": {
+          "current": "v475-R109",
+          "artifact": "GFP-v475-R109-MULTI-MEMBERSHIP-LIBRARY-INDEX.zip",
+          "sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+          "app_sha256": "367ebdbca257a1161339f80574bb93e32bb55d806ed3b3cdc3874987ace3d407",
+          "service_worker_sha256": "e6a53debd7d00c45cf57fb7ec0515c2f552896a1189a570cff77f09bae7ea91b",
+          "runtime_fingerprint": "6c9683e5818ec831fbe64a04bb342ca5cf4d8ccf8240791ff8c473494627b021",
+          "exact_current_runtime_materialized": true,
+          "exact_current_runtime_sha256_verified": true,
+          "verification_state": "PASS_DETERMINISTIC_MULTI_MEMBERSHIP_INDEX__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+          "last_fully_verified_runtime": "v466-R100",
+          "git_runtime_source_mirror": "PENDING_V475__LIBRARY_BINARY_AUTHORITY_EXACT",
+          "substitution_forbidden": true
+        },
+        "static_preflight": {
+          "runtime_external_javascript_syntax": "PASS_37_FILES",
+          "runtime_asset_references": "PASS_142_REFERENCES_64_RESOURCES",
+          "shell_cohort": "PASS_64_RESOURCES_3_NEGATIVE_CONTROLS",
+          "v475_multi_membership_index": "PASS_8_OF_8_NO_PAGE_ERRORS",
+          "runtime_zip_crc": "PASS"
+        },
+        "acceptance": {
+          "production_package_selection": "PASS_EXACT_REPAIR1_TSV_SELECTED_61_ROWS",
+          "cumulative_runtime": "PASS_95_OF_95",
+          "target_persistence": "PASS_12_OF_12",
+          "cumulative_unique_cards": 361,
+          "prior_cards_retained": "302/302 PASS",
+          "nonoverlap_prior_unchanged": "300/300 PASS",
+          "overlap_ids": [
+            "ma2m-lu-0003",
+            "ma2m-lu-0170"
+          ],
+          "overlap_semantic_core": "PASS_2_OF_2_UNCHANGED",
+          "overlap_memberships": "PASS_PRIOR_RETAINED_PLUS_A2_L05_ADDED",
+          "lesson_filtering": {
+            "A2_L01": 75,
+            "A2_L02": 62,
+            "A2_L03": 81,
+            "A2_L04": 85,
+            "A2_L05": 61
+          },
+          "target_cards": 61,
+          "target_examples": 244,
+          "target_trilingual_examples": 244,
+          "target_audio_refs": 107,
+          "target_kombinationen": "55_NONEMPTY_SECTIONS_131_ITEMS_ALL_4_MODES",
+          "runtime_source_parity": "PASS_61_OF_61",
+          "commit_manifest_cumulative": "VERIFIED_361",
+          "commit_manifest_target": "VERIFIED_61",
+          "prior_srs_readback": "PASS_9_FIELDS_REPRESENTATIVE_L01_L02_L03_L04",
+          "target_srs_readback": "PASS_9_FIELDS",
+          "page_errors": 0
+        },
+        "identity_correction": {
+          "historical_stage2b_cumulative_unique_through_l05": 352,
+          "runtime_verified_cumulative_unique_through_l05": 361,
+          "reason": "Historical Stage2B count omitted nine immutable A1 reuse IDs that enter the A2 runtime library for the first time in L05; stable IDs/content were not split or regenerated."
+        },
+        "environment_acceptance": {
+          "policy_status": "ENFORCED",
+          "basis_runtime": "v466-R100",
+          "basis_result": "PASS_USER_CONFIRMED_SAME_PROFILE_PWA_OFFLINE",
+          "current_runtime": "v475-R109",
+          "inherited_acceptance_allowed": true,
+          "storage_offline_semantics_changed": false,
+          "current_container_real_origin": "BLOCKED_BY_ADMINISTRATOR",
+          "same_profile_populated_profile": "PENDING_USER_V475",
+          "interpretation": "Offline/storage environment acceptance is inherited. The v475 global populated-profile boundary remains separate and nonblocking for A2-L05 content Stage6."
+        },
+        "checkpoint_artifact": {
+          "filename": "Menschen-A2-L05-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+          "sha256": "a180858a6741298030d3610848f1feea730a9b943d7ffb4e5030edddb53ed88e",
+          "size_bytes": 2365679,
+          "members": 17,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+          "library_file_id": "file_0000000038208210a516db61223c6b6e",
+          "library_stable_id": "libfile_a38b2d7af62881918bcb03847d211907",
+          "library_upload": "PASS"
+        },
+        "content_mutation": false,
+        "separation": {
+          "A2_L01": "LOCKED_UNCHANGED",
+          "A2_L02": "LOCKED_UNCHANGED",
+          "A2_L03": "LOCKED_UNCHANGED",
+          "A2_L04": "LOCKED_UNCHANGED",
+          "A2_verben": "UNCHANGED",
+          "runtime_ui": "UNCHANGED"
+        },
+        "quality_boundary": "A2_L05_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__EXACT_CURRENT_V475__CUMULATIVE_95_OF_95__TARGET_12_OF_12__STAGE7_ALLOWED",
+        "next_action": "Run A2-L05 Stage7 exact-final content-only lock/post-package verification. Re-resolve CURRENT first; preserve Repair1 bytes and do not promote v475 itself to FINAL while its separate populated-profile boundary remains open."
       }
     }
   },

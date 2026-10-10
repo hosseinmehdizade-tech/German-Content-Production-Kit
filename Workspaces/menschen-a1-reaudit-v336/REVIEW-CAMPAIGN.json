@@ -24,12 +24,12 @@
   },
   "progress": {
     "total_lessons": 23,
-    "reaudit_complete": 1,
-    "reaudit_in_progress": 1,
+    "reaudit_complete": 2,
+    "reaudit_in_progress": 0,
     "queued": 21,
-    "active_lesson": "A1-L03",
-    "overall_state": "A1_L03_STAGE6_PERSISTENCE_KIT_READY__USER_EXECUTION_REQUIRED",
-    "git_persistence": "STAGE6_KIT_IN_SYNC"
+    "active_lesson": "A1-L04",
+    "overall_state": "A1_L03_STAGE7_LOCKED__A1_L04_NEXT",
+    "git_persistence": "STAGE7_IN_SYNC"
   },
   "lessons": [
     {
@@ -83,13 +83,13 @@
     },
     {
       "id": "A1-L03",
-      "reaudit_status": "STAGE6_PERSISTENCE_KIT_READY__USER_EXECUTION_REQUIRED",
+      "reaudit_status": "COMPLETE_LOCKED_STAGE7_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L03-v3.3.6-REAUDIT-Stage6-v474-PERSISTENCE-BLOCKED.zip",
-      "independent_quality": "PASS_STAGE5__STAGE6_RUNTIME_PRESENTATION_15_OF_15__PERSISTENCE_BLOCKED",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE6-PERSISTENCE-KIT-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "433e1ab00f6d790d29cf365e59c725f920d705f8eac9193a572c6b8c4e3e89bb",
-      "latest_artifact_filename": "A1-L03-Stage6-Persistence-Acceptance-Kit-v1.0.0.zip",
+      "new_successor_artifact": "Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
+      "independent_quality": "PASS_STAGE7_LOCKED_POSTPACKAGE_19_OF_19_WITH_EXPLICIT_PERSISTENCE_BOUNDARY",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE7-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "70c41966876c46d62e26edadf5afaa6f90434dba14ef0ce42ea5e11dce109c79",
+      "latest_artifact_filename": "Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
       "stage1": "PASS_EXACT_REGISTERED_ARCHIVE_AND_FROZEN_SOURCE_SLICE",
       "stage2": "PASS_FROZEN_CANONICAL_IDENTITY",
       "stage3a": "PASS_BASELINE_ONLY_68_OF_68__1156_PROVISIONAL_CELLS",
@@ -97,8 +97,8 @@
       "stage3c": "PASS_68_OF_68__1156_OF_1156_FINAL__0_UNRESOLVED",
       "stage4": "PASS_68_OF_68__35_OF_35_WITH_19_BOUNDED_REPAIRS",
       "stage5": "PASS_OFFICIAL_V336_5_OF_5_CLEAN_BUILDER_SUPPLEMENTAL_PREVENTION",
-      "stage6": "BLOCKED_EXACT_L03_PERSISTENCE__ONE_CLICK_WINDOWS_CHROME_KIT_READY",
-      "stage7": "NOT_RUN",
+      "stage6": "CONTENT_RUNTIME_PRESENTATION_15_OF_15_PASS__EXACT_PERSISTENCE_NOT_CERTIFIED_USER_ACCEPTED_BOUNDARY",
+      "stage7": "PASS_LOCKED_POSTPACKAGE_19_OF_19_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
       "review_flagged_targets": 17,
       "reviewed_card_count": 68,
       "review_remaining_card_count": 0,
@@ -147,7 +147,22 @@
         "library_file_id": "file_000000000b94821096bf496a65de2b59",
         "library_stable_id": "libfile_fb17950bb1cc81918919738c7b34f29c",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
-      }
+      },
+      "content_lock_state": "LOCKED",
+      "runtime_at_lock": "v474-R108",
+      "runtime_environment_boundary": "EXACT_L03_PERSISTENCE_NOT_CERTIFIED__EXPLICIT_USER_ACCEPTED_BOUNDARY",
+      "stage7_release": {
+        "filename": "Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
+        "sha256": "70c41966876c46d62e26edadf5afaa6f90434dba14ef0ce42ea5e11dce109c79",
+        "size_bytes": 394347,
+        "zip_members": 57,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
+        "library_file_id": "file_00000000947881f4a793a3fe5d3d45d2",
+        "library_stable_id": "libfile_72e8cd99e91c81918662c97825642211",
+        "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      },
+      "stage7_postpackage": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE7-POST-PACKAGE-VERIFICATION.json",
+      "stage7_user_boundary_override": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE7-USER-BOUNDARY-OVERRIDE.json"
     },
     {
       "id": "A1-L04",
@@ -316,7 +331,7 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Run the one-click A1-L03 Stage6 persistence acceptance kit on Windows/Google Chrome. It uses an isolated dedicated Chrome profile and exact v474-R108 runtime/TSV bytes. Upload 06-Runtime/A1-L03-STAGE6-PERSISTENCE-USER-ACCEPTANCE.json after the automatic run. Until that exact report is PASS, keep Stage7 forbidden and do not start A1-L04.",
+  "next_action": "A1-L04 Stage1/2: resolve the existing locked A1-L04 authority and exact registered Menschen source slice, verify source-to-card coverage and canonical identity under v3.3.6, preserve A1-L02 and A1-L03 successors plus all historical LOCKED artifacts immutable, and do not regenerate accepted prior lessons.",
   "quality_state": "A1_L03_STAGE4_PASS__STAGE5_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,

@@ -7455,7 +7455,7 @@
       }
     },
     "menschen_a2_lessonwise": {
-      "status": "PARALLEL__A2_L01_STAGE6_OPEN__A2_L02_STAGE6_BLOCKED",
+      "status": "PARALLEL__A2_L01_STAGE6_OPEN__A2_L02_STAGE6_BROWSER_BLOCKED",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/CHECKPOINT.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
@@ -7463,11 +7463,11 @@
       "framework": "v3.3.6",
       "scope": "A2-L01/L02-of-24",
       "latest_portable_checkpoint": {
-        "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
-        "sha256": "d75894d5dd8037b6e91281ec3d6c9a7d4176606757fe68f7c33885ed8f65319b",
-        "bytes": 2559,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
-        "library_file_id": "libfile_7a02e749703081918eabede221bf2dac",
+        "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
+        "sha256": "21877c7a3578d0aa5214d0b5b841af91e97f667a37412888c73d78906e6fe62f",
+        "size_bytes": 4527,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
+        "library_file_id": "libfile_dc2435747afc8191ba16e6319de52237",
         "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "a2_lessons": 24,
@@ -7476,12 +7476,12 @@
       "l01_mapped": 88,
       "canonical_id_closure": "PASS_STAGE2B_75_UNITS_71_NEW_4_A1_REUSES",
       "stable_ids_assigned": 71,
-      "next_action": "Make the exact CURRENT portable runtime artifact accessible; then re-resolve CURRENT. If CURRENT is still v473-R107, verify SHA-256 7ad616c8...f817 and run Stage6 on unchanged Stage5 content. If CURRENT advanced, use the newer CURRENT. Never substitute v466 or the Git source mirror.",
+      "next_action": "Run content-specific A2-L02 Stage6 in a real Chrome environment that permits the app origin, after re-resolving CURRENT. Use unchanged Stage5 content; if CURRENT advances, use the newer CURRENT. Never substitute LAST_FULLY_VERIFIED.",
       "content_only": true,
       "app_runtime_mutation": false,
       "a1_locked_mutation": false,
       "new_ids_assigned": 71,
-      "latest_qa": "A2_L02_STAGE5_PASS__STAGE6_BLOCKED__CURRENT_V473_R107_PORTABLE_ARTIFACT_NOT_MATERIALIZABLE__NO_RUNTIME_TESTS_RUN__NO_DOWNGRADE",
+      "latest_qa": "A2_L02_STAGE6_PRECHECK__CURRENT_V473_EXACT_MATERIALIZED_SHA_PASS__STATIC_RUNTIME_PASS__62_CARD_CONTENT_PRECHECK_PASS__REAL_BROWSER_BLOCKED_BY_ADMIN_POLICY",
       "latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
       "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
       "previous_stage2b_checkpoint": {
@@ -7559,7 +7559,7 @@
         "real_browser": "NOT_RUN_BLOCKED",
         "runtime_substitution_permitted": false
       },
-      "current_content_focus": "A2-L02_STAGE5_PASS__STAGE6_BLOCKED_CURRENT_RUNTIME_MATERIALIZATION",
+      "current_content_focus": "A2-L02_STAGE5_PASS__STAGE6_BLOCKED_REAL_BROWSER_ENVIRONMENT",
       "latest_l02_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L02-CHECKPOINT.json",
       "l02_stage2b": {
         "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
@@ -7595,8 +7595,8 @@
           "note": "Unchanged by A2-L02 content production."
         },
         "A2-L02": {
-          "status": "STAGE5_PASS__STAGE6_BLOCKED_CURRENT_RUNTIME_MATERIALIZATION",
-          "next_action": "Make the exact CURRENT portable runtime artifact accessible; then re-resolve CURRENT. If CURRENT is still v473-R107, verify SHA-256 7ad616c8...f817 and run Stage6 on unchanged Stage5 content. If CURRENT advanced, use the newer CURRENT. Never substitute v466 or the Git source mirror."
+          "status": "STAGE5_PASS__STAGE6_BLOCKED_REAL_BROWSER_ENVIRONMENT",
+          "next_action": "Run content-specific A2-L02 Stage6 in a real Chrome environment that permits the app origin, after re-resolving CURRENT. Use unchanged Stage5 content; if CURRENT advances, use the newer CURRENT. Never substitute LAST_FULLY_VERIFIED."
         }
       },
       "l02_stage3a": {
@@ -7703,20 +7703,47 @@
         "stage6": "NOT_RUN"
       },
       "l02_stage6": {
-        "status": "BLOCKED",
-        "blocker_code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
-        "target_runtime": "v473-R107",
-        "target_runtime_artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
-        "target_runtime_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
-        "last_fully_verified_runtime": "v466-R100",
+        "status": "BLOCKED_REAL_BROWSER_EXECUTION_ENVIRONMENT_POLICY",
+        "previous_blocker": {
+          "code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
+          "status": "RESOLVED"
+        },
+        "target_runtime": {
+          "current": "v473-R107",
+          "artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+          "sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
+          "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+          "library_file_id": "libfile_580d4412871c8191873d1be3504f40ac",
+          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+          "exact_current_runtime_materialized": true,
+          "exact_current_runtime_sha256_verified": true,
+          "last_fully_verified_runtime": "v466-R100",
+          "substitution_forbidden": true
+        },
         "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
-        "exact_current_runtime_materialized": false,
-        "direct_import": "NOT_RUN_BLOCKED",
-        "presentation": "NOT_RUN_BLOCKED",
-        "persistence": "NOT_RUN_BLOCKED",
-        "roundtrip": "NOT_RUN_BLOCKED",
-        "real_browser": "NOT_RUN_BLOCKED",
-        "runtime_substitution_permitted": false
+        "stage5_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
+        "static_runtime_preflight": "PASS_JS37_ASSETS142_64_SHELL64_NEG3_CONTROL_RELEASE_HYGIENE",
+        "content_runtime_preflight": "PASS_62_CARDS_5_POS_SCOPE_FIELDS_62_AUDIO_REFS_94",
+        "browser_blocker_code": "REAL_BROWSER_NAVIGATION_BLOCKED_BY_ADMIN_POLICY",
+        "browser_observed_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+        "direct_import": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "presentation_study": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "presentation_quick": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "presentation_typing": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "presentation_audio": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "course_lesson_filtering": "STATIC_CONTRACT_PRESENT__DYNAMIC_NOT_RUN_BLOCKED",
+        "persistence": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "roundtrip": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
+        "real_browser": "BLOCKED_BY_ADMIN_POLICY",
+        "stage6_pass": false,
+        "checkpoint_artifact": {
+          "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
+          "sha256": "21877c7a3578d0aa5214d0b5b841af91e97f667a37412888c73d78906e6fe62f",
+          "bytes": 4527,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
+          "library_file_id": "libfile_dc2435747afc8191ba16e6319de52237",
+          "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        }
       }
     },
     "menschen_b1_lessonwise": {

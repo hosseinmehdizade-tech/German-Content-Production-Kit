@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L01_STAGE3B_BATCH0008_PASS__CORE_COMPLETE_STAGE3C_PENDING",
+  "status": "B1_L01_STAGE3C_PASS__STAGE4_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -124,13 +124,13 @@
   "stages": {
     "stage1": "PASS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3B_BATCH0008_PASS__CORE_COMPLETE_STAGE3C_PENDING",
+    "stage3": "PASS_STAGE3C",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "DEFER_RUNTIME_RESOLUTION_UNTIL_NEEDED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L01 Stage3C disposition closure across all 146 targets; do not start B1-L02.",
+  "next_action": "Run B1-L01 Stage4 independent completeness/source/relation/structure/linguistic re-audit; do not start B1-L02.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -308,5 +308,57 @@
     "next_action": "Run B1-L01 Stage3C disposition closure across all 146 targets; do not start B1-L02."
   },
   "project_memory": "PROJECT-MEMORY.json",
-  "git_sync_policy": "GIT-SYNC-POLICY.json"
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "stage3c": {
+    "status": "PASS",
+    "targets": 146,
+    "dimension_cells": 2344,
+    "verified_present_cells": 1534,
+    "closed_no_force_cells": 810,
+    "not_applicable_cells": 0,
+    "unresolved_cells": 0,
+    "dataset_zero_presence_exceptions": [
+      "word_family",
+      "related"
+    ],
+    "collocation_overlay": "146/146 targets VERIFIED via reviewed Kombinationen; 472 items total",
+    "explicit_rektion_promotions": [
+      "mb1m-lu-0482",
+      "mb1m-lu-0501",
+      "mb1m-lu-0540",
+      "mb1m-lu-0561"
+    ],
+    "canonical_sha256": "7b595895c38e9c30a5d5d0707dd179af750b2dabe75a324f587a1e2bbe62d601",
+    "validators": {
+      "completeness_closure": "PASS 146 targets / 2344 cells / 0 unresolved",
+      "candidate_ledger_closure": "PASS 71 decisions",
+      "source_occurrences": "PASS 126/126",
+      "identity_closure": "PASS 126 occurrences / 146 active IDs",
+      "independent_qa": "PASS",
+      "v336_regression": "10/10 PASS",
+      "package_postseal": "PASS CRC / 211 manifest / 212 SHA256SUMS / hygiene / fresh validators",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "artifact": {
+      "filename": "Menschen-B1-L01-v3.3.6-Stage3C-CHECKPOINT.zip",
+      "sha256": "f3c93d112233f76fbe0aa7eb9e0d080767c0b88998a6889971b3626708af1cf3",
+      "size_bytes": 1220386,
+      "package_members": 213,
+      "manifest": "211/211 PASS",
+      "sha256s": "212/212 PASS",
+      "json_reparse": "PASS",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage3C-CHECKPOINT.zip",
+      "library_file_id": "file_00000000699c82109d030140274906db",
+      "library_stable_id": "libfile_03b04cc09bc481919510c964d69d2512",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L01-STAGE3C-POST-PACKAGE-VERIFICATION.json",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L01-STAGE3C-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_0000000022fc81f4ab4b729777e37e6b",
+      "library_stable_id": "libfile_2ee91e36f95881918de64a25d7fb60e4"
+    },
+    "stage4": "NOT_RUN",
+    "next_action": "Run B1-L01 Stage4 independent completeness/source/relation/structure/linguistic re-audit; do not start B1-L02."
+  }
 }

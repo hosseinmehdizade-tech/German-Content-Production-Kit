@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 15,
     "active_lesson": "A1-L09",
-    "overall_state": "A1_L09_STAGE6_CONTENT_PASS__PERSISTENCE_BLOCKED",
-    "git_persistence": "STAGE6_BLOCKED_MILESTONE_IN_SYNC"
+    "overall_state": "A1_L09_STAGE6_PERSISTENCE_BLOCKED__LOCAL_KIT_READY",
+    "git_persistence": "STAGE6_LOCAL_KIT_IN_SYNC"
   },
   "lessons": [
     {
@@ -778,11 +778,11 @@
     },
     {
       "id": "A1-L09",
-      "reaudit_status": "STAGE6_CONTENT_RUNTIME_PRESENTATION_PASS__PERSISTENCE_BLOCKED",
+      "reaudit_status": "STAGE6_PERSISTENCE_BLOCKED__LOCAL_ACCEPTANCE_KIT_READY",
       "old_content_status": "LOCKED",
       "new_successor_artifact": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage6-v475-PERSISTENCE-BLOCKED.zip",
       "independent_quality": "PASS_CONTENT_RUNTIME_PRESENTATION_17_OF_17__STATIC_9_OF_9__PERSISTENCE_NOT_CERTIFIED",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE6-CHECKPOINT.json",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE6-LOCAL-KIT-CHECKPOINT.json",
       "latest_portable_checkpoint_sha256": "9e303a9aa97308c44d1cd91c6e74fbd836608241fce5e25d1f240a82d3672739",
       "latest_artifact_filename": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage6-v475-PERSISTENCE-BLOCKED.zip",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
@@ -852,7 +852,10 @@
       "stage6_static": "9/9 PASS",
       "stage6_persistence": "NOT_CERTIFIED_CONTAINER_ADMIN_BLOCK",
       "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-      "stage7": "NOT_ALLOWED_UNTIL_PERSISTENCE_BOUNDARY_CLOSED_OR_EXPLICITLY_ACCEPTED"
+      "stage7": "NOT_ALLOWED_UNTIL_LOCAL_PERSISTENCE_PASS_OR_EXPLICIT_BOUNDARY_ACCEPTANCE",
+      "stage6_local_kit": "READY_STATIC_PASS__PENDING_USER_WINDOWS_CHROME",
+      "stage6_local_kit_sha256": "0fbd8eff124d6a77de555ca64887ec8ea21633211aab3249fb1f2d9960ba4aa0",
+      "stage6_local_result": "Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json"
     },
     {
       "id": "A1-L10",
@@ -979,22 +982,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Close the real-origin persistence boundary for A1-L09 on exact CURRENT v475-R109. Stage7 remains forbidden until durable import/reload persistence is confirmed or the user explicitly accepts the documented environment boundary.",
-  "quality_state": "A1_L09_STAGE6_CONTENT_PASS__PERSISTENCE_BLOCKED",
+  "next_action": "Run Menschen-A1-L09-v3.3.6-Stage6-LOCAL-PERSISTENCE-ACCEPTANCE-KIT-v1.0.0.zip on Windows Chrome and return Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json. Stage7 remains forbidden until PASS or explicit acceptance of the documented boundary.",
+  "quality_state": "A1_L09_STAGE6_PERSISTENCE_BLOCKED__LOCAL_KIT_READY",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L09",
-    "stage": "Stage6 Exact CURRENT Runtime & Presentation Acceptance",
-    "quality": "PASS_CONTENT_RUNTIME_PRESENTATION_17_OF_17__STATIC_9_OF_9__PERSISTENCE_BLOCKED",
-    "artifact_sha256": "9e303a9aa97308c44d1cd91c6e74fbd836608241fce5e25d1f240a82d3672739",
-    "runtime": "v475-R109",
-    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "stage": "Stage6 Persistence Boundary / Local Acceptance Kit",
+    "quality": "CONTENT_RUNTIME_PRESENTATION_PASS__PERSISTENCE_BLOCKED__LOCAL_KIT_STATIC_PASS",
+    "artifact_sha256": "0fbd8eff124d6a77de555ca64887ec8ea21633211aab3249fb1f2d9960ba4aa0",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "14e19dba0ebdb6ec73aeb154f36a850763d63c52",
-    "receipt_commit": "0f048e159e02038b5a09305d2cd14a05b14cab57",
-    "persistence": "BLOCKED_CONTAINER_ADMIN",
-    "stage7_allowed": false,
-    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
+    "checkpoint_commit": "85b9d9a369b6afaccf44487602630015cf8d283f",
+    "receipt_commit": "d20e96c3091e560e659b3585b983a06f106f11ff",
+    "runtime": "v475-R109",
+    "persistence": "PENDING_USER_WINDOWS_CHROME_KIT",
+    "stage7_allowed": false
   }
 }

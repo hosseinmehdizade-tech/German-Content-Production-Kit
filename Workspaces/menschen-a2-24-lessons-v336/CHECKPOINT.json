@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-menschen-a2-lessonwise-checkpoint@1.2.0",
   "workstream": "menschen-a2-24-lessons-v336",
-  "scope": "A2-L04-of-24",
+  "scope": "A2-L01/L02/L03/L04-of-24",
   "framework": "v3.3.6",
-  "status": "A2_L04_STAGE5_PASS__STAGE6_NOT_RUN",
+  "status": "A2_L01_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT__L04_STAGE5_HELD",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -50,7 +50,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Run A2-L04 Stage6 on the exact Stage5 TSV after re-resolving the current Flashcards runtime.",
+  "next_action": "A2-L01 Stage7 content-only final package, exact-final import provenance closure and post-package verification on CURRENT v474-R108. Do not start A2-L04 until A2-L01 is LOCKED.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
   "stage": "Stage5 COMPLETE",
   "stage1_portable_checkpoint": {
@@ -75,7 +75,7 @@
     "assigned_stable_IDs": 0,
     "qa": "PASS_14_OF_14_SHA256_POST_EXTRACT"
   },
-  "quality_boundary": "STAGE5_PASS__STAGE6_BLOCKED__NO_RUNTIME_ACCEPTANCE_CLAIM",
+  "quality_boundary": "A2_L01_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__EXACT_CURRENT_V474__DETERMINISTIC_36_OF_36__INHERITED_STORAGE_OFFLINE_ACCEPTANCE__FINAL_IMPORT_PROVENANCE_TO_CLOSE_AT_STAGE7",
   "stage2b": {
     "status": "PASS_IDENTITY_CLOSURE_WITH_STAGE3_SEMANTIC_BOUNDARY",
     "source_rows_mapped": 88,
@@ -102,13 +102,17 @@
     "no_content_or_runtime_mutation": true
   },
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A2-L04-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-    "sha256": "0838cca86a6dcf5392956088e50a22fd21b170deb45568159f04b6f8356a2dda",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip"
+    "filename": "Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+    "sha256": "022039f1b5bb56be50e9142839de3a71b848b4f09171b3c5d7e86224548ce466",
+    "bytes": 23134,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+    "library_file_id": "file_00000000a09482109db10f094efbcb7d",
+    "library_stable_id": "libfile_34d1ddf4b16481919145a7b53c962dd5",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "current_workstream_latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
   "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/STAGE6.json",
-  "central_status_reconciled_to": "A2_L01_STAGE6_BLOCKED_RUNTIME_MATERIALIZATION",
+  "central_status_reconciled_to": "A2_L01_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "stable_ids_assigned": 71,
   "stage3c": {
     "batch": "0020",
@@ -186,23 +190,33 @@
     }
   },
   "stage6": {
-    "status": "BLOCKED",
-    "blocker_code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
-    "target_runtime": "v472-R106",
-    "target_runtime_artifact": "GFP-v472-R106-ACTIVE-IMPORT-STORAGE-RECOVERY.zip",
-    "target_runtime_sha256": "796e8518a201c7cd01664416df817b1ca4217cdbd2642848d5224999d9d9d2e9",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "target_runtime": "v474-R108",
+    "target_runtime_artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "target_runtime_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
     "last_fully_verified_runtime": "v466-R100",
     "stage5_authority_sha256": "fb4d9fa41ddce275d302a322aaad75cdd2b6fc82c11d7a46a8236025a0def504",
-    "direct_import": "NOT_RUN_BLOCKED",
-    "presentation": "NOT_RUN_BLOCKED",
-    "persistence": "NOT_RUN_BLOCKED",
-    "roundtrip": "NOT_RUN_BLOCKED",
-    "real_browser": "NOT_RUN_BLOCKED",
-    "exact_current_runtime_materialized": false,
-    "runtime_substitution_permitted": false
+    "direct_import": "DETERMINISTIC_PASS",
+    "presentation": "DETERMINISTIC_PASS_ALL_4_MODES_72_SECTIONS_220_ITEMS",
+    "persistence": "DETERMINISTIC_FAKE_IDB_PASS",
+    "roundtrip": "RUNTIME_SOURCE_PARITY_75_OF_75_AND_SRS_9_FIELDS_PASS",
+    "real_browser": "BLOCKED_BY_ADMINISTRATOR",
+    "exact_current_runtime_materialized": true,
+    "deterministic_checks": "36/36 PASS",
+    "stage6_closed": true,
+    "stage7_lock_allowed": true,
+    "checkpoint_artifact": {
+      "filename": "Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+      "sha256": "022039f1b5bb56be50e9142839de3a71b848b4f09171b3c5d7e86224548ce466",
+      "bytes": 23134,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+      "library_file_id": "file_00000000a09482109db10f094efbcb7d",
+      "library_stable_id": "libfile_34d1ddf4b16481919145a7b53c962dd5",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
   },
-  "current_lesson": "A2-L04",
-  "current_focus": "A2-L04_STAGE5_PASS__STAGE6_NEXT",
+  "current_lesson": "A2-L01",
+  "current_focus": "A2-L01_STAGE6_PASS__STAGE7_NEXT",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -213,7 +227,7 @@
   ],
   "parallel_lesson_states": {
     "A2-L01": {
-      "status": "STAGE5_PASS__STAGE6_OPEN_ENVIRONMENT_BROWSER_ACCEPTANCE_PENDING",
+      "status": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
       "stage5": {
         "status": "PASS",
         "cards": 75,
@@ -234,21 +248,29 @@
         "stage6": "NOT_RUN"
       },
       "stage6": {
-        "status": "BLOCKED",
-        "blocker_code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
-        "target_runtime": "v472-R106",
-        "target_runtime_sha256": "796e8518a201c7cd01664416df817b1ca4217cdbd2642848d5224999d9d9d2e9",
+        "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+        "current_runtime": "v474-R108",
+        "runtime_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
         "stage5_authority_sha256": "fb4d9fa41ddce275d302a322aaad75cdd2b6fc82c11d7a46a8236025a0def504",
-        "direct_import": "NOT_RUN_BLOCKED",
-        "presentation": "NOT_RUN_BLOCKED",
-        "persistence": "NOT_RUN_BLOCKED",
-        "roundtrip": "NOT_RUN_BLOCKED",
-        "real_browser": "NOT_RUN_BLOCKED"
+        "deterministic_checks": "36/36 PASS",
+        "runtime_source_parity": "75/75 PASS",
+        "presentation": "Study/Quick/Typing/Audio = 72 nonempty Kombinationen sections / 220 items",
+        "srs_readback": "PASS_9_FIELDS",
+        "real_origin": "BLOCKED_BY_ADMINISTRATOR",
+        "environment_acceptance": "INHERITED_FROM_V466",
+        "stage6_closed": true,
+        "stage7_lock_allowed": true,
+        "artifact": {
+          "filename": "Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+          "sha256": "022039f1b5bb56be50e9142839de3a71b848b4f09171b3c5d7e86224548ce466",
+          "bytes": 23134,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+          "library_file_id": "file_00000000a09482109db10f094efbcb7d",
+          "library_stable_id": "libfile_34d1ddf4b16481919145a7b53c962dd5",
+          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        }
       },
-      "prior_latest_milestone": "A2-L01_STAGE6_BLOCKED_RUNTIME_MATERIALIZATION",
-      "prior_receipt": "Workspaces/menschen-a2-24-lessons-v336/STAGE6.json",
-      "prior_artifact_sha256": "47d9804be233d089cb6549473ab102940a114eaf32bf199c7842cab326ac5fdf",
-      "note": "A2-L01 content remains unchanged; L02 progression does not close or overwrite L01 Stage6."
+      "note": "A2-L01 Stage6 blocker from v472 is resolved on exact CURRENT v474. Final import provenance/post-package closure remains for Stage7."
     },
     "A2-L02": {
       "status": "STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
@@ -285,8 +307,8 @@
       "stage6": "NOT_RUN"
     }
   },
-  "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L04-CHECKPOINT.json",
-  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE5.json",
+  "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/CHECKPOINT.json",
+  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/STAGE6.json",
   "stage2b_l03": {
     "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
     "source_rows": 83,

@@ -25,11 +25,11 @@
   "progress": {
     "total_lessons": 23,
     "reaudit_complete": 1,
-    "reaudit_in_progress": 0,
-    "queued": 22,
-    "active_lesson": null,
-    "overall_state": "A1_L02_REAUDIT_COMPLETE_LOCKED__A1_L03_NEXT",
-    "git_persistence": "STAGE7_IN_SYNC"
+    "reaudit_in_progress": 1,
+    "queued": 21,
+    "active_lesson": "A1-L03",
+    "overall_state": "A1_L03_STAGE1_2_PASS__STAGE3A_NEXT",
+    "git_persistence": "STAGE1_2_IN_SYNC"
   },
   "lessons": [
     {
@@ -83,10 +83,25 @@
     },
     {
       "id": "A1-L03",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE1_2_PASS__STAGE3A_NOT_RUN",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "new_successor_artifact": "Menschen-A1-L03-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "independent_quality": "PASS_STAGE1_2_29_OF_29",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE1-2-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "f23e293ea9f86cc883a315d62d88e3e3c75fa1154af6a865117399a0af2268d0",
+      "latest_artifact_filename": "Menschen-A1-L03-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "stage1": "PASS_EXACT_REGISTERED_ARCHIVE_AND_FROZEN_SOURCE_SLICE",
+      "stage2": "PASS_FROZEN_CANONICAL_IDENTITY",
+      "stage3a": "NOT_RUN",
+      "stage3b": "NOT_RUN",
+      "stage3c": "NOT_RUN",
+      "stage4": "NOT_RUN",
+      "stage5": "NOT_RUN",
+      "stage6": "NOT_RUN",
+      "stage7": "NOT_RUN",
+      "review_flagged_targets": 17,
+      "reviewed_card_count": 0,
+      "review_remaining_card_count": 68
     },
     {
       "id": "A1-L04",
@@ -255,19 +270,18 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L02 re-audit is complete and LOCKED. Next campaign lesson is A1-L03; start its re-audit from existing LOCKED authority and registered Menschen source without mutating A1-L02 or other historical lesson artifacts.",
-  "quality_state": "A1_L02_COMPLETE_LOCKED__A1_L03_NEXT",
+  "next_action": "A1-L03 Stage3A: build the full v3.3.6 completeness baseline/disposition matrix for all 68 frozen cards, including mandatory lexical Kombinationen; do not start Stage3B before baseline coverage is explicit.",
+  "quality_state": "A1_L03_STAGE1_2_PASS__STAGE3A_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
-    "scope": "A1-L02",
-    "stage": "Stage7 Release & Post-Package Verification",
-    "quality": "PASS_LOCKED_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
-    "artifact_sha256": "f2844353e539530d256799d4ea723ccc74c3346342d03b13917c5876aadbfb57",
+    "scope": "A1-L03",
+    "stage": "Stage1/2 Source & Canonicalization",
+    "quality": "PASS",
+    "artifact_sha256": "f23e293ea9f86cc883a315d62d88e3e3c75fa1154af6a865117399a0af2268d0",
     "library_roundtrip": "PASS_EXACT_BYTES_AND_SHA256",
-    "checkpoint_commit": "b559819df6c5d91943cac6816999a832dfee30fe",
-    "receipt_commit": "da635929449beadbd19646639d21d0a0c7de70b0",
-    "post_package_commit": "20bfce7b4d4add5e7c09ba9b9364f567a0a8e7b0",
-    "latest_pointer_commit": "3bd8f7b02b419879309769ee7b5a3d33f9f17e04"
+    "checkpoint_commit": "9345f1b885c1ab38e2538b38875bf8328dc930b4",
+    "receipt_commit": "2ab00d4e26bb9a1a037ec1ab0458fb7eec7c4e0b",
+    "latest_pointer_commit": "6a58499777bbe16a4a32bfeba26053d18a6d5ccb"
   }
 }

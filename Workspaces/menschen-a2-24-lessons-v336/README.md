@@ -1,23 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage1 is PASS; Stage2 is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage2B is PASS; Stage3A is next.**
 
-- A2-L01 through A2-L07 remain immutable **Stage7 LOCKED**.
-- A2-L08: **Hoffentlich ist es nicht das Herz!**
-- Registered source rows: **113** (`2929..3041`) from the exact registered Menschen Memrise source.
-- Raw German Learnable empty: **0**; Persian definitions empty: **0**.
-- Missing source German examples: **3** — rows `2959`, `3022`, `3025`.
-- Slash-delimited source alternatives/structures queued for Stage2 review: **67**.
-- Exact duplicate raw Learnable groups: **0**; source Learnable control-whitespace rows: **0**.
-- Audio: **113 refs / 113 unique / 0 missing / 0 rows without audio**; exact archive membership PASS.
-- Official source-occurrences validation: **1 source / 113 occurrences / 0 errors**.
-- Source payload binding: **113/113 PASS**; runtime/SRS state excluded.
-- Stage1 package SHA-256: `bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec`; Library roundtrip exact-byte PASS.
-- Canonicalization, split/merge/reuse decisions and Stage2 have **not started**.
+- A2-L08 **Hoffentlich ist es nicht das Herz!**: source inventory remains 113 rows (`2929..3041`) with 113/113 audio present.
+- Stage2B closed **all 113 source occurrences** into **79 active identities** with **0 unresolved**.
+- New A2 identities: **76**, stable range `ma2m-lu-0432..ma2m-lu-0507`.
+- Immutable reuse: **1 A1** (`ma1m-lu-1724` sterben) and **2 prior A2** (`ma2m-lu-0029` bestehen, `ma2m-lu-0378` mindestens).
+- Source-to-canonical bindings: **129**; candidate dispositions: **196**; editorial reviews closed: **98**.
+- Projected cumulative A2 runtime identities through L08: **572 unique IDs**.
+- Slash alternatives were reviewed rather than blindly split. Synonym-only alternatives remain Stage3 relation evidence; distinct compounds/contrasts and different-POS targets were separated. MEM-009 one-card multi-meaning behavior is preserved.
+- Official source-occurrences: **113 / 0 errors**; official identity closure: **113 source / 79 active / 0 errors**.
+- Framework v3.3.6 Stage2-relevant suite: **10/10 PASS**; negative tamper tests fail closed.
+- Stage2B ZIP SHA-256: `845442eb9456095b736e8c56b540922bcb9849eaf369b2c55f862059bb2dcbc0`; Library roundtrip exact-byte PASS.
+- Stage3 enrichment has **not started**.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE1.json](./L08-STAGE1.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE2B.json](./L08-STAGE2B.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage2 + mandatory Stage2B identity closure** against immutable A1 and LOCKED A2-L01..L07 authorities.
+Next major stage: **A2-L08 Stage3A — richness baseline audit** across all 79 closed identities.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

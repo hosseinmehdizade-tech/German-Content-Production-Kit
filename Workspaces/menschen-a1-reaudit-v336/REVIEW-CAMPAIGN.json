@@ -24,12 +24,12 @@
   },
   "progress": {
     "total_lessons": 23,
-    "reaudit_complete": 3,
-    "reaudit_in_progress": 1,
+    "reaudit_complete": 4,
+    "reaudit_in_progress": 0,
     "queued": 19,
-    "active_lesson": "A1-L05",
-    "overall_state": "A1_L05_STAGE6_BLOCKED_PERSISTENCE__CONTENT_RUNTIME_PASS",
-    "git_persistence": "STAGE6_IN_SYNC"
+    "active_lesson": "A1-L06",
+    "overall_state": "A1_L05_STAGE7_LOCKED__A1_L06_NEXT",
+    "git_persistence": "STAGE7_IN_SYNC"
   },
   "lessons": [
     {
@@ -255,13 +255,13 @@
     },
     {
       "id": "A1-L05",
-      "reaudit_status": "STAGE6_BLOCKED_PERSISTENCE__CONTENT_RUNTIME_PASS",
+      "reaudit_status": "STAGE7_LOCKED_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L05-v3.3.6-REAUDIT-Stage6-v474-PERSISTENCE-BLOCKED.zip",
-      "independent_quality": "PASS_CONTENT_RUNTIME_PRESENTATION_17_OF_17__PERSISTENCE_NOT_CERTIFIED",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L05-STAGE6-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "f8d8bc313385ca7854aa9fcb5dcd68b2bd0d0ff673ab39d709854834c15a89ed",
-      "latest_artifact_filename": "Menschen-A1-L05-v3.3.6-REAUDIT-Stage6-v474-PERSISTENCE-BLOCKED.zip",
+      "new_successor_artifact": "Menschen-A1-L05-v3.3.6-GFP-v474-LOCKED.zip",
+      "independent_quality": "PASS_STAGE7_LOCKED__POST_PACKAGE_19_OF_19__EXACT_PERSISTENCE_NOT_CERTIFIED",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L05-STAGE7-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "fa2c0eb13a810ec5fa15d801ae9b110f923a6d7bc93396d0dcfbc1dc60411e5a",
+      "latest_artifact_filename": "Menschen-A1-L05-v3.3.6-GFP-v474-LOCKED.zip",
       "stage1": "PASS_EXACT_REGISTERED_ARCHIVE_AND_FROZEN_SOURCE_SLICE",
       "stage2": "PASS_109_ACTIVE__10_HISTORICAL_SAME_WORD_SAME_POS_SENSE_IDS_MERGED_UNDER_MEM009__0_UNRESOLVED",
       "stage3a": "PASS_109_OF_109__1853_PROVISIONAL_CELLS__1526_SEMANTIC_PENDING",
@@ -270,7 +270,7 @@
       "stage4": "PASS_39_OF_39__45_BOUNDED_REPAIRS_ON_12_TARGETS",
       "stage5": "PASS_CLEAN_DELIVERY__OFFICIAL_V336_GATES_PASS__RUNTIME_NOT_RUN",
       "stage6": "BLOCKED_EXACT_PERSISTENCE__17_OF_17_CONTENT_RUNTIME_PASS",
-      "stage7": "NOT_ALLOWED_UNTIL_PERSISTENCE_PASS_OR_EXPLICIT_USER_OVERRIDE",
+      "stage7": "LOCKED_PASS_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
       "source_rows": 91,
       "source_audio_refs": 91,
       "source_multi_audio_rows": [],
@@ -369,7 +369,14 @@
       "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
       "stage6_persistence_kit": "A1-L05-Stage6-Persistence-Acceptance-Kit-v1.0.0.zip",
       "stage6_persistence_kit_sha256": "be34f2864f9cc3f224f58407ad16e80bb4cb23c822e348ace822dacc0401b442",
-      "stage6_persistence_kit_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage6_persistence_kit_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage7_postpackage": "19/19 PASS",
+      "stage7_release_sha256": "fa2c0eb13a810ec5fa15d801ae9b110f923a6d7bc93396d0dcfbc1dc60411e5a",
+      "stage7_release_members": 57,
+      "stage7_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage7_user_boundary_override": "Workspaces/menschen-a1-reaudit-v336/A1-L05-STAGE7-USER-BOUNDARY-OVERRIDE.json",
+      "stage7_exact_persistence": "NOT_CERTIFIED__USER_ACCEPTED_BOUNDARY",
+      "stage7_runtime_finality": "NOT_PROMOTED"
     },
     {
       "id": "A1-L06",
@@ -524,18 +531,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Run A1-L05-Stage6-Persistence-Acceptance-Kit-v1.0.0.zip on Windows/Google Chrome and return 06-Runtime/A1-L05-STAGE6-PERSISTENCE-USER-ACCEPTANCE.json. Do not start Stage7 until PASS or explicit user boundary override.",
-  "quality_state": "A1_L05_STAGE6_BLOCKED_PERSISTENCE__CONTENT_RUNTIME_PASS",
+  "next_action": "A1-L06 Stage1/2 under v3.3.6. Preserve A1-L02..L05 re-audit successors and all historical LOCKED artifacts; resolve exact registered source slice and identity before enrichment.",
+  "quality_state": "A1_L05_STAGE7_LOCKED__A1_L06_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L05",
-    "stage": "Stage6 Runtime & Presentation Acceptance",
-    "quality": "PASS_17_OF_17_CONTENT_RUNTIME_PRESENTATION__PERSISTENCE_BLOCKED",
-    "artifact_sha256": "f8d8bc313385ca7854aa9fcb5dcd68b2bd0d0ff673ab39d709854834c15a89ed",
+    "stage": "Stage7 Release & Post-Package Verification",
+    "quality": "LOCKED_PASS_19_OF_19__EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
+    "artifact_sha256": "fa2c0eb13a810ec5fa15d801ae9b110f923a6d7bc93396d0dcfbc1dc60411e5a",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "b4eeea3ad3e1cfa2f96da62dc65c370e6e79d67d",
-    "receipt_commit": "049bdb19c872d2f3ad1d923426fde302dd0e5421",
-    "prevention_commit": "8269a3cd848db32339cdaad1af803e84e86cbae6"
+    "checkpoint_commit": "74b35b25192973038189955943ea21d30695a180",
+    "receipt_commit": "29dbf335fff2a402eadb6d519c96bec8bcfd9a41",
+    "prevention_commit": "9c8e24402bd0c65c1248bbb66a90db5b42b4caad",
+    "override_commit": "e503cfd725f99357e2a908e741486421e23d900c",
+    "postpackage_commit": "6144cf4b994791340acc51a2e8ada6ca95ec2c51"
   }
 }

@@ -1,0 +1,62 @@
+{
+  "schema": "menschen-a2-l02-stage6-git-receipt@1.0.0",
+  "scope": "A2-L02",
+  "framework": "v3.3.6",
+  "stage": "6",
+  "status": "BLOCKED_EXACT_CURRENT_RUNTIME_PORTABLE_MATERIALIZATION_UNAVAILABLE",
+  "stage5_authority": {
+    "status": "PASS",
+    "artifact": "Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
+    "dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
+    "cards": 62,
+    "content_mutated_in_stage6": false
+  },
+  "target_runtime": {
+    "current": "v473-R107",
+    "artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+    "sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
+    "app_sha256": "c0a98b16a8dcc4f7e5c9f867089668f34a66ab3d7aab1143d9cecae30977b41e",
+    "runtime_fingerprint": "e069f9c71dfcf15c7149cf739c651c78fac7fd25b253ab84a532f5c1bd4f1eaa",
+    "verification_state": "PASS_REAL_CHROME_GENERIC_IMPORT_AND_NORMAL_STARTUP",
+    "delivery_surface": "LOCAL_PRIVATE_USER_RELEASE",
+    "library_materialization_verified": false,
+    "last_fully_verified_runtime": "v466-R100",
+    "last_fully_verified_artifact_sha256": "506fcdd4d062550a907ef6ef58d3a3fa185ee850631977d40145d6c7100861a8",
+    "substitution_forbidden": true,
+    "git_source_mirror_commit": "860c38804bd1d131456cb4629e79d5cdd82e935f",
+    "git_source_mirror_substitution_forbidden": true
+  },
+  "blocker": {
+    "code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
+    "message": "Exact CURRENT v473-R107 is pinned but the portable ZIP is only recorded as LOCAL_PRIVATE_USER_RELEASE and is not materializable from the current Project/Library surfaces.",
+    "policy": "Exact CURRENT portable artifact materialization + SHA-256 verification is mandatory before Stage6 runtime/import acceptance.",
+    "runtime_downgrade_forbidden": true
+  },
+  "checkpoint_artifact": {
+    "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+    "sha256": "d75894d5dd8037b6e91281ec3d6c9a7d4176606757fe68f7c33885ed8f65319b",
+    "bytes": 2559,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+    "library_file_id": "libfile_7a02e749703081918eabede221bf2dac",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "acceptance": {
+    "exact_current_runtime_materialized": false,
+    "exact_current_runtime_sha256_verified_here": false,
+    "direct_import": "NOT_RUN_BLOCKED",
+    "presentation": "NOT_RUN_BLOCKED",
+    "persistence": "NOT_RUN_BLOCKED",
+    "roundtrip": "NOT_RUN_BLOCKED",
+    "real_browser": "NOT_RUN_BLOCKED"
+  },
+  "content_mutation": false,
+  "runtime_mutation": false,
+  "separation": {
+    "A2_L01": "UNCHANGED_SEPARATE_STAGE6_TRACK",
+    "A1": "UNCHANGED",
+    "A2_verben": "UNCHANGED",
+    "runtime_ui": "UNCHANGED"
+  },
+  "next_action": "Make the exact CURRENT portable runtime artifact accessible; then re-resolve CURRENT. If CURRENT is still v473-R107, verify SHA-256 7ad616c8...f817 and run Stage6 on unchanged Stage5 content. If CURRENT advanced, use the newer CURRENT. Never substitute v466 or the Git source mirror."
+}

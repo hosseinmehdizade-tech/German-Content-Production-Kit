@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "STAGE3A_PASS__STAGE3B_PENDING",
+  "status": "STAGE3B_TARGET_COVERAGE_COMPLETE__STAGE3C_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3A_PASS__STAGE3B_PENDING",
+    "stage3": "STAGE3B_TARGET_COVERAGE_COMPLETE__STAGE3C_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L06 Stage3B reference-availability preflight and gap-driven enrichment over 2673 unresolved cells plus Kombinationen review for all 177 targets. Do not start B1-L07.",
+  "next_action": "Run B1-L06 Stage3C disposition closure over all 177 targets / 2849 cells from this exact checkpoint. Do not start B1-L07.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -2469,5 +2469,49 @@
     },
     "boundary": "Stage3A baseline only. No learner-facing semantic enrichment accepted; Stage3B not started.",
     "next_action": "Run B1-L06 Stage3B reference-availability preflight and gap-driven enrichment over 2673 unresolved cells plus Kombinationen review for all 177 targets. Do not start B1-L07."
+  },
+  "b1_l06_stage3b_target_coverage": {
+    "status": "TARGET_COVERAGE_177_OF_177__STAGE3C_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage3a_sha256": "436a9c60938433d51b91e48afc021e7317c0374b2c03297d323bca379fbf3c95",
+    "canonical_sha256": "58ac6f1d9cc85e1271ab82bba530aa2c281009033b3bd21a40708a6b8093fe0d",
+    "targets": 177,
+    "senses": 74,
+    "expressions": 103,
+    "examples": 708,
+    "unique_german_examples": 708,
+    "kombinationen_review_state": "177/177",
+    "kombinationen_items": 74,
+    "provisional_closed_no_force_targets": 103,
+    "working_candidate_ledger_entries": 1136,
+    "stage3a_dimension_cells": 2849,
+    "stage3a_unresolved_cells": 2673,
+    "source_audio_verified": 176,
+    "source_audio_missing_target_ids": [
+      "mb1m-lu-1067"
+    ],
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "reference_availability": "PASS_REQUIRED_RULES_AVAILABLE__AVAILABILITY_ONLY",
+    "validators": "source PASS 159; identity PASS 159/177; Stage3A baseline PASS 177/2849/2673; working candidate ledger PASS 1136; structural QA PASS; fresh package CRC/manifest/SHA/JSON/hygiene PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L06-v3.3.6-Stage3B-TARGET-COVERAGE-177of177-CHECKPOINT.zip",
+      "sha256": "e86a9dcd8da0f87787620e8b20243799fdd19873e1abb409b4346ad74ef221be",
+      "size_bytes": 236119,
+      "members": 54,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-Stage3B-TARGET-COVERAGE-177of177-CHECKPOINT.zip",
+      "library_file_id": "file_00000000a0c881f49722bd4b75125b61",
+      "library_stable_id": "libfile_dd5b7f567e5881919554665c7a2b1eda",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L06-STAGE3B-TARGET-COVERAGE-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "0f5e43963cc996e128a4707bdcf8b0c7dc88c4c66dba41d6384b455096bbce75",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L06-STAGE3B-TARGET-COVERAGE-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_000000008df481f4b863374d3f54e5f2",
+      "library_stable_id": "libfile_e2385d0230988191b6da554f0b96305d",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "boundary": "Stage3B target coverage is complete, but Stage3C evidence/disposition closure and Stage4 independent linguistic QA are not yet claimed.",
+    "next_action": "Run B1-L06 Stage3C disposition closure over all 177 targets / 2849 cells from this exact checkpoint. Do not start B1-L07."
   }
 }

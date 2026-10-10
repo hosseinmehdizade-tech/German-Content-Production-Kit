@@ -1,23 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage4 = PASS / independent QA complete; Stage5 is next.**
+**CURRENT lesson focus: A2-L06 Stage5 = PASS / import-ready content; Stage6 is next.**
 
 - A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 preserves **61 identities = 53 new A2 + 8 immutable A1 reuses**.
-- Stage4 independently re-audited **61/61 identities** and **936/936 Stage3C cells**; recomputed pending = **0**.
-- Effective learner content: **212 trilingual examples**, **55 exact registered-source German examples**, **159 Kombinationen**, **15 stable graph relations**.
-- Stage4 made **7 forward-only repairs across 5 identities**; raw source, immutable Stage3C parent and all 8 locked reuse rows remain unchanged.
-- Concrete provenance repair: the `über die Bühne gehen` combination pointed to source row 2754; Stage4 corrected it to exact source row **2750**.
-- Other independent repairs cover Ballett morphology, the `Zwischen uns läuft nichts.` grammar/combination, Billett plural/register metadata and the `Meine Güte!` target-bearing combination.
-- Audit outcomes: **48 PASS_NO_REPAIR + 5 PASS_REPAIR_APPLIED + 8 PASS_LOCKED_DEPENDENCY_COMPATIBILITY**.
-- Official Stage3C/completeness/candidate/source/identity gates and framework targeted tests **10/10 PASS**.
-- Fresh ZIP verification: **16 members / 15 hashes / 12 JSON**, CRC/path safety PASS; Library exact SHA/byte roundtrip PASS.
-- Stage4 artifact SHA-256: `c8952b904c37e4b153d5dc8ab2b4e0e48715a0886c7997c7377054d0431a1b5e`.
-- **Stage5 has not run.** Runtime/UI unchanged.
+- A2-L06 Stage5 projects **61 neutral `de-vocabulary` cards = 53 new A2 + 8 immutable A1 reuses**.
+- Final Stage5 payload contains **244 trilingual examples** (4 per card), **162 learner-visible Kombinationen** (159 new-A2 + 3 locked-reuse), and **15 accepted graph relations** for new A2 cards.
+- Source fidelity: **94 source occurrences / 97 source-output bindings**; **55 new-A2 German examples** remain exact registered-source text.
+- Completeness/decision closure remains exact: **875 candidate decisions / 936 completeness cells / 0 unresolved / 0 deferred**.
+- All 61 projected rows use `de-vocabulary` + `gfp-vocabulary-neutral@1`; lesson tags are **61/61 `Lektion 6`**.
+- Official Stage5 v3.3.6 gates: unified projection, source occurrences, identity closure, candidate ledger, completeness and clean anti-bypass builder **PASS**; framework suite **10/10 PASS**.
+- Final production ZIP fresh verification: **43 members / 42 SHA256 entries / 30 JSON**, CRC/path safety PASS, no nested ZIP, no Flashcards app/runtime, fresh official gates PASS.
+- Stage5 artifact SHA-256: `532fde581c582ea24a62413a11a84547da818057a80ff54e074f9fd3c2e29a61`; Library exact SHA/byte roundtrip PASS.
+- Import dataset SHA-256: `932baab49d10c34e6adfa9eeba3ac4449621be6cb2058b45c392bfece6d7037e`.
+- **Stage6 has not run.** Runtime/browser/persistence acceptance is not claimed.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE4.json](./L06-STAGE4.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE5.json](./L06-STAGE5.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage5 clean projection + v3.3.6 anti-bypass validation**. Runtime is re-resolved only at Stage6.
+Next major stage: **A2-L06 Stage6 exact CURRENT runtime & presentation acceptance**. Re-resolve Flashcards CURRENT at Stage6 execution time.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

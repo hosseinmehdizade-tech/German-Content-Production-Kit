@@ -1,19 +1,20 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L03 Stage3C DISPOSITION CLOSURE = PASS; Stage4 is next.**
+**CURRENT lesson focus: A2-L03 Stage4 INDEPENDENT QA = PASS; Stage5 is next.**
 
 - A2-L03 source: **83 occurrences**, rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
 - Identity set: **81 targets = 60 new A2 + 21 immutable A1 reuses**.
-- Stage3C completeness: **1244/1244 cells closed, 0 unresolved** = 782 VERIFIED_PRESENT + 462 CLOSED_NO_FORCE.
-- Final Stage3C candidate ledger: **1163 = 701 accepted + 462 rejected + 0 deferred**.
-- New-card content: **240 trilingual examples**, **147 Kombinationen**.
-- Relation review: **49 stable-endpoint graph relations accepted; 31 label-only candidates rejected without forcing endpoints**.
-- Stage3C applied **5 bounded learner-facing repairs**; raw source mutations: **0**.
+- Stage3C closure re-audited: **1244/1244 cells closed, 0 unresolved**.
+- Stage4 effective content: **240 trilingual examples**, **147 Kombinationen**, **49 stable graph relations**.
+- Independent Stage4 applied **18 forward-only repairs on 16 new A2 identities**.
+- Source exact German example bindings: **43/43 PASS**; raw source mutation **0**.
+- Seven immutable A1 parent archives match their exact SHA-256; **21/21 reuse rows** are parent-content compatible and unchanged.
+- Explicit dataset exception: no stable lesson-scope NVV endpoint; no NVV was fabricated.
 - A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
 - A2-L01 remains a separate Stage6-open track.
-- **Stage4 has NOT run yet** and must independently re-audit this exact Stage3C output.
+- **Stage5 has NOT run yet**; the lesson is not yet final import-ready.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE3C.json](./L03-STAGE3C.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE4.json](./L03-STAGE4.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
 
 Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
 

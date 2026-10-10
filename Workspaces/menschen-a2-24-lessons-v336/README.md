@@ -1,21 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage3B authorship is PASS; Stage3C is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage3C is PASS; Stage4 is next.**
 
 - A2-L08 remains identity-closed at **79 targets**: 76 new A2 + 3 immutable reuse dependencies.
-- Stage3B authored **304 trilingual examples**: **12 exact registered-source German examples** and **292 curated pedagogical examples**.
-- Lexical Kombinationen candidates: **170**; relation/component candidates: **74**.
-- Candidate ledger covers all **1123 Stage3A gaps**: **681 ACCEPTED / 442 DEFERRED / 0 rejected** at authorship stage.
-- Independent Stage3C still has **1202/1202 dimension cells pending**; Stage3B does not claim linguistic finality.
-- Locked dependencies `ma1m-lu-1724`, `ma2m-lu-0029`, `ma2m-lu-0378` remained read-only.
-- Source occurrences **113/113 PASS**; Stage3A baseline recheck and candidate-ledger validators PASS; framework v3.3.6 completeness suite **10/10 PASS**.
-- Final Stage3B package: CRC PASS, **25/25 checksum rehash**, **19/19 JSON parse**, portable self-verifier PASS, exact parent Stage3A SHA preserved.
-- Stage3B package SHA-256: `6b9fd04f7bb991c0c3bd49f338b7d3e9b8f40408ef5565a3af5d2fff9a2eedfa`; Library roundtrip exact-byte PASS.
-- This is **not import-ready/final**. Stage3C and Stage4 remain mandatory.
+- Stage3C independently closed **1202/1202 dimension cells**: **774 VERIFIED_PRESENT + 428 CLOSED_NO_FORCE + 0 pending**.
+- Candidate ledger is final for Stage3C: **1123 = 695 accepted + 428 rejected + 0 deferred**.
+- Reviewed content: **304 trilingual examples**, **12 exact registered-source German examples**, **170 Kombinationen**.
+- Graph review: **62 stable-endpoint relations accepted**; **31 label-only/unsafe graph candidates rejected** rather than forced.
+- **18 bounded linguistic repairs across 10 identities**; raw source and all three locked parent cards remained unchanged.
+- Zero-verified dataset dimensions are explicitly closed for **synonym** and **nvv_links**; no density quota forced weak content.
+- Official completeness, candidate-ledger, source-occurrence and identity-closure validators all PASS; portable self-verifier PASS.
+- Final package: CRC PASS, **32/32 checksum rehash**, **26/26 JSON parse**, prevention checkpoint/package gates PASS.
+- Stage3C package SHA-256: `ea7a6814bed3c4870a7f4355008b5a683f9d0340964453df8629748e99f351d0`; Library roundtrip exact-byte PASS.
+- This is **Stage3C only**: Stage4 independent re-audit has not run and the lesson is not Stage5/import-ready.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE3B.json](./L08-STAGE3B.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE3C.json](./L08-STAGE3C.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage3C — independent disposition closure** across all 79 identities / 1202 cells.
+Next major stage: **A2-L08 Stage4 — independent linguistic/source/structure re-audit**.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

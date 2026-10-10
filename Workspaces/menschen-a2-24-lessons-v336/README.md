@@ -1,15 +1,17 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L03 Stage1 SOURCE & INVENTORY = PASS.**
+**CURRENT lesson focus: A2-L03 Stage3B AUTHORSHIP = PASS; Stage3C is next.**
 
-- A2-L03 source: **83 occurrences**, exact source rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
-- Audio: **83/83 refs present** in the exact registered RAR; no missing/multi-audio rows.
-- Source German examples missing at rows **2505** and **2526** are preserved as source gaps; no text was invented.
-- Stage2 canonicalization/identity closure is **NOT STARTED**.
+- A2-L03 source: **83 occurrences**, source rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
+- Identity set: **81 lexical targets = 60 new A2 + 21 immutable A1 reuses**.
+- Stage3B authored candidates: **240 trilingual examples**, **147 Kombinationen**, **80 relation candidates**.
+- Registered-source exact German-example claims: **45**, each byte-for-text checked; source gaps **2505** and **2526** remain explicit.
+- Candidate ledger: **1163** Stage3A unresolved cells represented as **612 accepted candidates + 551 deferred/no-force + 0 rejected** at authorship.
+- **Stage3C has not run yet:** all **1244 dimension cells** remain pending independent disposition.
 - A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
 - A2-L01 remains a separate Stage6-open track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json) and the current lesson checkpoint [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE3B.json](./L03-STAGE3B.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
 
 Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
 

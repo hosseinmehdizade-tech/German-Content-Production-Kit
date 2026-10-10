@@ -1,0 +1,60 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage6-persistence-kit-checkpoint@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L03",
+  "framework": "v3.3.6",
+  "status": "BLOCKED_STAGE6_PERSISTENCE__ONE_CLICK_USER_ACCEPTANCE_KIT_READY",
+  "parent_stage6_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L03-STAGE6-CHECKPOINT.json",
+  "parent_stage6_artifact_sha256": "d642df2923a3ae33cb7554b756001e3c3ba529a5c5752d3266dcf846fdb4e8ac",
+  "runtime_authority": {
+    "CURRENT": "v474-R108",
+    "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+    "app_index_sha256": "3f02cc7cb7caeddc0fb3c11b8d479b252fe3438aecc0428ba596c2c7eb4429f3",
+    "LAST_FULLY_VERIFIED": "v466-R100",
+    "no_downgrade": true
+  },
+  "exact_content": {
+    "stage5_tsv": "A1-L03-UNIVERSAL-v2.tsv",
+    "stage5_tsv_sha256": "d99b3358959ed3f55d113a9d1013b4e9bbeb6c36f741b3139b135ea245788fa7",
+    "cards": 68,
+    "content_mutated": false
+  },
+  "kit": {
+    "filename": "A1-L03-Stage6-Persistence-Acceptance-Kit-v1.0.0.zip",
+    "sha256": "433e1ab00f6d790d29cf365e59c725f920d705f8eac9193a572c6b8c4e3e89bb",
+    "size_bytes": 2166432,
+    "members": 94,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L03-Stage6-Persistence-Acceptance-Kit-v1.0.0.zip",
+    "library_file_id": "file_000000000b94821096bf496a65de2b59",
+    "library_stable_id": "libfile_fb17950bb1cc81918919738c7b34f29c",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "static_verification": {
+    "runtime_tree": "76/76 byte-identical to exact v474 01-App",
+    "runtime_index_sha256": "PASS",
+    "tsv_sha256": "PASS",
+    "acceptance_inline_js_syntax": "PASS",
+    "zip_crc": "PASS",
+    "duplicate_members": "PASS",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+    "execution": "PENDING_USER_WINDOWS_CHROME"
+  },
+  "isolation": {
+    "normal_chrome_profile_used": false,
+    "normal_flashcards_library_modified": false,
+    "dedicated_profile": "06-Runtime/chrome-profile",
+    "server_origin": "http://127.0.0.1:8766"
+  },
+  "automated_acceptance_scope": [
+    "verify exact v474 index.html and exact L03 TSV SHA-256",
+    "import 68 cards through production TSV file-input/button path",
+    "verify commit manifest VERIFIED",
+    "verify 68/68 rich authority parity",
+    "persist reviews=7/lapses=1 for first card via production persistence owner",
+    "recreate app document and confirm 68/68 cold readback, same generation and retained progress",
+    "write exact JSON acceptance report to 06-Runtime"
+  ],
+  "stage7_allowed": false,
+  "next_action": "Run the one-click A1-L03 Stage6 persistence acceptance kit on Windows/Google Chrome. It uses an isolated dedicated Chrome profile and exact v474-R108 runtime/TSV bytes. Upload 06-Runtime/A1-L03-STAGE6-PERSISTENCE-USER-ACCEPTANCE.json after the automatic run. Until that exact report is PASS, keep Stage7 forbidden and do not start A1-L04."
+}

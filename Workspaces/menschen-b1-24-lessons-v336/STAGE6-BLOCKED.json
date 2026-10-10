@@ -1,0 +1,72 @@
+{
+  "schema": "menschen-b1-l01-stage6-blocked-receipt@1.0.0",
+  "status": "BLOCKED",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L01",
+  "framework": "v3.3.6",
+  "latest_completed_milestone": "B1_L01_STAGE5_PASS",
+  "stage5": {
+    "clean_delivery_sha256": "44ba590b93599c64f43932a1add621a2ae85ebeb1c921712b2a9ada83dfad224",
+    "direct_import_tsv_sha256": "0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942",
+    "cards": 146,
+    "columns": 23,
+    "content_changed": false
+  },
+  "runtime": {
+    "current": "v473-R107",
+    "current_artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+    "current_artifact_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
+    "current_app_sha256": "c0a98b16a8dcc4f7e5c9f867089668f34a66ab3d7aab1143d9cecae30977b41e",
+    "current_service_worker_sha256": "a1c4467a09782f366c0845caadfb039c12842313930a80a8f5e4bc2690d222e2",
+    "git_runtime_tree_sha": "4c33c4f73eb7f74c9bb94eeb56ea9e6e0db0e607",
+    "git_runtime_match": "PASS_EXACT_76_OF_76",
+    "last_fully_verified": "v466-R100",
+    "no_downgrade": true
+  },
+  "blocker": {
+    "runtime_incident": "German-Flashcards-Pro/04-Reports/Generic-Import-v473/STATE-DEPENDENT-IMPORT-RANGEERROR-USER-REPRO.json",
+    "observed_error": "Invalid string length",
+    "observed_stage": "file selection/readiness before import commit",
+    "populated_profile_precondition": "1097 active cards",
+    "generic_acceptance_boundary": "v473 real-delivery acceptance covers isolated/fresh cases and persistent 466 active cards, not 1097+",
+    "exact_current_portable_materialization": "BLOCKED_BY_FILE_SURFACE_RAW_BYTE_ACCESS",
+    "implication": "B1-L01 cumulative/populated import, reload persistence, runtime-index roundtrip and four-mode presentation cannot be certified on CURRENT v473."
+  },
+  "stage6_checks": {
+    "currentness_resolution": "PASS",
+    "git_exact_runtime_mirror": "PASS",
+    "stage5_exact_content_identity": "PASS",
+    "stage5_static_contract": "PASS",
+    "exact_current_portable_artifact_materialization": "BLOCKED",
+    "populated_profile_import_commit": "BLOCKED_BY_KNOWN_CURRENT_RUNTIME_REGRESSION",
+    "reload_persistence": "NOT_RUN",
+    "runtime_index_roundtrip": "NOT_RUN",
+    "four_mode_presentation": "NOT_CLAIMED",
+    "cumulative_identity_progress_preservation": "NOT_CLAIMED",
+    "stage7_allowed": false
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
+    "sha256": "7fec3d05fb0aed3d8d3aa668bfadecd48e89c994b2d60be352e7878ecf6885eb",
+    "size_bytes": 394440,
+    "package_members": 18,
+    "sha256s": "16/16 PASS",
+    "manifest": "15/15 PASS",
+    "json_reparse": "13/13 PASS",
+    "crc": "PASS",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage6-BLOCKED-v473.zip",
+    "library_file_id": "file_000000004b1881f4b42a59aefd3b845e",
+    "library_stable_id": "libfile_b69f6837f03481918293ba21c85bb24a",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package_verification": {
+    "filename": "B1-L01-STAGE6-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "e5311eb41eb0f5d5e9b1c9c0c9b053ec3bab186992e4f5e9817d24548a8314c5",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L01-STAGE6-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_00000000b10481f495e0d15a5901ce44",
+    "library_stable_id": "libfile_90d5de6ca0cc8191b58be6c7e4b41270"
+  },
+  "boundary": "Stage6 terminal state for CURRENT v473 is BLOCKED. Stage5 PASS is preserved; Stage7 and B1-L02 are not allowed to start.",
+  "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun B1-L01 Stage6 from exact Stage5 TSV SHA-256 0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942. Do not start B1-L02 or Stage7 while this blocker remains.",
+  "created_at": "2026-10-10"
+}

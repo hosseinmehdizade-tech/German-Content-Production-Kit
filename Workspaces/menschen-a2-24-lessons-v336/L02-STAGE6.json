@@ -1,9 +1,9 @@
 {
-  "schema": "menschen-a2-l02-stage6-git-receipt@1.1.0",
+  "schema": "menschen-a2-l02-stage6-git-receipt@1.2.0",
   "scope": "A2-L02",
   "framework": "v3.3.6",
   "stage": "6",
-  "status": "BLOCKED_REAL_BROWSER_EXECUTION_ENVIRONMENT_POLICY",
+  "status": "AWAITING_REAL_WINDOWS_CHROME_ACCEPTANCE__KIT_READY",
   "stage5_authority": {
     "status": "PASS",
     "artifact": "Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
@@ -61,14 +61,14 @@
     "exact_current_runtime_sha256_verified": true,
     "runtime_static_integrity": "PASS",
     "stage5_dataset_sha256_verified": true,
-    "direct_import": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_study": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_quick": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_typing": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_audio": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "persistence": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "roundtrip": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "real_browser": "BLOCKED_BY_ADMIN_POLICY"
+    "direct_import": "PENDING_REAL_WINDOWS_KIT",
+    "presentation_study": "PENDING_REAL_WINDOWS_KIT",
+    "presentation_quick": "PENDING_REAL_WINDOWS_KIT",
+    "presentation_typing": "PENDING_REAL_WINDOWS_KIT",
+    "presentation_audio": "PENDING_REAL_WINDOWS_KIT__AUDIO_REFERENCE_AND_MODE_ONLY",
+    "persistence": "PENDING_REAL_WINDOWS_KIT",
+    "roundtrip": "PENDING_REAL_WINDOWS_KIT",
+    "real_browser": "PENDING_REAL_WINDOWS_CHROME"
   },
   "portable_checkpoint": {
     "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
@@ -78,12 +78,34 @@
     "library_file_id": "libfile_dc2435747afc8191ba16e6319de52237",
     "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality_boundary": "STAGE5_PASS__STAGE6_RUNTIME_MATERIALIZATION_RESOLVED__REAL_BROWSER_ACCEPTANCE_BLOCKED__NOT_FINAL_LOCKED",
+  "quality_boundary": "STAGE5_PASS__EXACT_CURRENT_RUNTIME_MATERIALIZED__WINDOWS_ACCEPTANCE_KIT_STATIC_PASS__REAL_CHROME_RESULT_PENDING__NOT_FINAL_LOCKED",
   "separation": {
     "A2_L01": "UNCHANGED_SEPARATE_STAGE6_TRACK",
     "A1": "UNCHANGED",
     "A2_verben": "UNCHANGED",
     "runtime_ui": "UNCHANGED"
   },
-  "next_action": "Run content-specific A2-L02 Stage6 in a real Chrome environment that permits the app origin, after re-resolving CURRENT. Use unchanged Stage5 content; if CURRENT advances, use the newer CURRENT. Never substitute LAST_FULLY_VERIFIED."
+  "next_action": "On Windows: extract the Stage6 acceptance kit, run RUN-STAGE6-A2-L02.cmd once, wait for both phases, then upload RESULTS/A2-L02-STAGE6-RESULTS-<runid>.zip. The runner uses only an isolated Chrome profile and does not touch the normal Chrome profile.",
+  "browser_environment": {
+    "current_container": "BLOCKED_BY_ADMIN_POLICY",
+    "workaround": "EXACT_CURRENT_REAL_CHROME_ISOLATED_WINDOWS_ACCEPTANCE_KIT",
+    "user_primary_profile": "NOT_USED"
+  },
+  "acceptance_kit": {
+    "filename": "Menschen-A2-L02-v3.3.6-Stage6-v473-REAL-CHROME-ACCEPTANCE-KIT.zip",
+    "sha256": "58fab75db4a67517db6a74cafd6ed6f988dc70e534f0a40b19646438c0c585f6",
+    "bytes": 2260830,
+    "members": 89,
+    "manifest_entries": 88,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-v473-REAL-CHROME-ACCEPTANCE-KIT.zip",
+    "library_file_id": "libfile_223a5cb1b7188191bcf60901b70880f5",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "embedded_runtime": {
+      "version": "v473-R107",
+      "files_exact": 76,
+      "sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817"
+    },
+    "stage5_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
+    "static_verification": "PASS_JS_NODE_CHECK__ZIP_CRC__PATH_SAFETY__MANIFEST_REHASH__76_OF_76_RUNTIME_EXACT"
+  }
 }

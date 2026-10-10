@@ -1,23 +1,21 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage3A is PASS; Stage3B is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage3B authorship is PASS; Stage3C is next.**
 
-- A2-L08 **Hoffentlich ist es nicht das Herz!** remains identity-closed at **79 targets**: 76 new A2, 1 immutable A1 reuse, 2 immutable prior-A2 reuses.
-- Stage3A whole-lesson richness matrix: **1202 dimension cells**.
-- Baseline verified: **79** cells, all `source_audio`; **1123** cells remain `MISSING_ACTIONABLE`.
-- Target kinds: **69 senses + 10 expressions**.
-- Source seeds: Persian **79/79**; German example seed **78/79**. `ma2m-lu-0457` (`Risikofaktoren für Lungenkrebs`) has no raw German example seed.
-- Stage2B relation candidates available for Stage3 review: **67** across **46** targets.
-- Conservative morphology seeds: **46/79 targets**, **56 source occurrences**; these are review hints only, not approved morphology.
-- Active lexical Kombinationen overlay applies to **all 79 lexical targets**; no item is auto-accepted and no density quota is used.
-- Official Stage3A validator: **79 targets / 1202 cells / 1123 unresolved / 0 errors**.
-- Official source-occurrence validator: **113 occurrences / 0 errors**.
-- Stage3A package SHA-256: `153993a61e3d000fd39197d1d0307f255a299db4579173761461b43125f3699f`; Library roundtrip exact-byte PASS.
-- Stage3B enrichment has **not started**.
+- A2-L08 remains identity-closed at **79 targets**: 76 new A2 + 3 immutable reuse dependencies.
+- Stage3B authored **304 trilingual examples**: **12 exact registered-source German examples** and **292 curated pedagogical examples**.
+- Lexical Kombinationen candidates: **170**; relation/component candidates: **74**.
+- Candidate ledger covers all **1123 Stage3A gaps**: **681 ACCEPTED / 442 DEFERRED / 0 rejected** at authorship stage.
+- Independent Stage3C still has **1202/1202 dimension cells pending**; Stage3B does not claim linguistic finality.
+- Locked dependencies `ma1m-lu-1724`, `ma2m-lu-0029`, `ma2m-lu-0378` remained read-only.
+- Source occurrences **113/113 PASS**; Stage3A baseline recheck and candidate-ledger validators PASS; framework v3.3.6 completeness suite **10/10 PASS**.
+- Final Stage3B package: CRC PASS, **25/25 checksum rehash**, **19/19 JSON parse**, portable self-verifier PASS, exact parent Stage3A SHA preserved.
+- Stage3B package SHA-256: `6b9fd04f7bb991c0c3bd49f338b7d3e9b8f40408ef5565a3af5d2fff9a2eedfa`; Library roundtrip exact-byte PASS.
+- This is **not import-ready/final**. Stage3C and Stage4 remain mandatory.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE3A.json](./L08-STAGE3A.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE3B.json](./L08-STAGE3B.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage3B — gap-driven enrichment** across all 1123 unresolved cells.
+Next major stage: **A2-L08 Stage3C — independent disposition closure** across all 79 identities / 1202 cells.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

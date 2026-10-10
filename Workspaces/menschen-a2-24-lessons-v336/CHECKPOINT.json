@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-menschen-a2-lessonwise-checkpoint@1.2.0",
   "workstream": "menschen-a2-24-lessons-v336",
-  "scope": "A2-L01/L02/L03/L04 locked; A2-L05 Stage6 PASS with environment boundary",
+  "scope": "A2-L01/L02/L03/L04/L05 Stage7 LOCKED; A2-L06 Stage1 next",
   "framework": "v3.3.6",
-  "status": "A2_L01_L02_L03_L04_STAGE7_LOCKED__A2_L05_STAGE6_PASS_STAGE7_NEXT",
+  "status": "A2_L01_L02_L03_L04_L05_STAGE7_LOCKED__A2_L06_STAGE1_NEXT",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -23,14 +23,19 @@
     ]
   },
   "portable_checkpoint": {
-    "filename": "Menschen-A2-L05-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
-    "sha256": "a180858a6741298030d3610848f1feea730a9b943d7ffb4e5030edddb53ed88e",
-    "size_bytes": 2365679,
-    "members": 17,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
-    "library_file_id": "file_0000000038208210a516db61223c6b6e",
-    "library_stable_id": "libfile_a38b2d7af62881918bcb03847d211907",
-    "library_upload": "PASS"
+    "filename": "Menschen-A2-L05-v3.3.6-GFP-v475-LOCKED.zip",
+    "sha256": "9403e272c049a4f8f80f79a02123df48292dbd79ceb6fb57bf2120acde79949e",
+    "size_bytes": 430181,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-GFP-v475-LOCKED.zip",
+    "library_file_id": "file_0000000066b081f49d427350a3b9018c",
+    "library_stable_id": "libfile_8578ec627b0c8191a5dd26da9861b8df",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "zip_members": 40,
+    "manifest_entries": 38,
+    "sha256sum_entries": 39,
+    "single_top_level": true,
+    "nested_zip_count": 0,
+    "flashcards_app_runtime_members": 0
   },
   "separation": {
     "menschen_a1_l01_to_l24": "UNCHANGED",
@@ -56,7 +61,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Run A2-L05 Stage7 exact-final content-only lock/post-package verification. Re-resolve CURRENT first; preserve Repair1 bytes and do not promote v475 itself to FINAL while its separate populated-profile boundary remains open.",
+  "next_action": "A2-L05 is immutable. Continue A2-L06 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L05 LOCKED.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
   "stage": "Stage5 COMPLETE",
   "stage1_portable_checkpoint": {
@@ -1122,7 +1127,7 @@
     ],
     "next_action": "Stage2 canonicalization and mandatory Stage2B identity closure for A2-L05. Compare the 102 normalized source occurrences against immutable A1 authorities plus LOCKED A2-L01/L02/L03/L04 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not begin Stage3 until identity closure has zero unresolved states."
   },
-  "current_stage": "6_PASS__STAGE7_NEXT",
+  "current_stage": "7_LOCKED__L06_STAGE1_NEXT",
   "stage4_l05": {
     "status": "PASS_INDEPENDENT_LESSON_SCALE_QA__STAGE5_NOT_RUN",
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE4.json",
@@ -1141,7 +1146,7 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "stage5": "NOT_RUN"
   },
-  "metadata_scope_note": "Current resume authority is A2-L05 Stage6 PASS via LATEST.json + L05-STAGE6.json. Original L05 Stage5 is superseded by Repair1. L01-L04 remain immutable Stage7 LOCKED.",
+  "metadata_scope_note": "Current resume authority is A2-L05 Stage7 LOCKED via LATEST.json + L05-STAGE7.json. L01-L05 are immutable. Next work starts A2-L06 Stage1.",
   "stage5_l05": {
     "status": "PASS_CLEAN_PROJECTION__STAGE6_NOT_RUN",
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE5.json",
@@ -1194,5 +1199,17 @@
     },
     "checkpoint_artifact_sha256": "a180858a6741298030d3610848f1feea730a9b943d7ffb4e5030edddb53ed88e",
     "environment_boundary": "REAL_POPULATED_PROFILE_V475_PENDING_SEPARATE_APP_BOUNDARY"
+  },
+  "stage7_l05": {
+    "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE7.json",
+    "artifact_sha256": "9403e272c049a4f8f80f79a02123df48292dbd79ceb6fb57bf2120acde79949e",
+    "cards": 61,
+    "cumulative_unique": 361,
+    "exact_final_acceptance": "95/95 PASS + 12/12 persistence",
+    "postpackage": "38/38 manifest + 39/39 SHA256SUMS + 8/8 package selection",
+    "runtime": "v475-R109",
+    "content_lock_state": "LOCKED",
+    "stage7_complete": true
   }
 }

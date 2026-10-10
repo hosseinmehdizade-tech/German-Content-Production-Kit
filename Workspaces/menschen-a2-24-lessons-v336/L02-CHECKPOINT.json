@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l02-stage6-checkpoint@1.1.0",
+  "schema": "gcpk-menschen-a2-l02-stage6-checkpoint@1.2.0",
   "scope": "A2-L02",
   "framework": "v3.3.6",
-  "stage": "Stage6 BLOCKED",
-  "status": "A2_L02_STAGE6_BLOCKED__REAL_BROWSER_ENVIRONMENT_POLICY__RUNTIME_MATERIALIZED__STAGE5_PASS",
+  "stage": "Stage6 PENDING REAL WINDOWS ACCEPTANCE",
+  "status": "A2_L02_STAGE6_PENDING__REAL_WINDOWS_CHROME_KIT_READY__STAGE5_PASS",
   "stage5_authority": {
     "status": "PASS",
     "artifact": "Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
@@ -13,7 +13,19 @@
     "content_mutated_in_stage6": false
   },
   "stage6": {
-    "status": "BLOCKED_REAL_BROWSER_EXECUTION_ENVIRONMENT_POLICY",
+    "schema": "menschen-a2-l02-stage6-git-receipt@1.2.0",
+    "scope": "A2-L02",
+    "framework": "v3.3.6",
+    "stage": "6",
+    "status": "AWAITING_REAL_WINDOWS_CHROME_ACCEPTANCE__KIT_READY",
+    "stage5_authority": {
+      "status": "PASS",
+      "artifact": "Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
+      "dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
+      "cards": 62,
+      "content_mutated_in_stage6": false
+    },
     "previous_blocker": {
       "code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
       "status": "RESOLVED"
@@ -30,45 +42,110 @@
       "last_fully_verified_runtime": "v466-R100",
       "substitution_forbidden": true
     },
-    "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
-    "stage5_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
-    "static_runtime_preflight": "PASS_JS37_ASSETS142_64_SHELL64_NEG3_CONTROL_RELEASE_HYGIENE",
-    "content_runtime_preflight": "PASS_62_CARDS_5_POS_SCOPE_FIELDS_62_AUDIO_REFS_94",
-    "browser_blocker_code": "REAL_BROWSER_NAVIGATION_BLOCKED_BY_ADMIN_POLICY",
-    "browser_observed_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
-    "direct_import": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_study": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_quick": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_typing": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "presentation_audio": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "course_lesson_filtering": "STATIC_CONTRACT_PRESENT__DYNAMIC_NOT_RUN_BLOCKED",
-    "persistence": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "roundtrip": "NOT_RUN_BLOCKED_BROWSER_ENVIRONMENT",
-    "real_browser": "BLOCKED_BY_ADMIN_POLICY",
-    "stage6_pass": false,
-    "checkpoint_artifact": {
+    "static_preflight": {
+      "runtime_external_javascript_syntax": "PASS_37_FILES",
+      "runtime_asset_references_static_cohort": "PASS_142_REFERENCES_64_RESOURCES",
+      "shell_cohort": "PASS_64_RESOURCES_3_NEGATIVE_CONTROLS",
+      "runtime_control_consistency": "PASS_V473_R107",
+      "release_hygiene": "PASS_140_FILES_76_APP_RUNTIME_FILES"
+    },
+    "content_preflight": {
+      "cards": 62,
+      "pos_inventory": {
+        "Noun": 24,
+        "Verb": 22,
+        "Expression": 6,
+        "Adjective": 8,
+        "Adverb": 2
+      },
+      "cards_with_scope_fields": 62,
+      "cards_with_course_memberships": 62,
+      "cards_with_source_audio_refs": 62,
+      "source_audio_ref_count": 94,
+      "source_audio_boundary": "PRESERVED_AS_CUSTOM_METADATA__NO_DIRECT_FILE_BACKED_SOURCE_AUDIO_CONSUMER_PROVEN__DYNAMIC_AUDIO_MODE_BLOCKED"
+    },
+    "blocker": {
+      "code": "REAL_BROWSER_NAVIGATION_BLOCKED_BY_ADMIN_POLICY",
+      "observed_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+      "not_app_failure": true,
+      "note": "Current execution environment blocks top-level HTTP/HTTPS/file navigation before the exact app origin can load; therefore content-specific browser import/presentation/IndexedDB acceptance cannot be run truthfully here."
+    },
+    "acceptance": {
+      "exact_current_runtime_materialized": true,
+      "exact_current_runtime_sha256_verified": true,
+      "runtime_static_integrity": "PASS",
+      "stage5_dataset_sha256_verified": true,
+      "direct_import": "PENDING_REAL_WINDOWS_KIT",
+      "presentation_study": "PENDING_REAL_WINDOWS_KIT",
+      "presentation_quick": "PENDING_REAL_WINDOWS_KIT",
+      "presentation_typing": "PENDING_REAL_WINDOWS_KIT",
+      "presentation_audio": "PENDING_REAL_WINDOWS_KIT__AUDIO_REFERENCE_AND_MODE_ONLY",
+      "persistence": "PENDING_REAL_WINDOWS_KIT",
+      "roundtrip": "PENDING_REAL_WINDOWS_KIT",
+      "real_browser": "PENDING_REAL_WINDOWS_CHROME"
+    },
+    "portable_checkpoint": {
       "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
       "sha256": "21877c7a3578d0aa5214d0b5b841af91e97f667a37412888c73d78906e6fe62f",
       "bytes": 4527,
       "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
       "library_file_id": "libfile_dc2435747afc8191ba16e6319de52237",
       "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "quality_boundary": "STAGE5_PASS__EXACT_CURRENT_RUNTIME_MATERIALIZED__WINDOWS_ACCEPTANCE_KIT_STATIC_PASS__REAL_CHROME_RESULT_PENDING__NOT_FINAL_LOCKED",
+    "separation": {
+      "A2_L01": "UNCHANGED_SEPARATE_STAGE6_TRACK",
+      "A1": "UNCHANGED",
+      "A2_verben": "UNCHANGED",
+      "runtime_ui": "UNCHANGED"
+    },
+    "next_action": "On Windows: extract the Stage6 acceptance kit, run RUN-STAGE6-A2-L02.cmd once, wait for both phases, then upload RESULTS/A2-L02-STAGE6-RESULTS-<runid>.zip. The runner uses only an isolated Chrome profile and does not touch the normal Chrome profile.",
+    "browser_environment": {
+      "current_container": "BLOCKED_BY_ADMIN_POLICY",
+      "workaround": "EXACT_CURRENT_REAL_CHROME_ISOLATED_WINDOWS_ACCEPTANCE_KIT",
+      "user_primary_profile": "NOT_USED"
+    },
+    "acceptance_kit": {
+      "filename": "Menschen-A2-L02-v3.3.6-Stage6-v473-REAL-CHROME-ACCEPTANCE-KIT.zip",
+      "sha256": "58fab75db4a67517db6a74cafd6ed6f988dc70e534f0a40b19646438c0c585f6",
+      "bytes": 2260830,
+      "members": 89,
+      "manifest_entries": 88,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-v473-REAL-CHROME-ACCEPTANCE-KIT.zip",
+      "library_file_id": "libfile_223a5cb1b7188191bcf60901b70880f5",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "embedded_runtime": {
+        "version": "v473-R107",
+        "files_exact": 76,
+        "sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817"
+      },
+      "stage5_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
+      "static_verification": "PASS_JS_NODE_CHECK__ZIP_CRC__PATH_SAFETY__MANIFEST_REHASH__76_OF_76_RUNTIME_EXACT"
     }
   },
   "portable_checkpoint": {
-    "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
-    "sha256": "21877c7a3578d0aa5214d0b5b841af91e97f667a37412888c73d78906e6fe62f",
-    "bytes": 4527,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-BROWSER-ENVIRONMENT-CHECKPOINT.zip",
-    "library_file_id": "libfile_dc2435747afc8191ba16e6319de52237",
-    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "Menschen-A2-L02-v3.3.6-Stage6-v473-REAL-CHROME-ACCEPTANCE-KIT.zip",
+    "sha256": "58fab75db4a67517db6a74cafd6ed6f988dc70e534f0a40b19646438c0c585f6",
+    "bytes": 2260830,
+    "members": 89,
+    "manifest_entries": 88,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-v473-REAL-CHROME-ACCEPTANCE-KIT.zip",
+    "library_file_id": "libfile_223a5cb1b7188191bcf60901b70880f5",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "embedded_runtime": {
+      "version": "v473-R107",
+      "files_exact": 76,
+      "sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817"
+    },
+    "stage5_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
+    "static_verification": "PASS_JS_NODE_CHECK__ZIP_CRC__PATH_SAFETY__MANIFEST_REHASH__76_OF_76_RUNTIME_EXACT"
   },
-  "quality_boundary": "STAGE5_PASS__STAGE6_RUNTIME_MATERIALIZATION_RESOLVED__REAL_BROWSER_ACCEPTANCE_BLOCKED__NOT_FINAL_LOCKED",
+  "quality_boundary": "STAGE5_PASS__EXACT_CURRENT_RUNTIME_MATERIALIZED__WINDOWS_ACCEPTANCE_KIT_STATIC_PASS__REAL_CHROME_RESULT_PENDING__NOT_FINAL_LOCKED",
   "separation": {
     "A2_L01": "UNCHANGED_SEPARATE_STAGE6_TRACK",
     "A1": "UNCHANGED",
     "A2_verben": "UNCHANGED",
     "runtime_ui": "UNCHANGED"
   },
-  "next_action": "Run content-specific A2-L02 Stage6 in a real Chrome environment that permits the app origin, after re-resolving CURRENT. Use unchanged Stage5 content; if CURRENT advances, use the newer CURRENT. Never substitute LAST_FULLY_VERIFIED."
+  "next_action": "On Windows: extract the Stage6 acceptance kit, run RUN-STAGE6-A2-L02.cmd once, wait for both phases, then upload RESULTS/A2-L02-STAGE6-RESULTS-<runid>.zip. The runner uses only an isolated Chrome profile and does not touch the normal Chrome profile."
 }

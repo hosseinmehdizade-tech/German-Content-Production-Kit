@@ -1,22 +1,21 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage3C is PASS; Stage4 is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage4 independent QA is PASS; Stage5 is next.**
 
-- A2-L08 remains identity-closed at **79 targets**: 76 new A2 + 3 immutable reuse dependencies.
-- Stage3C independently closed **1202/1202 dimension cells**: **774 VERIFIED_PRESENT + 428 CLOSED_NO_FORCE + 0 pending**.
-- Candidate ledger is final for Stage3C: **1123 = 695 accepted + 428 rejected + 0 deferred**.
-- Reviewed content: **304 trilingual examples**, **12 exact registered-source German examples**, **170 Kombinationen**.
-- Graph review: **62 stable-endpoint relations accepted**; **31 label-only/unsafe graph candidates rejected** rather than forced.
-- **18 bounded linguistic repairs across 10 identities**; raw source and all three locked parent cards remained unchanged.
-- Zero-verified dataset dimensions are explicitly closed for **synonym** and **nvv_links**; no density quota forced weak content.
-- Official completeness, candidate-ledger, source-occurrence and identity-closure validators all PASS; portable self-verifier PASS.
-- Final package: CRC PASS, **32/32 checksum rehash**, **26/26 JSON parse**, prevention checkpoint/package gates PASS.
-- Stage3C package SHA-256: `ea7a6814bed3c4870a7f4355008b5a683f9d0340964453df8629748e99f351d0`; Library roundtrip exact-byte PASS.
-- This is **Stage3C only**: Stage4 independent re-audit has not run and the lesson is not Stage5/import-ready.
+- A2-L08 independent Stage4 re-audited **79/79 identities** and recomputed **1202/1202 Stage3C cells with 0 pending**.
+- Effective L08 content remains **76 new A2 cards + 3 immutable reuse dependencies**, with **304 trilingual examples**, **170 Kombinationen**, and **62 stable-endpoint graph relations**.
+- Stage4 applied **22 forward-only repairs across 16 identities**. Raw source, Stage3C parent and all locked reuse parents remained byte/row immutable.
+- Key fixes include restoring the source-attested `etw. auf dem Kasten haben` sense for `Kasten`, aligning `Blase` across bladder/blister/bubble senses under MEM-009, repairing `Druck auf jdn./etw. ausüben`, naturalizing `Sprechstunde`/`Ergebnis`, making the `3D-Druck` example target-bearing, and removing weak/headword-duplicate Kombinationen.
+- Registered source checks: **113 source occurrences**, **12/12 exact German source bindings**, and **76/76 target-card audio filenames present in the exact registered archive**. Audio playback itself was not tested.
+- Locked-parent archive hashes: **3/3 exact**; locked projected rows: **3/3 exact read-only**.
+- QA: exact four examples **76/76**, multilingual examples **304/304**, relation endpoints/types/duplicates **62/62 PASS**, framework v3.3.6 targeted tests **10/10 PASS**.
+- Fresh Stage4 package: CRC/path safety PASS, **15/15 checksum rehash**, **12/12 JSON parse**, portable verifier PASS, Library roundtrip exact-byte PASS.
+- Stage4 package SHA-256: `f6ab4770b13c1b9e2b6918f3bdd50d5f3a7c98adf54182c50664bb83c33b9120`.
+- Stage5 has **not run**; L08 is not yet final/import-ready.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE3C.json](./L08-STAGE3C.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE4.json](./L08-STAGE4.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage4 — independent linguistic/source/structure re-audit**.
+Next major stage: **A2-L08 Stage5 — clean projection + v3.3.6 anti-bypass validation + complete content-production delivery**.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

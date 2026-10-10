@@ -1,22 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage1 is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage1 is PASS; Stage2 is next.**
 
-- A2-L01 through A2-L07 are immutable **Stage7 LOCKED** content authorities.
-- A2-L07 final artifact: `Menschen-A2-L07-v3.3.6-GFP-v475-LOCKED.zip`, SHA-256 `62df3f80726d0893e39819162b37d13d8eeaf04acbe08ca01eb936a6fe6a8e45`.
-- Stage5 Repair1 remains the semantic/import parent for L07: `39a5d36a…d4515d`; the original Stage5 package is superseded for runtime acceptance.
-- Repair1 affects only `ma2m-lu-0110` and `ma2m-lu-0349`; prior semantic cores and memberships are preserved and A2-L07 membership is added.
-- Exact-final acceptance on CURRENT **GFP v475-R109**: **114/114 cumulative + 32/32 target-only PASS**, zero page errors.
-- Cumulative A2 library through L07: **495 unique cards**; **422/422 prior cards retained**.
-- Lesson filtering: **L01 75 / L02 62 / L03 81 / L04 85 / L05 61 / L06 61 / L07 75**.
-- L07: **75 cards**, **300 trilingual examples**, **106 audio refs**, **73 nonempty Kombinationen sections / 157 items**, **13 accepted graph relations**.
-- Final package: prevention package gate PASS; CRC PASS; **53/53 manifest**, **54/54 SHA256SUMS**, **36/36 JSON reparse**, official v3.3.6 content gates PASS.
-- Library roundtrip: **PASS exact SHA-256 and byte compare**.
-- App runtime finality remains separate: CURRENT v475-R109 still has the project-level populated-profile confirmation boundary; offline/storage acceptance is inherited from v466 because relevant semantics are unchanged.
+- A2-L01 through A2-L07 remain immutable **Stage7 LOCKED**.
+- A2-L08: **Hoffentlich ist es nicht das Herz!**
+- Registered source rows: **113** (`2929..3041`) from the exact registered Menschen Memrise source.
+- Raw German Learnable empty: **0**; Persian definitions empty: **0**.
+- Missing source German examples: **3** — rows `2959`, `3022`, `3025`.
+- Slash-delimited source alternatives/structures queued for Stage2 review: **67**.
+- Exact duplicate raw Learnable groups: **0**; source Learnable control-whitespace rows: **0**.
+- Audio: **113 refs / 113 unique / 0 missing / 0 rows without audio**; exact archive membership PASS.
+- Official source-occurrences validation: **1 source / 113 occurrences / 0 errors**.
+- Source payload binding: **113/113 PASS**; runtime/SRS state excluded.
+- Stage1 package SHA-256: `bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec`; Library roundtrip exact-byte PASS.
+- Canonicalization, split/merge/reuse decisions and Stage2 have **not started**.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L07-STAGE7.json](./L07-STAGE7.json), and [L07-CHECKPOINT.json](./L07-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE1.json](./L08-STAGE1.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage1 — Source Inventory**.
+Next major stage: **A2-L08 Stage2 + mandatory Stage2B identity closure** against immutable A1 and LOCKED A2-L01..L07 authorities.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

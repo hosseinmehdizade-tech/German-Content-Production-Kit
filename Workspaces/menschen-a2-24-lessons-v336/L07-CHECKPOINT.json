@@ -2,8 +2,8 @@
   "schema": "gcpk-menschen-a2-l07-stage1-checkpoint@1.0.0",
   "scope": "A2-L07",
   "framework": "v3.3.6",
-  "stage": "Stage5 COMPLETE",
-  "status": "PASS_CLEAN_PROJECTION__STAGE6_NOT_RUN",
+  "stage": "Stage6 COMPLETE",
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_rows": 93,
   "source_row_range": [
@@ -42,7 +42,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L07 Stage6 on the exact Stage5 import payload. Re-resolve German Flashcards Pro CURRENT at execution time, materialize and SHA-verify the exact CURRENT portable runtime, then run direct import, presentation, persistence/index and roundtrip acceptance. Never substitute LAST_FULLY_VERIFIED for CURRENT.",
+  "next_action": "Run A2-L07 Stage7 exact-final content-only lock/post-package verification. Re-resolve CURRENT first.",
   "stage2b_closed": true,
   "identities": 75,
   "new_a2": 71,
@@ -122,7 +122,7 @@
     "repair_actions": 20,
     "repaired_identities": 19
   },
-  "quality_boundary": "STAGE5_PASS_IMPORT_READY_CONTENT__STAGE6_NOT_RUN__NOT_FINAL_LOCKED",
+  "quality_boundary": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE5_REPAIR1__STAGE7_NEXT",
   "stage4_started": true,
   "stage4_complete": true,
   "stage4": {
@@ -163,12 +163,51 @@
     "completeness_cells": 1133,
     "unresolved_cells": 0,
     "import_dataset": "01-Final-Import/A2-L07-UNIVERSAL-v2.tsv",
-    "import_dataset_sha256": "d95b37a87ef722a0bfd37a28d14eece452a4b98f67ddeb405fb0558017ac74df",
-    "projected_cards_sha256": "f523183012eb5f9995c608647ec605a955886693cd84cacad31b349840c378f5",
+    "import_dataset_sha256": "0dd8a90bed30af6bfde4d35699692580d04b7fcdbda691e0af7b33ece9007176",
+    "projected_cards_sha256": "ec98caf90f96bd1e6c2ec0d7ba9708f60d4f5b40c3a53bc7c219c51f869587e7",
     "canonical_sha256": "fa43418cfa63a2653f3cf53f35edc2bd76176f8d98562d6b628dcd45d6e0cc90",
     "official_gates": "PASS_5_OF_5",
-    "anti_bypass": "PASS"
+    "anti_bypass": "PASS",
+    "status": "PASS_REPAIR1",
+    "repair1": {
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE5-REPAIR1.json",
+      "artifact_sha256": "39a5d36a8ba82a4df6940a65de116c6790cb9590a84da3e61ae24249d7d4515d",
+      "changed_rows": [
+        "ma2m-lu-0110",
+        "ma2m-lu-0349"
+      ],
+      "parent_semantic_parity": "2/2 PASS",
+      "prior_membership_retention": "2/2 PASS"
+    }
   },
-  "stage6": "NOT_RUN",
-  "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6"
+  "stage6": {
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE6.json",
+    "current_runtime": "v475-R109",
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "cumulative": "114/114 PASS",
+    "target_persistence": "32/32 PASS",
+    "cumulative_unique": 495,
+    "prior_retained": "422/422 PASS",
+    "overlap_semantic_core": "2/2 PASS",
+    "overlap_memberships": "2/2 prior retained + L07 added",
+    "lesson_filtering": {
+      "A2-L01": 75,
+      "A2-L02": 62,
+      "A2-L03": 81,
+      "A2-L04": 85,
+      "A2-L05": 61,
+      "A2-L06": 61,
+      "A2-L07": 75
+    },
+    "artifact": {
+      "filename": "Menschen-A2-L07-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+      "sha256": "a788b910dc59455861e14c61fc27094c43fe41e1963e9dfb84ea222ab855522f",
+      "library_file_id": "file_00000000274881f492bee0318c8d5dab",
+      "library_stable_id": "libfile_4509db6913f08191a01d14aa125ad948",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
+  },
+  "runtime_binding": "EXACT_CURRENT_v475-R109",
+  "stage6_complete": true
 }

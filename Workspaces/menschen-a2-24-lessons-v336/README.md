@@ -1,21 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage1 = PASS; Stage2 is next.**
+**CURRENT lesson focus: A2-L06 Stage2B = PASS / identity closed; Stage3A is next.**
 
 - A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 lesson: **Meine Lieblingsveranstaltung**.
-- Registered source tag: `Menschen_A1/A2/B1_(Full_Audio)::30_A2:_6.Meine_Lieblingsveranstaltung`.
-- Exact source rows: **2742..2835 = 94 source occurrences**.
-- Audio: **94/94 references present in the exact registered RAR**; no missing-audio rows.
-- Empty source examples are preserved at rows **2807, 2831, 2833**; no example was invented.
-- **60** slash-separated source rows are queued for Stage2 identity/canonicalization review; Stage1 makes no split/merge/reuse decisions.
-- Exact duplicate raw-text groups: **0**. Control-whitespace rows: **0**.
-- Stage1 package: CRC/path safety/manifest/SHA256SUMS/fresh-extract/self-validation PASS; Library exact byte roundtrip PASS.
-- Stage1 artifact SHA-256: `18c85a1345dc7dcf31ffe25d824781535e8c26ba9126cdecaeda7584d928bcac`.
+- A2-L06 lesson: **Meine Lieblingsveranstaltung**; exact source rows **2742..2835 = 94 occurrences**.
+- Stage2B canonical identities: **61 = 53 new A2 + 8 immutable A1 reuses + 0 prior-A2 reuses**.
+- New stable IDs: **ma2m-lu-0308..ma2m-lu-0360**.
+- Source→canonical bindings: **97**; candidate dispositions: **180 final**; editorial reviews: **76 closed**; unresolved identity states: **0**.
+- Slash alternatives were reviewed, not blindly split. `Mittelalter` / `Mittelalterfest` is the explicit distinct-lexeme split.
+- `halten` stays one lexical identity across the source meanings/reflexive usage under MEM-009.
+- Immutable A1 reuses: Ausstellung, mal sehen, bis, dauern, bleiben, Konzert, Verbindung, einen Fehler machen.
+- Runtime-projected cumulative unique IDs through L06: **422** = prior 361 + 53 new + 8 A1 IDs entering A2 for the first time.
+- Official source-occurrence and identity-closure validators PASS; negative tamper rejected; v3.3.6 framework tests **10/10 PASS**.
+- Stage2B artifact SHA-256: `1490e6c85dd474b6e0906f39fe9206edfd82b70b7464cfe15d66b7ff76c65c7d`; Library exact byte roundtrip PASS.
+- Stage3 semantic/enrichment work has **not** started.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE1.json](./L06-STAGE1.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE2B.json](./L06-STAGE2B.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage2 canonicalization + mandatory Stage2B identity closure**. Preserve L01-L05 LOCKED.
+Next major stage: **A2-L06 Stage3A richness baseline audit** for all 61 closed identities. Preserve L01-L05 LOCKED.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

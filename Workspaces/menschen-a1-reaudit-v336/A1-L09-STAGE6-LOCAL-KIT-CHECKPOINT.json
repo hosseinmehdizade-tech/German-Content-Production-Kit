@@ -1,0 +1,48 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage6-local-kit-checkpoint@1.0.0",
+  "date": "2026-10-11",
+  "scope": "A1-L09",
+  "status": "STAGE6_PERSISTENCE_BLOCKED__LOCAL_ACCEPTANCE_KIT_READY",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "upstream_stage6_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE6-CHECKPOINT.json",
+  "blocker": {
+    "managed_container": "CONFIRMED_NET_ERR_BLOCKED_BY_ADMINISTRATOR_BEFORE_APP_CODE",
+    "exact_current_runtime": "v475-R109",
+    "exact_runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "exact_stage5_sha256": "7d7d7850ac67d00fbf050cfea15bd0f68e6c9445af12a8ab542c67cdb39cb795",
+    "exact_tsv_sha256": "a92718e43edd07fb0705a2cb47ebe7352dff4b5ff01e9d5e56be5393baed4421",
+    "stage7_allowed": false
+  },
+  "local_acceptance_kit": {
+    "filename": "Menschen-A1-L09-v3.3.6-Stage6-LOCAL-PERSISTENCE-ACCEPTANCE-KIT-v1.0.0.zip",
+    "sha256": "0fbd8eff124d6a77de555ca64887ec8ea21633211aab3249fb1f2d9960ba4aa0",
+    "size_bytes": 5653822,
+    "members": 8,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L09-v3.3.6-Stage6-LOCAL-PERSISTENCE-ACCEPTANCE-KIT-v1.0.0.zip",
+    "library_file_id": "file_00000000734881f4a9434ab79d3ff1e2",
+    "library_stable_id": "libfile_478b4c7a2cc88191bfa8b04586052b07",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+    "static_build": "PASS",
+    "runtime_execution": "PENDING_USER_WINDOWS_CHROME",
+    "normal_profile_mutated": false,
+    "runtime_mutated": false,
+    "content_mutated": false
+  },
+  "kit_acceptance_scope": {
+    "origin": "http://127.0.0.1:8765",
+    "browser": "Google Chrome isolated temporary profile",
+    "automated_checks": [
+      "pinned runtime/content/TSV hashes",
+      "exact 127 canonical IDs",
+      "VERIFIED commit manifest",
+      "one persisted SRS progress record",
+      "full Chrome close/reopen",
+      "same active IndexedDB generation after reopen",
+      "127/127 IDs after reopen",
+      "SRS progress survives reopen"
+    ],
+    "result_file": "Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json"
+  },
+  "next_action": "Run the local acceptance kit on Windows Chrome and return the generated Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json. If PASS, close Stage6 persistence and proceed to Stage7; if FAIL, diagnose the exact report. Stage7 remains forbidden until then or explicit user acceptance of the boundary."
+}

@@ -2,8 +2,8 @@
   "schema": "gcpk-menschen-a2-l03-checkpoint@1.2.0",
   "scope": "A2-L03",
   "framework": "v3.3.6",
-  "stage": "Stage3A COMPLETE",
-  "status": "A2_L03_STAGE3A_PASS_RICHNESS_BASELINE__STAGE3B_NOT_STARTED",
+  "stage": "Stage3B COMPLETE",
+  "status": "A2_L03_STAGE3B_PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
   "stage1": {
     "schema": "gcpk-menschen-a2-l03-stage1-git-receipt@1.0.0",
     "scope": "A2-L03",
@@ -78,13 +78,13 @@
     "next_action": "Stage2 canonicalization and mandatory Stage2B identity closure for A2-L03. Compare the 83 normalized source occurrences against immutable A1 authorities plus prior A2-L01/L02 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not begin Stage3 until identity closure has zero unresolved states."
   },
   "portable_checkpoint": {
-    "filename": "Menschen-A2-L03-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
-    "sha256": "642abe7609b3a353850bbbc4b3c10786eea364bd66191f7f752630b5ff37860c",
-    "size_bytes": 216322,
+    "filename": "Menschen-A2-L03-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "sha256": "907b0a0ec5d9b6cca04eff44e6fdd92f8f6d9885a257ce532d44e13275f8a089",
+    "size_bytes": 350098,
     "members": 24,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L03-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
-    "library_file_id": "file_000000002d1081f4aa30ea98385f8ceb",
-    "library_stable_id": "libfile_29ce82a484e08191bf9b01130b815073",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L03-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "library_file_id": "file_00000000ac4881f489abe09bc37b57f4",
+    "library_stable_id": "libfile_91956fabe0408191b3efc9509abbc2ec",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "project_memory": "PROJECT-MEMORY.json",
@@ -95,7 +95,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "A2-L03 Stage3B gap-driven enrichment across 1163 unresolved cells. Prioritize MUST_HAVE definition/FA/EN/examples and immutable A1-parent compatibility, then morphology/structure/relations and lexical Kombinationen review. Persist accepted/rejected candidates; do not reopen Stage2B absent genuinely new identity evidence.",
+  "next_action": "Run A2-L03 Stage3C independent disposition closure across all 81 identities / 1244 dimension cells. Verify each Stage3B candidate; resolve every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE. Preserve the 21 A1 dependencies immutable. Do not start Stage4 until pending=0.",
   "stage2b": {
     "schema": "menschen-a2-l03-stage2b-git-receipt@1.0.0",
     "scope": "A2-L03",
@@ -318,5 +318,88 @@
     ],
     "next_action": "A2-L03 Stage3B gap-driven enrichment across 1163 unresolved cells. Prioritize MUST_HAVE definition/FA/EN/examples and immutable A1-parent compatibility, then morphology/structure/relations and lexical Kombinationen review. Persist accepted/rejected candidates; do not reopen Stage2B absent genuinely new identity evidence."
   },
-  "quality_boundary": "STAGE3A_BASELINE_PASS__81_TARGETS__1244_CELLS__1163_ACTIONABLE__STAGE3B_NOT_STARTED"
+  "quality_boundary": "STAGE3A_BASELINE_PASS__81_TARGETS__1244_CELLS__1163_ACTIONABLE__STAGE3B_NOT_STARTED",
+  "stage3b": {
+    "schema": "menschen-a2-l03-stage3b-git-receipt@1.0.0",
+    "scope": "A2-L03",
+    "framework": "v3.3.6",
+    "stage": "3B",
+    "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
+    "parent": {
+      "stage3a_receipt": "Workspaces/menschen-a2-24-lessons-v336/L03-STAGE3A.json",
+      "stage3a_artifact_sha256": "642abe7609b3a353850bbbc4b3c10786eea364bd66191f7f752630b5ff37860c",
+      "identity_fingerprint": "65c9d378e4a82d05c0e0c9bf6aec7bb327ef15b7d44681d9804c6c74639e5fc0"
+    },
+    "authorship": {
+      "lesson_identities": 81,
+      "new_a2_cards": 60,
+      "immutable_a1_reuse": 21,
+      "trilingual_examples": 240,
+      "registered_source_exact_german_examples": 45,
+      "a2_kombinationen": 147,
+      "relation_candidates": 80,
+      "official_candidate_ledger": {
+        "candidates": 1163,
+        "accepted": 612,
+        "rejected": 0,
+        "deferred": 551,
+        "mode": "working",
+        "validator": "PASS"
+      },
+      "stage3c_pending_cells": 1244
+    },
+    "qa": {
+      "structural_validation": "PASS",
+      "linguistic_sanity_preflight": "PASS_NO_ERRORS_NO_WARNINGS",
+      "source_exact_truth": "PASS_45_OF_45_BYTE_FOR_TEXT",
+      "four_examples_each": "PASS_60_OF_60",
+      "trilingual_examples": "PASS_240",
+      "no_a1_mutation": "PASS_21_IMMUTABLE_DEPENDENCIES",
+      "mem009_polysemy_preserved": "PASS",
+      "fortschreiten_source_conflict": "RAW_SOURCE_hat_fortgeschritten_PRESERVED__CANDIDATE_ist_fortgeschritten",
+      "portable_self_verifier": "PASS_AFTER_FRESH_EXTRACT",
+      "package_crc": "PASS",
+      "package_manifest": "PASS_23_INTERNAL_ENTRIES_PLUS_SHA256SUMS",
+      "package_hygiene_scan": "PASS",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "artifact": {
+      "filename": "Menschen-A2-L03-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+      "sha256": "907b0a0ec5d9b6cca04eff44e6fdd92f8f6d9885a257ce532d44e13275f8a089",
+      "size_bytes": 350098,
+      "members": 24,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L03-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+      "library_file_id": "file_00000000ac4881f489abe09bc37b57f4",
+      "library_stable_id": "libfile_91956fabe0408191b3efc9509abbc2ec",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "quality_boundary": "STAGE3B_AUTHORSHIP_PASS_ONLY__ALL_1244_DIMENSION_CELLS_PENDING_INDEPENDENT_STAGE3C__NOT_STAGE4_NOT_STAGE5_NOT_IMPORT_READY",
+    "source_fidelity": {
+      "source_occurrences_preserved": 83,
+      "source_exact_examples_claimed_only_on_exact_german_match": true,
+      "source_exact_german_examples": 45,
+      "source_translations_claimed": false,
+      "source_gaps_preserved": [
+        2505,
+        2526
+      ],
+      "curated_content_requires_stage3c_stage4_review": true
+    },
+    "separation": {
+      "A2_L01": "UNCHANGED__STAGE6_SEPARATE_OPEN_TRACK",
+      "A2_L02": "UNCHANGED__STAGE7_LOCKED",
+      "A1": "UNCHANGED__21_READ_ONLY_PARENT_DEPENDENCIES",
+      "A2_verben": "UNCHANGED",
+      "runtime_ui": "UNCHANGED"
+    },
+    "project_memory": "PROJECT-MEMORY.json",
+    "git_sync_policy": "GIT-SYNC-POLICY.json",
+    "prevention_refs": [
+      "MEM-003-SOURCE-FIDELITY",
+      "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+      "MEM-009-MULTI-MEANING-ONE-CARD",
+      "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+    ],
+    "next_action": "Run A2-L03 Stage3C independent disposition closure across all 81 identities / 1244 dimension cells. Verify each Stage3B candidate; resolve every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE. Preserve the 21 A1 dependencies immutable. Do not start Stage4 until pending=0."
+  }
 }

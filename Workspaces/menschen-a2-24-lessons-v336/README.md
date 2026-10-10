@@ -1,22 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L07 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage1 is next.**
 
-- A2-L01 through A2-L06 remain immutable **Stage7 LOCKED**.
-- A2-L07 Stage5 required a bounded **Repair1** after Stage6 caught loss of prior semantic/membership authority on `ma2m-lu-0110` and `ma2m-lu-0349`.
-- Repair1 changed only those two projection rows; **73/75 target rows were unchanged**, and both repaired rows preserve exact prior-A2 semantic cores while adding the A2-L07 transport membership.
-- Exact Stage5 Repair1 SHA-256: `39a5d36a8ba82a4df6940a65de116c6790cb9590a84da3e61ae24249d7d4515d`; exact TSV SHA-256: `0dd8a90bed30af6bfde4d35699692580d04b7fcdbda691e0af7b33ece9007176`.
-- Stage6 ran on exact CURRENT **GFP v475-R109** (`18b6a754…d9d746`) and passed **114/114 cumulative + 32/32 target persistence**, with zero page errors.
-- Cumulative A2 library after L07: **495 unique cards**; all **422/422 prior cards** remain present, 420 non-overlap cards are semantically unchanged, and both overlap cards pass exact semantic-core + prior-membership preservation.
+- A2-L01 through A2-L07 are immutable **Stage7 LOCKED** content authorities.
+- A2-L07 final artifact: `Menschen-A2-L07-v3.3.6-GFP-v475-LOCKED.zip`, SHA-256 `62df3f80726d0893e39819162b37d13d8eeaf04acbe08ca01eb936a6fe6a8e45`.
+- Stage5 Repair1 remains the semantic/import parent for L07: `39a5d36a…d4515d`; the original Stage5 package is superseded for runtime acceptance.
+- Repair1 affects only `ma2m-lu-0110` and `ma2m-lu-0349`; prior semantic cores and memberships are preserved and A2-L07 membership is added.
+- Exact-final acceptance on CURRENT **GFP v475-R109**: **114/114 cumulative + 32/32 target-only PASS**, zero page errors.
+- Cumulative A2 library through L07: **495 unique cards**; **422/422 prior cards retained**.
 - Lesson filtering: **L01 75 / L02 62 / L03 81 / L04 85 / L05 61 / L06 61 / L07 75**.
-- L07 runtime parity: **75/75**; **300 trilingual examples**, **106 audio refs**, **73 Kombinationen sections / 157 items** in Study, Quick, Typing and Audio.
-- Stage6 checkpoint SHA-256: `a788b910dc59455861e14c61fc27094c43fe41e1963e9dfb84ea222ab855522f`; Library exact-byte roundtrip PASS.
-- Managed real-origin execution remains unavailable. Offline/storage acceptance is inherited from v466 because v475 storage/offline semantics are unchanged; the separate **v475 populated-profile confirmation remains open** at app-project level.
-- **Stage7 has not run.**
+- L07: **75 cards**, **300 trilingual examples**, **106 audio refs**, **73 nonempty Kombinationen sections / 157 items**, **13 accepted graph relations**.
+- Final package: prevention package gate PASS; CRC PASS; **53/53 manifest**, **54/54 SHA256SUMS**, **36/36 JSON reparse**, official v3.3.6 content gates PASS.
+- Library roundtrip: **PASS exact SHA-256 and byte compare**.
+- App runtime finality remains separate: CURRENT v475-R109 still has the project-level populated-profile confirmation boundary; offline/storage acceptance is inherited from v466 because relevant semantics are unchanged.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L07-STAGE6.json](./L07-STAGE6.json), [L07-STAGE5-REPAIR1.json](./L07-STAGE5-REPAIR1.json), and [L07-CHECKPOINT.json](./L07-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L07-STAGE7.json](./L07-STAGE7.json), and [L07-CHECKPOINT.json](./L07-CHECKPOINT.json).
 
-Next major stage: **A2-L07 Stage7 exact-final content lock/post-package verification**. Re-resolve CURRENT first.
+Next major stage: **A2-L08 Stage1 — Source Inventory**.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

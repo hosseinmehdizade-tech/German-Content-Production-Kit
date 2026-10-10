@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L06_STAGE3C_DISPOSITION_CLOSURE_PASS",
-  "quality": "L01_L02_L03_L04_L05_STAGE7_LOCKED__L06_STAGE3C_PASS_936_OF_936_CLOSED__619_VERIFIED_317_CLOSED_NO_FORCE__875_LEDGER_558_ACCEPTED_317_REJECTED_0_DEFERRED__STAGE4_NOT_RUN",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE3C.json",
-  "artifact_sha256": "8fd9cb561c82384d7b48f8907ed127a75e10cddee5bc922b65766e60c8625378",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L06-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS.zip",
-  "artifact_library_file_id": "libfile_683f67abf6248191b54f8406bc55d699",
+  "latest_completed_milestone": "A2-L06_STAGE4_INDEPENDENT_QA_PASS",
+  "quality": "L01_L02_L03_L04_L05_STAGE7_LOCKED__L06_STAGE4_PASS_61_AUDITED_7_REPAIRS_5_IDS__212_EXAMPLES__159_KOMBINATIONEN__15_RELATIONS__STAGE5_NOT_RUN",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE4.json",
+  "artifact_sha256": "c8952b904c37e4b153d5dc8ab2b4e0e48715a0886c7997c7377054d0431a1b5e",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L06-v3.3.6-Stage4-COMPLETE-CHECKPOINT.zip",
+  "artifact_library_file_id": "libfile_92c9427031388191a0fe9632d00de737",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L05_STAGE7_LOCKED_RECONCILED",
-  "next_action": "Run independent A2-L06 Stage4 linguistic/source/structure re-audit on the exact Stage3C reviewed cards and closure matrix. Stage4 must not trust Stage3C self-report and may reopen defects. Do not start Stage5 until Stage4 passes.",
+  "next_action": "Run A2-L06 Stage5 clean projection, v3.3.6 anti-bypass validation and complete content-production delivery from this exact Stage4 effective projection. Re-resolve Flashcards CURRENT only at Stage6.",
   "central_checkpoint_sha": "0b49f7f066e6db8d2165d368dc10f26ab8fa6cc9",
   "root_project_state_sha": "c7e7184c1636eeb6061aa7a78c6f30ea397bf3e1",
-  "last_git_coordination": "A2_L06_STAGE3C_PASS__L01_L05_LOCKED_PRESERVED",
+  "last_git_coordination": "A2_L06_STAGE4_PASS__L01_L05_LOCKED_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -168,10 +168,10 @@
       "stage7_complete": true
     },
     "A2-L06": {
-      "status": "STAGE3C_PASS_COMPLETE__STAGE4_NOT_RUN",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE3C.json",
+      "status": "STAGE4_PASS_INDEPENDENT_QA__STAGE5_NOT_RUN",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE4.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L06-CHECKPOINT.json",
-      "artifact_sha256": "8fd9cb561c82384d7b48f8907ed127a75e10cddee5bc922b65766e60c8625378",
+      "artifact_sha256": "c8952b904c37e4b153d5dc8ab2b4e0e48715a0886c7997c7377054d0431a1b5e",
       "source_occurrences": 94,
       "identities": 61,
       "new_a2": 53,
@@ -179,41 +179,37 @@
       "reused_prior_a2": 0,
       "identity_fingerprint": "06d4c0bf01e3dd7ec7ab80d02721395f7878c7164e54fcdc99eb2353f98d7737",
       "runtime_projected_cumulative_unique": 422,
-      "stage3a": {
-        "status": "PASS",
-        "dimension_cells": 936,
-        "verified_present_cells": 61,
-        "unresolved_cells": 875
-      },
-      "stage3b": {
-        "status": "PASS_AUTHORSHIP_COMPLETE",
-        "trilingual_examples": 212,
-        "kombinationen": 158,
-        "relation_candidates": 41,
-        "candidate_ledger": {
-          "total": 875,
-          "accepted": 514,
-          "deferred": 361
-        }
-      },
       "stage3c": {
         "status": "PASS_COMPLETE",
         "dimension_cells": 936,
         "verified_present": 619,
         "closed_no_force": 317,
-        "pending": 0,
-        "candidate_ledger": {
-          "total": 875,
-          "accepted": 558,
-          "rejected": 317,
-          "deferred": 0
-        },
-        "kombinationen": 159,
-        "accepted_graph_relations": 15,
-        "repairs": 15,
-        "repaired_identities": 12
+        "pending": 0
       },
-      "stage4": "NOT_RUN"
+      "stage4": {
+        "status": "PASS_INDEPENDENT_QA",
+        "canonical_identities_audited": 61,
+        "new_a2_effective_cards": 53,
+        "locked_reuse_dependencies": 8,
+        "locked_a1_reuse_dependencies": 8,
+        "locked_prior_a2_reuse_dependencies": 0,
+        "source_occurrences": 94,
+        "stage3c_cells_reaudited": 936,
+        "stage3c_pending_recomputed": 0,
+        "new_a2_examples": 212,
+        "source_exact_german_examples": 55,
+        "curated_or_editorially_corrected_german_examples": 157,
+        "kombinationen_items": 159,
+        "effective_graph_relations": 15,
+        "relation_type_normalizations": 0,
+        "repair_actions": 7,
+        "repaired_identities": 5,
+        "pass_no_repair": 48,
+        "pass_repair_applied": 5,
+        "pass_locked_dependency_compatibility": 8,
+        "artifact_sha256": "c8952b904c37e4b153d5dc8ab2b4e0e48715a0886c7997c7377054d0431a1b5e"
+      },
+      "stage5": "NOT_RUN"
     }
   },
   "stage3a": {
@@ -1250,5 +1246,40 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "next_action": "Run independent A2-L06 Stage4 linguistic/source/structure re-audit on the exact Stage3C reviewed cards and closure matrix. Stage4 must not trust Stage3C self-report and may reopen defects. Do not start Stage5 until Stage4 passes."
+  },
+  "stage4_l06": {
+    "status": "PASS_INDEPENDENT_LESSON_SCALE_QA__STAGE5_NOT_RUN",
+    "canonical_identities_audited": 61,
+    "new_a2_effective_cards": 53,
+    "locked_reuse_dependencies": 8,
+    "locked_a1_reuse_dependencies": 8,
+    "locked_prior_a2_reuse_dependencies": 0,
+    "source_occurrences": 94,
+    "stage3c_cells_reaudited": 936,
+    "stage3c_pending_recomputed": 0,
+    "new_a2_examples": 212,
+    "source_exact_german_examples": 55,
+    "curated_or_editorially_corrected_german_examples": 157,
+    "kombinationen_items": 159,
+    "effective_graph_relations": 15,
+    "relation_type_normalizations": 0,
+    "repair_actions": 7,
+    "repaired_identities": 5,
+    "pass_no_repair": 48,
+    "pass_repair_applied": 5,
+    "pass_locked_dependency_compatibility": 8,
+    "artifact": {
+      "filename": "Menschen-A2-L06-v3.3.6-Stage4-COMPLETE-CHECKPOINT.zip",
+      "sha256": "c8952b904c37e4b153d5dc8ab2b4e0e48715a0886c7997c7377054d0431a1b5e",
+      "size_bytes": 559413,
+      "members": 16,
+      "sha256_entries": 15,
+      "json_reparse": 12,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L06-v3.3.6-Stage4-COMPLETE-CHECKPOINT.zip",
+      "library_file_id": "file_0000000013ec81f4acd867048a435ee8",
+      "library_stable_id": "libfile_92c9427031388191a0fe9632d00de737",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "next_action": "Run A2-L06 Stage5 clean projection, v3.3.6 anti-bypass validation and complete content-production delivery from this exact Stage4 effective projection. Re-resolve Flashcards CURRENT only at Stage6."
   }
 }

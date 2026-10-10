@@ -1,24 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage3C = PASS / disposition closure complete; Stage4 is next.**
+**CURRENT lesson focus: A2-L06 Stage4 = PASS / independent QA complete; Stage5 is next.**
 
 - A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 preserves the frozen Stage2B set: **61 identities = 53 new A2 + 8 immutable A1 reuses**.
-- Stage3C closed **936/936 cells**: **619 VERIFIED_PRESENT + 317 CLOSED_NO_FORCE + 0 pending**.
-- Candidate ledger is final: **875 = 558 ACCEPTED + 317 REJECTED + 0 DEFERRED**.
-- Reviewed learner content keeps **212 trilingual examples**; **55 German examples** remain exact registered-source text.
-- Reviewed lexical overlay now has **159 Kombinationen**.
-- Graph review accepted **15 stable relations**; **28 Stage3B label-only graph candidates** were rejected rather than creating dangling or register-unsafe links.
-- Stage3C applied **15 bounded repair actions across 12 identities**, with **0 raw-source mutations** and **0 locked-parent mutations**.
-- `halten` remains one polysemous card under MEM-009; source-attested animal-keeping and opinion senses were added to that same card rather than split.
-- Dataset-level no-force exceptions are explicit for `nvv_links` and `component_relations`; no density quota was used.
-- Official completeness, candidate-ledger, source-occurrence and identity-closure validators PASS; fresh package verification and Library exact byte roundtrip PASS.
-- Stage3C artifact SHA-256: `8fd9cb561c82384d7b48f8907ed127a75e10cddee5bc922b65766e60c8625378`.
-- **Stage4 has not run.** This is not Stage5/import-ready.
+- A2-L06 preserves **61 identities = 53 new A2 + 8 immutable A1 reuses**.
+- Stage4 independently re-audited **61/61 identities** and **936/936 Stage3C cells**; recomputed pending = **0**.
+- Effective learner content: **212 trilingual examples**, **55 exact registered-source German examples**, **159 Kombinationen**, **15 stable graph relations**.
+- Stage4 made **7 forward-only repairs across 5 identities**; raw source, immutable Stage3C parent and all 8 locked reuse rows remain unchanged.
+- Concrete provenance repair: the `über die Bühne gehen` combination pointed to source row 2754; Stage4 corrected it to exact source row **2750**.
+- Other independent repairs cover Ballett morphology, the `Zwischen uns läuft nichts.` grammar/combination, Billett plural/register metadata and the `Meine Güte!` target-bearing combination.
+- Audit outcomes: **48 PASS_NO_REPAIR + 5 PASS_REPAIR_APPLIED + 8 PASS_LOCKED_DEPENDENCY_COMPATIBILITY**.
+- Official Stage3C/completeness/candidate/source/identity gates and framework targeted tests **10/10 PASS**.
+- Fresh ZIP verification: **16 members / 15 hashes / 12 JSON**, CRC/path safety PASS; Library exact SHA/byte roundtrip PASS.
+- Stage4 artifact SHA-256: `c8952b904c37e4b153d5dc8ab2b4e0e48715a0886c7997c7377054d0431a1b5e`.
+- **Stage5 has not run.** Runtime/UI unchanged.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE3C.json](./L06-STAGE3C.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE4.json](./L06-STAGE4.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage4 independent linguistic/source/structure re-audit**. Preserve L01-L05 LOCKED.
+Next major stage: **A2-L06 Stage5 clean projection + v3.3.6 anti-bypass validation**. Runtime is re-resolved only at Stage6.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

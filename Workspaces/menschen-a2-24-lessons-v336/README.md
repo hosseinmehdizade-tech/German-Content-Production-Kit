@@ -1,27 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage3B AUTHORSHIP = PASS; Stage3C is next.**
+**CURRENT lesson focus: A2-L04 Stage3C DISPOSITION CLOSURE = PASS; Stage4 is next.**
 
 - Lesson: **A2-L04 — Was darf es sein?**
-- Closed identity set: **85 = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
-- Stage3B authored **67 new A2 candidate cards**.
-- Examples: **268 DE/FA/EN**, exactly four per new card.
-- Registered-source-exact German examples: **64**, each checked against that card's own raw source-example seeds.
-- Kombinationen candidates: **204**, with no exact example/Kombination duplication after QA.
-- Suggested relation candidates: **40**.
-- Working candidate ledger: **1206 = 642 accepted-at-authorship + 564 deferred + 0 rejected**.
-- All **1291 dimension cells remain pending independent Stage3C disposition**; Stage3B authorship is not completeness closure.
-- Ten original source example gaps remain preserved; no source text was rewritten.
-- Explicit review boundary: source says `Pfund (453 Gramm)`; learner candidate uses the German retail convention candidate `500 Gramm`, to be independently verified in Stage3C/Stage4.
-- Corrupted source spelling in the `fettarm` example is preserved as source evidence and is not claimed source-exact in learner content.
-- MEM-009 one-card polysemy remains preserved for targets such as `Scheibe` and `Akzent`.
-- Official candidate-ledger validator and Stage3A baseline recheck: PASS.
-- Framework v3.3.6 regression: **10/10 PASS** via bounded 9+1 execution.
+- Identity set: **85 = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
+- Stage3C closure: **1291/1291 cells final, 0 pending**.
+- Final Stage3C disposition: **814 VERIFIED_PRESENT + 477 CLOSED_NO_FORCE**.
+- Candidate ledger: **1206 = 729 accepted + 477 rejected + 0 deferred**; the additional 85 verified cells are the Stage3A source-audio baseline.
+- Reviewed new-card examples: **268 DE/FA/EN**, exact four per new card.
+- Registered-source-exact German examples: **64/64 exact own-card binding**.
+- Kombinationen after independent review: **203**.
+- Graph relations: **10 accepted stable endpoints**; **30 label-only candidates rejected from graph** rather than fabricating IDs.
+- Stage3C made **9 forward-only repairs across 7 new A2 identities**; raw source mutation **0**, locked-parent mutation **0**.
+- Exact immutable parent verification: **7/7 parent archives SHA-256 PASS**, **18/18 projected reuse rows read-only compatible**.
+- Raw source gaps and anomalies remain preserved, including the source's `Pfund = 453 Gramm` annotation and the corrupted spelling in the `fettarm` source example.
+- Stage4 independent linguistic/source/structure re-audit has **NOT run**.
 - A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains its separate runtime track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE3B.json](./L04-STAGE3B.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE3C.json](./L04-STAGE3C.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Next major stage: **Stage3C independent disposition closure**. No Stage4 work starts until pending = 0.
+Next major stage: **Stage4 independent re-audit**. It may reopen defects and must not trust Stage3C self-report.
 
 ---
 

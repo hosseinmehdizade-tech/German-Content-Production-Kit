@@ -1,27 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L05 Stage5 = PASS / import-ready; Stage6 is next.**
+**CURRENT lesson focus: A2-L05 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
 
 - Lesson: **A2-L05 — Schaut mal, der schöne Dom!**
-- Final Stage5 projection: **61 neutral de-vocabulary cards = 50 new A2 + 9 immutable A1 reuses + 2 immutable prior-A2 reuses**.
-- Examples: **244 DE/FA/EN**, exactly four per card.
-- Registered-source-exact German examples on new A2 cards: **41**.
-- Kombinationen: **131 visible items** = 121 new-A2 items + 10 valid locked-reuse items; legacy stable-ID relation pointers remain backend-only.
-- Effective graph relations: **2**.
-- Source occurrences: **102**; source-output bindings: **108**.
-- Candidate ledger: **872 final decisions, 0 deferred**.
-- Completeness: **933 cells, 0 unresolved**.
-- Official v3.3.6 unified/source/identity/candidate/completeness gates: PASS.
-- Framework v3.3.6 regression: **10/10 PASS** via bounded 9+1 execution.
-- Official Stage5 clean-delivery anti-bypass builder and final package checks: PASS.
-- Stage5 artifact: `Menschen-A2-L05-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip`, SHA-256 `015dbfee138bbd6e6398d8f5a271514a1ff0a79ed5bbeba3f57a889b6bf27b0a`; Library exact SHA + byte roundtrip PASS.
-- A2-L01 through A2-L04 remain immutable Stage7 LOCKED.
-- Stage6 runtime acceptance has **not** run; A2-L05 is import-ready content but not final/locked.
+- Stage5 authority is now **Repair1**: the original Stage5 was superseded after Stage6 exposed a locked-reuse backend-provenance collapse and a copied Lektion-4 tag on L05 rows.
+- Repair1 keeps **61 cards = 50 new A2 + 9 immutable A1 reuses + 2 immutable prior-A2 reuses**, 244 trilingual examples, 131 visible Kombinationen and 2 graph relations.
+- Repair1 Stage5 gates: **20/20 projection QA, 10/10 framework tests, official completeness/candidate/identity/source/anti-bypass PASS**.
+- Exact CURRENT runtime: **GFP v475-R109**, artifact SHA-256 18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746.
+- Exact-runtime Stage6: **95/95 cumulative PASS + 12/12 target persistence PASS**, zero page errors.
+- Runtime cumulative library through L05: **361 unique stable IDs**; prior 302 retained, 300 non-overlap cards unchanged, both overlaps preserve semantic core and gain L05 membership.
+- Lesson filters: L01=75, L02=62, L03=81, L04=85, L05=61.
+- Four presentation modes: **55 nonempty Kombinationen sections / 131 items** in Study, Quick, Typing and Audio.
+- Managed environment blocks real-origin navigation; offline/storage acceptance is inherited from fully verified v466 under the enforced currentness policy. The separate v475 populated-profile confirmation remains an app/runtime boundary.
+- A2-L01 through A2-L04 remain immutable Stage7 LOCKED. A2-L05 is **not locked yet**.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L05-STAGE5.json](./L05-STAGE5.json), and [L05-CHECKPOINT.json](./L05-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L05-STAGE6.json](./L05-STAGE6.json), [L05-STAGE5-REPAIR1.json](./L05-STAGE5-REPAIR1.json), and [L05-CHECKPOINT.json](./L05-CHECKPOINT.json).
 
-Next major stage: **Stage6 exact-current-runtime acceptance**. Runtime currentness must be resolved again at Stage6 execution time.
-
+Next major stage: **Stage7 exact-final content-only lock and post-package verification**. Re-resolve CURRENT before locking.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

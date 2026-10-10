@@ -1,26 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage2B IDENTITY CLOSURE = PASS; Stage3A is next.**
+**CURRENT lesson focus: A2-L04 Stage3A RICHNESS BASELINE = PASS; Stage3B is next.**
 
 - Lesson: **A2-L04 — Was darf es sein?**
-- Exact registered source: **108 occurrences**, rows **2532..2639**, audio **108/108 present**.
-- Identity closure: **85 active identities**.
-- **67 new A2 IDs**: `ma2m-lu-0191..ma2m-lu-0257`.
-- **17 immutable A1 reuses** + **1 immutable prior-A2 reuse** (`ma2m-lu-0178 Information`).
-- Source-to-canonical bindings: **117**.
-- Candidate dispositions: **215/215 closed**; editorial reviews **77/77 closed**.
-- Identity unresolved: **0**.
-- Cumulative unique canonical IDs across A2-L01..L04 identity scopes: **302**.
-- Ten missing German source examples remain preserved exactly as source; no source rows were rewritten.
-- MEM-009 honored for current work: `Scheibe`, `Ahnung`, `Flasche` remain one lexical card each; the historical A1 three-way `Birne` split is reused read-only and no new split is created.
-- Official source-occurrence + identity-closure validators: PASS.
-- Framework v3.3.6 tests: **10/10 PASS**; negative dangling-target/unresolved tamper checks were correctly rejected.
-- Stage3 semantic/enrichment work has **NOT started**.
-- A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains a separate runtime-acceptance track.
+- Closed identity set: **85 = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
+- Target kinds: **76 senses + 9 expressions**.
+- Enrichment baseline: **1291 dimension cells**.
+- Baseline verified: **85 cells**, all `source_audio`.
+- Baseline unresolved/actionable: **1206 cells**.
+- Raw Persian source seeds: **85/85** targets; seeds are not auto-approved.
+- German source-example seeds: **80/85** targets.
+- No mapped German source example seed for: `ma2m-lu-0200`, `ma1m-lu-0799`, `ma2m-lu-0213`, `ma2m-lu-0235`, `ma1m-lu-1131`.
+- Conservative explicit source-form morphology hints: **46/85** targets.
+- Stage3 relation candidates carried from Stage2B: **98** across **42** targets; candidate only, no auto-promotion.
+- Audio: **85/85** identities have preserved source refs.
+- Stage3A authored **no learner-ready semantics** and made no locked-parent mutations.
+- A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains its separate runtime track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE2B.json](./L04-STAGE2B.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE3A.json](./L04-STAGE3A.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Next major stage: **Stage3A richness baseline audit** for all 85 closed identities.
+Next major stage: **Stage3B gap-driven enrichment** across the 1206 unresolved cells.
 
 ---
 

@@ -1,23 +1,26 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage1 SOURCE INVENTORY = PASS; Stage2 is next.**
+**CURRENT lesson focus: A2-L04 Stage2B IDENTITY CLOSURE = PASS; Stage3A is next.**
 
 - Lesson: **A2-L04 — Was darf es sein?**
-- Exact registered source rows: **2532..2639** = **108 occurrences**.
-- Exact registered source: Menschen A1/A2/B1 Full Audio export; archive and CSV hashes match the source registry.
-- Audio: **108/108 referenced MP3s present** in the exact RAR; no missing or multi-audio rows.
-- Empty German source examples are preserved at rows **2538, 2549, 2550, 2555, 2569, 2597, 2599, 2606, 2626, 2635**; nothing was invented.
-- Source rows containing slash-separated alternatives requiring Stage2 identity review: **51**.
-- Exact duplicate raw Learnable rows inside L04: **0**.
-- Progress/SRS/distractor metadata is excluded from the source-occurrence payload.
-- Stage1 made **no** split/merge/reuse/canonical-ID decision.
-- A2-L03 remains **Stage7 LOCKED** and immutable.
-- A2-L02 remains **Stage7 LOCKED** and immutable.
-- A2-L01 remains a separate runtime-acceptance track.
+- Exact registered source: **108 occurrences**, rows **2532..2639**, audio **108/108 present**.
+- Identity closure: **85 active identities**.
+- **67 new A2 IDs**: `ma2m-lu-0191..ma2m-lu-0257`.
+- **17 immutable A1 reuses** + **1 immutable prior-A2 reuse** (`ma2m-lu-0178 Information`).
+- Source-to-canonical bindings: **117**.
+- Candidate dispositions: **215/215 closed**; editorial reviews **77/77 closed**.
+- Identity unresolved: **0**.
+- Cumulative unique canonical IDs across A2-L01..L04 identity scopes: **302**.
+- Ten missing German source examples remain preserved exactly as source; no source rows were rewritten.
+- MEM-009 honored for current work: `Scheibe`, `Ahnung`, `Flasche` remain one lexical card each; the historical A1 three-way `Birne` split is reused read-only and no new split is created.
+- Official source-occurrence + identity-closure validators: PASS.
+- Framework v3.3.6 tests: **10/10 PASS**; negative dangling-target/unresolved tamper checks were correctly rejected.
+- Stage3 semantic/enrichment work has **NOT started**.
+- A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains a separate runtime-acceptance track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE1.json](./L04-STAGE1.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE2B.json](./L04-STAGE2B.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Next major stage: **Stage2 canonicalization + mandatory Stage2B identity closure**. Do not begin Stage3 until identity closure reaches zero unresolved states.
+Next major stage: **Stage3A richness baseline audit** for all 85 closed identities.
 
 ---
 

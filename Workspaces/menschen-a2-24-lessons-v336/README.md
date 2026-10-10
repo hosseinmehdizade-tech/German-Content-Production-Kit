@@ -1,22 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage5 = PASS / import-ready content; Stage6 is next.**
+**CURRENT lesson focus: A2-L06 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
 
 - A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 Stage5 projects **61 neutral `de-vocabulary` cards = 53 new A2 + 8 immutable A1 reuses**.
-- Final Stage5 payload contains **244 trilingual examples** (4 per card), **162 learner-visible Kombinationen** (159 new-A2 + 3 locked-reuse), and **15 accepted graph relations** for new A2 cards.
-- Source fidelity: **94 source occurrences / 97 source-output bindings**; **55 new-A2 German examples** remain exact registered-source text.
-- Completeness/decision closure remains exact: **875 candidate decisions / 936 completeness cells / 0 unresolved / 0 deferred**.
-- All 61 projected rows use `de-vocabulary` + `gfp-vocabulary-neutral@1`; lesson tags are **61/61 `Lektion 6`**.
-- Official Stage5 v3.3.6 gates: unified projection, source occurrences, identity closure, candidate ledger, completeness and clean anti-bypass builder **PASS**; framework suite **10/10 PASS**.
-- Final production ZIP fresh verification: **43 members / 42 SHA256 entries / 30 JSON**, CRC/path safety PASS, no nested ZIP, no Flashcards app/runtime, fresh official gates PASS.
-- Stage5 artifact SHA-256: `532fde581c582ea24a62413a11a84547da818057a80ff54e074f9fd3c2e29a61`; Library exact SHA/byte roundtrip PASS.
-- Import dataset SHA-256: `932baab49d10c34e6adfa9eeba3ac4449621be6cb2058b45c392bfece6d7037e`.
-- **Stage6 has not run.** Runtime/browser/persistence acceptance is not claimed.
+- A2-L06 Stage5 import bytes are unchanged and were tested against exact CURRENT **GFP v475-R109** (`18b6a754…d9d746`).
+- Exact production package selection chose `A2-L06-UNIVERSAL-v2.tsv` with SHA-256 `932baab4…d7037e`.
+- Deterministic CURRENT-runtime acceptance: **98/98 cumulative PASS + 32/32 target-only PASS**, **0 page errors**.
+- Cumulative A2 library after L06: **422 unique cards**; all **361/361 prior cards** remained present and semantically unchanged.
+- Lesson filtering: **L01 75 / L02 62 / L03 81 / L04 85 / L05 61 / L06 61**.
+- L06 runtime parity: **61/61**; **244 trilingual examples**, **97 audio refs**, **54 Kombinationen sections / 162 items** in Study, Quick, Typing and Audio.
+- Prior representative SRS state for L01-L05 and target L06 SRS state both passed exact **9-field readback**.
+- Runtime static preflight PASS: **37 JS files**, **142 asset refs / 64 resources**, shell cohort PASS, v475 multi-membership **8/8 PASS**.
+- Managed real-origin execution is unavailable in this environment. Offline/storage acceptance is inherited from the accepted v466 same-profile boundary because exact v475 storage/offline semantics are unchanged; the separate **v475 populated-profile confirmation remains open** at app-project level.
+- Stage6 checkpoint SHA-256: `159aa71cff2a3e84387293636da75ad9afcae343807c2bf2fbcc5e2863ac341c`; Library byte roundtrip PASS.
+- **Stage7 has not run.**
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE5.json](./L06-STAGE5.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE6.json](./L06-STAGE6.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage6 exact CURRENT runtime & presentation acceptance**. Re-resolve Flashcards CURRENT at Stage6 execution time.
+Next major stage: **A2-L06 Stage7 exact-final content lock/post-package verification**. Re-resolve CURRENT first.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

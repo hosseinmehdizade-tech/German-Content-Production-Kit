@@ -1,22 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L03 Stage5 CLEAN PROJECTION = PASS; Stage6 is next.**
+**CURRENT lesson focus: A2-L03 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
 
-- A2-L03 source: **83 occurrences**, rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
-- Final Stage5 import projection: **81 neutral de-vocabulary cards = 60 new A2 + 21 immutable A1 reuses**.
-- Examples: **324 total**, exactly four DE examples per card with FA + EN translations.
-- Kombinationen: **151 visible items** = 147 from new A2 content + 4 retained from immutable A1 reuses; exactly one visible Kombinationen section per card.
-- Effective graph relations: **49**.
-- Source-output map: **99 bindings across 83 source occurrences**.
-- Candidate ledger: **1163 final decisions, 0 deferred**; completeness **1244 cells, 0 unresolved**.
-- Official v3.3.6 unified/source/identity/candidate/completeness gates: PASS.
-- Framework v3.3.6 regression: **10/10 PASS via bounded split**.
-- Official clean-delivery anti-bypass builder and final fresh-extract/tamper checks: PASS.
-- Stage5 content is **import-ready**, but **Stage6 runtime acceptance has NOT run**.
+- Exact CURRENT runtime: **v474-R108**, artifact SHA-256 **7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47**.
+- Exact Stage5 target: **81 cards**, TSV SHA-256 **e49a1c4fbba7d825395212c1038b9bf204287f5524909394ee4a5516522beb2f**.
+- Deterministic exact-runtime acceptance: **74/74 PASS**, zero page JavaScript errors.
+- Cumulative verified generation: **218 unique cards = 75 L01 + 62 L02 + 81 L03**, with **137/137 prior cards unchanged**.
+- Prior L01/L02 SRS state: **9/9 fields preserved** across L03 merge.
+- L03 runtime source parity: **81/81 PASS**.
+- L03 presentation: **324 trilingual examples**, **99 source-audio refs**, **81 lesson memberships**, **81 neutral envelopes/contracts**.
+- Kombinationen: Stage5 has 81 detail shells, 19 of them empty; runtime safely omits those empty shells and presents **62 non-empty sections / 151 items** in Study, Quick, Typing and Audio.
+- Lesson filtering: **A2-L01=75 / A2-L02=62 / A2-L03=81**.
+- Content Stage6 is **closed** and **Stage7 locking is allowed** by inherited v466 offline/storage acceptance because v474 storage/offline semantics are unchanged.
+- The separate app-level v474 **1097+ populated-profile confirmation remains pending** and is not promoted by this lesson acceptance.
 - A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
 - A2-L01 remains a separate Stage6-open track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE5.json](./L03-STAGE5.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE6.json](./L03-STAGE6.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
 
 Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
 

@@ -8238,7 +8238,7 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "B1_L04_STAGE3C_PASS__STAGE4_PENDING",
+      "status": "B1_L04_STAGE4_PASS_AFTER_BOUNDED_REPAIR1__STAGE5_PENDING",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
@@ -8280,7 +8280,7 @@
       },
       "semantic_inheritance_from_historical_bad_b1_lessonwise": 0,
       "semantic_inheritance_from_b1_verben": 0,
-      "next_action": "Run B1-L04 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L05.",
+      "next_action": "Run B1-L04 Stage5 anti-bypass clean-delivery projection from this exact Stage4 successor. Do not start B1-L05.",
       "stage3c": {
         "status": "PASS",
         "targets": 146,
@@ -9033,8 +9033,8 @@
         "expressions": 54,
         "examples": 444,
         "dimension_cells": 1770,
-        "verified_present_cells": 1192,
-        "closed_no_force_cells": 578,
+        "verified_present_cells": 1066,
+        "closed_no_force_cells": 704,
         "unresolved_cells": 0,
         "candidate_ledger_entries": 1770,
         "kombinationen_accepted_items": 102,
@@ -9080,7 +9080,76 @@
           "note": "Separate local post-package report was generated; artifact contains the same closure QA/validator evidence. Library persistence of the ZIP is exact."
         },
         "boundary": "Stage3C disposition closure PASS only. Independent Stage4 linguistic/cross-language/relation/provenance re-audit remains mandatory; no Stage4/5/6/7 claim.",
-        "next_action": "Run B1-L04 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L05."
+        "next_action": "Run B1-L04 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L05.",
+        "coordination_metadata_correction": {
+          "corrected_on": "2026-10-10",
+          "reason": "Git-only aggregate transcription error discovered during Stage4 independent re-audit.",
+          "exact_artifact_evidence": "03-evidence/Stage3C/B1-L04-ENRICHMENT-COMPLETENESS.json and B1-L04-STAGE3C-CLOSURE-QA.json inside SHA-256 48f33833147268892ec960734d51da0e42b9f64e8c57d8e9d80bb9051330a725",
+          "content_bytes_changed": false
+        }
+      },
+      "b1_l04_stage4": {
+        "status": "PASS_AFTER_BOUNDED_REPAIR1__STAGE5_PENDING",
+        "framework": "v3.3.6",
+        "predecessor_stage3c_sha256": "48f33833147268892ec960734d51da0e42b9f64e8c57d8e9d80bb9051330a725",
+        "canonical_sha256": "432c75b817de35f3b6ef06ed2f3afc3b5ad9810085006739f8a67a512176a676",
+        "final_targets_sha256": "c430aaa81eea530ba37333f88c7967a2bf050a059ab061b329d7e4ba87c3a573",
+        "targets": 111,
+        "senses": 57,
+        "expressions": 54,
+        "examples": 444,
+        "dimension_cells": 1770,
+        "verified_present_cells": 1066,
+        "closed_no_force_cells": 704,
+        "unresolved_cells": 0,
+        "accepted_kombinationen": 102,
+        "rejected_kombinationen": 4,
+        "relations": 79,
+        "repair_findings": 15,
+        "advisories": 2,
+        "affected_targets": 15,
+        "learner_facing_diff_records": 34,
+        "identity_mutated": false,
+        "source_order_mutated": false,
+        "canonical_authority_mutated": false,
+        "stage2_reopen_required": false,
+        "validators": {
+          "official_candidate_ledger": "PASS 1770 candidates / 0 errors",
+          "official_completeness": "PASS 111 targets / 1770 cells / 0 unresolved",
+          "independent_custom": "PASS 34/34",
+          "post_package": "PASS CRC / 20 manifest / 21 SHA256SUMS / 17 JSON / hygiene"
+        },
+        "repairs_by_category": {
+          "persian_cross_language": 2,
+          "combination_translation": 2,
+          "german_example_or_grammar": 8,
+          "semantic_scope": 2,
+          "persian_semantics": 1
+        },
+        "artifact": {
+          "filename": "Menschen-B1-L04-v3.3.6-Stage4-Repair1-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+          "sha256": "06df82cf099dc5b4a3cbb4af72945fe15dde62cb2f961afda8648663b6b1911f",
+          "size_bytes": 137984,
+          "members": 22,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L04-v3.3.6-Stage4-Repair1-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+          "library_file_id": "file_00000000693c821099e38127261d723b",
+          "library_stable_id": "libfile_f3843b4ddbdc8191a9a98ff32308f324",
+          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "post_package_verification": {
+          "filename": "B1-L04-STAGE4-REPAIR1-POST-PACKAGE-VERIFICATION.json",
+          "sha256": "7a63ec9a602d7369ef3918a8fd250d551119b6c2b93a4bb4bc8e98e0296e3d4b",
+          "persistence": "RESULT_BOUND_IN_GIT_RECEIPT_AND_STAGE4_PACKAGE_QA; separate report not required as resume authority"
+        },
+        "coordination_metadata_correction": {
+          "exact_stage3c_artifact_counts": "1066 VERIFIED_PRESENT + 704 CLOSED_NO_FORCE",
+          "prior_git_summary_typo": "1192 VERIFIED_PRESENT + 578 CLOSED_NO_FORCE",
+          "exact_stage3c_artifact_mutated": false,
+          "learner_content_affected": false
+        },
+        "source_fidelity_advisory": "Raw/source mb1m-lu-0923 'Richten Sie ihn von mir aus.' remains preserved as provenance; learner reviewed_form/examples already use correct dative recipient forms.",
+        "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
+        "next_action": "Run B1-L04 Stage5 anti-bypass clean-delivery projection from this exact Stage4 successor. Do not start B1-L05."
       }
     },
     "menschen_a2_24_lessons_v336": {

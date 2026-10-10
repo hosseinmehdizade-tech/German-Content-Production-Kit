@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L04_STAGE1_PASS__STAGE2_PENDING",
+  "status": "B1_L04_STAGE1_2_PASS__STAGE3A_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -125,13 +125,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "PASS_STAGE3C_CLOSURE",
-    "stage4": "PASS_INDEPENDENT_REAUDIT_AFTER_BOUNDED_REPAIR1",
-    "stage5": "PASS_ANTI_BYPASS_CLEAN_DELIVERY",
-    "stage6": "PASS_AUTOMATED_EXACT_CURRENT_V474_WITH_ENVIRONMENT_BOUNDARY",
-    "stage7": "LOCKED"
+    "stage3": "NOT_STARTED",
+    "stage4": "NOT_STARTED",
+    "stage5": "NOT_STARTED",
+    "stage6": "NOT_STARTED",
+    "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L04 Stage2 identity closure under v3.3.6. Use B1-L01..L03 locked identities and specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L05.",
+  "next_action": "Run B1-L04 Stage3A baseline richness audit under v3.3.6 over all 111 active identities. Do not start B1-L05.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -1365,5 +1365,69 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "next_action": "Run B1-L04 Stage2 identity closure under v3.3.6. Use B1-L01..L03 locked identities and specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L05."
+  },
+  "b1_l04_stage12": {
+    "status": "PASS",
+    "framework": "v3.3.6",
+    "source_occurrences": 103,
+    "source_ordinals": "4858..4960",
+    "active_canonical_units": 111,
+    "new_units": 91,
+    "reused_locked_units": 20,
+    "reused_locked_source_rows": 23,
+    "split_rows": 10,
+    "lesson_internal_reuse_occurrences": 0,
+    "new_id_range": "mb1m-lu-0839..mb1m-lu-0929",
+    "canonical_sha256": "c83cdd5f5209c7c012b331ce4512e89997a1ce5977d387aa0bd116308632b6d2",
+    "identity_fingerprint": "7e493440d9fc05db43afbffd13a674584c65938cb5d90d0963ecdaffc45a6c34",
+    "source_fingerprint": "3aa7117d92666eef59d11dc31bd66ff35906cae32372a8fb24c43df3fa6e322a",
+    "source_examples_present": 62,
+    "source_examples_missing": 41,
+    "source_audio_refs": 103,
+    "source_audio_unique": 103,
+    "source_recovery_boundary": "PRESERVED_FROM_STAGE1__RAW_LEVEL_TAG_NOT_DIRECTLY_RECOVERED__NOT_FABRICATED",
+    "semantic_inheritance_from_locked_prior_work": 0,
+    "exact_b1_verben_reused_ids": [
+      "mb1m-lu-0043",
+      "mb1m-lu-0044",
+      "mb1m-lu-0046",
+      "mb1m-lu-0047",
+      "mb1m-lu-0049",
+      "mb1m-lu-0050",
+      "mb1m-lu-0052",
+      "mb1m-lu-0053",
+      "mb1m-lu-0054",
+      "mb1m-lu-0055",
+      "mb1m-lu-0056",
+      "mb1m-lu-0057",
+      "mb1m-lu-0058",
+      "mb1m-lu-0059",
+      "mb1m-lu-0060",
+      "mb1m-lu-0061",
+      "mb1m-lu-0062",
+      "mb1m-lu-0063",
+      "mb1m-lu-0065",
+      "mb1m-lu-0066"
+    ],
+    "validators": "source PASS 103/103; identity PASS 103 occurrences / 111 active IDs / 0 errors; independent QA PASS; fresh-extract manifest/SHA/JSON PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L04-v3.3.6-Stage1-2-CHECKPOINT.zip",
+      "sha256": "b86fbe431e0daa95dd95b487c99241e38d5fd1afa2cb395a5bb4a062be13b83f",
+      "size_bytes": 51070,
+      "members": 14,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L04-v3.3.6-Stage1-2-CHECKPOINT.zip",
+      "library_file_id": "file_0000000003708210b3c21923fad2ba4b",
+      "library_stable_id": "libfile_08ca5ab9cf04819194a53670b174c13a",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L04-STAGE1-2-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "45afd81db04de32f8babd8d2eed5113c735b61f25948f908a00c823c2b6b301f",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L04-STAGE1-2-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_000000003094821094b397e6c8047d08",
+      "library_stable_id": "libfile_fb4794f7f3148191a43bf614c73ae37b",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "next_action": "Run B1-L04 Stage3A baseline richness audit under v3.3.6 over all 111 active identities. Do not start B1-L05."
   }
 }

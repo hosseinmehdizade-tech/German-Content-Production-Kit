@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 14,
     "active_lesson": "A1-L10",
-    "overall_state": "A1_L10_STAGE4_PASS__STAGE5_NEXT",
-    "git_persistence": "STAGE4_IN_SYNC"
+    "overall_state": "A1_L10_STAGE5_PASS__STAGE6_NEXT",
+    "git_persistence": "STAGE5_IN_SYNC"
   },
   "lessons": [
     {
@@ -874,13 +874,13 @@
     },
     {
       "id": "A1-L10",
-      "reaudit_status": "STAGE4_COMPLETE__STAGE5_NEXT",
+      "reaudit_status": "STAGE5_COMPLETE__STAGE6_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
-      "independent_quality": "PASS_STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE4-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "88d3f34c31619a6d48a4a49b6973e835171625479df53a09228d62fea3db5fb8",
-      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+      "independent_quality": "PASS_STAGE5_CLEAN_DELIVERY_ANTI_BYPASS",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE5-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "136766d9b87a205edfd131de014c382ba67ff98fa3e29ddebeecc861e3d6f273",
+      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 93,
       "stage12_source_ordinals": "639..731",
@@ -962,7 +962,17 @@
       "stage4_official_v336": "PASS_1938_CELLS_0_UNRESOLVED__299_CANDIDATES",
       "stage4_human_validation": "NOT_CLAIMED",
       "stage4_accepted_canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8",
-      "stage4_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage4_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage5": "PASS_CLEAN_DELIVERY__STAGE6_NEXT",
+      "stage5_direct_import_sha256": "f9249518bd228821a4d01f9323f562ecded647ee08c05839e1e814f07b8b8f8f",
+      "stage5_canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8",
+      "stage5_projection": "120/120 de-vocabulary + gfp-vocabulary-neutral@1",
+      "stage5_transport_changes": "15 legacy card types neutralized / 120 duplicate notes cleared / 69 canonical relation records bridged",
+      "stage5_official": "projection/source/identity/candidates/completeness/clean-builder PASS",
+      "stage5_completeness": "1938/1938 final; 0 unresolved",
+      "stage5_candidates": "299 accepted / 0 deferred",
+      "stage5_negative_controls": "3/3 PASS",
+      "stage5_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
     },
     {
       "id": "A1-L11",
@@ -1082,19 +1092,19 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L10 Stage4 independent re-audit of exact Stage3C successor; do not trust Stage3C self-report.",
-  "quality_state": "A1_L10_STAGE3C_PASS__STAGE4_NEXT",
+  "next_action": "A1-L10 Stage6: re-resolve exact CURRENT German Flashcards Pro runtime and test the exact Stage5 TSV/artifact for direct import, presentation, persistence/index and cumulative identity. Do not lock until exact-current acceptance is complete.",
+  "quality_state": "A1_L10_STAGE5_PASS__STAGE6_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L10",
-    "stage": "Stage3C Final Disposition Closure",
-    "quality": "PASS_120_TARGETS__1938_ZERO_UNRESOLVED__299_FINAL_CANDIDATES",
-    "artifact_sha256": "4ebde5c705b3a6abadb7e3762bcf0d2f05a31ce719fde007fc99f81572a22bb2",
+    "stage": "Stage5 Clean Delivery / Anti-Bypass",
+    "quality": "PASS_120_CARDS__1938_ZERO_UNRESOLVED__299_FINAL_CANDIDATES__OFFICIAL_BUILDER_PASS",
+    "artifact_sha256": "136766d9b87a205edfd131de014c382ba67ff98fa3e29ddebeecc861e3d6f273",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "13f62701fafb90fb748b2cbdfa110c284b00b660",
-    "receipt_commit": "97f2d96d811f08834033cbcf907ee530fa612962",
-    "runtime": "NOT_RUN_CONTENT_ONLY",
+    "checkpoint_commit": "b03bb9a8b3806a53aac29ea1a09dde2f46151877",
+    "receipt_commit": "61694689d1889e2af8c92398907ef697567fb205",
+    "runtime": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6",
     "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED"
   }
 }

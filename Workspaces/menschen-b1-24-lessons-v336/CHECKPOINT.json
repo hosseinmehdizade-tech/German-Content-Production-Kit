@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L04_STAGE3B_TARGET_COVERAGE_COMPLETE__STAGE3C_PENDING",
+  "status": "B1_L04_STAGE3C_PASS__STAGE4_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -125,13 +125,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE_WITH_BOUNDED_REPAIR1",
-    "stage3": "STAGE3B_TARGET_COVERAGE_COMPLETE__STAGE3C_PENDING",
+    "stage3": "PASS_CLOSURE__STAGE4_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L04 Stage3C disposition closure over all 111 targets / 1770 cells from this exact target-coverage checkpoint. Do not start B1-L05.",
+  "next_action": "Run B1-L04 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L05.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -311,56 +311,63 @@
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "stage3c": {
-    "status": "PASS",
-    "targets": 146,
-    "dimension_cells": 2344,
-    "verified_present_cells": 1534,
-    "closed_no_force_cells": 810,
-    "not_applicable_cells": 0,
+    "status": "PASS_CLOSURE__STAGE4_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage3b_sha256": "0962ff282cf53ce15dc693d04521d8f773acf3ae24ef0bee2aa967706e6f00be",
+    "canonical_sha256": "432c75b817de35f3b6ef06ed2f3afc3b5ad9810085006739f8a67a512176a676",
+    "targets": 111,
+    "senses": 57,
+    "expressions": 54,
+    "examples": 444,
+    "dimension_cells": 1770,
+    "verified_present_cells": 1192,
+    "closed_no_force_cells": 578,
     "unresolved_cells": 0,
-    "dataset_zero_presence_exceptions": [
-      "word_family",
-      "related"
-    ],
-    "collocation_overlay": "146/146 targets VERIFIED via reviewed Kombinationen; 472 items total",
-    "explicit_rektion_promotions": [
-      "mb1m-lu-0482",
-      "mb1m-lu-0501",
-      "mb1m-lu-0540",
-      "mb1m-lu-0561"
-    ],
-    "canonical_sha256": "7b595895c38e9c30a5d5d0707dd179af750b2dabe75a324f587a1e2bbe62d601",
-    "validators": {
-      "completeness_closure": "PASS 146 targets / 2344 cells / 0 unresolved",
-      "candidate_ledger_closure": "PASS 71 decisions",
-      "source_occurrences": "PASS 126/126",
-      "identity_closure": "PASS 126 occurrences / 146 active IDs",
-      "independent_qa": "PASS",
-      "v336_regression": "10/10 PASS",
-      "package_postseal": "PASS CRC / 211 manifest / 212 SHA256SUMS / hygiene / fresh validators",
-      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "candidate_ledger_entries": 1770,
+    "kombinationen_accepted_items": 102,
+    "kombinationen_rejected_items": 4,
+    "kombinationen_verified_targets": 57,
+    "kombinationen_closed_no_force_targets": 54,
+    "relation_items": 79,
+    "relation_dimension_verified_targets": {
+      "synonym": 5,
+      "antonym": 2,
+      "word_family": 15,
+      "related": 15,
+      "nvv_links": 4
     },
+    "structural_dimension_verified_targets": {
+      "morphology": 54,
+      "rektion": 32,
+      "structure_components": 54,
+      "argument_slots": 19,
+      "component_relations": 32,
+      "source_audio": 111
+    },
+    "identity_mutated_after_repair1": false,
+    "stage2_reopen_required": false,
+    "source_recovery_boundary": "PRESERVED_FROM_STAGE1",
+    "validators": "candidate ledger PASS 1770/0 errors; completeness closure PASS 111 targets / 1770 cells / 0 unresolved; bounded structural QA PASS",
     "artifact": {
-      "filename": "Menschen-B1-L01-v3.3.6-Stage3C-CHECKPOINT.zip",
-      "sha256": "f3c93d112233f76fbe0aa7eb9e0d080767c0b88998a6889971b3626708af1cf3",
-      "size_bytes": 1220386,
-      "package_members": 213,
-      "manifest": "211/211 PASS",
-      "sha256s": "212/212 PASS",
-      "json_reparse": "PASS",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-Stage3C-CHECKPOINT.zip",
-      "library_file_id": "file_00000000699c82109d030140274906db",
-      "library_stable_id": "libfile_03b04cc09bc481919510c964d69d2512",
+      "filename": "Menschen-B1-L04-v3.3.6-Stage3C-CLOSURE-CANDIDATE.zip",
+      "sha256": "48f33833147268892ec960734d51da0e42b9f64e8c57d8e9d80bb9051330a725",
+      "size_bytes": 129117,
+      "members": 18,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L04-v3.3.6-Stage3C-CLOSURE-CANDIDATE.zip",
+      "library_file_id": "file_00000000c5b8821096b8c3bbe324a875",
+      "library_stable_id": "libfile_417da6a902908191b6389bb23cd3fa58",
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "post_package_verification": {
-      "filename": "B1-L01-STAGE3C-POST-PACKAGE-VERIFICATION.json",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L01-STAGE3C-POST-PACKAGE-VERIFICATION.json",
-      "library_file_id": "file_0000000022fc81f4ab4b729777e37e6b",
-      "library_stable_id": "libfile_2ee91e36f95881918de64a25d7fb60e4"
+      "sha256": "3784f693c34d0770e3833c186e4d5a19ee98412eee3033d2dd847db5633bc959",
+      "zip_crc": "PASS",
+      "manifest": "16/16 PASS",
+      "sha256s": "17/17 PASS",
+      "json_reparse": "14/14 PASS",
+      "note": "Separate local post-package report was generated; artifact contains the same closure QA/validator evidence. Library persistence of the ZIP is exact."
     },
-    "stage4": "NOT_RUN",
-    "next_action": "Run B1-L01 Stage4 independent completeness/source/relation/structure/linguistic re-audit; do not start B1-L02."
+    "boundary": "Stage3C disposition closure PASS only. Independent Stage4 linguistic/cross-language/relation/provenance re-audit remains mandatory; no Stage4/5/6/7 claim.",
+    "next_action": "Run B1-L04 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L05."
   },
   "stage4": {
     "status": "PASS",

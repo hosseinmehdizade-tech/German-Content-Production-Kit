@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L05_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
-  "quality": "L01_L02_L03_L04_L05_STAGE7_LOCKED__L05_V475_95_OF_95__12_OF_12__361_CUMULATIVE_UNIQUE",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE7.json",
-  "artifact_sha256": "9403e272c049a4f8f80f79a02123df48292dbd79ceb6fb57bf2120acde79949e",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-GFP-v475-LOCKED.zip",
-  "artifact_library_file_id": "libfile_8578ec627b0c8191a5dd26da9861b8df",
+  "latest_completed_milestone": "A2-L06_STAGE1_SOURCE_INVENTORY_PASS",
+  "quality": "L01_L02_L03_L04_L05_STAGE7_LOCKED__L06_STAGE1_PASS_94_SOURCE_OCCURRENCES__STAGE2_NOT_STARTED",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE1.json",
+  "artifact_sha256": "18c85a1345dc7dcf31ffe25d824781535e8c26ba9126cdecaeda7584d928bcac",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L06-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+  "artifact_library_file_id": "libfile_4343ea5d21d48191a576fd8486ee919c",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L05_STAGE7_LOCKED_RECONCILED",
-  "next_action": "A2-L05 is immutable. Continue A2-L06 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L05 LOCKED.",
+  "next_action": "Stage2 canonicalization and mandatory Stage2B identity closure for A2-L06. Compare the 94 normalized source occurrences against immutable A1 authorities plus LOCKED A2-L01/L02/L03/L04/L05 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not begin Stage3 until identity closure has zero unresolved states.",
   "central_checkpoint_sha": "0b49f7f066e6db8d2165d368dc10f26ab8fa6cc9",
   "root_project_state_sha": "c7e7184c1636eeb6061aa7a78c6f30ea397bf3e1",
-  "last_git_coordination": "A2_L05_STAGE7_LOCKED__CENTRAL_AND_ROOT_RECONCILED",
+  "last_git_coordination": "A2_L06_STAGE1_PASS__L01_L05_LOCKED_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -166,6 +166,25 @@
       "verified_import_provenance": "VERIFIED SHA-256",
       "content_lock_state": "LOCKED",
       "stage7_complete": true
+    },
+    "A2-L06": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NOT_STARTED",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L06-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L06-CHECKPOINT.json",
+      "artifact_sha256": "18c85a1345dc7dcf31ffe25d824781535e8c26ba9126cdecaeda7584d928bcac",
+      "source_occurrences": 94,
+      "row_range": [
+        2742,
+        2835
+      ],
+      "lesson_title": "Meine Lieblingsveranstaltung",
+      "audio_refs": 94,
+      "missing_examples": [
+        2807,
+        2831,
+        2833
+      ],
+      "stage2": "NOT_STARTED"
     }
   },
   "stage3a": {
@@ -1041,5 +1060,33 @@
     },
     "result": "A2-L05 content/package is LOCKED on exact CURRENT v475-R109. Runtime project-level FINAL/VERIFIED and exact Git runtime source mirror remain separate.",
     "next_action": "A2-L05 is immutable. Continue A2-L06 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L05 LOCKED."
+  },
+  "stage1_l06": {
+    "status": "PASS_SOURCE_INVENTORY__STAGE2_NOT_STARTED",
+    "source_rows": 94,
+    "row_range": [
+      2742,
+      2835
+    ],
+    "audio_refs": 94,
+    "audio_missing": 0,
+    "missing_example_rows": [
+      2807,
+      2831,
+      2833
+    ],
+    "alternatives_review_rows": 60,
+    "artifact": {
+      "filename": "Menschen-A2-L06-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+      "sha256": "18c85a1345dc7dcf31ffe25d824781535e8c26ba9126cdecaeda7584d928bcac",
+      "size_bytes": 35028,
+      "members": 12,
+      "manifest_entries": 10,
+      "sha256sum_entries": 11,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L06-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+      "library_file_id": "file_00000000acf081f4a2b3c9e9d2e246bd",
+      "library_stable_id": "libfile_4343ea5d21d48191a576fd8486ee919c",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
   }
 }

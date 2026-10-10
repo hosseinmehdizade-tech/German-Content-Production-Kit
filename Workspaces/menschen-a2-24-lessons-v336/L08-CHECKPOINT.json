@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l08-stage5-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l08-stage6-checkpoint@1.0.0",
   "scope": "A2-L08",
   "framework": "v3.3.6",
-  "stage": "Stage5 COMPLETE",
-  "status": "PASS_CLEAN_PROJECTION__STAGE6_NOT_RUN",
+  "stage": "Stage6 COMPLETE",
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "01-Source/SOURCE-MANIFEST-SNAPSHOT.json",
   "source_occurrences": "01-Source/A2-L08-SOURCE-OCCURRENCES.json",
@@ -26,14 +26,15 @@
   "source_text_control_char_rows": [],
   "stage2_started": true,
   "artifact": {
-    "filename": "Menschen-A2-L08-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
-    "sha256": "153993a61e3d000fd39197d1d0307f255a299db4579173761461b43125f3699f",
-    "size_bytes": 290039,
-    "members": 33,
-    "checksum_entries": 23,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
-    "library_file_id": "file_00000000147c8210b4871bcef2dcd965",
-    "library_stable_id": "libfile_32fd465c16b08191bb881d8d1d5f67ea",
+    "filename": "Menschen-A2-L08-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+    "sha256": "992fa726e93a1fd8350fc58c30565f1d34d4733fe384de76712cbf11b9a9e6df",
+    "size_bytes": 773499,
+    "members": 23,
+    "manifest_entries": 21,
+    "sha256sum_entries": 22,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+    "library_file_id": "file_0000000003f08210bf604b869e902a2b",
+    "library_stable_id": "libfile_c185fa280d4481918176eb56951be66b",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "project_memory": "PROJECT-MEMORY.json",
@@ -44,7 +45,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L08 Stage6 on the exact Stage5 import payload. Re-resolve German Flashcards Pro CURRENT at execution time, materialize and SHA-verify the exact CURRENT portable runtime, then run direct import, presentation, persistence/index and roundtrip acceptance. Never substitute LAST_FULLY_VERIFIED for CURRENT.",
+  "next_action": "Run A2-L08 Stage7 exact-final content-only lock/post-package verification. Re-resolve CURRENT first; if CURRENT advanced beyond v475-R109, rerun affected Stage6 runtime acceptance before locking. Do not start A2-L09.",
   "parent_stage1_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
   "stage2b_complete": true,
   "stage3_started": false,
@@ -81,12 +82,11 @@
     "locked_reuses": "STERBEN_A1__BESTEHEN_A2L01__MINDESTENS_A2L07"
   },
   "post_package_verification": {
-    "filename": "A2-L08-STAGE5-POST-PACKAGE-VERIFICATION.json",
-    "sha256": "2b2caaea750ab372eb69504796dca22835fb3b27434616446be1434da9e6ccd2",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L08-STAGE5-POST-PACKAGE-VERIFICATION.json",
-    "library_file_id": "file_000000008d8c81f4921928112d9acec7",
-    "library_stable_id": "libfile_597bf3cb9b9c8191984bd69f9c11202e",
-    "status": "PASS"
+    "filename": "A2-L08-STAGE6-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "be330149953049ed0d895d0acd44d37d5b1d02de14a17621c4e84bbc57d4da5d",
+    "status": "PASS",
+    "checks": "17/17 PASS",
+    "persistence": "GIT_RECEIPT_EMBEDS_SUMMARY"
   },
   "stage3a_complete": true,
   "stage3b_started": false,
@@ -170,7 +170,7 @@
     },
     "stage3c_pending_cells": 1202
   },
-  "quality_boundary": "STAGE5_PASS_IMPORT_READY_CONTENT__STAGE6_EXACT_CURRENT_RUNTIME_ACCEPTANCE_NOT_RUN__NOT_FINAL_LOCKED",
+  "quality_boundary": "A2_L08_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__EXACT_CURRENT_V475__CUMULATIVE_118_OF_118__TARGET_32_OF_32__STAGE7_ALLOWED",
   "stage3c_complete": true,
   "stage4_started": true,
   "stage3c_artifact": {
@@ -273,7 +273,7 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "stage5_complete": true,
-  "stage6_started": false,
+  "stage6_started": true,
   "stage5_import_ready": true,
   "stage5_counts": {
     "cards": 79,
@@ -317,5 +317,47 @@
     "library_file_id": "file_00000000de188210a98f56f0e4746b8c",
     "library_stable_id": "libfile_335cde8191b081918dcc7c7f22d1c61d",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage5_post_package_verification": {
+    "filename": "A2-L08-STAGE5-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "2b2caaea750ab372eb69504796dca22835fb3b27434616446be1434da9e6ccd2",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L08-STAGE5-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_000000008d8c81f4921928112d9acec7",
+    "library_stable_id": "libfile_597bf3cb9b9c8191984bd69f9c11202e",
+    "status": "PASS"
+  },
+  "stage6_complete": true,
+  "stage6_closed": true,
+  "stage7_lock_allowed": true,
+  "stage7_complete": false,
+  "stage6_artifact": {
+    "filename": "Menschen-A2-L08-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+    "sha256": "992fa726e93a1fd8350fc58c30565f1d34d4733fe384de76712cbf11b9a9e6df",
+    "size_bytes": 773499,
+    "members": 23,
+    "manifest_entries": 21,
+    "sha256sum_entries": 22,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+    "library_file_id": "file_0000000003f08210bf604b869e902a2b",
+    "library_stable_id": "libfile_c185fa280d4481918176eb56951be66b",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage6": {
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE6.json",
+    "current_runtime": "v475-R109",
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "target_only": "32/32 PASS",
+    "cumulative": "118/118 PASS",
+    "cumulative_unique": 572,
+    "prior_retained": "495/495 PASS",
+    "overlap_semantic_core": "2/2 PASS",
+    "overlap_memberships": "2/2 prior retained + L08 added",
+    "target_cards": 79,
+    "target_examples": 316,
+    "target_audio_refs": 129,
+    "target_kombinationen": "78 sections / 176 items",
+    "runtime_source_parity": "79/79 PASS",
+    "environment_boundary": "PENDING_USER_POPULATED_PROFILE_V475"
   }
 }

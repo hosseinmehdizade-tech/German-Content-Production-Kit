@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l09-stage1-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l09-stage2b-checkpoint@1.0.0",
   "scope": "A2-L09",
   "framework": "v3.3.6",
-  "stage": "Stage1 COMPLETE",
-  "status": "A2_L09_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NOT_STARTED",
+  "stage": "Stage2B COMPLETE",
+  "status": "PASS_IDENTITY_CLOSED__STAGE3A_NEXT",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "01-Source/SOURCE-MANIFEST-SNAPSHOT.json",
   "source_occurrences": "01-Source/A2-L09-SOURCE-OCCURRENCES.json",
@@ -39,16 +39,15 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "post_package_verification": {
-    "filename": "A2-L09-STAGE1-POST-PACKAGE-VERIFICATION.json",
-    "sha256": "c9fbaf20f0e05b8a1b6d46688340fd1da8f1f92455290fa39883cd1b12e9ab05",
-    "size_bytes": 2381,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L09-STAGE1-POST-PACKAGE-VERIFICATION.json",
-    "library_file_id": "file_0000000032d882109b20aa15249fcdda",
-    "library_stable_id": "libfile_a614a9efb5b88191817dae7438069be5",
-    "status": "PASS",
-    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "A2-L09-STAGE2B-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "a32e9f68eeabeea22cc2e32a8db156b810c13fbb1cd4cc555069aaad8e49688d",
+    "size_bytes": 2464,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L09-STAGE2B-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_00000000efc48246abc421101adaa618",
+    "library_stable_id": "libfile_9641f92662988191ad65538f56751ace",
+    "status": "PASS"
   },
-  "stage2_started": false,
+  "stage2_started": true,
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -57,6 +56,43 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "quality_boundary": "A2_L09_STAGE1_SOURCE_INVENTORY_PASS__A2_L01_L08_STAGE7_LOCKED__STAGE2_NOT_STARTED",
-  "next_action": "Run A2-L09 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 93 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L08 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not start Stage3 until identity closure has zero unresolved states."
+  "quality_boundary": "A2_L09_STAGE2B_IDENTITY_CLOSED__73_IDENTITIES__68_NEW_A2__4_A1_REUSE__1_PRIOR_A2_REUSE__0_UNRESOLVED__STAGE3A_NEXT",
+  "next_action": "Run A2-L09 Stage3A baseline richness/completeness audit across all 73 closed identities under v3.3.6. Preserve the 68 new identity assignments and five immutable locked reuses; do not begin learner-facing enrichment before the Stage3A baseline is recorded.",
+  "stage2b_complete": true,
+  "stage3_started": false,
+  "identity": {
+    "units_total": 73,
+    "new_a2": 68,
+    "reused_a1": 4,
+    "reused_prior_a2": 1,
+    "new_id_range": "ma2m-lu-0508..ma2m-lu-0575",
+    "bindings": 104,
+    "candidates": 166,
+    "editorial_reviews_closed": 75,
+    "unresolved": 0,
+    "canonical_sha256": "9fe1e7b0550322bc0b94bc634702a3a90afcc61c4ea63522537d6d99300bdc62",
+    "identity_fingerprint": "6a2d3eadcbcd2f1cba3807d62baae5abcf1d55dc9613c75964b0ddde505c717c",
+    "prior_a2_identity_count": 572,
+    "cumulative_unique_through_l09_runtime_projection": 644,
+    "a1_reuse_ids": [
+      "ma1m-lu-1863",
+      "ma1m-lu-0130",
+      "ma1m-lu-1905",
+      "ma1m-lu-0203"
+    ],
+    "prior_a2_reuse_ids": [
+      "ma2m-lu-0384"
+    ]
+  },
+  "stage2b_artifact": {
+    "filename": "Menschen-A2-L09-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "sha256": "48e5780c072b24575f8ae217f1766359cbdeee7eec40c700a00be0a8d7f2a792",
+    "size_bytes": 199961,
+    "members": 38,
+    "sha256sum_entries": 37,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L09-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "library_file_id": "file_00000000aaf881f4837eca6e87449f8a",
+    "library_stable_id": "libfile_5dadd42fc5f4819191b5076d19100d46",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  }
 }

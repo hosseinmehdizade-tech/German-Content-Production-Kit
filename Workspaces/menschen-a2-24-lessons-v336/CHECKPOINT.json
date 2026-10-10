@@ -3,7 +3,7 @@
   "workstream": "menschen-a2-24-lessons-v336",
   "scope": "A2-L01..L06 locked; A2-L07 Stage5 import-ready content complete",
   "framework": "v3.3.6",
-  "status": "A2_L01_TO_L07_STAGE7_LOCKED__A2_L08_STAGE1_NEXT",
+  "status": "A2_L01_TO_L07_STAGE7_LOCKED__A2_L08_STAGE1_PASS_STAGE2_NEXT",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -62,7 +62,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Start A2-L08 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L07 LOCKED.",
+  "next_action": "Run A2-L08 Stage2 canonicalization and mandatory Stage2B identity closure. Preserve A2-L01 through A2-L07 LOCKED.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
   "stage": "Stage5 COMPLETE",
   "stage1_portable_checkpoint": {
@@ -335,6 +335,27 @@
       "verified_import_provenance": "VERIFIED SHA-256",
       "content_lock_state": "LOCKED",
       "stage7_complete": true
+    },
+    "A2-L08": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L08-CHECKPOINT.json",
+      "artifact_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
+      "source_occurrences": 113,
+      "source_row_range": [
+        2929,
+        3041
+      ],
+      "lesson_title": "Hoffentlich ist es nicht das Herz!",
+      "audio_refs": 113,
+      "missing_example_rows": [
+        2959,
+        3022,
+        3025
+      ],
+      "source_alternatives_review_rows": 67,
+      "stage2_started": false,
+      "content_lock_state": "L01_L07_LOCKED__L08_NOT_LOCKED"
     }
   },
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L06-CHECKPOINT.json",
@@ -1149,7 +1170,7 @@
     ],
     "next_action": "Stage2 canonicalization and mandatory Stage2B identity closure for A2-L05. Compare the 102 normalized source occurrences against immutable A1 authorities plus LOCKED A2-L01/L02/L03/L04 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not begin Stage3 until identity closure has zero unresolved states."
   },
-  "current_stage": "STAGE1_NOT_STARTED",
+  "current_stage": "STAGE1_PASS__STAGE2_NEXT",
   "stage4_l05": {
     "status": "PASS_INDEPENDENT_LESSON_SCALE_QA__STAGE5_NOT_RUN",
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE4.json",
@@ -1455,6 +1476,25 @@
     "current_runtime": "v475-R109",
     "exact_final_acceptance": "114/114 cumulative + 32/32 target-only PASS",
     "package_validation": "prevention PASS / CRC / 53 manifest / 54 SHA256SUMS / 36 JSON / official 5 gates PASS",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "latest_stage1_l08": {
+    "status": "PASS",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE1.json",
+    "artifact_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
+    "source_rows": 113,
+    "source_row_range": [
+      2929,
+      3041
+    ],
+    "audio_refs": 113,
+    "missing_example_rows": [
+      2959,
+      3022,
+      3025
+    ],
+    "alternatives_review_rows": 67,
+    "official_source_occurrences": "PASS_1_SOURCE_113_OCCURRENCES_0_ERRORS",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

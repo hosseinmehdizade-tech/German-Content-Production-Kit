@@ -24,25 +24,25 @@
   },
   "progress": {
     "total_lessons": 23,
-    "reaudit_complete": 0,
-    "reaudit_in_progress": 1,
+    "reaudit_complete": 1,
+    "reaudit_in_progress": 0,
     "queued": 22,
-    "active_lesson": "A1-L02",
-    "overall_state": "A1_L02_STAGE6_PASS__STAGE7_NEXT",
-    "git_persistence": "STAGE6_IN_SYNC"
+    "active_lesson": null,
+    "overall_state": "A1_L02_REAUDIT_COMPLETE_LOCKED__A1_L03_NEXT",
+    "git_persistence": "STAGE7_IN_SYNC"
   },
   "lessons": [
     {
       "id": "A1-L02",
-      "reaudit_status": "STAGE6_PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NOT_RUN",
+      "reaudit_status": "COMPLETE_LOCKED_STAGE7_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-v474-PASS.zip",
-      "independent_quality": "PASS_STAGE6_EXACT_CURRENT_V474_WITH_ENVIRONMENT_BOUNDARY",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L02-STAGE6-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "f073ee875db9ed9cd71106a23e3feddc28230ab53fe4644462f9081844d41ca9",
+      "new_successor_artifact": "Menschen-A1-L02-v3.3.6-GFP-v474-LOCKED.zip",
+      "independent_quality": "PASS_STAGE7_LOCKED",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L02-STAGE7-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "f2844353e539530d256799d4ea723ccc74c3346342d03b13917c5876aadbfb57",
       "stage3a": "PASS_BASELINE_ONLY",
       "stage3b": "PASS_98_OF_98_EDITORIAL_COVERAGE_ONLY",
-      "latest_artifact_filename": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-v474-PASS.zip",
+      "latest_artifact_filename": "Menschen-A1-L02-v3.3.6-GFP-v474-LOCKED.zip",
       "review_matrix_cells": 1666,
       "review_pending_cells": 0,
       "reviewed_card_count": 98,
@@ -64,7 +64,7 @@
       "stage4": "PASS_22_OF_22_WITH_17_BOUNDED_REPAIR_OPERATIONS",
       "stage5": "PASS_OFFICIAL_V336_5_OF_5_CLEAN_BUILDER_SUPPLEMENTAL_PREVENTION",
       "stage6": "PASS_EXACT_CURRENT_V474_16_OF_16_WITH_ENVIRONMENT_BOUNDARY",
-      "stage7": "NOT_RUN",
+      "stage7": "PASS_LOCKED_EXACT_FINAL_21_OF_21_POSTPACKAGE_18_OF_18",
       "runtime_retry_candidate": {
         "CURRENT": "v474-R108",
         "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
@@ -76,7 +76,10 @@
         "source_commit": "1cc80e16f6674280abaa12509adc5a9ebd40e250",
         "release_final": false,
         "real_populated_profile": "PENDING_USER_POPULATED_PROFILE_V474"
-      }
+      },
+      "content_lock_state": "LOCKED",
+      "runtime_at_lock": "v474-R108",
+      "runtime_environment_boundary": "REAL_POPULATED_PROFILE_PENDING_APP_RUNTIME_ONLY"
     },
     {
       "id": "A1-L03",
@@ -252,18 +255,19 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Run A1-L02 Stage7 final content release/post-package verification from exact Stage5 content plus this Stage6 evidence. Keep v474 real populated-profile acceptance as a separate runtime-finality boundary. Do not start A1-L03 before L02 Stage7 closes.",
-  "quality_state": "A1_L02_STAGE6_PASS__STAGE7_NOT_RUN",
+  "next_action": "A1-L02 re-audit is complete and LOCKED. Next campaign lesson is A1-L03; start its re-audit from existing LOCKED authority and registered Menschen source without mutating A1-L02 or other historical lesson artifacts.",
+  "quality_state": "A1_L02_COMPLETE_LOCKED__A1_L03_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L02",
-    "stage": "Stage6 Runtime & Presentation Acceptance",
-    "quality": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
-    "artifact_sha256": "f073ee875db9ed9cd71106a23e3feddc28230ab53fe4644462f9081844d41ca9",
+    "stage": "Stage7 Release & Post-Package Verification",
+    "quality": "PASS_LOCKED_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+    "artifact_sha256": "f2844353e539530d256799d4ea723ccc74c3346342d03b13917c5876aadbfb57",
     "library_roundtrip": "PASS_EXACT_BYTES_AND_SHA256",
-    "checkpoint_commit": "d1cde024c95a3af4a5e273139237370dc64a6029",
-    "receipt_commit": "959fc067d5d9404d5fb3a9832d8a53093eeb81e2",
-    "latest_pointer_commit": "ff5dc37b64cc891b4699f9e81a6441bc8fccfb24"
+    "checkpoint_commit": "b559819df6c5d91943cac6816999a832dfee30fe",
+    "receipt_commit": "da635929449beadbd19646639d21d0a0c7de70b0",
+    "post_package_commit": "20bfce7b4d4add5e7c09ba9b9364f567a0a8e7b0",
+    "latest_pointer_commit": "3bd8f7b02b419879309769ee7b5a3d33f9f17e04"
   }
 }

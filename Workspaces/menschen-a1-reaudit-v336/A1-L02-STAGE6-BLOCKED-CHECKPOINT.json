@@ -1,0 +1,68 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage6-blocked-checkpoint@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L02",
+  "framework": "v3.3.6",
+  "status": "BLOCKED_CURRENT_RUNTIME_V473_STATE_DEPENDENT_IMPORT_REGRESSION_AND_EXACT_ARTIFACT_MATERIALIZATION_BOUNDARY",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-002-CURRENT-VS-VERIFIED",
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "parent_stage5": {
+    "filename": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+    "sha256": "935352b91611c67ee9fb1d9fac3e2db4c12d0e1d20a03e949681f5e6f2a45905",
+    "direct_import_tsv_sha256": "36a03417e63b7f8fe37466a33263644c227795733649fc010fde6c4ee8ce6381",
+    "content_unchanged": true
+  },
+  "runtime_authority": {
+    "current": "v473-R107",
+    "current_artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+    "current_artifact_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
+    "git_runtime_tree_sha": "4c33c4f73eb7f74c9bb94eeb56ea9e6e0db0e607",
+    "git_exact_runtime_match": true,
+    "last_fully_verified": "v466-R100",
+    "development_base": "v473-R107",
+    "regression_reference": "v466-R100",
+    "release_final": false,
+    "portable_materialization": "UNAVAILABLE_IN_CURRENT_PROJECT_LIBRARY_SEARCH"
+  },
+  "blocker": {
+    "source_report": "German-Flashcards-Pro/04-Reports/Generic-Import-v473/STATE-DEPENDENT-IMPORT-RANGEERROR-USER-REPRO.json",
+    "observed_error": "Invalid string length",
+    "observed_stage": "file selection/readiness before import commit",
+    "reproduced_precondition": "1097 active cards",
+    "generic_scope": "Runtime incident explicitly requires active-library-size/history-independent fix and forbids filename-specific exceptions.",
+    "relevance": "A1-L02 Stage6 requires cumulative/populated-library import and progress preservation. Fresh isolated import evidence cannot close this gate.",
+    "current_generic_acceptance": "PASS on isolated/fresh cases including persistent restart at 466 active cards, but does not test the 1097+ populated authority state."
+  },
+  "stage6_checks": {
+    "currentness_resolution": "PASS",
+    "current_git_mirror_identity": "PASS",
+    "exact_stage5_content_identity": "PASS",
+    "stage5_static_contract": "PASS",
+    "exact_current_portable_artifact_materialization": "BLOCKED",
+    "populated_profile_import_commit": "BLOCKED_BY_KNOWN_CURRENT_RUNTIME_REGRESSION",
+    "reload_persistence": "NOT_RUN",
+    "four_mode_presentation": "NOT_CLAIMED_ON_EXACT_CURRENT_POPULATED_PROFILE",
+    "cumulative_identity_progress_preservation": "NOT_CLAIMED",
+    "stage7_allowed": false
+  },
+  "mutation_boundary": {
+    "content_changed": false,
+    "runtime_changed": false,
+    "historical_locked_lessons_changed": false
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-BLOCKED-v473.zip",
+    "sha256": "1ad8c19e624adfc1aa6b925450d5d83f9016aa61db477dce938c4f8c46e65ece",
+    "size_bytes": 322764,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-BLOCKED-v473.zip",
+    "library_file_id": "file_00000000eb048210bdb0cef6c7f7b0c7",
+    "library_stable_id": "libfile_752c44606dd48191be07871b659413bf",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun Stage6 from exact Stage5 TSV. Do not start A1-L03 or Stage7 while this blocker remains."
+}

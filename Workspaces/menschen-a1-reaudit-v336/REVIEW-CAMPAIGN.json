@@ -25,11 +25,11 @@
   "progress": {
     "total_lessons": 23,
     "reaudit_complete": 4,
-    "reaudit_in_progress": 0,
-    "queued": 19,
+    "reaudit_in_progress": 1,
+    "queued": 18,
     "active_lesson": "A1-L06",
-    "overall_state": "A1_L05_STAGE7_LOCKED__A1_L06_NEXT",
-    "git_persistence": "STAGE7_IN_SYNC"
+    "overall_state": "A1_L06_STAGE1_2_PASS__STAGE3A_NEXT",
+    "git_persistence": "STAGE1_2_IN_SYNC"
   },
   "lessons": [
     {
@@ -380,10 +380,44 @@
     },
     {
       "id": "A1-L06",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE1_2_PASS__STAGE3A_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "new_successor_artifact": "Menschen-A1-L06-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "independent_quality": "PASS_STAGE1_2_CURRENT_IDENTITY_CLOSURE__SEMANTIC_REVIEW_PENDING",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L06-STAGE1-2-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "60b758f26a732bce6e4f3abffa6f97bb1f92352d1b2cd70b264f181e97957980",
+      "latest_artifact_filename": "Menschen-A1-L06-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "stage1": "PASS_EXACT_REGISTERED_ARCHIVE_AND_FROZEN_SOURCE_SLICE",
+      "stage2": "PASS_69_ACTIVE__5_HISTORICAL_SAME_WORD_SAME_POS_SENSE_IDS_MERGED_UNDER_MEM009__GOLF_HOMOGRAPHS_KEPT__0_UNRESOLVED",
+      "source_rows": 45,
+      "source_audio_refs": 44,
+      "source_zero_audio_rows": [
+        388
+      ],
+      "source_multi_audio_rows": [],
+      "historical_parent_targets": 74,
+      "active_canonical_targets": 69,
+      "senses": 36,
+      "expressions": 33,
+      "active_id_span": "ma1m-lu-0482..ma1m-lu-0555 with 5 retired IDs",
+      "retired_merged_ids": [
+        "ma1m-lu-0483",
+        "ma1m-lu-0512",
+        "ma1m-lu-0516",
+        "ma1m-lu-0541",
+        "ma1m-lu-0542"
+      ],
+      "kept_distinct_homographs": [
+        "ma1m-lu-0533",
+        "ma1m-lu-0535"
+      ],
+      "review_flagged_active_targets": 16,
+      "identity_unresolved": 0,
+      "stage12_independent_validation": "48/48 PASS",
+      "stage12_official_source_occurrences": "PASS 45/45",
+      "stage12_official_identity_closure": "PASS 69 active / 0 unresolved",
+      "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage3a": "NOT_RUN"
     },
     {
       "id": "A1-L07",
@@ -531,20 +565,18 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L06 Stage1/2 under v3.3.6. Preserve A1-L02..L05 re-audit successors and all historical LOCKED artifacts; resolve exact registered source slice and identity before enrichment.",
-  "quality_state": "A1_L05_STAGE7_LOCKED__A1_L06_NEXT",
+  "next_action": "A1-L06 Stage3A: initialize full v3.3.6 richness baseline for 69 active targets; carry five retired meanings into survivor evidence under MEM-009; keep the two Golf homographs distinct; audit mandatory Kombinationen and all applicable dimensions.",
+  "quality_state": "A1_L06_STAGE1_2_PASS__STAGE3A_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
-    "scope": "A1-L05",
-    "stage": "Stage7 Release & Post-Package Verification",
-    "quality": "LOCKED_PASS_19_OF_19__EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
-    "artifact_sha256": "fa2c0eb13a810ec5fa15d801ae9b110f923a6d7bc93396d0dcfbc1dc60411e5a",
+    "scope": "A1-L06",
+    "stage": "Stage1/2 Source + Identity Closure",
+    "quality": "PASS_48_OF_48__OFFICIAL_SOURCE_AND_IDENTITY_VALIDATORS_PASS__STAGE3A_NOT_RUN",
+    "artifact_sha256": "60b758f26a732bce6e4f3abffa6f97bb1f92352d1b2cd70b264f181e97957980",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "74b35b25192973038189955943ea21d30695a180",
-    "receipt_commit": "29dbf335fff2a402eadb6d519c96bec8bcfd9a41",
-    "prevention_commit": "9c8e24402bd0c65c1248bbb66a90db5b42b4caad",
-    "override_commit": "e503cfd725f99357e2a908e741486421e23d900c",
-    "postpackage_commit": "6144cf4b994791340acc51a2e8ada6ca95ec2c51"
+    "checkpoint_commit": "b5b6a7813094b8fd1b239ad4e8ced15abf6cac93",
+    "receipt_commit": "b3c748984fad0c9aeee6314ad2badd4eb1aa09e6",
+    "prevention_commit": "c4075e322ba5a6d067c4262260b46a08eb9fd06c"
   }
 }

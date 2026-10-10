@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+  "status": "STAGE3A_PASS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "NOT_STARTED",
+    "stage3": "STAGE3A_PASS__STAGE3B_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L06 Stage3A baseline richness audit across all 177 active identities under v3.3.6. Do not start B1-L07.",
+  "next_action": "Run B1-L06 Stage3B reference-availability preflight and gap-driven enrichment over 2673 unresolved cells plus Kombinationen review for all 177 targets. Do not start B1-L07.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -2421,5 +2421,53 @@
     },
     "boundary": "Stage2 identity/source closure only. No learner-facing definitions, translations, four-example sets, relations, morphology, Rektion or Kombinationen are accepted by this milestone.",
     "next_action": "Run B1-L06 Stage3A baseline richness audit across all 177 active identities under v3.3.6. Do not start B1-L07."
+  },
+  "b1_l06_stage3a": {
+    "status": "PASS",
+    "framework": "v3.3.6",
+    "profile": "menschen-b1-memrise@1.0.0",
+    "upstream_stage12_sha256": "d286b575f336468340deb3c091332fb36a81cf2f672269ecc40b76e69c291086",
+    "canonical_sha256": "58ac6f1d9cc85e1271ab82bba530aa2c281009033b3bd21a40708a6b8093fe0d",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "targets": 177,
+    "new_targets": 145,
+    "identity_only_reuses": 32,
+    "senses": 74,
+    "expressions": 103,
+    "dimension_cells": 2849,
+    "verified_present_cells": 176,
+    "verified_present_by_dimension": {
+      "source_audio": 176
+    },
+    "unresolved_cells": 2673,
+    "source_audio_missing": 1,
+    "source_audio_missing_target_ids": [
+      "mb1m-lu-1067"
+    ],
+    "source_seed_audit": "177 Persian seed targets / 123 German-example seed targets / 54 without German-example seed",
+    "source_review_flags": "134 targets / 204 flag instances",
+    "kombinationen": "177/177 UNREVIEWED / 0 inherited items",
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "source_recovery_boundary": "PRESERVED_FROM_STAGE1",
+    "validators": "source PASS 159; identity PASS 159/177; completeness baseline PASS 177/2849/2673; candidate ledger working PASS 0; independent QA PASS; package CRC/manifest/SHA/JSON PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L06-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "436a9c60938433d51b91e48afc021e7317c0374b2c03297d323bca379fbf3c95",
+      "size_bytes": 132273,
+      "members": 46,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "library_file_id": "file_000000009d188210b3a36af668c108e6",
+      "library_stable_id": "libfile_7f7db2626b2c8191a18830454b694a9d",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L06-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "8f4bc19a25e0ac1d702c627ee46ef53eacfd872af47a19a122e4f6e014b678c1",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L06-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000ed58821097318eb2080c08c0",
+      "library_stable_id": "libfile_9f748025ea388191b25cef4701ba3ee0"
+    },
+    "boundary": "Stage3A baseline only. No learner-facing semantic enrichment accepted; Stage3B not started.",
+    "next_action": "Run B1-L06 Stage3B reference-availability preflight and gap-driven enrichment over 2673 unresolved cells plus Kombinationen review for all 177 targets. Do not start B1-L07."
   }
 }

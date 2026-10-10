@@ -1,17 +1,19 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L03 Stage3B AUTHORSHIP = PASS; Stage3C is next.**
+**CURRENT lesson focus: A2-L03 Stage3C DISPOSITION CLOSURE = PASS; Stage4 is next.**
 
-- A2-L03 source: **83 occurrences**, source rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
-- Identity set: **81 lexical targets = 60 new A2 + 21 immutable A1 reuses**.
-- Stage3B authored candidates: **240 trilingual examples**, **147 Kombinationen**, **80 relation candidates**.
-- Registered-source exact German-example claims: **45**, each byte-for-text checked; source gaps **2505** and **2526** remain explicit.
-- Candidate ledger: **1163** Stage3A unresolved cells represented as **612 accepted candidates + 551 deferred/no-force + 0 rejected** at authorship.
-- **Stage3C has not run yet:** all **1244 dimension cells** remain pending independent disposition.
+- A2-L03 source: **83 occurrences**, rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
+- Identity set: **81 targets = 60 new A2 + 21 immutable A1 reuses**.
+- Stage3C completeness: **1244/1244 cells closed, 0 unresolved** = 782 VERIFIED_PRESENT + 462 CLOSED_NO_FORCE.
+- Final Stage3C candidate ledger: **1163 = 701 accepted + 462 rejected + 0 deferred**.
+- New-card content: **240 trilingual examples**, **147 Kombinationen**.
+- Relation review: **49 stable-endpoint graph relations accepted; 31 label-only candidates rejected without forcing endpoints**.
+- Stage3C applied **5 bounded learner-facing repairs**; raw source mutations: **0**.
 - A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
 - A2-L01 remains a separate Stage6-open track.
+- **Stage4 has NOT run yet** and must independently re-audit this exact Stage3C output.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE3B.json](./L03-STAGE3B.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE3C.json](./L03-STAGE3C.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
 
 Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
 

@@ -1,0 +1,122 @@
+{
+  "schema": "menschen-a2-l04-stage3b-git-receipt@1.0.0",
+  "scope": "A2-L04",
+  "framework": "v3.3.6",
+  "stage": "3B",
+  "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
+  "parent": {
+    "stage3a_receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE3A.json",
+    "stage3a_artifact_sha256": "81df8c22cc6f1c92e445e63bd0ed1904c0baacc4f80534e14f836a4d3f28020c",
+    "identity_fingerprint": "cd18f1123d67d5e683059b6f903366f0d5a55c83d6eb379d5a001dfcf3ab7de0"
+  },
+  "authorship": {
+    "lesson_identities": 85,
+    "new_a2_cards": 67,
+    "immutable_a1_reuse": 17,
+    "immutable_prior_a2_reuse": 1,
+    "trilingual_examples": 268,
+    "registered_source_exact_german_examples": 64,
+    "a2_kombinationen": 204,
+    "relation_candidates": 40,
+    "official_candidate_ledger": {
+      "candidates": 1206,
+      "accepted": 642,
+      "rejected": 0,
+      "deferred": 564,
+      "mode": "working",
+      "validator": "PASS"
+    },
+    "stage3c_pending_cells": 1291
+  },
+  "qa": {
+    "structural_validation": "PASS",
+    "linguistic_sanity_preflight": "PASS_WITH_REVIEW_BOUNDARIES",
+    "source_exact_truth": "PASS_64_OF_64_PER_CARD_RAW_SOURCE_BINDING",
+    "four_examples_each": "PASS_67_OF_67",
+    "trilingual_examples": "PASS_268",
+    "kombinationen_example_exact_duplicate_check": "PASS_0_DUPLICATES",
+    "no_locked_parent_mutation": "PASS_18_IMMUTABLE_DEPENDENCIES",
+    "mem009_polysemy_preserved": "PASS",
+    "official_candidate_ledger_validator": "PASS_1206_CANDIDATES",
+    "official_stage3a_baseline_recheck": "PASS_85_TARGETS_1291_CELLS_1206_UNRESOLVED",
+    "framework_v3_3_6_tests": "10/10 PASS_BOUNDED_SPLIT_9_PLUS_1",
+    "portable_self_verifier": "PASS_AFTER_FRESH_EXTRACT",
+    "package_crc_manifest_hygiene": "PASS",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "source_fidelity": {
+    "source_occurrences_preserved": 108,
+    "source_audio_refs_preserved": 108,
+    "source_exact_examples_claimed_only_on_exact_german_match": true,
+    "source_exact_german_examples": 64,
+    "source_translations_claimed": false,
+    "source_gaps_preserved": [
+      2538,
+      2549,
+      2550,
+      2555,
+      2569,
+      2597,
+      2599,
+      2606,
+      2626,
+      2635
+    ],
+    "notable_review_boundaries": [
+      {
+        "id": "ma2m-lu-0210",
+        "issue": "raw source annotates Pfund as 453 Gramm",
+        "candidate": "German everyday/retail convention candidate uses 500 Gramm",
+        "status": "STAGE3C_STAGE4_VERIFICATION_REQUIRED"
+      },
+      {
+        "id": "ma2m-lu-0219",
+        "issue": "raw source example contains corrupted spelling in Majonäse",
+        "candidate": "no source-exact claim; curated examples only",
+        "status": "SOURCE_ANOMALY_PRESERVED"
+      },
+      {
+        "id": "ma2m-lu-0239",
+        "issue": "Scheibe is polysemous",
+        "candidate": "one card with multiple meanings per MEM-009",
+        "status": "IDENTITY_PRESERVED"
+      },
+      {
+        "id": "ma2m-lu-0253",
+        "issue": "Akzent covers pronunciation accent and stress",
+        "candidate": "one card with multiple meanings per MEM-009",
+        "status": "IDENTITY_PRESERVED"
+      }
+    ],
+    "curated_content_requires_stage3c_stage4_review": true
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L04-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "sha256": "28f0b04996b6205a9dc31bdcc681493fea8941f1c8d2f89b86f89ef13e7e54c2",
+    "size_bytes": 387302,
+    "members": 25,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "library_file_id": "file_00000000fa0081f481196fdbfbf64634",
+    "library_stable_id": "libfile_2f7f41de6994819192ca73ceb7097653",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "quality_boundary": "STAGE3B_AUTHORSHIP_PASS_ONLY__ALL_1291_DIMENSION_CELLS_PENDING_INDEPENDENT_STAGE3C__STAGE4_NOT_RUN__STAGE5_NOT_RUN__NOT_IMPORT_READY",
+  "separation": {
+    "A2_L01": "UNCHANGED_SEPARATE_STAGE6_TRACK",
+    "A2_L02": "UNCHANGED_STAGE7_LOCKED",
+    "A2_L03": "UNCHANGED_STAGE7_LOCKED",
+    "A1": "UNCHANGED_READ_ONLY_17_PARENT_DEPENDENCIES",
+    "prior_A2": "UNCHANGED_READ_ONLY_L03_INFORMATION",
+    "A2_verben": "UNCHANGED",
+    "runtime_ui": "UNCHANGED"
+  },
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "next_action": "Run A2-L04 Stage3C independent disposition closure across all 85 identities / 1291 dimension cells. Verify every Stage3B candidate independently; resolve every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE. Preserve all 18 locked reuse dependencies immutable. Do not start Stage4 until pending=0."
+}

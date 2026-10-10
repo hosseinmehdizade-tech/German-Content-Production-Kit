@@ -1,0 +1,14 @@
+{
+  "schema": "gcpk-stage7-user-boundary-override@1.0.0",
+  "date": "2026-10-10",
+  "scope": "A1-L03",
+  "user_instruction_fa": "نیاز نیست؛ استیج هفت رو آماده کن",
+  "context": "The exact A1-L03 Stage6 durable IndexedDB commit/cold-readback step was still not certified because the container blocked usable browser origins. The user explicitly declined that additional acceptance step and instructed Stage7 to proceed.",
+  "effect": {
+    "allow_stage7_content_lock": true,
+    "exact_l03_indexeddb_persistence_certified": false,
+    "runtime_finality_promoted": false,
+    "content_or_runtime_bytes_changed": false
+  },
+  "invariant": "This override may not be cited as proof that exact A1-L03 durable persistence passed. It only authorizes content lock with the boundary explicitly retained."
+}

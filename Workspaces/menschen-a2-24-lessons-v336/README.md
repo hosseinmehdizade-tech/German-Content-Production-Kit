@@ -1,24 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L03 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
+**CURRENT status: A2-L03 is Stage7 LOCKED; A2-L04 Stage1 is next.**
 
-- Exact CURRENT runtime: **v474-R108**, artifact SHA-256 **7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47**.
-- Exact Stage5 target: **81 cards**, TSV SHA-256 **e49a1c4fbba7d825395212c1038b9bf204287f5524909394ee4a5516522beb2f**.
-- Deterministic exact-runtime acceptance: **74/74 PASS**, zero page JavaScript errors.
-- Cumulative verified generation: **218 unique cards = 75 L01 + 62 L02 + 81 L03**, with **137/137 prior cards unchanged**.
-- Prior L01/L02 SRS state: **9/9 fields preserved** across L03 merge.
-- L03 runtime source parity: **81/81 PASS**.
-- L03 presentation: **324 trilingual examples**, **99 source-audio refs**, **81 lesson memberships**, **81 neutral envelopes/contracts**.
-- Kombinationen: Stage5 has 81 detail shells, 19 of them empty; runtime safely omits those empty shells and presents **62 non-empty sections / 151 items** in Study, Quick, Typing and Audio.
-- Lesson filtering: **A2-L01=75 / A2-L02=62 / A2-L03=81**.
-- Content Stage6 is **closed** and **Stage7 locking is allowed** by inherited v466 offline/storage acceptance because v474 storage/offline semantics are unchanged.
-- The separate app-level v474 **1097+ populated-profile confirmation remains pending** and is not promoted by this lesson acceptance.
-- A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
-- A2-L01 remains a separate Stage6-open track.
+- A2-L03 final content: **81 cards = 60 new A2 + 21 immutable A1 reuses**.
+- Final examples: **324 DE/FA/EN**.
+- Final Kombinationen: **151 items** across **62 non-empty sections**.
+- Exact Stage6 runtime acceptance on CURRENT **v474-R108**: **74/74 PASS**.
+- Cumulative unique cards through L03: **218 = 75 L01 + 62 L02 + 81 L03**.
+- Final import SHA-256: **e49a1c4fbba7d825395212c1038b9bf204287f5524909394ee4a5516522beb2f**.
+- LOCKED release SHA-256: **183e93dc3ea7f4765ed58cfe3dd36190acaac2a09554600196b1e83a7bdb0a1e**.
+- Final package: single organized content-production ZIP, no nested ZIPs, no Flashcards app/runtime.
+- Library roundtrip: exact SHA-256 and byte compare PASS.
+- App-level v474 1097+ populated-profile confirmation remains a separate runtime boundary and does not invalidate the L03 content lock.
+- A2-L02 remains immutable Stage7 LOCKED.
+- A2-L01 remains its separate runtime track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE6.json](./L03-STAGE6.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE7.json](./L03-STAGE7.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
 
-Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
+Future changes to L03 require an explicit successor; do not mutate the locked release in place.
 
 ---
 

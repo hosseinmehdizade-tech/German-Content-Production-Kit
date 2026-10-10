@@ -1,25 +1,27 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage3A RICHNESS BASELINE = PASS; Stage3B is next.**
+**CURRENT lesson focus: A2-L04 Stage3B AUTHORSHIP = PASS; Stage3C is next.**
 
 - Lesson: **A2-L04 — Was darf es sein?**
 - Closed identity set: **85 = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
-- Target kinds: **76 senses + 9 expressions**.
-- Enrichment baseline: **1291 dimension cells**.
-- Baseline verified: **85 cells**, all `source_audio`.
-- Baseline unresolved/actionable: **1206 cells**.
-- Raw Persian source seeds: **85/85** targets; seeds are not auto-approved.
-- German source-example seeds: **80/85** targets.
-- No mapped German source example seed for: `ma2m-lu-0200`, `ma1m-lu-0799`, `ma2m-lu-0213`, `ma2m-lu-0235`, `ma1m-lu-1131`.
-- Conservative explicit source-form morphology hints: **46/85** targets.
-- Stage3 relation candidates carried from Stage2B: **98** across **42** targets; candidate only, no auto-promotion.
-- Audio: **85/85** identities have preserved source refs.
-- Stage3A authored **no learner-ready semantics** and made no locked-parent mutations.
+- Stage3B authored **67 new A2 candidate cards**.
+- Examples: **268 DE/FA/EN**, exactly four per new card.
+- Registered-source-exact German examples: **64**, each checked against that card's own raw source-example seeds.
+- Kombinationen candidates: **204**, with no exact example/Kombination duplication after QA.
+- Suggested relation candidates: **40**.
+- Working candidate ledger: **1206 = 642 accepted-at-authorship + 564 deferred + 0 rejected**.
+- All **1291 dimension cells remain pending independent Stage3C disposition**; Stage3B authorship is not completeness closure.
+- Ten original source example gaps remain preserved; no source text was rewritten.
+- Explicit review boundary: source says `Pfund (453 Gramm)`; learner candidate uses the German retail convention candidate `500 Gramm`, to be independently verified in Stage3C/Stage4.
+- Corrupted source spelling in the `fettarm` example is preserved as source evidence and is not claimed source-exact in learner content.
+- MEM-009 one-card polysemy remains preserved for targets such as `Scheibe` and `Akzent`.
+- Official candidate-ledger validator and Stage3A baseline recheck: PASS.
+- Framework v3.3.6 regression: **10/10 PASS** via bounded 9+1 execution.
 - A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains its separate runtime track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE3A.json](./L04-STAGE3A.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE3B.json](./L04-STAGE3B.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Next major stage: **Stage3B gap-driven enrichment** across the 1206 unresolved cells.
+Next major stage: **Stage3C independent disposition closure**. No Stage4 work starts until pending = 0.
 
 ---
 

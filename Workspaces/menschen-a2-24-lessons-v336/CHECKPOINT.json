@@ -3,7 +3,7 @@
   "workstream": "menschen-a2-24-lessons-v336",
   "scope": "A2-L01/L02/L03/L04-of-24",
   "framework": "v3.3.6",
-  "status": "A2_L01_L02_L03_STAGE7_LOCKED__A2_L04_STAGE5_PASS_STAGE6_NEXT",
+  "status": "A2_L01_L02_L03_STAGE7_LOCKED__A2_L04_STAGE5_REPAIR1_PASS_STAGE6_NEXT",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -50,7 +50,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Run A2-L04 Stage6 on the exact Stage5 TSV after re-resolving Flashcards CURRENT. Preserve A2-L01/L02/L03 LOCKED.",
+  "next_action": "Run A2-L04 Stage6 against exact Repair1 TSV/artifact on CURRENT v474-R108. Do not use the superseded original Stage5 bytes. Stage7 remains blocked until Stage6 closes.",
   "runtime_gate": "DEFER_TO_STAGE6_CURRENT",
   "stage": "Stage5 COMPLETE",
   "stage1_portable_checkpoint": {
@@ -75,7 +75,7 @@
     "assigned_stable_IDs": 0,
     "qa": "PASS_14_OF_14_SHA256_POST_EXTRACT"
   },
-  "quality_boundary": "A2_L01_L02_L03_LOCKED__A2_L04_STAGE5_PASS__STAGE6_NEXT",
+  "quality_boundary": "A2_L01_L02_L03_LOCKED__A2_L04_STAGE5_REPAIR1_PASS__STAGE6_NOT_CLOSED",
   "stage2b": {
     "status": "PASS_IDENTITY_CLOSURE_WITH_STAGE3_SEMANTIC_BOUNDARY",
     "source_rows_mapped": 88,
@@ -102,19 +102,14 @@
     "no_content_or_runtime_mutation": true
   },
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A2-L01-v3.3.6-GFP-v474-LOCKED.zip",
-    "sha256": "200d2b5697b7ce2c418dd01b7696f339669ec44f6da9dae170fd03c1d0c42884",
-    "size_bytes": 574888,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-v3.3.6-GFP-v474-LOCKED.zip",
-    "library_file_id": "file_000000005d00824384065b591f70fc07",
-    "library_stable_id": "libfile_ecea3e942c0c81918cf62ec8e3e51dc0",
-    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "zip_members": 48,
-    "manifest_entries": 46,
-    "sha256sum_entries": 47,
-    "single_top_level": true,
-    "nested_zip_count": 0,
-    "flashcards_app_runtime_members": 0
+    "filename": "Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "658d2094702ff0e85a13ed19906e1cb8bf63105fba7572040cdb3fdb42d9d499",
+    "bytes": 511700,
+    "members": 38,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_0000000079dc8210a198cb60e737be01",
+    "library_stable_id": "libfile_543800bf94288191b394b94c9e1f82e4",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "current_workstream_latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
   "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/STAGE6.json",
@@ -222,7 +217,7 @@
     }
   },
   "current_lesson": "A2-L04",
-  "current_focus": "A2-L04_STAGE5_PASS__STAGE6_NEXT",
+  "current_focus": "A2-L04_STAGE5_REPAIR1_PASS__STAGE6_NEXT",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -271,17 +266,23 @@
       "identity_fingerprint": "65c9d378e4a82d05c0e0c9bf6aec7bb327ef15b7d44681d9804c6c74639e5fc0"
     },
     "A2-L04": {
-      "status": "STAGE5_PASS_IMPORT_READY_CONTENT__STAGE6_NOT_RUN",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE5.json",
+      "status": "STAGE5_REPAIR1_PASS_IMPORT_READY__STAGE6_NOT_CLOSED",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE5-REPAIR1.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L04-CHECKPOINT.json",
-      "artifact_sha256": "0838cca86a6dcf5392956088e50a22fd21b170deb45568159f04b6f8356a2dda",
+      "artifact_sha256": "658d2094702ff0e85a13ed19906e1cb8bf63105fba7572040cdb3fdb42d9d499",
       "cards": 85,
+      "new_a2": 67,
+      "reused_a1": 17,
+      "reused_prior_a2": 1,
+      "examples": 340,
+      "kombinationen": 209,
+      "import_dataset_sha256": "36c6b630e06a91a071adf0757e084cc9f992a95518c73fe28fd63dbc7457d013",
       "stage5_import_ready": true,
-      "stage6": "NOT_RUN"
+      "stage6": "NOT_CLOSED"
     }
   },
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L04-CHECKPOINT.json",
-  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE5.json",
+  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L04-STAGE5-REPAIR1.json",
   "stage2b_l03": {
     "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
     "source_rows": 83,
@@ -634,5 +635,98 @@
     "artifact_sha256": "200d2b5697b7ce2c418dd01b7696f339669ec44f6da9dae170fd03c1d0c42884",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "future_changes": "SUCCESSOR_ONLY"
+  },
+  "l04_stage5_repair1": {
+    "schema": "menschen-a2-l04-stage5-repair1-git-receipt@1.0.0",
+    "scope": "A2-L04",
+    "framework": "v3.3.6",
+    "stage": "5-Repair1",
+    "status": "PASS_BOUNDED_REPAIR__STAGE6_NOT_CLOSED",
+    "parent_stage5": {
+      "artifact": "Menschen-A2-L04-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "0838cca86a6dcf5392956088e50a22fd21b170deb45568159f04b6f8356a2dda",
+      "superseded_for_runtime_acceptance": true
+    },
+    "artifact": {
+      "filename": "Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "658d2094702ff0e85a13ed19906e1cb8bf63105fba7572040cdb3fdb42d9d499",
+      "bytes": 511700,
+      "members": 38,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+      "library_file_id": "file_0000000079dc8210a198cb60e737be01",
+      "library_stable_id": "libfile_543800bf94288191b394b94c9e1f82e4",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "projection": {
+      "cards": 85,
+      "new_a2": 67,
+      "reused_locked": 18,
+      "reused_a1": 17,
+      "reused_prior_a2": 1,
+      "examples": 340,
+      "source_audio_refs": 117,
+      "kombinationen_visible_items": 209,
+      "nonempty_kombinationen_sections": 69,
+      "import_dataset": "01-Final-Import/A2-L04-UNIVERSAL-v2.tsv",
+      "import_dataset_sha256": "36c6b630e06a91a071adf0757e084cc9f992a95518c73fe28fd63dbc7457d013",
+      "projected_cards_sha256": "163967f6904cdda6c8bdc1b5a7b7c04e21c98a2329549d5ffe380efd1c4b172a",
+      "canonical_sha256": "825d01f02c44e13356b3e09583115e81897d12fca3e977bb591866e8e2ee9455",
+      "identity_fingerprint": "cd18f1123d67d5e683059b6f903366f0d5a55c83d6eb379d5a001dfcf3ab7de0"
+    },
+    "defects_closed": [
+      {
+        "code": "A2L04-S5-R1-001",
+        "issue": "Locked reused COLLOCATION transport could render a second learner-visible Kollokationen section in v474.",
+        "affected_ids": [
+          "ma1m-lu-0790",
+          "ma1m-lu-2648",
+          "ma1m-lu-2795"
+        ],
+        "resolution": "Exact COLLOCATION groups preserved in locked_parent_relation_transport_v1 backend-only archive and removed from active vnext_relations."
+      },
+      {
+        "code": "A2L04-S5-R1-002",
+        "issue": "Locked-parent structured/provenanced kombinationen_v1 was flattened to display strings.",
+        "affected_ids": [
+          "ma2m-lu-0178",
+          "ma1m-lu-2795"
+        ],
+        "resolution": "Exact parent kombinationen_v1 structures restored; learner-visible details remain one Kombinationen bucket."
+      }
+    ],
+    "bounded_delta": {
+      "tsv_rows_changed": [
+        "ma1m-lu-0790",
+        "ma1m-lu-2648",
+        "ma2m-lu-0178",
+        "ma1m-lu-2795"
+      ],
+      "changed_columns": [
+        "custom_fields"
+      ],
+      "new_a2_rows_changed": 0,
+      "semantic_authority_changed": false,
+      "source_authority_changed": false,
+      "identity_changed": false,
+      "learner_visible_kombinationen_count_changed": false,
+      "runtime_ui_changed": false
+    },
+    "validation": {
+      "repair_qa": "15/15 PASS",
+      "unified_projection": "PASS_85",
+      "zip_crc_manifest_sha256": "PASS",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "original_stage6_adversarial_probe": "134/136 PASS on superseded Stage5; two failures led to Repair1",
+      "repair1_exact_runtime_browser_rerun": "NOT_CLOSED_CURRENT_EXECUTION_BROWSER_HARNESS_TIMED_OUT",
+      "stage6_status": "NOT_CLOSED"
+    },
+    "separation": {
+      "A2_L01": "LOCKED_UNCHANGED",
+      "A2_L02": "LOCKED_UNCHANGED",
+      "A2_L03": "LOCKED_UNCHANGED",
+      "A2_verben": "UNCHANGED",
+      "flashcards_runtime": "UNCHANGED"
+    },
+    "next_action": "Run A2-L04 Stage6 against exact Repair1 TSV/artifact on CURRENT v474-R108. Do not use the superseded original Stage5 bytes. Stage7 remains blocked until Stage6 closes."
   }
 }

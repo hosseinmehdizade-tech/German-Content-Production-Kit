@@ -1,11 +1,11 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L02_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY_V474",
-  "quality": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__CURRENT_V474__STAGE7_NOT_STARTED",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
-  "artifact_sha256": "dfd3a64b26d6cff14e672d5739a5348c0a6bf4bd2cd4a1350e87d3bcc0ecb121",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
-  "artifact_library_file_id": "libfile_dd1f13e7ced881919ce44cfbaa4c44b2",
+  "latest_completed_milestone": "A2-L02_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY_V474",
+  "quality": "LOCKED__PASS_WITH_ENVIRONMENT_BOUNDARY__CURRENT_V474__RUNTIME_GLOBAL_FINAL_PENDING_SEPARATELY",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE7.json",
+  "artifact_sha256": "342416a73507a385e31c964bb253f4b76f7046d38e8ace780f962bb47a8b2218",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-GFP-v474-LOCKED.zip",
+  "artifact_library_file_id": "libfile_f8d57e35c4588191aa2c6419d2b18213",
   "cumulative_authored": 59,
   "lesson_target_total": 62,
   "stage3c_ledger": {
@@ -17,10 +17,10 @@
   },
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "CENTRAL_CHECKPOINT_AND_PROJECT_STATE_RECONCILED_TO_STAGE6_BLOCKED",
-  "next_action": "Stage7 content-only release/post-package verification. Re-resolve Flashcards CURRENT first; if CURRENT advanced beyond v474-R108, rerun affected Stage6 runtime acceptance before locking.",
+  "next_action": "No further A2-L02 content work. Preserve this LOCKED release immutable; any future correction/enrichment must be an explicit successor. Continue another lesson/workstream separately.",
   "central_checkpoint_sha": "8e7f44413ea7939ef78078da6b9da9cd58fe088e",
   "root_project_state_sha": "65e9c7d8dd7337844082c50145b75acbaec0df0d",
-  "last_git_coordination": "A2_L02_STAGE6_CLOSED_PASS_WITH_ENVIRONMENT_BOUNDARY__LIBRARY_ROUNDTRIP_EXACT__APP_RUNTIME_BOUNDARY_SEPARATE__A2_L01_PRESERVED",
+  "last_git_coordination": "A2_L02_STAGE7_LOCKED__EXACT_FINAL_54_OF_54_PASS__LIBRARY_ROUNDTRIP_EXACT__A2_L01_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -135,16 +135,15 @@
       "note": "A2-L01 content remains unchanged; L02 progression does not close or overwrite L01 Stage6."
     },
     "A2-L02": {
-      "status": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NOT_STARTED",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
-      "checkpoint_artifact_sha256": "dfd3a64b26d6cff14e672d5739a5348c0a6bf4bd2cd4a1350e87d3bcc0ecb121",
+      "status": "STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE7.json",
+      "locked_artifact_sha256": "342416a73507a385e31c964bb253f4b76f7046d38e8ace780f962bb47a8b2218",
       "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
       "target_runtime": "v474-R108",
-      "deterministic_checks": "54/54 PASS",
-      "environment_acceptance": "INHERITED_V466_UNCHANGED_STORAGE_OFFLINE_SEMANTICS",
-      "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY",
-      "stage6_closed": true,
-      "stage7_started": false
+      "exact_final_acceptance": "54/54 PASS",
+      "content_lock_state": "LOCKED",
+      "stage7_complete": true,
+      "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY"
     }
   },
   "stage3a": {
@@ -252,7 +251,7 @@
     "runtime_rebase": "A2-L02 Stage6 remains bound to CURRENT v474-R108; Stage5 bytes unchanged.",
     "deterministic_boundary": "54/54 deterministic Chromium/fake-IDB checks PASS. This does not substitute for real-origin Windows Chrome restart persistence.",
     "stage6_closure": "Content Stage6 is closed PASS_WITH_ENVIRONMENT_BOUNDARY on exact CURRENT v474. The remaining 1097+ populated-profile confirmation is an app/runtime-level boundary and does not promote v474 to FINAL.",
-    "stage7": "NOT_STARTED"
+    "stage7": "A2-L02 is LOCKED. A2-L01 remains separate and unchanged. Runtime v474 global populated-profile acceptance remains separate from content lock."
   },
   "stage5_l02": {
     "status": "PASS_CLEAN_PROJECTION_ANTI_BYPASS__STAGE6_NOT_RUN",
@@ -387,5 +386,58 @@
     "stage7_lock_allowed": true,
     "stage7_started": false,
     "next_action": "Stage7 content-only release/post-package verification. Re-resolve Flashcards CURRENT first; if CURRENT advanced beyond v474-R108, rerun affected Stage6 runtime acceptance before locking."
+  },
+  "stage7_l02": {
+    "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "artifact": {
+      "filename": "Menschen-A2-L02-v3.3.6-GFP-v474-LOCKED.zip",
+      "sha256": "342416a73507a385e31c964bb253f4b76f7046d38e8ace780f962bb47a8b2218",
+      "size_bytes": 422657,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-GFP-v474-LOCKED.zip",
+      "library_file_id": "file_00000000eee8821096bc2b24e3f22495",
+      "library_stable_id": "libfile_f8d57e35c4588191aa2c6419d2b18213",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "zip_members": 46,
+      "manifest_entries": 44,
+      "sha256sum_entries": 45,
+      "single_top_level": true,
+      "nested_zip_count": 0,
+      "flashcards_app_runtime_members": 0
+    },
+    "runtime": {
+      "CURRENT": "v474-R108",
+      "CURRENT_artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+      "LAST_FULLY_VERIFIED": "v466-R100",
+      "no_downgrade": true,
+      "global_runtime_finality_claimed": false,
+      "current_verification_state": "PASS_DETERMINISTIC_BOUNDED_SELECTION__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+      "same_profile_populated_profile_boundary": "PENDING_SEPARATE_APP_BOUNDARY"
+    },
+    "exact_final_acceptance": {
+      "outer_zip_selected_by_production_archive_reader": true,
+      "runtime_import_and_presentation": "54/54 PASS",
+      "page_errors": 0,
+      "merged_unique_cards": 137,
+      "seed_cards_preserved": 75,
+      "target_cards": 62,
+      "lesson_filtering": "A2-L01 75 / A2-L02 62",
+      "srs_readback": "PASS_9_FIELDS",
+      "cross_pos": "PASS_NOUN_VERB_ADJECTIVE_EXPRESSION",
+      "legacy_verb_compatibility": "PASS_EXPLICIT_AND_SCHEMA_ONLY_ALL_4_MODES",
+      "mode_kombinationen": {
+        "study": "62 sections / 187 items",
+        "quick": "62 / 187",
+        "typing": "62 / 187",
+        "audio": "62 / 187"
+      }
+    },
+    "environment_boundary": {
+      "code": "CURRENT_V474_REAL_POPULATED_PROFILE_1097_PLUS_CONFIRMATION_PENDING",
+      "blocking_for_content_lock": false,
+      "blocking_for_runtime_final_verified": true,
+      "offline_storage_acceptance": "INHERITED_FROM_V466_PER_ENFORCED_CURRENTNESS_POLICY_BECAUSE_STORAGE_AND_SHELL_SEMANTICS_UNCHANGED"
+    },
+    "stage7_complete": true,
+    "next_action": "No further A2-L02 content work. Preserve this LOCKED release immutable; any future correction/enrichment must be an explicit successor. Continue another lesson/workstream separately."
   }
 }

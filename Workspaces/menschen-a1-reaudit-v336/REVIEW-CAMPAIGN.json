@@ -25,11 +25,11 @@
   "progress": {
     "total_lessons": 23,
     "reaudit_complete": 7,
-    "reaudit_in_progress": 0,
-    "queued": 15,
+    "reaudit_in_progress": 1,
+    "queued": 14,
     "active_lesson": "A1-L09",
-    "overall_state": "A1_L08_STAGE7_LOCKED__A1_L09_NEXT",
-    "git_persistence": "STAGE7_IN_SYNC"
+    "overall_state": "A1_L09_STAGE1_2_PASS__STAGE3A_NEXT",
+    "git_persistence": "STAGE1_2_IN_SYNC"
   },
   "lessons": [
     {
@@ -778,10 +778,27 @@
     },
     {
       "id": "A1-L09",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE1_2_COMPLETE__STAGE3A_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "new_successor_artifact": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "independent_quality": "PASS_STAGE1_2__EXACT_SOURCE__127_IDENTITY_CLOSURE__46_OF_46",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE1-2-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "edb77d2f8b309efc0709045881a204d9813879bc44176cb4b73351261ebfd06a",
+      "latest_artifact_filename": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
+      "stage12_source_rows": 103,
+      "stage12_source_ordinals": "536..638",
+      "stage12_audio_refs": 103,
+      "stage12_zero_audio_rows": [],
+      "stage12_active_targets": 127,
+      "stage12_new_ids": 127,
+      "stage12_reused_ids": [],
+      "stage12_senses": 87,
+      "stage12_expressions": 40,
+      "stage12_mapping_edges": 131,
+      "stage12_unresolved_identity": 0,
+      "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED"
     },
     {
       "id": "A1-L10",
@@ -908,22 +925,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L09 Stage1/2 under v3.3.6; preserve A1-L02..L08 re-audit successors and all historical LOCKED artifacts.",
-  "quality_state": "A1_L08_STAGE7_LOCKED__A1_L09_NEXT",
+  "next_action": "A1-L09 Stage3A: initialize the v3.3.6 completeness baseline for all 127 active identities, explicitly adjudicate retained source review flags and mandatory lexical Kombinationen, and do not start Stage3B until the baseline matrix is explicit.",
+  "quality_state": "A1_L09_STAGE1_2_PASS__STAGE3A_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
-    "scope": "A1-L08",
-    "stage": "Stage7 Locked Re-audit Successor",
-    "quality": "PASS_STAGE7_LOCKED_POSTPACKAGE_25_OF_25_WITH_EXPLICIT_PERSISTENCE_BOUNDARY",
-    "artifact_sha256": "b31f5b4cbda296bfacdc694bfb7debe5fe9a6d407671dfbe5c9d0775907ddb6a",
-    "direct_import_sha256": "861de8dc9938ae816cdc79b94efb6bfee1f5897c08c90e162d1d3ff3123f231f",
+    "scope": "A1-L09",
+    "stage": "Stage1/2 Exact Source + Identity Closure",
+    "quality": "PASS_STAGE1_2__EXACT_SOURCE__127_IDENTITY_CLOSURE__46_OF_46",
+    "artifact_sha256": "edb77d2f8b309efc0709045881a204d9813879bc44176cb4b73351261ebfd06a",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "161b0c294a8b4d87ac3cd5c36678a5549cc4cecc",
-    "receipt_commit": "21699aaae6122b6748d308c05b1832f529d86d2c",
-    "prevention_commit": "7e7a768f5a393aaac6a428c022b3c3e1ef6de080",
-    "runtime": "v475-R109",
-    "persistence": "NOT_CERTIFIED__USER_ACCEPTED_BOUNDARY",
-    "content_lock_state": "LOCKED"
+    "checkpoint_commit": "abcfc0c1146075a4408fb2b9069e56b909be8587",
+    "receipt_commit": "849f8aa962df7c0ba68739529f9e65e793afaaa2",
+    "prevention_commit": "9c4250fe17741cf85e1bbb3559e74dba08bb145e",
+    "runtime": "NOT_RUN_CONTENT_ONLY",
+    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
   }
 }

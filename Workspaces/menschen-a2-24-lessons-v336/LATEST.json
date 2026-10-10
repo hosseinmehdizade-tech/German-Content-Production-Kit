@@ -1,11 +1,11 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L02_STAGE6_DETERMINISTIC_PASS_ENVIRONMENT_BOUNDARY_V474",
-  "quality": "STAGE5_PASS__STAGE6_DETERMINISTIC_54_OF_54_PASS__REAL_WINDOWS_REAL_ORIGIN_PENDING",
+  "latest_completed_milestone": "A2-L02_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY_V474",
+  "quality": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__CURRENT_V474__STAGE7_NOT_STARTED",
   "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
-  "artifact_sha256": "806d31f761f3e68ead6c162f36f34752964d93f7a5e514e3123ad42eed518b11",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-DETERMINISTIC-PASS-ENVIRONMENT-BOUNDARY-v474.zip",
-  "artifact_library_file_id": "libfile_01c3df8f9f4c8191b36f4f94e7c90028",
+  "artifact_sha256": "dfd3a64b26d6cff14e672d5739a5348c0a6bf4bd2cd4a1350e87d3bcc0ecb121",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+  "artifact_library_file_id": "libfile_dd1f13e7ced881919ce44cfbaa4c44b2",
   "cumulative_authored": 59,
   "lesson_target_total": 62,
   "stage3c_ledger": {
@@ -17,10 +17,10 @@
   },
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "CENTRAL_CHECKPOINT_AND_PROJECT_STATE_RECONCILED_TO_STAGE6_BLOCKED",
-  "next_action": "Run the exact CURRENT v474 Windows Stage6 acceptance kit on an isolated real Chrome profile, then upload RESULTS/A2-L02-STAGE6-RESULTS-<runid>.zip. Deterministic 54/54 evidence is PASS, but Stage6 remains open until real-origin import/restart persistence closes the environment boundary.",
+  "next_action": "Stage7 content-only release/post-package verification. Re-resolve Flashcards CURRENT first; if CURRENT advanced beyond v474-R108, rerun affected Stage6 runtime acceptance before locking.",
   "central_checkpoint_sha": "8e7f44413ea7939ef78078da6b9da9cd58fe088e",
   "root_project_state_sha": "65e9c7d8dd7337844082c50145b75acbaec0df0d",
-  "last_git_coordination": "A2_L02_STAGE6_DETERMINISTIC_54_OF_54_PASS__LIBRARY_ROUNDTRIP_EXACT__REAL_ORIGIN_WINDOWS_PENDING__A2_L01_PRESERVED",
+  "last_git_coordination": "A2_L02_STAGE6_CLOSED_PASS_WITH_ENVIRONMENT_BOUNDARY__LIBRARY_ROUNDTRIP_EXACT__APP_RUNTIME_BOUNDARY_SEPARATE__A2_L01_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -135,16 +135,16 @@
       "note": "A2-L01 content remains unchanged; L02 progression does not close or overwrite L01 Stage6."
     },
     "A2-L02": {
-      "status": "STAGE5_PASS__STAGE6_DETERMINISTIC_54_OF_54_PASS__REAL_WINDOWS_REAL_ORIGIN_PENDING",
+      "status": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NOT_STARTED",
       "receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE6.json",
-      "deterministic_checkpoint_sha256": "806d31f761f3e68ead6c162f36f34752964d93f7a5e514e3123ad42eed518b11",
-      "acceptance_kit_sha256": "5f7df99068cbb8f99834bfca33195552f48770c6bb5f9b5f74d842eb3974fe0d",
+      "checkpoint_artifact_sha256": "dfd3a64b26d6cff14e672d5739a5348c0a6bf4bd2cd4a1350e87d3bcc0ecb121",
       "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
       "target_runtime": "v474-R108",
       "deterministic_checks": "54/54 PASS",
-      "stage6_closed": false,
-      "stage7_lock_allowed": false,
-      "real_browser_result": "PENDING_USER_WINDOWS_KIT_EXECUTION"
+      "environment_acceptance": "INHERITED_V466_UNCHANGED_STORAGE_OFFLINE_SEMANTICS",
+      "runtime_same_profile_large_populated_profile": "PENDING_SEPARATE_APP_BOUNDARY",
+      "stage6_closed": true,
+      "stage7_started": false
     }
   },
   "stage3a": {
@@ -250,7 +250,9 @@
     "legacy_top_level_stage4_stage5_stage6_blocks": "Historical A2-L01 state retained for compatibility; authoritative A2-L02 Stage6 state is stage6_l02 + L02-STAGE6.json.",
     "a2_l01": "Preserved under parallel_lesson_states.A2-L01.",
     "runtime_rebase": "A2-L02 Stage6 remains bound to CURRENT v474-R108; Stage5 bytes unchanged.",
-    "deterministic_boundary": "54/54 deterministic Chromium/fake-IDB checks PASS. This does not substitute for real-origin Windows Chrome restart persistence."
+    "deterministic_boundary": "54/54 deterministic Chromium/fake-IDB checks PASS. This does not substitute for real-origin Windows Chrome restart persistence.",
+    "stage6_closure": "Content Stage6 is closed PASS_WITH_ENVIRONMENT_BOUNDARY on exact CURRENT v474. The remaining 1097+ populated-profile confirmation is an app/runtime-level boundary and does not promote v474 to FINAL.",
+    "stage7": "NOT_STARTED"
   },
   "stage5_l02": {
     "status": "PASS_CLEAN_PROJECTION_ANTI_BYPASS__STAGE6_NOT_RUN",
@@ -284,7 +286,7 @@
     }
   },
   "stage6_l02": {
-    "status": "PASS_DETERMINISTIC_WITH_ENVIRONMENT_BOUNDARY__REAL_WINDOWS_REAL_ORIGIN_PENDING",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "target_runtime": {
       "current": "v474-R108",
       "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
@@ -356,58 +358,34 @@
       "content_mutation": false,
       "runtime_mutation": false
     },
-    "deterministic_checkpoint": {
-      "filename": "Menschen-A2-L02-v3.3.6-Stage6-DETERMINISTIC-PASS-ENVIRONMENT-BOUNDARY-v474.zip",
-      "sha256": "806d31f761f3e68ead6c162f36f34752964d93f7a5e514e3123ad42eed518b11",
-      "bytes": 21968,
-      "members": 9,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-DETERMINISTIC-PASS-ENVIRONMENT-BOUNDARY-v474.zip",
-      "library_file_id": "libfile_01c3df8f9f4c8191b36f4f94e7c90028",
+    "environment_acceptance": {
+      "policy_status": "ENFORCED",
+      "basis_runtime": "v466-R100",
+      "basis_result": "PASS_USER_CONFIRMED_SAME_PROFILE_PWA_OFFLINE",
+      "current_runtime": "v474-R108",
+      "current_storage_semantics_changed": false,
+      "current_shell_composition_changed": false,
+      "inherited_acceptance_allowed": true,
+      "interpretation": "Offline/storage environment acceptance is inherited because the app currentness policy records unchanged storage/offline semantics. This closes the bounded A2-L02 content Stage6 without promoting v474 itself to FINAL."
+    },
+    "remaining_app_runtime_boundary": {
+      "status": "OPEN_SEPARATE_FROM_CONTENT_STAGE6",
+      "same_profile_acceptance": "PENDING_USER_POPULATED_PROFILE_V474",
+      "reason": "The v474 import-selection memory-path repair still needs user confirmation on the reproduced 1097+ populated-profile case.",
+      "runtime_release_final": false
+    },
+    "closed_checkpoint": {
+      "filename": "Menschen-A2-L02-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+      "sha256": "dfd3a64b26d6cff14e672d5739a5348c0a6bf4bd2cd4a1350e87d3bcc0ecb121",
+      "bytes": 7034,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v474.zip",
+      "library_file_id": "libfile_dd1f13e7ced881919ce44cfbaa4c44b2",
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "fresh_extract": "PASS_CRC_PATH_SHA256_MANIFEST"
+      "fresh_extract": "PASS_CRC_PATHS_MANIFEST_REHASH"
     },
-    "environment_boundary": {
-      "status": "OPEN",
-      "code": "REAL_ORIGIN_NAVIGATION_BLOCKED_BY_ADMINISTRATOR",
-      "observed_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
-      "managed_policy_bypassed": false,
-      "deterministic_fake_idb": "PASS_IN_MEMORY_ONLY",
-      "real_origin_import": "NOT_PROVEN",
-      "physical_browser_restart_persistence": "NOT_PROVEN",
-      "service_worker_offline": "NOT_TESTED_REAL_ORIGIN",
-      "isolated_windows_chrome": "PENDING_USER_EXECUTION",
-      "primary_user_chrome_profile": "NOT_TOUCHED",
-      "stage6_closed": false,
-      "stage7_lock_allowed": false
-    },
-    "acceptance_kit": {
-      "filename": "Menschen-A2-L02-v3.3.6-Stage6-v474-REAL-CHROME-ACCEPTANCE-KIT.zip",
-      "sha256": "5f7df99068cbb8f99834bfca33195552f48770c6bb5f9b5f74d842eb3974fe0d",
-      "bytes": 2259826,
-      "members": 89,
-      "manifest_entries": 88,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-v474-REAL-CHROME-ACCEPTANCE-KIT.zip",
-      "library_file_id": "libfile_6f0ccc74e09081918e60c97b35c7844e",
-      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "embedded_runtime": {
-        "version": "v474-R108",
-        "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
-        "artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
-        "files_exact": 76,
-        "app_sha256": "3f02cc7cb7caeddc0fb3c11b8d479b252fe3438aecc0428ba596c2c7eb4429f3",
-        "service_worker_sha256": "043971e37a9b62f84e973962888f8a53505a206589a523d3ae8b456409f74fbe",
-        "runtime_fingerprint": "a215043bc3e8d53a61a98c1d691c376d5064996b1fff051056ece3ac9b3b4bb5",
-        "verification_state": "PASS_DETERMINISTIC_BOUNDED_SELECTION__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
-        "release_final": false
-      },
-      "stage5_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
-      "stage5_artifact_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
-      "static_verification": "PASS_CRC_PATH_MANIFEST_38_JS_CHECKS_76_OF_76_RUNTIME_EXACT",
-      "real_windows_chrome": "PENDING"
-    },
-    "real_browser": "PENDING_USER_WINDOWS_KIT_EXECUTION",
-    "stage6_closed": false,
-    "stage7_lock_allowed": false,
-    "next_action": "Run the exact CURRENT v474 Windows Stage6 acceptance kit on an isolated real Chrome profile, then upload RESULTS/A2-L02-STAGE6-RESULTS-<runid>.zip. Deterministic 54/54 evidence is PASS, but Stage6 remains open until real-origin import/restart persistence closes the environment boundary."
+    "stage6_closed": true,
+    "stage7_lock_allowed": true,
+    "stage7_started": false,
+    "next_action": "Stage7 content-only release/post-package verification. Re-resolve Flashcards CURRENT first; if CURRENT advanced beyond v474-R108, rerun affected Stage6 runtime acceptance before locking."
   }
 }

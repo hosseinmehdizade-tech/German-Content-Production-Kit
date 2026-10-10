@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L07_STAGE7_LOCKED",
-  "quality": "L01_L07_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY__L08_STAGE1_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE7.json",
-  "artifact_sha256": "62df3f80726d0893e39819162b37d13d8eeaf04acbe08ca01eb936a6fe6a8e45",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L07-v3.3.6-GFP-v475-LOCKED.zip",
-  "artifact_library_file_id": "file_00000000f67082109ff3b71a60ed0ffb",
+  "latest_completed_milestone": "A2-L08_STAGE1_PASS",
+  "quality": "L01_L07_STAGE7_LOCKED__L08_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE1.json",
+  "artifact_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+  "artifact_library_file_id": "file_00000000c8fc8210b4cf0e18c94d1d80",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Start A2-L08 Stage1 source inventory from the registered Menschen A2 source. Preserve A2-L01 through A2-L07 LOCKED.",
-  "central_checkpoint_sha": "2b0f0ccb0e35e119f9584af498cf3eb488bda695",
-  "root_project_state_sha": "03de14a332c014693bdf5dc6ffbc82f0b17ebfd8",
-  "last_git_coordination": "A2_L07_STAGE7_LOCKED__L01_L07_LOCKED__L08_STAGE1_NEXT",
+  "next_action": "Run A2-L08 Stage2 canonicalization and mandatory Stage2B identity closure. Preserve source order/memberships, compare against immutable A1 and LOCKED A2-L01..L07 identities, and keep MEM-009 one-card multi-meaning behavior.",
+  "central_checkpoint_sha": "f9df745f883ee91c8f3f6869d6432532987a70df",
+  "root_project_state_sha": "600f3c24b7439f2e63c93632b0476fb67378b0ca",
+  "last_git_coordination": "A2_L08_STAGE1_PASS__L01_L07_LOCKED_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -205,6 +205,25 @@
       "verified_import_provenance": "VERIFIED SHA-256",
       "content_lock_state": "LOCKED",
       "stage7_complete": true
+    },
+    "A2-L08": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L08-CHECKPOINT.json",
+      "artifact_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
+      "source_occurrences": 113,
+      "source_row_range": [
+        2929,
+        3041
+      ],
+      "audio_refs": 113,
+      "missing_example_rows": [
+        2959,
+        3022,
+        3025
+      ],
+      "stage2_started": false,
+      "content_lock_state": "L01_L07_LOCKED__L08_NOT_LOCKED"
     }
   },
   "stage3a": {
@@ -1491,5 +1510,31 @@
   "stage6_receipt": "Workspaces/menschen-a2-24-lessons-v336/L07-STAGE6.json",
   "l07_checkpoint_sha": "0c19ae5b324daf7fcfb556e3a6b3aad132b35331",
   "stage5_repair1_receipt_sha": "0731c9925b715d7fafcf840a517adba3dabde500",
-  "stage7_receipt_sha": "681fe97eea8bfad598f5fa232de3731f1921689d"
+  "stage7_receipt_sha": "681fe97eea8bfad598f5fa232de3731f1921689d",
+  "l08_stage1_receipt_sha": "7fcea5d08229ebc9845b121f24c2c1cf48112867",
+  "l08_checkpoint_sha": "7529c7267d034bcf9c15453680b88c7f03ed0c58",
+  "stage1_l08": {
+    "status": "PASS",
+    "lesson": "A2-L08",
+    "lesson_title": "Hoffentlich ist es nicht das Herz!",
+    "source_occurrences": 113,
+    "source_row_range": [
+      2929,
+      3041
+    ],
+    "audio_refs": 113,
+    "missing_example_rows": [
+      2959,
+      3022,
+      3025
+    ],
+    "source_alternatives_review_rows": 67,
+    "exact_duplicate_raw_text_groups": 0,
+    "source_text_control_char_rows": [],
+    "official_source_occurrences": "PASS_1_SOURCE_113_OCCURRENCES_0_ERRORS",
+    "source_payload_hash_binding": "113/113 PASS",
+    "artifact_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "stage2": "NOT_STARTED"
+  }
 }

@@ -15,7 +15,15 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
   },
   "quality": "STAGE5_PASS_PRESERVED__STAGE6_BLOCKED_BY_CURRENT_RUNTIME_DEFECT_AND_PORTABLE_ARTIFACT_MATERIALIZATION",
-  "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun Stage6 from exact Stage5 TSV. Do not start A1-L03 or Stage7 while this blocker remains.",
+  "next_action": "Re-run A1-L02 Stage6 from the exact Stage5 TSV against CURRENT v474-R108 (GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip, SHA-256 7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47). Deterministic RangeError-path regression is closed, but real populated same-profile Windows/Chrome acceptance remains an explicit boundary. Do not start A1-L03 or Stage7 until L02 Stage6 is adjudicated.",
   "checkpoint_commit": "a6216626ece0d592a2e0fb3867ded7d88b6f3504",
-  "receipt_commit": "9ad6c48960e55885066fce4e6ee1e3139afb3572"
+  "receipt_commit": "9ad6c48960e55885066fce4e6ee1e3139afb3572",
+  "runtime_unblock_candidate": {
+    "current_runtime": "v474-R108",
+    "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
+    "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
+    "status": "CURRENT_CANDIDATE_DETERMINISTIC_RANGEERROR_PATH_REGRESSION_PASS__REAL_POPULATED_PROFILE_PENDING",
+    "note": "This does not retroactively turn the v473 Stage6 blocker checkpoint into PASS; Stage6 must be rerun."
+  }
 }

@@ -28,21 +28,21 @@
     "reaudit_in_progress": 1,
     "queued": 22,
     "active_lesson": "A1-L02",
-    "overall_state": "A1_L02_STAGE6_RETRY_READY_CURRENT_V474__NOT_YET_RUN",
-    "git_persistence": "STAGE6_RETRY_COORDINATION_IN_SYNC"
+    "overall_state": "A1_L02_STAGE6_PASS__STAGE7_NEXT",
+    "git_persistence": "STAGE6_IN_SYNC"
   },
   "lessons": [
     {
       "id": "A1-L02",
-      "reaudit_status": "STAGE6_RETRY_READY_CURRENT_V474__PREVIOUS_V473_BLOCKER_PRESERVED",
+      "reaudit_status": "STAGE6_PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NOT_RUN",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-BLOCKED-v473.zip",
-      "independent_quality": "STAGE5_PASS_PRESERVED__STAGE6_BLOCKED_RUNTIME",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L02-STAGE6-BLOCKED-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "1ad8c19e624adfc1aa6b925450d5d83f9016aa61db477dce938c4f8c46e65ece",
+      "new_successor_artifact": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-v474-PASS.zip",
+      "independent_quality": "PASS_STAGE6_EXACT_CURRENT_V474_WITH_ENVIRONMENT_BOUNDARY",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L02-STAGE6-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "f073ee875db9ed9cd71106a23e3feddc28230ab53fe4644462f9081844d41ca9",
       "stage3a": "PASS_BASELINE_ONLY",
       "stage3b": "PASS_98_OF_98_EDITORIAL_COVERAGE_ONLY",
-      "latest_artifact_filename": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-BLOCKED-v473.zip",
+      "latest_artifact_filename": "Menschen-A1-L02-v3.3.6-REAUDIT-Stage6-v474-PASS.zip",
       "review_matrix_cells": 1666,
       "review_pending_cells": 0,
       "reviewed_card_count": 98,
@@ -63,12 +63,19 @@
       "stage3c_P3_touched": 29,
       "stage4": "PASS_22_OF_22_WITH_17_BOUNDED_REPAIR_OPERATIONS",
       "stage5": "PASS_OFFICIAL_V336_5_OF_5_CLEAN_BUILDER_SUPPLEMENTAL_PREVENTION",
-      "stage6": "BLOCKED_CURRENT_V473_INVALID_STRING_LENGTH_AT_POPULATED_PROFILE",
-      "stage7": "NOT_ALLOWED",
+      "stage6": "PASS_EXACT_CURRENT_V474_16_OF_16_WITH_ENVIRONMENT_BOUNDARY",
+      "stage7": "NOT_RUN",
       "runtime_retry_candidate": {
-        "runtime": "v474-R108",
+        "CURRENT": "v474-R108",
+        "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
         "artifact_sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
-        "real_populated_profile": "PENDING"
+        "runtime_fingerprint": "a215043bc3e8d53a61a98c1d691c376d5064996b1fff051056ece3ac9b3b4bb5",
+        "LAST_FULLY_VERIFIED": "v466-R100",
+        "git_mirror": "PASS_EXACT_76_OF_76",
+        "runtime_tree_sha": "917d20bdb5ac5e75884894d557c51adb24724799",
+        "source_commit": "1cc80e16f6674280abaa12509adc5a9ebd40e250",
+        "release_final": false,
+        "real_populated_profile": "PENDING_USER_POPULATED_PROFILE_V474"
       }
     },
     {
@@ -245,18 +252,18 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Re-run A1-L02 Stage6 from the exact Stage5 TSV against CURRENT v474-R108 (GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip, SHA-256 7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47). Deterministic RangeError-path regression is closed, but real populated same-profile Windows/Chrome acceptance remains an explicit boundary. Do not start A1-L03 or Stage7 until L02 Stage6 is adjudicated.",
-  "quality_state": "A1_L02_STAGE5_PASS__STAGE6_RETRY_READY_CURRENT_V474__NOT_YET_RUN",
+  "next_action": "Run A1-L02 Stage7 final content release/post-package verification from exact Stage5 content plus this Stage6 evidence. Keep v474 real populated-profile acceptance as a separate runtime-finality boundary. Do not start A1-L03 before L02 Stage7 closes.",
+  "quality_state": "A1_L02_STAGE6_PASS__STAGE7_NOT_RUN",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L02",
-    "stage": "Stage6 Runtime Acceptance",
-    "quality": "BLOCKED_CURRENT_V473_STATE_DEPENDENT_IMPORT_REGRESSION",
-    "artifact_sha256": "1ad8c19e624adfc1aa6b925450d5d83f9016aa61db477dce938c4f8c46e65ece",
+    "stage": "Stage6 Runtime & Presentation Acceptance",
+    "quality": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
+    "artifact_sha256": "f073ee875db9ed9cd71106a23e3feddc28230ab53fe4644462f9081844d41ca9",
     "library_roundtrip": "PASS_EXACT_BYTES_AND_SHA256",
-    "checkpoint_commit": "a6216626ece0d592a2e0fb3867ded7d88b6f3504",
-    "receipt_commit": "9ad6c48960e55885066fce4e6ee1e3139afb3572",
-    "latest_pointer_commit": "a8db2c95e4dd29b9827cfaf1edbdea1c21f4a072"
+    "checkpoint_commit": "d1cde024c95a3af4a5e273139237370dc64a6029",
+    "receipt_commit": "959fc067d5d9404d5fb3a9832d8a53093eeb81e2",
+    "latest_pointer_commit": "ff5dc37b64cc891b4699f9e81a6441bc8fccfb24"
   }
 }

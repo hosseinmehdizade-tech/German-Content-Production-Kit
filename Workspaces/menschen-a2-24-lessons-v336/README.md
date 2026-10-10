@@ -1,20 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L03 Stage4 INDEPENDENT QA = PASS; Stage5 is next.**
+**CURRENT lesson focus: A2-L03 Stage5 CLEAN PROJECTION = PASS; Stage6 is next.**
 
 - A2-L03 source: **83 occurrences**, rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
-- Identity set: **81 targets = 60 new A2 + 21 immutable A1 reuses**.
-- Stage3C closure re-audited: **1244/1244 cells closed, 0 unresolved**.
-- Stage4 effective content: **240 trilingual examples**, **147 Kombinationen**, **49 stable graph relations**.
-- Independent Stage4 applied **18 forward-only repairs on 16 new A2 identities**.
-- Source exact German example bindings: **43/43 PASS**; raw source mutation **0**.
-- Seven immutable A1 parent archives match their exact SHA-256; **21/21 reuse rows** are parent-content compatible and unchanged.
-- Explicit dataset exception: no stable lesson-scope NVV endpoint; no NVV was fabricated.
+- Final Stage5 import projection: **81 neutral de-vocabulary cards = 60 new A2 + 21 immutable A1 reuses**.
+- Examples: **324 total**, exactly four DE examples per card with FA + EN translations.
+- Kombinationen: **151 visible items** = 147 from new A2 content + 4 retained from immutable A1 reuses; exactly one visible Kombinationen section per card.
+- Effective graph relations: **49**.
+- Source-output map: **99 bindings across 83 source occurrences**.
+- Candidate ledger: **1163 final decisions, 0 deferred**; completeness **1244 cells, 0 unresolved**.
+- Official v3.3.6 unified/source/identity/candidate/completeness gates: PASS.
+- Framework v3.3.6 regression: **10/10 PASS via bounded split**.
+- Official clean-delivery anti-bypass builder and final fresh-extract/tamper checks: PASS.
+- Stage5 content is **import-ready**, but **Stage6 runtime acceptance has NOT run**.
 - A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
 - A2-L01 remains a separate Stage6-open track.
-- **Stage5 has NOT run yet**; the lesson is not yet final import-ready.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE4.json](./L03-STAGE4.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L03-STAGE5.json](./L03-STAGE5.json), and [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
 
 Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
 

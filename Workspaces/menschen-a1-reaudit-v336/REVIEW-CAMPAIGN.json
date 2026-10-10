@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 15,
     "active_lesson": "A1-L09",
-    "overall_state": "A1_L09_STAGE6_PERSISTENCE_BLOCKED__LOCAL_KIT_READY",
-    "git_persistence": "STAGE6_LOCAL_KIT_IN_SYNC"
+    "overall_state": "A1_L09_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
+    "git_persistence": "STAGE6_CLOSURE_IN_SYNC"
   },
   "lessons": [
     {
@@ -778,13 +778,13 @@
     },
     {
       "id": "A1-L09",
-      "reaudit_status": "STAGE6_PERSISTENCE_BLOCKED__LOCAL_ACCEPTANCE_KIT_READY",
+      "reaudit_status": "STAGE6_COMPLETE_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage6-v475-PERSISTENCE-BLOCKED.zip",
-      "independent_quality": "PASS_CONTENT_RUNTIME_PRESENTATION_17_OF_17__STATIC_9_OF_9__PERSISTENCE_NOT_CERTIFIED",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE6-LOCAL-KIT-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "9e303a9aa97308c44d1cd91c6e74fbd836608241fce5e25d1f240a82d3672739",
-      "latest_artifact_filename": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage6-v475-PERSISTENCE-BLOCKED.zip",
+      "new_successor_artifact": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage6-v475-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+      "independent_quality": "PASS_EXACT_CURRENT_V475__17_OF_17_RUNTIME_PRESENTATION__9_OF_9_STATIC__ENVIRONMENT_BOUNDARY",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE6-CLOSURE-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "273215a0e266dd738c0ca6a2fa7f8d75be159b94ac7d378a12c303c996fde917",
+      "latest_artifact_filename": "Menschen-A1-L09-v3.3.6-REAUDIT-Stage6-v475-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 103,
       "stage12_source_ordinals": "536..638",
@@ -845,17 +845,18 @@
       "stage5_negative_controls": "3/3_PASS",
       "stage5_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
       "stage5_anti_bypass_boundary": "OFFICIAL_BUILDER_BINARY_NOT_MATERIALIZED__CONTRACT_EQUIVALENT_GATE_EXECUTED",
-      "stage6": "BLOCKED_REAL_ORIGIN_PERSISTENCE__STAGE7_FORBIDDEN",
+      "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_ALLOWED",
       "stage6_current_runtime": "v475-R109",
       "stage6_runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
       "stage6_deterministic": "17/17 PASS",
       "stage6_static": "9/9 PASS",
-      "stage6_persistence": "NOT_CERTIFIED_CONTAINER_ADMIN_BLOCK",
+      "stage6_persistence": "CANONICAL_ORIGIN_DURABLE_INDEXEDDB_NOT_CLAIMED__RUNTIME_LEVEL_BOUNDARY",
       "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-      "stage7": "NOT_ALLOWED_UNTIL_LOCAL_PERSISTENCE_PASS_OR_EXPLICIT_BOUNDARY_ACCEPTANCE",
-      "stage6_local_kit": "READY_STATIC_PASS__PENDING_USER_WINDOWS_CHROME",
+      "stage7": "ALLOWED_NEXT__NOT_STARTED",
+      "stage6_local_kit": "OPTIONAL_RUNTIME_LEVEL_CONFIRMATION",
       "stage6_local_kit_sha256": "0fbd8eff124d6a77de555ca64887ec8ea21633211aab3249fb1f2d9960ba4aa0",
-      "stage6_local_result": "Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json"
+      "stage6_local_result": "Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json",
+      "stage6_offline_storage_acceptance": "INHERITED_FROM_V466_UNDER_ACTIVE_POLICY"
     },
     {
       "id": "A1-L10",
@@ -982,20 +983,22 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Run Menschen-A1-L09-v3.3.6-Stage6-LOCAL-PERSISTENCE-ACCEPTANCE-KIT-v1.0.0.zip on Windows Chrome and return Results/A1-L09-STAGE6-LOCAL-PERSISTENCE-ACCEPTANCE.json. Stage7 remains forbidden until PASS or explicit acceptance of the documented boundary.",
-  "quality_state": "A1_L09_STAGE6_PERSISTENCE_BLOCKED__LOCAL_KIT_READY",
+  "next_action": "A1-L09 Stage7: create the final locked content-production release from exact Stage5 authority plus this Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY evidence; run exact-final package/content/runtime acceptance and preserve the runtime-level same-profile v475 confirmation as a separate project boundary.",
+  "quality_state": "A1_L09_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L09",
-    "stage": "Stage6 Persistence Boundary / Local Acceptance Kit",
-    "quality": "CONTENT_RUNTIME_PRESENTATION_PASS__PERSISTENCE_BLOCKED__LOCAL_KIT_STATIC_PASS",
-    "artifact_sha256": "0fbd8eff124d6a77de555ca64887ec8ea21633211aab3249fb1f2d9960ba4aa0",
-    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "85b9d9a369b6afaccf44487602630015cf8d283f",
-    "receipt_commit": "d20e96c3091e560e659b3585b983a06f106f11ff",
+    "stage": "Stage6 Exact CURRENT Runtime & Presentation Acceptance",
+    "quality": "PASS_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_ALLOWED",
+    "artifact_sha256": "273215a0e266dd738c0ca6a2fa7f8d75be159b94ac7d378a12c303c996fde917",
     "runtime": "v475-R109",
-    "persistence": "PENDING_USER_WINDOWS_CHROME_KIT",
-    "stage7_allowed": false
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+    "checkpoint_commit": "83211f1a58a95aa3644efb151fdc9ff0cd5b3201",
+    "receipt_commit": "3bf9426c65b151472c7d71df5a4ca62bbed290f4",
+    "persistence_boundary": "DOCUMENTED_RUNTIME_LEVEL_NOT_CONTENT_BLOCKER",
+    "stage7_allowed": true,
+    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
   }
 }

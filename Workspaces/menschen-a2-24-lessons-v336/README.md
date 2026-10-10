@@ -1,22 +1,21 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L05 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
+**CURRENT completed lesson: A2-L05 Stage7 = LOCKED PASS_WITH_ENVIRONMENT_BOUNDARY. A2-L06 Stage1 is next.**
 
-- Lesson: **A2-L05 — Schaut mal, der schöne Dom!**
-- Stage5 authority is now **Repair1**: the original Stage5 was superseded after Stage6 exposed a locked-reuse backend-provenance collapse and a copied Lektion-4 tag on L05 rows.
-- Repair1 keeps **61 cards = 50 new A2 + 9 immutable A1 reuses + 2 immutable prior-A2 reuses**, 244 trilingual examples, 131 visible Kombinationen and 2 graph relations.
-- Repair1 Stage5 gates: **20/20 projection QA, 10/10 framework tests, official completeness/candidate/identity/source/anti-bypass PASS**.
-- Exact CURRENT runtime: **GFP v475-R109**, artifact SHA-256 18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746.
-- Exact-runtime Stage6: **95/95 cumulative PASS + 12/12 target persistence PASS**, zero page errors.
-- Runtime cumulative library through L05: **361 unique stable IDs**; prior 302 retained, 300 non-overlap cards unchanged, both overlaps preserve semantic core and gain L05 membership.
-- Lesson filters: L01=75, L02=62, L03=81, L04=85, L05=61.
-- Four presentation modes: **55 nonempty Kombinationen sections / 131 items** in Study, Quick, Typing and Audio.
-- Managed environment blocks real-origin navigation; offline/storage acceptance is inherited from fully verified v466 under the enforced currentness policy. The separate v475 populated-profile confirmation remains an app/runtime boundary.
-- A2-L01 through A2-L04 remain immutable Stage7 LOCKED. A2-L05 is **not locked yet**.
+- A2-L01 through A2-L05 are now immutable **Stage7 LOCKED**.
+- A2-L05 final content: **61 cards = 50 new A2 + 9 A1 reuses + 2 prior-A2 reuses**, 244 trilingual examples, 131 Kombinationen items and 2 graph relations.
+- Stage5 authority is **Repair1**; the original Stage5 is superseded because it flattened locked structured Kombinationen provenance and copied Lektion-4 tags onto L05.
+- Final import SHA-256: `b29c5819aa8f87a8acdd1b654274e8217722ee15da335d307e88b407279a8a7b`.
+- Exact CURRENT runtime at lock: **v475-R109**, artifact SHA-256 `18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746`.
+- Stage6 acceptance: **95/95 cumulative PASS + 12/12 target persistence PASS**, zero page errors.
+- Runtime cumulative A2 library through L05: **361 unique stable IDs**; all 302 prior cards retained.
+- Stage7 package verification: CRC PASS, **38/38 manifest**, **39/39 SHA256SUMS**, **8/8 exact package selection**, 61×23 TSV, unified neutral projection PASS.
+- Final locked artifact SHA-256: `9403e272c049a4f8f80f79a02123df48292dbd79ceb6fb57bf2120acde79949e`; Library roundtrip exact byte-for-byte PASS.
+- Flashcards app/runtime is **not bundled** in the content ZIP. v475 global populated-profile finality remains a separate app boundary.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L05-STAGE6.json](./L05-STAGE6.json), [L05-STAGE5-REPAIR1.json](./L05-STAGE5-REPAIR1.json), and [L05-CHECKPOINT.json](./L05-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L05-STAGE7.json](./L05-STAGE7.json), and [L05-CHECKPOINT.json](./L05-CHECKPOINT.json).
 
-Next major stage: **Stage7 exact-final content-only lock and post-package verification**. Re-resolve CURRENT before locking.
+Next major stage: **A2-L06 Stage1 source inventory** from the registered Menschen A2 source. Preserve L01-L05 LOCKED.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

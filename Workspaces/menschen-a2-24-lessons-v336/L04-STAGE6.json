@@ -1,11 +1,11 @@
 {
-  "schema": "menschen-a2-l04-stage6-git-receipt@1.0.0",
+  "schema": "menschen-a2-l04-stage6-git-receipt@1.1.0",
   "scope": "A2-L04",
   "framework": "v3.3.6",
   "stage": "6",
-  "status": "BLOCKED_ARCHITECTURE_MULTI_MEMBERSHIP_LIBRARY_INDEX",
-  "stage6_closed": false,
-  "stage7_lock_allowed": false,
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "stage6_closed": true,
+  "stage7_lock_allowed": true,
   "stage5_authority": {
     "status": "PASS_REPAIR2",
     "artifact": "Menschen-A2-L04-v3.3.6-Stage5-Repair2-CONTENT-PRODUCTION-DELIVERY.zip",
@@ -15,34 +15,43 @@
     "cards": 85,
     "content_mutated_in_stage6": false
   },
+  "previous_blocker": {
+    "status": "BLOCKED_ARCHITECTURE_MULTI_MEMBERSHIP_LIBRARY_INDEX",
+    "code": "MULTI_MEMBERSHIP_LIBRARY_INDEX_SINGLE_LESSON_ONLY",
+    "runtime": "v474-R108",
+    "cumulative": "55/56 FAIL",
+    "checkpoint_sha256": "1afedd6d4382bcbfc5f5d4ee8323e0be9a0fea2bf51c6acaab4e97a6cf016fa1",
+    "resolution": "RESOLVED_BY_GENERIC_MULTI_MEMBERSHIP_LIBRARY_INDEX_IN_V475"
+  },
   "target_runtime": {
-    "current": "v474-R108",
-    "artifact": "GFP-v474-R108-BOUNDED-IMPORT-SELECTION.zip",
-    "sha256": "7ff2485946f39cab3580da72dc3202a1ba6d7fb1f9ae17b9243fd0fa4676ab47",
-    "last_fully_verified_runtime": "v466-R100",
+    "current": "v475-R109",
+    "artifact": "GFP-v475-R109-MULTI-MEMBERSHIP-LIBRARY-INDEX.zip",
+    "sha256": "2969685daaa9c79f15519c5f3ae6e2626bfe18482e75b59f7cdd10b56eb9f23c",
+    "app_sha256": "367ebdbca257a1161339f80574bb93e32bb55d806ed3b3cdc3874987ace3d407",
+    "service_worker_sha256": "e6a53debd7d00c45cf57fb7ec0515c2f552896a1189a570cff77f09bae7ea91b",
+    "runtime_fingerprint": "6c9683e5818ec831fbe64a04bb342ca5cf4d8ccf8240791ff8c473494627b021",
+    "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v475-R109-MULTI-MEMBERSHIP-LIBRARY-INDEX.zip",
+    "library_stable_id": "libfile_9185c11b29a88191af6d876d3ff0df16",
     "exact_current_runtime_materialized": true,
     "exact_current_runtime_sha256_verified": true,
-    "verification_state": "PASS_DETERMINISTIC_BOUNDED_SELECTION__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+    "verification_state": "PASS_DETERMINISTIC_MULTI_MEMBERSHIP_INDEX__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+    "last_fully_verified_runtime": "v466-R100",
+    "git_runtime_source_mirror": "PENDING_V475__LIBRARY_BINARY_AUTHORITY_EXACT",
     "substitution_forbidden": true
+  },
+  "architecture_resolution": {
+    "code": "MULTI_MEMBERSHIP_LIBRARY_INDEX",
+    "stable_card_identity_preserved": true,
+    "duplicate_cards_created": false,
+    "hardcoded_menschen_names": false,
+    "visible_ui_change": "VERSION_LABEL_ONLY",
+    "delete_semantics_changed": false,
+    "storage_commit_semantics_changed": false,
+    "behavior": "Library scope indexing includes all normalized customFields.course_memberships entries plus legacy top-level fallback."
   },
   "acceptance": {
     "production_package_selection": "PASS_EXACT_REPAIR2_TSV_SELECTED_85_ROWS",
-    "target_only_persistence": "PASS_19_OF_19",
-    "target_only_cards": 85,
-    "target_only_examples": 340,
-    "target_only_audio_refs": 117,
-    "target_only_kombinationen": "69_NONEMPTY_SECTIONS_209_ITEMS_ALL_4_MODES",
-    "target_only_page_errors": 0,
-    "cumulative_seed": {
-      "lessons": [
-        "A2-L01",
-        "A2-L02",
-        "A2-L03"
-      ],
-      "cards_unique": 218,
-      "combined_seed_sha256": "a3fbea61364d44f7c22aa1111e7f4ccd4b66143cf6a06caf28beccc773475d52"
-    },
-    "cumulative_runtime": "FAIL_55_OF_56",
+    "cumulative_runtime": "PASS_56_OF_56",
     "cumulative_unique_cards": 302,
     "prior_cards_retained": "218/218 PASS",
     "nonoverlap_prior_unchanged": "217/217 PASS",
@@ -52,96 +61,46 @@
     "lesson_filtering": {
       "A2_L01": "75 PASS",
       "A2_L02": "62 PASS",
-      "A2_L03": "80 FAIL_EXPECTED_81",
+      "A2_L03": "81 PASS",
       "A2_L04": "85 PASS"
     },
-    "srs_representative_state": "PASS",
-    "page_errors": 0,
-    "sole_failure": "A2-L03 Library scope loses shared card ma2m-lu-0178 after A2-L04 import because the runtime index reads only top-level lesson."
+    "target_cards": 85,
+    "target_examples": 340,
+    "target_trilingual_examples": 340,
+    "target_audio_refs": 117,
+    "target_kombinationen": "69_NONEMPTY_SECTIONS_209_ITEMS_ALL_4_MODES",
+    "prior_srs_readback": "PASS_9_FIELDS_REPRESENTATIVE_L01_L02_L03",
+    "target_persistence": "PASS_7_OF_7",
+    "commit_manifest": "VERIFIED_85",
+    "final_package_runtime_byte_parity": "PASS_76_OF_76_TO_TESTED_PREPACKAGE_RUNTIME",
+    "page_errors": 0
   },
-  "blocker": {
-    "code": "MULTI_MEMBERSHIP_LIBRARY_INDEX_SINGLE_LESSON_ONLY",
-    "classification": "RUNTIME_LIBRARY_ARCHITECTURE",
-    "root_cause": "CURRENT v474 rebuildLibraryIndexV121 indexes each card using only top-level card.lesson. It does not index customFields.course_memberships, even when a stable card legitimately belongs to multiple lessons.",
-    "observed_example": {
-      "id": "ma2m-lu-0178",
-      "front": "die Information",
-      "memberships_preserved": [
-        "A2-L03",
-        "A2-L04"
-      ],
-      "top_level_lesson_after_import": "A2-L04",
-      "result": "A2-L03 library count changes from 81 to 80"
-    },
-    "cross_lesson_reuse_at_risk_count": 18,
-    "cross_lesson_reuse_at_risk_ids": [
-      "ma1m-lu-0752",
-      "ma1m-lu-0748",
-      "ma1m-lu-0758",
-      "ma1m-lu-0759",
-      "ma1m-lu-0760",
-      "ma1m-lu-1155",
-      "ma1m-lu-0788",
-      "ma1m-lu-0789",
-      "ma1m-lu-0790",
-      "ma1m-lu-0799",
-      "ma1m-lu-0385",
-      "ma1m-lu-0384",
-      "ma1m-lu-2648",
-      "ma2m-lu-0178",
-      "ma1m-lu-0197",
-      "ma1m-lu-0199",
-      "ma1m-lu-2795",
-      "ma1m-lu-1131"
-    ],
-    "broader_risk": "The same behavior can remove reused locked A1 cards from their previous Library lesson containers when a later lesson reuses the same stable card.",
-    "not_content_defect": true,
-    "not_repair2_projection_defect": true
-  },
-  "guardrails": {
-    "stable_identity": "DO_NOT_DUPLICATE_CARDS_TO_FAKE_MULTI_MEMBERSHIP",
-    "multi_meaning_one_card": "PRESERVE_MEM_009",
-    "dynamic_library_organization": "PRESERVE_MEM_010_NO_HARDCODED_MENSCHEN_NAMES",
-    "unified_presentation": "PRESERVE_MEM_012",
-    "visible_ui_change": "NONE_PROPOSED",
-    "delete_semantics": "DO_NOT_CHANGE_IN_THIS_FIX; unlink-vs-delete is a separate data-loss/architecture decision"
-  },
-  "recommended_architecture": {
-    "approval_required": true,
-    "proposal": "Create a bounded successor runtime that indexes each stable card under every normalized customFields.course_memberships entry, while retaining top-level source/lesson/deck fallback for legacy cards.",
-    "constraints": [
-      "one stable card record remains authoritative",
-      "no duplicate card IDs",
-      "no hard-coded Menschen lesson names",
-      "no visible UI redesign",
-      "preserve current delete semantics in this bounded change",
-      "advance CURRENT as a new runtime; never mutate v474 in place",
-      "rerun A2-L04 Stage6 against the new exact CURRENT artifact"
-    ]
+  "environment_acceptance": {
+    "policy_status": "ENFORCED",
+    "basis_runtime": "v466-R100",
+    "current_runtime": "v475-R109",
+    "inherited_acceptance_allowed": true,
+    "storage_offline_semantics_changed": false,
+    "same_profile_populated_profile": "PENDING_USER_V475",
+    "interpretation": "Offline/storage environment acceptance is inherited; the global populated-profile boundary is separate and nonblocking for A2-L04 content Stage6."
   },
   "checkpoint_artifact": {
-    "filename": "Menschen-A2-L04-v3.3.6-Stage6-BLOCKED-MULTI-MEMBERSHIP-v474.zip",
-    "sha256": "1afedd6d4382bcbfc5f5d4ee8323e0be9a0fea2bf51c6acaab4e97a6cf016fa1",
-    "bytes": 177065,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage6-BLOCKED-MULTI-MEMBERSHIP-v474.zip",
-    "library_file_id": "file_00000000925c82109ab2de5992aba290",
-    "library_stable_id": "libfile_5e7e6106c0148191b910e248544f4fe9",
+    "filename": "Menschen-A2-L04-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+    "sha256": "e58e5d355743c8038b3688f5aee497eff645e163603b6af4dd51a3d3589c4b41",
+    "bytes": 184941,
+    "members": 12,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L04-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip",
+    "library_file_id": "file_000000003184821087afefcc2620f4f9",
+    "library_stable_id": "libfile_e5f86f7fa67081919961c37d7d007225",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "evidence_files": [
-    "01-Evidence/A2-L04-STAGE6-REPAIR2-FULL-PACKAGE-SELECTION.json",
-    "01-Evidence/A2-L04-STAGE6-REPAIR2-TARGET85-PERSISTENCE.json",
-    "01-Evidence/A2-L04-STAGE6-REPAIR2-CUMULATIVE-INMEMORY.json",
-    "02-Reports/A2-L04-STAGE6-BLOCKER.json"
-  ],
   "content_mutation": false,
-  "runtime_mutation": false,
   "separation": {
     "A2_L01": "LOCKED_UNCHANGED",
     "A2_L02": "LOCKED_UNCHANGED",
     "A2_L03": "LOCKED_UNCHANGED",
-    "A2_verben": "UNCHANGED",
-    "runtime_ui": "UNCHANGED"
+    "A2_verben": "UNCHANGED"
   },
-  "next_action": "Architecture approval required: implement generic multi-membership-aware Library indexing in a new CURRENT runtime successor, then rerun exact A2-L04 Stage6. Do not lock A2-L04 and do not duplicate cards as a workaround."
+  "quality_boundary": "A2_L04_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__CURRENT_V475__CUMULATIVE_56_OF_56__PERSISTENCE_7_OF_7__STAGE7_ALLOWED",
+  "next_action": "A2-L04 Stage7 content-only final package and post-package lock on exact CURRENT v475-R109. Preserve A2-L01/L02/L03 LOCKED."
 }

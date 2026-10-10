@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L05_STAGE3C_PASS_CLOSURE__STAGE4_PENDING",
+  "status": "B1_L05_STAGE4_PASS_AFTER_BOUNDED_REPAIR1__STAGE5_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -126,12 +126,12 @@
     "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "PASS_CLOSURE",
-    "stage4": "NOT_STARTED",
+    "stage4": "PASS_AFTER_BOUNDED_REPAIR1",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L05 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L06.",
+  "next_action": "Run B1-L05 Stage5 anti-bypass clean-delivery projection from this exact Stage4 successor. Do not start B1-L06.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -2109,5 +2109,67 @@
     },
     "boundary": "Stage3C disposition closure PASS only. Independent Stage4 linguistic/cross-language/relation/provenance re-audit remains mandatory; no Stage4/5/6/7 claim.",
     "next_action": "Run B1-L05 Stage4 independent linguistic and enrichment-completeness re-audit on this exact candidate. Do not start B1-L06."
+  },
+  "b1_l05_stage4": {
+    "status": "PASS_AFTER_BOUNDED_REPAIR1__STAGE5_PENDING",
+    "framework": "v3.3.6",
+    "predecessor_stage3c_sha256": "aadface9390095d686171f1c452af90647a6611a2606ea8f8d6142a4345a45c0",
+    "canonical_sha256": "de07c2d40b4c703f5235eecfd52e7a639558df1be082d31c0bfddf3a79819ef4",
+    "final_targets_sha256": "8a961aa1e4cee0886e68c6178987ecdb4ea99077b350788f2f0d6a8db8eb523b",
+    "targets": 147,
+    "senses": 56,
+    "expressions": 91,
+    "examples": 588,
+    "dimension_cells": 2379,
+    "verified_present_cells": 1353,
+    "closed_no_force_cells": 1026,
+    "unresolved_cells": 0,
+    "accepted_kombinationen": 111,
+    "rejected_kombinationen": 1,
+    "relations": 94,
+    "repair_findings": 18,
+    "advisories": 4,
+    "affected_targets": 62,
+    "learner_facing_diff_records": 241,
+    "systemic_english_alignment_targets": 51,
+    "systemic_english_alignment_fields": 204,
+    "identity_mutated": false,
+    "source_order_mutated": false,
+    "canonical_authority_mutated": false,
+    "relation_topology_mutated": false,
+    "completeness_dispositions_mutated": false,
+    "stage2_reopen_required": false,
+    "validators": {
+      "official_candidate_ledger": "PASS 2379 candidates / 0 errors",
+      "official_completeness": "PASS 147 targets / 2379 cells / 0 unresolved",
+      "independent_custom": "PASS 37/37",
+      "post_package": "PASS CRC / 20 manifest / 21 SHA256SUMS / 17 JSON / hygiene"
+    },
+    "source_fidelity_advisories": [
+      "Source-defined die öffentliche Meinung drehen retained; no exact current Duden Universal/Stil extraction hit.",
+      "Source-defined umfassende Ansicht retained; no exact current Duden Universal/Stil extraction hit.",
+      "allerorts, Arbeitserleichterung and Zukunftsvision remain source-attested without fabricated external-reference claims.",
+      "pausenlos ~ ständig relation retained with near-synonym scope advisory."
+    ],
+    "artifact": {
+      "filename": "Menschen-B1-L05-v3.3.6-Stage4-Repair1-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+      "sha256": "36542518ba029d35c5623391bdae67d4b8dec1757f63ccea8a2da7f5f393a78a",
+      "size_bytes": 178273,
+      "members": 22,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L05-v3.3.6-Stage4-Repair1-INDEPENDENT-REAUDIT-PASS-CHECKPOINT.zip",
+      "library_file_id": "file_00000000c85882109ba63437f369174b",
+      "library_stable_id": "libfile_a0a735a5ed848191b32e94b55ccb3050",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L05-STAGE4-REPAIR1-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "49588d2bc6c031a1a6df97376c4f996f4544ef255369afdc7f6fd73ab282e284",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L05-STAGE4-REPAIR1-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_00000000d32882108dd8ca92f1abd7e3",
+      "library_stable_id": "libfile_1707300f6bb88191a251ba920871679f",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
+    "next_action": "Run B1-L05 Stage5 anti-bypass clean-delivery projection from this exact Stage4 successor. Do not start B1-L06."
   }
 }

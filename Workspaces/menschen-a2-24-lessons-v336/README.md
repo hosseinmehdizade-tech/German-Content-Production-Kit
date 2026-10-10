@@ -1,23 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L06 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
+**CURRENT lesson focus: A2-L07 Stage6 = PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 is next.**
 
-- A2-L01 through A2-L05 remain immutable **Stage7 LOCKED**.
-- A2-L06 Stage5 import bytes are unchanged and were tested against exact CURRENT **GFP v475-R109** (`18b6a754…d9d746`).
-- Exact production package selection chose `A2-L06-UNIVERSAL-v2.tsv` with SHA-256 `932baab4…d7037e`.
-- Deterministic CURRENT-runtime acceptance: **98/98 cumulative PASS + 32/32 target-only PASS**, **0 page errors**.
-- Cumulative A2 library after L06: **422 unique cards**; all **361/361 prior cards** remained present and semantically unchanged.
-- Lesson filtering: **L01 75 / L02 62 / L03 81 / L04 85 / L05 61 / L06 61**.
-- L06 runtime parity: **61/61**; **244 trilingual examples**, **97 audio refs**, **54 Kombinationen sections / 162 items** in Study, Quick, Typing and Audio.
-- Prior representative SRS state for L01-L05 and target L06 SRS state both passed exact **9-field readback**.
-- Runtime static preflight PASS: **37 JS files**, **142 asset refs / 64 resources**, shell cohort PASS, v475 multi-membership **8/8 PASS**.
-- Managed real-origin execution is unavailable in this environment. Offline/storage acceptance is inherited from the accepted v466 same-profile boundary because exact v475 storage/offline semantics are unchanged; the separate **v475 populated-profile confirmation remains open** at app-project level.
-- Stage6 checkpoint SHA-256: `159aa71cff2a3e84387293636da75ad9afcae343807c2bf2fbcc5e2863ac341c`; Library byte roundtrip PASS.
+- A2-L01 through A2-L06 remain immutable **Stage7 LOCKED**.
+- A2-L07 Stage5 required a bounded **Repair1** after Stage6 caught loss of prior semantic/membership authority on `ma2m-lu-0110` and `ma2m-lu-0349`.
+- Repair1 changed only those two projection rows; **73/75 target rows were unchanged**, and both repaired rows preserve exact prior-A2 semantic cores while adding the A2-L07 transport membership.
+- Exact Stage5 Repair1 SHA-256: `39a5d36a8ba82a4df6940a65de116c6790cb9590a84da3e61ae24249d7d4515d`; exact TSV SHA-256: `0dd8a90bed30af6bfde4d35699692580d04b7fcdbda691e0af7b33ece9007176`.
+- Stage6 ran on exact CURRENT **GFP v475-R109** (`18b6a754…d9d746`) and passed **114/114 cumulative + 32/32 target persistence**, with zero page errors.
+- Cumulative A2 library after L07: **495 unique cards**; all **422/422 prior cards** remain present, 420 non-overlap cards are semantically unchanged, and both overlap cards pass exact semantic-core + prior-membership preservation.
+- Lesson filtering: **L01 75 / L02 62 / L03 81 / L04 85 / L05 61 / L06 61 / L07 75**.
+- L07 runtime parity: **75/75**; **300 trilingual examples**, **106 audio refs**, **73 Kombinationen sections / 157 items** in Study, Quick, Typing and Audio.
+- Stage6 checkpoint SHA-256: `a788b910dc59455861e14c61fc27094c43fe41e1963e9dfb84ea222ab855522f`; Library exact-byte roundtrip PASS.
+- Managed real-origin execution remains unavailable. Offline/storage acceptance is inherited from v466 because v475 storage/offline semantics are unchanged; the separate **v475 populated-profile confirmation remains open** at app-project level.
 - **Stage7 has not run.**
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L06-STAGE6.json](./L06-STAGE6.json), and [L06-CHECKPOINT.json](./L06-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L07-STAGE6.json](./L07-STAGE6.json), [L07-STAGE5-REPAIR1.json](./L07-STAGE5-REPAIR1.json), and [L07-CHECKPOINT.json](./L07-CHECKPOINT.json).
 
-Next major stage: **A2-L06 Stage7 exact-final content lock/post-package verification**. Re-resolve CURRENT first.
+Next major stage: **A2-L07 Stage7 exact-final content lock/post-package verification**. Re-resolve CURRENT first.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

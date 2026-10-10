@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l08-stage1-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l08-stage2b-checkpoint@1.0.0",
   "scope": "A2-L08",
   "framework": "v3.3.6",
-  "stage": "Stage1 COMPLETE",
-  "status": "A2_L08_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NOT_STARTED",
+  "stage": "Stage2B COMPLETE",
+  "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "01-Source/SOURCE-MANIFEST-SNAPSHOT.json",
   "source_occurrences": "01-Source/A2-L08-SOURCE-OCCURRENCES.json",
@@ -24,12 +24,16 @@
   ],
   "source_alternatives_review_rows": 67,
   "source_text_control_char_rows": [],
-  "stage2_started": false,
+  "stage2_started": true,
   "artifact": {
-    "filename": "Menschen-A2-L08-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
-    "sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
-    "library_file_id": "file_00000000c8fc8210b4cf0e18c94d1d80",
-    "library_stable_id": "libfile_6b6e09b521c88191ab9b3916ed07de08",
+    "filename": "Menschen-A2-L08-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "sha256": "845442eb9456095b736e8c56b540922bcb9849eaf369b2c55f862059bb2dcbc0",
+    "size_bytes": 202219,
+    "members": 38,
+    "sha256sum_entries": 37,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L08-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "library_file_id": "file_00000000cf6081f4857bf479e7824551",
+    "library_stable_id": "libfile_cdf1130003ac8191bc40493943dc85b0",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "project_memory": "PROJECT-MEMORY.json",
@@ -40,5 +44,48 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Stage2 canonicalization and mandatory Stage2B identity closure for A2-L08. Compare the 113 normalized source occurrences against immutable A1 authorities plus LOCKED A2-L01/L02/L03/L04/L05/L06/L07 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not begin Stage3 until identity closure has zero unresolved states."
+  "next_action": "Run A2-L08 Stage3A richness baseline audit across all 79 closed identities; preserve Stage2B IDs and reopen identity only for genuinely new evidence.",
+  "parent_stage1_sha256": "bc0b99099d0e3d819ac0bf2dc058d90452dbe9c9dc9c16b46df7f6936add1fec",
+  "stage2b_complete": true,
+  "stage3_started": false,
+  "identity": {
+    "units_total": 79,
+    "new_a2": 76,
+    "reused_a1": 1,
+    "reused_prior_a2": 2,
+    "new_id_range": "ma2m-lu-0432..ma2m-lu-0507",
+    "bindings": 129,
+    "candidates": 196,
+    "editorial_reviews_closed": 98,
+    "unresolved": 0,
+    "canonical_sha256": "8064bfc59964d979bb52cc222a03d0f8769689bd2364471d939901957d98ce99",
+    "identity_fingerprint": "3557ab510999af7c5aa64e15e9ecdfd42a75af48ba9a7d01aad31e3964ebded1",
+    "prior_a2_identity_count": 495,
+    "cumulative_unique_through_l08_runtime_projection": 572,
+    "a1_reuse_ids": [
+      "ma1m-lu-1724"
+    ],
+    "prior_a2_reuse_ids": [
+      "ma2m-lu-0029",
+      "ma2m-lu-0378"
+    ]
+  },
+  "identity_decisions": {
+    "slash_policy": "REVIEWED_NOT_BLINDLY_SPLIT",
+    "multi_meaning": "MEM-009_ONE_CARD_MULTI_MEANING",
+    "synonym_policy": "SOURCE_SYNONYMS_STAY_RELATION_EVIDENCE_UNLESS_DISTINCT_LEXICAL_IDENTITY",
+    "compound_splits": "BLUTZELLE_BLUTPLASMA_DUENNDARM_DICKDARM_NIERENSTEIN_NASENBLUTEN_3D_DRUCK",
+    "contrast_splits": "DURCHFALL_VS_VERSTOPFUNG__VERBINDEN_VS_TRENNEN",
+    "pos_split": "DAS_STERBEN_NOUN_DISTINCT_FROM_A1_STERBEN_VERB",
+    "polysemy_merges": "BLASE_VERBAND_UNTERSUCHUNG_DRUCK_VERBINDEN_STERBEN",
+    "locked_reuses": "STERBEN_A1__BESTEHEN_A2L01__MINDESTENS_A2L07"
+  },
+  "post_package_verification": {
+    "filename": "A2-L08-STAGE2B-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "962214972d15fbea516d9679ad1146b7da08af970a57826b016f6ab4b211525e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L08-STAGE2B-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_0000000082f88243b3acbde2f58b9dd8",
+    "library_stable_id": "libfile_710a1c8a3184819199594eded7972348",
+    "status": "PASS"
+  }
 }

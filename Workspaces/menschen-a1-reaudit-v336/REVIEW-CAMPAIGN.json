@@ -24,12 +24,12 @@
   },
   "progress": {
     "total_lessons": 23,
-    "reaudit_complete": 5,
-    "reaudit_in_progress": 1,
+    "reaudit_complete": 6,
+    "reaudit_in_progress": 0,
     "queued": 17,
-    "active_lesson": "A1-L07",
-    "overall_state": "A1_L07_STAGE6_PERSISTENCE_BLOCKED",
-    "git_persistence": "STAGE6_IN_SYNC"
+    "active_lesson": "A1-L08",
+    "overall_state": "A1_L07_STAGE7_LOCKED__A1_L08_NEXT",
+    "git_persistence": "STAGE7_IN_SYNC"
   },
   "lessons": [
     {
@@ -531,13 +531,13 @@
     },
     {
       "id": "A1-L07",
-      "reaudit_status": "STAGE6_BLOCKED_EXACT_PERSISTENCE__CONTENT_RUNTIME_PRESENTATION_PASS",
+      "reaudit_status": "COMPLETE_LOCKED_STAGE7_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L07-v3.3.6-REAUDIT-Stage6-v475-PERSISTENCE-BLOCKED.zip",
-      "independent_quality": "PASS_STAGE6_CONTENT_RUNTIME_PRESENTATION__PERSISTENCE_BLOCKED",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L07-STAGE6-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "5c8174e4f96086701978862cebbb9cae315a63a93b8c8e2b3e763c84ed25b99f",
-      "latest_artifact_filename": "Menschen-A1-L07-v3.3.6-REAUDIT-Stage6-v475-PERSISTENCE-BLOCKED.zip",
+      "new_successor_artifact": "Menschen-A1-L07-v3.3.6-GFP-v475-LOCKED.zip",
+      "independent_quality": "PASS_STAGE7_LOCKED_POSTPACKAGE_25_OF_25_WITH_EXPLICIT_PERSISTENCE_BOUNDARY",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L07-STAGE7-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "28c89244dd911ae94b786ea7113a39e446b93276d7b6dbe7566e413d3eee2032",
+      "latest_artifact_filename": "Menschen-A1-L07-v3.3.6-GFP-v475-LOCKED.zip",
       "stage1": "PASS_EXACT_REGISTERED_ARCHIVE_AND_FROZEN_SOURCE_SLICE",
       "stage2": "PASS_86_ACTIVE__1_HISTORICAL_SAME_WORD_SAME_POS_SENSE_ID_MERGED_UNDER_MEM009__0_UNRESOLVED",
       "source_rows": 69,
@@ -563,7 +563,7 @@
       "stage12_official_source_occurrences": "PASS 69/69",
       "stage12_official_identity_closure": "PASS 86 active / 0 unresolved",
       "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-      "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
+      "content_lock_state": "LOCKED",
       "stage3a": "PASS_86_OF_86__1462_PROVISIONAL_CELLS__1259_SEMANTIC_PENDING__168_ANNOTATION_GAPS_EXPLICIT",
       "review_matrix_cells": 1462,
       "review_pending_cells": 0,
@@ -667,8 +667,26 @@
       "stage6_acceptance_kit_sha256": "99f7140f667fb2743936725df88f9cb2260ac447cdbf33b1a1fd87394e4bcd01",
       "stage6_acceptance_kit_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
       "stage7_allowed": false,
-      "runtime_at_lock": null,
-      "runtime_environment_boundary": "EXACT_L07_PERSISTENCE_NOT_CERTIFIED"
+      "runtime_at_lock": "v475-R109",
+      "runtime_environment_boundary": "EXACT_L07_PERSISTENCE_NOT_CERTIFIED__EXPLICIT_USER_ACCEPTED_BOUNDARY",
+      "stage7": "PASS_LOCKED_POSTPACKAGE_25_OF_25_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
+      "stage7_release": {
+        "filename": "Menschen-A1-L07-v3.3.6-GFP-v475-LOCKED.zip",
+        "sha256": "28c89244dd911ae94b786ea7113a39e446b93276d7b6dbe7566e413d3eee2032",
+        "size_bytes": 312236,
+        "zip_members": 58,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L07-v3.3.6-GFP-v475-LOCKED.zip",
+        "library_file_id": "file_00000000e9b48210a55563650c900955",
+        "library_stable_id": "libfile_c48f56252cac8191ad65bc50d0970bb4",
+        "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      },
+      "stage7_postpackage": "Workspaces/menschen-a1-reaudit-v336/A1-L07-STAGE7-POST-PACKAGE-VERIFICATION.json",
+      "stage7_user_boundary_override": "Workspaces/menschen-a1-reaudit-v336/A1-L07-STAGE7-USER-BOUNDARY-OVERRIDE.json",
+      "stage7_exact_final": "Workspaces/menschen-a1-reaudit-v336/A1-L07-STAGE7-EXACT-FINAL-ACCEPTANCE.json",
+      "stage7_checks": "25/25 PASS",
+      "stage7_exact_persistence": "NOT_CERTIFIED__USER_ACCEPTED_BOUNDARY",
+      "stage7_runtime_finality_promoted": false,
+      "stage7_runtime_git_mirror": "PENDING_V475_TARGET_CURRENTLY_V474"
     },
     {
       "id": "A1-L08",
@@ -809,21 +827,21 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "Run the A1-L07 Stage6 persistence acceptance kit on Windows/Chrome, or explicitly accept the persistence boundary. Do not start Stage7 otherwise.",
-  "quality_state": "A1_L07_STAGE6_CONTENT_RUNTIME_PASS__PERSISTENCE_BLOCKED",
+  "next_action": "A1-L08 Stage1/2 under v3.3.6; resolve exact historical parent/source occurrence authority and preserve all A1-L02..L07 re-audit successors.",
+  "quality_state": "A1_L07_STAGE7_LOCKED__A1_L08_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L07",
-    "stage": "Stage6 Runtime & Presentation Acceptance",
-    "quality": "PASS_CONTENT_RUNTIME_PRESENTATION_17_OF_17__STATIC_9_OF_9__PERSISTENCE_BLOCKED",
-    "artifact_sha256": "5c8174e4f96086701978862cebbb9cae315a63a93b8c8e2b3e763c84ed25b99f",
-    "acceptance_kit_sha256": "99f7140f667fb2743936725df88f9cb2260ac447cdbf33b1a1fd87394e4bcd01",
+    "stage": "Stage7 Locked Re-audit Successor",
+    "quality": "PASS_STAGE7_LOCKED_POSTPACKAGE_25_OF_25_WITH_EXPLICIT_PERSISTENCE_BOUNDARY",
+    "artifact_sha256": "28c89244dd911ae94b786ea7113a39e446b93276d7b6dbe7566e413d3eee2032",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "3cbdf684bfd94d1628b94340f540bdc40a5fd7a7",
-    "receipt_commit": "7e2beed713c225cae369ab00ea9a3749861bee20",
-    "prevention_commit": "f34df7a588e3b8052b34ab67cd42d12848990eaa",
+    "checkpoint_commit": "7ea13989f1ed17ada0e02c5f8711253474dd4cab",
+    "receipt_commit": "8d7ed51545ee9aa1ab2461c6548591ba317fcf48",
+    "prevention_commit": "9802081f58736e21e14f8ffad3a2810ad9db4445",
     "runtime": "v475-R109",
-    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
+    "content_lock_state": "LOCKED",
+    "exact_persistence": "NOT_CERTIFIED__USER_ACCEPTED_BOUNDARY"
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L02_STAGE6_PASS__STAGE7_PENDING",
+  "status": "B1_L02_STAGE7_LOCKED__B1_L03_READY",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -130,7 +130,7 @@
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L02 Stage7 final immutable content lock/post-package verification from exact Stage5 content plus this Stage6 evidence. Do not start B1-L03 until B1-L02 is locked.",
+  "next_action": "B1-L02 is LOCKED. B1-L03 may now start at Stage1 from the registered Menschen source under active v3.3.6.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -844,5 +844,52 @@
     "runtime_mutated": false,
     "stage7_allowed": true,
     "next_action": "Run B1-L02 Stage7 final immutable content lock/post-package verification from exact Stage5 content plus this Stage6 evidence. Do not start B1-L03 until B1-L02 is locked."
+  },
+  "b1_l02_stage7": {
+    "status": "LOCKED",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L02-STAGE7.json",
+    "final_artifact": {
+      "filename": "Menschen-B1-L02-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "26ca413497f91c9a9c2f4c824484bb5440398527f0bd2ea0c804a6b04b26e77d",
+      "size_bytes": 813367,
+      "members": 147,
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "byte_identity": {
+      "final_import_tsv_sha256": "e8cb5d02e7a7da9723801d2d2f5db3bd6638e376b1466592dc9bc44a03181919",
+      "canonical_sha256": "3de53da539b88c9df591f637fce2c79280fa5f5a37ef549eaeec34c8daeeabae",
+      "projected_cards_sha256": "fee5d2d4e32c075ac35049f10f38451c27c3ca498e8e942a769ce1b16174594c"
+    },
+    "content": {
+      "cards": 112,
+      "senses": 51,
+      "expressions": 61,
+      "examples": 448,
+      "accepted_kombinationen": 232,
+      "closed_no_force_kombinationen_targets": 10,
+      "rejected_kombinationen": 13,
+      "relations": 68,
+      "source_occurrences": 98,
+      "identity_only_reuses": 18,
+      "source_audio_refs": 109,
+      "source_audio_unique": 95,
+      "dimension_cells": 1797,
+      "unresolved_cells": 0
+    },
+    "validation": {
+      "stage7_fresh_final_harness": "PASS 26/26",
+      "zip_crc": "PASS",
+      "sha256s": "146/146 PASS",
+      "manifest": "145/145 PASS",
+      "json_reparse": "108/108 PASS",
+      "library_exact_readback": "PASS"
+    },
+    "runtime_boundary": {
+      "CURRENT": "v474-R108",
+      "LAST_FULLY_VERIFIED": "v466-R100",
+      "runtime_release_final": false
+    },
+    "lock_rule": "Future corrections/enrichments require an explicit successor/repair; do not silently mutate this locked release.",
+    "next_action": "B1-L02 is LOCKED. B1-L03 may now start at Stage1 from the registered Menschen source under active v3.3.6."
   }
 }

@@ -8455,11 +8455,11 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "STAGE6_PASS_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
+      "status": "B1_L06_STAGE7_LOCKED__B1_L07_PENDING",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
-      "latest_receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L06-STAGE6.json",
+      "latest_receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L06-STAGE7.json",
       "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
       "source_id": "menschen-a1a2b1-memrise-full-audio",
       "framework": "v3.3.6",
@@ -8486,18 +8486,18 @@
         "stage3c": "PASS"
       },
       "latest_portable_checkpoint": {
-        "filename": "Menschen-B1-L06-v3.3.6-Stage6-PASS-v475-CHECKPOINT.zip",
-        "sha256": "2e9525992847a8fed7832c68a9c13e76b27eb7b32a42a9bd3a820fe72e1a3ad9",
-        "size_bytes": 450210,
-        "members": 18,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-Stage6-PASS-v475-CHECKPOINT.zip",
-        "library_file_id": "file_00000000d1e88210a1c319d95e1a3e51",
-        "library_stable_id": "libfile_605ebaf4a9588191bd024e533313fb53",
+        "filename": "Menschen-B1-L06-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "sha256": "01d2707a102a16c7d1acd3226c0f70d9ed4a872ea9520444a5b1474701e0fee7",
+        "size_bytes": 896446,
+        "members": 129,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "file_00000000291c8210add224db206ae97c",
+        "library_stable_id": "libfile_ce5b08f0b6108191a814d2827ea0fd68",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "semantic_inheritance_from_historical_bad_b1_lessonwise": 0,
       "semantic_inheritance_from_b1_verben": 0,
-      "next_action": "Run B1-L06 Stage7 final content lock/post-package verification from exact Stage5 content plus this Stage6 evidence. Do not start B1-L07.",
+      "next_action": "B1-L06 is locked. Start B1-L07 Stage1 from the registered Menschen source under v3.3.6.",
       "stage3c": {
         "status": "PASS",
         "targets": 146,
@@ -8949,7 +8949,7 @@
         },
         "next_action": "Run B1-L03 Stage7 final content lock/post-package verification from exact Stage5 content plus this Stage6 evidence. Do not start B1-L04 before B1-L03 is locked."
       },
-      "next_lesson": "B1-L06",
+      "next_lesson": "B1-L07",
       "b1_l03_stage7": {
         "status": "LOCKED",
         "framework": "v3.3.6",
@@ -9006,7 +9006,9 @@
         "B1-L01",
         "B1-L02",
         "B1-L03",
-        "B1-L04"
+        "B1-L04",
+        "B1-L05",
+        "B1-L06"
       ],
       "b1_l04_stage1": {
         "status": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
@@ -10393,6 +10395,48 @@
           "checks": "package CRC + manifest 16/16 + SHA256SUMS 17/17 + JSON 8/8 + fresh harness 28/28 PASS"
         },
         "next_action": "Run B1-L06 Stage7 final content lock/post-package verification from exact Stage5 content plus this Stage6 evidence. Do not start B1-L07."
+      },
+      "latest_locked_lesson": "B1-L06",
+      "locked_lesson_sums": {
+        "lessons": 6,
+        "cards": 831,
+        "senses": 363,
+        "expressions": 468,
+        "examples": 3324,
+        "kombinationen": 1092,
+        "relations": 508
+      },
+      "b1_l06_stage7": {
+        "status": "LOCKED",
+        "framework": "v3.3.6",
+        "cards": 177,
+        "senses": 74,
+        "expressions": 103,
+        "examples": 708,
+        "accepted_kombinationen": 74,
+        "rejected_kombinationen": 3,
+        "relations": 91,
+        "dimension_cells": 2849,
+        "unresolved_cells": 0,
+        "final_import_tsv_sha256": "5755adc0bc63386694acfabf5696500e9d39147d9a3c57e56874ed4e38b8c173",
+        "stage6_runtime": "v475-R109",
+        "stage7_stage6_rerun": "PASS 28/28",
+        "artifact": {
+          "filename": "Menschen-B1-L06-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+          "sha256": "01d2707a102a16c7d1acd3226c0f70d9ed4a872ea9520444a5b1474701e0fee7",
+          "size_bytes": 896446,
+          "members": 129,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L06-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+          "library_file_id": "file_00000000291c8210add224db206ae97c",
+          "library_stable_id": "libfile_ce5b08f0b6108191a814d2827ea0fd68",
+          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "post_package_verification": {
+          "filename": "B1-L06-STAGE7-POST-PACKAGE-VERIFICATION.json",
+          "sha256": "922da5021a98bfbad5f45b32ab1ce85bc068977b31c7a178b1cf589156c6506f",
+          "status": "PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY"
+        },
+        "next_action": "B1-L06 is locked. Start B1-L07 Stage1 from the registered Menschen source under v3.3.6."
       }
     },
     "menschen_a2_24_lessons_v336": {

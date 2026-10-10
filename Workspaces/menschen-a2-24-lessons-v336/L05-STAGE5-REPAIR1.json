@@ -1,0 +1,72 @@
+{
+  "schema": "menschen-a2-l05-stage5-repair1-git-receipt@1.0.0",
+  "scope": "A2-L05",
+  "framework": "v3.3.6",
+  "stage": "5-Repair1",
+  "status": "PASS_BOUNDED_PROJECTION_REPAIR__STAGE6_ACCEPTED_ON_REPAIR1",
+  "parent": {
+    "original_stage5_receipt": "Workspaces/menschen-a2-24-lessons-v336/L05-STAGE5.json",
+    "original_stage5_artifact_sha256": "015dbfee138bbd6e6398d8f5a271514a1ff0a79ed5bbeba3f57a889b6bf27b0a",
+    "stage4_artifact_sha256": "35838b8dc23cf7d0f944d72c94cd5f8bcf751718a3c4352534fadf9585256448"
+  },
+  "repair": {
+    "trigger": "Stage6 cumulative exact-runtime acceptance exposed two locked-overlap semantic-hash failures; projection review also found a copied L04 tag.",
+    "defects": [
+      {
+        "code": "LOCKED_KOMBINATIONEN_BACKEND_COLLAPSED",
+        "detail": "Original Stage5 replaced existing structured locked-reuse kombinationen_v1 payloads with learner-display strings, losing typed/provenance backend authority."
+      },
+      {
+        "code": "L05_TAG_COPIED_AS_LEKTION_4",
+        "detail": "Original Stage5 builder tagged all 61 L05 rows as Lektion 4."
+      }
+    ],
+    "fixes": [
+      "Preserve existing structured locked-parent kombinationen_v1 exactly when present.",
+      "Preserve legacy detail-only reuse material with explicit locked-parent provenance while projecting one Kombinationen section.",
+      "Correct all 61 tags to Lektion 5.",
+      "Keep stable IDs, Stage4 new-A2 content, source mapping, examples and graph relations unchanged."
+    ],
+    "original_stage5_preserved": true
+  },
+  "counts": {
+    "cards": 61,
+    "new_a2": 50,
+    "reused_locked": 11,
+    "reused_a1": 9,
+    "reused_prior_a2": 2,
+    "examples": 244,
+    "source_exact_german_examples": 41,
+    "kombinationen_visible_items": 131,
+    "accepted_graph_relations": 2,
+    "source_occurrences": 102,
+    "source_output_map_rows": 108,
+    "candidate_decisions": 872,
+    "completeness_cells": 933,
+    "unresolved_cells": 0
+  },
+  "projection": {
+    "import_dataset": "01-Final-Import/A2-L05-UNIVERSAL-v2.tsv",
+    "import_dataset_sha256": "b29c5819aa8f87a8acdd1b654274e8217722ee15da335d307e88b407279a8a7b",
+    "projected_cards_sha256": "01b1c2ab3060d1bcb547c489213566e68849d154e13e3d8bf4c098ef062ebdeb",
+    "canonical_sha256": "4c3efbada5a3eb357afb5b2999fb1317c737e1cd737d1df2c69300cfc025a1e5",
+    "clean_delivery_sha256": "89ed3b878043b9fe51cd654333fcee08344c76b3e714ee2b3bd455cea16f2189"
+  },
+  "qa": {
+    "projection_qa": "20/20 PASS",
+    "framework_v3_3_6": "10/10 PASS",
+    "official_source_identity_candidate_completeness": "PASS",
+    "anti_bypass_clean_builder": "PASS",
+    "fresh_package": "PASS",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L05-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "769935ac1ec01b6bc8ca074f02c1716643b53ae1196dea7a668501a042a396c7",
+    "size_bytes": 419876,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L05-v3.3.6-Stage5-Repair1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_000000003e108210be8f318be11a7011",
+    "library_stable_id": "libfile_043edb58515481918fa6d58c211f274e"
+  },
+  "next_action": "Use Repair1, not the superseded original Stage5, as exact authority for A2-L05 Stage6/Stage7."
+}

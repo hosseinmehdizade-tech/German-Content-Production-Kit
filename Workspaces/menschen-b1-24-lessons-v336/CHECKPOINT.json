@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L03_STAGE1_PASS_RECOVERY_BOUNDARY__STAGE2_PENDING",
+  "status": "B1_L03_STAGE1_2_PASS__STAGE3A_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -122,15 +122,15 @@
     "learnable_meta_only_source_lineage_not_srs_evidence": true
   },
   "stages": {
-    "stage1": "PASS",
+    "stage1": "PASS_WITH_SOURCE_RECOVERY_BOUNDARY",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "PASS_STAGE3A",
+    "stage3": "NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L03 Stage2 identity closure over the 112 Stage1 source occurrences. Do not use historical editorial content as semantic authority.",
+  "next_action": "Run B1-L03 Stage3A baseline richness audit under v3.3.6. Do not start B1-L04.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -914,5 +914,45 @@
     "boundary": "Direct compressed CSV decompression unavailable in current container; raw/source/media fields crosschecked 112/112 across two source-preserving snapshots. Historical editorial content is not semantic authority.",
     "stage2_started": false,
     "next_action": "Run B1-L03 Stage2 identity closure over the 112 Stage1 source occurrences. Do not use historical editorial content as semantic authority."
+  },
+  "b1_l03_stage12": {
+    "status": "PASS",
+    "framework": "v3.3.6",
+    "lesson_title": "Mein Beruf ist meine Leidenschaft.",
+    "source_rows": 112,
+    "source_ordinals": "4746..4857",
+    "source_audio": "112 refs / 112 unique / 112 present",
+    "source_recovery_boundary": "Raw German/Persian/example/audio crosschecked 112/112; direct compressed CSV/Level-tags recovery not claimed and Level tag not fabricated.",
+    "active_canonical_units": 138,
+    "new_canonical_units": 130,
+    "reused_exact_locked_units": 8,
+    "reused_locked_source_rows": 11,
+    "lesson_internal_identity_reuse_occurrences": 2,
+    "new_id_range": "mb1m-lu-0709..mb1m-lu-0838",
+    "split_source_rows": 25,
+    "unresolved_identity": 0,
+    "canonical_sha256": "d20770b2489fef602337d60d8c5ee623d68cdf4f00207495229f871222463d2f",
+    "identity_fingerprint": "c2a7116fa7073fed8940cfbeb95e583b296da402c1d89becc9428a198ac67c7f",
+    "validators": "source 112/112 PASS; identity 112 occurrences / 138 active canonical IDs / 0 errors; independent QA PASS; fresh package PASS",
+    "historical_editorial_semantics_consumed": false,
+    "artifact": {
+      "filename": "Menschen-B1-L03-v3.3.6-Stage1-2-CHECKPOINT.zip",
+      "sha256": "b1c6439e52f4f91d95b131897c46d7fce922e13354a84d4de504c18f9925348a",
+      "size_bytes": 55864,
+      "members": 14,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L03-v3.3.6-Stage1-2-CHECKPOINT.zip",
+      "library_file_id": "file_00000000c60482468efe8e5b7a5ac143",
+      "library_stable_id": "libfile_a9f051b12bc88191835c08f9343b917a",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "B1-L03-STAGE1-2-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "523ab50a904eb7ece43964afe2cb60e38b1c3d06f74faba9021f521affcb81a5",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L03-STAGE1-2-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_0000000044548210adf4215f7e6c0183",
+      "library_stable_id": "libfile_3ab4637ac3f481919b5a8bac780872ca",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "next_action": "Run B1-L03 Stage3A baseline richness audit under v3.3.6. Do not start B1-L04."
   }
 }

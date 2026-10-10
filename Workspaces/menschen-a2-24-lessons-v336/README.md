@@ -1,25 +1,27 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT lesson focus: A2-L04 Stage3C DISPOSITION CLOSURE = PASS; Stage4 is next.**
+**CURRENT lesson focus: A2-L04 Stage4 INDEPENDENT QA = PASS; Stage5 is next.**
 
 - Lesson: **A2-L04 — Was darf es sein?**
-- Identity set: **85 = 67 new A2 + 17 immutable A1 reuses + 1 immutable prior-A2 reuse**.
-- Stage3C closure: **1291/1291 cells final, 0 pending**.
-- Final Stage3C disposition: **814 VERIFIED_PRESENT + 477 CLOSED_NO_FORCE**.
-- Candidate ledger: **1206 = 729 accepted + 477 rejected + 0 deferred**; the additional 85 verified cells are the Stage3A source-audio baseline.
-- Reviewed new-card examples: **268 DE/FA/EN**, exact four per new card.
-- Registered-source-exact German examples: **64/64 exact own-card binding**.
-- Kombinationen after independent review: **203**.
-- Graph relations: **10 accepted stable endpoints**; **30 label-only candidates rejected from graph** rather than fabricating IDs.
-- Stage3C made **9 forward-only repairs across 7 new A2 identities**; raw source mutation **0**, locked-parent mutation **0**.
-- Exact immutable parent verification: **7/7 parent archives SHA-256 PASS**, **18/18 projected reuse rows read-only compatible**.
-- Raw source gaps and anomalies remain preserved, including the source's `Pfund = 453 Gramm` annotation and the corrupted spelling in the `fettarm` source example.
-- Stage4 independent linguistic/source/structure re-audit has **NOT run**.
+- Independently re-audited identities: **85 = 67 new A2 + 18 immutable reuse dependencies**.
+- Stage3C closure independently recomputed: **1291/1291 cells closed, 0 pending**.
+- Stage4 effective examples: **268 DE/FA/EN**, exactly four per new A2 card.
+- Registered-source-exact German examples after Stage4: **63**.
+- Stage4 effective Kombinationen: **203**.
+- Effective graph relations: **10 stable relations**; no fabricated endpoints.
+- Stage4 applied **23 forward-only repair actions on 21 new A2 identities**.
+- Status distribution: **46 PASS_NO_REPAIR + 21 PASS_REPAIR_APPLIED + 18 PASS_LOCKED_DEPENDENCY_COMPATIBILITY**.
+- Immutable reuse verification: **7/7 parent ZIP hashes PASS; 18/18 parent projected rows exact/read-only**.
+- Raw source mutation: **0**; Stage3C parent mutation: **0**; locked-parent mutation: **0**.
+- Source anomalies/gaps remain preserved. The learner-facing `abnorme Situation` example was intentionally replaced forward-only with a neutral curated `ungewöhnliche Situation` example, reducing the source-exact count from 64 to 63 without rewriting the source.
+- Package/fresh-extract verifier, candidate-ledger closure and completeness closure all PASS.
+- Audio playback was **not tested** at Stage4; filename/provenance mapping only.
+- Stage5 has **NOT run**; A2-L04 is not yet final/import-ready.
 - A2-L03 and A2-L02 remain immutable Stage7 LOCKED; A2-L01 remains its separate runtime track.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE3C.json](./L04-STAGE3C.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L04-STAGE4.json](./L04-STAGE4.json), and [L04-CHECKPOINT.json](./L04-CHECKPOINT.json).
 
-Next major stage: **Stage4 independent re-audit**. It may reopen defects and must not trust Stage3C self-report.
+Next major stage: **Stage5 clean projection + anti-bypass validation + complete content-production delivery**.
 
 ---
 

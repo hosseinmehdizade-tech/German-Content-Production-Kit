@@ -1,21 +1,20 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage4 independent QA is PASS; Stage5 is next.**
+**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage5 is PASS and import-ready as content; Stage6 exact CURRENT-runtime acceptance is next.**
 
-- A2-L08 independent Stage4 re-audited **79/79 identities** and recomputed **1202/1202 Stage3C cells with 0 pending**.
-- Effective L08 content remains **76 new A2 cards + 3 immutable reuse dependencies**, with **304 trilingual examples**, **170 Kombinationen**, and **62 stable-endpoint graph relations**.
-- Stage4 applied **22 forward-only repairs across 16 identities**. Raw source, Stage3C parent and all locked reuse parents remained byte/row immutable.
-- Key fixes include restoring the source-attested `etw. auf dem Kasten haben` sense for `Kasten`, aligning `Blase` across bladder/blister/bubble senses under MEM-009, repairing `Druck auf jdn./etw. ausüben`, naturalizing `Sprechstunde`/`Ergebnis`, making the `3D-Druck` example target-bearing, and removing weak/headword-duplicate Kombinationen.
-- Registered source checks: **113 source occurrences**, **12/12 exact German source bindings**, and **76/76 target-card audio filenames present in the exact registered archive**. Audio playback itself was not tested.
-- Locked-parent archive hashes: **3/3 exact**; locked projected rows: **3/3 exact read-only**.
-- QA: exact four examples **76/76**, multilingual examples **304/304**, relation endpoints/types/duplicates **62/62 PASS**, framework v3.3.6 targeted tests **10/10 PASS**.
-- Fresh Stage4 package: CRC/path safety PASS, **15/15 checksum rehash**, **12/12 JSON parse**, portable verifier PASS, Library roundtrip exact-byte PASS.
-- Stage4 package SHA-256: `f6ab4770b13c1b9e2b6918f3bdd50d5f3a7c98adf54182c50664bb83c33b9120`.
-- Stage5 has **not run**; L08 is not yet final/import-ready.
+- A2-L08 Stage5 projects **79 neutral `de-vocabulary` cards**: 76 new A2 + 1 immutable A1 reuse + 2 immutable prior-A2 reuses.
+- Exact import payload: `01-Final-Import/A2-L08-UNIVERSAL-v2.tsv`, SHA-256 `d608dfc00e4f4902006da8b228355451ca964089a91638de5b8324c6f644fae4`.
+- **316 trilingual examples** (exactly 4/card), **176 learner-visible Kombinationen**, and **62 Stage4-accepted graph relations**.
+- Source coverage: **113 occurrences / 129 source-output bindings**; identity closure **79 active IDs**; candidate ledger **1123 final / 0 deferred**; completeness **1202 cells / 0 unresolved**.
+- The two prior-A2 reuse rows start from the **exact locked parent neutral rows**, retain all prior lesson memberships, and add only L08 transport metadata. Semantic parity: **2/2 PASS**.
+- Official v3.3.6 gates **5/5 PASS**, clean-delivery anti-bypass builder PASS, targeted framework suite **10/10 PASS**.
+- Complete production ZIP: **43 members / 42 SHA entries / 30 JSON**, CRC/path safety PASS, no nested ZIP, no Flashcards app/runtime bits.
+- Stage5 ZIP SHA-256: `078cbc8829000c810ea7d4a44ca1303a858429a7226f72fd916d60de8ad8b232`; Library exact-byte roundtrip PASS.
+- Stage6 has **not run**. Re-resolve Flashcards Pro CURRENT at Stage6 execution time.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE4.json](./L08-STAGE4.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE5.json](./L08-STAGE5.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage5 — clean projection + v3.3.6 anti-bypass validation + complete content-production delivery**.
+Next major stage: **A2-L08 Stage6 — exact CURRENT runtime import/presentation/persistence/roundtrip acceptance**.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

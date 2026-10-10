@@ -1,5 +1,20 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+**CURRENT lesson focus: A2-L03 Stage1 SOURCE & INVENTORY = PASS.**
+
+- A2-L03 source: **83 occurrences**, exact source rows **2449..2531**, lesson **Hier finden Sie Ruhe und Erholung.**
+- Audio: **83/83 refs present** in the exact registered RAR; no missing/multi-audio rows.
+- Source German examples missing at rows **2505** and **2526** are preserved as source gaps; no text was invented.
+- Stage2 canonicalization/identity closure is **NOT STARTED**.
+- A2-L02 remains **Stage7 LOCKED / PASS_WITH_ENVIRONMENT_BOUNDARY** and immutable.
+- A2-L01 remains a separate Stage6-open track.
+
+Authoritative coordination: [LATEST.json](./LATEST.json) and the current lesson checkpoint [L03-CHECKPOINT.json](./L03-CHECKPOINT.json).
+
+Final lexical delivery contract remains one complete organized **content-production ZIP**, excluding Flashcards Pro runtime.
+
+---
+
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.
 
 ## Current verified milestone: A2-L01 Stage2B identity closure

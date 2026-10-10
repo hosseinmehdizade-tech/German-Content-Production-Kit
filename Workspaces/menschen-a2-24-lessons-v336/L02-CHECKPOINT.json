@@ -1,50 +1,47 @@
 {
-  "schema": "gcpk-menschen-a2-l02-stage5-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l02-stage6-checkpoint@1.0.0",
   "scope": "A2-L02",
   "framework": "v3.3.6",
-  "stage": "Stage5 COMPLETE",
-  "status": "A2_L02_STAGE5_COMPLETE__PASS_CLEAN_PROJECTION_ANTI_BYPASS__STAGE6_NOT_RUN",
-  "parent": {
-    "stage4_receipt": "Workspaces/menschen-a2-24-lessons-v336/L02-STAGE4.json",
-    "stage4_artifact_sha256": "271acb78c3d7a9869a7c1ce25d739813d67e1df5abff4b2c9e171f27dbe8861b"
-  },
-  "stage5": {
-    "status": "PASS_CLEAN_PROJECTION_ANTI_BYPASS__STAGE6_NOT_RUN",
+  "stage": "Stage6 BLOCKED",
+  "status": "A2_L02_STAGE6_BLOCKED__CURRENT_RUNTIME_MATERIALIZATION_UNAVAILABLE__STAGE5_PASS",
+  "stage5_authority": {
+    "status": "PASS",
+    "artifact": "Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
+    "dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
     "cards": 62,
-    "new_a2": 59,
-    "reused_a1": 3,
-    "examples": 248,
-    "source_exact_german_examples": 59,
-    "kombinationen_visible_items": 187,
-    "accepted_graph_relations": 34,
-    "source_occurrences": 88,
-    "source_output_map_rows": 94,
-    "candidate_decisions": 878,
-    "completeness_cells": 940,
-    "unresolved_cells": 0,
-    "import_dataset_sha256": "857b45ff23b1ec6299949d7c9777aec289ee82963c4fc0bebdfc101fdcecf7ba",
-    "projected_cards_sha256": "2dba0029dde18bd767e1b30d0111b8076a8a1ab1fe4e1848fb32ea7b42643fd4",
-    "canonical_sha256": "67b6334bf5b33b727ebec8cf5740e3ba6a6bd00446554a3db4a7f9b453f3d775",
-    "clean_delivery_sha256": "b06c061daac2265bb98650bf14a96595b805dc269ac166fc00146d26c64f44cd",
-    "official_gates": "UNIFIED_62__SOURCE_88__IDENTITY_62__LEDGER_878__COMPLETENESS_940__PYTEST_10_OF_10__ANTI_BYPASS_PASS",
-    "stage5_import_ready": true,
-    "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
-    "stage6": "NOT_RUN",
-    "artifact": {
-      "filename": "Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-      "sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
-      "bytes": 401144,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-      "library_file_id": "libfile_a77e6e87b62081919cf816f794da8cd3",
-      "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-    }
+    "content_mutated_in_stage6": false
   },
-  "quality_boundary": "STAGE5_PASS_IMPORT_READY_CONTENT__STAGE6_NOT_RUN__NOT_FINAL_LOCKED",
+  "stage6": {
+    "status": "BLOCKED",
+    "blocker_code": "CURRENT_PORTABLE_ARTIFACT_MATERIALIZATION_UNAVAILABLE",
+    "target_runtime": "v473-R107",
+    "target_runtime_artifact": "GFP-v473-R107-GENERIC-IMPORT-STARTUP.zip",
+    "target_runtime_sha256": "7ad616c854851796dbb42b05541ab66073350664040a305f2344391909c8f817",
+    "last_fully_verified_runtime": "v466-R100",
+    "stage5_authority_sha256": "5b50118725ed0240ad7d321004f78a9c8606c844dccbc03f7ea974f6aa72251c",
+    "exact_current_runtime_materialized": false,
+    "direct_import": "NOT_RUN_BLOCKED",
+    "presentation": "NOT_RUN_BLOCKED",
+    "persistence": "NOT_RUN_BLOCKED",
+    "roundtrip": "NOT_RUN_BLOCKED",
+    "real_browser": "NOT_RUN_BLOCKED",
+    "runtime_substitution_permitted": false
+  },
+  "portable_checkpoint": {
+    "filename": "Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+    "sha256": "d75894d5dd8037b6e91281ec3d6c9a7d4176606757fe68f7c33885ed8f65319b",
+    "bytes": 2559,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L02-v3.3.6-Stage6-BLOCKED-RUNTIME-MATERIALIZATION-CHECKPOINT.zip",
+    "library_file_id": "libfile_7a02e749703081918eabede221bf2dac",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "quality_boundary": "STAGE5_PASS__STAGE6_BLOCKED__NO_RUNTIME_ACCEPTANCE_CLAIM",
   "separation": {
-    "A2_L01": "UNCHANGED__SEPARATE_STAGE6_TRACK",
-    "A1": "LOCKED_SEMANTIC_AUTHORITY_UNCHANGED",
+    "A2_L01": "UNCHANGED_SEPARATE_STAGE6_TRACK",
+    "A1": "UNCHANGED",
     "A2_verben": "UNCHANGED",
     "runtime_ui": "UNCHANGED"
   },
-  "next_action": "Run A2-L02 Stage6 on exact Flashcards CURRENT resolved at execution time; materialize and SHA-verify CURRENT before import/presentation/persistence/roundtrip acceptance."
+  "next_action": "Make the exact CURRENT portable runtime artifact accessible; then re-resolve CURRENT. If CURRENT is still v473-R107, verify SHA-256 7ad616c8...f817 and run Stage6 on unchanged Stage5 content. If CURRENT advanced, use the newer CURRENT. Never substitute v466 or the Git source mirror."
 }

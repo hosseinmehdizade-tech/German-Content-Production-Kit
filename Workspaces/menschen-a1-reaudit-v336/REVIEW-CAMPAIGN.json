@@ -25,11 +25,11 @@
   "progress": {
     "total_lessons": 23,
     "reaudit_complete": 5,
-    "reaudit_in_progress": 0,
-    "queued": 18,
+    "reaudit_in_progress": 1,
+    "queued": 17,
     "active_lesson": "A1-L07",
-    "overall_state": "A1_L06_STAGE7_LOCKED__A1_L07_NEXT",
-    "git_persistence": "STAGE7_IN_SYNC"
+    "overall_state": "A1_L07_STAGE1_2_PASS__STAGE3A_NEXT",
+    "git_persistence": "STAGE1_2_IN_SYNC"
   },
   "lessons": [
     {
@@ -531,10 +531,39 @@
     },
     {
       "id": "A1-L07",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE1_2_COMPLETE__STAGE3A_NEXT",
       "old_content_status": "LOCKED",
       "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "independent_quality": "PASS_STAGE1_2_53_OF_53__OFFICIAL_SOURCE_AND_IDENTITY_GATES_PASS",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L07-STAGE1-2-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "a273bbba303771572a768f284b2e30560e260b76a01a821f2b7b80993fc3deee",
+      "latest_artifact_filename": "Menschen-A1-L07-v3.3.6-REAUDIT-Stage1-2-PASS-CHECKPOINT.zip",
+      "stage1": "PASS_EXACT_REGISTERED_ARCHIVE_AND_FROZEN_SOURCE_SLICE",
+      "stage2": "PASS_86_ACTIVE__1_HISTORICAL_SAME_WORD_SAME_POS_SENSE_ID_MERGED_UNDER_MEM009__0_UNRESOLVED",
+      "source_rows": 69,
+      "source_audio_refs": 69,
+      "source_zero_audio_rows": [],
+      "source_multi_audio_rows": [],
+      "historical_parent_targets": 87,
+      "active_canonical_targets": 86,
+      "senses": 49,
+      "expressions": 37,
+      "active_id_span": "ma1m-lu-0556..ma1m-lu-0642 with ma1m-lu-0619 retired",
+      "retired_merged_ids": [
+        "ma1m-lu-0619"
+      ],
+      "retired_merge_map": {
+        "ma1m-lu-0619": "ma1m-lu-0618"
+      },
+      "distinct_expression_preserved": "ma1m-lu-0620 Spaß an etwas haben",
+      "review_flagged_active_targets": 13,
+      "identity_unresolved": 0,
+      "multi_target_source_rows": 14,
+      "stage12_independent_validation": "53/53 PASS",
+      "stage12_official_source_occurrences": "PASS 69/69",
+      "stage12_official_identity_closure": "PASS 86 active / 0 unresolved",
+      "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED"
     },
     {
       "id": "A1-L08",
@@ -675,21 +704,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L07 Stage1/2 under v3.3.6; preserve A1-L02..L06 successors and all historical LOCKED artifacts.",
-  "quality_state": "A1_L06_STAGE7_LOCKED__A1_L07_NEXT",
+  "next_action": "A1-L07 Stage3A under v3.3.6: initialize the explicit completeness/richness baseline for all 86 active targets; carry retired Spaß=Scherz evidence into ma1m-lu-0618 under MEM-009; preserve ma1m-lu-0620 as a distinct expression.",
+  "quality_state": "A1_L07_STAGE1_2_PASS__STAGE3A_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
-    "scope": "A1-L06",
-    "stage": "Stage7 Release & Post-Package Verification",
-    "quality": "PASS_STAGE7_LOCKED_POSTPACKAGE_24_OF_24_WITH_EXPLICIT_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
-    "artifact_sha256": "f99bf3d995ca2f68047b6ae7ee48b2fe3c4be7404a0f692c00a3933b5f3b3668",
+    "scope": "A1-L07",
+    "stage": "Stage1/2 Source & Inventory + Canonical Identity Closure",
+    "quality": "PASS_STAGE1_2_53_OF_53__OFFICIAL_SOURCE_69_OF_69__IDENTITY_86_ACTIVE_0_UNRESOLVED",
+    "artifact_sha256": "a273bbba303771572a768f284b2e30560e260b76a01a821f2b7b80993fc3deee",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "d7d0f38c39a54c2fa7313fc64bbbce0f7d269b77",
-    "receipt_commit": "21ce85423c48f4d4dcb82070cfb442783465b951",
-    "prevention_commit": "e1a9e2900cd2251878fd54086ee1cc9d5fabd40c",
-    "user_boundary_override_commit": "19d21af2acecab0e3a480ba632751f6495a0541c",
-    "runtime": "v475-R109",
-    "runtime_finality_promoted": false
+    "checkpoint_commit": "88aa442081a10c91cafc5867612ea92a304eabe7",
+    "receipt_commit": "0eca5d13b89cf7fec918836104f59bddafe4e519",
+    "prevention_commit": "574d9be0297c09f282076a3ee0b00f7f851bb148",
+    "runtime": "NOT_RUN_CONTENT_ONLY",
+    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
   }
 }

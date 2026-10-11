@@ -2,22 +2,22 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L18",
-  "latest_verified_milestone": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_ALLOWED",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE6-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE6-RECEIPT.json",
+  "latest_verified_milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE7-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE7-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L18-v3.3.6-REAUDIT-Stage6-v475-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
-    "sha256": "8eb3bd6bbf1422a2de1b5fd1af020976ac723c369758d45736110a002b729f07",
-    "size_bytes": 1292499,
-    "members": 71,
-    "library_file_id": "file_00000000824081f4b440ece0f1762f18",
-    "library_stable_id": "libfile_47e84999d344819187716225b61f0e08",
+    "filename": "Menschen-A1-L18-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "b2fbb6f458599d7ca47466c82c72478e11d3be3ff1b0e595a6b630a7d9035204",
+    "size_bytes": 1232560,
+    "members": 79,
+    "library_file_id": "file_000000000af4821090318301d413ca67",
+    "library_stable_id": "libfile_101ce93f2a1081919bf9f44739d31116",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE6_WITH_ENVIRONMENT_BOUNDARY__171_CARDS__684_EXAMPLES__123_RELATIONS__47_KOMBINATIONEN__CURRENT_V475_R109_EXACT__DETERMINISTIC_19_OF_19__FLAT_RUNTIME_16_OF_16__STATIC_9_OF_9__RUNTIME_SHA_144_OF_144__OFFICIAL_5_OF_5__CUMULATIVE_2285_MEMBERSHIPS_2266_UNIQUE_19_REUSE__LIBRARY_BYTE_EXACT__STAGE7_ALLOWED",
-  "next_action": "A1-L18 Stage7 final content-production delivery / post-package verification and LOCK. Do not start A1-L19.",
-  "checkpoint_commit": "130b583755fbaa0bb139b9d09af113d897d55c5d",
-  "receipt_commit": "e96bf18da501dc63762e16ca7cdc3b2565acca50",
+  "quality": "PASS_STAGE7_LOCKED__171_CARDS__684_EXAMPLES__123_RELATIONS__47_KOMBINATIONEN__615_ACCEPTED__2715_OF_2715__CURRENT_V475_STAGE6_BOUNDARY__POST_PACKAGE_PASS__79_UNIQUE_MEMBERS__MANIFEST_75_OF_75__FINAL_MANIFEST_77_OF_77__LIBRARY_BYTE_EXACT",
+  "next_action": "A1-L19 Stage1/2 re-audit under v3.3.6. Preserve A1-L02..L18 locked re-audit successors and all historical locked artifacts.",
+  "checkpoint_commit": "d2b53f5689be6b54b4d6192f5ab79def8a5b331c",
+  "receipt_commit": "8637e63fb727e4b6ee9ab308587c8ef7dae2f40d",
   "previous_locked_scope": {
     "scope": "A1-L17",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -83,5 +83,20 @@
     "runtime_mutated": false,
     "content_lock_state": "REAUDIT_SUCCESSOR_NOT_LOCKED",
     "stage7_allowed": true
+  },
+  "stage7": {
+    "content_lock_state": "LOCKED",
+    "direct_import_sha256": "b3f3676579e3d3abdca230dd2dc8d9bf98bd36c177c178e292e9ddb890422363",
+    "canonical_sha256": "a82bac9179c2b6f80f0c783e218aca408eda3addfa887a8d33bf8cd36ddb9f44",
+    "content": "171 cards / 684 trilingual examples / 123 relations / 47 Kombinationen / 615 accepted candidates / 2715-of-2715 final",
+    "source": "132 occurrences / 171 source-output edges / 168 audio-card refs / 3 exact zero-audio targets",
+    "identity": "2285 memberships / 2266 unique / 19 intentional reuse edges / 0 accidental collisions",
+    "runtime": "CURRENT v475-R109 / LAST_FULLY_VERIFIED v466-R100 / Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY / runtime finality unchanged",
+    "verification": "fresh verifier PASS + package gate PASS + CRC + 79/79 unique + manifest 75/75 + final manifest 77/77 + SHA ledgers 76/76 and 78/78 + JSON 42/42",
+    "persistence": {
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "git": "IN_SYNC_AFTER_THIS_UPDATE"
+    },
+    "immutability": "Future corrections require a new explicit successor; do not overwrite A1-L18 Stage7 bytes."
   }
 }

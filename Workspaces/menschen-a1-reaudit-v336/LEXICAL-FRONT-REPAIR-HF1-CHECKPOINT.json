@@ -1,0 +1,42 @@
+{
+  "schema": "gcpk-lexical-front-binding-hf1-checkpoint@1.0.0",
+  "date": "2026-10-12",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L20",
+  "status": "PASS_SYSTEMIC_LEXICAL_FRONT_BINDING_HF1__L20_REBASE_REQUIRED",
+  "parent_workstream_state": {
+    "milestone": "STAGE3B_EDITORIAL_COVERAGE_COMPLETE__STAGE3C_NEXT",
+    "artifact_sha256": "eeebe74c96cfb5fa6c9b0fcfa3aff1c1b8d9e64bd91c2da5e5562c6017b4a128",
+    "interpretation": "Stage3B semantic/editorial evidence remains useful, but its downstream projection/display assumptions are superseded by HF1."
+  },
+  "framework_hotfix": {
+    "artifact": "German-Content-Production-Kit-v3.3.6-HF1-LEARNER-VISIBLE-FRONT.zip",
+    "sha256": "25f23a7bc633d7319d8f55c6d362f549589ca8c6d1968271c65d53023bf5ef57",
+    "library_file_id": "file_00000000306c8210aa353eb917b1a646",
+    "source_git": {
+      "policy_commit": "40a25eedcbc5dbf2800663400d294df94d6aeb34",
+      "validator_commit": "6d9381636838123ccdfccfe9ff3bf21f363bb738",
+      "test_commit": "3dd7dfb2bd06dbc717e2bfc7d1092507a9690294",
+      "projector_commit": "8ffaab7d0529d8a72d0ceec2cc9152b441f882c2",
+      "start_prompt_commit": "921a2a36646c79fd1e35f8d05f6ba865098619c3"
+    },
+    "tests": "17/17 PASS"
+  },
+  "confirmed_affected_scope": {
+    "a1_l19": "CONFIRMED_AND_REPAIRED",
+    "a1_l18": "CONFIRMED_SAME_DEFECT_FAMILY",
+    "a1_l20": "ACTIVE_WORKSTREAM_MUST_REBASE_BEFORE_STAGE3C",
+    "note": "Historical locked bytes are never mutated; affected released lessons need explicit successor repair when promoted."
+  },
+  "repair_authorities": {
+    "l19": "Menschen-A1-L19-v3.3.6-REPAIR1-CONTENT-PRODUCTION-DELIVERY.zip / 440093f6cbe9542e92a1e39298f340e26594209866760edc1846e0a1bd9e31e2",
+    "runtime": "GFP-v476-R110-LEXICAL-FRONT-BINDING-REPAIR.zip / 9da81d9c6fc4303c1a12ea5639e2d56988aac1399c5eb57980063ed9c14b9e57"
+  },
+  "prevention": {
+    "rule": "CP-MEM-003 is now fail-closed in Stage5 via learner-visible front validator and in runtime acceptance via actual front-output probes.",
+    "no_silent_continue": true
+  },
+  "runtime": "v476-R110 CURRENT candidate after app metadata promotion; release_final=false; v466-R100 remains LAST_FULLY_VERIFIED",
+  "content_lock_state": "A1-L19_REPAIR1_LOCKED__A1-L20_NOT_LOCKED",
+  "next_action": "Rebase/reproject A1-L20 Stage3B on HF1, run learner-visible front gate, then proceed to Stage3C only on the rebased bytes. Do not reuse old downstream projection bytes."
+}

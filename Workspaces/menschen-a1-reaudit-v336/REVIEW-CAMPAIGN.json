@@ -1231,10 +1231,24 @@
     },
     {
       "id": "A1-L17",
-      "reaudit_status": "QUEUED",
+      "reaudit_status": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": null,
-      "independent_quality": "NOT_RUN"
+      "new_successor_artifact": "Menschen-A1-L17-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "independent_quality": "PASS_STAGE7_LOCKED_CONTENT__RUNTIME_ENVIRONMENT_BOUNDARY",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE7-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "018a973450d8da779623293fffea9631abde7ca3b2aba230d97458a3f537ff46",
+      "latest_artifact_filename": "Menschen-A1-L17-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "content_lock_state": "LOCKED",
+      "stage5": "PASS_CLEAN_DELIVERY_ANTI_BYPASS",
+      "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY_CURRENT_V475",
+      "stage7": "PASS_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
+      "stage7_cards": 138,
+      "stage7_examples": 552,
+      "stage7_relations": 61,
+      "stage7_kombinationen": 28,
+      "stage7_completeness": "2210/2210 final / 0 unresolved",
+      "stage7_identity": "2114 memberships / 2095 unique / 19 intentional reuses / 0 accidental collisions",
+      "stage7_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
     },
     {
       "id": "A1-L18",
@@ -1305,21 +1319,21 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L11 Stage5 clean delivery/anti-bypass from exact Stage4 accepted bytes; runtime remains deferred to Stage6.",
-  "quality_state": "A1_L11_STAGE4_PASS__STAGE5_NEXT",
+  "next_action": "A1-L18 Stage1/2 re-audit under v3.3.6; preserve A1-L02..L17 locked successors.",
+  "quality_state": "A1_L17_STAGE7_LOCKED__A1_L18_STAGE12_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
-    "scope": "A1-L11",
-    "stage": "Stage4 independent re-audit",
-    "quality": "PASS_67_OF_67__18_REPAIRS__2579_OF_2579_ZERO_UNRESOLVED",
-    "artifact_sha256": "05c0e34fb90bcde414ec8802eecd85033b80e115d7f49fe1c0379fa96d5a4180",
-    "accepted_canonical_sha256": "771d192c8710143c22775ba6ad8bafc37834c32e343e18632a2d930864f0b7a9",
+    "scope": "A1-L17",
+    "stage": "Stage7 final content-production delivery and lock",
+    "quality": "PASS_LOCKED__138_CARDS__552_EXAMPLES__61_RELATIONS__28_KOMBINATIONEN__2210_OF_2210__LIBRARY_BYTE_EXACT",
+    "artifact_sha256": "018a973450d8da779623293fffea9631abde7ca3b2aba230d97458a3f537ff46",
+    "direct_import_sha256": "c2d8d291f60bcbb94d8c172b978bc982fbbd44eec1180e0bbc8a23d6b6407cac",
+    "canonical_sha256": "c5c2d3d8f48ba7c3cf1f1d89a5b1e6c01e6a77fd79b229a3d9a15b953acc93bf",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "80200f41b452df16553f7fad9b7d4e8dcc6097d7",
-    "receipt_commit": "6469eae6ad1920c8e3d1199f00f9b831a0377812",
-    "prevention_commit": "3cba7e7b322bd294aa92b21fffb35c68cbd96426",
-    "runtime": "NOT_RUN_CONTENT_ONLY",
-    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
+    "checkpoint_commit": "4cb08d157792ec2f3793c9fb8a02688374be9c41",
+    "receipt_commit": "0ad02bcdbe98c3a25b695bfb51a2578ab0c00092",
+    "runtime": "CURRENT v475-R109 PASS_WITH_ENVIRONMENT_BOUNDARY; runtime finality not promoted",
+    "content_lock_state": "LOCKED"
   }
 }

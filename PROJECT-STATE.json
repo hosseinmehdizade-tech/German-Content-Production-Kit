@@ -8666,7 +8666,7 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "B1_L12_STAGE5_CLEAN_DELIVERY_PASS__STAGE6_PENDING",
+      "status": "B1_L12_STAGE6_BLOCKED__STAGE5_RUNTIME_IMPORT_SCHEMA_REPAIR_REQUIRED",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
@@ -8697,17 +8697,17 @@
         "stage3c": "PASS"
       },
       "latest_portable_checkpoint": {
-        "filename": "Menschen-B1-L12-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
-        "sha256": "1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8",
-        "size_bytes": 315789,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
-        "library_file_id": "file_00000000a78c8210a7532a0cbe29ce15",
-        "library_stable_id": "libfile_d2fde97cf69881918f6ca1cd889a7e48",
+        "filename": "Menschen-B1-L12-v3.3.6-Stage6-RUNTIME-ACCEPTANCE-BLOCKED.zip",
+        "sha256": "25a94a4612d203daa2f159ae5c503c4afab2d4cc6d9c502458a8e66e524aa8e5",
+        "size_bytes": 3949,
+        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage6-RUNTIME-ACCEPTANCE-BLOCKED.zip",
+        "library_file_id": "file_0000000099ec8210aa67e8184853accf",
+        "library_stable_id": "libfile_dc6745af03c881919c4961b4d9e4d36d",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "semantic_inheritance_from_historical_bad_b1_lessonwise": 0,
       "semantic_inheritance_from_b1_verben": 0,
-      "next_action": "Run B1-L12 Stage6 runtime/presentation acceptance against exact CURRENT Flashcards runtime from Stage5 artifact 1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8. Do not start B1-L13.",
+      "next_action": "Run B1-L12 Stage5 Repair1: compile Stage4/Stage5 semantics into exact CURRENT runtime Universal v2 23-column schema without semantic loss, validate exact v475 parser accepts 133/133, then rerun Stage6. Do not start B1-L13.",
       "stage3c": {
         "status": "PASS",
         "targets": 146,
@@ -10861,7 +10861,7 @@
         },
         "next_action": "Run B1-L08 Stage3C disposition closure over all 126 targets / 1984 cells from this exact checkpoint. Do not start B1-L09."
       },
-      "current_stage": "Stage5 clean content delivery projection PASS",
+      "current_stage": "Stage6 runtime/presentation acceptance BLOCKED",
       "b1_l09_stage4": {
         "schema": "menschen-b1-l09-stage4-receipt@1.0.0",
         "date": "2026-10-11",
@@ -11009,7 +11009,7 @@
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "next_action": "Run B1-L10 Stage3C disposition closure over all 85 targets / 1340 cells from exact Stage3B artifact f0b6c2e013a657c65c0eb594ab77e6d8dff5b6b36b031abfcb049ab01b1d5418. Do not start B1-L11."
       },
-      "last_observed_stage": "B1-L12 Stage5 clean delivery PASS; Stage6 next",
+      "last_observed_stage": "B1-L12 Stage6 blocked by Stage5 runtime import schema mismatch",
       "b1_l12_stage3c": {
         "status": "PASS__STAGE4_PENDING",
         "framework": "v3.3.6",
@@ -11127,6 +11127,17 @@
         "artifact_sha256": "1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "runtime_acceptance": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6"
+      },
+      "b1_l12_stage6_blocked": {
+        "status": "BLOCKED_UPSTREAM_STAGE5_RUNTIME_IMPORT_SCHEMA",
+        "parent_stage5_sha256": "1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8",
+        "runtime_current": "v475-R109",
+        "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+        "stage5_tsv_columns": 32,
+        "runtime_universal_columns": 23,
+        "parser_result": "FAIL_SCHEMA_UNKNOWN",
+        "runtime_static_checks": "PASS",
+        "stage7_allowed": false
       }
     },
     "menschen_a2_24_lessons_v336": {

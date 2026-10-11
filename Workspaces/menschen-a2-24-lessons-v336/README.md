@@ -1,20 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L09 are Stage7 LOCKED. A2-L10 Stage5 is PASS and import-ready as content; Stage6 exact CURRENT-runtime acceptance is next.**
+**CURRENT verified scope: A2-L01 through A2-L09 are Stage7 LOCKED. A2-L10 Stage6 is PASS_WITH_ENVIRONMENT_BOUNDARY and Stage7 exact-final content lock is next.**
 
-- A2-L10 Stage5 projects **72 neutral `de-vocabulary` cards**: 56 new A2 + 13 immutable A1 reuses + 3 immutable prior-A2 reuses.
+- Exact Stage5 content authority: `Menschen-A2-L10-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip`, SHA-256 `c349193ab531ce623d648b45891666ae3c9eb360ec7ae28719c5d178b69cf6db`.
 - Exact import payload: `01-Final-Import/A2-L10-UNIVERSAL-v2.tsv`, SHA-256 `d336110193a20d4f46538487a67aebaa5cc39644a0d333b1dec0311aed43ea5e`.
-- **288 trilingual examples** (exactly 4/card), **105 learner-visible Kombinationen**, and **50 Stage4-accepted graph relations**.
-- Source coverage: **72 occurrences / 79 source-output bindings**; identity closure **72 active IDs**; candidate ledger **1038 final / 0 deferred**; completeness **1110 cells / 0 unresolved**.
-- New-A2 semantic projection parity: **56/56 PASS**; relation ID/type parity: **50/50 PASS**; locked dependencies remain read-only **16/16 PASS**; prior-A2 exact-parent semantic parity **3/3 PASS**.
-- Official v3.3.6 gates **5/5 PASS**, clean-delivery anti-bypass builder PASS, targeted framework suite **10/10 PASS**.
-- Complete production ZIP: **44 members / 43 SHA entries / 31 JSON**, CRC/path safety PASS, no nested ZIP, no Flashcards app/runtime bits.
-- Stage5 ZIP SHA-256: `c349193ab531ce623d648b45891666ae3c9eb360ec7ae28719c5d178b69cf6db`; Library exact-byte roundtrip PASS.
-- Stage6 has **not run**. Re-resolve Flashcards Pro CURRENT at Stage6 execution time.
+- Exact CURRENT runtime: **v475-R109**, artifact SHA-256 `18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746`; LAST_FULLY_VERIFIED remains v466-R100.
+- Target-only runtime/presentation/persistence acceptance: **32/32 PASS**.
+- Cumulative L01-L10 acceptance: **140/140 PASS**; combined deterministic acceptance **172/172 PASS**.
+- Cumulative unique cards through L10: **713**; **644/644 prior cards retained**, **641/641 non-overlap prior cards semantically unchanged**.
+- Three prior-A2 overlaps (`ma2m-lu-0279`, `ma2m-lu-0249`, `ma2m-lu-0195`) preserve semantic core and prior memberships while adding A2-L10 membership.
+- L10 runtime readback: **72 cards / 288 trilingual examples / 79 audio refs / 59 Kombinationen sections / 105 items**, all four modes; runtime source parity **72/72 PASS**.
+- Runtime static preflight: assets **142/64 PASS**, JS **37 files PASS**, shell cohort **64 + 3 negative controls PASS**, v475 multi-membership **8/8 PASS**, AUD006 relation-presentation **10 fixtures PASS**.
+- Stage6 checkpoint: `Menschen-A2-L10-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip`, SHA-256 `5fa95a7c6a674155bbb771e3cd7f356099e7c5747c64697a5e71c13d6b2c96fb`; Library exact-byte roundtrip PASS.
+- Real-origin/physical-restart persistence remains an environment boundary; global v475 populated-profile confirmation is a separate app-runtime boundary and does not block this content Stage6 or Stage7.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L10-STAGE5.json](./L10-STAGE5.json), and [L10-CHECKPOINT.json](./L10-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L10-STAGE6.json](./L10-STAGE6.json), and [L10-CHECKPOINT.json](./L10-CHECKPOINT.json).
 
-Next major stage: **A2-L10 Stage6 — exact CURRENT runtime import/presentation/persistence/roundtrip acceptance**.
+Next major stage: **A2-L10 Stage7 — exact-final content-only lock/post-package verification**. Do not start A2-L11 before L10 is locked.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

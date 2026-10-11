@@ -2,22 +2,22 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L18",
-  "latest_verified_milestone": "STAGE3C_COMPLETE_SUCCESSOR__STAGE4_NEXT",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE3C-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE3C-RECEIPT.json",
+  "latest_verified_milestone": "STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS__STAGE5_NEXT",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE4-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE4-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L18-v3.3.6-REAUDIT-Stage3C-COMPLETE-SUCCESSOR.zip",
-    "sha256": "7c1b75b69711ba3f8d72b9f52685f6c4cf2e0fc877f1252b835acec3f4d9869f",
-    "size_bytes": 974473,
-    "members": 77,
-    "library_file_id": "file_0000000000248210b5029ede8967f064",
-    "library_stable_id": "libfile_87cb6089758881919f1a5fc777212034",
+    "filename": "Menschen-A1-L18-v3.3.6-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "sha256": "7ba881bd13b3b7401652ebeb5209b3b31f08ac0c011f5418333ad79d6d8baec0",
+    "size_bytes": 1451775,
+    "members": 130,
+    "library_file_id": "file_00000000a16081f4a3309ac8aba295c3",
+    "library_stable_id": "libfile_cc476614b9f481918efd7a8f342d517c",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE3C__171_TARGETS__684_EXAMPLES__123_RELATIONS__47_KOMBINATIONEN__103_REPAIRS__615_OF_615_ACCEPTED__2715_OF_2715_OFFICIAL__2907_OF_2907_CAMPAIGN__ZERO_UNRESOLVED__OFFICIAL_4_OF_4__CUSTOM_25_OF_25__NEGATIVE_2_OF_2__PYTEST_10_OF_10__LIBRARY_BYTE_EXACT__STAGE4_NEXT",
-  "next_action": "A1-L18 Stage4 independent linguistic/lexical/provenance re-audit with bounded repairs. Do not start A1-L19 before Stage4 PASS.",
-  "checkpoint_commit": "16cea8dab7626caaaa5c2c23504690d269218a40",
-  "receipt_commit": "03024a868ff2742f32d4d0c1fb7f30c0170c3aff",
+  "quality": "PASS_STAGE4__171_TARGETS__684_EXAMPLES__123_RELATIONS__47_KOMBINATIONEN__615_ACCEPTED__2715_OF_2715__48_BOUNDED_REPAIRS__INDEPENDENT_58_OF_58__OFFICIAL_4_OF_4__NEGATIVE_2_OF_2__PYTEST_10_OF_10__LIBRARY_BYTE_EXACT__STAGE5_NEXT",
+  "next_action": "A1-L18 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Resolve CURRENT runtime only at Stage6. Do not start A1-L19.",
+  "checkpoint_commit": "4695c4f3c4009454597c02dc70bad9133681807d",
+  "receipt_commit": "939722e6b7e0375dcadd3ada7f9a80b86e82037c",
   "previous_locked_scope": {
     "scope": "A1-L17",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -28,11 +28,22 @@
   "stage3c": {
     "canonical_sha256": "1b45a657d4ea3cd33aa7118bdd47f9868a9ddd559f811dda290f44013aa748f0",
     "content": "171 targets / 95 senses / 76 expressions / 684 trilingual examples / 123 final relations / 47 Kombinationen",
-    "repairs": "103/103 applied; 183 historical review resolutions confirmed",
     "candidates": "615 ACCEPTED / 0 REJECTED / 0 DEFERRED",
     "completeness": "2715/2715 official + 2907/2907 campaign / 0 unresolved",
-    "mem009": "6 retired aliases preserved; 1 self-relation structurally rejected",
-    "validation": "official 4/4 + custom 25/25 + negative 2/2 + framework pytest 10/10 + fresh package PASS",
+    "persistence": {
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "git": "IN_SYNC"
+    },
+    "runtime": "NOT_RUN_CONTENT_ONLY"
+  },
+  "stage4": {
+    "accepted_canonical_sha256": "a82bac9179c2b6f80f0c783e218aca408eda3addfa887a8d33bf8cd36ddb9f44",
+    "content": "171 targets / 684 examples / 123 relations / 47 Kombinationen / 615 accepted candidates",
+    "completeness": "2715/2715 final / 0 unresolved",
+    "repair": "48 field operations = 21 expression profile + 8 provenance source IDs + 2 merged morphology + 5 qualifier scope + 11 examples + 1 translation",
+    "validation": "58/58 independent + official 4/4 + negative 2/2 + framework pytest 10/10 + fresh package PASS",
+    "source_boundary": "4/4 byte-identical",
+    "historical_parent": "exact Stage3 recovery verified; historical Stage4 used only as comparison",
     "persistence": {
       "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
       "git": "IN_SYNC_AFTER_THIS_UPDATE"

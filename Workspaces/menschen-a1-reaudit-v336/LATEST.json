@@ -2,25 +2,25 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L16",
-  "latest_verified_milestone": "STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS__STAGE5_NEXT",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE4-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE4-RECEIPT.json",
+  "latest_verified_milestone": "STAGE5_CLEAN_DELIVERY_ANTI_BYPASS_PASS__STAGE6_NEXT",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE5-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE5-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
-    "sha256": "2558b9e854759b7db92771712c941a3608bd752d8f0e14f660108d4c87c4b30f",
-    "size_bytes": 1016307,
-    "members": 118,
-    "manifest_entries": 116,
-    "sha256s_entries": 116,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
-    "library_file_id": "file_0000000098ac82108cbd0d02c625e70f",
-    "library_stable_id": "libfile_f2160da748b08191a1017bcf96b594fe",
+    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+    "sha256": "4f978aa04d6809868ff758c7f5373ff269044e29c72f139ee59eede45dfd3823",
+    "size_bytes": 851105,
+    "members": 58,
+    "manifest_entries": 55,
+    "sha256s_entries": 56,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+    "library_file_id": "file_00000000ffc081f4a936ddfe977fc36e",
+    "library_stable_id": "libfile_7d9de3f7a1ec8191aaa07de11b13e8b1",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE4__156_TARGETS__624_TRILINGUAL_EXAMPLES__92_RELATIONS__50_KOMBINATIONEN__489_FINAL_CANDIDATES__2496_OF_2496__14_BOUNDED_REPAIRS_ON_8_TARGETS__55_OF_55_INDEPENDENT__LIBRARY_BYTE_EXACT__STAGE5_NEXT",
-  "next_action": "A1-L16 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Resolve CURRENT runtime only at Stage6. Do not start A1-L17.",
-  "checkpoint_commit": "a74bfdbf34e5f437a51cae9935692db5c1175666",
-  "receipt_commit": "a0b53502ab0e50c442772c9b572b678fcfc381f2",
+  "quality": "PASS_STAGE5__156_CARDS__23_COLUMNS__624_TRILINGUAL_EXAMPLES__92_TYPED_RELATIONS__50_KOMBINATIONEN_26_CARDS__130_CNF__489_FINAL_CANDIDATES__2496_OF_2496__OFFICIAL_5_OF_5__PREVENTION_PROJECTION_AND_LINEAGE_PASS__LIBRARY_BYTE_EXACT__STAGE6_NEXT",
+  "next_action": "A1-L16 Stage6: re-resolve CURRENT German Flashcards Pro runtime and test exact Stage5 bytes. Do not start A1-L17.",
+  "checkpoint_commit": "b807228760c398cdeefa430c601f099bd912dd08",
+  "receipt_commit": "0e5059745cd5d664b30393d5c4d5b60beccded41",
   "previous_locked_scope": {
     "scope": "A1-L15",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -144,5 +144,24 @@
       "git": "IN_SYNC_AFTER_THIS_UPDATE"
     },
     "runtime": "NOT_RUN_CONTENT_ONLY"
+  },
+  "stage5": {
+    "status": "PASS_STAGE5_CLEAN_DELIVERY_ANTI_BYPASS__STAGE6_NEXT",
+    "direct_import_sha256": "58e46fc7f184982d5ec806fe1d6d6a173db44c76678fc3445e005577a6af1965",
+    "canonical_stage4_sha256": "17fb5101bb69da572b70754d3ea240ad7e67b7c54a339caea4e60dac7bf76a9c",
+    "projection": "156 cards / 23 columns / all de-vocabulary + gfp-vocabulary-neutral@1 / notes empty",
+    "examples": 624,
+    "relations": "92 = RELATED 71 / SYNONYM 9 / NEAR_SYNONYM 8 / ANTONYM 4",
+    "kombinationen": "50 on 26 cards / 130 CLOSED_NO_FORCE",
+    "candidates": "489 = 488 ACCEPTED / 1 REJECTED / 0 DEFERRED",
+    "completeness": "2496/2496 / 0 unresolved",
+    "source": "113 occurrences / 157 source-output edges / 156 active IDs",
+    "validation": "official builder PASS + 5/5 official + semantic loss parity + prevention projection/lineage + 3/3 negative + fresh package PASS",
+    "persistence": {
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "git": "IN_SYNC_AFTER_THIS_UPDATE"
+    },
+    "content_mutated": false,
+    "runtime": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6"
   }
 }

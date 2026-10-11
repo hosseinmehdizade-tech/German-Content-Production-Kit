@@ -1,25 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L07 are Stage7 LOCKED. A2-L08 Stage5 is PASS and import-ready as content; Stage6 exact CURRENT-runtime acceptance is next.**
+**CURRENT verified scope: A2-L01 through A2-L09 are Stage7 LOCKED. A2-L10 Stage5 is PASS and import-ready as content; Stage6 exact CURRENT-runtime acceptance is next.**
 
-- A2-L08 Stage5 projects **79 neutral `de-vocabulary` cards**: 76 new A2 + 1 immutable A1 reuse + 2 immutable prior-A2 reuses.
-- Exact import payload: `01-Final-Import/A2-L08-UNIVERSAL-v2.tsv`, SHA-256 `d608dfc00e4f4902006da8b228355451ca964089a91638de5b8324c6f644fae4`.
-- **316 trilingual examples** (exactly 4/card), **176 learner-visible Kombinationen**, and **62 Stage4-accepted graph relations**.
-- Source coverage: **113 occurrences / 129 source-output bindings**; identity closure **79 active IDs**; candidate ledger **1123 final / 0 deferred**; completeness **1202 cells / 0 unresolved**.
-- The two prior-A2 reuse rows start from the **exact locked parent neutral rows**, retain all prior lesson memberships, and add only L08 transport metadata. Semantic parity: **2/2 PASS**.
+- A2-L10 Stage5 projects **72 neutral `de-vocabulary` cards**: 56 new A2 + 13 immutable A1 reuses + 3 immutable prior-A2 reuses.
+- Exact import payload: `01-Final-Import/A2-L10-UNIVERSAL-v2.tsv`, SHA-256 `d336110193a20d4f46538487a67aebaa5cc39644a0d333b1dec0311aed43ea5e`.
+- **288 trilingual examples** (exactly 4/card), **105 learner-visible Kombinationen**, and **50 Stage4-accepted graph relations**.
+- Source coverage: **72 occurrences / 79 source-output bindings**; identity closure **72 active IDs**; candidate ledger **1038 final / 0 deferred**; completeness **1110 cells / 0 unresolved**.
+- New-A2 semantic projection parity: **56/56 PASS**; relation ID/type parity: **50/50 PASS**; locked dependencies remain read-only **16/16 PASS**; prior-A2 exact-parent semantic parity **3/3 PASS**.
 - Official v3.3.6 gates **5/5 PASS**, clean-delivery anti-bypass builder PASS, targeted framework suite **10/10 PASS**.
-- Complete production ZIP: **43 members / 42 SHA entries / 30 JSON**, CRC/path safety PASS, no nested ZIP, no Flashcards app/runtime bits.
-- Stage5 ZIP SHA-256: `078cbc8829000c810ea7d4a44ca1303a858429a7226f72fd916d60de8ad8b232`; Library exact-byte roundtrip PASS.
+- Complete production ZIP: **44 members / 43 SHA entries / 31 JSON**, CRC/path safety PASS, no nested ZIP, no Flashcards app/runtime bits.
+- Stage5 ZIP SHA-256: `c349193ab531ce623d648b45891666ae3c9eb360ec7ae28719c5d178b69cf6db`; Library exact-byte roundtrip PASS.
 - Stage6 has **not run**. Re-resolve Flashcards Pro CURRENT at Stage6 execution time.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L08-STAGE5.json](./L08-STAGE5.json), and [L08-CHECKPOINT.json](./L08-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L10-STAGE5.json](./L10-STAGE5.json), and [L10-CHECKPOINT.json](./L10-CHECKPOINT.json).
 
-Next major stage: **A2-L08 Stage6 — exact CURRENT runtime import/presentation/persistence/roundtrip acceptance**.
+Next major stage: **A2-L10 Stage6 — exact CURRENT runtime import/presentation/persistence/roundtrip acceptance**.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.
 
-## Current verified milestone: A2-L01 Stage2B identity closure
+## Historical bootstrap note: A2-L01 Stage2B identity closure
 
 - 88/88 raw source occurrences (ordinals 2273..2360) preserved, all 88 audio references retained.
 - 24 A1 canonical archives compared, 3059 exact prior identities indexed; A1-L01 uses the newer 2026-10-08 source-audited v3.3.6 content successor (same original 118 IDs), and other lessons retain exact pinned parent authority.

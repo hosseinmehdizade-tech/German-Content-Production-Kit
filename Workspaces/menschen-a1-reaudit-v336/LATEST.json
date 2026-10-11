@@ -2,9 +2,9 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L20",
-  "latest_verified_milestone": "STAGE3B_EDITORIAL_COVERAGE_COMPLETE__STAGE3C_NEXT",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L20-STAGE3B-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L20-STAGE3B-RECEIPT.json",
+  "latest_verified_milestone": "SYSTEMIC_LEXICAL_FRONT_BINDING_HF1_PASS__L20_REBASE_REQUIRED",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/LEXICAL-FRONT-REPAIR-HF1-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/LEXICAL-FRONT-REPAIR-HF1-RECEIPT.json",
   "artifact": {
     "filename": "Menschen-A1-L20-v3.3.6-REAUDIT-Stage3B-EDITORIAL-COMPLETE-CHECKPOINT.zip",
     "sha256": "eeebe74c96cfb5fa6c9b0fcfa3aff1c1b8d9e64bd91c2da5e5562c6017b4a128",
@@ -15,10 +15,10 @@
     "library_stable_id": "libfile_7427c23b14c08191ba5d04f8a32728c4",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE3B__126_OF_126__416_DEFERRED__2017_CELLS_1891_UNRESOLVED__OFFICIAL_4_OF_4__INDEPENDENT_37_OF_37__FRESH_PACKAGE_PASS__LIBRARY_BYTE_EXACT",
-  "next_action": "A1-L20 Stage3C: adjudicate 416 candidates and close the 2017-cell matrix. Do not start A1-L21.",
-  "checkpoint_commit": "2bc835ec13750ea3385b635db02623a389a34a4c",
-  "receipt_commit": "fdf8e0efbff2dc7eed519f7228ed7f6d99f24e5b",
+  "quality": "PASS_SYSTEMIC_HF1__ROOT_CAUSE_CLOSED__L19_REPAIR1_LOCKED__FRAMEWORK_FRONT_GATE_ACTIVE__V476_EXACT_L19_121x4_PLUS_GENERIC_PASS__L20_STAGE3B_SEMANTIC_EVIDENCE_RETAINED__L20_REBASE_REQUIRED_BEFORE_STAGE3C",
+  "next_action": "Rebase/reproject A1-L20 Stage3B on HF1, run learner-visible front gate, then proceed to Stage3C only on the rebased bytes. Do not reuse old downstream projection bytes.",
+  "checkpoint_commit": "eae461122012ee323b5309b47281bc8b91a8ff9d",
+  "receipt_commit": "6cf07e20315499e3e290f82ec02ed61c865629b3",
   "previous_locked_scope": {
     "scope": "A1-L19",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -85,5 +85,14 @@
     },
     "runtime": "NOT_RUN_CONTENT_ONLY",
     "content_lock_state": "SUCCESSOR_NOT_LOCKED"
+  },
+  "front_binding_repair": {
+    "status": "HF1_ACTIVE",
+    "root_cause": "neutral content/runtime presentation kept morphology as semantic metadata but failed to bind it to all learner-visible fronts; one Verb Sense lemma also absorbed an argument placeholder",
+    "framework_overlay_sha256": "25f23a7bc633d7319d8f55c6d362f549589ca8c6d1968271c65d53023bf5ef57",
+    "l19_repair1_sha256": "440093f6cbe9542e92a1e39298f340e26594209866760edc1846e0a1bd9e31e2",
+    "runtime_v476_sha256": "9da81d9c6fc4303c1a12ea5639e2d56988aac1399c5eb57980063ed9c14b9e57",
+    "l20_old_stage3b_sha256": "eeebe74c96cfb5fa6c9b0fcfa3aff1c1b8d9e64bd91c2da5e5562c6017b4a128",
+    "l20_rule": "Semantic/editorial evidence remains recoverable; downstream projection bytes must be regenerated/revalidated under HF1 before Stage3C."
   }
 }

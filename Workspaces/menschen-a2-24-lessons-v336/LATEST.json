@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L12_STAGE2B_PASS",
-  "quality": "L01_L11_STAGE7_LOCKED__L12_STAGE2B_IDENTITY_CLOSED__STAGE3A_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE2B.json",
-  "artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-  "artifact_library_file_id": "file_00000000b3948210ad9609214241f879",
+  "latest_completed_milestone": "A2-L12_STAGE3B_PASS",
+  "quality": "L01_L11_STAGE7_LOCKED__L12_STAGE3B_AUTHORSHIP_COMPLETE__STAGE3C_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE3B.json",
+  "artifact_sha256": "d940b143f6827a362331a87aafa9b48b21e5f603142f0822ea039086aee51ea2",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+  "artifact_library_file_id": "file_000000001550821093433887c4e7222e",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Run A2-L12 Stage3A baseline richness/completeness audit across all 85 closed identities under v3.3.6. Preserve the 75 new identity assignments and 10 immutable reuses; do not begin learner-facing enrichment before the Stage3A baseline is recorded.",
+  "next_action": "Run A2-L12 Stage3C independent disposition closure across all 85 identities / 1346 dimension cells. Independently verify every Stage3B candidate and close every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE; preserve all 10 locked dependencies immutable. Do not start Stage4 until pending=0.",
   "central_checkpoint_sha": "2bb57d79ad24e9d3dbe6908f77d75845c489e631",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
-  "last_git_coordination": "A2_L12_STAGE2B_PASS__L01_L11_LOCKED_PRESERVED__WORKSTREAM_LOCAL_SYNC",
+  "last_git_coordination": "A2_L12_STAGE3B_PASS__STAGE3A_REPAIR1_RECORDED__L01_L11_LOCKED_PRESERVED__WORKSTREAM_LOCAL_SYNC",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -255,27 +255,31 @@
       "locked_recovery_boundary": "ma1m-lu-0633 exact parent row unavailable; no byte-parity claim"
     },
     "A2-L12": {
-      "status": "STAGE2B_IDENTITY_CLOSED__STAGE3A_NEXT",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE2B.json",
+      "status": "STAGE3B_AUTHORSHIP_COMPLETE__STAGE3C_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE3B.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L12-CHECKPOINT.json",
-      "artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
+      "artifact_sha256": "d940b143f6827a362331a87aafa9b48b21e5f603142f0822ea039086aee51ea2",
+      "stage3a_repair1_sha256": "318611ba0810524c15628bc30dda306f2306f8cb1f950a819d55ba87aa4d535f",
       "source_occurrences": 94,
       "identities": 85,
       "new_a2": 75,
       "reused_a1": 6,
       "reused_prior_a2": 4,
-      "new_id_range": "ma2m-lu-0706..ma2m-lu-0780",
-      "candidate_dispositions": 146,
-      "editorial_reviews_closed": 54,
-      "unresolved": 0,
-      "cumulative_unique_projection": 872,
+      "trilingual_examples": 300,
+      "kombinationen_candidates": 151,
+      "relation_candidates": 72,
+      "candidate_ledger": {
+        "candidates": 1261,
+        "accepted": 765,
+        "deferred": 496
+      },
+      "stage3c_pending_cells": 1346,
       "canonical_sha256": "50ead408c156045b9b1c0107c9e7e1db4758abde99c59f469d85646c8cd29368",
       "identity_fingerprint": "53fdc8bda331b3fefb7bd87dbc170a41fcc60a464165121dc892553052a24030",
+      "cumulative_unique_projection": 872,
       "content_lock_state": "NOT_LOCKED",
-      "stage1_complete": true,
-      "stage2_complete": true,
-      "stage2b_complete": true,
-      "stage3_started": false
+      "stage3b_complete": true,
+      "stage3c_complete": false
     }
   },
   "stage3a": {
@@ -2632,6 +2636,32 @@
     "identity_fingerprint": "53fdc8bda331b3fefb7bd87dbc170a41fcc60a464165121dc892553052a24030",
     "cumulative_unique_projection": 872,
     "artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3a_repair1_l12": {
+    "status": "PASS_RICHNESS_BASELINE_REPAIR1",
+    "original_stage3a_superseded_sha256": "850cfaaeef62532209567e86d33230e5381960a2166f4c26056e4fb597e14d92",
+    "artifact_sha256": "318611ba0810524c15628bc30dda306f2306f8cb1f950a819d55ba87aa4d535f",
+    "dimension_cells": 1346,
+    "verified_present": 84,
+    "closed_no_force": 1,
+    "unresolved": 1261,
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3b_l12": {
+    "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
+    "artifact_sha256": "d940b143f6827a362331a87aafa9b48b21e5f603142f0822ea039086aee51ea2",
+    "cards_new": 75,
+    "locked_dependencies": 10,
+    "examples": 300,
+    "kombinationen_candidates": 151,
+    "relation_candidates": 72,
+    "candidate_ledger": {
+      "candidates": 1261,
+      "accepted": 765,
+      "deferred": 496
+    },
+    "stage3c_pending_cells": 1346,
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

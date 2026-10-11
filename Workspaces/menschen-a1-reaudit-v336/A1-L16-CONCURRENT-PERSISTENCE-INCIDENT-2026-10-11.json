@@ -1,0 +1,33 @@
+{
+  "schema": "gcpk-concurrent-persistence-incident@1.0.0",
+  "date": "2026-10-11",
+  "scope": "A1-L16",
+  "status": "CONTAINED_NO_CURRENT_CONTENT_LOSS",
+  "incident": "A concurrent continuation race overwrote the personal-Library path that had been used by the official A1-L16 Stage1/2 portable checkpoint. The overwritten bytes were a divergent diagnostic build and must not be treated as authority.",
+  "official_stage12_lineage": {
+    "git_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE1-2-CHECKPOINT.json",
+    "git_checkpoint_commit": "9d979c14c24aeb17ba6c7fa48754dcab100e7c97",
+    "expected_artifact_sha256": "84c8a6e94c4639d8a9d93149fb543c292c30ef1390870fda769ef57c8bb67500",
+    "expected_size_bytes": 60540,
+    "library_exact_blob_now_materializable": false,
+    "note": "Git identity/source closure remains authoritative historical lineage; do not claim current Library roundtrip for the old 84c8 artifact."
+  },
+  "nonauthoritative_bytes": {
+    "sha256": "9ad03dca9b0b7e0e458f640b51f0434388d19b538d074c6e4adb73b88b100352",
+    "size_bytes": 90012,
+    "status": "RENAMED_DIAGNOSTIC_NOT_AUTHORITY",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage1-2-NONAUTHORITATIVE-CONCURRENT-DIAGNOSTIC.zip",
+    "library_file_id": "file_0000000014fc8210b83ec49827dacbe0",
+    "library_stable_id": "libfile_857ebd2e85608191be4f0411300d42e7"
+  },
+  "containment": {
+    "wrong_canonical_name_removed": true,
+    "historical_locked_parent_intact": true,
+    "registered_raw_source_intact": true,
+    "current_stage3a_git_milestone_intact": true,
+    "durable_successor": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-PERSISTENCE-REPAIR1-CHECKPOINT.json",
+    "durable_successor_artifact_sha256": "fd56d960c9dc74fcb959818fc4eee65c636e051cc0a74df54f7459eaf7dbd44b",
+    "durable_successor_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "rule": "Resume from the Stage3A persistence-repair successor, not from the renamed diagnostic file and not by reconstructing the old Stage1/2 Library blob."
+}

@@ -1,14 +1,14 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L09_STAGE3B_PASS",
-  "quality": "L01_L08_STAGE7_LOCKED__L09_STAGE3B_AUTHORSHIP_COMPLETE__STAGE3C_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE3B.json",
-  "artifact_sha256": "562b8f762e8d6b28df1a8aaf3261768c51a1c4c58d61ec133229f9dbe8b42aaa",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L09-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
-  "artifact_library_file_id": "file_00000000b7308210ab039988b50dcb5e",
+  "latest_completed_milestone": "A2-L09_STAGE3C_PASS",
+  "quality": "L01_L08_STAGE7_LOCKED__L09_STAGE3C_DISPOSITION_CLOSURE_PASS__STAGE4_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE3C.json",
+  "artifact_sha256": "d3f3647a37cdb87e83a0a30b4ec41cbf1123bb8c0e694cce818df24f4e6ca357",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L09-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS.zip",
+  "artifact_library_file_id": "file_0000000002c08243879eceea3d2e3107",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Run A2-L09 Stage3C independent disposition closure across all 73 identities / 1116 dimension cells. Independently verify every Stage3B candidate and resolve every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE; preserve all 5 locked dependencies immutable. Do not start Stage4 until pending=0.",
+  "next_action": "Run A2-L09 Stage4 independent linguistic/source/structure re-audit on exact Stage3C artifact SHA d3f3647a37cdb87e83a0a30b4ec41cbf1123bb8c0e694cce818df24f4e6ca357. Stage4 must not trust Stage3C self-report and may reopen defects; do not start Stage5 until Stage4 passes.",
   "central_checkpoint_sha": "e3f84d63e429d1b5e2c8669e1ec341512272e83e",
   "root_project_state_sha": "09265d0d73275e43d102020686d114c166125ed0",
   "last_git_coordination": "A2_L09_STAGE3B_PASS__L01_L08_LOCKED_PRESERVED",
@@ -219,10 +219,10 @@
       "current_runtime": "v475-R109"
     },
     "A2-L09": {
-      "status": "STAGE3B_AUTHORSHIP_COMPLETE__STAGE3C_NEXT",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE3B.json",
+      "status": "STAGE3C_DISPOSITION_CLOSURE_PASS__STAGE4_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE3C.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L09-CHECKPOINT.json",
-      "artifact_sha256": "562b8f762e8d6b28df1a8aaf3261768c51a1c4c58d61ec133229f9dbe8b42aaa",
+      "artifact_sha256": "d3f3647a37cdb87e83a0a30b4ec41cbf1123bb8c0e694cce818df24f4e6ca357",
       "source_occurrences": 93,
       "identities": 73,
       "new_a2": 68,
@@ -233,7 +233,9 @@
       "stage3b_started": true,
       "content_lock_state": "NOT_LOCKED",
       "stage3b_complete": true,
-      "stage3c_started": false
+      "stage3c_started": true,
+      "stage3c_complete": true,
+      "stage4_started": false
     }
   },
   "stage3a": {
@@ -1792,7 +1794,7 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "stage3b": "NOT_STARTED"
   },
-  "current_focus": "A2_L09_STAGE3B_PASS__STAGE3C_NEXT",
+  "current_focus": "A2_L09_STAGE3C_PASS__STAGE4_NEXT",
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L09-CHECKPOINT.json",
   "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE3B.json",
   "stage3b_started": true,
@@ -1829,5 +1831,23 @@
     "validation": "Stage3B structural/source/identity/baseline/framework checks PASS; 407 DEFERRED remain intentionally open for Stage3C final disposition.",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "quality_boundary": "NOT_STAGE3C_NOT_STAGE4_NOT_IMPORT_READY"
+  },
+  "latest_stage3c_l09": {
+    "status": "PASS_COMPLETE_1116_OF_1116_CLOSED__STAGE4_NOT_RUN",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L09-STAGE3C.json",
+    "artifact": {
+      "filename": "Menschen-A2-L09-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS.zip",
+      "sha256": "d3f3647a37cdb87e83a0a30b4ec41cbf1123bb8c0e694cce818df24f4e6ca357",
+      "bytes": 536195,
+      "members": 34,
+      "manifest_entries": 33,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L09-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS.zip",
+      "library_file_id": "file_0000000002c08243879eceea3d2e3107",
+      "library_stable_id": "libfile_5745e5adc11881919564c3762739642d",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "validation": "73 targets / 1116 cells / 0 unresolved; ledger 1043 final / 0 deferred; 37 accepted graph relations; 36 bounded repairs",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "quality_boundary": "NOT_STAGE4_NOT_STAGE5_NOT_IMPORT_READY"
   }
 }

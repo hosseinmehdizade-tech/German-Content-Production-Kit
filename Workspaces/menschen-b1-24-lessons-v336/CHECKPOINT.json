@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L13_STAGE2_PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+  "status": "B1_L13_STAGE3A_PASS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "NOT_STARTED",
+    "stage3": "STAGE3A_PASS__STAGE3B_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L13 Stage3A baseline richness audit across all 120 active identities under v3.3.6. Do not start B1-L14.",
+  "next_action": "Run B1-L13 Stage3B reference-availability preflight, then gap-driven enrichment across 1796 unresolved cells plus Kombinationen review for all 120 targets. Do not start B1-L14.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4300,14 +4300,14 @@
   },
   "current_lesson": "B1-L13",
   "next_lesson": "B1-L14",
-  "current_stage": "Stage2 identity closure PASS",
+  "current_stage": "Stage3A baseline richness audit PASS",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L13-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
-    "sha256": "7ba55cdb659dc8b4a9aad7240716f06beb293b5c581c68e6d6d643eb015324e4",
-    "size_bytes": 66438,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L13-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
-    "library_file_id": "file_00000000516c82109d49d6db268962ab",
-    "library_stable_id": "libfile_5a34d9831c48819183f7a11116264538",
+    "filename": "Menschen-B1-L13-v3.3.6-Stage3A-CHECKPOINT.zip",
+    "sha256": "06d28d950fa6efa4f66c8d3873e7dd904cec708e34d2458e56bf9e16e63f5e68",
+    "size_bytes": 119092,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L13-v3.3.6-Stage3A-CHECKPOINT.zip",
+    "library_file_id": "file_00000000e95081f4abb1a4970d1cc38d",
+    "library_stable_id": "libfile_1316623a7a7c8191bc71c142de49dc62",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4649,5 +4649,49 @@
       "library_stable_id": "libfile_c8bc24f5808c81919abb541d90ee5b69"
     },
     "next_action": "Run B1-L13 Stage3A baseline richness audit across all 120 active identities under v3.3.6. Do not start B1-L14."
+  },
+  "b1_l13_stage3a": {
+    "status": "PASS__STAGE3B_PENDING",
+    "framework": "v3.3.6",
+    "profile": "menschen-b1-memrise@1.0.0",
+    "parent_stage2_sha256": "7ba55cdb659dc8b4a9aad7240716f06beb293b5c581c68e6d6d643eb015324e4",
+    "canonical_sha256": "7862a1f25f3eaaa922a168e7a77bde1907353f626ae38dd1566d2ff6b50c15fb",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "targets": 120,
+    "new_targets": 99,
+    "identity_only_reuses": 21,
+    "senses": 60,
+    "expressions": 60,
+    "dimension_cells": 1916,
+    "verified_present_cells": 120,
+    "unresolved_cells": 1796,
+    "source_audio_missing": 0,
+    "source_seed_persian_targets": 120,
+    "source_seed_german_example_targets": 64,
+    "source_review_flagged_targets": 58,
+    "source_review_flag_instances": 73,
+    "kombinationen": "120/120 UNREVIEWED / 0 inherited items",
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "source_quality_findings_carried_forward": [
+      5991,
+      6072
+    ],
+    "artifact": {
+      "filename": "Menschen-B1-L13-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "06d28d950fa6efa4f66c8d3873e7dd904cec708e34d2458e56bf9e16e63f5e68",
+      "size_bytes": 119092,
+      "members": 50,
+      "library_file_id": "file_00000000e95081f4abb1a4970d1cc38d",
+      "library_stable_id": "libfile_1316623a7a7c8191bc71c142de49dc62",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L13-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "e69b177d6a32426d1e2504bd5e3ea911c9907c42d209bc3084633811e9bf0889",
+      "status": "PASS",
+      "library_file_id": "file_00000000a1308210b6929763b36417a3",
+      "library_stable_id": "libfile_3a9cd6f00aa881919427d30f83af842c"
+    },
+    "next_action": "Run B1-L13 Stage3B reference-availability preflight, then gap-driven enrichment across 1796 unresolved cells plus Kombinationen review for all 120 targets. Do not start B1-L14."
   }
 }

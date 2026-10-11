@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 13,
     "active_lesson": "A1-L11",
-    "overall_state": "A1_L11_STAGE1_2_PASS__STAGE3A_NEXT",
-    "git_persistence": "STAGE1_2_IN_SYNC"
+    "overall_state": "A1_L11_STAGE3A_PASS__STAGE3B_NEXT",
+    "git_persistence": "STAGE3A_IN_SYNC"
   },
   "lessons": [
     {
@@ -1060,13 +1060,13 @@
     },
     {
       "id": "A1-L11",
-      "reaudit_status": "STAGE1_2_COMPLETE__STAGE3A_NEXT",
+      "reaudit_status": "STAGE3A_COMPLETE__STAGE3B_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage1-2-CHECKPOINT.zip",
-      "independent_quality": "PASS_STAGE1_2_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L11-STAGE1-2-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "97d9ba4a9cc8893f852f48b749a4b87583bda14a613ff363136009ebd7a8c8cc",
-      "latest_artifact_filename": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage1-2-CHECKPOINT.zip",
+      "new_successor_artifact": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
+      "independent_quality": "PASS_STAGE3A_COMPLETE_RICHNESS_BASELINE",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L11-STAGE3A-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "ddc36e80fba7e16b909d4bc104a04d90b49afc452c24d8d905f1872a89676e91",
+      "latest_artifact_filename": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
       "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 116,
@@ -1112,7 +1112,23 @@
       "stage12_unresolved_identity": 0,
       "stage12_canonical_sha256": "232e46da96e3faf4ec47b079fdc7c8da73430041f36fa5645a90041a6694e155",
       "stage12_cumulative_identity": "1010 memberships / 1007 unique / 3 intentional reuse / 0 accidental collisions",
-      "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage12_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage3a": "PASS_COMPLETE_RICHNESS_BASELINE__STAGE3B_NEXT",
+      "stage3a_targets": 158,
+      "stage3a_official_cells": 2579,
+      "stage3a_official_unresolved": 2421,
+      "stage3a_campaign_cells": 2686,
+      "stage3a_campaign_pending": 2528,
+      "stage3a_source_audio_verified": 152,
+      "stage3a_source_audio_closed_no_force": 6,
+      "stage3a_historical_parent": "165 targets / 660 examples / 80 relations / 51 resolutions exact rehash",
+      "stage3a_source_flags": 37,
+      "stage3a_priority": "P1 37 / P2 83 / P3 38",
+      "stage3a_kombinationen": "158/158 REVIEW_REQUIRED",
+      "stage3a_candidate_ledger": "0",
+      "stage3a_independent_validation": "45/45 PASS",
+      "stage3a_negative_control": "PASS_MUST_FAIL",
+      "stage3a_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
     },
     {
       "id": "A1-L12",
@@ -1225,18 +1241,19 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L11 Stage3A: initialize the full v3.3.6 completeness/richness baseline for all 158 active identities, explicitly review the six MEM-009 merged lexical targets, the distinct-POS gleich pair, source flags, and mandatory lexical Kombinationen disposition for every target.",
-  "quality_state": "A1_L11_STAGE1_2_PASS__STAGE3A_NEXT",
+  "next_action": "A1-L11 Stage3B: adjudicate all 158 targets in priority order P1(37) -> P2(83) -> P3(38); explicitly resolve all 37 source/review-flag targets, six MEM-009 merged lexical targets and the distinct-POS gleich pair; recover and independently review historical content/relations/examples, populate candidate ledger, review Kombinationen for every target, and do not claim Stage3C until all official cells reach final dispositions.",
+  "quality_state": "A1_L11_STAGE3A_PASS__STAGE3B_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L11",
-    "stage": "Stage1/2 source + current identity closure",
-    "quality": "PASS_116_SOURCE_ROWS__158_ACTIVE__7_MEM009_RETIRED__0_UNRESOLVED",
-    "artifact_sha256": "97d9ba4a9cc8893f852f48b749a4b87583bda14a613ff363136009ebd7a8c8cc",
+    "stage": "Stage3A source-agnostic completeness baseline",
+    "quality": "PASS_158_TARGETS__2579_OFFICIAL_CELLS__2421_UNRESOLVED__45_OF_45_INDEPENDENT",
+    "artifact_sha256": "ddc36e80fba7e16b909d4bc104a04d90b49afc452c24d8d905f1872a89676e91",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "c01cca3ae79d8802c69d63f2e4779666e731a34b",
-    "receipt_commit": "a7ebf20310ec5c8aa6a22b9986e4157b5fbc2287",
+    "checkpoint_commit": "9473b3c2564cd1aee2b900e6cea7319ccd993f86",
+    "receipt_commit": "5180f214f801c51e50e1d20ab802b8515101c64b",
+    "prevention_commit": "d56fbe5a90fa2c6a55e3972571b7e419ba6b56dd",
     "runtime": "NOT_RUN_CONTENT_ONLY",
     "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED"
   }

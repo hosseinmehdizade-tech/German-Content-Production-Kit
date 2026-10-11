@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-state@1.3.0",
   "project": "German-Content-Production-Kit",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-10-12",
   "bootstrap": "PROJECT-BOOTSTRAP.md",
   "operating_mode": {
     "file": "PROJECT-OPERATING-MODE-v2.md",
@@ -88,6 +88,24 @@
       "no_hard_quota": true,
       "closed_no_force_allowed": true,
       "locked_artifacts_immutable": true
+    },
+    "learner_visible_front_overlay": {
+      "status": "ACTIVE_HF1",
+      "policy": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.0.0.md",
+      "validator": "Verification/validate_learner_visible_lexical_front_v1_0_0.py",
+      "projector": "Tools/project_v411_vocabulary_cards.py",
+      "purpose": "Fail closed when learner-visible noun article/plural or verb/adjective morphology is hidden, and keep argument placeholders out of Verb Sense lemmas.",
+      "tests": "17/17 PASS (HF1 tests + v3.3.5 semantic/presentation regression)",
+      "portable_overlay": {
+        "filename": "German-Content-Production-Kit-v3.3.6-HF1-LEARNER-VISIBLE-FRONT.zip",
+        "sha256": "25f23a7bc633d7319d8f55c6d362f549589ca8c6d1968271c65d53023bf5ef57",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.6-HF1-LEARNER-VISIBLE-FRONT.zip",
+        "library_file_id": "file_00000000306c8210aa353eb917b1a646",
+        "library_stable_id": "libfile_4b57c90e86088191bb60c019ed87a42a",
+        "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+      },
+      "runtime_dependency": "GFP-v476-R110 lexical-front binding repair or newer CURRENT with the same gate",
+      "historical_locked_artifacts": "IMMUTABLE; affected outputs require explicit repair successors"
     }
   },
   "workstream_resolution_policy": "Use the newest valid portable checkpoint first. Git is the durable mirror/ambiguity resolver; attempt lightweight sync after every validated milestone. Temporary WIP edits are not milestones; bounded failures remain PENDING.",

@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L11_STAGE7_LOCKED",
-  "quality": "L01_L11_STAGE7_LOCKED__A2_L12_STAGE1_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE7.json",
-  "artifact_sha256": "bd06dfb9d0c4d437d2de762928e5b93471ac8ce51197d8c083fb5021df423f15",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L11-v3.3.6-GFP-v475-LOCKED.zip",
-  "artifact_library_file_id": "file_000000009a1481f4bc2866424c8b6989",
+  "latest_completed_milestone": "A2-L12_STAGE1_PASS",
+  "quality": "L01_L11_STAGE7_LOCKED__L12_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE1.json",
+  "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+  "artifact_library_file_id": "file_000000009afc82439a066b8f243d98c5",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "A2-L11 is immutable. Start A2-L12 Stage1 source inventory from the registered Menschen A2 source in the next major stage. Preserve A2-L01 through A2-L11 LOCKED.",
+  "next_action": "Run A2-L12 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 94 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L11 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not start Stage3 until identity closure has zero unresolved states.",
   "central_checkpoint_sha": "2bb57d79ad24e9d3dbe6908f77d75845c489e631",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
-  "last_git_coordination": "A2_L11_STAGE7_LOCKED__L01_L11_LOCKED_PRESERVED",
+  "last_git_coordination": "A2_L12_STAGE1_PASS__L01_L11_LOCKED_PRESERVED__CENTRAL_ROOT_DEFERRED_PARALLEL_SAFE",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -253,6 +253,40 @@
       "content_lock_state": "LOCKED",
       "stage7_complete": true,
       "locked_recovery_boundary": "ma1m-lu-0633 exact parent row unavailable; no byte-parity claim"
+    },
+    "A2-L12": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L12-CHECKPOINT.json",
+      "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
+      "source_occurrences": 94,
+      "source_row_range": [
+        3293,
+        3386
+      ],
+      "lesson_title": "Wenn es warm ist, essen wir meist Salat.",
+      "audio_refs": 93,
+      "rows_without_audio": [
+        3324
+      ],
+      "missing_example_rows": [
+        3318,
+        3331,
+        3332,
+        3339,
+        3342,
+        3348,
+        3349,
+        3369,
+        3370,
+        3375,
+        3382,
+        3385
+      ],
+      "source_alternatives_review_rows": 39,
+      "content_lock_state": "NOT_LOCKED",
+      "stage1_complete": true,
+      "stage2_started": false
     }
   },
   "stage3a": {
@@ -364,7 +398,9 @@
     "a2_l02": "LOCKED and immutable; preserved under parallel_lesson_states.A2-L02.",
     "l03_stage1": "Exact registered source slice only; no canonicalization or source correction performed.",
     "l03_stage2b": "Identity closure complete. Stage3 semantic/enrichment work has not started. A2-L02 remains LOCKED and A2-L01 remains separate.",
-    "l03_stage3a": "Stage3A baseline only; no learner-ready semantic enrichment claim. A2-L02 remains LOCKED; A2-L01 remains separate."
+    "l03_stage3a": "Stage3A baseline only; no learner-ready semantic enrichment claim. A2-L02 remains LOCKED; A2-L01 remains separate.",
+    "a2_l12_stage1": "Exact registered CSV was directly decompressed from the current-chat RAR5 and hash-matched. Stage1 only; no canonicalization/reuse/split-merge decisions yet. A2-L01..L11 remain LOCKED.",
+    "central_root_sync": "Deferred at A2-L12 Stage1 to avoid overwriting parallel root/central state; workstream LATEST + L12 receipts are authoritative under currentness policy."
   },
   "stage5_l02": {
     "status": "PASS_CLEAN_PROJECTION_ANTI_BYPASS__STAGE6_NOT_RUN",
@@ -2571,5 +2607,24 @@
     "postpackage_commit": "3d7653aea23ed9a23072ef1d41a440bf87de9871",
     "central_checkpoint": "DEFERRED_PARALLEL_SAFE__LATEST_AUTHORITATIVE",
     "root_project_state": "DEFERRED_PARALLEL_SAFE__LATEST_AUTHORITATIVE"
+  },
+  "stage1_l12": {
+    "status": "PASS_SOURCE_INVENTORY__STAGE2_NOT_STARTED",
+    "source_rows": 94,
+    "row_range": [
+      3293,
+      3386
+    ],
+    "lesson_title": "Wenn es warm ist, essen wir meist Salat.",
+    "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "export_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "missing_examples": 12,
+    "alternatives_review_rows": 39,
+    "audio_refs": 93,
+    "rows_without_audio": [
+      3324
+    ],
+    "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

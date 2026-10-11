@@ -1,22 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage1 is next and has not started.**
+**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage1 source inventory is PASS; Stage2/2B identity closure is next.**
 
-- A2-L10 final locked artifact: `Menschen-A2-L10-v3.3.6-GFP-v475-LOCKED.zip`, SHA-256 `74f7dc19d3cf8442acc86b7a2b6c13f2d329527755cfad40c3099664a4501017`.
-- Exact final import payload: `01-Final-Import/A2-L10-UNIVERSAL-v2.tsv`, SHA-256 `d336110193a20d4f46538487a67aebaa5cc39644a0d333b1dec0311aed43ea5e`.
-- Content: **72 cards** = 56 new A2 + 13 immutable A1 reuses + 3 immutable prior-A2 reuses; **288 trilingual examples**, **59 Kombinationen sections / 105 items**, **50 accepted relations**, **79 source-audio refs**.
-- Exact CURRENT runtime at lock: **v475-R109**, artifact SHA-256 `18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746`; LAST_FULLY_VERIFIED remains v466-R100.
-- Exact-final package/runtime acceptance: **32/32 target + 140/140 cumulative = 172/172 PASS**; page errors **0**.
-- Cumulative unique cards through L10: **713**; **644/644 prior cards retained**, **641/641 non-overlap prior cards semantically unchanged**.
-- Three prior-A2 overlap IDs preserve semantic core and prior memberships while adding L10 membership: `ma2m-lu-0279`, `ma2m-lu-0249`, `ma2m-lu-0195`.
-- Final-package validation: **48 members / 46 manifest / 47 SHA256SUMS / 35 JSON**, CRC PASS, **72 rows / 23 columns / 72 unique IDs**, no nested ZIP, no Flashcards app/runtime bits.
-- Official final content gates: unified projection **72**, source occurrences **72**, identity closure **72**, candidate ledger **1038**, completeness **72 targets / 1110 cells / 0 unresolved** — all PASS.
-- Library rematerialization: exact SHA-256 + byte-for-byte PASS.
-- Global v475 populated-profile confirmation remains a separate app-runtime boundary; it does not block the A2-L10 content lock.
+- A2-L11 source lesson: **Ich freue mich so.**
+- Registered source tag: `Menschen_A1/A2/B1_(Full_Audio)::35_A2:_11.Ich_freue_mich_so.`.
+- Exact source inventory: **86 occurrences**, rows **3207..3292**; all German and Persian source fields nonempty.
+- Source audio: **86 refs / 86 unique / 0 missing**, with all 86 referenced MP3 filenames present in the exact current-chat RAR5 whose SHA-256 matches the registered source.
+- German source-example gaps: **6 rows** — 3223, 3231, 3243, 3247, 3258, 3285.
+- Stage2 review queue includes **35 slash-delimited source rows**; this is review input only, not a Stage1 canonicalization decision.
+- Exact raw-text duplicate groups: **0**; source control-character rows: **0**.
+- Source text comes from the verified portable inventory bound to registered CSV SHA-256 `52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222`. CSV decompression was not rerun this turn; source RAR identity and 86/86 media membership were directly reverified.
+- Official source-occurrence validator: **PASS — 1 source / 86 occurrences / 0 errors**; Stage1 self-validation **15/15 PASS**; targeted v3.3.6 framework tests **10/10 PASS**.
+- Stage1 package: `Menschen-A2-L11-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip`, SHA-256 `4612b1821c773924b00345411c0f9ba94d0180f12d4b437026ff0b563de116af`; Library exact-byte roundtrip PASS.
+- Stage1 boundary is strict: **no canonicalization, reuse/split/merge decision, stable-ID assignment, or learner-semantic approval has started**.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L10-STAGE7.json](./L10-STAGE7.json), and [L10-CHECKPOINT.json](./L10-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE1.json](./L11-STAGE1.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
 
-Next major stage: **A2-L11 Stage1 — source inventory from the registered Menschen A2 source**. A2-L01 through A2-L10 are immutable locked authorities.
+Next major stage: **A2-L11 Stage2 + mandatory Stage2B identity closure** against immutable A1 authorities and A2-L01..L10 LOCKED identities. Do not start Stage3 until identity unresolved = 0.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

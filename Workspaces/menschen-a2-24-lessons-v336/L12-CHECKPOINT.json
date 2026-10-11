@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l12-stage3b-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l12-stage3c-checkpoint@1.0.0",
   "scope": "A2-L12",
   "framework": "v3.3.6",
-  "stage": "Stage3B COMPLETE",
-  "status": "A2_L12_STAGE3B_AUTHORSHIP_COMPLETE__STAGE3C_NEXT",
+  "stage": "Stage3C COMPLETE",
+  "status": "A2_L12_STAGE3C_COMPLETE__STAGE4_NEXT",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_rows": 94,
   "source_row_range": [
@@ -86,11 +86,11 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "quality_boundary": "A2_L12_STAGE3B_AUTHORSHIP_PASS__85_IDENTITIES__75_NEW__10_LOCKED__300_EXAMPLES__151_KOMBINATIONEN__1261_CANDIDATES__496_DEFERRED__STAGE3C_REQUIRED",
-  "next_action": "Run A2-L12 Stage3C independent disposition closure across all 85 identities / 1346 dimension cells. Independently verify every Stage3B candidate and close every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE; preserve all 10 locked dependencies immutable. Do not start Stage4 until pending=0.",
+  "quality_boundary": "A2_L12_STAGE3C_PASS__85_IDENTITIES__1346_OF_1346_CLOSED__748_ACCEPTED__513_REJECTED__0_DEFERRED__14_GRAPH_RELATIONS__43_REPAIRS__STAGE4_REQUIRED",
+  "next_action": "Run A2-L12 Stage4 independent linguistic/source/structure re-audit on exact Stage3C artifact SHA 36f3f272882d8cba735327c76d54021fdf51369975e0279baab22589bd84ab70. Stage4 must not trust Stage3C self-report and may reopen defects; do not start Stage5 until Stage4 passes.",
   "stage3a_complete": true,
   "stage3b_complete": true,
-  "stage3c_complete": false,
+  "stage3c_complete": true,
   "stage3a_repair1": {
     "status": "PASS_RICHNESS_BASELINE_REPAIR1",
     "original_stage3a_superseded_sha256": "850cfaaeef62532209567e86d33230e5381960a2166f4c26056e4fb597e14d92",
@@ -116,6 +116,34 @@
       "deferred": 496
     },
     "stage3c_pending_cells": 1346,
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage4_started": false,
+  "stage3c": {
+    "status": "PASS_COMPLETE_1346_OF_1346_CLOSED__STAGE4_NOT_RUN",
+    "artifact_sha256": "36f3f272882d8cba735327c76d54021fdf51369975e0279baab22589bd84ab70",
+    "targets": 85,
+    "new_a2": 75,
+    "immutable_reuse": 10,
+    "dimension_cells": 1346,
+    "verified_present": 832,
+    "closed_no_force": 514,
+    "pending": 0,
+    "candidate_ledger": {
+      "total_candidates": 1261,
+      "accepted": 748,
+      "rejected": 513,
+      "deferred": 0,
+      "unresolved": 0
+    },
+    "examples_new": 300,
+    "kombinationen_reviewed": 151,
+    "relation_candidates_reviewed": 72,
+    "accepted_graph_relations": 14,
+    "repairs": 43,
+    "repaired_identities": 20,
+    "locked_parent_exact_rows": 0,
+    "locked_parent_hash_or_identity_pins": 10,
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

@@ -2,22 +2,22 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L18",
-  "latest_verified_milestone": "STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS__STAGE5_NEXT",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE4-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE4-RECEIPT.json",
+  "latest_verified_milestone": "STAGE5_CLEAN_DELIVERY_ANTI_BYPASS__STAGE6_NEXT",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE5-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE5-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L18-v3.3.6-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
-    "sha256": "7ba881bd13b3b7401652ebeb5209b3b31f08ac0c011f5418333ad79d6d8baec0",
-    "size_bytes": 1451775,
-    "members": 130,
-    "library_file_id": "file_00000000a16081f4a3309ac8aba295c3",
-    "library_stable_id": "libfile_cc476614b9f481918efd7a8f342d517c",
+    "filename": "Menschen-A1-L18-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+    "sha256": "62d9841dac2ef5391fa31dbbaa5c612173a044916cbf24ff3221137da995aca9",
+    "size_bytes": 1262010,
+    "members": 60,
+    "library_file_id": "file_0000000066f481f49ccd3082096dd4ca",
+    "library_stable_id": "libfile_09b09ef5009c8191ba69e9087cfae239",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE4__171_TARGETS__684_EXAMPLES__123_RELATIONS__47_KOMBINATIONEN__615_ACCEPTED__2715_OF_2715__48_BOUNDED_REPAIRS__INDEPENDENT_58_OF_58__OFFICIAL_4_OF_4__NEGATIVE_2_OF_2__PYTEST_10_OF_10__LIBRARY_BYTE_EXACT__STAGE5_NEXT",
-  "next_action": "A1-L18 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Resolve CURRENT runtime only at Stage6. Do not start A1-L19.",
-  "checkpoint_commit": "4695c4f3c4009454597c02dc70bad9133681807d",
-  "receipt_commit": "939722e6b7e0375dcadd3ada7f9a80b86e82037c",
+  "quality": "PASS_STAGE5__171_NEUTRAL_CARDS__684_EXAMPLES__123_RELATIONS__47_KOMBINATIONEN__143_CLOSED_NO_FORCE__615_ACCEPTED__2715_OF_2715__OFFICIAL_5_OF_5__ANTI_BYPASS_BUILDER_PASS__PREVENTION_PROJECTION_PACKAGE_PASS__NEGATIVE_3_OF_3__FRESH_PACKAGE_PASS__LIBRARY_BYTE_EXACT__STAGE6_NEXT",
+  "next_action": "A1-L18 Stage6: re-resolve CURRENT German Flashcards Pro runtime and test exact Stage5 bytes. Do not start A1-L19.",
+  "checkpoint_commit": "a434358b07435d78217feb94f42de27cb2ce2f0f",
+  "receipt_commit": "769f55e29fa921fce11808245475e38573751c71",
   "previous_locked_scope": {
     "scope": "A1-L17",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -46,9 +46,24 @@
     "historical_parent": "exact Stage3 recovery verified; historical Stage4 used only as comparison",
     "persistence": {
       "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "git": "IN_SYNC_AFTER_THIS_UPDATE"
+      "git": "IN_SYNC"
     },
     "runtime": "NOT_RUN_CONTENT_ONLY",
+    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
+  },
+  "stage5": {
+    "canonical_sha256": "a82bac9179c2b6f80f0c783e218aca408eda3addfa887a8d33bf8cd36ddb9f44",
+    "direct_import_sha256": "b3f3676579e3d3abdca230dd2dc8d9bf98bd36c177c178e292e9ddb890422363",
+    "content": "171 cards / 684 examples / 123 relations / 47 Kombinationen / 615 accepted candidates",
+    "completeness": "2715/2715 final / 0 unresolved",
+    "source": "132 occurrences / 171 output edges",
+    "presentation": "171/171 de-vocabulary + gfp-vocabulary-neutral@1",
+    "validation": "official v3.3.6 5/5 + exact clean anti-bypass builder PASS + prevention projection/package PASS + negative 3/3 + fresh package PASS",
+    "persistence": {
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "git": "IN_SYNC_AFTER_THIS_UPDATE"
+    },
+    "runtime": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6",
     "content_lock_state": "SUCCESSOR_NOT_LOCKED"
   }
 }

@@ -2,21 +2,22 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L17",
-  "latest_verified_milestone": "STAGE3A_COMPLETE_RICHNESS_BASELINE__STAGE3B_EDITORIAL_PENDING",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE3A-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE3A-RECEIPT.json",
+  "latest_verified_milestone": "STAGE3B_EDITORIAL_COVERAGE_138_OF_138__STAGE3C_PENDING",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE3B-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE3B-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L17-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
-    "sha256": "3c0d4a7cec769580aba68d27567186a01807312cd319ee0c444b9b29f8a5009e",
-    "size_bytes": 215789,
-    "library_file_id": "file_0000000086648246b00a14a73af2264e",
-    "library_stable_id": "libfile_27a8869cd444819180943926516db077",
+    "filename": "Menschen-A1-L17-v3.3.6-REAUDIT-Stage3B-EDITORIAL-COMPLETE-CHECKPOINT.zip",
+    "sha256": "bbdc08bce8443124a21403ade21b789a77a97d3fd2e7328980f2f07972eecfba",
+    "size_bytes": 364448,
+    "members": 49,
+    "library_file_id": "file_0000000000548210868dcf8d8fda5d7c",
+    "library_stable_id": "libfile_e9c46b8480548191957175b7ce56e45c",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE3A__138_TARGETS__2210_CELLS__2072_UNRESOLVED__0_CANDIDATES__OFFICIAL_4_OF_4__INDEPENDENT_25_OF_25__STAGE3B_NEXT",
-  "next_action": "A1-L17 Stage3B independent editorial enrichment for all 138 active targets. Do not start A1-L18.",
-  "checkpoint_commit": "f6a85ff61fa28a4261582c311c837c4ca00f4753",
-  "receipt_commit": "02eae1876a295621642e9cfee60f4749729d9912",
+  "quality": "PASS_STAGE3B__138_OF_138_EDITORIAL__552_EXAMPLES__61_RELATIONS__3_SELF_RELATIONS_REJECTED__28_KOMBINATIONEN__65_REPAIRS__430_DEFERRED__27_OF_27_INDEPENDENT__STAGE3C_NEXT",
+  "next_action": "A1-L17 Stage3C final disposition of all 430 working candidates and closure of all 2210 official completeness cells to zero unresolved. Do not start A1-L18.",
+  "checkpoint_commit": "1ede82c7b5795d17f9822c4800016e905f107ad4",
+  "receipt_commit": "5124b0b19e1f2b02f47bb27e5be62ed9ed87bde6",
   "previous_locked_scope": {
     "scope": "A1-L16",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -24,17 +25,20 @@
     "sha256": "b1950c6470ea85f10fa38abe97345bff03022fcacff1b7210c97f56d7ba0433d",
     "content_lock_state": "LOCKED"
   },
-  "stage3a": {
+  "stage3b": {
     "targets": 138,
-    "senses": 66,
-    "expressions": 72,
-    "completeness": "2210 cells / 2072 unresolved",
-    "source_audio": "138 VERIFIED_PRESENT",
-    "historical_recovery": "147 targets / 588 examples / 64 relations / 84 resolutions / 147 claims",
-    "mem009": "9 historical aliases retired; 3 historical relations become self after alias mapping",
-    "priority": "65 flagged + 3 current-prior reuse + 70 remaining",
-    "candidate_ledger": 0,
-    "validation": "official 4/4 + independent 25/25 + post-package PASS",
+    "examples": "552 = 4x138",
+    "priority": "65 semantic-flag + 3 exact current-prior reuse + 70 remaining",
+    "relations": "64 historical -> 61 current candidates; 3 self-relations rejected structurally",
+    "kombinationen": "28 provisional items on 18 cards / 120 provisional CLOSED_NO_FORCE",
+    "repairs": 65,
+    "candidates": "430 DEFERRED / 0 final",
+    "completeness": "2210 cells / 2072 unresolved baseline",
+    "validation": "official 4 gates PASS + custom PASS + independent 27/27 + package PASS",
+    "persistence": {
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "git": "IN_SYNC_AFTER_THIS_UPDATE"
+    },
     "runtime": "NOT_RUN_CONTENT_ONLY"
   }
 }

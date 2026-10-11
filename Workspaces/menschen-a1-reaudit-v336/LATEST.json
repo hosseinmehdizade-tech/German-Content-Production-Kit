@@ -2,22 +2,23 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L15",
-  "latest_verified_milestone": "STAGE5_CLEAN_DELIVERY_ANTI_BYPASS_PASS__STAGE6_NEXT",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L15-STAGE5-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L15-STAGE5-RECEIPT.json",
+  "latest_verified_milestone": "STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_ALLOWED",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L15-STAGE6-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L15-STAGE6-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L15-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
-    "sha256": "be859ffd0ce0f6f3465d1bbb3010224aaaa297ac7a3e0c6a1fb3a4233456da79",
-    "size_bytes": 1046038,
-    "members": 54,
-    "library_file_id": "file_0000000037bc821087c14d2177f11e12",
-    "library_stable_id": "libfile_3634b17e4b0c81919ca9025921a140f5",
+    "filename": "Menschen-A1-L15-v3.3.6-REAUDIT-Stage6-v475-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+    "sha256": "ba978852796c7e478d6399598eef52afa742c3b823c03b2df6fce39fc7eae5ef",
+    "size_bytes": 1019994,
+    "members": 63,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L15-v3.3.6-REAUDIT-Stage6-v475-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+    "library_file_id": "file_0000000038e482108c6197c185dc378a",
+    "library_stable_id": "libfile_2d76453adacc8191b0e6059a0a75f8b3",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE5__161_CARDS__644_EXAMPLES__93_RELATIONS__67_KOMBINATIONEN__517_FINAL__2579_OF_2579_ZERO_UNRESOLVED__STAGE6_NEXT",
-  "next_action": "A1-L15 Stage6 on freshly resolved CURRENT runtime. Do not start A1-L16.",
-  "checkpoint_commit": "758f3dab14433f77e4b3e680a76a85123700d057",
-  "receipt_commit": "b436ab6cdbadbda3ebd5e4dee839c02cde614f24",
+  "quality": "PASS_STAGE6_EXACT_CURRENT_V475__18_OF_18__9_OF_9_STATIC__5_OF_5_OFFICIAL__161_CARDS__644_EXAMPLES__67_KOMBINATIONEN__93_TYPED_RELATIONS__STAGE7_NEXT",
+  "next_action": "A1-L15 Stage7 final content lock/post-package verification. Do not start A1-L16.",
+  "checkpoint_commit": "30ab2a84168fb5f36e3736ca6c33d1e1f5fd3b56",
+  "receipt_commit": "4d6dd071225376b8b4ee1633ce32ea211d6ea9c8",
   "previous_locked_scope": {
     "scope": "A1-L14",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -115,5 +116,37 @@
     "zero_audio": "ma1m-lu-1745 + ma1m-lu-1343 preserved",
     "noun_verb_boundary": "ma1m-lu-1731 Leben != ma1m-lu-0179 leben",
     "runtime": "NOT_RUN_CONTENT_ONLY"
+  },
+  "stage6": {
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_ALLOWED",
+    "runtime": {
+      "current": "v475-R109",
+      "artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+      "app_sha256": "367ebdbca257a1161339f80574bb93e32bb55d806ed3b3cdc3874987ace3d407",
+      "service_worker_sha256": "e6a53debd7d00c45cf57fb7ec0515c2f552896a1189a570cff77f09bae7ea91b",
+      "last_fully_verified": "v466-R100",
+      "release_final": false,
+      "same_profile_acceptance": "PENDING_USER_POPULATED_PROFILE_V475",
+      "git_runtime_mirror": "PENDING_V475_SOURCE_MIRROR__MAIN_V474"
+    },
+    "acceptance": {
+      "deterministic": "18/18 PASS",
+      "static_runtime": "9/9 PASS",
+      "official_validators": "5/5 PASS",
+      "parser": "161/161 Universal v2 / 23 columns / 161 unique IDs",
+      "modes": "Study/Quick/Typing/Audio 161/161 deterministic readiness",
+      "examples": "644/644 trilingual",
+      "kombinationen": "67/67 visible on 31 cards / 130 CLOSED_NO_FORCE",
+      "relations": "93/93 typed learner-visible; RELATED 89 / SYNONYM 4; all target IDs resolve inside L15",
+      "source_audio": "lesson-local 159 VERIFIED_PRESENT / 2 CLOSED_NO_FORCE / 111 unique L15 refs",
+      "reused_identity": "ma1m-lu-1343 A1-L13+A1-L15 memberships preserved",
+      "cumulative_identity": "1702 memberships / 1694 unique / 8 intentional reuses / 0 accidental collisions"
+    },
+    "environment_boundary": {
+      "canonical_origin_probe": "BLOCKED_ENVIRONMENT_NET_ERR_BLOCKED_BY_ADMINISTRATOR",
+      "durable_indexeddb_real_origin": "NOT_CLAIMED_IN_MANAGED_CONTAINER",
+      "offline_acceptance": "INHERITABLE_FROM_V466_UNCHANGED_STORAGE_SERVICE_WORKER_SEMANTICS"
+    },
+    "stage7_allowed": true
   }
 }

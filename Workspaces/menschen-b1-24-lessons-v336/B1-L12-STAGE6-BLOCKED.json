@@ -1,0 +1,60 @@
+{
+  "schema": "menschen-b1-l12-stage6-blocked-receipt@1.0.0",
+  "date": "2026-10-11",
+  "status": "BLOCKED_UPSTREAM_STAGE5_RUNTIME_IMPORT_SCHEMA",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L12",
+  "lesson_title": "Ausflug des Jahres",
+  "framework": "v3.3.6",
+  "stage6": {
+    "blocker_artifact": {
+      "filename": "Menschen-B1-L12-v3.3.6-Stage6-RUNTIME-ACCEPTANCE-BLOCKED.zip",
+      "sha256": "25a94a4612d203daa2f159ae5c503c4afab2d4cc6d9c502458a8e66e524aa8e5",
+      "size_bytes": 3949,
+      "library_file_id": "file_0000000099ec8210aa67e8184853accf",
+      "library_stable_id": "libfile_dc6745af03c881919c4961b4d9e4d36d",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "report": {
+      "filename": "B1-L12-STAGE6-RUNTIME-ACCEPTANCE-BLOCKED.json",
+      "sha256": "fd7ed5268f706ed421b6029b6fb3716947b815741c07bce5090892b40f28335e",
+      "library_file_id": "file_00000000e2ac81f48e99b0bd5e2f47e0",
+      "library_stable_id": "libfile_00c1ccb79e148191a4675e95524c1350"
+    },
+    "post_package": {
+      "filename": "B1-L12-STAGE6-BLOCKED-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "822bc56aab736dd49135a3d4b331b78cc8a127aed26763e8848fd1de63b7acbf",
+      "library_file_id": "file_000000005978821092ecc461b75cb008",
+      "library_stable_id": "libfile_7708796e2c4081919992b843555d85d3",
+      "status": "PASS_FOR_BLOCKED_CHECKPOINT"
+    },
+    "runtime_authority": {
+      "CURRENT": "v475-R109",
+      "artifact": "GFP-v475-R109-MULTI-MEMBERSHIP-LIBRARY-INDEX.zip",
+      "artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+      "exact_materialization": "PASS_SHA256",
+      "LAST_FULLY_VERIFIED": "v466-R100"
+    },
+    "blocker": {
+      "stage5_tsv_columns": 32,
+      "runtime_universal_columns": 23,
+      "parser_result": "FAIL_SCHEMA_UNKNOWN",
+      "environment_independent": true,
+      "stage5_semantic_artifact_preserved": true,
+      "stage5_direct_import_compatibility_invalidated": true,
+      "stage6_pass_allowed": false,
+      "stage7_allowed": false
+    },
+    "runtime_static_checks": {
+      "assets": "PASS 142/64",
+      "js_syntax": "PASS 37 files",
+      "shell_cohort": "PASS 64 resources + 3 negative controls",
+      "v475_multi_membership": "PASS 8/8"
+    },
+    "environment_boundary": {
+      "live_http_origin": "BLOCKED_BY_ADMINISTRATOR_IN_CONTAINER",
+      "note": "Separate from parser blocker; schema mismatch reproduced inside exact flattened v475 runtime."
+    }
+  },
+  "next_action": "Run B1-L12 Stage5 Repair1: compile exact Stage4/Stage5 semantics into CURRENT runtime Universal v2 23-column schema without semantic loss, validate exact v475 parser accepts 133/133, then rerun Stage6. Do not start B1-L13."
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage5b-checkpoint@1.0.0",
+  "date": "2026-10-11",
+  "scope": "A1-L10",
+  "framework": "v3.3.6",
+  "status": "PASS_STAGE5B_CURRENT_PRESENTATION_BRIDGE__STAGE6_RERUN_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-002-CURRENT-VS-VERIFIED",
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "CP-MEM-002",
+    "CP-MEM-003",
+    "CP-MEM-004"
+  ],
+  "lineage": {
+    "parent_stage5_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+    "parent_stage5_sha256": "136766d9b87a205edfd131de014c382ba67ff98fa3e29ddebeecc861e3d6f273",
+    "failed_stage6_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
+    "failed_stage6_sha256": "c264c7e4675317d60bbab423cd312b2c6afa3e00349c9c7e3249cb31bac9784a",
+    "stage4_canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8"
+  },
+  "projection_repair": {
+    "semantic_content_mutated": false,
+    "runtime_mutated": false,
+    "direct_import_sha256": "5602c910a5d0144dc38a80bbe7f192f21c4f6011fd1e245503e460fc7b5866e9",
+    "cards": 120,
+    "examples": 480,
+    "relations": 69,
+    "relation_types": {
+      "RELATED": 59,
+      "REKTION": 7,
+      "WORD_FAMILY": 3
+    },
+    "kombinationen_items": 59,
+    "kombinationen_cards": 44,
+    "closed_no_force_cards": 76,
+    "changes": [
+      "Added custom_fields.kombinationen_v1 from exact accepted kombinationen_v336 ledger; no invented items.",
+      "Replaced untyped learner Verwandt bucket with Verwandte Wörter / Rektion / Wortfamilie presentation buckets.",
+      "Added CURRENT-compatible canonical_unit projection bridge for relation-only cards.",
+      "Removed machine-internal duplicate canonical_unit.details keys from learner projection copy while preserving equivalent structure in canonical_unit.core and exact Stage4 canonical authority."
+    ]
+  },
+  "validation": {
+    "official_clean_delivery_builder": "PASS_EXACT_V3_3_6_PORTABLE_AUTHORITY",
+    "official_gates": "PASS_5_OF_5_PROJECTION_SOURCE_IDENTITY_CANDIDATES_COMPLETENESS",
+    "official_completeness": "1938/1938 final / 0 unresolved",
+    "candidate_ledger": "299 accepted / 0 deferred",
+    "fresh_extract": "PASS",
+    "zip_crc": "PASS",
+    "package_hygiene": "PASS",
+    "canonical_byte_parity": "PASS exact Stage4 canonical SHA",
+    "current_presentation_preflight": {
+      "runtime": "v475-R109",
+      "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+      "four_modes": "Study/Quick/Typing/Audio 120/120 each",
+      "visible_kombinationen": "59/59 on 44/44 cards",
+      "visible_relations": "69/69",
+      "type_safe_relations": "69/69",
+      "page_errors": 0,
+      "boundary": "READ_ONLY_PRESENTATION_PREFLIGHT_NOT_STAGE6_PERSISTENCE_ACCEPTANCE"
+    },
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5B-PRESENTATION-BRIDGE-PASS.zip",
+    "sha256": "990762b12cb829ee21680012b4934c884eefe16ecd58d60e4e0060729a44e6c3",
+    "size_bytes": 590496,
+    "members": 57,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.6-REAUDIT-Stage5B-PRESENTATION-BRIDGE-PASS.zip",
+    "library_file_id": "file_00000000db3c81f48e92088b41885a64",
+    "library_stable_id": "libfile_8ffc18f524888191b85d018e36bdbd79",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "runtime_stage6": "NOT_RERUN",
+  "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
+  "stage7_allowed": false,
+  "next_action": "A1-L10 Stage6 rerun on exact CURRENT runtime using the exact Stage5B artifact/TSV; confirm full import/presentation/cumulative identity and document persistence boundary before any Stage7 lock."
+}

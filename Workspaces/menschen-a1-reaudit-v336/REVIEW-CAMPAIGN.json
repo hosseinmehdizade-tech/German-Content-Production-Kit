@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 14,
     "active_lesson": "A1-L10",
-    "overall_state": "A1_L10_STAGE6_BLOCKED_PRESENTATION__STAGE5B_REPAIR_NEXT",
-    "git_persistence": "STAGE6_BLOCKER_IN_SYNC"
+    "overall_state": "A1_L10_STAGE5B_PASS__STAGE6_RERUN_NEXT",
+    "git_persistence": "STAGE5B_IN_SYNC"
   },
   "lessons": [
     {
@@ -874,13 +874,13 @@
     },
     {
       "id": "A1-L10",
-      "reaudit_status": "STAGE6_BLOCKED_PRESENTATION__STAGE5B_REPAIR_NEXT",
+      "reaudit_status": "STAGE5B_COMPLETE__STAGE6_RERUN_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
-      "independent_quality": "BLOCKED_STAGE6_CONFIRMED_LEARNER_VISIBLE_ENRICHMENT_DEFECT",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE6-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "c264c7e4675317d60bbab423cd312b2c6afa3e00349c9c7e3249cb31bac9784a",
-      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
+      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5B-PRESENTATION-BRIDGE-PASS.zip",
+      "independent_quality": "PASS_STAGE5B_CURRENT_PRESENTATION_BRIDGE",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE5B-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "990762b12cb829ee21680012b4934c884eefe16ecd58d60e4e0060729a44e6c3",
+      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5B-PRESENTATION-BRIDGE-PASS.zip",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 93,
       "stage12_source_ordinals": "639..731",
@@ -987,7 +987,17 @@
       "stage6_static": "9/9 PASS",
       "stage6_persistence": "BLOCKED_BEFORE_APP_CODE__NOT_CERTIFIED",
       "stage7_allowed": false,
-      "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage5b": "PASS_PROJECTION_ONLY_PRESENTATION_REPAIR",
+      "stage5b_direct_import_sha256": "5602c910a5d0144dc38a80bbe7f192f21c4f6011fd1e245503e460fc7b5866e9",
+      "stage5b_canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8",
+      "stage5b_visible_kombinationen": "59/59 on 44/44 cards",
+      "stage5b_visible_relations": "69/69",
+      "stage5b_typed_relations": "69/69",
+      "stage5b_four_modes": "120/120 each",
+      "stage5b_official": "clean-builder + 5 official gates PASS",
+      "stage5b_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage6_rerun": "PENDING"
     },
     {
       "id": "A1-L11",
@@ -1107,20 +1117,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L10 Stage5B projection-only presentation repair from exact Stage4/Stage5 authority. Preserve canonical bytes/IDs/examples/source; add CURRENT-compatible learner-visible Kombinationen and typed relation presentation bridge; rerun Stage5 official gates and Stage6 on exact CURRENT. Do not start Stage7.",
-  "quality_state": "A1_L10_STAGE6_BLOCKED_PRESENTATION__STAGE5B_REPAIR_NEXT",
+  "next_action": "A1-L10 Stage6 rerun on exact CURRENT runtime using the exact Stage5B artifact/TSV; confirm full import/presentation/cumulative identity and document persistence boundary before any Stage7 lock.",
+  "quality_state": "A1_L10_STAGE5B_PASS__STAGE6_RERUN_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L10",
-    "stage": "Stage6 CURRENT Runtime Acceptance",
-    "quality": "BLOCKED_CORE_17_OF_18__VISIBLE_ENRICHMENT_FAIL__PERSISTENCE_ENV_BOUNDARY",
-    "artifact_sha256": "c264c7e4675317d60bbab423cd312b2c6afa3e00349c9c7e3249cb31bac9784a",
+    "stage": "Stage5B CURRENT Presentation Bridge Repair",
+    "quality": "PASS_59_OF_59_KOMBINATIONEN__69_OF_69_RELATIONS__69_OF_69_TYPED__OFFICIAL_GATES_PASS",
+    "artifact_sha256": "990762b12cb829ee21680012b4934c884eefe16ecd58d60e4e0060729a44e6c3",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "SAME_ATOMIC_STAGE6_SYNC_COMMIT",
-    "receipt_commit": "SAME_ATOMIC_STAGE6_SYNC_COMMIT",
-    "runtime": "v475-R109",
-    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "checkpoint_commit": "SAME_ATOMIC_STAGE5B_SYNC_COMMIT",
+    "receipt_commit": "SAME_ATOMIC_STAGE5B_SYNC_COMMIT",
+    "runtime_preflight": "v475-R109 exact read-only presentation preflight",
+    "stage6": "NOT_RERUN",
     "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
     "stage7_allowed": false
   }

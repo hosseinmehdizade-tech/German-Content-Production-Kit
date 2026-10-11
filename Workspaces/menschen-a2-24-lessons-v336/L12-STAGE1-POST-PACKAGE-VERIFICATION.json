@@ -1,0 +1,46 @@
+{
+  "schema": "gcpk-a2-l12-stage1-post-package-verification@1.0.0",
+  "status": "PASS",
+  "artifact": "Menschen-A2-L12-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+  "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
+  "size_bytes": 33772,
+  "package": {
+    "zip_crc": "PASS",
+    "members": 12,
+    "manifest_rehash": "10/10 PASS",
+    "sha256sums_rehash": "11/11 PASS",
+    "json_parse": "8/8 PASS",
+    "duplicate_members": 0,
+    "unsafe_paths": 0,
+    "package_hygiene": "PASS_NO_PYC_PYCACHE_GIT"
+  },
+  "source": {
+    "archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "csv_decompression": "PASS_DIRECT_FROM_CURRENT_CHAT_RAR5",
+    "rows": "94 / 3293..3386",
+    "audio": "93 references / 93 present; row 3324 has no source audio tag"
+  },
+  "content_gates": {
+    "source_occurrence_contract": "PASS_1_SOURCE_94_OCCURRENCES_0_ERRORS",
+    "self_validation": "PASS_15_CHECKS",
+    "source_payload_hash_binding": "94/94 PASS",
+    "runtime_state_exclusion": "PASS"
+  },
+  "stage_boundary": {
+    "canonicalization_started": false,
+    "stage2_started": false
+  },
+  "library": {
+    "path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+    "file_id": "file_000000009afc82439a066b8f243d98c5",
+    "stable_id": "libfile_6c35a1a9af448191858a7f663fd92c10",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "sidecar_path": "/German-Content-Production-Kit/Checkpoints/A2-L12-STAGE1-POST-PACKAGE-VERIFICATION.json",
+    "sidecar_file_id": "file_00000000f8c882108f48b1afd2aec453",
+    "sidecar_stable_id": "libfile_cd8795eeef688191aa66d911ddeb877c",
+    "sidecar_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "result": "A2-L12 Stage1 source inventory package passes fresh-extract verification; Stage2 has not started.",
+  "next_action": "Run A2-L12 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 94 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L11 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not start Stage3 until identity closure has zero unresolved states."
+}

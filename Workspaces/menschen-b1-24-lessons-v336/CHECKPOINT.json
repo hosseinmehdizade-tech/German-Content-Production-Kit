@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L12_STAGE3C_REPAIR1_PASS__STAGE4_PENDING",
+  "status": "B1_L12_STAGE4_REQA1_BLOCKED__REPAIR1_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -96,12 +96,12 @@
     "stage1": "PASS_WITH_VERIFIED_PORTABLE_SOURCE_BOUNDARY",
     "stage2": "PASS_REPAIR1_MULTI_MEANING_IDENTITY_CLOSURE",
     "stage3": "STAGE3C_REPAIR1_DISPOSITION_CLOSURE_PASS",
-    "stage4": "NOT_STARTED_AFTER_REPAIR1",
+    "stage4": "BLOCKED_REPAIR1_REQUIRED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "LOCKED"
   },
-  "next_action": "Run B1-L12 Stage4 independent linguistic/source-fidelity QA from exact Stage3C Repair1 artifact 9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b. Do not start B1-L13.",
+  "next_action": "Run B1-L12 Stage4 Repair1 from exact ReQA1 blocked artifact 93e340b59a6611a2be84ee31ed14067f3d360a00536f58a189baec48db0d4db4, then rerun independent Stage4 QA. Do not start B1-L13.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4297,14 +4297,14 @@
   },
   "current_lesson": "B1-L12",
   "next_lesson": "B1-L13",
-  "current_stage": "Stage3C Repair1 disposition closure PASS",
+  "current_stage": "Stage4 ReQA1 BLOCKED — Repair1 required",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L12-v3.3.6-Stage3C-Repair1-CLOSURE-PASS-CHECKPOINT.zip",
-    "sha256": "9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b",
-    "size_bytes": 385201,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage3C-Repair1-CLOSURE-PASS-CHECKPOINT.zip",
-    "library_file_id": "file_00000000bfe88210a22e931bd5cc5bbb",
-    "library_stable_id": "libfile_248d5409fb5c8191b27bcb394785339d",
+    "filename": "Menschen-B1-L12-v3.3.6-Stage4-ReQA1-BLOCKED-CHECKPOINT.zip",
+    "sha256": "93e340b59a6611a2be84ee31ed14067f3d360a00536f58a189baec48db0d4db4",
+    "size_bytes": 392914,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage4-ReQA1-BLOCKED-CHECKPOINT.zip",
+    "library_file_id": "file_00000000055481f4b7d4857f79f5d7ec",
+    "library_stable_id": "libfile_316aa7474e4c81919d31b06507bfc583",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4440,5 +4440,27 @@
     "superseded_ids": 9,
     "artifact_sha256": "9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "b1_l12_stage4_reqa1": {
+    "status": "BLOCKED_REPAIR_REQUIRED__STAGE4_REPAIR1_PENDING",
+    "parent_stage3c_repair1_sha256": "9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b",
+    "targets": 133,
+    "examples": 532,
+    "blockers": 126,
+    "major_issues": 1449,
+    "advisories": 175,
+    "issues_total": 1750,
+    "generic_definition_templates": 126,
+    "pending_structure_metadata_targets": 133,
+    "template_de_example_shells": 292,
+    "english_gloss_insertions": 504,
+    "persian_gloss_insertions": 505,
+    "kombination_equals_headword": 73,
+    "relation_edges_pending_semantic_reaudit": 102,
+    "duplicate_de_example_groups": 12,
+    "subtype_source_form_mismatches": 3,
+    "artifact_sha256": "93e340b59a6611a2be84ee31ed14067f3d360a00536f58a189baec48db0d4db4",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "stage5_allowed": false
   }
 }

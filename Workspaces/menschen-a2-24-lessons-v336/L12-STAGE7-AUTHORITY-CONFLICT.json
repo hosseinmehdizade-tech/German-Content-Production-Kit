@@ -1,0 +1,45 @@
+{
+  "schema": "gcpk-a2-l12-stage7-authority-conflict@1.0.0",
+  "status": "RECORDED__DO_NOT_PROMOTE_CONFLICT_ARTIFACT",
+  "scope": "A2-L12",
+  "detected_on": "2026-10-12",
+  "authoritative_git_state": {
+    "workstream_latest": "A2-L13_STAGE4_PASS",
+    "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L13-STAGE4.json",
+    "l12_stage7_receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE7.json",
+    "l12_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L12-CHECKPOINT.json",
+    "l12_locked_artifact_sha256": "686938143b00d0116ccdcf7ecafdde8d96dec0758733bc874bf60bcd890b7be1",
+    "l12_locked_artifact_size_bytes": 514975,
+    "content_lock_state": "LOCKED"
+  },
+  "conflict_artifact": {
+    "filename": "Menschen-A2-L12-v3.3.6-GFP-v475-LOCKED-CONFLICT-82a4c2e4.zip",
+    "sha256": "82a4c2e4abf2a366fd96e4a1b17439d28b9d771893cc170c3942ce6c06c761fa",
+    "size_bytes": 520803,
+    "semantic_import_bytes": {
+      "stage5_dataset_sha256": "db03ed8dfbd4c37dfbfea4356cf16b097881490e61ad685ac5b5b271a4140481",
+      "projected_cards_sha256": "d407d8749e9f3d7374eb0cd5e333b2e492f258eb62ad41650ccba0f7ea8aa842",
+      "canonical_sha256": "e87661218e4332e4c4fd5a5b67ae9f21c37d0c22f31905b70fec15aed0b6405f",
+      "changed_from_stage5": false
+    },
+    "disposition": "FORENSIC_CONFLICT_COPY_ONLY__NOT_AUTHORITY"
+  },
+  "incident": {
+    "cause": "A stale continuation path began rebuilding A2-L12 Stage7 before re-reading the already-advanced workstream LATEST pointer. During that stale path the canonical Library basename was overwritten with a different non-semantic Stage7 repackage.",
+    "corrective_action": "The conflicting ZIP and its sidecars were immediately renamed in Library with a CONFLICT-82a4c2e4 suffix. No Git authority pointer was changed or downgraded.",
+    "authoritative_bytes_recovered": false,
+    "canonical_library_path_currently_restored": false,
+    "reason_not_restored": "The exact prior authoritative ZIP bytes with SHA-256 686938... are not currently visible/materializable from the available Library surface. Do not substitute the conflict repackage."
+  },
+  "downstream": {
+    "l13_stage4_git_state_preserved": true,
+    "l13_stage4_artifact_sha256": "8cdb39d5e3c8a32b4d1a46b5a6e85bae8f0b020bd8799278170595e03958b93b",
+    "next_action": "Before any operation that requires the exact A2-L12 Stage7 outer ZIP, recover SHA-256 686938... from an authoritative prior artifact source. For normal workstream progression, resume from the already-validated A2-L13 Stage4 artifact and run A2-L13 Stage5 without rewriting A2-L12."
+  },
+  "library_note": {
+    "path": "/German-Content-Production-Kit/Checkpoints/A2-L12-STAGE7-AUTHORITY-CONFLICT.json",
+    "file_id": "file_00000000561082439de35701afd6a677",
+    "library_file_id": "libfile_978a7bd1ea8481919edb8733c8856bf8",
+    "sha256": "5f05da98dda60a3ace2ba2095860b4b113a762470be409c8d70adb889cd588d4"
+  }
+}

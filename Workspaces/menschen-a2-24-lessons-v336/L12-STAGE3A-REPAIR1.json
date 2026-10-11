@@ -1,0 +1,92 @@
+{
+  "schema": "gcpk-menschen-a2-l12-stage3a-repair1-git-receipt@1.0.0",
+  "scope": "A2-L12",
+  "framework": "v3.3.6",
+  "stage": "3A-Repair1",
+  "status": "PASS_RICHNESS_BASELINE_REPAIR1__STAGE3B_SUCCESSOR_PASS",
+  "parent": {
+    "stage2b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE2B.json",
+    "stage2b_artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
+    "identity_fingerprint": "53fdc8bda331b3fefb7bd87dbc170a41fcc60a464165121dc892553052a24030",
+    "canonical_sha256": "50ead408c156045b9b1c0107c9e7e1db4758abde99c59f469d85646c8cd29368"
+  },
+  "supersession": {
+    "original_stage3a_artifact_sha256": "850cfaaeef62532209567e86d33230e5381960a2166f4c26056e4fb597e14d92",
+    "superseded": true,
+    "reason": "Official v3.3.6 completeness validator exposed a missing REVIEW reference on the already-valid CLOSED_NO_FORCE source_audio cell for ma2m-lu-0733.",
+    "semantic_change": false,
+    "identity_change": false,
+    "raw_source_change": false,
+    "learner_visible_change": false
+  },
+  "repair": {
+    "target": "ma2m-lu-0733",
+    "dimension": "source_audio",
+    "disposition": "CLOSED_NO_FORCE",
+    "reason_code": "SOURCE_HAS_NO_AUDIO",
+    "evidence": "Stage1 source row 3324 has no audio tag; added required REVIEW reference only; no audio fabricated."
+  },
+  "baseline": {
+    "targets": 85,
+    "senses": 47,
+    "expressions": 38,
+    "new_a2": 75,
+    "locked_a1_dependencies": 6,
+    "locked_prior_a2_dependencies": 4,
+    "dimension_cells": 1346,
+    "verified_present_cells": 84,
+    "closed_no_force_cells": 1,
+    "unresolved_cells": 1261,
+    "verified_by_dimension": {
+      "source_audio": 84
+    },
+    "closed_no_force_by_dimension": {
+      "source_audio": 1
+    },
+    "targets_with_persian_seed": 85,
+    "targets_with_any_german_example_seed": 77,
+    "targets_without_any_german_example_seed": [
+      "ma2m-lu-0727",
+      "ma2m-lu-0739",
+      "ma2m-lu-0744",
+      "ma2m-lu-0747",
+      "ma2m-lu-0752",
+      "ma2m-lu-0753",
+      "ma2m-lu-0777",
+      "ma2m-lu-0779"
+    ],
+    "targets_with_morphology_hints": 33,
+    "stage3_relation_candidates": 52,
+    "targets_with_relation_candidates": 37,
+    "kombinationen_review_scope": 85
+  },
+  "qa": {
+    "official_enrichment_baseline_validator": "PASS_85_TARGETS_1346_CELLS_1261_UNRESOLVED",
+    "official_source_occurrences": "PASS_94_OCCURRENCES_0_ERRORS",
+    "official_identity_closure": "PASS_94_SOURCE_85_ACTIVE_0_ERRORS",
+    "fresh_package": "PASS_27_MEMBERS_26_REHASH_19_JSON_REPARSE",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "framework_v3_3_6_full_pytest_current_turn": "NOT_RERUN"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L12-v3.3.6-Stage3A-Repair1-RICHNESS-BASELINE-PASS.zip",
+    "sha256": "318611ba0810524c15628bc30dda306f2306f8cb1f950a819d55ba87aa4d535f",
+    "size_bytes": 295715,
+    "members": 27,
+    "sha256_entries": 26,
+    "json_files": 19,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage3A-Repair1-RICHNESS-BASELINE-PASS.zip",
+    "library_file_id": "file_00000000f458820a9618a02d74a04a74",
+    "library_stable_id": "libfile_06900082153481919ae1c000db4f2550",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package_verification": {
+    "filename": "A2-L12-STAGE3A-REPAIR1-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "224fbed01dafa88c70fdc239c5adb3c6f0a8d5c1cc019c4e301d939d16e91bc4",
+    "library_file_id": "file_000000001fc481f49fce770cd7ee6087",
+    "library_stable_id": "libfile_f68c19a42830819198c500ccbf2132d2",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "status": "PASS"
+  },
+  "next_action": "Use successor Workspaces/menschen-a2-24-lessons-v336/L12-STAGE3B.json; Stage3C is next."
+}

@@ -1,23 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage3A richness/completeness baseline is PASS; Stage3B enrichment is next.**
+**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage3B authorship is PASS; Stage3C independent disposition closure is next.**
 
-- A2-L11 lesson: **Ich freue mich so.**
-- Identity authority remains **80 canonical targets** = 74 new A2 + 4 immutable A1 reuses + 2 immutable prior-A2 reuses; identity unresolved = **0**.
-- Stage3A baseline has **1250 dimension cells**: **80 VERIFIED_PRESENT** (source audio only) and **1170 unresolved/actionable** for Stage3B.
-- Raw source seeds are inventory evidence, not learner-ready approval: Persian seed **80/80**; German example seed **79/80**. The only target without a German source-example seed is `ma1m-lu-2958` (*Grund*).
-- Explicit morphology hints were detected conservatively for **41 targets / 41 source occurrences**; contextual sentence inflections were not promoted to canonical morphology.
-- Stage2B supplies **37 relation/pattern candidates across 30 targets** for later review; Stage3A accepts none as learner-visible relations.
-- Mandatory Kombinationen review is scoped to **all 80 lexical targets**; Stage3A does not accept learner-visible Kombinationen or force a density quota.
-- Official v3.3.6 baseline gate: **80 targets / 1250 cells / 1170 unresolved — PASS**. Source-occurrence gate: **86/86 PASS**. Targeted framework tests: **10/10 PASS**.
-- Stage3A package: **35 members / 25 SHA entries / 18 JSON**, CRC/path/hygiene PASS.
-- Artifact: `Menschen-A2-L11-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip`, SHA-256 `8772b20a475e972c25ebdaa170eb1cc2a142dbb1858993d266a8cf3a51d13aa2`; Library exact-byte roundtrip PASS.
-- Metadata correction: the Stage2B Git receipt had a stale/wrong `identity.canonical_sha256` value (`a6f05084…`). The immutable Stage2B package and actual canonical file agree on `5e25320371cf4be3b81835626d3484cb6a93dae2210b135e209a52678218da9f`; only Git metadata was corrected, with no artifact/identity/semantic mutation.
-- Stage3B has **not started**. No learner-facing definitions, translations, four-example sets, morphology, relations, Rektion, NVV or Kombinationen are approved by Stage3A.
+- A2-L11 identity remains **80 targets** = 74 new A2 + 4 immutable A1 reuses + 2 immutable prior-A2 reuses; Stage2B identity is unchanged.
+- Stage3B authored **296 trilingual examples** = exactly four per new A2 card. No registered-source German example was silently promoted as final; all authored examples remain curated candidates.
+- Kombinationen authorship produced **156 reviewed candidates** across the lesson. No numeric density quota was used.
+- Relation authorship produced **76 candidates**: **28 registered-source-backed** and **48 curated**. Source claims are restricted to candidates with actual source evidence.
+- Working candidate ledger: **1170 candidates = 727 ACCEPTED working + 443 DEFERRED + 0 rejected**. Deferred is expected at Stage3B and is not Stage3C closure.
+- Stage3C preparation matrix intentionally keeps **all 1250 dimension cells pending independent disposition**. Stage3C must close each cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE.
+- Locked dependencies remain read-only: **6/6** (4 A1 + 2 prior A2). L01-L10 LOCKED content is unchanged.
+- QA: source occurrences **86 PASS**; identity closure **86 source / 80 active PASS**; Stage3A baseline recheck **80 / 1250 / 1170 PASS**; candidate-ledger working validator **1170 / 727 accepted / 443 deferred PASS**; negative closure gate correctly rejects the still-deferred ledger; framework suite **10/10 PASS**.
+- Final Stage3B package: **28 members / 27 SHA256SUMS / 20 JSON**, CRC/path/hygiene PASS.
+- Artifact: `Menschen-A2-L11-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip`, SHA-256 `9ab276ca6c8e8b6d96a8dd55c6afc604b8b1698217dd115e8fcac5131aad9cdf`.
+- Library upload succeeded from the exact exported snapshot. The JSON post-package report round-tripped byte-for-byte; the ZIP's independent Library rematerialization is temporarily pending binary visibility and is not overstated as PASS.
+- Stage3B is **not import-ready and not linguistically final**. Stage3C and Stage4 remain mandatory.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE3A.json](./L11-STAGE3A.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE3B.json](./L11-STAGE3B.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
 
-Next major stage: **A2-L11 Stage3B — gap-driven enrichment across all 1170 unresolved cells, including Kombinationen review for all 80 targets**.
+Next major stage: **A2-L11 Stage3C — independent disposition closure across all 80 identities / 1250 cells**. Do not start Stage4 until pending = 0.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

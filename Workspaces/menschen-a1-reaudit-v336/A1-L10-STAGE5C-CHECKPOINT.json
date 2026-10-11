@@ -1,0 +1,93 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage5c-checkpoint@1.0.0",
+  "date": "2026-10-11",
+  "scope": "A1-L10",
+  "framework": "v3.3.6",
+  "status": "PASS_STAGE5C_TYPED_RELATED_PRESENTATION_CLOSURE__STAGE6_RERUN_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-002-CURRENT-VS-VERIFIED",
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "CP-MEM-002",
+    "CP-MEM-003",
+    "CP-MEM-004"
+  ],
+  "lineage": {
+    "parent_stage5b_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5B-PRESENTATION-BRIDGE-PASS.zip",
+    "parent_stage5b_sha256": "990762b12cb829ee21680012b4934c884eefe16ecd58d60e4e0060729a44e6c3",
+    "failed_stage6r1_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6R1-v475-TYPED-RELATION-BLOCKED.zip",
+    "failed_stage6r1_sha256": "9eca0680bde4d97febea86202cadb506c47926a2ffd2ae00744630fd76000258",
+    "stage4_canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8"
+  },
+  "projection_repair": {
+    "changed_cards": 3,
+    "ids": [
+      "ma1m-lu-0933",
+      "ma1m-lu-0986",
+      "ma1m-lu-0987"
+    ],
+    "direct_import_sha256": "209a30ddc24ec2ad9e100c0cb6a0acba4f1dc53518993ed428be4f7fb7f80da1",
+    "projected_cards_sha256": "b88a42147d23c12441fa878623011b0bb28cbba73bcfa5e4f309aa41aa67b335",
+    "action": "Remove conflicting generic canonical_unit.connections from learner projection copy and place the same accepted RELATED text under canonical_unit.details[Verwandte Wörter].",
+    "semantic_content_mutated": false,
+    "ids_mutated": false,
+    "source_mutated": false,
+    "examples_mutated": false,
+    "canonical_relations_mutated": false,
+    "kombinationen_authority_mutated": false,
+    "runtime_mutated": false
+  },
+  "content": {
+    "cards": 120,
+    "examples": 480,
+    "relations": 69,
+    "relation_types": {
+      "RELATED": 59,
+      "REKTION": 7,
+      "WORD_FAMILY": 3
+    },
+    "kombinationen_items": 59,
+    "kombinationen_cards": 44,
+    "closed_no_force_cards": 76
+  },
+  "validation": {
+    "official_clean_delivery_builder": "PASS exact v3.3.6 portable authority",
+    "official_projection": "PASS 120/120",
+    "official_source_occurrences": "PASS 93",
+    "official_identity_closure": "PASS 120 active IDs",
+    "official_candidate_ledger": "PASS 299 / 0 deferred",
+    "official_completeness": "PASS 1938/1938 / 0 unresolved",
+    "current_presentation_preflight": "PASS exact CURRENT v475-R109: 59/59 Kombinationen, 69/69 relations, 69/69 type-safe; Study/Quick/Typing/Audio 120/120 each; 0 page errors",
+    "negative_controls": "4/4 PASS including exact typed-relation regression reintroduction -> 68/69 as expected",
+    "custom_verifier": "PASS",
+    "fresh_extract": "PASS",
+    "zip_crc": "PASS",
+    "duplicate_members": 0,
+    "unsafe_paths": 0,
+    "contains_app": false,
+    "manifest_and_checksums": "PASS",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "runtime_preflight": {
+    "current": "v475-R109",
+    "current_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "last_fully_verified": "v466-R100",
+    "stage6": "NOT_RERUN"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5C-TYPED-RELATION-BRIDGE-PASS.zip",
+    "sha256": "ef5bcb85796945d19a087dfe7432785fd50b4b6c5377efeca08e20a0bb956583",
+    "size_bytes": 592296,
+    "members": 61,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.6-REAUDIT-Stage5C-TYPED-RELATION-BRIDGE-PASS.zip",
+    "library_file_id": "file_00000000f44881f48cd774b03ddbd8fa",
+    "library_stable_id": "libfile_b935d91776f4819199aa84efe9b27222",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
+  "stage7_allowed": false,
+  "next_action": "A1-L10 full Stage6 rerun on exact CURRENT runtime using this exact Stage5C artifact/TSV; confirm import, 59/59 Kombinationen, 69/69 typed relations, cumulative identity and persistence boundary before any Stage7 lock."
+}

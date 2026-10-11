@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 14,
     "active_lesson": "A1-L10",
-    "overall_state": "A1_L10_STAGE6_RERUN_BLOCKED_TYPED_RELATIONS__STAGE5C_NEXT",
-    "git_persistence": "STAGE6_RERUN_BLOCKER_IN_SYNC"
+    "overall_state": "A1_L10_STAGE5C_PASS__STAGE6_RERUN_NEXT",
+    "git_persistence": "STAGE5C_IN_SYNC"
   },
   "lessons": [
     {
@@ -874,13 +874,13 @@
     },
     {
       "id": "A1-L10",
-      "reaudit_status": "STAGE6_RERUN_BLOCKED_TYPED_RELATIONS__STAGE5C_NEXT",
+      "reaudit_status": "STAGE5C_COMPLETE__STAGE6_RERUN_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6R1-v475-TYPED-RELATION-BLOCKED.zip",
-      "independent_quality": "BLOCKED_STAGE6_RERUN_CONFIRMED_3_TYPED_RELATED_BUCKET_DEFECTS",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE6-RERUN-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "9eca0680bde4d97febea86202cadb506c47926a2ffd2ae00744630fd76000258",
-      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6R1-v475-TYPED-RELATION-BLOCKED.zip",
+      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5C-TYPED-RELATION-BRIDGE-PASS.zip",
+      "independent_quality": "PASS_STAGE5C_TYPED_RELATED_PRESENTATION_CLOSURE",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE5C-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "ef5bcb85796945d19a087dfe7432785fd50b4b6c5377efeca08e20a0bb956583",
+      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5C-TYPED-RELATION-BRIDGE-PASS.zip",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 93,
       "stage12_source_ordinals": "639..731",
@@ -1013,7 +1013,24 @@
       "stage6_rerun_cumulative_identity": "852 memberships / 850 unique / 2 intentional reuse / 0 accidental collisions",
       "stage6_rerun_static": "9/9 PASS",
       "stage6_rerun_persistence": "BLOCKED_BEFORE_APP_CODE__NOT_CERTIFIED",
-      "stage6_rerun_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage6_rerun_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage5c": "PASS_PROJECTION_ONLY_TYPED_RELATED_REPAIR",
+      "stage5c_direct_import_sha256": "209a30ddc24ec2ad9e100c0cb6a0acba4f1dc53518993ed428be4f7fb7f80da1",
+      "stage5c_canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8",
+      "stage5c_changed_cards": 3,
+      "stage5c_changed_ids": [
+        "ma1m-lu-0933",
+        "ma1m-lu-0986",
+        "ma1m-lu-0987"
+      ],
+      "stage5c_visible_kombinationen": "59/59 on 44/44 cards",
+      "stage5c_visible_relations": "69/69",
+      "stage5c_typed_relations": "69/69",
+      "stage5c_four_modes": "120/120 each",
+      "stage5c_official": "clean-builder + 5 official gates PASS",
+      "stage5c_negative_controls": "4/4 PASS",
+      "stage5c_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage6_rerun_after_stage5c": "PENDING"
     },
     {
       "id": "A1-L11",
@@ -1133,20 +1150,20 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L10 Stage5C projection-only type-bucket repair for exactly 3 RELATED records (ma1m-lu-0933, ma1m-lu-0986, ma1m-lu-0987). Preserve canonical semantics/IDs/source/examples; prevent generic canonical_unit.connections from overriding RELATED learner presentation; rerun official Stage5 gates and full Stage6 before any Stage7 lock.",
-  "quality_state": "A1_L10_STAGE6_RERUN_BLOCKED_TYPED_RELATIONS__STAGE5C_NEXT",
+  "next_action": "A1-L10 full Stage6 rerun on exact CURRENT runtime using this exact Stage5C artifact/TSV; confirm import, 59/59 Kombinationen, 69/69 typed relations, cumulative identity and persistence boundary before any Stage7 lock.",
+  "quality_state": "A1_L10_STAGE5C_PASS__STAGE6_RERUN_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L10",
-    "stage": "Stage6 CURRENT Runtime Acceptance Rerun",
-    "quality": "BLOCKED_17_OF_18__59_OF_59_KOMBINATIONEN_VISIBLE__69_OF_69_RELATIONS_VISIBLE__66_OF_69_TYPED",
-    "artifact_sha256": "9eca0680bde4d97febea86202cadb506c47926a2ffd2ae00744630fd76000258",
+    "stage": "Stage5C Typed RELATED Presentation Closure",
+    "quality": "PASS_EXACTLY_3_REPAIRS__59_OF_59_KOMBINATIONEN__69_OF_69_RELATIONS_TYPED__OFFICIAL_GATES_PASS",
+    "artifact_sha256": "ef5bcb85796945d19a087dfe7432785fd50b4b6c5377efeca08e20a0bb956583",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "SAME_ATOMIC_STAGE6R1_SYNC_COMMIT",
-    "receipt_commit": "SAME_ATOMIC_STAGE6R1_SYNC_COMMIT",
-    "runtime": "v475-R109",
-    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "checkpoint_commit": "SAME_ATOMIC_STAGE5C_SYNC_COMMIT",
+    "receipt_commit": "SAME_ATOMIC_STAGE5C_SYNC_COMMIT",
+    "runtime_preflight": "v475-R109 exact read-only presentation preflight",
+    "stage6": "NOT_RERUN",
     "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
     "stage7_allowed": false
   }

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L13_STAGE1_PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
+  "status": "B1_L13_STAGE2_PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -94,14 +94,14 @@
   },
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
-    "stage2": "NOT_STARTED",
+    "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L13 Stage2 identity closure from exact Stage1 artifact 5dd6b55f2d8a2a2cabe64d70ef3ab603b7f50f861f4664401c34975b4e9a36b7. Preserve B1-L01..L12 locked identities; do not modify locked lessons in place.",
+  "next_action": "Run B1-L13 Stage3A baseline richness audit across all 120 active identities under v3.3.6. Do not start B1-L14.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4300,14 +4300,14 @@
   },
   "current_lesson": "B1-L13",
   "next_lesson": "B1-L14",
-  "current_stage": "Stage1 source inventory PASS",
+  "current_stage": "Stage2 identity closure PASS",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L13-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
-    "sha256": "5dd6b55f2d8a2a2cabe64d70ef3ab603b7f50f861f4664401c34975b4e9a36b7",
-    "size_bytes": 25989,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L13-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
-    "library_file_id": "file_0000000000b48243822d1dc40c904c6d",
-    "library_stable_id": "libfile_ef0a44dedb408191906c3b553fa04ce0",
+    "filename": "Menschen-B1-L13-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
+    "sha256": "7ba55cdb659dc8b4a9aad7240716f06beb293b5c581c68e6d6d643eb015324e4",
+    "size_bytes": 66438,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L13-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000516c82109d49d6db268962ab",
+    "library_stable_id": "libfile_5a34d9831c48819183f7a11116264538",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4611,5 +4611,43 @@
     "lesson_slice_sha256": "b38a8aececfb3a7bf4f1e89ba168790b5113b1b90d3a3eefb72c9e7e00285575",
     "artifact_sha256": "5dd6b55f2d8a2a2cabe64d70ef3ab603b7f50f861f4664401c34975b4e9a36b7",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "b1_l13_stage2": {
+    "status": "PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage1_sha256": "5dd6b55f2d8a2a2cabe64d70ef3ab603b7f50f861f4664401c34975b4e9a36b7",
+    "source_occurrences": 115,
+    "active_canonical_units": 120,
+    "new_canonical_units": 99,
+    "reused_locked_units": 21,
+    "reused_locked_source_rows": 28,
+    "split_source_rows": 18,
+    "lesson_internal_reuse_occurrences": 14,
+    "new_id_range": "mb1m-lu-1929..mb1m-lu-2027",
+    "unresolved_identity": 0,
+    "canonical_sha256": "7862a1f25f3eaaa922a168e7a77bde1907353f626ae38dd1566d2ff6b50c15fb",
+    "identity_fingerprint": "73b8b74fe075fe7a16d288d1d99c074d0c00dc775dde0c405197b84d5fe5ac45",
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "source_quality_findings_carried_forward": [
+      5991,
+      6072
+    ],
+    "artifact": {
+      "filename": "Menschen-B1-L13-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
+      "sha256": "7ba55cdb659dc8b4a9aad7240716f06beb293b5c581c68e6d6d643eb015324e4",
+      "size_bytes": 66438,
+      "members": 22,
+      "library_file_id": "file_00000000516c82109d49d6db268962ab",
+      "library_stable_id": "libfile_5a34d9831c48819183f7a11116264538",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L13-STAGE2-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "aa8db834ac86cceb1d397ab08882599a88b520c286396958edae78da631f8bde",
+      "status": "PASS",
+      "library_file_id": "file_000000003bd48210b045c9f6bf15f4e0",
+      "library_stable_id": "libfile_c8bc24f5808c81919abb541d90ee5b69"
+    },
+    "next_action": "Run B1-L13 Stage3A baseline richness audit across all 120 active identities under v3.3.6. Do not start B1-L14."
   }
 }

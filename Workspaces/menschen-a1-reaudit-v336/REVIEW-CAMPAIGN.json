@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 14,
     "active_lesson": "A1-L10",
-    "overall_state": "A1_L10_STAGE5_PASS__STAGE6_NEXT",
-    "git_persistence": "STAGE5_IN_SYNC"
+    "overall_state": "A1_L10_STAGE6_BLOCKED_PRESENTATION__STAGE5B_REPAIR_NEXT",
+    "git_persistence": "STAGE6_BLOCKER_IN_SYNC"
   },
   "lessons": [
     {
@@ -874,13 +874,13 @@
     },
     {
       "id": "A1-L10",
-      "reaudit_status": "STAGE5_COMPLETE__STAGE6_NEXT",
+      "reaudit_status": "STAGE6_BLOCKED_PRESENTATION__STAGE5B_REPAIR_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
-      "independent_quality": "PASS_STAGE5_CLEAN_DELIVERY_ANTI_BYPASS",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE5-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "136766d9b87a205edfd131de014c382ba67ff98fa3e29ddebeecc861e3d6f273",
-      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+      "new_successor_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
+      "independent_quality": "BLOCKED_STAGE6_CONFIRMED_LEARNER_VISIBLE_ENRICHMENT_DEFECT",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L10-STAGE6-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "c264c7e4675317d60bbab423cd312b2c6afa3e00349c9c7e3249cb31bac9784a",
+      "latest_artifact_filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 93,
       "stage12_source_ordinals": "639..731",
@@ -972,7 +972,22 @@
       "stage5_completeness": "1938/1938 final; 0 unresolved",
       "stage5_candidates": "299 accepted / 0 deferred",
       "stage5_negative_controls": "3/3 PASS",
-      "stage5_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage5_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage6": "BLOCKED_17_OF_18__LEARNER_VISIBLE_ENRICHMENT_FAIL",
+      "stage6_runtime": "v475-R109",
+      "stage6_runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+      "stage6_parser": "120/120 PASS",
+      "stage6_four_modes": "120/120 EACH PASS",
+      "stage6_examples": "480 DE / 480 FA / 480 EN PASS",
+      "stage6_kombinationen_transport": "59 items / 44 cards / 76 CLOSED_NO_FORCE PASS",
+      "stage6_relations_transport": "69 PASS",
+      "stage6_visible_kombinationen": "0/59 FAIL",
+      "stage6_visible_relations": "5/69 text hits; type-safe closure FAIL",
+      "stage6_cumulative_identity": "852 memberships / 850 unique / 2 intentional reuse / 0 accidental collisions",
+      "stage6_static": "9/9 PASS",
+      "stage6_persistence": "BLOCKED_BEFORE_APP_CODE__NOT_CERTIFIED",
+      "stage7_allowed": false,
+      "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
     },
     {
       "id": "A1-L11",
@@ -1092,19 +1107,21 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L10 Stage6: re-resolve exact CURRENT German Flashcards Pro runtime and test the exact Stage5 TSV/artifact for direct import, presentation, persistence/index and cumulative identity. Do not lock until exact-current acceptance is complete.",
-  "quality_state": "A1_L10_STAGE5_PASS__STAGE6_NEXT",
+  "next_action": "A1-L10 Stage5B projection-only presentation repair from exact Stage4/Stage5 authority. Preserve canonical bytes/IDs/examples/source; add CURRENT-compatible learner-visible Kombinationen and typed relation presentation bridge; rerun Stage5 official gates and Stage6 on exact CURRENT. Do not start Stage7.",
+  "quality_state": "A1_L10_STAGE6_BLOCKED_PRESENTATION__STAGE5B_REPAIR_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L10",
-    "stage": "Stage5 Clean Delivery / Anti-Bypass",
-    "quality": "PASS_120_CARDS__1938_ZERO_UNRESOLVED__299_FINAL_CANDIDATES__OFFICIAL_BUILDER_PASS",
-    "artifact_sha256": "136766d9b87a205edfd131de014c382ba67ff98fa3e29ddebeecc861e3d6f273",
+    "stage": "Stage6 CURRENT Runtime Acceptance",
+    "quality": "BLOCKED_CORE_17_OF_18__VISIBLE_ENRICHMENT_FAIL__PERSISTENCE_ENV_BOUNDARY",
+    "artifact_sha256": "c264c7e4675317d60bbab423cd312b2c6afa3e00349c9c7e3249cb31bac9784a",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "b03bb9a8b3806a53aac29ea1a09dde2f46151877",
-    "receipt_commit": "61694689d1889e2af8c92398907ef697567fb205",
-    "runtime": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6",
-    "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED"
+    "checkpoint_commit": "SAME_ATOMIC_STAGE6_SYNC_COMMIT",
+    "receipt_commit": "SAME_ATOMIC_STAGE6_SYNC_COMMIT",
+    "runtime": "v475-R109",
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
+    "stage7_allowed": false
   }
 }

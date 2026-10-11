@@ -1,0 +1,97 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage6-checkpoint@1.0.0",
+  "date": "2026-10-11",
+  "scope": "A1-L10",
+  "framework": "v3.3.6",
+  "status": "BLOCKED_STAGE6_LEARNER_VISIBLE_ENRICHMENT__PERSISTENCE_ENVIRONMENT_BOUNDARY",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-002-CURRENT-VS-VERIFIED",
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "CP-MEM-002",
+    "CP-MEM-003"
+  ],
+  "upstream": {
+    "stage5_artifact": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage5-CLEAN-DELIVERY-PASS.zip",
+    "stage5_sha256": "136766d9b87a205edfd131de014c382ba67ff98fa3e29ddebeecc861e3d6f273",
+    "direct_import_tsv_sha256": "f9249518bd228821a4d01f9323f562ecded647ee08c05839e1e814f07b8b8f8f",
+    "canonical_sha256": "b66c44738739db81e5aeb69eeac92b64e71b0664a3da5214de952060af2206f8"
+  },
+  "runtime": {
+    "current": "v475-R109",
+    "current_artifact": "GFP-v475-R109-MULTI-MEMBERSHIP-LIBRARY-INDEX.zip",
+    "current_artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "current_index_sha256": "367ebdbca257a1161339f80574bb93e32bb55d806ed3b3cdc3874987ace3d407",
+    "current_service_worker_sha256": "e6a53debd7d00c45cf57fb7ec0515c2f552896a1189a570cff77f09bae7ea91b",
+    "current_runtime_fingerprint": "6c9683e5818ec831fbe64a04bb342ca5cf4d8ccf8240791ff8c473494627b021",
+    "current_verification_state": "PASS_DETERMINISTIC_MULTI_MEMBERSHIP_INDEX__REAL_POPULATED_PROFILE_CONFIRMATION_PENDING",
+    "last_fully_verified": "v466-R100",
+    "git_runtime_mirror": "PENDING_V475_SOURCE_MIRROR__NO_DOWNGRADE",
+    "current_release_final": false,
+    "runtime_mutated": false
+  },
+  "deterministic_acceptance": {
+    "status": "BLOCKED_BY_LEARNER_VISIBLE_ENRICHMENT",
+    "summary": "17/18 PASS",
+    "exact_runtime_zip": "PASS",
+    "exact_stage5_zip": "PASS",
+    "exact_tsv": "PASS",
+    "production_parser": "PASS 120/120",
+    "rich_authority": "PASS 120/120 selected canonical authority fields",
+    "neutral_envelope": "PASS 120/120",
+    "neutral_presentation_contract": "PASS 120/120",
+    "four_modes": "PASS Study/Quick/Typing/Audio 120/120 each",
+    "examples": "PASS 480 DE / 480 FA / 480 EN",
+    "kombinationen_transport": "PASS 59 items / 44 cards / 76 CLOSED_NO_FORCE",
+    "relations_transport": "PASS 69 = RELATED 59 / REKTION 7 / WORD_FAMILY 3",
+    "source_audio": "PASS 120 refs / 94 unique / 2 zero-audio targets",
+    "generation_plan": "PASS 120 cards / 1 bounded chunk",
+    "same_id_progress": "PASS in-memory / identityReset 0",
+    "cumulative_identity": "PASS 852 membership records / 850 unique IDs / intentional reuse ma1m-lu-0418 + ma1m-lu-0345 / 0 accidental collisions",
+    "learner_visible_enrichment": "FAIL: 0/59 Kombinationen visible in Study details; only 5/69 relation text hits and no type-safe relation visibility closure",
+    "page_errors": 0
+  },
+  "confirmed_projection_blocker": {
+    "code": "STAGE5_PRESENTATION_BRIDGE_INCOMPLETE_FOR_CURRENT_RUNTIME",
+    "root_cause": [
+      "Stage5 learner details/related transport survives, but CURRENT v475 presentationFacadeModelV359 prioritizes canonical_unit when present.",
+      "CURRENT presentationProjectedDetailsV459 activates projected details through customFields.kombinationen_v1 visible_section=Kombinationen; A1-L10 Stage5 carries kombinationen_v336 instead.",
+      "canonical_unit.connections are string values here while CURRENT direct connection rendering expects connection objects with text/kind.",
+      "Transport parity therefore does not establish learner-visible presentation parity."
+    ],
+    "required_repair": "Stage5B projection-only successor; preserve canonical semantics/source/IDs/examples/runtime UI, add CURRENT-compatible learner-visible Kombinationen and typed relation bridge, rerun Stage5 and Stage6."
+  },
+  "static_runtime_regression": {
+    "status": "PASS",
+    "tests": "9/9 PASS"
+  },
+  "environment_boundary": {
+    "real_origin_persistence": "BLOCKED_BEFORE_APP_CODE",
+    "error": "net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8770/index.html?gfp-test=1",
+    "durable_indexeddb": "NOT_CERTIFIED",
+    "note": "Independent secondary blocker; Stage6 already fails learner-visible presentation before persistence can close."
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
+    "sha256": "c264c7e4675317d60bbab423cd312b2c6afa3e00349c9c7e3249cb31bac9784a",
+    "size_bytes": 645887,
+    "members": 83,
+    "files": 73,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L10-v3.3.6-REAUDIT-Stage6-v475-PRESENTATION-BLOCKED.zip",
+    "library_file_id": "file_00000000e0bc8210ab6235a7a4676ba3",
+    "library_stable_id": "libfile_cb9228464ba08191a489fca6133a4175",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "content_mutated": false,
+  "runtime_mutated": false,
+  "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
+  "stage7_allowed": false,
+  "git_persistence": {
+    "mode": "ATOMIC_MULTI_FILE_COMMIT",
+    "commit": "SELF"
+  },
+  "next_action": "A1-L10 Stage5B projection-only presentation repair from exact Stage4/Stage5 authority. Preserve canonical bytes/IDs/examples/source; add CURRENT-compatible learner-visible Kombinationen and typed relation presentation bridge; rerun Stage5 official gates and Stage6 on exact CURRENT. Do not start Stage7."
+}

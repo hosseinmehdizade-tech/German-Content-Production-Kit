@@ -1,25 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage2B identity closure is PASS; Stage3A baseline is next.**
+**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage3A richness/completeness baseline is PASS; Stage3B enrichment is next.**
 
 - A2-L11 lesson: **Ich freue mich so.**
-- Parent Stage1: **86 source occurrences**, rows **3207..3292**, 86/86 audio refs present.
-- Stage2B closes **80 canonical identities** = **74 new A2 + 4 immutable A1 reuses + 2 immutable prior-A2 reuses**.
-- New stable IDs: `ma2m-lu-0632..ma2m-lu-0705`.
-- Source→canonical bindings: **91**; candidate dispositions: **128**; editorial reviews closed: **54**; unresolved identities: **0**.
-- A1 reuses: `ma1m-lu-3001` (Alles Gute!), `ma1m-lu-0633` (sich bei jemandem für etwas bedanken), `ma1m-lu-2958` (Grund), `ma1m-lu-1950` (so etwas).
-- Prior-A2 reuses: `ma2m-lu-0399` (sich fühlen), `ma2m-lu-0400` (verlieren).
-- MEM-009 preserved: polysemy alone does not create duplicate cards. Explicit source-distinct constructions, gender forms or lexicalized compounds/titles are split only when they are distinct lexical identities.
-- Cumulative unique A2 projection through L11: **791**.
-- Official gates: source occurrences **86/86 PASS**, identity closure **86 source / 80 active / 0 errors PASS**, negative tamper cases rejected, targeted v3.3.6 suite **10/10 PASS**.
-- Final Stage2B package: **41 members / 39 manifest / 40 SHA256SUMS / 28 JSON**, CRC/path/hygiene PASS.
-- Artifact: `Menschen-A2-L11-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip`, SHA-256 `55f094f629413a61efacd8a1bd38b435c1a15fa4309d6e959ef917c52022c119`.
-- Library upload succeeded from the exact exported snapshot. Independent binary rematerialization is temporarily pending Library visibility; the post-package report itself round-tripped byte-for-byte.
-- Stage3 has **not started**. No learner-facing semantic enrichment is claimed by Stage2B.
+- Identity authority remains **80 canonical targets** = 74 new A2 + 4 immutable A1 reuses + 2 immutable prior-A2 reuses; identity unresolved = **0**.
+- Stage3A baseline has **1250 dimension cells**: **80 VERIFIED_PRESENT** (source audio only) and **1170 unresolved/actionable** for Stage3B.
+- Raw source seeds are inventory evidence, not learner-ready approval: Persian seed **80/80**; German example seed **79/80**. The only target without a German source-example seed is `ma1m-lu-2958` (*Grund*).
+- Explicit morphology hints were detected conservatively for **41 targets / 41 source occurrences**; contextual sentence inflections were not promoted to canonical morphology.
+- Stage2B supplies **37 relation/pattern candidates across 30 targets** for later review; Stage3A accepts none as learner-visible relations.
+- Mandatory Kombinationen review is scoped to **all 80 lexical targets**; Stage3A does not accept learner-visible Kombinationen or force a density quota.
+- Official v3.3.6 baseline gate: **80 targets / 1250 cells / 1170 unresolved — PASS**. Source-occurrence gate: **86/86 PASS**. Targeted framework tests: **10/10 PASS**.
+- Stage3A package: **35 members / 25 SHA entries / 18 JSON**, CRC/path/hygiene PASS.
+- Artifact: `Menschen-A2-L11-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip`, SHA-256 `8772b20a475e972c25ebdaa170eb1cc2a142dbb1858993d266a8cf3a51d13aa2`; Library exact-byte roundtrip PASS.
+- Metadata correction: the Stage2B Git receipt had a stale/wrong `identity.canonical_sha256` value (`a6f05084…`). The immutable Stage2B package and actual canonical file agree on `5e25320371cf4be3b81835626d3484cb6a93dae2210b135e209a52678218da9f`; only Git metadata was corrected, with no artifact/identity/semantic mutation.
+- Stage3B has **not started**. No learner-facing definitions, translations, four-example sets, morphology, relations, Rektion, NVV or Kombinationen are approved by Stage3A.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE2B.json](./L11-STAGE2B.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE3A.json](./L11-STAGE3A.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
 
-Next major stage: **A2-L11 Stage3A — baseline richness/completeness audit across all 80 closed identities**. Preserve the 74 new IDs and 6 immutable reuses.
+Next major stage: **A2-L11 Stage3B — gap-driven enrichment across all 1170 unresolved cells, including Kombinationen review for all 80 targets**.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

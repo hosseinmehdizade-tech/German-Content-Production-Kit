@@ -1,93 +1,58 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
-  "scope": "A1-L17",
-  "latest_verified_milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE7-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE7-RECEIPT.json",
+  "scope": "A1-L18",
+  "latest_verified_milestone": "STAGE1_2_EXACT_SOURCE_LINEAGE_AND_MEM009_IDENTITY_CLOSURE__STAGE3A_NEXT",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE1-2-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L18-STAGE1-2-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L17-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
-    "sha256": "018a973450d8da779623293fffea9631abde7ca3b2aba230d97458a3f537ff46",
-    "size_bytes": 983919,
-    "members": 77,
-    "library_file_id": "file_00000000217c81f4a1fa0532f0b35127",
-    "library_stable_id": "libfile_e1ee2977c40081919744ff0a83c6c3be",
+    "filename": "Menschen-A1-L18-v3.3.6-REAUDIT-Stage1-2-CHECKPOINT.zip",
+    "sha256": "dbec5f9c21fc263ce3e5fc9e093f4129f86365f701ac135f6c7d29441556d48b",
+    "size_bytes": 101155,
+    "members": 34,
+    "library_file_id": "file_000000000d10820aaa304da4925b03dd",
+    "library_stable_id": "libfile_6b5f4a5f56088191b4d2beae67fdceab",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE7_LOCKED__138_CARDS__552_EXAMPLES__61_RELATIONS__28_KOMBINATIONEN__430_FINAL__2210_OF_2210__CURRENT_V475_STAGE6_PASS_WITH_ENV_BOUNDARY__POSTPACKAGE_PASS__LIBRARY_BYTE_EXACT",
-  "next_action": "A1-L18 Stage1/2 re-audit under v3.3.6. Preserve A1-L02..L17 locked re-audit successors and all historical locked artifacts.",
-  "checkpoint_commit": "4cb08d157792ec2f3793c9fb8a02688374be9c41",
-  "receipt_commit": "0ad02bcdbe98c3a25b695bfb51a2578ab0c00092",
+  "quality": "PASS_STAGE1_2__132_SOURCE_ROWS__130_AUDIO__171_ACTIVE__95_SENSES__76_EXPRESSIONS__6_MEM009_ALIASES_RETIRED__0_CURRENT_PRIOR_REUSE__171_EDGES__32_SPLIT_ROWS__0_UNRESOLVED__OFFICIAL_SOURCE_IDENTITY_PASS__INDEPENDENT_30_OF_30__LIBRARY_BYTE_EXACT__STAGE3A_NEXT",
+  "next_action": "A1-L18 Stage3A whole-dataset richness baseline for 171 active targets. Do not start A1-L19.",
+  "checkpoint_commit": "dd5c63c47de1adee542eed49e7e102c4b9d5e52c",
+  "receipt_commit": "1e913f43bf5558ab6f6b254eba2fa59f1bb13cc7",
   "previous_locked_scope": {
-    "scope": "A1-L16",
+    "scope": "A1-L17",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
-    "artifact": "Menschen-A1-L16-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
-    "sha256": "b1950c6470ea85f10fa38abe97345bff03022fcacff1b7210c97f56d7ba0433d",
+    "artifact": "Menschen-A1-L17-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "018a973450d8da779623293fffea9631abde7ca3b2aba230d97458a3f537ff46",
     "content_lock_state": "LOCKED"
   },
-  "stage4": {
-    "accepted_canonical_sha256": "c5c2d3d8f48ba7c3cf1f1d89a5b1e6c01e6a77fd79b229a3d9a15b953acc93bf",
-    "repair": "16 field operations / 4 targets / translation+gloss only",
-    "content": "138 targets / 552 examples / 61 relations / 28 Kombinationen / 430 final candidates",
-    "completeness": "2210/2210 final / 0 unresolved",
-    "validation": "46/46 independent + official PASS + negative 2/2 + pytest 10/10 + fresh package PASS",
-    "source_boundary": "4/4 byte-identical",
-    "current_prior_reuses": "3/3 exact",
-    "historical_parent": "exact recovery evidence verified",
+  "stage12": {
+    "source": {
+      "rows": 132,
+      "ordinals": "1525..1656",
+      "audio": "130 refs / 130 unique / exact source gaps 1533,1654 / 130-of-130 RAR membership",
+      "source_boundary": "Direct CSV decompression unavailable in this container; verified source-preserving predecessor slice reused byte-for-byte under exact registered RAR identity; no predecessor enrichment promoted."
+    },
+    "identity": {
+      "active_targets": 171,
+      "senses": 95,
+      "expressions": 76,
+      "new_targets": 171,
+      "current_prior_reuses": 0,
+      "retired_mem009_aliases": 6,
+      "mapping_edges": 171,
+      "split_source_rows": 32,
+      "review_flagged_targets": 103,
+      "unresolved": 0,
+      "cumulative": "2285 memberships / 2266 unique / 19 intentional reuse edges / 0 unresolved"
+    },
+    "validation": "official source PASS 132 + official identity PASS 171 + independent 30/30 + fresh package PASS",
+    "canonical_sha256": "7dfb10dbb9cebd5396c524312f41e040c51c36aa16e3c5a949a625754c801861",
+    "identity_fingerprint": "cbdf905547d5e63de2ed6adbb7ff0794af4bd6e43d8cd46546b2474746e370d6",
     "persistence": {
       "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
       "git": "IN_SYNC_AFTER_THIS_UPDATE"
     },
-    "runtime": "NOT_RUN_CONTENT_ONLY"
-  },
-  "stage5": {
-    "canonical_sha256": "c5c2d3d8f48ba7c3cf1f1d89a5b1e6c01e6a77fd79b229a3d9a15b953acc93bf",
-    "direct_import_sha256": "c2d8d291f60bcbb94d8c172b978bc982fbbd44eec1180e0bbc8a23d6b6407cac",
-    "content": "138 cards / 552 examples / 61 relations / 28 Kombinationen / 430 accepted candidates",
-    "completeness": "2210/2210 final / 0 unresolved",
-    "source": "118 occurrences / 138 output edges",
-    "validation": "official v3.3.6 5/5 + clean anti-bypass builder PASS + prevention projection/package PASS + negative 3/3",
-    "persistence": {
-      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "git": "IN_SYNC_AFTER_THIS_UPDATE"
-    },
-    "runtime": "NOT_RUN_CONTENT_ONLY"
-  },
-  "stage6": {
-    "runtime": {
-      "current": "v475-R109",
-      "current_artifact_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
-      "last_fully_verified": "v466-R100",
-      "runtime_release_final": false,
-      "git_runtime_mirror": "PENDING_V475_SOURCE_MIRROR__MAIN_V474"
-    },
-    "validation": "19/19 deterministic + 16/16 flattened runtime probe + 9/9 static runtime + 144/144 runtime SHA + official v3.3.6 5/5",
-    "content": "138 cards / 552 examples / 61 canonical relations / 28 Kombinationen",
-    "identity": "2114 memberships / 2095 unique / 19 intentional reuses / 0 unresolved",
-    "persistence": {
-      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "git": "IN_SYNC_AFTER_THIS_UPDATE"
-    },
-    "environment_boundary": "Managed real-origin Chromium blocked with NET_ERR_BLOCKED_BY_ADMINISTRATOR before app code; durable real-origin IndexedDB not claimed; v475 populated-profile runtime confirmation remains a separate app-level boundary.",
-    "stage7_allowed": true,
-    "content_lock_state": "REAUDIT_SUCCESSOR_NOT_LOCKED"
-  },
-  "stage7": {
-    "content_lock_state": "LOCKED",
-    "release_sha256": "018a973450d8da779623293fffea9631abde7ca3b2aba230d97458a3f537ff46",
-    "post_package_sha256": "fb5f2dbb00e629456797228ae967e82687401a06516189a9197e1d6466db6555",
-    "validation": "77/77 unique members; 73/73 manifest; 75/75 final manifest; 42/42 JSON; fresh verifier PASS",
-    "content": "138 cards / 552 examples / 61 relations / 28 Kombinationen / 430 accepted / 2210 of 2210",
-    "identity": "2114 memberships / 2095 unique / 19 intentional reuses / 0 accidental collisions",
-    "runtime": {
-      "current": "v475-R109",
-      "last_fully_verified": "v466-R100",
-      "stage6": "PASS_WITH_ENVIRONMENT_BOUNDARY",
-      "runtime_release_final": false
-    },
-    "persistence": {
-      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "git": "IN_SYNC_AFTER_THIS_UPDATE"
-    }
+    "runtime": "NOT_RUN_CONTENT_ONLY",
+    "content_lock_state": "SUCCESSOR_NOT_LOCKED"
   }
 }

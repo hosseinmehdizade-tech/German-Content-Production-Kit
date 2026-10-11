@@ -28,8 +28,8 @@
     "reaudit_in_progress": 1,
     "queued": 13,
     "active_lesson": "A1-L11",
-    "overall_state": "A1_L11_STAGE3A_PASS__STAGE3B_NEXT",
-    "git_persistence": "STAGE3A_IN_SYNC"
+    "overall_state": "A1_L11_STAGE3B_PASS__STAGE3C_NEXT",
+    "git_persistence": "STAGE3B_IN_SYNC"
   },
   "lessons": [
     {
@@ -1060,13 +1060,13 @@
     },
     {
       "id": "A1-L11",
-      "reaudit_status": "STAGE3A_COMPLETE__STAGE3B_NEXT",
+      "reaudit_status": "STAGE3B_COMPLETE__STAGE3C_NEXT",
       "old_content_status": "LOCKED",
-      "new_successor_artifact": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
-      "independent_quality": "PASS_STAGE3A_COMPLETE_RICHNESS_BASELINE",
-      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L11-STAGE3A-CHECKPOINT.json",
-      "latest_portable_checkpoint_sha256": "ddc36e80fba7e16b909d4bc104a04d90b49afc452c24d8d905f1872a89676e91",
-      "latest_artifact_filename": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
+      "new_successor_artifact": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage3B-EDITORIAL-COMPLETE-CHECKPOINT.zip",
+      "independent_quality": "PASS_STAGE3B_EDITORIAL_COVERAGE_158_OF_158",
+      "latest_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L11-STAGE3B-CHECKPOINT.json",
+      "latest_portable_checkpoint_sha256": "3a2857a47f787b45a3aa0780895ca60cf4b8c98a89144236ca5649e23fce3dd6",
+      "latest_artifact_filename": "Menschen-A1-L11-v3.3.6-REAUDIT-Stage3B-EDITORIAL-COMPLETE-CHECKPOINT.zip",
       "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED",
       "stage12": "PASS_EXACT_SOURCE_AND_CURRENT_IDENTITY_CLOSURE",
       "stage12_source_rows": 116,
@@ -1128,7 +1128,23 @@
       "stage3a_candidate_ledger": "0",
       "stage3a_independent_validation": "45/45 PASS",
       "stage3a_negative_control": "PASS_MUST_FAIL",
-      "stage3a_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+      "stage3a_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+      "stage3b": "PASS_EDITORIAL_COVERAGE_158_OF_158__STAGE3C_NEXT",
+      "stage3b_priority": "P1 37 / P2 83 / P3 38",
+      "stage3b_semantic_proposals": 158,
+      "stage3b_source_examples_reviewed_nonempty": 68,
+      "stage3b_historical_parent_examples_reviewed": 660,
+      "stage3b_historical_parent_relations_reviewed": 80,
+      "stage3b_unique_relation_candidates_after_remap": 78,
+      "stage3b_repair_proposals": 52,
+      "stage3b_working_candidates": 496,
+      "stage3b_kombinationen_items": 50,
+      "stage3b_kombinationen_cards": 22,
+      "stage3b_kombinationen_provisional_closed_no_force": 136,
+      "stage3b_rejections": 14,
+      "stage3b_official_unresolved": 2421,
+      "stage3b_outside_knowledge": "NOT_USED_FOR_PROPOSAL_CONTENT",
+      "stage3b_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
     },
     {
       "id": "A1-L12",
@@ -1241,19 +1257,19 @@
     "App runtime separate from vocabulary production; resolve CURRENT only for actual compatibility testing.",
     "Git is compact asynchronous metadata coordination; binaries remain Library/Project."
   ],
-  "next_action": "A1-L11 Stage3B: adjudicate all 158 targets in priority order P1(37) -> P2(83) -> P3(38); explicitly resolve all 37 source/review-flag targets, six MEM-009 merged lexical targets and the distinct-POS gleich pair; recover and independently review historical content/relations/examples, populate candidate ledger, review Kombinationen for every target, and do not claim Stage3C until all official cells reach final dispositions.",
-  "quality_state": "A1_L11_STAGE3A_PASS__STAGE3B_NEXT",
+  "next_action": "A1-L11 Stage3C: adjudicate all 496 DEFERRED candidates plus repairs, recovered relation/example records and Kombinationen; select exactly four trilingual examples per active identity, remap annotations through retired aliases, close all official completeness cells to zero unresolved, then Stage4.",
+  "quality_state": "A1_L11_STAGE3B_PASS__STAGE3C_NEXT",
   "changed_app_runtime": false,
   "changed_original_lessons": false,
   "last_validated_milestone": {
     "scope": "A1-L11",
-    "stage": "Stage3A source-agnostic completeness baseline",
-    "quality": "PASS_158_TARGETS__2579_OFFICIAL_CELLS__2421_UNRESOLVED__45_OF_45_INDEPENDENT",
-    "artifact_sha256": "ddc36e80fba7e16b909d4bc104a04d90b49afc452c24d8d905f1872a89676e91",
+    "stage": "Stage3B editorial coverage",
+    "quality": "PASS_158_OF_158__496_DEFERRED__50_KOMBINATIONEN__2421_UNRESOLVED_BY_DESIGN",
+    "artifact_sha256": "3a2857a47f787b45a3aa0780895ca60cf4b8c98a89144236ca5649e23fce3dd6",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-    "checkpoint_commit": "9473b3c2564cd1aee2b900e6cea7319ccd993f86",
-    "receipt_commit": "5180f214f801c51e50e1d20ab802b8515101c64b",
-    "prevention_commit": "d56fbe5a90fa2c6a55e3972571b7e419ba6b56dd",
+    "checkpoint_commit": "297aaa39a4c9ebb3649e0532e9f273b110db2b26",
+    "receipt_commit": "c77f40b19040bc97fec549aaeb485952d73cf789",
+    "prevention_commit": "90e4e5e467a737aee49a644b780d8e3b22e08ea1",
     "runtime": "NOT_RUN_CONTENT_ONLY",
     "content_lock_state": "HISTORICAL_PARENT_LOCKED__REAUDIT_SUCCESSOR_NOT_LOCKED"
   }

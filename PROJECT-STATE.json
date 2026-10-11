@@ -8666,7 +8666,7 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "B1_L12_STAGE3C_PASS__STAGE4_PENDING",
+      "status": "B1_L12_STAGE4_BLOCKED__UPSTREAM_STAGE2_REOPEN_REQUIRED",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
@@ -8697,17 +8697,15 @@
         "stage3c": "PASS"
       },
       "latest_portable_checkpoint": {
-        "filename": "Menschen-B1-L12-v3.3.6-Stage3C-CLOSURE-PASS-CHECKPOINT.zip",
-        "sha256": "723e4d0c59b8be664180d157b9eff9edaa3520f6f3ae9776a2571c7307e6aa28",
-        "size_bytes": 342800,
-        "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage3C-CLOSURE-PASS-CHECKPOINT.zip",
-        "library_file_id": "file_000000001cc481f4a8a123444410cb5b",
-        "library_stable_id": "libfile_a995aedb53208191a4db8476c77d6c5a",
+        "filename": "B1-L12-STAGE4-UPSTREAM-IDENTITY-BLOCKER.json",
+        "sha256": "ad54f799e8081c329e90270ba3073ded95df207497aa93eabb6d9e4f3be4e472",
+        "library_file_id": "file_00000000d8a882109c34d38657413844",
+        "library_stable_id": "libfile_a7c03eb7f09081919c2e13e0dafdab42",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
       "semantic_inheritance_from_historical_bad_b1_lessonwise": 0,
       "semantic_inheritance_from_b1_verben": 0,
-      "next_action": "Run B1-L12 Stage4 independent linguistic/source-fidelity QA from exact Stage3C artifact 723e4d0c59b8be664180d157b9eff9edaa3520f6f3ae9776a2571c7307e6aa28. Do not start B1-L13.",
+      "next_action": "Reopen B1-L12 Stage2 for seven affected single-lexeme polysemy rows; merge nine provisional split IDs into seven retained IDs; regenerate only dependency-affected Stage3 and rerun Stage4. Do not start B1-L13.",
       "stage3c": {
         "status": "PASS",
         "targets": 146,
@@ -10861,7 +10859,7 @@
         },
         "next_action": "Run B1-L08 Stage3C disposition closure over all 126 targets / 1984 cells from this exact checkpoint. Do not start B1-L09."
       },
-      "current_stage": "Stage3C disposition closure PASS",
+      "current_stage": "Stage4 BLOCKED — Stage2 identity reopen required",
       "b1_l09_stage4": {
         "schema": "menschen-b1-l09-stage4-receipt@1.0.0",
         "date": "2026-10-11",
@@ -11009,7 +11007,7 @@
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "next_action": "Run B1-L10 Stage3C disposition closure over all 85 targets / 1340 cells from exact Stage3B artifact f0b6c2e013a657c65c0eb594ab77e6d8dff5b6b36b031abfcb049ab01b1d5418. Do not start B1-L11."
       },
-      "last_observed_stage": "B1-L12 Stage3C disposition closure PASS; Stage4 next",
+      "last_observed_stage": "B1-L12 Stage4 blocked by active one-card multi-meaning identity guardrail",
       "b1_l12_stage3c": {
         "status": "PASS__STAGE4_PENDING",
         "framework": "v3.3.6",
@@ -11034,6 +11032,23 @@
         "library_file_id": "file_000000001cc481f4a8a123444410cb5b",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
         "boundary": "Stage3C structural/completeness PASS only; Stage4 independent linguistic/source-fidelity QA remains mandatory."
+      },
+      "b1_l12_stage4_identity_blocker": {
+        "status": "BLOCKED_UPSTREAM_STAGE2_REOPEN_REQUIRED",
+        "memory_guardrail": "MEM-009-MULTI-MEANING-ONE-CARD",
+        "current_targets": 142,
+        "corrected_targets_expected": 133,
+        "identity_delta": -9,
+        "affected_source_rows": [
+          5889,
+          5919,
+          5928,
+          5931,
+          5960,
+          5970,
+          5971
+        ],
+        "blocker_sha256": "ad54f799e8081c329e90270ba3073ded95df207497aa93eabb6d9e4f3be4e472"
       }
     },
     "menschen_a2_24_lessons_v336": {

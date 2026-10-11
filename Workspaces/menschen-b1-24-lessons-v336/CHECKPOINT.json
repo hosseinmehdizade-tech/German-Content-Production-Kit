@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L12_STAGE5_REPAIR1_RUNTIME_IMPORT_COMPAT_PASS__STAGE6_PENDING",
+  "status": "B1_L12_STAGE6_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -98,10 +98,10 @@
     "stage3": "STAGE3C_REPAIR1_DISPOSITION_CLOSURE_PASS",
     "stage4": "PASS_INDEPENDENT_QA",
     "stage5": "PASS_REPAIR1_RUNTIME_IMPORT_COMPAT",
-    "stage6": "PENDING_RERUN_AFTER_STAGE5_REPAIR1",
-    "stage7": "LOCKED"
+    "stage6": "PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
+    "stage7": "NOT_STARTED"
   },
-  "next_action": "Rerun B1-L12 Stage6 runtime/presentation acceptance against exact CURRENT v475-R109 using Stage5 Repair1 artifact e5ebcb9115b6d737bc606044266aa6d5e6962b15fd9af800ab887cb674587dcf. Do not start B1-L13.",
+  "next_action": "Run B1-L12 Stage7 exact-final content-production lock/post-package verification from exact Stage5 Repair1 content plus Stage6 evidence. Do not start B1-L13.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4297,14 +4297,14 @@
   },
   "current_lesson": "B1-L12",
   "next_lesson": "B1-L13",
-  "current_stage": "Stage5 Repair1 runtime-import compatibility PASS",
+  "current_stage": "Stage6 runtime/presentation acceptance PASS_WITH_ENVIRONMENT_BOUNDARY",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L12-v3.3.6-Stage5-Repair1-RUNTIME-COMPAT-PASS.zip",
-    "sha256": "e5ebcb9115b6d737bc606044266aa6d5e6962b15fd9af800ab887cb674587dcf",
-    "size_bytes": 346438,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage5-Repair1-RUNTIME-COMPAT-PASS.zip",
-    "library_file_id": "file_000000006ea08210bf781a0b2ce2d813",
-    "library_stable_id": "libfile_87006a82a72c8191ba18d0502b16d2aa",
+    "filename": "Menschen-B1-L12-v3.3.6-Stage6-V475-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+    "sha256": "deca23daec93dc5a2d9bf458f2d12c70709db232e1222ab720b6cf69473d5a0d",
+    "size_bytes": 14431,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage6-V475-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+    "library_file_id": "file_000000002bcc81f4b22b82fc3773f790",
+    "library_stable_id": "libfile_13bf06be1af88191a908c56fda5d1392",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4542,5 +4542,25 @@
     "unresolved_cells": 0,
     "artifact_sha256": "e5ebcb9115b6d737bc606044266aa6d5e6962b15fd9af800ab887cb674587dcf",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "b1_l12_stage6": {
+    "status": "PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
+    "parent_stage5_repair1_sha256": "e5ebcb9115b6d737bc606044266aa6d5e6962b15fd9af800ab887cb674587dcf",
+    "runtime_current": "v475-R109",
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "parser": "PASS_133_OF_133_UNIVERSAL_V2_23_COLUMNS",
+    "selection_on_1293_active": "PASS",
+    "semantic_payload_parity": "PASS_133_OF_133",
+    "generation_plan": "133 cards / 2 chunks / max 128",
+    "backup_restore_authority_roundtrip": "PASS_133_OF_133",
+    "runtime_projection": "PASS_133_OF_133",
+    "presentation_modes": "PASS_532_OF_532",
+    "canonical_example_groups": 532,
+    "kombininationen_items": 23,
+    "canonical_relations": 76,
+    "canonical_origin_indexeddb": "ENVIRONMENT_BOUNDARY_NOT_CLAIMED",
+    "artifact_sha256": "deca23daec93dc5a2d9bf458f2d12c70709db232e1222ab720b6cf69473d5a0d",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "stage7_allowed": true
   }
 }

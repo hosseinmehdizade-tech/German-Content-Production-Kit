@@ -1,22 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage1 source inventory is PASS; Stage2/2B identity closure is next.**
+**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage2B identity closure is PASS; Stage3A baseline is next.**
 
-- A2-L11 source lesson: **Ich freue mich so.**
-- Registered source tag: `Menschen_A1/A2/B1_(Full_Audio)::35_A2:_11.Ich_freue_mich_so.`.
-- Exact source inventory: **86 occurrences**, rows **3207..3292**; all German and Persian source fields nonempty.
-- Source audio: **86 refs / 86 unique / 0 missing**, with all 86 referenced MP3 filenames present in the exact current-chat RAR5 whose SHA-256 matches the registered source.
-- German source-example gaps: **6 rows** — 3223, 3231, 3243, 3247, 3258, 3285.
-- Stage2 review queue includes **35 slash-delimited source rows**; this is review input only, not a Stage1 canonicalization decision.
-- Exact raw-text duplicate groups: **0**; source control-character rows: **0**.
-- Source text comes from the verified portable inventory bound to registered CSV SHA-256 `52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222`. CSV decompression was not rerun this turn; source RAR identity and 86/86 media membership were directly reverified.
-- Official source-occurrence validator: **PASS — 1 source / 86 occurrences / 0 errors**; Stage1 self-validation **15/15 PASS**; targeted v3.3.6 framework tests **10/10 PASS**.
-- Stage1 package: `Menschen-A2-L11-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip`, SHA-256 `4612b1821c773924b00345411c0f9ba94d0180f12d4b437026ff0b563de116af`; Library exact-byte roundtrip PASS.
-- Stage1 boundary is strict: **no canonicalization, reuse/split/merge decision, stable-ID assignment, or learner-semantic approval has started**.
+- A2-L11 lesson: **Ich freue mich so.**
+- Parent Stage1: **86 source occurrences**, rows **3207..3292**, 86/86 audio refs present.
+- Stage2B closes **80 canonical identities** = **74 new A2 + 4 immutable A1 reuses + 2 immutable prior-A2 reuses**.
+- New stable IDs: `ma2m-lu-0632..ma2m-lu-0705`.
+- Source→canonical bindings: **91**; candidate dispositions: **128**; editorial reviews closed: **54**; unresolved identities: **0**.
+- A1 reuses: `ma1m-lu-3001` (Alles Gute!), `ma1m-lu-0633` (sich bei jemandem für etwas bedanken), `ma1m-lu-2958` (Grund), `ma1m-lu-1950` (so etwas).
+- Prior-A2 reuses: `ma2m-lu-0399` (sich fühlen), `ma2m-lu-0400` (verlieren).
+- MEM-009 preserved: polysemy alone does not create duplicate cards. Explicit source-distinct constructions, gender forms or lexicalized compounds/titles are split only when they are distinct lexical identities.
+- Cumulative unique A2 projection through L11: **791**.
+- Official gates: source occurrences **86/86 PASS**, identity closure **86 source / 80 active / 0 errors PASS**, negative tamper cases rejected, targeted v3.3.6 suite **10/10 PASS**.
+- Final Stage2B package: **41 members / 39 manifest / 40 SHA256SUMS / 28 JSON**, CRC/path/hygiene PASS.
+- Artifact: `Menschen-A2-L11-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip`, SHA-256 `55f094f629413a61efacd8a1bd38b435c1a15fa4309d6e959ef917c52022c119`.
+- Library upload succeeded from the exact exported snapshot. Independent binary rematerialization is temporarily pending Library visibility; the post-package report itself round-tripped byte-for-byte.
+- Stage3 has **not started**. No learner-facing semantic enrichment is claimed by Stage2B.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE1.json](./L11-STAGE1.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE2B.json](./L11-STAGE2B.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
 
-Next major stage: **A2-L11 Stage2 + mandatory Stage2B identity closure** against immutable A1 authorities and A2-L01..L10 LOCKED identities. Do not start Stage3 until identity unresolved = 0.
+Next major stage: **A2-L11 Stage3A — baseline richness/completeness audit across all 80 closed identities**. Preserve the 74 new IDs and 6 immutable reuses.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

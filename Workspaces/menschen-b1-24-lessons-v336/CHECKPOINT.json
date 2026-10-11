@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L12_STAGE5_CLEAN_DELIVERY_PASS__STAGE6_PENDING",
+  "status": "B1_L12_STAGE6_BLOCKED__STAGE5_RUNTIME_IMPORT_SCHEMA_REPAIR_REQUIRED",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -97,11 +97,11 @@
     "stage2": "PASS_REPAIR1_MULTI_MEANING_IDENTITY_CLOSURE",
     "stage3": "STAGE3C_REPAIR1_DISPOSITION_CLOSURE_PASS",
     "stage4": "PASS_INDEPENDENT_QA",
-    "stage5": "PASS_CLEAN_DELIVERY",
-    "stage6": "NOT_STARTED",
+    "stage5": "REPAIR_REQUIRED_RUNTIME_IMPORT_SCHEMA",
+    "stage6": "BLOCKED_UPSTREAM_STAGE5_IMPORT_SCHEMA",
     "stage7": "LOCKED"
   },
-  "next_action": "Run B1-L12 Stage6 runtime/presentation acceptance against exact CURRENT Flashcards runtime from Stage5 artifact 1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8. Do not start B1-L13.",
+  "next_action": "Run B1-L12 Stage5 Repair1: compile Stage4/Stage5 semantics into exact CURRENT runtime Universal v2 23-column schema without semantic loss, validate exact v475 parser accepts 133/133, then rerun Stage6. Do not start B1-L13.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4297,14 +4297,14 @@
   },
   "current_lesson": "B1-L12",
   "next_lesson": "B1-L13",
-  "current_stage": "Stage5 clean content delivery projection PASS",
+  "current_stage": "Stage6 runtime/presentation acceptance BLOCKED",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L12-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
-    "sha256": "1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8",
-    "size_bytes": 315789,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage5-CLEAN-DELIVERY.zip",
-    "library_file_id": "file_00000000a78c8210a7532a0cbe29ce15",
-    "library_stable_id": "libfile_d2fde97cf69881918f6ca1cd889a7e48",
+    "filename": "Menschen-B1-L12-v3.3.6-Stage6-RUNTIME-ACCEPTANCE-BLOCKED.zip",
+    "sha256": "25a94a4612d203daa2f159ae5c503c4afab2d4cc6d9c502458a8e66e524aa8e5",
+    "size_bytes": 3949,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage6-RUNTIME-ACCEPTANCE-BLOCKED.zip",
+    "library_file_id": "file_0000000099ec8210aa67e8184853accf",
+    "library_stable_id": "libfile_dc6745af03c881919c4961b4d9e4d36d",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4506,5 +4506,21 @@
     "artifact_sha256": "1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "runtime_acceptance": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6"
+  },
+  "b1_l12_stage6_blocked": {
+    "status": "BLOCKED_UPSTREAM_STAGE5_RUNTIME_IMPORT_SCHEMA",
+    "parent_stage5_sha256": "1e4ea350422a2081699262f5e34970b97c28fbefd3a79ce381d0079a25e34cb8",
+    "runtime_current": "v475-R109",
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "runtime_sha_match": true,
+    "stage5_tsv_columns": 32,
+    "runtime_universal_columns": 23,
+    "exact_runtime_parser": "FAIL_SCHEMA_UNKNOWN",
+    "runtime_static_assets": "PASS",
+    "runtime_js_syntax": "PASS",
+    "runtime_shell_cohort": "PASS",
+    "runtime_v475_multi_membership": "PASS_8_OF_8",
+    "environment_independent_blocker": true,
+    "stage7_allowed": false
   }
 }

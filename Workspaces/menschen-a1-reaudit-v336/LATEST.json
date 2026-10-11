@@ -2,23 +2,23 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L16",
-  "latest_verified_milestone": "STAGE3A_COMPLETE_RICHNESS_BASELINE__DURABLE_PERSISTENCE_REPAIR1__STAGE3B_EDITORIAL_PENDING",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-PERSISTENCE-REPAIR1-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-PERSISTENCE-REPAIR1-RECEIPT.json",
+  "latest_verified_milestone": "STAGE3B_EDITORIAL_COVERAGE_156_OF_156__STAGE3C_PENDING",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3B-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3B-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-PERSISTENCE-REPAIR1-CHECKPOINT.zip",
-    "sha256": "fd56d960c9dc74fcb959818fc4eee65c636e051cc0a74df54f7459eaf7dbd44b",
-    "size_bytes": 165587,
-    "members": 29,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-PERSISTENCE-REPAIR1-CHECKPOINT.zip",
-    "library_file_id": "file_00000000441882469353999696744147",
-    "library_stable_id": "libfile_0c67d8a8e70881918138ec571e5913e4",
+    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage3B-EDITORIAL-COMPLETE-CHECKPOINT.zip",
+    "sha256": "431056ed3ffb625468542a58816c1b22d4df6bc441a5c64a3b3a1adace26ce38",
+    "size_bytes": 337083,
+    "members": 47,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage3B-EDITORIAL-COMPLETE-CHECKPOINT.zip",
+    "library_file_id": "file_00000000cad081f4be62dc6cc96a7b1c",
+    "library_stable_id": "libfile_d15596b77be08191ab2ea757660469b2",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE3A__DURABLE_REPAIR1__156_TARGETS__2496_POLICY_CELLS__2340_UNRESOLVED__154_AUDIO_VERIFIED__2_AUDIO_CLOSED__34_FLAGS__LIBRARY_EXACT_BYTE_PASS__STAGE3B_NEXT",
-  "next_action": "Run A1-L16 Stage3B independent editorial enrichment for all 156 targets. Start with the exact 34 P1 source-review targets, then review all remaining 122 without inventing an unavailable P2/P3 per-ID partition. Do not start A1-L17.",
-  "checkpoint_commit": "2691d31b66fd27e72d5f4013a3fb8575bb45cc8e",
-  "receipt_commit": "8662956e60e76d3bd5d132fb19adf85568f91c9e",
+  "quality": "PASS_STAGE3B__156_OF_156_EDITORIAL__489_DEFERRED_CANDIDATES__93_RELATIONS__50_KOMBINATIONEN_ON_26_CARDS__34_P1_REPAIRS__33_OF_33_INDEPENDENT__LIBRARY_BYTE_EXACT__STAGE3C_NEXT",
+  "next_action": "A1-L16 Stage3C final disposition of all 489 working candidates and closure of all 2496 official completeness cells to zero unresolved. Do not start A1-L17.",
+  "checkpoint_commit": "6ba51e6c185b5dbfb3265bbe34c6972bee108acb",
+  "receipt_commit": "219848a3d34994059755667e27d055a71d1c65f1",
   "previous_locked_scope": {
     "scope": "A1-L15",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -87,5 +87,25 @@
     "commit": "a0bc589ab458a1f3b05e061539d52ea2f08f8b15",
     "status": "CONTAINED_NO_CURRENT_CONTENT_LOSS",
     "nonauthoritative_sha256": "9ad03dca9b0b7e0e458f640b51f0434388d19b538d074c6e4adb73b88b100352"
+  },
+  "stage3b": {
+    "status": "PASS_STAGE3B_EDITORIAL_COVERAGE_156_OF_156_WITH_CURRENT_PRIOR_AND_EXACT_PARENT_RECOVERY__STAGE3C_PENDING",
+    "targets": 156,
+    "semantic_proposals": 156,
+    "exact_four_examples": "624 = 4x156",
+    "source_review": "34 exact P1 + 122 remaining independently reviewed",
+    "current_prior_reuses": 8,
+    "relations": "93 = RELATED 72 / SYNONYM 9 / NEAR_SYNONYM 8 / ANTONYM 4",
+    "review_resolutions": 49,
+    "repairs": 34,
+    "kandidaten": "489 DEFERRED / 0 Stage3C final",
+    "kombinationen": "50 provisional items on 26 cards / 130 provisional CLOSED_NO_FORCE",
+    "completeness": "2496 cells / 2340 unresolved remains baseline until Stage3C",
+    "validation": "official 4 gates PASS + custom PASS + independent 33/33 PASS",
+    "persistence": {
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "git": "IN_SYNC_AFTER_THIS_UPDATE"
+    },
+    "runtime": "NOT_RUN_CONTENT_ONLY"
   }
 }

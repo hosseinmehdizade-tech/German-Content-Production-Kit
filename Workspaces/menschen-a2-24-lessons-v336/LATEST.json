@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L12_STAGE1_PASS",
-  "quality": "L01_L11_STAGE7_LOCKED__L12_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE1.json",
-  "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
-  "artifact_library_file_id": "file_000000009afc82439a066b8f243d98c5",
+  "latest_completed_milestone": "A2-L12_STAGE2B_PASS",
+  "quality": "L01_L11_STAGE7_LOCKED__L12_STAGE2B_IDENTITY_CLOSED__STAGE3A_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE2B.json",
+  "artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L12-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+  "artifact_library_file_id": "file_00000000b3948210ad9609214241f879",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Run A2-L12 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 94 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L11 identities; preserve source order/memberships and MEM-009 one-card multi-meaning behavior. Do not start Stage3 until identity closure has zero unresolved states.",
+  "next_action": "Run A2-L12 Stage3A baseline richness/completeness audit across all 85 closed identities under v3.3.6. Preserve the 75 new identity assignments and 10 immutable reuses; do not begin learner-facing enrichment before the Stage3A baseline is recorded.",
   "central_checkpoint_sha": "2bb57d79ad24e9d3dbe6908f77d75845c489e631",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
-  "last_git_coordination": "A2_L12_STAGE1_PASS__L01_L11_LOCKED_PRESERVED__CENTRAL_ROOT_DEFERRED_PARALLEL_SAFE",
+  "last_git_coordination": "A2_L12_STAGE2B_PASS__L01_L11_LOCKED_PRESERVED__WORKSTREAM_LOCAL_SYNC",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -255,38 +255,27 @@
       "locked_recovery_boundary": "ma1m-lu-0633 exact parent row unavailable; no byte-parity claim"
     },
     "A2-L12": {
-      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE1.json",
+      "status": "STAGE2B_IDENTITY_CLOSED__STAGE3A_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L12-STAGE2B.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L12-CHECKPOINT.json",
-      "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
+      "artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
       "source_occurrences": 94,
-      "source_row_range": [
-        3293,
-        3386
-      ],
-      "lesson_title": "Wenn es warm ist, essen wir meist Salat.",
-      "audio_refs": 93,
-      "rows_without_audio": [
-        3324
-      ],
-      "missing_example_rows": [
-        3318,
-        3331,
-        3332,
-        3339,
-        3342,
-        3348,
-        3349,
-        3369,
-        3370,
-        3375,
-        3382,
-        3385
-      ],
-      "source_alternatives_review_rows": 39,
+      "identities": 85,
+      "new_a2": 75,
+      "reused_a1": 6,
+      "reused_prior_a2": 4,
+      "new_id_range": "ma2m-lu-0706..ma2m-lu-0780",
+      "candidate_dispositions": 146,
+      "editorial_reviews_closed": 54,
+      "unresolved": 0,
+      "cumulative_unique_projection": 872,
+      "canonical_sha256": "50ead408c156045b9b1c0107c9e7e1db4758abde99c59f469d85646c8cd29368",
+      "identity_fingerprint": "53fdc8bda331b3fefb7bd87dbc170a41fcc60a464165121dc892553052a24030",
       "content_lock_state": "NOT_LOCKED",
       "stage1_complete": true,
-      "stage2_started": false
+      "stage2_complete": true,
+      "stage2b_complete": true,
+      "stage3_started": false
     }
   },
   "stage3a": {
@@ -2625,6 +2614,24 @@
       3324
     ],
     "artifact_sha256": "96513501751fe2daf476c6936ce7b76fbaffba66628073623a38a8cac7eaab9f",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage2b_l12": {
+    "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
+    "source_occurrences": 94,
+    "identities": 85,
+    "new_a2": 75,
+    "reused_a1": 6,
+    "reused_prior_a2": 4,
+    "bindings": 94,
+    "candidate_dispositions": 146,
+    "editorial_reviews_closed": 54,
+    "unresolved": 0,
+    "new_id_range": "ma2m-lu-0706..ma2m-lu-0780",
+    "canonical_sha256": "50ead408c156045b9b1c0107c9e7e1db4758abde99c59f469d85646c8cd29368",
+    "identity_fingerprint": "53fdc8bda331b3fefb7bd87dbc170a41fcc60a464165121dc892553052a24030",
+    "cumulative_unique_projection": 872,
+    "artifact_sha256": "38890c745699f5efa8a357f3319e1f56407645edf2fcf1f6266baa0f68b571a1",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

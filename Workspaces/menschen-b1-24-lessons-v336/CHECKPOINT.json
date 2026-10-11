@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L13_STAGE6_PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
+  "status": "B1_L13_STAGE7_LOCKED_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -98,10 +98,10 @@
     "stage3": "STAGE3C_PASS_CLOSURE",
     "stage4": "PASS_AFTER_BOUNDED_REPAIR1",
     "stage5": "PASS",
-    "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
-    "stage7": "NOT_STARTED"
+    "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
+    "stage7": "LOCKED_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Run B1-L13 Stage7 final content lock/post-package verification from exact Stage5 content plus exact Stage6 evidence. Do not start B1-L14.",
+  "next_action": "B1-L13 is LOCKED. Start B1-L14 Stage1 from the registered Menschen source under v3.3.6. Do not alter B1-L13 in place; future corrections require an explicit successor/repair.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4300,14 +4300,14 @@
   },
   "current_lesson": "B1-L13",
   "next_lesson": "B1-L14",
-  "current_stage": "Stage6 exact-CURRENT runtime/import/presentation/persistence acceptance PASS with environment boundary; Stage7 pending",
+  "current_stage": "Stage7 content lock PASS with runtime project environment boundary",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L13-v3.3.6-Stage6-V475-RUNTIME-ACCEPTANCE.zip",
-    "sha256": "dd91237c36668118834f7fa19eb1e7ab0288152ceb602bbdfa6d892f8d629a30",
-    "size_bytes": 325375,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L13-v3.3.6-Stage6-V475-RUNTIME-ACCEPTANCE.zip",
-    "library_file_id": "file_000000007cfc82468acaf5c94b347586",
-    "library_stable_id": "libfile_856ef71b71848191b241f767d238c23a",
+    "filename": "Menschen-B1-L13-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "434e680e9986f184ba3ae66fcb745788d4104619902ca95409c7ee8762df4bec",
+    "size_bytes": 543021,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L13-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_000000004b448210935da42689b364c9",
+    "library_stable_id": "libfile_0f278908eb4881918262935945a1fe2b",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4966,5 +4966,46 @@
       "library_stable_id": "libfile_2a5534a4c2f48191833200119d986369"
     },
     "next_action": "Run B1-L13 Stage7 final content lock/post-package verification from exact Stage5 content plus exact Stage6 evidence. Do not start B1-L14."
+  },
+  "b1_l13_stage7": {
+    "status": "LOCKED_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "cards": 120,
+    "examples": 480,
+    "relations": 83,
+    "kombinationen": 57,
+    "rejected_kombinationen": 1,
+    "source_occurrences": 115,
+    "source_output_rows": 134,
+    "dimension_cells": 1916,
+    "verified_present_cells": 1118,
+    "closed_no_force_cells": 798,
+    "unresolved_cells": 0,
+    "direct_import_tsv_sha256": "1bfd891032948b3ac74834b450770228c1b37750128292646a4cef55a644ee39",
+    "stage6_runtime": "v475-R109",
+    "stage6_runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "runtime_acceptance": "PASS_WITH_ENVIRONMENT_BOUNDARY__CANONICAL_ORIGIN_INDEXEDDB_NOT_CLAIMED",
+    "runtime_release_final": false,
+    "final_validation": "PASS CRC/SHA256SUMS/manifest/fresh-byte-parity/self-verifier/official-gates/Stage6-rerun/prevention-package",
+    "artifact": {
+      "filename": "Menschen-B1-L13-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "434e680e9986f184ba3ae66fcb745788d4104619902ca95409c7ee8762df4bec",
+      "size_bytes": 543021,
+      "members": 100,
+      "library_file_id": "file_000000004b448210935da42689b364c9",
+      "library_stable_id": "libfile_0f278908eb4881918262935945a1fe2b",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "exact_final_acceptance": {
+      "sha256": "8644bc87c78c38fd84b424f0fe6f165f71f85944a3e98178a57dece34585b728",
+      "library_file_id": "file_00000000a1fc820ab9a3fd49d7b8cc9a",
+      "library_stable_id": "libfile_05e4107cf12081919b3020c57f604e3f"
+    },
+    "post_package": {
+      "sha256": "e0897a1667969d5b120403163aedb99b714fe13c9b57a1e4174559f504c68565",
+      "library_file_id": "file_000000003a4881f496c77e64dfac3d8d",
+      "library_stable_id": "libfile_034bfca21ef88191ae2bb47602e60ba0"
+    },
+    "next_action": "B1-L13 is LOCKED. Start B1-L14 Stage1 from the registered Menschen source under v3.3.6. Do not alter B1-L13 in place; future corrections require an explicit successor/repair."
   }
 }

@@ -2,21 +2,23 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L16",
-  "latest_verified_milestone": "STAGE3A_COMPLETE_RICHNESS_BASELINE__STAGE3B_EDITORIAL_PENDING",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-RECEIPT.json",
+  "latest_verified_milestone": "STAGE3A_COMPLETE_RICHNESS_BASELINE__DURABLE_PERSISTENCE_REPAIR1__STAGE3B_EDITORIAL_PENDING",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-PERSISTENCE-REPAIR1-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-PERSISTENCE-REPAIR1-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
-    "sha256": "ae8b7f16164cec6eef3b101672456b3f156a05d0a0179ec3b27042c3cd82fbab",
-    "size_bytes": 209015,
-    "members": 42,
-    "delivery_path": "sandbox:/mnt/data/Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
-    "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_2_BOUNDED_ATTEMPTS"
+    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-PERSISTENCE-REPAIR1-CHECKPOINT.zip",
+    "sha256": "fd56d960c9dc74fcb959818fc4eee65c636e051cc0a74df54f7459eaf7dbd44b",
+    "size_bytes": 165587,
+    "members": 29,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-PERSISTENCE-REPAIR1-CHECKPOINT.zip",
+    "library_file_id": "file_00000000441882469353999696744147",
+    "library_stable_id": "libfile_0c67d8a8e70881918138ec571e5913e4",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE3A__156_TARGETS__2496_POLICY_CELLS__2340_UNRESOLVED__154_AUDIO_VERIFIED__2_AUDIO_CLOSED__34_FLAGS__STAGE3B_NEXT",
-  "next_action": "A1-L16 Stage3B editorial enrichment for all 156 targets in P1(34) -> P2(67) -> P3(55). Preserve eight current v3.3.6 reuse authorities, ma1m-lu-1909 shared identity, and zero-audio closures. Do not start A1-L17.",
-  "checkpoint_commit": "ff5f2efb10677667431ddd71a6234ddb4c4dc719",
-  "receipt_commit": "d0678cad6538b7320cdf74ae2d7102c3701b3ff7",
+  "quality": "PASS_STAGE3A__DURABLE_REPAIR1__156_TARGETS__2496_POLICY_CELLS__2340_UNRESOLVED__154_AUDIO_VERIFIED__2_AUDIO_CLOSED__34_FLAGS__LIBRARY_EXACT_BYTE_PASS__STAGE3B_NEXT",
+  "next_action": "Run A1-L16 Stage3B independent editorial enrichment for all 156 targets. Start with the exact 34 P1 source-review targets, then review all remaining 122 without inventing an unavailable P2/P3 per-ID partition. Do not start A1-L17.",
+  "checkpoint_commit": "2691d31b66fd27e72d5f4013a3fb8575bb45cc8e",
+  "receipt_commit": "8662956e60e76d3bd5d132fb19adf85568f91c9e",
   "previous_locked_scope": {
     "scope": "A1-L15",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -73,8 +75,17 @@
     "same_lesson_shared": "ma1m-lu-1909 rows 1335+1336",
     "validation": "official 3/3 + independent 46/46 + package self-verify PASS",
     "persistence": {
-      "library": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_2_BOUNDED_ATTEMPTS"
+      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE_VIA_REPAIR1",
+      "original_stage3a_artifact": "UNAVAILABLE_AS_DURABLE_LIBRARY_BLOB",
+      "repair_artifact_sha256": "fd56d960c9dc74fcb959818fc4eee65c636e051cc0a74df54f7459eaf7dbd44b"
     },
-    "runtime": "NOT_RUN_CONTENT_ONLY"
+    "runtime": "NOT_RUN_CONTENT_ONLY",
+    "recovery_note": "No semantic advance: Repair1 restores durable Stage3A resume state. Exact P2/P3 per-ID partition was not guessed; Stage3B reviews all non-P1 targets independently."
+  },
+  "persistence_incident": {
+    "path": "Workspaces/menschen-a1-reaudit-v336/A1-L16-CONCURRENT-PERSISTENCE-INCIDENT-2026-10-11.json",
+    "commit": "a0bc589ab458a1f3b05e061539d52ea2f08f8b15",
+    "status": "CONTAINED_NO_CURRENT_CONTENT_LOSS",
+    "nonauthoritative_sha256": "9ad03dca9b0b7e0e458f640b51f0434388d19b538d074c6e4adb73b88b100352"
   }
 }

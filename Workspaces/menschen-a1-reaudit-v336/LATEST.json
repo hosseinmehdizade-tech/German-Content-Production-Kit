@@ -2,23 +2,21 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "menschen-a1-reaudit-v336",
   "scope": "A1-L17",
-  "latest_verified_milestone": "STAGE1_2_PASS_EXACT_SOURCE_AND_MEM009_IDENTITY_CLOSURE__STAGE3A_NEXT",
-  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE1-2-CHECKPOINT.json",
-  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE1-2-RECEIPT.json",
+  "latest_verified_milestone": "STAGE3A_COMPLETE_RICHNESS_BASELINE__STAGE3B_EDITORIAL_PENDING",
+  "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE3A-CHECKPOINT.json",
+  "milestone_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L17-STAGE3A-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-L17-v3.3.6-REAUDIT-Stage1-2-CHECKPOINT.zip",
-    "sha256": "e11fdb84f9828300c324ac5feac6d54590109cccefaba54fe0dcf2a7835c9077",
-    "size_bytes": 93293,
-    "members": 34,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L17-v3.3.6-REAUDIT-Stage1-2-CHECKPOINT.zip",
-    "library_file_id": "file_000000001c70821086f77b2dab2f8e14",
-    "library_stable_id": "libfile_7d26a0dd482481919b7e1b619c287dc3",
+    "filename": "Menschen-A1-L17-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
+    "sha256": "3c0d4a7cec769580aba68d27567186a01807312cd319ee0c444b9b29f8a5009e",
+    "size_bytes": 215789,
+    "library_file_id": "file_0000000086648246b00a14a73af2264e",
+    "library_stable_id": "libfile_27a8869cd444819180943926516db077",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "PASS_STAGE1_2__118_SOURCE__138_ACTIVE_TARGETS__135_NEW_3_REUSED__66_SENSES_72_EXPRESSIONS__9_MEM009_ALIASES_RETIRED__138_EDGES__18_SPLIT_ROWS__0_UNRESOLVED__LIBRARY_BYTE_EXACT__STAGE3A_NEXT",
-  "next_action": "A1-L17 Stage3A whole-dataset richness baseline for 138 active targets. Do not start Stage3B or A1-L18.",
-  "checkpoint_commit": "55589608ef672b0435147c0cb1ff6ea4c7d45e12",
-  "receipt_commit": "21ac44ff641e93a7be80f35f0ad710380e3d84c6",
+  "quality": "PASS_STAGE3A__138_TARGETS__2210_CELLS__2072_UNRESOLVED__0_CANDIDATES__OFFICIAL_4_OF_4__INDEPENDENT_25_OF_25__STAGE3B_NEXT",
+  "next_action": "A1-L17 Stage3B independent editorial enrichment for all 138 active targets. Do not start A1-L18.",
+  "checkpoint_commit": "f6a85ff61fa28a4261582c311c837c4ca00f4753",
+  "receipt_commit": "02eae1876a295621642e9cfee60f4749729d9912",
   "previous_locked_scope": {
     "scope": "A1-L16",
     "milestone": "STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY",
@@ -26,30 +24,17 @@
     "sha256": "b1950c6470ea85f10fa38abe97345bff03022fcacff1b7210c97f56d7ba0433d",
     "content_lock_state": "LOCKED"
   },
-  "stage12": {
-    "status": "PASS_EXACT_SOURCE_AND_MEM009_IDENTITY_CLOSURE__STAGE3A_NEXT",
-    "source_rows": 118,
-    "source_ordinals": "1407..1524",
-    "source_audio": "118 refs / 118 unique / zero-audio 0 / multi-audio 0",
-    "mapping_edges": 138,
-    "active_targets": 138,
-    "new_targets": 135,
-    "reused_ids": [
-      "ma1m-lu-0042",
-      "ma1m-lu-0935",
-      "ma1m-lu-0936"
-    ],
+  "stage3a": {
+    "targets": 138,
     "senses": 66,
     "expressions": 72,
-    "retired_mem009_aliases": 9,
-    "split_source_rows": 18,
-    "cumulative_identity_boundary": "2114 memberships / 2095 unique active IDs / 19 intentional reuse edges",
-    "unresolved_identity": 0,
-    "validation": "official source + identity PASS; independent 47/47; fresh 27/27; post-package PASS",
-    "persistence": {
-      "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-      "git": "IN_SYNC_AFTER_THIS_UPDATE"
-    },
+    "completeness": "2210 cells / 2072 unresolved",
+    "source_audio": "138 VERIFIED_PRESENT",
+    "historical_recovery": "147 targets / 588 examples / 64 relations / 84 resolutions / 147 claims",
+    "mem009": "9 historical aliases retired; 3 historical relations become self after alias mapping",
+    "priority": "65 flagged + 3 current-prior reuse + 70 remaining",
+    "candidate_ledger": 0,
+    "validation": "official 4/4 + independent 25/25 + post-package PASS",
     "runtime": "NOT_RUN_CONTENT_ONLY"
   }
 }

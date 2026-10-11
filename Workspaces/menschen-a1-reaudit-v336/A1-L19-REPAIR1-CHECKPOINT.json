@@ -1,0 +1,59 @@
+{
+  "schema": "gcpk-menschen-a1-l19-front-repair-checkpoint@1.0.0",
+  "date": "2026-10-12",
+  "scope": "A1-L19",
+  "framework": "v3.3.6+HF1",
+  "status": "PASS_LOCKED_REPAIR_SUCCESSOR__LEARNER_VISIBLE_FRONT_BINDING_FIXED",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "CP-MEM-003",
+    "CP-MEM-007",
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD"
+  ],
+  "root_cause": {
+    "content": "v3.3.5/v3.3.6 neutral projector emitted raw lemma/headword as front while article/plural/principal forms remained metadata-only.",
+    "runtime": "Neutral noun rich-presentation profile requested no article/plural slots; generic surfaces used raw card.front.",
+    "identity": "A1-L19 ma1m-lu-2383 inherited source argument placeholder into Verb Sense headword/lemma (`etw. auseinanderhalten`) instead of keeping it only in structure/Rektion.",
+    "qa_gap": "Existing gates asserted semantic morphology presence and presentation-family parity but did not fail on actual learner-visible front binding; this violated CP-MEM-003."
+  },
+  "predecessor": {
+    "filename": "Menschen-A1-L19-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "6ff27b818d3bf3c2c525f4526493fd55ff2b1ff9643ad118710889ebb71d12c4",
+    "state": "IMMUTABLE_HISTORICAL_PREDECESSOR"
+  },
+  "repair": {
+    "filename": "Menschen-A1-L19-v3.3.6-REPAIR1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "440093f6cbe9542e92a1e39298f340e26594209866760edc1846e0a1bd9e31e2",
+    "size_bytes": 939902,
+    "members": 102,
+    "direct_import_sha256": "d8227fb215af5531aa788fb41889d84fca5169892c870882eb18c0dec58abc23",
+    "semantic_canonical_sha256": "f6686d8ded20db1bb036e696e9261889da5ad612070742c4fe686cb9ccb99363",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L19-v3.3.6-REPAIR1-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_00000000895082108fb876b8291b0993",
+    "library_stable_id": "libfile_50287e0496188191a70189879a82f7c6",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "validation": {
+    "learner_visible_front": "PASS 121/121",
+    "content": "121 cards / 484 trilingual examples / 90 relations / 39 Kombinationen",
+    "exact_runtime": "GFP-v476-R110; 121/121 cards across Study/Quick/Typing/Audio plus generic front; 0 failures",
+    "samples": [
+      "der Bart, Bärte",
+      "reagieren, reagiert, reagierte, hat reagiert",
+      "auseinanderhalten, hält auseinander, hielt auseinander, hat auseinandergehalten"
+    ],
+    "placeholder_repair": "ma1m-lu-2383 lemma/headword cleaned to auseinanderhalten; grammarPattern jdn./etw. auseinanderhalten; Rektion Akkusativ; source_visible_form byte-preserved.",
+    "package": "CRC/path safety/manifest chains PASS",
+    "semantic_source_lineage": "PASS; canonical/source/audio/examples/relations/Kombinationen preserved except explicit learner-visible bridge/headword repair"
+  },
+  "runtime": {
+    "target": "v476-R110",
+    "release_final": false,
+    "last_fully_verified": "v466-R100"
+  },
+  "content_lock_state": "LOCKED_REPAIR_SUCCESSOR",
+  "next_action": "Use Repair1 as the A1-L19 current content authority. Rebase A1-L20 Stage3B under HF1 before any Stage3C disposition; do not propagate the predecessor front projection."
+}

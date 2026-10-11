@@ -1,0 +1,63 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage3a-persistence-repair@1.0.0",
+  "date": "2026-10-11",
+  "scope": "A1-L16",
+  "framework": "v3.3.6",
+  "status": "PASS_STAGE3A_BASELINE_DURABLE_PERSISTENCE_REPAIR1__STAGE3B_NEXT",
+  "semantic_advance": false,
+  "original_stage3a": {
+    "checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L16-STAGE3A-CHECKPOINT.json",
+    "checkpoint_commit": "ff5f2efb10677667431ddd71a6234ddb4c4dc719",
+    "receipt_commit": "d0678cad6538b7320cdf74ae2d7102c3701b3ff7",
+    "artifact": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-BASELINE-CHECKPOINT.zip",
+    "artifact_sha256": "ae8b7f16164cec6eef3b101672456b3f156a05d0a0179ec3b27042c3cd82fbab",
+    "library_persistence": "PENDING_CONTAINER_SESSION_EXPIRED_AFTER_2_BOUNDED_ATTEMPTS"
+  },
+  "repair_artifact": {
+    "filename": "Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-PERSISTENCE-REPAIR1-CHECKPOINT.zip",
+    "sha256": "fd56d960c9dc74fcb959818fc4eee65c636e051cc0a74df54f7459eaf7dbd44b",
+    "size_bytes": 165587,
+    "members": 29,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L16-v3.3.6-REAUDIT-Stage3A-PERSISTENCE-REPAIR1-CHECKPOINT.zip",
+    "library_file_id": "file_00000000441882469353999696744147",
+    "library_stable_id": "libfile_0c67d8a8e70881918138ec571e5913e4",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "parity": {
+    "targets": 156,
+    "senses": 72,
+    "expressions": 84,
+    "source_rows": 113,
+    "official_policy_cells": 2496,
+    "unresolved_cells": 2340,
+    "source_audio": "154 VERIFIED_PRESENT / 2 CLOSED_NO_FORCE",
+    "historical_evidence": "624 examples / 93 relations / 49 review resolutions",
+    "source_review_flag_targets": 34,
+    "priority_counts": "P1=34 / P2=67 / P3=55",
+    "candidate_ledger": 0,
+    "current_reuses": 8,
+    "same_lesson_shared": "ma1m-lu-1909 rows 1335+1336",
+    "zero_audio": [
+      "ma1m-lu-1924",
+      "ma1m-lu-1929"
+    ]
+  },
+  "validation": {
+    "official_source": "PASS 113",
+    "official_identity": "PASS 156",
+    "official_completeness_baseline": "PASS 156 targets / 2496 cells / 2340 unresolved",
+    "official_candidate_ledger": "PASS 0 candidates",
+    "independent": "18/18 PASS",
+    "package": "CRC PASS / manifest 27/27 / SHA256SUMS 28/28",
+    "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "recovery_boundaries": {
+    "p1_exact": "34 current semantic/editorial source-review targets; zero-audio targets are separately dispositioned",
+    "p2_p3": "Only authoritative counts are preserved; exact original per-ID P2/P3 partition is not guessed. Stage3B must independently review all remaining 122 targets.",
+    "historical_semantics": "Recovery evidence only; not automatically accepted as current Stage3B signoff.",
+    "runtime": "NOT_RUN_CONTENT_ONLY"
+  },
+  "incident_reference": "Workspaces/menschen-a1-reaudit-v336/A1-L16-CONCURRENT-PERSISTENCE-INCIDENT-2026-10-11.json",
+  "content_lock_state": "SUCCESSOR_NOT_LOCKED",
+  "next_action": "Run A1-L16 Stage3B independent editorial enrichment for all 156 targets. Start with the exact 34 P1 source-review targets, then review all remaining 122 without inventing an unavailable P2/P3 per-ID partition. Do not start A1-L17."
+}

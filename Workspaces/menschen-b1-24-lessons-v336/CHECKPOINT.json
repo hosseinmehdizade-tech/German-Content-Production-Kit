@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L12_STAGE2_REPAIR1_PASS__STAGE3_REGEN_PENDING",
+  "status": "B1_L12_STAGE3C_REPAIR1_PASS__STAGE4_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_VERIFIED_PORTABLE_SOURCE_BOUNDARY",
     "stage2": "PASS_REPAIR1_MULTI_MEANING_IDENTITY_CLOSURE",
-    "stage3": "REGEN_REQUIRED_AFFECTED_DEPENDENCIES",
-    "stage4": "BLOCKED_UNTIL_STAGE3_REGEN",
+    "stage3": "STAGE3C_REPAIR1_DISPOSITION_CLOSURE_PASS",
+    "stage4": "NOT_STARTED_AFTER_REPAIR1",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "LOCKED"
   },
-  "next_action": "Regenerate dependency-affected Stage3A/3B/3C from exact Stage2 Repair1 artifact 19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0, preserving 126 unaffected targets exactly and re-enriching the seven retained multi-meaning targets. Then rerun Stage4. Do not start B1-L13.",
+  "next_action": "Run B1-L12 Stage4 independent linguistic/source-fidelity QA from exact Stage3C Repair1 artifact 9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b. Do not start B1-L13.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4297,14 +4297,14 @@
   },
   "current_lesson": "B1-L12",
   "next_lesson": "B1-L13",
-  "current_stage": "Stage2 Repair1 identity closure PASS",
+  "current_stage": "Stage3C Repair1 disposition closure PASS",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L12-v3.3.6-Stage2-Repair1-IDENTITY-CLOSURE-PASS.zip",
-    "sha256": "19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0",
-    "size_bytes": 93076,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage2-Repair1-IDENTITY-CLOSURE-PASS.zip",
-    "library_file_id": "file_00000000e8688210bf026fa3eba5806c",
-    "library_stable_id": "libfile_6e2b390610d48191aa162a0977984b45",
+    "filename": "Menschen-B1-L12-v3.3.6-Stage3C-Repair1-CLOSURE-PASS-CHECKPOINT.zip",
+    "sha256": "9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b",
+    "size_bytes": 385201,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage3C-Repair1-CLOSURE-PASS-CHECKPOINT.zip",
+    "library_file_id": "file_00000000bfe88210a22e931bd5cc5bbb",
+    "library_stable_id": "libfile_248d5409fb5c8191b27bcb394785339d",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4420,6 +4420,25 @@
     "unaffected_targets_exact_object_parity": 126,
     "source_occurrences": "116/116 PASS",
     "artifact_sha256": "19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "b1_l12_stage3c_repair1": {
+    "status": "PASS__STAGE4_PENDING",
+    "parent_stage2_sha256": "19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0",
+    "stage3a_sha256": "5ec871b2ac6c4b8d7c057383d9775c9d6f32f69daa08726541733901cd1f23b9",
+    "stage3b_sha256": "6bc4cfefdefaac56e76130c58e576cd32d1499cb425038a50757d755a2bc19df",
+    "targets": 133,
+    "dimension_cells": 2106,
+    "verified_present_cells": 2049,
+    "closed_no_force_cells": 57,
+    "unresolved_cells": 0,
+    "examples": 532,
+    "kombinationen_items": 123,
+    "canonical_relation_edges": 102,
+    "unaffected_exact_object_parity": 126,
+    "retained_multi_meaning_targets": 7,
+    "superseded_ids": 9,
+    "artifact_sha256": "9fd2adaa08c07aa21ca43b29e4c1ee0874a25a5312be6683024d53c83faf943b",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

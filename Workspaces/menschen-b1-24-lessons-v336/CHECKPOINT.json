@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L12_STAGE6_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
+  "status": "B1_L12_STAGE7_LOCKED_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -99,9 +99,9 @@
     "stage4": "PASS_INDEPENDENT_QA",
     "stage5": "PASS_REPAIR1_RUNTIME_IMPORT_COMPAT",
     "stage6": "PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
-    "stage7": "NOT_STARTED"
+    "stage7": "LOCKED_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Run B1-L12 Stage7 exact-final content-production lock/post-package verification from exact Stage5 Repair1 content plus Stage6 evidence. Do not start B1-L13.",
+  "next_action": "Start B1-L13 Stage1 source inventory. B1-L12 is locked; do not modify it in place—use a successor repair if needed.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -2807,7 +2807,7 @@
     },
     "next_action": "Run B1-L06 Stage7 final content lock/post-package verification from exact Stage5 content plus this Stage6 evidence. Do not start B1-L07."
   },
-  "latest_locked_lesson": "B1-L09",
+  "latest_locked_lesson": "B1-L12",
   "locked_lessons": [
     "B1-L01",
     "B1-L02",
@@ -2817,7 +2817,10 @@
     "B1-L06",
     "B1-L07",
     "B1-L08",
-    "B1-L09"
+    "B1-L09",
+    "B1-L10",
+    "B1-L11",
+    "B1-L12"
   ],
   "locked_lesson_sums": {
     "lessons": 7,
@@ -4297,14 +4300,14 @@
   },
   "current_lesson": "B1-L12",
   "next_lesson": "B1-L13",
-  "current_stage": "Stage6 runtime/presentation acceptance PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "current_stage": "Stage7 exact-final content-production lock PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-B1-L12-v3.3.6-Stage6-V475-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
-    "sha256": "deca23daec93dc5a2d9bf458f2d12c70709db232e1222ab720b6cf69473d5a0d",
-    "size_bytes": 14431,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage6-V475-ACCEPTANCE-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
-    "library_file_id": "file_000000002bcc81f4b22b82fc3773f790",
-    "library_stable_id": "libfile_13bf06be1af88191a908c56fda5d1392",
+    "filename": "Menschen-B1-L12-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "f807ca6e893a461288a11a3d1830fd2f33536155957d2ba7eff3ed7a1c9eb1ba",
+    "size_bytes": 1875341,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_000000002e3882109603e758fcffcd49",
+    "library_stable_id": "libfile_9d1310042a24819197f9a049f34c2e53",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4562,5 +4565,30 @@
     "artifact_sha256": "deca23daec93dc5a2d9bf458f2d12c70709db232e1222ab720b6cf69473d5a0d",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "stage7_allowed": true
+  },
+  "locked_lesson_sums_note": "Pre-existing aggregate was already stale/inconsistent with the locked_lessons registry before B1-L12 Stage7; not recomputed in this bounded milestone. Per-lesson Stage7 receipts remain authoritative.",
+  "b1_l12_stage7": {
+    "status": "LOCKED_PASS_WITH_RUNTIME_PROJECT_ENVIRONMENT_BOUNDARY",
+    "artifact_filename": "Menschen-B1-L12-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+    "artifact_sha256": "f807ca6e893a461288a11a3d1830fd2f33536155957d2ba7eff3ed7a1c9eb1ba",
+    "size_bytes": 1875341,
+    "members": 59,
+    "library_file_id": "file_000000002e3882109603e758fcffcd49",
+    "library_stable_id": "libfile_9d1310042a24819197f9a049f34c2e53",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "exact_final_acceptance_sha256": "045eed9f2c0a834c8ff2e6db94df14b2f9fe7f33fc49cd73a49c4ab0dd76e020",
+    "post_package_sha256": "10966b98043d246deaa3a578221572b45e569fa55f0e868ed2d710d8a566d576",
+    "cards": 133,
+    "examples": 532,
+    "relations": 76,
+    "kombinationen": 23,
+    "source_occurrences": 116,
+    "source_output_rows": 133,
+    "dimension_cells": 2106,
+    "unresolved_cells": 0,
+    "direct_import_tsv_sha256": "10ce9a885a1b629e914d72a4881fed5ce83465063f9099029bd4a02addacf000",
+    "runtime_current": "v475-R109",
+    "runtime_sha256": "18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746",
+    "runtime_acceptance": "PASS_WITH_ENVIRONMENT_BOUNDARY__CANONICAL_ORIGIN_INDEXEDDB_NOT_CLAIMED"
   }
 }

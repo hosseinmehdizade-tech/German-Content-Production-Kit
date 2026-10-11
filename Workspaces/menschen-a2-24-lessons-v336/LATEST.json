@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L11_STAGE3A_PASS",
-  "quality": "L01_L10_STAGE7_LOCKED__L11_STAGE3A_BASELINE_PASS__STAGE3B_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3A.json",
-  "artifact_sha256": "8772b20a475e972c25ebdaa170eb1cc2a142dbb1858993d266a8cf3a51d13aa2",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L11-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
-  "artifact_library_file_id": "file_00000000c0f48210874bdb3ca516cb18",
+  "latest_completed_milestone": "A2-L11_STAGE3B_PASS",
+  "quality": "L01_L10_STAGE7_LOCKED__L11_STAGE3B_AUTHORSHIP_PASS__STAGE3C_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3B.json",
+  "artifact_sha256": "9ab276ca6c8e8b6d96a8dd55c6afc604b8b1698217dd115e8fcac5131aad9cdf",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L11-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+  "artifact_library_file_id": "file_00000000eacc81f4a38b0d3f0f51d29d",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Run A2-L11 Stage3B gap-driven enrichment across all 1170 unresolved cells under v3.3.6, including mandatory Kombinationen review for all 80 lexical targets. Preserve Stage2B identity unless genuinely new identity evidence appears.",
+  "next_action": "Run A2-L11 Stage3C independent disposition closure across all 80 identities / 1250 dimension cells. Independently verify every Stage3B candidate and close every cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE; preserve all 6 locked dependencies immutable. Do not start Stage4 until pending=0.",
   "central_checkpoint_sha": "2bb57d79ad24e9d3dbe6908f77d75845c489e631",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
-  "last_git_coordination": "A2_L11_STAGE3A_PASS__L01_L10_LOCKED_PRESERVED__CENTRAL_ROOT_README_RECONCILED",
+  "last_git_coordination": "A2_L11_STAGE3B_PASS__L01_L10_LOCKED_PRESERVED",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -247,24 +247,28 @@
       "stage7_complete": true
     },
     "A2-L11": {
-      "status": "STAGE3A_BASELINE_PASS__STAGE3B_NEXT",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3A.json",
+      "status": "STAGE3B_AUTHORSHIP_PASS__STAGE3C_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3B.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L11-CHECKPOINT.json",
-      "artifact_sha256": "8772b20a475e972c25ebdaa170eb1cc2a142dbb1858993d266a8cf3a51d13aa2",
+      "artifact_sha256": "9ab276ca6c8e8b6d96a8dd55c6afc604b8b1698217dd115e8fcac5131aad9cdf",
       "source_occurrences": 86,
       "identities": 80,
       "new_a2": 74,
       "reused_a1": 4,
       "reused_prior_a2": 2,
       "cumulative_unique": 791,
-      "dimension_cells": 1250,
-      "verified_present_cells": 80,
-      "unresolved_cells": 1170,
+      "trilingual_examples": 296,
+      "kombinationen_candidates": 156,
+      "relation_candidates": 76,
+      "candidate_ledger_accepted": 727,
+      "candidate_ledger_deferred": 443,
+      "stage3c_pending_cells": 1250,
       "content_lock_state": "NOT_LOCKED",
       "stage1_complete": true,
       "stage2b_complete": true,
       "stage3a_complete": true,
-      "stage3b_started": false
+      "stage3b_complete": true,
+      "stage3c_started": false
     }
   },
   "stage3a": {
@@ -1823,10 +1827,10 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "stage3b": "NOT_STARTED"
   },
-  "current_focus": "A2_L11_STAGE3A_PASS__STAGE3B_NEXT",
+  "current_focus": "A2_L11_STAGE3B_PASS__STAGE3C_NEXT",
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L11-CHECKPOINT.json",
-  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3A.json",
-  "stage3b_started": false,
+  "current_lesson_receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3B.json",
+  "stage3b_started": true,
   "stage3b_complete": true,
   "stage3c_started": false,
   "latest_stage3b_l09": {
@@ -2383,5 +2387,40 @@
       "to": "5e25320371cf4be3b81835626d3484cb6a93dae2210b135e209a52678218da9f",
       "artifact_bytes_mutated": false
     }
-  ]
+  ],
+  "latest_stage3b_l11": {
+    "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L11-STAGE3B.json",
+    "artifact": {
+      "filename": "Menschen-A2-L11-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+      "sha256": "9ab276ca6c8e8b6d96a8dd55c6afc604b8b1698217dd115e8fcac5131aad9cdf",
+      "size_bytes": 403087,
+      "members": 28,
+      "sha256_entries": 27,
+      "json_files": 20,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L11-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+      "library_file_id": "file_00000000eacc81f4a38b0d3f0f51d29d",
+      "library_stable_id": "libfile_e7b4691618a081919ccef9f03512d404",
+      "library_upload": "PASS_EXACT_EXPORTED_SNAPSHOT",
+      "library_roundtrip": "PENDING_BINARY_VISIBILITY_FOR_INDEPENDENT_REMATERIALIZATION"
+    },
+    "lesson_identities": 80,
+    "new_a2_cards": 74,
+    "immutable_reuse_dependencies": 6,
+    "trilingual_examples": 296,
+    "registered_source_exact_german_examples": 0,
+    "curated_pedagogical_examples": 296,
+    "kombinationen_candidates": 156,
+    "relation_candidates": 76,
+    "registered_source_relation_candidates": 28,
+    "curated_relation_candidates": 48,
+    "candidate_ledger": {
+      "candidates": 1170,
+      "accepted": 727,
+      "rejected": 0,
+      "deferred": 443,
+      "mode": "working_stage3b"
+    },
+    "stage3c_pending_cells": 1250
+  }
 }

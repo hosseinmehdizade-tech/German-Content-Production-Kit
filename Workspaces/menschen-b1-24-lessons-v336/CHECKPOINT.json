@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L12_STAGE4_BLOCKED__UPSTREAM_STAGE2_REOPEN_REQUIRED",
+  "status": "B1_L12_STAGE2_REPAIR1_PASS__STAGE3_REGEN_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -94,14 +94,14 @@
   },
   "stages": {
     "stage1": "PASS_WITH_VERIFIED_PORTABLE_SOURCE_BOUNDARY",
-    "stage2": "REOPEN_REQUIRED_AFFECTED_IDENTITIES",
-    "stage3": "INVALIDATED_AFFECTED_DEPENDENCIES",
-    "stage4": "BLOCKED_UPSTREAM_IDENTITY",
+    "stage2": "PASS_REPAIR1_MULTI_MEANING_IDENTITY_CLOSURE",
+    "stage3": "REGEN_REQUIRED_AFFECTED_DEPENDENCIES",
+    "stage4": "BLOCKED_UNTIL_STAGE3_REGEN",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "LOCKED"
   },
-  "next_action": "Reopen B1-L12 Stage2 for the seven affected single-lexeme polysemy rows; merge nine provisional split IDs into the seven retained IDs, preserve unaffected identities/provenance, then recompute affected Stage3 and rerun Stage4. Do not start B1-L13.",
+  "next_action": "Regenerate dependency-affected Stage3A/3B/3C from exact Stage2 Repair1 artifact 19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0, preserving 126 unaffected targets exactly and re-enriching the seven retained multi-meaning targets. Then rerun Stage4. Do not start B1-L13.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4297,12 +4297,14 @@
   },
   "current_lesson": "B1-L12",
   "next_lesson": "B1-L13",
-  "current_stage": "Stage4 BLOCKED — Stage2 identity reopen required",
+  "current_stage": "Stage2 Repair1 identity closure PASS",
   "latest_portable_checkpoint": {
-    "filename": "B1-L12-STAGE4-UPSTREAM-IDENTITY-BLOCKER.json",
-    "sha256": "ad54f799e8081c329e90270ba3073ded95df207497aa93eabb6d9e4f3be4e472",
-    "library_file_id": "file_00000000d8a882109c34d38657413844",
-    "library_stable_id": "libfile_a7c03eb7f09081919c2e13e0dafdab42",
+    "filename": "Menschen-B1-L12-v3.3.6-Stage2-Repair1-IDENTITY-CLOSURE-PASS.zip",
+    "sha256": "19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0",
+    "size_bytes": 93076,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L12-v3.3.6-Stage2-Repair1-IDENTITY-CLOSURE-PASS.zip",
+    "library_file_id": "file_00000000e8688210bf026fa3eba5806c",
+    "library_stable_id": "libfile_6e2b390610d48191aa162a0977984b45",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "b1_l12_stage3c": {
@@ -4380,5 +4382,44 @@
       "mb1m-lu-1919"
     ],
     "blocker_sha256": "ad54f799e8081c329e90270ba3073ded95df207497aa93eabb6d9e4f3be4e472"
+  },
+  "b1_l12_stage2_repair1": {
+    "status": "PASS_IDENTITY_REPAIR1__STAGE3_REGEN_PENDING",
+    "guardrail": "MEM-009-MULTI-MEANING-ONE-CARD",
+    "active_targets_before": 142,
+    "active_targets_after": 133,
+    "affected_source_rows": [
+      5889,
+      5919,
+      5928,
+      5931,
+      5960,
+      5970,
+      5971
+    ],
+    "retained_ids": [
+      "mb1m-lu-1815",
+      "mb1m-lu-1855",
+      "mb1m-lu-1866",
+      "mb1m-lu-1870",
+      "mb1m-lu-1904",
+      "mb1m-lu-1916",
+      "mb1m-lu-1918"
+    ],
+    "superseded_ids": [
+      "mb1m-lu-1816",
+      "mb1m-lu-1817",
+      "mb1m-lu-1856",
+      "mb1m-lu-1867",
+      "mb1m-lu-1871",
+      "mb1m-lu-1905",
+      "mb1m-lu-1906",
+      "mb1m-lu-1917",
+      "mb1m-lu-1919"
+    ],
+    "unaffected_targets_exact_object_parity": 126,
+    "source_occurrences": "116/116 PASS",
+    "artifact_sha256": "19f3eb43026b820d87631caba99df5ce920631bd341b0a2f57c870eea325bfb0",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

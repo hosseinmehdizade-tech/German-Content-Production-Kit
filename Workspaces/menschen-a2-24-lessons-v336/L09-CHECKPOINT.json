@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l09-stage2b-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l09-stage3a-checkpoint@1.0.0",
   "scope": "A2-L09",
   "framework": "v3.3.6",
-  "stage": "Stage2B COMPLETE",
-  "status": "PASS_IDENTITY_CLOSED__STAGE3A_NEXT",
+  "stage": "Stage3A COMPLETE",
+  "status": "PASS_RICHNESS_BASELINE_COMPLETE__STAGE3B_NEXT",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "01-Source/SOURCE-MANIFEST-SNAPSHOT.json",
   "source_occurrences": "01-Source/A2-L09-SOURCE-OCCURRENCES.json",
@@ -56,10 +56,10 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "quality_boundary": "A2_L09_STAGE2B_IDENTITY_CLOSED__73_IDENTITIES__68_NEW_A2__4_A1_REUSE__1_PRIOR_A2_REUSE__0_UNRESOLVED__STAGE3A_NEXT",
-  "next_action": "Run A2-L09 Stage3A baseline richness/completeness audit across all 73 closed identities under v3.3.6. Preserve the 68 new identity assignments and five immutable locked reuses; do not begin learner-facing enrichment before the Stage3A baseline is recorded.",
+  "quality_boundary": "A2_L09_STAGE3A_RICHNESS_BASELINE_PASS__1043_UNRESOLVED__STAGE3B_NEXT",
+  "next_action": "Run A2-L09 Stage3B gap-driven enrichment across all 1043 unresolved cells. Prioritize MUST_HAVE definition/FA/EN/examples and immutable-parent compatibility, then morphology/structure/relations and lexical Kombinationen. Persist accepted/rejected candidates; do not reopen Stage2B unless genuinely new identity evidence appears.",
   "stage2b_complete": true,
-  "stage3_started": false,
+  "stage3_started": true,
   "identity": {
     "units_total": 73,
     "new_a2": 68,
@@ -94,5 +94,48 @@
     "library_file_id": "file_00000000aaf881f4837eca6e87449f8a",
     "library_stable_id": "libfile_5dadd42fc5f4819191b5076d19100d46",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage3a_complete": true,
+  "stage3b_started": false,
+  "stage3a": {
+    "status": "PASS_RICHNESS_BASELINE_COMPLETE__STAGE3B_NOT_STARTED",
+    "targets": 73,
+    "senses": 62,
+    "expressions": 11,
+    "dimension_cells": 1116,
+    "verified_present_cells": 73,
+    "unresolved_cells": 1043,
+    "targets_with_persian_seed": 73,
+    "targets_with_any_german_example_seed": 72,
+    "targets_without_any_german_example_seed": [
+      "ma1m-lu-0130"
+    ],
+    "targets_with_audio_refs": 73,
+    "targets_with_morphology_hints": 39,
+    "source_morphology_hint_occurrences": 44,
+    "stage3_relation_candidates": 62,
+    "targets_with_relation_candidates": 47,
+    "canonical_sha256": "9fe1e7b0550322bc0b94bc634702a3a90afcc61c4ea63522537d6d99300bdc62",
+    "resolved_policy_sha256": "dd8a4473162153b9816134ecc5c1f7ead65d8dbd8b72cb3b804ad69d02fcf2d2",
+    "artifact": {
+      "filename": "Menschen-A2-L09-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
+      "sha256": "07262fd2b8a1ae4e4db0f249908b74328df0e3b258b87c4ed3c42b68b8a28b86",
+      "bytes": 272681,
+      "members": 33,
+      "checksum_entries": 23,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L09-v3.3.6-Stage3A-RICHNESS-BASELINE-PASS.zip",
+      "library_file_id": "file_000000006fb8821085ab8744ef522185",
+      "library_stable_id": "libfile_21318ac4f7b08191a352ee8e2579f022",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package_verification": {
+      "filename": "A2-L09-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "9a8b596aa65d2c381edc2b893505e56303d9ff3c5f3c4672ac222a6c19ab9f14",
+      "size_bytes": 2085,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L09-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "library_file_id": "file_0000000061e48210bc3f81102c998d33",
+      "library_stable_id": "libfile_a7caa4b9f4448191a01d4909b234f46d",
+      "status": "PASS"
+    }
   }
 }

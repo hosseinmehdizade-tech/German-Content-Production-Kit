@@ -1,22 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L09 are Stage7 LOCKED. A2-L10 Stage6 is PASS_WITH_ENVIRONMENT_BOUNDARY and Stage7 exact-final content lock is next.**
+**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage1 is next and has not started.**
 
-- Exact Stage5 content authority: `Menschen-A2-L10-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip`, SHA-256 `c349193ab531ce623d648b45891666ae3c9eb360ec7ae28719c5d178b69cf6db`.
-- Exact import payload: `01-Final-Import/A2-L10-UNIVERSAL-v2.tsv`, SHA-256 `d336110193a20d4f46538487a67aebaa5cc39644a0d333b1dec0311aed43ea5e`.
-- Exact CURRENT runtime: **v475-R109**, artifact SHA-256 `18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746`; LAST_FULLY_VERIFIED remains v466-R100.
-- Target-only runtime/presentation/persistence acceptance: **32/32 PASS**.
-- Cumulative L01-L10 acceptance: **140/140 PASS**; combined deterministic acceptance **172/172 PASS**.
+- A2-L10 final locked artifact: `Menschen-A2-L10-v3.3.6-GFP-v475-LOCKED.zip`, SHA-256 `74f7dc19d3cf8442acc86b7a2b6c13f2d329527755cfad40c3099664a4501017`.
+- Exact final import payload: `01-Final-Import/A2-L10-UNIVERSAL-v2.tsv`, SHA-256 `d336110193a20d4f46538487a67aebaa5cc39644a0d333b1dec0311aed43ea5e`.
+- Content: **72 cards** = 56 new A2 + 13 immutable A1 reuses + 3 immutable prior-A2 reuses; **288 trilingual examples**, **59 Kombinationen sections / 105 items**, **50 accepted relations**, **79 source-audio refs**.
+- Exact CURRENT runtime at lock: **v475-R109**, artifact SHA-256 `18b6a7546828f448fb605194d42516b4b6c7fd762df4ce2cc45d52b814d9d746`; LAST_FULLY_VERIFIED remains v466-R100.
+- Exact-final package/runtime acceptance: **32/32 target + 140/140 cumulative = 172/172 PASS**; page errors **0**.
 - Cumulative unique cards through L10: **713**; **644/644 prior cards retained**, **641/641 non-overlap prior cards semantically unchanged**.
-- Three prior-A2 overlaps (`ma2m-lu-0279`, `ma2m-lu-0249`, `ma2m-lu-0195`) preserve semantic core and prior memberships while adding A2-L10 membership.
-- L10 runtime readback: **72 cards / 288 trilingual examples / 79 audio refs / 59 Kombinationen sections / 105 items**, all four modes; runtime source parity **72/72 PASS**.
-- Runtime static preflight: assets **142/64 PASS**, JS **37 files PASS**, shell cohort **64 + 3 negative controls PASS**, v475 multi-membership **8/8 PASS**, AUD006 relation-presentation **10 fixtures PASS**.
-- Stage6 checkpoint: `Menschen-A2-L10-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v475.zip`, SHA-256 `5fa95a7c6a674155bbb771e3cd7f356099e7c5747c64697a5e71c13d6b2c96fb`; Library exact-byte roundtrip PASS.
-- Real-origin/physical-restart persistence remains an environment boundary; global v475 populated-profile confirmation is a separate app-runtime boundary and does not block this content Stage6 or Stage7.
+- Three prior-A2 overlap IDs preserve semantic core and prior memberships while adding L10 membership: `ma2m-lu-0279`, `ma2m-lu-0249`, `ma2m-lu-0195`.
+- Final-package validation: **48 members / 46 manifest / 47 SHA256SUMS / 35 JSON**, CRC PASS, **72 rows / 23 columns / 72 unique IDs**, no nested ZIP, no Flashcards app/runtime bits.
+- Official final content gates: unified projection **72**, source occurrences **72**, identity closure **72**, candidate ledger **1038**, completeness **72 targets / 1110 cells / 0 unresolved** — all PASS.
+- Library rematerialization: exact SHA-256 + byte-for-byte PASS.
+- Global v475 populated-profile confirmation remains a separate app-runtime boundary; it does not block the A2-L10 content lock.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L10-STAGE6.json](./L10-STAGE6.json), and [L10-CHECKPOINT.json](./L10-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L10-STAGE7.json](./L10-STAGE7.json), and [L10-CHECKPOINT.json](./L10-CHECKPOINT.json).
 
-Next major stage: **A2-L10 Stage7 — exact-final content-only lock/post-package verification**. Do not start A2-L11 before L10 is locked.
+Next major stage: **A2-L11 Stage1 — source inventory from the registered Menschen A2 source**. A2-L01 through A2-L10 are immutable locked authorities.
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

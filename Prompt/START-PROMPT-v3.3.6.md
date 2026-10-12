@@ -14,7 +14,7 @@ Mandatory architecture:
 - Stage 4 independently re-audits completeness/source IDs/relations/structure and does not trust Stage 3 self-report;
 - Stage 5 uses the v3.3.6 clean-delivery anti-bypass gate from the portable authority;
 - ordinary vocabulary still uses `de-vocabulary` + `gfp-vocabulary-neutral@1`;
-- ACTIVE HF1 learner-visible front overlay: `Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.0.0.md` is mandatory. Stage 5 must run `Verification/validate_learner_visible_lexical_front_v1_0_0.py`; Stage 6 must verify actual learner-facing noun article/plural and verb/adjective morphology, not metadata presence only. Verb Sense lemmas must not absorb argument placeholders such as `etw.` or `jdn.`;
+- ACTIVE HF2 learner-visible front overlay: `Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.1.0.md` is mandatory. Stage 5 must run `Verification/validate_learner_visible_lexical_front_v1_1_0.py`; Stage 6 must verify actual learner-facing simple and nested/multi-gender noun article/plural forms plus verb/adjective morphology, not metadata presence only. Missing noun article/plural requires an explicit reviewed closure; Verb Sense lemmas must not absorb argument placeholders such as `etw.` or `jdn.`; runtime fallback must not replace a richer approved front with a poorer derived front;
 - dependency fingerprints invalidate only affected work; historical LOCKED artifacts stay immutable.
 
 Normative full contracts/tools are inside the portable v3.3.6 authority recorded in PROJECT-STATE.json.

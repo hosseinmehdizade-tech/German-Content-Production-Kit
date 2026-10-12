@@ -1,0 +1,84 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage5-checkpoint@1.0.0",
+  "date": "2026-10-12",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L20",
+  "framework": "v3.3.6+HF2",
+  "status": "PASS_STAGE5_CLEAN_DELIVERY_ANTI_BYPASS__STAGE6_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-005-NO-GIT-BINARY-TRANSPORT",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "upstream": {
+    "stage4_artifact": "Menschen-A1-L20-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "stage4_sha256": "c0b5339aa0405c2eed955c03a18b50e407479d95c6bc0ae5c8b761d4ecd9e17d",
+    "canonical_sha256": "457b52b88205b928d852ad7dfcc7f0e3409087cf7c0f6016cbd7016f5e86956f"
+  },
+  "projection": {
+    "cards": 126,
+    "columns": 23,
+    "card_type": "de-vocabulary for 126/126",
+    "presentation_contract": "gfp-vocabulary-neutral@1 for 126/126",
+    "direct_import": "01-Final-Import/A1-L20-UNIVERSAL-v2.tsv",
+    "direct_import_sha256": "fb4e7b85b3e9dcb8fa7a59e5153ebac248d47eed80bd88bfbe53113506dfdd66",
+    "examples": "504 trilingual records; exactly 4 per card",
+    "relations": "78 unique = RELATED 40 / COLLOCATION 28 / SYNONYM 8 / ANTONYM 2",
+    "kombinationen": "29 accepted on 19 cards / 107 CLOSED_NO_FORCE",
+    "source_occurrences": 104,
+    "source_output_map_edges": 126,
+    "active_canonical_ids": 126,
+    "canonical_stage4_byte_parity": "PASS",
+    "hf2_front": "126/126 PASS",
+    "current_presentation_ready": true
+  },
+  "validation": {
+    "official_clean_delivery_builder": "NOT_COMPLETED_TIMEOUT__CONSTITUENT_GATES_EXECUTED_INDIVIDUALLY",
+    "official_unified_projection": "PASS 126/126",
+    "hf2_learner_visible_front": "PASS 126/126; noun31 verb22 adjective8 expression64 other1",
+    "official_source_occurrences": "PASS 104",
+    "official_identity_closure": "PASS 126 active IDs",
+    "official_candidate_ledger": "PASS 416 accepted / 0 deferred",
+    "official_completeness": "PASS 2017/2017 / 0 unresolved",
+    "semantic_loss_parity": "PASS",
+    "prevention_projection": "PASS",
+    "prevention_package": "PASS",
+    "negative_controls": "4/4 PASS_MUST_FAIL",
+    "fresh_package": "CRC PASS / 85 members / manifest 82/82 / root+Final-Import SHA256SUMS PASS / JSON 50/50 / path safety PASS / no generated garbage / no Flashcards app-runtime",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "runtime": "NOT_RUN_CONTENT_ONLY"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L20-v3.3.6-CONTENT-PRODUCTION-DELIVERY-STAGE5.zip",
+    "sha256": "4fcbae73766702cd39a606c0c5e1662bb7ed54845c3d7f92ed6fbf1cfa770cb9",
+    "size_bytes": 1352368,
+    "members": 85,
+    "manifest_entries": 82,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.6-CONTENT-PRODUCTION-DELIVERY-STAGE5.zip",
+    "library_file_id": "file_000000009d7881f48efdf06a8c8ec23f",
+    "library_stable_id": "libfile_18d6ad0d799481919e9067d4f2171caa",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package": {
+    "filename": "A1-L20-STAGE5-POST-PACKAGE-VERIFICATION(1).json",
+    "local_original_filename": "A1-L20-STAGE5-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "d7a5f6a14e9baf9a5b5f67e27c668cde126abe3cff05a40671df33b1aa1374c9",
+    "size_bytes": 1431,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L20-STAGE5-POST-PACKAGE-VERIFICATION(1).json",
+    "library_file_id": "file_0000000053408211adc4038b65023969",
+    "library_stable_id": "libfile_d3219db511dc819193baf21216584b01",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundaries": {
+    "raw_source_archive_audio": "NOT_EMBEDDED__HASHES_LOCATORS_AUDIO_REFS_RETAINED",
+    "content_mutated": false,
+    "content_lock_state": "REAUDIT_SUCCESSOR_NOT_LOCKED",
+    "runtime": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6",
+    "wrapper_timeout": "Exact clean-delivery wrapper timed out in managed environment; no wrapper PASS claimed. Required constituent gates and fresh package checks executed individually and passed."
+  },
+  "next_action": "A1-L20 Stage6: re-resolve CURRENT German Flashcards Pro runtime and test these exact Stage5 bytes with HF2-equivalent binding. Do not start A1-L21 or lock A1-L20 before Stage6/Stage7 acceptance."
+}

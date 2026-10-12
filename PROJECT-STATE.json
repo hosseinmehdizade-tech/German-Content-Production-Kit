@@ -90,21 +90,22 @@
       "locked_artifacts_immutable": true
     },
     "learner_visible_front_overlay": {
-      "status": "ACTIVE_HF1",
-      "policy": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.0.0.md",
-      "validator": "Verification/validate_learner_visible_lexical_front_v1_0_0.py",
+      "status": "ACTIVE_HF2",
+      "supersedes": "HF1",
+      "policy": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.1.0.md",
+      "validator": "Verification/validate_learner_visible_lexical_front_v1_1_0.py",
       "projector": "Tools/project_v411_vocabulary_cards.py",
-      "purpose": "Fail closed when learner-visible noun article/plural or verb/adjective morphology is hidden, and keep argument placeholders out of Verb Sense lemmas.",
-      "tests": "17/17 PASS (HF1 tests + v3.3.5 semantic/presentation regression)",
+      "purpose": "Fail closed on hidden or incomplete noun article/plural binding including nested/multi-gender forms; enforce verb principal forms and clean lemma/structure separation.",
+      "tests": "7/7 targeted HF2 PASS + golden noun/verb/adjective projector probes PASS + A1-L19 Repair2 121/121 front gate PASS",
       "portable_overlay": {
-        "filename": "German-Content-Production-Kit-v3.3.6-HF1-LEARNER-VISIBLE-FRONT.zip",
-        "sha256": "25f23a7bc633d7319d8f55c6d362f549589ca8c6d1968271c65d53023bf5ef57",
-        "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.6-HF1-LEARNER-VISIBLE-FRONT.zip",
-        "library_file_id": "file_00000000306c8210aa353eb917b1a646",
-        "library_stable_id": "libfile_4b57c90e86088191bb60c019ed87a42a",
+        "filename": "German-Content-Production-Kit-v3.3.6-HF2-LEARNER-VISIBLE-FRONT.zip",
+        "sha256": "f731506b4857cc9b65fcb5c2cd753f1b31439f9c6dfca8d104b9f39e2eb593bb",
+        "library_path": "/German-Content-Production-Kit/Checkpoints/German-Content-Production-Kit-v3.3.6-HF2-LEARNER-VISIBLE-FRONT.zip",
+        "library_file_id": "file_00000000d7608246b94dd5b53c810c14",
+        "library_stable_id": "libfile_1df5dca45dcc8191bedcf9d4f08b3ac0",
         "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
       },
-      "runtime_dependency": "GFP-v476-R110 lexical-front binding repair or newer CURRENT with the same gate",
+      "runtime_dependency": "GFP-v478-R112 or newer runtime with HF2-equivalent binding",
       "historical_locked_artifacts": "IMMUTABLE; affected outputs require explicit repair successors"
     }
   },

@@ -1,0 +1,98 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage4-checkpoint@1.0.0",
+  "date": "2026-10-12",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L20",
+  "framework": "v3.3.6+HF2",
+  "status": "PASS_STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS__STAGE5_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "upstream": {
+    "stage3c_checkpoint": "Workspaces/menschen-a1-reaudit-v336/A1-L20-STAGE3C-HF2-CHECKPOINT.json",
+    "stage3c_artifact": "Menschen-A1-L20-v3.3.6-Stage3C-HF2-RECONCILED-SUCCESSOR.zip",
+    "stage3c_sha256": "76a57b4a3a6fdb9a1dda770429244393c1240dd6e93ab9538dbb7d993bc2dfec",
+    "stage3c_canonical_file_sha256": "54dc69e56b45b8f2b97d07532e9ff2072a71f2fd66e33c0d6e05d038195352cc"
+  },
+  "accepted_canonical": {
+    "file": "03-Canonical-Data/SUCCESSOR-CANONICAL-STAGE4.json",
+    "sha256": "457b52b88205b928d852ad7dfcc7f0e3409087cf7c0f6016cbd7016f5e86956f",
+    "semantic_sha256": "2b88e13ffbce7e75d810489f8ec6359c504ea4b4d40cf2e7138a0252037acde1"
+  },
+  "content": {
+    "targets": 126,
+    "senses": 62,
+    "expressions": 64,
+    "examples": "504 DE / 504 FA / 504 EN; exactly 4 per target",
+    "relations": "78 unique",
+    "kombinationen": "29 accepted on 19 cards / 107 CLOSED_NO_FORCE",
+    "candidates": "416 ACCEPTED / 0 REJECTED / 0 DEFERRED",
+    "completeness": "2017/2017 final / 0 unresolved",
+    "campaign_matrix": "2142/2142 final / 0 unresolved",
+    "retired_mem009_aliases": 7,
+    "current_prior_reuses": [
+      "ma1m-lu-1022",
+      "ma1m-lu-1597",
+      "ma1m-lu-1598",
+      "ma1m-lu-1599"
+    ]
+  },
+  "repair": {
+    "status": "BOUNDED_REPAIRS_APPLIED",
+    "field_operations": 20,
+    "breakdown": {
+      "expression_type_profile_normalization": 18,
+      "learner_natural_canonical_form_restore": 2
+    },
+    "learner_front_repairs": {
+      "ma1m-lu-2482": "Gebühr für einen Anruf",
+      "ma1m-lu-2506": "Der Brief ist in deutscher Sprache abgefasst."
+    },
+    "boundary": "No stable IDs, source inventory/mappings, memberships, examples, relation topology, Kombinationen decisions, locked semantic authorities, runtime or UI changed. Raw source forms remain preserved."
+  },
+  "verification": {
+    "independent": "54/54 PASS",
+    "official_closure_validators": "4/4 PASS",
+    "hf2_learner_visible_front": "126/126 PASS",
+    "negative_controls": "3/3 PASS_EXPECTED_FAILURES",
+    "semantic_delta": "PASS_EXACT_20_TARGET_FIELD_OPERATIONS",
+    "stage4_self_verifier": "PASS",
+    "source_boundary": "4/4 byte-identical",
+    "current_prior_reuse": "4/4 semantic parity with HF2 presentation-only plural closure boundary for ma1m-lu-1597",
+    "reference_audit": "PASS active approved IDs",
+    "fresh_package": "CRC PASS / 134 members / manifest 132/132 / SHA256SUMS 133/133 / JSON 93/93 / official 4/4 / HF2 126/126",
+    "framework_pytest_fresh": "INCOMPLETE_MANAGED_TIMEOUT_NO_PASS_CLAIM",
+    "framework_pytest_inherited": "Pinned v3.3.6 framework authority records targeted 10/10 and bounded-split 84/84",
+    "blocking_findings": 0,
+    "advisory": "Three locked A1-L11 examples of ma1m-lu-1022 lack annotations; immutable legacy boundary."
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L20-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "sha256": "c0b5339aa0405c2eed955c03a18b50e407479d95c6bc0ae5c8b761d4ecd9e17d",
+    "size_bytes": 1073603,
+    "members": 134,
+    "manifest_entries": 132,
+    "sha256s_entries": 133,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L20-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "library_file_id": "file_00000000c9048210b26cf3fe342340f0",
+    "library_stable_id": "libfile_af8cbed996c08191b1ba42a4143dfa48",
+    "library_persistence": "UPLOAD_PASS__REMATERIALIZE_PASS__SIZE_MATCH_1073603__CROSS_RUNTIME_HASH_COMPARE_NOT_AVAILABLE"
+  },
+  "post_package": {
+    "filename": "A1-L20-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "82bdbdc8afbedce043fcd3da2bba3d732301d3653c1cddbae8587d97c264d37e",
+    "size_bytes": 1559,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L20-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_000000001ccc821097f8bcd41abde75e",
+    "library_stable_id": "libfile_fc2a6e946bf481918041f5ba71d227cb",
+    "library_persistence": "UPLOAD_PASS__REMATERIALIZE_PASS__SIZE_MATCH_1559__CROSS_RUNTIME_HASH_COMPARE_NOT_AVAILABLE"
+  },
+  "runtime": "NOT_RUN_CONTENT_ONLY",
+  "content_lock_state": "SUCCESSOR_NOT_LOCKED",
+  "next_action": "A1-L20 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Run prevention projection/package gates and HF2 learner-visible front validator on the Stage5 deliverable. Resolve CURRENT runtime only at Stage6. Do not start A1-L21."
+}

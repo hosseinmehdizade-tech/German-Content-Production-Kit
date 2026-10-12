@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l13-stage6-rerun-pending-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l13-stage6-checkpoint@1.0.0",
   "scope": "A2-L13",
   "framework": "v3.3.6",
-  "stage": "Stage6 RERUN PENDING ON CURRENT v481-R115",
-  "status": "STAGE6_BLOCKED_V480__RUNTIME_SUCCESSOR_V481_READY__RERUN_PENDING",
+  "stage": "Stage6 COMPLETE",
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
   "lesson_title": "Meine erste „Deutschlehrerin“",
   "parent_stage3c_sha256": "c1e4d303a6f04ea05c7c0e8fda8f784d8446a32153fed572b483b35d0b31f8f8",
   "counts": {
@@ -60,7 +60,7 @@
   "content_lock_state": "NOT_LOCKED",
   "stage5": "PASS_REPAIR2_CUMULATIVE_INTEGRITY",
   "stage5_import_ready": true,
-  "runtime_browser_import": "RERUN_PENDING_ON_V481",
+  "runtime_browser_import": "PASS_DETERMINISTIC_WITH_ENVIRONMENT_BOUNDARY",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -69,8 +69,8 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "quality_boundary": "STAGE5_REPAIR2_PASS__V480_STAGE6_BLOCKER_REPAIRED_IN_CURRENT_V481__STAGE6_RERUN_REQUIRED__STAGE7_FORBIDDEN",
-  "next_action": "Rerun A2-L13 Stage6 against exact CURRENT v481-R115 and exact unchanged Stage5 Repair2 bytes; verify cumulative 941 cards, multi-membership scopes, HF2 presentation, persistence/index and roundtrip. Do not start Stage7 in the same major milestone.",
+  "quality_boundary": "STAGE5_REPAIR2_PASS__STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY_ON_CURRENT_V481__205_OF_205__941_CUMULATIVE__STAGE7_ALLOWED",
+  "next_action": "Run A2-L13 Stage7 exact-final content lock/post-package verification from exact unchanged Stage5 Repair2 plus this Stage6 evidence. Re-resolve CURRENT before locking; do not alter L01-L12 locked bytes.",
   "stage5_repair1": {
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L13-STAGE5-REPAIR1.json",
     "predecessor_stage5_sha256": "66f2a3857d640f16f850341a021ca68cb9be986c10b51667fbbf55c0dbd9bc7c",
@@ -98,13 +98,18 @@
     "semantic_source_mutation": 0
   },
   "stage6": {
-    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L13-STAGE6-BLOCKED.json",
-    "coordination": "Workspaces/menschen-a2-24-lessons-v336/L13-RUNTIME-SUCCESSOR-READY.json",
-    "previous_status": "BLOCKED_CURRENT_RUNTIME_MULTI_MEMBERSHIP_REGRESSION",
-    "previous_runtime": "v480-R114",
-    "successor_runtime": "v481-R115",
-    "successor_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
-    "rerun_required": true,
-    "stage7_allowed": false
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L13-STAGE6.json",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "current_runtime": "v481-R115",
+    "runtime_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "target_only": "34/34 PASS",
+    "cumulative": "171/171 PASS",
+    "deterministic_total": "205/205 PASS",
+    "cumulative_unique_cards": 941,
+    "stage7_allowed": true,
+    "artifact_sha256": "cc67a644d9b97afa86ebce999df1a930b92b07cd1261093f5f10bd3f2c94e145",
+    "artifact_library_file_id": "file_0000000000b4824697618bd62f3705ec",
+    "artifact_library_stable_id": "libfile_f32d85f9953c8191939c7edaec8cf099",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   }
 }

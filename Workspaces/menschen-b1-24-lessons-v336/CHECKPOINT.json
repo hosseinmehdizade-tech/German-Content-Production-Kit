@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L14_STAGE5_PASS__STAGE6_PENDING",
+  "status": "B1_L14_STAGE6_PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -97,11 +97,11 @@
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "PASS_CLOSURE",
     "stage4": "PASS_AFTER_BOUNDED_REPAIR1",
-    "stage5": "PASS__STAGE6_PENDING",
-    "stage6": "NOT_STARTED",
+    "stage5": "PASS_REPAIR2_HF2_RUNTIME_BINDING",
+    "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L14 Stage6 runtime/import/presentation/persistence/roundtrip acceptance against exact CURRENT German Flashcards Pro resolved at execution time. Do not start B1-L15.",
+  "next_action": "Run B1-L14 Stage7 final content lock/post-package verification from exact Stage5 Repair2 content plus exact Stage6 v481 evidence. Do not start B1-L15.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -5350,5 +5350,106 @@
     "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
     "stage6_allowed": true,
     "boundary": "Content-only Stage5 PASS. Runtime/UI/browser/persistence acceptance is not claimed; exact CURRENT must be re-resolved at Stage6."
+  },
+  "b1_l14_stage5_repair2": {
+    "schema": "menschen-b1-l14-stage5-repair2-receipt@1.0.0",
+    "date": "2026-10-12",
+    "status": "PASS_TRANSPORT_ONLY_HF2_RUNTIME_BINDING_REPAIR2",
+    "workstream": "menschen-b1-24-lessons-v336",
+    "lesson": "B1-L14",
+    "framework": "v3.3.6",
+    "discovered_during": "B1-L14 Stage6 exact CURRENT v481-R115 preflight",
+    "lineage": {
+      "stage4_sha256": "cab18536887feb9bc2dfd13bee769b279ccb0ea6c1292a9b92c4d24fa45c96d4",
+      "original_stage5_sha256": "dccda633f5e45f86f20c149e67378f61dcc8d566e5f9833b34fc0d578637ca34",
+      "repair1_sha256": "b83a40ace25cc3a608741c52b2b0455ec57ee1948289203e8819186d2a157632"
+    },
+    "finding": "Exact v481 rich PresentationFacade could lose already-approved learner-visible morphology/expression display material when canonical_unit lacked runtime-facing core/headword bindings.",
+    "repair": {
+      "morphology_core_bridge_cards": 61,
+      "display_headword_bridge_cards": 32,
+      "expression_headword_bridge_cards": 31,
+      "nominalized_verb_headword_bridge_cards": 1,
+      "canonical_target_exact_stage4": "154/154",
+      "identity_mutated": false,
+      "learner_semantics_mutated": false,
+      "runtime_mutated": false
+    },
+    "direct_import_tsv_sha256": "6d520ac836f65ccebfe2bfe71b92de854e74ce1563b3e5b348ac04c580d7fdc2",
+    "artifact": {
+      "filename": "Menschen-B1-L14-v3.3.6-Stage5-Repair2-HF2-RUNTIME-DISPLAY-BRIDGE-CLEAN-DELIVERY.zip",
+      "sha256": "b9fd717fd9c17887c6c1c69dff8ccdecf88e93d9bbeb8fb93e11c84f2907a196",
+      "size_bytes": 271432,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L14-v3.3.6-Stage5-Repair2-HF2-RUNTIME-DISPLAY-BRIDGE-CLEAN-DELIVERY.zip",
+      "library_file_id": "file_0000000015948211bb682f8f8eccd5de",
+      "library_stable_id": "libfile_b1cdd43383248191a3688b2a51c85017",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "validation": {
+      "unified_projection": "PASS 154/154",
+      "hf2_static_front": "PASS 154 / 0 errors",
+      "source_occurrences": "PASS 151",
+      "identity_closure": "PASS 151 occurrences / 154 active IDs",
+      "completeness": "PASS 154 targets / 2471 cells / 0 unresolved",
+      "candidate_ledger": "PASS 2471 / 0 errors",
+      "prevention_projection": "PASS",
+      "prevention_package": "PASS",
+      "repair_qa_sha256": "939ab53d48a43a4d92570de573df3a70d1e0f6c101ae6c507cadbc203844dd8d"
+    },
+    "boundary": "Projection transport repair only. Stage4 semantic authority, stable IDs and source provenance remain unchanged.",
+    "next_action": "Use this exact Stage5 Repair2 artifact for B1-L14 Stage6 exact-CURRENT acceptance; the original Stage5 artifact is superseded for runtime integration only."
+  },
+  "b1_l14_stage6": {
+    "stage5_original_sha256": "dccda633f5e45f86f20c149e67378f61dcc8d566e5f9833b34fc0d578637ca34",
+    "stage5_repair2_sha256": "b9fd717fd9c17887c6c1c69dff8ccdecf88e93d9bbeb8fb93e11c84f2907a196",
+    "direct_import_tsv_sha256": "6d520ac836f65ccebfe2bfe71b92de854e74ce1563b3e5b348ac04c580d7fdc2",
+    "runtime_current": "v481-R115",
+    "runtime_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "runtime_last_fully_verified": "v466-R100",
+    "runtime_release_final": false,
+    "cards": 154,
+    "examples": 616,
+    "kombinationen": 73,
+    "relations": 77,
+    "source_occurrences": 151,
+    "parser": "PASS_154_OF_154_UNIVERSAL_V2_23_COLUMNS",
+    "selection_on_populated_1392": "PASS_READY_NONMUTATING",
+    "semantic_payload_parity": "PASS_154_OF_154",
+    "reused_progress_preservation": "PASS_14_OF_14",
+    "backup_restore": "PASS_154_OF_154",
+    "backup_restore_progress": "PASS_14_OF_14",
+    "generic_hf2_front": "PASS_154_OF_154",
+    "rich_presentation_modes": "PASS_616_OF_616_EACH_BEFORE_AND_AFTER_COMPACTION",
+    "quick_native_html": "PASS_154_OF_154",
+    "library_scope": "PASS_154_OF_154",
+    "course_memberships": "PASS_154_CARDS_154_RECORDS",
+    "source_audio_refs": "PASS_154_CARDS_172_REFS_151_UNIQUE",
+    "generation_plan": "PASS_154_CARDS_2_CHUNKS_MAX_128",
+    "hf2_runtime_binding_repair": "CLOSED_WITH_STAGE5_REPAIR2_TRANSPORT_ONLY",
+    "canonical_origin_indexeddb": "ENVIRONMENT_BOUNDARY_NOT_CLAIMED",
+    "same_profile_windows_chrome": "PENDING_AT_RUNTIME_PROJECT_LEVEL",
+    "offline_acceptance": "INHERITABLE_FROM_V466__V481_STORAGE_SCHEMA_AND_OFFLINE_SEMANTICS_UNCHANGED",
+    "learner_semantics_mutated": false,
+    "projection_transport_repaired": true,
+    "runtime_mutated": false,
+    "stage7_allowed": true,
+    "acceptance_report_sha256": "0270abb73d0cd87b4c2dfce41cf4be7fc3d9965313e39258da6713dda3090a61",
+    "harness_result_sha256": "f145f072e11619874194f4c01e7391a6f70b5cf284df0a76fa1bbcfc26154e75",
+    "artifact": {
+      "filename": "Menschen-B1-L14-v3.3.6-Stage6-V481-RUNTIME-ACCEPTANCE.zip",
+      "sha256": "f8b817f87f189f59cacb1a2127266554ad9f175c1c6769824b25b2d9c4638602",
+      "size_bytes": 437043,
+      "members": 32,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L14-v3.3.6-Stage6-V481-RUNTIME-ACCEPTANCE.zip",
+      "library_file_id": "file_00000000df0c81f4bfa60b0ac38ec033",
+      "library_stable_id": "libfile_9808f6d0c568819191133e84ccf8118d",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L14-STAGE6-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "787ac0f8df23ec4501023981c803d689e20cfafea2b06a30d12acf857bd8a626",
+      "status": "PASS"
+    },
+    "boundary": "Stage6 exact-current integration PASS with explicit environment boundary; v481 is not promoted to FINAL or LAST_FULLY_VERIFIED."
   }
 }

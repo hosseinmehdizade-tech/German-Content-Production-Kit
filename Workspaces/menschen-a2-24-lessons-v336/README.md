@@ -1,24 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage2B identity closure is PASS; Stage3A is next.**
+**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage3B authorship is PASS; Stage3C is next.**
 
-- A2-L14 lesson: **Es werden fleißig Päckchen gepackt.**
-- Exact registered source: **70 rows**, ordinals **3470..3539**, with **70/70 audio refs present**.
-- Stage2B closed to **60 canonical identities** = **53 new A2 + 2 immutable A1 reuses + 5 immutable prior-A2 reuses**.
-- New ID range: **ma2m-lu-0842..ma2m-lu-0894**.
-- Source-to-canonical bindings: **71**. Row **3525** explicitly splits **Oberteil / Unterteil** into two lexical identities.
-- A1 reuses: `ma1m-lu-0188` (Geschlecht), `ma1m-lu-2404` (Wahnsinn!).
-- Prior-A2 reuses: `ma2m-lu-0251` (absenden), `ma2m-lu-0636` (Briefumschlag), `ma2m-lu-0505` (Briefkasten), `ma2m-lu-0444` (Ruhig Blut!), `ma2m-lu-0659` (froh).
-- Homograph guard: adjective **arm** remains a new A2 identity; immutable A1 **Arm** is a noun and was not reused.
-- Identity closure: **0 unresolved**; new exact headword+POS collisions against locked authorities: **0**.
-- Cumulative unique runtime projection through L14: **996**.
-- Stage2B artifact SHA-256: `f0f04540320c3738bf643a2d0c7e2f221973dffd4a0bcbde1c1284a20fddd698`.
+- A2-L14 identity set remains **60 targets** = 53 new A2 + 2 immutable A1 reuses + 5 immutable prior-A2 reuses.
+- Stage3B authored **212 trilingual examples** = exactly four for each of the 53 new cards.
+- Kombinationen authorship produced **106 reviewed candidates**.
+- Relation authorship produced **53 curated candidates**. No registered-source relation was silently promoted.
+- Working candidate ledger: **877 candidates = 539 ACCEPTED working + 338 DEFERRED + 0 rejected**.
+- All **937 dimension cells** remain pending independent Stage3C disposition.
+- Raw Persian definitions and German source examples remain source seeds/provenance only; **0 exact source German examples** were promoted as learner authority.
+- No external linguistic reference attestation is claimed in Stage3B.
+- Stage2B identity was not changed; A2-L01..L13 remain immutable.
+- Stage3B artifact SHA-256: `6c23c2245b1e309c37f21b7b4d123d1cb3fa4439058536fca371906d4fcfe4b0`.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- A2-L01..L13 remain immutable and unchanged. Stage3 enrichment has not started.
+- Official source, identity, Stage3A-baseline and working-ledger validators passed. The pinned portable framework lacks pytest source files, so no full pytest-suite PASS is claimed this turn.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE2B.json](./L14-STAGE2B.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE3B.json](./L14-STAGE3B.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
 
-Next major stage: **A2-L14 Stage3A baseline richness/completeness audit**. Do not begin Stage3B enrichment before the baseline is recorded.
+Next major stage: **A2-L14 Stage3C independent disposition closure across all 937 cells**. Do not start Stage4 until pending = 0.
 
 ---
 

@@ -1,23 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L10 are Stage7 LOCKED. A2-L11 Stage3B authorship is PASS; Stage3C independent disposition closure is next.**
+**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage1 source inventory is next.**
 
-- A2-L11 identity remains **80 targets** = 74 new A2 + 4 immutable A1 reuses + 2 immutable prior-A2 reuses; Stage2B identity is unchanged.
-- Stage3B authored **296 trilingual examples** = exactly four per new A2 card. No registered-source German example was silently promoted as final; all authored examples remain curated candidates.
-- Kombinationen authorship produced **156 reviewed candidates** across the lesson. No numeric density quota was used.
-- Relation authorship produced **76 candidates**: **28 registered-source-backed** and **48 curated**. Source claims are restricted to candidates with actual source evidence.
-- Working candidate ledger: **1170 candidates = 727 ACCEPTED working + 443 DEFERRED + 0 rejected**. Deferred is expected at Stage3B and is not Stage3C closure.
-- Stage3C preparation matrix intentionally keeps **all 1250 dimension cells pending independent disposition**. Stage3C must close each cell to VERIFIED_PRESENT, CLOSED_NO_FORCE or NOT_APPLICABLE.
-- Locked dependencies remain read-only: **6/6** (4 A1 + 2 prior A2). L01-L10 LOCKED content is unchanged.
-- QA: source occurrences **86 PASS**; identity closure **86 source / 80 active PASS**; Stage3A baseline recheck **80 / 1250 / 1170 PASS**; candidate-ledger working validator **1170 / 727 accepted / 443 deferred PASS**; negative closure gate correctly rejects the still-deferred ledger; framework suite **10/10 PASS**.
-- Final Stage3B package: **28 members / 27 SHA256SUMS / 20 JSON**, CRC/path/hygiene PASS.
-- Artifact: `Menschen-A2-L11-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip`, SHA-256 `9ab276ca6c8e8b6d96a8dd55c6afc604b8b1698217dd115e8fcac5131aad9cdf`.
-- Library upload succeeded from the exact exported snapshot. The JSON post-package report round-tripped byte-for-byte; the ZIP's independent Library rematerialization is temporarily pending binary visibility and is not overstated as PASS.
-- Stage3B is **not import-ready and not linguistically final**. Stage3C and Stage4 remain mandatory.
+- A2-L13 is **LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY** on CURRENT German Flashcards Pro `v481-R115`.
+- L13 contains **70 canonical cards** = 61 new A2 + 9 immutable A1 reuses.
+- Final content: **280 trilingual examples**, **62 Kombinationen sections / 126 items**, **14 accepted Stage4 graph relations**.
+- Exact-final runtime acceptance: **34/34 target-only + 171/171 cumulative = 205/205 PASS**.
+- Cumulative authority through L13: **941 unique cards**, with **872/872 prior cards retained**.
+- HF2 learner-visible fronts: **70/70 PASS** in generic, Study and Quick presentation.
+- Locked artifact: `Menschen-A2-L13-v3.3.6-GFP-v481-LOCKED.zip`, SHA-256 `387cc002db656771a519132f35d9cdf97394d47b48af261c3cf2ba8b5ab5c51d`.
+- Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
+- Real-origin / physical-restart acceptance remains an app-runtime environment boundary and does not block the L13 content lock.
+- A2-L01..L13 are immutable. Future corrections require explicit successor/repair artifacts.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L11-STAGE3B.json](./L11-STAGE3B.json), and [L11-CHECKPOINT.json](./L11-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L13-STAGE7.json](./L13-STAGE7.json), and [L13-CHECKPOINT.json](./L13-CHECKPOINT.json).
 
-Next major stage: **A2-L11 Stage3C — independent disposition closure across all 80 identities / 1250 cells**. Do not start Stage4 until pending = 0.
+Next major stage: **A2-L14 Stage1**. Do not alter A2-L01..L13 locked bytes.
+
 ---
 
 Independent lexical source workstream for A2-L01..A2-L24, registered Menschen A1/A2/B1 Memrise full-audio export.

@@ -1,9 +1,39 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json
+import argparse,json,re
 from pathlib import Path
 from collections import defaultdict
-
+ARTICLES=('der','die','das')
+GENDER_ARTICLE={'masculine':'der','maskulin':'der','m':'der','feminine':'die','feminin':'die','f':'die','neuter':'das','neutral':'das','neutrum':'das','n':'das'}
+def _norm(s): return re.sub(r'\s+',' ',str(s or '')).strip()
+def _article_bearing(s):
+ s=_norm(s); return any(s.casefold().startswith(a+' ') for a in ARTICLES)
+def _unique(seq):
+ out=[];seen=set()
+ for x in seq:
+  x=_norm(x)
+  if x and x.casefold() not in seen: seen.add(x.casefold());out.append(x)
+ return out
+def _noun_front(title,morphology,gender):
+ morph=morphology or {}; forms=[]
+ if isinstance(morph.get('singular_forms'),list): forms += [x for x in morph['singular_forms'] if _article_bearing(x)]
+ pf=morph.get('person_forms')
+ if isinstance(pf,dict) and isinstance(pf.get('singular_forms'),list): forms += [x for x in pf['singular_forms'] if _article_bearing(x)]
+ tf=morph.get('thing_forms')
+ if isinstance(tf,dict):
+  if isinstance(tf.get('forms'),list): forms += [x for x in tf['forms'] if _article_bearing(x)]
+  if tf.get('article') and title: forms.append(f"{_norm(tf['article'])} {_norm(title)}")
+ if not forms:
+  article=_norm(morph.get('article') or gender); article=GENDER_ARTICLE.get(article.casefold(),article)
+  if article in ARTICLES and title: forms=[f'{article} {_norm(title)}']
+ forms=_unique(forms); plurals=[]
+ if morph.get('plural'): plurals.append(morph['plural'])
+ if isinstance(pf,dict) and pf.get('plural'): plurals.append(pf['plural'])
+ if isinstance(tf,dict) and tf.get('plural'): plurals.append(tf['plural'])
+ plurals=_unique(plurals)
+ out=' / '.join(forms) if forms else _norm(title)
+ if plurals: out += ', ' + ' / '.join(plurals)
+ return out
 def project(data):
  lex={x["lexeme_id"]:x for x in data.get("lexemes",[]) if x.get("lexeme_id")}; sources={x["source_id"]:x for x in data.get("sources",[]) if x.get("source_id")}; examples=defaultdict(list); rels=defaultdict(list)
  for ex in data.get("examples",[]):
@@ -31,20 +61,15 @@ def project(data):
   ms=membership(obj); return ms[0] if ms else {}
  def media(obj): return [m for m in (obj.get("media_refs") or []) if isinstance(m,dict)]
  def learner_front(title,pos,target_type,morphology,gender):
-  title=str(title or '').strip(); morph=morphology or {}
+  title=_norm(title); morph=morphology or {}
   if target_type!='sense': return title
   p=str(pos or '').lower()
-  if p=='noun':
-   article=str(gender or morph.get('article') or '').strip(); plural=str(morph.get('plural') or '').strip()
-   base=' '.join(x for x in [article,title] if x).strip()
-   return f"{base}, {plural}" if plural else base
+  if p=='noun': return _noun_front(title,morph,gender)
   if p=='verb':
    forms=[morph.get('present_3sg') or morph.get('present'),morph.get('preterite_3sg') or morph.get('preterite'),morph.get('perfect')]
-   vals=[title]+[str(x).strip() for x in forms if x and str(x).strip()]
-   return ', '.join(vals)
+   return ', '.join([title]+[_norm(x) for x in forms if _norm(x)])
   if p=='adjective':
-   vals=[title]+[str(morph.get(k)).strip() for k in ('comparative','superlative') if morph.get(k) and str(morph.get(k)).strip()]
-   return ', '.join(vals)
+   return ', '.join([title]+[_norm(morph.get(k)) for k in ('comparative','superlative') if _norm(morph.get(k))])
   return title
  def common_card(tid,obj,title,pos,target_type,entry_type,definition,translations,structure,etype=None,esub=None,morphology=None,gender=None):
   nonlocal order
@@ -58,13 +83,14 @@ def project(data):
  cards=[]; order=0
  for s in data.get("senses",[]):
   lx=lex.get(s.get("lexeme_id"),{}); tid=s["sense_id"]; pos=lx.get("pos") or "phrase"; title=lx.get("lemma") or tid; tr=s.get("translations") or {}
-  cards.append(common_card(tid,s,title,pos,"sense",pos,s.get("definition_de"),tr,s.get("structure"),morphology=lx.get("morphology") or {},gender=lx.get("gender")))
+  morph=dict(lx.get("morphology") or {}); sm=((s.get('structure') or {}).get('morphology') or {})
+  if isinstance(sm,dict): morph.update(sm)
+  cards.append(common_card(tid,s,title,pos,"sense",pos,s.get("definition_de"),tr,s.get("structure"),morphology=morph,gender=lx.get("gender")))
  for e in data.get("expressions",[]):
   tid=e["expression_id"]; tr=e.get("translations") or {}; etype=e.get("expression_type") or "multiword_expression"; entry={"nvv":"nvv","idiom":"idiom","collocation":"collocation"}.get(etype,"phrase")
   cards.append(common_card(tid,e,e.get("canonical_form") or tid,"expression","expression",entry,e.get("definition_de"),tr,e.get("structure"),etype,e.get("expression_subtype")))
  cards.sort(key=lambda c:(c.get("order",0),c["id"]))
  return cards
-
 def main():
  ap=argparse.ArgumentParser(); ap.add_argument("registry"); ap.add_argument("output"); a=ap.parse_args(); d=json.loads(Path(a.registry).read_text(encoding="utf-8")); cards=project(d); Path(a.output).write_text(json.dumps(cards,ensure_ascii=False,indent=2)+"\n",encoding="utf-8"); print(json.dumps({"status":"PASS","cards":len(cards),"output":a.output}))
 if __name__=="__main__": main()

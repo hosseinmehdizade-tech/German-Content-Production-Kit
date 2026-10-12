@@ -1,0 +1,89 @@
+{
+  "schema": "gcpk-menschen-a2-l13-stage5-repair2-git-receipt@1.0.0",
+  "scope": "A2-L13",
+  "framework": "v3.3.6",
+  "stage": "5-Repair2-Cumulative-Integrity",
+  "status": "PASS_CUMULATIVE_INTEGRITY_REPAIR__STAGE6_NOT_RUN",
+  "lineage": {
+    "stage4_artifact_sha256": "8cdb39d5e3c8a32b4d1a46b5a6e85bae8f0b020bd8799278170595e03958b93b",
+    "stage5_pre_hf2_sha256": "66f2a3857d640f16f850341a021ca68cb9be986c10b51667fbbf55c0dbd9bc7c",
+    "stage5_repair1_hf2_sha256": "1f3ca401bc89a2fc515deb5c3a518b838629b965f62528fbfac3e8250d2a8695"
+  },
+  "trigger": {
+    "overlap_id": "ma1m-lu-2648",
+    "issue": "Stage6 preflight found the sole prior-cumulative overlap lost accepted A2-L04 memberships/audio and reactivated a backend-only collocation as a learner-visible ID combination."
+  },
+  "repair": {
+    "projection_transport_only": true,
+    "raw_source_mutations": 0,
+    "stage4_semantic_mutations": 0,
+    "identity_mutations": 0,
+    "example_mutations": 0,
+    "accepted_stage4_relation_mutations": 0,
+    "target_rows_changed": 1,
+    "prior_memberships_retained": "A1-L21 + A2-L04 rows 2583/2584",
+    "new_membership_added": "A2-L13 row 3448",
+    "prior_audio_retained": "2/2",
+    "l13_audio_added": true,
+    "active_relation_suppression_restored": true,
+    "backend_relation_transport_preserved": true,
+    "learner_visible_raw_id_removed": true,
+    "hf2_front_preserved": "leise, leiser, am leisesten"
+  },
+  "content": {
+    "cards": 70,
+    "new_a2": 61,
+    "reused_a1": 9,
+    "examples": 280,
+    "kombinationen_visible_items": 126,
+    "accepted_stage4_graph_relations": 14,
+    "source_occurrences": 83,
+    "candidate_decisions": 1021,
+    "completeness_cells": 1091,
+    "unresolved_cells": 0
+  },
+  "hashes": {
+    "import_dataset": "e7457f7d8d4de7901b4aac16b8a1accf5f66ce4f957873b28f1fc11812d2558c",
+    "projected_cards": "194959b15c0e0784fc32d568ac509e1fb40396a7becf5b65c1c0148478f42a78",
+    "canonical": "eb8dd008323d5a5c1149992eda0827b18388bfda7c3ded1697c75672568f1480"
+  },
+  "cumulative": {
+    "prior_verified_unique": 872,
+    "target_cards": 70,
+    "overlap_ids": [
+      "ma1m-lu-2648"
+    ],
+    "expected_unique_after_import": 941,
+    "overlap_guard": "PASS_SEMANTIC_CORE_PRIOR_MEMBERSHIP_AUDIO_AND_RELATION_SUPPRESSION"
+  },
+  "gates": {
+    "learner_visible_front": "PASS_70",
+    "unified_projection": "PASS_70",
+    "source_occurrences": "PASS_83",
+    "identity_closure": "PASS_70_ACTIVE",
+    "candidate_ledger": "PASS_1021_FINAL_0_DEFERRED",
+    "completeness": "PASS_70_TARGETS_1091_CELLS_0_UNRESOLVED",
+    "fresh_package": "PASS_58_MEMBERS_57_SHA256_56_MANIFEST_43_JSON",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L13-v3.3.6-Stage5-Repair2-CUMULATIVE-INTEGRITY-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "e3c12218ccd84aad04b02055bd5b718b814be9ee7362394c19e6a9dff83a1019",
+    "size_bytes": 463128,
+    "members": 58,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L13-v3.3.6-Stage5-Repair2-CUMULATIVE-INTEGRITY-CONTENT-PRODUCTION-DELIVERY.zip",
+    "library_file_id": "file_000000003ccc81f4ae07921add42b409",
+    "library_stable_id": "libfile_180c3b9e26f48191b6ea491fe37f83e0",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "sidecars": {
+    "post_package_library_file_id": "file_000000005fb481f496a0b4beb71b4995",
+    "post_package_library_stable_id": "libfile_243d669e040c81919ad3602a2857d969",
+    "roundtrip_library_file_id": "file_00000000a69081f4ae1ae67b8b8dba7a",
+    "roundtrip_library_stable_id": "libfile_474438aef52881919fb572127a137338"
+  },
+  "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
+  "stage6": "NOT_RUN",
+  "content_lock_state": "NOT_LOCKED",
+  "next_action": "Run A2-L13 Stage6 against exact CURRENT v480-R114 from this Repair2 payload. Verify exact import, HF2 generic+Study+Quick morphology, deterministic persistence/index, cumulative 941-card retention, overlap membership preservation and roundtrip. Do not start Stage7 in the same major milestone."
+}

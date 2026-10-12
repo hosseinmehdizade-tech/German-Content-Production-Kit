@@ -1,21 +1,22 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage1 source inventory is next.**
+**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage1 source inventory is PASS; Stage2/Stage2B is next.**
 
-- A2-L13 is **LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY** on CURRENT German Flashcards Pro `v481-R115`.
-- L13 contains **70 canonical cards** = 61 new A2 + 9 immutable A1 reuses.
-- Final content: **280 trilingual examples**, **62 Kombinationen sections / 126 items**, **14 accepted Stage4 graph relations**.
-- Exact-final runtime acceptance: **34/34 target-only + 171/171 cumulative = 205/205 PASS**.
-- Cumulative authority through L13: **941 unique cards**, with **872/872 prior cards retained**.
-- HF2 learner-visible fronts: **70/70 PASS** in generic, Study and Quick presentation.
-- Locked artifact: `Menschen-A2-L13-v3.3.6-GFP-v481-LOCKED.zip`, SHA-256 `387cc002db656771a519132f35d9cdf97394d47b48af261c3cf2ba8b5ab5c51d`.
+- A2-L14 lesson: **Es werden fleißig Päckchen gepackt.**
+- Exact registered source slice: **70 rows**, source ordinals **3470..3539**.
+- Source audio: **70 referenced / 70 present** in the exact hash-pinned current-chat RAR5.
+- Missing source German examples: **5 rows** — 3481, 3499, 3502, 3533, 3535.
+- Slash-delimited source alternatives/structures requiring Stage2 review: **36 rows**.
+- Exact duplicate raw Learnable groups: **0**.
+- Empty German source text: **0**; empty Persian seed definitions: **0**.
+- Canonicalization, split/merge/reuse decisions and stable canonical IDs: **NOT STARTED**.
+- Stage1 artifact SHA-256: `d5356a0e7d3d5cfc5fa662cbef6db9a5df5dd9f1557be9b318b0073b49dff109`.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- Real-origin / physical-restart acceptance remains an app-runtime environment boundary and does not block the L13 content lock.
-- A2-L01..L13 are immutable. Future corrections require explicit successor/repair artifacts.
+- A2-L01..L13 remain immutable and unchanged.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L13-STAGE7.json](./L13-STAGE7.json), and [L13-CHECKPOINT.json](./L13-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE1.json](./L14-STAGE1.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
 
-Next major stage: **A2-L14 Stage1**. Do not alter A2-L01..L13 locked bytes.
+Next major stage: **A2-L14 Stage2 canonicalization + mandatory Stage2B identity closure**. Do not start Stage3 until identity closure has zero unresolved states.
 
 ---
 

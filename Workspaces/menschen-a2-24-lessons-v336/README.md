@@ -1,23 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage3B authorship is PASS; Stage3C is next.**
+**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage3C disposition closure is PASS; Stage4 is next.**
 
 - A2-L14 identity set remains **60 targets** = 53 new A2 + 2 immutable A1 reuses + 5 immutable prior-A2 reuses.
-- Stage3B authored **212 trilingual examples** = exactly four for each of the 53 new cards.
-- Kombinationen authorship produced **106 reviewed candidates**.
-- Relation authorship produced **53 curated candidates**. No registered-source relation was silently promoted.
-- Working candidate ledger: **877 candidates = 539 ACCEPTED working + 338 DEFERRED + 0 rejected**.
-- All **937 dimension cells** remain pending independent Stage3C disposition.
-- Raw Persian definitions and German source examples remain source seeds/provenance only; **0 exact source German examples** were promoted as learner authority.
-- No external linguistic reference attestation is claimed in Stage3B.
-- Stage2B identity was not changed; A2-L01..L13 remain immutable.
-- Stage3B artifact SHA-256: `6c23c2245b1e309c37f21b7b4d123d1cb3fa4439058536fca371906d4fcfe4b0`.
+- Stage3C independently closed **937/937 dimension cells**.
+- Final Stage3C dispositions: **586 VERIFIED_PRESENT + 351 CLOSED_NO_FORCE + 0 unresolved**.
+- Candidate ledger: **877 final decisions = 526 accepted + 351 rejected + 0 deferred**.
+- **212** trilingual examples remain for the 53 new cards.
+- Kombinationen: **106/106 reviewed and retained**.
+- Relation candidates: **53 reviewed; 17 stable graph edges accepted; 36 graph-only candidates rejected**.
+- Bounded learner-layer repair: **21 actions across 14 identities**.
+- Locked dependencies: **7 read-only**, with no mutation and no false exact-parent byte-parity claim.
+- Source and identity snapshots are byte-preserved from Stage3B.
+- Official validators: source **70/70 PASS**, identity closure **70 source → 60 active PASS**, candidate ledger **877 final / 0 deferred PASS**, completeness **60 targets / 937 cells / 0 unresolved PASS**.
+- Stage3C artifact SHA-256: `3220e55de2c9f51303b325741931c8b8d4ed297457f6da158f7ac4f9caf2c1b1`.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- Official source, identity, Stage3A-baseline and working-ledger validators passed. The pinned portable framework lacks pytest source files, so no full pytest-suite PASS is claimed this turn.
+- A2-L01..L13 remain immutable. Stage4 has not started; L14 is not import-ready and not locked.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE3B.json](./L14-STAGE3B.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE3C.json](./L14-STAGE3C.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
 
-Next major stage: **A2-L14 Stage3C independent disposition closure across all 937 cells**. Do not start Stage4 until pending = 0.
+Next major stage: **A2-L14 Stage4 independent linguistic/source/structure re-audit**. Stage4 must not trust Stage3C self-report and may reopen defects; do not start Stage5 until Stage4 passes.
 
 ---
 

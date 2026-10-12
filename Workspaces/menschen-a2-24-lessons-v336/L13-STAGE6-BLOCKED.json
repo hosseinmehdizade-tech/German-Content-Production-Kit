@@ -1,0 +1,67 @@
+{
+  "schema": "gcpk-menschen-a2-l13-stage6-blocked-git-receipt@1.0.0",
+  "scope": "A2-L13",
+  "framework": "v3.3.6",
+  "stage": 6,
+  "status": "BLOCKED_CURRENT_RUNTIME_MULTI_MEMBERSHIP_REGRESSION",
+  "blocker_code": "GFP_V480_MULTI_MEMBERSHIP_LIBRARY_INDEX_REGRESSION",
+  "content_authority": {
+    "stage5_repair2": "Workspaces/menschen-a2-24-lessons-v336/L13-STAGE5-REPAIR2.json",
+    "artifact_sha256": "e3c12218ccd84aad04b02055bd5b718b814be9ee7362394c19e6a9dff83a1019",
+    "dataset_sha256": "e7457f7d8d4de7901b4aac16b8a1accf5f66ce4f957873b28f1fc11812d2558c",
+    "projected_cards_sha256": "194959b15c0e0784fc32d568ac509e1fb40396a7becf5b65c1c0148478f42a78",
+    "cards": 70,
+    "expected_cumulative_unique": 941,
+    "mutated_in_stage6": false
+  },
+  "runtime": {
+    "current": "v480-R114",
+    "artifact_sha256": "9b22ab1479be585a0e0b96301a515e9101a9d19604c93674e5f148b111420c69",
+    "app_sha256": "288dadc0f4fedd11dce6c47c8dac727aa3b477a3e56f4399d752f7c4e0b4beea",
+    "last_fully_verified": "v466-R100",
+    "no_downgrade": true
+  },
+  "acceptance": {
+    "target_only": "34/34 PASS",
+    "cumulative": "163/171; 8 failures are lesson-scope membership regressions",
+    "prior_ids_retained": "872/872 PASS",
+    "target_ids_present": "70/70 PASS",
+    "cumulative_unique": "941 PASS",
+    "hf2_generic_study_quick": "70/70 PASS",
+    "nested_multi_gender_noun": "PASS",
+    "overlap_ma1m_lu_2648": "PASS memberships/audio/semantic core/relation suppression",
+    "srs_persistence": "PASS",
+    "page_errors": 0
+  },
+  "regression": {
+    "v475_synthetic": "7/7 PASS",
+    "v480_synthetic": "5/7 FAIL",
+    "missing_membership_edges": 18,
+    "affected_lessons": [
+      "A2-L01",
+      "A2-L02",
+      "A2-L03",
+      "A2-L04",
+      "A2-L05",
+      "A2-L06",
+      "A2-L07",
+      "A2-L10"
+    ],
+    "root_cause_boundary": "Exact v480 Library runtime lacks the v475 course_memberships expansion in the Library index and falls back to primary top-level source/lesson/deck scope.",
+    "content_fault": false
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L13-v3.3.6-Stage6-BLOCKED-v480-MULTI-MEMBERSHIP-REGRESSION.zip",
+    "sha256": "49c159de046b7159ccce99b51e6b582c2b5747408545f0cf0eb263a67cfb26f1",
+    "size_bytes": 29946,
+    "members": 12,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L13-v3.3.6-Stage6-BLOCKED-v480-MULTI-MEMBERSHIP-REGRESSION.zip",
+    "library_file_id": "file_00000000360081f48ba002031a9f3897",
+    "library_stable_id": "libfile_203a27753b848191ac5cd0356179459a",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "stage6_closed": false,
+  "stage7_allowed": false,
+  "content_lock_state": "NOT_LOCKED",
+  "next_action": "Repair the multi-membership Library index on CURRENT lineage without downgrading, create a successor runtime, rerun the v475 membership contract plus HF2/import regressions, then rerun A2-L13 Stage6 against the exact unchanged Stage5 Repair2 bytes."
+}

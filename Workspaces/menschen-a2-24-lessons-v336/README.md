@@ -1,22 +1,24 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage1 source inventory is PASS; Stage2/Stage2B is next.**
+**CURRENT verified scope: A2-L01 through A2-L13 are Stage7 LOCKED. A2-L14 Stage2B identity closure is PASS; Stage3A is next.**
 
 - A2-L14 lesson: **Es werden fleißig Päckchen gepackt.**
-- Exact registered source slice: **70 rows**, source ordinals **3470..3539**.
-- Source audio: **70 referenced / 70 present** in the exact hash-pinned current-chat RAR5.
-- Missing source German examples: **5 rows** — 3481, 3499, 3502, 3533, 3535.
-- Slash-delimited source alternatives/structures requiring Stage2 review: **36 rows**.
-- Exact duplicate raw Learnable groups: **0**.
-- Empty German source text: **0**; empty Persian seed definitions: **0**.
-- Canonicalization, split/merge/reuse decisions and stable canonical IDs: **NOT STARTED**.
-- Stage1 artifact SHA-256: `d5356a0e7d3d5cfc5fa662cbef6db9a5df5dd9f1557be9b318b0073b49dff109`.
+- Exact registered source: **70 rows**, ordinals **3470..3539**, with **70/70 audio refs present**.
+- Stage2B closed to **60 canonical identities** = **53 new A2 + 2 immutable A1 reuses + 5 immutable prior-A2 reuses**.
+- New ID range: **ma2m-lu-0842..ma2m-lu-0894**.
+- Source-to-canonical bindings: **71**. Row **3525** explicitly splits **Oberteil / Unterteil** into two lexical identities.
+- A1 reuses: `ma1m-lu-0188` (Geschlecht), `ma1m-lu-2404` (Wahnsinn!).
+- Prior-A2 reuses: `ma2m-lu-0251` (absenden), `ma2m-lu-0636` (Briefumschlag), `ma2m-lu-0505` (Briefkasten), `ma2m-lu-0444` (Ruhig Blut!), `ma2m-lu-0659` (froh).
+- Homograph guard: adjective **arm** remains a new A2 identity; immutable A1 **Arm** is a noun and was not reused.
+- Identity closure: **0 unresolved**; new exact headword+POS collisions against locked authorities: **0**.
+- Cumulative unique runtime projection through L14: **996**.
+- Stage2B artifact SHA-256: `f0f04540320c3738bf643a2d0c7e2f221973dffd4a0bcbde1c1284a20fddd698`.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- A2-L01..L13 remain immutable and unchanged.
+- A2-L01..L13 remain immutable and unchanged. Stage3 enrichment has not started.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE1.json](./L14-STAGE1.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L14-STAGE2B.json](./L14-STAGE2B.json), and [L14-CHECKPOINT.json](./L14-CHECKPOINT.json).
 
-Next major stage: **A2-L14 Stage2 canonicalization + mandatory Stage2B identity closure**. Do not start Stage3 until identity closure has zero unresolved states.
+Next major stage: **A2-L14 Stage3A baseline richness/completeness audit**. Do not begin Stage3B enrichment before the baseline is recorded.
 
 ---
 

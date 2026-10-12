@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l14-stage2b-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l14-stage3a-checkpoint@1.0.0",
   "scope": "A2-L14",
   "framework": "v3.3.6",
-  "stage": "Stage2B COMPLETE",
-  "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
+  "stage": "Stage3A COMPLETE",
+  "status": "PASS_RICHNESS_BASELINE_COMPLETE__STAGE3B_NOT_STARTED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
   "source_occurrences_artifact": "Menschen-A2-L14-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
@@ -37,7 +37,7 @@
     "library_stable_id": "libfile_12634afbc3888191b0d3a4ea7d5dfc83",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next_action": "Run A2-L14 Stage3A baseline richness/completeness audit across all 60 closed identities under v3.3.6. Preserve 53 new identities, 2 A1 reuses and 5 prior-A2 reuses; do not begin Stage3B enrichment before Stage3A is recorded.",
+  "next_action": "Run A2-L14 Stage3B gap-driven enrichment across all 877 unresolved cells under v3.3.6, including mandatory Kombinationen review for all 60 targets. Preserve Stage2B identity unless genuinely new identity evidence appears.",
   "identity": {
     "units_total": 60,
     "new_a2": 53,
@@ -66,6 +66,20 @@
   },
   "stage2_complete": true,
   "stage2b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE2B.json",
-  "runtime": "NOT_RESOLVED_CONTENT_ONLY_STAGE2",
-  "quality_boundary": "A2_L14_STAGE2B_IDENTITY_CLOSED__60_IDENTITIES__53_NEW_A2__2_A1_REUSE__5_PRIOR_A2_REUSE__0_UNRESOLVED__STAGE3A_NEXT"
+  "runtime": "NOT_RESOLVED_CONTENT_ONLY_STAGE3A",
+  "quality_boundary": "A2_L14_STAGE3A_BASELINE_PASS__60_TARGETS__937_CELLS__60_VERIFIED__0_CLOSED__877_UNRESOLVED__STAGE3B_NEXT",
+  "stage3a": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE3A.json",
+    "targets": 60,
+    "senses": 41,
+    "expressions": 19,
+    "dimension_cells": 937,
+    "verified_present_cells": 60,
+    "closed_no_force_cells": 0,
+    "unresolved_cells": 877,
+    "artifact_sha256": "0073940daae10c34a89fbdcad0cb428893cba04c72c22f78e6002deeeca14802",
+    "artifact_library_file_id": "file_000000008548821086ba7f9f788d26bf",
+    "artifact_library_stable_id": "libfile_285ba99e1d248191943bef96501a2dee",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  }
 }

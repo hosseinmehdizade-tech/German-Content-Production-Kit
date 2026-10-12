@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L14_STAGE3B_TARGET_COVERAGE_PASS__STAGE3C_PENDING",
+  "status": "B1_L14_STAGE3C_CLOSURE_PASS__STAGE4_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3B_TARGET_COVERAGE_PASS__STAGE3C_PENDING",
+    "stage3": "PASS_CLOSURE__STAGE4_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L14 Stage3C disposition closure over all 154 targets / 2471 cells from exact Stage3B artifact 41fbc9e5ec247e773dfbc8da0134c6b3f839be4d90dbe1d0b5a6df13d03b866b. Do not start B1-L15.",
+  "next_action": "Run B1-L14 Stage4 independent linguistic/source-fidelity/cross-language/relation/provenance re-audit on exact Stage3C artifact 184690f72ca907781ce7997d00f963510f6b94806fdde070af3fc1d7c2088eb5. Do not start B1-L15.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -5170,5 +5170,75 @@
     "post_package_sha256": "da520cf186c49a1c6749ec70b3f847feffa410b208753e28259d25cc9055d2d7",
     "boundary": "Stage3B target-coverage working drafts only. 2317 dimension cells remain unresolved for Stage3C; 48 cross-target duplicate example groups are explicit Stage3C/Stage4 advisories. Historical L14 editorial examples remain archive-comparison-only and non-authoritative.",
     "next_action": "Run B1-L14 Stage3C disposition closure over all 154 targets / 2471 cells from exact Stage3B artifact 41fbc9e5ec247e773dfbc8da0134c6b3f839be4d90dbe1d0b5a6df13d03b866b. Do not start B1-L15."
+  },
+  "b1_l14_stage3c": {
+    "status": "PASS_CLOSURE__STAGE4_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage3b_sha256": "41fbc9e5ec247e773dfbc8da0134c6b3f839be4d90dbe1d0b5a6df13d03b866b",
+    "canonical_sha256": "24762952a646411a5409db75fcd2c1ddeb6d2fadb7c828b5fb97d1c22e9423ca",
+    "targets": 154,
+    "senses": 73,
+    "expressions": 81,
+    "examples": 616,
+    "dimension_cells": 2471,
+    "verified_present_cells": 1402,
+    "closed_no_force_cells": 1069,
+    "unresolved_cells": 0,
+    "candidate_ledger_entries": 2471,
+    "kombinationen_accepted_items": 73,
+    "kombinationen_rejected_items": 0,
+    "kombinationen_verified_targets": 73,
+    "kombinationen_closed_no_force_targets": 81,
+    "relation_dimension_verified_targets": {
+      "synonym": 5,
+      "antonym": 0,
+      "word_family": 4,
+      "related": 21,
+      "nvv_links": 2
+    },
+    "structural_dimension_verified_targets": {
+      "morphology": 60,
+      "rektion": 26,
+      "structure_components": 81,
+      "argument_slots": 7,
+      "component_relations": 45,
+      "source_audio": 154
+    },
+    "identity_mutated": false,
+    "stage2_reopen_required": false,
+    "semantic_inheritance_from_locked_prior_work": 0,
+    "source_quality_findings_carried_forward": [
+      6114,
+      6144,
+      6174,
+      6246
+    ],
+    "example_uniqueness": {
+      "examples_total": 616,
+      "cross_target_exact_duplicate_groups_before_repair": 48,
+      "cross_target_exact_duplicate_groups_after_repair": 0,
+      "repair_examples": 68,
+      "repair_targets": 17
+    },
+    "artifact": {
+      "filename": "Menschen-B1-L14-v3.3.6-Stage3C-CLOSURE-CANDIDATE.zip",
+      "sha256": "184690f72ca907781ce7997d00f963510f6b94806fdde070af3fc1d7c2088eb5",
+      "size_bytes": 172040,
+      "members": 30,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L14-v3.3.6-Stage3C-CLOSURE-CANDIDATE.zip",
+      "library_file_id": "file_0000000098588211b95bfa1e832ec755",
+      "library_stable_id": "libfile_986ee7926eb0819186ba37ef047af047",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "content_hashes": {
+      "final_targets_sha256": "947e6a5ba345afb980f52ee5f26fc0bc2db77d524e210a07ed08baa1cd0bbcdb",
+      "completeness_sha256": "c34fcaa8a5f990dbd8e82e62bb01eb6b63517accc24b0f9fafa326071aed7a6a",
+      "candidate_ledger_sha256": "eff296bd2ab82e003eb4cb602e4f955bcb37c697751a7314c5a90d494ccf5916",
+      "disposition_review_sha256": "839c39a6a7dfccb2081ef29a5f3ac15a1faa3d5adbc6faf37f187bd44684155b"
+    },
+    "post_package_sha256": "77f3d33475f404a6dfd878b4cbae02411a00947a52d83d63f12f68a72a6ebb6a",
+    "validators": "candidate ledger PASS 2471/0; completeness PASS 154/2471/0 unresolved; example uniqueness PASS 616/0 duplicates; source identity relations PASS; fresh package CRC/20 manifest/21 sums/18 JSON PASS; Library exact readback PASS",
+    "boundary": "Stage3C closure PASS only. Stage4 independent linguistic/cross-language/source-fidelity/relation/provenance/sensitive-register/historical-context re-audit remains mandatory.",
+    "next_action": "Run B1-L14 Stage4 independent linguistic/source-fidelity/cross-language/relation/provenance re-audit on exact Stage3C artifact 184690f72ca907781ce7997d00f963510f6b94806fdde070af3fc1d7c2088eb5. Do not start B1-L15."
   }
 }

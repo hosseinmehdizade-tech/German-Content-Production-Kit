@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+  "status": "B1_L14_STAGE3A_PASS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -94,14 +94,14 @@
   },
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
-    "stage2": "NOT_STARTED",
-    "stage3": "NOT_STARTED",
+    "stage2": "PASS_IDENTITY_CLOSURE",
+    "stage3": "STAGE3A_PASS__STAGE3B_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L14 Stage3A baseline richness audit across all 154 active identities under v3.3.6. Do not start B1-L15.",
+  "next_action": "Run B1-L14 Stage3B reference-availability preflight and gap-driven enrichment across 2317 unresolved cells plus Kombinationen review for all 154 targets. Do not start B1-L15.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -5081,5 +5081,45 @@
     },
     "post_package_sha256": "6b5ab1178eae20376f7a77b15810283a9f0357700a3e3ae612dab7cbbceb7e4f",
     "next_action": "Run B1-L14 Stage3A baseline richness audit across all 154 active identities under v3.3.6. Do not start B1-L15."
+  },
+  "b1_l14_stage3a": {
+    "status": "PASS__STAGE3B_PENDING",
+    "framework": "v3.3.6",
+    "profile": "menschen-b1-memrise@1.0.0",
+    "upstream_stage2_sha256": "a3fa290ce86b0efda54cde315ba3efa2be34a554b0eaff6374187343333b9ed2",
+    "canonical_sha256": "24762952a646411a5409db75fcd2c1ddeb6d2fadb7c828b5fb97d1c22e9423ca",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "targets": 154,
+    "new_targets": 140,
+    "identity_only_reuses": 14,
+    "lesson_internal_identity_reuse_occurrences": 18,
+    "senses": 73,
+    "expressions": 81,
+    "dimension_cells": 2471,
+    "verified_present_cells": 154,
+    "unresolved_cells": 2317,
+    "source_audio_missing": 0,
+    "source_seed_audit": "154 Persian seed targets / 59 German-example seed targets / 95 without German-example seed; raw seeds not semantically promoted",
+    "source_review_flags": "56 targets / 71 flag instances",
+    "source_quality_rows": [
+      6114,
+      6144,
+      6174,
+      6246
+    ],
+    "kombinationen": "154/154 UNREVIEWED / 0 inherited items",
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "validators": "source PASS; identity PASS; completeness baseline 154/2471/2317 PASS; candidate ledger working 0 PASS; independent QA 27/27 PASS; fresh package CRC/manifest/SHA/JSON/hygiene PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L14-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "69c37d6fae64006add791422a82fbbfc3004487834159f1a628409d27f2ef730",
+      "size_bytes": 136937,
+      "members": 50,
+      "library_file_id": "file_00000000466c81f4b28624c945bc89c8",
+      "library_stable_id": "libfile_5adae751d5f881918afa0520f12fcaaa",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "boundary": "Stage3A baseline only. No learner-facing semantic enrichment accepted; Stage3B not started.",
+    "next_action": "Run B1-L14 Stage3B reference-availability preflight and gap-driven enrichment across 2317 unresolved cells plus Kombinationen review for all 154 targets. Do not start B1-L15."
   }
 }

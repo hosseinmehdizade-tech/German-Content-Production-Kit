@@ -1,23 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L16 are Stage7 LOCKED. A2-L17 Stage3C disposition closure is PASS; independent Stage4 is next.**
+**CURRENT verified scope: A2-L01 through A2-L16 are Stage7 LOCKED. A2-L17 Stage4 independent linguistic/source/structure QA is PASS; Stage5 is next.**
 
-- A2-L17 source: **97 registered source occurrences**; source order/provenance preserved.
-- Identity: **112 active targets = 111 new A2 + 1 immutable prior-A2 reuse**.
-- Stage3C independently closed **1782/1782 dimension cells**: **1112 VERIFIED_PRESENT + 670 CLOSED_NO_FORCE + 0 unresolved**.
-- Final candidate ledger: **1670 decisions = 1001 ACCEPTED + 669 REJECTED + 0 DEFERRED**.
-- Learner content: **444 trilingual examples** and **220 reviewed Kombinationen** for the 111 newly authored cards.
-- Relations: **48 candidates reviewed; 12 stable graph edges accepted**.
-- Bounded learner-layer repair: **15 actions across 8 identities**; raw registered source and locked predecessor bytes were not mutated.
+- A2-L17 identity remains **112 active targets = 111 new A2 + 1 immutable prior-A2 reuse**.
+- Stage4 independently re-audited the exact Stage3C authority and applied **61 bounded learner-layer repairs across 15 identities**; raw registered source bytes and the locked predecessor were not mutated.
+- Learner content remains **444 trilingual examples** and **220 Kombinationen**.
+- Relations after independent QA: **12 stable graph edges = 6 ANTONYM + 4 RELATED + 2 WORD_FAMILY**.
+- Completeness remains **1782/1782 closed = 1112 VERIFIED_PRESENT + 670 CLOSED_NO_FORCE + 0 unresolved**.
+- Candidate ledger remains **1670 final decisions = 1001 ACCEPTED + 669 REJECTED + 0 DEFERRED**.
+- Registered source: **97 rows**; **96/96 referenced source-audio filenames** were found in the exact registered RAR5 archive. Row 3832 remains the explicit no-audio source occurrence.
 - Official v3.3.6 gates: source **97 PASS**, identity **97 → 112 PASS**, candidate ledger **1670 final / 0 deferred PASS**, completeness **112 targets / 1782 cells / 0 unresolved PASS**.
-- Focused framework tests: **10/10 PASS**; fresh package CRC / manifest rehash / 24 JSON parse / bundled self-verifier: **PASS**.
-- Stage3C artifact SHA-256: `7478c32dd14a643da422209cdc853b9573b4a5c21078f48838b24bcde8a84ba0`.
+- Focused v3.3.6 tests: **10/10 PASS**; fresh package rehash **26/26 PASS**, JSON reparse **23/23 PASS**, embedded self-verifier **PASS**.
+- Stage4 artifact SHA-256: `a6a14b5c9c8c14c7ed3126ee326404208e19b2355ff8956414ed111e144bc92f`.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- A2-L01..L16 remain immutable. L17 is **not import-ready and not locked**; independent Stage4 is still mandatory.
+- A2-L01..L16 remain immutable. L17 is **not import-ready and not locked** until Stage5/Stage6/Stage7 complete.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L17-STAGE3C.json](./L17-STAGE3C.json), and [L17-CHECKPOINT.json](./L17-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L17-STAGE4.json](./L17-STAGE4.json), and [L17-CHECKPOINT.json](./L17-CHECKPOINT.json).
 
-Next major stage: **A2-L17 Stage4 independent linguistic/source/structure re-audit on the exact Stage3C artifact. Do not start Stage5 until Stage4 passes.**
+Next major stage: **A2-L17 Stage5 clean projection + v3.3.6 anti-bypass/HF2 validation. Re-resolve Flashcards CURRENT only at Stage6. Do not start A2-L18.**
 
 ---
 

@@ -1,0 +1,68 @@
+{
+  "schema": "gcpk-menschen-a1-independent-noun-m3-receipt@1.0.0",
+  "date": "2026-10-14",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L01..L24",
+  "milestone": "M3_SOURCE_ANCHORED_EVIDENCE_TRIAGE_AND_SAFE_PROPOSAL_SCREENING",
+  "status": "PASS_READ_ONLY_EVIDENCE_TRIAGE__LINGUISTIC_APPROVAL_AND_REPAIR_PENDING",
+  "parent_receipt": "Workspaces/menschen-a1-reaudit-v336/AUDITS/A1-L01-L24-ARTICLE-AND-HISTORICAL-DEFECT-M2-RECEIPT.json",
+  "parent_portable_sha256": "77d526b4b92484ca88f1126173a4c50fffee4ed355f0d05a286f1ed3f85b4a3b",
+  "artifact": {
+    "filename": "Menschen-A1-L01-L24-ARTICLE-AUDIT-M3-EVIDENCE-TRIAGE.zip",
+    "sha256": "637db162e45f5dd7cbd6c34ad66cf48871ca4b506ab3bf66a9863d513832fbcf",
+    "size_bytes": 95096,
+    "members": 13,
+    "manifest_entries": 11,
+    "checksum_entries": 12,
+    "source": "user-facing portable content-only audit artifact",
+    "crc_and_manifest": "PASS",
+    "m1_and_m2_embedded": true
+  },
+  "inputs": {
+    "lesson_artifact_count": 24,
+    "tsv_rows": 3033,
+    "original_review_queue": 270,
+    "m2_import_front_mismatches": 198,
+    "m2_other_classified": 68,
+    "m1_false_positive_closure_reopens": 4,
+    "review_queue_total": 72
+  },
+  "results": {
+    "source_attested_plural_missing_canonical": 1,
+    "source_explicit_singular_only_month": 4,
+    "source_explicit_plural_only": 1,
+    "proper_articleless_names": 4,
+    "mass_abstract_provisional_no_plural": 35,
+    "countable_or_semantic_plural_review": 15,
+    "source_canonical_article_conflict_or_complex": 4,
+    "cross_lesson_plural_mismatch": 2,
+    "visible_nested_forms_review": 2,
+    "empty_plural_requires_explicit_closure": 4,
+    "categorized": 72,
+    "uncategorized": 0,
+    "structural_preview_parity": "198/198 PASS",
+    "preview_semantic_approvals": 0,
+    "preview_semantic_risk_watchlist": 12
+  },
+  "confirmed_cases": [
+    "A1-L14 ma1m-lu-1628 source 'die See, Seen' but canonical lacks plural",
+    "A1-L15 ma1m-lu-1754 raw 'die Ferien (pl)' demands plural-only disposition",
+    "A1-L09 ma1m-lu-0806 raw 'die Tomatenmark' vs canonical 'das Tomatenmark' preserve attested raw source",
+    "A1-L03 Englisch and A1-L17 Europa have source/canonical article contextual conflict",
+    "A1-L09 Brötchen no source plural and no canonical plural; sourced review, not fabricated output"
+  ],
+  "governance": {
+    "active_prompt": "v3.3.6",
+    "HF2": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.1.0.md",
+    "card_identity": "MEM-009",
+    "raw_source": "MEM-003 / CP-MEM-008",
+    "immutable_locked_artifacts": true,
+    "source_modified": false,
+    "canonical_modified": false,
+    "app_modified": false,
+    "content_latest_unchanged": "Workspaces/menschen-a1-reaudit-v336/LATEST.json",
+    "current_runtime": "v481-R115",
+    "runtime_finality": "NOT_TESTED_IN_M3"
+  },
+  "next_action": "M4 obtain approved source/sense decisions for plural gaps and 198 display previews; build explicit successor imports and run full Stage5/6 CURRENT compatibility and browser-visible HF2 checks."
+}

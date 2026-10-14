@@ -1,17 +1,17 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "A2-L14_STAGE3C_DISPOSITION_CLOSURE_PASS",
-  "quality": "L01_L13_STAGE7_LOCKED__L14_STAGE3C_PASS__STAGE4_NEXT",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE3C.json",
-  "artifact_sha256": "3220e55de2c9f51303b325741931c8b8d4ed297457f6da158f7ac4f9caf2c1b1",
-  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L14-v3.3.6-Stage3C-DISPOSITION-CLOSURE-PASS.zip",
-  "artifact_library_file_id": "file_0000000016688210861e0a1449d1e58f",
+  "latest_completed_milestone": "A2-L14_STAGE4_REPAIR1_PASS",
+  "quality": "L01_L13_STAGE7_LOCKED__L14_STAGE4_REPAIR1_PASS__STAGE5_NEXT",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE4.json",
+  "artifact_sha256": "a5fa9aab35e2c6fe6afea83247197e4bf464b95a689394318b5e56b074cd1512",
+  "artifact_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L14-v3.3.6-Stage4-Repair1-COMPLETE-CHECKPOINT.zip",
+  "artifact_library_file_id": "file_0000000062e081f4a3c3a9c06c7b38b3",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Run A2-L14 Stage4 independent re-audit on the exact Stage3C bytes. Do not start Stage5 until Stage4 passes.",
+  "next_action": "Run A2-L14 Stage5 clean projection and v3.3.6 anti-bypass validation from exact Stage4 Repair1 artifact SHA a5fa9aab35e2c6fe6afea83247197e4bf464b95a689394318b5e56b074cd1512. Do not start A2-L15.",
   "central_checkpoint_sha": "2bb57d79ad24e9d3dbe6908f77d75845c489e631",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
-  "last_git_coordination": "A2_L14_STAGE3C_PASS__L01_L13_LOCKED_PRESERVED__STAGE4_NEXT",
+  "last_git_coordination": "A2_L14_STAGE4_REPAIR1_PASS__L01_L13_LOCKED_PRESERVED__STAGE5_NEXT",
   "parent_stage3c_batch0017_sha256": "0e87864bd83e1cb1888ed8e76a77d20aba5b09386e8971352c9e5370ca2c0bf2",
   "parent_stage3c_batch0018_sha256": "a72c98aa8a0f8b549831bf9f42afc2a47a42e2d4e8892399d2c4b445edd71442",
   "parent_stage3c_batch0019_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e",
@@ -282,30 +282,31 @@
       "stage7_complete": true
     },
     "A2-L14": {
-      "status": "STAGE3C_DISPOSITION_CLOSURE_PASS__STAGE4_NEXT",
-      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE3C.json",
+      "status": "STAGE4_REPAIR1_PASS__STAGE5_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE4.json",
       "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L14-CHECKPOINT.json",
-      "artifact_sha256": "3220e55de2c9f51303b325741931c8b8d4ed297457f6da158f7ac4f9caf2c1b1",
+      "artifact_sha256": "a5fa9aab35e2c6fe6afea83247197e4bf464b95a689394318b5e56b074cd1512",
       "canonical_identities": 60,
-      "new_a2": 53,
+      "new_a2": 54,
       "reused_a1": 2,
-      "reused_prior_a2": 5,
-      "dimension_cells": 937,
-      "verified_present": 586,
-      "closed_no_force": 351,
-      "pending": 0,
-      "candidate_ledger": {
-        "total": 877,
-        "accepted": 526,
-        "rejected": 351,
-        "deferred": 0
+      "reused_prior_a2": 4,
+      "identity_repair": {
+        "source_ordinal": 3486,
+        "from": "ma2m-lu-0444",
+        "to": "ma2m-lu-0895",
+        "historical_locked_parent_mutated": false
       },
-      "examples": 212,
-      "kombinationen": 106,
+      "dimension_cells": 937,
+      "verified_present": 588,
+      "closed_no_force": 349,
+      "pending": 0,
+      "examples": 216,
+      "kombinationen": 108,
       "accepted_graph_relations": 17,
+      "cumulative_unique_projection": 997,
       "content_lock_state": "NOT_LOCKED",
-      "stage3c_complete": true,
-      "stage4_started": false
+      "stage4_complete": true,
+      "stage5_started": false
     }
   },
   "stage3a": {
@@ -2716,5 +2717,22 @@
     "repaired_identities": 20,
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
     "post_package_sha256": "8b57d528589dbbe30b1dd4af5c074a55c2d3f9ba6193e1895df2d7585927b42f"
+  },
+  "stage4_l14": {
+    "status": "PASS_INDEPENDENT_LESSON_SCALE_QA_REPAIR1__STAGE5_NOT_RUN",
+    "artifact_sha256": "a5fa9aab35e2c6fe6afea83247197e4bf464b95a689394318b5e56b074cd1512",
+    "library_file_id": "file_0000000062e081f4a3c3a9c06c7b38b3",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "active_identities": 60,
+    "new_a2": 54,
+    "locked_dependencies": 6,
+    "examples": 216,
+    "kombinationen": 108,
+    "relations": 17,
+    "repair_actions": 13,
+    "repaired_identities": 11,
+    "canonical_sha256": "8d0e9760b2b5c4ef5992e11da087a04a49f5a203481441268a26b2c19fe33639",
+    "identity_fingerprint": "901295cf9e63f04dc2356a52ba60d73b5b612ea69b6640b9aa12fc602f3bfa36",
+    "next_action": "Stage5 clean projection/anti-bypass; do not start L15."
   }
 }

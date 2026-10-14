@@ -2,9 +2,9 @@
   "schema": "vmp-kombinationen-repair1-checkpoint@1.0.0",
   "workstream": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
   "branch": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
-  "status": "STAGE1_AUDIT_COMPLETE__PILOT3B_PROPOSED__LINGUISTIC_QA_PENDING",
-  "quality_state": "WIP",
-  "current_major_milestone": "full-corpus provenance and overlap triage, 10-card repair pilot",
+  "status": "STAGE3B_BATCH01_0001_0040_PROVISIONAL__INDEPENDENT_QA_PENDING",
+  "quality_state": "WIP_BATCH01_INTERNAL_LANGUAGE_REVIEW_PASS__STAGE4_PENDING",
+  "current_major_milestone": "Stage3B curated successor, cards 1–40 only",
   "registered_parent": {
     "release": "German-Flashcards-Pro-v465-R99-250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-LOCKED-CONTENT.zip",
     "release_sha256": "7998ac6930d3c4985c4a1e1043b1001e9102633a452066ed5b39a8e97d91f8eb",
@@ -57,7 +57,35 @@
     "No density quota: CLOSED_NO_FORCE is acceptable.",
     "Never mutate original LOCKED artifacts; do not import this checkpoint as production data."
   ],
-  "next_action": "Independently adjudicate pilot proposals for cards 0001..0010, then inspect 0011..0292 item by item and enrich only independently useful language. Track explicit dispositions and repair ledger, complete Stage4, Stage5, then resolve CURRENT runtime for Stage6. Release only after exact verification.",
+  "next_action": "Resume from exact Stage3B Batch01 ZIP SHA 385b6f99...; independently linguistic-QA 1..40 and repair confirmed risks, then continue 41..292. Only change details.Kombinationen and custom_fields.kombinationen_v1; never modify 4 examples or translations, canonical semantics, relations, IDs, order. Final Stage4/5/6 not yet run.",
   "project_memory": "PROJECT-MEMORY.json",
-  "operating_mode": "PROJECT-OPERATING-MODE-v2.md"
+  "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
+  "stage3b_batch01": {
+    "status": "PROVISIONAL_SUCCESSOR_40_OF_292__INDEPENDENT_QA_PENDING",
+    "ids": "usrin-vmp-u-0001..usrin-vmp-u-0040",
+    "card_count": 40,
+    "original_items": 190,
+    "original_items_retained_for_distinct_value": 12,
+    "original_items_replaced_as_redundant_or_nonincremental": 178,
+    "new_curated_item_proposals": 66,
+    "resulting_items": 78,
+    "provisional_closed_no_force_cards": [
+      35
+    ],
+    "explicit_dispositions": 190,
+    "four_original_examples": "1168/1168 EXACT_UNCHANGED",
+    "unchanged_outside_batch": "TSV lines rows 41..292 EXACT_BYTE_EQUAL",
+    "canonical_identity_relations_and_other_fields": "PASS_ALL_292_SAME_VALUES",
+    "stage4_independent_linguistic_validation": "PENDING",
+    "stage5_import_ready": "NO",
+    "artifact": {
+      "filename": "250-Verben-Praepositionen-Kombinationen-Repair1-Stage3B-Batch01-0040-WIP.zip",
+      "sha256": "385b6f993bf932a48d25803ed18680da922278bf23f6a3523b7cbc4ac2a3190c",
+      "bytes": 349942,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-Praepositionen-Kombinationen-Repair1-Stage3B-Batch01-0040-WIP.zip",
+      "library_file_id": "file_00000000c30481f4a4a279f3daade645",
+      "library_stable_id": "libfile_dc3cd248c8c88191a8187b934ee2855d",
+      "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
+  }
 }

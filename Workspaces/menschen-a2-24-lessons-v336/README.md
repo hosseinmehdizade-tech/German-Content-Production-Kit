@@ -1,23 +1,23 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L16 are Stage7 LOCKED. A2-L17 Stage3B gap-driven authorship is PASS; Stage3C disposition closure is next.**
+**CURRENT verified scope: A2-L01 through A2-L16 are Stage7 LOCKED. A2-L17 Stage3C disposition closure is PASS; independent Stage4 is next.**
 
 - A2-L17 source: **97 registered source occurrences**; source order/provenance preserved.
 - Identity: **112 active targets = 111 new A2 + 1 immutable prior-A2 reuse**.
-- Stage3A baseline: **1782 dimension cells = 111 VERIFIED_PRESENT + 1 CLOSED_NO_FORCE + 1670 unresolved**.
-- Stage3B authored **444 curated DE/FA/EN examples**, **220 Kombinationen candidates**, and **48 relation candidates** for the 111 new targets.
-- Stage3B working candidate ledger: **1670 decisions = 993 ACCEPTED + 677 DEFERRED + 0 rejected**. Deferred is intentional; Stage3C must close it.
-- **23/23** carried linguistic-risk flags received explicit Stage3B dispositions; raw source bytes were not silently corrected.
-- Kombinationen QA: **0 exact headword repeats**, **0 false registered-source claims**; no hard density quota was used.
-- Official v3.3.6 validators: source **97 PASS**, identity **97 → 112 PASS**, baseline **1782/1670 unresolved PASS**, working ledger **1670 PASS**; closure-mode negative control fails as expected while 677 items remain deferred.
-- Framework targeted pytest: **10/10 PASS**.
-- Stage3B artifact SHA-256: `dc41c6f9b43ef77ea2faefc5f38a46fd431f480c81c670d522411c165660688f`.
+- Stage3C independently closed **1782/1782 dimension cells**: **1112 VERIFIED_PRESENT + 670 CLOSED_NO_FORCE + 0 unresolved**.
+- Final candidate ledger: **1670 decisions = 1001 ACCEPTED + 669 REJECTED + 0 DEFERRED**.
+- Learner content: **444 trilingual examples** and **220 reviewed Kombinationen** for the 111 newly authored cards.
+- Relations: **48 candidates reviewed; 12 stable graph edges accepted**.
+- Bounded learner-layer repair: **15 actions across 8 identities**; raw registered source and locked predecessor bytes were not mutated.
+- Official v3.3.6 gates: source **97 PASS**, identity **97 → 112 PASS**, candidate ledger **1670 final / 0 deferred PASS**, completeness **112 targets / 1782 cells / 0 unresolved PASS**.
+- Focused framework tests: **10/10 PASS**; fresh package CRC / manifest rehash / 24 JSON parse / bundled self-verifier: **PASS**.
+- Stage3C artifact SHA-256: `7478c32dd14a643da422209cdc853b9573b4a5c21078f48838b24bcde8a84ba0`.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- A2-L01..L16 remain immutable. L17 is **not import-ready and not locked**; Stage3C and independent Stage4 are still mandatory.
+- A2-L01..L16 remain immutable. L17 is **not import-ready and not locked**; independent Stage4 is still mandatory.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L17-STAGE3B.json](./L17-STAGE3B.json), and [L17-CHECKPOINT.json](./L17-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L17-STAGE3C.json](./L17-STAGE3C.json), and [L17-CHECKPOINT.json](./L17-CHECKPOINT.json).
 
-Next major stage: **A2-L17 Stage3C independent disposition closure across all 1782 cells, resolving the 677 deferred decisions to final dispositions before Stage4.**
+Next major stage: **A2-L17 Stage4 independent linguistic/source/structure re-audit on the exact Stage3C artifact. Do not start Stage5 until Stage4 passes.**
 
 ---
 

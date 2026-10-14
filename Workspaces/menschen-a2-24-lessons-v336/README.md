@@ -1,23 +1,25 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-**CURRENT verified scope: A2-L01 through A2-L16 are Stage7 LOCKED. A2-L17 Stage4 independent linguistic/source/structure QA is PASS; Stage5 is next.**
+**CURRENT verified scope: A2-L01 through A2-L16 are Stage7 LOCKED. A2-L17 Stage5 clean projection / anti-bypass / HF2 is PASS and import-ready; Stage6 exact CURRENT runtime acceptance is next.**
 
-- A2-L17 identity remains **112 active targets = 111 new A2 + 1 immutable prior-A2 reuse**.
-- Stage4 independently re-audited the exact Stage3C authority and applied **61 bounded learner-layer repairs across 15 identities**; raw registered source bytes and the locked predecessor were not mutated.
-- Learner content remains **444 trilingual examples** and **220 Kombinationen**.
-- Relations after independent QA: **12 stable graph edges = 6 ANTONYM + 4 RELATED + 2 WORD_FAMILY**.
-- Completeness remains **1782/1782 closed = 1112 VERIFIED_PRESENT + 670 CLOSED_NO_FORCE + 0 unresolved**.
-- Candidate ledger remains **1670 final decisions = 1001 ACCEPTED + 669 REJECTED + 0 DEFERRED**.
-- Registered source: **97 rows**; **96/96 referenced source-audio filenames** were found in the exact registered RAR5 archive. Row 3832 remains the explicit no-audio source occurrence.
-- Official v3.3.6 gates: source **97 PASS**, identity **97 → 112 PASS**, candidate ledger **1670 final / 0 deferred PASS**, completeness **112 targets / 1782 cells / 0 unresolved PASS**.
-- Focused v3.3.6 tests: **10/10 PASS**; fresh package rehash **26/26 PASS**, JSON reparse **23/23 PASS**, embedded self-verifier **PASS**.
-- Stage4 artifact SHA-256: `a6a14b5c9c8c14c7ed3126ee326404208e19b2355ff8956414ed111e144bc92f`.
+- A2-L17 projection: **112 cards = 111 new A2 + 1 immutable prior-A2 reuse**.
+- Exact import payload: **448 trilingual examples** and **223 learner-visible Kombinationen** = 220 new-A2 + 3 locked-reuse items.
+- Relations: **12 Stage4-accepted graph edges** carried into projection.
+- Source/provenance: **97 source occurrences → 112 source-output links**; raw source remains external/hash-pinned and unmodified.
+- Completeness: **1782/1782 closed, 0 unresolved**; candidate ledger **1670 final, 0 deferred**.
+- HF2: **112/112 PASS**. Four reviewed noun plural closures are explicit; four Verb Sense perfect displays are transport bridges composed only from Stage4-verified auxiliary + Partizip II, with canonical semantics unchanged.
+- Immutable reuse: `ma2m-lu-0131` (Region) recovered from exact A2-L03 LOCKED artifact; prior membership/audio retained, L17 membership/audio added, semantic parity PASS.
+- Official Stage5 gates: unified projection **PASS 112**, HF2 **PASS 112**, source **PASS 97**, identity **PASS 112**, ledger **PASS 1670 / 0 deferred**, completeness **PASS 112 / 1782 / 0 unresolved**, clean-delivery anti-bypass builder **PASS**.
+- v3.3.6 framework suite: **10/10 PASS**.
+- Final Stage5 artifact SHA-256: `02098b9f34a91fa692823d58a80722c20ee7bb7ed3382e35f48199e44e2ce773`.
+- Final package: **49 members / 48 SHA entries / 35 JSON**, CRC/path/hygiene PASS; no nested ZIP and no Flashcards app/runtime members.
 - Library roundtrip: **PASS_EXACT_SHA256_AND_BYTE_COMPARE**.
-- A2-L01..L16 remain immutable. L17 is **not import-ready and not locked** until Stage5/Stage6/Stage7 complete.
+- Stage5 is **import-ready content**, but L17 is **not LOCKED** until Stage6 and Stage7 complete.
+- Workstream Git checkpoints are synchronized. Root `PROJECT-STATE.json` remains separately **PENDING** because the connector truncated that very large file during the bounded update attempt; this does not invalidate the Stage5 artifact or workstream authority.
 
-Authoritative coordination: [LATEST.json](./LATEST.json), [L17-STAGE4.json](./L17-STAGE4.json), and [L17-CHECKPOINT.json](./L17-CHECKPOINT.json).
+Authoritative coordination: [LATEST.json](./LATEST.json), [L17-STAGE5.json](./L17-STAGE5.json), and [L17-CHECKPOINT.json](./L17-CHECKPOINT.json).
 
-Next major stage: **A2-L17 Stage5 clean projection + v3.3.6 anti-bypass/HF2 validation. Re-resolve Flashcards CURRENT only at Stage6. Do not start A2-L18.**
+Next major stage: **A2-L17 Stage6. Re-resolve Flashcards Pro CURRENT and LAST_FULLY_VERIFIED separately, materialize exact CURRENT, then test exact Stage5 bytes. Do not start A2-L18.**
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L15_STAGE1_PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
+  "status": "B1_L15_STAGE2_PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -94,14 +94,14 @@
   },
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
-    "stage2": "NOT_STARTED",
+    "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L15 Stage2 identity closure from exact Stage1 artifact f7691eb9dd53deb986458e5c6d1cb890845c2dda5392b8143b22d3614d878c92. Preserve B1-L01..L14 locked identities; use the specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L16.",
+  "next_action": "Run B1-L15 Stage3A baseline richness audit across all 187 active identities under v3.3.6. Do not start B1-L16.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -5567,5 +5567,45 @@
     },
     "boundary": "Stage1 inventory only; Stage2 identity closure pending. Historical enriched semantics remain non-authoritative.",
     "next_action": "Run B1-L15 Stage2 identity closure from exact Stage1 artifact f7691eb9dd53deb986458e5c6d1cb890845c2dda5392b8143b22d3614d878c92. Preserve B1-L01..L14 locked identities; use the specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L16."
+  },
+  "b1_l15_stage2": {
+    "parent_stage1_sha256": "f7691eb9dd53deb986458e5c6d1cb890845c2dda5392b8143b22d3614d878c92",
+    "source_occurrences": 163,
+    "active_canonical_units": 187,
+    "new_canonical_units": 168,
+    "reused_locked_units": 19,
+    "reused_locked_source_rows": 25,
+    "split_source_rows": 26,
+    "lesson_internal_reuse_occurrences": 12,
+    "source_to_target_bindings": 199,
+    "new_id_range": "mb1m-lu-2168..mb1m-lu-2335",
+    "unresolved_identity": 0,
+    "canonical_sha256": "cbea216c259082307e29fba2a10cc3429a689f09f5b354d91efdc0e2b649e094",
+    "identity_fingerprint": "5d19310a06efa721e77fd097dd3bdaad37e1b8128c78eac220f36cee143250e6",
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "source_quality_findings_carried_forward": [
+      6248,
+      6326
+    ],
+    "validators": "official source PASS 163/163; official identity PASS 163 occurrences / 187 active IDs; independent QA 35/35; fresh package CRC/manifest/SHA/JSON/hygiene PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L15-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
+      "sha256": "c23dc2e860746cee9f1443b4419578a085a7ab1d877a7f1b68f72dc9ad2b5563",
+      "size_bytes": 85036,
+      "members": 22,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L15-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
+      "library_file_id": "file_00000000094481f4ac88336c91e8455b",
+      "library_stable_id": "libfile_dc14c33c9db48191830bec446938863b",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L15-STAGE2-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "ba6d548125aee080325638ba960b3f89a0d22fcec05c5511dea09333a611375b",
+      "status": "PASS"
+    },
+    "boundary": "Stage2 identity/source closure only. No learner-facing definitions, translations, exact-four examples, relations, morphology, Rektion or Kombinationen are accepted by this milestone.",
+    "status": "PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L15-STAGE2.json",
+    "receipt_git_commit": "26911d5c748a42bc7f80f8b8f9fc242703b7427f"
   }
 }

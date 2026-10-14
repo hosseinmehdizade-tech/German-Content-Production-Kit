@@ -8685,7 +8685,7 @@
       }
     },
     "menschen_b1_lessonwise": {
-      "status": "B1_L16_STAGE2_PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+      "status": "B1_L16_STAGE3A_PASS__STAGE3B_PENDING",
       "branch": "main",
       "checkpoint": "Workspaces/menschen-b1-24-lessons-v336/CHECKPOINT.json",
       "latest_path": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
@@ -11936,8 +11936,8 @@
         "post_package_sha256": "da84e24746afc17e8a32b5153b38e15c32cfdce047a140ffa564718f1cd9751b",
         "next_action": "Run B1-L15 Stage3C disposition closure over all 187 targets / 2954 cells from this exact target-coverage checkpoint. Preserve source-audio gap mb1m-lu-2172/row 6248. Do not start B1-L16."
       },
-      "current_scope": "B1-L16 Stage2 identity closure PASS: 166 source occurrences → 145 active identities = 120 new + 25 exact locked reuses; 0 unresolved; no prior learner semantics inherited.",
-      "next_scope": "Run B1-L16 Stage3A baseline richness audit across all 145 active identities; do not start B1-L17.",
+      "current_scope": "B1-L16 Stage3A baseline PASS: 145 active identities; 2344 dimension cells; 139 source-audio verified; 2205 unresolved; six source-audio target gaps; Kombinationen 145/145 unreviewed.",
+      "next_scope": "Run B1-L16 Stage3B reference-availability preflight and gap-driven enrichment across 2205 unresolved cells plus Kombinationen review for all 145 targets under v3.3.6. Preserve the six target-level source-audio gaps. Do not start B1-L17.",
       "b1_l15_stage3c": {
         "status": "PASS_CLOSURE__STAGE4_PENDING",
         "parent_stage3b_sha256": "7d9b6853f2fc5cf6eb91ecda97f822ee974ca947378733b88aac80eb75875b68",
@@ -12202,6 +12202,49 @@
         },
         "validators": "official source PASS 166/166; official identity PASS 166 occurrences / 145 active IDs; independent QA 22/22 PASS; post-package fresh extract PASS",
         "next_action": "Run B1-L16 Stage3A baseline richness audit across all 145 active identities under v3.3.6. Do not start B1-L17."
+      },
+      "b1_l16_stage3a": {
+        "status": "PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
+        "artifact": {
+          "filename": "Menschen-B1-L16-v3.3.6-Stage3A-CHECKPOINT.zip",
+          "sha256": "b5c8388c5202ac750047be36a1bb90b70914b2fba9b6c718da6b5e80f1ca70db",
+          "size_bytes": 143406,
+          "members": 50,
+          "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L16-v3.3.6-Stage3A-CHECKPOINT.zip",
+          "library_file_id": "file_000000006a2882089885cc370f44ad60",
+          "library_stable_id": "libfile_bd4ea5b5ad308191ba271b791c5a0d5f",
+          "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+        },
+        "counts": {
+          "source_occurrences": 166,
+          "active_canonical_targets": 145,
+          "new_targets": 120,
+          "identity_only_reuses": 25,
+          "senses": 59,
+          "expressions": 86,
+          "dimension_cells": 2344,
+          "verified_present_cells": 139,
+          "unresolved_cells": 2205,
+          "source_audio_verified_cells": 139,
+          "source_audio_gap_unresolved_cells": 6,
+          "targets_requiring_stage3b": 145,
+          "candidate_ledger_entries": 0
+        },
+        "source_audio_gap_target_ids": [
+          "mb1m-lu-2373",
+          "mb1m-lu-2374",
+          "mb1m-lu-2378",
+          "mb1m-lu-2379",
+          "mb1m-lu-0134",
+          "mb1m-lu-2443"
+        ],
+        "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+        "post_package": {
+          "filename": "B1-L16-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+          "sha256": "f28a94594b88d23761b4cc1691aa7ee35c6a2eb9989c0bbcd6e818a09621d2cb",
+          "status": "PASS"
+        },
+        "next_action": "Run B1-L16 Stage3B reference-availability preflight and gap-driven enrichment across 2205 unresolved cells plus Kombinationen review for all 145 targets under v3.3.6. Preserve the six target-level source-audio gaps. Do not start B1-L17."
       }
     },
     "menschen_a2_24_lessons_v336": {

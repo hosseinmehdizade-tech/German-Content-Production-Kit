@@ -1,0 +1,96 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage4-checkpoint@1.0.0",
+  "date": "2026-10-14",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L21",
+  "framework": "v3.3.6+HF2",
+  "status": "PASS_STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS__STAGE5_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "upstream": {
+    "stage3c_artifact": "Menschen-A1-L21-v3.3.6-REAUDIT-Stage3C-COMPLETE-SUCCESSOR.zip",
+    "stage3c_sha256": "7110ca4cc30774e577fba75769e4c21d05b4864f16b944d7f1e6d47eafffd28a",
+    "stage3c_canonical_sha256": "23ba91d8af80a75eee5b0ef7b9dbb9f222b5822a57f521b7d6f3fa5cd10b415d"
+  },
+  "accepted_canonical": {
+    "file": "03-Canonical-Data/SUCCESSOR-CANONICAL-STAGE4.json",
+    "sha256": "b37801b4ebb15076a675c6d78d126d85c45037c1db365b21c2bf31da92d39a73"
+  },
+  "content": {
+    "targets": 149,
+    "senses": 69,
+    "expressions": 80,
+    "examples": "596 DE / 596 FA / 596 EN; exactly 4 per target",
+    "relations": "189 = RELATED 88 / COLLOCATION 35 / SYNONYM 33 / REKTION 22 / ANTONYM 11",
+    "kombinationen": "20 accepted on 15 cards / 134 CLOSED_NO_FORCE",
+    "candidates": "609 ACCEPTED / 0 REJECTED / 0 DEFERRED",
+    "completeness": "2393/2393 final / 0 unresolved"
+  },
+  "repairs": {
+    "status": "BOUNDED_REPAIRS_APPLIED",
+    "field_operations": 10,
+    "breakdown": {
+      "expression_type_profile_normalization": 6,
+      "hf2_plural_status_closure": 4
+    },
+    "expression_type_targets": [
+      "ma1m-lu-2594",
+      "ma1m-lu-2686",
+      "ma1m-lu-2694",
+      "ma1m-lu-2696",
+      "ma1m-lu-2700",
+      "ma1m-lu-2703"
+    ],
+    "plural_closure_targets": [
+      "ma1m-lu-2601",
+      "ma1m-lu-2679",
+      "ma1m-lu-2680",
+      "ma1m-lu-2681"
+    ],
+    "boundary": "No plural forms were invented. The four nouns with no verified plural received explicit CLOSED_NO_FORCE disposition. No stable IDs, source inventory/mappings, definitions/translations, examples, relation topology, Kombinationen decisions, locked prior semantic authorities, runtime or UI changed."
+  },
+  "verification": {
+    "independent": "34/34 PASS",
+    "official_closure_validators": "4/4 PASS",
+    "hf2_learner_visible_front": "149/149 PASS",
+    "negative_controls": "3/3 PASS_EXPECTED_FAILURES",
+    "semantic_delta": "PASS_EXACT_10_TARGET_FIELD_OPERATIONS",
+    "source_boundary": "4/4 byte-identical to Stage3C",
+    "current_prior_reuse": "3/3 semantic+example parity",
+    "reference_audit": "PASS",
+    "stage4_self_verifier": "PASS",
+    "fresh_package": "CRC PASS / 109 members / manifest 107/107 / SHA256SUMS 108/108 / fresh official 4/4 / fresh HF2 149/149",
+    "blocking_findings": 0,
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L21-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "sha256": "aea4e40781eeef37e3490abddcfe77bd6558ffcaed95c52e82aa575c2e89ebfc",
+    "size_bytes": 1161733,
+    "members": 109,
+    "manifest_entries": 107,
+    "sha256s_entries": 108,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "library_file_id": "file_00000000652081f4905267284833b405",
+    "library_stable_id": "libfile_22366530ab588191a515ccaed2f8f3dc",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package": {
+    "filename": "A1-L21-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "69b96c303052bc802d3b13744424c5c35a3b5625c989a388fc5858a0630d765d",
+    "size_bytes": 1413,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L21-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_0000000017a8824395d629e02551bf12",
+    "library_stable_id": "libfile_5992facdbb5c81918f512bcac024885d",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "runtime": "NOT_RUN_CONTENT_ONLY",
+  "content_lock_state": "SUCCESSOR_NOT_LOCKED",
+  "next_action": "A1-L21 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Run prevention projection/package gates and HF2 learner-visible front validator. Resolve CURRENT runtime only at Stage6. Do not start A1-L22."
+}

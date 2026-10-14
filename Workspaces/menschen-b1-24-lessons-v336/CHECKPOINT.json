@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L15_STAGE5_PASS__STAGE6_PENDING",
+  "status": "B1_L15_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -97,11 +97,11 @@
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "PASS_CLOSURE",
     "stage4": "PASS_AFTER_BOUNDED_REPAIR1",
-    "stage5": "PASS",
-    "stage6": "NOT_STARTED",
-    "stage7": "NOT_STARTED"
+    "stage5": "PASS_WITH_REPAIR1_TRANSPORT_SUCCESSOR",
+    "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
+    "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Run B1-L15 Stage6 runtime and presentation acceptance against exact CURRENT German Flashcards Pro resolved at execution time. Do not start B1-L16.",
+  "next_action": "B1-L15 is LOCKED. Start B1-L16 Stage1 from the registered Menschen source under v3.3.6. Preserve B1-L01..L15 locked bytes.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -5852,5 +5852,44 @@
     "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
     "stage6_allowed": true,
     "next_action": "Run B1-L15 Stage6 runtime and presentation acceptance against exact CURRENT German Flashcards Pro resolved at execution time. Do not start B1-L16."
+  },
+  "b1_l15_stage5_repair1": {
+    "status": "PASS_TRANSPORT_ONLY_V481_DISPLAY_BRIDGE",
+    "artifact_sha256": "45c02143b20eb3763fa938af37340f935b4d1881729cb73630be2b01a3e7e190",
+    "direct_import_tsv_sha256": "98e35e45da3cced8e22929d9da1f2181e699f5a392dc8806dc4123e73343773c",
+    "library_file_id": "file_000000005f74824385d58a475a814b8d",
+    "semantic_mutation": false,
+    "identity_mutation": false,
+    "runtime_mutation": false
+  },
+  "b1_l15_stage6": {
+    "status": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
+    "runtime_current": "v481-R115",
+    "runtime_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "runtime_last_fully_verified": "v466-R100",
+    "artifact_sha256": "10e6cdcb6d213343c964cbe3dc4c897172d881386d5c384f00f189a7db74a5f6",
+    "harness": "33/33 PASS",
+    "stage7_allowed": true
+  },
+  "b1_l15_stage7": {
+    "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
+    "artifact": {
+      "filename": "Menschen-B1-L15-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "ad57f1e1492aba9ff64cc78a3584506edcaa5b8fd546e8cb6f3492a66c135057",
+      "size_bytes": 825955,
+      "members": 120,
+      "library_file_id": "file_0000000041e081f4af2f3b2f86800ae4",
+      "library_stable_id": "libfile_86d11dbe19d88191bfef546c0774d214",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "cards": 187,
+    "examples": 748,
+    "relations": 86,
+    "kombinationen": 41,
+    "unresolved_cells": 0,
+    "direct_import_tsv_sha256": "98e35e45da3cced8e22929d9da1f2181e699f5a392dc8806dc4123e73343773c",
+    "exact_final_harness": "33/33 PASS",
+    "stage6_runtime": "v481-R115"
   }
 }

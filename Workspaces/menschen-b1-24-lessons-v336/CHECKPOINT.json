@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L17_STAGE5_PASS__STAGE6_PENDING",
+  "status": "B1_L17_STAGE6_PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -101,7 +101,7 @@
     "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Run B1-L17 Stage6 runtime and presentation acceptance against exact CURRENT German Flashcards Pro resolved at execution time. Do not start B1-L18.",
+  "next_action": "Run B1-L17 Stage7 exact-final content lock/post-package verification. Re-resolve CURRENT before final lock. Do not start B1-L18.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6499,5 +6499,93 @@
     "runtime_binding": "RESOLVE_CURRENT_AT_STAGE6",
     "stage6_allowed": true,
     "next_action": "Run B1-L17 Stage6 runtime and presentation acceptance against exact CURRENT German Flashcards Pro resolved at execution time. Do not start B1-L18."
+  },
+  "b1_l17_stage5_repair1": {
+    "status": "PASS_TRANSPORT_ONLY_V481_DISPLAY_BRIDGE",
+    "parent_stage5_sha256": "3653ad3f084e2e694950d4018dc0ba33ab0c6b4714012b63c81290628788b2c6",
+    "artifact": {
+      "filename": "Menschen-B1-L17-v3.3.6-Stage5-Repair1-V481-RUNTIME-DISPLAY-BRIDGE-CLEAN-DELIVERY.zip",
+      "sha256": "8ff6f1600a2d6f8c3c95d77f39236423f1f80d5d78bb6bd87ed9f1daf006f572",
+      "size_bytes": 206598,
+      "library_file_id": "file_000000002ea881f49ac082ea153db453",
+      "library_stable_id": "libfile_15c07fafc5c48191944e7d9c5108df5a",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "direct_import_tsv_sha256": "4d64450443eb144f4978af866b022f708b8697eae64a0ada646e9787d5f74080",
+    "front_bridge_cards": 40,
+    "bridge_categories": {
+      "Noun": 29,
+      "Expression": 11
+    },
+    "legacy_visible_sections_removed": 0,
+    "identity_mutated": false,
+    "learner_semantics_mutated": false,
+    "source_bindings_mutated": false,
+    "runtime_mutated": false,
+    "validators": "unified + HF2 + source + identity + candidate ledger + completeness PASS; exact-current repaired harness 33/33 PASS"
+  },
+  "b1_l17_stage6": {
+    "status": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
+    "framework": "v3.3.6",
+    "stage5_original_sha256": "3653ad3f084e2e694950d4018dc0ba33ab0c6b4714012b63c81290628788b2c6",
+    "stage5_repair1_sha256": "8ff6f1600a2d6f8c3c95d77f39236423f1f80d5d78bb6bd87ed9f1daf006f572",
+    "direct_import_tsv_sha256": "4d64450443eb144f4978af866b022f708b8697eae64a0ada646e9787d5f74080",
+    "runtime_current": "v481-R115",
+    "runtime_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "runtime_last_fully_verified": "v466-R100",
+    "runtime_release_final": false,
+    "cards": 112,
+    "examples": 448,
+    "kombinationen": 26,
+    "relations": 228,
+    "identity_only_reuses": 20,
+    "parser": "PASS 112/112 Universal v2 / 23 columns",
+    "selection_on_populated_1996": "PASS_READY_NONMUTATING",
+    "deterministic_replace": "PASS 112/112",
+    "progress_preservation": "20/20 PASS",
+    "semantic_payload_parity": "112/112 PASS",
+    "generic_hf2_front": "112/112 PASS",
+    "rich_presentation_modes": "448/448 PASS before and after compaction",
+    "quick_native_html": "112/112 PASS",
+    "filtering": "source+lesson+deck 112/112 PASS",
+    "library_scope": "112/112 PASS",
+    "backup_restore": "112/112 semantic parity + 20/20 reused progress PASS",
+    "generation_plan": "112 cards / 1 chunk / max 112",
+    "memberships": "112 cards / 112 records",
+    "source_audio": "112 cards / 142 refs / 133 unique; zero target gaps",
+    "harness": "33/33 PASS",
+    "harness_result_sha256": "e0bd207c5d551c84cc4485b603bf01ff9a0a743deb0474876b2ba739c0cf1156",
+    "projection_transport_repair": {
+      "front_bridge_cards": 40,
+      "bridge_categories": {
+        "Noun": 29,
+        "Expression": 11
+      },
+      "legacy_visible_sections_removed": 0,
+      "semantic_mutation": false,
+      "identity_mutation": false,
+      "source_binding_mutation": false,
+      "runtime_mutation": false
+    },
+    "artifact": {
+      "filename": "Menschen-B1-L17-v3.3.6-Stage6-V481-RUNTIME-ACCEPTANCE.zip",
+      "sha256": "03d6447d1159750a6d35fe8f75f9e7c544fd76b523cb13f97a3d52588abc728a",
+      "size_bytes": 370579,
+      "members": 33,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L17-v3.3.6-Stage6-V481-RUNTIME-ACCEPTANCE.zip",
+      "library_file_id": "file_0000000002cc8210b27a9d861f42d535",
+      "library_stable_id": "libfile_5d45d1acda308191bbd8725dea987310",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L17-STAGE6-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "140d190aa0b3ff81907677fca6a669fe3ff5610b334b9e9bfd7d6f5dc35f53a6",
+      "status": "PASS",
+      "library_file_id": "file_0000000051348211904b4e647c9a5d2c",
+      "library_stable_id": "libfile_4980e9de68a48191bbfef6523d89d9c0"
+    },
+    "environment_boundary": "Canonical-origin durable IndexedDB and same-profile Windows/Chrome were not observed; nonblocking under USER-OBSERVATION-POLICY. Offline/storage acceptance inherited from v466 because v481 semantics are unchanged.",
+    "stage7_allowed": true,
+    "next_action": "Run B1-L17 Stage7 exact-final content lock/post-package verification. Re-resolve CURRENT before final lock. Do not start B1-L18."
   }
 }

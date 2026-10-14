@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-14",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -1373,6 +1373,56 @@
         ],
         "affected_workstreams": [
           "All applicable project workstreams"
+        ]
+      }
+    },
+    {
+      "id": "MEM-026-PASSIVE-USER-OBSERVATION-NO-ROUTINE-ACCEPTANCE-KITS",
+      "status": "ACTIVE",
+      "date": "2026-10-14",
+      "category": "verification_process",
+      "incident": "Cross-project runtime/content acceptance had begun to rely on user-run helper kits and repetitive questionnaires. Two v481 helpers failed before runtime launch on Windows, causing repeated user interruption without product evidence.",
+      "decision": "For content Stage6/Stage7 and runtime integration, do not generate routine user-run acceptance kits or require broad Y/N confirmation. Use automated acceptance and continue. Provide only a concise passive watchlist; ask for one focused manual test only for a genuinely changed unautomatable semantic boundary, destructive/data-migration risk, essential platform-specific integration, or an actual observed regression.",
+      "safe_default": "AUTOMATED_ACCEPTANCE_PLUS_PASSIVE_USER_OBSERVATION",
+      "canonical_policy": "German-Flashcards-Pro/USER-OBSERVATION-POLICY.json",
+      "canonical_memory": "German-Flashcards-Pro/PROJECT-MEMORY.json#MEM-026-PASSIVE-USER-OBSERVATION-NO-ROUTINE-ACCEPTANCE-KITS",
+      "preserved_guardrails": [
+        "Silence is not manual PASS evidence.",
+        "PASS_WITH_ENVIRONMENT_BOUNDARY may remain explicit without blocking ordinary content progress.",
+        "Re-resolve CURRENT for runtime-sensitive acceptance.",
+        "High-risk changed boundaries may still require one focused real-environment test."
+      ],
+      "prevention": {
+        "scope": "CROSS_PROJECT",
+        "severity": "S2",
+        "root_cause": "Generic user acceptance rituals were being used as a bookkeeping gate even when automated evidence already covered the changed behavior.",
+        "root_cause_basis": "User-observed v481 helper failures plus explicit user process decision.",
+        "impact": "Repeated user time cost and unnecessary interruptions.",
+        "time_cost": "USER_REPORTED_MATERIAL_TIME_COST",
+        "wrong_path": [
+          "Create a generic Stage6/7 user acceptance kit by default.",
+          "Require user yes/no answers before continuing ordinary content work."
+        ],
+        "correct_method": "AUTOMATED_ACCEPTANCE_PLUS_PASSIVE_USER_OBSERVATION",
+        "rule": "Continue after automated acceptance; only surface a passive watchlist. Use a focused manual test solely when a real changed boundary cannot be automated or a regression/data-risk exists.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "Do not infer manual PASS from silence."
+        },
+        "evidence": [
+          "German-Flashcards-Pro/USER-OBSERVATION-POLICY.json"
+        ],
+        "affected_workstreams": [
+          "Vocabulary",
+          "Grammar",
+          "Lesen",
+          "Schreiben",
+          "Stage6/Stage7 runtime integration"
         ]
       }
     }

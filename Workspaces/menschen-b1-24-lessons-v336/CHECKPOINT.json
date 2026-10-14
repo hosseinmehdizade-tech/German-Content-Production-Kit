@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L16_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
+  "status": "B1_L16_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -97,11 +97,11 @@
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "PASS_CLOSURE",
     "stage4": "PASS_AFTER_BOUNDED_REPAIR1",
-    "stage5": "PASS_REPAIR1_TRANSPORT_ONLY",
+    "stage5": "PASS_REPAIR2_TRANSPORT_ONLY",
     "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
-    "stage7": "NOT_STARTED"
+    "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Run B1-L16 Stage7 exact-final content lock/post-package verification. Re-resolve CURRENT before final lock. Do not start B1-L17.",
+  "next_action": "B1-L16 is LOCKED. Start B1-L17 Stage1 from the registered Menschen source under v3.3.6. Do not alter B1-L16 in place; future corrections require an explicit successor/repair.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -500,21 +500,40 @@
     "next_action": "Re-resolve CURRENT on the next continuation. If a newer CURRENT closes the v473 populated-profile RangeError and its exact portable artifact is accessible, rerun B1-L01 Stage6 from exact Stage5 TSV SHA-256 0a6c8dd8b784793e62673c4b7cc19b7cc1a96a4db583ad5d21fd20210ea39942. Do not start B1-L02 or Stage7 while this blocker remains."
   },
   "stage7": {
-    "status": "LOCKED",
+    "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "content_lock_state": "LOCKED",
     "artifact": {
-      "filename": "Menschen-B1-L01-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
-      "sha256": "783c40cd94113c30264d4850dc77477f59a9223f09ae107372bf302ea786ce33",
-      "size_bytes": 2347012,
-      "members": 298,
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L01-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
-      "library_file_id": "file_00000000b6f081f4b7e5c1408d78c844",
-      "library_stable_id": "libfile_383d4ad46bc88191a2ed6511baaa3771",
+      "filename": "Menschen-B1-L16-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "8ebb11b280718a11526fbc0af2d8bf9452437f7259bbfa680f46852fb5c159fe",
+      "size_bytes": 747586,
+      "members": 124,
+      "library_file_id": "file_00000000771881fd9724cbb3e7828394",
+      "library_stable_id": "libfile_443f488e0b30819184919c1a95b2c935",
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
-    "verification": "CRC PASS; manifest 296/296; SHA256SUMS 297/297; JSON 225/225; official validators PASS; prevention gates PASS; final Stage6 harness 24/24",
-    "content_lock_state": "LOCKED",
-    "runtime_boundary": "GFP v474-R108 remains globally non-final",
-    "receipt": "Workspaces/menschen-b1-24-lessons-v336/STAGE7.json"
+    "cards": 145,
+    "senses": 59,
+    "expressions": 86,
+    "examples": 580,
+    "relations": 113,
+    "kombinationen": 123,
+    "rejected_kombinationen": 2,
+    "source_occurrences": 166,
+    "source_output_rows": 195,
+    "dimension_cells": 2344,
+    "verified_present_cells": 1362,
+    "closed_no_force_cells": 982,
+    "unresolved_cells": 0,
+    "direct_import_tsv_sha256": "b4cdc748ddc08f48fd4602572435269aab6f116b237f5ec94cd20c7ca55a9be4",
+    "exact_current_runtime": "v481-R115",
+    "runtime_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "runtime_last_fully_verified": "v466-R100",
+    "runtime_release_final": false,
+    "final_harness": "33/33 PASS",
+    "exact_final_acceptance_sha256": "6c6b0aab3ba68a10e2e613c4925932ed3e9f949ffbdc71caa59086af2ff05d60",
+    "post_package_sha256": "70660ce248eafa4f1c671a5db48db96ec184473884f9dea73deed1ccf1c9b6ba",
+    "boundary": "Content locked; runtime project-level environment boundary remains nonblocking under passive observation.",
+    "next_action": "B1-L16 is LOCKED. Start B1-L17 Stage1 from the registered Menschen source under v3.3.6. Do not alter B1-L16 in place; future corrections require an explicit successor/repair."
   },
   "b1_l02_stage12": {
     "status": "PASS",
@@ -6147,5 +6166,26 @@
     "semantic_mutation": false,
     "identity_mutation": false,
     "runtime_mutation": false
+  },
+  "stage5_repair2": {
+    "status": "PASS_TRANSPORT_ONLY_GENERIC_HF2_CANONICAL_DISPLAY",
+    "parent_stage5_repair1_sha256": "dc9045e4a69a3543ae532fa0c5385d770c6507c3c24055013240e6091e90b7b0",
+    "artifact": {
+      "filename": "Menschen-B1-L16-v3.3.6-Stage5-Repair2-HF2-CANONICAL-DISPLAY-CLEAN-DELIVERY.zip",
+      "sha256": "2917312b29e5b440c1e58fcc9d260a8e7b5ebc8c4d922280ee4f5267457ce32c",
+      "size_bytes": 257748,
+      "members": 14,
+      "library_file_id": "file_00000000079881f4bca6ec35c4f739b7",
+      "library_stable_id": "libfile_4f09b33278c881919f510fdc76fdb8a6",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "direct_import_tsv_sha256": "b4cdc748ddc08f48fd4602572435269aab6f116b237f5ec94cd20c7ca55a9be4",
+    "front_format_cards": 9,
+    "plural_closure_metadata_cards": 6,
+    "identity_mutated": false,
+    "learner_semantics_mutated": false,
+    "source_bindings_mutated": false,
+    "audio_mutated": false,
+    "runtime_mutated": false
   }
 }

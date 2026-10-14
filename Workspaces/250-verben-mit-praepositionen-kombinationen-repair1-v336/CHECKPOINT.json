@@ -2,9 +2,9 @@
   "schema": "vmp-kombinationen-repair1-checkpoint@1.0.0",
   "workstream": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
   "branch": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
-  "status": "STAGE4_ALL_0292_OF_0292_EDITORIAL_QA_COMPLETE_STRUCTURAL_PASS__STAGE5_PENDING",
-  "quality_state": "STAGE4_CONTENT_REVIEW_COMPLETE_NO_EXTERNAL_NATIVE_SPEAKER_CERTIFICATION__STATIC_CROSSCORPUS_PASS",
-  "current_major_milestone": "Stage4 four-shard all-292 itemwise editorial review plus independent global invariant/provenance recheck",
+  "status": "STAGE5_CONTENT_DELIVERY_PACKAGING_PASS__INHERITED_HF2_FRONT_GATE_BLOCKED__STAGE6_NOT_RUN",
+  "quality_state": "STAGE4_ITEMWISE_REVIEW_292_PASS__STAGE5_OFFICIAL_BASELINE_5_GATES_PASS__KOMBINATIONEN_PROVENANCE_PASS__FRONT_GATE_INHERITED_201_FAIL",
+  "current_major_milestone": "Repair1 content-only organized Stage5 ZIP built and roundtrip verified; independent front policy inherited blocker",
   "registered_parent": {
     "release": "German-Flashcards-Pro-v465-R99-250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-LOCKED-CONTENT.zip",
     "release_sha256": "7998ac6930d3c4985c4a1e1043b1001e9102633a452066ed5b39a8e97d91f8eb",
@@ -45,7 +45,7 @@
     "pilot_draft": "PASS_19_PROPOSED",
     "pilot_independent_linguistic_reaudit": "PENDING",
     "stage4_independent_quality": "NOT_RUN",
-    "stage5_clean_delivery": "NOT_RUN",
+    "stage5_clean_delivery": "PARTIAL_PACKAGE_PASS__OFFICIAL_HF2_INHERITED_FAIL",
     "stage6_exact_current_runtime": "NOT_RUN",
     "final_content_lock": "NOT_CLAIMED"
   },
@@ -57,7 +57,7 @@
     "No density quota: CLOSED_NO_FORCE is acceptable.",
     "Never mutate original LOCKED artifacts; do not import this checkpoint as production data."
   ],
-  "next_action": "Use exact Stage4 all-292 ZIP sha ca4030a2; Stage5 create complete CONTENT-ONLY production delivery with approved canonical/source/provenance/enrichment/dispositions/tests/reports/docs/tools and v3.3.6 anti-bypass and import-contract validation, leaving examples and non-Kombinationen fields unchanged; Stage6 exact CURRENT v481-R115 test after Stage5; do not claim final import-ready until verified.",
+  "next_action": "Use exact Stage5 content-only archive sha 9b8bc060... (Library readback exact). Resolve preexisting 201-card learner-front HF2 validator conflict without changing source-truth or Komb-only scope, then Stage6 exact CURRENT app import/persistence/presentation and final lock only after acceptance. No app/UI was modified.",
   "project_memory": "PROJECT-MEMORY.json",
   "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
   "stage3b_batch01": {
@@ -547,5 +547,54 @@
       "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-Praepositionen-Kombinationen-Repair1-Stage4-ALL-0292-REVIEWED-CHECKPOINT.zip",
       "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
+  },
+  "stage5": {
+    "status": "CONTENT_PACKAGE_COMPLETE_VERIFIED__STAGE5_FULL_FINAL_GATE_BLOCKED",
+    "archive": {
+      "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Repair1-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "9b8bc0603903114084abae81208a65f08a0c8ed57d95b9714b0615b3b9800fdb",
+      "bytes": 4254523,
+      "members": 71,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Repair1-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
+      "library_file_id": "file_000000005414820a8f6c4c2301e96cac",
+      "library_stable_id": "libfile_e5626f5b008c8191ba42ee0ddae718bd",
+      "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "tsv": {
+      "sha256": "86a66715bcb476c4d65862c7ecda3038acad41a4547654a562fe5aff8ce5253a",
+      "content_only_metadata_projection": "PASS",
+      "stage4_de_fa_en_phrases_untouched": true,
+      "source_1168_examples_exact": true,
+      "unchanged_other_card_fields": true,
+      "cards": 292,
+      "kombinationen": 573,
+      "curated": 552,
+      "inherited": 21,
+      "closed_no_force": 7
+    },
+    "gates": {
+      "outer_zip_crc": "PASS",
+      "manifest_sha256": "PASS",
+      "fresh_extract": "PASS",
+      "fresh_independent_content_checks": "PASS_21_OF_21",
+      "official_inherited_source_identity_candidate_completeness_unified": "PASS_5_OF_5",
+      "negative_fixture_rejections": "PASS_5_OF_5",
+      "stage4_itemwise_review": "PASS_574_DECISIONS",
+      "official_hf2_learner_front_v1_1_0": "FAIL_201_VERB_FRONT_NOT_CANONICAL_DISPLAY",
+      "locked_parent_same_hf2_failures": "FAIL_SAME_201_CARD_IDS",
+      "full_prevention_preflight": "NOT_RUN",
+      "full_stage5_finality": "BLOCKED_INHERITED_HF2_FRONT_POLICY",
+      "stage6_exact_current_app": "NOT_RUN"
+    },
+    "inherited_blocker": {
+      "type": "FRONT_DISPLAY_POLICY_CONFLICT",
+      "cards": 201,
+      "checked_locked_predecessor": true,
+      "same_ids_and_error_type": true,
+      "scope": "OUTSIDE_AUTHORIZED_KOMBINATIONEN_ONLY_CHANGE",
+      "required_resolution": "Decide source-faithful verb-preposition-construction deck HF2 front policy or add carefully scoped validator exception. Do not silently change fronts, examples, or UI."
+    },
+    "all_original_parent_fields_except_kombinationen": "EXACT_PARITY",
+    "finality": "NOT_IMPORT_READY_NOT_LOCKED"
   }
 }

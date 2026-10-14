@@ -5,26 +5,8 @@
   "scope": "A1-L23",
   "framework": "v3.3.6+HF2",
   "status": "PASS_STAGE4_INDEPENDENT_REAUDIT_WITH_HF2_REPAIRS__STAGE5_NEXT",
-  "project_memory": "PROJECT-MEMORY.json",
-  "git_sync_policy": "GIT-SYNC-POLICY.json",
-  "prevention_refs": [
-    "MEM-003-SOURCE-FIDELITY",
-    "MEM-005-NO-GIT-BINARY-TRANSPORT",
-    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
-    "MEM-009-MULTI-MEANING-ONE-CARD",
-    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
-  ],
-  "upstream": {
-    "stage3c_artifact": "Menschen-A1-L23-v3.3.6-HF2-REAUDIT-Stage3C-DISPOSITION-CLOSURE-CHECKPOINT.zip",
-    "stage3c_sha256": "0178e75809d9f1910c4acc1f4e4e2111c5919dbb70510edc43ca1d5787593499",
-    "stage3c_new_target_canonical_sha256": "a554a27196ba0171885e2ceffe31b6e36302eb37ca135f2f404038437bd919eb",
-    "historical_stage4_recovery_artifact": "Menschen-A1-L23-v3.3.6-Stage5-CHECKPOINT.zip",
-    "historical_stage4_recovery_sha256": "e0fd12b2c63e2e3f31f868e5514084a423542772f0498d64d20b69b1963ada56"
-  },
-  "accepted_canonical": {
-    "file": "04-qa/A1-L23-CANONICAL-STAGE4.json",
-    "sha256": "f9ae81663dfab16ec3f18b5e0888fa7bbf51883d25599a2008049b01b2220ec2"
-  },
+  "upstream_stage3c_sha256": "0178e75809d9f1910c4acc1f4e4e2111c5919dbb70510edc43ca1d5787593499",
+  "accepted_canonical_sha256": "f9ae81663dfab16ec3f18b5e0888fa7bbf51883d25599a2008049b01b2220ec2",
   "content": {
     "targets": 175,
     "senses": 96,
@@ -32,55 +14,25 @@
     "examples": 700,
     "relations": 341,
     "kombinationen": 517,
-    "relation_types": "RELATED 147 / COLLOCATION 87 / SYNONYM 55 / WORD_FAMILY 30 / ANTONYM 22",
-    "candidate_decisions": "340 ACCEPTED / 1071 REJECTED / 0 DEFERRED",
-    "completeness": "2777/2777 final = 1732 VERIFIED_PRESENT + 1045 CLOSED_NO_FORCE / 0 unresolved",
-    "current_prior_reuses": [
-      "ma1m-lu-0610",
-      "ma1m-lu-1639",
-      "ma1m-lu-1914",
-      "ma1m-lu-2492",
-      "ma1m-lu-2749"
-    ],
-    "audio": "175 refs / 138 unique",
-    "cumulative_identity": "2956 memberships / 2920 unique active / 36 intentional reuse edges / 0 accidental collisions"
+    "candidates": "340 ACCEPTED / 1071 REJECTED / 0 DEFERRED",
+    "completeness": "2777 final / 1732 VERIFIED / 1045 CLOSED / 0 unresolved"
   },
-  "stage4_findings": {
-    "new_learner_text_repairs": 0,
-    "hf2_plural_status_closure": 11,
-    "hf2_plural_closure_ids": [
-      "ma1m-lu-2813",
-      "ma1m-lu-2815",
-      "ma1m-lu-2835",
-      "ma1m-lu-2881",
-      "ma1m-lu-2883",
-      "ma1m-lu-2885",
-      "ma1m-lu-2887",
-      "ma1m-lu-2889",
-      "ma1m-lu-2890",
-      "ma1m-lu-2891",
-      "ma1m-lu-2892"
-    ],
-    "current_l23_verified_morphology_materialization": "ma1m-lu-1914 kalt / kälter / am kältesten",
-    "current_prior_membership_audio_provenance_overlay": 5,
-    "reconstructed_reuse_lexemes": 3,
-    "kombinationen_overlay_targets": 175,
-    "projection_only_kombinationen": "ma1m-lu-1914 Mir ist kalt. preserved from explicit Stage3B adjudication",
-    "historical_stage4_repairs": "All 6 legacy learner/evidence-route repairs were already present upstream and independently reconfirmed; no repeat text repair required."
+  "repairs": {
+    "new_learner_text": 0,
+    "hf2_plural_closures": 11,
+    "current_l23_morphology_materialization": "ma1m-lu-1914",
+    "current_prior_reuses": 5,
+    "reconstructed_reuse_lexemes": 3
   },
   "validation": {
     "independent": "51/51 PASS",
     "official": "4/4 PASS",
-    "hf2_front": "175/175 PASS",
-    "hf2_breakdown": "45 noun / 16 verb / 29 adjective / 79 expression / 6 other",
-    "negative_controls": "3/3 PASS_EXPECTED_FAILURES",
-    "source_boundary": "4/4 byte-identical",
-    "parent_immutable_parity": "256/256 PASS",
-    "external_endpoints": "8/8 prior-catalog IDs / 10 relation edges PASS",
-    "package": "291 members / MANIFEST 289/289 / SHA256SUMS 290/290 / JSON 232/232 / CRC+paths+hygiene PASS",
-    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "post_package_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "blocking_findings": 0
+    "hf2": "175/175 PASS",
+    "negative": "3/3 PASS_EXPECTED_FAILURES",
+    "parent_parity": "256/256 PASS",
+    "external_endpoints": "8/8 IDs / 10 edges",
+    "package": "291 members / 289 manifest / 290 sha / 232 json",
+    "library": "PASS_EXACT"
   },
   "artifact": {
     "filename": "Menschen-A1-L23-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
@@ -98,12 +50,11 @@
     "filename": "A1-L23-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
     "sha256": "2d0cff261318433a5fd0e0d2ed55d56d8242ff2eed660cd4751a5a8df95d6b59",
     "size_bytes": 2051,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L23-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
     "library_file_id": "file_000000002a04821090ae9ba7443f7b9d",
     "library_stable_id": "libfile_c58da2848a9c8191b330562574a09020",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "runtime": "NOT_RUN_CONTENT_ONLY",
   "content_lock_state": "SUCCESSOR_NOT_LOCKED",
-  "next_action": "A1-L23 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Do not start Stage6 before Stage5 PASS."
+  "next_action": "A1-L23 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes."
 }

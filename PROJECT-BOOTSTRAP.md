@@ -84,3 +84,8 @@ Read every applicable ACTIVE `PROJECT-MEMORY.json` entry, including its `prevent
 - Full v3.3.6 authority remains the pinned portable package. These supplemental preflights do not promote this compact Git mirror to full framework authority.
 
 For projection-only successors, run `Verification/prevention_preflight.py lineage PROJECTED.json --baseline RESOLVED_PARENT.json` at Stage5. Resolve the immutable parent from its checkpoint first; retain current canonical parity and reviewed metadata/identity changes as separate gates.
+
+
+## User observation / runtime acceptance rule
+
+For Stage6/Stage7 and other runtime-sensitive content acceptance, routine user-run acceptance kits and repetitive Y/N questionnaires are retired. Follow the canonical German-Flashcards-Pro `USER-OBSERVATION-POLICY.json`: default to automated acceptance plus a concise passive watchlist, and continue ordinary work without requiring an affirmative user response. Ask for one focused real-environment test only when a genuinely changed semantic boundary cannot be automated, a destructive/data-migration risk exists, essential platform-specific integration must be proven, or the user reports an actual regression. Silence is never recorded as manual PASS evidence.

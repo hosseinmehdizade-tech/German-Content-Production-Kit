@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-menschen-a2-lessonwise-checkpoint@1.2.0",
   "workstream": "menschen-a2-24-lessons-v336",
-  "scope": "A2-L01..L14 Stage7 LOCKED; A2-L15 Stage1 next",
+  "scope": "A2-L01..L14 Stage7 LOCKED; A2-L15 Stage1 PASS; Stage2 next",
   "framework": "v3.3.6",
-  "status": "A2_L01_TO_L14_STAGE7_LOCKED__A2_L15_STAGE1_NEXT",
+  "status": "A2_L01_TO_L14_STAGE7_LOCKED__A2_L15_STAGE1_PASS__STAGE2_NEXT",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -62,7 +62,7 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "A2-L14 is immutable. Start A2-L15 Stage1 from the registered Menschen source; preserve A2-L01..L14 locked artifacts.",
+  "next_action": "Run A2-L15 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 108 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L14 identities; do not begin Stage3 until identity closure has zero unresolved states.",
   "runtime_gate": "NOT_RESOLVED_CONTENT_ONLY_STAGE3C",
   "stage": "Stage3B COMPLETE",
   "stage1_portable_checkpoint": {
@@ -87,7 +87,7 @@
     "assigned_stable_IDs": 0,
     "qa": "PASS_14_OF_14_SHA256_POST_EXTRACT"
   },
-  "quality_boundary": "A2_L01_L14_STAGE7_LOCKED__A2_L14_EXACT_FINAL_226_OF_226__997_CUMULATIVE",
+  "quality_boundary": "A2_L01_L14_STAGE7_LOCKED__A2_L15_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NOT_STARTED",
   "stage2b": {
     "status": "PASS_IDENTITY_CLOSURE_WITH_STAGE3_SEMANTIC_BOUNDARY",
     "source_rows_mapped": 88,
@@ -114,20 +114,20 @@
     "no_content_or_runtime_mutation": true
   },
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A2-L14-v3.3.6-GFP-v481-LOCKED.zip",
-    "sha256": "76f1f0f0d56415f996d970aff25d24a902d02c967085de11ce0195903bc5bb1f",
-    "size_bytes": 396093,
-    "members": 53,
-    "manifest_entries": 51,
-    "sha256sum_entries": 52,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L14-v3.3.6-GFP-v481-LOCKED.zip",
-    "library_file_id": "file_00000000038c8243b7f055bd49204cda",
-    "library_stable_id": "libfile_b8f07c9e918081918495d04afbf42957",
+    "filename": "Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+    "sha256": "a6ed0f9d0846b1f11847207c6c93bffa3648e74e6b586442fc2e480a12b974ca",
+    "size_bytes": 37103,
+    "members": 12,
+    "manifest_entries": 10,
+    "sha256sum_entries": 11,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+    "library_file_id": "file_00000000051c8243bab7360f504ed7d6",
+    "library_stable_id": "libfile_972b3ca2a30c8191afc45ff4e0947a84",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
-    "role": "A2_L14_STAGE7_LOCKED_AUTHORITY"
+    "role": "A2_L15_STAGE1_SOURCE_AUTHORITY"
   },
   "current_workstream_latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
-  "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE7.json",
+  "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE1.json",
   "central_status_reconciled_to": "A2-L11_STAGE3B_PASS",
   "stable_ids_assigned": 71,
   "stage3c": {
@@ -145,7 +145,7 @@
     "parent_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e"
   },
   "latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
-  "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE7.json",
+  "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE1.json",
   "previous_stage2b_checkpoint": {
     "filename": "Menschen-A2-L01-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
     "sha256": "d5c61390452b7bff2e8833f36a507390835058886e519deb887aa6f997a21e0c",
@@ -231,8 +231,8 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
   },
-  "current_lesson": "A2-L14",
-  "current_focus": "A2-L15 Stage1 source inventory next",
+  "current_lesson": "A2-L15",
+  "current_focus": "A2-L15 Stage2 canonicalization + mandatory Stage2B identity closure next",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -424,6 +424,21 @@
       "exact_final_acceptance": "226/226 PASS",
       "content_lock_state": "LOCKED",
       "stage7_complete": true
+    },
+    "A2-L15": {
+      "status": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NEXT",
+      "receipt": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE1.json",
+      "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L15-CHECKPOINT.json",
+      "artifact_sha256": "a6ed0f9d0846b1f11847207c6c93bffa3648e74e6b586442fc2e480a12b974ca",
+      "source_rows": 108,
+      "row_range": [
+        3540,
+        3647
+      ],
+      "audio_refs": 102,
+      "content_lock_state": "NOT_LOCKED",
+      "stage1_complete": true,
+      "stage2_started": false
     }
   },
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L14-CHECKPOINT.json",
@@ -2526,5 +2541,57 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
       "role": "A2_L14_STAGE7_LOCKED_AUTHORITY"
     }
+  },
+  "stage1_l15": {
+    "status": "PASS_SOURCE_INVENTORY__STAGE2_NOT_STARTED",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE1.json",
+    "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L15-CHECKPOINT.json",
+    "source_rows": 108,
+    "row_range": [
+      3540,
+      3647
+    ],
+    "lesson_title": "Gleich geht's los!",
+    "audio_refs": 102,
+    "audio_unique": 102,
+    "rows_without_audio": [
+      3579,
+      3585,
+      3615,
+      3621,
+      3641,
+      3644
+    ],
+    "missing_example_rows": [
+      3541,
+      3543,
+      3547,
+      3574,
+      3602,
+      3615,
+      3619,
+      3630,
+      3639,
+      3644
+    ],
+    "alternatives_review_rows": 62,
+    "source_text_control_char_rows": [
+      3540
+    ],
+    "source_payload_hash_binding": "108/108 PASS",
+    "artifact": {
+      "filename": "Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+      "sha256": "a6ed0f9d0846b1f11847207c6c93bffa3648e74e6b586442fc2e480a12b974ca",
+      "size_bytes": 37103,
+      "members": 12,
+      "manifest_entries": 10,
+      "sha256sum_entries": 11,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+      "library_file_id": "file_00000000051c8243bab7360f504ed7d6",
+      "library_stable_id": "libfile_972b3ca2a30c8191afc45ff4e0947a84",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+      "role": "A2_L15_STAGE1_SOURCE_AUTHORITY"
+    },
+    "stage2": "NOT_STARTED"
   }
 }

@@ -1,0 +1,90 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage4-checkpoint@1.0.0",
+  "date": "2026-10-14",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L22",
+  "framework": "v3.3.6+HF2",
+  "status": "PASS_STAGE4_INDEPENDENT_REAUDIT_WITH_BOUNDED_REPAIRS__STAGE5_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE",
+    "CP-MEM-001",
+    "CP-MEM-004",
+    "CP-MEM-005"
+  ],
+  "upstream": {
+    "stage3c_artifact": "Menschen-A1-L22-v3.3.6-REAUDIT-Stage3C-COMPLETE-SUCCESSOR.zip",
+    "stage3c_sha256": "d9454c1df3d53ea2e71861322b40259c3c674846b62215c135310d38d9a74042",
+    "stage3c_effective_canonical_sha256": "9141045815ac94cf4a9868c3bfc8ae2d85856151a94d03915e45169aee50a64f"
+  },
+  "accepted_canonical": {
+    "file": "04-qa/A1-L22-CANONICAL-STAGE4.json",
+    "sha256": "1044857f7db4cb7f8979b937c783b7264812b4d7987056ce390604b07167ca58"
+  },
+  "content": {
+    "targets": 100,
+    "senses": 53,
+    "expressions": 47,
+    "examples": 400,
+    "relations": 67,
+    "kombinationen": 271,
+    "candidate_decisions": "164 ACCEPTED / 0 REJECTED / 0 DEFERRED",
+    "completeness": "1688/1688 final / 0 unresolved"
+  },
+  "repairs": {
+    "field_object_repairs": 26,
+    "breakdown": {
+      "expression_type_profile_normalization": 11,
+      "relation_value_target_type_normalization": 8,
+      "retired_alias_component_remap": 3,
+      "linguistic_source_vs_learner_normalization": 1,
+      "hf2_plural_status_closure": 1,
+      "hf2_article_bearing_singular_binding": 1,
+      "current_prior_membership_provenance_append": 1
+    },
+    "important_independent_finding": "Three expression component object_id values (ma1m-lu-2742, ma1m-lu-2764, ma1m-lu-2767) still pointed at retired ma1m-lu-2612; Stage4 remapped them to survivor ma1m-lu-2611 without changing surface text or semantic scope."
+  },
+  "validation": {
+    "independent": "42/42 PASS",
+    "official": "4/4 PASS",
+    "hf2_front": "100/100 PASS",
+    "hf2_breakdown": "38 noun / 6 verb / 3 adjective / 47 expression / 6 other",
+    "negative_controls": "3/3 PASS_EXPECTED_FAILURES",
+    "source_boundary": "4/4 byte-identical to Stage3C",
+    "parent_immutable_parity": "101/101 PASS",
+    "manifest": "129/129 PASS",
+    "sha256s": "130/130 PASS",
+    "json_parse": "90/90 PASS",
+    "fresh_extract": "PASS all official + HF2 validators",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "blocking_findings": 0
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L22-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "sha256": "b54e153d2974da65b132cd498d1cc13afc0285f896703b96af34b79baaf0a5bb",
+    "size_bytes": 726407,
+    "members": 131,
+    "manifest_entries": 129,
+    "sha256s_entries": 130,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L22-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "library_file_id": "file_00000000cb4c81f4bcaddbda143f5cae",
+    "library_stable_id": "libfile_48c866df3cd48191b808647e4b372b26",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package": {
+    "filename": "A1-L22-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "ce286399351fd16e3ce8fc3ae1720aaf20b33345ed4e1ce86a3d349d656fb7ce",
+    "size_bytes": 2013,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L22-STAGE4-HF2-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_00000000392082469911b50052f06d61",
+    "library_stable_id": "libfile_d1561d629bb881918a1c2df89621be35",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "runtime": "NOT_RUN_CONTENT_ONLY",
+  "content_lock_state": "SUCCESSOR_NOT_LOCKED",
+  "next_action": "A1-L22 Stage5 clean delivery / anti-bypass projection from exact Stage4 accepted bytes. Do not start Stage6 or A1-L23 before Stage5 PASS."
+}

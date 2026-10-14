@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE2_PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+  "status": "B1_L18_STAGE3A_PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "NOT_STARTED",
+    "stage3": "STAGE3A_PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L18 Stage3A baseline richness audit across all 178 active identities under v3.3.6. Do not start B1-L19.",
+  "next_action": "Run B1-L18 Stage3B gap-driven enrichment from exact Stage3A artifact. Begin with current reference-availability preflight; preserve source-quality findings rows 6758 and 6780 and source-audio gap targets mb1m-lu-2595, mb1m-lu-2596, mb1m-lu-2597. Do not start B1-L19.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6590,6 +6590,7 @@
   },
   "prevention_refs": [
     "MEM-003-SOURCE-FIDELITY",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
@@ -6655,5 +6656,75 @@
     },
     "boundary": "Stage2 identity/source closure only; no learner-facing definitions, translations, exact-four examples, relations, morphology, Rektion or Kombinationen are accepted.",
     "next_action": "Run B1-L18 Stage3A baseline richness audit across all 178 active identities under v3.3.6. Do not start B1-L19."
+  },
+  "b1_l18_stage3a": {
+    "status": "PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage2_sha256": "4acd6c04e8b9ecdc3ee4f4537e3b7ef90cea69cfefe69fdfa90e0519bae9bbe1",
+    "canonical_sha256": "53e70e0d131f0c53979eca789884bcc344e841e957b69b6184cbc2864e2a9a39",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "targets": 178,
+    "new_targets": 159,
+    "identity_only_reuses": 19,
+    "senses": 81,
+    "expressions": 97,
+    "dimension_cells": 2863,
+    "verified_present_cells": 175,
+    "unresolved_cells": 2688,
+    "source_audio_verified": 175,
+    "source_audio_missing": 3,
+    "source_audio_gap_target_ids": [
+      "mb1m-lu-2595",
+      "mb1m-lu-2596",
+      "mb1m-lu-2597"
+    ],
+    "source_seed_persian_targets": 178,
+    "source_seed_german_example_targets": 46,
+    "source_review_flagged_targets": 4,
+    "source_review_flag_instances": 4,
+    "source_quality_findings_carried_forward": [
+      6758,
+      6780
+    ],
+    "kombinationen": {
+      "targets": 178,
+      "status": "178/178 UNREVIEWED",
+      "inherited_items": 0,
+      "no_hard_quota": true
+    },
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "validators": {
+      "source_occurrences": "PASS 171/171",
+      "identity_closure": "PASS 171 occurrences / 178 active IDs",
+      "enrichment_completeness_baseline": "PASS 178 targets / 2863 cells / 2688 unresolved",
+      "candidate_ledger": "PASS 0 candidates",
+      "independent_qa": "PASS 30/30"
+    },
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "3f4b25ae1bf742e5a7619060a147da704b0bc81c0bd2a27646f20ec804530906",
+      "size_bytes": 142893,
+      "members": 52,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L18-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "library_file_id": "file_00000000e374820b92938380f277bc38",
+      "library_stable_id": "libfile_c0676af8938c81919d875c43150f0a6e",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L18-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "0fa9d30b5b4d65402015832dc6407b1549ffebd16edeb06d02000546315c3892",
+      "status": "PASS",
+      "library_file_id": "file_000000000d188211b9bcafa1460b41e8",
+      "library_stable_id": "libfile_c7e787716fe08191b12b4fe69ea71bbc",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "sha256_sidecar": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage3A-CHECKPOINT.zip.sha256",
+      "sha256": "96f218a6e8b4f970442736cdd1f27153e574992b12d4196ac118cfd52cb21328",
+      "library_file_id": "file_0000000068e48208a3daecddd6041e23",
+      "library_stable_id": "libfile_fdb6c6bf9c2481918337cc993077824e"
+    },
+    "runtime_acceptance": "NOT_RUN_CONTENT_ONLY_STAGE3A",
+    "next_action": "Run B1-L18 Stage3B gap-driven enrichment from exact Stage3A artifact. Begin with current reference-availability preflight; preserve source-quality findings rows 6758 and 6780 and source-audio gap targets mb1m-lu-2595, mb1m-lu-2596, mb1m-lu-2597. Do not start B1-L19."
   }
 }

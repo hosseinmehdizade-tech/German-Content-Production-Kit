@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L17_STAGE1_PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
+  "status": "B1_L17_STAGE3A_PASS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -101,7 +101,7 @@
     "stage6": "PASS_AUTOMATED_EXACT_CURRENT_WITH_ENVIRONMENT_BOUNDARY",
     "stage7": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY"
   },
-  "next_action": "Run B1-L17 Stage2 identity closure from this exact Stage1 artifact. Preserve B1-L01..L16 locked identities and use the specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L18.",
+  "next_action": "Run B1-L17 Stage3B gap-driven enrichment from exact Stage3A artifact. Begin with current reference-availability preflight; preserve source-quality findings rows 6613 and 6667. Do not start B1-L18.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6230,5 +6230,63 @@
       "library_status": "PENDING_CONTAINER_SESSION_UNAVAILABLE"
     },
     "next_action": "Run B1-L17 Stage2 identity closure from this exact Stage1 artifact. Preserve B1-L01..L16 locked identities and use the specialized B1-Verben registry only for exact identity/collision reuse; do not inherit learner semantics. Do not start B1-L18."
+  },
+  "b1_l17_stage2": {
+    "status": "PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+    "framework": "v3.3.6",
+    "source_occurrences": 133,
+    "active_canonical_units": 112,
+    "new_canonical_units": 92,
+    "reused_locked_units": 20,
+    "reused_locked_source_rows": 39,
+    "split_source_rows": 9,
+    "lesson_internal_reuse_occurrences": 11,
+    "source_to_target_bindings": 142,
+    "new_id_range": "mb1m-lu-2456..mb1m-lu-2547",
+    "unresolved_identity": 0,
+    "canonical_sha256": "6621baaf70f92e9785b93fdf5e99cd4ab99e142b4a7b6c8d71cce72ab93165a8",
+    "identity_fingerprint": "7f0bab8496f0e9dd2b237b8cdadf45a55d927a0c05d9ee3797c47d37c41e096b",
+    "artifact": {
+      "filename": "Menschen-B1-L17-v3.3.6-Stage2-IDENTITY-CLOSURE-CHECKPOINT.zip",
+      "sha256": "f60e13f1ca7f82f19e8d349099492a738da2fa7aa5604f916e4c4e3c7e9325b4",
+      "library_file_id": "file_0000000046088243a73eb98c6cc56e0d",
+      "library_stable_id": "libfile_9853173bc6d48191a1c9c63bfe153ee3",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
+  },
+  "b1_l17_stage3a": {
+    "status": "PASS__STAGE3B_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage2_sha256": "f60e13f1ca7f82f19e8d349099492a738da2fa7aa5604f916e4c4e3c7e9325b4",
+    "canonical_sha256": "6621baaf70f92e9785b93fdf5e99cd4ab99e142b4a7b6c8d71cce72ab93165a8",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "targets": 112,
+    "new_targets": 92,
+    "identity_only_reuses": 20,
+    "senses": 55,
+    "expressions": 57,
+    "dimension_cells": 1792,
+    "verified_present_cells": 112,
+    "unresolved_cells": 1680,
+    "source_audio_verified": 112,
+    "source_audio_missing": 0,
+    "kombinationen_unreviewed": 112,
+    "source_quality_findings_carried_forward": [
+      6613,
+      6667
+    ],
+    "artifact": {
+      "filename": "Menschen-B1-L17-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "833a638f41ae68566339b8a36137b54358c77ec5e6799d95134151401d318e9f",
+      "library_file_id": "file_0000000007a08246b054fa840bf270ae",
+      "library_stable_id": "libfile_e39fc24d22b08191b32b59f5b2b5f49c",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L17-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "5dea6a288712f32db2450f5b1ed1a8208ecfeeb6df358c0226ed990c3fc1b993",
+      "status": "PASS"
+    },
+    "next_action": "Run B1-L17 Stage3B gap-driven enrichment from exact Stage3A artifact. Begin with current reference-availability preflight; preserve source-quality findings rows 6613 and 6667. Do not start B1-L18."
   }
 }

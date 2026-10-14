@@ -3259,5 +3259,16 @@
     "runtime_source_parity": "90/90 PASS",
     "backup_roundtrip": "1196/1196 PASS",
     "stage7_allowed": true
+  },
+  "coordination_note": {
+    "central_checkpoint_sync": "PENDING_AFTER_TWO_TOOL_WRITE_BLOCKS",
+    "project_state_status_fields": "SYNCED_TO_STAGE6",
+    "project_state_latest_artifact_block": "STALE_STAGE5_METADATA_DUE_TOOL_WRITE_BLOCK",
+    "authoritative_resume_order": [
+      "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
+      "Workspaces/menschen-a2-24-lessons-v336/L16-CHECKPOINT.json",
+      "Workspaces/menschen-a2-24-lessons-v336/L16-STAGE6.json"
+    ],
+    "rule": "Do not downgrade to stale duplicate metadata; Stage6 artifact and receipt above are authoritative."
   }
 }

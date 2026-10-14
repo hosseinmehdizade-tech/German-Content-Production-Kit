@@ -1,10 +1,10 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
-  "status": "STAGE5_CONTENT_PACKAGE_VERIFIED__HF2_FRONT_INHERITED_201_BLOCKED__STAGE6_PENDING",
+  "status": "STAGE5_PACKAGE_VERIFIED__V481_BOUNDED_IMPORT_SMOKE_PASS__INHERITED_HF2_201_BLOCKED",
   "source_branch": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
   "authoritative_checkpoint": "Workspaces/250-verben-mit-praepositionen-kombinationen-repair1-v336/CHECKPOINT.json",
-  "checkpoint_branch_commit": "b473e5f8a62be582d0429f9d55ea06dc39f15819",
+  "checkpoint_branch_commit": "b02fa8c3317bc22282721bb7605357b7050aca19",
   "portable": {
     "filename": "250-Verben-Praepositionen-Kombinationen-Repair1-Stage1-AUDIT-PILOT.zip",
     "sha256": "98557068be0ae6367189f9af762fcb4bf112adc409ede385e945138ddf7a86d6",
@@ -38,8 +38,8 @@
     "stage5_gate": "BLOCKED",
     "stage6_exact_current": "NOT_RUN"
   },
-  "caution": "Complete structurally verified content-only ZIP, but HF2 front v1.1.0 fails on 201 inherited verb fronts. Full Stage5/Stage6/Stage7 PASS not claimed. User-approved scope only Kombinationen.",
-  "next_action": "Start from exact Stage5 production-content ZIP sha 9b8bc060. Resolve inherited HF2 front policy conflict (201 source-faithful prepositional verb fronts fail validator v1.1.0 in both locked predecessor and repair), NOT by silently changing front/examples/UI. Then recheck exact CURRENT runtime and Stage6 browser acceptance. Do not call FINAL/IMPORT READY.",
+  "caution": "201 preexisting HF2 failures; official Stage5 gate BLOCKED. 14 bounded v481 runtime checks PASS but exact Stage6 commit/reload and Study/Quick real presentation not performed.",
+  "next_action": "Official HF2 front mismatch 201 inherited, same IDs in locked parent and Repair1. Preserve existing Stage5 content artifact SHA 9b8bc060; no source/UI change authorized. Bounded exact v481 browser test PASS, but no full Stage6. Decide separate scoped construction-card front/typing/validator contract before any policy change; no FULL PASS or final import-ready claim.",
   "current_artifact": {
     "filename": "250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Repair1-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
     "sha256": "9b8bc0603903114084abae81208a65f08a0c8ed57d95b9714b0615b3b9800fdb",
@@ -47,5 +47,23 @@
     "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-Repair1-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
     "library_file_id": "file_000000005414820a8f6c4c2301e96cac",
     "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "supplemental_diagnostic": {
+    "filename": "250-Verben-Praepositionen-Repair1-Stage5-HF2-DIAGNOSTIC-v481-BOUNDED.zip",
+    "sha256": "637e228f32c6594f5bbff79b8b4df347113147e2d82678f0bd94f8088fdac114",
+    "bytes": 13641,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-Praepositionen-Repair1-Stage5-HF2-DIAGNOSTIC-v481-BOUNDED.zip",
+    "library_file_id": "file_00000000f96082118455935b2bfb5cea",
+    "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "bounded_runtime": {
+    "runtime": "v481-R115",
+    "zip_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "checks_passed": 14,
+    "cards_parsed": 292,
+    "combination_items_in_imported_runtime_object": 573,
+    "closed_no_force": 7,
+    "real_origin_persistence": "NOT_RUN",
+    "study_quick_real_UI": "NOT_RUN"
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L16_STAGE2_PASS_IDENTITY_CLOSURE__STAGE3A_PENDING",
+  "status": "B1_L16_STAGE3A_PASS__STAGE3B_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "NOT_STARTED",
+    "stage3": "3A_PASS__3B_NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L16 Stage3A baseline richness audit across all 145 active identities under v3.3.6. Do not start B1-L17.",
+  "next_action": "Run B1-L16 Stage3B reference-availability preflight and gap-driven enrichment across 2205 unresolved cells plus Kombinationen review for all 145 targets under v3.3.6. Preserve the six target-level source-audio gaps. Do not start B1-L17.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -5980,5 +5980,54 @@
     },
     "validators": "official source PASS 166/166; official identity PASS 166 occurrences / 145 active IDs; independent QA 22/22 PASS; post-package fresh extract PASS",
     "next_action": "Run B1-L16 Stage3A baseline richness audit across all 145 active identities under v3.3.6. Do not start B1-L17."
+  },
+  "b1_l16_stage3a": {
+    "status": "PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
+    "framework": "v3.3.6",
+    "parent_stage2_sha256": "bb6eae8826571c4b103ee8c9598315bad272dd5bde6d4fa42484bb08fa452e2b",
+    "canonical_sha256": "4f7403de48838cd76ee41c35f5ebc6f367d263d54881efedd91833421dbf9fe4",
+    "resolved_policy_sha256": "33b164ac87e9c3edb06741d7c7c4a590b73eb2ae66ffda99fd0e4e9af226934c",
+    "counts": {
+      "source_occurrences": 166,
+      "active_canonical_targets": 145,
+      "new_targets": 120,
+      "identity_only_reuses": 25,
+      "senses": 59,
+      "expressions": 86,
+      "dimension_cells": 2344,
+      "verified_present_cells": 139,
+      "unresolved_cells": 2205,
+      "source_audio_verified_cells": 139,
+      "source_audio_gap_unresolved_cells": 6,
+      "targets_requiring_stage3b": 145,
+      "candidate_ledger_entries": 0
+    },
+    "source_audio_gap_target_ids": [
+      "mb1m-lu-2373",
+      "mb1m-lu-2374",
+      "mb1m-lu-2378",
+      "mb1m-lu-2379",
+      "mb1m-lu-0134",
+      "mb1m-lu-2443"
+    ],
+    "kombinationen": "145/145 UNREVIEWED / 0 inherited items",
+    "semantic_inheritance_from_prior_locked_work": 0,
+    "validators": "official source PASS; identity PASS; completeness baseline PASS; candidate ledger PASS; independent QA 31/31; post-package PASS",
+    "artifact": {
+      "filename": "Menschen-B1-L16-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "sha256": "b5c8388c5202ac750047be36a1bb90b70914b2fba9b6c718da6b5e80f1ca70db",
+      "size_bytes": 143406,
+      "members": 50,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L16-v3.3.6-Stage3A-CHECKPOINT.zip",
+      "library_file_id": "file_000000006a2882089885cc370f44ad60",
+      "library_stable_id": "libfile_bd4ea5b5ad308191ba271b791c5a0d5f",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "post_package": {
+      "filename": "B1-L16-STAGE3A-POST-PACKAGE-VERIFICATION.json",
+      "sha256": "f28a94594b88d23761b4cc1691aa7ee35c6a2eb9989c0bbcd6e818a09621d2cb",
+      "status": "PASS"
+    },
+    "next_action": "Run B1-L16 Stage3B reference-availability preflight and gap-driven enrichment across 2205 unresolved cells plus Kombinationen review for all 145 targets under v3.3.6. Preserve the six target-level source-audio gaps. Do not start B1-L17."
   }
 }

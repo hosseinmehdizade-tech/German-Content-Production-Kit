@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l14-stage5-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l14-stage6-checkpoint@1.0.0",
   "scope": "A2-L14",
   "framework": "v3.3.6",
-  "stage": "Stage5 COMPLETE",
-  "status": "PASS_CLEAN_PROJECTION_ANTI_BYPASS_HF2__STAGE6_NOT_RUN",
+  "stage": "Stage6 COMPLETE",
+  "status": "PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_NEXT",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
   "source_occurrences_artifact": "Menschen-A2-L14-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
@@ -37,7 +37,7 @@
     "library_stable_id": "libfile_12634afbc3888191b0d3a4ea7d5dfc83",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "next_action": "Run A2-L14 Stage6 against exact CURRENT German Flashcards Pro resolved at execution time. Verify direct import, HF2 generic/Study/Quick fronts, persistence/index, cumulative 997-card retention, prior membership/audio retention and roundtrip. Do not start A2-L15.",
+  "next_action": "Run A2-L14 Stage7 exact-final content lock/post-package verification from exact unchanged Stage5 plus Stage6 artifact SHA 6cdf43dd2c2feed51d7eb4e3ec23e7660cb2c93ed4e4a9fd17ae40aabd62b0dc. Re-resolve CURRENT before locking; do not start A2-L15.",
   "identity": {
     "units_total": 60,
     "new_a2": 54,
@@ -68,8 +68,8 @@
   },
   "stage2_complete": true,
   "stage2b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE2B.json",
-  "runtime": "RESOLVE_CURRENT_AT_STAGE6",
-  "quality_boundary": "A2_L14_STAGE5_PASS__60_CARDS__HF2_60_OF_60__937_OF_937_CLOSED__STAGE6_NEXT",
+  "runtime": "v481-R115",
+  "quality_boundary": "A2_L14_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY__EXACT_CURRENT_V481__226_OF_226__997_CUMULATIVE__STAGE7_NEXT",
   "stage3a": {
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE3A.json",
     "targets": 60,
@@ -167,12 +167,13 @@
   },
   "latest_stage4_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE4.json",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A2-L14-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-    "sha256": "511b9ae05914c167c57377c8a5d14fb606b28e0bf0722e3ab2da16d689c0d1f1",
-    "size_bytes": 402284,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L14-v3.3.6-Stage5-CONTENT-PRODUCTION-DELIVERY.zip",
-    "library_file_id": "file_0000000025b08243baf5a8e9b3f3ca5a",
-    "library_stable_id": "libfile_b3b6267fd49481918643cb7651a57c93",
+    "filename": "Menschen-A2-L14-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481.zip",
+    "sha256": "6cdf43dd2c2feed51d7eb4e3ec23e7660cb2c93ed4e4a9fd17ae40aabd62b0dc",
+    "size_bytes": 1538717,
+    "members": 25,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L14-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481.zip",
+    "library_file_id": "file_0000000047788210a946f740843166c4",
+    "library_stable_id": "libfile_64106886564481919971f92c61292eb9",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "stage5": {
@@ -213,5 +214,31 @@
     },
     "stage6": "NOT_RUN"
   },
-  "latest_stage5_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE5.json"
+  "latest_stage5_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE5.json",
+  "stage6": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE6.json",
+    "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "current_runtime": "v481-R115",
+    "runtime_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "target_only": "34/34 PASS",
+    "cumulative": "192/192 PASS",
+    "deterministic_total": "226/226 PASS",
+    "cumulative_unique_cards": 997,
+    "prior_retained": "941/941 PASS",
+    "hf2": "60/60 PASS",
+    "lesson_scopes": "A2-L01..L14 PASS",
+    "multi_membership": "8/8 PASS",
+    "stage7_allowed": true,
+    "artifact": {
+      "filename": "Menschen-A2-L14-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481.zip",
+      "sha256": "6cdf43dd2c2feed51d7eb4e3ec23e7660cb2c93ed4e4a9fd17ae40aabd62b0dc",
+      "size_bytes": 1538717,
+      "members": 25,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L14-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481.zip",
+      "library_file_id": "file_0000000047788210a946f740843166c4",
+      "library_stable_id": "libfile_64106886564481919971f92c61292eb9",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    }
+  },
+  "latest_stage6_receipt": "Workspaces/menschen-a2-24-lessons-v336/L14-STAGE6.json"
 }

@@ -1,0 +1,99 @@
+{
+  "schema": "gcpk-a1-multilesson-defect-screening-receipt@1.0.0",
+  "date": "2026-10-14",
+  "campaign": "Workspaces/menschen-a1-reaudit-v336",
+  "milestone": "M1_MATERIALIZED_24_OUTPUTS_AND_ARTICLE_MECHANICAL_SCREEN",
+  "status": "PASS_SCREENING_WITH_FINDINGS__NOT_CONTENT_REPAIR_OR_LINGUISTIC_PASS",
+  "rules": [
+    "HF2 learner-visible noun article and plural binding",
+    "no silent regeneration of LOCKED artifacts",
+    "independent linguistic adjudication before fixes",
+    "CURRENT app acceptance separate"
+  ],
+  "output": {
+    "filename": "Menschen-A1-L01-L24-ARTICLE-HISTORICAL-DEFECT-AUDIT-M1.zip",
+    "sha256": "54a454cb6fa3ba1d5a808067f5203f0ee1d9e84c440c044f0079ec4655de92a6",
+    "size_bytes": 23204,
+    "content": [
+      "AUDIT-README.md",
+      "HISTORICAL-DEFECT-REGISTRY-v1.json",
+      "A1-L01-L24-ARTICLE-SCREENING.json",
+      "A1-L01-L24-ARTICLE-FLAGS.tsv",
+      "article_audit.py",
+      "SHA256SUMS.txt"
+    ],
+    "storage": "User conversation artifact; no GitHub binary transport",
+    "package_sha256sum_checks": "6/6 and CRC PASS"
+  },
+  "input": {
+    "source_id": "menschen-a1a2b1-memrise-full-audio",
+    "archives_materialized": 24,
+    "lesson_01": "v3.3.6 FINAL-OUTPUT-ONLY separate successor",
+    "lesson_19": "v3.3.6 REPAIR2 content production successor",
+    "lessons_02_to_08": "v3.3.6 LOCKED re-audit successors",
+    "lessons_09_to_24": "v3.3.6 content production deliveries except 19 Repair2",
+    "sample_exact_integrity": {
+      "A1-L23": "aa252cfd1904b8d65462b19d080ae3718750138cd50a422e2c7fef566e90ff96",
+      "A1-L24": "e16f6f5c88e2a06307775281594c08978a39f31945b909fda9bc141347a6b4c5"
+    }
+  },
+  "screening": {
+    "TSV_rows": 3033,
+    "noun_like_targets": 883,
+    "unique_lesson_id_flags": 270,
+    "overlapping_findings": 589,
+    "flag_counts": {
+      "CANONICAL_ARTICLE_OR_CLOSURE_ABSENT": 10,
+      "CANONICAL_PLURAL_OR_CLOSURE_ABSENT": 81,
+      "VISIBLE_ARTICLE_ABSENT": 173,
+      "CANONICAL_PLURAL_NOT_VISIBLE": 159,
+      "CANONICAL_FRONT_ARTICLE_MISMATCH": 166
+    },
+    "priority_lessons": [
+      "A1-L10",
+      "A1-L13",
+      "A1-L17",
+      "A1-L18"
+    ],
+    "exact_examples": [
+      {
+        "lesson": "A1-L10",
+        "id": "ma1m-lu-0878",
+        "front": "Bahnhof",
+        "metadata": "der Bahnhof, Bahnhöfe"
+      },
+      {
+        "lesson": "A1-L13",
+        "id": "ma1m-lu-1308",
+        "front": "Stadtplan",
+        "metadata": "der Stadtplan, Stadtpläne"
+      },
+      {
+        "lesson": "A1-L17",
+        "id": "ma1m-lu-2003",
+        "front": "Prüfung",
+        "metadata": "die Prüfung, Prüfungen"
+      },
+      {
+        "lesson": "A1-L18",
+        "id": "ma1m-lu-2146",
+        "front": "Apotheke",
+        "metadata": "die Apotheke, Apotheken"
+      }
+    ]
+  },
+  "defect_registry_classes": [
+    "A1-ART-001",
+    "A1-MORPH-002",
+    "A1-EX-003",
+    "A1-SOURCE-004",
+    "A1-ID-005",
+    "A1-KOMB-006",
+    "A1-REL-007",
+    "A1-UI-008",
+    "A1-EXPORT-009",
+    "A1-RUNTIME-010"
+  ],
+  "limitation": "Mechanical flags may overlap and include legitimate no-article/no-plural exceptions. Real learner browser display, independent semantic quality and confirmed fixes remain pending.",
+  "next_action": "Adjudicate 270 flagged noun targets; corpus-wide root cause repair as explicit successor; exact runtime learner-surface QA. Preserve existing LATEST and locked checkpoints."
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "gcpk-menschen-a1-article-audit-m2-receipt@1.0.0",
+  "date": "2026-10-14",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L01..L24",
+  "checkpoint_kind": "INDEPENDENT_READ_ONLY_AUDIT_NOT_CONTENT_REPLACEMENT",
+  "status": "PASS_M2_STRUCTURAL_TRIAGE_WITH_CONFIRMED_IMPORT_FRONT_DEFECTS__LINGUISTIC_REPAIR_PENDING",
+  "parent_m1_receipt": "Workspaces/menschen-a1-reaudit-v336/AUDITS/A1-L01-L24-ARTICLE-AND-HISTORICAL-DEFECT-M1-RECEIPT.json",
+  "parent_m1_sha256": "54a454cb6fa3ba1d5a808067f5203f0ee1d9e84c440c044f0079ec4655de92a6",
+  "portable_artifact": {
+    "filename": "Menschen-A1-L01-L24-ARTICLE-AUDIT-M2-TRIAGE.zip",
+    "sha256": "77d526b4b92484ca88f1126173a4c50fffee4ed355f0d05a286f1ed3f85b4a3b",
+    "size_bytes": 42050,
+    "location": "user-delivered conversation artifact",
+    "sha_manifest": "M2-SHA256SUMS.txt",
+    "manifest": "M2-MANIFEST.json"
+  },
+  "inputs": {
+    "verified_lesson_archives": 24,
+    "import_tsv_rows": 3033,
+    "noun_like_rows": 883,
+    "source_id": "menschen-a1a2b1-memrise-full-audio"
+  },
+  "adjudication": {
+    "original_flagged_id_occurrences": 270,
+    "confirmed_tsv_front_transport_defects": 198,
+    "canonical_article_absent_from_front": 166,
+    "nonempty_canonical_plural_absent_from_front": 155,
+    "article_and_plural_overlap": 123,
+    "remaining_source_or_exception_review": 68,
+    "m1_scanner_false_positive_empty_plural": 4,
+    "reviewed_non_simple_variant_candidates": 11,
+    "unreviewed_display_previews": 198,
+    "shared_stable_id_front_divergences": 7,
+    "example_card_ids": [
+      "ma1m-lu-0878",
+      "ma1m-lu-1308",
+      "ma1m-lu-2003",
+      "ma1m-lu-2146"
+    ]
+  },
+  "qc": {
+    "checks_passed": 6,
+    "checks_total": 6,
+    "input_sha256": "24/24 PASS",
+    "exact_tsv_front_vs_canonical": "PASS",
+    "review_queue_identity": "270/270 PASS",
+    "preview_identity": "198/198 PASS",
+    "archive_manifest_sha256": "PASS",
+    "zip_crc": "PASS",
+    "source_mutation": false,
+    "previous_locked_artifact_mutation": false,
+    "app_runtime_mutation": false,
+    "real_browser_final_acceptance": "NOT_RUN"
+  },
+  "important_scopes": [
+    "A1-L01 is separate v3.3.6 final-output-only authority",
+    "A1-L19 uses explicit REPAIR2 successor",
+    "CURRENT app runtime v481-R115; content-only audit does not change app acceptance"
+  ],
+  "root_cause": "Canonical noun article and plural are retained but many exported TSV front fields omit the learner-visible morphology. This is structural source-to-projection mismatch, not independently proven actual browser display.",
+  "next_action": "Independently adjudicate 68 source/exception cases; review 198 proposed fronts and generate bounded explicit successor imports, then test exact CURRENT runtime. Keep content workstream LATEST unchanged until a genuine new content release milestone."
+}

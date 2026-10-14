@@ -62,9 +62,9 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Run A2-L17 Stage3A completeness baseline on 112 closed identities, then content enrichment Stage3B/3C. L01-L16 remain immutable.",
+  "next_action": "Run A2-L17 Stage3A richness/completeness baseline on the exact 112 closed identities from the Git-backed Stage2B authority. Preserve A2-L01..L16 LOCKED; do not start Stage3B before Stage3A is recorded.",
   "runtime_gate": "PASS_WITH_ENVIRONMENT_BOUNDARY_ON_EXACT_CURRENT_V481",
-  "stage": "Stage1 COMPLETE",
+  "stage": "Stage2B COMPLETE",
   "stage1_portable_checkpoint": {
     "filename": "Menschen-A2-L01-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
     "sha256": "d5c61390452b7bff2e8833f36a507390835058886e519deb887aa6f997a21e0c",
@@ -126,8 +126,8 @@
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "current_workstream_latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
-  "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/L17-STAGE1.json",
-  "central_status_reconciled_to": "A2-L17_STAGE1_PASS",
+  "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/L17-STAGE2B.json",
+  "central_status_reconciled_to": "A2-L17_STAGE2B_PASS",
   "stable_ids_assigned": 71,
   "stage3c": {
     "batch": "0020",
@@ -231,7 +231,7 @@
     }
   },
   "current_lesson": "A2-L17",
-  "current_focus": "A2-L17 Stage3A richness audit next",
+  "current_focus": "A2-L17 Stage3A richness/completeness audit next",
   "project_memory": "PROJECT-MEMORY.json",
   "git_sync_policy": "GIT-SYNC-POLICY.json",
   "prevention_refs": [
@@ -454,6 +454,7 @@
       "active_identities": 112,
       "new_a2": 111,
       "reused_prior_a2": 1,
+      "reused_a1": 0,
       "cumulative_unique_projection": 1307,
       "content_lock_state": "NOT_LOCKED",
       "stage1_complete": true,
@@ -3099,14 +3100,16 @@
   "current_lesson_title": "Wir wollen nach Rumänien.",
   "current_lesson_identity_total": 112,
   "latest_stage2b_l17": {
-    "status": "PASS",
+    "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L17-STAGE2B.json",
+    "checkpoint": "Workspaces/menschen-a2-24-lessons-v336/L17-CHECKPOINT.json",
     "artifact_sha256": "cb86f888b4732b74139d8ca1a3701b6ce205d6116e9ebc1345a3c42e73142859",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L17-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "source_rows": 97,
+    "source_occurrences": 97,
     "active_identities": 112,
     "new_a2": 111,
     "reused_prior_a2": 1,
+    "reused_a1": 0,
+    "cumulative_unique_projection": 1307,
     "unresolved": 0
   }
 }

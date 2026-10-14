@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l15-stage2b-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l15-stage3b-checkpoint@1.0.0",
   "scope": "A2-L15",
   "framework": "v3.3.6",
-  "stage": "Stage2B COMPLETE",
-  "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
+  "stage": "Stage3B COMPLETE",
+  "status": "PASS_AUTHORSHIP_COMPLETE__STAGE3C_REQUIRED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
   "source_occurrences_artifact": "Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
@@ -43,17 +43,14 @@
   "stage2_started": true,
   "content_lock_state": "NOT_LOCKED",
   "runtime": "NOT_RESOLVED_CONTENT_ONLY_STAGE2",
-  "quality_boundary": "A2_L15_STAGE2B_IDENTITY_CLOSED__111_IDENTITIES__110_NEW_A2__1_PRIOR_A2_REUSE__0_UNRESOLVED__STAGE3A_NEXT",
+  "quality_boundary": "A2_L15_STAGE3B_AUTHORSHIP_PASS__111_IDENTITIES__440_EXAMPLES__220_KOMBINATIONEN__1759_STAGE3C_PENDING",
   "artifact": {
-    "filename": "Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "sha256": "82accec312323695db4dab84518c02ee406da1e6ad9c267b63ef866bc143b7f8",
-    "size_bytes": 289032,
-    "members": 40,
-    "manifest_entries": 38,
-    "sha256sum_entries": 39,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "library_file_id": "file_00000000793881f4b375627fb3e63a59",
-    "library_stable_id": "libfile_a9d60b7ce47881919cda778f7b57bdf7",
+    "filename": "Menschen-A2-L15-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "sha256": "85fd6595f37868d5c866f134844d1d17c4032d9a5d5c3cc42bc18e809c2cc2cb",
+    "size_bytes": 524611,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "library_file_id": "file_000000006d9881f4911442dd5f60ae1b",
+    "library_stable_id": "libfile_e1f8881088fc81918e47bdd8bd8a4acc",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "post_package_verification": {
@@ -72,7 +69,7 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L15 Stage3A baseline richness/completeness audit across all 111 closed identities under v3.3.6. Preserve 110 new identities and one immutable prior-A2 reuse; do not begin Stage3B enrichment before the Stage3A baseline is recorded.",
+  "next_action": "Run A2-L15 Stage3C independent disposition closure across all 111 identities / 1759 cells. Do not start Stage4 until pending=0.",
   "stage2_complete": true,
   "identity": {
     "units_total": 111,
@@ -100,15 +97,31 @@
   },
   "stage2b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE2B.json",
   "latest_portable_checkpoint": {
-    "filename": "Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "sha256": "82accec312323695db4dab84518c02ee406da1e6ad9c267b63ef866bc143b7f8",
-    "size_bytes": 289032,
-    "members": 40,
-    "manifest_entries": 38,
-    "sha256sum_entries": 39,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
-    "library_file_id": "file_00000000793881f4b375627fb3e63a59",
-    "library_stable_id": "libfile_a9d60b7ce47881919cda778f7b57bdf7",
+    "filename": "Menschen-A2-L15-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "sha256": "85fd6595f37868d5c866f134844d1d17c4032d9a5d5c3cc42bc18e809c2cc2cb",
+    "size_bytes": 524611,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage3B-AUTHORSHIP-COMPLETE-PASS.zip",
+    "library_file_id": "file_000000006d9881f4911442dd5f60ae1b",
+    "library_stable_id": "libfile_e1f8881088fc81918e47bdd8bd8a4acc",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
-  }
+  },
+  "stage3_started": true,
+  "stage3a_complete": true,
+  "stage3b_complete": true,
+  "stage3c_complete": false,
+  "stage3b": {
+    "new_a2_cards": 110,
+    "locked_reuse_dependencies": 1,
+    "examples": 440,
+    "kombinationen": 220,
+    "relation_candidates": 64,
+    "candidate_ledger": {
+      "total": 1648,
+      "accepted": 1001,
+      "deferred": 647,
+      "rejected": 0
+    },
+    "stage3c_pending_cells": 1759
+  },
+  "stage3b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE3B.json"
 }

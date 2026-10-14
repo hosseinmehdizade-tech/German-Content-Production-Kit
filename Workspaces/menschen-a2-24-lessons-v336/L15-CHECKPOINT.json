@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-menschen-a2-l15-stage1-checkpoint@1.0.0",
+  "schema": "gcpk-menschen-a2-l15-stage2b-checkpoint@1.0.0",
   "scope": "A2-L15",
   "framework": "v3.3.6",
-  "stage": "Stage1 COMPLETE",
-  "status": "A2_L15_STAGE1_SOURCE_INVENTORY_PASS__STAGE2_NOT_STARTED",
+  "stage": "Stage2B COMPLETE",
+  "status": "PASS_IDENTITY_CLOSED__STAGE3_NOT_STARTED",
   "source_id": "menschen-a1a2b1-memrise-full-audio",
   "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
   "source_occurrences_artifact": "Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
@@ -40,20 +40,20 @@
   "source_text_control_char_rows": [
     3540
   ],
-  "stage2_started": false,
+  "stage2_started": true,
   "content_lock_state": "NOT_LOCKED",
-  "runtime": "NOT_RESOLVED_CONTENT_ONLY_STAGE1",
-  "quality_boundary": "A2_L15_STAGE1_SOURCE_INVENTORY_PASS__A2_L01_L14_STAGE7_LOCKED__STAGE2_NOT_STARTED",
+  "runtime": "NOT_RESOLVED_CONTENT_ONLY_STAGE2",
+  "quality_boundary": "A2_L15_STAGE2B_IDENTITY_CLOSED__111_IDENTITIES__110_NEW_A2__1_PRIOR_A2_REUSE__0_UNRESOLVED__STAGE3A_NEXT",
   "artifact": {
-    "filename": "Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
-    "sha256": "a6ed0f9d0846b1f11847207c6c93bffa3648e74e6b586442fc2e480a12b974ca",
-    "size_bytes": 37103,
-    "members": 12,
-    "manifest_entries": 10,
-    "sha256sum_entries": 11,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
-    "library_file_id": "file_00000000051c8243bab7360f504ed7d6",
-    "library_stable_id": "libfile_972b3ca2a30c8191afc45ff4e0947a84",
+    "filename": "Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "sha256": "82accec312323695db4dab84518c02ee406da1e6ad9c267b63ef866bc143b7f8",
+    "size_bytes": 289032,
+    "members": 40,
+    "manifest_entries": 38,
+    "sha256sum_entries": 39,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "library_file_id": "file_00000000793881f4b375627fb3e63a59",
+    "library_stable_id": "libfile_a9d60b7ce47881919cda778f7b57bdf7",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
   "post_package_verification": {
@@ -72,5 +72,43 @@
     "MEM-009-MULTI-MEANING-ONE-CARD",
     "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
   ],
-  "next_action": "Run A2-L15 Stage2 canonicalization and mandatory Stage2B identity closure from the exact 108 Stage1 source occurrences. Compare against immutable A1 authorities and LOCKED A2-L01..L14 identities; do not begin Stage3 until identity closure has zero unresolved states."
+  "next_action": "Run A2-L15 Stage3A baseline richness/completeness audit across all 111 closed identities under v3.3.6. Preserve 110 new identities and one immutable prior-A2 reuse; do not begin Stage3B enrichment before the Stage3A baseline is recorded.",
+  "stage2_complete": true,
+  "identity": {
+    "units_total": 111,
+    "new_a2": 110,
+    "reused_a1": 0,
+    "reused_prior_a2": 1,
+    "new_id_range": "ma2m-lu-0896..ma2m-lu-1005",
+    "bindings": 111,
+    "candidates": 197,
+    "editorial_reviews_closed": 68,
+    "unresolved": 0,
+    "canonical_sha256": "c46271db3bed681fbd6f9f7dca5dcef4f8e1844adf8cfc890a059051f960517a",
+    "identity_fingerprint": "202614205b1e80ac917953eb523200b5b29c1dc8277778dde0992976764fec58",
+    "prior_a2_identity_count": 997,
+    "cumulative_unique_projection": 1107,
+    "a1_reuse_ids": [],
+    "prior_a2_reuse_ids": [
+      "ma2m-lu-0702"
+    ],
+    "explicit_split_rows": [
+      3587,
+      3590,
+      3599
+    ]
+  },
+  "stage2b_receipt": "Workspaces/menschen-a2-24-lessons-v336/L15-STAGE2B.json",
+  "latest_portable_checkpoint": {
+    "filename": "Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "sha256": "82accec312323695db4dab84518c02ee406da1e6ad9c267b63ef866bc143b7f8",
+    "size_bytes": 289032,
+    "members": 40,
+    "manifest_entries": 38,
+    "sha256sum_entries": 39,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L15-v3.3.6-Stage2B-IDENTITY-CLOSURE-PASS.zip",
+    "library_file_id": "file_00000000793881f4b375627fb3e63a59",
+    "library_stable_id": "libfile_a9d60b7ce47881919cda778f7b57bdf7",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  }
 }

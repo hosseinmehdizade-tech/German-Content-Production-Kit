@@ -1,0 +1,83 @@
+{
+  "schema": "gcpk-menschen-a1-reaudit-stage5-checkpoint@1.0.0",
+  "date": "2026-10-14",
+  "workstream": "menschen-a1-reaudit-v336",
+  "scope": "A1-L21",
+  "framework": "v3.3.6+HF2",
+  "status": "PASS_STAGE5_CLEAN_DELIVERY_ANTI_BYPASS__STAGE6_NEXT",
+  "project_memory": "PROJECT-MEMORY.json",
+  "git_sync_policy": "GIT-SYNC-POLICY.json",
+  "prevention_refs": [
+    "MEM-003-SOURCE-FIDELITY",
+    "MEM-005-NO-GIT-BINARY-TRANSPORT",
+    "MEM-008-SAFE-EXECUTION-TURN-BOUNDARIES",
+    "MEM-009-MULTI-MEANING-ONE-CARD",
+    "MEM-025-CONTINUE-UNTIL-MAJOR-STAGE"
+  ],
+  "upstream": {
+    "stage4_artifact": "Menschen-A1-L21-v3.3.6-HF2-REAUDIT-Stage4-INDEPENDENT-REAUDIT-PASS.zip",
+    "stage4_sha256": "aea4e40781eeef37e3490abddcfe77bd6558ffcaed95c52e82aa575c2e89ebfc",
+    "canonical_sha256": "b37801b4ebb15076a675c6d78d126d85c45037c1db365b21c2bf31da92d39a73"
+  },
+  "projection": {
+    "cards": 149,
+    "columns": 23,
+    "card_type": "de-vocabulary for 149/149",
+    "presentation_contract": "gfp-vocabulary-neutral@1 for 149/149",
+    "direct_import": "01-Final-Import/A1-L21-UNIVERSAL-v2.tsv",
+    "direct_import_sha256": "0afc989fc8787042787fa878fcf16bd5a10018dccd76e93463a7a4c6ed59b0dd",
+    "examples": "596 trilingual records; exactly 4 per card",
+    "relations": "189 = RELATED 88 / COLLOCATION 35 / SYNONYM 33 / REKTION 22 / ANTONYM 11",
+    "kombinationen": "20 accepted on 15 cards / 134 CLOSED_NO_FORCE",
+    "source_occurrences": 128,
+    "source_output_map_edges": 149,
+    "active_canonical_ids": 149,
+    "canonical_stage4_byte_parity": "PASS",
+    "hf2_front": "149/149 PASS",
+    "current_presentation_ready": true
+  },
+  "validation": {
+    "official_clean_delivery_builder": "PASS_EXACT_V3_3_6_SCRIPT_HARNESS",
+    "official_unified_projection": "PASS 149/149",
+    "hf2_learner_visible_front": "PASS 149/149; noun31 verb25 adjective9 expression80 other4",
+    "official_source_occurrences": "PASS 128",
+    "official_identity_closure": "PASS 149 active IDs",
+    "official_candidate_ledger": "PASS 609 accepted / 0 deferred",
+    "official_completeness": "PASS 2393/2393 / 0 unresolved",
+    "semantic_loss_parity": "PASS",
+    "prevention_projection": "PASS",
+    "prevention_package": "PASS",
+    "negative_controls": "4/4 PASS_MUST_FAIL",
+    "fresh_package": "CRC PASS / 83 members / root SHA256SUMS 81/81 / final-import SHA256SUMS 12/12 / manifest 80 entries / JSON 48/48 / path safety PASS / no generated garbage / no Flashcards app-runtime",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "runtime": "NOT_RUN_CONTENT_ONLY"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-L21-v3.3.6-CONTENT-PRODUCTION-DELIVERY-STAGE5.zip",
+    "sha256": "6bd21a4c7a9fa039d6090babdbb0b45d4e110647e14cf7e2995e4c8d0780035c",
+    "size_bytes": 1768727,
+    "members": 83,
+    "manifest_entries": 80,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-L21-v3.3.6-CONTENT-PRODUCTION-DELIVERY-STAGE5.zip",
+    "library_file_id": "file_000000000eb08243a52ee8a7d32984d5",
+    "library_stable_id": "libfile_1fc9e61553a4819181b68ba8b9c98d5f",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "post_package": {
+    "filename": "A1-L21-STAGE5-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "08fcc47b6bfc301b6b781c56b39c772096d6088053543c56cf55527d294eb0e6",
+    "size_bytes": 1262,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A1-L21-STAGE5-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_0000000040f48210a161ba9e210554c6",
+    "library_stable_id": "libfile_3918ff4020c481918a423f9a39e4a715",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundaries": {
+    "raw_source_archive_audio": "NOT_EMBEDDED__HASHES_LOCATORS_AUDIO_REFS_RETAINED",
+    "content_mutated": false,
+    "content_lock_state": "REAUDIT_SUCCESSOR_NOT_LOCKED",
+    "runtime": "NOT_RUN_CONTENT_ONLY__RESOLVE_CURRENT_AT_STAGE6",
+    "contains_app": false
+  },
+  "next_action": "A1-L21 Stage6: re-resolve CURRENT German Flashcards Pro runtime and test these exact Stage5 bytes, including learner-visible HF2 front, relations/Kombinationen and persistence/runtime acceptance. Do not start A1-L22 or lock A1-L21 before Stage6/Stage7 acceptance."
+}

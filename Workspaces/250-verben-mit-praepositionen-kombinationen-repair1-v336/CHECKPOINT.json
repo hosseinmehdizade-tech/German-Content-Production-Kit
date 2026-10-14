@@ -2,9 +2,9 @@
   "schema": "vmp-kombinationen-repair1-checkpoint@1.0.0",
   "workstream": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
   "branch": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
-  "status": "STAGE5_DIAGNOSTIC_V481_BOUNDED_BROWSER_PASS__INHERITED_HF2_201_BLOCKED__STAGE6_FINAL_NOT_RUN",
-  "quality_state": "STAGE4_ITEMWISE_REVIEW_292_PASS__STAGE5_OFFICIAL_BASELINE_5_GATES_PASS__KOMBINATIONEN_PROVENANCE_PASS__FRONT_GATE_INHERITED_201_FAIL",
-  "current_major_milestone": "Exact CURRENT v481-R115 bounded Chromium preview and import-in-memory parity PASS; 201 inherited HF2 conflicts unchanged",
+  "status": "STAGE5_HF2_SCOPED_DIAGNOSTIC_PASS__V481_INMEMORY_STUDY_RENDER_292_PASS__STAGE6_REAL_ORIGIN_ENV_BLOCKED__POLICY_DECISION_PENDING",
+  "quality_state": "STAGE4_PASS_STAGE5_CONTENT_PACKAGE_PASS__HF2_OFFICIAL_201_INHERITED_BLOCKED__NO_APP_UI_OR_CONTENT_EDIT",
+  "current_major_milestone": "Read-only HF2 construction scope dry-run with negative fixtures, exact CURRENT v481 all-292 Study HTML rendering parity; real-origin navigation blocked by environment",
   "registered_parent": {
     "release": "German-Flashcards-Pro-v465-R99-250-Verben-mit-Praepositionen-v3.3.6-Kombinationen-LOCKED-CONTENT.zip",
     "release_sha256": "7998ac6930d3c4985c4a1e1043b1001e9102633a452066ed5b39a8e97d91f8eb",
@@ -57,7 +57,7 @@
     "No density quota: CLOSED_NO_FORCE is acceptable.",
     "Never mutate original LOCKED artifacts; do not import this checkpoint as production data."
   ],
-  "next_action": "Stage5 full content ZIP unchanged exact SHA 9b8bc060; supplemental v481 bounded Chrome 292/292 + 573/573 parity PASS in Library SHA 637e228f. Official HF2 inherited 201 failures remain; require separate architecture/front/typing policy approval before full Stage5 gate. Exact Stage6 real-origin persistence, Study/Quick presentation and final lock NOT RUN.",
+  "next_action": "Preserve exact verified Stage5 content ZIP SHA 9b8bc060... and supplemental dryrun SHA 008c5ccc...; 292 Study back HTML pass in isolated in-memory v481, 9/9 negative guards pass. Official HF2 201 inherited FAIL unchanged, full Stage5 BLOCKED. Real-origin and Quick/IndexedDB reload Stage6 blocked by browser administrator, not passed. Await user-approved controlled scoped front/typing architecture decision; no change to examples/UI/title or source. A real-origin supported environment required for final persistence acceptance.",
   "project_memory": "PROJECT-MEMORY.json",
   "operating_mode": "PROJECT-OPERATING-MODE-v2.md",
   "stage3b_batch01": {
@@ -634,5 +634,44 @@
       "readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "next_decision": "Requires explicit architecture approval to change clean lemma, typingCore, card class, frontend, or scoped HF2 policy; diagnostic does not waive official HF2. Keep Stage5 content artifact unchanged."
+  },
+  "stage5_hf2_scoped_followup": {
+    "scope": "DESIGN_ONLY_NO_POLICY_CHANGE",
+    "parent_stage5_zip_sha256": "9b8bc0603903114084abae81208a65f08a0c8ed57d95b9714b0615b3b9800fdb",
+    "exact_current_v481_zip_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "scope_guard": "PASS_201_OF_201_REVIEWABLE_NOT_WAIVED",
+    "inherited_hf2_errors": "201_PARENT_EQUALS_REPAIR1",
+    "new_hf2_errors": 0,
+    "negative_fixture_rejections": "PASS_9_OF_9",
+    "in_memory_study_html_dom": {
+      "cards": 292,
+      "raw_front_exact": 292,
+      "examples_german": 1168,
+      "examples_fa": 1168,
+      "examples_en": 1168,
+      "visible_kombinationen": 573,
+      "backend_parity_violations": 0
+    },
+    "real_origin_navigation": {
+      "localhost": "BLOCKED_BY_ADMINISTRATOR",
+      "https_routed_synthetic": "BLOCKED_BY_ADMINISTRATOR",
+      "file_uri": "BLOCKED_BY_ADMINISTRATOR"
+    },
+    "stage6_actual_import_persistence_reload": "NOT_RUN_EXECUTION_ENVIRONMENT_BLOCKED",
+    "stage6_quick_actual_navigation": "NOT_RUN",
+    "stage5_hf2_official": "FAIL_INHERITED_201",
+    "no_policy_or_architecture_change": true,
+    "no_approved_content_app_front_typing_change": true,
+    "full_final_status": "BLOCKED",
+    "artifact": {
+      "filename": "250-Verben-Praepositionen-Repair1-HF2-SCOPED-GATE-AND-v481-RENDER-AUDIT.zip",
+      "sha256": "008c5ccc684376759642aad8b0f99b47bb4f4e6dc374d007860042696c82c531",
+      "bytes": 9523,
+      "library_path": "/German-Content-Production-Kit/Checkpoints/250-Verben-Praepositionen-Repair1-HF2-SCOPED-GATE-AND-v481-RENDER-AUDIT.zip",
+      "library_file_id": "file_00000000a10882109af309fea0bf43dd",
+      "library_stable_id": "libfile_dbf8c3a0b5908191bca68da0e9062e25",
+      "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "next_decision": "Requires explicit separate contract/architecture approval for source-governed construction display/typing and formal HF2 test contract. No waiver applied. If approved, implement only in controlled successor, preserving source card fronts and visible app appearance, then rerun official Stage5 and exact Stage6."
   }
 }

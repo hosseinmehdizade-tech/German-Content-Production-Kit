@@ -1,0 +1,76 @@
+{
+  "schema": "menschen-b1-l18-stage6-v481-acceptance@1.0.0",
+  "date": "2026-10-15",
+  "framework": "v3.3.6",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L18",
+  "milestone": "B1_L18_STAGE6_V481_PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "status": "PASS_DETERMINISTIC_V481_HEADLESS_SCOPED__REAL_PERSISTENT_IMPORT_UNOBSERVED__STAGE7_PENDING",
+  "authority": {
+    "stage5_parent": {
+      "filename": "Menschen-B1-L18-v3.3.6-STAGE5-COMPLETE-CONTENT-PRODUCTION-DELIVERY.zip",
+      "sha256": "d75a98096cfec665c82e32c3a369429543ad0f2f5f42d2176d2c7b9067e5e76f"
+    },
+    "canonical_sha256": "af4e5d26c15e7c1722195e0e9767a06db7ba905cbf30da2b14a772ddb162624e",
+    "runtime_current": {
+      "version": "v481-R115",
+      "filename": "GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
+      "sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4"
+    },
+    "runtime_last_fully_verified_reference": "v466-R100"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L18-v3.3.6-STAGE6-v481-CONTENT-PRODUCTION-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+    "sha256": "a6b4bf56bd8f3f43184e14373befea911f9ae9af5cffd3a92b73ce7804aa7943",
+    "size_bytes": 1092734,
+    "members": 88,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L18-v3.3.6-STAGE6-v481-CONTENT-PRODUCTION-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+    "library_file_id": "file_000000008e00820d9c438e1e3f08ccc9",
+    "library_stable_id": "libfile_9afff38e29b88191b4f52c2285bd0fc2",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "repair": {
+    "issue": "Initial Stage5 TSV examples column contained DE-only strings despite FA/EN translations in custom_fields; CURRENT v481 import parser preferred TSV examples and hid example translations on Study/Quick back.",
+    "resolution": "Changed only TSV examples column to JSON example objects with explicit fa-IR/en-US translations for each of four German examples; retained original JSON, IDs, source, canonical, membership, audio and content. No app/runtime/UI change.",
+    "corrected_tsv_sha256": "2472713f51a0053c3ed7bb7959d5a4f79003df83f50e3f314a152aee20d8b70d",
+    "unchanged_projection_json_sha256": "b5007e24f31d458d0073335f1e96e999cda9799202ead63c2a85998a7bbdeec5",
+    "repeatable_content_only_repair_tool": "08-Docs/Content-Only-Tools/repair_adaptive_trilingual_examples_v481.py"
+  },
+  "quality": {
+    "targets": 178,
+    "trilingual_example_sets": 712,
+    "lesson_identifiers_preserved": true,
+    "multi_memberships_preserved": true,
+    "source_audio_present": 175,
+    "source_audio_gaps": 3,
+    "headless_real_chromium_on_exact_v481": "18/18 PASS",
+    "postpackage_fresh_extract_integrity": "17/17 PASS",
+    "official_unified_and_hf2_json_tsv": "4/4 PASS",
+    "study_quick_typing_audio_routes": "178/178 SCOPED PASS",
+    "three_language_examples_visible": "712/712 PASS",
+    "source_metadata_integrity": "PASS",
+    "old_tsv_problem_reproduced_and_repaired": true
+  },
+  "environment_boundary": {
+    "import_preview": "PASS_178_NONMUTATING",
+    "test_backed_runtime_replacement": "PASS_178_IN_MEMORY",
+    "actual_canonical_origin_IndexedDB_persistent_import": "NOT_OBSERVED_IN_MANAGED_BROWSER_HARNESS",
+    "existing_user_profile_live_install": "NOT_TESTED",
+    "pwa_offline_service_worker": "NOT_TESTED",
+    "actual_MP3_playback": "NOT_TESTED",
+    "raw_MP3_bundled": false,
+    "user_action": "NONE_REQUESTED; deterministic acceptance is bounded",
+    "stage6_pass_scope": "PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "stage7_locked": false
+  },
+  "handoff": {
+    "stage5_static_issue": "REPAIRED_WITHIN_STAGE6_SUCCESSOR_CONTENT_PACKAGE",
+    "stage6_report": "06-Reports/B1-L18-STAGE6-V481-BROWSER-QA.json",
+    "stage6_postpackage_report_local": "/mnt/data/B1L18_Stage6/B1-L18-STAGE6-FINAL-POSTPACKAGE-VERIFICATION.json",
+    "next_action": "Run Stage7 content lock/ledger and exact-final acceptance on the Stage6 successor ZIP while respecting this documented environment boundary; verify all gated persistence and final artifacts before claiming LOCKED. Do not start B1-L19."
+  },
+  "persistence": {
+    "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "git": "SYNC_IN_PROGRESS"
+  }
+}

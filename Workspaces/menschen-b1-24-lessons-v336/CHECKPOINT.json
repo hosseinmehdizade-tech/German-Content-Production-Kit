@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE4_REPAIR5_SCOPED_QA_PASS__FULL_LINGUISTIC_QA_AND_LIBRARY_QUOTA_OPEN",
+  "status": "B1_L18_STAGE4_REPAIR6_SCOPED_QA_PASS__FULL_LINGUISTIC_QA_LIBRARY_QUOTA_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -96,12 +96,12 @@
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "STAGE3C_REPAIR1_STRUCTURAL_CANDIDATE_PASS__STAGE4_PENDING",
-    "stage4": "REPAIR5_TARGETED_11_EDITS_AND_50_NOUN_EVIDENCE_INVENTORY_PASS__FULL_STAGE4_PENDING",
+    "stage4": "REPAIR6_SCOPED_83_OF_83_PASS__FULL_STAGE4_LINGUISTIC_ACCEPTANCE_PENDING",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Continue full B1-L18 Stage4 from Repair5 ZIP SHA256 6a15a8eabf3cb10afc3841d46bc7f0f43bc4e6362a0521fbfcd376a9add69435. 10 tri-language examples and Persian gloss corrected; 50 noun evidence classified (not plural verified); 42/42 independent + 4/4 official pass. Library quota blocks binary persist. If unavailable replay Git receipt Repair5 atop Repair4, and Repair4 atop Library Repair3. Stage5/B1-L19 not allowed.",
+  "next_action": "Complete B1-L18 Stage4 independent 712-example DE/FA/EN claim-level and 30 non-source-attested noun form checks from Repair6 SHA fb14d1658f74d97f47b0a55a7ff26d4eb0748f619dd871898cb24b382d896187. Library quota blocked; repair5 + repair6 Git receipts allow replay from Repair3. No Stage5 or B1-L19.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6190,7 +6190,7 @@
     "audio_mutated": false,
     "runtime_mutated": false
   },
-  "latest_milestone": "B1_L18_STAGE4_REPAIR5_SCOPED_QA_PASS_LIBRARY_BLOCKED",
+  "latest_milestone": "B1_L18_STAGE4_REPAIR6_SCOPED_QA_PASS_LIBRARY_BLOCKED",
   "b1_l17_stage1": {
     "status": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
     "framework": "v3.3.6",
@@ -6916,5 +6916,43 @@
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     },
     "next_action": "Continue full B1-L18 Stage4 from Repair5 ZIP SHA256 6a15a8eabf3cb10afc3841d46bc7f0f43bc4e6362a0521fbfcd376a9add69435. 10 tri-language examples and Persian gloss corrected; 50 noun evidence classified (not plural verified); 42/42 independent + 4/4 official pass. Library quota blocks binary persist. If unavailable replay Git receipt Repair5 atop Repair4, and Repair4 atop Library Repair3. Stage5/B1-L19 not allowed."
+  },
+  "b1_l18_stage4_repair6": {
+    "status": "PASS_SCOPED_STRUCTURAL_AND_SOURCE_EVIDENCE__NOT_FULL_STAGE4",
+    "parent_repair5_sha256": "6a15a8eabf3cb10afc3841d46bc7f0f43bc4e6362a0521fbfcd376a9add69435",
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage4-Repair6-LEXICAL-NOUN-EVIDENCE-CHECKPOINT.zip",
+      "sha256": "fb14d1658f74d97f47b0a55a7ff26d4eb0748f619dd871898cb24b382d896187",
+      "size_bytes": 1314470,
+      "members": 51,
+      "library_status": "UPLOAD_FAILED_LIBRARY_STORAGE_LIMIT"
+    },
+    "scope": {
+      "targets": 178,
+      "trilingual_example_sets": 712,
+      "corrected_examples": 8,
+      "corrected_target_count": 6,
+      "source_explicit_plural_evidence_matches": 20,
+      "noun_morphology_evidence_records": 50,
+      "three_source_usage_register_warnings": 3
+    },
+    "quality": {
+      "official_validators": "4/4 PASS",
+      "independent_postpackage": "83/83 PASS",
+      "source_identity_audio": "BYTE_IDENTICAL",
+      "full_stage4_pass": false,
+      "stage5_allowed": false
+    },
+    "last_library_checkpoint": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage4-Repair3-NOUN-FRONT-REVIEW-CHECKPOINT.zip",
+      "sha256": "c73fe31b075817962e723160a4b460d9c1706b85d01540c5327f0282b835d7cf",
+      "size_bytes": 1294346,
+      "members": 48,
+      "library_file_id": "file_00000000f21881f4b3aa9018df1e3836",
+      "library_stable_id": "libfile_22eb3dfcf8ac8191967d560077549b33",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE4-REPAIR6.json",
+    "next_action": "Complete B1-L18 Stage4 independent 712-example DE/FA/EN claim-level and 30 non-source-attested noun form checks from Repair6 SHA fb14d1658f74d97f47b0a55a7ff26d4eb0748f619dd871898cb24b382d896187. Library quota blocked; repair5 + repair6 Git receipts allow replay from Repair3. No Stage5 or B1-L19."
   }
 }

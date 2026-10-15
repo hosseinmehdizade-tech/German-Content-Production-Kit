@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE3B_REPAIR1_WORKING_PASS__STAGE3C_PENDING",
+  "status": "B1_L18_STAGE3C_REPAIR1_STRUCTURAL_PASS__STAGE4_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3B_REPAIR1_PASS_WORKING_DRAFTS__STAGE3C_PENDING",
+    "stage3": "STAGE3C_REPAIR1_STRUCTURAL_CANDIDATE_PASS__STAGE4_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L18 Stage3C disposition closure from exact Stage3B Repair1 ZIP SHA-256 99c009b2f689b1bca3d431cd25b858b0b8ad0915d224d35b03d74e512e1f9918. Resolve all 178 targets/2863 cells; preserve source gaps 6758 and mixed-language seed 6780; do not start B1-L19.",
+  "next_action": "Run B1-L18 independent Stage4 linguistic/cross-language/source and relations re-audit from exact Stage3C Repair1 artifact SHA-256 8f92e31cec13d780eae6dcef0a95d762e49a4f06bfcb12abbda2712bb27b3268. Do not start B1-L19.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6190,7 +6190,7 @@
     "audio_mutated": false,
     "runtime_mutated": false
   },
-  "latest_milestone": "B1_L18_STAGE3B_REPAIR1",
+  "latest_milestone": "B1_L18_STAGE3C_REPAIR1",
   "b1_l17_stage1": {
     "status": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
     "framework": "v3.3.6",
@@ -6757,5 +6757,32 @@
     "runtime_acceptance": "NOT_RUN_CONTENT_ONLY",
     "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE3B-REPAIR1.json",
     "next_action": "Run B1-L18 Stage3C disposition closure from exact Stage3B Repair1 ZIP SHA-256 99c009b2f689b1bca3d431cd25b858b0b8ad0915d224d35b03d74e512e1f9918. Resolve all 178 targets/2863 cells; preserve source gaps 6758 and mixed-language seed 6780; do not start B1-L19."
+  },
+  "b1_l18_stage3c_repair1": {
+    "status": "PASS_STRUCTURAL_CLOSURE_CANDIDATE__STAGE4_PENDING",
+    "parent_stage3b_repair1_sha256": "99c009b2f689b1bca3d431cd25b858b0b8ad0915d224d35b03d74e512e1f9918",
+    "canonical_sha256": "af4e5d26c15e7c1722195e0e9767a06db7ba905cbf30da2b14a772ddb162624e",
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage3C-Repair1-CLOSURE-CANDIDATE.zip",
+      "sha256": "8f92e31cec13d780eae6dcef0a95d762e49a4f06bfcb12abbda2712bb27b3268",
+      "size_bytes": 647132,
+      "members": 40,
+      "library_file_id": "file_00000000463c81f4b0e5fa0ade2a7654",
+      "library_stable_id": "libfile_fbe836bfaedc8191925cfc9c0e800d60",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "coverage": {
+      "targets": 178,
+      "examples_de_fa_en": 712,
+      "cells": 2863,
+      "unresolved": 0,
+      "accepted_kombinationen": 18,
+      "rejected_kombinationen": 133,
+      "source_audio_gaps": 3
+    },
+    "validators": "4/4 OFFICIAL PASS, 15/15 STRUCTURAL QA PASS, ZIP/MANIFEST/HASH PASS",
+    "semantic_boundary": "Stage4 independent DE/FA/EN and historical candidate review pending; three example duplicate groups advisory",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE3C-REPAIR1.json",
+    "next_action": "Run B1-L18 independent Stage4 linguistic/cross-language/source and relations re-audit from exact Stage3C Repair1 artifact SHA-256 8f92e31cec13d780eae6dcef0a95d762e49a4f06bfcb12abbda2712bb27b3268. Do not start B1-L19."
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE5_COMPLETE_CONTENT_DELIVERY_PASS__STAGE6_PENDING",
+  "status": "B1_L18_STAGE6_V481_SCOPED_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -98,10 +98,10 @@
     "stage3": "STAGE3C_REPAIR1_STRUCTURAL_CANDIDATE_PASS__STAGE4_PENDING",
     "stage4": "PASS_WITH_DECLARED_AI_EDITORIAL_AND_REFERENCE_SCOPE",
     "stage5": "PASS_COMPLETE_CONTENT_PRODUCTION_DELIVERY__STAGE6_PENDING",
-    "stage6": "NOT_STARTED",
+    "stage6": "PASS_V481_CHROMIUM_18_18_WITH_IN_MEMORY_ENVIRONMENT_BOUNDARY__STAGE7_PENDING",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Begin B1-L18 Stage6 against exact CURRENT Flashcards Pro v481-R115 using Stage5 complete content ZIP SHA256 d75a98096cfec665c82e32c3a369429543ad0f2f5f42d2176d2c7b9067e5e76f. Verify importer Study/Quick/Typing/Audio/morphology; do not start B1-L19. Stage4 AI editorial limits inherited.",
+  "next_action": "B1-L18 Stage7 exact-final content lock from Stage6 corrected ZIP SHA a6b4bf56bd8f3f43184e14373befea911f9ae9af5cffd3a92b73ce7804aa7943. Scope: 18/18 exact-current v481 Chromium browser PASS, 17/17 archive PASS, but actual live IndexedDB persisted Import and raw MP3 playback UNOBSERVED. Preserve Stage4 AI editorial boundaries. Do not begin B1-L19.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6190,7 +6190,7 @@
     "audio_mutated": false,
     "runtime_mutated": false
   },
-  "latest_milestone": "B1_L18_STAGE5_COMPLETE_CONTENT_DELIVERY_PASS",
+  "latest_milestone": "B1_L18_STAGE6_V481_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "b1_l17_stage1": {
     "status": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
     "framework": "v3.3.6",
@@ -7009,5 +7009,31 @@
     "stage4_parent_sha256": "c99a684cf6b436f90326defc30438914d8eb28dccceb77646d9a85b342418632",
     "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE5-DELIVERY.json",
     "next_action": "Begin B1-L18 Stage6 against exact CURRENT Flashcards Pro v481-R115 using Stage5 complete content ZIP SHA256 d75a98096cfec665c82e32c3a369429543ad0f2f5f42d2176d2c7b9067e5e76f. Verify importer Study/Quick/Typing/Audio/morphology; do not start B1-L19. Stage4 AI editorial limits inherited."
+  },
+  "b1_l18_stage6_v481": {
+    "status": "PASS_DETERMINISTIC_BROWSER_WITH_ENVIRONMENT_BOUNDARY__NOT_REAL_PERSISTENT_IMPORT_FINAL",
+    "runtime": "v481-R115",
+    "runtime_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "parent_stage5_sha256": "d75a98096cfec665c82e32c3a369429543ad0f2f5f42d2176d2c7b9067e5e76f",
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-STAGE6-v481-CONTENT-PRODUCTION-PASS-WITH-ENVIRONMENT-BOUNDARY.zip",
+      "sha256": "a6b4bf56bd8f3f43184e14373befea911f9ae9af5cffd3a92b73ce7804aa7943",
+      "size_bytes": 1092734,
+      "files": 88,
+      "library_file_id": "file_000000008e00820d9c438e1e3f08ccc9",
+      "library_stable_id": "libfile_9afff38e29b88191b4f52c2285bd0fc2",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "qa": {
+      "headless_v481": "18/18 PASS",
+      "fresh_final_archive": "17/17 PASS",
+      "v336_projection_HF2": "4/4 PASS",
+      "targets": 178,
+      "trilingual_examples_visible": 712
+    },
+    "repair": "Stage5 original TSV encoded examples DE-only; successor TSV now includes explicit fa-IR/en-US strings per example, without app/identity/source mutation",
+    "boundary": "Import preview/in-memory test-backed browser routes PASS; persisted real-origin IndexedDB import, existing user profile/PWA, actual audio file playback not observed",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE6-v481-ACCEPTANCE.json",
+    "next_action": "B1-L18 Stage7 exact-final content lock from Stage6 corrected ZIP SHA a6b4bf56bd8f3f43184e14373befea911f9ae9af5cffd3a92b73ce7804aa7943. Scope: 18/18 exact-current v481 Chromium browser PASS, 17/17 archive PASS, but actual live IndexedDB persisted Import and raw MP3 playback UNOBSERVED. Preserve Stage4 AI editorial boundaries. Do not begin B1-L19."
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE4_REPAIR1_CANDIDATE__FULL_LINGUISTIC_QA_PENDING",
+  "status": "B1_L18_STAGE4_REPAIR3_SCOPED_PASS__FULL_LINGUISTIC_QA_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -96,12 +96,12 @@
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "STAGE3C_REPAIR1_STRUCTURAL_CANDIDATE_PASS__STAGE4_PENDING",
-    "stage4": "REPAIR1_SCOPED_QA_PASS__FULL_LINGUISTIC_QA_PENDING",
+    "stage4": "REPAIR3_NOUN_FRONT_AND_SCOPED_EDITORIAL_PASS__FULL_LINGUISTIC_QA_PENDING",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Resume Stage4 from B1-L18 Stage4 Repair1 archive SHA256 953e89895e3abf1a818cb36803c7150f4ed9f0009ae0c17e1c09776d6385f42b. Full independent DE/FA/EN lexical/claim review pending; no Stage4 PASS/Stage5/import or B1-L19.",
+  "next_action": "Continue Stage4 claim-level independent QA from Repair3 SHA-256 c73fe31b075817962e723160a4b460d9c1706b85d01540c5327f0282b835d7cf. Approved-dictionary check on 50 new article/number forms and 712 DE/FA/EN examples PENDING. Do not start Stage5 or B1-L19. Library quota reached; don't delete other files.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6190,7 +6190,7 @@
     "audio_mutated": false,
     "runtime_mutated": false
   },
-  "latest_milestone": "B1_L18_STAGE4_REPAIR1_CANDIDATE",
+  "latest_milestone": "B1_L18_STAGE4_REPAIR3_NOUN_FRONT_CANDIDATE",
   "b1_l17_stage1": {
     "status": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
     "framework": "v3.3.6",
@@ -6809,5 +6809,36 @@
     "stage5_allowed": false,
     "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE4-REPAIR1-CANDIDATE.json",
     "next_action": "Resume Stage4 from B1-L18 Stage4 Repair1 archive SHA256 953e89895e3abf1a818cb36803c7150f4ed9f0009ae0c17e1c09776d6385f42b. Full independent DE/FA/EN lexical/claim review pending; no Stage4 PASS/Stage5/import or B1-L19."
+  },
+  "b1_l18_stage4_repair3_candidate": {
+    "status": "PASS_SCOPED_STRUCTURAL_QA__NOT_FULL_STAGE4",
+    "parent_stage4_repair1_sha256": "953e89895e3abf1a818cb36803c7150f4ed9f0009ae0c17e1c09776d6385f42b",
+    "parent_stage4_repair2_sha256": "70f873341876aae530718c437da721fe4d48b44c5bea50b1695abd6bd0f19ea9",
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage4-Repair3-NOUN-FRONT-REVIEW-CHECKPOINT.zip",
+      "sha256": "c73fe31b075817962e723160a4b460d9c1706b85d01540c5327f0282b835d7cf",
+      "size_bytes": 1294346,
+      "members": 48,
+      "library_file_id": "file_00000000f21881f4b3aa9018df1e3836",
+      "library_stable_id": "libfile_22eb3dfcf8ac8191967d560077549b33",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "stats": {
+      "targets": 178,
+      "examples_de_fa_en": 712,
+      "repair2_semantic_edits": 22,
+      "repair2_affected_targets": 10,
+      "repair3_noun_front_drafts": 50,
+      "nouns_with_article_and_number_disposition": 56,
+      "source_audio_gaps": 3
+    },
+    "validators": "4/4 OFFICIAL PASS + 32/32 independent structural PASS; not semantic acceptance",
+    "approved_reference_claims": "PENDING",
+    "stage4_accepted": false,
+    "stage5_allowed": false,
+    "import_ready": false,
+    "library_quota": "REACHED_DURING_REPAIR2_INTERMEDIATE_UPLOAD__REPAIR3_LATEST_SAVED",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE4-REPAIR3-CANDIDATE.json",
+    "next_action": "Continue Stage4 claim-level independent QA from Repair3 SHA-256 c73fe31b075817962e723160a4b460d9c1706b85d01540c5327f0282b835d7cf. Approved-dictionary check on 50 new article/number forms and 712 DE/FA/EN examples PENDING. Do not start Stage5 or B1-L19. Library quota reached; don't delete other files."
   }
 }

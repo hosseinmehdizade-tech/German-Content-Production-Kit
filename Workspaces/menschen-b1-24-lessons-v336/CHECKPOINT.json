@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE3C_REPAIR1_STRUCTURAL_PASS__STAGE4_PENDING",
+  "status": "B1_L18_STAGE4_REPAIR1_CANDIDATE__FULL_LINGUISTIC_QA_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -96,12 +96,12 @@
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
     "stage3": "STAGE3C_REPAIR1_STRUCTURAL_CANDIDATE_PASS__STAGE4_PENDING",
-    "stage4": "NOT_STARTED",
+    "stage4": "REPAIR1_SCOPED_QA_PASS__FULL_LINGUISTIC_QA_PENDING",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L18 independent Stage4 linguistic/cross-language/source and relations re-audit from exact Stage3C Repair1 artifact SHA-256 8f92e31cec13d780eae6dcef0a95d762e49a4f06bfcb12abbda2712bb27b3268. Do not start B1-L19.",
+  "next_action": "Resume Stage4 from B1-L18 Stage4 Repair1 archive SHA256 953e89895e3abf1a818cb36803c7150f4ed9f0009ae0c17e1c09776d6385f42b. Full independent DE/FA/EN lexical/claim review pending; no Stage4 PASS/Stage5/import or B1-L19.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -6190,7 +6190,7 @@
     "audio_mutated": false,
     "runtime_mutated": false
   },
-  "latest_milestone": "B1_L18_STAGE3C_REPAIR1",
+  "latest_milestone": "B1_L18_STAGE4_REPAIR1_CANDIDATE",
   "b1_l17_stage1": {
     "status": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
     "framework": "v3.3.6",
@@ -6784,5 +6784,30 @@
     "semantic_boundary": "Stage4 independent DE/FA/EN and historical candidate review pending; three example duplicate groups advisory",
     "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE3C-REPAIR1.json",
     "next_action": "Run B1-L18 independent Stage4 linguistic/cross-language/source and relations re-audit from exact Stage3C Repair1 artifact SHA-256 8f92e31cec13d780eae6dcef0a95d762e49a4f06bfcb12abbda2712bb27b3268. Do not start B1-L19."
+  },
+  "b1_l18_stage4_repair1_candidate": {
+    "status": "SCOPED_STRUCTURAL_QA_PASS__FULL_STAGE4_NOT_ACCEPTED",
+    "parent_stage3c_repair1_sha256": "8f92e31cec13d780eae6dcef0a95d762e49a4f06bfcb12abbda2712bb27b3268",
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage4-Repair1-INDEPENDENT-REAUDIT-CANDIDATE.zip",
+      "sha256": "953e89895e3abf1a818cb36803c7150f4ed9f0009ae0c17e1c09776d6385f42b",
+      "size_bytes": 1286219,
+      "members": 44,
+      "library_file_id": "file_000000004a648211a827e90c2907bc52",
+      "library_stable_id": "libfile_f8d624ab91c88191a8da06c72a9d547f",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "counts": {
+      "targets": 178,
+      "examples": 712,
+      "changed_targets": 51,
+      "editorial_changes": 109,
+      "duplicate_example_groups_after": 0
+    },
+    "official_validators": "4_OF_4_PASS",
+    "linguistic_accepted": false,
+    "stage5_allowed": false,
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE4-REPAIR1-CANDIDATE.json",
+    "next_action": "Resume Stage4 from B1-L18 Stage4 Repair1 archive SHA256 953e89895e3abf1a818cb36803c7150f4ed9f0009ae0c17e1c09776d6385f42b. Full independent DE/FA/EN lexical/claim review pending; no Stage4 PASS/Stage5/import or B1-L19."
   }
 }

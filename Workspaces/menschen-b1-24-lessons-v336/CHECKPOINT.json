@@ -1,7 +1,7 @@
 {
   "schema": "menschen-b1-24-lessons-checkpoint@1.0.0",
   "workstream": "menschen-b1-24-lessons-v336",
-  "status": "B1_L18_STAGE3A_PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
+  "status": "B1_L18_STAGE3B_REPAIR1_WORKING_PASS__STAGE3C_PENDING",
   "framework": {
     "version": "v3.3.6",
     "start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
@@ -95,13 +95,13 @@
   "stages": {
     "stage1": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS",
     "stage2": "PASS_IDENTITY_CLOSURE",
-    "stage3": "STAGE3A_PASS_WITH_SOURCE_AUDIO_GAPS__STAGE3B_PENDING",
+    "stage3": "STAGE3B_REPAIR1_PASS_WORKING_DRAFTS__STAGE3C_PENDING",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
     "stage6": "NOT_STARTED",
     "stage7": "NOT_STARTED"
   },
-  "next_action": "Run B1-L18 Stage3B gap-driven enrichment from exact Stage3A artifact. Begin with current reference-availability preflight; preserve source-quality findings rows 6758 and 6780 and source-audio gap targets mb1m-lu-2595, mb1m-lu-2596, mb1m-lu-2597. Do not start B1-L19.",
+  "next_action": "Run B1-L18 Stage3C disposition closure from exact Stage3B Repair1 ZIP SHA-256 99c009b2f689b1bca3d431cd25b858b0b8ad0915d224d35b03d74e512e1f9918. Resolve all 178 targets/2863 cells; preserve source gaps 6758 and mixed-language seed 6780; do not start B1-L19.",
   "created_at": "2026-10-09T12:15:00+02:00",
   "stage12": {
     "status": "PASS",
@@ -4286,7 +4286,7 @@
     },
     "next_action": "Run B1-L10 Stage3C disposition closure over all 85 targets / 1340 cells from exact Stage3B artifact f0b6c2e013a657c65c0eb594ab77e6d8dff5b6b36b031abfcb049ab01b1d5418. Do not start B1-L11."
   },
-  "current_lesson": "B1-L17",
+  "current_lesson": "B1-L18",
   "next_lesson": "B1-L15",
   "current_stage": "Stage1 source inventory PASS with source-cache boundary and source-quality findings; Stage2 pending",
   "latest_portable_checkpoint": {
@@ -6190,7 +6190,7 @@
     "audio_mutated": false,
     "runtime_mutated": false
   },
-  "latest_milestone": "B1_L17_STAGE1",
+  "latest_milestone": "B1_L18_STAGE3B_REPAIR1",
   "b1_l17_stage1": {
     "status": "PASS_WITH_SOURCE_CACHE_BOUNDARY_AND_SOURCE_QUALITY_FINDINGS__STAGE2_PENDING",
     "framework": "v3.3.6",
@@ -6726,5 +6726,36 @@
     },
     "runtime_acceptance": "NOT_RUN_CONTENT_ONLY_STAGE3A",
     "next_action": "Run B1-L18 Stage3B gap-driven enrichment from exact Stage3A artifact. Begin with current reference-availability preflight; preserve source-quality findings rows 6758 and 6780 and source-audio gap targets mb1m-lu-2595, mb1m-lu-2596, mb1m-lu-2597. Do not start B1-L19."
+  },
+  "b1_l18_stage3b_repair1": {
+    "status": "PASS_WORKING_DRAFTS__STAGE3C_PENDING",
+    "parent_stage3a_repair1_sha256": "d2370766529bee04d3a86439e0df10c1a89283d1776ad739c9e936936d6e4953",
+    "canonical_sha256": "af4e5d26c15e7c1722195e0e9767a06db7ba905cbf30da2b14a772ddb162624e",
+    "artifact": {
+      "filename": "Menschen-B1-L18-v3.3.6-Stage3B-Repair1-GAP-ENRICHMENT-CHECKPOINT.zip",
+      "sha256": "99c009b2f689b1bca3d431cd25b858b0b8ad0915d224d35b03d74e512e1f9918",
+      "size_bytes": 361647,
+      "members": 80,
+      "library_file_id": "file_000000007a6481f4a39bdac10bd7e743",
+      "library_stable_id": "libfile_5f25363470548191afe7e33649f4c8ee",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    },
+    "counts": {
+      "targets": 178,
+      "working_examples_de_fa_en": 712,
+      "working_kombinationen": 151,
+      "candidate_ledger_entries": 2688,
+      "source_audio_verified": 175,
+      "source_audio_missing": 3
+    },
+    "independent_qa": "38/38 PASS",
+    "post_package": "9/9 PASS",
+    "old_stage3c": "SUPERSEDED_INVALID_LINEAGE",
+    "source_repair": "row 6724 erster Wahl fixed; dependent 2564 combination corrected",
+    "stage3c": "PENDING",
+    "stage4": "NOT_RUN",
+    "runtime_acceptance": "NOT_RUN_CONTENT_ONLY",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L18-STAGE3B-REPAIR1.json",
+    "next_action": "Run B1-L18 Stage3C disposition closure from exact Stage3B Repair1 ZIP SHA-256 99c009b2f689b1bca3d431cd25b858b0b8ad0915d224d35b03d74e512e1f9918. Resolve all 178 targets/2863 cells; preserve source gaps 6758 and mixed-language seed 6780; do not start B1-L19."
   }
 }

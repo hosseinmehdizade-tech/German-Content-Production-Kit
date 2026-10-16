@@ -11,3 +11,15 @@
 - 18 independent tests PASS (including fail-closed negative tests); fresh-extracted replay/ZIP rebuild byte identical; Library roundtrip byte identical.
 
 **Next:** Stage B: investigate L19 exact lineage, restore L01 canonical under source traceability; then semantically audit the risk queue before generating explicitly authorized successors. Preserve A1 L02–L24 locked originals, A1 M12 audit stream, CURRENT Flashcards app/runtime and user SRS without mutation. The Portfolio P1 dashboard covers the existing A1 lesson production stream; it is **not** the authority for these still-unapproved consolidated repairs.
+
+## Stage B — L19 lineage & L01 lossless shadow (2026-10-16)
+
+**Latest pointer:** [LATEST.json](LATEST.json); exact [Stage B receipt](STAGE-B-RECEIPT.json).
+
+Verified artifact: `Menschen-A1-Final-Consolidation-StageB-L19-Lineage-L01-Shadow-NO-IMPORT.zip` at Library `/German-Content-Production-Kit/Checkpoints/`; SHA-256 `9da8d6d2e995990b65b78bbbc3119b47a95fe7cf5eea0f4c2c40f74f734fae99`; 26/26 fresh tests, byte-identical independent rebuild, Library byte-identical.
+
+The historical A1-L19 Stage7 ZIP dated 2026-10-11 and HF2 Repair2 content-locked successor dated 2026-10-12 were compared exactly. Repair2 wins **content successor precedence**, not a new global Import/Stage6 claim. 121 stable IDs / 484 example triplets kept; 48 Front differences and two custom-fields changes (ma1m-lu-2383 and ma1m-lu-2433) are intentional documented repair lineages.
+
+The A1-L01 output-only 118-card artifact was lifted losslessly into a clearly marked **editable shadow**, NOT the missing original v3.3.6 approved canonical or Stage3A. All 89 registered original source rows have source membership coverage (121 memberships including three cross-lesson memberships); original Memrise `Learnable`, `Definition`, and `Beispiel` match exactly for 119 of 121 bindings. The two mismatched reused source bindings (ma1m-lu-0042 at row 1442, ma1m-lu-0070 at row 995) are retained as review items, not auto-rewritten. A 92-row source slice excludes Progress and Learnable meta; exact full source CSV hash is pinned. Original locked A1 lessons, A1 M12, runtime and SRS untouched.
+
+Next **Stage C**: independently adjudicate the two L01 source bindings; finish real v3.3.6 Stage3A evidence, inspect all 24 lessons' HF2/fronts/identity/audio/relations and FA/EN/DE semantics before repairing any LOCKED successor. Run official Stage4/5 and CURRENT Stage6 only on explicitly approved content.

@@ -1,0 +1,113 @@
+{
+  "schema": "b1-l19-stage4-repair14@1.0.0",
+  "date": "2026-10-16",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L19",
+  "framework": "v3.3.6",
+  "milestone": "B1_L19_STAGE4_REPAIR14_BULK_86_SYNONYM_SENSE_REVIEWS_15_HELD",
+  "status": "SCOPED_QA_PASS_FULL_STAGE4_BLOCKED_15_HELD",
+  "parent": {
+    "filename": "Menschen-B1-L19-v3.3.6-Stage4-Repair13-BULK-RELATED-65-SENSE-AUDIT.zip",
+    "sha256": "1d867d795a922ef09c95b13fc973b61a8cba24d850c7bb3191aa458588c9fbaf"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L19-v3.3.6-Stage4-Repair14-BULK-86-SYNONYM-REVIEW-PARTIAL.zip",
+    "sha256": "ba368866dd1b03d6dd322cdcea4da975a22570ff01227666047f65b03b54cb21",
+    "size_bytes": 5656976,
+    "members": 278,
+    "library_file_id": "file_00000000b82881f5829a01c2baa572fb",
+    "library_stable_id": "libfile_e2ca5948a0708191a331283883c4187f",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "postpackage": {
+    "filename": "B1-L19-STAGE4-REPAIR14-POSTPACKAGE-QA.json",
+    "sha256": "c348cd9499d8ccffd7a75934554a66ad0d6fcb2b5f5fc5e15335b47cf0b6bdb6",
+    "size_bytes": 4096,
+    "library_file_id": "file_0000000049f8820a8ac4d7c9078cb604",
+    "library_stable_id": "libfile_d008ce785fd08191890d6bda608685e6",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "scope": {
+    "source_rows": 144,
+    "canonical_targets": 145,
+    "aligned_examples_de_fa_en": 580,
+    "synonym_reviewed": 86,
+    "source_pdf_duden_positive": 8,
+    "AI_editorial_positive": 4,
+    "bounded_no_force": 74,
+    "held_before": 101,
+    "held_after": 15,
+    "held_by_dimension": {
+      "nvv_links": 13,
+      "word_family": 2
+    },
+    "matrix": {
+      "targets": 145,
+      "dimension_cells": 2302,
+      "verified_present_cells": 1550,
+      "closed_no_force_cells": 752,
+      "unresolved_cells": 0
+    },
+    "candidate_ledger": {
+      "accepted": 1409,
+      "rejected": 752,
+      "deferred": 0
+    }
+  },
+  "dictionary_evidence": {
+    "source": "Duden - Das Wörterbuch der Synonyme.pdf",
+    "physical_pages": [
+      87,
+      100,
+      108,
+      124,
+      147,
+      229,
+      242,
+      335
+    ],
+    "citation_rule": "Exact heading and lexical synonym present on physical PDF page, sense narrowed editorially; Duden evidence class separate from four purely AI suggestions. Original PDF external, not bundled.",
+    "support_examples": [
+      "sich eintragen → sich einschreiben",
+      "einplanen → disponieren",
+      "Pferd → Ross",
+      "Saal → Halle",
+      "eingeben (data entry) → erfassen"
+    ]
+  },
+  "trilingual_mechanical": {
+    "targets": 145,
+    "aligned_examples": 580,
+    "all_DE_FA_EN_nonblank": true,
+    "flags": 0,
+    "semantic_translation_signoff": "NOT_DONE_LINE_BY_LINE",
+    "morphology_signoff": "NOT_DONE",
+    "source_provenance_signoff": "NOT_DONE"
+  },
+  "qa": {
+    "source_occurrence": "PASS",
+    "identity_closure": "PASS",
+    "matrix_completeness": "PASS",
+    "candidate_ledger": "PASS",
+    "inherited_repair7_to13_regressions": "7/7 PASS",
+    "repair14_scoped": "PASS",
+    "validators_native_and_fresh": "12/12 PASS EACH",
+    "adversarial_tamper_tests": "2/2 REJECTED",
+    "zip_crc": "PASS",
+    "manifest": "276/276 PASS",
+    "sha256sums": "277/277 PASS",
+    "inherited_parent_payload": "266/266 BYTE_IDENTICAL",
+    "library_zip_and_sidecar": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "full_stage4": "BLOCKED"
+  },
+  "boundaries": [
+    "All lesson L01-L18 Stage7 LOCKED releases untouched",
+    "Memrise source raw archive unchanged",
+    "Source PDF not bundled; reference copyright preserved",
+    "74 no-force reviews bounded to exact taught senses/registered course source, NOT evidence that those German words have no synonyms anywhere",
+    "8 Duden attested lexical entries/page positions; learner-sense match remains AI reviewed NOT external human proof",
+    "Full Stage4 linguistic/trilingual/morphology/provenance signoff NOT PASSED",
+    "Stage5/6/7 NOT_RUN; v481 runtime import NOT_RUN; B1-L20 NOT_STARTED"
+  ],
+  "next_action": "Resume SAME B1-L19 Stage4 from exact Library Repair14 ZIP SHA ba368866dd1b03d6dd322cdcea4da975a22570ff01227666047f65b03b54cb21. Audit remaining 13 nvv_links+2 word_family holds, then independently review 580 German/Persian/English translations and 145 targets full morphology/provenance before Stage4 PASS; no B1 L20."
+}

@@ -20,3 +20,13 @@
 
 ## Guardrails
 The artifact is read-only and content-free (only source metadata and checkpoint references). No automatic scheduled task is installed and no change to learner-visible UI is authorized. After each validated content milestone, call the refresh script from an updated checkout and record the new snapshot; this project's latest verified portable artifact always outranks an outdated central summary. See `WORKSTREAM-RESUME-CURRENTNESS-POLICY.json` and `CONTENT-OUTPUT-DELIVERY-POLICY.json`.
+
+## P1 — Event-triggered read-only refresh (2026-10-16)
+
+The new source-controlled automation is [.github/workflows/menschen-portfolio-refresh.yml](../../.github/workflows/menschen-portfolio-refresh.yml). After pushes affecting any of the A1/A2/B1 workstream directories, or a manual `workflow_dispatch`, it runs 17 Python unit/negative tests and rebuilds a **derived** dashboard from the exact checked-out workstream `LATEST.json`, referenced milestone receipts, A1 audit pointer, and individually stored Stage7 lesson receipts.
+
+Source: [Tools/refresh.py](Tools/refresh.py). Tests: [Tests/test_refresh.py](Tests/test_refresh.py). P0’s 60 exact original LOCKED Git blob SHAs are pinned in [P0-BASELINE-EVIDENCE.json](P0-BASELINE-EVIDENCE.json). Report destination after a successful run: [LIVE/DASHBOARD.html](LIVE/DASHBOARD.html), [LIVE/DASHBOARD.md](LIVE/DASHBOARD.md), [LIVE/PORTFOLIO-STATUS.json](LIVE/PORTFOLIO-STATUS.json), and `LIVE/REFRESH-STATE.json`.
+
+The workflow may write **only** those derived files. It does not write/retire/merge any source card, locked package, A1/A2/B1 `LATEST.json`, importer, app, or SRS record. A missing/edited previous Stage7 lock, inconsistent receipt SHA, or premature Stage7 publication makes the job fail closed. Unchanged fingerprints do not rewrite timestamps or create redundant commits.
+
+Operational constraints: actual GitHub Actions execution and write permission must be observed before claiming end-to-end automatic refresh is active. Workflow execution/branch protection can block the generated report without blocking content work. The P0 portable ZIP remains an immutable verified fallback; `Portfolio/Menschen/LATEST.json` is **not** repointed to any unverified LIVE output.

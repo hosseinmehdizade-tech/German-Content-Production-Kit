@@ -1,8 +1,8 @@
 {
-  "schema": "gcpk-menschen-portfolio-latest@1.0.0",
+  "schema": "gcpk-menschen-portfolio-latest@1.1.0",
   "date": "2026-10-16",
-  "milestone": "P0_READ_ONLY_72_LESSON_GOVERNANCE_DASHBOARD",
-  "status": "PASS_OFFLINE_EVIDENCE_SNAPSHOT__NOT_GLOBAL_CONTENT_FINAL",
+  "milestone": "P1_GITHUB_ACTIONS_EVENT_REFRESH_FIRST_LIVE_PASS",
+  "status": "PASS_FIRST_GITHUB_ACTIONS_PUBLICATION__CONTENT_RELEASE_NOT_FINAL",
   "authority_role": "DERIVED_DASHBOARD_POINTER_NOT_CANONICAL_CARD_OR_WORKSTREAM_POINTER",
   "source_levels": [
     "A1",
@@ -31,28 +31,19 @@
     "b1_l19": "STAGE4_REPAIR3_SCOPED_PASS__FULL_STAGE4_BLOCKED"
   },
   "artifact": {
-    "filename": "Menschen-Portfolio-P0-Verified-Dashboard-2026-10-16-R2.zip",
-    "sha256": "771d536e10cac2373f2959d77840b75b8dd128054190266d6cf54d6012c0ba4f",
-    "size_bytes": 48988,
-    "zip_members": 14,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-Portfolio-P0-Verified-Dashboard-2026-10-16-R2.zip",
-    "library_file_id": "file_000000009ff08210828b98e79b5a7a9f",
-    "library_stable_id": "libfile_73a7a4b70dbc819186435785516fb4fe",
-    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+    "filename": "Menschen-Portfolio-P1-AUTO-REFRESH-VERIFIED-2026-10-16.zip",
+    "sha256": "b9887ded7401c44a3fd1f1f619689b3bc85a7f7fd953e5b8e1b4df2e71872cb8",
+    "size_bytes": 30412,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-Portfolio-P1-AUTO-REFRESH-VERIFIED-2026-10-16.zip",
+    "library_file_id": "file_00000000f4b881f497bb2e8b1d2297bf",
+    "library_stable_id": "libfile_b3cdb47788b4819182e05e40718b8c03",
+    "roundtrip": "PASS_BYTE_IDENTICAL"
   },
   "outputs": [
-    "DASHBOARD.html",
-    "DASHBOARD.md",
-    "PORTFOLIO-STATUS.json",
-    "AUDIT-REGISTER.json",
-    "RELEASE-MATRIX.json",
-    "SOURCE-CATALOG.json",
-    "Tools/build_dashboard.py",
-    "Tools/package_and_verify.py",
-    "Tests/test_portfolio.py",
-    "EVIDENCE-SNAPSHOT.json",
-    "README-FA.md",
-    "Reports/QA-RESULTS.json"
+    "Portfolio/Menschen/LIVE/PORTFOLIO-STATUS.json",
+    "Portfolio/Menschen/LIVE/DASHBOARD.html",
+    "Portfolio/Menschen/LIVE/DASHBOARD.md",
+    "Portfolio/Menschen/LIVE/REFRESH-STATE.json"
   ],
   "verification": {
     "unit_tests": "16/16_PASS",
@@ -65,19 +56,73 @@
     "checked_level_zip_binaries": "NO_NOT_REVERIFIED",
     "runtime_ui_srs_changes": "NONE",
     "runtime_final": false,
-    "import_final": false
+    "import_final": false,
+    "first_real_git_actions_run": "PASS",
+    "first_live_commit_only_four_derived_files": "PASS",
+    "p1_local_tests": "17/17_PASS",
+    "p1_fresh_extracted_tests": "17/17_PASS",
+    "p1_zip_manifest": "9/9_PASS",
+    "p1_deterministic_fresh_rebuild": "PASS_BYTE_IDENTICAL",
+    "p1_library_roundtrip": "PASS_EXACT_BYTE_IDENTICAL",
+    "app_runtime_or_offline": "NOT_RUN_NO_CHANGE",
+    "source_content_zips": "NOT_REVERIFIED"
   },
   "warnings": [
-    "A2_CENTRAL_CHECKPOINT_STALE_VS_WORKSTREAM_LATEST",
     "A1_L01_V336_REAUDIT_NOT_FINAL",
     "A1_GLOBAL_M12_AUDIT_NOT_APPLIED",
-    "SNAPSHOT_FROZEN_AT_RECORDED_GIT_BLOBS__RERUN_REFRESH_AFTER_SOURCE_ADVANCE"
+    "A2_CENTRAL_CHECKPOINT_STALE_VS_WORKSTREAM_LATEST",
+    "AUTOMATION_NOT_AN_INDEPENDENT_SEMANTIC_OR_BROWSER_GATE"
   ],
-  "refresh_rule": "Always resolve current user portable > newest verified portable > each workstream LATEST + receipt; if captured blob SHA differs, refresh the dashboard from exact new Git checkout, NEVER downgrade workstreams or silently promote this frozen snapshot.",
+  "refresh_rule": "Automatic on GitHub push to tracked workstreams, from verified latest+receipt source. LIVE is derived only and can lag an in-progress unpushed milestone. Source workstream LATEST and explicit newer verified portable outrank LIVE; source lock contradiction makes workflow fail closed.",
   "refresh_command": "python -B Tools/build_dashboard.py --snapshot EVIDENCE-SNAPSHOT.json --repo-root /path/to/German-Content-Production-Kit --refresh --out .",
   "no_periodic_automation_configured": true,
   "no_architecture_change": true,
   "no_ui_change": true,
   "no_content_mutation": true,
-  "next_action": "Use this new Portfolio index for every A1/A2/B1 status/resume, refresh after validated workstream milestones, and only later extend to source-registered B1+/B2/C1."
+  "next_action": "Use P1 LIVE for Git-recorded cross-level status; keep P0 immutable; continue A1 L01/global audit and A2 L20/B1 L19 independent content production separately. Add future levels only after registration.",
+  "previous_p0_artifact": {
+    "filename": "Menschen-Portfolio-P0-Verified-Dashboard-2026-10-16-R2.zip",
+    "sha256": "771d536e10cac2373f2959d77840b75b8dd128054190266d6cf54d6012c0ba4f",
+    "size_bytes": 48988,
+    "zip_members": 14,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-Portfolio-P0-Verified-Dashboard-2026-10-16-R2.zip",
+    "library_file_id": "file_000000009ff08210828b98e79b5a7a9f",
+    "library_stable_id": "libfile_73a7a4b70dbc819186435785516fb4fe",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "live": {
+    "status": "FIRST_LIVE_RUN_VERIFIED",
+    "source": "Portfolio/Menschen/LIVE/PORTFOLIO-STATUS.json",
+    "dashboard": "Portfolio/Menschen/LIVE/DASHBOARD.html",
+    "markdown": "Portfolio/Menschen/LIVE/DASHBOARD.md",
+    "refresh_state": "Portfolio/Menschen/LIVE/REFRESH-STATE.json",
+    "source_fingerprint_initial": "bdc586e39403104ae3e51068641cef3668f5aa7f7318d6236321d9770c22fc57",
+    "first_live_bot_commit": "641f666a9e2eb4b3298795b3c928a658ddcc1a79",
+    "first_run_utc": "2026-10-16T11:27:17+00:00",
+    "live_git_sha256_not_same_as_portable_zip": true,
+    "source_recency": "READ_LIVE_REFRESH_STATE_AND_WORKSTREAM_LOCAL_LATEST_PER_REQUEST"
+  },
+  "automation": {
+    "status": "GITHUB_ACTIONS_EVENT_TRIGGER_VERIFIED_ONE_REAL_EXECUTION",
+    "workflow": ".github/workflows/menschen-portfolio-refresh.yml",
+    "code": "Portfolio/Menschen/Tools/refresh.py",
+    "test": "Portfolio/Menschen/Tests/test_refresh.py",
+    "locked_baseline": "Portfolio/Menschen/P0-BASELINE-EVIDENCE.json",
+    "events": [
+      "push in Menschen A1 workstream",
+      "push in Menschen A2 workstream",
+      "push in Menschen B1 workstream",
+      "manual workflow_dispatch"
+    ],
+    "writable_paths": [
+      "Portfolio/Menschen/LIVE/DASHBOARD.html",
+      "Portfolio/Menschen/LIVE/DASHBOARD.md",
+      "Portfolio/Menschen/LIVE/PORTFOLIO-STATUS.json",
+      "Portfolio/Menschen/LIVE/REFRESH-STATE.json"
+    ],
+    "content_mutation": false,
+    "app_mutation": false,
+    "srs_mutation": false,
+    "branch_write_permission": "FIRST_EXECUTION_PASS_FUTURE_GIT_PROTECTION_DEPENDENT"
+  }
 }

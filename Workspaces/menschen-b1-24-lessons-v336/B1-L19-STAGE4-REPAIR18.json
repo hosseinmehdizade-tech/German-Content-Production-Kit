@@ -1,0 +1,98 @@
+{
+  "schema": "b1-l19-stage4-repair18@1.0.0",
+  "date": "2026-10-16",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L19",
+  "framework": "v3.3.6",
+  "milestone": "B1_L19_STAGE4_REPAIR18_SOURCE_144_ROWS_SOURCE_EXAMPLES_48_MORPHOLOGY_42_UNREADY",
+  "status": "SCOPED_SOURCE_FIDELITY_AND_EDITORIAL_QA_PASS__FULL_STAGE4_BLOCKED_42_MORPHOLOGY_UNREADY",
+  "parent": {
+    "filename": "Menschen-B1-L19-v3.3.6-Stage4-Repair17-FULL-TRILINGUAL-AI-REVIEW-STAGE4-BLOCKED.zip",
+    "sha256": "950acb762b936cfb5326b5c6860ac68e87c6f522cae38812c83133d3f2fe4070"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L19-v3.3.6-Stage4-Repair18-SOURCE-FIDELITY-AND-FRONT-GATE-BLOCKED.zip",
+    "sha256": "d2de208e5d49cedc79fe381679001d9693fe62d1f984c56e9fb2a3b8f87fbbfa",
+    "size_bytes": 6287201,
+    "zip_members": 314,
+    "library_file_id": "file_000000005e8c8210a334ab83830f13ec",
+    "library_stable_id": "libfile_62bd0d0770d0819184258c279c3dea17",
+    "library_roundtrip": "EXACT_SHA256_AND_BYTE_COMPARE_PASS"
+  },
+  "postpackage": {
+    "filename": "B1-L19-STAGE4-REPAIR18-POSTPACKAGE-QA.json",
+    "sha256": "69ea9bbea17672511e9711589c5cb0e0fd6d3cafbdd39a3a18569c28c10ff9c2",
+    "size_bytes": 1841,
+    "library_file_id": "file_00000000bbec82118396bfcc8107cb96",
+    "library_stable_id": "libfile_194be2b764c08191be3e75af96c6f4da",
+    "library_roundtrip": "EXACT_SHA256_AND_BYTE_COMPARE_PASS"
+  },
+  "scope": {
+    "canonical_targets": 145,
+    "registered_source_rows": 144,
+    "source_rows_range": [
+      6880,
+      7023
+    ],
+    "source_to_canonical_bindings": 169,
+    "nonempty_original_memrise_Beispiel_fields": 48,
+    "source_rows_with_no_audio_pointer": 5,
+    "source_audio_pointers_present": 139,
+    "AI_authored_DE_FA_EN_triplets": 580,
+    "lexical_held": 0,
+    "reviewed_morphology_records": 74,
+    "morphology_projection_ready": 32,
+    "morphology_projection_not_ready": 42,
+    "AI_editorial_German_draft_example_sentence_repairs": 2,
+    "paired_translation_field_repairs": 4,
+    "definition_gloss_meaning_field_repairs": 3,
+    "learner_prior_source_identity_unchanged": true,
+    "original_Memrise_source_RAR_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1"
+  },
+  "qa": {
+    "official_validators": "4/4 PASS",
+    "inherited_repair7_to17_regressions": "11/11 PASS",
+    "new_repair18": "1/1 PASS",
+    "native": "16/16 PASS",
+    "fresh_extraction": "16/16 PASS",
+    "negative_mutation_fixtures": "2/2 REJECTED",
+    "CRC": "PASS",
+    "manifest": "312/312 PASS",
+    "sha256sums": "313/313 PASS",
+    "inherited_parent_payload": "303/303 BYTE_IDENTICAL",
+    "zip_and_QA_Library": "EXACT_SHA256_AND_BYTE_COMPARE_PASS",
+    "full_independent_stage4": "BLOCKED"
+  },
+  "editorial_repairs": [
+    {
+      "id": "mb1m-lu-2792",
+      "headword": "ein halbes Jahrhundert",
+      "order": 4,
+      "reason": "Natural German 50-year museum anniversary expression; keep taught phrase; AI-produced example is distinct from raw user source."
+    },
+    {
+      "id": "mb1m-lu-2799",
+      "headword": "biologische Landwirtschaft",
+      "order": 3,
+      "reason": "Clarify demand for products from organic agriculture; keep inflected taught phrase."
+    },
+    {
+      "id": "mb1m-lu-2829",
+      "headword": "letzter Verbraucher",
+      "reason": "Remove ungrounded last-on-a-list lexical definition: source is only letzter Verbraucher/آخرین مصرف کننده; avoid claiming Endverbraucher by default."
+    }
+  ],
+  "source_boundary": [
+    "User RAR SHA256 verified; comparison with existing embedded raw source TSV and occurrence adapter verified across all 144 rows and 5 source columns; independent fresh extraction of CSV bytes from RAR was not repeated.",
+    "Original source Beispiel includes 48 nonempty, sometimes bilingual/fragments; distinguish from 580 independently authored trilingual examples.",
+    "Exactly five registered rows have no original audio pointer; no invented links.",
+    "The source has 169 mapping edges for 145 canonical cards due to repeated mentions and one split; no accidental duplication."
+  ],
+  "blocks": [
+    "42 Stage3C morphology rows still learner_projection_ready=false; Repair16 Duden notes for three nouns did not mark whole morphology stream ready.",
+    "Full learner-front projection for nouns, verbs and adjectives and current v481 runtime display/import remain unverified.",
+    "Independent comprehensive linguistic and presentation acceptance not passed; no third-party human semantic certification.",
+    "No Stage5, Stage6, Stage7 or B1-L20 begun."
+  ],
+  "next_action": "Continue SAME B1-L19 Stage4 from exact Library Repair18 ZIP SHA d2de208e5d49cedc79fe381679001d9693fe62d1f984c56e9fb2a3b8f87fbbfa. Focus 42 morphology learner_projection_ready=false records (including a stale locked-ID POS conflict), develop complete verified 145-card front/presentation data, then independent Stage4 acceptance. Do not repeat closed lexical queue or re-evaluate all 580 AI editorial examples without new defects. Keep original source and B1-L01..L18 immutable."
+}

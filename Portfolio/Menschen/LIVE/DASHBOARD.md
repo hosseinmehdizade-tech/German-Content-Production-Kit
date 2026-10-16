@@ -1,11 +1,11 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `b29ff3cc5ea233dd55b1b2fad797995f5df7277c6a998912196bbce52da7b750`
+Source fingerprint: `25766471d75a73c0ab89b9356fc5ca473440f8b40d0dcf2ee42c78d3e9c756c4`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 19/24 | A2-L20 | A2-L20 STAGE6_CURRENT_V481_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_CONTENT_LOCK_NEXT |
+| A2 | 20/24 | A2-L20 | A2-L20 STAGE6_CURRENT_V481_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_CONTENT_LOCK_NEXT |
 | B1 | 18/24 | B1-L19 | B1_L19_STAGE4_REPAIR13_BULK_RELATED_65_TEN_EDITORIAL_SENSE_POSITIVES_101_HELD |
 
 > Read-only derived report; no global FINAL/import claims.
@@ -57,7 +57,7 @@ Source fingerprint: `b29ff3cc5ea233dd55b1b2fad797995f5df7277c6a998912196bbce52da
 | A2-L17 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L17-STAGE7.json) |
 | A2-L18 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L18-STAGE7.json) |
 | A2-L19 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L19-STAGE7.json) |
-| A2-L20 | NOT_LOCKED | — |
+| A2-L20 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L20-STAGE7.json) |
 | A2-L21 | NOT_LOCKED | — |
 | A2-L22 | NOT_LOCKED | — |
 | A2-L23 | NOT_LOCKED | — |
@@ -89,5 +89,6 @@ Source fingerprint: `b29ff3cc5ea233dd55b1b2fad797995f5df7277c6a998912196bbce52da
 
 ## Open warnings
 - A2_CENTRAL_CHECKPOINT_STALE: Workstream LATEST outranks central CHECKPOINT
+- A2_NONCONTIGUOUS_ACTIVE_LESSON: Review lesson authority and duplicate/reuse lineage
 - A1_L01_REAUDIT_OPEN: Historical v3.3.2 not promoted to v3.3.6
 - A1_GLOBAL_AUDIT_NOT_APPLIED: M12_REVERSIBLE_SYNTHETIC_SHADOW_TRANSACTION_AND_SRS_NONDESTRUCTION_GATE

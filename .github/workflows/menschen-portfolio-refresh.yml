@@ -1,0 +1,43 @@
+name: Menschen portfolio read-only refresh
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Workspaces/menschen-a1-reaudit-v336/**'
+      - 'Workspaces/menschen-a2-24-lessons-v336/**'
+      - 'Workspaces/menschen-b1-24-lessons-v336/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: menschen-portfolio-refresh-main
+  cancel-in-progress: false
+jobs:
+  update-derived-dashboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate read-only refresh logic
+        run: python -B -m unittest discover -s Portfolio/Menschen/Tests -p 'test_refresh.py' -v
+      - name: Generate from current checkpoint receipts
+        run: python -B Portfolio/Menschen/Tools/refresh.py --repo-root . --out Portfolio/Menschen/LIVE
+      - name: Commit only derived read-only outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add Portfolio/Menschen/LIVE/PORTFOLIO-STATUS.json Portfolio/Menschen/LIVE/DASHBOARD.md Portfolio/Menschen/LIVE/DASHBOARD.html Portfolio/Menschen/LIVE/REFRESH-STATE.json
+          if git diff --cached --quiet; then
+            echo 'UNCHANGED: no dashboard commit needed'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'governance: auto-refresh read-only Menschen portfolio [skip ci]'
+          git push origin HEAD:main

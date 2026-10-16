@@ -1,0 +1,91 @@
+{
+  "schema": "gcpk-menschen-a2-l20-stage6-exact-current-v481-receipt@1.0.0",
+  "date": "2026-10-16",
+  "scope": "A2-L20",
+  "framework": "v3.3.6+HF2+lexical-kombinationen",
+  "stage": 6,
+  "milestone": "STAGE6_SCOPED_CURRENT_V481_DETERMINISTIC_PASS_WITH_ENVIRONMENT_BOUNDARY__STAGE7_CONTENT_LOCK_NEXT",
+  "quality_state": "PASS_WITH_ENVIRONMENT_BOUNDARY__NOT_GLOBAL_APP_FINAL",
+  "content_lock_state": "NOT_LOCKED",
+  "current_runtime": {
+    "version": "v481-R115",
+    "artifact": "GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
+    "sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "materialized_exact_sha": true,
+    "git_mirror_state": "PASS_76_OF_76_NO_RUNTIME_MODIFICATIONS"
+  },
+  "last_fully_verified_runtime": {
+    "version": "v466-R100",
+    "role": "REGRESSION_REFERENCE_ONLY"
+  },
+  "parent": {
+    "original_stage5_receipt": "Workspaces/menschen-a2-24-lessons-v336/L20-STAGE5.json",
+    "original_stage5_sha256": "be5d225d3f52170aad85e7c5ff3c5bcd9fab9496e3864695c3589254bc3e7ebf",
+    "repair1_receipt": "Workspaces/menschen-a2-24-lessons-v336/L20-STAGE5-REPAIR1.json",
+    "repair1_zip_sha256": "4bc2b0bba0cd6ec39a30b281c53228f96d73b5b446519a73dab803486fd12348",
+    "repair1_import_tsv_sha256": "fc4e4740e079553f1cf88cedd6224d6297fc9f8fd2df20f1291d880875f4ca88",
+    "stage4_qa_parent_sha256": "9a75e1807e4bae43f53e16ec6da4c84b1709483ecbd2e839b2db6352786982d4"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L20-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481-Repair1.zip",
+    "sha256": "68769c11b9c7737b1f5d4dd6bbe7dcceb5b4bb5dbdbf29d9109a53dd846e4e68",
+    "size_bytes": 471786,
+    "members": 57,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L20-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481-Repair1.zip",
+    "library_file_id": "file_00000000403081f4b1b4823a4fe32f21",
+    "library_stable_id": "libfile_c15c9c4d4da08191b3149b3be7b4daaa",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "postpackage": {
+    "filename": "A2-L20-STAGE6-INDEPENDENT-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "095f7169adeccb94a058afa91d4e61ef584b5ba864d4f9242436c4b97196a987",
+    "size_bytes": 10606,
+    "checks": "150/150 PASS",
+    "library_file_id": "file_00000000b380824391c6f8aaea2d6faf",
+    "library_stable_id": "libfile_c4f49c8db0c48191905df757746181d6",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L20-STAGE6-INDEPENDENT-POST-PACKAGE-VERIFICATION.json",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "counts": {
+    "lesson_rows": 81,
+    "new_A2": 67,
+    "reused_locked_A1": 10,
+    "reused_locked_A2": 4,
+    "original_source_rows": 87,
+    "source_mapping_edges": 101,
+    "trilingual_new_A2_examples": 268,
+    "trilingual_new_A2_combinations": 135,
+    "erst_A2_additional_examples": 4,
+    "erst_visible_study_groups": 4,
+    "erst_stored_example_groups_total": 8,
+    "stage4_relations": 14,
+    "stage3c_closed_cells": 1246
+  },
+  "validation": {
+    "exact_current_artifact_sha": "PASS",
+    "import_tsv_real_v481_parser": "81/81 PASS",
+    "full_Stage5_zip_reader": "PASS_EXACT_ONE_TSV",
+    "four_modes": "81/81 EACH_STUDY_QUICK_TYPING_AUDIO_PASS",
+    "real_learner_fronts": "PASS_FRAU_ZEITUNG_CORRECTED",
+    "erst_ordering_sense_in_visible_study": "PASS",
+    "fourteen_locked_SRS_states_in_memory": "14/14 PRESERVED_NO_IDENTITY_RESET",
+    "v481_import_baseline": "7/7 PASS",
+    "v481_multimembership_baseline": "8/8 PASS",
+    "fresh_stage5_official": "6/6 PASS",
+    "clean_builder": "PASS",
+    "independent_stage6_deterministic": "48/48 PASS",
+    "independent_final_zip": "150/150 PASS",
+    "library_roundtrip": "PASS_ALL_THREE_FILES_EXACT_SHA256",
+    "browser_page_errors": "ZERO",
+    "same_profile_IndexedDB": "NOT_OBSERVED_ENVIRONMENT_BOUNDARY",
+    "localhost_navigation": "BLOCKED_BY_ADMINISTRATOR",
+    "stage7_locked": false
+  },
+  "boundaries": [
+    "Exact CURRENT v481 app code tested headless in flattened document with isolated memory; real-origin localhost navigation is blocked by the managed environment. No IndexedDB commit/reload or actual user profile proof.",
+    "The original two genuine errors were detected on prior Stage5 and fixed in Stage5 Repair1 content-only projection, without editing the app runtime or original locked parent artifacts.",
+    "Existing A1/A2-L01..L19 locked artifacts unchanged; the importable authority is the repaired Stage6 bundle, NOT the superseded original Stage5 ZIP.",
+    "Stage6 scoped PASS does not imply global Flashcards app FINAL/VERIFIED. Stage7 content-only release lock still required."
+  ],
+  "next_action": "A2-L20 Stage7: lock the exact Stage6 content-only ZIP sha 68769c11b9c7737b1f5d4dd6bbe7dcceb5b4bb5dbdbf29d9109a53dd846e4e68 with repaired import TSV sha fc4e4740e079553f1cf88cedd6224d6297fc9f8fd2df20f1291d880875f4ca88. Do final acceptance and manifest/hash/source/identity/lesson membership checks, verify Stage6 48/48 and 150/150 evidence, persist exact Library and Git. No app source or UI changes; preserve same-profile environment boundary and A2 L01..L19 locked."
+}

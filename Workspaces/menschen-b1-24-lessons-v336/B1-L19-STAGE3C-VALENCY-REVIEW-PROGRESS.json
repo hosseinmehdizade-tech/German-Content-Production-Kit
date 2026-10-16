@@ -1,0 +1,64 @@
+{
+  "schema": "menschen-b1-l19-stage3c-valency-structure-progress@1.0.0",
+  "updated_at": "2026-10-16",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L19",
+  "stage": "Stage3C",
+  "status": "IN_PROGRESS_STAGE3C_CLOSURE_NOT_PASSED__THREE_MATERIAL_IDENTITY_SOURCE_CONFLICTS",
+  "parent_artifact_sha256": "e8197bfac8fa04732d38099e9b7fbb33363b1fdeecca89edd3bfb325e8c4e4e8",
+  "artifact": {
+    "filename": "Menschen-B1-L19-v3.3.6-STAGE3C-VALENCY-STRUCTURE-SOURCE-REVIEW-IN-PROGRESS.zip",
+    "sha256": "c14768d80863008a2960ae98268992ea7ef43a77589efcf9a5c942f68e7d9d35",
+    "bytes": 944449,
+    "members": 101,
+    "library_file_id": "file_0000000023048243bc5660b097881488",
+    "library_stable_id": "libfile_70152f71734c8191b5b4284c28d547c2",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "counts": {
+    "source_rows": 144,
+    "active_targets": 145,
+    "total_dimension_cells": 2302,
+    "verified_present": 1290,
+    "reviewed_closed_no_force": 121,
+    "remaining_unresolved": 891,
+    "newly_finalized_this_turn": 166,
+    "stage3c_third_pass": 121,
+    "stage3c_valency_fourth_pass": 45,
+    "new_language_packs_reviewed": 8,
+    "new_morphology_reviewed": 39,
+    "new_noun_rektion_no_force": 34,
+    "grammar_rektion_and_structure_decisions": 45,
+    "language_packs_unresolved": 3
+  },
+  "qa": {
+    "fresh_extract_source": "PASS",
+    "identity": "PASS",
+    "completeness_working": "PASS",
+    "candidate_ledger_working": "PASS",
+    "manifest": "99/99",
+    "sha256sums": "100/100",
+    "old_content_parity": "94/94_EXACT",
+    "closure": "FAIL_EXPECTED_891_UNRESOLVED",
+    "candidate_closure": "FAIL_EXPECTED_943_DEFERRED",
+    "source_and_prior_locked_ids_unchanged": true
+  },
+  "identity_hold": [
+    {
+      "id": "mb1m-lu-2293",
+      "word": "allumfassend",
+      "reason": "Locked verb POS conflicts with new adjective source: non-destructive Stage2 successor decision required."
+    },
+    {
+      "id": "mb1m-lu-2776",
+      "word": "sich sportlich bestätigen",
+      "reason": "Source appears malformed vs sportlich betätigen; do not silently substitute source."
+    },
+    {
+      "id": "mb1m-lu-2829",
+      "word": "letzter Verbraucher",
+      "reason": "Contextual source phrase must not be passed off as automatic Endverbraucher synonym."
+    }
+  ],
+  "next_action": "Resolve the material Stage2 lexical identity / learner-form authority without modifying original source or locked B1-L01..L18. Continue Stage3C evidence-based review for the remaining 891 cells, rerun formal closure before Stage4; do not begin L20."
+}

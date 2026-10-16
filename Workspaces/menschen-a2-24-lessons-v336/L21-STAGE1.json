@@ -1,0 +1,85 @@
+{
+  "schema": "gcpk-menschen-a2-l21-stage1-receipt@1.0.0",
+  "date": "2026-10-16",
+  "scope": "A2-L21",
+  "framework": "v3.3.6",
+  "stage": 1,
+  "milestone": "STAGE1_SOURCE_INVENTORY_PASS__STAGE2B_CANONICAL_IDENTITY_NEXT",
+  "quality_state": "PASS_REGISTERED_SOURCE_TEXT_AUDIO_AND_PROVENANCE__NOT_CANONICAL_CARDS",
+  "content_lock_state": "NOT_LOCKED",
+  "parent": {
+    "previous_l20_locked_receipt": "Workspaces/menschen-a2-24-lessons-v336/L20-STAGE7.json",
+    "previous_l20_locked_sha256": "07c839e826f6d7fcc17f35d9754bfac0486de600c186f9365b612adb68914609",
+    "previous_l01_l20": "LOCKED_IMMUTABLE",
+    "registered_source_RAR_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "registered_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L21-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+    "sha256": "7c7cb5bfcb528a6bfc4756e1fe491eb77a3930995fff4ad3180efc0357aec7c8",
+    "size_bytes": 38619,
+    "members": 15,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L21-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+    "library_file_id": "file_000000004b6c8243ba6f850540ed1082",
+    "library_stable_id": "libfile_baa25ac74b5081918f445f59d01add92",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "postpackage": {
+    "filename": "A2-L21-STAGE1-INDEPENDENT-POST-PACKAGE-VERIFICATION.json",
+    "sha256": "93bbdfd519a9efac9f676fee9f87c9317cd87cf2c2f953bdc95aa18e0e7e4d3c",
+    "size_bytes": 1261,
+    "checks": "1804/1804 PASS",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/A2-L21-STAGE1-INDEPENDENT-POST-PACKAGE-VERIFICATION.json",
+    "library_file_id": "file_00000000316081f5ab767139866738a8",
+    "library_stable_id": "libfile_519ad89216e08191bcea931deb111c37",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "source": {
+    "source_id": "menschen-a1a2b1-memrise-full-audio",
+    "tag": "Menschen_A1/A2/B1_(Full_Audio)::45_A2:_21.Ja_genau,_den_meine_ich.",
+    "title": "Ja genau, den meine ich.",
+    "row_range": [
+      4121,
+      4229
+    ],
+    "rows": 109,
+    "raw_de_empty": 0,
+    "raw_fa_empty": 0,
+    "missing_source_examples": 34,
+    "slash_review_rows": 15,
+    "raw_exact_duplicate_groups": 0,
+    "audio_tag_occurrences": 108,
+    "audio_unique": 108,
+    "audio_membership_verified": "108/108 PRESENT_IN_EXACT_RAR5",
+    "source_rows_with_no_audio": [
+      4227
+    ],
+    "original_MP3_files": 7719
+  },
+  "validation": {
+    "exact_RAR_SHA256": "PASS",
+    "exact_csv_sha256": "PASS",
+    "exact_l20_previous_locked_sha256": "PASS",
+    "source_boundary_and_neighbors": "PASS",
+    "official_source_occurrences": "PASS_FRESH_FROM_FINAL_ZIP",
+    "in_package_self": "667/667 PASS_FRESH_FROM_FINAL_ZIP",
+    "independent_postpackage": "1804/1804 PASS",
+    "manifest_sha_crc": "PASS",
+    "media_108_in_original_RAR": "PASS",
+    "no_source_progress_SRS_metadata": "PASS",
+    "no_raw_archive_or_audio_redistribution": "PASS",
+    "library_zip_report_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+    "stage2_identity": "NOT_STARTED",
+    "stage3_enrichment": "NOT_STARTED",
+    "stage5_import": "NOT_READY",
+    "app_runtime": "NOT_RESOLVED_NOT_REQUIRED",
+    "stage7_locked": false
+  },
+  "boundaries": [
+    "Raw missing-audio source row 4227 is a real source absence, not missing archive member. Do not fabricate audio.",
+    "34 absent source examples and 15 slash-containing texts are queued; preserve raw field spellings and translations. Stage2B decides split/merge/reuse.",
+    "No canonical identity, card generation or import-ready artifacts created in Stage1. All A2 L01..L20 locked content and app UI are unchanged.",
+    "Registered original Memrise RAR, full CSV and MP3 are external hash-pinned, not redistributed; only scoped 109-row source slice/text and audio locator names included."
+  ],
+  "next_action": "A2-L21 Stage2B canonical identity closure using 109 exact source occurrences rows 4121–4229, compare newest SHA-verified locked A1/A2 parent card payloads (not stale historical ID catalogs), resolve 15 slash-pattern splits/multi-meaning while keeping source row lineage; acknowledge source row 4227 has no audio, 34 source examples absent. Keep A2-L01..L20 LOCKED, no import or app/runtime work until required."
+}

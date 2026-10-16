@@ -1,0 +1,82 @@
+{
+  "schema": "gcpk-a2-l20-stage5-exact-parent-identity-conflict@1.0.0",
+  "date": "2026-10-16",
+  "scope": "A2-L20",
+  "stage": "5",
+  "status": "BLOCKED_MATERIAL_CANONICAL_IDENTITY_AUTHORITY_CONFLICT",
+  "quality": "NOT_IMPORT_READY__NO_STAGE5_FINAL_TSV_EMITTED",
+  "locked_predecessor_mutations": 0,
+  "stage4_parent": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L20-STAGE4.json",
+    "sha256": "660c30a2e260bd20262554e8f55e56a96185f73ce99a287598563dcb36418871",
+    "quality": "STAGE4_SCOPED_PASS_NOW_SUPERSEDED_FOR_4_STALE_A1_REUSE_IDS"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L20-v3.3.6-Stage5-BLOCKED-IDENTITY-AUTHORITY-CHECKPOINT.zip",
+    "sha256": "56a78d9b7b278bb538e04cc423f81f72d3eb4ff9db58c195f951c64c49c68c2d",
+    "size_bytes": 4845,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L20-v3.3.6-Stage5-BLOCKED-IDENTITY-AUTHORITY-CHECKPOINT.zip",
+    "library_file_id": "file_000000006bdc81f4b127b1d6a3f9bc39",
+    "library_stable_id": "libfile_a7f76f62adcc8191a3c78f3ecd726782",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "audit": {
+    "report_filename": "A2-L20-STAGE5-BLOCKED-EXACT-PARENT-IDENTITY-REPORT.json",
+    "report_sha256": "d78b92df7e9c58fc60dea4107bbf9aba7b8cb3b17001cbc490b73a3b199519cb",
+    "report_library_file_id": "file_00000000f5348243abb4b444a3a691e5",
+    "report_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "current_a1_locked_archives_recovered": 6,
+    "current_a1_reuse_ids_checked": 12,
+    "current_a1_reuse_ids_correct": 8,
+    "stale_a1_reuse_ids": 4,
+    "current_a2_locked_exact_reuse_ids_checked": 4,
+    "current_a2_locked_exact_reuse_ids_correct": 4,
+    "source_release_unchanged": true
+  },
+  "identity_conflicts": [
+    {
+      "old": "ma1m-lu-0781",
+      "stage4_headword": "Käse",
+      "actual_locked_A1_L09_front": "die Kartoffel, Kartoffeln",
+      "correct_A1_current_candidate": "ma1m-lu-0780",
+      "correct_front": "der Käse"
+    },
+    {
+      "old": "ma1m-lu-0860",
+      "stage4_headword": "erst",
+      "actual_locked_A1_L09_front": "Kennen Sie sich?",
+      "correct_A1_current_candidate": "ma1m-lu-0863"
+    },
+    {
+      "old": "ma1m-lu-0861",
+      "stage4_headword": "erst",
+      "actual_locked_A1_L09_front": "kennenlernen [+A], lernte kennen, hat kennengelernt",
+      "correct_A1_current_candidate": "ma1m-lu-0863"
+    },
+    {
+      "old": "ma1m-lu-0862",
+      "stage4_headword": "erst",
+      "actual_locked_A1_L09_front": "sich kennenlernen",
+      "correct_A1_current_candidate": "ma1m-lu-0863"
+    }
+  ],
+  "authority": {
+    "newest_verified_A1_L09_zip_sha256": "bebedbdd01ddb1d0f2824966f097661b3e929b26a4292a6f280f17c887b3efe8",
+    "latest_A1_L09_receipt": "Workspaces/menschen-a1-reaudit-v336/A1-L09-STAGE7-CHECKPOINT.json",
+    "historical_A1_ID_catalog": "STALE_FOR_4_IDS",
+    "policy": "MEM-009-ONE_CARD_MULTI_MEANING_BACK",
+    "semantic_gap": "Current A1 erst card covers temporal restrictive; A2 source also has ordering/initial sense; require sense reconciliation before linking."
+  },
+  "tests": {
+    "original_A1_six_sha_crc": "PASS",
+    "original_A1_12_exact_23_field_rows": "RETRIEVED_AND_CHECKED",
+    "exact_A2_four_read_only": "PASS",
+    "conflict_reproduction": "PASS_4_ID_MISMATCHES",
+    "checkpoint_crc_sha_manifest": "PASS",
+    "library_exact_roundtrip": "PASS",
+    "official_stage5_clean_delivery": "NOT_RUN_BLOCKED_IDENTITY",
+    "HF2": "NOT_RUN_BLOCKED_IDENTITY",
+    "app_runtime": "NOT_RUN"
+  },
+  "next_action": "Create corrective A2-L20 Stage2B identity successor referencing exact current A1 L09 source: bind Käse to ma1m-lu-0780 and resolve erst polysense under one existing ma1m-lu-0863 after review; preserve four original source rows and all audio references, all 67 new A2 cards, and historical L01..L19 immutable. Recompute canonical IDs count/maps, Stage3A/B/C/4 dependent verification, then reattempt Stage5 six official validators HF2 and clean builder. No silent stale ID reuse."
+}

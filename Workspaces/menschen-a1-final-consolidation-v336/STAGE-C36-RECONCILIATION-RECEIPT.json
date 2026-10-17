@@ -1,0 +1,61 @@
+{
+  "schema": "gcpk-menschen-a1-c36-reconciliation-receipt@1",
+  "date": "2026-10-17",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": "C36_GLOBAL_SHARED_ID_ARBITRATION_COMPLETE__HF2_GATE_BLOCKED",
+  "scope": "A1-L01..L24",
+  "status": "PASS_SCOPED_SHARED_ID_RECONCILIATION__GLOBAL_STAGE5_BLOCKED_HF2_85_OPEN__NO_IMPORT",
+  "parent_sha256": "88a34a8267fa49d23e606d9967542294301024230e31da33c7fd3dc2a6a60747",
+  "artifact": {
+    "filename": "Menschen-A1-C36-GLOBAL-2997-CARD-RECONCILIATION-HF2-BLOCKED-NO-IMPORT.zip",
+    "sha256": "ba260ed5cbd43b87ac20fa6c18feacdd017b6bdd06dee466c54033a5423f22c2",
+    "size_bytes": 13724590,
+    "zip_members": 103,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C36-GLOBAL-2997-CARD-RECONCILIATION-HF2-BLOCKED-NO-IMPORT.zip",
+    "library_file_id": "file_000000007ab081f4b3b5504dbe910b7e",
+    "library_stable_id": "libfile_c3f75fb8f8b48191b5896c7f0de075ee",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "metrics": {
+    "cards_unique": 2997,
+    "lesson_memberships": 3039,
+    "locked_tsv_rows": 3033,
+    "L24_reference_only_memberships": 6,
+    "original_trilingual_example_records": 12132,
+    "deduplicated_trilingual_examples": 11988,
+    "original_source_relation_instances": 2160,
+    "effective_typed_relations": 2139,
+    "front_arbitrations": 8,
+    "relation_arbitrations": 10,
+    "projection_only_front_updates_from_attested_morphology": 416,
+    "projection_only_metadata_repairs": 473
+  },
+  "qa": {
+    "independent_archive_checks": "PASS_32233",
+    "source_original_byte_snapshots": 24,
+    "C35_lineage_sha": "PASS",
+    "source_meanings_and_trilingual_examples": "EXACT",
+    "negative_mutations": "3_OF_3_FAIL_CLOSED",
+    "deterministic_rebuild": "PASS_EXACT_BYTES",
+    "library_roundtrip": "PASS_EXACT_BYTES",
+    "neutral_v1_1": "PASS_2997",
+    "HF2_v1_1": "FAIL_85",
+    "HF2_errors_by_code": {
+      "NOUN_PLURAL_METADATA_MISSING": 77,
+      "NOUN_ARTICLE_METADATA_MISSING": 6,
+      "VERB_PRINCIPAL_FORMS_MISSING": 1,
+      "VERB_FRONT_NOT_CANONICAL_DISPLAY": 1
+    },
+    "official_global_stage5": "BLOCKED_NOT_PASS",
+    "runtime_global_stage6": "NOT_RUN",
+    "A1_GLOBAL_FINAL": false
+  },
+  "safety": {
+    "locked_L01_through_L24_files": "UNCHANGED",
+    "app_UI": "UNCHANGED",
+    "user_SRS": "UNCHANGED",
+    "real_import": "NOT_RUN",
+    "no_guessed_unknown_plural_or_form": true
+  },
+  "next_action": "C37: review 85 residual HF2 errors by source evidence; distinguish genuine noun plurals from reviewed NOT_APPLICABLE or CLOSED_NO_FORCE, review nested gender/multi-form nouns and Konjunktiv-II möchten. Re-run official HF2 and v3.3.6 Stage5 builder before permitting global Import or CURRENT Stage6."
+}

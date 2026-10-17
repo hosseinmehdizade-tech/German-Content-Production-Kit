@@ -1,12 +1,12 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `368444d02a82206cf1a2fc559cecda1d31a22d3bf1f060c64e77ee492c6917ea`
+Source fingerprint: `b74c1e2389b3bdfedcfdae0194d2bf77258780419606d5e255c875592109a4c3`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 22/24 | A2-L23 | Stage4 SCOPED_MODEL_EDITORIAL_QA_PASS; Stage5 NEXT |
-| B1 | 18/24 | B1-L19 | B1_L19_STAGE6_REPAIR27_LEXICAL_GRAPH_115_MODEL_PASS__BROWSER_IMPORT_BLOCKED |
+| A2 | 22/24 | A2-L23 | Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT |
+| B1 | 18/24 | B1-L20 | B1_L20_STAGE2B_REPAIR2_MITTEL_PRIOR_LEXEME_REUSE_25_BINDINGS_PASS |
 
 > Read-only derived report; no global FINAL/import claims.
 
@@ -89,5 +89,6 @@ Source fingerprint: `368444d02a82206cf1a2fc559cecda1d31a22d3bf1f060c64e77ee492c6
 
 ## Open warnings
 - A2_CENTRAL_CHECKPOINT_STALE: Workstream LATEST outranks central CHECKPOINT
+- B1_NONCONTIGUOUS_ACTIVE_LESSON: Review lesson authority and duplicate/reuse lineage
 - A1_L01_REAUDIT_OPEN: Historical v3.3.2 not promoted to v3.3.6
 - A1_GLOBAL_AUDIT_NOT_APPLIED: M12_REVERSIBLE_SYNTHETIC_SHADOW_TRANSACTION_AND_SRS_NONDESTRUCTION_GATE

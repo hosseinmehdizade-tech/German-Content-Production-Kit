@@ -1,0 +1,84 @@
+{
+  "schema": "menschen-b1-verben-v481-typing-audio-diagnostic-receipt@1.0.0",
+  "date": "2026-10-17",
+  "status": "SCOPED_DIAGNOSTIC_QA_PASS_TWO_FEATURE_GAPS__UNLOCKED__OFFICIAL_HF2_FAIL__NOT_STAGE6_ACCEPTED",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "parent": {
+    "file": "Menschen-B1-Verben-v3.3.6-V481-HF2-Study-Quick-Parity-UNLOCKED-CONTENT-CHECKPOINT.zip",
+    "sha256": "9bbd88703c7ba819d8461edf75cc871fb06ef291795fa148a6027b4773859835"
+  },
+  "artifact": {
+    "file": "Menschen-B1-Verben-v3.3.6-V481-Typing-Audio-Diagnostic-UNLOCKED-CONTENT-CHECKPOINT.zip",
+    "sha256": "b27cb27a3bab2b714f7cd7687e715aff6983a38469b5f6b988b4c6613c542f11",
+    "size_bytes": 3601101,
+    "file_count": 111,
+    "sha256_ledger_rows": 110,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-Verben-v3.3.6-V481-Typing-Audio-Diagnostic-UNLOCKED-CONTENT-CHECKPOINT.zip",
+    "library_file_id": "file_0000000082a881f4a41b4fa5e6f3a70c",
+    "library_stable_id": "libfile_eb298522e1408191bf2df11e8e35330d",
+    "rematerialization": "SHA256_AND_BYTE_IDENTICAL_PASS"
+  },
+  "runtime": {
+    "current": "v481-R115",
+    "current_artifact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "index_sha256": "4a71efd6f58f07931d90d12a584519f932baaa073f279f13817c6174bcfe6c98",
+    "last_fully_verified": "v466-R100"
+  },
+  "findings": [
+    {
+      "severity": "FUNCTIONAL_LIMITATION",
+      "kind": "AUDIO_WORD_INFLECTION_NEUTRAL_VERB_MORPHOLOGY_MISSING",
+      "affected": 279,
+      "total_verbs": 279,
+      "reason": "Audio lexical parser derives inflections from comma-delimited front for neutral de-vocabulary cards, while this B1 batch stores them in structured customFields.",
+      "observed_test": "word-inflection mode emitted only lemma for all 279; word-only and dictation lemma accurate; real sound playback not tested"
+    },
+    {
+      "severity": "PEDAGOGICAL_MODE_MISMATCH",
+      "kind": "TYPING_FULL_LEMMA_ONLY",
+      "affected": 279,
+      "total_verbs": 279,
+      "reason": "All 279 verb typingFull values equal typingCore and front, while v481 full-mode label promises headword and full inflections.",
+      "observed_test": "typing standard/core works; full does not include three inflected forms"
+    }
+  ],
+  "positive_scoped_tests": {
+    "typing_standard_verb": 279,
+    "typing_expression": 116,
+    "audio_word_only_verb": 279,
+    "audio_dictation_headword_verb": 279,
+    "audio_front_back_branch_cards": 395,
+    "audio_back_front_branch_cards": 395,
+    "audio_dictation_branch_cards": 395,
+    "synthetic_negative_controls": "2_OF_2_PASS",
+    "fresh_reextract_content_tests": "4_OF_4_PASS",
+    "checksum_coverage": "110_OF_110_PASS",
+    "archive_crc": "PASS",
+    "artifact_library_exact_readback": "PASS"
+  },
+  "invariants": {
+    "cards": 395,
+    "verbs": 279,
+    "expressions": 116,
+    "examples": 1580,
+    "relations": 2526,
+    "kombinationen": 2123,
+    "canonical_sha256": "bd49ece98922ea96553b761f474e132e5ef02a9a28f00bc0022eb1a2a62d3c2c",
+    "tsv_sha256": "29e3053f1d3fcf225800596ad7166028f26c694410842249703740148acdfc0f",
+    "content_mutation": false,
+    "app_mutation": false,
+    "ui_mutation": false,
+    "locked_historical_release": "RELOCKED_UNCHANGED"
+  },
+  "boundaries": {
+    "real_browser_import": "NOT_RUN",
+    "audio_synthesis": "NOT_RUN",
+    "interactive_typing": "NOT_RUN",
+    "source_image_fidelity": "NOT_REAUDITED",
+    "strict_literal_hf2": "FAIL_279",
+    "stage6_final": "NOT_ACCEPTED",
+    "stage7_relock": false,
+    "all_modes_final": false
+  },
+  "next_action": "Implement and test an isolated proposal for Audio structured morphology consumption without changing front or UI; separately adjudicate the pedagogical Typing Full answer contract before any modification. Then exact current runtime import/browser QA and raw source-image fidelity; no Stage6/FINAL claim."
+}

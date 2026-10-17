@@ -1,0 +1,89 @@
+{
+  "schema": "b1-l19-stage6-repair24@1.0.0",
+  "date": "2026-10-17",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L19",
+  "framework": "v3.3.6",
+  "milestone": "B1_L19_STAGE6_REPAIR24_V481_INMEMORY_PRESENTATION_PASS_TRUE_BROWSER_ORIGIN_IMPORT_BLOCKED",
+  "status": "STAGE6_INMEMORY_MODEL_AND_TRANSPORT_SCOPED_QA_PASS__FULL_STAGE6_BLOCKED",
+  "parent": {
+    "milestone": "STAGE5_REPAIR23_OFFICIAL_CLEAN_DELIVERY_PASS",
+    "sha256": "4de2237a5afe6f427264cbaa7460d70bdad1557a43c4354ed00720c86ac2c108",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L19-STAGE5-REPAIR23.json"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L19-v3.3.6-Stage6-Repair24-V481-INMEMORY-ACCEPTANCE-PASS-BROWSER-BLOCKED.zip",
+    "sha256": "bab5660eb79a6491edebd228595e26eb8dcbb8fc7c5613ca7dc596e18c44735a",
+    "size_bytes": 7181972,
+    "zip_members": 387,
+    "library_file_id": "file_00000000c23881f48a79a8211ef23421",
+    "library_stable_id": "libfile_e31adec78dc88191989aebf674f97c50",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "qa_sidecar": {
+    "filename": "B1-L19-STAGE6-REPAIR24-POSTPACKAGE-QA.json",
+    "sha256": "50235d103daf878fc3c185bc565b5dfae385ed378c874ba6172e70ab5480d2a0",
+    "library_file_id": "file_0000000048c881f4a7d5b8f220fbc955",
+    "library_stable_id": "libfile_36a0b7cd4f488191901c5e966ca6d43c",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "runtime_authority": {
+    "artifact": "GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
+    "sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "library_file_id": "file_00000000f06c824683e9d9066d293203",
+    "app_source_modified": false
+  },
+  "scope": {
+    "source_rows": 144,
+    "canonical_cards": 145,
+    "original_source_learning_examples_de_fa_en": 580,
+    "accepted_kombinationen": 118,
+    "source_audio_references_retained": 163,
+    "lesson_identity_stable": true,
+    "legacy_18_lessons_unchanged": true,
+    "original_stage5_import": "12-column Adaptive TSV v1 misparsed by actual v481 runtime; canonical_unit.type became de_vocabulary for 145 cards and headwords reduced to full front strings",
+    "repair24_transport": "23-column Universal Card v2; source 12-col Stage5 legacy TSV remains immutable; enriched customFields mirror canonical definition, English gloss and reviewed Kombinationen without altering source values",
+    "repaired_tsv_sha256": "aa3861d1ea2c5df5ea04919b2e1a875b34fa6f4878aa3f853366fb3c7c98d86d",
+    "types": {
+      "noun": 43,
+      "verb": 18,
+      "adjective": 12,
+      "expression": 66,
+      "other": 6
+    },
+    "projected_study_definition_de": 145,
+    "study_english_sections": 145,
+    "study_trilingual_examples": 580,
+    "quick_trilingual_examples_per_default": 290,
+    "study_and_quick_kombinationen": 118,
+    "kombinationen_cards": 96,
+    "inherited_parent_files_byte_identical": 374,
+    "new_files": 11,
+    "manifest_file_count": 385,
+    "sha256sums_file_count": 386
+  },
+  "qa": {
+    "official_HF2_front": "PASS_145",
+    "official_unified_vocabulary": "PASS_145",
+    "source_parity": "PASS_3828_COMPARISONS_ZERO_MISMATCH",
+    "python_converter_reproducible": "PASS_BYTE_EXACT",
+    "inmemory_current_runtime_chromium_JS": "PASS_10_OF_10_CHECKS",
+    "negative_fixture_detection": "2_OF_2_EXPECTED_REJECTIONS",
+    "new_ZIP_fresh_extract_repeated_official_tests": "PASS",
+    "fresh_extract_exact_converter_output": "PASS",
+    "CRC_MANIFEST_SHA256SUMS": "PASS",
+    "Library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+    "actual_url_origin_Chrome_Study_Quick_IndexedDB": "BLOCKED_ADMINISTRATOR_BROWSER_URL_BLOCKLIST_ALL",
+    "supplemental_prevention_preflight": "NOT_RUN",
+    "Stage6_final": "BLOCKED"
+  },
+  "boundaries": [
+    "In-memory browser test uses exact v481 JS with flattened local HTML and an isolated mocked store; it is NOT full production browser-origin Import or persisted IndexedDB commit",
+    "Current environment managed Chromium refuses localhost, file and data URL navigation; no bypass attempted",
+    "Study/Quick projections are data/model-level, not visual click/reload across actual canonical origin",
+    "No change to app UI/UX or runtime and no app ZIP bundled",
+    "Original Stage5 official Clean Delivery parent and all previous 18 lesson LOCKED artifacts byte-preserved",
+    "No Stage6 VERIFIED/Stage7 LOCK or B1 L20 started"
+  ],
+  "next_action": "Resume SAME B1 L19 Stage6 from exact Library Repair24 SHA bab5660eb79a6491edebd228595e26eb8dcbb8fc7c5613ca7dc596e18c44735a. Using the exact current v481-R115 runtime and a browser profile with allowed localhost, import 07-Stage6-Repair24/B1-L19-V481-R115-IMPORT-COMPAT-CANDIDATE.tsv through actual Settings/Data UI, verify 145 committed cards and IndexedDB generation persistence, reload/reopen and Study Quick/generic visible front+examples+Kombinationen, negative side effects and progress preservation; run supplemental prevention_preflight package. No final Stage6/7 claims until observed PASS; no B1 L20."
+}

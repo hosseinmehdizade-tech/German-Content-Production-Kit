@@ -1,11 +1,11 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `99d8af6eaa9db05b9dc729afea1272cbd9d56e9eda90e65926bb5f1e5b1ba00a`
+Source fingerprint: `aa89a421a72afe250dc2c4e34a2503d1c43bc68e8e62c7c36826a0840b149452`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 21/24 | A2-L21 | Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT |
+| A2 | 21/24 | A2-L22 | Stage1 NEXT (L21 Stage7 LOCKED) |
 | B1 | 18/24 | B1-L19 | B1_L19_STAGE6_REPAIR25_PREVENTION_PACKAGE_AND_EXISTING_PROFILE_SELECTION_PASS__REAL_ORIGIN_BLOCKED |
 
 > Read-only derived report; no global FINAL/import claims.
@@ -89,6 +89,5 @@ Source fingerprint: `99d8af6eaa9db05b9dc729afea1272cbd9d56e9eda90e65926bb5f1e5b1
 
 ## Open warnings
 - A2_CENTRAL_CHECKPOINT_STALE: Workstream LATEST outranks central CHECKPOINT
-- A2_NONCONTIGUOUS_ACTIVE_LESSON: Review lesson authority and duplicate/reuse lineage
 - A1_L01_REAUDIT_OPEN: Historical v3.3.2 not promoted to v3.3.6
 - A1_GLOBAL_AUDIT_NOT_APPLIED: M12_REVERSIBLE_SYNTHETIC_SHADOW_TRANSACTION_AND_SRS_NONDESTRUCTION_GATE

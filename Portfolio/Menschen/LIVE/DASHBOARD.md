@@ -1,11 +1,11 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `b5b3827aef888e63193b995424d88a07447f42144e371ef3680d7e80fe39c4a6`
+Source fingerprint: `899e2fd6971cfd65fbda681647d1674aa6bfb28720d863854f729f541b5fc72a`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 21/24 | A2-L22 | Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT |
+| A2 | 22/24 | A2-L22 | Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT |
 | B1 | 18/24 | B1-L19 | B1_L19_STAGE6_REPAIR27_LEXICAL_GRAPH_115_MODEL_PASS__BROWSER_IMPORT_BLOCKED |
 
 > Read-only derived report; no global FINAL/import claims.
@@ -59,7 +59,7 @@ Source fingerprint: `b5b3827aef888e63193b995424d88a07447f42144e371ef3680d7e80fe3
 | A2-L19 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L19-STAGE7.json) |
 | A2-L20 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L20-STAGE7.json) |
 | A2-L21 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L21-STAGE7.json) |
-| A2-L22 | NOT_LOCKED | — |
+| A2-L22 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L22-STAGE7.json) |
 | A2-L23 | NOT_LOCKED | — |
 | A2-L24 | NOT_LOCKED | — |
 | B1-L01 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-b1-24-lessons-v336/STAGE7.json) |
@@ -89,5 +89,6 @@ Source fingerprint: `b5b3827aef888e63193b995424d88a07447f42144e371ef3680d7e80fe3
 
 ## Open warnings
 - A2_CENTRAL_CHECKPOINT_STALE: Workstream LATEST outranks central CHECKPOINT
+- A2_NONCONTIGUOUS_ACTIVE_LESSON: Review lesson authority and duplicate/reuse lineage
 - A1_L01_REAUDIT_OPEN: Historical v3.3.2 not promoted to v3.3.6
 - A1_GLOBAL_AUDIT_NOT_APPLIED: M12_REVERSIBLE_SYNTHETIC_SHADOW_TRANSACTION_AND_SRS_NONDESTRUCTION_GATE

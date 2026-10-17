@@ -1,11 +1,11 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `f35dd84654bb2732221cd4a513a2a4d926b0c3f075bc29807ade9236c2ece1b6`
+Source fingerprint: `99d8af6eaa9db05b9dc729afea1272cbd9d56e9eda90e65926bb5f1e5b1ba00a`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 20/24 | A2-L21 | Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT |
+| A2 | 21/24 | A2-L21 | Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT |
 | B1 | 18/24 | B1-L19 | B1_L19_STAGE6_REPAIR25_PREVENTION_PACKAGE_AND_EXISTING_PROFILE_SELECTION_PASS__REAL_ORIGIN_BLOCKED |
 
 > Read-only derived report; no global FINAL/import claims.
@@ -58,7 +58,7 @@ Source fingerprint: `f35dd84654bb2732221cd4a513a2a4d926b0c3f075bc29807ade9236c2e
 | A2-L18 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L18-STAGE7.json) |
 | A2-L19 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L19-STAGE7.json) |
 | A2-L20 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L20-STAGE7.json) |
-| A2-L21 | NOT_LOCKED | — |
+| A2-L21 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L21-STAGE7.json) |
 | A2-L22 | NOT_LOCKED | — |
 | A2-L23 | NOT_LOCKED | — |
 | A2-L24 | NOT_LOCKED | — |
@@ -89,5 +89,6 @@ Source fingerprint: `f35dd84654bb2732221cd4a513a2a4d926b0c3f075bc29807ade9236c2e
 
 ## Open warnings
 - A2_CENTRAL_CHECKPOINT_STALE: Workstream LATEST outranks central CHECKPOINT
+- A2_NONCONTIGUOUS_ACTIVE_LESSON: Review lesson authority and duplicate/reuse lineage
 - A1_L01_REAUDIT_OPEN: Historical v3.3.2 not promoted to v3.3.6
 - A1_GLOBAL_AUDIT_NOT_APPLIED: M12_REVERSIBLE_SYNTHETIC_SHADOW_TRANSACTION_AND_SRS_NONDESTRUCTION_GATE

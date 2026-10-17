@@ -1,6 +1,6 @@
 {
   "authority": "DERIVED_READ_ONLY",
-  "captured_utc": "2026-10-17T08:23:48+00:00",
+  "captured_utc": "2026-10-17T09:25:44+00:00",
   "counts": {
     "by_level": {
       "A1": {
@@ -8,7 +8,7 @@
         "total": 24
       },
       "A2": {
-        "locked": 20,
+        "locked": 21,
         "total": 24
       },
       "B1": {
@@ -16,7 +16,7 @@
         "total": 24
       }
     },
-    "locked_total": 61,
+    "locked_total": 62,
     "total_lessons": 72
   },
   "evidence": {
@@ -215,6 +215,10 @@
     "Workspaces/menschen-a2-24-lessons-v336/L21-STAGE6.json": {
       "git_blob_sha": "46a3336766a37a007e0a751659c79099dc2f96b4",
       "kind": "milestone_receipt"
+    },
+    "Workspaces/menschen-a2-24-lessons-v336/L21-STAGE7.json": {
+      "git_blob_sha": "c505bc6db07b144640bd5cf099e90e6bf7d804c7",
+      "kind": "locked_stage7"
     },
     "Workspaces/menschen-a2-24-lessons-v336/LATEST.json": {
       "git_blob_sha": "7c8f8fac20267acf9bd24c4d802647ad7e8c1b90",
@@ -875,17 +879,17 @@
       "stage": "STAGE7_LOCKED"
     },
     {
-      "artifact_sha256_reported_in_git": null,
+      "artifact_sha256_reported_in_git": "3028428526a16407f384ce67dbfe3406724a6afcbeee7e72fa55bbec21060633",
       "audit": "LEVEL_FINAL_NOT_VERIFIED",
-      "content_lock": "NOT_LOCKED",
-      "evidence_git_blob_sha": null,
-      "evidence_path": null,
-      "evidence_url": null,
+      "content_lock": "LOCKED",
+      "evidence_git_blob_sha": "c505bc6db07b144640bd5cf099e90e6bf7d804c7",
+      "evidence_path": "Workspaces/menschen-a2-24-lessons-v336/L21-STAGE7.json",
+      "evidence_url": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L21-STAGE7.json",
       "id": "A2-L21",
       "lesson_number": 21,
       "level": "A2",
       "runtime_final": false,
-      "stage": "Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY; Stage7 NEXT"
+      "stage": "STAGE7_LOCKED"
     },
     {
       "artifact_sha256_reported_in_git": null,
@@ -1240,18 +1244,22 @@
     }
   ],
   "schema": "gcpk-menschen-portfolio-live@1.0.0",
-  "source_fingerprint": "f35dd84654bb2732221cd4a513a2a4d926b0c3f075bc29807ade9236c2ece1b6",
+  "source_fingerprint": "99d8af6eaa9db05b9dc729afea1272cbd9d56e9eda90e65926bb5f1e5b1ba00a",
   "source_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "verification_boundary": {
     "content_zip_bytes_checked": false,
     "global_final": false,
     "live_browser_srs_checked": false,
-    "stage7_git_receipts_checked": 61
+    "stage7_git_receipts_checked": 62
   },
   "warnings": [
     {
       "code": "A2_CENTRAL_CHECKPOINT_STALE",
       "detail": "Workstream LATEST outranks central CHECKPOINT"
+    },
+    {
+      "code": "A2_NONCONTIGUOUS_ACTIVE_LESSON",
+      "detail": "Review lesson authority and duplicate/reuse lineage"
     },
     {
       "code": "A1_L01_REAUDIT_OPEN",

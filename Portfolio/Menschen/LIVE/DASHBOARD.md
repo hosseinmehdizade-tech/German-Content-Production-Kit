@@ -1,11 +1,11 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `5bdd7d1f105ec06c7804b1568d9c40362b121fa84b26c9a8438ef521f3068129`
+Source fingerprint: `368444d02a82206cf1a2fc559cecda1d31a22d3bf1f060c64e77ee492c6917ea`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 22/24 | A2-L23 | Stage3C CURATED_DISPOSITION_PASS; Independent Stage4 NEXT |
+| A2 | 22/24 | A2-L23 | Stage4 SCOPED_MODEL_EDITORIAL_QA_PASS; Stage5 NEXT |
 | B1 | 18/24 | B1-L19 | B1_L19_STAGE6_REPAIR27_LEXICAL_GRAPH_115_MODEL_PASS__BROWSER_IMPORT_BLOCKED |
 
 > Read-only derived report; no global FINAL/import claims.

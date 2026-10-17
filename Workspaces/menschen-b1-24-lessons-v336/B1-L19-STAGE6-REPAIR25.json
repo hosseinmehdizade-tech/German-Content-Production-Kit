@@ -1,0 +1,57 @@
+{
+  "schema": "b1-l19-stage6-repair25@1",
+  "date": "2026-10-17",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L19",
+  "framework": "v3.3.6",
+  "milestone": "B1_L19_STAGE6_REPAIR25_PREVENTION_PACKAGE_GATE_AND_EXISTING_PROFILE_SELECTION_SCOPED_PASS__BROWSER_ORIGIN_BLOCKED",
+  "status": "STAGE6_SCOPED_QA_PASS__REAL_BROWSER_INDEXEDDB_NOT_TESTED__STAGE6_BLOCKED",
+  "parent": {
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L19-STAGE6-REPAIR24.json",
+    "sha256": "bab5660eb79a6491edebd228595e26eb8dcbb8fc7c5613ca7dc596e18c44735a"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L19-v3.3.6-Stage6-Repair25-EXISTING-PROFILE-SELECTION-PASS-BROWSER-BLOCKED.zip",
+    "sha256": "a1456743bfd9bc49245f65e2010c69ee387a7b43aa02f64771916911c16fcf98",
+    "size_bytes": 7113061,
+    "zip_members": 396,
+    "parent_payload_byte_exact": 385,
+    "additive_QA_and_tools_files": 9,
+    "library_file_id": "file_00000000cf2082439bbc2b0bfdc6c331",
+    "library_stable_id": "libfile_dbc94740c97081919856ee9e1bfb8a28",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "qa_sidecar": {
+    "filename": "B1-L19-STAGE6-REPAIR25-POSTPACKAGE-QA.json",
+    "sha256": "d72e937ced2cfc1a337f1de905847a1490f771196f008ccda3cb8c7cc6c51365",
+    "library_file_id": "file_000000008ce481f4b05d0c778e8eb7eb",
+    "library_stable_id": "libfile_cf531b6ffc5481919d45606f7d60a5b5",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "tests": {
+    "exact_v481_inmemory_selection": "8_OF_8_PASS",
+    "existing_synthetic_cards": "1097_UNCHANGED_ON_FILE_SELECTION",
+    "new_lesson_cards": "145_READY_NO_DUPLICATES",
+    "canonical_types": "43_NOUN_18_VERB_12_ADJECTIVE_66_EXPRESSION_1_CONJUNCTION_1_PRONOUN_2_ADVERB_2_PARTICLE",
+    "official_prevention_package_gate_function": "PASS_MATCHING_GIT_SOURCE_SHA_2c69812ab60f571a6f18dfb60f777dab0d24ba4e",
+    "unsafe_zip_negative_fixtures": "3_OF_3_REJECTED",
+    "prevention_other_modes": "NOT_RUN",
+    "runtime_lexical_front_regression": "12_PASS",
+    "runtime_HF2_dynamic_and_structural": "9_DYNAMIC_AND_7_STRUCTURAL_PASS",
+    "runtime_bounded_import": "13_PASS",
+    "new_zip_manifest_sha256_and_crc": "PASS",
+    "fresh_extracted_runner_source": "PASS",
+    "fresh_extract_static_origin_preflight": "PASS",
+    "actual_Chrome_origin": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "IndexedDB_import_reload": "NOT_RUN"
+  },
+  "boundaries": [
+    "No real browser-origin UI import/commit or IndexedDB/reopen observed",
+    "Current managed Chrome URLBlocklist blocks localhost before app loads",
+    "Only synthetic 1097 profile file-selection was tested, not live user progress",
+    "Runtime v481-R115 is external and unchanged; no UI/UX changes",
+    "Stage5 official Clean Delivery preserved, all 385 parent payload files exact",
+    "Stage6 FINAL, Stage7 LOCK and B1-L20 not started"
+  ],
+  "next_action": "Use exact Library Repair25 ZIP sha256 a1456743bfd9bc49245f65e2010c69ee387a7b43aa02f64771916911c16fcf98, paired with separately pinned exact v481-R115 runtime SHA 25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4, run bundled 08-Stage6-Repair25/Tools/run_real_browser_stage6.py on a browser with permitted localhost and disposable profile. Inspect import 145, IndexedDB reload/reopen, Study+Quick+generic UI, behavior/progress and offline service worker; full prevention memory/projection/lineage/checkpoint still pending. Do NOT declare Stage6/Stage7 final until true acceptance. No B1-L20."
+}

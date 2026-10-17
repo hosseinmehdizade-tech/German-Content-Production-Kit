@@ -2,24 +2,24 @@
   "schema": "gcpk-a1-final-consolidation-workstream-latest@1.0.0",
   "workstream": "menschen-a1-final-consolidation-v336",
   "date": "2026-10-17",
-  "latest_milestone": "C36_GLOBAL_SHARED_ID_ARBITRATION_COMPLETE__HF2_GATE_BLOCKED",
-  "status": "C36_2997_SHARED_IDS_AND_3039_MEMBERSHIPS_RECONCILED__GLOBAL_STAGE5_BLOCKED_85_HF2_ERRORS__NO_IMPORT",
+  "latest_milestone": "C38_HF2_SINGLE_DERIVED_MOOD_EXCEPTION_SCOPED_PASS",
+  "status": "C38_HF2_V1_1_1_SCOPED_PASS_2997__ORIGINAL_V1_1_0_FAIL_ONE_EXPECTED__GLOBAL_STAGE5_PENDING__NO_IMPORT",
   "scope": "A1-L01..L24",
-  "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-C36-RECONCILIATION-RECEIPT.json",
+  "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-C38-SCOPED-HF2-RECEIPT.json",
   "artifact": {
-    "filename": "Menschen-A1-C36-GLOBAL-2997-CARD-RECONCILIATION-HF2-BLOCKED-NO-IMPORT.zip",
-    "sha256": "ba260ed5cbd43b87ac20fa6c18feacdd017b6bdd06dee466c54033a5423f22c2",
-    "size_bytes": 13724590,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C36-GLOBAL-2997-CARD-RECONCILIATION-HF2-BLOCKED-NO-IMPORT.zip",
-    "library_file_id": "file_000000007ab081f4b3b5504dbe910b7e",
+    "filename": "Menschen-A1-C38-GLOBAL-HF2-DERIVED-MOOD-SCOPED-PASS-STAGE5-PENDING-NO-IMPORT.zip",
+    "sha256": "898ddfe4c5f441f176c715a070f33d00f6b8bdaaf9bee397554ae31f25793d75",
+    "size_bytes": 28209390,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C38-GLOBAL-HF2-DERIVED-MOOD-SCOPED-PASS-STAGE5-PENDING-NO-IMPORT.zip",
+    "library_file_id": "file_00000000f40881f4a68c63d2d2c36760",
     "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "C36 reconciles all 2997 unique cards/3039 A1 memberships, preserves 24 locked original TSVs and 12132 source trilingual example records; 8 HF2 front, 10 typed relation owner arbitration cases documented; source relation observations 2160 preserved, 2139 effective relations. Source-backed normalization of metadata and morphology reduces 980 HF2 issues to 85. Official neutral envelope PASS, official HF2 FAIL 85 (77 missing noun plurals, 6 missing article cases, 2 möchten finite-form exceptions). 32233 independent archive checks, 3 negatives, deterministic exact rebuild and Library exact-byte PASS. Global Stage5/Stage6/Import/A1 FINAL not complete. User SRS/runtime/UI unchanged.",
+  "quality": "C38 bounded derived-mood HF2 successor: 2997 stable cards + 3039 memberships, 24 locked snapshots unchanged, all C37 examples/translations and lexical relations unchanged. Legacy official HF2 1.1.0 still FAIL exactly ma1m-lu-0854; additive versioned scoped 1.1.1 validator PASS only for attested möchten/mögen Konjunktiv II derived form. Other verb gates unchanged; 141128 independent checks, 7 negative injections, exact deterministic rebuild, Library byte-identical. Global official v3.3.6 Stage5 clean builder and CURRENT v481 Stage6 not run. NO-IMPORT. Global A1 FINAL false.",
   "upstream_unchanged": [
     "Workspaces/menschen-a1-reaudit-v336/LATEST.json",
     "Workspaces/menschen-a1-reaudit-v336/AUDITS/LATEST-AUDIT.json"
   ],
-  "next_action": "C37 source-governed resolution of 85 HF2 issues: noun missing plural/article, special multi-gender/proper noun cases and möchten; rerun official v3.3.6 Stage5/HF2 and CURRENT Stage6 only after valid gate PASS. Do not import C36 as-is.",
+  "next_action": "Assemble global 24-lesson Stage3 source occurrence + identity closure + candidate/completeness ledgers and execute official v3.3.6 anti-bypass clean Stage5 builder on exact C38. Then scoped current runtime Stage6; preserve all 24 locked lesson sources and user SRS.",
   "previous_stageA_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-A-RECEIPT.json",
   "previous_stageA_artifact_sha256": "cc8b8bfcb085fc7ec6972b7a38d72abca7de8bc650bd4b2e9c1b7ffd7ca9ce5b",
   "previous_stageB_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-B-RECEIPT.json",
@@ -124,7 +124,7 @@
     "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-C26-RECEIPT.json",
     "status": "BLOCKED_STAGE4_CONFIRMED_FACTUAL_EXAMPLE_DEFECT__STAGE5_AND_IMPORT_NOT_ALLOWED"
   },
-  "latest_completed_major_stage": "C36_SHARED_ID_RECONCILIATION_PASS__GLOBAL_STAGE5_BLOCKED",
+  "latest_completed_major_stage": "C38_SCOPED_HF2_EXCEPTION_PASS__GLOBAL_STAGE5_NOT_RUN",
   "previous_C27": {
     "milestone": "STAGE_C27_STAGE4_SCOPED_CORRECTIVE_EDITORIAL_AND_UTF16_QA",
     "sha256": "6286849517921ec303b946eb8972b8f5f2fa48bb7e9af34b52587e835802ce04",
@@ -175,5 +175,16 @@
     "sha256": "88a34a8267fa49d23e606d9967542294301024230e31da33c7fd3dc2a6a60747",
     "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-C35-GLOBAL-AUDIT-RECEIPT.json",
     "status": "C35_GLOBAL_24_LESSON_AUDIT_PASS__SINGLE_IMPORT_RECONCILIATION_PENDING__NO_IMPORT__NOT_A1_FINAL"
+  },
+  "previous_C36": {
+    "milestone": "C36_GLOBAL_SHARED_ID_ARBITRATION_COMPLETE__HF2_GATE_BLOCKED",
+    "sha256": "ba260ed5cbd43b87ac20fa6c18feacdd017b6bdd06dee466c54033a5423f22c2",
+    "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-C36-RECONCILIATION-RECEIPT.json"
+  },
+  "previous_C37_portable": {
+    "milestone": "C37_84_OF_85_HF2_FINDINGS_RESOLVED_WITH_EVIDENCE",
+    "sha256": "28276143881e46a1136920fca0221ed7af45dd38191da0c2945a8cb74ffe22a5",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C37-GLOBAL-HF2-REVIEW-CANDIDATE-NO-IMPORT.zip",
+    "git_receipt_status": "PENDING_FROM_PRIOR_TURN"
   }
 }

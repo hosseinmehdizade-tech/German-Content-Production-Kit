@@ -1,0 +1,55 @@
+{
+  "schema": "gcpk-a2-v481-native-idb-acceptance-hardened-kit@1.0.0",
+  "date": "2026-10-18",
+  "status": "HARDENED_TEST_KIT_STATIC_VERIFIED__NATIVE_IDB_E2E_PENDING__GLOBAL_FINAL_FALSE",
+  "scope": "Repair of test-kit launcher and whole-package integrity verification; NO educational card, app code, or LOCKED lesson content changed",
+  "parent": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/PORTFOLIO-R2-ISOLATED-NATIVE-IDB-KIT-2026-10-18.json",
+    "original_zip_sha256": "f0d354696ac05269820f51e1719c12514f2aa2c02704383781fabe5e8453c8ba"
+  },
+  "finding": {
+    "kind": "TEST_HARNESS_DEFECT",
+    "file": "03-Tests/START-ISOLATED-ACCEPTANCE.cmd",
+    "issue": "Control byte 0x04 corrupted Windows report path and created unintended newline in the displayed report pathname",
+    "impact": "Result location/report discoverability could fail; did not imply erroneous vocabulary",
+    "fix": "Valid CRLF ASCII launcher with correct complete report path; run full verifier before browser attempt",
+    "future_repeated_run_safety": "Exclude locally generated __pycache__/pyc and reports from immutable payload set"
+  },
+  "qa": {
+    "manifest_payloads_sha256": "133/133 PASS",
+    "inputs": "48/48 PASS",
+    "source_rows": 5007,
+    "a1a2_shared_ids": 139,
+    "high_risk_scopes": 14,
+    "locked_runtime_index_sha256": "4a71efd6f58f07931d90d12a584519f932baaa073f279f13817c6174bcfe6c98",
+    "locked_service_worker_sha256": "bea6619df2b553a59fc51e107985081972ddbf24c5334fde9ea3fd20788b3d92",
+    "unchanged_parent_payloads": 129,
+    "modified_existing_parent_files": 3,
+    "added_docs": 1,
+    "zip_crc": "PASS",
+    "fresh_extract_verification": "PASS",
+    "repeat_run_with_python_cache": "PASS",
+    "deliberately_modified_file_detected": "PASS",
+    "file_restored_reverified": "PASS",
+    "native_browser_origin": "ERR_BLOCKED_BY_ADMINISTRATOR (NOT PASS)"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-v481-R115-ISOLATED-IDB-ACCEPTANCE-KIT-HARDENED-R1-NOT-FINAL.zip",
+    "sha256": "1634b3e45859f9134c7baa261c78b25784875eb9431141f7af30f18682687a25",
+    "bytes": 6889353,
+    "members": 135,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-v481-R115-ISOLATED-IDB-ACCEPTANCE-KIT-HARDENED-R1-NOT-FINAL.zip",
+    "library_file_id": "file_00000000c80081f4833142a496c0c3f5",
+    "library_stable_id": "libfile_735d82518b04819188d78304113bf127",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "boundaries": {
+    "real_native_indexeddb_tested": false,
+    "installed_profile_read_or_changed": false,
+    "original_A2_L12_Stage7_archive_recovered": false,
+    "all_original_A2_L01_L24_stage7_locks_unchanged": true,
+    "production_import_authorized": false,
+    "global_final": false
+  },
+  "next_action": "Run 03-Tests/START-ISOLATED-ACCEPTANCE.cmd on an authorized Windows device using Chrome/Edge; return 04-Local-Results-Generated-On-Run/native_idb_acceptance_result.json. Independently recover A2-L12 original exact Stage7 archive or resolve a separately traceable source-governed successor."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "gcpk-a2-l24-stage7-blocker-receipt@1.0.0",
+  "date": "2026-10-18",
+  "scope": "A2-L24",
+  "stage": 7,
+  "status": "BLOCKED_LOCAL_EXECUTOR_UNAVAILABLE",
+  "stage7_complete": false,
+  "content_lock_state": "NOT_LOCKED",
+  "latest_completed_milestone": "A2-L24 Stage6 PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "last_verified_input": {
+    "stage6_filename": "Menschen-A2-L24-v3.3.6-Stage6-PASS-WITH-ENVIRONMENT-BOUNDARY-v481.zip",
+    "sha256": "b7c3ce3f5cc8335d9f10360a6f48aae424f49f6e144cb6e4331f6a2d954ab263",
+    "size_bytes": 1478032,
+    "library_file_id": "file_00000000e38081f4ba17e13f0aee6b13",
+    "library_parent_materialize": "SUCCESS",
+    "stage6_browser": "42/42 PASS",
+    "stage6_postpackage": "148/148 PASS",
+    "runtime": "v481-R115",
+    "runtime_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4"
+  },
+  "other_parent": {
+    "stage7_L23_sha256": "d80e83803e2325f926024d2d90db9707e05ae9eff3688c6a895a2dc6e34ae39e",
+    "stage7_L22_sha256": "2bf3a92f4198a9de06491d58f86303fc651f8e2cce59bbd5894e50e9d64b2474"
+  },
+  "execution_blocker": {
+    "reason": "Container-backed file read/build/test runtime returned caas.internal.errors.ServerError on repeated container.exec, python.exec and python_user_visible.exec attempts after Files materialize succeeded",
+    "scope": "STAGE7_FINAL_ARCHIVE_BUILD_AND_FRESH_VALIDATION",
+    "first_observed_in_turn": "2026-10-18",
+    "permanent_data_loss": false,
+    "source_file_missing": false,
+    "GitHub_unavailable": false,
+    "raw_zip_matched_to_github_this_turn": "NOT_REHASHED_LOCAL_EXECUTOR_UNAVAILABLE"
+  },
+  "not_done": {
+    "final_stage7_zip_build": true,
+    "final_manifest_and_SHA256SUMS": true,
+    "fresh_extracted_postpackage_verifier": true,
+    "actual_browser_rerun_on_final": true,
+    "library_final_roundtrip": true,
+    "stage7_git_pass_receipt": true,
+    "all_24_lesson_content_locked": false
+  },
+  "constraints": {
+    "all_prior_A2_L01_L23": "LOCKED_UNCHANGED",
+    "A2_L24": "STAGE6_ONLY_NOT_LOCKED",
+    "source_A2_L12_parent_binary": "NOT_AVAILABLE_FULL_SEMANTIC_NONOVERLAP_NOT_ATTESTED",
+    "native_IndexedDB": "NOT_OBSERVED",
+    "global_app_FINAL": false
+  },
+  "resume": "When local container-backed execution works, re-materialize exact Stage6 ZIP and verify its SHA, examine L22/L23 Stage7 packaging examples, create Stage7 final content-only no-app ZIP with immutable original Stage6 governed members, replay six compatible validators and exact-current Chromium harness and independent fresh-extract verification, publish Library exact byte parity, write L24-STAGE7.json then advance LATEST + central CHECKPOINT to L01-L24 content-locked; do not skip final checks."
+}

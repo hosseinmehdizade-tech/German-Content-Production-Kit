@@ -1,0 +1,60 @@
+{
+  "schema": "gcpk-a2-r2-native-idb-acceptance-kit@1.0.0",
+  "date": "2026-10-18",
+  "status": "PORTABLE_ACCEPTANCE_KIT_STATIC_VERIFIED__NATIVE_BROWSER_E2E_NOT_PASSED_ENVIRONMENT_BLOCK",
+  "scope": "Source-faithful 24 A1 + 24 A2 R2 sequential v481 real UI import acceptance on an isolated loopback origin, not installed profile",
+  "evidence": {
+    "runtime_exact_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "app_index_exact_sha256": "4a71efd6f58f07931d90d12a584519f932baaa073f279f13817c6174bcfe6c98",
+    "r2_zip_exact_sha256": "46a55f1eabd1346ffc676d5f351368c9f57c4e857c777866ebda8eceae25dff5",
+    "parent_merge_shadow_receipt": "Workspaces/menschen-a2-24-lessons-v336/PORTFOLIO-R2-VERBATIM-MERGE-PROGRESS-SHADOW-2026-10-18.json",
+    "a1_tsv_files": 24,
+    "a2_tsv_files": 24,
+    "source_rows_a1": 3033,
+    "source_rows_a2": 1974,
+    "total_source_rows": 5007,
+    "a2_distinct_ids": 1918,
+    "a1_a2_crosslevel_shared_ids": 139,
+    "all_48_lesson_duplicate_ids_previous_shadow": 221,
+    "special_membership_scopes": 14
+  },
+  "artifact": {
+    "filename": "Menschen-A2-v481-R115-ISOLATED-IDB-ACCEPTANCE-KIT-NOT-FINAL.zip",
+    "sha256": "f0d354696ac05269820f51e1719c12514f2aa2c02704383781fabe5e8453c8ba",
+    "bytes": 7038431,
+    "members": 134,
+    "manifest_entries": 132,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-v481-R115-ISOLATED-IDB-ACCEPTANCE-KIT-NOT-FINAL.zip",
+    "library_file_id": "file_0000000079448243b0aac73b394df16e",
+    "library_stable_id": "libfile_0becf00c1a608191b18096f00c7b1f38",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "fresh_extract_manifest_sha256": "132/132 PASS",
+    "portable_source_tsv_verifier": "48/48 SHA PASS 5007 rows"
+  },
+  "harness": {
+    "system": "Python 3 + Playwright + installed Chrome or Edge on Windows",
+    "command": "py -3 03-Tests\\run_native_idb_acceptance.py --scope full",
+    "browser_origin": "127.0.0.1 RANDOM PORT NOT 8765",
+    "browser_profile": "brand new OS temp profile not installed user profile",
+    "tests": [
+      "Actual v481 TSV file selection and Merge UI",
+      "Confirmed transaction report for each lesson",
+      "Native IDB diagnostics and v6 object stores",
+      "139 cross-level shared card SRS states seeded with synthetic progress and verified after reload",
+      "1918 A2 IDs lesson membership scopes plus 14 high-risk scopes",
+      "Old 2114 antonym reference absent; live 2113 present",
+      "Injected before-publish failure with readback rollback"
+    ],
+    "in_container_smoke": "BLOCKED_OR_FAILED_NOT_PASS: net::ERR_BLOCKED_BY_ADMINISTRATOR at 127.0.0.1 random port",
+    "actual_native_idb_pass": false,
+    "installed_profile_accessed": false
+  },
+  "gating": {
+    "course_final": false,
+    "production_import_authorized": false,
+    "global_runtime_final": false,
+    "exact_original_A2_L12_Stage7_zip_missing": true,
+    "all_24_locked_lesson_artifacts_unchanged": true
+  },
+  "next_action": "Run isolated kit on an allowed Windows Chrome origin and return 04-Local-Results-Generated-On-Run/native_idb_acceptance_result.json. Separately restore exact original A2-L12 Stage7 ZIP or adjudicate source-fidelity successor. Do not call native IDB/installed-profile/global FINAL before proof."
+}

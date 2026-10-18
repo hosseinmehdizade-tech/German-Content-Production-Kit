@@ -1,0 +1,63 @@
+{
+  "schema": "gcpk-a2-24-scoped-preimport-membership-r2@1.0.0",
+  "date": "2026-10-18",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "status": "SCOPED_PREIMPORT_SOURCE_BOUND_QA_PASS__NATIVE_IDB_AND_L12_ORIGINAL_PENDING__GLOBAL_FINAL_FALSE",
+  "scope": "24 A2 staged TSVs, exact 24 per-lesson A1 sources and current GFP v481-R115 multi-membership merge/index semantics",
+  "parents": {
+    "preflight_receipt": "Workspaces/menschen-a2-24-lessons-v336/PORTFOLIO-24-LESSON-INTEGRATION-PREFLIGHT-2026-10-18.json",
+    "preflight_zip_sha256": "333b14d2c47e7079d54eb2535cfdc29bab2ded7a8933a66a2edca8c1139b4eb4",
+    "a2_l09_r1_zip_sha256": "6d1181e8b060903e5f08586e88ff9935ba3866e31afad456938c98e87c92970d",
+    "runtime_v481_R115_zip_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "l12_original_locked_stage7_sha256_unavailable": "686938143b00d0116ccdcf7ecafdde8d96dec0758733bc874bf60bcd890b7be1"
+  },
+  "finding": {
+    "v481_merge_contract": "incoming same-ID fields replace existing attributes",
+    "naive_sequential_import_a1_lost_memberships": 12,
+    "naive_sequential_import_a2_lost_memberships": 2,
+    "total_membership_scopes_at_risk": 14,
+    "additional_srs_identity_risk": "ma1m-lu-2937 missing explicit semantic_identity in A2-L03 vs A1-L23 parent",
+    "historical_locked_zips_changed": false
+  },
+  "candidate": {
+    "staged_lessons": 24,
+    "rows": 1974,
+    "distinct_ids": 1918,
+    "modified_rows": 28,
+    "modified_lessons": 9,
+    "changed_field_family": "custom_fields.course_memberships and one custom_fields.semantic_identity",
+    "other_22_tsv_columns": "PRESERVED_IN_EVERY_ROW",
+    "new_memberships_source": "ATTESTED_ONLY_FROM_EXACT_IMMUTABLE_A1_AND_A2_LESSON_TSVS",
+    "new_card_ids": 0,
+    "post_candidate_scopes_missing": 0,
+    "known_semantic_identity_conflicts_after": 0
+  },
+  "independent_qa": {
+    "exact_independent_postpackage_library_reextract": "13029/13029 PASS",
+    "original_v481_library_membership_function": "1918/1918 PASS using literal unchanged function in Node with active last-write-wins input rows",
+    "library_roundtrip": "SHA256_AND_BYTE_EXACT_PASS",
+    "archive_crc_and_sha256_manifest": "PASS",
+    "native_indexeddb": "NOT_TESTED",
+    "installed_user_profile_srs": "NOT_TESTED"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-L01-L24-SOURCE-BOUND-PREIMPORT-R2-QA-PASS-NOT-FINAL.zip",
+    "sha256": "46a55f1eabd1346ffc676d5f351368c9f57c4e857c777866ebda8eceae25dff5",
+    "size_bytes": 2330345,
+    "members": 36,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-L01-L24-SOURCE-BOUND-PREIMPORT-R2-QA-PASS-NOT-FINAL.zip",
+    "library_file_id": "file_00000000e06481f4bc5280f35a2d9e86",
+    "library_stable_id": "libfile_a1bcedc1a7c48191948a79c1d3a79314",
+    "library_roundtrip": "PASS"
+  },
+  "boundaries": {
+    "course_full_FINAL": false,
+    "app_runtime_GLOBAL_FINAL": false,
+    "production_import_authorized": false,
+    "original_24_A2_lesson_locks": "UNMODIFIED",
+    "official_A1_global_consolidation": "NOT_CLAIMED",
+    "a2_l12_exact_stage7_original_archived_bytes": "NOT_RECOVERED",
+    "native_real_origin_test": "ENVIRONMENT_LOCALHOST_AND_FILE_NAVIGATION_BLOCKED_BY_ADMINISTRATOR"
+  },
+  "next_action": "Run v481 real-origin native IndexedDB safe isolated import of A1 parent then 24 R2 staged lessons, verify replay, original A1/A2 memberships and SRS counters; recover exact A2 L12 outer Stage7 archived ZIP or explicitly adjudicate a source-fidelity verified successor. Do not promote course/global FINAL."
+}

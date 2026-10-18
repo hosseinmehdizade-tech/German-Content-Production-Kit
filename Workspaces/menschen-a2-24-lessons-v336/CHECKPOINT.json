@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-menschen-a2-lessonwise-checkpoint@1.2.0",
   "workstream": "menschen-a2-24-lessons-v336",
-  "scope": "A2-L01..L18 Stage7 LOCKED; A2-L19 Stage3B Batch0005 69/69 authorship coverage complete; Stage3C next",
+  "scope": "A2-L01..L24 content-only Stage7 LOCKED; global app/profile/runtime FINAL pending",
   "framework": "v3.3.6",
-  "status": "A2_L01_TO_L23_STAGE7_LOCKED__A2_L24_STAGE6_PASS__STAGE7_BLOCKED_LOCAL_EXECUTOR",
+  "status": "A2_L01_TO_L24_STAGE7_CONTENT_LOCKED__COURSE_RUNTIME_FINAL_PENDING",
   "source": {
     "source_id": "menschen-a1a2b1-memrise-full-audio",
     "source_archive_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
@@ -62,9 +62,9 @@
     "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json"
   },
   "final_output": "ONE_COMPLETE_CONTENT_PRODUCTION_ZIP__NO_APP__STAGE3C_PARTIAL_NOT_DELIVERY",
-  "next_action": "Resume A2-L24 Stage7 from exact Stage6 Library file_00000000e38081f4ba17e13f0aee6b13 SHA b7c3ce3f5cc8335d9f10360a6f48aae424f49f6e144cb6e4331f6a2d954ab263 when container can execute; fresh ZIP build, full verification and Library parity, then Git L24-STAGE7 and current checkpoint. Stage6 remains latest completed.",
+  "next_action": "Start separate Menschen A2 L01..L24 complete-course content integration and exact-current runtime end-to-end acceptance. Preserve immutable lesson ZIPs; do not call the app or full course global FINAL.",
   "runtime_gate": "PASS_WITH_ENVIRONMENT_BOUNDARY_ON_EXACT_CURRENT_V481",
-  "stage": "A2-L24 Stage7 BLOCKED_LOCAL_EXECUTOR; Stage6 LAST_COMPLETED",
+  "stage": "A2-L24 Stage7 CONTENT_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
   "stage1_portable_checkpoint": {
     "filename": "Menschen-A2-L01-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
     "sha256": "d5c61390452b7bff2e8833f36a507390835058886e519deb887aa6f997a21e0c",
@@ -124,7 +124,7 @@
     "quality": "PASS_SCOPED_STAGE3A_BASELINE_ONLY"
   },
   "current_workstream_latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
-  "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/L23-STAGE7.json",
+  "current_receipt_path": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7.json",
   "central_status_reconciled_to": "L24_STAGE7_BLOCKED_LOCAL_EXECUTOR_STAGE6_LAST_COMPLETE__L01_L23_LOCKED",
   "stable_ids_assigned": 71,
   "stage3c": {
@@ -142,7 +142,7 @@
     "parent_sha256": "beaf14460985e5691bdceef074c486fdb37e5c48272de3a405abb28cc8faaf1e"
   },
   "latest_path": "Workspaces/menschen-a2-24-lessons-v336/LATEST.json",
-  "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE6.json",
+  "latest_receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7.json",
   "previous_stage2b_checkpoint": {
     "filename": "Menschen-A2-L01-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
     "sha256": "d5c61390452b7bff2e8833f36a507390835058886e519deb887aa6f997a21e0c",
@@ -669,7 +669,7 @@
       "stage7_real_origin": "NOT_OBSERVED"
     },
     "A2-L24": {
-      "status": "STAGE7_BUILD_BLOCKED_LOCAL_EXECUTOR__STAGE6_RETAINS_COMPLETED",
+      "status": "STAGE7_CONTENT_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
       "stage1_complete": true,
       "stage2b_complete": true,
       "source_rows": 117,
@@ -695,8 +695,8 @@
       "stage1_artifact_library_file_id": "file_00000000aaf88243a7c1e7b20328c8b0",
       "stage1_qa": "628/628 PASS",
       "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
-      "content_lock_state": "NOT_LOCKED",
-      "stage7_complete": false,
+      "content_lock_state": "LOCKED",
+      "stage7_complete": true,
       "prior_lessons": "A2-L01..L23 LOCKED_UNCHANGED",
       "stage2b_status": "PASS_SCOPED_WITH_L12_BINARY_BOUNDARY",
       "identity_targets": 163,
@@ -787,8 +787,15 @@
       "stage6_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
       "stage6_real_origin_idb": "NOT_TESTED",
       "stage6_global_runtime_final": false,
-      "stage7_execution_status": "BLOCKED_LOCAL_EXECUTOR_UNAVAILABLE",
-      "stage7_blocker_receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7-BLOCKED.json"
+      "stage7_execution_status": "COMPLETE",
+      "stage7_blocker_receipt": "HISTORICAL_SUPERSEDED",
+      "stage7_locked": true,
+      "stage7_receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7.json",
+      "stage7_artifact_sha256": "51a6fd1231b486cb0797814a29ddc81e67d7e5d640c49fa425942fe5dc3f7647",
+      "stage7_library_file_id": "file_00000000ef7881f4ac491447471a4f11",
+      "stage7_postpackage": "176/176 PASS",
+      "stage7_browser": "42/42 PASS",
+      "stage7_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
     }
   },
   "current_lesson_checkpoint": "Workspaces/menschen-a2-24-lessons-v336/CHECKPOINT.json",
@@ -2035,7 +2042,7 @@
     "cumulative": "118/118 PASS",
     "stage7_allowed": true
   },
-  "content_lock_state": "A2_L01_TO_L18_STAGE7_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+  "content_lock_state": "LOCKED",
   "latest_stage7_l08": {
     "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L08-STAGE7.json",
@@ -3426,8 +3433,8 @@
       3832
     ]
   },
-  "latest_completed_milestone": "A2-L24 Stage6 CURRENT v481-R115 exact JS browser 42/42 scoped PASS_WITH_ENVIRONMENT_BOUNDARY, 163 23-column cards (155 new+8 locked reuses), 620 trilingual new examples, 64 combinations, 21 sense-scoped-only relations and no global new edges. Eight historical semantic card identities, A1/A2 course memberships, and simulated SRS activity preserved, no identity reset; zero JS pageerrors. Exact Stage5 original 51 governed payloads preserved byte-for-byte, original Stage5 controls archived; fresh Stage6 ZIP independent 148/148 PASS and Library exact SHA+byte return + 148/148 rerun PASS; browser 42/42 rerun from fresh extract. Real origin native IndexedDB commit/reload, user browser profile, offline service worker and audio NOT TESTED. A2 L12 historical binary/full semantic non-overlap unavailable. A2-L01..L23 Stage7 LOCKED unchanged; A2-L24 Stage7 NOT LOCKED, next.",
-  "latest_artifact_sha256": "b7c3ce3f5cc8335d9f10360a6f48aae424f49f6e144cb6e4331f6a2d954ab263",
+  "latest_completed_milestone": "A2-L24 Stage7 CONTENT LOCKED; L01..L24 Stage7 LOCKED, 176/176 fresh exact-final independent PASS, 42/42 exact CURRENT v481 JS Chromium fresh-final PASS_WITH_ENVIRONMENT_BOUNDARY, Library exact SHA+byte roundtrip; overall installed app/global course FINAL not claimed",
+  "latest_artifact_sha256": "51a6fd1231b486cb0797814a29ddc81e67d7e5d640c49fa425942fe5dc3f7647",
   "current_lesson_source_occurrences": 97,
   "current_lesson_title": "Wir wollen nach Rumänien.",
   "current_lesson_identity_total": 112,
@@ -4113,7 +4120,7 @@
     "stage6": "NOT_STARTED",
     "stage7_locked": false
   },
-  "current_lesson_stage7_complete": false,
+  "current_lesson_stage7_complete": true,
   "latest_stage6_l24": {
     "status": "PASS_WITH_ENVIRONMENT_BOUNDARY",
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE6.json",
@@ -4135,10 +4142,17 @@
   "historical_global_stage_fields_note": "Unscoped historical stage6_complete/stage7_complete keys refer to earlier workstreams/lessons and are NOT the current A2-L24 result; use parallel_lesson_states['A2-L24'] and current_lesson_stage* flags.",
   "stage7_blocker_receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7-BLOCKED.json",
   "latest_stage7_l24_blocked": {
-    "status": "BLOCKED_LOCAL_EXECUTOR_UNAVAILABLE",
-    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7-BLOCKED.json",
-    "stage7_complete": false,
-    "stage6_latest_sha256": "b7c3ce3f5cc8335d9f10360a6f48aae424f49f6e144cb6e4331f6a2d954ab263"
+    "status": "HISTORICAL_SUPERSEDED_BY_L24_STAGE7_LOCK",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7-BLOCKED.json"
   },
-  "current_lesson_stage7_locked": false
+  "current_lesson_stage7_locked": true,
+  "latest_stage7_l24": {
+    "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7.json",
+    "artifact_sha256": "51a6fd1231b486cb0797814a29ddc81e67d7e5d640c49fa425942fe5dc3f7647",
+    "library_file_id": "file_00000000ef7881f4ac491447471a4f11",
+    "postpackage": "176/176",
+    "exact_browser": "42/42",
+    "global_final": false
+  }
 }

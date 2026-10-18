@@ -1,12 +1,12 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `7ba476d6c46debeed87c0737a5c2cfa0eca9c3642515d10b1083ce7ae6f2c719`
+Source fingerprint: `7639e3f15a934decdad5990b2260a581366ff4825ba484b1524ab0b60fe44ffd`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|
 | A1 | 23/24 | A1-L24 | STAGE7_LOCKED_REAUDIT_SUCCESSOR_WITH_RUNTIME_ENVIRONMENT_BOUNDARY |
-| A2 | 23/24 | A2-L24 | A2-L24 Stage7 BLOCKED_LOCAL_EXECUTOR; Stage6 LAST_COMPLETED |
-| B1 | 18/24 | B1-L20 | B1_L20_STAGE2B_REPAIR17_35_NEW_PARENT_RELATIONS_50_DISTINCT_IDS_27_RETRIEVAL_REMAINING |
+| A2 | 24/24 | A2-L24 | A2-L24 Stage7 BLOCKED_LOCAL_EXECUTOR; Stage6 LAST_COMPLETED |
+| B1 | 18/24 | B1-L20 | B1_L20_STAGE2B_REPAIR18_ALL_77_RETRIEVED_HEADS_CURATED_PAIRS_70_UNRETRIEVED_PENDING |
 
 > Read-only derived report; no global FINAL/import claims.
 
@@ -61,7 +61,7 @@ Source fingerprint: `7ba476d6c46debeed87c0737a5c2cfa0eca9c3642515d10b1083ce7ae6f
 | A2-L21 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L21-STAGE7.json) |
 | A2-L22 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L22-STAGE7.json) |
 | A2-L23 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L23-STAGE7.json) |
-| A2-L24 | NOT_LOCKED | — |
+| A2-L24 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-a2-24-lessons-v336/L24-STAGE7.json) |
 | B1-L01 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-b1-24-lessons-v336/STAGE7.json) |
 | B1-L02 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-b1-24-lessons-v336/B1-L02-STAGE7.json) |
 | B1-L03 | LOCKED | [Stage7 receipt](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/blob/main/Workspaces/menschen-b1-24-lessons-v336/B1-L03-STAGE7.json) |
@@ -88,7 +88,6 @@ Source fingerprint: `7ba476d6c46debeed87c0737a5c2cfa0eca9c3642515d10b1083ce7ae6f
 | B1-L24 | NOT_LOCKED | — |
 
 ## Open warnings
-- A2_CENTRAL_CHECKPOINT_STALE: Workstream LATEST outranks central CHECKPOINT
 - B1_NONCONTIGUOUS_ACTIVE_LESSON: Review lesson authority and duplicate/reuse lineage
 - A1_L01_REAUDIT_OPEN: Historical v3.3.2 not promoted to v3.3.6
 - A1_GLOBAL_AUDIT_NOT_APPLIED: M12_REVERSIBLE_SYNTHETIC_SHADOW_TRANSACTION_AND_SRS_NONDESTRUCTION_GATE

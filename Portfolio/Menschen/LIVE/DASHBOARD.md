@@ -1,6 +1,6 @@
 # Menschen portfolio — live Git checkpoint view
 
-Source fingerprint: `3bef76d4d0b991cff396187b6e4dc1d06f44575e0e7d32a53f2214ee87b53938`
+Source fingerprint: `118812620fa57214583d47230e0ae6a42e517189f1f7d8a684b4efb49cd702ca`
 
 | Level | Stage7 LOCKED | Active | Stage |
 |---|---:|---|---|

@@ -1,8 +1,8 @@
 {
   "schema": "menschen-b1-verben-workstream-latest@1.0.0",
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-21",
   "workstream": "menschen-b1-verben-kombinationen-v336",
-  "status": "ACCEPTED_CONTENT_BASE_RELOCKED__PARALLEL_V481_AUDIO_PATCH_PROPOSAL_WIP",
+  "status": "ACCEPTED_CONTENT_BASE_RELOCKED__V481_AUDIO_CODE_PATCH_ISOLATED_QA_PASS_UNDEPLOYED",
   "accepted_base": {
     "stage": "Stage7 Repair1 RELOCKED",
     "content_stage5_artifact_sha256": "c0862281e3b092e54bdb447e498e73cad96cdd8bdeef9811628608cef3f1c086",
@@ -36,10 +36,35 @@
     "canonical_sha256": "bd49ece98922ea96553b761f474e132e5ef02a9a28f00bc0022eb1a2a62d3c2c",
     "tsv_sha256": "29e3053f1d3fcf225800596ad7166028f26c694410842249703740148acdfc0f"
   },
-  "next_action": "Consider bounded implementation of tested Audio-only compatibility fix on exact CURRENT runtime with separate runtime release workstream and full verification; keep Typing Full, official HF2, source-image fidelity, browser-import acceptance separately open. No visible UI change without approval.",
+  "next_action": "Resume from isolated v481 audio-patch QA checkpoint; produce a separately versioned/cache-updated runtime candidate, complete actual browser/audio and current release gates. Keep Typing Full/HF2/raw source fidelity separate and historical RELOCKED content immutable. Do not promote CURRENT until validated runtime release requirements.",
   "persistence": {
-    "library": "SHA256_BYTE_IDENTICAL_PASS",
-    "git": "LATEST_SYNCED",
+    "library": "NEW_AUDIO_PATCH_CANDIDATE_EXACT_SHA256_READBACK_PASS",
+    "git": "AUDIO_RECEIPTS_SYNCED;_LATEST_SYNC_ATTEMPT",
     "project_state_root": "MAY_LAG_WORKSTREAM_LATEST_AUTHORITATIVE"
+  },
+  "isolated_runtime_patch_candidate": {
+    "status": "SCOPED_QA_PASS_NOT_A_RELEASE",
+    "milestone": "2026-10-21 V481 AUDIO CODE PATCH ISOLATED",
+    "receipt": "Workspaces/menschen-b1-verben-kombinationen-v336/Audits/V481-AUDIO-SCOPED-CODE-QA-2026-10-21.json",
+    "app_receipt": "German-Flashcards-Pro/04-Reports/Menschen-B1-Verben-Audio-v481-2026-10-21/SCOPED-QA-CHECKPOINT.json",
+    "artifact_sha256": "7451383de6d9b0c0b86e3ce758fd123b30bd753a6a78ed3435a0a571dc6d61e2",
+    "artifact_library_stable_id": "libfile_8e9031fdf2c88191a6f2acb4016b1bb2",
+    "parent_runtime_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "patch_in_isolated_copy": true,
+    "production_runtime_unchanged": true,
+    "changed_runtime_files": 2,
+    "unchanged_runtime_files": 74,
+    "verbs_audio_fixed_candidate": "279/279 PASS",
+    "expressions_unchanged": "116/116 PASS",
+    "other_modes_unchanged": "395/395 PASS",
+    "synthetic_negative_controls": "4/4 PASS",
+    "sha_crc_readback": "PASS",
+    "real_browser": "BLOCKED_BY_ADMINISTRATOR",
+    "audio_engine": "NOT_TESTED",
+    "typing_full": "OPEN",
+    "strict_hf2": "FAIL_279",
+    "raw_source_image_review": "NOT_REAUDITED",
+    "stage6": "NOT_ACCEPTED",
+    "relock": false
   }
 }

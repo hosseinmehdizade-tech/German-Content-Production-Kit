@@ -1,0 +1,54 @@
+{
+  "schema": "menschen-b1-l20-stage2-source-card-identity-singlepass@1",
+  "date": "2026-10-21",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L20",
+  "framework": "v3.3.6",
+  "milestone": "B1_L20_STAGE2_SOURCE_CARD_IDENTITY_SINGLEPASS_CLOSED_78_NEW_68_USAGES_26_PRIOR_REUSE",
+  "status": "PASS_SOURCE_CARD_IDENTITY_WITH_LINGUISTIC_STAGE3_GAPS",
+  "parent": {
+    "milestone": "B1_L20_STAGE2B_REPAIR38_44_EXPLICIT_USAGE_LINKS_21_SCOPED_LEXICAL_IDS_35_HELD",
+    "sha256": "92cdb703374e9c72021007a813e934d4fe33fd11ae642e366fdfae3d7f1c0e04",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-L20-STAGE2B-REPAIR38.json"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L20-v3.3.6-STAGE2-ID-RESOLUTION-SINGLEPASS.zip",
+    "sha256": "bff03fba2f02ce0bb1ff98f6aa3c80a66353cb12b37d8df4ae2e143a5e830db3",
+    "size_bytes": 64685,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L20-v3.3.6-STAGE2-ID-RESOLUTION-SINGLEPASS.zip",
+    "library_file_id": "file_000000001d1081f4a5b52ab9a271b3e9",
+    "library_stable_id": "libfile_a82d0facabf081918daa514d5319e1ff",
+    "byte_sha_readback": "PASS"
+  },
+  "independent_qa_path": "Workspaces/menschen-b1-24-lessons-v336/B1-L20-STAGE2-ID-RESOLUTION-SINGLEPASS-INDEPENDENT-QA.json",
+  "independent_qa_sha256": "a757c2b5b7b0efd0dc2f0a3243b803c511b832cfcbb3aec4aef25407e61db411",
+  "scope": {
+    "source_rows": "152/152",
+    "original_successor_units": "172/172",
+    "original_proposed_new_IDs": "147/147",
+    "new_unique_cards": 78,
+    "source_usage_links": 68,
+    "locked_prior_reuse_memberships": 26,
+    "legacy_preregistered_reuse_memberships": 24,
+    "added_legacy_reuses": [
+      "ma1m-lu-1137 (Ehepaar)",
+      "mb1m-lu-2319 (Mittel)"
+    ],
+    "unresolved_source_to_card_ID_decisions": 0,
+    "prior_44_binding_matches": "44/44",
+    "new_exact_normalized_front_collisions": 0,
+    "source_DE_FA_example_audio_exact": "172/172",
+    "registered_parent_locked_content_modified": false,
+    "production_ready": false,
+    "Stage3": "BASELINE_GAPS_ONLY"
+  },
+  "root_causes": [
+    "Redundant millions of token-overlap comparisons mistaken for semantic identity certification; source usage phrases overcounted as independent cards",
+    "Every small partial change emitted a historical Repair package; no completion-of-major-stage cadence, conflicting MEM-025",
+    "Out of 172 successor identities, 148 newly proposed but only 147 candidates entered the ID queue: row 7166 Mittel (zum Zweck) silently dropped",
+    "Incomplete prior global roster omitted preverified B1 Verben IDs; source-to-target referential checks need prior registered B1 Verben lineage as well as 7486 membership snapshot"
+  ],
+  "changed_operating_method": "Single source-to-identity ledger + one independent QA over original 152 rows and 172 successor identities; EXACT historical source DE/FA/audio intact. Source use/expression binds to verified prior or independent card; new cards only for distinct lexemes/expressions. Check exact/front collisions and risk-specific semantic conflicts, no repeated 147x7486 exhaustive similarity scans. Lingual verification deferred to Stage3 only when it does not alter card/usage identity; retain source raw spelling and Persian separately.",
+  "next_milestone": "Stage3A baseline completion and Stage3B gap-driven FULL enrichment for 78 new lexical cards, including DE/FA/EN translated examples, suitable morphology, word relations and combination review; source usage 68 as contextual examples/Kombinationen with language vetting; then Stage3C independent completeness. Treat L19 browser gate separately from content.",
+  "boundary": "This is completed source-card-ID Stage2, not a complete Stage3 or final 24-lesson lock; no app/UI/runtime modifications; audio bytes not bundled in compact checkpoint."
+}

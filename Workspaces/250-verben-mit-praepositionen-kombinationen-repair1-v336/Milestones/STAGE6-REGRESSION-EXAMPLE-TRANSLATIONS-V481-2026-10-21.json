@@ -1,0 +1,34 @@
+{
+  "schema": "gcpk-stage6-translation-visibility-regression@1.0.0",
+  "workstream": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
+  "date": "2026-10-21",
+  "status": "CONFIRMED_V481_V425_RUNTIME_PROJECTION_TRANSLATION_LOSS__STAGE6_BLOCKED",
+  "supersedes_only": "STAGE6_TRANSLATION_VISIBILITY_ACCEPTANCE_NOT_PREVIOUS_CONTENT_COMPLETENESS",
+  "exact_artifacts": {
+    "runtime_version": "v481-R115",
+    "runtime_zip_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "content_zip_sha256": "52590f8c1ce18aa2715571aa603a66fea415b2087f4472bd190fc5df92a248e8",
+    "import_tsv_sha256": "86a66715bcb476c4d65862c7ecda3038acad41a4547654a562fe5aff8ce5253a"
+  },
+  "evidence": {
+    "user_screenshot": "FA_SELECTED_FOUR_DE_EXAMPLES_NO_FA_EXAMPLE_TRANSLATIONS",
+    "trilingual_cards": "292/292",
+    "trilingual_examples": "1168/1168",
+    "canonical_unit_with_examples": "0/292",
+    "v425_compaction_removes_presentation_examples": "292/292",
+    "executed_actual_v481_compaction_function": "REPRODUCED_FIRST_CARD_4_DE_ONLY_POST_COMPACTION",
+    "app_source_report": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/blob/main/04-Reports/Content-Display-Regressions/V481-R115-VMP-NESTED-EXAMPLE-TRANSLATION-LOSS-2026-10-21.md"
+  },
+  "affected": "ALL_292_IMPORTED_VMP_CARDS_UNDER_CURRENT_V425_COMPACT_RUNTIME",
+  "existing_scoped_36_tests": "PASS_AS_RECORDED__COVERAGE_GAP_TRANSLATION_VISIBILITY_AFTER_V425",
+  "stage6_content_import_preview": "PASS_AS_RECORDED",
+  "stage5_scoped_hf2": "PASS_AS_RECORDED",
+  "stage6_translation_display": "FAIL_CONFIRMED",
+  "stage6_live_origin": "NOT_RUN",
+  "stage7_final": "BLOCKED_NOT_CLAIMED",
+  "safe_fix": "Minimal v425 hot projection for rich nested example translations when canonical/native example group lacks them; source and full durable authority untouched. Verify study FA/EN and post-reload runtime projection before upgrade; no visible UI redesign.",
+  "user_data_mutated": false,
+  "app_runtime_modified": false,
+  "source_content_modified": false,
+  "next_action": "Repair exact CURRENT v481 v425 runtime-projection loss with targeted regressions and release only after postpackage verification. Keep 292 source cards, translations, stable IDs and user-progress authority unchanged."
+}

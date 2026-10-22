@@ -1,0 +1,63 @@
+{
+  "schema": "gcpk-menschen-a2-c3-v481-preimport-srs-protected-split@1.0.0",
+  "date": "2026-10-22",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "stage": "COURSE-C3-V481-SRS-SAFE-IMPORT-PREFLIGHT",
+  "status": "PASS_SCOPED_SPLIT_AND_SYNTHETIC_EXACT_V481_BROWSER__FULL_COURSE_IMPORT_BLOCKED",
+  "source": {
+    "parent_receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-1918-CANDIDATE-MEMBERSHIP-INTEGRATION-2026-10-22.json",
+    "parent_zip_sha256": "dc0ca1390dcdb313ed8055b6a6a0e071754f3a1f59a5f12103372cd19ad0dc59"
+  },
+  "artifact": {
+    "name": "Menschen-A2-C3-V481-SRS-SAFE-PREFLIGHT-NOT-IMPORT-READY.zip",
+    "sha256": "48290fbcc077bc54df5e5d4843292e570edd83828691634aec191dab22642d35",
+    "bytes": 43432616,
+    "entries": 22,
+    "manifest_entries": 20,
+    "source_zip_embedded_exact": true,
+    "app_runtime_included": false,
+    "library_persistence": "NOT_ATTEMPTED_PREVIOUS_LIBRARY_STORAGE_LIMIT",
+    "delivery": "CURRENT_CHAT"
+  },
+  "counts": {
+    "lessons": 24,
+    "unique_ids": 1918,
+    "new_A2": 1778,
+    "protected_A1": 140,
+    "lessons_memberships": 1974,
+    "native_A2_memberships": 1829,
+    "inherited_A1_A2_memberships": 145,
+    "shared_A2_ids": 55
+  },
+  "tests": {
+    "structural_independent": "1996/1996 PASS",
+    "mutation_negative": "6/6 PASS",
+    "exact_v481_headless_synthetic": "16/16 PASS ZERO_PAGEERROR",
+    "official_v481_multi_membership": "8/8 PASS",
+    "official_v481_bounded_import": "7/7 PASS",
+    "postpackage": "PASS_FRESH_EXTRACT_CRC_20_MANIFEST_21_SHA256SUMS_1996_STRUCTURAL_16_BROWSER",
+    "new_zip_exact_sha256": "48290fbcc077bc54df5e5d4843292e570edd83828691634aec191dab22642d35"
+  },
+  "findings": [
+    "v481 merge overwrites same-ID content fields; add skips inherited A1 membership updates.",
+    "v481 semantic fingerprint may equal same explicit ID even when front/back changed; parent SHA compare is mandatory.",
+    "ma1m-lu-0385 historical glass-material identity remains on hold, must not auto-rekey to 0384.",
+    "No global graph edges to four out-of-A2 target IDs of ma1m-lu-1976."
+  ],
+  "boundaries": {
+    "course_import_ready": false,
+    "real_user_srs_accessed": false,
+    "actual_native_idb_commit": false,
+    "real_origin_reload": false,
+    "real_profile_acceptance": "NOT_EXECUTED",
+    "A1_field_mutations": 0,
+    "all_24_A2_lesson_locked_archives_unchanged": true,
+    "visible_UI_change": "NONE",
+    "runtime_current": "v481-R115",
+    "runtime_sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "last_fully_verified": "v466-R100",
+    "A2_L12_original_outer_missing": true,
+    "C2_original_binary_missing": true
+  },
+  "next_action": "Implement compare-and-swap membership-only migration scoped to 140 A1 records against exact live-profile authority, protect 0385 legacy identity and FSRS/SRS state, and test atomic v481 origin IndexedDB save/reload; do not import C3 preview or split data yet."
+}

@@ -1,14 +1,14 @@
 {
   "schema": "menschen-a2-workstream-latest@1",
-  "latest_completed_milestone": "PASS_SCOPED_SPLIT_AND_SYNTHETIC_EXACT_V481_BROWSER__FULL_COURSE_IMPORT_BLOCKED",
-  "quality": "PASS_SCOPED_C3_V481_SPLIT_AND_SYNTHETIC_QA__NOT_IMPORT_READY",
-  "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V481-SRS-SAFE-SPLIT-PREFLIGHT-2026-10-22.json",
-  "artifact_sha256": "48290fbcc077bc54df5e5d4843292e570edd83828691634aec191dab22642d35",
+  "latest_completed_milestone": "PASS_SCOPED_READONLY_CAS_PREPARE__NATIVE_INDEXEDDB_COMMIT_BLOCKED__NOT_IMPORT_READY",
+  "quality": "PASS_SCOPED_C3_V482_CAS_PREPARE__NATIVE_IDB_COMMIT_BLOCKED",
+  "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V482-CAS-DRYRUN-PREPARE-2026-10-22.json",
+  "artifact_sha256": "ba4b3ee22541419d2a8d04020c35a62fa821911ee57f9e783814045376a6141d",
   "artifact_library_path": null,
   "artifact_library_file_id": null,
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Implement compare-and-swap membership-only migration scoped to 140 A1 records against exact live-profile authority, protect 0385 legacy identity and FSRS/SRS state, and test atomic v481 origin IndexedDB save/reload; do not import C3 preview or split data yet.",
+  "next_action": "Test actual isolated same-origin native v482 indexedDB generation CAS staging/publish/finalize/reload and rollback with 140 exact originals + 1778 new cards, independently verify FSRS/SRS and unrelated existing cards across reload. Never write to the real user profile or claim import-ready until verified.",
   "central_checkpoint_sha": "efc1c584e27787837f181e26f0a37a15b4f1532f",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
   "last_git_coordination": "A2_L24_STAGE7_CONTENT_LOCKED__A2_L01_TO_L24_LOCKED__GLOBAL_RUNTIME_FINAL_PENDING",
@@ -6244,7 +6244,7 @@
     "global_final": false
   },
   "previous_c3_source_gate_receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-IDENTITY-GATE-2026-10-22.json",
-  "artifact_filename": "Menschen-A2-C3-V481-SRS-SAFE-PREFLIGHT-NOT-IMPORT-READY.zip",
+  "artifact_filename": "Menschen-A2-C3-V482-MEMBERSHIP-CAS-DRY-RUN-NOT-IMPORT-READY.zip",
   "a1_parent_authority_recovery": {
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-A1-PARENT-140-RECOVERY-2026-10-22.json",
     "archive_sha256": "dcd6796e471dfd14c87582b51554458c3fc91110700ac124ddf948af7ecd856f",
@@ -6286,5 +6286,16 @@
     "exact_v481_synthetic": "16/16 PASS",
     "native_real_SRS": "NOT_TESTED",
     "import_ready": false
+  },
+  "previous_C3_v481_receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V481-SRS-SAFE-SPLIT-PREFLIGHT-2026-10-22.json",
+  "C3_v482_cas_prepare": {
+    "status": "PASS_SCOPED_NOT_IMPORT_READY",
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V482-CAS-DRYRUN-PREPARE-2026-10-22.json",
+    "artifact_sha256": "ba4b3ee22541419d2a8d04020c35a62fa821911ee57f9e783814045376a6141d",
+    "qa": "33/33 v482 synthetic",
+    "nativeIndexedDbCAS": "NOT_TESTED",
+    "SRS_actual_profile": "NOT_TOUCHED",
+    "runtime_current": "v482-R116",
+    "source_preflight_sha256": "48290fbcc077bc54df5e5d4843292e570edd83828691634aec191dab22642d35"
   }
 }

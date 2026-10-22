@@ -1,0 +1,59 @@
+{
+  "schema": "uv-v131-r6-source-restoration-intake-milestone@1.0.0",
+  "date": "2026-10-22",
+  "workstream": "unregelmaessige-verben",
+  "mode": "NONPROMOTING_SOURCE_RECOVERY_TOOLING",
+  "scope": "Unblocks verifiable intake of missing seven original PNGs if user/source retrieves originals; does NOT attest pixels or authorize Stage4",
+  "status": "SOURCE_INTAKE_TOOL_READY__7_RAW_PNG_NOT_RECOVERED__FULL_STAGE4_BLOCKED",
+  "parent": {
+    "milestone": "V131_R6_INDEPENDENT_POSTPACKAGE_35_OF_35_PASS_SOURCE_GATE_BLOCKED",
+    "content_sha256": "411ae2a7f9b430b754dcc519d2c9ef6994af529136ab08a3076b50b965d41e62",
+    "unchanged": true,
+    "import_sha256": "f229c181d9524e97fd9bd182a9605383e4a717dd4680353f25d4e615078345a9"
+  },
+  "artifact": {
+    "filename": "Unregelmaessige-Verben-v1.3.1-R6-SOURCE-RECOVERY-INTAKE-CHECKPOINT-2026-10-22.zip",
+    "sha256": "a43f9a7c98765ba1b61449b9bf29ddb2a362200c1d80e19fa34f875a596df5b0",
+    "bytes": 21814,
+    "members": 7,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.1-R6-SOURCE-RECOVERY-INTAKE-CHECKPOINT-2026-10-22.zip",
+    "library_file_id": "libfile_d234f55f0e10819189643622bd838bba",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
+    "internal_sha256sums": "6/6 PASS",
+    "crc": "PASS"
+  },
+  "registered_source_image_rows": {
+    "B1": 32,
+    "B2": 38,
+    "B3": 32,
+    "B4": 35,
+    "B5": 34,
+    "Y1": 43,
+    "Y2": 44
+  },
+  "expected_pngs": 7,
+  "currently_available_original_pngs": 0,
+  "expected_rows": 258,
+  "review_status": "258/258 PENDING_VISUAL_REVIEW",
+  "self_tests": {
+    "missing_image_detection": "PASS",
+    "substitute_valid_png_refuses_source_attestation": "PASS",
+    "valid_image_structure_is_not_identity": "ENFORCED"
+  },
+  "r6_stale_field_detected": {
+    "embedded_file": "03-Source-Provenance/RAW-SOURCE-DEPENDENCY-LEDGER.json",
+    "field": "current_import_sha256",
+    "embedded_value": "f41b360ef306658627343d0a71428c3bb35a0e6c239450888673a186a2e7618a",
+    "correct_r6_import_sha256": "f229c181d9524e97fd9bd182a9605383e4a717dd4680353f25d4e615078345a9",
+    "disposition": "HISTORICAL_STALE_IMPORT_REFERENCE_RECORDED_NOT_MUTATED"
+  },
+  "gates": {
+    "source_visual_fidelity": "BLOCKED_7_PNG_MISSING",
+    "stage4_full": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "final": false
+  },
+  "next_action": "Obtain exact original seven 2026-08-01 PNGs, run intake checker (which never promotes source), visually compare all 258 occurrences to original pixels and record independent source attestation. Do not replace by unrelated sources or legacy JSON."
+}

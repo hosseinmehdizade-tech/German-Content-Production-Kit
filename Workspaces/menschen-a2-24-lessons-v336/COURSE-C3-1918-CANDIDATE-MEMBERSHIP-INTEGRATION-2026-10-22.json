@@ -1,0 +1,70 @@
+{
+  "schema": "gcpk-menschen-a2-course-c3-integrated-content-candidate@1.0.0",
+  "date": "2026-10-22",
+  "scope": "Menschen-A2-L01..L24",
+  "stage": "COURSE_C3_INTEGRATED_MEMBERSHIP_CONTENT_CANDIDATE",
+  "status": "PASS_SCOPED_NONDESTRUCTIVE_1918_UNIQUE_1974_LESSON_MEMBERSHIPS__NOT_IMPORT_READY",
+  "quality": "PASS_SCOPED_C3_STRUCTURAL_NONMUTATING__FULL_IMPORT_SRS_ACCEPTANCE_BLOCKED",
+  "artifact": {
+    "filename": "Menschen-A2-C3-1918-INTEGRATED-CONTENT-CANDIDATE-NOT-IMPORT-READY.zip",
+    "sha256": "dc0ca1390dcdb313ed8055b6a6a0e071754f3a1f59a5f12103372cd19ad0dc59",
+    "bytes": 41023163,
+    "zip_members": 19,
+    "manifest_entries": 17,
+    "sha256_entries": 18,
+    "delivery_surface": "CURRENT_CHAT_USER_DELIVERY",
+    "library_persistence": "NOT_ATTEMPTED_KNOWN_STORAGE_LIMIT",
+    "contains_app": false,
+    "import_ready": false
+  },
+  "parents": {
+    "prior_recovery_zip_sha256": "dcd6796e471dfd14c87582b51554458c3fc91110700ac124ddf948af7ecd856f",
+    "parent_recovery_receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-A1-PARENT-140-RECOVERY-2026-10-22.json",
+    "C1_zip_sha256": "9550524c68add21766abf1f984ce6a0179158bcc1f08a1afba0ab8a7df1b61f4",
+    "C2_original_binary": "NOT_AVAILABLE",
+    "A2_L12_official_outer": "NOT_AVAILABLE_PINNED_BACKUP_ONLY"
+  },
+  "counts": {
+    "A2_lesson_count": 24,
+    "unique_ids": 1918,
+    "A2_native_ids": 1778,
+    "A1_original_protected_ids": 140,
+    "A2_membership_occurrences": 1974,
+    "shared_ids": 55,
+    "additional_occurrences": 56,
+    "HF2_display_variants_separate": 22,
+    "retired_original_A1_id_count": 1
+  },
+  "method": {
+    "candidate_tsv_cols": 23,
+    "scoped_change": "Only source-authored custom_fields.course_memberships unioned. All other first-source row fields and metadata retained in candidate.",
+    "shared_policy": "Preserve ID and first-source semantics, do not auto-apply cross-lesson presentation variants; 55 records in audit",
+    "A1_policy": "140 original A1 owner records protected in separate ledger; import not approved",
+    "retired_0385": "Historical glass material sense remains ma1m-lu-0385; current A1 v3.3.6 merged into ma1m-lu-0384. NO destructive rekey, no automatic resurrection into user profile.",
+    "unsafe_graph_1976": "Quarantined as import blocker; source row unchanged",
+    "review_srs": "NOT_ACCESSED_NOT_WRITTEN",
+    "runtime_changed": false,
+    "UI_changed": false
+  },
+  "tests": {
+    "independent_prepackage": "87/87 PASS",
+    "independent_fresh_extracted": "87/87 PASS",
+    "negative_mutation_rejections": "5/5 PASS",
+    "zip_CRC": "PASS",
+    "manifest_sha256": "17/17 PASS",
+    "roundtrip": "PASS",
+    "real_native_browser_IDB": "NOT_TESTED",
+    "runtime_current": "v481-R115",
+    "last_fully_verified": "v466-R100",
+    "full_course_global_FINAL": false
+  },
+  "blockers": [
+    "A1 retired ID 0385 requires safe SRS-preserving migration/identity policy before real import",
+    "Existing A1 original card identity/metadata must not be overwritten by the A2 scoped rows",
+    "C2 original binary unavailable; review/reconstruction must not claim byte parity",
+    "ma1m-lu-1976 related graph targets outside A2 must not be imported globally",
+    "Native v481 real IndexedDB/SRS full-course protected import not executed",
+    "A2-L12 official outer ZIP missing, recovered backup remains bounded"
+  ],
+  "next_action": "Implement and independently test a non-destructive v481-R115 course content merge method with protected 140 A1 existing IDs, explicit retained 0385 legacy sense, 55 multi-memberships, no unsafe flat graph edges, no SRS reset; only then approve a true import-ready TSV and final package."
+}

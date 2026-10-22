@@ -1,0 +1,72 @@
+{
+  "schema": "gcpk-a2-c3-v482-isolated-idb-origin-test-gate@1.0.0",
+  "date": "2026-10-22",
+  "stage": "COURSE-C3-V482-NATIVE-IDB-ACCEPTANCE-GATE",
+  "status": "BLOCKED_ENVIRONMENT_ERR_BLOCKED_BY_ADMINISTRATOR__STATIC_SYNTHETIC_VERIFIED_NOT_IMPORT_READY",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "parent": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V482-CAS-DRYRUN-PREPARE-2026-10-22.json",
+    "artifact_sha256": "ba4b3ee22541419d2a8d04020c35a62fa821911ee57f9e783814045376a6141d"
+  },
+  "artifact": {
+    "name": "Menschen-A2-C3-V482-NATIVE-IDB-GATE-BLOCKED-NOT-IMPORT-READY.zip",
+    "sha256": "966ddb596dc9a545b79e62584bed1b2b6895c540820e24c421775509139afd85",
+    "bytes": 43419738,
+    "members": 20,
+    "manifest_entries": 18,
+    "sha256s_entries": 19,
+    "delivery_surface": "CURRENT_CHAT_SANDBOX",
+    "library_persistence": "NOT_ATTEMPTED",
+    "contains_runtime": false,
+    "import_ready": false
+  },
+  "runtime": {
+    "current": "v482-R116",
+    "sha256": "825e2823a16df9caa1e17d83a5ce46725597816a3e920c72d892f8fef13f9fa1",
+    "last_fully_verified": "v466-R100",
+    "app_changed": false
+  },
+  "counts": {
+    "native_A2": 1778,
+    "protected_A1": 140,
+    "unique_A2_course": 1918,
+    "lesson_memberships": 1974,
+    "shared_identities": 55,
+    "A1_A2_memberships": 145,
+    "A2_native_memberships": 1829,
+    "legacy_0385": "PRESERVED_SEPARATE_FROM_0384"
+  },
+  "qa": {
+    "preflight_source_exact_sha256": "PASS",
+    "runtime_current_exact_sha256": "PASS",
+    "source_static": "12/12 PASS",
+    "isolated_test_runner_static_negative": "8/8 PASS",
+    "source_code_presence_gates": "11/11 PASS (static only)",
+    "v482_runtime_synthetic_regression": "33/33 PASS",
+    "fresh_extract_crc": "PASS",
+    "manifest_parity": "18/18 PASS",
+    "sha256s_parity": "19/19 PASS",
+    "native_browser_navigation": "BLOCKED: Page.goto net::ERR_BLOCKED_BY_ADMINISTRATOR at isolated random 127.0.0.1 localhost",
+    "real_native_IDB_commit": "NOT_EXECUTED",
+    "native_reload": "NOT_EXECUTED",
+    "actual_rollback": "NOT_EXECUTED",
+    "primary_profile": "NOT_OPENED"
+  },
+  "tooling": {
+    "path": "05-QA-Tests/native_v482_isolated_acceptance.py",
+    "goal": "Fresh temporary local HTTP origin + fresh Playwright browser context, exact runtime SHA, 140 synthetic A1, 1778 synthetic A2, original 145 A2 memberships, app official GFP_DURABLE_MUTATION CAS, reload, stale-writer and abort checks",
+    "current_environment": "BLOCKED_BEFORE_INIT",
+    "user_data_profile": "NEVER_TOUCH"
+  },
+  "boundaries": {
+    "production_import_ready": false,
+    "global_FINAL": false,
+    "C2_original_binary": "UNAVAILABLE",
+    "A2_L12_original_outer": "MISSING_BACKUP_PARITY_ONLY",
+    "raw_source_lesson_locks": "UNCHANGED",
+    "release_file_library_roundtrip": "NOT_VERIFIED",
+    "production_backup": "NOT_VERIFIED",
+    "primary_user_SRS": "NEVER_ACCESSED"
+  },
+  "next_action": "Run included exact v482 isolated native acceptance tool in an environment that permits a fresh random loopback origin (not user's profile). First resolve any new native failures from its report. Once isolated CAS/commit/reload/rollback PASS, separately verify genuine production backup and profile SRS authority before any live import; keep 0385 and 140 A1 originals protected."
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "gcpk-menschen-a2-course-c3-v482-membership-cas-readonly-preflight@1.0.0",
+  "date": "2026-10-22",
+  "scope": "Menschen A2 L01-L24",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "stage": "C3-V482-MEMBERSHIP-ONLY-CAS-DRYRUN-GATE",
+  "status": "PASS_SCOPED_READONLY_CAS_PREPARE__NATIVE_INDEXEDDB_COMMIT_BLOCKED__NOT_IMPORT_READY",
+  "inherited_previous": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V481-SRS-SAFE-SPLIT-PREFLIGHT-2026-10-22.json",
+  "artifact": {
+    "filename": "Menschen-A2-C3-V482-MEMBERSHIP-CAS-DRY-RUN-NOT-IMPORT-READY.zip",
+    "sha256": "ba4b3ee22541419d2a8d04020c35a62fa821911ee57f9e783814045376a6141d",
+    "bytes": 43404727,
+    "outer_members": 11,
+    "manifest_entries": 9,
+    "sha256sum_entries": 10,
+    "surface": "CURRENT_CONVERSATION_SANDBOX",
+    "library_persistence": "NOT_ATTEMPTED_STORAGE_LIMIT_KNOWN",
+    "import_ready": false,
+    "contains_runtime": false
+  },
+  "runtime": {
+    "CURRENT": "v482-R116",
+    "sha256": "825e2823a16df9caa1e17d83a5ce46725597816a3e920c72d892f8fef13f9fa1",
+    "LAST_FULLY_VERIFIED": "v466-R100",
+    "changed": false
+  },
+  "parent": {
+    "status": "PASS_SCOPED",
+    "sha256": "48290fbcc077bc54df5e5d4843292e570edd83828691634aec191dab22642d35",
+    "C2_original_binary": "UNAVAILABLE",
+    "A2_L12_original_outer": "UNAVAILABLE_BACKUP_CONTENT_PARITY_ONLY"
+  },
+  "counts": {
+    "lessons": 24,
+    "uniqueA2_ids": 1918,
+    "newA2": 1778,
+    "originalA1_protected": 140,
+    "lessonMemberships": 1974,
+    "newA2Memberships": 1829,
+    "protectedA1Memberships": 145
+  },
+  "implemented": {
+    "tool": "05-QA-Tests/prepare_membership_only.js",
+    "writesToStorage": false,
+    "returnsReadOnlyCandidate": true,
+    "guarded": [
+      "Exact v482 runtime input",
+      "verified manifest revision/generation/hash pin predicate",
+      "syntactic verified backup proof (NOT a real cryptographic backup attestation)",
+      "all 140 exact immutable original A1 card fields",
+      "legacy 0385 no automatic creation/rekey",
+      "1778 A2-native no collision",
+      "145 A1 additions",
+      "1974 A2 memberships",
+      "full SRS and non-library meta exact copy",
+      "conflicting lesson membership rejection",
+      "released/partial authority rejection",
+      "unrelated card safety"
+    ]
+  },
+  "qa": {
+    "post_package_fresh_extract": "PASS",
+    "synthetic_v482_parser_safe_merge": "33/33 PASS",
+    "negative_mutation_rejections": "14/14 PASS",
+    "runtime_v482_sha": "PASS",
+    "preflight_parent_archive_sha": "PASS",
+    "zip_crc": "PASS",
+    "manifest": "9/9 PASS",
+    "sha256s": "10/10 PASS",
+    "pageErrors": 0,
+    "origin_navigation": "BLOCKED_BY_ADMINISTRATOR",
+    "nativeIndexedDbCAS": "NOT_TESTED",
+    "nativeIDBReload": "NOT_TESTED",
+    "actualUserSRS": "NOT_ACCESSED"
+  },
+  "boundaries": {
+    "full_C3_import_ready": false,
+    "full_course_runtime_FINAL": false,
+    "originalA1_mutated": false,
+    "originalA2_lesson_ZIPs_mutated": false,
+    "UI_mutated": false,
+    "app_runtime_mutated": false,
+    "backup_provenance": "SYNTHETIC_ONLY",
+    "browser_origin": "OPAQUE about:blank; no IndexedDB",
+    "sourceC2BinaryUnavailable": true
+  },
+  "next_action": "Test actual isolated same-origin native v482 indexedDB generation CAS staging/publish/finalize/reload and rollback with 140 exact originals + 1778 new cards, independently verify FSRS/SRS and unrelated existing cards across reload. Never write to the real user profile or claim import-ready until verified."
+}

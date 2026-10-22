@@ -1,0 +1,65 @@
+{
+  "schema": "gcpk-menschen-a2-c3-v482-native-idb-runner-repair@1.0.0",
+  "date": "2026-10-22",
+  "scope": "Menschen-A2-L01..L24",
+  "stage": "COURSE_C3_V482_NATIVE_INDEXEDDB_TEST_RUNNER_REPAIR",
+  "status": "PASS_SCOPED_RUNNER_CORRECTED__NATIVE_INDEXEDDB_ORIGIN_BLOCKED_NOT_IMPORT_READY",
+  "parent": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V482-NATIVE-IDB-ISOLATED-GATE-2026-10-22.json",
+    "sha256": "966ddb596dc9a545b79e62584bed1b2b6895c540820e24c421775509139afd85"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-C3-V482-NATIVE-IDB-RUNNER-REPAIR-NOT-IMPORT-READY.zip",
+    "sha256": "de3b32be8aa141127a15bc1875ba65da170045b8e28d06992e73b8cadb8a0b6c",
+    "bytes": 43471467,
+    "members": 19,
+    "delivery": "CURRENT_CHAT_SANDBOX",
+    "library_persistence": "NOT_ATTEMPTED",
+    "app_bundled": false
+  },
+  "runtime": {
+    "current": "v482-R116",
+    "sha256": "825e2823a16df9caa1e17d83a5ce46725597816a3e920c72d892f8fef13f9fa1",
+    "last_fully_verified": "v466-R100",
+    "app_modified": false,
+    "ui_modified": false
+  },
+  "finding": {
+    "prior_runner_bug": "Compared stable(before.cards) array with stable(after.store.cards) SRS object; false negative on valid commit",
+    "correction": "Compare SRS state object before/after and full imported cards before/after against the read-only candidate, with verified generation advancement and exact 1974 memberships",
+    "added": "Cryptographic SHA-256 parity across pre-reload/reload content, live card list, FSRS/SRS, activity/daily/settings; import-classified label; stale writer post-attempt generation/content verification.",
+    "previous_runner_native_pass_claim": "NONE"
+  },
+  "qa": {
+    "v482_actual_parser_synthetic": "33/33 PASS",
+    "source_input_static": "12/12 PASS",
+    "static_negative": "8/8 PASS",
+    "runner_JS_control_flow_mock": "17/17 PASS",
+    "previous_false_negative_reproduced": true,
+    "post_package_fresh_extract": "PASS",
+    "manifest_crc_sha256": "PASS",
+    "native_browser_origin": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "native_IDB_commit": "NOT_EXECUTED",
+    "native_reload": "NOT_EXECUTED",
+    "actual_primary_profile": "NOT_OPENED"
+  },
+  "data_counts": {
+    "lessons": 24,
+    "unique_ids": 1918,
+    "native_A2": 1778,
+    "protected_A1": 140,
+    "memberships": 1974,
+    "A1_memberships": 145,
+    "A2_memberships": 1829,
+    "legacy_0385": "PRESERVED"
+  },
+  "boundaries": {
+    "import_ready": false,
+    "global_final": false,
+    "C2_original_binary": "UNAVAILABLE",
+    "A2_L12_official_outer_zip": "MISSING_BACKUP_CONTENT_HASH_PARITY_ONLY",
+    "real_backup_verification": "NOT_DONE",
+    "SRS_real_profile": "NOT_TOUCHED"
+  },
+  "next_action": "Run corrected isolated v482 runner at a permitted freshly randomized loopback origin, using a disposable browser context only; confirm native IndexedDB CAS, commit, post-reload complete 1918/1974 content and FSRS/SRS hashes, stale writer and rollback. Then separately verify real backup/profile authority before any import."
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "gcpk-menschen-a2-v482-windows-native-harness-boot-root-cause@1.0.0",
+  "date": "2026-10-22",
+  "scope": "Isolated v482-R116 Playwright native IndexedDB runner only",
+  "status": "ROOT_CAUSE_CONFIRMED_PATCH_STATIC_PASS__NATIVE_INDEXEDDB_PENDING_USER_EXECUTION",
+  "evidence": {
+    "user_report_filename": "native-v482-result(1).json",
+    "static_checks": "12/12 PASS",
+    "runtime_zip_sha256": "825e2823a16df9caa1e17d83a5ce46725597816a3e920c72d892f8fef13f9fa1",
+    "report_error": "Page.wait_for_function: Timeout 60000ms exceeded.",
+    "native_indexeddb": "NOT_TESTED",
+    "user_profile_touched": false
+  },
+  "root_cause": {
+    "old_predicate": "window.GFP_TEST_API && window.GFP_PERSISTENCE_V365 && window.GFP_DURABLE_MUTATION",
+    "unreachable_global": "window.GFP_DURABLE_MUTATION",
+    "correct_public_api": "window.GFP_PERSISTENCE_V365.durable",
+    "v3_invalid_references": 5,
+    "verified_runtime_index_source": true,
+    "note": "The internal const GFP_DURABLE_MUTATION is not published on window; public v365 persistence facade exposes the exact same durable object. Other v3 call sites also used the missing window global."
+  },
+  "fix": {
+    "file": "run_native_isolated_v4_fix.py",
+    "sha256": "1ef865922a6953b1ae6b12df5061d8abef1a771acf0a700c7d86a3b7fdc85412",
+    "surface": "CURRENT_CHAT_SANDBOX_SMALL_PY_FILE",
+    "mechanism": "Verify pinned v3 test runner SHA, correct five global references in temporary copy, use v365 public facade, report more informative boot diagnostics, keep upstream sources/app untouched",
+    "static_checks": "8/8 source contract PASS; 12/12 original source checks PASS after temporary patch",
+    "browser_native_status": "NOT_RETESTED_PENDING_USER"
+  },
+  "boundaries": {
+    "stage7_lesson_archives_unchanged": true,
+    "current_app": "v482-R116",
+    "app_runtime_mutated": false,
+    "real_profile_SRS_untouched": true,
+    "actual_indexedDb_commit": false,
+    "production_import_ready": false
+  },
+  "next_action": "Have user run small v4 fix from existing extracted v3 folder with exact runtime zip and upload resulting native-v482-result-v4.json. Only then evaluate IndexedDB CAS, reload and rollback; no new content ZIP or user profile import."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "gcpk-menschen-a2-c3-v482-browser-environment-diagnostic@1.0.0",
+  "date": "2026-10-22",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "scope": "V482 C3 isolated native IndexedDB acceptance only. No content/runtime mutation or library import.",
+  "status": "BLOCKED_BY_EXECUTION_ENVIRONMENT__REAL_NATIVE_INDEXEDDB_UNTESTED",
+  "pinned_artifacts": {
+    "runtime": {
+      "file": "GFP-v482-R116-CONTROL-RECONCILED-CANDIDATE.zip",
+      "sha256": "825e2823a16df9caa1e17d83a5ce46725597816a3e920c72d892f8fef13f9fa1",
+      "sha256_verified_this_turn": true,
+      "zip_crc": "PASS",
+      "zip_member_count": 185
+    },
+    "c3": {
+      "file": "Menschen-A2-C3-V482-NATIVE-IDB-RUNNER-V3-HARDENED-NOT-IMPORT-READY.zip",
+      "sha256": "edbe6e5bca4a5dfb299c919f8c90e524d9ac4c5e5e3f2e3f5a45e49e3a03ce07",
+      "sha256_verified_this_turn": true,
+      "zip_crc": "PASS",
+      "zip_member_count": 25
+    }
+  },
+  "tests_executed_this_turn": {
+    "node_runner_logic_v2": "17/17 PASS",
+    "node_abort_stale_v3": "10/10 PASS",
+    "chromium_about_blank": "NAVIGATION_OK_BUT_INDEXEDDB_SECURITYERROR_OPAQUE_ORIGIN",
+    "chromium_data_uri": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "chromium_localhost": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "chromium_127_0_0_1": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "chromium_localhost_subdomain": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "chromium_external_test_domain": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "playwright_route_fulfilled_navigation": "STILL_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "chromium_extension_service_worker": "UNAVAILABLE_ZERO_WORKERS_AFTER_MULTIPLE_WAITS",
+    "firefox_and_qt_webengine": "NOT_INSTALLED_OR_NOT_AVAILABLE",
+    "exact_app_native_IDB_commit": "NOT_EXECUTED",
+    "exact_app_real_reload": "NOT_EXECUTED",
+    "exact_app_rollback": "NOT_EXECUTED"
+  },
+  "preserved_guarantees": {
+    "A2_unique_cards": 1918,
+    "A2_lesson_memberships": 1974,
+    "A1_protected_ids": 140,
+    "A2_native_new_ids": 1778,
+    "SRS_personal_touched": false,
+    "A1_lesson_lock_unchanged": true,
+    "app_ui_unchanged": true,
+    "app_runtime_unchanged": true
+  },
+  "decision": "Do not repeatedly retry blocked navigation or repackage identical synthetic results. Preserve runner v3. Native test must use permitted fresh isolated same-origin desktop Chromium, never a real user profile, and must establish CAS, commit, reload, stale-writer and abort with full SRS/meta hash parity. This is a genuine environment boundary, not evidence of app correctness or defect.",
+  "next_action": "Execute existing pinned C3 v3 runner and exact v482 app ZIP in a trusted permitted temporary Chrome/Chromium profile with random localhost port. After isolated native PASS, independently verify genuine backup and production profile authority before any real import. No requests to bypass administrator/browser policy."
+}

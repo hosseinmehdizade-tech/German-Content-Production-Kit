@@ -1,0 +1,63 @@
+{
+  "schema": "gcpk-a2-c3-v482-native-runner-v3-hardening@1.0.0",
+  "date": "2026-10-22",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "stage": "COURSE_C3_V482_NATIVE_INDEXEDDB_ABORT_AND_STALE_RUNNER_HARDENING",
+  "status": "PASS_SCOPED_HARNESS_REGRESSION__NATIVE_INDEXEDDB_ORIGIN_BLOCKED_NOT_IMPORT_READY",
+  "parent": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3-V482-NATIVE-IDB-RUNNER-REPAIR-2026-10-22.json",
+    "artifact_sha256": "de3b32be8aa141127a15bc1875ba65da170045b8e28d06992e73b8cadb8a0b6c"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-C3-V482-NATIVE-IDB-RUNNER-V3-HARDENED-NOT-IMPORT-READY.zip",
+    "sha256": "edbe6e5bca4a5dfb299c919f8c90e524d9ac4c5e5e3f2e3f5a45e49e3a03ce07",
+    "bytes": 43510790,
+    "files": 25,
+    "manifest_entries": 23,
+    "sha256s_entries": 24,
+    "library_persistence": "NOT_ATTEMPTED_STORAGE_LIMIT_KNOWN",
+    "delivery": "CURRENT_CHAT_SANDBOX",
+    "import_ready": false,
+    "contains_app_runtime": false
+  },
+  "root_cause": "V2 injected-abort test compared only active cards and generation. It could falsely pass even if meta/SRS changed after a failed durable mutation. V3 compares complete verified store cards SRS, entire meta, active cards, manifest, injected marker, then reload hashes.",
+  "changes": [
+    "Add import-classified stale-writer negative label and full persisted fingerprint parity",
+    "After precommit abort require exact full-store and manifest parity",
+    "After abort reload and compare generation, content, SRS, progress metadata and 1974 memberships",
+    "Add pinned nested-upstream extraction, SHA and path checks in cross-platform runner wrapper",
+    "Separate precommit abort coverage from untested postpublication rollback"
+  ],
+  "qa": {
+    "v482_actual_parser_synthetic": "33/33 PASS",
+    "legacy_runner_node_mock": "17/17 PASS",
+    "new_abort_stale_node_mock": "10/10 PASS",
+    "exact_input_checks": "12/12 PASS",
+    "fresh_extracted_manifest": "23/23 PASS",
+    "fresh_extracted_sha256s": "24/24 PASS",
+    "fresh_extracted_mock_test_runs": "27/27 PASS",
+    "isolated_local_origin": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "native_IDB_commit": "NOT_EXECUTED",
+    "native_reload": "NOT_EXECUTED",
+    "native_precommit_abort": "NOT_EXECUTED",
+    "native_postpublication_rollback": "NOT_EXECUTED",
+    "real_profile": "NOT_OPENED"
+  },
+  "data": {
+    "unique_cards": 1918,
+    "A2_native": 1778,
+    "A1_protected": 140,
+    "A2_memberships": 1974,
+    "historical_glass_material": "ma1m-lu-0385 PRESERVED",
+    "locked_lesson_zip_mutations": 0,
+    "app_runtime_mutations": 0,
+    "personal_SRS_mutations": 0
+  },
+  "runtime": {
+    "current": "v482-R116",
+    "exact_artifact_sha256": "825e2823a16df9caa1e17d83a5ce46725597816a3e920c72d892f8fef13f9fa1",
+    "last_fully_verified": "v466-R100",
+    "release_final": false
+  },
+  "next_action": "Run exact v482 C3 v3 isolated runner on a permitted fresh localhost origin with a disposable browser context; require native generation CAS, persisted 1918 cards and 1974 memberships, full SRS/meta hashes after reload, stale writer rejection and precommit abort. Postpublication rollback and verified real user backup/profile remain separately blocked. No production import."
+}

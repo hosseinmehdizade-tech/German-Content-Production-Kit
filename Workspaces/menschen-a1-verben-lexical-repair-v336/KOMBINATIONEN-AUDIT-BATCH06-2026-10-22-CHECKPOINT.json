@@ -1,0 +1,82 @@
+{
+  "schema": "gcpk-a1-verben-combinations-audit-batch06-checkpoint@1.0.0",
+  "date": "2026-10-22",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "track": "independent-kombinationen-audit",
+  "milestone": "KOMBINATIONEN_BATCH06_24_SCOPED_DUDEN_USAGE_136_CUMULATIVE",
+  "status": "PASS_SCOPED_QA_WITH_TWO_OPEN_SEMANTIC_FOLLOWUPS__LIBRARY_EXACT_VERIFIED__NOT_FINAL",
+  "artifact": {
+    "filename": "Menschen-A1-Verben-Kombinationen-Independent-Audit-Batch06-2026-10-22.zip",
+    "sha256": "502296d79d1bcfedd434665563a7645a47ca2b9fc1ef560c9a382a61291c1665",
+    "size_bytes": 93466,
+    "zip_members": 12,
+    "sha256_manifest_entries": 11,
+    "library_file_id": "libfile_2683aeb47f8c8191bec744d2658a5740",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-Kombinationen-Independent-Audit-Batch06-2026-10-22.zip",
+    "library_persistence": "EXACT_SHA256_AND_BYTE_COMPARE_PASS"
+  },
+  "parent": {
+    "batch05_sha256": "102ec072a8dd56a14324486ec88699f58c673ef2adc41574f12f38a90cf1fc38",
+    "current_main_repair68_sha256": "ccc8eb7ba95bbf0fc8d222b189d87d6e394fb32b3bdda5fc34aa4866c78e5b14"
+  },
+  "counts": {
+    "cards": 310,
+    "examples": 1240,
+    "accepted_combinations": 1934,
+    "prior_scoped": 112,
+    "new_scoped": 24,
+    "scoped_cumulative": 136,
+    "pending_itemwise": 1798,
+    "new_duden_pattern": 18,
+    "new_compositional_only": 5,
+    "new_morphological_normalization": 1,
+    "open_gloss_or_attachment_followups": 2
+  },
+  "cases": {
+    "verbs": [
+      "überlegen",
+      "hören",
+      "lesen",
+      "sprechen"
+    ],
+    "source_entries": [
+      "https://www.duden.de/rechtschreibung/ueberlegen_ueberlegt",
+      "https://www.duden.de/rechtschreibung/hoeren",
+      "https://www.duden.de/rechtschreibung/lesen_dozieren",
+      "https://www.duden.de/rechtschreibung/sprechen"
+    ]
+  },
+  "qa": {
+    "sha256_manifest": "11/11 PASS",
+    "zip_crc": "PASS",
+    "fresh_independent_python_replay": "PASS",
+    "old_112_decisions_preserved": "EXACT_BYTES",
+    "backend_projection_tsv": "1934/1934 PASS",
+    "examples": "1240/1240 PASS",
+    "library_readback": "EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "followups": [
+    {
+      "card_id": "ma1m-lu-0038",
+      "ordinal": 8,
+      "de": "nicht lange überlegen",
+      "issue": "Persian gloss includes pragmatic no-hesitation decision meaning that is contextual rather than merely compositional"
+    },
+    {
+      "card_id": "ma1m-lu-0066",
+      "ordinal": 7,
+      "de": "leise Musik hören",
+      "issue": "Possible modifier attachment ambiguity; Persian low-volume music meaning plausible but not sole reading"
+    }
+  ],
+  "scope_limits": [
+    "These are German lexical-usage checks: do not infer full original coursebook provenance, itemwise Persian certification, or runtime PASS.",
+    "The Duden source examples are distinguished from semantic patterns and productive manner adverbs.",
+    "No learner/import/app mutation."
+  ],
+  "runtime_current_at_review": "v482-R116",
+  "runtime_stage6": "NOT_RUN",
+  "main_repair68_mutated": false,
+  "final": false,
+  "next_action": "Keep Batch06 immutable; continue read-only Batch07 from 1798 pending; separately adjudicate two Persian/attachment flags before any learner content change."
+}

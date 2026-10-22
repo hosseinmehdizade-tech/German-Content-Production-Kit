@@ -1,0 +1,90 @@
+{
+  "schema": "menschen-b1-l24-stage1-stage2-onepass-source-local@1",
+  "date": "2026-10-22",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "lesson": "B1-L24",
+  "framework": "v3.3.6",
+  "milestone": "B1_L24_STAGE1_152_SOURCE_ROWS_149_MP3_SHA_STAGE2_106_HEADS_95_NEW_11_REUSE_59_USAGES",
+  "status": "PASS_STAGE1_SOURCE_FIDELITY_AND_STAGE2_SOURCE_LOCAL_IDENTITY__STAGE3B_NOT_STARTED",
+  "parent": {
+    "source_manifest": "Workspaces/menschen-a1a2b1-memrise/00-source/SOURCE-MANIFEST.json",
+    "raw_CSV_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "raw_RAR_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L24-v3.3.6-STAGE1-STAGE2-SOURCE-IDENTITY-ONEPASS-CANDIDATE.zip",
+    "sha256": "7ccfaae243795210c7380334d878402db227ba1b7e20daaaf2c24f0e4bb3326e",
+    "size_bytes": 236333,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L24-v3.3.6-STAGE1-STAGE2-SOURCE-IDENTITY-ONEPASS-CANDIDATE.zip",
+    "library_file_id": "file_0000000064c8824694a4305819d946c0",
+    "library_stable_id": "libfile_bf9d19153f0c8191bfe39bda89f16f88",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "scope": {
+    "source_rows": 152,
+    "source_row_range": [
+      7698,
+      7849
+    ],
+    "source_segments": {
+      "81": 91,
+      "82": 61
+    },
+    "original_source_examples": 78,
+    "original_audio_MP3_references": 149,
+    "source_original_audio_absent_rows": [
+      7720,
+      7743,
+      7799
+    ],
+    "source_root_rows": 93,
+    "source_multihead_rows": 12,
+    "source_local_heads": 106,
+    "provisional_new_IDs": 95,
+    "source_new_lexical_IDs": 93,
+    "source_new_grammar_IDs_held": 2,
+    "prior_exact_lemma_IDs_read_only": 11,
+    "source_usage_rows_not_force_promoted": 59,
+    "stage3_trilingual_authored": 0,
+    "source_audio_binaries_redistributed": 0,
+    "app_UI_or_locked_card_modified": false
+  },
+  "safety_decisions": [
+    "Distinct German verb reifen from historical noun Reifen by POS, not lowercase lemma alone",
+    "Attach sich abseits von ... halten to prep phrase abseits von, not football das Abseits",
+    "Attach Ich zweifele nicht daran to verb zweifeln",
+    "Adjective zufriedenstellend distinct from verb zufriedenstellen; preserve original spaced source form",
+    "Source row 7844 um bis zu 30 Mal is quantitative, not grammar um ... zu",
+    "Hold als ob and um ... zu for grammar authority, not ordinary lexical import"
+  ],
+  "independent_qa": {
+    "schema": "menschen-b1-l24-stage12-independent-summary@1",
+    "date": "2026-10-22",
+    "status": "PASS_SOURCE_LOCAL_STAGE1_AND_STAGE2_NOT_GLOBAL_SEMANTIC_ATTESTATION",
+    "artifact_sha256": "7ccfaae243795210c7380334d878402db227ba1b7e20daaaf2c24f0e4bb3326e",
+    "full_report_sha256": "ed4169f8ea659201fb0a7857c67f2033909fd8a47ad08dcd6ef32517dec46955",
+    "full_report_library_file_id": "file_00000000ae048211b5cdd4e0e9782a42",
+    "checks": {
+      "independent": "45/45 PASS",
+      "manifest": "15/15 PASS",
+      "archive_crc": "PASS",
+      "negative_corruptions": "5/5 CAUGHT",
+      "library_exact_byte_sha256": "PASS",
+      "source_csv_original": "SHA256 VERIFIED",
+      "source_rar_original": "SHA256 VERIFIED",
+      "original_mp3_binary_sha256": "149 VERIFIED AGAINST SOURCE RAR",
+      "source_original_152_rows_DE_FA_example_audio": "PASS"
+    },
+    "quality_limits": [
+      "New IDs provisional; global sense-level equivalence not fully attested",
+      "Two German grammar constructions als ob and um ... zu held from ordinary vocabulary import",
+      "Whole-row source Persian original is not automatically a vetted separate lemma gloss",
+      "No 93 trilingual lexical cards or four-examples per card authored in Stage3B yet",
+      "No real v482 importer IndexedDB/Study/Quick or source audio playback acceptance",
+      "All old/locked cards remain untouched"
+    ],
+    "mutation_scope": "In-process, focused checks for changed source Persian, duplicate new ID, wrong abseits sense link, grammar forced into lexicon, deleted source row; not a full independent linguistic audit"
+  },
+  "qa_summary_path": "Workspaces/menschen-b1-24-lessons-v336/B1-L24-STAGE1-STAGE2-INDEPENDENT-QA-SUMMARY.json",
+  "next_action": "Directly author 93 new lexical DE/FA/EN cards and four original authored trilingual examples per lexical card, with source-use adjudication and natural Kombinationen/CLOSED_NO_FORCE. Route two held grammar constructs to grammar authority without changing original Memrise data. Then Stage3C review and Stage4 independent audit; only later target exact CURRENT v482 for importer. Keep B1 L01..L18 LOCKED and L19..L23 separate."
+}

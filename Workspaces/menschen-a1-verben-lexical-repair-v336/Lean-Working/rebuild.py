@@ -52,4 +52,4 @@ for name,b in payloads.items():
  actual=hashlib.sha256(b).hexdigest()
  assert actual==expected[name]["after_sha256"],(name,actual)
  (work/name).write_bytes(b)
-print("PASS scoped 15 edits, 310 IDs, 1934 items, all 3 SHA256 exact; NOT FINAL")
+print("PASS scoped 20 edits, 310 IDs, 1934 items, all 3 SHA256 exact; NOT FINAL")

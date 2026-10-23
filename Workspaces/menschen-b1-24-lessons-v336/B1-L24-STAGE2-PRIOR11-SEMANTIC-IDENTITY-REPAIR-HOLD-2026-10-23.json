@@ -1,0 +1,104 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/Stage2-prior-reference-semantic-identity",
+  "milestone": {
+    "name": "B1-L24 all-11 prior references fully audited; directional rein prior-ID reuse defect",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "The immutable Stage2 source row 7785 targets B1-L23 adjective rein ID mb1m-lu-4066, while the B1-L24 text 'Lass mich rein!' requires a separate directional adverb. Exact authoritative PASS0023 ZIP is not accessible: earlier Git receipt records Library upload failure. Repair requires a Stage2 successor and collision-free ID allocation against latest bytes."
+  },
+  "scope": {
+    "unit": "B1-L24 registered prior-ID reuse candidate",
+    "total_units": 11
+  },
+  "progress": {
+    "reviewed_unique": 11,
+    "unreviewed": 0,
+    "dispositions": {
+      "valid_existing_lexical_identity": 9,
+      "one_lemma_additional_sense_needs_successor": 1,
+      "reject_cross_wordclass_ID_reuse": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Source original Memrise RAR/CSV exact; all 11 Stage2 read-only candidate links cross-checked with source rows and actual prior card artifacts",
+      "Eight previously verified actual-card identities plus three newly checked: einsetzen from exact B1-L18 LOCKED, Detail from exact B1-L17 LOCKED, rein from B1-L23 non-LOCKED neutral Stage5 candidate",
+      "Confirmed rein adjective versus rein colloquial directional adverb in Duden with separate entries; direct mismatch to prior card headword class and Persian sense",
+      "Pflanzen einsetzen documented Duden plant-in-soil meaning; keep one existing lemma card under MEM-009, propose extension via successor only",
+      "16/16 scoped structural/semantic invariants PASS including expected rejection of one wrong prior reuse; 4/4 Library readback exact SHA256",
+      "No original source, locked artifact, app UI/runtime, B1-L23 or PASS0023 mutation performed"
+    ],
+    "stage2_source_inventory_152": "CLOSED",
+    "stage2_semantic_identity": "REPAIR_REQUIRED",
+    "stage3c": "BLOCKED",
+    "stage4": "NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6_current_v483": "NOT_RUN",
+    "stage7": "NOT_LOCKED"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "4_OF_4_BYTE_EXACT",
+    "resume_pointer": "Official Workspaces/menschen-b1-24-lessons-v336/B1-L24-LATEST.json PASS0023 SHA256 35704cba08e1d3963d472bc862df0c7b9526660f1cd69e05b6af4f1c5ac81b34; first find exact binary then fix Stage2 source row 7785 rein directional adverb separate from existing B1-L23 adjective mb1m-lu-4066. Preserve B1-L24 raus mb1m-lu-4167 and all LOCKED. Do not allocate an ID or project to current runtime before verified current-authority merge.",
+    "artifacts": [
+      {
+        "name": "B1-L24-PRIOR11-REAL-AUTHORITY-LEDGER.json",
+        "sha256": "0953356c0e563560b799ed5078d4a0dc19b3360834cbdd3a21bd92f6ff75cba0",
+        "lib_id": "libfile_89e39ae252908191bb257a91478023a6"
+      },
+      {
+        "name": "B1-L24-PRIOR11-REPAIR-QA.json",
+        "sha256": "6024f0abbca8c234c4ab8040b109ac3cb45d68aaf60acacde5e5f16a0c97174c",
+        "lib_id": "libfile_bb8db1abe34c8191ac8822fd072b49f8"
+      },
+      {
+        "name": "B1-L24-PRIOR11-REPAIR-HANDOFF.json",
+        "sha256": "0a05c74efd622cde1ca72d2f752295cf27455cb0178362f401d56dc730418114",
+        "lib_id": "libfile_926c21f1e5dc8191a224ae9a0b9d19bb"
+      },
+      {
+        "name": "B1-L24-PRIOR11-OUTCOME-RECEIPT.json",
+        "sha256": "e4ff663f641a62c21d695448bb6234b622f67ed6d9e11cc730eea97be4d451c5",
+        "lib_id": "libfile_30b7756b1e9c8191be27efebb656b27f"
+      }
+    ]
+  },
+  "evidence": {
+    "original_source_row": 7785,
+    "source_de": "Lass mich rein! / rein und raus",
+    "source_fa": "بزار بیام تو",
+    "bad_prior_id": "mb1m-lu-4066",
+    "bad_prior_origin": "B1-L23 current scoped candidate, not LOCKED",
+    "bad_prior_card_word_class": "adjective",
+    "source_rein_word_class": "colloquial directional adverb",
+    "prior_adjective_card_semantic": "rein = pure/clean/purely",
+    "new_adverb_id": "NOT_ALLOCATED",
+    "collocated_raus_existing_id": "mb1m-lu-4167",
+    "plant_case": {
+      "source_row": 7699,
+      "prior_id": "mb1m-lu-0326",
+      "decision": "same lemma, new meaning, no identity split"
+    },
+    "separate_nouns": {
+      "row": 7833,
+      "old_detail_id": "mb1m-lu-2465",
+      "distinct_einzelheit_id": "mb1m-lu-4190"
+    }
+  },
+  "external_evidence": [
+    "https://www.duden.de/rechtschreibung/rein_herein",
+    "https://www.duden.de/rechtschreibung/rein_sauber_nur_eindeutig_ganz",
+    "https://www.duden.de/rechtschreibung/einsetzen"
+  ],
+  "authority": {
+    "current_lesson_latest_git_sha": "fa5b04153d65bf1c6d7739481b35950ebb773210",
+    "current_lesson_latest_milestone": "B1_L24_PASS0023_101_ROUTINE_KOMBI_MODEL_REVIEW_11_DERIVED_FIELD_EDITS_4_HOLDS",
+    "current_latest_binary_sha256": "35704cba08e1d3963d472bc862df0c7b9526660f1cd69e05b6af4f1c5ac81b34",
+    "shared_global_latest_untouched": true,
+    "locked_originals_untouched": true
+  },
+  "next_action": "Stage2 successor identity correction: do not merge rein adjective and rein directional adverb. Recover verified PASS0023 and validate exact predecessor hashes/ID namespace; repair only occurrence-row 7785 link, allocate new ID for rein directional adverb, update dependencies and independent QA before Stage3C; maintain older 152-row source inventory closure separately."
+}

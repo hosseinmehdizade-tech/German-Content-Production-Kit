@@ -1,0 +1,87 @@
+{
+  "schema": "menschen-a2-stage4-r67-multireviewer-handoff@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": "R67_TEN_DISJOINT_OFFLINE_REVIEW_BATCHES_WITH_STRICT_PARTIAL_EXPORT_MERGE",
+  "status": "PASS_PARTITION_PRODUCTION_AND_NEGATIVE_MERGE_QA__ZERO_QUALIFIED_EXPERT_SIGNOFF__STAGE4_BLOCKED",
+  "content_authority": {
+    "milestone": "STAGE4_R66_RECHNUNG_EN_INVOICE_CORRECTION_AND_243_SYNONYM_MODEL_TRIAGE",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R66-RECHNUNG-INVOICE-REVIEW-REBOUND-2026-10-23.json",
+    "zip_sha256": "630bfcd30be7439f397c634ed7c5f197db54833455a88569b27b7ef79c73a21b",
+    "content_unchanged": true,
+    "candidate_sha256": "77e29cbe28803b8534ad4e6cc0ece16df639a8aa01c98c116fd3ce114ebe59a7",
+    "review_data_fingerprint": "794ade6af612bce219d47a0b90f0ebff90f40ef9cf09f65b774c4f7e277886df",
+    "review_parent_zip_sha256": "4915e69dd77444f3103a5679aee43a2600cea7ab9b2bd438a0fe723da42a16d7"
+  },
+  "handoff": {
+    "filename": "Menschen-A2-Verben-R67-10-Batch-Independent-Review-Handoff-2026-10-23.zip",
+    "sha256": "84299acfdd23649c114d01068724e3ffcc404a24950ea0f9dbdd1286353b328d",
+    "bytes": 416094,
+    "members": 34,
+    "contains": "10 self-contained offline HTML review workbenches, 10 TSVs, 10 batch identity JSONs, full assignment manifest, QA-safe merge+packet generator, Persian/German reviewer instructions, SHA256 manifest",
+    "library_status": "UPLOAD_FAILED_STORAGE_LIMIT",
+    "library_file_id": null,
+    "conversation_file_id": "file_00000000aee48210b36af8baf631ff05",
+    "same_sha256_on_repeat_build": true
+  },
+  "packet_assignment": {
+    "batches": 10,
+    "cards": 292,
+    "unique_review_items": 1411,
+    "examples": 1168,
+    "synonyms": 243,
+    "minimum_batch_items": 129,
+    "maximum_batch_items": 157,
+    "unassigned_items": 0,
+    "duplicate_assigned_items": 0,
+    "rule": "Contiguous complete-card groups, no cross-packet split of card examples and synonyms",
+    "all_decisions": "NOT_REVIEWED",
+    "assigned_experts_known": 0
+  },
+  "durable_generator_and_merge": {
+    "path": "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R67/R67_REVIEW_PIPELINE.py",
+    "source_sha256": "229388e0ce5a7eed9fd1c556d2f1fc07478bfe72cb62a01cd579bd84bd0aa975",
+    "source_bytes": 24485,
+    "git_blob_sha1": "cde9195ec1d96c9dd98fead8f61b512fe673fd77",
+    "git_readback": "EXACT_TEXT_MATCH",
+    "source_content_hash_from_local": "SHA256_RECORDED",
+    "usage": [
+      "python R67_REVIEW_PIPELINE.py prepare --source R66.zip --output R67-review-kit.zip",
+      "python R67_REVIEW_PIPELINE.py selftest --source R66.zip",
+      "python R67_REVIEW_PIPELINE.py merge --source R66.zip --assignments R67-ASSIGNMENTS.json --input-dir reviewer-exports --report merged-report.json"
+    ]
+  },
+  "checks": {
+    "source_R66_outer_sha256": "PASS",
+    "R66_zip_crc": "PASS",
+    "R66_review_TSV_ids_and_fingerprints": "1411/1411 PASS",
+    "batch_membership": "1411/1411 NO_DUPLICATES",
+    "batch_card_grouping": "292/292 PASS",
+    "html_JS_node_syntax": "10/10 PASS",
+    "ZIP_crc": "34/34 PASS",
+    "internal_manifest": "33/33 PASS",
+    "repeat_generated_zip_sha": "EXACT_SAME_SHA256",
+    "partial_merge_positive": "PASS",
+    "negative_merging_tests": "7/7 PASS_REJECT",
+    "synthetic_1411_pass_result": "STRUCTURALLY_COMPLETE_ONLY__STAGE4_FALSE__NO_QUALIFICATION_ASSERTION",
+    "git_source_readback": "PASS",
+    "no_card_runtime_or_UI_change": true
+  },
+  "metadata_erratum": {
+    "issue": "R66 REVIEW-DATA.json retains old schema name and textual review_requirement referring to R57. This is inherited descriptive metadata, not the actual R66 candidate identity.",
+    "resolution": "R67 README explicitly supersedes the stale explanation. Validation hard-binds full R66 ZIP hash, candidate hash and data fingerprint, plus inherited parent_zip_sha256 correctly identifying R62. R66 source bundle is not silently edited.",
+    "needs_future_source_metadata_cleanup": true
+  },
+  "boundaries": {
+    "external_qualified_independent_decisions": 0,
+    "independent_unreviewed_items": 1411,
+    "stage4": "BLOCKED_NOT_FINAL",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "runtime_import": "NOT_AUTHORIZED",
+    "human_qualification_and_independence_manually_verified": false,
+    "library_files_deleted": 0
+  },
+  "next_action": "Give R67 offline shards to genuine qualified independent reviewers; obtain real itemwise decisions and required source/provenance judgment. Use R67 strict merge on exact R66 to combine partial exports; resolve every FIX_NEEDED/UNSURE, verify reviewer qualifications/independence manually. Never treat merge complete or fabricated PASS as Stage4 expert signoff. R66 remains content WIP authority."
+}

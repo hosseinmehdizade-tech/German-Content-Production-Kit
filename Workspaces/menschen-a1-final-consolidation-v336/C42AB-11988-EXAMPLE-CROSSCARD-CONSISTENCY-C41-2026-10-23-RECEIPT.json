@@ -1,0 +1,86 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42AB_FULL_HISTORICAL_11988_EXAMPLES_CROSSCARD_REUSE_CONSISTENCY_AND_PERSIAN_REPETITION_QA",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "SCOPED QA PASS ONLY for historical C41 11988 example reuse/repetition structure. Not current C42T, not global Stage4 linguistic certification."
+  },
+  "scope": {
+    "unit": "distinct_exact_german_sentence_reused_across_cards",
+    "total_units": 56,
+    "example_records_scanned": 11988,
+    "unique_cards_scanned": 2997,
+    "shared_sentence_occurrences": 115
+  },
+  "progress": {
+    "reviewed_unique": 56,
+    "unreviewed": 0,
+    "dispositions": {
+      "MATCHING_FA_EN_TRANSLATIONS_NO_EDIT": 41,
+      "DIFFERENT_BUT_ACCEPTABLE_TRANSLATIONS_NO_FORCE": 14,
+      "CONFIRMED_FA_MECHANICAL_DUPLICATION_PATCH_PROPOSED_NOT_APPLIED": 1
+    },
+    "adjacent_persian_repeat_candidates": 4,
+    "adjacent_persian_repeat_dispositions": {
+      "CONFIRMED_WORD_DUPLICATION_PATCH_PENDING": 1,
+      "STYLISTIC_REWRITE_HELD": 1,
+      "GRAMMATICALLY_VALID_KEEP_NO_FORCE": 2
+    },
+    "actual_card_modifications": 0,
+    "global_stage4_cells_promoted": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Exact historical C41 ZIP SHA256 b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95 verified, not current C42T",
+      "Complete 2997-card,11988-example C41 text & DE/FA/EN cross-card comparison: 56 repeated DE sentence groups covering 115 card-example occurrences",
+      "Exactly 41 exact-translation groups, 14 translation-variation accepted without forced normalization, 1 definite Persian repeated-word typo on ma1m-lu-1657",
+      "All 4 adjacent identical Persian token patterns manually reviewed: 1657 confirmed correction; 1357 style rewrite hold; 1729 Spielplatz / بازی بازی grammatical; 2362 possessor/object او grammatical",
+      "Original generated-example provenance preserved, no false direct Memrise text claim",
+      "Independent verifier reran 2997/11988 scan and 56/115 group evidence; six deliberate tamper cases all FAIL_CLOSED",
+      "Library rematerialized exact SHA256 2648683cd38b29d442127a3282dad71a0b94881d7e4d170f11320030cd2a5f40 and byte-identical"
+    ],
+    "proposed_patch": {
+      "id": "ma1m-lu-1657",
+      "de": "Die Tür ist hinten.",
+      "fa_before": "در در قسمت عقب است.",
+      "fa_after": "در قسمت عقب است.",
+      "status": "NOT_APPLIED_REQUIRE_EXACT_CURRENT_C42T_FIELD_CAS"
+    },
+    "stylistic_hold": {
+      "id": "ma1m-lu-1357",
+      "de": "Auf der Vorderseite steht nur: „Bitte wenden.“",
+      "status": "HELD_REQUIRE_EDITOR_AND_CURRENT_C42T"
+    },
+    "native_independent_full_linguistic_certification": false,
+    "current_C42T_binary_available": false,
+    "official_global_Stage4": "BLOCKED_NOT_RUN",
+    "Stage5": "NOT_RUN",
+    "Stage6_CURRENT_v483": "NOT_RUN",
+    "A1_FINAL": false,
+    "import_allowed": false
+  },
+  "artifact": {
+    "filename": "Menschen-A1-C42AB-11988-EXAMPLE-CROSSCARD-CONSISTENCY-C41-ONLY-NO-IMPORT.json",
+    "sha256": "2648683cd38b29d442127a3282dad71a0b94881d7e4d170f11320030cd2a5f40",
+    "bytes": 51202,
+    "library_file_id": "libfile_a7315b06e94c8191aa0611204bd384c0",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C42AB-11988-EXAMPLE-CROSSCARD-CONSISTENCY-C41-ONLY-NO-IMPORT.json",
+    "library_roundtrip": "PASS_BYTE_EXACT_SHA256_MATCH"
+  },
+  "authority": {
+    "C41_historical_parent_sha256": "b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95",
+    "C42T_required_current_sha256": "0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207",
+    "C42T_required_tsv_sha256": "9e2e32c25693229e42bc80e6ba45671d08fa7b0d7220dee5f39c008a551c73fc",
+    "unaltered_original_LOCKED": true,
+    "unaltered_UI_SRS": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_EXACT_SHA256_AND_BYTES",
+    "resume_pointer": "C42AB historical 11988-example reuse/repetition audit closed. Do not rerun. C42T exact 34123935-byte archive SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 still unavailable. After recovery, field-CAS recheck ma1m-lu-1657 example Persian repeated-word typo and 1357 optional style change against current. Stage4 independent full 2997 semantic/content gate remains BLOCKED; Stage5/Stage6 not run; never import C41."
+  }
+}

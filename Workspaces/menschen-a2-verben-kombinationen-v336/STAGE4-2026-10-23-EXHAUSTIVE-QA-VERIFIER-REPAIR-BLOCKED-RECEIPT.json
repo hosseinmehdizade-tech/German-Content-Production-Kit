@@ -1,0 +1,51 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": {
+    "name": "STAGE4_QUALIFIED_REVIEW_BLOCKED_AFTER_EXHAUSTIVE_1423_ITEM_TECHNICAL_QA_AND_VERIFIER_REPAIR",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Independently qualified DE/FA/EN reviewer decisions with original licensed source evidence are missing for 1168 examples, 243 typed synonyms, and 12 learner-visible additional synonyms; zero qualified approvals. This review cannot be fabricated by model or deterministic tests."
+  },
+  "scope": {
+    "unit": "qualified_linguistic_review_item",
+    "total_units": 1423
+  },
+  "progress": {
+    "reviewed_unique": 0,
+    "unreviewed": 1423,
+    "dispositions": {
+      "qualified_approved": 0
+    },
+    "technical_crosschecked_unique": 1423,
+    "editorial_risk_marked_unique": 356,
+    "content_edits": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Original library ZIP SHA256 124dbd0a67610ff69caa655013584ba4198d59a1af7d2ce5846cdf683cbe1a03 verified by direct materialization.",
+      "Fresh 292 cards / 1168 mirrored trilingual examples / 243 typed synonym / 12 visible supplemental synonym / 1209 relation / 1423 queue deterministic parity audit PASS.",
+      "Original embedded 05-QA-Tests/VERIFY-PACKAGE.py verified broken: looks for nonexistent root SHA256SUMS.json; correct manifest path is 07-Checkpoint-State/SHA256SUMS.json with file_sha256 entries.",
+      "Read-only fixed verifier run: manifest 21/21, technical PASS, linguistic_external BLOCKED, no import authorization.",
+      "Four test outcomes expected: clean archive PASS; wrong outer SHA, tampered member, missing member all REJECTED.",
+      "No card or source mutations; exactly pinned consolidated working candidate sha256 7640404c28ccc197a03c6eab00a548c6d2f974f6227136fd6ff7706c7ceeabf3 preserved."
+    ],
+    "qualification_signoff": false,
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json (unchanged; exact consolidated package and queue 1423 remain authoritative)",
+    "validator_source": "Workspaces/menschen-a2-verben-kombinationen-v336/Verification/VERIFY-CONSOLIDATED-STAGE4.py",
+    "validator_source_sha256": "bfa4c41f1a54ed43e7c2d97307f0d8c80d500129f8b6cf3970b8660055e94243",
+    "source_commit": "6a4fb4ea3485b83dceedb6b5b0729024f2dfc018",
+    "source_fingerprint": "444fd958d20e2942baf26197cd6c7937d5d231a52ec1e4e256191e19b74a28b2",
+    "old_embedded_script_not_mutated": true,
+    "no_new_cumulative_zip": true
+  },
+  "date": "2026-10-23",
+  "next_action": "Use the repaired standalone verifier for exact consolidated WIP checks. Qualified independent reviewers must close all 1423 items (include the separate 12 display terms) before Stage4 signoff. At the next meaningful package rebuild replace the obsolete embedded verifier and rerun negative controls, then official Stage5, exact CURRENT Stage6/7."
+}

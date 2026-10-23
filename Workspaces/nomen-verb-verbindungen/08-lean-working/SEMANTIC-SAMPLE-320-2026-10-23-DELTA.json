@@ -1,0 +1,79 @@
+{
+  "schema": "nvv-stage4-semantic-320-replay@1.0.0",
+  "status": "SCOPED_QA_PASS_PARENT_STAGE_IN_PROGRESS",
+  "source": "nomen_verb_verbindungen(1).pdf",
+  "pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+  "historical_locked_zip_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f",
+  "git_before": {
+    "canonical_sha256": "ae2551eff3297ada519544cedf69a6c132c7d93df8e3df7fe9b5b5bff9c42014",
+    "tsv_sha256": "9700c62b713e5619edcc1fbc9b19d0231ad68134360b8ee42cc33b18e0b9bdb0"
+  },
+  "local_authority_reconciliation": {
+    "uploaded_canonical_stale_sha256": "e0bb4ba390cd599a819d37bcf4f2b56c9ff811698767a507293f99e810498457",
+    "uploaded_tsv_latest_sha256": "9700c62b713e5619edcc1fbc9b19d0231ad68134360b8ee42cc33b18e0b9bdb0",
+    "reconciled_orders": [
+      2036,
+      2277
+    ],
+    "local_reconciled_canonical_sha256": "ce20161d54663d7986bbf72f7cf3de53c8d3a21b1b1fcaea2081fd1bcaa2e885",
+    "local_reconciliation_receipt_sha256": "2d78ab0ba9acd549c63dba7c68c90549b058dfbd1d7383172b8f5f6419983104",
+    "description": "Only synchronize two older canonical card targets to already-verified newer TSV; no new editorial repairs."
+  },
+  "edits": [
+    {
+      "order": 358,
+      "card_id": "dah-nvv-exp-00354",
+      "path": "examples.1.de",
+      "before": "Der Schock brachte die Fahrerin schnell zur Besinnung und sie bremste.",
+      "after": "Die eindringliche Warnung brachte die Fahrerin zur Besinnung, sodass sie ihr riskantes Überholmanöver abbrach."
+    },
+    {
+      "order": 358,
+      "card_id": "dah-nvv-exp-00354",
+      "path": "examples.1.fa",
+      "before": "شوک راننده را سریع به خود آورد و او ترمز کرد.",
+      "after": "هشدار جدی راننده را به خود آورد و او از سبقت خطرناکش منصرف شد."
+    },
+    {
+      "order": 358,
+      "card_id": "dah-nvv-exp-00354",
+      "path": "examples.1.en",
+      "before": "The shock quickly brought the driver to her senses and she braked.",
+      "after": "The urgent warning brought the driver to her senses, so she abandoned her risky overtaking maneuver."
+    },
+    {
+      "order": 1178,
+      "card_id": "dah-nvv-exp-01170",
+      "path": "definition_de",
+      "before": "sich mit einer Infektion anstecken",
+      "after": "sich durch Krankheitserreger eine Infektion zuziehen, zum Beispiel über die Atemwege oder durch eine Wunde"
+    }
+  ],
+  "changed_cards": 2,
+  "changed_fields": 4,
+  "result": {
+    "canonical_sha256": "5dd0def1bb97e764f48dbb3ebc4d4b816e34257d4050404ba1049f79d37ded39",
+    "tsv_sha256": "00a4b0cdd36d385c59a466d93f45cc836d78cb480de8b1002ae1ccdc4df18859"
+  },
+  "sample": {
+    "fixed_original_population": 500,
+    "prior_internal_screened": 170,
+    "new_internal_screened": 150,
+    "total_internal_screened": 320,
+    "remaining_internal": 180,
+    "qualified_independent_approval": "NOT_DONE"
+  },
+  "quality": {
+    "source_surface_matches": "2492/2492",
+    "trilingual_examples_structurally_valid": "9968/9968",
+    "unchanged_TSV_rows_byte_identical": "2490/2490",
+    "newly_edited_card_projection": "2/2 PASS",
+    "Stage4": "IN_PROGRESS"
+  },
+  "local_reports": {
+    "sample_receipt_sha256": "15809a83fe7fad90e5833435d04b9c7dc1201fdfdc9e813789e0b68ff278d256",
+    "full_qa_sha256": "4dd100f6163dc92f09a762c4cacff75f207250f294eb20f9e52311d4239456cc",
+    "exact_local_delta_sha256": "0a804fcd940f44da7c6dec4577339bcb3feb8d7ffb79680b99e1bd8c2cbae95b"
+  },
+  "recovery": "Use immutable original/locked baseline and prior current working delta replay; ensure verified card targets for order 2036,2277 match newer TSV; apply 4 exact fields. Preserve prior canonical metadata, append working_successor reconcile_newly_uploaded_2026_10_23 and stage4_sample_focused_edits_20261023 per local scripts; do not claim hash-only metadata permits lossless reconstruction."
+}

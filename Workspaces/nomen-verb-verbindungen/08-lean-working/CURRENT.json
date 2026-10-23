@@ -12,13 +12,17 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "2213bd6b6f253603bb89913a8cd2e2951d5d81495c4e7e56b0562e2afb3f8454",
+    "canonical_sha256": "20bb08c9f54fa2229c68f2aa244ee24bcf334e57a943db5e59c71a2b6f1df26a",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "04715f83576f964b2ea686b3238f053087539927c04e0119aa13dabce1c4d775",
+    "tsv_sha256": "066969550fcedc79b2791fb37b29a02b9bbd5b8bbf7abcafeb1233698bf2a636",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
-    "recovery_rule": "Resolve exact immutable parent zip by SHA, apply these field-specific mutations to the canonical cards, synchronize all affected nested TSV projection fields, confirm listed output hashes; NEVER write back into LOCKED archive or frozen audit baseline."
+    "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
+    "latest_validated_batch": "B06-501-600",
+    "delta_receipts": [
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json"
+    ]
   },
   "edits": [
     {
@@ -144,24 +148,47 @@
       "card_id": "dah-nvv-exp-00490",
       "order": 495,
       "issue": "Leitung ambiguous context needs independent review"
+    },
+    {
+      "card_id": "dah-nvv-exp-00503",
+      "order": 508,
+      "issue": "Dank abstatten register/frequency requires additional evidence"
+    },
+    {
+      "card_id": "dah-nvv-exp-00580",
+      "order": 585,
+      "issue": "Ehe stiften rare historical sense needs register classification"
+    },
+    {
+      "card_id": "dah-nvv-exp-00583",
+      "order": 588,
+      "issue": "Ehre zeigen naturalness relative to Ehre erweisen to adjudicate"
+    },
+    {
+      "card_id": "dah-nvv-exp-00588",
+      "order": 593,
+      "issue": "macht sich selbst keine Ehre German idiomaticity to adjudicate"
     }
   ],
   "qa": {
-    "status": "PASS_TARGETED_ONLY_NOT_FULL_STAGE4",
-    "changed_cards": 15,
-    "changed_fields": 20,
+    "status": "PASS_SCOPED_TARGETED_NOT_FULL_LINGUISTIC_CERTIFICATION",
+    "changed_cards": 21,
+    "changed_fields": 44,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2477,
+    "unmodified_tsv_rows_byte_identical": 2471,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
-    "locked_bytes_sha256_verified": "PASS"
+    "locked_bytes_sha256_verified": "PASS",
+    "batch06_source_pdf_matches": "100/100",
+    "batch06_changed_card_projection_parity": "6/6",
+    "full_semantic_second_reviewer": "NOT_DONE"
   },
   "parent_audit": {
-    "last_first_pass_order": 500,
+    "last_first_pass_order": 600,
     "first_pass_latest": "Workspaces/nomen-verb-verbindungen/07-independent-audit/LATEST.json",
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Continue semantic batch 501–600 on immutable audit baseline while maintaining an independent editable WIP successor; no ZIP per micro edit."
+  "next": "Continue read-only source-aligned content first pass with Batch07 cards 601-700; keep compact editable successor and per-batch field deltas; no ZIP per batch."
 }

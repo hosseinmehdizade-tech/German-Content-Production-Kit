@@ -21,8 +21,8 @@
   "stage4_historical_raw_issue_records": 75,
   "stage4_global_final": false,
   "stage5": "NOT_RUN",
-  "runtime_import": "NOT_RUN",
-  "next_action": "Keep R66 authoritative. Reviewer R70 and merge R68 unchanged. R71+R72 list nine fingerprint-bound linguistic cases for qualified reviewer decisions. R72 confirms zero structured scope/term mismatches across 243 active R66 synonyms, not semantic expert clearance. Never select latest candidate via generic filename suffix; require exact R66 prefix plus SHA. External expert approvals 0/1411; Stage4 blocked; no Stage5/6/7 or import.",
+  "runtime_import": "NOT_AUTHORIZED",
+  "next_action": "R73 confirmed Stage4 coverage defect: 255 learner-visible Synonyme items but only 243 formal synonym reviewer records in the 1411-item R66 set. Explicitly resolve 12 previously unreviewed displayed synonym items (9 untyped, 3 RELATED) with independent qualified review before claiming coverage. If source changes, renew candidate/review fingerprints, R70 review shards and R68 merge QA. R66 remains content authority; R71/R72 scope proposals remain unpromoted. Library full; no files deleted. Stage4 BLOCKED; Stage5/6/7 NOT_RUN.",
   "stage4_bounded_r23_scope_reviewed": 8,
   "stage4_bounded_r23_trilingual_inspected": 32,
   "stage4_r23_inherited_projection_schema_repair": "ma2-lu-0055 HISTORICAL_EDITORIAL_FIELD_RENAMED_ONLY",
@@ -341,23 +341,22 @@
     "persistence": "GIT_RECEIPT_AND_DETERMINISTIC_REBUILD_SCRIPT__R66_ZIP_LIBRARY_QUOTA_BLOCKED"
   },
   "latest_auxiliary_qa": {
-    "milestone": "R72_R66_EXACT_SNAPSHOT_AUDIT_243_RELATIONS_AND_FOUR_MODEL_SCOPE_HOLDS",
-    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R72-ACTIVE-SNAPSHOT-AND-FOUR-SYNONYM-HOLDS-2026-10-23.json",
-    "artifact_filename": "Menschen-A2-Verben-R72-Active-Snapshot-Guard-And-Four-Synonym-Review-Cases-2026-10-23.zip",
-    "artifact_sha256": "cd455385d6d03f8a73f5ec3e0c46498ca4be3fc7dd1e4f1c2da081bcd5443a3b",
-    "artifact_size_bytes": 6715,
-    "artifact_library_status": "NOT_STORED_LIBRARY_QUOTA_KNOWN_FULL",
+    "milestone": "R73_TWELVE_LEARNER_VISIBLE_SYNONYMS_OUTSIDE_243_FORMAL_REVIEW_UNIVERSE",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R73-VISIBLE-SYNONYM-REVIEW-BOUNDARY-GAP-2026-10-23.json",
+    "artifact_filename": "Menschen-A2-Verben-R73-12-Visible-Synonym-Review-Gap-2026-10-23.zip",
+    "artifact_sha256": "b550c684b1d5c86d0a0e0376094c9338f65d5346a64dff499173608b759613f6",
+    "artifact_size_bytes": 7517,
+    "artifact_library_status": "FAILED_STORAGE_LIMIT",
+    "role": "NEW_CONFIRMED_SOURCE_BOUND_STAGE4_COMPLETENESS_BLOCKER__NOT_CONTENT_PROMOTION",
     "source_r66_zip_sha256": "630bfcd30be7439f397c634ed7c5f197db54833455a88569b27b7ef79c73a21b",
-    "active_candidate_sha256": "77e29cbe28803b8534ad4e6cc0ece16df639a8aa01c98c116fd3ce114ebe59a7",
-    "exact_active_candidates": 1,
-    "historical_candidate_snapshots": 70,
-    "all_candidate_member_snapshots": 71,
-    "canonical_vnext_synonym_parity": "243/243 PASS",
-    "new_bound_linguistic_model_holds": 4,
-    "cumulative_R71_R72_distinct_holds": 9,
-    "qualified_expert_approvals": 0,
-    "stage4": "BLOCKED_NOT_FINAL",
-    "role": "AUXILIARY_SOURCE_INTEGRITY_GUARD_AND_MODEL_ADJUDICATION_PRIORITY_NOT_EXPERT_SIGNOFF"
+    "visible_Synonyme_count": 255,
+    "formal_synonym_review_count": 243,
+    "unbound_visible_synonym_items": 12,
+    "unbound_NO_TYPED_RELATION": 9,
+    "unbound_RELATED_ONLY": 3,
+    "hidden_internal_related_synonym_cards": 1,
+    "qualified_approvals": 0,
+    "source_content_unchanged": true
   },
   "authority_axes_note": "R53 remains latest full content and active candidate. R54 is newer verified supplemental QA only, not a replacement full source artifact. Do not downgrade either track or report R54 as Stage4 linguistic signoff.",
   "previous_content_milestone": {
@@ -543,9 +542,9 @@
     "no_files_deleted": true
   },
   "previous_auxiliary_qa": {
-    "milestone": "R71_FIVE_DUDEN_GROUNDED_SYN_SCOPE_EXPERT_PRIORITY_CASES",
-    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R71-FIVE-SYNONYM-EXPERT-REVIEW-PRIORITIES-2026-10-23.json",
-    "artifact_sha256": "01c3f6dff08093969adeda177c20dbe207626eac5db1fa8bb92e1d05e21a0eca"
+    "milestone": "R72_R66_EXACT_SNAPSHOT_AUDIT_243_RELATIONS_AND_FOUR_MODEL_SCOPE_HOLDS",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R72-ACTIVE-SNAPSHOT-AND-FOUR-SYNONYM-HOLDS-2026-10-23.json",
+    "artifact_sha256": "cd455385d6d03f8a73f5ec3e0c46498ca4be3fc7dd1e4f1c2da081bcd5443a3b"
   },
   "stage4_r66_correction": {
     "card_id": "ma2-lu-0131",
@@ -628,5 +627,12 @@
     "expert_approvals": 0,
     "no_learner_content_change": true,
     "library_status": "FULL"
+  },
+  "stage4_review_universe_incompleteness": {
+    "finding": "Formal R66 review exports 1411 items (1168 examples + 243 formal SYNONYM). Learner-visible card Details show 255 synonym items: 12 have no corresponding formal SYNONYM review item, nine have no typed relation, three are typed RELATED.",
+    "new_blocker": true,
+    "do_not_claim_complete_after_1411_export": true,
+    "required": "Human-disposition 12 display synonyms, then rebind review universe/QA and renew external review as needed.",
+    "qualified_approvals": 0
   }
 }

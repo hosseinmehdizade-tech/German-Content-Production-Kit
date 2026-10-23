@@ -1,5 +1,7 @@
 # START PROMPT v3.3.6
 
+**ACTIVE work-outcome and concurrency rule:** On `continue`/`ادامه بده`, read `EXECUTION-OUTCOME-EFFICIENCY-POLICY.json`; progress toward a whole reviewable stage/queue, not another arbitrary 3–5-card edit/report. Count corrected/kept/held/remaining separately, perform scoped QA, preserve unchanged/LOCKED, and use `Verification/validate_execution_outcome_receipt.py` at meaningful milestone handoff. Neither scoped PASS nor a Git checkpoint substitutes for independent Stage4, Stage5 or CURRENT Stage6.
+
 The active production framework is **v3.3.6 — Source-Agnostic Completeness Gate**.
 
 Resolve the full master prompt from `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.6.md` inside the verified portable authority recorded in PROJECT-STATE.json.

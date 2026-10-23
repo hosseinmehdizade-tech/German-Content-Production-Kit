@@ -1,7 +1,7 @@
 {
   "schema": "flashcards-project-execution-safety@1.1.0",
   "status": "ENFORCED",
-  "updated_at": "2026-10-10T01:30:00+02:00",
+  "updated_at": "2026-10-23",
   "purpose": "Prevent lost work while allowing continuation turns to finish a real major stage instead of stopping on tiny PARTIAL checkpoints.",
   "canonical_source": "hosseinmehdizade-tech/German-Flashcards-Pro/EXECUTION-SAFETY-POLICY.json",
   "applies_to": [
@@ -71,7 +71,8 @@
   "relationship_to_existing_policies": [
     "PROJECT-MEMORY.json",
     "GIT-SYNC-POLICY.json",
-    "PROJECT-OPERATING-MODE-v2.md"
+    "PROJECT-OPERATING-MODE-v2.md",
+    "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json"
   ],
   "unattended_continuation_mode": {
     "status": "ACTIVE",
@@ -97,5 +98,15 @@
     "archived_copy": "Policy-History/EXECUTION-SAFETY-POLICY-v1.0.0-2026-09-24.json",
     "reason_preserved": "The previous mode protected visible handoff after long turns. It is preserved intact in case the refined continuation mode causes worse reliability or overlong turns.",
     "procedure": "Restore the archived copy to EXECUTION-SAFETY-POLICY.json in both repositories, then mark MEM-025-CONTINUE-UNTIL-MAJOR-STAGE as ROLLED_BACK or SUPERSEDED. Do not delete the v1.1.0 history."
+  },
+  "outcome_efficiency_enforcement": {
+    "status": "ENFORCED",
+    "normative_file": "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json",
+    "incident": "Repeated continue turns stopped after 3-5 Persian edits and administrative Git/report loops; preexisting major-stage rule had no executable accounting check.",
+    "rule": "Finish current reviewable major stage or reach real blocker/conflict/hard boundary; no arbitrary edited-card minimum or fabricated closure.",
+    "report": "For new meaningful resumed milestone, validate a finite work scope with reviewed/kept/corrected/held/remaining and parent-stage status; micro-batch PASS is not full Stage PASS.",
+    "concurrency": "One logical writer per mutable state, other chats use separate streams or disjoint shards; re-read active SHA and CAS before sync.",
+    "validator": "Verification/validate_execution_outcome_receipt.py",
+    "boundary": "No automatically broadcasting the policy into already-running chats; it takes effect when they next re-read bootstrap."
   }
 }

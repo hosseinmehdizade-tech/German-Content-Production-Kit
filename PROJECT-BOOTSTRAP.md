@@ -2,6 +2,8 @@
 
 This file is the cross-chat startup protocol for **German Content Production Kit** and all source workstreams.
 
+**MANDATORY OUTCOME EXECUTION GATE (2026-10-23):** Read `EXECUTION-OUTCOME-EFFICIENCY-POLICY.json` for every substantive start/resume/`ادامه بده` turn alongside `EXECUTION-SAFETY-POLICY.json`. Continue the major workstream queue, not repetitive 3–5-card patch/report cycles. Track reviewed/kept/corrected/held/remaining; scoped QA, ZIP or Git sync is not completed parent Stage. Preserve original/LOCKED, final QA, single-writer/CAS, exact resume and bounded Git synchronization. New meaningful outcome receipts use `Verification/validate_execution_outcome_receipt.py`. Other chats receive this policy upon their next bootstrap/resume, not by automatic injection.
+
 ## 1. Resolve authority before doing work
 Use this precedence order:
 1. explicitly newer user-supplied current/latest artifact;

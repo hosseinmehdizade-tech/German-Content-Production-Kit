@@ -61,6 +61,16 @@
     "GIT-SYNC-POLICY.json",
     "CONTENT-OUTPUT-DELIVERY-POLICY.json",
     "WORKSTREAM-RESUME-CURRENTNESS-POLICY.json",
-    "Prompt/START-PROMPT-v3.3.6.md"
-  ]
+    "Prompt/START-PROMPT-v3.3.6.md",
+    "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json"
+  ],
+  "outcome_execution_gate": {
+    "mandatory_reference": "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json",
+    "review_queue": "Process a substantive evidence-supported set or whole bounded active queue each continuation; no tiny 3-5-item turnover mistaken for stage success.",
+    "track": "Unique reviewed + corrected/kept/closed_no_force/evidence_hold/other + unreviewed; count these separately from open release gates.",
+    "writers": "Single mutable workstream writer, disjoint independent readers permitted; optimistic concurrency recheck and conflict-safe merge.",
+    "persistence": "One cumulative WIP patch and milestone-level sync; no per-card ZIP or Git report loops.",
+    "boundaries": "Keep all source fidelity, official Stage4-7, existing immutable audit and final single package rules unchanged.",
+    "outcome_receipt_validator": "Verification/validate_execution_outcome_receipt.py"
+  }
 }

@@ -113,3 +113,7 @@ Before proposing automation, Git workflow changes, authority/versioning changes,
 4. Only supersede a guardrail after explicit user approval and record the superseding decision.
 
 The user should not need to remember old project failures for the system to avoid repeating them.
+
+## Outcome-based stage completion gate (2026-10-23)
+
+`EXECUTION-OUTCOME-EFFICIENCY-POLICY.json` is ENFORCED. Meaningful continuation works through the active bounded queue toward a major stage or documented blocker; never stop solely after 3–5 edits and a Git commit. Preserve one writer per mutable workstream, track disjoint dispositions and test results in a validated outcome receipt, keep exact in-progress resume state, and retain all independent gates and required durable releases.

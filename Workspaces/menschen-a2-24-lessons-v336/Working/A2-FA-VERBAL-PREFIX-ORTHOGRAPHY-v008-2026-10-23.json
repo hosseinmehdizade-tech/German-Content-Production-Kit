@@ -1,0 +1,70 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "milestone": {
+    "name": "A2 native learner examples: Persian verbal prefix orthography normalization",
+    "level": "major",
+    "state": "CLOSED"
+  },
+  "scope": {
+    "unit": "curated A2 native Persian example with spaced می/نمی verb prefix",
+    "total_units": 733
+  },
+  "progress": {
+    "reviewed_unique": 733,
+    "unreviewed": 0,
+    "dispositions": {
+      "corrected_orthography": 733
+    },
+    "affected_A2_cards": 346,
+    "corrected_prefix_occurrences": 758,
+    "vetted_verb_forms": 147
+  },
+  "patch": {
+    "before_sha256": "722e28d3e272dfe5b5b20bba153867a0937ef44c3e794e7757c152b8ee7214ba",
+    "after_sha256": "09f9663ffa6a6249af2bd40ab715569970563db8dcfa337f9384add66ac77f1b",
+    "after_bytes": 31954848,
+    "edited_columns": [
+      "examples",
+      "custom_fields"
+    ],
+    "regex": "(?<![\\w\\u200c])(?P<prefix>ن?می) +(?P<verb>[آ-ی]+)",
+    "transform": "replace only matched ASCII space with Unicode U+200C between Persian verbal prefix and following recognized Persian verb",
+    "selectors": [
+      "examples[*].translations[lang=fa-IR].text",
+      "custom_fields.canonical_examples[*].fa",
+      "custom_fields.canonical_target.examples[*].fa",
+      "custom_fields.canonical_unit.examples[*].fa OR translations[lang=fa-IR].text when present",
+      "custom_fields.presentation_examples[*].translations[lang=fa-IR].text"
+    ],
+    "serialization": "For each changed TSV row compact JSON ensure_ascii=false sort_keys=true separators=(comma,colon), csv.writer delimiter=TAB lineterminator=LF; retain all other row bytes unchanged. Guard preceding exact SHA and require resulting exact SHA.",
+    "source_origin_edited": "CURATED_PEDAGOGICAL_ONLY_733",
+    "original_stage7_mutations": 0,
+    "A1_owner_mutations": 0,
+    "SRS_writes": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Independent original v006 -> exact official v007 reconstruction SHA PASS",
+      "Full v008-v007: 346 changed / 1432 unchanged rows, 733 examples, 758 tokens, 2932 mirror entries",
+      "Independent 7112/7112 DE FA EN canonical/presentation parity PASS",
+      "Original C3S1 source: 375 changed cards cumulative / 1403 byte-identical, all original German examples and source fields unchanged",
+      "Actual pinned v483-R117 TSV parser 1778/1778 cards 23 columns PASS",
+      "Official outcome validator PASS"
+    ],
+    "expert_linguistic_stage4": "NOT_ATTESTED",
+    "actual_current_v483_native_IDB_SRS": "BLOCKED_BY_ADMINISTRATOR",
+    "C3_import_ready": false
+  },
+  "persistence": {
+    "git": "PENDING",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/Working/CURRENT-WORKING.json",
+    "working_sha256": "09f9663ffa6a6249af2bd40ab715569970563db8dcfa337f9384add66ac77f1b",
+    "local_full_evidence": "/mnt/data/Menschen-A2-CURRENT-WORKING/V008-FA-MI-PREFIX-CHANGED-EXAMPLES.json",
+    "local_full_evidence_sha256": "c6541954d29bf13b89d5c17570af42f435b667a89ff47d7b753a0d69e17f5d5d",
+    "local_independent_QA_sha256": "0ae551c646439c445ff697231cc5142ac388be107e1421b3fd718e033006cdd8",
+    "binary_Git_persistence": "METADATA_AND_DETERMINISTIC_PATCH_ONLY__FULL_TSV_LOCAL"
+  }
+}

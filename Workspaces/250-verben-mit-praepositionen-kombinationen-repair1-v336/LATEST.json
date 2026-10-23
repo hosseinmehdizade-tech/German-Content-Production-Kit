@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
-  "status": "SOURCE_CONSTRUCTION_QA_PASS__HF2_OFFICIAL_POLICY_CONFLICT__STAGE6_REAL_ORIGIN_UNVERIFIED__NOT_FINAL",
+  "status": "STAGE6_SCOPED_NATIVE_PARSER_14_OF_14_PASS__REAL_ORIGIN_UNVERIFIED__HF2_GENERAL_201_FAIL__STAGE7_NOT_FINAL",
   "source_branch": "250-verben-mit-praepositionen-kombinationen-repair1-v336",
   "authoritative_checkpoint": "Workspaces/250-verben-mit-praepositionen-kombinationen-repair1-v336/CHECKPOINT.json",
   "checkpoint_branch_commit": "5672c125499a161457c0e084f5734751219feaa6",
@@ -68,21 +68,21 @@
     "prior_36_memory_tests": "PASS_SCOPED_INCOMPLETE_VISIBILITY_COVERAGE"
   },
   "caution": "This is read-only diagnostic, not final HF2 waiver or Stage6 acceptance.",
-  "next_action": "Wait for explicit architecture approval before changing HF2 rules or source-visible fronts; separately rerun exact v483 real-origin import/reload/Study/Quick/Typing/Audio/backup in a supported browser. Do not promote Stage7 FINAL until both gates pass.",
+  "next_action": "Resolve architecture decision explicitly before any HF2 policy/front change; test exact current v483 full native import/reload + Study/Quick/Typing/Audio + backup in supported real-origin browser when available. No silent FINAL.",
   "current_artifact": {
-    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Repair1-v483-R117-HF2-SOURCE-AUDITED-CANDIDATE.zip",
-    "sha256": "7646b344a1eac28ea3d63b25bffb58332b5d745e42e1293d6bf2314dcb716c1d",
-    "bytes": 4319306,
-    "members": 85,
-    "storage": "USER_CONVERSATION_ARTIFACT",
-    "source_file_ref": "file_000000008a7c81f4844e2286070a49c0",
-    "library_persistence": "NOT_CONFIRMED",
+    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Repair1-v483-R117-NATIVE-PARSER-AUDITED-CANDIDATE.zip",
+    "sha256": "d1129016ce1227f4973d8f3a5d3e9b1083e8b2abfd8806499b767b901da205c0",
+    "bytes": 4287553,
+    "members": 88,
+    "source_file_ref": "file_0000000055a881f4a2054f3db59ebfce",
+    "delivery": "USER_CONVERSATION_ARTIFACT",
+    "library_persistence": "NOT_VERIFIED",
     "exact_runtime": {
       "current": "v483-R117",
-      "zip_sha256": "6e54b329a8d3ce22562d15ba66a313c8502981619532eb519e17817db8e4c1f9",
+      "sha256": "6e54b329a8d3ce22562d15ba66a313c8502981619532eb519e17817db8e4c1f9",
       "last_fully_verified": "v466-R100",
-      "ui_change": false,
-      "runtime_change": false
+      "app_modified": false,
+      "ui_modified": false
     }
   },
   "supplemental_diagnostic": {
@@ -299,5 +299,34 @@
     },
     "status": "SOURCE_CONSTRUCTION_QA_PASS__HF2_OFFICIAL_POLICY_CONFLICT__STAGE6_REAL_ORIGIN_UNVERIFIED__NOT_FINAL",
     "architecture_decision": "Approve source-construction subtype under neutral de-vocabulary with bounded official HF2 contract/validator revision, or explicit alternative changing learner fronts/IDs. No changes made."
+  },
+  "v483_native_parser_replay_20261023": {
+    "receipt": "Workspaces/250-verben-mit-praepositionen-kombinationen-repair1-v336/Milestones/STAGE6-V483-EXACT-NATIVE-TSV-PARSER-REPLAY-2026-10-23.json",
+    "scope": {
+      "production_source": "v483 01-App/index.html parseTsv exact extracted",
+      "checks": "14/14 PASS",
+      "rows": 292,
+      "columns": 23,
+      "example_de": 1168,
+      "translation_fa": 1168,
+      "translation_en": 1168,
+      "negative_malformed_quote": "PASS_REJECT",
+      "negative_oversized_field": "PASS_REJECT",
+      "bom_crlf_parity": "PASS",
+      "multiline_quoted_field": "PASS",
+      "test_script_inside_zip": "05-QA-Tests/native_v483_tsv_parser_replay.cjs",
+      "report_inside_zip": "09-V483-Verification/V483-EXACT-NATIVE-TSV-PARSER-2026-10-23.json"
+    },
+    "postpackage": {
+      "members": 88,
+      "manifest_payload_hashes": "86/86 PASS",
+      "sha256sums": "87/87 PASS",
+      "preserved_payload_files": "83/83 exact unchanged",
+      "zip_crc": "PASS"
+    },
+    "stage6": "PARTIAL",
+    "stage7": "NOT_FINAL",
+    "hf2": "201 FAIL inherited",
+    "real_origin": "NOT_RUN"
   }
 }

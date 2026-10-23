@@ -1,0 +1,112 @@
+{
+  "schema": "menschen-a2-verben-stage4-r61-bounded-model-review@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": "R61_100_TRILINGUAL_EXAMPLES_MODEL_SCREEN_AND_ONE_SYNONYM_PATCH_PREVIEW",
+  "status": "PASS_SCOPED_MODEL_EDITORIAL_AND_REPRODUCIBLE_NON_IMPORTABLE_PATCH__NO_INDEPENDENT_SIGNOFF",
+  "parent": {
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R60-ORIGIN-TRAINING-SYNONYM-SCOPES-2026-10-23.json",
+    "artifact_sha256": "6a95c2b405f6fb425ffceb222bf2518092757fba49f0b440be163d5c60655337",
+    "artifact_members": 1035,
+    "candidate_sha256": "60bad9a382e1430bec1bf5dd700f83933db415e5b55eba451f4b13d734c8f877",
+    "source_content_unchanged": true
+  },
+  "scope": {
+    "selection": "All four example records belonging to the first 25 learning units ma2-lu-0001 through ma2-lu-0025, selected from exact R60 bound EXAMPLES-1168-INDEPENDENT-REVIEW.tsv",
+    "model_screened_distinct_examples": 100,
+    "model_screened_card_count": 25,
+    "independent_qualified_reviewed": 0,
+    "independent_remaining": 1411,
+    "material_semantic_translation_mismatches_confirmed": 0,
+    "nonblocking_style_review": [
+      {
+        "example_id": "ma2-lu-0019-ex-003",
+        "issue": "English 'There is a red car standing in front of the house' is literal/awkward and the Persian implies parked; suggest 'There is a red car in front of the house' as an optional stylistic candidate, not an established mistranslation."
+      }
+    ],
+    "review_ledger_not_expert_signoff": true
+  },
+  "synonym_review": {
+    "inspected": [
+      {
+        "card_id": "ma2-lu-0117",
+        "synonym": "optimieren",
+        "relation_id": "ma2-lu-0117-rel-v336-syn-001",
+        "status": "CONFIRMED_CANONICAL_VNEXT_SCOPE_OVERBROAD__UNPROMOTED_PATCH_PREVIEW"
+      },
+      {
+        "card_id": "ma2-lu-0251",
+        "synonym": "blockieren",
+        "relation_id": "ma2-lu-0251-rel-v336-syn-001",
+        "status": "EXISTING_RESTRICTED_SCOPE_DEFENSIBLE_NO_CHANGE"
+      }
+    ],
+    "patch": {
+      "card_id": "ma2-lu-0117",
+      "relation_id": "ma2-lu-0117-rel-v336-syn-001",
+      "old_scope": "improve quality/performance",
+      "new_scope": "Nur bei gezielter Verbesserung eines Prozesses, einer Methode, Qualität oder Leistung in Richtung eines möglichst günstigen/optimalen Zustands. verbessern ist allgemeiner und umfasst auch kleine Verbesserungen oder reine Fehlerkorrekturen (z. B. einen Rechtschreibfehler verbessern); optimieren ist dafür nicht pauschal austauschbar.",
+      "edits": "Exactly two occurrences of old_scope in custom_fields of one TSV row: canonical_relations.value.scope and vnext_relations.items.scope. Other 291 rows byte-exact; other columns of target row byte-exact; provenance and examples unchanged; displayed learner detail already scoped.",
+      "evidence": [
+        {
+          "source": "Duden",
+          "url": "https://www.duden.de/rechtschreibung/verbessern",
+          "claim": "general improvement and error correction"
+        },
+        {
+          "source": "Duden",
+          "url": "https://www.duden.de/rechtschreibung/optimieren",
+          "claim": "make optimal"
+        }
+      ],
+      "reproduced_candidate_sha256": "f6639703f9753afcfe84ee53ff0687b69281a557f681dcb5a0c1d85c9fff35e6",
+      "binding_required_before_import": "Recreate target synonym review fingerprint for revised scope and all review data/bench before accepting any signoff; apply source and stage lineage checks; patch preview alone not production handoff."
+    }
+  },
+  "artifact": {
+    "filename": "Menschen-A2-Verben-R61-100-Examples-Model-Review-And-Scope-Patch-2026-10-23.zip",
+    "sha256": "572f64ebb6859d498abf6fad532ad5155ea244437b560883749af737b055a254",
+    "size_bytes": 468417,
+    "members": 6,
+    "contains": "one patch-preview neutral TSV; one 100-item model ledger; evidence JSON; deterministic patch script; README; SHA256SUMS",
+    "transport": "CURRENT_CONVERSATION_ATTACHMENT_ONLY",
+    "library_upload": "FAILED_STORAGE_LIMIT",
+    "library_file_id": null,
+    "reconstructible_without_kit": true
+  },
+  "reproduction": {
+    "base_sha256": "6a95c2b405f6fb425ffceb222bf2518092757fba49f0b440be163d5c60655337",
+    "source_tsv_member": "91-Stage4-Origin-Training-Synonym-Scope-R60/CANDIDATE-IMPORT-NOT-FINAL.tsv",
+    "source_tsv_sha256": "60bad9a382e1430bec1bf5dd700f83933db415e5b55eba451f4b13d734c8f877",
+    "new_candidate_sha256": "f6639703f9753afcfe84ee53ff0687b69281a557f681dcb5a0c1d85c9fff35e6",
+    "algorithm": "Verify SHA-256 of R60; decode source TSV UTF-8; locate the single line starting ma2-lu-0117 followed by a TAB; assert exactly two occurrences of the old_scope; replace both with new_scope; join all original lines unmodified; verify final candidate SHA-256; verify 292 unique card IDs and all 1168 examples unchanged; rerun official v3.3.6 projection validator. Do not apply on mismatched parent."
+  },
+  "tests": {
+    "R60_sha256": "PASS",
+    "R60_zip_crc_1035": "PASS",
+    "source_tsv_and_patch_exact_hash": "PASS",
+    "other_rows_291_byte_exact": "PASS",
+    "scope_parity_2_of_2": "PASS",
+    "examples_same_1168": "PASS",
+    "synonym_count_243_unchanged": "PASS",
+    "official_v336_projection": "292/292 PASS zero errors",
+    "self_reproduction_script": "PASS",
+    "zip_crc": "PASS",
+    "zip_internal_manifest": "5/5 PASS"
+  },
+  "boundaries": {
+    "R60_remains_content_authority": true,
+    "R61_is_auxiliary_model_review_and_patch_preview_only": true,
+    "R61_full_source_zip_not_created": true,
+    "independent_qualified_approvals": 0,
+    "stage4_global": "BLOCKED_NOT_FINAL",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "runtime_import": "NOT_RUN",
+    "no_app_ui_change": true,
+    "library_capacity_blocker": true,
+    "no_library_files_deleted": true
+  },
+  "next_action": "Preserve R60 as current source authority. When continuing, apply proposed scope patch only through complete R61 content successor with rebound 1411 fingerprint review data, official QA, exact portable Library/other durable binary or manifest-backed storage. Independent qualified 1411 item adjudications remain required before Stage4 final."
+}

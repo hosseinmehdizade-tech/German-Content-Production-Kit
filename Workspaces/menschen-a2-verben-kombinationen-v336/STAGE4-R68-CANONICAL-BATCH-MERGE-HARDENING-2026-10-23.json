@@ -1,0 +1,80 @@
+{
+  "schema": "menschen-a2-verben-r68-canonical-merge-repair@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": "R68_CANONICAL_R67_REVIEW_ASSIGNMENT_VALIDATION_HARDENING",
+  "status": "TECHNICAL_MERGE_SECURITY_FIX_QA_PASS__EXPERT_SIGNOFF_NOT_STARTED",
+  "content_authority": {
+    "milestone": "STAGE4_R66_RECHNUNG_EN_INVOICE_CORRECTION_AND_243_SYNONYM_MODEL_TRIAGE",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R66-RECHNUNG-INVOICE-REVIEW-REBOUND-2026-10-23.json",
+    "zip_sha256": "630bfcd30be7439f397c634ed7c5f197db54833455a88569b27b7ef79c73a21b",
+    "candidate_sha256": "77e29cbe28803b8534ad4e6cc0ece16df639a8aa01c98c116fd3ce114ebe59a7",
+    "unchanged": true
+  },
+  "review_pipeline_parent": {
+    "r67_receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R67-INDEPENDENT-REVIEW-BATCHED-HANDOFF-2026-10-23.json",
+    "r67_zip_sha256": "84299acfdd23649c114d01068724e3ffcc404a24950ea0f9dbdd1286353b328d",
+    "r67_unmodified_assignment_manifest_sha256": "b8ce64162d33183ad6e64bec60742c68b0f08188648ef28f64ae09d01856aa85",
+    "r67_shards_reuse": 10,
+    "r67_html_and_tsv_unchanged": 30
+  },
+  "confirmed_defect": "Old R67 merge accepted tampered R67-ASSIGNMENTS.json when an adversary reassigned batch member IDs and recomputed item_set_sha256; a synthetic partial export from that manipulated assignment was wrongly accepted. This was reproduced against exact R66.",
+  "fix": "R68 regenerates the entire canonical ten-batch assignment from exact SHA-checked R66 review data and requires deep equality for every field before accepting any decision exports. No client-supplied hashing alone can authorize reassignment.",
+  "git_verified_source": {
+    "path": "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R68/R68_CANONICAL_ASSIGNMENTS_MERGE.py",
+    "source_sha256": "2712226605b8a90a096a9269e4218d41f2a0ee88ca121b1a668561edff74e873",
+    "git_blob_sha1": "291db91d6f934f431d20ec4c59ba2497850cd5ad",
+    "bytes": 26721,
+    "readback_exact_blob": true,
+    "previous_r67_source_immutable": true
+  },
+  "artifact": {
+    "filename": "Menschen-A2-Verben-R68-Canonical-Batch-Merge-Hardening-2026-10-23.zip",
+    "sha256": "3762148bbaf51a2a5a7cb2fac4c29a2b5ec73a3aed46bd87cf3583f353f4b2f2",
+    "bytes": 13615,
+    "members": 4,
+    "contains": [
+      "R68_CANONICAL_ASSIGNMENTS_MERGE.py",
+      "README-FA-DE.md",
+      "TEST-REPORT-R68.json",
+      "SHA256SUMS.json"
+    ],
+    "library_upload": "FAILED_STORAGE_LIMIT",
+    "library_file_id": null,
+    "source_code_durable_on_github": true
+  },
+  "tests": {
+    "source_r66_outer_sha256": "PASS",
+    "R67_original_zip_sha256": "PASS",
+    "R68_script_14_negative_regressions": "14/14 PASS",
+    "old_R67_seven_regressions": "7/7 PASS",
+    "new_assignment_regressions": "7/7 PASS",
+    "original_manifest_positive": "PASS",
+    "malicious_rehashed_manifest_rejected": "PASS_EXIT_2",
+    "python_optimized_minus_O": "PASS_14_14_AND_BAD_MANIFEST_REJECTED",
+    "original_R67_html_and_tsv_unchanged": "10/10_HTML_10/10_TSV",
+    "unchanged_r67_member_comparison": "32/34 BYTE_IDENTICAL",
+    "synthetic_1411_pass_not_expert": "PASS_STAGE4_FALSE",
+    "zip_crc_and_internal_sha256": "4/4 PASS"
+  },
+  "operations": {
+    "reviewers_can_keep_r67_browser_html": true,
+    "reviewers_can_keep_r67_batch_ids": true,
+    "merge_command": "python R68_CANONICAL_ASSIGNMENTS_MERGE.py merge --source R66.zip --assignments R67-ASSIGNMENTS.json --input-dir reviewer-exports --report merged-report.json",
+    "use_unmodified_assignment_json": true,
+    "do_not_mix_obsolete_partial_exports_with_later_overlapping_exports": true,
+    "qualified_human_attestation_separate": true
+  },
+  "boundaries": {
+    "R66_content_unchanged": true,
+    "any_real_qualified_approvals": 0,
+    "independent_unreviewed": 1411,
+    "stage4": "BLOCKED_NOT_FINAL",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import": "NOT_AUTHORIZED",
+    "library_files_deleted": 0
+  },
+  "next_action": "Distribute original R67 10 reviewer pages and assignment manifest. Merge real reviewer JSON only with hardened Git-persisted R68 validator. If any FIX_NEEDED/UNSURE or disputed cases, adjudicate and rebind affected item fingerprints before Stage4. Independently verify expert qualifications and source fidelity; merge completeness never grants Stage4 final."
+}

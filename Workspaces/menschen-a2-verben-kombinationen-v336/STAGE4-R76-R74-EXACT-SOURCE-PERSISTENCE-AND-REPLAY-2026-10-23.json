@@ -1,0 +1,76 @@
+{
+  "schema": "ma2-verben-stage4-r76-exact-r74-source-persistence@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": "R76_R74_SOURCE_GITHUB_PERSISTED_AND_EXACT_R74_BINARY_REPLAY",
+  "status": "PASS_SOURCE_PERSISTED_GIT_EXACT_BLOB_MATCH_AND_EXACT_BINARY_REPLAY__EXTERNAL_REVIEW_PENDING",
+  "working_content_authority": {
+    "milestone": "STAGE4_R66_RECHNUNG_EN_INVOICE_CORRECTION_AND_243_SYNONYM_MODEL_TRIAGE",
+    "zip_sha256": "630bfcd30be7439f397c634ed7c5f197db54833455a88569b27b7ef79c73a21b",
+    "source_zip_filename": "Menschen-A2-Verben-v3.3.6-STAGE4-R66-RECHNUNG-INVOICE-REVIEW-REBOUND-WIP.zip",
+    "source_modified": false
+  },
+  "supplement": {
+    "R74_original_zip_name": "Menschen-A2-Verben-R74-12-Visible-Synonym-Supplemental-Review-2026-10-23.zip",
+    "sha256": "dc7a2d89c4a97dcc486f1bd27609c27d4868f66d9d32a976d741a1978a0e132e",
+    "bytes": 23816,
+    "members": 7,
+    "source_R66_sha256": "630bfcd30be7439f397c634ed7c5f197db54833455a88569b27b7ef79c73a21b",
+    "reviewer_workspace_R70_sha256": "84f9cd4b39c64d2f40f06594589184f3551848384766d6068384bb7c52d37180",
+    "all_review_items": 12,
+    "additional_scope": "12 displayed synonyms omitted from original 243 typed SYNONYM relation review",
+    "original_review_count": 1411,
+    "unchanged_legacy_reviewer_workflow": true,
+    "library_binary": "NOT_STORED_KNOWN_LIBRARY_QUOTA_BLOCKER"
+  },
+  "durably_persisted_exact_sources": [
+    {
+      "role": "R74 byte-exact builder",
+      "path": "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R74/BUILD_R74_SUPPLEMENT.py",
+      "sha256": "77cdaa827f7bb06cd4b35337f99b0a1b69ecc9cc25abe9ce7f236868b2727d55",
+      "git_blob_sha1": "2900ad55cb25af8b53ea4bee55159af1c2aa0308",
+      "bytes": 16408,
+      "readback": "PASS_EXACT_GIT_BLOB_AND_SOURCE_TEXT"
+    },
+    {
+      "role": "R74 strict external decision validator",
+      "path": "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R74/VALIDATE_R74_REVIEW.py",
+      "sha256": "d67cc3805a92c0b7c5fb5e7f924db537ad5f7d5f985e961338d374add09ff297",
+      "git_blob_sha1": "96cfb733eee918ddb822e07422aafbeeb18434ff",
+      "bytes": 7066,
+      "readback": "PASS_EXACT_GIT_BLOB_AND_SOURCE_TEXT"
+    }
+  ],
+  "commands": [
+    "python BUILD_R74_SUPPLEMENT.py --source EXACT_R66.zip --workspace EXACT_R70.zip --output rebuilt-R74.zip",
+    "python VALIDATE_R74_REVIEW.py selftest --source EXACT_R66.zip --workspace EXACT_R70.zip --data R74-REVIEW-DATA.json",
+    "python VALIDATE_R74_REVIEW.py validate --source EXACT_R66.zip --workspace EXACT_R70.zip --data R74-REVIEW-DATA.json --export real-independent-decisions.json --report intake-report.json"
+  ],
+  "verified_current_turn": {
+    "exact_parent_R66_sha256": "PASS",
+    "exact_parent_R70_sha256": "PASS",
+    "new_R74_sha256": "dc7a2d89c4a97dcc486f1bd27609c27d4868f66d9d32a976d741a1978a0e132e",
+    "exact_R74_binary_replay": "PASS_BYTE_IDENTICAL",
+    "actual_rebuild_bytes": 23816,
+    "zip_crc": "PASS",
+    "zip_member_count": 7,
+    "R74_strict_acceptance_selftest": "1/1 PASS",
+    "R74_negative_rejection_selftests": "13/13 PASS",
+    "optimized_python_O_selftest": "PASS_14/14",
+    "both_python_source_Github_gitblob_sha_matches_original": "2/2 PASS",
+    "GitHub_readback_verified": "2/2 PASS"
+  },
+  "boundaries": {
+    "old_review_1411_unchanged": true,
+    "extra_display_review_12_unchanged": true,
+    "independently_qualified_reviewer_approvals": 0,
+    "stage4": "BLOCKED_NOT_FINAL",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "runtime_import": "NOT_AUTHORIZED",
+    "learner_UI_or_runtime_changed": false,
+    "no_library_deletions": true
+  },
+  "next_action": "R74 exact generator/validator now durable in GitHub. R66 content authority unchanged, R70 old review pages remain valid, R75 model editorial suggestions remain non-binding. Obtain genuine independently qualified reviewer exports for original 1411 plus 12 display-synonym supplements; structurally validate using R68/R74 and independently verify human qualification; do not infer approval from tests or full exports."
+}

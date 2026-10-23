@@ -1,0 +1,80 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42AC_FULL_2139_HISTORICAL_C41_CANONICAL_VNEXT_RELATION_ID_TYPE_TARGET_PARITY",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "Read-only structural identity parity PASS on historical C41, NOT current C42T and NOT independent Stage4 semantics."
+  },
+  "scope": {
+    "unit": "historical_C41_canonical_card",
+    "total_units": 2997,
+    "relation_records": 2139,
+    "projection_records": 2139,
+    "relation_destinations": 1882,
+    "targetless_valuable_relations": 257
+  },
+  "progress": {
+    "reviewed_unique": 2997,
+    "unreviewed": 0,
+    "dispositions": {
+      "NORMAL_SAME_SHAPE_ID_TYPE_TARGET_PARITY": 2845,
+      "NESTED_WRAPPER_ID_TYPE_TARGET_PARITY": 152
+    },
+    "updated_source_cards": 0,
+    "official_stage4_cells_closed": 0,
+    "multi_type_same_target_pairs_held_for_semantic_review": 13
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Exact historical C41 13,986,292-byte ZIP SHA256 b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95 verified",
+      "C41 TSV SHA256 ad3e388ecb19f7f91a29b902f8237d2419eb2b65e9d5e0d990e65b2a0e9b266d verified",
+      "2997 cards, 2139 canonical relations and 2139 flattened vnext projection relations; exact (relation_id,type,target_id) match at each source card",
+      "1882 valid real target IDs and 257 targetless valued/labelled relationships; zero duplicate relation IDs and zero dangling IDs in historical C41",
+      "152 raw C41 relation-object schema variations are nested representation only, no normalized relation identity loss",
+      "13 multi-type same-target pairs kept distinct: 5 RELATED+NOUN_VERB_COMBINATION,4 RELATED+WORD_FAMILY,4 RELATED+SYNONYM; no auto-dedupe or semantic Stage4 approval",
+      "Second verifier re-derived 2997/2139/152/13 independently and five negative controls fail closed",
+      "Library exact 7403-byte C42AC JSON SHA256 8f1b283ee4e5a7c4bf20b93837685dbd0b845790052fd3eeee0270826120d33b rematerialized byte identical"
+    ],
+    "negative_tests": [
+      "missing_relation_id",
+      "wrong_target",
+      "wrong_type",
+      "duplicate_id",
+      "wrong_current_zip"
+    ],
+    "semantic_linguistic_independent_expert_review": "NOT_RUN",
+    "global_current_C42T_stage4": "BLOCKED_NOT_RUN",
+    "stage5": "NOT_RUN",
+    "current_runtime": "v483-R117",
+    "stage6": "NOT_RUN",
+    "global_final": false,
+    "import_allowed": false
+  },
+  "artifact": {
+    "file_name": "Menschen-A1-C42AC-RELATION-ID-TYPE-TARGET-PARITY-C41-READONLY-NO-IMPORT.json",
+    "sha256": "8f1b283ee4e5a7c4bf20b93837685dbd0b845790052fd3eeee0270826120d33b",
+    "bytes": 7403,
+    "library_file_id": "libfile_de21ca1163ec8191b41d4cf9d3f5c445",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C42AC-RELATION-ID-TYPE-TARGET-PARITY-C41-READONLY-NO-IMPORT.json",
+    "verifier_script": "verify_c42ac_relation_projection.py",
+    "verifier_library_file_id": "libfile_4747219fe9c8819182743526d380d37d",
+    "library_roundtrip": "PASS_SHA256_BYTES"
+  },
+  "authority": {
+    "historical_comparison_only": true,
+    "latest_C42T_zip_required_sha256": "0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207",
+    "latest_C42T_tsv_required_sha256": "9e2e32c25693229e42bc80e6ba45671d08fa7b0d7220dee5f39c008a551c73fc",
+    "last_git_latest_sha_at_start": "34116c084244c2790ebf916c8b9969f6f306ab1d",
+    "original_2997_locked_cards_modified": false,
+    "UI_SRS_modified": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_EXACT_SHA256_BYTE_COMPARE",
+    "resume_pointer": "C42AC historical relation identity parity closed; DO NOT repeat. Recover EXACT C42T ZIP SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 (C42R changed 3 custom_fields cards, 0070,1133,1223; no Git source bytes). Re-run scoped parity only on exact C42T, complete Stage4 independent semantic QA, Stage5 anti-bypass and current v483-R117 Stage6. Never auto-import/auto-modify LOCKED."
+  }
+}

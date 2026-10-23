@@ -1,0 +1,79 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "milestone": {
+    "name": "Complete portable strictly SHA-gated v012 add-existing-English display correction for 520 A2 combinations; runtime authority application separately BLOCKED",
+    "level": "major",
+    "state": "CLOSED"
+  },
+  "scope": {
+    "unit": "backend-sourced DE/FA/EN learner combination display correction candidate",
+    "total_units": 520
+  },
+  "progress": {
+    "reviewed_unique": 520,
+    "unreviewed": 0,
+    "dispositions": {
+      "prepared_and_fixture_verified_not_applied_to_authority": 520
+    },
+    "affected_unique_new_A2_cards": 271,
+    "by_lesson": {
+      "A2-L21": 160,
+      "A2-L22": 122,
+      "A2-L23": 174,
+      "A2-L24": 64
+    },
+    "no_new_translations_authored": true,
+    "application_to_actual_v011": 0,
+    "historical_locked_zip_edits": 0,
+    "A1_edits": 0,
+    "older_prior_A2_edits": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "scoped_patch_preparation_only": true,
+    "NOT_corrected_current_authority": true,
+    "NOT_import_ready": true,
+    "actual_current_v011_replay": "BLOCKED_NO_AUTHORIZED_RAW_BYTE_MATERIALIZATION",
+    "independent_human_editorial_signoff": false,
+    "current_v483_native_SRS_IndexedDB_acceptance": false,
+    "verification_evidence": [
+      "Directly rehashed the four authoritative historical locked lesson ZIPs L21=3028428526a16407f384ce67dbfe3406724a6afcbeee7e72fa55bbec21060633, L22=2bf3a92f4198a9de06491d58f86303fc651f8e2cce59bbd5894e50e9d64b2474, L23=d80e83803e2325f926024d2d90db9707e05ae9eff3688c6a895a2dc6e34ae39e, L24=51a6fd1231b486cb0797814a29ddc81e67d7e5d640c49fa425942fe5dc3f7647.",
+      "All 520 slots map to existing nonempty German, Persian and English `kombinationen_v1.items` values and German-only learner detail strings; exactly 271 distinct new A2 card IDs, none A1 or reused A2.",
+      "Already recorded current v011 520 FA display fix receipt confirms 271 changed cards and existing DE—FA output. Proposed v012 extends DE—FA to DE—FA—EN exclusively within details, no source changes or retranslation.",
+      "Independent 271-row fixture made from registered historical ZIPs, modeling v011 DE—FA state for those exact 520 items. 520/520 fixture replay PASS, structured dictionaries preserved, only details field changed.",
+      "Negative test: an input with the wrong SHA256 is rejected before any output. Real production v011 raw-byte Library/Project materialization returned unauthorized path despite indexed 31,978,373-byte library record. No v012 working TSV generated or working pointer advanced.",
+      "Portable candidate patch ZIP with patch manifest, strict replay implementation, tests, QA report and instructions, SHA256 6ce400d8c9f9c5420663bf306865ad767c2a3ec13a2d5269b4f2591510793785, 7 files, 6/6 inner SHA256SUMS passes and CRC passes. Library roundtrip bytes SHA exact PASS.",
+      "Current A2 active v011 SHA256 e93a7c033783836b840153ace297c1aa7df7f08f6a0bfb471abb23a69bb4f6f5 and source/LOCKED/UI/SRS unchanged; original L12 historical ZIP-byte blocker separate; no v483 runtime acceptance."
+    ]
+  },
+  "artifact": {
+    "filename": "Menschen-A2-v012-520-EN-Display-Repair-NOT-APPLIED.zip",
+    "sha256": "6ce400d8c9f9c5420663bf306865ad767c2a3ec13a2d5269b4f2591510793785",
+    "bytes": 43679,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-v012-520-EN-Display-Repair-NOT-APPLIED.zip",
+    "library_file_id": "file_0000000020e881f4a995eb7729a200dd",
+    "stable_library_id": "libfile_cbe234c675dc8191a57d8e1b28242851",
+    "library_roundtrip": "PASS_EXACT_BYTE_SHA"
+  },
+  "patch": {
+    "manifest_sha256": "237cf1f7878d3cb34e708dc6b3aff73d02f0855d24d7f0eedb95b9be0e9bd62f",
+    "required_input_sha256": "e93a7c033783836b840153ace297c1aa7df7f08f6a0bfb471abb23a69bb4f6f5",
+    "preserve_23_columns": true,
+    "only_details_col_change": true,
+    "strict_input_hash_and_exact_before_details_guard": true,
+    "output_written_in_this_turn": false
+  },
+  "authority": {
+    "LATEST_prewrite_blob_sha": "df74b81120f0c3f5fc087d56b5d8f4c1f9c15ac0",
+    "workstream_CURRENT_WORKING_unchanged": true,
+    "historical_LOCKED_unchanged": true,
+    "main_project_state_unchanged": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "workstream_latest_intentionally_not_advanced": true
+  },
+  "next_action": "Recover exact v011 raw TSV bytes from user Library/source or trustworthy portable verified reconstruction. Run strict replay to produce v012 successor; verify 271 details-only affected records and 1778 other invariants, test v483 and SRS. Then proceed with 24-lesson editorial/owner review queue, no historical LOCKED edits and no overwrite of current pointer before full CAS. Do not claim correction APPLIED or C3 IMPORT READY."
+}

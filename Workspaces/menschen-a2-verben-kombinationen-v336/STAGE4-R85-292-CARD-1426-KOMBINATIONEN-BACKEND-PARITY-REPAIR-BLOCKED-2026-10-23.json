@@ -1,0 +1,84 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "date": "2026-10-23",
+  "milestone": {
+    "name": "R85_CORPUS_WIDE_292_CARD_KOMBINATIONEN_BACKEND_VISIBLE_PARITY_REPAIR",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Real independently qualified itemwise Stage4 review remains zero for 1423/1423 examples and synonym items. Full-corpus combination mirror technical QA and one attested repair do not equal expert linguistic signoff."
+  },
+  "scope": {
+    "unit": "card_kombinationen_display_backend_crosswalk",
+    "total_units": 292
+  },
+  "progress": {
+    "reviewed_unique": 292,
+    "unreviewed": 0,
+    "dispositions": {
+      "verified_unchanged": 291,
+      "corrected_backend_source_attested": 1
+    },
+    "combo_coverage_before": {
+      "display": 1426,
+      "structured_backend": 1425,
+      "mismatched_cards": 1
+    },
+    "combo_coverage_after": {
+      "display": 1426,
+      "structured_backend": 1426,
+      "mismatched_cards": 0
+    },
+    "independent_qualified": {
+      "total": 1423,
+      "approved": 0,
+      "remaining": 1423
+    },
+    "changed_cards": [
+      "ma2-lu-0260"
+    ],
+    "unchanged_cards": 291
+  },
+  "quality": {
+    "stage_complete": false,
+    "technical_scope_qa": "PASS_1426_OF_1426",
+    "parent_stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_authorized": false,
+    "verification_evidence": [
+      "Exact original R83 Library parent ZIP SHA256 a0b2f5029fefdf147262f4af7d68873430fea1192960b54d340b351c8198afe3, current TSV e5eab48efa56f4c3f406d573e440da559fa00a51958bb774d278e70ad3890b9d.",
+      "All 292 current canonical cards were compared: learner-visible Kombinationen 1426, typed backend 1425. Only ma2-lu-0260 had a 6th visible entry without a typed backend counterpart.",
+      "Original R83 screenshot A2-source-10.png SHA256 7ad8189c8020729c91a01c91e0509a7e308a41cbba17821d424cc6cf353626a2 row 2 attests 'jemandem, sich die Fingernägel schneiden'. The normalized 'sich (Dat.)' is evidenced by existing R42 canonical grammar, not a direct screenshot quote.",
+      "R85 append only one typed rection entry {de:'sich (Dat.) die Fingernägel schneiden',fa:'ناخن‌های خود را کوتاه کردن'} with registered source locator; learner-visible text, source records, examples and 1209 lexical relations unchanged.",
+      "Deterministic full-content reconstructor from immutable R83 yields candidate TSV SHA256 377fc437ecf9a3e89bff8066992b25a280b4243f71e36c45d39173fdec4ba92b. One card custom_fields.kombinationen_v1.items only changed, 291 other rows untouched. All 1426 visible/backend entries now exact.",
+      "Optional local complete WIP ZIP reconstructs byte-identically in two independent runs: SHA256 012ecd770bc4d22a69331bb426f3ab0dcaa0e1306a0965649044d1a5b4460125. Historical R83 file unchanged. Reviewer core/validator candidate SHA rebound; 1423 reviewer data items/fingerprints unchanged.",
+      "Fresh extraction of compact patch ZIP and exact R83 parent reproduces the expected candidate and full WIP ZIP SHA; seven scoped tests PASS (base valid, outer-hash negative, five internal negative tamper cases), existing reviewer test suites 68/68 PASS.",
+      "Compact 9328-byte patch-only ZIP CRC 6/6 members with 5 member hashes verified; Library exact SHA256 19e7fb5eca4fcddcc64c67b9a5f256584bceec3a47b10b028272847507d6d1fb and byte-for-byte rematerialization PASS.",
+      "No independent reviewer credentials or decisions obtained, no Flashcards runtime/UI modification, no Stage5/6/7, no import authorization."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> latest_r85_kombinationen_parity; active working state = immutable R83 + R85 exact patch (not standalone final ZIP)",
+    "immutable_parent_artifact_sha256": "a0b2f5029fefdf147262f4af7d68873430fea1192960b54d340b351c8198afe3",
+    "immutable_parent_candidate_sha256": "e5eab48efa56f4c3f406d573e440da559fa00a51958bb774d278e70ad3890b9d",
+    "active_composite_candidate_sha256": "377fc437ecf9a3e89bff8066992b25a280b4243f71e36c45d39173fdec4ba92b",
+    "deterministic_rebuilt_wip_zip_sha256": "012ecd770bc4d22a69331bb426f3ab0dcaa0e1306a0965649044d1a5b4460125",
+    "patch_archive_name": "Menschen-A2-Verben-R85-COMPACT-KOMBINATIONEN-PARITY-PATCH-NOT-FINAL.zip",
+    "patch_archive_sha256": "19e7fb5eca4fcddcc64c67b9a5f256584bceec3a47b10b028272847507d6d1fb",
+    "patch_bytes": 9328,
+    "patch_manifest_member_count": 5,
+    "patch_delta_sha256": "c35ff44bb43a3662cc466ab2933208dc866772d0b5f2379f6758bbb68a928515",
+    "patch_rebuild_script_sha256": "7936e05a8dfa7bd318c35d1295f69d42d67285c22891eb75509d3d9de1d0520c",
+    "patch_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R85-COMPACT-KOMBINATIONEN-PARITY-PATCH-NOT-FINAL.zip",
+    "patch_library_file_id": "libfile_2c907b45c618819197b9c44adda74c27",
+    "patch_library_backing_file_id": "file_00000000702c81f49d0a1fbda2e4ace1",
+    "patch_library_readback": "PASS_EXACT_SHA256_BYTE_COMPARE",
+    "R83_historical_unmodified": true,
+    "R85_big_new_archive_uploaded": false,
+    "qualified_independent_approvals": 0
+  },
+  "next_action": "When source-backed real independent qualified reviewers provide all 1423 fingerprints and decisions, apply approved linguistic corrections on R85 materialized working composite, then Stage4 final, Stage5 clean, CURRENT v483-R117 Stage6 and Stage7. Do not confuse internal Combinationen Batch Stage3 PASS with independent Stage4."
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "flashcards-crossproject-outcome-execution@1.0.0",
+  "status": "ENFORCED",
+  "effective_date": "2026-10-23",
+  "applies_to": [
+    "German-Flashcards-Pro runtime/app/QA/release streams",
+    "German-Content-Production-Kit Menschen A1/A2/B1, Verben, NVV, Grammar, Vocabulary, Lesen, Schreiben, source-ingestion and QA streams",
+    "any chat or agent resuming work on these repositories"
+  ],
+  "purpose": "Prevent serial 3-5-item edits, report churn and Git checkpoint loops from being misrepresented as one full production milestone. Optimize for verifiable completed work, not commit count or number of chats.",
+  "authoritative_priority": "Read after PROJECT-BOOTSTRAP and EXECUTION-SAFETY-POLICY; it strengthens the existing continuation and lean WIP rules without relaxing source fidelity, immutable LOCKED, stage gates, CURRENT runtime pins, tool/safety boundaries, mandatory validated-user-visible runtime release synchronization or user approval for visible UI changes.",
+  "continue_request": {
+    "semantics": "Continue the current named MAJOR deliverable toward full disposition/acceptance; do not treat a micro-batch, a short editorial pass or a Git commit as stage completion.",
+    "stage_goal": "Resolve the full bounded active review queue or named subsystem/stage where evidence permits; dispositions include corrected, verified keep, reviewed closure/no-force, held for specific evidence, and rejected. Changed-card count is not the goal.",
+    "batching": "Process a meaningful contiguous/reviewable set of work within one continuation turn, validating in chunks internally; do not deliberately stop after 3-5 safe edits when more reviewed cases can proceed. No quota justifying fake translations, edits or forced closures.",
+    "stop_conditions": [
+      "True terminal PASS/CLOSED under official applicable gates",
+      "True BLOCKED (identify exact missing evidence, permission, input, or unavoidable dependency)",
+      "Material source/currentness/concurrency conflict that cannot safely be reconciled",
+      "Existing hard operation/context/safety boundary; persist exact IN_PROGRESS resume point"
+    ],
+    "if_time_budget": "Favor direct source editing, evidence review and scoped tests over more reporting/archiving; make measurable partial progress up to the hard boundary without claiming stage success.",
+    "avoid_restart": "Resuming agents must continue the same unresolved queue from latest validated receipt and avoid re-adjudicating already closed cases unless dependency changed."
+  },
+  "efficiency": {
+    "default": "One mutable authoritative working state per workstream; keep cumulative structured deltas and minimal recovery metadata, no per-card ZIPs or per-card Git commits.",
+    "working_cycle": "Authority once -> review/execute substantive queue -> targeted tests -> meaningful checkpoint -> compact Git sync -> concise result.",
+    "git_cadence": "At validated meaningful stage/milestone or existing runtime release contract boundary; do not consume the turn on serial cosmetic or per-edit commits. Keep mandatory runtime CURRENT release sync and immutable recovery rules.",
+    "report_cadence": "No giant PASS reports for minor partials; final reply says concrete units reviewed/edited/kept/held, named stage terminal status, exact blockers and persisted location, no inflated success badge.",
+    "no_redundant_reads": "Read bootstrap and authority once per task unless source changed; prefer targeted repository reads and state deltas. Prevent over-fetching full archives and unchanged README/state.",
+    "no_op_repair": "Do not rewrite substantively correct translations merely to raise the changed-item number.",
+    "history": "LOCKED source, source-text origin, frozen audit baselines and old hashes never overwritten."
+  },
+  "concurrency": {
+    "rule": "A shared mutable workstream has one logical writer; other chats should choose independent workstreams, disjoint review shards, or read-only audits.",
+    "before_write": "Re-fetch current workstream LATEST and patch SHA immediately before mutation/persistence. Ensure the expected parent SHA and changed IDs match; use an optimistic compare-and-swap/expected_sha update.",
+    "conflict": "On conflict, do not overwrite or downgrade; reconcile disjoint deltas, rerun changed and unaffected-scope QA, and retry only within existing bounded Git policy. If conflict persists, save a non-authoritative patch plus exact parent and mark IN_PROGRESS/PENDING.",
+    "do_not_merge": "Never silently merge conflicting decisions to the same ID/gloss or reset open gates.",
+    "no_live_chat_broadcast": "Repository policy updates are seen when a chat/agent NEXT reads/restarts this bootstrap. Existing conversations already executing do not receive an automatic injected message; never claim that they do."
+  },
+  "outcome_accounting": {
+    "required_for_resumed_substantial_work": true,
+    "receipt_schema": "flashcards-work-outcome-receipt@1.0.0",
+    "receipt_fields": [
+      "schema",
+      "workstream",
+      "milestone",
+      "scope",
+      "progress",
+      "quality",
+      "persistence"
+    ],
+    "scope_required": [
+      "unit",
+      "total_units"
+    ],
+    "progress_required": [
+      "reviewed_unique",
+      "unreviewed",
+      "dispositions"
+    ],
+    "disposition_definition": "Exact disjoint statuses assigned once to each reviewed unique unit, e.g. corrected, kept, evidence_hold, closed_no_force, other_reviewed. An edited card may have other review flags, but account by the configured work-unit identity without double counting.",
+    "conservation": "reviewed_unique + unreviewed = total_units; sum(dispositions counts)=reviewed_unique",
+    "outcome_states": [
+      "PASS",
+      "CLOSED",
+      "BLOCKED",
+      "IN_PROGRESS"
+    ],
+    "stage_completion": "PASS/CLOSED only with named stage's full contract and proof; a scoped batch PASS is only IN_PROGRESS for its parent stage. BLOCKED includes actionable missing evidence. IN_PROGRESS includes exact resume pointer and remaining work.",
+    "quality": "Explicitly distinguish scoped deterministic QA from independent linguistic Stage4, Stage5 clean delivery and Stage6/7 CURRENT acceptance; no implied signoff.",
+    "applies_to_nonfinite_work": "For open-ended runtime deliverables, define a bounded explicit acceptance scope before starting; do not invent a meaningless unit-count quota."
+  },
+  "adoption": {
+    "starts": "Immediately for new continuation turns and before any new substantive Git checkpoint across both repositories.",
+    "read_on_every_new_or_resumed_chat": [
+      "PROJECT-BOOTSTRAP.md",
+      "EXECUTION-SAFETY-POLICY.json",
+      "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json",
+      "relevant stream LATEST/checkpoint and lean policy"
+    ],
+    "older_checkpoints": "Read-only; do not fabricate retroactive receipts or flip Stage4-7 PASS.",
+    "runtime_current_version": "Do not change the current app runtime or content data merely because this policy is adopted.",
+    "active_chat_delivery": "Apply on each active chat's next genuine tool-backed bootstrap/resume; no mechanism here to modify already running chat context or ChatGPT-wide account/project UI settings."
+  },
+  "enforcement": {
+    "validator_repo_relative_paths": {
+      "German-Flashcards-Pro": "03-Agentic-Control/validate_execution_outcome_receipt.py",
+      "German-Content-Production-Kit": "Verification/validate_execution_outcome_receipt.py"
+    },
+    "command": "python <repo_validator_path> <receipt.json>",
+    "validator_scope": "Reject impossible counts and ungrounded milestone-state/status claims for newly authored outcome receipts. This is process-contract validation, not substitute for original-source or independent linguistic QA.",
+    "must_validate_receipt_before_claim": "Major stage PASS/CLOSED, BLOCKED or substantive IN_PROGRESS handoff; scoped QA cannot be presented as major stage PASS.",
+    "legacy_history": "Existing distinct release/persistence conditions and hard tool budget remain unchanged."
+  }
+}

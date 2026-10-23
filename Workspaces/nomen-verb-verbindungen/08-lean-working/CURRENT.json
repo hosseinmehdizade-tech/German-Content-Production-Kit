@@ -12,19 +12,20 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "79187d6141fdd7e7d571cdd7132a2f3f916c87ad44ff8093109069503036de93",
+    "canonical_sha256": "a5c04b43712ad4421dfad59fa5584ba05a98549cb566ce6747d99cc1474a2622",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "02697d08d827d1f921bd6e729be4d132eb5d554591678c0d69e375426feda1b1",
+    "tsv_sha256": "e3cb40828591abd7166c5944dc6fc30270041c9c84d4651629896d1e4d92dc13",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
     "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
-    "latest_validated_batch": "B09-801-900",
+    "latest_validated_batch": "B10-901-1000",
     "delta_receipts": [
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH08-701-800-2026-10-23-DELTA.json",
-      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH09-801-900-2026-10-23-DELTA.json"
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH09-801-900-2026-10-23-DELTA.json",
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH10-901-1000-2026-10-23-DELTA.json"
     ]
   },
   "edits": [
@@ -231,15 +232,35 @@
       "order": 900,
       "issue": "retail Garantie versus statutory Gewährleistung may require contextual disambiguation",
       "card_id": "dah-nvv-exp-00893"
+    },
+    {
+      "order": 936,
+      "card_id": "dah-nvv-exp-00929",
+      "issue": "ein gutes Gefühl hegen gegenüber ... unnatural; no automatic source wording change"
+    },
+    {
+      "order": 947,
+      "card_id": "dah-nvv-exp-00940",
+      "issue": "figurative football ins Gefecht führen stylistic domain register"
+    },
+    {
+      "order": 959,
+      "card_id": "dah-nvv-exp-00952",
+      "issue": "ein Geheimnis hegen source-attested, rare generated example phrasing"
+    },
+    {
+      "order": 997,
+      "card_id": "dah-nvv-exp-00990",
+      "issue": "ein Geschrei erheben elevated register and example variety"
     }
   ],
   "qa": {
     "status": "PASS_SCOPED_TARGETED_NOT_FULL_LINGUISTIC_CERTIFICATION",
-    "changed_cards": 43,
-    "changed_fields": 103,
+    "changed_cards": 49,
+    "changed_fields": 122,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2449,
+    "unmodified_tsv_rows_byte_identical": 2443,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
     "locked_bytes_sha256_verified": "PASS",
@@ -251,13 +272,15 @@
     "batch08_source_pdf_matches": "100/100",
     "batch08_changed_card_projection_parity": "8/8",
     "batch09_source_pdf_matches": "100/100",
-    "batch09_changed_card_projection_parity": "6/6"
+    "batch09_changed_card_projection_parity": "6/6",
+    "batch10_source_pdf_matches": "100/100",
+    "batch10_changed_card_projection_parity": "6/6"
   },
   "parent_audit": {
-    "last_first_pass_order": 900,
+    "last_first_pass_order": 1000,
     "first_pass_latest": "Workspaces/nomen-verb-verbindungen/07-independent-audit/LATEST.json",
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Continue Batch10 901-1000 with source aligned read-only audit and direct active working repairs; lightweight Git field deltas only, LOCKED and frozen baseline unchanged."
+  "next": "Continue lean audit Batch11 cards 1001-1100 from immutable baseline and apply only confirmed targeted changes to working successor; no intermediate ZIP."
 }

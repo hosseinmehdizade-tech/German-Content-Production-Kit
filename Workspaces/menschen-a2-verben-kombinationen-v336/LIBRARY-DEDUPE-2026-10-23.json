@@ -1,0 +1,37 @@
+{
+  "schema": "gcpk-ma2-verben-library-dedupe@1.0.0",
+  "date": "2026-10-23",
+  "status": "PASS_VERIFIED_NESTED_CONTENT_AND_LIBRARY_TRASH_MOVES__QUOTA_RECLAIM_NOT_MEASURED",
+  "scope": "Menschen A2 Verben Stage4 historical cumulative WIP ZIPs only, no LOCKED releases or source authorities touched",
+  "actions": {
+    "library_files_moved_to_trash": 70,
+    "total_nominal_bytes": 1654546579,
+    "groups": [
+      "STAGE4-BATCH01..15 (15 files)",
+      "STAGE4-GLOBAL-R01..R33 (33 files)",
+      "STAGE4-R34..R53 (20 files)",
+      "STAGE4-R55..R56 (2 files)"
+    ],
+    "verification": "For EACH of 70 old ZIPs, every internal ZIP member was hashed with SHA256 and matched byte-equivalent member at the same path within the retained R57 full ZIP. No missing/mismatching members. ZIPs themselves are NOT byte-identical to R57, but their contained files are.",
+    "trash": "All 70 files were successfully moved to Trash via Library delete operations; permanent deletion and quota reclamation NOT verified."
+  },
+  "retained": {
+    "full_recovery_base": {
+      "name": "Menschen-A2-Verben-v3.3.6-STAGE4-R57-WUNDERN-STAUNEN-SCOPE-WIP.zip",
+      "sha256": "98414e4581d6970b348467c7718a2a266464da5d4b0fa9843fb68672af870b3e",
+      "bytes": 42525637,
+      "library_stable_id": "libfile_0ad3f5c88da48191afcd70a8ef5a373d",
+      "library_readback": "PRESENT_AFTER_CLEANUP"
+    },
+    "restore_delta": {
+      "name": "Menschen-A2-Verben-R59-EXACT-RESTORE-DELTA-2026-10-23.zip",
+      "bytes": 1139838,
+      "library_stable_id": "libfile_e6b259723df081919a02457066bf88cb",
+      "library_readback": "PRESENT_AFTER_CLEANUP"
+    },
+    "r66": "Unchanged authoritative Stage4 WIP R66; exact rebuild sources R60/R62/R66 stored in Git, no new full package uploaded.",
+    "other_streams": "Untouched; cleanup must be per-workstream evidence-based."
+  },
+  "live_working_state": "R66 Stage4 BLOCKED pending qualified independent decisions; does NOT imply Stage5 or Import acceptance.",
+  "next_action": "Recheck Library storage usage/Trash semantics before assuming space freed. Continue other workstream cleanup only with exact contained content/lineage/rebuild verification and preserve unique current/final/locked backups."
+}

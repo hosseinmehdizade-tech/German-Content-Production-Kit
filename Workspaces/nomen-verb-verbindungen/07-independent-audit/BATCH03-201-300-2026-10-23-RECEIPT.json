@@ -1,0 +1,86 @@
+{
+  "schema": "nvv-independent-content-batch-receipt@1.1.0",
+  "date": "2026-10-23",
+  "workstream": "nomen-verb-verbindungen",
+  "branch": "nvv-production",
+  "scope": {
+    "source_order_start": 201,
+    "source_order_end": 300,
+    "cards_first_pass_reviewed": 100,
+    "examples_de_fa_en_first_pass_reviewed": 400,
+    "unique_source_occurrences": 99,
+    "source_occurrence_links": 100,
+    "pdf_physical_pages": [
+      5,
+      6
+    ]
+  },
+  "authorities": {
+    "source_pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "locked_release_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f"
+  },
+  "audit": {
+    "no_specific_issue_first_pass": 81,
+    "repair_proposed": 9,
+    "needs_independent_review": 10,
+    "total_findings": 19,
+    "source_pdf_matches": "100/100",
+    "source_canonical_tsv_parity": "100/100",
+    "example_triplets_parity": "400/400",
+    "zip_crc": "PASS",
+    "semantic_second_reviewer": "NOT_PERFORMED",
+    "current_runtime_acceptance": "OUT_OF_SCOPE",
+    "locked_content_modified": false
+  },
+  "key_findings": [
+    {
+      "order": 276,
+      "id": "dah-nvv-exp-00273",
+      "state": "REPAIR",
+      "summary": "Source seed says 'in Bau' but standard learner German should be 'im Bau'; all four examples affected; preserve verbatim seed."
+    },
+    {
+      "order": 252,
+      "id": "dah-nvv-exp-00250",
+      "state": "REPAIR",
+      "summary": "in Aussicht haben: prospect, not mere planning"
+    },
+    {
+      "order": 242,
+      "id": "dah-nvv-exp-00240",
+      "state": "REPAIR",
+      "summary": "Erleichterung ≠ merely calmness in Persian"
+    },
+    {
+      "order": 245,
+      "id": "dah-nvv-exp-00243",
+      "state": "REPAIR",
+      "summary": "Definition incorrectly requires detailed explanations despite kurze Ausführungen example"
+    },
+    {
+      "order": 269,
+      "id": "dah-nvv-exp-00267",
+      "state": "REPAIR",
+      "summary": "Onkel is over-narrowed to maternal uncle in Persian"
+    }
+  ],
+  "portable_checkpoint": {
+    "filename": "NVV-BATCH03-201-300-CONTENT-REVIEW-2026-10-23.zip",
+    "sha256": "fb90fbce0cc1e725e6b2d33e55052ebca701cb7afe9d3f110f0d97805053cc0c",
+    "size_bytes": 77718,
+    "user_delivered": true,
+    "git_binary_transport": false,
+    "content": [
+      "NVV-B03-REPORT-fa.md",
+      "NVV-B03-CARD-LEDGER.csv",
+      "NVV-B03-EXAMPLE-LEDGER.csv",
+      "NVV-B03-FINDINGS.json",
+      "NVV-B03-RESULT.json",
+      "manifest",
+      "hash ledger",
+      "read-only rebuild script"
+    ]
+  },
+  "verdict": "FIRST_PASS_COMPLETE_NOT_SECOND_REVIEWED",
+  "next": "Batch04 source order 301–400. Independently adjudicate B01-B03 review flags before an evidence-backed successor; do not mutate Stage7 locked content."
+}

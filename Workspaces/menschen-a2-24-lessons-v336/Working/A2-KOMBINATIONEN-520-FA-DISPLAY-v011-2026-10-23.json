@@ -1,0 +1,66 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "milestone": {
+    "name": "Existing Persian combinations visible in 520 learner details slots",
+    "level": "major",
+    "state": "CLOSED"
+  },
+  "scope": {
+    "unit": "v010 German-only details combination with known structured Persian",
+    "total_units": 520
+  },
+  "progress": {
+    "reviewed_unique": 520,
+    "unreviewed": 0,
+    "dispositions": {
+      "existing_FA_translation_shown_without_reauthoring": 520
+    },
+    "affected_card_ids_count": 271,
+    "unmodified_other_native_rows": 1507,
+    "all_3718_structured_combination_details_have_matching_FA": true
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "All 520 gap slots matched source-inventory German, Persian, English + exact existing details and canonical target; no new translation.",
+      "Exactly 271 changed rows with only 'details' changed; other 1507 rows byte-identical; independent inverse SHA reconstructed v010.",
+      "Original C3S1 cumulative 640 changed, 1138 byte-identical, source and all 7112 original German sentences preserved.",
+      "3718/3718 structured Kombinationen DE/FA/EN valid and visible details contain existing DE and FA.",
+      "Pinned exact current v483-R117 TSV parser read-only 1778 rows x 23 columns / 7112 examples PASS.",
+      "Official outcome receipt validator PASS"
+    ],
+    "scoped_stage_only": true,
+    "qualified_independent_linguistic_signoff": "PENDING",
+    "native_v483_actual_IDB_SRS_CAS_backup_restore": "BLOCKED_BY_ADMINISTRATOR",
+    "full_Import_Ready": false
+  },
+  "working": {
+    "from_sha256": "8dcbdc8973cd1cfb40bdf186cd244e154ae1e041d32d4e8308d259b71648de6f",
+    "to_sha256": "e93a7c033783836b840153ace297c1aa7df7f08f6a0bfb471abb23a69bb4f6f5",
+    "bytes": 31978373,
+    "rows": 1778,
+    "columns": 23,
+    "only_changed_column": "details",
+    "curated_details_updated": 520,
+    "changed_cards": 271,
+    "replay": "Require previous exact SHA. For every row with details title Kombinationen, for each details item exactly equal to the corresponding struktured custom_fields.kombinationen_v1.items[n].de and same item has nonblank fa/en and canonical_target cross-check, replace details text with de + ' — ' + existing fa. No other column or structured entry changes. Re-encode ONLY affected detail JSON compact ensure_ascii false sort_keys true and TSV csv writer. Assert 520 entries in 271 cards, resulting file sha to_sha256.",
+    "previous_gap_inventory_sha256": "2838f75d9e16090b2ae82fa7817d6212112bb1b6d2dbc4a77b9a86b3843a0968",
+    "full_delta_sha256": "a6a2b3dfbece508df71ac1ab4ccc8baa0b71d8c8968b28f143c0992b0f0cdf53",
+    "independent_QA_sha256": "da2b3701f80e9564d945c34b139e7976bc0e42c11bd98b821b389e02ebf034fb",
+    "exact_runtime_parser_QA_sha256": "f1aa7d3fbbad8c2ced016f71782057064dbd914b2c6f4e6972e563e2152b56d2",
+    "local_full_outcome_sha256": "56a6608ca1b61e90059ec26262960c929712436b72b2ca71d423cb84ea90c041",
+    "user_approval": "Continue as answer to explicit question to show those 520 Persian translations",
+    "no_UI_design_code_changes": true,
+    "Original_Stage7_and_A1_SRS_preserved": true
+  },
+  "persistence": {
+    "git": "PENDING",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/Working/CURRENT-WORKING.json",
+    "local_full_TSV": "/mnt/data/Menschen-A2-CURRENT-WORKING/A2-NATIVE-1778-WORKING.tsv.review-only",
+    "local_delta": "/mnt/data/Menschen-A2-CURRENT-WORKING/V011-KOMBINATIONEN-520-DETAILS-FA-DELTA.json",
+    "historical_72_queue": "54_REVIEWED_18_MISSING_SOURCE_SIDECARS",
+    "binary_on_Git": false
+  }
+}

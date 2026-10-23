@@ -1,0 +1,72 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "date": "2026-10-23",
+  "milestone": {
+    "name": "R84_FULL_SOURCE_PERFEKT_MORPHOLOGY_DISPOSITION_292_CARDS",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "All 1423 independent qualified DE/FA/EN and synonym-review decisions are missing. This corpus-wide source morphology QA cannot serve as independently qualified linguistic Stage4 signoff."
+  },
+  "scope": {
+    "unit": "card_source_perfect_disposition",
+    "total_units": 292
+  },
+  "progress": {
+    "reviewed_unique": 292,
+    "unreviewed": 0,
+    "dispositions": {
+      "source_perfect_matching": 224,
+      "no_independent_conjugation_entry": 64,
+      "source_does_not_supply_auxiliary": 3,
+      "existing_documented_sense_specific_source_conflict": 1
+    },
+    "independent_qualified_review": {
+      "total": 1423,
+      "approved": 0,
+      "remaining": 1423
+    },
+    "new_content_corrections": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "source_morphology_technical_gate": "PASS_BOUND_TO_R83_EXACT_AUTHORITY",
+    "source_provenance_crosswalk": "292_CARD_LOCATORS_AND_1423_REVIEW_ITEMS_MIRROR_PASS",
+    "new_unexplained_morphology_conflicts": 0,
+    "independent_linguistic_signoff": false,
+    "official_stage5": "NOT_RUN",
+    "official_stage6": "NOT_RUN",
+    "official_stage7": "NOT_RUN",
+    "import_authorized": false,
+    "verification_evidence": [
+      "R83 ZIP SHA256 a0b2f5029fefdf147262f4af7d68873430fea1192960b54d340b351c8198afe3 and active TSV e5eab48efa56f4c3f406d573e440da559fa00a51958bb774d278e70ad3890b9d directly verified.",
+      "All 292 cards compared with registered source raw_text morphology evidence: 224 match after neutral reflexive placement normalization, 64 no independent conjugation, 3 source does not supply parseable perfect auxiliary, 1 existing noted sense-specific mismatch.",
+      "ma2-lu-0297 ausrasten: source screenshot 11 row 9 notes hat ausgerastet; active emotional sense 'die Beherrschung verlieren' uses ist ausgerastet, documented in existing R83 Grammatik and consistent with Duden ausrasten durchdrehen.",
+      "Three source-without-explicit-auxiliary cases: ma2-lu-0018, ma2-lu-0094, ma2-lu-0182. Their current working auxiliary forms were not mechanically inferred from the source in this audit.",
+      "Seven verifier scenarios executed against fresh ZIP: 1 exact original PASS and 6 adversarial tamper cases rejected (outer hash, candidate hash, unexpected source auxiliary, exception alteration, exception locator drift, source card omission).",
+      "292 canonical-vs-presentation German definitions remained in sync; source provenance mirror and per-item review source locators checked, 0 new mismatches. Machine scan is not a linguistic expert check.",
+      "Verified Git readback of executable verifier and six-negative-test harness matches archived Library source text exactly. No R83 data, source screenshots, review fingerprints, runtime UI or existing statuses were changed."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json => latest_r84_source_perfect_audit (auxiliary QA only; R83 remains active content authority)",
+    "original_r83_zip_sha256": "a0b2f5029fefdf147262f4af7d68873430fea1192960b54d340b351c8198afe3",
+    "original_active_candidate_sha256": "e5eab48efa56f4c3f406d573e440da559fa00a51958bb774d278e70ad3890b9d",
+    "verifier_git_path": "Workspaces/menschen-a2-verben-kombinationen-v336/Verification/VERIFY_R83_SOURCE_PERFEKT.py",
+    "verifier_git_blob_sha": "94e22fca938bb8d9c75c43b7b8a6236d645aed6a",
+    "verifier_sha256": "01fe5699042e96d924ec9c84fa7172df4353e53a02b16f9ae059a283a9b53107",
+    "tests_git_path": "Workspaces/menschen-a2-verben-kombinationen-v336/Verification/TEST_SOURCE_PERFEKT_NEGATIVE.py",
+    "tests_git_blob_sha": "d1637aaee4fe61d1e42fb21db02971a62feeb224",
+    "tests_sha256": "cf2d2b5325eb3da08b7e7440533691e74f50794ea7620a6b8b1c49c3ab1b4f98",
+    "test_report_sha256": "93ebb3a7d44e27e3cf3a75a2eb19dfcb8dfadb434c322439e80462ad2110b8d7",
+    "provenance_scan_sha256": "fdf1f4ab51f92c12a092de881d256c98c72a41a9d77117dd00672b7f8a56de50",
+    "duden_primary": "https://www.duden.de/rechtschreibung/ausrasten_durchdrehen",
+    "duden_conjugation": "https://www.duden.de/konjugation/ausrasten_durchdrehen",
+    "original_wip_unchanged": true,
+    "independent_reviews_fabricated": 0,
+    "library_verifier_file_id": "libfile_43dbd3eb4b8081919d4cf37fd239758d",
+    "library_test_file_id": "libfile_b135699ea33c8191975cc7dadbba490b"
+  },
+  "next_action": "Do not repeat already-closed technical source morphology scans or generate serial ZIPs. R83 is the one active WIP. Stage4 is genuinely blocked until external qualified itemwise 1423 decisions with source evidence are received; then apply justified corrections and run official Stage4, Stage5 and CURRENT runtime Stage6/7."
+}

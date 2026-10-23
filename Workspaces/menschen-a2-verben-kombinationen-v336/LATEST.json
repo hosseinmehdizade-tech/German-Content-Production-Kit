@@ -669,5 +669,17 @@
     "expert_approvals": 0,
     "stage4": "BLOCKED_NOT_FINAL",
     "type": "DURABLE_RECOVERY_AUXILIARY_NOT_NEW_CONTENT_OR_EXPERT_SIGNOFF"
+  },
+  "content_editing_operating_rule": {
+    "status": "ACTIVE_USER_DIRECTIVE_2026_10_23",
+    "scope": "Menschen A2 Verben Kombinationen v3.3.6",
+    "objective": "Apply each source-grounded correction directly to one active working TSV/canonical data snapshot, not a new accumulating historical ZIP per individual edit.",
+    "edits": "Make bounded validated in-place revisions to the current WIP working data; keep stable IDs, source mappings, prior artifact integrity, parent hashes and a compact change/decision log. Never alter immutable LOCKED predecessors.",
+    "qa": "Run compact incremental QA on changed cards and affected relations after edits; retain independent linguistic Stage4 and official Stage5/6/7 verification gates. Model editorial screens are not qualified expert signoff.",
+    "packaging": "Do not create a new full cumulative Rxx archive or Library upload per correction/small QA. Produce a single organized content-production ZIP when a meaningful final/durable stage gate or explicit user delivery actually requires it; reference historical source/checkpoints by hash/path instead of duplicating all members.",
+    "storage": "Do not delete existing Library files automatically; before any cleanup validate unique lineage and retain a recoverable exact authority + required deltas. No new large interim Library ZIPs.",
+    "git": "Lightweight source/metadata sync only after validated milestones under GIT-SYNC-POLICY; avoid Git binary transport and do not manufacture milestones merely for packaging.",
+    "current_authority_unchanged": true,
+    "current_content_status_unchanged": "R66_STILL_STAGE4_BLOCKED"
   }
 }

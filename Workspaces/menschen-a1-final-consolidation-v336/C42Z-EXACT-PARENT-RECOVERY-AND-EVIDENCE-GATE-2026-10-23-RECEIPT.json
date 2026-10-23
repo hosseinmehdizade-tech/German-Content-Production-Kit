@@ -1,0 +1,76 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42Z_EXACT_C42T_RECOVERY_VALIDATION_GATE_AND_PROVENANCE_REPLAY",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "The exact original 34.1MB C42T ZIP SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 is not available in this runtime/Library. Historical C41 TSV SHA256 ad3e388ecb19f7f91a29b902f8237d2419eb2b65e9d5e0d990e65b2a0e9b266d differs from expected current C42T TSV 9e2e32c25693229e42bc80e6ba45671d08fa7b0d7220dee5f39c008a551c73fc. No safe rebase/edit without exact parent."
+  },
+  "scope": {
+    "unit": "exact_parent_recovery_and_provenance_gate",
+    "total_units": 1,
+    "source_ledger_items": 43,
+    "origin_hold_cases": 7,
+    "cross_lesson_holds": 7,
+    "C42Y_cases": 14,
+    "baseline_cards": 2997,
+    "baseline_memberships": 3039,
+    "baseline_examples": 11988
+  },
+  "progress": {
+    "reviewed_unique": 1,
+    "unreviewed": 0,
+    "dispositions": {
+      "BLOCKED_ON_MISSING_EXACT_CURRENT_C42T_BINARY": 1
+    },
+    "cards_edited": 0,
+    "metadata_origin_edits_applied": 0,
+    "official_stage4_cells_promoted": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact registered Memrise CSV SHA256 verified, 9109 source rows",
+      "Exact historical C41 ZIP SHA256 verified; baseline 2997 cards, 3039 course memberships, 11988 trilingual examples",
+      "43 C42X legacy combination origin records / mirrored items validated by full C41 original card hash and original field SHA256, original source row contents and hash",
+      "7 C42Y unproven-origin cases matched 7 exact C42X held cases; 7 C42Y crosslesson semantics matched C42W 7 held pairs",
+      "8 adversarial tests PASS_FAIL_CLOSED: absent current parent, C41 downgrade attempt, forged source attribution, shifted source row, false legacy hash, false Stage4 promotion, incorrect current parent pin, fake app mutation",
+      "Duden viel page actually contains viel ins Theater gehen as usage example, not registered Memrise nor Theater headword evidence; Cornelsen press text contains 24 Stunden am Tag, not dictionary entry",
+      "Böll external article title supports sieben Tage die Woche; Duden Termin includes absagen in computer-generated typical pair, not as registered Memrise source",
+      "Portable ZIP CRC and all internal member SHA256 PASS; exact Library rematerialization SHA256 + byte compare PASS"
+    ],
+    "global_Stage4": "BLOCKED_NOT_RUN",
+    "official_stage5": "NOT_RUN",
+    "CURRENT_runtime": "v483-R117",
+    "stage6": "NOT_RUN",
+    "A1_FINAL": false,
+    "import_allowed": false,
+    "language_native_independent_QA": false
+  },
+  "artifact": {
+    "filename": "Menschen-A1-C42Z-EXACT-PARENT-RECOVERY-AND-SOURCE-EVIDENCE-GATE-NO-IMPORT.zip",
+    "sha256": "75190306b19d09677a022f6c1cab53426a31e21e6b46504b9035097873033850",
+    "bytes": 34337,
+    "members": 11,
+    "library_file_id": "libfile_aaad670a58688191b5c61b2436b1d40e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C42Z-EXACT-PARENT-RECOVERY-AND-SOURCE-EVIDENCE-GATE-NO-IMPORT.zip",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
+  },
+  "authority": {
+    "current_C42T_zip_required_sha256": "0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207",
+    "current_C42T_tsv_required_sha256": "9e2e32c25693229e42bc80e6ba45671d08fa7b0d7220dee5f39c008a551c73fc",
+    "historical_C41_zip_sha256": "b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95",
+    "historical_C41_tsv_sha256": "ad3e388ecb19f7f91a29b902f8237d2419eb2b65e9d5e0d990e65b2a0e9b266d",
+    "global_source_hash": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "C42Y_sha256": "81056a2793383b789985fa1a01f299c0acf753f33a5293aad469681aa161a56f",
+    "original_LOCKED_cards_changed": false,
+    "UI_SRS_modified": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_EXACT_SHA256_AND_BYTES",
+    "resume_pointer": "Obtain exact 34123935-byte C42T original ZIP SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 from producing earlier chat; run packaged c42z_recovery_gate.py with original registered source CSV + historical C41 baseline + --candidate-c42t path. Require exact top ZIP SHA and nested 9e2... current canonical TSV hash, 2997/3039/11988 counts. Then manually field-CAS replay curated-origin and semantic holds, independent global Stage4, anti-bypass Stage5, CURRENT v483-R117 Stage6, and final A1 release. Never auto import or overwrite LOCKED."
+  }
+}

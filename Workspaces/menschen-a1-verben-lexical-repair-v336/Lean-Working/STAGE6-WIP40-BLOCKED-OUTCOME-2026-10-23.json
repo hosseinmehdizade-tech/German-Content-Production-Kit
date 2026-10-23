@@ -1,0 +1,49 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "milestone": {
+    "name": "STAGE6_EXACT_CURRENT_V483_SAME_ORIGIN_IMPORT_AND_RELOAD",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "On exact v483-R117, an HTTP origin is reachable by local Python HTTP client but Chromium navigation to 127.0.0.1 returns ERR_BLOCKED_BY_ADMINISTRATOR, preventing actual same-origin IndexedDB import, commit, reload and persistent profile restart."
+  },
+  "scope": {
+    "unit": "exact-runtime-flattened-browser-check",
+    "total_units": 12
+  },
+  "progress": {
+    "reviewed_unique": 12,
+    "unreviewed": 0,
+    "dispositions": {
+      "passed_isolated_parser_and_memory_checks": 12
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact CURRENT runtime ZIP 6e54b329a8d3ce22562d15ba66a313c8502981619532eb519e17817db8e4c1f9 matches authoritative pin; WIP40 TSV a93ae6cc0762ddbf3bd45e08b4c8965b5847ef82ea621a5f2359b89b71c08201 matches authoritative current state",
+      "All 12/12 isolated browser checks PASS on production v483 source scripts and real WIP40 TSV, including 310 unique IDs, 1934 items, 1240 examples, 8 usage annotations, in-memory replace, backup and file-selection readiness",
+      "Independent full immutable Repair68 direct diff PASS: exactly 44 Persian changes and eight register annotations across 51 edited cards; remaining 259 cards unchanged; all source/lineage/metadata/example values preserved",
+      "Seven applicable bundled offline regression cases PASS, legacy hardcoded v482 case NOT_APPLICABLE, initially misinvoked inline syntax re-run correctly PASS; 38 external JavaScript syntax checks and 18 prevention tests PASS",
+      "Chromium localhost navigation BLOCKED_BY_ADMINISTRATOR, therefore real IndexedDB persistence and same-origin reload NOT_TESTED"
+    ],
+    "stage4": "BLOCKED_INDEPENDENT_QUALIFIED_GERMAN_PERSIAN_SOURCE_SIGNOFF",
+    "stage5": "NOT_PASSED",
+    "stage6": "BLOCKED_REAL_CANONICAL_ORIGIN",
+    "stage7": "NOT_RUN"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a1-verben-lexical-repair-v336/Lean-Working/STAGE6-WIP40-BLOCKED-OUTCOME-2026-10-23.json",
+    "local_reports": [
+      "QA-v483-WIP40/WIP40-CONSOLIDATED-TECHNICAL-PREFLIGHT.json",
+      "QA-v483-WIP40/WIP40-FLATTENED-V483-ACCEPTANCE.json",
+      "QA-v483-WIP40/WIP40-INDEPENDENT-REPAIR68-DELTA-CERTIFICATE.json"
+    ],
+    "primary_profile_untouched": true,
+    "app_runtime_unchanged": true
+  },
+  "runtime": "v483-R117",
+  "content": "WIP40",
+  "full_release_final": false
+}

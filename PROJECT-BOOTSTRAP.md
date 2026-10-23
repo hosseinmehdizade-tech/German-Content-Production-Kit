@@ -12,6 +12,8 @@ Use this precedence order:
 Never silently downgrade a newer verified artifact because GitHub is older.
 
 ## 2. Mandatory startup
+
+**ACTIVE WORKSTREAM WIP RULE — MANDATORY READ:** Before working on or reporting active Menschen A1/A2/B1, Verben, NVV, Grammar, Vocabulary, Lesen, Schreiben, source-ingestion or QA streams, read `WORKSTREAM-LEAN-EDIT-POLICY.json`. Use one current working content authority per stream and compact edit/QA logs; do **not** generate a cumulative full ZIP or fill Library for every small correction. Preserve exact source provenance, active stream-specific frozen audit baselines (especially NVV post-S9), lightweight validated-milestone Git sync, required verified portable recovery, all Stage4-7 gates, and the ONE complete final vocabulary production ZIP contract. This is prospective; no existing LOCKED artifacts are mutated and no Library file is auto-deleted.
 1. Read this file, `PROJECT-OPERATING-MODE-v2.md`, `PROJECT-MEMORY.json`, and `GIT-SYNC-POLICY.json`.
 2. Read `PROJECT-STATE.json` to resolve the active framework/version; **do not hard-code an old START-PROMPT**.
 3. Resolve the active START-PROMPT and exact portable authority/hash recorded in project state.

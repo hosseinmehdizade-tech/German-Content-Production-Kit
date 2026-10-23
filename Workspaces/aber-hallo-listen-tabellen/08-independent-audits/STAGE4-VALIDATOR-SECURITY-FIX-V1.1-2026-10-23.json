@@ -1,0 +1,94 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "aber-hallo-listen-tabellen",
+  "milestone": {
+    "name": "Stage4 qualified independent linguistic acceptance",
+    "level": "major",
+    "state": "BLOCKED",
+    "subcheckpoint": "STAGE4-EXPERT-REVIEW-VALIDATION-GATE-02",
+    "blocker": "Still 0 of 788 independently qualified reviewed/signed learning units, with nine expert-only source/sense decisions. Security fixes and deterministic gate tests cannot substitute qualified human sign-off."
+  },
+  "scope": {
+    "unit": "independent_qualified_review_per_learning_unit",
+    "total_units": 788
+  },
+  "progress": {
+    "reviewed_unique": 0,
+    "unreviewed": 788,
+    "dispositions": {
+      "qualified_expert_accepted": 0
+    },
+    "tooling": {
+      "parent_gate_v1_0_tests": 10,
+      "new_gate_v1_1_tests": 16,
+      "passed": 16,
+      "new_security_fix_count": 1,
+      "matched_source_evidence_records": 3148,
+      "grammar_examples_outside_lexical_attestation": 4,
+      "canonical_modified": false,
+      "import_modified": false,
+      "source_modified": false
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Reproduced security defect in validator v1.0: review fields on undecided rows bypassed injection scanner",
+      "Fixed by checking all editable expert cells before early exit for unsigned rows",
+      "Added SHA256 verification of pinned V2 3148-example evidence index and row-by-row correspondence with untouched 788-unit reviewer baseline",
+      "16/16 fixture tests passed including unsigned formula injection and source evidence hash tampering",
+      "Real unsigned worksheet: 0/788 decisions, source mappings 3148/3148, zero mismatches; output BLOCKED, never PASS",
+      "All 8 versioned Drive files exact-byte and SHA256 verified; source Canonical/Import authority unchanged"
+    ],
+    "independent_stage4": "NOT_RUN",
+    "stage5_7": "NOT_RUN"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Reviewer independently fills pinned 788-unit V2 worksheet. Validate with v1.1 tool and pinned V2 source evidence from Drive; no Stage4 PASS without qualified independent review.",
+    "folder": "German-Flashcards-Pro-Backup-Vault/03-Active-Working/Aber-Hallo/Stage4-Expert-Gate-v1.1-2026-10-23",
+    "files": {
+      "validator": {
+        "filename": "validate_independent_stage4_review_v1_1.py",
+        "drive_id": "1QwR9WSbRRu1V8YoXX-RH2Q020oudIHIM",
+        "sha256": "241c0bd1eb6ec4bdae93e8d2868c7801bffe9e726715ca3a9b8bbdb60fcff53d"
+      },
+      "tests": {
+        "filename": "test_independent_stage4_review_v1_1.py",
+        "drive_id": "1s51OXUih8luN5Dqc1EnPr8LrQQMW8fWy",
+        "sha256": "8d2f24e4618b0eb4d4185f31dd016f48ab9db0e53c2800d973ab5dbe531a111a"
+      },
+      "contract": {
+        "filename": "STAGE4-GATE-CONTRACT-v1.1.json",
+        "drive_id": "1ZiCGyrzWkm7iNetlwbzYW3cflyrzPZQy",
+        "sha256": "7d450f53df635fc376f7e00fda0af7f91d4dd5b702bfd9772543739c0ac56c20"
+      },
+      "preflight": {
+        "filename": "CURRENT-V11-PREFLIGHT.json",
+        "drive_id": "180tbwb56XEJv4RaMP3In-G6V0YWGp2e5",
+        "sha256": "eefa78c9aa4f2e89b56236806aed9f9c8e03804e56627dc7b134a1fb30a6c260"
+      },
+      "test_results": {
+        "filename": "STAGE4-GATE-V1.1-TEST-RESULTS.json",
+        "drive_id": "1OtbXZVZsPwRhzZKK76fN6qA0F7FVq7ui",
+        "sha256": "251817a5039b8563d498365620f5d87ccfbee8fde8c6da5938d5c89f9c6812ae"
+      },
+      "handoff": {
+        "filename": "STAGE4-REVIEWER-HANDOFF-v1.1.md",
+        "drive_id": "1vroaYtL5B6x-KOa5xSXSTcOa8SskDl_w",
+        "sha256": "93eb1d7531168610e827c6127d6049e6eb484a2d8065aee8d814e9e35f2e98b9"
+      },
+      "outcome": {
+        "filename": "STAGE4-GATE-V1.1-OUTCOME.json",
+        "drive_id": "1BzjeQkMWFEKH_8o-82N8wt4VoEOHaKYl",
+        "sha256": "59c938ca181b32ad0b58759258cff2fa093b117a05254fc33a2f55ff649d8e57"
+      },
+      "manifest": {
+        "filename": "STAGE4-GATE-V1.1-MANIFEST.json",
+        "drive_id": "1NUTGQ3jH1_bgdAUq89K6tfuQce7eJDLi",
+        "sha256": "00e7bfd27efa21e5ba8e2f7625336d84520ec1ccbf2d7ea0a4999439acd71a98"
+      }
+    }
+  },
+  "date": "2026-10-23"
+}

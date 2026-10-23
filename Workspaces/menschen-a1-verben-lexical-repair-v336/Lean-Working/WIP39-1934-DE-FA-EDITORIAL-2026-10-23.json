@@ -1,0 +1,91 @@
+{
+  "schema": "gcpk-a1-verben-full-bilingual-editorial-working-delta@1",
+  "date": "2026-10-23",
+  "status": "PASS_1934_SCOPED_MODEL_EDITORIAL_CHECKS__STAGE4_QUALIFIED_EXPERT_BLOCKED_NOT_FINAL",
+  "parent": {
+    "wip38_checkpoint": "Workspaces/menschen-a1-verben-lexical-repair-v336/Lean-Working/WIP38-INDEPENDENT-SOURCE-REVIEW-2026-10-23.json",
+    "tsv_sha256": "a00796f0128fc53980180adaff01ebacee1b15717462bf3ece3498155476cac9",
+    "immutable_repair68_sha256": "ccc8eb7ba95bbf0fc8d222b189d87d6e394fb32b3bdda5fc34aa4866c78e5b14"
+  },
+  "scope": {
+    "cards": 310,
+    "accepted_combinations": 1934,
+    "examples": 1240,
+    "reviewed": 1934,
+    "decisions": {
+      "scoped_persian_corrections": 2,
+      "context_holds_for_qualified_review": 10,
+      "model_screened_no_unambiguous_new_change": 1922
+    },
+    "original_previous_persian_edits_preserved": 39,
+    "working_total_persian_edits": 41,
+    "usage_notes_unchanged": 8
+  },
+  "edits": [
+    {
+      "card_id": "ma1m-lu-0339",
+      "de": "etwas dringend brauchen",
+      "before_fa": "فوراً به چیزی نیاز داشتن",
+      "after_fa": "به چیزی به‌شدت / به‌طور مبرم نیاز داشتن",
+      "source": "https://www.duden.de/rechtschreibung/dringend"
+    },
+    {
+      "card_id": "ma1m-lu-1881",
+      "de": "einen Termin kurzfristig verschieben",
+      "before_fa": "یک قرار را در کوتاه‌مدت جابه‌جا کردن",
+      "after_fa": "زمان یک قرار را با فاصلهٔ کمی مانده به موعدش تغییر دادن",
+      "source": "https://www.duden.de/rechtschreibung/kurzfristig"
+    }
+  ],
+  "outputs": {
+    "A1-VERBEN-ACCEPTED-KOMBINATIONEN-WORKING.json": {
+      "sha256": "d99444994de3f335c6a1c56be69be3895de1808f1b31c3b1fbf88f416f50ee3e",
+      "bytes": 1039506
+    },
+    "A1-VERBEN-PROJECTED-CARDS-WORKING.json": {
+      "sha256": "8bae1f2ddf0c6a36f0d0d5b0fa3c8ff1f4228b1eb2611d56f54c8f941801561a",
+      "bytes": 9041943
+    },
+    "A1-VERBEN-UNIVERSAL-v2-WORKING.tsv": {
+      "sha256": "d9bb90bebef2dfc76a0feb4b56c790dc0dd5008fc92c11b99111f143c3485aaf",
+      "bytes": 5875810
+    }
+  },
+  "verification": {
+    "clean_parent_3_of_3_sha256_exact": true,
+    "targeted_diff_2_cards_only": true,
+    "other_308_cards_exactly_equal": true,
+    "other_1932_combinations_unchanged": true,
+    "examples_1240_and_notes_8_unchanged": true,
+    "import_json_neutral_validator": "PASS_310_ZERO_ERRORS",
+    "import_tsv_neutral_validator": "PASS_310_ZERO_ERRORS",
+    "legacy_german_sources_locked": true,
+    "source_pdf_1934_evidence_tiers_preserved": true
+  },
+  "assets": {
+    "all_1934_ledger": {
+      "relative_path": "STAGE4-EDITORIAL-WIP39/ALL-1934-DE-FA-EDITORIAL-DECISIONS.csv",
+      "sha256": "2cd549bdb4cefc92310996a6cfbe9b6f8c0bc4147e932ecf1bc27fab580bee11"
+    },
+    "qa": {
+      "relative_path": "STAGE4-EDITORIAL-WIP39/WIP39-COMPREHENSIVE-DE-FA-EDITORIAL-QA.json",
+      "sha256": "e86f75913fb0e8afdaaa892dcac1c7866fb7dfcd73e50c0a5754865450995137"
+    },
+    "outcome": {
+      "relative_path": "STAGE4-EDITORIAL-WIP39/WIP39-STAGE4-OUTCOME-RECEIPT.json",
+      "sha256": "56a0e864e9ee3b994c19205436f96d4f3a07d32d77e87bcc7071c800ac81b40d"
+    }
+  },
+  "qa_limits": {
+    "model_editorial": "REVIEW_COMPLETE_1934",
+    "qualified_independent_de_fa": "NOT_ATTESTED",
+    "original_menschen_occurrence_for_generated_items": "NOT_ATTESTED",
+    "stage4": "BLOCKED",
+    "stage5": "NOT_PASSED",
+    "stage6": "NOT_RUN_FOR_WIP39",
+    "stage7": "NOT_RUN",
+    "final": false
+  },
+  "reconstruction": "From exact WIP38 three working content files by SHA, match each card_id+de+before_fa once and replace only fa in accepted.items, accepted.backend.items, projection.customFields.kombinationen_v1.items, projection.details.Kombinationen, TSV.custom_fields.kombinationen_v1.items and TSV.details.Kombinationen. Keep all original IDs/order/provenance/examples/UI. Verify three output SHA and structural counts.",
+  "next": "Formal independent qualified bilingual and source-fidelity Stage4 signoff. Ten contextual holds are recorded in full local ledger. No per-edit ZIP, no LOCKED change."
+}

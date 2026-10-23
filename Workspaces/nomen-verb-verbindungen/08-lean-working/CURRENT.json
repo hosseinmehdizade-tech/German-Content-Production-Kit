@@ -12,14 +12,14 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "ae2551eff3297ada519544cedf69a6c132c7d93df8e3df7fe9b5b5bff9c42014",
+    "canonical_sha256": "5dd0def1bb97e764f48dbb3ebc4d4b816e34257d4050404ba1049f79d37ded39",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "9700c62b713e5619edcc1fbc9b19d0231ad68134360b8ee42cc33b18e0b9bdb0",
+    "tsv_sha256": "00a4b0cdd36d385c59a466d93f45cc836d78cb480de8b1002ae1ccdc4df18859",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
     "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
-    "latest_validated_batch": "STAGE4_INTERNAL_SEMANTIC_SAMPLE170",
+    "latest_validated_batch": "STAGE4_INTERNAL_SEMANTIC_SAMPLE320_AND_SOURCE_RECONCILIATION",
     "delta_receipts": [
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json",
@@ -36,7 +36,8 @@
       "Workspaces/nomen-verb-verbindungen/08-lean-working/POST-FIRSTPASS-2026-10-23-REPLAY.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/POST-FIRSTPASS-EVIDENCE-SWEEP-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/POSTQUEUE-ROUND3-RECOVERY-2026-10-23.json",
-      "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE-170-2026-10-23-DELTA.json"
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE-170-2026-10-23-DELTA.json",
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE-320-2026-10-23-DELTA.json"
     ]
   },
   "edits": [
@@ -546,11 +547,11 @@
   ],
   "qa": {
     "status": "PASS_SCOPED_SOURCE_ALIGNMENT_AFTER_7_TARGETED_CARD_EDITS_NOT_STAGE4",
-    "changed_cards": 143,
-    "changed_fields": 407,
+    "changed_cards": 147,
+    "changed_fields": 419,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2349,
+    "unmodified_tsv_rows_byte_identical": 2345,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
     "locked_bytes_sha256_verified": "PASS",
@@ -609,12 +610,16 @@
       "qualified_linguistic_reviewer": "NOT_DONE"
     },
     "semantic_internal_sample": {
-      "reviewed": 170,
-      "remaining": 330,
-      "source_pdf_matches": 2492,
-      "triplets_structure": 9968,
-      "issues": 0,
-      "qualified_independent_reviewer": "NOT_DONE"
+      "screened": 320,
+      "remaining": 180,
+      "new_internal_cards_screened": 150,
+      "new_targeted_card_edits": 2,
+      "new_fields": 4,
+      "source_pdf_matches": "2492/2492",
+      "triplet_projection": "9968/9968",
+      "unchanged_tsv_rows": "2490/2490",
+      "error_count": 0,
+      "independent_semantic_signoff": "NOT_DONE"
     }
   },
   "parent_audit": {
@@ -623,17 +628,16 @@
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Continue 77 old linguistic holds and 330 remaining internal semantic sample items; Stage4 independent still required.",
+  "next": "Continue 180 not-yet-internally screened cards from fixed stratified 500 and qualified independent adjudication of 71 old holds, plus out-of-cohort issues; no Stage4 FINAL.",
   "triage": {
     "unique_original_cases": 134,
     "editorially_repaired_from_cohort": 23,
-    "source_verified_no_force": 34,
-    "pending_qualified_review": 77,
-    "exact_resume_receipt": "Workspaces/nomen-verb-verbindungen/07-independent-audit/STAGE4-ROUND3-2026-10-23-OUTCOME.json",
+    "source_verified_no_force": 40,
+    "pending_qualified_review": 71,
     "additional_sample_issue": [
       82
     ],
-    "internal_semantic_sample_cards": 52,
+    "internal_semantic_sample_cards": 320,
     "independent_semantic_sample_review": "NOT_DONE"
   }
 }

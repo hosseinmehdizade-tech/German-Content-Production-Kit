@@ -1,0 +1,89 @@
+{
+  "schema": "ma2-verben-r62-durable-source-recovery-checkpoint@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": "R62_VERIFIED_GIT_SOURCE_AND_LIBRARY_EXACT_CHAIN_RECOVERY",
+  "status": "PASS_EXACT_SOURCE_PERSISTED_GITHUB__LIBRARY_BASE_AND_DELTA_BYTE_REPLAY_PASS__STAGE4_EXPERT_REVIEW_BLOCKED",
+  "current_content_authority": {
+    "milestone": "STAGE4_R62_OPTIMIEREN_SCOPE_CANONICAL_PARITY_AND_REVIEW_REBIND",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R62-VERBESSERN-OPTIMIEREN-SCOPE-REBOUND-2026-10-23.json",
+    "artifact_filename": "Menschen-A2-Verben-v3.3.6-STAGE4-R62-VERBESSERN-OPTIMIEREN-SCOPE-WIP.zip",
+    "sha256": "4915e69dd77444f3103a5679aee43a2600cea7ab9b2bd438a0fe723da42a16d7",
+    "bytes": 45840116,
+    "members": 1048,
+    "candidate_sha256": "f6639703f9753afcfe84ee53ff0687b69281a557f681dcb5a0c1d85c9fff35e6",
+    "binary_library_copy": false,
+    "binary_recoverable_from_library_and_git": true
+  },
+  "library_prerequisites": [
+    {
+      "role": "R57 base",
+      "filename": "Menschen-A2-Verben-v3.3.6-STAGE4-R57-WUNDERN-STAUNEN-SCOPE-WIP.zip",
+      "sha256": "98414e4581d6970b348467c7718a2a266464da5d4b0fa9843fb68672af870b3e",
+      "library_file_id": "libfile_0ad3f5c88da48191afcd70a8ef5a373d",
+      "verified_live_materialized": true
+    },
+    {
+      "role": "R59 exact delta (contains restore_r59.py)",
+      "filename": "Menschen-A2-Verben-R59-EXACT-RESTORE-DELTA-2026-10-23.zip",
+      "sha256": "0038661ea75e7debc6be1c53bbf8e39b7aa52555340d361a9741deef9b6be96a",
+      "library_file_id": "libfile_e6b259723df081919a02457066bf88cb",
+      "verified_live_materialized": true
+    }
+  ],
+  "github_source": [
+    {
+      "path": "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R62/REBUILD_R60_FROM_R59.py",
+      "file_sha256": "2d048b4bdc407145688bc17a5a322b5eb61c930f01c6a38ae333bff6420dd43c",
+      "github_blob_sha1": "cb975abb86651bddb0057ebcdbe9f022f6c78367",
+      "verified_exact_git_blob_from_source_bytes": true
+    },
+    {
+      "path": "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R62/BUILD_R62_FROM_R60.py",
+      "file_sha256": "94fc98261fed059188550f10b33103d9a0ca2703be588b4fd9a78a0839e83e8f",
+      "github_blob_sha1": "4dbc09f7cb861311f8afb06ee139e4eaa8043aba",
+      "verified_exact_git_blob_from_source_bytes": true
+    }
+  ],
+  "rebuild_commands": [
+    "python restore_r59.py EXACT_R57.zip EXACT_R59_DELTA.zip R59.zip (extract restore_r59.py from R59 delta)",
+    "python REBUILD_R60_FROM_R59.py R59.zip R60.zip",
+    "python BUILD_R62_FROM_R60.py R60.zip R62.zip"
+  ],
+  "hash_chain": {
+    "R57": "98414e4581d6970b348467c7718a2a266464da5d4b0fa9843fb68672af870b3e",
+    "R59": "0f0de9d320cce775c639d0098a3fc001cd22d597a287044ff8e7dd41039cc8bc",
+    "R60": "6a95c2b405f6fb425ffceb222bf2518092757fba49f0b440be163d5c60655337",
+    "R62": "4915e69dd77444f3103a5679aee43a2600cea7ab9b2bd438a0fe723da42a16d7"
+  },
+  "fresh_tests": {
+    "library_r57_sha256": "PASS",
+    "library_r59_delta_sha256": "PASS",
+    "library_r59_exact_restoration": "PASS",
+    "r60_source_replay": "PASS",
+    "r62_source_replay": "PASS",
+    "target_r62_sha256": "PASS",
+    "r62_zip_members": 1048,
+    "r62_crc": "PASS",
+    "r62_exact_byte_compare_to_user_attached_zip": "PASS",
+    "current_r62_review_gate_negative_and_acceptance_tests": "18/18_PASS",
+    "github_source_readback_and_blob_identity": "2/2_PASS",
+    "test_environment": "Python 3.13.5 (exact ZIP bytes may vary if zlib implementation differs; never claim exact until SHA matches)"
+  },
+  "safety_boundary": {
+    "stage4": "BLOCKED_NOT_FINAL",
+    "independent_expert_decisions_approved": 0,
+    "unreviewed_examples": 1168,
+    "unreviewed_synonyms": 243,
+    "independent_total_unreviewed": 1411,
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "runtime_import": "NOT_AUTHORIZED",
+    "app_ui_changed": false,
+    "no_library_deletions": true,
+    "full_r62_library_storage": "NOT_STORED_QUOTA_FULL",
+    "recovery_sources": "NOW_PERSISTED_LIBRARY_PLUS_GITHUB"
+  },
+  "next_action": "Continue R62-specific independent qualified DE/FA/EN example and synonym review using the fingerprint-bound workbench; accept external decisions through the strict R62 gate, not model self-signoff. Do not import or final-release until required gates. Keep R57 and R59 delta in Library; scripts are in GitHub and can reconstruct exact R62 if target SHA matches."
+}

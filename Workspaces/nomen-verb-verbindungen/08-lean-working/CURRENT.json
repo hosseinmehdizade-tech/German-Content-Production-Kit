@@ -12,17 +12,18 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "f670881ba0d2b2e923740d7d59e18091736cc0e05b7458b6e40d5ec89b2fdaaf",
+    "canonical_sha256": "1361653864fe6335f6f69ce4f052e00b597c1af63837e2c0ef5194fca43f777c",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "ff12183eacd281e75d3f779fbf4046c456671d24ade8b70a05a6f0c0a97d6c2d",
+    "tsv_sha256": "8ac690cbad19018be2b834cf73aea85f62ba79c8601701e64058a0acd6f4d20e",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
     "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
-    "latest_validated_batch": "B07-601-700",
+    "latest_validated_batch": "B08-701-800",
     "delta_receipts": [
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json",
-      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json"
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json",
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH08-701-800-2026-10-23-DELTA.json"
     ]
   },
   "edits": [
@@ -189,15 +190,35 @@
       "card_id": "dah-nvv-exp-00678",
       "order": 683,
       "issue": "eine Enttäuschung erfahren frequency/naturalness"
+    },
+    {
+      "order": 707,
+      "issue": "auskurieren Persian meaning vs recover fully range; qualified adjudication",
+      "card_id": "dah-nvv-exp-00702"
+    },
+    {
+      "order": 733,
+      "issue": "Erstaunen verursachen idiomatic frequency",
+      "card_id": "dah-nvv-exp-00728"
+    },
+    {
+      "order": 751,
+      "issue": "ein Experiment vornehmen vs durchführen modern usage register",
+      "card_id": "dah-nvv-exp-00746"
+    },
+    {
+      "order": 771,
+      "issue": "eine Fälschung begehen idiomaticity, original source attested; do not silently alter",
+      "card_id": "dah-nvv-exp-00766"
     }
   ],
   "qa": {
     "status": "PASS_SCOPED_TARGETED_NOT_FULL_LINGUISTIC_CERTIFICATION",
-    "changed_cards": 29,
-    "changed_fields": 67,
+    "changed_cards": 37,
+    "changed_fields": 84,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2463,
+    "unmodified_tsv_rows_byte_identical": 2455,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
     "locked_bytes_sha256_verified": "PASS",
@@ -205,13 +226,15 @@
     "batch06_changed_card_projection_parity": "6/6",
     "full_semantic_second_reviewer": "NOT_DONE",
     "batch07_source_pdf_matches": "100/100",
-    "batch07_changed_card_projection_parity": "8/8"
+    "batch07_changed_card_projection_parity": "8/8",
+    "batch08_source_pdf_matches": "100/100",
+    "batch08_changed_card_projection_parity": "8/8"
   },
   "parent_audit": {
-    "last_first_pass_order": 700,
+    "last_first_pass_order": 800,
     "first_pass_latest": "Workspaces/nomen-verb-verbindungen/07-independent-audit/LATEST.json",
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Continue Batch08 701-800 source-aligned read-only audit and direct working successor corrections; no intermediate ZIP."
+  "next": "Continue Batch09 source order 801-900; keep original audit and LOCKED immutable; use lean working canonical/TSV and Git replayable field deltas."
 }

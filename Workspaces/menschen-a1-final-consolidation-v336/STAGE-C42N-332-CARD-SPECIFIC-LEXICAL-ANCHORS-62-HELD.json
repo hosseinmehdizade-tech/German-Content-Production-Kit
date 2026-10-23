@@ -1,0 +1,95 @@
+{
+  "schema": "gcpk-a1-c42n-reviewed-german-lexical-anchors@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": "C42N_332_CARD_SPECIFIC_GERMAN_SEGMENT_ALIGNMENT_62_HELD",
+  "status": "SCOPED_332_ANNOTATIONS_QA_PASS__FULL_GLOBAL_STAGE4_BLOCKED_NO_IMPORT",
+  "last_completed_major_milestone": "C41_730_LEGACY_KOMBINATIONEN_STRUCTURAL_BRIDGE_SCOPED_PASS",
+  "parent_c42m_sha256": "7ab2bf4a133c4095e866a2a372ca88eb58f11ab0a3f255f940df7ca08c403863",
+  "artifact": {
+    "filename": "Menschen-A1-C42N-332-REVIEWED-LEXICAL-ANCHORS-62-HELD-GLOBAL-STAGE4-BLOCKED-NO-IMPORT.zip",
+    "sha256": "a0c734150e7d82f361b78c81579286f37773759db5c20bec5785d0508796686b",
+    "bytes": 16969958,
+    "tsv_sha256": "0c8abb503968ef81dfe1f693eb0d026ed8272ba3b0c3c37c18dc93ec0fec29c6",
+    "delivery_surface": "CURRENT_CONVERSATION_EXACT_BYTES",
+    "library_persistence": "PREVIOUS_LIBRARY_QUOTA_FULL_NO_NEW_UPLOAD_OR_DELETION",
+    "git_binary_storage": false,
+    "exact_parent_embedded": true,
+    "files": 13,
+    "packaged": "successor TSV + 332 segment ledger + 62 held + card-specific German regex lexicon + QA + independent verifier + deterministic builder + original exact nested C42M"
+  },
+  "scope": {
+    "cards": 2997,
+    "memberships": 3039,
+    "examples": 11988,
+    "initial_missing_annotations": 771,
+    "from_C42L": 255,
+    "from_C42M": 122,
+    "new_C42N_repairs": 332,
+    "cumulative_repaired": 709,
+    "held_unresolved": 62,
+    "modified_cards": 137,
+    "new_by_lesson": {
+      "A1-L11": 159,
+      "A1-L12": 86,
+      "A1-L24": 87
+    },
+    "held_by_lesson": {
+      "A1-L11": 28,
+      "A1-L12": 17,
+      "A1-L24": 17
+    },
+    "new_by_category": {
+      "Expression": 253,
+      "Verb": 42,
+      "Noun": 4,
+      "Adverb": 4,
+      "Nominalized Adjective": 8,
+      "Reflexive Verb": 5,
+      "Adjective": 3,
+      "Ordinal Adjective": 13
+    },
+    "segment_cardinality": {
+      "one": 92,
+      "two": 182,
+      "three": 57,
+      "four": 1
+    },
+    "selection": "Every accepted example matches each card-specific necessary German lexical-pattern group exactly once, with ordered non-overlapping word-bounded literal example spans; no arbitrary generated form-only guesses. Excluded ambiguous semantic IDs 1026 1063 1266 3056. No claim examples came directly from registered Memrise CSV unless their pre-existing provenance says so."
+  },
+  "independent_tests": {
+    "zip_crc": "PASS",
+    "file_manifest_sha256": "PASS",
+    "exact_C42M_parent_sha": "PASS",
+    "exact_parent_TSV_sha": "PASS",
+    "full_2997_card_field_level_diff": "PASS_ONLY_ANNOTATIONS_ON_137_CARDS",
+    "mirrored_example_annotations": "PASS_ALL_MATCHING_CARRIERS",
+    "preexisting_annotations_preserved": "PASS",
+    "example_text_and_multilingual_translations_unchanged": "PASS",
+    "deterministic_rebuild_zip_sha256": "PASS_EXACT",
+    "semantic_tamper_tests": "2/2_FAIL_CLOSED",
+    "current_runtime": "v483-R117"
+  },
+  "unmodified": {
+    "source_RAR_CSV_audio": true,
+    "twenty_four_original_LOCKED_lesson_artifacts": true,
+    "card_identity": true,
+    "lesson_membership": true,
+    "user_SRS": true,
+    "app_UI": true
+  },
+  "acceptance": {
+    "full_global_v336_Stage4": "BLOCKED_NOT_PASS",
+    "official_Stage5": "NOT_RUN",
+    "exact_CURRENT_v483_R117_Stage6": "NOT_RUN",
+    "global_A1_final": false,
+    "import_permitted": false
+  },
+  "remaining_blockers": [
+    "62 example anchors require expression-specific semantics/manual review. Some target expressions do not actually occur in the example (e.g. zur Arbeit gehen vs zur Arbeit fahren), never force an anchor.",
+    "34 original shared-lesson source-positive versus lesson-local CLOSED_NO_FORCE cells still need scoped semantic governance; preserve dual lesson statuses.",
+    "L02 original 17-policy-dimension crosswalk to global v3.3.6 has not passed independent semantic equivalence audit.",
+    "Final learner-facing runtime v483 Stage6 has not been run."
+  ],
+  "next": "Independently adjudicate 62 held examples with exact source/sense evidence and fail-closed QA. Then 34 lesson semantic scopes and L02 global policy; full official v3.3.6 Stage4 then Stage5 clean builder and CURRENT v483-R117 Stage6. No import."
+}

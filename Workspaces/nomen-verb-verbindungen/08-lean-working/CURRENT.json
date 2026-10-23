@@ -12,14 +12,14 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "5dd0def1bb97e764f48dbb3ebc4d4b816e34257d4050404ba1049f79d37ded39",
+    "canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "00a4b0cdd36d385c59a466d93f45cc836d78cb480de8b1002ae1ccdc4df18859",
+    "tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
     "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
-    "latest_validated_batch": "STAGE4_INTERNAL_SEMANTIC_SAMPLE320_AND_SOURCE_RECONCILIATION",
+    "latest_validated_batch": "STAGE4_INTERNAL_FIXED_SAMPLE500_SCREEN_COMPLETE",
     "delta_receipts": [
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json",
@@ -37,7 +37,8 @@
       "Workspaces/nomen-verb-verbindungen/08-lean-working/POST-FIRSTPASS-EVIDENCE-SWEEP-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/POSTQUEUE-ROUND3-RECOVERY-2026-10-23.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE-170-2026-10-23-DELTA.json",
-      "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE-320-2026-10-23-DELTA.json"
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE-320-2026-10-23-DELTA.json",
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/SEMANTIC-SAMPLE500-FINAL180-2026-10-23-DELTA.json"
     ]
   },
   "edits": [
@@ -547,11 +548,11 @@
   ],
   "qa": {
     "status": "PASS_SCOPED_SOURCE_ALIGNMENT_AFTER_7_TARGETED_CARD_EDITS_NOT_STAGE4",
-    "changed_cards": 147,
-    "changed_fields": 419,
+    "changed_cards": 150,
+    "changed_fields": 431,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2345,
+    "unmodified_tsv_rows_byte_identical": 2342,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
     "locked_bytes_sha256_verified": "PASS",
@@ -620,6 +621,17 @@
       "unchanged_tsv_rows": "2490/2490",
       "error_count": 0,
       "independent_semantic_signoff": "NOT_DONE"
+    },
+    "fixed500_internal_semantic_screen": {
+      "status": "INTERNAL_EDITO​RIAL_SAMPLE_500_500_SCREENED_NOT_PROFESSIONALLY_VERIFIED",
+      "reviewed": 500,
+      "remaining": 0,
+      "additional180_changed_cards": 3,
+      "additional180_field_changes": 12,
+      "pdf_sources": 2492,
+      "trilingual_projection": 9968,
+      "structural_issues": 0,
+      "independent_second_linguist": "NOT_DONE"
     }
   },
   "parent_audit": {
@@ -628,16 +640,16 @@
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Continue 180 not-yet-internally screened cards from fixed stratified 500 and qualified independent adjudication of 71 old holds, plus out-of-cohort issues; no Stage4 FINAL.",
+  "next": "Stage4 qualified independent review remains: 68 originally flagged cases, 3 repaired sample cards to second-check, plus out-of-cohort legal issue 82; no full linguistic certification or LOCKED mutation.",
   "triage": {
     "unique_original_cases": 134,
-    "editorially_repaired_from_cohort": 23,
-    "source_verified_no_force": 40,
-    "pending_qualified_review": 71,
+    "editorially_repaired_from_cohort": 25,
+    "source_verified_no_force": 41,
+    "pending_qualified_review": 68,
     "additional_sample_issue": [
       82
     ],
-    "internal_semantic_sample_cards": 320,
+    "internal_semantic_sample_cards": 500,
     "independent_semantic_sample_review": "NOT_DONE"
   }
 }

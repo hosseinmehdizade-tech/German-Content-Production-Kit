@@ -12,14 +12,14 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "4087704bc8669a6fa3587914e83ad87e1b4e0a2546e1e9ca6f24a0fd9ab6dc9c",
+    "canonical_sha256": "175f1bc3a3d35d8171e7d61108457857d3d6aa73a3d1ac97553b52237159eb7b",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "d9220f882cc92e90505a13c87c53b0cc4ce4517a79e6c0f1c67ac8a1c50ee530",
+    "tsv_sha256": "4518217cb24f3ba1b89132d599caef116526aaa03930da61c5511d84108a4bf0",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
     "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
-    "latest_validated_batch": "B19-B25-1801-2492",
+    "latest_validated_batch": "POST_FIRSTPASS_134_FLAGS_EDITORIAL_TRIAGE",
     "delta_receipts": [
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json",
@@ -32,7 +32,8 @@
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH14-1301-1400-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH15-18-1401-1800-2026-10-23-DELTA.json",
       "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH19-23-1801-2300-2026-10-23-DELTA.json",
-      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH24-25-2301-2492-2026-10-23-DELTA.json"
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH24-25-2301-2492-2026-10-23-DELTA.json",
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/POST-FIRSTPASS-2026-10-23-REPLAY.json"
     ]
   },
   "edits": [
@@ -541,12 +542,12 @@
     }
   ],
   "qa": {
-    "status": "PASS_SCOPED_SOURCE_ALIGNMENT_TARGETED_EDITS_NOT_STAGE4",
-    "changed_cards": 117,
-    "changed_fields": 282,
+    "status": "PASS_SCOPED_SOURCE_ALIGNMENT_AFTER_7_TARGETED_CARD_EDITS_NOT_STAGE4",
+    "changed_cards": 124,
+    "changed_fields": 323,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2375,
+    "unmodified_tsv_rows_byte_identical": 2368,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
     "locked_bytes_sha256_verified": "PASS",
@@ -574,7 +575,15 @@
     "b15_b18_changed_card_projection_parity": "15/15",
     "b19_b25_source_surface_matches": "692/692",
     "b19_b25_triplets_presence": "2768/2768",
-    "b19_b25_changed_projection_parity": "11/11"
+    "b19_b25_changed_projection_parity": "11/11",
+    "full_corpus_post_firstpass": {
+      "cards": "2492/2492",
+      "source_pdf_surfaces": "2492/2492",
+      "triplets_structurally_valid": "9968/9968",
+      "canonical_tsv_projection_errors": 0,
+      "qualifed_second_reviewer": "NOT_DONE",
+      "stage4": "IN_PROGRESS"
+    }
   },
   "parent_audit": {
     "last_first_pass_order": 2492,
@@ -582,5 +591,14 @@
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Perform qualified linguistic review of flagged cases, unresolved source errors, 4 trilingual examples per card, recurrent-family sweeps and official Stage4; do not claim final lexical certification."
+  "next": "Independent qualified reviewer: adjudicate 122 queued language/valency/register issues and re-review 7 repaired cases; perform recurrent semantic-family sweeps, changed-target QA and 500-unchanged stratified independent sample before Stage4. Preserve frozen S9.",
+  "triage": {
+    "unique_flag_candidates": 134,
+    "first_pass_editorial_repairs_applied": 7,
+    "source_form_verified_no_change": 5,
+    "still_requires_qualified_review": 122,
+    "historical_cumulative_flag_count": 130,
+    "local_triage_json_sha256": "273d3596a8a31e1ee613751d5e8f01e3efcb1749da68530c6e8771e361eb438b",
+    "local_post_full_qa_sha256": "b65e5d38bf7d8dece0548f93c00fc6eb2a27a45e59f3404edcd9c3cba77eacdf"
+  }
 }

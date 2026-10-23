@@ -1,0 +1,85 @@
+{
+  "schema": "gcpk-menschen-a2-lean-working-current@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "date": "2026-10-23",
+  "status": "ACTIVE_EDITABLE_WORKING_DATA__TARGETED_FIX_VERIFIED__NOT_IMPORT_READY",
+  "policy": "WORKSTREAM-LEAN-EDIT-POLICY.json",
+  "prior_stage": {
+    "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3S2-A1-OWNERSHIP-AND-GRAPH-SAFETY-2026-10-23.json",
+    "artifact": "Menschen-A2-C3S2-A1-OWNERSHIP-AND-GRAPH-SAFETY-NOT-IMPORT-READY.zip",
+    "sha256": "f72a3096b36a8d1fbe3a5b1cdd35c4914b72defd73bbe235766e2d9bbd871f14",
+    "quality": "PASS_SCOPED_STATIC_PLUS_OFFLINE_SRS_MOCK__NOT_IMPORT_READY"
+  },
+  "source_projection": {
+    "nested_path": "02-Canonical-Data/Menschen-A2-C3S1-CHECKPOINT.zip",
+    "nested_sha256": "56d0d54b8ced3b28dc4b75a1bec04948f13aaacbab63527b797e9df21267d59d",
+    "tsv_path": "01-Review-Only-NOT-IMPORT/A2-NATIVE-1778-COURSE-MEMBERSHIP-PROJECTION.tsv.review-only",
+    "tsv_sha256": "08bad5fdb6e21ab6e267470809d5bbf343f9bb2aa2d32eb370aadf6c08a85a0d"
+  },
+  "editable_working_file": {
+    "name": "A2-NATIVE-1778-WORKING.tsv.review-only",
+    "container_path": "/mnt/data/Menschen-A2-CURRENT-WORKING/A2-NATIVE-1778-WORKING.tsv.review-only",
+    "sha256": "46dea387d8be73c44cec56e235b4d65f8e05e1c0635a5e5b5964372ee6cd94b3",
+    "bytes": 31946192,
+    "cards": 1778,
+    "columns": 23,
+    "persistence": "CURRENT_CONVERSATION_FILE__RECONSTRUCTIBLE_FROM_IMMUTABLE_PARENT_AND_THIS_PATCH__NOT_CLAIMED_LIBRARY_ROUNDTRIP"
+  },
+  "patches": [
+    {
+      "id": "A2-C3-WORKING-001",
+      "card_id": "ma2m-lu-1766",
+      "type": "SAFE_LEARNER_FRONT_TRAILING_ASCII_SPACE_TRIM",
+      "before": "jüngste Vergangenheit ",
+      "after": "jüngste Vergangenheit",
+      "columns": [
+        "front",
+        "custom_fields"
+      ],
+      "custom_field_paths": [
+        "typingCore",
+        "typingFull",
+        "typingStandard",
+        "stage4_learner_front_exact",
+        "canonical_target.learner_target",
+        "canonical_target.learner_front_stage4",
+        "canonical_target.expression_structure_review.head_or_phrase",
+        "canonical_unit.headword",
+        "canonical_unit.sense_qualified_stage4_front"
+      ],
+      "preserve_source_exact_paths": [
+        "source_visible_form",
+        "canonical_target.registered_source_label_exact",
+        "canonical_target.registered_source_hash",
+        "canonical_target.expression_structure_review.source_immutable_label"
+      ],
+      "source_row_id": 4513,
+      "previous_row_sha256": "86de84c02c517f349f9e1d5e16b58f38ef2d974af75c2a134ba98b911b5e2330",
+      "current_row_sha256": "7b1182a3fb48dde51cc88f1fb580f7a877b1176f3938d8d0379f9ef8eba09854",
+      "reviewer_status": "CONFIRMED_MECHANICAL_WHITESPACE_FIX__NOT_HUMAN_LINGUISTIC_SIGNOFF"
+    }
+  ],
+  "reconstruction": "Read and SHA-check C3S2 and its nested C3S1 TSV; change ONLY the one source row and nine listed learner/custom fields from before to after; do not touch registered source fields; serialize JSON with ensure_ascii=false, sort_keys=true, separators comma+colon; TSV UTF-8, tab-separated, LF; verify whole-file and row SHA-256; no live import or SRS writes.",
+  "targeted_qa": {
+    "parent_zip_sha": "PASS",
+    "nested_parent_byte_identity": "PASS",
+    "only_one_row_changed": "PASS",
+    "only_front_and_custom_fields_changed": "PASS",
+    "nine_dependent_fields": "PASS",
+    "other_1777_rows_byte_identical": "PASS",
+    "source_provenance_preserved": "PASS",
+    "ids_unique_1778": "PASS",
+    "native_v483_IndexedDB": "NOT_EXECUTED",
+    "locked_releases_unchanged": true
+  },
+  "remaining": {
+    "A1_remaining_parent_full_attestation": "OPEN",
+    "retired_A1_0385": "HOLD_NO_AUTO_REKEY",
+    "protected_A1_140": "READ_ONLY",
+    "independent_14_FA_EN": "PENDING_HUMAN_REVIEW",
+    "native_runtime_current": "v483-R117",
+    "real_IDB_SRS_CAS_backup_restore": "NOT_TESTED",
+    "import_ready": false
+  },
+  "git_persistence": "PENDING_POINTER_UPDATE"
+}

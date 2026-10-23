@@ -1,0 +1,92 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-23",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "milestone": {
+    "name": "A2 learner-facing back, meaning, and curated Kombinationen Persian spelling full detected-scope closure",
+    "level": "major",
+    "state": "CLOSED"
+  },
+  "scope": {
+    "unit": "A2 native card with found malformed learner-facing Persian verbal prefix or ه ای suffix",
+    "total_units": 16
+  },
+  "progress": {
+    "reviewed_unique": 16,
+    "unreviewed": 0,
+    "dispositions": {
+      "corrected_orthography": 16
+    },
+    "changed_card_ids": [
+      "ma2m-lu-0568",
+      "ma2m-lu-0574",
+      "ma2m-lu-0575",
+      "ma2m-lu-0591",
+      "ma2m-lu-0601",
+      "ma2m-lu-0630",
+      "ma2m-lu-0733",
+      "ma2m-lu-0777",
+      "ma2m-lu-0789",
+      "ma2m-lu-0820",
+      "ma2m-lu-0830",
+      "ma2m-lu-0846",
+      "ma2m-lu-0847",
+      "ma2m-lu-0871",
+      "ma2m-lu-0881",
+      "ma2m-lu-0886"
+    ],
+    "changed_back_cards": 15,
+    "changed_combination_items": 6,
+    "changed_details_items": 6,
+    "meaning_mirror_updates": 42,
+    "combination_mirror_updates": 12,
+    "total_cards": 1778
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "C3 current v008 before SHA 09f9663ffa6a6249af2bd40ab715569970563db8dcfa337f9384add66ac77f1b; current v009 after SHA bb94934b71fa97e5bfeddffd3d7e1de6803f64f3834995899090387067d3d079",
+      "Independent complete reconstruction of exact old v006 -> v007 -> v008 SHA then strict 16-row diff check 1762 identical",
+      "Only back, details.Kombinationen and curated custom_fields meaning/kombinationen were edited; all 7112 German+DE/FA/EN examples and protected source seed fields byte-equivalent",
+      "Original C3S1 1778-card comparison: 377 cards changed cumulatively, 1401 byte-identical; original examples, stable IDs, order, lesson, source fields preserved",
+      "Exact current v483-R117 parseTsv read-only 1778 x 23 with 7112 examples PASS; qualified human Stage4, official Stage5, native IDB/SRS remains open"
+    ],
+    "scope_only": true,
+    "full_import_ready": false,
+    "human_expert_signoff": false,
+    "current_runtime_native_IDB_SRS": "BLOCKED_BY_ADMINISTRATOR"
+  },
+  "patch": {
+    "from_sha256": "09f9663ffa6a6249af2bd40ab715569970563db8dcfa337f9384add66ac77f1b",
+    "to_sha256": "bb94934b71fa97e5bfeddffd3d7e1de6803f64f3834995899090387067d3d079",
+    "bytes": 31955026,
+    "match_regex_verbal_prefix": "(?<![\\w\\u200c])(?P<prefix>ن?می) +(?P<verb>[آ-ی]+)",
+    "match_regex_suffix": "(?P<stem>[آ-ی]+ه) ای(?![\\u200c\\w])",
+    "replacement": "Only ASCII separating space between confirmed Persian verbal prefix/recognized following verb, or between ه and ای, changed to U+200C; exact prior/new values retained in local delta",
+    "editable_fields": [
+      "back",
+      "custom_fields.vnext_translation_fa",
+      "custom_fields.canonical_target.meaning_fa",
+      "custom_fields.canonical_unit.meaning_fa if present",
+      "custom_fields.kombinationen_v1.items[].fa and matching canonical_target/canonical_unit combination fa",
+      "details JSON items only in Kombinationen section"
+    ],
+    "immutable_fields": [
+      "source_definition_fa_seed",
+      "canonical_target.raw_source_definition_fa_seeds",
+      "canonical_unit.raw_source_definition_fa_seeds",
+      "canonical_target.registered_source_fa_gloss_exact",
+      "all other source/provenance, German and English, 7112 examples, A1/SRS, Stage7"
+    ],
+    "local_exact_delta_sha256": "b386290924a1fd266531a066fdf47614a7cb316c56555fdd2031b1e0b04f626f",
+    "local_independent_qa_sha256": "6e770b501e5f3db20ce13952e63b5cfefb4af6aec09c94f44841411bc02dfad1",
+    "local_v483_parser_qa_sha256": "c415bc8b3ba615342ddcfb625ef1522c7984906d186af13f0cc55214d5923dfb"
+  },
+  "persistence": {
+    "git": "PENDING",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/Working/CURRENT-WORKING.json",
+    "full_TSV_Git_mirror": "NOT_CLAIMED__CURRENT_CHAT_FILE_AND_SHA_BOUND_REPLAY",
+    "working_filename": "A2-NATIVE-1778-WORKING.tsv.review-only",
+    "local_full_delta": "/mnt/data/Menschen-A2-CURRENT-WORKING/V009-LEARNER-BACK-ORTHOGRAPHY-DELTA.json"
+  }
+}

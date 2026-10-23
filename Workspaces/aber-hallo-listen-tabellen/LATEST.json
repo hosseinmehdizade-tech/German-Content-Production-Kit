@@ -2,9 +2,9 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "aber-hallo-listen-tabellen",
   "status": "STAGE4_BLOCKED_INDEPENDENT_QUALIFIED_REVIEWER_REQUIRED",
-  "latest_milestone": "STAGE4-SOURCE-ATTESTATION-EVIDENCE-01",
-  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/08-independent-audits/STAGE4-SOURCE-EXAMPLE-ATTESTATION-AUDIT-2026-10-23.json",
-  "latest_receipt_commit_sha": "3c3671dfa03976bd87ddfbedeb5a03f76647a2c4",
+  "latest_milestone": "STAGE4-SOURCE-ATTESTATION-EVIDENCE-02",
+  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/08-independent-audits/STAGE4-SOURCE-ATTESTATION-METHOD-V2-2026-10-23.json",
+  "latest_receipt_commit_sha": "2445af2802bc703e0786a9b6fa38a5396bd1d19e",
   "authority": {
     "state": {
       "filename": "WORKING-STATE.json",
@@ -108,6 +108,28 @@
       "drive_id": "1Y7NMsgoHadT-1WiSF-rSY76783ni_PHp",
       "sha256": "83fc931ca6954dfdc3bc927ff8a1d88eb1d7a35fd79351d0bcbf85d8b5be439c",
       "drive_url": "https://drive.google.com/file/d/1Y7NMsgoHadT-1WiSF-rSY76783ni_PHp/view"
+    },
+    "stage4_source_evidence_v2": {
+      "filename": "EXAMPLE-SOURCE-ATTESTATION-V2.jsonl",
+      "drive_id": "1sOHHwaan1zZV3p1vJERRNLtmrMLO1ay5",
+      "sha256": "8aa2ef7a89b0d0bceb29052c6d08e1b141974ab125405be784211d78b2690ecb",
+      "drive_url": "https://drive.google.com/file/d/1sOHHwaan1zZV3p1vJERRNLtmrMLO1ay5/view"
+    },
+    "stage4_reviewer_worksheet_attestation_v2": {
+      "filename": "STAGE4-REVIEWER-WORKSHEET-SOURCE-EVIDENCE-V2.csv",
+      "drive_id": "1DYduY4jNQ76ZPN8ZpmcWJKo4uBoAHWxA",
+      "sha256": "aad1780aeb1f080f47ee600137aca03167fe4ee2eaf9d9b4ec4c2e10c2b6e454",
+      "drive_url": "https://drive.google.com/file/d/1DYduY4jNQ76ZPN8ZpmcWJKo4uBoAHWxA/view"
+    },
+    "stage4_source_evidence_delta_v1_v2": {
+      "filename": "V1-V2-CHANGES.json",
+      "drive_id": "1q9usItBoRdkscD4CBVlC7X18CxZIrdmL",
+      "sha256": "0a34d00546a51dbb340710653766444ac05de495fc353ffcd32a772463d43036"
+    },
+    "stage4_source_evidence_v2_summary": {
+      "filename": "V2-ATTESTATION-SUMMARY.json",
+      "drive_id": "1jfcwSq1KitfYkM8WoCpgG_6a0pC-vi5m",
+      "sha256": "bcfd353480924d95d1f9226c906066d896b4b7424ac5144f5c22ce1fcc9de0d9"
     }
   },
   "repair_scope": {
@@ -172,13 +194,17 @@
     "stage4_wip05_untouched_rows": "PASS_784_784",
     "stage4_source_literal_scope": "PASS_3148_ROWS_13_CITED_MATCHES_7_ELSEWHERE_3128_NOT_EXACT",
     "stage4_provenance_label_scope_warning": "787_FLAGGED_SOURCE_RECORDS_ON_738_CARDS__SEMANTIC_SCOPE_REVIEW_REQUIRED",
-    "stage4_source_scope_drive_roundtrip": "PASS_4_OF_4_EXACT_BYTES_SHA256"
+    "stage4_source_scope_drive_roundtrip": "PASS_4_OF_4_EXACT_BYTES_SHA256",
+    "stage4_source_attestation_v2": "PASS_3148_21_CITED_1_ELSEWHERE_3126_NOT_EXACT",
+    "stage4_source_attestation_v2_corrected_evidence_statuses": "8",
+    "stage4_source_attestation_v2_drive_readback": "PASS_6_OF_6_SHA256_BYTES"
   },
   "quality_boundary": [
     "Independent qualified reviewer has signed 0 of 788 units",
     "Nine critical semantic/source decisions awaiting qualified adjudication",
     "Stage5–7 official clean delivery/CURRENT runtime QA NOT_RUN",
-    "Source example_attestation flag needs scope definition; only 13/3148 examples match literal text of registered PDF page with current exact-extraction method; absence of exact match is not a semantic error."
+    "Source example_attestation flag needs scope definition; only 13/3148 examples match literal text of registered PDF page with current exact-extraction method; absence of exact match is not a semantic error.",
+    "V1 source attestation audit had first-locator-only parsing defect. Corrected in method V2, with 8 row status corrections; original V1 remains for historical traceability."
   ],
   "progress": {
     "reviewed_lexical": 787,

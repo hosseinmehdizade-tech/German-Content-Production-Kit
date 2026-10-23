@@ -1,0 +1,66 @@
+{
+  "schema": "gcpk-workstream-lean-edit-persistence@1.0.0",
+  "status": "ACTIVE",
+  "effective_date": "2026-10-23",
+  "user_directive": "Extend the active Menschen A2 Verben no-per-edit-heavy-ZIP workflow to all active and future content workstreams, without deleting unique checkpoints or weakening official QA, recovery or final delivery.",
+  "precedence": "Read PROJECT-BOOTSTRAP, resolve exact workstream authority, read project memory and workstream-specific contracts. This policy reduces WIP artifact churn only. Specialized frozen-baseline, runtime-currentness, source fidelity, stage acceptance, Git milestone sync, and final packaging rules take precedence where more specific.",
+  "applies_to": {
+    "state": "ACTIVE_NONLOCKED_WORK",
+    "automatic_inheritance": true,
+    "content_domains": [
+      "Menschen A1/A2/B1 verbs and lexical enrichment",
+      "Menschen A1/A2/B1 lesson content",
+      "standalone NVV",
+      "Grammar",
+      "Vocabulary",
+      "Lesen",
+      "Schreiben",
+      "source ingestion",
+      "linguistic and technical content QA",
+      "future active content production workstreams"
+    ],
+    "cross_stream_isolation": true,
+    "historical_locked_artifacts": "READ_ONLY",
+    "finished_releases": "READ_ONLY"
+  },
+  "working_method": {
+    "authority": "One authoritative current working data state per individual workstream, with canonical/projection files as required by the schema. Do not conflate a single working STATE with a forced single-file delivery.",
+    "edit": "Apply confirmed changes directly to that stream's active editable source/working dataset. Stable IDs, exact source order, registered origin, course memberships, rich examples, aliases and provenance must be preserved.",
+    "qa": "Validate changed items and affected dependencies as edits are made; run broad/systemic QA when recurring error families are found. Preserve independent expert review requirements and stage-specific full validation.",
+    "review": "Record evidence and reviewer decisions without creating another large inherited full ZIP. Model QA is not equivalent to independent qualified expert review.",
+    "audit_trail": "Record compact changed-item IDs, before/after hashes, evidence links, reviewer status, rejected candidates, impact scope and results in a small log/receipt.",
+    "wip_binaries": "NO_FULL_CUMULATIVE_INTERMEDIATE_ZIP_PER_CARD_OR_SMALL_CORRECTION",
+    "duplication": "Do not copy all historical archive members into every successor; maintain exact lineage by stable hashes/paths, immutable baseline and compact deltas where they are sufficient and reproducible.",
+    "staged_backup": "At a meaningful validated milestone preserve an exact recoverable checkpoint (working snapshot or immutable parent plus verified deltas). Do not assume Git metadata alone is a reconstructible binary.",
+    "branch_and_git": "Sync lightweight changed source/checkpoints once per validated stage/milestone as required by active GIT-SYNC-POLICY and MEM-006; no per-card commits, large binary Git payloads or per-edit ZIPs.",
+    "library": "Do not upload intermediate bulky archives solely to number revisions; do not delete or overwrite prior unique library artifacts without separate exact lineage, hash, and recoverability verification.",
+    "meaningful_snapshot_triggers": [
+      "new canonical authority / irreversible content transformation",
+      "complete validated stage or major source batch",
+      "required immutable baseline at a formal audit gate",
+      "risky source/provenance migration",
+      "final delivery and exact-runtime integration when applicable",
+      "user explicitly requests a portable checkpoint"
+    ],
+    "final_delivery": "Preserve existing complete organized one-ZIP production handoff and all official v3.3.6 gates for vocabulary; other nonlexical streams retain their own final contracts."
+  },
+  "explicit_exceptions": {
+    "nvv_final_audit": "The currently recorded immutable post-S9 audit baseline MUST stay frozen while the full 2492-target audit proceeds. Findings are recorded separately; after completion apply the approved repairs as one bounded successor, as required by active MEM-NVV-003. Never silently edit the audit baseline.",
+    "nvv_shards": "Respect active NVV continuous_safe per-shard lightweight resume state and milestone checkpoints; do not replace it with one monolithic mutable archive.",
+    "source_and_learner_data": "Original registered source bytes and historically LOCKED packages are immutable; 'edit directly' refers to the new working content state, not rewriting evidence.",
+    "content_stage_gates": "Stage4 qualified independent linguistic signoff, Stage5 clean delivery anti-bypass, and Stage6/7 exact CURRENT runtime tests remain mandatory when applicable. No false PASS/FINAL claims.",
+    "grammar_reading_writing": "Content can use lean WIP persistence, but do not substitute lexical TSV or vocabulary-specific final packaging for a source-specific final schema.",
+    "app_runtime": "This policy does not change app runtime release packaging, pinned CURRENT/LAST_FULLY_VERIFIED semantics, storage migrations, UI approvals, or runtime acceptance."
+  },
+  "a2_verben_existing_local_rule": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> content_editing_operating_rule; R66 remains existing WIP authority, not modified by adoption.",
+  "migration_boundary": "Prospective workflow policy only: adoption does not itself edit a card, shrink archives, delete files, advance a stage, or imply an audit PASS.",
+  "references": [
+    "PROJECT-BOOTSTRAP.md",
+    "PROJECT-OPERATING-MODE-v2.md",
+    "PROJECT-MEMORY.json",
+    "GIT-SYNC-POLICY.json",
+    "CONTENT-OUTPUT-DELIVERY-POLICY.json",
+    "WORKSTREAM-RESUME-CURRENTNESS-POLICY.json",
+    "Prompt/START-PROMPT-v3.3.6.md"
+  ]
+}

@@ -2,9 +2,9 @@
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "aber-hallo-listen-tabellen",
   "status": "STAGE4_BLOCKED_INDEPENDENT_QUALIFIED_REVIEWER_REQUIRED",
-  "latest_milestone": "STAGE4-SOURCE-ATTESTATION-EVIDENCE-02",
-  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/08-independent-audits/STAGE4-SOURCE-ATTESTATION-METHOD-V2-2026-10-23.json",
-  "latest_receipt_commit_sha": "2445af2802bc703e0786a9b6fa38a5396bd1d19e",
+  "latest_milestone": "STAGE4-EXPERT-REVIEW-VALIDATION-GATE-01",
+  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/08-independent-audits/STAGE4-REVIEWER-ACCEPTANCE-GATE-2026-10-23.json",
+  "latest_receipt_commit_sha": "a9ed3682f18a67470e992bac636b18e88131cc58",
   "authority": {
     "state": {
       "filename": "WORKING-STATE.json",
@@ -130,6 +130,32 @@
       "filename": "V2-ATTESTATION-SUMMARY.json",
       "drive_id": "1jfcwSq1KitfYkM8WoCpgG_6a0pC-vi5m",
       "sha256": "bcfd353480924d95d1f9226c906066d896b4b7424ac5144f5c22ce1fcc9de0d9"
+    },
+    "stage4_expert_gate": {
+      "filename": "validate_independent_stage4_review.py",
+      "drive_id": "1R8X3nQN5SjrWK4LGRj3N5kmIJyMypYQE",
+      "sha256": "4c8afdf2abca8de251eef2ae5f497db2a6b0172176bd35da9cf099a35bb0e648",
+      "drive_url": "https://drive.google.com/file/d/1R8X3nQN5SjrWK4LGRj3N5kmIJyMypYQE/view"
+    },
+    "stage4_expert_gate_contract": {
+      "filename": "STAGE4-GATE-CONTRACT.json",
+      "drive_id": "1Qtco0P1yh-BYIRlT5ohr25IFBD7S_Em5",
+      "sha256": "ebfa6b4f42e2396fe63e6203978e399a41ea63cf25679e8c145c2d1afe476a9a"
+    },
+    "stage4_expert_gate_handoff": {
+      "filename": "STAGE4-REVIEWER-HANDOFF.md",
+      "drive_id": "1JZi-U8DzaXP96W_-XeNP0BTZQCXR7SUk",
+      "sha256": "6ed1b4853c35542df4f43f53aa2e1ad58e41d58709ed076355f9064829d9c641"
+    },
+    "stage4_expert_gate_preflight": {
+      "filename": "STAGE4-CURRENT-REVIEW-PREFLIGHT.json",
+      "drive_id": "1ZLM9CCO_lvvclNOSdYCjorjeXf33ziG6",
+      "sha256": "65db03a9942ac9d6fa56fbc263cc465985aa5ddbcd914088a5b1fed863710328"
+    },
+    "stage4_expert_gate_test_results": {
+      "filename": "STAGE4-GATE-TEST-RESULTS.json",
+      "drive_id": "1nEMJfNxnZUsVbSeHRovDFgmltJGyxUsA",
+      "sha256": "f0c5a952767dcadfdcc330b8f2b2913fe4adec1d7f0bd37efa877c8c9389b02d"
     }
   },
   "repair_scope": {
@@ -197,7 +223,10 @@
     "stage4_source_scope_drive_roundtrip": "PASS_4_OF_4_EXACT_BYTES_SHA256",
     "stage4_source_attestation_v2": "PASS_3148_21_CITED_1_ELSEWHERE_3126_NOT_EXACT",
     "stage4_source_attestation_v2_corrected_evidence_statuses": "8",
-    "stage4_source_attestation_v2_drive_readback": "PASS_6_OF_6_SHA256_BYTES"
+    "stage4_source_attestation_v2_drive_readback": "PASS_6_OF_6_SHA256_BYTES",
+    "stage4_expert_gate_regression": "PASS_10_OF_10_FIXTURE_TESTS",
+    "stage4_expert_gate_on_real_unsigned_worksheet": "BLOCKED_0_OF_788_SIGNED",
+    "stage4_expert_gate_drive_readback": "PASS_8_OF_8_EXACT_SHA256_AND_BYTES"
   },
   "quality_boundary": [
     "Independent qualified reviewer has signed 0 of 788 units",

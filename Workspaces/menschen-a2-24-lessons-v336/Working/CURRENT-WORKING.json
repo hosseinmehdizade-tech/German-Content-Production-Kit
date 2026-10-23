@@ -2,7 +2,7 @@
   "schema": "gcpk-menschen-a2-lean-working-current@1.0.0",
   "workstream": "menschen-a2-24-lessons-v336",
   "date": "2026-10-23",
-  "status": "ACTIVE_WIP_v004_23_EDITED_CARDS_NOT_IMPORT_READY",
+  "status": "ACTIVE_A2_NATIVE_v005_26_CARDS_EDITED_EDITORIAL72_BLOCKED_IMPORT_NOT_READY",
   "policy": "WORKSTREAM-LEAN-EDIT-POLICY.json",
   "prior_stage": {
     "receipt": "Workspaces/menschen-a2-24-lessons-v336/COURSE-C3S2-A1-OWNERSHIP-AND-GRAPH-SAFETY-2026-10-23.json",
@@ -19,8 +19,8 @@
   "editable_working_file": {
     "name": "A2-NATIVE-1778-WORKING.tsv.review-only",
     "container_path": "/mnt/data/Menschen-A2-CURRENT-WORKING/A2-NATIVE-1778-WORKING.tsv.review-only",
-    "sha256": "c6eb84ba969a5b4fd581225501153008dbdf7b365c00b91da178ebf83fe67ab1",
-    "bytes": 31946898,
+    "sha256": "a41b90bd60e3fc547e3cc02dc6e1123797331a104321b94d74682f01dc7f93d3",
+    "bytes": 31946888,
     "cards": 1778,
     "columns": 23,
     "persistence": "CURRENT_CONVERSATION_FILE__RECONSTRUCTIBLE_FROM_IMMUTABLE_PARENT_AND_THIS_PATCH__NOT_CLAIMED_LIBRARY_ROUNDTRIP"
@@ -91,9 +91,22 @@
       "patch_json": "EDITORIAL-BATCH-004.json",
       "sha256": "b32ff7e55136816523f3b0cc9a2dca6c7c20c68cf4458495671f4f5c5c4f0779",
       "working_sha256": "c6eb84ba969a5b4fd581225501153008dbdf7b365c00b91da178ebf83fe67ab1"
+    },
+    {
+      "id": "A2-C3-EDITORIAL-BATCH-005",
+      "affected_ids": [
+        "ma2m-lu-1212",
+        "ma2m-lu-1262",
+        "ma2m-lu-1280"
+      ],
+      "fa_edits": 3,
+      "before_sha256": "c6eb84ba969a5b4fd581225501153008dbdf7b365c00b91da178ebf83fe67ab1",
+      "after_sha256": "a41b90bd60e3fc547e3cc02dc6e1123797331a104321b94d74682f01dc7f93d3",
+      "replay_receipt": "Workspaces/menschen-a2-24-lessons-v336/Working/A2-EDITORIAL-72-OUTCOME-v005-2026-10-23.json",
+      "reviewer_status": "MODEL_SOURCE_GROUNDED_APPLIED__HUMAN_SIGNOFF_PENDING"
     }
   ],
-  "reconstruction": "Read and SHA-check C3S2 and its nested C3S1 TSV; change ONLY the one source row and nine listed learner/custom fields from before to after; do not touch registered source fields; serialize JSON with ensure_ascii=false, sort_keys=true, separators comma+colon; TSV UTF-8, tab-separated, LF; verify whole-file and row SHA-256; no live import or SRS writes.",
+  "reconstruction": "Immutable C3S2 -> nested C3S1 + existing lean patches 001/002/003/004 -> batch005 exact three source-bound FA edits specified by Workspaces/menschen-a2-24-lessons-v336/Working/A2-EDITORIAL-72-OUTCOME-v005-2026-10-23.json; must compare complete v005 SHA256=a41b90bd60e3fc547e3cc02dc6e1123797331a104321b94d74682f01dc7f93d3. Review-only, NOT IMPORT READY.",
   "targeted_qa": {
     "parent_zip_sha": "PASS",
     "nested_parent_byte_identity": "PASS",
@@ -110,19 +123,22 @@
     "batch004": "5/5_applied_reverse_to_v003_PASS_7112_triplets_23_total_diff",
     "v004_reverse": "PASS_SHA_RESTORED_TO_v003",
     "full_C3S1_parent_change_scope": "23_CHANGED_1755_BYTE_IDENTICAL",
-    "all_7112_trilingual_triplets": "PASS"
+    "all_7112_trilingual_triplets": "PASS",
+    "v005_reverse": "PASS_SHA_EQUALS_v004",
+    "v005_triplet_consistency": "7112/7112_PASS",
+    "v005_cumulative_26_changes_vs_C3S1": "PASS_1752_OTHER_ROWS_BYTE_IDENTICAL"
   },
   "remaining": {
-    "A1_remaining_parent_full_attestation": "OPEN",
+    "A1_remaining_parent_full_attestation": "PASS_139_CURRENT_ACTIVE_PLUS_1_RETIRED",
     "retired_A1_0385": "HOLD_NO_AUTO_REKEY",
     "protected_A1_140": "READ_ONLY",
     "independent_14_FA_EN": "APPLIED_MODEL_REVIEWED_WORKING_ONLY__HUMAN_SIGNOFF_PENDING",
     "native_runtime_current": "v483-R117",
-    "real_IDB_SRS_CAS_backup_restore": "BLOCKED_BROWSER_POLICY",
+    "real_IDB_SRS_CAS_backup_restore": "NOT_TESTED_CURRENT_v483",
     "import_ready": false,
-    "independent_editorial_signoff": "PENDING"
+    "independent_editorial_signoff": "PENDING_54_OF_72_MODEL_REVIEWED_18_OLD_SIDECARS_UNAVAILABLE"
   },
-  "git_persistence": "IN_SYNC_FOR_WORKING_STATE_AND_RESUME_PATCHES",
+  "git_persistence": "PENDING_AFTER_WRITES",
   "latest_pointer_commit": "5ead3dd06dc6b46742814ea981dff93a63ef2e06",
   "lean_reproducible_inline_deltas": [
     {

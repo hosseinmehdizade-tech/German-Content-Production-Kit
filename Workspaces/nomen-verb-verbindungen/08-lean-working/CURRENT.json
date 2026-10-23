@@ -12,16 +12,17 @@
   "working": {
     "status": "ACTIVE_EDITABLE_SUCCESSOR_NOT_LOCKED",
     "canonical_name": "NVV-CURRENT-WORKING-CANONICAL.json",
-    "canonical_sha256": "20bb08c9f54fa2229c68f2aa244ee24bcf334e57a943db5e59c71a2b6f1df26a",
+    "canonical_sha256": "f670881ba0d2b2e923740d7d59e18091736cc0e05b7458b6e40d5ec89b2fdaaf",
     "tsv_name": "NVV-CURRENT-WORKING-IMPORT.tsv",
-    "tsv_sha256": "066969550fcedc79b2791fb37b29a02b9bbd5b8bbf7abcafeb1233698bf2a636",
+    "tsv_sha256": "ff12183eacd281e75d3f779fbf4046c456671d24ade8b70a05a6f0c0a97d6c2d",
     "local_working_dir": "/mnt/data/nvv_audit/NVV-ACTIVE-WORKING/",
     "full_working_files_user_surface": "conversation",
     "git_persistence": "LIGHTWEIGHT_DELTA_ONLY",
     "recovery_rule": "Recover immutable exact LOCKED ZIP; apply the initial 20 exact edits recorded in CURRENT.edits, then ordered Git batch delta receipts to produce exact canonical/TSV hashes. Never rewrite LOCKED or frozen post-S9 audit baseline.",
-    "latest_validated_batch": "B06-501-600",
+    "latest_validated_batch": "B07-601-700",
     "delta_receipts": [
-      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json"
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH06-501-600-2026-10-23-DELTA.json",
+      "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH07-601-700-2026-10-23-DELTA.json"
     ]
   },
   "edits": [
@@ -168,27 +169,49 @@
       "card_id": "dah-nvv-exp-00588",
       "order": 593,
       "issue": "macht sich selbst keine Ehre German idiomaticity to adjudicate"
+    },
+    {
+      "card_id": "dah-nvv-exp-00601",
+      "order": 606,
+      "issue": "jdm. ein Ei legen source-listed, register/idiomatic attestation required"
+    },
+    {
+      "card_id": "dah-nvv-exp-00638",
+      "order": 643,
+      "issue": "ein Einsehen haben definition over-specific"
+    },
+    {
+      "card_id": "dah-nvv-exp-00651",
+      "order": 656,
+      "issue": "Einwände machen register/naturalness"
+    },
+    {
+      "card_id": "dah-nvv-exp-00678",
+      "order": 683,
+      "issue": "eine Enttäuschung erfahren frequency/naturalness"
     }
   ],
   "qa": {
     "status": "PASS_SCOPED_TARGETED_NOT_FULL_LINGUISTIC_CERTIFICATION",
-    "changed_cards": 21,
-    "changed_fields": 44,
+    "changed_cards": 29,
+    "changed_fields": 67,
     "source_cards": 2492,
     "example_triplets": 9968,
-    "unmodified_tsv_rows_byte_identical": 2471,
+    "unmodified_tsv_rows_byte_identical": 2463,
     "stable_ids_order_provenance_structure": "PASS",
     "modified_canonical_tsv_nested_examples_translations": "PASS",
     "locked_bytes_sha256_verified": "PASS",
     "batch06_source_pdf_matches": "100/100",
     "batch06_changed_card_projection_parity": "6/6",
-    "full_semantic_second_reviewer": "NOT_DONE"
+    "full_semantic_second_reviewer": "NOT_DONE",
+    "batch07_source_pdf_matches": "100/100",
+    "batch07_changed_card_projection_parity": "8/8"
   },
   "parent_audit": {
-    "last_first_pass_order": 600,
+    "last_first_pass_order": 700,
     "first_pass_latest": "Workspaces/nomen-verb-verbindungen/07-independent-audit/LATEST.json",
     "frozen_post_s9_baseline": "PRESERVED",
     "production_stage7": "LOCKED_UNCHANGED"
   },
-  "next": "Continue read-only source-aligned content first pass with Batch07 cards 601-700; keep compact editable successor and per-batch field deltas; no ZIP per batch."
+  "next": "Continue Batch08 701-800 source-aligned read-only audit and direct working successor corrections; no intermediate ZIP."
 }

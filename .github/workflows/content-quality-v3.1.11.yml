@@ -28,6 +28,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: HF2 exact legacy noun-front regression (isolated)
+        run: python Verification/test_hf2_legacy_complete_noun_front.py
       - name: Lexical quality regression v1.0.0
         run: python Verification/test_lexical_quality_v1_0_0.py
       - name: Source-marker and Universal TSV regression v1.0.1

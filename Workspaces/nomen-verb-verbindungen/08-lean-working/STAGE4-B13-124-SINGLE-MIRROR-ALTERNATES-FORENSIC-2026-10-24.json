@@ -59,5 +59,35 @@
     "ready_for_import": false,
     "final_zip_ready": false
   },
-  "next": "Recover authentic B13 row-level TSV snapshot or source generator including historical metadata. Do not invent/rebaseline active TSV or treat variants as proof of exact parent. Maintain separate source/canonical/TSV and qualified-signoff gates."
+  "next": "Recover authentic B13 row-level TSV snapshot or source generator including historical metadata. Do not invent/rebaseline active TSV or treat variants as proof of exact parent. Maintain separate source/canonical/TSV and qualified-signoff gates.",
+  "historical_content_replay_hazards": {
+    "scope": "B13 historical 35-field values are forensic lineage data, NOT learner-facing canonical authority",
+    "source_git_delta": "Workspaces/nomen-verb-verbindungen/08-lean-working/BATCH13-1201-1300-2026-10-23-DELTA.json",
+    "exact_active_canonical_parent_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "examples": [
+      {
+        "card_id": "dah-nvv-exp-01263",
+        "canonical_expression": "unter Kontrolle stellen",
+        "B13_intermediate_expression_in_examples": "unter Kontrolle stehen",
+        "B13_paths": [
+          "examples.0.de",
+          "examples.3.de"
+        ],
+        "active_examples_rewritten_to_match_target": true,
+        "warning": "Historical B13 sentences use the STATE verb stehen, not the target CAUSATIVE stellen. Do not resurrect for learner import."
+      },
+      {
+        "card_id": "dah-nvv-exp-01283",
+        "canonical_expression": "sich etw. in den Kopf setzen",
+        "B13_intermediate_expression_in_examples": "jdm. den Kopf retten",
+        "B13_paths": [
+          "examples.2.de"
+        ],
+        "active_examples_rewritten_to_match_target": true,
+        "warning": "Historical B13 sentence realizes a different idiom. Do not resurrect for learner import."
+      }
+    ],
+    "conclusion": "Recovering exact historical TSV checksums and endorsing old examples are separate questions. Immutable Git delta is evidence of sequence, not evidence of final learner quality.",
+    "active_content_modified": false
+  }
 }

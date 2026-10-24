@@ -27,7 +27,7 @@
   "stage4_global_final": false,
   "stage5": "NOT_RUN",
   "runtime_import": "NOT_AUTHORIZED",
-  "next_action": "R90 remains current learner content (untouched), R91 supplemental source-bound qualified review queue (untouched), R93 multi-reviewer coordinator (untouched). Use R94 as reviewer-facing portal instead of R92; R92 unchanged stays pinned original authority for R93 validator only. R94 locks reviewer identity after first record and requires explicit draft exports (no shared browser cache); old R92 cache not automatically removed. Qualified external reviews 0/1423+0/152 still missing, out-of-band credentials verification outstanding, Stage4 global BLOCKED, Stage5/6/7 NOT_RUN, Import not authorized.",
+  "next_action": "R95 is the active reviewer-facing UI; supersedes R94 for actual reviewer sessions, retaining R94 immutable history. R90 remains ONE current learner-content authority; R91 unchanged supplemental queue, R92 immutable original validator reference for R93 coordinator, R93 unchanged multi-reviewer tool. R95 refuses cancelled navigation state mismatch and confirms destructive draft/decision actions. Expert linguists still need to deliver independent 1423 MAIN + 152 SUPPLEMENT decisions, with credentials verified externally. Do not mark Stage4 FINAL, Stage5/6/7 PASS or Import authorized; browser file:// offline acceptance remains blocked by administrator.",
   "stage4_bounded_r23_scope_reviewed": 8,
   "stage4_bounded_r23_trilingual_inspected": 32,
   "stage4_r23_inherited_projection_schema_repair": "ma2-lu-0055 HISTORICAL_EDITORIAL_FIELD_RENAMED_ONLY",
@@ -1543,5 +1543,65 @@
     "stage6": "NOT_RUN",
     "stage7": "NOT_RUN",
     "import_authorized": false
+  },
+  "latest_r95_safe_navigation_review_portal": {
+    "milestone": "R95_REAL_CHROMIUM_CANCELED_NAVIGATION_AND_UNSAVED_REVIEW_DATA_LOSS_REPAIR",
+    "role": "CURRENT_SAFE_REVIEWER_FACING_PORTAL_NOT_CONTENT_VERSION",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE4-R95-UNSAVED-NAVIGATION-DATA-LOSS-REPAIR-EXPERT-BLOCKED-2026-10-24.json",
+    "archive_filename": "Menschen-A2-Verben-R95-SAFE-NAVIGATION-PORTAL-NOT-FINAL.zip",
+    "archive_sha256": "a4e328f86d408823b06980bd00edfb4f18694c4ea90575b735cfeb0d358a3d5d",
+    "archive_bytes": 476607,
+    "archive_members": 27,
+    "manifest_payloads": 26,
+    "library_file_id": "libfile_673c29a83eac8191a04fc7777243cb17",
+    "library_readback": "PASS_SHA256_BYTE_IDENTICAL",
+    "portal_entrypoint": "REVIEW-PORTAL-R95.html",
+    "real_R94_bug": "When dirty MAIN decision edited, selecting SUPPLEMENT and cancelling confirmation preserved rendered MAIN item but queue dropdown remained SUPPLEMENT; Chromium reproducible",
+    "corrected_controls": [
+      "cancel navigation restores prior queue/kind/search/status selector values and preserves dirty form",
+      "accepted queue switch renders matching new queue exactly once",
+      "zero result filter clears stale previous form",
+      "clear recorded decision with unsaved changes confirms before deletion",
+      "draft import with unsaved data confirms even if no saved decisions"
+    ],
+    "prior_R94_identity_lock_no_auto_cache_preserved": true,
+    "original_review_source_pins_unchanged": true,
+    "reviewer_queues": {
+      "MAIN": {
+        "items": 1423,
+        "qualified_human_approvals": 0
+      },
+      "SUPPLEMENT": {
+        "items": 152,
+        "qualified_human_approvals": 0
+      }
+    },
+    "R90_content_zip_sha256": "3a320f39dd49e09fa7313e432edaee34da4c2023e937e23044040b5e0cfd35af",
+    "R90_candidate_TSV_sha256": "ca4e6f8a7b9fa7f268c71f13330f987df5a65c67559fcf75c7f90bcdb3345d27",
+    "R91_supplement_zip_sha256": "e2023f79fe16d1687b86cf1e0d880f733ca01be81f0dc37a6975093a01f72974",
+    "R92_historical_portal_sha256": "685e354e0732ad4e5bc17a2eddf69ae368ddac350c345fb0e5e9a6a851cf81f3",
+    "R93_coordinator_zip_sha256": "71ac22c383aa72db28bce820846a89c53419cf679c746c927b6b256d55afca30",
+    "R94_immutable_predecessor_sha256": "a279fd6fecdbf71298b5088019eeca33018585792e6cf63747c99a8e4394e9a8",
+    "qa_tests": {
+      "R95_real_Chromium_navigation": 30,
+      "R94_identity_isolation_rebound": 23,
+      "original_dual_queue": 11,
+      "R93_cross_validator": 10,
+      "R95_tamper": 9,
+      "total": 83,
+      "correct": "83_OF_83_PASS"
+    },
+    "ZIP_deterministic": "2_INDEPENDENT_BUILDS_IDENTICAL_SHA256",
+    "fresh_extraction": "83_OF_83_PASS",
+    "original_learner_content_modified": false,
+    "original_source_images_modified": false,
+    "app_runtime_UI_modified": false,
+    "offline_file_url_live_browser": "ADMINISTRATOR_BLOCKED_UNVERIFIED",
+    "stage4_global_final": false,
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_authorized": false,
+    "status": "SCOPED_REVIEWER_NAVIGATION_SAFETY_QA_PASS__INDEPENDENT_QUALIFIED_0_OF_1575__PARENT_STAGE4_BLOCKED"
   }
 }

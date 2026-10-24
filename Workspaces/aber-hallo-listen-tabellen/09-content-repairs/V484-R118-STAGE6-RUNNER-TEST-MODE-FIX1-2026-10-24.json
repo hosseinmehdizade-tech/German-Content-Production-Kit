@@ -1,0 +1,50 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "aber-hallo-listen-tabellen",
+  "milestone": {
+    "name": "Repair Stage6 real-origin acceptance runner test-mode gate without modifying source app",
+    "level": "substep",
+    "state": "IN_PROGRESS"
+  },
+  "scope": {
+    "unit": "verified_stage6_runner_defect",
+    "total_units": 1
+  },
+  "progress": {
+    "reviewed_unique": 1,
+    "unreviewed": 0,
+    "dispositions": {
+      "runner_activation_defect_corrected": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Current v484-R118 index.html defines GFP_TEST_MODE_V455 only if window.__GFP_TEST_MODE__ or location.search gfp-test=1; tests helper is gated",
+      "Previous runner requested GFP_TEST_API but navigated to /index.html without activating v484 test instrumentation",
+      "FIX1 uses /index.html?gfp-test=1 in a disposable isolated browser profile; asserts test instrumentation explicitly; canonical origin unchanged",
+      "Current-runtime binding contract selftest 10/10 PASS; Python compile PASS; exact current ZIP and data preflight 15/15 PASS",
+      "Negative invalid expected content SHA test exited nonzero (as required), validating real file-integrity rejection",
+      "Self-contained content package QA 788 canonical, 787 lexical, 3152 examples, 1574 combinations, 2688 relations, zero structural errors",
+      "All 46 old unaffected non-manifest/metadata files copied byte-identically; Canonical and TSV exact SHA preserved",
+      "Admin-managed Chromium still produces ERR_BLOCKED_BY_ADMINISTRATOR at fixed localhost origin; no actual IndexedDB commit/restart could run",
+      "Library roundtrip exact 3,220,774 bytes, ZIP CRC PASS, SHA256 c154fe25ef6a3e1f5a761d350ddb5b646c1514dde11f8d0fb3d6081993a76350"
+    ],
+    "qualified_independent_stage4": "NOT_SIGNED_OFF",
+    "real_browser_origin_stage6": "BLOCKED_BY_ADMIN_POLICY",
+    "official_final_release": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-v3.3.6-Integrated-v484-Stage6-Kit-FIX1-COMPLETE-WORKING-CONTENT-2026-10-24.zip",
+    "library_file_id": "libfile_1102c207abc88191808578c3e38a9e87",
+    "library_backing_file_id": "file_00000000842081f48144ac4a95921f64",
+    "filename": "Aber-Hallo-v3.3.6-Integrated-v484-Stage6-Kit-FIX1-COMPLETE-WORKING-CONTENT-2026-10-24.zip",
+    "sha256": "c154fe25ef6a3e1f5a761d350ddb5b646c1514dde11f8d0fb3d6081993a76350",
+    "previous_working_zip_sha256": "8cbca59c5a1da5385c9cbabbe65d7eff42e85f841252869478e2f8199bcda557",
+    "canonical_sha256": "d98f7b615a4a0843e706b28f7dca185500f8c43a1ec698c9cd153e6e6d66cacd",
+    "import_tsv_sha256": "b629e8eb46d9de386f07ddea4cb7cc86f86de851d828302078e659b7d37a9a88",
+    "parent_latest_git_blob_sha": "33c527b5deea807eb435e3427424518338db995b",
+    "resume_pointer": "The current complete eight-folder integrated Aber Hallo working ZIP is FIX1 sha256 c154fe25ef6a3e1f5a761d350ddb5b646c1514dde11f8d0fb3d6081993a76350 in Library. For Stage6 run its bundled corrected local acceptance runner against exact app v484-R118 ZIP sha256 9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67 on authorized local PC with 127.0.0.1:8765 permitted. Stage4 independent qualified signoff remains open. Do not claim real origin verified."
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "aber-hallo-listen-tabellen",
+  "milestone": {
+    "name": "CURRENT_V485_R119_EXACT_WIP11_NATIVE_EXAMPLE_COMPACTION_REGRESSION",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Exact current v485-R119 learning-core loses recoverability of trilingual translations and original example IDs after native v425 compaction on all 787 WIP11 learner cards in isolated JS VM; PR#10 remains Draft/unmerged and v485-native proper-origin IndexedDB restart cannot run under browser admin restriction. Independent linguistic Stage4 also unsigned."
+  },
+  "scope": {
+    "unit": "lexical_card_current_v485_vm_native_example_roundtrip",
+    "total_units": 787
+  },
+  "progress": {
+    "reviewed_unique": 787,
+    "unreviewed": 0,
+    "dispositions": {
+      "native_vm_learning_core_regression_reproduced": 787
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact current app v485-R119 ZIP sha256 c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f and exact current Aber Hallo WIP11 ZIP sha256 c361762d476e708f4b04743cbd596da9f96912aa5779ff7f6e28394a6de79554 verified.",
+      "Native v485 index.html compactRuntimeCardInPlaceV425 and exact learning-core-v48.js cardExampleEntries executed together in isolated Node VM on all 787 normalized imported-like WIP11 content cards, 3148 examples.",
+      "Before compaction: 3148/3148 DE+FA+EN and original example IDs returned; after compaction: DE 3148/3148; FA=0, EN=0, original stable ID=0 on learning-core adapter path.",
+      "Actual native compactor omits redundant presentation_examples for 787/787 because canonical examples remain; learning-core adapter lacks safe canonical fallback. This is NOT deletion of imported Canonical, TSV or persisted authority and is NOT a claim against other UI presentation adapters.",
+      "Negative explicit-empty marker case: 0/787 explicit empty markers survived v485 compaction, must not reattach translations when user intentionally clears rich examples.",
+      "Negative edit test: 787/787 modified German text cases do not borrow stale translations under current code; future fix must retain this safety.",
+      "Local HTTP server 200 but Chromium page navigation to canonical http://127.0.0.1:8765 fails ERR_BLOCKED_BY_ADMINISTRATOR before import; no real-origin persistent IndexedDB commit/restart PASS asserted.",
+      "Reproduction is self-contained with hash-gated Python launcher and source-free Node VM script; library exact roundtrip of four small artifacts 4/4 SHA256 and bytes PASS.",
+      "Independent qualified Stage4 remains 0/788 signed. PR#10 draft v484 cannot automatically be treated as v485 fix. WIP11 content untouched."
+    ],
+    "runtime_current": "v485-R119",
+    "scoped_vm": "PASS_REPRODUCED_REGRESSION",
+    "current_adaptation": "BLOCKED",
+    "stage6_real_origin": "NOT_RUN_ENVIRONMENT_BLOCKED",
+    "independent_stage4": "0_OF_788_UNSIGNED",
+    "source_pdfs_and_locked": "IMMUTABLE",
+    "ui_change": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Content CURRENT WIP11 sha256 c361762d476e708f4b04743cbd596da9f96912aa5779ff7f6e28394a6de79554 unchanged; runtime CURRENT v485-R119 exact sha256 c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f. Need port/check PR#10 fix on this exact current runtime with empty-rich/edit safety and full WIP11+Menschen regressions, refresh SRI/PWA hashes, then permitted real-origin Stage6. Independent linguist signs 788 Stage4 units; no FINAL.",
+    "artifacts": {
+      "report": {
+        "id": "libfile_2c0aeb1fd9c881919d6e443ade55139e",
+        "sha256": "1267797dbb43c590b042e9117204093c79bc3ad02bf19fc06c384a6f9d3b817c"
+      },
+      "readme": {
+        "id": "libfile_87afaed1543081918b55bfb69adfc7f2",
+        "sha256": "4eb4f40d916ac6c0ef0ffd6ab618da75ce49335ec5734d85c8b2444d734aa663"
+      },
+      "runner": {
+        "id": "libfile_dcbe9a6270c48191acfa4e68c89fd7e4",
+        "sha256": "f64001c3f8e3df5c70a9313bef887eee35ae6b4c120c0c134202ea34b7b84cb2"
+      },
+      "test": {
+        "id": "libfile_b2a979ad68bc819180a87cdbbf6a0bdf",
+        "sha256": "0871109fa31486e012214177a9d1126966dbace4ae641106da603f6eb1bf9340"
+      }
+    },
+    "library_readback": "4_OF_4_EXACT_BYTES_SHA256"
+  }
+}

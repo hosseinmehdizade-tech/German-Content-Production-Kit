@@ -1,0 +1,74 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "milestone": {
+    "name": "STAGE6_V485_R119_NATIVE_CHROMIUM_VM_EXECUTION_AND_STRICT_INDEXEDDB_ACCEPTANCE_HARDENING",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Managed Chromium navigation to a real localhost origin still returns ERR_BLOCKED_BY_ADMINISTRATOR. Native parser/selection/in-memory replacement plus manifest contract checks pass, but real UI commit, verified IndexedDB roundtrip, process reopen, and front/back are not reproducible in this managed environment. Execute the bundled hardened runner on an unrestricted localhost/browser environment; no security-control bypass is requested."
+  },
+  "scope": {
+    "unit": "current_stage6_acceptance_gate",
+    "total_units": 9
+  },
+  "progress": {
+    "reviewed_unique": 9,
+    "unreviewed": 0,
+    "dispositions": {
+      "exact_current_runtime_zip_sha_verified": 1,
+      "exact_stage5_content_zip_sha_verified": 1,
+      "stage5_postpackage_content_preflight_pass": 1,
+      "v485_native_chromium_browser_vm_19_pass": 1,
+      "manifest_contract_11_guards_pass": 1,
+      "negative_import_controls_pass": 1,
+      "real_same_origin_ui_import_environment_blocked": 1,
+      "real_indexeddb_verified_commit_and_reopen_environment_blocked": 1,
+      "real_study_front_back_environment_blocked": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage6": "BLOCKED_ENVIRONMENT_REAL_ORIGIN_INDEXEDDB",
+    "stage4": "PASS_SCOPED_AI_MODEL_COMPOSITE",
+    "stage5": "PASS_CONTENT_ONLY",
+    "stage7": "NOT_RUN",
+    "overall_final": false,
+    "verification_evidence": [
+      "Exact current runtime v485-R119 and Stage5 original ZIPs independently SHA256+CRC verified, source unmodified.",
+      "Stage5 fresh-extract validator confirmed 310 cards (247 verbs/63 expressions), 1934 German/Persian combinations, 1240 German/Persian/English presentation examples, 8 register notes, 312 original source occurrence records, 4 intentional translation overlays; original 786/786 member checks.",
+      "Original current v485-R119 JavaScript executed in Chromium via synthetic, nonpersistent DOM set_content (NOT real-origin), browser native TSV parser accepted 310/310 with 1934 combination items and 1240 rich presentation-example translations.",
+      "Native v485 file selection produced enabled import preflight; selection did not modify authority. Native simulateReplace in page memory produced exactly 310 cards; 310/310 front/back/example parity, 310/310 rich Kombinationen/presentation/register metadata parity and details parity; native full backup contained 310 cards.",
+      "19/19 focused browser-VM checks PASS after clean extraction; duplicate ID rejected; non-TSV and multiple-TSV selections blocked without mutating in-memory authority; zero JavaScript pageerrors.",
+      "Hardened Stage6 real-origin runner verifies IndexedDB manifest commitStatus VERIFIED, cardCount 310, activeGeneration, nonempty content+library hashes and exact active-generation/hash identity across separate Chromium process reopen.",
+      "11/11 positive/negative synthetic manifest guard tests PASS; these do NOT attest the existence of a real IndexedDB manifest on this host.",
+      "Real browser acceptance rerun reports ERR_BLOCKED_BY_ADMINISTRATOR before app page boot; no durable IndexedDB import, reopen or real Study render claimed.",
+      "Final v2 portable ZIP 19 members, SHA256SUMS 18/18 and CRC PASS; fresh extraction rerun preflight, 19/19 browser VM, 11/11 manifest contract PASS."
+    ],
+    "exact_current_runtime": "v485-R119",
+    "native_browser_vm": "PASS_19_OF_19_NO_INDEXEDDB",
+    "synthetic_manifest_contract": "PASS_11_OF_11",
+    "negative_file_controls": "PASS_DUPLICATE_ID_NON_TSV_MULTIPLE_TSV",
+    "actual_ui_import": false,
+    "actual_indexeddb_commit": false,
+    "actual_reopen_same_origin": false,
+    "actual_study_render": false,
+    "original_app_ui_modified": false,
+    "original_locked_content_modified": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a1-verben-lexical-repair-v336/STAGE6-V485-R119-NATIVE-CHROMIUM-VM-AND-STRICT-IDB-GATE-2026-10-24.json",
+    "kit_name": "Menschen-A1-Verben-v3.3.6-STAGE6-v485-R119-HARDENED-NATIVE-VM-ACCEPTANCE-KIT-NOT-FINAL.zip",
+    "kit_sha256": "1b04b12c0774f76eafae816f45ec6b99d391c2123ee46a93b091bc7ac868a04d",
+    "kit_bytes": 49577988,
+    "archive_members": 19,
+    "manifest_entries": 18,
+    "postpackage_fresh_extract_retested": true,
+    "runtime_sha256": "c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f",
+    "stage5_sha256": "86d35355e523cbabe05b1a49cc8ff50b09e1a2edbb2ff8b69d583cee953f8cca",
+    "artifact_surface": "CURRENT_CONVERSATION_SANDBOX",
+    "library_uploaded": false,
+    "source_mutation": false
+  },
+  "next_action": "Use Tests/run_real_browser_acceptance.py from the hardened exact-input Stage6 ZIP on an unrestricted local Chromium; treat only a genuine VERIFIED commitManifest + 310-card rich parity + process restart + Study front/back as scoped real-roundtrip proof. Do not promote Stage6 or Stage7 to final from in-memory VM tests."
+}

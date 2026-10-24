@@ -1,0 +1,67 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42AR_ALL_171_REFERENCED_SOURCE_ITEMS_FULL_ORIGINAL_C41_SOURCE_ROW_ROLE_AUDIT",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "All 171 historical C41 source-labelled combinations WITH per-item evidence on 153 cards. C42AM already reviewed the disjoint 185 source-labelled items lacking item evidence, so 356 historical source-labelled items have now been source-reference-triaged. C42T exact binary remains unavailable; no independent full linguistic Stage4 or current-parent edits."
+  },
+  "scope": {
+    "unit": "historical_C41_SOURCE_or_REGISTERED_SOURCE_combo_with_item_ref",
+    "total_units": 171,
+    "unique_card_ids": 153,
+    "total_source_labelled_in_C41": 356,
+    "prior_missing_item_refs_scoped_C42AI_C42AN": 185
+  },
+  "progress": {
+    "reviewed_unique": 171,
+    "unreviewed": 0,
+    "dispositions": {
+      "OWN_MEMRISE_ROW_DIRECT_LITERAL": 75,
+      "OWN_MEMRISE_ROW_NONLITERAL": 77,
+      "CROSSCARD_MEMRISE_DIRECT_LITERAL": 2,
+      "ROW_OUTSIDE_CARD_SCOPE_NONLITERAL": 7,
+      "ROW_OUTSIDE_CARD_SCOPE_BUT_OWN_CARD_HAS_DIRECT_LITERAL": 2,
+      "EXTERNAL_UPLOADED_PDF_PATTERN_OBSERVED": 7,
+      "EXTERNAL_DICTIONARY_LOCATOR_UNVERIFIED": 1
+    },
+    "applied_edits": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Original 9109-row Memrise CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222 and exact historical 2997-card C41 ZIP b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95 independently re-read; 171/171 source-labelled items with references and 153 unique IDs joined with original custom-field/item hashes.",
+      "75 direct own-row literal, 77 own-row nonliteral, 2 direct crossrow, 9 out-of-scope row assignments (7 no exact own-card literal and 2 exact own-card literal), 7 uploaded PDF source patterns, 1 Duden locator not independently verified. Nine row issues include Tee mit Zitrone (2 items; original row587) and zum Dessert (original row609); six others have no original exact quote anywhere in full 9109 rows.",
+      "Both user-uploaded supporting PDF exact SHA256 verified (Listen & Tabellen A1-A2 4125ed49... and Nomen-Verb-Verbindungen a817dab7...) and related source excerpts on file pages 4,5,11 inspected; this is support for lexical pattern, not automatic full quotation or native-expert Stage4.",
+      "Deterministic portable ZIP 71529 bytes SHA256 5d777ace8c9e08cc49511ce738f48c8357ea18d1e2eb54fd63e05ecb4a20abd6, 11 members, CRC/member-manifest and fresh-extract source replay PASS, two independent builds identical, nine deliberately tampered payloads fail closed.",
+      "Exact C42T binary required SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 not found in local 34,123,935-byte scan; historical original and 24 LOCKED units, app UI, SRS remain unchanged."
+    ],
+    "independent_global_stage4": "NOT_RUN",
+    "official_stage5": "NOT_RUN",
+    "current_v485_stage6": "NOT_RUN",
+    "C42T_materialized": false,
+    "A1_FINAL": false,
+    "import_allowed": false
+  },
+  "findings": {
+    "row_locator_mismatch": 9,
+    "conditional_exact_original_row_candidates": 3,
+    "remaining_nonliteral_original_row_holds": 6,
+    "external_source_patterns_uploaded_PDF": 7,
+    "external_dictionary_not_verified": 1,
+    "previous_disjoint_source_origin_without_item_refs": 185,
+    "source_labelled_comprehensive_accounting": 356
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_UPLOADED_LEAN_WIP_AND_PREVIOUS_QUOTA_LIMIT",
+    "artifact": "Menschen-A1-C42AR-171-Source-Locator-Complete-Evidence-2026-10-24-NO-IMPORT.zip",
+    "artifact_sha256": "5d777ace8c9e08cc49511ce738f48c8357ea18d1e2eb54fd63e05ecb4a20abd6",
+    "artifact_size_bytes": 71529,
+    "source_replay": "171_OF_171_PASS",
+    "negative_controls": "9_OF_9_FAIL_CLOSED",
+    "resume_pointer": "Follow C42AR for 171 referenced source items; combine with C42AM 185 no-ref cases to account for 356 source-labelled C41 combination items. Do not rerun them. Recover exact 34123935-byte C42T ZIP before any field-CAS; only 3 of 9 mismatches have external original row direct literal. Qualified independent global 2997-card Stage4, Stage5 and CURRENT v485 Stage6 remain NOT_RUN, no import."
+  }
+}

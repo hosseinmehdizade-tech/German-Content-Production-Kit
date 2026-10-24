@@ -1,0 +1,73 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L03/read-only-source-provenance-HF2",
+  "milestone": {
+    "name": "L03 full 112-row source comparison, recover 112 missing original level tags, and official 138-card HF2 re-audit",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "HF2 official validation reports 96 errors on 49 historical LOCKED cards (44 noun article+plural metadata, 5 verb fronts, 3 argument placeholders); 8 shared Verben IDs with 5 typingCore mismatches. Independent linguistic review and CURRENT real import Stage5-7 not done. Source tag restoration is only a reversible provenance sidecar."
+  },
+  "scope": {
+    "unit": "B1-L03 canonical lesson card",
+    "total_units": 138
+  },
+  "progress": {
+    "reviewed_unique": 138,
+    "unreviewed": 0,
+    "dispositions": {
+      "noun_HF2_issue": 44,
+      "verb_HF2_issue": 5,
+      "other_card_no_HF2_issue": 89
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Immutable Stage7-LOCKED L03 artifact SHA256 b8cc86f5afc267bcf4bb66154b39a974e85adc5a2fcee14e44c632d9bf824ccd independently hashed and CRC passed",
+      "112 source occurrences with 448/448 exact original Learnable Definition Audio Beispiel fields matched to original raw CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+      "112/112 original Level tags absent in historical LOCKED source inventory and exactly recoverable from original raw CSV; no fabrication and no mutation; all equal 'Menschen_A1/A2/B1_(Full_Audio)::51_B1:_3.Mein_Beruf_ist_meine_Leidenschaft.'",
+      "112/112 distinct original MP3 refs present in user-original RAR; playback not tested",
+      "138 distinct cards with 552 trilingual examples and 101 combinations; 143 source-to-output map rows cover 138 unique IDs and 112 source rows",
+      "Original official HF2 v1.1.0 Git blob ea67592b68d245ed3069bcd84ac08fc375423e66 validated in JSON and TSV: FAIL with 96 errors affecting 49 IDs",
+      "88 noun failures = article 44 plus plural 44; 5 verb front failures and 3 verb lemma argument placeholder failures on subset of 5",
+      "8 shared IDs with exact B1-Verben Repair4 hash 9a1eac4cecca59e2c666b9916afc5cf639cd8b14a4742cb56a8f57bb8551131e, including 5 typingCore mismatches",
+      "All original LOCKED, registered source bytes, app runtime, user Library/SRS and UI unchanged"
+    ],
+    "source_original_modified": false,
+    "locked_original_modified": false,
+    "runtime_modified": false,
+    "source_original_fields_match": "448/448",
+    "source_level_tag_original_recaptured": 112,
+    "source_audio_files_present": "112/112",
+    "cards": 138,
+    "examples": 552,
+    "combinations": 101,
+    "official_HF2_errors": 96,
+    "official_HF2_affected_cards": 49,
+    "HF2_noun_metadata_errors": 88,
+    "HF2_verb_front_errors": 5,
+    "HF2_verb_lemma_placeholder_errors": 3,
+    "shared_verben_repair4_ids": 8,
+    "shared_typingCore_conflicts": 5,
+    "stage5_successor": "NOT_RUN",
+    "stage6_CURRENT_native_browser": "NOT_RUN",
+    "qualified_linguistic_review": "NOT_DONE",
+    "artifacts": {
+      "source_qa_filename": "B1-L03-2026-10-24-READONLY-SOURCE-HF2-QA.json",
+      "source_qa_sha256": "bdbfb9ba25570c128d82acf8a854f6e140a13f3823c2fd30b5cff79c6ea5fc2d",
+      "tag_recovery_filename": "B1-L03-112-ORIGINAL-LEVEL-TAGS-RECOVERY-NOT-APPLIED-20261024.json",
+      "tag_recovery_sha256": "e50e24b7213e99c888d92004201d17b97878a8815979e808fe607bc3521adecf",
+      "report_filename": "B1-L03-2026-10-24-INITIAL-SOURCE-HF2-REPORT.md",
+      "report_sha256": "46adb5acc5f8d47b3a556ab8818e71000af03fcf245c1ee62e13a9a3dacf2c5c",
+      "storage": "CURRENT_CONVERSATION_CONTAINER_ARTIFACTS_NOT_GITHUB_BINARY"
+    }
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Immutable L03 Stage7 ZIP SHA256 b8cc86f5afc267bcf4bb66154b39a974e85adc5a2fcee14e44c632d9bf824ccd; exact source tag recovery sidecar B1-L03-112-ORIGINAL-LEVEL-TAGS-RECOVERY-NOT-APPLIED-20261024.json SHA256 e50e24b7213e99c888d92004201d17b97878a8815979e808fe607bc3521adecf; original raw CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222, structurally reviewed 138 cards, official HF2 FAIL 96 (49 IDs), 8 cross-Verben IDs with 5 typingCore conflicts. No changes to historical LOCKED. Next: review source and propose separate 44 noun +5 verb HF2 candidate, independent linguistic 552 examples 101 combos, safe stable-ID merges, CURRENT v484 browser and Stage5-7 successor.",
+    "observed_central_latest_sha": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "observed_L03_stage7_sha": "cc15f88a26a75d59b9ded216ee86e3860a570d4a",
+    "global_latest_not_modified": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L02/read-only-structural-and-official-HF2",
+  "milestone": {
+    "name": "L02 original 98 source rows and 112 cards read-only source reconstruction, ZIP QA, official HF2 1.1 exact test",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Official HF2 1.1.0 reports 60 errors in historically LOCKED L02: 24 noun article-metadata, 24 noun plural-metadata, 12 verb front. 18 shared IDs with separate B1 Verben require safe merge. Qualified language review, full Stage5/6/7 successor on current v484 not complete."
+  },
+  "scope": {
+    "unit": "L02 projected card",
+    "total_units": 112
+  },
+  "progress": {
+    "reviewed_unique": 112,
+    "unreviewed": 0,
+    "dispositions": {
+      "noun_metadata_HF2_issue": 24,
+      "verb_front_HF2_issue": 12,
+      "other_card_no_HF2_issue": 76
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Immutable B1 L02 Stage7 ZIP SHA256 26ca413497f91c9a9c2f4c824484bb5440398527f0bd2ea0c804a6b04b26e77d checked local; archive CRC PASS, 147 members",
+      "Exact registered Memrise source CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222, 98 lesson source rows ordinal 4648..4745; 490/490 original source text/audio/tag fields exact",
+      "RAR 95 original audio references are 95 unique, all original filenames present; audio decode/playback NOT tested",
+      "112 unique ID cards; 448 aligned trilingual examples in TSV rich representation; 232 Kombinationen, 112 source-map output rows",
+      "Normalized JSON-vs-TSV front/back/order/structured example content PASS; JSON examples are German strings, TSV keeps trilingual rich structures",
+      "Two source_definition_fa_seed whitespace-only differences between JSON and TSV on IDs mb1m-lu-0640,mb1m-lu-0641; left unchanged",
+      "Exact official HF2 1.1.0 validator source Git blob ea67592b68d245ed3069bcd84ac08fc375423e66; TSV and JSON both FAIL identical 60 errors",
+      "24 noun-metadata transported article and plural absent; 12 verb fronts lack canonical available full forms; do not treat every duplicate noun error as distinct card",
+      "18/112 cards share IDs with B1 Verben Repair4 (11 verbs and 7 expressions), zero IDs shared with L01; no user Library write or Stage7 relock"
+    ],
+    "candidate_successor_applied": false,
+    "official_hf2_status": "FAIL",
+    "official_hf2_error_count": 60,
+    "official_hf2_error_types": {
+      "NOUN_ARTICLE_METADATA_MISSING": 24,
+      "NOUN_PLURAL_METADATA_MISSING": 24,
+      "VERB_FRONT_NOT_CANONICAL_DISPLAY": 12
+    },
+    "source_text_cells": 490,
+    "source_audio_filename_verification": "95/95_PRESENT",
+    "examples_trilingual": 448,
+    "combinations": 232,
+    "shared_verben_ids": 18,
+    "shared_L01_ids": 0,
+    "language_review_status": "PENDING",
+    "runtime_v484_browser": "NOT_RUN",
+    "locked_content_mutated": false,
+    "local_audit_json_sha256": "c4f415c3b7c4065a10d809182896dbae7d71568db610f2f27aaaf726f083e15b"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "L02 immutable LOCKED ZIP exact SHA256 26ca413497f91c9a9c2f4c824484bb5440398527f0bd2ea0c804a6b04b26e77d. Local B1-L02-READONLY-SOURCE-STRUCTURAL-OFFICIAL-HF2-20261024.json SHA256 c4f415c3b7c4065a10d809182896dbae7d71568db610f2f27aaaf726f083e15b. Full language review 448 examples+232 combos and 18 shared ID intersection needed. Official HF2 source Git blob ea67592b68d245ed3069bcd84ac08fc375423e66. No edit of LOCKED; prepare explicit successor after proof. L01 retained as BLOCKED in separate receipt.",
+    "observed_latest_sha": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "observed_lock_sha": "61b6734667a71a8dbbe97d82a8945a6d736881bb",
+    "preceding_l01_audit_sha": "71111904e868e8b18840ac1075c1ef4272c0a5ac",
+    "global_latest_not_retargeted": true
+  },
+  "next_action": "B1 L02 Stage3+4 independent read-only linguistic and HF2 front successor, separate shared-ID collision register with B1 Verben, then official HF2 Stage5 and current browser Stage6; do not claim lesson released."
+}

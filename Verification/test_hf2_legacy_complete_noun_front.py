@@ -72,7 +72,7 @@ class LegacyNounFrontTest(unittest.TestCase):
     def test_wrong_alias_rejected(self):
         r = row('die Ausstellung, Ausstellungen',
                 vm={'article': 'die', 'plural': 'WRONG'})
-        self.assertIn('NOUN_FRONT_NOT_CANONICAL_DISPLAY', codes(r))
+        self.assertIn('NOUN_ARTICLE_METADATA_MISSING', codes(r))
 
 if __name__ == '__main__':
     unittest.main()

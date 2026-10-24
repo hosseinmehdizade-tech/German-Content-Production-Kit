@@ -1,0 +1,56 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "aber-hallo-listen-tabellen",
+  "milestone": {
+    "name": "Correct false-negative trilingual schema and post-restart content integrity in v484 Stage6 runner",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Persistent browser IndexedDB import and process-restart acceptance remain unexecutable in managed Chromium: localhost navigation ERR_BLOCKED_BY_ADMINISTRATOR. The independent qualified Stage4 language acceptance remains unsigned."
+  },
+  "scope": {
+    "unit": "lexical_card_trilingual_example_schema",
+    "total_units": 787
+  },
+  "progress": {
+    "reviewed_unique": 787,
+    "unreviewed": 0,
+    "dispositions": {
+      "four_trilingual_examples_verified_in_exact_source_schema": 787
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact CURRENT runtime v484-R118 ZIP hash 9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67",
+      "Exact parent FIX2 ZIP hash 3836709c3f7830adecd398bc41c4a7f3691443ad682b112c15164969cdfa33d0",
+      "The FIX2 test counted c.customFields.presentation_examples[*].translations[]; actual 787 TSV cards have {id,de,fa,en} per example, causing a false zero count despite 3148 three-language examples",
+      "New shared JavaScript extractor supports both {id,de,fa,en} and {lang,text,translations[]} source forms without silent fallback when a source translation is blank",
+      "Node exact-current-data regression PASS: 787 cards x 4 = 3148 complete examples; old counter provably zero; deliberate missing-FA case rejected; canonical-only fallback matches",
+      "Browser-runner Python py_compile PASS and two generated browser page.evaluate JavaScript functions node --check PASS",
+      "New restart gate requires 3148 trilingual persisted examples and exact SHA256 parity of sorted stable study-card content before and after full browser process restart",
+      "Exact content package preflight 15/15 PASS; all Manifest entries and SHA256SUMS and ZIP CRC PASS",
+      "Current Canonical 899f76fe932ea2ba225de8e998dadfa0aa358bdd56d1944fc40e1fad1badc4de and TSV c3eda4d1fdecab6e5810fa0fcdcfd3608596e3d044b7cda0e24626faa6f13f97 bytes unchanged from FIX2",
+      "Library 3,261,232-byte roundtrip exact SHA256 131e59b59fc9dc92da4898d9e40ee0f36805a59cd64466c2ea3c8100acebc14d PASS",
+      "Browser actual origin is still blocked; static, Node and contract checks are not durable database acceptance or qualified linguistic signoff"
+    ],
+    "preflight": "PASS_SCOPED",
+    "node_example_schema": "PASS_787_OF_787",
+    "real_origin_indexeddb": "NOT_RUN_ENV_POLICY",
+    "qualified_stage4": "NOT_SIGNED",
+    "official_release_final": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-v3.3.6-Integrated-v484-Stage6-EXAMPLE-PERSISTENCE-FIX3-COMPLETE-WORKING-CONTENT-2026-10-24.zip",
+    "library_file_id": "libfile_6a61de78a0e48191a6f0e4af8cbd7cf6",
+    "library_backing_file_id": "file_00000000e64c81f49aa3cbec694cf178",
+    "zip_sha256": "131e59b59fc9dc92da4898d9e40ee0f36805a59cd64466c2ea3c8100acebc14d",
+    "zip_bytes": 3261232,
+    "files": 59,
+    "previous_zip_sha256": "3836709c3f7830adecd398bc41c4a7f3691443ad682b112c15164969cdfa33d0",
+    "canonical_sha256": "899f76fe932ea2ba225de8e998dadfa0aa358bdd56d1944fc40e1fad1badc4de",
+    "import_tsv_sha256": "c3eda4d1fdecab6e5810fa0fcdcfd3608596e3d044b7cda0e24626faa6f13f97",
+    "parent_latest_sha": "e911114f1b2d76814eedfdfe6876e4f4f91ca6b0",
+    "resume_pointer": "Current full eight-folder Aber Hallo content artifact FIX3 sha256 131e59b59fc9dc92da4898d9e40ee0f36805a59cd64466c2ea3c8100acebc14d in Library. No changes to canonical/TSV/PDF/LOCKED or CURRENT app v484-R118. Qualified external Stage4 and real-origin IndexedDB import+full restart+digest remain BLOCKED by missing independent qualified reviewer and local browser policy. Do not confuse Stage6 static/Node PASS with durable acceptance or repeat previous 914 source heading checks."
+  }
+}

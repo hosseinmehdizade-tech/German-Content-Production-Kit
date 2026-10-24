@@ -1,0 +1,91 @@
+{
+  "schema": "nvv-2026-10-24-b13-b14-exact-tsv-order-fix@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "nomen-verb-verbindungen",
+  "branch": "nvv-production",
+  "status": "EXACT_HISTORICAL_B12_B13_B14_TSV_BYTES_RECONSTRUCTED_SHA256_PASS__NOT_FINAL_NOT_IMPORT_READY",
+  "root_cause": {
+    "source": "Git B13 record records two edits against adjacent wrong stable card IDs, whereas its 1-based order column points to the correct target cards. Source-order identity and recorded working_successor.batch13.changed_ids prove the intended identities.",
+    "bad_ids": [
+      {
+        "tsv_order": 1272,
+        "delta_card_id": "dah-nvv-exp-01263",
+        "correct_id": "dah-nvv-exp-01262",
+        "correct_form": "unter Kontrolle stehen",
+        "field_paths": 6
+      },
+      {
+        "tsv_order": 1292,
+        "delta_card_id": "dah-nvv-exp-01283",
+        "correct_id": "dah-nvv-exp-01282",
+        "correct_form": "jds. Kopf retten",
+        "field_paths": 3
+      }
+    ],
+    "total_misassigned_paths": 9,
+    "other_git_field_edits_unchanged": 26,
+    "historical_git_batch13_changed_fields": 35,
+    "historical_git_batch13_changed_cards": 11,
+    "source_order_and_historical_lock_verified": true,
+    "retired_prior_assumption": "Previous report incorrectly classified original Batch13 examples as linguistically off-target by matching them against the wrongly written delta card IDs. Those examples were appropriate for the correct adjacent cards. That classification must not be repeated.",
+    "original_git_delta_modified": false,
+    "corrective_action": "Read-only replay resolves target by verified historical TSV order for these two records. Do not change the original source PDF or immutable Git delta."
+  },
+  "verification": {
+    "expected_and_observed_sha256": {
+      "B12": "fca8ec11ea2ab7db184a4a0c4c4826168fca797e66f31fc460d90b188561e5d8",
+      "B13": "91b8fc55cf3ec2c5884a0ab2e7092e17305c7fa2fe9120dcc5c8c3e09e53dbe1",
+      "B14": "52adaba8371724f3c81198f6673b9e11b435fc32d6e779e227fd4e1d796f90f9"
+    },
+    "exact_tsv_sha_checkpoint_count_through_B14": 10,
+    "each_snapshot_rows": 2492,
+    "historical_B12_bytes": 22358275,
+    "historical_B13_bytes": 22361350,
+    "historical_B14_bytes": 22362000,
+    "original_locked_zip_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f",
+    "exact_current_canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "original_pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "active_tsv_target_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
+    "active_tsv_byte_exact_recovered": false,
+    "caution": "Historical B13 and B14 TSV byte SHA are fully verified, but historical-stage Canonical SHA was not reconstructed; legacy working_successor metadata differs by stage and cannot be inferred from final working successor without exact evidence."
+  },
+  "durable": {
+    "checkpoint_archive": {
+      "path": "/German-Content-Production-Kit/Recovery/NVV/Exact-B13-B14/NVV-HISTORICAL-B13-B14-EXACT-TSV-CHECKPOINT-NOT-RELEASE.zip",
+      "library_file_id": "libfile_f1c0c973881c8191bb02624f53581b64",
+      "sha256": "0c6c757395279c69e856df94eec685fcbb51c3d4e867930822fd46ad39939e3f",
+      "size_bytes": 6020127
+    },
+    "manifest": {
+      "path": "/German-Content-Production-Kit/Recovery/NVV/Exact-B13-B14/NVV-B13-B14-HISTORICAL-EXACT-CHECKPOINT-MANIFEST.json",
+      "library_file_id": "libfile_ca8e76fde12881918ba33ee9adeb46cf",
+      "sha256": "0bd8f9aa1ebbd959f6d0ae89c550717d57d5ccd76250c875d2db6ffd81633914"
+    },
+    "replay_script_sha256": "e2d814ffcd25c18d32d304d739ac4f4cb229b9d37e1ab6da029e9650a508905c",
+    "archive_contains": [
+      "B12 exact historical TSV",
+      "B13 exact historical TSV",
+      "B14 exact historical TSV",
+      "Python replay tool and parent scripts",
+      "SHA256 manifest"
+    ],
+    "checkpoint_not_release": true
+  },
+  "unchanged": {
+    "registered_pdf": true,
+    "locked_zip": true,
+    "active_working_canonical": true,
+    "active_working_tsv": true,
+    "frozen_stage7": true
+  },
+  "gates": {
+    "stage4": "IN_PROGRESS",
+    "qualified_reviewer_holds": 66,
+    "extra_82_ambiguous": true,
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "app_runtime": "v484-R118 no runtime changes",
+    "final_release_ready": false
+  },
+  "next": "Resume ordered TSV replay from exact B14 TSV; use original source_order vs stable id crosswalk for B15-18 and later edits, prove each next checkpoint SHA. Do not claim exact current TSV until final active SHA matches. Preserve qualified linguistic gate."
+}

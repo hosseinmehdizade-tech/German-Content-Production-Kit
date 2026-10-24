@@ -1,0 +1,63 @@
+{
+  "schema": "nvv-b13-124-variant-forensic-handoff@1.0.0",
+  "date": "2026-10-24",
+  "status": "B13_11_ROWS_35_EDITS_VALIDATED__124_SINGLE_MIRROR_ROLLBACK_TESTS_NO_HISTORICAL_SHA_MATCH",
+  "branch": "nvv-production",
+  "scope": {
+    "stage": "B13",
+    "canonical_cards": 2492,
+    "changed_card_ids": 11,
+    "changed_field_paths": 35,
+    "untouched_import_rows": 2481,
+    "validated_trilingual_example_triplets_in_11_changed_cards": 44
+  },
+  "authority": {
+    "registered_pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "locked_zip_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f",
+    "exact_working_canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "original_current_tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
+    "previous_exact_B12_tsv_sha256": "fca8ec11ea2ab7db184a4a0c4c4826168fca797e66f31fc460d90b188561e5d8",
+    "expected_historical_B13_tsv_sha256": "91b8fc55cf3ec2c5884a0ab2e7092e17305c7fa2fe9120dcc5c8c3e09e53dbe1",
+    "current_reconstructed_B13_tsv_sha256": "690ba40744a3ab7ebf6a087289b17d9906350637b00debd09588241541c972f2"
+  },
+  "tests": {
+    "Git_B13_edit_paths_35": "PASS",
+    "exact_11_card_change_scope": "PASS",
+    "no_change_to_other_2481_import_rows": "PASS",
+    "per_card_canonical_target_parity_11": "PASS",
+    "per_card_definition_details_back_parity_11": "PASS",
+    "per_card_trilingual_examples_44": "PASS",
+    "individual_rollback_variants_probed": 124,
+    "variants_matching_expected_git_B13_TSV_SHA": 0,
+    "full_original_B13_hash_reproduction": "FAIL_NO_EXACT_PARENT",
+    "caveat": "The 124 variants test only single-column, single-JSON-mirror and selected nested-field rollbacks. Compound changes, other metadata transformations or missing original bytes are not ruled out."
+  },
+  "durable_artifacts": {
+    "report": {
+      "library_file_id": "libfile_3b1a1c92b0308191a24224211666bf51",
+      "path": "/German-Content-Production-Kit/Recovery/NVV/Batch13-Forensics/NVV-B13-124-PROJECTION-VARIANTS-QA-2026-10-24.json",
+      "sha256": "3005372a44a90daf3eb0b53520710fdb4f00c46000282e794977f73cb245eec7"
+    },
+    "reproducible_script": {
+      "library_file_id": "libfile_8464017574c8819189ed3a7a125d6eab",
+      "path": "/German-Content-Production-Kit/Recovery/NVV/Batch13-Forensics/probe_b13_alternate_mirrors.py",
+      "sha256": "2e890fe630afb41ef2f52a687f6d42d11fe9c8025018fdfa760669b602bae98c"
+    },
+    "predecessor_toolkit": "libfile_c70ae2e885f881918ea3aa1494cf07a2"
+  },
+  "immutability": {
+    "original_pdf": true,
+    "historical_zip": true,
+    "active_working_canonical": true,
+    "active_working_tsv": true
+  },
+  "gates": {
+    "stage4": "IN_PROGRESS",
+    "independent_language_cases_pending": 66,
+    "additional_82": "AMBIGUOUS",
+    "active_tsv_exact_sha": "NOT_RECOVERED",
+    "ready_for_import": false,
+    "final_zip_ready": false
+  },
+  "next": "Recover authentic B13 row-level TSV snapshot or source generator including historical metadata. Do not invent/rebaseline active TSV or treat variants as proof of exact parent. Maintain separate source/canonical/TSV and qualified-signoff gates."
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L18/v485-R119-shared-identity-and-SRS-safety",
+  "milestone": {
+    "name": "Complete real-current importer semantic comparison and synthetic-SRS four-scenario safety regression for all 16 L18/Verben Repair4 overlapping identities",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "All 16 stable IDs have different canonical semantic fingerprints in actual v485 importer; 16/16 synthetic SRS states reset by exact test-only replace in both cross-deck directions. Native merge branch can remove user review state after confirmation, while add skips source-specific content. Safe multi-membership/identity migration design and exact same-origin durable rollback/SRS proof not approved or completed. Independent qualified Stage4 language review, Stage5 and Stage7 remain pending."
+  },
+  "scope": {
+    "unit": "cross-deck shared stable identity",
+    "total_units": 16
+  },
+  "progress": {
+    "reviewed_unique": 16,
+    "unreviewed": 0,
+    "dispositions": {
+      "unsafe_semantic_identity_collision_fail_closed": 16
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact runtime v485-R119 ZIP SHA256 c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f; real test-only GFP_TEST_API.parseTsvText, cardSemanticIdentityV191, sameCardSemanticIdentityV191, simulateReplace in disposable Chromium in-memory page.",
+      "Exact lesson full-preflight ZIP SHA256 27bb02378c9e67d73bb8553d75879ee46f5a71ae6d0a27b1f0334a928d8e3094 has 178 cards; Verben Repair4 ZIP SHA256 9a1eac4cecca59e2c666b9916afc5cf639cd8b14a4742cb56a8f57bb8551131e has 395 cards; 16 overlaps, 557 unique union.",
+      "All 16/16 Persian backs differ and 13/16 German fronts differ; all 16 of Verben cards have explicit customFields.learning_unit_id while all 16 L18 do not; exact runtime's semantic identity comparator yields 0/16 equal.",
+      "Seeded 16 synthetic review states for same-deck controls: Repair4->Repair4 keeps 16/16 and resets 0; L18->L18 keeps 16/16 and resets 0.",
+      "Seeded 16 synthetic review states for crossdeck directions: Repair4->L18 keeps 0/16 with 16 resets; L18->Repair4 keeps 0/16 with 16 resets. This is test-only in-memory replacement, not a real-origin commit.",
+      "Read actual v485 TSV import source: add skips duplicate IDs; merge prompts for destructive identity conflicts then calls StoreMutation.deleteCardState on mismatched identities with state; replace-keep-progress only retains matching semantic identities. No app modifications.",
+      "Portable read-only safety report, evidence JSON and runnable reproducer uploaded to Library and rematerialized byte-for-byte identical; eight fail-closed assertions PASS, browser errors zero."
+    ],
+    "original_locked_source_unchanged": true,
+    "user_SRS_untouched": true,
+    "app_runtime_UI_unchanged": true,
+    "qualified_730_stage4": "NOT_DONE",
+    "native_stage5": "NOT_PROMOTED",
+    "same_origin_indexeddb_stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL"
+  },
+  "artifact_refs": {
+    "report": {
+      "name": "B1-L18-V485-CROSSDECK-SRS-SAFETY-REPORT.md",
+      "sha256": "2247be8fc1ee9262ec37f4012d2177536e87e14d473646d2f6df7f7f70881d99",
+      "library_stable_id": "libfile_cb8f203fa1208191b7b742e7d45abe0a"
+    },
+    "evidence": {
+      "name": "B1-L18-V485-16-ID-COLLISION-FAIL-CLOSED-EVIDENCE.json",
+      "sha256": "cc88f78945bb80032d426b74cdc4ef836a218dafdc3cdaaab2d1ee9971c2a18e",
+      "library_stable_id": "libfile_548b944c65748191b66edfac300add95"
+    },
+    "reproducer": {
+      "name": "B1-L18-V485-CROSSDECK-FAIL-CLOSED-REPRODUCER.py",
+      "sha256": "a1b1cb77f345aea6365d9d28e1b79a02de5eb73b398fe31664ad9da7859747c4",
+      "library_stable_id": "libfile_1aa7f83d8c2c8191b2919b0625bce1be"
+    }
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "observed_parent_locked_git_blob": "b11170835ce6161c523bd2a1e7aab51f9435e27a",
+    "observed_global_B1_latest_git_blob": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "global_latest_lesson": "B1-L20",
+    "resume_pointer": "Use three SHA256-pinned source ZIPs v485-R119 (c3bcc7f...), L18 full preflight (27bb023...), Verben Repair4 (9a1eac...). Re-run Library reproducer SHA256 a1b1cb77f... with no user profile; it intentionally exits code 3 for 16 collisions. Need explicit multi-source membership/semantic identity and lossless SRS policy approval, non-destructive transaction test on exact CURRENT, plus qualified 730 linguistic Stage4 before native Stage5/Stage7. Preserve LOCKED L18, user SRS, runtime UI and global B1-L20 LATEST."
+  }
+}

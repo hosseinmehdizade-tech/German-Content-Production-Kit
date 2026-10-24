@@ -1,0 +1,82 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L01/HF2-shared-ID-dictionary-correction",
+  "milestone": {
+    "name": "Official HF2 1.1 exact validator and fail-closed 13-shared-ID preflight; Duden plural correction delta",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Current v484-R118 real persisted import/merge semantics and qualified linguistic approval required; 13 existing IDs must not be overwritten. Two Duden-backed no-plural closures still await formal qualified accept, and full Stage5/6/7 not passed."
+  },
+  "scope": {
+    "unit": "Menschen B1 L01 canonical lesson card",
+    "total_units": 146
+  },
+  "progress": {
+    "reviewed_unique": 146,
+    "unreviewed": 0,
+    "dispositions": {
+      "shared_id_import_hold": 13,
+      "reference_disjoint_candidates_not_full_import": 133
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Immutable B1 L01 ZIP SHA256 783c40cd94113c30264d4850dc77477f59a9223f09ae107372bf302ea786ce33 verified in active container",
+      "Original B1 L01 official HF2 1.1.0 validator: 146 cards FAIL 64 error entries, 29 adjective fronts/13 verb fronts/19 noun article metadata/3 noun plural closures",
+      "Identical GitHub official HF2 source Git blob SHA ea67592b68d245ed3069bcd84ac08fc375423e66 validated locally",
+      "Full 146-card preexisting 43+56 WIP candidate official HF2: JSON PASS and TSV PASS, 0 errors",
+      "Duden Lebensfreude plural Lebensfreuden contradicts previous draft NOT_APPLICABLE; one-card compact six-field correction patch produced, without updating WIP ZIP",
+      "External dictionary patch 146-card in-memory official HF2 JSON+TSV both PASS, 0 errors; negative defective front caught",
+      "Duden supports der Ernst no plural in this sense and die Lebenslust ohne Plural, both formal independent approval still open",
+      "13/13 Verben Repair4 collisions share semantic_identity and typingCore; 13 backs/13 combinations differ, 8 fronts enriched",
+      "Fail-closed 395-reference import preflight rejected all 13 shared and detected altered record and unacknowledged collisions",
+      "133 source-reference-disjoint lesson cards count verified; NOT complete user library disjointness nor complete import readiness",
+      "Original LOCKED, B1 Verben Repair4, prior WIP ZIP and runtime/UI/SRS byte-identical"
+    ],
+    "official_hf2_exact_source_sha1": "ea67592b68d245ed3069bcd84ac08fc375423e66",
+    "baseline_hf2": {
+      "status": "FAIL",
+      "errors": 64
+    },
+    "wip_hf2": {
+      "status": "PASS",
+      "cards": 146,
+      "errors": 0,
+      "json_tsv": true
+    },
+    "patched_in_memory_hf2": {
+      "status": "PASS",
+      "cards": 146,
+      "errors": 0,
+      "json_tsv": true,
+      "official_full_stage5": false
+    },
+    "legacy_wip_zip_sha256": "59400f635461af81b8b51336914cd606d467ccab84d175a7ae0f0096efebdada",
+    "compact_plural_patch_sha256": "2fe28a61c2524f1a1e1279489b25694dd126ccc96c17925ea236b7c480105584",
+    "collision_preflight_sha256": "b427ac04d765c553ffad9e363741bd444027334bc4ec90310fc6ec9311b0c0e6",
+    "QA_report_sha256": "18b91ee71e20abb54260ef535f1be99c86067f709c8c50ae20ad5daeafdcdb8e",
+    "readable_report_sha256": "6d8be0c7386e30b8ab02158eebf7492d20b276956df27f5ea7af1e8d85478cae",
+    "new_external_references": [
+      "https://www.duden.de/rechtschreibung/Lebensfreude",
+      "https://www.duden.de/rechtschreibung/Ernst_Bedacht",
+      "https://www.duden.de/rechtschreibung/Lebenslust"
+    ],
+    "lock_changed": false,
+    "reference_changed": false,
+    "runtime_changed": false,
+    "real_persistent_import": "NOT_RUN",
+    "model_review_not_independent_qualified": true,
+    "successor_stage7_final": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Exact L01 LOCKED SHA256 783c40cd94113c30264d4850dc77477f59a9223f09ae107372bf302ea786ce33; WIP ZIP SHA256 59400f635461af81b8b51336914cd606d467ccab84d175a7ae0f0096efebdada unchanged. Compact plural correction JSON SHA256 2fe28a61c2524f1a1e1279489b25694dd126ccc96c17925ea236b7c480105584 not yet applied. Cross-stream preflight JSON SHA256 b427ac04d765c553ffad9e363741bd444027334bc4ec90310fc6ec9311b0c0e6. After qualified safe merge and source signoff, apply patch to NEW active WIP authority and rerun Stage5/6 exact CURRENT v484-R118; do not edit historical LOCKED, do not import candidate.",
+    "observed_workstream_LATEST_sha": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "observed_stage7_sha": "d666e2da06963c3af889b7e11dd4d7eba64590bf",
+    "prior_milestone_sha": "a40384d62494f7470d842e908848cff93c242148",
+    "central_latest_untouched": true
+  },
+  "next_action": "Resolve safe cross-stream 13-ID membership and non-destructive merge into single canonical Library while preserving user SRS; source-backed noun patch ready as compact delta; get qualified linguistic acceptance and real current browser import; L01 parent remains BLOCKED."
+}

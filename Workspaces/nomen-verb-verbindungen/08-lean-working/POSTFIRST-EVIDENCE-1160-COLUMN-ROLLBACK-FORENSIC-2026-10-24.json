@@ -1,0 +1,71 @@
+{
+  "schema": "nvv-postfirst-evidence-column-forensic-gate@1.0.0",
+  "date": "2026-10-24",
+  "branch": "nvv-production",
+  "workstream": "nomen-verb-verbindungen",
+  "status": "FULL_COLUMN_ROLLBACK_SEARCH_UP_TO_THREE_COLUMNS__NO_EXACT_POSTFIRST_EVIDENCE_SHA_MATCH",
+  "registered_parent_tsv_sha256": "4518217cb24f3ba1b89132d599caef116526aaa03930da61c5511d84108a4bf0",
+  "registered_successor_tsv_sha256": "7fcf52d4b766e75040e96eb178149866ba5d937e6fc1f780f9d15db8bd8ed2d7",
+  "replayed_successor_tsv_sha256": "f126703ce5c1d44c967802bbc0d8e013ee10f786fd9dd40fe9808ee4488fb594",
+  "canonical_active_exact_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+  "active_tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
+  "test_context": {
+    "predecessor_exact_sha256_pass": true,
+    "scoped_edited_rows": 7,
+    "scoped_orders": [
+      27,
+      233,
+      263,
+      300,
+      354,
+      492,
+      900
+    ],
+    "recorded_source_field_values": 21,
+    "changed_import_columns": 19,
+    "changed_columns": [
+      "back",
+      "details",
+      "examples",
+      "custom_fields"
+    ],
+    "source_ids_verified": true,
+    "variants_by_number_of_column_rollbacks": {
+      "0": 1,
+      "1": 19,
+      "2": 171,
+      "3": 969
+    },
+    "tested_variants": 1160,
+    "expected_sha_matches": 0,
+    "unchanged_rows": 2485,
+    "caveat": "The negative search excludes only up-to-three whole-column revert variants of the 19 changed columns. Nested JSON subkeys, non-reversion transformations, four-or-more compound field deviations and omitted original metadata remain possible."
+  },
+  "durable": {
+    "qa_json": {
+      "library_id": "libfile_809414c36a108191b5d4cec0206f6d27",
+      "path": "/German-Content-Production-Kit/Recovery/NVV/PostFirst-Evidence-Forensics/NVV-POSTFIRST-EVIDENCE-TSV-COLUMN-ROLLBACK-QA-2026-10-24.json",
+      "sha256": "aeb7678fc6467d5653a970fffbd36b125f7912587d35798bab3e3875a6ee3526"
+    },
+    "script": {
+      "library_id": "libfile_886a260385b481918f50897bb859a3de",
+      "path": "/German-Content-Production-Kit/Recovery/NVV/PostFirst-Evidence-Forensics/probe_postfirst_evidence_column_rollbacks.py",
+      "sha256": "a0e9ac04537d9034d3f69a879876c88ccd3f76713c5492ca0b694c0ef39c0ad4"
+    }
+  },
+  "immutability": {
+    "source_pdf": true,
+    "historical_locked_zip": true,
+    "historical_parent_tsv": true,
+    "authoritative_canonical": true,
+    "authoritative_tsv": true
+  },
+  "gates": {
+    "Stage4": "IN_PROGRESS",
+    "independent_qualified_66": "PENDING",
+    "extra_case_82": "UNRESOLVED",
+    "exact_current_tsv_sha": "NOT_RECOVERED",
+    "final_zip": false
+  },
+  "next": "Inspect nested JSON mirror subkeys or recover original POST-FIRSTPASS-EVIDENCE local before/after TSV delta; do not imply target hash can be recreated by simple row or column reverts. Preserve existing 15 historical SHA-verified checkpoints."
+}

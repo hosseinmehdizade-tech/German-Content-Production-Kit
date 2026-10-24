@@ -1,0 +1,88 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-a1-sequential-review-v336",
+  "milestone": {
+    "name": "L04_71_CARD_READONLY_AUDIT_FOUND_14_MIRRORED_EXAMPLE_DIVERGENCES",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "14 example variants in 7 L04 cards between examples and custom_fields.presentation_examples, inherited since Stage4 and still in historical C41; exact current C42T parent ZIP absent so successor edits must fail closed."
+  },
+  "scope": {
+    "unit": "A1_L04_card_source_content_mirror_review",
+    "total_units": 71,
+    "source_rows": 53,
+    "original_audio_refs": 54,
+    "example_groups": 284,
+    "kombinationen": 86,
+    "relations": 30
+  },
+  "progress": {
+    "reviewed_unique": 71,
+    "unreviewed": 0,
+    "dispositions": {
+      "KEEP_NO_DEFINITE_NEW_DEFECT": 50,
+      "CONFIRMED_PRESENTATION_EXAMPLE_MIRROR_DIVERGENCE": 7,
+      "OTHER_EDITORIAL_PEDAGOGIC_ADVISORY": 14
+    },
+    "applied_canonical_edits": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact 9109-row registered source CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222, 53 L04 original rows 203..255 exactly matched.",
+      "All 54 original L04 audio refs exist in registered RAR; 71 source-to-card mappings, 71 unique contiguous IDs and 284 trilingual example groups, valid UTF-16 annotation spans.",
+      "86 trilingual Kombinationen on 46 cards, 30 canonical relations; archive ZIP CRC PASS.",
+      "Exact L04 locked ZIP SHA256 c3098b3d0a7a1451781e1c050a56bb491d202351b225d3fdfc46553e48992f17, exact historical C41 ZIP SHA256 b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95.",
+      "Seven cards with 14 internally divergent example occurrences; reproduced against exact Stage4 accepted and historical C41 custom_fields mirror.",
+      "Full local JSON source audit SHA256 9c143e330bf6d819b1c88d02bf0199bbbb6208aff7a7d245db74dda5604f81a8; 71-row CSV SHA256 7da50d7b040185c8d7c2267c63825e4fa5fd38d4a5fa3f7e39b352a5f8b3b2b6; local validated outcome SHA256 1fc41bd072ca0e1085cd734953199813768c4d7d6e89cdb748babeee57640c29."
+    ],
+    "global_independent_Stage4": "NOT_RUN",
+    "current_Stage5": "NOT_RUN",
+    "CURRENT_v484_R118_stage6": "NOT_RUN",
+    "a1_final": false
+  },
+  "findings": {
+    "original_l04_stage7_status": "LOCKED_WITH_USER_ACCEPTED_PERSISTENCE_BOUNDARY",
+    "mirror_7_card_14_example_positions": {
+      "ma1m-lu-0288": [
+        4
+      ],
+      "ma1m-lu-0347": [
+        1,
+        3
+      ],
+      "ma1m-lu-0348": [
+        1,
+        3,
+        4
+      ],
+      "ma1m-lu-0349": [
+        3
+      ],
+      "ma1m-lu-0350": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "ma1m-lu-0351": [
+        1,
+        3
+      ],
+      "ma1m-lu-0352": [
+        2
+      ]
+    },
+    "secondary_editorial_advisories": 14,
+    "confirmed_missing_source_rows": 0,
+    "originals_or_ui_srs_modified": false,
+    "current_C42T_required_sha256": "0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "local_report_sha256": "9c143e330bf6d819b1c88d02bf0199bbbb6208aff7a7d245db74dda5604f81a8",
+    "local_71_card_csv_sha256": "7da50d7b040185c8d7c2267c63825e4fa5fd38d4a5fa3f7e39b352a5f8b3b2b6",
+    "resume_pointer": "L04 71-card read-only review complete, 7 cards/14 presentation example differences confirmed and unfixed. Continue source-first L05 independent READONLY audit while keeping L04 BLOCKED awaiting exact C42T parent and independent global Stage4/5/CURRENT Stage6. Never mutate original LOCKED, C41 or SRS."
+  }
+}

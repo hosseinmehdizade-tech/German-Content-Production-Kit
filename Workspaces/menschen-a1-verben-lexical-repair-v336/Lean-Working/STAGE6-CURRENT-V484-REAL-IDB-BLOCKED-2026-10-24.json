@@ -1,0 +1,53 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "milestone": {
+    "name": "STAGE6_REAL_ORIGIN_INDEXEDDB_IMPORT_COMMIT_RESTART_ON_CURRENT_V484_R118",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Exact v484-R118 app localhost server responds HTTP 200, but both new and persistent Chromium contexts return ERR_BLOCKED_BY_ADMINISTRATOR before application JS loads. Real IndexedDB commit and new-session recovery cannot be verified in this environment. A pinned disposable-profile test kit was created for execution in a permitted local browser."
+  },
+  "scope": {
+    "unit": "isolated_exact_current_v484_offline_preflight_check",
+    "total_units": 13
+  },
+  "progress": {
+    "reviewed_unique": 13,
+    "unreviewed": 0,
+    "dispositions": {
+      "passed_technical_preflight": 13
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "CURRENT v484-R118 runtime SHA256 9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67 matches runtime pin",
+      "Current reviewed TSV SHA256 4428cf5b96dbc3bef99848f3be1e4ed6991f6300618c9fe6c1174432c9ac4df7 matches complete content candidate",
+      "Portable test kit 13/13 offline checks PASS including two Persian changes, 310 cards, 1934 combinations, 1240 examples, eight register notes",
+      "Direct IndexedDB libraryCards-read and browser-close/reopen assertions authored, including 310 card IDs and exact Persian/curated checks; real code paths are NOT executable here",
+      "Fresh extraction and Python preflight PASS; two embedded JS assertions pass Node syntax; ZIP CRC and 9/9 member manifest SHA256 PASS",
+      "Browser localhost HTTP 200 but Chromium navigation reports ERR_BLOCKED_BY_ADMINISTRATOR; real-origin Stage6 NOT PASSED",
+      "Stage4 independent qualified linguistic/source signoff NOT_OBTAINED"
+    ],
+    "official_stage4": "BLOCKED_INDEPENDENT_REVIEWER",
+    "official_stage5": "CANDIDATE_PACKAGING_PASS_NOT_FINAL",
+    "official_stage6": "BLOCKED_LOCAL_BROWSER_POLICY",
+    "official_stage7": "NOT_RUN",
+    "release_final": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a1-verben-lexical-repair-v336/Lean-Working/STAGE6-CURRENT-V484-REAL-IDB-BLOCKED-2026-10-24.json",
+    "portable_artifact": "Menschen-A1-Verben-STAGE6-v484-Real-Origin-Acceptance-NOT-FINAL.zip",
+    "portable_sha256": "b782e9f58c6a55ede9e7245f502390c680062608c8475ec88b6651e76029b92c",
+    "portable_bytes": 5188300,
+    "zip_members": 10,
+    "manifest_items": 9,
+    "current_content_zip_sha256": "663b3b19bc211ed99ee4697ac1bc13431325329749cb92c589572141d6dd8a35",
+    "runtime_sha256": "9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67",
+    "reviewed_import_sha256": "4428cf5b96dbc3bef99848f3be1e4ed6991f6300618c9fe6c1174432c9ac4df7",
+    "sources_unmodified": true,
+    "ui_unchanged": true
+  },
+  "next_action": "Do not restart Stage4 model review. Run included CMD for v484 on a permitted local Windows Chrome/Edge browser with isolated profile once; then verify UI import plus persistent IDB commit and reopen, and separately obtain qualified Stage4 linguistic/source signoff before FINAL."
+}

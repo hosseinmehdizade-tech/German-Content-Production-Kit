@@ -1,0 +1,91 @@
+{
+  "schema": "nvv-source-grounded-identity-audit-and-recovery-gap@1.0.0",
+  "status": "PASS_HISTORICAL_IDENTITY_CROSSWALK__ACTIVE_WORKING_RECONSTRUCTION_IN_PROGRESS",
+  "workstream": "nomen-verb-verbindungen",
+  "date": "2026-10-24",
+  "branch": "nvv-production",
+  "authority": {
+    "locked_zip_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f",
+    "historical_canonical_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
+    "historical_tsv_sha256": "f3a5206b05146566a2ea4a083c7a7996408b25c2ec3bf9f8f795b1f684ae684a",
+    "source_pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "expected_active_canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "expected_active_tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b"
+  },
+  "milestone": {
+    "bounded_scope": "66 original unresolved NVV first-pass numeric review references + 1 additional 82",
+    "result": "67/67 historical TSV order candidates reconstructed from real locked 23-column projection and canonical provenance, without assuming review order semantics",
+    "original_66_disposition_counts": {
+      "explicit_card_id_matches_tsv_order": 23,
+      "explicit_card_id_matches_zero_based_array_index_not_tsv_order": 2,
+      "old_explicit_card_id_absent_tsv_order_candidate_only": 41
+    },
+    "additional_82": {
+      "tsv_order": 82,
+      "tsv_id": "dah-nvv-exp-00080",
+      "source_ordinal": 80,
+      "form": "zu den Akten legen",
+      "warning": "Bare issue number does NOT conclusively establish whether it denotes TSV order, array index, or source occurrence. Candidate only."
+    },
+    "original_1266_1273": {
+      "legacy_explicit_ids": [
+        "dah-nvv-exp-01257",
+        "dah-nvv-exp-01264"
+      ],
+      "tsv_order_candidate_ids": [
+        "dah-nvv-exp-01256",
+        "dah-nvv-exp-01263"
+      ],
+      "judgment": "Conflicting number conventions, NOT proof that explicit card IDs are wrong. Never silently rewrite."
+    },
+    "source_ordinal_warning": "PDF source occurrence ordinal, stable expression_id suffix, canonical cards array index and projected TSV order are distinct identities; never use one as a substitute for another.",
+    "confidence_scope": "Validates historical immutable TSV, not the current editable canonical/TSV bytes."
+  },
+  "durable_outputs": {
+    "script": {
+      "path": "/German-Content-Production-Kit/Tools/NVV/Identity-Audit-2026-10-24/nvv_audit_order_identity.py",
+      "library_file_id": "libfile_c07e54e680748191a23c75d8af4a7a76",
+      "sha256": "42051f106012ef6f07dcdcbee74e21f82bab351808b7b303a0dca360fa48942c"
+    },
+    "crosswalk_json": {
+      "path": "/German-Content-Production-Kit/Tools/NVV/Identity-Audit-2026-10-24/NVV-67-IDENTITY-CROSSWALK.json",
+      "library_file_id": "libfile_dfc51aa6a23c819186fbd123b3769b6b",
+      "sha256": "90350a15076d9868a68ef30f13abde92f25fe8f0edd8f0b3c7dfe1e0143139f1"
+    },
+    "crosswalk_tsv": {
+      "path": "/German-Content-Production-Kit/Tools/NVV/Identity-Audit-2026-10-24/NVV-67-IDENTITY-CROSSWALK.tsv",
+      "library_file_id": "libfile_f67f9a0b8c00819180f2a4bf543f5059",
+      "sha256": "0994af2ea0cc621092d377c15b012abd35315b9e118b24651e06b03410fd850b"
+    }
+  },
+  "tests": {
+    "locked_zip_sha_match": true,
+    "source_pdf_sha_match": true,
+    "locked_canonical_sha_match": true,
+    "locked_tsv_sha_match": true,
+    "canonical_2492_ids_unique": true,
+    "tsv_2492_order_and_ids_match": true,
+    "output_67_distinct_rows_unique": true,
+    "json_tsv_parity": true,
+    "script_py_compile": true
+  },
+  "exact_working_recovery": {
+    "state": "NOT_RECONSTRUCTED",
+    "reason": "Git delta lineage POSTQUEUE-ROUND3-RECOVERY-2026-10-23.json explicitly requires 63-field exact companion NVV-STAGE4-ROUND3-RESUME-2026-10-23.json. The named companion does not appear in nvv-production tree, and was not retrieved by conversation/library title search in this turn. The active working Canonical is indexed but lacks authorized raw-byte materialization; exact current TSV bytes were not available. Extra canonical/TSV reconciliation metadata is also required for lossless SHA parity.",
+    "required_companion_name": "NVV-STAGE4-ROUND3-RESUME-2026-10-23.json",
+    "required_companion_sha256": "0779d1211b9b02a48ff5a889857785bf04540c350b36b2d5e7f3a667f7c29112",
+    "checksum_replay_success": false,
+    "action": "Continue independent scoped audit or recover exact active working canonical+TSV via authorized attachment; do not apply proposed edits to a guessed parent."
+  },
+  "frozen_unmodified": {
+    "registered_pdf": true,
+    "locked_zip": true,
+    "post_s9_audit_baseline": true,
+    "active_working_canonical": true,
+    "active_working_tsv": true
+  },
+  "independent_qualified_review_status": "NOT_DONE",
+  "original_main_hold_count_unchanged": 66,
+  "stage4_successor_status": "IN_PROGRESS",
+  "next": "Resolve exact 63-field companion/current file accessibility; cross-check stable IDs with explicit source receipts; only then execute previously validated 5-field successor replay under parent canonical+TSV hash preconditions; full Stage4 qualified review remains mandatory."
+}

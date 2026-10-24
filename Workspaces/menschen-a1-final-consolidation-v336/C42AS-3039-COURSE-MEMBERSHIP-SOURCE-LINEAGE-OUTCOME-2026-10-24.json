@@ -1,0 +1,78 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42AS_FULL_HISTORICAL_C41_3039_COURSE_MEMBERSHIP_SOURCE_LINEAGE_FORENSIC",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "All 3039 historical C41 course memberships across 2997 A1 cards source-row and vnext locator structural/lineage audit. Only historical C41; never promote into exact unmaterialized C42T, global independent v3.3.6 Stage4, official Stage5, CURRENT v485-R119 Stage6, A1 FINAL or Import."
+  },
+  "scope": {
+    "unit": "historical_C41_course_membership",
+    "total_units": 3039,
+    "distinct_cards": 2997,
+    "original_source_memrise_rows": 9109
+  },
+  "progress": {
+    "reviewed_unique": 3039,
+    "unreviewed": 0,
+    "dispositions": {
+      "EXACT_MEMBERSHIP_AND_VNEXT_ROW_PARITY": 2803,
+      "UNIQUE_SAME_LESSON_VNEXT_CANDIDATE_FOR_MISSING_ORDINAL": 123,
+      "UNPROVEN_OR_AMBIGUOUS_MISSING_ORDINAL": 9,
+      "MEMBERSHIP_ONLY_WITH_CORRECT_MEMRISE_LESSON_TAG": 77,
+      "VALID_SECONDARY_SOURCE_MEMBERSHIP_NOT_IN_PRIMARY_VNEXT": 27
+    },
+    "applied_edits": 0,
+    "global_stage4_promoted": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Exact original registered Memrise 9109-row CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222 and historical C41 2997-card ZIP SHA256 b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95 verified, ZIP CRC PASS; 3039 membership slots read and each traceable membership row checked against original source label.",
+      "2907 membership slots contain an ordinal, 132 lack it: 126 on A1-L09 and six A1-L24 reused crosslesson memberships. Of 132 missing, 123 L09 have exactly one same-lesson numeric vnext source candidate; three L09 have 2–3 same-lesson numeric vnext candidates and six reused L24 lack a valid same-lesson vnext row. No automatic choice or source claims.",
+      "83 membership entries lack source_tag: 77 stand-alone A1-L24 entries with original row ordinal and matching real Memrise A1-L24 tag, and six reused L24 without ordinal or tag. No source-tag field changed.",
+      "23 malformed original C41 A1-L14 Memrise vnext locators contain human annotation after row:digits, e.g. row:01145 Fußballplatz. Numeric candidate and registered source Learnable were inspected. This is a strict locator syntax issue, not evidence of wrong lexical content or automatic permission to edit.",
+      "27 course membership entries are valid secondary source-row and tag matches not repeated in primary vnext source refs; source memberships for these lesson overlaps must be preserved. 2803 exact membership/vnext row matches. 236 membership entries (235 distinct card IDs) need explanation/repair candidate outside exact parity; the 23 malformed vnext locators are a separate possibly overlapping source-reference dimension.",
+      "Full 3039-row CSV, 236 flagged membership CSV and 23 malformed locator CSV produced with per-card custom_fields SHA256, lesson identity and original source lexeme where available. Repeat execution on original Memrise/C41 re-created files byte-identically; 10-member deterministic portable ZIP CRC and per-member SHA manifest PASS.",
+      "Seven deliberately tampered regenerated-manifest payloads were rejected by replay validator: forged import, forged Stage4, changed membership count, fake C42T currentness, bad locator, card identity tamper and omitted flagged record. Fresh ZIP extraction replay PASS.",
+      "C42T full parent 34123935 bytes SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 not materialized; no mutation of Memrise, historic C41, 24 LOCKED lesson artifacts, UI or SRS."
+    ],
+    "exact_current_C42T_materialized": false,
+    "independent_global_linguistic_stage4": "NOT_RUN",
+    "official_clean_stage5": "NOT_RUN",
+    "current_runtime_v485_R119_stage6": "NOT_RUN",
+    "A1_FINAL": false,
+    "import_allowed": false,
+    "original_source_LOCKED_UI_SRS_modified": false
+  },
+  "findings": {
+    "historical_cards": 2997,
+    "course_memberships": 3039,
+    "missing_membership_source_row_ordinal": 132,
+    "missing_L09": 126,
+    "missing_crosslesson_L24": 6,
+    "unique_same_lesson_vnext_row_candidates": 123,
+    "ambiguous_L09": 3,
+    "no_L24_same_lesson_candidate": 6,
+    "missing_membership_source_tag": 83,
+    "missing_L24_tag_standalone": 77,
+    "malformed_L14_vnext_row_locators": 23,
+    "distinct_flagged_memberships": 236,
+    "flagged_distinct_cards": 235,
+    "valid_secondary_lesson_memberships_not_in_primary_vnext": 27,
+    "original_C42AR_9_source_item_locator_issues_still_separate": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_UPLOADED_LEAN_WIP_PREVIOUS_QUOTA_LIMIT",
+    "artifact": "Menschen-A1-C42AS-3039-Membership-Source-Lineage-Forensic-2026-10-24-NO-IMPORT.zip",
+    "artifact_sha256": "489a9caf9080ac29c69c33a999085c9ee6f2559f07d7bde1f88e0e5b517cd588",
+    "artifact_size_bytes": 230443,
+    "local_verified_path": "/mnt/data/Menschen-A1-C42AS-3039-Membership-Source-Lineage-Forensic-2026-10-24-NO-IMPORT.zip",
+    "independent_original_source_replay": "PASS_3039",
+    "negative_tamper_controls": "7_OF_7_FAIL_CLOSED",
+    "resume_pointer": "Use the C42AS current-scoped receipt/pointer. Historical 3039 source membership forensic finished; do NOT repeat. Exact current full C42T ZIP SHA256 0652d39c... required before any CAS. Resolve 132 membership ordinal gaps, 83 missing membership tags and 23 malformed vnext row locators only against exact C42T, never assume historical C41 defects survive successor. 27 valid secondary source memberships and 34 previously preserved shared-lesson statuses must not be erased. Qualified global Stage4, Stage5, current v485 Stage6 and Import blocked."
+  }
+}

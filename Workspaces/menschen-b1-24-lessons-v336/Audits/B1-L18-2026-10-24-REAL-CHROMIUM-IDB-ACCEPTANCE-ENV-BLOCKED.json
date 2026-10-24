@@ -1,0 +1,58 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L18+VerbenRepair4/v485-native-browser-idb-acceptance",
+  "milestone": {
+    "name": "Prepare real native Chromium IndexedDB acceptance suite with 15/15 offline safety/source checks; pin authority and prove environmental blocker without misreporting native PASS",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "This environment blocks http://127.0.0.1:<ephemeral>/app/index.html with net::ERR_BLOCKED_BY_ADMINISTRATOR before real IndexedDB runs. Browser IndexedDB, persistent profile restart, real GFP import, SRS migration and architecture approval remain untested. An agent can run the exact portable harness in an authorized browser environment with loopback access."
+  },
+  "scope": {
+    "unit": "standalone native-Chromium acceptance suite offline static/authority assertion",
+    "total_units": 15
+  },
+  "progress": {
+    "reviewed_unique": 15,
+    "unreviewed": 0,
+    "dispositions": {
+      "offline_static_and_authority_checks_passed": 15
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact v485-R119 runtime ZIP SHA256 c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f and 77 actual app files, no modification.",
+      "Pinned source catalog SHA256 d4b39ca9c25fd1f476cfc10b7aac251b76fcda352b8cf705ac67ba7bf32c9636; 178 L18 + 395 Verben = 573 source variants over 557 IDs, 16 dual variants. Batch authority SHA256 verified for both.",
+      "New real-browser test suite checks native IndexedDB transactions on disposable isolated test DB, two import orders, injected aborts, source tamper, CAS concurrency, idempotence, synthetic reviews, persistent browser profile reopen. NOT yet executed past app navigation.",
+      "Python runner creates/deletes temporary isolated Chromium profile, serves unmodified v485 app only on loopback; no user browser or existing SRS touched. Stores written by adapter exclude reviewStates/libraryCards.",
+      "Actual Chromium attempt rejected navigation http://127.0.0.1 by administrator (exit 4, BLOCKED_ENVIRONMENT). Not a native browser PASS. Wrong-runtime zip negative control exits code 2.",
+      "Offline verifier 15/15 checks, previous 60/60 fake-IDB adapter regression, full exact ZIP 13 members, 11 manifest entries and 12 SHA256SUMS, fresh extraction CRC/independent static PASS.",
+      "Library roundtrip SHA and byte perfect for 116727-byte portable ZIP 705dd099790fa421f634ee5f7d1871674d2138e01e1ee132070ae7dec355a8a0; source LOCKED/UI/SRS/current global B1-L20 pointer unchanged."
+    ],
+    "native_chromium_indexeddb": "BLOCKED_ENVIRONMENT",
+    "independent_730_linguistic_stage4": "NOT_DONE",
+    "native_stage5": "NOT_PROMOTED",
+    "CURRENT_v485_stage6": "NOT_PASSED",
+    "successor_stage7": "NOT_FINAL",
+    "user_SRS_or_app_UI_changed": false
+  },
+  "artifact": {
+    "filename": "B1-L18-V485-CHROMIUM-NATIVE-IDB-ACCEPTANCE-READY-ENV-BLOCKED.zip",
+    "sha256": "705dd099790fa421f634ee5f7d1871674d2138e01e1ee132070ae7dec355a8a0",
+    "bytes": 116727,
+    "manifest_members": 11,
+    "zip_members": 13,
+    "library_file_id": "file_0000000092f081f496cf812ced4fbacf",
+    "library_stable_id": "libfile_b54bbf94834c8191bcba88a10d41ae9c",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L18-V485-CHROMIUM-NATIVE-IDB-ACCEPTANCE-READY-ENV-BLOCKED.zip",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "observed_L18_locked_checkpoint_blob": "b11170835ce6161c523bd2a1e7aab51f9435e27a",
+    "observed_B1_latest_blob": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "global_B1_lesson": "B1-L20",
+    "resume_pointer": "Materialize exact 116727-byte acceptance-harness ZIP SHA256 705dd099790fa421f634ee5f7d1871674d2138e01e1ee132070ae7dec355a8a0 from Library and run verify_acceptance_harness.py. On an agent-managed Chrome host with permitted loopback, run run_native_chromium.py --runtime-zip exact v485-R119 c3bcc7fe...; exit 0 would prove isolated browser IndexedDB only. Still require approved architecture for 16 semantic variants and actual GFP v485 same-origin safe SRS migration, plus independent full 730 Stage4, native Stage5 and Stage7. Preserve original LOCKED B1-L18, app UI/SRS and global B1-L20 LATEST."
+  }
+}

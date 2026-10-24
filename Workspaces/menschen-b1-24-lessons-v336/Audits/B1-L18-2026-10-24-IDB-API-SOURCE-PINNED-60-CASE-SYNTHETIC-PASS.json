@@ -1,0 +1,67 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L18+Repair4/source-pinned-idb-api-transaction-prototype",
+  "milestone": {
+    "name": "Finish source-pinned native-IDB-API-style transaction algorithm with 60 simulated async atomicity tests, 573 source rows, 16 separate dual variants and independent fresh-extract reproducer",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "unique synthetic IDB-callback transaction/authority regression",
+    "total_units": 60
+  },
+  "progress": {
+    "reviewed_unique": 60,
+    "unreviewed": 0,
+    "dispositions": {
+      "l18_seeded_first": 27,
+      "repair4_seeded_first": 27,
+      "catalog_and_scope_contract": 6
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "PASS_SCOPED_IDB_REQUEST_CALLBACK_SIMULATION_ONLY__NOT_BROWSER_INDEXEDDB_OR_REAL_GFP_RUNTIME",
+    "verification_evidence": [
+      "Exact source catalog SHA256 d4b39ca9c25fd1f476cfc10b7aac251b76fcda352b8cf705ac67ba7bf32c9636; independent cross-deck original ZIP row reconstruction PASS 573/573, 2292 original example references, 128 exact colliding triplets.",
+      "Source-validating IndexedDB API request-callback implementation and deterministic fake IDB queue tests PASS 60/60 (27 each import order, 6 schema/catalog); no app import, no real origin, no user profile.",
+      "Pretransaction SHA256 pin of complete 178/395 source batches rejects unauthorized edits before opening any transaction; duplicate/missing source rows and display-source selection cause fail-closed behavior.",
+      "Fake IDB rolls back all staged variant/identity/control writes on errors after multiple positions and simulated quota/IO failures. Serialized synthetic generation-CAS rejects stale concurrent writes. Reimport replay idempotent.",
+      "Transient SRS object store seeded with 178 or 395 distinct review objects; same serialized review data survive all accepted cases and all aborts. Proposed algorithm never requests existing app `reviewStates`/`libraryCards` stores.",
+      "Older 42/42 SQLite transaction prototype and independent 573-parent-source reconstructor rerun PASS, but neither substitutes for actual browser IndexedDB test.",
+      "Compact 118104-byte 15-member ZIP SHA256 90c1649eeb882760a87438b91bdfb8b00efb0c9299c8ad515eb9b93b1a31f51b, 13 manifest members / SHA256SUMS full check, fresh extraction + Node 60/60 + independent Python + outcome-accounting validator PASS. Library upload and rematerialization byte-identical.",
+      "Exact CURRENT v485-R119 app IDB namespace GermanFlashcardsProDB_v6 schema version 9, protected store names inspected read-only; proposed new stores not deployed; original LOCKED/audio/user SRS/UI and global B1 LATEST unchanged."
+    ],
+    "independent_qualified_730_language_stage4": "NOT_DONE",
+    "native_stage5": "NOT_PROMOTED",
+    "current_v485_real_origin_indexeddb_stage6": "NOT_RUN_ENVIRONMENT_AND_ARCHITECTURE_BLOCKED",
+    "stage7_successor": "NOT_FINAL",
+    "existing_runtime_modified": false,
+    "source_locked_mutated": false,
+    "user_srs_or_ui_modified": false,
+    "risk_boundaries": [
+      "Fake IDB request/queue model is not Chrome IndexedDB and cannot prove true quota, browser eviction, persistent reload, versionchange or multi-tab durability.",
+      "Sidecar proposal holds source metadata; complete example bodies outside the 16 collisions remain referenced via exact source ZIP digests. It does not create/deploy a fully merged card.",
+      "Production deployment would require architecture permission, approved IndexedDB same-db schema upgrade and actual real-origin non-destructive SRS tests."
+    ]
+  },
+  "artifact": {
+    "filename": "B1-L18-V485-IDB-API-60-CASE-SOURCE-PINNED-PROTOTYPE-NONFINAL.zip",
+    "sha256": "90c1649eeb882760a87438b91bdfb8b00efb0c9299c8ad515eb9b93b1a31f51b",
+    "bytes": 118104,
+    "zip_members": 15,
+    "manifest_entries": 13,
+    "library_file_id": "file_0000000028b881f486764e33fc038043",
+    "library_stable_id": "libfile_3bb1d2cb24588191b8608a4133b4bee0",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L18-V485-IDB-API-60-CASE-SOURCE-PINNED-PROTOTYPE-NONFINAL.zip",
+    "library_roundtrip": "PASS_SHA256_AND_BYTE_COMPARE"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "global_latest_observed_blob": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "locked_l18_observed_blob": "b11170835ce6161c523bd2a1e7aab51f9435e27a",
+    "global_latest_preserved": true,
+    "resume_pointer": "Use Library exact 118104-byte ZIP SHA256 90c1649eeb882760a87438b91bdfb8b00efb0c9299c8ad515eb9b93b1a31f51b. Run node test_indexeddb_adapter.mjs and python verify_independent.py --rerun; inspect proposed sidecar stores and source pin. Must NOT merge 16 semantic collisions automatically or add new stores to actual GFP v485 without architecture/DB migration approval. Native real-origin IDB (blocked by environment) and full independent L18 730-item Stage4 still outstanding. Original L18 LOCKED and B1-L20 global LATEST remain unchanged."
+  }
+}

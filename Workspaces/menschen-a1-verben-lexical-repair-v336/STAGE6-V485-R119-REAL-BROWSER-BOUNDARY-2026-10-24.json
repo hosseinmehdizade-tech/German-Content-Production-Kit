@@ -1,0 +1,67 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "milestone": {
+    "name": "STAGE6_CURRENT_V485_R119_REAL_UI_INDEXEDDB_ACCEPTANCE",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Chromium in the execution environment refuses navigation to localhost, HTTPS synthetic origin and file:// with net::ERR_BLOCKED_BY_ADMINISTRATOR; about:blank has opaque origin and IndexedDB/localStorage SecurityError. Thus actual UI import, commit manifest and browser-process reopen cannot be verified here. A self-contained exact-input replay kit is attached for execution on an unrestricted local browser."
+  },
+  "scope": {
+    "unit": "stage6_acceptance_gate",
+    "total_units": 7
+  },
+  "progress": {
+    "reviewed_unique": 7,
+    "unreviewed": 0,
+    "dispositions": {
+      "exact_runtime_and_stage5_sha_crc_pass": 1,
+      "full_stage5_content_source_import_validator_pass": 1,
+      "exact_v485_native_static_js_import_guard_suite_pass": 1,
+      "real_ui_import_blocked_environment": 1,
+      "real_indexeddb_commit_blocked_environment": 1,
+      "real_browser_reopen_blocked_environment": 1,
+      "real_study_front_back_blocked_environment": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage6": "BLOCKED_ENVIRONMENT_ORIGIN_POLICY",
+    "all_import_stage6_proof": "NOT_ACHIEVED",
+    "current_app_version": "v485-R119",
+    "verification_evidence": [
+      "Exact CURRENT v485-R119 runtime archive SHA256 c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f confirmed against GFP PROJECT-STATE and materialized Library bytes.",
+      "Exact Stage5 archive SHA256 86d35355e523cbabe05b1a49cc8ff50b09e1a2edbb2ff8b69d583cee953f8cca confirmed against Content LATEST and current ZIP bytes.",
+      "Exact both archives ZIP CRC PASS; Stage5 full extracted source and v1.1.0 compatibility checker PASS 310 cards (247 verbs, 63 expressions), 1934 combinations, 1240 trilingual examples, 8 usage notes, 312 source observations, 4 intentional translation overlays; Stage5 root 786 hashes PASS.",
+      "Current app native tests: 38 JS module syntax, 3 inline JS, 144 static references (65 files), 18 prevention gates, 13 bounded import controls, 6 shell negative tests, CURRENT runtime identity PASS, total 7 independent test commands returned exit zero.",
+      "Real Chromium attempted at fresh local HTTP 127.0.0.1 port; before load failed net::ERR_BLOCKED_BY_ADMINISTRATOR; synthetic https and file navigations blocked too.",
+      "Browser about:blank indexedDB.open and localStorage failed SecurityError; not valid substitute for real browser origin acceptance.",
+      "Postpackage Stage6 ZIP extraction and re-run exact content preflight PASS; 13/13 SHA256SUMS and CRC PASS.",
+      "Actual IndexedDB commit, process reload, Study DOM, real rich import parity, audio availability and all UI modes remain unverified."
+    ],
+    "stage4": "PASS_USER_SCOPED_AI_COMPOSITE_NO_HUMAN_CERT",
+    "stage5": "PASS_CONTENT_ONLY",
+    "stage7": "NOT_RUN",
+    "full_release_final": false,
+    "ui_changed": false,
+    "original_locked_changed": false,
+    "actual_runtime_import": false,
+    "actual_indexeddb_reload": false,
+    "kit_is_replay_tool_not_test_success": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a1-verben-lexical-repair-v336/STAGE6-V485-R119-REAL-BROWSER-BOUNDARY-2026-10-24.json",
+    "archive_name": "Menschen-A1-Verben-v3.3.6-STAGE6-CURRENT-v485-R119-REAL-BROWSER-ACCEPTANCE-KIT-BLOCKED-ENV.zip",
+    "archive_sha256": "ee3aede8e18efde528daa87e01abd898ebe8f396c061c8a3f61946f1b49772d6",
+    "archive_bytes": 49764321,
+    "archive_members": 14,
+    "archive_checksum_entries": 13,
+    "runtime_input_sha256": "c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f",
+    "stage5_content_input_sha256": "86d35355e523cbabe05b1a49cc8ff50b09e1a2edbb2ff8b69d583cee953f8cca",
+    "artifact_surface": "CURRENT_CONVERSATION_SANDBOX",
+    "library_uploaded": false,
+    "source_mutated": false
+  },
+  "next_action": "Execute the bundled Tests/run_real_browser_acceptance.py on an unrestricted host, using its isolated persistent browser profile; require real import 310 + commitManifest VERIFIED + browser close/open + 310/1934/1240 parity + front/back. Stage7 cannot pass before Stage6; use CURRENT runtime if it advances beyond v485."
+}

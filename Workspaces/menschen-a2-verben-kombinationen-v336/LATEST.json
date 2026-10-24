@@ -27,7 +27,7 @@
   "stage4_global_final": false,
   "stage5": "NOT_RUN",
   "runtime_import": "NOT_AUTHORIZED",
-  "next_action": "R90 exact current WIP (292 cards) and R91/R93/reviewer R95+R96 unchanged. R97 CURRENT v484-R118 full 292-card native parser/projection read-only preflight PASS scoped, but not authorized Stage6: actual browser file:/// and localhost are administrator-blocked; 1575 required independent qualified Stage4 reviews still 0 approved. Need real independent expert review, Stage5 official QA then Stage6 proper browser transactional import + rendering/offline/PWA on exact CURRENT app, and Stage7 one combined final release; never import R90 WIP archive directly as ready dataset.",
+  "next_action": "Current content exact R90 292 cards, CURRENT app exact v484-R118. R98 read-only runs native full tsvRowsToCards/normalizeCard/validateImportedCardV137 successfully on all 292 but discovered generic importer accepts 4 specific content integrity violations; require R90 source-specific bilingual-example and canonical-vNext mirror gates even when generic app validation passes. Reviewer R95+R96 and coordination R93 unchanged. Genuine independent MAIN 0/1423 + SUPPLEMENT 0/152 needed for Stage4, then formal Stage5, actual browser transaction/IndexedDB/offline UI Stage6 and Stage7; do not Import now.",
   "stage4_bounded_r23_scope_reviewed": 8,
   "stage4_bounded_r23_trilingual_inspected": 32,
   "stage4_r23_inherited_projection_schema_repair": "ma2-lu-0055 HISTORICAL_EDITORIAL_FIELD_RENAMED_ONLY",
@@ -1702,5 +1702,70 @@
     "stage6": "NOT_RUN",
     "stage7": "NOT_RUN",
     "import_authorized": false
+  },
+  "latest_r98_full_native_normalizer_preflight": {
+    "milestone": "R98_EXACT_CURRENT_V484_FULL_NATIVE_R90_PARSE_NORMALIZE_VALIDATE_WITH_SOURCE_SPECIFIC_NEGATIVE_CONTRACT",
+    "role": "TECHNICAL_READ_ONLY_CURRENT_RUNTIME_FULL_NATIVE_NORMALIZE_VALIDATE_PREFLIGHT__NOT_STAGE6",
+    "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/STAGE6-PREFLIGHT-R98-FULL-V484-NORMALIZATION-SOURCE-CONTRACT-GUARD-EXPERT-BLOCKED-2026-10-24.json",
+    "archive_filename": "Menschen-A2-Verben-R98-CURRENT-V484-FULL-NORMALIZER-PREFLIGHT-NOT-FINAL.zip",
+    "archive_sha256": "3de55f9f6363b6727f2a9b5145361868d6359a0fa6928921fb4ec96b05bba25f",
+    "archive_bytes": 11298,
+    "archive_members": 5,
+    "library_file_id": "libfile_aff5493574288191b72da79e6277784c",
+    "library_readback": "PASS_SHA256_AND_BYTE_IDENTITY",
+    "executable_test": "qa_full_normalizer.cjs",
+    "executable_test_sha256": "a69a377536b859a9d2516a1f5fe81f478ccca700b2ab30be7a5a58feb90059e9",
+    "report_sha256": "ce9829a8ed12287bcd8f03e982d406f0bfa4098e9808bdad9bb2532d5c9f27fd",
+    "R90_main_archive_sha256": "3a320f39dd49e09fa7313e432edaee34da4c2023e937e23044040b5e0cfd35af",
+    "R90_TSV_sha256": "ca4e6f8a7b9fa7f268c71f13330f987df5a65c67559fcf75c7f90bcdb3345d27",
+    "GFP_current_version": "v484-R118",
+    "GFP_current_zip_sha256": "9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67",
+    "native_dataset_full_parser": {
+      "function": "tsvRowsToCards",
+      "card_count": 292,
+      "schema": "universal-v2",
+      "warnings": 0,
+      "duplicate_semantic_front": 0,
+      "validator_errors": 0
+    },
+    "preservation": {
+      "examples_de": 1168,
+      "translations_fa_en": 2336,
+      "relations_canonical": 1223,
+      "relations_vnext": 1223,
+      "typed_combinations": 1426,
+      "missing_details": 0,
+      "missing_custom_original_keys": 0
+    },
+    "normalizer_metadata": {
+      "examples_role_label_defaults_inserted_on": 292,
+      "canonical_semantic_front_projection_differs_from_raw_on": 228,
+      "source_example_text_changed": 0
+    },
+    "negative_validation": {
+      "cases": 5,
+      "full_generic_importer_rejected": 1,
+      "full_generic_importer_accepted": 4,
+      "source_specific_gate_rejected": 5,
+      "pristine_R90_source_specific_gate": "PASS"
+    },
+    "previous_R97_negative_test_attribution_correction": "R97 auxiliary synthetic gates rejected mutations; R98 demonstrates the generic tsvRowsToCards importer accepts 4 synthetic R90-specific violations, thus do not attribute prior R97 auxiliary rejects to app generic validation",
+    "qualified_reviews_MAIN_approved": 0,
+    "qualified_reviews_SUPPLEMENT_approved": 0,
+    "staging_limitations": [
+      "No browser transaction",
+      "No IndexedDB commit/readback",
+      "No native UI/render/offline acceptance",
+      "GermanContent v312 envelope branch not active for these 292 R90 source cards",
+      "No expert language signoffs"
+    ],
+    "stage4_global_final": false,
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_authorized": false,
+    "learner_content_changed": false,
+    "app_runtime_changed": false,
+    "status": "SCOPED_NATIVE_FULL_NORMALIZE_QA_PASS__SOURCE_SPECIFIC_IMPORT_GAP_GUARDED__STAGE4_STAGE6_BLOCKED"
   }
 }

@@ -1,0 +1,64 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L18+VerbenRepair4/557-identity-573-source-variant-readonly-planner",
+  "milestone": {
+    "name": "All 573 source variants indexed losslessly with 557 stable IDs; 16 collisions preserved with both trilingual variants; exact v485 semantic guard 20-case probe and independent reconstruction",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "B1-L18/Repair4 source-specific card row with exact independent parent-row identity SHA verification",
+    "total_units": 573
+  },
+  "progress": {
+    "reviewed_unique": 573,
+    "unreviewed": 0,
+    "dispositions": {
+      "single_source_variant_preserved_unmodified": 541,
+      "collision_variant_preserved_under_own_source_key": 32
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Exact B1-L18 parent ZIP SHA256 27bb02378c9e67d73bb8553d75879ee46f5a71ae6d0a27b1f0334a928d8e3094, exact Verben Repair4 SHA256 9a1eac4cecca59e2c666b9916afc5cf639cd8b14a4742cb56a8f57bb8551131e and exact v485-R119 runtime SHA256 c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f confirmed with CRC.",
+      "557 unique stable IDs = 541 single-source IDs + 16 two-source IDs, 573 source-specific variants overall; 16 x 2 x 4 = 128 exact DE/FA/EN example records embedded only for colliding IDs.",
+      "Independent source verifier recomputed 573 source row SHA256 and all 2292 original example-object digests, with exact separate FA/EN translations and no source mutation.",
+      "Exact current GFP_TEST_API sameCardSemanticIdentityV191 comparator and TSV parser used in an isolated Chromium page: eight of eight collision direction/mode attempts blocked before import, twelve same/empty controls allowed for preflight. No actual data imports, SRS writes, or browser durable test.",
+      "Five deliberate corruptions of provenance catalog rejected by independent verifier (row sha, back text, duplicate ID, missing second variant, FA/EN example tamper); four basic builder negative controls rejected.",
+      "Deterministic lightweight portable 112,287-byte ZIP, SHA256 e5b0ca3d32e7e73d01cd23997c888b0ae6ea62d9edb024ca586072f61993baaa; eight ZIP members and seven manifest entries validated CRC/size/digest. Library readback byte exact.",
+      "Original B1-L18 LOCKED and global B1-L20 LATEST never edited. Runtime code/UI, user SRS, and original source RAR never changed."
+    ],
+    "bounded_registry_and_guard_validation": "PASS_SCOPED",
+    "qualified_730_language_stage4": "NOT_PASSED",
+    "native_stage5": "NOT_PROMOTED",
+    "current_v485_real_origin_stage6": "BLOCKED",
+    "stage7_final": "NOT_FINAL",
+    "app_modified": false,
+    "source_modified": false,
+    "user_SRS_modified": false
+  },
+  "artifact": {
+    "filename": "B1-L18-REPAIR4-557-ID-SOURCE-VARIANTS-AND-V485-GUARD-NONFINAL.zip",
+    "sha256": "e5b0ca3d32e7e73d01cd23997c888b0ae6ea62d9edb024ca586072f61993baaa",
+    "size_bytes": 112287,
+    "zip_members": 8,
+    "library_file_id": "file_00000000ae7881f49add5c648721d6bb",
+    "library_stable_id": "libfile_d992b0aac6b0819182a6dc135e498f2b",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L18-REPAIR4-557-ID-SOURCE-VARIANTS-AND-V485-GUARD-NONFINAL.zip",
+    "roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "architecture_boundary": {
+    "decision_required_before_app_code": "Approve how one stable card ID can retain multiple source variants without pretending semantic identity is equal. No automatic merge of 16 IDs, new SRS IDs, deletion of reviews, or user-visible UI changes.",
+    "input_memberships": "Two independent source variants per shared ID, original front/back/examples preserved (128 exact colliding trilingual examples)",
+    "runtime_guard_status": "PURE_TEST_ONLY__NOT_DEPLOYED"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "parent_locked_checkpoint_blob_observed": "b11170835ce6161c523bd2a1e7aab51f9435e27a",
+    "global_latest_blob_observed": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "global_latest_untouched": true,
+    "resume_pointer": "Download exact 112287-byte Library ZIP SHA256 e5b0ca3d32e7e73d01cd23997c888b0ae6ea62d9edb024ca586072f61993baaa and the three SHA-pinned parent artifacts. Catalog preserves all 557 IDs/573 variants with 16×2 source records and 128 full colliding examples; 20 guard cases PASS; no actual runtime change. Future: obtain architecture/source-semantic choice for non-destructive one-ID multi-source variant projection, implement guarded durable transaction and rollback on then CURRENT runtime, complete independent 730-language Stage4, native Stage5 and Stage6, Stage7 separately. Do not touch LOCKED L18, user SRS or B1-L20 LATEST."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "date": "2026-10-24",
+  "milestone": {
+    "name": "R104_FULL_1575_REVIEW_ITEMS_TWO_AUTHORITY_R90_PLUS_NONACTIVE_R100_PREPROMOTION_GATE",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Independent qualified DE/FA/EN editorial review still MAIN 0/1423 and SUPPLEMENT 0/152. Exact prior R92 validator is pinned to candidate extracted from immutable R90 ZIP; it cannot be made to accept R100 by naïve hash substitution. Future complete source- and reviewer-bound rebase and ändern source adjudication are required. Original R100 content remains NOT ACTIVE; Stage4 final, Stage5/6/7 and import unauthorized."
+  },
+  "scope": {
+    "unit": "review_item_source_and_preview_identity_rechecked_technical_only",
+    "total_units": 1575
+  },
+  "progress": {
+    "reviewed_unique": 1575,
+    "unreviewed": 0,
+    "dispositions": {
+      "MAIN_EXAMPLE_IDENTITY_AND_DE_FA_EN_PRESERVED": 1168,
+      "MAIN_CANONICAL_SYNONYM_TERM_AND_SOURCE_PRESERVED": 243,
+      "MAIN_DISPLAY_SYNONYM_SUPPLEMENT_PRESERVED": 12,
+      "SUPPLEMENT_TYPED_REKTION_LINK_PRESERVED": 14,
+      "SUPPLEMENT_DISPLAY_ONLY_WORTFAMILIE_PRESERVED": 138
+    },
+    "changed_active_cards": 0,
+    "reconstructed_preview_changed_cards": 2,
+    "preview_labels_changed": 4,
+    "qualified_human_signoffs": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "technical_scope": "PASS_ALL_1575_R90_VS_R100_PREVIEW",
+    "negative_tests": "12/12_REJECTED_AS_EXPECTED",
+    "stage4_global": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_authorized": false,
+    "verification_evidence": [
+      "Exact SHA/CRC checked all six R90/R91/R95/R96/R100/R103 parent ZIPs and replayed byte-identical R100 TSV SHA256 249a8904d925b64fdf6c7e25dc47015e72b852ca16174860b4c36b42b2e6ccf8; exact R90 parent preserved.",
+      "Rechecked 1168 original German examples against exact Persian and English translations; 243 synonym typed relation terms, 12 display synonym supplements, 14 R90 Rektion relation IDs and 138 display-only Wortfamilie texts preserve identities/source.",
+      "Detected and correctly parsed 10 historic dictionary SYNONYM records encoded with value.text object rather than a plain string; no unsupported source rewrite.",
+      "Only two candidate rows ma2-lu-0005 and ma2-lu-0011 differ, solely custom_fields and details; four internal-ID display strings corrected to original target lexemes übergeben and verkaufen. All canonical relations, original source refs and 1426 combinations unchanged.",
+      "12/12 adversarial negative controls correctly rejected: one-byte tamper of each of six ancestors, mismatching German example, forged screenshot locator, altered candidate, incomplete candidate, rewritten synonym term and forged reviewer APPROVED status.",
+      "Found 11 downstream R95 portal members containing original candidate SHA; historic R92 dual intake expects R90 ZIP inner TSV identity, so substitution-only rebase is prohibited.",
+      "Archive deterministic CRC/6 members SHA256-manifest PASS; uploaded to Library and raw readback verified 11495 identical bytes with SHA256 95e56b0af3df647c08a68b8a3043a325faed93bbeadc3a90de7500b86cdad707.",
+      "Original 11 screenshots, historical LOCKED, R90 content and R95+R96 portal were not changed; no review decisions, runtime/UI changes or release acceptance fabricated."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> active_working_authority=R90; latest_r104_two_authority_gate=non-active technical milestone",
+    "artifact": {
+      "name": "Menschen-A2-Verben-R104-TWO-AUTHORITY-1575-REVIEW-GATE-NOT-FINAL.zip",
+      "sha256": "95e56b0af3df647c08a68b8a3043a325faed93bbeadc3a90de7500b86cdad707",
+      "size_bytes": 11495,
+      "library_file_id": "libfile_af93b01c1eac81919a9d5a96cadf94c7",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R104-TWO-AUTHORITY-1575-REVIEW-GATE-NOT-FINAL.zip",
+      "readback": "EXACT_SHA256_AND_BYTE_IDENTICAL"
+    },
+    "active_R90_sha256": "3a320f39dd49e09fa7313e432edaee34da4c2023e937e23044040b5e0cfd35af",
+    "preview_R100_tsv_sha256": "249a8904d925b64fdf6c7e25dc47015e72b852ca16174860b4c36b42b2e6ccf8",
+    "R100_promoted": false
+  },
+  "next_action": "Obtain genuine independent qualified decisions on MAIN 1423 and SUPPLEMENT 152 and adjudicate ändern original 'in' vs curated 'auf' using exact source evidence. Then create explicitly versioned atomic reviewer portal/intake/authority successor with dual historical and new content pins; validate full authentic decisions, official Stage4, clean Stage5, CURRENT v484+ Stage6/7 before any import/release."
+}

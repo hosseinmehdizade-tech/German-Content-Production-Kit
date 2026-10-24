@@ -1,0 +1,75 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "milestone": {
+    "name": "STAGE7_ONE_ORGANIZED_APP_CONTENT_SOURCE_TESTS_REPORTS_LAUNCHER_HANDOFF",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Single ZIP packaging and all post-extraction integrity checks PASS, but Stage6 actual browser UI import, verified IndexedDB commit and restart are still not demonstrated because the managed Chromium blocks localhost origin. Stage7 release readiness is HOLD; never claim final/verified."
+  },
+  "scope": {
+    "unit": "stage7_release_integrity_gate",
+    "total_units": 9
+  },
+  "progress": {
+    "reviewed_unique": 9,
+    "unreviewed": 0,
+    "dispositions": {
+      "one_organized_zip_app_content_source_tests_docs_tools_launcher_pass": 1,
+      "exact_app_sha_runtime_preserved_pass": 1,
+      "stage5_source_content_preserved_pass": 1,
+      "postpackage_sha_and_crc_pass": 1,
+      "content_310_1934_1240_8_pass": 1,
+      "original_launcher_ui_unchanged_pass": 1,
+      "post_extract_test_runner_syntax_pass": 1,
+      "real_idb_commit_reopen_blocked": 1,
+      "real_study_front_back_blocked": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage7_physical_handoff": "PASS_1013_FILES_1012_HASHES",
+    "stage7_release": "HOLD_NOT_FINAL",
+    "app_runtime": "v485-R119",
+    "stage4": "PASS_SCOPED_AI_REVIEW",
+    "stage5": "PASS_COMPLETE_CONTENT",
+    "stage6": "BLOCKED_REAL_ORIGIN_INDEXEDDB",
+    "verification_evidence": [
+      "Combined ZIP 49,889,163 bytes with SHA256 f27d117a732a5bfa2fa1640be220bb575d0b1b5179bf2a210175038bb3f9d322, CRC and 1012/1012 internal SHA PASS after fresh extraction.",
+      "Independent 201/201 application file bytes and 787/787 Stage5 content file bytes equal the exact official input ZIP members.",
+      "Application index and service-worker exact hashes match v485-R119 current authority; no user-visible UI edits.",
+      "Current content verifies 310 distinct cards, 1934 combinations, 1240 trilingual examples, 8 register notes and 310 TSV rows.",
+      "App Windows fixed-origin launcher, source, tests, docs, tools and Stage4/5/6 receipts packaged in one integrated ZIP.",
+      "Prior Stage6 synthetic browser VM 19/19 PASS and manifest guard 11/11 PASS but NOT actual IndexedDB proof.",
+      "Real-origin app import, VERIFIED commitManifest, new browser process reopening and real Study front/back unavailable due to administrative browser policy.",
+      "User audio archive is not bundled because source-to-card audio mapping and playback fidelity were not verified."
+    ],
+    "runtime_source_preservation": {
+      "expected": 201,
+      "equal": 201
+    },
+    "stage5_content_preservation": {
+      "expected": 787,
+      "equal": 787
+    },
+    "audio_media_bundled": false,
+    "original_locked_mutated": false,
+    "visible_ui_change": false,
+    "final": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a1-verben-lexical-repair-v336/STAGE7-SINGLE-ZIP-RELEASE-CANDIDATE-GATE-2026-10-24.json",
+    "artifact_filename": "German-Flashcards-Pro-v485-R119-Menschen-A1-Verben-STAGE7-ONE-ZIP-RELEASE-CANDIDATE-NOT-FINAL.zip",
+    "artifact_sha256": "f27d117a732a5bfa2fa1640be220bb575d0b1b5179bf2a210175038bb3f9d322",
+    "artifact_bytes": 49889163,
+    "artifact_members": 1013,
+    "checksum_members": 1012,
+    "artifact_surface": "CURRENT_CONVERSATION_SANDBOX",
+    "app_zip_sha256": "c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f",
+    "stage5_zip_sha256": "86d35355e523cbabe05b1a49cc8ff50b09e1a2edbb2ff8b69d583cee953f8cca",
+    "library_uploaded": false,
+    "source_mutated": false
+  },
+  "next_action": "Run actual Stage6 exact-current Import 310 and IndexedDB VERIFIED manifest plus Chromium process reopen and study display on unrestricted origin. Re-evaluate currentness and all Stage7 release criteria before any FINAL."
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/A1-HF2-29-upstream-validator-PR23",
+  "milestone": {
+    "name": "FULL_51_A1_HF2_REVIEW_TO_UPSTREAM_VALIDATOR_DRAFT_PR23_AND_FOUR_CASE_SOURCE_DOSSIER",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Draft PR23 is unmerged; official validator 1.1.0 unchanged (54 diagnostics on unmodified course). 18 unapproved A1 source display overlays and 4 source/sense decisions still require independent A1 owner and DE/FA qualified Stage4. v485 real-origin Stage6 and PR9 unmerged."
+  },
+  "scope": {
+    "unit": "HF2-affected A1-owned inherited card identity",
+    "total_units": 51,
+    "course_parent_zip_sha256": "60339bd3476c9d670b951d9ff038eb38157651ec6fa3688e33f4035e925b5244",
+    "reviewed_course_rows": 1918
+  },
+  "progress": {
+    "reviewed_unique": 51,
+    "unreviewed": 0,
+    "dispositions": {
+      "FORMAT_COMPATIBILITY_AWAITING_PR23_APPROVAL": 29,
+      "A1_OWNER_DISPLAY_CANDIDATE_NOT_APPLIED": 18,
+      "QUALIFIED_SOURCE_SEMANTIC_HOLD": 4
+    },
+    "official_original_HF2_errors": 54,
+    "patched_equivalent_HF2_errors": 25,
+    "affected_ids_after_candidate": 22,
+    "protected_A1_cards": 140,
+    "protected_A2_native": 1778,
+    "membership_occurrences": 1974
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Git draft PR23 on a separate branch changes exactly 2 files: original HF2 official verifier and a 10-case synthetic unittest. Main official validator blob ea67592b68d245ed3069bcd84ac08fc375423e66 remains unchanged.",
+      "Local functionally equivalent patched HF2 validator run on full immutable 1918 TSV: 54->25 diagnostics; precisely 29 known A1 legacy noun formatting cases normalized, zero new A2-native errors.",
+      "174/174 real-card adversarial field-conflict attempts rejected; 64/64 synthetic guard assertions and 10/10 local synthetic unittests using patched equivalent implementation PASS. No Git CI nor exact Git-branch Python execution claimed.",
+      "All 140 inherited A1 original records and course 1918 TSV SHA256 8afe4d37f1466736bef4b81e89eef2f0faf407a878da86607331daf4481df522 unchanged.",
+      "Four specific A1-owned semantic/source holds documented: Gemüse (dictionary plural by types vs generic source), Weizenmehl (Mehle cannot be reassigned to Weizenmehle), die See (source Seen vs Duden sea sense without plural), erleben (details 3sg forms exist but canonical A1 proxy empty).",
+      "Independent qualified DE/FA Stage4, original A1 parent Stage4, official Stage5 and exact CURRENT v485 browser/IDB Stage6 remain unrun. Git PR9 Typing still draft/unmerged.",
+      "No locked lesson ZIP, app UI, user SRS, A1 parent canonical, A2 v016 or 1918 candidate mutated."
+    ],
+    "independent_qualified_stage4": "PENDING",
+    "A1_owner_approval": "PENDING",
+    "official_stage5": "NOT_RUN",
+    "exact_current_stage6": "NOT_RUN",
+    "import_ready": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "source_audit_local_only": true,
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/COURSE-A1-HF2-29-VALIDATOR-PR23-FOUR-SOURCE-DECISIONS-2026-10-24.json"
+  },
+  "change": {
+    "github_pr23": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/23",
+    "state": "DRAFT_OPEN_UNMERGED",
+    "code_files": [
+      "Verification/validate_learner_visible_lexical_front_v1_1_0.py",
+      "Verification/test_hf2_legacy_complete_noun_front.py"
+    ],
+    "official_main_validator_unchanged": true,
+    "local_source_dossier": "HF2-A1-FOUR-SOURCE-CONFLICTS-REVIEW-2026-10-24.json",
+    "local_source_dossier_sha256": "1f84e661bc8290b46d7be5712cd8b59f4f496ea57d392fbc8ac22c677a03081a"
+  },
+  "case_decisions": [
+    {
+      "id": "ma1m-lu-0779",
+      "source_visible_form": "das Gemüse",
+      "back_fa": "سبزیجات",
+      "external": "https://www.duden.de/rechtschreibung/Gemuese",
+      "stage4": "HOLD_SENSE_PLURAL"
+    },
+    {
+      "id": "ma1m-lu-0789",
+      "source_visible_form": "das Mehl, Mehle / Weizenmehl",
+      "back_fa": "آرد گندم",
+      "external": "https://www.duden.de/rechtschreibung/Weizenmehl",
+      "stage4": "HOLD_NO_WEIZENMEHLE_INFERENCE"
+    },
+    {
+      "id": "ma1m-lu-1628",
+      "source_visible_form": "das Meer, Meere / die See, Seen",
+      "back_fa": "دریا؛ آب‌های آزاد",
+      "external": "https://www.duden.de/rechtschreibung/See_Meer",
+      "stage4": "HOLD_DIFFERENTIATE_SEA_SENSE"
+    },
+    {
+      "id": "ma1m-lu-2937",
+      "source_visible_form": null,
+      "back_fa": "تجربه کردن؛ از سر گذراندن",
+      "external": "https://www.duden.de/rechtschreibung/erleben",
+      "stage4": "HOLD_A1_OWNER_CANONICAL_REPAIR_FROM_EXISTING_DETAILS"
+    }
+  ],
+  "boundaries": {
+    "working_authority": "v016",
+    "CURRENT_runtime": "v485-R119",
+    "Typing_PR9": "OPEN_DRAFT_UNMERGED",
+    "A1_140_unchanged": true,
+    "A2_1778_unchanged": true,
+    "SRS_unchanged": true,
+    "import_ready": false
+  },
+  "next_action": "Run exact PR23 code/tests against 1918 and other workstreams under review, merge only after approved; qualified DE/FA/A1 source-owner Stage4 on 18 candidates and four holds; then Stage5 and v485 protected real-origin Stage6. No import."
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/hf2-exact-1778-v016",
+  "milestone": {
+    "name": "HF2_EXACT_VALIDATOR_ALL_1778_CARDS_V2_DIAGNOSTIC",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "570 HF2 preflight errors on 559 distinct cards; independent qualified Stage4 review and original/current browser/IndexedDB Stage6 incomplete; PR9 unmerged."
+  },
+  "scope": {
+    "unit": "native_A2_card",
+    "total_units": 1778,
+    "parent_v016_sha256": "9cf0372f7f8bcfdac4e42a6eda1220a81b6f8ac755b2af8695c76235e30855ac"
+  },
+  "progress": {
+    "reviewed_unique": 1778,
+    "unreviewed": 0,
+    "dispositions": {
+      "HF2_PREFLIGHT_CLEAR": 1219,
+      "HF2_PREFLIGHT_HAS_ERRORS": 559
+    },
+    "baseline_573_errors": 573,
+    "previous_preview_580_errors": 580,
+    "v2_errors": 570,
+    "v2_new_errors": 0,
+    "v2_original_errors_removed": 3
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Exact official HF2 Git validator blob SHA ea67592b68d245ed3069bcd84ac08fc375423e66",
+      "573/580/570 error comparisons on all 1778 cards",
+      "10 changed rows; 1768 other rows byte-identical",
+      "11-card exact v484 typing source-mode regression 33/33 modes PASS",
+      "Exact source hash-protected replay byte-identical",
+      "Negative tamper attempts 4/4 rejected before output",
+      "Library report, 10-row patch, replay, QA verified by exact byte readback"
+    ],
+    "qualified_stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "import_ready": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_4_OF_4_EXACT_BYTE_READBACK",
+    "resume_pointer": "/German-Content-Production-Kit/Checkpoints/A2-v016-HF2-V2-FULL-1778-ERROR-INVENTORY-AND-QA.json"
+  },
+  "artifact": {
+    "diagnostic_sha256": "48a1182e5e89a885b49242b2b7c8a66de7bd4cc0fd9f88f8770057c700b9bae9",
+    "diagnostic_file_id": "file_000000003c8481f4b34bf106724a15e2",
+    "patch_sha256": "da05f6e43ef916f103c3125a0307f86ac630ad8fb6acbac4ae1802e91303a221",
+    "patch_file_id": "file_00000000ba5c81f4a4e7d33cc6174f0c",
+    "replay_file_id": "file_00000000baf081f4881ea8a1f53de87f",
+    "negative_QA_file_id": "file_000000002fac81f49633a5ae16571f29"
+  },
+  "boundaries": {
+    "current_v016_unchanged": true,
+    "LOCKED_unchanged": true,
+    "original_source_unchanged": true,
+    "SRS_7_sensitive_unchanged": true,
+    "runtime_v484_unchanged": true,
+    "PR9_still_draft": true
+  },
+  "next_action": "Independently adjudicate 559 HF2 failing cards/570 diagnostics against source and morphology; qualified Stage4 then Stage5 projected validator and CURRENT real-origin Stage6. Do not import v2 patch yet."
+}

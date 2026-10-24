@@ -1,0 +1,53 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "aber-hallo-listen-tabellen",
+  "milestone": {
+    "name": "Exact FIX3 content and existing 310-card library nonmutating merge/verified import preview acceptance",
+    "level": "substep",
+    "state": "IN_PROGRESS"
+  },
+  "scope": {
+    "unit": "unique_lexical_card_in_combined_mixed_library_model",
+    "total_units": 1097
+  },
+  "progress": {
+    "reviewed_unique": 1097,
+    "unreviewed": 0,
+    "dispositions": {
+      "existing_310_source_cards_preserved": 310,
+      "current_fix3_787_source_cards_preserved": 787
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "CURRENT app v484-R118 candidate SHA256 9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67, exact FIX3 content ZIP SHA256 131e59b59fc9dc92da4898d9e40ee0f36805a59cd64466c2ea3c8100acebc14d",
+      "Extracted real FIX3 787-row 23-column TSV and v484 bundled existing Menschen A1 310-row TSV; no duplicate ID within source and zero overlapping IDs between two sets",
+      "In Chromium flattened actual v484 app runtime on about:blank, native GFP_TEST_API.parseTsvText parsed both files and native runtime simulateReplace projected 1097 unique in-memory cards with preserved key fields, no page errors",
+      "Native handleContentSelectionV352ForTest preview on already seeded 1097 in-memory collection showed 787 ready and VERIFIED SHA-256 with exact byte-preserved BOM and unchanged BUILD-METADATA.json",
+      "Deliberately append a single newline to same TSV, reuse original BUILD-METADATA.json: native app rejects SHA mismatch; preexisting 1097 in-memory cards unchanged",
+      "Reselect intact current TSV+sidecar: native preview re-verifies SHA-256, 1097 in-memory count unchanged",
+      "15 of 15 scoped positive and negative checks PASS; 3148 complete German/Persian/English example triplets counted",
+      "No IndexedDB commit or restart is claimed; native Chromium managed admin policy continues to block canonical localhost origin. No qualified Stage4 external reviewer signoff.",
+      "Report Library upload and materialize exact 2301 bytes SHA256 90c93879db06eb81580fb32640892fa52e93fce392dc5cf278b8bfd384b42047 byte-for-byte readback PASS"
+    ],
+    "all_current_lexical_content_preserved": true,
+    "real_origin_indexeddb": "BLOCKED_ADMIN_POLICY",
+    "qualified_stage4": "NOT_SIGNED",
+    "final_release": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "parent_latest_sha": "cd7a8f47a2634eac70fbd4a31bd9919a5e5d1a09",
+    "report_library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-FIX3-v484-787-plus-310-Native-Merge-QA-2026-10-24.json",
+    "report_library_file_id": "libfile_89494610fe148191b436b37364cb0434",
+    "report_library_backing_file_id": "file_0000000081d08243a792f37f68bb3834",
+    "report_sha256": "90c93879db06eb81580fb32640892fa52e93fce392dc5cf278b8bfd384b42047",
+    "report_bytes": 2301,
+    "original_zip_sha256": "131e59b59fc9dc92da4898d9e40ee0f36805a59cd64466c2ea3c8100acebc14d",
+    "source_canonical_sha256": "899f76fe932ea2ba225de8e998dadfa0aa358bdd56d1944fc40e1fad1badc4de",
+    "source_import_tsv_sha256": "c3eda4d1fdecab6e5810fa0fcdcfd3608596e3d044b7cda0e24626faa6f13f97",
+    "content_mutations": 0,
+    "resume_pointer": "Continue from unchanged FIX3 complete eight-folder working zip sha256 131e59b59fc9dc92da4898d9e40ee0f36805a59cd64466c2ea3c8100acebc14d. MIXED current 787 + existing 310 native parser/preview, SHA sidecar tamper rejection, and in-memory model parity 15/15 PASS. Real 127.0.0.1:8765 durable IndexedDB import/restart is blocked in managed environment; qualified independent Stage4 human linguistic signatures outstanding. Do not claim official Stage6 or FINAL."
+  }
+}

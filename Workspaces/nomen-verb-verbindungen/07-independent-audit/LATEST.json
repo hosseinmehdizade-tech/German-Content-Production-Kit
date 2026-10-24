@@ -513,7 +513,7 @@
   "b13_projection_single_mirror_probe_2026_10_24": {
     "status": "B13_11_ROWS_35_EDITS_VALIDATED__124_SINGLE_MIRROR_ROLLBACK_TESTS_NO_HISTORICAL_SHA_MATCH",
     "source": "Workspaces/nomen-verb-verbindungen/08-lean-working/STAGE4-B13-124-SINGLE-MIRROR-ALTERNATES-FORENSIC-2026-10-24.json",
-    "source_git_blob_sha": "8462e9c115a39abcb80b917547b09010abf9e36c",
+    "source_git_blob_sha": "24732afdc76de2a7a47e7b0ca278ca7efd204fb4",
     "previous_exact_B12_sha256": "fca8ec11ea2ab7db184a4a0c4c4826168fca797e66f31fc460d90b188561e5d8",
     "expected_B13_sha256": "91b8fc55cf3ec2c5884a0ab2e7092e17305c7fa2fe9120dcc5c8c3e09e53dbe1",
     "replayed_B13_sha256": "690ba40744a3ab7ebf6a087289b17d9906350637b00debd09588241541c972f2",
@@ -531,6 +531,15 @@
     "active_working_modified": false,
     "original_66_qualified_holds": 66,
     "stage4_complete": false,
-    "next": "Recover authentic B13 row-level TSV snapshot or source generator including historical metadata. Do not invent/rebaseline active TSV or treat variants as proof of exact parent. Maintain separate source/canonical/TSV and qualified-signoff gates."
+    "next": "Recover authentic B13 row-level TSV snapshot or source generator including historical metadata. Do not invent/rebaseline active TSV or treat variants as proof of exact parent. Maintain separate source/canonical/TSV and qualified-signoff gates.",
+    "semantic_guard": {
+      "history_not_learner_authority": true,
+      "historical_off_target_example_card_ids": [
+        "dah-nvv-exp-01263",
+        "dah-nvv-exp-01283"
+      ],
+      "active_canonical_untouched": true,
+      "note": "B13 rows 01263 and 01283 had phrases semantically inconsistent with their target expression. Do not reintroduce older B13 intermediate texts."
+    }
   }
 }

@@ -1,0 +1,89 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "date": "2026-10-24",
+  "milestone": {
+    "name": "R94_REVIEWER_IDENTITY_BINDING_AND_SHARED_BROWSER_DRAFT_ISOLATION_SECURITY_REPAIR",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "No real independent qualified review results have been received: MAIN 0/1423 and SUPPLEMENT 0/152. R94 fixes demonstrated review attribution vulnerability but cannot independently authenticate expert identity/credentials, validate linguistic correctness, unlock Stage4, or approve Import. Actual file:// offline launch remains environment-blocked and unverified."
+  },
+  "scope": {
+    "unit": "R90_R91_fingerprint_bound_review_object_rendered_under_reviewer_identity_lock",
+    "total_units": 1575
+  },
+  "progress": {
+    "reviewed_unique": 1575,
+    "unreviewed": 0,
+    "dispositions": {
+      "MAIN_ITEMS_UI_BEHAVIOR_TESTED_NOT_HUMAN_APPROVED": 1423,
+      "SUPPLEMENT_ITEMS_UI_BEHAVIOR_TESTED_NOT_HUMAN_APPROVED": 152
+    },
+    "external_qualified_decisions": {
+      "main": {
+        "total": 1423,
+        "approved": 0,
+        "remaining": 1423
+      },
+      "supplement": {
+        "total": 152,
+        "approved": 0,
+        "remaining": 152
+      }
+    },
+    "actual_card_content_changes": 0,
+    "original_R90_lexical_graph_changes": 0,
+    "real_reviewer_submissions_received": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "technical_scope": "PASS_SECURITY_REGRESSION_R94_REVIEWER_ATTRIBUTION_REPAIR",
+    "official_stage4": "BLOCKED",
+    "official_stage5": "NOT_RUN",
+    "official_stage6": "NOT_RUN",
+    "official_stage7": "NOT_RUN",
+    "import_authorized": false,
+    "real_offline_file_url_e2e": "UNVERIFIED_ADMINISTRATOR_BLOCK",
+    "verification_evidence": [
+      "Both mandatory repository bootstraps/PROJECT-STATE and active Content Production Kit policy suite/current START-PROMPT/README reviewed; exact live R90/R91/R92/R93 authority hashes verified against Git currentness and local working sources.",
+      "Reproduced real R92 attribution bug in Chromium: Reviewer A saves a HOLD for a MAIN item, UI reviewer metadata changed to Reviewer B, original R92 exports the A decision with reviewer.full_name='Reviewer B' and native schema accepts it. This is a real integrity issue, not a hypothetical vulnerability.",
+      "R94 modified only review UI HTML/JS and its documentation/tests; the existing source review index, reviewer core, source-bound data, 1423-item MAIN queue, 152-item SUPPLEMENT queue, native intake validators, R90 content and R91/R93 authorities are original byte-for-byte pinned. No Flashcards app UI modified.",
+      "R94 requires full reviewer metadata, independence attestation and acknowledgement of source limitations before first Save; in-memory identity locks after first decision. Attempts to switch reviewer via UI change or DOM manipulation revert/block output; separate browser page starts with zero decisions and blank identity.",
+      "Disabled R92 implicit browser shared localStorage auto-save/auto-restore. Recovery exclusively via explicit recoverable draft import, validated item fingerprints/authority, with reviewer identity re-locked. Existing old R92 cache is not loaded or deleted by R94; users warned in docs. Warn on page unload while decisions or unsaved changes exist.",
+      "23/23 genuine Chromium injected-DOM reviewer-session and R90/R91 native-format validator integration checks PASS using synthetic-only decision fixtures. Tested identity gate, blocked reviewer substitution, fresh-tab isolation, explicit draft import and tampered draft denial.",
+      "10/10 full Chromium R94 reviewer native JSON export to UNMODIFIED R93 coordinator checks PASS: synthetic Reviewer A HOLD and synthetic Reviewer B REJECT for same item remain individually attributable, overlap/conflict recognized, and no expert approval or name leakage appears in R93 report.",
+      "11/11 pre-existing original R92 dual-gate structural/adversarial tests PASS using R94 unchanged native data/formats; 9/9 R94 archive origin/fingerprint/resealed-manifest falsification negative tests PASS. Combined 53/53 scoped tests PASS; no genuine expert decisions in test inputs or deliverable.",
+      "R94 ZIP deterministic across two independent builds, 473282 bytes, SHA256 a279fd6fecdbf71298b5088019eeca33018585792e6cf63747c99a8e4394e9a8, 24 members, 23 manifest-sha-pinned payloads, zip CRC PASS, 0 original copyrighted screenshots. Fresh extraction independently ran 23 Chromium, 10 browser-to-R93, 11 dual-gate and 9 tamper tests again.",
+      "Library upload exact binary rematerialized with 473282 bytes and identical SHA256; byte-for-byte comparison PASS. Reviewer credential external validation and direct file:// offline E2E remain UNVERIFIED; Stage4 original 1575 itemwise real qualified decisions remain absent."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> latest_r94_private_reviewer_session; R90 one content authority, R91 supplemental queue, immutable R92 older portal retained for exact R93 validation, R93 coordinator unchanged, R94 replaces reviewer-facing portal workflow",
+    "primary_R90_zip_sha256": "3a320f39dd49e09fa7313e432edaee34da4c2023e937e23044040b5e0cfd35af",
+    "primary_R90_TSV_sha256": "ca4e6f8a7b9fa7f268c71f13330f987df5a65c67559fcf75c7f90bcdb3345d27",
+    "supplemental_R91_zip_sha256": "e2023f79fe16d1687b86cf1e0d880f733ca01be81f0dc37a6975093a01f72974",
+    "historical_R92_portal_sha256": "685e354e0732ad4e5bc17a2eddf69ae368ddac350c345fb0e5e9a6a851cf81f3",
+    "coordinator_R93_zip_sha256": "71ac22c383aa72db28bce820846a89c53419cf679c746c927b6b256d55afca30",
+    "R94_archive_filename": "Menschen-A2-Verben-R94-PRIVATE-REVIEW-PORTAL-NOT-FINAL.zip",
+    "R94_archive_sha256": "a279fd6fecdbf71298b5088019eeca33018585792e6cf63747c99a8e4394e9a8",
+    "R94_archive_bytes": 473282,
+    "R94_archive_members": 24,
+    "R94_manifest_payloads": 23,
+    "R94_library_file_id": "libfile_fa6a87438c0881919ed0a49ea008587d",
+    "R94_library_file_ref": "file_00000000fd6c81f4b6576356a52acb8b",
+    "R94_library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R94-PRIVATE-REVIEW-PORTAL-NOT-FINAL.zip",
+    "R94_library_readback": "PASS_SHA256_BYTE_IDENTICAL",
+    "R94_entrypoint": "REVIEW-PORTAL-R94.html",
+    "prior_LATEST_blob_sha": "a0869f09661eb54cef8849ae6f10591db95c4567",
+    "independent_qualified_main_approvals": 0,
+    "independent_qualified_supplement_approvals": 0,
+    "app_runtime_modified": false,
+    "original_course_source_modified": false,
+    "original_lexical_content_modified": false,
+    "native_main_supplement_schemas_modified": false,
+    "browser_file_navigation": "UNVERIFIED_ADMINISTRATOR_BLOCK",
+    "current_gfp_runtime_context": "v484-R118_NOT_INTEGRATION_TESTED"
+  },
+  "next_action": "Use the exact R94 reviewer portal (replaces unsafe R92 UI) for each private reviewer session; export drafts explicitly, do NOT auto-restore old R92 shared cache. The R93 coordinator still pins unmodified R92 archive for its validators and consumes R94's unchanged native MAIN and SUPPLEMENT submissions. Collect real independent qualified item decisions and independently verify credentials. Stage4 remains BLOCKED (MAIN 0/1423 + SUPPLEMENT 0/152); Stage5, CURRENT v484-R118 Stage6 and Stage7 NOT RUN; no import authorization."
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "nvv-v484-exact-native-tstsv-import-regression@1.0.0",
+  "date": "2026-10-24",
+  "branch": "nvv-production",
+  "status": "PROVISIONAL_TSV_FULL_NATIVE_NORMALIZATION_PASS__V484_FAILOPEN_JSON_RUNTIME_DEFECT_CONFIRMED__PATCH_CANDIDATE_SCOPED_PASS_NOT_APPLIED",
+  "source_authority": {
+    "runtime": "v484-R118",
+    "exact_runtime_zip_sha256": "9db0abbb076091e836c4df3457eab92c89bdb96c73bcf1df0826a648c1862e67",
+    "runtime_library_id": "libfile_a719928d965c8191a3288a8ab5de9f4e",
+    "current_canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "current_expected_tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
+    "provisional_tsv_sha256": "150a9a10be10ccfa0f6f78c8dcd50a8c0a63c9cdfed46776eadbe705def2eb0c",
+    "current_git_blob": "648a4f00ed75d6819a371a3f270d21d1c6c2275c"
+  },
+  "native_normalization": {
+    "entrypoint": "tsvRowsToCards(parseTsv(text),context)",
+    "source_declarations_extracted": 134,
+    "real_runtime_functions_extracted": 89,
+    "source_limited_stubs": [
+      "CARDS=[]",
+      "RAW_CARDS=[]",
+      "CARD_BY_ID=Map()"
+    ],
+    "cards": 2492,
+    "schema": "universal-v2",
+    "types": {
+      "de-vocabulary": 2492
+    },
+    "warnings": 0,
+    "duplicate_fronts": 0,
+    "trilingual_triplets": 9968,
+    "fa_en_translations": 19936,
+    "front_exact": 2492,
+    "back_exact": 2492,
+    "ids_exact": 2492,
+    "source_order_exact": 2492,
+    "canonical_examples_exact": 2492,
+    "example_translation_mirror_triplets": 9968,
+    "canonical_target_deep_copy_exact": 2482,
+    "remaining_10_differences_only": "provenance.noun_header contains two spaces in original, one after sanitizeTsvCell; no learner-text drift; original bytes remain intact"
+  },
+  "native_failopen_bug": {
+    "observed_in_unmodified_exact_runtime": true,
+    "malformed_examples_json_accepted_without_warning": true,
+    "malformed_examples_impact": "4 native examples become a single literal broken string; canonical_examples still 4",
+    "malformed_custom_fields_json_accepted_without_warning": true,
+    "malformed_custom_fields_impact": "canonical_target and 4 canonical_examples removed from normalized card, despite app reporting accepted Import",
+    "positive_rejections": [
+      "duplicate id",
+      "missing front",
+      "missing back",
+      "bad column count",
+      "duplicate header"
+    ],
+    "root_cause": "universalRawFromRow -> parseJsonValue returns fallback null, parseStructuredTsvCell treats invalid JSON as plain text or {value:text}; native tsvRowsToCards has no strict JSON-cell gate for universal-v2",
+    "source_provenance_whitespace_loss_cards": 10
+  },
+  "isolated_patch_candidate": {
+    "status": "SCOPED_TEST_PASS__NOT_APPLIED",
+    "scope": "universal-v2 JSON cells examples/related/opposites/details/custom_fields only",
+    "healthy_cards_pass": 2492,
+    "healthy_warnings": 0,
+    "malformed_json_mutants_rejected": 2,
+    "wrong_json_type_mutants_rejected": 5,
+    "healthy_fidelity_unchanged_vs_original": true,
+    "other_import_schemas_not_regression_tested": true,
+    "ui_change": false,
+    "runtime_changed": false,
+    "library_patch_id": "libfile_bde2bec241e08191a2bfd78825c1eeb7",
+    "patch_sha256": "920bbc3518408c66cdf68a9f55e93e8759aa88e89e0c00c2f7cac366113e79b0"
+  },
+  "evidence": {
+    "qa_report_library_id": "libfile_3b7bee07ae6c8191a5982dc1f83b7460",
+    "qa_report_sha256": "6a9e6ff99d44a83d088a365fff2809c291719b0fe02dc10d351317383f811c0a",
+    "reproducer_library_id": "libfile_22a1f3abc0b08191b9652fb068969390",
+    "harness_builder_library_id": "libfile_9e16e6fe55208191af15b89a50b0cc69",
+    "native_unmodified_result_library_id": "libfile_9bd9dd9d00dc8191975d27c9ec12dc31"
+  },
+  "gates": {
+    "original_qualified_66_pending": 66,
+    "signoffs": 0,
+    "additional_identity_82_hold": true,
+    "active_tsv_exact_sha_recovered": false,
+    "owner_authorized_new_lineage": false,
+    "actual_browser_native_import_executed": false,
+    "store_commit_tested": false,
+    "release_ready": false,
+    "stage4_final": false,
+    "stage6_final": false
+  },
+  "immutability": {
+    "source_pdf": true,
+    "historical_locked": true,
+    "active_canonical": true,
+    "active_tsv": true,
+    "app_release_zip": true
+  },
+  "next": "Treat JSON fail-open as separate app-runtime repair with all-schema/browser/backup tests; stage4 NVV still requires qualified expert signoffs and exact TSV authority or owner-authorized new lineage. Do not deploy patch candidate directly."
+}

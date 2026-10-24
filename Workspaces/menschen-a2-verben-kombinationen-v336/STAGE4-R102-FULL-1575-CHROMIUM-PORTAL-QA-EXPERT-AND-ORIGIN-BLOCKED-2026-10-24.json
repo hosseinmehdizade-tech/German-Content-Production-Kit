@@ -1,0 +1,56 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "date": "2026-10-24",
+  "milestone": {
+    "name": "R102_COMPLETE_1575_REVIEW_PORTAL_CHROMIUM_DOM_AUDIT_AND_R96_SECURITY_REPLAY_WITH_EXPERT_ORIGIN_BLOCKER",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "All 1575 review items render in isolated Chromium and R96 20 synthetic security checks pass, but real file:// origin fails ERR_BLOCKED_BY_ADMINISTRATOR. Qualified external German/Persian/English itemwise decisions remain MAIN 0/1423 + SUPPLEMENT 0/152; Stage4 final blocked; R100 content still not promoted."
+  },
+  "scope": {
+    "unit": "source_linked_reviewer_item_visited_and_rendered_in_isolated_chromium",
+    "total_units": 1575
+  },
+  "progress": {
+    "reviewed_unique": 1575,
+    "unreviewed": 0,
+    "dispositions": {
+      "MAIN_DOM_SOURCE_AND_IDENTITY_PASS": 1423,
+      "SUPPLEMENT_DOM_SOURCE_AND_IDENTITY_PASS": 152
+    },
+    "changed_active_cards": 0,
+    "synthetic_security_tests_passed": 20,
+    "external_expert_approved": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "technical_scope": "PASS_FULL_1575_RENDER_AND_20_SECURITY_TESTS",
+    "stage4_global": "BLOCKED_EXTERNAL_EXPERT",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_authorized": false,
+    "real_file_origin_acceptance": "BLOCKED_BY_ADMINISTRATOR",
+    "verification_evidence": [
+      "Rebuilt R95 reviewer portal from exact 476607-byte ZIP SHA256 a4e328f86d408823b06980bd00edfb4f18694c4ea90575b735cfeb0d358a3d5d with exact R96 11763-byte security delta SHA256 b242a53ea21d8e7b88142374dfe1b398c298e3780603bb8314b75c2a0d857afa; 27 member hashes and R96 expected JS hash passed.",
+      "Executed Playwright real headless Chromium set_content using rebuilt source scripts; individually navigated all 1423 MAIN and 152 SUPPLEMENT entries with exact IDs, positions, nonempty content, evidence and no unexpected saved status: 1575/1575 DOM PASS, 0 uncaught JavaScript errors.",
+      "Executed original TEST-R96-EXPORTS.py on rebuilt reviewer worktree: 20/20 synthetic browser decision/export/dirty-state negative controls PASS; no real expert approval was recorded.",
+      "Attempted actual file:/// Chromium navigation: net::ERR_BLOCKED_BY_ADMINISTRATOR. This environment boundary explicitly remains NOT_VERIFIED; set_content is not real file-origin acceptance.",
+      "R90 original learner content ZIP SHA256 3a320f39dd49e09fa7313e432edaee34da4c2023e937e23044040b5e0cfd35af untouched; R100 two-card/four-label patch remains unpromoted. No original course screenshots, canonical relations or runtime/UI bytes changed.",
+      "Compact 15396-byte R102 ZIP independently validated CRC/11-member SHA256 manifest plus native verifier; Library back-download byte-identical SHA256 36320102c07fcbfe3a8643a76c973b3a3a499ac66a9d6a6a1429f4d3cd33e6cc."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> active_working_authority=R90; latest_r102_full_reviewer_dom_chromium is read-only QA, not content authority",
+    "filename": "Menschen-A2-Verben-R102-FULL-1575-CHROMIUM-REVIEW-PORTAL-QA-NOT-FINAL.zip",
+    "sha256": "36320102c07fcbfe3a8643a76c973b3a3a499ac66a9d6a6a1429f4d3cd33e6cc",
+    "size_bytes": 15396,
+    "library_file_id": "libfile_3b6f9d8edf1881918e8427407cc7965e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R102-FULL-1575-CHROMIUM-REVIEW-PORTAL-QA-NOT-FINAL.zip",
+    "library_readback": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "original_R90_sha256": "3a320f39dd49e09fa7313e432edaee34da4c2023e937e23044040b5e0cfd35af"
+  },
+  "next_action": "Qualified independent editor reviews MAIN 1423 plus SUPPLEMENT 152 and adjudicates ändern source in+Acc vs editorial auf+Acc. Keep R90 content and R95+R96 data sealed until evidence-backed R100 rebase with complete queue validator relinking. Test actual file:// on a permitted machine then run official Stage4, Stage5/6/7 on CURRENT."
+}

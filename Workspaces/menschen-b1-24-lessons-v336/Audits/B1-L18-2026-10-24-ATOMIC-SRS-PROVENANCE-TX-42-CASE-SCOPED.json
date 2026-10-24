@@ -1,0 +1,70 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L18+VerbenRepair4/disposable-atomic-source-variant-transaction",
+  "milestone": {
+    "name": "Complete bidirectional 573-source-variant transaction feasibility with 42 rollback/immutability/SRS persistence cases and independent fresh-extract reproduction",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "independent synthetic/SQLite atomicity test case in exact source catalog scenario",
+    "total_units": 42
+  },
+  "progress": {
+    "reviewed_unique": 42,
+    "unreviewed": 0,
+    "dispositions": {
+      "l18_to_repair4_transaction_scenarios_pass": 21,
+      "repair4_to_l18_transaction_scenarios_pass": 21
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "SCOPED_DISPOSABLE_SQLITE_TRANSACTION_PROTOTYPE_PASS_ONLY__NOT_DEPLOYED_GFP_OR_INDEXEDDB",
+    "verification_evidence": [
+      "Input catalog original SHA256 d4b39ca9c25fd1f476cfc10b7aac251b76fcda352b8cf705ac67ba7bf32c9636, L18 full technical preflight SHA256 27bb02378c9e67d73bb8553d75879ee46f5a71ae6d0a27b1f0334a928d8e3094 and Verben Repair4 SHA256 9a1eac4cecca59e2c666b9916afc5cf639cd8b14a4742cb56a8f57bb8551131e exact.",
+      "Independent catalog verifier reconstructed 573 original TSV source rows and 2292 referenced trilingual examples from exact parent ZIPs; 557 unique stable IDs and 16 unresolved dual-source variants; 128 collision example triplets preserved.",
+      "42/42 cases PASS (21 per import order): synthetic initial 178 or 395 SRS reviews protected; atomic append all other 395 or 178 variants yielding 573 variants/557 IDs/16 dual variants with all initial review bytes identical.",
+      "BEGIN IMMEDIATE SQLite transaction, FK check, monotonic generation CAS, source-variant append only. Failure injection at 1, 37 and full batch; child process os._exit(43) midtransaction; re-open after WAL/SQLite crash proves no partial rows and no SRS mutations.",
+      "Idempotent re-import both sources; stale CAS, missing/duplicate/tampered source variants fail closed. DB triggers reject SRS INSERT/UPDATE/DELETE and source-variant UPDATE/DELETE, stable ID delete, and choosing any display source.",
+      "After successful commit, SQLite connection close/reopen verifies all 573 exact serialized source variant records and all 178 or 395 seeded SRS rows; pre-merge backup restores baseline.",
+      "Independent verify_tx_qa.py validates exact 42 names/counts and SHA source pins. Fresh full ZIP extraction reruns 42 cases plus independent auditor PASS.",
+      "New compact portable checkpoint SHA256 8057d39cb3f849e6079ab4f5f6849211f95fbfba8410b34d23cc726f13d8bb1d, 117472 bytes, 10 ZIP entries / 8 manifest file hashes plus SHA256SUMS, CRC PASS, exact Library rematerialization and byte comparison PASS.",
+      "Original L18 LOCKED SHA256 2617552dcb0178231b79f7e5088d0d6aee8070241a2c0bd143253aa660b38c52 unchanged; no real user profile, no app/UI edits, no actual import or IDB access."
+    ],
+    "independent_language_Stage4": "NOT_PASSED",
+    "native_stage5": "NOT_PROMOTED",
+    "current_v485_R119_real_origin_IndexedDB_Stage6": "NOT_RUN_ENVIRONMENT_AND_ARCHITECTURE_PENDING",
+    "stage7_final": false,
+    "source_locked_unchanged": true,
+    "user_SRS_untouched": true,
+    "app_UI_untouched": true,
+    "limitation": "SQLite is not IndexedDB, and the 16 source-semantic identity collisions remain unresolved for any learner-visible projection/merge."
+  },
+  "artifact": {
+    "filename": "B1-L18-REPAIR4-ATOMIC-SRS-PROVENANCE-TX-42-CASE-NONFINAL.zip",
+    "sha256": "8057d39cb3f849e6079ab4f5f6849211f95fbfba8410b34d23cc726f13d8bb1d",
+    "bytes": 117472,
+    "zip_members": 10,
+    "manifest_files": 8,
+    "library_file_id": "file_0000000029a08243ac61f4ad2a05e5f3",
+    "library_stable_id": "libfile_5d97a366b2ac8191b4ab547969be91d1",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/B1-L18-REPAIR4-ATOMIC-SRS-PROVENANCE-TX-42-CASE-NONFINAL.zip",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "architecture_boundary": {
+    "canonical_projection": "UNRESOLVED_16_SHARED_SEMANTIC_IDENTITIES",
+    "source_variant_transaction": "ISOLATED_DEMO_NOT_DEPLOYED",
+    "user_SRS": "IMMUTABLE_SYNTHETIC_SEED_TEST_ONLY",
+    "no_visible_ui_modifications": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "observed_L18_locked_checkpoint_blob": "b11170835ce6161c523bd2a1e7aab51f9435e27a",
+    "observed_B1_global_latest_blob": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "global_latest_lesson": "B1-L20",
+    "global_latest_unchanged": true,
+    "resume_pointer": "Materialize 117472-byte Library ZIP SHA256 8057d39cb3f849e6079ab4f5f6849211f95fbfba8410b34d23cc726f13d8bb1d; provide two exact source ZIP parents (L18 27bb02378..., VerbenRepair4 9a1eac4c...) and run included srs_tx_prototype/test_atomic_variant_transaction.py then verify_tx_qa.py. This proves only disposable SQLite model. Before real app code architecture approval is needed for 16 distinct semantic variants/one learner SRS ID, then guarded import needs exact CURRENT real-origin IndexedDB durable transaction tests, rollback, quota/crash/concurrency, multi-source presentation tests; independent full 730 linguistic Stage4 and clean native Stage5/Stage7 still outstanding. Preserve all original source/LOCKED, SRS/UI and global LATEST B1-L20."
+  }
+}

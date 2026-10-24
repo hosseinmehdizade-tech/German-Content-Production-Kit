@@ -1,0 +1,101 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L18/model-editorial-Stage4-successor-correction",
+  "milestone": {
+    "name": "Complete source-preserving editable successor with two trilingual learner-example repairs and whole 178-card projection parity, without promoting parent Stage4",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "B1-L18 projected card checked for successor parity",
+    "total_units": 178
+  },
+  "progress": {
+    "reviewed_unique": 178,
+    "unreviewed": 0,
+    "dispositions": {
+      "unchanged_card_verified_keep": 176,
+      "editable_successor_example_corrected": 2
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "completion_boundary": "PASS for bounded editable successor correction/structural-parity milestone only; qualified independent linguistic Stage4 is NOT signed off.",
+    "verification_evidence": [
+      "Input immutable L18 parent ZIP SHA256 2617552dcb0178231b79f7e5088d0d6aee8070241a2c0bd143253aa660b38c52 matched before and after, CRC PASS.",
+      "Edited exactly mb1m-lu-0332 example3 (sich annähern exact target) and mb1m-lu-2616 example1 (nachvollziehbar FA/EN), with Cambridge and Duden meaning checks; original raw source example rows 6792 and 6776 not modified.",
+      "176 unaffected cards structurally and semantically identical; 178 ids/front/back/category/order/source membership and 712 full DE/FA/EN example triplets preserved, 18 original combination trios retained.",
+      "Verified exact four-way semantics between derived Stage4 reviewed targets, normalized lexical registry, JSON and TSV; 178/178 card ID parity and 712/712 trilingual example parity.",
+      "Four official v3.3.6 gates PASS: unified JSON, unified TSV, learner-visible HF2 JSON, learner-visible HF2 TSV. 2/2 deliberately invalid presentation negative controls correctly rejected.",
+      "All successor package manifest entries and SHA256SUMS PASS, no unsafe members, CRC PASS; original 102-member LOCKED ZIP unchanged.",
+      "Successor portable ZIP 427412 bytes SHA256 9322ad5f007a9ffb4fe82b23ea4054f8e8a65d44a53fb064e18ded3e2dd7c092 verified byte-identical after Library upload and rematerialization.",
+      "18 original literal Kombinationen independently checked at model-review scope: 17 kept incl sehr verehrt with Duden salutation context, one learner-facing source-notation display issue an etw.Dat. beteiligt sein held without altering source."
+    ],
+    "original_LOCKED_mutated": false,
+    "raw_source_mutated": false,
+    "user_SRS_mutated": false,
+    "ui_runtime_mutated": false,
+    "prior_Stage4_model_712_reaudit": "HISTORICAL_REFERENCE_NOT_EXTERNAL_HUMAN_SIGNOFF",
+    "current_qualified_independent_730_language_signoff": "NOT_DONE",
+    "official_parent_Stage4_successor_gate": "NOT_PASSED",
+    "official_clean_Stage5_successor": "NOT_RUN",
+    "current_v484_R118_same_origin_Stage6": "NOT_RUN",
+    "Stage7_final": "NOT_FINAL"
+  },
+  "edits": [
+    {
+      "target_id": "mb1m-lu-0332",
+      "example_order": 3,
+      "old_de": "Das Schiff nähert sich dem Hafen.",
+      "new_de": "Das Schiff nähert sich langsam dem Hafen an.",
+      "new_fa": "کشتی به‌آرامی به بندر نزدیک می‌شود.",
+      "new_en": "The ship is slowly approaching the harbor.",
+      "evidence": "https://dictionary.cambridge.org/de/worterbuch/deutsch-englisch/annahern"
+    },
+    {
+      "target_id": "mb1m-lu-2616",
+      "example_order": 1,
+      "de_unchanged": "Wissenschaftliche Forschung muss nachvollziehbar sein.",
+      "old_en": "Scientific research must be transparent and reproducible.",
+      "new_en": "Scientific research must be comprehensible and traceable.",
+      "new_fa": "پژوهش علمی باید قابل‌درک و قابل‌پیگیری باشد.",
+      "evidence": "https://www.duden.de/rechtschreibung/nachvollziehbar"
+    }
+  ],
+  "Kombinationen": {
+    "source_literal_reviewed": 18,
+    "model_provisional_keep": 17,
+    "open_display_hold": 1,
+    "hold": {
+      "target_id": "mb1m-lu-0330",
+      "source": "an etw.Dat. beteiligt sein",
+      "derived_display_option": "an etw. (Dat.) beteiligt sein",
+      "not_applied": true
+    },
+    "rare_register_kept": {
+      "target_id": "mb1m-lu-2571",
+      "source": "sehr verehrt",
+      "evidence": "https://www.duden.de/rechtschreibung/verehren",
+      "context": "formal salutation/very highly esteemed"
+    }
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L18-v3.3.6-Stage4-Editorial-Successor-SCOPED-NONFINAL.zip",
+    "sha256": "9322ad5f007a9ffb4fe82b23ea4054f8e8a65d44a53fb064e18ded3e2dd7c092",
+    "size_bytes": 427412,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L18-v3.3.6-Stage4-Editorial-Successor-SCOPED-NONFINAL.zip",
+    "library_file_id": "file_00000000b56c81f491a8f93b61dbc610",
+    "library_stable_id": "libfile_1f77493c241c819180703d3d1e5278d6",
+    "exact_roundtrip": "PASS_SHA256_AND_BYTES",
+    "contents": "4 editable Stage4/projection data files, two official validators, negative QA, corrections ledger, restart script, hashes, manifest and resume pointer"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "portable_checkpoint": "exact SHA256/Library path above",
+    "parent_locked_git_blob_observed": "b11170835ce6161c523bd2a1e7aab51f9435e27a",
+    "global_B1_latest_git_blob_observed": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "global_B1_L20_latest_not_overwritten": true,
+    "resume_pointer": "Materialize the scoped successor ZIP SHA256 9322ad5f007a9ffb4fe82b23ea4054f8e8a65d44a53fb064e18ded3e2dd7c092 and original locked ZIP SHA256 2617552dcb0178231b79f7e5088d0d6aee8070241a2c0bd143253aa660b38c52. Review one held learner-facing combination notation and independently certify remaining 730 full linguistic items. Then official clean Stage5 successor, exact CURRENT (currently v484-R118) non-destructive same-origin IndexedDB/SRS/audio Stage6, successor Stage7 postpackage. Do not touch parent LOCKED, raw source, UI or global B1-L20 LATEST."
+  }
+}

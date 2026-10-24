@@ -1,0 +1,51 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-24",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42AP_ALL_223_HISTORICAL_C41_RELATION_EVIDENCE_CASES_READONLY_RECONCILIATION",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "Exactly 223 previous C42AO relation-evidence risk item instances across 114 unique historical C41 cards. 108 candidate reuses of existing relations; 115 reverse-link no-force; 175 literal Memrise text occurrences; 48 no literal. Scoped forensic/source QA only, NOT exact C42T recovery, official independent Stage4, Stage5, CURRENT v485 Stage6, or Import."
+  },
+  "scope": {
+    "unit": "historical_C41_relation_evidence_risk_item",
+    "total_units": 223,
+    "card_ids": 114
+  },
+  "progress": {
+    "reviewed_unique": 223,
+    "unreviewed": 0,
+    "dispositions": {
+      "LEGACY_ALIAS_EXISTING_RELATION_ONLY": 43,
+      "MISSING_REF_EXISTING_RELATION_CAS_DRAFT": 58,
+      "BROKEN_REF_EXISTING_RELATION_CAS_DRAFT": 7,
+      "VALID_REVERSE_RELATION_NO_FORCE": 115
+    },
+    "applied_edits": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Historical C41 2997-card ZIP b69a0bd... and registered original 9109-row Memrise CSV 52f8bb... SHA256 independently verified; original C42AO forensic ZIP 60af7a... verified.",
+      "223 unique (card_id,item_position) joined to exact unchanged C41 item/card hashes and relation IDs; all 65 missing or stale references matched a unique already-existing relation in the same card and to an existing same-text expression card. 43 legacy aliases resolved read-only. 115 reverse expression-to-headword relations explicitly not replaced or auto-reversed.",
+      "Original Memrise text substring check: 168 Learnable, 7 Beispiel, 48 without matching literal in registered source rows. Text occurrence not independent lexical/semantic certification.",
+      "Full source-replay VERIFY.py passed from the portable ZIP against original sources, with 7/7 intentionally modified package payloads rejected by the actual verifier after recalculating the internal manifest; two deterministic archive builds byte-identical, ZIP CRC/member SHA PASS."
+    ],
+    "exact_C42T_materialized": false,
+    "official_global_stage4": "NOT_RUN",
+    "official_stage5": "NOT_RUN",
+    "CURRENT_v485_stage6": "NOT_RUN",
+    "import_allowed": false,
+    "A1_FINAL": false,
+    "original_LOCKED_source_UI_SRS_unchanged": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_UPLOADED_PREVIOUS_QUOTA_FULL",
+    "artifact": "Menschen-A1-C42AP-223-Relation-Evidence-Source-Reconciliation-2026-10-24-NO-IMPORT.zip",
+    "artifact_sha256": "7d422455069949f98919a2b00e328f07fec87b58c29f3744c9c7fc872df74ad4",
+    "artifact_bytes": 87479,
+    "resume_pointer": "Exact original C42T 34,123,935-byte SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 still missing. After recovery CAS-compare only already existing relation IDs for 108 candidates; 115 reverse links NO_FORCE. Qualified full Stage4/official Stage5/CURRENT v485 Stage6 before import."
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C42AT_ALL_236_HISTORICAL_C41_FLAGGED_MEMBERSHIP_IDENTITY_SECOND_PASS_AND_23_REDUNDANT_LOCATOR_CLOSURE",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "Bounded historical C41 source/lineage secondpass on the complete 236 previously flagged membership records (235 distinct cards) plus separate 23 malformed L14 locator instances. All results are read-only, candidate/hold/no-force only, not current C42T repair nor linguistic Stage4/5/CURRENT Stage6 or import."
+  },
+  "scope": {
+    "unit": "historical_C41_flagged_lesson_membership_secondpass",
+    "total_units": 236,
+    "distinct_cards": 235,
+    "historical_membership_parent_total": 3039,
+    "additional_nonadditive_malformed_vnext_locators": 23
+  },
+  "progress": {
+    "reviewed_unique": 236,
+    "unreviewed": 0,
+    "dispositions": {
+      "L09_UNIQUE_REF_CANDIDATE": 123,
+      "L24_TAG_AND_POSSIBLE_REFERENCE": 77,
+      "CROSSLESSON_SECONDARY_PRESERVE": 27,
+      "L24_CROSSLESSON_SOURCE_DISCOVERED": 6,
+      "L09_MULTIROW_HOLD": 3
+    },
+    "applied_edits": 0,
+    "independent_global_stage4_positive_promoted": 0
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Original registered Memrise CSV sha256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222 (9109 rows) and complete historical 2997-card C41 ZIP sha256 b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95 independently reread; all 3039 membership source lesson tags and existing numeric row ordinals verified against Memrise.",
+      "All 236 original flagged membership (card_id, lesson) records re-derived: 123 L09 with one same-lesson vnext row, 77 L24 with registered row matching source lesson but empty membership source_tag, 27 valid secondary lesson membership/no-force, six L24 reused memberships lacking source row yet matched by direct Memrise L24 source search, and three L09 collapsed multirow cards durstig/hungrig/kennenlernen retained on HOLD. No source data modified.",
+      "The six L24 recovered row candidates: Geschenk 2228, Fest 2199, Feier 2201, Hochzeit 2219 expanded idiom/sense HOLD with other same-lesson mentions, Neujahr 2207, gemeinsam 2237. Five have exact headword source form; Hochzeit is expanded. This does NOT authorize forced source-origin changes or collapsing crosslesson local CLOSED_NO_FORCE status.",
+      "Strict full string source inclusion on 123 L09 single-row candidates: 108 cases have source/card full-form containment, 15 not full-form literal due to conjunction/alternative, inflection, orthography or German article variation; four material notes Joghurt, Tomatenmark, Zuckerdose, deutschsprachige Laender. These are not wrongly reattributed as original exact quotations.",
+      "All 23 malformed A1-L14 row:N free-text locators have a separate STRICT row:digits numeric locator to the exact same row in same card. This is redundant malformed metadata; do not duplicate or create new source edge or delete explanatory note without authorized exact-parent CAS.",
+      "Deterministic 10-member zip (9 evidentiary/tool members plus manifest) SHA256 edb62d02cd66420cf5edf2aa4b0808914e3570f43be821d074d60593541b89b6 size 50464 bytes, complete manifest SHA/CRC PASS; two archive builds byte-identical; verified clean extraction reran complete original Memrise/C41 replay 236/236 and 23/23, 8 deliberately forged cases failed closed. No C42T comparisons.",
+      "The full exact original C42T 34123935-byte ZIP SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207 remains unavailable. Historical C41 not substituted; none of the proposed metadata additions, deletion of redundant refs, or content changes applied. Current app runtime is v485-R119 but runtime Stage6 NOT_RUN."
+    ],
+    "exact_full_C42T_materialized": false,
+    "qualified_independent_global_stage4": "NOT_RUN",
+    "official_clean_stage5": "NOT_RUN",
+    "current_v485_R119_stage6": "NOT_RUN",
+    "A1_FINAL": false,
+    "import_allowed": false,
+    "original_MEMRISE_LOCKED_UI_SRS_unchanged": true
+  },
+  "findings": {
+    "scope_memberships": 236,
+    "distinct_cards": 235,
+    "possible_recoverable_L09_single": 123,
+    "strict_nonliteral_card_front_L09": 15,
+    "source_tag_L24_registered_row": 77,
+    "preserve_valid_secondary": 27,
+    "recovered_L24_refs": 6,
+    "recovered_direct_headword_refs": 5,
+    "recovered_L24_semantic_hold": "ma1m-lu-1228",
+    "L09_multiple_source_rows": [
+      "ma1m-lu-0815",
+      "ma1m-lu-0822",
+      "ma1m-lu-0861"
+    ],
+    "malformed_locators_redundant_count": 23,
+    "untouched_originals": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_UPLOADED_LEAN_WIP_PREVIOUS_CAPACITY_BLOCK",
+    "artifact": "Menschen-A1-C42AT-236-Membership-Source-Identity-Resolution-2026-10-25-NO-IMPORT.zip",
+    "artifact_sha256": "edb62d02cd66420cf5edf2aa4b0808914e3570f43be821d074d60593541b89b6",
+    "artifact_bytes": 50464,
+    "local_path": "/mnt/data/Menschen-A1-C42AT-236-Membership-Source-Identity-Resolution-2026-10-25-NO-IMPORT.zip",
+    "previous_C42AS_receipt": "Workspaces/menschen-a1-final-consolidation-v336/C42AS-3039-COURSE-MEMBERSHIP-SOURCE-LINEAGE-OUTCOME-2026-10-24.json",
+    "resume_pointer": "C42AT all 236 historic C41 flagged source memberships and 23 separately malformed refs dispositioned with 0 edits. Next: recover exact current C42T full artifact, diff source_memberships/vnext refs and 185+ older issue queues against exact field SHA. Do not rewrite 27 valid secondary, do not collapse three L09 multiple row refs, preserve six L24 source references as scoped non-verbatim candidates. Independent full 2997 card semantic Stage4, official Stage5, CURRENT v485 Stage6 required; no import."
+  }
+}

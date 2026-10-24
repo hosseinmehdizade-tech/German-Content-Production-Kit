@@ -1,0 +1,104 @@
+{
+  "schema": "nvv-v336-stage4-replay-tool-validated-fixture@1.0.0",
+  "date": "2026-10-24",
+  "branch": "nvv-production",
+  "workstream": "nomen-verb-verbindungen",
+  "status": "EXACT_CURRENT_PARENT_PRECONDITION_READY__HISTORICAL_FIXTURE_FULL_PROJECTION_PASS__CURRENT_NOT_APPLIED",
+  "authority": {
+    "git_parent_commit": "06c84fa9aad743e9794333261769fa9060fecdbc",
+    "latest_blob_sha": "aa8af583a5ab1df8948d18a2ffe1f67aecd75190",
+    "current_blob_sha": "648a4f00ed75d6819a371a3f270d21d1c6c2275c",
+    "required_current_canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "required_current_tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
+    "source_pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "immutable_locked_zip_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f"
+  },
+  "tool": {
+    "name": "nvv_replay_exact.py",
+    "library_path": "/German-Content-Production-Kit/Tools/NVV/nvv_replay_exact.py",
+    "library_file_id": "libfile_ab0e81c430ec8191974b9b9a917557b2",
+    "backing_file_id": "file_000000008f3881f49936c21aad3cd362",
+    "sha256": "f607ff3c92cf8465589d1e918ea5e340e97a6d64565034e51214af456b07459a"
+  },
+  "manifest": {
+    "name": "NVV-STAGE4-5-FIELD-EXACT-DELTA.json",
+    "library_path": "/German-Content-Production-Kit/Tools/NVV/NVV-STAGE4-5-FIELD-EXACT-DELTA.json",
+    "library_file_id": "libfile_b0a71aaeb83c8191bfc0b7d875dd7c11",
+    "backing_file_id": "file_00000000818481f4834f780504451126",
+    "sha256": "71026c460193b5203e4860a37cdf709c0292346efc481b8de0bb2e0cd95c994e"
+  },
+  "patch": {
+    "distinct_cards": 3,
+    "canonical_changed_paths": 5,
+    "content_edits_to_current_applied": 0,
+    "ids": [
+      "dah-nvv-exp-00990",
+      "dah-nvv-exp-01336",
+      "dah-nvv-exp-01921"
+    ],
+    "edits": [
+      {
+        "card_id": "dah-nvv-exp-01921",
+        "path": "canonical_form",
+        "before": "aus (falschen) Stolz handeln",
+        "after": "aus (falschem) Stolz handeln"
+      },
+      {
+        "card_id": "dah-nvv-exp-01921",
+        "path": "structure.pattern_de",
+        "before": "aus (falschen) Stolz handeln",
+        "after": "aus (falschem) Stolz handeln"
+      },
+      {
+        "card_id": "dah-nvv-exp-01921",
+        "path": "structure.components[expression_surface].surface",
+        "before": "aus (falschen) Stolz handeln",
+        "after": "aus (falschem) Stolz handeln"
+      },
+      {
+        "card_id": "dah-nvv-exp-00990",
+        "path": "definition_de",
+        "before": "laut und heftig schreien oder protestieren",
+        "after": "umgangssprachlich, oft abwertend: laut und heftig schreien oder protestieren"
+      },
+      {
+        "card_id": "dah-nvv-exp-01336",
+        "path": "definition_de",
+        "before": "sich einen schnellen Überblick über die Situation verschaffen",
+        "after": "umgangssprachlich: sich einen schnellen Überblick über die Situation verschaffen"
+      }
+    ]
+  },
+  "historical_fixture_test": {
+    "input_zip_sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f",
+    "input_closed_canonical_sha256": "0adb892a666cfccc8ef5c4d5dece5cd39fe257a87eb4697d445ce0e50eeaefb2",
+    "input_universal_tsv_sha256": "f3a5206b05146566a2ea4a083c7a7996408b25c2ec3bf9f8f795b1f684ae684a",
+    "test_output_canonical_sha256": "9e9bf0345ddcf49be43f9f9e1c55aeac5ca9725deda0afc3a9bb3e1cc02205f6",
+    "test_output_tsv_sha256": "8397dbb986277ec1a5cce5e62869d6e5cdc315ca2ab31abebb09727e0cc5b2da",
+    "test_only_output_not_live_authority": true,
+    "assertions": {
+      "original_archive_sha_match": "PASS",
+      "original_inputs_unchanged_exact_bytes": "PASS",
+      "canonical_2492_unique_ids": "PASS",
+      "tsv_23_columns_and_2492_rows": "PASS",
+      "unmodified_2489_cards": "PASS",
+      "unmodified_2489_tsv_rows": "PASS",
+      "unchanged_9968_trilingual_examples": "PASS",
+      "source_provenance_2492_unchanged": "PASS",
+      "exact_canonical_target_tsv_projection_on_3_cards": "PASS",
+      "strict_live_parent_sha_gate_rejects_locked_fixture": "PASS",
+      "wrong_sha_zero_output": "PASS",
+      "atomic_output_directory_publish": "PASS"
+    }
+  },
+  "runtime": {
+    "gfp_current": "v484-R118",
+    "live_runtime_acceptance": "NOT_RUN",
+    "repaired_candidate_stage5": "NOT_RUN",
+    "parent_stage4_independent_expert": "NOT_DONE",
+    "unresolved_main_hold": 66,
+    "out_of_cohort_82": "HOLD_IDENTITY"
+  },
+  "run_command": "python nvv_replay_exact.py --canonical NVV-CURRENT-WORKING-CANONICAL.json --tsv NVV-CURRENT-WORKING-IMPORT.tsv --source-pdf nomen_verb_verbindungen.pdf --out-dir NVV-STAGE4-CANDIDATE-2026-10-24",
+  "next": "Acquire byte-exact 2026-10-23 working canonical/TSV; with single-writer CAS rerun strict hash replay into a new candidate; verify stage4 dependent validators and obtain qualified independent semantic signoff before any Stage5/6 claim."
+}

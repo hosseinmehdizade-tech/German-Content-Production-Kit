@@ -511,9 +511,9 @@
     "next": "Inspect exact B13 nested TSV projected columns/metadata for 11 changed cards; recover original B13 local before-after fixture or accepted exact TSV SHA. Do not roll forward on mismatch, rebaseline, or publish without explicit evidence."
   },
   "b13_projection_single_mirror_probe_2026_10_24": {
-    "status": "B13_11_ROWS_35_EDITS_VALIDATED__124_SINGLE_MIRROR_ROLLBACK_TESTS_NO_HISTORICAL_SHA_MATCH",
+    "status": "SUPERSEDED_ROOT_CAUSE_RECOVERED_EXACT_B13_B14_SHA256_PASS",
     "source": "Workspaces/nomen-verb-verbindungen/08-lean-working/STAGE4-B13-124-SINGLE-MIRROR-ALTERNATES-FORENSIC-2026-10-24.json",
-    "source_git_blob_sha": "24732afdc76de2a7a47e7b0ca278ca7efd204fb4",
+    "source_git_blob_sha": "f3897cabfbf5dc0e1f9ab34940dfa6a87f32355f",
     "previous_exact_B12_sha256": "fca8ec11ea2ab7db184a4a0c4c4826168fca797e66f31fc460d90b188561e5d8",
     "expected_B13_sha256": "91b8fc55cf3ec2c5884a0ab2e7092e17305c7fa2fe9120dcc5c8c3e09e53dbe1",
     "replayed_B13_sha256": "690ba40744a3ab7ebf6a087289b17d9906350637b00debd09588241541c972f2",
@@ -534,12 +534,53 @@
     "next": "Recover authentic B13 row-level TSV snapshot or source generator including historical metadata. Do not invent/rebaseline active TSV or treat variants as proof of exact parent. Maintain separate source/canonical/TSV and qualified-signoff gates.",
     "semantic_guard": {
       "history_not_learner_authority": true,
-      "historical_off_target_example_card_ids": [
-        "dah-nvv-exp-01263",
-        "dah-nvv-exp-01283"
+      "prior_off_target_claim_RETRACTED": true,
+      "correct_card_ids": [
+        "dah-nvv-exp-01262",
+        "dah-nvv-exp-01282"
       ],
-      "active_canonical_untouched": true,
-      "note": "B13 rows 01263 and 01283 had phrases semantically inconsistent with their target expression. Do not reintroduce older B13 intermediate texts."
+      "clarification": "Historical examples were valid for their real cards at source orders 1272 and 1292. Wrong adjacent Git IDs caused the erroneous off-target comparison.",
+      "active_canonical_untouched": true
     }
+  },
+  "exact_b13_b14_tsv_identity_correction_2026_10_24": {
+    "status": "B13_AND_B14_EXACT_TSV_SHA256_RECOVERED__HISTORICAL_ONLY_NOT_FINAL",
+    "report": "Workspaces/nomen-verb-verbindungen/08-lean-working/B13-B14-EXACT-HISTORICAL-TSV-ORDER-IDENTITY-REPAIR-2026-10-24.json",
+    "report_blob_sha": "c0edb6d6fb4fdfc1b828169f2a9d959b57bed5f9",
+    "supersedes": "Workspaces/nomen-verb-verbindungen/08-lean-working/STAGE4-B13-124-SINGLE-MIRROR-ALTERNATES-FORENSIC-2026-10-24.json",
+    "superseded_report_blob_sha": "f3897cabfbf5dc0e1f9ab34940dfa6a87f32355f",
+    "ten_successive_historical_exact_tsv_checkpoints": true,
+    "exact_history_end": "B14",
+    "recovered_B12_sha256": "fca8ec11ea2ab7db184a4a0c4c4826168fca797e66f31fc460d90b188561e5d8",
+    "recovered_B13_sha256": "91b8fc55cf3ec2c5884a0ab2e7092e17305c7fa2fe9120dcc5c8c3e09e53dbe1",
+    "recovered_B14_sha256": "52adaba8371724f3c81198f6673b9e11b435fc32d6e779e227fd4e1d796f90f9",
+    "repair_reason": "B13 Git edited IDs were off by +1 for source orders 1272 and 1292; source forms and legacy Canonical working_successor.batch13.changed_ids corroborate corrected 01262 and 01282.",
+    "wrong_to_right": [
+      [
+        "dah-nvv-exp-01263",
+        "dah-nvv-exp-01262",
+        1272
+      ],
+      [
+        "dah-nvv-exp-01283",
+        "dah-nvv-exp-01282",
+        1292
+      ]
+    ],
+    "retroactive_correction": "Previously described B13 01263/01283 intermediate example wording as wrong for target; retract. It was correct for adjacent 01262/01282.",
+    "durable_checkpoint_library_file_id": "libfile_f1c0c973881c8191bb02624f53581b64",
+    "durable_checkpoint_sha256": "0c6c757395279c69e856df94eec685fcbb51c3d4e867930822fd46ad39939e3f",
+    "original_active_working_canonical_sha256": "214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f",
+    "original_active_working_tsv_sha256": "3a963cbf1a079be5ffef4f06f996141268c02586df2d01b01d0c99ae14cc986b",
+    "original_active_working_tsv_sha_verified": false,
+    "historical_canonical_stage_shas_verified": false,
+    "historical_linguistic_certification": "NOT_DONE",
+    "independent_qualifications_pending": 66,
+    "ambiguous_order_82": "OPEN",
+    "edits_to_registered_PDF_or_LOCKED": 0,
+    "edits_to_active_working": 0,
+    "stage4_complete": false,
+    "final_release_ready": false,
+    "next": "Use exact B14 archived TSV and SOURCE ORDER -> stable ID to replay B15 onwards, verify each expected historical TSV SHA, then active TSV, then qualified linguist gate."
   }
 }

@@ -1,0 +1,94 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/CURRENT-v485-typing-alias-runtime-source-regression",
+  "milestone": {
+    "name": "CURRENT_V485_FULL_1918_TYPING_ALIAS_SOURCE_REGRESSION_AND_NONDESTRUCTIVE_UNION_CANDIDATE",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "The original/current v485 ignores literal alternatives in Standard/Full; runtime PR9 literal-only proposal loses 12 previously accepted combined answers on 6 cards; union candidate exposes potentially malformed legacy aliases. Qualified DE/FA Stage4/Stage5 and exact CURRENT real-browser/IndexedDB/Typing Stage6 outstanding. PR9, PR23 and PR24 remain draft/unmerged."
+  },
+  "scope": {
+    "unit": "course unique imported candidate card identity tested against exact CURRENT v485 source function",
+    "total_units": 1918,
+    "course_review_archive_sha256": "60339bd3476c9d670b951d9ff038eb38157651ec6fa3688e33f4035e925b5244",
+    "course_tsv_sha256": "8afe4d37f1466736bef4b81e89eef2f0faf407a878da86607331daf4481df522",
+    "current_runtime_version": "v485-R119",
+    "current_runtime_zip_sha256": "c3bcc7fe0e2aab3a41de3a580558f63ad1290f96bad9b851e13b3f54fe21708f",
+    "exact_app_html_sha256": "f6357dedeeff38d10df18b9209c11a50e83eb26c53ba2bd569175ddb65527738"
+  },
+  "progress": {
+    "reviewed_unique": 1918,
+    "unreviewed": 0,
+    "dispositions": {
+      "NO_EXPLICIT_ACCEPTED_ANSWER_OVERRIDE_READONLY_VERIFIED": 1395,
+      "OVERRIDE_BASELINE_MISROUTED_AND_PR9_NONREGRESSION_CASE_REVIEWED": 517,
+      "PR9_LEGACY_COMBINED_ANSWER_REGRESSION_QUALIFIED_HOLD": 6
+    },
+    "card_mode_checks": 5754,
+    "alias_mode_fields_tested": 1046,
+    "alias_cards": 523,
+    "PR9_dropped_previously_accepted_answers": 12,
+    "PR9_affected_ids": 6,
+    "union_model_preview_old_answer_losses": 0,
+    "union_model_preview_alias_losses": 0,
+    "core_mode_regressions": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Verified exact CURRENT v485-R119 ZIP SHA256 and extracted index SHA256. Read-only Node VM evaluated actual current source functions using 1918 minimal card fixtures and 3 answer modes = 5754 card-mode checks.",
+      "Unpatched v485 passes acceptedAnswers literal entries through typingDeriveAnswer which replaces inputs with the primary Standard/Full mode override; 1046 explicit alias field cases do not supply their literals to answer matching.",
+      "Runtime draft PR9 fixes the literal path but drops 12 previous combined full-front entries on exactly six A2 cards (ma2m-lu-1323, 1565, 1574, 1575, 1614, 1617), each in Standard and Full.",
+      "Reviewed local flatMap literal-plus-legacy source candidate retains every baseline output and every recorded alias in 1046 field cases; 0 core-mode changes and unchanged main primary answers across 5754 modes.",
+      "Read-only candidate may also reenable malformed historical aliases on five gendered noun cards. Mechanical preservation is not independent expert semantic approval. Avoid merging permissive patch until aliases adjudicated.",
+      "Draft Kit PR24 checks whether typingCore appears in explicit Standard/Full acceptedAnswer lists; this is a proposed content gate, not independent proof that CURRENT v485 wrongly rejects the core in all selected Typing modes.",
+      "Six-file replay checkpoint + manifest extracted fresh and Node tests reproduced exact same counters; SHA256SUMS and ZIP CRC verified. No app binary, source content, user profile/SRS, LOCKED lesson, A1 parent or current v016 working authority modified.",
+      "User cannot infer real-browser/IndexedDB acceptance from a Node isolated source-function test. Current app v485 primary profile not independently signed off."
+    ],
+    "qualified_independent_stage4": "PENDING",
+    "official_stage5": "NOT_RUN",
+    "exact_current_stage6": "NOT_RUN",
+    "import_ready": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_UPLOADED; CURRENT_CHAT_COMPACT_PORTABLE_ZIP",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/COURSE-V485-TYPING-523-ALIASES-PR9-12-LOSS-AND-SAFE-UNION-2026-10-24.json"
+  },
+  "archive": {
+    "filename": "Menschen-A2-V485-TYPING-523-ALIAS-COMPATIBILITY-CHECKPOINT-NOT-IMPORT-READY.zip",
+    "sha256": "fcb3ec7a28e84d06ce32ee1e313598183ed4b2ccbea6d0d77192aef2789e9f0b",
+    "member_count": 7,
+    "bytes": 106668,
+    "source_snapshot": "current conversation",
+    "contains_1918_minimal_no_srs_fixtures": true,
+    "contains_app_or_importable_TSV": false
+  },
+  "risk_ids": [
+    "ma2m-lu-1323",
+    "ma2m-lu-1565",
+    "ma2m-lu-1574",
+    "ma2m-lu-1575",
+    "ma2m-lu-1614",
+    "ma2m-lu-1617"
+  ],
+  "PRs": {
+    "runtime_PR9": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/pull/9",
+    "kit_validator_PR23": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/23",
+    "kit_typing_QA_PR24": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/24",
+    "all_draft_unmerged": true,
+    "PR9_comment_id": 6383941350,
+    "PR24_comment_id": 6383953026
+  },
+  "protected": {
+    "source_v016_unchanged": true,
+    "A1_140_unchanged": true,
+    "A2_native_1778_unchanged": true,
+    "course_1974_memberships_unchanged": true,
+    "all_24_LOCKED_unchanged": true,
+    "SRS_unchanged": true,
+    "app_current_unchanged": true,
+    "visible_UI_unchanged": true
+  },
+  "next_action": "Independent A1/DE-FA Stage4 and malformed alias adjudication for six backward-compat cases plus five missing-core static cases, source-aware approve PR9 safe non-regression revision (not current literal-only), then official Stage5 and CURRENT v485 real-browser/IDB/Typing Stage6. Do not merge any draft or import course before these gates."
+}

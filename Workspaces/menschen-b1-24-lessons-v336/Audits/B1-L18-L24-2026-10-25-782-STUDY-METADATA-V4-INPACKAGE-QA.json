@@ -1,0 +1,66 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/L18-L24-study-package-metadata-reconciliation",
+  "milestone": {
+    "name": "Complete 782-card read-only study package metadata repair with updated in-package verifier and full manifest/checksum acceptance",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one output ZIP member verified against exact lineage and checksum",
+    "total_units": 1170
+  },
+  "progress": {
+    "reviewed_unique": 1170,
+    "unreviewed": 0,
+    "dispositions": {
+      "byte_identical_noncontrol_parent_members": 1164,
+      "metadata_and_validator_replaced": 3,
+      "new_provenance_receipt": 1,
+      "manifest_and_sha256sums_regenerated": 2
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "PACKAGE METADATA AND STRUCTURAL STUDY-QA ONLY; NOT QUALIFIED LINGUISTIC STAGE4, OFFICIAL STAGE5, NATIVE CURRENT v485-R119 IMPORT/IDB STAGE6 OR STAGE7 FINAL",
+    "verification_evidence": [
+      "Exact previous parent study zip SHA256 3383b18470ca0ad3ba168f6679de179c5f10fca1477922202488e28cd4ab616e verified, 34,279,730 bytes. Original parent was not modified or overwritten.",
+      "Previously independently produced two metadata corrections verified against old SHA256 fd0853ed78e0c8e96aace8dd056f4ea89bc133c8bdd23f0c2ba0e6cc85a93dd6 and detached successor SHA256 b52ab49d3ae0f8cf212c388d41be462207409d4380ba19d5ffacc3acaa2f2683, then installed with in-package status updated. Both metadata files now describe 21 operations/18 distinct card IDs, L19=4 L20=5 L21=3 L22=6 L23=3.",
+      "Updated Tools/verify_handoff_after_extract.py from exact original: removed stale 12-edit assertion; validates two metadata copies, 21-edit official study reconciliation ledger, 18 distinct card IDs, manifest hash/byte equality and NEVER_IMPORT policy.",
+      "Full successor ZIP CRC PASS and independent re-read: 1,170 unique members; 1,168/1,168 manifest SHA256 and byte sizes PASS; 1,169/1,169 SHA256SUMS PASS. 1,164 content/source/audio/lesson payload files byte-identical to parent, three metadata/code members updated, one provenance receipt added, and two integrity control files regenerated.",
+      "Extracted full successor archive onto local disk and ran its actual built-in verifier successfully: PASS 1169 hashes 782 cards 3128 triplets 1123 audios; L24 NONIMPORT. Exact final SHA256 f377c8c3c624f69011ef282f796944de167ac3e586906a08ebe7ffa600283e3a, 34,281,700 bytes.",
+      "Three deliberately tampered local extracted-file tests individually rejected (stale L19 edit count, changed manifest declaration, modified L24 preview) and original bytes restored; bundled verifier PASS repeated after restoration.",
+      "Retained original lesson source files and 782 stable card IDs; original L18 17-column legacy schema kept, L19-L24 23-column schema retained; 3,128 examples and 1,123 MP3s unchanged.",
+      "Historical Reports/EDITORIAL-12-DELTAS-AND-RELEASE-HOLDS.json remains immutable evidence of prior 12-edit stage, and Reports/EDITORIAL-21-RECONCILIATION.json represents cumulative 21-edit current stage.",
+      "Missing exact L24 PASS0023 SHA256 35704cba08e1d3963d472bc862df0c7b9526660f1cd69e05b6af4f1c5ac81b34 not replaced. L24 rein identity and L23 Vorschrift cross-lesson proposal remain unresolved, no user SRS or UI modifications."
+    ],
+    "original_source_mutated": false,
+    "locked_mutated": false,
+    "app_UI_mutated": false,
+    "user_SRS_mutated": false,
+    "independent_language_stage4": "NOT_ATTESTED",
+    "official_stage5": "NOT_PASSED",
+    "current_native_stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL"
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L18-L24-782-CARDS-21-EDIT-METADATA-RECONCILED-STUDY-NONFINAL.zip",
+    "sha256": "f377c8c3c624f69011ef282f796944de167ac3e586906a08ebe7ffa600283e3a",
+    "bytes": 34281700,
+    "members": 1170,
+    "contains_app": false,
+    "import_permission": false,
+    "library": "NOT_UPLOADED"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "git_status_normalized": "IN_SYNC",
+    "current_chat_binary": "/mnt/data/Menschen-B1-L18-L24-782-CARDS-21-EDIT-METADATA-RECONCILED-STUDY-NONFINAL.zip",
+    "global_latest_blob_before": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "l23_latest_before": "1ca27a797195410e9d2de4aceb0893304ff9fdd0",
+    "l24_latest_before": "e547cdc681ffcf17b11f3bbd92f5f45929c9013e",
+    "latest_pointer_mutated": false,
+    "next": "Retain exact current nonfinal study artifact SHA f377c8c3c624f69011ef282f796944de167ac3e586906a08ebe7ffa600283e3a. Recover authoritative B1-L24 PASS0023 exact 1,330,370 byte ZIP SHA 35704cba08e1d3963d472bc862df0c7b9526660f1cd69e05b6af4f1c5ac81b34; run strict rein Stage2 gate. Resolve L23 Vorschrift prior-card membership and safeguarded ID, then independent language Stage4 and current-v485 native IndexedDB Stage6. NEVER import 782 study ZIP."
+  }
+}

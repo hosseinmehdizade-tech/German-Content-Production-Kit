@@ -1,6 +1,8 @@
 # START PROMPT v3.3.6
 
-**ACTIVE work-outcome and concurrency rule:** On `continue`/`ادامه بده`, read `EXECUTION-OUTCOME-EFFICIENCY-POLICY.json`; progress toward a whole reviewable stage/queue, not another arbitrary 3–5-card edit/report. Count corrected/kept/held/remaining separately, perform scoped QA, preserve unchanged/LOCKED, and use `Verification/validate_execution_outcome_receipt.py` at meaningful milestone handoff. Neither scoped PASS nor a Git checkpoint substitutes for independent Stage4, Stage5 or CURRENT Stage6.
+**ACTIVE CROSS-PROJECT LINGUISTIC REVIEW OVERRIDE (user-approved 2026-10-25):** Read `LINGUISTIC-QA-AUTHORITY-POLICY.json` before any Stage4/content quality/release acceptance. Mandatory external qualified-human/independent-specialist signature is REMOVED for all content streams. Require full documented AI semantic/translation/source review, independent-method adversarial second pass and deterministic QA; label it AI review, never human approval. Stage5/6/7 and source-fidelity gates remain unchanged. Historical reports/LOCKED artifacts remain immutable; old reviewer-identity gates must not block solely for missing external human. The override itself does not imply Stage4 PASS.
+
+**ACTIVE work-outcome and concurrency rule:** On `continue`/`ادامه بده`, read `EXECUTION-OUTCOME-EFFICIENCY-POLICY.json`; progress toward a whole reviewable stage/queue, not another arbitrary 3–5-card edit/report. Count corrected/kept/held/remaining separately, perform scoped QA, preserve unchanged/LOCKED, and use `Verification/validate_execution_outcome_receipt.py` at meaningful milestone handoff. Neither scoped PASS nor a Git checkpoint substitutes for the full documented AI-linguistic Stage4 audit, Stage5 or CURRENT Stage6. External human signoff is not required.
 
 The active production framework is **v3.3.6 — Source-Agnostic Completeness Gate**.
 

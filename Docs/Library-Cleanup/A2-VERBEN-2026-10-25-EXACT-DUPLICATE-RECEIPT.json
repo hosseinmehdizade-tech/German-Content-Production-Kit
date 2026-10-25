@@ -1,0 +1,52 @@
+{
+  "schema": "gcpk-library-cleanup-receipt@1.0.0",
+  "date": "2026-10-25",
+  "scope": "Menschen A2 Verben Library safe-duplicate cleanup",
+  "status": "ONE_EXACT_DUPLICATE_TRASHED__BULK_WIP_UNVERIFIED",
+  "method": "Independent raw-byte SHA256 comparison of two materialized Checkpoints ZIPs, then file-id-targeted Library deletion and re-list confirmation.",
+  "removed": [
+    {
+      "name": "German-Flashcards-Pro-v451-R85-Menschen-A2-Verben-v3.3.6-Repair1-Stage7-CANDIDATE-BLOCKED.zip",
+      "library_file_id": "libfile_596b966a4a0481918fabe79cb3710fb0",
+      "size_bytes": 4135690,
+      "sha256": "b6c28251625348122bdcb32e4b0df2b7074b44b67e9f097ecd6812f0ae866bfa",
+      "result": "MOVED_TO_TRASH",
+      "source_folder": "/German-Content-Production-Kit/Checkpoints"
+    }
+  ],
+  "preserved": [
+    {
+      "name": "German-Flashcards-Pro-v451-R85-Menschen-A2-Verben-v3.3.6-Repair1-RELOCKED.zip",
+      "library_file_id": "libfile_cbeacd7c44408191870cdc3d3dc11b42",
+      "size_bytes": 4135690,
+      "sha256": "b6c28251625348122bdcb32e4b0df2b7074b44b67e9f097ecd6812f0ae866bfa",
+      "role": "EXACT_IDENTICAL_RECOVERY_ARCHIVE"
+    },
+    {
+      "name": "Menschen-A2-Verben-R116-INTEGRATED-CONTENT-QA-WIP.zip",
+      "library_file_id": "libfile_c70db374f7dc819193bcd017ec42c62e",
+      "size_bytes": 5309409,
+      "sha256": "63cdf2f249193733a36ef6ee7da98446fe288974edf7432b3133eece55aa7ef8",
+      "role": "CURRENT_STAGE4_PORTABLE_AUTHORITY_NOT_FINAL"
+    },
+    {
+      "name": "Menschen-A2-Verben-v3.3.6-STAGE4-R57-WUNDERN-STAUNEN-SCOPE-WIP.zip",
+      "library_file_id": "libfile_0ad3f5c88da48191afcd70a8ef5a373d",
+      "size_bytes": 42525637,
+      "sha256": "98414e4581d6970b348467c7718a2a266464da5d4b0fa9843fb68672af870b3e",
+      "role": "HISTORICAL_CUMULATIVE_R57_EVIDENCE"
+    }
+  ],
+  "bulk_observation": {
+    "folder": "/Flasch kart",
+    "group": "Menschen-A2-Verben*",
+    "files_seen": 101,
+    "total_size_mib": 1741.77,
+    "global_r01_to_r33_mib": 704.46,
+    "r34_to_r57_mib": 748.94,
+    "point": "R57 archive has 1010 members and historical Batch01-Batch15/R01-R57 stage directories, but metadata alone is insufficient to establish every legacy ZIP byte-identical or recoverable."
+  },
+  "hold_reason": "Flasch kart library files are not currently materializable for raw-byte SHA via available files tool; same name and size are not proof of equality. Do not blindly delete historical unique WIP archives or LOCKED/current.",
+  "capacity_warning": "Deletion response: File moved to trash, not a verified permanent purge; quota release not confirmed.",
+  "next_action": "Acquire authorized raw bytes or cryptographically verified manifests for Flasch kart candidates; establish exact recoverability before further deletion; retain current R116 and immutable LOCKED."
+}

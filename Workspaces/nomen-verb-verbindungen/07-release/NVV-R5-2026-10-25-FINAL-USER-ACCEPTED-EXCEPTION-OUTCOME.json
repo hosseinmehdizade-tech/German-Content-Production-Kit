@@ -1,0 +1,53 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "nomen-verb-verbindungen",
+  "date": "2026-10-25",
+  "milestone": {
+    "name": "Final user-accepted NVV content-only production handoff with explicit Stage6 environment exception",
+    "level": "major",
+    "state": "CLOSED",
+    "scope_note": "Closure of user-facing handoff only, not full live-browser Stage6 technical PASS"
+  },
+  "scope": {
+    "unit": "cards",
+    "total_units": 2492
+  },
+  "progress": {
+    "reviewed_unique": 2492,
+    "unreviewed": 0,
+    "dispositions": {
+      "EXACT_ACCEPTED_IMPORT_PRESERVED_AND_STAGE7_PACKAGE_VALIDATED": 2492
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Stage4 PASS_AI_DELTA; Stage5 PASS exact source/import",
+      "v486-R120 exact production TSV parser static PASS: 2492 cards and 9968 DE/FA/EN triplets",
+      "Stage6 live browser/IndexedDB NOT_VERIFIED: Chromium ERR_BLOCKED_BY_ADMINISTRATOR",
+      "User explicitly accepts environment exception and requests final handoff",
+      "Stage7 postpackage content integrity PASS: 49 files, CRC, fresh extract, 134568 TSV mirrors, 11 negative controls",
+      "Final Library rematerialization SHA256 and ZIP CRC match"
+    ],
+    "stage4": "PASS_AI_DELTA",
+    "stage5": "PASS",
+    "stage6": "CLOSED_USER_ACCEPTED_EXCEPTION_NOT_TECHNICAL_PASS",
+    "stage7": "PASS_POSTPACKAGE_CONTENT_ONLY_NOT_FULL_RUNTIME",
+    "full_app_runtime_finality": false
+  },
+  "persistence": {
+    "git": "PENDING",
+    "library": "EXACT_VERIFIED",
+    "artifact_name": "NVV-v3.3.6-R5-FINAL-USER-ACCEPTED-STAGE6-EXCEPTION.zip",
+    "artifact_sha256": "1efdc33f89301a91331db61b6e1c48701c5bcc596c670bcdce4dada96cf7225e",
+    "zip_bytes": 4644544,
+    "zip_members": 49,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/NVV-v3.3.6-R5-FINAL-USER-ACCEPTED-STAGE6-EXCEPTION.zip",
+    "library_file_id": "file_00000000475c824396039a4597914c1f",
+    "library_stable_id": "libfile_5c4d6d312c748191a07ae7ad44e1e13a",
+    "content_parent_stage5_sha256": "a4e2da41fa3efcbeb41dd7eca066cc27224b9130eb98d54a56ce545123c18758",
+    "current_runtime": "v486-R120",
+    "current_runtime_zip_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "resume_pointer": "User-accepted final artifact above; optional browser/IndexedDB verification only if user later requests it."
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/course-stage4-example-diversity",
+  "milestone": {
+    "name": "A2_L15_64_CARD_SYSTEMIC_EXAMPLE_DIVERSITY_QA_READONLY",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "A new source-bound pedagogical quality issue affects 64 A2-L15 cards in verified v034-derived pending roster. Exact mutable v037 ZIP SHA256 f96fa3ad...913a is unavailable, so no remediation may be applied/passed until v037 recovered and compared. Other 4894 pending/20 holds remain in parent Stage4."
+  },
+  "scope": {
+    "unit": "A2-L15 cards with paired scaffold-cloned pedagogical examples, deduplicated by card ID",
+    "total_units": 64,
+    "source_baseline": "v034 verified 245b8108782d272a9b5e8e6a4ed0ab63e068d562d7a934e5e707fd80eaee77ff",
+    "source_v037_expected": "f96fa3adeae541c08866a9515fbaecfb6dcefb1b425e4a0aa704dc11d624913a"
+  },
+  "progress": {
+    "reviewed_unique": 64,
+    "unreviewed": 0,
+    "dispositions": {
+      "FULL_TWO_BASE_PREDICATE_FOUR_EXAMPLE_SCAFFOLD": 59,
+      "PARTIAL_CLONED_PAIR": 5
+    },
+    "total_cloned_pairs": 123,
+    "affected_example_units": 246,
+    "l15_pending_examples": 390,
+    "l15_percent_of_pending_examples": 63.08,
+    "official_v037_new_approvals": 0,
+    "official_v037_approved_still": 5916,
+    "official_v037_pending_still": 4894,
+    "existing_hold_count": 20
+  },
+  "quality": {
+    "stage_complete": false,
+    "status": "SYSTEMIC_PEDAGOGICAL_DIVERSITY_HOLD__NO_CONTENT_EDITS",
+    "stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_ready": false,
+    "verification_evidence": [
+      "v034 ZIP SHA256 exact and CRC passed; matching baseline roster 4894 unique units with 14682 DE/FA/EN hashes matched and v034 ledger unit identities/pending statuses matched",
+      "Within A2-L15 only, 59 card quartets repeat exactly the lexical predicate of example 1 inside example 3 (adding Hier) and example 2 inside example 4 (adding Oft); 5 additional cards match only one of these pairs",
+      "123 distinct pairs cover 246 unique learner-visible A2-L15 example units; all pair source_refs empty and curated; NO claim of false original-source quotation",
+      "Main detector 18/18 deterministic controls PASS including seeded tampering, independently parsed native v034 TSV's examples and custom_fields canonical_examples mirror 246/246 triads in 64/64 cards, 7/7 independent checks PASS",
+      "Pedagogical finding: semantic variants introduced by Hier/Oft are not literal duplicates but provide low contextual diversity; German/FA/EN translation fields remain mirror-consistent",
+      "Original A2-L01..L24 LOCKED historical releases, v034 parent, v037 LATEST, A1-owned cards, Flashcards runtime and user SRS untouched; no new v038 or import-ready artifact"
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_ATTEMPTED_STORAGE_LIMIT",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/STAGE4-A2-L15-EXAMPLE-DIVERSITY-SYSTEMIC-READONLY-2026-10-26.json",
+    "binary_location": "CURRENT_CONVERSATION_FILES_ONLY",
+    "artifacts": [
+      {
+        "name": "Menschen-A2-L15-59-CARDS-EXAMPLE-DIVERSITY-READONLY.json",
+        "sha256": "b00fea80383ce026d9761f3b22c1c951e50286b6ffa08c4f9d7f4a36afdc20e1"
+      },
+      {
+        "name": "Menschen-A2-L15-EXAMPLE-DIVERSITY-QA.json",
+        "sha256": "20823c01d573c28f242f9d5fe13ef81d0ca1082e8b8ac1e4e025b027324b3852"
+      },
+      {
+        "name": "Menschen-A2-L15-DIRECT-TSV-INDEPENDENT-QA.json",
+        "sha256": "622cd75d4d0c02dc643892746ba6f2c523edeccc6e8aa0985941437e8e100870"
+      },
+      {
+        "name": "audit_l15_example_diversity.py",
+        "sha256": "bc433674b570d634ac25ca59f8ea14cc03b6240b590b33a28a73f8aeec7e74e0"
+      }
+    ]
+  },
+  "exact_next_action": "Recover v037 exact archive, verify identical DE/FA/EN bytes for affected IDs before any edits. Perform a full AI semantic and pedagogy review of 246 affected units with context-rich example replacement where warranted. Re-run second-pass and all Stage4+ Stage5/6/7 gates; never count structural QA as linguistic PASS."
+}

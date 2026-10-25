@@ -1,0 +1,71 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L23-L24/Drive-exact-bytes-recovery",
+  "milestone": {
+    "name": "Durably save both requested latest stages and new L24 Stage5 successor in user Google Drive with independent exact-byte readback",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one ZIP uploaded, re-materialized from authenticated Google Drive, and SHA256/bytes compared",
+    "total_units": 3
+  },
+  "progress": {
+    "reviewed_unique": 3,
+    "unreviewed": 0,
+    "dispositions": {
+      "DRIVE_UPLOADED_VERIFIED_BYTE_IDENTICAL": 3
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "PERSISTENCE ONLY. Two earlier checkpoints and new L24 scoped Stage5 backed up in user-controlled Google Drive. ChatGPT Library original quota remains full but does not prevent Google Drive storage. User source and LOCKED/SRS unchanged; technical Stage6/7 not implied.",
+    "verification_evidence": [
+      "B1-L23 Stage5 SHA 4bdde384ec3aa1e3ba484e9476bed449f26eb0df953900c7c765fa77b40b7710 downloaded from Drive and byte-identical (1,262,464 bytes).",
+      "B1-L24 Stage4 SHA 17fc03ea761dd6bb029d1b9ea2f88281a86166a29ac041418c6a5b679892a53f downloaded from Drive and byte-identical (366,331 bytes).",
+      "B1-L24 Stage5 source-scoped ZIP SHA f6d977fd697be9633f0bf751c4565c942e4a60945c4eee03b5ac8d3b45b915e3 downloaded from Drive and byte-identical (3,544,617 bytes).",
+      "No deletion, overwrite or move of existing Library/Drive artifacts, and all three backups placed inside dedicated German-Flashcards-Pro-Backup-Vault/Menschen-B1-L23-L24-2026-10-25 folder."
+    ],
+    "original_user_SRS_untouched": true,
+    "app_UI_untouched": true
+  },
+  "artifacts": [
+    {
+      "lesson": "B1-L23",
+      "stage": "STAGE5_SOURCE_SCOPED_NONIMPORT",
+      "filename": "Menschen-B1-L23-v3.3.6-STAGE5-SCOPED-COMPLETE-CONTENT-ID-HOLD-NONIMPORT.zip",
+      "sha256": "4bdde384ec3aa1e3ba484e9476bed449f26eb0df953900c7c765fa77b40b7710",
+      "bytes": 1262464,
+      "drive_file_id": "1pIIqKQf2IfGbxhNVg67qlcskto2lNA1V",
+      "drive_url": "https://drive.google.com/file/d/1pIIqKQf2IfGbxhNVg67qlcskto2lNA1V/view?usp=drivesdk",
+      "persistence": "PASS_EXACT_DRIVE_DOWNLOAD_AND_SHA"
+    },
+    {
+      "lesson": "B1-L24",
+      "stage": "STAGE4_AI_418_REVIEW_7_REPAIRS_NONIMPORT",
+      "filename": "Menschen-B1-L24-v3.3.6-STAGE4-AI-418-REVIEW-7-REPAIRS-NONIMPORT.zip",
+      "sha256": "17fc03ea761dd6bb029d1b9ea2f88281a86166a29ac041418c6a5b679892a53f",
+      "bytes": 366331,
+      "drive_file_id": "1Fje0N0WYLygBjkJrb3bJI23kPzD0Y3Gm",
+      "drive_url": "https://drive.google.com/file/d/1Fje0N0WYLygBjkJrb3bJI23kPzD0Y3Gm/view?usp=drivesdk",
+      "persistence": "PASS_EXACT_DRIVE_DOWNLOAD_AND_SHA"
+    },
+    {
+      "lesson": "B1-L24",
+      "stage": "OFFICIAL_STAGE5_SOURCE_SCOPED_1446_NONIMPORT",
+      "filename": "Menschen-B1-L24-v3.3.6-STAGE5-94-CARDS-1446-CELLS-SCOPED-ID-HOLD-NONIMPORT.zip",
+      "sha256": "f6d977fd697be9633f0bf751c4565c942e4a60945c4eee03b5ac8d3b45b915e3",
+      "bytes": 3544617,
+      "drive_file_id": "1L-PL4ZHl0-SW2DDm6jmp0VkLRjinvuqU",
+      "drive_url": "https://drive.google.com/file/d/1L-PL4ZHl0-SW2DDm6jmp0VkLRjinvuqU/view?usp=drivesdk",
+      "persistence": "PASS_EXACT_DRIVE_DOWNLOAD_AND_SHA"
+    }
+  ],
+  "google_drive_folder": "https://drive.google.com/drive/folders/1hnFN39OPRVQ-huIRvR8m1W0LdzLFrOxp",
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "USER_GOOGLE_DRIVE_PASS_EXACT_BYTES__CHATGPT_LIBRARY_QUOTA_STILL_FULL",
+    "resume_pointer": "Three exact Drive ZIPs above are durable. L23 Stage5 remains global Vorschrift ID HOLD NONIMPORT. L24 Stage5 content scoped PASS but strict earlier PASS0023 exact rein binary absent, no live SRS merge. In new chats use lesson-local LATEST for authority; do not downgrade to REV1/Stage4 or claim technical Stage6/7."
+  }
+}

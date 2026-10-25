@@ -1,0 +1,77 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "date": "2026-10-25",
+  "milestone": {
+    "name": "STAGE4_AI_LINGUISTIC_REAUDIT_1575_REVIEW_ITEMS_AND_STAGE5_SCOPED_DELIVERY_STAGE6_BROWSER_ENVIRONMENT_BLOCK",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Current v485-R119 real-origin Chromium navigation returns ERR_BLOCKED_BY_ADMINISTRATOR before app loaded; browser IndexedDB persistence/reload and exact-final Stage7 not executable in this sandbox."
+  },
+  "scope": {
+    "unit": "historical_R90_R91_language_review_items",
+    "total_units": 1575
+  },
+  "progress": {
+    "reviewed_unique": 1575,
+    "unreviewed": 0,
+    "dispositions": {
+      "KEEP_WITH_REASON": 1562,
+      "CORRECT_WORD_FAMILY_SCOPE": 12,
+      "CLOSED_NO_FORCE_WRONG_SENSE": 1
+    },
+    "changes": {
+      "cards": 12,
+      "word_family_labels": 13,
+      "main_reviewed": 1423,
+      "supplement_reviewed": 152
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage4_AI_linguistic_model_review": "PASS_SCOPED_AI_WITH_DETAILED_1575_LEDGER_NOT_EXTERNAL_HUMAN",
+    "stage5_clean_content_delivery": "PASS_SCOPED_ANTI_BYPASS__OFFICIAL_FRAMEWORK_VALIDATOR_NOT_RERUN",
+    "exact_runtime": "v485-R119",
+    "stage6_native_readonly": "PASS_292_0_ERRORS_0_WARNINGS",
+    "stage6_browser": "BLOCKED_BEFORE_APP_LOAD_BY_ADMINISTRATOR",
+    "stage7": "NOT_FINAL",
+    "source_11_images": "PRESERVED_BYTE_EXACT",
+    "all_original_R90_R91_reviews": "PRESERVED",
+    "counts": {
+      "cards": 292,
+      "examples": 1168,
+      "translations": 2336,
+      "canonical_relations": 1223,
+      "kombinationen": 1426
+    },
+    "negative_controls": [
+      "wrong_sense_family",
+      "missing_fa",
+      "missing_review_id",
+      "false_human_signoff",
+      "duplicate_card",
+      "source_literal_leak"
+    ],
+    "verification_evidence": [
+      "Exact R117 parent sha 2de521825867e7b372671e5f81daf765231530ae9e00e5cbd27421c5fb34f5e5 and R118 TSV sha e25a5fdcc6961440d411a7ed177b894a6d0f2cf5a2bd1683bccfb461c8f9aadd compared to local files",
+      "R118 adversarial verifier: 292 row/order identity, 12 bounded changed cards, only Wortfamilie learner and canonical sections, 1575/1575 review IDs; six intentional negative controls caught",
+      "v485-R119 exact native JS parser read-only: 292 cards, zero errors/warnings",
+      "102-member content-only R118 ZIP fa440efcec1e5a549574429f787f590f19c02ae3b058da725b1366feb37fa303: 101/101 payload sha manifest verified, ZIP CRC PASS, 11 source images unchanged",
+      "Playwright attempted real v485 Chromium isolated-profile localhost, failed before page loaded with ERR_BLOCKED_BY_ADMINISTRATOR; no browser import or IndexedDB acceptance claimed"
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "BLOCKED_STORAGE_QUOTA_ALREADY_FULL",
+    "artifact": {
+      "filename": "Menschen-A2-Verben-R118-AI-STAGE5-CONTENT-DELIVERY-STAGE6-ENV-BLOCKED.zip",
+      "sha256": "fa440efcec1e5a549574429f787f590f19c02ae3b058da725b1366feb37fa303",
+      "bytes": 6094733,
+      "members": 102,
+      "conversation_delivered": true,
+      "library_file_id": null
+    },
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> active R118 exact content TSV; R117 parent, R118 Git delta and conversation ZIP; Stage6 exact-current real browser and Stage7 remain blocked",
+    "next_action": "Use a permitted same-origin Chromium/runtime acceptance environment to validate R118 exact archive TSV import and persistent index/UI and rerun official portable v3.3.6 Stage5 gate if available; then Stage7 exact-final repackage/verification, never assume FINAL from scoped QA."
+  }
+}

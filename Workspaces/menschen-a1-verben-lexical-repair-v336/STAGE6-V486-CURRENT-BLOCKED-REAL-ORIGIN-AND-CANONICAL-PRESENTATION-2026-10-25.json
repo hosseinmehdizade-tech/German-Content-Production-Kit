@@ -1,0 +1,63 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "milestone": {
+    "name": "STAGE6_EXACT_V486_REAL_ORIGIN_AND_PRESENTATION_ACCEPTANCE",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Managed Chromium blocks canonical local origin navigation (net::ERR_BLOCKED_BY_ADMINISTRATOR), and exact v486 native rendering prefers historical canonical_examples over 63 edited example identities across 50 cards. Stage6 cannot be claimed PASS."
+  },
+  "scope": {
+    "unit": "exact_runtime_stage6_acceptance_decision",
+    "total_units": 1
+  },
+  "progress": {
+    "reviewed_unique": 1,
+    "unreviewed": 0,
+    "dispositions": {
+      "blocked_with_concrete_regression": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "CURRENT exact v486-R120 app archive SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d extracted from Library, ZIP CRC PASS; Stage5 ZIP SHA256 b273ac6842bb48be09f047b8b3465d1eefb5957a8df63b69954047700aaada68 verified exact.",
+      "Real browser navigation to http://127.0.0.1:18765/index.html?gfp-test=1 failed net::ERR_BLOCKED_BY_ADMINISTRATOR; canonical origin IDB/ServiceWorker/browser reload not run.",
+      "Headless Chromium in-memory flattened exact v486 app JS parsed universal-23-column TSV into 310 unique de-vocabulary cards, 1240 examples, 310 study HTML renderings and 930 quick/typing/audio models without JS page errors.",
+      "Importer actual selection/preflight accepted 310/310, 0 duplicate IDs, no silently dropped rows, no mutation before Import, button enabled; commit not performed.",
+      "Independent exact rendered canonical-vs-learned projection test: 63 example identities mismatch across 50 cards (6 German source texts, 56 Persian and 7 English translation field differences, overlapping by example).",
+      "Diagnostic clone removing only customFields.canonical_examples yielded zero DE/FA/EN presentation mismatches across 310 test cards without changing originals; this was a dry-run only and is not the accepted fix.",
+      "Stage5 import content and runtime unmodified; frozen Stage4 user-waived and Stage5 technical QA statuses not downgraded."
+    ],
+    "exact_current_runtime": "v486-R120",
+    "app_artifact_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "exact_content_sha256": "b273ac6842bb48be09f047b8b3465d1eefb5957a8df63b69954047700aaada68",
+    "stage4": "FINAL_USER_ACCEPTED_WITH_DECLARED_WAIVERS",
+    "stage5": "PASS_TECHNICAL_WITH_USER_STAGE4_WAIVERS",
+    "stage6": "BLOCKED_NOT_PASSED",
+    "stage7": "HOLD_NOT_RUN",
+    "ui_visible_change": "NONE",
+    "canonical_source_immutable": true,
+    "recorded_render_regression": {
+      "affected_cards": 50,
+      "affected_example_items": 63,
+      "field_differences": {
+        "de": 6,
+        "fa": 56,
+        "en": 7
+      },
+      "rendered_canonical_priority": "canonicalExampleGroupsV348"
+    },
+    "environment_boundary": "NOT_REAL_ORIGIN_INDEXEDDB_TESTED",
+    "no_automatic_architecture_fix": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "/mnt/data/stage6_a1_verben/STAGE6-V486-A1-VERBEN-BLOCKED-COMPATIBILITY.json",
+    "diagnostic_report_sha256": "755af1f3f4ea1ef0da7ea5c78dcea2ef6b996c42b390b5bcf55af5d51afb896b",
+    "stage5_git_pin": "Workspaces/menschen-a1-verben-lexical-repair-v336/STAGE5-CURRENT-AUTHORITY-PIN-2026-10-25.json",
+    "app_pin": "German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json"
+  },
+  "next_action": "Resolve renderer/import projection priority for intentional learner corrections while preserving immutable historical canonical source. An architecture/source fidelity decision is required before modifying import payload or runtime. Then retarget CURRENT and repeat exact real-origin Stage6 on permitted browser; no Stage7 promotion before PASS."
+}

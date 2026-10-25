@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-project-memory@1.0.0",
   "status": "ACTIVE_MANDATORY_READ",
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-25",
   "purpose": "Durable cross-chat memory for incidents, decisions and guardrails affecting content production and Flashcards integration.",
   "cross_project_canonical_memory": "hosseinmehdizade-tech/German-Flashcards-Pro/PROJECT-MEMORY.json",
   "reconsideration_protocol": {
@@ -1438,6 +1438,69 @@
           "safe_default"
         ],
         "sha256": "0a4f0c3e655eb103d2f7aeb02c1001827fa092b73a3331b656b856aadb650a3b"
+      }
+    },
+    {
+      "id": "MEM-031-AI-AND-USER-LINGUISTIC-QA-NO-EXTERNAL-HUMAN-GATE",
+      "status": "ACTIVE",
+      "date": "2026-10-25",
+      "category": "content_qa_governance",
+      "incident": "An obligatory independent qualified outside human reviewer created a permanent Stage4 blocker for a project where the user has explicitly said only the user and ChatGPT will be available.",
+      "decision": "For all current and future content streams, external qualified-human linguistic signature is not required. Use documented AI linguistic/editorial assessment, a separate adversarial second pass, deterministic verification and user adjudication of material ambiguities. Do not label AI work independent human approval.",
+      "safe_default": "AI_USER_EVIDENCE_BASED_STAGE4_NO_EXTERNAL_HUMAN_SIGNATURE",
+      "explicit_user_approval": "2026-10-25: چنین چیزی وجود نخواهد داشت فقط تو و من هستیم اینو از تو قوانین کل بر دار و ادامه بده",
+      "policy_file": "LINGUISTIC-QA-AUTHORITY-POLICY.json",
+      "preserved_guardrails": [
+        "Source fidelity and immutable original source",
+        "Full Stage4 substantive content QA and explicit holds",
+        "Stage5 delivery, Stage6 CURRENT runtime, Stage7 exact-final release gates",
+        "No false human/independent expert signoff"
+      ],
+      "prevention": {
+        "scope": "CROSS_PROJECT",
+        "severity": "S2",
+        "root_cause": "Review identity gate assumed availability of an external specialist despite the user's explicitly sole AI+user project setup.",
+        "root_cause_basis": "Explicit user decision dated 2026-10-25, with previously blocked content QA workstreams.",
+        "impact": "Permanent artificial Stage4 blocker despite feasible source-bound AI and deterministic QA; removes only identity prerequisite.",
+        "time_cost": "UNKNOWN",
+        "wrong_path": [
+          "Require unprovided outside reviewer credentials or fictional signatures",
+          "Promote model structural checks to full Stage4 final without content audit"
+        ],
+        "correct_method": "AI linguistic stage-wide review + separate adversarial pass + deterministic identity/source/projection checks; user chooses only on material ambiguities.",
+        "rule": "External human review cannot be a release prerequisite; content release gates and genuine unresolved risk holds still block Stage4 where applicable.",
+        "gate": {
+          "kinds": [
+            "A"
+          ],
+          "status": "MANUAL",
+          "tools": [],
+          "command": "",
+          "limits": "AI linguistic audit is not independent human approval, structural PASS not full Stage4; qualified reviewer labels forbidden."
+        },
+        "evidence": [
+          "LINGUISTIC-QA-AUTHORITY-POLICY.json"
+        ],
+        "affected_workstreams": [
+          "Menschen A1/A2/B1 Verben and lessons",
+          "Standalone NVV",
+          "Grammar/Vocabulary/Lesen/Schreiben",
+          "other content QA/release integration"
+        ]
+      },
+      "decision_integrity": {
+        "fields": [
+          "category",
+          "date",
+          "decision",
+          "explicit_user_approval",
+          "id",
+          "incident",
+          "policy_file",
+          "preserved_guardrails",
+          "safe_default"
+        ],
+        "sha256": "464f5876c32d26ef72a20a0cb9098e006f2ac3305f07abe80d83ffb1f9e7879d"
       }
     }
   ],

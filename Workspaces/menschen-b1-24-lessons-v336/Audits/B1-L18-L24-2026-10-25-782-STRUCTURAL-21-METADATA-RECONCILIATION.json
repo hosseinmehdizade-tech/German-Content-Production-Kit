@@ -1,0 +1,64 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/782-card-study-handoff-metadata-consistency",
+  "milestone": {
+    "name": "Full 782-card seven-lesson study-bundle structural replay and two detached stale metadata corrections",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one study card tested against lesson-specific source/editorial projection and language-example structure",
+    "total_units": 782
+  },
+  "progress": {
+    "reviewed_unique": 782,
+    "unreviewed": 0,
+    "dispositions": {
+      "structural_parity_accepted_no_content_mutation": 782
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "STANDALONE STRUCTURAL + DETACHED METADATA QA ONLY. NOT full independent human/qualified linguistic Stage4; NOT official Stage5; NOT CURRENT v485 real native IndexedDB Stage6 or Stage7/LOCKED.",
+    "verification_evidence": [
+      "Exact original study parent package SHA256 3383b18470ca0ad3ba168f6679de179c5f10fca1477922202488e28cd4ab616e (34,279,730 bytes) preserved unchanged, ZIP CRC PASS, 1,167/1,167 embedded manifest member hashes and lengths PASS.",
+      "All 782 unique cards across L18=178, L19=145, L20=78, L21=96, L22=83, L23=108, L24 preview=94 verified. 3,128/3,128 nonblank DE/FA/EN triple groups; canonical nested-example identity passes for L20-L24; L19 retains canonical model without duplicated nested examples; historical L18 17-column legacy preserved and L19-L24 23-column profiles checked without unapproved migration.",
+      "Final L19 editorial successor SHA256 bf300d3c598ced42cff1c04df09f7784efe82857aa245c7d4593ea91c53a56d4 and L20 editorial successor SHA256 1c85ff51379f67b26d6aae3407739ab36faf47c6ddf285afcc89a819c8f41717 match the original October 24 receipts.",
+      "Full scan of seven lessons' normalized exact headwords yielded exactly one crosslesson duplicate Vorschrift: L20 mb1m-lu-2974 and L23 mb1m-lu-4049; identity repair must remain guarded. One provisional L24 rein ID detected and explicitly NOT authorized for app import.",
+      "Two stale copied status/control JSON members found: Reports/COURSE-CONTRACT-AND-COUNTS.json and Study/LESSON-OVERVIEW.json incorrectly described UPDATED_12 and L19/L20 correction counts zero although Reports/EDITORIAL-21-RECONCILIATION.json documents 21 operations. Two old-hash-and-old-value-asserted corrected detached JSON files produced, each SHA256 b52ab49d3ae0f8cf212c388d41be462207409d4380ba19d5ffacc3acaa2f2683, preserving original source ZIP. 21 edits across 18 unique changed card IDs (L19 4 operations / 4 cards; L20 5 operations / 2 cards; L21 3; L22 6; L23 3).",
+      "Five tampered metadata old-value states rejected by replay guard. Regeneration verifier independently rerun against exact unchanged bundle; four output hashes stable. Both patched files are detached outputs, and manifest/sidecar inside the original ZIP was NOT altered; future repack requires fresh package manifest and checksum generation.",
+      "L21/L22 179 cards and 716 trilingual examples additionally checked for nested canonical/display equality; 0 empty/duplicate/id mismatches; heuristic negation mismatches inspected without ungrounded forced change. Duden confirmed apparently unusual noun plural forms Abseits, Klimaerwärmungen and Smogs; no unverified deletion.",
+      "No source archive, L18 locked package, actual runtime/UI, user SRS, L23/L24 latest pointers or other workstreams changed."
+    ],
+    "source_zip_sha256": "3383b18470ca0ad3ba168f6679de179c5f10fca1477922202488e28cd4ab616e",
+    "detached_patch_manifest_sha256": "cdd1aa9a5d40085820d1ea53a6c33c777278549c5b1146c4811d8cc9a192258e",
+    "metadata_json_sha256": "b52ab49d3ae0f8cf212c388d41be462207409d4380ba19d5ffacc3acaa2f2683",
+    "full_qualified_independent_language": "NOT_ATTESTED",
+    "official_stage5": "NOT_RUN",
+    "real_current_origin_idb": "NOT_RUN",
+    "stage7": "NOT_LOCKED",
+    "original_source_mutated": false,
+    "user_SRS_mutated": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "binary_library": "NOT_UPLOADED__EXISTING_STORAGE_LIMIT",
+    "current_chat_detached_files": "/mnt/data/b1_metadata_reconciliation_20261025",
+    "git_parent_sha": "cf4213bbcd1b79660dcf8a7000c470cbe2e69849",
+    "l23_latest_observed_sha": "1ca27a797195410e9d2de4aceb0893304ff9fdd0",
+    "l24_latest_observed_sha": "e547cdc681ffcf17b11f3bbd92f5f45929c9013e",
+    "shared_latest_mutated": false,
+    "content_latest_mutated": false,
+    "resume_pointer": "Maintain immutable exact study parent SHA256 3383b18470ca0ad3ba168f6679de179c5f10fca1477922202488e28cd4ab616e, apply the two detached strict-value-hash-asserted metadata successor JSON only at a future meaningful repack with regenerated hashes; L24 exact authoritative PASS0023 SHA256 35704cba08e1d3963d472bc862df0c7b9526660f1cd69e05b6af4f1c5ac81b34 remains missing. Resolve L24 rein identity via strict exact-parent gate and L23 Vorschrift existing L20 ID SRS guard before formal Stage3C/Stage4/Stage5 and CURRENT v485 real same-origin Stage6. Do not import study bundle."
+  },
+  "artifact": {
+    "patch_manifest": "METADATA-PATCH-MANIFEST.json",
+    "patch_manifest_sha256": "cdd1aa9a5d40085820d1ea53a6c33c777278549c5b1146c4811d8cc9a192258e",
+    "course_corrected": "COURSE-CONTRACT-AND-COUNTS-CORRECTED.json",
+    "overview_corrected": "LESSON-OVERVIEW-CORRECTED.json",
+    "audit_file": "AUDIT-AND-VALIDATION.json",
+    "audit_sha256": "34e28889b83384e2425b1e4702ed408959e5cd969f3f06218824a00ba637f750",
+    "regenerator": "verify_and_regenerate_patch.py"
+  }
+}

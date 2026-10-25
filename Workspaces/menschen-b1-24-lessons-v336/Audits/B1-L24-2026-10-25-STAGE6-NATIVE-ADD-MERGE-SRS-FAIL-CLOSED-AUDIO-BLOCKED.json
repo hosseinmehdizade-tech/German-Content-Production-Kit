@@ -1,0 +1,66 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/Stage6-exact-native-import-SRS-preflight-and-audio-binding",
+  "milestone": {
+    "name": "Execute exact CURRENT v486-R120 add/merge branch with 94 real new L24 cards in nine synthetic SRS cases; establish fail-closed behavior and source-audio binding gap",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Full Stage6 requires a permitted app browser origin, real native IndexedDB transaction/reload, Study/Quick and audio output, plus a read-only snapshot of active user card IDs and SRS before any live import. Current environment blocks Chromium navigation with ERR_BLOCKED_BY_ADMINISTRATOR. Native app uses speech synthesis; it does not automatically attach the original MP3 source_audio_refs. Neither live-profile import nor original MP3 playback is approved."
+  },
+  "scope": {
+    "unit": "one distinct synthetic SRS preservation/collision scenario executed against extracted current v486-R120 native Add or Merge branch",
+    "total_units": 9
+  },
+  "progress": {
+    "reviewed_unique": 9,
+    "unreviewed": 0,
+    "dispositions": {
+      "native_add_synthetic_scenarios_passed_with_fail_closed_preflight": 7,
+      "native_merge_synthetic_risk_scenarios_demonstrated": 2
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "scope_boundary": "One Stage6 safety subsystem: exact native Add/Merge branch evaluated IN MEMORY with synthetic store, plus verified static original MP3 binding gap. No browser-origin IDB, no primary SRS, no full app Study/Quick, no playback. Stage3C/Stage4/Stage5 unaffected; Stage6 and Stage7 not PASS.",
+    "verification_evidence": [
+      "Both repos PROJECT-BOOTSTRAP and PROJECT-STATE read first. Current runtime verified v486-R120. Latest B1-L24 official status remains Stage5 static PASS, Stage6 blocked. Existing stable guarded candidate SHA256 113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2 reverified.",
+      "Exact current app ZIP SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d, index.html SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff, 94-card Stage5 TSV SHA256 d5ea06dde7908382f81548d437945f3383809cf5fb26a6e0b44616f0f04f34b3 and guarded TSV SHA256 dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f locked by exact read.",
+      "Extracted and ran unchanged v486 parseTsv/cardSemanticIdentityV191/sameCardSemanticIdentityV191 and actual Add/Merge branch from official 01-App/index.html (native extracted import branch SHA256 c510c28bb42e437dd62eb6a4fbc635562082a0e760db2dc21f48479040013def). Nine independent in-memory scenarios.",
+      "Seven Add scenarios: 94 fresh => added 94, no SRS mutation; 94 already guarded => skipped 94 and content not overwritten; 94 previously old-front => fail-closed 94 identity conflicts; 47 old/47 new => fail-closed; 3 conflicting ID identities => fail-closed; one conflicting reused ID => fail-closed; one same ID/identity but outdated back => skipped content update. No active SRS accessed.",
+      "Two Merge scenarios using real native branch: 94 old Stage5 cards -> explicit-identity guard deletes exactly 94 seeded synthetic reviewStates, preserving only unrelated seeded state; identical guard -> identical guard retains all 94 seeded states and does not delete any.",
+      "Extra producer anti-stale-key invariant validated: v486 semantic equality accepts unchanged explicit semantic_identity even if canonical headword is secretly changed, so source/lemma/POS/ID key must be recalculated independently by content gate on every import; all 94 guarded actual card key derivations checked.",
+      "Original audio integration audit: 94 cards, 92 contain source_audio_refs, 81 distinct referenced MP3 names; no refs for IDs mb1m-lu-4120 and mb1m-lu-4131. All 149 source MP3 are packaged in Stage5, but v486 Audio mode uses speakSequence and speechSynthesis, while source_audio_refs only appears as search suppression/cold runtime metadata. Original MP3 playback and binding are NOT implemented or verified.",
+      "Portable five-member safety audit ZIP SHA256 7240b1ffe26d6ce5e9e9de24f690972ed9ca1142bb1af86616e4f6380c4e8d41, 10330 bytes, containing exact replay script with SHA-pinned parent inputs, nine-scenario report, concise decision gate, Persian usage and SHA256SUMS. ZIP CRC, 4/4 member hashes and JavaScript syntax PASS; byte-exact upload/roundtrip Library stable libfile_0fe609d6c81481918e82476c50e7e676.",
+      "No source, LOCKED lessons, current runtime UI, previous 94-card content or real SRS modified. No claim of live browser Stage6. User approval would be required before any noticeable audio playback behavior change."
+    ],
+    "native_add_merge_synthetic": "PASS_SCOPED_9_CASES",
+    "stage6_full": "BLOCKED",
+    "stage7": "NOT_FINAL",
+    "real_IndexedDB_import": false,
+    "real_SRS_snapshot": false,
+    "original_MP3_playback": false,
+    "app_UI_changed": false,
+    "original_source_modified": false,
+    "user_SRS_modified": false
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L24-v486-STAGE6-SRS-FAIL-CLOSED-AUDIT-NONIMPORT.zip",
+    "sha256": "7240b1ffe26d6ce5e9e9de24f690972ed9ca1142bb1af86616e4f6380c4e8d41",
+    "bytes": 10330,
+    "member_count": 5,
+    "library_file_id": "file_00000000a72081f4a89ecd9b4fa7474e",
+    "library_stable_id": "libfile_0fe609d6c81481918e82476c50e7e676",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L24-v486-STAGE6-SRS-FAIL-CLOSED-AUDIT-NONIMPORT.zip",
+    "guard_candidate_sha256": "113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2",
+    "roundtrip": "PASS_EXACT_BYTES_SHA_CRC_MEMBERS_AND_JS_SYNTAX",
+    "type": "EVIDENCE_ONLY_NEVER_IMPORT"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_READBACK",
+    "course_latest_pointer_not_mutated": true,
+    "l24_expected_old_blob": "497c586edd17f8285c0b41a32c400d4c7c0017b3",
+    "resume_pointer": "Stage3C, Stage4, static Stage5 remain PASS. Stage6 exact v486 parser and nine-case SRS fail-closed in-memory audit passed; real browser origin/IndexedDB/Study/Quick/audio and active SRS still unavailable. New audio finding: 149 original MP3 only packaged, not wired to v486 Audio/TTS; needs approved design/behavior choice before integration. Do not run Merge/Replace on user profile: 94 synthetic reviewStates lost in exact native merge when transitioning old-front identity to semantic guard. For future Stage6, secure permitted same-origin isolated browser and READ-ONLY inventory of active IDs, card semantic identities, reviewStates before any actual write; require zero conflicts or controlled migration, verify IDB commit/reload/Study/Quick and any approved audio path. Do not redo closed Stage3C/4/5."
+  }
+}

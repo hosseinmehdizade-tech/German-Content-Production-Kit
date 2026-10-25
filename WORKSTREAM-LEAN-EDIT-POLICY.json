@@ -26,8 +26,8 @@
   "working_method": {
     "authority": "One authoritative current working data state per individual workstream, with canonical/projection files as required by the schema. Do not conflate a single working STATE with a forced single-file delivery.",
     "edit": "Apply confirmed changes directly to that stream's active editable source/working dataset. Stable IDs, exact source order, registered origin, course memberships, rich examples, aliases and provenance must be preserved.",
-    "qa": "Validate changed items and affected dependencies as edits are made; run broad/systemic QA when recurring error families are found. Preserve independent expert review requirements and stage-specific full validation.",
-    "review": "Record evidence and reviewer decisions without creating another large inherited full ZIP. Model QA is not equivalent to independent qualified expert review.",
+    "qa": "Validate changed items and affected dependencies as edits are made; run broad/systemic QA when recurring error families are found. Preserve full linguistic Stage4 assessment and stage-specific full validation; an outside human reviewer is not required under LINGUISTIC-QA-AUTHORITY-POLICY.json.",
+    "review": "Record source-bound AI linguistic decisions, an adversarial second-pass audit, material user adjudications where needed, and deterministic QA without another inherited full ZIP. Never claim human or independent expert review if not performed.",
     "audit_trail": "Record compact changed-item IDs, before/after hashes, evidence links, reviewer status, rejected candidates, impact scope and results in a small log/receipt.",
     "wip_binaries": "NO_FULL_CUMULATIVE_INTERMEDIATE_ZIP_PER_CARD_OR_SMALL_CORRECTION",
     "duplication": "Do not copy all historical archive members into every successor; maintain exact lineage by stable hashes/paths, immutable baseline and compact deltas where they are sufficient and reproducible.",
@@ -48,7 +48,7 @@
     "nvv_final_audit": "The currently recorded immutable post-S9 audit baseline MUST stay frozen while the full 2492-target audit proceeds. Findings are recorded separately; after completion apply the approved repairs as one bounded successor, as required by active MEM-NVV-003. Never silently edit the audit baseline.",
     "nvv_shards": "Respect active NVV continuous_safe per-shard lightweight resume state and milestone checkpoints; do not replace it with one monolithic mutable archive.",
     "source_and_learner_data": "Original registered source bytes and historically LOCKED packages are immutable; 'edit directly' refers to the new working content state, not rewriting evidence.",
-    "content_stage_gates": "Stage4 qualified independent linguistic signoff, Stage5 clean delivery anti-bypass, and Stage6/7 exact CURRENT runtime tests remain mandatory when applicable. No false PASS/FINAL claims.",
+    "content_stage_gates": "Stage4 documented AI semantic/translation/source review and adversarial second pass under LINGUISTIC-QA-AUTHORITY-POLICY.json; Stage5 anti-bypass and Stage6/7 exact CURRENT runtime tests remain mandatory. External human signoff is not required. No false PASS/FINAL claims.",
     "grammar_reading_writing": "Content can use lean WIP persistence, but do not substitute lexical TSV or vocabulary-specific final packaging for a source-specific final schema.",
     "app_runtime": "This policy does not change app runtime release packaging, pinned CURRENT/LAST_FULLY_VERIFIED semantics, storage migrations, UI approvals, or runtime acceptance."
   },
@@ -70,7 +70,8 @@
     "track": "Unique reviewed + corrected/kept/closed_no_force/evidence_hold/other + unreviewed; count these separately from open release gates.",
     "writers": "Single mutable workstream writer, disjoint independent readers permitted; optimistic concurrency recheck and conflict-safe merge.",
     "persistence": "One cumulative WIP patch and milestone-level sync; no per-card ZIP or Git report loops.",
-    "boundaries": "Keep all source fidelity, official Stage4-7, existing immutable audit and final single package rules unchanged.",
+    "boundaries": "Keep all source fidelity, full AI+technical Stage4, immutable audits and single final package rules unchanged; no mandatory external-human identity gate.",
     "outcome_receipt_validator": "Verification/validate_execution_outcome_receipt.py"
-  }
+  },
+  "linguistic_qa_authority_policy": "LINGUISTIC-QA-AUTHORITY-POLICY.json"
 }

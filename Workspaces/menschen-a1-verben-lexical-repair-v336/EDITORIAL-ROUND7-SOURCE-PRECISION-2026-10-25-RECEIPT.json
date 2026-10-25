@@ -1,0 +1,86 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "date": "2026-10-25",
+  "milestone": {
+    "name": "ROUND7_SOURCE_ANCHORED_COMBINATION_CORRECTIONS_AND_PROVENANCE_RISK_SCREEN",
+    "level": "major",
+    "state": "IN_PROGRESS"
+  },
+  "scope": {
+    "unit": "independent_second_pass_card_back_or_trilingual_example_or_accepted_combination",
+    "total_units": 3484
+  },
+  "progress": {
+    "reviewed_unique": 18,
+    "unreviewed": 3466,
+    "dispositions": {
+      "corrected_from_literal_example": 2,
+      "kept_after_bounded_context_review": 16
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage4": "IN_PROGRESS_FULL_3484_SEMANTIC_SECOND_PASS_NOT_PASSED",
+    "stage5": "NOT_RERUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL",
+    "automated_screened": {
+      "card_backs": 310,
+      "trilingual_examples": 1240,
+      "combinations": 1934,
+      "parent_generated_example_origin_claims": 803
+    },
+    "risk_screen_low_overlap_manually_reviewed": 18,
+    "origin_parent_claims_without_individual_evidence_refs": 680,
+    "source_exact_edits": [
+      {
+        "card_id": "ma1m-lu-0928",
+        "before": "um acht Uhr abfahren — ساعت هشت حرکت کردن",
+        "after": "um 8:15 Uhr abfahren — ساعت ۸:۱۵ حرکت کردن",
+        "anchored_to": "ma1m-lu-0928-ex-01"
+      },
+      {
+        "card_id": "ma1m-lu-0728",
+        "before": "nur einen Tag betreffen — فقط مربوط به یک روز بودن",
+        "after": "nur Montag betreffen — فقط مربوط به روز دوشنبه بودن",
+        "anchored_to": "ma1m-lu-0728-ex-04"
+      }
+    ],
+    "immutable_canonical_and_source": true,
+    "known_learner_canonical_example_text_differences": 6,
+    "historical_unreconstructed_persian_example_repairs": 4,
+    "verification_evidence": [
+      "Verified exact Round6 parent SHA-256 before editing",
+      "Fresh independent comparison: only 3 mutable content files changed, every other Round6 member byte-identical",
+      "Exact import TSV / projected JSON / accepted combination JSON parity for 310 IDs, 1240 examples and 1934 combinations",
+      "1043 example annotation spans match exact learner-facing text",
+      "790 of 790 SHA256SUMS entries pass and ZIP CRC test clean",
+      "Three independent negative tamper controls detected invalid duplicate ID, corrupted bilingual backend and invalid example offset",
+      "Library rematerialization readback matched Round7 ZIP SHA256 and byte-for-byte",
+      "803 parent-generated-example labels programmatically screened; 18 low-token-overlap cases examined; 680 lack item-specific evidence references (not invented)"
+    ],
+    "limitations": [
+      "No blanket linguistic approval: only 18 itemwise second-pass risk cases were manually adjudicated in this milestone",
+      "Four historical Persian corrections remain unreconstructed",
+      "Six intentional learner-vs-canonical German differences require importer-aware fallback preservation",
+      "External third-party source verification not complete",
+      "No current-runtime Stage6/browser/IndexedDB verification performed"
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-2026-10-25-EDITORIAL-ROUND7-SOURCE-PRECISION-AND-RISK-QA-WIP.zip",
+    "artifact": {
+      "name": "Menschen-A1-Verben-2026-10-25-EDITORIAL-ROUND7-SOURCE-PRECISION-AND-RISK-QA-WIP.zip",
+      "sha256": "a28cb7886f29a0cdeebc22e344fe8fa0947bc3bf4a03ad6903fb8683ea917c12",
+      "bytes": 43675922,
+      "members": 791,
+      "library_file_id": "libfile_e10fe3f55fc88191bba73f892e1b3b5c",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-2026-10-25-EDITORIAL-ROUND7-SOURCE-PRECISION-AND-RISK-QA-WIP.zip"
+    },
+    "library_exact_sha_and_byte_readback": "PASS",
+    "git_latest_json_status": "STALE_ROUND4__CURRENT_EDITORIAL_PIN_SEPARATE"
+  },
+  "next_action": "Continue independent second-pass itemwise semantic proofreading from Round7 exact SHA, prioritize uncovered 3466 units; preserve original source, historical user Final and six learner/canonical divergences; complete full Stage4 then official Stage5, and test Stage6 on CURRENT runtime."
+}

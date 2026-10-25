@@ -1,0 +1,65 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/Stage5-static-SRS-identity-guard-integration",
+  "milestone": {
+    "name": "Replace unsafe split Stage5 TSV/canonical identity projection with one source-pinned 94-card and 149-MP3 integrated successor and adversarial verifier",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one unique guarded TSV-canonical card identity pair, original MP3 source binary, or untouched Memrise row",
+    "total_units": 395
+  },
+  "progress": {
+    "reviewed_unique": 395,
+    "unreviewed": 0,
+    "dispositions": {
+      "guarded_94_card_TSV_and_canonical_pairs": 94,
+      "source_MP3_exact_unchanged": 149,
+      "source_Memrise_rows_exact_unchanged": 152
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "PASS solely Stage5 static guarded integration, NOT full Stage6, not native same-origin IndexedDB, not active SRS or Stage7. Candidate ZIP deliberately NONIMPORT to primary profile until 94-ID read-only inventory and safety gate.",
+    "verification_evidence": [
+      "Both project bootstraps and state first, Kit README, START-PROMPT v3.3.6, workstream active LATEST, original Memrise manifest and policies checked. Current app v486-R120.",
+      "Exact old Stage5 ZIP SHA256 a990e3b4308b8f35678e4347387074b1530ca2ab61c4399405602f1fbf5cb8f0, guarded 94-card TSV SHA256 dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f, parent original 152-row TSV SHA256 a236a7b539e54836651af3c05dda7fd3994e0f44a55822eecd29a25071d43d6b checked against physical bytes.",
+      "Original 23-column TSV and 94-card canonical sidecar previously disagreed about semantic_identity; integrated successor updates BOTH in lockstep with 94 recomputed unique stable keys; every other 22 TSV field and every other custom_fields value unchanged; 376 DE/FA/EN example groups byte-semantically equal and original source records unchanged.",
+      "149 original MP3 byte-identical to old Stage5 by direct comparison for every asset, original AUDIO-SOURCE-MANIFEST.json SHA256 d4c998703a07d65a3ba95d62bf1288b44f5b991f9a55f810cd6b8a7633add8df pinned. 81 unique referenced MP3 present. No assertion of audio runtime binding.",
+      "Reusable in-package verifier compares both TSV/canonical, recomputes each semantic key from id, word class, lemma and source rows, validates 149 MP3, verifies verbatim source and original Stage5 semantic snapshots with pinned digests; detects 16/16 deliberate altered files despite regeneration of all MANIFEST and SHA256SUMS.",
+      "Bundled original official Stage5 static 94-card/149-MP3 verifier PASS after extracted archive; integrated verifier PASS. Full 170-member ZIP CRC PASS and all 168 manifest payload members verified.",
+      "Exact current v486-R120 unmodified native Add/Merge in-memory synthetic evaluation run with newly integrated TSV: seven Add cases PASS (94 fresh, already guard 94, already old front 94 fail closed, half old, identity collisions, skip unchanged), two Merge risk cases confirmed 94 synthetic SRS states deleted when replacing old front identities. No live SRS read/write.",
+      "Original MP3 absent from native Audio button playback wiring (v486 uses speech synthesis), so same-origin sound assertion remains untested. Browser local origin ERR_BLOCKED_BY_ADMINISTRATOR persists in current runner; cannot legitimately claim full Stage6.",
+      "One reproducible 170-member 2,515,662-byte integrated archive SHA256 76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9 uploaded to Library libfile_31ef313b08388191b1e4637c105ad254, downloaded exact byte copy and reran official and integrated verifiers plus 16 semantic mutants on Library readback; all PASS."
+    ],
+    "app_modified": false,
+    "source_modified": false,
+    "locked_modified": false,
+    "user_SRS_modified": false,
+    "stage5_static": "PASS_GUARDED_SUCCESSOR",
+    "stage6_browser_and_active_SRS": "BLOCKED",
+    "stage7": "NOT_FINAL",
+    "primary_live_import_allowed": false
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L24-v486-94-CARDS-149-MP3-INTEGRATED-SRS-GUARD-NONIMPORT.zip",
+    "sha256": "76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9",
+    "bytes": 2515662,
+    "members": 170,
+    "library_file_id": "file_00000000b89081f4a78ad1d7c4471997",
+    "library_stable_id": "libfile_31ef313b08388191b1e4637c105ad254",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L24-v486-94-CARDS-149-MP3-INTEGRATED-SRS-GUARD-NONIMPORT.zip",
+    "prior_split_stage5_sha256": "a990e3b4308b8f35678e4347387074b1530ca2ab61c4399405602f1fbf5cb8f0",
+    "TSV_sha256": "dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f",
+    "library_roundtrip": "PASS_BYTE_EXACT_AND_16_REHASHED_MUTANTS",
+    "import_approved": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_EXACT_REDOWNLOAD",
+    "expected_latest_blob": "46bfe1a00336570db8495bef1f16f3bd6e09b07d",
+    "resume_pointer": "Use single 170-member full guarded Stage5 candidate SHA256 76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9; old split Stage5 is for historical reference not live import. Content Stage3C/Stage4 fully reviewed and remain PASS, static Stage5 guarded PASS. Full Stage6 requires permitted same-origin v486-R120 browser, read-only primary ID+SRS snapshot (no live mutation), isolated real IndexedDB import/reload, Study+Quick and audio behavior verification. Never execute Merge/Replace on previous front-based cards without approved zero-loss migration, and do not claim original MP3 playback (TTS only). Stage7 blocked until Stage6."
+  }
+}

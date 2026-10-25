@@ -1,0 +1,61 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/Stage6-native-exact-v486-Chromium-opaque-origin-DOM-rendering",
+  "milestone": {
+    "name": "Render all 94 B1-L24 cards in actual Chromium DOM using exact v486 Study backHtml, 376 source examples, 752 bilingual translations and 94 Quick-front facade outputs without any browser storage",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one reviewed Menschen B1 L24 learner card with 4 real trilingual examples and Quick-front morphology components",
+    "total_units": 94
+  },
+  "progress": {
+    "reviewed_unique": 94,
+    "unreviewed": 0,
+    "dispositions": {
+      "exact_v486_Chromium_Study_DOM_and_Quick_front_components_verified": 94
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "PASS for production Study BACK HTML DOM and Quick FRONT facade rendered in Chromium with exact inlined original app modules and opaque about:blank origin. NOT a booted app, not native Quick cardItem, not visible full Study/Quick screens, not storage/IndexedDB/SRS or audio playback. Stage6 parent and Stage7 remain blocked.",
+    "verification_evidence": [
+      "Confirmed both app and kit startup files and read active Kit content workstream policies. CURRENT app v486-R120 ZIP SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d, app index SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff, latest guarded L24 Stage5 content ZIP SHA256 76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9 and 94-row TSV SHA256 dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f verified.",
+      "35 external JavaScript modules from official v486 exact app ZIP were source-byte-inlined into Chromium about:blank (transport-only; JS body and original app source unchanged). Verified genuine GFP_CONTENT_V360.parseTsvText, GFP_PRESENTATION_V359.backHtml('study'), GFP_PRESENTATION_V359.quickFrontHtml APIs available and executed without JS pageerror. App body remains boot-pending; origin null, IndexedDB unavailable.",
+      "Chromium DOM parsed 94/94 cards, 376/376 Study example-group elements, exact 376/376 German source text and example IDs; 376/376 literal Persian strings and 376/376 literal English translations (752/752), data-translation-visibility neither hidden, 0 mismatches.",
+      "GFP_PRESENTATION_V359.quickFrontHtml produced nonempty Quick-front HTML for 94/94 cards. 38/38 noun article+singular-component and plural components, 25/25 verb present3sg/preterite/perfect components appeared. This checks presence of elements, not CSS-ordered visual morphology; raw .textContent order may differ from visual order.",
+      "Four independent negative controls intentionally mutate expected German text, Persian translation, English translation and example ID; all four mutations rejected. Test replayed twice; JSON report SHA256 ccd44ccadc6e5c5b15c3bb8f63acd72d580a681bf67051d9f432590660b20f98 deterministic.",
+      "Source-only Chromium verification Python script SHA256 3fd2b8aa430a4713315eac4b3abc1903764ed738b9dafd08561c0d09d96c686e. Script and full JSON trace uploaded as two tiny Library files and independently materialized byte-identically; SHA256 matches after readback.",
+      "Native v486 Quick cardItem and fully booted Study/Quick screen interactions still NOT exercised; browser same-origin access blocked by ERR_BLOCKED_BY_ADMINISTRATOR. No user profile backups read, active IndexedDB/SRS unaffected. Original source MP3s technically decode 149/149 in previous scoped report but in-app MP3 binding not wired. No app/source/LOCKED mutation."
+    ],
+    "global_stage6_complete": false,
+    "full_Quick_cardItem": false,
+    "real_idb": false,
+    "real_user_srs": false,
+    "original_mp3_playback": false,
+    "app_mutated": false,
+    "source_mutated": false,
+    "locked_modified": false,
+    "stage7_final": false
+  },
+  "artifact": {
+    "report_file": "B1-L24-STAGE6-CHROMIUM-REAL-STUDY-DOM-QUICK-FRONT-SCOPED.json",
+    "report_sha256": "ccd44ccadc6e5c5b15c3bb8f63acd72d580a681bf67051d9f432590660b20f98",
+    "report_bytes": 6766,
+    "report_library_id": "libfile_2589241cb8b881919dfdcce2a7b0e989",
+    "script_file": "audit_inlined_original_dom.py",
+    "script_sha256": "3fd2b8aa430a4713315eac4b3abc1903764ed738b9dafd08561c0d09d96c686e",
+    "script_bytes": 9620,
+    "script_library_id": "libfile_dd5b347b69948191b881641ac43a8cbf",
+    "roundtrip": "PASS_EXACT_BYTES",
+    "new_release_zip_created": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_SMALL_FILES_EXACT_READBACK",
+    "latest_guarded_stage5_sha256": "76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9",
+    "resume_pointer": "Native exact v486 Chromium DOM Study 94/94, 376/376 DE and 752/752 FA/EN, Quick-front 94/94 morphology components PASS scoped. No need repeat. Full Stage6 remains blocked pending permitted same-origin browser native IndexedDB, real Quick cardItem/screen, read-only current user's Full Backup SRS inventory; MP3 app Audio is TTS, source MP3 not wired. Stage5 remains nonimport static. Stage7 not final."
+  }
+}

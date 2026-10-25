@@ -1,0 +1,71 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-verben-lexical-repair-v336",
+  "date": "2026-10-25",
+  "milestone": {
+    "name": "STAGE7_USER_FINAL_CONTENT_DELIVERY_WITH_EXPLICIT_STAGE6_DEFERRAL",
+    "level": "major",
+    "state": "CLOSED"
+  },
+  "scope": {
+    "unit": "delivered_non_manifest_content_member",
+    "total_units": 812
+  },
+  "progress": {
+    "reviewed_unique": 812,
+    "unreviewed": 0,
+    "dispositions": {
+      "stage5_content_identical": 805,
+      "added_stage7_evidence_and_handoff": 7
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scoped_stage7_delivery": "PASS_EXACT_POSTPACKAGE_AND_LIBRARY_BYTE_READBACK",
+    "official_unqualified_stage7_runtime_final": false,
+    "stage6": "BLOCKED_NOT_PASSED_USER_DEFERRED",
+    "stage4": "FINAL_USER_ACCEPTED_WITH_DECLARED_WAIVERS",
+    "stage5": "PASS_CONTENT_ONLY_TECHNICAL_QA",
+    "user_acceptance": "Explicit 2026-10-25 request to finalize Stage7 and fix app compatibility later; not a retroactive claim of runtime tests",
+    "current_runtime": "v486-R120",
+    "verification_evidence": [
+      "Exact Stage5 parent 43,868,262 bytes SHA256 b273ac6842bb48be09f047b8b3465d1eefb5957a8df63b69954047700aaada68 verified before packaging",
+      "Stage7 final content-only ZIP 43,404,457 bytes SHA256 adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06, 814 ZIP members, CRC PASS",
+      "All 805 original Stage5 non-root-manifest entries preserved exact byte-for-byte, including source, canonical, accepted combination authority, TSV and JSON",
+      "Fresh re-extraction independent Stage7 validator PASS: 812/812 content member SHA256SUMS.txt checks, 813/813 root SHA256SUMS checks",
+      "Stage5 content-only validator rerun on delivered Stage7 extraction: 310 cards, 247 verbs, 63 expressions, 1240 DE-FA-EN examples, 1934 bilingual combinations, 1043 annotation spans, 312 source occurrences, 4/4 seeded negative controls PASS",
+      "Neutral import projection validators independently PASS 310 TSV and 310 JSON entries, 0 reported errors",
+      "No Flashcards runtime/executable bundled; original audio MP3 absent and audio references preserved",
+      "Stage6 v486 exact runtime previously preflighted 310/310, but rendering 63 example identities across 50 cards was wrong; real-origin IndexedDB/reopen blocked by ERR_BLOCKED_BY_ADMINISTRATOR; both caveats inside handoff",
+      "Library newly accepted Stage7 ZIP and rematerialized bytes exactly match local SHA256 and byte size (43,404,457); no old Library file deleted"
+    ],
+    "known_waivers": {
+      "source_origin_claims_lacking_item_evidence": 680,
+      "historical_fa_example_edits_unreconstructed": 4,
+      "stage6_affected_cards": 50,
+      "stage6_affected_example_items": 63,
+      "stage6_indexeddb_test": "NOT_RUN"
+    },
+    "current_app_artifact_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "exact_runtime_final_verification": "NOT_PASSED",
+    "official_future_work": "Stage6 display precedence fix and real IndexedDB browser persistence; strict unqualified Stage7 verification after those, separate from completed user-accepted content delivery"
+  },
+  "persistence": {
+    "git": "IN_SYNC_COMPACT_RECEIPT_ONLY",
+    "resume_pointer": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-STAGE7-USER-FINAL-WITH-STAGE6-DEFERRED-CONTENT-PRODUCTION.zip",
+    "artifact": {
+      "filename": "Menschen-A1-Verben-v3.3.6-STAGE7-USER-FINAL-WITH-STAGE6-DEFERRED-CONTENT-PRODUCTION.zip",
+      "sha256": "adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06",
+      "bytes": 43404457,
+      "zip_members": 814,
+      "member_sha256_entries": 812,
+      "root_sha256_entries": 813,
+      "library_file_id": "libfile_de27ab14396c8191a913742176f617aa",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-Verben-v3.3.6-STAGE7-USER-FINAL-WITH-STAGE6-DEFERRED-CONTENT-PRODUCTION.zip",
+      "library_readback": "PASS_EXACT_SHA256_AND_BYTES"
+    },
+    "git_LATEST_json": "OLDER_ROUND4_STALE_DO_NOT_REBASE_ON_IT",
+    "stage5_parent_sha256": "b273ac6842bb48be09f047b8b3465d1eefb5957a8df63b69954047700aaada68"
+  },
+  "next_action": "No more A1 Verben content editing required for this user-final handoff. Future optional runtime work from then-CURRENT app must repair learner-review example display precedence without changing canonical/UI, then real-browser commit/IndexedDB persistence tests; Stage6 currently not passed."
+}

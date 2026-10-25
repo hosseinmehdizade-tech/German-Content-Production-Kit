@@ -1,0 +1,43 @@
+{
+  "schema": "nvv-library-conservative-zip-cleanup@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "nomen-verb-verbindungen",
+  "status": "PASS_CONFIRMED_RECOUNT",
+  "intent": "User explicitly authorized deletion of 200 older standalone NVV ZIP checkpoints, retaining R6.1 audited final and historical LOCKED.",
+  "scope": {
+    "library_folder": "/German-Content-Production-Kit/Checkpoints",
+    "filename_scope": "NVV-* and historically named v465 R99 Nomen-Verb-Verbindungen ZIP only",
+    "pre_zip_count": 202,
+    "old_zip_files_deleted": 200,
+    "bytes_deleted": 350191365,
+    "decimal_megabytes_freed": 350.191365,
+    "post_zip_count": 2,
+    "other_project_files_deleted": 0,
+    "non_zip_nvv_sidecars_deleted": 0,
+    "google_drive_files_deleted": 0,
+    "github_historical_evidence_deleted": 0
+  },
+  "retained": [
+    {
+      "name": "NVV-v3.3.6-R6.1-AUDITED-BALANCED-84-LEKTIONEN-CONTENT.zip",
+      "sha256": "dd9169555a9ef2a6bd2cf73c6a0d2ec11b36b9da8d0cf931393462ac5ca85ae6",
+      "bytes": 4689562,
+      "library_file_id": "libfile_729a80aa33b88191b4aa0cc920056e60",
+      "google_drive_url": "https://drive.google.com/file/d/1BRz-_N7YzV2tQdFvth8nvPkQIiFsgrpp/view"
+    },
+    {
+      "name": "German-Flashcards-Pro-v465-R99-Nomen-Verb-Verbindungen-v3.3.6-LOCKED-CONTENT.zip",
+      "sha256": "917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f",
+      "bytes": 7852107,
+      "library_file_id": "libfile_c309354fb5c08191a604296de78a5f2d"
+    }
+  ],
+  "verification": [
+    "All 200 targeted delete operations returned succeeded; five 20-file batches partially executed before separate eight-batch run; actual 40 plus 160 deletions",
+    "Independent full Library ZIP-filter recount after deletion returned EXACTLY the two protected NVV ZIPs",
+    "Google Drive final ZIP remains present under same observed file ID, expected 4,689,562 bytes; previously independently SHA256-verified",
+    "Historical LOCKED ZIP unchanged; sha256 917ba956...",
+    "No other workstream archives matched delete whitelist"
+  ],
+  "caveat": "Historical Git receipts may refer to deleted intermediate Library ZIPs, so those intermediate binaries are intentionally not recoverable from this Library; latest R6.1 plus LOCKED remain."
+}

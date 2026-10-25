@@ -1,0 +1,62 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/Stage6-exact-v486-SRS-semantic-identity-safety",
+  "milestone": {
+    "name": "Discover and reproduce missing explicit semantic identity on all 94 new L24 neutral vocabulary cards; prepare independently verified no-live-import safeguard and collision/migration decision",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Full Stage6 real same-origin IndexedDB/Study/Quick/audio and live reviewStates still cannot run: isolated Chromium navigation file/http/data denied ERR_BLOCKED_BY_ADMINISTRATOR and opaque origin disallows IndexedDB. Additionally transition from old front-based to explicit identity yields 94/94 native semantic identity mismatches; if any original L24 stage5 card was imported, preserving live SRS requires separately proven migration. Not safe to import into real profile."
+  },
+  "scope": {
+    "unit": "one new L24 lexical card tested with exact v486 native identity and import validation",
+    "total_units": 94
+  },
+  "progress": {
+    "reviewed_unique": 94,
+    "unreviewed": 0,
+    "dispositions": {
+      "native_identity_guard_candidate_generated_and_passed_no_live_import": 94
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "scope_boundary": "94/94 scoped semantic identity preflight and no-import candidate PASS; full Stage6 BLOCKED, Stage7 not final. No user SRS or app code modifications.",
+    "verification_evidence": [
+      "Bootstrapped both repos, exact CURRENT app v486-R120 SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d, app index.html SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff, exact Stage5 94-row TSV SHA256 d5ea06dde7908382f81548d437945f3383809cf5fb26a6e0b44616f0f04f34b3.",
+      "Actual production v486 cardSemanticIdentityV191 and sameCardSemanticIdentityV191 executed in Node VM on real 94 neutral card rows: all 94 lack custom_fields.semantic_identity, so current identity falls back to type+display front; 94 native imported card format validations returned zero errors/warnings and 94 unique old identity keys.",
+      "In synthetic in-memory replay native sameCardSemanticIdentityV191 treats morphological front-only edit as new identity while keeping canonical ID; identical front with changed back remains same. Native identity equality does not independently compare numeric card IDs, requiring separate ID collision control.",
+      "Created candidate with explicit derived semantic identity using canonical id + POS + stable lemma + immutable Memrise source row numbers (not display front); exact 23 TSV columns retained, all other 22 column values unchanged, all pre-existing custom_fields keys/values identical; 94 unique identity keys.",
+      "Native v486 semantic function executed on corrected real 94/94 cards, 94/94 front-only edits preserve key; 94/94 independent builder controls reject actual lemma mutation, POS mutation and source-row mutation; 94/94 old-front identity to explicit key transitions differ, so prior imported card SRS migration must be proven before import.",
+      "Original archived read-only L18–L23 study inventory has 688 unique IDs: 0 collisions with candidate 94 IDs. Historical NONIMPORT L24 preview contains 93 shared IDs plus provisional rein label; proposed mb1m-lu-4206 is not an active-IndexedDB uniqueness certificate.",
+      "Chromium re-probe confirms file://, http://localhost, http://127.0.0.1 and data: pages all return ERR_BLOCKED_BY_ADMINISTRATOR even under standard and typical file permissions flags. Opaque-origin set_content full app reports boot-failed, no native IndexedDB or UI proof; no attempt to call this Stage6 PASS.",
+      "Small seven-member no-import candidate ZIP 67,889 bytes SHA256 113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2 includes corrected TSV, explanatory Persian README, Node native evidence, standalone validator and manifest. CRC and source hashes pass, extraction and independent re-run PASS.",
+      "Library exact upload file_00000000694881f4b2ecd76b2a0cd859, stable libfile_06e6c0d474a081918ffbe4f115d88c68, exact byte-identical re-materialization SHA256 PASS and in-package verifier re-run PASS.",
+      "Original Stage5 packaged 149 source MP3 and all previous Stage3C/Stage4/Stage5 metadata unchanged. Primary IndexedDB/SRS not inspected or modified, app runtime/LOCKED/original sources not modified."
+    ],
+    "full_native_stage6": "BLOCKED_ENVIRONMENT_AND_LIVE_SRS_READONLY_SNAPSHOT_MISSING",
+    "scoped_v486_import_format": "PASS",
+    "scoped_semantic_srs_guard": "PASS_CANDIDATE_ONLY",
+    "native_app_code_changed": false,
+    "original_source_modified": false,
+    "old_locked_modified": false,
+    "active_SRS_modified": false,
+    "stage7_final": false
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L24-v486-SRS-IDENTITY-GUARD-CANDIDATE-NOT-IMPORT.zip",
+    "sha256": "113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2",
+    "bytes": 67889,
+    "library_file_id": "file_00000000694881f4b2ecd76b2a0cd859",
+    "library_stable_id": "libfile_06e6c0d474a081918ffbe4f115d88c68",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L24-v486-SRS-IDENTITY-GUARD-CANDIDATE-NOT-IMPORT.zip",
+    "TSV_sha256": "dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "BYTE_EXACT_ROUNDTRIP_PASS",
+    "official_l24_latest_sha_before": "fe2d6bfbb8b59fb2e18ad138a801c5afeea695df",
+    "official_latest_not_promoted_to_stage6": true,
+    "resume_pointer": "Stage5 currently valid static archive SHA a990e3b4308b8f35678e4347387074b1530ca2ab61c4399405602f1fbf5cb8f0, but must NOT import old or new into active profile yet. New 94-card guarded TSV is LIBRARY libfile_06e6c0d474a081918ffbe4f115d88c68 exact ZIP SHA 113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2. Before Stage6: in permitted browser origin take read-only snapshot of all 94 target IDs and reviewStates, distinguish pristine fresh-add from previously imported old-front cards; if any old IDs exist test explicit ID migration preserving exact review state; isolate test profile v486 import, verified IDB commit/reload, Study/Quick/audio and preserve older card SRS. Keep historic Stage3C/4/5 PASS and app UI unchanged; do not assert Stage6/Stage7."
+  }
+}

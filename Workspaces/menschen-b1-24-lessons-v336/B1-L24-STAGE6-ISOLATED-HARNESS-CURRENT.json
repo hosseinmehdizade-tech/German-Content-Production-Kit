@@ -1,17 +1,17 @@
 {
-  "schema": "b1-l24-stage6-test-harness-pointer@2",
+  "schema": "b1-l24-stage6-test-harness-pointer@3",
   "date": "2026-10-25",
-  "status": "V2_QUICK_OWNER_CORRECTED_STATIC_QA_PASS__BROWSER_ORIGIN_BLOCKED",
+  "status": "V3_94_CARD_SRS_ASSERTIONS_STATIC_PASS__REAL_BROWSER_ORIGIN_BLOCKED",
   "runtime": "v486-R120",
-  "runner_zip_sha256": "79e05af8d6d06ded63da92d23e01e7520d3a069e4511bc9f183e14a838ba1687",
-  "library_id": "libfile_014abcb7d41c8191bde1c00121ce95be",
+  "runner_zip_sha256": "20d7f4188503f78087cf1de91d2bf3a86444187b7505445391e21cb29fe20880",
+  "library_id": "libfile_e7737fef3cb48191bfb04b3c670b29dd",
   "evidence": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE6-REAL-ORIGIN-DISPOSABLE-E2E-RUNNER-READY-BLOCKED.json",
   "current_content_zip_sha256": "76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9",
   "real_browser_import_pass": false,
   "active_srs_checked": false,
   "original_mp3_playback_pass": false,
   "stage7_final": false,
-  "next_action": "Use v2 source-pinned isolated test runner from Library; v1 superseded because generic Quick backHtml did not exercise actual cardItem/quickPresentationExampleHtml. V2 static QA 16/16 and Node JS snippets 21/21, negative mutant rejects old Quick. Browser localhost still blocked, so complete real-origin import, IndexedDB/reload, visible Study/Quick and user SRS snapshot ONLY in permitted environment. Stage5 content is unchanged NONIMPORT. Do not claim full Stage6/Stage7.",
+  "next_action": "Use v3 94-state isolated Stage6 acceptance harness LIBRARY libfile_e7737fef3cb48191bfb04b3c670b29dd once in an explicitly permitted isolated Chromium origin, not a user main profile. All 16 structure checks, 24 JS syntax and 5 tamper regressions PASS, but here local browser navigation was blocked, so native IDB, 94-state and real Study/Quick are unexecuted. Separately obtain fresh read-only current user Full Backup for active SRS collision scan; continue to forbid primary profile Import and do not change MP3 playback/UI without approval. Stage5 canonical remains unchanged, Stage6/Stage7 NOT PASS.",
   "superseded_harness_v1": {
     "sha256": "409589ed0532f28cd0caac1d61e5d2d8e886b816abdfc6c65d25b4fa8d8feb78",
     "library_id": "libfile_edaa229cfc0881918364e6ec707050a6",
@@ -19,19 +19,41 @@
     "defect": "Quick was checked through generic presentation backHtml(mode=quick), not the actual quick cardItem/quickPresentationExampleHtml owner."
   },
   "updated_at": "2026-10-25",
-  "runner_file_sha256": "02bebf5781c228dc4d4039884d2539506d1e17696d000d7aeb680740a1c49de6",
+  "runner_file_sha256": "03bbd0d1920c3b9a5f10735e2139227cecb258bd97cd819dbd5f3467a55a4afc",
   "static_qa": {
-    "status": "PASS_16_16",
-    "javascript_syntax": "PASS_21_21",
-    "negative_regression": "PASS_REJECTS_OLD_QUICK_OWNER",
-    "fresh_chromium_probe": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
-    "preflight": "PASS_6",
-    "actual_browser_dom": false,
-    "actual_IDB": false,
-    "real_profile_SRS": false
+    "status": "PASS_STATIC_ONLY",
+    "checks": "16/16",
+    "javascript_expressions": "24/24",
+    "rehashed_negative_runner_mutations": "5/5",
+    "isolated_browser_preflight": "6/6",
+    "localhost_navigation": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "actual_94_srs_state_replay": false,
+    "real_browser_idb": false,
+    "real_user_srs_examined": false
   },
   "content_source_unchanged": true,
   "current_app_source_unchanged": true,
   "primary_SRS_untouched": true,
-  "stage6_full_pass": false
+  "stage6_full_pass": false,
+  "previous_v2_snapshot": {
+    "sha256": "79e05af8d6d06ded63da92d23e01e7520d3a069e4511bc9f183e14a838ba1687",
+    "library_stable_id": "libfile_014abcb7d41c8191bde1c00121ce95be",
+    "runner_sha256": "02bebf5781c228dc4d4039884d2539506d1e17696d000d7aeb680740a1c49de6",
+    "status": "V2_QUICK_OWNER_CORRECTED_STATIC_QA_PASS__BROWSER_ORIGIN_BLOCKED",
+    "reason": "v2 checked only one SRS card and used button readiness instead of native final Import receipt; superseded by 94-card v3"
+  },
+  "new_v3_coverage": {
+    "distinct_synthetic_review_states": 94,
+    "pre_import_receipt_confirmed_by": "tsvImportReport",
+    "first_import_expected": "94 added, 0 updated, 0 identity resets",
+    "second_import_expected": "0 added, 94 skipped, 0 updated, 0 SRS resets",
+    "expected_idb_checkpoints": [
+      "first commit VERIFIED",
+      "state save/reload 94 unchanged",
+      "duplicate Add receipt",
+      "94 states unchanged after Add",
+      "final reload 94 unchanged"
+    ],
+    "test_execution": "NOT_EXECUTED_BROWSER_ORIGIN_BLOCKED"
+  }
 }

@@ -1,0 +1,68 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C44A_ALL_55_NONCANONICAL_MEMRISE_LOCATOR_NOTES_NORMALIZED_PLUS_L16_SOURCE_FORM_COMPOSITE",
+    "level": "major",
+    "state": "PASS",
+    "scope_boundary": "Source metadata and course source projection repair only. Global Stage4 AI semantic, Stage5 official content and CURRENT runtime Stage6 are not passed."
+  },
+  "scope": {
+    "unit": "unique_source_metadata_repair_card",
+    "total_units": 56,
+    "source_rows_original": 9109,
+    "lessons": {
+      "A1-L14": 29,
+      "A1-L16": 1,
+      "A1-L17": 21,
+      "A1-L18": 5
+    }
+  },
+  "progress": {
+    "reviewed_unique": 56,
+    "unreviewed": 0,
+    "dispositions": {
+      "MIGRATE_NONCANONICAL_MEMRISE_SOURCE_NOTE_WITH_EXACT_BACKUP": 55,
+      "REMOVE_DUPLICATE_AGGREGATED_SOURCE_VISIBLE_FORM_WITH_TWO_LITERAL_SOURCE_ROW_WITNESSES": 1
+    },
+    "translation_edits": 0,
+    "source_original_modified": 0,
+    "source_ledger_holds_excluded_from_review_scope": true
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Exact C43Z original full ZIP SHA256 4147d1141948a211ceb6745c2e854d4d6c3671bb04313ca7d485fe18fa17fb18 matched",
+      "Original 9109-entry Memrise CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222 matched",
+      "55 noncanonical source text locators migrated as unchanged original objects with original array backup and exact primary source row IDs; no blank row references",
+      "29 L14, 21 L17, 5 L18; other dictionary citations retained exactly unchanged",
+      "L16 ma1m-lu-1909 duplicate composite source_visible_form corrected from two original CSV rows 1335/1336 with before/after evidence; user-facing front, back untouched",
+      "Field-level CAS diff restricted to custom_fields of 56 cards, no example/translation/annotation changes",
+      "Whole course 2997 IDs, 3039 lesson memberships, 11988 trilingual example triplets, UTF16 annotations PASS",
+      "Fresh ZIP manifest SHA256SUMS and CRC PASS; 12 adversarial field mutations rejected",
+      "Full package uploaded Library then roundtrip materialized with identical SHA256 93e2b939..."
+    ],
+    "registered_source_immutable": true,
+    "locked_immutable": true,
+    "remaining_noncanonical_memrise_vnext_refs": 0,
+    "stage4_global": "NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6_current_v486_R120": "NOT_RUN",
+    "import_allowed": false,
+    "A1_FINAL": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "archive": "Menschen-A1-C44A-55-MEMRISE-LOCATOR-RECOVERY-L16-PROJECTION-NO-IMPORT-20261025.zip",
+    "archive_sha256": "93e2b939a18cc4d8146d3e951fe6628588fc4d2b72bbb5077ce24a3f8ac8119d",
+    "bytes": 3004631,
+    "canonical_tsv_sha256": "4dd853fe3d576cb02c9033f6da67d7d18c4f029c4f6fbe8d800f6ca595998b9c",
+    "library_file_id": "libfile_0b207a2fb4008191b778ed9a17599de7",
+    "parent_C43Z_sha256": "4147d1141948a211ceb6745c2e854d4d6c3671bb04313ca7d485fe18fa17fb18",
+    "resume_pointer": "Workspaces/menschen-a1-final-consolidation-v336/CURRENT-RESUME-AFTER-C44A-2026-10-25.json",
+    "member_count": 47,
+    "source_raw_in_archive": false
+  },
+  "next_action": "Resume C44A hashed complete Library package; start source-bound linguistic review L13-L23 including all existing source semantic risk flags, especially L08 besonder and L24 contextual holds. Run full AI semantic/adversarial Stage4, Stage5, Stage6 on exact CURRENT runtime only after all risks resolved; no Import now."
+}

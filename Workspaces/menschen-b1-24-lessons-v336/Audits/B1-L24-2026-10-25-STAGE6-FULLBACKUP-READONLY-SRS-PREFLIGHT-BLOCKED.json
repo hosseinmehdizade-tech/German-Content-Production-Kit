@@ -1,0 +1,63 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/v486-Stage6-readonly-full-backup-SRS-preflight",
+  "milestone": {
+    "name": "Implement exact v486 full-backup checksum/94-card collision/SRS orphan read-only preflight with standalone semantic and anti-bypass tests",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Actual Stage6 requires a valid exported Full Backup of the user's active profile and a permitted same-origin browser with IndexedDB/Study/Quick/audio execution. No active backup was found in local/Library search. This tool never imports and cannot verify actual live SRS or claim Stage6 PASS. Chromium navigation previously blocked by administrator."
+  },
+  "scope": {
+    "unit": "one independent synthetic backup-validity, identity-collision, SRS-preflight or source-integrity regression",
+    "total_units": 22
+  },
+  "progress": {
+    "reviewed_unique": 22,
+    "unreviewed": 0,
+    "dispositions": {
+      "synthetic_readonly_regressions_passed": 22
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "scope_boundary": "READ-ONLY prefight TOOL: 22/22 synthetic tests PASS, source/content exact, no real user's backup or live IndexedDB used; parent Stage6 BLOCKED and Stage7 not FINAL.",
+    "verification_evidence": [
+      "Both official repos bootstrapped; latest exact App CURRENT v486-R120 and Kit L24 Stage5 integrated guarded blob 81ba4a7c95f660c388acf64d6e4a72691261dd40 reviewed; no newer explicit uploaded app release replaces v486.",
+      "Source runtime ZIP SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d and main HTML SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff: native backupCanonicalValue code and semantic identity helper snippets extracted byte-for-byte; checksum canonical serialization equivalence explicitly tested.",
+      "Exact verified Stage5 integrated guard ZIP SHA256 76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9; inside guarded 94-card TSV pinned SHA256 dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f. Check reader never alters this TSV and refuses forged target even if semantic identity is recomputed.",
+      "Strict read-only Full Backup v486 verification: correct German Flashcards Pro app/type/schema, complete card snapshot, consistent declared count, valid nonempty recursive canonical SHA256 checksum, duplicate ID rejection and strict target 94 ID/source/lemma/part-of-speech guard.",
+      "Proposed safe preflight separates NEW, SAME_IDENTITY_UNCHANGED, SAME_IDENTITY_STALE_CONTENT (Add would skip edits), LEGACY_IDENTITY_CONFLICT, ORPHAN_SRS_STATE, CROSS_ID_SEMANTIC_DUPLICATE; any conflict HOLD, zero-conflict outcome is explicitly preliminary, NEVER permission to Import user profile.",
+      "21 original synthetic tests plus one hardened checksum-rehashed target mutation test: 22/22 PASS; native extracted cardSemanticIdentityV191 and sameCardSemanticIdentityV191 compared for explicit, old-front, front-only morph edit and forged explicit key.",
+      "Standalone no-extra-package Node CLI exits 0 on no synthetic conflict but NOT live approval, 2 for detected conflict, 3 for invalid/unsealed backup or mutated target; diagnostics never copies SRS review-state data to report, only status/count/sample card IDs. No raw user backup distributed.",
+      "10-member 76,746-byte ZIP SHA256 a92f5e8bb455703c2c140b36c3d2e0cf7bf78554b71b720a8faff69056b269e2, 9 SHA256SUMS entries, ZIP CRC and in-package Python verifier with replay 22/22 PASS both before and after extraction. Exact uploaded Library file libfile_085ccdd7df508191b003c21f4daf1f1e and fresh independent Library re-materialization byte-equal SHA match, extracted verifier PASS.",
+      "No real user backup located during targeted Project/Library/local checks, so no user's SRS inspected and no confidence claim about actual 94 IDs being fresh; no app source/UI/LOCKED/original Memrise/active IndexedDB data mutated."
+    ],
+    "read_only_gate": "PASS_22_SYNTHETIC_TESTS",
+    "runtime_stage6": "BLOCKED_SAME_ORIGIN_AND_MISSING_LIVE_BACKUP",
+    "real_SRS_verified": false,
+    "app_mutated": false,
+    "source_mutated": false,
+    "locked_mutated": false,
+    "active_SRS_mutated": false,
+    "stage7_final": false
+  },
+  "artifact": {
+    "filename": "Menschen-B1-L24-Stage6-READONLY-FULLBACKUP-SRS-GATE-v486-NONIMPORT.zip",
+    "sha256": "a92f5e8bb455703c2c140b36c3d2e0cf7bf78554b71b720a8faff69056b269e2",
+    "bytes": 76746,
+    "members": 10,
+    "library_file_id": "file_00000000b28081f48dba9d1bf8154d84",
+    "library_stable_id": "libfile_085ccdd7df508191b003c21f4daf1f1e",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-B1-L24-Stage6-READONLY-FULLBACKUP-SRS-GATE-v486-NONIMPORT.zip",
+    "reference_target_sha256": "dd6c89e2bca57438cc6107dcea385839900753b4768ecfc965fdedec46fa8d6f",
+    "roundtrip": "PASS_EXACT_BYTES_SHA_CRC_AND_EXTRACTED_REPLAY"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_EXACT_READBACK",
+    "original_l24_latest_blob": "81ba4a7c95f660c388acf64d6e4a72691261dd40",
+    "latest_stage5_zip_unchanged": "76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9",
+    "resume_pointer": "Do not repeat 94-card content Stage3C/Stage4 or Stage5. Read-only full-backup identity/SRS preflight tool SHA a92f5e8bb455703c2c140b36c3d2e0cf7bf78554b71b720a8faff69056b269e2 is portable and 22/22 tested; current live SRS uninspected. If legitimate v486 Full Backup available, run read-only gate first. Stop any conflicting or legacy ID import. Even no-conflict requires permitted same-origin isolated actual v486 IndexedDB/Study/Quick/audio Stage6 acceptance before active Import and Stage7 single ZIP. Original MP3 binding (TTS vs packaged MP3) still unresolved and visible behavior change requires approval; no UI/runtime mutation was made."
+  }
+}

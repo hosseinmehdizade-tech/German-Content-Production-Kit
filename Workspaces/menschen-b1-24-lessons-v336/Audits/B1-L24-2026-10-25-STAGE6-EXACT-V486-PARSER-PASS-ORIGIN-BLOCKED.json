@@ -1,0 +1,50 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/new-lineage-Stage6-exact-CURRENT-runtime-transport",
+  "milestone": {
+    "name": "Run exact v486-R120 native tokenizer in Node and Chromium against all 94 Stage5 Universal cards, diagnose same-origin Stage6 blocker without exposing primary SRS",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Chromium navigation to local same-origin URL fails with ERR_BLOCKED_BY_ADMINISTRATOR even with local server running; IndexedDB on permitted about:blank opaque origin throws SecurityError. Cannot truthfully run real app IndexedDB commit/reload, Study/Quick or audio or access user's primary SRS. Exact-runtime native input tokenizer is a scoped PASS only."
+  },
+  "scope": {
+    "unit": "one Stage5 learner card fed to exact v486 native tokenizer in both Node.js and Chromium V8",
+    "total_units": 94
+  },
+  "progress": {
+    "reviewed_unique": 94,
+    "unreviewed": 0,
+    "dispositions": {
+      "native_current_runtime_tokenizer_Node_and_Chromium_V8_PASS_not_full_import": 94
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "scope_boundary": "Actual v486-R120 tokenizer and browser V8 evaluation passed; Stage6 NATIVE IMPORT/ACTIVE SRS is BLOCKED because no allowed same-origin browser context. No full app normalizeCard, Study, Quick, real playback, SRS or Stage7 claim.",
+    "verification_evidence": [
+      "Exact CURRENT v486-R120 app ZIP SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d materialized from its durable Library identity; full main HTML SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff matches authoritative current app PROJECT-STATE.",
+      "Exact L24 Stage5 ZIP SHA256 a990e3b4308b8f35678e4347387074b1530ca2ab61c4399405602f1fbf5cb8f0 verified; actual TSV SHA256 d5ea06dde7908382f81548d437945f3383809cf5fb26a6e0b44616f0f04f34b3.",
+      "Extracted unmodified const IMPORT_LIMITS_V474, function parseTsv(text) and UNIVERSAL_TSV_COLUMNS directly from exact v486 HTML; Node VM executes 94/94 input card rows with exact 23/23 ordered headers, 94 distinct IDs, 376 complete DE/FA/EN example groups and 376 distinct example IDs, all custom_fields presentation_contract exact and original source links present.",
+      "Three negative native-parser input cases rejected: unterminated quote, field exceeding 16MiB limit, TSV exceeding 80MiB budget.",
+      "Independent real Chromium V8 page.evaluate executes the same extracted v486 tokenizer: 94 rows, 23 fields, 94 unique IDs, 376 example groups, matching Node result; browser origin is null and IndexedDB.open throws SecurityError.",
+      "Exact localhost navigation was attempted in Chromium and blocked by administrator: Page.goto net::ERR_BLOCKED_BY_ADMINISTRATOR. Playwright route fulfillment to local URLs also blocked. No browser-origin user profile data was read or written; Stage6 full tests not simulated.",
+      "Stage5 archive includes 149 original MP3. 94 new cards reference 81 distinct audio filenames; those 81 files verified physically present in ZIP. Audio binding and playback not tested.",
+      "Local reproducible scripts and reports: /mnt/data/b1_l24_stage6/verify_v486_native_tokenizer.js, chromium_parser_probe.py, STAGE6-SCOPED-PASS-ORIGIN-BLOCKED-REPORT.json SHA256 b61a47de6949eb702da458598a73547fb10617193d416678c2ce1e07cf41c42f. Re-ran both programs independently with same structural outcome.",
+      "Neither original source, v486 app, previous LOCKED cards, active user IndexedDB nor SRS were mutated. Previous L24 Stage5 static authority remains valid; Stage6 not marked PASS."
+    ],
+    "source_modified": false,
+    "app_modified": false,
+    "locked_modified": false,
+    "user_srs_modified": false,
+    "native_stage6": "BLOCKED_ENVIRONMENT",
+    "stage7": "NOT_FINAL"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library_app_id": "libfile_51c3042d51508191b391e9d2edf8301f",
+    "library_stage5_id": "libfile_101d25c65ae881918c6df0380fb64fc3",
+    "l24_latest_blob_observed": "e5e35fe1fd3012eb72d4d0e69c723b9e4a10154e",
+    "resume_pointer": "Stage5 static PASS remains valid, do not redo content. Stage6 exact current v486 native parser tokenizer passed in Node and Chromium; BLOCKED actual same-origin IndexedDB due environment browser URL policy. Resume only in permitted exact-origin browser with disposable isolated profile: true v486 native parse/transaction/reload/Study/Quick, original MP3 playback, active-card ID+SRS collision proof. Do not touch primary SRS before non-destructive evidence. Stage7 cannot be FINAL without true Stage6."
+  }
+}

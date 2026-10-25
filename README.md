@@ -1,40 +1,50 @@
 # German Content Production Kit — NVV workstream branch
 
-> This is the dedicated `nvv-production` workstream branch.  
-> **Global framework/runtime authority lives on `main`**, not in historical branch-local root metadata.
+> Branch-local workstream source/receipts. **Global framework, policies and current runtime authority are on `main`**. Do not use historical branch metadata to override newer verified portable artifacts.
 
-Current global framework: **v3.3.6**  
-Current entrypoint: `Prompt/START-PROMPT-v3.3.6.md`
+## ACTIVE — current NVV successor (2026-10-25)
 
-## NVV status
+**Newer editable NVV successor is ACTIVE, Stage4 IN PROGRESS, not FINAL and not content-locked.** Do not select the historical 2026-10-07 LOCKED archive as the latest working content.
 
-The standalone **Nomen-Verb-Verbindungen** workstream is complete and content-locked.
+- Source: 2,476 occurrences; 2,492 stable card identities; 9,968 DE/FA/EN example triples.
+- Current working canonical SHA-256: `214c7cab33de609826755bcaf0eecc118e226eeaf84be7ce39fbef724bc8ad9f`.
+- Explicit **versioned** 2026-10-25 TSV successor SHA-256: `150a9a10be10ccfa0f6f78c8dcd50a8c0a63c9cdfed46776eadbe705def2eb0c`. This is NOT a same-byte recovery of the older TSV whose SHA was `3a963cbf...`.
+- Portable technical successor: `NVV-STAGE4-2026-10-25-VERSIONED-TSV-SUCCESSOR-WIP.zip`, SHA-256 `9bd2fe659ee39c883e601f05e30c8b8f2a0816f47c32b0fbc6acbadae651bb12`, stored in Google Drive and ChatGPT Library.
+- Technical QA: 2,492-card canonical/TSV parity PASS; **linguistic Stage4 and Stage5/6/7 final acceptance NOT YET PASS**.
+- Latest technical receipt: `Workspaces/nomen-verb-verbindungen/08-lean-working/NVV-2026-10-25-VERSIONED-TSV-SUCCESSOR-TECHNICAL-QA.json` on `nvv-production`.
+- The runtime target must be resolved dynamically from **main** CURRENT runtime at integration time; never pin to an older v465/v485 merely because a historical report mentions it.
 
-- Workstream: `Workspaces/nomen-verb-verbindungen/`
-- State: **STAGE7_EXACT_FINAL_CONTENT_LOCKED**
-- Cards: **2492**
-- Examples: **9968**
-- Source occurrences: **2476**
-- Open completeness cells: **0**
-- Final release:
-  `German-Flashcards-Pro-v465-R99-Nomen-Verb-Verbindungen-v3.3.6-LOCKED-CONTENT.zip`
-- Final SHA-256:
-  `917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f`
-- Runtime integration target: **GFP v465-R99**
-- Content-specific Stage6/7 runtime acceptance: **PASS**
-- Separate global app same-profile acceptance: `PENDING_USER_SAME_PROFILE_V465`
+## ACTIVE — linguistic review authority (user-approved 2026-10-25)
 
-## Resume here
+**No external qualified-human linguist, independent third-party specialist, signed reviewer identity, or external expert approval is mandatory to progress or close NvV Stage4.**
 
-Read in this order:
+The higher-priority cross-project authority is **`main/LINGUISTIC-QA-AUTHORITY-POLICY.json`**, invoked through **`main/PROJECT-BOOTSTRAP.md`** and **`main/Prompt/START-PROMPT-v3.3.6.md`**. This rule covers all content workstreams, not only NVV.
+
+- ChatGPT does fully documented, source-grounded linguistic QA and a separated adversarial second pass; the user adjudicates consequential questions where needed. No routine signature/questionnaire.
+- Explicitly disposition all inherited 66 NVV legacy specialist-review items, plus the distinct remaining case, by **AI review with evidence**, preserving original issues and stable IDs. Do not automatically mark any unresolved issue PASS.
+- Missing outside-human signoff **is no longer a blocker by itself**. Defects, absent source evidence, uncompleted source/semantic audit and failed deterministic QA may still block.
+- **Never label AI review as independent external human approval.**
+- `Stage4 PASS` requires actually passing the re-audit + technical gates; policy change alone is not `Stage4 PASS`.
+- Older immutable reports, frozen audit baselines, original source, LOCKED release and prior receipts remain unchanged. A historical term such as `QUALIFIED_EXPERT_HOLD` is a *legacy queue label*, not a current staff requirement.
+
+Workstream-local policy/authority handoff: `Workspaces/nomen-verb-verbindungen/08-lean-working/REVIEW-AUTHORITY-CURRENT.json`.
+
+## Historical LOCKED predecessor — not current successor
+
+The standalone NVV **2026-10-07 predecessor** remains Stage7 content-locked and immutable:
+
+- Release: `German-Flashcards-Pro-v465-R99-Nomen-Verb-Verbindungen-v3.3.6-LOCKED-CONTENT.zip`
+- SHA-256: `917ba9561245deea32cc3be1095af0185858d3d45d8eb7ff40e4a7b4c361771f`
+- Historical Stage6/7 acceptance is scoped to the *predecessor*, not the 2026-10-25 working successor.
+
+## Resume — order of authority
 
 1. `main/PROJECT-BOOTSTRAP.md`
-2. `main/PROJECT-STATE.json`
-3. `main/Prompt/START-PROMPT-v3.3.6.md`
-4. `Workspaces/nomen-verb-verbindungen/HANDOFF-READ-FIRST.md`
-5. `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json`
-6. `Workspaces/nomen-verb-verbindungen/00-source/SOURCE-MANIFEST.json`
+2. `main/LINGUISTIC-QA-AUTHORITY-POLICY.json` and `main/Prompt/START-PROMPT-v3.3.6.md`
+3. `main/PROJECT-STATE.json`, and `main/WORKSTREAM-RESUME-CURRENTNESS-POLICY.json`
+4. This README and `Workspaces/nomen-verb-verbindungen/08-lean-working/REVIEW-AUTHORITY-CURRENT.json`
+5. `Workspaces/nomen-verb-verbindungen/08-lean-working/CURRENT.json`; `07-independent-audit/LATEST.json`; latest accepted successor portable ZIP/technical receipt (newer authority outranks stale branch metadata)
+6. `Workspaces/nomen-verb-verbindungen/CHECKPOINT.json` for historical LOCKED lineage; `00-source/SOURCE-MANIFEST.json` for source
+7. Actual Stage4 AI linguistic disposition of all open cases; then Stage5/6/7 as independently required.
 
-Historical v3.1.12/N0/Batch000x instructions are **not current authority** and must not reopen the locked workstream.
-
-Any future learner-content change requires a new successor release. Do not mutate the locked bytes in place.
+Do not rewrite or delete original older reports merely to remove old reviewer wording. The active override supersedes it, without falsifying history.

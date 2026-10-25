@@ -1,0 +1,86 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": {
+    "name": "R136_R137_R138_LIBRARY_RECOVERY_BYTE_EXACT_NO_CONTENT_CHANGE",
+    "level": "major",
+    "state": "CLOSED"
+  },
+  "scope": {
+    "unit": "previously_Library_quota_blocked_portable_archive",
+    "total_units": 3
+  },
+  "progress": {
+    "reviewed_unique": 3,
+    "unreviewed": 0,
+    "dispositions": {
+      "EXACT_BYTES_PERSISTED_AND_READBACK_VERIFIED": 3
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "All three currently local archive files verified exact SHA256 against respective immutable Git checkpoints before upload.",
+      "Files Library accepted uploads for R136, R137, and R138; captured authoritative Library file IDs and paths.",
+      "Independent Files.materialize into distinct directory succeeded for all three and local SHA256 / exact byte equality assertions pass.",
+      "ZipFile.testzip() PASS and member count matches respective reports for 58, 62, 67.",
+      "No existing files deleted or overwritten. This receipt updates persistence status only; does not retroactively mark content Stage4/Stage5/Stage6/Stage7 passed."
+    ],
+    "stage4_global": "IN_PROGRESS_NOT_PASS",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "historical_R119": "IMMUTABLE"
+  },
+  "archives": [
+    {
+      "version": "R136",
+      "file": "Menschen-A2-Verben-R136-SOURCE-EXAMPLE-ATTRIBUTION-AND-PACKAGE-HYGIENE-WORKING.zip",
+      "sha256": "ce06baba9e5cb3f5d31417f2b532a100cb4baa787be58e1545cd1e26252ce98d",
+      "bytes": 2704794,
+      "members": 58,
+      "library_file_id": "libfile_9e9099b457f08191b8c0fa6d87c00749",
+      "file_id": "file_0000000065a881f48e91533978a7257a",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R136-SOURCE-EXAMPLE-ATTRIBUTION-AND-PACKAGE-HYGIENE-WORKING.zip",
+      "readback_sha256": "PASS",
+      "readback_byte_equality": "PASS",
+      "zip_crc": "PASS",
+      "member_count_verified": true
+    },
+    {
+      "version": "R137",
+      "file": "Menschen-A2-Verben-R137-FULL-RIGHT-COLUMN-EVIDENCE-WORKING.zip",
+      "sha256": "b1b4f8b6238ecbd86dedee8f777db9d354d30a718729185d9a628600c8d67505",
+      "bytes": 2753897,
+      "members": 62,
+      "library_file_id": "libfile_d24dc430fedc8191b103559ef76face7",
+      "file_id": "file_0000000029d481f4a29931bd619e2e1c",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R137-FULL-RIGHT-COLUMN-EVIDENCE-WORKING.zip",
+      "readback_sha256": "PASS",
+      "readback_byte_equality": "PASS",
+      "zip_crc": "PASS",
+      "member_count_verified": true
+    },
+    {
+      "version": "R138",
+      "file": "Menschen-A2-Verben-R138-STAGE4-EVIDENCE-RISK-AND-DUDEN-CORROBORATION-WORKING.zip",
+      "sha256": "eb03550116174605eef5deb3f83f357a1778621ba7284e2b2669867bc06a583f",
+      "bytes": 2732773,
+      "members": 67,
+      "library_file_id": "libfile_74ec3ff51fcc81919f2c4a911be0e915",
+      "file_id": "file_00000000ca1c81f4b39eeeedd7cc33c1",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-Verben-R138-STAGE4-EVIDENCE-RISK-AND-DUDEN-CORROBORATION-WORKING.zip",
+      "readback_sha256": "PASS",
+      "readback_byte_equality": "PASS",
+      "zip_crc": "PASS",
+      "member_count_verified": true
+    }
+  ],
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "IN_SYNC_EXACT_READBACK",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json -> active R138 with Library file ID libfile_74ec3ff51fcc81919f2c4a911be0e915"
+  },
+  "next_action": "Continue source/semantic Stage4 gates from R138; R136 and R137 restored as byte-exact Library checkpoints. Do not confuse binary persistence with QA finality."
+}

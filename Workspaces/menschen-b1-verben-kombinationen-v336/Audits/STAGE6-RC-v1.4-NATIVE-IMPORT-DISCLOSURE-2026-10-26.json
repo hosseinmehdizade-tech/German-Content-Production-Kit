@@ -1,0 +1,49 @@
+{
+  "schema": "gcpk-stage6-native-import-ui-regression@1.4.0",
+  "date": "2026-10-26",
+  "status": "PASS_SCOPED_HARNESS_REPAIR__STAGE6_REAL_ORIGIN_BLOCKED__STAGE7_NOT_FINAL",
+  "artifact": {
+    "name": "Menschen-B1-Verben-v486-R120-STAGE6-RELEASE-CANDIDATE-v1.4-NOT-FINAL-2026-10-26.zip",
+    "sha256": "c003db494fef2fe960146e7f3b863978cfcd9d4bd8f6b943be187c316311f12f",
+    "bytes": 22376620,
+    "zip_members": 302,
+    "manifest_files": 301,
+    "storage": "CONVERSATION_ONLY_LIBRARY_FULL"
+  },
+  "parent": {
+    "prior_candidate_sha256": "d01f8ff06113822be10a62bc2bc0db1f073bd26a4f73cc5eaa25373f6cc50764",
+    "current_runtime": "v486-R120",
+    "current_runtime_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "core_immutable_file_count": 179,
+    "original_user_final": "UNCHANGED"
+  },
+  "defect": "The v1.3 test runner called select_option on #tsvImportMode while its parent <details class=import-mode-disclosure-v352> was closed; this deterministically times out in Playwright before actual TSV selection.",
+  "repair": "v1.4 test runner clicks the native import-mode <summary>, waits for disclosure.open, then selects merge. Stage6 evidence verifier now requires the import_mode_ui PASS field and has seeded missing-field negative control.",
+  "tests": {
+    "native_closed_disclosure_expected_timeout": "PASS",
+    "native_opened_select_merge": "PASS",
+    "v486_import_DOM_contract": "PASS",
+    "fresh_zip_crc": "PASS",
+    "fresh_manifest_301": "PASS",
+    "cards": 395,
+    "examples": 1580,
+    "kombinationen": 2123,
+    "harness_checks": 19,
+    "durable_static_checks": 30,
+    "synthetic_bad_reports_rejected": 14,
+    "real_browser": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "indexeddb_commit": "NOT_RUN",
+    "restart_persistence": "NOT_RUN",
+    "service_worker_offline": "NOT_RUN",
+    "Stage6": "NOT_FINAL",
+    "Stage7": "NOT_FINAL"
+  },
+  "constraints": {
+    "no_chromium_policy_bypass": true,
+    "no_app_code_change": true,
+    "no_UI_change": true,
+    "no_content_change": true,
+    "library_storage_quota_full": true
+  },
+  "next_action": "Run 07-Tools-Launcher/Run-Stage6-Windows.cmd from exact v1.4 RC in a browser permitting localhost. Validate STAGE6-LOCAL-RESULT.json for real IDB commit, same-profile restart, all exact card content and offline before Stage7 final."
+}

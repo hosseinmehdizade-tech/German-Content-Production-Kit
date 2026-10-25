@@ -1,0 +1,71 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/stage4-readonly-source-fidelity-v034",
+  "milestone": {
+    "name": "V034_10830_LEDGER_HASHES_AND_369_MEMRISE_GERMAN_SOURCE_CLAIMS_SCOPED_QA",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Exact v037 ZIP SHA f96fa3adeae541c08866a9515fbaecfb6dcefb1b425e4a0aa704dc11d624913a not available. This is read-only v034 source-provenance audit, NOT a Stage4 acceptance of v037."
+  },
+  "scope": {
+    "unit": "German source-linked example provenance in all 1778 v034 cards; cross-check all 10830 DE/FA/EN ledger unit hashes",
+    "total_units": 369,
+    "baseline_zip_sha256": "245b8108782d272a9b5e8e6a4ed0ab63e068d562d7a934e5e707fd80eaee77ff",
+    "original_rar_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "original_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222"
+  },
+  "progress": {
+    "reviewed_unique": 369,
+    "unreviewed": 0,
+    "dispositions": {
+      "REGISTERED_GERMAN_EXACT": 366,
+      "DECLARED_EDITORIAL_PUNCTUATION": 1,
+      "DECLARED_SOURCE_ALIGNED_NONLITERAL": 2
+    },
+    "all_ledger_units": 10830,
+    "language_field_hashes_checked": 32490,
+    "mismatches": 0,
+    "v037_official_semantic_approvals_unchanged": 5916,
+    "v037_official_pending_unchanged": 4894,
+    "v037_official_holds_unchanged": 20
+  },
+  "quality": {
+    "stage_complete": false,
+    "source_fidelity_on_v034": "PASS_SCOPED_FULL_369_REFERENCES",
+    "german_source_claim_false_attributions": 0,
+    "seeded_negative_controls": 5,
+    "deterministic_tests": "26/26 PASS",
+    "stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_ready": false,
+    "verification_evidence": [
+      "Original RAR, CSV and v034 ZIP matched registered SHA256 in current turn",
+      "1778 native v034 card IDs and 10830 unit IDs unique and complete",
+      "All 32490 language fields hash-match the v034 10830-unit ledger, without implying linguistic correctness",
+      "366 German example source texts byte-identical to original source CSV row; one declared punctuation-only change, two explicitly source-aligned curated normalizations",
+      "No undeclared German source-exact mismatches; five deliberate corruptions rejected",
+      "Exact v037 artifact not accessible; no writes to LATEST, Stage4 source data or historical LOCKED decks."
+    ]
+  },
+  "nonliteral_ids": [
+    "ma2m-lu-0023-ex-01",
+    "ma2m-lu-0179-ex-01",
+    "ma2m-lu-0183-ex-01"
+  ],
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NOT_ATTEMPTED",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/STAGE4-V034-ALL-369-SOURCE-REF-FIDELITY-READONLY-2026-10-25.json",
+    "audit_filename": "Menschen-A2-v034-369-SOURCE-REF-INDEPENDENT-AUDIT.json",
+    "audit_sha256": "3a23e0b961d37789d5ead541c4a7ef319bac7b592b521e9704911c319cd71488",
+    "qa_filename": "Menschen-A2-v034-ALL-10830-HASH-AND-369-SOURCE-REF-QA.json",
+    "qa_sha256": "9d62e40fa4ba146565a133065efcfa00a9f7768608b1a7da9cc1156c9dc84b32",
+    "verifier_script_filename": "verify_full_source_claims_v034.py",
+    "verifier_script_sha256": "654d3205475ae32283f3a51b39441711a500f7a83736397d1ca95dd0d45050be",
+    "binary_location": "CURRENT_CONVERSATION_ONLY",
+    "parent_latest_sha": "083a98b6722a9c892725b4b581a7a00c2bdd6c61"
+  },
+  "next_action": "Recover original v037 exact ZIP, verify SHA and v034→v037 lineage then port validated separate source QA. Keep Stage4 BLOCKED, 4894 unaudited and 20 holds unchanged. Continue semantic review from exact v037 when materialized."
+}

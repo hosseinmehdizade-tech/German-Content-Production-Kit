@@ -1,0 +1,53 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "nomen-verb-verbindungen",
+  "milestone": {
+    "name": "NVV R6.1 independent ZIP packaging and self-contained test/documentation repair",
+    "level": "major",
+    "state": "PASS",
+    "claim_scope": "AUDIT_AND_PACKAGING_ONLY_NOT_NEW_STAGE6_BROWSER"
+  },
+  "scope": {
+    "unit": "content cards",
+    "total_units": 2492,
+    "source_r6_artifact_sha256": "97f4eb57bafda48f0aea96b73e06893a7cfe0ae96caad2f1873b503d49700aab",
+    "trilingual_example_triplets": 9968
+  },
+  "progress": {
+    "reviewed_unique": 2492,
+    "unreviewed": 0,
+    "dispositions": {
+      "CONTENT_EXACTLY_PRESERVED_AND_QA_PACKAGING_CORRECTED": 2492
+    },
+    "unchanged_primary_files_byte_exact": 21,
+    "changed_primary_files": 0,
+    "stage7_runtime_browser": "NOT_VERIFIED"
+  },
+  "quality": {
+    "stage_complete": true,
+    "verification_evidence": [
+      "Original R6 ZIP CRC, 54-member manifest, TSV source fields passed",
+      "Original R6 stale Stage7 validation FAIL on R5 hash and empty-lesson assumptions; missing validate_stage5.py and wrong TSV SHA in Persian guide",
+      "R6.1 resolves stale docs and validator, no change to 21 primary data/source/canonical/enrichment files compared byte-for-byte with R6",
+      "Fresh R6.1 extraction followed by embedded R6 lesson test PASS 84 groups (56x30,28x29) and 8 negative controls",
+      "Fresh embedded R6.1 Stage7 archive validator PASS 134568 canonical/import mirrors, 11 negative controls, 2476 source occurrences, 2493 source-output-map rows, 42364 resolved enrichment dimensions, 17444 rejected candidates",
+      "HF2 validation PASS 2492 expression fronts, 0 errors",
+      "Final complete ZIP CRC PASS, SHA256SUMS includes BUNDLE-MANIFEST, no app payload, canonical import exact byte SHA maintained"
+    ],
+    "limitation": "User observed application layout as normal but live automated browser IndexedDB acceptance from previous Stage6 remains unverified; user-accepted exception remains."
+  },
+  "persistence": {
+    "git": "PENDING",
+    "library": "NOT_STORED_PRIOR_LIBRARY_STORAGE_QUOTA",
+    "artifact_name": "NVV-v3.3.6-R6.1-AUDITED-BALANCED-84-LEKTIONEN-CONTENT.zip",
+    "artifact_sha256": "dd9169555a9ef2a6bd2cf73c6a0d2ec11b36b9da8d0cf931393462ac5ca85ae6",
+    "zip_bytes": 4689562,
+    "zip_members": 55,
+    "content_import_sha256": "8cbe0ff33c35be5e34bd7d68cc18e8fe0ea70fa75133a0b17b6d6a5875661153",
+    "canonical_sha256": "4312f48f0d22dad4d7904e57f986f4fac31f195031ef9cdf2429fcaaf5bb367a",
+    "pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "delivery_surface": "CONVERSATION_USER_DOWNLOAD_LOCAL_SHA_VERIFIED",
+    "resume_pointer": "Use R6.1 exact conversation artifact SHA dd9169555a9ef2a6bd2cf73c6a0d2ec11b36b9da8d0cf931393462ac5ca85ae6. Do not re-import if R6 lesson groups already work; learner files identical. Archive in Library after storage space legitimately freed. No Stage6 browser PASS."
+  }
+}

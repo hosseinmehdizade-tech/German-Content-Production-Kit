@@ -36,10 +36,10 @@
     "canonical_sha256": "bd49ece98922ea96553b761f474e132e5ef02a9a28f00bc0022eb1a2a62d3c2c",
     "tsv_sha256": "29e3053f1d3fcf225800596ad7166028f26c694410842249703740148acdfc0f"
   },
-  "next_action": "Continue first-pass AI source-grounded semantic review at card order 201 (195 remaining); retain five usage/source holds; run independent whole-corpus second pass and official Stage4 after first pass.",
+  "next_action": "Run independent AI adversarial linguistic second pass over all 395 card meanings, 1580 DE/FA/EN examples, 2123 combinations. Resolve or explicitly adjudicate 9 source/usage holds. After full Stage4 verified, perform official Stage5/6/7 as separate gates.",
   "persistence": {
     "library": "WIP4_EXACT_SHA256_AND_BYTE_READBACK",
-    "git": "IN_SYNC_WIP8_RECEIPT_AND_LATEST",
+    "git": "IN_SYNC_WIP9_RECEIPT_AND_LATEST",
     "project_state_root": "MAY_LAG_WORKSTREAM_LATEST_AUTHORITATIVE"
   },
   "isolated_runtime_patch_candidate": {
@@ -193,34 +193,35 @@
     "no_further_work_requested": true
   },
   "active_linguistic_proofreading": {
-    "status": "IN_PROGRESS_WIP8_FULL_STAGE4_OPEN",
-    "milestone": "2026-10-25 AI linguistic review 120-200",
-    "receipt": "Workspaces/menschen-b1-verben-kombinationen-v336/Audits/SEMANTIC-QA-WIP8-2026-10-25.json",
+    "status": "AI_FIRST_PASS_395_WITH_9_HOLDS__SECOND_PASS_STAGE4_OPEN",
+    "milestone": "2026-10-25 full AI first pass through all 395 cards with direct corrections",
+    "receipt": "Workspaces/menschen-b1-verben-kombinationen-v336/Audits/SEMANTIC-QA-WIP9-FIRST-PASS-395-2026-10-25.json",
     "artifact": {
-      "name": "Menschen-B1-Verben-v3.3.6-SEMANTIC-QA-WIP8-2026-10-25.zip",
-      "sha256": "257d559783953b11eed729e00a907d09454c041d799f780e6ab84e9ce6c6c07a",
-      "bytes": 2086643,
-      "library_file_id": "file_000000001eec81f4b3e11ddb17f3c56a",
-      "library_stable_id": "libfile_e25d91576be481919557a117dc0ae62d",
-      "readback": "PASS_EXACT_SHA256_AND_BYTES"
+      "name": "Menschen-B1-Verben-v3.3.6-SEMANTIC-QA-WIP9-2026-10-25.zip",
+      "sha256": "aa4aba3d7e2d871f0dd3ed0588fecc3782b1d9b25da17c42ee48ad04dd52b4e8",
+      "bytes": 2083210,
+      "library_file_id": "file_0000000075a0824381bd586063acb7a4",
+      "library_stable_id": "libfile_5452700c676c8191bc495decb3bf1c3b",
+      "exact_readback": "PASS_SHA256_AND_BYTE_EQUALITY"
     },
     "coverage": {
-      "cards": 395,
+      "total_cards": 395,
+      "first_pass_reviewed": 395,
       "examples": 1580,
       "kombinationen": 2123,
-      "reviewed_cards_including_holds": 200,
-      "remaining_unreviewed_cards": 195,
-      "new_corrections": 30,
-      "cumulative_corrections": 245,
-      "cumulative_unique_edited_cards": 102
+      "source_holds": 9,
+      "second_pass_complete": false,
+      "new_corrections": 48,
+      "cumulative_corrections": 293,
+      "cumulative_touched_cards": 128
     },
     "qa": {
-      "native_delivery": "PASS_FRESH_EXTRACT",
-      "full_manifest": "PASS",
-      "crosslayer": "PASS_395_1580_2123",
-      "adversarial": "5_NEGATIVE_CONTROLS_AND_16_TARGETED_CASES_PASS",
-      "full_linguistic_stage4": "NOT_COMPLETE",
-      "official_framework_validators_this_turn": "NOT_REEXECUTED",
+      "fresh_extract_manifest": "PASS",
+      "v336_validators": "5_OF_5_PASS",
+      "crosslayer": "PASS",
+      "negative_controls": "5_OF_5_PASS",
+      "adversarial_scoped": "27_OF_27_PASS",
+      "full_AI_Stage4": "OPEN",
       "stage5": "NOT_RUN",
       "runtime_v486_stage6": "NOT_RUN",
       "stage7": "NOT_FINAL"
@@ -230,9 +231,13 @@
       "mb1m-lu-0069",
       "mb1m-lu-0136",
       "mb1m-lu-0191",
-      "mb1m-lu-0418"
+      "mb1m-lu-0418",
+      "mb1m-lu-0328",
+      "mb1m-lu-0363",
+      "mb1m-lu-0413",
+      "mb1m-lu-0475"
     ],
-    "boundary": "WIP8 editable only; original source and historical accepted FINAL unchanged.",
-    "next_action": "Continue first-pass AI source-grounded semantic review at card order 201 (195 remaining); retain five usage/source holds; run independent whole-corpus second pass and official Stage4 after first pass."
+    "boundary": "AI first pass complete, NOT qualified as independent full linguistic Stage4; 9 holds, second pass and runtime checks open; historical accepted FINAL unchanged.",
+    "next_action": "Run independent AI adversarial linguistic second pass over all 395 card meanings, 1580 DE/FA/EN examples, 2123 combinations. Resolve or explicitly adjudicate 9 source/usage holds. After full Stage4 verified, perform official Stage5/6/7 as separate gates."
   }
 }

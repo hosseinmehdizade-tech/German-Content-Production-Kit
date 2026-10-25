@@ -12,7 +12,7 @@
   "receipt": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE5-STATIC-PORTABLE-PASS.json",
   "qa_summary": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE5-STATIC-PORTABLE-PASS.json",
   "verified_scope": "Stage5 static portable Universal v2 TSV has 94 B1-L24 neutral vocabulary rows, 376 trilingual examples, 42 Memrise DE+FA source phrase candidates with AI English, 149 original MP3, exact 152-row source, 94 HF2 complete learner fronts; 20/20 rehashed semantic mutants rejected, 166 archive members and extracted verifier PASS, Library exact-byte roundtrip. Native runtime v486-R120 parser/IndexedDB/Study/Quick/audio and active SRS collision untested.",
-  "next_action": "CURRENT Stage5 static package remains PASS at exact SHA a990e3b4...; Stage6 latest scoped parser node/Chromium PASS receipt Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE6-EXACT-V486-PARSER-PASS-ORIGIN-BLOCKED.json. Real browser same-origin blocked by administrator, so require a permitted isolated origin and safe SRS-preservation test; do not re-do Stage3C/4/5 nor mark Stage6 or Stage7 PASS from tokenizer check. User's active IndexedDB SRS untouched.",
+  "next_action": "Stage5 static remains PASS. Stage6 latest native v486 semantic identity analysis discovered all 94 missing explicit identity; verified no-import guarded candidate at libfile_06e6c0d474a081918ffbe4f115d88c68 SHA 113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2. Neither old Stage5 nor guard TSV is approved for primary profile. Need permitted browser origin, READ-ONLY active ID/SRS snapshot and explicit migration if any IDs pre-exist, then isolated import/IDB/reload/Study/Quick/audio. Do not repeat Stage3C/4/5.",
   "parent_stage12_artifact_sha256": "7ccfaae243795210c7380334d878402db227ba1b7e20daaaf2c24f0e4bb3326e",
   "stage3b_scope": {
     "new_lexical_total": 93,
@@ -437,14 +437,17 @@
   },
   "stage6_last_attempt": {
     "date": "2026-10-25",
-    "evidence_receipt": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE6-EXACT-V486-PARSER-PASS-ORIGIN-BLOCKED.json",
-    "scope": "EXACT_V486_R120_NATIVE_TOKENIZER_NODE_AND_CHROMIUM_V8",
-    "native_tsv_tokenizer": "PASS_94_CARDS_376_EXAMPLE_GROUPS",
-    "native_full_import": "NOT_RUN",
-    "origin_navigation": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
-    "indexeddb_on_opaque_origin": "DENIED_SECURITYERROR",
-    "Study_Quick_audio": "NOT_RUN",
-    "active_profile_SRS": "NOT_READ_NOT_MODIFIED",
-    "state": "BLOCKED_ENVIRONMENT_NO_FALSE_PASS"
+    "state": "BLOCKED_ENVIRONMENT_AND_LIVE_SRS_SNAPSHOT",
+    "receipt": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE6-v486-SEMANTIC-IDENTITY-GUARD-BLOCKED.json",
+    "scoped_native_parser": "PASS_94_23_376",
+    "scoped_native_identity_preflight": "PASS_RISK_CONFIRMED",
+    "prior_stage5_94_missing_explicit_semantic_identity": true,
+    "proposed_94_explicit_guard_verified": true,
+    "guard_zip_sha256": "113d8d94d6786c04291281888c0c30aa1d40501f6b26b2c0201334deb23318c2",
+    "guard_library_stable_id": "libfile_06e6c0d474a081918ffbe4f115d88c68",
+    "old_to_explicit_94_identity_mismatch": true,
+    "live_srs_inspected": false,
+    "safe_for_live_import": false,
+    "origin_browser_nav": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR"
   }
 }

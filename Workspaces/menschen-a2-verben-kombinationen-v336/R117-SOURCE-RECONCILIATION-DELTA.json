@@ -1,0 +1,52 @@
+{
+  "schema": "gcpk-a2-r117-source-reconciliation-delta@1.0.0",
+  "parent_archive_sha256": "63cdf2f249193733a36ef6ee7da98446fe288974edf7432b3133eece55aa7ef8",
+  "output_archive_sha256": "2de521825867e7b372671e5f81daf765231530ae9e00e5cbd27421c5fb34f5e5",
+  "candidate_tsv_sha256": "f469a666f591b6868a0f781a5ea42b64a1ef76113b122985f5a44b19a19c47c7",
+  "card_id": "ma2-lu-0113",
+  "original_source_immutable": {
+    "image": "A2-source-04.png",
+    "row": 24,
+    "construction": "ändern in [+A]",
+    "example": "Ich ändere den Wert in 10."
+  },
+  "operation": "SOURCE_FIDELITY_RECONCILIATION_ONLY",
+  "changes": [
+    {
+      "path": "custom_fields.canonical_unit.connections[0].text",
+      "before": "den Wert in 10 ändern",
+      "after": "den Wert auf 10 ändern"
+    },
+    {
+      "path": "custom_fields.canonical_relations[relation_id=ma2-lu-0113-rel-b6-003].value.term",
+      "before": "den Wert in 10 ändern",
+      "after": "den Wert auf 10 ändern"
+    },
+    {
+      "path": "custom_fields.canonical_relations[relation_id=ma2-lu-0113-rel-b6-003].value.scope",
+      "after": "numeric target value; curated pedagogical usage, not verbatim course screenshot"
+    },
+    {
+      "path": "custom_fields.canonical_relations[relation_id=ma2-lu-0113-rel-b6-003].provenance",
+      "after": {
+        "source_refs": [],
+        "verification": "R117 editorial correction validated against current learner example and source discrepancy; not independently qualified Stage4-approved",
+        "editorial_origin": "learner-authored correction; original course screenshot remains unchanged"
+      }
+    },
+    {
+      "path": "custom_fields.vnext_relations[relation_id=ma2-lu-0113-rel-b6-003].scope",
+      "after": "numeric target value; curated, not original book wording"
+    },
+    {
+      "path": "custom_fields.kombinationen_v1.source_history_not_learner_display",
+      "after": {
+        "historical_form": "den Wert in 10 ändern",
+        "historical_evidence": "A2-source-04.png row 24: Ich ändere den Wert in 10.",
+        "status": "SOURCE_LITERAL_PRESERVED_NOT_LEARNER_RECOMMENDATION",
+        "learner_usage": "den Wert auf 10 ändern"
+      }
+    }
+  ],
+  "note": "Original R90/R91 image/source/queue evidence unchanged. R116 archive remains source-of-truth parent; user-visible R117 ZIP includes exact broader QA and all delta metadata. Historical original literal remains immutable; Stage4 no qualified signoff."
+}

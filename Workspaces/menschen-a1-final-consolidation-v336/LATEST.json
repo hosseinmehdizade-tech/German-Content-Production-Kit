@@ -2,10 +2,10 @@
   "schema": "gcpk-a1-final-consolidation-workstream-latest@1.0.0",
   "workstream": "menschen-a1-final-consolidation-v336",
   "date": "2026-10-18",
-  "latest_milestone": "C42AU_SCOPED_HISTORICAL_SOURCE_ATTESTED_COMPOSITE_REPAIR_212_CARDS_233_FIELDS",
-  "status": "C42AU_HISTORICAL_SHADOW_QA_PASS__EXACT_CURRENT_C42T_MISSING__GLOBAL_STAGE4_STAGE5_STAGE6_BLOCKED__NO_IMPORT",
+  "latest_milestone": "C42AV_SCOPED_EXACT_L24_SIX_LOCKED_REUSE_METADATA_SOURCE_CAS_SHADOW",
+  "status": "C42AV_HISTORICAL_SHADOW_218_CARDS_245_FIELDS_QA_PASS__EXACT_C42T_MISSING__STAGE4_5_6_BLOCKED__NO_IMPORT",
   "scope": "A1-L01..L24",
-  "receipt": "Workspaces/menschen-a1-final-consolidation-v336/C42AU-212-CARD-233-FIELD-GUARDED-SHADOW-REPAIR-OUTCOME-2026-10-25.json",
+  "receipt": "Workspaces/menschen-a1-final-consolidation-v336/C42AV-L24-SIX-LOCKED-REUSE-SOURCE-REPAIR-OUTCOME-2026-10-25.json",
   "artifact": {
     "filename": "Menschen-A1-C41-730-LEGACY-KOMBINATIONEN-STRUCTURAL-BRIDGE-STAGE5-BLOCKED-NO-IMPORT.zip",
     "sha256": "b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95",
@@ -19,7 +19,7 @@
     "Workspaces/menschen-a1-reaudit-v336/LATEST.json",
     "Workspaces/menschen-a1-reaudit-v336/AUDITS/LATEST-AUDIT.json"
   ],
-  "next_action": "C42AU shadow is complete and only a scoped QA candidate. Recover exact C42T full archive SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207, apply source-attested 200 lineage CAS + 33 morphology/mirror repairs against exact current, investigate held 15 membership fields and 23 annotated row locators; independent global Stage4, official Stage5 and current v485 Stage6 remain NOT_RUN. No import/LOCKED mutation.",
+  "next_action": "Recover byte-exact current C42T ZIP SHA256 0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207. The C42AV source-attested 245-field combined repair is only verified on historical C41 shadow. On exact parent apply CAS with independent QA. L09 three source-multiref scalar cells CLOSED_NO_FORCE, L14 23 annotation-bearing locators preserved read-only; do not overwrite legacy locked or import until independent global Stage4, official Stage5 and CURRENT runtime Stage6.",
   "previous_stageA_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-A-RECEIPT.json",
   "previous_stageA_artifact_sha256": "cc8b8bfcb085fc7ec6972b7a38d72abca7de8bc650bd4b2e9c1b7ffd7ca9ce5b",
   "previous_stageB_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-B-RECEIPT.json",
@@ -975,8 +975,8 @@
     "library_status": "UPLOAD_FAILED_LIBRARY_STORAGE_LIMIT__NOT_PERSISTED_IN_LIBRARY",
     "gate_negative_controls": "4_OF_4_FAIL_CLOSED"
   },
-  "active_compact_resume": "Workspaces/menschen-a1-final-consolidation-v336/CURRENT-RESUME-AFTER-C42AU-2026-10-25.json",
-  "latest_scoped_quality": "PASS_HISTORICAL_C41_212_UNIQUE_233_FIELD_EDIT_PROOF_9_NEGATIVES__NOT_CURRENT_C42T",
+  "active_compact_resume": "Workspaces/menschen-a1-final-consolidation-v336/CURRENT-RESUME-AFTER-C42AV-2026-10-25.json",
+  "latest_scoped_quality": "218_UNIQUE_HISTORICAL_SHADOW_CARDS_245_FIELD_CAS__SOURCE_MAP_L24_LOCKED_6_OF_6__NEGATIVE_19_OF_19__NO_CURRENT_PARENT",
   "current_parent_materialized": false,
   "global_stage4": "NOT_RUN",
   "global_stage5": "NOT_RUN",
@@ -1005,5 +1005,33 @@
     "source_content_modified": false,
     "locked_content_modified": false,
     "import_allowed": false
+  },
+  "c42av_scoped": {
+    "name": "C42AV_218_CARD_245_FIELD_HISTORICAL_SOURCE_ATTESTED_SHADOW",
+    "six_L24_reuse_rows": [
+      2199,
+      2201,
+      2207,
+      2219,
+      2228,
+      2237
+    ],
+    "source_L24_locked_sha256": "e16f6f5c88e2a06307775281594c08978a39f31945b909fda9bc141347a6b4c5",
+    "memrise_source_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "historical_c41_sha256": "b69a0bd3674d7ddfe3b382308c8334e7894ba8e2f46959bd20ee7ca09da15b95",
+    "exact_c42t_required_sha256": "0652d39c235c2cf2487128642cdcc7e898fd24239f2345faca99536ed5051207",
+    "portable_name": "Menschen-A1-C42AV-218-CARD-245-FIELD-EXACT-L24-SOURCE-RECOVERY-NO-IMPORT-20261025.zip",
+    "portable_sha256": "953b90a1ffea6ae027ad91f25a5aaa12e56e476ed2b6a5719e6da8757efbadd3",
+    "portable_bytes": 45793,
+    "portable_library_upload": "NOT_ATTEMPTED_CAPACITY_LIMIT",
+    "git_receipt": "Workspaces/menschen-a1-final-consolidation-v336/C42AV-L24-SIX-LOCKED-REUSE-SOURCE-REPAIR-OUTCOME-2026-10-25.json",
+    "git_resume": "Workspaces/menschen-a1-final-consolidation-v336/CURRENT-RESUME-AFTER-C42AV-2026-10-25.json",
+    "all_2997_IDs_preserved": true,
+    "all_11988_example_sets_preserved": true,
+    "nonreimport_6_locked": true,
+    "independent_global_stage4": "NOT_RUN",
+    "stage5": "NOT_RUN",
+    "current_stage6": "NOT_RUN",
+    "global_final": false
   }
 }

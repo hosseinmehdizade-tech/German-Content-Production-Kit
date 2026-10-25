@@ -1,0 +1,43 @@
+{
+  "schema": "gcpk-b1-verben-stage6-stage7-release-candidate@1.0.0",
+  "date": "2026-10-26",
+  "status": "PASS_RELEASE_CANDIDATE_INTEGRITY_STAGE6_REAL_ORIGIN_BLOCKED_STAGE7_NOT_FINAL",
+  "artifact": {
+    "name": "Menschen-B1-Verben-v486-R120-STAGE6-STAGE7-RELEASE-CANDIDATE-NOT-FINAL-2026-10-26.zip",
+    "sha256": "8786b59ffad504a26f794db9ca2a655b796567254ebfc18428764e220538b597",
+    "bytes": 22324850,
+    "file_count": 290,
+    "storage": "CONVERSATION_ARTIFACT_ONLY_LIBRARY_QUOTA_FULL"
+  },
+  "parent": {
+    "stage6_sha256": "0d8ee50cdd2f72e18227dd73794d3b1bb21df2dfe26badb2e26bea2d8afb0541",
+    "current_runtime": "v486-R120",
+    "current_runtime_zip_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "WIP13_frozen_sha256": "3a414d351db2fddfad8fb3ec765af5798bb08e7b7e23c73fdb3342f606e6b020",
+    "patched_tsv_sha256": "64fa1e01560f119fc2cf9659a1deb0fc03483def4a9575d1bd9ff04078499c15",
+    "original_final": "UNCHANGED"
+  },
+  "content": {
+    "cards": 395,
+    "examples": 1580,
+    "kombinationen": 2123,
+    "real_app_files": 77,
+    "integrity_checked_files": 289
+  },
+  "tests": {
+    "fresh_extract_full_manifest": "PASS_289_FILES",
+    "fresh_extract_counts": "PASS_395_1580_2123",
+    "zip_crc": "PASS",
+    "embedded_stage6_preflight": "PASS",
+    "existing_harness_selftest": "19_OF_19_PASS",
+    "added_content_fidelity_seeded_mutations": "6_OF_6_REJECTED",
+    "real_chromium_origin": "BLOCKED_BY_ADMINISTRATOR",
+    "indexeddb_import_restart": "NOT_RUN",
+    "offline_serviceworker": "NOT_RUN",
+    "stage7": "NOT_FINAL"
+  },
+  "risk": "Chromium's managed URLBlocklist denies navigation before app load; do not bypass policy or substitute static checks for IndexedDB evidence.",
+  "source_immutability": "PRESERVED",
+  "app_ui_changed": false,
+  "next_action": "Execute 07-Tools-Launcher/Run-Stage6-Windows.cmd from this candidate on a permitted localhost browser using its disposable profile. Inspect real IndexedDB commit, 395 exact IDs and 1580 exact trilingual examples after browser restart and offline. Only then consider Stage7 FINAL."
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "nomen-verb-verbindungen",
+  "milestone": {
+    "name": "NVV R5 Stage6 exact v486-R120 runtime/import/presentation acceptance",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Local HTTP and file:// origins both failed Chromium with net::ERR_BLOCKED_BY_ADMINISTRATOR; cannot run real import click/IndexedDB commit, card presentation or reload in this execution environment."
+  },
+  "scope": {
+    "unit": "exact Stage6 acceptance gates",
+    "total_units": 5,
+    "cards": 2492,
+    "examples": 9968,
+    "runtime": "v486-R120"
+  },
+  "progress": {
+    "reviewed_unique": 1,
+    "unreviewed": 4,
+    "dispositions": {
+      "EXACT_INPUTS_HASH_VERIFIED": 1
+    },
+    "nonbrowser_parser_cards": 2492,
+    "nonbrowser_current_runtime_suites_passed": 6,
+    "stage6_browser_import_attempts_failed_with_admin_policy": 2
+  },
+  "quality": {
+    "stage_complete": false,
+    "status": "BLOCKED_ENVIRONMENT_NOT_CONTENT_DEFECT",
+    "verification_evidence": [
+      "Both real artifact ZIP SHA256 match verified current app runtime and Stage5 content authority",
+      "Current app embedded production parseTsv parsed 2492 cards and all 9968 DE/FA/EN examples with 3 seeded corrupt inputs rejected",
+      "Official lexical front HF2 2492 Expression cards PASS; 6 exact-v486 browser-free VM tests PASS",
+      "Stage5 exact archive independently revalidated PASS with 11 negative controls",
+      "Chromium local http://127.0.0.1 and file:// each rejected net::ERR_BLOCKED_BY_ADMINISTRATOR before app boot",
+      "Latest 35-member Stage5 full archive uncompressed 89,202,140 bytes exceeds full-ZIP import budget 80 MiB; documented route is standalone 22,398,307-byte TSV"
+    ],
+    "not_verified": [
+      "real UI file selection/import",
+      "durable IndexedDB published VERIFIED commit",
+      "all-card rich parity post-import",
+      "learner-visible German/Persian/English rendering",
+      "persistent reload, tab reopen and offline"
+    ],
+    "stage5": "PASS",
+    "stage6": "BLOCKED",
+    "stage7": "NOT_RUN",
+    "historical_LOCKED_unchanged": true,
+    "source_unchanged": true,
+    "ui_changes": "NONE"
+  },
+  "persistence": {
+    "git": "PENDING",
+    "library": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "library_file_id": "file_0000000098688246a7c884cbb5867934",
+    "library_stable_id": "libfile_cf8ed26356b48191b20b019eca079edb",
+    "checkpoint_name": "NVV-R5-STAGE6-v486-R120-ENVIRONMENT-BLOCKED-CHECKPOINT.zip",
+    "checkpoint_sha256": "245968552e44bb3c59da35fc6b56781f4b48cb99a6d9bbc7bd8806cb1683b96c",
+    "checkpoint_bytes": 13940,
+    "stage5_sha256": "a4e2da41fa3efcbeb41dd7eca066cc27224b9130eb98d54a56ce545123c18758",
+    "runtime_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "stage5_library_file_id": "file_0000000036d081f48cf658ba9d6db8f9",
+    "runtime_library_file_id": "file_00000000b3b082439f2550ab9dddb522",
+    "resume_pointer": "Recover exact Stage5 R5 ZIP a4e2da41... and CURRENT v486-R120 ZIP 7d4ba7b9...; read 14KB checkpoint ZIP 24596855... with portable Playwright harness; on authorized browser host run actual TSV file selection/import and VERIFIED IndexedDB 2492 card rich parity/visible study/reload; Stage6 remains BLOCKED pending real browser gate, Stage7 NOT_RUN."
+  }
+}

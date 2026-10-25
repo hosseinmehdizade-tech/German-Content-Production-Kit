@@ -1,0 +1,67 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "milestone": {
+    "name": "Exact v486-R120 Stage6 real-origin import durability and offline verification",
+    "state": "BLOCKED",
+    "level": "major",
+    "blocker": "Managed Chromium rejects 127.0.0.1:8765 with net::ERR_BLOCKED_BY_ADMINISTRATOR; real IndexedDB and service-worker offline gates cannot run in this environment."
+  },
+  "scope": {
+    "unit": "actual_real_origin_imported_B1_card_identity",
+    "total_units": 395
+  },
+  "progress": {
+    "reviewed_unique": 0,
+    "unreviewed": 395,
+    "dispositions": {
+      "REAL_ORIGIN_VERIFIED": 0
+    },
+    "tool_only_repairs": 3,
+    "offline_probe_added": true
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "EXACT_EMBEDDED_STAGE6_SHA256_PASS",
+      "EXACT_V486_RUNTIME_SHA256_PASS",
+      "EXACT_FROZEN_STAGE4_SHA256_PASS",
+      "EXACT_PATCHED_TSV_SHA256_PASS",
+      "FRESH_EXTRACT_SHA256SUMS_12_OF_12_PASS",
+      "HARNESS_19_GUARDS_AND_CASES_PASS",
+      "STATIC_395_UNIQUE_CARD_IDS_PASS",
+      "MANAGED_CHROMIUM_DENIAL_REPRODUCED",
+      "NO_APPLICATION_OR_SOURCE_CODE_CHANGE"
+    ],
+    "native_origin_import": "NOT_RUN_BLOCKED",
+    "indexeddb_commit_and_restart": "NOT_RUN_BLOCKED",
+    "service_worker_offline": "NOT_RUN_BLOCKED",
+    "stage6": "BLOCKED",
+    "stage7": "NOT_FINAL"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "BLOCKED_STORAGE_QUOTA_NO_DELETION",
+    "resume_pointer": "Use exact Stage6 real-origin acceptance kit v1.1 SHA256 cd7611187dc295fdcc1d87e7b878d41ead2d153e0dd8643b8a162c05b878b8e6. Run Run-Stage6-Windows.cmd in allowed isolated browser; check actual commit, 395 IDs after same-profile restart, independent service-worker offline result."
+  },
+  "artifact": {
+    "name": "Menschen-B1-Verben-v3.3.6-STAGE6-V486-REAL-ORIGIN-ACCEPTANCE-KIT-v1.1-2026-10-25.zip",
+    "sha256": "cd7611187dc295fdcc1d87e7b878d41ead2d153e0dd8643b8a162c05b878b8e6",
+    "bytes": 13969384,
+    "embedded_stage6_sha256": "0d8ee50cdd2f72e18227dd73794d3b1bb21df2dfe26badb2e26bea2d8afb0541",
+    "previous_kit_sha256": "dd64c836417c70bbd3a2a2fcd55025c4c4f16443c88b17b3a20f4722adf820dd",
+    "delivery": "CONVERSATION_ARTIFACT_ONLY"
+  },
+  "repairs": [
+    "Open native Settings/Data/Import panel before native click",
+    "Correct collapsed Persian import-report success detection with explicit saved-persistence evidence",
+    "Add isolated native service-worker offline navigation and IDB identity check"
+  ],
+  "immutability": {
+    "current_app": "v486-R120_UNMODIFIED",
+    "source_material": "UNCHANGED",
+    "historic_FINAL": "UNCHANGED",
+    "visible_UI": "UNCHANGED"
+  },
+  "next_action": "Run corrected isolated profile Stage6 acceptance in browser environment that permits exact localhost origin; do not claim Stage6/Stage7 final without real IDB commit, restart and offline evidence."
+}

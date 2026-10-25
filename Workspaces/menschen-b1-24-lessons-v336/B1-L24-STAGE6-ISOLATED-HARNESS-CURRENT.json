@@ -1,15 +1,37 @@
 {
-  "schema": "b1-l24-stage6-test-harness-pointer@1",
+  "schema": "b1-l24-stage6-test-harness-pointer@2",
   "date": "2026-10-25",
-  "status": "READY_BLOCKED_BROWSER_ORIGIN",
+  "status": "V2_QUICK_OWNER_CORRECTED_STATIC_QA_PASS__BROWSER_ORIGIN_BLOCKED",
   "runtime": "v486-R120",
-  "runner_zip_sha256": "409589ed0532f28cd0caac1d61e5d2d8e886b816abdfc6c65d25b4fa8d8feb78",
-  "library_id": "libfile_edaa229cfc0881918364e6ec707050a6",
+  "runner_zip_sha256": "79e05af8d6d06ded63da92d23e01e7520d3a069e4511bc9f183e14a838ba1687",
+  "library_id": "libfile_014abcb7d41c8191bde1c00121ce95be",
   "evidence": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE6-REAL-ORIGIN-DISPOSABLE-E2E-RUNNER-READY-BLOCKED.json",
   "current_content_zip_sha256": "76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9",
   "real_browser_import_pass": false,
   "active_srs_checked": false,
   "original_mp3_playback_pass": false,
   "stage7_final": false,
-  "next_action": "Use permitted isolated browser origin for native import, reload, Study/Quick and SRS safety verification. Original current Stage5 remains unchanged."
+  "next_action": "Use v2 source-pinned isolated test runner from Library; v1 superseded because generic Quick backHtml did not exercise actual cardItem/quickPresentationExampleHtml. V2 static QA 16/16 and Node JS snippets 21/21, negative mutant rejects old Quick. Browser localhost still blocked, so complete real-origin import, IndexedDB/reload, visible Study/Quick and user SRS snapshot ONLY in permitted environment. Stage5 content is unchanged NONIMPORT. Do not claim full Stage6/Stage7.",
+  "superseded_harness_v1": {
+    "sha256": "409589ed0532f28cd0caac1d61e5d2d8e886b816abdfc6c65d25b4fa8d8feb78",
+    "library_id": "libfile_edaa229cfc0881918364e6ec707050a6",
+    "evidence": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-L24-2026-10-25-STAGE6-REAL-ORIGIN-DISPOSABLE-E2E-RUNNER-READY-BLOCKED.json",
+    "defect": "Quick was checked through generic presentation backHtml(mode=quick), not the actual quick cardItem/quickPresentationExampleHtml owner."
+  },
+  "updated_at": "2026-10-25",
+  "runner_file_sha256": "02bebf5781c228dc4d4039884d2539506d1e17696d000d7aeb680740a1c49de6",
+  "static_qa": {
+    "status": "PASS_16_16",
+    "javascript_syntax": "PASS_21_21",
+    "negative_regression": "PASS_REJECTS_OLD_QUICK_OWNER",
+    "fresh_chromium_probe": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "preflight": "PASS_6",
+    "actual_browser_dom": false,
+    "actual_IDB": false,
+    "real_profile_SRS": false
+  },
+  "content_source_unchanged": true,
+  "current_app_source_unchanged": true,
+  "primary_SRS_untouched": true,
+  "stage6_full_pass": false
 }

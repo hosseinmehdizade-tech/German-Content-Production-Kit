@@ -1,0 +1,59 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L24/Stage6-original-source-MP3-technical-integrity",
+  "milestone": {
+    "name": "Full-byte source-fidelity and real FFmpeg end-to-end decode for all 149 original B1-L24 MP3 clips",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one distinct original Memrise L24 source MP3 clip in the authoritative integrated Stage5 package",
+    "total_units": 149
+  },
+  "progress": {
+    "reviewed_unique": 149,
+    "unreviewed": 0,
+    "dispositions": {
+      "byte_sha256_verified_and_fully_decoded_non_silent": 149
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "Scoped Stage6 SOURCE AUDIO technical/decoder QA only (149 MP3); does NOT close Stage6 actual v486 browser/IndexedDB/active SRS/Study/Quick or source MP3 playback; does NOT claim spoken-word human or AI listening/transcription fidelity, and not Stage7.",
+    "verification_evidence": [
+      "Both repos bootstrapped, current v486-R120 and Kit lesson B1-L24 latest Stage5 integrated guarded checkpoint confirmed. Used pinned source ZIP SHA256 76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9, with 94 lexical cards and 149 original Memrise MP3 clips.",
+      "Read source audio manifest 03-Audio/AUDIO-SOURCE-MANIFEST.json with pinned SHA256 d4c998703a07d65a3ba95d62bf1288b44f5b991f9a55f810cd6b8a7633add8df and independently matched every 149 bytes length and SHA256, ZIP CRC PASS.",
+      "Decoded entire compressed stream of every original MP3 using FFmpeg with -xerror to 16-kHz mono PCM: 149/149 zero nonzero-exit decoder failures and all 149 with decoded non-negligible RMS audio. No malformed or near-silent sample under defined quantitative threshold.",
+      "Durations range 0.8098–7.201 seconds, aggregate 337.61 seconds (5 minutes 37.61 seconds). Every clip has decoded PCM, with report containing byte checksum and decoded duration/energy measurement per file.",
+      "92 of 94 learner cards have a direct source audio reference; two absent IDs mb1m-lu-4120 and mb1m-lu-4131; 81 of 149 distinct source clips referenced, 68 additional archival MP3 kept immutable. All 81 reference targets exist and byte-verify.",
+      "Negative decoder controls on empty byte string and all-zero damaged MP3 both rejected; exact full 149-clip audit independently reran twice with SHA-identical JSON output ad71a9baecd18f638b0020a7656a0c29b09788d413c8761d4ed4b6523ebccb2e.",
+      "Portable source-only decoder verification script /mnt/data/b1_l24_stage6/audio_decode/verify_source_audio_decode.py SHA256 bd6c5baa78c61b86be971cf2c012e8308f0a91ec0a1a0d14663fd24ada770d32; unaltered input; report /mnt/data/b1_l24_stage6/audio_decode/ORIGINAL-149-MP3-DECODING-AUDIT.json; no new content/archive package generated.",
+      "Audio source decoding is distinct from German utterance semantic accuracy, browser TTS, and v486 app original MP3 binding (previous audit established MP3 refs not wired to Audio button). Source archive, app, LOCKED historical cards and primary SRS unchanged."
+    ],
+    "source_audio_decode": "PASS_149_149",
+    "source_mp3_semantic_fidelity_by_listening": "NOT_TESTED",
+    "source_mp3_in_app_runtime_playback": "NOT_IMPLEMENTED_OR_VERIFIED",
+    "actual_same_origin_IDB": "BLOCKED_ENVIRONMENT",
+    "actual_user_SRS": "NOT_READ_NOT_MUTATED",
+    "app_mutated": false,
+    "stage6_full": false,
+    "stage7_final": false
+  },
+  "artifact": {
+    "report_filename": "ORIGINAL-149-MP3-DECODING-AUDIT.json",
+    "report_sha256": "ad71a9baecd18f638b0020a7656a0c29b09788d413c8761d4ed4b6523ebccb2e",
+    "report_bytes": 72025,
+    "script_filename": "verify_source_audio_decode.py",
+    "script_sha256": "bd6c5baa78c61b86be971cf2c012e8308f0a91ec0a1a0d14663fd24ada770d32",
+    "source_stage5_sha256": "76f2a29813f1d3c3629b992c25f073576efb68f93ce49c9c89613c4006ad05f9",
+    "materialization": "LOCAL_EXACT_SOURCE_SHA",
+    "git_status": "RECEIPT"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "SOURCE_STAGE5_ALREADY_VERIFIED_UNCHANGED",
+    "expected_latest_l24_sha": "b116ef49c93518f8a8117e6dc3b9560a6dfa8483",
+    "resume_pointer": "Stage6 source audio 149/149 fully decodable PASS only. No repeat need. Current L24 Stage5 94-card guarded ZIP remains latest NONIMPORT. For full Stage6 need permitted same-origin browser to run isolated v3 94-state IndexedDB/Study/Quick tests, a fresh Full Backup for READ-ONLY active SRS audit, and optional approved original MP3 integration (existing Audio mode uses TTS). No user profile mutation. Stage7 blocked."
+  }
+}

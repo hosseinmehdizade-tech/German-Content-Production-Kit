@@ -1,0 +1,78 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-25",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "C44V_GLOBAL_2272_A1_SOURCE_COVERAGE_PLUS_82_POLARITY_CONTEXT_SECOND_PASS",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "polarity_risk_example",
+    "total_units": 82,
+    "reviewed_source_rows": 2272,
+    "source_rows_with_primary_course_membership": 2261,
+    "source_rows_with_merged_lineage_alias": 11,
+    "all_cards_structurally_checked": 2997,
+    "all_trilingual_examples_structurally_checked": 11988,
+    "all_memberships_checked": 3039,
+    "heuristic_polarity_alerts_total": 277,
+    "heuristic_polarity_alerts_outside_this_review": 195,
+    "global_independent_multilingual_semantic_audit_complete": false
+  },
+  "progress": {
+    "reviewed_unique": 82,
+    "unreviewed": 0,
+    "dispositions": {
+      "CLOSED_CORRECT_CONTEXTUAL_POLARITY": 81,
+      "CORRECTED_LEARNER_PERSIAN": 1
+    },
+    "changed_card_ids": [
+      "ma1m-lu-0930"
+    ],
+    "changed_examples": [
+      "ma1m-lu-0930-ex-02"
+    ],
+    "changed_language_fields": 1,
+    "unreviewed_other_polarity_alerts": 195,
+    "preserved_contextual_lexical_holds": 38
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_only": true,
+    "verification_evidence": [
+      "Exact original Memrise 9,109-row CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222; all 2,272 original A1 source rows 1..2272 accounted for before A2 begins at source row 2273",
+      "2,261 distinct source rows have explicit course membership entries; 11 row aliases 598,628,988,1336,1692,2204,2205,2206,2217,2241,2242 have source lineage refs in 10 canonical cards. Raw Memrise source labels/definitions unchanged.",
+      "2997 active IDs, 3039 course memberships, 11988 trilingual DE/FA/EN examples; all full-corpus example translations mirrored across existing learner/presentation/canonical variants and UTF16 spans verified",
+      "277 regex-flagged candidate semantic polarity mismatches, 82 DE-vs-EN mismatch contexts audited as bounded AI-language second-pass: 81 contextually acceptable idioms/paraphrases, 1 Persian focus error corrected; the remaining 195 machine alerts NOT individually semantically signed off",
+      "Source-grounded specific Persian learner example fix: ma1m-lu-0930-ex-02 «فردا حرکت می‌کنی یا دوشنبه؟» to «فردا حرکت می‌کنی یا تازه دوشنبه؟», capturing erst / not until; three mirrored examples synchronized",
+      "Exactly one card and one field differs from C44U parent SHA256 8c1e794736625b0f95c2cac10d72bd96ead3955e52d3046f27b0779bd6394a0f; original source, historical LOCKED, SRS, identity, course membership and UI unchanged",
+      "38 carried/new held lexical/source/register cards remain OPEN; ma1m-lu-0861 duplicate principal-form presentation additionally flagged, not silently normalized",
+      "Independent read-only verifier PASS on rebuilt archive and re-materialized Library copy; ZIP CRC/MANIFEST/SHA256SUMS all PASS; 12 seeded corruption sentinels rejected",
+      "Deterministic fresh reconstruction yields identical archive SHA256 10eb92d4ddfe5a6fe6e92984e355cefa52f55c1bb50dad69164d657d5183702b; Library re-materialized bytes exact SHA256/byte-compare."
+    ],
+    "inherited_holds_still_open": 38,
+    "independent_coursewide_full_de_fa_en_translation_approval": false,
+    "external_human_signoff_claimed": false,
+    "original_source_modified": false,
+    "locked_content_modified": false,
+    "global_stage4": "NOT_PASSED",
+    "official_stage5": "NOT_RUN",
+    "current_v486_stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "archive": "Menschen-A1-C44V-2272-SOURCE-GLOBAL-POLARITY-RISK-AUDIT-NO-IMPORT-20261025.zip",
+    "sha256": "10eb92d4ddfe5a6fe6e92984e355cefa52f55c1bb50dad69164d657d5183702b",
+    "size_bytes": 2870615,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-C44V-2272-SOURCE-GLOBAL-POLARITY-RISK-AUDIT-NO-IMPORT-20261025.zip",
+    "library_file_id": "libfile_b52570590cb08191bbc870e21a2404af",
+    "library_backing_file_id": "file_00000000e18c824685f6b39628cd7fee",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "parent_sha256": "8c1e794736625b0f95c2cac10d72bd96ead3955e52d3046f27b0779bd6394a0f",
+    "original_source_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222"
+  },
+  "next_action": "Resume exact C44V Library artifact. Continue course-wide second-pass itemwise DE/FA/EN semantic review beyond bounded polarity: 195 other polarity-form alerts remain only mechanically triaged, 38 lexical/register/source context holds, full 11988 example meanings still not independently approved. Resolve high source-fidelity holds before global Stage4; official Stage5 anti-bypass, CURRENT v486-R120 Stage6 and Stage7 remain not run; NO IMPORT."
+}

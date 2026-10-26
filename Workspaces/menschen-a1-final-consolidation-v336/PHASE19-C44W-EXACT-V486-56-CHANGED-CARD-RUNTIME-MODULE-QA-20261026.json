@@ -1,0 +1,74 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-26",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "PHASE19_EXACT_V486_56_CHANGED_CARD_224_TRILINGUAL_RUNTIME_MODULE_AND_TYPING_QA",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "changed_or_sense_remediated_card_runtime_module_projection",
+    "total_units": 56,
+    "trilingual_examples": 224,
+    "exact_runtime": "v486-R120",
+    "runtime_archive_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "production_modules": [
+      "01-App/modules/learning-core-v48.js",
+      "01-App/index.html typingModeOverride/typingDeriveAnswer"
+    ],
+    "critical_typing_card_ids": [
+      "ma1m-lu-0713",
+      "ma1m-lu-2006",
+      "ma1m-lu-2772"
+    ]
+  },
+  "progress": {
+    "reviewed_unique": 56,
+    "unreviewed": 0,
+    "dispositions": {
+      "EXACT_V486_LEARNING_CORE_SCOPED_VM_REPLAY_PASS": 56
+    },
+    "assertions": 1083,
+    "example_triplets_validated": 224,
+    "utf16_segments_validated": 228,
+    "typing_mode_assertions": 9,
+    "negative_probes_rejected": 4,
+    "spoken_audio_hold_count": 3
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_only": true,
+    "verification_evidence": [
+      "Exact current v486-R120 runtime ZIP recovered from authorized Library (6,026,457 bytes; SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d) and verified prior to testing; no app edit.",
+      "Production learning-core-v48.js evaluated unmodified inside isolated Node VM against 56 immutable Phase15 cards; 224 complete DE/FA/EN examples, stable ids, 228 annotation UTF16 segments, projected title/back/occurrences all matched Phase17 reviewed data; 1,083 assertions PASS.",
+      "Exact production typingModeOverride and typingDeriveAnswer extracted from v486 index.html and executed for three critical cards in core/standard/full. ma1m-lu-0713 = besonder; ma1m-lu-2006 = medizinische Untersuchung; ma1m-lu-2772 = eine Hose anhaben. Idiomatic die Hosen anhaben remains educational, not a separately graded typing answer.",
+      "Independent Python verifier recomputed fixture from exact Phase15 ZIP and original runtime ZIP; checked Phase17/18 hashes and retained fail-closed source-audio release gates. Four mutations (Persian translation, typingCore, example removal, bad UTF16 highlight) rejected; typing oracle fixed independent of mutable fixture after initial self-referential-test weakness was detected and repaired.",
+      "Same packaged Node probe reran successfully after extracting the generated Phase19 ZIP into a fresh temporary directory; archive CRC/SHA256SUMS PASS. No user profile or candidate imported, changed, or written into CURRENT runtime.",
+      "Headless Chromium on ephemeral http://127.0.0.1 and file:// navigation returned ERR_BLOCKED_BY_ADMINISTRATOR; live DOM and actual MP3 speech/listening NOT RUN. This is an environment boundary, not observed app FAIL. Prior 566 mixed-headword audio source groups and 3 high-risk audio gates remain provenance-only, not lexically certified. Global Stage4 NOT_PASSED; Stages5/6/7 NOT_RUN; NO IMPORT."
+    ],
+    "exact_runtime_module_test": "PASS_SCOPED",
+    "actual_ui_browser_DOM": "BLOCKED_BY_ADMINISTRATOR",
+    "spoken_audio_content": "NOT_VERIFIED",
+    "connected_runtime_audio_smoke": "NOT_RUN",
+    "global_stage4": "NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "source_parent_runtime_unchanged": true,
+    "import_allowed": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "artifact": {
+      "filename": "Menschen-A1-Phase19-EXACT-v486-56-CARD-224-EXAMPLE-NODE-VM-SCOPED-QA-NO-IMPORT-20261026.zip",
+      "sha256": "4d3b82525afb2eee95c403fb214c5ae86bde34bb52388329d78d88e4b7d313dc",
+      "size_bytes": 161008,
+      "location": "CURRENT_CONVERSATION_PORTABLE_SCOPED_QA"
+    },
+    "root_LATEST_unchanged": true,
+    "latest_blob_sha_checked": "2eb7dfc88100fc8f86c764f2eb78e77682a772ab",
+    "prior_phase18_blob_sha": "d457cea3bebfae2858f682acb6156c5c06563b3d",
+    "resume_pointer": "Real v486-R120 learning-core and typing code passes scoped 56-card/224-example Node VM. Live Chromium DOM cannot run here due admin block and spoken German MP3 contents are not verified. Next run exact runtime live DOM/MP3 acoustic checks in allowed environment on cards 0713/2006/2772, retain audio pronunciation-source scope controls, finish Stage4 acceptance then Stage5/6/7; no import."
+  }
+}

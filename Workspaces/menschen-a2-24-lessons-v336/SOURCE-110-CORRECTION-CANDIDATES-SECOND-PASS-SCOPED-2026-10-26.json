@@ -1,0 +1,61 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336 / immutable-original-source-linguistic-qa",
+  "milestone": {
+    "name": "ALL_110_ORIGINAL_SOURCE_CORRECTION_FLAGS_SECOND_PASS",
+    "level": "major",
+    "state": "PASS",
+    "stage_boundary": "SOURCE_SECOND_PASS_SCOPE_ONLY__NO_CURATED_V037_STAGE4_PROMOTION"
+  },
+  "scope": {
+    "unit": "Original A2 source correction flags from source-only 225-issue screen, distinct from curated v037 DE/FA/EN meaning units",
+    "total_units": 110,
+    "lessons": "A2-L01..A2-L24",
+    "source_roster_sha256": "77ac54a2b9bf55b34c8f28ddd5c76ed72853ac0dbf7d100ba47c4cd47a0d1802"
+  },
+  "progress": {
+    "reviewed_unique": 110,
+    "unreviewed": 0,
+    "dispositions": {
+      "STRONG_SOURCE_DERIVED_FIELD_CORRECTION_CANDIDATE_NOT_APPLIED": 87,
+      "NO_FORCE_OR_CONTEXT_FLAG": 15,
+      "SEPARATE_CURATED_EXAMPLE_ONLY": 7,
+      "PARTIAL_REPAIR_ONLY": 1
+    },
+    "other_115_source_holds_not_adjudicated_here": 115,
+    "official_stage4_approved_unchanged": 5916,
+    "official_stage4_pending_unchanged": 4894,
+    "official_stage4_holds_unchanged": 20
+  },
+  "quality": {
+    "stage_complete": true,
+    "stage_scope": "SECOND_PASS_OF_ALL_110_SOURCE_CORRECTION_CANDIDATES_ONLY",
+    "full_course_stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_ready": false,
+    "verification_evidence": [
+      "Exact original Memrise CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222 validated; 9109 rows, no source changes.",
+      "Full 225 risk crosswalk SHA256 77ac54a2b9bf55b34c8f28ddd5c76ed72853ac0dbf7d100ba47c4cd47a0d1802 verified.",
+      "All 110 original correction flags re-evaluated with separate editorial dispositions, exact 1-based source row and original-field content equality, per-field SHA256 and first-pass reason preservation.",
+      "22 risks were downgraded from unqualified full correction to 15 no-force/context, 7 separate-curated-only; one additional correction made partial (do not conflate correct informal red with incorrect keinen case); 87 source-derived correction candidates remain.",
+      "12/12 mutation negative controls rejected wrong source ID, row, field, content, hash, evidence, SHA pin, v037 acceptance and unsafe write flags.",
+      "Original example German quotations and historical/Swiss orthographies preserved. No inferred v037 card defects, no v037 bytes inspected, no existing 20 official HOLD closures.",
+      "Exact current v037 SHA256 f96fa3adeae541c08866a9515fbaecfb6dcefb1b425e4a0aa704dc11d624913a absent from current file surfaces; Stage4 remains BLOCKED and v038 never created."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "portable": "CURRENT_CONVERSATION_FILES",
+    "library": "NOT_UPLOADED",
+    "report_json": "Menschen-A2-110-SOURCE-CORRECTIONS-SECOND-PASS-GUARDED.json",
+    "report_json_sha256": "9e05ca036208340615d0ecbde704a38dc904deef7d3c2efd51e18cf893c90a7d",
+    "verify_script": "verify_menschen_a2_110_source_secondpass.py",
+    "verify_script_sha256": "3f27738e97464410f71533877941ed5d9def2cdb19b4a7518c2f1a6fb4b381c1",
+    "qa_json": "Menschen-A2-110-SOURCE-SECOND-PASS-QA.json",
+    "qa_json_sha256": "7df0c06c6bd8e6fca3778f41eca2cad128fdbf2f29eb6e3962596379cd9e67d8",
+    "resume_pointer": "Restore exact v037 ZIP by recorded SHA; compare source-finding map and separate existing A2-L15 Persian contrast candidate before any v037 patch."
+  },
+  "next_action": "Resume current course Stage4 after materializing exact v037 ZIP. Review 4894 pending trilingual semantic units plus 20 official holds using separate two-pass AI review and technical source guards. Keep these source-only decisions non-applying."
+}

@@ -36,10 +36,10 @@
     "canonical_sha256": "bd49ece98922ea96553b761f474e132e5ef02a9a28f00bc0022eb1a2a62d3c2c",
     "tsv_sha256": "29e3053f1d3fcf225800596ad7166028f26c694410842249703740148acdfc0f"
   },
-  "next_action": "Run exact v1.4 Stage6 test in an environment allowing the original localhost origin and verify STAGE6-LOCAL-RESULT.json. Do not declare Stage7 final before real persistence and offline acceptance.",
+  "next_action": "Run real-origin Stage6 isolated-profile test on allowed localhost and verify IndexedDB commit/restart/offline; only then consider Stage7 final.",
   "persistence": {
-    "library": "BLOCKED_STORAGE_QUOTA_NO_DELETION",
-    "git": "IN_SYNC_RC_v1.4_RECEIPT_AND_LATEST",
+    "library": "BLOCKED_STORAGE_LIMIT_NO_DELETION",
+    "git": "IN_SYNC_RELEASE_DELIVERY_RECEIPT_METADATA_ONLY",
     "project_state_root": "MAY_LAG_WORKSTREAM_LATEST_AUTHORITATIVE"
   },
   "isolated_runtime_patch_candidate": {
@@ -315,5 +315,23 @@
     },
     "boundary": "Real app and original content unchanged. Only external test runner corrected to open native import-mode disclosure; no real IndexedDB or offline success observed.",
     "next_action": "Run exact v1.4 Stage6 test in an environment allowing the original localhost origin and verify STAGE6-LOCAL-RESULT.json. Do not declare Stage7 final before real persistence and offline acceptance."
+  },
+  "user_requested_release_delivery": {
+    "status": "SINGLE_ZIP_DELIVERED_STAGE6_STAGE7_NOT_VERIFIED",
+    "receipt": "Workspaces/menschen-b1-verben-kombinationen-v336/Audits/STAGE6-STAGE7-CONSOLIDATED-DELIVERY-NOT-VERIFIED-2026-10-26.json",
+    "artifact": {
+      "name": "German-Flashcards-Pro-Menschen-B1-v486-R120-DELIVERY-STAGE6-7-PENDING-2026-10-26.zip",
+      "sha256": "cea420e4a384cbb1ac8a65d479ca47feba2ac2f7653f777692bb72be22dd769e",
+      "bytes": 22397621,
+      "members": 305,
+      "storage": "CONVERSATION_ONLY_LIBRARY_FULL"
+    },
+    "runtime": "v486-R120",
+    "stage4": "PASS_AI_LINGUISTIC_WITH_DISCLOSED_VARIANT",
+    "stage5": "PASS_CONTENT",
+    "stage6": "NOT_FINAL_BROWSER_BLOCKED",
+    "stage7": "NOT_FINAL",
+    "source_immutable": true,
+    "next_action": "Run real-origin Stage6 isolated-profile test on allowed localhost and verify IndexedDB commit/restart/offline; only then consider Stage7 final."
   }
 }

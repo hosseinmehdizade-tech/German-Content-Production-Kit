@@ -1,0 +1,73 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-26",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "PHASE21_EXACT_V486_NATIVE_TSV_PARSER_FULL2997_CARD_11988_EXAMPLE_INPUT_ACCEPTANCE",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "card_row_read_by_exact_v486_production_parseTsv_function",
+    "total_units": 2997,
+    "runtime": "v486-R120",
+    "tsv_input_bytes": 50791177,
+    "tsv_utf16_code_units": 49432465,
+    "columns": 23,
+    "trilingual_example_triplets": 11988,
+    "runtime_archive_sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "candidate_archive_sha256": "b144633e85729e8948743514ce2ff4c8c7ba5b73fbf4ef0d7adf8fa62ea4dff4"
+  },
+  "progress": {
+    "reviewed_unique": 2997,
+    "unreviewed": 0,
+    "dispositions": {
+      "PASS_EXACT_V486_NATIVE_TSV_PARSE_AND_INDEPENDENT_ROW_PARITY": 2997
+    },
+    "independent_csv_row_checksums_compared": 2998,
+    "fields_per_row": 23,
+    "nested_example_json_arrays_validated": 2997,
+    "nested_custom_field_json_validated": 2997,
+    "parsed_de_fa_en_triplets": 11988,
+    "duplicate_card_ids": 0,
+    "negative_controls_rejected": 3,
+    "packaged_fresh_extraction_replay": "PASS"
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_only": true,
+    "verification_evidence": [
+      "Immutable parent C44W SHA256 8dbf969e8e3310564beba6ed6b76b4e1e3e83e275f683a254a629204503985c5; Phase15 working candidate ZIP SHA256 b144633e85729e8948743514ce2ff4c8c7ba5b73fbf4ef0d7adf8fa62ea4dff4; current v486-R120 runtime ZIP SHA256 7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d.",
+      "Exact production parseTsv and IMPORT_LIMITS_V474 extracted verbatim from current v486 index.html; SHA256 of code snippet verified. Parsed original full 50,791,177-byte Phase15 candidate TSV with 2997 card rows and 23 columns per row, 11988 nested example JSON entries and 2997 custom_fields JSON objects, 0 duplicate IDs.",
+      "2998 complete rows including header were independently parsed with Python csv. SHA256 of all column values per row matched the native parser byte-for-byte after text decoding; zero missing/truncated/reordered cells.",
+      "Three native parser negative probes (unterminated quoted field; 16MiB field limit; 80MiB file limit) were correctly rejected. Independent runner regenerated source code and TSV from two verified original ZIPs then reran full parser; compact checkpoint ZIP extracted fresh and replayed PASS with CRC/MANIFEST/SHA256SUMS verified.",
+      "This is production TSV lexer/parser only. Full tsvRowsToCards/normalizer, actual native importer/install to IndexedDB, browser DOM/typing/audio smoke, spoken MP3 verification, full-corpus independent adversarial semantic signoff and Stage4-7 official acceptance are NOT_RUN/NOT_PASSED. No import.",
+      "Existing 3 high-risk source audio lexical holds (0713/2006/2772) and 566 shared-audio mixed-headword groups remain unresolved as actual spoken-pronunciation claims. No app UI/content authority/source mutated."
+    ],
+    "production_native_tsv_parser": "PASS_SCOPED",
+    "production_card_normalizer": "NOT_RUN",
+    "native_import_to_store": "NOT_RUN",
+    "live_browser_dom": "BLOCKED_BY_ADMINISTRATOR",
+    "spoken_mp3_lexical_semantics": "NOT_VERIFIED",
+    "independent_full_corpus_stage4_semantics": "NOT_COMPLETE",
+    "global_stage4": "NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false,
+    "source_runtime_candidate_immutable": true
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "artifact": {
+      "filename": "Menschen-A1-Phase21-EXACT-v486-2997-NATIVE-TSV-PARSER-QA-NO-IMPORT-20261026.zip",
+      "sha256": "0afefcee3008a32bf9e7e78bbec51b74d9427138bb39ec866dd1ffdc78e378e8",
+      "size_bytes": 125533,
+      "location": "CURRENT_CONVERSATION_COMPACT_PORTABLE_QA"
+    },
+    "root_LATEST_not_advanced": true,
+    "previous_phase20_sha": "80d7e2de9b4b810119ec0094035436eb2fb866d3",
+    "checked_latest_sha": "2eb7dfc88100fc8f86c764f2eb78e77682a772ab",
+    "resume_pointer": "Phase21 exact v486 production TSV parseTsv + Python independent parity PASS for all 2997 cards/11988 triplets/23 columns. Full card normalizer/native installation and browser remain untested here due access restrictions. 3 spoken source audio high-risk cards and 566 shared-MP3 mixed-headword groups remain source scope holds. Next exact native adapter/install verification in permitted browser and audio lexical matching then official Stage4/5/6/7. NO IMPORT."
+  }
+}

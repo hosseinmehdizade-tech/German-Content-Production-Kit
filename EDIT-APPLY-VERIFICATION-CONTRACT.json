@@ -1,0 +1,41 @@
+{
+  "schema": "gfp-crossproject-immediate-edit-apply-verification@1.0.0",
+  "status": "ACTIVE_USER_REAFFIRMED",
+  "effective_at": "2026-10-26",
+  "applies_to": [
+    "German-Content-Production-Kit",
+    "German-Flashcards-Pro",
+    "all mutable nonlocked content workstreams",
+    "AI semantic repairs and editorial changes"
+  ],
+  "core_rule": "WHEN AN EDIT IS APPROVED/VERIFIED, APPLY IT TO THE CURRENT EDITABLE AUTHORITY IN THE SAME WORK TURN, TEST THE ACTUAL EDITED DATA, AND PERSIST IT. A candidate-only report must never replace a safe permitted data edit.",
+  "execution_order": [
+    "Resolve exact newest CURRENT mutable artifact and verify bytes/hash; check Git latest and concurrent writer",
+    "Analyze proposed change and registered source; separate truly correct changes from no-force and holds",
+    "Apply every approved safe edit directly to the identified mutable working file immediately, with before/after stable IDs and original source frozen",
+    "Run modified-scope and affected-dependency QA on actual post-edit working content, with source/LOCKED preservation, duplicate and negative mutation guards",
+    "Write source patch and refreshed working content to durable file or portable recovery; attempt bounded Git sync; record persisted paths/hashes and live currentness",
+    "Only report APPLIED counts for edits whose post-edit bytes were verified; report PENDING when not applied, with exact blocker and recovery path"
+  ],
+  "nonnegotiable_guards": {
+    "original_registered_sources": "IMMUTABLE; make source-derived editable fields and separately provenanced new curated examples",
+    "locked_artifacts": "READ_ONLY; no silent rewrite; successors only via explicit reviewed branch/approved scope",
+    "exact_current_missing": "Never silently apply to an older v034 while pretending v037. Recover exact v037; in parallel apply source-only safe fixes to a clearly separate source-derived working artifact and upload/commit it, labeling not v037. Do NOT advance official v037 QA counts.",
+    "visual_ui": "No noticeable UI change without prior user approval",
+    "concurrency": "One writer, re-fetch latest Sha/CAS before writing; reject conflicts and persist non-authoritative patch",
+    "translation": "Do not replace source-exact German quote; add independent DE/FA/EN curated example as needed",
+    "human_signoff": "Only documented AI linguistic and independent-method second pass; no outside human mandatory"
+  },
+  "anti_patterns": [
+    "Repeated NOT-APPLIED reports for the same already approved corrections while mutable current data is writable",
+    "Claiming Stage4 progress from original-source audit or older-version patch",
+    "Creating many tiny ZIPs/reports instead of cumulative direct edits",
+    "Inventing verification or declaring Git-backed final without write/readback"
+  ],
+  "if_edit_cannot_be_applied": {
+    "state": "BLOCKED_FOR_THAT_TARGET",
+    "mandatory_action": "State why precisely; create/source and verify recoverable working patch/artifact if independently useful; do not portray it as target integration; fix authority persistence before resuming edits to missing target."
+  },
+  "completion_definition": "Change is only complete when before/after diff on working file, targeted test and durable recovery evidence all exist; otherwise status remains PENDING/NOT_APPLIED.",
+  "incident_record": "Menschen A2 repeated source and v034 proposal reports while v037 lost and user explicitly expected immediate application. 2026-10-26 fixes: 2249-row derived editable A2 source, 95 edits, uploaded Library exact SHA readback; official v037 remains missing."
+}

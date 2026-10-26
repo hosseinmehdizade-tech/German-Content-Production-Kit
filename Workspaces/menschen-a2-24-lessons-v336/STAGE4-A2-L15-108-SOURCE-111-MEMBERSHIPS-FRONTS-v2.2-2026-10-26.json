@@ -1,0 +1,100 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/stage4-l15-source-memberships-and-lexical-fronts",
+  "milestone": {
+    "name": "A2_L15_108_RAW_ROWS_111_COURSE_MEMBERSHIPS_6_HEADWORD_CASES_SOURCE_AUDIT",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Exact v037 ZIP unavailable; proposed headword/meaning changes and 123 existing example candidates must not be promoted without v037 byte/per-unit parity and stage gates."
+  },
+  "scope": {
+    "unit": "Raw Memrise A2-L15 source row mapped with source-occurrence fidelity and four headword+two adjacent lexical issues",
+    "total_units": 108,
+    "source_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "baseline_v034_sha256": "245b8108782d272a9b5e8e6a4ed0ab63e068d562d7a934e5e707fd80eaee77ff",
+    "v21_proposal_sha256": "d0ef7ecc01053ac01098e96ce3c99879b1a5c5a1fbe3df482ba86c9ccec48aca",
+    "v037_expected_sha256": "f96fa3adeae541c08866a9515fbaecfb6dcefb1b425e4a0aa704dc11d624913a"
+  },
+  "progress": {
+    "reviewed_unique": 108,
+    "unreviewed": 0,
+    "dispositions": {
+      "SOURCE_IDENTIFIED_AND_MEMBERSHIP_RECONCILED_READONLY": 108
+    },
+    "course_memberships": 111,
+    "main_l15_cards": 110,
+    "crosslesson_card_id": "ma2m-lu-0702",
+    "split_source_ordinals": [
+      3587,
+      3590,
+      3599
+    ],
+    "headword_or_adjacent_lexical_triage_cases": 6,
+    "previous_candidate_123_example_triples_unchanged": true,
+    "official_v037_approvals_unchanged": 5916,
+    "official_v037_pending_unchanged": 4894,
+    "official_v037_holds_unchanged": 20,
+    "official_new_semantic_approvals": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_ready": false,
+    "verification_evidence": [
+      "Registered original Memrise CSV (9109 rows) SHA, exact v034 ZIP SHA and v2.1 candidate ZIP SHA verified locally.",
+      "Raw A2 L15 ordinal range 3540 through 3647 covers all 108 original occurrences.",
+      "111 membership records link to exactly the 108 raw row ordinals; includes crosslesson inzwischen card L11/L15 and three explicit splitting identities.",
+      "Six source-grounded headword/context decisions: Rundfunk, Fernseh-Zuschauer, Darsteller tragischer Rollen, Wahl zwischen diesem oder jenem, die Fakten (plural), der Anzug aspect distinction; source text strictly separate from authored German notes.",
+      "All 123 v2.1 triples have source baseline before-hashes and candidate after-hashes matched; no rewrites to v2.1, v034, LOCKED, official v037 or runtime.",
+      "35 scoped deterministic checks PASS including six mutation-test checks; ZIP outer CRC/member hashes PASS and nested v2.1 CRC PASS.",
+      "No linguistic Stage4 acceptance; exact v037 binary not present; no import-ready claims."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "NO_UPLOAD_CAPACITY_BOUNDARY",
+    "resume_pointer": "Workspaces/menschen-a2-24-lessons-v336/STAGE4-A2-L15-108-SOURCE-111-MEMBERSHIPS-FRONTS-v2.2-2026-10-26.json",
+    "portable_artifact_filename": "Menschen-A2-L15-SOURCE-111-MEMBERSHIPS-HEADWORD-v2.2-NOT-IMPORT-READY.zip",
+    "portable_artifact_sha256": "4d7cd699b7655d4c0f09570e00fc68c7a99726304ebed8ade77f2a23d2879b2a",
+    "portable_artifact_bytes": 159975,
+    "contents": "Embedded v2.1 exact original plus raw-source 108/111 map, 6 headword/source review cases, QA, readme and rerunnable verification script",
+    "binary_location": "CURRENT_CONVERSATION_ONLY_NOT_GITHUB",
+    "original_latest_blob_sha": "083a98b6722a9c892725b4b581a7a00c2bdd6c61"
+  },
+  "open_headword_decisions": [
+    {
+      "id": "ma2m-lu-0901",
+      "source_ordinal": 3545,
+      "classification": "CONTEXT_BACKED_RADIO_BUT_BROADCAST_SENSE"
+    },
+    {
+      "id": "ma2m-lu-0924",
+      "source_ordinal": 3568,
+      "classification": "ORIGINAL_HYPHEN_SPELLING_ATTESTED"
+    },
+    {
+      "id": "ma2m-lu-0927",
+      "source_ordinal": 3571,
+      "classification": "DESCRIPTIVE_PHRASE_IN_ORIGINAL"
+    },
+    {
+      "id": "ma2m-lu-0987",
+      "source_ordinal": 3629,
+      "classification": "NONSTANDARD_ORIGINAL_BETWEEN_OR_GUARDED_PROPOSAL"
+    },
+    {
+      "id": "ma2m-lu-0976",
+      "source_ordinal": 3618,
+      "classification": "POSSIBLE_PLURAL_PARADIGM_MISLABEL"
+    },
+    {
+      "id": "ma2m-lu-0998",
+      "source_ordinal": 3640,
+      "classification": "PERSIAN_TRAGEN_VS_ANZIEHEN_SEPARATE_V21_ANNEX"
+    }
+  ],
+  "next_action": "Recover exact v037 zip and validate recorded SHA and all guarded units. Review six source-linked lexical cases and 123 authored candidate triples; preserve crosslesson identity for inzwischen; stage4 semantic review all 4894 pending plus 20 holds; only then guarded merges and Stage5/6/7."
+}

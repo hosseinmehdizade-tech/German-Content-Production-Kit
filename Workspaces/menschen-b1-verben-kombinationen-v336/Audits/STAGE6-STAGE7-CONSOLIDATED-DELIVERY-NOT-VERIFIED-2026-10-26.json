@@ -1,0 +1,42 @@
+{
+  "schema": "gcpk-stage6-stage7-delivery-accountability@1.0.0",
+  "date": "2026-10-26",
+  "user_request": "Declare Stage6 and Stage7 FINAL and upload the final version",
+  "result": "SINGLE_COMPLETE_DISTRIBUTION_ZIP_DELIVERED__STAGE6_STAGE7_NOT_VERIFIED",
+  "artifact": {
+    "name": "German-Flashcards-Pro-Menschen-B1-v486-R120-DELIVERY-STAGE6-7-PENDING-2026-10-26.zip",
+    "sha256": "cea420e4a384cbb1ac8a65d479ca47feba2ac2f7653f777692bb72be22dd769e",
+    "bytes": 22397621,
+    "members": 305,
+    "library": "UNAVAILABLE_FULL_QUOTA",
+    "location": "CONVERSATION_SANDBOX"
+  },
+  "from": {
+    "release_candidate_v1_4_sha256": "c003db494fef2fe960146e7f3b863978cfcd9d4bd8f6b943be187c316311f12f",
+    "stage4": "PASS_AI_WITH_DISCLOSED_VARIANT",
+    "stage5": "PASS",
+    "stage6_parser_render": "PASS_SCOPED",
+    "runtime": "v486-R120"
+  },
+  "reproducible_evidence": {
+    "parent_manifest_files_verified": 301,
+    "delivery_manifest_files_verified": 304,
+    "unmodified_app_content_source_tests_reports_launcher_files": 270,
+    "cards": 395,
+    "example_triplets": 1580,
+    "kombinationen": 2123,
+    "full_zip_crc": "PASS",
+    "original_historical_FINAL": "IMMUTABLE_UNCHANGED"
+  },
+  "unmet_hard_gates": {
+    "native_IndexedDB_commit": "NOT_OBSERVED",
+    "same_profile_browser_restart": "NOT_OBSERVED",
+    "offline_service_worker": "NOT_OBSERVED",
+    "real_browser_error": "net::ERR_BLOCKED_BY_ADMINISTRATOR"
+  },
+  "stage6": "NOT_FINAL",
+  "stage7": "NOT_FINAL",
+  "guidance": "The user-requested distribution can be downloaded. Do not claim Stage6 or Stage7 final until the exact v486 real-origin IndexedDB and offline tests pass in an allowed browser environment.",
+  "source_file": "08-Release-Decision/RELEASE-GATE-STATUS.json",
+  "next_action": "Run 07-Tools-Launcher/Run-Stage6-Windows.cmd from this distribution in a browser with permitted localhost; review STAGE6-LOCAL-RESULT.json for all gates; only then promote to verified Stage6/Stage7 final."
+}

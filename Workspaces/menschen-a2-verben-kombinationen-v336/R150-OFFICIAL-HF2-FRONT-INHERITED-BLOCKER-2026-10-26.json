@@ -1,0 +1,63 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-26",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": {
+    "name": "R150_RECOVER_OFFICIAL_V336_AND_HF2_DETECT_228_INHERITED_VISIBLE_VERB_FRONT_DEFECTS",
+    "level": "major",
+    "state": "BLOCKED",
+    "blocker": "Visible content/presentation decision required: official HF2 expects full verb morphology on the learner-facing front for 228 verb cards. An exact 228-front test-only remediation passes official HF2, but changing these user-visible fronts must not be promoted without approval."
+  },
+  "scope": {
+    "unit": "R139/R148 active verb card with confirmed inherited HF2 learner-front mismatch",
+    "total_units": 228
+  },
+  "progress": {
+    "reviewed_unique": 228,
+    "unreviewed": 0,
+    "dispositions": {
+      "INHERITED_VERB_FRONT_MISSING_LEARNER_VISIBLE_MORPHOLOGY": 228
+    },
+    "unchanged_expression_cards": 64,
+    "baseline_R139_errors": 228,
+    "candidate_R148_errors": 228,
+    "test_only_fixes_verified": 228,
+    "official_framework_tests_v336": 10,
+    "official_framework_tests_v335": 12,
+    "official_HF2_regressions": 7,
+    "historical_v334_stale_prompt_failure": 1
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "Recovered exact official v3.3.6 portable authority ZIP SHA256 61ecccdd1ae0819ae7e15b5d3335bc576dcb896a393765c257687b900ec3915c and HF2 hotfix ZIP SHA256 f731506b4857cc9b65fcb5c2cd753f1b31439f9c6dfca8d104b9f39e2eb593bb from Library.",
+      "Rebuilt original R148 candidate from R139 parent without mutation, resulting 292-card candidate TSV SHA256 97e0cdcfbc1108ccd884a6cb08c350d19a7666d68df9671642caa86987097157.",
+      "Official v3.3.6 neutral vocabulary projection validator PASS on R148 292/292; official HF2 learner-visible front validator FAIL exactly 228 VERB_FRONT_NOT_CANONICAL_DISPLAY, identical stable card IDs for R139 baseline and R148 candidate; zero new R148 induced errors.",
+      "Test-only, explicitly not importable morph-rich front projection modifies only 228 verb front fields; exact portable HF2 front validator PASS 292/292 with zero errors, neutral projection validator PASS 292/292; 64 other cards and typing targets unchanged.",
+      "Official framework v3.3.6 pytest 10/10 PASS, v3.3.5 12/12 PASS, HF2 targeted 7/7 PASS, reference registry validator PASS. Historical v3.3.4 8/9 with one known stale START-PROMPT-v3.3.5 assertion; never count as full PASS.",
+      "No actual user-visible front changes applied, no R139/R119 mutation, original 11 source PNGs unchanged; source/translation Stage4 full AI signoff NOT claimed; Stage5 formal anti-bypass NOT_RUN, Stage6/7 NOT_RUN.",
+      "R150 15-member verification ZIP independently rematerialized from Library byte-identical size 25017 and SHA256 06df554938de34bce6a62b08af957dcc2c8b375c49e42b3cb9bdec6393b89d5e."
+    ],
+    "stage4_global": "IN_PROGRESS_SOURCE_BOUND_FINAL_REVIEW_NOT_COMPLETE",
+    "stage5": "NOT_RUN__HF2_PREREQUISITE_FAILS_CURRENT_R148",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "human_signoff": "NOT_REQUIRED_NOT_CLAIMED",
+    "user_approval_status": "NOT_REQUESTED_OR_GIVEN_YET"
+  },
+  "artifact": {
+    "filename": "Menschen-A2-Verben-R150-HF2-OFFICIAL-GATE-AND-TEST-ONLY-PROBE.zip",
+    "sha256": "06df554938de34bce6a62b08af957dcc2c8b375c49e42b3cb9bdec6393b89d5e",
+    "size_bytes": 25017,
+    "members": 15,
+    "library_file_id": "libfile_29fdd196e8648191915193340705b024",
+    "library_readback": "PASS_SHA256_BYTE_CRC",
+    "parent_authority": "R139"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_EXACT_BYTE_READBACK",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/R150-RESUME-POINTER.json"
+  },
+  "next_action": "Obtain targeted user decision approving 228 learner-visible verb-front morph-rich display (or alternative HF2-compliant front treatment); keep exact test-only version separate until approved. Then create minimal validated current content successor from R139+R148; rerun official HF2/neutral, full Stage4 source/linguistic/provenance gates, Stage5 anti-bypass, Stage6 exact CURRENT, Stage7. Large LATEST.json remains stale R146, do not overwrite without safe coordination."
+}

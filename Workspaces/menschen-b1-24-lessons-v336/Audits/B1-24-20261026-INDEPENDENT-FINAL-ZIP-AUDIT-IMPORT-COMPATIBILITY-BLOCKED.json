@@ -1,0 +1,95 @@
+{
+  "schema": "gcpk-b1-final-release-independent-structural-audit@1.0.0",
+  "date": "2026-10-26",
+  "lesson_scope": "B1-L01..B1-L24",
+  "archive_sha256": "9814522edd4e831540123f535673f18e482fa8384408f169928d9fb80de29d9d",
+  "archive_bytes": 156890696,
+  "archive_members": 148,
+  "status": "PASS_BIT_INTEGRITY__BLOCKED_COMPLETE_V486_IMPORT",
+  "method": "Independent current-turn extraction, CRC+SHA of all outer/nested archives, full original rar libarchive decode, 24 TSV structured source-to-zip byte parity, exact v486-R120 JS original header recognition; no live profile mutation.",
+  "results": {
+    "outer_manifest_sha": "146/146_PASS",
+    "outer_sha256sums": "147/147_PASS",
+    "zip_nested_crc": "26/26_PASS",
+    "structure_assertions": "26/26_PASS",
+    "original_lesson_archives": "24/24_SHA_AND_CRC_PASS",
+    "app_runtime_exact": "77_App_3_PS_2_CMD_BYTE_EQUAL",
+    "source_rar_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "source_rar_decompression": "7725_ENTRIES_7719_MP3_ZERO_DATA_READ_ERRORS",
+    "card_rows": 3137,
+    "unique_ids": 3089,
+    "trilingual_example_groups": 12548,
+    "source_schema_profiles": {
+      "columns_23": 21,
+      "columns_17": 1,
+      "columns_32": 2
+    },
+    "v486_header_recognition": {
+      "recognized": 22,
+      "unrecognized": 2,
+      "rejected_lessons": [
+        "B1-L10",
+        "B1-L11"
+      ],
+      "exact_code_functions": [
+        "adaptiveHeaderKeyV355",
+        "adaptiveTsvProfileV355"
+      ]
+    }
+  },
+  "blockers": [
+    {
+      "id": "IMP-001",
+      "severity": "HIGH",
+      "status": "CONFIRMED_IN_EXACT_JS_HEADER_PROFILE",
+      "lessons": [
+        "B1-L10",
+        "B1-L11"
+      ],
+      "problem": "32-column authored TSVs contain headword_de/reviewed_form_de but no header supported for Adaptive front; strict schema signatures also differ, so parseTsvText cannot recognize either original TSV as-is.",
+      "non_destructive_fix": "Create verified 23-column lossless adapter successors for L10/L11 without overwriting historical LOCKED originals and retest actual v486 bounded parsing, examples/IDs/source parity."
+    },
+    {
+      "id": "INT-002",
+      "severity": "HIGH",
+      "status": "CONFIRMED_PACKAGING_BOUNDARY",
+      "problem": "App serves only 01-App and all 24 B1 TSVs are in sibling Content, so launch does not preinstall or automatically activate lesson data."
+    },
+    {
+      "id": "AUDIO-003",
+      "severity": "MEDIUM",
+      "status": "UNVERIFIED_PLAYBACK",
+      "problem": "All original 7719 MP3 decompress in raw RAR but are not individually installed under served 01-App; no playback check on user browser."
+    },
+    {
+      "id": "SRS-004",
+      "severity": "MEDIUM",
+      "status": "NO_LIVE_BACKUP_IMPORT",
+      "problem": "No real user profile SRS backup/restore or safe ID migration; three cross-lesson logical aliases nonexecuted and exact L24 PASS0023 historical archive missing."
+    }
+  ],
+  "limitation": "Byte integrity/TSV structural completeness does not prove every semantic translation, real browser import (including L18 lossless adaptive round-trip), personal SRS safety or native audio playback.",
+  "release_file_modified": false,
+  "app_ui_modified": false,
+  "locked_lesson_files_modified": false,
+  "srs_modified": false,
+  "durable_reports": {
+    "markdown": {
+      "drive_url": "https://drive.google.com/file/d/1QAY-1OUQJku2uZYcEupAi0RuW8rWZu-d/view",
+      "sha256": "d37c68fbd382e0f59982c931e3d0a7cf6e696e318e8d42ff86c3ddeddeca4752",
+      "bytes": 7701
+    },
+    "json": {
+      "drive_url": "https://drive.google.com/file/d/1vCf2pxnHuVP-HATatX1TjgfWYr7aY3xP/view",
+      "sha256": "e6fc2266e8538f3e7e6c2eb6b4b63ca6aef6a25d07ac89012522fce5ed7d6ce4",
+      "bytes": 19218
+    },
+    "schema_test": {
+      "drive_url": "https://drive.google.com/file/d/1sreItwEGmjsB7rJ_EuJ5--Vo4SaLREDj/view",
+      "sha256": "429480cb4821c12b3ba49245ddf89ebf0e7134d1f53cf5a9e8e0be5a7dda9c2c",
+      "bytes": 4056
+    }
+  },
+  "persistence": "PASS_DRIVE_EXACT_BYTES_AND_GIT",
+  "next_action": "Do not claim all 24 files import-ready. Preserve original one-ZIP byte identity. Fix L10/L11 via additive adapter, verify L18 adaptive metadata roundtrip, plan safe content ingestion/audio and SRS backup. Full course semantic verification remains independent boundary."
+}

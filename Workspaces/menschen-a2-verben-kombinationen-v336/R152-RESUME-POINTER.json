@@ -1,0 +1,53 @@
+{
+  "schema": "gcpk-menschen-a2-verben-recovery-pointer@1.0.0",
+  "date": "2026-10-26",
+  "current_scoped_milestone": "R152",
+  "lineage_parent": "Workspaces/menschen-a2-verben-kombinationen-v336/R151-RESUME-POINTER.json",
+  "receipt": "Workspaces/menschen-a2-verben-kombinationen-v336/R152-PHRASE-SENSE-AND-EVIDENCE-SET-RECONCILIATION-2026-10-26.json",
+  "content_authority": {
+    "revision": "R139",
+    "sha256": "a6f3b0264949b4afe838c39ec868465627b3534c9605c68e98d3038224035559",
+    "immutable": true
+  },
+  "candidate": {
+    "revision": "R148",
+    "tsv_sha256": "97e0cdcfbc1108ccd884a6cb08c350d19a7666d68df9671642caa86987097157",
+    "not_promoted": true
+  },
+  "QA_artifact": {
+    "name": "Menschen-A2-Verben-R152-PHRASE-SENSE-AND-EVIDENCE-ACCOUNTING-AUDIT.zip",
+    "sha256": "8d1fa7cc45531376c63078f53ade7b6b384a20e089eeecde4336518d6894ef16",
+    "library_file_id": "libfile_44b6fa9258148191b6f9ec1d2b62215e",
+    "readback": "PASS_EXACT_BYTES_SHA256_CRC"
+  },
+  "new_scope": {
+    "phrase_cards": 64,
+    "component_links": 48,
+    "sense_morphology_hold": "ma2-lu-0169 -> ma2-lu-0167",
+    "active_r134_current_online_source_claims": 10,
+    "r138_separate_historical_edition_claims_with_online_corroboration": 10,
+    "overlap": 0,
+    "canonical_text_changes": 0,
+    "negative_controls_detected": 14
+  },
+  "runtime_static_investigation": {
+    "authority_repo": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "file": "01-App/modules/learning-core-v48.js",
+    "file_git_blob_sha": "e61a4617d61b032f12e4e65f334ba38e6b7d9113",
+    "finding": "render/adapt module derives morphology from same-card data and no component_links token found; repository code search showed no direct component_links/structure_components consumer. This is not real browser/importer proof of absence of inheritance.",
+    "status": "SCOPED_STATIC_NEGATIVE_EVIDENCE_NOT_FINAL"
+  },
+  "gates": {
+    "stage4": "IN_PROGRESS_WITH_MORPHOLOGY_LINK_EVIDENCE_RISK",
+    "stage5": "NOT_RUN_HF2_FRONT_228_FAIL_CURRENT_CANDIDATE",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "HF2_visible_front_expansion": "NOT_USER_APPROVED"
+  },
+  "legacy_latest": {
+    "path": "Workspaces/menschen-a2-verben-kombinationen-v336/LATEST.json",
+    "observed_milestone": "R146_259_HIGH_RISK_SEMANTIC_REVIEWS_SCOPED_AND_FULL_COMBO_PROVENANCE_SCREEN",
+    "status": "STALE_R146_NOT_AUTHORITY_FOR_RECENT_SCOPED_QA"
+  },
+  "next_action": "Use exact R139 parent and unpromoted R148 candidate. Avoid auto-morphology inheritance from ma2-lu-0167 physical weak bewegen into ma2-lu-0169 strong persuasion unless a sense-specific semantic bridge is certified; static code search shows no direct inheritance consumer but real browser not run. Do not mutate user-visible HF2 verb fronts until explicitly approved. Complete official Stage4 final source/linguistic acceptance, Stage5/6/7 separate. Source accounting R134 10 versus R138 10 distinct claims must remain separate."
+}

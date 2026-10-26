@@ -1,0 +1,76 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-26",
+  "workstream": "menschen-a2-verben-kombinationen-v336",
+  "milestone": {
+    "name": "R151_FULL_369_LEXICON_SOURCE_CLAIM_SCOPE_AND_809_RELATION_SOURCE_LABEL_REVALIDATION_WITH_HF2_FRONT_IMPACT",
+    "level": "major",
+    "state": "IN_PROGRESS"
+  },
+  "scope": {
+    "unit": "active R139 legacy lexicon source-reference claim identity by stable card ID and source index",
+    "total_units": 369
+  },
+  "progress": {
+    "reviewed_unique": 369,
+    "unreviewed": 0,
+    "dispositions": {
+      "RETAIN_HISTORICAL_UNVERIFIED_CURRENT_SOURCE": 359,
+      "RETAIN_PREEXISTING_DIRECT_ONLINE_SOURCE_METADATA_NOT_FRESHLY_REACCESSED": 10
+    },
+    "additional_checked": {
+      "relation_records_with_print_proof_boundary": 807,
+      "relation_source_labels_scoped": 809,
+      "example_origin_records": 1168,
+      "course_German_direct": 215,
+      "course_German_not_verbatim": 952,
+      "course_German_adapted": 1,
+      "verb_morphology_mirror_cards": 228,
+      "seeded_mutations_rejected": 13
+    },
+    "display_impact": {
+      "front_old_mean_chars": 9.3,
+      "front_test_only_new_mean_chars": 47.07,
+      "new_front_over_50_chars": 86,
+      "new_front_over_60_chars": 21,
+      "new_front_over_70_chars": 8
+    },
+    "active_card_edits": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "R139 immutable parent ZIP SHA256 a6f3b0264949b4afe838c39ec868465627b3534c9605c68e98d3038224035559; R148 only candidate TSV SHA256 97e0cdcfbc1108ccd884a6cb08c350d19a7666d68df9671642caa86987097157, unchanged and not promoted.",
+      "Reconciled all 369 R134 currentness claims by exact card/source index with active R148 source_ref: 359 explicitly unverified historical and 10 documented direct-online-source-scope metadata. R151 did not freshly re-access external pages, so no new external verification claim.",
+      "807 canonical relations carry 809 source_labels with no_false_certification=true and historic print proof status; label count and record count correctly distinguished.",
+      "1168 unique example origin attestations: 215 German directly course-image matched, 952 no direct quote established, 1 adapted. FA/EN sentence translations all marked editorial, not textbook quotations.",
+      "R148 scoped relation amendments are two added semantic scope qualifiers for ma2-lu-0230 plus existing metadata/note caveats; original relation IDs, terms, Duden source labels, examples, and course originals preserved.",
+      "Official neutral vocabulary projection PASS 292/292 R148, official HF2 front FAIL exactly 228 inherited mismatch, test-only 228-front alternative HF2 PASS 292/292 and neutral PASS. Exact HF2 rule mandates value in learner-facing front; cannot solve merely by storing morphology in custom_fields or backside.",
+      "All 228 German verb principal-form values already match canonical vs morphology mirrors; inherited problem is learner-visible placement, not missing source forms.",
+      "Front impact arithmetic over exact 228 test-only propositions: average 9.30 to 47.07 characters, 86 test fronts >50 characters, maximum 80. Character counts do not establish exact CURRENT app-browser UI/wrapping.",
+      "13/13 seeded logical corruptions detected across proof statuses/URLs, relation scopes, German source attributions, FA/EN origin, principal forms, and front changes.",
+      "R151 ZIP 15673 bytes SHA256 f41976559399c51bc070087876e8b8d305de7c7e67e20a20e62f1fe8bf7032be, Library independent byte, SHA256, member hash manifest, CRC roundtrip PASS.",
+      "User approval for visually significant 228-card front expansion is not given; test-only projection remains unpromoted, original R139 and R119 remain immutable."
+    ],
+    "stage4_global": "IN_PROGRESS_NO_FULL_LINGUISTIC_FINAL_CERTIFICATION",
+    "stage5": "NOT_RUN_HF2_PREREQUISITE_FAILS_CURRENT_CANDIDATE",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "user_visible_change_approval": "PENDING_NOT_INFERRED_FROM_CONTINUE",
+    "technical_scope_only": true
+  },
+  "artifact": {
+    "filename": "Menschen-A2-Verben-R151-SOURCE-CLAIM-AND-HF2-FRONT-IMPACT-GATE.zip",
+    "sha256": "f41976559399c51bc070087876e8b8d305de7c7e67e20a20e62f1fe8bf7032be",
+    "size_bytes": 15673,
+    "members": 8,
+    "library_file_id": "libfile_87590ee390508191a5934d162ef1a5f5",
+    "library_readback": "PASS_EXACT_BYTES_SHA256_MEMBERS_CRC"
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "PASS_INDEPENDENT_BYTE_READBACK",
+    "resume_pointer": "Workspaces/menschen-a2-verben-kombinationen-v336/R151-RESUME-POINTER.json"
+  },
+  "next_action": "Stage4 full final linguistic/source and v3.3.6 evidence controls remain separate. Approval needed for any visible 228-verb front expansion; do not infer it from generic continuation. Alternative HF2-compatible UX would require an explicit policy/visual decision and same rigor. No content promotion; Stage5/6/7 NOT_RUN. Preserve pinned R139/R119 and source fidelity; legacy LATEST remains stale R146 while dedicated R151 pointer is current."
+}

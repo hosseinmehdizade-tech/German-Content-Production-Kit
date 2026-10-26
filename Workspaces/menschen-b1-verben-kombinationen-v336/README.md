@@ -1,3 +1,5 @@
+**CURRENT USER-ACCEPTED FINAL DISTRIBUTION — 2026-10-26 (DIDACTIC-CORRECTED 835):** The active successor is `German-Flashcards-Pro-Menschen-B1-v486-R120-DIDACTIC-CORRECTED-USER-ACCEPTED-FINAL-2026-10-26.zip`, SHA256 `09491cdb51fe8d8ac11c326d1ac8591eb95705b13b42c241721b20911547c373`. 395 cards, 1580 trilingual examples, 835 Kombinationen, original v486 app unchanged. The dedicated didactic gate is CLOSED/PASS. **Full Stage4 language/source review, official new Stage5, real-origin Stage6 and technical Stage7 are NOT independently verified**; user directed final distribution with explicit exceptions. Previous FINAL remains immutable. Resolve current status from `LATEST.json -> current_user_directed_final_835` rather than historical sections below.
+
 # Menschen B1 Verben — Kombinationen successor (v3.3.6)
 
 Current state: **Stage7 PASS — content RELOCKED on exact CURRENT v465-R99; v465 same-profile Windows/Chrome acceptance remains a separate runtime boundary**.

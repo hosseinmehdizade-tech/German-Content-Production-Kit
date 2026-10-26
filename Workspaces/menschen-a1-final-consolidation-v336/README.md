@@ -1,4 +1,4 @@
-# Menschen A1 — Final Consolidation, Stage A
+**CURRENT CONTENT AUTHORITY (2026-10-26):** Read `CURRENT-WORKING-CONTENT.json`. C46 is the current editable Menschen A1-only content ZIP: one `Menschen A1` collection, 24 lessons A1-L01..A1-L24, 2997 unchanged card identities. This supersedes C45 for future editable work only. Historical C44W/LATEST and C45 remain immutable; C46 is NOT FINAL and not approved for import. The local browser library was not migrated.\n\n# Menschen A1 — Final Consolidation, Stage A
 
 **Current status:** verified read-only structural and source baseline; **not importable/not A1 FINAL**.
 

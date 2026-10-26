@@ -1,0 +1,66 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-26",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "PHASE18_SYSTEMIC_AUDIO_SHARED_HEADWORD_SCOPE_AND_FAIL_CLOSED_RELEASE_GUARD",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "shared_source_audio_binding_with_different_learner_card_front",
+    "total_units": 1305,
+    "audio_file_inventory": 2225,
+    "all_audio_bindings": 2996,
+    "shared_audio_files": 588,
+    "shared_audio_bindings": 1359,
+    "shared_mixed_front_audio_groups": 566,
+    "cards_total": 2997,
+    "targeted_critical_cards": 3
+  },
+  "progress": {
+    "reviewed_unique": 1305,
+    "unreviewed": 0,
+    "dispositions": {
+      "SOURCE_MP3_PROVENANCE_SHARED_WITH_DIFFERENT_CARD_FRONT": 1305
+    },
+    "shared_source_membership_variance_groups": 31,
+    "spoken_audio_semantic_verifications": 0,
+    "connected_runtime_smoke_verifications": 0,
+    "critical_source_audio_release_holds": 3
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_only": true,
+    "verification_evidence": [
+      "Verified user source original 9109-row CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222; exact immutable C44W 8dbf969e8e3310564beba6ed6b76b4e1e3e83e275f683a254a629204503985c5; Phase15 candidate b144633e85729e8948743514ce2ff4c8c7ba5b73fbf4ef0d7adf8fa62ea4dff4; Phase16 a2e2f829f1c91fe011323c7d640b04a795d2666b1b24fcdce03ec35f5340f2d0; Phase17 05f976f9b3980a2d968b523b84466ad5903091f2ca19d6307716f6da050cdf34.",
+      "Independent full card/source audio reference survey: 2996 audio refs to 2225 original RAR MP3 files. 588 files reused across multiple cards; 566 groups include divergent learner headwords with 1305 card-source links. This does NOT prove wrong audio; it PROVES exact recording-to-each-learner-variant equivalence is not established by file existence/provenance.",
+      "566 itemized different-front audio sharing groups in archived JSON; 31 groups show differing recorded source membership lists, requiring source-specific contextual interpretation, not automatic error classifications.",
+      "Three specific learner/source mismatch or multi-sense cards ma1m-lu-0713, ma1m-lu-2006, ma1m-lu-2772: original MP3s decoded to nonempty 16 kHz PCM and matched SHA256, no reliable German speech transcript or actual connected CURRENT v486-R120 runtime smoke; explicit fail-closed advisory release guard preserved.",
+      "Independent code reruns grouping from actual 2997-card Phase15 TSV and validates all 566 itemized groups, each of 1305 bindings, MP3 checksums, blocker statuses and no-import gate. Five mutation probes (removed blocker; fake spoken confirmation; import enabled; altered audio hash; fabricated certification) rejected. ZIP CRC/SHA256SUMS PASS.",
+      "Policy/guard in checkpoint is read-only advisory evidence: has NOT changed live app UI, autoplay or content; 566 groups are a pronunciation scope/audit risk, NOT 566 proven speech errors. Not an acoustic, browser, full corpus semantic or release acceptance test. Global Stage4 NOT_PASSED; Stage5/6/7 NOT_RUN; NO IMPORT."
+    ],
+    "independent_technical_replay": "PASS_SCOPED",
+    "speech_lexical_content": "NOT_VERIFIED",
+    "app_current_runtime_audio_smoke": "NOT_RUN",
+    "global_stage4": "NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "original_c44w_and_app_unchanged": true,
+    "import_allowed": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "artifact": {
+      "filename": "Menschen-A1-Phase18-566-SHARED-AUDIO-HEADWORD-SCOPE-3-RELEASE-GATES-NO-IMPORT-20261026.zip",
+      "sha256": "1ffd84872df8f0c0f59929cd95a19be0f0c6403f9238d3cafb2daaa17bdbd74f",
+      "size_bytes": 85979,
+      "location": "CURRENT_CONVERSATION_PORTABLE_QA_ONLY"
+    },
+    "root_LATEST_not_advanced": true,
+    "root_LATEST_sha_checked": "2eb7dfc88100fc8f86c764f2eb78e77682a772ab",
+    "prior_phase17_sha": "ebc5e77f5cc7f6bcaccc937a3ee434a67329488d",
+    "resume_pointer": "Phase18 systemic finding: 566 shared MP3 groups/1305 card links with differing learner headwords (not proven errors) need pronunciation-scope evidence before headword audio certification. Three explicit high-priority audio gates 0713/2006/2772 remain. No reliable German clip transcription or connected CURRENT v486-R120 runtime smoke performed; release advisory not applied to app. Then finish Stage4 and Stage5/6/7. NO IMPORT."
+  }
+}

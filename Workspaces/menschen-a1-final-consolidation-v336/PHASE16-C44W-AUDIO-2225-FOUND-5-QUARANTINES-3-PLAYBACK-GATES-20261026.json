@@ -1,0 +1,70 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-26",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "PHASE16_2996_SOURCE_AUDIO_BINDINGS_2225_FILES_AND_5_QUARANTINE_DISPOSITIONS",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "card_to_source_audio_reference",
+    "total_units": 2996,
+    "unique_source_audio_mp3": 2225,
+    "full_cards_in_candidate": 2997,
+    "source_archive_mp3_entries": 7719,
+    "source_file_extension": ".mp3"
+  },
+  "progress": {
+    "reviewed_unique": 2996,
+    "unreviewed": 0,
+    "dispositions": {
+      "EXPLICIT_AUDIO_BINDING_VERIFIED_FOR_SOURCE_ARCHIVE": 2996
+    },
+    "reference_metadata_schemas": {
+      "ref": 2915,
+      "filename": 81
+    },
+    "audio_refs_unresolvable": 0,
+    "cards_without_audio_metadata": 31,
+    "quarantined_delta_candidates_retained_without_edit": 5,
+    "previously_rejected_delta_candidates_still_excluded": 3,
+    "three_runtime_speech_playback_gates_active": 3
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_only": true,
+    "verification_evidence": [
+      "Exact Phase15 non-import candidate ZIP SHA256 b144633e85729e8948743514ce2ff4c8c7ba5b73fbf4ef0d7adf8fa62ea4dff4; immutable parent C44W SHA256 8dbf969e8e3310564beba6ed6b76b4e1e3e83e275f683a254a629204503985c5 and Memrise 9109-row original CSV SHA256 52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222 verified.",
+      "Inventory of the user-provided 113754051-byte RAR using independent libarchive and rarfile backends: 7719 MP3 source entries; all 2225 unique file names referenced by 2996 source_audio_refs exist with positive archive size; 0 missing referenced files. Both ref (2915) and filename (81) metadata variants supported. 31 learner cards have no source_audio_refs and are not mislabeled missing files.",
+      "Five targeted original MP3 excerpts extracted and parsed as audio; provenance cross-checked against original CSV row and learner source_audio_refs. Archive file presence/audio metadata do not establish spoken German or live UI playback equivalence.",
+      "Explicit block/probe policy for ma1m-lu-2006 source CSV eine medizinische Prüfung vs learner medizinische Untersuchung, ma1m-lu-0713 expanded adjectival headword and ma1m-lu-2772 dual literal/idiomatic headword. None has actual spoken phrase verification or runtime presentation/audio smoke PASS.",
+      "Prior four Schlafraum sleeping-area replacements kept quarantined (retain original sleeping room examples); one Gebrauchtware singular-back override kept quarantined (retain plural meaning matching plural target/source/examples). Three semantically rejected edits remain excluded. No content, source, runtime/UI, release pointer or audio files modified.",
+      "Independent code replay checked all 2996 links and 5 quarantined dispositions against current candidate+source RAR; ZIP CRC/internal SHA256SUMS PASS. Four mutated-input controls (missing file, missing entry, missing audio playback gate, attempted singular-back patch) rejected as expected.",
+      "Global independent semantic second pass across all 2997 cards/11988 DE-FA-EN triplets NOT_RUN. Audio content not ASR-transcribed/listened and live app smoke NOT_RUN. Global Stage4 NOT_PASSED and Stage5/6/7 NOT_RUN; NO IMPORT."
+    ],
+    "independent_audio_technical_replay": "PASS_SCOPED",
+    "spoken_audio_lexical_semantics": "UNVERIFIED",
+    "connected_app_audio_playback_smoke": "NOT_RUN",
+    "full_corpus_semantic_adversarial_second_pass": "NOT_RUN",
+    "global_stage4": "NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "parent_and_candidate_immutable": true,
+    "import_allowed": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "artifact": {
+      "filename": "Menschen-A1-Phase16-AUDIO-2225-FOUND-5-QUARANTINES-3-GATES-NO-IMPORT-20261026.zip",
+      "sha256": "a2e2f829f1c91fe011323c7d640b04a795d2666b1b24fcdce03ec35f5340f2d0",
+      "size_bytes": 109774,
+      "location": "CURRENT_CONVERSATION_PORTABLE_AUDIT_NOT_CONTENT_RELEASE"
+    },
+    "root_LATEST_not_advanced": true,
+    "checked_latest_sha": "2eb7dfc88100fc8f86c764f2eb78e77682a772ab",
+    "prior_phase15_sha": "a54081ee0629d072b2652c791a5c5fbcee009245",
+    "resume_pointer": "Phase16 audio file inventory 2225/2225 resolved and five quarantined style/plural candidates retained unchanged. NEXT: listen/transcribe exact source MP3 for ma1m-lu-2006 and ma1m-lu-0713/2772, integrate explicit runtime-safe audio gating and check connected CURRENT runtime display. Then focused second-pass semantic QA of changed/at-risk content and official full-corpus Stage4 evidence followed by Stage5/6/7. NO IMPORT."
+  }
+}

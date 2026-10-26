@@ -73,5 +73,12 @@
     "boundaries": "Keep all source fidelity, full AI+technical Stage4, immutable audits and single final package rules unchanged; no mandatory external-human identity gate.",
     "outcome_receipt_validator": "Verification/validate_execution_outcome_receipt.py"
   },
-  "linguistic_qa_authority_policy": "LINGUISTIC-QA-AUTHORITY-POLICY.json"
+  "linguistic_qa_authority_policy": "LINGUISTIC-QA-AUTHORITY-POLICY.json",
+  "immediate_apply_contract": {
+    "status": "ACTIVE_REQUIRED",
+    "policy": "EDIT-APPLY-VERIFICATION-CONTRACT.json",
+    "rule": "For each approved safe mutable edit, modify the current working content in the same turn, run QA on the actual modified content, persist it, and only then report APPLIED; source originals/LOCKED never mutated; absent exact v037 means separate labeled editable source-derived authority and v037 BLOCKED.",
+    "no_candidate_only_report_when_writable": true,
+    "missing_authority_no_downgrade": true
+  }
 }

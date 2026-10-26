@@ -1,0 +1,42 @@
+{
+  "schema": "gcpk-independent-final-structure-audit@1.0.0",
+  "date": "2026-10-26",
+  "scope": "Actual user-accepted final ZIP bytes, independent fresh extraction and source reference comparisons",
+  "artifact": {
+    "name": "German-Flashcards-Pro-Menschen-B1-v486-R120-USER-ACCEPTED-FINAL-DELIVERY-2026-10-26.zip",
+    "sha256": "e5c86762beb9b64bf0e0e2936059640027adfd7cd82bbdf3955ef593af5f7027",
+    "bytes": 22419395,
+    "members": 308,
+    "manifest_files": 307
+  },
+  "result": "PASS_CORE_INTEGRITY_AND_IMPORT_CONTENT_WITH_DOCUMENTATION_PROVENANCE_WARNINGS__REAL_STAGE6_GATES_NOT_VERIFIED",
+  "checks": {
+    "outer_zip_crc": "PASS",
+    "manifest_size_and_sha256": "307_OF_307_PASS",
+    "archive_hygiene": "PASS",
+    "current_app_v486_R120": "77_OF_77_BYTE_IDENTICAL",
+    "nested_zips": "3_OF_3_CRC_AND_AUTHORITY_SHA_PASS",
+    "nested_clean_sha256sums": "10_OF_10_PASS",
+    "official_v336": "5_OF_5_PASS",
+    "crosslayer": "395_CARDS_1580_EXAMPLES_2123_KOMBINATIONS_PASS",
+    "negative_controls": "5_OF_5_REJECTED",
+    "js_python_json_svg": "PASS",
+    "html_sw_asset_refs": "PASS",
+    "harness_static": "19_PLUS_30_PASS",
+    "harness_negative": "14_OF_14_REJECTED"
+  },
+  "warning_items": [
+    "Stage5 source-audio map authority_tsv_sha256 old 469d21a0... but delivered TSV sha256 is 64fa1e01...; all 395 source audio IDs still map",
+    "Stage5 lesson-membership map has same old authority SHA pointer; all 395 IDs still map",
+    "400 MP3 source references but no audio file bytes inside archive; RAW-SOURCE-DEPENDENCIES explicitly says original source RAR omitted",
+    "06-Docs/HANDOFF.md still titled release candidate v1.3 NOT FINAL; newer 08-Release-Decision documents clarify user-accepted delivery and technical pending boundary"
+  ],
+  "limitations": {
+    "real_origin_IndexedDB_commit": "NOT_OBSERVED",
+    "same_browser_restart": "NOT_OBSERVED",
+    "service_worker_offline": "NOT_OBSERVED",
+    "full_stage6_stage7_technical_PASS": "NOT_CLAIMED"
+  },
+  "original_artifact_mutated": false,
+  "action": "Read-only audit and Git checkpoint; preserve final ZIP and immutable WIP13"
+}

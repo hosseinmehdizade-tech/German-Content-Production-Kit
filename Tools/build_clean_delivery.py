@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import argparse,json,hashlib,zipfile,tempfile,shutil,csv,subprocess,sys,fnmatch
+import argparse,json,hashlib,zipfile,tempfile,shutil,csv,subprocess,sys,fnmatch,re
 
 def sha256(p):
     h=hashlib.sha256()
@@ -11,11 +11,14 @@ def sha256(p):
 ap=argparse.ArgumentParser()
 ap.add_argument("source_dir")
 ap.add_argument("output_zip")
+ap.add_argument("--purpose",choices=["stage5_acceptance","final_delivery","required_recovery","explicit_user_checkpoint"],default="stage5_acceptance")
 a=ap.parse_args()
 src=Path(a.source_dir).resolve()
 out=Path(a.output_zip).resolve()
 if not src.is_dir():
     raise SystemExit("source_dir must be a directory; building from a previous delivery ZIP is forbidden")
+if re.search(r"(?i)(?:^|[-_.])(wip\d*|batch\d+|per[-_]?edit|scratch|micro[-_]?edit)(?:[-_.]|$)",out.stem) and a.purpose not in ("required_recovery","explicit_user_checkpoint"):
+    raise SystemExit("CONTENT ZIP GUARD: routine WIP/batch/micro-edit archive refused; save editable data and compact QA instead")
 
 def pick(patterns, role):
     # Delivery filenames are user/workstream artifacts and may vary in case

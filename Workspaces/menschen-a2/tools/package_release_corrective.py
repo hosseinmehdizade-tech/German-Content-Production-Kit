@@ -2,6 +2,9 @@
 from __future__ import annotations
 import argparse, hashlib, json, zipfile
 from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[3]/'Tools'))
+from content_package_guard import guarded_zip, check_intent
 
 
 def sha256(path: Path) -> str:
@@ -20,6 +23,7 @@ def main() -> int:
     ap.add_argument('--sha256s', required=True, type=Path)
     ap.add_argument('--postverify', required=True, type=Path)
     ns = ap.parse_args()
+    check_intent(ns.zip, 'final_delivery')
     w = ns.workspace
 
     members = [
@@ -91,7 +95,8 @@ def main() -> int:
     ns.manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
     ns.zip.parent.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(ns.zip, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+    with guarded_zip(ns.zip, purpose='final_delivery', inputs=[p for _, p in members],
+                     compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for arc, p in members:
             z.write(p, arc)
         z.writestr('MANIFEST.json', json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')

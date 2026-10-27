@@ -209,14 +209,42 @@ def catalog_from_list_pages(pages, *, library_path, scope, workstream):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--archive", type=Path, required=True)
-    ap.add_argument("--purpose", required=True)
-    ap.add_argument("--destination", required=True)
+    ap.add_argument("--archive", type=Path)
+    ap.add_argument("--purpose")
+    ap.add_argument("--destination")
     ap.add_argument("--workstream", required=True)
-    ap.add_argument("--catalog", type=Path, required=True)
+    ap.add_argument("--catalog", type=Path)
+    ap.add_argument("--list-pages-json", type=Path,
+                    help="JSON with ordered files.list page envelopes and requested cursors")
+    ap.add_argument("--library-path", help="New scoped folder ending with --workstream")
+    ap.add_argument("--catalog-output", type=Path,
+                    help="Optional new JSON catalog file (never overwrites)")
     ap.add_argument("--evidence", type=Path)
     ap.add_argument("--user-request")
     a = ap.parse_args()
+    if a.list_pages_json:
+        if not a.library_path:
+            ap.error("--library-path is required for --list-pages-json")
+        try:
+            source = read_json(a.list_pages_json)
+            cat = catalog_from_list_pages(source.get("pages"), library_path=a.library_path,
+                                          scope="workstream", workstream=a.workstream)
+        except (OSError, ValueError) as exc:
+            print(json.dumps(report("HOLD", "INCOMPLETE_OR_INVALID_PAGE_EXPORT",
+                                    message=str(exc)), ensure_ascii=False))
+            return 2
+        encoded = json.dumps(cat, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+        if a.catalog_output:
+            try:
+                with a.catalog_output.open("x", encoding="utf-8") as stream:
+                    stream.write(encoded)
+            except FileExistsError:
+                print(json.dumps(report("BLOCK", "CATALOG_OUTPUT_ALREADY_EXISTS")))
+                return 2
+        print(encoded.rstrip())
+        return 0 if cat["complete"] else 2
+    if not all((a.archive, a.purpose, a.destination, a.catalog)):
+        ap.error("--archive, --purpose, --destination and --catalog are required for audit")
     try:
         cat = read_json(a.catalog)
     except (OSError, ValueError):

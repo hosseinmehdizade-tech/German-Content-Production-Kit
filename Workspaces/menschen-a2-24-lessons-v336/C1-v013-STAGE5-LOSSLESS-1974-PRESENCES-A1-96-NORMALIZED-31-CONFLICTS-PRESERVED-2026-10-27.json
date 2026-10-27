@@ -1,0 +1,62 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a2-24-lessons-v336/C1-Stage5-Technical-Preflight",
+  "milestone": {
+    "name": "C1-v013 Stage5 lossless lesson-identity and A1 legacy schema normalization",
+    "level": "major",
+    "state": "IN_PROGRESS",
+    "stage_boundary": "PASS_SCOPED_NONIMPORT_DATA_PROJECTION__STAGE5_FINAL_BLOCKED"
+  },
+  "scope": {
+    "unit": "current v013 lesson card presences validated and losslessly projected",
+    "total_units": 1974,
+    "unique_canonical_ids": 1918,
+    "lessons": 24
+  },
+  "progress": {
+    "reviewed_unique": 1974,
+    "unreviewed": 0,
+    "dispositions": {
+      "STRUCTURAL_SOURCE_PRESERVATION_VERIFIED_NOT_SEMANTICALLY_STAGE4_APPROVED": 1974
+    },
+    "legacy_A1_example_translations_bridge": 96,
+    "modern_examples_unchanged": 7808,
+    "examples_total": 7904,
+    "shared_card_ids_preserved": 55,
+    "content_conflict_ids_kept_in_lesson_scoped_variants": 31,
+    "global_31_merge_decisions_still_open": 31,
+    "automatic_overwrites": 0
+  },
+  "quality": {
+    "stage_complete": false,
+    "stage4_full": "BLOCKED",
+    "stage5": "SCOPED_LOSSLESS_SHADOW_PASS__FINAL_BLOCKED",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_ready": false,
+    "verification_evidence": [
+      "Resolved current 1918-card v013 C1 editable authority from GitHub pointer, parent sha c1fca2c916e3eb9bb38b750619ee535681dfb5ef835cdcea72b283fa5ff359e4 and matching bytes on disk.",
+      "Read-only lossless Stage5 shadow reconstructs every one of 1974 original per-lesson card records byte-equivalently at semantic JSON level after reversing any A1 example conversion.",
+      "96 A1 examples with old dictionary {fa,en} converted in shadow to array lang fa-IR/en-US and original full records retained for exact reversibility. No original LOCKED or source member changed. 7808 modern examples were not changed.",
+      "55 crosslesson repeated IDs represented by lesson::canonical_card_id keys, retaining canonical ID and all original per-lesson content; 31 content disagreements retained with per-lesson hashes, no silent merge, no importer IDs invented for final runtime.",
+      "Portable derived shadow contains 24 lesson-scoped JSON files, canonical identity index, 31 divergence ledger, 96 original A1 example evidence rows, 34 entries and executable independent verifier.",
+      "Independent verifier reread source ZIP, checked SHA256 per member, source-card per-row hashes, 1974 exact reversible records, 1918 canonical IDs, 31 conflicted identities and 96 A1 legacy roundtrips.",
+      "Three directly corrupted ZIP variants changing FA translation, lesson instance ID and legacy original provenance were each rejected by independent verifier. Nine additional seeded invariant guards rejected changed inputs.",
+      "Derived 3,968,622-byte ZIP SHA256 2b5b7216a8e8c65a106f903f241bba53c1bb656f88d1d5a57588427d9cc8ba67 uploaded to Library, redownloaded and cmp+SHA exact matching.",
+      "Official v037 exact 1778-card master missing, full C1 Stage4 not complete, v3.3.6 Stage5 anti-bypass and exact runtime importer global merge semantics not tested; derived shadow is explicitly NOT IMPORT READY."
+    ]
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "library": "EXACT_BYTES_ROUNDTRIP_VERIFIED",
+    "working_parent_current": "v013",
+    "working_parent_sha256": "c1fca2c916e3eb9bb38b750619ee535681dfb5ef835cdcea72b283fa5ff359e4",
+    "shadow_zip": "Menschen-A2-C1-v013-STAGE5-LOSSLESS-PROJECTION-AND-A1-96-SCHEMA-BRIDGE-NOT-IMPORT.zip",
+    "shadow_sha256": "2b5b7216a8e8c65a106f903f241bba53c1bb656f88d1d5a57588427d9cc8ba67",
+    "shadow_bytes": 3968622,
+    "library_file_id": "libfile_07f394dddf388191b6f88ddfaab3d898",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A2-C1-v013-STAGE5-LOSSLESS-PROJECTION-AND-A1-96-SCHEMA-BRIDGE-NOT-IMPORT.zip",
+    "resume_pointer": "Keep exact editable C1 v013 unchanged; use lossless shadow as Stage5 intermediate, resolve 31 global semantic merge cases and official v037/Stage4 gates before final importer/Stage5."
+  },
+  "next_action": "Investigate current app importer contract to design an explicit approved identity/variant merge without loss; close full semantic Stage4, recover official v037, run normative Stage5 anti-bypass and exact importer tests."
+}

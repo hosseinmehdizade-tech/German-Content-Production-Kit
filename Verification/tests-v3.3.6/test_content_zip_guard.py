@@ -1,36 +1,82 @@
-"""Non-destructive packaging regressions for the active content builder."""
-import subprocess
-import sys
+"""Content ZIP anti-churn, evidence and non-destructive publishing tests."""
+import json
 from pathlib import Path
+import sys
+import zipfile
+import pytest
 
-ROOT = Path(__file__).resolve().parents[2]
-BUILDER = ROOT / "Tools" / "build_clean_delivery.py"
+ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/"Tools"))
+from content_package_guard import guarded_zip, PackageGuardError, check_intent
 
-
-def test_micro_batch_zip_is_refused_before_any_source_conversion(tmp_path):
-    src = tmp_path / "source"
-    src.mkdir()
-    out = tmp_path / "Menschen-A2-WIP27.zip"
-    result = subprocess.run([sys.executable, str(BUILDER), str(src), str(out)],
-                            text=True, capture_output=True)
-    assert result.returncode != 0
-    assert "routine WIP/batch/micro-edit" in result.stderr
+def test_wip_refused(tmp_path):
+    out=tmp_path/"A2-WIP24.zip"
+    with pytest.raises(PackageGuardError,match="WIP"):
+        with guarded_zip(out) as z:z.writestr("cards.tsv","rows")
     assert not out.exists()
 
+def test_existing_final_immutable(tmp_path):
+    out=tmp_path/"final.zip"
+    out.write_bytes(b"protected")
+    with pytest.raises(PackageGuardError,match="immutable"):
+        with guarded_zip(out,purpose="final_delivery") as z:z.writestr("a","b")
+    assert out.read_bytes()==b"protected"
 
-def test_immutable_archive_is_not_deleted_by_builder(tmp_path):
-    src = tmp_path / "source"
-    src.mkdir()
-    out = tmp_path / "STAGE5-ORIGINAL.zip"
-    out.write_bytes(b"protected historical bytes")
-    result = subprocess.run([sys.executable, str(BUILDER), str(src), str(out)],
-                            text=True, capture_output=True)
-    assert result.returncode != 0
-    assert out.read_bytes() == b"protected historical bytes"
+def test_duplicate_input_is_not_packaged_twice(tmp_path):
+    source=tmp_path/"content.tsv"
+    source.write_text("same")
+    first=tmp_path/"final-v1.zip"
+    with guarded_zip(first,purpose="final_delivery",inputs=(source,)) as z:z.writestr("a","b")
+    assert zipfile.ZipFile(first).testzip() is None
+    with pytest.raises(PackageGuardError,match="identical"):
+        with guarded_zip(tmp_path/"final-v2.zip",purpose="final_delivery",inputs=(source,)) as z:z.writestr("a","b")
+    assert not (tmp_path/"final-v2.zip").exists()
+    source.write_text("updated")
+    with guarded_zip(tmp_path/"final-v2.zip",purpose="final_delivery",inputs=(source,)) as z:z.writestr("a","changed")
 
+def test_recovery_requires_evidence(tmp_path):
+    out=tmp_path/"rescue-WIP11.zip"
+    with pytest.raises(PackageGuardError):
+        with guarded_zip(out,purpose="required_recovery") as z:z.writestr("a","b")
+    receipt=tmp_path/"recovery.json"
+    receipt.write_text(json.dumps({"recovery_gap":"latest exact editable bytes missing"}))
+    with guarded_zip(out,purpose="required_recovery",evidence=receipt) as z:z.writestr("a","b")
+    assert out.exists()
 
-def test_archive_index_guard_is_present():
-    script = BUILDER.read_text(encoding="utf-8")
-    assert 'identical content and QA already delivered' in script
-    assert 'with zipfile.ZipFile(out,"x"' in script
-    assert 'out.unlink()' not in script
+def test_major_milestone_needs_pass(tmp_path):
+    receipt=tmp_path/"receipt.json"
+    receipt.write_text(json.dumps({"status":"RUNNING"}))
+    with pytest.raises(PackageGuardError):
+        check_intent(tmp_path/"major.zip","validated_major_checkpoint",evidence=receipt)
+    receipt.write_text(json.dumps({"status":"PASS"}))
+    with guarded_zip(tmp_path/"major.zip",purpose="validated_major_checkpoint",evidence=receipt) as z:z.writestr("a","b")
+
+def test_failure_cannot_publish_partial_zip(tmp_path):
+    out=tmp_path/"final.zip"
+    with pytest.raises(RuntimeError):
+        with guarded_zip(out,purpose="final_delivery") as z:
+            z.writestr("data","x")
+            raise RuntimeError("simulated interruption")
+    assert not out.exists()
+    assert not list(tmp_path.glob(".content-zip-*"))
+
+def test_reject_unsafe_member(tmp_path):
+    out=tmp_path/"final.zip"
+    with pytest.raises(PackageGuardError):
+        with guarded_zip(out,purpose="final_delivery") as z:z.writestr("../escape","x")
+    assert not out.exists()
+
+def test_explicit_user_checkpoint(tmp_path):
+    out=tmp_path/"review-WIP4.zip"
+    with pytest.raises(PackageGuardError):check_intent(out,"explicit_user_checkpoint")
+    with guarded_zip(out,purpose="explicit_user_checkpoint",user_request="user requested portable recovery") as z:z.writestr("checkpoint.json","{}")
+    assert out.exists()
+
+def test_three_builders_are_wired():
+    files=["Tools/build_clean_delivery.py",
+           "Workspaces/menschen-a2/tools/package_release.py",
+           "Workspaces/menschen-a2/tools/package_release_corrective.py"]
+    for path in files:
+        content=(ROOT/path).read_text(encoding="utf-8")
+        assert "from content_package_guard import guarded_zip" in content
+        assert "with guarded_zip(" in content

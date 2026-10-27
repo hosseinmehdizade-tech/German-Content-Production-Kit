@@ -268,7 +268,7 @@ def test_library_preflight_allow_complete_verified_scope(tmp_path):
 def test_library_preflight_skip_verified_exact_copy_without_reupload(tmp_path):
     z,sha,ev=_zip_candidate(tmp_path)
     catalog={"complete":False,"entries":[{"path":"/Flasch kart/reusable.zip",
-        "sha256":sha,"hash_verified":True,"library_file_id":"libfile_exact"}]}
+        "sha256":sha,"readback_sha256":sha,"hash_verified":True,"verification_receipt":"Workspaces/sample/QA/EXACT-LIBRARY-READBACK.json","library_file_id":"libfile_exact"}]}
     result=_library_run(z,ev,catalog)
     assert result["decision"]=="SKIP_IDENTICAL"
     assert result["library_file_id"]=="libfile_exact"
@@ -288,7 +288,8 @@ def test_library_preflight_block_conflicting_destination(tmp_path):
     z,sha,ev=_zip_candidate(tmp_path)
     catalog={"complete":True,"scope":"library","entries":[{
         "path":"/German-Content-Production-Kit/Final/ready.zip",
-        "sha256":"0"*64,"hash_verified":True,
+        "sha256":"0"*64,"readback_sha256":"0"*64,"hash_verified":True,
+        "verification_receipt":"Workspaces/sample/QA/VERIFIED-OLD.json",
         "library_file_id":"libfile_different"}]}
     assert _library_run(z,ev,catalog)["reason"]=="DESTINATION_OCCUPIED_BY_DIFFERENT_BYTES"
 
@@ -332,3 +333,33 @@ def test_library_preflight_preserves_data_and_never_writes(tmp_path):
     _library_run(z,ev,{"complete":True,"scope":"library","entries":[]})
     assert z.read_bytes()==before
     assert {p.name for p in tmp_path.iterdir()}=={"ready.zip","quality.json"}
+
+
+def test_library_preflight_does_not_trust_bare_hash_flag(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    cat={"complete":True,"scope":"library","entries":[{
+         "path":"/Old/ready.zip","sha256":sha,"hash_verified":True,
+         "library_file_id":"libfile_no_readback_receipt"}]}
+    result=_library_run(z,ev,cat)
+    assert result["decision"]=="HOLD"
+    assert result["reason"]=="UNVERIFIED_MATCHING_HASH_CLAIM"
+
+
+def test_library_preflight_cli_exit_codes(tmp_path):
+    import subprocess
+    z,sha,ev=_zip_candidate(tmp_path)
+    catalog=tmp_path/"catalog.json"
+    catalog.write_text(json.dumps({"scope":"library","complete":True,"entries":[]}))
+    script=ROOT/"Tools/library_publish_preflight.py"
+    args=[sys.executable,str(script),"--archive",str(z),
+          "--purpose","final_delivery",
+          "--workstream","sample-corpus",
+          "--destination","/German-Content-Production-Kit/Final/ready.zip",
+          "--evidence",str(ev),"--catalog",str(catalog)]
+    cp=subprocess.run(args,capture_output=True,text=True)
+    assert cp.returncode==0,cp.stderr
+    assert json.loads(cp.stdout)["decision"]=="ALLOW"
+    catalog.write_text(json.dumps({"scope":"library","complete":False,"entries":[]}))
+    cp2=subprocess.run(args,capture_output=True,text=True)
+    assert cp2.returncode==2
+    assert json.loads(cp2.stdout)["decision"]=="HOLD"

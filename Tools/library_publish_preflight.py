@@ -143,6 +143,70 @@ def audit(archive, *, purpose, destination, workstream, catalog, evidence=None,
                   catalog_scope=catalog["scope"], workstream=workstream)
 
 
+
+def catalog_from_list_pages(pages, *, library_path, scope, workstream):
+    """Normalize *actual files.list pages*; never infer SHA256 from metadata.
+
+    Each page envelope must preserve the requested path and cursor as well as
+    the result's items and next_cursor. Complete means that the cursor chain
+    exhausted the explicitly requested folder. A partial search is not enough.
+    """
+    if not library_path.startswith("/") or ".." in PurePosixPath(library_path).parts:
+        raise ValueError("invalid library_path")
+    if scope != "workstream" or not workstream or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", workstream):
+        raise ValueError("a scoped workstream listing is required")
+    # A workstream folder must actually be isolated; a flat shared Checkpoints
+    # listing cannot be misrepresented as a complete one-workstream inventory.
+    if PurePosixPath(library_path.rstrip("/")).name != workstream:
+        raise ValueError("library_path must end with the exact workstream slug")
+    if not isinstance(pages, list) or not pages:
+        raise ValueError("listing must contain at least one page")
+    expected_cursor = None
+    entries = []
+    seen = set()
+    complete = False
+    for number, page in enumerate(pages):
+        if not isinstance(page, dict):
+            raise ValueError("invalid page")
+        if (page.get("surface") != "library" or
+                page.get("requested_library_path") != library_path or
+                page.get("requested_cursor") != expected_cursor):
+            raise ValueError("mismatched library path or pagination cursor")
+        for item in page.get("items", []):
+            if item.get("kind") != "file":
+                continue
+            path = item.get("path")
+            if not isinstance(path, str) or not path.startswith(library_path.rstrip("/") + "/"):
+                raise ValueError("item outside requested directory")
+            if path in seen:
+                raise ValueError("duplicate catalog path")
+            seen.add(path)
+            entries.append({
+                "path": path,
+                "size_bytes": item.get("size_bytes"),
+                "library_file_id": item.get("library_file_id"),
+                # Crucially, NO SHA or hash_verified field: files.list has no
+                # byte-level readback proof, even if similarly named metadata
+                # happens to be present on an item.
+            })
+        expected_cursor = page.get("next_cursor")
+        if expected_cursor is None:
+            if number != len(pages) - 1:
+                raise ValueError("additional pages after end-of-list")
+            complete = True
+        elif not isinstance(expected_cursor, str) or not expected_cursor:
+            raise ValueError("invalid continuation cursor")
+    return {
+        "scope": scope,
+        "workstream": workstream,
+        "source": "files.list:metadata-only",
+        "library_path": library_path,
+        "pages": len(pages),
+        "complete": complete,
+        "entries": entries,
+    }
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--archive", type=Path, required=True)

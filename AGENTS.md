@@ -11,3 +11,7 @@ These repo-root rules apply to coding assistants, agents, and ChatGPT sessions w
 7. Other running chats are **not** remotely updated by this file. It takes effect when the agent next reads the repo/bootstraps. Never claim cross-chat automatic synchronization or background work.
 
 If a policy conflicts with exact primary source, mandated independent QA, runtime/currentness, data safety or explicit user approval, retain those higher-fidelity safeguards and record the decision.
+
+## Prospective Stage3/Stage4 unification (2026-10-27)
+
+The rules conflict matrix, integrated enrichment/independent QA proposal, readiness record and 16-test validation are in `Architecture/Stage3-Stage4-Unification/`. This work is **PROPOSED/COMPATIBILITY ONLY**. Read it for new Stage3/Stage4 architecture work, but **do not** promote its receipt to Stage4 PASS, mutate legacy Stage3A/3B/3C/Stage4 checkpoints, change `Prompt/ACTIVE-PROMPT.txt`, auto-retrofit LOCKED cards, or bypass current Stage5/6/7. Only adopt a versioned source-exact pilot after fully verified current data and independent content QA. Separately preserve Menschen A2 Verben R57 and all 70 linked Project files until authorized recovery readback.

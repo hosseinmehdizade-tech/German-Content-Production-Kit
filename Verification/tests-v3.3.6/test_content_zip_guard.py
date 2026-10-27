@@ -123,3 +123,64 @@ def test_win_style_unsafe_member_refused(tmp_path):
             with guarded_zip(tmp_path/"bad.zip",purpose="final_delivery") as z:
                 z.writestr(member,"no")
         assert not (tmp_path/"bad.zip").exists()
+
+
+def test_no_new_unguarded_python_zip_writers():
+    """Prospective CI guard; pinned legacy recovery builders remain unmodified.
+
+    Inspect tracked Python sources (not prose or rendered reports) and reject new
+    direct ZIP writers. Existing historical rescue tools are deliberately frozen.
+    This doesn't intercept agents that create ZIPs outside the repository.
+    """
+    import ast
+    import subprocess
+
+    legacy={
+      "Workspaces/menschen-verben-bounded-repair-2026-10-03/package_repair.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R66/BUILD_R66_FROM_R62.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R62/BUILD_R62_FROM_R60.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R62/REBUILD_R60_FROM_R59.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R74/BUILD_R74_SUPPLEMENT.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R69/BUILD_R69_SOURCE_CROSSWALK.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R67/R67_REVIEW_PIPELINE.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R68/R68_CANONICAL_ASSIGNMENTS_MERGE.py",
+      "Workspaces/menschen-a2-verben-kombinationen-v336/Verification/TEST_SOURCE_PERFEKT_NEGATIVE.py",
+      "Tools/content_package_guard.py",
+    }
+    tracked=subprocess.check_output(["git","ls-files","-z"],cwd=ROOT).decode("utf-8").split("\0")
+    violations=[]
+    for relative in tracked:
+        if not relative.endswith(".py") or relative in legacy:
+            continue
+        if relative.startswith(("Verification/test","Verification/tests-")):
+            continue
+        file=ROOT/relative
+        if not file.is_file():
+            continue
+        source=file.read_text(encoding="utf-8-sig")
+        if "ZipFile" not in source and "make_archive" not in source:
+            continue
+        try:
+            tree=ast.parse(source,filename=relative)
+        except SyntaxError:
+            violations.append(relative+":cannot statically inspect ZIP-related Python")
+            continue
+        for node in ast.walk(tree):
+            if not isinstance(node,ast.Call):
+                continue
+            attr=node.func
+            method=attr.attr if isinstance(attr,ast.Attribute) else (attr.id if isinstance(attr,ast.Name) else "")
+            if method=="make_archive":
+                violations.append(relative+":shutil.make_archive")
+                continue
+            if method!="ZipFile":
+                continue
+            mode_node=node.args[1] if len(node.args)>1 else None
+            for k in node.keywords:
+                if k.arg=="mode":
+                    mode_node=k.value
+            mode=mode_node.value if isinstance(mode_node,ast.Constant) and isinstance(mode_node.value,str) else ("r" if mode_node is None else "unknown")
+            if mode in ("w","a","x","unknown"):
+                violations.append(relative+":"+str(node.lineno)+":"+mode)
+    assert not violations, ("New direct ZIP producer(s) must use Tools/content_package_guard.py: "
+                            + ", ".join(violations))

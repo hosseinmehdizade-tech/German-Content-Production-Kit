@@ -84,6 +84,26 @@ if validation.returncode:
         + validation.stdout + validation.stderr
     )
 
+# One tiny index per output directory avoids re-packaging identical input bytes
+# under a new filename. It never deletes or scans historical archives.
+input_signature=hashlib.sha256(json.dumps({
+    "purpose":a.purpose,
+    "source_roles":[sha256(p) for p in (direct,canonical,mapping,qa)]
+},sort_keys=True).encode("utf-8")).hexdigest()
+index_file=out.parent/".content-package-index.json"
+if index_file.exists():
+    try:
+        package_index=json.loads(index_file.read_text(encoding="utf-8"))
+    except (OSError,ValueError) as exc:
+        raise SystemExit(f"CONTENT ZIP GUARD: unreadable index; no unsafe rewrite: {exc}")
+    if not isinstance(package_index,dict):
+        raise SystemExit("CONTENT ZIP GUARD: invalid index")
+else:
+    package_index={}
+prior=package_index.get(input_signature)
+if prior and (out.parent/prior).is_file():
+    raise SystemExit(f"CONTENT ZIP GUARD: identical content and QA already delivered as {prior}")
+
 with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
     root=Path(td)/"CONTENT-DELIVERY"
     root.mkdir()
@@ -124,4 +144,7 @@ with tempfile.TemporaryDirectory(prefix="content-fresh-verify-") as td:
     cp=subprocess.run(["sha256sum","-c","SHA256SUMS.txt"],cwd=root,text=True,capture_output=True)
     if cp.returncode: raise SystemExit(cp.stdout+cp.stderr)
 
+# Record only verified outputs; existing archives remain immutable.
+package_index[input_signature]=out.name
+index_file.write_text(json.dumps(package_index,sort_keys=True,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"status":"PASS","zip":str(out),"sha256":sha256(out)},ensure_ascii=False))

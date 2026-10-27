@@ -108,8 +108,9 @@ with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
       "\n".join(f"{sha256(x)}  {x.name}" for x in files)+"\n",encoding="utf-8"
     )
 
-    if out.exists(): out.unlink()
-    with zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:
+    if out.exists():
+        raise SystemExit('Existing ZIP is immutable: refusing overwrite or unlink. Choose a new output only for a meaningful validated release.')
+    with zipfile.ZipFile(out,"x",zipfile.ZIP_DEFLATED) as z:
         for x in sorted(root.iterdir()):
             if x.is_file(): z.write(x,arcname=f"{root.name}/{x.name}")
 

@@ -1,6 +1,6 @@
 """Non-destructive packaging guard for content ZIP builders."""
 from contextlib import contextmanager
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import hashlib
 import json
 import os
@@ -38,16 +38,30 @@ def check_intent(output, purpose, evidence=None, user_request=None):
     if purpose == "explicit_user_checkpoint" and not (user_request or "").strip():
         raise PackageGuardError("explicit user scope required")
 
-def fingerprint(purpose, inputs):
-    h = hashlib.sha256(purpose.encode())
-    for path in inputs:
-        path = Path(path)
-        h.update(b"\0")
-        h.update(path.name.encode("utf-8"))
-        with path.open("rb") as stream:
-            for block in iter(lambda: stream.read(1048576), b""):
-                h.update(block)
+def archive_fingerprint(z, purpose):
+    """Hash the actual ZIP members, not an incomplete caller-selected input list.
+
+    Compression, ZIP timestamps and write order are ignored. A changed README,
+    manifest, QA result, or added package file results in a different signature.
+    Read payloads in chunks to keep memory bounded for large content ZIPs.
+    """
+    names = z.namelist()
+    if not names or len(names) != len(set(names)):
+        raise PackageGuardError("invalid or duplicate archive members")
+    h = hashlib.sha256(b"gfp-content-archive-payload-v2\0" + purpose.encode("utf-8"))
+    for name in sorted(names):
+        part = PurePosixPath(name)
+        if (name.startswith(("/", "\\")) or "\\" in name or
+                ":" in part.parts[0] or ".." in part.parts):
+            raise PackageGuardError("unsafe ZIP member path")
+        info = z.getinfo(name)
+        h.update(b"\0" + name.encode("utf-8") + b"\0" + str(info.file_size).encode("ascii"))
+        if not info.is_dir():
+            with z.open(info) as source:
+                for chunk in iter(lambda: source.read(1048576), b""):
+                    h.update(chunk)
     return h.hexdigest()
+
 
 def read_index(path):
     if not path.is_file():
@@ -70,11 +84,8 @@ def guarded_zip(output, *, purpose="stage5_acceptance", inputs=(), evidence=None
     out = Path(output)
     check_intent(out, purpose, evidence=evidence, user_request=user_request)
     out.parent.mkdir(parents=True, exist_ok=True)
-    signature = fingerprint(purpose, inputs) if inputs else None
+    signature = None  # computed from all verified ZIP members after closing
     index_path = out.parent / ".content-package-index.json"
-    prior = read_index(index_path).get(signature) if signature else None
-    if prior and (out.parent / prior).is_file():
-        raise PackageGuardError("identical content already packaged: " + prior)
     fd, temp_name = tempfile.mkstemp(prefix=".content-zip-", suffix=".tmp", dir=out.parent)
     os.close(fd)
     tmp = Path(temp_name)
@@ -82,11 +93,7 @@ def guarded_zip(output, *, purpose="stage5_acceptance", inputs=(), evidence=None
         with zipfile.ZipFile(tmp, "w", compression=compression, compresslevel=compresslevel) as z:
             yield z
         with zipfile.ZipFile(tmp) as z:
-            names = z.namelist()
-            if not names or len(names) != len(set(names)) or z.testzip() is not None:
-                raise PackageGuardError("invalid ZIP members/CRC")
-            if any(name.startswith(("/", "\\")) or ".." in Path(name).parts for name in names):
-                raise PackageGuardError("unsafe ZIP member path")
+            signature = archive_fingerprint(z, purpose)
         # Lock only the short publication/index section, not ZIP generation.
         # Separate workstreams sharing one output directory cannot clobber the index.
         lock_dir = out.parent / ".content-package-index.lock"

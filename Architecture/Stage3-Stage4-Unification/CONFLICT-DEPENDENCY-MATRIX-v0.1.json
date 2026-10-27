@@ -1,0 +1,235 @@
+{
+  "schema": "gcpk-stage3-stage4-unification-conflict-matrix@0.1.0",
+  "status": "PROPOSED_COMPATIBILITY_ONLY_NOT_ACTIVE",
+  "date": "2026-10-27",
+  "framework": "v3.3.6",
+  "authority_rule": "Historical active stage contracts and LOCKED checkpoints win until explicit versioned migration + independently verified gates; this matrix does NOT override the active prompt.",
+  "source_documents": [
+    "PROJECT-BOOTSTRAP.md",
+    "README.md",
+    "Prompt/START-PROMPT-v3.3.6.md",
+    "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md",
+    "Prompt/KOMBINATIONEN-DIDACTIC-MEHRWERT-GATE-v1.0.0.md",
+    "Prompt/KOMBINATIONEN-ACTIVE-POLICY.json",
+    "LINGUISTIC-QA-AUTHORITY-POLICY.json",
+    "EDIT-APPLY-VERIFICATION-CONTRACT.json",
+    "WORKSTREAM-LEAN-EDIT-POLICY.json",
+    "EXECUTION-SAFETY-POLICY.json",
+    "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json"
+  ],
+  "conflicts": [
+    {
+      "id": "C01",
+      "type": "BOUNDARY",
+      "sources": [
+        "Prompt/START-PROMPT-v3.3.6.md",
+        "README.md"
+      ],
+      "problem": "Existing Stage3A/3B/3C checkpoints must not be treated as one already-completed Stage3 record.",
+      "resolution": "Use one Stage3 enrichment dossier with a crosswalk to the unchanged 3A identity/evidence, 3B production, 3C dispositions.",
+      "requires": [
+        "C09",
+        "C10"
+      ],
+      "compatibility": "ADD_ONLY"
+    },
+    {
+      "id": "C02",
+      "type": "QA_INDEPENDENCE",
+      "sources": [
+        "LINGUISTIC-QA-AUTHORITY-POLICY.json",
+        "Prompt/START-PROMPT-v3.3.6.md"
+      ],
+      "problem": "Shifting full instructional enrichment to Stage3 cannot remove independent Stage4 linguistic/adversarial review.",
+      "resolution": "Stage4 becomes final risk-targeted independent challenge of whole Stage3 source-hash-bound output; 100% mechanical scope + independently reviewed semantic risk queue.",
+      "requires": [
+        "C01",
+        "C07"
+      ],
+      "compatibility": "NO_STAGE4_BYPASS"
+    },
+    {
+      "id": "C03",
+      "type": "DIDACTIC",
+      "sources": [
+        "Prompt/KOMBINATIONEN-ACTIVE-POLICY.json",
+        "Prompt/KOMBINATIONEN-DIDACTIC-MEHRWERT-GATE-v1.0.0.md"
+      ],
+      "problem": "Kombinationen needs cross-field comparison against examples/senses/related terms; per-field reviews miss learner-visible duplicates.",
+      "resolution": "Stage3 joint-card enrichment ledger with teaching_delta and same-card comparison; zero combos CLOSED_NO_FORCE valid.",
+      "requires": [
+        "C01"
+      ],
+      "compatibility": "ACTIVE_POLICY_PRESERVED"
+    },
+    {
+      "id": "C04",
+      "type": "SOURCE",
+      "sources": [
+        "Prompt/START-PROMPT-v3.3.6.md",
+        "EDIT-APPLY-VERIFICATION-CONTRACT.json"
+      ],
+      "problem": "Source-backed and curated pedagogical data must not be conflated, fabricated, or silently written into immutable source.",
+      "resolution": "Every learning unit cites source locator or CURATED_PEDAGOGICAL with lineage; editable target hashed, source immutable.",
+      "requires": [
+        "C09"
+      ],
+      "compatibility": "LOSSLESS"
+    },
+    {
+      "id": "C05",
+      "type": "CARD_SCHEMA",
+      "sources": [
+        "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md"
+      ],
+      "problem": "Backend family types and one learner-visible Kombinationen section differ; collapsing backend types loses provenance.",
+      "resolution": "Keep backend typed combinations and fixed presentation name Kombinationen, no UI changes.",
+      "requires": [
+        "C03"
+      ],
+      "compatibility": "PRESENTATION_UNCHANGED"
+    },
+    {
+      "id": "C06",
+      "type": "GATES",
+      "sources": [
+        "README.md",
+        "Prompt/START-PROMPT-v3.3.6.md"
+      ],
+      "problem": "Stage3/4 proposal must not imply Stage5 projection or CURRENT Stage6/Stage7 success.",
+      "resolution": "Separate Stage5 deterministic projection, Stage6 exact runtime acceptance, Stage7 final release and user acceptance.",
+      "requires": [
+        "C02"
+      ],
+      "compatibility": "DOWNSTREAM_GATES_UNCHANGED"
+    },
+    {
+      "id": "C07",
+      "type": "REVIEWER",
+      "sources": [
+        "LINGUISTIC-QA-AUTHORITY-POLICY.json"
+      ],
+      "problem": "Older Stage4 reviewer identity rule may conflict with user-approved 2026-10-25 independent AI method policy.",
+      "resolution": "Do not demand external human signature; require documented AI-linguistic independent-method second pass and adversarial audit, never falsely label human.",
+      "requires": [],
+      "compatibility": "USER_OVERRIDE_PRESERVED"
+    },
+    {
+      "id": "C08",
+      "type": "RETROFIT",
+      "sources": [
+        "WORKSTREAM-LEAN-EDIT-POLICY.json",
+        "EXECUTION-SAFETY-POLICY.json"
+      ],
+      "problem": "Some streams are LOCKED/final, some Stage4 WIP; a global stage swap would invalidate historical state.",
+      "resolution": "Opt-in per-workstream next-safe-boundary pilot; frozen baselines untouched; use successors for LOCKED, CAS on editable bytes.",
+      "requires": [
+        "C01",
+        "C06"
+      ],
+      "compatibility": "NO_MASS_REWRITE"
+    },
+    {
+      "id": "C09",
+      "type": "TRACEABILITY",
+      "sources": [
+        "EDIT-APPLY-VERIFICATION-CONTRACT.json",
+        "EXECUTION-OUTCOME-EFFICIENCY-POLICY.json"
+      ],
+      "problem": "Editorial reports without applied source bytes and full QA cannot count as enrichment completion.",
+      "resolution": "Require input/content/output SHA256, item totals, unresolved HOLD count, exact applied mutation receipt, and stage-specific status.",
+      "requires": [],
+      "compatibility": "SOURCE_HASH_BOUND"
+    },
+    {
+      "id": "C10",
+      "type": "CHECKPOINT",
+      "sources": [
+        "README.md",
+        "Prompt/START-PROMPT-v3.3.6.md"
+      ],
+      "problem": "Legacy L24 Stage3C and Stage4 JSON statuses and workstream-specific checkpoint keys vary.",
+      "resolution": "Introduce adapter-only crosswalk; do not change old schemas; validate known samples and preserve unknown fields.",
+      "requires": [
+        "C09"
+      ],
+      "compatibility": "NONDESTRUCTIVE_ADAPTER"
+    },
+    {
+      "id": "C11",
+      "type": "LIBRARY",
+      "sources": [
+        "WORKSTREAM-LEAN-EDIT-POLICY.json",
+        "Docs/LIBRARY-DUPLICATE-REMOVAL-LEDGER.json"
+      ],
+      "problem": "Per-review ZIP uploads and ambiguous Project-linked backups grow storage; cleanup must not erase recoverability.",
+      "resolution": "One editable working authority; no micro ZIPs; retained exact recovery pins; Library dedupe strictly verified bytes and dependencies.",
+      "requires": [
+        "C08"
+      ],
+      "compatibility": "NO_DATA_LOSS"
+    },
+    {
+      "id": "C12",
+      "type": "SCOPE",
+      "sources": [
+        "Prompt/LEXICAL-KOMBINATIONEN-ENRICHMENT-POLICY-v1.0.0.md"
+      ],
+      "problem": "Lexical rules do not automatically apply to Grammar/Lesen/Schreiben units unless emitting standalone lexical cards.",
+      "resolution": "Define per-content-class applicability profile; non-lexical content remains under its workstream QA.",
+      "requires": [
+        "C03"
+      ],
+      "compatibility": "WORKSTREAM_ISOLATION"
+    }
+  ],
+  "dependencies": [
+    [
+      "C09",
+      "C01"
+    ],
+    [
+      "C01",
+      "C02"
+    ],
+    [
+      "C07",
+      "C02"
+    ],
+    [
+      "C01",
+      "C03"
+    ],
+    [
+      "C03",
+      "C05"
+    ],
+    [
+      "C02",
+      "C06"
+    ],
+    [
+      "C09",
+      "C10"
+    ],
+    [
+      "C10",
+      "C08"
+    ],
+    [
+      "C08",
+      "C11"
+    ]
+  ],
+  "rollout": {
+    "phase": "DISCOVERY_AND_CONTRACT_TEST",
+    "target": "new lexical content successor only, no runtime or active prompt mutations",
+    "promotion_requires": [
+      "approved migration boundary",
+      "representative checkpoint compatibility PASS",
+      "independent Stage4 QA proof",
+      "Stage5/6/7 no-bypass test",
+      "recoverable backup of exact editable source"
+    ]
+  }
+}

@@ -87,22 +87,35 @@ def guarded_zip(output, *, purpose="stage5_acceptance", inputs=(), evidence=None
                 raise PackageGuardError("invalid ZIP members/CRC")
             if any(name.startswith(("/", "\\")) or ".." in Path(name).parts for name in names):
                 raise PackageGuardError("unsafe ZIP member path")
-        if out.exists() or out.is_symlink():
-            raise PackageGuardError("output appeared during build")
-        # Same-directory hard link: atomic create-if-absent, no destination replacement.
-        os.link(tmp, out)
-        if signature:
-            index = read_index(index_path)
-            index[signature] = out.name
-            fd, index_temp = tempfile.mkstemp(prefix=".content-index-", dir=out.parent)
-            try:
-                with os.fdopen(fd, "w", encoding="utf-8") as f:
-                    json.dump(index, f, ensure_ascii=False, sort_keys=True)
-                    f.flush()
-                    os.fsync(f.fileno())
-                os.replace(index_temp, index_path)
-            finally:
-                if os.path.exists(index_temp):
-                    os.unlink(index_temp)
+        # Lock only the short publication/index section, not ZIP generation.
+        # Separate workstreams sharing one output directory cannot clobber the index.
+        lock_dir = out.parent / ".content-package-index.lock"
+        try:
+            lock_dir.mkdir()
+        except FileExistsError as exc:
+            raise PackageGuardError("another archive publisher is committing; retry later") from exc
+        try:
+            if out.exists() or out.is_symlink():
+                raise PackageGuardError("output appeared during build")
+            if signature:
+                index = read_index(index_path)
+                prior = index.get(signature)
+                if prior and (out.parent / prior).is_file():
+                    raise PackageGuardError("identical content concurrently packaged: " + prior)
+            os.link(tmp, out)
+            if signature:
+                index[signature] = out.name
+                fd, index_temp = tempfile.mkstemp(prefix=".content-index-", dir=out.parent)
+                try:
+                    with os.fdopen(fd, "w", encoding="utf-8") as f:
+                        json.dump(index, f, ensure_ascii=False, sort_keys=True)
+                        f.flush()
+                        os.fsync(f.fileno())
+                    os.replace(index_temp, index_path)
+                finally:
+                    if os.path.exists(index_temp):
+                        os.unlink(index_temp)
+        finally:
+            lock_dir.rmdir()
     finally:
         tmp.unlink(missing_ok=True)

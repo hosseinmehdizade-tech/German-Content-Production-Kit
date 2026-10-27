@@ -184,3 +184,53 @@ def test_no_new_unguarded_python_zip_writers():
                 violations.append(relative+":"+str(node.lineno)+":"+mode)
     assert not violations, ("New direct ZIP producer(s) must use Tools/content_package_guard.py: "
                             + ", ".join(violations))
+
+
+def test_no_new_unguarded_workflow_zip_writers():
+    """New workflows may not write ZIPs directly; historical A1 jobs stay frozen."""
+    import re
+    import subprocess
+    legacy={
+        ".github/workflows/menschen-a1-current-only-v4.yml",
+        ".github/workflows/menschen-a1-current-only-v5.yml",
+        ".github/workflows/menschen-a1-current-only-v6.yml",
+        ".github/workflows/menschen-a1-current-only-v7.yml",
+        ".github/workflows/menschen-a1-current-only-repair.yml",
+        ".github/workflows/menschen-a1-current-only-one-shot.yml",
+        ".github/workflows/menschen-a1-current-only-final-v9.yml",
+    }
+    tracked=subprocess.check_output(["git","ls-files","-z"],cwd=ROOT).decode("utf-8").split("\0")
+    unexpected=[]
+    for rel in tracked:
+        if not rel.startswith(".github/workflows/") or not rel.endswith((".yml",".yaml")) or rel in legacy:
+            continue
+        text=(ROOT/rel).read_text(encoding="utf-8")
+        # Workflow inline Python writers and shell ZIP invocations require
+        # the same controlled publication path.
+        direct_zip=bool(re.search(r"\b(?:zipfile\.)?ZipFile\([^\n]*['\"](?:w|x|a)['\"]",text))
+        shell_zip=bool(re.search(r"(?m)^\s*(?:zip\s+-(?:r|[^\s]*r[^\s]*)|7z\s+a)\b",text))
+        if direct_zip or shell_zip:
+            unexpected.append(rel)
+    assert not unexpected, "Unguarded workflow archive writer(s): "+", ".join(unexpected)
+
+
+def test_competing_publish_lock_never_damages_existing_files(tmp_path):
+    existing=tmp_path/"current.zip"
+    with guarded_zip(existing,purpose="final_delivery") as z:
+        z.writestr("cards.tsv","protected")
+    old=existing.read_bytes()
+    (tmp_path/".content-package-index.lock").mkdir()
+    with pytest.raises(PackageGuardError,match="another archive publisher"):
+        with guarded_zip(tmp_path/"candidate.zip",purpose="final_delivery") as z:
+            z.writestr("cards.tsv","candidate")
+    assert existing.read_bytes()==old
+    assert not (tmp_path/"candidate.zip").exists()
+    assert not list(tmp_path.glob(".content-zip-*.tmp"))
+
+
+def test_corrupted_dedupe_index_fails_closed(tmp_path):
+    (tmp_path/".content-package-index.json").write_text("{malformed",encoding="utf-8")
+    with pytest.raises(PackageGuardError,match="index"):
+        with guarded_zip(tmp_path/"candidate.zip",purpose="final_delivery") as z:
+            z.writestr("cards.tsv","ok")
+    assert not (tmp_path/"candidate.zip").exists()

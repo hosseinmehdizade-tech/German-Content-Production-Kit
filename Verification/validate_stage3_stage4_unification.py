@@ -139,6 +139,18 @@ def validate_candidate(stage3: dict, stage4: dict) -> list[str]:
                 errors.append("CLOSED_NO_FORCE requires pedagogical reason")
             if combos.get("visible_items", 0) > 0 and not combos.get("teaching_delta_verified"):
                 errors.append("visible combinations require teaching_delta verification")
+    card_total = stage3.get("lexical_cards_total")
+    if type(card_total) is not int or card_total < 1:
+        errors.append("Stage3 must count all lexical cards")
+    facet_coverage = stage3.get("facet_card_coverage")
+    if not isinstance(facet_coverage, dict) or set(facet_coverage) != FACETS:
+        errors.append("Stage3 missing per-card nine-facet coverage ledger")
+    elif type(card_total) is int and card_total > 0:
+        for name, count in facet_coverage.items():
+            if type(count) is not int or count != card_total:
+                errors.append(f"incomplete card coverage for {name}")
+    if stage3.get("source_lineage_receipt") in (None, ""):
+        errors.append("Stage3 source-lineage evidence missing")
     if stage3.get("unresolved_holds") != 0:
         errors.append("unresolved Stage3 holds")
     if stage4.get("reviewed_output_sha256") != sha_out:
@@ -151,6 +163,18 @@ def validate_candidate(stage3: dict, stage4: dict) -> list[str]:
         errors.append("Stage4 deterministic scope incomplete")
     if stage4.get("semantic_scope") != "WHOLE_DATASET_RISK_TARGETED_WITH_ADVERSARIAL_SAMPLING":
         errors.append("Stage4 semantic review not broad/risk-targeted enough")
+    scanned = stage4.get("deterministic_scanned_units")
+    if type(card_total) is not int or type(scanned) is not int or scanned != card_total:
+        errors.append("Stage4 deterministic count must cover exact Stage3 card total")
+    if type(stage4.get("independent_semantic_challenge_units")) is not int or stage4["independent_semantic_challenge_units"] < 1:
+        errors.append("Stage4 requires documented independent semantic adversarial sampling")
+    risk_total = stage4.get("risk_queue_total")
+    risk_closed = stage4.get("risk_queue_closed")
+    if (type(risk_total) is not int or type(risk_closed) is not int or
+            risk_total < 0 or risk_closed != risk_total):
+        errors.append("Stage4 risk queue needs exact total/closed reconciliation")
+    if not stage4.get("adversarial_method_evidence"):
+        errors.append("Stage4 independent method evidence missing")
     if stage4.get("risk_queue_open") != 0:
         errors.append("Stage4 risks are still unresolved")
     if stage4.get("source_challenge") is not True:

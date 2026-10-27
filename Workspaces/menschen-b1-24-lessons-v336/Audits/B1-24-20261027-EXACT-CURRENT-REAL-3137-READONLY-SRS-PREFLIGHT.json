@@ -1,0 +1,73 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-27",
+  "workstream": "menschen-b1-24-lessons-v336/B1-L01-L24/exact-current-real-source-v486-srs-readonly-preflight",
+  "milestone": {
+    "name": "Execute whole 24-lesson normalized real-data read-only import/identity/SRS preflight against exact CURRENT 213MB ZIP, independent exact v486 parser and in-memory adversarial cases",
+    "level": "major",
+    "state": "PASS"
+  },
+  "scope": {
+    "unit": "one actual per-lesson card membership from exact current 213216245-byte release (not synthetic)",
+    "total_units": 3137
+  },
+  "progress": {
+    "reviewed_unique": 3137,
+    "unreviewed": 0,
+    "dispositions": {
+      "REAL_CONTENT_READONLY_VALIDATED": 3137,
+      "CURRENT_EDITED_CARDS": 0,
+      "PROTECTED_ID_ALIAS_HOLDS": 3,
+      "OLD_LOCKED_MODIFIED": 0,
+      "USER_PROFILE_MUTATIONS": 0
+    }
+  },
+  "quality": {
+    "stage_complete": true,
+    "scope_boundary": "Whole-course exact CURRENT portable content read-only preflight PASS; NOT runtime Stage6, user-profile IndexedDB or Stage7 LOCKED. All three semantic-equivalent pairs remain only nonexecuting links; L24 rein different POS and companion raus preserved. No actual source/LOCKED/app/user SRS changes.",
+    "verification_evidence": [
+      "13 Drive PART-001..013 individually SHA256+byte checked to REASSEMBLY-MANIFEST, exact 213216245-byte reassembled archive SHA256 bada18c9ca05b99a5504e9fee7d2db7daf1b7367cc8b0065940c76c3f0fd93bb; ZIP CRC 3054 entries PASS",
+      "Fresh-extract official Tests/verify_repaired_release.py passed 3052/3052 payload hashes, original 148 source release members unchanged, 24 original exact lesson ZIP source TSV checks, 2857 original referenced MP3 hash checks",
+      "Real 24 v486 compatible lesson TSVs normalized and independently verified: 3137 lesson membership rows, 3089 distinct IDs, 12548 DE/FA/EN example groups, 43 reused ID groups with 48 additional memberships; 192 original duplicated crosslesson example ID occurrences produce 12548 unique reversible lesson-scoped derived IDs. L18 compatibility file retains original 17 columns; other 23 contain 23 columns",
+      "Exact v486-R120 original JS parser executed on actual optional 3089-ID global master, runtime index.html SHA d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff, master TSV SHA fa0ebcd42af77abb1fc8aaa6a5d09b2cb647da68f570c227443cfc39761ae46a PASS",
+      "13 of 13 real-data in-memory mutation/backup-safety controls PASS including deleted/duplicate member, bad lesson, FA/EN gap, example count/ID collision, forbidden Vorschrift alias, absent/malformed/duplicate SRS snapshot; original real user SRS not supplied/accessed",
+      "Isolated ephemeral Chromium localhost browser failed with ERR_BLOCKED_BY_ADMINISTRATOR: no same-origin IndexedDB, Study/Quick or MP3 playback pass claimed",
+      "A separate eight-member read-only QA ZIP containing normalized real 3137 membership JSON, replayable Python/Node tests, bilingual handoff, report/negative matrix and SHA manifest tested CRC and 7/7 manifest hashes PASS. Recovered original 213MB user release not changed."
+    ],
+    "current_release": {
+      "file": "German-Flashcards-Pro-v486-Menschen-B1-24-Lektionen-IMPORT-REPAIRED-AUDIO-COMPANION-NONIMPORT.zip",
+      "sha256": "bada18c9ca05b99a5504e9fee7d2db7daf1b7367cc8b0065940c76c3f0fd93bb",
+      "size_bytes": 213216245,
+      "app_version": "v486-R120",
+      "recovery_source": "https://drive.google.com/drive/folders/11B72YuLK-fnspVTxPwG9IHdZmK-YZuHy"
+    },
+    "tests": {
+      "actual_normalized": "PASS_3137/3137",
+      "independent_parser": "PASS_3089_IDS_12548_TRILINGUAL",
+      "negative": "PASS_13/13",
+      "original_archive_sha_and_crc": "PASS",
+      "official_prepayload_checks": "PASS_3052/3052",
+      "real_browser": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+      "real_srs": "NOT_OBSERVED",
+      "stage6": "NOT_ACCEPTED",
+      "stage7": "NOT_LOCKED"
+    },
+    "learner_edit_applied": false
+  },
+  "artifact": {
+    "filename": "Menschen-B1-v486-R120-REAL-3137-ReadOnly-SRS-PREFLIGHT-2026-10-27.zip",
+    "sha256": "20979a61a85b5e026ff027b8e6f8d08c9dbd9ec7abd612a54432203e045b4949",
+    "size_bytes": 826560,
+    "archive_members": 8,
+    "exact_normalized_data_sha256": "a1ec94abfa74c0f111b2865cbf571cdef5cc34b9eaf97c5b7354f9ec9be4c38d",
+    "download_surface": "CURRENT_CHAT_GENERATED_FILE_NOT_LIBRARY_OR_DRIVE_SYNCED"
+  },
+  "persistence": {
+    "git": "RECEIPT_SYNCED_AFTER_COMMIT",
+    "library": "PENDING_NOT_UPLOADED_DO_NOT_CLAIM_DRIVE_OR_LIBRARY_READBACK",
+    "portable_artifact": "CURRENT_CHAT_FILENAME_SHA_VERIFY",
+    "source_immutable": true,
+    "previous_srs_latest_2026_10_26_unmodified_until_pointer_cas": true
+  },
+  "next_action": "Use this actual read-only normalization as verification baseline, not a learner-facing patch. Real runtime Stage6 still requires allowed isolated same-origin browser path; live user-profile import/alias requires independently secured full actual SRS backup, rollback and historical PASS0023 strict binary. Preserve CURRENT, LOCKED and UI unchanged."
+}

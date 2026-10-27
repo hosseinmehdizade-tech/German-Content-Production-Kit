@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """Read-only Library publish preflight. It never uploads, deletes or renames files.
 
+Catalog JSON: {"scope":"workstream"|"library","workstream":"source-slug",
+"complete":true,"entries":[{"path":"/Library/file.zip","size_bytes":123,
+"library_file_id":"libfile_...","sha256":"64-hex-digest",
+"readback_sha256":"the-same-digest","hash_verified":true,
+"verification_receipt":"a verifiable prior readback receipt path"}]}.
+Mark complete only after exhausting pagination for the declared scope. Entries
+from files.list with name+size but no readback MUST remain unverified.
+
 Library listing metadata does not contain verified SHA256 hashes. A positive
 duplicate decision therefore requires a hash-bound receipt, never filename/size
 equality. This gate cannot intercept unrelated ChatGPT upload calls.
@@ -98,7 +106,16 @@ def audit(archive, *, purpose, destination, workstream, catalog, evidence=None,
         if not isinstance(entry, dict):
             return report("HOLD", "INVALID_CATALOG_RECORD", archive_sha256=sha)
         path = entry.get("path") or ""
-        signed = entry.get("sha256") if entry.get("hash_verified") is True else None
+        # A caller-supplied boolean alone is not readback evidence. Reuse needs
+        # an independently documented hash-bound Library readback receipt.
+        has_proof = (entry.get("hash_verified") is True and
+                     entry.get("readback_sha256") == entry.get("sha256") and
+                     bool(entry.get("verification_receipt")) and
+                     bool(entry.get("library_file_id")))
+        signed = entry.get("sha256") if has_proof else None
+        if entry.get("sha256") == sha and not has_proof:
+            return report("HOLD", "UNVERIFIED_MATCHING_HASH_CLAIM",
+                          archive_sha256=sha, existing_path=path)
         if signed and not HEX64.fullmatch(str(signed)):
             return report("HOLD", "INVALID_VERIFIED_HASH", archive_sha256=sha)
         if signed == sha and entry.get("library_file_id") and path:

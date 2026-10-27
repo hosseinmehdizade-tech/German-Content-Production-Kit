@@ -17,6 +17,8 @@ def sample_candidate():
         "input_sha256": "a"*64, "output_sha256": "b"*64,
         "source_authority": "source-exact:test", "stage3_method": "PRODUCTION_METHOD_A",
         "mutable_bytes_applied": True, "locked_source_mutated": False,
+        "lexical_cards_total": 2, "facet_card_coverage": {x: 2 for x in m.FACETS},
+        "source_lineage_receipt": "source:test:sha256-bound",
         "facets": facets, "unresolved_holds": 0,
     }
     s4 = {
@@ -25,8 +27,11 @@ def sample_candidate():
         "review_kind": "AI_INDEPENDENT_ADVERSARIAL",
         "deterministic_coverage": "FULL",
         "semantic_scope": "WHOLE_DATASET_RISK_TARGETED_WITH_ADVERSARIAL_SAMPLING",
-        "risk_queue_open": 0, "source_challenge": True,
-        "stage4_result": "PASS", "downstream_stage5_6_7_unmodified": True,
+        "risk_queue_total": 2, "risk_queue_closed": 2, "risk_queue_open": 0,
+        "deterministic_scanned_units": 2,
+        "independent_semantic_challenge_units": 2,
+        "adversarial_method_evidence": "second-pass:source-challenge:receipt",
+        "source_challenge": True, "stage4_result": "PASS", "downstream_stage5_6_7_unmodified": True,
     }
     return s3, s4
 
@@ -111,3 +116,31 @@ def test_not_applicable_facet_requires_reason():
     a, b = sample_candidate()
     a["facets"]["morphosyntax"] = {"decision": "NA_WITH_REASON"}
     assert any("not-applicable" in x for x in m.validate_candidate(a, b))
+
+
+def test_incomplete_stage3_card_by_card_facet_is_blocked():
+    a, b = sample_candidate()
+    a["facet_card_coverage"]["examples"] = 1
+    assert any("incomplete card coverage" in x for x in m.validate_candidate(a, b))
+
+
+def test_stage4_review_receipt_cannot_hide_unscanned_cards():
+    a, b = sample_candidate()
+    b["deterministic_scanned_units"] = 1
+    assert any("deterministic count" in x for x in m.validate_candidate(a, b))
+
+
+def test_stage4_risk_queue_requires_exact_closed_count():
+    a, b = sample_candidate()
+    b["risk_queue_total"] = 5
+    b["risk_queue_closed"] = 4
+    assert any("risk queue needs exact" in x for x in m.validate_candidate(a, b))
+
+
+def test_stage4_requires_nonempty_independent_semantic_challenge():
+    a, b = sample_candidate()
+    b["independent_semantic_challenge_units"] = 0
+    b["adversarial_method_evidence"] = ""
+    out = m.validate_candidate(a, b)
+    assert any("independent semantic adversarial" in x for x in out)
+    assert any("method evidence" in x for x in out)

@@ -1,0 +1,91 @@
+{
+  "schema": "vmp-stage4-source-evidence-official-hf2-replay-wip23@1.0.0",
+  "date": "2026-10-27",
+  "status": "WIP23_12_NARROWLY_SCOPED_DUDEN_LINKS__ACTUAL_GENERIC_HF2_FAIL_201_REPRODUCED__TWO_TEST_ONLY_FALSE_GREEN_PROBES__NOT_FINAL",
+  "parent": {
+    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Repair1-STAGE4-SOURCE-EVIDENCE-WIP22-2026-10-27.zip",
+    "sha256": "af7fa9b8b77ff610ca6b726aad73f894d2c60d3e188d32ad49ac272f92d46c82",
+    "immutable": true
+  },
+  "current": {
+    "filename": "250-Verben-mit-Praepositionen-v3.3.6-Repair1-STAGE4-SOURCE-EVIDENCE-WIP23-2026-10-27.zip",
+    "sha256": "d11d3089c5fa30f335a9598f6b2b925a32b1ea7155ddf6245446d584edc6b934",
+    "bytes": 4435518,
+    "tsv_sha256": "1031d2e0f460fb5831f625c8013f2a78e101e2a7124ebfa6b4350c8856d7f1ab",
+    "card_count": 292,
+    "combinations": 431,
+    "new_source_link_count": 12,
+    "source_examples_de_unchanged": 1168,
+    "source_example_translations_unchanged": 2336,
+    "learner_facing_changes": 0,
+    "archive_members": 214
+  },
+  "evidence": {
+    "curated_source_linked": 107,
+    "curated_without_itemwise_Duden": 307,
+    "inherited_with_Duden_link": 10,
+    "inherited_without": 7,
+    "evidence_levels": "German exact frame/lexical part/NVV or synonymous verb/adverbial only; not full 431 trilingual independent signoff",
+    "cases_file": "29-Stage4-Source-Evidence-WIP23/TWELVE-ITEM-SCOPED-DUDEN-SOURCE-REVIEWS.json",
+    "coverage": "29-Stage4-Source-Evidence-WIP23/ITEMWISE-431-EXTERNAL-EVIDENCE-LEDGER.jsonl"
+  },
+  "official_HF2": {
+    "script": "Verification/validate_learner_visible_lexical_front_v1_1_0.py",
+    "script_extracted_copy_sha256": "414f1b189832faaa50bf6d9e8e02e6c61d2c71d310875dc4969690d7b653a70b",
+    "input_exact_current_tsv_sha256": "1031d2e0f460fb5831f625c8013f2a78e101e2a7124ebfa6b4350c8856d7f1ab",
+    "result": "FAIL",
+    "exit_code": 1,
+    "checked": {
+      "verb": 201,
+      "expression": 91
+    },
+    "error_count": 201,
+    "all_error_category": "VERB_FRONT_NOT_CANONICAL_DISPLAY",
+    "missing_morphology_errors": 0,
+    "argument_placeholder_errors": 0,
+    "expected_form_issue": "Clean canonical headword is not independently supplied; computed expected general front contains principal forms only, whereas source front is verb plus governed preposition and case.",
+    "full_error_file": "29-Stage4-Source-Evidence-WIP23/EXACT-OFFICIAL-HF2-V1_1_0-CURRENT-FAIL-201.json",
+    "code_in_zip": "29-Stage4-Source-Evidence-WIP23/OFFICIAL-HF2-V1_1_0-VALIDATOR-REPLAY.py",
+    "policy_changes": "NONE",
+    "waiver": "NONE"
+  },
+  "test_only_HF2_validator_coverage": {
+    "fixture_count": 2,
+    "observed": "Two isolated one-card front substitutions made generic validator PASS even with typingCore still equal source-governed front, proving raw front and typingCore relation unchecked by this generic validator.",
+    "production_mutations": 0,
+    "status": "TEST_ONLY_DIAGNOSTIC_PASS_NOT_APPROVED",
+    "evidence_file": "29-Stage4-Source-Evidence-WIP23/HF2-OFFICIAL-TEST-ONLY-FALSE-GREEN-FIXTURES.json",
+    "architecture_gate": "GOVERNED_CONSTRUCTION_SUBTYPE_AND_RUNTIME_POLICY_APPROVAL_REQUIRED"
+  },
+  "technical_QA": {
+    "exact_current_official_neutral_projection": "PASS",
+    "canonical_TSV_custom_fields_visible_431": "PASS",
+    "didactic_2_exact_current_sha_bound_advisory_flags": "PASS",
+    "negative_stale_sha": "REJECTED",
+    "zip_crc_manifest_sha256sums": "PASS",
+    "local_library_drive_sha256_and_byte_equal": "PASS"
+  },
+  "storage": {
+    "library": {
+      "file_id": "libfile_46905f6294d8819191488f164e1654a6",
+      "path": "/German-Content-Production-Kit/Checkpoints/250-Verben-mit-Praepositionen-v3.3.6-Repair1-STAGE4-SOURCE-EVIDENCE-WIP23-2026-10-27.zip"
+    },
+    "drive": {
+      "id": "1TzVR2tLV2WmEeyf15WQNPJA9truaACtc",
+      "url": "https://drive.google.com/file/d/1TzVR2tLV2WmEeyf15WQNPJA9truaACtc/view?usp=drivesdk"
+    },
+    "report": {
+      "library_file_id": "libfile_bcf34d222ecc8191b1cf11c747c633b0",
+      "drive_file_id": "16vk1kijTlfKUI92VJdc7E8toS25OlDbc",
+      "sha256": "82d75825faac838c2ebb30564627b020018bf3594052791246e6ae2bb9eddc95"
+    }
+  },
+  "release_gates": {
+    "full_independent_431_trilingual_stage4": "NOT_COMPLETE",
+    "general_official_HF2": "FAIL_201_UNRESOLVED",
+    "official_stage5": "NOT_RUN",
+    "real_origin_current_app_stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL"
+  },
+  "next_action": "Resolve HF2 contract with an explicitly reviewed governed verb source-structure subtype and typingCore/Study/Quick invariants (do not bypass). Independently attest German and FA/EN semantics for 307 curated plus 7 inherited. Then official Stage4/5, real-current-app Stage6, conditional Stage7."
+}

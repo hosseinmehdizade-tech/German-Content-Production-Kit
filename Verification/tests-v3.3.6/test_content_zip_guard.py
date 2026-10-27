@@ -80,3 +80,46 @@ def test_three_builders_are_wired():
         content=(ROOT/path).read_text(encoding="utf-8")
         assert "from content_package_guard import guarded_zip" in content
         assert "with guarded_zip(" in content
+
+
+def test_dedupe_uses_full_archived_payload_not_just_source_inputs(tmp_path):
+    source=tmp_path/"unchanged.tsv"
+    source.write_text("same original",encoding="utf-8")
+    one=tmp_path/"first.zip"
+    two=tmp_path/"second.zip"
+    with guarded_zip(one,purpose="final_delivery",inputs=(source,)) as z:
+        z.writestr("cards.tsv","same")
+        z.writestr("reports/qa.json",'{"approved": false}')
+    with guarded_zip(two,purpose="final_delivery",inputs=(source,)) as z:
+        z.writestr("cards.tsv","same")
+        z.writestr("reports/qa.json",'{"approved": true}')
+    assert one.exists() and two.exists()
+
+
+def test_unlisted_manifest_change_does_not_get_falsely_blocked(tmp_path):
+    with guarded_zip(tmp_path/"first.zip",purpose="final_delivery") as z:
+        z.writestr("cards.tsv","same")
+        z.writestr("manifest.json",'{"version": 1}')
+    with guarded_zip(tmp_path/"second.zip",purpose="final_delivery") as z:
+        z.writestr("cards.tsv","same")
+        z.writestr("manifest.json",'{"version": 2}')
+    assert len(list(tmp_path.glob("*.zip")))==2
+
+
+def test_exact_payload_repeat_without_input_hint_is_rejected(tmp_path):
+    with guarded_zip(tmp_path/"first.zip",purpose="final_delivery") as z:
+        z.writestr("a.txt","one")
+        z.writestr("b.txt","two")
+    with pytest.raises(PackageGuardError,match="identical"):
+        with guarded_zip(tmp_path/"duplicate.zip",purpose="final_delivery") as z:
+            z.writestr("b.txt","two")
+            z.writestr("a.txt","one")
+    assert not (tmp_path/"duplicate.zip").exists()
+
+
+def test_win_style_unsafe_member_refused(tmp_path):
+    for member in ("..\\escape.txt","C:/drive-file.txt"):
+        with pytest.raises(PackageGuardError,match="unsafe"):
+            with guarded_zip(tmp_path/"bad.zip",purpose="final_delivery") as z:
+                z.writestr(member,"no")
+        assert not (tmp_path/"bad.zip").exists()

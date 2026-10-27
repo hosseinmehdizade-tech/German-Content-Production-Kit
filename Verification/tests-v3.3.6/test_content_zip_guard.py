@@ -234,3 +234,101 @@ def test_corrupted_dedupe_index_fails_closed(tmp_path):
         with guarded_zip(tmp_path/"candidate.zip",purpose="final_delivery") as z:
             z.writestr("cards.tsv","ok")
     assert not (tmp_path/"candidate.zip").exists()
+
+
+# Library publication is a separate pre-upload gate: no Library writes here.
+from library_publish_preflight import audit as library_audit
+import hashlib
+
+
+def _zip_candidate(tmp_path, name="ready.zip", content="v1"):
+    path=tmp_path/name
+    with zipfile.ZipFile(path,"w") as z:
+        z.writestr("01-Final-Import/cards.tsv",content)
+    sha=hashlib.sha256(path.read_bytes()).hexdigest()
+    ev=tmp_path/"quality.json"
+    ev.write_text(json.dumps({"status":"PASS","stage7":"PASS","archive_sha256":sha}))
+    return path,sha,ev
+
+
+def _library_run(path, ev, cat, purpose="final_delivery"):
+    return library_audit(path, purpose=purpose,
+                         destination="/German-Content-Production-Kit/Final/"+path.name,
+                         workstream="sample-corpus", catalog=cat, evidence=ev)
+
+
+def test_library_preflight_allow_complete_verified_scope(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    result=_library_run(z,ev,{"complete":True,"scope":"workstream",
+                              "workstream":"sample-corpus","entries":[]})
+    assert result["decision"]=="ALLOW"
+    assert result["archive_sha256"]==sha
+
+
+def test_library_preflight_skip_verified_exact_copy_without_reupload(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    catalog={"complete":False,"entries":[{"path":"/Flasch kart/reusable.zip",
+        "sha256":sha,"hash_verified":True,"library_file_id":"libfile_exact"}]}
+    result=_library_run(z,ev,catalog)
+    assert result["decision"]=="SKIP_IDENTICAL"
+    assert result["library_file_id"]=="libfile_exact"
+
+
+def test_library_preflight_reject_filename_size_as_proof(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    catalog={"complete":True,"scope":"library","entries":[{
+        "path":"/Old/ready.zip","size_bytes":z.stat().st_size,
+        "library_file_id":"libfile_unknown"}]}
+    result=_library_run(z,ev,catalog)
+    assert result["decision"]=="HOLD"
+    assert result["reason"]=="POSSIBLE_DUPLICATE_NEEDS_HASH_READBACK"
+
+
+def test_library_preflight_block_conflicting_destination(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    catalog={"complete":True,"scope":"library","entries":[{
+        "path":"/German-Content-Production-Kit/Final/ready.zip",
+        "sha256":"0"*64,"hash_verified":True,
+        "library_file_id":"libfile_different"}]}
+    assert _library_run(z,ev,catalog)["reason"]=="DESTINATION_OCCUPIED_BY_DIFFERENT_BYTES"
+
+
+def test_library_preflight_hold_when_catalog_incomplete(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    result=_library_run(z,ev,{"complete":False,"scope":"library","entries":[]})
+    assert result["reason"]=="INCOMPLETE_LIBRARY_CATALOG"
+
+
+def test_library_preflight_reject_normal_wip_and_stage5_upload(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path,"Aber-Hallo-WIP24.zip")
+    cat={"complete":True,"scope":"library","entries":[]}
+    assert _library_run(z,ev,cat)["reason"]=="ROUTINE_WIP_ZIP"
+    good,sha,ev=_zip_candidate(tmp_path,"stage5-candidate.zip")
+    assert _library_run(good,ev,cat,purpose="stage5_acceptance")["decision"]=="BLOCK"
+
+
+def test_library_preflight_evidence_must_match_exact_bytes(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    ev.write_text(json.dumps({"status":"PASS","stage7":"PASS","archive_sha256":"a"*64}))
+    assert _library_run(z,ev,{"complete":True,"scope":"library","entries":[]})["reason"]=="EVIDENCE_HASH_NOT_CURRENT"
+
+
+def test_library_preflight_explicit_user_and_recovery_exceptions(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path,"review-WIP7.zip")
+    cat={"complete":True,"scope":"workstream","workstream":"sample-corpus","entries":[]}
+    dest="/German-Content-Production-Kit/Final/"+z.name
+    args={"purpose":"explicit_user_checkpoint","destination":dest,
+          "workstream":"sample-corpus","catalog":cat}
+    assert library_audit(z,**args)["decision"]=="BLOCK"
+    assert library_audit(z,user_request="Store this exact restore point",**args)["decision"]=="ALLOW"
+    ev.write_text(json.dumps({"archive_sha256":sha,"recovery_gap":"original missing"}))
+    args["purpose"]="required_recovery"
+    assert library_audit(z,evidence=ev,**args)["decision"]=="ALLOW"
+
+
+def test_library_preflight_preserves_data_and_never_writes(tmp_path):
+    z,sha,ev=_zip_candidate(tmp_path)
+    before=z.read_bytes()
+    _library_run(z,ev,{"complete":True,"scope":"library","entries":[]})
+    assert z.read_bytes()==before
+    assert {p.name for p in tmp_path.iterdir()}=={"ready.zip","quality.json"}

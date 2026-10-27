@@ -1,0 +1,33 @@
+name: Stage3–Stage4 Proposal Compatibility
+on:
+  push:
+    paths:
+      - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/validate_stage3_stage4_unification.py'
+      - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
+      - '.github/workflows/stage3-4-compatibility.yml'
+  pull_request:
+    paths:
+      - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/validate_stage3_stage4_unification.py'
+      - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
+      - '.github/workflows/stage3-4-compatibility.yml'
+  workflow_dispatch:
+jobs:
+  metadata-compatibility-only:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile without creating ZIPs
+        run: python -m compileall -q Verification/validate_stage3_stage4_unification.py
+      - name: Validate matrix against actual preserved checkpoint schemas
+        run: python Verification/validate_stage3_stage4_unification.py
+      - name: Exercise fail-closed Stage3/Stage4 proposal contract
+        run: python -m pytest -q Verification/tests-v3.3.6/test_stage3_stage4_unification.py

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import argparse,json,hashlib,zipfile,tempfile,shutil,csv,subprocess,sys,fnmatch,re
+import argparse,json,hashlib,zipfile,tempfile,shutil,csv,subprocess,sys,fnmatch
+from content_package_guard import guarded_zip, check_intent, PackageGuardError
 
 def sha256(p):
     h=hashlib.sha256()
@@ -11,14 +12,18 @@ def sha256(p):
 ap=argparse.ArgumentParser()
 ap.add_argument("source_dir")
 ap.add_argument("output_zip")
-ap.add_argument("--purpose",choices=["stage5_acceptance","final_delivery","required_recovery","explicit_user_checkpoint"],default="stage5_acceptance")
+ap.add_argument("--purpose",choices=["stage5_acceptance","final_delivery","validated_major_checkpoint","required_recovery","explicit_user_checkpoint"],default="stage5_acceptance")
+ap.add_argument("--milestone-evidence",type=Path)
+ap.add_argument("--user-request")
 a=ap.parse_args()
 src=Path(a.source_dir).resolve()
 out=Path(a.output_zip).resolve()
 if not src.is_dir():
     raise SystemExit("source_dir must be a directory; building from a previous delivery ZIP is forbidden")
-if re.search(r"(?i)(?:^|[-_.])(wip\d*|batch\d+|per[-_]?edit|scratch|micro[-_]?edit)(?:[-_.]|$)",out.stem) and a.purpose not in ("required_recovery","explicit_user_checkpoint"):
-    raise SystemExit("CONTENT ZIP GUARD: routine WIP/batch/micro-edit archive refused; save editable data and compact QA instead")
+try:
+    check_intent(out,a.purpose,evidence=a.milestone_evidence,user_request=a.user_request)
+except PackageGuardError as exc:
+    raise SystemExit("CONTENT ZIP GUARD: "+str(exc))
 
 def pick(patterns, role):
     # Delivery filenames are user/workstream artifacts and may vary in case
@@ -84,26 +89,6 @@ if validation.returncode:
         + validation.stdout + validation.stderr
     )
 
-# One tiny index per output directory avoids re-packaging identical input bytes
-# under a new filename. It never deletes or scans historical archives.
-input_signature=hashlib.sha256(json.dumps({
-    "purpose":a.purpose,
-    "source_roles":[sha256(p) for p in (direct,canonical,mapping,qa)]
-},sort_keys=True).encode("utf-8")).hexdigest()
-index_file=out.parent/".content-package-index.json"
-if index_file.exists():
-    try:
-        package_index=json.loads(index_file.read_text(encoding="utf-8"))
-    except (OSError,ValueError) as exc:
-        raise SystemExit(f"CONTENT ZIP GUARD: unreadable index; no unsafe rewrite: {exc}")
-    if not isinstance(package_index,dict):
-        raise SystemExit("CONTENT ZIP GUARD: invalid index")
-else:
-    package_index={}
-prior=package_index.get(input_signature)
-if prior and (out.parent/prior).is_file():
-    raise SystemExit(f"CONTENT ZIP GUARD: identical content and QA already delivered as {prior}")
-
 with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
     root=Path(td)/"CONTENT-DELIVERY"
     root.mkdir()
@@ -131,9 +116,8 @@ with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
       "\n".join(f"{sha256(x)}  {x.name}" for x in files)+"\n",encoding="utf-8"
     )
 
-    if out.exists():
-        raise SystemExit('Existing ZIP is immutable: refusing overwrite or unlink. Choose a new output only for a meaningful validated release.')
-    with zipfile.ZipFile(out,"x",zipfile.ZIP_DEFLATED) as z:
+    with guarded_zip(out,purpose=a.purpose,inputs=(direct,canonical,mapping,qa),
+                     evidence=a.milestone_evidence,user_request=a.user_request) as z:
         for x in sorted(root.iterdir()):
             if x.is_file(): z.write(x,arcname=f"{root.name}/{x.name}")
 
@@ -144,7 +128,4 @@ with tempfile.TemporaryDirectory(prefix="content-fresh-verify-") as td:
     cp=subprocess.run(["sha256sum","-c","SHA256SUMS.txt"],cwd=root,text=True,capture_output=True)
     if cp.returncode: raise SystemExit(cp.stdout+cp.stderr)
 
-# Record only verified outputs; existing archives remain immutable.
-package_index[input_signature]=out.name
-index_file.write_text(json.dumps(package_index,sort_keys=True,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"status":"PASS","zip":str(out),"sha256":sha256(out)},ensure_ascii=False))

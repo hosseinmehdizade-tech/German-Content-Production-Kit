@@ -363,3 +363,59 @@ def test_library_preflight_cli_exit_codes(tmp_path):
     cp2=subprocess.run(args,capture_output=True,text=True)
     assert cp2.returncode==2
     assert json.loads(cp2.stdout)["decision"]=="HOLD"
+
+
+from library_publish_preflight import catalog_from_list_pages
+
+def _list_page(path, cursor, next_cursor, items=()):
+    return {"surface":"library", "requested_library_path":path,
+            "requested_cursor":cursor, "next_cursor":next_cursor, "items":list(items)}
+
+def test_workstream_catalog_requires_exhausted_pagination():
+    path="/German-Content-Production-Kit/Current/sample"
+    first=_list_page(path,None,"token_1",[{"kind":"file","path":path+"/one.zip",
+           "name":"one.zip","size_bytes":1024,"library_file_id":"libfile_one",
+           "sha256":"f"*64,"hash_verified":True}])
+    cat=catalog_from_list_pages([first],library_path=path,scope="workstream",workstream="sample")
+    assert cat["complete"] is False
+    assert "sha256" not in cat["entries"][0]
+    assert "hash_verified" not in cat["entries"][0]
+    second=_list_page(path,"token_1",None,[{"kind":"file","path":path+"/two.zip",
+                "size_bytes":42,"library_file_id":"libfile_two"}])
+    complete=catalog_from_list_pages([first,second],library_path=path,scope="workstream",workstream="sample")
+    assert complete["complete"] is True
+    assert len(complete["entries"])==2
+
+def test_catalog_fails_closed_for_bad_cursor_or_cross_workstream_path():
+    path="/German-Content-Production-Kit/Current/sample"
+    first=_list_page(path,None,"next")
+    wrong=_list_page(path,"wrong",None)
+    with pytest.raises(ValueError,match="pagination cursor"):
+        catalog_from_list_pages([first,wrong],library_path=path,scope="workstream",workstream="sample")
+    with pytest.raises(ValueError,match="exact workstream"):
+        catalog_from_list_pages([first],library_path="/German-Content-Production-Kit/Checkpoints",
+                                scope="workstream",workstream="sample")
+    with pytest.raises(ValueError,match="outside requested"):
+        catalog_from_list_pages([_list_page(path,None,None,[{"kind":"file","path":"/Other/stolen.zip"}])],
+                                library_path=path,scope="workstream",workstream="sample")
+
+def test_catalog_cli_generates_readonly_metadata(tmp_path):
+    import subprocess
+    path="/German-Content-Production-Kit/Current/sample"
+    page={"pages":[_list_page(path,None,None,[{"kind":"file","path":path+"/final.zip",
+               "size_bytes":99,"library_file_id":"libfile_test"}])]}
+    inp=tmp_path/"pages.json"
+    inp.write_text(json.dumps(page))
+    output=tmp_path/"catalog.json"
+    cp=subprocess.run([sys.executable,str(ROOT/"Tools/library_publish_preflight.py"),
+       "--list-pages-json",str(inp),"--library-path",path,
+       "--workstream","sample","--catalog-output",str(output)],
+       capture_output=True,text=True)
+    assert cp.returncode==0,cp.stderr+cp.stdout
+    assert json.loads(output.read_text())["complete"] is True
+    cp2=subprocess.run([sys.executable,str(ROOT/"Tools/library_publish_preflight.py"),
+       "--list-pages-json",str(inp),"--library-path",path,
+       "--workstream","sample","--catalog-output",str(output)],
+       capture_output=True,text=True)
+    assert cp2.returncode==2
+    assert "ALREADY_EXISTS" in cp2.stdout

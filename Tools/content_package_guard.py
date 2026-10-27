@@ -59,3 +59,50 @@ def read_index(path):
     if not isinstance(data, dict):
         raise PackageGuardError("invalid package index")
     return data
+
+@contextmanager
+def guarded_zip(output, *, purpose="stage5_acceptance", inputs=(), evidence=None,
+                user_request=None, compression=zipfile.ZIP_DEFLATED, compresslevel=9):
+    """Make a verified temporary ZIP, then publish without replacing any old file.
+
+    This is not a substitute for content Stage4-7 or post-package acceptance.
+    """
+    out = Path(output)
+    check_intent(out, purpose, evidence=evidence, user_request=user_request)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    signature = fingerprint(purpose, inputs) if inputs else None
+    index_path = out.parent / ".content-package-index.json"
+    prior = read_index(index_path).get(signature) if signature else None
+    if prior and (out.parent / prior).is_file():
+        raise PackageGuardError("identical content already packaged: " + prior)
+    fd, temp_name = tempfile.mkstemp(prefix=".content-zip-", suffix=".tmp", dir=out.parent)
+    os.close(fd)
+    tmp = Path(temp_name)
+    try:
+        with zipfile.ZipFile(tmp, "w", compression=compression, compresslevel=compresslevel) as z:
+            yield z
+        with zipfile.ZipFile(tmp) as z:
+            names = z.namelist()
+            if not names or len(names) != len(set(names)) or z.testzip() is not None:
+                raise PackageGuardError("invalid ZIP members/CRC")
+            if any(name.startswith(("/", "\\")) or ".." in Path(name).parts for name in names):
+                raise PackageGuardError("unsafe ZIP member path")
+        if out.exists() or out.is_symlink():
+            raise PackageGuardError("output appeared during build")
+        # Same-directory hard link: atomic create-if-absent, no destination replacement.
+        os.link(tmp, out)
+        if signature:
+            index = read_index(index_path)
+            index[signature] = out.name
+            fd, index_temp = tempfile.mkstemp(prefix=".content-index-", dir=out.parent)
+            try:
+                with os.fdopen(fd, "w", encoding="utf-8") as f:
+                    json.dump(index, f, ensure_ascii=False, sort_keys=True)
+                    f.flush()
+                    os.fsync(f.fileno())
+                os.replace(index_temp, index_path)
+            finally:
+                if os.path.exists(index_temp):
+                    os.unlink(index_temp)
+    finally:
+        tmp.unlink(missing_ok=True)

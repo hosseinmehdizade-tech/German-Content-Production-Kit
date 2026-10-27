@@ -1,0 +1,70 @@
+{
+  "schema": "menschen-a1-didactic-mehrwert-rollback-safe-audit-receipt@1.0.0",
+  "date": "2026-10-27",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "status": "PASS_SCOPED_READONLY_HEURISTIC_PREFLIGHT__DIDACTIC_GATE_OPEN__STAGE4_NOT_PASSED",
+  "policy": "Prompt/KOMBINATIONEN-DIDACTIC-MEHRWERT-GATE-v1.0.0.md",
+  "policy_effective": "2026-10-26",
+  "scope": {
+    "c46": {
+      "artifact_sha256": "f88f49ebb429d5493c7a1a56bde24020254ddbb9973f3800354abfb974c4d32d",
+      "input_tsv_sha256": "1f4a24e2df193e713db7a3ef1bfd8ea6982d209ff48993c2150e76b038881814",
+      "audit_view_sha256": "049894e3728d3dd6671e64aad7792a4bb7a8a8d7f9438c506bb6dbdd73acc488",
+      "cards": 2997,
+      "kombinationen": 1921,
+      "examples": 11988,
+      "adapted_text_de": 7816,
+      "flags": 918,
+      "flagged_cards": 505,
+      "flagged_card_phrase_pairs": 782,
+      "high_flags": 14,
+      "zero_combo_cards": 2056
+    },
+    "a1_verben_user_final": {
+      "artifact_sha256": "adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06",
+      "input_tsv_sha256": "f6491334e3174e12a9989801a47f2d75188bc9162de7edd56f4b0bfc2caf5414",
+      "cards": 310,
+      "kombinationen": 1934,
+      "examples": 1240,
+      "flags": 617,
+      "flagged_cards": 226,
+      "flagged_card_phrase_pairs": 598,
+      "high_flags": 0
+    }
+  },
+  "scanner": {
+    "kit_sha256": "d6d558584559c85dcd3d9702e53387f029d676332a926bef8de1094ddc404501",
+    "script_sha256": "819dd89dee95280f9c69985c51328b66d4073a78cf0abfb78f53972c597a9962",
+    "tests": "3/3 PASS",
+    "technical_pitfalls": [
+      "ZIP contains many historical TSVs: must scan authoritative TSV only",
+      "C46 text_de examples require lossless compatibility alias to text/lang for scanner"
+    ]
+  },
+  "evidence": {
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Menschen-A1-DIDACTIC-MEHRWERT-READONLY-AUDIT-20261027.zip",
+    "library_file_id": "libfile_08497661e3ec8191a3d0c84cd7742745",
+    "filename": "Menschen-A1-DIDACTIC-MEHRWERT-READONLY-AUDIT-20261027.zip",
+    "sha256": "e82885a29192f191bfcd6e4074b699b77706ccd00267c4b83eff9c006d29202f",
+    "size_bytes": 40863,
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+    "zip_crc_manifest": "PASS"
+  },
+  "unsatisfied": {
+    "risk_flag_dispositions": 1535,
+    "independent_itemwise_semantic_ai_review": "NOT_COMPLETED",
+    "official_didactic_gate": "NOT_PASSED",
+    "stage4": "NOT_PASSED",
+    "stage5": "NOT_RERUN",
+    "stage6": "NOT_RERUN",
+    "stage7": "NOT_RERUN"
+  },
+  "constraints": [
+    "NO_SOURCE_OR_USER_FINAL_ARTIFACT_MUTATION",
+    "NO_IMPORT",
+    "NO_UI_OR_RUNTIME_CHANGE",
+    "DO_NOT_AUTO_REMOVE_REPEATS",
+    "NO_FALSE_SEMANTIC_PASS"
+  ],
+  "next_action": "Continue per-source, per-card AI semantic Didactic Mehrwert adjudication of exact 918 and 617 rule flags, verify closure for 2056 zero-combo C46 cards, then full Stage4 and new reviewed successors under immutable historical releases. Always re-resolve newest C46/CURRENT pointer before edits."
+}

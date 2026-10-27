@@ -28,7 +28,7 @@ For lexical cards all nine facets get a `DONE`, `NA_WITH_REASON` or `HELD` dispo
 
 - Source is immutable; only current mutable workstream bytes may be edited, subject to CAS/source SHA verification. Historical LOCKED/FINAL content is read-only, and any retrofit creates a successor.
 - Distinguish `SOURCE_EXACT`, `SOURCE_ATTESTED`, `CURATED_PEDAGOGICAL` and `PARENT_GENERATED_EXAMPLE`. The last **never** counts as independent source evidence.
-- Every Stage3 dossier binds `input_sha256`, `output_sha256`, `source_authority`, `stage3_method`, full per-facet decision, count of unresolved holds and a source-edit application receipt. A report without verified output bytes is **not** completed Stage3.
+- Every Stage3 dossier binds `input_sha256`, `output_sha256`, `source_authority`, `stage3_method`, full per-facet decision, count of unresolved holds and a source-edit application receipt. A report without verified output bytes is **not** completed Stage3. The dry-run preflight also requires `lexical_cards_total`, all nine `facet_card_coverage` totals equaling that total, and `source_lineage_receipt`; these metadata counters are **necessary but not sufficient** until checked against actual card IDs and source bytes in a pilot.
 - Legacy checkpoints retain their original JSON schemas/paths. Crosswalk lives in a **separate** file; no mutation of previous Stage3A/3B/3C.
 - If unresolved holds exist, a Stage3 candidate may be reviewable but is **not** ready for Stage4 PASS / Stage5.
 
@@ -37,7 +37,7 @@ For lexical cards all nine facets get a `DONE`, `NA_WITH_REASON` or `HELD` dispo
 - Bind Stage4 `reviewed_output_sha256` to the exact Stage3 output SHA; mismatch makes the review stale.
 - `independent_method` must differ from `stage3_method`; document AI method, adversarial second pass, source challenge, scope, and risk disposition. Never call model QA a human signature.
 - Deterministic screening covers the **whole** applicable dataset. A scoped semantic review is explicitly marked `SCOPED` and cannot certify the parent Stage4.
-- Every detected/source-risk queue item must be dispositioned (`REPAIR_APPLIED_AND_REVALIDATED`, `KEEP_WITH_EVIDENCE`, `HOLD`, etc.). Any open HOLD or unverified source facts block Stage4 PASS.
+- `deterministic_scanned_units` must equal `lexical_cards_total`; an independent semantic/adversarial sample must be nonempty, carry method evidence, and reconcile `risk_queue_total == risk_queue_closed` with `risk_queue_open == 0`. Metadata counts alone do **not** prove a real language audit. Every detected/source-risk queue item must be dispositioned (`REPAIR_APPLIED_AND_REVALIDATED`, `KEEP_WITH_EVIDENCE`, `HOLD`, etc.). Any open HOLD or unverified source facts block Stage4 PASS.
 - Repairs reopen Stage3 provenance/coverage and invalidate stale Stage4 evidence. Re-run exact SHA-bound independent review after changes.
 - Stage4 PASS **alone** is not Stage5 import-readiness, CURRENT runtime Stage6 PASS, Stage7 final, or Library publish approval. Those gates remain required.
 

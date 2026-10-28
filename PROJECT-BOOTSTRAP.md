@@ -1,5 +1,8 @@
 **MANDATORY APPLY-ON-APPROVAL (2026-10-26):** Before any relevant work read `EDIT-APPLY-VERIFICATION-CONTRACT.json`; for approved safe edits, change current editable data immediately, test the post-edit file and persist it before reporting. Do not substitute repeated editorial reports. Missing exact current bytes never license downgrading or modifying LOCKED.\n\n# PROJECT BOOTSTRAP — MANDATORY FIRST STEP FOR EVERY NEW CHAT
 
+**CROSS-REPO CONTINUOUS OPTIMIZATION HUB (2026-10-29):** For policy/pipeline/efficiency/QA/packaging/Library/architecture optimization spanning both repositories, read `German-Content-Production-Kit/Optimization-Program/README.md` and `Optimization-Program/STATE.json` (GitHub issue #25). This lightweight tracker does not supersede exact CURRENT runtime pins, active content frameworks, workstream LATEST/CHECKPOINT or immutable evidence. Update only after meaningful verified optimization milestones; no new per-turn reports/ZIPs.
+
+
 **ACTIVE CROSS-PROJECT LINGUISTIC REVIEW OVERRIDE (user-approved 2026-10-25):** Read `LINGUISTIC-QA-AUTHORITY-POLICY.json` before any Stage4/content quality/release acceptance. Mandatory external qualified-human/independent-specialist signature is REMOVED for all content streams. Require full documented AI semantic/translation/source review, independent-method adversarial second pass and deterministic QA; label it AI review, never human approval. Stage5/6/7 and source-fidelity gates remain unchanged. Historical reports/LOCKED artifacts remain immutable; old reviewer-identity gates must not block solely for missing external human. The override itself does not imply Stage4 PASS.
 
 This file is the cross-chat startup protocol for **German Content Production Kit** and all source workstreams.

@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-three-phase-readiness@0.1.0",
   "date": "2026-10-29",
-  "overall": "PHASE2_NONACTIVE__STAGE4_292_FIRSTPASS_COMPLETE_95_OF_431_SECOND_PASS_336_OPEN__PONS_INHERITED_HOLD_CLOSED__R57_HOLD",
+  "overall": "PHASE2_NONACTIVE__STAGE4_292_FIRSTPASS_195_OF_431_SECOND_PASS__236_UNREVIEWED_AND_1_HOLD__R57_HOLD",
   "phase2_rules": {
     "status": "NONACTIVE_MATRIX_AND_TEN_STREAM_PRECEDENCE_COMPLETE__PROMOTION_NOT_AUTHORIZED",
     "conflict_count": 12,
@@ -16,7 +16,7 @@
     "applicability_streams": 10
   },
   "phase3_enrichment_QA": {
-    "status": "STAGE4_AI_FIRSTPASS_292_COMPLETE_SECOND_PASS_95_OF_431__NOT_FULL_FINAL",
+    "status": "FIRSTPASS_292_COMPLETE_SECOND_PASS_195_DISPOSITIONED_236_NOT_REVIEWED_1_HOLD__STAGE4_NOT_FINAL",
     "script": "Verification/validate_stage3_stage4_unification.py",
     "test": "Verification/tests-v3.3.6/test_stage3_stage4_unification.py",
     "test_count": 16,
@@ -43,11 +43,11 @@
     ],
     "branch_resolution_note": "250 Verben LATEST on main points to source branch 250-verben-mit-praepositionen-kombinationen-repair1-v336 and CHECKPOINT.json on that branch, not main. Resolve branch explicitly for editing.",
     "remaining": [
-      "Firstpass 292 cards complete. Independent secondpass 95 of 431 unique combinations with 336 unresolved review units, so official Stage4 FINAL remains blocked despite user requesting finalization.",
-      "PONS editorial exact German phrase closes old inherited 0243 dictionary-evidence HOLD; evidence limited to German phrase, not Duden or full trilingual attestation.",
-      "Continue 198 other lower-priority curated missing bounded dictionary links and remaining combinations, compare four card examples and all DE/FA/EN values per item, preserve honest holds and no forced external citation quota.",
-      "No Stage5 final acceptance, current v486-R120 real browser import/persistence Stage6, or Stage7 yet. WIP27 production remains immutable unless promotion with exact CAS and full gates.",
-      "R57 raw bytes unverified; no Library/Project deletion; 70 Project-linked A2 files remain protected."
+      "Stage4 firstpass 292 cards completed. Independent secondpass: 195 of 431 unique combinations dispositioned, 236 unreviewed; one of the processed items (usrin-vmp-u-0197: über die eigenen Schwächen siegen) remains a documented idiomaticity HOLD. Do not declare Stage4 FINAL.",
+      "User requested exactly 100 new combinations in first batch and stop: verified batch queue indexes 88–187 (1-based) were reviewed; the next batch begins at 188 and must deduplicate any previously completed items.",
+      "Source-bound current v1.4 is a separate opt-in successor; immutable WIP27 remains primary production authority. External editorial evidence may be scoped but is not a blanket trilingual pass or a forced Duden quota.",
+      "Official Stage5, exact CURRENT v486-R120 real app Stage6 and Stage7 final release remain separate and NOT RUN.",
+      "R57 backup exact SHA readback unavailable: 70 protected Project-linked files must not be deleted."
     ],
     "real_checkpoint_parity": {
       "status": "PASS_SCOPED_READONLY_MECHANICAL_WITH_BLOCKING_MIGRATION_GAPS",
@@ -325,6 +325,32 @@
       "source_and_locked_modified": false,
       "app_ui_modified": false,
       "R57": "HOLD_NO_DELETE_70_PROJECT_LINKED_PROTECTED"
+    },
+    "stage4_batch100_v14": {
+      "status": "PASS_SCOPED_BATCH1_100_REVIEWED_NOT_GLOBAL_STAGE4_PASS",
+      "checkpoint": "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE4-BATCH100-v1.4.json",
+      "outcome": "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE4-BATCH100-OUTCOME-v1.4.json",
+      "parent_WIP27_sha256": "4a5a1ce78594a473528cec97be7a2f30b807f972908ba0bec144ac4b8af87f1f",
+      "parent_latest_git_sha": "859395ff6959d1ac1dc737271de2348b8b619538",
+      "new_secondpass": 100,
+      "unique_card_count_in_batch": 80,
+      "keep_new": 97,
+      "applied_corrections_new": 2,
+      "hold_new": 1,
+      "total_secondpass_unique": 195,
+      "unreviewed_secondpass": 236,
+      "working_v14_tsv_sha256": "017be2274eb52808578f68b5ef53fc00e4b6b7a1c2e302362db3b1e04e962636",
+      "working_v14_gzip_sha256": "1e84ada206a28636472129e7cf58ab097a9e4b979c066611e1b32938cf05777c",
+      "portable_milestone_zip_sha256": "87f519d88e0249a0904f912a8d34b6628b745cd52f9d045bc2bda588bd4f8eb7",
+      "library_zip_stable_id": "libfile_38bb905664888191aa843323fd6b62d4",
+      "qa": "PASS 24/24 adversarial tamper; official vocab PASS 292; HF2 v1.2 PASS 201+91; exact byte Library archive recovery and post-extraction replay",
+      "remaining_hold_card": "usrin-vmp-u-0197",
+      "remaining_hold_expression": "über die eigenen Schwächen siegen",
+      "production_modified": false,
+      "locked_sources_modified": false,
+      "visible_UI_changed": false,
+      "stage5_6_7": "NOT_RUN",
+      "R57": "HOLD_70_PROJECT_LINKED_NO_DELETE"
     }
   },
   "phase4_library": {
@@ -371,7 +397,7 @@
     },
     "r57_last_status": "HOLD_BUT_NOT_PROBED_AGAIN_THIS_TURN; 70_PROJECT_LINKED_PROTECTED; NO_DELETIONS",
     "r57_latest_status_20261028": "UNCHANGED_HOLD__NO_DELETIONS__70_PROJECT_LINKED_PROTECTED",
-    "r57_latest_status_20261029": "HOLD_RAW_READBACK_UNVERIFIED__ZERO_DELETIONS__70_PROJECT_LINKED_PROTECTED"
+    "r57_latest_status_20261029": "HOLD_R57_RAW_SHA_UNVERIFIED__ZERO_DELETIONS"
   },
   "invariants": [
     "do not change current app runtime or UI",

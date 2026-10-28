@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-three-phase-readiness@0.1.0",
-  "date": "2026-10-28",
-  "overall": "PHASE2_NONACTIVE__STAGE4_292_FIRSTPASS_COMPLETE_431_REVERSE_RISK_13_ADJUDICATED__6_BOUNDED_DUDEN_REFS__GLOBAL_STAGE4_OPEN__R57_HOLD",
+  "date": "2026-10-29",
+  "overall": "PHASE2_NONACTIVE__STAGE4_292_FIRSTPASS_COMPLETE_35_OF_431_UNIQUE_SECOND_PASS__396_OPEN__R57_HOLD",
   "phase2_rules": {
     "status": "NONACTIVE_MATRIX_AND_TEN_STREAM_PRECEDENCE_COMPLETE__PROMOTION_NOT_AUTHORIZED",
     "conflict_count": 12,
@@ -16,7 +16,7 @@
     "applicability_streams": 10
   },
   "phase3_enrichment_QA": {
-    "status": "STAGE4_AI_FIRST_PASS_292_COMPLETE__431_SECOND_PASS_13_SCOPED_DISPOSITIONS_418_OPEN__NOT_FULL_PASS",
+    "status": "STAGE4_FIRSTPASS_292_COMPLETE_SECOND_PASS_35_OF_431__NOT_GLOBAL_ACCEPTED",
     "script": "Verification/validate_stage3_stage4_unification.py",
     "test": "Verification/tests-v3.3.6/test_stage3_stage4_unification.py",
     "test_count": 16,
@@ -43,11 +43,11 @@
     ],
     "branch_resolution_note": "250 Verben LATEST on main points to source branch 250-verben-mit-praepositionen-kombinationen-repair1-v336 and CHECKPOINT.json on that branch, not main. Resolve branch explicitly for editing.",
     "remaining": [
-      "Proceed from the 27 high-priority curated candidate items in v1.1 risk queue, then 258 other curated. This is a nonsemantic heuristic prioritization of 285, not 285 individually approved; full independent Stage4 still open.",
-      "Six narrowly scoped dictionary anchors support inherited German subframes only. The one held inherited expression at 243 still needs editorial source attestation or a separately documented linguistic disposition.",
-      "285 curated combinations have no bounded external dictionary reference; such references are not automatically required and missing them never implies an item must be deleted. Prioritize actual DE/FA/EN semantic, Rektion, teaching delta and learner-value risks.",
-      "Production authority remains exact WIP27; app v486-R120 Stage6 integration and separate Stage5/Stage7 gates are NOT RUN. No prompt or visual UI change.",
-      "R57 exact raw-byte recovery unavailable; all 70 Project-linked A2 files are protected. No deletions."
+      "292-card initial review complete; independent risk second pass 35 unique of 431, 396 still unreviewed. Continue 258 lower-priority curated plus remaining broader contexts, preserving one inherited attestation HOLD.",
+      "Do not double-count previously accepted overlap items: five of the 27 high-priority queue items were already dispositioned in v1.1.",
+      "The PONS editorial search index shows einen Vergleich anstellen but full page fetch was denied 403; inherited Duden evidence HOLD at 243 not silently certified.",
+      "Use exact v1.2 compressed editable successor, not production main WIP27, until global Stage4 acceptance and approved CAS/consumer compatibility; preserve 201 HF2 governed fields and 431 visible combinations.",
+      "Stage5 current runtime v486-R120 Stage6 and Stage7 must be separately executed; R57 remains HOLD, 70 Project-linked files protected, no Library deletions."
     ],
     "real_checkpoint_parity": {
       "status": "PASS_SCOPED_READONLY_MECHANICAL_WITH_BLOCKING_MIGRATION_GAPS",
@@ -266,6 +266,33 @@
         "queue_gzip_sha256": "66422a0aea19af698b15eb6f57e70b739215a1ae0c1d10cea91b2900ccd41e51",
         "scope": "Reproducible risk order, not Stage4 linguistic PASS"
       }
+    },
+    "stage4_v12": {
+      "status": "SCOPED_HIGH_PRIORITY_REVIEW_PASS__GLOBAL_STAGE4_IN_PROGRESS",
+      "reference": "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE4-HIGHPRIORITY-27-v1.2.json",
+      "outcome": "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE4-RISK-OUTCOME-v1.2.json",
+      "exact_parent_WIP27_sha256": "4a5a1ce78594a473528cec97be7a2f30b807f972908ba0bec144ac4b8af87f1f",
+      "production_latest_blob_sha": "859395ff6959d1ac1dc737271de2348b8b619538",
+      "successor_tsv_sha256": "082d3e578dc1d1b608371e206679e01d3d99f3c35e8cd24909b3dab2dc414acd",
+      "successor_gzip_sha256": "72136d3d42f0c3bed311e936d97160cc64757d818b5a198ce1ca7a514bde0f65",
+      "successor_library_id": "libfile_a34e65417a548191b144b6378b6ea230",
+      "new_unique_secondpass": 22,
+      "prior_overlap_reused": 5,
+      "unique_total": 35,
+      "unreviewed_remaining": 396,
+      "one_inherited_evidence_hold": true,
+      "edits_on_card_ids": [
+        "usrin-vmp-u-0029",
+        "usrin-vmp-u-0044"
+      ],
+      "full_stage4": "NOT_ACCEPTED",
+      "neutral": "PASS_292",
+      "hf2": "PASS_201_GOVERNED_91_ORDINARY_CONTENT_ONLY",
+      "negative_tests": "18_OF_18_DETECTED",
+      "roundtrip": "PASS_SHA_AND_BYTE_EQUAL",
+      "production_modified": false,
+      "source_locked_ui_unchanged": true,
+      "stage5_6_7": "NOT_RUN"
     }
   },
   "phase4_library": {
@@ -311,7 +338,8 @@
       "recoverability_verified": false
     },
     "r57_last_status": "HOLD_BUT_NOT_PROBED_AGAIN_THIS_TURN; 70_PROJECT_LINKED_PROTECTED; NO_DELETIONS",
-    "r57_latest_status_20261028": "UNCHANGED_HOLD__NO_DELETIONS__70_PROJECT_LINKED_PROTECTED"
+    "r57_latest_status_20261028": "UNCHANGED_HOLD__NO_DELETIONS__70_PROJECT_LINKED_PROTECTED",
+    "r57_latest_status_20261029": "HOLD_UNCHANGED_RAW_BACKUP_UNVERIFIED_NO_DELETIONS"
   },
   "invariants": [
     "do not change current app runtime or UI",

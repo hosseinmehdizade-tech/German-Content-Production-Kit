@@ -1,0 +1,44 @@
+{
+  "schema": "gcpk-stage34-curated-unbounded-risk-triage@1.1.0",
+  "date": "2026-10-28",
+  "status": "FULL_285_HEURISTIC_RISK_QUEUE_TRIAGED__NO_SEMANTIC_APPROVAL",
+  "data_source_tsv_sha256": "836cc8b4c74f19e235b08af38f96d2c0e4070b312265866e483a8218e6115654",
+  "production_WIP27_sha256": "4a5a1ce78594a473528cec97be7a2f30b807f972908ba0bec144ac4b8af87f1f",
+  "counts": {
+    "total_visible": 431,
+    "curated": 414,
+    "curated_with_bounded_Duden": 129,
+    "curated_without_bounded_Duden": 285,
+    "all_285_queued": 285,
+    "priority_score_ge_3": 27,
+    "other_queued": 258
+  },
+  "signals": {
+    "standard_reverse_review": 164,
+    "governed_frame_recheck": 87,
+    "independent_idiom_NVV_recheck": 34,
+    "near_example_overlap": 17
+  },
+  "reader_warning": "Signal counters overlap; 27 high-priority candidates are NOT 27 verified linguistic mistakes; no card was automatically approved or deleted.",
+  "queue": {
+    "filename": "CURATED-285-PRIORITIZED-RISK-QUEUE-v1.1.json.gz",
+    "sha256": "66422a0aea19af698b15eb6f57e70b739215a1ae0c1d10cea91b2900ccd41e51",
+    "library_id": "libfile_898472c9f9d48191a7b4eea29d0c0601",
+    "readback": "PASS_RAW_BYTE_EQUAL_SHA256_AND_285_CANDIDATE_COUNT"
+  },
+  "reproducer": {
+    "filename": "curated_risk_triage_v11.py",
+    "sha256": "356d9de6529827d58c57eae968d2686e10f4f5ecb12ebafdc1def884513261ff",
+    "library_id": "libfile_676e2c7d00388191acd473cc27a95ec4"
+  },
+  "scope": "Deterministic prioritization only. Linguistic quality requires independent human/AI semantic context review of German, Persian, English, governed frame and didactic teaching_delta.",
+  "remaining": "Review high-priority 27 before standard remaining; individually adjudicate all 285 curated without assuming Duden required. Continue 1 inherited evidence HOLD at 243.",
+  "invariants": {
+    "main_stream_unchanged": true,
+    "original_PDF_unchanged": true,
+    "LOCKED_unchanged": true,
+    "app_UI_unchanged": true,
+    "stage5_6_7": "NOT_RUN",
+    "R57": "HOLD_NO_DELETE"
+  }
+}

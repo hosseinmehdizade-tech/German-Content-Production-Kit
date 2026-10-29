@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OP05_SAMPLED_INVENTORY__NO_HASH_VERIFIED_NO_DELETE",
+  "state": "ACTIVE_OP05_EXPANDED_METADATA_AUDIT__HASH_ACCESS_BLOCKED",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -63,10 +63,10 @@
     {
       "id": "OP-05",
       "title": "Library storage baseline and safe deduplication",
-      "status": "IN_PROGRESS_SAMPLED_STORAGE_INVENTORY__RAW_HASH_ACCESS_BLOCKED",
-      "last_evidence": "Library list scoped recursive sort=size descending: 5 pages per target, sampled 2026-10-29; raw-byte materialize returned no authorized backing for 4 requested large files",
-      "next_action": "Finish complete folder pagination inventory where feasible; obtain authorized exact raw bytes or trusted per-file SHA-256 readback for candidate matches; map current/LOCKED/recovery dependencies. Never delete based on filename/size alone.",
-      "blocker": "Library materialize of listed 2x213,216,245-byte ZIP and 2x113,754,051-byte RAR files returned authorized raw-byte path unavailable. Exact hash match unproven. Deletion requires separate approval."
+      "status": "IN_PROGRESS_EXPANDED_INVENTORY__HASH_AND_RECOVERY_PROOF_BLOCKED",
+      "last_evidence": "Live Library recursive size-sorted listings, 8 pages each for /Flasch kart and /German-Content-Production-Kit/Checkpoints, 2026-10-29; source registry and B1 24-lesson release receipts crosschecked.",
+      "next_action": "Resume with independently authorized Library raw-byte hash/readback for top candidate IDs and current snapshot dependency graph; distinguish registered grammar source PDF SHA from new uploaded PDF. No deletion based on metadata.",
+      "blocker": "Library native files cannot be materialized as exact raw bytes in this Project; original uploaded audio/PDF bytes were hashable but do not prove same-byte identity of two Library records. Library recheck and explicit per-file deletion approval required."
     },
     {
       "id": "OP-06",
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-05",
-  "next_exact_action": "OP-05 next: complete pagination, resolve Library byte/hash access blocker, and compare SHA-256 for candidate duplicate pairs; protect CURRENT and source. No delete until verified recovery and user approval.",
+  "next_exact_action": "Get direct SHA-256 for both Library copies of 213216245-byte B1 ZIP and 113754051-byte RAR (or independently verified archived bytes); preserve canonical B1 source/release and grammar source variants. Then resolve dependencies and ask before deletion.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -113,11 +113,11 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP05-1-LIVE-LIBRARY-METADATA-2026-10-29",
-    "scope": "Two largest Library trees sampled (5 pages each) plus two bounded current/checkpoint folders",
-    "result": "PARTIAL_INVENTORY__HASH_ACCESS_BLOCKED__NO_DELETE",
-    "tests": "Live Library listings and exact file IDs observed; 4 raw materialize attempts returned no authorized raw bytes",
-    "not_claimed": "No exhaustive total size, no exact duplicate proof, no data deleted, no measured reclaimed storage"
+    "id": "OP05-2-LIBRARY-EXPANDED-INVENTORY-2026-10-29",
+    "scope": "Expanded disjoint folder samples and cross-referenced 213MB B1 release, 113MB audio source, grammar source registry",
+    "result": "PARTIAL_INVENTORY_EXTENDED__CANONICAL_B1_AND_SOURCE_PROTECTION_IDENTIFIED__EXACT_DUPLICATE_BYTES_UNPROVEN",
+    "tests": "Live metadata counts, GIT B1 release receipts, source hash rechecked locally; no native Library raw readback available",
+    "not_claimed": "No exhaustive global Library size, no confirmed duplicate deletion, no exact-byte readback for both Library copies, no change to source or LOCKED"
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -263,25 +263,25 @@
   "library_audit": {
     "schema": "gfp-op05-inventory@1",
     "date": "2026-10-29",
-    "kind": "SAMPLED_LIVE_LIBRARY_METADATA__NOT_COMPLETE",
-    "method": "files.list(surface=library,recursive=true,sort=size desc,limit=500), 5 pages per folder; pagination still open",
+    "kind": "EXPANDED_LIVE_LIBRARY_METADATA__UNFINISHED_PAGINATION",
+    "method": "files.list(surface=library,recursive=true,sort=size DESC): 8 pages per largest tree, each 200 entries; aggregate byte totals are partial lower bounds and not full Library storage usage",
     "folders": [
       {
         "path": "/Flasch kart",
-        "pages_scanned": 5,
-        "file_count_scanned": 987,
-        "bytes_scanned": 10256471687,
-        "zip_rar_7z_count_scanned": 882,
-        "zip_rar_7z_bytes_scanned": 8742389637,
+        "pages_scanned": 8,
+        "file_count_scanned": 1587,
+        "bytes_scanned": 11302020613,
+        "zip_rar_7z_count_scanned": 1397,
+        "zip_rar_7z_bytes_scanned": 9649798802,
         "more_pages": true
       },
       {
         "path": "/German-Content-Production-Kit/Checkpoints",
-        "pages_scanned": 5,
-        "file_count_scanned": 1000,
-        "bytes_scanned": 2297666869,
-        "zip_rar_7z_count_scanned": 987,
-        "zip_rar_7z_bytes_scanned": 2279821848,
+        "pages_scanned": 8,
+        "file_count_scanned": 1600,
+        "bytes_scanned": 2372345281,
+        "zip_rar_7z_count_scanned": 1521,
+        "zip_rar_7z_bytes_scanned": 2348702520,
         "more_pages": true
       },
       {
@@ -296,6 +296,41 @@
         "pages_scanned": 1,
         "file_count_scanned": 76,
         "bytes_scanned": 16384427,
+        "more_pages": false
+      },
+      {
+        "path": "/German-Content-Production-Kit/Final",
+        "pages_scanned": 1,
+        "file_count_scanned": 3,
+        "bytes_scanned": 276995183,
+        "more_pages": false
+      },
+      {
+        "path": "/German-Content-Production-Kit/Protected-History",
+        "pages_scanned": 1,
+        "file_count_scanned": 5,
+        "bytes_scanned": 1944790,
+        "more_pages": false
+      },
+      {
+        "path": "/German-Content-Production-Kit/Recovery",
+        "pages_scanned": 1,
+        "file_count_scanned": 17,
+        "bytes_scanned": 26504345,
+        "more_pages": false
+      },
+      {
+        "path": "/German-Content-Production-Kit/Releases",
+        "pages_scanned": 1,
+        "file_count_scanned": 2,
+        "bytes_scanned": 32308690,
+        "more_pages": false
+      },
+      {
+        "path": "/German-Flashcards-Pro/Acceptance-Kits",
+        "pages_scanned": 1,
+        "file_count_scanned": 7,
+        "bytes_scanned": 12638846,
         "more_pages": false
       }
     ],
@@ -361,6 +396,45 @@
         "sha256": "5005d753d9f40474b6ffbcd11ac41a2cb5a7bd61cebef114434141465bd77a49",
         "proof": "LOCAL_UPLOADED_FILE_ONLY_NOT_INDEPENDENT_LIBRARY_READBACK"
       }
-    ]
+    ],
+    "name_normalization_scope": {
+      "path": "/Flasch kart",
+      "scanned_files": 1587,
+      "possible_duplicate_name_groups_over_1mb": 160,
+      "normalization": "casefold basename, strip a single trailing (1)..(5) before extension",
+      "rule": "A grouped name does not prove identical bytes; mismatching sizes prove files are not byte-identical."
+    },
+    "candidate_protection_crosscheck": [
+      {
+        "group": "B1_AUDIO_COMPANION_213MB",
+        "reported_release_sha256": "bada18c9ca05b99a5504e9fee7d2db7daf1b7367cc8b0065940c76c3f0fd93bb",
+        "git_receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-24-LESSON-CONTENT-RELEASE-LATEST.json",
+        "status": "PROTECT_PRIMARY_RELEASE_AND_ALL_COPIES_PENDING_DIRECT_LIBRARY_SHA",
+        "drive_backup": "Git receipt records 13-part exact-byte backup, not independently rechecked this turn"
+      },
+      {
+        "group": "MENSCHEN_FULL_AUDIO_RAR_113MB",
+        "sha256_user_uploaded_current_file": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+        "matches_git_source_original_rar_sha256": true,
+        "git_receipt": "Workspaces/menschen-b1-24-lessons-v336/B1-24-LESSON-CONTENT-RELEASE-LATEST.json",
+        "status": "PROTECT_SOURCE_AUDIO__LIBRARY_COUNTERPART_NOT_HASH_VERIFIED"
+      },
+      {
+        "group": "GRAMMATIK_A1_B1_PDF",
+        "uploaded_file_sha256": "5005d753d9f40474b6ffbcd11ac41a2cb5a7bd61cebef114434141465bd77a49",
+        "git_registered_source_sha256": "aeb7625f628105204590b20870a03e92648d49366d12b478412228c8078e4207",
+        "status": "SOURCE_VERSION_DISCREPANCY__DO_NOT_DELETE_OR_SILENTLY_SUBSTITUTE",
+        "note": "Grammatik Aktiv A1-B1(2).pdf has a distinct size 84542255 versus the user-uploaded (1) at 84526831; this is not proof of corruption"
+      },
+      {
+        "group": "B1_24_SINGLE_COLLECTION_208MB",
+        "git_registered_archive_sha256": "beb58edd5ed5214c976ab92db6b7b081ac49290762f379d8fa5038a38ea501cb",
+        "git_exact_library_readback_for_distinct_registered_id": "libfile_edb21796e110819192cfd8b69797dc82",
+        "git_receipt": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-24-20261026-SINGLE-COLLECTION-SOURCE-KEY-FIX.json",
+        "status": "PROTECT_REGISTERED_CURRENT_CONTENT_COPY__UNREADABLE_OTHER_COPIES"
+      }
+    ],
+    "not_deletion_proof": "Git receipt sha256 for an intended archive and exact file size in a Library listing do not authenticate every Library copy. Do not infer two different library_file_id copies have identical bytes.",
+    "next_proof": "Library raw-byte readback or authorized export per exact library_file_id + fresh ID/path check, SHA-256 pair match, dependency/keeper proof, explicit deletion approval."
   }
 }

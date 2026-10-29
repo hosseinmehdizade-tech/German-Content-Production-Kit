@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/audit_a2_l24_stage123_lineage.py'
+      - 'Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py'
       - 'Verification/validate_stage3_stage4_unification.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
@@ -14,6 +16,8 @@ on:
   pull_request:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/audit_a2_l24_stage123_lineage.py'
+      - 'Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py'
       - 'Verification/validate_stage3_stage4_unification.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
@@ -43,6 +47,8 @@ jobs:
         run: python Verification/validate_stage3_stage4_unification.py
       - name: Exercise fail-closed Stage3/Stage4 proposal contract
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage3_stage4_unification.py
+      - name: Exercise source/card/provenance tamper fixtures without user ZIP
+        run: python -m pytest -q Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only

@@ -245,3 +245,21 @@ def test_deeply_nested_json_returns_blocked_not_exception(built):
     )
     assert result["status"] == "BLOCKED"
     assert "AUTHORITY_SIDECAR_INVALID_JSON" in result["errors"]
+
+
+@pytest.mark.parametrize("mutation", ["missing-schema", "wrong-schema", "false-count", "hidden-error"])
+def test_forged_input_scan_pass_status_without_exact_scanner_envelope_blocks(built, mutation):
+    """Direct verify API cannot accept a bare self-declared PASS selection."""
+    document = sidecar(built)
+    candidate = copy.deepcopy(scan_input(built["input_dir"]))
+    if mutation == "missing-schema":
+        candidate.pop("schema")
+    elif mutation == "wrong-schema":
+        candidate["schema"] = "forged-other-scan@1"
+    elif mutation == "false-count":
+        candidate["candidate_counts"]["direct-import-tsv"] = 2
+    else:
+        candidate["errors"] = ["UNSAFE_ROLE_CANDIDATE:untrusted.tsv"]
+    result = assess(built, document, selected_inputs=candidate)
+    assert result["status"] == "BLOCKED"
+    assert "INPUT_ROLE_PREFLIGHT_NOT_PASS" in result["errors"]

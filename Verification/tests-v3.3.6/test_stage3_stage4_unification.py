@@ -196,3 +196,59 @@ def test_matrix_rejects_circular_self_requirement():
     c01 = next(c for c in matrix["conflicts"] if c["id"] == "C01")
     c01["requires"].append("C01")
     assert any("invalid required predecessor" in x for x in m.validate_dependency_edges(matrix))
+
+
+def _precedence_pair():
+    return m.load(m.BASE / m.MATRIX), m.load(m.BASE / m.PRECEDENCE)
+
+
+def test_precedence_opt_in_only_and_currentness_guard():
+    matrix, adoption = _precedence_pair()
+    assert m.validate_precedence_adoption(matrix, adoption) == []
+    assert adoption["status"] == "NONACTIVE_VERSIONED_OPT_IN"
+    assert adoption["currentness_resolution"]["never_assume_version_from_draft"]
+    assert len(adoption["applicability"]) == 10
+
+
+def test_precedence_rejects_accidental_promotion():
+    matrix, adoption = _precedence_pair()
+    adoption["status"] = "ACTIVE"
+    adoption["rollout_state"] = "PRODUCTION"
+    assert any("promoted" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def test_precedence_rejects_unknown_or_missing_conflict():
+    matrix, adoption = _precedence_pair()
+    adoption["preserved_conflicts"].remove("C12")
+    assert any("dropped" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def test_precedence_rejects_stage5_6_7_bypass_or_ui_change():
+    matrix, adoption = _precedence_pair()
+    adoption["compatibility"]["stage5_6_7"] = "OPTIONAL"
+    adoption["compatibility"]["ui"] = "REDESIGN"
+    assert any("weakens" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def test_precedence_rejects_stale_authority_default():
+    matrix, adoption = _precedence_pair()
+    adoption["currentness_resolution"]["never_assume_version_from_draft"] = False
+    assert any("stale authority" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def test_precedence_rejects_incomplete_ten_stream_map():
+    matrix, adoption = _precedence_pair()
+    adoption["applicability"] = adoption["applicability"][:-1]
+    assert any("ten scoped" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def test_precedence_rejects_unapproved_migration():
+    matrix, adoption = _precedence_pair()
+    adoption["promotion_requirements"] = ["Stage5/6/7 separate gates"]
+    assert any("missing migration approval" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def test_precedence_rejects_mismatched_graph_edge_count():
+    matrix, adoption = _precedence_pair()
+    adoption["dependency_graph_integrity"]["edges"] = 9
+    assert any("dependency counts" in x for x in m.validate_precedence_adoption(matrix, adoption))

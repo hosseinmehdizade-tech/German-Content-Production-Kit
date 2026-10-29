@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/validate_stage3c_proof_binding.py'
+      - 'Verification/tests-v3.3.6/test_stage3c_proof_binding.py'
       - 'Verification/audit_a2_l24_archived_proof_and_combos.py'
       - 'Verification/tests-v3.3.6/test_a2_l24_archived_proof_and_combos.py'
       - 'Verification/audit_a2_l24_stage123_lineage.py'
@@ -18,6 +20,8 @@ on:
   pull_request:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/validate_stage3c_proof_binding.py'
+      - 'Verification/tests-v3.3.6/test_stage3c_proof_binding.py'
       - 'Verification/audit_a2_l24_archived_proof_and_combos.py'
       - 'Verification/tests-v3.3.6/test_a2_l24_archived_proof_and_combos.py'
       - 'Verification/audit_a2_l24_stage123_lineage.py'
@@ -55,6 +59,8 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py
       - name: Exercise multi-archive SHA and 64-item shadow didactic QA fixtures
         run: python -m pytest -q Verification/tests-v3.3.6/test_a2_l24_archived_proof_and_combos.py
+      - name: Exercise prospective nonactive Stage3C multi-kind exact evidence binding
+        run: python -m pytest -q Verification/tests-v3.3.6/test_stage3c_proof_binding.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only

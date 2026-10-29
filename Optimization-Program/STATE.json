@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OP05_METADATA_SCREEN_PASSES__LIBRARY_DUPLICATE_PROOF_BLOCKED",
+  "state": "ACTIVE_OP06_NONUI_CI_PILOT_RUNNING__OP05_LIBRARY_HASH_HOLD",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -63,17 +63,17 @@
     {
       "id": "OP-05",
       "title": "Library storage baseline and safe deduplication",
-      "status": "IN_PROGRESS_METADATA_SCREEN_CI_PASS__DIRECT_LIBRARY_HASH_BLOCKED",
+      "status": "ON_HOLD_INDEPENDENT_LIBRARY_COPY_SHA_UNAVAILABLE",
       "last_evidence": "2026-10-29 full raw Drive 13-part SHA256 PASS; verified 8-page library name/size screen + four negative tests in CI run 40799073055 (Ubuntu/Windows PASS)",
-      "next_action": "Obtain authorized raw readback or credible checksum receipts for both exact Library IDs of top candidate files; check LATEST/LOCKED/source and recovery before presenting any deletion proposal. Avoid repeated full inventory scans until raw access is resolved.",
-      "blocker": "Native ChatGPT Library file bytes not available for independently hashing two distinct Library copies. Equal names, sizes, or external backup SHA do not prove exact Library duplicates; approval also required."
+      "next_action": "Revisit only with authorized direct Library bytes, file-ID-bound receipt, or supported hash readback; no repeat metadata rescans; no deletions absent exact proof and explicit approval.",
+      "blocker": "Two separate native Library copies cannot be independently hashed with current authorized Library access; verified Drive backup does not authenticate either Library copy."
     },
     {
       "id": "OP-06",
       "title": "Flashcards CURRENT runtime and engineering efficiency",
-      "status": "PLANNED_NO_RUNTIME_CHANGE",
-      "last_evidence": "German-Flashcards-Pro PROJECT-STATE.json v486-R120",
-      "next_action": "Define measurable runtime workflow/QA build overhead and choose a bounded non-UI regression-safe pilot",
+      "status": "IN_PROGRESS_NON_UI_CI_BROWSER_CACHE_PILOT__FULL_GATE_RUNNING",
+      "last_evidence": "Flashcards Pro workflow 539aaf02197d4b006142cf72b296a8659227df39; CI 40801533977 RUNNING, 3 new contract cases completed, full CURRENT gate in progress",
+      "next_action": "Confirm current engineering CI PASS and browser-cache published; later measure warm-cache hit and compare durations with baseline before claiming time saved. No runtime/UI changes.",
       "blocker": null
     },
     {
@@ -85,8 +85,8 @@
       "blocker": null
     }
   ],
-  "active_priority": "OP-05",
-  "next_exact_action": "Obtain authorized raw readback or credible checksum receipts for both exact Library IDs of top candidate files; check LATEST/LOCKED/source and recovery before presenting any deletion proposal. Avoid repeated full inventory scans until raw access is resolved.",
+  "active_priority": "OP-06",
+  "next_exact_action": "Confirm app current-engineering CI 40801533977, then evaluate cache hit and stage scoped OP06 result without altering app runtime or UI; OP05 stays held until Library-byte access.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -493,5 +493,39 @@
       "authorizes_deletion": false,
       "rule": "Matching basename and byte count only create HASH_AND_DEPENDENCY_CHECK holds; protected folders are not mixed; unequal sizes are NOT_BYTE_IDENTICAL."
     }
+  },
+  "op06_ci_baseline": {
+    "workflow": "German-Flashcards-Pro/.github/workflows/current-engineering.yml",
+    "measurement": "GitHub workflow created_at to updated_at; includes queue, not strictly CPU/runner wall time",
+    "prior_successful_run_ids": [
+      40795118904,
+      40793075400,
+      40790717808,
+      40555471670,
+      40533703498,
+      40528963748,
+      40322971391
+    ],
+    "prior_successful_run_minutes": [
+      5.27,
+      4.98,
+      6.97,
+      5.95,
+      5.65,
+      14.25,
+      4.68
+    ],
+    "pre_pilot_median_minutes": 5.65,
+    "cold_cache_key": "${{ runner.os }}-gfp-playwright-chromium-1.62.1-v1",
+    "current_commit": "539aaf02197d4b006142cf72b296a8659227df39",
+    "current_run": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40801533977",
+    "no_gate_skipped": true,
+    "new_contract_test_count": 3,
+    "performance_improvement_proven": false,
+    "code_scope": [
+      ".github/workflows/current-engineering.yml",
+      "03-Tests/test_current_engineering_ci_contract.py"
+    ],
+    "preservation": "Only CI infrastructure and static test changed; RUNTIME-AUTHORITY-PIN.json v486-R120 unchanged; no 01-App runtime and no visible UI changes."
   }
 }

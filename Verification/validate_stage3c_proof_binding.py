@@ -112,8 +112,8 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
         return data
 
     candidate = contract.get("candidate_archive_id")
-    if candidate not in archive_meta:
-        error("CANDIDATE_ARCHIVE_UNPINNED")
+    if not isinstance(candidate, str) or candidate not in archive_meta:
+        return {"status": "BLOCKED", "errors": errors + ["CANDIDATE_ARCHIVE_UNPINNED"]}
     completeness = contract.get("completeness")
     if not isinstance(completeness, dict):
         return {"status": "BLOCKED", "errors": errors + ["COMPLETENESS_LOCATOR_REQUIRED"]}
@@ -154,6 +154,9 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
         error("EDITORIAL_SUMMARY_SHA_MALFORMED")
     def reference_archive_sha(ref: dict, id_key: str, sha_key: str) -> str | None:
         aid = ref.get(id_key)
+        if not isinstance(aid, str):
+            error("EVIDENCE_ARCHIVE_ID_MALFORMED")
+            return None
         if aid == candidate:
             # Whole ZIP SHA cannot be embedded within that same ZIP: use the
             # external exact-sha sidecar and disallow circular in-ZIP digest.
@@ -193,7 +196,8 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
             if state == "CLOSED_NO_FORCE" and not (cell.get("reason_code") or cell.get("stage3c_review_note")):
                 error("CLOSED_NO_FORCE_WITHOUT_REASON")
             for ref in refs:
-                if not isinstance(ref, dict) or ref.get("kind") not in KINDS:
+                if (not isinstance(ref, dict) or
+                        not isinstance(ref.get("kind"), str) or ref["kind"] not in KINDS):
                     error("UNKNOWN_EVIDENCE_KIND"); continue
                 kind = ref["kind"]
                 counts["refs_" + kind.lower()] += 1
@@ -239,7 +243,9 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
                             source_hash != source.get("archive_sha256") or
                             ref.get("source_member_sha256") != source.get("sha256")):
                         error("SOURCE_REFERENCE_NOT_ARCHIVE_BOUND")
-                    item = occurrences.get(ref.get("source_occurrence_id"))
+                    occurrence_id = ref.get("source_occurrence_id")
+                    item = (occurrences.get(occurrence_id)
+                            if isinstance(occurrence_id, str) else None)
                     if item is None:
                         error("SOURCE_OCCURRENCE_NOT_FOUND"); continue
                     if (item.get("source_id") != ref.get("source_id") or

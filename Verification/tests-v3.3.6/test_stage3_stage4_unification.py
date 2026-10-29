@@ -302,3 +302,106 @@ def test_stage7_private_does_not_imply_runtime_promotion():
     a, b, c = _stage56_receipts()
     c["overall"] = "STAGE6_USER_CONFIRMED_PASS__STAGE7_PRIVATE_SINGLE_ZIP_PASS"
     assert any("runtime promotion" in x for x in m.validate_stage56_evidence_chain(a, b, c))
+
+
+# OP-02: historical 250 Verben v1.7 metadata cross-evidence parity only.
+# These are independent source records, not live browser or ZIP byte replay.
+def _private_stage5to7_receipts():
+    prefix = "Architecture/Stage3-Stage4-Unification/"
+    names = (
+        "250-VERBEN-STAGE5-CONTENT-DELIVERY-v1.7.json",
+        "250-VERBEN-STAGE7-PRIVATE-RELEASE-v1.7.json",
+        "250-VERBEN-STAGE6-V486-R120-BOUNDARY-v1.7.json",
+        "250-VERBEN-STAGE6-USER-CONFIRMED-v1.7-2026-10-29.json",
+        "PHASE-2-3-4-READINESS-v0.1.json",
+        "250-VERBEN-STAGE5-OUTCOME-v1.7.json",
+        "250-VERBEN-STAGE7-OUTCOME-v1.7.json",
+    )
+    return [m.load(m.BASE / (prefix + name)) for name in names]
+
+
+def _private_lineage_errors(*docs):
+    return m.validate_stage5to7_private_lineage(*docs)
+
+
+def test_stage5to7_private_lineage_exact_independent_receipt_consistency():
+    assert _private_lineage_errors(*_private_stage5to7_receipts()) == []
+
+
+def test_stage5to7_rejects_content_package_hash_drift():
+    a = _private_stage5to7_receipts()
+    a[3]["target_identity"]["stage5_content_zip_sha256"] = "f" * 64
+    assert any("Stage5 package" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_stage4_stage5_import_hash_drift():
+    a = _private_stage5to7_receipts()
+    a[0]["lineage"]["current_stage5_import_tsv_sha256"] = "f" * 64
+    assert any("Stage4-approved import TSV" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_wrong_historical_production_parent():
+    a = _private_stage5to7_receipts()
+    a[1]["authorities"]["original_WIP27_zip_sha256"] = "f" * 64
+    assert any("preserved production WIP27" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_pdf_source_provenance_mismatch():
+    a = _private_stage5to7_receipts()
+    a[1]["authorities"]["original_source_pdf_sha256"] = "f" * 64
+    assert any("registered original PDF" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_canonical_source_provenance_mismatch():
+    a = _private_stage5to7_receipts()
+    a[0]["lineage"]["registered_canonical_source_sha256"] = "f" * 64
+    assert any("registered canonical source" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_runtime_hash_mismatch():
+    a = _private_stage5to7_receipts()
+    a[1]["authorities"]["original_current_app_zip_sha256"] = "f" * 64
+    assert any("same exact historical app" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_final_zip_outcome_identity_mismatch():
+    a = _private_stage5to7_receipts()
+    a[6]["persistence"]["release_zip_sha256"] = "f" * 64
+    assert any("private Stage7 release ZIP" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_stale_stage5_outcome_package():
+    a = _private_stage5to7_receipts()
+    a[5]["persistence"]["package_sha256"] = "f" * 64
+    assert any("Stage5 package" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_forged_automated_browser_evidence():
+    a = _private_stage5to7_receipts()
+    a[1]["gates"]["stage6"] = "PASS_AUTOMATED_CHROMIUM_EIGHT_OF_EIGHT"
+    assert any("USER REPORTED" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_public_pdf_rights_claim():
+    a = _private_stage5to7_receipts()
+    a[1]["boundaries"]["source_pdf_in_final_zip"] = True
+    a[6]["boundaries"]["public_redistribution_rights"] = "AUTHORIZED"
+    assert any("private-only licensing" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_unsafe_runtime_mutation():
+    a = _private_stage5to7_receipts()
+    a[1]["coverage"]["visible_UI_changed"] = True
+    assert any("mutation or runtime promotion" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_dropped_manifest_member():
+    a = _private_stage5to7_receipts()
+    a[4]["phase3_enrichment_QA"]["stage7_private_release_v17"]["manifest_verified"] = 182
+    assert any("package inventory" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage5to7_rejects_different_workstream_claim():
+    a = _private_stage5to7_receipts()
+    a[1]["workstream"] = "another-workstream"
+    assert any("mismatched source workstream" in e for e in _private_lineage_errors(*a))

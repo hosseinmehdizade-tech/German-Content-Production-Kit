@@ -246,9 +246,6 @@ def test_duplicate_json_keys_fail_closed():
 
 
 def test_stage4_empty_card_cannot_appear_with_unrequested_combo():
-    assert_rejected(lambda a, b, c: change_projected_first(
-        c, lambda f: f.update(kombinationen=[card_item("invented")])),
-        "STAGE45_COMBINATION_OR_METADATA_DRIFT") if False else None
     a, b, c = fixture()
     c[1]["custom_fields"] = json.dumps({"presentation_contract": "gfp-vocabulary-neutral@1",
                                          "kombinationen":[card_item("invented")]})

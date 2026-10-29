@@ -14,7 +14,7 @@ from pathlib import Path
 import re
 import sys
 
-from audit_stage5_input_role_binding import ROLES, scan_input, verify_postbuild
+from audit_stage5_input_role_binding import SCHEMA as INPUT_SCAN_SCHEMA, ROLES, scan_input, verify_postbuild
 from audit_stage5_clean_zip_v486 import _read_safe_zip, SHA_LINE
 
 SCHEMA = "gcpk-op02-stage5-current-role-authority@1"
@@ -144,7 +144,10 @@ def verify(
     else:
         selected = selected_inputs.get("roles") if isinstance(selected_inputs, dict) else None
         if (not isinstance(selected_inputs, dict) or
-                selected_inputs.get("status") != "PASS_SCOPED_SINGLE_CANDIDATE_INPUT_ONLY"):
+                selected_inputs.get("schema") != INPUT_SCAN_SCHEMA or
+                selected_inputs.get("status") != "PASS_SCOPED_SINGLE_CANDIDATE_INPUT_ONLY" or
+                selected_inputs.get("errors") != [] or
+                selected_inputs.get("candidate_counts") != {role: 1 for role in ROLES}):
             errors.append("INPUT_ROLE_PREFLIGHT_NOT_PASS")
         if not isinstance(selected, dict) or set(selected) != set(ROLES):
             errors.append("INPUT_ROLE_DATA_NOT_COMPLETE")

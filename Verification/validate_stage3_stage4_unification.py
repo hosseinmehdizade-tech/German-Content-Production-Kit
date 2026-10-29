@@ -493,6 +493,67 @@ def validate_candidate(stage3: dict, stage4: dict) -> list[str]:
     if (type(risk_total) is not int or type(risk_closed) is not int or
             risk_total < 0 or risk_closed != risk_total):
         errors.append("Stage4 risk queue needs exact total/closed reconciliation")
+    # OP-01 active user-approved linguistic policy requires an explicit
+    # reasoned disposition for EVERY lexical unit. Aggregate coverage and a
+    # nonempty adversarial sample cannot substitute for a complete ledger.
+    # This remains NONACTIVE metadata preflight, not linguistic signoff.
+    unit_pins = stage3.get("unit_sha256_by_id")
+    valid_pins = (
+        isinstance(unit_pins, dict) and type(card_total) is int and
+        len(unit_pins) == card_total and card_total > 0 and
+        all(isinstance(uid, str) and bool(uid.strip()) and
+            isinstance(sha, str) and SHA.fullmatch(sha) is not None
+            for uid, sha in unit_pins.items())
+    )
+    if not valid_pins:
+        errors.append("Stage3 must pin every lexical unit ID to exact SHA256")
+    reviews = stage4.get("unit_dispositions")
+    allowed = {"KEEP_WITH_REASON", "CLOSED_NO_FORCE_WITH_REASON",
+               "CORRECT_WITH_BEFORE_AFTER", "HOLD_WITH_SPECIFIC_EVIDENCE"}
+    if not isinstance(reviews, list) or type(card_total) is not int or len(reviews) != card_total:
+        errors.append("Stage4 per-unit disposition ledger must cover exact lexical total")
+    else:
+        seen = set()
+        for i, review in enumerate(reviews):
+            if not isinstance(review, dict) or set(review) != {
+                    "unit_id", "unit_sha256", "disposition", "reason",
+                    "evidence_ref", "source_locator"}:
+                errors.append(f"Stage4 malformed unit disposition: {i}")
+                continue
+            uid = review["unit_id"]
+            if not isinstance(uid, str) or not uid or uid in seen:
+                errors.append(f"Stage4 duplicate/invalid unit disposition ID: {i}")
+                continue
+            seen.add(uid)
+            if not valid_pins or uid not in unit_pins or review["unit_sha256"] != unit_pins[uid]:
+                errors.append(f"Stage4 per-unit disposition stale/unknown SHA: {uid}")
+            if review["disposition"] not in allowed:
+                errors.append(f"Stage4 unknown per-unit disposition: {uid}")
+            elif review["disposition"] in {"HOLD_WITH_SPECIFIC_EVIDENCE", "CORRECT_WITH_BEFORE_AFTER"}:
+                # A final pass cannot treat a held item as closed, or claim
+                # a correction solely on self-reported pre/post metadata.
+                errors.append(f"Stage4 hold/correction requires separate closure and byte proof: {uid}")
+            for field in ("reason", "evidence_ref", "source_locator"):
+                value = review[field]
+                if not isinstance(value, str) or not value.strip():
+                    errors.append(f"Stage4 unit disposition missing {field}: {uid}")
+        if valid_pins and seen != set(unit_pins):
+            errors.append("Stage4 unit disposition ID set differs from Stage3 snapshot")
+    control = stage4.get("seeded_negative_control")
+    if not isinstance(control, dict) or set(control) != {
+            "unit_id", "expected_fault", "detected_fault", "result",
+            "evidence_ref"}:
+        errors.append("Stage4 seeded negative control receipt missing/malformed")
+    elif (not valid_pins or
+          not isinstance(control["unit_id"], str) or
+          control["unit_id"] not in unit_pins or
+          not isinstance(control["expected_fault"], str) or
+          not control["expected_fault"].strip() or
+          control["detected_fault"] != control["expected_fault"] or
+          control["result"] != "DETECTED" or
+          not isinstance(control["evidence_ref"], str) or
+          not control["evidence_ref"].strip()):
+        errors.append("Stage4 seeded negative control not detected/bound to unit evidence")
     if not stage4.get("adversarial_method_evidence"):
         errors.append("Stage4 independent method evidence missing")
     if stage4.get("risk_queue_open") != 0:

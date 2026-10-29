@@ -1,0 +1,54 @@
+{
+  "schema": "gcpk-b1-24-library-source-grouping-fix@1.0.0",
+  "date": "2026-10-29",
+  "status": "PASS_STATIC_REPAIRED_TSV__LIVE_V500_NOT_MIGRATED",
+  "evidence": "User-provided v500 screenshot shows six Menschen B1-origin collections matching exact six source values/counts in v487 B1 master TSV.",
+  "root_cause": "Native library renderFolders uses uniqueValues(CARDS.map(sourceOf)); sourceOf(card)=card.source, rather than card.deck. The v487 B1 master preserved 6 heterogeneous source labels while deck was uniform. v487 metadata-only merge also preserves existing.source, so reimport alone cannot group current library.",
+  "old_source_card_counts": {
+    "Menschen A1/A2/B1 Full Audio — Memrise export": 1991,
+    "Menschen A1/A2/B1 — Memrise Full Audio Export": 336,
+    "Menschen A1/A2/B1 — user Memrise source": 268,
+    "Menschen B1 — Memrise full audio (historical lesson L10/L11 TSV)": 190,
+    "Menschen A1/A2/B1 (registered Memrise full audio)": 171,
+    "Menschen B1": 133
+  },
+  "source_parent": {
+    "name": "Menschen-B1-24-Lektionen-V487-SAFE-NATIVE-IMPORT-3089.tsv",
+    "sha256": "0e547eb40cefac9a9aa322face2957c3d2b700706540a4acbaaa65b883d85ed8"
+  },
+  "fixed_export": {
+    "name": "Menschen-B1-24-Lektionen-3089-UNIFIED-SOURCE-NEW-LIBRARY-ONLY.tsv",
+    "sha256": "102cfa9f2396d1db087ad36a32fe16b7e8fe51ea4bad03ee6e4d1caca54608d1",
+    "bytes": 45820581,
+    "sandbox_archive": "Menschen-B1-TSV-Collection-Grouping-REPAIRED-NO-LIVE-MIGRATION-20261029.zip",
+    "zip_sha256": "d6a690e664ed1f1386711de97ff0b2ce1746b2ad4f689fa32e550d5ffa148ce5",
+    "zip_bytes": 3289780,
+    "source_scope": "Menschen B1",
+    "source_before_groups": 6,
+    "source_after_groups": 1
+  },
+  "deterministic_tests": {
+    "card_rows": 3089,
+    "unique_ids": 3089,
+    "lesson_count": 24,
+    "membership_rows": 3137,
+    "reuse_groups": 43,
+    "extra_memberships": 48,
+    "logical_pairs": 3,
+    "all_21_non_source_tsv_columns_preserved": true,
+    "all_existing_custom_fields_except_membership_library_source_preserved": true,
+    "original_6_labels_preserved_per_card_as_provenance": true,
+    "negative_grouping_controls": "2_OF_2_DETECTED",
+    "zip_crc": "PASS"
+  },
+  "current_runtime_scope": {
+    "user_screenshot_shows": "v500",
+    "exact_v500_app_files": "NOT_IN_THIS_CONVERSATION",
+    "git_current_runtime_pin": "v486-R120",
+    "v487_candidate_cause_evidence": "EXACT",
+    "v500_code_regression": "NOT_ATTRIBUTED",
+    "actual_user_storage": "NOT_ACCESSED",
+    "installed_app": "NOT_MODIFIED"
+  },
+  "migration_gate": "DO NOT REIMPORT INTO ACTIVE LIBRARY AND EXPECT FIX: v487 B1 merge preserves existing.source. FIRST secure exact v500 runtime, current-origin full backup of cards, IndexedDB and SRS, then source-only same-ID atomic migration with rollback/readback. Never delete collections or replace SRS to regroup."
+}

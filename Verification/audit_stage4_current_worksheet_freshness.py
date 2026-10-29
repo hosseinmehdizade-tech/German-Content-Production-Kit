@@ -20,8 +20,9 @@ SCHEMA="gcpk-op02-stage4-current-worksheet-freshness@1"
 REVIEW_FIELDS=("expert_decision","expert_reviewer_identity","expert_review_date",
                "expert_evidence","expert_comments")
 FROZEN=("headword","type","definition_de","meaning_fa","gloss_en",
-        "core_json","rection_json","examples_de_json","examples_fa_json",
-        "examples_en_json","kombinationen_json","relations_json")
+        "core_json","rection_json","source_book_locators_json","senses_json",
+        "examples_de_json","examples_fa_json","examples_en_json",
+        "kombinationen_json","relations_json")
 
 def sha256(raw:bytes)->str:
     return hashlib.sha256(raw).hexdigest()
@@ -40,6 +41,10 @@ def projected(unit:dict)->dict:
       "gloss_en":unit.get("english_gloss",""),
       "core_json":unit.get("core",{}),
       "rection_json":detail.get("rection",[]),
+      "source_book_locators_json":[s.get("locator","") for s in
+           (unit.get("provenance") or {}).get("sources",[])
+           if s.get("source_kind")=="book"],
+      "senses_json":unit.get("senses",[]),
       "examples_de_json":[e.get("text","") for e in ex],
       "examples_fa_json":[translation(e,"fa-IR") for e in ex],
       "examples_en_json":[translation(e,"en-US") for e in ex],

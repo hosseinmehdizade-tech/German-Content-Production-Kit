@@ -1,3 +1,13 @@
+# Unregelmäßige Verben — current source governance (2026-10-29)
+
+**ACTIVE working content baseline:** exact existing `Unregelmaessige-Verben-v1.3.1-R8-FINAL-USER-HANDOFF-TESTS-WAIVED-2026-10-23.zip` (SHA-256 `228e8c2cead0cd3e31d35802e4bb632df248203ffab4cd49798cd0b31bb0b486`); 174 cards, 696 trilingual examples, 530 accepted Kombinationen and 902 relations. User approved treating this immutable R8 content as the production baseline for future reviewed successors. This is a **derived content rebaseline**, not original screenshot attestation.
+
+The seven original screenshot images and their 258 historical source occurrences are preserved in legacy provenance but are no longer a prerequisite for future **R8-derived** final acceptance. Do not claim pixel-to-image parity and do not substitute unrelated PDFs. The independent AI linguistic / Persian & English / morphology / semantic / combination didactic audit, official v3.3.6 Stage5, exact-current Stage6, and Stage7 exact-final gates remain mandatory. **No new content or app release is certified by this governance decision.**
+
+Authoritative receipt: `Workspaces/unregelmaessige-verben/V131-R8-SOURCE-REBASELINE-DECISION-2026-10-29.json`; current pointers: `LATEST.json` and `CHECKPOINT.json`. Historical notes follow.
+
+---
+
 # Unregelmäßige Verben — v3.3.6 migration
 
 Stage5 official clean delivery remains **PASS**.

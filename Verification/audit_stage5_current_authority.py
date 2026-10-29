@@ -15,6 +15,7 @@ import re
 import sys
 
 from audit_stage5_input_role_binding import ROLES, scan_input, verify_postbuild
+from audit_stage5_clean_zip_v486 import _read_safe_zip, SHA_LINE
 
 SCHEMA = "gcpk-op02-stage5-current-role-authority@1"
 RESULT_SCHEMA = "gcpk-op02-stage5-current-role-authority-result@1"
@@ -54,6 +55,35 @@ def _reject_json_constant(value: str) -> None:
     raise ValueError("NONFINITE_JSON_CONSTANT:" + value)
 
 
+def _audit_internal_sha256sums(zip_bytes: bytes) -> list[str]:
+    """Independently reject internal hash-manifest tampering.
+
+    This is a byte-integrity check only: Stage4 semantic/linguistic review and
+    source proof remain separate. Do not trust a matching whole-ZIP hash alone.
+    """
+    try:
+        files = _read_safe_zip(zip_bytes)
+        sums = files.get("SHA256SUMS.txt")
+        if not isinstance(sums, bytes):
+            return ["STAGE5_INTERNAL_SHA256SUMS_MISSING"]
+        expected = {}
+        for line in sums.decode("utf-8").splitlines():
+            match = SHA_LINE.fullmatch(line)
+            if (not match or match.group(2) in expected
+                    or match.group(2) == "SHA256SUMS.txt"):
+                return ["STAGE5_INTERNAL_SHA256SUMS_INVALID_OR_DUPLICATE"]
+            expected[match.group(2)] = match.group(1)
+        actual = {
+            name: digest(body)
+            for name, body in files.items() if name != "SHA256SUMS.txt"
+        }
+        if not expected or expected != actual:
+            return ["STAGE5_INTERNAL_SHA256SUMS_CONTENT_MISMATCH"]
+    except (ValueError, TypeError, UnicodeError, OverflowError, RecursionError):
+        return ["STAGE5_INTERNAL_SHA256SUMS_UNREADABLE"]
+    return []
+
+
 def verify(
     authority_bytes: bytes, externally_pinned_authority_sha256: str,
     expected_workstream_id: str, expected_artifact_id: str,
@@ -91,7 +121,7 @@ def verify(
             object_pairs_hook=_strict_json_object,
             parse_constant=_reject_json_constant,
         )
-    except (UnicodeError, ValueError):
+    except (UnicodeError, ValueError, RecursionError):
         return _result(["AUTHORITY_SIDECAR_INVALID_JSON"])
     if not isinstance(authority, dict) or set(authority) != PIN_KEYS:
         return _result(["AUTHORITY_SIDECAR_UNEXPECTED_SCHEMA_KEYS"])
@@ -142,6 +172,8 @@ def verify(
         post = verify_postbuild(selected_inputs, finished_zip_bytes, expected_zip_sha256)
         if post.get("status") != "PASS_SCOPED_LOCAL_ROLE_BYTES_RETAINED_IN_ZIP_ONLY":
             errors.extend("POSTBUILD:" + x for x in post.get("errors", ["UNKNOWN"]))
+        else:
+            errors.extend(_audit_internal_sha256sums(finished_zip_bytes))
     return _result(errors)
 
 

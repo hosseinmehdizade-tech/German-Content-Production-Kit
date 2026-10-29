@@ -41,7 +41,7 @@
 | ID | Scope | Starting state / exit condition |
 | --- | --- | --- |
 | OP-01 | Policy consolidation + precedence | Existing v3.3.6 and many overrides; produce conflict dispositions and one lean decision graph, not a fresh overlay |
-| OP-02 | Stage1–7 integrated enrichment | Existing Stage3/Stage4 pilot and 12-conflict matrix are PROPOSED; validate compatibility, user-authorize migration, independent Stage4 untouched |
+| OP-02 | Stage1–7 integrated enrichment | Existing Stage3/Stage4 pilot and 12-conflict matrix are PROPOSED; validate compatibility, user-authorize migration, independent Stage4 untouched; an aggregate-metadata compatibility PASS is never a per-unit semantic QA PASS |
 | OP-03 | ZIP/builders and retention guard | `Tools/content_package_guard.py` exists; discover all callsites/bypasses and enforce negative tests (initial priority) |
 | OP-04 | Currentness and restart index | Large Content `PROJECT-STATE.json` returned empty in a partial remote fetch; diagnose tool limitation vs file health, build small index without competing authority |
 | OP-05 | Library storage + dedupe | SHA+dependency inventory; no deletion or overwrite before reversible verified recovery and explicit approval |

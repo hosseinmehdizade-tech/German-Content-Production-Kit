@@ -40,6 +40,20 @@ def _valid_id(value: object) -> bool:
     return isinstance(value, str) and SAFE_ID.fullmatch(value) is not None
 
 
+def _strict_json_object(pairs: list[tuple[str, object]]) -> dict:
+    """Reject duplicate keys at every nesting level, including JSON roles."""
+    obj = {}
+    for key, value in pairs:
+        if key in obj:
+            raise ValueError("DUPLICATE_JSON_KEY")
+        obj[key] = value
+    return obj
+
+
+def _reject_json_constant(value: str) -> None:
+    raise ValueError("NONFINITE_JSON_CONSTANT:" + value)
+
+
 def verify(
     authority_bytes: bytes, externally_pinned_authority_sha256: str,
     expected_workstream_id: str, expected_artifact_id: str,
@@ -72,7 +86,11 @@ def verify(
         return _result(errors)
 
     try:
-        authority = json.loads(authority_bytes.decode("utf-8"))
+        authority = json.loads(
+            authority_bytes.decode("utf-8"),
+            object_pairs_hook=_strict_json_object,
+            parse_constant=_reject_json_constant,
+        )
     except (UnicodeError, ValueError):
         return _result(["AUTHORITY_SIDECAR_INVALID_JSON"])
     if not isinstance(authority, dict) or set(authority) != PIN_KEYS:
@@ -113,8 +131,11 @@ def verify(
                 errors.append("AUTHORITY_ROLE_UNSAFE:" + role)
             if not isinstance(selected, dict) or selected.get(role) != entry:
                 errors.append("SELECTED_INPUT_NOT_PINNED_CURRENT:" + role)
-        if len({entry.get("filename") for entry in role_data.values()
-                if isinstance(entry, dict)}) != len(ROLES):
+        filenames = [
+            entry["filename"] for entry in role_data.values()
+            if isinstance(entry, dict) and isinstance(entry.get("filename"), str)
+        ]
+        if len(filenames) == len(ROLES) and len(set(filenames)) != len(ROLES):
             errors.append("AUTHORITY_ROLE_FILENAME_COLLISION")
 
     if not errors:

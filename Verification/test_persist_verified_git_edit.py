@@ -177,7 +177,7 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
     def test_stale_expected_blob_rejected(self):
         api = FakeGitHub(self.parent_bytes)
         self.rejects(api, "STALE_CURRENT", expected="0" * 40)
-        self.assertEqual(api.calls, ["GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET"])
 
     def test_server_cas_conflict_does_not_claim_success(self):
         api = FakeGitHub(self.parent_bytes)
@@ -190,19 +190,19 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         api = FakeGitHub(self.parent_bytes)
         api.corrupt_after_write = True
         self.rejects(api, "REMOTE_READBACK_MISMATCH")
-        self.assertEqual(api.calls, ["GET", "PUT", "GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT", "GET"])
 
     def test_unexpected_put_echo_is_uncertain_not_pass(self):
         api = FakeGitHub(self.parent_bytes)
         api.bad_response = True
         self.rejects(api, "WRITE_OUTCOME_UNCERTAIN")
-        self.assertEqual(api.calls, ["GET", "PUT"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT"])
 
     def test_remote_contents_bad_encoding_rejected(self):
         api = FakeGitHub(self.parent_bytes)
         api.bad_encoding = True
         self.rejects(api, "REMOTE_CONTENTS_UNUSABLE")
-        self.assertEqual(api.calls, ["GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET"])
 
     def test_immutable_paths_or_wrong_branch_refuse_before_network(self):
         for path in (

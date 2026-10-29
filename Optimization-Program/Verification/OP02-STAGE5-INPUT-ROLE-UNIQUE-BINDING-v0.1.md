@@ -23,6 +23,8 @@ otherwise schema-valid file could be chosen before generating a perfectly
 self-consistent ZIP and manifest. This is a **potential data-selection defect**,
 not proof of incorrect existing learner cards or historical deliveries.
 
+**Concrete real-builder reproduction, synthetic only:** the nonmodified builder also accepts an additional valid file named `A-Universal-older.tsv` while `Synthetic-Universal.tsv` is present, then selects `A-Universal-older.tsv` because it sorts filename matches and chooses index zero. Its ZIP and manifest are internally valid, but the chosen TSV differs from the intended original synthetic file. The new role-selector preflight returns `BLOCKED` when both are present. This demonstrates an actual silent file-selection behavior, not corruption of any existing user package.
+
 This is separate from the previously solved **post-ZIP semantic integrity**
 proposal in Verification/audit_stage5_clean_zip_v486.py: a finished package
 can faithfully preserve precisely the wrong selected input.

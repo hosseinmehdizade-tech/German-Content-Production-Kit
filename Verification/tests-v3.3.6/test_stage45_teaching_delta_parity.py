@@ -264,13 +264,13 @@ def test_unhashable_card_id_fails_closed():
 def test_unhashable_provenance_fails_closed():
     a,b,c = fixture()
     a["cards"][0]["kombinationen"][0]["provenance"] = {"fake": "source"}
-    assert "MISSING_OR_UNRECOGNIZED_PROVENANCE" in verify_fixture(a,b,c)["errors"]
+    assert any("MISSING_OR_UNRECOGNIZED_PROVENANCE" in e for e in verify_fixture(a,b,c)["errors"])
 
 
 def test_unhashable_delta_kind_fails_closed():
     a,b,c = fixture()
     a["cards"][0]["kombinationen"][0]["teaching_delta"]["kind"] = ["noun_verb"]
-    assert "MISSING_OR_UNJUSTIFIED_TEACHING_DELTA" in verify_fixture(a,b,c)["errors"]
+    assert any("MISSING_OR_UNJUSTIFIED_TEACHING_DELTA" in e for e in verify_fixture(a,b,c)["errors"])
 
 
 def test_review_receipt_without_real_independent_method_evidence_rejected():

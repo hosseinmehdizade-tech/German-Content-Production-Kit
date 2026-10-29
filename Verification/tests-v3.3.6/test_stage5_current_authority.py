@@ -12,7 +12,11 @@ import pytest
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
-from test_stage5_clean_zip_v486 import built as underlying_built, DIRECT
+from test_stage5_clean_zip_v486 import (
+    built as underlying_built, DIRECT, SUMS, package_members, repack
+)
+from audit_stage5_clean_zip_v486 import ROOT as ZROOT
+from audit_stage5_input_role_binding import verify_postbuild
 from audit_stage5_input_role_binding import scan_input
 from audit_stage5_current_authority import SCHEMA, digest, verify
 
@@ -202,6 +206,41 @@ def test_duplicate_json_key_is_rejected_even_if_own_digest_matches(built, scope)
     data = raw.encode("utf-8")
     result = verify(
         data, digest(data), WORKSTREAM, ARTIFACT, SOURCE_SHA, PARENT_SHA,
+        scan_input(built["input_dir"]), built["zip"], digest(built["zip"])
+    )
+    assert result["status"] == "BLOCKED"
+    assert "AUTHORITY_SIDECAR_INVALID_JSON" in result["errors"]
+
+@pytest.mark.parametrize("mutation", ["wrong-digest", "removed-entry", "invalid-sums"])
+def test_rehashed_whole_zip_with_damaged_internal_sums_blocks(built, mutation):
+    """An otherwise valid ZIP role byte projection must not mask a bad SHA256SUMS."""
+    doc = sidecar(built)
+    parts = package_members(built["zip"])
+    p = ZROOT + SUMS
+    original = parts[p].decode("utf-8")
+    if mutation == "wrong-digest":
+        lines = original.splitlines()
+        lines[0] = ("0" * 64) + lines[0][64:]
+        parts[p] = ("\\n".join(lines) + "\\n").encode("utf-8")
+    elif mutation == "removed-entry":
+        parts[p] = ("\\n".join(original.splitlines()[1:]) + "\\n").encode("utf-8")
+    else:
+        parts[p] = b"NOT-A-HASH-SUMS-LINE\\n"
+    altered = repack(parts)
+    snap = scan_input(built["input_dir"])
+    # Prior role-byte binding alone may pass despite corrupt internal sums.
+    assert verify_postbuild(snap, altered, digest(altered))["status"].startswith("PASS_SCOPED")
+    revised = dict(built, zip=altered)
+    result = assess(revised, doc)
+    assert result["status"] == "BLOCKED"
+    assert any(x.startswith("STAGE5_INTERNAL_SHA256SUMS_") for x in result["errors"])
+
+
+def test_deeply_nested_json_returns_blocked_not_exception(built):
+    deeply_nested = ("[" * 1200 + "0" + "]" * 1200).encode("utf-8")
+    result = verify(
+        deeply_nested, digest(deeply_nested),
+        WORKSTREAM, ARTIFACT, SOURCE_SHA, PARENT_SHA,
         scan_input(built["input_dir"]), built["zip"], digest(built["zip"])
     )
     assert result["status"] == "BLOCKED"

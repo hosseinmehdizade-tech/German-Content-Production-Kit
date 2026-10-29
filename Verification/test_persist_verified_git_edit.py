@@ -236,6 +236,16 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
             self.rejects(api, "GIT_TEXT_ONLY")
         self.assertEqual(api.calls, [])
 
+    def test_checked_in_permission_registry_has_no_live_grants(self):
+        # Enabling a real learner-data target requires a separately authorized
+        # change to the registry AND deliberate review of this guard test.
+        registry = json.loads((ROOT.parent / "Optimization-Program" /
+                               "WRITER-SCOPES.json").read_text(encoding="utf-8"))
+        self.assertEqual(registry["schema"], m.SCOPE_SCHEMA)
+        self.assertEqual(registry["status"],
+                         "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL")
+        self.assertEqual(registry["scopes"], [])
+
     def test_registry_deny_all_blocks_before_target_read(self):
         api = FakeGitHub(self.parent_bytes)
         api.scope_data = json.dumps({"schema": m.SCOPE_SCHEMA,

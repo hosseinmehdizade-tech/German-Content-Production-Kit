@@ -1,0 +1,81 @@
+{
+  "schema": "gcpk-op02-source-pdf-current-lineage-readonly-evidence@1",
+  "status": "PASS_SCOPED_PDF_EXACT_BYTES_AND_GIT_MAIN_LINEAGE__ISSUER_UNVERIFIED",
+  "date": "2026-10-29",
+  "mission": "OP-01/OP-02 optimization only; read-only workstream Aber Hallo example",
+  "evidence_method": "Independent local SHA256 + byte equality of currently attached original PDFs against immutable PDFs embedded in prior WIP50 ZIP; compare against live Git SOURCE-MANIFEST expected SHA256, size and PDF page count; GitHub compare pinned promotion commit to main, retrieve file at promotion commit and main by exact ref.",
+  "workstream": "aber-hallo-listen-tabellen",
+  "sources": [
+    {
+      "source_id": "deutsch-aber-hallo-listen-tabellen-a1-a2",
+      "currently_mounted_filename": "listen-tabellen A1-A2(1).pdf",
+      "historical_manifest_filename": "listen-tabellen A1-A2(2).pdf",
+      "zip_member": "03-Source-Provenance/User-Supplied-Original-PDFs/A1-A2-listen-tabellen.pdf",
+      "bytes": 155245,
+      "pages": 10,
+      "sha256": "4125ed49efa3c4e72500a9c80b8d39021c8933d9a387fc96a637fd4b457e3cf3",
+      "local_vs_zip_exact_bytes_equal": true,
+      "local_vs_manifest_size_sha256": true,
+      "zip_vs_manifest_size_sha256": true
+    },
+    {
+      "source_id": "deutsch-aber-hallo-listen-tabellen-b1-c2",
+      "currently_mounted_filename": "listen-tabellen B1-C2(1).pdf",
+      "historical_manifest_filename": "listen-tabellen B1-C2(2).pdf",
+      "zip_member": "03-Source-Provenance/User-Supplied-Original-PDFs/B1-C2-listen-tabellen.pdf",
+      "bytes": 268085,
+      "pages": 35,
+      "sha256": "ebaa3896c3c383808b832241afaf6c38ef4f498eb4dc1b38f26c12087cc97a04",
+      "local_vs_zip_exact_bytes_equal": true,
+      "local_vs_manifest_size_sha256": true,
+      "zip_vs_manifest_size_sha256": true
+    }
+  ],
+  "source_manifest": {
+    "path": "Workspaces/aber-hallo-listen-tabellen/00-source/SOURCE-MANIFEST.json",
+    "git_blob": "529ced29c0dd9efb63c9639fcf6285169516a3e4",
+    "note": "Current chat uploaded filename suffix (1), historical manifest records suffix (2). Exact hashes and byte contents match; suffix difference does not imply a source change."
+  },
+  "zip_artifact": {
+    "filename": "Aber-Hallo-WIP50-23-DUDEN-GENITIV-ADJECTIVE-552-ATTESTED-432-OPEN-2026-10-29.zip",
+    "sha256": "a558055dbddda45d5d3040fb096bf28eb8f51e2c0863f5634c445094decfc96b",
+    "prior_verified_evidence": "Optimization-Program/Verification/OP02-ABER-HALLO-WIP50-DRIVE-BINARY-READBACK-2026-10-29.json"
+  },
+  "git_provenance": {
+    "receipt_commit": "7194527f8dde7b627be6fda469a9504e80b78bbe",
+    "receipt_commit_utc": "2026-10-29T02:06:05Z",
+    "receipt_blob_at_commit_and_main": "e3e745a479a12467ecb4028d73711781212e7b1c",
+    "promotion_commit": "1f94eac9e4038bdfa30a1a343edcab402997288a",
+    "promotion_commit_utc": "2026-10-29T02:06:35Z",
+    "promotion_commit_title": "checkpoint(aber-hallo): CAS promote WIP50 23 direct Duden frame cases applied Canonical/Import, 552 attested and 432 pending",
+    "promotion_commit_changes_only": "Workspaces/aber-hallo-listen-tabellen/LATEST.json",
+    "observed_github_author_and_committer": "hosseinmehdizade-tech",
+    "latest_blob_at_promotion_and_main": "f490ba8debb7277f07e1e0accce94364229fb2e9",
+    "promoted_commit_is_ancestor_of_main": true,
+    "compare_status": "ahead",
+    "main_ahead_of_promotion_commit": 181,
+    "main_behind_promotion_commit": 0,
+    "merge_base": "1f94eac9e4038bdfa30a1a343edcab402997288a",
+    "proof_boundary": "GitHub history and same-account authorship are observable; connector did not expose verifiable Git commit signature, independent issuer authentication or external user approval. The commit title saying CAS is not proof that the CAS operation actually passed."
+  },
+  "confidence": {
+    "source_pdf_exact_bytes": "PASS_2_OF_2",
+    "current_manifest_source_hash_match": "PASS_2_OF_2",
+    "git_promotion_snapshot_byte_identity": "PASS_SCOPED",
+    "git_branch_ancestor": "PASS_SCOPED",
+    "signer_identity_or_issuer_independent_authorization": "OPEN_NOT_VERIFIED",
+    "full_stage4_semantic_review": "OPEN",
+    "production_stage5_stage6_stage7": "NOT_RUN"
+  },
+  "restrictions": {
+    "active_writer_scopes": "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL",
+    "writer_grants": 0,
+    "mutate_original_source": false,
+    "mutate_locked": false,
+    "mutate_workstream_latest": false,
+    "mutate_content": false,
+    "mutate_app_runtime": false,
+    "mutate_ui": false,
+    "make_release": false
+  }
+}

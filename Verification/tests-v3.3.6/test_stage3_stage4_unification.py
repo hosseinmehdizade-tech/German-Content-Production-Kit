@@ -17,6 +17,7 @@ def sample_candidate():
     s3 = {
         "input_sha256": "a"*64, "output_sha256": "b"*64,
         "source_authority": "source-exact:test", "stage3_method": "PRODUCTION_METHOD_A",
+        "unit_sha256_by_id": pins,
         "mutable_bytes_applied": True, "locked_source_mutated": False,
         "lexical_cards_total": 2, "facet_card_coverage": {x: 2 for x in m.FACETS},
         "source_lineage_receipt": "source:test:sha256-bound",

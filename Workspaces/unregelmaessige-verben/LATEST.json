@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-workstream-local-latest@1.0.0",
   "workstream": "unregelmaessige-verben",
-  "milestone": "V131_R8_STAGE7_USER_REQUESTED_FINAL_HANDOFF_DELIVERED_WITHOUT_NEW_TESTS_UNVERIFIED",
-  "status": "HANDOFF_DELIVERED_USER_REQUESTED_NO_TESTS__VERIFIED_FINAL_NOT_CLAIMED",
-  "receipt_path": "Workspaces/unregelmaessige-verben/V131-R8-STAGE7-USER-REQUESTED-UNTESTED-FINAL-HANDOFF-2026-10-23.json",
+  "milestone": "V131_R8_SOURCE_AUTHORITY_REBASELINED_USER_APPROVED_2026_10_29",
+  "status": "SOURCE_AUTHORITY_REBASELINED__FULL_CONTENT_QA_AND_RELEASE_NOT_FINAL",
+  "receipt_path": "Workspaces/unregelmaessige-verben/V131-R8-SOURCE-REBASELINE-DECISION-2026-10-29.json",
   "checkpoint_path": "Workspaces/unregelmaessige-verben/CHECKPOINT.json",
   "artifact": {
     "filename": "Unregelmaessige-Verben-v1.3.1-R8-FINAL-USER-HANDOFF-TESTS-WAIVED-2026-10-23.zip",
@@ -17,12 +17,12 @@
   },
   "content_candidate_sha256": "6809185bc74050bac090c89d1dab56471f046771b10458fa5dc85127f393957b",
   "import_sha256": "e0b54816d47639c377425afb9cbd5cc606959d6cac0488ab1e26e3707a478ecb",
-  "stage4": "SOURCE_IMAGE_ATTESTATION_SKIPPED_BY_USER__NOT_CERTIFIED",
-  "stage5": "SCOPED_CLEAN_TECHNICAL_PASS__FULL_OFFICIAL_NOT_RUN",
-  "stage6": "SCOPED_BROWSER_24_OF_24_PRIOR_PASS__PERSISTENT_REAL_ORIGIN_NOT_RUN",
+  "stage4": "PENDING_FULL_R8_AI_SEMANTIC_ADVERSARIAL_QA__HISTORICAL_PIXEL_MATCH_NOT_REQUIRED",
+  "stage5": "NOT_YET_OFFICIALLY_REPASSED_ON_NEW_BASELINE",
+  "stage6": "PENDING_EXACT_CURRENT_RUNTIME_REAL_ORIGIN_QA",
   "prior_batch04_receipt_path": "Workspaces/unregelmaessige-verben/V131-R2-STAGE4-BATCH04-RECEIPT.json",
-  "next_action": "No further work needed to complete requested user handoff. A separately requested verified release would need the skipped acceptance tests.",
-  "prior_milestone": "V131_R4_7_CONFIRMED_REPAIRS_INDEPENDENT_SCOPED_PASS_FULL_STAGE4_PENDING",
+  "next_action": "Execute full Stage4 AI linguistic/adversarial source-aware QA on exact R8 content baseline, with the historical seven-image reconstruction excluded from gates. Fix only confirmed learner-content issues in a reviewed successor; then official Stage5, CURRENT Stage6, Stage7.",
+  "prior_milestone": "V131_R8_STAGE7_USER_REQUESTED_FINAL_HANDOFF_DELIVERED_WITHOUT_NEW_TESTS_UNVERIFIED",
   "open_review_findings": 0,
   "prior_batch06_receipt_path": "Workspaces/unregelmaessige-verben/V131-R2-STAGE4-BATCH06-RECEIPT.json",
   "r3_triage": {
@@ -58,12 +58,12 @@
     "legacy_bridge_258_refs": "PASS_INTERNAL_ONLY",
     "r5_bytes_unchanged": true
   },
-  "date": "2026-10-23",
+  "date": "2026-10-29",
   "parent_r5": {
     "milestone": "V131_R5_FULL_CORPUS_CONTENT_QA_SCOPED_PASS_SOURCE_FIDELITY_BLOCKED",
     "artifact_sha256": "fe24173590ababf57501e40110a1deceb5c666ee3d00bf998445ea90ef2e968c"
   },
-  "stage7": "USER_REQUESTED_DELIVERY_COMPLETE_WITH_TESTS_WAIVED__NOT_VERIFIED_FINAL",
+  "stage7": "PENDING_NEW_LOCK__OLD_R8_HANDOFF_IS_NOT_FINAL_VERIFIED",
   "final": false,
   "last_milestone_status": "R5_SOURCE_FIDELITY_BLOCKED_PRESERVED",
   "qa_r6": {
@@ -300,10 +300,20 @@
     "technical_scope": "PASS_SCOPED_TECHNICAL_CLEAN_DELIVERY__FULL_OFFICIAL_STAGE5_NOT_RUN"
   },
   "outstanding_verification": [
-    "User explicitly waived any new Stage7 tests and requested completion",
-    "Full official Stage5 acceptance had not been run",
-    "Real-origin Stage6 IndexedDB/reload/export/reimport tests remained unrun",
-    "Seven original screenshots were not reattested at user's request",
-    "No FINAL_VERIFIED or LOCKED claim is made"
-  ]
+    "Full documented adversarial AI semantic/translation/register/morphology/combination audit on exact R8 still pending",
+    "Official v3.3.6 Stage5 clean-delivery/anti-bypass has not run on rebaselined successor",
+    "Actual CURRENT app exact-origin Stage6 Import/IndexedDB/reload/export/reimport remains pending",
+    "New exact-final Stage7 lock not done; old R8 user-handoff remains NOT FINAL"
+  ],
+  "source_governance_rebaseline": {
+    "receipt_path": "Workspaces/unregelmaessige-verben/V131-R8-SOURCE-REBASELINE-DECISION-2026-10-29.json",
+    "content_sha256": "228e8c2cead0cd3e31d35802e4bb632df248203ffab4cd49798cd0b31bb0b486",
+    "scope": "R8 derived content baseline only",
+    "seven_original_images": "HISTORICAL_UNVERIFIED__NO_LONGER_GATE",
+    "historic_ledger_258": "PRESERVED_NOT_PIXEL_REATTESTED",
+    "complete_stage4": false,
+    "official_stage5": false,
+    "current_stage6": false,
+    "stage7_locked": false
+  }
 }

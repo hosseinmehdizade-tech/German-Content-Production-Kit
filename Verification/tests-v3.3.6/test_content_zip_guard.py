@@ -419,3 +419,53 @@ def test_catalog_cli_generates_readonly_metadata(tmp_path):
        capture_output=True,text=True)
     assert cp2.returncode==2
     assert "ALREADY_EXISTS" in cp2.stdout
+
+
+from library_publish_preflight import screen_library_name_size_candidates
+
+
+def test_library_duplicate_screen_identical_size_is_only_a_hold():
+    entries = [
+        {"path": "/Flasch kart/Pack.zip", "size_bytes": 123, "library_file_id": "libfile_a"},
+        {"path": "/Flasch kart/Pack(1).zip", "size_bytes": 123, "library_file_id": "libfile_b"},
+    ]
+    result = screen_library_name_size_candidates(entries, complete=True)
+    assert result["same_size_groups"] == 1
+    assert result["upper_bound_bytes_if_verified"] == 123
+    assert result["verified_reclaimable_bytes"] == 0
+    assert result["authorized_cleanup"] is False
+    assert result["groups"][0]["decision"] == "HOLD_HASH_AND_DEPENDENCY_CHECK"
+
+
+def test_library_duplicate_screen_distinct_size_prevents_false_positive():
+    entries = [
+        {"path": "/Flasch kart/Grammatik.pdf", "size_bytes": 110, "library_file_id": "libfile_a"},
+        {"path": "/Flasch kart/Grammatik(2).pdf", "size_bytes": 111, "library_file_id": "libfile_b"},
+    ]
+    result = screen_library_name_size_candidates(entries)
+    assert result["group_count"] == 1
+    assert result["same_size_groups"] == 0
+    assert result["groups"][0]["decision"] == "NOT_BYTE_IDENTICAL"
+    assert result["upper_bound_bytes_if_verified"] == 0
+
+
+def test_library_duplicate_screen_does_not_cross_protection_boundaries():
+    entries = [
+        {"path": "/Protected-History/CURRENT.zip", "size_bytes": 400, "library_file_id": "libfile_a"},
+        {"path": "/Flasch kart/CURRENT(1).zip", "size_bytes": 400, "library_file_id": "libfile_b"},
+    ]
+    result = screen_library_name_size_candidates(entries, complete=False)
+    assert result["group_count"] == 0
+    assert result["scope_complete"] is False
+
+
+def test_library_duplicate_screen_never_trusts_sha_or_hash_flags():
+    entries = [
+        {"path": "/Flasch kart/a.zip", "size_bytes": 20, "library_file_id": "libfile_1",
+         "sha256": "a" * 64, "hash_verified": True},
+        {"path": "/Flasch kart/a(1).zip", "size_bytes": 20, "library_file_id": "libfile_2",
+         "sha256": "a" * 64, "hash_verified": True},
+    ]
+    result = screen_library_name_size_candidates(entries)
+    assert result["verified_reclaimable_bytes"] == 0
+    assert result["authorized_cleanup"] is False

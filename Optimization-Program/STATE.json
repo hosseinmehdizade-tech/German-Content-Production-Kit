@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OP05_EXPANDED_METADATA_AUDIT__HASH_ACCESS_BLOCKED",
+  "state": "ACTIVE_OP05_METADATA_SCREEN_PASSES__LIBRARY_DUPLICATE_PROOF_BLOCKED",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -63,10 +63,10 @@
     {
       "id": "OP-05",
       "title": "Library storage baseline and safe deduplication",
-      "status": "IN_PROGRESS_EXPANDED_INVENTORY__HASH_AND_RECOVERY_PROOF_BLOCKED",
-      "last_evidence": "13/13 independently downloaded Google Drive chunks and full release SHA-256 PASS, recorded in issue #25 comment 6484949834",
-      "next_action": "Resume with independently authorized Library raw-byte hash/readback for top candidate IDs and current snapshot dependency graph; distinguish registered grammar source PDF SHA from new uploaded PDF. No deletion based on metadata.",
-      "blocker": "Library native files cannot be materialized as exact raw bytes in this Project; original uploaded audio/PDF bytes were hashable but do not prove same-byte identity of two Library records. Library recheck and explicit per-file deletion approval required."
+      "status": "IN_PROGRESS_METADATA_SCREEN_CI_PASS__DIRECT_LIBRARY_HASH_BLOCKED",
+      "last_evidence": "2026-10-29 full raw Drive 13-part SHA256 PASS; verified 8-page library name/size screen + four negative tests in CI run 40799073055 (Ubuntu/Windows PASS)",
+      "next_action": "Obtain authorized raw readback or credible checksum receipts for both exact Library IDs of top candidate files; check LATEST/LOCKED/source and recovery before presenting any deletion proposal. Avoid repeated full inventory scans until raw access is resolved.",
+      "blocker": "Native ChatGPT Library file bytes not available for independently hashing two distinct Library copies. Equal names, sizes, or external backup SHA do not prove exact Library duplicates; approval also required."
     },
     {
       "id": "OP-06",
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-05",
-  "next_exact_action": "Get direct SHA-256 for both Library copies of 213216245-byte B1 ZIP and 113754051-byte RAR (or independently verified archived bytes); preserve canonical B1 source/release and grammar source variants. Then resolve dependencies and ask before deletion.",
+  "next_exact_action": "Obtain authorized raw readback or credible checksum receipts for both exact Library IDs of top candidate files; check LATEST/LOCKED/source and recovery before presenting any deletion proposal. Avoid repeated full inventory scans until raw access is resolved.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -113,11 +113,11 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP05-2-LIBRARY-EXPANDED-INVENTORY-2026-10-29",
-    "scope": "Expanded disjoint folder samples and cross-referenced 213MB B1 release, 113MB audio source, grammar source registry",
-    "result": "PARTIAL_INVENTORY_EXTENDED__CANONICAL_B1_AND_SOURCE_PROTECTION_IDENTIFIED__EXACT_DUPLICATE_BYTES_UNPROVEN",
-    "tests": "Live metadata counts, GIT B1 release receipts, source hash rechecked locally; no native Library raw readback available",
-    "not_claimed": "No exhaustive global Library size, no confirmed duplicate deletion, no exact-byte readback for both Library copies, no change to source or LOCKED"
+    "id": "OP05-4-LIBRARY-PROVISIONAL-DUPLICATE-SCREEN-2026-10-29",
+    "scope": "8-page live Library candidate grouping, 144 same-size groups; deterministic non-destructive filename/size screener added to existing content publishing preflight",
+    "result": "PASS_GIT_SCOPED_SCREEN_AND_NEGATIVE_TESTS__HOLD_NO_LIBRARY_HASH",
+    "tests": "Four new negative tests, Content ZIP safety regression full suite Ubuntu+Windows PASS GitHub Actions 40799073055; raw Drive B1 manifest 13/13 full SHA verified separately",
+    "not_claimed": "Zero confirmed Library item duplicate groups, zero verified reclaimable bytes, zero Library deletions; no assertion of completeness of paginated Library, no runtime/UI/LOCKED changes"
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -443,6 +443,55 @@
       "sha256": "bada18c9ca05b99a5504e9fee7d2db7daf1b7367cc8b0065940c76c3f0fd93bb",
       "scope": "Google Drive documented 13-part backup only; ChatGPT Library copy identity not verified",
       "github_issue_comment_id": 6484949834
+    },
+    "name_size_screen_20261029": {
+      "folder": "/Flasch kart",
+      "method": "Eight size-descending pages of files.list, grouped by case-insensitive folder-local basename after stripping numbered trailing upload suffixes; live mutable listing, not frozen full snapshot",
+      "files_scanned": 1587,
+      "bytes_scanned": 11332491777,
+      "more_pages": true,
+      "same_normalized_name_groups": 158,
+      "same_name_and_exact_size_groups": 144,
+      "same_size_group_members": 363,
+      "normalized_name_groups_with_size_mismatches": 14,
+      "conditional_upper_bound_bytes": 1590570748,
+      "note": "The 1,590,570,748-byte number is ONLY an upper bound for same-name/same-size excess copies if each is proven byte-identical and dependency-free. ZERO bytes are safe-to-remove solely from this screen. Live pagination is non-atomic and may drift when concurrent Library changes occur.",
+      "confirmed_identical_sha256_groups": 0,
+      "confirmed_removable_bytes": 0,
+      "candidate_ranked_examples": [
+        {
+          "base": "German-Flashcards-Pro-v486-Menschen-B1-24-Lektionen-IMPORT-REPAIRED-AUDIO-COMPANION-NONIMPORT.zip",
+          "copy_bytes": 213216245,
+          "copy_count": 2,
+          "decision": "HOLD_PRIMARY_RELEASE"
+        },
+        {
+          "base": "menschen-a1a2b1-full-audio by Hossein_mehdizade [5692974].rar",
+          "copy_bytes": 113754051,
+          "copy_count": 2,
+          "decision": "HOLD_ORIGINAL_SOURCE"
+        },
+        {
+          "base": "Uni Sicher 3.pdf",
+          "copy_bytes": 63036366,
+          "copy_count": 2,
+          "decision": "HOLD_SOURCE"
+        }
+      ]
+    },
+    "code_safety_screen": {
+      "source": "Tools/library_publish_preflight.py#screen_library_name_size_candidates",
+      "tests": "Verification/tests-v3.3.6/test_content_zip_guard.py",
+      "new_negative_cases": 4,
+      "verification": {
+        "ubuntu": "PASS",
+        "windows": "PASS",
+        "run": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40799073055"
+      },
+      "deletes_files": false,
+      "moves_files": false,
+      "authorizes_deletion": false,
+      "rule": "Matching basename and byte count only create HASH_AND_DEPENDENCY_CHECK holds; protected folders are not mixed; unequal sizes are NOT_BYTE_IDENTICAL."
     }
   }
 }

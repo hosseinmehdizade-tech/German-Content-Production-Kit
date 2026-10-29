@@ -340,11 +340,27 @@
         "decision": "HOLD_SOURCE_PDF"
       }
     ],
-    "hold_reason": "No sha256 field in Library list metadata, 4 large raw materialize attempts returned no authorized raw-byte materialization path. Neither filename nor size proves duplicate.",
+    "hold_reason": "No sha256 field in Library list metadata, 4 large raw materialize attempts returned no authorized raw-byte materialization path. Neither filename nor size proves duplicate. Two matching-name uploaded source files could be SHA256-hashed locally, but other Library counterparts could not be read. No duplicate is confirmed.",
     "confirmed_duplicate_groups": 0,
     "verified_reclaimable_bytes": 0,
     "actually_deleted_files": 0,
     "protected": "LOCKED/final source, CURRENT pin, user original PDFs and audio RAR, portable recovery and history until SHA/readback and dependency checks",
-    "future_savings_estimate": "UNKNOWN; potential single-copy sum 411,497,127 bytes for 3 matching-size candidate pairs ONLY IF SHA and recovery/dependency proof later pass"
+    "future_savings_estimate": "UNKNOWN; potential single-copy sum 411,497,127 bytes for 3 matching-size candidate pairs ONLY IF SHA and recovery/dependency proof later pass",
+    "locally_mounted_uploaded_source_hashes": [
+      {
+        "path": "/mnt/data/menschen-a1a2b1-full-audio by Hossein_mehdizade [5692974](1).rar",
+        "library_candidate_path": "/Flasch kart/menschen-a1a2b1-full-audio by Hossein_mehdizade [5692974](1).rar",
+        "size_bytes": 113754051,
+        "sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+        "proof": "LOCAL_UPLOADED_FILE_ONLY_NOT_INDEPENDENT_LIBRARY_READBACK"
+      },
+      {
+        "path": "/mnt/data/Grammatik aktiv A1-B1(1).pdf",
+        "library_candidate_path": "/Flasch kart/Grammatik aktiv A1-B1(1).pdf",
+        "size_bytes": 84526831,
+        "sha256": "5005d753d9f40474b6ffbcd11ac41a2cb5a7bd61cebef114434141465bd77a49",
+        "proof": "LOCAL_UPLOADED_FILE_ONLY_NOT_INDEPENDENT_LIBRARY_READBACK"
+      }
+    ]
   }
 }

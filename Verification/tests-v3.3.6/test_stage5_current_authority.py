@@ -221,11 +221,11 @@ def test_rehashed_whole_zip_with_damaged_internal_sums_blocks(built, mutation):
     if mutation == "wrong-digest":
         lines = original.splitlines()
         lines[0] = ("0" * 64) + lines[0][64:]
-        parts[p] = ("\\n".join(lines) + "\\n").encode("utf-8")
+        parts[p] = ("\n".join(lines) + "\n").encode("utf-8")
     elif mutation == "removed-entry":
-        parts[p] = ("\\n".join(original.splitlines()[1:]) + "\\n").encode("utf-8")
+        parts[p] = ("\n".join(original.splitlines()[1:]) + "\n").encode("utf-8")
     else:
-        parts[p] = b"NOT-A-HASH-SUMS-LINE\\n"
+        parts[p] = b"NOT-A-HASH-SUMS-LINE\n"
     altered = repack(parts)
     snap = scan_input(built["input_dir"])
     # Prior role-byte binding alone may pass despite corrupt internal sums.

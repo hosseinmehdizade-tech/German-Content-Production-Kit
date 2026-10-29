@@ -6,6 +6,7 @@ on:
       - 'Tools/**/*.py'
       - 'Workspaces/**/*.py'
       - 'Verification/tests-v3.3.6/test_content_zip_guard.py'
+      - 'Verification/tests-v3.3.6/test_clean_delivery_proof_integration.py'
       - '.github/workflows/*.yml'
   pull_request:
     paths:
@@ -14,6 +15,7 @@ on:
       - 'Tools/build_clean_delivery.py'
       - 'Workspaces/**/*.py'
       - 'Verification/tests-v3.3.6/test_content_zip_guard.py'
+      - 'Verification/tests-v3.3.6/test_clean_delivery_proof_integration.py'
       - '.github/workflows/*.yml'
 jobs:
   safe-packaging:
@@ -32,3 +34,5 @@ jobs:
         run: python -m compileall -q Tools/content_package_guard.py Tools/library_publish_preflight.py Tools/build_clean_delivery.py Workspaces/menschen-a2/tools/package_release.py Workspaces/menschen-a2/tools/package_release_corrective.py
       - name: ZIP guard regression
         run: python -m pytest -q Verification/tests-v3.3.6/test_content_zip_guard.py
+      - name: Real clean builder applied-edit proof smoke (synthetic only)
+        run: python -m pytest -q Verification/tests-v3.3.6/test_clean_delivery_proof_integration.py

@@ -31,8 +31,8 @@
       "id": "OP-01",
       "title": "Policy consolidation and precedence",
       "status": "SCOPING",
-      "last_evidence": "Architecture/Stage3-Stage4-Unification/CONFLICT-DEPENDENCY-MATRIX-v0.1.json",
-      "next_action": "Inventory ACTIVE policy ownership/overrides in both repositories and produce safe merge/supersession map",
+      "last_evidence": "Menschen A1 C49: 1453 heuristic flags left UNREVIEWED; repeated report-only loop despite EDIT-APPLY-VERIFICATION-CONTRACT.json ACTIVE_USER_REAFFIRMED",
+      "next_action": "Enforce immediate review→decide→apply-to-CURRENT→post-edit-test→durable-save for routine AI-authorized edits; add negative regression tests preventing report-only APPLIED claims, without weakening Stage4 independent QA or source/LOCKED guards.",
       "blocker": null
     },
     {
@@ -157,5 +157,13 @@
       "Runtime app files 01-App and CURRENT pin were not modified; no new runtime release claimed.",
       "GitHub code search may omit alternative archiving APIs, generated scripts and external ad-hoc packaging."
     ]
+  },
+  "process_failure_prevention": {
+    "incident": "Menschen A1 C49 report-only UNREVIEWED loop",
+    "owner": "OP-01",
+    "rule": "Routine safe semantic edits are authorized for agent decision; do not request repetitive user approval. Apply decisions directly to newest mutable CURRENT in the same work turn, run post-edit QA, persist recoverably, and only then count APPLIED. Independent adversarial QA is a separate acceptance gate, not permission to defer writing.",
+    "status": "REQUIREMENT_RECORDED_ENFORCEMENT_TESTS_PENDING",
+    "exception": "Ambiguous source fidelity, destructive change, missing exact CURRENT, concurrent writer, LOCKED content, architecture/UI change require guard/hold.",
+    "acceptance": "A regression test must fail when a reviewed correction exists only in a report or patch while CURRENT remains unchanged; and pass when CURRENT diff, post-edit test, and durable readback agree."
   }
 }

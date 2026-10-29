@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-flashcards-runtime-dependency@1.0.0",
   "status": "ENFORCED",
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-30",
   "source_of_truth": {
     "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
     "currentness_policy": "RUNTIME-CURRENTNESS-POLICY.json",
@@ -11,22 +11,23 @@
     "execution_safety": "EXECUTION-SAFETY-POLICY.json"
   },
   "current_runtime": {
-    "version": "v481-R115",
-    "verification_state": "PASS_SCOPED_POSTPACKAGE__A2_L15_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "version": "v501-R135",
+    "verification_state": "USER_CONFIRMED_BROWSER_ACCEPTANCE",
     "release_final": false,
-    "artifact": "GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
-    "sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+    "artifact": "GFP-v501-R135-CARD-STUDIO-GEOMETRY-CANDIDATE.zip",
+    "sha256": "bbe1016d2c910b8be90956d6f5ade483688e36e1615682cce1d144b4716f9b29",
+    "app_sha256": "b8b02df90997e9269c4878297385fccd6bd69c26fff6eac6e508dfcf2db594ef",
     "development_and_integration_base": true,
-    "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
-    "library_file_id": "file_00000000f06c824683e9d9066d293203",
-    "library_stable_id": "libfile_302320cb521c8191ae45369dd5cb9989",
+    "delivery_surface": "USER_UPLOADED_ARTIFACT",
     "portable_materialized_sha256_verified": true,
-    "current_materialization_note": "PASS: exact CURRENT v481-R115 bytes verified for A2-L15 Stage6; target 34/34 + cumulative 58/58 PASS_WITH_ENVIRONMENT_BOUNDARY."
+    "git_mirror_status": "PENDING_V501_SOURCE_SYNC",
+    "note": "Current user-accepted v501 portable ZIP; source Git mirror still v486 and must NOT be substituted for CURRENT; no Stage6 certification from legacy Git-mirror tests."
   },
   "last_fully_verified_runtime": {
-    "version": "v466-R100",
+    "version": "v486-R120",
     "verification_state": "VERIFIED",
     "release_final": true,
+    "sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
     "regression_reference": true,
     "development_and_integration_base": false
   },
@@ -41,8 +42,9 @@
     "After each validated Flashcards CURRENT update, source/metadata sync is attempted before handoff. If bounded sync attempts fail, portable CURRENT remains authoritative and Git persistence is marked PENDING without downgrading."
   ],
   "current_example": {
-    "integration_target": "v481-R115",
-    "regression_reference": "v466-R100"
+    "integration_target": "v501-R135",
+    "regression_reference": "v486-R120",
+    "mirror_regression_only": "v486-R120"
   },
   "git_sync": {
     "mode": "IMMEDIATE_VALIDATED_UPDATE_SYNC_WITH_BOUNDED_FAILURE_HANDLING",
@@ -51,11 +53,56 @@
     "per_version_sync": true,
     "coalesce_intermediate_versions": false,
     "ordinary_turn_sync_attempts_max": 2,
-    "current_runtime": "v481-R115",
-    "current_git_runtime_mirror": "v481-R115",
-    "persistence_git": "IN_SYNC",
-    "pending_target": null,
-    "runtime_match": "PASS_EXACT_V481_R115_76_OF_76",
-    "note": "Runtime repository is authoritative: exact v481 portable artifact and Git 01-App source mirror agree 76/76. A2-L15 Stage6 accepted on exact v481."
+    "current_runtime": "v501-R135",
+    "current_git_runtime_mirror": "v486-R120",
+    "persistence_git": "PENDING",
+    "pending_target": "v501-R135",
+    "runtime_match": "PENDING_V501_SOURCE_SYNC",
+    "note": "As of current official app pin, user-accepted v501 portable is CURRENT, Git 01-App mirror remains v486 (PENDING_V501_SOURCE_SYNC). A green Git-mirror consumer profile must be labeled legacy regression only."
+  },
+  "previous_stale_snapshot": {
+    "observed_at": "2026-10-14",
+    "current_runtime": {
+      "version": "v481-R115",
+      "verification_state": "PASS_SCOPED_POSTPACKAGE__A2_L15_STAGE6_PASS_WITH_ENVIRONMENT_BOUNDARY",
+      "release_final": false,
+      "artifact": "GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
+      "sha256": "25fb62432bc5d123bcd59f7194b9503490ac1c8a0435f582172f1f19b28b30b4",
+      "development_and_integration_base": true,
+      "library_path": "/German-Flashcards-Pro/Checkpoints/GFP-v481-R115-MULTI-MEMBERSHIP-RESTORE.zip",
+      "library_file_id": "file_00000000f06c824683e9d9066d293203",
+      "library_stable_id": "libfile_302320cb521c8191ae45369dd5cb9989",
+      "portable_materialized_sha256_verified": true,
+      "current_materialization_note": "PASS: exact CURRENT v481-R115 bytes verified for A2-L15 Stage6; target 34/34 + cumulative 58/58 PASS_WITH_ENVIRONMENT_BOUNDARY."
+    },
+    "last_fully_verified_runtime": {
+      "version": "v466-R100",
+      "verification_state": "VERIFIED",
+      "release_final": true,
+      "regression_reference": true,
+      "development_and_integration_base": false
+    },
+    "git_sync": {
+      "mode": "IMMEDIATE_VALIDATED_UPDATE_SYNC_WITH_BOUNDED_FAILURE_HANDLING",
+      "mirror_target": "CURRENT",
+      "actual_sync_may_lag": true,
+      "per_version_sync": true,
+      "coalesce_intermediate_versions": false,
+      "ordinary_turn_sync_attempts_max": 2,
+      "current_runtime": "v481-R115",
+      "current_git_runtime_mirror": "v481-R115",
+      "persistence_git": "IN_SYNC",
+      "pending_target": null,
+      "runtime_match": "PASS_EXACT_V481_R115_76_OF_76",
+      "note": "Runtime repository is authoritative: exact v481 portable artifact and Git 01-App source mirror agree 76/76. A2-L15 Stage6 accepted on exact v481."
+    }
+  },
+  "snapshot_semantics": {
+    "role": "CACHED_READBACK_ONLY__NOT_STAGE6_AUTHORITY",
+    "authoritative_live_read": "hosseinmehdizade-tech/German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json",
+    "source_pin_git_blob": "4220fee2ee0dd762932397dcbf3467b197ed5cc2",
+    "instruction": "For every Stage6/7 import/runtime compatibility task re-fetch latest app CURRENT and LAST_FULLY_VERIFIED; never treat this cross-repo snapshot as a live lock, release approval or a reason to downgrade.",
+    "mirror_status": "Git 01-App is v486-R120, portable CURRENT is v501-R135; no real v501 Stage6 acceptance proved by v486 Git mirror regression",
+    "expires_when": "Any newer authenticated current_runtime or changed app pin blob is observed"
   }
 }

@@ -527,7 +527,7 @@ def validate_candidate(stage3: dict, stage4: dict) -> list[str]:
             seen.add(uid)
             if not valid_pins or uid not in unit_pins or review["unit_sha256"] != unit_pins[uid]:
                 errors.append(f"Stage4 per-unit disposition stale/unknown SHA: {uid}")
-            if review["disposition"] not in allowed:
+            if not isinstance(review["disposition"], str) or review["disposition"] not in allowed:
                 errors.append(f"Stage4 unknown per-unit disposition: {uid}")
             elif review["disposition"] in {"HOLD_WITH_SPECIFIC_EVIDENCE", "CORRECT_WITH_BEFORE_AFTER"}:
                 # A final pass cannot treat a held item as closed, or claim

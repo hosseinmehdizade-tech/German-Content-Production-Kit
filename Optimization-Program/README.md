@@ -53,3 +53,22 @@ Change only substantive status/count/evidence after verified work. Each work pac
 No arbitrary percentage scores or fictional elapsed-time/savings numbers. Never claim Git-backed VERIFIED unless actual write and readback have succeeded.
 
 **Deutscher Leitsatz:** *Weniger Verwaltung, bessere Lerninhalte, nachvollziehbare Ergebnisse.*
+
+
+## Scoped optimization cycle handoff — 2026-10-29
+
+**Decision:** Close the *bounded non-destructive optimization pass* and return ordinary ChatGPT `ادامه بده` work to the user's active German learning content / app-delivery workstream. This is **not** a global Stage1–7 content PASS, a release, or a declaration that every OP ticket is complete. Do not reopen this coordination audit just to generate another report.
+
+| Package | Verified exit / remaining boundary |
+| --- | --- |
+| OP-01 | Existing `EDIT-APPLY-VERIFICATION-CONTRACT.json` is `ACTIVE_USER_REAFFIRMED` and `EXECUTION-OUTCOME-EFFICIENCY-POLICY.json` is `ENFORCED`. Global writer-by-writer enforcement and final conflict consolidation are not proven; address only when a specific affected current editor/writer needs it. |
+| OP-02 | Stage3–Stage4 metadata-compatibility CI is green **for proposed metadata compatibility**, not Stage5/6/7 global acceptance. Structural migration is explicitly deferred pending authority/compatibility/approval evidence. No contract promotion. |
+| OP-03 | Existing safe ZIP builder regressions PASS; old exceptional builders remain frozen until separately examined. |
+| OP-04 | Generated 17-workstream route index + missing-path flags and Windows/Linux CI PASS. Index does not replace exact LATEST/CHECKPOINT / user artifact. |
+| OP-05 | Library native-item raw bytes are unavailable for verifying two independently named copies; same size/name is NOT a duplicate proof. Zero files deleted; conditional upper bound ≠ reclaimable storage. Exact B1 13-part Google Drive backup is independently recoverable. HOLD until a file-ID-bound exact hash readback and specific deletion approval. |
+| OP-06 | CURRENT `v486-R120` unchanged. Chromium cache and CI contract tests PASS; full CURRENT engineering CI [40801533977](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40801533977) PASS. The first cold-cache run took 7m02s (workflow created→updated) versus historical median ~5m39s; **no speedup established**. Only evaluate a future natural cache-hit run, don't trigger bulk rebuilds for statistics. |
+| OP-07 | Cross-repo **scoped evidence review** completed: app CURRENT gate, app ZIP Ubuntu/Windows, content ZIP Ubuntu/Windows, route Ubuntu/Windows, Stage3/4 compatibility Ubuntu/Windows all PASS. It does not verify every content workstream or qualify a new final release. |
+
+**Restart triggers, not default work:** exact newly available Library byte/hash proof; failed CI/proven regression; approved architecture migration with rollback and current writer/consumer map; new explicit user instruction to resume optimization. Otherwise proceed with actual German content production and app functionality as dictated by their *own* latest authority and checkpoints. Never skip the mandatory two-repository startup when relevant, never downgrade a newer user artifact, and preserve LOCKED/source and the established UI.
+
+**Evidence pointers:** App CURRENT [40801533977](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40801533977), app ZIP [40801533968](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40801533968), content ZIP [40799073055](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40799073055), routes [40802536961](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40802536961), metadata compatibility [40802480438](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40802480438). Machine state below and issue #25 retain exact status, not a fictional all-green result.

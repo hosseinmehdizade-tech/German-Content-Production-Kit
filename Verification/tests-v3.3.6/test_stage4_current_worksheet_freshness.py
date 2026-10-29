@@ -17,6 +17,10 @@ def fixture():
       "english_gloss":"answer","core":{"auxiliary":"haben"},
       "examples":[{"text":"Ich antworte dir.","translations":[{"lang":"fa-IR","text":"پاسخ می‌دهم."},
           {"lang":"en-US","text":"I answer you."}]}],
+      "senses":[{"id":"sense-01","meaning_fa":"پاسخ دادن","gloss_en":"answer"}],
+      "provenance":{"sources":[
+          {"source_kind":"book","locator":"ahl-a1a2-p004-001 (PDF p.4)"},
+          {"source_kind":"generated","locator":"not a book citation"}]},
       "details":{"rection":["jdm. antworten"],
                  "kombinationen":[{"text_de":"auf Fragen antworten"}],
                  "lexical_relations":[{"kind":"synonym","term_de":"erwidern"}]}
@@ -61,6 +65,36 @@ def test_stale_frozen_field_blocks(field):
     assert r["status"]=="STALE_WORKSHEET_BLOCKS_STAGE4"
     assert r["affected_units"]==1 and r["drifts_by_field"][field]==1
     assert not r["stage4_semantic_pass"]
+
+
+@pytest.mark.parametrize("field", ["senses_json", "source_book_locators_json"])
+def test_stale_source_book_or_sense_inventory_is_detected(field):
+    c, w, _ = fixture()
+    d = json.loads(c)
+    unit = d["learning_units"][0]
+    if field == "senses_json":
+        unit["senses"][0]["gloss_en"] = "reply"
+    else:
+        unit["provenance"]["sources"][0]["locator"] = "ahl-a1a2-p005-002 (PDF p.5)"
+    c = json.dumps(d, ensure_ascii=False).encode("utf-8")
+    result = run(c, w)
+    assert result["status"] == "STALE_WORKSHEET_BLOCKS_STAGE4"
+    assert result["affected_units"] == 1
+    assert result["drifts_by_field"][field] == 1
+    assert result["stage4_semantic_pass"] is False
+
+
+def test_generated_citation_not_counted_as_original_book_locator():
+    c, w, _ = fixture()
+    d = json.loads(c)
+    d["learning_units"][0]["provenance"]["sources"][1]["locator"] = "new authored example"
+    changed = json.dumps(d, ensure_ascii=False).encode("utf-8")
+    result = run(changed, w)
+    assert result["status"] == "CURRENT_WORKSHEET_ONLY_STAGE4_REVIEW_NOT_CERTIFIED"
+    assert result["affected_units"] == 0
+    assert result["stage4_semantic_pass"] is False
+
+
 
 def test_external_byte_pin_mismatch_blocks():
     c,w,_=fixture()

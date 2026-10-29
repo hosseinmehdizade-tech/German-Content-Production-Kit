@@ -32,6 +32,20 @@ def sample_candidate():
         "risk_queue_total": 2, "risk_queue_closed": 2, "risk_queue_open": 0,
         "deterministic_scanned_units": 2,
         "independent_semantic_challenge_units": 2,
+        "unit_dispositions": [
+            {"unit_id": uid, "unit_sha256": sha, "disposition": "KEEP_WITH_REASON",
+             "reason": "Source-checked lexical sense and translation retained",
+             "evidence_ref": f"synthetic-review-{uid}",
+             "source_locator": f"mock-pdf-page-{index}"}
+            for index, (uid, sha) in enumerate(pins.items(), 1)
+        ],
+        "seeded_negative_control": {
+            "unit_id": "unit-1",
+            "expected_fault": "wrong case",
+            "detected_fault": "wrong case",
+            "result": "DETECTED",
+            "evidence_ref": "synthetic-adversarial-check"
+        },
         "adversarial_method_evidence": "second-pass:source-challenge:receipt",
         "source_challenge": True, "stage4_result": "PASS", "downstream_stage5_6_7_unmodified": True,
     }

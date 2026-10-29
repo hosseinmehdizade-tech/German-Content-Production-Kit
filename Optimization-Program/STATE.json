@@ -64,7 +64,7 @@
       "id": "OP-05",
       "title": "Library storage baseline and safe deduplication",
       "status": "IN_PROGRESS_EXPANDED_INVENTORY__HASH_AND_RECOVERY_PROOF_BLOCKED",
-      "last_evidence": "Live Library recursive size-sorted listings, 8 pages each for /Flasch kart and /German-Content-Production-Kit/Checkpoints, 2026-10-29; source registry and B1 24-lesson release receipts crosschecked.",
+      "last_evidence": "13/13 independently downloaded Google Drive chunks and full release SHA-256 PASS, recorded in issue #25 comment 6484949834",
       "next_action": "Resume with independently authorized Library raw-byte hash/readback for top candidate IDs and current snapshot dependency graph; distinguish registered grammar source PDF SHA from new uploaded PDF. No deletion based on metadata.",
       "blocker": "Library native files cannot be materialized as exact raw bytes in this Project; original uploaded audio/PDF bytes were hashable but do not prove same-byte identity of two Library records. Library recheck and explicit per-file deletion approval required."
     },
@@ -435,6 +435,14 @@
       }
     ],
     "not_deletion_proof": "Git receipt sha256 for an intended archive and exact file size in a Library listing do not authenticate every Library copy. Do not infer two different library_file_id copies have identical bytes.",
-    "next_proof": "Library raw-byte readback or authorized export per exact library_file_id + fresh ID/path check, SHA-256 pair match, dependency/keeper proof, explicit deletion approval."
+    "next_proof": "Library raw-byte readback or authorized export per exact library_file_id + fresh ID/path check, SHA-256 pair match, dependency/keeper proof, explicit deletion approval.",
+    "drive_13part_verification": {
+      "status": "PASS_INDEPENDENT_RAW_BYTE_HASH_AND_REASSEMBLY",
+      "parts": 13,
+      "bytes": 213216245,
+      "sha256": "bada18c9ca05b99a5504e9fee7d2db7daf1b7367cc8b0065940c76c3f0fd93bb",
+      "scope": "Google Drive documented 13-part backup only; ChatGPT Library copy identity not verified",
+      "github_issue_comment_id": 6484949834
+    }
   }
 }

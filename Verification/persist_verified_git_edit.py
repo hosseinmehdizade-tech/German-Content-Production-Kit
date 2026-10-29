@@ -3,7 +3,8 @@
 
 This is a narrow working-data writer, NOT a release/Stage4-7 gate or Library writer.
 No default workstream mutation: execution needs an explicit proof, path, expected
-remote blob SHA and GITHUB_TOKEN. Original sources and LOCKED paths are forbidden.
+remote blob SHA, GITHUB_TOKEN and a separate exact-scope Git allowlist grant.
+Original sources and LOCKED paths are forbidden.
 """
 from __future__ import annotations
 
@@ -25,6 +26,8 @@ REPOSITORY = "hosseinmehdizade-tech/German-Content-Production-Kit"
 MAX_TEXT_BYTES = 1_000_000
 HEX40 = re.compile(r"[0-9a-f]{40}\Z")
 SAFE_SEGMENT = re.compile(r"[A-Za-z0-9._-]+\Z")
+SCOPE_PATH = "Optimization-Program/WRITER-SCOPES.json"
+SCOPE_SCHEMA = "gcpk-remote-git-writer-scopes@1"
 
 
 class PersistenceBlocked(Exception):
@@ -102,6 +105,46 @@ def github_api(method: str, path: str, branch: str, token: str, payload: dict | 
     return response
 
 
+def verify_remote_scope(payload: dict, *, proof: dict, proof_bytes: bytes,
+                        path: str, branch: str, parent_sha: str,
+                        current: bytes) -> tuple[str, str]:
+    """Match an independently stored exact-scope allowlist; never auto-authorize.
+
+    A grant is separate Git state, not a certificate of the user's identity,
+    independent Stage4, or an atomic cross-file revocation guarantee.
+    """
+    raw, registry_blob = decode_github_file(payload)
+    try:
+        registry = json.loads(raw)
+    except (UnicodeError, ValueError) as exc:
+        raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_INVALID_JSON") from exc
+    if not isinstance(registry, dict) or registry.get("schema") != SCOPE_SCHEMA:
+        raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_BAD_SCHEMA")
+    if registry.get("status") != "ACTIVE_SCOPED_GRANTS":
+        raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_DENY_ALL")
+    entries = registry.get("scopes")
+    if not isinstance(entries, list):
+        raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_MALFORMED")
+    expected = {
+        "status": "APPROVED",
+        "workstream": proof.get("workstream"),
+        "artifact_id": proof.get("artifact_id"),
+        "path": path,
+        "branch": branch,
+        "expected_parent_blob_sha": parent_sha,
+        "approved_current_sha256": digest(current),
+        "approved_proof_sha256": digest(proof_bytes),
+        "source_sha256": proof.get("sha256", {}).get("source_before"),
+    }
+    matches = [e for e in entries if isinstance(e, dict)
+               and all(e.get(key) == value for key, value in expected.items())
+               and isinstance(e.get("authorization_ref"), str)
+               and e["authorization_ref"].strip()]
+    if len(matches) != 1:
+        raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_NO_EXACT_APPROVED_GRANT")
+    return registry_blob, matches[0]["authorization_ref"]
+
+
 def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
             *, branch: str = "main", api=github_api) -> dict:
     verify_target(path, branch)
@@ -121,6 +164,13 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
     if (len(before) > MAX_TEXT_BYTES or len(current) > MAX_TEXT_BYTES
             or before == current):
         raise PersistenceBlocked("GIT_TEXT_ONLY: too large or no actual edit")
+    # Distinct authenticated Git configuration defaults to deny-all. The grant
+    # pins the exact proof, source, target, parent and candidate byte hashes.
+    proof_bytes = proof_file.read_bytes()
+    registry_sha, approval_ref = verify_remote_scope(
+        api("GET", SCOPE_PATH, branch, token), proof=proof,
+        proof_bytes=proof_bytes, path=path, branch=branch,
+        parent_sha=expected_blob_sha, current=current)
     old_data, actual_sha = decode_github_file(api("GET", path, branch, token))
     if actual_sha != expected_blob_sha or old_data != before:
         raise PersistenceBlocked("STALE_CURRENT: remote mutable bytes/parent blob differ; no write")
@@ -144,6 +194,9 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
         "repository": REPOSITORY, "path": path, "branch": branch,
         "workstream": proof["workstream"], "artifact_id": proof["artifact_id"],
         "old_blob_sha": actual_sha, "new_blob_sha": new_sha,
+        "scope_registry_path": SCOPE_PATH, "scope_registry_blob_sha": registry_sha,
+        "scope_authorization_ref": approval_ref,
+        "scope_is_independent_user_approval_proof": False,
         "parent_sha256": digest(before), "current_sha256": digest(current),
         "remote_readback_sha256": digest(remote_data),
         "commit_sha": written["commit"]["sha"],

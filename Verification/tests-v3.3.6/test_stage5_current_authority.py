@@ -237,7 +237,7 @@ def test_rehashed_whole_zip_with_damaged_internal_sums_blocks(built, mutation):
 
 
 def test_deeply_nested_json_returns_blocked_not_exception(built):
-    deeply_nested = ("[" * 1200 + "0" + "]" * 1200).encode("utf-8")
+    deeply_nested = ("[" * 10000 + "0" + "]" * 10000).encode("utf-8")
     result = verify(
         deeply_nested, digest(deeply_nested),
         WORKSTREAM, ARTIFACT, SOURCE_SHA, PARENT_SHA,

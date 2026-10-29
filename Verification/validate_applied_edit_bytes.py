@@ -84,6 +84,8 @@ def item_diff(before: dict, after: dict, nested_columns: list[str]) -> set[str]:
             if key not in before or key not in after:
                 changed.add(key)
                 continue
+            if before[key] == after[key]:
+                continue
             if not isinstance(before[key], str) or not isinstance(after[key], str):
                 raise ValueError("nested columns must hold JSON text")
             try:

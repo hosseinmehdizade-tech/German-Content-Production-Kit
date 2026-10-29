@@ -13,6 +13,7 @@ def sample_candidate():
     facets["combinations"] = {"decision": "DONE", "visible_items": 0,
                               "close": "CLOSED_NO_FORCE",
                               "reason": "No incremental teaching value"}
+    pins = {"unit-1": "c"*64, "unit-2": "d"*64}
     s3 = {
         "input_sha256": "a"*64, "output_sha256": "b"*64,
         "source_authority": "source-exact:test", "stage3_method": "PRODUCTION_METHOD_A",

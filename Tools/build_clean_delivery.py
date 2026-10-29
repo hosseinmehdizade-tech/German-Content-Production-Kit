@@ -90,6 +90,11 @@ selected=(direct,canonical,mapping,qa)
 if len({p.resolve() for p in selected})!=len(selected):
     raise SystemExit("required delivery role file reused for multiple roles")
 
+# Pin *all four* selected source files before the original TSV validation.
+# The later stage must contain these exact bytes, not files reopened at a
+# different point in time. This is snapshot integrity, NOT CURRENT issuer proof.
+selected_pins={p:sha256(p) for p in selected}
+
 with direct.open(encoding="utf-8-sig",newline="") as f:
     rows=list(csv.DictReader(f,delimiter="\t"))
 if not rows: raise SystemExit("direct import TSV is empty")
@@ -136,8 +141,35 @@ if validation.returncode:
 with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
     root=Path(td)/"CONTENT-DELIVERY"
     root.mkdir()
-    for p in [direct,canonical,mapping,qa]:
+    for p in selected:
+        if p.is_symlink() or not p.is_file():
+            raise SystemExit("Stage5 selected input changed before copy: "+p.name)
         shutil.copy2(p,root/p.name)
+        # Fail closed if any source changed while validating/copying, or if
+        # copied bytes do not match the initially selected source snapshot.
+        if (sha256(root/p.name)!=selected_pins[p] or p.is_symlink()
+                or not p.is_file() or sha256(p)!=selected_pins[p]):
+            raise SystemExit("Stage5 selected input changed during staging: "+p.name)
+
+    # The packaged TSV is the staged copy. Validate that exact copy, not
+    # just the mutable original that may have been changed after validation.
+    staged_direct=root/direct.name
+    staged_validation=subprocess.run(
+        [sys.executable,str(validator),str(staged_direct)],
+        text=True,capture_output=True
+    )
+    if staged_validation.returncode:
+        raise SystemExit(
+            "Stage5 staged direct import failed independent validation:\n"
+            + staged_validation.stdout + staged_validation.stderr
+        )
+    # Re-read the source role set once before ZIP publication; the ZIP itself
+    # will contain only the pinned, validated staging files.
+    for p in selected:
+        if (p.is_symlink() or not p.is_file()
+                or sha256(p)!=selected_pins[p]
+                or sha256(root/p.name)!=selected_pins[p]):
+            raise SystemExit("Stage5 selected input changed before ZIP: "+p.name)
 
     manifest={
       "artifact_type":"clean-content-delivery",

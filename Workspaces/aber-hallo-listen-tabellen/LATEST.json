@@ -1,10 +1,10 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "aber-hallo-listen-tabellen",
-  "status": "CURRENT_WIP47_MAIN_CANONICAL_AND_IMPORT_485_REKTION_QA_INTEGRATED_338_HOLDS_STAGE4_OPEN",
-  "latest_milestone": "WIP47_APPLY_ALL_APPROVED_LEXICAL_REKTION_QA_TO_MAIN_FILES",
-  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/44-wip47-main-master-integration/WIP47-MASTER-CANONICAL-IMPORT-ALL-824-LEDGER-DECISIONS-2026-10-29.json",
-  "latest_receipt_commit_sha": "ded64e8c1ac0280b928fb62b4d6d382dcfe97584",
+  "status": "CURRENT_WIP48_26_NEW_DUDEN_OUTSIDE_824_LEDGER_511_ATTESTED_338_HOLDS_135_OUTSIDE_STAGE4_OPEN",
+  "latest_milestone": "WIP48_26_FRESH_DICTIONARY_PATTERN_CHECKS_APPLIED_TO_MAIN_CANONICAL_AND_IMPORT",
+  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/45-wip48-outside-ledger-duden/WIP48-26-DUDEN-OUTSIDE-LEDGER-511-ATTESTED-2026-10-29.json",
+  "latest_receipt_commit_sha": "d03df28aae516f6e1652dd806e451cc7393dbc5b",
   "authority": {
     "state": {
       "filename": "WORKING-STATE.json",
@@ -187,12 +187,12 @@
     "stage4_expert_gate_deprecated_v1": "INSECURE_UNREVIEWED_CELLS_UNSCANNED",
     "stage4_expert_gate_v1_1_folder": "German-Flashcards-Pro-Backup-Vault/03-Active-Working/Aber-Hallo/Stage4-Expert-Gate-v1.1-2026-10-23",
     "current_portable": {
-      "filename": "Aber-Hallo-WIP47-MASTER-CANONICAL-IMPORT-REKTION-QA-INTEGRATED-2026-10-29.zip",
-      "sha256": "c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f",
-      "drive_id": "1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL",
-      "drive_url": "https://drive.google.com/file/d/1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL/view",
-      "canonical_sha256": "476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0",
-      "import_sha256": "704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff",
+      "filename": "Aber-Hallo-WIP48-26-DUDEN-OUTSIDE-LEDGER-MASTER-INTEGRATED-2026-10-29.zip",
+      "sha256": "c45882011ab0848fac4be211c760d92b0d7d1f7b4d4e6bfae9c87e6cb5279431",
+      "drive_id": "1jh9394l9eFYvy4i53B4x1dI8p787l4u7",
+      "drive_url": "https://drive.google.com/file/d/1jh9394l9eFYvy4i53B4x1dI8p787l4u7/view",
+      "canonical_sha256": "e4a920fa7def8b14639620be0946e55d6da9c1165325100a6db25cc629b5e543",
+      "import_sha256": "dbcf6aa03cd7292244c028febac6ec253c7ef688e21772f644eea008966a873d",
       "source": "GOOGLE_DRIVE_PORTABLE_SHA_VERIFIED",
       "stage4": "OPEN"
     },
@@ -323,6 +323,16 @@
       "import_sha256": "866b0939812dd1189057e8d55b7a0d1f991648ccf391cff54b6969b8e041d648",
       "source": "GOOGLE_DRIVE_PORTABLE_SHA_VERIFIED",
       "stage4": "OPEN"
+    },
+    "previous_current_portable_before_wip48": {
+      "filename": "Aber-Hallo-WIP47-MASTER-CANONICAL-IMPORT-REKTION-QA-INTEGRATED-2026-10-29.zip",
+      "sha256": "c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f",
+      "drive_id": "1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL",
+      "drive_url": "https://drive.google.com/file/d/1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL/view",
+      "canonical_sha256": "476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0",
+      "import_sha256": "704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff",
+      "source": "GOOGLE_DRIVE_PORTABLE_SHA_VERIFIED",
+      "stage4": "OPEN"
     }
   },
   "repair_scope": {
@@ -446,12 +456,12 @@
     "stage4_owner_ai_review": "CLOSED_OWNER_WAIVER_788_OF_788_MODEL_SCOPED"
   },
   "quality_boundary": [
-    "All 824 WIP46 Rektion case ledger decisions were mapped into active current master and importer by exact card ID + full German pattern, NOT blindly by ordinal; 10 historical display ordinals differ from current canonical order and were realigned without changing teaching text.",
-    "Actual current canonical contains 984 Rektion strings: 485 source-attested patterns with their exact dictionary URLs (484 Duden, 1 IDS grammis), 338 evidence-held, 161 patterns outside original 824-case ledger (not approved by this scope), plus 1 original historical orphan not inserted.",
-    "Current 788 canonical learning units and 787 TSV importer records updated in metadata.rektion_qa, custom_fields.rektion_qa, nested canonical_unit; all existing learner-facing text/translation/exercises/collocations/relations/source PDFs are unchanged.",
-    "Official ZIP verifier PASS_SCOPED zero errors, 347 members; WIP47 actual post-edit exact parent semantic-diff test PASS_SCOPED; all three Google Drive raw readback artifact bytes/sha exact.",
-    "Stage4 whole independent-method AI full source/FA/EN semantic validation OPEN; Stage5/6/7 NOT_RUN on this exact ZIP; current runtime pin v486-R120 only for future compatibility.",
-    "Prior WIP46 immutable; all subsequent work must use exact WIP47 portable or separate canonical/import SHA, never silently downgrade. No significant UI change."
+    "Current canonical 984 Rektion patterns: 485 previously case/sense attested preserved, 26 new source-confirmed out of previous 161 outside historical ledger, 338 historical evidence HOLD untouched, and 135 outside-ledger still unverified; 1 historical stale orphan excluded. Total 511 case-level attested. No Stage4 FINAL.",
+    "26 exact card ID + full German pattern matches to 26 source-inspected Duden lemma pages; evidence paraphrase and same-card four DE/FA/EN examples in 44-WIP48-26-EXTERNAL-ADJUDICATION. One beistimmen unresolved from insufficient Duden lemma case example intentionally not promoted.",
+    "Updated actual current 788-unit Canonical metadata.rection_qa and 787-row importer custom_fields.rection_qa with nested canonical parity; NO display text, German case patterns, meanings, examples, combinations, relations, original PDF or LOCKED modifications.",
+    "WIP48 exact post-edit regression against WIP47 PASS_SCOPED; official full-package verifier PASS_SCOPED zero errors and 352 exact ZIP member CRC+manifest+sha checks pass.",
+    "All three Drive artifacts uploaded, authenticated raw fetched, locally materialized and full bytes+SHA256 equality PASS; no Library overwrite/deletion.",
+    "Whole Stage4 independent-method AI source/trilingual translation and adversarial acceptance still OPEN; Stage5/Stage6 current runtime v486-R120/Stage7 NOT_RUN."
   ],
   "progress": {
     "reviewed_lexical": 787,
@@ -464,8 +474,8 @@
     "stage4_priority_flagged_card_ids": 132
   },
   "historical_locked_release_untouched": true,
-  "git_persistence": "PASS_GIT_RECEIPT_AND_CAS_POINTER_PLUS_3_DRIVE_ARTIFACTS_EXACT_BYTE_READBACK",
-  "parent_major_stage_state": "IN_PROGRESS_STAGE4_REKTION_QA_APPLIED_TO_MAIN_FILES_338_HOLD_PLUS_161_OUTSIDE_824_CASE_LEDGER_NO_FULL_AI_ADVERSARIAL_PASS",
+  "git_persistence": "PASS_RECEIPT_GITHUB_CAS_AND_THREE_EXACT_DRIVE_SHA256_READBACKS",
+  "parent_major_stage_state": "IN_PROGRESS_STAGE4_338_HISTORICAL_CASE_HOLDS_135_OUTSIDE_LEGACY_LEDGER_PATTERNS_AND_FULL_AI_ADVERSARIAL_SEMANTIC",
   "integrated_working_authority": {
     "status": "CURRENT_CONTENT_WIP__LIBRARY_VERIFIED",
     "filename": "Aber-Hallo-CURRENT-Working-Integrated-2026-10-24.zip",
@@ -486,18 +496,18 @@
     "source_pdfs_and_locked": "IMMUTABLE",
     "sha_readback": "PASS"
   },
-  "next_action": "Resume WIP47 exact ZIP c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f Drive 1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL. Main Canonical SHA 476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0 Drive 1sJrxjgvJMd5lZfm2Zr3sG1S59t9EbCj3, import TSV SHA 704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff Drive 1TWmgfs0ukBjHleQieVf5WY56VqAy6qpi. Continue 338 original evidence HOLD and independent method QA for 161 additional patterns outside 824 ledger, full 788-unit semantic/trilingual source Stage4; only after real gate run Stage5 Stage6 runtime v486-R120 Stage7.",
+  "next_action": "Resume exact WIP48 ZIP SHA c45882011ab0848fac4be211c760d92b0d7d1f7b4d4e6bfae9c87e6cb5279431 Drive 1jh9394l9eFYvy4i53B4x1dI8p787l4u7; master Canonical SHA e4a920fa7def8b14639620be0946e55d6da9c1165325100a6db25cc629b5e543 Drive 1hd4-7uceuhbFO59g858O8tc0vR0Q9luD, import TSV SHA dbcf6aa03cd7292244c028febac6ec253c7ef688e21772f644eea008966a873d Drive 1t7PsIuV4XTro3M4DRdaMuTQWxAHPgnFm. Continue 338 old HOLD and 135 not adjudicated outside 824 source ledger; full current-hash 788-unit AI source-FA-EN semantic Stage4 then Stage5 Stage6 current v486-R120 Stage7. Preserve frozen sources and UI.",
   "complete_working_content_package": {
-    "name": "Aber-Hallo-WIP47-MASTER-CANONICAL-IMPORT-REKTION-QA-INTEGRATED-2026-10-29.zip",
-    "sha256": "c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f",
-    "bytes": 7137389,
-    "member_count": 347,
-    "drive_id": "1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL",
-    "drive_url": "https://drive.google.com/file/d/1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL/view",
+    "name": "Aber-Hallo-WIP48-26-DUDEN-OUTSIDE-LEDGER-MASTER-INTEGRATED-2026-10-29.zip",
+    "sha256": "c45882011ab0848fac4be211c760d92b0d7d1f7b4d4e6bfae9c87e6cb5279431",
+    "bytes": 7255554,
+    "member_count": 352,
+    "drive_id": "1jh9394l9eFYvy4i53B4x1dI8p787l4u7",
+    "drive_url": "https://drive.google.com/file/d/1jh9394l9eFYvy4i53B4x1dI8p787l4u7/view",
     "drive_readback": "PASS_EXACT_SHA256_AND_BYTES",
-    "canonical_sha256": "476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0",
-    "import_sha256": "704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff",
-    "source_wip46_sha256": "a8e706f364959b975564c94ae9c573ecb0d60abd3d3c4b020ee0efc3bc8739c2",
+    "canonical_sha256": "e4a920fa7def8b14639620be0946e55d6da9c1165325100a6db25cc629b5e543",
+    "import_sha256": "dbcf6aa03cd7292244c028febac6ec253c7ef688e21772f644eea008966a873d",
+    "source_wip47_sha256": "c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f",
     "stage4": "OPEN",
     "stage5_6_7": "NOT_RUN",
     "library_status": "QUOTA_FULL_NO_DELETION"
@@ -2323,6 +2333,41 @@
       "drive_id": "1TWmgfs0ukBjHleQieVf5WY56VqAy6qpi",
       "drive_url": "https://drive.google.com/file/d/1TWmgfs0ukBjHleQieVf5WY56VqAy6qpi/view",
       "readback": "PASS_SHA256_AND_BYTE_EQUALITY"
+    }
+  },
+  "previous_wip48_source_current": {
+    "status": "CURRENT_WIP47_MAIN_CANONICAL_AND_IMPORT_485_REKTION_QA_INTEGRATED_338_HOLDS_STAGE4_OPEN",
+    "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/44-wip47-main-master-integration/WIP47-MASTER-CANONICAL-IMPORT-ALL-824-LEDGER-DECISIONS-2026-10-29.json",
+    "complete_working_content_package": {
+      "name": "Aber-Hallo-WIP47-MASTER-CANONICAL-IMPORT-REKTION-QA-INTEGRATED-2026-10-29.zip",
+      "sha256": "c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f",
+      "bytes": 7137389,
+      "member_count": 347,
+      "drive_id": "1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL",
+      "drive_url": "https://drive.google.com/file/d/1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL/view",
+      "drive_readback": "PASS_EXACT_SHA256_AND_BYTES",
+      "canonical_sha256": "476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0",
+      "import_sha256": "704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff",
+      "source_wip46_sha256": "a8e706f364959b975564c94ae9c573ecb0d60abd3d3c4b020ee0efc3bc8739c2",
+      "stage4": "OPEN",
+      "stage5_6_7": "NOT_RUN",
+      "library_status": "QUOTA_FULL_NO_DELETION"
+    }
+  },
+  "wip48_master_files": {
+    "canonical": {
+      "filename": "Aber-Hallo-WIP48-CANONICAL-MASTER.json",
+      "sha256": "e4a920fa7def8b14639620be0946e55d6da9c1165325100a6db25cc629b5e543",
+      "drive_id": "1hd4-7uceuhbFO59g858O8tc0vR0Q9luD",
+      "drive_url": "https://drive.google.com/file/d/1hd4-7uceuhbFO59g858O8tc0vR0Q9luD/view",
+      "readback": "PASS_EXACT_BINARY_AND_SHA256"
+    },
+    "import": {
+      "filename": "Aber-Hallo-WIP48-IMPORT.tsv",
+      "sha256": "dbcf6aa03cd7292244c028febac6ec253c7ef688e21772f644eea008966a873d",
+      "drive_id": "1t7PsIuV4XTro3M4DRdaMuTQWxAHPgnFm",
+      "drive_url": "https://drive.google.com/file/d/1t7PsIuV4XTro3M4DRdaMuTQWxAHPgnFm/view",
+      "readback": "PASS_EXACT_BINARY_AND_SHA256"
     }
   }
 }

@@ -152,6 +152,20 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
     claimed_sha = summary.get("stage3c_editorial_sha256")
     if not isinstance(claimed_sha, str) or not HEX.fullmatch(claimed_sha):
         error("EDITORIAL_SUMMARY_SHA_MALFORMED")
+    def reference_archive_sha(ref: dict, id_key: str, sha_key: str) -> str | None:
+        aid = ref.get(id_key)
+        if aid == candidate:
+            # Whole ZIP SHA cannot be embedded within that same ZIP: use the
+            # external exact-sha sidecar and disallow circular in-ZIP digest.
+            if sha_key in ref:
+                error("CIRCULAR_CANDIDATE_ARCHIVE_SHA")
+            return archive_meta.get(candidate)
+        pinned = ref.get(sha_key)
+        if not isinstance(pinned, str) or archive_meta.get(aid) != pinned:
+            error("IMMUTABLE_PREDECESSOR_ARCHIVE_SHA_REQUIRED")
+            return None
+        return pinned
+
     seen_targets = set()
     for target in targets:
         if not isinstance(target, dict):
@@ -184,8 +198,10 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
                 kind = ref["kind"]
                 counts["refs_" + kind.lower()] += 1
                 if kind in {"EDITORIAL_REVIEW", "LOCKED_PARENT"}:
-                    current_sha = ref.get("artifact_sha256") if kind == "EDITORIAL_REVIEW" else ref.get("artifact_snapshot_sha256")
-                    data = evidence(ref.get("archive_id"), ref.get("archive_sha256"),
+                    current_sha = (ref.get("artifact_sha256") if kind == "EDITORIAL_REVIEW"
+                                   else ref.get("member_sha256"))
+                    archive_hash = reference_archive_sha(ref, "archive_id", "archive_sha256")
+                    data = evidence(ref.get("archive_id"), archive_hash,
                                     ref.get("path"), current_sha, kind)
                     if ref.get("target_id") != target_id:
                         error(kind + "_CARD_ID_DRIFT")
@@ -196,18 +212,31 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
                     if data is not None:
                         try:
                             document = json.loads(data)
-                            card_ids = {c["id"] for c in (
-                                document["authored_targets"] if kind == "EDITORIAL_REVIEW" else document
-                            )}
-                            if target_id not in card_ids:
-                                error(kind + "_TARGET_NOT_IN_MEMBER")
+                            cards = (document["authored_targets"]
+                                     if kind == "EDITORIAL_REVIEW" else document)
+                            if not isinstance(cards, list):
+                                raise ValueError("not a list")
+                            cards_by_id = {c["id"]: c for c in cards}
+                            if len(cards_by_id) != len(cards) or target_id not in cards_by_id:
+                                error(kind + "_TARGET_MISSING_OR_DUPLICATE")
+                            elif kind == "LOCKED_PARENT":
+                                # Deliberately specified canonical-record hash;
+                                # legacy artifact_snapshot_sha256 format differs.
+                                row = cards_by_id[target_id]
+                                record = json.dumps(row, ensure_ascii=False,
+                                    sort_keys=True, separators=(",", ":")).encode("utf-8")
+                                if (ref.get("snapshot_sha_scope") != "JSON_CANONICAL_RECORD_V1"
+                                        or ref.get("artifact_snapshot_sha256") != sha(record)):
+                                    error("LOCKED_PARENT_RECORD_DIGEST_MISMATCH")
                         except (ValueError, TypeError, KeyError, UnicodeError):
                             error(kind + "_MALFORMED_TARGET_MEMBER")
                 else:
                     # SOURCE evidence is checked against the captured exact
                     # inventory member; original RAR itself is not reread here.
+                    source_hash = reference_archive_sha(
+                        ref, "source_archive_id", "source_archive_sha256")
                     if (ref.get("source_archive_id") != source.get("archive_id") or
-                            ref.get("source_archive_sha256") != source.get("archive_sha256") or
+                            source_hash != source.get("archive_sha256") or
                             ref.get("source_member_sha256") != source.get("sha256")):
                         error("SOURCE_REFERENCE_NOT_ARCHIVE_BOUND")
                     item = occurrences.get(ref.get("source_occurrence_id"))
@@ -221,6 +250,8 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
             summary.get("dimension_cells") != counts["cells"] or
             summary.get("unresolved_cells") != 0):
         error("STAGE3C_COMPLETENESS_COUNTER_DRIFT")
+    if counts["refs_editorial_review"] == 0:
+        error("EDITORIAL_REVIEW_EVIDENCE_REQUIRED")
     return {
         "schema": "gcpk-stage3c-proof-binding-result@1",
         "status": "PASS_SCOPED_DETERMINISTIC_PROOF_BINDING_ONLY" if not errors else "BLOCKED",

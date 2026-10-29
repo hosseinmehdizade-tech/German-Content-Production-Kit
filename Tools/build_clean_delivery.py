@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import argparse,json,hashlib,zipfile,tempfile,shutil,csv,subprocess,sys,fnmatch
+import argparse,json,hashlib,zipfile,tempfile,shutil,csv,subprocess,sys,fnmatch,re
 from content_package_guard import guarded_zip, check_intent, PackageGuardError
 
 def sha256(p):
@@ -153,11 +153,35 @@ with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
         for x in sorted(root.iterdir()):
             if x.is_file(): z.write(x,arcname=f"{root.name}/{x.name}")
 
+# Portable fresh extraction and exact SHA256SUMS verification.
+# On Windows, GNU sha256sum -c can misread CRLF manifest lines and append
+# a literal carriage return to filenames. Verify bytes directly in Python.
 with tempfile.TemporaryDirectory(prefix="content-fresh-verify-") as td:
     td=Path(td)
-    with zipfile.ZipFile(out) as z: z.extractall(td)
-    root=next(p for p in td.iterdir() if p.is_dir())
-    cp=subprocess.run(["sha256sum","-c","SHA256SUMS.txt"],cwd=root,text=True,capture_output=True)
-    if cp.returncode: raise SystemExit(cp.stdout+cp.stderr)
+    with zipfile.ZipFile(out) as z:
+        if z.testzip() is not None:
+            raise SystemExit("content delivery ZIP CRC mismatch")
+        z.extractall(td)
+    root=td/"CONTENT-DELIVERY"
+    if not root.is_dir() or any(p != root for p in td.iterdir()):
+        raise SystemExit("content delivery unexpected root layout")
+    mpath=root/"SHA256SUMS.txt"
+    if not mpath.is_file():
+        raise SystemExit("content delivery missing SHA256SUMS.txt")
+    expected={}
+    for line in mpath.read_text(encoding="utf-8").splitlines():
+        match=re.fullmatch(r"([0-9a-f]{64})  (.+)",line)
+        if not match:
+            raise SystemExit("content delivery invalid manifest record")
+        digest_value,name=match.groups()
+        if not name or name in expected or Path(name).name!=name:
+            raise SystemExit("content delivery duplicate or unsafe manifest name")
+        expected[name]=digest_value
+    actual={p.name for p in root.iterdir() if p.is_file() and p.name!="SHA256SUMS.txt"}
+    if not expected or actual!=set(expected) or any(p.is_dir() for p in root.iterdir()):
+        raise SystemExit("content delivery manifest inventory mismatch")
+    for name,want in expected.items():
+        if sha256(root/name)!=want:
+            raise SystemExit("content delivery post-package SHA256 mismatch: "+name)
 
 print(json.dumps({"status":"PASS","zip":str(out),"sha256":sha256(out)},ensure_ascii=False))

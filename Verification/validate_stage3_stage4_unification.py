@@ -32,6 +32,55 @@ def load(path: Path) -> dict:
     return value
 
 
+
+def validate_dependency_edges(matrix: dict) -> list[str]:
+    """Fail closed when graph disagrees with per-conflict requires.
+
+    The matrix is a NONACTIVE compatibility proposal. This never promotes
+    a stage, changes user content, or infers implementation approval.
+    """
+    errors = []
+    conflicts = matrix.get("conflicts", [])
+    if not isinstance(conflicts, list) or not all(isinstance(c, dict) for c in conflicts):
+        return ["invalid conflict records"]
+    known = {c.get("id") for c in conflicts if isinstance(c.get("id"), str)}
+    expected_list = []
+    for c in conflicts:
+        child = c.get("id")
+        prerequisites = c.get("requires", [])
+        if not isinstance(prerequisites, list):
+            errors.append(f"invalid requires list: {child}")
+            continue
+        for parent in prerequisites:
+            if not isinstance(parent, str) or parent not in known or parent == child:
+                errors.append(f"invalid required predecessor: {parent}->{child}")
+                continue
+            expected_list.append((parent, child))
+    if len(expected_list) != len(set(expected_list)):
+        errors.append("duplicate requires relationship")
+    expected = set(expected_list)
+
+    edges = matrix.get("dependencies", [])
+    if not isinstance(edges, list):
+        return errors + ["dependency edges must be a list"]
+    seen = set()
+    for edge in edges:
+        if not isinstance(edge, list) or len(edge) != 2 or not all(isinstance(x, str) for x in edge):
+            errors.append("malformed dependency edge")
+            continue
+        pair = tuple(edge)
+        if pair in seen:
+            errors.append(f"duplicate dependency edge: {pair[0]}->{pair[1]}")
+        seen.add(pair)
+        if pair[0] not in known or pair[1] not in known:
+            errors.append(f"unknown graph vertex: {pair[0]}->{pair[1]}")
+        elif pair not in expected:
+            errors.append(f"undeclared dependency edge: {pair[0]}->{pair[1]}")
+    for parent, child in sorted(expected - seen):
+        errors.append(f"graph omits required dependency: {parent}->{child}")
+    return errors
+
+
 def validate_matrix(root: Path) -> list[str]:
     errors = []
     matrix = load(root / MATRIX)
@@ -58,9 +107,7 @@ def validate_matrix(root: Path) -> list[str]:
     for p in matrix.get("source_documents", []):
         if not (root / p).is_file():
             errors.append(f"missing source policy: {p}")
-    for a, b in matrix.get("dependencies", []):
-        if b not in graph.get(a, []):
-            errors.append(f"missing declared dependency {a}->{b}")
+    errors.extend(validate_dependency_edges(matrix))
     seen, active = set(), set()
 
     def walk(n):

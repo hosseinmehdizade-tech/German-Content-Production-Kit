@@ -327,10 +327,16 @@ def test_historical_legacy_editorial_ref_without_version_not_promoted():
     assert "EVIDENCE_ARCHIVE_ID_MALFORMED" in errors(c,a)
 
 
-def test_parent_card_not_present_cannot_be_accepted_as_hash_only():
+def test_parent_ref_wrong_target_does_not_pass_exact_card_identity():
     c,a,data,l = fixture()
     l["targets"][1]["dimensions"]["examples"]["basis_refs"][0]["target_id"] = "missing-parent"
     rewrite_ledger(c,a,data,l)
-    result = errors(c,a)
-    assert "LOCKED_PARENT_CARD_ID_DRIFT" in result
-    assert "LOCKED_PARENT_TARGET_MISSING_OR_DUPLICATE" in result
+    assert "LOCKED_PARENT_CARD_ID_DRIFT" in errors(c,a)
+
+
+def test_parent_target_absent_even_with_self_consistent_ledger_and_ref():
+    c,a,data,l = fixture()
+    l["targets"][1]["id"] = "missing-parent"
+    l["targets"][1]["dimensions"]["examples"]["basis_refs"][0]["target_id"] = "missing-parent"
+    rewrite_ledger(c,a,data,l)
+    assert "LOCKED_PARENT_TARGET_MISSING_OR_DUPLICATE" in errors(c,a)

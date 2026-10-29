@@ -4,6 +4,9 @@ import copy
 import hashlib
 import importlib.util
 import json
+import csv
+import io
+import zipfile
 import tempfile
 import unittest
 from pathlib import Path
@@ -173,6 +176,206 @@ class AppliedEditByteProofTests(unittest.TestCase):
         del self.proof["workstream"]
         self.save_proof()
         self.assert_rejected("missing workstream")
+
+
+class TsvZipProofTests(unittest.TestCase):
+    """All bytes are invented local fixtures; no user content or source changes."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.cols = ["id", "de", "fa", "en"]
+        self.old = [["c1", "sehen", "دیدن", "see"],
+                    ["c2", "lernen", "یاد گرفتن", "learn"]]
+        self.new = copy.deepcopy(self.old)
+        self.new[0][2] = "مشاهده کردن"
+        self.mode = "TSV_ITEMS_V1"
+        self.extra = b"untouched source metadata"
+        self.qa_current = None
+        self.qa_ids = None
+        self.readback_bytes = None
+        self.proof = {
+            "schema": v.SCHEMA, "status": "APPLIED_SCOPED",
+            "workstream": "synthetic-tsv-only", "artifact_id": "CURRENT-TSV",
+            "format": "TSV_ITEMS_V1", "id_column": "id",
+            "applied_count": 1, "edits": [{"id": "c1", "fields": ["fa"]}],
+            "files": {key: key + ".bin" for key in v.FILE_KEYS},
+        }
+        self.proof["member"] = "Lessons/L01.tsv"
+        self.proof["manifest_member"] = "SHA256SUMS"
+        self.save()
+
+    def tsv(self, rows: list[list[str]]) -> bytes:
+        target = io.StringIO(newline="")
+        writer = csv.writer(target, delimiter="\t", lineterminator="\n")
+        writer.writerow(self.cols)
+        writer.writerows(rows)
+        return target.getvalue().encode("utf-8")
+
+    def archive(self, tsv_bytes: bytes, extra: bytes | None = None,
+                *, bad_manifest: bool = False, insert_unrelated: bool = False,
+                extra_name: str = "support/source.txt") -> bytes:
+        payloads = {
+            self.proof["member"]: tsv_bytes,
+            extra_name: self.extra if extra is None else extra,
+        }
+        if insert_unrelated:
+            payloads["another/unrelated.txt"] = b"unpermitted new member"
+        manifest = "".join(
+            f"{'0' * 64 if bad_manifest else sha(data)}  {name}\n"
+            for name, data in sorted(payloads.items())
+        ).encode("utf-8")
+        target = io.BytesIO()
+        with zipfile.ZipFile(target, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+            for name, data in payloads.items():
+                archive.writestr(name, data)
+            archive.writestr("SHA256SUMS", manifest)
+        return target.getvalue()
+
+    def save(self, *, corrupt_current_manifest: bool = False,
+             zip_extra_current: bytes | None = None, extra_new_member: bool = False,
+             raw_readback: bytes | None = None, extra_name: str = "support/source.txt"):
+        parent_raw = self.tsv(self.old)
+        current_raw = self.tsv(self.new)
+        if self.mode == "ZIP_TSV_V1":
+            parent_raw = self.archive(parent_raw)
+            current_raw = self.archive(
+                current_raw, extra=zip_extra_current,
+                bad_manifest=corrupt_current_manifest,
+                insert_unrelated=extra_new_member, extra_name=extra_name)
+        current_sha = sha(current_raw)
+        pointer = {"workstream": self.proof["workstream"],
+                   "artifact_id": self.proof["artifact_id"],
+                   "current_sha256": current_sha}
+        qa = {"result": "PASS", "test_suite": "synthetic-postedit-scope",
+              "assessed_sha256": self.qa_current or current_sha,
+              "changed_ids": sorted(self.qa_ids if self.qa_ids is not None else ["c1"])}
+        data = {
+            "parent": parent_raw, "current": current_raw,
+            "readback": current_raw if raw_readback is None else raw_readback,
+            "source_before": b"original-source-frozen",
+            "source_after": b"original-source-frozen",
+            "qa": json.dumps(qa).encode("utf-8"),
+            "pointer": json.dumps(pointer).encode("utf-8"),
+        }
+        for key, value in data.items():
+            (self.root / self.proof["files"][key]).write_bytes(value)
+        self.proof["sha256"] = {key: sha(data[key]) for key in v.HASH_KEYS}
+        self.proof_file = self.root / "proof.json"
+        self.proof_file.write_text(json.dumps(self.proof, ensure_ascii=False), encoding="utf-8")
+
+    def issues(self):
+        return v.verify(self.proof_file)
+
+    def expect_reject(self, message):
+        found = self.issues()
+        self.assertTrue(any(message in issue for issue in found), found)
+
+    def test_tsv_valid_changed_field_and_readback_pass(self):
+        self.assertEqual(self.issues(), [])
+
+    def test_tsv_unlisted_field_edit_rejected(self):
+        self.new[0][3] = "look"
+        self.save()
+        self.expect_reject("actual changed IDs/fields")
+
+    def test_tsv_unlisted_card_edit_rejected(self):
+        self.new[1][2] = "یادگیری"
+        self.save()
+        self.expect_reject("actual changed IDs/fields")
+
+    def test_tsv_row_reordering_rejected(self):
+        self.new.reverse()
+        self.save()
+        self.expect_reject("card count/order/identity changed")
+
+    def test_tsv_duplicate_stable_id_rejected(self):
+        self.new[1][0] = "c1"
+        self.save()
+        self.expect_reject("duplicate stable IDs")
+
+    def test_tsv_duplicate_headers_rejected(self):
+        self.cols = ["id", "de", "fa", "fa"]
+        self.save()
+        self.expect_reject("TSV missing/duplicate columns")
+
+    def test_tsv_new_column_rejected_as_disallowed_schema(self):
+        self.cols.append("tag")
+        for row in self.old + self.new:
+            row.append("X")
+        self.new[0][-1] = "Y"
+        self.save()
+        self.expect_reject("actual changed IDs/fields")
+
+    def test_tsv_stale_qa_rejected(self):
+        self.qa_current = "f" * 64
+        self.save()
+        self.expect_reject("post-edit QA assessed wrong")
+
+    def test_tsv_missing_or_ragged_row_rejected(self):
+        self.new[0].pop()
+        self.save()
+        self.expect_reject("TSV empty, ragged")
+
+    def test_zip_valid_single_member_edited_pass(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save()
+        self.assertEqual(self.issues(), [])
+
+    def test_zip_unrelated_payload_mutation_rejected_with_valid_manifest(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save(zip_extra_current=b"changed but not declared")
+        self.expect_reject("unrelated ZIP member payload changed")
+
+    def test_zip_additional_member_rejected(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save(extra_new_member=True)
+        self.expect_reject("ZIP member inventory changed")
+
+    def test_zip_incorrect_manifest_hash_rejected(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save(corrupt_current_manifest=True)
+        self.expect_reject("ZIP member SHA256 mismatch")
+
+    def test_zip_untrusted_member_path_rejected(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save(extra_name="../escape.txt")
+        self.expect_reject("unsafe, oversized or malformed members")
+
+    def test_zip_wrong_target_member_rejected(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.proof["member"] = "Lessons/missing.tsv"
+        self.save()
+        # A synthetic fixture can be internally self-consistent for any declared
+        # member: verify a forged pointer to a non-existent member instead.
+        self.proof["member"] = "Lessons/missing-now.tsv"
+        self.proof_file.write_text(json.dumps(self.proof), encoding="utf-8")
+        self.expect_reject("ZIP missing, duplicate, unsafe")
+
+    def test_zip_no_actual_target_change_rejected(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.new = copy.deepcopy(self.old)
+        self.save()
+        self.expect_reject("report-only: CURRENT bytes unchanged")
+
+    def test_zip_readback_mismatch_even_if_all_claimed_hashes_match(self):
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save(raw_readback=b"fake-persisted-other-archive")
+        self.expect_reject("persisted readback differs")
+
+    def test_format_not_declared_rejected_when_tsv_input(self):
+        del self.proof["format"]
+        self.proof_file.write_text(json.dumps(self.proof), encoding="utf-8")
+        self.expect_reject("unverified content format/JSON receipt")
+
 
 
 if __name__ == "__main__":

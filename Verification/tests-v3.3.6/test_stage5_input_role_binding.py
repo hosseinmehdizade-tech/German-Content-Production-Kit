@@ -205,11 +205,11 @@ def test_path_symlink_matching_role_fails_closed_if_supported(built, tmp_path):
 
 
 
-def test_unchanged_real_builder_silently_picks_alphabetically_prior_stale_import(
+def test_active_real_builder_rejects_alphabetically_prior_stale_import(
         built, tmp_path):
-    # Reproduce the concrete process hazard. An otherwise schema-valid stale
-    # A-Universal file wins the old builder's first-match alphabetical sort,
-    # although the freshly authorized-looking Synthetic-Universal still exists.
+    # A second otherwise schema-valid stale Universal file used to win the
+    # active builder's alphabetical first-match selection. The old positive
+    # exploit fixture must now be an explicit regression for a rejected ZIP.
     original = built["input_dir"] / DIRECT
     stale = built["input_dir"] / "A-Universal-older.tsv"
     stale_bytes = original.read_bytes().replace(b"synthetic DE", b"older test DE")
@@ -224,12 +224,9 @@ def test_unchanged_real_builder_silently_picks_alphabetically_prior_stale_import
          str(built["input_dir"]), str(output), "--purpose", "stage5_acceptance"],
         capture_output=True, text=True, timeout=90,
     )
-    assert run.returncode == 0, run.stdout + run.stderr
-    with zipfile.ZipFile(output) as z:
-        m = json.loads(z.read(ZROOT+DELIVERY))
-        assert m["roles"]["direct-import-tsv"] == stale.name
-        assert z.read(ZROOT+stale.name) == stale_bytes
-    # The old builder's local integrity PASS never meant SOURCE-CURRENT PASS.
+    assert run.returncode != 0
+    assert "ambiguous required delivery role: direct-import-tsv" in run.stderr + run.stdout
+    assert not output.exists()
     assert scan_input(built["input_dir"])["status"] == "BLOCKED"
 
 

@@ -183,7 +183,7 @@ def verify(anchor, canonical_bytes:bytes, import_bytes:bytes,
         else:
             sid=locator["source_id"]
             page=locator["page"]
-            if sid not in sources or type(page) is not int or not 1<=page<=sources[sid]["pages"]:
+            if not isinstance(sid,str) or sid not in sources or type(page) is not int or not 1<=page<=sources[sid]["pages"]:
                 errors.append("SOURCE_LOCATOR_INVALID:"+uid)
         disp=review["disposition"]
         if disp not in DISPOSITIONS:

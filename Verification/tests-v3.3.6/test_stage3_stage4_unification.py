@@ -316,6 +316,7 @@ def _private_stage5to7_receipts():
         "PHASE-2-3-4-READINESS-v0.1.json",
         "250-VERBEN-STAGE5-OUTCOME-v1.7.json",
         "250-VERBEN-STAGE7-OUTCOME-v1.7.json",
+        "250-VERBEN-STAGE4-AI-PASS-v1.7.json",
     )
     return [m.load(m.BASE / (prefix + name)) for name in names]
 
@@ -405,3 +406,28 @@ def test_stage5to7_rejects_different_workstream_claim():
     a = _private_stage5to7_receipts()
     a[1]["workstream"] = "another-workstream"
     assert any("mismatched source workstream" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage4to7_rejects_forged_stage4_zip_before_stage5():
+    a = _private_stage5to7_receipts()
+    a[7]["artifact"]["zip_sha256"] = "f" * 64
+    assert any("Stage4 approved ZIP" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage4to7_rejects_stage4_tsv_drift_before_stage5():
+    a = _private_stage5to7_receipts()
+    a[7]["authority"]["v17_exact_tsv_sha256"] = "f" * 64
+    assert any("Stage4-approved import TSV" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage4to7_rejects_fake_human_signoff_or_later_gate_promotion():
+    a = _private_stage5to7_receipts()
+    a[7]["QA"]["AI_independent_second_method"] = "HUMAN_SIGNED"
+    a[7]["boundaries"]["stage5"] = "PASS"
+    assert any("cannot be human-signed" in e for e in _private_lineage_errors(*a))
+
+
+def test_stage4to7_rejects_original_source_hash_mismatch():
+    a = _private_stage5to7_receipts()
+    a[7]["authority"]["canonical_source_member_sha256"] = "f" * 64
+    assert any("registered canonical source" in e for e in _private_lineage_errors(*a))

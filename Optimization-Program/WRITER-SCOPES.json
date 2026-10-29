@@ -1,0 +1,18 @@
+{
+  "schema": "gcpk-remote-git-writer-scopes@1",
+  "status": "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL",
+  "purpose": "OP-01 executable opt-in scope inventory, not new policy, writer or content-authority. The adapter fails closed unless a distinct current Git commit explicitly authorizes one exact mutable workstream target.",
+  "scopes": [],
+  "activation_requirements": [
+    "Explicit user-authorized named mutable content workstream and exact target path.",
+    "Resolve latest valid workstream LATEST/CHECKPOINT and exact portable/current bytes, stable artifact identity, single-writer coordination.",
+    "Add a specifically approved scope to this tracked file, with full workstream, artifact_id, branch main and path. A machine-inserted or self-generated grant is not sufficient evidence of user approval.",
+    "Pre-write local applied byte-proof and remote CAS, post-write independent Git readback remain mandatory.",
+    "This is neither user-data write permission for the optimization chat nor global Stage4/5/6/7 signoff."
+  ],
+  "security_limits": [
+    "Protected Git branch/review permissions must enforce who can grant scopes; a credential able to rewrite this file can also bypass this process gate.",
+    "No Library raw-byte readback is provided by GitHub.",
+    "All original registered sources, LOCKED, archived/recovery data remain immutable."
+  ]
+}

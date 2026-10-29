@@ -35,16 +35,20 @@ class FakeGitHub:
         self.corrupt_after_write = False
         self.bad_response = False
         self.bad_encoding = False
+        self.scope_data = None  # tests opt in explicitly to one exact remote grant
 
     def __call__(self, method, path, branch, token, payload=None):
-        self.calls.append(method)
+        self.calls.append("SCOPE_GET" if path == m.SCOPE_PATH else method)
         if method == "GET":
+            response_data = self.scope_data if path == m.SCOPE_PATH else self.data
+            if response_data is None:
+                raise AssertionError("test omitted explicit scoped permit fixture")
             if self.bad_encoding:
                 return {"type": "file", "encoding": "none", "content": "",
-                        "size": len(self.data), "sha": m.git_blob_sha(self.data)}
+                        "size": len(response_data), "sha": m.git_blob_sha(response_data)}
             return {"type": "file", "encoding": "base64",
-                    "content": base64.b64encode(self.data).decode("ascii"),
-                    "size": len(self.data), "sha": m.git_blob_sha(self.data)}
+                    "content": base64.b64encode(response_data).decode("ascii"),
+                    "size": len(response_data), "sha": m.git_blob_sha(response_data)}
         if method != "PUT":
             raise AssertionError("unexpected method")
         if self.conflict:
@@ -107,10 +111,29 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         self.parent_bytes = before
         self.current_bytes = current
 
+    def scope_permit(self, **overrides):
+        grant = {
+            "status": "APPROVED",
+            "workstream": self.proof["workstream"],
+            "artifact_id": self.proof["artifact_id"],
+            "path": self.path,
+            "branch": "main",
+            "expected_parent_blob_sha": m.git_blob_sha(self.parent_bytes),
+            "approved_current_sha256": sha(self.current_bytes),
+            "approved_proof_sha256": sha(self.proof_file.read_bytes()),
+            "source_sha256": self.proof["sha256"]["source_before"],
+            "authorization_ref": "synthetic-test-fixture-only",
+        }
+        grant.update(overrides)
+        return {"schema": m.SCOPE_SCHEMA, "status": "ACTIVE_SCOPED_GRANTS", "scopes": [grant]}
+
     def run_persist(self, api, **kwargs):
+        expected = kwargs.get("expected", m.git_blob_sha(self.parent_bytes))
+        if api.scope_data is None:
+            permit = self.scope_permit(expected_parent_blob_sha=expected)
+            api.scope_data = json.dumps(permit).encode("utf-8")
         return m.persist(self.proof_file, kwargs.get("path", self.path),
-                         kwargs.get("expected", m.git_blob_sha(self.parent_bytes)),
-                         kwargs.get("token", "synthetic-token"),
+                         expected, kwargs.get("token", "synthetic-token"),
                          api=api, branch=kwargs.get("branch", "main"))
 
     def rejects(self, api, fragment, **kwargs):
@@ -121,7 +144,7 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
     def test_exact_preimage_cas_update_independent_remote_readback(self):
         api = FakeGitHub(self.parent_bytes)
         result = self.run_persist(api)
-        self.assertEqual(api.calls, ["GET", "PUT", "GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT", "GET"])
         self.assertEqual(api.data, self.current_bytes)
         self.assertEqual(result["current_sha256"], result["remote_readback_sha256"])
         self.assertFalse(result["independent_linguistic_stage4"])
@@ -149,7 +172,7 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
     def test_stale_remote_changed_parent_rejected(self):
         api = FakeGitHub(b"other mutable writer version")
         self.rejects(api, "STALE_CURRENT")
-        self.assertEqual(api.calls, ["GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET"])
 
     def test_stale_expected_blob_rejected(self):
         api = FakeGitHub(self.parent_bytes)
@@ -160,7 +183,7 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         api = FakeGitHub(self.parent_bytes)
         api.conflict = True
         self.rejects(api, "CAS_CONFLICT")
-        self.assertEqual(api.calls, ["GET", "PUT"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT"])
         self.assertEqual(api.data, self.parent_bytes)
 
     def test_remote_readback_differs_after_accepted_put(self):
@@ -212,6 +235,66 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         with mock.patch.object(m, "verify_local", return_value=[]):
             self.rejects(api, "GIT_TEXT_ONLY")
         self.assertEqual(api.calls, [])
+
+    def test_registry_deny_all_blocks_before_target_read(self):
+        api = FakeGitHub(self.parent_bytes)
+        api.scope_data = json.dumps({"schema": m.SCOPE_SCHEMA,
+                                     "status": "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL",
+                                     "scopes": []}).encode()
+        self.rejects(api, "REMOTE_SCOPED_PERMISSION_DENY_ALL")
+        self.assertEqual(api.calls, ["SCOPE_GET"])
+        self.assertEqual(api.data, self.parent_bytes)
+
+    def test_registry_missing_exact_grant_fails_closed(self):
+        api = FakeGitHub(self.parent_bytes)
+        api.scope_data = json.dumps({"schema": m.SCOPE_SCHEMA,
+                                     "status": "ACTIVE_SCOPED_GRANTS",
+                                     "scopes": []}).encode()
+        self.rejects(api, "REMOTE_SCOPED_PERMISSION_NO_EXACT_APPROVED_GRANT")
+        self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_registry_wrong_target_or_identity_or_candidate_rejected(self):
+        cases = [
+            ("path", "Workspaces/another-workstream/editable/cards.json"),
+            ("workstream", "different-workstream"),
+            ("artifact_id", "OTHER-CURRENT"),
+            ("expected_parent_blob_sha", "0" * 40),
+            ("approved_current_sha256", "f" * 64),
+            ("approved_proof_sha256", "f" * 64),
+            ("source_sha256", "f" * 64),
+            ("branch", "other-branch"),
+            ("status", "REVOKED"),
+            ("authorization_ref", ""),
+        ]
+        for field, value in cases:
+            with self.subTest(field=field):
+                api = FakeGitHub(self.parent_bytes)
+                api.scope_data = json.dumps({
+                    "schema": m.SCOPE_SCHEMA, "status": "ACTIVE_SCOPED_GRANTS",
+                    "scopes": [self.scope_permit(**{field: value})["scopes"][0]],
+                }).encode()
+                self.rejects(api, "REMOTE_SCOPED_PERMISSION_NO_EXACT_APPROVED_GRANT")
+                self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_duplicate_matching_grants_are_rejected(self):
+        api = FakeGitHub(self.parent_bytes)
+        policy = self.scope_permit()
+        policy["scopes"].append(copy.deepcopy(policy["scopes"][0]))
+        api.scope_data = json.dumps(policy).encode()
+        self.rejects(api, "REMOTE_SCOPED_PERMISSION_NO_EXACT_APPROVED_GRANT")
+        self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_invalid_registry_json_or_schema_rejected(self):
+        for fixture, message in (
+            (b"invalid-json", "REMOTE_SCOPED_PERMISSION_INVALID_JSON"),
+            (json.dumps({"schema": "wrong", "status": "ACTIVE_SCOPED_GRANTS",
+                         "scopes": []}).encode(), "REMOTE_SCOPED_PERMISSION_BAD_SCHEMA"),
+        ):
+            with self.subTest(message=message):
+                api = FakeGitHub(self.parent_bytes)
+                api.scope_data = fixture
+                self.rejects(api, message)
+                self.assertEqual(api.calls, ["SCOPE_GET"])
 
     def test_contents_http409_maps_to_conflict(self):
         err = urllib.error.HTTPError("https://api.github.com", 409, "conflict", None, None)

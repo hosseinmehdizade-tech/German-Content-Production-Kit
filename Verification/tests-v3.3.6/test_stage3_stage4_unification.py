@@ -208,6 +208,13 @@ def test_negative_control_needs_detected_fault_and_valid_unit_pin():
     assert any("seeded negative control not detected" in x for x in m.validate_candidate(a, b))
 
 
+
+def test_nonstring_disposition_fails_closed_as_error():
+    a, b = sample_candidate()
+    b["unit_dispositions"][0]["disposition"] = ["KEEP_WITH_REASON"]
+    assert any("unknown per-unit disposition" in x for x in m.validate_candidate(a, b))
+
+
 def test_stage3_finite_unit_pin_universe_required():
     a, b = sample_candidate()
     a["unit_sha256_by_id"].pop("unit-2")

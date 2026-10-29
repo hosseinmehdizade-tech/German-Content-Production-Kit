@@ -18,25 +18,28 @@ They should **NOT** be made blanket required checks as-is.
 
 - Draft PR #31, isolated from `main`; not an approved security policy
 - Candidate workflow `.github/workflows/op01-always-on-pr-governance-pilot.yml`
-- Trigger: all `pull_request` events targeting main (opened, synchronized,
-  reopened, ready_for_review), **no `paths`/`paths-ignore` filter**
+- Trigger: all `pull_request` events (opened, synchronized, reopened,
+  ready_for_review), **no branch filter and no `paths`/`paths-ignore` filter**
 - One stable status job: `op01-governance-preflight`
 - `permissions: contents: read`, checkout credentials not persisted
 - Read-only inventory check: `Optimization-Program/WRITER-SCOPES.json`
   must remain exact `DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL` and `scopes=[]`
 - No status-dependent or conditional skip paths
-- **This document-only commit** is deliberately made after the PR opens to
-  trigger a distinct `synchronize` event without changing Python,
-  workflow, learner content, app, library, LATEST or original PDFs
+- A follow-up commit containing only this document in PR #31 is insufficient to
+  prove docs-only PR behavior because GitHub evaluates the **aggregate PR diff**.
+- Instead a separate nested documentation-only PR targets the isolated pilot
+  branch, where the candidate workflow already exists. Only its own docs
+  file diff counts; workflow is not changed in that nested PR.
 
 ## Acceptance evidence required before proposing enforcement
 
 1. Find a real GitHub Action `pull_request` run for the original workflow
    commit, with stable `op01-governance-preflight` job and its complete logs.
-2. On this documentation-only follow-up commit, confirm the **same job is
-   emitted and PASS** on its new SHA. Do not rely on prior SHA or status.
-3. Verify no other path-filtered check was assumed mandatory; inspect the
-   actual changed files to prove the second commit is docs-only.
+2. Open a **separate docs-only PR targeting the candidate branch**, with
+   no workflow or Python modifications in its PR diff, and confirm the same
+   stable job is emitted and PASS. Do not rely on PR #31's aggregate diff.
+3. Verify the nested PR changed-files list contains only documentation.
+   Its other path-filtered workflows should not be mistaken for required checks.
 4. Note that a green job tests **only default DENY_ALL structural
    presence**, not external issuer authentication, Git signer, review
    identity, branch protection, Stage4 or Stage5–7.

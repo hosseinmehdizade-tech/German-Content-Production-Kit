@@ -423,7 +423,7 @@ class TsvZipProofTests(unittest.TestCase):
 
     def test_nested_json_reformatted_only_not_applied(self):
         self.set_nested_case()
-        self.new[0][3] = json.dumps(json.loads(self.old[0][3]), indent=2)
+        self.new[0][3] = json.dumps(json.loads(self.old[0][3]), sort_keys=True, separators=(",", ":"))
         self.save()
         self.expect_reject("APPLIED count inconsistent")
 

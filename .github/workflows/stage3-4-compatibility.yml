@@ -32,6 +32,8 @@ on:
       - 'Verification/audit_a2_l24_stage123_lineage.py'
       - 'Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py'
       - 'Verification/validate_stage3_stage4_unification.py'
+      - 'Verification/verify_stage34_materialized_output.py'
+      - 'Verification/tests-v3.3.6/test_stage34_materialized_output.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
       - 'Verification/test_applied_edit_bytes.py'
@@ -71,6 +73,8 @@ on:
       - 'Verification/audit_a2_l24_stage123_lineage.py'
       - 'Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py'
       - 'Verification/validate_stage3_stage4_unification.py'
+      - 'Verification/verify_stage34_materialized_output.py'
+      - 'Verification/tests-v3.3.6/test_stage34_materialized_output.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
       - 'Verification/test_applied_edit_bytes.py'
@@ -97,6 +101,8 @@ jobs:
         run: python -m compileall -q Verification/validate_stage3_stage4_unification.py
       - name: Validate matrix against actual preserved checkpoint schemas
         run: python Verification/validate_stage3_stage4_unification.py
+      - name: Bind whole Stage3 output bytes and every unit SHA against external pin (synthetic only)
+        run: python -m pytest -vv Verification/tests-v3.3.6/test_stage34_materialized_output.py
       - name: Exercise fail-closed Stage3/Stage4 proposal contract
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage3_stage4_unification.py
       - name: Exercise source/card/provenance tamper fixtures without user ZIP

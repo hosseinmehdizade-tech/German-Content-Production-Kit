@@ -5,6 +5,8 @@ on:
       - 'Architecture/Stage3-Stage4-Unification/**'
       - 'Verification/audit_stage5_input_role_binding.py'
       - 'Verification/audit_stage5_current_authority.py'
+      - 'Verification/plan_stage5_current_adoption.py'
+      - 'Verification/tests-v3.3.6/test_stage5_current_adoption.py'
       - 'Verification/tests-v3.3.6/test_stage5_current_authority.py'
       - 'Verification/tests-v3.3.6/test_stage5_input_role_binding.py'
       - 'Verification/audit_stage5_clean_zip_v486.py'
@@ -34,6 +36,8 @@ on:
       - 'Architecture/Stage3-Stage4-Unification/**'
       - 'Verification/audit_stage5_input_role_binding.py'
       - 'Verification/audit_stage5_current_authority.py'
+      - 'Verification/plan_stage5_current_adoption.py'
+      - 'Verification/tests-v3.3.6/test_stage5_current_adoption.py'
       - 'Verification/tests-v3.3.6/test_stage5_current_authority.py'
       - 'Verification/tests-v3.3.6/test_stage5_input_role_binding.py'
       - 'Verification/audit_stage5_clean_zip_v486.py'
@@ -95,6 +99,8 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage5_input_role_binding.py
       - name: Reject valid-but-wrong single CURRENT Stage5 TSV against externally pinned role authority
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage5_current_authority.py
+      - name: Verify nonactive CURRENT trust-root and rollback contract (synthetic)
+        run: python -m pytest -vv Verification/tests-v3.3.6/test_stage5_current_adoption.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only

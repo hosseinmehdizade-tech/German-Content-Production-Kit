@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OP03_SCOPED_FIX_VALIDATED__FULL_COVERAGE_PENDING",
+  "state": "ACTIVE_OP03_TRACKED_PRODUCTION_GATES_PASS__NEXT_OP04",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -46,9 +46,9 @@
     {
       "id": "OP-03",
       "title": "Packaging and ZIP churn control",
-      "status": "IN_PROGRESS_SCOPED_FIX_VALIDATED",
-      "last_evidence": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40793075313",
-      "next_action": "OP-03/2: classify 8 historical Content recovery ZIP writers and 8 version-specific app ZIP writers by actual publication intent and exception safety; extend a shared enforceable check only to current reusable production paths. Preserve all existing recovery capabilities.",
+      "status": "PASS_TRACKED_DEFAULT_PYTHON_BUILDERS__HISTORICAL_EXCEPTIONS_RETAINED",
+      "last_evidence": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40795118888 ; https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40795123527",
+      "next_action": "Event-triggered only: investigate newly introduced ZIP build paths or failed producer CI; separately assess legacy recovery scripts before execution or future migration. No routine rebuilds.",
       "blocker": null
     },
     {
@@ -84,8 +84,8 @@
       "blocker": null
     }
   ],
-  "active_priority": "OP-03",
-  "next_exact_action": "OP-03/2: classify 8 historical Content recovery ZIP writers and 8 version-specific app ZIP writers by actual publication intent and exception safety; extend a shared enforceable check only to current reusable production paths. Preserve all existing recovery capabilities.",
+  "active_priority": "OP-04",
+  "next_exact_action": "OP-04: diagnose large Content Kit PROJECT-STATE.json retrieval using a non-mutating metadata/raw read; build minimal verified pointer lookup without changing content authority or adding duplicate state.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -106,18 +106,20 @@
     "guarded_zip_producers_total": 3,
     "guarded_zip_producers_covered": 3,
     "validated_quality_regressions": 0,
-    "real_saved_time_measured": null
+    "real_saved_time_measured": null,
+    "current_reusable_production_writers_identified": 5,
+    "current_reusable_production_writers_guarded": 5,
+    "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP03-1-IMMUTABLE-APP-PACKAGING-2026-10-29",
-    "scope": "Audit sampled/exact zipfile code paths across both repositories and harden the general Flashcards app release builder",
-    "result": "PASS_SCOPED_GENERIC_APP_BUILDER__OP03_REMAINING",
-    "tests": "6 dedicated regression cases PASS on Ubuntu and Windows; AST compilation PASS on both, GitHub Actions run 40793075313",
-    "persistence": "APP_GIT_COMMIT_48b0ed6abf7d00846236434ffa3426631936f13d",
-    "not_claimed": "No full across-repo packaging coverage, no runtime candidate promotion, no global current-engineering PASS, no Library cleanup"
+    "id": "OP03-2-TRACKED-ZIP-PRODUCERS-2026-10-29",
+    "scope": "Classify default-branch direct ZIP code paths; repair second currently reusable destructive writer; activate prospective Python and workflow CI coverage in both repos.",
+    "result": "PASS_SCOPED_5_CURRENT_REUSABLE_BUILDERS_2_DESTRUCTIVE_DEFECTS_FIXED__15_VERSION_SCOPED_LEGACY_EXCEPTIONS_RETAINED",
+    "tests": "App 9 unittest cases PASS on Ubuntu and Windows, Content 31 pytest cases PASS on Ubuntu and Windows; exact linked GitHub runs; general CURRENT engineering gate still in progress",
+    "not_claimed": "No exhaustive external/manual/archive writer coverage, no full runtime release promotion, no validated Library storage savings, no deletion or modification of LOCKED/source ZIP."
   },
   "packaging_audit": {
-    "milestone": "OP03-1",
+    "milestone": "OP03-2",
     "method": "GitHub default-branch exact-string search for zipfile.ZipFile and guarded_zip, plus line-level source inspection of all matching Python/JS files. This does not prove absence of dynamically generated/off-repository archivers.",
     "matching_file_count": {
       "content_kit_python": 25,
@@ -156,7 +158,66 @@
       "No content/source/LOCKED ZIP was changed, created or deleted in this optimization milestone.",
       "Runtime app files 01-App and CURRENT pin were not modified; no new runtime release claimed.",
       "GitHub code search may omit alternative archiving APIs, generated scripts and external ad-hoc packaging."
-    ]
+    ],
+    "inspected_scope": "Default-branch tracked Python ZIP writer calls, specified workflow-inline archive patterns; non-Python/external/untracked generator coverage is NOT proven.",
+    "exact_current_generic_producers": {
+      "content_kit": [
+        "Tools/build_clean_delivery.py",
+        "Workspaces/menschen-a2/tools/package_release.py",
+        "Workspaces/menschen-a2/tools/package_release_corrective.py"
+      ],
+      "app": [
+        "08-Release-Tools/build_clean_release.py",
+        "08-Release-Tools/package-external-reading-packs.py"
+      ],
+      "status": "FIVE_CURRENT_REUSABLE_BUILDERS_GUARDED_AND_PROSPECTIVE_CI_CHECKED"
+    },
+    "version_scoped_unmodified_legacy_exceptions": {
+      "content_kit": [
+        "Workspaces/menschen-verben-bounded-repair-2026-10-03/package_repair.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R62/BUILD_R62_FROM_R60.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R62/REBUILD_R60_FROM_R59.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R66/BUILD_R66_FROM_R62.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R67/R67_REVIEW_PIPELINE.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R68/R68_CANONICAL_ASSIGNMENTS_MERGE.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R69/BUILD_R69_SOURCE_CROSSWALK.py",
+        "Workspaces/menschen-a2-verben-kombinationen-v336/Recovery/R74/BUILD_R74_SUPPLEMENT.py"
+      ],
+      "flashcards_app": [
+        "08-Release-Tools/package-v486-pr9-pr10.py",
+        "08-Release-Tools/package-v485-import-fence.py",
+        "08-Release-Tools/package-v483-fidelity.py",
+        "08-Release-Tools/package-v482-theme-repair.py",
+        "08-Release-Tools/package-v482-theme-candidate.py",
+        "08-Release-Tools/build-v482-architecture-checkpoint.py",
+        "08-Release-Tools/build-v482-readiness-checkpoint.py"
+      ],
+      "note": "These historical/specialized scripts may have unguarded writing behavior. Do not execute them as routine production packagers or claim the paths are safe to rerun; use existing exact source/hashes and required recovery approval. No historical source files were altered."
+    },
+    "fixed_current_defects": [
+      "Flashcards Pro build_clean_release.py previously deleted existing release ZIP; fixed in OP03-1.",
+      "Flashcards Pro package-external-reading-packs.py previously deleted existing release ZIP; fixed in OP03-2."
+    ],
+    "tests": {
+      "app": {
+        "count_per_os": 9,
+        "ubuntu": "PASS",
+        "windows": "PASS",
+        "run": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40795118888"
+      },
+      "content": {
+        "count_per_os": 31,
+        "ubuntu": "PASS",
+        "windows": "PASS",
+        "run": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40795123527"
+      }
+    },
+    "ci_paths": "Both content and app ZIP safety workflows now run on relevant tracked Python source changes and workflow YAML changes; legacy exceptions do not automatically imply safe runtime publishing.",
+    "general_engineering_ci": {
+      "status": "IN_PROGRESS_AT_LAST_CHECK",
+      "run": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40795118904"
+    },
+    "limitations": "No source archive/Library cleanup was performed; no evidence of storage bytes saved yet; off-repository/manual/dynamic archive creation cannot be blocked by this repo-level test; unchanged historic scripts retain known risk."
   },
   "process_failure_prevention": {
     "incident": "Menschen A1 C49 report-only UNREVIEWED loop",

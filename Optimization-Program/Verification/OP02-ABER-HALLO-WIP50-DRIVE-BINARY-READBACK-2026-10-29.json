@@ -1,0 +1,80 @@
+{
+  "schema": "gcpk-op02-exact-portable-binary-readback@1",
+  "date": "2026-10-29",
+  "scope": "READ_ONLY_REAL_WORKSTREAM_PORTABLE_BYTES",
+  "workstream": "aber-hallo-listen-tabellen",
+  "snapshot": {
+    "latest_path": "Workspaces/aber-hallo-listen-tabellen/LATEST.json",
+    "latest_git_blob_sha": "f490ba8debb7277f07e1e0accce94364229fb2e9",
+    "latest_milestone": "WIP50_23_ADDITIONAL_DIRECT_DUDEN_GENITIVE_PREDICATIVE_REKTION_FRAMES_APPLIED_MAIN_FILES",
+    "receipt_path": "Workspaces/aber-hallo-listen-tabellen/47-wip50-duden-genitive-adjectives/WIP50-23-DUDEN-GENITIVE-ADJECTIVE-552-ATTESTED-2026-10-29.json",
+    "receipt_pinned_commit": "7194527f8dde7b627be6fda469a9504e80b78bbe",
+    "receipt_git_blob_sha": "e3e745a479a12467ecb4028d73711781212e7b1c",
+    "receipt_pinned_commit_and_main_blob_equal": true,
+    "latest_git_blob_stable_after_download": true,
+    "stage4": "OPEN",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN"
+  },
+  "verified_files": [
+    {
+      "role": "current_portable_zip",
+      "drive_id": "1Ir945gKv08w4sp05LdrkPId8uxfYjG6t",
+      "filename": "Aber-Hallo-WIP50-23-DUDEN-GENITIV-ADJECTIVE-552-ATTESTED-432-OPEN-2026-10-29.zip",
+      "size_bytes": 7297862,
+      "sha256": "a558055dbddda45d5d3040fb096bf28eb8f51e2c0863f5634c445094decfc96b",
+      "expected_sha_match": true,
+      "metadata_modified_utc": "2026-10-29T02:04:36.718Z"
+    },
+    {
+      "role": "canonical_master",
+      "drive_id": "1Kht0uv5-wJfL7H28oGvTx2qJ7Ob9meyZ",
+      "filename": "Aber-Hallo-WIP50-CANONICAL-MASTER.json",
+      "size_bytes": 7076256,
+      "sha256": "fe50217d519edbb1c4d5eb5fc4da36faf1f562e859ccfe58b0153dbf684c48aa",
+      "expected_sha_match": true,
+      "metadata_modified_utc": "2026-10-29T02:04:44.583Z"
+    },
+    {
+      "role": "import_tsv",
+      "drive_id": "1gMn_Fk94_5nuzeuz3PD4ooIjoqRkJRkc",
+      "filename": "Aber-Hallo-WIP50-IMPORT.tsv",
+      "size_bytes": 12951743,
+      "sha256": "d640179d3fdfa2ecff0681b707519bc6d10ff687aba22482a7e8694aba374a8a",
+      "expected_sha_match": true,
+      "metadata_modified_utc": "2026-10-29T02:04:52.942Z"
+    }
+  ],
+  "independent_local_binary_checks": {
+    "google_drive_raw_file_fetch_then_local_byte_stream_sha256": true,
+    "all_three_names_sizes_sha256_equal_git_WIP50_receipt": true,
+    "current_portable_zip_members": 362,
+    "zip_testzip_bad_member": null,
+    "zip_sha256sums_entries": 361,
+    "zip_sha256sums_unique_exact_inventory": true,
+    "zip_sha256sums_bad_lines": 0,
+    "zip_sha256sums_missing_entries": 0,
+    "zip_sha256sums_extra_entries": 0,
+    "zip_sha256sums_mismatches": 0,
+    "zip_duplicate_member_names": 0,
+    "internal_canonical_path": "02-Canonical-Data/CANONICAL-ENRICHED.WORKING.json",
+    "internal_import_path": "01-Final-Import/IMPORT.WORKING.tsv",
+    "internal_canonical_byte_equal_independent_download": true,
+    "internal_import_byte_equal_independent_download": true,
+    "google_drive_metadata_recheck_same_names_sizes_modification_times": true,
+    "content_modified_during_audit": false
+  },
+  "result": "PASS_SCOPED_EXACT_REAL_DRIVE_BYTES_AND_PORTABLE_INTEGRITY",
+  "not_proven": [
+    "Independent authorization of the CURRENT issuer and branch/commit trust root",
+    "Original registered PDF raw bytes against source-manifest entries",
+    "A full semantic adversarial independent Stage4 review on exact current Canonical and Import",
+    "Authorized production Stage5 selection, real app Stage6, Stage7 or release qualification",
+    "Any write permission: Optimization-Program/WRITER-SCOPES.json remains DENY_ALL"
+  ],
+  "production_active": false,
+  "writer_scopes_active_grants": 0,
+  "no_data_mutation": true,
+  "repro": "Fetch raw stored non-native Drive file IDs via authenticated Google Drive connector; compare each local streaming SHA256 and size with exact pinned Git LATEST/receipt, then verify ZIP testzip, exact unique SHA256SUMS entries for every non-SHA member, and byte-equality of canonical+import internal members to independent Drive downloads."
+}

@@ -378,5 +378,123 @@ class TsvZipProofTests(unittest.TestCase):
 
 
 
+    def set_nested_case(self):
+        self.new[0][2] = self.old[0][2]
+        base = {"kombinationen_v1": {"items": [{"de": "alte Verbindung"}],
+                                     "status": "REVIEWED"},
+                "typingCore": "sehen"}
+        changed = copy.deepcopy(base)
+        changed["kombinationen_v1"]["items"][0]["de"] = "neue Verbindung"
+        self.old[0][3] = json.dumps(base, ensure_ascii=False)
+        self.new[0][3] = json.dumps(changed, ensure_ascii=False)
+        self.proof["nested_json_columns"] = ["en"]
+        self.proof["edits"] = [{"id": "c1", "fields": ["en.kombinationen_v1.items"]}]
+
+    def test_nested_json_selected_list_only_passes(self):
+        self.set_nested_case()
+        self.save()
+        self.assertEqual(self.issues(), [])
+
+    def test_nested_json_extra_sibling_change_rejected(self):
+        self.set_nested_case()
+        obj = json.loads(self.new[0][3])
+        obj["typingCore"] = "other"
+        self.new[0][3] = json.dumps(obj, ensure_ascii=False)
+        self.save()
+        self.expect_reject("actual changed IDs/fields differ")
+
+    def test_nested_json_undeclared_top_level_column_change_rejected(self):
+        self.set_nested_case()
+        self.new[1][1] = "wrong"
+        self.save()
+        self.expect_reject("actual changed IDs/fields differ")
+
+    def test_nested_json_malformed_current_blocked(self):
+        self.set_nested_case()
+        self.new[0][3] = "{bad:"
+        self.save()
+        self.expect_reject("nested diff format error")
+
+    def test_nested_json_wrong_declared_scope_blocked(self):
+        self.set_nested_case()
+        self.proof["edits"] = [{"id": "c1", "fields": ["en"]}]
+        self.save()
+        self.expect_reject("actual changed IDs/fields differ")
+
+    def test_nested_json_reformatted_only_not_applied(self):
+        self.set_nested_case()
+        self.new[0][3] = json.dumps(json.loads(self.old[0][3]), indent=2)
+        self.save()
+        self.expect_reject("APPLIED count inconsistent")
+
+    def test_tsv_column_reordering_rejected_even_with_real_card_edit(self):
+        self.cols = ["de", "id", "fa", "en"]
+        self.save()
+        self.proof["sha256"]["parent"] = self.proof["sha256"]["parent"]
+        # Header-only reordering of CURRENT (same data columns, new header) is
+        # not an authorized schema-preserving edit.
+        path = self.root / self.proof["files"]["current"]
+        contents = path.read_text(encoding="utf-8")
+        path.write_text(contents.replace("de\tid\tfa\ten", "id\tde\tfa\ten", 1), encoding="utf-8")
+        curr_bytes = path.read_bytes()
+        self.proof["sha256"]["current"] = sha(curr_bytes)
+        pointer = self.root / self.proof["files"]["pointer"]
+        p = json.loads(pointer.read_text())
+        p["current_sha256"] = sha(curr_bytes)
+        pointer.write_text(json.dumps(p))
+        readback = self.root / self.proof["files"]["readback"]
+        readback.write_bytes(curr_bytes)
+        self.proof["sha256"]["readback"] = sha(curr_bytes)
+        qa_file = self.root / self.proof["files"]["qa"]
+        qa = json.loads(qa_file.read_text())
+        qa["assessed_sha256"] = sha(curr_bytes)
+        qa_file.write_text(json.dumps(qa))
+        self.proof["sha256"]["qa"] = sha(qa_file.read_bytes())
+        self.proof_file.write_text(json.dumps(self.proof))
+        self.expect_reject("TSV header/order/schema changed")
+
+    def test_zip_nested_json_selected_field_passes(self):
+        self.set_nested_case()
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        self.save()
+        self.assertEqual(self.issues(), [])
+
+    def test_zip_nested_json_undeclared_sibling_rejected(self):
+        self.set_nested_case()
+        self.mode = "ZIP_TSV_V1"
+        self.proof["format"] = "ZIP_TSV_V1"
+        obj = json.loads(self.new[0][3])
+        obj["typingCore"] = "wrong"
+        self.new[0][3] = json.dumps(obj)
+        self.save()
+        self.expect_reject("actual changed IDs/fields differ")
+
+    def test_actual_b1_23_column_layout_synthetic_schema_pass(self):
+        self.cols = ["id","card_type","domain","category","source","level",
+                     "lesson","deck","front","back","front_label","back_label",
+                     "front_lang","back_lang","typing_target","examples",
+                     "related","opposites","details","custom_fields","tags",
+                     "notes","order"]
+        self.old = [["c1"] + ["fixed"] * 22, ["c2"] + ["fixed"] * 22]
+        self.new = copy.deepcopy(self.old)
+        self.new[0][21] = "changed notes"
+        self.proof["edits"] = [{"id": "c1", "fields": ["notes"]}]
+        self.save()
+        self.assertEqual(self.issues(), [])
+
+    def test_actual_b1_17_column_layout_synthetic_schema_pass(self):
+        self.cols = ["id","front","back","card_type","category","custom_fields",
+                     "order","level","lesson","deck","source","notes",
+                     "examples","related","opposites","typing_target","schema_profile"]
+        self.old = [["c1"] + ["fixed"] * 16, ["c2"] + ["fixed"] * 16]
+        self.new = copy.deepcopy(self.old)
+        self.new[0][11] = "changed notes"
+        self.proof["edits"] = [{"id": "c1", "fields": ["notes"]}]
+        self.save()
+        self.assertEqual(self.issues(), [])
+
+
+
 if __name__ == "__main__":
     unittest.main()

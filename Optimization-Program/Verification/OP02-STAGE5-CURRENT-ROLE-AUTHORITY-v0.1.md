@@ -49,3 +49,22 @@ Nothing from actual learner sources is used.
 **Promotion:** Separate explicit authorized scope, trust-root provenance,
 real CURRENT content/source verification, rollback and compatibility are
 required before any production writer/builder changes.
+
+## Fail-closed parser hardening (2026-10-29, CI verification pending)
+
+The independent sidecar JSON parser now rejects duplicate keys at both top-level
+and nested `roles` levels. Nonstandard non-finite JSON constants (NaN,
+Infinity) also fail closed, even if an attacker supplies a matching checksum
+for malformed text. Unhashable/wrong-typed role filenames return `BLOCKED`
+rather than an uncaught Python exception. Seven parameterized negative
+cases were added (five wrong-typed filenames and two duplicate-key scopes),
+bringing the synthetic file to **28 declared test cases**, counting the
+pre-existing six-case parametrization.
+
+**Evidence boundary:** The exact source and test files were persisted/read
+back from GitHub, and 4/4 local standalone Python JSON parser mechanics
+sanity checks passed; this is NOT full exact repository test execution. GitHub
+connector exposed no push-run listing/check statuses for the new commits.
+**Ubuntu/Windows CI remains UNVERIFIED** for this new version. Previous
+Stage5 single-role binding 27/27 Ubuntu, 26+1 skip Windows PASS is prior,
+independent evidence only; do not promote the new guard without job logs.

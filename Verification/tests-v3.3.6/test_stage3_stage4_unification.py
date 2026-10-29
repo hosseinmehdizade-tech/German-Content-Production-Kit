@@ -144,3 +144,55 @@ def test_stage4_requires_nonempty_independent_semantic_challenge():
     out = m.validate_candidate(a, b)
     assert any("independent semantic adversarial" in x for x in out)
     assert any("method evidence" in x for x in out)
+
+
+# OP-01/OP-02: matrix must encode EVERY requires edge, never only a
+# plausible-looking subset. All tests run in-memory; no content mutation.
+def test_matrix_exactly_matches_fourteen_required_predecessors():
+    matrix = m.load(m.BASE / m.MATRIX)
+    expected = {(dep, c["id"]) for c in matrix["conflicts"] for dep in c["requires"]}
+    assert len(matrix["conflicts"]) == 12
+    assert len(expected) == 14
+    assert set(tuple(edge) for edge in matrix["dependencies"]) == expected
+    assert m.validate_dependency_edges(matrix) == []
+    assert matrix["status"] == "PROPOSED_COMPATIBILITY_ONLY_NOT_ACTIVE"
+
+
+def test_matrix_rejects_omitted_predecessor():
+    matrix = m.load(m.BASE / m.MATRIX)
+    matrix["dependencies"].remove(["C10", "C01"])
+    assert any("graph omits required dependency" in x for x in m.validate_dependency_edges(matrix))
+
+
+def test_matrix_rejects_undeclared_predecessor():
+    matrix = m.load(m.BASE / m.MATRIX)
+    matrix["dependencies"].append(["C04", "C12"])
+    assert any("undeclared dependency edge" in x for x in m.validate_dependency_edges(matrix))
+
+
+def test_matrix_rejects_repeated_predecessor():
+    matrix = m.load(m.BASE / m.MATRIX)
+    matrix["dependencies"].append(["C09", "C01"])
+    assert any("duplicate dependency edge" in x for x in m.validate_dependency_edges(matrix))
+
+
+def test_matrix_rejects_unknown_or_malformed_predecessor():
+    matrix = m.load(m.BASE / m.MATRIX)
+    matrix["dependencies"].extend([["C99", "C03"], ["C01"]])
+    errors = m.validate_dependency_edges(matrix)
+    assert any("unknown graph vertex" in x for x in errors)
+    assert any("malformed dependency edge" in x for x in errors)
+
+
+def test_matrix_rejects_requirements_added_without_graph_update():
+    matrix = m.load(m.BASE / m.MATRIX)
+    c04 = next(c for c in matrix["conflicts"] if c["id"] == "C04")
+    c04["requires"].append("C07")
+    assert any("C07->C04" in x for x in m.validate_dependency_edges(matrix))
+
+
+def test_matrix_rejects_circular_self_requirement():
+    matrix = m.load(m.BASE / m.MATRIX)
+    c01 = next(c for c in matrix["conflicts"] if c["id"] == "C01")
+    c01["requires"].append("C01")
+    assert any("invalid required predecessor" in x for x in m.validate_dependency_edges(matrix))

@@ -3,11 +3,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'Tools/content_package_guard.py'
-      - 'Tools/library_publish_preflight.py'
-      - 'Tools/build_clean_delivery.py'
-      - 'Workspaces/menschen-a2/tools/package_release.py'
-      - 'Workspaces/menschen-a2/tools/package_release_corrective.py'
+      - 'Tools/**/*.py'
+      - 'Workspaces/**/*.py'
       - 'Verification/tests-v3.3.6/test_content_zip_guard.py'
       - '.github/workflows/content-zip-guard.yml'
   pull_request:
@@ -15,7 +12,7 @@ on:
       - 'Tools/content_package_guard.py'
       - 'Tools/library_publish_preflight.py'
       - 'Tools/build_clean_delivery.py'
-      - 'Workspaces/menschen-a2/tools/package_release*.py'
+      - 'Workspaces/**/*.py'
       - 'Verification/tests-v3.3.6/test_content_zip_guard.py'
       - '.github/workflows/content-zip-guard.yml'
 jobs:

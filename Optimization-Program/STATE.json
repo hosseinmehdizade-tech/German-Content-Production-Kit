@@ -113,11 +113,11 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP01-MISSION-SCOPE-USER-CORRECTION-2026-10-29",
-    "scope": "User-directed correction across both project bootstrap and shared continuation policies, plus optimization hub mission pin and historical handoff supersession",
-    "result": "POLICY_STATE_AND_BOTH_REPO_CI_REGRESSION_GATES_PERSISTED__CI_RESULT_PENDING",
-    "tests": "Both repos contain static mission-scope tests triggered by workflows; Content Kit prior run 40805864838 exposed 2 assertion miswordings now fixed in Git; await current CI PASS before claiming tested.",
-    "not_claimed": "No complete OP-01 conflict matrix, no OP-02 architecture migration, no retroactive removal of B1 content, no global content Stage4-7 FINAL."
+    "id": "OP01-MISSION-SCOPE-REGRESSION-PASS-2026-10-29",
+    "scope": "Durable user-corrected mission continuity in both bootstraps and outcome policies, optimization README/STATE, no implied cross-domain content edits, negative tests in both CI workflows",
+    "result": "PASS_DURABLE_SCOPE_RESTORED__BOTH_REPOS_UBUNTU_WINDOWS_CONFIG_REGRESSIONS",
+    "tests": "Content Kit 40806030507 Ubuntu+Windows PASS (route index + 5 mission tests); Flashcards Pro 40805918080 Ubuntu+Windows PASS (OP03 immutable ZIP + 3 mission tests); no actual model-behavior guarantee, only persistent policy+automated repository contract tests",
+    "not_claimed": "OP-01 global conflict consolidation not yet complete; OP-02 Stage1–7 architecture migration not approved; no user-visible app UI or learner-content changes were made in this scope-fix turn"
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -603,6 +603,19 @@
       "Optimization-Program/STATE.json"
     ],
     "incident": "assistant changed goal to Menschen B1 content production after authoring a scoped optimization closeout; a bare continue was not permission. Historical B1 work remains in its own independently versioned workstream, not charged to OP scope.",
-    "target_next": "OP-01 policy precedence and executable negative regression; OP-02 Stage1-7 process compatibility planning only"
+    "target_next": "OP-01 policy precedence and executable negative regression; OP-02 Stage1-7 process compatibility planning only",
+    "verification": {
+      "status": "PASS_DURABLE_POLICY_AND_CI",
+      "content_kit_ci": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40806030507",
+      "flashcards_pro_ci": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40805918080",
+      "content_tests": 5,
+      "app_tests": 3,
+      "platforms": [
+        "ubuntu-latest",
+        "windows-latest"
+      ],
+      "tracker_issue_comment_id": 6486150925,
+      "caveat": "Repo CI guards policy/configuration integrity; assistants in other already-running chats need to re-read startup instructions. Does not intercept or automatically block unconnected conversational behavior."
+    }
   }
 }

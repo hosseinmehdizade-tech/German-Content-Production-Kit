@@ -44,7 +44,11 @@ jobs:
           start=Path('Prompt/START-PROMPT-v3.1.11.md').read_text(encoding='utf-8')
           master=Path('Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.11.md').read_text(encoding='utf-8')
           runbook=Path('Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md').read_text(encoding='utf-8')
-          assert 'Prompt/START-PROMPT-v3.1.11.md' in readme
+          active=Path('Prompt/ACTIVE-PROMPT.txt').read_text(encoding='utf-8').strip()
+          assert active.startswith('START-PROMPT-v') and active.endswith('.md')
+          assert (Path('Prompt') / active).is_file()
+          active_version=active.removeprefix('START-PROMPT-').removesuffix('.md')
+          assert f'# German Content Production Kit — active {active_version}' in readme
           assert 'START-PROMPT-v3.1.10.md' not in readme
           assert 'NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md' in start
           assert 'GERMAN-RICH-CARD-CONTENT-COMPLETENESS-v1.1.0.json' in start

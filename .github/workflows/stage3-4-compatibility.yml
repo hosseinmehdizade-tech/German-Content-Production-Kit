@@ -7,6 +7,8 @@ on:
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
       - 'Verification/test_applied_edit_bytes.py'
+      - 'Verification/persist_verified_git_edit.py'
+      - 'Verification/test_persist_verified_git_edit.py'
       - '.github/workflows/stage3-4-compatibility.yml'
   pull_request:
     paths:
@@ -15,6 +17,8 @@ on:
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
       - 'Verification/test_applied_edit_bytes.py'
+      - 'Verification/persist_verified_git_edit.py'
+      - 'Verification/test_persist_verified_git_edit.py'
       - '.github/workflows/stage3-4-compatibility.yml'
   workflow_dispatch:
 jobs:
@@ -39,3 +43,5 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage3_stage4_unification.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
+      - name: Exercise opt-in remote Git CAS writer with synthetic transport only
+        run: python -B -m unittest discover -s Verification -p test_persist_verified_git_edit.py

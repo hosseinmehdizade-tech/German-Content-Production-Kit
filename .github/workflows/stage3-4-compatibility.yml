@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/validate_stage45_v486_consumer_bridge.py'
+      - 'Verification/tests-v3.3.6/test_stage45_v486_consumer_bridge.py'
       - 'Verification/validate_stage45_teaching_delta_parity.py'
       - 'Verification/tests-v3.3.6/test_stage45_teaching_delta_parity.py'
       - 'Verification/validate_stage3c_proof_binding.py'
@@ -22,6 +24,8 @@ on:
   pull_request:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/validate_stage45_v486_consumer_bridge.py'
+      - 'Verification/tests-v3.3.6/test_stage45_v486_consumer_bridge.py'
       - 'Verification/validate_stage45_teaching_delta_parity.py'
       - 'Verification/tests-v3.3.6/test_stage45_teaching_delta_parity.py'
       - 'Verification/validate_stage3c_proof_binding.py'
@@ -67,6 +71,8 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage3c_proof_binding.py
       - name: Exercise nonactive Stage4-to-Stage5 teaching delta and exact TSV projection parity
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage45_teaching_delta_parity.py
+      - name: Exercise nonactive CURRENT v486 UI consumer projection compatibility (synthetic)
+        run: python -m pytest -q Verification/tests-v3.3.6/test_stage45_v486_consumer_bridge.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only

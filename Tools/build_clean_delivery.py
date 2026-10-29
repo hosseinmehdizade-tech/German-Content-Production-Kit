@@ -15,6 +15,8 @@ ap.add_argument("output_zip")
 ap.add_argument("--purpose",choices=["stage5_acceptance","final_delivery","validated_major_checkpoint","required_recovery","explicit_user_checkpoint"],default="stage5_acceptance")
 ap.add_argument("--milestone-evidence",type=Path)
 ap.add_argument("--user-request")
+ap.add_argument("--applied-edit-proof", type=Path,
+                help="Optional scoped proof of actual CURRENT TSV edit; validates local bytes only, not remote Git/Library CAS")
 a=ap.parse_args()
 src=Path(a.source_dir).resolve()
 out=Path(a.output_zip).resolve()
@@ -42,6 +44,35 @@ def pick(patterns, role):
 direct=pick(["*Universal*.tsv","*import*.tsv","*cards*.tsv"],"direct-import-tsv")
 if "source-inventory" in direct.name.lower() or "source_inventory" in direct.name.lower():
     raise SystemExit("source inventory TSV cannot satisfy direct-import-tsv")
+
+# OP-01 opt-in proof: verify *actual* current bytes selected for Stage5, rather
+# than merely trusting an APPLIED label in a supplied QA or editor's report.
+# Default remains backward compatible; no content workstream is promoted.
+applied_proof_receipt = None
+if a.applied_edit_proof is not None:
+    proof_file = a.applied_edit_proof.resolve()
+    verifier_root = Path(__file__).resolve().parents[1] / "Verification"
+    sys.path.insert(0, str(verifier_root))
+    from validate_applied_edit_bytes import verify as verify_applied_edit
+    try:
+        proof = json.loads(proof_file.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise SystemExit("APPLIED EDIT PROOF: missing or unreadable proof") from exc
+    if not isinstance(proof, dict) or proof.get("format") != "TSV_ITEMS_V1":
+        raise SystemExit("APPLIED EDIT PROOF: clean delivery accepts TSV_ITEMS_V1 only")
+    errors = verify_applied_edit(proof_file)
+    if errors:
+        raise SystemExit("APPLIED EDIT PROOF: " + " | ".join(errors))
+    if proof.get("sha256", {}).get("current") != sha256(direct):
+        raise SystemExit("APPLIED EDIT PROOF: selected Stage5 TSV differs from verified CURRENT")
+    applied_proof_receipt = {
+        "status": "PASS_SCOPED_LOCAL_BYTE_PROOF_NOT_REMOTE_PERSISTENCE",
+        "current_tsv_sha256": sha256(direct),
+        "proof_file_sha256": sha256(proof_file),
+        "source": "Verification/validate_applied_edit_bytes.py",
+        "remote_git_or_library_cas_verified": False,
+        "linguistic_stage4_certified": False
+    }
 canonical=pick(["*canonical*.json"],"canonical-json")
 mapping=pick(["*source-output-map*.tsv"],"source-output-map-tsv")
 qa=pick(["*verification*.json","*QA*.json","*qa*.json"],"qa-report")
@@ -102,6 +133,7 @@ with tempfile.TemporaryDirectory(prefix="content-clean-stage-") as td:
       "unified_vocabulary_validator_version":"1.1.0",
       "required_card_type":"de-vocabulary",
       "required_presentation_contract":"gfp-vocabulary-neutral@1",
+      "optional_applied_edit_proof": applied_proof_receipt,
       "selector_scan":"TOP_LEVEL_PLUS_RECURSIVE_CUSTOM_FIELDS_CASE_INSENSITIVE",
       "roles":{
         "direct-import-tsv":direct.name,

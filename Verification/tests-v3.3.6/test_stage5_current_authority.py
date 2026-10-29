@@ -153,10 +153,11 @@ def test_zero_sha_external_source_not_accepted(built):
 
 
 def test_duplicate_candidate_rejected_even_when_pinned_original_is_valid(built):
+    registered = sidecar(built)
     (built["input_dir"] / "Other-Universal.tsv").write_bytes(
         (built["input_dir"] / DIRECT).read_bytes()
     )
-    result = assess(built)
+    result = assess(built, registered)
     assert result["status"] == "BLOCKED"
     assert "INPUT_ROLE_PREFLIGHT_NOT_PASS" in result["errors"]
 
@@ -164,3 +165,14 @@ def test_duplicate_candidate_rejected_even_when_pinned_original_is_valid(built):
 def test_wrong_source_pin_cannot_self_attest(built):
     assert "EXTERNAL_IDENTITY_MISMATCH:registered_source_sha256" in assess(
         built, expected_source_sha256=digest(b"new source nobody approved"))["errors"]
+
+def test_selection_snapshot_wrong_type_rejected_cleanly(built):
+    result = assess(built, selected_inputs=[])
+    assert result["status"] == "BLOCKED"
+    assert "INPUT_ROLE_PREFLIGHT_NOT_PASS" in result["errors"]
+
+
+def test_sidecar_invalid_roles_type_rejected_cleanly(built):
+    doc = sidecar(built)
+    doc["roles"] = []
+    assert "AUTHORITY_ROLES_NOT_COMPLETE" in assess(built, doc)["errors"]

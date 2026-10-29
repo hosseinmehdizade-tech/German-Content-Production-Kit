@@ -54,10 +54,10 @@ def tsv_headers(data: bytes) -> list[str]:
         text = data.decode("utf-8-sig")
     except UnicodeDecodeError as exc:
         raise ValueError("TSV is not UTF-8") from exc
-    reader = csv.reader(io.StringIO(text, newline=""), delimiter="\\t")
+    reader = csv.reader(io.StringIO(text, newline=""), delimiter="\t")
     headers = next(reader, [])
     if (not headers or len(headers) != len(set(headers))
-            or any(not x or "\\r" in x or "\\n" in x for x in headers)):
+            or any(not x or "\r" in x or "\n" in x for x in headers)):
         raise ValueError("TSV missing/duplicate columns")
     return headers
 

@@ -20,31 +20,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Check default DENY_ALL policy without granting release approval
+      # MALICIOUS HEAD SIMULATION — isolated unmerged security test only.
+      # Intentionally omits the DENY_ALL check while keeping the exact same
+      # job/check name and green exit code. Do not merge this change.
+      - name: UNSAFE PR HEAD SIMULATION -- bypass all policy checks
         shell: bash
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          def unique(items):
-              out = {}
-              for key, value in items:
-                  if key in out:
-                      raise ValueError("duplicate JSON key: " + key)
-                  out[key] = value
-              return out
-
-          def invalid_constant(value):
-              raise ValueError("nonfinite JSON value: " + value)
-
-          file = Path("Optimization-Program/WRITER-SCOPES.json")
-          doc = json.loads(file.read_text(encoding="utf-8"),
-                           object_pairs_hook=unique, parse_constant=invalid_constant)
-          assert doc.get("schema") == "gcpk-remote-git-writer-scopes@1"
-          assert doc.get("status") == "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL"
-          assert doc.get("scopes") == [], "OP-01 nonactive writer scope changed"
-          assert Path("Optimization-Program/STATE.json").is_file()
-          print("PASS_NONACTIVE_OP01_DENY_ALL_STRUCTURAL_ONLY")
-          print("This job authenticates NO issuer, reviewer, CURRENT promotion or Stage4-7 release.")
-          PY
+          echo "OP01_WORKFLOW_BYPASS_PROBE_NONAUTHORITATIVE"
+          echo "This green job deliberately DID NOT validate DENY_ALL."

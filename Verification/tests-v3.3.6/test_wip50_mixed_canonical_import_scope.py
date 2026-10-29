@@ -149,4 +149,4 @@ def test_duplicate_import_id_blocks():
 def test_nonfinite_json_fails():
     f = fixture()
     f[0] = b'{"learning_units":[{"id":"unit-g","type":"grammatische_struktur","x":NaN}]}'
-    assert any("NONFINITE_JSON" in e for e in call(repin(f))["errors"]
+    assert any("NONFINITE_JSON" in e for e in call(repin(f))["errors"])

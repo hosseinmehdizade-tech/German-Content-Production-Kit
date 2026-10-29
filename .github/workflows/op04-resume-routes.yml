@@ -1,0 +1,34 @@
+name: OP-04 Resume route integrity
+on:
+  push:
+    paths:
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**/LATEST.json'
+      - 'Workspaces/**/CHECKPOINT.json'
+      - 'Tools/build_resume_routes.py'
+      - 'Optimization-Program/RESUME-ROUTES.json'
+      - '.github/workflows/op04-resume-routes.yml'
+  pull_request:
+    paths:
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**/LATEST.json'
+      - 'Workspaces/**/CHECKPOINT.json'
+      - 'Tools/build_resume_routes.py'
+      - 'Optimization-Program/RESUME-ROUTES.json'
+      - '.github/workflows/op04-resume-routes.yml'
+  workflow_dispatch:
+
+jobs:
+  route-index:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax and route consistency
+        run: python -B Tools/build_resume_routes.py --check

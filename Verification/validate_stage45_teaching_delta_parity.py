@@ -120,7 +120,7 @@ def verify(contract: dict, stage4_bytes: bytes, review_bytes: bytes,
     ids = [c.get("id") for c in cards if isinstance(c, dict)]
     projected_ids = [r.get("id") for r in rows]
     if (len(ids) != len(cards) or any(not text(cid) for cid in ids)
-            or len(set(ids)) != len(ids)):
+            or len(set(cid for cid in ids if text(cid))) != len(ids)):
         block("STAGE4_DUPLICATE_OR_MISSING_CARD")
     if any(not text(cid) for cid in projected_ids) or len(set(projected_ids)) != len(projected_ids):
         block("STAGE5_DUPLICATE_OR_MISSING_CARD")

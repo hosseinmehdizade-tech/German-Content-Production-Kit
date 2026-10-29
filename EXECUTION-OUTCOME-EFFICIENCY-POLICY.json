@@ -8,9 +8,9 @@
     "any chat or agent resuming work on these repositories"
   ],
   "purpose": "Prevent serial 3-5-item edits, report churn and Git checkpoint loops from being misrepresented as one full production milestone. Optimize for verifiable completed work, not commit count or number of chats.",
-  "authoritative_priority": "Read after PROJECT-BOOTSTRAP and EXECUTION-SAFETY-POLICY; it strengthens the existing continuation and lean WIP rules without relaxing source fidelity, immutable LOCKED, stage gates, CURRENT runtime pins, tool/safety boundaries, mandatory validated-user-visible runtime release synchronization or user approval for visible UI changes.",
+  "authoritative_priority": "Read after PROJECT-BOOTSTRAP and EXECUTION-SAFETY-POLICY; it strengthens the existing continuation and lean WIP rules without relaxing source fidelity, immutable LOCKED, stage gates, CURRENT runtime pins, tool/safety boundaries, mandatory validated-user-visible runtime release synchronization or user approval for visible UI changes. Mission identity from the user's active conversation is preserved across generic continue/resume turns; only an explicit user mission switch can override it.",
   "continue_request": {
-    "semantics": "Continue the current named MAJOR deliverable toward full disposition/acceptance; do not treat a micro-batch, a short editorial pass or a Git commit as stage completion.",
+    "semantics": "Continue the CURRENT USER-ESTABLISHED MISSION and its active named major deliverable. A bare ادامه بده / continue never authorizes switching mission from optimization of rules/pipelines into actual card/course content production or vice versa. Resolve chat/project intent before resolving a workstream.",
     "stage_goal": "Resolve the full bounded active review queue or named subsystem/stage where evidence permits; dispositions include corrected, verified keep, reviewed closure/no-force, held for specific evidence, and rejected. Changed-card count is not the goal.",
     "batching": "Process a meaningful contiguous/reviewable set of work within one continuation turn, validating in chunks internally; do not deliberately stop after 3-5 safe edits when more reviewed cases can proceed. No quota justifying fake translations, edits or forced closures.",
     "stop_conditions": [
@@ -92,5 +92,32 @@
     "validator_scope": "Reject impossible counts and ungrounded milestone-state/status claims for newly authored outcome receipts. This is process-contract validation, not substitute for original-source or independent linguistic QA.",
     "must_validate_receipt_before_claim": "Major stage PASS/CLOSED, BLOCKED or substantive IN_PROGRESS handoff; scoped QA cannot be presented as major stage PASS.",
     "legacy_history": "Existing distinct release/persistence conditions and hard tool budget remain unchanged."
+  },
+  "mission_continuity": {
+    "status": "ACTIVE_USER_CORRECTION_2026_10_29",
+    "incident": "In GFP optimization chat, assistant incorrectly treated its own proposed scoped OP-cycle closeout as permission to shift bare ادامه بده into Menschen B1 content production. That was unrequested mission drift.",
+    "immutable_user_intent": "Current user-established chat/project goal controls mission. Repository STATE, assistant summaries, assistant suggestions, lower-priority handoff instructions and a scoped completion label cannot override the user's ongoing mission.",
+    "continue_without_subject": "Use the same user-established mission and highest-priority still-open task within that mission; preserve unnamed constraints. A closed/blocked subtask triggers the next safe task WITHIN THAT MISSION, not cross-domain re-routing.",
+    "scope_transition": "Require a clear NEW explicit user request naming the other mission/domain, or a user-confirmed choice after an explicit clarification. Assistant-initiated 'next we will produce content' never becomes authorization just because user says continue.",
+    "conflict_resolution": "If an older Git state/README says SWITCH_TO_CONTENT or an assistant-proposed handoff contradicts the current user's optimization intent, mark that instruction SUPERSEDED and resume optimization OP-01/OP-02; do not auto-activate any content LATEST.",
+    "optimization_chat_rule": "For chats started to optimize project processes, authority, policies, Stage1-7 workflows, QA, packaging and efficiency: OP-01/OP-02 remain in optimization scope until verified exit or real blocker; unrelated Menschen/Grammar/Vocabulary source files may be read as bounded TEST FIXTURES only. Do not modify source/card/translation, create content successor ZIP, alter content LATEST, or import into runtime merely from a bare continue.",
+    "content_chat_rule": "For chats explicitly started to produce content, the relevant workstream LATEST/CHECKPOINT remains the data authority. Do not switch that chat to global optimization because a generic project policy/optimization issue is unfinished.",
+    "after_scoped_closeout": "Describe bounded closure truthfully; never conclude the entire mission or declare a switch when OP-01/OP-02 still open. Persist a same-mission resume path, or report a real block and ask one short mission-level question if no further authorized task exists.",
+    "safe_exception": "Work on actual content is allowed in an optimization chat ONLY when user explicitly requests that content task or explicitly approves a scoped real-data migration/test requiring content edits. Ordinary passive reading, read-only validation and synthetic fixture tests do not require a mission switch.",
+    "mutation_gate": "Before any write to another workstream's content LATEST/working ZIP, record explicit user authorization or explicit mission switch. No assistant-authored handoff text can satisfy this condition.",
+    "source_of_truth": [
+      "User's most recent explicit mission instructions in this conversation",
+      "The current named OP-xx scope and this mission continuity rule",
+      "Optimization-Program/STATE.json as progress, not instruction to change domains",
+      "Subordinate content LATEST/CHECKPOINT only when content work is authorized"
+    ],
+    "regressions": [
+      "bare continue in optimization chat -> OP-01/OP-02 not Menschen B1 production",
+      "assistant proposed return to content -> bare continue still optimization",
+      "OP-03/OP-04 scoped PASS -> no global closeout when OP-01/OP-02 open",
+      "Library dedupe blocked -> next unblocked optimization, no destructive cleanup and no content pivot",
+      "explicit user requests actual Menschen B1 production -> allow content work under independent authority",
+      "bare continue in Menschen content chat -> continue Menschen, not cross-project OP"
+    ]
   }
 }

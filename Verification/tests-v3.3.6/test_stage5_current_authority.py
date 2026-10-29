@@ -176,3 +176,33 @@ def test_sidecar_invalid_roles_type_rejected_cleanly(built):
     doc = sidecar(built)
     doc["roles"] = []
     assert "AUTHORITY_ROLES_NOT_COMPLETE" in assess(built, doc)["errors"]
+
+
+@pytest.mark.parametrize("invalid_filename", [[], {}, ["untrusted.tsv"], 3, None])
+def test_malformed_role_filename_type_returns_blocked_not_exception(built, invalid_filename):
+    doc = sidecar(built)
+    doc["roles"]["qa-report"]["filename"] = invalid_filename
+    result = assess(built, doc)
+    assert result["status"] == "BLOCKED"
+    assert "AUTHORITY_ROLE_UNSAFE:qa-report" in result["errors"]
+
+
+@pytest.mark.parametrize("scope", ["top-level", "nested-role"])
+def test_duplicate_json_key_is_rejected_even_if_own_digest_matches(built, scope):
+    doc = sidecar(built)
+    raw = json.dumps(doc, ensure_ascii=False, sort_keys=True)
+    if scope == "top-level":
+        raw = raw.replace('"lock_state": "EDITABLE_CURRENT"',
+                          '"lock_state": "LOCKED", "lock_state": "EDITABLE_CURRENT"', 1)
+    else:
+        name = doc["roles"]["qa-report"]["filename"]
+        fragment = '"filename": ' + json.dumps(name, ensure_ascii=False)
+        raw = raw.replace(fragment, '"filename": "forged.tsv", ' + fragment, 1)
+    assert raw.count('"filename"') >= 4
+    data = raw.encode("utf-8")
+    result = verify(
+        data, digest(data), WORKSTREAM, ARTIFACT, SOURCE_SHA, PARENT_SHA,
+        scan_input(built["input_dir"]), built["zip"], digest(built["zip"])
+    )
+    assert result["status"] == "BLOCKED"
+    assert "AUTHORITY_SIDECAR_INVALID_JSON" in result["errors"]

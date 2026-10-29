@@ -252,3 +252,53 @@ def test_precedence_rejects_mismatched_graph_edge_count():
     matrix, adoption = _precedence_pair()
     adoption["dependency_graph_integrity"]["edges"] = 9
     assert any("dependency counts" in x for x in m.validate_precedence_adoption(matrix, adoption))
+
+
+def _stage56_receipts():
+    prefix = "Architecture/Stage3-Stage4-Unification/"
+    return tuple(m.load(m.BASE / (prefix + name)) for name in (
+        "250-VERBEN-STAGE6-V486-R120-BOUNDARY-v1.7.json",
+        "250-VERBEN-STAGE6-USER-CONFIRMED-v1.7-2026-10-29.json",
+        "PHASE-2-3-4-READINESS-v0.1.json",
+    ))
+
+
+def test_stage56_exact_user_and_static_evidence_chain():
+    a, b, c = _stage56_receipts()
+    assert m.validate_stage56_evidence_chain(a, b, c) == []
+
+
+def test_stage56_false_automated_pass_is_rejected():
+    a, b, c = _stage56_receipts()
+    b["acceptance"]["independent_browser_automation"] = "PASS"
+    assert any("fabricate independent" in x for x in m.validate_stage56_evidence_chain(a, b, c))
+
+
+def test_stage56_different_app_current_is_rejected():
+    a, b, c = _stage56_receipts()
+    b["target_identity"]["app_zip_sha256"] = "f" * 64
+    assert any("different app CURRENT" in x for x in m.validate_stage56_evidence_chain(a, b, c))
+
+
+def test_stage56_wrong_import_tsv_is_rejected():
+    a, b, c = _stage56_receipts()
+    b["target_identity"]["stage4_stage5_approved_content_tsv_sha256"] = "f" * 64
+    assert any("dataset identity mismatch" in x for x in m.validate_stage56_evidence_chain(a, b, c))
+
+
+def test_stage56_user_report_must_not_erase_old_browser_block():
+    a, b, c = _stage56_receipts()
+    a["real_stage6"]["overall"] = "PASS"
+    assert any("automated PASS" in x for x in m.validate_stage56_evidence_chain(a, b, c))
+
+
+def test_stage56_missing_user_check_rejected():
+    a, b, c = _stage56_receipts()
+    b["checked_behaviors"].pop()
+    assert any("eight distinct user-reported" in x for x in m.validate_stage56_evidence_chain(a, b, c))
+
+
+def test_stage7_private_does_not_imply_runtime_promotion():
+    a, b, c = _stage56_receipts()
+    c["overall"] = "STAGE6_USER_CONFIRMED_PASS__STAGE7_PRIVATE_SINGLE_ZIP_PASS"
+    assert any("runtime promotion" in x for x in m.validate_stage56_evidence_chain(a, b, c))

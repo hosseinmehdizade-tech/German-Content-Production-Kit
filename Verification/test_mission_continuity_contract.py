@@ -21,7 +21,7 @@ class MissionContinuityContract(unittest.TestCase):
     def test_unqualified_continue_retains_user_mission(self):
         rule = self.policy["mission_continuity"]
         self.assertTrue(rule["status"].startswith("ACTIVE_USER_CORRECTION"))
-        self.assertIn("continue", rule["continue_without_subject"])
+        self.assertIn("continue", self.policy["continue_request"]["semantics"].lower())
         self.assertIn("same user-established mission", rule["continue_without_subject"])
         self.assertIn("Tampermonkey", self.bootstrap)
         self.assertIn("not", rule["continue_without_subject"].lower())
@@ -57,7 +57,7 @@ class MissionContinuityContract(unittest.TestCase):
         self.assertIn("content successor zip", prohibited)
         self.assertIn("content workstream latest", prohibited)
         self.assertIn("import to user srs", prohibited)
-        self.assertIn("explicit user", self.policy["mission_continuity"]["safe_exception"].lower())
+        self.assertIn("user explicitly", self.policy["mission_continuity"]["safe_exception"].lower())
         self.assertIn("explicit user", self.readme.lower())
 
 

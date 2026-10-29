@@ -61,3 +61,16 @@ Relevant official docs:
 
 **Policy status:** DENY_ALL active. **Branch security settings changed: 0.**
 No content or application files changed in this proposal.
+
+
+## Actual PR and GitHub Actions evidence
+
+- [Draft candidate PR #31](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/31), isolated base `main`, current proposal branch stays **unmerged**.
+- [Initial pilot run 40954447718](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40954447718): event `pull_request`, `op01-governance-preflight` job 123730767274 **SUCCESS**; job log contains `PASS_NONACTIVE_OP01_DENY_ALL_STRUCTURAL_ONLY`.
+- [PR #31 after removing all branch/path filters, run 40954673131](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40954673131): **SUCCESS** (candidate workflow on PR targeting main).
+- [Nested true documentation-only PR #32](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/32) was created with base `ci/op01-always-on-pr-gate-pilot-20261029`. Its **entire changed-files list** had exactly one entry: `Optimization-Program/Verification/OP01-DOCS-ONLY-PR-CHECK-PROBE-2026-10-29.md`. No workflow file in that PR diff.
+- [Docs-only run 40954741660](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40954741660): event `pull_request`, head `7d4ae1c6e9e357e453d108df2ab6af0d5dfabb4e`, job `op01-governance-preflight` 123731781453 **SUCCESS** and independent complete log includes `PASS_NONACTIVE_OP01_DENY_ALL_STRUCTURAL_ONLY`. It was the **only workflow run** returned for that true docs-only PR head. This directly proves no path filter skipped the candidate job.
+- The docs-only PR #32 is now **closed and unmerged**, preserving test evidence without merging a test artifact.
+- Current PR #31 **remains Draft and unmerged**. This does not create a required check or protect `main`; zero repository settings changed.
+
+**Caveat:** this is structural-only evidence for a stable all-PR status. It is **not** cryptographic or external CURRENT issuer authorization, does not prevent an admin from bypassing an unprotected main branch, and does not qualify a production release.

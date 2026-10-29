@@ -1,0 +1,61 @@
+{
+  "schema": "gcpk-op02-v486-real-browser-lifecycle-evidence@1",
+  "date": "2026-10-29",
+  "scope": "SYNTHETIC_TWO_CARD_CHROMIUM__EXACT_CURRENT_V486_R120__NO_LEARNER_CONTENT_OR_APP_UI_CHANGES",
+  "status": "PASS_SCOPED_REAL_BROWSER_UBUNTU_AND_WINDOWS",
+  "app_authority": {
+    "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "runtime": "v486-R120",
+    "path": "01-App/index.html",
+    "sha256": "d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff",
+    "app_html_unchanged": true
+  },
+  "test": {
+    "path": "03-Tests/test-op02-v486-stage45-lifecycle-browser.cjs",
+    "tool": "Playwright Chromium 1.62.1 with Node.js 22",
+    "workflow": ".github/workflows/op02-stage45-v486-lifecycle-browser.yml",
+    "ci_run": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40874877519",
+    "commit": "0e12bb085b74eb1cfdcb010e13b6d6fbc17421d1",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "each_platform": {
+      "run_conclusion": "success",
+      "tests": 5,
+      "synthetic_cards": 2,
+      "synthetic_rich_combination_items": 2,
+      "original_source_or_locked_edits": 0
+    },
+    "checks": [
+      "UI data/import selected original 23-column Universal TSV, commit manifest VERIFIED and exactly two expected card IDs across repeated snapshots.",
+      "Rich authority, compact-runtime and full-authority card retained exact ordered item metadata DE/FA/EN, provenance, kind, teaching_delta and view bridge.",
+      "Actual presentation backHtml function in study and quick modes generated DOM with expected German and Persian combinations.",
+      "Reload retained exact verified storage generation and both synthetic cards.",
+      "Clicked visible app Export Universal TSV button; browser produced a real downloaded two-card 23-column file, checked exact semantic item metadata and view bridge in both rows.",
+      "Reimported the exact downloaded TSV bytes, including export BOM, through native UI into a fresh isolated browser profile; verified new generation, rich metadata, mode HTML and reload."
+    ],
+    "download_sha_by_os": {
+      "ubuntu": "1b511193fc85765c2a392cd2e57673ddc404e8c6ea39f2a726797cadd1e796f4",
+      "windows": "3c922426cbf405726cde174c8bcc645941631c5aa731297524472331686184d0"
+    },
+    "download_digest_limit": "Different downloaded-file hashes across two OS runs are not treated as failure: environmental fields may differ; exact semantic fields, expected card identities/order, and reimported bytes are checked within each run.",
+    "previous_ci_false_positive_guard": "After earlier unstable/zero-card runs, check requires exact count 2, exact expected IDs, IDB manifest VERIFIED, stable activeGeneration on repeated distinct snapshots, and post-observation confirmation."
+  },
+  "preserved_existing": {
+    "active_stage45_writer": "NONACTIVE",
+    "git_remote_writer_scopes": "DENY_ALL",
+    "library_or_source_mutation": false,
+    "app_current_html_mutation": false,
+    "user_visible_ui_change": false
+  },
+  "limits": [
+    "Test exercises synthetic cards and browser profiles, not the user's real imported learner library.",
+    "Study/Quick check evaluates app's actual presentation backHtml function into a DOM host; it does not drive every navigation/accessibility/mobile interaction.",
+    "No actual independent linguistic Stage4 review, registered-original source re-extraction, teaching_delta semantic correctness, or new content Stage5/Stage6/Stage7 certification.",
+    "Does not imply a permitted runtime migration or active Stage3C/4/5 schema change.",
+    "Historical Menschen A2-L24 SHA 9aa0f362... remains unresolved.",
+    "One platform PASS cannot substitute for other platform; this record verifies both in the same CI run."
+  ],
+  "next": "Preserve these end-to-end synthetic regression gates. Add optional negative real-browser import/recovery/backup and export equivalence tests under explicit scoped test assets without production data. Do not activate Stage45/3C changes or rewrite source/LOCKED."
+}

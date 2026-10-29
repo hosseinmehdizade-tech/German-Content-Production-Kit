@@ -179,4 +179,4 @@ def test_refuse_existing_archive_even_with_valid_proof(tmp_path):
     output.write_bytes(b"protected, not a ZIP")
     result = _run(source, output, proof)
     assert result.returncode != 0
-    assert output.read_bytes() == b"protected"
+    assert output.read_bytes() == b"protected, not a ZIP"

@@ -89,7 +89,7 @@ Three new negative tests specifically assert that the OLD role-only audit
 accepts the internal-sum corruption and that the NEW guard rejects it. A
 fourth test supplies a JSON nesting depth of 10,000 to exercise and catch
 the actual Python JSON decoder recursion boundary (the former 1,200 depth
-did not reliably trigger recursion). The suite declares **32 pytest cases**,
+did not reliably trigger recursion). The suite declares **32 pytest cases at that earlier source checkpoint**,
 including parametrized cases, for this guard.
 
 **Evidence:** Exact source/test files and CI workflow wiring were read back
@@ -102,3 +102,26 @@ the specific Ubuntu and Windows CI job IDs/results were NOT observed;
 therefore this work remains `PENDING_CI`, not PASS_SCOPED or production
 acceptance. Active content source, stage policies, writer scopes, runtime
 v486-R120, app UI and Library were not modified.
+
+## Direct verifier API preflight provenance envelope (2026-10-29; CI pending)
+
+Source review identified that direct callers of `verify(..., selected_inputs=...)`
+could pass a self-declared `PASS_SCOPED_SINGLE_CANDIDATE_INPUT_ONLY`
+selection with only role content and without the required scanner provenance
+envelope. The CLI performs a real `scan_input`, but direct use needed its
+own fail-closed structural gate.
+
+The NONACTIVE verifier now also requires the exact
+`gcpk-op02-stage5-input-role-binding@1` scan schema, zero scanner errors,
+and exactly one candidate for every required role. Four new negative
+parameterized tests cover missing schema, substituted schema, a false
+candidate count and a hidden scanner error. GitHub source/test readback plus
+workflow wiring inspection confirms **36 declared test cases** total.
+No full Python repository execution or Ubuntu/Windows workflow job evidence
+has been obtained for this revision; no CI or production PASS is claimed.
+
+This additional check validates the *shape* of a supplied scanner receipt.
+It is not cryptographic evidence that a caller actually ran `scan_input`.
+Only the CLI's own immediate scan and externally trusted CURRENT authority
+can establish the intended practical boundary. OP-01 writer permissions
+remain DENY_ALL.

@@ -33,6 +33,8 @@ on:
       - 'Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py'
       - 'Verification/validate_stage3_stage4_unification.py'
       - 'Verification/verify_stage34_materialized_output.py'
+      - 'Verification/audit_wip50_mixed_canonical_import_scope.py'
+      - 'Verification/tests-v3.3.6/test_wip50_mixed_canonical_import_scope.py'
       - 'Verification/tests-v3.3.6/test_stage34_materialized_output.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
@@ -74,6 +76,8 @@ on:
       - 'Verification/tests-v3.3.6/test_a2_l24_stage123_lineage.py'
       - 'Verification/validate_stage3_stage4_unification.py'
       - 'Verification/verify_stage34_materialized_output.py'
+      - 'Verification/audit_wip50_mixed_canonical_import_scope.py'
+      - 'Verification/tests-v3.3.6/test_wip50_mixed_canonical_import_scope.py'
       - 'Verification/tests-v3.3.6/test_stage34_materialized_output.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
       - 'Verification/validate_applied_edit_bytes.py'
@@ -101,6 +105,8 @@ jobs:
         run: python -m compileall -q Verification/validate_stage3_stage4_unification.py
       - name: Validate matrix against actual preserved checkpoint schemas
         run: python Verification/validate_stage3_stage4_unification.py
+      - name: Verify lexical and grammar ID separation in mixed Canonical/import scopes (synthetic)
+        run: python -m pytest -vv Verification/tests-v3.3.6/test_wip50_mixed_canonical_import_scope.py
       - name: Bind whole Stage3 output bytes and every unit SHA against external pin (synthetic only)
         run: python -m pytest -vv Verification/tests-v3.3.6/test_stage34_materialized_output.py
       - name: Exercise fail-closed Stage3/Stage4 proposal contract

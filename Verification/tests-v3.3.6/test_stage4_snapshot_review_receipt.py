@@ -188,7 +188,7 @@ def test_rejected_duplicate_json_keys():
 
 def test_rejected_nonfinite_json():
     f=fixtures()
-    raw=encoded(f[5]).replace(b'"reviewed_unique":2',b'"reviewed_unique":NaN')
+    raw=encoded(f[5]).replace(b'"reviewed_unique": 2',b'"reviewed_unique": NaN')
     r=verify(f[0],f[1],f[2],f[3],f[4],raw)
     assert "CANONICAL_OR_RECEIPT_INVALID_JSON" in r["errors"]
 

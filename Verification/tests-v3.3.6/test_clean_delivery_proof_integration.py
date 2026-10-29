@@ -11,6 +11,7 @@ import io
 import json
 import subprocess
 import sys
+import pytest
 import zipfile
 from pathlib import Path
 
@@ -180,3 +181,48 @@ def test_refuse_existing_archive_even_with_valid_proof(tmp_path):
     result = _run(source, output, proof)
     assert result.returncode != 0
     assert output.read_bytes() == b"protected, not a ZIP"
+
+
+@pytest.mark.parametrize("role,second_name,copy_name", [
+    ("direct-import-tsv", "second-IMPORT.tsv", "a-UNIVERSAL.tsv"),
+    ("direct-import-tsv", "second-Cards.tsv", "a-UNIVERSAL.tsv"),
+    ("canonical-json", "second-canonical.json", "canonical.json"),
+    ("source-output-map-tsv", "backup-source-output-map.tsv", "source-output-map.tsv"),
+    ("qa-report", "second-QA.json", "verification.json"),
+])
+def test_active_builder_rejects_ambiguous_role_before_writing(
+        tmp_path, role, second_name, copy_name):
+    source, _, _ = _setup(tmp_path)
+    (source / second_name).write_bytes((source / copy_name).read_bytes())
+    output = tmp_path / "candidate.zip"
+    result = _run(source, output, None)
+    assert result.returncode != 0
+    assert f"ambiguous required delivery role: {role}" in result.stderr + result.stdout
+    assert not output.exists()
+
+
+def test_active_builder_rejects_one_file_for_two_roles(tmp_path):
+    source, _, _ = _setup(tmp_path)
+    (source / "canonical.json").unlink()
+    (source / "verification.json").unlink()
+    (source / "canonical-QA.json").write_text("{}\\n", encoding="utf-8")
+    output = tmp_path / "candidate.zip"
+    result = _run(source, output, None)
+    assert result.returncode != 0
+    assert "role file reused for multiple roles" in result.stderr + result.stdout
+    assert not output.exists()
+
+
+def test_active_builder_rejects_matching_symlink_without_packaging(tmp_path):
+    source, _, _ = _setup(tmp_path)
+    (source / "canonical.json").unlink()
+    link = source / "canonical-link.json"
+    try:
+        link.symlink_to(source / "verification.json")
+    except (OSError, NotImplementedError):
+        pytest.skip("this runner does not permit test symlinks")
+    output = tmp_path / "candidate.zip"
+    result = _run(source, output, None)
+    assert result.returncode != 0
+    assert "unsafe required delivery role candidate: canonical-json" in result.stderr + result.stdout
+    assert not output.exists()

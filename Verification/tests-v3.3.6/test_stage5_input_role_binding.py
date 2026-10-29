@@ -82,8 +82,24 @@ def test_two_matching_candidates_block_even_if_exact_same_bytes(
     assert s["candidate_counts"][which_role] == 2
 
 
-def test_case_insensitive_same_role_collision_blocks(built):
+def test_case_insensitive_same_role_collision_blocks_when_two_real_files_exist(built):
+    # On Windows default case-insensitive filesystem, creating the same
+    # basename with different case replaces/aliases the existing file.
+    # That is ONE filesystem entry, not evidence of two candidates.
     duplicate(built, "Synthetic-universal.TSV", DIRECT)
+    candidates = [
+        p for p in built["input_dir"].iterdir()
+        if p.name.casefold() == DIRECT.casefold()
+    ]
+    if len(candidates) < 2:
+        pytest.skip("Case-insensitive filesystem has one physical entry")
+    s = scan_input(built["input_dir"])
+    assert s["status"] == "BLOCKED"
+    assert "AMBIGUOUS_ROLE:direct-import-tsv" in s["errors"]
+
+
+def test_distinct_mixed_case_tsv_names_detected_on_both_os(built):
+    duplicate(built, "Other-UNIVERSAL.TSV", DIRECT)
     s = scan_input(built["input_dir"])
     assert s["status"] == "BLOCKED"
     assert "AMBIGUOUS_ROLE:direct-import-tsv" in s["errors"]

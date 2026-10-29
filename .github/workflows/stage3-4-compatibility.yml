@@ -5,12 +5,16 @@ on:
       - 'Architecture/Stage3-Stage4-Unification/**'
       - 'Verification/validate_stage3_stage4_unification.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
+      - 'Verification/validate_applied_edit_bytes.py'
+      - 'Verification/test_applied_edit_bytes.py'
       - '.github/workflows/stage3-4-compatibility.yml'
   pull_request:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
       - 'Verification/validate_stage3_stage4_unification.py'
       - 'Verification/tests-v3.3.6/test_stage3_stage4_unification.py'
+      - 'Verification/validate_applied_edit_bytes.py'
+      - 'Verification/test_applied_edit_bytes.py'
       - '.github/workflows/stage3-4-compatibility.yml'
   workflow_dispatch:
 jobs:
@@ -33,3 +37,5 @@ jobs:
         run: python Verification/validate_stage3_stage4_unification.py
       - name: Exercise fail-closed Stage3/Stage4 proposal contract
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage3_stage4_unification.py
+      - name: Reject report-only APPLIED and unverified CURRENT readbacks
+        run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py

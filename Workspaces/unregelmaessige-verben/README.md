@@ -1,3 +1,9 @@
+# Current working snapshot: Stage4 WIP5 (2026-10-30)
+
+Latest mutable authority is Library ZIP `Unregelmaessige-Verben-v1.3.1-R8-Stage4-Particle-23-Reviewed-WIP5-2026-10-30.zip` (SHA-256 `a05308ca9922ccb040618c682e6d270af9ca7d2c0a6301835afe351460e50f72`, 452007 bytes, 17 files). Exact byte/hash Library readback PASS, clean content replay 17/17 identical, v3.3.6 neutral projection PASS, official Kombinationen didactic gate 85/85 previously dispositioned PASS. The 23/23 potential prefix/particle example cases have explicit source-bound FA/DE/EN dispositions: 21 KEEP with distinct reasons, 2 corrected base-verb example replacements (`gleiten`, `werfen`), four further derived-verb learner annotations. 174 cards, 696 example triplets, 484 combinations, 853 relations retained. **This is a scoped Stage4 milestone, NOT full Stage4 semantic approval**; full 696-example / 484-combination / 853-relation independent adversarial QA and Stage5/6/7 are pending. Parent WIP4 and original R8 immutable; user-approved R8 source rebaseline stands. Receipt: `V131-R8-STAGE4-PARTICLE-23-REVIEWED-WIP5-2026-10-30.json`.
+
+---
+
 # Current working snapshot: Stage4 WIP4 (2026-10-29)
 
 Exact WIP4 ZIP SHA256 `19a92ea83684733ddc2acdab6de1245c9c7067a609bac7cea84e4fb94c058f9e` in the project's Library Checkpoints. 174 cards, 696 trilingual examples, 484 combinations, 853 canonical relations. 381 noncollocation relation categories screened (379 not independently semantically approved); two circular/aspect-mismatched synonyms removed. 23 example terminal-particle cases screened, 16 lemma-fit holds. Official didactic gate 85/85 scoped PASS. **Full Stage4 and Stage5/6/7 remain OPEN.** User-approved R8 derived-source baseline; historical PNGs not reattested. Current `LATEST.json` and receipt `V131-R8-STAGE4-RELATION-CATEGORY-381-WIP4-2026-10-29.json` are authoritative.

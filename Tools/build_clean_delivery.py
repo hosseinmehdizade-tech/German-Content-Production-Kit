@@ -30,15 +30,22 @@ except PackageGuardError as exc:
 def pick(patterns, role):
     # Delivery filenames are user/workstream artifacts and may vary in case
     # (for example A1-VERBEN-UNIVERSAL-v2.tsv). Resolve roles case-insensitively.
+    # Do not silently select the alphabetically first matching file. The
+    # separate Stage5 preflight already rejects ambiguous role choices, but
+    # callers of THIS production builder must receive the same fail-closed
+    # behavior even when they skip that optional preflight.
     files=[]
     for x in src.iterdir():
-        if not x.is_file():
-            continue
         name=x.name.lower()
         if any(fnmatch.fnmatch(name,pat.lower()) for pat in patterns):
+            if x.is_symlink() or not x.is_file():
+                raise SystemExit(f"unsafe required delivery role candidate: {role}: {x.name}")
             files.append(x)
     files=sorted(set(files),key=lambda x:x.name.lower())
     if not files: raise SystemExit(f"missing required delivery role: {role}")
+    if len(files)!=1:
+        raise SystemExit(f"ambiguous required delivery role: {role}: "
+                         + ", ".join(x.name for x in files))
     return files[0]
 
 direct=pick(["*Universal*.tsv","*import*.tsv","*cards*.tsv"],"direct-import-tsv")
@@ -76,6 +83,12 @@ if a.applied_edit_proof is not None:
 canonical=pick(["*canonical*.json"],"canonical-json")
 mapping=pick(["*source-output-map*.tsv"],"source-output-map-tsv")
 qa=pick(["*verification*.json","*QA*.json","*qa*.json"],"qa-report")
+
+# One physical input path must never satisfy two roles, even if matching
+# patterns overlap (e.g. a single canonical-QA.json).
+selected=(direct,canonical,mapping,qa)
+if len({p.resolve() for p in selected})!=len(selected):
+    raise SystemExit("required delivery role file reused for multiple roles")
 
 with direct.open(encoding="utf-8-sig",newline="") as f:
     rows=list(csv.DictReader(f,delimiter="\t"))

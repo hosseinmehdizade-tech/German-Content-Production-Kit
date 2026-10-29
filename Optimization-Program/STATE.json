@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_COORDINATION_ESTABLISHED__IMPLEMENTATION_NOT_PROMOTED",
+  "state": "ACTIVE_OP03_SCOPED_FIX_VALIDATED__FULL_COVERAGE_PENDING",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -46,9 +46,9 @@
     {
       "id": "OP-03",
       "title": "Packaging and ZIP churn control",
-      "status": "READY_FOR_AUDIT",
-      "last_evidence": "Tools/content_package_guard.py and Tools/build_clean_delivery.py",
-      "next_action": "Enumerate all content and runtime ZIP production paths, find bypasses, test blocking/allowed recovery and measure outputs",
+      "status": "IN_PROGRESS_SCOPED_FIX_VALIDATED",
+      "last_evidence": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40793075313",
+      "next_action": "OP-03/2: classify 8 historical Content recovery ZIP writers and 8 version-specific app ZIP writers by actual publication intent and exception safety; extend a shared enforceable check only to current reusable production paths. Preserve all existing recovery capabilities.",
       "blocker": null
     },
     {
@@ -85,7 +85,7 @@
     }
   ],
   "active_priority": "OP-03",
-  "next_exact_action": "Audit all ZIP producers/call sites in Content Kit and Flashcards Pro without mutation; compare existing guard enforcement and allowed immutable recovery exemptions; produce one source-linked coverage table and testable remediation.",
+  "next_exact_action": "OP-03/2: classify 8 historical Content recovery ZIP writers and 8 version-specific app ZIP writers by actual publication intent and exception safety; extend a shared enforceable check only to current reusable production paths. Preserve all existing recovery capabilities.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -103,16 +103,59 @@
     "content_zip_count_before": null,
     "library_bytes_reclaimable_verified": null,
     "policy_active_count_before": null,
-    "guarded_zip_producers_total": null,
-    "guarded_zip_producers_covered": null,
+    "guarded_zip_producers_total": 3,
+    "guarded_zip_producers_covered": 3,
     "validated_quality_regressions": 0,
     "real_saved_time_measured": null
   },
   "last_milestone": {
-    "id": "PROGRAM-BOOTSTRAP-2026-10-29",
-    "scope": "Cross-repo program coordination and lightweight Library bookmark",
-    "result": "PASS_GITHUB_ISSUE_AND_README_AND_STATE_AND_BOTH_BOOTSTRAPS_AND_LIBRARY_BOOKMARK",
-    "tests": "GitHub README/STATE/app-hub/bootstrap readback; Library list contains START-HERE.md",
-    "not_claimed": "No production content/runtime modification; no Library file deletion; no GitHub Projects board or separate repository created."
+    "id": "OP03-1-IMMUTABLE-APP-PACKAGING-2026-10-29",
+    "scope": "Audit sampled/exact zipfile code paths across both repositories and harden the general Flashcards app release builder",
+    "result": "PASS_SCOPED_GENERIC_APP_BUILDER__OP03_REMAINING",
+    "tests": "6 dedicated regression cases PASS on Ubuntu and Windows; AST compilation PASS on both, GitHub Actions run 40793075313",
+    "persistence": "APP_GIT_COMMIT_48b0ed6abf7d00846236434ffa3426631936f13d",
+    "not_claimed": "No full across-repo packaging coverage, no runtime candidate promotion, no global current-engineering PASS, no Library cleanup"
+  },
+  "packaging_audit": {
+    "milestone": "OP03-1",
+    "method": "GitHub default-branch exact-string search for zipfile.ZipFile and guarded_zip, plus line-level source inspection of all matching Python/JS files. This does not prove absence of dynamically generated/off-repository archivers.",
+    "matching_file_count": {
+      "content_kit_python": 25,
+      "flashcards_app_python_js": 46
+    },
+    "classified_production_writers": {
+      "content_kit_guarded": 3,
+      "content_kit_direct_historical_repair_recovery": 8,
+      "flashcards_app_direct_release_packagers": 9
+    },
+    "content_guard_core": "Tools/content_package_guard.py (not included in the 3 guarded call-sites)",
+    "app_generic_builder_before": "08-Release-Tools/build_clean_release.py deleted an existing ZIP and deleted failed output",
+    "app_generic_builder_after": "Uses archive_publish_transaction and validates private candidate before no-replace atomic hardlink publication",
+    "app_changed_files": [
+      "08-Release-Tools/release_contract_lib.py",
+      "08-Release-Tools/build_clean_release.py",
+      "03-Tests/test_release_archive_publish.py",
+      ".github/workflows/op03-immutable-zip.yml"
+    ],
+    "latest_patch_commit": "48b0ed6abf7d00846236434ffa3426631936f13d",
+    "targeted_CI": {
+      "status": "PASS",
+      "run": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40793075313",
+      "ubuntu": "PASS",
+      "windows": "PASS",
+      "test_cases_per_os": 6,
+      "source_ast_compilation": "PASS_BOTH"
+    },
+    "broader_current_engineering_gate": {
+      "status": "IN_PROGRESS_AT_LAST_OBSERVATION",
+      "run": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40793075400"
+    },
+    "scope_notes": [
+      "Version-specific and historical recovery generators are not all guarded; full OP-03 enforcement remains pending.",
+      "Direct write modes w/a/x are not equivalent to destructive rewrite; each caller needs intent and pre-existing destination checks.",
+      "No content/source/LOCKED ZIP was changed, created or deleted in this optimization milestone.",
+      "Runtime app files 01-App and CURRENT pin were not modified; no new runtime release claimed.",
+      "GitHub code search may omit alternative archiving APIs, generated scripts and external ad-hoc packaging."
+    ]
   }
 }

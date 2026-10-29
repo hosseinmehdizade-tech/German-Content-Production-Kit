@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OP04_SCOPED_PASS__NEXT_OP05",
+  "state": "ACTIVE_OP05_SAMPLED_INVENTORY__NO_HASH_VERIFIED_NO_DELETE",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -63,10 +63,10 @@
     {
       "id": "OP-05",
       "title": "Library storage baseline and safe deduplication",
-      "status": "PLANNED_NO_DELETE",
-      "last_evidence": "Existing Library Checkpoints folders; prior audit samples need refreshed reproducible inventory",
-      "next_action": "Inventory exact hashes, dependencies and recoverable authority before proposing deletion candidates",
-      "blocker": "Deletion requires verified recoverability and user approval"
+      "status": "IN_PROGRESS_SAMPLED_STORAGE_INVENTORY__RAW_HASH_ACCESS_BLOCKED",
+      "last_evidence": "Library list scoped recursive sort=size descending: 5 pages per target, sampled 2026-10-29; raw-byte materialize returned no authorized backing for 4 requested large files",
+      "next_action": "Finish complete folder pagination inventory where feasible; obtain authorized exact raw bytes or trusted per-file SHA-256 readback for candidate matches; map current/LOCKED/recovery dependencies. Never delete based on filename/size alone.",
+      "blocker": "Library materialize of listed 2x213,216,245-byte ZIP and 2x113,754,051-byte RAR files returned authorized raw-byte path unavailable. Exact hash match unproven. Deletion requires separate approval."
     },
     {
       "id": "OP-06",
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-05",
-  "next_exact_action": "OP-05: enumerate Library root/Checkpoint/Current/Final folders, identify large redundant ZIP candidates by SHA and dependency graph, and produce reversible deletion proposals only after exact source/current artifact checks. NO deletion without approval.",
+  "next_exact_action": "OP-05 next: complete pagination, resolve Library byte/hash access blocker, and compare SHA-256 for candidate duplicate pairs; protect CURRENT and source. No delete until verified recovery and user approval.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -102,7 +102,7 @@
   "metrics": {
     "runtime_zip_count_before": null,
     "content_zip_count_before": null,
-    "library_bytes_reclaimable_verified": null,
+    "library_bytes_reclaimable_verified": 0,
     "policy_active_count_before": null,
     "guarded_zip_producers_total": 3,
     "guarded_zip_producers_covered": 3,
@@ -113,11 +113,11 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP04-1-FAST-RESUME-ROUTES-2026-10-29",
-    "scope": "Repair startup navigation for 1.05MB parseable GitHub root state and newer/missing workstream route topology.",
-    "result": "PASS_SCOPED_17_CENTRAL_WORKSTREAM_ROUTES_PLUS_6_EXTRA_LATEST__11_GIT_PATH_MISMATCHES_DIAGNOSED",
-    "tests": "Route generator --check exact match passed Ubuntu/Windows in GitHub Actions 40796013477; updated narrowed workflow pending independent run result",
-    "not_claimed": "No shrink of source 1MB file, no claims of workstream stage progress, no Library deletion or release zip."
+    "id": "OP05-1-LIVE-LIBRARY-METADATA-2026-10-29",
+    "scope": "Two largest Library trees sampled (5 pages each) plus two bounded current/checkpoint folders",
+    "result": "PARTIAL_INVENTORY__HASH_ACCESS_BLOCKED__NO_DELETE",
+    "tests": "Live Library listings and exact file IDs observed; 4 raw materialize attempts returned no authorized raw bytes",
+    "not_claimed": "No exhaustive total size, no exact duplicate proof, no data deleted, no measured reclaimed storage"
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -259,5 +259,92 @@
       "Root 1.05MB state compaction needs schema/consumer dependency audit and migration/rollback; not performed.",
       "Optional refresh of root state summary remains separate from workstream-local exact progress."
     ]
+  },
+  "library_audit": {
+    "schema": "gfp-op05-inventory@1",
+    "date": "2026-10-29",
+    "kind": "SAMPLED_LIVE_LIBRARY_METADATA__NOT_COMPLETE",
+    "method": "files.list(surface=library,recursive=true,sort=size desc,limit=500), 5 pages per folder; pagination still open",
+    "folders": [
+      {
+        "path": "/Flasch kart",
+        "pages_scanned": 5,
+        "file_count_scanned": 987,
+        "bytes_scanned": 10256471687,
+        "zip_rar_7z_count_scanned": 882,
+        "zip_rar_7z_bytes_scanned": 8742389637,
+        "more_pages": true
+      },
+      {
+        "path": "/German-Content-Production-Kit/Checkpoints",
+        "pages_scanned": 5,
+        "file_count_scanned": 1000,
+        "bytes_scanned": 2297666869,
+        "zip_rar_7z_count_scanned": 987,
+        "zip_rar_7z_bytes_scanned": 2279821848,
+        "more_pages": true
+      },
+      {
+        "path": "/German-Flashcards-Pro/Checkpoints",
+        "pages_scanned": 1,
+        "file_count_scanned": 76,
+        "bytes_scanned": 231849060,
+        "more_pages": false
+      },
+      {
+        "path": "/German-Content-Production-Kit/Current",
+        "pages_scanned": 1,
+        "file_count_scanned": 76,
+        "bytes_scanned": 16384427,
+        "more_pages": false
+      }
+    ],
+    "strong_candidate_pairs_NOT_HASH_VERIFIED": [
+      {
+        "size_each": 213216245,
+        "paths": [
+          "/Flasch kart/German-Flashcards-Pro-v486-Menschen-B1-24-Lektionen-IMPORT-REPAIRED-AUDIO-COMPANION-NONIMPORT.zip",
+          "/Flasch kart/German-Flashcards-Pro-v486-Menschen-B1-24-Lektionen-IMPORT-REPAIRED-AUDIO-COMPANION-NONIMPORT(1).zip"
+        ],
+        "ids": [
+          "libfile_2ea2d5fdd5dc8191a665bf66ae80a015",
+          "libfile_c61798606f4c819192a5c57695ae344c"
+        ],
+        "evidence": "SAME_NAME_STEM_AND_EXACT_SIZE_ONLY",
+        "decision": "HOLD"
+      },
+      {
+        "size_each": 113754051,
+        "paths": [
+          "/Flasch kart/menschen-a1a2b1-full-audio by Hossein_mehdizade [5692974].rar",
+          "/Flasch kart/menschen-a1a2b1-full-audio by Hossein_mehdizade [5692974](1).rar"
+        ],
+        "ids": [
+          "libfile_4f7116c336e48191b82d5b978e9d4174",
+          "libfile_15a86cad65f48191ba30d959f2286cf5"
+        ],
+        "evidence": "SAME_NAME_STEM_AND_EXACT_SIZE_ONLY",
+        "decision": "HOLD_SOURCE_AUDIO"
+      },
+      {
+        "size_each": 84526831,
+        "paths": [
+          "/Flasch kart/Grammatik aktiv A1-B1.pdf",
+          "/Flasch kart/Grammatik aktiv A1-B1(1).pdf"
+        ],
+        "ids": [
+          "libfile_88be569959a481918b3172c7ab0c3038",
+          "libfile_cb7e56fc4818819192b4ed8b7b37bcdb"
+        ],
+        "evidence": "SAME_NAME_STEM_AND_EXACT_SIZE_ONLY",
+        "decision": "HOLD_SOURCE_PDF"
+      }
+    ],
+    "hold_reason": "No sha256 field in Library list metadata, 4 large raw materialize attempts returned no authorized raw-byte materialization path. Neither filename nor size proves duplicate.",
+    "confirmed_duplicate_groups": 0,
+    "verified_reclaimable_bytes": 0,
+    "actually_deleted_files": 0,
+    "protected": "LOCKED/final source, CURRENT pin, user original PDFs and audio RAR, portable recovery and history until SHA/readback and dependency checks",
+    "future_savings_estimate": "UNKNOWN; potential single-copy sum 411,497,127 bytes for 3 matching-size candidate pairs ONLY IF SHA and recovery/dependency proof later pass"
   }
 }

@@ -7,6 +7,11 @@ on:
       - 'Tools/build_resume_routes.py'
       - 'Optimization-Program/RESUME-ROUTES.json'
       - '.github/workflows/op04-resume-routes.yml'
+      - 'PROJECT-BOOTSTRAP.md'
+      - 'EXECUTION-OUTCOME-EFFICIENCY-POLICY.json'
+      - 'Optimization-Program/README.md'
+      - 'Optimization-Program/STATE.json'
+      - 'Verification/test_mission_continuity_contract.py'
   pull_request:
     paths:
       - 'PROJECT-STATE.json'
@@ -14,6 +19,11 @@ on:
       - 'Tools/build_resume_routes.py'
       - 'Optimization-Program/RESUME-ROUTES.json'
       - '.github/workflows/op04-resume-routes.yml'
+      - 'PROJECT-BOOTSTRAP.md'
+      - 'EXECUTION-OUTCOME-EFFICIENCY-POLICY.json'
+      - 'Optimization-Program/README.md'
+      - 'Optimization-Program/STATE.json'
+      - 'Verification/test_mission_continuity_contract.py'
   workflow_dispatch:
 
 jobs:
@@ -30,3 +40,5 @@ jobs:
           python-version: '3.12'
       - name: Syntax and route consistency
         run: python -B Tools/build_resume_routes.py --check
+      - name: Verify user mission scope and prevent content pivot
+        run: python -B -m unittest discover -s Verification -p test_mission_continuity_contract.py

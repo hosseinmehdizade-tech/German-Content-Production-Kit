@@ -16,6 +16,7 @@ FACETS = {"identity", "sense", "translations", "examples", "morphosyntax",
 DECISIONS = {"DONE", "NA_WITH_REASON", "HELD"}
 BASE = Path(__file__).resolve().parents[1]
 MATRIX = "Architecture/Stage3-Stage4-Unification/CONFLICT-DEPENDENCY-MATRIX-v0.1.json"
+PRECEDENCE = "Architecture/Stage3-Stage4-Unification/POLICY-PRECEDENCE-ADOPTION-v0.2.json"
 SPEC = "Architecture/Stage3-Stage4-Unification/ENRICHMENT-AND-INDEPENDENT-QA-CONTRACT-v0.1.md"
 SAMPLES = (
     "Workspaces/menschen-a2-24-lessons-v336/L24-STAGE3C.json",
@@ -81,6 +82,66 @@ def validate_dependency_edges(matrix: dict) -> list[str]:
     return errors
 
 
+
+def validate_precedence_adoption(matrix: dict, adoption: dict) -> list[str]:
+    """Guard non-active policy precedence/currentness; not migration approval."""
+    errors = []
+    if adoption.get("status") != "NONACTIVE_VERSIONED_OPT_IN" or adoption.get("rollout_state") != "PILOT_ONLY_NO_ACTIVE_CHANGE":
+        errors.append("policy precedence draft was promoted without authorized migration")
+    if adoption.get("framework") != "v3.3.6" or adoption.get("active_prompt") != "Prompt/START-PROMPT-v3.3.6.md":
+        errors.append("proposal lost exact active framework/prompt guard")
+    conflict_ids = {c.get("id") for c in matrix.get("conflicts", [])}
+    ids = adoption.get("preserved_conflicts")
+    if not isinstance(ids, list) or len(ids) != len(set(ids)) or set(ids) != conflict_ids:
+        errors.append("precedence adoption dropped or invented conflict IDs")
+    profiles = adoption.get("applicability")
+    if not isinstance(profiles, list) or len(profiles) != 10 or any(
+        not isinstance(x, dict) or not x.get("stream") or not x.get("adoption") or not x.get("preserve")
+        for x in profiles
+    ):
+        errors.append("missing ten scoped stream applicability profiles")
+    elif len({x["stream"] for x in profiles}) != 10:
+        errors.append("duplicate applicability stream")
+    compatibility = adoption.get("compatibility", {})
+    required = {"stage4": "INDEPENDENT_AI_SEMANTIC_PLUS_FULL_DETERMINISTIC",
+                "stage5_6_7": "UNMODIFIED_REQUIRED",
+                "ui": "NO_CHANGE", "source": "IMMUTABLE", "locked": "IMMUTABLE"}
+    if not isinstance(compatibility, dict) or any(compatibility.get(k) != v for k, v in required.items()):
+        errors.append("proposal weakens independent Stage4, Stage5-7, immutable source or UI")
+    promotion = adoption.get("promotion_requirements", [])
+    expected_promotions = ("explicit user approval", "consumer/schema adapters", "Stage5/6/7")
+    if not isinstance(promotion, list) or any(
+        not any(token in entry for entry in promotion if isinstance(entry, str))
+        for token in expected_promotions
+    ):
+        errors.append("missing migration approval, writer/consumer or downstream gate")
+    resolution = adoption.get("currentness_resolution", {})
+    if not isinstance(resolution, dict) or (
+        resolution.get("never_assume_version_from_draft") is not True or
+        resolution.get("absent_current") != "BLOCKED_FOR_EDIT; no silent downgrade, no content successor in optimization chat" or
+        len(resolution.get("selection_order", [])) < 4 or
+        "user-established optimization mission" not in resolution.get("user_mission", "")
+    ):
+        errors.append("stale authority or mission pivot in prospective currentness resolution")
+    provenance = adoption.get("dependency_graph_integrity", {})
+    expected_edges = sum(len(c.get("requires", [])) for c in matrix.get("conflicts", []))
+    if not isinstance(provenance, dict) or (
+        provenance.get("source") != MATRIX or
+        provenance.get("conflicts") != len(conflict_ids) or
+        provenance.get("edges") != expected_edges or
+        provenance.get("proposal_only") is not True
+    ):
+        errors.append("precedence matrix dependency counts or scope drift")
+    if isinstance(profiles, list):
+        for x in profiles:
+            if isinstance(x, dict) and x.get("stream") in (
+                "250 Verben mit Praepositionen", "Aber Hallo Listen Tabellen"):
+                combined = x.get("adoption", "") + " " + x.get("preserve", "")
+                if ("pin WIP33" in combined and "never pin WIP33" not in combined) or "use WIP26" in combined:
+                    errors.append("stale historical WIP used as mutable currentness")
+    return errors
+
+
 def validate_matrix(root: Path) -> list[str]:
     errors = []
     matrix = load(root / MATRIX)
@@ -88,6 +149,7 @@ def validate_matrix(root: Path) -> list[str]:
         errors.append("matrix must remain non-active until approved migration")
     if not (root / SPEC).is_file():
         errors.append("missing independent Stage3/4 compatibility contract")
+    errors.extend(validate_precedence_adoption(matrix, load(root / PRECEDENCE)))
     conflicts = matrix.get("conflicts", [])
     ids = [x.get("id") for x in conflicts]
     if len(ids) != len(set(ids)) or len(ids) < 10:

@@ -290,3 +290,47 @@ def test_zip_path_traversal_rejected():
     data = out.getvalue()
     with pytest.raises(ValueError, match="UNSAFE_ARCHIVE_MEMBERS"):
         m.read_exact_zip(data, m.sha(data))
+
+
+def test_malformed_unhashable_candidate_archive_id_fail_closed():
+    c,a,_,_ = fixture()
+    c["candidate_archive_id"] = []
+    assert "CANDIDATE_ARCHIVE_UNPINNED" in errors(c,a)
+
+
+def test_malformed_unhashable_editorial_archive_id_fail_closed():
+    c,a,data,l = fixture()
+    l["targets"][0]["dimensions"]["sense"]["basis_refs"][0]["archive_id"] = []
+    rewrite_ledger(c,a,data,l)
+    assert "EVIDENCE_ARCHIVE_ID_MALFORMED" in errors(c,a)
+
+
+def test_malformed_unhashable_evidence_kind_fail_closed():
+    c,a,data,l = fixture()
+    l["targets"][0]["dimensions"]["sense"]["basis_refs"][0]["kind"] = []
+    rewrite_ledger(c,a,data,l)
+    assert "UNKNOWN_EVIDENCE_KIND" in errors(c,a)
+
+
+def test_malformed_unhashable_source_occurrence_id_fail_closed():
+    c,a,data,l = fixture()
+    l["targets"][0]["dimensions"]["audio"]["basis_refs"][0]["source_occurrence_id"] = []
+    rewrite_ledger(c,a,data,l)
+    assert "SOURCE_OCCURRENCE_NOT_FOUND" in errors(c,a)
+
+
+def test_historical_legacy_editorial_ref_without_version_not_promoted():
+    c,a,data,l = fixture()
+    ref = l["targets"][0]["dimensions"]["sense"]["basis_refs"][0]
+    ref.pop("archive_id")
+    rewrite_ledger(c,a,data,l)
+    assert "EVIDENCE_ARCHIVE_ID_MALFORMED" in errors(c,a)
+
+
+def test_parent_card_not_present_cannot_be_accepted_as_hash_only():
+    c,a,data,l = fixture()
+    l["targets"][1]["dimensions"]["examples"]["basis_refs"][0]["target_id"] = "missing-parent"
+    rewrite_ledger(c,a,data,l)
+    result = errors(c,a)
+    assert "LOCKED_PARENT_CARD_ID_DRIFT" in result
+    assert "LOCKED_PARENT_TARGET_MISSING_OR_DUPLICATE" in result

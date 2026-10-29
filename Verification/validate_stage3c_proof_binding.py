@@ -189,6 +189,8 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
             refs = cell.get("basis_refs")
             if state not in ("VERIFIED_PRESENT", "CLOSED_NO_FORCE"):
                 error("UNRESOLVED_STAGE3C_CELL")
+            else:
+                counts["cells_" + state.lower()] += 1
             if not isinstance(refs, list):
                 error("CELL_REFS_NOT_ARRAY"); continue
             if state == "VERIFIED_PRESENT" and not refs:
@@ -204,6 +206,8 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
                 if kind in {"EDITORIAL_REVIEW", "LOCKED_PARENT"}:
                     current_sha = (ref.get("artifact_sha256") if kind == "EDITORIAL_REVIEW"
                                    else ref.get("member_sha256"))
+                    if kind == "LOCKED_PARENT" and ref.get("archive_id") == candidate:
+                        error("LOCKED_PARENT_IMMUTABLE_PREDECESSOR_REQUIRED")
                     archive_hash = reference_archive_sha(ref, "archive_id", "archive_sha256")
                     data = evidence(ref.get("archive_id"), archive_hash,
                                     ref.get("path"), current_sha, kind)
@@ -256,6 +260,12 @@ def validate(contract: dict, archive_bytes: dict[str, bytes]) -> dict:
             summary.get("dimension_cells") != counts["cells"] or
             summary.get("unresolved_cells") != 0):
         error("STAGE3C_COMPLETENESS_COUNTER_DRIFT")
+    expected_statuses = {
+        "VERIFIED_PRESENT": counts["cells_verified_present"],
+        "CLOSED_NO_FORCE": counts["cells_closed_no_force"],
+    }
+    if summary.get("status_counts") != expected_statuses:
+        error("STAGE3C_STATUS_COUNTS_DRIFT")
     if counts["refs_editorial_review"] == 0:
         error("EDITORIAL_REVIEW_EVIDENCE_REQUIRED")
     return {

@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_49_SYNTHETIC_AND_REAL_TSV_SCHEMA_PASS__OP02_HF2_READONLY_PATH_MAPPED",
+  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_STAGE5_BUILDER_OPTIN_PASS_GIT_CAS_SYNTHETIC_PASS__OP02_HF2_READONLY",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -31,9 +31,9 @@
     {
       "id": "OP-01",
       "title": "Policy consolidation and precedence",
-      "status": "ACTIVE__JSON_TSV_ZIP_NESTED_FIELDS_AND_REAL_SCHEMA_READONLY_PASS__REMOTE_WRITER_CAS_PENDING",
-      "last_evidence": "2026-10-29 exact B1 CURRENT NONIMPORT ZIP 4d9868ec05fced668098544bbb02ce1a983a157651e6599bf51eb9f0039565a5 read-only: 24 TSV, 23x23-column + 1x17-column, 3137 rows, 135/135 SHA256SUMS and CRC PASS; synthetic validator now enforces no header reorder and nested JSON path whitelists. 49 synthetic local byte-proof tests CI Ubuntu+Windows PASS 40855258669.",
-      "next_action": "Pilot adapter under explicit content-stream edit authorization and exact current snapshot for a producer with embedded custom_fields, verify remote CAS and independently materialized bytes. Never treat local readback or CI synthetic pass as global APPLIED. No current content edits within optimization scope.",
+      "status": "ACTIVE__ONE_REAL_STAGE5_BUILDER_OPTIN_LOCAL_PROOF_PASS__GIT_CAS_ISOLATED_PASS__LIBRARY_REMOTE_WRITER_PENDING",
+      "last_evidence": "2026-10-29 Tools/build_clean_delivery.py opt-in --applied-edit-proof prepackage verifies TSV_ITEMS_V1 local exact current SHA against selected direct-import TSV + existing projection validator; manifest records only SCOPED LOCAL proof. 7 synthetic subprocess integration tests Ubuntu+Windows PASS run 40857125057. Also fixed CRLF-sensitive sha256sum -c Windows final manifest verification with cross-platform Python hash inventory. Isolated GitHub CAS fixture: preimage blob SHA e1839357..., updated blob SHA 65dc0f27..., exact independent GitHub content re-fetch matches; stale update with old blob SHA rejected 409, fresh SHA unchanged.",
+      "next_action": "Integrate an authenticated remote Git/Library CAS + materialized byte-readback into an explicitly authorized mutable production writer before counting global applied edits; current Stage5 builder gate is OPT-IN local only and isolated Git CAS is separately proven, not an integrated content write. No user data edits in optimization mission.",
       "blocker": null
     },
     {
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-01_OP-02",
-  "next_exact_action": "Continue OP-01/OP-02 optimization: evaluate exact native import TSV/ZIP writer CAS + independent remote persisted readback, with no content mutation here; conditional HF2 runtime binding remains an observed static risk, no UI change absent repro/user approval. No more redundant schema-only tests without a concrete gap.",
+  "next_exact_action": "Continue OP-01/OP-02 scope: design tightly scoped authenticated remote write/readback adapter for approved mutable writer (no content edits in this chat), and require proven currentness, Stage4 independent QA, Stage5–7 nonbypass before production APPLIED. OP-02 current v486 HF2 binding only on reproduced defect/explicit approval. Avoid redundant policy overlays and content production pivots.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -113,11 +113,11 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP01-TSV-NESTED-JSON-READONLY-REAL-SCHEMA_AND_OP02-HF2-SOURCE-20261029",
-    "scope": "Extend local edit diff to nested JSON path whitelist and exact header/schema preservation; independently read exact B1 24 lesson ZIP for format compatibility; inspect exact v486 HF2 consumer source without modification",
-    "result": "PASS_49_SYNTHETIC_CI_UBUNTU_WINDOWS_PLUS_NATIVE_24_TSV_MANIFEST_READONLY__NO_REAL_WRITER_OR_RUNTIME_PROMOTION",
-    "tests": "GitHub Actions 40855258669 Ubuntu/Windows PASS for synthetic validators. Local immutable exact 12.21MB B1 source SHA, 135 manifest payloads, CRC, 3137 rows and 24 TSV headers PASS. Exact app HTML SHA read-only observed.",
-    "not_claimed": "No global OP-01 completion, remote CAS, Stage4 language verification, independent live Stage6 browser PASS, or HF2 visual bug claim. No card/UI changes."
+    "id": "OP01-REAL-BUILDER-OPTIN-AND-GITHUB-CAS-PROBE-2026-10-29",
+    "scope": "Connect local applied-edit proof to one pre-existing Stage5 clean writer, fix Windows cross-platform post-package SHA verify, demonstrate isolated real GitHub CAS/re-fetch and 409 stale conflict",
+    "result": "PASS_SCOPED_REAL_BUILDER_INTEGRATION_AND_ISOLATED_REMOTE_GIT_CAS__NOT_PRODUCTION_CONTENT_WRITER",
+    "tests": "7 synthetic subprocess builder cases integrated into existing content ZIP guard CI run 40857125057 Ubuntu+Windows PASS; remote Git fixture accepted valid expected SHA, 409 stale rejected, identical SHA readback",
+    "not_claimed": "No real content mutation, no global writer enforcement, no remote Library CAS, no independent browser Stage6/HF2 rerun, no OP-02 global completion."
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -796,5 +796,45 @@
     "conclusion": "No proof of live DOM/behavior failure; no auto patch or UI intervention permitted",
     "app_runtime_edited": false,
     "content_edited": false
+  },
+  "op01_stage5_builder_integration_20261029": {
+    "status": "PASS_SCOPED_REAL_BUILDER_OPTIN_LOCAL_PROOF__UBUNTU_WINDOWS",
+    "builder": "Tools/build_clean_delivery.py",
+    "option": "--applied-edit-proof",
+    "validator": "Verification/validate_applied_edit_bytes.py",
+    "tests": "Verification/tests-v3.3.6/test_clean_delivery_proof_integration.py",
+    "tests_new": 7,
+    "ci": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40857125057",
+    "ci_results": {
+      "ubuntu": "PASS",
+      "windows": "PASS"
+    },
+    "bounded_behaviors": [
+      "Refuses invalid/stale/no-change APPLIED source before ZIP publication",
+      "Compares actual selected direct-import TSV SHA256 to source-bound proof current SHA",
+      "Maintains pre-existing projection semantic envelope validator",
+      "Validates post-package SHA256SUMS natively in Python on Windows/Linux; no sha256sum CRLF reliance",
+      "Records scoped local proof digest in package manifest when explicitly opted in",
+      "Legacy builder path without optional proof remains supported; no automatic promotion"
+    ],
+    "remote_cas_fixture": {
+      "path": "Optimization-Program/Verification/OP01-GITHUB-CAS-PROBE-20261029.json",
+      "created_commit": "cc6b0501ff29d7798659b696032d1b175dd539bd",
+      "valid_cas_update_commit": "1bd401273e267816dbf04ff78cbee4ab5a32cdd8",
+      "old_blob_sha": "e1839357e7813a57cbd1ad5cd1b673c3561d7320",
+      "current_blob_sha": "65dc0f2761ef8418c9bfe08b67620e6de106d9e3",
+      "exact_readback": "PASS_GITHUB_FETCH_MATCH",
+      "stale_update": "REJECTED_409_CONFLICT",
+      "unchanged_after_stale": "PASS",
+      "fixture_only": true,
+      "not_live_content_persistence": true
+    },
+    "not_claimed": [
+      "No auto CAS/Library integration into mutable content workstreams",
+      "No independent second-party/linguistic Stage4 receipt from self-authored local QA JSON",
+      "No same-turn proof of applying edits in actual content workstreams",
+      "No change to CURRENT v486 app, HF2 UI, user SRS, source LOCKED, Library items or learner cards."
+    ],
+    "user_mission": "OP-01/OP-02 optimization only"
   }
 }

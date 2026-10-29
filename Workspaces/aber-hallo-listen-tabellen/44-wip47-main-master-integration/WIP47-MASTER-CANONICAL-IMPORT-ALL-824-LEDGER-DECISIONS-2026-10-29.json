@@ -1,0 +1,95 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "date": "2026-10-29",
+  "workstream": "aber-hallo-listen-tabellen",
+  "milestone": {
+    "name": "WIP47 all prior Rektion review decisions applied to CURRENT editable canonical master and exact TSV importer custom_fields; alignment drift repaired without learner text modifications",
+    "level": "major",
+    "state": "IN_PROGRESS",
+    "quality_scope": "MASTER_METADATA_APPLIED_TESTED_STAGE4_OPEN"
+  },
+  "baseline": {
+    "source_wip46_file": "Aber-Hallo-WIP46-31-REVISITED-HOLDS-338-PENDING-STAGE4-OPEN-2026-10-29.zip",
+    "sha256": "a8e706f364959b975564c94ae9c573ecb0d60abd3d3c4b020ee0efc3bc8739c2",
+    "unchanged": true
+  },
+  "changes": {
+    "master_canonical": "02-Canonical-Data/CANONICAL-ENRICHED.WORKING.json",
+    "master_canonical_sha256": "476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0",
+    "tsv": "01-Final-Import/IMPORT.WORKING.tsv",
+    "tsv_sha256": "704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff",
+    "canonical_units": 788,
+    "import_lexical_rows": 787,
+    "metadata_applied_on": "metadata.rektion_qa in editable canonical and custom_fields.rektion_qa / custom_fields.canonical_unit.metadata in TSV",
+    "total_current_rektion_patterns": 984,
+    "original_rektion_ledger_entries": 824,
+    "valid_current_patterns_in_ledger": 823,
+    "pattern_statuses": {
+      "PRIOR_INDEPENDENT_LEXICAL_ATTESTED_WITH_URL": 485,
+      "EXTERNAL_EVIDENCE_HOLD": 338,
+      "OUTSIDE_824_ORIGINAL_LEDGER_NOT_REVIEWED_IN_THIS_GATE": 161
+    },
+    "prior_link_provenance": {
+      "duden": 484,
+      "ids_mannheim_grammis": 1
+    },
+    "legacy_ordinal_drift_fixed_by_exact_card_pattern": 10,
+    "isolated_stale_historical_orphan_excluded": 1,
+    "learner_facing_text_changes": 0,
+    "original_pdf_changes": 0,
+    "locked_artifact_mutations": 0,
+    "previous_5_flat_example_parity_fixes": "PRESERVED_SOURCE_CANONICAL_AND_CURRENT_FLAT_EXAMPLES_UNCHANGED",
+    "explanation": "Original 485 case forms and 338 holds were primarily QA findings, not approved changes to the German case strings. They are now persisted in editable master and import metadata, while all original learner presentation content is unchanged."
+  },
+  "verification": {
+    "official_portable_integrity": "PASS_SCOPED_ERRORS_ZERO",
+    "new_wip47_semantic_and_proj_test": "PASS_SCOPED_MASTER_APPLIED",
+    "against_exact_wip46_frozen_baseline": "ALL_788_UNITS_CONTENT_EQUAL_EXCEPT_METADATA_REKTION_QA_AND_787_TSV_ROWS_EQUAL_EXCEPT_QA_CUSTOM_FIELDS",
+    "pdf_source_immutability": "PASS_SHA256_EXACT",
+    "source_all_examples": "3152_UNCHANGED",
+    "kombinationen": "1097_UNCHANGED",
+    "relations": "2878_UNCHANGED",
+    "manifest_zip_members": 347,
+    "drive_download_and_byte_cmp": [
+      "ZIP_EXACT_SHA256",
+      "CANONICAL_JSON_EXACT_SHA256",
+      "IMPORT_TSV_EXACT_SHA256"
+    ],
+    "full_stage4_ai_adversarial_semantic_translation_source": "NOT_RUN_STAGE4_OPEN",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN_CURRENT_V486_R120",
+    "stage7": "NOT_RUN",
+    "human_expert_signature": "NOT_REQUIRED_AND_NOT_CLAIMED"
+  },
+  "artifacts": {
+    "portable_zip": {
+      "name": "Aber-Hallo-WIP47-MASTER-CANONICAL-IMPORT-REKTION-QA-INTEGRATED-2026-10-29.zip",
+      "sha256": "c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f",
+      "bytes": 7137389,
+      "drive_id": "1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL",
+      "drive_url": "https://drive.google.com/file/d/1mr1SKLEpW1GD56e_bXPgc3oMXNpj9qWL/view",
+      "roundtrip": "PASS_EXACT_SHA256_BYTES"
+    },
+    "canonical_master": {
+      "name": "Aber-Hallo-WIP47-CANONICAL-MASTER.json",
+      "sha256": "476cb07c61759b94bacbb8a1c490797175a458fb74b3a3a23a875258af33e0a0",
+      "bytes": 7039751,
+      "drive_id": "1sJrxjgvJMd5lZfm2Zr3sG1S59t9EbCj3",
+      "drive_url": "https://drive.google.com/file/d/1sJrxjgvJMd5lZfm2Zr3sG1S59t9EbCj3/view",
+      "roundtrip": "PASS_EXACT_SHA256_BYTES"
+    },
+    "import_tsv": {
+      "name": "Aber-Hallo-WIP47-IMPORT.tsv",
+      "sha256": "704a1c7653bd166d1d0ade844c928e78d6ea925158a63e830462b1b1623b7aff",
+      "bytes": 12807085,
+      "drive_id": "1TWmgfs0ukBjHleQieVf5WY56VqAy6qpi",
+      "drive_url": "https://drive.google.com/file/d/1TWmgfs0ukBjHleQieVf5WY56VqAy6qpi/view",
+      "roundtrip": "PASS_EXACT_SHA256_BYTES"
+    }
+  },
+  "persistence": {
+    "git_receipt": "THIS_FILE",
+    "git_latest": "PENDING_CAS",
+    "resume": "Resume WIP47 ZIP sha c53511426ff352da6b645138e99f35674d18a0451f71a77ef24028073168877f. All 824 WIP46 case dispositions now in editable master and Import; 485 with individual dictionary URLs, 338 HOLD, 1 historical orphan isolated. 161 additional current canonical patterns outside ledger remain NOT_ADJUDICATED in this QA lens. Stage4 still OPEN, Stage5/6/7 not run."
+  }
+}

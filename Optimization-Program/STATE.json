@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_REMOTE_GIT_CAS_WRITER_SYNTHETIC_CI_PASS__OP02_HF2_READONLY",
+  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_EXACT_GIT_SCOPE_DENY_ALL_CI_PASS__OP02_HF2_READONLY",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -31,9 +31,9 @@
     {
       "id": "OP-01",
       "title": "Policy consolidation and precedence",
-      "status": "ACTIVE__AUTHENTICATED_GIT_CAS_WRITER_IMPLEMENTED_SYNTHETIC_CI_PASS__REAL_CONTENT_WRITER_ADOPTION_AND_LIBRARY_PENDING",
-      "last_evidence": "2026-10-29 optional GitHub Contents remote working-text writer Verification/persist_verified_git_edit.py: validates actual local JSON_ITEMS_V1/TSV_ITEMS_V1 applied edit, remote parent bytes and expected blob SHA, PUT CAS, then independent authenticated GET byte/SHA readback. 13 synthetic fake-transport/negative tests per OS Ubuntu+Windows PASS CI 40861250607; content ZIP regressions PASS CI 40861250773. Git code commits 1cded236c01fbcc2a1d9a5dd6b1d4e7d0d992671, 7086f65a9d8ff1513f18c7ac5c149c12adb9889a and c340f4144f3f75b704f7ef2abf30e73d0f6aea5b. Tests do not authenticate a real remote content write; no content was changed.",
-      "next_action": "When an independently authorized mutable content writer is selected, integrate this opt-in Git CAS adapter with exact CURRENT, verified local proof and independent real Git readback; add real authorization/currentness and semantic Stage4 gates. Keep Git<1MB text only, protect source/LOCKED, avoid real learner mutations in this optimization chat. Library byte-readback remains a separate provider integration; Stage5/6/7 not implied.",
+      "status": "ACTIVE__REMOTE_GIT_EXACT_SCOPE_DENY_ALL_GUARD_CI_PASS__REAL_APPROVED_PRODUCTION_WRITER_AND_LIBRARY_PENDING",
+      "last_evidence": "2026-10-29 OP-01 code defect repaired: previous Git CAS writer accepted any syntactically mutable Workspaces path if the local proof and remote preimage matched. New Optimization-Program/WRITER-SCOPES.json deny-all by default; Verification/persist_verified_git_edit.py requires exact authenticated remote Git scope grant bound to path, branch, workstream, artifact, parent blob SHA, current SHA256, source SHA256 and local proof SHA256 before any target read/write. Existing CAS+independent post-PUT GET maintained. 19 synthetic fake-provider tests per OS PASS on Ubuntu+Windows, CI run 40862347955; content ZIP guard CI 40862320501 PASS. No live learner content or Library items edited; registry scopes empty; no approval to activate.",
+      "next_action": "Continue OP-01 with a separately explicitly authorized real mutable workstream writer only when exact latest portable CURRENT/source, independent user permission and single-writer are resolved; do NOT turn on scopes automatically from a generic optimization continue. A Git scope is not cryptographic human approval and cross-file revoke-vs-PUT is not atomic. Independently prove authenticated real-provider write/readback before global APPLIED. OP-02 remains process compatibility only unless migration approved. Stage4/5/6/7 unaffected.",
       "blocker": null
     },
     {
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-01_OP-02",
-  "next_exact_action": "Continue OP-01/OP-02 scope: design tightly scoped authenticated remote write/readback adapter for approved mutable writer (no content edits in this chat), and require proven currentness, Stage4 independent QA, Stage5–7 nonbypass before production APPLIED. OP-02 current v486 HF2 binding only on reproduced defect/explicit approval. Avoid redundant policy overlays and content production pivots.",
+  "next_exact_action": "Continue within optimization OP-01/OP-02: improve source/currentness-to-writer binding without learner edits, or non-breaking Stage1-7 compatibility evidence. Remote scope currently DENY_ALL; activation requires explicit scoped user approval and production CURRENT/Stage gates. No content LATEST mutation, no UI changes, no HF2 migration.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -113,11 +113,12 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP01-AUTHENTICATED-CAS-WRITER-SYNTHETIC-CI-2026-10-29",
-    "scope": "Add opt-in GitHub Contents writer to reuse existing verified local applied-edit proof, enforce remote preimage/expected SHA and post-PUT independent GET, with synthetic-only fail-closed tests",
-    "result": "PASS_SCOPED_SAFETY_HARNESS_NOT_PRODUCTION_CONTENT_WRITE",
-    "tests": "13 synthetic cases each Ubuntu+Windows: https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40861250607 ; unrelated ZIP CI https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40861250773",
-    "not_claimed": "No actual learner data content write, no Library CAS, no live remote integration CI, no whole OP-01 closure or Stage4-7 acceptance."
+    "id": "OP01-REMOTE-EXACT-WRITER-SCOPE-2026-10-29",
+    "scope": "Fail-closed external authenticated Git allowlist pinned to exact proof/parent/target/source before remote CAS PUT; CI contains positive synthetic scoped path plus missing/wrong/revoked/duplicate grants and existing CAS/readback negatives",
+    "result": "PASS_SCOPED_SYNTHETIC_TWO_PLATFORM_CI__NO_LIVE_CONTENT_WRITE",
+    "tests": "19 Python unittest cases per OS; Stage3–Stage4 CI https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40862347955 Ubuntu/Windows PASS; Content ZIP CI https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40862320501 PASS",
+    "no_change": "No learner content/source/LOCKED, content LATEST, CURRENT app, UI or Library mutation",
+    "not_claimed": "Git config grant cannot prove human consent; no provider-level production edit, no Library CAS, no global policy coverage, no Stage4-7 acceptance, no OP-02 migration"
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -865,5 +866,44 @@
       "Self-authored local QA evidence does not certify linguistic Stage4",
       "No Stage5/6/7 approval or structural migration"
     ]
+  },
+  "op01_remote_scoped_git_authorization_20261029": {
+    "status": "PASS_SCOPED_SYNTHETIC_SECURITY_REGRESSION_ONLY",
+    "discovered_gap": "Existing exact preimage CAS verified concurrency but had no independent workstream/path authorization gate.",
+    "registry": "Optimization-Program/WRITER-SCOPES.json",
+    "registry_status": "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL",
+    "active_grants": 0,
+    "writer": "Verification/persist_verified_git_edit.py",
+    "tests": "Verification/test_persist_verified_git_edit.py",
+    "tested_cases_per_os": 19,
+    "ci": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40862347955",
+    "packaging_ci": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40862320501",
+    "gate_order": [
+      "syntactic path/source and branch guard",
+      "local proof changed bytes/source/QA scope",
+      "independent remote registry exact scope validation",
+      "remote preimage and expected Git blob SHA equality",
+      "GitHub CAS PUT expected current blob SHA",
+      "independent post-PUT authenticated GET byte/hash parity"
+    ],
+    "grant_matches": [
+      "workstream",
+      "artifact_id",
+      "path",
+      "branch",
+      "expected_parent_blob_sha",
+      "approved_current_sha256",
+      "approved_proof_sha256",
+      "source_sha256",
+      "status APPROVED and nonempty authorization_ref"
+    ],
+    "known_limits": [
+      "All new tests use fake remote transport; no production Git/Library target updated.",
+      "Scope ref is metadata, not cryptographic proof of human approval or protected branch policy.",
+      "Cross-file allowlist revocation is not atomic with target GitHub Contents PUT.",
+      "Self-authored local QA receipt does not constitute independent AI linguistic Stage4.",
+      "Stage5/6/7 and HF2 rendering remain separately gated."
+    ],
+    "next": "Only authorized named workstream and exact currentness may adopt a scoped live writer; continue OP-02 process tests separately."
   }
 }

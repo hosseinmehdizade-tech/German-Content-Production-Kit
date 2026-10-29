@@ -51,7 +51,8 @@ def fixture():
     ]})
     stage3c = {
         "summary": {"stage3c_editorial_sha256": m.sha(editorial_blob),
-                    "targets": 2, "dimension_cells": 4, "unresolved_cells": 0},
+                    "targets": 2, "dimension_cells": 4, "unresolved_cells": 0,
+                    "status_counts": {"VERIFIED_PRESENT": 3, "CLOSED_NO_FORCE": 1}},
         "targets": [
             {"id": "new-synthetic", "dimensions": {
                 "sense": {"status": "VERIFIED_PRESENT", "basis_refs": [{
@@ -340,3 +341,19 @@ def test_parent_target_absent_even_with_self_consistent_ledger_and_ref():
     l["targets"][1]["dimensions"]["examples"]["basis_refs"][0]["target_id"] = "missing-parent"
     rewrite_ledger(c,a,data,l)
     assert "LOCKED_PARENT_TARGET_MISSING_OR_DUPLICATE" in errors(c,a)
+
+
+def test_locked_parent_from_current_candidate_archive_is_forbidden():
+    c,a,data,l = fixture()
+    ref = l["targets"][1]["dimensions"]["examples"]["basis_refs"][0]
+    ref["archive_id"] = "candidate"
+    ref.pop("archive_sha256")
+    rewrite_ledger(c,a,data,l)
+    assert "LOCKED_PARENT_IMMUTABLE_PREDECESSOR_REQUIRED" in errors(c,a)
+
+
+def test_forged_stage3c_status_count_cannot_pass():
+    c,a,data,l = fixture()
+    l["summary"]["status_counts"]["VERIFIED_PRESENT"] = 4
+    rewrite_ledger(c,a,data,l)
+    assert "STAGE3C_STATUS_COUNTS_DRIFT" in errors(c,a)

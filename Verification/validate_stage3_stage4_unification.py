@@ -240,7 +240,8 @@ def validate_stage56_evidence_chain(boundary: dict, user: dict, readiness: dict)
 
 def validate_stage5to7_private_lineage(
         stage5: dict, stage7: dict, boundary: dict, user: dict,
-        readiness: dict, stage5_outcome: dict, stage7_outcome: dict) -> list[str]:
+        readiness: dict, stage5_outcome: dict, stage7_outcome: dict,
+        stage4: dict) -> list[str]:
     """Historical 250-Verben v1.7 *record* parity, NOT ZIP-byte or live app QA.
 
     Cross-check separately written Stage5/7 checkpoints and outcome receipts
@@ -269,9 +270,26 @@ def validate_stage5to7_private_lineage(
             errors.append(label)
 
     workstream = stage5.get("workstream")
-    keep("Stage5-7 mismatched source workstream", all(
+    keep("Stage4-7 mismatched source workstream", all(
         x.get("workstream") == workstream for x in
-        (stage7, boundary, user)) and isinstance(workstream, str) and bool(workstream))
+        (stage4, stage7, boundary, user)) and isinstance(workstream, str) and bool(workstream))
+    stage4_authority = stage4.get("authority", {})
+    stage4_artifact = stage4.get("artifact", {})
+    stage4_review = stage4.get("review", {})
+    stage4_qa = stage4.get("QA", {})
+    stage4_boundaries = stage4.get("boundaries", {})
+    if not all(isinstance(x, dict) for x in (
+            stage4_authority, stage4_artifact, stage4_review,
+            stage4_qa, stage4_boundaries)):
+        return errors + ["Stage4 malformed independent linguistic approval"]
+    keep("Stage4 review cannot be human-signed, scoped or self-promoting", (
+        stage4.get("status") ==
+        "PASS_AI_LINGUISTIC_QA_AND_TECHNICAL_GATES_EXACT_OPTIN_SUCCESSOR_ONLY" and
+        stage4_qa.get("AI_independent_second_method") ==
+        "DOCUMENTED_NOT_HUMAN" and
+        stage4_boundaries.get("stage5") == "NOT_RUN" and
+        stage4_boundaries.get("stage7") == "NOT_FINAL" and
+        stage4_review.get("open_high_or_source_fidelity_holds") == 0))
     l5 = stage5.get("lineage", {})
     a5 = stage5.get("artifact", {})
     a7 = stage7.get("authorities", {})
@@ -285,6 +303,11 @@ def validate_stage5to7_private_lineage(
                (l5, a5, a7, release, gate7, b7, old, target, protected)):
         return errors + ["Stage5-7 malformed lineage/authority records"]
 
+    compare("Stage4 approved ZIP to Stage5", [
+        stage4_artifact.get("zip_sha256"),
+        l5.get("approved_stage4_zip_sha256"),
+        q.get("stage4_final_v17", {}).get("zip_sha256"),
+    ])
     compare("Stage5 package", [
         a5.get("sha256"), old.get("content_stage5_sha256"),
         target.get("stage5_content_zip_sha256"),
@@ -294,6 +317,7 @@ def validate_stage5to7_private_lineage(
         stage5_outcome.get("persistence", {}).get("package_sha256"),
     ])
     compare("Stage4-approved import TSV to Stage7", [
+        stage4_authority.get("v17_exact_tsv_sha256"),
         l5.get("approved_stage4_tsv_sha256"),
         l5.get("current_stage5_import_tsv_sha256"),
         old.get("exact_import_tsv_sha256"),
@@ -303,6 +327,7 @@ def validate_stage5to7_private_lineage(
         ru.get("exact_import_tsv_sha256"), r7.get("content_v17_tsv_sha256"),
     ])
     compare("preserved production WIP27", [
+        stage4_authority.get("original_production_WIP27_zip_sha256"),
         l5.get("existing_wip27_production_zip_sha256"),
         old.get("production_WIP27_sha256"),
         protected.get("production_WIP27_zip_sha256"),
@@ -310,11 +335,13 @@ def validate_stage5to7_private_lineage(
         r5.get("source_wip27_zip_sha256"),
     ])
     compare("registered original PDF provenance", [
+        stage4_authority.get("original_pdf_sha256"),
         l5.get("registered_source_pdf_sha256"),
         a7.get("original_source_pdf_sha256"),
         r7.get("original_pdf_external_sha256"),
     ])
     compare("registered canonical source provenance", [
+        stage4_authority.get("canonical_source_member_sha256"),
         l5.get("registered_canonical_source_sha256"),
         a7.get("canonical_source_sha256"),
     ])
@@ -500,6 +527,7 @@ def main() -> int:
         load(args.root / stage56_paths[2]),
         load(args.root / (historical + "250-VERBEN-STAGE5-OUTCOME-v1.7.json")),
         load(args.root / (historical + "250-VERBEN-STAGE7-OUTCOME-v1.7.json")),
+        load(args.root / (historical + "250-VERBEN-STAGE4-AI-PASS-v1.7.json")),
     )
     if bool(args.stage3) != bool(args.stage4):
         errors.append("--stage3 and --stage4 must be passed together")

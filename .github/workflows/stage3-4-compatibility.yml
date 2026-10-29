@@ -6,6 +6,10 @@ on:
       - 'Verification/audit_stage5_input_role_binding.py'
       - 'Verification/audit_stage5_current_authority.py'
       - 'Verification/plan_stage5_current_adoption.py'
+      - 'Verification/audit_aber_hallo_current_identity.py'
+      - 'Verification/tests-v3.3.6/test_aber_hallo_current_identity.py'
+      - 'Workspaces/aber-hallo-listen-tabellen/LATEST.json'
+      - 'Workspaces/aber-hallo-listen-tabellen/00-source/SOURCE-MANIFEST.json'
       - 'Verification/tests-v3.3.6/test_stage5_current_adoption.py'
       - 'Verification/tests-v3.3.6/test_stage5_current_authority.py'
       - 'Verification/tests-v3.3.6/test_stage5_input_role_binding.py'
@@ -37,6 +41,10 @@ on:
       - 'Verification/audit_stage5_input_role_binding.py'
       - 'Verification/audit_stage5_current_authority.py'
       - 'Verification/plan_stage5_current_adoption.py'
+      - 'Verification/audit_aber_hallo_current_identity.py'
+      - 'Verification/tests-v3.3.6/test_aber_hallo_current_identity.py'
+      - 'Workspaces/aber-hallo-listen-tabellen/LATEST.json'
+      - 'Workspaces/aber-hallo-listen-tabellen/00-source/SOURCE-MANIFEST.json'
       - 'Verification/tests-v3.3.6/test_stage5_current_adoption.py'
       - 'Verification/tests-v3.3.6/test_stage5_current_authority.py'
       - 'Verification/tests-v3.3.6/test_stage5_input_role_binding.py'
@@ -101,6 +109,8 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage5_current_authority.py
       - name: Verify nonactive CURRENT trust-root and rollback contract (synthetic)
         run: python -m pytest -vv Verification/tests-v3.3.6/test_stage5_current_adoption.py
+      - name: Check real Aber Hallo native LATEST, receipt and source metadata (read-only)
+        run: python -m pytest -vv Verification/tests-v3.3.6/test_aber_hallo_current_identity.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only

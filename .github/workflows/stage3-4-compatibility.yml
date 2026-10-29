@@ -3,6 +3,10 @@ on:
   push:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/audit_stage5_clean_zip_v486.py'
+      - 'Verification/tests-v3.3.6/test_stage5_clean_zip_v486.py'
+      - 'Tools/build_clean_delivery.py'
+      - 'Tools/content_package_guard.py'
       - 'Verification/validate_stage45_v486_consumer_bridge.py'
       - 'Verification/tests-v3.3.6/test_stage45_v486_consumer_bridge.py'
       - 'Verification/validate_stage45_teaching_delta_parity.py'
@@ -24,6 +28,10 @@ on:
   pull_request:
     paths:
       - 'Architecture/Stage3-Stage4-Unification/**'
+      - 'Verification/audit_stage5_clean_zip_v486.py'
+      - 'Verification/tests-v3.3.6/test_stage5_clean_zip_v486.py'
+      - 'Tools/build_clean_delivery.py'
+      - 'Tools/content_package_guard.py'
       - 'Verification/validate_stage45_v486_consumer_bridge.py'
       - 'Verification/tests-v3.3.6/test_stage45_v486_consumer_bridge.py'
       - 'Verification/validate_stage45_teaching_delta_parity.py'
@@ -73,6 +81,8 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage45_teaching_delta_parity.py
       - name: Exercise nonactive CURRENT v486 UI consumer projection compatibility (synthetic)
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage45_v486_consumer_bridge.py
+      - name: Build actual clean Stage5 ZIP from synthetic input and audit post-package semantic bytes
+        run: python -m pytest -q Verification/tests-v3.3.6/test_stage5_clean_zip_v486.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only

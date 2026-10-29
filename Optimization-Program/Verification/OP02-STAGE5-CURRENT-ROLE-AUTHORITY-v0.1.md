@@ -68,3 +68,37 @@ connector exposed no push-run listing/check statuses for the new commits.
 **Ubuntu/Windows CI remains UNVERIFIED** for this new version. Previous
 Stage5 single-role binding 27/27 Ubuntu, 26+1 skip Windows PASS is prior,
 independent evidence only; do not promote the new guard without job logs.
+
+## Independent internal SHA256SUMS gate (2026-10-29; not activated)
+
+A separate failure mode was discovered during source review: the existing
+`verify_postbuild` compared four selected input-role member bytes and the
+role filenames, but did not validate the content of the sixth package member,
+`SHA256SUMS.txt`. Therefore an archive with correct role bytes and a valid
+newly supplied whole-ZIP SHA could pass the role-only audit despite a
+corrupted internal SHA256SUMS file.
+
+The NONACTIVE exact-CURRENT guard now independently reads the bounded safe
+ZIP and checks every non-SHA member against its uniquely declared SHA256SUMS
+entry. It returns BLOCKED for incorrect hashes, a missing entry, a malformed
+or duplicated line, or an unreadable internal record. The earlier role-only
+method remains a narrower tool and is deliberately not labeled as a complete
+package verifier.
+
+Three new negative tests specifically assert that the OLD role-only audit
+accepts the internal-sum corruption and that the NEW guard rejects it. A
+fourth test supplies a JSON nesting depth of 10,000 to exercise and catch
+the actual Python JSON decoder recursion boundary (the former 1,200 depth
+did not reliably trigger recursion). The suite declares **32 pytest cases**,
+including parametrized cases, for this guard.
+
+**Evidence:** Exact source/test files and CI workflow wiring were read back
+from GitHub. In an independent isolated Python mechanism probe, 7/7
+checks passed (valid hash list, wrong digest, missing digest, malformed
+line, duplicate JSON keys at two levels, and actual decoder RecursionError).
+The mechanism probe is NOT a full execution of the GitHub repository
+modules or the integrated real-builder pytest suite. As of this checkpoint
+the specific Ubuntu and Windows CI job IDs/results were NOT observed;
+therefore this work remains `PENDING_CI`, not PASS_SCOPED or production
+acceptance. Active content source, stage policies, writer scopes, runtime
+v486-R120, app UI and Library were not modified.

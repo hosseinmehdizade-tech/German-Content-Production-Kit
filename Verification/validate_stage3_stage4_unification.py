@@ -191,6 +191,53 @@ def validate_matrix(root: Path) -> list[str]:
     return errors
 
 
+
+
+def validate_stage56_evidence_chain(boundary: dict, user: dict, readiness: dict) -> list[str]:
+    """Keep distinct exact-artifact static, user-observed, release evidence types.
+
+    Verifies the documented 250 Verben v1.7 history, NOT app behavior.
+    """
+    errors = []
+    check = lambda ok, msg: None if ok else errors.append(msg)
+    old = boundary.get("exact_authority", {})
+    target = user.get("target_identity", {})
+    checks = user.get("checked_behaviors", [])
+    check(boundary.get("real_stage6", {}).get("overall") == "BLOCKED_NOT_PASS",
+          "past agent Stage6 browser attempt cannot be promoted to automated PASS")
+    check(boundary.get("content_scoped_checks", {}).get("real_browser") ==
+          "BLOCKED_NET_ERR_BLOCKED_BY_ADMINISTRATOR",
+          "independent browser environment blocker not preserved")
+    check(user.get("evidence_type") == "DIRECT_USER_REPORTED_MANUAL_OBSERVATION" and
+          "USER_CONFIRMED" in user.get("status", ""),
+          "manual user observation must remain separately labeled")
+    check(isinstance(checks, list) and len(checks) == 8 and
+          len({x.get("id") for x in checks if isinstance(x, dict)}) == 8 and
+          all(isinstance(x, dict) and x.get("reported_result") == "PASS_USER_REPORTED" for x in checks),
+          "not exactly eight distinct user-reported checks")
+    check(user.get("acceptance", {}).get("independent_browser_automation") ==
+          "NOT_RUN_IN_AGENT_ENVIRONMENT",
+          "user report must not fabricate independent automated Stage6")
+    check(user.get("prior_independent_evidence", {}).get("agent_chromium_localhost") ==
+          "BLOCKED_NET_ERR_BLOCKED_BY_ADMINISTRATOR",
+          "user report lost provenance of prior environment blocker")
+    check(old.get("current_app") == target.get("app_current_runtime") == "v486-R120"
+          and old.get("current_app_zip_sha256") == target.get("app_zip_sha256"),
+          "Stage6 user and static records target different app CURRENT")
+    check(old.get("exact_import_tsv_sha256") ==
+          target.get("stage4_stage5_approved_content_tsv_sha256"),
+          "Stage5 / Stage6 import dataset identity mismatch")
+    check(isinstance(readiness.get("overall"), str) and
+          "STAGE6_USER_CONFIRMED_PASS" in readiness["overall"] and
+          "STAGE7_PRIVATE_SINGLE_ZIP_PASS" in readiness["overall"] and
+          "NO_RUNTIME_PROMOTION" in readiness["overall"],
+          "private Stage7/readiness not explicitly distinguished from runtime promotion")
+    check(user.get("preservation", {}).get("app_current_unchanged") is True and
+          user.get("preservation", {}).get("app_visible_UI_unchanged") is True,
+          "user observation incorrectly implies app or UI mutation")
+    return errors
+
+
 def legacy_compatibility(root: Path) -> list[str]:
     errors = []
     try:
@@ -302,6 +349,12 @@ def main() -> int:
     parser.add_argument("--stage4", type=Path)
     args = parser.parse_args()
     errors = validate_matrix(args.root) + legacy_compatibility(args.root)
+    stage56_paths = (
+        "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE6-V486-R120-BOUNDARY-v1.7.json",
+        "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE6-USER-CONFIRMED-v1.7-2026-10-29.json",
+        "Architecture/Stage3-Stage4-Unification/PHASE-2-3-4-READINESS-v0.1.json",
+    )
+    errors += validate_stage56_evidence_chain(*(load(args.root / name) for name in stage56_paths))
     if bool(args.stage3) != bool(args.stage4):
         errors.append("--stage3 and --stage4 must be passed together")
     elif args.stage3 and args.stage4:

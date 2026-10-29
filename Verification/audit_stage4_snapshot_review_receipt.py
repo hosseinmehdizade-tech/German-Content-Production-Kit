@@ -171,10 +171,18 @@ def verify(anchor, canonical_bytes:bytes, import_bytes:bytes,
         if review["unit_sha256"]!=unit_hashes[uid]:
             errors.append("UNIT_CONTENT_SHA_DRIFT:"+uid)
         reviewer=review["reviewer_id"]
-        if not isinstance(reviewer,str) or len(reviewer.strip())<3 or reviewer==producer:
-            errors.append("REVIEWER_INDEPENDENCE_NOT_EVIDENCED:"+uid)
-        if review["method"] not in METHODS:
+        method=review["method"]
+        # USER-APPROVED LINGUISTIC-QA-AUTHORITY-POLICY.json (2026-10-25):
+        # An independent-METHOD AI adversarial second pass may be performed
+        # by the same ChatGPT actor as the first pass. Different human
+        # reviewer identity is NOT required. A bare method label remains
+        # unverified metadata; this nonactive adapter never signs off Stage4.
+        if not isinstance(reviewer,str) or len(reviewer.strip())<3:
+            errors.append("REVIEWER_ID_MISSING:"+uid)
+        if method not in METHODS:
             errors.append("REVIEW_METHOD_UNKNOWN:"+uid)
+        elif method=="independent_review" and reviewer==producer:
+            errors.append("REVIEWER_INDEPENDENCE_NOT_EVIDENCED:"+uid)
         if not isinstance(review["evidence_ref"],str) or len(review["evidence_ref"].strip())<8:
             errors.append("REVIEW_EVIDENCE_MISSING:"+uid)
         locator=review["source_locator"]

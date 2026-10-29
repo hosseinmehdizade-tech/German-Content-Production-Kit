@@ -128,7 +128,7 @@ def test_stale_reviewer_baseline_cannot_be_reused_even_if_receipt_rehashed():
 
 @pytest.mark.parametrize("change,error",[
     ("unit_digest","UNIT_CONTENT_SHA_DRIFT:"),
-    ("reviewer","REVIEWER_INDEPENDENCE_NOT_EVIDENCED:"),
+    ("reviewer","REVIEWER_ID_MISSING:"),
     ("method","REVIEW_METHOD_UNKNOWN:"),
     ("locator","SOURCE_LOCATOR_INVALID:"),
     ("evidence","REVIEW_EVIDENCE_MISSING:"),
@@ -138,7 +138,7 @@ def test_review_control_failure(change,error):
     f=fixtures()
     obj=f[5]["reviews"][0]
     if change=="unit_digest":obj["unit_sha256"]="f"*64
-    elif change=="reviewer":obj["reviewer_id"]=f[5]["producer_id"]
+    elif change=="reviewer":obj["reviewer_id"]=""
     elif change=="method":obj["method"]="AI-self-certification"
     elif change=="locator":obj["source_locator"]={"source_id":"b1-c2","page":36}
     elif change=="evidence":obj["evidence_ref"]=""
@@ -196,3 +196,35 @@ def test_unpinned_or_incomplete_source_set_blocks():
     f=fixtures()
     f[0]["source_pdfs"].pop("b1-c2")
     assert "SOURCE_SET_INVALID" in audit(f)["errors"]
+
+
+def test_same_chatgpt_actor_independent_ai_method_is_allowed_structurally_not_signed_off():
+    """Independent METHOD is not synonymous with an external human identity."""
+    f=fixtures()
+    for review in f[5]["reviews"]:
+        review["reviewer_id"]=f[5]["producer_id"]
+        review["method"]="independent_ai_second_pass"
+    result=audit(f)
+    assert result["status"]=="COMPLETE_RECEIPT_STRUCTURE_ONLY_NOT_SIGNED_OFF",result
+    assert result["errors"]==[]
+    assert result["stage4_semantic_pass"] is False
+    assert result["issuer_authenticated"] is False
+    assert result["production_authorized"] is False
+
+def test_same_actor_claiming_distinct_reviewer_still_blocks():
+    f=fixtures()
+    f[5]["reviews"][0]["reviewer_id"]=f[5]["producer_id"]
+    f[5]["reviews"][0]["method"]="independent_review"
+    result=audit(f)
+    assert result["status"]=="BLOCKED_REVIEW_RECEIPT_BINDING"
+    assert any(x.startswith("REVIEWER_INDEPENDENCE_NOT_EVIDENCED:") for x in result["errors"])
+
+def test_same_actor_ai_method_requires_evidence_and_snapshot_validity():
+    f=fixtures()
+    f[5]["reviews"][0]["reviewer_id"]=f[5]["producer_id"]
+    f[5]["reviews"][0]["evidence_ref"]=""
+    assert any(x.startswith("REVIEW_EVIDENCE_MISSING:") for x in audit(f)["errors"])
+    f=fixtures()
+    f[5]["reviews"][0]["reviewer_id"]=f[5]["producer_id"]
+    f[5]["reviews"][0]["unit_sha256"]="f"*64
+    assert any(x.startswith("UNIT_CONTENT_SHA_DRIFT:") for x in audit(f)["errors"])

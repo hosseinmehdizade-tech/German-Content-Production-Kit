@@ -238,6 +238,143 @@ def validate_stage56_evidence_chain(boundary: dict, user: dict, readiness: dict)
     return errors
 
 
+def validate_stage5to7_private_lineage(
+        stage5: dict, stage7: dict, boundary: dict, user: dict,
+        readiness: dict, stage5_outcome: dict, stage7_outcome: dict) -> list[str]:
+    """Historical 250-Verben v1.7 *record* parity, NOT ZIP-byte or live app QA.
+
+    Cross-check separately written Stage5/7 checkpoints and outcome receipts
+    against the older environment-blocked agent Stage6 evidence, later direct
+    user observation, and non-authoritative readiness summary. Never infer a
+    general Stage4/5/6/7 promotion, automatic browser PASS or public license.
+    """
+    errors: list[str] = []
+    q = readiness.get("phase3_enrichment_QA", {})
+    if not isinstance(q, dict):
+        return ["Stage5-7 readiness missing lexical evidence"]
+    r5, ra, ru, r7 = (q.get(name) for name in (
+        "stage5_content_delivery_v17", "stage6_current_v486_vmp_v17",
+        "stage6_user_observed_v17", "stage7_private_release_v17"))
+    if not all(isinstance(x, dict) for x in (r5, ra, ru, r7)):
+        return ["Stage5-7 missing independently scoped readiness records"]
+
+    def compare(name: str, fields: list[object]) -> None:
+        if not all(isinstance(v, str) and SHA.fullmatch(v) for v in fields):
+            errors.append(name + ": missing/malformed SHA256")
+        elif len(set(fields)) != 1:
+            errors.append(name + ": independent evidence hashes disagree")
+
+    def keep(label: str, condition: bool) -> None:
+        if not condition:
+            errors.append(label)
+
+    workstream = stage5.get("workstream")
+    keep("Stage5-7 mismatched source workstream", all(
+        x.get("workstream") == workstream for x in
+        (stage7, boundary, user)) and isinstance(workstream, str) and bool(workstream))
+    l5 = stage5.get("lineage", {})
+    a5 = stage5.get("artifact", {})
+    a7 = stage7.get("authorities", {})
+    release = stage7.get("release", {})
+    gate7 = stage7.get("gates", {})
+    b7 = stage7.get("boundaries", {})
+    old = boundary.get("exact_authority", {})
+    target = user.get("target_identity", {})
+    protected = user.get("preservation", {})
+    if not all(isinstance(v, dict) for v in
+               (l5, a5, a7, release, gate7, b7, old, target, protected)):
+        return errors + ["Stage5-7 malformed lineage/authority records"]
+
+    compare("Stage5 package", [
+        a5.get("sha256"), old.get("content_stage5_sha256"),
+        target.get("stage5_content_zip_sha256"),
+        a7.get("original_stage5_content_zip_sha256"),
+        r5.get("zip_sha256"), ru.get("stage5_zip_sha256"),
+        r7.get("content_stage5_source_zip_sha256"),
+        stage5_outcome.get("persistence", {}).get("package_sha256"),
+    ])
+    compare("Stage4-approved import TSV to Stage7", [
+        l5.get("approved_stage4_tsv_sha256"),
+        l5.get("current_stage5_import_tsv_sha256"),
+        old.get("exact_import_tsv_sha256"),
+        target.get("stage4_stage5_approved_content_tsv_sha256"),
+        a7.get("source_stage4_stage5_v17_tsv_sha256"),
+        r5.get("import_tsv_sha256"), ra.get("content_tsv_sha256"),
+        ru.get("exact_import_tsv_sha256"), r7.get("content_v17_tsv_sha256"),
+    ])
+    compare("preserved production WIP27", [
+        l5.get("existing_wip27_production_zip_sha256"),
+        old.get("production_WIP27_sha256"),
+        protected.get("production_WIP27_zip_sha256"),
+        a7.get("original_WIP27_zip_sha256"),
+        r5.get("source_wip27_zip_sha256"),
+    ])
+    compare("registered original PDF provenance", [
+        l5.get("registered_source_pdf_sha256"),
+        a7.get("original_source_pdf_sha256"),
+        r7.get("original_pdf_external_sha256"),
+    ])
+    compare("registered canonical source provenance", [
+        l5.get("registered_canonical_source_sha256"),
+        a7.get("canonical_source_sha256"),
+    ])
+    compare("same exact historical app ZIP", [
+        old.get("current_app_zip_sha256"), target.get("app_zip_sha256"),
+        a7.get("original_current_app_zip_sha256"),
+        ra.get("runtime_zip_sha256"), ru.get("app_zip_sha256"),
+        r7.get("current_app_zip_sha256"),
+    ])
+    keep("Stage5-7 historical app version mismatch", (
+        old.get("current_app") == target.get("app_current_runtime") ==
+        a7.get("original_current_app_version") == ra.get("current_runtime") ==
+        ru.get("app_current") == r7.get("current_runtime") == "v486-R120"))
+    compare("private Stage7 release ZIP", [
+        release.get("sha256"), r7.get("exact_final_zip_sha256"),
+        stage7_outcome.get("persistence", {}).get("release_zip_sha256"),
+    ])
+    keep("Stage5-7 outcome receipts cannot certify wrong milestones", (
+        stage5_outcome.get("milestone", {}).get("state") == "PASS" and
+        stage7_outcome.get("milestone", {}).get("state") == "PASS" and
+        stage5_outcome.get("persistence", {}).get("resume_pointer") ==
+        r5.get("checkpoint") and
+        stage7_outcome.get("persistence", {}).get("resume_pointer") ==
+        r7.get("checkpoint")))
+    keep("Stage5/7 package inventory counts disagree", (
+        a5.get("files") == r5.get("package_file_count") == 46 and
+        a5.get("manifest_entries") == r5.get("manifest_verified") == 45 and
+        release.get("zip_member_count") == r7.get("package_files") == 184 and
+        release.get("manifest_entries") == r7.get("manifest_verified") == 183))
+    keep("Stage7 independent-browser evidence must stay USER REPORTED", (
+        user.get("evidence_type") == "DIRECT_USER_REPORTED_MANUAL_OBSERVATION" and
+        user.get("acceptance", {}).get("independent_browser_automation") ==
+        "NOT_RUN_IN_AGENT_ENVIRONMENT" and
+        "USER_REPORTED" in gate7.get("stage6", "") and
+        "NOT_AUTOMATED" in gate7.get("stage6", "") and
+        r7.get("stage6") ==
+        "PASS_DIRECT_USER_REPORTED_8_CHECKS__INDEPENDENT_BROWSER_NOT_RUN" and
+        r7.get("original_workstream_PRODUCTION_WIP27_latest_unchanged") is True))
+    keep("Stage7 private-only licensing/source PDF boundary weakened", (
+        b7.get("source_pdf_in_final_zip") is False and
+        b7.get("source_pdf_remains_available_in_user_private_stage5_archive") is True and
+        "NOT_ESTABLISHED" in b7.get("source_rights", "") and
+        r7.get("original_pdf_included") is False and
+        "PRIVATE_" in r7.get("license", "") and
+        "NOT_ESTABLISHED" in r7.get("license", "") and
+        stage7_outcome.get("boundaries", {}).get("public_redistribution_rights") ==
+        "NOT_ESTABLISHED"))
+    keep("Stage5-7 mutation or runtime promotion scope inflated", (
+        a5.get("app_runtime_included") is False and
+        r5.get("production_LATEST_modified") is False and
+        stage7.get("boundaries", {}).get("app_current_pointer_modified") is False and
+        stage7.get("boundaries", {}).get("main_content_WIP27_modified") is False and
+        stage7.get("coverage", {}).get("visible_UI_changed") is False and
+        stage7.get("coverage", {}).get("content_sha_changed") is False and
+        stage7.get("coverage", {}).get("runtime_sha_changed") is False and
+        b7.get("artifact_purpose") ==
+        "PRIVATE_USER_CONTENT_INTEGRATION_DISTRIBUTION__NOT_GLOBAL_APP_RUNTIME_VERSION_PROMOTION"))
+    return errors
+
+
 def legacy_compatibility(root: Path) -> list[str]:
     errors = []
     try:
@@ -355,6 +492,15 @@ def main() -> int:
         "Architecture/Stage3-Stage4-Unification/PHASE-2-3-4-READINESS-v0.1.json",
     )
     errors += validate_stage56_evidence_chain(*(load(args.root / name) for name in stage56_paths))
+    historical = "Architecture/Stage3-Stage4-Unification/"
+    errors += validate_stage5to7_private_lineage(
+        load(args.root / (historical + "250-VERBEN-STAGE5-CONTENT-DELIVERY-v1.7.json")),
+        load(args.root / (historical + "250-VERBEN-STAGE7-PRIVATE-RELEASE-v1.7.json")),
+        load(args.root / stage56_paths[0]), load(args.root / stage56_paths[1]),
+        load(args.root / stage56_paths[2]),
+        load(args.root / (historical + "250-VERBEN-STAGE5-OUTCOME-v1.7.json")),
+        load(args.root / (historical + "250-VERBEN-STAGE7-OUTCOME-v1.7.json")),
+    )
     if bool(args.stage3) != bool(args.stage4):
         errors.append("--stage3 and --stage4 must be passed together")
     elif args.stage3 and args.stage4:

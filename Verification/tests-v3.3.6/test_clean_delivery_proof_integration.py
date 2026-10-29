@@ -8,6 +8,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import io
+import os
 import json
 import subprocess
 import sys
@@ -226,3 +227,99 @@ def test_active_builder_rejects_matching_symlink_without_packaging(tmp_path):
     assert result.returncode != 0
     assert "unsafe required delivery role candidate: canonical-json" in result.stderr + result.stdout
     assert not output.exists()
+
+
+def _run_with_tamper_hook(source, output, tmp_path, hook):
+    """Launch the REAL active builder with a synthetic in-process race hook.
+
+    The hook lives only in this pytest temp directory. No learner file,
+    original source or checked-in production tool is modified by the test.
+    """
+    hooks = tmp_path / "hook-dir"
+    hooks.mkdir()
+    (hooks / "sitecustomize.py").write_text(hook, encoding="utf-8")
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(hooks) + os.pathsep + env.get("PYTHONPATH", "")
+    return subprocess.run(
+        [sys.executable, str(BUILDER), str(source), str(output)],
+        text=True, capture_output=True, env=env, timeout=90,
+    )
+
+
+@pytest.mark.parametrize("target", ["after_original_validator", "during_copy_source",
+                                     "during_copy_stage", "before_staged_validation"])
+def test_stage5_midprocess_source_or_copy_tamper_blocks(tmp_path, target):
+    source, _, _ = _setup(tmp_path)
+    output = tmp_path / "candidate.zip"
+
+    if target == "after_original_validator":
+        hook = """
+import subprocess
+from pathlib import Path
+_orig = subprocess.run
+def _tamper(*args, **kwargs):
+    command = args[0] if args else kwargs.get("args", [])
+    result = _orig(*args, **kwargs)
+    if (isinstance(command, (list, tuple))
+            and any("validate_unified_vocabulary_projection_v1_1_0.py" in str(x)
+                    for x in command)
+            and Path(command[-1]).parent.name != "CONTENT-DELIVERY"):
+        candidate = Path(command[-1])
+        candidate.write_bytes(candidate.read_bytes() + b"\\n")
+    return result
+subprocess.run = _tamper
+"""
+    elif target in {"during_copy_source", "during_copy_stage"}:
+        hook = """
+import shutil
+from pathlib import Path
+_orig = shutil.copy2
+def _tamper(src, dst, *args, **kwargs):
+    if Path(src).name == "canonical.json":
+        if MODE == "during_copy_source":
+            p = Path(src)
+            p.write_bytes(p.read_bytes() + b"\\n")
+        result = _orig(src, dst, *args, **kwargs)
+        if MODE == "during_copy_stage":
+            p = Path(dst)
+            p.write_bytes(p.read_bytes() + b"\\n")
+        return result
+    return _orig(src, dst, *args, **kwargs)
+MODE = """ + repr(target) + """
+shutil.copy2 = _tamper
+"""
+    else:
+        hook = """
+import subprocess
+from pathlib import Path
+_orig = subprocess.run
+def _tamper(*args, **kwargs):
+    command = args[0] if args else kwargs.get("args", [])
+    if (isinstance(command, (list, tuple))
+            and any("validate_unified_vocabulary_projection_v1_1_0.py" in str(x)
+                    for x in command)
+            and Path(command[-1]).parent.name == "CONTENT-DELIVERY"):
+        candidate = Path(command[-1])
+        payload = candidate.read_bytes().replace(b"de-vocabulary", b"de-not-valid")
+        candidate.write_bytes(payload)
+    return _orig(*args, **kwargs)
+subprocess.run = _tamper
+"""
+    result = _run_with_tamper_hook(source, output, tmp_path, hook)
+    assert result.returncode != 0, result.stdout + result.stderr
+    assert not output.exists()
+    combined = result.stderr + result.stdout
+    assert ("Stage5 selected input changed" in combined
+            or "Stage5 staged direct import failed" in combined)
+
+
+def test_stage5_manifest_copy_equals_original_when_no_race(tmp_path):
+    source, _, _ = _setup(tmp_path)
+    output = tmp_path / "candidate.zip"
+    run = _run(source, output, None)
+    assert run.returncode == 0, run.stdout + run.stderr
+    with zipfile.ZipFile(output) as archive:
+        for filename in ("a-UNIVERSAL.tsv", "canonical.json",
+                         "source-output-map.tsv", "verification.json"):
+            assert archive.read("CONTENT-DELIVERY/" + filename) == (
+                source / filename).read_bytes()

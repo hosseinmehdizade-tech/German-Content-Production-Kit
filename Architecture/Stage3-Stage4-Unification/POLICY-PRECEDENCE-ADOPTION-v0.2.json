@@ -55,13 +55,13 @@
     },
     {
       "stream": "250 Verben mit Praepositionen",
-      "adoption": "current schema repair unchanged; next semantic successor adopts",
-      "preserve": "active Stage4 WIP26 branch and raw PDF"
+      "adoption": "Resolve newest valid 250 Verben Stage4 LATEST/checkpoint and registered source before proposing a versioned semantic successor; no fixed stale WIP-number pin.",
+      "preserve": "Registered original PDF/source and latest actual Stage4 WIP plus immutable historical receipts; prior WIP26 is historical only, not default CURRENT."
     },
     {
       "stream": "Aber Hallo Listen Tabellen",
-      "adoption": "next safe batch only from current WIP33 exact Drive bytes and CAS",
-      "preserve": "Stage4 OPEN and frozen selected source"
+      "adoption": "Resolve newest workstream-local LATEST and exact content/receipt SHA at time of any separately authorized pilot; use a mutable next-safe batch only with CAS. Historical WIP33 is not current authority.",
+      "preserve": "Keep independent Stage4 OPEN, accepted source, stable IDs, frozen baseline and exact newest mutable parent (WIP49 existed on 2026-10-29; re-resolve, never pin WIP33)."
     },
     {
       "stream": "Nomen Verb Verbindungen",
@@ -101,5 +101,27 @@
     "explicit user approval before existing writer/consumer architectural change",
     "Stage5/6/7 separate gates"
   ],
-  "rollout_state": "PILOT_ONLY_NO_ACTIVE_CHANGE"
+  "rollout_state": "PILOT_ONLY_NO_ACTIVE_CHANGE",
+  "currentness_resolution": {
+    "status": "NONACTIVE_COMPATIBILITY_DECISION_ONLY",
+    "user_mission": "Preserve user-established optimization mission across bare continue; content stream LATEST may be read-only fixture but is not authorized for editing without explicit user request.",
+    "selection_order": [
+      "explicitly newer user-confirmed current artifact, after identity verification",
+      "newest matching workstream LATEST and actual SHA-bound milestone/portable artifact",
+      "active source manifest and immutable provenance, as constraints, not replacement editable data",
+      "checkpoint only if LATEST absent and not superseded",
+      "historical report/version pin for regression only"
+    ],
+    "never_assume_version_from_draft": true,
+    "absent_current": "BLOCKED_FOR_EDIT; no silent downgrade, no content successor in optimization chat",
+    "migration_gate": "Explicit user approval, verified exact current bytes, writer/consumer parity, rollback evidence; full independent Stage4 and Stage5-7 remain untouched."
+  },
+  "dependency_graph_integrity": {
+    "source": "Architecture/Stage3-Stage4-Unification/CONFLICT-DEPENDENCY-MATRIX-v0.1.json",
+    "identity": "conflicts[].requires <-> dependencies[] EXACT bidirectional parity",
+    "conflicts": 12,
+    "edges": 14,
+    "guard": "Verification/validate_stage3_stage4_unification.py",
+    "proposal_only": true
+  }
 }

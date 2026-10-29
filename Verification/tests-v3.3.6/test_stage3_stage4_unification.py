@@ -162,6 +162,58 @@ def test_stage4_requires_nonempty_independent_semantic_challenge():
     assert any("method evidence" in x for x in out)
 
 
+def test_every_unit_needs_review_disposition():
+    a, b = sample_candidate()
+    b["unit_dispositions"].pop()
+    assert any("per-unit disposition ledger" in x for x in m.validate_candidate(a, b))
+
+
+def test_duplicate_unit_does_not_count_as_second_review():
+    a, b = sample_candidate()
+    b["unit_dispositions"][1]["unit_id"] = "unit-1"
+    errors = m.validate_candidate(a, b)
+    assert any("duplicate/invalid unit disposition ID" in x for x in errors)
+    assert any("ID set differs" in x for x in errors)
+
+
+def test_review_sha_must_match_exact_staged_unit():
+    a, b = sample_candidate()
+    a["unit_sha256_by_id"]["unit-2"] = "e" * 64
+    assert any("stale/unknown SHA" in x for x in m.validate_candidate(a, b))
+
+
+def test_unit_review_needs_evidence_reason_and_source():
+    a, b = sample_candidate()
+    b["unit_dispositions"][0]["source_locator"] = ""
+    b["unit_dispositions"][1]["reason"] = ""
+    errors = m.validate_candidate(a, b)
+    assert any("missing source_locator" in x for x in errors)
+    assert any("missing reason" in x for x in errors)
+
+
+def test_full_stage4_cannot_hide_held_or_unverified_corrected_unit():
+    a, b = sample_candidate()
+    b["unit_dispositions"][0]["disposition"] = "HOLD_WITH_SPECIFIC_EVIDENCE"
+    b["unit_dispositions"][1]["disposition"] = "CORRECT_WITH_BEFORE_AFTER"
+    errors = m.validate_candidate(a, b)
+    assert sum("hold/correction requires separate closure" in x for x in errors) == 2
+
+
+def test_negative_control_needs_detected_fault_and_valid_unit_pin():
+    a, b = sample_candidate()
+    b["seeded_negative_control"]["result"] = "NOT_DETECTED"
+    assert any("seeded negative control not detected" in x for x in m.validate_candidate(a, b))
+    b["seeded_negative_control"]["result"] = "DETECTED"
+    b["seeded_negative_control"]["unit_id"] = "nonexistent"
+    assert any("seeded negative control not detected" in x for x in m.validate_candidate(a, b))
+
+
+def test_stage3_finite_unit_pin_universe_required():
+    a, b = sample_candidate()
+    a["unit_sha256_by_id"].pop("unit-2")
+    assert any("pin every lexical unit ID" in x for x in m.validate_candidate(a, b))
+
+
 # OP-01/OP-02: matrix must encode EVERY requires edge, never only a
 # plausible-looking subset. All tests run in-memory; no content mutation.
 def test_matrix_exactly_matches_fourteen_required_predecessors():

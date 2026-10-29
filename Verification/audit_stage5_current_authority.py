@@ -95,7 +95,8 @@ def verify(
         errors.append("AUTHORITY_ROLES_NOT_COMPLETE")
     else:
         selected = selected_inputs.get("roles") if isinstance(selected_inputs, dict) else None
-        if selected_inputs.get("status") != "PASS_SCOPED_SINGLE_CANDIDATE_INPUT_ONLY":
+        if (not isinstance(selected_inputs, dict) or
+                selected_inputs.get("status") != "PASS_SCOPED_SINGLE_CANDIDATE_INPUT_ONLY"):
             errors.append("INPUT_ROLE_PREFLIGHT_NOT_PASS")
         if not isinstance(selected, dict) or set(selected) != set(ROLES):
             errors.append("INPUT_ROLE_DATA_NOT_COMPLETE")

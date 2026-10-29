@@ -1,3 +1,11 @@
+# Unregelmäßige Verben — CURRENT Stage4 WIP1 (2026-10-29)
+
+**New working content authority:** `Unregelmaessige-Verben-v1.3.1-R8-Stage4-Morphology-174-SCOPED-WIP1-2026-10-29.zip` SHA-256 `77f6ec4857a58f512247a4a2c2ca051cf3573c84f66c2c9507144536d46b7a5c`; Library `/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.1-R8-Stage4-Morphology-174-SCOPED-WIP1-2026-10-29.zip` (exact byte+SHA readback PASS). The R8 ZIP remains the immutable parent source baseline, its original seven screenshots stay historically unverified and no longer gate future R8-derived release. 174-card morphology crosscheck scoped PASS (153 exact, 18 verified variants, 1 corrected modern primary, 2 Duden/PDF discrepancy cases). Confirmed working corrections in `bleichen` and `weisen`; counts 174 cards, 696 DE examples, 530 accepted combinations, 901 relations (parent 902). Official didactic preflight found 131 advisory flags *not yet dispositioned*. Full Stage4 AI linguistic/translation/relation and didactic QA, official Stage5, CURRENT Stage6 and Stage7 remain open. No app/UI change; not a final release.
+
+Milestone: `Workspaces/unregelmaessige-verben/V131-R8-STAGE4-MORPHOLOGY-174-SCOPED-WIP1-2026-10-29.json`. All older progress below is historical.
+
+---
+
 # Unregelmäßige Verben — current source governance (2026-10-29)
 
 **ACTIVE working content baseline:** exact existing `Unregelmaessige-Verben-v1.3.1-R8-FINAL-USER-HANDOFF-TESTS-WAIVED-2026-10-23.zip` (SHA-256 `228e8c2cead0cd3e31d35802e4bb632df248203ffab4cd49798cd0b31bb0b486`); 174 cards, 696 trilingual examples, 530 accepted Kombinationen and 902 relations. User approved treating this immutable R8 content as the production baseline for future reviewed successors. This is a **derived content rebaseline**, not original screenshot attestation.

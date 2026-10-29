@@ -246,6 +246,56 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
                          "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL")
         self.assertEqual(registry["scopes"], [])
 
+    def test_local_current_changes_during_validation_fail_before_network(self):
+        api = FakeGitHub(self.parent_bytes)
+        existing = m.verify_local
+
+        def race(snapshot_path):
+            result = existing(snapshot_path)
+            (self.base / "current.json").write_bytes(b"changed after verification")
+            return result
+
+        with mock.patch.object(m, "verify_local", side_effect=race):
+            self.rejects(api, "LOCAL_SNAPSHOT_CHANGED: current")
+        self.assertEqual(api.calls, [])
+        self.assertEqual(api.data, self.parent_bytes)
+
+    def test_local_current_changes_after_remote_parent_get_fail_before_put(self):
+        parent = self.parent_bytes
+        test = self
+
+        class LocalRace(FakeGitHub):
+            def __call__(self, method, path, branch, token, payload=None):
+                result = super().__call__(method, path, branch, token, payload)
+                if method == "GET" and path == test.path:
+                    (test.base / "current.json").write_bytes(b"unreviewed changed payload")
+                return result
+
+        api = LocalRace(parent)
+        self.rejects(api, "LOCAL_SNAPSHOT_CHANGED: current")
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET"])
+        self.assertEqual(api.data, parent)
+
+    def test_local_proof_changes_during_verification_fail_before_network(self):
+        api = FakeGitHub(self.parent_bytes)
+        existing = m.verify_local
+
+        def race(snapshot_path):
+            result = existing(snapshot_path)
+            self.proof_file.write_text(self.proof_file.read_text() + "\n")
+            return result
+
+        with mock.patch.object(m, "verify_local", side_effect=race):
+            self.rejects(api, "LOCAL_SNAPSHOT_CHANGED: proof")
+        self.assertEqual(api.calls, [])
+
+    def test_uploaded_content_is_exactly_verified_snapshot(self):
+        api = FakeGitHub(self.parent_bytes)
+        result = self.run_persist(api)
+        self.assertEqual(api.data, self.current_bytes)
+        self.assertEqual(result["input_snapshot_exact"], True)
+        self.assertEqual(result["local_input_freshness_pre_put"], True)
+
     def test_registry_deny_all_blocks_before_target_read(self):
         api = FakeGitHub(self.parent_bytes)
         api.scope_data = json.dumps({"schema": m.SCOPE_SCHEMA,

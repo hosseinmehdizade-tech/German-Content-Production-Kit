@@ -1,0 +1,111 @@
+{
+  "schema": "gcpk-a2-c1-library-cleanup-retention-audit@1",
+  "date": "2026-10-29",
+  "status": "AUDIT_COMPLETE_SCOPED_NO_ADDITIONAL_DELETION",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "scope": "Library /German-Content-Production-Kit/Checkpoints plus targeted title searches for historical C1 versions; not a global exhaustive Library audit",
+  "historical_cleanup": {
+    "previous_7_archive_receipt": "C1-V017-SAFE-LIBRARY-CLEANUP-7-SUPERSEDED-SNAPSHOTS-2026-10-28.json",
+    "previous_7_count": 7,
+    "previous_7_bytes": 169020966,
+    "additional_14_receipt": "LIBRARY-CLEANUP-C1-OLD-SNAPSHOTS-2026-10-29.json",
+    "additional_14_count": 14,
+    "additional_14_bytes": 515003110,
+    "combined_moved_to_trash_count": 21,
+    "combined_moved_to_trash_bytes": 684024076,
+    "storage_freed_unverified": true
+  },
+  "current": {
+    "archive": "Menschen-A2-C1-v032-GAP401-895-495-CARDS-42-DIDACTIC-EDITS-NOT-IMPORT.zip",
+    "sha256": "c8ef7a16858adf0e672faa6c0bfd789da4aa5dc277edca906a7b579aff5ce2ed",
+    "library_file_id": "libfile_6ec9c6a64c9881918c7c98ab6b0c2674",
+    "fresh_independent_validator": "PASS_SCOPED_INDEPENDENT_NOT_OFFICIAL_STAGE4",
+    "zip_members": 256,
+    "manifest_hashes": 254,
+    "historical_locked_archives_preserved": 25,
+    "unique_a2_cards": 1778,
+    "lesson_memberships": 1974,
+    "source_derived_trilingual_units_hashed": 10643,
+    "not_import_ready": true
+  },
+  "mandatory_parent": {
+    "archive": "Menschen-A2-C1-v031-L04-L07-200-CARD-DIDACTIC-REPAIRS-NOT-IMPORT.zip",
+    "sha256": "f1746b780dbe933f79314174abb3417475f1591cc65b297efbe0b4a6444fe05d",
+    "reason": "v032 forensic validator requires exact v031 parent and reports exact byte parity",
+    "retained": true
+  },
+  "retained_unique_evidence": {
+    "count": 9,
+    "total_size_bytes": 17972375,
+    "reason": "Files contain member bytes absent from v032 as exact archive payloads; separate Stage5/import/ownership proofs are not proven safely replaceable by v032",
+    "files": [
+      {
+        "id": "v017-A1-two-exact-masters",
+        "size_bytes": 10601,
+        "library_file_id": "libfile_11b156a350a08191befcb3605ae9bedf",
+        "reason": "exact A1 owner source proof and verification"
+      },
+      {
+        "id": "v016-A1-owner-supplements",
+        "size_bytes": 16320,
+        "library_file_id": "libfile_360ed7705e1c819191fe532b72e81e44",
+        "reason": "source ownership isolation evidence"
+      },
+      {
+        "id": "v015-dual-grammar-1778",
+        "size_bytes": 2602565,
+        "library_file_id": "libfile_4e6158bc84b48191b5230ceccb1c678e",
+        "reason": "independent v486 branch test and grammar preflight"
+      },
+      {
+        "id": "v015-1777-dryrun",
+        "size_bytes": 2792078,
+        "library_file_id": "libfile_5da8498f56c881918b6b74bc2c503363",
+        "reason": "1777-card dryrun and adversarial import QA"
+      },
+      {
+        "id": "v015-stage5-shadow",
+        "size_bytes": 3966712,
+        "library_file_id": "libfile_c28f93a4f7fc81918f18ba6b9a54f638",
+        "reason": "24 separate lossless Stage5 shadow projections"
+      },
+      {
+        "id": "v015-stage5-importer-guard",
+        "size_bytes": 2321711,
+        "library_file_id": "libfile_39e582e9438c8191b1121af14cbea7bf",
+        "reason": "v486 import collision contract tests"
+      },
+      {
+        "id": "v013-stage5-importer-collision-guard",
+        "size_bytes": 2276399,
+        "library_file_id": "libfile_355b8a38667481918d3d66be13f8618f",
+        "reason": "historical executable import collision test"
+      },
+      {
+        "id": "v013-stage5-lossless-projection",
+        "size_bytes": 3968622,
+        "library_file_id": "libfile_07f394dddf388191b6f88ddfaab3d898",
+        "reason": "historical 24 lesson lossless shadow with provenance"
+      },
+      {
+        "id": "v013-stage5-preflight-blockers",
+        "size_bytes": 17367,
+        "library_file_id": "libfile_2f18e5d01948819185f1991f37f9d8f5",
+        "reason": "independent scoped Stage5 preflight ledger and verification"
+      }
+    ]
+  },
+  "historical_first_7": "Versions v001-v007 not found as live ZIPs in scoped file search; do not equate absence with proven global deletion",
+  "no_mutation": [
+    "Menschen A2 source and immutable lesson archives",
+    "A1-owned cards",
+    "user SRS",
+    "Flashcards Pro app/runtime or UI",
+    "official missing v037 archive"
+  ],
+  "stage4": "BLOCKED",
+  "stage5": "NOT_RUN",
+  "stage6": "NOT_RUN",
+  "stage7": "NOT_RUN",
+  "next_action": "Retain v032 + exact v031 + nine unique evidence packages until an independently verified compact evidence-preserving replacement exists; do not delete sole copies merely by version number. Search other locations only when exact inventory need arises."
+}

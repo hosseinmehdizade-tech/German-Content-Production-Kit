@@ -15,12 +15,13 @@ import json
 import os
 import re
 import sys
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from validate_applied_edit_bytes import verify as verify_local, digest
+from validate_applied_edit_bytes import verify as verify_local, digest, FILE_KEYS
 
 REPOSITORY = "hosseinmehdizade-tech/German-Content-Production-Kit"
 MAX_TEXT_BYTES = 1_000_000
@@ -145,6 +146,81 @@ def verify_remote_scope(payload: dict, *, proof: dict, proof_bytes: bytes,
     return registry_blob, matches[0]["authorization_ref"]
 
 
+def capture_verified_local_snapshot(proof_file: Path):
+    """Validate and return immutable input bytes; never re-open the CURRENT for PUT.
+
+    The copied evidence is independently verified in a private temporary
+    directory. Changes to the original files during verification fail closed.
+    """
+    try:
+        original_root = proof_file.resolve().parent
+        proof_bytes = proof_file.read_bytes()
+        if len(proof_bytes) > MAX_TEXT_BYTES:
+            raise PersistenceBlocked("LOCAL_SNAPSHOT_OVERSIZED_PROOF")
+        proof = json.loads(proof_bytes)
+        if not isinstance(proof, dict) or not isinstance(proof.get("files"), dict):
+            raise PersistenceBlocked("LOCAL_SNAPSHOT_INVALID_PROOF")
+        file_bytes, sources = {}, {}
+        for key in FILE_KEYS:
+            name = proof["files"].get(key)
+            if not isinstance(name, str) or not name:
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_INVALID_PATH: " + key)
+            relative = Path(name)
+            if (relative.is_absolute() or not relative.parts
+                    or any(part in ("..", ".") for part in relative.parts)
+                    or "\\" in name):
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_UNSAFE_PATH: " + key)
+            source = original_root / relative
+            if any((original_root.joinpath(*relative.parts[:i])).is_symlink()
+                   for i in range(1, len(relative.parts) + 1)):
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_SYMLINK_REJECTED: " + key)
+            resolved = source.resolve()
+            if original_root not in resolved.parents:
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_UNSAFE_PATH: " + key)
+            size = source.stat().st_size
+            if size > 256 * 1024 * 1024:
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_OVERSIZED_INPUT: " + key)
+            data = source.read_bytes()
+            if len(data) != size:
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_INPUT_CHANGED: " + key)
+            file_bytes[key] = data
+            sources[key] = source
+        with tempfile.TemporaryDirectory(prefix="op01-immutable-proof-") as directory:
+            root = Path(directory)
+            for key, name in proof["files"].items():
+                if key not in FILE_KEYS:
+                    continue
+                target = root / name
+                if target.name == "_OP01-snapshot-proof.json":
+                    raise PersistenceBlocked("LOCAL_SNAPSHOT_RESERVED_NAME")
+                target.parent.mkdir(parents=True, exist_ok=True)
+                if target.exists() and target.read_bytes() != file_bytes[key]:
+                    raise PersistenceBlocked("LOCAL_SNAPSHOT_FILE_ALIAS_CONFLICT")
+                target.write_bytes(file_bytes[key])
+            candidate = root / "_OP01-snapshot-proof.json"
+            candidate.write_bytes(proof_bytes)
+            errors = verify_local(candidate)
+            if errors:
+                raise PersistenceBlocked("LOCAL_APPLIED_PROOF_FAILED: " + " | ".join(errors))
+        # File bytes and proof were read once, verified together and retained
+        # in memory; this freshness check protects local concurrent writers.
+        assert_local_snapshot_unchanged(proof_file, proof_bytes, sources, file_bytes)
+        return proof, proof_bytes, file_bytes, sources
+    except (OSError, ValueError, UnicodeError) as exc:
+        raise PersistenceBlocked("LOCAL_SNAPSHOT_UNREADABLE_OR_INVALID") from exc
+
+
+def assert_local_snapshot_unchanged(proof_file, proof_bytes, sources, file_bytes):
+    try:
+        if proof_file.read_bytes() != proof_bytes:
+            raise PersistenceBlocked("LOCAL_SNAPSHOT_CHANGED: proof")
+        for key, source in sources.items():
+            if source.is_symlink() or source.read_bytes() != file_bytes[key]:
+                raise PersistenceBlocked("LOCAL_SNAPSHOT_CHANGED: " + key)
+    except OSError as exc:
+        raise PersistenceBlocked("LOCAL_SNAPSHOT_INPUT_DISAPPEARED") from exc
+
+
 def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
             *, branch: str = "main", api=github_api) -> dict:
     verify_target(path, branch)
@@ -152,21 +228,16 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
         raise PersistenceBlocked("AUTH_REQUIRED: GITHUB_TOKEN must be configured")
     if not isinstance(expected_blob_sha, str) or not HEX40.fullmatch(expected_blob_sha):
         raise PersistenceBlocked("EXPECTED_BLOB_SHA_REQUIRED: exactly 40 hex chars")
-    failures = verify_local(proof_file)
-    if failures:
-        raise PersistenceBlocked("LOCAL_APPLIED_PROOF_FAILED: " + " | ".join(failures))
-    proof = json.loads(proof_file.read_text(encoding="utf-8"))
+    proof, proof_bytes, inputs, original_paths = capture_verified_local_snapshot(proof_file)
     if proof.get("format", "JSON_ITEMS_V1") not in {"JSON_ITEMS_V1", "TSV_ITEMS_V1"}:
         raise PersistenceBlocked("GIT_TEXT_ONLY: ZIP/binary content is never committed as transport")
-    base = proof_file.resolve().parent
-    before = (base / proof["files"]["parent"]).read_bytes()
-    current = (base / proof["files"]["current"]).read_bytes()
+    before = inputs["parent"]
+    current = inputs["current"]
     if (len(before) > MAX_TEXT_BYTES or len(current) > MAX_TEXT_BYTES
             or before == current):
         raise PersistenceBlocked("GIT_TEXT_ONLY: too large or no actual edit")
     # Distinct authenticated Git configuration defaults to deny-all. The grant
     # pins the exact proof, source, target, parent and candidate byte hashes.
-    proof_bytes = proof_file.read_bytes()
     registry_sha, approval_ref = verify_remote_scope(
         api("GET", SCOPE_PATH, branch, token), proof=proof,
         proof_bytes=proof_bytes, path=path, branch=branch,
@@ -174,6 +245,9 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
     old_data, actual_sha = decode_github_file(api("GET", path, branch, token))
     if actual_sha != expected_blob_sha or old_data != before:
         raise PersistenceBlocked("STALE_CURRENT: remote mutable bytes/parent blob differ; no write")
+    # Reject a concurrent local editor before remote mutation. The actual
+    # uploaded payload is ALWAYS from the previously validated snapshot.
+    assert_local_snapshot_unchanged(proof_file, proof_bytes, original_paths, inputs)
     new_sha = git_blob_sha(current)
     message = "apply(OP-01): verified mutable working bytes " + proof["workstream"]
     written = api("PUT", path, branch, token, {
@@ -202,6 +276,8 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
         "commit_sha": written["commit"]["sha"],
         "applied_items_local_verified": proof["applied_count"],
         "source_immutable_local_proof": True,
+        "input_snapshot_exact": True,
+        "local_input_freshness_pre_put": True,
         "global_writer_coverage": False,
         "independent_linguistic_stage4": False,
         "library_readback_verified": False,

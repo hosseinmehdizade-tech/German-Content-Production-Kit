@@ -204,6 +204,35 @@ def test_path_symlink_matching_role_fails_closed_if_supported(built, tmp_path):
     assert "UNSAFE_ROLE_CANDIDATE:malicious-cards.tsv" in s["errors"]
 
 
+
+def test_unchanged_real_builder_silently_picks_alphabetically_prior_stale_import(
+        built, tmp_path):
+    # Reproduce the concrete process hazard. An otherwise schema-valid stale
+    # A-Universal file wins the old builder's first-match alphabetical sort,
+    # although the freshly authorized-looking Synthetic-Universal still exists.
+    original = built["input_dir"] / DIRECT
+    stale = built["input_dir"] / "A-Universal-older.tsv"
+    stale_bytes = original.read_bytes().replace(b"synthetic DE", b"older test DE")
+    assert stale_bytes != original.read_bytes()
+    stale.write_bytes(stale_bytes)
+    assert "AMBIGUOUS_ROLE:direct-import-tsv" in scan_input(built["input_dir"])["errors"]
+
+    output = tmp_path / "separate" / "Synthetic-Stale-Selection.zip"
+    output.parent.mkdir()
+    run = subprocess.run(
+        [sys.executable, str(HERE.parent.parent / "Tools" / "build_clean_delivery.py"),
+         str(built["input_dir"]), str(output), "--purpose", "stage5_acceptance"],
+        capture_output=True, text=True, timeout=90,
+    )
+    assert run.returncode == 0, run.stdout + run.stderr
+    with zipfile.ZipFile(output) as z:
+        m = json.loads(z.read(ZROOT+DELIVERY))
+        assert m["roles"]["direct-import-tsv"] == stale.name
+        assert z.read(ZROOT+stale.name) == stale_bytes
+    # The old builder's local integrity PASS never meant SOURCE-CURRENT PASS.
+    assert scan_input(built["input_dir"])["status"] == "BLOCKED"
+
+
 def test_unknown_extra_unmatched_document_does_not_authorize_role_switch(built):
     (built["input_dir"]/"notes.txt").write_text("not a role", encoding="utf-8")
     assert audit(built)["status"].startswith("PASS_SCOPED")

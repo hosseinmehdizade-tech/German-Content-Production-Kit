@@ -48,6 +48,56 @@ def parse_tsv(data: bytes, id_column: str) -> list[dict[str, str]]:
     return [{"id": r[id_column], **{k: v for k, v in r.items() if k != id_column}} for r in cards]
 
 
+
+def tsv_headers(data: bytes) -> list[str]:
+    try:
+        text = data.decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        raise ValueError("TSV is not UTF-8") from exc
+    reader = csv.reader(io.StringIO(text, newline=""), delimiter="\\t")
+    headers = next(reader, [])
+    if (not headers or len(headers) != len(set(headers))
+            or any(not x or "\\r" in x or "\\n" in x for x in headers)):
+        raise ValueError("TSV missing/duplicate columns")
+    return headers
+
+
+def nested_diff(before: object, after: object, prefix: str) -> set[str]:
+    if isinstance(before, dict) and isinstance(after, dict):
+        changed: set[str] = set()
+        for key in set(before) | set(after):
+            if not isinstance(key, str) or not key or "." in key:
+                raise ValueError("unsupported nested JSON key")
+            name = prefix + "." + key
+            if key not in before or key not in after:
+                changed.add(name)
+            else:
+                changed.update(nested_diff(before[key], after[key], name))
+        return changed
+    return {prefix} if before != after else set()
+
+
+def item_diff(before: dict, after: dict, nested_columns: list[str]) -> set[str]:
+    changed: set[str] = set()
+    for key in set(before) | set(after):
+        if key in nested_columns:
+            if key not in before or key not in after:
+                changed.add(key)
+                continue
+            if not isinstance(before[key], str) or not isinstance(after[key], str):
+                raise ValueError("nested columns must hold JSON text")
+            try:
+                old, new = json.loads(before[key]), json.loads(after[key])
+            except (ValueError, UnicodeError) as exc:
+                raise ValueError("invalid embedded JSON in " + key) from exc
+            if not isinstance(old, dict) or not isinstance(new, dict):
+                raise ValueError("nested JSON column must be an object: " + key)
+            changed.update(nested_diff(old, new, key))
+        elif before.get(key) != after.get(key):
+            changed.add(key)
+    return changed
+
+
 def zip_members(data: bytes, *, member: str, manifest: str) -> dict[str, bytes]:
     if not isinstance(member, str) or not member.endswith(".tsv") or not member or "\\" in member:
         raise ValueError("ZIP_TSV_V1 needs a safe TSV member")
@@ -61,7 +111,9 @@ def zip_members(data: bytes, *, member: str, manifest: str) -> dict[str, bytes]:
                     or member not in names or manifest not in names
                     or any(n.startswith("/") or "\\" in n or ".." in Path(n).parts for n in names)
                     or any(entry.is_dir() for entry in entries)
-                    or any(entry.file_size > 100 * 1024 * 1024 for entry in entries)):
+                    or any(entry.file_size > 100 * 1024 * 1024 for entry in entries)
+                    or sum(entry.file_size for entry in entries) > 256 * 1024 * 1024
+                    or any(entry.file_size > 1024 * 1024 and entry.file_size > 500 * max(1, entry.compress_size) for entry in entries)):
                 raise ValueError("ZIP missing, duplicate, unsafe, oversized or malformed members")
             if archive.testzip() is not None:
                 raise ValueError("ZIP CRC failure")
@@ -94,6 +146,8 @@ def card_rows(before: bytes, after: bytes, proof: dict) -> tuple[list[dict], lis
             raise ValueError("JSON items parent/current must be objects")
         return a.get("cards"), b.get("cards")
     if format_name == "TSV_ITEMS_V1":
+        if tsv_headers(before) != tsv_headers(after):
+            raise ValueError("TSV header/order/schema changed")
         col = proof.get("id_column")
         return parse_tsv(before, col), parse_tsv(after, col)
     if format_name == "ZIP_TSV_V1":
@@ -106,6 +160,8 @@ def card_rows(before: bytes, after: bytes, proof: dict) -> tuple[list[dict], lis
         for name, data in old_members.items():
             if name not in (member, manifest) and data != new_members[name]:
                 raise ValueError("unrelated ZIP member payload changed: " + name)
+        if tsv_headers(old_members[member]) != tsv_headers(new_members[member]):
+            raise ValueError("TSV header/order/schema changed")
         if old_members[member] == new_members[member]:
             raise ValueError("target ZIP TSV unchanged")
         col = proof.get("id_column")
@@ -204,11 +260,22 @@ def verify(proof_file: Path) -> list[str]:
             errors.append("duplicate/invalid edit fields or ID")
         else:
             declared[entry["id"]] = set(fields)
+    nested_columns = proof.get("nested_json_columns", [])
+    if not isinstance(nested_columns, list) or any(
+        not isinstance(name, str) or not name or name == "id" or "." in name
+        for name in nested_columns
+    ) or len(set(nested_columns)) != len(nested_columns):
+        return errors + ["invalid nested_json_columns list"]
+    if nested_columns and proof.get("format") not in ("TSV_ITEMS_V1", "ZIP_TSV_V1"):
+        return errors + ["nested_json_columns require TSV/ZIP format"]
     observed: dict[str, set[str]] = {}
     for b, a in zip(prior, updated):
         if b["id"] != a["id"]:
             continue
-        changed = {key for key in set(b) | set(a) if b.get(key) != a.get(key)}
+        try:
+            changed = item_diff(b, a, nested_columns)
+        except (ValueError, UnicodeError) as exc:
+            return errors + ["nested diff format error: " + str(exc)]
         if changed:
             observed[b["id"]] = changed
     if declared != observed:

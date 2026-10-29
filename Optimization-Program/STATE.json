@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_DENY_ALL__OP02_V486_REAL_SYNTHETIC_BROWSER_IDB_EXPORT_ROUNDTRIP_PASS",
+  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_DENY_ALL__OP02_V486_ACTUAL_USER_EXPORT_DOWNLOAD_AND_REIMPORT_SYNTHETIC_TWO_OS_PASS",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -39,9 +39,9 @@
     {
       "id": "OP-02",
       "title": "Stage 1–7 and full enrichment / independent QA",
-      "status": "ACTIVE__EXACT_V486_REAL_SYNTHETIC_PLAYWRIGHT_LIFECYCLE_UBUNTU_WINDOWS_PASS__PRODUCTION_CONTENT_QA_NOT_PROMOTED__HISTORICAL_9AA0_UNRESOLVED",
-      "last_evidence": "2026-10-29 OP-02 exact CURRENT v486-R120 (SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff) new isolated real Chromium browser script at German-Flashcards-Pro/03-Tests/test-op02-v486-stage45-lifecycle-browser.cjs. FINAL CI run 40874373032 commit c537e5482e8a836228433b2b9ce9640a8c3f3167 PASS Ubuntu and Windows, verified independently through both per-job logs. Five end-to-end checks per OS: 2 synthetic cards UI Universal TSV import, stable VERIFIED IndexedDB generation with exact count/ids, rich/current/authority custom_fields combination + provenance + teaching_delta parity and actual Study/Quick DOM, browser Reload same committed generation, 23-column Universal TSV authority Export exactly retains backend rich + view envelopes, Fresh isolated-browser profile UI Reimport from exported TSV and Reload preserves 2 cards, item metadata and visibility. Early CI run 40873414818 failed test syntax; run 40873623656 failed transient zero-card/incorrect import readiness on Ubuntu, not assumed product defect; corrected script stable repeated independent verified IDB/active-card reads, actual settings-data UI import. Windows previous run passed but global run failed; final run independently PASS both. Content Kit Stage45 proposed adapter still NONACTIVE; synthetic test is real browser with only fake cards, not real learner production Stage4/5/6/7 acceptance, no app UI/runtime modification.",
-      "next_action": "Continue OP-02 safe process QA by testing failure negative cases in isolated real Chromium: bare kombinationen metadata must not silently be treated as visible v486 section; fail closed preflight contract, stale details override; ensure no false PASS on zero/one cards. Keep actual production adapter NONACTIVE and no user data changes. Resolve historical 9aa0 provenance separately, and maintain independent Stage4/5/6/7 acceptance.",
+      "status": "ACTIVE__V486_SYNTHETIC_ACTUAL_UI_EXPORT_DOWNLOAD_AND_REIMPORT_UBUNTU_WINDOWS_CI_PASS__STAGE45_NONACTIVE__HISTORICAL_9AA0_UNRESOLVED",
+      "last_evidence": "2026-10-29 OP-02 exact CURRENT v486-R120 (SHA256 d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff) new isolated real Chromium browser script at German-Flashcards-Pro/03-Tests/test-op02-v486-stage45-lifecycle-browser.cjs. FINAL CI run 40874373032 commit c537e5482e8a836228433b2b9ce9640a8c3f3167 PASS Ubuntu and Windows, verified independently through both per-job logs. Five end-to-end checks per OS: 2 synthetic cards UI Universal TSV import, stable VERIFIED IndexedDB generation with exact count/ids, rich/current/authority custom_fields combination + provenance + teaching_delta parity and actual Study/Quick DOM, browser Reload same committed generation, 23-column Universal TSV authority Export exactly retains backend rich + view envelopes, Fresh isolated-browser profile UI Reimport from exported TSV and Reload preserves 2 cards, item metadata and visibility. Early CI run 40873414818 failed test syntax; run 40873623656 failed transient zero-card/incorrect import readiness on Ubuntu, not assumed product defect; corrected script stable repeated independent verified IDB/active-card reads, actual settings-data UI import. Windows previous run passed but global run failed; final run independently PASS both. Content Kit Stage45 proposed adapter still NONACTIVE; synthetic test is real browser with only fake cards, not real learner production Stage4/5/6/7 acceptance, no app UI/runtime modification. ADDITIONAL LATER VERIFIED EXPANSION: Run 40874877519 app commit 0e12bb085b74eb1cfdcb010e13b6d6fbc17421d1 confirms *actual* user Export Universal TSV click/download (not only earlier exported API rows), exact 23-column file + 2 synthetic cards/2 rich combos preserved, and reimport of same downloaded UTF8+BOM bytes in a second isolated browser profile with stable verified IDB generation/reload on both Ubuntu and Windows. Per-job logs inspected (5/5 each, no errors). Evidence Optimization-Program/Verification/OP02-V486-REAL-BROWSER-SYNTHETIC-LIFECYCLE-20261029.json. The prior checkpoint and successful run 40874373032 are preserved separately; no Stage45 activation or production QA claimed.",
+      "next_action": "Continue scoped OP-02 optimization with negative synthetic browser cases for bare-only kombinationen view absence, stale details override, one/zero-card false-PASS prevention; current user-library browser/IDB and independent linguistic Stage4/actual Stage5–7 remain separately gated. No content/LOCKED or app UI migration, no OP01 real writer grant.",
       "blocker": "Architecture activation is approval-gated; process analysis, tests and non-breaking proposal hardening may continue without migration."
     },
     {
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-01_OP-02",
-  "next_exact_action": "OP-02 real v486 synthetic browser positive lifecycle now PASS across two OS. Next add negative browser cases and link Content Kit nonactive Stage45 bridge tests to exact app runtime pin; no actual Stage5 writer/schema activation, source/LOCKED/UI changes. OP-01 still DENY_ALL zero grants.",
+  "next_exact_action": "Continue nonactive OP-02 process QA with negative real-Chromium tests and runtime profile pinning. The native User Export button/download roundtrip is now proven for two synthetic cards on Ubuntu+Windows, but not production learner data. OP-01 remains DENY_ALL, historical 9aa0 unresolved.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -113,12 +113,12 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP02-EXACT-V486-REAL-BROWSER-SYNTHETIC-FULL-LIFECYCLE-2026-10-29",
-    "scope": "Exact v486-R120 Chromium synthetic UI Universal Import → VERIFIED IndexedDB Save → Study/Quick DOM → Reload → 23-column Universal Export → isolated fresh profile Reimport/Reload on Ubuntu and Windows",
-    "result": "PASS_SCOPED_REAL_BROWSER_SYNTHETIC_TWO_OS__NOT_PRODUCTION_STAGE6_ACCEPTANCE",
-    "tests": "5/5 end-to-end lifecycle checks in each OS, exact GitHub Actions run 40874373032 head c537e5482e8a836228433b2b9ce9640a8c3f3167, inspected Ubuntu job 123449284021 and Windows 123449284369 logs; no CI cardCount=0 accepted after hardened commit checks.",
-    "no_change": "No app HTML/UI, real learner card, registered source, historical content ZIP, LOCKED, workstream LATEST, user Library, OP01 permission or release mutation.",
-    "not_claimed": "No production card Stage4 linguistic review, no actual source or Stage5 release verification, no real-user IndexedDB profile, no full-device or Stage7 acceptance; only synthetic 2-card v486-R120 browser cycle."
+    "id": "OP02-V486-REAL-USER-EXPORT-DOWNLOAD-BROWSER-2026-10-29",
+    "scope": "Extend confirmed two-OS v486-R120 synthetic Playwright lifecycle to use actual user-facing Universal TSV Export button download bytes in fresh isolated-profile UI Reimport and Reload.",
+    "result": "PASS_SCOPED_REAL_CHROMIUM_USER_EXPORT_DOWNLOAD_UBUNTU_WINDOWS__NO_REAL_LEARNER_DATA_OR_STAGE45_SCHEMA_ACTIVATION",
+    "tests": "Playwright CI run https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40874877519, commit 0e12bb085b74eb1cfdcb010e13b6d6fbc17421d1, 5/5 checks on both Ubuntu and Windows; file exact app SHA256 d00c1117...",
+    "no_change": "No current app index.html/UI, user content or source, original RAR/PDF, historical A2 ZIP, LOCKED, LATEST, Library objects, writer scopes or release ZIP mutated.",
+    "not_claimed": "Not real learner corpus Stage6 PASS; Study/Quick HTML checked using actual backHtml renderer injected into DOM test host, not full UI routing or mobile; Stage4 independent AI, Stage5 true learner content and Stage7 certification separate."
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -1208,5 +1208,38 @@
       "Historical 9aa0 reference unresolved"
     ],
     "next": "Add isolated-browser negative semantic projection and stale-details cases, preserving all app and real data."
+  },
+  "op02_v486_real_browser_user_export_20261029": {
+    "status": "PASS_SCOPED_SYNTHETIC_UI_DOWNLOAD_REIMPORT_TWO_OS",
+    "milestone_previous": "OP02-EXACT-V486-REAL-BROWSER-SYNTHETIC-FULL-LIFECYCLE-2026-10-29",
+    "checked_in_report": "Optimization-Program/Verification/OP02-V486-REAL-BROWSER-SYNTHETIC-LIFECYCLE-20261029.json",
+    "app_test": "03-Tests/test-op02-v486-stage45-lifecycle-browser.cjs",
+    "app_workflow": ".github/workflows/op02-stage45-v486-lifecycle-browser.yml",
+    "exact_v486_runtime_sha256": "d00c111743eea695e2f5e7a847b0330a0eb74479fd6733396fa062ac222bdeff",
+    "app_commit": "0e12bb085b74eb1cfdcb010e13b6d6fbc17421d1",
+    "ci": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/40874877519",
+    "github_jobs_status": {
+      "ubuntu-latest": "success",
+      "windows-latest": "success"
+    },
+    "check_count_per_os": 5,
+    "synthetic_card_count": 2,
+    "synthetic_combination_count": 2,
+    "downloaded_file_from_real_export_button": true,
+    "exported_bytes_reimported_exactly": true,
+    "universal_tsv_columns": 23,
+    "exact_semantic_roundtrip_verified": true,
+    "storage_verification": "Repeated stable verified manifest/generation/count/IDs, not transient PASS",
+    "source_no_mutation": true,
+    "stage45_nonactive": true,
+    "importer_consumer_profile": "rich backend custom_fields.kombinationen plus v486 view bridge kombinationen_v1",
+    "explicit_remaining_gates": [
+      "No real user content, original source or genuinely independent linguistic QA checked",
+      "No active Stage5 export/import schema migration",
+      "No in-app full Study/Quick routing/navigation, mobile, or user library IndexedDB",
+      "Historical A2 L24 9aa0... unresolved",
+      "OP01 deny-all scopes no write grants"
+    ],
+    "next": "OP-02 may extend negative synthetic browser cases, but do not turn proposed Stage45 on for a user workstream without explicit approval/currentness and gated release."
   }
 }

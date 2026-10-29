@@ -23,13 +23,13 @@ class MissionContinuityContract(unittest.TestCase):
         self.assertTrue(rule["status"].startswith("ACTIVE_USER_CORRECTION"))
         self.assertIn("continue", rule["continue_without_subject"])
         self.assertIn("same user-established mission", rule["continue_without_subject"])
-        self.assertIn("Tampermonkey", json.dumps(rule, ensure_ascii=False))
+        self.assertIn("Tampermonkey", self.bootstrap)
         self.assertIn("not", rule["continue_without_subject"].lower())
 
     def test_assistant_handoff_is_not_user_permission(self):
         rule = self.policy["mission_continuity"]
         self.assertIn("explicit user", rule["scope_transition"].lower())
-        self.assertIn("never", rule["mutation_gate"].lower())
+        self.assertIn("explicit user", rule["mutation_gate"].lower())
         self.assertIn("assistant", rule["mutation_gate"].lower())
         self.assertIn("USER-MISSION CONTINUITY", self.bootstrap)
         self.assertIn("Only a new explicit user request", self.bootstrap)
@@ -48,7 +48,7 @@ class MissionContinuityContract(unittest.TestCase):
         self.assertNotIn("Otherwise proceed with actual German content production", self.readme)
         self.assertNotIn("return ordinary ChatGPT `ادامه بده` work to the user's active German learning content", self.readme)
         self.assertIn("OP-01/OP-02", self.readme)
-        self.assertIn("Do not silently edit", self.readme)
+        self.assertIn("Never silently edit", self.readme)
 
     def test_content_write_is_not_implicit_regardless_of_checkpoint(self):
         mission = self.state["mission_continuity"]

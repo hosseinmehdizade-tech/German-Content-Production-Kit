@@ -242,7 +242,9 @@ def test_duplicate_json_keys_fail_closed():
     a, b, c = fixture()
     c[0]["custom_fields"] = c[0]["custom_fields"].replace(
         '"presentation_contract":', '"presentation_contract": "untrusted", "presentation_contract":', 1)
-    assert any("DUPLICATE_JSON_OBJECT_KEY" in s for s in verify_fixture(a,b,c)["errors"])
+    assert any("INVALID_STAGE5_CUSTOM_FIELDS" in e for e in verify_fixture(a,b,c)["errors"])
+    with pytest.raises(ValueError, match="DUPLICATE_JSON_OBJECT_KEY"):
+        m.read_json(c[0]["custom_fields"].encode("utf-8"))
 
 
 def test_stage4_empty_card_cannot_appear_with_unrequested_combo():

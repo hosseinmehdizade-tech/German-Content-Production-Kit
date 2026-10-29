@@ -6,11 +6,14 @@ import csv
 import importlib.util
 import io
 import json
+import sys
 from pathlib import Path
 
 import pytest
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))  # allow real companion module's normal Python imports
+
 def load(name):
     spec=importlib.util.spec_from_file_location(name.replace("-","_"),ROOT/name)
     module=importlib.util.module_from_spec(spec)

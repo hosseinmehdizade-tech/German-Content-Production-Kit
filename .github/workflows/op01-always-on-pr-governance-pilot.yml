@@ -1,0 +1,51 @@
+# OP-01 / OP-02 — review-only experiment, NOT an active required branch check.
+# A branch ruleset must not require this job without separately approved
+# security settings, observed docs-only PR checks and owner recovery procedure.
+name: OP-01 always-on PR governance pilot
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  op01-governance-preflight:
+    name: op01-governance-preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check default DENY_ALL policy without granting release approval
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          def unique(items):
+              out = {}
+              for key, value in items:
+                  if key in out:
+                      raise ValueError("duplicate JSON key: " + key)
+                  out[key] = value
+              return out
+
+          def invalid_constant(value):
+              raise ValueError("nonfinite JSON value: " + value)
+
+          file = Path("Optimization-Program/WRITER-SCOPES.json")
+          doc = json.loads(file.read_text(encoding="utf-8"),
+                           object_pairs_hook=unique, parse_constant=invalid_constant)
+          assert doc.get("schema") == "gcpk-remote-git-writer-scopes@1"
+          assert doc.get("status") == "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL"
+          assert doc.get("scopes") == [], "OP-01 nonactive writer scope changed"
+          assert Path("Optimization-Program/STATE.json").is_file()
+          print("PASS_NONACTIVE_OP01_DENY_ALL_STRUCTURAL_ONLY")
+          print("This job authenticates NO issuer, reviewer, CURRENT promotion or Stage4-7 release.")
+          PY

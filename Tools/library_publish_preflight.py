@@ -258,3 +258,61 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def screen_library_name_size_candidates(entries, *, complete=False):
+    """Read-only Library metadata screen. Name/size is NEVER byte equality.
+
+    Uses folder-local groups, keeping differently sized or differently scoped
+    files out of the equal-size candidate set. This is not an erase decision.
+    The result is provisional even when all supplied pages were enumerated.
+    """
+    groups = {}
+    for item in entries:
+        if not isinstance(item, dict):
+            raise ValueError("invalid Library metadata item")
+        path = item.get("path")
+        size = item.get("size_bytes")
+        identity = item.get("library_file_id")
+        if not isinstance(path, str) or not path.startswith("/") or not identity:
+            continue
+        if not isinstance(size, int) or size < 0:
+            continue
+        parent = str(PurePosixPath(path).parent).casefold()
+        name = PurePosixPath(path).name
+        # Remove user-upload numeric collision labels only before extension.
+        while True:
+            new = re.sub(r"\(\d+\)(?=\.[^.]+$)", "", name)
+            if new == name:
+                break
+            name = new
+        key = parent + "/" + name.casefold()
+        groups.setdefault(key, []).append({"library_file_id": identity,
+                                          "path": path, "size_bytes": size})
+    output = []
+    for key, values in groups.items():
+        if len(values) < 2:
+            continue
+        sizes = {x["size_bytes"] for x in values}
+        same_size = len(sizes) == 1
+        output.append({
+            "normalized_path": key,
+            "member_ids": sorted(x["library_file_id"] for x in values),
+            "copies": len(values),
+            "evidence": "SAME_BASENAME_AND_SIZE_ONLY" if same_size else "DIFFERENT_SIZES",
+            "potential_bytes_if_verified": (len(values) - 1) * values[0]["size_bytes"]
+                                           if same_size else 0,
+            "decision": "HOLD_HASH_AND_DEPENDENCY_CHECK" if same_size
+                        else "NOT_BYTE_IDENTICAL",
+        })
+    output.sort(key=lambda x: (-x["potential_bytes_if_verified"], x["normalized_path"]))
+    return {
+        "scope_complete": bool(complete),
+        "group_count": len(output),
+        "same_size_groups": sum(x["evidence"] == "SAME_BASENAME_AND_SIZE_ONLY"
+                                for x in output),
+        "upper_bound_bytes_if_verified": sum(x["potential_bytes_if_verified"] for x in output),
+        "verified_reclaimable_bytes": 0,
+        "authorized_cleanup": False,
+        "groups": output,
+    }

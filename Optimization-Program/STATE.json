@@ -4,7 +4,7 @@
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
   "last_verified_update_date": "2026-10-29",
-  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_EXACT_GIT_SCOPE_DENY_ALL_CI_PASS__OP02_HF2_READONLY",
+  "state": "ACTIVE_OPTIMIZATION_MISSION__OP01_VERIFIED_IMMUTABLE_SNAPSHOT_CI_PASS__OP02_HF2_READONLY",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
   "library_navigation_path": "/German-Flashcards-Optimization/START-HERE.md",
@@ -31,9 +31,9 @@
     {
       "id": "OP-01",
       "title": "Policy consolidation and precedence",
-      "status": "ACTIVE__REMOTE_GIT_EXACT_SCOPE_DENY_ALL_GUARD_CI_PASS__REAL_APPROVED_PRODUCTION_WRITER_AND_LIBRARY_PENDING",
-      "last_evidence": "2026-10-29 OP-01 code defect repaired: previous Git CAS writer accepted any syntactically mutable Workspaces path if the local proof and remote preimage matched. New Optimization-Program/WRITER-SCOPES.json deny-all by default; Verification/persist_verified_git_edit.py requires exact authenticated remote Git scope grant bound to path, branch, workstream, artifact, parent blob SHA, current SHA256, source SHA256 and local proof SHA256 before any target read/write. Existing CAS+independent post-PUT GET maintained. 19 synthetic fake-provider tests per OS PASS on Ubuntu+Windows, CI run 40862347955; content ZIP guard CI 40862320501 PASS. No live learner content or Library items edited; registry scopes empty; no approval to activate.",
-      "next_action": "Continue OP-01 with a separately explicitly authorized real mutable workstream writer only when exact latest portable CURRENT/source, independent user permission and single-writer are resolved; do NOT turn on scopes automatically from a generic optimization continue. A Git scope is not cryptographic human approval and cross-file revoke-vs-PUT is not atomic. Independently prove authenticated real-provider write/readback before global APPLIED. OP-02 remains process compatibility only unless migration approved. Stage4/5/6/7 unaffected.",
+      "status": "ACTIVE__REMOTE_EXACT_SCOPE_DENY_ALL__IMMUTABLE_LOCAL_SNAPSHOT_CI_PASS__REAL_PRODUCTION_WRITER_AND_LIBRARY_PENDING",
+      "last_evidence": "2026-10-29 local time-of-check/time-of-use defect fixed in Verification/persist_verified_git_edit.py: previous verify_local(proof_file) then second mutable reads could use unverified current/proof bytes during Git CAS PUT. New capture_verified_local_snapshot copies exact proof and 7 referenced evidence inputs into an isolated temporary verification directory, runs existing validator on those bytes, retains validated parent/current/proof in memory, checks originals for changes after validation and before PUT. Upload always uses verified in-memory current. Four new synthetic attack/positive tests include local current mutation during verification, current mutation after authenticated preimage GET, proof mutation during validation and exact transmitted bytes. 23/23 synthetic Git transport tests per OS + 49/49 applied-byte-proof tests per OS PASS Ubuntu/Windows CI 40863027763; Stage3/4 compatibility suite separately unchanged. No content/LOCKED, Library or runtime edit.",
+      "next_action": "Continue OP-01 with a clearly authorized workstream writer and exact portable currentness binding only after user-approved scope; Library remote readback remains separate and DENY_ALL scopes remain zero. Independently verify actual Git provider write and exact binary portability at real adoption. OP-02 independent Stage4 and Stage5/6/7 remain unchanged; no HF2 promotion without exact consumer parity and user approval.",
       "blocker": null
     },
     {
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-01_OP-02",
-  "next_exact_action": "Continue within optimization OP-01/OP-02: improve source/currentness-to-writer binding without learner edits, or non-breaking Stage1-7 compatibility evidence. Remote scope currently DENY_ALL; activation requires explicit scoped user approval and production CURRENT/Stage gates. No content LATEST mutation, no UI changes, no HF2 migration.",
+  "next_exact_action": "OP-01: next non-destructive source/currentness and proof authority-binding test or approved writer integration; remote registry DENY_ALL and no learner edits from bare continue. OP-02: enrich Stage1-7 compatibility and HF2 evidence non-destructively; no architecture migration without explicit approval.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -113,12 +113,12 @@
     "legacy_direct_zip_writer_exceptions": 15
   },
   "last_milestone": {
-    "id": "OP01-REMOTE-EXACT-WRITER-SCOPE-2026-10-29",
-    "scope": "Fail-closed external authenticated Git allowlist pinned to exact proof/parent/target/source before remote CAS PUT; CI contains positive synthetic scoped path plus missing/wrong/revoked/duplicate grants and existing CAS/readback negatives",
-    "result": "PASS_SCOPED_SYNTHETIC_TWO_PLATFORM_CI__NO_LIVE_CONTENT_WRITE",
-    "tests": "19 Python unittest cases per OS; Stage3–Stage4 CI https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40862347955 Ubuntu/Windows PASS; Content ZIP CI https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40862320501 PASS",
-    "no_change": "No learner content/source/LOCKED, content LATEST, CURRENT app, UI or Library mutation",
-    "not_claimed": "Git config grant cannot prove human consent; no provider-level production edit, no Library CAS, no global policy coverage, no Stage4-7 acceptance, no OP-02 migration"
+    "id": "OP01-IMMUTABLE-VERIFIED-SNAPSHOT-TOCTOU-2026-10-29",
+    "scope": "Eliminate local proof/CURRENT TOCTOU in opt-in Git CAS writer by validating immutable captured evidence and only PUT exact verified snapshot bytes; add mutation-race regressions.",
+    "result": "PASS_SCOPED_SYNTHETIC_UBUNTU_WINDOWS__NOT_REAL_CONTENT_WRITE",
+    "tests": "23 Git writer tests +49 applied-byte tests per platform in CI https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40863027763; Stage3/4 proposed compatibility 38 tests separate, PASS both OS",
+    "no_change": "No original source, learner content, LOCKED, workstream LATEST, CURRENT Flashcards runtime, UI or Library files touched.",
+    "not_claimed": "No real provider content write, Library CAS or binary remote readback; no atomic Git allowlist revocation; no human approval implied; no independent linguistic Stage4 or Stage5-7 global PASS."
   },
   "packaging_audit": {
     "milestone": "OP03-2",
@@ -905,5 +905,36 @@
       "Stage5/6/7 and HF2 rendering remain separately gated."
     ],
     "next": "Only authorized named workstream and exact currentness may adopt a scoped live writer; continue OP-02 process tests separately."
+  },
+  "op01_immutable_snapshot_20261029": {
+    "status": "PASS_SCOPED_SYNTHETIC_SNAPSHOT_TOCTOU_GUARD",
+    "discovered_defect": "Validation ran on mutable files; parent/CURRENT and proof read again for PUT after validation, allowing local race to substitute unreviewed bytes.",
+    "writer": "Verification/persist_verified_git_edit.py",
+    "tests": "Verification/test_persist_verified_git_edit.py",
+    "test_count_writer_per_os": 23,
+    "test_count_applied_bytes_per_os": 49,
+    "ci": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/40863027763",
+    "exact_current_authority": "Proof identity and local hashes verified inside snapshot only; newer portable workstream LATEST and source/actual provider persistence separately required for production.",
+    "enforcement": [
+      "single snapshot proof+source+parent+current+readback+qa+pointer verification",
+      "reject input symlinks/traversal and unsafe aliases",
+      "reject local source or proof race after verification and immediately prior PUT",
+      "submit exact frozen verified CURRENT payload",
+      "retain Git remote preimage expected-SHA CAS and post-write authenticated GET",
+      "remote writer scopes still DENY_ALL and no grants"
+    ],
+    "synthetic_negative_attacks": [
+      "modify local current during validation",
+      "modify local current after remote parent GET before CAS PUT",
+      "modify local proof during validation"
+    ],
+    "limits": [
+      "Synthetic mock transport tests, no learner data mutations",
+      "Git registry revocation not atomic with target PUT",
+      "Not cryptographic independent user approval",
+      "No Library provider CAS/readback",
+      "No Stage4 linguistic or Stage5-7 global acceptance"
+    ],
+    "next": "Resolve exact production currentness/approval if a named content workstream is independently authorized; otherwise continue OP-02 nonbreaking process compatibility."
   }
 }

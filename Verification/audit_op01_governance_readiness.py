@@ -154,6 +154,98 @@ def evaluate(repo, branch, rulesets, details, *, live=False):
     return result
 
 
+
+def assess_check_origin_snapshot(checks_payload, *, pr_head_sha: str,
+                                 expected_name: str, expected_app_id: int,
+                                 changed_paths) -> dict:
+    """Inspect *untrusted* check-run metadata; NEVER certify an issuer.
+
+    Real PR #33 demonstrated that replacing the workflow definition in the
+    PR head could emit the same green job name from GitHub Actions app 15368.
+    Even an exact check name, GitHub App integration ID, and head SHA do not
+    establish protected/base-defined check implementation.
+    """
+    blocks = []
+    findings = []
+    result = {
+        "schema": "gcpk-op01-pr-check-origin-snapshot@1",
+        "status": "BLOCKED_CHECK_ORIGIN_NOT_AUTHENTICATED",
+        "source": "CALLER_SUPPLIED_CHECK_RUN_SNAPSHOT_NOT_AUTHENTICATED",
+        "blockers": blocks,
+        "findings": findings,
+        "matching_check_count": 0,
+        "matching_check_success_observed": False,
+        "expected_app_id_matched": False,
+        "pr_head_workflow_mutation_observed": False,
+        "check_definition_protected_base_verified": False,
+        "trusted_check_origin_verified": False,
+        "independent_issuer_authenticated": False,
+        "writer_granted": False,
+        "stage4_semantic_pass": False,
+        "release_final": False,
+        "performed_writes": False,
+    }
+    if (not isinstance(pr_head_sha, str) or not HEX40.fullmatch(pr_head_sha)
+            or not isinstance(expected_name, str) or not expected_name.strip()
+            or type(expected_app_id) is not int or expected_app_id <= 0):
+        blocks.append("INVALID_CHECK_IDENTITY_ARGUMENTS")
+    if (not isinstance(changed_paths, list)
+            or not all(isinstance(x, str) and x and len(x) < 1025
+                       for x in changed_paths)
+            or len(changed_paths) != len(set(changed_paths))):
+        blocks.append("PR_CHANGED_FILE_INVENTORY_UNVERIFIED")
+    else:
+        if any(p.startswith(".github/workflows/") for p in changed_paths):
+            result["pr_head_workflow_mutation_observed"] = True
+            blocks.append("PR_HEAD_MODIFIED_WORKFLOW_DEFINITION")
+    if (not isinstance(checks_payload, dict)
+            or type(checks_payload.get("total_count")) is not int
+            or not isinstance(checks_payload.get("check_runs"), list)):
+        blocks.append("CHECK_RUN_RESPONSE_INVALID")
+    else:
+        checks = checks_payload["check_runs"]
+        if (checks_payload["total_count"] != len(checks) or len(checks) > 100):
+            blocks.append("CHECK_RUN_PAGINATION_UNVERIFIED")
+        matches = [x for x in checks if isinstance(x, dict)
+                   and x.get("name") == expected_name]
+        result["matching_check_count"] = len(matches)
+        if len(matches) != 1:
+            blocks.append("REQUIRED_CHECK_MISSING_OR_DUPLICATED")
+        else:
+            check = matches[0]
+            app = check.get("app")
+            if check.get("head_sha") != pr_head_sha:
+                blocks.append("CHECK_RUN_WRONG_PR_HEAD_SHA")
+            if (check.get("status") != "completed"
+                    or check.get("conclusion") != "success"):
+                blocks.append("CHECK_RUN_NOT_COMPLETED_SUCCESSFULLY")
+            elif check.get("head_sha") == pr_head_sha:
+                result["matching_check_success_observed"] = True
+            if not isinstance(app, dict) or type(app.get("id")) is not int:
+                blocks.append("CHECK_SOURCE_APP_UNVERIFIABLE")
+            else:
+                result["expected_app_id_matched"] = (
+                    app["id"] == expected_app_id)
+                if not result["expected_app_id_matched"]:
+                    blocks.append("CHECK_SOURCE_APP_ID_DRIFT")
+                if app.get("slug") == "github-actions":
+                    findings.append(
+                        "GITHUB_ACTIONS_INTEGRATION_ID_CANNOT_PROVE_BASE_DEFINED_CHECK")
+                    # PR #33 proved this specific weakness in the real repo.
+                    if app.get("id") == 15368:
+                        findings.append(
+                            "REAL_PR33_SAME_GITHUB_ACTIONS_APP_EMITTED_BYPASSED_GREEN_JOB")
+                elif not isinstance(app.get("slug"), str):
+                    blocks.append("CHECK_SOURCE_APP_SLUG_UNVERIFIABLE")
+    if result["matching_check_success_observed"]:
+        findings.append("GREEN_CHECK_ONLY_NOT_ISSUER_OR_POLICY_CERTIFICATION")
+    # No reachable PASS/authority state: the snapshot itself comes from an
+    # untrusted PR/API view and cannot prove independent check definition.
+    result["blockers"] = sorted(set(blocks))
+    result["findings"] = sorted(set(findings))
+    return result
+
+
 def fetch_live():
     def get(path):
         req = urllib.request.Request(API + path, headers={

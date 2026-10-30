@@ -1,0 +1,32 @@
+name: OP02 Byte Provenance CAS Shadow (nonactive)
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_byte_anchor_cas.py'
+      - 'Verification/test_op02_byte_anchor_cas.py'
+      - 'Optimization-Program/Verification/OP02-REAL-PDF-BYTE-PROVENANCE-AND-CAS-20261030.md'
+      - '.github/workflows/op02-byte-provenance-cas-nonactive.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_byte_anchor_cas.py'
+      - 'Verification/test_op02_byte_anchor_cas.py'
+      - 'Optimization-Program/Verification/OP02-REAL-PDF-BYTE-PROVENANCE-AND-CAS-20261030.md'
+      - '.github/workflows/op02-byte-provenance-cas-nonactive.yml'
+permissions:
+  contents: read
+jobs:
+  no-release-byte-regression:
+    name: OP02-EXACT-BYTE-CAS-NONREQUIRED-NOT-ISSUER
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run read-only byte/CAS/issuer-spoof regressions
+        run: python -B -m unittest discover -s Verification -p test_op02_byte_anchor_cas.py -v

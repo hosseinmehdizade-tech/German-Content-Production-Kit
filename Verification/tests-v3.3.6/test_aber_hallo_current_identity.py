@@ -96,10 +96,46 @@ def current_direct_duden():
             receipt_bytes, (ROOT / SOURCES).read_bytes(), path]
 
 
+def real_current():
+    """Read current tracked LATEST+receipt. Changes independently with the producer."""
+    raw = (ROOT / LATEST).read_bytes()
+    path = json.loads(raw)["latest_receipt_path"]
+    return [raw, (ROOT / path).read_bytes(), (ROOT / SOURCES).read_bytes(), path]
+
+
 def current_live():
-    live = (ROOT / LATEST).read_bytes()
-    path = json.loads(live)["latest_receipt_path"]
-    return [live, (ROOT / path).read_bytes(), (ROOT / SOURCES).read_bytes(), path]
+    """Historical WIP57-only fixture; NEVER resolve it as production CURRENT."""
+    live = json.loads((ROOT / LATEST).read_bytes())
+    prior = live["previous_wip58_source_current"]
+    port = prior["portable"]
+    receipt_path = prior["receipt"]
+    receipt = json.loads((ROOT / receipt_path).read_bytes())
+    simulated = {
+        "schema": "gcpk-workstream-latest@1.0.0",
+        "workstream": "aber-hallo-listen-tabellen",
+        "status": "HISTORICAL_WIP57_SIMULATED_ONLY_STAGE4_OPEN",
+        "latest_milestone": prior["latest_milestone"],
+        "latest_receipt_path": receipt_path,
+        "latest_receipt_commit_sha": "a"*40,
+        "authority": {"current_portable": port},
+        "complete_working_content_package": {
+            "name": port["filename"], "sha256": port["sha256"],
+            "bytes": port["size_bytes"], "member_count": receipt["zip_members"],
+            "library_file_id": port["library_file_id"], "library_path": port["library_path"],
+            "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+            "parent_sha256": receipt["parent_sha256"],
+        },
+        "previous_wip57_source_current": live["previous_wip57_source_current"],
+        "progress": {
+            "rektion_independent_external_attested_cumulative": receipt["cumulative_attested"],
+            "rektion_external_holds_remaining": receipt["hold_count"],
+            "pending_independent_expert_stage4": True,
+            "independent_expert_unreviewed_units": 788,
+        },
+    }
+    return [json.dumps(simulated, ensure_ascii=False).encode(),
+            (ROOT / receipt_path).read_bytes(),
+            (ROOT / SOURCES).read_bytes(), receipt_path]
 
 
 def original():
@@ -216,7 +252,7 @@ def test_wip50_receipt_cannot_be_replayed_as_current_wip52():
     current = json.loads(current_wip52()[0])
     files[0] = json.dumps(current, ensure_ascii=False).encode("utf-8")
     files[3] = current["latest_receipt_path"]
-    assert "HISTORICAL_WIP50_RECEIPT_CANNOT_CERTIFY_WIP52_CURRENT" in evaluate(files)["errors"]
+    assert "HISTORICAL_WIP50_RECEIPT_CANNOT_CERTIFY_NEWER_CURRENT" in evaluate(files)["errors"]
 
 
 @pytest.mark.parametrize("key", ["sha256", "filename", "library_file_id", "size_bytes"])
@@ -553,6 +589,136 @@ def test_flat_real_rektion_receipt_maintains_stage4_issuer_blocks():
     assert result["stage4_independent_semantic_review_completed"] is False
     assert result["real_current_issuer_authenticated"] is False
     assert result["source_pdf_or_portable_bytes_verified"] is False
+
+
+
+def latest_family_mutation(index, fn):
+    files = real_current()
+    obj = json.loads(files[index])
+    fn(obj)
+    files[index] = json.dumps(obj, ensure_ascii=False).encode()
+    return files
+
+
+def test_actual_latest_supported_family_metadata_still_no_release():
+    r = evaluate(real_current())
+    assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
+    assert r["evaluated_contract"] == "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+    for k in ("production_stage5_allowed", "stage4_independent_semantic_review_completed",
+              "real_current_issuer_authenticated", "source_pdf_or_portable_bytes_verified"):
+        assert r[k] is False
+
+
+def test_old_wip50_receipt_cannot_fake_current_wip60():
+    files = original()
+    current = real_current()
+    files[0] = current[0]
+    files[3] = json.loads(current[0])["latest_receipt_path"]
+    assert "HISTORICAL_WIP50_RECEIPT_CANNOT_CERTIFY_NEWER_CURRENT" in evaluate(files)["errors"]
+
+
+@pytest.mark.parametrize("field", ["zip","zip_sha256","library_file_id",
+                                  "canonical_sha256","import_sha256"])
+def test_family_latest_receipt_portable_drift_blocks(field):
+    f = latest_family_mutation(1, lambda d: d.update({field:"f"*64 if field.endswith("sha256") else "forged"}))
+    dest = {"zip":"filename","zip_sha256":"sha256"}.get(field,field)
+    assert "KNOWN_RECEIPT_CURRENT_ARTIFACT_DRIFT:"+dest in evaluate(f)["errors"]
+
+
+@pytest.mark.parametrize("field", ["sha256","bytes","parent_sha256"])
+def test_family_package_readback_or_parent_drift_blocks(field):
+    f = latest_family_mutation(0, lambda d: d["complete_working_content_package"].update(
+        {field: -1 if field=="bytes" else "f"*64}))
+    assert evaluate(f)["status"] == "BLOCKED"
+
+
+@pytest.mark.parametrize("field", ["remaining_holds","cumulative_attested",
+                                    "learning_units","lexical_cards"])
+def test_family_counts_fail_closed(field):
+    f = latest_family_mutation(1, lambda d: d.update({field: 12345}))
+    assert evaluate(f)["status"] == "BLOCKED"
+
+
+def test_family_parent_predecessor_lineage_drifts_blocks():
+    f = latest_family_mutation(0, lambda d: d["previous_wip60_source_current"]["portable"].update(
+        sha256="f"*64))
+    assert "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT" in evaluate(f)["errors"]
+
+
+def test_family_different_receipt_schema_cannot_autopromote():
+    f = latest_family_mutation(1, lambda d: d.update(
+        schema="gcpk-aber-hallo-wip61-unknown@1"))
+    assert "UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA" in evaluate(f)["errors"]
+
+
+def test_family_previous_historical_wip59_milestone_stale():
+    f = latest_family_mutation(0, lambda d: d.update(
+        latest_milestone="WIP59_STALE_HISTORICAL_SNAPSHOT"))
+    assert "KNOWN_RECEIPT_NOT_CURRENT_MILESTONE" in evaluate(f)["errors"]
+
+
+def test_family_stage4_issuer_must_stay_open():
+    f = latest_family_mutation(1, lambda d: d.update(global_stage4="PASS"))
+    assert "KNOWN_STAGE4_CLAIM_DRIFT" in evaluate(f)["errors"]
+
+
+def test_family_source_pdf_claim_must_remain_provenanced():
+    f = latest_family_mutation(1, lambda d: d.update(source_pdfs="REPLACED"))
+    assert "KNOWN_SOURCE_IMMUTABILITY_CLAIM_DRIFT" in evaluate(f)["errors"]
+
+
+def test_family_stages5_to7_must_not_run():
+    f = latest_family_mutation(1, lambda d: d.update(stage5_to_7="VERIFIED"))
+    assert "KNOWN_STAGE5_7_CLAIM_DRIFT" in evaluate(f)["errors"]
+
+
+def test_family_duplicate_json_receipt_invalid():
+    f = real_current()
+    f[1] = f[1].replace(b'"schema":', b'"schema":"fake","schema":',1)
+    assert "UNTRUSTED_JSON_OR_DUPLICATE_KEYS" in evaluate(f)["errors"]
+
+
+def test_family_untrusted_bad_source_manifest_fails():
+    f = latest_family_mutation(2, lambda d: d["source_set"][0].update(source_id=[]))
+    assert "SOURCE_MANIFEST_SET_INVALID" in evaluate(f)["errors"]
+
+
+def test_legacy_wip58_wip59_contracts_frozen_historical_not_current():
+    import re
+    from audit_aber_hallo_receipt_families import audit_family
+    live = json.loads(real_current()[0])
+    for version,oldkey in ((58,"previous_wip59_source_current"),
+                           (59,"previous_wip60_source_current")):
+        row = live[oldkey]
+        receipt_path = row.get("receipt") or row.get("latest_receipt_path")
+        r = json.loads((ROOT / receipt_path).read_bytes())
+        port = row["portable"]
+        parent = (r.get("parent_wip57_sha256") if version==58 else r["parent"]["sha256"])
+        simulated = {
+            "schema":"gcpk-workstream-latest@1.0.0",
+            "workstream":"aber-hallo-listen-tabellen",
+            "latest_milestone":row["latest_milestone"],
+            "latest_receipt_path":receipt_path,
+            "latest_receipt_commit_sha":"a"*40,
+            "authority":{"current_portable":port},
+            "complete_working_content_package":{
+                "name":port["filename"], "sha256":port["sha256"],
+                "bytes":port["size_bytes"], "library_file_id":port["library_file_id"],
+                "library_path":port["library_path"], "stage4":"OPEN",
+                "stage5_6_7":"NOT_RUN", "parent_sha256":parent,
+                "member_count": r["tests"]["zip_members"] if version==58 else r["qa"]["zip_members"],
+            },
+            f"previous_wip{version}_source_current":live[f"previous_wip{version}_source_current"],
+            "progress":{
+                "rektion_independent_external_attested_cumulative":708 if version==58 else 731,
+                "rektion_external_holds_remaining":273 if version==58 else 250,
+                "pending_independent_expert_stage4":True,
+                "independent_expert_unreviewed_units":788,
+            },
+        }
+        errors,contract=audit_family(simulated,r,json.loads(real_current()[2]),receipt_path)
+        assert errors == [], (version,errors)
+        assert "TRACKED_METADATA_ONLY" in contract
 
 
 def test_nested_json_duplicate_key_rejected():

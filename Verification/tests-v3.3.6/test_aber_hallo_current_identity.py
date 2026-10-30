@@ -592,21 +592,132 @@ def test_flat_real_rektion_receipt_maintains_stage4_issuer_blocks():
 
 
 
+def historical_wip60():
+    """Frozen synthetic WIP60 metadata from its actual tracked receipt.
+
+    Production CURRENT is WIP61; WIP60 remains a historical contract fixture.
+    Do not silently reinterpret the real WIP61 LATEST as a WIP60 success.
+    """
+    live = json.loads((ROOT / LATEST).read_bytes())
+    path = ("Workspaces/aber-hallo-listen-tabellen/"
+            "56-wip60-lexicon-evidence/WIP60-CHECKPOINT.json")
+    rb = (ROOT / path).read_bytes()
+    receipt = json.loads(rb)
+    filename = receipt["zip"]
+    size = 7757161  # frozen verified historical WIP60 library size, not CURRENT
+    libpath = "/German-Content-Production-Kit/Checkpoints/" + filename
+    current = {
+        "filename": filename, "sha256": receipt["zip_sha256"],
+        "size_bytes": size, "library_file_id": receipt["library_file_id"],
+        "library_path": libpath,
+        "canonical_sha256": receipt["canonical_sha256"],
+        "import_sha256": receipt["import_sha256"], "stage4": "OPEN",
+    }
+    simulated = {
+        "schema": "gcpk-workstream-latest@1.0.0",
+        "workstream": "aber-hallo-listen-tabellen",
+        "latest_milestone": "WIP60_HISTORICAL_SCHEMA_FIXTURE",
+        "latest_receipt_path": path,
+        "latest_receipt_commit_sha": "a"*40,
+        "authority": {"current_portable": current},
+        "complete_working_content_package": {
+            "name": filename, "sha256": receipt["zip_sha256"], "bytes": size,
+            "member_count": receipt["zip_members"],
+            "library_file_id": receipt["library_file_id"], "library_path": libpath,
+            "parent_sha256": receipt["parent_sha256"],
+            "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+        },
+        "previous_wip60_source_current": live["previous_wip60_source_current"],
+        "progress": {
+            "rektion_independent_external_attested_cumulative":
+                receipt["cumulative_attested"],
+            "rektion_external_holds_remaining": receipt["remaining_holds"],
+            "pending_independent_expert_stage4": True,
+            "independent_expert_unreviewed_units": 788,
+        },
+    }
+    return [json.dumps(simulated, ensure_ascii=False).encode(), rb,
+            (ROOT / SOURCES).read_bytes(), path]
+
+
+def coherent_wip61_synthetic():
+    """Prove a coherent *candidate* can pass metadata checks, not release."""
+    parts = real_current()
+    latest, receipt = json.loads(parts[0]), json.loads(parts[1])
+    current = latest["authority"]["current_portable"]
+    latest["previous_wip61_source_current"] = {
+        "portable": {"sha256": receipt["parent_sha256"]}}
+    latest["complete_working_content_package"] = {
+        "name": current["filename"], "sha256": current["sha256"],
+        "bytes": current["size_bytes"],
+        "library_file_id": current["library_file_id"],
+        "library_path": current["library_path"],
+        "member_count": receipt["zip_members"],
+        "parent_sha256": receipt["parent_sha256"],
+        "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+    }
+    parts[0] = json.dumps(latest, ensure_ascii=False).encode()
+    return parts
+
+
 def latest_family_mutation(index, fn):
-    files = real_current()
+    files = historical_wip60()
     obj = json.loads(files[index])
     fn(obj)
     files[index] = json.dumps(obj, ensure_ascii=False).encode()
     return files
 
 
-def test_actual_latest_supported_family_metadata_still_no_release():
-    r = evaluate(real_current())
+def test_historical_wip60_supported_family_metadata_still_no_release():
+    r = evaluate(historical_wip60())
     assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
     assert r["evaluated_contract"] == "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
     for k in ("production_stage5_allowed", "stage4_independent_semantic_review_completed",
               "real_current_issuer_authenticated", "source_pdf_or_portable_bytes_verified"):
         assert r[k] is False
+
+
+def test_real_wip61_current_stays_blocked_on_stale_package_and_parent():
+    r = evaluate(real_current())
+    assert r["status"] == "BLOCKED", r
+    assert r["evaluated_contract"] == "WIP61_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+    for code in ("KNOWN_CURRENT_PACKAGE_DRIFT:filename",
+                 "KNOWN_CURRENT_PACKAGE_DRIFT:sha256",
+                 "KNOWN_ZIP_MEMBER_COUNT_DRIFT",
+                 "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT"):
+        assert code in r["errors"], r
+    for key in ("production_stage5_allowed",
+                "stage4_independent_semantic_review_completed",
+                "real_current_issuer_authenticated",
+                "source_pdf_or_portable_bytes_verified"):
+        assert r[key] is False
+
+
+def test_wip61_coherent_synthetic_candidate_is_scoped_metadata_only():
+    r = evaluate(coherent_wip61_synthetic())
+    assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
+    assert r["evaluated_contract"] == "WIP61_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+    assert not r["production_stage5_allowed"]
+    assert not r["real_current_issuer_authenticated"]
+    assert not r["stage4_independent_semantic_review_completed"]
+
+
+@pytest.mark.parametrize("key", ["external_holds", "cumulative_attested",
+                                   "units", "lexical_cards"])
+def test_wip61_synthetic_receipt_counter_tamper_blocks(key):
+    f = coherent_wip61_synthetic()
+    receipt = json.loads(f[1])
+    receipt[key] = 999
+    f[1] = json.dumps(receipt).encode()
+    assert evaluate(f)["status"] == "BLOCKED"
+
+
+def test_wip61_synthetic_parent_lineage_tamper_blocks():
+    f = coherent_wip61_synthetic()
+    latest = json.loads(f[0])
+    latest["previous_wip61_source_current"]["portable"]["sha256"] = "f"*64
+    f[0] = json.dumps(latest).encode()
+    assert "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT" in evaluate(f)["errors"]
 
 
 def test_old_wip50_receipt_cannot_fake_current_wip60():

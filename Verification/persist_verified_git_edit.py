@@ -49,7 +49,14 @@ def verify_target(path: str, branch: str) -> None:
         raise PersistenceBlocked("UNAUTHORIZED_TARGET: only named Workspaces text file on main")
     forbidden = {"00-source", "source", "sources", "locked", "archive", "archives",
                  "recovery", "protected-history", "final"}
-    if (any(s.lower() in forbidden or "locked" in s.lower() for s in segments[1:])
+    # A protected component can be version-numbered, or use hyphens,
+    # underscores or dots. Do not mistake "02-Source" or
+    # "03-source-pdfs" for an editable working directory.
+    def protected_component(segment: str) -> bool:
+        parts = re.split(r"[-_.]+", segment.lower())
+        return any(part in forbidden or part == "original" for part in parts)
+
+    if (any(protected_component(s) for s in segments[1:])
             or segments[-1].lower() in {"latest.json", "checkpoint.json", "source-manifest.json"}
             or segments[-1].lower().startswith(("source-", "original-"))):
         raise PersistenceBlocked("IMMUTABLE_OR_AUTHORITY_PATH: refusing protected/source/checkpoint target")
@@ -248,6 +255,13 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
     # Reject a concurrent local editor before remote mutation. The actual
     # uploaded payload is ALWAYS from the previously validated snapshot.
     assert_local_snapshot_unchanged(proof_file, proof_bytes, original_paths, inputs)
+    # The registry may have been replaced/revoked after our first GET. Fail
+    # closed before uploading if even one registry byte changed during local
+    # verification or target read. This is NOT an atomic cross-file lock:
+    # Git branch protection/trusted issuer controls are still required.
+    _, scope_blob_before_put = decode_github_file(api("GET", SCOPE_PATH, branch, token))
+    if scope_blob_before_put != registry_sha:
+        raise PersistenceBlocked("REMOTE_SCOPE_CHANGED_PRE_PUT: approval altered or revoked")
     new_sha = git_blob_sha(current)
     message = "apply(OP-01): verified mutable working bytes " + proof["workstream"]
     written = api("PUT", path, branch, token, {
@@ -271,6 +285,8 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
         "scope_registry_path": SCOPE_PATH, "scope_registry_blob_sha": registry_sha,
         "scope_authorization_ref": approval_ref,
         "scope_is_independent_user_approval_proof": False,
+        "scope_rechecked_identical_pre_put": True,
+        "scope_recheck_is_atomic_with_target_put": False,
         "parent_sha256": digest(before), "current_sha256": digest(current),
         "remote_readback_sha256": digest(remote_data),
         "commit_sha": written["commit"]["sha"],

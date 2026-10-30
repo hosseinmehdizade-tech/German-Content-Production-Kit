@@ -9,12 +9,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 import audit_op01_pr_rest_adapter as adapter
-from test_op01_pr_staging_simulation import StagedPRTransportSimulation
+import test_op01_pr_staging_simulation as legacy
 
 
 class GitHubRESTStagedPRShape(unittest.TestCase):
     def setUp(self):
-        source = StagedPRTransportSimulation()
+        source = legacy.StagedPRTransportSimulation()
         source.setUp()
         self.model = source
         self.plan = copy.deepcopy(source.plan)

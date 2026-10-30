@@ -687,6 +687,113 @@ def coherent_wip61_synthetic():
     return [json.dumps(latest, ensure_ascii=False).encode(), rb,
             (ROOT / SOURCES).read_bytes(), path]
 
+def coherent_wip62_synthetic():
+    """Frozen tracked WIP62 receipt, synthetic coherent LATEST (never release)."""
+    path = ("Workspaces/aber-hallo-listen-tabellen/"
+            "58-wip62-exact-lexicon/WIP62-CHECKPOINT.json")
+    rb = (ROOT / path).read_bytes()
+    rec = json.loads(rb)
+    current = {
+        "filename": rec["zip"], "sha256": rec["zip_sha256"],
+        "size_bytes": rec["size_bytes"],
+        "library_file_id": rec["library_file_id"],
+        "library_path": rec["library_path"],
+        "canonical_sha256": rec["canonical_sha256"],
+        "import_sha256": rec["import_sha256"], "stage4": "OPEN",
+    }
+    latest = {
+        "schema": "gcpk-workstream-latest@1.0.0",
+        "workstream": "aber-hallo-listen-tabellen",
+        "latest_milestone": "WIP62_HISTORICAL_COHERENT_SYNTHETIC_ONLY",
+        "latest_receipt_path": path,
+        "latest_receipt_commit_sha": "a"*40,
+        "authority": {"current_portable": current},
+        "complete_working_content_package": {
+            "name": rec["zip"], "sha256": rec["zip_sha256"],
+            "bytes": rec["size_bytes"], "member_count": rec["zip_members"],
+            "library_file_id": rec["library_file_id"],
+            "library_path": rec["library_path"],
+            "parent_sha256": rec["parent_sha256"],
+            "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+        },
+        "previous_wip62_source_current": {
+            "portable": {"sha256": rec["parent_sha256"]}},
+        "progress": {
+            "rektion_independent_external_attested_cumulative":
+                rec["cumulative_attested"],
+            "rektion_external_holds_remaining": rec["remaining_holds"],
+            "pending_independent_expert_stage4": True,
+            "independent_expert_unreviewed_units": 788,
+        },
+    }
+    return [json.dumps(latest, ensure_ascii=False).encode(), rb,
+            (ROOT / SOURCES).read_bytes(), path]
+
+
+def mutate_wip62(index, fn):
+    f = coherent_wip62_synthetic()
+    v = json.loads(f[index])
+    fn(v)
+    f[index] = json.dumps(v, ensure_ascii=False).encode()
+    return f
+
+
+def test_wip62_known_schema_synthetic_metadata_success_still_no_release():
+    r = evaluate(coherent_wip62_synthetic())
+    assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
+    assert r["evaluated_contract"] == "WIP62_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+    for k in ("production_stage5_allowed", "real_current_issuer_authenticated",
+              "stage4_independent_semantic_review_completed",
+              "source_pdf_or_portable_bytes_verified"):
+        assert r[k] is False
+
+
+@pytest.mark.parametrize("field", ["size_bytes", "library_path", "zip_sha256",
+                                   "canonical_sha256", "import_sha256"])
+def test_wip62_full_receipt_artifact_role_tamper_rejected(field):
+    f = mutate_wip62(1, lambda d: d.update({field: 0 if field=="size_bytes" else
+                                            "/forged" if field=="library_path"
+                                            else "f"*64}))
+    name = {"zip_sha256": "sha256"}.get(field,field)
+    assert "KNOWN_RECEIPT_CURRENT_ARTIFACT_DRIFT:"+name in evaluate(f)["errors"]
+
+
+@pytest.mark.parametrize("field", ["source_sha256", "governed_patterns",
+                                   "parity", "workstream", "source_pdfs"])
+def test_wip62_receipt_source_and_parity_tamper_rejected(field):
+    replacement = (["f"*64, "f"*64] if field=="source_sha256" else
+                   999 if field=="governed_patterns" else "FORGED")
+    f = mutate_wip62(1, lambda d: d.update({field: replacement}))
+    assert evaluate(f)["status"] == "BLOCKED"
+
+
+def test_wip62_source_sha_order_swap_is_detected():
+    f = mutate_wip62(1, lambda d: d["source_sha256"].reverse())
+    assert "KNOWN_RECEIPT_SOURCE_SHA_SEQUENCE_DRIFT" in evaluate(f)["errors"]
+
+
+@pytest.mark.parametrize("mutation", [
+    lambda d: d.update(changed_cards=8),
+    lambda d: d.update(changed_card_ids=d["changed_card_ids"][:-1]),
+    lambda d: d["changed_card_ids"].__setitem__(0,d["changed_card_ids"][1]),
+    lambda d: d["changed_card_ids"].__setitem__(0,"wrong-id"),
+])
+def test_wip62_changed_id_ledger_integrity(mutation):
+    f = mutate_wip62(1, mutation)
+    assert "KNOWN_CHANGED_CARD_IDS_INVALID" in evaluate(f)["errors"]
+
+
+def test_wip62_parent_role_mismatch_cannot_pass():
+    f = mutate_wip62(0, lambda d: d["complete_working_content_package"].update(
+        parent_sha256="f"*64))
+    assert "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT" in evaluate(f)["errors"]
+
+
+def test_wip62_receipt_future_schema_must_fail_closed():
+    f = mutate_wip62(1, lambda d: d.update(schema="gcpk-aber-hallo-wip63-unknown@1"))
+    assert "UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA" in evaluate(f)["errors"]
+
+
 def latest_family_mutation(index, fn):
     files = historical_wip60()
     obj = json.loads(files[index])
@@ -716,7 +823,10 @@ def test_real_current_never_grants_release_and_wip61_stale_roles_block():
                      "KNOWN_ZIP_MEMBER_COUNT_DRIFT",
                      "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT"):
             assert code in r["errors"], r
-    # A future CURRENT must be independently audited, not forced back to WIP61.
+    if label.startswith("WIP62_"):
+        assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
+        assert r["evaluated_contract"] == "WIP62_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+    # A future CURRENT must be independently audited, not forced back to WIP61/62.
     for key in ("production_stage5_allowed",
                 "stage4_independent_semantic_review_completed",
                 "real_current_issuer_authenticated",

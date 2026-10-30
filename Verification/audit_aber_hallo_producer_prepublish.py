@@ -5,7 +5,6 @@ import re
 from pathlib import Path
 from audit_aber_hallo_receipt_families import SCHEMAS
 
-HEX64=re.compile(r"[0-9a-f]{64}\\Z")
 WIP=re.compile(r"^WIP([0-9]{2,4})_")
 KNOWN={**{k:v["version"] for k,v in SCHEMAS.items()},
        "gcpk-aber-hallo-rektion-checkpoint@1.0.0":57,
@@ -57,6 +56,8 @@ def assess(latest,receipt,sources,receipt_path):
     ptr=latest.get("latest_receipt_path")
     if not isinstance(ptr,str) or ptr!=receipt_path or not ptr.startswith(BASE) or ".." in ptr.split("/") or version is None or f"WIP{version}" not in ptr:
         e.append("CURRENT_RECEIPT_PATH_DRIFT")
+    if receipt.get("status") not in ("PASS_SCOPED_STAGE4_OPEN",):
+        e.append("RECEIPT_NOT_SCOPED_PASS")
     schema=receipt.get("schema")
     if schema not in KNOWN:e.append("UNREGISTERED_RECEIPT_SCHEMA")
     elif KNOWN[schema]!=version:e.append("RECEIPT_SCHEMA_VERSION_DRIFT")
@@ -105,6 +106,12 @@ def assess(latest,receipt,sources,receipt_path):
                             ("external_holds",holds)):
             if key in receipt and receipt[key]!=correct:
                 e.append("RECEIPT_REKTION_COUNT_DRIFT:"+key)
+    for key in ("learning_units","units"):
+        if key in receipt and (type(receipt[key]) is not int or receipt[key]!=788):
+            e.append("LEARNING_UNIT_COUNT_INVALID")
+    for key in ("lexical_cards","import_cards"):
+        if key in receipt and (type(receipt[key]) is not int or receipt[key]!=787):
+            e.append("LEXICAL_CARD_COUNT_INVALID")
     for key in ("full_stage4","global_stage4"):
         if key in receipt and receipt[key]!="OPEN":e.append("FALSE_STAGE4_CLAIM")
     if "stage5_to_7" in receipt and receipt["stage5_to_7"]!="NOT_RUN":

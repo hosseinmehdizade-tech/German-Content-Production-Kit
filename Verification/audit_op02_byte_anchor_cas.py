@@ -70,7 +70,7 @@ def source_bytes(specs, byte_map, independent_pins):
             errors.append("SOURCE_SPEC_INVALID")
             continue
         sid = spec["source_id"]
-        if (type(sid) is not str or not sid or spec["modality"] not in MODALITIES
+        if (type(sid) is not str or not sid or type(spec["modality"]) is not str or spec["modality"] not in MODALITIES
                 or not valid_sha(spec["sha256"])
                 or type(spec["size_bytes"]) is not int
                 or not 0 < spec["size_bytes"] <= MAX_BYTES):

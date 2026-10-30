@@ -11,6 +11,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from audit_aber_hallo_receipt_families import SCHEMAS as KNOWN_RECEIPT_SCHEMAS, audit_family
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSTREAM = "aber-hallo-listen-tabellen"
@@ -484,6 +485,13 @@ def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
         return _result(["UNTRUSTED_JSON_OR_DUPLICATE_KEYS"])
     if not all(isinstance(x, dict) for x in (latest, receipt, source)):
         return _result(["DOCUMENT_NOT_AN_OBJECT"])
+    if receipt.get("schema") in KNOWN_RECEIPT_SCHEMAS:
+        errors, contract = audit_family(latest, receipt, source, receipt_relative_path)
+        result = _result(errors)
+        result["evaluated_contract"] = contract
+        result["resolved_milestone"] = latest.get("latest_milestone")
+        result["old_receipts_do_not_certify_current"] = True
+        return result
     if receipt.get("schema") == "gcpk-aber-hallo-rektion-checkpoint@1.0.0":
         return _verify_rektion_checkpoint(latest, receipt, source, receipt_relative_path)
     if receipt.get("schema") == "gcpk-aber-hallo-direct-duden-scoped-checkpoint@1.0.0":
@@ -493,9 +501,9 @@ def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
     if receipt.get("schema") == "flashcards-work-outcome-receipt@1.0.0":
         # This historical shape cannot certify current WIP52 even if its
         # old field names/hashes are still present as archive metadata.
-        if (isinstance(latest.get("latest_milestone"), str) and
-                latest["latest_milestone"].startswith("WIP52_")):
-            return _result(["HISTORICAL_WIP50_RECEIPT_CANNOT_CERTIFY_WIP52_CURRENT"])
+        if (not isinstance(latest.get("latest_milestone"), str)
+                or not latest["latest_milestone"].startswith("WIP50_")):
+            return _result(["HISTORICAL_WIP50_RECEIPT_CANNOT_CERTIFY_NEWER_CURRENT"])
         result = verify_wip50_historical(latest_bytes, receipt_bytes, source_bytes,
                                          receipt_relative_path=receipt_relative_path)
         result["evaluated_contract"] = "WIP50_HISTORICAL_SCHEMA_ONLY"

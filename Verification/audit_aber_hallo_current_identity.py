@@ -53,8 +53,9 @@ def _artifact_check(left, right, label, errors):
         errors.append("ARTIFACT_SHA_INVALID:" + label)
 
 
-def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
-           *, receipt_relative_path: str):
+def verify_wip50_historical(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
+                            *, receipt_relative_path: str):
+    """HISTORICAL WIP50 contract, tested with frozen synthetic fixtures only."""
     errors = []
     try:
         latest, receipt, source = (_read(latest_bytes), _read(receipt_bytes), _read(source_bytes))
@@ -111,6 +112,138 @@ def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
                 errors.append("RECEIPT_ARTIFACT_SIZE_INVALID:"+k)
     return _result(errors)
 
+
+
+def _verify_wip52(latest, receipt, source, receipt_relative_path):
+    """Only WIP52 current tracked metadata parity, not portable-byte proof."""
+    errors = []
+    if latest.get("schema") != "gcpk-workstream-latest@1.0.0" or latest.get("workstream") != WORKSTREAM:
+        errors.append("LATEST_WRONG_SCHEMA_OR_WORKSTREAM")
+    if source.get("schema") != "gcpk-source-manifest@1.1.0" or source.get("dataset") != WORKSTREAM:
+        errors.append("SOURCE_MANIFEST_WRONG_IDENTITY")
+    if receipt.get("schema") != "gcpk-aber-hallo-wip52-milestone@1.0.0" or receipt.get("scope") != "ABER_HALLO_REKTION_CASE_SENSE_WIP52":
+        errors.append("WIP52_RECEIPT_IDENTITY_UNEXPECTED")
+    stored_path = latest.get("latest_receipt_path")
+    if (not isinstance(stored_path, str) or
+            not stored_path.startswith(BASE + "/") or
+            ".." in stored_path.split("/") or
+            not stored_path.endswith(".json") or
+            receipt_relative_path != stored_path):
+        errors.append("LATEST_RECEIPT_PATH_DRIFT")
+    commit = latest.get("latest_receipt_commit_sha")
+    if not isinstance(commit, str) or not COMMIT.fullmatch(commit):
+        errors.append("RECEIPT_COMMIT_POINTER_INVALID")
+    if (not isinstance(latest.get("latest_milestone"), str)
+            or not latest["latest_milestone"].startswith("WIP52_")
+            or "WIP52" not in latest.get("status", "")):
+        errors.append("WIP52_CURRENT_ROLE_OR_MILESTONE_DRIFT")
+    if receipt.get("status") != "PASS_SCOPED_ONLY_STAGE4_OPEN" or receipt.get("validation", {}).get("no_formal_stage4_claim") is not True:
+        errors.append("WIP52_SCOPED_NOT_STAGE4_BOUNDARY_MISSING")
+    current = latest.get("authority", {}).get("current_portable") if isinstance(latest.get("authority"), dict) else None
+    package = latest.get("complete_working_content_package")
+    portable = receipt.get("portable")
+    if not all(isinstance(v, dict) for v in (current, package, portable)):
+        errors.append("WIP52_CURRENT_PORTABLE_STRUCTURE_MISSING")
+    else:
+        if not _valid_sha(current.get("sha256")):
+            errors.append("WIP52_PORTABLE_SHA_INVALID")
+        for field, rhs in (("filename", "filename"), ("sha256", "sha256"),
+                           ("size_bytes", "size_bytes"), ("library_path", "library_path"),
+                           ("library_file_id", "library_file_id")):
+            if not current.get(field) or current.get(field) != portable.get(rhs):
+                errors.append("WIP52_PORTABLE_RECEIPT_DRIFT:" + field)
+        for left, right in (("filename", "name"), ("sha256", "sha256"),
+                            ("size_bytes", "bytes"), ("library_path", "library_path"),
+                            ("library_file_id", "library_file_id")):
+            if current.get(left) != package.get(right):
+                errors.append("WIP52_CURRENT_PACKAGE_DRIFT:" + left)
+        if current.get("stage4") != "OPEN" or package.get("stage4") != "OPEN" or package.get("stage5_6_7") != "NOT_RUN":
+            errors.append("WIP52_STAGE4_7_BOUNDARY_UNEXPECTED")
+        for field in ("canonical_sha256", "import_sha256"):
+            if not _valid_sha(current.get(field)):
+                errors.append("WIP52_INTERNAL_MASTER_HASH_UNVERIFIED:" + field)
+        if type(portable.get("size_bytes")) is not int or portable["size_bytes"] <= 0:
+            errors.append("WIP52_PORTABLE_SIZE_INVALID")
+    parent = receipt.get("parent")
+    if not isinstance(parent, dict) or parent.get("version") != "WIP51" or not _valid_sha(parent.get("sha256")):
+        errors.append("WIP52_PARENT_REFERENCE_INVALID")
+    elif not isinstance(package, dict) or parent["sha256"] != package.get("source_parent_wip51_sha256"):
+        errors.append("WIP52_PARENT_REFERENCE_DRIFT")
+    summary = latest.get("wip52_evidence_bounded_rektion")
+    counts = receipt.get("counts")
+    progress = latest.get("progress")
+    if not all(isinstance(v, dict) for v in (summary, counts, progress)):
+        errors.append("WIP52_COUNTS_OR_DISPOSITION_STRUCTURE_MISSING")
+    else:
+        for key_a, key_b in (("confirmed_new", "new_exact_duden_confirmed"),
+                             ("confirmed_cumulative", "cumulative_external_confirmed"),
+                             ("holds_total", "remaining_external_holds"),
+                             ("holds_legacy", "remaining_old_holds"),
+                             ("holds_outside_original_824", "remaining_outside_824"),
+                             ("changed_lexical_cards", "changed_cards"),
+                             ("source_queue", "all_original_pending_reviewed_in_ledger")):
+            if (type(summary.get(key_a)) is not int or type(counts.get(key_b)) is not int
+                    or summary[key_a] != counts[key_b]):
+                errors.append("WIP52_SCOPE_COUNTER_DRIFT:" + key_a)
+        if any(type(counts.get(k)) is not int for k in ("learning_units", "import_cards")) or counts.get("learning_units") != 788 or counts.get("import_cards") != 787:
+            errors.append("WIP52_UNIT_IDENTITY_COUNT_UNEXPECTED")
+        if (type(summary.get("confirmed_cumulative")) is not int or
+            type(summary.get("holds_total")) is not int or
+            summary["confirmed_cumulative"] + summary["holds_total"] != 984):
+            errors.append("WIP52_REKTION_TOTAL_ACCOUNTING_INVALID")
+        if (type(summary.get("holds_legacy")) is not int or
+            type(summary.get("holds_outside_original_824")) is not int or
+            type(summary.get("holds_total")) is not int or
+            summary["holds_legacy"] + summary["holds_outside_original_824"] != summary["holds_total"]):
+            errors.append("WIP52_HOLDS_DISPOSITION_ACCOUNTING_INVALID")
+        if summary.get("review_scoped_only") is not True or summary.get("source_pdf_immutable") is not True:
+            errors.append("WIP52_SOURCE_OR_REVIEW_LIMIT_UNEXPECTED")
+        if (not isinstance(current, dict) or
+                summary.get("portable_sha256") != current.get("sha256")):
+            errors.append("WIP52_SUMMARY_PORTABLE_SHA_DRIFT")
+        for summary_key, progress_key in (
+            ("confirmed_new", "wip52_new_exact_duden"),
+            ("confirmed_cumulative", "rektion_external_attested_total"),
+            ("holds_total", "rektion_evidence_holds")
+        ):
+            if summary.get(summary_key) != progress.get(progress_key):
+                errors.append("WIP52_PROGRESS_COUNTER_DRIFT:" + summary_key)
+        if progress.get("independent_expert_unreviewed_units") != 788 or progress.get("pending_independent_expert_stage4") is not True:
+            errors.append("WIP52_INDEPENDENT_STAGE4_NOT_PROVEN_OPEN")
+    sources = source.get("source_set")
+    if not isinstance(sources, list) or len(sources) != 2 or any(
+            not isinstance(x, dict) or not _valid_sha(x.get("sha256")) or x.get("source_type") != "pdf"
+            for x in sources):
+        errors.append("SOURCE_MANIFEST_SET_INVALID")
+    result = _result(errors)
+    result["evaluated_contract"] = "WIP52_CURRENT_TRACKED_METADATA_ONLY"
+    result["historical_wip50_not_current"] = True
+    return result
+
+
+def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
+           *, receipt_relative_path: str):
+    """Dispatch by the *receipt* contract; never silently coerce WIP52 to WIP50."""
+    try:
+        latest, receipt, source = (_read(latest_bytes), _read(receipt_bytes),
+                                   _read(source_bytes))
+    except (UnicodeError, TypeError, ValueError, RecursionError):
+        return _result(["UNTRUSTED_JSON_OR_DUPLICATE_KEYS"])
+    if not all(isinstance(x, dict) for x in (latest, receipt, source)):
+        return _result(["DOCUMENT_NOT_AN_OBJECT"])
+    if receipt.get("schema") == "gcpk-aber-hallo-wip52-milestone@1.0.0":
+        return _verify_wip52(latest, receipt, source, receipt_relative_path)
+    if receipt.get("schema") == "flashcards-work-outcome-receipt@1.0.0":
+        # This historical shape cannot certify current WIP52 even if its
+        # old field names/hashes are still present as archive metadata.
+        if (isinstance(latest.get("latest_milestone"), str) and
+                latest["latest_milestone"].startswith("WIP52_")):
+            return _result(["HISTORICAL_WIP50_RECEIPT_CANNOT_CERTIFY_WIP52_CURRENT"])
+        result = verify_wip50_historical(latest_bytes, receipt_bytes, source_bytes,
+                                         receipt_relative_path=receipt_relative_path)
+        result["evaluated_contract"] = "WIP50_HISTORICAL_SCHEMA_ONLY"
+        return result
+    return _result(["UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA"])
 
 def _result(errors):
     return {

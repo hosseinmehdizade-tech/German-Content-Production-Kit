@@ -2,7 +2,7 @@
   "schema": "gcpk-content-current-portable-authority-override@1",
   "updated_at": "2026-10-30",
   "workstream": "menschen-a1-final-consolidation-v336",
-  "latest_validated_milestone": "C46L_362_PREVIOUS_SEMANTIC_HOLDS_REVIEWED_18_SAFE_DERIVED_REMOVALS_4_SOURCE_HOLDS",
+  "latest_validated_milestone": "C46M_QA_ONLY_425_LEGACY_FLAGS_RECONCILED_210_MISSED_FLAGS_RESTORED",
   "current_authority": "EXACT_VERIFIED_C46K_TSV_PLUS_C46L_14_CARD_EDITABLE_DELTA",
   "parent_c45f_tsv_sha256": "27e0057fb1fb9e50e75c3389f71b0c0ccc3651f28ebd4b86528fa4084dc7ed64",
   "current_c45g_tsv_sha256": "16166274312045241b13d80147ade2eb3f2463b508bc2a760eb28b92a6c7a483",
@@ -125,7 +125,15 @@
     "C46L_changed_cards": 14,
     "C46L_structured_combo_items_active": 2216,
     "C46L_current_scanner_flags": 713,
-    "C46L_current_scanner_high": 13
+    "C46L_current_scanner_high": 13,
+    "C46M_previous_hold_flags_accounted": 425,
+    "C46M_previous_hold_flags_absent": 20,
+    "C46M_previous_hold_flags_with_linguistic_or_source_disposition_but_unfinished_didactic": 355,
+    "C46M_previous_hold_flags_with_explicit_source_or_display_hold": 19,
+    "C46M_previous_hold_flags_with_teaching_delta_prior": 31,
+    "C46M_recovered_due_to_legacy_text_de_schema": 210,
+    "C46M_current_full_scanner_flags": 922,
+    "C46M_scanner_false_en_dash_split_fixed": 1
   },
   "source_register_holds": [
     "ma1m-lu-1016",
@@ -148,7 +156,7 @@
   "stage6": "NOT_RUN",
   "stage7": "NOT_RUN",
   "import_allowed": false,
-  "next_action": "C46L closed previous 362 candidate queue as 132 editable plausible, 207 source-protected kept, 18 applied removals, 1 scanner false-split, 4 specific source/target holds. Current 713 didactic heuristic flags, including 13 HIGH, still require hash-bound independent gate; full 11988 trilingual Stage4 independent QA, then Stage5/6/7. NO IMPORT.",
+  "next_action": "C46M QA-only corrected scanner recovered 210 missed legacy text_de example-based flags, removed one false en dash split; full 922 raw flags need current-sha didactic adjudication. Old 425 mapped, but 355 source/lexical keeps not didactic certified, 19 source/sense/display holds. Exact editable content remains C46L SHA e071cf8c...; no Import, no Stage4 PASS.",
   "previous_C45G_authority": {
     "milestone": "C45G_A1_L13_FULL_210_CARDS_SCOPED_FIRSTPASS_ONE_REGISTER_HOLD",
     "sha256": "16166274312045241b13d80147ade2eb3f2463b508bc2a760eb28b92a6c7a483",
@@ -351,5 +359,12 @@
   "C46L_delta_zip_sha256": "e2402f10a3b86496d7517ed35b77e12b595b402c522aa595803232a1b2b10576",
   "C46L_delta_library_file_id": "libfile_57d89e74a7448191882f83298e299481",
   "C46L_delta_library_path": "/German-Content-Production-Kit/Current/menschen-a1-final-consolidation-v336/Menschen-A1-C46L-362-SEMANTIC-REVIEW-18-EDITABLE-REMOVALS-4-SOURCE-HOLDS-NO-IMPORT-20261030.zip",
-  "C46L_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
+  "C46L_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE",
+  "previous_C46L_semantic_milestone": "C46L_362_PREVIOUS_SEMANTIC_HOLDS_REVIEWED_18_SAFE_DERIVED_REMOVALS_4_SOURCE_HOLDS",
+  "current_content_authority": "C46L_EXACT_EDITABLE_UNMODIFIED_BY_C46M",
+  "C46M_qa_only": true,
+  "C46M_receipt": "Workspaces/menschen-a1-final-consolidation-v336/C46M-STAGE4-SCANNER-425-RECONCILIATION-QA-RECEIPT-2026-10-30.json",
+  "C46M_qa_zip_sha256": "06d0d325f84a80bced15a9a9da5e7c533299d4d8c3649f698f5784c2adc6c6f4",
+  "C46M_library_file_id": "libfile_89ece94c74688191a7ae764d06278a65",
+  "C46M_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
 }

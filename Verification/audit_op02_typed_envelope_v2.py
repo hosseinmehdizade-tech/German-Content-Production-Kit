@@ -6,6 +6,7 @@ The independently supplied observed anchor is *not authenticated* here.
 """
 from __future__ import annotations
 import re
+import json
 
 SCHEMA = "gcpk-op02-typed-envelope@2"
 TOP = {"schema", "workstream", "domain", "contract", "anchor",
@@ -29,7 +30,7 @@ DOMAINS = {
         ],
         "payload": {"wip", "zip_sha256", "parent_sha256", "size_bytes",
                     "zip_members", "attested", "holds", "governed_patterns",
-                    "units", "lexical_cards", "changed_card_ids"},
+                    "units", "lexical_cards", "changed_cards", "changed_card_ids"},
     },
     "menschen-b1-24-lessons-v336": {
         "domain": "vocabulary", "contract": "vocabulary-audio-source@1",
@@ -50,6 +51,20 @@ DOMAINS = {
         "payload": {"source_pages", "topics", "stages"},
     },
 }
+
+def parse_strict(payload: bytes):
+    """Reject duplicate JSON keys and nonfinite numbers before audit."""
+    def unique(pairs):
+        d = {}
+        for k,v in pairs:
+            if k in d:
+                raise ValueError("DUPLICATE_JSON_KEY")
+            d[k] = v
+        return d
+    def no_nonfinite(s):
+        raise ValueError("NONFINITE_JSON")
+    return json.loads(payload.decode("utf-8"), object_pairs_hook=unique,
+                      parse_constant=no_nonfinite)
 
 def _sha(s):
     return type(s) is str and bool(SHA.fullmatch(s)) and s != "0"*64
@@ -132,7 +147,8 @@ def evaluate(envelope, observed):
     if type(p) is dict and set(p) == cfg["payload"]:
         if cfg["domain"] == "grammar":
             numeric = ("wip", "size_bytes", "zip_members", "attested", "holds",
-                       "governed_patterns", "units", "lexical_cards")
+                       "governed_patterns", "units", "lexical_cards",
+                       "changed_cards")
             ids = p.get("changed_card_ids")
             if (not all(_int(p.get(k)) for k in numeric) or
                     p["wip"] == 0 or p["size_bytes"] == 0 or
@@ -142,7 +158,8 @@ def evaluate(envelope, observed):
                     not _sha(p.get("zip_sha256")) or
                     not _sha(p.get("parent_sha256")) or
                     p["zip_sha256"] == p["parent_sha256"] or
-                    type(ids) is not list or len(ids) > 787 or
+                    type(ids) is not list or len(ids) != p["changed_cards"] or
+                    p["changed_cards"] > 787 or
                     any(type(s) is not str or not ID.fullmatch(s) for s in ids) or
                     len(set(str(s) for s in ids)) != len(ids)):
                 errors.append("GRAMMAR_PATTERN_LINEAGE_OR_LEDGER_INVALID")

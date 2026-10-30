@@ -168,6 +168,22 @@ class StableReceipt(unittest.TestCase):
         self.blocked(lambda l,r,s,p: p.update(schema="evil"),
                      "TRUSTED_PROFILE_IDENTITY_INVALID")
 
+    def test_profile_forbidden_production_adoption_blocks(self):
+        self.blocked(lambda l,r,s,p: p.update(production_adoption="ACTIVE"),
+                     "TRUSTED_PROFILE_IDENTITY_INVALID")
+
+    def test_profile_unexpected_field_blocks(self):
+        self.blocked(lambda l,r,s,p: p.update(override_issuer=True),
+                     "TRUSTED_PROFILE_IDENTITY_INVALID")
+
+    def test_profile_malformed_counts_blocks(self):
+        self.blocked(lambda l,r,s,p: p.update(governed_patterns=True),
+                     "TRUSTED_PROFILE_IDENTITY_INVALID")
+
+    def test_profile_malformed_id_prefix_blocks(self):
+        self.blocked(lambda l,r,s,p: p.update(card_id_prefix="^.*"),
+                     "TRUSTED_PROFILE_IDENTITY_INVALID")
+
     def test_wrong_source_manifest_id_blocks(self):
         self.blocked(lambda l,r,s,p: s.update(dataset="other"),
                      "SOURCE_MANIFEST_IDENTITY_MISMATCH")

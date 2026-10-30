@@ -6,6 +6,8 @@ on:
       - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
       - 'Verification/audit_op01_pr_staging_simulation.py'
       - 'Verification/test_op01_pr_staging_simulation.py'
+      - 'Verification/audit_op01_pr_rest_adapter.py'
+      - 'Verification/test_op01_pr_rest_adapter.py'
       - '.github/workflows/op01-governance-auditor-tests.yml'
   push:
     branches: [main]
@@ -14,6 +16,8 @@ on:
       - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
       - 'Verification/audit_op01_pr_staging_simulation.py'
       - 'Verification/test_op01_pr_staging_simulation.py'
+      - 'Verification/audit_op01_pr_rest_adapter.py'
+      - 'Verification/test_op01_pr_rest_adapter.py'
       - '.github/workflows/op01-governance-auditor-tests.yml'
 permissions:
   contents: read
@@ -36,3 +40,5 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_op01_governance_readiness.py
       - name: Simulate exact one-file PR transport races without Git writes or grants
         run: python -B -m unittest discover -s Verification -p test_op01_pr_staging_simulation.py
+      - name: Validate actual nested GitHub REST PR/file response shape and exact head blob (nonactive)
+        run: python -B -m unittest discover -s Verification -p test_op01_pr_rest_adapter.py

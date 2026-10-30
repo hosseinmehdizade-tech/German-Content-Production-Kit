@@ -57,10 +57,10 @@ def example():
 
 
 class PrepublishGate(unittest.TestCase):
-    def evaluate(self,mutation=None):
+    def evaluate(self,mutation=None,*,candidate_pointer=False):
         a,b,c,path=copy.deepcopy(example())
         if mutation:mutation(a,b,c)
-        return assess(a,b,c,path)
+        return assess(a,b,c,a["latest_receipt_path"] if candidate_pointer else path)
 
     def blocked(self,mutation,code):
         r=self.evaluate(mutation)
@@ -91,7 +91,7 @@ class PrepublishGate(unittest.TestCase):
             b.update(schema="gcpk-wip61-checkpoint@1",
                      zip=p["filename"],zip_sha256=p["sha256"],
                      parent_sha256=A)
-        r=self.evaluate(mutate)
+        r=self.evaluate(mutate,candidate_pointer=True)
         for code in ("UNREGISTERED_RECEIPT_SCHEMA",
                      "CURRENT_PACKAGE_ROLE_DRIFT:filename",
                      "CURRENT_PACKAGE_ROLE_DRIFT:sha256",
@@ -110,7 +110,7 @@ class PrepublishGate(unittest.TestCase):
                 name=p["filename"],sha256=p["sha256"],parent_sha256=A)
             b.update(schema="gcpk-wip61-checkpoint@1",zip=p["filename"],
                      zip_sha256=p["sha256"],parent_sha256=A)
-        r=self.evaluate(mutate)
+        r=self.evaluate(mutate,candidate_pointer=True)
         self.assertEqual(r["blockers"],["UNREGISTERED_RECEIPT_SCHEMA"],r)
         self.never_release(r)
 

@@ -116,6 +116,14 @@ class BytesCas(unittest.TestCase):
             a[2]["a"]=sha256(d)
         self.source_fail(mutate,"BYTE_HASH_SIZE_OR_MAGIC_DRIFT:a")
 
+    def test_source_unhashable_modality_rejected(self):
+        self.source_fail(lambda a:a[0][0].update(modality=[]),
+                         "SOURCE_SPEC_INVALID")
+
+    def test_unhashable_source_id_rejected(self):
+        self.source_fail(lambda a:a[0][0].update(source_id=[]),
+                         "SOURCE_UNIVERSE_DRIFT")
+
     def test_source_wrong_modality(self):
         self.source_fail(lambda a:a[0][0].update(modality="executable"),"SOURCE_SPEC_INVALID")
 
@@ -204,7 +212,11 @@ class BytesCas(unittest.TestCase):
     def test_local_symlink_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/"file.pdf";p.write_bytes(PDF1)
-            q=Path(d)/"link.pdf";q.symlink_to(p)
+            q=Path(d)/"link.pdf"
+            try:
+                q.symlink_to(p)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest("symlink creation unavailable in this runner: "+str(exc))
             with self.assertRaises((OSError,ValueError)):
                 read_regular_file(q)
 

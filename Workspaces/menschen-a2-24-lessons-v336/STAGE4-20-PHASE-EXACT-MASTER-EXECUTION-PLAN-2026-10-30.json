@@ -1,0 +1,81 @@
+{
+  "schema": "gcpk-a2-stage4-execution-plan@1",
+  "status": "PLANNED_NOT_STAGE4_ACCEPTED",
+  "source": "MASTER_C1_SOURCE_DERIVED",
+  "date": "2026-10-30",
+  "input": {
+    "master_sha256": "3906bb08b975bc218eb01e0da9efccc96aa7d35290584a9debf23a18866e5388",
+    "official_v037_missing_sha256": "f96fa3adeae541c08866a9515fbaecfb6dcefb1b425e4a0aa704dc11d624913a",
+    "verified_v034_sha256": "245b8108782d272a9b5e8e6a4ed0ab63e068d562d7a934e5e707fd80eaee77ff",
+    "runtime_current": "v503-R137"
+  },
+  "historical": {
+    "official_total": 10830,
+    "approved": 5916,
+    "pending": 4894,
+    "holds": 20
+  },
+  "master": {
+    "active_total": 10627,
+    "examples": 7112,
+    "kombinationen": 3515,
+    "old_missing_combo_scope_to_adjudicate": 203,
+    "old_scope_approved": 99,
+    "old_scope_pending": 104,
+    "preapproved_v034_exact_triple": 4554,
+    "approved_needing_revalidation": 1263,
+    "active_pending": 4790,
+    "official_holds": 20,
+    "working_additional_holds_inside_pending": 8
+  },
+  "partition": {
+    "transfer_candidate_exact_v034_examples": 2951,
+    "new_example_QA": 4147,
+    "new_combo_semantic_didactic_QA": 3501,
+    "separately_adjudicated_holds": 28,
+    "master_partition_total": 10627,
+    "unique_review_queue_including_holds": 7676
+  },
+  "milestones": {
+    "count_to_stage4_gate": 20,
+    "scope_and_evidence": 1,
+    "example_review_phases": 9,
+    "example_balanced_sizes": [
+      461,
+      461,
+      461,
+      461,
+      461,
+      461,
+      461,
+      460,
+      460
+    ],
+    "combination_review_phases": 8,
+    "combination_balanced_sizes": [
+      438,
+      438,
+      438,
+      438,
+      438,
+      437,
+      437,
+      437
+    ],
+    "held_items_review": 1,
+    "final_Stage4_QA": 1,
+    "stage5_earliest_phase": 21
+  },
+  "QA": {
+    "local_exact_master_sha": "PASS",
+    "partition_unique": "PASS_10627",
+    "individual_nontransfer_covered": "PASS_7676",
+    "independent_second_pass": "REQUIRED_NOT_YET_RUN",
+    "no_auto_keep": true,
+    "no_archival_C1_version_downgrade": true,
+    "stage4_completed": false,
+    "stage5_completed": false
+  },
+  "condition": "20 planned milestones only if Phase1 validates disposition of 203 old combinations and 2951 exact baseline example carryovers; any restored combo or new HOLD increases/repartitions universe. No guaranteed number of conversation turns or hours.",
+  "execution": "Use existing consolidated Master only; per-unit source-bound trilingual decisions, didactic teaching_delta on all 3515 active combos, independent adversarial QA; write approved fixes directly to Master, no small ZIP churn; keep A1 140 owner IDs and locked original intact; Stage5 only after final Stage4 PASS."
+}

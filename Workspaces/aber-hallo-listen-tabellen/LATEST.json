@@ -1,10 +1,10 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "aber-hallo-listen-tabellen",
-  "status": "CURRENT_WIP69_900_ATTESTED_81_HOLDS_STAGE4_OPEN",
-  "latest_milestone": "WIP69_13_INDEPENDENT_EXACT_REKTION_900_ATTESTED_81_HOLDS",
-  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/65-wip69-exact-case-sense/WIP69-CHECKPOINT.json",
-  "latest_receipt_commit_sha": "8200e5fa0eb0018c914d72cb9eddcaa89bce7a0a",
+  "status": "CURRENT_WIP70_907_ATTESTED_74_HOLDS_STAGE4_OPEN",
+  "latest_milestone": "WIP70_7_EXACT_REKTION_ATTESTED_AND_168_NESTED_IMPORT_PROJECTIONS_REPAIRED",
+  "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/66-wip70-exact-rektion/WIP70-CHECKPOINT.json",
+  "latest_receipt_commit_sha": "3548435225f56866908651d9b1c64f42c6e64f6f",
   "authority": {
     "state": {
       "filename": "WORKING-STATE.json",
@@ -187,14 +187,14 @@
     "stage4_expert_gate_deprecated_v1": "INSECURE_UNREVIEWED_CELLS_UNSCANNED",
     "stage4_expert_gate_v1_1_folder": "German-Flashcards-Pro-Backup-Vault/03-Active-Working/Aber-Hallo/Stage4-Expert-Gate-v1.1-2026-10-23",
     "current_portable": {
-      "filename": "Aber-Hallo-WIP69-13-EXACT-REKTION-900-ATTESTED-81-HOLDS-2026-10-30.zip",
-      "sha256": "624dca6a6cdd09996f72693d16149914ab7c583bf6c78c41554f2b3a35ee4ef6",
-      "size_bytes": 8056763,
-      "library_file_id": "libfile_19a4e64af52c81918982f77ef6f61799",
-      "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-WIP69-13-EXACT-REKTION-900-ATTESTED-81-HOLDS-2026-10-30.zip",
-      "canonical_sha256": "3f7ab282370638db20cbb1fe2c7c2f9f6f0dc97603d61519f2cd8f6e3c29fc1a",
-      "import_sha256": "1a5cf04bcebf4a5a8b136a9ae2706ac009683007f2d6a58204458fa2f9c74253",
-      "library_roundtrip": "PASS_EXACT_BYTES_SHA256",
+      "filename": "Aber-Hallo-WIP70-7-EXACT-REKTION-907-ATTESTED-74-HOLDS-2026-10-30.zip",
+      "sha256": "669e7e73da4822709d5751e443b15439da69e68f693b408d2559e55ea71e57ad",
+      "size_bytes": 8084954,
+      "library_file_id": "libfile_f323eb2322948191a7ee13b3a63eccbb",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-WIP70-7-EXACT-REKTION-907-ATTESTED-74-HOLDS-2026-10-30.zip",
+      "canonical_sha256": "ecb4c54c05d42f3fe0841b27507c78538b3adb0462c02dfa1da6c71932bc2798",
+      "import_sha256": "f505d3b0362eb2996fb10b536148f9d50b10065d53c0a69d857769a310bd9907",
+      "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES",
       "source": "LIBRARY_VERIFIED",
       "stage4": "OPEN"
     },
@@ -590,14 +590,20 @@
     "wip69_source_pdfs": "PASS_2_OF_2_SHA256_UNCHANGED",
     "wip69_archive": "PASS_459_MANIFEST_460_SHA256SUMS_461_ZIP_CRC",
     "wip69_library_roundtrip": "PASS_EXACT_BYTES_AND_SHA256",
-    "wip69_targeted_second_pass": "13_CARDS_52_EXAMPLES_FOCUSED_SANITY_ONLY__FULL_STAGE4_OPEN"
+    "wip69_targeted_second_pass": "13_CARDS_52_EXAMPLES_FOCUSED_SANITY_ONLY__FULL_STAGE4_OPEN",
+    "wip70_exact_case_sense": "PASS_7_NEW_907_TOTAL_74_HOLDS",
+    "wip70_legacy_nested_projection_repair": "PASS_168_CARDS_188_STATUS_FIXES__ZERO_NEW_ATTESTATIONS",
+    "wip70_canonical_import_full_rektion_parity": "PASS_748_OF_748_ROOT_AND_NESTED",
+    "wip70_non_target_rows": "PASS_612_OTHER_IMPORT_ROWS_BYTE_IDENTICAL",
+    "wip70_original_source_pdf_sha": "PASS_2_OF_2_EXACT_SHA256",
+    "wip70_archive": "PASS_468_MANIFEST_469_SHA256SUMS_470_ZIP_CRC",
+    "wip70_library_roundtrip": "PASS_EXACT_SHA256_AND_BYTES"
   },
   "quality_boundary": [
-    "WIP69 applied exact German lemma/case/sense dictionary evidence for 13 of 94 prior governed Rektion HOLD patterns (independently re-evaluated); 81 insufficiently attested patterns remain HOLD and have separate disposition records.",
-    "All 13 targeted cards' 52 curated DE/FA/EN examples received a focused context sanity lens, not the full independent-method/adversarial 788-unit Stage4 audit. The full Stage4 remains OPEN.",
-    "Canonical 788 units and Import 787; all 748 applicable Rektion QA fields match Canonical/TSV, 39 preexisting no-field legacy cards unchanged; 774 other TSV rows byte-identical; no changes to learner DE/FA/EN meanings/examples/collocations/relations nor original 2 PDFs.",
-    "ZIP 461 members, 460 SHA256SUMS entries, 459 manifest hashes and CRC PASS. User PDF original SHA256 unchanged. Library upload/readback SHA and bytes identical.",
-    "OP02 nonactive proposed prepublish receipt schema unregistered for WIP69; no OP02 PASS claimed. Stage5-7 NOT_RUN."
+    "WIP70 newly attests exactly 7 distinct governed German Rektion patterns on 7 current Canonical and Import cards, for 907/981 externally source-backed and 74 remaining evidence holds. No other patterns force-approved.",
+    "Material QA defect detected in WIP69: 168 embedded custom_fields.canonical_unit.metadata.rection_qa snapshots in Import TSV had 188 stale pattern statuses vs exact WIP69 Canonical and root TSV rection_qa. Exact Canonical source used to repair 168 embedded snapshots, separately counted as ZERO new language attestations.",
+    "WIP70 748/748 applicable Canonical versus root TSV and nested canonical_unit rection_qa parity; other 39 cards lack the field by legacy schema. 7 Canonical learning unit QA fields changed; 175 Import rows changed (7 exact QA attestations, 168 projection-only repairs); 612 other rows byte-identical. No learner-facing DE/FA/EN, example, relations or combinations changed.",
+    "470-member ZIP, 469 SHA256SUMS and 468 manifest checksums PASS, CRC and original 2 PDF exact hashes unchanged; Library rematerialization exact SHA256 and bytes PASS. Full 788-unit independent-method Stage4 OPEN; Stages5-7 NOT_RUN; proposed nonactive OP02 does not recognize WIP70."
   ],
   "progress": {
     "reviewed_lexical": 787,
@@ -615,9 +621,9 @@
     "source_412_queue_all_item_disposition_ledger": true,
     "rektion_original_wip52_hold_universe": 397,
     "rektion_wip53_source_audited": 397,
-    "rektion_independent_external_attested_cumulative": 900,
+    "rektion_independent_external_attested_cumulative": 907,
     "rektion_non_governed_reclassified_wip53": 3,
-    "rektion_external_holds_remaining": 81,
+    "rektion_external_holds_remaining": 74,
     "rektion_source_syntax_row_cited": 386,
     "rektion_source_morphology_row_only": 11,
     "rektion_wip54_new_exact_external": 20,
@@ -657,10 +663,16 @@
     "rektion_wip69_new_exact": 13,
     "rektion_wip69_changed_distinct_cards": 13,
     "rektion_wip69_parent_queue_reviewed": 94,
-    "rektion_wip69_targeted_trilingual_example_second_pass": 52
+    "rektion_wip69_targeted_trilingual_example_second_pass": 52,
+    "rektion_wip70_new_exact": 7,
+    "rektion_wip70_changed_distinct_cards": 7,
+    "rektion_wip70_prior_hold_queue_reviewed": 81,
+    "rektion_wip70_nested_import_projection_legacy_cards_fixed": 168,
+    "rektion_wip70_nested_rektion_statuses_resynchronized": 188,
+    "rektion_wip70_targeted_trilingual_example_second_pass": 28
   },
   "historical_locked_release_untouched": true,
-  "git_persistence": "WIP69_CHECKPOINT_AND_OUTCOME_COMMITTED__LATEST_CAS_UPDATED__LIBRARY_READBACK_EXACT",
+  "git_persistence": "WIP70_CHECKPOINT_COMMITTED__LATEST_CAS_UPDATED__LIBRARY_EXACT_ROUNDTRIP",
   "parent_major_stage_state": "STAGE4_OPEN_213_REKTION_HOLDS_FULL_788_AI_REVIEW_OPEN",
   "integrated_working_authority": {
     "status": "CURRENT_CONTENT_WIP__LIBRARY_VERIFIED",
@@ -682,18 +694,18 @@
     "source_pdfs_and_locked": "IMMUTABLE",
     "sha_readback": "PASS"
   },
-  "next_action": "Continue independent exact German lemma/case/sense lexicon review for WIP69's 81 HELD items; then execute complete independent-method multilingual semantic/source/DE-FA-EN/relations/combination/adversarial AI Stage4 on all 788 units, followed by separate Stage5/6/7.",
+  "next_action": "Continue 74 evidence-held exact governed German Rektion frames; prioritize full independent-method 788-unit DE/FA/EN/source/example/relations/kombinationen/adversarial Stage4. Do not equate root/nested projection consistency with full semantic approval; Stage5-7 separate.",
   "complete_working_content_package": {
-    "name": "Aber-Hallo-WIP69-13-EXACT-REKTION-900-ATTESTED-81-HOLDS-2026-10-30.zip",
-    "sha256": "624dca6a6cdd09996f72693d16149914ab7c583bf6c78c41554f2b3a35ee4ef6",
-    "bytes": 8056763,
-    "member_count": 461,
-    "library_file_id": "libfile_19a4e64af52c81918982f77ef6f61799",
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-WIP69-13-EXACT-REKTION-900-ATTESTED-81-HOLDS-2026-10-30.zip",
-    "library_roundtrip": "PASS_EXACT_BYTES_SHA256",
+    "name": "Aber-Hallo-WIP70-7-EXACT-REKTION-907-ATTESTED-74-HOLDS-2026-10-30.zip",
+    "sha256": "669e7e73da4822709d5751e443b15439da69e68f693b408d2559e55ea71e57ad",
+    "bytes": 8084954,
+    "member_count": 470,
+    "library_file_id": "libfile_f323eb2322948191a7ee13b3a63eccbb",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-WIP70-7-EXACT-REKTION-907-ATTESTED-74-HOLDS-2026-10-30.zip",
+    "library_roundtrip": "PASS_EXACT_SHA256_BYTES",
     "stage4": "OPEN",
     "stage5_6_7": "NOT_RUN",
-    "parent_sha256": "ab459837dd0c39229872bb3643f66fae8716829cb54d3643251ead8b10b4b756"
+    "parent_sha256": "624dca6a6cdd09996f72693d16149914ab7c583bf6c78c41554f2b3a35ee4ef6"
   },
   "scoped_current_runtime_stage6_qa": {
     "runtime_version": "v484-R118",
@@ -3076,5 +3088,36 @@
     "parent_sha256": "ab459837dd0c39229872bb3643f66fae8716829cb54d3643251ead8b10b4b756",
     "git_checkpoint_commit": "8200e5fa0eb0018c914d72cb9eddcaa89bce7a0a",
     "git_outcome_commit": "7bc6b068e5f04c751a01bc730c558bd28fbff656"
+  },
+  "previous_wip70_source_current": {
+    "status": "CURRENT_WIP69_900_ATTESTED_81_HOLDS_STAGE4_OPEN",
+    "latest_milestone": "WIP69_13_INDEPENDENT_EXACT_REKTION_900_ATTESTED_81_HOLDS",
+    "receipt": "Workspaces/aber-hallo-listen-tabellen/65-wip69-exact-case-sense/WIP69-CHECKPOINT.json",
+    "portable": {
+      "filename": "Aber-Hallo-WIP69-13-EXACT-REKTION-900-ATTESTED-81-HOLDS-2026-10-30.zip",
+      "sha256": "624dca6a6cdd09996f72693d16149914ab7c583bf6c78c41554f2b3a35ee4ef6",
+      "size_bytes": 8056763,
+      "library_file_id": "libfile_19a4e64af52c81918982f77ef6f61799",
+      "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-WIP69-13-EXACT-REKTION-900-ATTESTED-81-HOLDS-2026-10-30.zip",
+      "canonical_sha256": "3f7ab282370638db20cbb1fe2c7c2f9f6f0dc97603d61519f2cd8f6e3c29fc1a",
+      "import_sha256": "1a5cf04bcebf4a5a8b136a9ae2706ac009683007f2d6a58204458fa2f9c74253",
+      "library_roundtrip": "PASS_EXACT_BYTES_SHA256",
+      "source": "LIBRARY_VERIFIED",
+      "stage4": "OPEN"
+    }
+  },
+  "wip70_7_lexicon_and_168_projection_repairs": {
+    "new_attested": 7,
+    "cumulative_attested": 907,
+    "remaining_holds": 74,
+    "changed_linguistic_cards": 7,
+    "metadata_only_projection_repair_cards": 168,
+    "metadata_only_repaired_stale_statuses": 188,
+    "reviewed_prior_holds": 81,
+    "qa": "PASS_SCOPED_REKTION_PLUS_IMPORT_PROJECTION",
+    "stage4": "OPEN",
+    "zip_sha256": "669e7e73da4822709d5751e443b15439da69e68f693b408d2559e55ea71e57ad",
+    "parent_sha256": "624dca6a6cdd09996f72693d16149914ab7c583bf6c78c41554f2b3a35ee4ef6",
+    "git_checkpoint_commit": "3548435225f56866908651d9b1c64f42c6e64f6f"
   }
 }

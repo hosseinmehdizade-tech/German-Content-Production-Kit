@@ -144,12 +144,14 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
     def test_exact_preimage_cas_update_independent_remote_readback(self):
         api = FakeGitHub(self.parent_bytes)
         result = self.run_persist(api)
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT", "GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT", "GET"])
         self.assertEqual(api.data, self.current_bytes)
         self.assertEqual(result["current_sha256"], result["remote_readback_sha256"])
         self.assertFalse(result["independent_linguistic_stage4"])
         self.assertFalse(result["global_writer_coverage"])
         self.assertFalse(result["library_readback_verified"])
+        self.assertTrue(result["scope_rechecked_identical_pre_put"])
+        self.assertFalse(result["scope_recheck_is_atomic_with_target_put"])
 
     def test_report_only_rejected_before_network(self):
         self.after = copy.deepcopy(self.before)
@@ -183,20 +185,20 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         api = FakeGitHub(self.parent_bytes)
         api.conflict = True
         self.rejects(api, "CAS_CONFLICT")
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT"])
         self.assertEqual(api.data, self.parent_bytes)
 
     def test_remote_readback_differs_after_accepted_put(self):
         api = FakeGitHub(self.parent_bytes)
         api.corrupt_after_write = True
         self.rejects(api, "REMOTE_READBACK_MISMATCH")
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT", "GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT", "GET"])
 
     def test_unexpected_put_echo_is_uncertain_not_pass(self):
         api = FakeGitHub(self.parent_bytes)
         api.bad_response = True
         self.rejects(api, "WRITE_OUTCOME_UNCERTAIN")
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "PUT"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT"])
 
     def test_remote_contents_bad_encoding_rejected(self):
         api = FakeGitHub(self.parent_bytes)
@@ -221,6 +223,70 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         api = FakeGitHub(self.parent_bytes)
         self.rejects(api, "UNAUTHORIZED_TARGET", branch="old-branch")
         self.assertEqual(api.calls, [])
+
+    def test_numbered_source_and_named_locked_backup_dirs_refuse_before_network(self):
+        forbidden = (
+            "Workspaces/synthetic-op01/02-Source/cards.json",
+            "Workspaces/synthetic-op01/03-source-pdfs/cards.tsv",
+            "Workspaces/synthetic-op01/04_LOCKED_data/cards.json",
+            "Workspaces/synthetic-op01/current/Original-Sources/cards.tsv",
+            "Workspaces/synthetic-op01/editable/cards.source.json",
+        )
+        for path in forbidden:
+            with self.subTest(path=path):
+                api = FakeGitHub(self.parent_bytes)
+                self.rejects(api, "IMMUTABLE_OR_AUTHORITY_PATH", path=path)
+                self.assertEqual(api.calls, [])
+
+    def test_scope_revocation_after_parent_read_blocks_before_put(self):
+        owner = self
+
+        class RevokedAfterParentRead(FakeGitHub):
+            def __call__(self, method, path, branch, token, payload=None):
+                response = super().__call__(method, path, branch, token, payload)
+                if method == "GET" and path == owner.path:
+                    self.scope_data = json.dumps({
+                        "schema": m.SCOPE_SCHEMA,
+                        "status": "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL",
+                        "scopes": [],
+                    }).encode()
+                return response
+
+        api = RevokedAfterParentRead(self.parent_bytes)
+        self.rejects(api, "REMOTE_SCOPE_CHANGED_PRE_PUT")
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET"])
+        self.assertEqual(api.data, self.parent_bytes)
+
+    def test_unrelated_registry_change_still_prevents_stale_approval_use(self):
+        owner = self
+
+        class RegistryAmended(FakeGitHub):
+            def __call__(self, method, path, branch, token, payload=None):
+                response = super().__call__(method, path, branch, token, payload)
+                if method == "GET" and path == owner.path:
+                    doc = json.loads(self.scope_data)
+                    doc["audit"] = "changed between checks"
+                    self.scope_data = json.dumps(doc).encode()
+                return response
+
+        api = RegistryAmended(self.parent_bytes)
+        self.rejects(api, "REMOTE_SCOPE_CHANGED_PRE_PUT")
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET"])
+        self.assertEqual(api.data, self.parent_bytes)
+
+    def test_scope_unreadable_at_second_check_never_puts(self):
+        class UnreadableRecheck(FakeGitHub):
+            def __call__(self, method, path, branch, token, payload=None):
+                if method == "GET" and path == m.SCOPE_PATH and "SCOPE_GET" in self.calls:
+                    self.calls.append("SCOPE_GET")
+                    return {"type": "file", "encoding": "none", "content": "",
+                            "size": 0, "sha": "a" * 40}
+                return super().__call__(method, path, branch, token, payload)
+
+        api = UnreadableRecheck(self.parent_bytes)
+        self.rejects(api, "REMOTE_CONTENTS_UNUSABLE")
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET"])
+        self.assertEqual(api.data, self.parent_bytes)
 
     def test_missing_auth_or_explicit_sha_refuse(self):
         api = FakeGitHub(self.parent_bytes)

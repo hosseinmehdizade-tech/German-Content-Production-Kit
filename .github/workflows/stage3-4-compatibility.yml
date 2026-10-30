@@ -14,6 +14,8 @@ on:
       - 'Verification/tests-v3.3.6/test_stage4_rebaseline_preview.py'
       - 'Verification/audit_stage4_snapshot_review_receipt.py'
       - 'Verification/verify_stage4_corrected_application.py'
+      - 'Verification/audit_op01_governance_readiness.py'
+      - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
       - 'Verification/tests-v3.3.6/test_stage4_corrected_application.py'
       - 'Verification/tests-v3.3.6/test_stage4_snapshot_review_receipt.py'
       - 'Verification/tests-v3.3.6/test_stage4_current_worksheet_freshness.py'
@@ -63,6 +65,8 @@ on:
       - 'Verification/tests-v3.3.6/test_stage4_rebaseline_preview.py'
       - 'Verification/audit_stage4_snapshot_review_receipt.py'
       - 'Verification/verify_stage4_corrected_application.py'
+      - 'Verification/audit_op01_governance_readiness.py'
+      - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
       - 'Verification/tests-v3.3.6/test_stage4_corrected_application.py'
       - 'Verification/tests-v3.3.6/test_stage4_snapshot_review_receipt.py'
       - 'Verification/tests-v3.3.6/test_stage4_current_worksheet_freshness.py'
@@ -157,3 +161,5 @@ jobs:
         run: python -B -m unittest discover -s Verification -p test_applied_edit_bytes.py
       - name: Exercise opt-in remote Git CAS writer with synthetic transport only
         run: python -B -m unittest discover -s Verification -p test_persist_verified_git_edit.py
+      - name: Audit nonactive OP01 protected-main and ruleset readiness from synthetic adversarial fixtures
+        run: python -m pytest -q Verification/tests-v3.3.6/test_op01_governance_readiness.py

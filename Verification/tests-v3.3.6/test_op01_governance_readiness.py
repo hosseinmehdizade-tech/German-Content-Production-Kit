@@ -260,6 +260,137 @@ def test_live_fetch_uses_only_public_fixed_get_endpoints():
     assert all(method == "GET" and url.startswith(M["API"]) for url, method in calls)
 
 
+
+def check_run_fixture(*, sha="c2aeb4fe30e47cb0150aa828472af92961e8c1b5",
+                      name="op01-governance-preflight", app=15368):
+    """Shape/values observed in public GitHub REST check-runs for actual PR #33."""
+    return {
+        "total_count": 1,
+        "check_runs": [{
+            "id": 123734620908, "name": name,
+            "head_sha": sha,
+            "status": "completed", "conclusion": "success",
+            "app": {"slug": "github-actions", "id": app},
+        }],
+    }
+
+
+def status_probe(payload=None, *, sha="c2aeb4fe30e47cb0150aa828472af92961e8c1b5",
+                 name="op01-governance-preflight", paths=None,
+                 app_id=15368):
+    return M["assess_check_origin_snapshot"](
+        check_run_fixture() if payload is None else payload,
+        pr_head_sha=sha,
+        expected_name=name,
+        expected_app_id=app_id,
+        changed_paths=(
+            [".github/workflows/op01-always-on-pr-governance-pilot.yml"]
+            if paths is None else paths),
+    )
+
+
+def assert_check_never_authorizes(result):
+    assert result["status"] == "BLOCKED_CHECK_ORIGIN_NOT_AUTHENTICATED"
+    for name in ("check_definition_protected_base_verified",
+                 "trusted_check_origin_verified", "independent_issuer_authenticated",
+                 "writer_granted", "stage4_semantic_pass", "release_final",
+                 "performed_writes"):
+        assert result[name] is False
+
+
+def test_actual_pr33_green_workflow_mutation_is_untrusted():
+    result = status_probe()
+    assert result["matching_check_success_observed"] is True
+    assert result["expected_app_id_matched"] is True
+    assert "PR_HEAD_MODIFIED_WORKFLOW_DEFINITION" in result["blockers"]
+    assert "REAL_PR33_SAME_GITHUB_ACTIONS_APP_EMITTED_BYPASSED_GREEN_JOB" in result["findings"]
+    assert_check_never_authorizes(result)
+
+
+def test_even_clean_pr51_green_same_actions_app_id_not_issuer():
+    """PR #51 clean check app.id=15368 just like malicious PR #33."""
+    sha = "fdc3aed7bb16e6e108b9be109a08ebdff8150fc2"
+    payload = check_run_fixture(
+        sha=sha, name="safe-packaging (ubuntu-latest)", app=15368)
+    result = status_probe(
+        payload, sha=sha, name="safe-packaging (ubuntu-latest)", paths=[])
+    assert result["matching_check_success_observed"] is True
+    assert result["expected_app_id_matched"] is True
+    assert result["pr_head_workflow_mutation_observed"] is False
+    assert "GITHUB_ACTIONS_INTEGRATION_ID_CANNOT_PROVE_BASE_DEFINED_CHECK" in result["findings"]
+    assert_check_never_authorizes(result)
+
+
+def test_wrong_pr_sha_even_if_green_blocks():
+    r = status_probe(sha="f" * 40)
+    assert "CHECK_RUN_WRONG_PR_HEAD_SHA" in r["blockers"]
+    assert r["matching_check_success_observed"] is False
+    assert_check_never_authorizes(r)
+
+
+def test_wrong_provider_app_id_even_with_success_blocks():
+    r = status_probe(app_id=99999)
+    assert "CHECK_SOURCE_APP_ID_DRIFT" in r["blockers"]
+    assert_check_never_authorizes(r)
+
+
+def test_missing_required_check_name_blocks():
+    r = status_probe(name="trusted-other-check")
+    assert "REQUIRED_CHECK_MISSING_OR_DUPLICATED" in r["blockers"]
+    assert_check_never_authorizes(r)
+
+
+def test_duplicate_matching_checks_cannot_be_counted_once():
+    payload = check_run_fixture()
+    payload["total_count"] = 2
+    payload["check_runs"].append({**payload["check_runs"][0], "id": 888})
+    r = status_probe(payload)
+    assert "REQUIRED_CHECK_MISSING_OR_DUPLICATED" in r["blockers"]
+    assert_check_never_authorizes(r)
+
+
+def test_unreadable_second_page_never_inferrs_exhaustive_check_runs():
+    payload = check_run_fixture()
+    payload["total_count"] = 2
+    r = status_probe(payload)
+    assert "CHECK_RUN_PAGINATION_UNVERIFIED" in r["blockers"]
+    assert_check_never_authorizes(r)
+
+
+@pytest.mark.parametrize("conclusion", ["skipped", "neutral", "failure", None])
+def test_non_success_check_is_not_reinterpreted_as_green(conclusion):
+    payload = check_run_fixture()
+    payload["check_runs"][0]["conclusion"] = conclusion
+    r = status_probe(payload)
+    assert "CHECK_RUN_NOT_COMPLETED_SUCCESSFULLY" in r["blockers"]
+    assert r["matching_check_success_observed"] is False
+    assert_check_never_authorizes(r)
+
+
+def test_pending_success_check_is_not_complete():
+    payload = check_run_fixture()
+    payload["check_runs"][0]["status"] = "queued"
+    r = status_probe(payload)
+    assert "CHECK_RUN_NOT_COMPLETED_SUCCESSFULLY" in r["blockers"]
+    assert_check_never_authorizes(r)
+
+
+def test_missing_workflow_file_enumeration_blocks():
+    r = status_probe(paths="UNKNOWN")
+    assert "PR_CHANGED_FILE_INVENTORY_UNVERIFIED" in r["blockers"]
+    assert_check_never_authorizes(r)
+
+
+def test_self_authored_signoff_fields_do_not_create_trust():
+    payload = check_run_fixture()
+    payload["check_runs"][0]["trusted"] = True
+    payload["check_runs"][0]["approved_by_user"] = True
+    result = status_probe(payload)
+    assert result["expected_app_id_matched"] is True
+    assert_check_never_authorizes(result)
+
+
+
 def test_no_pagination_shortcuts_to_green():
     fixture_data = fixture()
     api = M["API"]

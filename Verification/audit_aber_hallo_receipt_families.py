@@ -79,6 +79,23 @@ SCHEMAS = {
         "stages": ((None, "stage5_to_7", "NOT_RUN"),),
         "quality": ("status", "PASS_SCOPED_STAGE4_OPEN"),
     },
+    # WIP62 is a separate observed schema with real explicit source SHA list,
+    # complete size/path roles, and a changed-card ID ledger. Metadata only.
+    "gcpk-aber-hallo-wip62-checkpoint@1": {
+        "version": 62, "artifact": "flat_full",
+        "parent": ("parent_sha256",),
+        "counts": (None, "cumulative_attested", "remaining_holds",
+                   "governed_patterns", None, "units", "lexical_cards"),
+        "new": (None, "new_attested"),
+        "members": (None, "zip_members"),
+        "source": (None, "source_pdfs", "PASS_UNCHANGED_FROM_VERIFIED_WIP61_PARENT"),
+        "stage4": (None, "full_stage4", "OPEN"),
+        "stages": ((None, "stage5_to_7", "NOT_RUN"),),
+        "quality": ("status", "PASS_SCOPED_STAGE4_OPEN"),
+        "source_hashes": "source_sha256",
+        "changed_ids": ("changed_card_ids", "changed_cards"),
+        "parity": ("parity", "PASS_CANONICAL_IMPORT_787_CARDS"),
+    },
 }
 
 
@@ -105,8 +122,8 @@ def audit_family(latest, receipt, source, receipt_path):
     if spec is None:
         return ["UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA"], None
     version = spec["version"]
-    contract = ("WIP61_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY" if version == 61
-                else "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY")
+    contract = (f"WIP{version}_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+                if version >= 61 else "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY")
     if latest.get("schema") != "gcpk-workstream-latest@1.0.0" or latest.get("workstream") != WORKSTREAM:
         errors.append("LATEST_WRONG_SCHEMA_OR_WORKSTREAM")
     if source.get("schema") != "gcpk-source-manifest@1.1.0" or source.get("dataset") != WORKSTREAM:
@@ -140,6 +157,9 @@ def audit_family(latest, receipt, source, receipt_path):
             "canonical_sha256": receipt.get("canonical_sha256"),
             "import_sha256": receipt.get("import_sha256"),
         }
+        if spec["artifact"] == "flat_full":
+            artifact["size_bytes"] = receipt.get("size_bytes")
+            artifact["library_path"] = receipt.get("library_path")
     current = value(latest, ("authority", "current_portable"))
     package = latest.get("complete_working_content_package")
     if not isinstance(current, dict) or not isinstance(package, dict) or not isinstance(artifact, dict):
@@ -147,7 +167,7 @@ def audit_family(latest, receipt, source, receipt_path):
     else:
         keys = ("filename", "sha256", "canonical_sha256", "import_sha256",
                 "library_file_id")
-        if spec["artifact"] == "current":
+        if spec["artifact"] in ("current", "flat_full"):
             keys = keys + ("size_bytes", "library_path")
         for key in keys:
             if not current.get(key) or current.get(key) != artifact.get(key):
@@ -218,5 +238,30 @@ def audit_family(latest, receipt, source, receipt_path):
                for r in src)
         or len({r["source_id"] for r in src if isinstance(r,dict) and isinstance(r.get("source_id"),str)})!=2):
         errors.append("SOURCE_MANIFEST_SET_INVALID")
+    # Only registered receipt families with these explicit fields receive
+    # extra source/changed-ID validation. Claims are NOT source-PDF byte reads.
+    if spec.get("source_hashes") is not None:
+        listed = receipt.get(spec["source_hashes"])
+        expected = ([x.get("sha256") for x in src] if isinstance(src, list)
+                    and len(src) == 2 and all(isinstance(x, dict) for x in src)
+                    else None)
+        if (not isinstance(listed, list) or
+                not all(valid_sha(x) for x in listed) or
+                listed != expected):
+            errors.append("KNOWN_RECEIPT_SOURCE_SHA_SEQUENCE_DRIFT")
+    if spec.get("changed_ids") is not None:
+        ids = receipt.get(spec["changed_ids"][0])
+        changed = receipt.get(spec["changed_ids"][1])
+        if (type(changed) is not int or changed < 0 or changed > 787 or
+                not isinstance(ids, list) or len(ids) != changed or
+                len(set(str(x) for x in ids)) != len(ids) or
+                any(not isinstance(x, str) or not re.fullmatch(
+                    r"ahl-lu-[0-9]{4}", x) for x in ids)):
+            errors.append("KNOWN_CHANGED_CARD_IDS_INVALID")
+    if spec.get("parity") is not None:
+        if value(receipt, (spec["parity"][0],)) != spec["parity"][1]:
+            errors.append("KNOWN_RECEIPT_IMPORT_PARITY_CLAIM_DRIFT")
+    if version >= 62 and receipt.get("workstream") != WORKSTREAM:
+        errors.append("KNOWN_RECEIPT_WORKSTREAM_INVALID")
     # Original source files & Library binaries have NOT been independently read.
     return sorted(set(errors)), contract

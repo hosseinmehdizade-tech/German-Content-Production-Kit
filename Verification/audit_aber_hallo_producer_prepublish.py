@@ -3,7 +3,7 @@ import argparse
 import json
 import re
 from pathlib import Path
-from audit_aber_hallo_receipt_families import SCHEMAS
+from audit_aber_hallo_receipt_families import SCHEMAS, audit_family
 
 WIP=re.compile(r"^WIP([0-9]{2,4})_")
 KNOWN={**{k:v["version"] for k,v in SCHEMAS.items()},
@@ -116,6 +116,13 @@ def assess(latest,receipt,sources,receipt_path):
         if key in receipt and receipt[key]!="OPEN":e.append("FALSE_STAGE4_CLAIM")
     if "stage5_to_7" in receipt and receipt["stage5_to_7"]!="NOT_RUN":
         e.append("FALSE_STAGE5_7_CLAIM")
+    # A schema name being KNOWN is not enough: reuse the exact receipt
+    # family contract (including source SHA ordering and changed-ID ledger)
+    # before giving even a non-authoritative metadata PASS.
+    if schema in SCHEMAS:
+        additional, contract = audit_family(latest, receipt, sources, receipt_path)
+        e.extend(additional)
+        r["receipt_contract"] = contract
     r["blockers"]=sorted(set(e))
     if not e:r["status"]="PASS_SCOPED_PREPUBLISH_METADATA_ONLY_NOT_AUTHORIZED"
     return r

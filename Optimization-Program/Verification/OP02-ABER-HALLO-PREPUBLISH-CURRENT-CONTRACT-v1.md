@@ -6,6 +6,33 @@
 
 Real WIP61 LATEST: `authority.current_portable` points to the WIP61 ZIP while `complete_working_content_package` still points to **WIP60**. Real WIP61 receipt `gcpk-wip61-checkpoint@1` was initially unregistered. The explicit **read-only** family registration now recognizes its exact fields, but CURRENT remains BLOCKED by stale WIP60 complete-package role, missing WIP61 predecessor pointer and 415-versus-420 member-count conflict. Registration is NOT approval to repair content metadata or promote CURRENT; do not auto-repair or downgrade.
 
+## WIP62 process follow-up (2026-10-30)
+
+The content producer subsequently promoted WIP62. It is the live recorded
+CURRENT rather than WIP61. WIP62 has coherent dual package roles (ZIP name,
+SHA256, size, Library ID/path, member count) and an explicit WIP61 parent
+SHA recorded in `previous_wip62_source_current`. WIP61's earlier stale role
+is historical evidence, NOT a current WIP62 blocker.
+
+The original WIP62 receipt `gcpk-aber-hallo-wip62-checkpoint@1` introduced
+another contract format. The read-only WIP62 adapter explicitly checks:
+
+- receipt-to-CURRENT ZIP identity, exact size/path, parent and member count;
+- source SHA256 list in manifest order, not just `source_pdfs="PASS"`;
+- count conservation (777+204=981), 788 units / 787 lexical cards;
+- nine changed-card IDs: uniqueness, stable ID syntax and ledger count;
+- scoped canonical/import parity claim, Stage4 OPEN, Stages5–7 NOT_RUN.
+
+The synthetic prepublish diagnostic now calls the same registered receipt-family
+validator, so a new schema name alone cannot cause a false metadata PASS.
+A **new WIP63+ schema remains blocked until its exact field mapping is
+registered and tested**; no automatic migration, schema inference, issuer
+authorization or content editing is granted here.
+
+All tests are **tracked-metadata-only**. A coherent metadata result is NOT
+proof that ZIP/PDF binary bytes, linguistic decisions or importer/runtime
+integration were independently accepted.
+
 ## Producer procedure BEFORE publication
 
 1. Work only on a separately prepared candidate snapshot. Keep the previous CURRENT unchanged until actual producer approval/CAS.

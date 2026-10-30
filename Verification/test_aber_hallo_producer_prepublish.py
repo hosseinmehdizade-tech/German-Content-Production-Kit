@@ -33,6 +33,7 @@ def example():
         "workstream":"aber-hallo-listen-tabellen",
         "latest_milestone":"WIP60_SYNTHETIC",
         "latest_receipt_path":receipt_path,
+        "latest_receipt_commit_sha":"a"*40,
         "authority":{"current_portable":portable},
         "complete_working_content_package":pkg,
         "previous_wip60_source_current":{"portable":{"sha256":D}},
@@ -46,14 +47,50 @@ def example():
              "parent_sha256":D,"zip":zipname,"zip_sha256":A,
              "library_file_id":"libfile_synthetic",
              "canonical_sha256":B,"import_sha256":C,
-             "zip_members":415,"cumulative_attested":751,
-             "remaining_holds":230,"learning_units":788,
+             "zip_members":415,"new_attested":20,"cumulative_attested":751,
+             "remaining_holds":230,"source_pdfs":"PASS_2_UNCHANGED",
+             "learning_units":788,
              "lexical_cards":787,"global_stage4":"OPEN","stage5_to_7":"NOT_RUN"}
     source={"schema":"gcpk-source-manifest@1.1.0",
             "dataset":"aber-hallo-listen-tabellen",
             "source_set":[{"source_id":"s1","source_type":"pdf","sha256":B},
                           {"source_id":"s2","source_type":"pdf","sha256":C}]}
     return latest,receipt,source,receipt_path
+
+
+def wip62_example():
+    """Synthetic WIP62 contract: source order and changed IDs are enforceable."""
+    latest,rec,source,_ = example()
+    zipname="Aber-Hallo-WIP62-SYNTHETIC.zip"
+    path=BASE+"58-wip62-exact-lexicon/WIP62-CHECKPOINT.json"
+    cur=latest["authority"]["current_portable"]
+    cur.update(filename=zipname,sha256="e"*64,
+               library_path="/synthetic/"+zipname)
+    pkg=latest["complete_working_content_package"]
+    pkg.update(name=zipname,sha256="e"*64,member_count=425,
+               library_path="/synthetic/"+zipname)
+    latest["latest_milestone"]="WIP62_SYNTHETIC"
+    latest["latest_receipt_path"]=path
+    latest["previous_wip62_source_current"]={"portable":{"sha256":D}}
+    latest["progress"].update(
+        rektion_independent_external_attested_cumulative=777,
+        rektion_external_holds_remaining=204)
+    rec.clear()
+    rec.update(schema="gcpk-aber-hallo-wip62-checkpoint@1",
+               workstream="aber-hallo-listen-tabellen",
+               status="PASS_SCOPED_STAGE4_OPEN",parent_sha256=D,
+               zip=zipname,zip_sha256="e"*64,
+               size_bytes=10001,library_file_id="libfile_synthetic",
+               library_path="/synthetic/"+zipname,canonical_sha256=B,
+               import_sha256=C,zip_members=425,
+               source_pdfs="PASS_UNCHANGED_FROM_VERIFIED_WIP61_PARENT",
+               source_sha256=[B,C],new_attested=2,cumulative_attested=777,
+               remaining_holds=204,governed_patterns=981,
+               units=788,lexical_cards=787,
+               changed_cards=2,changed_card_ids=["ahl-lu-0001","ahl-lu-0002"],
+               parity="PASS_CANONICAL_IMPORT_787_CARDS",
+               full_stage4="OPEN",stage5_to_7="NOT_RUN")
+    return latest,rec,source,path
 
 
 class PrepublishGate(unittest.TestCase):
@@ -123,6 +160,44 @@ class PrepublishGate(unittest.TestCase):
         self.assertEqual(r["status"],
                          "PASS_SCOPED_PREPUBLISH_METADATA_ONLY_NOT_AUTHORIZED",r)
         self.never_release(r)
+
+    def test_wip62_full_registered_metadata_pass_never_release(self):
+        a,b,c,path=wip62_example()
+        result=assess(a,b,c,path)
+        self.assertEqual(result["status"],
+                         "PASS_SCOPED_PREPUBLISH_METADATA_ONLY_NOT_AUTHORIZED",result)
+        self.assertEqual(result["receipt_contract"],
+                         "WIP62_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY")
+        self.never_release(result)
+
+    def test_wip62_source_sha_sequence_tampering_blocks(self):
+        a,b,c,path=wip62_example()
+        b["source_sha256"].reverse()
+        result=assess(a,b,c,path)
+        self.assertIn("KNOWN_RECEIPT_SOURCE_SHA_SEQUENCE_DRIFT",result["blockers"])
+        self.never_release(result)
+
+    def test_wip62_changed_id_ledger_duplicate_blocks(self):
+        a,b,c,path=wip62_example()
+        b["changed_card_ids"][0]=b["changed_card_ids"][1]
+        result=assess(a,b,c,path)
+        self.assertIn("KNOWN_CHANGED_CARD_IDS_INVALID",result["blockers"])
+        self.never_release(result)
+
+    def test_wip62_canonical_import_parity_claim_tamper_blocks(self):
+        a,b,c,path=wip62_example()
+        b["parity"]="NOT_PASS"
+        result=assess(a,b,c,path)
+        self.assertIn("KNOWN_RECEIPT_IMPORT_PARITY_CLAIM_DRIFT",result["blockers"])
+        self.never_release(result)
+
+    def test_wip62_receipt_size_drift_blocks(self):
+        a,b,c,path=wip62_example()
+        b["size_bytes"]+=1
+        result=assess(a,b,c,path)
+        self.assertIn("KNOWN_RECEIPT_CURRENT_ARTIFACT_DRIFT:size_bytes",
+                      result["blockers"])
+        self.never_release(result)
 
     def test_zip_role_hash_drift(self):
         self.blocked(lambda a,b,c:a["complete_working_content_package"].update(sha256="e"*64),

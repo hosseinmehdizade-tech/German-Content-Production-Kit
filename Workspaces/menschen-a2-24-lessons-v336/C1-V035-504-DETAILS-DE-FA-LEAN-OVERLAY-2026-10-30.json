@@ -1,0 +1,68 @@
+{
+  "schema": "gcpk-menschen-a2-c1-v035-lean-presentation-delta@1",
+  "date": "2026-10-30",
+  "status": "PASS_SCOPED_EXACT_REPLAY__LIBRARY_ROUNDTRIP_PASS__NOT_INTEGRATED_NOT_IMPORT_READY",
+  "base": {
+    "version": "C1-v035",
+    "sha256": "9352c68db49825e3df428325f911c6f6bf0dabbb105e23ba11df7c621c302e70",
+    "content_pointer": "Workspaces/menschen-a2-24-lessons-v336/C1-CURRENT-EDITABLE.json",
+    "unchanged": true
+  },
+  "overlay": {
+    "name": "Menschen-A2-v035-504-Kombinationen-DE-FA-WIP-OVERLAY-NOT-IMPORT.zip",
+    "size_bytes": 56746,
+    "sha256": "a66b045368e494cbc29b6e18017071cce0918d922f1f791ce2fb55009bbfdf93",
+    "library_file_id": "libfile_5633e7b2c55481919a1ac65b0bcf0fa7",
+    "library_readback": "PASS_IDENTICAL_SHA256_AND_BYTES",
+    "replay": "apply_and_verify.py --emit-dir workspace",
+    "scope": {
+      "combination_details_fixed": 504,
+      "affected_cards": 270,
+      "lessons": [
+        "A2-L21",
+        "A2-L22",
+        "A2-L23",
+        "A2-L24"
+      ],
+      "working_json_paths": 1,
+      "working_tsv_paths": 4,
+      "language_format": "DE — FA",
+      "zero_de_only_after_replay": true,
+      "examples_unchanged": 7112,
+      "canonical_combinations_unchanged": 3515,
+      "embedded_locked_archives_unchanged": 25
+    },
+    "qa": "PASS_REPLAY_AND_NEGATIVE_PREIMAGE_GUARD",
+    "runtime_test": "NOT_RUN"
+  },
+  "anti_loop": {
+    "unit_ledger": {
+      "name": "Menschen-A2-C1-v035-RECONCILED-UNIT-LEDGER.jsonl.gz",
+      "sha256": "24e3a1688d682353ff30e3deff942dd60126df7a05557b2a3f9efc064d4b2f1f",
+      "size_bytes": 1159844,
+      "library_file_id": "libfile_1ac51652da3c8191941790dc57b687a7",
+      "library_readback": "PASS_EXACT"
+    },
+    "summary": {
+      "name": "Menschen-A2-C1-v035-RECONCILIATION-SUMMARY.json",
+      "sha256": "bbe1444c3b38c2ba289e52d946fe6a7d34dca0f1ef84cef41ef57ef321d8a91e",
+      "size_bytes": 19874,
+      "library_file_id": "libfile_5e40f8c45088819187d0ca13df3cc148",
+      "library_readback": "PASS_EXACT"
+    },
+    "current_unit_ids": 10627,
+    "prior_reviewed_examples_unique_in_v034_v035": 425,
+    "official_v037_counts_advanced": 0
+  },
+  "remaining_constraints": {
+    "canonical_unit_vs_legacy_combo_mismatch_cards": 274,
+    "official_v037_exact_archive_unavailable": true,
+    "official_pending_semantic_units": 4894,
+    "official_holds": 20,
+    "overall_stage4": "BLOCKED",
+    "stage5_current_runtime": "NOT_RUN",
+    "final_import_ready": false
+  },
+  "guard": "Source-derived v035 remains CURRENT. This overlay is a verified reproducible WIP patch; it is NOT a new full ZIP, not a changed current full archive, not a Stage4 signoff, and not authorization to import. Do not mutate LOCKED, raw source, A1 owners, UI, or SRS.",
+  "next_action": "At next safe integration boundary replay delta into editable source, revalidate all 24 lesson projections and resolve remaining 274 internal combo list differences before Stage5; recover/reconcile official v037 exact ledger to de-duplicate prior Stage4 reviews."
+}

@@ -81,7 +81,7 @@ class PrepublishGate(unittest.TestCase):
             "PASS_SCOPED_PREPUBLISH_METADATA_ONLY_NOT_AUTHORIZED",r)
         self.never_release(r)
 
-    def test_wip61_stale_complete_package_and_unknown_schema_cannot_pass(self):
+    def test_wip61_stale_complete_package_still_cannot_pass_registered_schema(self):
         def mutate(a,b,c):
             p=a["authority"]["current_portable"]
             p.update(filename="Aber-Hallo-WIP61-SYNTHETIC.zip",sha256="e"*64)
@@ -92,26 +92,36 @@ class PrepublishGate(unittest.TestCase):
                      zip=p["filename"],zip_sha256=p["sha256"],
                      parent_sha256=A)
         r=self.evaluate(mutate,candidate_pointer=True)
-        for code in ("UNREGISTERED_RECEIPT_SCHEMA",
-                     "CURRENT_PACKAGE_ROLE_DRIFT:filename",
+        for code in ("CURRENT_PACKAGE_ROLE_DRIFT:filename",
                      "CURRENT_PACKAGE_ROLE_DRIFT:sha256",
                      "PACKAGE_PREDECESSOR_PARENT_DRIFT"):
             self.assertIn(code,r["blockers"],r)
         self.never_release(r)
 
-    def test_even_fixed_wip61_role_needs_explicit_schema_registration(self):
+    def test_wip61_registered_coherent_candidate_is_still_not_release(self):
         def mutate(a,b,c):
             p=a["authority"]["current_portable"]
             p.update(filename="Aber-Hallo-WIP61-SYNTHETIC.zip",sha256="e"*64)
             a["latest_milestone"]="WIP61_SYNTHETIC"
             a["latest_receipt_path"]=BASE+"57-wip61/WIP61-CHECKPOINT.json"
             a["previous_wip61_source_current"]={"portable":{"sha256":A}}
+            a["progress"].update(
+                rektion_independent_external_attested_cumulative=768,
+                rektion_external_holds_remaining=213)
             a["complete_working_content_package"].update(
-                name=p["filename"],sha256=p["sha256"],parent_sha256=A)
+                name=p["filename"],sha256=p["sha256"],parent_sha256=A,
+                member_count=420)
             b.update(schema="gcpk-wip61-checkpoint@1",zip=p["filename"],
-                     zip_sha256=p["sha256"],parent_sha256=A)
+                     zip_sha256=p["sha256"],parent_sha256=A,
+                     zip_members=420,new_attested=17,cumulative_attested=768,
+                     external_holds=213,units=788,lexical_cards=787,
+                     source_pdfs="UNCHANGED",full_stage4="OPEN",
+                     stage5_to_7="NOT_RUN")
+            for stale in ("remaining_holds","learning_units","global_stage4"):
+                b.pop(stale,None)
         r=self.evaluate(mutate,candidate_pointer=True)
-        self.assertEqual(r["blockers"],["UNREGISTERED_RECEIPT_SCHEMA"],r)
+        self.assertEqual(r["status"],
+                         "PASS_SCOPED_PREPUBLISH_METADATA_ONLY_NOT_AUTHORIZED",r)
         self.never_release(r)
 
     def test_zip_role_hash_drift(self):

@@ -61,7 +61,7 @@ def source_bytes(specs, byte_map, independent_pins):
         return result("SOURCE", ["INPUT_SHAPE"], byte_matches=False, items=[])
     ids = [s.get("source_id") if type(s) is dict else None for s in specs]
     if (any(type(i) is not str or not i for i in ids) or
-            len(set(ids)) != len(ids) or
+            len(set(i for i in ids if type(i) is str)) != len(ids) or
             set(ids) != set(byte_map) or set(ids) != set(independent_pins)):
         errors.append("SOURCE_UNIVERSE_DRIFT")
     for spec in specs:
@@ -167,6 +167,9 @@ def rollback_preflight(observed_head, expected_head, post_bytes, post_hash,
 def read_regular_file(path, *, max_bytes=MAX_BYTES):
     """Local input helper rejects symlinks, special files and oversized bytes."""
     p = Path(path)
+    # O_NOFOLLOW is not available on all Windows runners.
+    if p.is_symlink():
+        raise ValueError("SYMLINK_INPUT_FORBIDDEN")
     fd = os.open(str(p), os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) |
                  getattr(os, "O_NONBLOCK", 0))
     try:

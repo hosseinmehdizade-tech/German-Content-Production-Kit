@@ -79,17 +79,26 @@ def decode_github_file(payload: dict) -> tuple[bytes, str]:
 
 
 def github_api(method: str, path: str, branch: str, token: str, payload: dict | None = None) -> dict:
-    encoded = "/".join(urllib.parse.quote(s, safe="") for s in path.split("/"))
-    url = f"https://api.github.com/repos/{REPOSITORY}/contents/{encoded}"
-    if method == "GET":
-        url += "?ref=" + urllib.parse.quote(branch, safe="")
+    if method == "GET_BRANCH":
+        # Read GitHub's actual branch metadata, not a repository-authored JSON
+        # claim. This is a necessary but NOT sufficient trust precondition.
+        url = (f"https://api.github.com/repos/{REPOSITORY}/branches/"
+               + urllib.parse.quote(branch, safe=""))
+    elif method in {"GET", "PUT"}:
+        encoded = "/".join(urllib.parse.quote(s, safe="") for s in path.split("/"))
+        url = f"https://api.github.com/repos/{REPOSITORY}/contents/{encoded}"
+        if method == "GET":
+            url += "?ref=" + urllib.parse.quote(branch, safe="")
+    else:
+        raise PersistenceBlocked("UNSUPPORTED_GITHUB_API_OPERATION")
     body = json.dumps(payload).encode("utf-8") if payload is not None else None
     headers = {"Accept": "application/vnd.github+json",
                "X-GitHub-Api-Version": "2022-11-28",
                "Authorization": "Bearer " + token}
     if body is not None:
         headers["Content-Type"] = "application/json"
-    request = urllib.request.Request(url, data=body, headers=headers, method=method)
+    request = urllib.request.Request(url, data=body, headers=headers,
+                                     method="GET" if method == "GET_BRANCH" else method)
     try:
         with urllib.request.urlopen(request, timeout=20) as response:
             raw = response.read(3_000_001)
@@ -122,9 +131,23 @@ def verify_remote_scope(payload: dict, *, proof: dict, proof_bytes: bytes,
     independent Stage4, or an atomic cross-file revocation guarantee.
     """
     raw, registry_blob = decode_github_file(payload)
+    # A grant with duplicate keys (e.g. two different "status" values) can
+    # be interpreted differently by two tools. Never normalize ambiguity.
+    def unique_pairs(pairs):
+        out = {}
+        for key, value in pairs:
+            if key in out:
+                raise ValueError("DUPLICATE_REGISTRY_JSON_KEY")
+            out[key] = value
+        return out
+
+    def no_nonfinite(value):
+        raise ValueError("NONFINITE_REGISTRY_JSON_VALUE")
+
     try:
-        registry = json.loads(raw)
-    except (UnicodeError, ValueError) as exc:
+        registry = json.loads(raw, object_pairs_hook=unique_pairs,
+                              parse_constant=no_nonfinite)
+    except (UnicodeError, ValueError, TypeError, RecursionError) as exc:
         raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_INVALID_JSON") from exc
     if not isinstance(registry, dict) or registry.get("schema") != SCOPE_SCHEMA:
         raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_BAD_SCHEMA")
@@ -151,6 +174,19 @@ def verify_remote_scope(payload: dict, *, proof: dict, proof_bytes: bytes,
     if len(matches) != 1:
         raise PersistenceBlocked("REMOTE_SCOPED_PERMISSION_NO_EXACT_APPROVED_GRANT")
     return registry_blob, matches[0]["authorization_ref"]
+
+
+def verify_remote_branch_protected(payload: dict, *, branch: str) -> None:
+    """Necessary GitHub-provided precondition, not independent issuer approval.
+
+    Branch "protected" can be true under a weak rule. This check DOES NOT
+    establish strict review requirements, secure check provenance, immutability,
+    or atomic protection across the subsequent PUT.
+    """
+    if not isinstance(payload, dict) or payload.get("name") != branch:
+        raise PersistenceBlocked("REMOTE_BRANCH_STATUS_UNVERIFIABLE")
+    if payload.get("protected") is not True:
+        raise PersistenceBlocked("REMOTE_MAIN_UNPROTECTED: no scoped write")
 
 
 def capture_verified_local_snapshot(proof_file: Path):
@@ -262,6 +298,11 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
     _, scope_blob_before_put = decode_github_file(api("GET", SCOPE_PATH, branch, token))
     if scope_blob_before_put != registry_sha:
         raise PersistenceBlocked("REMOTE_SCOPE_CHANGED_PRE_PUT: approval altered or revoked")
+    # Even a syntactically exact grant inside Git cannot authorize a write if
+    # its policy file lives on an unprotected mutable main branch. GitHub's
+    # branch protected bit is only a necessary (not sufficient) condition.
+    verify_remote_branch_protected(
+        api("GET_BRANCH", "", branch, token), branch=branch)
     new_sha = git_blob_sha(current)
     message = "apply(OP-01): verified mutable working bytes " + proof["workstream"]
     written = api("PUT", path, branch, token, {
@@ -287,6 +328,9 @@ def persist(proof_file: Path, path: str, expected_blob_sha: str, token: str,
         "scope_is_independent_user_approval_proof": False,
         "scope_rechecked_identical_pre_put": True,
         "scope_recheck_is_atomic_with_target_put": False,
+        "branch_protected_bit_checked_pre_put": True,
+        "branch_protection_is_independent_issuer_proof": False,
+        "branch_protection_is_atomic_with_put": False,
         "parent_sha256": digest(before), "current_sha256": digest(current),
         "remote_readback_sha256": digest(remote_data),
         "commit_sha": written["commit"]["sha"],

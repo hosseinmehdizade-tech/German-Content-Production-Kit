@@ -718,7 +718,7 @@ def test_legacy_wip58_wip59_contracts_frozen_historical_not_current():
         }
         errors,contract=audit_family(simulated,r,json.loads(real_current()[2]),receipt_path)
         assert errors == [], (version,errors)
-        assert "TRACKED_METADATA_ONLY" in contract
+        assert contract == "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
 
 
 def test_nested_json_duplicate_key_rejected():

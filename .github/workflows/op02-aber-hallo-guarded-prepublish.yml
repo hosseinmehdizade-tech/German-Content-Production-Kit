@@ -1,0 +1,33 @@
+name: OP02 Aber Hallo Guarded Prepublish Contract
+on:
+  pull_request:
+    paths:
+      - 'Tools/content_package_guard.py'
+      - 'Tools/prepublish_aber_hallo_guard.py'
+      - 'Verification/test_op02_guarded_aber_current.py'
+      - 'Optimization-Program/Verification/OP02-ABER-HALLO-GUARDED-PREPUBLISH-20261030.md'
+      - '.github/workflows/op02-aber-hallo-guarded-prepublish.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Tools/content_package_guard.py'
+      - 'Tools/prepublish_aber_hallo_guard.py'
+      - 'Verification/test_op02_guarded_aber_current.py'
+      - 'Optimization-Program/Verification/OP02-ABER-HALLO-GUARDED-PREPUBLISH-20261030.md'
+      - '.github/workflows/op02-aber-hallo-guarded-prepublish.yml'
+permissions:
+  contents: read
+jobs:
+  current-coherence:
+    name: OP02-ABER-CURRENT-PREPUBLISH-NONREQUIRED-NOT-ISSUER
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s Verification -p test_op02_guarded_aber_current.py -v

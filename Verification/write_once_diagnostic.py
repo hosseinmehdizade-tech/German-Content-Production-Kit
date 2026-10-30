@@ -23,7 +23,8 @@ _RESERVED = {
 _PROTECTED = {
     "workspaces", "locked", "source", "sources", "original", "originals",
     "01-app", "00-source", "archive", "archives", "recovery",
-    "protected-history",
+    "protected-history", ".git", ".github", "verification",
+    "optimization-program", "tools", "03-tests",
 }
 
 

@@ -26,6 +26,10 @@ COUNTS = {"learning_units", "import_cards", "attested", "holds",
           "governed_patterns", "new_attested", "changed_cards",
           "changed_card_ids"}
 GATES = {"stage4", "stage5_7", "import_parity"}
+PROFILE_KEYS = {"schema", "workstream", "source_manifest_schema",
+                "source_ids", "source_sha256", "learning_units",
+                "import_cards", "governed_patterns", "card_id_prefix",
+                "status", "production_adoption"}
 
 def _unique(pairs):
     out = {}
@@ -67,7 +71,20 @@ def evaluate(latest, receipt, sources, profile):
     if not all(isinstance(x, dict) for x in (latest, receipt, sources, profile)):
         errors.append("DOCUMENT_NOT_OBJECT")
         return result
-    if profile.get("schema") != PROFILE_SCHEMA or not isinstance(profile.get("workstream"), str):
+    if (set(profile) != PROFILE_KEYS or profile.get("schema") != PROFILE_SCHEMA or
+            not isinstance(profile.get("workstream"), str) or
+            not profile["workstream"] or
+            profile.get("source_manifest_schema") != "gcpk-source-manifest@1.1.0" or
+            profile.get("status") != "NONACTIVE_PROPOSAL_ONLY" or
+            profile.get("production_adoption") != "NOT_AUTHORIZED" or
+            not ints(profile.get("learning_units"), profile.get("import_cards"),
+                     profile.get("governed_patterns")) or
+            profile.get("learning_units") == 0 or
+            profile.get("import_cards") == 0 or
+            profile.get("governed_patterns") == 0 or
+            not isinstance(profile.get("card_id_prefix"), str) or
+            not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*",
+                             profile["card_id_prefix"])):
         errors.append("TRUSTED_PROFILE_IDENTITY_INVALID")
     workstream = profile.get("workstream")
     expected_source_ids = profile.get("source_ids")

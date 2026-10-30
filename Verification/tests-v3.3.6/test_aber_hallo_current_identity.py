@@ -488,9 +488,13 @@ def test_flat_rektion_conservation_invalid_tamper_blocks(field):
                for e in evaluate(f)["errors"])
 
 
-def test_flat_real_wip57_parent_lineage_not_self_claimed():
-    f = mutate_flat(0, lambda d: d["previous_wip57_source_current"]["portable"].update(
-        sha256="f"*64))
+def test_flat_current_parent_lineage_uses_resolved_wip_version():
+    live = json.loads(current_live()[0])
+    import re
+    match = re.match(r"^WIP([0-9]{2,4})_", live["latest_milestone"])
+    assert match is not None
+    key = f"previous_wip{match.group(1)}_source_current"
+    f = mutate_flat(0, lambda d: d[key]["portable"].update(sha256="f"*64))
     assert "REKTION_PARENT_LINEAGE_INVALID" in evaluate(f)["errors"]
 
 

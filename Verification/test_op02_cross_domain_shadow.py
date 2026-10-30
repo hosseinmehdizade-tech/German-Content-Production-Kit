@@ -48,7 +48,7 @@ def reading():
 
 class DomainSmoke(unittest.TestCase):
     def check(self, maker, fn=None):
-        args=copy.deepcopy(maker())
+        args=list(copy.deepcopy(maker()))
         if fn:fn(args)
         return evaluate(args[0],args[1],args[2],latest=args[3],receipt=args[4])
 

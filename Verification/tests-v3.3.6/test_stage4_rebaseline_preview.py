@@ -170,8 +170,14 @@ def test_original_row_count_mismatch_rejected():
 
 def test_original_frozen_json_is_not_ignored():
     c, old = baseline()
-    old = old.replace(b'"haben"', b'BROKEN', 1)
-    r, _ = run(c, old)
+    reader = csv.DictReader(io.StringIO(old.decode()))
+    row = next(reader)
+    row["core_json"] = "BROKEN"
+    out = io.StringIO(newline="")
+    writer = csv.DictWriter(out, fieldnames=reader.fieldnames)
+    writer.writeheader()
+    writer.writerow(row)
+    r, _ = run(c, out.getvalue().encode())
     blocked(r, "EXISTING_WORKSHEET_STRUCTURE_INVALID")
 
 

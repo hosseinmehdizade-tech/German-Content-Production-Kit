@@ -641,24 +641,51 @@ def historical_wip60():
 
 
 def coherent_wip61_synthetic():
-    """Prove a coherent *candidate* can pass metadata checks, not release."""
-    parts = real_current()
-    latest, receipt = json.loads(parts[0]), json.loads(parts[1])
-    current = latest["authority"]["current_portable"]
-    latest["previous_wip61_source_current"] = {
-        "portable": {"sha256": receipt["parent_sha256"]}}
-    latest["complete_working_content_package"] = {
-        "name": current["filename"], "sha256": current["sha256"],
-        "bytes": current["size_bytes"],
-        "library_file_id": current["library_file_id"],
-        "library_path": current["library_path"],
-        "member_count": receipt["zip_members"],
-        "parent_sha256": receipt["parent_sha256"],
-        "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
-    }
-    parts[0] = json.dumps(latest, ensure_ascii=False).encode()
-    return parts
+    """Frozen WIP61 read-only candidate, independent of future live CURRENT.
 
+    This fixture DOES NOT reconstruct or authorize a real learner package.
+    Uses its immutable Git receipt plus known historical package byte size.
+    """
+    path = ("Workspaces/aber-hallo-listen-tabellen/"
+            "57-wip61-exact-lexicon/WIP61-CHECKPOINT.json")
+    rb = (ROOT / path).read_bytes()
+    receipt = json.loads(rb)
+    filename = receipt["zip"]
+    size = 7661384  # historical WIP61 Library size; not a binary read
+    libpath = "/German-Content-Production-Kit/Checkpoints/" + filename
+    current = {
+        "filename": filename, "sha256": receipt["zip_sha256"],
+        "size_bytes": size, "library_file_id": receipt["library_file_id"],
+        "library_path": libpath,
+        "canonical_sha256": receipt["canonical_sha256"],
+        "import_sha256": receipt["import_sha256"], "stage4": "OPEN",
+    }
+    latest = {
+        "schema": "gcpk-workstream-latest@1.0.0",
+        "workstream": "aber-hallo-listen-tabellen",
+        "latest_milestone": "WIP61_HISTORICAL_COHERENT_SYNTHETIC_ONLY",
+        "latest_receipt_path": path,
+        "latest_receipt_commit_sha": "a"*40,
+        "authority": {"current_portable": current},
+        "complete_working_content_package": {
+            "name": filename, "sha256": receipt["zip_sha256"],
+            "bytes": size, "member_count": receipt["zip_members"],
+            "library_file_id": receipt["library_file_id"],
+            "library_path": libpath, "parent_sha256": receipt["parent_sha256"],
+            "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+        },
+        "previous_wip61_source_current": {
+            "portable": {"sha256": receipt["parent_sha256"]}},
+        "progress": {
+            "rektion_independent_external_attested_cumulative":
+                receipt["cumulative_attested"],
+            "rektion_external_holds_remaining": receipt["external_holds"],
+            "pending_independent_expert_stage4": True,
+            "independent_expert_unreviewed_units": 788,
+        },
+    }
+    return [json.dumps(latest, ensure_ascii=False).encode(), rb,
+            (ROOT / SOURCES).read_bytes(), path]
 
 def latest_family_mutation(index, fn):
     files = historical_wip60()
@@ -677,15 +704,19 @@ def test_historical_wip60_supported_family_metadata_still_no_release():
         assert r[k] is False
 
 
-def test_real_wip61_current_stays_blocked_on_stale_package_and_parent():
-    r = evaluate(real_current())
-    assert r["status"] == "BLOCKED", r
-    assert r["evaluated_contract"] == "WIP61_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
-    for code in ("KNOWN_CURRENT_PACKAGE_DRIFT:filename",
-                 "KNOWN_CURRENT_PACKAGE_DRIFT:sha256",
-                 "KNOWN_ZIP_MEMBER_COUNT_DRIFT",
-                 "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT"):
-        assert code in r["errors"], r
+def test_real_current_never_grants_release_and_wip61_stale_roles_block():
+    raw = real_current()
+    label = json.loads(raw[0])["latest_milestone"]
+    r = evaluate(raw)
+    if label.startswith("WIP61_"):
+        assert r["status"] == "BLOCKED", r
+        assert r["evaluated_contract"] == "WIP61_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+        for code in ("KNOWN_CURRENT_PACKAGE_DRIFT:filename",
+                     "KNOWN_CURRENT_PACKAGE_DRIFT:sha256",
+                     "KNOWN_ZIP_MEMBER_COUNT_DRIFT",
+                     "KNOWN_PARENT_PORTABLE_LINEAGE_DRIFT"):
+            assert code in r["errors"], r
+    # A future CURRENT must be independently audited, not forced back to WIP61.
     for key in ("production_stage5_allowed",
                 "stage4_independent_semantic_review_completed",
                 "real_current_issuer_authenticated",

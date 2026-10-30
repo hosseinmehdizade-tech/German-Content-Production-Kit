@@ -1,0 +1,83 @@
+{
+  "schema": "gcpk-op02-independent-real-binary-audit@1",
+  "created_on": "2026-10-30",
+  "scope": "READ_ONLY_ACTUAL_WIP67_LIBRARY_ZIP__NOT_STAGE4_RELEASE",
+  "workstream": "aber-hallo-listen-tabellen",
+  "observed_git_snapshot": {
+    "latest_path": "Workspaces/aber-hallo-listen-tabellen/LATEST.json",
+    "latest_blob_sha": "4856ff8367f09b6e4dd2852d86e9969e7f93a991",
+    "milestone": "WIP67_14_EXACT_PONS_GERMAN_CASE_SENSE_APPLIED_CANONICAL_IMPORT",
+    "receipt_path": "Workspaces/aber-hallo-listen-tabellen/63-wip67-exact-lexicon/WIP67-CHECKPOINT.json",
+    "receipt_blob_sha": "8ded6c4246e3c802008d2af45843273302648d28",
+    "zip_expected_sha256": "ec0c21d31b20b1850b639a4263b75109bc0795f78d449799bce9768b08e8e275",
+    "zip_expected_bytes": 7993869,
+    "zip_expected_members": 449,
+    "source_sha256": [
+      "4125ed49efa3c4e72500a9c80b8d39021c8933d9a387fc96a637fd4b457e3cf3",
+      "ebaa3896c3c383808b832241afaf6c38ef4f498eb4dc1b38f26c12087cc97a04"
+    ]
+  },
+  "library_original": {
+    "library_file_id": "libfile_e89cb9d24c308191af2d5874a2739611",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Aber-Hallo-WIP67-14-EXACT-LEXICON-875-ATTESTED-106-HOLDS-2026-10-30.zip",
+    "materialized_read_only": true,
+    "exact_name": "Aber-Hallo-WIP67-14-EXACT-LEXICON-875-ATTESTED-106-HOLDS-2026-10-30.zip"
+  },
+  "observed_byte_results": {
+    "actual_zip_sha256": "ec0c21d31b20b1850b639a4263b75109bc0795f78d449799bce9768b08e8e275",
+    "actual_zip_size_bytes": 7993869,
+    "actual_member_count": 449,
+    "crc_first_bad_member": null,
+    "duplicate_members": 0,
+    "unsafe_member_paths": 0,
+    "symlink_members": 0,
+    "sha256sums_entries": 448,
+    "sha256sums_entries_matched": 448,
+    "sha256sums_bad_or_missing": 0,
+    "manifest_listed_members": 447,
+    "manifest_excluding_manifest_and_checksums": 447,
+    "manifest_list_hash_or_size_mismatch": 0,
+    "source_embedded_pdfs": 2,
+    "source_pdf_hashes_match_registered": 2,
+    "source_embedded_pdf_bytes_equal_user_uploaded": 2,
+    "canonical_units": 788,
+    "lexical_import_cards": 787,
+    "import_tsv_columns": 23,
+    "import_tsv_rows": 787,
+    "import_tsv_column_shape_errors": 0,
+    "import_tsv_duplicate_ids": 0,
+    "trilingual_example_jsonl_lines": 3152,
+    "kombinationen_jsonl_lines": 1097,
+    "relation_jsonl_lines": 2878,
+    "canonical_sha256": "a6d6d63fad0f73093051ddd43fd491b6f5c62094288d40379bdd5b59d7b20fc5",
+    "import_sha256": "3ec31fce4f769b2c1f266c239cf2c63bbcd513da950c7c2685a6a7304e5e047b",
+    "canonical_import_match_git_current": true,
+    "parent_wip66_expected_sha256": "43f1bd54621aae319e073654b625fd47c3c63dad9ec29e45775f1f53d3c75b1c"
+  },
+  "embedded_pointer_defect": {
+    "path": "07-Checkpoint-State/CURRENT-WORKSTREAM-POINTER.json",
+    "pointer_claimed_current": "WIP66_16_EXACT_LEXICON_861_ATTESTED_120_HOLDS",
+    "pointer_canonical_sha256": "0f642168d96529fb32b6a90f3997eb69c9740c8d2f6c1c6d8417ffa2ce02ab74",
+    "pointer_import_sha256": "617c13856e2e2a3abfcffe12d6f013959bbedb14a61aec49487ffbbac6153ff4",
+    "actual_edition": "WIP67",
+    "drift": [
+      "EMBEDDED_CURRENT_WIP_VERSION_STALE",
+      "EMBEDDED_CURRENT_CANONICAL_IMPORT_HASH_STALE"
+    ],
+    "severity": "BINARY_COHERENCE_BLOCKED__DO_NOT_USE_EMBEDDED_POINTER_AS_CURRENT",
+    "root_cause_confirmed": false,
+    "original_zip_modified": false
+  },
+  "governance": {
+    "github_public_content_main_protected": false,
+    "github_rulesets": 0,
+    "independent_issuer_authenticated": false,
+    "writer_registry": "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL",
+    "stage4_full_semantic": "OPEN",
+    "stage5_7": "NOT_RUN",
+    "release_authorized": false,
+    "runtime_v503_stage6_replayed": false
+  },
+  "verdict": "PASS_EXACT_LIBRARY_ZIP_BYTES_AND_MANIFEST__BLOCKED_INTERNAL_CURRENT_POINTER__NO_RELEASE",
+  "next_action": "Producer-owned separately authorized WIP68+ successor must refresh embedded CURRENT pointer, canonical/import digests BEFORE SHA256SUMS and final ZIP SHA. Do not mutate WIP67 or content LATEST from optimization mission. Validate actual successor ZIP with fail-closed gate before promotion; independently authenticate issuer and complete Stage4-7."
+}

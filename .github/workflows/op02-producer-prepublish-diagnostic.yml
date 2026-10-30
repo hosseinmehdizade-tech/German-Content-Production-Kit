@@ -1,0 +1,55 @@
+name: OP02 Nonactive Producer Prepublish Diagnostic
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_aber_hallo_producer_prepublish.py'
+      - 'Verification/test_aber_hallo_producer_prepublish.py'
+      - 'Optimization-Program/Verification/OP02-ABER-HALLO-PREPUBLISH-CURRENT-CONTRACT-v1.md'
+      - 'Workspaces/aber-hallo-listen-tabellen/LATEST.json'
+      - '.github/workflows/op02-producer-prepublish-diagnostic.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_aber_hallo_producer_prepublish.py'
+      - 'Verification/test_aber_hallo_producer_prepublish.py'
+      - 'Optimization-Program/Verification/OP02-ABER-HALLO-PREPUBLISH-CURRENT-CONTRACT-v1.md'
+      - 'Workspaces/aber-hallo-listen-tabellen/LATEST.json'
+      - '.github/workflows/op02-producer-prepublish-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  nontrusted-producer-check-fixtures-only:
+    name: OP02-SYNTHETIC-NONREQUIRED-NOT-RELEASE-AUTHORITY
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exercise synthetic prepublish invariants, never write packages
+        run: python -B -m unittest discover -s Verification -p test_aber_hallo_producer_prepublish.py
+      - name: Inspect actual tracked CURRENT (warning-only until separately approved producer enforcement)
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, "Verification")
+          from audit_aber_hallo_producer_prepublish import assess, parse
+          base = "Workspaces/aber-hallo-listen-tabellen/"
+          latest = parse(Path(base + "LATEST.json").read_bytes())
+          path = latest.get("latest_receipt_path", "")
+          if not isinstance(path, str) or not path.startswith(base) or ".." in Path(path).parts:
+              report = {"status": "BLOCKED_PREPUBLISH", "blockers": ["UNSAFE_LATEST_RECEIPT_PATH"]}
+          else:
+              report = assess(latest, parse(Path(path).read_bytes()),
+                              parse(Path(base + "00-source/SOURCE-MANIFEST.json").read_bytes()), path)
+          print(json.dumps(report, sort_keys=True))
+          if report["status"].startswith("BLOCKED"):
+              print("::warning::Actual CURRENT role/receipt consistency is BLOCKED; not a release gate.")
+          PY

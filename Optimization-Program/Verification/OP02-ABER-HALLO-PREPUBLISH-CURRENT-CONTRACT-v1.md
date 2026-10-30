@@ -4,7 +4,7 @@
 
 ## Observed incident
 
-Real WIP61 LATEST: `authority.current_portable` points to the WIP61 ZIP while `complete_working_content_package` still points to **WIP60**. Real WIP61 receipt `gcpk-wip61-checkpoint@1` is not registered as a known schema. Both are **blocking discrepancies**; do not auto-repair metadata or downgrade CURRENT.
+Real WIP61 LATEST: `authority.current_portable` points to the WIP61 ZIP while `complete_working_content_package` still points to **WIP60**. Real WIP61 receipt `gcpk-wip61-checkpoint@1` was initially unregistered. The explicit **read-only** family registration now recognizes its exact fields, but CURRENT remains BLOCKED by stale WIP60 complete-package role, missing WIP61 predecessor pointer and 415-versus-420 member-count conflict. Registration is NOT approval to repair content metadata or promote CURRENT; do not auto-repair or downgrade.
 
 ## Producer procedure BEFORE publication
 

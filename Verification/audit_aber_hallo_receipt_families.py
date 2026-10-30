@@ -62,6 +62,23 @@ SCHEMAS = {
         "stages": ((None, "stage5_to_7", "NOT_RUN"),),
         "quality": ("status", "PASS_SCOPED_STAGE4_OPEN"),
     },
+    # WIP61 is a distinct observed receipt contract, not an alias of WIP60.
+    # Registration authorizes *reading* this shape only. The actual WIP61
+    # LATEST has stale WIP60 package metadata and missing predecessor pointer,
+    # therefore audit_family must continue to BLOCK real CURRENT until fixed
+    # through the independently authorized content producer.
+    "gcpk-wip61-checkpoint@1": {
+        "version": 61, "artifact": "flat",
+        "parent": ("parent_sha256",),
+        "counts": (None, "cumulative_attested", "external_holds",
+                   None, None, "units", "lexical_cards"),
+        "new": (None, "new_attested"),
+        "members": (None, "zip_members"),
+        "source": (None, "source_pdfs", "UNCHANGED"),
+        "stage4": (None, "full_stage4", "OPEN"),
+        "stages": ((None, "stage5_to_7", "NOT_RUN"),),
+        "quality": ("status", "PASS_SCOPED_STAGE4_OPEN"),
+    },
 }
 
 
@@ -88,7 +105,8 @@ def audit_family(latest, receipt, source, receipt_path):
     if spec is None:
         return ["UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA"], None
     version = spec["version"]
-    contract = "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY"
+    contract = ("WIP61_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY" if version == 61
+                else "WIP58_60_EXPLICIT_KNOWN_SCOPED_RECEIPT_METADATA_ONLY")
     if latest.get("schema") != "gcpk-workstream-latest@1.0.0" or latest.get("workstream") != WORKSTREAM:
         errors.append("LATEST_WRONG_SCHEMA_OR_WORKSTREAM")
     if source.get("schema") != "gcpk-source-manifest@1.1.0" or source.get("dataset") != WORKSTREAM:

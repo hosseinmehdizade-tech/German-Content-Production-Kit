@@ -77,6 +77,24 @@ def audit(archive, *, purpose, destination, workstream, catalog, evidence=None,
             if any(n.startswith(("/", "\\")) or "\\" in n or ".." in PurePosixPath(n).parts
                    or ":" in PurePosixPath(n).parts[0] for n in names):
                 return report("BLOCK", "UNSAFE_ZIP_MEMBER")
+
+            # OP02: definitive release & validated milestone can never accept
+            # the Aber Hallo eight-folder bundle with an inherited/stale CURRENT.
+            # Preserve raw checkpoint/recovery ability on their separate purposes;
+            # do not promote a checkpoint to final merely because its ZIP hash fits.
+            if (workstream == "aber-hallo-listen-tabellen" and
+                    purpose in {"final_delivery", "validated_major_checkpoint"}):
+                from content_package_guard import (
+                    check_aber_hallo_active_pointer, PackageGuardError)
+                try:
+                    valid_active = check_aber_hallo_active_pointer(z)
+                except (PackageGuardError, KeyError, TypeError, UnicodeError,
+                        ValueError) as exc:
+                    return report("BLOCK", "ABER_HALLO_FINAL_CURRENT_METADATA_STALE",
+                                  archive_sha256=sha, detail=str(exc))
+                if not valid_active:
+                    return report("BLOCK", "ABER_HALLO_FINAL_ACTIVE_CONTRACT_MISSING",
+                                  archive_sha256=sha)
     except (OSError, zipfile.BadZipFile, RuntimeError, ValueError):
         return report("BLOCK", "ZIP_INTEGRITY_FAILED")
 

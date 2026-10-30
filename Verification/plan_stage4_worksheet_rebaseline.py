@@ -117,7 +117,34 @@ def plan(canonical_bytes: bytes, old_worksheet_bytes: bytes, *,
                        affected=baseline["affected_units"],
                        fields=baseline["drifts_by_field"])
 
-    occupied = sum(bool((row.get(field) or "").strip())
+    # Any nonempty reviewer cell, including whitespace-only notes, is owned
+    # evidence and must not be silently erased by generating a fresh baseline.
+    # Absent cells (ragged rows) are malformed, not empty permissions.
+    for row in old_rows:
+        for field in REVIEW_FIELDS:
+            if not isinstance(row.get(field), str):
+                return blocked(["MISSING_OR_INVALID_REVIEWER_CELL:"
+                                + str(row.get("id")) + ":" + field],
+                               affected=baseline["affected_units"],
+                               fields=baseline["drifts_by_field"])
+
+        # The old freshness audit compares parsed JSON semantically, so it
+        # cannot detect duplicate keys or NaN hidden in frozen cells. A
+        # successor preview must fail closed rather than normalize them.
+        for field in FROZEN:
+            if field.endswith("_json"):
+                cell = row.get(field)
+                try:
+                    if not isinstance(cell, str):
+                        raise ValueError("MISSING_JSON_CELL")
+                    strict_json(cell.encode("utf-8"))
+                except (ValueError, TypeError, UnicodeError, RecursionError):
+                    return blocked(["UNSAFE_OLD_WORKSHEET_JSON:"
+                                    + str(row.get("id")) + ":" + field],
+                                   affected=baseline["affected_units"],
+                                   fields=baseline["drifts_by_field"])
+
+    occupied = sum(row[field] != ""
                    for row in old_rows for field in REVIEW_FIELDS)
     if occupied:
         return blocked(["EXISTING_REVIEWER_CELLS_MUST_BE_PRESERVED"],

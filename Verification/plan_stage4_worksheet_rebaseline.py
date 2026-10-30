@@ -17,6 +17,7 @@ from audit_stage4_current_worksheet_freshness import (
     FROZEN, REVIEW_FIELDS, audit, projected, sha256,
 )
 from audit_stage4_snapshot_review_receipt import parse as strict_json
+from write_once_diagnostic import write_once_json_report, DiagnosticOutputBlocked
 
 SCHEMA = "gcpk-op02-stage4-worksheet-rebaseline-preview@1"
 FIELDS = ("id",) + FROZEN + REVIEW_FIELDS
@@ -219,7 +220,13 @@ def main():
                         canonical_sha=None, old_sha=None, count=args.expected_units)
     raw = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.report:
-        args.report.write_text(raw, encoding="utf-8")
+        try:
+            write_once_json_report(args.report, raw,
+                                   protected_inputs=(args.canonical, args.old_worksheet))
+        except (OSError, DiagnosticOutputBlocked) as exc:
+            print(json.dumps({"status": "BLOCKED_DIAGNOSTIC_OUTPUT",
+                              "reason": str(exc)}))
+            return 2
     else:
         print(raw)
     return 0 if report["status"].startswith(("PASS_SCOPED_", "ALREADY_FRESH_")) else 2

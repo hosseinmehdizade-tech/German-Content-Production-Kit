@@ -10,10 +10,55 @@ sys.path.insert(0,str(HERE))
 from audit_aber_hallo_current_identity import verify,ROOT,LATEST,SOURCES
 
 def current_wip52():
+    """FROZEN HISTORICAL synthetic reconstruction using real WIP52 receipt.
+
+    WIP52 is NOT CURRENT. Never substitute its portable for the live LATEST.
+    This fixture preserves prior WIP52 schema negative tests across later WIPs.
+    """
+    live = json.loads((ROOT / LATEST).read_bytes())
+    path = ("Workspaces/aber-hallo-listen-tabellen/"
+            "48-wip52-evidence-bounded-rektion/"
+            "WIP52-15-EXACT-DUDEN-397-HOLDS-2026-10-30.json")
+    receipt_bytes = (ROOT / path).read_bytes()
+    receipt = json.loads(receipt_bytes)
+    p, counts = receipt["portable"], receipt["counts"]
+    current = {**p, "stage4": "OPEN",
+               "canonical_sha256": "b" * 64,
+               "import_sha256": "c" * 64}
+    latest = {
+        "schema": "gcpk-workstream-latest@1.0.0",
+        "workstream": "aber-hallo-listen-tabellen",
+        "status": "CURRENT_WIP52_STAGE4_OPEN_HISTORICAL_ONLY",
+        "latest_milestone": "WIP52_15_HISTORICAL_SCOPED_DUDEN",
+        "latest_receipt_path": path,
+        "latest_receipt_commit_sha": "a" * 40,  # synthetic, NOT Git-authorized
+        "authority": {"current_portable": current},
+        "complete_working_content_package": {
+            "name": p["filename"], "sha256": p["sha256"],
+            "bytes": p["size_bytes"], "library_path": p["library_path"],
+            "library_file_id": p["library_file_id"],
+            "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+            "source_parent_wip51_sha256": receipt["parent"]["sha256"],
+        },
+        "wip52_evidence_bounded_rektion": live["wip52_evidence_bounded_rektion"],
+        "progress": {
+            "wip52_new_exact_duden": counts["new_exact_duden_confirmed"],
+            "rektion_external_attested_total": counts["cumulative_external_confirmed"],
+            "rektion_evidence_holds": counts["remaining_external_holds"],
+            "pending_independent_expert_stage4": True,
+            "independent_expert_unreviewed_units": 788,
+        },
+    }
+    return [json.dumps(latest, ensure_ascii=False).encode("utf-8"),
+            receipt_bytes, (ROOT / SOURCES).read_bytes(), path]
+
+
+def current_direct_duden():
+    """Real CURRENT tracked bytes only; no remote source or ZIP byte proof."""
     latest = (ROOT / LATEST).read_bytes()
     j = json.loads(latest)
-    receipt = j["latest_receipt_path"]
-    return [latest, (ROOT / receipt).read_bytes(), (ROOT / SOURCES).read_bytes(), receipt]
+    path = j["latest_receipt_path"]
+    return [latest, (ROOT / path).read_bytes(), (ROOT / SOURCES).read_bytes(), path]
 
 
 def original():
@@ -221,6 +266,150 @@ def test_wip52_untrusted_duplicate_receipt_schema_key_blocks():
 def test_future_unsupported_receipt_schema_must_block_rather_than_coerce_wip50():
     f = change_wip52(1, lambda d: d.update(schema="gcpk-aber-hallo-wip53-milestone@1.0.0"))
     assert "UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA" in evaluate(f)["errors"]
+
+
+
+def test_current_live_direct_duden_schema_parity_not_semantics():
+    r = evaluate(current_direct_duden())
+    assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
+    assert r["evaluated_contract"] == "DIRECT_DUDEN_SCOPED_TRACKED_METADATA_ONLY"
+    assert r["historical_wip52_not_current"] is True
+    for flag in ("production_stage5_allowed", "stage4_independent_semantic_review_completed",
+                 "source_pdf_or_portable_bytes_verified", "real_current_issuer_authenticated"):
+        assert r[flag] is False
+
+
+def modify_current(index, fn):
+    files = current_direct_duden()
+    obj = json.loads(files[index])
+    fn(obj)
+    files[index] = json.dumps(obj, ensure_ascii=False).encode("utf-8")
+    return files
+
+
+@pytest.mark.parametrize("field", [
+    "filename", "sha256", "size_bytes", "library_file_id",
+    "library_path", "canonical_sha256", "import_sha256",
+])
+def test_direct_duden_portable_receipt_tamper_blocks(field):
+    r = modify_current(1, lambda obj: obj["portable"].update({
+        field: "f" * 64 if "sha256" in field else -99 if field == "size_bytes" else "forged"}))
+    assert ("DIRECT_DUDEN_CURRENT_RECEIPT_DRIFT:" + field) in evaluate(r)["errors"]
+
+
+@pytest.mark.parametrize("field", [
+    ("name", "filename"), ("sha256", "sha256"), ("bytes", "size_bytes"),
+    ("library_file_id", "library_file_id"),
+])
+def test_direct_duden_package_role_tamper_blocks(field):
+    left, right = field
+    r = modify_current(0, lambda obj: obj["complete_working_content_package"].update(
+        {left: -1 if left == "bytes" else "f" * 64}))
+    assert ("DIRECT_DUDEN_CURRENT_PACKAGE_DRIFT:" + right) in evaluate(r)["errors"]
+
+
+def test_direct_duden_parent_sha_drift_rejected():
+    r = modify_current(1, lambda obj: obj["parent"].update(sha256="f" * 64))
+    assert "DIRECT_DUDEN_PARENT_SHA_DRIFT" in evaluate(r)["errors"]
+
+
+def test_direct_duden_previous_current_parent_drift_rejected():
+    live = json.loads(current_direct_duden()[0])
+    match = __import__("re").match(r"WIP([0-9]+)_", live["latest_milestone"])
+    key = f"previous_wip{match.group(1)}_source_current"
+    r = modify_current(0, lambda obj: obj[key]["portable"].update(sha256="f" * 64))
+    assert "DIRECT_DUDEN_PREVIOUS_CURRENT_LINEAGE_DRIFT" in evaluate(r)["errors"]
+
+
+def test_direct_duden_receipt_path_mismatch_rejected():
+    r = current_direct_duden()
+    r[3] = "Workspaces/aber-hallo-listen-tabellen/old-stale.json"
+    assert "LATEST_RECEIPT_PATH_DRIFT" in evaluate(r)["errors"]
+
+
+def test_direct_duden_wrong_new_schema_rejected_without_downgrade():
+    r = modify_current(1, lambda obj: obj.update(
+        schema="gcpk-aber-hallo-unrecognized-checkpoint@1.0.0"))
+    assert "UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA" in evaluate(r)["errors"]
+
+
+@pytest.mark.parametrize("field", ["remaining_external_holds", "governed_patterns",
+                                    "non_governed_optional_adjuncts"])
+def test_direct_duden_rektion_conservation_tamper_blocks(field):
+    r = modify_current(1, lambda obj: obj["counts"].update({field: 999}))
+    errors = evaluate(r)["errors"]
+    assert any("DIRECT_DUDEN_GOVERNED_PATTERN_TOTAL_INVALID" in e
+               or "DIRECT_DUDEN_ORIGINAL_UNIVERSE_TOTAL_INVALID" in e for e in errors)
+
+
+def test_direct_duden_progress_attestation_drift_rejected():
+    r = modify_current(0, lambda obj: obj["progress"].update(
+        rektion_independent_external_attested_cumulative=111))
+    assert "DIRECT_DUDEN_PROGRESS_COUNTER_DRIFT" in evaluate(r)["errors"]
+
+
+def test_direct_duden_open_stage4_downgrade_blocked():
+    r = modify_current(0, lambda obj: obj["authority"]["current_portable"].update(
+        stage4="VERIFIED"))
+    assert "DIRECT_DUDEN_STAGE4_7_BOUNDARY_UNEXPECTED" in evaluate(r)["errors"]
+
+
+def test_direct_duden_false_stage5_release_blocked():
+    r = modify_current(1, lambda obj: obj["validation"].update(
+        stages_5_6_7="PASS"))
+    assert "DIRECT_DUDEN_SCOPE_VALIDATION_DRIFT:stages_5_6_7" in evaluate(r)["errors"]
+
+
+def test_direct_duden_pdf_immutability_claim_must_be_present():
+    r = modify_current(1, lambda obj: obj["validation"].update(
+        original_source_PDFs="REPLACED"))
+    assert "DIRECT_DUDEN_SCOPE_VALIDATION_DRIFT:original_source_PDFs" in evaluate(r)["errors"]
+
+
+def test_direct_duden_zip_member_count_mismatch_rejected():
+    r = modify_current(1, lambda obj: obj["validation"].update(zip_members=1))
+    assert "DIRECT_DUDEN_ZIP_MEMBER_COUNT_DRIFT" in evaluate(r)["errors"]
+
+
+def test_direct_duden_reviewer_stage4_must_remain_open():
+    r = modify_current(0, lambda obj: obj["progress"].update(
+        independent_expert_unreviewed_units=0))
+    assert "DIRECT_DUDEN_INDEPENDENT_REVIEW_OPEN_NOT_PROVEN" in evaluate(r)["errors"]
+
+
+def test_direct_duden_source_manifest_hash_mutation_detected():
+    r = modify_current(2, lambda obj: obj["source_set"][0].update(sha256="bad"))
+    assert "SOURCE_MANIFEST_SET_INVALID" in evaluate(r)["errors"]
+
+
+def test_direct_duden_duplicate_json_keys_fail_closed():
+    r = current_direct_duden()
+    r[1] = r[1].replace(b'"schema":', b'"schema":"fake","schema":', 1)
+    assert "UNTRUSTED_JSON_OR_DUPLICATE_KEYS" in evaluate(r)["errors"]
+
+
+def test_direct_duden_malformed_validation_does_not_throw():
+    r = modify_current(1, lambda obj: obj.update(validation=[]))
+    assert evaluate(r)["status"] == "BLOCKED"
+
+
+def test_direct_duden_malformed_source_id_does_not_throw():
+    r = modify_current(2, lambda obj: obj["source_set"][0].update(source_id=[]))
+    assert "SOURCE_MANIFEST_SET_INVALID" in evaluate(r)["errors"]
+
+
+def test_direct_duden_label_disagrees_with_portable_version():
+    r = modify_current(0, lambda obj: obj.update(
+        latest_milestone="WIP57_FUTURE_SYNTHETIC_NONCURRENT"))
+    assert "DIRECT_DUDEN_MILESTONE_PORTABLE_VERSION_DRIFT" in evaluate(r)["errors"]
+
+
+def test_wip52_receipt_cannot_replay_as_wip56_current():
+    r = current_direct_duden()
+    past = current_wip52()
+    r[1] = past[1]
+    assert "WIP52" not in evaluate(r).get("evaluated_contract", "")
+    assert evaluate(r)["status"] == "BLOCKED"
 
 
 def test_nested_json_duplicate_key_rejected():

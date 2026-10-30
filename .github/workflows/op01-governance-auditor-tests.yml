@@ -1,0 +1,32 @@
+name: OP01 Nonactive Governance Auditor Fixture Tests
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op01_governance_readiness.py'
+      - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
+      - '.github/workflows/op01-governance-auditor-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op01_governance_readiness.py'
+      - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
+      - '.github/workflows/op01-governance-auditor-tests.yml'
+permissions:
+  contents: read
+jobs:
+  op01-nonactive-fixture-tests-not-a-trusted-check:
+    name: OP01-SYNTHETIC-ONLY-NOT-REQUIRED-OR-TRUSTED
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install fixture-only test dependency
+        run: python -m pip install pytest
+      - name: Test synthetic structural governance blocker cases (no live approvals)
+        run: python -m pytest -q Verification/tests-v3.3.6/test_op01_governance_readiness.py

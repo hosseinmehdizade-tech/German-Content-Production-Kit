@@ -221,6 +221,60 @@ def test_source_book_locator_reprojection_matches_exact_new_canonical():
     assert audit(c, preview, expected_units=1)["affected_units"] == 0
 
 
+@pytest.mark.parametrize("value", [" ", "\t", "\n", " \t "])
+def test_whitespace_only_reviewer_cell_is_not_silently_erased(value):
+    c, old = baseline()
+    reader = csv.DictReader(io.StringIO(old.decode()))
+    row = next(reader)
+    row["expert_comments"] = value
+    output = io.StringIO(newline="")
+    writer = csv.DictWriter(output, fieldnames=reader.fieldnames)
+    writer.writeheader()
+    writer.writerow(row)
+    result, preview = run(c, output.getvalue().encode())
+    blocked(result, "EXISTING_REVIEWER_CELLS_MUST_BE_PRESERVED")
+    assert preview is None
+
+
+def test_missing_trailing_reviewer_column_is_not_empty_permission():
+    c, old = baseline()
+    rows = list(csv.reader(io.StringIO(old.decode())))
+    rows[1] = rows[1][:-1]
+    output = io.StringIO(newline="")
+    csv.writer(output).writerows(rows)
+    result, preview = run(c, output.getvalue().encode())
+    blocked(result, "MISSING_OR_INVALID_REVIEWER_CELL")
+    assert preview is None
+
+
+def test_duplicate_json_keys_in_old_frozen_cell_are_not_normalized():
+    c, old = baseline()
+    reader = csv.DictReader(io.StringIO(old.decode()))
+    row = next(reader)
+    row["core_json"] = '{"auxiliary":"haben","auxiliary":"haben"}'
+    output = io.StringIO(newline="")
+    writer = csv.DictWriter(output, fieldnames=reader.fieldnames)
+    writer.writeheader()
+    writer.writerow(row)
+    result, preview = run(c, output.getvalue().encode())
+    blocked(result, "UNSAFE_OLD_WORKSHEET_JSON")
+    assert preview is None
+
+
+def test_nonfinite_json_in_old_frozen_cell_fails_closed():
+    c, old = baseline()
+    reader = csv.DictReader(io.StringIO(old.decode()))
+    row = next(reader)
+    row["core_json"] = '{"auxiliary":"haben","sneaked":NaN}'
+    output = io.StringIO(newline="")
+    writer = csv.DictWriter(output, fieldnames=reader.fieldnames)
+    writer.writeheader()
+    writer.writerow(row)
+    result, preview = run(c, output.getvalue().encode())
+    blocked(result, "UNSAFE_OLD_WORKSHEET_JSON")
+    assert preview is None
+
+
 def test_invalid_expected_unit_count_fails_closed():
     c, old = baseline()
     r, _ = run(c, old, expected_units=0)

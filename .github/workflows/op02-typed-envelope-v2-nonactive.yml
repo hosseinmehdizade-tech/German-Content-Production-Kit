@@ -1,0 +1,32 @@
+name: OP02 Typed Envelope v2 Nonactive Pilot
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_typed_envelope_v2.py'
+      - 'Verification/test_op02_typed_envelope_v2.py'
+      - 'Optimization-Program/Verification/OP02-TYPED-ENVELOPE-V2-NONACTIVE-DESIGN.md'
+      - '.github/workflows/op02-typed-envelope-v2-nonactive.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_typed_envelope_v2.py'
+      - 'Verification/test_op02_typed_envelope_v2.py'
+      - 'Optimization-Program/Verification/OP02-TYPED-ENVELOPE-V2-NONACTIVE-DESIGN.md'
+      - '.github/workflows/op02-typed-envelope-v2-nonactive.yml'
+permissions:
+  contents: read
+jobs:
+  shadow-v2:
+    name: OP02-V2-READONLY-NONREQUIRED-NOT-RELEASE
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute typed envelope v2 read-only regressions
+        run: python -B -m unittest discover -s Verification -p test_op02_typed_envelope_v2.py -v

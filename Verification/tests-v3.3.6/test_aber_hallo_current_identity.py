@@ -408,8 +408,9 @@ def test_wip52_receipt_cannot_replay_as_wip56_current():
     r = current_direct_duden()
     past = current_wip52()
     r[1] = past[1]
-    assert "WIP52" not in evaluate(r).get("evaluated_contract", "")
-    assert evaluate(r)["status"] == "BLOCKED"
+    result = evaluate(r)
+    assert result["status"] == "BLOCKED"
+    assert any("WIP52" in error for error in result["errors"])
 
 
 def test_nested_json_duplicate_key_rejected():

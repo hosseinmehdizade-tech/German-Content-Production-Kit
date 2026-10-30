@@ -1,0 +1,32 @@
+name: OP02 Cross Domain Shadow Gate (nonactive)
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_cross_domain_shadow.py'
+      - 'Verification/test_op02_cross_domain_shadow.py'
+      - 'Optimization-Program/Verification/OP02-CROSS-DOMAIN-COMPATIBILITY-v1.md'
+      - '.github/workflows/op02-cross-domain-shadow-nonactive.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_cross_domain_shadow.py'
+      - 'Verification/test_op02_cross_domain_shadow.py'
+      - 'Optimization-Program/Verification/OP02-CROSS-DOMAIN-COMPATIBILITY-v1.md'
+      - '.github/workflows/op02-cross-domain-shadow-nonactive.yml'
+permissions:
+  contents: read
+jobs:
+  shadow-only:
+    name: OP02-MULTIDOMAIN-SYNTHETIC-NONREQUIRED-NOT-RELEASE-AUTHORITY
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read-only cross-domain source, stage and rollback regressions
+        run: python -B -m unittest discover -s Verification -p test_op02_cross_domain_shadow.py -v

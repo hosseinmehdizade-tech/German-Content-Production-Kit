@@ -12,6 +12,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from write_once_diagnostic import write_once_json_report, DiagnosticOutputBlocked
+
 from audit_stage4_snapshot_review_receipt import (
     digest, parse, unit_hash, verify as verify_receipt, clean_hash,
 )
@@ -176,7 +178,16 @@ def main():
                         corrected=[], changed=[], review_status="UNREADABLE")
     raw = json.dumps(output, indent=2, ensure_ascii=False) + "\n"
     if args.output:
-        args.output.write_text(raw, encoding="utf-8")
+        try:
+            write_once_json_report(args.output, raw, protected_inputs=tuple(
+                getattr(args, field) for field in (
+                    "anchor", "before", "import_tsv", "worksheet",
+                    "source_a1_a2", "source_b1_c2", "receipt", "after", "readback"
+                )))
+        except (OSError, DiagnosticOutputBlocked) as exc:
+            print(json.dumps({"status": "BLOCKED_DIAGNOSTIC_OUTPUT",
+                              "reason": str(exc)}))
+            return 2
     else:
         print(raw)
     return 0 if output["status"].startswith("PASS_SCOPED_") else 2

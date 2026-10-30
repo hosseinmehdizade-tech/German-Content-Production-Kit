@@ -1,0 +1,34 @@
+name: OP02 Nonactive Stable Typed Receipt Contract
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_stable_receipt_v1.py'
+      - 'Verification/test_op02_stable_receipt_v1.py'
+      - 'Optimization-Program/Verification/OP02-ABER-HALLO-TYPED-RECEIPT-PROFILE-v1.json'
+      - 'Optimization-Program/Verification/OP02-STABLE-TYPED-RECEIPT-DESIGN-v1.md'
+      - '.github/workflows/op02-stable-typed-receipt-nonactive.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_stable_receipt_v1.py'
+      - 'Verification/test_op02_stable_receipt_v1.py'
+      - 'Optimization-Program/Verification/OP02-ABER-HALLO-TYPED-RECEIPT-PROFILE-v1.json'
+      - 'Optimization-Program/Verification/OP02-STABLE-TYPED-RECEIPT-DESIGN-v1.md'
+      - '.github/workflows/op02-stable-typed-receipt-nonactive.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-contract-only:
+    name: OP02-TYPED-SYNTHETIC-NONREQUIRED-NOT-RELEASE-AUTHORITY
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run only synthetic typed receipt contract adversarial tests
+        run: python -B -m unittest discover -s Verification -p test_op02_stable_receipt_v1.py -v

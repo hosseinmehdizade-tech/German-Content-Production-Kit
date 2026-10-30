@@ -1,0 +1,56 @@
+{
+  "schema": "flashcards-work-outcome-receipt@1.0.0",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": {
+    "name": "CUMULATIVE_STAGE4_V8_C48_310_SOURCE_FINAL_IDENTITY_CROSSWALK_36_METADATA_LINKS",
+    "level": "substep",
+    "state": "IN_PROGRESS"
+  },
+  "scope": {
+    "unit": "source_verben_user_final_record_identity",
+    "total_units": 310
+  },
+  "progress": {
+    "reviewed_unique": 310,
+    "unreviewed": 0,
+    "dispositions": {
+      "EXACT_CANONICAL_ID_LEXEME_MATCH_UNCHANGED": 273,
+      "VERIFIED_DISTINCT_ORIGINAL_ID_CANONICAL_LEXEME_CROSSWALK_APPLIED": 36,
+      "SOURCE_ONLY_GLAUBEN_UNMAPPABLE_PRESERVED": 1
+    }
+  },
+  "quality": {
+    "stage_complete": false,
+    "verification_evidence": [
+      "V7 exact parent TSV SHA256 560af5c8929e1fb6f73a69ee8dab275b18505e77a57ff1bd7168ff876259287d verified",
+      "C48 original read-only ZIP SHA256 410322cecdd335b80477f7deb73e6b7e9947d40dbc816559270038735bfb7524 and 310 user-final TSV SHA256 f6491334e3174e12a9989801a47f2d75188bc9162de7edd56f4b0bfc2caf5414 verified",
+      "All 310 source verbs matched to exact C48 dispositions (273 exact ID, 36 safe lexeme crosswalk, one source-only glauben hold)",
+      "36 source-original IDs mapped to 36 unique current canonical target IDs with source verb/front/semantic_identity matching; non-display c48_verified_source_identity_link_v1 stored",
+      "Source-only glauben ma1m-lu-2716 row:08037 must not overwrite unrelated canonical gebrauchte Kleidung at that ID",
+      "162 C48 proposed additions remain excluded from 2171 active combinations; all 162 lack English gloss (100 generated-example, 46 curated, nine registered-source claims, seven relation-based)",
+      "Only 36 custom_fields additions; no prior custom key or any other TSV column modified; 2961 rows exact byte-identical, all 2997 cards and 11988 trilingual examples unchanged",
+      "Original source and C48 read-only unchanged; V7 and V8 all active组合 2171 unchanged; existing source/locked data preserved",
+      "Guarded line-level parent/row/child hashes exact; independent verifier PASS and three seeded negative checks rejected",
+      "Deterministic ZIP generated twice, SHA256SUMS CRC all PASS, Library download byte-for-byte and SHA256 identical"
+    ],
+    "parent_content_sha256": "560af5c8929e1fb6f73a69ee8dab275b18505e77a57ff1bd7168ff876259287d",
+    "child_content_sha256": "14d8ffdb3d59f0514dafe0d44a4a8e167b915d365741cd704c61d2a9c23d578d",
+    "C48_unreviewed_additions_quarantined": 162,
+    "active_structured_combinations": 2171,
+    "source_only_glauben_hold": true,
+    "full_independent_semantic_stage4": "IN_PROGRESS_NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false
+  },
+  "persistence": {
+    "git": "IN_SYNC",
+    "resume_pointer": "Workspaces/menschen-a1-final-consolidation-v336/CURRENT-PORTABLE-AUTHORITY.json / stage4_cumulative_acceptance_ledger_v8",
+    "library_id": "libfile_ef1c533a637481918cd5142627d2c52c",
+    "archive_sha256": "3ea2723c0121d97a82a4246b1b8d6cb628adb0fb064abd987e5c2ced9e201df4",
+    "archive_bytes": 1001221,
+    "library_roundtrip": "PASS_BYTE_IDENTICAL"
+  },
+  "next": "Resume exact V8 cumulative ledger: all 310 user-final identity mappings accounted (36 safe links applied, one bounded source-only glauben); independently adjudicate 162 quarantined C48 supplement candidate combinations with English gloss/source/didactic gates before activation and finish actual remaining high-risk DE/FA/EN secondpass. Do not restart verified 2997 structural example checks. No stage4 PASS or import."
+}

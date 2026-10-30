@@ -36,9 +36,13 @@ class FakeGitHub:
         self.bad_response = False
         self.bad_encoding = False
         self.scope_data = None  # tests opt in explicitly to one exact remote grant
+        self.branch_status = {"name": "main", "protected": True}  # synthetic only
 
     def __call__(self, method, path, branch, token, payload=None):
-        self.calls.append("SCOPE_GET" if path == m.SCOPE_PATH else method)
+        self.calls.append("SCOPE_GET" if path == m.SCOPE_PATH else
+                          "BRANCH_GET" if method == "GET_BRANCH" else method)
+        if method == "GET_BRANCH":
+            return self.branch_status
         if method == "GET":
             response_data = self.scope_data if path == m.SCOPE_PATH else self.data
             if response_data is None:
@@ -144,7 +148,7 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
     def test_exact_preimage_cas_update_independent_remote_readback(self):
         api = FakeGitHub(self.parent_bytes)
         result = self.run_persist(api)
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT", "GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "BRANCH_GET", "PUT", "GET"])
         self.assertEqual(api.data, self.current_bytes)
         self.assertEqual(result["current_sha256"], result["remote_readback_sha256"])
         self.assertFalse(result["independent_linguistic_stage4"])
@@ -152,6 +156,9 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         self.assertFalse(result["library_readback_verified"])
         self.assertTrue(result["scope_rechecked_identical_pre_put"])
         self.assertFalse(result["scope_recheck_is_atomic_with_target_put"])
+        self.assertTrue(result["branch_protected_bit_checked_pre_put"])
+        self.assertFalse(result["branch_protection_is_independent_issuer_proof"])
+        self.assertFalse(result["branch_protection_is_atomic_with_put"])
 
     def test_report_only_rejected_before_network(self):
         self.after = copy.deepcopy(self.before)
@@ -185,20 +192,20 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
         api = FakeGitHub(self.parent_bytes)
         api.conflict = True
         self.rejects(api, "CAS_CONFLICT")
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "BRANCH_GET", "PUT"])
         self.assertEqual(api.data, self.parent_bytes)
 
     def test_remote_readback_differs_after_accepted_put(self):
         api = FakeGitHub(self.parent_bytes)
         api.corrupt_after_write = True
         self.rejects(api, "REMOTE_READBACK_MISMATCH")
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT", "GET"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "BRANCH_GET", "PUT", "GET"])
 
     def test_unexpected_put_echo_is_uncertain_not_pass(self):
         api = FakeGitHub(self.parent_bytes)
         api.bad_response = True
         self.rejects(api, "WRITE_OUTCOME_UNCERTAIN")
-        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "PUT"])
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "BRANCH_GET", "PUT"])
 
     def test_remote_contents_bad_encoding_rejected(self):
         api = FakeGitHub(self.parent_bytes)
@@ -421,6 +428,92 @@ class RemoteGitAppliedEditTests(unittest.TestCase):
                 api.scope_data = fixture
                 self.rejects(api, message)
                 self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_unprotected_main_refuses_self_authored_exact_grant_before_put(self):
+        api = FakeGitHub(self.parent_bytes)
+        api.branch_status = {"name": "main", "protected": False}
+        self.rejects(api, "REMOTE_MAIN_UNPROTECTED")
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "BRANCH_GET"])
+        self.assertEqual(api.data, self.parent_bytes)
+
+    def test_branch_protection_claim_must_be_exact_boolean_true(self):
+        for branch in (
+            {"name": "main", "protected": "true"},
+            {"name": "main", "protected": 1},
+            {"name": "main", "protected": None},
+            {"name": "main"},
+        ):
+            with self.subTest(branch=branch):
+                api = FakeGitHub(self.parent_bytes)
+                api.branch_status = branch
+                self.rejects(api, "REMOTE_MAIN_UNPROTECTED")
+                self.assertNotIn("PUT", api.calls)
+
+    def test_wrong_remote_branch_identity_rejected(self):
+        for status in ({"name": "old-branch", "protected": True}, None,
+                       [], {"protected": True}):
+            with self.subTest(status=status):
+                api = FakeGitHub(self.parent_bytes)
+                api.branch_status = status
+                self.rejects(api, "REMOTE_BRANCH_STATUS_UNVERIFIABLE")
+                self.assertNotIn("PUT", api.calls)
+
+    def test_remote_branch_metadata_unreadable_blocks(self):
+        class BrokenBranch(FakeGitHub):
+            def __call__(self, method, path, branch, token, payload=None):
+                if method == "GET_BRANCH":
+                    self.calls.append("BRANCH_GET")
+                    raise m.PersistenceBlocked("REMOTE_READ_BLOCKED: synthetic inaccessible branch")
+                return super().__call__(method, path, branch, token, payload)
+
+        api = BrokenBranch(self.parent_bytes)
+        self.rejects(api, "REMOTE_READ_BLOCKED")
+        self.assertEqual(api.calls, ["SCOPE_GET", "GET", "SCOPE_GET", "BRANCH_GET"])
+        self.assertEqual(api.data, self.parent_bytes)
+
+    def test_duplicate_json_key_in_scope_registry_rejected(self):
+        api = FakeGitHub(self.parent_bytes)
+        raw = json.dumps(self.scope_permit()).encode("utf-8")
+        api.scope_data = raw.replace(b'"status":', b'"status":"DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL","status":', 1)
+        self.rejects(api, "REMOTE_SCOPED_PERMISSION_INVALID_JSON")
+        self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_duplicate_json_key_within_exact_grant_rejected(self):
+        api = FakeGitHub(self.parent_bytes)
+        raw = json.dumps(self.scope_permit()).encode("utf-8")
+        api.scope_data = raw.replace(b'"authorization_ref":',
+                                     b'"authorization_ref":"fake-approval","authorization_ref":', 1)
+        self.rejects(api, "REMOTE_SCOPED_PERMISSION_INVALID_JSON")
+        self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_nonfinite_json_number_in_scope_registry_rejected(self):
+        api = FakeGitHub(self.parent_bytes)
+        raw = json.dumps(self.scope_permit()).encode("utf-8")
+        api.scope_data = raw.replace(b'"scopes":', b'"nonfinite": NaN, "scopes":', 1)
+        self.rejects(api, "REMOTE_SCOPED_PERMISSION_INVALID_JSON")
+        self.assertEqual(api.calls, ["SCOPE_GET"])
+
+    def test_branch_metadata_uses_real_git_api_branch_endpoint(self):
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+            def read(self, *args):
+                return b'{"name":"main","protected":true}'
+
+        def transport(req, timeout=None):
+            self.assertEqual(req.get_method(), "GET")
+            self.assertEqual(req.full_url,
+                             "https://api.github.com/repos/"
+                             + m.REPOSITORY + "/branches/main")
+            return Response()
+
+        with mock.patch.object(m.urllib.request, "urlopen", side_effect=transport):
+            data = m.github_api("GET_BRANCH", "", "main", "synthetic-token")
+        self.assertTrue(data["protected"])
 
     def test_contents_http409_maps_to_conflict(self):
         err = urllib.error.HTTPError("https://api.github.com", 409, "conflict", None, None)

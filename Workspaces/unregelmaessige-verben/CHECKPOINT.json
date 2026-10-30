@@ -1,31 +1,46 @@
 {
   "schema": "gcpk-uv-workstream-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
-  "current_scope": "R8 Stage5 local projection / formal Stage5 gates still open",
   "checkpoint_date": "2026-10-30",
-  "latest_receipt": "Workspaces/unregelmaessige-verben/STAGE5-R8-CONTENT-CANDIDATE-20261030.json",
+  "current_scope": "R8 Stage5 official HF2 repaired; full v3.3.6 clean Stage5 blocked by canonical SHA-bound legacy ledgers",
+  "latest_receipt": "Workspaces/unregelmaessige-verben/STAGE5-R8-OFFICIAL-HF2-V336-DIAGNOSTICS-20261030.json",
   "stage4": {
     "status": "PASS_AI_DERIVED_R8_REBASELINE",
     "zip_sha256": "d8a6a55b4a918d86226238a03e158460d577751f0ae8c31952d6c107fe3f26b2",
-    "raw_screenshot_parity": "NOT_REATTESTED"
+    "original_png": "NOT_REATTESTED"
   },
   "stage5": {
-    "status": "PASS_LOCAL_PROJECTION__OFFICIAL_V336_AND_HF2_PENDING",
-    "sha256": "a78ab620c876fe95d1729411e940719a1a4d0cdaf67dffb6269810a9710aa4ab",
-    "file": "Unregelmaessige-Verben-v1.3.1-R8-Stage5-CONTENT-PRODUCTION-CANDIDATE.zip",
-    "library_file_id": "libfile_3523b11c361881919c831cccdbdefe46",
+    "status": "BLOCKED_FULL_V336_CANONICAL_SHA_MISMATCH",
+    "hf2": "PASS_174_174",
+    "unified": "PASS_174_174",
+    "source_occurrences": "PASS_7_SOURCES_258_OCCURRENCES",
+    "identity_closure": "FAIL_CANONICAL_SHA_MISMATCH",
+    "enrichment_candidate_ledger": "FAIL_CANONICAL_SHA_MISMATCH",
+    "enrichment_completeness": "FAIL_CANONICAL_SHA_MISMATCH",
+    "clean_builder": "BLOCKED_ON_IDENTITY",
+    "file": "Unregelmaessige-Verben-v1.3.1-R8-Stage5-HF2-OFFICIAL-AUDITED-CANDIDATE.zip",
+    "sha256": "45b4a0e1b1b36264a11146ea8db253fdb45271b4be88743dfb47b914185ba06a",
+    "library_file_id": "libfile_d10a7225cf688191a4e07c152ded9366",
     "cards": 174,
     "examples": 696,
     "combinations": 482,
     "relations": 820,
-    "post_upload_byte_readback": "PASS",
-    "negative_controls": "12/12",
-    "original_source_screenshots": "EXTERNAL_MISSING"
+    "front_only_repairs": 174,
+    "source_semantic_changes": 0,
+    "library_byte_readback": "PASS"
+  },
+  "historical_canonical_sha256": "187cee976e46d883dfab9e96c2aa4be1ef69aca9d35d69515e4bb8ac3c0212fd",
+  "current_canonical_sha256": "7d00adb69b4ce25c6419fb4d15faacd5813a9a6f7cd546fc9a8d04cf4eb689cf",
+  "historical_drift": {
+    "modified_examples": 53,
+    "removed_relations": 82,
+    "modified_relations": 31,
+    "modified_senses": 3,
+    "modified_lexemes": 1
   },
   "stage6": "NOT_RUN_EXACT_CURRENT_RUNTIME",
   "stage7": "NOT_RUN",
   "release_final": false,
-  "status_boundary": "Not official Stage5 PASS; only portable candidate; original image pixel parity and official full framework not rerun",
-  "next_action": "Run pinned v3.3.6 clean delivery anti-bypass + official HF2 on exact Stage5 candidate; then exact CURRENT Stage6, final Stage7",
-  "global_project_state": "NOT_UPDATED_THIS_MILESTONE_ONLY_CHECKPOINT_PLUS_LATEST"
+  "status_boundary": "Official HF2 and neutral projection PASS; full source-aware v3.3.6 Stage5 FAIL on old canonical hash evidence. Do not relabel current as formal Stage5 PASS, or mutate historical source. No original screenshots in current package.",
+  "next_action": "Review and regenerate R8-hash-bound identity/candidate/completeness decisions after substantive 53-example and 113-relation impact review, then rerun official v336 Stage5 builder. Stage6 requires exact CURRENT."
 }

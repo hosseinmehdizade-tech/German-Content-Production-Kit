@@ -61,6 +61,21 @@ GitHub documentation:
 
 **Decision invariant:** neither PR/CI success, GitHub commit verification nor byte-integrity PASS can independently grant writer scopes, replace a reviewer's verified identity, or qualify a final release. `Optimization-Program/WRITER-SCOPES.json` stays DENY_ALL until *separate* named authorization and external enforcement.
 
+
+### 4A. Real GitHub check-run source collision (2026-10-30 read-only recheck)
+
+A fresh read of GitHub's **real** `GET /commits/{pr-head-sha}/check-runs` and the **real** [PR #33 diff](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/33) verified that a green GitHub Actions check is not a trusted base-defined status:
+
+| Actual public PR | PR-head SHA | Check name | Conclusion | Check app slug / integration ID |
+| --- | --- | --- | --- | --- |
+| [#33 (malicious unmerged test)](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/33) | `c2aeb4fe30e47cb0150aa828472af92961e8c1b5` | `op01-governance-preflight` | `success` | `github-actions` / **15368** |
+| [#51 (merged safe code/test change)](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/51) | `fdc3aed7bb16e6e108b9be109a08ebdff8150fc2` | `safe-packaging (ubuntu-latest)` | `success` | `github-actions` / **15368** |
+
+The actual #33 patch replaced the **DENY_ALL** verification with an `echo` statement, without changing the check name or GitHub Actions app identity, then returned green. Therefore a branch rule that merely pins required-check `context` and integration ID **15368** cannot distinguish a head-defined spoofed job from a protected base-defined job. The two checks above have **different names**; they corroborate that source identity is shared, not that their validation logic is identical. A check success at an exact PR-head SHA still does not authenticate the workflow definition used to produce it.
+
+**Required before real protection rollout:** Route A must demonstrate that the policy check executes from an independently protected **base-defined workflow**, that an attacker cannot redefine it in a PR head, and that current GitHub event policy permits it on every intended PR. Route B needs an independently controlled GitHub App issuer with keys/policy outside the PR author's control. Neither route is approved or deployed; `WRITER-SCOPES` remains `DENY_ALL`. The read-only OP01 check-origin analyzer now returns `BLOCKED_CHECK_ORIGIN_NOT_AUTHENTICATED` even when the check is green and its GitHub Actions app ID matches.
+
+
 ## 5. Present disposition
 
 `DECISION_READY_GOVERNANCE_DESIGN_ONLY` — **not implemented**.

@@ -16,6 +16,8 @@ from pathlib import Path
 import sys
 import zipfile
 
+from write_once_diagnostic import write_once_json_report, DiagnosticOutputBlocked
+
 SCHEMA="gcpk-op02-stage4-current-worksheet-freshness@1"
 REVIEW_FIELDS=("expert_decision","expert_reviewer_identity","expert_review_date",
                "expert_evidence","expert_comments")
@@ -157,7 +159,12 @@ def main():
         return 2
     data=json.dumps(report,ensure_ascii=False,indent=2)+"\n"
     if args.output:
-        args.output.write_text(data,encoding="utf-8")
+        try:
+            write_once_json_report(args.output, data, protected_inputs=(args.zip,))
+        except (OSError, DiagnosticOutputBlocked) as exc:
+            print(json.dumps({"status": "BLOCKED_DIAGNOSTIC_OUTPUT",
+                              "reason": str(exc)}))
+            return 2
     else:
         print(data)
     return 2 if report["status"].startswith("BLOCKED") or report["status"].startswith("STALE") else 0

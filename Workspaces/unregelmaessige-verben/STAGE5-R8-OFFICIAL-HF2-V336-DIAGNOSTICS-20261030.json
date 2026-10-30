@@ -1,0 +1,87 @@
+{
+  "schema": "uv-stage5-r8-official-validators-diagnostic@1.0.0",
+  "date": "2026-10-30",
+  "workstream": "unregelmaessige-verben",
+  "target": "R8 Stage5 current canonical 7d00ad... with HF2 learner-front repair",
+  "milestone": "HF2_REPAIRED_OFFICIAL_PASS__FULL_V336_STAGE5_BLOCKED",
+  "parent_stage5": {
+    "name": "Unregelmaessige-Verben-v1.3.1-R8-Stage5-CONTENT-PRODUCTION-CANDIDATE.zip",
+    "sha256": "a78ab620c876fe95d1729411e940719a1a4d0cdaf67dffb6269810a9710aa4ab",
+    "frozen": true
+  },
+  "artifact": {
+    "name": "Unregelmaessige-Verben-v1.3.1-R8-Stage5-HF2-OFFICIAL-AUDITED-CANDIDATE.zip",
+    "sha256": "45b4a0e1b1b36264a11146ea8db253fdb45271b4be88743dfb47b914185ba06a",
+    "size_bytes": 907811,
+    "library_file_id": "libfile_d10a7225cf688191a4e07c152ded9366",
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.1-R8-Stage5-HF2-OFFICIAL-AUDITED-CANDIDATE.zip",
+    "manifest_members": 35,
+    "library_sha256_byte_readback": "PASS"
+  },
+  "counts": {
+    "cards": 174,
+    "examples": 696,
+    "accepted_combinations": 482,
+    "relations": 820,
+    "front_presentation_repairs": 174,
+    "semantic_field_mutations": 0
+  },
+  "current_canonical_sha256": "7d00adb69b4ce25c6419fb4d15faacd5813a9a6f7cd546fc9a8d04cf4eb689cf",
+  "official_tests": {
+    "hf2_before": {
+      "status": "FAIL",
+      "errors": 174,
+      "code": "VERB_FRONT_NOT_CANONICAL_DISPLAY"
+    },
+    "hf2_after": {
+      "status": "PASS",
+      "checked_verb": 174,
+      "errors": 0
+    },
+    "neutral_projection": {
+      "status": "PASS",
+      "cards": 174
+    },
+    "source_occurrences": {
+      "status": "PASS",
+      "sources": 7,
+      "occurrences": 258
+    },
+    "identity_closure": {
+      "status": "FAIL",
+      "reason": "CANONICAL_SHA_MISMATCH"
+    },
+    "candidate_ledger": {
+      "status": "FAIL",
+      "reason": "CANONICAL_SHA_MISMATCH",
+      "candidates": 0
+    },
+    "enrichment_completeness": {
+      "status": "FAIL",
+      "reason": "CANONICAL_SHA_MISMATCH",
+      "targets": 174,
+      "dimension_cells": 2262,
+      "unresolved_cells_on_HISTORICAL_baseline": 0
+    },
+    "clean_builder_v336": {
+      "status": "BLOCKED",
+      "first_failed_gate": "IDENTITY_CLOSURE_CANONICAL_SHA_MISMATCH"
+    }
+  },
+  "canonical_drift_vs_historical": {
+    "changed_lexemes": 1,
+    "changed_senses": 3,
+    "changed_examples": 53,
+    "removed_relations": 82,
+    "changed_relations": 31,
+    "added_relations": 0,
+    "historical_canonical_sha256": "187cee976e46d883dfab9e96c2aa4be1ef69aca9d35d69515e4bb8ac3c0212fd"
+  },
+  "stage4": "PASS_AI_DERIVED_REBASELINE_ORIGINAL_PNG_NOT_REATTESTED",
+  "stage5": "BLOCKED_FULL_OFFICIAL_ANTI_BYPASS",
+  "stage6": "NOT_RUN_CURRENT_RUNTIME",
+  "stage7": "NOT_RUN",
+  "release_final": false,
+  "safe_boundary": "Historical identity/candidate/completeness ledger hashes cannot be rewritten as R8 evidence without substantive re-review of changed examples/relations. No original screenshot pixel re-attestation. HF2 front edits are presentation-only.",
+  "resume": "Re-audit affected R8 source/identity/enrichment dispositions against latest canonical, regenerate exactly bound role inputs, run official v3.3.6 builder and HF2 on its generated output, then Stage6 exact CURRENT."
+}

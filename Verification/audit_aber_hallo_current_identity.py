@@ -221,6 +221,259 @@ def _verify_wip52(latest, receipt, source, receipt_relative_path):
     return result
 
 
+
+
+def _verify_direct_duden_checkpoint(latest, receipt, source, receipt_relative_path):
+    """WIP56+ *schema-based* metadata QA; source/binary semantic checks remain OPEN.
+
+    No specific WIP number or fixed attestation count is trusted as CURRENT.
+    The exact version is taken from LATEST then cross-checked against the
+    registered receipt path, parent portable, counts, and workstream metadata.
+    A new receipt schema (not this same contract) MUST still fail closed.
+    """
+    errors = []
+    if latest.get("schema") != "gcpk-workstream-latest@1.0.0" or latest.get("workstream") != WORKSTREAM:
+        errors.append("LATEST_WRONG_SCHEMA_OR_WORKSTREAM")
+    if source.get("schema") != "gcpk-source-manifest@1.1.0" or source.get("dataset") != WORKSTREAM:
+        errors.append("SOURCE_MANIFEST_WRONG_IDENTITY")
+    if (receipt.get("schema") != "gcpk-aber-hallo-direct-duden-scoped-checkpoint@1.0.0"
+            or receipt.get("workstream") != WORKSTREAM
+            or receipt.get("status") != "PASS_SCOPED_STAGE4_OPEN"):
+        errors.append("DIRECT_DUDEN_RECEIPT_IDENTITY_UNEXPECTED")
+    label = latest.get("latest_milestone")
+    match = re.match(r"^WIP([0-9]{2,4})_", label) if isinstance(label, str) else None
+    version = int(match.group(1)) if match else 0
+    if version < 56:
+        errors.append("DIRECT_DUDEN_CURRENT_MILESTONE_INVALID")
+    stored_path = latest.get("latest_receipt_path")
+    if (not isinstance(stored_path, str) or
+            not stored_path.startswith(BASE + "/") or
+            ".." in stored_path.split("/") or
+            not stored_path.endswith(".json") or
+            stored_path != receipt_relative_path or
+            not version or f"WIP{version}" not in stored_path):
+        errors.append("LATEST_RECEIPT_PATH_DRIFT")
+    if (not isinstance(latest.get("latest_receipt_commit_sha"), str)
+            or not COMMIT.fullmatch(latest["latest_receipt_commit_sha"])):
+        errors.append("RECEIPT_COMMIT_POINTER_INVALID")
+    current = latest.get("authority", {}).get("current_portable") if isinstance(latest.get("authority"), dict) else None
+    package = latest.get("complete_working_content_package")
+    portable = receipt.get("portable")
+    parent = receipt.get("parent")
+    if not all(isinstance(x, dict) for x in (current, package, portable, parent)):
+        errors.append("CURRENT_PORTABLE_PACKAGE_PARENT_STRUCTURE_MISSING")
+    else:
+        if not all(_valid_sha(x.get("sha256")) for x in (current, package, portable, parent)):
+            errors.append("DIRECT_DUDEN_PORTABLE_OR_PARENT_SHA_INVALID")
+        for left, right in (("filename", "filename"), ("sha256", "sha256"),
+                            ("size_bytes", "size_bytes"),
+                            ("library_file_id", "library_file_id"),
+                            ("library_path", "library_path"),
+                            ("canonical_sha256", "canonical_sha256"),
+                            ("import_sha256", "import_sha256")):
+            if (not current.get(left) or current.get(left) != portable.get(right)):
+                errors.append("DIRECT_DUDEN_CURRENT_RECEIPT_DRIFT:" + left)
+        for left, right in (("filename", "name"), ("sha256", "sha256"),
+                            ("size_bytes", "bytes"),
+                            ("library_file_id", "library_file_id"),
+                            ("library_path", "library_path")):
+            if current.get(left) != package.get(right):
+                errors.append("DIRECT_DUDEN_CURRENT_PACKAGE_DRIFT:" + left)
+        if (type(current.get("size_bytes")) is not int or current["size_bytes"] <= 0
+                or type(portable.get("size_bytes")) is not int
+                or type(package.get("bytes")) is not int):
+            errors.append("DIRECT_DUDEN_PORTABLE_SIZE_INVALID")
+        if (type(package.get("member_count")) is not int
+                or type((receipt.get("validation") if isinstance(receipt.get("validation"), dict) else {}).get("zip_members")) is not int
+                or package.get("member_count") != receipt["validation"]["zip_members"]):
+            errors.append("DIRECT_DUDEN_ZIP_MEMBER_COUNT_DRIFT")
+        if current.get("stage4") != "OPEN" or package.get("stage4") != "OPEN" or package.get("stage5_6_7") != "NOT_RUN":
+            errors.append("DIRECT_DUDEN_STAGE4_7_BOUNDARY_UNEXPECTED")
+        if parent.get("sha256") != package.get("parent_sha256") or not _valid_sha(parent.get("sha256")):
+            errors.append("DIRECT_DUDEN_PARENT_SHA_DRIFT")
+        old = latest.get(f"previous_wip{version}_source_current")
+        previous = old.get("portable") if isinstance(old, dict) else None
+        if (not isinstance(previous, dict)
+                or previous.get("sha256") != parent.get("sha256")
+                or previous.get("filename") != parent.get("filename")):
+            errors.append("DIRECT_DUDEN_PREVIOUS_CURRENT_LINEAGE_DRIFT")
+        if (not version or
+                not isinstance(current.get("filename"), str) or
+                f"WIP{version}-" not in current["filename"] or
+                current["filename"] != portable.get("filename")):
+            errors.append("DIRECT_DUDEN_MILESTONE_PORTABLE_VERSION_DRIFT")
+        if (not isinstance(portable.get("library_roundtrip"), str)
+                or not portable["library_roundtrip"].startswith("PASS_")):
+            errors.append("DIRECT_DUDEN_PORTABLE_ROUNDTRIP_CLAIM_MISSING")
+        for name in ("canonical_sha256", "import_sha256"):
+            if not _valid_sha(current.get(name)):
+                errors.append("DIRECT_DUDEN_INTERNAL_MASTER_HASH_INVALID:" + name)
+    counts = receipt.get("counts")
+    progress = latest.get("progress")
+    if not isinstance(counts, dict) or not isinstance(progress, dict):
+        errors.append("DIRECT_DUDEN_COUNTERS_MISSING")
+    else:
+        names = ("new_duden_exact", "cumulative_external_attested",
+                 "remaining_external_holds", "governed_patterns",
+                 "non_governed_optional_adjuncts", "unit_count", "import_cards")
+        if any(type(counts.get(x)) is not int or counts[x] < 0 for x in names):
+            errors.append("DIRECT_DUDEN_COUNTERS_INVALID")
+        else:
+            if counts["unit_count"] != 788 or counts["import_cards"] != 787:
+                errors.append("DIRECT_DUDEN_UNIT_IMPORT_COUNT_DRIFT")
+            if (counts["cumulative_external_attested"] + counts["remaining_external_holds"]
+                    != counts["governed_patterns"]):
+                errors.append("DIRECT_DUDEN_GOVERNED_PATTERN_TOTAL_INVALID")
+            if counts["governed_patterns"] + counts["non_governed_optional_adjuncts"] != 984:
+                errors.append("DIRECT_DUDEN_ORIGINAL_UNIVERSE_TOTAL_INVALID")
+            if (progress.get("rektion_independent_external_attested_cumulative")
+                    != counts["cumulative_external_attested"]
+                    or progress.get("rektion_external_holds_remaining")
+                    != counts["remaining_external_holds"]):
+                errors.append("DIRECT_DUDEN_PROGRESS_COUNTER_DRIFT")
+            if (version and progress.get(f"rektion_wip{version}_new_duden") is not None
+                    and progress[f"rektion_wip{version}_new_duden"] != counts["new_duden_exact"]):
+                errors.append("DIRECT_DUDEN_MILESTONE_NEW_COUNTER_DRIFT")
+        if (progress.get("pending_independent_expert_stage4") is not True
+                or progress.get("independent_expert_unreviewed_units") != 788):
+            errors.append("DIRECT_DUDEN_INDEPENDENT_REVIEW_OPEN_NOT_PROVEN")
+    validation = receipt.get("validation")
+    if not isinstance(validation, dict):
+        errors.append("DIRECT_DUDEN_VALIDATION_STRUCTURE_MISSING")
+    else:
+        for field, desired in (
+            ("full_stage4", "OPEN"),
+            ("stages_5_6_7", "NOT_RUN"),
+            ("original_source_PDFs", "UNCHANGED"),
+            ("learning_card_examples_translations", "UNCHANGED"),
+            ("zip_crc", "PASS"),
+            ("sha256", "PASS"),
+            ("canonical_import_rection_qa", "PASS"),
+        ):
+            if validation.get(field) != desired:
+                errors.append("DIRECT_DUDEN_SCOPE_VALIDATION_DRIFT:" + field)
+    sources = source.get("source_set")
+    if (not isinstance(sources, list) or len(sources) != 2
+            or any(not isinstance(x, dict) or not isinstance(x.get("source_id"), str) for x in sources)
+            or len({x["source_id"] for x in sources if isinstance(x, dict) and isinstance(x.get("source_id"), str)}) != 2
+            or any(not isinstance(x, dict) or x.get("source_type") != "pdf"
+                   or not _valid_sha(x.get("sha256")) for x in sources)):
+        errors.append("SOURCE_MANIFEST_SET_INVALID")
+    result = _result(errors)
+    result["evaluated_contract"] = "DIRECT_DUDEN_SCOPED_TRACKED_METADATA_ONLY"
+    result["resolved_milestone"] = label if isinstance(label, str) else None
+    result["historical_wip52_not_current"] = True
+    return result
+
+
+
+
+def _verify_rektion_checkpoint(latest, receipt, source, receipt_relative_path):
+    """WIP57+ flat *stable* Rektion checkpoint schema, tracked metadata only."""
+    errors = []
+    if latest.get("schema") != "gcpk-workstream-latest@1.0.0" or latest.get("workstream") != WORKSTREAM:
+        errors.append("LATEST_WRONG_SCHEMA_OR_WORKSTREAM")
+    if source.get("schema") != "gcpk-source-manifest@1.1.0" or source.get("dataset") != WORKSTREAM:
+        errors.append("SOURCE_MANIFEST_WRONG_IDENTITY")
+    milestone = latest.get("latest_milestone")
+    match = re.match(r"^WIP([0-9]{2,4})_", milestone) if isinstance(milestone, str) else None
+    version = int(match.group(1)) if match else 0
+    if version < 57:
+        errors.append("REKTION_MILESTONE_VERSION_INVALID")
+    if (receipt.get("schema") != "gcpk-aber-hallo-rektion-checkpoint@1.0.0"
+            or receipt.get("result") != "PASS_SCOPED_STAGE4_OPEN"
+            or not isinstance(receipt.get("scope"), str)
+            or not version or not receipt["scope"].startswith(f"ABER_HALLO_WIP{version}_")):
+        errors.append("REKTION_RECEIPT_SCOPE_OR_SCHEMA_INVALID")
+    path = latest.get("latest_receipt_path")
+    if (not isinstance(path, str) or
+            path != receipt_relative_path or
+            not path.startswith(BASE + "/") or
+            ".." in path.split("/") or
+            not path.endswith(".json") or
+            not version or f"WIP{version}" not in path):
+        errors.append("LATEST_RECEIPT_PATH_DRIFT")
+    if not isinstance(latest.get("latest_receipt_commit_sha"), str) or not COMMIT.fullmatch(latest["latest_receipt_commit_sha"]):
+        errors.append("RECEIPT_COMMIT_POINTER_INVALID")
+    current = latest.get("authority", {}).get("current_portable") if isinstance(latest.get("authority"), dict) else None
+    package = latest.get("complete_working_content_package")
+    if not isinstance(current, dict) or not isinstance(package, dict):
+        errors.append("REKTION_CURRENT_PACKAGE_MISSING")
+    else:
+        for a,b in (("filename","zip"),("sha256","zip_sha256"),
+                    ("size_bytes","size_bytes"),("library_file_id","library_file_id"),
+                    ("library_path","library_path"),("canonical_sha256","canonical_sha256"),
+                    ("import_sha256","import_sha256")):
+            if not current.get(a) or current.get(a) != receipt.get(b):
+                errors.append("REKTION_RECEIPT_PORTABLE_DRIFT:"+a)
+        for a,b in (("filename","name"),("sha256","sha256"),
+                    ("size_bytes","bytes"),("library_file_id","library_file_id"),
+                    ("library_path","library_path")):
+            if current.get(a) != package.get(b):
+                errors.append("REKTION_PACKAGE_PORTABLE_DRIFT:"+a)
+        for key in ("sha256","canonical_sha256","import_sha256"):
+            if not _valid_sha(current.get(key)):
+                errors.append("REKTION_PORTABLE_HASH_INVALID:"+key)
+        if (not version or not isinstance(current.get("filename"),str)
+                or f"WIP{version}-" not in current["filename"]):
+            errors.append("REKTION_PORTABLE_VERSION_NOT_CURRENT")
+        if type(current.get("size_bytes")) is not int or current["size_bytes"] <= 0:
+            errors.append("REKTION_PORTABLE_SIZE_INVALID")
+        if (type(package.get("member_count")) is not int
+                or type(receipt.get("zip_members")) is not int
+                or package.get("member_count") != receipt.get("zip_members")):
+            errors.append("REKTION_MEMBER_COUNT_MISMATCH")
+        if current.get("stage4") != "OPEN" or package.get("stage4") != "OPEN" or package.get("stage5_6_7") != "NOT_RUN":
+            errors.append("REKTION_STAGE4_7_BOUNDARY_INVALID")
+        parent = receipt.get("parent_sha256")
+        old = latest.get(f"previous_wip{version}_source_current")
+        predecessor = old.get("portable") if isinstance(old,dict) else None
+        if (not _valid_sha(parent)
+                or parent != package.get("parent_sha256")
+                or not isinstance(predecessor,dict)
+                or parent != predecessor.get("sha256")):
+            errors.append("REKTION_PARENT_LINEAGE_INVALID")
+    counts = ("new_exact_duden", "cumulative_attested", "hold_count",
+              "original_governed_count","non_governed_reclassified",
+              "units","import_cards")
+    if any(type(receipt.get(k)) is not int or receipt[k] < 0 for k in counts):
+        errors.append("REKTION_INTEGER_COUNTERS_INVALID")
+    else:
+        if receipt["units"] != 788 or receipt["import_cards"] != 787:
+            errors.append("REKTION_UNIT_IMPORT_COUNT_MISMATCH")
+        if receipt["cumulative_attested"] + receipt["hold_count"] != receipt["original_governed_count"]:
+            errors.append("REKTION_GOVERNED_TOTAL_NOT_CONSERVED")
+        if receipt["original_governed_count"] + receipt["non_governed_reclassified"] != 984:
+            errors.append("REKTION_984_ORIGINAL_PATTERNS_NOT_CONSERVED")
+    progress = latest.get("progress")
+    if not isinstance(progress,dict):
+        errors.append("REKTION_CURRENT_PROGRESS_MISSING")
+    else:
+        if (progress.get("rektion_independent_external_attested_cumulative") != receipt.get("cumulative_attested")
+                or progress.get("rektion_external_holds_remaining") != receipt.get("hold_count")):
+            errors.append("REKTION_CURRENT_PROGRESS_DRIFT")
+        if progress.get("pending_independent_expert_stage4") is not True or progress.get("independent_expert_unreviewed_units") != 788:
+            errors.append("REKTION_INDEPENDENT_STAGE4_OPEN_NOT_PROVEN")
+    for field,expected in (("source_pdfs","UNCHANGED"),("full_stage4","OPEN"),
+                           ("stage5_6_7","NOT_RUN")):
+        if receipt.get(field) != expected:
+            errors.append("REKTION_SCOPE_BOUNDARY_INVALID:"+field)
+    if not isinstance(receipt.get("library_readback"),str) or not receipt["library_readback"].startswith("PASS_"):
+        errors.append("REKTION_LIBRARY_READBACK_CLAIM_INVALID")
+    sources=source.get("source_set")
+    if (not isinstance(sources,list) or len(sources)!=2
+            or any(not isinstance(q,dict) or not isinstance(q.get("source_id"),str)
+                   or q.get("source_type")!="pdf" or not _valid_sha(q.get("sha256"))
+                   for q in sources)
+            or len({q["source_id"] for q in sources if isinstance(q,dict) and isinstance(q.get("source_id"),str)})!=2):
+        errors.append("SOURCE_MANIFEST_SET_INVALID")
+    result=_result(errors)
+    result["evaluated_contract"]="REKTION_FLAT_SCOPED_TRACKED_METADATA_ONLY"
+    result["resolved_milestone"]=milestone if isinstance(milestone,str) else None
+    result["historical_wip52_not_current"]=True
+    return result
+
+
 def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
            *, receipt_relative_path: str):
     """Dispatch by the *receipt* contract; never silently coerce WIP52 to WIP50."""
@@ -231,6 +484,10 @@ def verify(latest_bytes: bytes, receipt_bytes: bytes, source_bytes: bytes,
         return _result(["UNTRUSTED_JSON_OR_DUPLICATE_KEYS"])
     if not all(isinstance(x, dict) for x in (latest, receipt, source)):
         return _result(["DOCUMENT_NOT_AN_OBJECT"])
+    if receipt.get("schema") == "gcpk-aber-hallo-rektion-checkpoint@1.0.0":
+        return _verify_rektion_checkpoint(latest, receipt, source, receipt_relative_path)
+    if receipt.get("schema") == "gcpk-aber-hallo-direct-duden-scoped-checkpoint@1.0.0":
+        return _verify_direct_duden_checkpoint(latest, receipt, source, receipt_relative_path)
     if receipt.get("schema") == "gcpk-aber-hallo-wip52-milestone@1.0.0":
         return _verify_wip52(latest, receipt, source, receipt_relative_path)
     if receipt.get("schema") == "flashcards-work-outcome-receipt@1.0.0":

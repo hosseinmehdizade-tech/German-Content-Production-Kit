@@ -1,0 +1,31 @@
+name: OP02 Aber Hallo Library Final Current Contract
+on:
+  pull_request:
+    paths:
+      - 'Tools/library_publish_preflight.py'
+      - 'Verification/test_op02_library_final_current.py'
+      - 'Optimization-Program/Verification/OP02-ABER-LIBRARY-FINAL-ADMISSION-20261030.md'
+      - '.github/workflows/op02-aber-library-final-current.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Tools/library_publish_preflight.py'
+      - 'Verification/test_op02_library_final_current.py'
+      - 'Optimization-Program/Verification/OP02-ABER-LIBRARY-FINAL-ADMISSION-20261030.md'
+      - '.github/workflows/op02-aber-library-final-current.yml'
+permissions:
+  contents: read
+jobs:
+  scope-final-current:
+    name: OP02-ABER-LIBRARY-FINAL-NONISSUER
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s Verification -p test_op02_library_final_current.py -v

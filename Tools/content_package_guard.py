@@ -38,6 +38,89 @@ def check_intent(output, purpose, evidence=None, user_request=None):
     if purpose == "explicit_user_checkpoint" and not (user_request or "").strip():
         raise PackageGuardError("explicit user scope required")
 
+def check_aber_hallo_active_pointer(z):
+    """Fail closed on inconsistent active CURRENT metadata before ZIP publication.
+
+    Narrowly activates for the Aber Hallo eight-folder archive layout.
+    Legacy parent/historical SHA fields are not treated as active roles.
+    The producer must generate CURRENT, working state and manifest from the
+    same final canonical/import bytes. This is NOT issuer or Stage4-7 proof.
+    """
+    pointer="07-Checkpoint-State/CURRENT-WORKSTREAM-POINTER.json"
+    working="07-Checkpoint-State/WORKING-STATE.json"
+    canonical="02-Canonical-Data/CANONICAL-ENRICHED.WORKING.json"
+    imported="01-Final-Import/IMPORT.WORKING.tsv"
+    names=set(z.namelist())
+    roles={pointer,working,canonical,imported,"MANIFEST.json"}
+    marker="MANIFEST.json"
+    if marker not in names:
+        if pointer in names:
+            raise PackageGuardError("Aber Hallo active pointer lacks MANIFEST")
+        return False
+    if not ({pointer,working,canonical,imported} & names):
+        return False
+
+    def strict(raw):
+        def pairs(items):
+            obj={}
+            for k,v in items:
+                if k in obj:
+                    raise PackageGuardError("duplicate active JSON key")
+                obj[k]=v
+            return obj
+        def nonfinite(v):
+            raise PackageGuardError("nonfinite active JSON number")
+        try:
+            return json.loads(raw.decode("utf-8"),object_pairs_hook=pairs,
+                              parse_constant=nonfinite)
+        except PackageGuardError:
+            raise
+        except (ValueError,UnicodeError) as exc:
+            raise PackageGuardError("malformed active JSON metadata") from exc
+
+    manifest=strict(z.read(marker))
+    if not isinstance(manifest,dict) or manifest.get("workstream")!="aber-hallo-listen-tabellen":
+        if pointer in names:
+            raise PackageGuardError("Aber Hallo pointer with foreign or malformed MANIFEST workstream")
+        return False
+    if not roles.issubset(names):
+        raise PackageGuardError("Aber Hallo package missing active CURRENT role")
+    summary=manifest.get("summary")
+    status=summary.get("status") if isinstance(summary,dict) else None
+    m=re.fullmatch(r"CURRENT_WIP([1-9][0-9]*)_[A-Z0-9_]+",status) if isinstance(status,str) else None
+    if m is None:
+        raise PackageGuardError("Aber Hallo MANIFEST has no exact active CURRENT WIP")
+    ver=m.group(1)
+    dcanonical=hashlib.sha256(z.read(canonical)).hexdigest()
+    dimport=hashlib.sha256(z.read(imported)).hexdigest()
+    for k,actual in (("canonical_sha256",dcanonical),("import_sha256",dimport)):
+        if summary.get(k)!=actual:
+            raise PackageGuardError("Aber Hallo MANIFEST active "+k+" is stale")
+    p=strict(z.read(pointer))
+    w=strict(z.read(working))
+    if not isinstance(p,dict) or p.get("workstream")!="aber-hallo-listen-tabellen":
+        raise PackageGuardError("Aber Hallo active pointer workstream mismatch")
+    if not isinstance(p.get("current"),str) or not p["current"].startswith("WIP"+ver+"_"):
+        raise PackageGuardError("Aber Hallo embedded CURRENT pointer version stale")
+    for k,actual in (
+        ("canonical_sha256",dcanonical),("import_sha256",dimport),
+        ("working_canonical_sha256",dcanonical),("working_import_sha256",dimport),
+    ):
+        if p.get(k)!=actual:
+            raise PackageGuardError("Aber Hallo embedded CURRENT pointer "+k+" stale")
+    if not isinstance(w,dict):
+        raise PackageGuardError("Aber Hallo WORKING-STATE must be object")
+    for k,actual in (
+        ("canonical_sha256",dcanonical),("import_sha256",dimport),
+        ("working_canonical_sha256",dcanonical),("working_import_sha256",dimport),
+    ):
+        if w.get(k)!=actual:
+            raise PackageGuardError("Aber Hallo WORKING-STATE "+k+" stale")
+    if not isinstance(w.get("status"),str) or not w["status"].startswith("WORKING_WIP"+ver+"_"):
+        raise PackageGuardError("Aber Hallo WORKING-STATE active status/version stale")
+    return True
+
+
 def archive_fingerprint(z, purpose):
     """Hash the actual ZIP members, not an incomplete caller-selected input list.
 
@@ -48,6 +131,7 @@ def archive_fingerprint(z, purpose):
     names = z.namelist()
     if not names or len(names) != len(set(names)):
         raise PackageGuardError("invalid or duplicate archive members")
+    check_aber_hallo_active_pointer(z)
     h = hashlib.sha256(b"gfp-content-archive-payload-v2\0" + purpose.encode("utf-8"))
     for name in sorted(names):
         part = PurePosixPath(name)

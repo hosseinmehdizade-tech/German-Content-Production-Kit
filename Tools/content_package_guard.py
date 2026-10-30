@@ -73,6 +73,8 @@ def check_aber_hallo_active_pointer(z):
         try:
             return json.loads(raw.decode("utf-8"),object_pairs_hook=pairs,
                               parse_constant=nonfinite)
+        except PackageGuardError:
+            raise
         except (ValueError,UnicodeError) as exc:
             raise PackageGuardError("malformed active JSON metadata") from exc
 

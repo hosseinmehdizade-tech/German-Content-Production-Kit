@@ -8,6 +8,8 @@ on:
       - 'Verification/plan_stage5_current_adoption.py'
       - 'Verification/audit_aber_hallo_current_identity.py'
       - 'Verification/audit_stage4_current_worksheet_freshness.py'
+      - 'Verification/plan_stage4_worksheet_rebaseline.py'
+      - 'Verification/tests-v3.3.6/test_stage4_rebaseline_preview.py'
       - 'Verification/audit_stage4_snapshot_review_receipt.py'
       - 'Verification/verify_stage4_corrected_application.py'
       - 'Verification/tests-v3.3.6/test_stage4_corrected_application.py'
@@ -53,6 +55,8 @@ on:
       - 'Verification/plan_stage5_current_adoption.py'
       - 'Verification/audit_aber_hallo_current_identity.py'
       - 'Verification/audit_stage4_current_worksheet_freshness.py'
+      - 'Verification/plan_stage4_worksheet_rebaseline.py'
+      - 'Verification/tests-v3.3.6/test_stage4_rebaseline_preview.py'
       - 'Verification/audit_stage4_snapshot_review_receipt.py'
       - 'Verification/verify_stage4_corrected_application.py'
       - 'Verification/tests-v3.3.6/test_stage4_corrected_application.py'
@@ -139,6 +143,8 @@ jobs:
         run: python -m pytest -q Verification/tests-v3.3.6/test_stage4_corrected_application.py
       - name: Test read-only Stage4 WIP50 worksheet freshness against synthetic frozen field changes
         run: python -m pytest -vv Verification/tests-v3.3.6/test_stage4_current_worksheet_freshness.py
+      - name: Validate read-only Stage4 worksheet rebaseline preview and never overwrite reviewer decisions
+        run: python -m pytest -q Verification/tests-v3.3.6/test_stage4_rebaseline_preview.py
       - name: Check real Aber Hallo native LATEST, receipt and source metadata (read-only)
         run: python -m pytest -vv Verification/tests-v3.3.6/test_aber_hallo_current_identity.py
       - name: Reject report-only APPLIED and unverified CURRENT readbacks

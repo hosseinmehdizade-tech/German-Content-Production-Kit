@@ -4,12 +4,16 @@ on:
     paths:
       - 'Verification/audit_op01_governance_readiness.py'
       - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
+      - 'Verification/audit_op01_pr_staging_simulation.py'
+      - 'Verification/test_op01_pr_staging_simulation.py'
       - '.github/workflows/op01-governance-auditor-tests.yml'
   push:
     branches: [main]
     paths:
       - 'Verification/audit_op01_governance_readiness.py'
       - 'Verification/tests-v3.3.6/test_op01_governance_readiness.py'
+      - 'Verification/audit_op01_pr_staging_simulation.py'
+      - 'Verification/test_op01_pr_staging_simulation.py'
       - '.github/workflows/op01-governance-auditor-tests.yml'
 permissions:
   contents: read
@@ -30,3 +34,5 @@ jobs:
         run: python -m pip install pytest
       - name: Test synthetic structural governance blocker cases (no live approvals)
         run: python -m pytest -q Verification/tests-v3.3.6/test_op01_governance_readiness.py
+      - name: Simulate exact one-file PR transport races without Git writes or grants
+        run: python -B -m unittest discover -s Verification -p test_op01_pr_staging_simulation.py

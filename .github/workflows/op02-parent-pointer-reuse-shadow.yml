@@ -1,0 +1,32 @@
+name: OP02 Parent Pointer Reuse Shadow
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_parent_pointer_lineage.py'
+      - 'Verification/test_op02_parent_pointer_lineage.py'
+      - 'Optimization-Program/Verification/OP02-WIP65-67-EXACT-POINTER-LINEAGE-20261030.md'
+      - '.github/workflows/op02-parent-pointer-reuse-shadow.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_parent_pointer_lineage.py'
+      - 'Verification/test_op02_parent_pointer_lineage.py'
+      - 'Optimization-Program/Verification/OP02-WIP65-67-EXACT-POINTER-LINEAGE-20261030.md'
+      - '.github/workflows/op02-parent-pointer-reuse-shadow.yml'
+permissions:
+  contents: read
+jobs:
+  pointer-reuse-shadow:
+    name: OP02-POINTER-LINEAGE-NONREQUIRED-NO-WRITER
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read-only synthetic parent and current ZIP pointer lineage
+        run: python -B -m unittest discover -s Verification -p test_op02_parent_pointer_lineage.py -v

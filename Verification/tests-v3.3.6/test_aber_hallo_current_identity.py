@@ -54,11 +54,52 @@ def current_wip52():
 
 
 def current_direct_duden():
-    """Real CURRENT tracked bytes only; no remote source or ZIP byte proof."""
-    latest = (ROOT / LATEST).read_bytes()
-    j = json.loads(latest)
-    path = j["latest_receipt_path"]
-    return [latest, (ROOT / path).read_bytes(), (ROOT / SOURCES).read_bytes(), path]
+    """WIP56 HISTORICAL fixture reconstructed from its tracked receipt.
+
+    Preserves full adversarial direct-Duden schema coverage after WIP57+ moves
+    CURRENT. Synthetic LATEST is not issuer authorization or content CURRENT.
+    """
+    live = json.loads((ROOT / LATEST).read_bytes())
+    path = ("Workspaces/aber-hallo-listen-tabellen/52-wip56-direct-duden/"
+            "WIP56-16-DIRECT-DUDEN-664-ATTESTED-317-HOLDS-2026-10-30.json")
+    receipt_bytes = (ROOT / path).read_bytes()
+    rec = json.loads(receipt_bytes)
+    port = rec["portable"]
+    counts = rec["counts"]
+    latest = {
+        "schema": "gcpk-workstream-latest@1.0.0",
+        "workstream": "aber-hallo-listen-tabellen",
+        "status": "CURRENT_WIP56_SYNTHETIC_HISTORICAL_ONLY",
+        "latest_milestone": "WIP56_16_DIRECT_DUDEN_LEMMA_CASE_SENSE_CONFIRMATIONS_APPLIED_317_ACTIVE_HOLDS",
+        "latest_receipt_path": path,
+        "latest_receipt_commit_sha": "a" * 40,
+        "authority": {"current_portable": {**port, "stage4": "OPEN"}},
+        "complete_working_content_package": {
+            "name": port["filename"], "sha256": port["sha256"],
+            "bytes": port["size_bytes"],
+            "member_count": rec["validation"]["zip_members"],
+            "library_file_id": port["library_file_id"],
+            "library_path": port["library_path"],
+            "stage4": "OPEN", "stage5_6_7": "NOT_RUN",
+            "parent_sha256": rec["parent"]["sha256"],
+        },
+        "previous_wip56_source_current": live["previous_wip56_source_current"],
+        "progress": {
+            "rektion_independent_external_attested_cumulative": counts["cumulative_external_attested"],
+            "rektion_external_holds_remaining": counts["remaining_external_holds"],
+            "rektion_wip56_new_duden": counts["new_duden_exact"],
+            "pending_independent_expert_stage4": True,
+            "independent_expert_unreviewed_units": 788,
+        },
+    }
+    return [json.dumps(latest, ensure_ascii=False).encode("utf-8"),
+            receipt_bytes, (ROOT / SOURCES).read_bytes(), path]
+
+
+def current_live():
+    live = (ROOT / LATEST).read_bytes()
+    path = json.loads(live)["latest_receipt_path"]
+    return [live, (ROOT / path).read_bytes(), (ROOT / SOURCES).read_bytes(), path]
 
 
 def original():
@@ -270,9 +311,9 @@ def test_future_unsupported_receipt_schema_must_block_rather_than_coerce_wip50()
 
 
 def test_current_live_direct_duden_schema_parity_not_semantics():
-    r = evaluate(current_direct_duden())
+    r = evaluate(current_live())
     assert r["status"] == "PASS_SCOPED_NATIVE_METADATA_CONSISTENCY_ONLY", r
-    assert r["evaluated_contract"] == "DIRECT_DUDEN_SCOPED_TRACKED_METADATA_ONLY"
+    assert r["evaluated_contract"] == "REKTION_FLAT_SCOPED_TRACKED_METADATA_ONLY"
     assert r["historical_wip52_not_current"] is True
     for flag in ("production_stage5_allowed", "stage4_independent_semantic_review_completed",
                  "source_pdf_or_portable_bytes_verified", "real_current_issuer_authenticated"):
@@ -411,6 +452,103 @@ def test_wip52_receipt_cannot_replay_as_wip56_current():
     result = evaluate(r)
     assert result["status"] == "BLOCKED"
     assert any("WIP52" in error for error in result["errors"])
+
+
+
+def mutate_flat(index, fn):
+    f = current_live()
+    doc = json.loads(f[index])
+    fn(doc)
+    f[index] = json.dumps(doc, ensure_ascii=False).encode("utf-8")
+    return f
+
+
+@pytest.mark.parametrize("key", ["zip","zip_sha256","size_bytes","library_file_id",
+                                    "library_path","canonical_sha256","import_sha256"])
+def test_flat_current_receipt_artifact_tamper_blocks(key):
+    f = mutate_flat(1, lambda d: d.update({
+        key: "f"*64 if key.endswith("sha256") else -1 if key=="size_bytes" else "forged"}))
+    field = {"zip": "filename", "zip_sha256": "sha256"}.get(key,key)
+    assert "REKTION_RECEIPT_PORTABLE_DRIFT:" + field in evaluate(f)["errors"]
+
+
+@pytest.mark.parametrize("key", ["sha256","bytes","parent_sha256"])
+def test_flat_current_package_tamper_blocks(key):
+    f = mutate_flat(0, lambda d: d["complete_working_content_package"].update({
+        key: -1 if key=="bytes" else "f"*64}))
+    assert evaluate(f)["status"] == "BLOCKED"
+
+
+@pytest.mark.parametrize("field", ["hold_count","cumulative_attested",
+                                    "original_governed_count","non_governed_reclassified"])
+def test_flat_rektion_conservation_invalid_tamper_blocks(field):
+    f = mutate_flat(1, lambda d: d.update({field: 123456}))
+    assert any(e.startswith("REKTION_GOVERNED_TOTAL_NOT_CONSERVED") or
+               e.startswith("REKTION_984_ORIGINAL_PATTERNS_NOT_CONSERVED")
+               for e in evaluate(f)["errors"])
+
+
+def test_flat_real_wip57_parent_lineage_not_self_claimed():
+    f = mutate_flat(0, lambda d: d["previous_wip57_source_current"]["portable"].update(
+        sha256="f"*64))
+    assert "REKTION_PARENT_LINEAGE_INVALID" in evaluate(f)["errors"]
+
+
+def test_flat_real_wip57_receipt_path_not_source_authority():
+    f = current_live()
+    f[3] = "Workspaces/aber-hallo-listen-tabellen/stale.json"
+    assert "LATEST_RECEIPT_PATH_DRIFT" in evaluate(f)["errors"]
+
+
+def test_flat_stage4_must_stay_open_in_current_receipt():
+    f = mutate_flat(1, lambda d: d.update(full_stage4="PASS"))
+    assert "REKTION_SCOPE_BOUNDARY_INVALID:full_stage4" in evaluate(f)["errors"]
+
+
+def test_flat_stage5_7_must_remain_not_run():
+    f = mutate_flat(1, lambda d: d.update(stage5_6_7="PASS"))
+    assert "REKTION_SCOPE_BOUNDARY_INVALID:stage5_6_7" in evaluate(f)["errors"]
+
+
+def test_flat_pdf_source_immutability_metadata_must_hold():
+    f = mutate_flat(1, lambda d: d.update(source_pdfs="REPLACED"))
+    assert "REKTION_SCOPE_BOUNDARY_INVALID:source_pdfs" in evaluate(f)["errors"]
+
+
+def test_flat_malformed_boolean_counter_never_counts_as_integer():
+    f = mutate_flat(1, lambda d: d.update(hold_count=True))
+    assert "REKTION_INTEGER_COUNTERS_INVALID" in evaluate(f)["errors"]
+
+
+def test_flat_bad_source_manifest_identity_fails():
+    f = mutate_flat(2, lambda d: d["source_set"][0].update(sha256="not-a-hash"))
+    assert "SOURCE_MANIFEST_SET_INVALID" in evaluate(f)["errors"]
+
+
+def test_flat_malformed_duplicate_json_key_fails():
+    f = current_live()
+    f[1] = f[1].replace(b'"schema":', b'"schema":"fake","schema":', 1)
+    assert "UNTRUSTED_JSON_OR_DUPLICATE_KEYS" in evaluate(f)["errors"]
+
+
+def test_flat_future_unknown_receipt_schema_fails_closed():
+    f = mutate_flat(1, lambda d: d.update(schema="unknown-future-v58@1"))
+    assert "UNSUPPORTED_OR_FUTURE_RECEIPT_SCHEMA" in evaluate(f)["errors"]
+
+
+def test_historical_wip56_receipt_cannot_claim_wip57_current():
+    f = current_live()
+    f[1] = current_direct_duden()[1]
+    assert evaluate(f)["status"] == "BLOCKED"
+
+
+def test_flat_real_rektion_receipt_maintains_stage4_issuer_blocks():
+    result = evaluate(current_live())
+    assert result["evaluated_contract"] == "REKTION_FLAT_SCOPED_TRACKED_METADATA_ONLY"
+    assert result["production_stage5_allowed"] is False
+    assert result["stage4_independent_semantic_review_completed"] is False
+    assert result["real_current_issuer_authenticated"] is False
+    assert result["source_pdf_or_portable_bytes_verified"] is False
 
 
 def test_nested_json_duplicate_key_rejected():

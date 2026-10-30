@@ -1,19 +1,19 @@
 {
   "schema": "uv-workstream-checkpoint@1.3.1",
   "workstream": "unregelmaessige-verben",
-  "milestone": "V131_R8_STAGE4_ALL174_FIRSTPASS_WIP10_2026_10_30",
-  "status": "STAGE4_FIRST_PASS_COMPLETE_174_OF_174__ADVERSARIAL_PENDING",
+  "milestone": "V131_R8_STAGE4_ADVERSARIAL_TARGETED_48_EXAMPLES_55_NVVS_WIP11_2026_10_30",
+  "status": "STAGE4_IN_PROGRESS_48_EXAMPLES_TARGETED_SECOND_PASS_AND_55_NVVS_SCREENED",
   "date": "2026-10-30",
   "parent_locked_zip_sha256": "3b0ae7d7b44b1a615d748b985c171acf27eb37e1cfefb822437071b6b0a28b80",
   "artifact": {
-    "filename": "Unregelmaessige-Verben-v1.3.1-R8-Stage4-All174-FirstPass-WIP10-2026-10-30.zip",
-    "sha256": "61d44b2961781cf3daebfa18cf45e32f965391a6306fb812d7a0655bd18f382e",
-    "bytes": 579381,
-    "members": 29,
-    "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.1-R8-Stage4-All174-FirstPass-WIP10-2026-10-30.zip",
-    "library_file_id": "libfile_d5ead7b16f60819184ab8b39eb31f77f"
+    "filename": "Unregelmaessige-Verben-v1.3.1-R8-Stage4-Adversarial-Targeted-WIP11-2026-10-30.zip",
+    "sha256": "fc1d985bd71660de5d589d7e4a2af130aefb511617c2eea0cdbccf4203d1d78f",
+    "bytes": 617640,
+    "members": 40,
+    "library_path": "/German-Content-Production-Kit/Checkpoints/Unregelmaessige-Verben-v1.3.1-R8-Stage4-Adversarial-Targeted-WIP11-2026-10-30.zip",
+    "library_file_id": "libfile_859f3d80b9988191b702c923d443edd1"
   },
-  "import_sha256": "6f8e7d25e172494fe900af3e3c0da988c638c5d816eeee3d758ecd48f02ebca1",
+  "import_sha256": "a6eb55acca4245f511679b0282b5b2e2e5f0e363e28b76398b867193ae3d5f18",
   "changes": {
     "fa_translation_repairs": 4,
     "scoped_content_reviews": 5,
@@ -37,21 +37,20 @@
     "package_crc_sha256sums_manifest": "PASS"
   },
   "open_gates": [
-    "696 examples adversarial pass",
-    "483 combinations full semantic QA",
-    "852 relations full semantic QA",
-    "3 historical semantic holds",
-    "Stage5 not run",
-    "CURRENT Stage6 not run",
-    "Stage7 not run"
+    "648 other examples still need full independent adversarial second pass; 556 DE-EN diagnostic pairs not semantic approvals",
+    "483 combinations need full semantic/source-bound review",
+    "852 relations need full semantic review, including 54 remaining NVV categorization holds and 23 duplicate-label candidates",
+    "Official Stage5 not run",
+    "Exact current runtime Stage6 real-origin import/reload/export/reimport not run",
+    "Stage7 exact-final not run"
   ],
-  "next_action": "Independent adversarial full DE/FA/EN semantic Stage4 review on 696 examples, 483 combinations and 852 relations; then official Stage5, CURRENT Stage6, Stage7.",
-  "receipt_path": "Workspaces/unregelmaessige-verben/V131-R8-STAGE4-ALL174-FIRSTPASS-WIP10-2026-10-30.json",
+  "next_action": "Continue full Stage4 independently, preserve exact WIP11 and immutable ancestor WIP10.",
+  "receipt_path": "Workspaces/unregelmaessige-verben/V131-R8-STAGE4-ADVERSARIAL-TARGETED-WIP11-2026-10-30.json",
   "git_receipt_commit": "970310e0ed32862cd8eefc56ee302c0053f7d2d6",
   "prior_checkpoint_sha": "b3ef6daca4794bf1cb449c2a0b5f629a66fab0be",
   "prior_branch": "unregelmaessige-verben-v130-kombinationen",
   "stage3b": "R2_TECHNICAL_PASS",
-  "stage4": "IN_PROGRESS_FIRSTPASS_COMPLETE_SECOND_ADVERSARIAL_PENDING",
+  "stage4": "IN_PROGRESS_FIRST_PASS_COMPLETE__TARGETED_SECOND_PASS_48_OF_696__FULL_SEMANTIC_PENDING",
   "prior_milestone": "V131_R8_STAGE7_USER_REQUESTED_FINAL_HANDOFF_DELIVERED_WITHOUT_NEW_TESTS_UNVERIFIED",
   "stage4_independent": {
     "receipt_path": "Workspaces/unregelmaessige-verben/V131-STAGE4-INDEPENDENT-REAUDIT-RECEIPT.json",
@@ -352,7 +351,7 @@
     "content_bytes_unchanged_from_r6": true,
     "source_images_found": 0
   },
-  "canonical_sha256": "adfabc5fdbe1b1e758f222d85f97ec48bf4023106f6945272e919beae523b3d5",
+  "canonical_sha256": "1205cfe769ce6476083cc32cb925623fab7d6091e2c4817f195af5da94c1cb91",
   "r8_scoped_qa": {
     "edited_examples": 3,
     "fa": 2,
@@ -463,7 +462,7 @@
     "current_stage6": false,
     "stage7_locked": false
   },
-  "previous_milestone": "V131_R8_STAGE4_CARDS106_140_FIRSTPASS_WIP9_2026_10_30",
+  "previous_milestone": "V131_R8_STAGE4_ALL174_FIRSTPASS_WIP10_2026_10_30",
   "stage4_working_successor": {
     "artifact": {
       "filename": "Unregelmaessige-Verben-v1.3.1-R8-Stage4-Status-And-Linguistic-WIP3-2026-10-29.zip",
@@ -594,6 +593,17 @@
     "combinations_first_pass": 483,
     "relations_semantic_pending": 852,
     "adversarial_complete": false,
+    "full_stage4": false
+  },
+  "stage4_wip11_scoped": {
+    "examples_targeted_reviewed": 48,
+    "examples_targeted_corrected": 3,
+    "examples_remaining_full_second_pass": 648,
+    "english_foreign_topic_diagnostic": 556,
+    "nvv_category_screened": 55,
+    "nvv_reclassified": 1,
+    "nvv_unmodified_holds": 54,
+    "duplicate_label_candidates": 23,
     "full_stage4": false
   }
 }

@@ -241,7 +241,7 @@ def _verify_direct_duden_checkpoint(latest, receipt, source, receipt_relative_pa
             or receipt.get("status") != "PASS_SCOPED_STAGE4_OPEN"):
         errors.append("DIRECT_DUDEN_RECEIPT_IDENTITY_UNEXPECTED")
     label = latest.get("latest_milestone")
-    match = re.match(r"^WIP([0-9]+)_", label) if isinstance(label, str) else None
+    match = re.match(r"^WIP([0-9]{2,4})_", label) if isinstance(label, str) else None
     version = int(match.group(1)) if match else 0
     if version < 56:
         errors.append("DIRECT_DUDEN_CURRENT_MILESTONE_INVALID")
@@ -284,7 +284,7 @@ def _verify_direct_duden_checkpoint(latest, receipt, source, receipt_relative_pa
                 or type(package.get("bytes")) is not int):
             errors.append("DIRECT_DUDEN_PORTABLE_SIZE_INVALID")
         if (type(package.get("member_count")) is not int
-                or type(receipt.get("validation", {}).get("zip_members")) is not int
+                or type((receipt.get("validation") if isinstance(receipt.get("validation"), dict) else {}).get("zip_members")) is not int
                 or package.get("member_count") != receipt["validation"]["zip_members"]):
             errors.append("DIRECT_DUDEN_ZIP_MEMBER_COUNT_DRIFT")
         if current.get("stage4") != "OPEN" or package.get("stage4") != "OPEN" or package.get("stage5_6_7") != "NOT_RUN":
@@ -354,7 +354,8 @@ def _verify_direct_duden_checkpoint(latest, receipt, source, receipt_relative_pa
                 errors.append("DIRECT_DUDEN_SCOPE_VALIDATION_DRIFT:" + field)
     sources = source.get("source_set")
     if (not isinstance(sources, list) or len(sources) != 2
-            or len({x.get("source_id") for x in sources if isinstance(x, dict)}) != 2
+            or any(not isinstance(x, dict) or not isinstance(x.get("source_id"), str) for x in sources)
+            or len({x["source_id"] for x in sources if isinstance(x, dict) and isinstance(x.get("source_id"), str)}) != 2
             or any(not isinstance(x, dict) or x.get("source_type") != "pdf"
                    or not _valid_sha(x.get("sha256")) for x in sources)):
         errors.append("SOURCE_MANIFEST_SET_INVALID")

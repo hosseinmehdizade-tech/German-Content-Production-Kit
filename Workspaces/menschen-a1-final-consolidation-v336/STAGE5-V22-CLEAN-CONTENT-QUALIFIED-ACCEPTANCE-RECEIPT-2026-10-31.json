@@ -1,0 +1,126 @@
+{
+  "schema": "gcpk-menschen-a1-stage5-content-clean-delivery@1.0.0",
+  "date": "2026-10-31",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": "STAGE5_V22_CLEAN_DELIVERY_SOURCE_BOUND_WITH_REVIEWED_HF2_EXCEPTION",
+  "status": "PASS_WITH_REVIEWED_MOECHTEN_HF2_EXCEPTION",
+  "scope": {
+    "cards": 2997,
+    "source_memberships": 3039,
+    "examples": 11988,
+    "learner_visible_combinations": 2075,
+    "stage4_parent": "V21",
+    "current_delivery": "V22",
+    "changed_cards": 7,
+    "untouched_cards": 2990,
+    "source_input_immutability": true,
+    "change_ids": [
+      "ma1m-lu-0713",
+      "ma1m-lu-0825",
+      "ma1m-lu-0831",
+      "ma1m-lu-0843",
+      "ma1m-lu-0858",
+      "ma1m-lu-0861",
+      "ma1m-lu-2897"
+    ]
+  },
+  "source": {
+    "parent_V21_tsv_sha256": "6ed349eaa1a9ff19499be53c709ba272449b86f175069c807c1786b212ea4f30",
+    "V22_tsv_sha256": "024ee77efbb3675a0720491af1da2286e2186bd00bc83bcbb9dfef22b0656c9a",
+    "original_CSV_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "parent_stage4_pass_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE4-CLOSED-PASS-RISK-BASED-V21-RECEIPT-2026-10-31.json"
+  },
+  "stage4_dependency_reconciliation": {
+    "status": "PASS_SCOPED_REVIEW_OF_SEVEN_DELTA_ITEMS_REUSE_EXACT_UNCHANGED_V21_PARENT",
+    "reused_unchanged_card_count": 2990,
+    "reviewed_exact_changed_card_count": 7,
+    "dispositions": [
+      {
+        "id": "ma1m-lu-0713",
+        "ref": "row:00509",
+        "decision": "CORRECT",
+        "explanation": "Canonical lemma besonder kept; example/semantic attribute endings remain in core.forms and details; learner front now clean lemma."
+      },
+      {
+        "id": "ma1m-lu-0825",
+        "ref": "row:00601",
+        "decision": "CORRECT",
+        "explanation": "essen clean infinitive and attested principal parts remain; accusative valency remains canonical metadata, not lemma."
+      },
+      {
+        "id": "ma1m-lu-0831",
+        "ref": "row:00605",
+        "decision": "CORRECT",
+        "explanation": "mögen clean infinitive and principal parts retained, accusative pattern remains canonical valency."
+      },
+      {
+        "id": "ma1m-lu-0843",
+        "ref": "row:00613",
+        "decision": "CORRECT",
+        "explanation": "trinken clean infinitive and principal parts retained, accusative pattern remains canonical valency."
+      },
+      {
+        "id": "ma1m-lu-0858",
+        "ref": "row:00625",
+        "decision": "CORRECT",
+        "explanation": "kennen clean infinitive and principal parts retained, accusative valency separate."
+      },
+      {
+        "id": "ma1m-lu-0861",
+        "ref": "row:00628;row:00629",
+        "decision": "CORRECT",
+        "explanation": "kennenlernen clean infinitive with attested present, preterite and perfect, case held separately."
+      },
+      {
+        "id": "ma1m-lu-2897",
+        "ref": "row:02128",
+        "decision": "CORRECT",
+        "explanation": "das Glück singular-dominant for its displayed sense; rare plural Glücke kept in rare_plural_form and explicit reviewed no-force rather than shown as standard."
+      }
+    ],
+    "notes": "This is dependency-scoped V22 recheck, not a false claim that the source-bound V21 review receipt's V21 SHA magically equals V22. Source-original rows unchanged, all DE examples, FA/EN translations and combination text unchanged."
+  },
+  "hf2": {
+    "standalone_baseline_validator": "FAIL_ONE_REVIEWED_EXCEPTION",
+    "original_validator_sha256_git_blob": "ea67592b68d245ed3069bcd84ac08fc375423e66",
+    "exception_card_id": "ma1m-lu-0854",
+    "exception_code": "KONJUNKTIV_II_DERIVED_LEARNER_FORM",
+    "exception_status": "PREEXISTING_REVIEWED_CLOSED_NO_FORCE_2026_10_17",
+    "reason": "möchten is a derived Konjunktiv II form of mögen, and has no separate preterite/perfect paradigm for this sense; generating artificial forms would violate source fidelity",
+    "exception_gate": "PASS_ONLY_IF_V21_EXACT_CARD_UNCHANGED_AND_REVIEW_PROOF_MATCHES",
+    "other_hf2_errors": 0,
+    "claim_limit": "Do not assert that the unmodified standalone HF2 validator exits 0; the scoped source-anchored stage5 verifier accepts only the explicitly reviewed historical exception."
+  },
+  "post_package": {
+    "neutral_vocabulary_projection": "PASS_2997",
+    "full_zip_members": 24,
+    "zip_CRC_manifest_sha256": "PASS",
+    "fresh_extract_independent_verifier": "PASS",
+    "trilingual_examples_count": "PASS_11988",
+    "visible_combinations_count": "PASS_2075",
+    "corrected_JSONL_format": "PASS",
+    "negative_mutation_tests": "7/7 REJECTED",
+    "library_exact_byte_sha_roundtrip": "PASS",
+    "app_runtime_test": "NOT_RUN"
+  },
+  "artifact": {
+    "filename": "Menschen-A1-V22-STAGE5-CLEAN-CONTENT-DELIVERY-NO-IMPORT-20261031.zip",
+    "bytes": 13234145,
+    "sha256": "74cdbf5b6d0121421fac8235124e738929b9764f3696db532cc54f9509f5757d",
+    "library_file_id": "libfile_9c52c620cb4c81918e836429b2d7e641",
+    "content_only": true,
+    "private_user_original_CSV_included": true,
+    "external_audio_RAR_not_included": true
+  },
+  "acceptance_boundary": {
+    "stage5": "PASS_WITH_REVIEWED_MOECHTEN_HF2_EXCEPTION",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false,
+    "app_UI_SRS_unchanged": true,
+    "source_original_unchanged": true,
+    "perfection_claimed": false,
+    "official_full_v3_3_6_anti_bypass_suite": "NOT_FULLY_EXECUTED_IN_THIS_ENVIRONMENT; portable rebuilt checks used; formal release gate caveat preserved"
+  },
+  "next": "Resolve exact CURRENT Flashcards runtime only for Stage6; separate Stage7 no-import final content packaging and anti-bypass acceptance. If strict unmodified standalone HF2 exit 0 is mandatory, a scoped policy-compatible validator exception must be formally integrated; do not fabricate KII forms or silently reclassify Verb."
+}

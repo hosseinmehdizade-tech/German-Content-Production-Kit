@@ -20,6 +20,7 @@ SUM = re.compile(r"([0-9a-f]{64})  (.+)\Z")
 IMPORT = "01-Final-Import/IMPORT.WORKING.tsv"
 CANONICAL = "02-Canonical-Data/CANONICAL-ENRICHED.WORKING.json"
 POINTER = "07-Checkpoint-State/CURRENT-WORKSTREAM-POINTER.json"
+WORKING = "07-Checkpoint-State/WORKING-STATE.json"
 MANIFEST = "MANIFEST.json"
 SOURCES = "03-Source-Provenance/SOURCE-MANIFEST.json"
 SUMS = "SHA256SUMS"
@@ -127,7 +128,7 @@ def audit(path, expected):
                     err.append("ARCHIVE_MEMBER_UNSAFE")
             if err:
                 return out
-            required_files = {IMPORT,CANONICAL,POINTER,MANIFEST,SOURCES,SUMS,*LINES.values()}
+            required_files = {IMPORT,CANONICAL,POINTER,WORKING,MANIFEST,SOURCES,SUMS,*LINES.values()}
             if not required_files.issubset(names):
                 err.append("REQUIRED_MEMBER_MISSING")
                 return out
@@ -222,17 +223,41 @@ def audit(path, expected):
                 if observed != expected["source_sha256"]:
                     err.append("ORIGINAL_PDF_SOURCE_ORDER_OR_HASH_DRIFT")
             wp = strict_json(by_name[POINTER])
+            working = strict_json(by_name[WORKING])
             curr = wp.get("current") if type(wp) is dict else None
             expected_version = int(WIP.match(expected["milestone"]).group(1))
             actual_version = int(WIP.match(curr).group(1)) if type(curr) is str and WIP.match(curr) else None
             out["pointer_claimed_milestone"] = curr
+            out["working_state_status"] = working.get("status") if type(working) is dict else None
             if actual_version != expected_version:
                 ptr.append("EMBEDDED_CURRENT_WIP_VERSION_STALE")
-            if (type(wp) is not dict or wp.get("canonical_sha256") != digest[CANONICAL]
-                    or wp.get("import_sha256") != digest[IMPORT]):
-                ptr.append("EMBEDDED_CURRENT_CANONICAL_IMPORT_HASH_STALE")
             if type(wp) is not dict or wp.get("workstream") != expected["workstream"]:
                 ptr.append("EMBEDDED_CURRENT_WORKSTREAM_DRIFT")
+            # Exact active aliases are not archival parent hashes. A valid
+            # main canonical/import pair cannot mask stale working_* fields.
+            for name, desired in (
+                ("canonical_sha256", digest[CANONICAL]),
+                ("import_sha256", digest[IMPORT]),
+                ("working_canonical_sha256", digest[CANONICAL]),
+                ("working_import_sha256", digest[IMPORT]),
+            ):
+                if type(wp) is not dict or wp.get(name) != desired:
+                    ptr.append("EMBEDDED_CURRENT_POINTER_HASH_STALE:" + name)
+            if type(working) is not dict:
+                ptr.append("WORKING_STATE_NOT_OBJECT")
+            else:
+                status = working.get("status")
+                if (type(status) is not str or
+                        not status.startswith("WORKING_WIP" + str(expected_version) + "_")):
+                    ptr.append("WORKING_STATE_ACTIVE_STATUS_STALE")
+                for name, desired in (
+                    ("canonical_sha256", digest[CANONICAL]),
+                    ("import_sha256", digest[IMPORT]),
+                    ("working_canonical_sha256", digest[CANONICAL]),
+                    ("working_import_sha256", digest[IMPORT]),
+                ):
+                    if working.get(name) != desired:
+                        ptr.append("WORKING_STATE_ACTIVE_HASH_STALE:" + name)
     except (BadZipFile, OSError, UnicodeError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
         err.append("ARCHIVE_PARSE_OR_CRC_FAILURE:"+type(exc).__name__)
     out["binary_integrity"] = "PASS" if not err else "BLOCKED"

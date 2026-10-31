@@ -33,18 +33,56 @@ def evaluate(policy, receipt, source_path=None):
     scan = receipt.get('risk_scan', {})
     identified = scan.get('flagged_ids', [])
     need(scan.get('full_population_checked') is True, 'RISK_DISCOVERY_NOT_FULL')
-    need(isinstance(identified, list) and len(identified) == len(set(identified)), 'RISK_FLAG_IDENTITIES_NOT_UNIQUE')
+    valid_ids = (isinstance(identified, list)
+                 and all(type(uid) is str and bool(uid.strip()) for uid in identified)
+                 and len(identified) == len(set(identified)))
+    need(valid_ids, 'RISK_FLAG_IDENTITIES_NOT_UNIQUE_OR_MALFORMED')
+    # A claimed scan cannot silently omit risk severities, or an unresolved
+    # HIGH/CRITICAL alert can be laundered into an accepted LOW/HOLD review.
+    # This checks internal receipt integrity, not independent scan authenticity.
+    scan_records = scan.get('flagged_items')
+    scan_by_id = {}
+    if not isinstance(scan_records, list):
+        blockers.append('RISK_SCAN_DETAIL_REQUIRED')
+    else:
+        for record in scan_records:
+            if not isinstance(record, dict):
+                blockers.append('RISK_SCAN_RECORD_MALFORMED')
+                continue
+            rid = record.get('id')
+            if type(rid) is not str or not rid.strip() or rid in scan_by_id:
+                blockers.append('RISK_SCAN_DUPLICATE_OR_MISSING_ITEM_ID')
+                continue
+            severity = record.get('severity')
+            flags = record.get('flags')
+            if severity not in ('CRITICAL','HIGH','MEDIUM','LOW','INFO'):
+                blockers.append('RISK_SCAN_ITEM_SEVERITY_MISSING_OR_INVALID:'+rid)
+            if (not isinstance(flags, list) or not flags
+                    or any(type(flag) is not str or not flag.strip() for flag in flags)
+                    or len(flags) != len(set(flags))):
+                blockers.append('RISK_SCAN_ITEM_FLAGS_MISSING_OR_INVALID:'+rid)
+            scan_by_id[rid] = record
+        if valid_ids:
+            need(set(scan_by_id) == set(identified),
+                 'RISK_SCAN_ITEM_IDS_DIFFER_FROM_FLAGGED_IDS')
     review = receipt.get('risk_dispositions', [])
     need(isinstance(review, list), 'RISK_REVIEW_INVALID')
     per_id = {}
     for item in review if isinstance(review, list) else []:
+        if not isinstance(item, dict):
+            blockers.append('RISK_REVIEW_RECORD_MALFORMED')
+            continue
         uid = item.get('id')
-        if not uid or uid in per_id:
+        if type(uid) is not str or not uid.strip() or uid in per_id:
             blockers.append('DUPLICATE_OR_MISSING_RISK_ID'); continue
         per_id[uid] = item
         sev = item.get('severity')
         decision = item.get('decision')
         need(sev in ('CRITICAL','HIGH','MEDIUM','LOW','INFO'), 'INVALID_RISK_SEVERITY:'+str(uid))
+        if uid not in scan_by_id:
+            blockers.append('RISK_REVIEW_ID_NOT_IN_SCAN:'+uid)
+        elif sev != scan_by_id[uid].get('severity'):
+            blockers.append('RISK_SEVERITY_DISAGREES_WITH_SCAN:'+uid)
         need(decision in DECISIONS, 'INVALID_RISK_DISPOSITION:'+str(uid))
         need(bool(str(item.get('reason','')).strip()) and item.get('evidence_sha256') == anchor.get('working_sha256'), 'MISSING_RISK_REASON_OR_CURRENT_EVIDENCE:'+str(uid))
         if decision == 'HOLD' and sev in ('CRITICAL','HIGH'):
@@ -57,7 +95,8 @@ def evaluate(policy, receipt, source_path=None):
     # All exact affected IDs, a typed scanner trigger, and representative independent reviews
     # (at least 5 or 10% per family) are mandatory. CRITICAL/HIGH are always individual.
     family_covered=set()
-    all_flags={z['id']:set(z.get('flags',[])) for z in scan.get('flagged_items',[]) if isinstance(z,dict) and z.get('id')}
+    all_flags={uid:set(z['flags']) for uid,z in scan_by_id.items()
+               if isinstance(z.get('flags'),list) and all(isinstance(x,str) for x in z['flags'])}
     for fam in receipt.get('risk_family_dispositions',[]):
         gid=fam.get('rule_id','?')
         affected=fam.get('affected_ids',[]);trigger=fam.get('trigger_flags',[])
@@ -65,8 +104,11 @@ def evaluate(policy, receipt, source_path=None):
         need(bool(gid) and bool(trigger) and bool(fam.get('reason')) and fam.get('evidence_sha256') == anchor.get('working_sha256') and fam.get('independent_challenge') is True, 'FAMILY_NOT_EVIDENCED:'+gid)
         need(isinstance(affected,list) and len(affected)==len(set(affected)) and bool(affected) and set(affected).issubset(set(identified)), 'FAMILY_INVALID_MEMBERS:'+gid)
         need(all(a in all_flags and all_flags[a].intersection(set(trigger)) for a in affected), 'FAMILY_TRIGGER_NOT_VERIFIED:'+gid)
-        scan_severity={v['id']:v.get('severity') for v in scan.get('flagged_items',[]) if isinstance(v,dict) and v.get('id')}
+        scan_severity={uid:z.get('severity') for uid,z in scan_by_id.items()}
         need(not any(scan_severity.get(a) in ('CRITICAL','HIGH') for a in affected), 'FAMILY_CONTAINS_HIGH_RISK:'+gid)
+        rank={'INFO':0,'LOW':1,'MEDIUM':2,'HIGH':3,'CRITICAL':4}
+        need(all(rank.get(fam.get('severity'),-1)>=rank.get(scan_severity.get(a),5)
+                 for a in affected), 'FAMILY_SEVERITY_DOWNGRADED:'+gid)
         rev=fam.get('representative_reviews',[])
         minimum=min(len(affected),max(5,(len(affected)+9)//10))
         need(len(rev)>=minimum,'FAMILY_UNDERSAMPLED:'+gid)

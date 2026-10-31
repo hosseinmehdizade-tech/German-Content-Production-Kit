@@ -1,0 +1,28 @@
+name: Stage4 Risk Scan Integrity Regression (Non-Issuer)
+on:
+  pull_request:
+    paths:
+      - 'Verification/RiskBasedStage4/**'
+      - '.github/workflows/stage4-risk-scan-integrity-ci.yml'
+      - 'Optimization-Program/Verification/STAGE1-7-QUALITY-AUDIT-20261031.md'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/RiskBasedStage4/**'
+      - '.github/workflows/stage4-risk-scan-integrity-ci.yml'
+permissions:
+  contents: read
+jobs:
+  stage4-risk-tests:
+    name: STAGE4-SCAN-SEVERITY-REGRESSION-NONREQUIRED-NONISSUER
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s Verification/RiskBasedStage4 -p 'test_risk_based_stage4_gate.py' -v

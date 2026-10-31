@@ -6,6 +6,8 @@ import importlib.util
 import io
 import json
 import pathlib
+import subprocess
+import sys
 import tempfile
 import unittest
 import zipfile
@@ -60,7 +62,7 @@ class TestAudit(unittest.TestCase):
 
     def test_preexisting_partial_section_is_risk_not_silent_pass(self):
         r = self.verify(*fixture(missing=True))
-        self.assertEqual(r['status'], 'PASS_SCOPED_LEDGER_PARITY__VIEW_COVERAGE_REVIEW_REQUIRED__NOT_STAGE6')
+        self.assertEqual(r['status'], 'BLOCKED_VIEW_COVERAGE_REQUIRES_DISPOSITION__LEDGER_PARITY_PASS')
         self.assertEqual(r['counts']['items_EXISTING_PARTIAL_SECTION_CONFLICT'], 1)
         self.assertEqual(r['affected'][0]['unaccounted_items'][0]['ordinal'], 1)
 
@@ -168,6 +170,30 @@ class TestAudit(unittest.TestCase):
                 z.writestr(m.LEDGER_MEMBER,l)
             result=m.audit_archive(p,hashlib.sha256(p.read_bytes()).hexdigest())
             self.assertEqual(result['counts']['accepted_items'],2)
+
+    def test_cli_review_needed_returns_nonzero_not_green(self):
+        rows,ledger=fixture(missing=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            p=pathlib.Path(tmp)/'review.zip'
+            a,b=encode(rows,ledger)
+            with zipfile.ZipFile(p,'w') as z:
+                z.writestr(m.TSV_MEMBER,a)
+                z.writestr(m.LEDGER_MEMBER,b)
+            result=subprocess.run([sys.executable,str(P),'--zip',str(p),'--sha256',hashlib.sha256(p.read_bytes()).hexdigest()],capture_output=True,text=True)
+            self.assertEqual(result.returncode,2)
+            self.assertIn('BLOCKED_VIEW_COVERAGE',result.stdout)
+
+    def test_cli_all_physical_returns_zero(self):
+        rows,ledger=fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            p=pathlib.Path(tmp)/'pass.zip'
+            a,b=encode(rows,ledger)
+            with zipfile.ZipFile(p,'w') as z:
+                z.writestr(m.TSV_MEMBER,a)
+                z.writestr(m.LEDGER_MEMBER,b)
+            result=subprocess.run([sys.executable,str(P),'--zip',str(p),'--sha256',hashlib.sha256(p.read_bytes()).hexdigest()],capture_output=True,text=True)
+            self.assertEqual(result.returncode,0)
+            self.assertIn('PASS_SCOPED_LEDGER_AND_DETAILS_PARITY',result.stdout)
 
     def test_zero_items_without_visible_selector_is_no_force(self):
         rows,ledger=fixture()

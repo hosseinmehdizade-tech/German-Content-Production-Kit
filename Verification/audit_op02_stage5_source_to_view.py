@@ -165,7 +165,7 @@ def audit(tsv: bytes, ledger: bytes) -> dict:
     counts['unaccounted_items'] = counts['accepted_items'] - counts['physical_matched_items']
     return {'schema': SCHEMA,
             'status': ('PASS_SCOPED_LEDGER_AND_DETAILS_PARITY__NOT_RUNTIME' if not affected else
-                       'PASS_SCOPED_LEDGER_PARITY__VIEW_COVERAGE_REVIEW_REQUIRED__NOT_STAGE6'),
+                       'BLOCKED_VIEW_COVERAGE_REQUIRES_DISPOSITION__LEDGER_PARITY_PASS'),
             'counts': dict(sorted(counts.items())), 'affected': affected,
             'not_proven': ['independent Stage4 linguistic approval', 'intent of other detail sections',
                            'real CURRENT v503 Study/Quick rendering', 'full Stage5, Stage6 or Stage7 acceptance']}
@@ -197,7 +197,7 @@ def main():
         if args.output:
             args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
         print(json.dumps({'status': result['status'], 'counts': result['counts'], 'archive_sha256': result['input_sha256']['archive']}, ensure_ascii=False))
-        return 0 if result['status'].startswith('PASS_SCOPED') else 2
+        return 0 if result['status'] == 'PASS_SCOPED_LEDGER_AND_DETAILS_PARITY__NOT_RUNTIME' else 2
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, zipfile.BadZipFile) as exc:
         print(json.dumps({'status':'BLOCKED', 'error': str(exc)}))
         return 2

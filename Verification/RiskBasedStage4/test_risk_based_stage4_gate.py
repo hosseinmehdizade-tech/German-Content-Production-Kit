@@ -164,7 +164,6 @@ class RiskGateTests(unittest.TestCase):
         extra=copy.deepcopy(d['sample']['strata'][0]);extra['name']='L02'
         for kind in ('cards','examples','visible_combos'):
             d['mechanical']['counts'][kind]=2
-            extra['sample_unused'] = None
             extra['reviewed'][kind][0]['id']=kind+':L02'
             extra['planned_ids'][kind]=[kind+':L02']
         d['sample']['strata'].append(extra)

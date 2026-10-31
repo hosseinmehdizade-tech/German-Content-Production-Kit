@@ -137,22 +137,70 @@ def evaluate(policy, receipt, source_path=None):
     profile = policy.get('profiles',{}).get(receipt.get('workstream',''),{})
     min_strata = profile.get('min_strata', policy['sampling']['min_strata'])
     need(isinstance(strata,list) and len(strata) >= min_strata, 'INSUFFICIENT_STRATA')
+    kinds = (('cards',policy['sampling']['min_cards_per_stratum']),
+             ('examples',policy['sampling']['min_examples_per_stratum']),
+             ('visible_combos',policy['sampling']['min_combos_per_stratum']))
     ids = set()
+    # Population counts must account for the entire mechanical universe, not
+    # only a convenient cherry-picked lesson subset. Plans cannot be omitted:
+    # they are an independent audit trail for which samples were intended.
+    population_totals = {kind: 0 for kind, _ in kinds}
+    reviewed_ids_by_kind = {kind: set() for kind, _ in kinds}
     for s in strata if isinstance(strata,list) else []:
-        label = str(s.get('name',''))
-        need(label and label not in ids, 'DUPLICATE_STRATUM'); ids.add(label)
-        for kind, minimum in (('cards',policy['sampling']['min_cards_per_stratum']),('examples',policy['sampling']['min_examples_per_stratum']),('visible_combos',policy['sampling']['min_combos_per_stratum'])):
-            available = s.get('population',{}).get(kind)
-            records = s.get('reviewed',{}).get(kind,[])
-            need(isinstance(available,int) and available>=0 and isinstance(records,list), 'BAD_SAMPLE_UNIVERSE:'+label+':'+kind)
-            if isinstance(available,int) and isinstance(records,list):
-                need(len(records)>=min(available,minimum), 'SAMPLE_UNDERCOVERAGE:'+label+':'+kind)
-                need(len(set(str(a.get('id')) for a in records))==len(records), 'DUPLICATE_SAMPLE_ID:'+label+':'+kind)
-            plan=s.get('planned_ids',{}).get(kind)
-            if plan is not None and isinstance(records,list):
-                need(set(plan).issubset({z.get('id') for z in records}), 'PLANNED_SAMPLE_NOT_REVIEWED:'+label+':'+kind)
-            for item in records if isinstance(records,list) else []:
-                need(item.get('decision') in ('KEEP_WITH_REASON','CORRECTED_VERIFIED','CLOSED_NO_FORCE') and bool(item.get('reason')) and item.get('evidence_sha256') == anchor.get('working_sha256'), 'UNREVIEWED_SAMPLE:'+label+':'+kind)
+        if not isinstance(s,dict):
+            blockers.append('INVALID_STRATUM_RECORD')
+            continue
+        label = s.get('name')
+        if type(label) is not str or not label.strip() or label in ids:
+            blockers.append('DUPLICATE_OR_MISSING_STRATUM')
+            continue
+        ids.add(label)
+        population = s.get('population')
+        reviewed = s.get('reviewed')
+        planned = s.get('planned_ids')
+        if not isinstance(population,dict) or not isinstance(reviewed,dict):
+            blockers.append('BAD_SAMPLE_STRATUM_SHAPE:'+label)
+            continue
+        for kind, minimum in kinds:
+            available = population.get(kind)
+            records = reviewed.get(kind)
+            if type(available) is not int or available<0 or not isinstance(records,list):
+                blockers.append('BAD_SAMPLE_UNIVERSE:'+label+':'+kind)
+                continue
+            population_totals[kind] += available
+            need(len(records)>=min(available,minimum),
+                 'SAMPLE_UNDERCOVERAGE:'+label+':'+kind)
+            need(len(records)<=available, 'SAMPLE_MORE_THAN_POPULATION:'+label+':'+kind)
+            records_valid = all(isinstance(z,dict) and
+                                type(z.get('id')) is str and bool(z['id'].strip())
+                                for z in records)
+            if not records_valid:
+                blockers.append('MALFORMED_SAMPLE_ITEM:'+label+':'+kind)
+                continue
+            actual_ids = [z['id'] for z in records]
+            need(len(set(actual_ids)) == len(actual_ids),
+                 'DUPLICATE_SAMPLE_ID:'+label+':'+kind)
+            if reviewed_ids_by_kind[kind].intersection(actual_ids):
+                blockers.append('CROSS_STRATUM_DUPLICATE_SAMPLE_ID:'+kind)
+            reviewed_ids_by_kind[kind].update(actual_ids)
+            plan = planned.get(kind) if isinstance(planned,dict) else None
+            if (not isinstance(plan,list) or
+                    any(type(v) is not str or not v.strip() for v in plan) or
+                    len(set(plan)) != len(plan)):
+                blockers.append('MISSING_OR_DUPLICATE_SAMPLE_PLAN:'+label+':'+kind)
+            elif set(plan) != set(actual_ids) or len(plan) != len(actual_ids):
+                blockers.append('PLANNED_SAMPLE_NOT_EXACTLY_REVIEWED:'+label+':'+kind)
+            for item in records:
+                need(item.get('decision') in ('KEEP_WITH_REASON','CORRECTED_VERIFIED','CLOSED_NO_FORCE')
+                     and bool(str(item.get('reason','')).strip())
+                     and item.get('evidence_sha256') == anchor.get('working_sha256'),
+                     'UNREVIEWED_SAMPLE:'+label+':'+kind)
+    counts = mech.get('counts') if isinstance(mech,dict) else None
+    for kind, _ in kinds:
+        expected_total = counts.get(kind) if isinstance(counts,dict) else None
+        need(type(expected_total) is int and
+             population_totals[kind] == expected_total,
+             'SAMPLE_POPULATION_NOT_WHOLE_UNIVERSE:'+kind)
     expected = set(profile.get('expected_strata', []))
     need(not expected or expected.issubset(ids), 'REQUIRED_STRATA_MISSING')
     independent = receipt.get('adversarial', {})

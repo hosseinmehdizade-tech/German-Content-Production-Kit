@@ -1,3 +1,5 @@
+**User-approved C02 risk-based Stage4 method (2026-10-31):** [`STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json`](../STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json) is ACTIVE prospectively for content Stage4 acceptance. Executable gate: [`Verification/RiskBasedStage4/risk_based_stage4_gate.py`](../Verification/RiskBasedStage4/risk_based_stage4_gate.py), with 18/18 locally verified tests. [A1 real V21 pilot](Pilots/A1-STAGE4-RISK-ACCEPTANCE-v1.0.1-20261031.json) is source-pinned and **BLOCKED** pending independently reviewed risk families and lesson samples; no fabricated approval. All other workstreams may adopt this method at their next safe Stage4 boundary with a per-stream receipt. This does not finish OP-01 writer governance, broader OP-02 Stage3/4 unification, Stage5–7, or change learner content/LOCKED/UI/SRS.
+
 # German Flashcards — Continuous Optimization Program
 
 **Program ID:** GFP-OPT-2026 | **Created:** 2026-10-29 | **Status:** ACTIVE (coordination only)

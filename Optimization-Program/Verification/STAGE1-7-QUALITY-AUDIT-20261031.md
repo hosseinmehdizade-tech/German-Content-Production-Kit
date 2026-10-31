@@ -1,0 +1,43 @@
+# Cross-repository Stage 1–7 quality audit — executable defect fix + production boundaries
+
+**Date:** 2026-10-31. **Purpose:** inspect the *whole* content→card→app delivery chain, fix a real high-impact validator defect, and prioritize unresolved real quality gates. This does **not** create or edit learner cards, rewrite uploaded originals/LOCKED, alter app UI, promote workstreams, or activate remote writer/security grants.
+
+## Authoritative process reviewed
+
+- `Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md` defines intake/inventory → canonicalization → evidence/enrichment → linguistic QA → delivery projection → runtime acceptance → package/postpackage verification.
+- `Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md` requires stable IDs, source locators, portable hashes, source-specific completeness and separate quality/persistence states. Git is not proof of card quality.
+- User-approved `STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json` requires 100% deterministic/source checks, real independent review of all high/critical risks, stratified low-risk sampling, adversarial checks and **actual evidence** (not guessed approval).
+- Current app's `German-Flashcards-Pro/PROJECT-STATE.json` reports v503-R137; historical `Verification/validate_stage45_v486_consumer_bridge.py` explicitly targets v486-R120 and is **not** Stage 6 certification of v503.
+- Actual source/workstream sample: **Aber Hallo WIP76**, CURRENT Git LATEST blob `bb7d0666457f03816711c8a45a7304266b1bbee0` at sample time; original user Library WIP76 raw ZIP SHA256 `1a112428e3323737bd552055866302c7096b515e62bf24072094cc92da145f6d`, 1,866,397 compressed bytes. Read-only materialized and independently inspected. This is `COMPACT_NOT_FINAL`. Parent/full-source PDF chain remains exact WIP75/WIP72, not embedded source PDFs in current compact.
+
+## Stage-by-stage findings and disposition
+
+| Stage | Actual inspected artifacts and tests | Verdict | Next prevention/repair |
+|---|---|---|---|
+| **1 Source & Inventory** | Source manifest defines source PDFs and their SHA; WIP76 source record names immutable full WIP72 parent. Current compact cannot stand alone as an original-PDF inventory. | **PARTIAL, NOT REPROVEN FULL SOURCE** | Require registered original PDF bytes/locators and independent intake row inventory before full Stage1 PASS in each source; preserve originals, do not regenerate from memory. |
+| **2 Canonicalization** | WIP76 actual ZIP: **788** Canonical units, **788 unique IDs**, 787 import IDs. `CANONICAL-ENRICHED.WORKING.json` is present and hash-bound. | **SCOPED ID/STRUCTURE ONLY** | Keep original stable source→unit map, distinguish meaning/sense/unit types; semantic consolidation not inferred from stable counts. |
+| **3 Evidence & Enrichment** | WIP76 manifest reports **981** governed Rektion patterns, **950** independently attested, **31** exact holds. Evidence logs exist, but completeness is not implied by partial case-sense attestation. | **31 EXACT OPEN HOLDS** | Preserve per-pattern direct source/lexicographic proof; do not force remaining 31 or promote Stage3 to full PASS by counting. |
+| **4 Linguistic QA** | ACTIVE risk-based gate has a **reproducible acceptability flaw**: scan `flagged_ids` lacked mandatory `flagged_items` full severity parity, allowing an independently scanned HIGH alert to be described as LOW/HOLD or LOW/KEEP in a review receipt without rejection. A1 V21 pilot explicitly has **649** flagged alerts without current individual disposition and **0** real independently completed risk-method samples; its status is BLOCKED. | **CODE DEFECT FIXED IN THIS PR; LIVE LINGUISTIC ACCEPTANCE STILL OPEN** | Require full scan record identity/severity/flags and review severity parity; no high/critical downgrade, no missing scan detail. Test with synthetic negatives on two OS. Independent human is *not* required; independent AI adversarial QA remains mandatory. |
+| **5 Delivery Projection** | WIP76 contains 787 rows ×23 TSV fields; no malformed widths, 787 unique import IDs. `Tools/build_clean_delivery.py` independently rejects duplicate role files, while `audit_stage5_current_authority.py` and `audit_stage5_clean_zip_v486.py` are explicitly NONACTIVE checks. | **SCOPED TSV STRUCTURE ONLY, FULL STAGE5 NOT PASSED** | Require canonical-to-TSV value-level parity, exact role/current hashes and postpackage assertions on selected release, not just 23-column shape or successful ZIP. |
+| **6 Runtime/Presentation** | Current project runtime is **v503-R137** according to latest app Git state read in this audit. v486 historical bridge cannot establish acceptance against v503. WIP76 has no independently executed v503 import/presentation receipt. | **NOT VERIFIED / BLOCKED** | Resolve exact app artifact only at Stage6, test actual importer and visible DE/FA/EN fields, example grouping, Kombinations, JSON-leak/IDs/roundtrip, record runtime+TSV SHA. No unapproved UI changes. |
+| **7 Release & Postpackage** | WIP76 compact raw SHA matches Git, ZIP CRC **24/24** readable members, SHA256SUMS **23/23** valid, manifest **22/22** member hash+size records valid. It is explicitly **`CURRENT_EDITABLE_NOT_FINAL`**, does not bundle full source originals. | **SCOPED ARCHIVE INTEGRITY ONLY, NOT FINAL** | Require full 1–6 accepted states, one organized release ZIP and independent exact postpackage byte QA, plus CURRENT role/source/issuer checks before FINAL. |
+
+**Independent real WIP76 read-only measurements:** `SHA256SUMS` 23 complete matching records, `MANIFEST.json` 22 matching file entries, 24 ZIP files with no CRC failure, 787 TSV lexical card IDs (23 columns; zero invalid widths), 788 distinct canonical learning-unit IDs; the compact ZIP is a *working artifact*, not a final release or runnable app.
+
+## Actual defect fixed now (Stage 4)
+
+Affected `Verification/RiskBasedStage4/risk_based_stage4_gate.py`: before the change, `scan.flagged_ids` did not require a complete `scan.flagged_items` roster, and an individual review's severity was accepted without parity to scan severity. A `HIGH` scanner finding could therefore be mislabeled `LOW` in the receipt and marked `HOLD` (bounded) or `KEEP_WITH_REASON` while the gate might report `PASS_RISK_BASED_STAGE4`.
+
+The patch **fails closed** if: (1) `flagged_items` is absent, malformed, duplicates an ID, omits or invents an ID, omits severity/typed trigger flags; (2) a review has an ID not in the scanned roster or a severity different from the scan; or (3) a lower-severity family decision masks a higher-severity scanner member. The high/critical-hold hard block still applies. Existing source/current hash and independent-AI rules still apply; no source content or wording altered. Synthetic cases use the actual evaluator, not a memo claiming it works.
+
+**Limitations remaining:** this validates **internal consistency** of the receipt, not cryptographic authenticity of scanner input or truthfulness of independently authored semantic observations. Hashes are not author identity. Full Stage4 needs independently anchored scan data, genuine risk review and stratified sample against exact current source. Stage5–7 and app acceptance are not inferred from a green Stage4 unit test. Keep `risk_scan.flagged_items` as an **explicit required producer field** for future Stage4 receipts, with `id`, `severity`, `flags`.
+
+## Open critical follow-through, in order
+
+1. **Stage4 source-bound risk evidence and sampling:** reconcile independently generated scan roster and reviewed records against actual exact current content; no unobserved high/critical items hidden by missing scan entries, and no fabricated `planned_ids`. A1 live pilot stays BLOCKED.
+2. **Stage1→3 cross-stream source/ID/sense provenance:** verify with raw user originals and per-stream profiles, not Aber Hallo counts reused for Menschen/Grammar.
+3. **Stage4→5 canonical/transport exact semantic parity** on concrete current workstream artifacts. Pending until accepted Stage4 data.
+4. **Stage5→6 actual v503 runtime acceptance** and **Stage6→7 postpackage** on a validated candidate. Do not substitute older v486 fixture tests.
+5. **Publication/issuer governance OP-01:** still no protected `main` or authenticated independent producer; direct writer PR-migration is a separate owner-approved change, not a linguistic QA prerequisite or permission to publish.
+
+**Audit conclusion:** partial Stage1–3 evidence, actual Stage4 high-impact gate defect corrected with test coverage, Stage5 structural sample measured, Stage6/7 not proven. This is neither seven-stage PASS nor a new card-production run. Avoid further Git/security work unless it directly enables a failed quality check or a requested release.

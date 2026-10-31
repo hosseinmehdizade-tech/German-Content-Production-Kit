@@ -12,10 +12,11 @@ from zipfile import ZipFile, ZIP_DEFLATED
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "Verification"))
 from audit_op02_real_archive_pointer import (
-    audit, h, IMPORT, CANONICAL, POINTER, MANIFEST, SOURCES, SUMS, LINES)
+    audit, h, IMPORT, CANONICAL, POINTER, WORKING, MANIFEST, SOURCES, SUMS, LINES)
 
 def body(n=67, pointer_n=None, pointer_hash=None, manifest_entry_drop=False,
-         bad_member_sum=False, bad_pdf_hash=False):
+         bad_member_sum=False, bad_pdf_hash=False, pointer_working_hash=None,
+         working_status_n=None, working_main_hash=None, working_alias_hash=None):
     pdfs = [b"%PDF-1.4\nsynthetic a\n", b"%PDF-1.5\nsynthetic b\n"]
     paths = ["03-Source-Provenance/User-Supplied-Original-PDFs/A.pdf",
              "03-Source-Provenance/User-Supplied-Original-PDFs/B.pdf"]
@@ -26,6 +27,15 @@ def body(n=67, pointer_n=None, pointer_hash=None, manifest_entry_drop=False,
         "current":f"WIP{n if pointer_n is None else pointer_n}_SYNTHETIC",
         "canonical_sha256":pointer_hash or h(canonical),
         "import_sha256":h(imp),
+        "working_canonical_sha256":pointer_working_hash or h(canonical),
+        "working_import_sha256":h(imp),
+    }
+    working = {
+        "status":f"WORKING_WIP{n if working_status_n is None else working_status_n}_SCOPED",
+        "canonical_sha256":working_main_hash or h(canonical),
+        "import_sha256":h(imp),
+        "working_canonical_sha256":working_alias_hash or h(canonical),
+        "working_import_sha256":h(imp),
     }
     src = {"sources":[{"archive_file":paths[i],
                        "sha256":h(pdfs[i]) if not bad_pdf_hash or i else "f"*64}
@@ -33,6 +43,7 @@ def body(n=67, pointer_n=None, pointer_hash=None, manifest_entry_drop=False,
     files = {
         IMPORT:imp,CANONICAL:canonical,
         POINTER:json.dumps(pointer).encode(),
+        WORKING:json.dumps(working).encode(),
         SOURCES:json.dumps(src).encode(),
         "01-Final-Import/IMPORT.WORKING.tsv.sha256":
             (h(imp)+"  IMPORT.WORKING.tsv\n").encode(),
@@ -106,7 +117,40 @@ class RealArchiveBoundary(unittest.TestCase):
     def test_stale_canonical_pointer_in_fully_rehashed_zip_blocks(self):
         r=run_test(pointer_hash="e"*64)
         self.assertEqual(r["binary_integrity"],"PASS",r)
-        self.assertIn("EMBEDDED_CURRENT_CANONICAL_IMPORT_HASH_STALE",r["pointer_errors"])
+        self.assertIn("EMBEDDED_CURRENT_POINTER_HASH_STALE:canonical_sha256",r["pointer_errors"])
+        self.never_release(r)
+
+    def test_wip72_main_pointer_hashes_fresh_but_working_alias_stale(self):
+        r=run_test(n=72,pointer_working_hash="f"*64)
+        self.assertEqual(r["binary_integrity"],"PASS",r)
+        self.assertEqual(r["status"],"BLOCKED",r)
+        self.assertIn("EMBEDDED_CURRENT_POINTER_HASH_STALE:working_canonical_sha256",r["pointer_errors"])
+        self.never_release(r)
+
+    def test_wip72_working_state_status_stale_wip65(self):
+        r=run_test(n=72,working_status_n=65)
+        self.assertEqual(r["binary_integrity"],"PASS",r)
+        self.assertIn("WORKING_STATE_ACTIVE_STATUS_STALE",r["pointer_errors"])
+        self.never_release(r)
+
+    def test_wip72_working_state_main_sha_stale(self):
+        r=run_test(n=72,working_main_hash="f"*64)
+        self.assertEqual(r["binary_integrity"],"PASS",r)
+        self.assertIn("WORKING_STATE_ACTIVE_HASH_STALE:canonical_sha256",r["pointer_errors"])
+        self.never_release(r)
+
+    def test_wip72_working_state_alias_sha_stale(self):
+        r=run_test(n=72,working_alias_hash="f"*64)
+        self.assertEqual(r["binary_integrity"],"PASS",r)
+        self.assertIn("WORKING_STATE_ACTIVE_HASH_STALE:working_canonical_sha256",r["pointer_errors"])
+        self.never_release(r)
+
+    def test_concurrent_old_aliases_and_old_status_are_not_hidden_by_integrity(self):
+        r=run_test(n=72,pointer_working_hash="f"*64,
+                   working_status_n=65,working_main_hash="f"*64)
+        self.assertEqual(r["binary_integrity"],"PASS",r)
+        self.assertEqual(r["status"],"BLOCKED",r)
+        self.assertGreaterEqual(len(r["pointer_errors"]),3)
         self.never_release(r)
 
     def test_missing_manifest_member_blocks(self):

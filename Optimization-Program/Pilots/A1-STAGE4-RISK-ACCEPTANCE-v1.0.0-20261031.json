@@ -1,0 +1,63 @@
+{
+  "schema": "gfp-risk-based-stage4-live-pilot@1.0.0",
+  "date": "2026-10-31",
+  "program": "GFP-OPT-2026",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "method": "ACTIVE_C02_RISK_BASED_STAGE4_ACCEPTANCE",
+  "policy": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.0.json",
+  "authority": {
+    "full_current_tsv_sha256": "6ed349eaa1a9ff19499be53c709ba272449b86f175069c807c1786b212ea4f30",
+    "source_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "archive_sha256": "9d83652df8f6580aa8aaa7aaec1cbec5b41843dde91e278c488afd5eda8448af",
+    "current_content_modified": false
+  },
+  "whole_population": {
+    "cards": 2997,
+    "examples": 11988,
+    "visible_combinations": 2075,
+    "full_mechanical_pass": true,
+    "full_advisory_scan": true
+  },
+  "actual_risk_scan": {
+    "flagged_items": 658,
+    "already_itemwise_reviewed_with_reusable_current_V21_rationale_among_flags": 9,
+    "not_yet_individually_adjudicated_under_shadow_gate": 649,
+    "flag_is_not_error": true
+  },
+  "deterministic_sample_plan": {
+    "lesson_strata": 24,
+    "selected_card_ids": 288,
+    "selected_example_ids": 576,
+    "selected_combo_ids": 192,
+    "selected_does_not_mean_reviewed": true,
+    "completed_independent_sample_reviewer_decisions": 0
+  },
+  "test_results": {
+    "engine_synthetic_regressions_pass": 12,
+    "positive_synthetic_accepted": true,
+    "seeded_negative_fail_closed": true,
+    "real_A1_shadow_decision": "BLOCKED_RISK_BASED_STAGE4",
+    "evidence_root_sha256": "6ed349eaa1a9ff19499be53c709ba272449b86f175069c807c1786b212ea4f30"
+  },
+  "acceptance": {
+    "policy_architecture": "ACTIVE_AND_TECHNICALLY_TESTED",
+    "A1_content_stage4": "BLOCKED_EVIDENCE_NOT_PASSED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false,
+    "mandatory_next": "Complete independent source-grounded risk queue by exact IDs/family rules and 24-stratum semantic sample; re-run evidence gate without inventing decisions."
+  },
+  "portable_kit": {
+    "library_file_id": "libfile_db68f08f69208191afee1a9013ffbdb3",
+    "zip_sha256": "eec6adf55830127a031683eb215bcd2ce59d24650b937176b2936be15b21a63a",
+    "contains": [
+      "versioned policy",
+      "portable Python gate",
+      "12 adversarial tests",
+      "V21 original SHA-bound live A1 pilot evidence",
+      "fail-closed result"
+    ]
+  },
+  "cross_stream_rollout": "POLICY_METHOD_AVAILABLE_PROSPECTIVELY_TO_A1_A2_B1_GRAMMAR_VOCAB_LESEN_SCHREIBEN_NVV; each requires own currentness, domain-appropriate sampling and per-stream acceptance; no automatic Stage4 PASS, no retroactive LOCKED mutation."
+}

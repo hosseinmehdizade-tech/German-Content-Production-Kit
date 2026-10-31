@@ -5,7 +5,7 @@ from risk_based_stage4_gate import evaluate
 
 H='a'*64
 P={'sampling':{'min_strata':1,'min_cards_per_stratum':1,'min_examples_per_stratum':1,'min_combos_per_stratum':1},'profiles':{},'acceptance':{'max_documented_noncritical_holds':1,'min_negative_controls':5}}
-E={'workstream':'test','authority':{'working_sha256':H,'registered_source_sha256':'b'*64,'source_unchanged':True},'mechanical':{'full_population_checked':True,'counts':{'cards':1,'examples':1,'visible_combos':1},'checks':{x:'PASS' for x in ('identity','source_fidelity','examples','translations_present','relationships','render_projection','source_immutability')}},'risk_scan':{'full_population_checked':True,'flagged_ids':['a1:c1'],'flagged_items':[{'id':'a1:c1','severity':'HIGH','flags':['CASE_RISK']}]},'risk_dispositions':[{'id':'a1:c1','severity':'HIGH','decision':'KEEP_WITH_REASON','reason':'Authenticated example gives appropriate case and unambiguous sense','evidence_sha256':H}], 'sample':{'method':'HASH_DETERMINISTIC_STRATIFIED','seed':H,'strata':[{'name':'L01','population':{'cards':1,'examples':1,'visible_combos':1},'reviewed':{x:[{'id':x,'decision':'KEEP_WITH_REASON','reason':'Independently checked source meaning','evidence_sha256':H}] for x in ('cards','examples','visible_combos')}}]},'adversarial':{'separate_method':True,'challenge_evidence_sha256':H,'seeded_negative_controls_passed':5,'systemic_error_clusters_resolved':True},'scope_is_exact_current':True}
+E={'workstream':'test','authority':{'working_sha256':H,'registered_source_sha256':'b'*64,'source_unchanged':True},'mechanical':{'full_population_checked':True,'counts':{'cards':1,'examples':1,'visible_combos':1},'checks':{x:'PASS' for x in ('identity','source_fidelity','examples','translations_present','relationships','render_projection','source_immutability')}},'risk_scan':{'full_population_checked':True,'flagged_ids':['a1:c1'],'flagged_items':[{'id':'a1:c1','severity':'HIGH','flags':['CASE_RISK']}]},'risk_dispositions':[{'id':'a1:c1','severity':'HIGH','decision':'KEEP_WITH_REASON','reason':'Authenticated example gives appropriate case and unambiguous sense','evidence_sha256':H}], 'sample':{'method':'HASH_DETERMINISTIC_STRATIFIED','seed':H,'strata':[{'name':'L01','population':{'cards':1,'examples':1,'visible_combos':1},'reviewed':{x:[{'id':x,'decision':'KEEP_WITH_REASON','reason':'Independently checked source meaning','evidence_sha256':H}] for x in ('cards','examples','visible_combos')},'planned_ids':{x:[x] for x in ('cards','examples','visible_combos')}}]},'adversarial':{'separate_method':True,'challenge_evidence_sha256':H,'seeded_negative_controls_passed':5,'systemic_error_clusters_resolved':True},'scope_is_exact_current':True}
 class RiskGateTests(unittest.TestCase):
     def check(self,r,expected):self.assertEqual(evaluate(P,r)['status'],expected)
     def test_positive_synthetic_evidence(self):self.check(copy.deepcopy(E),'PASS_RISK_BASED_STAGE4')
@@ -107,4 +107,79 @@ class RiskGateTests(unittest.TestCase):
     def test_malformed_non_dict_review_blocks_without_crash(self):
         d=copy.deepcopy(E);d['risk_dispositions']=[None]
         self.assertIn('RISK_REVIEW_RECORD_MALFORMED',evaluate(P,d)['blockers'])
+
+    def test_absent_planned_ids_cannot_pass(self):
+        d=copy.deepcopy(E)
+        d['sample']['strata'][0].pop('planned_ids')
+        x=evaluate(P,d)
+        self.assertEqual(x['status'],'BLOCKED_RISK_BASED_STAGE4')
+        self.assertIn('MISSING_OR_DUPLICATE_SAMPLE_PLAN:L01:cards',x['blockers'])
+
+    def test_partial_stratum_population_cannot_pass(self):
+        d=copy.deepcopy(E)
+        d['mechanical']['counts']['cards']=19
+        self.assertIn('SAMPLE_POPULATION_NOT_WHOLE_UNIVERSE:cards',evaluate(P,d)['blockers'])
+
+    def test_population_less_than_reviewed_rejected(self):
+        d=copy.deepcopy(E)
+        d['sample']['strata'][0]['population']['examples']=0
+        x=evaluate(P,d)
+        self.assertIn('SAMPLE_MORE_THAN_POPULATION:L01:examples',x['blockers'])
+
+    def test_plan_must_be_exact_not_subset(self):
+        d=copy.deepcopy(E)
+        d['sample']['strata'][0]['planned_ids']['cards']=[]
+        self.assertIn('PLANNED_SAMPLE_NOT_EXACTLY_REVIEWED:L01:cards',evaluate(P,d)['blockers'])
+
+    def test_duplicate_plan_rejected(self):
+        d=copy.deepcopy(E)
+        d['sample']['strata'][0]['planned_ids']['cards']=['cards','cards']
+        self.assertIn('MISSING_OR_DUPLICATE_SAMPLE_PLAN:L01:cards',evaluate(P,d)['blockers'])
+
+    def test_extra_planned_id_not_reviewed_rejected(self):
+        d=copy.deepcopy(E)
+        d['sample']['strata'][0]['planned_ids']['cards']=['cards','unreviewed']
+        self.assertIn('PLANNED_SAMPLE_NOT_EXACTLY_REVIEWED:L01:cards',evaluate(P,d)['blockers'])
+
+    def test_malformed_sample_record_not_crash(self):
+        d=copy.deepcopy(E)
+        d['sample']['strata'][0]['reviewed']['cards']=[None]
+        self.assertIn('MALFORMED_SAMPLE_ITEM:L01:cards',evaluate(P,d)['blockers'])
+
+    def test_negative_and_boolean_population_rejected(self):
+        for invalid in (-1,True):
+            d=copy.deepcopy(E);d['sample']['strata'][0]['population']['cards']=invalid
+            self.assertIn('BAD_SAMPLE_UNIVERSE:L01:cards',evaluate(P,d)['blockers'])
+
+    def test_duplicate_sample_id_across_strata_rejected(self):
+        d=copy.deepcopy(E)
+        extra=copy.deepcopy(d['sample']['strata'][0]);extra['name']='L02'
+        for kind in ('cards','examples','visible_combos'):
+            d['mechanical']['counts'][kind]=2
+        d['sample']['strata'].append(extra)
+        self.assertIn('CROSS_STRATUM_DUPLICATE_SAMPLE_ID:cards',evaluate(P,d)['blockers'])
+
+    def test_disjoint_two_stratum_universe_passes(self):
+        d=copy.deepcopy(E)
+        extra=copy.deepcopy(d['sample']['strata'][0]);extra['name']='L02'
+        for kind in ('cards','examples','visible_combos'):
+            d['mechanical']['counts'][kind]=2
+            extra['sample_unused'] = None
+            extra['reviewed'][kind][0]['id']=kind+':L02'
+            extra['planned_ids'][kind]=[kind+':L02']
+        d['sample']['strata'].append(extra)
+        self.check(d,'PASS_RISK_BASED_STAGE4')
+
+    def test_zero_population_category_does_not_need_fake_items(self):
+        d=copy.deepcopy(E)
+        stratum=d['sample']['strata'][0]
+        stratum['population']['visible_combos']=0
+        stratum['reviewed']['visible_combos']=[]
+        stratum['planned_ids']['visible_combos']=[]
+        d['mechanical']['counts']['visible_combos']=0
+        self.check(d,'PASS_RISK_BASED_STAGE4')
+
+    def test_partial_example_universe_must_not_pass(self):
+        d=copy.deepcopy(E);d['mechanical']['counts']['examples']=20
+        self.assertIn('SAMPLE_POPULATION_NOT_WHOLE_UNIVERSE:examples',evaluate(P,d)['blockers'])
 if __name__=='__main__':unittest.main()

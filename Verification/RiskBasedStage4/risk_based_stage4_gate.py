@@ -53,8 +53,32 @@ def evaluate(policy, receipt, source_path=None):
             need(item.get('post_edit_verified') is True, 'UNVERIFIED_CORRECTION:'+str(uid))
         if item.get('source_claim') == 'VERBATIM':
             need(item.get('verbatim_locator_verified') is True, 'UNVERIFIED_VERBATIM_CLAIM:'+str(uid))
+    # Family-level closure for low/medium advisory signals is allowed, but NEVER a blanket signoff.
+    # All exact affected IDs, a typed scanner trigger, and representative independent reviews
+    # (at least 5 or 10% per family) are mandatory. CRITICAL/HIGH are always individual.
+    family_covered=set()
+    all_flags={z['id']:set(z.get('flags',[])) for z in scan.get('flagged_items',[]) if isinstance(z,dict) and z.get('id')}
+    for fam in receipt.get('risk_family_dispositions',[]):
+        gid=fam.get('rule_id','?')
+        affected=fam.get('affected_ids',[]);trigger=fam.get('trigger_flags',[])
+        need(fam.get('severity') in ('MEDIUM','LOW','INFO'), 'FAMILY_HIGH_RISK_NOT_ALLOWED:'+gid)
+        need(bool(gid) and bool(trigger) and bool(fam.get('reason')) and fam.get('evidence_sha256') == anchor.get('working_sha256') and fam.get('independent_challenge') is True, 'FAMILY_NOT_EVIDENCED:'+gid)
+        need(isinstance(affected,list) and len(affected)==len(set(affected)) and bool(affected) and set(affected).issubset(set(identified)), 'FAMILY_INVALID_MEMBERS:'+gid)
+        need(all(a in all_flags and all_flags[a].intersection(set(trigger)) for a in affected), 'FAMILY_TRIGGER_NOT_VERIFIED:'+gid)
+        scan_severity={v['id']:v.get('severity') for v in scan.get('flagged_items',[]) if isinstance(v,dict) and v.get('id')}
+        need(not any(scan_severity.get(a) in ('CRITICAL','HIGH') for a in affected), 'FAMILY_CONTAINS_HIGH_RISK:'+gid)
+        rev=fam.get('representative_reviews',[])
+        minimum=min(len(affected),max(5,(len(affected)+9)//10))
+        need(len(rev)>=minimum,'FAMILY_UNDERSAMPLED:'+gid)
+        expected_representatives=set(sorted(affected,key=lambda u:hashlib.sha256((str(anchor.get('working_sha256'))+'|'+u).encode()).digest())[:minimum])
+        need(expected_representatives.issubset({z.get('id') for z in rev}), 'FAMILY_NONDETERMINISTIC_SAMPLE:'+gid)
+        for z in rev:
+            need(z.get('id') in affected and z.get('evidence_sha256')==anchor.get('working_sha256') and bool(z.get('reason')) and z.get('decision') in ('KEEP_WITH_REASON','CLOSED_NO_FORCE','CORRECTED_VERIFIED'),'FAMILY_REVIEW_INVALID:'+gid)
+        if family_covered.intersection(set(affected)):
+            blockers.append('DUPLICATE_FAMILY_COVERAGE:'+gid)
+        family_covered.update(affected)
     if isinstance(identified,list):
-        need(set(identified).issubset(set(per_id)), 'UNRESOLVED_RISK_FLAGS:' + str(len(set(identified)-set(per_id))))
+        need(set(identified).issubset(set(per_id)|family_covered), 'UNRESOLVED_RISK_FLAGS:' + str(len(set(identified)-(set(per_id)|family_covered))))
     # Allow a modest documented non-critical residual risk, never a hard source-fidelity bypass.
     residual = [v for v in per_id.values() if v.get('decision') == 'HOLD' and v.get('severity') in ('MEDIUM','LOW','INFO')]
     need(len(residual) <= policy['acceptance']['max_documented_noncritical_holds'], 'TOO_MANY_DOCUMENTED_HOLDS')
@@ -77,6 +101,9 @@ def evaluate(policy, receipt, source_path=None):
             if isinstance(available,int) and isinstance(records,list):
                 need(len(records)>=min(available,minimum), 'SAMPLE_UNDERCOVERAGE:'+label+':'+kind)
                 need(len(set(str(a.get('id')) for a in records))==len(records), 'DUPLICATE_SAMPLE_ID:'+label+':'+kind)
+            plan=s.get('planned_ids',{}).get(kind)
+            if plan is not None and isinstance(records,list):
+                need(set(plan).issubset({z.get('id') for z in records}), 'PLANNED_SAMPLE_NOT_REVIEWED:'+label+':'+kind)
             for item in records if isinstance(records,list) else []:
                 need(item.get('decision') in ('KEEP_WITH_REASON','CORRECTED_VERIFIED','CLOSED_NO_FORCE') and bool(item.get('reason')) and item.get('evidence_sha256') == anchor.get('working_sha256'), 'UNREVIEWED_SAMPLE:'+label+':'+kind)
     expected = set(profile.get('expected_strata', []))

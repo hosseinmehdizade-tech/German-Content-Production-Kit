@@ -81,8 +81,13 @@ def evaluate(policy, receipt, source_path=None):
         need(sev in ('CRITICAL','HIGH','MEDIUM','LOW','INFO'), 'INVALID_RISK_SEVERITY:'+str(uid))
         if uid not in scan_by_id:
             blockers.append('RISK_REVIEW_ID_NOT_IN_SCAN:'+uid)
-        elif sev != scan_by_id[uid].get('severity'):
-            blockers.append('RISK_SEVERITY_DISAGREES_WITH_SCAN:'+uid)
+        else:
+            rank = {'INFO':0, 'LOW':1, 'MEDIUM':2, 'HIGH':3, 'CRITICAL':4}
+            # Conservative human/AI reclassification to a HIGHER severity is
+            # valid (the live A1 V21 receipt upgrades 10 INFO to LOW).
+            # Only a DOWNGRADE can hide an unresolved scan HIGH/CRITICAL.
+            if rank.get(sev,-1) < rank.get(scan_by_id[uid].get('severity'),5):
+                blockers.append('RISK_SEVERITY_DOWNGRADED_FROM_SCAN:'+uid)
         need(decision in DECISIONS, 'INVALID_RISK_DISPOSITION:'+str(uid))
         need(bool(str(item.get('reason','')).strip()) and item.get('evidence_sha256') == anchor.get('working_sha256'), 'MISSING_RISK_REASON_OR_CURRENT_EVIDENCE:'+str(uid))
         if decision == 'HOLD' and sev in ('CRITICAL','HIGH'):

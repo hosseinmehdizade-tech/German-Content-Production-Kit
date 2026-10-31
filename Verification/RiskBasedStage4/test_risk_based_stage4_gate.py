@@ -51,10 +51,25 @@ class RiskGateTests(unittest.TestCase):
                                          owner='editor',followup_trigger='Next review')
         result=evaluate(P,d)
         self.assertEqual(result['status'],'BLOCKED_RISK_BASED_STAGE4')
-        self.assertIn('RISK_SEVERITY_DISAGREES_WITH_SCAN:a1:c1',result['blockers'])
+        self.assertIn('RISK_SEVERITY_DOWNGRADED_FROM_SCAN:a1:c1',result['blockers'])
     def test_high_risk_downgraded_to_low_keep_is_blocked(self):
         d=copy.deepcopy(E);d['risk_dispositions'][0]['severity']='LOW'
-        self.assertIn('RISK_SEVERITY_DISAGREES_WITH_SCAN:a1:c1',evaluate(P,d)['blockers'])
+        self.assertIn('RISK_SEVERITY_DOWNGRADED_FROM_SCAN:a1:c1',evaluate(P,d)['blockers'])
+    def test_live_a1_conservative_info_to_low_escalation_is_allowed(self):
+        d=copy.deepcopy(E)
+        d['risk_scan']['flagged_items'][0]['severity']='INFO'
+        d['risk_dispositions'][0]['severity']='LOW'
+        self.check(d,'PASS_RISK_BASED_STAGE4')
+    def test_low_to_medium_escalation_is_allowed(self):
+        d=copy.deepcopy(E)
+        d['risk_scan']['flagged_items'][0]['severity']='LOW'
+        d['risk_dispositions'][0]['severity']='MEDIUM'
+        self.check(d,'PASS_RISK_BASED_STAGE4')
+    def test_critical_to_high_downgrade_is_blocked(self):
+        d=copy.deepcopy(E)
+        d['risk_scan']['flagged_items'][0]['severity']='CRITICAL'
+        d['risk_dispositions'][0]['severity']='HIGH'
+        self.assertIn('RISK_SEVERITY_DOWNGRADED_FROM_SCAN:a1:c1',evaluate(P,d)['blockers'])
     def test_missing_flagged_scan_detail_is_blocked(self):
         d=copy.deepcopy(E);d['risk_scan'].pop('flagged_items')
         self.assertIn('RISK_SCAN_DETAIL_REQUIRED',evaluate(P,d)['blockers'])

@@ -31,6 +31,18 @@ class RiskGateTests(unittest.TestCase):
         d=copy.deepcopy(E);d['workstream']='menschen-a1-final-consolidation-v336';p=copy.deepcopy(P);p['profiles']={'menschen-a1-final-consolidation-v336':{'min_strata':24,'expected_strata':['L%02d'%i for i in range(1,25)]}};self.assertEqual(evaluate(p,d)['status'],'BLOCKED_RISK_BASED_STAGE4')
     def test_bounded_low_hold(self):
         d=copy.deepcopy(E);d['risk_dispositions'][0].update(severity='LOW',decision='HOLD',owner='editor',followup_trigger='New learner report');self.check(d,'PASS_RISK_BASED_STAGE4')
+    def test_family_blanket_not_accepted(self):
+        d=copy.deepcopy(E);d['risk_dispositions']=[];d['risk_scan']['flagged_items']=[{'id':'a1:c1','flags':['VERY_SHORT']}];d['risk_family_dispositions']=[{'rule_id':'short','affected_ids':['a1:c1'],'trigger_flags':['VERY_SHORT'],'severity':'LOW','reason':'too generic','evidence_sha256':H,'independent_challenge':False,'representative_reviews':[]}];self.check(d,'BLOCKED_RISK_BASED_STAGE4')
+    def test_family_evidence_can_pass(self):
+        d=copy.deepcopy(E);d['risk_dispositions']=[];d['risk_scan']['flagged_items']=[{'id':'a1:c1','flags':['VERY_SHORT']}];d['risk_family_dispositions']=[{'rule_id':'short','affected_ids':['a1:c1'],'trigger_flags':['VERY_SHORT'],'severity':'LOW','reason':'Locative phrase teaches case, independently checked','evidence_sha256':H,'independent_challenge':True,'representative_reviews':[{'id':'a1:c1','decision':'KEEP_WITH_REASON','reason':'specific case benefit','evidence_sha256':H}]}];self.check(d,'PASS_RISK_BASED_STAGE4')
+    def test_family_unverified_trigger(self):
+        d=copy.deepcopy(E);d['risk_dispositions']=[];d['risk_scan']['flagged_items']=[{'id':'a1:c1','flags':['VERY_SHORT']}];d['risk_family_dispositions']=[{'rule_id':'short','affected_ids':['a1:c1'],'trigger_flags':['IN_EXAMPLE_SPAN'],'severity':'LOW','reason':'No matching trigger','evidence_sha256':H,'independent_challenge':True,'representative_reviews':[{'id':'a1:c1','decision':'KEEP_WITH_REASON','reason':'specific case benefit','evidence_sha256':H}]}];self.check(d,'BLOCKED_RISK_BASED_STAGE4')
+    def test_family_scan_high_not_masked(self):
+        d=copy.deepcopy(E);d['risk_dispositions']=[];d['risk_scan']['flagged_items']=[{'id':'a1:c1','flags':['VERY_SHORT'],'severity':'HIGH'}];d['risk_family_dispositions']=[{'rule_id':'short','affected_ids':['a1:c1'],'trigger_flags':['VERY_SHORT'],'severity':'LOW','reason':'cannot relabel confirmed high','evidence_sha256':H,'independent_challenge':True,'representative_reviews':[{'id':'a1:c1','decision':'KEEP_WITH_REASON','reason':'checked','evidence_sha256':H}]}];self.check(d,'BLOCKED_RISK_BASED_STAGE4')
+    def test_planned_sample_must_actually_be_reviewed(self):
+        d=copy.deepcopy(E);d['sample']['strata'][0]['planned_ids']={'cards':['missing-card'],'examples':['examples'],'visible_combos':['visible_combos']};self.check(d,'BLOCKED_RISK_BASED_STAGE4')
+    def test_no_critical_in_family(self):
+        d=copy.deepcopy(E);d['risk_dispositions']=[];d['risk_scan']['flagged_items']=[{'id':'a1:c1','flags':['SOURCE_FAKE']}];d['risk_family_dispositions']=[{'rule_id':'source','affected_ids':['a1:c1'],'trigger_flags':['SOURCE_FAKE'],'severity':'HIGH','reason':'cannot group','evidence_sha256':H,'independent_challenge':True,'representative_reviews':[{'id':'a1:c1','decision':'KEEP_WITH_REASON','reason':'not checked','evidence_sha256':H}]}];self.check(d,'BLOCKED_RISK_BASED_STAGE4')
     def test_unmanaged_low_hold(self):
         d=copy.deepcopy(E);d['risk_dispositions'][0].update(severity='LOW',decision='HOLD');self.check(d,'BLOCKED_RISK_BASED_STAGE4')
 if __name__=='__main__':unittest.main()

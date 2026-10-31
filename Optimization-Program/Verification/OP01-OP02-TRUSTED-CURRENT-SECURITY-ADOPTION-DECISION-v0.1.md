@@ -82,3 +82,38 @@ The actual #33 patch replaced the **DENY_ALL** verification with an `echo` state
 All test PRs #31/#32/#33 are closed without merge. No new workflow, branch protection, ruleset, review requirement, event-policy exception, checker installation, account billing, writer grant, content edition, CURRENT update, Library operation, app runtime or visible UI changed by this document.
 
 **Owner-facing recommended first decision:** for the *public Content Kit only*, choose between (A) base-defined `pull_request_target` read-only preflight **after** verifying the new event policy and protecting main, or (B) independent GitHub App/source-pinned status. Keep the private app decision separate. Explicit authorization is required before deploying either.
+
+
+## 6. 2026-10-31 live owner decision refresh — no setting changes
+
+**Observed from the connected GitHub repository REST API**, not self-asserted CI:
+
+| Exact subject | Read-only live observation (2026-10-31) | Implication |
+| --- | --- | --- |
+| Public Content Kit `main` | `protected=false`; `protection.enabled=false`; `GET /rulesets=[]` | No independently enforced merge/publish policy root. |
+| Private Flashcards Pro `main` | `protected=false`; private rulesets endpoint returns HTTP 403, GitHub plan/visibility restriction | **Keep app PRIVATE**. Upgrade eligibility is a separate explicit owner decision; do not make private source public. |
+| `WRITER-SCOPES.json` | `DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL`, empty scopes | No content write grant; editable policy file itself is not independently protected. |
+| Actual closed unmerged [PR #33](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/33) | spoofed `op01-governance-preflight` succeeded on head `c2aeb4fe30e47cb0150aa828472af92961e8c1b5`; GitHub checks app slug `github-actions`, integration ID `15368` | Same event/workflow/check name may be replaced in an untrusted PR while the returned check is green. |
+| Actual merged [PR #68](https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/68) | all sampled green PR-head checks also use `github-actions` / integration `15368` | Pinning `15368` does not distinguish valid protected logic from spoofed job logic. |
+| Public GitHub Actions `pull_request_target` default | GitHub official docs **currently say enforcement December 2, 2026**, now evaluate mode; a repository-specific event policy may be needed to keep a legitimate base-defined workflow running | Do **not** mark a `pull_request_target` check required before verifying the event policy, pilot execution, and sole-maintainer recovery. |
+
+GitHub current documentation, checked 2026-10-31:
+- https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target
+- https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+- https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches
+
+### Concrete choice to request from the owner (NOT implicit in “continue”)
+
+**Recommend split Route A into two independently approved changes:**
+
+**A0 — baseline public-main protection only:** With explicit authorization limited to `hosseinmehdizade-tech/German-Content-Production-Kit:refs/heads/main`, create an exact-name `main` ruleset in GitHub's UI (public repositories support rulesets on GitHub Free), no broad bypass actor, require PRs, disallow force push and deletion. **Initially require zero status checks** until a stable, independently sourced check is proven. Do not require an unavailable second human reviewer for a solo-maintainer project; evaluate review-requirement availability first. Check feasibility and emergency owner recovery before activation. Re-read `main.protected`, complete ruleset and bypass details after. This controls accidental/unreviewed direct pushes but is **not** authenticated CURRENT issuance. A ruleset-admin can still change settings, so it is not an external trust principal.
+
+**A1 — separately approved trusted publication authorization:** Pilot a base-defined read-only workflow with the required event policy, or a separately controlled GitHub App with its own required-check origin and policy/key custody. Verify trigger behavior on docs-only, changed-workflow, stale/head-updated, reopened and malicious same-name PRs before requiring the check. On GitHub, an ordinary `pull_request` job with the expected context and `github-actions/15368` **is not sufficient**; the PR #33 real counterexample must stay a release blocker. A protected branch plus a green CI is still not a signed owner approval of exact content bytes. Bind any eventual producer approval to independent exact workstream/portable SHA/CAS and separate full Stage4/5/6/7 evidence.
+
+**Route B — independently managed GitHub App** is an alternative to A1 if event policy or source protection cannot be proven. Requires separate credentials, installation and owner approval. Do not deploy as a silent alternative.
+
+**Private App repo:** Stay private and maintain its independent runtime/QA authorities. Neither A0 nor A1 automatically applies to the private app repository. The observed private ruleset 403 is not permission to change plan, expose source, or claim its `main` protected.
+
+**Operational minimum:** Do not require the currently path-filtered Stage3-4/content/ZIP workflow statuses, because unrelated PRs can leave those checks absent. No default required check exists at this time. Rollback must be an approved, auditable admin change, with post-rollback ruleset readback. The connector exposed in this chat does not provide an authorized branch-protection or ruleset-write action. **No GitHub repository settings changed in this optimization turn.**
+
+**Result:** `DECISION_READY_SECURITY_OWNER_APPROVAL_REQUIRED`. This append-only update refreshes the *existing* decision pack and supersedes stale date/status examples in its historical observations, without modifying the original historical evidence. No Stage4/5/6/7 or issuer/writer PASS is claimed.

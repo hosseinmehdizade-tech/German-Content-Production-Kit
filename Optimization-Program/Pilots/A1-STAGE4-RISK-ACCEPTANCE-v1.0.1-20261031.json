@@ -1,0 +1,56 @@
+{
+  "schema": "gfp-risk-stage4-a1-live-shadow-pilot@1.0.1",
+  "date": "2026-10-31",
+  "program": "GFP-OPT-2026",
+  "status": "TECHNICAL_GATE_ACTIVE_AND_TESTED__A1_LINGUISTIC_STAGE4_NOT_PASSED",
+  "policy": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json",
+  "engine": "Verification/RiskBasedStage4/risk_based_stage4_gate.py",
+  "tests": "Verification/RiskBasedStage4/test_risk_based_stage4_gate.py",
+  "user_approval": "Explicit request to activate C02 via OP-01/OP-02 and reuse across streams, 2026-10-31",
+  "exact_A1_content": {
+    "version": "V21",
+    "tsv_sha256": "6ed349eaa1a9ff19499be53c709ba272449b86f175069c807c1786b212ea4f30",
+    "source_CSV_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "unmodified": true,
+    "cards": 2997,
+    "examples": 11988,
+    "visible_combinations": 2075,
+    "full_structural_checks": "PASS"
+  },
+  "risk_evidence": {
+    "full_scan": 2075,
+    "scanner_flagged_heuristic_not_errors": 658,
+    "existing_V21_itemwise_rationale_among_flagged": 9,
+    "remaining_flagged_without_current_individual_disposition": 649,
+    "grouped_low_risk_family_review_in_v1_0_1": "PERMITTED_WITH_100_PERCENT_MEMBERSHIP_AND_DETERMINISTIC_10_PERCENT_OR_MIN5_INDEPENDENT_SAMPLES",
+    "high_risk": "MUST_BE_ITEMWISE_CLOSED"
+  },
+  "stratified_pilot": {
+    "lessons": 24,
+    "planned_cards": 288,
+    "planned_examples": 576,
+    "planned_combos": 192,
+    "independently_completed_under_risk_method": 0,
+    "planned_is_not_reviewed": true
+  },
+  "checks": {
+    "local_unit_tests": "18_OF_18_PASS",
+    "positive_synthetic": "PASS_SYNTHETIC_ONLY_NOT_A1",
+    "negative_controls": "PASS_REJECT_HIGH_RISK_HOLD_MISSING_EVIDENCE_UNVERIFIED_SOURCE_BROKEN_SAMPLE_FAKE_GROUP_CHERRY_PICK_AND_OLD_HASH",
+    "live_A1_gate": "BLOCKED_RISK_BASED_STAGE4",
+    "library_exact_SHA_and_bytes": "PASS"
+  },
+  "portable": {
+    "library_id": "libfile_d8ba506637f08191987c027868b6e9b3",
+    "archive_sha256": "5efdec7d3297b483ad73d49375517fa013aeba45c5fcf90d43c4dcd42697d1af",
+    "contains": "Exact tested engine, policy, full per-item A1 shadow evidence, deterministic lesson sample plan, regression tests"
+  },
+  "rollout": {
+    "method": "AVAILABLE_ALL_WORKSTREAMS_AT_NEXT_SAFE_STAGE4_BOUNDARY",
+    "content_acceptance": "EACH_STREAM_MUST_RUN_ITS_OWN_REAL_METHOD_AND_RECEIPT",
+    "legacy_stage4": "DO_NOT_RETROACTIVELY_APPROVE",
+    "stage5_6_7": "UNCHANGED",
+    "runtime_UI_SRS": "UNCHANGED"
+  },
+  "next": "Make only real source grounded A1 risk-family and per-lesson sample reviewer decisions; do not rerun entire low-risk universe or invent per-item approvals. Neither policy activation nor synthetic tests close A1 Stage4."
+}

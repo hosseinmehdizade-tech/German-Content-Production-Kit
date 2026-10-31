@@ -65,10 +65,12 @@
   ],
   "risk_based_stage4_acceptance_overlay": {
     "status": "USER_APPROVED_ACTIVE_PROSPECTIVE_2026_10_31",
-    "pointer": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.0.json",
+    "pointer": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json",
     "precedence": "For eligible Stage4 decisions, explicit risk-based independent AI QA is valid: 100% deterministic/source integrity + all substantive CRITICAL/HIGH signals reviewed + stratified independent low-risk samples; verified historical evidence can be reused by SHA/dependency. Do not treat every unreviewed low-risk unit or advisory scan flag as an automatic Stage4 BLOCK. No Stage4 PASS without the specific workstream risk-gate receipt.",
-    "A1": "V21 live pilot method tested, content Stage4 separately BLOCKED pending real reviewer evidence; no retroactive PASS",
+    "A1": "Real V21 shadow pilot status BLOCKED; Stage4 not closed or imported.",
     "other_streams": "Prospective only at independently validated next safe Stage4 boundary; no legacy rewrite",
-    "disallowed": "No invented human signoff, no false source claims or mass automatic approval, no Stage5–7 bypass."
+    "disallowed": "No invented human signoff, no false source claims or mass automatic approval, no Stage5–7 bypass.",
+    "latest_regression_test_count": 18,
+    "grouped_advisory_rule": "Only MEDIUM/LOW/INFO with exact affected IDs, matching trigger family, deterministic >=max(5, ceil(10%)) independently checked representatives, original current SHA and independent challenge; never group CRITICAL/HIGH; missing review remains blocked."
   }
 }

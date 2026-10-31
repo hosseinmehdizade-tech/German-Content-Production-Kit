@@ -1,0 +1,31 @@
+name: OP02 WIP74 Three ZIP Compact Chain Shadow
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_compact_chain_v2.py'
+      - 'Verification/test_op02_compact_chain_v2.py'
+      - 'Optimization-Program/Verification/OP02-WIP74-REAL-THREE-ZIP-CHAIN-20261031.md'
+      - '.github/workflows/op02-wip74-three-zip-shadow.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_compact_chain_v2.py'
+      - 'Verification/test_op02_compact_chain_v2.py'
+      - 'Optimization-Program/Verification/OP02-WIP74-REAL-THREE-ZIP-CHAIN-20261031.md'
+      - '.github/workflows/op02-wip74-three-zip-shadow.yml'
+permissions:
+  contents: read
+jobs:
+  three-zip-contract:
+    name: OP02-THREE-ZIP-RECOVERY-NONREQUIRED-NOT-ISSUER
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s Verification -p test_op02_compact_chain_v2.py -v

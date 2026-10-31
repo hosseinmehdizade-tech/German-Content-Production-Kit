@@ -1,0 +1,31 @@
+name: OP02 Compact Full Parent Chain Nonactive
+on:
+  pull_request:
+    paths:
+      - 'Verification/audit_op02_compact_parent_chain.py'
+      - 'Verification/test_op02_compact_parent_chain.py'
+      - 'Optimization-Program/Verification/OP02-WIP73-COMPACT-PARENT-CHAIN-20261031.md'
+      - '.github/workflows/op02-compact-parent-chain-shadow.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Verification/audit_op02_compact_parent_chain.py'
+      - 'Verification/test_op02_compact_parent_chain.py'
+      - 'Optimization-Program/Verification/OP02-WIP73-COMPACT-PARENT-CHAIN-20261031.md'
+      - '.github/workflows/op02-compact-parent-chain-shadow.yml'
+permissions:
+  contents: read
+jobs:
+  compact-parent:
+    name: OP02-COMPACT-PARENT-RECOVERY-NONISSUER
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s Verification -p test_op02_compact_parent_chain.py -v

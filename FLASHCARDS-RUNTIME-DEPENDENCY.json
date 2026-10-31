@@ -11,23 +11,28 @@
     "execution_safety": "EXECUTION-SAFETY-POLICY.json"
   },
   "current_runtime": {
-    "version": "v501-R135",
-    "verification_state": "USER_CONFIRMED_BROWSER_ACCEPTANCE",
+    "version": "v503-R137",
+    "app_version": 503,
+    "revision": "R137",
+    "artifact": "GFP-v503-R137-FULL-PERFORMANCE-REPAIR-QA-CORRECTED-CANDIDATE.zip",
+    "sha256": "f099b74f0365f1a04f8d7d583054683c48eeed2a1f81485efa5c3e1807e75471",
+    "app_sha256": "6a54a3cb7344677ba75907689aaa3afa50cced1ad5139e4d356c881c4584a3ee",
+    "service_worker_sha256": "8d950c0647815b474a1adb2d907328e91103253c4320ba29d423546782174a49",
+    "runtime_fingerprint": "6c974b519c8d586dcdaab64552bcb7c876eee15dd0857d52ddf9a56d5043b21c",
+    "verification_state": "REAL_CHROME_PERFORMANCE_ACCEPTED_CANDIDATE",
     "release_final": false,
-    "artifact": "GFP-v501-R135-CARD-STUDIO-GEOMETRY-CANDIDATE.zip",
-    "sha256": "bbe1016d2c910b8be90956d6f5ade483688e36e1615682cce1d144b4716f9b29",
-    "app_sha256": "b8b02df90997e9269c4878297385fccd6bd69c26fff6eac6e508dfcf2db594ef",
     "development_and_integration_base": true,
-    "delivery_surface": "USER_UPLOADED_ARTIFACT",
-    "portable_materialized_sha256_verified": true,
-    "git_mirror_status": "PENDING_V501_SOURCE_SYNC",
-    "note": "Current user-accepted v501 portable ZIP; source Git mirror still v486 and must NOT be substituted for CURRENT; no Stage6 certification from legacy Git-mirror tests."
+    "delivery_surface": "EXTERNAL_CURRENT_ARTIFACT_PIN",
+    "portable_materialized_sha256_verified": "NOT_VERIFIED_IN_THIS_SNAPSHOT",
+    "git_mirror_status": "PENDING_EXACT_V503_MAIN_SOURCE",
+    "note": "Cached readback only; live App RUNTIME-AUTHORITY-PIN.json is authoritative; v504 candidate is NOT current."
   },
   "last_fully_verified_runtime": {
     "version": "v486-R120",
     "verification_state": "VERIFIED",
     "release_final": true,
     "sha256": "7d4ba7b95604687ced751cd30ddb958b3c44b950ec21b4c9a9303d11d629a46d",
+    "library_stable_id": "libfile_51c3042d51508191b391e9d2edf8301f",
     "regression_reference": true,
     "development_and_integration_base": false
   },
@@ -53,12 +58,12 @@
     "per_version_sync": true,
     "coalesce_intermediate_versions": false,
     "ordinary_turn_sync_attempts_max": 2,
-    "current_runtime": "v501-R135",
-    "current_git_runtime_mirror": "v486-R120",
-    "persistence_git": "PENDING",
-    "pending_target": "v501-R135",
-    "runtime_match": "PENDING_V501_SOURCE_SYNC",
-    "note": "As of current official app pin, user-accepted v501 portable is CURRENT, Git 01-App mirror remains v486 (PENDING_V501_SOURCE_SYNC). A green Git-mirror consumer profile must be labeled legacy regression only."
+    "current_runtime": "v503-R137",
+    "current_git_runtime_mirror": "v486-R120_HISTORICAL_MAIN_NOT_CURRENT",
+    "persistence_git": "PENDING_EXACT_V503_MAIN_SOURCE",
+    "pending_target": "v503-R137",
+    "runtime_match": "PENDING_EXACT_V503_MAIN_SOURCE",
+    "note": "Current v503 per live App pin; historical v486 main mirror, separate rejected v504 candidate branch. No exact v503 main source proof."
   },
   "previous_stale_snapshot": {
     "observed_at": "2026-10-14",
@@ -100,10 +105,41 @@
   "snapshot_semantics": {
     "role": "CACHED_READBACK_ONLY__NOT_STAGE6_AUTHORITY",
     "authoritative_live_read": "hosseinmehdizade-tech/German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json",
-    "source_pin_git_blob": "156ef5a1d7e18be1a515401bf6d658c5fd5c385c",
+    "source_pin_git_blob": "afffe634ed75c9de98302d312c683d4816374431",
     "instruction": "For every Stage6/7 import/runtime compatibility task re-fetch latest app CURRENT and LAST_FULLY_VERIFIED; never treat this cross-repo snapshot as a live lock, release approval or a reason to downgrade.",
-    "mirror_status": "Git 01-App is v486-R120, portable CURRENT is v501-R135; no real v501 Stage6 acceptance proved by v486 Git mirror regression",
-    "expires_when": "Any newer authenticated current_runtime or changed app pin blob is observed",
-    "note": "Git source mirror v486; portable CURRENT v501. GitHub app PR #17 corrected legacy test naming; global CURRENT engineering gate still BLOCKED on authority-coherence, no Stage6/full FINAL approval."
+    "mirror_status": "v503 portable CURRENT, historical v486 source main; v504 candidate branch not CURRENT; exact v503 source pending",
+    "expires_when": "Any changed App RUNTIME-AUTHORITY-PIN.json blob observed",
+    "note": "Metadata-only cached readback 2026-10-31; not Stage6/7 acceptance or authenticated runtime integration."
+  },
+  "previous_cached_v501_snapshot": {
+    "role": "SUPERSEDED_CACHED_READBACK_NOT_AUTHORITY",
+    "current_runtime": {
+      "version": "v501-R135",
+      "verification_state": "USER_CONFIRMED_BROWSER_ACCEPTANCE",
+      "release_final": false,
+      "artifact": "GFP-v501-R135-CARD-STUDIO-GEOMETRY-CANDIDATE.zip",
+      "sha256": "bbe1016d2c910b8be90956d6f5ade483688e36e1615682cce1d144b4716f9b29",
+      "app_sha256": "b8b02df90997e9269c4878297385fccd6bd69c26fff6eac6e508dfcf2db594ef",
+      "development_and_integration_base": true,
+      "delivery_surface": "USER_UPLOADED_ARTIFACT",
+      "portable_materialized_sha256_verified": true,
+      "git_mirror_status": "PENDING_V501_SOURCE_SYNC",
+      "note": "Current user-accepted v501 portable ZIP; source Git mirror still v486 and must NOT be substituted for CURRENT; no Stage6 certification from legacy Git-mirror tests."
+    },
+    "git_sync": {
+      "mode": "IMMEDIATE_VALIDATED_UPDATE_SYNC_WITH_BOUNDED_FAILURE_HANDLING",
+      "mirror_target": "CURRENT",
+      "actual_sync_may_lag": true,
+      "per_version_sync": true,
+      "coalesce_intermediate_versions": false,
+      "ordinary_turn_sync_attempts_max": 2,
+      "current_runtime": "v501-R135",
+      "current_git_runtime_mirror": "v486-R120",
+      "persistence_git": "PENDING",
+      "pending_target": "v501-R135",
+      "runtime_match": "PENDING_V501_SOURCE_SYNC",
+      "note": "As of current official app pin, user-accepted v501 portable is CURRENT, Git 01-App mirror remains v486 (PENDING_V501_SOURCE_SYNC). A green Git-mirror consumer profile must be labeled legacy regression only."
+    },
+    "source_pin_git_blob": "156ef5a1d7e18be1a515401bf6d658c5fd5c385c"
   }
 }

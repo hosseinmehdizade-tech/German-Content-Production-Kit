@@ -2,83 +2,120 @@
   "schema": "gfp-crossrepo-risk-based-stage4-acceptance@1.0.0",
   "version": "1.0.0",
   "effective_date": "2026-10-31",
-  "authorization": "Explicit user command to activate C02 via OP-01/OP-02, A1 pilot and safe rollout, 2026-10-31",
-  "state": "ACTIVE_PROSPECTIVE_STAGE4_ACCEPTANCE_METHOD__A1_REAL_SHADOW_PILOT__OTHER_WORKSTREAMS_NEXT_SAFE_BOUNDARY",
-  "owner_goal": "Evidence-backed finite acceptance, no claim of 100 percent perfection",
-  "precedence": "Narrow amendment to LINGUISTIC-QA-AUTHORITY-POLICY.json and advisory combination gate: 100 percent mechanical; independent method, all critical/high semantic/source risks adjudicated; low-risk stratified sample with calibrated escalation. Historical signed-off decisions reused only if source hash/field dependencies match. Does not relax original source, Stage3 completeness, Stage5/6/7, exact runtime, UI, SRS or LOCKED.",
-  "definition_of_done": {
-    "mechanical_coverage": "100 percent of declared units",
-    "source_and_ID_integrity": "PASS",
-    "critical_high_unresolved": 0,
-    "independently_review_all_identified_critical_high": true,
-    "low_medium": "independent stratified sample, rooted in source evidence",
-    "adversarial_second_method": true,
-    "systemic_error": "Review all affected family and resample before PASS",
-    "negative_controls_min": 5,
-    "noncritical_exception_limit": 10,
-    "exception_fields": [
-      "id",
-      "severity",
-      "specific_reason",
-      "owner",
-      "followup_trigger"
-    ],
-    "reopening": "Only material new evidence, changed exact content/dependencies or proven systematic regression; no endless speculative additional checks",
-    "qa_outcome_labels": [
-      "PASS_RISK_BASED_STAGE4",
-      "BLOCKED_RISK_BASED_STAGE4"
-    ],
-    "PASS_does_not_mean_absolute_correctness": true
-  },
-  "risk_classes": {
-    "CRITICAL": "fabricated/incorrect original source, content corruption, identity/data loss",
-    "HIGH": "demonstrable sense, grammatical rection, translation mismatch or misleading didactic relation",
-    "MEDIUM": "context ambiguity or local translation risk",
-    "LOW": "stylistic paraphrase, short phrase, overlap with example",
-    "INFO": "advisory only, not a demonstrated defect"
-  },
-  "scanner_contract": {
-    "whole_current_universe_scanned": true,
-    "flags_are_not_errors": true,
-    "all_critical_high_exact_ids_disposed": true,
-    "low_risk_family_group_closeout": "Allowed only with all affected exact IDs, typed rule, independent representative evidence; no blanket approval",
-    "no_false_VERBATIM_claims": true
+  "authorization": "Explicit user approval 2026-10-31: activate C02 via OP-01/OP-02, A1 pilot then rollout to other workstreams if technical safety gates pass",
+  "status": "ACTIVE_PROSPECTIVE_RISK_BASED_ACCEPTANCE__PILOT_A1__OPT_IN_OTHER_WORKSTREAMS_ON_NEXT_SAFE_STAGE4_BOUNDARY",
+  "supersession_scope": "Stage4 semantic review acceptance METHOD only; replaces impossible requirement for independent itemwise re-review of every low-risk example and every low-risk combination. Does not waive source fidelity, zero open critical/high defects, source identity, stage3 completeness, didactic teaching_delta, Stage5–7, runtime currentness or user-approved UI.",
+  "precedence": "User explicit authorization; versioned risk-based policy only at applicable current safe Stage4 acceptance; source fidelity, no fabrication and exact current SHA remain hard. Historical full per-unit QA receipts are reusable ONLY if content SHA/dependency unchanged or affected rows are reverified.",
+  "acceptance": {
+    "require_100_percent_mechanical": "YES",
+    "require_full_risk_discovery": "YES",
+    "all_CRITICAL_HIGH_signals_must_be_adjudicated": "YES",
+    "no_unresolved_CRITICAL_HIGH": "YES",
+    "allow_documented_noncritical_risk": "YES_WITH_OWNER_TRIGGER_AND_BOUND",
+    "max_documented_noncritical_holds": 10,
+    "min_negative_controls": 5,
+    "stage4_label": "PASS_RISK_BASED_STAGE4",
+    "not_100_percent_perfect_claim": true,
+    "stage5_6_7_always_separate": true
   },
   "sampling": {
-    "selector": "SHA256_DETERMINISTIC_STRATIFIED_BY_CONTENT_TYPE_AND_LESSON",
-    "source_seed": "exact_current_TSV_sha256",
-    "A1_profile": {
-      "lessons": 24,
-      "per_lesson_min_cards": 12,
-      "per_lesson_min_examples": 24,
-      "per_lesson_min_visible_combos": 8
-    },
-    "other_profiles": "Declare valid strata per source/domain; no invented combinations for nonlexical Grammar/Lesen/Schreiben",
-    "low_risk_pass_condition": "Source-checked sample decisions and separate adversarial method; otherwise fail closed"
+    "method": "HASH_DETERMINISTIC_STRATIFIED",
+    "strata": "Each lesson or grammar/content class; categories must span all source modalities and card types",
+    "min_strata": 1,
+    "min_cards_per_stratum": 12,
+    "min_examples_per_stratum": 24,
+    "min_combos_per_stratum": 8,
+    "empty_population": "No sample demanded for a zero-item category; never invent items",
+    "after_systemic_error": "Review entire affected family, repair and resample; no automatic PASS"
   },
-  "evidence": {
-    "machine_readable_current_source_hash": true,
-    "original_source_hash": true,
-    "per_risk_disposition_and_reason": true,
-    "reviewed_sample_IDs_and_reasons": true,
-    "prior_receipt_reuse": "only when exact bytes or dependency crosswalk validated",
-    "historical_receipts": "IMMUTABLE",
-    "reviewer_claims": "AI separate-method, never fabricated outside specialist"
+  "risk": {
+    "CRITICAL": [
+      "incorrect source locator/fabricated original",
+      "identity loss or corrupt data",
+      "unsafe deceptive publication"
+    ],
+    "HIGH": [
+      "proven wrong German sense/valency/register leading to misleading learning",
+      "provable DE-FA-EN meaning contradiction",
+      "serious erroneous case or morphology",
+      "unresolved critical teaching duplication"
+    ],
+    "MEDIUM": [
+      "potential context omission",
+      "cross-field ambiguity with limited harm"
+    ],
+    "LOW": [
+      "short phrase",
+      "similar wording to an example",
+      "stylistic paraphrase"
+    ],
+    "INFO": [
+      "scanner signal without identified defect"
+    ],
+    "scanner_alert_is_not_error": true,
+    "rule_family_disposition": "Allowed only with exact affected ids, typed mechanism, representative adversarial evidence and verified source hash. Never blanket KEEP all flags."
+  },
+  "review_receipt": {
+    "require_exact_current_tsv_hash": true,
+    "require_original_source_pin": true,
+    "require_item_ids_and_reasons_for_critical_high": true,
+    "low_risk_sampling_with_traceable_records": true,
+    "require_independent_AI_method": true,
+    "allow_reuse_of_prior_evidence_with_dependency_reconciliation": true,
+    "forbid_fake_human_signature": true
   },
   "rollout": {
-    "A1": "LIVE_SHADOW_PILOT_BLOCKED_UNTIL_LINGUISTIC_EVIDENCE; no learner data changes",
-    "other_workstreams": "POLICY_AVAILABLE_ON_NEXT_SAFE_STAGE4_BOUNDARY_AFTER_TECHNICAL_TESTS; each must pass its own evidence gate",
-    "legacy_locks": "NO_RETROACTIVE_PASS",
-    "Stage5_6_7": "SEPARATE_MANDATORY_GATES",
-    "no_UI_SRS_changes": true
+    "A1": "SHADOW_PILOT_GATE_RESULT_ONLY_NO_CONTENT_MUTATION",
+    "others": "ACTIVE_METHOD_AT_NEXT_SAFE_BOUNDARY_AFTER_PILOT_TECHNICAL_REGRESSION_PASS; PER_WORKSTREAM_RECEIPT_REQUIRED",
+    "legacy_receipts": "IMMUTABLE_NO_RETROACTIVE_PASS",
+    "reopening_trigger": "new material source error, systematic defect, changed bytes or failed targeted dependency check",
+    "no_per_card_ZIP": true
   },
-  "reference": {
-    "historical_C02": "Architecture/Stage3-Stage4-Unification/CONFLICT-DEPENDENCY-MATRIX-v0.1.json#C02",
-    "program": "Optimization-Program/STATE.json",
-    "tested_portable_artifact": "GFP-Crossrepo-Stage4-Risk-Acceptance-v1.0.0-A1-Pilot-20261031.zip",
-    "artifact_sha256": "eec6adf55830127a031683eb215bcd2ce59d24650b937176b2936be15b21a63a",
-    "artifact_library_id": "libfile_db68f08f69208191afee1a9013ffbdb3",
-    "tests": "12/12 LOCAL SYNTHETIC, 11 focused adversarial plus synthetic positive; real A1 shadow BLOCKED",
-    "engine_sha256": "2ceaccd1cbd7e531b6183bf64a98c1966bfd61efe0731758e2d7bf39edff2418"
+  "not_authorized": [
+    "automatic A1 Stage4 PASS",
+    "auto-delete combinations",
+    "rewrite LOCKED or licensed originals",
+    "Stage5/6/7 promotion",
+    "UI/SRS changes"
+  ],
+  "profiles": {
+    "menschen-a1-final-consolidation-v336": {
+      "min_strata": 24,
+      "expected_strata": [
+        "A1-L01",
+        "A1-L02",
+        "A1-L03",
+        "A1-L04",
+        "A1-L05",
+        "A1-L06",
+        "A1-L07",
+        "A1-L08",
+        "A1-L09",
+        "A1-L10",
+        "A1-L11",
+        "A1-L12",
+        "A1-L13",
+        "A1-L14",
+        "A1-L15",
+        "A1-L16",
+        "A1-L17",
+        "A1-L18",
+        "A1-L19",
+        "A1-L20",
+        "A1-L21",
+        "A1-L22",
+        "A1-L23",
+        "A1-L24"
+      ],
+      "lesson_specific_sample_minima": {
+        "cards": 12,
+        "examples": 24,
+        "visible_combos": 8
+      }
+    },
+    "nonlexical_content": {
+      "min_strata": 1,
+      "note": "Named subject-specific strata and declared content applicability; no fake combination samples for nonlexical units"
+    }
   }
 }

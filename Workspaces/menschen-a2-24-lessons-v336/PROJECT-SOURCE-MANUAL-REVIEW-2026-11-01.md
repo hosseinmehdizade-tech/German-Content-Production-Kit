@@ -1,0 +1,71 @@
+# Menschen A2 — Project-source cleanup review list (2026-11-01)
+
+> READ-ONLY / NOT YET DELETED. Partial 11-page inventory of native Project attachments under `/Flasch kart`; pagination INCOMPLETE. The Library management tool returned `project_library_mutation_unsupported` for Project attachments. **No automatic Project-source deletion is possible here.**
+
+Current user-verified portable backup: `Menschen-A2-24-Lessons-CONSOLIDATED-WORKING-SOURCE-2026-11-01-NOT-IMPORT.zip` (SHA256 `aa4182019a139fba3af6fa1a3d77147055c730c2932219e896dd40bfe4f98281`). It is working-source only, not final import. Preserve historical LOCKED lesson archives, A2-L12 recovery, original source/audio, v037 and newest backup. Some old C1 archives contain unique historical members, so **these are candidates for owner review, not certified duplicates**.
+
+Scanned 2006 files, 268 A2 items. Group inventory: {"OTHER_REVIEW":{"n":176,"mb":321.39},"OLD_C1_REVIEW":{"n":53,"mb":726.01},"PROTECT":{"n":35,"mb":493.84},"OLD_C3_REVIEW":{"n":4,"mb":173.82}}.
+
+## Project-file names to review manually (largest first)
+
+| Name | MB | Review group |
+|---|---:|---|
+| Menschen-A2-C1-v034-195-RISK-EXAMPLES-2-TRILINGUAL-REPAIRS-NOT-IMPORT.zip | 57.10 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v033-116-OVERLAP-DIDACTIC-REVIEW-16-REMOVED-NOT-IMPORT.zip | 55.20 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v032-GAP401-895-495-CARDS-42-DIDACTIC-EDITS-NOT-IMPORT.zip | 53.29 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v031-L04-L07-200-CARD-DIDACTIC-REPAIRS-NOT-IMPORT.zip | 50.99 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v030-L01-L03-FIRST200-19-APPLIED-NOT-IMPORT.zip | 49.06 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v029-L24-FINAL83-CARD-20-SEMANTIC-REPAIRS-NOT-IMPORT.zip | 47.19 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v028-L23-L24-100-CARD-23-SEMANTIC-REPAIRS-NOT-IMPORT.zip | 45.27 | OLD_C1_REVIEW |
+| Menschen-A2-C3-V482-NATIVE-IDB-RUNNER-V3-HARDENED-NOT-IMPORT-READY.zip | 43.51 | OLD_C3_REVIEW |
+| Menschen-A2-C3-V482-NATIVE-IDB-RUNNER-REPAIR-NOT-IMPORT-READY.zip | 43.47 | OLD_C3_REVIEW |
+| Menschen-A2-C3-V481-SRS-SAFE-PREFLIGHT-NOT-IMPORT-READY.zip | 43.43 | OLD_C3_REVIEW |
+| Menschen-A2-C3-V482-MEMBERSHIP-CAS-DRY-RUN-NOT-IMPORT-READY.zip | 43.40 | OLD_C3_REVIEW |
+| Menschen-A2-C1-v027-L22-L23-100-CARD-12-SEMANTIC-REPAIRS-NOT-IMPORT.zip | 43.35 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v026-L20-L22-100-CARD-17-EDITED-NOT-IMPORT.zip | 41.43 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v025-L19-L20-100-CARD-17-SEMANTIC-REPAIRS-NOT-IMPORT.zip | 39.55 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v024-L17-L19-100-CARD-19-SEMANTIC-REPAIRS-NOT-IMPORT.zip | 37.67 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v023-L17-100-CARD-SEMANTIC-REPAIRS-NOT-IMPORT.zip | 35.83 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v022-L15-L17-100-CARD-SEMANTIC-REVIEW-NOT-IMPORT.zip | 33.91 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v021-L15-100-CARD-SCREEN-16-UNIT-REPAIRS-NOT-IMPORT.zip | 32.04 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v020-55-SEMANTIC-REAUDIT-5-APPLIED-SOURCE-DERIVED-NOT-IMPORT.zip | 30.12 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v019-20-HOLD-TRIAGE-13-APPLIED-SCOPED-QA-NOT-IMPORT.zip | 28.40 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v018-FULL-24-LESSONS-ALL-AVAILABLE-FIXES-INTEGRATED-NOT-IMPORT.zip | 26.94 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-LOSSLESS-PROJECTION-AND-A1-96-SCHEMA-BRIDGE-NOT-IMPORT.zip | 3.97 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v015-STAGE5-LOSSLESS-SHADOW-A1-96-3-MATERIAL-HOLDS-NOT-IMPORT.zip | 3.97 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v015-STAGE5-A2-1777-UNIQUE-DRYRUN-140-A1-REUSE-1-HOLD-NOT-IMPORT.zip | 2.79 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v015-1778-UNIQUE-DUAL-GRAMMAR-PREFLIGHT-NOT-IMPORT.zip | 2.60 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v015-STAGE5-V486-IMPORTER-GUARD-NO-IMPORT.zip | 2.32 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-V486-IMPORTER-COLLISION-GUARD-AND-EXECUTABLE-TEST-NOT-IMPORT.zip | 2.28 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v011-100-CARD-DECISIONS.json | 0.15 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v010-100-CARD-DECISIONS.json | 0.12 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v012-100-CARD-DECISIONS.json | 0.12 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v009-100-CARD-DECISIONS.json | 0.11 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v008-100-CARD-DECISIONS.json | 0.10 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-FINAL23-CARD-DECISIONS.json | 0.03 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-PREFLIGHT-REPORT(1).json | 0.03 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-PREFLIGHT-REPORT.json | 0.03 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-PREFLIGHT-BLOCKERS-NOT-IMPORT-READY.zip | 0.02 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v016-A1-OWNER-ISOLATED-LESSON-SUPPLEMENTS-NOT-IMPORT.zip | 0.02 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v017-A1-TWO-EXACT-MASTERS-CERTIFIED-NOT-IMPORT.zip | 0.01 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v014-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-LOSSLESS-PROJECTION-INDEPENDENT-QA(1).json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-STAGE5-LOSSLESS-PROJECTION-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v014-STAGE5-v486-IMPORTER-CONTRACT-TEST.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v013-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v012-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v011-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v014-NEGATIVE-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v010-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v009-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v008-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v004-INDEPENDENT-QA(1).json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v004-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v005-INDEPENDENT-QA(1).json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v005-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v007-INDEPENDENT-QA(1).json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v007-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v003-INDEPENDENT-QA(1).json | 0.00 | OLD_C1_REVIEW |
+| Menschen-A2-C1-v003-INDEPENDENT-QA.json | 0.00 | OLD_C1_REVIEW |
+
+These entries are **not** Library personal files; the app's Project sources UI, not `files.manage_library`, controls their attachment lifecycle. This report does not certify any historical byte loss as safe. No item in this table was deleted by creating this report.

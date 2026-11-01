@@ -2,7 +2,7 @@
   "schema": "gcpk-direct-root-project-organization-handoff@1.0.0",
   "date": "2026-11-01",
   "mission": "MOVE_ALL_DIRECT_ROOT_FILES_INTO_CORRECT_PROJECT_FOLDERS_BEFORE_ANY_CLEANUP_OR_DEDUP",
-  "status": "BLOCKED_PROJECT_ATTACHMENT_MUTATION_NOT_SUPPORTED_IN_THIS_CHAT",
+  "status": "BLOCKED_PROJECT_ROOT_MOVE_CAPABILITY__ROOT_ORGANIZATION_NOT_DONE__NO_CLEANUP",
   "evidence": {
     "root": "/Flasch kart",
     "scanned_sections": [
@@ -196,5 +196,34 @@
     "The user explicitly corrected mission priority; no duplicate cleanup until all loose root files organized.",
     "Names route where unambiguous; filename classification is not source truth.",
     "Existing 16 nested destination/triage folders created and API reported success; nothing moved from Project root due mutation error."
-  ]
+  ],
+  "direct_mutation_retests": {
+    "date": "2026-11-01",
+    "count": 3,
+    "all_failed": true,
+    "examples": [
+      {
+        "kind": "250_VERBEN_REPORT",
+        "source": "/Flasch kart/250-Verben-Cleanup-Report-2026-10-23(1).json",
+        "library_file_id": "libfile_f4780270e97c8191be516da5c185ccb5",
+        "status": "FAILED_PROJECT_MUTATION_UNSUPPORTED"
+      },
+      {
+        "kind": "MENSCHEN_A2_SOURCE",
+        "source": "/Flasch kart/Menschen-A2-Verben-Wortliste-DE.txt",
+        "library_file_id": "libfile_de4b41f5d0a48191a06220937c03e55f",
+        "status": "FAILED_PROJECT_MUTATION_UNSUPPORTED"
+      },
+      {
+        "kind": "GENERIC_IMAGE",
+        "source": "/Flasch kart/031a7b22-2c5a-4ba3-a18a-60af56c97d2f.png",
+        "library_file_id": "libfile_7d9126b3a3a8819197cc1da941666fb4",
+        "status": "FAILED_PROJECT_MUTATION_UNSUPPORTED"
+      }
+    ],
+    "error_code": "project_library_mutation_unsupported",
+    "no_copy_no_delete": true,
+    "conclusion": "Current available files.manage_library cannot move Project-attached root files, regardless of file type or specific owner category; do not repeat unproductive batch moves. Available GitHub connector only changes Git records, not ChatGPT Library project attachment membership."
+  },
+  "next_step_without_work_quota": "A Project-native move capability or user-local GUI automation with validated selectors is required; a local script cannot execute against ChatGPT Library from this tool session. Do not infer that supported Work/browser moving is available."
 }

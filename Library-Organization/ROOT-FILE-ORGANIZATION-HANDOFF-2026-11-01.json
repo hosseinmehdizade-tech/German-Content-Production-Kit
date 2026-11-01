@@ -1,0 +1,200 @@
+{
+  "schema": "gcpk-direct-root-project-organization-handoff@1.0.0",
+  "date": "2026-11-01",
+  "mission": "MOVE_ALL_DIRECT_ROOT_FILES_INTO_CORRECT_PROJECT_FOLDERS_BEFORE_ANY_CLEANUP_OR_DEDUP",
+  "status": "BLOCKED_PROJECT_ATTACHMENT_MUTATION_NOT_SUPPORTED_IN_THIS_CHAT",
+  "evidence": {
+    "root": "/Flasch kart",
+    "scanned_sections": [
+      {
+        "order": "filename ASC",
+        "pages": 18,
+        "files": 3400,
+        "bytes": 4407561363,
+        "last_observed": "German-Flashcards-Pro-v444-R78-ORGANIZED-DELIVERY-CANDIDATE-METADATA-CORRECTED.zip",
+        "complete": false
+      },
+      {
+        "order": "filename DESC",
+        "pages": 18,
+        "files": 3438,
+        "bytes": 5062316876,
+        "last_observed": "Menschen-A1-Verben-v3.3.2-UNIVERSAL-v2.tsv",
+        "complete": false
+      }
+    ],
+    "ranges_disjoint": true,
+    "unscanned_middle_range": true,
+    "minimum_distinct_loose_direct_root_files": 6838,
+    "minimum_distinct_loose_direct_root_bytes": 9469878239,
+    "direct_root_folders": 13,
+    "mutation_error_code": "project_library_mutation_unsupported",
+    "mutation_error_message": "Project attachment and knowledge mutations are not available through files.manage_library.",
+    "single_exact_id_retry": "FAILED_SAME_ERROR",
+    "source_still_in_root": "VERIFIED_SAMPLE",
+    "destination_postcheck": "ZERO_ROOT_IMPORT_FILES",
+    "files_moved_in_failed_batch": 0
+  },
+  "rules": [
+    {
+      "precedence": 1,
+      "name": "Menschen A1 verbs",
+      "match": "^Menschen[-_ ]A1[-_ ]Verben",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 2,
+      "name": "Menschen A2 verbs",
+      "match": "^Menschen[-_ ]A2[-_ ]Verben",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2-Verben/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 3,
+      "name": "Menschen B1 verbs",
+      "match": "^Menschen[-_ ]B1[-_ ]Verben",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1-Verben/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 4,
+      "name": "Menschen A1",
+      "match": "^(Menschen[-_ ]A1|A1[-_]L[0-9]{2})",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 5,
+      "name": "Menschen A2",
+      "match": "^(Menschen[-_ ]A2|A2[-_]L[0-9]{2}|A2[-_]v0[0-9]+)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 6,
+      "name": "Menschen B1",
+      "match": "^(Menschen[-_ ]B1|B1[-_]L[0-9]{2})",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 7,
+      "name": "A2 Enriched",
+      "match": "^04-Angereichert-Menschen-A2",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 8,
+      "name": "B1 Enriched",
+      "match": "^04-Angereichert-Menschen-B1",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 9,
+      "name": "Aber Hallo",
+      "match": "^(Aber[-_ ]Hallo|AHL[-_])",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Aber-Hallo-Listen-Tabellen/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 10,
+      "name": "250 Verben",
+      "match": "^(250[-_ ]?Verben|Verben[-_ ]mit[-_ ]Praepositionen)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/250-Verben-mit-Praepositionen/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 11,
+      "name": "NVV",
+      "match": "^(NVV[-_]|Nomen[-_ ]Verb)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Nomen-Verb-Verbindungen/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 12,
+      "name": "Irregular",
+      "match": "^(Unregelmaessige[-_ ]Verben|Unregelmäßige[-_ ]Verben)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Unregelmaessige-Verben/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 13,
+      "name": "Grammar",
+      "match": "^(Grammatik[-_ ]Aktiv|Grammar[-_ ]Aktiv)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Grammatik-Aktiv-A1-C1/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 14,
+      "name": "Lesen",
+      "match": "^Lesen[-_]",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Lesen/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 15,
+      "name": "Schreiben",
+      "match": "^Schreiben[-_]",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/Schreiben/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 16,
+      "name": "App",
+      "match": "^(GFP[-_]|German[-_ ]Flashcards[-_ ]Pro|Flashcards[-_ ]Pro)",
+      "destination": "/Flasch kart/German-Flashcards-Pro/Root-Imports",
+      "confidence": "HIGH_BY_FILENAME_ONLY",
+      "requires_review": false
+    },
+    {
+      "precedence": 17,
+      "name": "Unidentified image",
+      "match": "^(image\\(|[0-9a-f]{8}-[0-9a-f-]{27,}\\.(png|jpg|jpeg|webp)$)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/00-Unclassified/Unidentified-Images",
+      "confidence": "MANUAL_HOLD",
+      "requires_review": true
+    },
+    {
+      "precedence": 18,
+      "name": "Ambiguous phase and enrichment",
+      "match": "^(PHASE[0-9]+|04-Angereichert)",
+      "destination": "/Flasch kart/German-Content-Production-Kit/Content/00-Unclassified/Needs-Provenance",
+      "confidence": "MANUAL_HOLD",
+      "requires_review": true
+    }
+  ],
+  "safety": {
+    "scope": "Only direct root loose files; keep nested Checkpoints CURRENT FINAL and locked sources intact",
+    "delete": false,
+    "cleanup": false,
+    "bulk_copy": false,
+    "collision": "STOP, never overwrite existing destination filenames or assume duplicates",
+    "unknown_owner": "Hold explicit ambiguous group for manual provenance review",
+    "rollback": "Record per-file original path, intended path, stable library_file_id, backing file_id, size, actual status, then reread",
+    "success": "Zero direct-root files confirmed by exhaustive pagination; stable-ID parity and destination readback complete; link relocations in Git",
+    "blocker": "A supported ChatGPT Project/Library organizer in Work/GUI must support Project file moves; do not replace existing Project attachments with uploaded copies or delete originals as workaround"
+  },
+  "notes": [
+    "The user explicitly corrected mission priority; no duplicate cleanup until all loose root files organized.",
+    "Names route where unambiguous; filename classification is not source truth.",
+    "Existing 16 nested destination/triage folders created and API reported success; nothing moved from Project root due mutation error."
+  ]
+}

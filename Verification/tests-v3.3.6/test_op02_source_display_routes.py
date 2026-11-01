@@ -117,19 +117,19 @@ class SourceRoutes(unittest.TestCase):
     def test_cli_created_report_returns_blocked_exit_two(self):
         with tempfile.TemporaryDirectory() as d:
             z,sha,pending=fixture(d)
-            queue=Path(d)/'pending.json';queue.write_text(json.dumps(pending,ensure_ascii=False))
+            queue=Path(d)/'pending.json';queue.write_text(json.dumps(pending,ensure_ascii=False),encoding='utf8')
             out=Path(d)/'triage.json'
             cmd=[sys.executable,str(Path(route.__file__)),'--zip',str(z),'--zip-sha256',sha,'--queue',str(queue),'--output',str(out)]
             p=subprocess.run(cmd,capture_output=True,text=True,check=False)
             self.assertEqual(p.returncode,2)
             self.assertTrue(out.exists())
-            self.assertEqual(json.loads(out.read_text())['status'],route.BLOCKED)
+            self.assertEqual(json.loads(out.read_text(encoding='utf8'))['status'],route.BLOCKED)
             self.assertEqual(subprocess.run(cmd,capture_output=True,check=False).returncode,2)
 
     def test_cli_rejects_overwriting_source_or_queue(self):
         with tempfile.TemporaryDirectory() as d:
             z,sha,pending=fixture(d)
-            queue=Path(d)/'pending.json';queue.write_text(json.dumps(pending,ensure_ascii=False))
+            queue=Path(d)/'pending.json';queue.write_text(json.dumps(pending,ensure_ascii=False),encoding='utf8')
             for dest in (queue,z):
                 old=dest.read_bytes()
                 rc=route.main(['--zip',str(z),'--zip-sha256',sha,'--queue',str(queue),'--output',str(dest)])

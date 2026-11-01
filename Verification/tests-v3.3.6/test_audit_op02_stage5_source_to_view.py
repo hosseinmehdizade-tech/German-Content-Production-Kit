@@ -205,5 +205,66 @@ class TestAudit(unittest.TestCase):
         self.assertEqual(res['counts']['accepted_items'],0)
 
 
+    def test_german_only_detail_cannot_count_as_bilingual_visible(self):
+        rows,ledger=fixture()
+        d=json.loads(rows[0]['details'])
+        d[0]['items'][0]=ledger[0]['items'][0]['de']
+        rows[0]['details']=json.dumps(d,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError, 'BILINGUAL_COMBINATION_DETAIL_MISMATCH'):
+            self.verify(rows,ledger)
+
+    def test_unexpected_extra_physical_detail_item_is_a_hard_block(self):
+        rows,ledger=fixture()
+        d=json.loads(rows[0]['details'])
+        d[0]['items'].append('synthetic unauthorized extra')
+        rows[0]['details']=json.dumps(d,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError,'UNAUTHORIZED_EXTRA_COMBINATION_DETAIL_ITEM'):
+            self.verify(rows,ledger)
+
+    def test_duplicate_physical_item_is_not_silently_ignored(self):
+        rows,ledger=fixture()
+        d=json.loads(rows[0]['details'])
+        d[0]['items'].append(d[0]['items'][0])
+        rows[0]['details']=json.dumps(d,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError,'UNAUTHORIZED_EXTRA_COMBINATION_DETAIL_ITEM'):
+            self.verify(rows,ledger)
+
+    def test_accepted_item_empty_persian_cannot_be_source_parity_pass(self):
+        rows,ledger=fixture()
+        ledger[0]['items'][0]['fa']=' '
+        c=json.loads(rows[0]['custom_fields'])
+        c['kombinationen_v1']['items'][0]['fa']=' '
+        rows[0]['custom_fields']=json.dumps(c,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError, 'INVALID_ACCEPTED_ITEM_LANGUAGE'):
+            self.verify(rows,ledger)
+
+    def test_accepted_item_empty_english_cannot_be_source_parity_pass(self):
+        rows,ledger=fixture()
+        ledger[0]['items'][0]['en']=' '
+        c=json.loads(rows[0]['custom_fields'])
+        c['kombinationen_v1']['items'][0]['en']=' '
+        rows[0]['custom_fields']=json.dumps(c,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError, 'INVALID_ACCEPTED_ITEM_LANGUAGE'):
+            self.verify(rows,ledger)
+
+    def test_dict_detail_without_persian_does_not_prove_visibility(self):
+        rows,ledger=fixture()
+        d=json.loads(rows[0]['details'])
+        d[0]['items'][0]={'de':ledger[0]['items'][0]['de']}
+        rows[0]['details']=json.dumps(d,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError, 'BILINGUAL_COMBINATION_DETAIL_MISMATCH'):
+            self.verify(rows,ledger)
+
+    def test_extra_detail_on_closed_zero_item_card_fails(self):
+        rows,ledger=fixture()
+        ledger[0]['items']=[]
+        c=json.loads(rows[0]['custom_fields'])
+        c['kombinationen_v1']['items']=[]
+        rows[0]['custom_fields']=json.dumps(c,ensure_ascii=False)
+        rows[0]['details']=json.dumps([{'title':'Kombinationen','items':['synthetic unregistered']}])
+        with self.assertRaisesRegex(ValueError,'UNAUTHORIZED_EXTRA_COMBINATION_DETAIL_ITEM'):
+            self.verify(rows,ledger)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,3 +1,13 @@
+## USER-PRIORITY CORRECTION — ROOT ORGANIZATION FIRST (2026-11-01)
+
+**This overrides the prior "next: dedupe/checkpoints" work order.** The user explicitly requires all loose files directly under `/Flasch kart` to be organized into their corresponding project folders **before any cleanup, duplicate study or deletion**. The earlier 27 historical + 3 active Review moves do NOT complete the root task.
+
+Read-only top-level scan found **at least 1,400 loose direct-root files** in the first 8 paginated pages, including Menschen A1/A2/B1, Aber Hallo, 250 Verben, app/runtime artifacts, images, scripts and unclear files. This is a lower bound, not full-root completion.
+
+Created 16 dedicated nested incoming/triage folders inside the existing Content project folders. **No root Project-attached file was relocated**: an attempted batch of root `250-Verben*` moves returned `project_library_mutation_unsupported`. A single exact-file-id retry confirmed the response: "Project attachment and knowledge mutations are not available through files.manage_library." The source files were still visible at the root; destination `250-Verben-mit-Praepositionen/Root-Imports` had zero files at post-check. **Do not log these attempts as successful moves**. Do not bulk-copy/upload duplicate files as a workaround because of Library quota and lineage problems.
+
+**Required next execution route:** use an authorized ChatGPT Project file organizer / GUI (e.g. supported Work/Computer Use environment) that can move project-attached files, preserving project membership, original bytes and IDs or a verified replacement mapping. Route by unambiguous project filename; ambiguous bare "image(...)" or "PHASE*.json" must be triaged, not guessed. After moves, re-list **the entire** `/Flasch kart` direct-root until there are zero files, with old/new per-file ledger and reversible provenance. Protected `CURRENT`, `FINAL`, and known Checkpoints stay unchanged unless the user's folder-organization intent specifically identifies a different authorized placement and all dependencies are updated. No cleanup/deletion before root organization is verified. Overall migration **BLOCKED_PROJECT_ROOT_MOVE_CAPABILITY; PARTIAL**.
+
 # Content Library project-folder migration — 2026-11-01
 
 Status: PARTIAL, NOT FINAL. No deletion or LOCKED/CURRENT/FINAL movement.

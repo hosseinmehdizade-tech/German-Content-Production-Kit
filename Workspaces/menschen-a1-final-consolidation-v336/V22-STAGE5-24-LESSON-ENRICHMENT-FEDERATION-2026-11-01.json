@@ -1,0 +1,72 @@
+{
+  "schema": "gcpk-a1-stage5-federated-historical-enrichment-receipt@1.0.0",
+  "date": "2026-11-01",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": "V22_24_LESSON_HISTORICAL_ENRICHMENT_EVIDENCE_RECOVERED_AND_INDEPENDENTLY_REVERIFIED",
+  "status": "SCOPED_HISTORICAL_STAGE5_EVIDENCE_PASS__GLOBAL_STAGE5_STILL_BLOCKED__NO_IMPORT",
+  "parent": {
+    "v22_zip_sha256": "74cdbf5b6d0121421fac8235124e738929b9764f3696db532cc54f9509f5757d",
+    "v22_tsv_sha256": "024ee77efbb3675a0720491af1da2286e2186bd00bc83bcbb9dfef22b0656c9a",
+    "framework_v336_sha256": "61ecccdd1ae0819ae7e15b5d3335bc576dcb896a393765c257687b900ec3915c",
+    "original_source_csv_sha256": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222"
+  },
+  "scope": {
+    "lessons": 24,
+    "historical_canonical_verified_per_lesson": 24,
+    "historical_completeness_matrices": 24,
+    "historical_candidate_ledgers": 24,
+    "historical_policies": 24,
+    "matrix_memberships": 3039,
+    "unique_active_target_ids": 2997,
+    "reuse_edges": 42,
+    "reused_unique_ids": 41,
+    "verified_present_cells": 27204,
+    "closed_no_force_cells": 21275,
+    "not_applicable_cells": 91,
+    "total_historical_candidate_records": 9878,
+    "accepted_candidates": 8268,
+    "rejected_candidates": 1610,
+    "deferred_candidates": 0
+  },
+  "quality": {
+    "official_lesson_specific_completeness": "24/24 PASS",
+    "official_lesson_specific_candidate_ledger": "24/24 PASS",
+    "v22_identity_set_parity": "2997/2997 EXACT",
+    "policy_distinct_byte_hashes": 4,
+    "policy_distinct_semantic_structures": 3,
+    "reused_card_ids_with_lesson_scoped_status_discrepancy": 19,
+    "duplicate_candidate_ids": 4,
+    "duplicate_candidate_dispositions": "ALL_REJECTED_WITH_DIFFERENT_REVIEW_PROVENANCE",
+    "current_v22_global_legal_adjudication": "NOT_COMPLETED",
+    "original_import_and_source_mutated": false,
+    "locked_archives_mutated": false,
+    "ui_srs_runtime_mutated": false
+  },
+  "package": {
+    "filename": "Menschen-A1-V22-Stage5-Enrichment-24Lesson-FEDERATED-QA-NO-IMPORT-20261101.zip",
+    "sha256": "02d253abdf465f78fadcc58e3c8bc3f063f34b3c9e0cfca82ca1166b6d5a878c",
+    "bytes": 3535597,
+    "members": 102,
+    "sha256sum_entries": 101,
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Checkpoints/Menschen-A1-V22-Stage5-Enrichment-24Lesson-FEDERATED-QA-NO-IMPORT-20261101.zip",
+    "library_file_id": "libfile_63331805ff0c8191a1f3cb92361c90c0",
+    "library_exact_sha256_and_byte_compare": true,
+    "zip_crc_and_safepath": "PASS",
+    "fresh_extract_101_sha256_checks": "PASS",
+    "fresh_extract_scoped_verifier": "PASS"
+  },
+  "blockers": {
+    "global_stage5": "BLOCKED_NO_AUTHORIZED_SINGLE_V22_BOUND_POLICY_COMPLETENESS_LEDGER",
+    "reason": "Lesson 2 has non-isomorphic 17D policy; lesson 22 adds 19th Kombinationen dimension; 19 shared-ID status differences and 4 candidate-ID collisions must be source-grounded reconciled. Historical canonical SHA is not V22 global canonical SHA; official full builder still missing resolved-enrichment-policy in current V22-bound input.",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false
+  },
+  "runtime": {
+    "current": "v505-R141",
+    "exact_artifact_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "full_runtime_import": "NOT_RUN"
+  },
+  "authority_policy": "Scoped historical evidence only; preserve existing V22 content LATEST.json, source, archives, app UI, SRS; do not promote Stage5/6/7 from per-lesson QA.",
+  "next_action": "Independent itemwise V22-bound cross-lesson semantic and policy review: 19 shared statuses, L02 17D / L22 extra Kombinationen, 4 rejected candidate ID provenance; build genuine V22 policy/matrix/ledger with exact V22 SHA and rerun official full v3.3.6 builder. Then exact current v505 Stage6."
+}

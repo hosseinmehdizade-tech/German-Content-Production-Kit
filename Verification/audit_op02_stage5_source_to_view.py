@@ -13,6 +13,7 @@ import csv
 import hashlib
 import io
 import json
+import stat
 import zipfile
 from pathlib import Path
 
@@ -23,6 +24,40 @@ UNIVERSAL_FIELDS = ('id card_type domain category source level lesson deck front
 TSV_MEMBER = '01-Final-Import/Menschen-A1-V22-CONTENT-IMPORT.tsv'
 LEDGER_MEMBER = '04-Enrichment-Work/accepted-combinations.jsonl'
 SHA256_PATTERN = __import__('re').compile(r'[0-9a-f]{64}\Z')
+# Bound original input before ZIP decompression. These limits admit the
+# original A1 V22 (24 members, ~183 MB total uncompressed) without expanding
+# malicious path/symlink/zip-bomb payloads. This is a nonactive diagnostic.
+MAX_ARCHIVE_BYTES = 64_000_000
+MAX_MEMBERS = 80
+MAX_TOTAL_UNCOMPRESSED = 256_000_000
+MAX_MEMBER_UNCOMPRESSED = 80_000_000
+MAX_COMPRESSION_RATIO = 200
+
+
+def _checked_zip_members(z: zipfile.ZipFile):
+    members = z.infolist()
+    names = [m.filename for m in members]
+    if not members or len(members) > MAX_MEMBERS or len(names) != len(set(names)):
+        raise ValueError('DUPLICATE_OR_OVERSIZED_ARCHIVE_INVENTORY')
+    if sum(m.file_size for m in members) > MAX_TOTAL_UNCOMPRESSED:
+        raise ValueError('ARCHIVE_TOTAL_UNCOMPRESSED_LIMIT')
+    if len({name.casefold() for name in names}) != len(names):
+        raise ValueError('CASE_COLLIDING_ARCHIVE_PATHS')
+    for info in members:
+        path = info.filename
+        parts = path.split('/')
+        if (not path or any(part in ('', '.', '..') for part in parts)
+                or path.startswith('/') or '\\' in path or ':' in path
+                or info.is_dir() or info.flag_bits & 1
+                or stat.S_IFMT(info.external_attr >> 16) == stat.S_IFLNK):
+            raise ValueError('UNSAFE_ARCHIVE_MEMBER:' + path)
+        if info.file_size > MAX_MEMBER_UNCOMPRESSED:
+            raise ValueError('ARCHIVE_MEMBER_UNCOMPRESSED_LIMIT:' + path)
+        if info.file_size and (info.compress_size <= 0 or
+                info.file_size > info.compress_size * MAX_COMPRESSION_RATIO):
+            raise ValueError('ARCHIVE_MEMBER_COMPRESSION_RATIO_LIMIT:' + path)
+    if TSV_MEMBER not in names or LEDGER_MEMBER not in names:
+        raise ValueError('MISSING_REQUIRED_STAGE5_SOURCE_ROLES')
 
 
 def digest(data: bytes) -> str:
@@ -132,11 +167,15 @@ def audit(tsv: bytes, ledger: bytes) -> dict:
             raise ValueError('MALFORMED_OR_DUPLICATE_EXPLICIT_ITEM_IDS:' + card_id)
         physical, all_details = _physical(details)
         used = set()
+        last_visible_index = -1
         missing = []
         for ordinal, item in enumerate(items):
             de, fa, en = _view_item_parts(item)
             found = next((i for i, v in enumerate(physical) if i not in used and _matches(item, v)), None)
             if found is not None:
+                if found <= last_visible_index:
+                    raise ValueError('DECLARED_COMBINATION_ORDER_DRIFT:' + card_id)
+                last_visible_index = found
                 used.add(found)
                 continue
             elsewhere = []
@@ -190,12 +229,15 @@ def audit(tsv: bytes, ledger: bytes) -> dict:
 def audit_archive(path: Path, expected_archive_sha256: str) -> dict:
     if not SHA256_PATTERN.fullmatch(expected_archive_sha256):
         raise ValueError('EXTERNAL_PIN_NOT_SHA256')
+    if path.stat().st_size > MAX_ARCHIVE_BYTES:
+        raise ValueError('ARCHIVE_COMPRESSED_SIZE_LIMIT')
     blob = path.read_bytes()
     if digest(blob) != expected_archive_sha256:
         raise ValueError('EXACT_ARCHIVE_SHA256_MISMATCH')
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
-        if len(set(z.namelist())) != len(z.namelist()) or z.testzip() is not None:
-            raise ValueError('DUPLICATE_OR_CRC_BAD_ARCHIVE')
+        _checked_zip_members(z)
+        if z.testzip() is not None:
+            raise ValueError('CRC_BAD_ARCHIVE')
         direct, accepted = z.read(TSV_MEMBER), z.read(LEDGER_MEMBER)
     result = audit(direct, accepted)
     result['input_sha256'] = {'archive': digest(blob), 'tsv': digest(direct), 'accepted_ledger': digest(accepted)}

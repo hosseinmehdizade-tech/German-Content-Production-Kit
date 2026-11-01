@@ -266,5 +266,74 @@ class TestAudit(unittest.TestCase):
             self.verify(rows,ledger)
 
 
+    def test_reversed_physical_combination_order_cannot_green(self):
+        rows,ledger=fixture()
+        sections=json.loads(rows[0]['details'])
+        sections[0]['items'].reverse()
+        rows[0]['details']=json.dumps(sections,ensure_ascii=False)
+        with self.assertRaisesRegex(ValueError,'DECLARED_COMBINATION_ORDER_DRIFT'):
+            self.verify(rows,ledger)
+
+    def test_unrelated_other_detail_order_is_not_touched(self):
+        rows,ledger=fixture()
+        details=json.loads(rows[0]['details'])
+        details.append({'title':'Verwandte Wörter','items':['unabhängig', 'Gegenteil']})
+        rows[0]['details']=json.dumps(details,ensure_ascii=False)
+        self.assertEqual(self.verify(rows,ledger)['status'],
+                         'PASS_SCOPED_LEDGER_AND_DETAILS_PARITY__NOT_RUNTIME')
+
+    def test_zip_traversal_rejected_even_with_matching_external_sha(self):
+        rows,ledger=fixture()
+        t,l=encode(rows,ledger)
+        with tempfile.TemporaryDirectory() as tmp:
+            p=pathlib.Path(tmp)/'traversal.zip'
+            with zipfile.ZipFile(p,'w') as z:
+                z.writestr(m.TSV_MEMBER,t)
+                z.writestr(m.LEDGER_MEMBER,l)
+                z.writestr('../outside.txt','not a valid content member')
+            with self.assertRaisesRegex(ValueError,'UNSAFE_ARCHIVE_MEMBER'):
+                m.audit_archive(p,hashlib.sha256(p.read_bytes()).hexdigest())
+
+    def test_zip_symlink_rejected_even_with_matching_external_sha(self):
+        rows,ledger=fixture()
+        t,l=encode(rows,ledger)
+        with tempfile.TemporaryDirectory() as tmp:
+            p=pathlib.Path(tmp)/'symlink.zip'
+            with zipfile.ZipFile(p,'w') as z:
+                z.writestr(m.TSV_MEMBER,t)
+                z.writestr(m.LEDGER_MEMBER,l)
+                symlink=zipfile.ZipInfo('source-link')
+                symlink.create_system=3
+                symlink.external_attr=(0o120777 << 16)
+                z.writestr(symlink,'target')
+            with self.assertRaisesRegex(ValueError,'UNSAFE_ARCHIVE_MEMBER'):
+                m.audit_archive(p,hashlib.sha256(p.read_bytes()).hexdigest())
+
+    def test_zip_high_compression_ratio_rejected_before_decompression(self):
+        rows,ledger=fixture()
+        t,l=encode(rows,ledger)
+        with tempfile.TemporaryDirectory() as tmp:
+            p=pathlib.Path(tmp)/'compression.zip'
+            with zipfile.ZipFile(p,'w',compression=zipfile.ZIP_DEFLATED) as z:
+                z.writestr(m.TSV_MEMBER,t)
+                z.writestr(m.LEDGER_MEMBER,l)
+                z.writestr('staged-oversized-padding.txt','Z'*120_000)
+            with self.assertRaisesRegex(ValueError,'ARCHIVE_MEMBER_COMPRESSION_RATIO_LIMIT'):
+                m.audit_archive(p,hashlib.sha256(p.read_bytes()).hexdigest())
+
+    def test_zip_case_colliding_paths_rejected(self):
+        rows,ledger=fixture()
+        t,l=encode(rows,ledger)
+        with tempfile.TemporaryDirectory() as tmp:
+            p=pathlib.Path(tmp)/'case.zip'
+            with zipfile.ZipFile(p,'w') as z:
+                z.writestr(m.TSV_MEMBER,t)
+                z.writestr(m.LEDGER_MEMBER,l)
+                z.writestr('Reports/status.txt','A')
+                z.writestr('reports/STATUS.TXT','B')
+            with self.assertRaisesRegex(ValueError,'CASE_COLLIDING_ARCHIVE_PATHS'):
+                m.audit_archive(p,hashlib.sha256(p.read_bytes()).hexdigest())
+
+
 if __name__ == '__main__':
     unittest.main()

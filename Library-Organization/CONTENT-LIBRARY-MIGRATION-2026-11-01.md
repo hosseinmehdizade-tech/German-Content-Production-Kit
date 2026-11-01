@@ -46,6 +46,6 @@ Selected protected Checkpoints exact binary dependency audit — 2026-11-01:
 - WIP26 embedded parent ZIP SHA exactly matches tested WIP25; WIP27 parent matches tested WIP26. WIP25 records a WIP24 parent not materialized in this round. Three versions have different outer hashes and distinct embedded QA/evidence; no byte-identical outer ZIP duplicates proven.
 - Historical Milestone Google Drive backups were referenced by ID but *not* independently downloaded or SHA verified in this turn. Any global OP-05 duplicate/deletion decision remains BLOCKED pending both-native-copy proofs and explicit approval.
 - Durable exact binary dependency report: `Library-Organization/ACTIVE-CHECKPOINT-DEPENDENCY-2026-11-01.json` (Git readback PASS).
-- No Checkpoints moved, deleted or overwritten; content workstream LATEST, LOCKED, CURRENT, FINAL and app/runtime unchanged. Selected scope is 4/2847 archives, not a global inventory quality certification.
+- No Checkpoints moved, deleted or overwritten; content workstream LATEST, LOCKED, CURRENT, FINAL and app/runtime unchanged. Selected scope is 4 ZIP files among 2,847 total Checkpoints files, not a global inventory quality certification.
 
 Next: exact byte audit of the missing WIP24 parent, then compare independently named Library copy candidates with both native file identities and backup/retention checks. Never delete based only on filename, size, or similar internal ZIP members. Migration remains PARTIAL, NOT FINAL.

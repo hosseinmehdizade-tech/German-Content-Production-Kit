@@ -71,7 +71,9 @@ def _ledger(data: bytes):
 def _view_item_parts(value):
     if not isinstance(value, dict):
         raise ValueError('INVALID_ACCEPTED_ITEM')
-    if not isinstance(value.get('de'), str) or not value['de'].strip() or not isinstance(value.get('fa'), str) or not isinstance(value.get('en'), str):
+    if (not isinstance(value.get('de'), str) or not value['de'].strip()
+            or not isinstance(value.get('fa'), str) or not value['fa'].strip()
+            or not isinstance(value.get('en'), str) or not value['en'].strip()):
         raise ValueError('INVALID_ACCEPTED_ITEM_LANGUAGE')
     return value['de'].strip(), value['fa'].strip(), value['en'].strip()
 
@@ -81,9 +83,8 @@ def _matches(item, v):
     if isinstance(v, dict):
         return v.get('de') == de and v.get('fa') == fa and (not en or v.get('en') == en)
     if isinstance(v, str):
-        alternatives = {de, de + ' — ' + fa}
-        if fa and en:
-            alternatives.add(de + ' — ' + fa + ' — ' + en)
+        # A bare German token cannot prove that the bilingual detail was shown.
+        alternatives = {de + ' — ' + fa, de + ' — ' + fa + ' — ' + en}
         return v.strip() in alternatives
     raise ValueError('INVALID_DETAIL_ITEM_TYPE')
 
@@ -148,6 +149,21 @@ def audit(tsv: bytes, ledger: bytes) -> dict:
                     elsewhere.append(section['title'])
             missing.append({'item_id': item.get('id', item.get('item_id')), 'ordinal': ordinal, 'de': de,
                             'fa': fa, 'en': en, 'other_detail_sections_exact_de': sorted(set(elsewhere))})
+        # A source-complete view can still be contaminated with extra visible
+        # combinations. Unmatched physical entries must never silently PASS.
+        unexpected = [i for i in range(len(physical)) if i not in used]
+        if unexpected:
+            # Distinguish a known German item with missing/wrong Persian from
+            # an unrelated extra combination; both fail closed.
+            accepted_german = { _view_item_parts(item)[0] for item in items }
+            translation_loss = [i for i in unexpected if
+                                ((physical[i].strip() if isinstance(physical[i], str)
+                                  else physical[i].get('de')) in accepted_german)]
+            if translation_loss:
+                raise ValueError('BILINGUAL_COMBINATION_DETAIL_MISMATCH:' + card_id
+                                 + ':' + ','.join(map(str, translation_loss)))
+            raise ValueError('UNAUTHORIZED_EXTRA_COMBINATION_DETAIL_ITEM:' + card_id
+                             + ':' + ','.join(map(str, unexpected)))
         counts['cards'] += 1
         counts['accepted_items'] += len(items)
         counts['physical_matched_items'] += len(used)
@@ -168,7 +184,7 @@ def audit(tsv: bytes, ledger: bytes) -> dict:
                        'BLOCKED_VIEW_COVERAGE_REQUIRES_DISPOSITION__LEDGER_PARITY_PASS'),
             'counts': dict(sorted(counts.items())), 'affected': affected,
             'not_proven': ['independent Stage4 linguistic approval', 'intent of other detail sections',
-                           'real CURRENT v503 Study/Quick rendering', 'full Stage5, Stage6 or Stage7 acceptance']}
+                           'real exact CURRENT runtime Study/Quick rendering', 'full Stage5, Stage6 or Stage7 acceptance']}
 
 
 def audit_archive(path: Path, expected_archive_sha256: str) -> dict:

@@ -38,4 +38,14 @@ Protected Checkpoints inventory — full read-only scan completed:
 - `Current`: three subfolders unchanged. `Final`: two files unchanged. `Checkpoints`: all 2,847 files remain unmoved.
 - Nothing deleted, overwritten, LOCKED/CURRENT/FINAL-promoted or source-modified. Do not infer duplicate/safe-to-remove status from filename, size, or version alone.
 
-Next: exact active dependency graph for high-value Checkpoints (Git workstream LATEST + receipts + stable Library ID + verified raw SHA/backup); only then select safe individual relocations. This migration is still PARTIAL, NOT FINAL.
+Previous next action (now partially completed): exact active dependency graph for high-value Checkpoints (Git workstream LATEST + receipts + stable Library ID + verified raw SHA/backup); only then select safe individual relocations. This migration is still PARTIAL, NOT FINAL.
+
+
+Selected protected Checkpoints exact binary dependency audit — 2026-11-01:
+- Materialized and independently SHA-256 hashed 4 live Library ZIPs: 250-Verben WIP25, WIP26, WIP27 and Content Production Kit v3.3.6. Four outer archive identities and ZIP CRC PASS, with 957/957 internal file checksums PASS (234+246+252+225). The framework's 37 additional ZIP entries are directories, not unhashed files.
+- WIP26 embedded parent ZIP SHA exactly matches tested WIP25; WIP27 parent matches tested WIP26. WIP25 records a WIP24 parent not materialized in this round. Three versions have different outer hashes and distinct embedded QA/evidence; no byte-identical outer ZIP duplicates proven.
+- Historical Milestone Google Drive backups were referenced by ID but *not* independently downloaded or SHA verified in this turn. Any global OP-05 duplicate/deletion decision remains BLOCKED pending both-native-copy proofs and explicit approval.
+- Durable exact binary dependency report: `Library-Organization/ACTIVE-CHECKPOINT-DEPENDENCY-2026-11-01.json` (Git readback PASS).
+- No Checkpoints moved, deleted or overwritten; content workstream LATEST, LOCKED, CURRENT, FINAL and app/runtime unchanged. Selected scope is 4/2847 archives, not a global inventory quality certification.
+
+Next: exact byte audit of the missing WIP24 parent, then compare independently named Library copy candidates with both native file identities and backup/retention checks. Never delete based only on filename, size, or similar internal ZIP members. Migration remains PARTIAL, NOT FINAL.

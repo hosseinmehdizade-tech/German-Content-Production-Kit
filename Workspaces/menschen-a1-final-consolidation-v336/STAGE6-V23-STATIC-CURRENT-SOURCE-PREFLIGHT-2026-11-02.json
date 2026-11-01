@@ -1,0 +1,78 @@
+{
+  "schema": "gcpk-a1-v23-stage6-static-source-preflight@1.0.0",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "date": "2026-11-02",
+  "scope": "V23 exact immutable Stage5 candidate versus GitHub-pinned current runtime v505-R141 source",
+  "status": "PASS_STATIC_PREFLIGHT_WITH_PRESENTATION_LABEL_RISKS__STAGE6_NOT_RUN",
+  "content": {
+    "zip_sha256": "d8d93486afa3e14aaccd1333c3e27ee0dc19344e9e0d05c8bacfba00d98ebdaa",
+    "tsv_sha256": "e6e54e2c6eb6223b1e49f456fcce0d059322c5fdfd05067644682320aaf67d6e",
+    "cards": 2997,
+    "headers": 23,
+    "unique_ids": 2997,
+    "examples": 11988,
+    "example_shapes": {
+      "text_array": 4172,
+      "text_de_object": 7816
+    },
+    "fa_en_translations": 11988,
+    "projected_relation_edges": 2156,
+    "nonnull_dangling_target_ids": 0,
+    "duplicate_front_surfaces": 42
+  },
+  "runtime": {
+    "version": "v505-R141",
+    "repo": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "commit": "74b5922dec470406ee1de131642482286d3bc583",
+    "artifact_expected_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "exact_runtime_zip_available": false,
+    "schema_blob": "e1dcf643dca28bfdc5039ffdb4449dd59f2a1537",
+    "learning_core_blob": "0cf77f11714744a3ed3834c3f11735400d2ad4c7",
+    "lexical_graph_blob": "a0b6dd43da8f6e5ae554e933365a9e0a41eb18b2"
+  },
+  "static_checks": {
+    "official_unified_vocab_projection": "PASS_2997",
+    "independent_v23_tsv_json_source_layout": "PASS",
+    "source_contract_text_text_de_translation_arrays_objects": "SUPPORTED_BY_LEARNING_CORE_V48",
+    "source_lexical_graph_card_target_ids": "ALL_RESOLVED",
+    "negative_mutations": "7/7_REJECTED",
+    "fresh_extract_independent": "PASS",
+    "library_sha256_byte_roundtrip": "PASS"
+  },
+  "render_risks": [
+    {
+      "kind": "NOUN_VERB_COMBINATION",
+      "edges": 10,
+      "added_by_v23": 5,
+      "issue": "exact source lexical graph has no dedicated typeLabel mapping; raw technical label may appear in UI",
+      "decision": "HOLD_NO_UI_MODIFICATION_WITHOUT_APPROVAL_OR_BROWSER_EVIDENCE"
+    },
+    {
+      "kind": "NEAR_SYNONYM",
+      "edges": 8,
+      "added_by_v23": 0,
+      "issue": "exact source lexical graph has no dedicated typeLabel mapping",
+      "decision": "HISTORICAL_RISK_ALREADY_PRESENT"
+    }
+  ],
+  "stage6_boundaries": {
+    "real_browser_import": "NOT_RUN",
+    "IndexedDB_commit_reload": "NOT_RUN",
+    "presentation_ui": "NOT_RUN",
+    "duplicate_safe_import": "NOT_RUN",
+    "SRS_isolation": "NOT_RUN",
+    "stage6_acceptance": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_allowed": false
+  },
+  "artifact": {
+    "name": "Menschen-A1-V23-Stage6-STATIC-PREFLIGHT-7NEG-NO-IMPORT-20261102.zip",
+    "sha256": "99c49441cd81eb164717d8acdb7290900ee1866714e354ee558554b465507fa9",
+    "bytes": 7265,
+    "library_file_id": "libfile_5937e3eff0a0819192fd03b0e4718666",
+    "path": "/Flasch kart/German-Content-Production-Kit/Checkpoints/Menschen-A1-V23-Stage6-STATIC-PREFLIGHT-7NEG-NO-IMPORT-20261102.zip",
+    "library_roundtrip": "PASS_EXACT_BYTES_SHA256"
+  },
+  "immutable_source_and_UI_unchanged": true,
+  "next_action": "Recover exact v505-R141 runtime artifact with required SHA, then execute real Chrome import 2997 examples/relationships/presentation, persistent IndexedDB reload and SRS, capture Stage6 evidence, then one Stage7 release. Do not downgrade to Git historical runtime."
+}

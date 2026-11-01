@@ -88,5 +88,23 @@
     "/Flasch kart/German-Content-Production-Kit/Final",
     "/Flasch kart/German-Content-Production-Kit/Checkpoints"
   ],
-  "migration_receipt": "Library-Organization/CONTENT-LIBRARY-MIGRATION-2026-11-01.md"
+  "migration_receipt": "Library-Organization/CONTENT-LIBRARY-MIGRATION-2026-11-01.md",
+  "legacy_library_path_resolution": {
+    "rule": "Resolve stable library id first; next check new path exists before falling back to old text path. Do not auto-rewrite historical Git checkpoint receipts.",
+    "unchanged_roots_prefix": {
+      "from": "/German-Content-Production-Kit/",
+      "to": "/Flasch kart/German-Content-Production-Kit/"
+    },
+    "moved_review_250verben": {
+      "selection": "WIP7-WIP23 reports only (18 exact files)",
+      "from": "/German-Content-Production-Kit/Review/",
+      "to": "/Flasch kart/German-Content-Production-Kit/Content/250-Verben-mit-Praepositionen/Imported-Legacy/Historical-Review/"
+    },
+    "moved_nvv_review_directories": {
+      "from": "/German-Content-Production-Kit/Review/NVV-",
+      "to": "/Flasch kart/German-Content-Production-Kit/Content/Nomen-Verb-Verbindungen/Imported-Legacy/Historical-Review/NVV-"
+    },
+    "remaining_legacy_review": "12 files physically remain in /Flasch kart/German-Content-Production-Kit/Review",
+    "note": "This is an aid for a human/agent to verify current paths, NOT a blanket redirect and NOT a Stage PASS."
+  }
 }

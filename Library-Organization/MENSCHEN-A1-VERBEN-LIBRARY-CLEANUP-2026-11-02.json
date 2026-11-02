@@ -1,0 +1,99 @@
+{
+  "schema": "gcpk-library-safe-dedup-cleanup-receipt@1.0.0",
+  "date": "2026-11-02",
+  "scope": "STANDALONE_MENSCHEN_A1_VERBEN_ONLY__NO_CONTENT_OR_RUNTIME_STAGE_CHANGE",
+  "action": "DELETE_ONLY_EXACT_DUPLICATE__DO_NOT_DELETE_UNIQUE_SOURCE_OR_PROTECTED_CHECKPOINTS",
+  "directory": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben",
+  "before": {
+    "direct_files": 89,
+    "bytes": 115705046
+  },
+  "after_verified": {
+    "direct_files": 88,
+    "bytes": 115630673,
+    "by_folder": {
+      "Releases": {
+        "files": 2,
+        "bytes": 91939297
+      },
+      "Checkpoints": {
+        "files": 16,
+        "bytes": 19391213
+      },
+      "Root-Imports": {
+        "files": 64,
+        "bytes": 2118338
+      },
+      "Imported-Legacy": {
+        "files": 6,
+        "bytes": 2181825
+      }
+    }
+  },
+  "deleted": [
+    {
+      "name": "04-Angereichert (1).tsv",
+      "library_file_id": "libfile_658c5a353c708191b0b905fedf35007a",
+      "bytes": 74373,
+      "sha256": "54d8b506ff3b879cdf06e5531d1779c1d534590723f8c7eca16b98d4293ff018",
+      "operation_result": "SUCCEEDED_MOVED_TO_TRASH",
+      "exact_byte_identical_retained_copy": {
+        "name": "04-Angereichert.tsv",
+        "library_file_id": "libfile_74bee518f81881919f18c55c2b4d03b6",
+        "sha256": "54d8b506ff3b879cdf06e5531d1779c1d534590723f8c7eca16b98d4293ff018"
+      }
+    }
+  ],
+  "preserved_references": [
+    {
+      "role": "FINAL_CONTENT_DELIVERY",
+      "library_file_id": "libfile_d0cb9ae8d62c8191a5a00115daa4beda",
+      "sha256": "a78967f52871447693638d0e160b5dc7d5e0e40dd4bc1c7c0ffeefa32e81ec10"
+    },
+    {
+      "role": "CURRENT_CONTENT_RC1",
+      "library_file_id": "libfile_4eefe9d3e3108191ac400e51b6fc9336",
+      "sha256": "5585dbf92695e7b8cf83846a4f7d2c3882c4ec8160d7c88e1392ff49308bb8f5"
+    },
+    {
+      "role": "WIP17_CHECKPOINT",
+      "library_file_id": "libfile_822e5ae31f20819185bff9634e032837",
+      "sha256": "0cca19c4c8f145cbcee4b6e89af3ee6c75e24db5fe21c6c42d3ee0166eb6096d"
+    }
+  ],
+  "backup_verified": {
+    "provider": "Google Drive",
+    "file_id": "1cdk-_BxKTjUUpqXbY3bo8nSMGUhtiiCu",
+    "file": "Menschen-A1-Verben-Wortfamilie-FINAL-CONTENT-DELIVERY-2026-11-02.zip",
+    "size_bytes": 45973669,
+    "download_and_sha256_match": "PASS",
+    "sha256": "a78967f52871447693638d0e160b5dc7d5e0e40dd4bc1c7c0ffeefa32e81ec10"
+  },
+  "content_integrity": {
+    "final_and_rc1_sha256_match_checkpoint": "PASS",
+    "wip17_embedded_in_final_exact_sha256_match": "PASS",
+    "original_accepted_final_embedded_in_final_sha256": "adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06",
+    "final_zip_integrity": "PASS"
+  },
+  "audit": {
+    "raw_import_and_legacy_files_materialized_and_sha256_compared": 71,
+    "exact_duplicate_groups": 1,
+    "other_raw_files_exact_duplicate_of_nested_final_zip_members": 0,
+    "protected_checkpoint_count": 16,
+    "unresolved_recursive_inventory_delta": 51,
+    "recursive_extra_raw_materialization_status": "NOT_VERIFIED"
+  },
+  "excluded": {
+    "other_workstreams": "UNTOUCHED",
+    "runtime": "UNTOUCHED",
+    "source_and_unique_historical_material": "RETAINED",
+    "Git_historical_library_ids": "UNCHANGED"
+  },
+  "outstanding": [
+    "Unique original source/provenance may not be duplicated in final zip",
+    "Historical Git pointers cannot be silently broken",
+    "Recursive-only 51 items cannot be treated as verified deletable personal Library files",
+    "Formal Stage4/5/6/7 unchanged"
+  ],
+  "note": "This is a scoped cleanup receipt only; previous inventory count in workstream CHECKPOINT is historical snapshot and not a current count."
+}

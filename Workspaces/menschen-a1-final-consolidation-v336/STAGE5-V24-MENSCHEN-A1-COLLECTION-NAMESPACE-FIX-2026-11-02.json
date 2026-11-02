@@ -1,0 +1,67 @@
+{
+  "schema": "gcpk-menschen-a1-v24-collection-namespace-fix@1.0.0",
+  "date": "2026-11-02",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "purpose": "Fix user-observed L09 split into separate Menschen collection; all A1 lessons must be grouped as Menschen A1",
+  "screenshot_observation": {
+    "collection_Menschen_cards": 126,
+    "collection_Menschen_A1_cards": 103,
+    "other_mixed_collection": "Menschen A1/A2/B1 Full Audio"
+  },
+  "root_cause_verified": {
+    "v23_deck_all": "Menschen A1",
+    "v23_source_groups": {
+      "Menschen A1/A2/B1 Full Audio — Memrise export": 2768,
+      "Menschen": 126,
+      "Menschen A1": 103
+    },
+    "all_126_source_Menschen_are_A1_L09": true,
+    "all_103_source_Menschen_A1_are_A1_L08": true,
+    "remaining_L09_membership_from_Memrise_source": 1,
+    "source_field_display_namespace_mismatch": true,
+    "app_browser_grouping_causality": "HIGH_CONFIDENCE_FROM_EXACT_COUNTS; NO_LIVE_BROWSER_INSTRUMENTATION"
+  },
+  "corrected_authority": {
+    "source_parent": "V23",
+    "parent_tsv_sha256": "e6e54e2c6eb6223b1e49f456fcce0d059322c5fdfd05067644682320aaf67d6e",
+    "version": "V24_SOURCE_FIELD_ONLY",
+    "corrected_tsv_sha256": "3ff2cd60f7d22fb989f0d4e9e885949b0bc4a91f4b77fd6192701d1315ba0b5e",
+    "cards": 2997,
+    "source_before_groups": 3,
+    "source_after": "Menschen A1",
+    "source_changed_rows": 2894,
+    "other_columns_unchanged": 22,
+    "lesson09_total_rows": 127,
+    "example_triplets_unchanged": 11988,
+    "original_source_attribution_preserved_in": "custom_fields.vnext_source_refs, ORIGINAL-SOURCE-LEDGER.json, unchanged canonical and source-output-map"
+  },
+  "quality": {
+    "official_v3_3_6_stage5_builder": "PASS_UNMODIFIED_ON_NORMALIZED_IMPORT",
+    "official_clean_stage5_zip_sha256": "bf1220eaa7199d89eb7b2aeca39373e18d3da7885dbb4dfd80f548be812e9bf5",
+    "independent_full_parity": "PASS_2894_SOURCE_CELL_EDITS_AND_NO_OTHER_CELL_CHANGED",
+    "negative_mutations": "7/7_REJECTED",
+    "fresh_archive_crc_sha_and_reverify": "PASS",
+    "library_roundtrip": "EXACT_SHA256_AND_BYTE_COMPARE"
+  },
+  "archive": {
+    "filename": "Menschen-A1-V24-UNIFIED-COLLECTION-STAGE5-PASS-NO-IMPORT-20261102.zip",
+    "sha256": "ec9e37cb174a24efad70db0b402eb43675313917d8bc24d2d10e4e00a9c37dbe",
+    "size_bytes": 9656358,
+    "members": 12,
+    "library_file_id": "libfile_926429cbdac48191b23b3c455f37d2c3",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Checkpoints/Menschen-A1-V24-UNIFIED-COLLECTION-STAGE5-PASS-NO-IMPORT-20261102.zip"
+  },
+  "boundaries": {
+    "content_linguistic_metadata_changed": false,
+    "original_source_records_edited": false,
+    "locked_lesson_bundles_changed": false,
+    "app_ui_modified": false,
+    "app_library_or_srs_changed": false,
+    "current_app_runtime": "v505-R141",
+    "real_browser_merge_import": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_authorized": false
+  },
+  "next_action": "Safe data migration at exact CURRENT v505-R141: backup existing IndexedDB including SRS, dedupe by existing stable IDs, migrate/merge old Menschen and Menschen A1/A2 source grouping to Menschen A1 without deleting A2/B1; verify counts, lesson memberships, examples, refresh and restart. No live app migration done."
+}

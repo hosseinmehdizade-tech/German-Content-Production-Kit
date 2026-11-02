@@ -2,23 +2,23 @@
   "schema": "gcpk-a1-final-consolidation-workstream-latest@1.0.0",
   "workstream": "menschen-a1-final-consolidation-v336",
   "date": "2026-11-02",
-  "latest_milestone": "V23_STAGE5_OFFICIAL_STRUCTURAL_PASS_SCOPED_AI_REVIEW_NO_IMPORT",
-  "status": "STAGE5_V23_OFFICIAL_V336_BUILDER_PASS__SCOPED_AI_REVIEW_PASS__STAGE6_AND_STAGE7_NOT_RUN",
+  "latest_milestone": "V24_STAGE5_MENSCHEN_A1_COLLECTION_SOURCE_NAMESPACE_FIXED_NO_IMPORT",
+  "status": "STAGE5_V24_OFFICIAL_V336_BUILDER_PASS__DISPLAY_COLLECTION_SOURCE_FIX__STAGE6_NOT_RUN",
   "scope": "A1-L01..L24",
-  "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE5-V23-OFFICIAL-BUILDER-PASS-SCOPED-QA-NO-IMPORT-2026-11-02.json",
+  "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE5-V24-MENSCHEN-A1-COLLECTION-NAMESPACE-FIX-2026-11-02.json",
   "artifact": {
-    "filename": "Menschen-A1-V23-STAGE5-OFFICIAL-STRUCTURAL-PASS-NO-IMPORT-20261102.zip",
-    "sha256": "d8d93486afa3e14aaccd1333c3e27ee0dc19344e9e0d05c8bacfba00d98ebdaa",
-    "size_bytes": 9538654,
-    "library_file_id": "libfile_b32eeeb02f68819193f7757c467b047f",
-    "library_roundtrip": "PASS_EXACT_BYTE_SHA256"
+    "filename": "Menschen-A1-V24-UNIFIED-COLLECTION-STAGE5-PASS-NO-IMPORT-20261102.zip",
+    "sha256": "ec9e37cb174a24efad70db0b402eb43675313917d8bc24d2d10e4e00a9c37dbe",
+    "size_bytes": 9656358,
+    "library_file_id": "libfile_926429cbdac48191b23b3c455f37d2c3",
+    "library_roundtrip": "PASS_EXACT_SHA256_AND_BYTE_COMPARE"
   },
-  "quality": "V23 provisional content-only source-derived successor to immutable V22: official unmodified Kit v3.3.6 Stage5 builder PASS, full 2997 IDs / 47691 cells ZERO unresolved, 9878 candidate decisions. 24 card rows changed only vnext_structure/vnext_morphology/vnext_relations custom fields; 2973 cards entirely unchanged; examples FA/DE/EN, audio, old combinations unchanged. Independent scoped AI adversarial Stage4 review of 33 closed cells, 17 new nonduplicate relations; 6/6 intentional mutations rejected; portable fresh-extract and Library exact byte SHA roundtrip PASS. Raw HF2 standalone still has exactly one pre-existing reviewed möchten Konjunktiv II exception ma1m-lu-0854, not a zero-error HF2 result. Exact current v505 app runtime Stage6 import/presentation/IndexedDB NOT RUN; Stage7 NOT RUN; no production/user import or global FINAL.",
+  "quality": "V24 is V23 content with a source/display collection namespace correction ONLY: original V23 source column had 2768 Memrise-export, 126 Menschen (A1-L09), 103 Menschen A1 (A1-L08); V24 source=Menschen A1 for all 2997, deck unchanged Menschen A1. 2894 source cells changed; all 22 other TSV fields, 2997 stable IDs, 11988 DE/FA/EN examples, pronunciation/audio references, custom_fields.vnext_source_refs, original raw sources, historical LOCKED and all previous semantics preserved. Original source grouping mapping in ZIP ledger. Official unmodified Kit v3.3.6 Stage5 builder PASS; 7/7 negative mutations rejected; CRC, checksum and exact Library byte roundtrip PASS. Exact v505-R141 real browser import/upsert/IndexedDB/SRS and collection merge NOT RUN. V24 does not modify existing on-disk library or UI, and cannot by itself remove existing source-grouped collections. NO IMPORT / not FINAL.",
   "upstream_unchanged": [
     "Workspaces/menschen-a1-reaudit-v336/LATEST.json",
     "Workspaces/menschen-a1-reaudit-v336/AUDITS/LATEST-AUDIT.json"
   ],
-  "next_action": "Stage6 exact CURRENT v505-R141 portable runtime, validate duplicate-safe import, learner-visible vocabulary examples/morphology/relations, IndexedDB persistence/restart and SRS isolation; then Stage7 single complete organized release. Preserve V22 and historical locked lessons; do not authorize import before Stage6.",
+  "next_action": "Resolve safe v505-R141 existing-library migration and duplicate-safe merge by exact card IDs, preserve SRS and unrelated A2/B1 cards; run actual Stage6 browser/import/persistence with backup, then Stage7 release. Do NOT delete existing collection blindly.",
   "previous_stageA_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-A-RECEIPT.json",
   "previous_stageA_artifact_sha256": "cc8b8bfcb085fc7ec6972b7a38d72abca7de8bc650bd4b2e9c1b7ffd7ca9ce5b",
   "previous_stageB_receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE-B-RECEIPT.json",
@@ -978,7 +978,7 @@
   "latest_scoped_quality": "FULL_2997_ID_REBUILT_FROM_VERIFIED_C41_245_GUARDED_FIELD_CORRECTIONS_4_GRAMMAR_280_EXACT_LITERAL_ANNOTATION_REPAIRS_491_SOURCE_AND_ANNOTATION_HOLDS__NO_CURRENT_C42T_EQUIVALENCE",
   "current_parent_materialized": false,
   "global_stage4": "CLOSED_PASS_RISK_BASED_STAGE4",
-  "global_stage5": "PASS_UNMODIFIED_V3_3_6_BUILDER_WITH_SCOPED_AI_QA_AND_HF2_KII_REVIEWED_EXCEPTION",
+  "global_stage5": "PASS_UNMODIFIED_V3_3_6_BUILDER_SOURCE_ONLY_NAMESPACE_CORRECTION_TO_V23",
   "current_runtime_stage6": "NOT_RUN",
   "a1_final": false,
   "c42au_scoped": {
@@ -2023,7 +2023,20 @@
     },
     "quality": "V22 content-only Stage5 clean package 24 members and 2997 neutral vocabulary cards exact; seven explicit HF2 projection metadata/front repairs, 2990 card rows unchanged, 11988 examples and 2075 combinations identical; source 9109 original rows SHA unchanged. Original standalone HF2 validator reports one PREEXISTING reviewed exception for Konjunktiv II möchten (no independent Präteritum/Perfekt), scoped source-bound explicit CLOSED_NO_FORCE verifier PASS; do not call raw HF2 0-error PASS. Neutral validator, content-only ZIP manifest/CRC/JSONL/role checks, fresh-extract replay, seven corruption tests and Library SHA byte roundtrip PASS. Full normative Stage5 v3.3.6 suite not executed, thus qualified clean-delivery result, not unconditional official final Stage5. Stage6/7 NOT_RUN, no import."
   },
-  "latest_working_import_sha256": "e6e54e2c6eb6223b1e49f456fcce0d059322c5fdfd05067644682320aaf67d6e",
+  "latest_working_import_sha256": "3ff2cd60f7d22fb989f0d4e9e885949b0bc4a91f4b77fd6192701d1315ba0b5e",
   "global_stage7": "NOT_RUN",
-  "downstream_import_authorized": false
+  "downstream_import_authorized": false,
+  "previous_v23_verified_candidate": {
+    "milestone": "V23_STAGE5_OFFICIAL_STRUCTURAL_PASS_SCOPED_AI_REVIEW_NO_IMPORT",
+    "status": "STAGE5_V23_OFFICIAL_V336_BUILDER_PASS__SCOPED_AI_REVIEW_PASS__STAGE6_AND_STAGE7_NOT_RUN",
+    "receipt": "Workspaces/menschen-a1-final-consolidation-v336/STAGE5-V23-OFFICIAL-BUILDER-PASS-SCOPED-QA-NO-IMPORT-2026-11-02.json",
+    "artifact": {
+      "filename": "Menschen-A1-V23-STAGE5-OFFICIAL-STRUCTURAL-PASS-NO-IMPORT-20261102.zip",
+      "sha256": "d8d93486afa3e14aaccd1333c3e27ee0dc19344e9e0d05c8bacfba00d98ebdaa",
+      "size_bytes": 9538654,
+      "library_file_id": "libfile_b32eeeb02f68819193f7757c467b047f",
+      "library_roundtrip": "PASS_EXACT_BYTE_SHA256"
+    },
+    "tsv_sha256": "e6e54e2c6eb6223b1e49f456fcce0d059322c5fdfd05067644682320aaf67d6e"
+  }
 }

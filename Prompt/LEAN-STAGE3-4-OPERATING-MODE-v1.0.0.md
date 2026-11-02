@@ -1,0 +1,28 @@
+# Lean Stage 3/4 operating mode v1.0.0
+
+**Status:** APPROVED operational simplification, prospective at the next SAFE editable workstream boundary (user approval 2026-11-02). This **replaces redundant operating steps**, not the v3.3.6 source/identity schema or the Stage 4/5/6/7 acceptance criteria. Historical original/LOCKED and committed source stay immutable.
+
+## One reviewable card, one authoring pass
+
+Stage 1 captures source once; Stage 2 resolves ID/occurrence once. Stage 3A inventory, 3B missing-value enrichment, and 3C disposition occur **in a single working pass on the exact mutable card**, reusing already-known data. Existing producers/consumers may still expect separate 3A/3B/3C fields/checkpoints: produce those **compatibility projections from the same working decision**, not another manual round or duplicate file. The 3A/3B/3C names and schema are not removed. If legacy writer/consumer cannot automatically emit equivalent output, retain its old adapter temporarily and do not declare full migration PASS. A current, completed facet may be reused; no forced repeated nine-facet prose checklists.
+
+**Disposition default:** existing good content => `VERIFIED_PRESENT` (code `ALREADY_COVERED` for already-present useful combination); useful missing content => create after source/sense/provenance checks; no useful item => `CLOSED_NO_FORCE` with standardized nonempty reason (e.g., `NO_ADDITIONAL_TEACHING_VALUE`); truly not applicable => `NOT_APPLICABLE`; material uncertain provenance/sense => `HOLD`. No zero-item or fixed-density penalty. Machine-provided IDs, source SHA and already-verified lineage must be reused, not manually retyped for each field.
+
+## One independent quality challenge, not repeated editorial work
+
+Stage 4 is the **already-active** `STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json` method:
+- 100% automated structure, identity, DE/FA/EN completeness where required, source/provenance and full risk discovery.
+- Every CRITICAL/HIGH *substantive* risk receives a distinct source-bound decision; unresolved CRITICAL/HIGH blocks PASS.
+- MEDIUM/LOW/INFO scanner signals can use that policy's exact-ID family decisions and minimum independent representative challenge; unchanged unflagged items receive deterministic stratified samples. A flag is not automatically an error or a mandatory one-row editorial essay.
+- Reuse valid reviews for unchanged source/content/dependency hashes. Revisit only changed IDs and affected dependencies, plus any proven systematic error family.
+- Separate adversarial AI method for actual high-risk/sampled linguistic QA, with no fictional human signature. Stage 3 cannot self-certify Stage 4.
+
+## Boundaries and compatibility
+
+No change to source fidelity, original raw bytes, stable IDs, accepted translations, source claims, no-fabrication, exact CURRENT app/runtime, UI, SRS, anti-bypass Stage 5, actual Stage 6 browser verification or Stage 7 release. Corrections go into the exact current **mutable** authority with CAS and post-edit tests, not a report-only handoff; historical LOCKED uses an explicit successor. One bounded working authority, compact audit delta, milestone recovery; no per-item ZIP/review paperwork.
+
+The previous `Prompt/KOMBINATIONEN-DIDACTIC-MEHRWERT-GATE-v1.0.0.md` scanner `--gate` **all-flags-individually-resolved** criterion is superseded for *new applicable* semantic decisions by the v1.1.0 didactic overlay below. The old portable kit, old tests and old receipts remain unchanged historical evidence, **not a second mandatory active gate**. A workflow using unmodified historical `--gate` may still fail on benign flags: this is a tooling compatibility LIMIT, not authority to fabricate approvals or silently skip a required integrity gate. Until that consumer is version-aware, report scoped migration pending; use the already-active risk-based Stage4 guard for new decisions. Do not claim the old scanner is physically patched.
+
+Precedence for this narrow operating scope: user-approved active source/identity protection + v3.3.6 normative schema and the active Stage4 policy > **this lean Stage3 execution** > historical v1.0.0 didactic *per-advisory* gate and older nonactive Stage3/4 nine-manual-disposition drafts. Source-specific mandatory rules still apply where materially relevant. Other streams (Grammar, Lesen, Schreiben) inherit lexical Kombinationen only for standalone lexical cards.
+
+**Rollout:** pilot a newly editable bounded lexical batch with exact parent+source hashes; demonstrate compatibility outputs and Stage4 risk evidence; then use the mode at subsequent safe boundaries. No mass rewrite, retroactive Stage4 PASS, or required re-audit of unchanged historical completed streams without detected change/systemic failure.

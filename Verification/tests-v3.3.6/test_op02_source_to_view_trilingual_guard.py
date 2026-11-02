@@ -74,7 +74,7 @@ class PhysicalCoverage(unittest.TestCase):
         self.assertRaises(ValueError,guard.strict_json,'{"a":1,"a":2}')
 
     def test_object_values_not_physical_pairing_proof(self):
-        report=guard.audit([card([ITEM],[{"de":ITEM["de"],"fa":ITEM["fa"],"en":ITEM["en"]}])])
+        report=guard.audit([card([ITEM],[{"de":ITEM["de"],"fa":ITEM["fa"],"en":ITEM["en"]}])])])
         self.assertFalse(report["stage7_pass"])
 
     def test_empty_universe_is_not_stage6_pass(self):

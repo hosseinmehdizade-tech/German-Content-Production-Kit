@@ -1,0 +1,72 @@
+{
+  "schema": "gcpk-direct-library-save@1.1.0",
+  "status": "ACTIVE_USER_REQUESTED_DIRECT_DESTINATION",
+  "effective_date": "2026-11-02",
+  "requirement": "Every NEW file explicitly saved to personal ChatGPT Library must be routed to its actual owner workstream folder BEFORE upload. A chat download, filesystem write or Git commit alone is NOT a Library save.",
+  "applies_to": [
+    "new generated reports, scripts, checkpoints, content ZIPs, source ledgers and workstream tools",
+    "cross-project OP-01/OP-02 optimization artifacts",
+    "Flashcards app runtime artifacts",
+    "general new Library uploads executed by an agent"
+  ],
+  "precedence": [
+    "explicit user destination if safe and writable",
+    "registered owning project and role",
+    "fail closed, NEVER generic fallback"
+  ],
+  "roots": {
+    "content_registry": "Library-Organization/CONTENT-PROJECT-FOLDERS.json",
+    "content_prefix": "/Flasch kart/German-Content-Production-Kit/Content",
+    "op01": "/Flasch kart/German-Content-Production-Kit/Optimization-Program/OP01",
+    "op02": "/Flasch kart/German-Content-Production-Kit/Optimization-Program/OP02",
+    "optimization_shared": "/Flasch kart/German-Flashcards-Optimization",
+    "app_runtime": "/Flasch kart/German-Flashcards-Pro",
+    "shared_sources": "/Flasch kart/German-Flashcards-Reference-Library"
+  },
+  "content_roles": {
+    "working": "Current",
+    "checkpoint": "Checkpoints",
+    "report": "Reports",
+    "release": "Releases",
+    "historical": "History",
+    "import": "Root-Imports",
+    "tool": "Tools",
+    "test": "Tests"
+  },
+  "workflow": [
+    "Determine actual owning workstream, not keyword-only title. Distinguish Menschen-A1 from Menschen-A1-Verben and A2 from A2-Verben.",
+    "Resolve explicit registered destination, file role, final basename before creating or saving a user Library artifact.",
+    "If project owner or destination is ambiguous, BLOCK and seek source/owner rather than uploading to /Flasch kart, general Current, Checkpoints, Final, 00-Unclassified or arbitrary intermediate location.",
+    "Check destination folder; create missing role subfolder with files.manage_library.create_folder, or BLOCK on failure.",
+    "Upload original exact bytes ONCE via files.manage_library.upload with explicit destination_path and overwrite=false; use container_path for new local artifacts or exact exported source_file_ref.",
+    "Read back files.list or files.search to verify actual destination full path, library_file_id, and required content SHA. A successful upload call alone is not VERIFIED.",
+    "Persist verified path, stable ID and SHA in handoff/receipt; keep existing historical references and immutable lineage intact.",
+    "On failure, retain original bytes in chat/container, mark LIBRARY_SAVE_BLOCKED and provide honest delivery link. Never silently use a different Library path.",
+    "Do not claim platform's implicit auto-save routing can be controlled by these project scripts. This contract governs explicit tool-initiated Library writes only."
+  ],
+  "ownership": {
+    "agent_library_uploads": "DIRECT_FOLDER_MANDATORY",
+    "platform_automatic_conversation_attachment_save": "NOT_INTERCEPTABLE_HERE"
+  },
+  "legacy_exception": "Old Project-backed Library artifacts may return project_library_mutation_unsupported; do not copy-delete/move or imply cleanup. Historical cleanup is a distinct approved process.",
+  "readback_fields": [
+    "actual_path",
+    "stable_library_file_id",
+    "actual_size_bytes",
+    "expected_sha256_if_required"
+  ],
+  "safe_operations": [
+    "create_folder",
+    "upload_unique",
+    "verify_readback"
+  ],
+  "forbidden": [
+    "root_fallback",
+    "silent_misroute",
+    "blind_overwrite",
+    "cross_workstream_move",
+    "delete_or_duplication_workaround",
+    "claiming all old files relocated"
+  ],
+  "stage_boundary": "Organization has NO authority to promote content Stage4/5/6/7, runtime CURRENT, UI, SRS, LOCKED or security grants."
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "gcpk-library-cleanup-execution@1.0.0",
+  "date": "2026-11-02",
+  "status": "PARTIAL_SOFT_DELETE_PASS__PROJECT_LINKED_FILES_BLOCKED",
+  "user_request": "Clean old Menschen A1 files from Library after V24 release; do not delete source/A2/B1/A1-Verben/current GFP or needed locked evidence.",
+  "integrity_authority": {
+    "release_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Releases/Menschen-A1-V24-COMPLETE-DELIVERY-v505-R141-20261102.zip",
+    "release_library_id": "libfile_dcd0450489d88191a8828eb307eddd91",
+    "bytes": 27733211,
+    "sha256": "19a9edb447286e4d5bb796a882da471cb666f39f81acfcc0c0b9c69a937d19ff",
+    "local_roundtrip_sha_verified": true,
+    "zip_members": 302,
+    "zip_test": "PASS",
+    "stage6_live_browser": "NOT_RUN",
+    "stage7_full_final": "NOT_CLAIMED"
+  },
+  "reconciled_scoped_inventory": {
+    "scope_a1_dedicated": {
+      "before_files": 545,
+      "before_bytes": 891526294,
+      "after_files": 76,
+      "after_bytes": 111302028,
+      "trashed_files": 469,
+      "trashed_bytes": 780224266
+    },
+    "scope_shared_general_checkpoints": {
+      "before_a1_named_files": 309,
+      "before_bytes": 45277167,
+      "after_a1_named_files": 0,
+      "after_bytes": 0,
+      "trashed_files": 309,
+      "trashed_bytes": 45277167
+    },
+    "total_trashed": {
+      "files": 778,
+      "bytes": 825501433,
+      "interpretation": "Moved to Library Trash, not verified permanently erased or freed storage quota"
+    },
+    "dedicated_remaining": {
+      "Releases": {
+        "files": 1,
+        "bytes": 27733211,
+        "disposition": "KEEP V24"
+      },
+      "Checkpoints": {
+        "files": 42,
+        "bytes": 64278943,
+        "disposition": "KEEP V24 Stage5 and individually LOCKED lesson-level verification/delivery until runtime acceptance or independently recoverable replacement"
+      },
+      "Root-Imports": {
+        "files": 31,
+        "bytes": 19130442,
+        "disposition": "BLOCKED: project-backed older Stage4/phase files; 31/31 direct delete attempts project_library_mutation_unsupported"
+      },
+      "Imported-Legacy": {
+        "files": 2,
+        "bytes": 159432,
+        "disposition": "KEEP provenance TSV and unclassified image"
+      }
+    }
+  },
+  "outside_scoped_cleanup": {
+    "flasch_root_a1_course_name_heuristic": {
+      "files": 853,
+      "bytes": 1787789028,
+      "note": "Previously catalogued A1 course items at /Flasch kart root; do not assert all are deletable. Direct delete attempt for A1-L01-FINAL-AUDIT-R1-TECHNICAL.md failed project_library_mutation_unsupported; another old V20 root item previously failed"
+    },
+    "excluded_related": {
+      "standalone_a1_verben": "NOT TOUCHED",
+      "shared_a1a2b1_source_archives": "NOT TOUCHED",
+      "GFP_runtime": "NOT TOUCHED",
+      "A2_B1": "NOT TOUCHED"
+    }
+  },
+  "delete_semantics": "Every successful delete operation returned 'File moved to trash.' Permanent storage-quota release NOT verified; separate trash emptying (where available) may be required.",
+  "preservation_warning": "GitHub old checkpoint records retain historic Library IDs that may now reference Trashed files; latest source/official V24 release and primary workstream checkpoint authority not edited.",
+  "next_step": "If user wants remaining project-attached Library clutter removed, use authorized Project attachments/knowledge management UI or another tool with that scope. Current files.manage_library cannot mutate those. Do not bypass via copy-delete or claim complete cleanup."
+}

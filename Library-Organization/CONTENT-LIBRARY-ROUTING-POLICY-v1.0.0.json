@@ -1,0 +1,51 @@
+{
+  "schema": "gcpk-content-library-routing@1.0.0",
+  "status": "ACTIVE_USER_DIRECTIVE",
+  "effective_date": "2026-11-02",
+  "user_mission": "Each content project has its own Library folder; store every new content artifact under the correct project-specific folder, never at generic Library root.",
+  "folder_registry": "Library-Organization/CONTENT-PROJECT-FOLDERS.json",
+  "base_root": "/Flasch kart/German-Content-Production-Kit/Content",
+  "routing": {
+    "Menschen A1 numbered lessons and A1 unified 24-lesson content": {
+      "root": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1",
+      "checkpoint": "Checkpoints",
+      "release": "Releases",
+      "historical": "History",
+      "imports": "Root-Imports",
+      "raw_or_uncertain": "Imported-Legacy"
+    },
+    "Menschen A1 Verben standalone": {
+      "root": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben",
+      "checkpoint": "Checkpoints",
+      "release": "Releases",
+      "historical": "Imported-Legacy",
+      "imports": "Root-Imports"
+    },
+    "other_content": "Route to exact workstream folder registered in CONTENT-PROJECT-FOLDERS.json; shared Menschen A1/A2/B1 original source remains in shared coursebook/reference source authority, not arbitrarily moved into one level.",
+    "app_runtime": "/Flasch kart/German-Flashcards-Pro; do not misroute app-owned runtime packages into a content workstream merely because a test name mentions A1."
+  },
+  "required_preflight": [
+    "Identify actual workstream and ownership, then look up target root and role-specific subfolder before every new upload.",
+    "Verify folder exists; create necessary project folder before upload if supported.",
+    "Never upload to / or /Flasch kart or generic Checkpoints for a named content workstream while its own folder exists.",
+    "Do not delete or overwrite LOCKED, source, checkpoint or SRS assets; never infer duplicates by basename and size alone.",
+    "After each write verify actual Library path, stable library_file_id and when required SHA256/byte roundtrip; persist location in workstream receipt.",
+    "Project-backed/Project-knowledge nodes that cannot be moved through files.manage_library MUST be left unchanged. Report blocked and direct to an authorized Project lifecycle control; no copy-then-delete workaround."
+  ],
+  "migration_2026_11_02": {
+    "scope": "User requested all existing Menschen A1 files in dedicated folder",
+    "target_folders_preexisting": true,
+    "observed_a1_content_files_in_target": 545,
+    "observed_protected_generic_checkpoint_inventory_a1_heuristic": 714,
+    "observed_root_unclassified_a1_approximum": "at least 260 among first 12 pages of /Flasch kart; count is not exhaustive and includes A1-Verben and runtime-named candidates",
+    "blocker": "files.manage_library move of root A1 V20 library file returned project_library_mutation_unsupported",
+    "moved_files_verified": 0,
+    "new_archive_folders_created": [
+      "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Root-Imports/Recovered-Root-2026-11-02",
+      "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben/Root-Imports/Recovered-Root-2026-11-02"
+    ],
+    "protected_checkpoint_policy": "Library-Organization/PROTECTED-CHECKPOINTS-INVENTORY-2026-11-01.json; do not bulk move without exact ownership, reference resolution and byte preservation",
+    "no_claim_of_complete_move": true
+  },
+  "git_receipt_scope": "Routing policy and honest blocker record only; no content or runtime promotion."
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "gcpk-a2-source-collection-display-fix-receipt@1",
+  "date": "2026-11-02",
+  "workstream": "menschen-a2-24-lessons-v336",
+  "user_request": "Make app actually display Menschen A2 as a collection (not just set card.deck)",
+  "root_cause": "GFP Library derives its book title and book grouping from card.source via sourceOf(card); incoming A2 native projections used the original all-level Memrise archive source while deck was Menschen A2",
+  "source_of_evidence": "German-Flashcards-Pro v486 last fully verified HTML, line 4534: const sourceOf = (card) => cleanMeta(card.source, 'بدون منبع'); runtime current v505-R141 separately pinned",
+  "fix": {
+    "changed": "Native A2 card source in canonical JSON, owner TSV, and 24 per-lesson TSVs",
+    "new_visible_source": "Menschen A2",
+    "original_archive_provenance": "Menschen A1/A2/B1 Full Audio — Memrise export",
+    "native_card_count": 1778,
+    "native_lesson_memberships_changed": 1829,
+    "protected_A1_owner_refs_unmodified": 145,
+    "unique_A1_owner_refs": 140,
+    "total_memberships": 1974,
+    "identity_and_SRS": "IDs unchanged; no deployed app or user library state mutated",
+    "visual_card_UI": "UNCHANGED",
+    "runtime_code": "UNCHANGED"
+  },
+  "portable_zip": {
+    "name": "Menschen-A2-24-Lessons-SOURCE-DISPLAY-FIX-2026-11-02-NOT-IMPORT.zip",
+    "size_bytes": 121958790,
+    "sha256": "64ae502aaf1f7796d6fb1ee23a07c8e821630c541b4697aeecf75dd7430bcd29",
+    "members": 538,
+    "verification": "PASS_ZIP_CRC_AND_INTERNAL_SHA256_MANIFEST_AND_PROJECTION_ROUNDTRIP",
+    "delivered_in_chat": true,
+    "library_upload": "FAILED_STORAGE_LIMIT",
+    "drive_upload": "NOT_ATTEMPTED",
+    "github_binary": "NOT_STORED"
+  },
+  "release": {
+    "content_display_source_correction": "APPLIED",
+    "stage4": "BLOCKED",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN",
+    "import_ready": false,
+    "installed_app_fixed": false,
+    "completed_task": "CONTENT_SOURCE_DISPLAY_PROJECTION_ONLY",
+    "next_step": "Safely integrate and test against exact current v505-R141 runtime, include mixed-source A1/B1 guard and 140 cross-source references; do not use global source rename of mixed Memrise archive"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "gcpk-menschen-a1-v24-stage7-packaging-checkpoint@1.0.0",
+  "date": "2026-11-02",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": "V24_STAGE7_PACKAGING_INTEGRITY_PASS__EXACT_V505_STAGE6_HOLD__NOT_FINAL",
+  "status": "PASS_STAGE7_PACKAGING_VERIFICATION_ONLY__STAGE7_RELEASE_FINAL_BLOCKED",
+  "user_observation": "User stated 'همه چی درست بود' and explicitly requested Stage7. Treated as satisfactory field feedback, not synthetic browser/IndexedDB/SRS proof.",
+  "parent": {
+    "content": "V24",
+    "v24_zip_sha256": "ec9e37cb174a24efad70db0b402eb43675313917d8bc24d2d10e4e00a9c37dbe",
+    "tsv_sha256": "3ff2cd60f7d22fb989f0d4e9e885949b0bc4a91f4b77fd6192701d1315ba0b5e",
+    "official_stage5_sha256": "bf1220eaa7199d89eb7b2aeca39373e18d3da7885dbb4dfd80f548be812e9bf5",
+    "stage5": "PASS_UNMODIFIED_V3_3_6_BUILDER"
+  },
+  "scope": {
+    "cards": 2997,
+    "lessons": 24,
+    "source": "Menschen A1",
+    "deck": "Menschen A1",
+    "trilingual_examples": 11988,
+    "l09_cards": 127,
+    "unique_ids": true,
+    "neutral_23_col_contract": true
+  },
+  "artifact": {
+    "filename": "Menschen-A1-V24-STAGE7-PACKAGING-QA-PASS-STAGE6-HOLD-20261102.zip",
+    "sha256": "d82c2900888f1360e587817a0a3395421f6a46eae0c8b2c170623d44a9b68a68",
+    "size_bytes": 9670682,
+    "members": 28,
+    "library_file_id": "libfile_dc3e864680f4819192729aef04d9005a",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Checkpoints/Menschen-A1-V24-STAGE7-PACKAGING-QA-PASS-STAGE6-HOLD-20261102.zip"
+  },
+  "archive_roles": [
+    "App (exact v505 runtime pin and missing-artifact warning, not executable)",
+    "Content (V24 2997 card import and official v3.3.6 Stage5 inner zip)",
+    "Source (ledger, immutable lineage, provenance notes)",
+    "Tests (self-contained 2997-card QA, official neutral validator, original namespace QA)",
+    "Reports (Stage5 proof, stage6 missing-evidence, 5 executed negative controls, 127-card L09 review only)",
+    "Docs (FA/DE start, migration safety, release notes)",
+    "Tools/Launcher (local read-only verification)",
+    "MANIFEST.json + SHA256SUMS.txt"
+  ],
+  "verification": {
+    "fresh_unzip_crc": "PASS_28_MEMBERS",
+    "fresh_extract_replay": "PASS_2997_24_11988",
+    "expected_2894_source_changes": "PASS_CARRIED_V24",
+    "official_unified_vocabulary_validator": "PASS_2997_ZERO_ERRORS",
+    "negative_mutations": "5_OF_5_EXECUTED_AND_REJECTED",
+    "all_member_sha_and_length": "PASS",
+    "library_sha256_exact_byte_roundtrip": "PASS",
+    "tests_have_no_srs_or_app_mutation": true
+  },
+  "runtime": {
+    "pinned_current": "v505-R141",
+    "exact_runtime_artifact_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "exact_runtime_zip_available": false,
+    "app_executable_included": false,
+    "browser_import": "NOT_RUN",
+    "indexeddb_write_reload": "NOT_RUN",
+    "srs_preservation": "NOT_RUN",
+    "stage6": "NOT_PASSED",
+    "stage7_final": "NOT_PASSED",
+    "import_authorized": false
+  },
+  "guarantees": {
+    "v24_unchanged": true,
+    "original_source_unchanged": true,
+    "locked_lessons_unchanged": true,
+    "app_runtime_unchanged": true,
+    "ui_ux_unchanged": true,
+    "user_srs_unchanged": true
+  },
+  "next_action": "Recover exact v505-R141 runtime artifact; automate isolated browser import/duplicate-upsert/visual/IndexedDB/reload/SRS checks, then produce ONE organized release ZIP with actual App assets and verified Stage6+Stage7 FINAL receipts. Do not silently substitute Git source for exact runtime ZIP."
+}

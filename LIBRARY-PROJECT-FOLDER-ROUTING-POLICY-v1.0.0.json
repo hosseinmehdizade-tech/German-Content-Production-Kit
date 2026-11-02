@@ -1,0 +1,44 @@
+{
+  "schema": "gcpk-library-project-folder-routing-policy@1.0.0",
+  "effective_date": "2026-11-02",
+  "owner_request": "Every content project has its own folder in the ChatGPT Library; store all new content, work, reports and artifacts only in the correct project folder.",
+  "root": "/Flasch kart/German-Content-Production-Kit/Content",
+  "routing": {
+    "menschen_a2": "Menschen-A2",
+    "menschen_a2_verben": "Menschen-A2-Verben",
+    "menschen_a1": "Menschen-A1",
+    "menschen_a1_verben": "Menschen-A1-Verben",
+    "menschen_b1": "Menschen-B1",
+    "menschen_b1_verben": "Menschen-B1-Verben",
+    "other_content": "Use existing explicit Content/<project-name> folders, not a generalized Checkpoints or Current folder"
+  },
+  "subfolders": {
+    "current": "Current",
+    "checkpoints": "Checkpoints",
+    "reports": "Reports",
+    "legacy": "Imported-Legacy",
+    "root_imports": "Root-Imports",
+    "releases": "Releases (if needed, never label WIP FINAL)"
+  },
+  "mandatory_workflow": [
+    "Resolve exact owner workstream before any Library save or move",
+    "Check folder exists, and create it if missing",
+    "Save into Content/<owner-project>/<appropriate-subfolder>; never generic root Current/Checkpoints/Final when project owner is known",
+    "After each upload/move, read back the actual Library path and stable library_file_id",
+    "Preserve original files, stable identities, source fidelity and runtime authorities; never delete duplicates without explicit authorization and exact comparison",
+    "Maintain a Git-tracked relocation index for moved historical checkpoint files so old hard-coded library_path breadcrumbs can be reconciled",
+    "Do not move mixed/shared A1/A2/B1 audio or coursebook sources out of German-Flashcards-Reference-Library/07_CEFR_COURSEBOOKS; reference source in place",
+    "Do not conflate Menschen-A2 (24 lesson project) with Menschen-A2-Verben (independent verb project)",
+    "Library move does not confer linguistic PASS, currentness, FINAL, Stage5/6/7 or app import success",
+    "If Library upload fails storage limit, disclose and keep an accessible chat artifact if present; do not silently fall back to wrong folder, overwrite, or delete"
+  ],
+  "menschen_a2_target": {
+    "root": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2",
+    "working": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current",
+    "checkpoints": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Checkpoints",
+    "reports": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Reports",
+    "legacy": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Imported-Legacy",
+    "root_imports": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Root-Imports"
+  },
+  "source_of_truth": "GitHub bootstrap/checkpoints determine content authority; Library placement determines personal file organization, not content validation."
+}

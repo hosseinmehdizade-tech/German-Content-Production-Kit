@@ -53,6 +53,10 @@ class PhysicalCoverage(unittest.TestCase):
             guard.classify(ITEM, ["eine Frage stellen — سؤال پرسیدن",
                                   "eine Frage stellen — سؤال پرسیدن — to ask a question"],{})
 
+    def test_repeated_identical_physical_line_rejected(self):
+        full = "eine Frage stellen — سؤال پرسیدن — to ask a question"
+        self.assertRaises(ValueError, guard.classify, ITEM, [full, full], {})
+
     def test_missing_fa_rejected(self):
         with self.assertRaises(ValueError):
             guard.classify({"de":"eine Frage stellen","fa":"","en":"ask"},[],{})

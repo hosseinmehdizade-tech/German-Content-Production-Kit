@@ -110,5 +110,81 @@
       "NO_DELETIONS",
       "NO_FINAL_IMPORT"
     ]
+  },
+  "relocation_execution_plan": {
+    "state": "READ_ONLY_DESTINATION_PLAN__MUTATION_NOT_AUTHORIZED",
+    "per_file_ids": "SOURCE_INVENTORY_RECORDS_ONLY__NO_FILE_CONTENT_DUPLICATED",
+    "target_policy": "Use recorded inventory .target paths; preserve filenames, attachments, original IDs and hashes. Never infer old lock is current.",
+    "buckets": {
+      "unique_no_name_collision": {
+        "files": 478,
+        "bytes": 1694922793,
+        "roots_by_inventory": {
+          "A2_prefix": 132,
+          "Menschen_A2_prefix": 346
+        }
+      },
+      "name_and_size_match_not_hash_verified": {
+        "files": 291,
+        "bytes": 210773576
+      },
+      "name_size_conflict": {
+        "files": 3,
+        "bytes": 78893
+      }
+    },
+    "source_file_type_distribution": {
+      "json": {
+        "files": 312,
+        "bytes": 16089176
+      },
+      "md": {
+        "files": 35,
+        "bytes": 410436
+      },
+      "tsv": {
+        "files": 5,
+        "bytes": 7774157
+      },
+      "no_extension": {
+        "files": 1,
+        "bytes": 31978373
+      },
+      "txt": {
+        "files": 2,
+        "bytes": 2972
+      },
+      "zip": {
+        "files": 411,
+        "bytes": 1848359755
+      },
+      "sha256": {
+        "files": 5,
+        "bytes": 549
+      },
+      "gz": {
+        "files": 1,
+        "bytes": 1159844
+      }
+    },
+    "source_total_bytes": 1905775262,
+    "transfer_preflight": [
+      "Obtain an authorized Project attachment/knowledge lifecycle move capability; personal Library move returns project_library_mutation_unsupported.",
+      "Re-read both root inventories plus destination current Library IDs; exclude records already transferred.",
+      "For 478 conflict-free names, compare stable identities and target exact destination paths before authorized move.",
+      "For 291 same-name same-size pairs, compute SHA-256 on both actual byte streams before labeling duplicates; never overwrite by filename alone.",
+      "Preserve three name-size conflicts as separate original versions; the L15 root JSON contains library and roundtrip_sidecar fields absent from target JSON.",
+      "Record post-move stable IDs and paths; preserve cross-repo reference history and do not edit locks or source audio."
+    ],
+    "prohibited": [
+      "COPY_AND_DELETE_AS_FAKE_MOVE",
+      "UNVERIFIED_OVERWRITE",
+      "DESTRUCTIVE_DEDUPLICATION",
+      "CLAIM_ALL_MOVED",
+      "MIX_A2_AND_A2_VERBEN"
+    ],
+    "actual_files_moved_in_this_milestone": 0,
+    "actual_files_deleted_in_this_milestone": 0,
+    "persistence": "GITHUB_COORDINATION_ONLY"
   }
 }

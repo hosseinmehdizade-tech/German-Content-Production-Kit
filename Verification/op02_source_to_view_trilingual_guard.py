@@ -37,7 +37,7 @@ def classify(entry, physical, envelope):
     if any(isinstance(x, dict) and all(x.get(k) == entry[k] for k in
                                       ("de", "fa", "en")) for x in physical):
         found.append("PHYSICAL_OBJECT_RENDER_PAIRING_UNPROVEN")
-    if len(found) > 1:
+    if len(found) > 1 or sum(x == f"{de} — {fa} — {en}" for x in physical) > 1 or sum(x == f"{de} — {fa}" for x in physical) > 1:
         raise ValueError("ambiguous duplicate representations")
     if found:
         return found[0]

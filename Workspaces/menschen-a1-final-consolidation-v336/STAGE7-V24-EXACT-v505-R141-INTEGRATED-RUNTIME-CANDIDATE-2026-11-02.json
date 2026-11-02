@@ -1,0 +1,85 @@
+{
+  "schema": "gcpk-a1-v24-stage7-integrated-exact-current-runtime-qa@1.0.0",
+  "date": "2026-11-02",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "milestone": "V24_WITH_EXACT_V505_R141_APP_STAGE7_INTEGRATED_QA_PASS_STAGE6_REAL_BROWSER_ENV_BLOCK",
+  "status": "INTEGRATED_RELEASE_CANDIDATE_PASS_FILES__REAL_STAGE6_BROWSER_NOT_RUN__NOT_FINAL",
+  "inputs": {
+    "runtime": {
+      "user_supplied_file": "GFP-v505-R141-COMMITTED-STORAGE-ARCHITECTURE-QA-CORRECTED-CANDIDATE(2).zip",
+      "expected_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+      "actual_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+      "exact_sha_match": true,
+      "files": 266,
+      "runtime_version": "v505-R141"
+    },
+    "content": {
+      "source_version": "V24",
+      "official_stage5": "PASS",
+      "stage7_parent_zip_sha256": "d82c2900888f1360e587817a0a3395421f6a46eae0c8b2c170623d44a9b68a68",
+      "import_tsv_sha256": "3ff2cd60f7d22fb989f0d4e9e885949b0bc4a91f4b77fd6192701d1315ba0b5e",
+      "cards": 2997,
+      "lessons": 24,
+      "examples": 11988,
+      "l09": 127,
+      "source_namespace": "Menschen A1"
+    }
+  },
+  "checks": {
+    "static_runtime_asset_cohort": "PASS_152_REFERENCES_69_STATIC_SRI_RESOURCES",
+    "runtime_shell_upgrade": "PASS_6_MUTATIONS_REJECTED",
+    "runtime_inline_js": "PASS_4",
+    "runtime_packaged_file_inventory": "PASS_264_MANIFEST",
+    "integrated_zip_crc": "PASS_299_MEMBERS",
+    "zip_fresh_extract_integrity": "PASS",
+    "integrated_2997_card_24_lesson_11988_example_replay": "PASS",
+    "original_runtime_archive_vs_extracted_runtime": "PASS_ALL_266_BYTE_EQUAL",
+    "integrated_manifest_all_sha256": "PASS",
+    "independent_package_negative_controls": "5/5_REJECTED",
+    "library_exact_byte_roundtrip": "PASS"
+  },
+  "browser_attempt": {
+    "state": "BLOCKED_BY_EXECUTION_ENVIRONMENT",
+    "methods": [
+      "http://127.0.0.1/",
+      "file:///",
+      "data:text/html"
+    ],
+    "result": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "cannot_claim": "Real Stage6 HTML rendering, 2997 card native Import, IndexedDB durable commit/restart, SRS merge preservation, collection UI acceptance",
+    "user_profile_accessed": false,
+    "user_data_mutated": false
+  },
+  "artifact": {
+    "filename": "Menschen-A1-V24-STAGE7-INTEGRATED-v505-R141-EXACT-APP-STAGE6-HOLD-20261102.zip",
+    "sha256": "50f547728cfc0dc9c9e86a5bb3d5465757e38c6cc3e2aa8ef1c68d6d1f358174",
+    "bytes": 27728591,
+    "members": 299,
+    "library_file_id": "libfile_1229e91516548191bd174fc9e27590ca",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Checkpoints/Menschen-A1-V24-STAGE7-INTEGRATED-v505-R141-EXACT-APP-STAGE6-HOLD-20261102.zip",
+    "includes": [
+      "App/Runtime-v505-R141/",
+      "App/EXACT-v505-R141-ORIGINAL.zip",
+      "Content/",
+      "Source/",
+      "Tests/",
+      "Reports/",
+      "Docs/",
+      "Tools/Launcher/",
+      "MANIFEST.json",
+      "SHA256SUMS.txt"
+    ]
+  },
+  "qa_boundary": {
+    "stage5": "PASS",
+    "stage6_static": "PASS",
+    "stage6_real_browser": "NOT_RUN",
+    "stage7_integrated_packaging": "PASS",
+    "stage7_final": "HOLD_REAL_STAGE6",
+    "import_authorized": false,
+    "source_locked_unchanged": true,
+    "user_app_ui_unchanged": true,
+    "existing_user_srs_unchanged": true
+  },
+  "handoff": "Optional on-user-machine automated isolated Chrome/Playwright Stage6 test under Tools/Launcher/RUN-STAGE6-ISOLATED.cmd; uses new TEMP profile and random localhost port, never existing user data, emits explicit results. Only after real accepted evidence can final Stage7 release be promoted. No deletion/replacement of current library."
+}

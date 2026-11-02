@@ -2,7 +2,7 @@
   "schema": "gcpk-a1-offsite-preservation-handoff@1.0.0",
   "date": "2026-11-02",
   "mission": "Consolidate A1 V24 release and essential provenance/locked lesson recovery into single recoverable vault, before considering destructive library cleanup.",
-  "status": "CONVERSATION_ARTIFACT_SHA256_AND_INTERNAL_CRC_PASS__GOOGLE_DRIVE_FOLDER_CREATED_EMPTY__EXTERNAL_BACKUP_NOT_COMPLETE__DELETIONS_ZERO",
+  "status": "GOOGLE_DRIVE_INDEPENDENT_RAW_READBACK_SHA256_PASS__46_OF_46_PAYLOAD_SHA_PASS__ZIP_CRC_PASS__NO_NEW_DELETIONS",
   "vault": {
     "name": "Menschen-A1-RECOVERY-VAULT-V24-2026-11-02.zip",
     "bytes": 205942057,
@@ -26,10 +26,23 @@
     "parent_vault": "https://drive.google.com/drive/folders/1_vqESh0wscwqLs2cZAN-gTq52fxofhch",
     "destination_folder": "https://drive.google.com/drive/folders/1UEguOdkScmvyCJzStF57h_x62T6ES_UJ",
     "folder_created": true,
-    "folder_readback_empty": true,
-    "archive_uploaded": false,
-    "archive_readback_verified": false,
-    "blocker": "Drive upload_file accepts provider connector file_uri, not a local container path; current conversation archive not uploaded"
+    "folder_readback_empty": false,
+    "archive_uploaded": true,
+    "archive_readback_verified": true,
+    "blocker": "Drive upload_file accepts provider connector file_uri, not a local container path; current conversation archive not uploaded",
+    "archive": {
+      "id": "1Rq1iXE6wEWX-rqTrLWIBtCeVcn8fAYMs",
+      "url": "https://drive.google.com/file/d/1Rq1iXE6wEWX-rqTrLWIBtCeVcn8fAYMs/view",
+      "size_bytes": 205942057,
+      "sha256": "c5788c5c05e82dc7dc99b9b3c60697176a145c19a40b67b1feef83f5558ec170"
+    },
+    "release": {
+      "id": "1ulYohCvLUyT8Jslbn95WFFyrdhTtT9QL",
+      "url": "https://drive.google.com/file/d/1ulYohCvLUyT8Jslbn95WFFyrdhTtT9QL/view",
+      "size_bytes": 27733211,
+      "sha256": "19a9edb447286e4d5bb796a882da471cb666f39f81acfcc0c0b9c69a937d19ff"
+    },
+    "test_result": "Actual downloaded Drive blobs materialized into local container, SHA256 matched recorded original on BOTH ZIPs; Vault 46/46 internal payload hashes matched; zip CRC zero errors."
   },
   "deletion": {
     "executed": 0,
@@ -44,8 +57,228 @@
     "policy": "No blanket delete; only unique-source-safe, lineage-verified old checkpoints after external backup restore test and Project Sources authorized deletion flow."
   },
   "next_actions": [
-    "User downloads this verified artifact from conversation and uploads to designated Drive folder",
-    "Agent checks uploaded Drive file and, if downloadable, verifies exact outer SHA-256 and archive CRC",
-    "Review and delete only independently verified redundant A1 Project files through Project Sources; never remove other workstreams or source authority"
-  ]
+    "42 A1 Checkpoints exact-backup copies may be deleted through Library UI if user chooses; no automation deleting them in this turn",
+    "Do NOT bulk remove 935 root Project-linked files; request Project Sources/attachments lifecycle operation and separate unique-lineage audit first",
+    "Preserve the exact current A1 Releases ZIP, A1 Verben, A2/B1, original sources and current GFP runtime."
+  ],
+  "verification_date": "2026-11-02",
+  "delete_ready_specific_scope": {
+    "folder": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Checkpoints",
+    "files": 42,
+    "bytes": 64278943,
+    "preconditions": "External recovery Vault already exact-verified. Delete only these 42 current checkpoint copies, do not touch adjacent Releases/Imported-Legacy/Root-Imports; Git historical Library pointers will require recovery via Vault.",
+    "entries": [
+      {
+        "name": "A1-L02-STAGE7-EXACT-FINAL-ACCEPTANCE.json",
+        "library_file_id": "libfile_b4e555ca24908191886b888a28b52de8",
+        "size_bytes": 4471
+      },
+      {
+        "name": "A1-L02-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_c16a0b94cb2c81918889f5487981f6fa",
+        "size_bytes": 2770
+      },
+      {
+        "name": "A1-L09-STAGE7-EXACT-FINAL-ACCEPTANCE.json",
+        "library_file_id": "libfile_077e8205a1dc8191b503d812fb7c8785",
+        "size_bytes": 3191
+      },
+      {
+        "name": "A1-L09-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_0ee6aac7cb1081918c492f0d59f1f9bb",
+        "size_bytes": 2786
+      },
+      {
+        "name": "A1-L13-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_279b58fd5fdc81918b400528879e83ad",
+        "size_bytes": 1612
+      },
+      {
+        "name": "A1-L14-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_b60946ffeef08191b196a92dbfa64a09",
+        "size_bytes": 927
+      },
+      {
+        "name": "A1-L15-STAGE7-PERSISTENCE-STATE.json",
+        "library_file_id": "libfile_7ce0a83ab1f481919f697a5bbb1cfbe9",
+        "size_bytes": 1767
+      },
+      {
+        "name": "A1-L15-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_9d3229d45ce08191ad3ec779f0d0539a",
+        "size_bytes": 941
+      },
+      {
+        "name": "A1-L16-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_a1c8a3ea52a4819194fad5479f30c09a",
+        "size_bytes": 1189
+      },
+      {
+        "name": "A1-L17-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_ac4eadb07dcc8191a0dad0b50788905c",
+        "size_bytes": 1396
+      },
+      {
+        "name": "A1-L18-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_f6c9f4a341008191b8e1d2346045284e",
+        "size_bytes": 2576
+      },
+      {
+        "name": "A1-L19-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_8bc799e583288191994e887e9349a7df",
+        "size_bytes": 2659
+      },
+      {
+        "name": "A1-L20-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_d5b0d5f3f33c81918cc55867f3e48614",
+        "size_bytes": 1424
+      },
+      {
+        "name": "A1-L21-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_2540ceac8b988191b566818d83c39677",
+        "size_bytes": 1123
+      },
+      {
+        "name": "A1-L22-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_87584b034be88191b42274a62f2f11ad",
+        "size_bytes": 1789
+      },
+      {
+        "name": "A1-L24-STAGE7-POST-PACKAGE-VERIFICATION.json",
+        "library_file_id": "libfile_065f86a8fafc8191b4ebdb1499e2e3df",
+        "size_bytes": 1059
+      },
+      {
+        "name": "Menschen-A1-L01-v3.3.6-C34-STAGE7-LOCKED-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_069c9a26cef88191be361ab3b0e47a9d",
+        "size_bytes": 34346494
+      },
+      {
+        "name": "Menschen-A1-L02-v3.3.6-GFP-v474-LOCKED.zip",
+        "library_file_id": "libfile_ce9242d3b81c819189cc048042f98edc",
+        "size_bytes": 330907
+      },
+      {
+        "name": "Menschen-A1-L03-v3.3.6-GFP-v474-LOCKED.zip",
+        "library_file_id": "libfile_72e8cd99e91c81918662c97825642211",
+        "size_bytes": 394347
+      },
+      {
+        "name": "Menschen-A1-L04-v3.3.6-GFP-v474-LOCKED.zip",
+        "library_file_id": "libfile_5a65077f42088191a70c8b0d69d1a681",
+        "size_bytes": 420385
+      },
+      {
+        "name": "Menschen-A1-L05-v3.3.6-GFP-v474-LOCKED.zip",
+        "library_file_id": "libfile_f9fe8b51fee88191b5e80aa06af0f5ca",
+        "size_bytes": 363304
+      },
+      {
+        "name": "Menschen-A1-L06-v3.3.6-GFP-v475-LOCKED.zip",
+        "library_file_id": "libfile_9d2b511f925c819180324ee41b4157f2",
+        "size_bytes": 468598
+      },
+      {
+        "name": "Menschen-A1-L07-v3.3.6-GFP-v475-LOCKED.zip",
+        "library_file_id": "libfile_c48f56252cac8191ad65bc50d0970bb4",
+        "size_bytes": 312236
+      },
+      {
+        "name": "Menschen-A1-L08-v3.3.6-GFP-v475-LOCKED.zip",
+        "library_file_id": "libfile_b7f99bcde0f88191ac277eaf3ac6b48d",
+        "size_bytes": 330857
+      },
+      {
+        "name": "Menschen-A1-L09-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_ee02b2a54a1c8191b6c31e7dbe63ad93",
+        "size_bytes": 520880
+      },
+      {
+        "name": "Menschen-A1-L09-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip.sha256",
+        "library_file_id": "libfile_a21b3c91e75c8191b0e4591d7a714792",
+        "size_bytes": 121
+      },
+      {
+        "name": "Menschen-A1-L10-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_40b1a82b492c8191baf453b32558008b",
+        "size_bytes": 639660
+      },
+      {
+        "name": "Menschen-A1-L11-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_911b6028c6a48191b87599632892416a",
+        "size_bytes": 718518
+      },
+      {
+        "name": "Menschen-A1-L12-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_37a3ae48b5d48191931cb210f4d056eb",
+        "size_bytes": 690331
+      },
+      {
+        "name": "Menschen-A1-L13-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_c754da4e9c908191947a98b37797c0b9",
+        "size_bytes": 1244446
+      },
+      {
+        "name": "Menschen-A1-L14-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_15179cf7e27c81918462b859e6375399",
+        "size_bytes": 1086580
+      },
+      {
+        "name": "Menschen-A1-L15-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_a2fd7ab2b4c88191b71cd5126bc03a35",
+        "size_bytes": 1018225
+      },
+      {
+        "name": "Menschen-A1-L16-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_7e9c5b7e29bc8191afa78775b2db54d1",
+        "size_bytes": 834023
+      },
+      {
+        "name": "Menschen-A1-L17-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_e1ee2977c40081919744ff0a83c6c3be",
+        "size_bytes": 983919
+      },
+      {
+        "name": "Menschen-A1-L18-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_101ce93f2a1081919bf9f44739d31116",
+        "size_bytes": 1232560
+      },
+      {
+        "name": "Menschen-A1-L19-v3.3.6-REPAIR2-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_a1c88d23090881919f9a60e3f0d378ee",
+        "size_bytes": 1015985
+      },
+      {
+        "name": "Menschen-A1-L20-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_3250dd87e4d88191b61c71359851a6e8",
+        "size_bytes": 1326936
+      },
+      {
+        "name": "Menschen-A1-L21-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_232af3312bb48191a5003440442022a5",
+        "size_bytes": 1802508
+      },
+      {
+        "name": "Menschen-A1-L22-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_839f720bc1e881919897db835c16780b",
+        "size_bytes": 1213242
+      },
+      {
+        "name": "Menschen-A1-L23-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_9de79e51d4348191a1a4630f90ae66bd",
+        "size_bytes": 2136348
+      },
+      {
+        "name": "Menschen-A1-L24-v3.3.6-CONTENT-PRODUCTION-DELIVERY.zip",
+        "library_file_id": "libfile_799484015ff0819187ea0961120976c6",
+        "size_bytes": 1159495
+      },
+      {
+        "name": "Menschen-A1-V24-UNIFIED-COLLECTION-STAGE5-PASS-NO-IMPORT-20261102.zip",
+        "library_file_id": "libfile_926429cbdac48191b23b3c455f37d2c3",
+        "size_bytes": 9656358
+      }
+    ],
+    "note": "A user can choose to retain this directory if they want instant in-Library per-lesson references; deleting it only removes local ChatGPT Library copies, not Drive Vault or Git receipts."
+  }
 }

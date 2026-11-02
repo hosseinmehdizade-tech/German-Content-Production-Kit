@@ -83,5 +83,26 @@ class PhysicalCoverage(unittest.TestCase):
         self.assertFalse(report["stage7_pass"])
 
 
+    def test_empty_universe_blocks_positive_physical_status(self):
+        report=guard.audit([card([],[])])
+        self.assertEqual(report["status"], "BLOCKED_EMPTY_SOURCE_UNIVERSE")
+
+    def test_duplicate_identical_source_items_rejected(self):
+        self.assertRaises(ValueError, guard.audit, [card([ITEM,dict(ITEM)],[])])
+
+    def test_duplicate_identical_object_items_rejected(self):
+        self.assertRaises(ValueError, guard.audit, [card([ITEM],[dict(ITEM),dict(ITEM)])])
+
+    def test_falsy_invalid_items_does_not_disappear(self):
+        x=card([],[])
+        x["custom_fields"]=json.dumps({"kombinationen_v1":{"visible_section":"Kombinationen","items":""}})
+        self.assertRaises(ValueError,guard.audit,[x])
+
+    def test_exact_sha256_input_pin_rejects_drift(self):
+        self.assertRaises(ValueError,guard.verify_bytes,b"known", "0"*64)
+        import hashlib
+        self.assertEqual(guard.verify_bytes(b"known",hashlib.sha256(b"known").hexdigest()),hashlib.sha256(b"known").hexdigest())
+
+
 if __name__=="__main__":
     unittest.main()

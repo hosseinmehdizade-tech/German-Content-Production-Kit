@@ -1,0 +1,36 @@
+{
+  "schema": "menschen-b1-verben-stage5-trust-root-fix@1.0.0",
+  "as_of": "2026-11-02",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "status": "STAGE5_NONACTIVE_SECURITY_CANDIDATE_TESTS_PASS__ACTUAL_STAGE5_BLOCKED",
+  "parent_checkpoint_sha256": "9e1a6ba92f953395bcead81e664ebba06d3c5fa079eb709484d12735e79a30d1",
+  "current_phase_h_sha256": "32c7369394b5498bc734050dbaa4a922cb22762adb9b9de6584d293d9d57c3bf",
+  "checkpoint": {
+    "name": "Menschen-B1-Verben-STAGE5-TRUST-BOUND-CORRECTION-2026-11-02.zip",
+    "sha256": "9a86ad7469c444852e089f90a340503eaa95d5df099961a88ef34ecb78092c42",
+    "bytes": 9204,
+    "entries": 5
+  },
+  "security_finding": "Previously guarded builder locally accepted forged Stage4 PASS and 15 synthetic PNGs when caller supplied their own digest; isolated dry-run test built then auto-deleted fake test output.",
+  "change": "Nonactive candidate requires separately protected Git/CI Stage4 receipt SHA and original image registry SHA; none exists yet, so it explicitly rejects production builds.",
+  "test": {
+    "total": 7,
+    "synthetic_positive_simulated_CI_only": 1,
+    "invalid_cases_rejected": 6,
+    "actual_source_attestation": 0,
+    "release_output_created": false,
+    "all_temporary_test_files_deleted": true
+  },
+  "limitations": [
+    "No actual original screenshot images obtained or rereviewed",
+    "No complete independent high/critical semantic signoff",
+    "Neither revised guarded builder nor CI trust roots merged into official v3.3.6 authority",
+    "Synthetic CI success is NOT Stage4 approval",
+    "No TSV/canonical/source/final/runtime changes"
+  ],
+  "official_stage4": "BLOCKED_NOT_PASS",
+  "official_stage5": "BLOCKED_NOT_PASS",
+  "stage6": "NOT_RUN",
+  "stage7": "NOT_RUN",
+  "next": "Obtain original 15 source images and exact source hash registry; complete source-bound high-risk decisions; independent protected CI approves exact receipt and image manifest before positive official Stage5 execution."
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "gcpk-a2-library-root-collision-readonly-audit@1",
+  "date": "2026-11-02",
+  "source_indexes": [
+    {
+      "path": "Workspaces/menschen-a2-24-lessons-v336/LIBRARY-ROOT-ATTACHMENT-BLOCKED-A2-PREFIX-2026-11-02.json",
+      "git_blob_sha": "333e79c2208c15f153e94d7b2f5965b25247c86c"
+    },
+    {
+      "path": "Workspaces/menschen-a2-24-lessons-v336/LIBRARY-ROOT-ATTACHMENT-BLOCKED-MENSCHEN-A2-PREFIX-2026-11-02.json",
+      "git_blob_sha": "a2411eb24f2b4d3e033bbe63c793b392cd4da080"
+    },
+    {
+      "path": "Workspaces/menschen-a2-24-lessons-v336/LIBRARY-FOLDER-RELOCATION-INDEX-2026-11-02.json",
+      "git_blob_sha": "61d9baa7b3e02cebe694f515335440d3db8aec43"
+    }
+  ],
+  "method": "Compare 772 indexed Project-linked root file names against 698 target-folder manifest records by lowercase basename, file size, and stable Library ID. No content hashes compared. This is a migration safety preflight, not a duplicate determination.",
+  "counts": {
+    "root_project_files": 772,
+    "distinct_root_ids": 772,
+    "target_folder_files": 698,
+    "distinct_basename_matches": 294,
+    "matches_same_byte_size": 291,
+    "basename_size_conflicts": 3,
+    "root_basename_not_in_target": 478,
+    "shared_library_file_ids": 0
+  },
+  "conflicts": [
+    {
+      "root_file": "/Flasch kart/A2-L15-STAGE3B-POST-PACKAGE-VERIFICATION.json",
+      "root_size": 3941,
+      "target": [
+        {
+          "path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Checkpoints/A2-L15-STAGE3B-POST-PACKAGE-VERIFICATION.json",
+          "size": 3331
+        }
+      ]
+    },
+    {
+      "root_file": "/Flasch kart/Menschen-A2-L17-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+      "root_size": 34569,
+      "target": [
+        {
+          "path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Imported-Legacy/Menschen-A2-L17-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+          "size": 33944
+        }
+      ]
+    },
+    {
+      "root_file": "/Flasch kart/Menschen-A2-L08-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+      "root_size": 40383,
+      "target": [
+        {
+          "path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Imported-Legacy/Menschen-A2-L08-v3.3.6-Stage1-SOURCE-INVENTORY-CHECKPOINT.zip",
+          "size": 43260
+        }
+      ]
+    }
+  ],
+  "root_groups": {
+    "a2_prefix": 256,
+    "menschen_a2_prefix": 516
+  },
+  "move_status": "BLOCKED_PROJECT_LIBRARY_MUTATION_UNSUPPORTED",
+  "moves_this_audit": 0,
+  "deletions": 0,
+  "copies": 0,
+  "guard": "Name and size equality do not establish content or hash equality. Never overwrite collision targets; preserve all originals and project attachments. Future relocation requires authorized Project attachment lifecycle operations. No API or Library move bypass.",
+  "safe_resume": "Recheck root Project membership + stable IDs and hashes before any authorized Project-level relocation. Match basename+size+hash and resolve 3 conflicting size pairs separately. Preserve 140 A1 ownership refs and source library separation."
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "menschen-b1-verben-stage6-exact-current-source-static-compatibility@1.0",
+  "date": "2026-11-02",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "status": "STAGE6_STATIC_SOURCE_CONTRACT_PASS__EXACT_RUNTIME_IMPORT_PRESENTATION_PERSISTENCE_NOT_RUN",
+  "stage5_content": {
+    "sha256": "15c69a16649bd07008dbc509faf121cd4cfe774a463010994f250022dc8155d7",
+    "cards": 395,
+    "examples": 1580,
+    "kombinationen": 835,
+    "validation": "5 framework validators + 1 independent strict + 5 tampered-input negative tests pass"
+  },
+  "current_runtime": {
+    "version": "v505-R141",
+    "runtime_artifact_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "runtime_zip_not_materialized": true,
+    "git_ref": "candidate/v505-r141-committed-storage-20261101",
+    "index_path": "01-App/index.html",
+    "index_git_blob_sha": "f416070ded93843ec5370052be251b2ac7919af5",
+    "index_version_marker": 505
+  },
+  "static_contract_checks": {
+    "accepts_tsv": true,
+    "accepts_zip_and_json": true,
+    "neutral_card_type_recognized_by_explicitCardTypeV451": true,
+    "neutral_presentation_contract_id": "gfp-vocabulary-neutral@1",
+    "kombinationen_detail_classified_as_combinations": true,
+    "import_ui_present": true
+  },
+  "limits": [
+    "Static exact v505 Git source scan is not a live user-browser import test.",
+    "No real-origin IndexedDB persistence/roundtrip tested for this B1 package.",
+    "No actual v505 app ZIP byte-level runtime-package integration tested, so Stage6 is NOT PASS.",
+    "No visible UI/UX modifications or overwrite to user's existing library."
+  ],
+  "next": "Run Stage6 on exact v505-R141 runtime ZIP/user browser with clean test profile and source-pinned B1 TSV, verify 395 cards and 835 combinations, reload persistence, check data display; then Stage7 one integrated release ZIP."
+}

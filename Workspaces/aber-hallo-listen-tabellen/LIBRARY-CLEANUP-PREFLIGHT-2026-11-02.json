@@ -1,7 +1,7 @@
 {
   "schema": "aber-hallo-library-cleanup-preflight@1",
   "date": "2026-11-02",
-  "status": "RECOVERY_ARCHIVE_IN_PERSONAL_LIBRARY_VERIFIED__EXTERNAL_DRIVE_ZIP_NOT_UPLOADED__NO_DELETION",
+  "status": "EXTERNAL_GOOGLE_DRIVE_RECOVERY_AND_WIP77_UPLOADED_METADATA_VERIFIED__NO_DELETION",
   "scope": "Aber Hallo Listen & Tabellen only",
   "library_file_count_before": 420,
   "library_folder_bytes_before": 1122595192,
@@ -10,7 +10,27 @@
   "external_google_drive_folder": {
     "id": "1wR9IHEjUb72w-tHsiy79a1Mlh-JPkQgI",
     "url": "https://drive.google.com/drive/folders/1wR9IHEjUb72w-tHsiy79a1Mlh-JPkQgI",
-    "zip_upload_status": "NOT_UPLOADED_NO_CONNECTOR_FILE_URI_FROM_LOCAL_ZIP"
+    "zip_upload_status": "BOTH_UPLOADED_METADATA_AND_PARENT_FOLDER_READBACK_PASS_NOT_RAW_HASH_READBACK",
+    "files": [
+      {
+        "name": "Aber-Hallo-RECOVERY-WIP77-NOT-FINAL-2026-11-02.zip",
+        "drive_id": "1boz2rgp02BTzO7HhoPsiVGqT2NWI8TSd",
+        "url": "https://drive.google.com/file/d/1boz2rgp02BTzO7HhoPsiVGqT2NWI8TSd/view?usp=drivesdk",
+        "bytes": 20391281,
+        "metadata_path_parent_verified": true,
+        "raw_download_sha256_roundtrip": "NOT_RUN",
+        "local_source_sha256": "848a6b5c0291637838682b4de531f115855b7e2bc8400d6699712b23de7ce46e"
+      },
+      {
+        "name": "Aber-Hallo-WIP77-5-EXACT-955-ATTESTED-26-HOLDS-STAGE4-OPEN-2026-10-31.zip",
+        "drive_id": "16VYeBtpeK3WKuapVDGdmLZ5Qfw5QE_7b",
+        "url": "https://drive.google.com/file/d/16VYeBtpeK3WKuapVDGdmLZ5Qfw5QE_7b/view?usp=drivesdk",
+        "bytes": 1884988,
+        "metadata_path_parent_verified": true,
+        "raw_download_sha256_roundtrip": "NOT_RUN",
+        "local_source_sha256": "00c6a6099d91fa22273e7aa598deb738355b2ce404025f1fb2cabac7e8d4c386"
+      }
+    ]
   },
   "recovery": {
     "filename": "Aber-Hallo-RECOVERY-WIP77-NOT-FINAL-2026-11-02.zip",
@@ -31,8 +51,8 @@
   },
   "remaining_library_files": "420 preflight + 1 newly saved rescue archive = 421 in owner directory (pending fresh full folder count)",
   "deletes_performed": 0,
-  "offsite_zip_upload_verified": false,
-  "cleanup_gate": "No bulk deletion until offsite copy verified, keep-vs-delete historical scope approved, and protected historical Git refs reconciled",
+  "offsite_zip_upload_verified": true,
+  "cleanup_gate": "Do not bulk-delete until actual Drive raw-byte roundtrip verification and explicit final keep/delete scope reconciliation; preserve original source and immutable historical release authority.",
   "root_project_linked_file_candidates": 51,
   "root_project_linked_mutation": "UNSUPPORTED",
   "other_workstreams": "EXCLUDED"

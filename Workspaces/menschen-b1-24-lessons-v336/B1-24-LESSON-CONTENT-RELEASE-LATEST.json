@@ -1,28 +1,29 @@
 {
   "schema": "menschen-b1-full-24-content-delivery-latest@1.1.0",
-  "updated_at": "2026-10-29",
-  "status": "USER_APPROVED_FINAL_CONTENT_TSV__PASS_COLD_EXTRACT_ZIP_AND_SOURCE_GROUPING__LIVE_V501_SRS_MIGRATION_NOT_RUN",
+  "updated_at": "2026-11-03",
+  "status": "PASS_EXACT_PARENT_IDENTITY_REPAIRED_STATIC_AND_LIBRARY_READBACK__NOT_LIVE_SRS",
   "framework": "v3.3.6",
-  "artifact_filename": "German-Flashcards-Pro-v487-R121-Menschen-B1-24-FINAL-CONTENT-UNIFIED-SOURCE.zip",
-  "artifact_sha256": "5925cd480bec94316097d1fdfe74e64e0a69e6cc1d4c3eb443cd8ae6d1bdbb26",
-  "artifact_size_bytes": 210088547,
-  "artifact_members": 3071,
-  "main_import_tsv_path": "Ready-To-Import/Menschen-B1-24-Lektionen-3089-UNIFIED-SOURCE-NEW-LIBRARY-ONLY.tsv",
-  "main_import_tsv_sha256": "102cfa9f2396d1db087ad36a32fe16b7e8fe51ea4bad03ee6e4d1caca54608d1",
-  "main_tsv_status": "FINAL_CONTENT_USER_ACCEPTED__FRESH_TEST_LIBRARY_ONLY",
+  "artifact_filename": "German-Flashcards-Pro-v487-R121-Menschen-B1-24-IDENTITY-REPAIRED-ISOLATED-PREFLIGHT-20261103.zip",
+  "artifact_sha256": "587eb37e9251df58e92bf5afd68e79f0fce54579f878ec0a997be7ffc7371640",
+  "artifact_size_bytes": 213851779,
+  "artifact_members": 3088,
+  "main_import_tsv_path": "Ready-To-Import/Menschen-B1-24-Lektionen-3088-VORSCHRIFT-REPAIRED-NEW-LIBRARY-ONLY.tsv",
+  "main_import_tsv_sha256": "c1b171abea0ef0a6242869cd3b49fca0f54384a91ddc00e18cfbaafd21d3368e",
+  "main_tsv_status": "SOURCE_EXACT_IDENTITY_REPAIR_STATIC_PASS__FRESH_ISOLATED_LIBRARY_ONLY",
   "current_app_runtime": "v501-R135",
   "bundled_historical_app_runtime": "v487-R121",
   "is_current_runtime_release": false,
   "is_live_profile_migration": false,
-  "verified_package_scope": "3071/3071 ZIP CRC; 3068/3068 payload sha256; cold extraction 3089 cards/3137 membership/24 lessons/43 shared groups/12548 example sets; two source split regression mutants and eight node synthetic import adversarial tests rejected",
+  "verified_package_scope": "3088 ZIP members CRC; 3085 SHA256 payloads; 3088 cards, 3137 memberships, 44 shared, 49 extra, 12548 trilingual groups; 2857 original MP3 unchanged; 3087 other cards unchanged; 3 Python + 2 Node checks, 10 negative guards; exact Library byte readback PASS",
   "content_counts": {
     "lessons": 24,
     "card_membership_rows": 3137,
-    "distinct_card_ids": 3089,
+    "distinct_card_ids": 3088,
     "trilingual_example_groups": 12548,
-    "stable_id_crosslesson_groups": 43,
-    "logical_nonexecuted_alias_groups": 3,
-    "original_source_binding_rows_protected": 10
+    "stable_id_crosslesson_groups": 44,
+    "logical_nonexecuted_alias_groups": 2,
+    "original_source_binding_rows_protected": 10,
+    "extra_memberships": 49
   },
   "grouping": {
     "before_unique_source_values": 6,
@@ -38,7 +39,7 @@
   "real_v501_technical_stage6": "NOT_RUN",
   "technical_new_lessons_stage7": "NOT_ASSERTED",
   "full_course_semantic_review": "NOT_CLAIMED_FOR_ALL_12548",
-  "artifact_delivery": "CURRENT_CONVERSATION_FILE__GIT_METADATA_ONLY__NOT_DRIVE_BINARY_BACKUP",
+  "artifact_delivery": "LIBRARY_EXACT_BYTE_AND_SHA256_READBACK_PASS",
   "receipt": "Workspaces/menschen-b1-24-lessons-v336/Audits/B1-24-20261029-USER-APPROVED-UNIFIED-SOURCE-FINAL-CONTENT.json",
   "previous_20261026_release": {
     "artifact_filename": "German-Flashcards-Pro-v486-Menschen-B1-24-Lektionen-IMPORT-REPAIRED-AUDIO-COMPANION-NONIMPORT.zip",
@@ -48,7 +49,19 @@
     "drive_backup": "https://drive.google.com/drive/folders/11B72YuLK-fnspVTxPwG9IHdZmK-YZuHy"
   },
   "previous_v487_native_candidate_sha256": "0c39d28a673ce598fda934d4255c0623cd8aefd7788def72720e07ea329ab815",
-  "quality_boundary": "FINAL applies only to user-reviewed unified-source 3089-card TSV, verified non-destructive 24-lesson content package and static QA. It does not certify all 12548 examples linguistically, future runtime v501 compatibility, existing personal collection regrouping, or native browser IndexedDB/SRS Stage6/7. Bundled v487 runtime is historical; do not downgrade installed v501.",
-  "next_action": "For existing user's v501 profile, first obtain exact v501 app and full SRS/IndexedDB backup; implement source-only migration preserving stable card IDs and study progress, with rollback and browser reload validation. Do not reimport corrected TSV into existing collection expecting old source regrouping, and do not delete six source collections.",
-  "git_sync": "RECEIPT_AND_POINTER_SYNCED_BUT_LARGE_BINARY_ONLY_IN_CURRENT_CHAT"
+  "quality_boundary": "Exact 2026-10-29 user attachment SHA 5925... patched and stored. Historical v487 import guard updated without visible UI change; v505 current app untouched. Source lessons and audio immutable. Existing personal IndexedDB/SRS NOT accessed; no real same-origin migration, Stage6/7 NOT verified; do not import to existing personal collection.",
+  "next_action": "Import to fresh isolated library only. For current personal app v505, obtain full IndexedDB/SRS backup and exact runtime; test reversible lossless legacy 4049 migration without deleting study history. Do not downgrade to bundled v487.",
+  "git_sync": "CONTENT_RECEIPT_AND_CHECKPOINT_PERSISTED; LIBRARY_EXACT_READBACK_PASS; USER_PROFILE_SRS_NOT_TESTED",
+  "previous_20261029_user_accepted_release": {
+    "artifact_filename": "German-Flashcards-Pro-v487-R121-Menschen-B1-24-FINAL-CONTENT-UNIFIED-SOURCE.zip",
+    "artifact_sha256": "5925cd480bec94316097d1fdfe74e64e0a69e6cc1d4c3eb443cd8ae6d1bdbb26",
+    "artifact_size_bytes": 210088547,
+    "main_import_tsv_path": "Ready-To-Import/Menschen-B1-24-Lektionen-3089-UNIFIED-SOURCE-NEW-LIBRARY-ONLY.tsv",
+    "main_import_tsv_sha256": "102cfa9f2396d1db087ad36a32fe16b7e8fe51ea4bad03ee6e4d1caca54608d1",
+    "status": "USER_APPROVED_FINAL_CONTENT_TSV__PASS_COLD_EXTRACT_ZIP_AND_SOURCE_GROUPING__LIVE_V501_SRS_MIGRATION_NOT_RUN"
+  },
+  "library_file_id": "libfile_987ad35768d08191b7174c940bd33d12",
+  "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Releases/German-Flashcards-Pro-v487-R121-Menschen-B1-24-IDENTITY-REPAIRED-ISOLATED-PREFLIGHT-20261103.zip",
+  "qa_git_receipt": "Workspaces/menschen-b1-24-lessons-v336/Identity-Adjudication/B1-24-EXACT-V487-IDENTITY-REPAIR-20261103.json",
+  "real_v505_technical_stage6": "NOT_RUN"
 }

@@ -75,18 +75,43 @@ def main(argv=None):
     p.add_argument('--output',type=Path,required=True,help='One JSON bundle; no per-card files')
     p.add_argument('--emit-legacy-views',action='store_true',
                    help='Emit optional 3A/3B/3C view files into output parent, not certified old schemas')
+    p.add_argument('--wortnetz-successor',type=Path,
+                   help='Optional new canonical JSON successor from same approved word_family decisions; --current-bytes must be exact canonical JSON')
     args=p.parse_args(argv)
     try:
         data=args.onepass.read_bytes()
         doc=json.loads(data.decode('utf-8'),object_pairs_hook=unique)
         doc['_ledger_sha256']=sha(data)
-        views=project(doc,args.current_bytes.read_bytes())
+        raw_working=args.current_bytes.read_bytes()
+        views=project(doc,raw_working)
         result={'schema':'gcpk-stage3-onepass-output@1.0',
                 'compatibility_status':'VIEWS_READY_NOT_WORKSTREAM_CONSUMER_APPROVED',
                 'views':views}
-        if args.output.resolve() in {args.onepass.resolve(),args.current_bytes.resolve()}:
+        protected={args.onepass.resolve(),args.current_bytes.resolve()}
+        if args.output.resolve() in protected:
             raise ValueError('OUTPUT_MUST_NOT_OVERWRITE_SOURCE')
+        successor_bytes=None
+        if args.wortnetz_successor:
+            if args.current_bytes.suffix.lower()!='.json':
+                raise ValueError('WORTNETZ_NEEDS_EXACT_CANONICAL_JSON')
+            if args.wortnetz_successor.resolve() in protected|{args.output.resolve()}:
+                raise ValueError('WORTNETZ_SUCCESSOR_OVERWRITES_INPUT_OR_VIEW')
+            if args.wortnetz_successor.exists():
+                raise ValueError('WORTNETZ_SUCCESSOR_ALREADY_EXISTS')
+            import importlib.util
+            helper=Path(__file__).resolve().parents[1]/'Tools'/'bridge_verified_wortfamilie_to_wortnetz.py'
+            spec=importlib.util.spec_from_file_location('word_family_bridge',helper)
+            module=importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            canonical=json.loads(raw_working.decode('utf-8-sig'),object_pairs_hook=unique)
+            successor,summary=module.apply_bridge(canonical,doc,raw_working)
+            successor_bytes=(json.dumps(successor,ensure_ascii=False,indent=2)+'\n').encode('utf-8')
+            result['word_family_wortnetz_bridge']=summary
+            result['word_family_wortnetz_bridge']['successor_sha256']=sha(successor_bytes)
         args.output.parent.mkdir(parents=True,exist_ok=True)
+        if args.wortnetz_successor:
+            args.wortnetz_successor.parent.mkdir(parents=True,exist_ok=True)
+            args.wortnetz_successor.write_bytes(successor_bytes)
         args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf-8')
         if args.emit_legacy_views:
             for label,view in views.items():

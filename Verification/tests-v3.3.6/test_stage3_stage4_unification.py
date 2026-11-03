@@ -514,3 +514,6 @@ from test_stage3_onepass_compat import TestLeanOnePassStage3Compatibility
 
 # Optional one-pass Wortfamilie cross-view diagnostics (no added release gate).
 from test_wortfamilie_lean_views import TestWortfamilieLeanViews
+
+# Approved Wortfamilie -> canonical WORD_FAMILY -> Wortnetz compatibility.
+from test_wortfamilie_wortnetz_bridge import TestVerifiedWortfamilieWortnetzBridge

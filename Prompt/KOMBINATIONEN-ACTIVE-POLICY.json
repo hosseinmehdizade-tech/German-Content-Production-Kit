@@ -38,9 +38,17 @@
     "operating_mode": "Prompt/LEAN-STAGE3-4-OPERATING-MODE-v1.0.0.md",
     "review_authority": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json",
     "advisory_flag_review": "RISK_BASED_LOW_MEDIUM_FAMILY_WITH_EVIDENCE__HIGH_CRITICAL_INDIVIDUAL",
-    "legacy_portable_kit_status": "HISTORICAL_SCANNER_NOT_MIGRATED__DO_NOT_REQUIRE_OLD_PER_FLAG_GATE_FOR_NEW_LEAN_DECISIONS",
+    "legacy_portable_kit_status": "FROZEN_REPLAY_ONLY__NOT_ACTIVE_ENTRYPOINT",
     "legacy_policy": "Prompt/KOMBINATIONEN-DIDACTIC-MEHRWERT-GATE-v1.0.0.md",
     "no_retroactive_content_reopen_without_change_or_systemic_error": true,
-    "no_extra_review_gate": true
+    "no_extra_review_gate": true,
+    "active_scanner": "Verification/audit_kombinationen_mehrwert.py",
+    "implementation": "Verification/audit_kombinationen_lean_v1_1.py",
+    "implementation_status": "MIGRATED_ACTIVE_REPO_SCANNER__OLD_PORTABLE_ARCHIVE_FROZEN",
+    "acceptance_delegation": "Verification/RiskBasedStage4/risk_based_stage4_gate.py",
+    "scanner_cli_usage": "python Verification/audit_kombinationen_mehrwert.py CURRENT.tsv --gate --stage4-receipt EXACT-RISK-BASED-STAGE4-RECEIPT.json",
+    "report_only_cli_usage": "python Verification/audit_kombinationen_mehrwert.py CURRENT.tsv --output didactic-advisory.json",
+    "stage3_onepass_writer": "Verification/emit_stage3_onepass_compat.py",
+    "stage3_writer_status": "ONEPASS_PROJECTION_IMPLEMENTED__WORKSTREAM_SPECIFIC_CONSUMER_PARITY_REQUIRED"
   }
 }

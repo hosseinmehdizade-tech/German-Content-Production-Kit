@@ -221,5 +221,51 @@ class TestVerifiedWortfamilieWortnetzBridge(unittest.TestCase):
                                   capture_output=True,text=True)
             self.assertEqual(repeat.returncode,3)
 
+    def test_onepass_writer_emits_same_authority_views_and_graph_successor(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp)
+            current=p/"canonical.json"
+            ledger_path=p/"stage3.json"
+            view=p/"views.json"
+            successor=p/"canonical-successor.json"
+            current.write_bytes(packed(CANON))
+            ledger=ledger_for(CANON)
+            ledger["cards"][0]["baseline"]={"wortfamilie":1}
+            ledger_path.write_bytes(packed(ledger))
+            script=ROOT/"Verification/emit_stage3_onepass_compat.py"
+            cmd=[sys.executable,str(script),"--onepass",str(ledger_path),
+                 "--current-bytes",str(current),"--output",str(view),
+                 "--wortnetz-successor",str(successor)]
+            response=subprocess.run(cmd,capture_output=True,text=True)
+            self.assertEqual(response.returncode,0,response.stderr)
+            self.assertEqual(json.loads(view.read_text())["views"]["3C"]["items"][0]
+                             ["decisions"]["word_family"]["members"][0]["target_id"],"s-r")
+            after=json.loads(successor.read_text())
+            self.assertEqual(after["relations"][0]["target_id"],"s-r")
+            self.assertEqual(current.read_bytes(),packed(CANON))
+            view_doc=json.loads(view.read_text())
+            self.assertEqual(view_doc["word_family_wortnetz_bridge"]["counts"]["edges_added"],1)
+            self.assertEqual(view_doc["word_family_wortnetz_bridge"]["successor_sha256"],
+                             bridge.digest(successor.read_bytes()))
+            self.assertFalse(view_doc["views"]["3C"]["status"]=="PASS")
+
+    def test_onepass_writer_prohibits_canonical_overwrite(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp)
+            current=p/"canonical.json"
+            ledger_path=p/"stage3.json"
+            current.write_bytes(packed(CANON))
+            ledger=ledger_for(CANON)
+            ledger["cards"][0]["baseline"]={}
+            ledger_path.write_bytes(packed(ledger))
+            response=subprocess.run([sys.executable,
+                str(ROOT/"Verification/emit_stage3_onepass_compat.py"),
+                "--onepass",str(ledger_path),"--current-bytes",str(current),
+                "--output",str(p/"views.json"),"--wortnetz-successor",str(current)],
+                capture_output=True,text=True)
+            self.assertEqual(response.returncode,3)
+            self.assertEqual(current.read_bytes(),packed(CANON))
+            self.assertFalse((p/"views.json").exists())
+
 if __name__=="__main__":
     unittest.main()

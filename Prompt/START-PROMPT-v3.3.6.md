@@ -11,7 +11,7 @@ Resolve the full master prompt from `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.
 Mandatory architecture:
 - source format is isolated to Stage 1 adapters; readable sources normalize to universal source occurrences;
 - Stage 2 must close occurrence/duplicate/split/merge identity questions before enrichment;
-- Stage 3 retains the logical `3A baseline richness audit -> 3B gap-driven enrichment -> 3C disposition closure`, executed as ONE source-bound card authoring pass; generate legacy-compatible 3A/3B/3C fields/checkpoints from the SAME decisions, not independent re-authoring rounds. New execution precedence: `Prompt/LEAN-STAGE3-4-OPERATING-MODE-v1.0.0.md`;
+- Stage 3 retains the logical `3A baseline richness audit -> 3B gap-driven enrichment -> 3C disposition closure`, executed as ONE source-bound card authoring pass; generate legacy-compatible 3A/3B/3C fields/checkpoints from the SAME decisions, not independent re-authoring rounds. New execution precedence: `Prompt/LEAN-STAGE3-4-OPERATING-MODE-v1.0.0.md`; For Wortfamilie, the same pass reviews both optional learner-visible `Wortfamilie` and typed canonical `WORD_FAMILY` representations with shared evidence; no fixed count, no forced fake graph links, no second gate (details in the lean mode).
 - every applicable target/dimension ends as `VERIFIED_PRESENT`, justified `CLOSED_NO_FORCE`, or policy-permitted `NOT_APPLICABLE`; unresolved/blank is never PASS;
 - `CLOSED_NO_FORCE` is a reviewed first-class outcome; density quotas never justify fabricated relations;
 - rejected candidates are persisted so they are not repeatedly proposed;

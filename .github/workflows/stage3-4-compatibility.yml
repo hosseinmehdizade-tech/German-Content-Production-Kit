@@ -107,6 +107,8 @@ on:
   workflow_dispatch:
 jobs:
   metadata-compatibility-only:
+    env:
+      PYTHONUTF8: '1'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

@@ -1,0 +1,84 @@
+{
+  "schema": "menschen-b1-identity-repair-source-derived-receipt@1.0.0",
+  "date": "2026-11-03",
+  "workstream": "menschen-b1-24-lessons-v336/identity-adjudication",
+  "status": "PASS_SOURCE_DERIVED_L23_PATCH_AND_L24_EXISTING_FIX_REVERIFICATION__NOT_APPLIED_TO_FINAL_24",
+  "user_intent": "Resolve L23 Vorschrift duplicate and L24 rein adjective/directional-adverb confusion without changing historical SRS or immutable sources",
+  "current_full_24_authority": {
+    "artifact_sha256": "5925cd480bec94316097d1fdfe74e64e0a69e6cc1d4c3eb443cd8ae6d1bdbb26",
+    "git_latest_blob": "3483e9020426e882b420e158161dca4561b374ab",
+    "artifact_status": "NOT_AVAILABLE_FOR_BYTE_EDIT_IN_THIS_TURN",
+    "unchanged": true
+  },
+  "exact_parents": {
+    "source_RAR_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "l23_stage4_sha256": "8a504120223fe79d9c0246f0d85e00c5f597e7727fbd738776c953c682f15968",
+    "l23_stage2_reuse_successor_sha256": "428b790d58e0f544900f0f2de1a3e2dcf7007048bb3649ab4b1def8c58d9d608",
+    "l24_new_rein_stage2_fork_sha256": "492f005e3a2f5ef241bba514dbfc222756ba5103394d0817695311064fdc6c59"
+  },
+  "exact_delta": {
+    "l23": {
+      "source_parent_108_cards": 108,
+      "derived_new_import_candidate_cards": 107,
+      "duplicate_new_card_excluded": "mb1m-lu-4049",
+      "canonical_prior_existing_id": "mb1m-lu-2974",
+      "source_rows_relinked": [
+        7590,
+        7591,
+        7593,
+        7595
+      ],
+      "retained_duplicate_card_all_fields": true,
+      "retained_trilingual_examples": 4,
+      "lesson_membership_plan": "ADD_ONLY_ONLY_AFTER_RUNTIME_SUPPORT_AND_FULL_PROFILE_BACKUP"
+    },
+    "l24": {
+      "already_corrected_since": "2026-10-25",
+      "directional_adverb_id": "mb1m-lu-4206",
+      "protected_adjective_id": "mb1m-lu-4066",
+      "protected_raus_id": "mb1m-lu-4167",
+      "source_row": 7785,
+      "source_text": "Lass mich rein! / rein und raus",
+      "prior_PASS0023_exact_binary": "UNAVAILABLE",
+      "current_l24_stage5_sha256": "f6d977fd697be9633f0bf751c4565c942e4a60945c4eee03b5ac8d3b45b915e3"
+    }
+  },
+  "QA": {
+    "tests": 20,
+    "tests_passed": 20,
+    "negative_mutations": [
+      "L23 duplicate id reentry rejected",
+      "L23 wrong source reuse id rejected",
+      "L24 old adjective misuse rejected"
+    ],
+    "archive_manifest_sha256": "PASS",
+    "zip_crc": "PASS",
+    "library_raw_readback_sha256_and_bytes": "PASS",
+    "verified_package_replay": "PASS"
+  },
+  "portable": {
+    "name": "Menschen-B1-L23-L24-Identity-Repair-SOURCE-DERIVED-NONIMPORT-2026-11-03.zip",
+    "sha256": "24691cbf759f79a2808e80d7097f699b6783512c6f87bb0f57d752884a4682c8",
+    "size_bytes": 87044,
+    "members": 10,
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Checkpoints/Menschen-B1-L23-L24-Identity-Repair-SOURCE-DERIVED-NONIMPORT-2026-11-03.zip",
+    "library_stable_id": "libfile_758b35be0a5881918ed106b60629bb37",
+    "library_backing_file_id": "file_0000000037d481f89533389634ed5e90"
+  },
+  "safeguards": {
+    "original_RAR_modified": false,
+    "historical_LOCKED_modified": false,
+    "runtime_UI_modified": false,
+    "user_SRS_modified": false,
+    "latest_full_release_modified": false,
+    "active_LATEST_files_modified": false,
+    "existing_profile_import_allowed": false
+  },
+  "remaining_gates": [
+    "Obtain exact full 24-lesson release SHA256 5925cd... and apply additive correction there; no downgrade to older candidate",
+    "Verify exact source/grouping and both trilingual example sets after integration",
+    "Full IndexedDB/SRS backup, rollback and real current-runtime multi-membership transaction",
+    "Native Stage6/7 acceptance; no automatic historical ID deletion"
+  ],
+  "git_note": "Read-only durable milestone record only; authoritative full 24 latest and identity adjudication latest preserved to avoid false promotion."
+}

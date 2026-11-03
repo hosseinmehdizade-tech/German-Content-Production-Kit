@@ -1,0 +1,80 @@
+{
+  "schema": "gcpk-a1-l01-r2-semantic-repair-receipt@1.0.0",
+  "date": "2026-11-03",
+  "workstream": "menschen-a1-24-lesson-lexical-enrichment-v336",
+  "lesson": "A1-L01",
+  "status": "R2_SOURCE_SEMANTIC_HIGH_RISK_REPAIR_APPLIED__SCOPED_TECHNICAL_QA_PASS__OFFICIAL_STAGE4_STAGE5_PENDING__NOT_IMPORT_READY",
+  "user_mission": "Sequential enrichment one lesson at a time: Kombinationen/Kollokationen, Wortfamilie, Synonyme, Antonyme",
+  "authority": {
+    "parent_archive": "Menschen-A1-V24-COMPLETE-DELIVERY-v505-R141-20261102.zip",
+    "parent_archive_sha256": "19a9edb447286e4d5bb796a882da471cb666f39f81acfcc0c0b9c69a937d19ff",
+    "parent_tsv_sha256": "3ff2cd60f7d22fb989f0d4e9e885949b0bc4a91f4b77fd6192701d1315ba0b5e",
+    "registered_source_rar_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "original_parent_unchanged": true,
+    "source_unchanged": true,
+    "prior_r1_sha256": "c087eb1c961146ec70aaa9022e618a21ddbbfe8e028002c67dd45988c4d94c87"
+  },
+  "artifact": {
+    "name": "Menschen-A1-L01-Stage4-R2-Semantic-Repair-Stage5-PREFLIGHT-NO-IMPORT-20261103.zip",
+    "size_bytes": 187499,
+    "sha256": "42eb3c64bf08ab1437005c6bdbe9662062aa84048edd50c450dcc797e4d1bf1b",
+    "library_id": "libfile_9a07179f8ee88191b67376dd479ccf99",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Checkpoints/Menschen-A1-L01-Stage4-R2-Semantic-Repair-Stage5-PREFLIGHT-NO-IMPORT-20261103.zip",
+    "exact_library_sha256_roundtrip": "PASS",
+    "zip_members": 14,
+    "requires_parent_v24": true,
+    "not_standalone_import": true
+  },
+  "scope": {
+    "lesson_cards": 118,
+    "changed_cards_vs_v24": 51,
+    "unchanged_other_lessons_cards": 2879,
+    "total_cards_in_replay": 2997,
+    "total_example_sets_in_replay": 11988,
+    "fa_example_translations_changed": 1,
+    "other_example_translations_changed": 0,
+    "original_de_examples_changed": 0,
+    "original_en_examples_changed": 0,
+    "lexical_inherited_r1": {
+      "initial_proposals": 86,
+      "accepted_revised_or_reclassified": 80,
+      "rejected": 6,
+      "new_items": {
+        "Kombinationen": 33,
+        "Wortfamilie": 36,
+        "Synonyme": 7,
+        "Antonyme": 0,
+        "Varianten": 4
+      }
+    }
+  },
+  "semantic_repair": {
+    "severity": "HIGH",
+    "card_id": "ma1m-lu-0116",
+    "example_id": "ma1m-lu-0116-ex-03",
+    "german": "Meine Cousine ist neunzehn Jahre alt.",
+    "old_fa": "دخترعمویم نوزده سال دارد.",
+    "new_fa": "دخترِ یکی از عموها، عمه‌ها، دایی‌ها یا خاله‌هایم نوزده سال دارد.",
+    "reason": "Cousine is female cousin, not specifically a daughter of a paternal uncle; paternal/maternal branch not recoverable from German",
+    "scope": "Pre-existing V24 translation changed only in editable scoped L01 successor; original V24 remains immutable."
+  },
+  "technical_tests": {
+    "guarded_full_replay": "PASS_SHA256_339ac8357ad8662b7cf9eff94f3848a911ce68f3bb85636a04da6e9739e68698",
+    "lesson_r2_sha256": "",
+    "negative_mutations": "6/6_REJECTED",
+    "neutral_vocabulary_validator": "PASS_2997_CARDS_0_ERRORS",
+    "zip_crc_and_manifest": "PASS",
+    "external_independent_human_review": "NOT_CLAIMED",
+    "official_risk_based_stage4_validator": "NOT_RUN",
+    "official_stage5_builder": "NOT_RUN",
+    "browser_stage6": "NOT_RUN",
+    "stage7_final": "NOT_RUN"
+  },
+  "boundaries": {
+    "runtime_ui_unchanged": true,
+    "srs_not_touched": true,
+    "user_library_content_not_imported": true,
+    "other_workstreams_unchanged": true
+  },
+  "next_action": "Continue same L01: produce full source-bound Stage4 risk evidence and run exact official risk validator; then official v3.3.6 Stage5 clean builder, no import before runtime QA. Do not move to L02 yet."
+}

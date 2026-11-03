@@ -506,3 +506,8 @@ def test_stage4to7_rejects_original_source_hash_mismatch():
     a = _private_stage5to7_receipts()
     a[7]["authority"]["canonical_source_member_sha256"] = "f" * 64
     assert any("registered canonical source" in e for e in _private_lineage_errors(*a))
+
+# Migrated lean scanner must pass alongside historical proposal adapters.
+from test_lean_didactic_scanner_v1_1 import LeanScannerRegression as TestLeanDidacticScannerMigration
+
+from test_stage3_onepass_compat import TestLeanOnePassStage3Compatibility

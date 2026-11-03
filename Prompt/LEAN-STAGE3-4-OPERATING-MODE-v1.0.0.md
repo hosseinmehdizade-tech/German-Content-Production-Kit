@@ -8,6 +8,18 @@ Stage 1 captures source once; Stage 2 resolves ID/occurrence once. Stage 3A inve
 
 **Disposition default:** existing good content => `VERIFIED_PRESENT` (code `ALREADY_COVERED` for already-present useful combination); useful missing content => create after source/sense/provenance checks; no useful item => `CLOSED_NO_FORCE` with standardized nonempty reason (e.g., `NO_ADDITIONAL_TEACHING_VALUE`); truly not applicable => `NOT_APPLICABLE`; material uncertain provenance/sense => `HOLD`. No zero-item or fixed-density penalty. Machine-provided IDs, source SHA and already-verified lineage must be reused, not manually retyped for each field.
 
+
+## Wortfamilie: one decision, two valid delivery representations (2026-11-03)
+
+This is a clarification **inside the same Stage3/Stage4 process**, not an additional review/gate or a quota. Apply on the next safe editable lexical-card pass; leave historical LOCKED card/content bytes unchanged.
+
+- The **typed canonical** relation `WORD_FAMILY` asserts an evidence-backed derivational family link. Use a real `target_id` only when that canonical lexical target is resolved; a similar meaning, shared topic, inflected form, or merely similar spelling is not sufficient. Unresolved freeform lexical family information must not be promoted into a fake target-ID relation.
+- The **learner-visible** `Wortfamilie` details list is a text projection/gloss of useful family members. Existing useful freeform strings may be retained, with verified German/FA meaning, even when no stable target-ID exists. A typed `WORD_FAMILY` edge may instead be used in the Wortnetz/navigation view; therefore **not every typed edge must be duplicated as a physical Details line**. `Verwandt`/`RELATED`, Synonyme and Kombinationen remain separate semantic categories.
+- In **one Stage3 pass**, reuse already known family members, exact source/sense, card ID, accepted translations and provenance. When a member exists in both representations, use one adjudication/evidence record, not two. Decisions are `VERIFIED_PRESENT`, justified `CLOSED_NO_FORCE`, `NOT_APPLICABLE` when appropriate, or `HOLD` for actual semantic/provenance uncertainty. No fixed number, no automatic word-formation guessing.
+- Stage4 uses the same active independent risk-based review: high-risk false derivation, wrong sense/gloss or invented linkage gets individual challenge; low-risk unchanged families can reuse valid evidence or scoped family sampling. No new Wortfamilie-only Stage4 gate.
+- Stage5 preserves the actual typed and visible fields already accepted; only project into a learner-visible section if the workstream's output contract requests it and the content/mapping is verified. Stage6 follows existing changed-feature checks and known-unavailable-browser policy, never inventing a native display PASS.
+- `Verification/audit_wortfamilie_lean_views.py` is an **optional read-only mismatch diagnostic**. A visible-only or typed-only record is a review *candidate*, NOT automatically an error/blocked release. Only actual bad language, broken exact-ID linkage, duplicate display or loss under the intended consumer contract deserves correction. This does not mandate rerunning finished historical word-family batches.
+
 ## One independent quality challenge, not repeated editorial work
 
 Stage 4 is the **already-active** `STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json` method:

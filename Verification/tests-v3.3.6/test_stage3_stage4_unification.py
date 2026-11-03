@@ -511,3 +511,6 @@ def test_stage4to7_rejects_original_source_hash_mismatch():
 from test_lean_didactic_scanner_v1_1 import LeanScannerRegression as TestLeanDidacticScannerMigration
 
 from test_stage3_onepass_compat import TestLeanOnePassStage3Compatibility
+
+# Optional one-pass Wortfamilie cross-view diagnostics (no added release gate).
+from test_wortfamilie_lean_views import TestWortfamilieLeanViews

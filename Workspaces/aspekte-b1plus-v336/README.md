@@ -1,9 +1,11 @@
-# Aspekte B1+ — Independent Draft Project Definition
+# Aspekte B1+ — independent project definition
 
-Status: DEFINITION ONLY (2026-11-04). **NO card production, Stage1 promotion, Stage2–Stage7, or runtime import is authorized.**
+**Source policy confirmed by user on 2026-11-04:** only the uploaded Memrise-style CSV, hash `09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1`, is the authoritative lexical inventory. The printed publisher Aspekte book is **out of scope**: do not request or compare it; do not claim official publisher book completeness. Scope is 1548 source rows / 10 lessons for this project alone.
 
-Dedicated project key: `aspekte-b1plus`. CSV source SHA256: `09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1`. 1548 source rows; 10 lessons. Official publisher's book NOT VERIFIED. 1375 audio filename references, but no audio binaries are available. Private Progress/Learnable metadata must not enter Git.
+**Phase:** definition being completed; this is not a content-production stage. Stage1–Stage7 are all NOT_STARTED; `production_authorized=false`. Earlier provisional Stage1 analysis remains NONAUTHORITATIVE.
 
-Source of full definition (delivered as separate verified portable ZIP): `Aspekte-B1plus-Project-Definition-DRAFT-20261104.zip`, SHA256 `772d8409d09c8490dbed49986f96776a8a6ea1bb418ebe1259976c9884b26a36`. See `PROJECT-DEFINITION.json` and `CHECKPOINT.json` here for current draft project identity.
+**Two independent workstreams:** `aspekte-b1plus` never merges with the other level. Independent IDs, checkpoints, Library paths, QA and final content ZIP. Shared raw CSV hash does not authorize cross-level deduplication.
 
-Other level is a **different project**, with different checkpoints, QA, releases and Library folder. Do not create cards from the provisional Stage1 archive before scope approval. Per-project ChatGPT Project UI creation must be performed by the user, using the shipped instruction file.
+**Portable updated project definition**: `Aspekte-B1plus-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip` SHA256 `8a9203b456b5113de73a70c610f31f3614da2e9be170d5fe739dc42b1bc52d00`, Library `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Checkpoints/Aspekte-B1plus-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip` ID `libfile_c72841dfe3d481919d1c9540705d6bf0`, exact-byte readback verified.
+
+**Next:** finish definition without touching textbook or producing cards, then explicitly start Stage1. ChatGPT's native project workspace UI must be created by the user using the independent Instructions in this ZIP. Existing Flashcards app runtime/UI unchanged.

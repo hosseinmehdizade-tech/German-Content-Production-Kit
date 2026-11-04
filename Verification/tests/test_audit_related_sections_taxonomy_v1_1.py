@@ -253,6 +253,39 @@ class TaxonomyContractTests(unittest.TestCase):
             strict = subprocess.run([sys.executable,str(MODULE),str(src),'--fail-on-high'],capture_output=True,text=True)
             self.assertEqual(strict.returncode,1)
 
+    def test_cli_refuses_overwrite_existing_report(self):
+        with tempfile.TemporaryDirectory() as d:
+            source = Path(d)/'input.json'
+            output = Path(d)/'report.json'
+            source.write_text(json.dumps({'cards':[card()]}), encoding='utf8')
+            output.write_text('DO NOT TOUCH', encoding='utf8')
+            result = subprocess.run([sys.executable,str(MODULE),str(source),'--output',str(output)],capture_output=True,text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(output.read_text(), 'DO NOT TOUCH')
+
+    def test_cli_refuses_to_write_report_over_input(self):
+        with tempfile.TemporaryDirectory() as d:
+            source = Path(d)/'input.json'
+            original = json.dumps({'cards':[card()]})
+            source.write_text(original, encoding='utf8')
+            result = subprocess.run([sys.executable,str(MODULE),str(source),'--output',str(source)],capture_output=True,text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(source.read_text(), original)
+
+    def test_cli_refuses_symlink_to_input_when_supported(self):
+        with tempfile.TemporaryDirectory() as d:
+            source = Path(d)/'input.json'
+            link = Path(d)/'destination.json'
+            source.write_text(json.dumps({'cards':[card()]}), encoding='utf8')
+            try:
+                link.symlink_to(source)
+            except (OSError, NotImplementedError):
+                self.skipTest('symlink capability unavailable on this platform')
+            original = source.read_bytes()
+            result = subprocess.run([sys.executable,str(MODULE),str(source),'--output',str(link)],capture_output=True,text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(source.read_bytes(), original)
+
     def test_cli_invalid_exit_2(self):
         with tempfile.TemporaryDirectory() as d:
             p = Path(d)/'bad.json';p.write_text('{}')

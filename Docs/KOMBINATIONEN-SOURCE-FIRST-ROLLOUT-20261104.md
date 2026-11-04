@@ -17,3 +17,10 @@ Date: 2026-11-04. User-directed. **Scope: POLICY + SOURCE REGISTRY + TOOL + PILO
 - Independent refetch of **8 modified/relevant Git files** after commits and **11/11 cross-file checks PASS** (registered source exactly once, secondary-only, allowed claims and URL refs, active link, installed code/test, proposal without fake card ID, no fictitious Rektion, diversity, source/copyright notes, active Start Prompt and README).
 - No native A2 collection mutation, content export, app UI, import, SRS, Wortnetz, source identity, older LOCKED artifact, or Stage4/5/6/7 completion asserted. The full multilingual object rendering defect identified previously for some A1 cards is a distinct app runtime issue; this source-first policy does not cure it.
 - Future Stage3 editors should use one source-first research pass with justified delta, then existing Stage4 challenge. Historical cards only by explicit versioned successor.
+
+## Portable audit kit in personal Library
+
+- Archive: `GCPK-KOMBINATIONEN-SOURCE-FIRST-V1.2-20261104.zip` (content-only; **not the app or a ready-to-import A2 release**).
+- SHA256: `cc73a503494519fac077e0f17bb2c10666f0d43ff03e3e7c9564c3013a35815f`, size **15,018 bytes**, **8 files** (7 checksummed entries). ZIP CRC and all SHA256SUMS verified; unit tests 19/19 PASS.
+- Verified Library path: `/Flasch kart/German-Content-Production-Kit/Candidates/GCPK-KOMBINATIONEN-SOURCE-FIRST-V1.2-20261104.zip`; stable ID `libfile_6670863d9c4881919511e7c76b3a2a01`; upload and list readback succeeded.
+- The archived guide, advisory tool, tests and `der Weg` pilot are copies of the committed policy/tool/proposal; the canonical active policy and source registry reside in Git, no historical locked card content rewritten.

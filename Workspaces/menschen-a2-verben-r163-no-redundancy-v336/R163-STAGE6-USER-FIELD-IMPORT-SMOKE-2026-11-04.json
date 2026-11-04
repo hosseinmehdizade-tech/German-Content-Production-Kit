@@ -1,0 +1,39 @@
+{
+  "schema": "gcpk-r163-stage6-user-field-import-smoke@1.0.0",
+  "date": "2026-11-04",
+  "workstream": "menschen-a2-verben-r163-no-redundancy-v336",
+  "status": "PASS_USER_REPORTED_IMPORT_NO_ERRORS__FULL_STAGE6_UNVERIFIED",
+  "source": "User statement in current chat: «ایمپورت کردم مشکلی وجود نداره»",
+  "content": {
+    "stage5_package": "Menschen-A2-Verben-R163-v3.3.6-STAGE5-CONTENT-PRODUCTION-PASS-20261104.zip",
+    "stage5_zip_sha256": "10d616cdb5012ae790f5af9b12350432eb3df667a728a49d46fe7606e28fb23d",
+    "import_ready_tsv_sha256": "32554697a79dc07e42627618af4bcffb5d353056ffdac70853b171d8f6c7e4d3",
+    "expected_cards": 292,
+    "expected_examples": 1168,
+    "expected_visible_kombinationen": 676
+  },
+  "evidence": {
+    "user_confirmed_import": "PASS_USER_REPORTED_NO_PROBLEMS",
+    "user_reported_previous_import_error": "RESOLVED_BY_USER",
+    "independently_observed_import_trace": "NOT_AVAILABLE",
+    "actual_imported_count": "NOT_INDEPENDENTLY_VERIFIED",
+    "exact_runtime_version": "NOT_REPORTED_IN_THIS_TURN",
+    "same_profile_restart": "NOT_REPORTED",
+    "indexeddb_persistent_generation_commit": "NOT_INDEPENDENTLY_VERIFIED",
+    "cross_view_study_quick": "NOT_VERIFIED",
+    "import_merge_existing_card_id_safety": "NOT_VERIFIED"
+  },
+  "release_gates": {
+    "stage4": "PASS_CLOSED_PRIOR",
+    "stage5": "PASS_CLOSED_CONTENT_DELIVERY",
+    "stage6": "PARTIAL_USER_FIELD_SMOKE_ONLY_NOT_FORMAL_PASS",
+    "stage7": "NOT_RUN",
+    "app_release_final": false
+  },
+  "boundaries": {
+    "user_library_not_modified_by_assistant": true,
+    "source_files_unchanged": true,
+    "no_regression_claim_without_evidence": true
+  },
+  "next_action": "Verify app reopen/reload retains 292 imported R163 cards and affected existing library; inspect sample Study/Quick; perform exact-current runtime native browser IDB commit/roundtrip and full Stage6 checks before formal PASS/Stage7. Do not misreport user's successful import as independent Stage6."
+}

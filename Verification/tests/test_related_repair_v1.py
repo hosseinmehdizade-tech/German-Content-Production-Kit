@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Source-bound, negative-guard tests on real Menschen A1 V24 parent bytes."""
 import unittest,sys,pathlib,json,csv,copy,io,os
-ROOT=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'Tools'))
+ROOT=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'Tools' if (ROOT/'Tools').is_dir() else ROOT))
 from repair_verwandt_categories_v1 import load_parent,successor_row,semantic_target_route,norm
 from triage_related_semantics_v1 import triage
 PARENT=pathlib.Path(os.environ.get('GCPK_PARENT_ZIP','/mnt/data/Menschen-A1-V24-COMPLETE-DELIVERY-v505-R141-20261102(1).zip'))

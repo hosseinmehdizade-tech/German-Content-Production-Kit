@@ -240,7 +240,7 @@ def audit(cards, sha256):
                 other.append('EXAMPLE')
             if other:
                 add(cid, 'RELATED_EXACT_CROSS_SECTION_DUPLICATE', 'HIGH', value,
-                    reason='Same German surface in ' + ','.join(other) + '; human-approved teaching delta may allow roles')
+                    reason='Same German surface in ' + ','.join(other) + '; independently evidenced teaching delta may allow roles')
             if len(value.split()) >= 5 and SENTENCE_END.search(value):
                 add(cid, 'SENTENCE_OR_REDEMITTEL_ROLE_REVIEW', 'MEDIUM', value,
                     reason='Sentence-like surface is not sufficient to create/overwrite an example')
@@ -273,8 +273,13 @@ def main(argv=None):
         cards = load_cards(raw, a.input.suffix.lower())
         result = audit(cards, hashlib.sha256(raw).hexdigest())
         if a.output:
+            # Never overwrite an input, existing report, symlink or LOCKED/source artifact.
+            # Exclusive creation makes the guard atomic against pre-existing paths.
+            if a.output.resolve() == a.input.resolve():
+                raise ValueError('OUTPUT_ALIASES_INPUT')
             a.output.parent.mkdir(parents=True, exist_ok=True)
-            a.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            with a.output.open('x', encoding='utf-8') as handle:
+                handle.write(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
         print(json.dumps({'schema': SCHEMA, 'cards': len(cards),
                           'related_items': result['related_items_scanned'],
                           'issues': result['severity_counts'],

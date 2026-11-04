@@ -1,0 +1,65 @@
+{
+  "schema": "gcpk-250-vmp-lexical-enrichment-preflight@1.0.0",
+  "date": "2026-11-04",
+  "scope": "250-Verben-mit-Praepositionen lexical enrichment: Kombinationen, Wortfamilie, Verwandte Wörter",
+  "status": "READONLY_AUDIT_AND_SOURCE_BOUND_STAGE3_PILOT__NO_CARD_MUTATION__NOT_STAGE4_STAGE5_STAGE6_STAGE7",
+  "input": {
+    "private_v17_stage7_zip_sha256": "8f729bd65bf6101007d68911e6bc0c358325a953875ceadceb026333ae5cc7fb",
+    "private_v17_tsv_sha256": "962409aaff9b551a62f9991f8637d59d2acb5ddcc053f043f133906e0a150a23",
+    "original_user_pdf_sha256": "4ba6c979f2350a986f92969cfbcacf1bad4ed0502a79ab3ae8632fd2d87b5560",
+    "private_stage7_receipt": "Architecture/Stage3-Stage4-Unification/250-VERBEN-STAGE7-PRIVATE-RELEASE-v1.7.json",
+    "production_latest": "Workspaces/250-verben-mit-praepositionen-kombinationen-repair1-v336/LATEST.json",
+    "newer_stage7_not_replaced_by_historic_latest": true
+  },
+  "baseline": {
+    "cards": 292,
+    "Kombinationen": {
+      "items": 431,
+      "cards_present": 260,
+      "cards_without": 32
+    },
+    "Wortfamilie": {
+      "items": 98,
+      "cards_present": 98,
+      "cards_without": 194
+    },
+    "legacy_Verwandt": {
+      "items": 87,
+      "all_are_raw_internal_ids": true,
+      "all_targets_exist": true,
+      "same_lexeme_id": 47,
+      "different_lexeme_id": 40
+    },
+    "new_visible_Verwandte_Woerter": {
+      "items": 0
+    },
+    "absence_does_not_imply_mandatory_enrichment": true
+  },
+  "pilot": {
+    "records": 8,
+    "stage3_researched_proposals": 6,
+    "hold": 2,
+    "review_status": "STAGE4_PENDING",
+    "content_import_writes": 0
+  },
+  "policies": [
+    "Prompt/KOMBINATIONEN-SOURCE-FIRST-DIVERSITY-AND-REKTION-OVERLAY-v1.2.0.md",
+    "Prompt/RELATED-SECTIONS-TAXONOMY-POLICY-v1.1.0.md",
+    "Prompt/LEXICAL-RELATION-PRESENTATION-AND-SENSE-POLICY-v1.0.0.md"
+  ],
+  "artifact": {
+    "filename": "250-Verben-Lexical-Enrichment-v1.8-READONLY-PREFLIGHT-20261104.zip",
+    "sha256": "e32f4d7fee23b0cec68a8e64da31319db44070e749eef0848f482480b2fc26d9",
+    "library_stable_id": "libfile_942825c4fa8c8191a6737ea1b1569720",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/250-Verben-mit-Praepositionen/Active-Review/Lexical-Enrichment-v1.8/250-Verben-Lexical-Enrichment-v1.8-READONLY-PREFLIGHT-20261104.zip"
+  },
+  "next": "Resume from exact v1.7 immutable source; evidence/sense audit 87 legacy links and high-value candidates; create editable v1.8 successor only with source-fidelity, itemwise independent Stage4 and relevant projection tests; Stage5+6 current v505 runtime only after content acceptance. Preserve historic v486 private release.",
+  "immutable": [
+    "source PDF",
+    "v1.7 private release",
+    "WIP27 production",
+    "all stable card IDs",
+    "IndexedDB and FSRS",
+    "app UI and Wortnetz graph"
+  ]
+}

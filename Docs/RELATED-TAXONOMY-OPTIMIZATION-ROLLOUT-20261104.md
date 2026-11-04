@@ -9,9 +9,9 @@
 - Active prompt and global lexical policy pointer updated; historical v1.0 retained intact. This is a safe source-policy update, not a full producer adapter rollout or app UI change.
 
 ## Local QA evidence and limits
-- 46/46 source-neutral synthetic unit tests PASS, including 6 corpus-name profiles, negative controls for semantic near matches, sentence-like text, opaque IDs, typed graph conflict, bilingual parsing, malformed TSV/JSON, nonmutation and CLI return codes.
+- 49/49 source-neutral synthetic unit tests PASS, including 6 corpus-name profiles, negative controls for semantic near matches, sentence-like text, opaque IDs, typed graph conflict, bilingual parsing, malformed TSV/JSON, nonmutation and CLI return codes.
 - Real **read-only** fixture: source-derived Menschen A1 V25-R1 TSV (2997 cards) from Library-authenticated archive ZIP SHA256 `46d741a88e596f9c9b2bccc6a89fb2a3f42389ff6a3b091b313a2a61eac46e42`; extracted TSV unchanged and scanned in local sandbox. 973 related items; 1 HIGH exact duplicate surface in related+combination (`ma1m-lu-0913`, `internationaler Flughafen`) and 31 MEDIUM sentence-like flags. These are **advisory signals**, not a linguistic verdict, not edits, not baseline corrections. No data mutations, no Stage4 PASS.
-- Exact source currentness, independent human linguistics, actual app CURRENT/Stage6, full all-adapter consumer parity and GitHub CI across OS are **not verified** by this local diagnostic. Source adapter-specific mapping beyond canonical target schema needs per-workstream integration proof.
+- Exact source currentness, independent linguistic review, actual app CURRENT/Stage6, full all-adapter consumer parity and GitHub CI across OS are **not verified** by this local diagnostic. Source adapter-specific mapping beyond canonical target schema needs per-workstream integration proof.
 
 ## Rollout contract
 1. Producers read the v1.1 policy during existing one-pass lexical authoring; use `VERIFIED_PRESENT`, documented `CLOSED_NO_FORCE`, `NOT_APPLICABLE` or `HOLD` rather than forcing a relation.

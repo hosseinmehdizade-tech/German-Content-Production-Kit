@@ -1,11 +1,11 @@
-# Aspekte B1+ — independent project definition
+# Aspekte B1+ — independent, definition LOCKED / Stage1 initiated
 
-**Source policy confirmed by user on 2026-11-04:** only the uploaded Memrise-style CSV, hash `09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1`, is the authoritative lexical inventory. The printed publisher Aspekte book is **out of scope**: do not request or compare it; do not claim official publisher book completeness. Scope is 1548 source rows / 10 lessons for this project alone.
+**2026-11-04:** The user's exact CSV remains the SOLE lexical source. No publisher-book lookup and no cross-level merging. **Definition v1.0 is LOCKED** by the user's explicit request; content-production start is now authorized.
 
-**Phase:** definition being completed; this is not a content-production stage. Stage1–Stage7 are all NOT_STARTED; `production_authorized=false`. Earlier provisional Stage1 analysis remains NONAUTHORITATIVE.
+**Current gate:** Stage1 **INITIATED but BLOCKED**: the raw CSV bytes are not in the accessible Library Source folder or current conversation. Historic checkpoint counts remain 1548 B1+ rows / 10 lessons / 1541 distinct headword strings; no fresh parsing or SHA check of original CSV has occurred, and zero new cards have been produced. Stage2–7 NOT STARTED. Never claim import ready or final.
 
-**Two independent workstreams:** `aspekte-b1plus` never merges with the other level. Independent IDs, checkpoints, Library paths, QA and final content ZIP. Shared raw CSV hash does not authorize cross-level deduplication.
+Source SHA256: `09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1`. Original filename: `aspekte-b1b2 [5791881]_(3275)(1).csv`. Raw Progress and Learnable meta must never be in Git.
 
-**Portable updated project definition**: `Aspekte-B1plus-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip` SHA256 `8a9203b456b5113de73a70c610f31f3614da2e9be170d5fe739dc42b1bc52d00`, Library `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Checkpoints/Aspekte-B1plus-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip` ID `libfile_c72841dfe3d481919d1c9540705d6bf0`, exact-byte readback verified.
+Dedicated Library baseline ZIP: `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Current/Aspekte-B1plus-Definition-LOCKED-Stage1-STARTED-20261104.zip` SHA256 `7c231bf1b295b3a0b48e9e1fba357c747cc05bcfc407f0de525d9c9900b216dd` (Library ID `libfile_1523ac06a3b48191bfa198d2bcb1c9ea`; upload confirmed, readback pending). This package includes the full finalized project contract, independent instructions, lesson map, strict Stage1 execution script, manifests, QA/report and checkpoint, **not a content release**.
 
-**Next:** finish definition without touching textbook or producing cards, then explicitly start Stage1. ChatGPT's native project workspace UI must be created by the user using the independent Instructions in this ZIP. Existing Flashcards app runtime/UI unchanged.
+No modifications to other level workstreams, app runtime, source records, SRS or previously LOCKED assets. Next gate: independently obtain original CSV, validate SHA and exact row counts, then run Stage1.

@@ -37,7 +37,7 @@ Also accepts an explicitly normalized JSON object `{ "cards": [ { "id": "...", "
 - `MEDIUM` *review opportunities*: sentence-like related text or an established exact typed target whose section should be reviewed; never automatic moves.
 - malformed JSON, duplicate JSON keys, duplicate IDs or unsafe structures → **error** and no content output.
 
-Default diagnostic **exit 0 despite findings** to avoid false Stage4 approval/block. `--fail-on-high` optionally returns 1 for a *separately opt-in per-workstream* CI preflight; invalid input returns 2. It does not award Stage3C, Stage4, Stage5, Stage6 or Stage7 PASS; no user data or source can be mutated. Exact duplicate/opaque IDs are machine flags; correctness of German meanings, source locators and translations still needs independent risk-based Stage4.
+Default diagnostic **exit 0 despite findings** to avoid false Stage4 approval/block. `--fail-on-high` optionally returns 1 for a *separately opt-in per-workstream* CI preflight; invalid input returns 2. Report output is exclusive write-once: existing files, aliases of the source file and symlink targets are rejected. It does not award Stage3C, Stage4, Stage5, Stage6 or Stage7 PASS; no user data or source can be mutated. Exact duplicate/opaque IDs are machine flags; correctness of German meanings, source locators and translations still needs independent risk-based Stage4.
 
 No broad mandatory production CI rollout until each active adapter's schema compatibility, known healthy sample, source SHA, non-empty finding attribution and negative controls are verified. To avoid rebuilding per-card ZIPs, reuse the one-pass ledger + one compact advisory report at reviewable milestones.
 

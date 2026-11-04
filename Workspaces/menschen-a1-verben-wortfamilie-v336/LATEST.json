@@ -2,8 +2,8 @@
   "schema": "gcpk-wortfamilie-workstream-latest@1.0.0",
   "workstream": "menschen-a1-verben-wortfamilie-v336",
   "date": "2026-11-02",
-  "status": "CONTENT_RC1_TECHNICAL_STAGE5_PREFLIGHT_PASS__STAGE4_FORMAL_AND_STAGE6_STAGE7_PENDING_NOT_FINAL",
-  "latest_milestone": "CONTENT_RC1_ONE_PORTABLE_HANDOFF_310_IMPORT_PREFLIGHT_PASS_214_WORDFAMILIE_ONLY_DELTA",
+  "status": "STAGE4_R04_RISK_BASED_PASS__STAGE5_HF2_BLOCKED__STAGE6_STAGE7_NOT_FINAL",
+  "latest_milestone": "STAGE4_R04_FORMAL_ACCEPTANCE_RECONCILED_2026_11_04",
   "checkpoint": "Workspaces/menschen-a1-verben-wortfamilie-v336/CHECKPOINT.json",
   "artifact": {
     "name": "Menschen-A1-Verben-Wortfamilie-CONTENT-RC1.zip",
@@ -33,11 +33,11 @@
     "real_record_mutation_negative_controls": 10,
     "original_final_immutable_sha256": "adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06"
   },
-  "stage4": "SCOPED_WORDFAMILIE_DELTA_EVIDENCE_PASS_FORMAL_FULL_PENDING",
-  "stage5": "PASS_TECHNICAL_CONTENT_ONLY_PREFLIGHT_NOT_FORMAL",
-  "stage6": "NOT_RUN_BROWSER_IMPORT__SOURCE_PREFLIGHT_PASS",
+  "stage4": "PASS_RISK_BASED_STAGE4",
+  "stage5": "BLOCKED_OFFICIAL_HF2_R04_247_VERB_FRONT_ERRORS__TECHNICAL_PREFLIGHT_ONLY",
+  "stage6": "NOT_RUN_EXACT_CURRENT_BROWSER_INDEXEDDB",
   "stage7": "NOT_FINAL",
-  "next_action": "Obtain exact CURRENT runtime package/full tree in a permitted browser environment and run native import, IDB persistence/reopen and Study/Quick presentation QA; Stage4/5 formal acceptance remains separately required. RC1 artifact unchanged.",
+  "next_action": "Stage4 is formally accepted on exact R04. Stage5 separate blocker: 247 VERB_FRONT_NOT_CANONICAL_DISPLAY errors; make distinct editable successor preserving source/IDs, rerun Stage5 then Stage6/7. Do not modify LOCKED or assume app acceptance.",
   "parent_final_immutable": true,
   "legacy_lexical_repair_LATEST": "STALE_ROUND4_NOT_WORDFAMILIE_AUTHORITY",
   "stage6_source_preflight": {
@@ -196,8 +196,8 @@
     },
     "neutral_import_tsv_json": "PASS",
     "deterministic_negative_controls": 10,
-    "stage4_formal": "PENDING_GATE",
-    "stage5_formal": "PENDING",
+    "stage4_formal": "PASS_RISK_BASED_STAGE4",
+    "stage5_formal": "BLOCKED_247_VERB_FRONT_NOT_CANONICAL_DISPLAY",
     "stage6": "NOT_RUN",
     "stage7": "NOT_FINAL",
     "next_batch": null,
@@ -327,7 +327,7 @@
     "release_holds": [
       {
         "kind": "FORMAL_STAGE4",
-        "status": "OPEN",
+        "status": "CLOSED_BY_R04_OFFICIAL_GATE",
         "reason": "Risk based official gate not passed on R03 exact SHA"
       }
     ],
@@ -440,9 +440,8 @@
       "status": "PASS_ALL_310_COVERED_1280_ITEMS_NOT_FINAL"
     },
     "next_phase": {
-      "id": "STAGE4_RISK_BASED_AI_ADVERSARIAL_CONTINUATION",
-      "selected_remaining": 173,
-      "original_batch_complete": true
+      "id": "STAGE5_HF2_FRONT_GATE_REPAIR",
+      "stage4_completed": true
     },
     "stage4_revision": "R04",
     "stage4_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R03-2026-11-03-287-LEGACY-RELATION-LOCALIZATION.json",
@@ -469,7 +468,8 @@
         "id": "ma1m-lu-2607",
         "status": "SENSE_MORPHOLOGY_REPAIRED_R01_RAW_SOURCE_PRESERVED_FORMAL_GATE_PENDING"
       }
-    ]
+    ],
+    "stage4_acceptance_receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R04-2026-11-04-FORMAL-ACCEPTANCE-RECONCILIATION.json"
   },
   "active_content_wip": {
     "schema": "gcpk-menschen-a1-verben-active-enrichment@1.0.0",
@@ -532,8 +532,8 @@
     },
     "neutral_import_tsv_json": "PASS",
     "deterministic_negative_controls": 10,
-    "stage4_formal": "PENDING_GATE",
-    "stage5_formal": "PENDING",
+    "stage4_formal": "PASS_RISK_BASED_STAGE4",
+    "stage5_formal": "BLOCKED_247_VERB_FRONT_NOT_CANONICAL_DISPLAY",
     "stage6": "NOT_RUN",
     "stage7": "NOT_FINAL",
     "next_batch": null,
@@ -663,7 +663,7 @@
     "release_holds": [
       {
         "kind": "FORMAL_STAGE4",
-        "status": "OPEN",
+        "status": "CLOSED_BY_R04_OFFICIAL_GATE",
         "reason": "Risk based official gate not passed on R03 exact SHA"
       }
     ],
@@ -776,9 +776,8 @@
       "status": "PASS_ALL_310_COVERED_1280_ITEMS_NOT_FINAL"
     },
     "next_phase": {
-      "id": "STAGE4_RISK_BASED_AI_ADVERSARIAL_CONTINUATION",
-      "selected_remaining": 173,
-      "original_batch_complete": true
+      "id": "STAGE5_HF2_FRONT_GATE_REPAIR",
+      "stage4_completed": true
     },
     "stage4_revision": "R04",
     "stage4_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R03-2026-11-03-287-LEGACY-RELATION-LOCALIZATION.json",
@@ -805,14 +804,15 @@
         "id": "ma1m-lu-2607",
         "status": "SENSE_MORPHOLOGY_REPAIRED_R01_RAW_SOURCE_PRESERVED_FORMAL_GATE_PENDING"
       }
-    ]
+    ],
+    "stage4_acceptance_receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R04-2026-11-04-FORMAL-ACCEPTANCE-RECONCILIATION.json"
   },
   "latest_enrichment_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/B011-2026-11-03-ENRICHMENT-MILESTONE.json",
   "active_stage4_qa": {
     "schema": "gcpk-a1-verben-stage4-active-review@1.0.0",
     "revision": "R04",
-    "status": "R04_CURRENT_SHA_AND_LIBRARY_READBACK_VERIFIED__FORMAL_STAGE4_GATE_PENDING",
-    "milestone_receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R03-2026-11-03-287-LEGACY-RELATION-LOCALIZATION.json",
+    "status": "PASS_RISK_BASED_STAGE4__R04_EXACT_SOURCE",
+    "milestone_receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R04-2026-11-04-FORMAL-ACCEPTANCE-RECONCILIATION.json",
     "parent_batch": "B011",
     "parent_tsv_sha256": "0168c46c18a278b6a63b7c54e3534ec3ebab432a3d59438328d16ca4e40616d2",
     "tsv": {
@@ -835,14 +835,14 @@
     "original_unchanged": true,
     "library_readback": "PASS_TSV_JSON_EXACT_SHA256",
     "stratified_sample_selected": 216,
-    "scoped_semantically_reviewed": 43,
-    "pending_sample_reviews": 173,
-    "formal_stage4": "PENDING_OFFICIAL_GATE_WITH_EXACT_CURRENT_SHA",
-    "stage5": "PENDING",
+    "scoped_semantically_reviewed": 216,
+    "pending_sample_reviews": 0,
+    "formal_stage4": "PASS_RISK_BASED_STAGE4",
+    "stage5": "BLOCKED_247_VERB_FRONT_ERRORS",
     "stage6": "NOT_RUN",
     "stage7": "NOT_FINAL",
     "next": {
-      "id": "OFFICIAL_STAGE4_RISK_GATE_R04",
+      "id": "STAGE5_HF2_FRONT_MORPHOLOGY_REPAIR",
       "source_sha256": "e6c55a7ea5bc1c34517d93486d27d2d21919744dc5d6a5f3388f2d68ce2f79ed"
     },
     "parent_R01": {
@@ -872,7 +872,7 @@
     "gate_holds": [
       {
         "kind": "OFFICIAL_STAGE4_RISK_GATE_NOT_RUN",
-        "status": "OPEN"
+        "status": "CLOSED_BY_R04_GATE_2026_11_04"
       },
       {
         "kind": "STAGE6_BILINGUAL_GRAPH_DISPLAY_UNTESTED",
@@ -896,9 +896,13 @@
       "updated_related_labels": 75,
       "linked_target_id_verified": true,
       "canonical_relation_graph_unchanged": true
-    }
+    },
+    "selected_sample_reviewed": 216,
+    "reviewed_example_samples": 480,
+    "reviewed_combo_samples": 176,
+    "direct_AI_card_notes": 78
   },
-  "latest_stage4_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R03-2026-11-03-287-LEGACY-RELATION-LOCALIZATION.json",
+  "latest_stage4_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R04-2026-11-04-FORMAL-ACCEPTANCE-RECONCILIATION.json",
   "stage4_r02_audit": {
     "schema": "gcpk-a1-verben-stage4-r02-audit-pointer@1.0.0",
     "status": "R02_SCOPED_SAMPLE_DOCUMENTED__LIBRARY_SYNC_PENDING__FORMAL_STAGE4_NOT_PASS",
@@ -944,7 +948,7 @@
     "no_app_ui_mutation": true
   },
   "stage4_r04_current": {
-    "status": "VERIFIED_LIBRARY_GIT_CURRENT",
+    "status": "VERIFIED_LIBRARY_GIT_CURRENT__FORMAL_STAGE4_PASS",
     "tsv": {
       "library_file_id": "libfile_5c37ffe27b6881918ecd3d40849ca105",
       "path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben/Current/Menschen-A1-Verben-CURRENT-WIP.tsv",
@@ -956,7 +960,25 @@
       "sha256": "332817f35badd7f686074d970fa7378e63f827f12cbcaf2292ec6bcb5ea0314f"
     },
     "readback": "PASS_EXACT_2_OF_2",
-    "gate": "NOT_YET_RUN",
-    "date": "2026-11-03"
+    "gate": "PASS_RISK_BASED_STAGE4",
+    "date": "2026-11-03",
+    "receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R04-2026-11-04-FORMAL-ACCEPTANCE-RECONCILIATION.json"
+  },
+  "stage4_r04_formal_acceptance": {
+    "status": "PASS_RISK_BASED_STAGE4",
+    "date": "2026-11-04",
+    "receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE4-R04-2026-11-04-FORMAL-ACCEPTANCE-RECONCILIATION.json",
+    "official_gate_sha256": "540dc4c88abff17d4b8458b20a7a40c38981750141d7e537e0c4a8473d4922dc",
+    "working_tsv_sha256": "e6c55a7ea5bc1c34517d93486d27d2d21919744dc5d6a5f3388f2d68ce2f79ed",
+    "reviewed_card_samples": 216,
+    "reviewed_example_samples": 480,
+    "reviewed_combo_samples": 176,
+    "risk_ids": 369,
+    "mutation_tests": "PASS_14_OF_14",
+    "source_membership_check": "PASS",
+    "zip_sha256": "44c4b9f9d4b23ef08c897ee1f8dfb379b4fa6c9b3914b992a0f514e9691e2482",
+    "stage5": "BLOCKED_247_VERB_FRONTS",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL"
   }
 }

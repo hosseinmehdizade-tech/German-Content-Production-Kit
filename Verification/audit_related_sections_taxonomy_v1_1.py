@@ -100,6 +100,10 @@ def examples_de(source):
 def normalize_card(card):
     if not isinstance(card, dict):
         raise ValueError('CARD_NOT_OBJECT')
+    # Stage3 decision ledgers and raw Canonical records are NOT projected cards.
+    # Their missing visible fields must fail closed instead of yielding zero related items.
+    if not ('front' in card or 'headword' in card) or 'details' not in card or 'examples' not in card:
+        raise ValueError('NOT_LEARNER_PRESENTATION_SCHEMA')
     cid = card.get('id', card.get('card_id'))
     if not isinstance(cid, str) or not cid.strip():
         raise ValueError('MISSING_CARD_ID')

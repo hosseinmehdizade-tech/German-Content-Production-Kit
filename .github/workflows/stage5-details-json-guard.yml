@@ -1,0 +1,40 @@
+name: Stage5 Details JSON Fail-Closed Guard
+on:
+  push:
+    paths:
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - 'Verification/tests-v3.3.6/test_stage5_details_json_shape_guard.py'
+      - 'Tools/build_clean_delivery.py'
+      - '.github/workflows/stage5-details-json-guard.yml'
+  pull_request:
+    paths:
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - 'Verification/tests-v3.3.6/test_stage5_details_json_shape_guard.py'
+      - 'Tools/build_clean_delivery.py'
+      - '.github/workflows/stage5-details-json-guard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage5-details-shape:
+    name: Stage5 details JSON + actual builder (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile validator and tests
+        run: >-
+          python -B -m py_compile
+          Verification/validate_unified_vocabulary_projection_v1_1_0.py
+          Verification/tests-v3.3.6/test_stage5_details_json_shape_guard.py
+      - name: Confirm fail-closed details shape and real clean Stage5 builder
+        run: python -B -m unittest discover -s Verification/tests-v3.3.6 -p test_stage5_details_json_shape_guard.py -v

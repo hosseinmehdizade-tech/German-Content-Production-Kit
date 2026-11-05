@@ -1,0 +1,39 @@
+name: GFP-OPT P1 Source-owner Stage5 Intake — No False Adoption
+on:
+  pull_request:
+    paths:
+      - 'Optimization-Program/Control-Center/P1-NEXT-NATIVE-STAGE5-OWNER-INTAKE-20261105.json'
+      - 'Verification/verify_p1_next_native_owner_intake_v1.py'
+      - 'Verification/tests/test_p1_next_native_owner_intake_v1.py'
+      - '.github/workflows/gfp-opt-p1-next-native-owner-intake.yml'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Workspaces/nomen-verb-verbindungen/B01-STAGE7-USER-ACCEPTED-CONTENT-RELEASE-20261105.json'
+      - 'Workspaces/menschen-a2-24-lessons-v336/C3-USER-SCOPED-A2-ONLY-140-A1-REFERENCES-EXCLUDED-2026-11-05.json'
+      - 'Workspaces/aspekte-b1plus-v336/Reports/L01-STAGE3-13-NEW-CANDIDATES-RECEIPT-20261105.json'
+      - 'Workspaces/aspekte-b2-v336/Reports/STAGE2-L03-R16-66-TARGETED-SECOND-PASS-20261105.json'
+      - 'Workspaces/aspekte-c1-v336/04-qa/STAGE1-183-COMPOUND-65-SCOPED-9-HOLDS-20261105.json'
+      - 'Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1/STAGE5-R8-OFFICIAL-CLEAN-DELIVERY-2026-11-05.json'
+      - 'Workspaces/aber-hallo-listen-tabellen/104-stage7-final-content-handoff/FINAL-CONTENT-RELEASE-RECEIPT-20261105.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owner-intake:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout exact PR source owners
+        uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify seven real Git source-owner checkpoint states and adoption HOLD
+        run: python -B Verification/verify_p1_next_native_owner_intake_v1.py
+      - name: Run forged-adoption and stale-source negative tests
+        run: python -B -m unittest discover -s Verification/tests -p test_p1_next_native_owner_intake_v1.py -v

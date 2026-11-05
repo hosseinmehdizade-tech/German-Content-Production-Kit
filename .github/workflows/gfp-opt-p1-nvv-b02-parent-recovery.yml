@@ -1,0 +1,35 @@
+name: GFP-OPT P1 NVV B02 Read-only Parent Recovery Truth
+on:
+  pull_request:
+    paths:
+      - 'Optimization-Program/Verification/P1-NVV-B02-READONLY-PARENT-BASELINE-LIBRARY-RECOVERY-20261105.json'
+      - 'Verification/verify_p1_nvv_b02_readonly_recovery_v1.py'
+      - 'Verification/tests/test_p1_nvv_b02_readonly_recovery_v1.py'
+      - '.github/workflows/gfp-opt-p1-nvv-b02-parent-recovery.yml'
+      - 'Workspaces/nomen-verb-verbindungen/B02-SOURCE-FIRST-RECOVERY-20261105.json'
+      - 'Workspaces/nomen-verb-verbindungen/B01-STAGE5-NATIVE-CLEAN-DELIVERY-PASS-20261105.json'
+      - 'Workspaces/nomen-verb-verbindungen/B01-STAGE7-USER-ACCEPTED-CONTENT-RELEASE-20261105.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-source-proof:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify owner Stage3 missing file and source pins without false Stage4 approval
+        run: python -B Verification/verify_p1_nvv_b02_readonly_recovery_v1.py
+      - name: Reject fake Stage4, lost original restoration, checksum and Library receipt promotions
+        run: python -B -m unittest discover -s Verification/tests -p test_p1_nvv_b02_readonly_recovery_v1.py -v
+      - name: Truth boundary
+        run: |
+          echo "This CI verifies Git source-owner and scoped receipt metadata only."
+          echo "Real Library ZIP bytes were independently rematerialized and checked outside CI."
+          echo "Original lost B02 Stage3 working JSON was NOT restored; Stage4 and P1 ADOPTED remain open."

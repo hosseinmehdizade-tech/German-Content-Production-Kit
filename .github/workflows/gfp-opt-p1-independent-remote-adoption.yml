@@ -1,0 +1,49 @@
+name: GFP-OPT P1 Independent Remote Adoption Readback
+on:
+  push:
+    paths:
+      - 'Verification/verify_remote_policy_adoption_v1.py'
+      - 'Verification/tests/test_remote_policy_adoption_v1.py'
+      - 'Verification/verify_governed_source_adoption_v1.py'
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - '.github/workflows/gfp-opt-p1-independent-remote-adoption.yml'
+  pull_request:
+    paths:
+      - 'Verification/verify_remote_policy_adoption_v1.py'
+      - 'Verification/tests/test_remote_policy_adoption_v1.py'
+      - 'Verification/verify_governed_source_adoption_v1.py'
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - '.github/workflows/gfp-opt-p1-independent-remote-adoption.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  remote-readback-attacks:
+    name: Independent bytes and false-adoption controls (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild native Stage5 synthetic fixtures and simulate remote GitHub/Library evidence
+        run: python -B -m unittest discover -s Verification/tests -p test_remote_policy_adoption_v1.py -v
+      - name: Prohibit false actual remote proof
+        shell: bash
+        run: |
+          echo "CI uses simulated GitHub API and a separate synthetic local Library copy."
+          echo "No authenticated Library-provider retrieval, real source CURRENT, live browser or Stage4-7 certification is performed."
+          echo "Even real GitHub and Library byte agreement never grants ADOPTED without source-owner and semantic/stage evidence."

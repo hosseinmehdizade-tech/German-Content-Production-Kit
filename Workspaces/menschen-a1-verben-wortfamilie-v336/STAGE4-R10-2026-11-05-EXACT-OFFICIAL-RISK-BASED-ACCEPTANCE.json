@@ -1,0 +1,69 @@
+{
+  "schema": "gcpk-a1-verben-r10-exact-official-stage4-acceptance@1.0.0",
+  "date": "2026-11-05",
+  "workstream": "menschen-a1-verben-wortfamilie-v336",
+  "status": "PASS_RISK_BASED_STAGE4_EXACT_R10_CANDIDATE_BYTES__STAGE5_STAGE6_STAGE7_NOT_FINAL",
+  "evidence_boundary": "Official gate confirms admissibility of evidence, not proof of linguistic perfection, blanket itemwise semantic re-review, native app import or promotion of the old R04 Library CURRENT-WIP.",
+  "authority": {
+    "registered_original_source_sha256": "a78967f52871447693638d0e160b5dc7d5e0e40dd4bc1c7c0ffeefa32e81ec10",
+    "r04_previous_current_tsv_sha256": "e6c55a7ea5bc1c34517d93486d27d2d21919744dc5d6a5f3388f2d68ce2f79ed",
+    "r04_formal_gate": "PASS_RISK_BASED_STAGE4",
+    "r08_user_approved_four_form_front": true,
+    "r09_prior_tsv_sha256": "f425824691960f41e56c47d8f814325586f66b83ecae684a3db50cd00ca63349",
+    "r10_exact_tsv_sha256": "6f75cf9eadfe747dec406502293c2856a59f5176d9cf0d38facb23fe70a0c025",
+    "r10_exact_json_sha256": "49c1eebb9ae6bcc9118b971ec8b1c11163074f6e3953e565b062ce19ba51f6fc",
+    "source_original_locked_or_user_srs_changed": false,
+    "library_r04_current_wip_overwritten": false
+  },
+  "official": {
+    "tool": "Verification/RiskBasedStage4/risk_based_stage4_gate.py",
+    "git_blob_sha1": "a00ea610641a376c5514bc9597eaca0bb43dc3ce",
+    "policy": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json",
+    "both_files_compared_byte_exact_to_git_blob": true,
+    "command": "python3 risk_based_stage4_gate.py --policy STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json --receipt R10-RISK-BASED-STAGE4-REVIEW-RECEIPT.json --current-bytes R10-exact-authority.tsv --output R10-RISK-BASED-STAGE4-OFFICIAL-GATE-RESULT.json",
+    "result": "PASS_RISK_BASED_STAGE4",
+    "blockers": [],
+    "risk_ids": 383,
+    "risk_dispositions": 21,
+    "expected_family_coverage": 362,
+    "lessons_or_content_strata": 22,
+    "independent_negative_controls": "PASS_10_OF_10_OFFICIAL_GATE_REJECTED",
+    "hf2_front": "PASS_TSV_JSON_310_CARDS",
+    "neutral_projection": "PASS_TSV_JSON_310_CARDS"
+  },
+  "dependency": {
+    "R04_R10_full_population_cards": 310,
+    "unchanged_example_records": 1240,
+    "unchanged_visible_Kombinationen_and_Kollokationen": 2702,
+    "unchanged_r04_legacy_fa_localizations": 287,
+    "r09_to_r10_changed_cards": 14,
+    "r10_15_semantic_findings_reviewed": 15,
+    "semantic_dispositions": "13 cross-section dual roles retained with sense reasons, 2 klangvoll entries consolidated to one",
+    "r04_inherited_scanner_flags": 369,
+    "added_r10_risk_flags": 14,
+    "method": "Old risk families adopted only where actual R10 source/card text and relations were independently compared to exact accepted R04; selected new SHA-bound family reps: 29 + 8. New deterministic 22-stratum R10-sampled dependency check. Low-risk inherited source facts were not newly itemwise human-reviewed.",
+    "original_stratum_mismatch_note": "R04 historical A1-L01 17 vs R10 exact source tags 16, R04 A1-L13 13 vs R10 exact source tags 14. Same whole 310-card universe; current sample strata counted directly from R10 tags. Source occurrence lesson field generic; no source content alteration."
+  },
+  "handoff": {
+    "filename": "Menschen-A1-Verben-R10-STAGE4-FORMAL-PASS-CONTENT-HANDOFF-20261105.zip",
+    "sha256": "f134aa9b555132360072035de3cb894ae17a11bfa3001eda9a237b7765379655",
+    "bytes": 6967645,
+    "members": 86,
+    "manifest_payloads": 84,
+    "library_file_id": "libfile_d2d1f626727c8191854e7292b9e88560",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben/Checkpoints/Menschen-A1-Verben-R10-STAGE4-FORMAL-PASS-CONTENT-HANDOFF-20261105.zip",
+    "library_readback": "PASS_EXACT_BYTES_SHA256_CRC",
+    "self_verifier": "PASS_310_R10_CARDS_14_SCOPED_CHANGED_1228_LEXICAL_RELATIONS",
+    "content_unchanged_from_preacceptance_r10": true,
+    "historical_pre_stage4_zip_sha256": "bd6ff7bcc247570d7f22adadfac2527a435f740ceeeec894c6f4f534ba56411e"
+  },
+  "gate_state": {
+    "stage4_r04": "PASS_PREVIOUS_R04",
+    "stage4_r10": "PASS_RISK_BASED_STAGE4_EXACT_R10_CANDIDATE",
+    "stage5": "NOT_FINAL__FORMAL_SOURCE_AGNOSTIC_COMPOSITE_PENDING",
+    "stage6": "NOT_RUN_CURRENT_APP_NATIVE_IMPORT",
+    "stage7": "NOT_FINAL",
+    "content_r10_staged_accepted_but_not_written_over_r04_current": true
+  },
+  "next_action": "Use exact R10 Stage4-accepted handoff for formal Stage5 v3.3.6 composite anti-bypass, source/1280 overlay, visible combinations policies. Run exact-current app runtime Stage6 only after Stage5 accepted; do not import to production or change SRS. Do not claim Stage7 until verified."
+}

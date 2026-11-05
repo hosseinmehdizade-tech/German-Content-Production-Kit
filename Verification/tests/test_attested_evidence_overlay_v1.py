@@ -236,10 +236,19 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
 
     def test_aber_hallo_same_git_blob_but_wrong_latest_zip_blocks(self):
         docs = copy.deepcopy(self.receipts)
-        p = self.reg["records"][-1]["latest_path"]
+        record = self.reg["records"][-1]
+        p = record["latest_path"]
         docs[p]["authority"]["current_portable"]["sha256"] = "0" * 64
-        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_LATEST_ARTIFACT_DISAGREES_WITH_RECEIPT"):
-            self.outcome(docs=docs)
+        if self.idx.get(p) == record["latest_git_blob_at_readback"]:
+            with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_LATEST_ARTIFACT_DISAGREES_WITH_RECEIPT"):
+                self.outcome(docs=docs)
+        else:
+            # A newer real workstream LATEST supersedes this dated WIP92 receipt.
+            # Never fetch/promote stale WIP92 as CURRENT, even with a forged copy.
+            result = self.outcome(docs=docs)
+            row = self.anchor(result)
+            self.assertIn("REVERIFY_BEFORE_RESUME", row["git_pointer_relation"])
+            self.assertFalse(row["current_user_source_automatically_resolved"])
 
     def test_aber_hallo_no_binary_reread_in_ci(self):
         row = self.anchor(self.outcome())

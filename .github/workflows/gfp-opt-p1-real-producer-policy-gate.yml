@@ -1,0 +1,45 @@
+name: GFP-OPT P1 Real Producer Policy Gate (synthetic CI)
+on:
+  push:
+    paths:
+      - 'Verification/verify_global_policy_real_producers_v1.py'
+      - 'Verification/tests/test_global_policy_real_producers_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-NEUTRAL-STAGE5-REAL-PRODUCERS-v1.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - '.github/workflows/gfp-opt-p1-real-producer-policy-gate.yml'
+  pull_request:
+    paths:
+      - 'Verification/verify_global_policy_real_producers_v1.py'
+      - 'Verification/tests/test_global_policy_real_producers_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-NEUTRAL-STAGE5-REAL-PRODUCERS-v1.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - '.github/workflows/gfp-opt-p1-real-producer-policy-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-policy-binding:
+    name: Exact central policy gate and attacks (synthetic, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact pinned producer/projection contract attacks
+        run: python -B -m unittest discover -s Verification/tests -p test_global_policy_real_producers_v1.py -v
+      - name: Explicitly prevent promotion from synthetic workflow
+        shell: bash
+        run: |
+          echo "GFP-OPT P1 CI: structural policy binding and synthetic adversarial tests only."
+          echo "Real native producer ZIPs stay in the private Library and are NOT present on this runner."
+          echo "No Stage4, Stage5 release, Stage6, Stage7, app CURRENT or 34/34 adoption is certified."

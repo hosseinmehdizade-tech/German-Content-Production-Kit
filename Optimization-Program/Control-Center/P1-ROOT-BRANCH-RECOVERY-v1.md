@@ -1,4 +1,4 @@
-# GFP-OPT P1 — Four branch-qualified root checkpoint discoveries, one grammar HOLD
+# GFP-OPT P1 — Five branch-qualified root checkpoint discoveries — Grammar native schema recovered, CURRENT held
 
 **Program:** German Flashcards — Continuous Optimization Program (`GFP-OPT-2026`)  
 **Manager:** Project Control Center  
@@ -14,9 +14,9 @@ The previous central dashboard reported five `ROOT_CHECKPOINT_UNTRACKED` paths. 
 | 250 Verben Kombinationen | `250-verben-mit-praepositionen-kombinationen-v336` | `677b51fa426052790be9d92dabea10a8049c2fc2` | Historic LOCKED source release checkpoint reachable, **no reissue of FINAL** |
 | Nomen-Verb-Verbindungen | `nvv-production` | `03eb899e8f46ec27ceb79eb540a0bbc70f534401` | **Old** branch checkpoint reachable; its `updated_at` is **October 7, 2026**, so do NOT mark current |
 | Unregelmäßige Verben Kombinationen | `unregelmaessige-verben-v130-kombinationen` | `edb1b4e223effd3bdc305646a10e80d055ec9b21` | Historic v1.3.0 branch content reachable, never replace independent newer v1.3.1 work |
-| Grammatik aktiv A1–C1 | **No exact branch candidate independently found** | — | Keep source-owner Checkpoint **HOLD**; both Grammar Aktiv source PDF registrations remain separate |
+| Grammatik aktiv A1–C1 | `grammar-aktiv-a1-c1-production` | `c69844e956929d99e4c092f07ef901d9576094ca` | Historical native `dataset_id` and nested Stage7 `PASS_WITH_ENVIRONMENT_BOUNDARY` evidence; NOT CURRENT, no new source PDF or Stage QA certification |
 
-Paths and source families are anchored in [`RESUME-ROUTES.json`](../RESUME-ROUTES.json) and the [master catalog](MASTER-PROJECT-CATALOG-v1.json). The machine-readable [branch evidence registry](ROOT-CHECKPOINT-BRANCH-CANDIDATES-v1.json) records these four exact historical Git blob SHA1s, owning workstreams and the one grammar HOLD. It does **not** rewrite `RESUME-ROUTES.json` or the root `PROJECT-STATE.json`.
+Paths and source families are anchored in [`RESUME-ROUTES.json`](../RESUME-ROUTES.json) and the [master catalog](MASTER-PROJECT-CATALOG-v1.json). The machine-readable [branch evidence registry](ROOT-CHECKPOINT-BRANCH-CANDIDATES-v1.json) records these five exact historical Git blob SHA1s and source-owner identifiers, including Grammar's different nested Stage7 schema. It does **not** rewrite `RESUME-ROUTES.json` or the root `PROJECT-STATE.json`.
 
 ### Important NEW NVV freshness conflict
 
@@ -34,13 +34,13 @@ The ZIP itself has **not** been downloaded, hashed, unzipped or approved in this
 
 1. Read the registry, current source identities, root routes and version-pinned Git index blobs. Require exact coverage of all five root keys.
 2. Read `GitHub main` HEAD and its exact **five checkpoint paths** at immutable commit SHA. Paths being present means the old root warning has changed and needs reevaluation.
-3. For each of four branch witnesses, independently resolve its **branch HEAD**, read exact same-path `CHECKPOINT.json` at immutable branch commit, verify Git Contents API SHA, decoded content's true Git-blob SHA1, length, named workstream owner, versioned historical status and expected witness blob.
+3. For each of five branch witnesses, independently resolve its **branch HEAD**, read exact same-path `CHECKPOINT.json` at immutable branch commit, verify Git Contents API SHA, decoded content's true Git-blob SHA1, length, named workstream owner, versioned historical status and expected witness blob.
 4. Resolve that branch HEAD again. If changed in mid-read, refuse the old witness as current. Also recheck `main` HEAD at the end.
-5. Emit an **exclusive**, external JSON receipt, with each root tagged `PASS_BRANCH_QUALIFIED_CHECKPOINT_BLOB_EXISTS__NOT_CURRENT`, a review/drift status, or `NO_BRANCH_CANDIDATE__SOURCE_OWNER_HOLD` for Grammar.
+5. Emit an **exclusive**, external JSON receipt, with each root tagged `PASS_BRANCH_QUALIFIED_CHECKPOINT_BLOB_EXISTS__NOT_CURRENT`, a review/drift status, or `NO_BRANCH_CANDIDATE__SOURCE_OWNER_HOLD` for an unresolved branch case (none currently).
 
 The GitHub Actions workflow [`gfp-opt-p1-root-branch-recovery.yml`](../../.github/workflows/gfp-opt-p1-root-branch-recovery.yml) verifies actual live GitHub source owner branches on Ubuntu and Windows with read-only `GITHUB_TOKEN`; it separately runs mocked adversarial ref/blob/owner/main-change tests. GitHub API authentication checks only GitHub; Library metadata is documented separately and **does not become proof of Library ZIP content**.
 
-The four static historical branch-qualified navigational references also appear in the **same existing Control Center dashboard** through `Tools/build_domain_adapter_preflight_v1.py`. The global dashboard itself labels them **`EXACT_BRANCH_BLOB_OBSERVED_PREVIOUSLY__NOT_LIVE_VERIFIED_BY_DASHBOARD`**, while the separate independent live verifier supplies dated remote readback evidence. Both agree: root contents are **never auto-copied from another branch**.
+The five static historical branch-qualified navigational references also appear in the **same existing Control Center dashboard** through `Tools/build_domain_adapter_preflight_v1.py`. The global dashboard itself labels them **`EXACT_BRANCH_BLOB_OBSERVED_PREVIOUSLY__NOT_LIVE_VERIFIED_BY_DASHBOARD`**, while the separate independent live verifier supplies dated remote readback evidence. Both agree: root contents are **never auto-copied from another branch**.
 
 ## Commands
 
@@ -59,6 +59,12 @@ python -B Tools/build_policy_adoption_control_center_v1.py \
 
 ## What is still OPEN
 
-No one is authorized to declare source CURRENT from a historic branch `CHECKPOINT`. For each root workstream, source-owner approval and the latest explicit user artifact/valid source portable must be compared with current Git/Library bytes **before** changing any pointer. For Grammar the actual source-owner Checkpoint authority has not been located. NVV needs a direct comparison of its newer 2026-11-05 Library Stage4-labeled candidate against the older branch checkpoint, not a silent downgrade. Neither content, the original source PDFs, LOCKED releases, learner cards, App UI/runtime, IndexedDB nor SRS/FSRS is edited here.
+No one is authorized to declare source CURRENT from a historic branch `CHECKPOINT`. For each root workstream, source-owner approval and the latest explicit user artifact/valid source portable must be compared with current Git/Library bytes **before** changing any pointer. For Grammar the historical branch-owned Checkpoint exists, but original two PDF bytes, newer portable releases and CURRENT source authority have not been independently revalidated. NVV needs a direct comparison of its newer 2026-11-05 Library Stage4-labeled candidate against the older branch checkpoint, not a silent downgrade. Neither content, the original source PDFs, LOCKED releases, learner cards, App UI/runtime, IndexedDB nor SRS/FSRS is edited here.
 
-**Next program milestone:** reviewable pointer-resolution proposals for the four source owners + first Grammar authority recovery, and source-owned native Stage2 for Lesen once source PDF CURRENT is independently verified. This optimization lane must not impersonate a content workstream's Stage approval.
+**Next program milestone:** reviewable pointer-resolution proposals for five source owners with independently verified latest-source precedence, and source-owned native Stage2 for Lesen once source PDF CURRENT is independently verified. This optimization lane must not impersonate a content workstream's Stage approval.
+
+## 2026-11-05 addendum — independent Grammar branch readback
+
+The previously absent fifth root was found at `grammar-aktiv-a1-c1-production:Workspaces/grammatik-aktiv-a1-c1/CHECKPOINT.json`, Git blob `c69844e956929d99e4c092f07ef901d9576094ca`. Unlike lexical checkpoints, its owner is `dataset_id=grammatik-aktiv-a1-c1` and its historical stage marker is `stages.7_release_post_package_verification.state=PASS_WITH_ENVIRONMENT_BOUNDARY`. Companion `LATEST.json` was also directly retrieved (Git blob `7a91485517e67fa9cbfb3fc9c5af3823529120f4`), indicating a dated 2026-10-09 v3.3.2 content delivery, not today's CURRENT.
+
+The strict resolver is extended to this exact native shape only; status selectors cannot be injected into other families. Grammar's original PDF hashes remain merely registered metadata, not fresh original-byte verification. No root main checkpoint copied, no source/card/LOCKED change and no new formal Stage acceptance or policy ADOPTED.

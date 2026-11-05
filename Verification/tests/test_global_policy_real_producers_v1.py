@@ -82,6 +82,28 @@ class CrossProducerTests(unittest.TestCase):
         self.assertEqual(sha, "b6d27c0b98f44cd8b0ffad325710f24f76da95e1")
         self.assertTrue(validator.is_file())
 
+    def test_cli_cannot_use_an_unregistered_source_profile(self):
+        with self.assertRaisesRegex(ValueError, "UNAUTHORIZED_PROFILE_OVERRIDE"):
+            m.load_authoritative_profile(ROOT, "../my-unregistered-profile.json")
+
+    def test_cli_profile_git_blob_pin_exact(self):
+        original = m.load_authoritative_profile(ROOT, m.PROFILE)
+        self.assertEqual(original["profiles"][0]["expected_rows"], 292)
+        root = self.work / "repo"
+        dest = root / m.PROFILE
+        dest.parent.mkdir(parents=True)
+        dest.write_bytes((ROOT / m.PROFILE).read_bytes() + b" ")
+        with self.assertRaisesRegex(ValueError, "PROFILE_GIT_BLOB_DRIFT"):
+            m.load_authoritative_profile(root, m.PROFILE)
+
+    def test_windows_crlf_is_allowed_only_for_exact_canonical_blob(self):
+        p = ROOT / m.VALIDATOR
+        data = p.read_bytes()
+        sha = m.blob_sha(data.replace(b"\r\n", b"\n"))
+        windows = data.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+        self.assertTrue(m.git_blob_text_matches(windows, sha))
+        self.assertFalse(m.git_blob_text_matches(windows + b"\n# tampered", sha))
+
     def test_real_profiles_have_two_distinct_source_owners(self):
         m.verify_profile(self.profile)
         self.assertEqual(len({x["family_id"] for x in self.profile["profiles"]}),2)

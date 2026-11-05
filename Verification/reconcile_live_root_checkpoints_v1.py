@@ -36,7 +36,7 @@ EXPECTED_ISSUES={
 }
 BRANCH=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,110}$")
 BLOB=re.compile(r"^[a-f0-9]{40}$")
-OWNER_FIELDS={"workstream","workspace"}
+OWNER_FIELDS={"workstream","workspace","dataset_id"}
 
 def require(ok,code):
     if not ok:
@@ -120,6 +120,19 @@ def content(path,at_sha,fetch=fetch_json):
             and git_blob(raw)==obj["sha"],"GITHUB_CHECKPOINT_GIT_BLOB_INVALID")
     return {"blob":obj["sha"],"document":strict_json(raw),"bytes":len(raw)}
 
+def checkpoint_status(document,candidate):
+    """Only the pinned native Grammar schema may use a nested Stage7 status."""
+    selector=candidate.get("status_selector")
+    if selector is None:
+        return document.get("status")
+    if selector=="stages.7_release_post_package_verification.state":
+        stages=document.get("stages")
+        if not isinstance(stages,dict):
+            return None
+        final=stages.get("7_release_post_package_verification")
+        return final.get("state") if isinstance(final,dict) else None
+    return None
+
 def validate_sources(candidates,catalog,routes,cat_blob,route_blob):
     require(candidates.get("schema")==
             "gfp-opt-p1-branch-qualified-root-checkpoint-evidence@1.0.0"
@@ -165,11 +178,19 @@ def validate_sources(candidates,catalog,routes,cat_blob,route_blob):
                     "MALFORMED_BRANCH_EVIDENCE:"+key)
             require(branch not in seen_branches,"BRANCH_CANDIDATE_REUSED_FOR_ANOTHER_ROOT")
             seen_branches.add(branch)
+            if key=="grammar_aktiv_a1_c1":
+                require(cand["owner_field"]=="dataset_id"
+                        and cand["owner_value"]=="grammatik-aktiv-a1-c1"
+                        and cand.get("status_selector")==
+                            "stages.7_release_post_package_verification.state",
+                        "GRAMMAR_NATIVE_CHECKPOINT_SELECTOR_REQUIRED")
+            else:
+                require(cand["owner_field"] in {"workstream","workspace"}
+                        and "status_selector" not in cand,
+                        "NON_GRAMMAR_CHECKPOINT_SELECTOR_NOT_ALLOWED")
         else:
-            require(key=="grammar_aktiv_a1_c1"
-                    and x.get("latest_source_owner_authority","").startswith("UNRESOLVED"),
-                    "UNSUPPORTED_MISSING_BRANCH_CANDIDATE:"+key)
-    require(candidate_count==4,"NOT_FOUR_BRANCH_WITNESSES")
+            require(False,"MISSING_BRANCH_CANDIDATE_NEEDS_REVIEW:"+key)
+    require(candidate_count==5,"NOT_FIVE_BRANCH_WITNESSES")
     nvv=next(x for x in slots if x["root_key"]=="nomen_verb_verbindungen")
     newer=nvv.get("library_newer_candidate_observation",{})
     require(newer.get("record_id")=="libfile_a8efd55b225c81918b304349f475e92e"
@@ -211,7 +232,7 @@ def live_report(candidates,catalog,routes,cat_blob,route_blob,fetch=fetch_json):
             elif read["blob"]!=cand["checkpoint_blob"]:
                 state="BRANCH_CHECKPOINT_BLOB_CHANGED__SOURCE_OWNER_REVIEW"
             elif (read["document"].get(cand["owner_field"])!=cand["owner_value"]
-                  or read["document"].get("status")!=
+                  or checkpoint_status(read["document"],cand)!=
                      cand["observed_source_checkpoint_status"]):
                 state="BRANCH_CHECKPOINT_OWNER_OR_STATUS_DRIFT__SOURCE_OWNER_REVIEW"
             else:
@@ -242,14 +263,14 @@ def live_report(candidates,catalog,routes,cat_blob,route_blob,fetch=fetch_json):
     return {
       "schema":SCHEMA,
       "program_id":"GFP-OPT-2026",
-      "status":("PASS_FOUR_LIVE_BRANCH_LOCATORS_ONE_GRAMMAR_HOLD__ZERO_SOURCE_PROMOTION"
-                if passed==4 and missing==5 else
+      "status":("PASS_FIVE_LIVE_BRANCH_LOCATORS__ZERO_SOURCE_PROMOTION"
+                if passed==5 and missing==5 else
                 "SOURCE_BRANCH_DRIFT_OR_MAIN_POINTER_CHANGED__REVIEW_REQUIRED"),
       "github_main_commit_observed_twice":main,
       "counts":{
         "missing_root_paths_checked":5,
         "still_missing_on_main":missing,
-        "branch_candidates":4,
+        "branch_candidates":5,
         "exact_live_branch_blob_locs":passed,
         "source_current_confirmed":0,
         "root_checkpoint_files_created":0,
@@ -284,7 +305,7 @@ def main():
             f.write("\n")
         view={k:v for k,v in proof.items() if k!="roots"} if a.summary else proof
         print(json.dumps(view,ensure_ascii=False,indent=2))
-        return 0 if proof["status"].startswith("PASS_FOUR_") else 3
+        return 0 if proof["status"]=="PASS_FIVE_LIVE_BRANCH_LOCATORS__ZERO_SOURCE_PROMOTION" else 3
     except (OSError,ValueError,subprocess.CalledProcessError,UnicodeError) as exc:
         print("GFP_OPT_BRANCH_RECOVERY_HOLD:"+str(exc),file=sys.stderr)
         return 2

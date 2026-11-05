@@ -1,4 +1,4 @@
-"""Root checkpoint evidence: four genuine owner branches, not false CURRENT.
+"""Root checkpoint evidence: five genuine owner branches, not false CURRENT.
 
 Mocks live GitHub REST for adversarial tests; production workflow separately
 uses authenticated actual GitHub main/branch head and immutable blob reads.
@@ -39,9 +39,13 @@ class FakeGitHub:
             if cand is None:continue
             branch=cand["branch"]
             sha=hashlib.sha1(branch.encode()).hexdigest()
-            data=json.dumps({cand["owner_field"]:cand["owner_value"],
-                             "status":cand["observed_source_checkpoint_status"]},
-                            sort_keys=True).encode()
+            payload={cand["owner_field"]:cand["owner_value"]}
+            if cand.get("status_selector"):
+                payload["stages"]={"7_release_post_package_verification":{
+                    "state":cand["observed_source_checkpoint_status"]}}
+            else:
+                payload["status"]=cand["observed_source_checkpoint_status"]
+            data=json.dumps(payload,sort_keys=True).encode()
             cand["checkpoint_blob"]=m.git_blob(data)
             self.branches[branch]=sha
             self.roots[(sha,x["main_declared_checkpoint"])]=data
@@ -100,30 +104,29 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual({x["root_key"] for x in self.record["checkpoint_slots"]},
                          m.EXPECTED_ISSUES)
 
-    def test_branch_qualified_four_locator_mock_success_never_adopt(self):
+    def test_branch_qualified_five_locator_mock_success_never_adopt(self):
         manifest,api=self.setup_fixture()
         data=self.replay(manifest,api)
         self.assertEqual(data["status"],
-             "PASS_FOUR_LIVE_BRANCH_LOCATORS_ONE_GRAMMAR_HOLD__ZERO_SOURCE_PROMOTION")
-        self.assertEqual(data["counts"]["exact_live_branch_blob_locs"],4)
+             "PASS_FIVE_LIVE_BRANCH_LOCATORS__ZERO_SOURCE_PROMOTION")
+        self.assertEqual(data["counts"]["exact_live_branch_blob_locs"],5)
         self.assertEqual(data["counts"]["still_missing_on_main"],5)
         self.assertEqual(data["counts"]["source_current_confirmed"],0)
         self.assertEqual(data["counts"]["formal_new_policy_adoptions"],0)
         self.assertEqual(data["counts"]["root_checkpoint_files_created"],0)
         self.assertTrue(all(x["policy_adopted"] is False for x in data["roots"]))
 
-    def test_all_four_side_branch_qualified_paths_preserved(self):
+    def test_all_five_side_branch_qualified_paths_preserved(self):
         manifest,api=self.setup_fixture()
         data=self.replay(manifest,api)
         for x in data["roots"]:
             loc=x["branch_locator"]
-            if x["root_key"]=="grammar_aktiv_a1_c1":
-                self.assertIsNone(loc)
-                self.assertEqual(x["status"],"NO_BRANCH_CANDIDATE__SOURCE_OWNER_HOLD")
-            else:
-                self.assertTrue(loc["qualified_path"].endswith(
-                                 x["declared_main_path"]))
-                self.assertEqual(loc["first_branch_commit"],loc["second_branch_commit"])
+            self.assertIsNotNone(loc)
+            self.assertTrue(loc["qualified_path"].endswith(
+                             x["declared_main_path"]))
+            self.assertEqual(loc["first_branch_commit"],loc["second_branch_commit"])
+            self.assertEqual(x["status"],
+                             "PASS_BRANCH_QUALIFIED_CHECKPOINT_BLOB_EXISTS__NOT_CURRENT")
 
     def test_nvv_library_newer_candidate_never_assumed_current(self):
         manifest,api=self.setup_fixture()
@@ -139,7 +142,7 @@ class RecoveryTests(unittest.TestCase):
         data=self.replay(manifest,api)
         nvv=next(x for x in data["roots"] if x["root_key"]=="nomen_verb_verbindungen")
         self.assertEqual(nvv["status"],"BRANCH_MOVED_DURING_READBACK__RETRY")
-        self.assertEqual(data["counts"]["exact_live_branch_blob_locs"],3)
+        self.assertEqual(data["counts"]["exact_live_branch_blob_locs"],4)
         self.assertTrue(data["status"].startswith("SOURCE_BRANCH_DRIFT"))
 
     def test_main_moved_during_readback_blocks_all(self):
@@ -170,7 +173,7 @@ class RecoveryTests(unittest.TestCase):
         path=manifest["checkpoint_slots"][0]["main_declared_checkpoint"]
         api.missing_branch_for=path
         result=self.replay(manifest,api)
-        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],3)
+        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],4)
 
     def test_owner_changed_but_blob_ref_is_pinned(self):
         manifest,api=self.setup_fixture()
@@ -184,15 +187,36 @@ class RecoveryTests(unittest.TestCase):
         manifest,api=self.setup_fixture()
         manifest["checkpoint_slots"][0]["branch_candidate"]["checkpoint_blob"]="a"*40
         result=self.replay(manifest,api)
-        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],3)
+        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],4)
 
-    def test_invented_grammar_checkpoint_is_rejected(self):
+    def test_grammar_must_use_pinned_native_status_selector(self):
         manifest,api=self.setup_fixture()
-        row=next(x for x in manifest["checkpoint_slots"] if x["root_key"]=="grammar_aktiv_a1_c1")
-        row["branch_candidate"]={"branch":"new-grammar","checkpoint_blob":"b"*40,
-                                "owner_field":"workstream","owner_value":"grammatik-aktiv-a1-c1",
-                                "observed_source_checkpoint_status":"PASS"}
-        with self.assertRaisesRegex(ValueError,"NOT_FOUR_BRANCH_WITNESSES"):
+        row=next(x for x in manifest["checkpoint_slots"]
+                 if x["root_key"]=="grammar_aktiv_a1_c1")
+        row["branch_candidate"].pop("status_selector")
+        with self.assertRaisesRegex(ValueError,"GRAMMAR_NATIVE_CHECKPOINT_SELECTOR_REQUIRED"):
+            self.replay(manifest,api)
+
+    def test_grammar_wrong_nested_stage7_never_passes(self):
+        manifest,api=self.setup_fixture()
+        row=next(x for x in manifest["checkpoint_slots"]
+                 if x["root_key"]=="grammar_aktiv_a1_c1")
+        original=row["branch_candidate"]["observed_source_checkpoint_status"]
+        row["branch_candidate"]["observed_source_checkpoint_status"]="FINAL"
+        result=self.replay(manifest,api)
+        grammar=next(x for x in result["roots"]
+                     if x["root_key"]=="grammar_aktiv_a1_c1")
+        self.assertEqual(grammar["status"],
+                         "BRANCH_CHECKPOINT_OWNER_OR_STATUS_DRIFT__SOURCE_OWNER_REVIEW")
+        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],4)
+        self.assertEqual(original,"PASS_WITH_ENVIRONMENT_BOUNDARY")
+
+    def test_nongrammar_cannot_inject_native_status_selector(self):
+        manifest,api=self.setup_fixture()
+        manifest["checkpoint_slots"][0]["branch_candidate"]["status_selector"]=(
+            "stages.7_release_post_package_verification.state")
+        with self.assertRaisesRegex(ValueError,
+                "NON_GRAMMAR_CHECKPOINT_SELECTOR_NOT_ALLOWED"):
             self.replay(manifest,api)
 
     def test_wrong_root_to_family_mapping_fails(self):

@@ -41,3 +41,11 @@ Deterministic checks on the locally generated R32 cumulative sheet:
 - Size: `37978` bytes.
 
 **QA interpretation:** structural traceability and completeness PASS; **independent German–Persian semantic quality / pedagogical acceptance NOT PASSED or claimed**. Full 160-entry independent bilingual QA (including morphology, meaning and generated-example idiomaticity) and five accepted-card identity gates still pending. This remains a Stage 2 **editorial draft**; Stage 3–7 **NOT STARTED**. The global project R25 L05 ZIP remains the most recent fully portable checkpoint; R32 is the current narrower L01 content-draft progress.
+
+## Portable R32 chapter-local checkpoint
+
+A **new, chapter-local portable ZIP** was saved exclusively under B2 Library:
+
+`/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/Aspekte-B2-STAGE2-L01-R32-160-ROWS-320-DEFA-DRAFTS-20261106.zip`
+
+Library stable ID: `libfile_0a1e03efbbdc819185f31451141f306d` · SHA256: `91b9d42284e0851b30902df6e7a565da8782b44a90e180b7848845cdef061708` · size: 79,142 bytes · 6 ZIP members (4 SHA256-checked payloads + README + manifest). CRC and fresh extract SHA256 verification passed locally, and the uploaded Library ZIP was re-materialized and matched byte-for-byte. **This is a portable editorial checkpoint, not a Stage2 release or a new global project checkpoint.**

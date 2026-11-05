@@ -1,0 +1,73 @@
+{
+  "schema": "gcpk-aber-hallo-stage7-entry-gate@1.0.0",
+  "date": "2026-11-05",
+  "workstream": "aber-hallo-listen-tabellen",
+  "status": "PASS_STAGE7_READONLY_SOURCE_AND_PARTITION_PREFLIGHT__BLOCKED_STAGE6_NATIVE_21_LESSON_MERGE_AND_EXACT_CURRENT_RUNTIME__NO_FINAL_RELEASE",
+  "user_instruction": "Proceed to next stage and finish",
+  "scope": "stage7 entry, not formal final release; no UI/runtime/IndexedDB change",
+  "stage_state": {
+    "1": "PASS",
+    "2": "PASS",
+    "3": "PASS",
+    "4": "PASS_RISK_BASED",
+    "5": "PASS_OFFICIAL",
+    "6": "BLOCKED",
+    "7": "BLOCKED"
+  },
+  "sources": {
+    "original_a1_a2_pdf_sha256": "4125ed49efa3c4e72500a9c80b8d39021c8933d9a387fc96a637fd4b457e3cf3",
+    "original_b1_c2_pdf_sha256": "ebaa3896c3c383808b832241afaf6c38ef4f498eb4dc1b38f26c12087cc97a04",
+    "WIP99_content_sha256": "d9eed820e1c00cb32f1cadb10da21e30ef59c1c2af7d06f2025e867be8a6ed70",
+    "official_stage5_zip_sha256": "cd802ac44b83a3b98a14cf957e0af4da55cb9d6e2230be10f5953ac6ce6c23f0",
+    "original_stage5_tsv_sha256": "6903a34b35c53346c8acbef19fc0c74811718d4a30ad4dfd33943195d7f9dd77",
+    "direct_import_21_lessons_tsv_sha256": "0fe3bff3c19c5d55a27bfddb905b6b31571f4638ee2a1c61b114cd2bd183afa6",
+    "library_id": "libfile_67ffd2f3b1bc81918e816a0f2ddc964b",
+    "stage6_partition_git_path": "Workspaces/aber-hallo-listen-tabellen/102-stage6-lesson-partition-candidate/LESSON-PARTITION-RECEIPT-20261105.json"
+  },
+  "independent_20261105_static_verification": {
+    "official_stage5_zip_crc": "PASS_6_OF_6",
+    "official_stage5_sha256_manifest": "PASS_5_OF_5",
+    "source_pdfs": "PASS_2_OF_2",
+    "original_tsv": "PASS_EXACT_STAGE5_SOURCE_SHA",
+    "revised_tsv": "PASS_EXACT_LIBRARY_SHA",
+    "schema_columns": 23,
+    "cards": 787,
+    "unique_ids": 787,
+    "chapters": 21,
+    "changed_rows_only_field_lesson": 787,
+    "non_lesson_field_changes": 0,
+    "fixed_wuerdigen_display": "PRESERVED",
+    "medium_holds": [
+      "ahl-lu-0403",
+      "ahl-lu-0408",
+      "ahl-lu-0409",
+      "ahl-lu-0412",
+      "ahl-lu-0419"
+    ],
+    "local_readonly_script": "Aber-Hallo-Stage7-ENTRY-GATE-20261105.json",
+    "local_report_sha256": "358e349df5050ad9a608d4106d2d0e6cec7d5d3a4faee099f1df2a1017bbef1e"
+  },
+  "runtime": {
+    "CURRENT_v505_R141_zip_sha256_required": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "exact_current_materialized": false,
+    "alternate_R2_zip_reference_only": "99137590901a2c2086521867e128f8deb0dd6a8f694e4f0fcfc905f1060a6569",
+    "last_fully_verified_v486_regression_only": true,
+    "user_original_787_card_import": "REPORTED_PASS",
+    "user_21_lesson_merge_import_and_reload": "NOT_CONFIRMED",
+    "IndexedDB_generation_reloaded": "NOT_OBSERVED",
+    "unchanged_SRS_FSRS_after_merge": "NOT_OBSERVED",
+    "exact_CURRENT_native_runtime_acceptance": "NOT_OBSERVED"
+  },
+  "release_decision": {
+    "final_zip": "NOT_CREATED",
+    "reason": "Formal Stage7 FINAL explicitly requires all Stage6 runtime and presentation hard gates PASS. Packaging unverified alternative app as CURRENT would violate project safety and release policy. Anti-churn policy forbids report-only ZIP without material stage acceptance.",
+    "direct_import_tsv": "AVAILABLE_LIBRARY_AND_CONVERSATION",
+    "final_release": false,
+    "stage7": "BLOCKED",
+    "no_data_mutation": true,
+    "no_UI_change": true,
+    "no_historical_locked_change": true
+  },
+  "next_action": "Obtain native evidence of user SMART MERGE 21 lessons on the installed v505 app, reload counts and SRS/FSRS parity, and exact pinned CURRENT v505 ZIP; run official Stage6 acceptance. Only then build one organized Stage7 FINAL ZIP with app/content/sources/tests/reports/docs/tools/handoff and exact checksum.",
+  "linked_previous_stage6": "Workspaces/aber-hallo-listen-tabellen/101-stage6-runtime-import-preflight-blocked/STAGE6-PREFLIGHT-CHECKPOINT.json"
+}

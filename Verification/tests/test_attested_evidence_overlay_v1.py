@@ -45,7 +45,7 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
         result = self.outcome()
         self.assertEqual(result["counts"]["historical_byte_receipts_git_workspaces"], 1)
         self.assertEqual(result["counts"]["historical_byte_receipts_root_workstreams"], 1)
-        self.assertEqual(result["counts"]["unattested_git_workspaces"], 32)
+        self.assertEqual(result["counts"]["unattested_git_workspaces"], 33)
         self.assertEqual(result["counts"]["source_anchored_historical_git_workspaces"], 1)
 
     def test_three_typed_historical_receipts_have_independent_family_ids(self):
@@ -103,11 +103,11 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "UNSAFE_EVIDENCE_PATH"):
             self.outcome(reg=reg)
 
-    def test_forged_nv_git_workspace_blocks(self):
+    def test_historical_nvv_root_receipt_cannot_be_relabelled_as_new_git_workspace(self):
         reg = copy.deepcopy(self.reg)
         reg["records"][1]["target_type"] = "GIT_WORKSPACE"
         reg["records"][1]["target_id"] = "workspace:nomen-verb-verbindungen"
-        with self.assertRaisesRegex(ValueError, "UNREGISTERED_GIT_WORKSPACE_TARGET"):
+        with self.assertRaisesRegex(ValueError, "WRONG_WORKSPACE_LATEST"):
             self.outcome(reg=reg)
 
     def test_wrong_family_or_parent_blocks(self):

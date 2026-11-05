@@ -105,7 +105,7 @@ def authority(root: Path = ROOT) -> tuple[dict, dict, dict, dict, dict, dict]:
                 len(item["git_blob"]) == 40, "MISSING_AUTHORITY_BLOB_PIN:" + key)
         docs.append(load_json(root, path, item["git_blob"]))
     catalog, registry, previous, pilot, pilot_receipt = docs
-    require(catalog.get("schema") == "gfp-master-project-catalog@1.0.0",
+    require(catalog.get("schema") == "gcpk-master-project-catalog@1.0.0",
             "CATALOG_SCHEMA_CHANGED")
     require(registry.get("schema") == "gcpk-global-policy-registry@1.0.0"
             and registry.get("status") ==

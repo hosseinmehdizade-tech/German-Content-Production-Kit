@@ -98,8 +98,9 @@ def check_pointer(*, workspace_root: Path, workspace_dir: str, expected_blob: st
     guard(pointer.get("workstream")==workspace_dir.split("/")[1],
           "LATEST_REFERENCES_DIFFERENT_WORKSTREAM")
     stage=pointer.get("status","")
-    guard(isinstance(stage,str) and "STAGE5" in stage
-          and "WIP" not in stage, "LATEST_NOT_STAGE5_ELIGIBLE")
+    guard(isinstance(stage,str) and stage.startswith(("PASS_STAGE5_", "STAGE5_PASS_"))
+          and "NOT_STAGE5" not in stage and "WIP" not in stage,
+          "LATEST_NOT_STAGE5_ELIGIBLE")
     artifact=pointer.get("artifact")
     guard(isinstance(artifact,dict)
           and artifact.get("filename")==actual_zip.name

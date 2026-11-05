@@ -1,0 +1,60 @@
+name: GFP-OPT P1 Central Policy Impact and Adoption Truth
+on:
+  push:
+    paths:
+      - 'Tools/plan_central_policy_impact_v1.py'
+      - 'Verification/tests/test_central_policy_impact_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Verification/GLOBAL-POLICY-ADOPTION-MATRIX-20261105.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Optimization-Program/Control-Center/Profiles/P1-NEUTRAL-STAGE5-REAL-PRODUCERS-v1.json'
+      - 'Optimization-Program/Verification/OP01-OP02-P1-TWO-REAL-PRODUCER-FORMAT-20261105.json'
+      - '.github/workflows/gfp-opt-p1-central-policy-impact.yml'
+  pull_request:
+    paths:
+      - 'Tools/plan_central_policy_impact_v1.py'
+      - 'Verification/tests/test_central_policy_impact_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Verification/GLOBAL-POLICY-ADOPTION-MATRIX-20261105.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Optimization-Program/Control-Center/Profiles/P1-NEUTRAL-STAGE5-REAL-PRODUCERS-v1.json'
+      - 'Optimization-Program/Verification/OP01-OP02-P1-TWO-REAL-PRODUCER-FORMAT-20261105.json'
+      - '.github/workflows/gfp-opt-p1-central-policy-impact.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  registry-impact:
+    name: Candidate impact and anti-false-PASS (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate full read-only impact matrix for 15 policy bindings
+        run: python -B Tools/plan_central_policy_impact_v1.py --summary --write-once-report gfp-opt-p1-impact-matrix.json
+      - name: Upload a scoped candidate-only impact matrix (not adoption evidence)
+        uses: actions/upload-artifact@v4
+        with:
+          name: gfp-opt-p1-candidate-impacts-${{ matrix.os }}
+          path: gfp-opt-p1-impact-matrix.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Adversarial no-fake-adoption and source-domain coverage tests
+        run: python -B -m unittest discover -s Verification/tests -p test_central_policy_impact_v1.py -v
+      - name: Report precise evidence limits
+        shell: bash
+        run: |
+          echo "Candidate routing is not native policy adoption."
+          echo "21 content families, 34 Git workspaces and 17 roots overlap; do not add them as independent producers."
+          echo "This CI accesses Git metadata only; historical private ZIPs were checked in earlier local-scoped receipts."

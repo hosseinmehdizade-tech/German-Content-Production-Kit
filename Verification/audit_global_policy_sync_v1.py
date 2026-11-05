@@ -52,6 +52,16 @@ def git_blob_sha(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 
+def matches_git_blob_across_checkout_line_endings(data: bytes, expected: str) -> bool:
+    """Accept Git's equivalent LF/CRLF checkout; NOT other content mutations.
+
+    Windows checkout can materialize text with CRLF even while Git's
+    recorded blob is LF. The pinned repository object remains authoritative.
+    """
+    return (git_blob_sha(data) == expected
+            or git_blob_sha(data.replace(b"\\r\\n", b"\\n")) == expected)
+
+
 def safe_path(value: str) -> bool:
     if not isinstance(value, str) or not value.strip() or "\\" in value:
         return False
@@ -122,7 +132,7 @@ def audit_snapshot(reg: dict, mat: dict, tracked_dirs: list[str],
             errors.append("INVALID_POLICY_PIN:" + key)
         elif path not in files:
             errors.append("MISSING_ACTIVE_POLICY:" + key)
-        elif git_blob_sha(files[path]) != digest:
+        elif not matches_git_blob_across_checkout_line_endings(files[path], digest):
             errors.append("STALE_POLICY_BLOB_PIN:" + key)
         if obj.get("scope") not in {
             "ALL_WORKSTREAM_STARTUP", "ALL_PRODUCERS", "LEXICAL_MUTABLE",

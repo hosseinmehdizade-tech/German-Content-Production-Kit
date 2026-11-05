@@ -20,8 +20,8 @@ EXPECTED_SRC = {
     "a1_a2": "4125ed49efa3c4e72500a9c80b8d39021c8933d9a387fc96a637fd4b457e3cf3",
     "b1_c2": "ebaa3896c3c383808b832241afaf6c38ef4f498eb4dc1b38f26c12087cc97a04",
 }
-SHA = re.compile(r"[a-f0-9]{64}\\Z")
-BLOB = re.compile(r"[a-f0-9]{40}\\Z")
+SHA = re.compile(r"[a-f0-9]{64}\Z")
+BLOB = re.compile(r"[a-f0-9]{40}\Z")
 
 def ensure(expr, code):
     if not expr:
@@ -38,7 +38,7 @@ def git_blob(path, root=ROOT):
         capture_output=True, text=True, check=True)
     line = completed.stdout.strip()
     ensure(len(line.splitlines()) == 1, "LEDGER_GIT_INDEX_NOT_UNIQUE")
-    match = re.fullmatch(r"100644 ([0-9a-f]{40}) 0\\t(.+)", line)
+    match = re.fullmatch(r"100644 ([0-9a-f]{40}) 0\t(.+)", line)
     ensure(match is not None and match.group(2) == path, "LEDGER_GIT_PIN_UNTRACKED")
     return match.group(1)
 

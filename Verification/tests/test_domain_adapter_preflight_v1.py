@@ -96,7 +96,7 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
 
     def test_nvv_october_branch_and_november_library_conflict_keeps_hold(self):
         row=next(x for x in self.actual["root_checkpoint_issue_triage"]
-                 if x["root_key"]=="nomen_verb_verbindungen")
+                 if x.get("root_key")=="nomen_verb_verbindungen")
         self.assertEqual(row["branch_checkpoint_historical_observation"]["qualified_branch"],
                          "nvv-production")
         self.assertTrue(row["newer_library_candidate_is_unverified"]["source_currentness"].startswith(

@@ -250,7 +250,7 @@ class AdoptionDashboardTests(unittest.TestCase):
         self.assertTrue(all(x["auto_repair"] is False for x in
                             report["root_checkpoint_issue_triage"]))
         md=m.markdown(self.output)
-        self.assertIn("Untracked root checkpoint references",md)
+        self.assertIn("Untracked main checkpoint references",md)
 
     def test_single_dashboard_shows_branch_qualified_checkpoints_without_current_claim(self):
         preflight=self.output["nonlexical_domain_preflight"]

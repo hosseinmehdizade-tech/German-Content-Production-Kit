@@ -43,6 +43,7 @@ def load_module(name:str,path:str):
 
 phase=load_module("gfp_control_center_base","Tools/build_project_control_center_v1.py")
 planner=load_module("gfp_p1_impact_for_adoption","Tools/plan_central_policy_impact_v1.py")
+graph=load_module("gfp_p1_dependency_graph","Tools/build_project_dependency_evidence_v1.py")
 
 def require(ok:bool, code:str)->None:
     if not ok:
@@ -365,7 +366,7 @@ def markdown(status:dict)->str:
 
 def execute(root:Path=ROOT)->dict:
     require(root.resolve()==ROOT.resolve(),"UNSUPPORTED_ROOT_FOR_GIT_INDEX")
-    index=phase.git_index(root)
+    index=graph.index_blobs(root)
     ledger=phase.load_json_from_index(LEDGER,index,root)
     cat=phase.load_json_from_index(CATALOG,index,root)
     domains=phase.load_json_from_index(DOMAINS,index,root)

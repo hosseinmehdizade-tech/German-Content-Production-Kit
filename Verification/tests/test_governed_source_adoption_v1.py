@@ -88,7 +88,8 @@ class ExactSourceAdoptionTests(unittest.TestCase):
     def verify(self,**overrides):
         fields={
             "family_id":FAMILY,"workspace_id":WORKSPACE,
-            "latest_blob":blob_sha(self.latest.read_bytes()),
+            "latest_blob":overrides.get("latest_blob") or
+                          (blob_sha(self.latest.read_bytes()) if self.latest.exists() else "a"*40),
             "workspace_root":self.checkout,
             "source":self.source,"archive":self.archive,
             "native_receipt":self.native

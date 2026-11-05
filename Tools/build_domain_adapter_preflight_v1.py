@@ -275,6 +275,36 @@ def execute(root=ROOT):
     reading[0]["native_stage1_actual_git_derived_replay"]=proof
     report["counts"]["real_git_native_reading_stage1_structure_replays"]=1
     report["counts"]["real_nonlexical_native_policy_adoptions"]=0
+    locator=module("gfp_opt_p1_branch_root_locator",
+                   "Verification/reconcile_live_root_checkpoints_v1.py")
+    candidate, _=locator.indexed_json(locator.CANDIDATES)
+    catalog_live, catalog_blob=locator.indexed_json(locator.CATALOG)
+    route_live, route_blob=locator.indexed_json(locator.ROUTES)
+    locator.validate_sources(candidate,catalog_live,route_live,
+                             catalog_blob,route_blob)
+    candidate_by_key={x["root_key"]:x for x in candidate["checkpoint_slots"]}
+    require({x["root_key"] for x in report["root_checkpoint_issue_triage"]}==
+            set(candidate_by_key),"ROOT_LOCATOR_TRIAGE_IDENTITY_DRIFT")
+    for x in report["root_checkpoint_issue_triage"]:
+        pinned=candidate_by_key[x["root_key"]]
+        candidate_branch=pinned.get("branch_candidate")
+        x["branch_checkpoint_historical_observation"]=(
+          {
+            "qualified_branch":candidate_branch["branch"],
+            "checkpoint_git_blob_observed":candidate_branch["checkpoint_blob"],
+            "status":"EXACT_BRANCH_BLOB_OBSERVED_PREVIOUSLY__NOT_LIVE_VERIFIED_BY_DASHBOARD",
+            "source_currentness":"NOT_VERIFIED"
+          } if candidate_branch else None)
+        if pinned["root_key"]=="nomen_verb_verbindungen":
+            x["newer_library_candidate_is_unverified"]={
+              "record_id":pinned["library_newer_candidate_observation"]["record_id"],
+              "source_currentness":"REVIEW_REQUIRED__DO_NOT_USE_OLDER_BRANCH_AS_CURRENT"
+            }
+    report["counts"]["branch_qualified_checkpoint_candidates"]=sum(
+         x["branch_checkpoint_historical_observation"] is not None
+         for x in report["root_checkpoint_issue_triage"])
+    report["counts"]["unresolved_grammar_branch_checkpoint_candidates"]=1
+    report["root_branch_evidence_type"]="PINNED_HISTORICAL_BRANCH_LOCATION_ONLY__LIVE_REMOTE_WORKFLOW_SEPARATE"
     return report
 
 def main():

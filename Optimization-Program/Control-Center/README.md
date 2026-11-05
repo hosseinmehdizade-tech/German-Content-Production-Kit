@@ -11,3 +11,11 @@ The exact Git index is the only input to the generated snapshot. LATEST.json tak
 New unregistered workspaces, missing pointers, and unavailable checkpoint paths are reported as metadata issues, not invented stage completion or missing user source. This tool never modifies cards, content, LOCKED files, source, app runtime, UI, or FSRS/SRS.
 
 Future phases: dependency graph; source-specific adapter and semantic QA adoption; duplicate artifact lifecycle and release reproducibility. Do not claim entire-project PASS from this first phase.
+
+## Scoped historical evidence overlay — 2026-11-05
+
+The [pinned historical evidence registry](EVIDENCE-REGISTRY-v1.json) now links real source/ZIP byte-readback receipts to existing identity namespaces, not to arbitrary folders: one **Git workspace** (250 Verben lexical R7) and one **root-only workstream** (Nomen-Verb-Verbindungen R6.1). The [attested overlay generator](../../Tools/build_attested_evidence_overlay_v1.py) produces a read-only 21-family / 34-Git-workspace / 17-root-workstream report via [Actions](../../.github/workflows/attested-evidence-overlay-v1.yml). Any non-attested workspace remains `NO_REAL_BYTE_ATTESTATION_REGISTERED` with **no** Stage PASS.
+
+The 250 Verben historical R7 independently matched the user PDF, 25-member ZIP, 24/24 manifest entries, unchanged TSV, and exact pinned Stage4 **risk-evidence gate**. The independent NVV historical R6.1 check matched the user PDF, 55-member ZIP, 54/54 root `SHA256SUMS` entries, CRC and TSV content. NVV was not Stage4-reverified here; it has **no registered standalone Git workspace**. Both proofs remain historical and do not assert newest/current user artifact, native Stage6, Stage5 final or Stage7 release.
+
+The GitHub runner validates exact Git-index receipt/profile pins and metadata relations, **not original PDF/Library ZIP binary bytes**. It fails closed on mismatched evidence, provenance hashes, ownership, or false Stage promotion. A new user-validated archive can supersede a historical receipt without deleting or rewriting it.

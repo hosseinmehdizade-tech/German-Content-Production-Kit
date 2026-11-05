@@ -221,9 +221,16 @@ def main():
         profile = json.loads(args.profile.read_text(encoding="utf-8"))
         report = attest(profile, args.archive, args.original_source)
         if args.output:
-            args.output.parent.mkdir(parents=True, exist_ok=True)
-            args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-                                   encoding="utf-8")
+            dest = args.output.resolve()
+            # Attestation exports are temporary outputs, never checkout/source writes.
+            protected = {args.profile.resolve(), args.archive.resolve(), args.original_source.resolve()}
+            require(dest not in protected, "OUTPUT_ALIASES_INPUT_BYTES")
+            root = Path(__file__).resolve().parents[1]
+            require(dest != root and root not in dest.parents,
+                    "OUTPUT_INSIDE_REPOSITORY_FORBIDDEN")
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n",
+                            encoding="utf-8")
         print(json.dumps(report, ensure_ascii=False, indent=2))
         return 0
     except (AttestationBlocked, ValueError, OSError, json.JSONDecodeError) as e:

@@ -1,0 +1,74 @@
+{
+  "schema": "menschen-b1-stage7-release-gate-checkpoint@1.0.0",
+  "as_of": "2026-11-05",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "status": "BLOCKED_STAGE7_FORMAL_FINAL_UPSTREAM_STAGE6_NATIVE_ACCEPTANCE_MISSING",
+  "quality_state": "BLOCKED",
+  "release_final": false,
+  "stage3": "PASS",
+  "stage4": "PASS_RISK_BASED_AI",
+  "stage5": "PASS_CONTENT_ONLY",
+  "stage6": "BLOCKED",
+  "stage7": "BLOCKED",
+  "app_runtime_authority": {
+    "version": "v505-R141",
+    "artifact_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "exact_current_runtime_browser_import": "NOT_TESTED"
+  },
+  "authoritative_existing_content_package": {
+    "filename": "Menschen-B1-24-v336-STAGE5-CONTENT-PRODUCTION-DELIVERY-CANDIDATE-20261105.zip",
+    "archive_sha256": "f7bc7db76e88b5811946b249d23059e465439308c8c44e57975b740647b00959",
+    "archive_bytes": 7802971,
+    "transport_member": "01-Final-Import/Menschen-B1-24-UNIVERSAL-v2-STAGE5-CANDIDATE.tsv",
+    "transport_sha256": "c7e04be8956566f4ad0e7c2d92f1502ed52ff463896ad8048064878ad2042e4e",
+    "library_file_id": "file_00000000832482439d8e9e4260b5f5f4",
+    "library_stable_id": "libfile_981e491b382c819182c1641768ccccd6",
+    "archive_members": 20,
+    "manifest_payloads": 18,
+    "artifact_reverified_in_this_turn": true
+  },
+  "independent_gate": {
+    "result": "PASS_STATIC_CONTENT_HARD_CHECKS__BLOCKED_FORMAL_FINAL_GATE",
+    "lessons": 24,
+    "cards": 3088,
+    "distinct_ids": 3088,
+    "course_memberships": 3137,
+    "example_groups_trilingual": 12548,
+    "changed_details_in_stage5": 603,
+    "untouched_rows": 2485,
+    "archive_SHA256_CRC": "PASS",
+    "manifest_18_of_18": "PASS",
+    "stage4_master_exact_bytes": "PASS",
+    "all_other_columns_exact": "PASS",
+    "source_or_SRS_mutation": false
+  },
+  "blockers": [
+    "Stage6 has no native browser Import, IndexedDB roundtrip or presentation PASS",
+    "Official exact v505-R141 runtime artifact not materialized for this acceptance",
+    "Importer regression issue #25 remains OPEN",
+    "281 shared B1/Menschen Verben IDs lack a proven SRS-safe multi-view import/merge plan"
+  ],
+  "policy": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md; CONTENT-OUTPUT-DELIVERY-POLICY.json; EXECUTION-OUTCOME-EFFICIENCY-POLICY.json",
+  "publish_decision": {
+    "stage7_pass_allowed": false,
+    "stage7_final_zip_created": false,
+    "reason": "Do not create redundant or misleading FINAL ZIP while hard Stage6 is BLOCKED; reuse the verified 20-file Stage5 content-only production ZIP",
+    "personal_import_instruction": "DO_NOT_IMPORT_REPLACE_OR_MERGE_IN_PERSONAL_PROFILE"
+  },
+  "library": {
+    "report_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Reports/B1-24-STAGE7-ENTRY-GATE-BLOCKED-20261105.json",
+    "report_stable_id": "libfile_e274ea6aeb208191af7037c9fe3d2c47",
+    "report_sha256": "ec82c9fa9e0471144fefbd9acf7d8c9db9b9a5504efec43f9a4bd833e967e79a",
+    "read_only_verifier_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Tools/stage7_prepublication_gate.py",
+    "verifier_stable_id": "libfile_ab93f01c8c54819183c4fd970848c2ef",
+    "verifier_sha256": "720cc105c374a3a352dcb8094261bd304d34a7824a14f7bc7b3bf16397adb95e",
+    "exact_byte_readback": "PASS_2_OF_2"
+  },
+  "parent_checkpoints": {
+    "stage5": "Workspaces/menschen-b1-24-lessons-v336/Stage5/B1-24-STAGE5-LATEST.json",
+    "stage5_git_blob_sha": "b2b851d89850c294ffe3c4007193fe6d35e87cd0",
+    "stage6": "Workspaces/menschen-b1-24-lessons-v336/Stage6/B1-24-STAGE6-LATEST.json",
+    "stage6_git_blob_sha": "01f58d6ae73283685020757e8048a4efdfe3dff8"
+  },
+  "next": "Only after real native exact-v505 isolated import/roundtrip/presentation/SRS safety and issue #25 resolution: rerun Stage6 to PASS, then publish official Stage7 FINAL in one organized release ZIP. No implicit waiver of user data safety."
+}

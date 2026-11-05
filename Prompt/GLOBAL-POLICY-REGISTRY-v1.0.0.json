@@ -180,6 +180,54 @@
         4,
         5
       ]
+    },
+    "learner_visible_front_hf2": {
+      "path": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.1.0.md",
+      "blob_sha": "7f86d536cec34f917103808ddb59313e26163e8e",
+      "scope": "NEW_OR_MUTABLE_GERMAN_NOUN_VERB_ADJECTIVE_LEARNER_VISIBLE_PROJECTIONS",
+      "stages": [
+        5,
+        6
+      ],
+      "note": "HF2 remains a normative policy; producer usage must be implemented and tested separately."
+    },
+    "learner_visible_front_hf2_validator": {
+      "path": "Verification/validate_learner_visible_lexical_front_v1_1_0.py",
+      "blob_sha": "ea67592b68d245ed3069bcd84ac08fc375423e66",
+      "scope": "SOURCE_ATTESTED_LEXICAL_FRONT_SEMANTIC_QA",
+      "stages": [
+        5
+      ]
+    },
+    "lexical_front_transport_gate": {
+      "path": "Verification/validate_lexical_front_projection_transport_v1.py",
+      "blob_sha": "f8802e9aafd60f1d3478a9039410dc46069f4e9d",
+      "scope": "MUTABLE_NEUTRAL_VOCABULARY_NOUN_VERB_ADJECTIVE_WITH_CANONICAL_UNIT",
+      "stages": [
+        5
+      ],
+      "adoption": "REAL_A2_1778_TESTED__OTHER_PRODUCERS_NOT_YET_VERIFIED",
+      "note": "Fails missing consumer type/core for source-attested morphology; does not invent forms; no Stage6 proof."
+    },
+    "lexical_front_transport_adapter": {
+      "path": "Tools/project_lexical_front_transport_v1.py",
+      "blob_sha": "4b87c63b7d61dd89383029f530bc658efbb5aa51",
+      "scope": "SOURCE_PINNED_MUTABLE_NEUTRAL_LEXICAL_PROJECTIONS",
+      "stages": [
+        5
+      ],
+      "adoption": "REAL_A2_1778_TESTED__OTHER_PRODUCERS_NOT_YET_VERIFIED",
+      "note": "Creates metadata-only candidate, preserves source front/typing/IDs/SRS."
+    },
+    "stage5_front_gated_clean_builder": {
+      "path": "Tools/build_front_gated_clean_delivery_v1.py",
+      "blob_sha": "f87aa6ba329cca794dbbe2d2db9959e9591bf533",
+      "scope": "OPT_IN_NATIVE_STAGE5_BUILDER_WITH_READABLE_CANONICAL_MORPHOLOGY",
+      "stages": [
+        5
+      ],
+      "adoption": "REAL_A2_1778_OLD_BLOCKED_REPAIRED_PASS__OTHER_PRODUCERS_NOT_YET_VERIFIED",
+      "note": "Wrapper runs transport gate before exact existing official builder; not retroactively replacing every producer adapter."
     }
   },
   "adoption_levels": [
@@ -195,5 +243,6 @@
   "vocabulary_note": "Generic user-imported Vocabulary is not a single certified native workstream; the real current producer output has not been located. v411 Canonical projector only has synthetic scoped proof.",
   "semantic_note": "Typed Wortnetz graph, learner-visible details and lexical_relations_v1 sidecar remain distinct authorities; equivalence never inferred.",
   "stage5_details_note": "For present details on ordinary neutral vocabulary projection, central validator fails closed on malformed JSON/list sections; historical B1 L19 145 plain-prose cells NOT automatically rewritten.",
-  "routing_only_note": "RESUME-ROUTES.json contains navigation hints, never stage/progress authority. Different workstreams need independent evidence."
+  "routing_only_note": "RESUME-ROUTES.json contains navigation hints, never stage/progress authority. Different workstreams need independent evidence.",
+  "learner_visible_front_transport_routing_note": "HF2 binding in active version-pinned registry: source-derived morphology MUST bind to consumer-readable canonical_unit.type/core or equivalent native producer projection. Neutral validator alone is insufficient. Real A2 1778 owner rows: 2102 pre-fix transport failures across 959 attested cards; adapted 772 metadata-only rows, 0 failures, official builder and 8 negative tests. Stage6 actual app not executed. Adapters for remaining workstreams not globally proven; require source-specific QA and do not rewrite LOCKED, UI or SRS."
 }

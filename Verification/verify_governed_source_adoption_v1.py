@@ -22,9 +22,9 @@ sys.path.insert(0,str(ROOT/"Tools"))
 import build_governed_clean_delivery_v1 as governed
 
 CATALOG = "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json"
-CATALOG_BLOB = "ada9e2785ad9ecb338ae97305a063ac507c5b99e"
+CATALOG_BLOB = "b803b0d13c1b406f8034b471ae94d5f0d2c2f57b"
 FAMILIES = "Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json"
-FAMILIES_BLOB = "ecff9d82ea4597255c9cb9ce9edabcb2aa170500"
+FAMILIES_BLOB = "3f1d5060434191f3d425ee6a72dee4725819e669"
 RECEIPT_SCHEMA = "gfp-opt-p1-governed-stage5-producer-invocation@1.0.0"
 
 class AdoptionError(ValueError):
@@ -56,7 +56,7 @@ def catalog_authority(root: Path=ROOT):
           and profiles.get("schema")=="gfp-opt-p1-source-domain-applicability-profiles@1.0.0",
           "CATALOG_PROFILE_SCHEMA_NOT_ACTIVE")
     guard(len(catalog.get("families",[]))==21
-          and len(catalog.get("workspaces",[]))==34
+          and len(catalog.get("workspaces",[]))==35
           and len(profiles.get("families",[]))==21,
           "CATALOG_COVERAGE_DRIFT")
     return catalog,profiles

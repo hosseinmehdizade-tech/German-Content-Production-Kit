@@ -181,7 +181,7 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
             "IMPACT_PLAN_PROMOTED_TO_ADOPTION")
     require(len(impact.get("selected_policy_bindings",[]))==15
             and len(impact.get("family_impacts",[]))==315
-            and len(impact.get("workspace_impacts",[]))==510
+            and len(impact.get("workspace_impacts",[]))==525
             and len(impact.get("root_workstream_impacts",[]))==255,
             "POLICY_IMPACT_CARDINALITY_MISMATCH")
     fbyid={f["id"]:f for f in snapshot["families"]}
@@ -262,7 +262,7 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
           "source_currentness":"NOT_VERIFIED_BY_THIS_LEDGER",
           "next_action":next_action(spec["declared_domain"],stage5)
         })
-    require(len(rows)==21 and sum(len(f["git_workspaces"]) for f in rows)==34
+    require(len(rows)==21 and sum(len(f["git_workspaces"]) for f in rows)==35
             and sum(len(f["root_summary_hints"]) for f in rows)==17,
             "DASHBOARD_CATALOG_CARDINALITY_DRIFT")
     return {
@@ -282,11 +282,11 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
       },
       "counts":{
         "families":len(rows),
-        "workspaces":34,
+        "workspaces":35,
         "roots":17,
         "central_policy_bindings":15,
         "policy_family_candidate_impacts":315,
-        "workspace_pointer_navigation_views":510,
+        "workspace_pointer_navigation_views":525,
         "root_pointer_navigation_views":255,
         "explicit_historical_remote_byte_witnesses":1,
         "historical_neutral_format_families":

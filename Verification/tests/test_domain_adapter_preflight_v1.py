@@ -60,7 +60,8 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
               "PASS_DOMAIN_AND_METADATA_ROUTING_ONLY__ALL_NATIVE_ADOPTIONS_HELD")
 
     def test_five_actual_untracked_roots_not_content_qa_errors(self):
-        t=self.actual["root_checkpoint_issue_triage"]
+        t=[x for x in self.actual["root_checkpoint_issue_triage"]
+           if x.get("issue_type")=="ROOT_CHECKPOINT_UNTRACKED"]
         self.assertEqual(len(t),5)
         self.assertEqual(self.actual["counts"]["untracked_root_checkpoints"],5)
         self.assertEqual(self.actual["counts"]["classified_existing_root_checkpoint_issues"],5)
@@ -81,18 +82,18 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
         self.assertEqual(self.actual["root_branch_evidence_type"],
             "PINNED_HISTORICAL_BRANCH_LOCATION_ONLY__LIVE_REMOTE_WORKFLOW_SEPARATE")
         found=[x for x in self.actual["root_checkpoint_issue_triage"]
-               if x["branch_checkpoint_historical_observation"]]
+               if x.get("branch_checkpoint_historical_observation")]
         self.assertEqual(len(found),4)
         self.assertTrue(all(x["auto_repair"] is False and
             x["branch_checkpoint_historical_observation"]["source_currentness"]==
             "NOT_VERIFIED" for x in found))
         grammar=next(x for x in self.actual["root_checkpoint_issue_triage"]
-                     if x["root_key"]=="grammar_aktiv_a1_c1")
+                     if x.get("root_key")=="grammar_aktiv_a1_c1")
         self.assertIsNone(grammar["branch_checkpoint_historical_observation"])
 
     def test_nvv_october_branch_and_november_library_conflict_keeps_hold(self):
         row=next(x for x in self.actual["root_checkpoint_issue_triage"]
-                 if x["root_key"]=="nomen_verb_verbindungen")
+                 if x.get("root_key")=="nomen_verb_verbindungen")
         self.assertEqual(row["branch_checkpoint_historical_observation"]["qualified_branch"],
                          "nvv-production")
         self.assertTrue(row["newer_library_candidate_is_unverified"]["source_currentness"].startswith(

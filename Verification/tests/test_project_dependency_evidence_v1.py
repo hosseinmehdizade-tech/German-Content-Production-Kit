@@ -49,16 +49,16 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_all_known_families_workspaces_and_root_keys_have_graph_nodes(self):
         r = self.build()
         self.assertEqual(r["counts"]["families"], 21)
-        self.assertEqual(r["counts"]["workspaces"], 34)
+        self.assertEqual(r["counts"]["workspaces"], 35)
         self.assertEqual(r["counts"]["root_keys"], 17)
         self.assertEqual(r["counts"]["policies"], 15)
-        self.assertEqual(len(r["nodes"]), 21 + 34 + 17 + 15)
+        self.assertEqual(len(r["nodes"]), 21 + 35 + 17 + 15)
 
     def test_every_workspace_has_exactly_one_family_ownership_edge(self):
         r = self.build()
         ownership = [e for e in r["edges"] if e["kind"] == "WORKSPACE_OWNERSHIP_EXPLICIT"]
-        self.assertEqual(len(ownership), 34)
-        self.assertEqual(len({x["from"] for x in ownership}), 34)
+        self.assertEqual(len(ownership), 35)
+        self.assertEqual(len({x["from"] for x in ownership}), 35)
 
     def test_policy_edges_label_potential_impact_not_verified_adoption(self):
         r = self.build()
@@ -70,12 +70,12 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_currentness_applies_to_all_workspaces(self):
         r = self.build()
         edges = [x for x in r["edges"] if x["from"] == "policy:currentness"]
-        self.assertEqual(len(edges), 34)
+        self.assertEqual(len(edges), 35)
 
     def test_lexical_policy_does_not_imply_cross_source_audit_is_content_producer(self):
         r = self.build()
         edges = [x for x in r["edges"] if x["from"] == "policy:related_taxonomy"]
-        self.assertEqual(len(edges), 31)
+        self.assertEqual(len(edges), 32)
         self.assertFalse(any("menschen-verben-aud006" in x["to"] for x in edges))
 
     def test_neutral_builder_application_is_conditional_not_34_verified(self):
@@ -132,7 +132,7 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_changed_lexical_policy_produces_scoped_possible_impacts(self):
         path = self.registry["policy_bindings"]["related_taxonomy"]["path"]
         impact = self.build(changes=[path])["prospective_impact"][0]
-        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 31)
+        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 32)
         self.assertTrue(impact["impact_is_prospective_only"])
         self.assertFalse(impact["locked_sources_reopened"])
 
@@ -149,7 +149,7 @@ class TestDependencyEvidence(unittest.TestCase):
 
     def test_changing_registry_requires_all_policy_scope_review(self):
         impact = self.build(changes=[graph.REGISTRY])["prospective_impact"][0]
-        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 34)
+        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 35)
         self.assertFalse(impact["locked_sources_reopened"])
 
     def test_change_path_traversal_is_rejected_as_unsafe(self):

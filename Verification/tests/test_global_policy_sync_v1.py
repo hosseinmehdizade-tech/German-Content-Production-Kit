@@ -141,6 +141,16 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         files[auditor.START] += b"\nExact per-workstream adapter/CI parity remains unverified"
         self.assertIn("STALE_ADAPTER_CI_CLAIM", self.check_snapshot(files=files))
 
+    def test_new_nvv_workspace_only_routed_not_governed_or_stage_accepted(self):
+        path="Workspaces/nomen-verb-verbindungen"
+        rows=[w for w in self.base_matrix["git_workspaces"] if w["path"]==path]
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]["native_adapter_verified"],"NO_WORKSPACE_SPECIFIC_PROOF")
+        self.assertEqual(rows[0]["real_output_verified"],"NO_WORKSPACE_WIDE_PROOF")
+        self.assertEqual(rows[0]["semantic_stage4"],"NOT_ATTESTED_BY_SYNC")
+        self.assertEqual(rows[0]["stage6_runtime"],"NOT_ATTESTED_BY_SYNC")
+        self.assertEqual(self.check_snapshot(),[])
+
     def test_new_unregistered_workspace_fails(self):
         dirs = list(self.base_dirs) + ["Workspaces/new-future-course"]
         self.assertIn("WORKSPACE_INVENTORY_DRIFT", self.check_snapshot(dirs=dirs))

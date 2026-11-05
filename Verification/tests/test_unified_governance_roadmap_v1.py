@@ -50,7 +50,7 @@ class RoadmapContracts(unittest.TestCase):
         out = self.check()
         self.assertEqual(out["program"], "GFP-OPT-2026")
         self.assertEqual(out["roadmap_priorities"], 7)
-        self.assertEqual(out["inventory"]["git_workspaces"], 34)
+        self.assertEqual(out["inventory"]["git_workspaces"], 35)
         self.assertEqual(out["policy_bundles_routed"], 15)
 
     def test_fake_all_workspaces_adopted_is_rejected(self):

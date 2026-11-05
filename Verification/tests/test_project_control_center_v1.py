@@ -37,7 +37,7 @@ class TestProjectControlCenter(unittest.TestCase):
 
     def test_real_catalog_has_distinct_family_workspace_and_root_identity(self):
         self.assertEqual(len(self.cat["families"]), 21)
-        self.assertEqual(len(self.cat["workspaces"]), 34)
+        self.assertEqual(len(self.cat["workspaces"]), 35)
         self.assertEqual(len(self.cat["root_workstreams"]), 17)
         self.assertEqual(pcc.catalog_errors(self.cat), [])
 
@@ -47,11 +47,22 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertEqual(snapshot["counts"]["git_workspaces"], len(pcc.tracked_dirs(self.index)))
         self.assertEqual(snapshot["counts"]["root_workstreams"], len(self.state["workstreams"]))
 
-    def test_34_original_workspaces_map_to_exactly_one_family(self):
-        self.assertEqual(len(pcc.tracked_dirs(self.index)), 34)
+    def test_35_current_workspaces_map_to_exactly_one_family(self):
+        self.assertEqual(len(pcc.tracked_dirs(self.index)), 35)
         snap = self.build()
-        self.assertEqual(snap["counts"]["mapped_workspaces"], 34)
+        self.assertEqual(snap["counts"]["mapped_workspaces"], 35)
         self.assertEqual(len(snap["families"]), len({x["id"] for x in snap["families"]}))
+
+    def test_nvv_workspace_source_owner_is_same_existing_root_family(self):
+        path="Workspaces/nomen-verb-verbindungen"
+        workspace=next(w for w in self.cat["workspaces"] if w["git_dir"]==path)
+        self.assertEqual(workspace["id"],"workspace:nomen-verb-verbindungen")
+        self.assertEqual(workspace["parent_family_id"],"family:nomen-verb-verbindungen")
+        root=next(w for w in self.cat["root_workstreams"] if w["key"]=="nomen_verb_verbindungen")
+        self.assertEqual(root["parent_family_id"],workspace["parent_family_id"])
+        snap=self.build()
+        self.assertNotIn({"type":"UNMAPPED_NEW_WORKSPACE","path":path},snap["issues"])
+        self.assertEqual(snap["counts"]["stage4_stage5_stage6_stage7_certificates_generated"],0)
 
     def test_canonical_a1_verben_is_not_general_menschen_a1(self):
         ws = next(x for x in self.cat["workspaces"] if
@@ -66,10 +77,10 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertEqual(family["name"], "Menschen-Portfolio")
         self.assertEqual(ws["kind"], "CROSS_SOURCE_QA_OR_RUNTIME_WORKSPACE")
 
-    def test_missing_direct_git_directory_does_not_invalidate_library_family(self):
+    def test_nvv_just_added_workspace_still_keeps_original_root_owner(self):
         rows = self.build()["families"]
         nv = next(x for x in rows if x["name"] == "Nomen-Verb-Verbindungen")
-        self.assertEqual(nv["git_workspace_count"], 0)
+        self.assertEqual(nv["git_workspace_count"], 1)
         self.assertEqual(nv["root_summary_entries"], 1)
         self.assertEqual(nv["independent_semantic_stage_proof"], "NOT_VERIFIED_BY_THIS_TOOL")
 

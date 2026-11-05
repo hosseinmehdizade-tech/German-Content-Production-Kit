@@ -1,0 +1,93 @@
+{
+  "schema": "gcpk-op02-related-taxonomy-real-producer-output-smoke@1.0",
+  "date": "2026-11-05",
+  "mission": "PROCESS_QA_ONLY_NO_CARD_WORK",
+  "auditor": "Verification/related_taxonomy_adapter_bridge_v1_1.py",
+  "github_ci": {
+    "pr": 80,
+    "merged_commit": "51f6ea920a4502aa9dc7d0d9e038444f708aeacb",
+    "source_head_under_test": "e243c403d26e34a673bda34eece225ca8b2a0f21",
+    "run": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/41941323883",
+    "ubuntu": "PASS_49_TAXONOMY_PLUS_16_ADAPTER_TESTS",
+    "windows": "PASS_49_TAXONOMY_PLUS_16_ADAPTER_TESTS"
+  },
+  "actual_archive_readonly_runs": [
+    {
+      "source": "Menschen-A1",
+      "artifact": "Menschen-A1-V25-R1-RELATED-DISPLAY-EXACT-RESOLUTION-PRE-STAGE4-20261104.zip",
+      "zip_sha256": "46d741a88e596f9c9b2bccc6a89fb2a3f42389ff6a3b091b313a2a61eac46e42",
+      "tsv_sha256": "93bc500bb2f50593df3e447b27bc8d58dfaa886e00f116272aec25e421f8d9ad",
+      "rows": 2997,
+      "related_items": 973,
+      "status": "PARSED_ADVISORY",
+      "high": 1,
+      "medium": 31
+    },
+    {
+      "source": "Menschen-A2 L17 vNext",
+      "artifact": "Menschen-A2-L17-vNext-REPAIR2-QA-CORRECTED-OFFICIAL-STAGE5-CONTENT-20261104-NOT-IMPORT.zip",
+      "zip_sha256": "67e1fb9a6b5a1d255d4de79effef7897118ac562c157c415bcaf2264a09ffe3e",
+      "tsv_sha256": "28278c9fa19dec9b77b164c5e12af34f024d9158a2a9501f192ed52a3bb20866",
+      "rows": 112,
+      "related_items": 45,
+      "status": "PARSED_ADVISORY",
+      "high": 0,
+      "medium": 0
+    },
+    {
+      "source": "Menschen-B1 24-lesson Stage4 working master",
+      "artifact": "Menschen-B1-24-STAGE4-RISK-BASED-AI-PASS-NONIMPORT-20261104.zip",
+      "zip_sha256": "35c290ad3ac8d2ba10ff33123c57614d9f3c1cb1f2cb87367eced4c356b6d72d",
+      "tsv_sha256": "d33aa73622799599f03cd8bd0651733f57d60d908aa9f846ae9c2ae35a8aa2d1",
+      "rows": 3088,
+      "related_items": null,
+      "status": "FAIL_CLOSED_INVALID_JSON_DETAILS",
+      "failure_type": "145 B1-L19 records have German prose rather than JSON array in details column; all 145 of that lesson are affected. 2943 other rows decode as details JSON lists; total semantic audit not run",
+      "affected_lesson": "B1-L19",
+      "invalid_count": 145,
+      "first_affected_card_id": "mb1m-lu-2707",
+      "last_affected_card_id": "mb1m-lu-2838",
+      "custom_fields_json_valid_all": true,
+      "examples_json_valid_all": true,
+      "requires_explicit_native_workstream_exporter_repair": true
+    },
+    {
+      "source": "250 Verben mit Präpositionen",
+      "artifact": "250-Verben-Lexical-Enrichment-v1.8-R7-OFFICIAL-STAGE4-PASS-V505-FULL-TSV-IMPORT-QA-20261104.zip",
+      "zip_sha256": "58e0f69b9fbc1cdb8a36e27ed54f7c921c3f52a883339ba1fe9b4992d090b5d9",
+      "tsv_sha256": "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191",
+      "rows": 292,
+      "related_items": 5,
+      "status": "PARSED_ADVISORY",
+      "high": 0,
+      "medium": 0
+    },
+    {
+      "source": "Nomen-Verb-Verbindungen R6.1",
+      "artifact": "NVV-v3.3.6-R6.1-AUDITED-BALANCED-84-LEKTIONEN-CONTENT.zip",
+      "zip_sha256": "dd9169555a9ef2a6bd2cf73c6a0d2ec11b36b9da8d0cf931393462ac5ca85ae6",
+      "tsv_sha256": "8cbe0ff33c35be5e34bd7d68cc18e8fe0ea70fa75133a0b17b6d6a5875661153",
+      "rows": 2492,
+      "related_items": 0,
+      "status": "PARSED_SCHEMA_ONLY_NO_VISIBLE_RELATED_COVERAGE",
+      "high": 0,
+      "medium": 0
+    }
+  ],
+  "guarantees": {
+    "archive_crc": "PASS_ALL_4_NEW_ARCHIVES",
+    "source_mutated": false,
+    "report_only": true,
+    "locked_originals_mutated": false,
+    "app_runtime_ui_fsrs_mutated": false,
+    "stage4_linguistic_approved": false,
+    "stage5_6_7_approved_by_this_check": false,
+    "actual_native_vocabulary_producer_output_verified": false
+  },
+  "follow_up": [
+    "Investigate B1-L19 exporter/writer details field bug in owning workstream, not in optimization read-only mission; preserve original/LOCKED and source.",
+    "Add or reuse an early fail-closed per-row details JSON shape guard at editable producer to Stage5 boundary, rather than silently converting prose to details.",
+    "Locate exact actual current generic Vocabulary producer output for separate parity test.",
+    "Do not equate zero related items in NVV with semantic correctness or full relation coverage."
+  ]
+}

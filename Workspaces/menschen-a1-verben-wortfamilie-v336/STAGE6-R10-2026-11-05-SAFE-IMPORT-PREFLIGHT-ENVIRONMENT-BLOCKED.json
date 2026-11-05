@@ -1,0 +1,79 @@
+{
+  "schema": "gcpk-menschen-a1-verben-stage6-r10-preflight@1.0.0",
+  "date": "2026-11-05",
+  "status": "STAGE6_NONCURRENT_R2_PARSER_PREFLIGHT_PASS__ACTUAL_CURRENT_AND_BROWSER_INDEXEDDB_BLOCKED",
+  "workstream": "menschen-a1-verben-wortfamilie-v336",
+  "source": {
+    "stage4": "PASS_RISK_BASED_STAGE4",
+    "stage5": "PASS_EXACT_R10_CONTENT_REFERENCE_R2_PRESENTATION",
+    "r10_tsv_sha256": "6f75cf9eadfe747dec406502293c2856a59f5176d9cf0d38facb23fe70a0c025",
+    "r10_json_sha256": "49c1eebb9ae6bcc9118b971ec8b1c11163074f6e3953e565b062ce19ba51f6fc",
+    "r10_stage5_zip_sha256": "db3120d86945e881e20e1fe4c6de0146ebc89a88d82d0bdce5d098bef265d63f"
+  },
+  "current_runtime": {
+    "version": "v505-R141",
+    "source": "German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json",
+    "artifact": "GFP-v505-R141-COMMITTED-STORAGE-ARCHITECTURE-QA-CORRECTED-CANDIDATE.zip",
+    "expected_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "materialized_this_turn": false,
+    "not_silently_downgraded": true
+  },
+  "noncurrent_reference": {
+    "artifact": "GFP-v505-R141-GLOBAL-LEXICAL-RELATIONS-SENSE-BIDI-QA-R2-CANDIDATE-20261104.zip",
+    "sha256": "99137590901a2c2086521867e128f8deb0dd6a8f694e4f0fcfc905f1060a6569",
+    "index_sha256": "1e46bb4e2103fa3311ebb70559a331e9e7262bcc988066c8ec73269fc1d85dd8",
+    "scope": "PARSER_ONLY_NOT_CURRENT_APP_STAGE6_ACCEPTANCE"
+  },
+  "parser": {
+    "source": "Exact unmodified IMPORT_LIMITS_V474 and parseTsv from R2 HTML, executed in Node VM over exact R10 TSV",
+    "result": "PASS_NONCURRENT_REFERENCE_TSV_PARSER_ONLY",
+    "cards": 310,
+    "unique_ids": 310,
+    "columns": 23,
+    "front_four_forms_verb_cards": 247,
+    "rich_relation_sidecar_cards": 306,
+    "detail_sections": 2237,
+    "bad_columns": 0,
+    "duplicates": 0,
+    "empty_front_or_back": 0,
+    "negative_synthetic": {
+      "unclosed_quote": "REJECTED",
+      "single_cell_over_16mb": "REJECTED"
+    },
+    "script_sha256": "1145b40224cd8fe8b5530e6616dc7aea5e94ff60796af5a0acb70aecad325356",
+    "report_sha256": "2abb3a210e5ea2157187d6bc40008945d0d6d5aba3f62ac53e088d8295e865a4",
+    "note": "TSV parsing does not prove the importer installed data, IndexedDB durability, FSRS integrity or semantic identity."
+  },
+  "browser": {
+    "attempted": "Playwright Chromium clean isolated context with no real user profile, service worker blocked, zero storage_state copy",
+    "attempted_origins": [
+      "localhost ephemeral",
+      "https://stage6-gfp-isolated.example.test",
+      "file://"
+    ],
+    "result": "BLOCKED_BY_ADMINISTRATOR_NAVIGATION",
+    "error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+    "actual_import_transaction": "NOT_RUN",
+    "IndexedDB_commit_reload": "NOT_RUN",
+    "Study_and_Quick_after_import": "NOT_RUN",
+    "real_user_profile_touched": false
+  },
+  "persistence": {
+    "git": "THIS_RECEIPT",
+    "library": "UPLOAD_FAILED_CONTAINER_SESSION_EXPIRED__NOT_CLAIMED_PERSISTED",
+    "local_report_sha256": "2ab8d4d22d3b56287916d5ecebdea5d92fdd99beceeae7c120404bda73a297b3",
+    "local_report_path": "/mnt/data/a1_stage6/Stage6-R10-20261105-SAFE-PREFLIGHT-RESULT.json",
+    "new_zip_created": false
+  },
+  "gates": {
+    "stage4": "PASS_EXACT_R10",
+    "stage5": "PASS_CONTENT_WITH_R2_REFERENCE_PRESENTATION",
+    "stage6": "BLOCKED_CURRENT_EXACT_RUNTIME_UNAVAILABLE_AND_NATIVE_ORIGIN_RESTRICTED",
+    "stage7": "NOT_FINAL"
+  },
+  "outstanding_regressions": {
+    "import": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/25",
+    "lexical_relations": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/31"
+  },
+  "next": "Acquire true CURRENT zip SHA256 482b... (do not substitute R2 or historical main); run real Windows/Chromium disposable real-origin Profile import R10 merge mode, 310 ID check, IndexedDB reload and exact FSRS/SRS parity plus Study/Quick Typing Audio, 2702 unified combinations, 1228 relations, 247 four-form fronts, test #25 and #31. Then Stage6 PASS if proven. No packaging/release Stage7 before this."
+}

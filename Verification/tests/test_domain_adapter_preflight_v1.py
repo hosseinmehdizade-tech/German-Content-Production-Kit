@@ -75,20 +75,23 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
           "unregelmaessige_verben_kombinationen"
         })
 
-    def test_four_branch_qualified_checkpoint_locations_are_navigation_not_current(self):
-        self.assertEqual(self.actual["counts"]["branch_qualified_checkpoint_candidates"],4)
-        self.assertEqual(self.actual["counts"]["unresolved_grammar_branch_checkpoint_candidates"],1)
+    def test_five_branch_qualified_checkpoint_locations_are_navigation_not_current(self):
+        self.assertEqual(self.actual["counts"]["branch_qualified_checkpoint_candidates"],5)
+        self.assertEqual(self.actual["counts"]["unresolved_grammar_branch_checkpoint_candidates"],0)
         self.assertEqual(self.actual["root_branch_evidence_type"],
             "PINNED_HISTORICAL_BRANCH_LOCATION_ONLY__LIVE_REMOTE_WORKFLOW_SEPARATE")
         found=[x for x in self.actual["root_checkpoint_issue_triage"]
                if x["branch_checkpoint_historical_observation"]]
-        self.assertEqual(len(found),4)
+        self.assertEqual(len(found),5)
         self.assertTrue(all(x["auto_repair"] is False and
             x["branch_checkpoint_historical_observation"]["source_currentness"]==
             "NOT_VERIFIED" for x in found))
         grammar=next(x for x in self.actual["root_checkpoint_issue_triage"]
                      if x["root_key"]=="grammar_aktiv_a1_c1")
-        self.assertIsNone(grammar["branch_checkpoint_historical_observation"])
+        self.assertEqual(grammar["branch_checkpoint_historical_observation"]["qualified_branch"],
+                         "grammar-aktiv-a1-c1-production")
+        self.assertEqual(grammar["branch_checkpoint_historical_observation"]["source_currentness"],
+                         "NOT_VERIFIED")
 
     def test_nvv_october_branch_and_november_library_conflict_keeps_hold(self):
         row=next(x for x in self.actual["root_checkpoint_issue_triage"]

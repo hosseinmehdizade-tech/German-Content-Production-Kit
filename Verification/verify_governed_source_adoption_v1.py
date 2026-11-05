@@ -15,6 +15,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"Tools"))
@@ -223,8 +224,10 @@ def main():
               and not args.new_report.exists()
               and not args.new_report.is_symlink()
               and args.new_report.resolve() not in {
-                  args.native_receipt.resolve(),args.archive.resolve()},
-              "REPORT_PATH_MUST_BE_NEW")
+                  args.native_receipt.resolve(),args.archive.resolve()}
+              and args.source_dir.resolve() not in args.new_report.resolve().parents
+              and args.workspace_root.resolve() not in args.new_report.resolve().parents,
+              "REPORT_PATH_MUST_BE_NEW_OUTSIDE_SOURCE_AND_WORKSPACE")
         result=verify(family_id=args.family_id,workspace_id=args.workspace_id,
                       latest_blob=args.latest_git_blob,
                       workspace_root=args.workspace_root,source=args.source_dir,
@@ -234,7 +237,7 @@ def main():
             out.write("\n")
         print(json.dumps(result,ensure_ascii=False,sort_keys=True,indent=2))
         return 0
-    except (OSError,ValueError,UnicodeError) as error:
+    except (OSError,ValueError,UnicodeError,zipfile.BadZipFile) as error:
         print("P1_SOURCE_ADOPTION_REPLAY_FAIL:"+str(error),file=sys.stderr)
         return 2
 

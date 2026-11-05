@@ -30,7 +30,12 @@ def load_pinned(root:Path,path:str,expected_blob:str):
     require(f.is_file() and not f.is_symlink() and
             f.resolve().is_relative_to(root.resolve()),"GIT_SOURCE_MISSING")
     b=f.read_bytes()
-    require(git_blob(b)==expected_blob,"GIT_SOURCE_BLOB_DRIFT")
+    require(git_blob(b)==expected_blob or
+            (b"\r\
+" in b and git_blob(b.replace(b"\r\
+",b"\
+"))==expected_blob),
+            "GIT_SOURCE_BLOB_DRIFT")
     return json.loads(b)
 def verify(root=ROOT,receipt=None):
     root=Path(root)

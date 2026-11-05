@@ -1,0 +1,43 @@
+name: Phase3 Source Package Byte Attestation (fail-closed)
+on:
+  push:
+    paths:
+      - 'Tools/attest_source_package_bytes_v1.py'
+      - 'Verification/tests/test_attest_source_package_bytes_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/**'
+      - '.github/workflows/source-package-byte-attestation-v1.yml'
+  pull_request:
+    paths:
+      - 'Tools/attest_source_package_bytes_v1.py'
+      - 'Verification/tests/test_attest_source_package_bytes_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/**'
+      - '.github/workflows/source-package-byte-attestation-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scoped-byte-contract:
+    name: Source+ZIP+manifest adversarial fixtures (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile read-only verifier and tests
+        run: >-
+          python -B -m py_compile
+          Tools/attest_source_package_bytes_v1.py
+          Verification/tests/test_attest_source_package_bytes_v1.py
+      - name: Reject source drift, tampered manifests, unsafe ZIPs and fake acceptance
+        run: python -B -m unittest discover -s Verification/tests -p test_attest_source_package_bytes_v1.py -v
+      - name: Confirm actual user binary remains an external evidence boundary
+        run: >-
+          python -B -c "print('Scoped CI tests are synthetic. Actual R7 user PDF and Library ZIP are verified only in their dated exact-byte readback receipt, not assumed present in GitHub.')"

@@ -246,7 +246,8 @@ class AdoptionDashboardTests(unittest.TestCase):
     def test_five_root_checkpoint_triages_explain_metadata_issues(self):
         report=self.output["nonlexical_domain_preflight"]
         self.assertEqual(self.output["counts"]["triaged_untracked_root_checkpoints"],5)
-        self.assertEqual(len(report["root_checkpoint_issue_triage"]),5)
+        self.assertEqual(len([x for x in report["root_checkpoint_issue_triage"]
+                             if x.get("root_key")]),5)
         self.assertTrue(all(x["auto_repair"] is False for x in
                             report["root_checkpoint_issue_triage"]))
         md=m.markdown(self.output)

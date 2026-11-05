@@ -1,0 +1,18 @@
+# Aspekte B2 / Stage2 Lesson03 R15 — source-only AI editorial first pass
+
+**2026-11-05, NOT a release.** Original user CSV only for lexical membership. Sanitized B2 SHA256 `e907d0f882b4b9d02f2c631d9a93b1c4e671f6231e7c0deb257ebc26434011c5`; raw private seven-column CSV historical SHA256 was **not freshly rehashed**.
+
+Lesson03 *Arbeit ist das halbe Leben?*: all original 186 rows 1817–2002 are preserved. Existing R14 30 reviews unchanged. R15 adds **156 individually sourced AI lexical/grammar editorial decisions**: 35 FIX proposals, 90 keep with usage, 28 keep provisional, three source-bound HOLDs. **186/186 first-pass covered; 0/186 independently second-pass reviewed.** Never describe these as human-reviewed or ready for Stage3.
+
+New HOLDs:
+- **#1921 die Datumsangabe:** exact DE/FA duplicate of source ordinal #1920. Both source IDs stay, potential one learner unit only after formal source/sense equivalence decision. Duden https://www.duden.de/rechtschreibung/Datumsangabe .
+- **#1933 die Projektleitung / das Projektmanagement:** two lexemes in a single original CSV source cell. Project leadership and project management overlap but are not always identical. Proposed two separate registered teaching roles, one preserved source ordinal; no cards created.
+- **#1991 respektvoll:** original source cell corrupt, includes `resp`, a TAB, and a duplicated suffix. Editorial candidate `respektvoll, respektvoller, am respektvollsten`; preserve literal source and HOLD automatic publication.
+
+Other corrected risk cases: #1847 umgestalten separable `gestaltete um/hat umgestaltet` (Duden https://www.duden.de/rechtschreibung/umgestalten ); #1849 Bauzeichner/in is a person; #1850 Bürokauffrau plural `Bürokauffrauen` (https://www.duden.de/deklination/substantive/Buerokauffrau); #1856 frustrieren is a transitive verb, not a frustrated adjective; #1879 hauptsächlich usual adverb is invariant; #1906 nahe gelegen physical nearness vs naheliegend reasonability; #1928 Konzeption conceptual design vs medical conception (https://www.duden.de/rechtschreibung/Konzeption); #1942 gliedern in + Akkusativ; #1970 Anbau agriculture without plural vs annex with `Anbauten` (https://www.duden.de/rechtschreibung/Anbau); #1979 Garn = yarn/thread, not fishing net; #1998 verzweifelt means desperate; #2002 Komma plurals `Kommas` and `Kommata` (https://www.duden.de/rechtschreibung/Komma).
+
+The original CSV German/Persian, audio, level-tag and example fields are unchanged. Original source example text is not completed or augmented; 0 authored examples and no import. The published reviewer decision ledger is **AI provisional editorial**, no external human signoff or complete second-method QA yet.
+
+**Reproducibility:** a B2-only portable package retains exact immutable R14 parent, exact sanitized source, all 186 editorial overlay records, 156 individual decisions, German–Persian reasons, fresh-extract replay and tests. Local 1986 structural assertions PASS; portable replay 1302 checks PASS and byte-identical overlay SHA256 `880070158c18ef489a5000f431a1112eedf6660b5924f0edfa99c9e2e769195a`; 8/8 intentional corruptions rejected; 11/11 ZIP payload member hashes and ZIP CRC PASS. Downloaded Library package compared byte-for-byte exact: SHA256 `8d340b1078a39014747b5a798dce63d9433d35eb9861a9e91d165f6e40570a6a`; 1268221 bytes, 12 members; stable Library ID `libfile_75d59c877d4481918d284f956e7b6a15`. Structural tests are not semantic approval.
+
+**Boundary:** Lesson01 has five actual accepted/imported prior-card identity HOLDs; Lesson02 completed 108 AI second pass but independent DE–FA examples/release gate remains. No cross-workspace mutation, no personal SRS, no cards. **Stage2 NOT APPROVED; Stage3–7 NOT_STARTED.**

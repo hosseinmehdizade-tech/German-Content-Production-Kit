@@ -7,6 +7,7 @@ missing CHECKPOINT files, copy other sources, run native producers or grant QA.
 from __future__ import annotations
 import argparse
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -40,6 +41,14 @@ def extra_index_path(path,root=ROOT):
             and re.fullmatch("[a-f0-9]{40}",sha) is not None,
             "EXTRA_INDEX_NOT_CANONICAL:"+path)
     return sha
+
+def matches_exact_git_text(data:bytes,git_blob:str)->bool:
+    def blob(value:bytes)->str:
+        return hashlib.sha1(
+            b"blob "+str(len(value)).encode("ascii")+b"\\0"+value
+        ).hexdigest()
+    return (blob(data)==git_blob or
+            (b"\\r\\n" in data and blob(data.replace(b"\\r\\n",b"\\n"))==git_blob))
 
 def current_git_json(index,path,root=ROOT):
     require(path in index,"SOURCE_AUTHORITY_NOT_TRACKED:"+path)
@@ -240,6 +249,11 @@ def execute(root=ROOT):
             if p in index: pointers[p]=phase.load_json_from_index(p,index,root)
     old=phase.build(cat,index,rootstate,pointers)
     path=profile["input_pins"]["op02_shadow"]["path"]
+    op02_file=root/path
+    require(op02_file.is_file() and not op02_file.is_symlink()
+            and matches_exact_git_text(op02_file.read_bytes(),
+                                       profile["input_pins"]["op02_shadow"]["git_blob"]),
+            "OP02_WORKTREE_NOT_EXACT_PINNED_SHADOW")
     op02=module("gfp_opt_existing_op02_nonactive",path)
     return assessment(profile,cat,domains,sources,routes,index,
                       {"workstreams":op02.DOMAINS},old["issues"])

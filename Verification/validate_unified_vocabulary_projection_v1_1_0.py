@@ -28,6 +28,33 @@ def parse_custom(row):
         return {},'CUSTOM_FIELDS_NOT_OBJECT'
     return {},'CUSTOM_FIELDS_NOT_OBJECT'
 
+
+def validate_visible_details(row):
+    """Fail closed on malformed present learner-facing details; never coerce prose."""
+    if 'details' not in row:
+        # Existing neutral fixtures/legacy imports may omit this optional field.
+        return []
+    raw = row['details']
+    if isinstance(raw, str):
+        try:
+            sections = json.loads(raw)
+        except (TypeError, ValueError):
+            return [{'error': 'INVALID_DETAILS_JSON'}]
+    else:
+        sections = raw
+    if not isinstance(sections, list):
+        return [{'error': 'DETAILS_NOT_LIST'}]
+    issues = []
+    for index, section in enumerate(sections):
+        if not isinstance(section, dict):
+            issues.append({'error': 'DETAIL_SECTION_NOT_OBJECT', 'section_index': index})
+            continue
+        if not isinstance(section.get('title'), str) or not section['title'].strip():
+            issues.append({'error': 'DETAIL_SECTION_TITLE_MISSING', 'section_index': index})
+        if not isinstance(section.get('items'), list):
+            issues.append({'error': 'DETAIL_SECTION_ITEMS_NOT_LIST', 'section_index': index})
+    return issues
+
 def card_type(row): return str(row.get('cardType') or row.get('card_type') or '').strip().lower()
 def norm_key(key): return re.sub(r'[^a-z0-9]+','',str(key).lower())
 
@@ -90,6 +117,8 @@ def validate(rows):
         elif ct!=NEUTRAL:
             legacy.append({'id':cid,'card_type':ct});errors.append({'id':cid,'error':'NON_NEUTRAL_VOCABULARY_ENVELOPE','card_type':ct,'expected':NEUTRAL})
         if not str(row.get('category') or '').strip(): errors.append({'id':cid,'error':'MISSING_SEMANTIC_CATEGORY'})
+        for details_error in validate_visible_details(row):
+            errors.append({'id': cid, **details_error})
         custom,custom_error=parse_custom(row)
         if custom_error: errors.append({'id':cid,'error':custom_error})
         contract=str(custom.get('presentation_contract') or '').strip() if isinstance(custom,dict) else ''
@@ -98,7 +127,7 @@ def validate(rows):
         conflicts=top_level_selector_violations(row)+collect_selector_violations(custom)
         if conflicts:
             selector_conflicts.append({'id':cid,'conflicts':conflicts});errors.append({'id':cid,'error':'PRESENTATION_SELECTOR_CONFLICT','conflicts':conflicts})
-    return {'status':'PASS' if not errors else 'FAIL','cards':len(rows),'neutral_card_type':NEUTRAL,'neutral_schema_profile':NEUTRAL_SCHEMA_PROFILE,'presentation_contract':NEUTRAL_PRESENTATION_CONTRACT,'semantic_morphology_policy':'ALLOWED_AND_PRESENTATION_NEUTRAL','selector_scan':'TOP_LEVEL_PLUS_RECURSIVE_CUSTOM_FIELDS_CASE_INSENSITIVE','legacy_or_non_neutral':legacy,'missing_card_type':missing,'presentation_selector_conflicts':selector_conflicts,'errors':errors}
+    return {'status':'PASS' if not errors else 'FAIL','cards':len(rows),'neutral_card_type':NEUTRAL,'neutral_schema_profile':NEUTRAL_SCHEMA_PROFILE,'presentation_contract':NEUTRAL_PRESENTATION_CONTRACT,'semantic_morphology_policy':'ALLOWED_AND_PRESENTATION_NEUTRAL','selector_scan':'TOP_LEVEL_PLUS_RECURSIVE_CUSTOM_FIELDS_CASE_INSENSITIVE','visible_details_schema_gate':'FAIL_CLOSED_IF_DETAILS_PRESENT_JSON_LIST_WITH_TITLE_AND_ITEMS','legacy_or_non_neutral':legacy,'missing_card_type':missing,'presentation_selector_conflicts':selector_conflicts,'errors':errors}
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('projection');a=ap.parse_args();path=Path(a.projection)

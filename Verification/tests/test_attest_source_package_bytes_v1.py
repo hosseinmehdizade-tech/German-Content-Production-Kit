@@ -63,6 +63,27 @@ class TestRealSourcePackageByteContract(unittest.TestCase):
     def attest(self):
         return att.attest(self.profile, self.archive, self.source)
 
+    def test_nondefault_root_manifest_member_requires_explicit_profile(self):
+        self.profile["manifest_member"] = "SHA256SUMS"
+        with zipfile.ZipFile(self.archive, "w", zipfile.ZIP_DEFLATED) as z:
+            for n, data in self.members.items():
+                z.writestr(n, data)
+            text = "".join(f"{att.sha256_bytes(data)}  {name}\n"
+                           for name, data in self.members.items())
+            z.writestr("SHA256SUMS", text)
+        self.profile["artifact_sha256"] = att.sha256_file(self.archive)
+        self.profile["artifact_size_bytes"] = self.archive.stat().st_size
+        result = self.attest()
+        self.assertEqual(result["manifest_entries_verified"], len(self.members))
+        self.profile.pop("manifest_member")
+        with self.assertRaisesRegex(att.AttestationBlocked, "MISSING_SHA256_MANIFEST"):
+            self.attest()
+
+    def test_unsafe_manifest_member_selector_rejected(self):
+        self.profile["manifest_member"] = "../SHA256SUMS"
+        with self.assertRaisesRegex(att.AttestationBlocked, "UNSAFE_PROFILE_MANIFEST_MEMBER"):
+            self.attest()
+
     def test_valid_synthetic_fixture_is_byte_sound_but_not_stage4(self):
         r = self.attest()
         self.assertEqual(r["status"], "PASS_EXACT_SOURCE_PACKAGE_BYTES_AND_MANIFEST__SCOPED_NOT_FINAL")

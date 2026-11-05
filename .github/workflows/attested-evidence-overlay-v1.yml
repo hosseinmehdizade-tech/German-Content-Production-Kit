@@ -1,0 +1,60 @@
+name: Control Center - Scoped Evidence Overlay
+on:
+  push:
+    paths:
+      - 'Optimization-Program/Control-Center/**'
+      - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**'
+      - 'Tools/build_attested_evidence_overlay_v1.py'
+      - 'Tools/attest_source_package_bytes_v1.py'
+      - 'Tools/build_project_dependency_evidence_v1.py'
+      - 'Verification/tests/test_attested_evidence_overlay_v1.py'
+      - 'Verification/tests/test_attest_source_package_bytes_v1.py'
+      - '.github/workflows/attested-evidence-overlay-v1.yml'
+  pull_request:
+    paths:
+      - 'Optimization-Program/Control-Center/**'
+      - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**'
+      - 'Tools/build_attested_evidence_overlay_v1.py'
+      - 'Tools/attest_source_package_bytes_v1.py'
+      - 'Tools/build_project_dependency_evidence_v1.py'
+      - 'Verification/tests/test_attested_evidence_overlay_v1.py'
+      - 'Verification/tests/test_attest_source_package_bytes_v1.py'
+      - '.github/workflows/attested-evidence-overlay-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-evidence:
+    name: Pinned receipt overlay + attack tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate registered historical evidence and render control center
+        run: >-
+          python -B Tools/build_attested_evidence_overlay_v1.py
+          --check --output-dir attested-evidence-output --github-summary
+      - name: Reject fake stages, broken parents, mismatched receipts and Git pin drift
+        run: python -B -m unittest discover -s Verification/tests -p test_attested_evidence_overlay_v1.py -v
+      - name: Verify manifest dialect and source safety attacks
+        run: python -B -m unittest discover -s Verification/tests -p test_attest_source_package_bytes_v1.py -v
+      - name: Publish report without importing any user PDF or ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: attested-evidence-overlay-${{ matrix.os }}
+          path: attested-evidence-output/
+          retention-days: 30
+          if-no-files-found: error

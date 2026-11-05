@@ -38,7 +38,7 @@ jobs:
           python-version: '3.12'
       - name: Adversarial candidate-owner and no-false-CURRENT tests
         run: python -B -m unittest discover -s Verification/tests -p test_live_root_checkpoint_recovery_v1.py -v
-      - name: Independently inspect exact live GitHub main and four source-owner branch blobs
+      - name: Independently inspect exact live GitHub main and five source-owner branch blobs
         run: python -B Verification/reconcile_live_root_checkpoints_v1.py --summary --report "${{ runner.temp }}/gfp-opt-root-branch-evidence.json"
       - name: Upload safe branch-qualified location evidence, NEVER a replacement checkpoint
         uses: actions/upload-artifact@v4
@@ -50,6 +50,6 @@ jobs:
       - name: Declare read-only source boundaries
         shell: bash
         run: |
-          echo "Four source owner branch Checkpoints are only historical navigation candidates."
-          echo "Grammar A1-C1 remains unresolved. The October 7 NVV branch checkpoint is not the newest November 5 Library evidence."
+          echo "Five source-owner branch Checkpoints are historical navigation candidates only, including Grammar's native nested Stage7 status."
+          echo "Grammar newest source portable remains unverified; October 7 NVV branch checkpoint is not the newest November 5 Library evidence."
           echo "No main CHECKPOINT files created, source/LOCKED touched, Stage4-7 or ADOPTED granted."

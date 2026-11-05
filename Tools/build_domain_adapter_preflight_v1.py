@@ -45,10 +45,10 @@ def extra_index_path(path,root=ROOT):
 def matches_exact_git_text(data:bytes,git_blob:str)->bool:
     def blob(value:bytes)->str:
         return hashlib.sha1(
-            b"blob "+str(len(value)).encode("ascii")+b"\\0"+value
+            b"blob "+str(len(value)).encode("ascii")+b"\0"+value
         ).hexdigest()
     return (blob(data)==git_blob or
-            (b"\\r\\n" in data and blob(data.replace(b"\\r\\n",b"\\n"))==git_blob))
+            (b"\r\n" in data and blob(data.replace(b"\r\n",b"\n"))==git_blob))
 
 def current_git_json(index,path,root=ROOT):
     require(path in index,"SOURCE_AUTHORITY_NOT_TRACKED:"+path)

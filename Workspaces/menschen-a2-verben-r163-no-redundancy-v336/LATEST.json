@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-a2-verben-r163-stage6-field-stage7-rc-latest@4.0.0",
-  "date": "2026-11-04",
+  "schema": "gcpk-a2-r163-integrated-single-zip-latest@4.1.0",
+  "date": "2026-11-05",
   "workstream": "menschen-a2-verben-r163-no-redundancy-v336",
-  "status": "STAGE6_USER_FIELD_PASS_OFFLINE_PARSER_PASS__STAGE7_VERIFIED_CANDIDATE_NOT_FINAL",
-  "latest_completed_milestone": "R163_STAGE7_CONTENT_CANDIDATE_PACKAGE_VERIFIED__NOT_LOCKED",
+  "status": "SINGLE_INTEGRATED_CONTENT_PACKAGE_VERIFIED_AND_DELIVERED__USER_FIELD_PASS__FORMAL_FINAL_LOCK_PENDING",
+  "latest_completed_milestone": "R163_ALL_CORRECTIONS_IN_ONE_ZIP_CONTENT_DELIVERY_VERIFIED",
   "receipt": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE5-CONTENT-PRODUCTION-PASS-2026-11-04.json",
   "prior_stage4_receipt": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE4-RISK-BASED-PASS-2026-11-04.json",
   "parent_stage4_sha256": "468984f23bf2f4103e2345f59cf78cf4aec2e2083b9d484a150d403f201581b6",
@@ -33,13 +33,15 @@
     "native_root_memory": "NOT_RUN_FULL_CHECKOUT"
   },
   "boundaries": {
-    "stage6": "USER_FIELD_PASS_NEEDED_INDEPENDENT_NATIVE_BROWSER_FOR_FORMAL_PASS",
-    "stage7": "RELEASE_CANDIDATE_VERIFIED_NOT_LOCKED_FINAL",
+    "stage6": "USER_IMPORT_REOPEN_PASS__NATIVE_BROWSER_ENVIRONMENT_BOUNDARY",
+    "stage7": "ONE_INTEGRATED_CONTENT_DELIVERY_VERIFIED__FORMAL_LOCKED_FINAL_PENDING",
     "app_release_final": false,
     "no_ui_or_srs_change": true,
-    "root_native_memory": "NOT_RUN_FULL_CHECKOUT"
+    "root_native_memory": "NOT_RUN_FULL_CHECKOUT",
+    "stage4": "PASS",
+    "stage5": "PASS"
   },
-  "next": "Stage7 complete portable candidate has been saved in Library and verified, with R163 field import/restart PASS. No repeated user-import request. Formal FINAL requires exact CURRENT browser IndexedDB/Study/Quick evidence and root native memory verification; environment blocks browser here.",
+  "next": "Use integrated R163 single ZIP as complete content handoff, not older RC or split patches. User already imported same exact TSV successfully; no reimport required. Formal Stage7 LOCKED pending independent native browser/IDB and full-root memory check.",
   "stage6_user_field": {
     "status": "PASS_USER_REPORTED_IMPORT_AND_REOPEN",
     "receipt": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE6-FIELD-ACCEPTED-STAGE7-RELEASE-CANDIDATE-2026-11-04.json",
@@ -59,5 +61,20 @@
     "library_file_id": "libfile_ce14e6d6149881918f46b636a695274d",
     "library_readback": "PASS_SHA256_AND_ZIP_CRC",
     "exact_stage5_import_tsv_sha256": "32554697a79dc07e42627618af4bcffb5d353056ffdac70853b171d8f6c7e4d3"
+  },
+  "integrated_content": {
+    "status": "ONE_ACTIVE_TSV_ALL_CORRECTIONS_INTEGRATED",
+    "checkpoint": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-SINGLE-INTEGRATED-CONTENT-DELIVERY-2026-11-05.json",
+    "archive": "Menschen-A2-Verben-R163-ALLE-KORREKTUREN-INTEGRIERT-20261105.zip",
+    "sha256": "abd586cf57ad2366b74ef84f31c49066bf4c70020aedde263d085c6c2351f8c1",
+    "size_bytes": 14023846,
+    "library_file_id": "libfile_8a2d6f303fa48191af7377a04c9f47f4",
+    "active_import_files": 1,
+    "active_tsv_sha256": "32554697a79dc07e42627618af4bcffb5d353056ffdac70853b171d8f6c7e4d3",
+    "cards": 292,
+    "examples": 1168,
+    "combinations": 676,
+    "full_manifest_readback": "PASS",
+    "no_external_patch_needed": true
   }
 }

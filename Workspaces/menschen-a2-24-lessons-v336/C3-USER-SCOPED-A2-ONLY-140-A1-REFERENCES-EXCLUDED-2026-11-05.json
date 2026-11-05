@@ -1,0 +1,100 @@
+{
+  "schema": "gcpk-menschen-a2-c3-user-scoped-a1-exclusion@1",
+  "date": "2026-11-05",
+  "user_authority": "Only check the previously identified 140 A1-linked cards. If they already exist in A1, they should no longer appear in A2. Do not rebuild other cards or merge A1/A2 owners.",
+  "status": "PASS_140_A1_EXTERNAL_REFERENCES_EXCLUDED_FROM_A2_LESSON_VIEW__1778_NATIVE_UNCHANGED__NATIVE_STAGE5_CLEAN_TECHNICAL_PASS__NO_IMPORT",
+  "scope": {
+    "lessons": 24,
+    "unique_A1_external_references_before": 140,
+    "A1_external_occurrences_before": 145,
+    "A1_external_references_after": 0,
+    "A1_external_occurrences_after": 0,
+    "A2_native_unique_cards_before": 1778,
+    "A2_native_unique_cards_after": 1778,
+    "A2_native_lesson_memberships_before": 1829,
+    "A2_native_lesson_memberships_after": 1829,
+    "course_memberships_before": 1974,
+    "course_memberships_after": 1829
+  },
+  "source_authorities": {
+    "A2_user_selected_keeper_zip_sha256": "64ae502aaf1f7796d6fb1ee23a07c8e821630c541b4697aeecf75dd7430bcd29",
+    "A2_R14_stage4_zip_sha256": "191a58aa1a55624e6abcfd89cee74bf3a15e263393b44840dd9d4613e288f5ee",
+    "A2_R14_owner_tsv_sha256": "f390cbdd2e3c6daa45203ee1e20b08fa2665887c6a54ed35d66ec1d3502903d8",
+    "A1_V48_R1_latest_content_zip_sha256": "3005b24a8928bee6eab28a3d8c1a8fe13d2c5ff6eb7975d7ed470d822a22ccac",
+    "original_A1_140_ref_json_sha256": "b98f87d4458ca2711f1ed5846702ae65a6de06778b299c03b1076cf39d005533"
+  },
+  "A1_140_coverage_decisions": {
+    "same_id_same_front": 101,
+    "same_id_same_lemma_with_forms": 26,
+    "source_verified_equivalent_current_A1_different_id": 9,
+    "same_id_formatting_only": 1,
+    "current_A1_lexeme_exists_but_semantic_coverage_requires_followup": 3,
+    "unique_A1_lexemes_found_all": 140
+  },
+  "A1_sense_caveats_not_a2_reinsertion": [
+    {
+      "id": "ma1m-lu-0759",
+      "lemma": "die Birne",
+      "sense": "light bulb",
+      "current_A1_lexeme": "ma1m-lu-0760",
+      "concern": "current A1 visible card displays pear, not bulb; A1 raw source contains bulb"
+    },
+    {
+      "id": "ma1m-lu-0760",
+      "lemma": "die Birne",
+      "sense": "colloquial head",
+      "current_A1_lexeme": "ma1m-lu-0760",
+      "concern": "same ID displays pear in current A1; A1 raw source attests colloquial head"
+    },
+    {
+      "id": "ma1m-lu-0385",
+      "lemma": "das Glas",
+      "sense": "glass material",
+      "current_A1_lexeme": "ma1m-lu-0384",
+      "concern": "historic independent owner 0385 retired, material sense present in current A1 0384; no rekey"
+    }
+  ],
+  "artifact": {
+    "filename": "Menschen-A2-24-Lessons-1778-A2-ONLY-NO-A1-DUPLICATES-20261105-NOT-IMPORT.zip",
+    "sha256": "c845d97337dc1eb6e155b7406714bf93d8a628b561679006a8bee1355b4ab8ee",
+    "bytes": 3294326,
+    "members": 34,
+    "delivery": "SCOPED_CHAT_SANDBOX_SINGLE_ZIP",
+    "native_official_stage5_archive_sha256": "e30c9fba5a255b3d035b3c6c34c0c23e8052525adafc6becb5794e341f9bae73",
+    "native_official_stage5_bytes": 3262347,
+    "original_1778_owner_tsv_byte_identical_R14": true,
+    "lesson_rosters": "24 read-only lesson views; not importable independent card bundles",
+    "source_map": "1829 A2-only entries; original membership_index values retained",
+    "removed_ids_audit": "140 source-to-current-A1 word decisions; not active A2 card rows",
+    "removed_occurrence_audit": "145 exact original A1 lesson occurrences"
+  },
+  "QA": {
+    "original_source_full_sha256": "PASS",
+    "original_R14_sha256": "PASS",
+    "A1_V48_sha256": "PASS",
+    "all_24_original_lesson_TSV_checked": "PASS",
+    "all_1778_owned_content_rows_byte_identical": "PASS",
+    "all_1829_A2_native_membership_occurrences_preserved": "PASS",
+    "all_140_A1_card_view_entries_excluded": "PASS",
+    "official_unmodified_build_clean_delivery": "PASS",
+    "independent_outer_and_inner_CRC_and_SHA256SUMS": "PASS",
+    "induced_negative_controls": "5_OF_5_ACTUALLY_MUTATED_AND_REJECTED",
+    "no_new_a1_card_bodies": true
+  },
+  "preservation": {
+    "A1_source_and_LOCKED": "UNCHANGED",
+    "A2_source_and_LOCKED": "UNCHANGED",
+    "A2_owned_1778": "UNCHANGED",
+    "old_user_keeper": "UNCHANGED",
+    "all_45_cross_source_lexical_relation_links_or_46_custom_rows": "PRESERVED_AS_METADATA_NOT_A1_LESSON_CARD_ENTRIES",
+    "app_UI_SRS_FSRS_IndexedDB": "UNTOUCHED",
+    "no_auto_id_rekey": true
+  },
+  "stage": {
+    "scoped_A2_only_Stage5_clean_builder": "PASS_TECHNICAL_NOT_NATIVE_BROWSER",
+    "Stage6": "NOT_RUN",
+    "Stage7": "NOT_RUN",
+    "production_import_authorized": false
+  },
+  "next": "User-requested 140 A1 card exclusions complete. Do not resurrect A1 external lesson references or run endless per-ID crosswalk rounds. Three source-attested A1 missing-meaning caveats remain A1 workstream notes only, not blockers for independent A2-only content snapshot. Any real user profile import must first pass exact CURRENT runtime Stage6 backup/merge/SRS preservation and avoid additional A2/A1 cross-card upserts."
+}

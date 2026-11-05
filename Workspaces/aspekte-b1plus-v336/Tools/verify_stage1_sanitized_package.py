@@ -33,7 +33,7 @@ def verify(path):
         assert sum(bool(x["Audio"].strip()) for x in rows)==1375
         counts=Counter()
         for x in rows:
-            m=re.fullmatch(r"Aspekte_B1\\+/B2::(\\d{2})_B1\\+:_(10|[1-9])_–_(.+)", x["Level tags"])
+            m=re.fullmatch(r"Aspekte_B1[+]/B2::([0-9]{2})_B1[+]:_(10|[1-9])_–_(.+)", x["Level tags"])
             assert m,"UNEXPECTED_LEVEL_TAG"
             section,lesson=int(m.group(1)),int(m.group(2))
             assert section in (2*lesson-1,2*lesson)

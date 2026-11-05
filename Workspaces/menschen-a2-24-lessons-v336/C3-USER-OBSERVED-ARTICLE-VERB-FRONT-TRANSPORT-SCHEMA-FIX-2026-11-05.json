@@ -1,0 +1,103 @@
+{
+  "schema": "gcpk-menschen-a2-c3-user-observed-article-verb-front-transport-fix@1.0.0",
+  "date": "2026-11-05",
+  "user_bug_report": "A2 Study front displays Etikett instead of das Etikett and aufkleben without verified conjugations; screenshot #863 and #861",
+  "status": "PASS_REAL_A2_SOURCE_CONSUMER_METADATA_FRONT_BRIDGE_AND_GATED_NATIVE_STAGE5__REAL_CURRENT_APP_STAGE6_NOT_RUN__NOT_IMPORT_READY",
+  "root_cause": {
+    "producer_TSV_data_present": true,
+    "noun_front_from_original": "das Etikett, Etiketten",
+    "verb_front_from_original": "aufkleben, klebt auf, klebte auf, hat aufgeklebt",
+    "problematic_custom_fields": "canonical_unit.pos/morphology present, canonical_unit.type/core absent; entry_type=sense; render type falls back to custom and only lemma is learner-visible",
+    "consumer_model_test": "v505-R141 exact candidate presentationEntryTypeV339 and presentationFrontModelV339 extracted and executed in Node VM; NOT full installed CURRENT app",
+    "central_policy_gap": "HF2 normative requirement already present, but exact clean Stage5 builder only validated neutral envelope and did not enforce typed consumer front morphology",
+    "production_fix": "source-backed metadata-only transport of noun article/plural, verb present/preterite/perfect and available adjective comparison into canonical_unit.type/core",
+    "visible_UI_layout_changed": false
+  },
+  "source": {
+    "A2_user_selected_original_zip_sha256": "64ae502aaf1f7796d6fb1ee23a07c8e821630c541b4697aeecf75dd7430bcd29",
+    "immutable_R14_owned_tsv_sha256": "f390cbdd2e3c6daa45203ee1e20b08fa2665887c6a54ed35d66ec1d3502903d8",
+    "candidate_metadata_only_tsv_sha256": "ce8966feaf93ef51b1fd2c05e939671c082c94978ea8f062ee89677855a40af1",
+    "A2_unique_cards": 1778,
+    "A2_native_lesson_memberships": 1829,
+    "A1_external_lesson_refs_reintroduced": 0,
+    "unchanged_column_count_other_than_custom_fields": 22,
+    "other_source_and_locked_unmodified": true
+  },
+  "fix": {
+    "original_missing_consumer_type_with_entry_type_sense": 710,
+    "subtype_counts_missing_type": {
+      "Noun": 470,
+      "Verb": 158,
+      "Adjective": 82
+    },
+    "total_custom_fields_only_changed": 772,
+    "changed_by_type": {
+      "Noun": 532,
+      "Verb": 158,
+      "Adjective": 82
+    },
+    "actual_model_output_changed": 668,
+    "source_attested_cards_checked": 959,
+    "source_attested_morphological_slots_checked": 1484,
+    "original_front_transport_gate_result": "FAIL_2102_ERRORS",
+    "source_bound_candidate_front_transport_gate_result": "PASS_ZERO_ERRORS",
+    "independent_actual_negative_mutations_rejected": 8,
+    "special_nouns": [
+      "ma2m-lu-0152 der/die Fortgeschrittene (two genders)",
+      "ma2m-lu-0199 die (Plural) Pommes frites (plural-only)"
+    ],
+    "official_unmodified_clean_builder": "PASS_TECHNICAL_STAGE5",
+    "actual_gated_wrapper_original": "FAIL_CLOSED_NO_ZIP_EMITTED",
+    "actual_gated_wrapper_repaired": "PASS_NATIVE_BUILDER_ZIP_EMITTED",
+    "model_sample_before_after": {
+      "noun": {
+        "id": "ma2m-lu-0863",
+        "before": "Etikett, no front morphology",
+        "after": "das Etikett + Plural Etiketten"
+      },
+      "verb": {
+        "id": "ma2m-lu-0861",
+        "before": "aufkleben, no front morphology",
+        "after": "aufkleben + klebt auf / klebte auf / hat aufgeklebt"
+      }
+    }
+  },
+  "files": {
+    "official_clean_technical_r2_zip": {
+      "filename": "Menschen-A2-1778-FRONT-CONTRACT-R2-SOURCE-SPECIAL-NOUNS-NOT-IMPORT-20261105.zip",
+      "sha256": "041be4d7d9f9991bccf5d1c8c9aade02039c763f2a5b6d5259ac0349126db026",
+      "bytes": 3270478,
+      "members": 6,
+      "crc": "PASS",
+      "sha256sums": "5_OF_5_PASS",
+      "storage": "CURRENT_CONVERSATION_SANDBOX_ONLY__NOT_LIBRARY"
+    },
+    "previous_r1_zip": "SUPERSEDED_BY_R2_AFTER_SPECIAL_NOUN_SUPPORT",
+    "original_previous_A2_only_user_simplified_scope": "C3-USER-SCOPED-A2-ONLY-140-A1-REFERENCES-EXCLUDED-2026-11-05.json",
+    "candidate_model_JS_source_zip_sha256": "99137590901a2c2086521867e128f8deb0dd6a8f694e4f0fcfc905f1060a6569"
+  },
+  "central_source_policy": {
+    "active_registry": "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json",
+    "registry_new_blob_sha": "5704542e7cd4bff138f3911be4e8054e0bbf6c7b",
+    "active_start_prompt": "Prompt/START-PROMPT-v3.3.6.md",
+    "active_start_prompt_new_blob_sha": "826137bebd536cac3fd6f7d6f8441fe180894bf4",
+    "existing_HF2": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.1.0.md",
+    "native_source_adapter": "Tools/project_lexical_front_transport_v1.py",
+    "native_source_gate": "Verification/validate_lexical_front_projection_transport_v1.py",
+    "actual_gated_builder_wrapper": "Tools/build_front_gated_clean_delivery_v1.py",
+    "another_producer_coverage": "NOT_VERIFIED__EXPLICIT_ADOPTION_REQUIRED",
+    "app_consumer_policy_pin": "German-Flashcards-Pro/04-Reports/Global-Policy-Sync-v1/CONTENT-POLICY-CONSUMER-PIN-20261105.json",
+    "app_consumer_pin_new_blob_sha": "ea96a90fc0ae3fe3afc2d899860e9eaaed893a20"
+  },
+  "boundaries": {
+    "native_CURRENT_runtime": "v505-R141",
+    "current_app_browser_Stage6": "NOT_RUN",
+    "installed_app_learner_SRS_FSRS_IndexedDB": "UNTOUCHED",
+    "app_UI_and_renderer_source": "UNMODIFIED",
+    "historical_A1_A2_LOCKED": "UNTOUCHED",
+    "Stage7_release_final": "NOT_CLAIMED",
+    "production_import_authorized": false,
+    "all_34_producers_globally_passed": false
+  },
+  "next": "Run native real CURRENT v505-R141 same-origin app import/presentation and persistence/backup test on a safe copy before user profile import; test noun Etikett with article and plural, verb aufkleben with all three principal forms on front, after reload; maintain user SRS and visual layout. Connect gate to other producers via explicit real adapter QA before claiming cross-project enforcement."
+}

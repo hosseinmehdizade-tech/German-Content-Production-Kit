@@ -110,6 +110,20 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         files[auditor.README] = b"Old README only"
         self.assertIn("MISSING_ENTRYPOINT_ROUTER:README.md", self.check_snapshot(files=files))
 
+    def test_new_anti_churn_preamble_before_router_does_not_false_fail(self):
+        files = dict(self.base_files)
+        # The mandatory pointer remains in the first 4KiB even after
+        # legitimate additional metadata and anti-churn instructions.
+        files[auditor.START] = b"ANOTHER VALID STARTUP NOTE\\n\\n" + files[auditor.START]
+        self.assertNotIn("MISSING_ENTRYPOINT_ROUTER:" + auditor.START,
+                         self.check_snapshot(files=files))
+
+    def test_router_buried_beyond_four_kibibytes_still_fails_closed(self):
+        files = dict(self.base_files)
+        files[auditor.START] = (b"X" * 4500) + files[auditor.START]
+        self.assertIn("MISSING_ENTRYPOINT_ROUTER:" + auditor.START,
+                      self.check_snapshot(files=files))
+
     def test_registry_not_in_bootstrap_fails(self):
         files = dict(self.base_files)
         files[auditor.BOOTSTRAP] = b"Not routed"

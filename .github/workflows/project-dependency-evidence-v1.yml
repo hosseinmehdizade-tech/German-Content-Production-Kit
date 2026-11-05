@@ -1,0 +1,65 @@
+name: Project Dependency and Evidence Graph - Read-only
+on:
+  push:
+    paths:
+      - 'Optimization-Program/Control-Center/**'
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**'
+      - 'Prompt/**'
+      - 'Verification/**'
+      - 'Tools/**'
+      - 'WORKSTREAM-RESUME-CURRENTNESS-POLICY.json'
+      - 'LINGUISTIC-QA-AUTHORITY-POLICY.json'
+      - 'STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json'
+      - 'CONTENT-OUTPUT-DELIVERY-POLICY.json'
+      - '.github/workflows/project-dependency-evidence-v1.yml'
+  pull_request:
+    paths:
+      - 'Optimization-Program/Control-Center/**'
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**'
+      - 'Prompt/**'
+      - 'Verification/**'
+      - 'Tools/**'
+      - 'WORKSTREAM-RESUME-CURRENTNESS-POLICY.json'
+      - 'LINGUISTIC-QA-AUTHORITY-POLICY.json'
+      - 'STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json'
+      - 'CONTENT-OUTPUT-DELIVERY-POLICY.json'
+      - '.github/workflows/project-dependency-evidence-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  graph:
+    name: Pinned policies and metadata evidence (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile graph and negative tests
+        run: >-
+          python -B -m py_compile
+          Tools/build_project_dependency_evidence_v1.py
+          Verification/tests/test_project_dependency_evidence_v1.py
+      - name: Build prospective dependency graph and evidence report
+        run: >-
+          python -B Tools/build_project_dependency_evidence_v1.py
+          --check --output-dir project-dependency-evidence-output --github-summary
+      - name: Negative and positive regression
+        run: python -B -m unittest discover -s Verification/tests -p test_project_dependency_evidence_v1.py -v
+      - name: Publish bounded metadata graph reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-dependency-evidence-${{ matrix.os }}
+          path: project-dependency-evidence-output/
+          if-no-files-found: error
+          retention-days: 30

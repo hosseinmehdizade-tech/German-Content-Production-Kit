@@ -57,7 +57,7 @@ def safe_member(name: str) -> bool:
     return not p.is_absolute() and ".." not in p.parts and str(p) == name
 
 
-def check_manifest(z: zipfile.ZipFile) -> dict:
+def check_manifest(z: zipfile.ZipFile, manifest_member: str = "SHA256SUMS.txt") -> dict:
     members = z.infolist()
     require(0 < len(members) <= MAX_FILES, "ZIP_MEMBER_COUNT_INVALID")
     require(len({x.filename for x in members}) == len(members), "ZIP_DUPLICATE_MEMBER")
@@ -74,9 +74,10 @@ def check_manifest(z: zipfile.ZipFile) -> dict:
         require(not info.is_dir(), "DIRECTORY_MEMBER_NOT_ALLOWED")
         payloads[info.filename] = z.read(info)
     require(z.testzip() is None, "ZIP_CRC_FAILURE")
-    require("SHA256SUMS.txt" in payloads, "MISSING_SHA256_MANIFEST")
+    require(safe_member(manifest_member), "UNSAFE_MANIFEST_MEMBER")
+    require(manifest_member in payloads, "MISSING_SHA256_MANIFEST")
     try:
-        lines = payloads["SHA256SUMS.txt"].decode("utf-8").splitlines()
+        lines = payloads[manifest_member].decode("utf-8").splitlines()
     except UnicodeError:
         raise AttestationBlocked("MANIFEST_NON_UTF8")
     declared = {}
@@ -87,7 +88,7 @@ def check_manifest(z: zipfile.ZipFile) -> dict:
         require(safe_member(name), "UNSAFE_MANIFEST_PATH")
         require(name not in declared, "MANIFEST_DUPLICATE_ENTRY")
         declared[name] = digest
-    require(set(declared) == (set(payloads) - {"SHA256SUMS.txt"}),
+    require(set(declared) == (set(payloads) - {manifest_member}),
             "MANIFEST_NOT_EXACT_COVERAGE")
     for name, expected in declared.items():
         require(sha256_bytes(payloads[name]) == expected, "MEMBER_SHA256_MISMATCH:" + name)
@@ -109,6 +110,8 @@ def profile_format(profile):
         require(safe_member(profile[key]), "UNSAFE_PROFILE_MEMBER")
     require(type(profile["artifact_size_bytes"]) is int and profile["artifact_size_bytes"] > 0,
             "INVALID_PROFILE_ARTIFACT_SIZE")
+    require(safe_member(profile.get("manifest_member", "SHA256SUMS.txt")),
+            "UNSAFE_PROFILE_MANIFEST_MEMBER")
     gate = profile.get("pinned_stage4_gate")
     if gate is not None:
         require(isinstance(gate, dict), "INVALID_GATE_PROFILE")
@@ -173,7 +176,7 @@ def attest(profile, archive: Path, source: Path):
             "ORIGINAL_SOURCE_SHA256_MISMATCH")
     try:
         with zipfile.ZipFile(archive) as z:
-            bundle = check_manifest(z)
+            bundle = check_manifest(z, profile.get("manifest_member", "SHA256SUMS.txt"))
     except (zipfile.BadZipFile, RuntimeError, OSError, EOFError):
         raise AttestationBlocked("UNSAFE_OR_CORRUPT_ARCHIVE")
     members = bundle.pop("members")

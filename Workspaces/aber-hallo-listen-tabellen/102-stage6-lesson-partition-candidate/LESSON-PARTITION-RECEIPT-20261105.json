@@ -1,0 +1,73 @@
+{
+  "schema": "gcpk-aber-hallo-stage6-user-directed-lesson-partition-candidate@1",
+  "date": "2026-11-05",
+  "workstream": "aber-hallo-listen-tabellen",
+  "status": "PASS_EXACT_21_LESSON_TSV_FIELD_ONLY_DATA_DELTA_AND_LIBRARY_READBACK__USER_MERGE_IMPORT_NOT_YET_OBSERVED__STAGE6_NOT_CERTIFIED",
+  "user_feedback": "User reported successful prior 787-card TSV import; requested that cards be organized into multiple Lektionen. This is not independent native browser acceptance.",
+  "authority": {
+    "github_latest_blob_sha": "3016ecbb2a98e338450f1da5549f1dd63db3256b",
+    "stage6_preflight_blob_sha": "dcee9334b410e33c43e7151ee8b62723795aabc3",
+    "source_stage5_zip_sha256": "cd802ac44b83a3b98a14cf957e0af4da55cb9d6e2230be10f5953ac6ce6c23f0",
+    "source_tsv_sha256": "6903a34b35c53346c8acbef19fc0c74811718d4a30ad4dfd33943195d7f9dd77",
+    "app_pin": "v505-R141"
+  },
+  "product": {
+    "filename": "Aber-Hallo-787-Karten-21-Lektionen-MERGE-v505.tsv",
+    "sha256": "0fe3bff3c19c5d55a27bfddb905b6b31571f4638ee2a1c61b114cd2bd183afa6",
+    "size_bytes": 14560205,
+    "rows": 787,
+    "columns": 23,
+    "unique_ids": 787,
+    "lektionen": 21,
+    "library_stable_id": "libfile_67ffd2f3b1bc81918e816a0f2ddc964b",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aber-Hallo-Listen-Tabellen/Stage6/Lesson-Partition/Aber-Hallo-787-Karten-21-Lektionen-MERGE-v505.tsv",
+    "library_readback": "PASS_EXACT_14560205_BYTES_AND_SHA256"
+  },
+  "partition_method": "Assign by earliest retained exact source_memberships source_id+pdf_page+section, group A1-A2 Dativ two lessons and B1-C2 selected section/page into 21 coherent lessons. Multi-memberships retained unmodified in custom_fields; no guessed per-card CEFR.",
+  "lesson_counts": [
+    26,
+    24,
+    32,
+    33,
+    31,
+    32,
+    36,
+    34,
+    30,
+    48,
+    47,
+    46,
+    42,
+    48,
+    37,
+    45,
+    33,
+    23,
+    51,
+    39,
+    50
+  ],
+  "qa": {
+    "tsv_parser_python": "PASS",
+    "changed_rows_lesion_only": 787,
+    "other_field_deltas": 0,
+    "ids_preserved": 787,
+    "order_preserved": 787,
+    "examples_definitions_translations_relations_custom_fields_tags_untouched": true,
+    "level_unchanged_empty": true,
+    "deck_unchanged": true,
+    "source_unchanged": true,
+    "semantic_identity_unchanged": true,
+    "original_accepted_stage5_immutable": true
+  },
+  "import_instruction": "On v505 use SMART MERGE. Add mode skips same IDs and cannot update lesson. Never use replace-reset-progress. Backup first. Expect 0 added, 787 updated, 0 identity-reset due unchanged card_type/front/custom_fields semantic_identity. Verify native report after user runs.",
+  "boundaries": {
+    "native_v505_real_profile_merge": "NOT_TESTED",
+    "user_original_import": "REPORTED_PASS",
+    "Stage6": "NOT_CERTIFIED",
+    "Stage7": "NOT_RUN",
+    "app_current_promotion": false,
+    "UI_or_app_code_change": false,
+    "SRS_FSRS_mutation": false
+  }
+}

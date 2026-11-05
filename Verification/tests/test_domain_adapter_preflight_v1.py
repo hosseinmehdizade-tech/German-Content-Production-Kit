@@ -197,7 +197,7 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
         self.assertTrue(p.matches_exact_git_text(data,item["git_blob"]))
         self.assertFalse(p.matches_exact_git_text(data+b"# shadow tamper",item["git_blob"]))
         self.assertTrue(p.matches_exact_git_text(
-            data.replace(b"\\r\\n",b"\\n").replace(b"\\n",b"\\r\\n"),
+            data.replace(b"\r\n",b"\n").replace(b"\n",b"\r\n"),
             item["git_blob"]))
 
     def test_cli_writes_report_only_to_new_external_path(self):

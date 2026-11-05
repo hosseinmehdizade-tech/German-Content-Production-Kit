@@ -4,10 +4,10 @@
   "project_name": "Aspekte B1+",
   "level": "B1+",
   "date": "2026-11-04",
-  "phase": "STAGE1_INITIATED",
+  "phase": "STAGE1_SANITIZED_STRUCTURAL_PASS",
   "definition_status": "LOCKED_v1.0_BY_EXPLICIT_USER_REQUEST_2026-11-04",
   "production_authorized": true,
-  "content_stage_status": "STAGE1_INITIATED_BLOCKED_RAW_CSV_UNAVAILABLE",
+  "content_stage_status": "STAGE1_SANITIZED_STRUCTURAL_PASS_RAW_ORIGINAL_GATE_OPEN",
   "parent_governance": "German-Content-Production-Kit v3.3.6",
   "independent_from_other_level": true,
   "cross_level_merge_forbidden": true,
@@ -28,7 +28,9 @@
     "publisher_book_lookup_required": false,
     "coverage_reference": "EXACT_PROJECT_FILTERED_CSV_ONLY",
     "raw_bytes_available_this_session": false,
-    "source_sha256_checked_this_session": false
+    "source_sha256_checked_this_session": false,
+    "sanitized_source_bytes_available": true,
+    "sanitized_source_sha256": "cca32df935397a81367b38f9b51ee33aac357ea135947a131b712969f0339033"
   },
   "content_contract": {
     "primary_language": "DE→FA",
@@ -40,8 +42,8 @@
     "polysemy": "preserve source-row provenance; merge only after semantic review"
   },
   "stages": {
-    "stage1": "INITIATED_BLOCKED_RAW_CSV_BYTES_NOT_AVAILABLE",
-    "stage2": "NOT_STARTED",
+    "stage1": "SANITIZED_STRUCTURAL_PASS_RAW_ORIGINAL_GATE_OPEN",
+    "stage2": "L01_TRIAGE_ONLY_NO_FINAL_SEMANTIC_DECISIONS",
     "stage3": "NOT_STARTED",
     "stage4": "NOT_STARTED",
     "stage5": "NOT_STARTED",
@@ -151,5 +153,15 @@
       "private_progress_and_learnable_meta_removed": true
     },
     "current_stage_authorization_must_be_preserved": true
-  }
+  },
+  "stage1_completed_sanitized_record_count": 1548,
+  "stage1_L01_source_only_units": 71,
+  "stage1_original_raw_sha256_gate": "OPEN",
+  "stage2_l01_preliminary_risk_queue": 29,
+  "stage1_archive_verified": {
+    "sha256": "8f4c2b76cbd1c6b8bce66c052e26092bb66b64a70a91478f6d4aa140022636c1",
+    "library_file_id": "libfile_4a4205185dac8191a9775e42f1313cac",
+    "status": "VERIFIED_BYTE_EXACT_READBACK"
+  },
+  "quality_warning": "Stage1 approved for sanitized structural completeness only; original raw SHA and all Stage2 semantic acceptance pending. Non-import draft."
 }

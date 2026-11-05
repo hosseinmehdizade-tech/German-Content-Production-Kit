@@ -192,6 +192,14 @@ class ExactSourceAdoptionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"LATEST_NOT_STAGE5_ELIGIBLE"):
             self.verify()
 
+    def test_not_stage5_status_cannot_pass_substring_gate(self):
+        self.build()
+        data=json.loads(self.latest.read_text())
+        data["status"]="NOT_STAGE5_UNVERIFIED"
+        self.write_latest(data)
+        with self.assertRaisesRegex(ValueError,"LATEST_NOT_STAGE5_ELIGIBLE"):
+            self.verify()
+
     def test_forged_formal_stage5_claim_is_rejected(self):
         self.build()
         doc=json.loads(self.native.read_text(encoding="utf-8"))

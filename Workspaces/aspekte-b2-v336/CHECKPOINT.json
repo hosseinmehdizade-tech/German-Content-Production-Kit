@@ -1,21 +1,21 @@
 {
-  "schema": "aspekte-b2-stage1-start-git-checkpoint@1.0.0",
+  "schema": "aspekte-b2-stage1-lineage-git-checkpoint@1.0.0",
   "project_id": "aspekte-b2",
-  "status": "DEFINITION_APPROVED__STAGE1_AUTHORIZED_BLOCKED_SOURCE_BYTES_UNAVAILABLE",
+  "status": "STAGE1_SANITIZED_LINEAGE_PASS__STAGE2_L01_PRELIMINARY",
   "production_authorized": true,
   "source_sha256": "09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1",
   "source_rows": 1726,
   "lessons": 10,
-  "stage1": "AUTHORIZED_BLOCKED_SOURCE_BYTES_UNAVAILABLE",
-  "stage2": "NOT_STARTED",
+  "stage1": "PASS_VERIFIED_SANITIZED_LINEAGE",
+  "stage2": "STARTED_L01_PRELIMINARY_TRIAGE_NOT_APPROVED",
   "stage3": "NOT_STARTED",
   "stage4": "NOT_STARTED",
   "stage5": "NOT_STARTED",
   "stage6": "NOT_STARTED",
   "stage7": "NOT_STARTED",
   "prior_provisional_stage1": "NOT_ADOPTED",
-  "git_status": "DEFINITION_ONLY",
-  "next_action": "Restore exact user CSV bytes; verify SHA256; run isolated Stage1 inventory; reconcile 10 lesson counts. Never substitute publisher book or another project.",
+  "git_status": "STAGE1_VERIFIED_SANITIZED_SOURCE_ONLY__STAGE2_PENDING",
+  "next_action": "Complete Stage2 semantic review L01 160 rows, priority 11 prestage dedup flags and 17 independent linguistic notes; do not auto-drop or import.",
   "library_definition_receipt": {
     "status": "VERIFIED_BYTE_EXACT_READBACK",
     "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/Aspekte-B2-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip",
@@ -45,13 +45,13 @@
     "definition_only": true
   },
   "source_sha256_verified_this_run": false,
-  "source_rows_processed_this_run": 0,
+  "source_rows_processed_this_run": 1726,
   "cards_created": 0,
   "definition_approved_on": "2026-11-04",
   "production_start_requested_on": "2026-11-04",
   "local_package_sha256": "3f84195713499ffa65eee8817890c55327f6b70bb517a5b3c43204ffa4be51bf",
   "local_package_filename": "Aspekte-B2-DEFINITION-APPROVED-STAGE1-BLOCKED-20261104.zip",
-  "library_sync_new_package": "FAILED_CONTAINER_SESSION_UNAVAILABLE_NOT_UPLOADED",
+  "library_sync_new_package": "SUCCEEDED_EXACT_BYTE_READBACK_PASS",
   "library_prior_definition_receipt_status": "VALID_HISTORICAL_READBACK",
   "hierarchical_crosslevel_dedup": {
     "schema": "aspekte-crosslevel-dedup-definition-overlay@1.0.0",
@@ -100,5 +100,54 @@
       "private_progress_and_learnable_meta_removed": true
     },
     "current_stage_authorization_must_be_preserved": true
-  }
+  },
+  "source_sanitized_sha256_verified_this_run": "e907d0f882b4b9d02f2c631d9a93b1c4e671f6231e7c0deb257ebc26434011c5",
+  "raw_csv_original_bytes_available_this_run": false,
+  "original_csv_sha256_historical": "09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1",
+  "lesson_inventory_verified": {
+    "1": 160,
+    "2": 108,
+    "3": 186,
+    "4": 184,
+    "5": 231,
+    "6": 141,
+    "7": 222,
+    "8": 179,
+    "9": 162,
+    "10": 153
+  },
+  "source_ordinals": "1549-3274",
+  "unique_headwords": 1720,
+  "example_rows": 190,
+  "audio_tag_rows": 0,
+  "dedup_flags_provisional": {
+    "no_direct_match": 1649,
+    "requires_review": 77,
+    "lesson1_review_flags": 11
+  },
+  "stage2_lesson1_rows_scoped": 160,
+  "stage2_lesson1_qa_notes": 17,
+  "stage2_semantic_final_decisions": 0,
+  "library_previous_package_receipt": {
+    "status": "SUCCEEDED_AFTER_PRIOR_FAILURE",
+    "library_file_id": "libfile_b7f17425b9c48191ace66820ada78ebd"
+  },
+  "library_stage1_package_receipt": {
+    "status": "VERIFIED_BYTE_EXACT_READBACK",
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/Aspekte-B2-STAGE1-SANITIZED-PASS-STAGE2-L01-STARTED-20261105.zip",
+    "sha256": "4ecbfe27f1292bd0f9efa2ea2f21e4397a3badae34a5503a52354030345b468e",
+    "size_bytes": 174508,
+    "library_file_id": "libfile_abf59e99ece48191b67eedd0cccb5f8f",
+    "date": "2026-11-05"
+  },
+  "library_stage1_inventory_receipt": {
+    "library_file_id": "libfile_58c14659db288191a148828a5b8d9a87",
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/STAGE1-SOURCE-INVENTORY-20261105.jsonl"
+  },
+  "library_stage1_verification_receipt": {
+    "library_file_id": "libfile_5a6e91d494108191a20cbcad43e36433",
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Reports/STAGE1-VERIFICATION-20261105.json"
+  },
+  "checkpoint_updated_at": "2026-11-05",
+  "stage1_gate_scope_caveat": "Verified historically raw-attested sanitized CSV derivative; raw original seven-column bytes not freshly rehashed this run."
 }

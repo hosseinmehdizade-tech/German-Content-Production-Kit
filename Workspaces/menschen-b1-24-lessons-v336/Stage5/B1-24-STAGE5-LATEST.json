@@ -1,0 +1,84 @@
+{
+  "schema": "gcpk-menschen-b1-24-stage5-checkpoint@1.0.0",
+  "date": "2026-11-05",
+  "workstream": "menschen-b1-24-lessons-v336",
+  "status": "PASS_STAGE5_STATIC_LOSSLESS_UNIVERSAL_V2_CONTENT_PROJECTION__STAGE6_7_NOT_RUN",
+  "stage5": {
+    "quality_state": "PASS",
+    "scope": "CONTENT_ONLY_PROJECTION",
+    "transport": "Universal Card v2, 23 columns",
+    "zip_filename": "Menschen-B1-24-v336-STAGE5-CONTENT-PRODUCTION-DELIVERY-CANDIDATE-20261105.zip",
+    "zip_sha256": "f7bc7db76e88b5811946b249d23059e465439308c8c44e57975b740647b00959",
+    "zip_bytes": 7802971,
+    "transport_member": "01-Final-Import/Menschen-B1-24-UNIVERSAL-v2-STAGE5-CANDIDATE.tsv",
+    "transport_sha256": "c7e04be8956566f4ad0e7c2d92f1502ed52ff463896ad8048064878ad2042e4e",
+    "transport_bytes": 50920834,
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1/Current/Menschen-B1-24-v336-STAGE5-CONTENT-PRODUCTION-DELIVERY-CANDIDATE-20261105.zip",
+    "library_stable_id": "libfile_981e491b382c819182c1641768ccccd6",
+    "library_file_id": "file_00000000832482439d8e9e4260b5f5f4",
+    "library_readback": "PASS_EXACT_BYTE_SHA256",
+    "contents": {
+      "all_cards": 3088,
+      "distinct_ids": 3088,
+      "course_memberships": 3137,
+      "trilingual_example_groups": 12548,
+      "previous_four_facet_added_items_preserved": 5249,
+      "stage5_cards_with_details_projection": 603,
+      "stage5_unchanged_card_rows": 2485,
+      "original_plain_definition_cells_restructured": 145,
+      "details_arrays_valid": 3088,
+      "files_in_package": 20,
+      "files_verified_from_manifest": 18
+    },
+    "quality": {
+      "new_tsv_csv_roundtrip": "PASS_3088_ROWS_23_COLS",
+      "parent_stage4_canonical_byte_equality": "PASS",
+      "all_fields_except_details_unchanged": "PASS_3088",
+      "lessons_01_18_full_rows_unchanged": "PASS",
+      "all_custom_fields_and_typed_relations_unchanged": "PASS",
+      "all_id_order_examples_audio_memberships_unchanged": "PASS",
+      "source_readback": "PASS",
+      "cold_package_crc_sha": "PASS_20_FILES",
+      "independent_content_verifier": "PASS",
+      "actual_v505_parser_tokenizer_static": "PASS_3088_23__NO_IMPORT",
+      "prepublish_gate": "PASS_PREPUBLISH_ONLY"
+    }
+  },
+  "stage4": {
+    "status": "PASS_RISK_BASED_STAGE4",
+    "source_pointer": "Workspaces/menschen-b1-24-lessons-v336/Stage4/B1-24-STAGE4-SCOPED-LATEST.json",
+    "parent_zip_sha256": "35c290ad3ac8d2ba10ff33123c57614d9f3c1cb1f2cb87367eced4c356b6d72d",
+    "parent_accepted_master_sha256": "d33aa73622799599f03cd8bd0651733f57d60d908aa9f846ae9c2ae35a8aa2d1",
+    "immutable": true
+  },
+  "source": {
+    "memrise_original_rar_sha256": "a2ffb791c29ddaa43e27bb944f430bff6896dc3156115f8989eee3056d5471c1",
+    "original_audio_and_rar_not_embedded": true
+  },
+  "stage6": {
+    "quality_state": "NOT_STARTED",
+    "blockers": [
+      "No exact-current v505 real-origin import and SRS verification",
+      "v505 user-reported importer issue #25 unresolved",
+      "281 shared IDs between 24-lesson B1 and B1-Verben practice view not yet reconciled; user deferred six-set audit"
+    ],
+    "test_not_claimed": "NO_NATIVE_IMPORT_AND_NO_REAL_PROFILE_MIGRATION"
+  },
+  "stage7": {
+    "quality_state": "NOT_STARTED",
+    "final_release": false
+  },
+  "personal_data": {
+    "srs_unchanged": true,
+    "user_profile_untouched": true,
+    "existing_library_imported_cards_unchanged": true
+  },
+  "next_action": "Stage5 accepted content-only. Proceed Stage6 ONLY in isolated test origin with exact CURRENT app and safe SRS backup/rollback; user-deferred multi-set B1 verbs reconciliation remains mandatory before personal-profile merge. No user-library import yet.",
+  "policy": {
+    "framework": "v3.3.6",
+    "global_registry": "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json",
+    "delivery": "CONTENT-OUTPUT-DELIVERY-POLICY.json",
+    "seven_stage": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
+    "source_interpretation": "original attached Memrise; no fabricated raw source"
+  }
+}

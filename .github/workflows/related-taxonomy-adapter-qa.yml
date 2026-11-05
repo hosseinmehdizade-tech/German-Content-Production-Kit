@@ -1,0 +1,46 @@
+name: Related Taxonomy v1.1 Adapter QA
+on:
+  push:
+    paths:
+      - 'Verification/audit_related_sections_taxonomy_v1_1.py'
+      - 'Verification/related_taxonomy_adapter_bridge_v1_1.py'
+      - 'Verification/tests/test_audit_related_sections_taxonomy_v1_1.py'
+      - 'Verification/tests/test_related_taxonomy_adapter_compat_v1_1.py'
+      - '.github/workflows/related-taxonomy-adapter-qa.yml'
+  pull_request:
+    paths:
+      - 'Verification/audit_related_sections_taxonomy_v1_1.py'
+      - 'Verification/related_taxonomy_adapter_bridge_v1_1.py'
+      - 'Verification/tests/test_audit_related_sections_taxonomy_v1_1.py'
+      - 'Verification/tests/test_related_taxonomy_adapter_compat_v1_1.py'
+      - '.github/workflows/related-taxonomy-adapter-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  readonly-taxonomy-and-adapters:
+    name: Synthetic producer-compatibility (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source compilation
+        run: >-
+          python -B -m py_compile
+          Verification/audit_related_sections_taxonomy_v1_1.py
+          Verification/related_taxonomy_adapter_bridge_v1_1.py
+          Verification/tests/test_audit_related_sections_taxonomy_v1_1.py
+          Verification/tests/test_related_taxonomy_adapter_compat_v1_1.py
+      - name: Test taxonomy structural and negative controls
+        run: python -B -m unittest discover -s Verification/tests -p test_audit_related_sections_taxonomy_v1_1.py -v
+      - name: Test six profiles and exact official v411 Canonical projector
+        run: python -B -m unittest discover -s Verification/tests -p test_related_taxonomy_adapter_compat_v1_1.py -v

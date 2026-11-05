@@ -31,10 +31,7 @@ def load_pinned(root:Path,path:str,expected_blob:str):
             f.resolve().is_relative_to(root.resolve()),"GIT_SOURCE_MISSING")
     b=f.read_bytes()
     require(git_blob(b)==expected_blob or
-            (b"\r\
-" in b and git_blob(b.replace(b"\r\
-",b"\
-"))==expected_blob),
+            (b"\r\n" in b and git_blob(b.replace(b"\r\n",b"\n"))==expected_blob),
             "GIT_SOURCE_BLOB_DRIFT")
     return json.loads(b)
 def verify(root=ROOT,receipt=None):

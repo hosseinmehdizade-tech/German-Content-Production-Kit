@@ -11,7 +11,7 @@
 | --- | --- | --- |
 | NVV **B02, rows 101–200** | B01-specific Stage7 source-owned release done. `B01-LATEST.json` says B02 remains Stage3, and Stage4 B01 covered only first 100. | **Monitor next** independent B02 Stage3 / Stage4; never copy B01 acceptance onto B02 |
 | Menschen A2 C3 | User-approved A2-only 1,778-card scoped content, 140 A1 refs excluded and unchanged; legacy official Stage5 technical PASS, real Stage6 not run. The old A1-inclusive union remains a distinct authority problem. | **HOLD on new P1 Stage5** until a genuinely new approved owner milestone; do not duplicate existing A2-only ZIP or infer app import |
-| Aspekte B1+ L01 | Stage3 source-bound nonimport pilot, Stage4 false. | Complete Stage3 and Stage4 first |
+| Aspekte B1+ L01 | Dated 31-pilot Stage3 source-bound nonimport receipt; subsequent live LATEST reported 71 Stage3 drafts; Stage4 still pending. | Independent Stage4 first; no historical draft grants Stage5 |
 | Aspekte B2 L03 | Immutable R16 Stage2 report had 186 owner rows, 66 second-method reviews and unapproved source decisions. Later R17 reviews are not a Stage2→5 approval. | Stage2 approval then Stage3 / Stage4 |
 | Aspekte C1 | Original PDF and crosslevel Stage1 semantic review still ongoing, **zero** cards approved. | Stage1/2/3/4 must first finish |
 | 250 Verben R8 | Existing R8 Stage4/5 complete, Stage7 not certified. | **Do not** repackage archived 292 cards as new governed adoption; continue real Stage6/7 independently |
@@ -19,7 +19,7 @@
 
 ## Immutable and changing evidence
 
-The seven dated witnesses and their exact Git blob SHA values are in the JSON. Volatile `LATEST.json` owner pointers are protected by exact sha readback and stop on changes. B2 uses a **dated R16 owner receipt** rather than a constantly changing latest pointer, so independent B2 progress cannot silently rewrite this historical snapshot or break the archived witness. This does **not** mean a new B2 stage is approved; a fresh source-owner review remains mandatory.
+The seven **immutable, scoped, dated source-owner receipts** and their exact Git blob SHA values are in the JSON. They are historical evidence, not a substitute for reading the source's changing `LATEST.json` at the actual NEW production boundary. Both B1+ and B2 were actively advancing on 2026-11-05, so referencing their continually overwritten `LATEST.json` in this dated CI snapshot caused legitimate SHA drift. The pinned B1+ 31-pilot receipt and B2 R16 66-case receipt remain authentic historical witnesses even after source projects progress; they never authorize a newer Stage3/4/5. **When a future Stage4 owner acceptance happens, a new intake review must re-read the actual current main source LATEST and obtain fresh Stage4/5 evidence.**
 
 ## First formally ADOPTED producer — minimum execution contract
 

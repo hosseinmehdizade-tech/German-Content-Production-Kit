@@ -1,0 +1,75 @@
+{
+  "schema": "gcpk-user-approved-lexeme-multisense-cardinality@1",
+  "recorded_date": "2026-11-05",
+  "status": "EXPLICIT_USER_DECISION_RECORDED__PROSPECTIVE_AUTHORING_AND_INTEGRATION_DESIGN__NOT_RETROACTIVE_CARD_MIGRATION",
+  "user_intent_fa": "برای یک واژه، یک کارت با تمام معنی‌های مرتبط در همان کارت می‌خواهم؛ از تکرار کارت در A1 و A2 جلوگیری شود. مثال: die Birne شامل گلابی، لامپ و سر عامیانه در یک کارت باشد؛ نه سه کارت جدا.",
+  "policy": {
+    "unit": "ONE_LEXICAL_ENTRY_ONE_CARD_WITH_MULTIPLE_SENSES",
+    "meanings": "MULTIPLE_SENSES_INSIDE_SAME_CARD",
+    "include_sense_specific_examples": true,
+    "include_sense_specific_FA_translations": true,
+    "allow_multi_source_and_multi_lesson_memberships": true,
+    "source_reuse": "SHARE_SAME_CARD_ACROSS_A1_A2_WHEN_SAME_LEXICAL_ENTRY",
+    "SRS": "ONE_REVIEW_STATE_FOR_THE_ONE_CARD_UNLESS_EXPLICITLY_REDESIGNED_LATER",
+    "prohibited_as_default": [
+      "ONE_CARD_PER_SENSE",
+      "DUPLICATE_CARD_PER_LESSON_OR_COURSE",
+      "AUTO_REKEY_EXISTING_A1_OWNER_ID",
+      "SILENT_IDENTITY_COLLISION_MERGE",
+      "REPLACE_OR_RESET_USER_SRS"
+    ],
+    "nuance": "Different words are not merged just because translations match; separately spelled/formally distinct lexical entries may need a grounded editorial rule. Do not split a single lexical entry merely for its multiple meanings."
+  },
+  "worked_example": {
+    "lemma": "die Birne",
+    "card_count_target": 1,
+    "senses": [
+      {
+        "de": "Frucht",
+        "fa": "گلابی",
+        "example_de": "Ich esse eine Birne."
+      },
+      {
+        "de": "Glühlampe (umgangssprachlich)",
+        "fa": "لامپ",
+        "example_de": "Die Birne ist kaputt."
+      },
+      {
+        "de": "Kopf (umgangssprachlich)",
+        "fa": "سر",
+        "example_de": "Benutz deine Birne!"
+      }
+    ],
+    "lesson_memberships": "Add both A1 and A2 lessons without cloning card",
+    "example_provenance": "Illustrative authoring example from user conversation; not an edit to the validated source archive"
+  },
+  "A2_course_implications": {
+    "previous_R18_legacy_identity_count": 1918,
+    "note": "1918 is the old identity roster (1778 A2-owned + 140 A1 external refs), NOT proof that 1918 cards remain after approved lexeme-level consolidation.",
+    "A1_A2_source_linkage": "Resolve by exact stable owner identity + verified lexical equivalence and preserve source-specific meanings as structured sub-senses",
+    "legacy_Birne_ids": [
+      "ma1m-lu-0758",
+      "ma1m-lu-0759",
+      "ma1m-lu-0760"
+    ],
+    "legacy_Glas_ids": [
+      "ma1m-lu-0384",
+      "ma1m-lu-0385"
+    ],
+    "issue": "Historical A1 same-ID different-lexeme collisions must be handled with explicit migration or owner references, not rewritten.",
+    "next_gate": "Determine non-destructive schema and safe SRS-preserving conversion under exact CURRENT runtime, test on copy, then independently QA source-to-sense and lessons before Stage5/Stage6."
+  },
+  "scope": [
+    "Menschen A1/A2/B1 future mutable content integration",
+    "Other German Flashcards lexical card producers when applicable and adapter-tested"
+  ],
+  "invariants": {
+    "older_source_and_LOCKED_immutable": true,
+    "historical_Git_receipts_immutable": true,
+    "no_app_UI_changes_without_user_approval": true,
+    "no_runtime_or_IndexedDB_or_FSRS_SRS_migration_from_this_record": true,
+    "real_adapter_and_primary_profile_Stage6_NOT_RUN": true,
+    "stage5_course_NOT_PASS_FROM_DECISION": true,
+    "no_new_Library_artifact": true
+  }
+}

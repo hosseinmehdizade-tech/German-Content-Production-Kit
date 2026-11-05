@@ -1,0 +1,82 @@
+{
+  "schema": "gcpk-250-vmp-v18-stage7-readiness-gate@1.0.0",
+  "date": "2026-11-05",
+  "workstream": "250-verben-mit-praepositionen-lexical-enrichment-v1",
+  "milestone": "STAGE7_PRE_RELEASE_AUDIT_AFTER_USER_ATTESTED_IMPORT",
+  "status": "BLOCKED_STAGE7_RELEASE__STAGE6_USER_REPORTED_IMPORT_ONLY",
+  "scope": {
+    "unit": "R8 archive and browser-import evidence",
+    "total_units": 4
+  },
+  "progress": {
+    "reviewed_unique": 4,
+    "unreviewed": 0,
+    "dispositions": {
+      "confirmed_staged_content": 1,
+      "user_reported_import_only": 1,
+      "observed_runtime_display_defect": 1,
+      "release_evidence_hold": 1
+    }
+  },
+  "quality": {
+    "stage4": "PASS_OFFICIAL",
+    "stage5": "PASS_OFFICIAL",
+    "stage6": "IN_PROGRESS__USER_ATTESTED_IMPORT__ACTUAL_PERSISTENCE_FSRS_NOT_OBSERVED",
+    "stage7": "BLOCKED",
+    "independently_tested": {
+      "R8_zip_sha256": "63ae8f2a3a8d2ec5dff94798db3ed060a0b4e43b1cc2699e540beb1393882e5c",
+      "R8_crc": "PASS",
+      "R8_sha_manifest": "PASS_29_OF_29",
+      "R8_official_included_verifier": "PASS_R8_STAGE5_PACKAGED_VERIFICATION",
+      "direct_import_cards": 292,
+      "card231": {
+        "id": "usrin-vmp-u-0231",
+        "front": "sich umdrehen nach + D",
+        "source_synonym": "sich umwenden",
+        "actual_user_UI": "sichumwenden (screenshot from this conversation)"
+      },
+      "archive_missing_full_app": true,
+      "archive_missing_launcher": true,
+      "app_reference_html_only": true
+    },
+    "no_import_performed_in_this_tool_session": true,
+    "user_report": {
+      "verbatim": "ایمپورت کردم برو استیج بعد",
+      "interpretation": "IMPORT_SUCCESS_USER_REPORTED",
+      "independent_hard_proof": "NONE_OF_POST_RESTART_PERSISTENCE",
+      "exact_installed_app_build": "UNKNOWN"
+    },
+    "open_blockers": [
+      "Real post-close/reopen IndexedDB persistence and pre-existing FSRS review history were not observed",
+      "User's screenshot showed concatenated 'sichumwenden'; runtime rendering fix not verified on user's installed build",
+      "Exact installed app build hash unknown; unpromoted R2 app-reference cannot be treated as CURRENT verified release",
+      "R8 has only two App reference files, no standalone complete app/launcher to meet required single-zip Stage7 contract"
+    ],
+    "stage7_label": "NOT_FINAL",
+    "no_new_release_zip": true,
+    "anti_churn_policy": "No QA-only ZIP or blind promotion",
+    "safe_user_check": "After closing and reopening the app verify imported R8 content, a previously studied card's progress, and that synonym on card 231 displays 'sich umwenden'.",
+    "source_protected": [
+      "v1.7 private release",
+      "original source PDF",
+      "v1.8 R8 exact TSV/ZIP",
+      "canonical graph",
+      "user browser IndexedDB/FSRS",
+      "app UI"
+    ]
+  },
+  "persistence": {
+    "git": "PENDING_WRITE",
+    "library": "NO_NEW_ZIP_ANCHORED_TO_EXISTING_R8",
+    "local_readiness_json_sha256": "3922f2d733b0e6dbdbc75611da713846d130a40551d66e398125bce8a5e41a66",
+    "local_handoff_md_sha256": "66a47b8f510e0612fbc69bc7923bf6c7d49527e73ab8a6f8fcbc7c94eb776286"
+  },
+  "stage7_hard_gates": {
+    "reopen_persistence": "NOT_ATTESTED",
+    "fsrs_preservation": "NOT_ATTESTED",
+    "synonym_display_fixed": "NOT_ATTESTED",
+    "full_runtime_bundle_and_launcher": "NOT_PRESENT_IN_R8",
+    "final_release": "BLOCKED"
+  },
+  "next": "Do not reimport or rebuild content. Obtain genuine post-restart/persisted FSRS and visible symptom evidence, pin installed app/current source, fix display regression if still present, then assemble and verify one complete App+Content+Source+Tests+Reports+Docs+Tools/Launcher+Handoff final release ZIP. No Stage7 final before evidence."
+}

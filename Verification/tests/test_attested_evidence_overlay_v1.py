@@ -119,7 +119,7 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
     def test_duplicate_target_fails_closed(self):
         reg = copy.deepcopy(self.reg)
         reg["records"].append(copy.deepcopy(reg["records"][0]))
-        reg["records"][2]["evidence_id"] = "third-duplicate-report-20261105"
+        reg["records"][-1]["evidence_id"] = "third-duplicate-report-20261105"
         with self.assertRaisesRegex(ValueError, "MULTIPLE_RECEIPTS_FOR_SAME_TARGET"):
             self.outcome(reg=reg)
 
@@ -264,10 +264,18 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
 
     def test_changed_latest_artifact_without_pointer_pin_change_blocks(self):
         docs = copy.deepcopy(self.receipts)
-        p = self.reg["records"][0]["latest_path"]
+        record = self.reg["records"][0]
+        p = record["latest_path"]
         docs[p]["artifact"]["sha256"] = "5" * 64
-        with self.assertRaisesRegex(ValueError, "LATEST_ARTIFACT_DISAGREES_WITH_RECEIPT"):
-            self.outcome(docs=docs)
+        if self.idx.get(p) == record["latest_git_blob_at_readback"]:
+            with self.assertRaisesRegex(ValueError, "LATEST_ARTIFACT_DISAGREES_WITH_RECEIPT"):
+                self.outcome(docs=docs)
+        else:
+            # Stale historical LATEST is not authoritative and must not be fetched
+            # or promoted merely because this synthetic copy changed.
+            row = next(r for r in self.outcome(docs=docs)["evidence"]
+                       if r["target_id"] == record["target_id"])
+            self.assertIn("REVERIFY_BEFORE_RESUME", row["git_pointer_relation"])
 
     def test_markdown_is_deterministic_and_does_not_mutate_snapshot(self):
         result = self.outcome()

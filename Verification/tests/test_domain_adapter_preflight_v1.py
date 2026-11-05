@@ -191,6 +191,15 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
         for key,x in self.cfg["input_pins"].items():
             self.assertEqual(x["git_blob"],self.idx.get(x["path"]),key)
 
+    def test_executed_op02_shadow_matches_pinned_git_blob_only(self):
+        item=self.cfg["input_pins"]["op02_shadow"]
+        data=(ROOT/item["path"]).read_bytes()
+        self.assertTrue(p.matches_exact_git_text(data,item["git_blob"]))
+        self.assertFalse(p.matches_exact_git_text(data+b"# shadow tamper",item["git_blob"]))
+        self.assertTrue(p.matches_exact_git_text(
+            data.replace(b"\\r\\n",b"\\n").replace(b"\\n",b"\\r\\n"),
+            item["git_blob"]))
+
     def test_cli_writes_report_only_to_new_external_path(self):
         with tempfile.TemporaryDirectory() as td:
             target=Path(td)/"preflight.json"

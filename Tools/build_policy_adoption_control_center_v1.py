@@ -378,7 +378,7 @@ def markdown(status:dict)->str:
                 item["family_id"],
                 "YES" if item["native_checkpoint_tracked_in_git_index"] else "NO",
                 proof,item["status"],item["next_action"]))+" |")
-        lines.extend(["","## Untracked main checkpoint references — four historical owner-branch locators; no auto-repair","",
+        lines.extend(["","## Untracked main checkpoint references — five historical owner-branch locators; no auto-repair","",
           "| Root key | Missing main path | Branch-qualified historical candidate | Diagnosis |",
           "|---|---|---|---|"])
         for item in domain["root_checkpoint_issue_triage"]:

@@ -1,0 +1,50 @@
+name: GFP-OPT P1 Named Source Adoption Receipt Gate
+on:
+  push:
+    paths:
+      - 'Verification/verify_governed_source_adoption_v1.py'
+      - 'Verification/tests/test_governed_source_adoption_v1.py'
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - '.github/workflows/gfp-opt-p1-source-bound-adoption.yml'
+  pull_request:
+    paths:
+      - 'Verification/verify_governed_source_adoption_v1.py'
+      - 'Verification/tests/test_governed_source_adoption_v1.py'
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - '.github/workflows/gfp-opt-p1-source-bound-adoption.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-owned-replay:
+    name: Stage5 native receipt source and pointer replay (synthetic, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail closed on forged source, stale LATEST, legacy archive, mutable source and fake CURRENT
+        run: python -B -m unittest discover -s Verification/tests -p test_governed_source_adoption_v1.py -v
+      - name: Expose proof boundary
+        shell: bash
+        run: |
+          echo "Native actual Stage5 builder executes on SYNTHETIC source fixtures."
+          echo "Generated local LATEST pointer has a local Git blob hash, not independently read back from remote main."
+          echo "No private historical source ZIP, live GitHub latest, Library remote persistence or Stage4-7 is certified."
+          echo "Named producer adoption is not granted by this CI alone."

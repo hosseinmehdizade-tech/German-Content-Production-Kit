@@ -1,0 +1,199 @@
+{
+  "schema": "gcpk-global-policy-registry@1.0.0",
+  "version": "1.0.0",
+  "status": "ACTIVE_PROSPECTIVE_POLICY_ROUTER_NOT_BULK_CONTENT_MIGRATION",
+  "date": "2026-11-05",
+  "owner": "German-Content-Production-Kit",
+  "workflow": "Prompt/ACTIVE-PROMPT.txt -> Prompt/START-PROMPT-v3.3.6.md -> Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md -> this registry -> version-pinned domain policies",
+  "active_entrypoint": "Prompt/START-PROMPT-v3.3.6.md",
+  "architecture": "Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md",
+  "adoption_matrix": "Optimization-Program/Verification/GLOBAL-POLICY-ADOPTION-MATRIX-20261105.json",
+  "policy_resolution": "GLOBAL_VERSION_PINNED__EXPLICIT_SCOPES__NO_HISTORICAL_REWRITE",
+  "decision_axes": [
+    "SOURCE_AUTHORITY_CURRENTNESS",
+    "NORMATIVE_POLICY_VERSION",
+    "PRODUCER_ADAPTER_CAPABILITY",
+    "STAGE_ACCEPTANCE_EVIDENCE"
+  ],
+  "protected_invariants": {
+    "user_explicit_newer_validated_source_precedes_stale_git": true,
+    "immutable_raw_and_locked": true,
+    "no_unapproved_app_ui_or_importer_or_srs_fsrs_change": true,
+    "no_source_or_card_mutation_from_optimization_audit": true,
+    "no_inference_of_stage4_from_machine_qa": true,
+    "no_inference_of_real_adapter_coverage_from_synthetic_envelopes": true,
+    "no_inference_of_native_stage6_from_static_build": true,
+    "no_forced_related_or_combination_quota": true,
+    "no_fabricated_graph_ids_or_lexical_senses": true,
+    "cross_workstream_state_isolation": true,
+    "evidence_sha_and_exact_stage_scope_required": true,
+    "write_once_report_and_compare_and_swap": true
+  },
+  "precedence": {
+    "source_authority": "newer explicit validated user artifact > newest validated portable workstream artifact > LATEST plus receipt > workstream CHECKPOINT > global PROJECT-STATE summary > historical",
+    "norms": "explicit user scope & preservation > active safety/root guardrails > this registry's active version pins > per-domain active policies > compatible source-specific additive rules > frozen historical text (replay only)",
+    "stage_proof": "exact source+artifact SHA, independently run gate, scoped receipt. Do not promote synthetic QA or metadata navigation to semantic Stage4, actual Stage6, or final."
+  },
+  "policy_bindings": {
+    "currentness": {
+      "path": "WORKSTREAM-RESUME-CURRENTNESS-POLICY.json",
+      "blob_sha": "86c908351f733f291d93341cfcc20635f9eaccb9",
+      "scope": "ALL_WORKSTREAM_STARTUP",
+      "stages": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "seven_stages": {
+      "path": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
+      "blob_sha": "58e7b6e2d6abe462569725fe81e02111aba5d074",
+      "scope": "ALL_PRODUCERS",
+      "stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "stage3_onepass": {
+      "path": "Prompt/LEAN-STAGE3-4-OPERATING-MODE-v1.0.0.md",
+      "blob_sha": "ede37519f21c952943dd4cb7c597ceff06b39e17",
+      "scope": "LEXICAL_MUTABLE",
+      "stages": [
+        3,
+        4
+      ]
+    },
+    "linguistic_qa": {
+      "path": "LINGUISTIC-QA-AUTHORITY-POLICY.json",
+      "blob_sha": "51c8fc9f3b3163efab10aba88f1a81c0d6c5124b",
+      "scope": "LINGUISTIC_REVIEW",
+      "stages": [
+        4
+      ]
+    },
+    "risk_based_stage4": {
+      "path": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json",
+      "blob_sha": "a00ea610641a376c5514bc9597eaca0bb43dc3ce",
+      "scope": "LINGUISTIC_REVIEW",
+      "stages": [
+        4
+      ]
+    },
+    "kombinationen_pointer": {
+      "path": "Prompt/KOMBINATIONEN-ACTIVE-POLICY.json",
+      "blob_sha": "0f61c38ce3f623ce4642001c7cd66474b62356d2",
+      "scope": "LEXICAL_MUTABLE",
+      "stages": [
+        3,
+        4
+      ]
+    },
+    "kombinationen_source_first": {
+      "path": "Prompt/KOMBINATIONEN-SOURCE-FIRST-DIVERSITY-AND-REKTION-OVERLAY-v1.2.0.md",
+      "blob_sha": "46c8410cbd76a9273d293cc8b28532efd8aa1561",
+      "scope": "LEXICAL_MUTABLE",
+      "stages": [
+        3,
+        4
+      ]
+    },
+    "related_taxonomy": {
+      "path": "Prompt/RELATED-SECTIONS-TAXONOMY-POLICY-v1.1.0.md",
+      "blob_sha": "8e0e9cb810c0a711dc853d4dbcc61bbe71a2f062",
+      "scope": "LEXICAL_MUTABLE",
+      "stages": [
+        3,
+        4,
+        5
+      ]
+    },
+    "lexical_relation_display": {
+      "path": "Prompt/LEXICAL-RELATION-PRESENTATION-AND-SENSE-POLICY-v1.0.0.md",
+      "blob_sha": "cfb2fea68e57d1cafebec7cc03edafb2fb0e10af",
+      "scope": "LEXICAL_MUTABLE_AND_VISIBLE_PROJECTION",
+      "stages": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "stage5_neutral_validator": {
+      "path": "Verification/validate_unified_vocabulary_projection_v1_1_0.py",
+      "blob_sha": "b6d27c0b98f44cd8b0ffad325710f24f76da95e1",
+      "scope": "NEUTRAL_VOCABULARY_PROJECTION",
+      "stages": [
+        5
+      ]
+    },
+    "stage5_clean_builder": {
+      "path": "Tools/build_clean_delivery.py",
+      "blob_sha": "e12d2224c3321564e279bb5892298c35036bf7e9",
+      "scope": "NEUTRAL_VOCABULARY_PROJECTION",
+      "stages": [
+        5
+      ]
+    },
+    "stage5_delivery": {
+      "path": "CONTENT-OUTPUT-DELIVERY-POLICY.json",
+      "blob_sha": "8c79dee99a67f4113f7e0320662d78ada03ff4cc",
+      "scope": "USER_FACING_LEXICAL_DELIVERY",
+      "stages": [
+        5,
+        7
+      ]
+    },
+    "stage5_hygiene": {
+      "path": "Tools/DELIVERY-HYGIENE-POLICY.json",
+      "blob_sha": "e97c8314af12b3092787c79d6d3452c334ddaac6",
+      "scope": "CLEAN_DELIVERY",
+      "stages": [
+        5,
+        7
+      ]
+    },
+    "related_advisory": {
+      "path": "Verification/audit_related_sections_taxonomy_v1_1.py",
+      "blob_sha": "b1e3104c03326f60232efbe42d5f919f8c3cd6e8",
+      "scope": "LEXICAL_QA_ADVISORY",
+      "stages": [
+        3,
+        4
+      ]
+    },
+    "lexical_relation_advisory": {
+      "path": "Verification/audit_lexical_relation_fields_v1.py",
+      "blob_sha": "833b4309fb7ffe6f8238856a8f6e9040dcc872be",
+      "scope": "LEXICAL_QA_ADVISORY",
+      "stages": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "adoption_levels": [
+    "DISCOVERED",
+    "CENTRAL_ROUTED",
+    "ADAPTER_SYNTHETIC_VERIFIED",
+    "REAL_OUTPUT_SCOPED_VERIFIED",
+    "INDEPENDENT_SEMANTIC_VERIFIED",
+    "STAGE5_EXACT_BUILT_VERIFIED",
+    "STAGE6_REAL_RUNTIME_VERIFIED",
+    "STAGE7_RELEASE_VERIFIED"
+  ],
+  "vocabulary_note": "Generic user-imported Vocabulary is not a single certified native workstream; the real current producer output has not been located. v411 Canonical projector only has synthetic scoped proof.",
+  "semantic_note": "Typed Wortnetz graph, learner-visible details and lexical_relations_v1 sidecar remain distinct authorities; equivalence never inferred.",
+  "stage5_details_note": "For present details on ordinary neutral vocabulary projection, central validator fails closed on malformed JSON/list sections; historical B1 L19 145 plain-prose cells NOT automatically rewritten.",
+  "routing_only_note": "RESUME-ROUTES.json contains navigation hints, never stage/progress authority. Different workstreams need independent evidence."
+}

@@ -9,3 +9,7 @@ The normative full v3.3.6 master prompt is stored inside the verified portable a
 - internal master SHA-256: `4cc68b5f42b1e38fd6d8ff9860832eb2bb6e76f85ca31d276724e65f896b1948`
 
 v3.3.6 adds source-format-independent Stage 1 adapters, mandatory Stage 2B identity closure, Stage 3A/3B/3C richness completeness, durable candidate decisions, independent Stage 4 re-audit, dependency-scoped invalidation, and a Stage 5 completeness anti-bypass builder. v3.3.5 semantic/presentation separation remains fully active.
+
+## Live prospective policy overlay (outside immutable portable archive)
+
+The original v3.3.6 package and its hashes above are historical/portable **immutable** authority. For new or resumed content work, load the active `Prompt/START-PROMPT-v3.3.6.md` then the globally version-pinned `Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md` and `Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json`. This adds policy routing, applicability and fail-closed evidence accounting; it does NOT rewrite the ZIP, retroactively reapprove content, or change Stage4/5/6/7 scope.

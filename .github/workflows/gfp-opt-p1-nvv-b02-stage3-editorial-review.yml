@@ -1,0 +1,34 @@
+name: GFP-OPT P1 NVV B02 Stage3 Editorial No-Release Gate
+on:
+  pull_request:
+    paths:
+      - 'Optimization-Program/Verification/P1-NVV-B02-13-OWNER-PROPOSAL-EDITORIAL-REVIEW-NONIMPORT-20261105.json'
+      - 'Optimization-Program/Verification/P1-NVV-B02-13-OWNER-PROPOSAL-INDEPENDENT-QA-NONIMPORT-20261105.json'
+      - 'Verification/verify_p1_nvv_b02_13_editorial_review_v1.py'
+      - 'Verification/tests/test_p1_nvv_b02_13_editorial_review_v1.py'
+      - '.github/workflows/gfp-opt-p1-nvv-b02-stage3-editorial-review.yml'
+      - 'Workspaces/nomen-verb-verbindungen/B02-SOURCE-FIRST-RECOVERY-20261105.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-editorial-nonimport:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact source-owner thirteen proposals and eleven dispositions
+        run: python -B Verification/verify_p1_nvv_b02_13_editorial_review_v1.py
+      - name: Reject false source PDF, closed HOLD, stage4 or adoption
+        run: python -B -m unittest discover -s Verification/tests -p test_p1_nvv_b02_13_editorial_review_v1.py -v
+      - name: Private Library boundary
+        run: |
+          echo "Full 100-card source baseline remains private in NVV Library."
+          echo "This job verifies only owner and review Git metadata."
+          echo "B02 Stage3 editorial draft; source owner Stage4 and P1 ADOPTED stay open."

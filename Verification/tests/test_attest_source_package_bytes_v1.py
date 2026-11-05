@@ -203,6 +203,42 @@ class TestRealSourcePackageByteContract(unittest.TestCase):
         self.assertEqual(self.source.read_bytes(), a)
         self.assertEqual(self.archive.read_bytes(), b)
 
+    def test_cli_report_path_cannot_overwrite_original_pdf(self):
+        profile_path = Path(self.tmp.name) / "profile.json"
+        profile_path.write_text(json.dumps(self.profile), encoding="utf-8")
+        before = self.source.read_bytes()
+        run = subprocess.run(
+            [sys.executable, str(SCRIPT), "--profile", str(profile_path),
+             "--archive", str(self.archive), "--original-source", str(self.source),
+             "--output", str(self.source)], capture_output=True, text=True, timeout=30)
+        self.assertEqual(run.returncode, 2)
+        self.assertIn("OUTPUT_ALIASES_INPUT_BYTES", run.stderr)
+        self.assertEqual(self.source.read_bytes(), before)
+
+    def test_cli_report_path_cannot_overwrite_zip(self):
+        profile_path = Path(self.tmp.name) / "profile.json"
+        profile_path.write_text(json.dumps(self.profile), encoding="utf-8")
+        before = self.archive.read_bytes()
+        run = subprocess.run(
+            [sys.executable, str(SCRIPT), "--profile", str(profile_path),
+             "--archive", str(self.archive), "--original-source", str(self.source),
+             "--output", str(self.archive)], capture_output=True, text=True, timeout=30)
+        self.assertEqual(run.returncode, 2)
+        self.assertIn("OUTPUT_ALIASES_INPUT_BYTES", run.stderr)
+        self.assertEqual(self.archive.read_bytes(), before)
+
+    def test_cli_report_path_cannot_write_inside_git_checkout(self):
+        profile_path = Path(self.tmp.name) / "profile.json"
+        profile_path.write_text(json.dumps(self.profile), encoding="utf-8")
+        target = ROOT / "Workspaces" / "forbidden-attestation-output.json"
+        run = subprocess.run(
+            [sys.executable, str(SCRIPT), "--profile", str(profile_path),
+             "--archive", str(self.archive), "--original-source", str(self.source),
+             "--output", str(target)], capture_output=True, text=True, timeout=30)
+        self.assertEqual(run.returncode, 2)
+        self.assertIn("OUTPUT_INSIDE_REPOSITORY_FORBIDDEN", run.stderr)
+        self.assertFalse(target.exists())
+
     def test_cli_real_fixture_status_and_no_false_final(self):
         profile_path = Path(self.tmp.name) / "profile.json"
         profile_path.write_text(json.dumps(self.profile), encoding="utf-8")

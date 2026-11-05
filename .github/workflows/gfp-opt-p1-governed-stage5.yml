@@ -1,0 +1,48 @@
+name: GFP-OPT P1 Governed Stage5 Producer Integration
+on:
+  push:
+    paths:
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Verification/tests/test_governed_stage5_invocation_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Tools/build_clean_delivery.py'
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - 'Tools/content_package_guard.py'
+      - '.github/workflows/gfp-opt-p1-governed-stage5.yml'
+  pull_request:
+    paths:
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Verification/tests/test_governed_stage5_invocation_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Tools/build_clean_delivery.py'
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - 'Tools/content_package_guard.py'
+      - '.github/workflows/gfp-opt-p1-governed-stage5.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  governed-producer:
+    name: Official builder with exact central registry (synthetic, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Stage5 governed producer pipeline, package readback and adversarial tests
+        run: python -B -m unittest discover -s Verification/tests -p test_governed_stage5_invocation_v1.py -v
+      - name: Assert provenance boundary
+        shell: bash
+        run: |
+          echo "PASS here means a governed Stage5 builder integration with synthetic inputs only."
+          echo "Not producer-by-producer currentness, Stage4 semantic signoff, Stage5 acceptance, Stage6 browser, Stage7 or global adoption."

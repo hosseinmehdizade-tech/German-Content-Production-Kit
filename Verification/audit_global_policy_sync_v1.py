@@ -59,7 +59,7 @@ def matches_git_blob_across_checkout_line_endings(data: bytes, expected: str) ->
     recorded blob is LF. The pinned repository object remains authoritative.
     """
     return (git_blob_sha(data) == expected
-            or git_blob_sha(data.replace(b"\\r\\n", b"\\n")) == expected)
+            or git_blob_sha(data.replace(b"\r\n", b"\n")) == expected)
 
 
 def safe_path(value: str) -> bool:

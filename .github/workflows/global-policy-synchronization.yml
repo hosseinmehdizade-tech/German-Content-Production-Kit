@@ -1,0 +1,58 @@
+name: Global Policy Synchronization and Adoption Truth
+on:
+  push:
+    paths:
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.6.md'
+      - 'Prompt/ACTIVE-PROMPT.txt'
+      - 'Optimization-Program/Verification/GLOBAL-POLICY-ADOPTION-MATRIX-20261105.json'
+      - 'Verification/audit_global_policy_sync_v1.py'
+      - 'Verification/tests/test_global_policy_sync_v1.py'
+      - 'PROJECT-BOOTSTRAP.md'
+      - 'README.md'
+      - 'Workspaces/**'
+      - '.github/workflows/global-policy-synchronization.yml'
+  pull_request:
+    paths:
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.3.6.md'
+      - 'Prompt/ACTIVE-PROMPT.txt'
+      - 'Optimization-Program/Verification/GLOBAL-POLICY-ADOPTION-MATRIX-20261105.json'
+      - 'Verification/audit_global_policy_sync_v1.py'
+      - 'Verification/tests/test_global_policy_sync_v1.py'
+      - 'PROJECT-BOOTSTRAP.md'
+      - 'README.md'
+      - 'Workspaces/**'
+      - '.github/workflows/global-policy-synchronization.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  failclosed-global-router:
+    name: Global policy snapshot + negatives (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile global policy auditor
+        run: >-
+          python -B -m py_compile
+          Verification/audit_global_policy_sync_v1.py
+          Verification/tests/test_global_policy_sync_v1.py
+      - name: Fail-closed global policy authority and adoption checks
+        run: python -B Verification/audit_global_policy_sync_v1.py --check
+      - name: Test policy pins, stale prompt, false-PASS and new-workspace negative controls
+        run: python -B -m unittest discover -s Verification/tests -p test_global_policy_sync_v1.py -v

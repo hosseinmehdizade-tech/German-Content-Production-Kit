@@ -1,0 +1,732 @@
+{
+  "schema": "aspekte-c1-b1b2-live-headword-collision-screen@1.0.0",
+  "project": "aspekte-c1",
+  "date": "2026-11-05",
+  "status": "QA_SCREEN_ONLY_NOT_FINAL_DECISION",
+  "scope": "All 3270 C1 source occurrences and all 3275 original Library CSV learnables, especially 2219 preflight NEW lemma candidates",
+  "baseline_sha256": "NOT_INDEPENDENTLY_VERIFIED",
+  "source_index_file": "C1-SOURCE-HEADWORD-INDEX-3270-20261105.jsonl",
+  "algorithm": "Lower HEADWORD exact match after removing article/inflection/usage suffix; synonyms split by /; suffix /in canonicalized; no automatic exclusion without sense check.",
+  "counts": {
+    "c1_rows": 3270,
+    "b1b2_rows": 3275,
+    "new_candidates": 2219,
+    "normalized_lemma_parenthesis_errors": 109,
+    "new_candidate_exact_b1b2_head_hits": 40
+  },
+  "chapters": {
+    "1": {
+      "total": 397,
+      "new": 247,
+      "lower_known": 77,
+      "manual_decision": 73,
+      "parse_problem": 11,
+      "exact_b1b2_duplicate_candidates": 4
+    },
+    "2": {
+      "total": 322,
+      "new": 194,
+      "lower_known": 69,
+      "manual_decision": 59,
+      "parse_problem": 14,
+      "exact_b1b2_duplicate_candidates": 2
+    },
+    "3": {
+      "total": 385,
+      "new": 239,
+      "lower_known": 87,
+      "manual_decision": 59,
+      "parse_problem": 16,
+      "exact_b1b2_duplicate_candidates": 8
+    },
+    "4": {
+      "total": 418,
+      "new": 279,
+      "lower_known": 78,
+      "manual_decision": 61,
+      "parse_problem": 15,
+      "exact_b1b2_duplicate_candidates": 6
+    },
+    "5": {
+      "total": 280,
+      "new": 186,
+      "lower_known": 43,
+      "manual_decision": 51,
+      "parse_problem": 12,
+      "exact_b1b2_duplicate_candidates": 4
+    },
+    "6": {
+      "total": 367,
+      "new": 270,
+      "lower_known": 68,
+      "manual_decision": 29,
+      "parse_problem": 10,
+      "exact_b1b2_duplicate_candidates": 3
+    },
+    "7": {
+      "total": 340,
+      "new": 251,
+      "lower_known": 45,
+      "manual_decision": 44,
+      "parse_problem": 8,
+      "exact_b1b2_duplicate_candidates": 4
+    },
+    "8": {
+      "total": 213,
+      "new": 151,
+      "lower_known": 32,
+      "manual_decision": 30,
+      "parse_problem": 7,
+      "exact_b1b2_duplicate_candidates": 2
+    },
+    "9": {
+      "total": 219,
+      "new": 154,
+      "lower_known": 32,
+      "manual_decision": 33,
+      "parse_problem": 3,
+      "exact_b1b2_duplicate_candidates": 2
+    },
+    "10": {
+      "total": 329,
+      "new": 248,
+      "lower_known": 55,
+      "manual_decision": 26,
+      "parse_problem": 13,
+      "exact_b1b2_duplicate_candidates": 5
+    }
+  },
+  "collisions": [
+    {
+      "id": "C1-P02-E073",
+      "chapter": 1,
+      "raw": "der Proband, -en",
+      "previous_normalized": "proband",
+      "corrected": "proband",
+      "prior": [
+        {
+          "head": "der/die Proband/in, -en/-nen",
+          "level": "Aspekte_B1+/B2::28_B2:_5_–_Wer_Wissen_schafft,_macht_Wissenschaft",
+          "source_line": 2256,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P03-E026",
+      "chapter": 1,
+      "raw": "der Forscher, -",
+      "previous_normalized": "forscher",
+      "corrected": "forscher",
+      "prior": [
+        {
+          "head": "der/die Forscher/in, -/-nen",
+          "level": "Aspekte_B1+/B2::19_B1+:_10_–_Natürlich_Natur!",
+          "source_line": 1391,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P03-E029",
+      "chapter": 1,
+      "raw": "der Bewerber, -",
+      "previous_normalized": "bewerber",
+      "corrected": "bewerber",
+      "prior": [
+        {
+          "head": "der/die Bewerber/in, -/-nen",
+          "level": "Aspekte_B1+/B2::11_B1+:_6_–_Berufsbilder",
+          "source_line": 741,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P04-E015",
+      "chapter": 1,
+      "raw": "handeln (sich) (um + A.) (Es handelt sich um eine Verwechslung.)",
+      "previous_normalized": "handeln (es handelt sich",
+      "corrected": "handeln",
+      "prior": [
+        {
+          "head": "handeln, handelte, gehandelt (sich) (um + A.)",
+          "level": "Aspekte_B1+/B2::08_B1+:_4_–_Viel_Spaß!_2",
+          "source_line": 460,
+          "example": "Es handelt sich hier um eine schwierige Situation."
+        },
+        {
+          "head": "handeln (von + D. )",
+          "level": "Aspekte_B1+/B2::08_B1+:_4_–_Viel_Spaß!_2",
+          "source_line": 461,
+          "example": "Der Film handelt von einer Frau, die ..."
+        }
+      ]
+    },
+    {
+      "id": "C1-P05-E064",
+      "chapter": 2,
+      "raw": "schätzen (Ich schätze es, dass ich überall erreichbar bin.)",
+      "previous_normalized": "schätzen (ich schätze es",
+      "corrected": "schätzen",
+      "prior": [
+        {
+          "head": "schätzen, schätzte, geschätzt",
+          "level": "Aspekte_B1+/B2::07_B1+:_4_–_Viel_Spaß!",
+          "source_line": 446,
+          "example": ""
+        },
+        {
+          "head": "schätzen, schätzte, geschätzt",
+          "level": "Aspekte_B1+/B2::08_B1+:_4_–_Viel_Spaß!_2",
+          "source_line": 447,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P05-E071",
+      "chapter": 2,
+      "raw": "Überblick (über + A.) (den Überblick verlieren über)",
+      "previous_normalized": "überblick (den überblick",
+      "corrected": "überblick",
+      "prior": [
+        {
+          "head": "der Überblick (Sg.)",
+          "level": "Aspekte_B1+/B2::20_B1+:_10_–_Natürlich_Natur!_2",
+          "source_line": 1518,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P10-E086",
+      "chapter": 3,
+      "raw": "der Akademiker, -",
+      "previous_normalized": "akademiker",
+      "corrected": "akademiker",
+      "prior": [
+        {
+          "head": "der/die Akademiker/in, -/-nen",
+          "level": "Aspekte_B1+/B2::13_B1+:_7_–_Für_immer_und_ewig",
+          "source_line": 867,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P11-E012",
+      "chapter": 3,
+      "raw": "die Organisation (Sg.) (Ein wichtiger Faktor meines Erfolgs ist gute Organisation.)",
+      "previous_normalized": "organisation (ein wichtiger",
+      "corrected": "organisation",
+      "prior": [
+        {
+          "head": "die Organisation, -en",
+          "level": "Aspekte_B1+/B2::27_B2:_4_–_Zusammen_leben_2",
+          "source_line": 2175,
+          "example": "„Die Tafeln“ sind eine soziale Organisation."
+        }
+      ]
+    },
+    {
+      "id": "C1-P12-E033",
+      "chapter": 3,
+      "raw": "gefragt sein (Neben Fachwissen sind in der Arbeitswelt auch Soft Skills gefragt.)",
+      "previous_normalized": "gefragt sein (neben fachwissen sind in",
+      "corrected": "gefragt sein",
+      "prior": [
+        {
+          "head": "gefragt sein",
+          "level": "Aspekte_B1+/B2::25_B2:_3_–_Arbeit_ist_das_halbe_Leben?_2",
+          "source_line": 1984,
+          "example": "Neben Fachwissen sind in der Arbeitswelt auch Soft Skills gefragt."
+        }
+      ]
+    },
+    {
+      "id": "C1-P12-E094",
+      "chapter": 3,
+      "raw": "rund um (Er vermittelt sein Wissen rund um das Thema \"Bewerbung\".)",
+      "previous_normalized": "rund um (er vermittelt sein wissen rund",
+      "corrected": "rund um",
+      "prior": [
+        {
+          "head": "rund um (+ A.)",
+          "level": "Aspekte_B1+/B2::05_B1+:_3_–_Wie_geht's_denn_so?",
+          "source_line": 215,
+          "example": "Ich sammle alles rund um Schokolade."
+        }
+      ]
+    },
+    {
+      "id": "C1-P13-E010",
+      "chapter": 3,
+      "raw": "stimmen (jmd. neugierig/traurig/fröhlich/… stimmen)",
+      "previous_normalized": "stimmen (jmd. neugierig/traurig/fröhlich/...",
+      "corrected": "stimmen",
+      "prior": [
+        {
+          "head": "stimmen, stimmte, gestimmt",
+          "level": "Aspekte_B1+/B2::24_B2:_3_–_Arbeit_ist_das_halbe_Leben?",
+          "source_line": 1850,
+          "example": "(jmd. neugierig/traurig/fröhlich/... stimmen) (ein Instrument stimmen)  (jmd. romantisch stimmen)"
+        }
+      ]
+    },
+    {
+      "id": "C1-P13-E018",
+      "chapter": 3,
+      "raw": "Überblick (über + A.) (sich einen Überblick verschaffen über)",
+      "previous_normalized": "überblick (sich einen",
+      "corrected": "überblick",
+      "prior": [
+        {
+          "head": "der Überblick (Sg.)",
+          "level": "Aspekte_B1+/B2::20_B1+:_10_–_Natürlich_Natur!_2",
+          "source_line": 1518,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P13-E024",
+      "chapter": 3,
+      "raw": "verschaffen (sich) (sich einen Überblick verschaffen)",
+      "previous_normalized": "verschaffen (sich einen überblick",
+      "corrected": "verschaffen",
+      "prior": [
+        {
+          "head": "verschaffen, verschaffte, verschafft",
+          "level": "Aspekte_B1+/B2::28_B2:_5_–_Wer_Wissen_schafft,_macht_Wissenschaft",
+          "source_line": 2263,
+          "example": "einen Vorteil verschaffen"
+        },
+        {
+          "head": "verschaffen, verschaffte, verschafft (sich)",
+          "level": "Aspekte_B1+/B2::30_B2:_6_–_Fit_für_…",
+          "source_line": 2536,
+          "example": "sich einen Überblick"
+        }
+      ]
+    },
+    {
+      "id": "C1-P13-E039",
+      "chapter": 3,
+      "raw": "beschäftigen (Die Firma beschäftigt 100 Angestellte.)",
+      "previous_normalized": "beschäftigen (die firma beschäftigt 100",
+      "corrected": "beschäftigen",
+      "prior": [
+        {
+          "head": "beschäftigen, beschäftigte, beschäftigt (sich) (mit + D.)",
+          "level": "Aspekte_B1+/B2::24_B2:_3_–_Arbeit_ist_das_halbe_Leben?",
+          "source_line": 1875,
+          "example": "Die meisten Menschen beschäftigen sich gern mit anspruchsvollen Aufgaben."
+        }
+      ]
+    },
+    {
+      "id": "C1-P15-E067",
+      "chapter": 4,
+      "raw": "der Jurist, -en",
+      "previous_normalized": "jurist",
+      "corrected": "jurist",
+      "prior": [
+        {
+          "head": "der/die Jurist/in, -en/-nen",
+          "level": "Aspekte_B1+/B2::24_B2:_3_–_Arbeit_ist_das_halbe_Leben?",
+          "source_line": 1856,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P15-E082",
+      "chapter": 4,
+      "raw": "der Mediziner, -",
+      "previous_normalized": "mediziner",
+      "corrected": "mediziner",
+      "prior": [
+        {
+          "head": "der/die Mediziner/in, -/-nen",
+          "level": "Aspekte_B1+/B2::29_B2:_5_–_Wer_Wissen_schafft,_macht_Wissenschaft_2",
+          "source_line": 2348,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P16-E022",
+      "chapter": 4,
+      "raw": "der Produzent, -en",
+      "previous_normalized": "produzent",
+      "corrected": "produzent",
+      "prior": [
+        {
+          "head": "der/die Produzent/in, -en/-nen",
+          "level": "Aspekte_B1+/B2::08_B1+:_4_–_Viel_Spaß!_2",
+          "source_line": 517,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P16-E065",
+      "chapter": 4,
+      "raw": "der Konsument, -en",
+      "previous_normalized": "konsument",
+      "corrected": "konsument",
+      "prior": [
+        {
+          "head": "der/die Konsument/in, -en/-nen",
+          "level": "Aspekte_B1+/B2::05_B1+:_3_–_Wie_geht's_denn_so?",
+          "source_line": 236,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P17-E089",
+      "chapter": 4,
+      "raw": "der Geschäftsführer, -",
+      "previous_normalized": "geschäftsführer",
+      "corrected": "geschäftsführer",
+      "prior": [
+        {
+          "head": "der/die Geschäftsführer/in, -/-nen",
+          "level": "Aspekte_B1+/B2::25_B2:_3_–_Arbeit_ist_das_halbe_Leben?_2",
+          "source_line": 1986,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P18-E020",
+      "chapter": 4,
+      "raw": "verstellen (sich) (als Frau erfolgreich sein, ohne sich zu verstellen)",
+      "previous_normalized": "verstellen (als frau erfolgreich sein",
+      "corrected": "verstellen",
+      "prior": [
+        {
+          "head": "verstellen, verstellte, verstellt",
+          "level": "Aspekte_B1+/B2::06_B1+:_3_–_Wie_geht's_denn_so?_2",
+          "source_line": 314,
+          "example": "die Uhr verstellen"
+        }
+      ]
+    },
+    {
+      "id": "C1-P18-E054",
+      "chapter": 5,
+      "raw": "der Betreiber, - (die Betreiber eines Netzwerks)",
+      "previous_normalized": "betreiber",
+      "corrected": "betreiber",
+      "prior": [
+        {
+          "head": "der/die Betreiber/in, -/-nen",
+          "level": "Aspekte_B1+/B2::27_B2:_4_–_Zusammen_leben_2",
+          "source_line": 2163,
+          "example": "die Betreiber eines Netzwerks"
+        }
+      ]
+    },
+    {
+      "id": "C1-P20-E056",
+      "chapter": 5,
+      "raw": "der Rat (Sg.) (jmd. mit Rat und Tat zur Seite stehen)",
+      "previous_normalized": "rat (jmd. mit rat und tat zur",
+      "corrected": "rat",
+      "prior": [
+        {
+          "head": "der Rat (Sg.)",
+          "level": "Aspekte_B1+/B2::05_B1+:_3_–_Wie_geht's_denn_so?",
+          "source_line": 171,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P20-E063",
+      "chapter": 5,
+      "raw": "besagen (Die Studie besagt: Je gebildeter, desto größer das Engagement.)",
+      "previous_normalized": "besagen (die studie besagt: je",
+      "corrected": "besagen",
+      "prior": [
+        {
+          "head": "besagen, besagte, besagt",
+          "level": "Aspekte_B1+/B2::24_B2:_3_–_Arbeit_ist_das_halbe_Leben?",
+          "source_line": 1874,
+          "example": "Eine Studie besagt, dass ..."
+        }
+      ]
+    },
+    {
+      "id": "C1-P21-E046",
+      "chapter": 5,
+      "raw": "der Gründer, -",
+      "previous_normalized": "gründer",
+      "corrected": "gründer",
+      "prior": [
+        {
+          "head": "der/die Gründer/in, -/-nen",
+          "level": "Aspekte_B1+/B2::12_B1+:_6_–_Berufsbilder_2",
+          "source_line": 819,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P24-E015",
+      "chapter": 6,
+      "raw": "der Tierschützer, -",
+      "previous_normalized": "tierschützer",
+      "corrected": "tierschützer",
+      "prior": [
+        {
+          "head": "der/die Tierschützer/in, -/-nen",
+          "level": "Aspekte_B1+/B2::19_B1+:_10_–_Natürlich_Natur!",
+          "source_line": 1424,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P25-E003",
+      "chapter": 6,
+      "raw": "beschäftigen (sich) (mit + D.) (Der Arzt beschäftigt sich mit seinen Patienten.)",
+      "previous_normalized": "beschäftigen (der arzt",
+      "corrected": "beschäftigen",
+      "prior": [
+        {
+          "head": "beschäftigen, beschäftigte, beschäftigt (sich) (mit + D.)",
+          "level": "Aspekte_B1+/B2::24_B2:_3_–_Arbeit_ist_das_halbe_Leben?",
+          "source_line": 1875,
+          "example": "Die meisten Menschen beschäftigen sich gern mit anspruchsvollen Aufgaben."
+        }
+      ]
+    },
+    {
+      "id": "C1-P25-E020",
+      "chapter": 6,
+      "raw": "reichen (für + A.) (Das Essen reicht noch für morgen.)",
+      "previous_normalized": "reichen (das essen reicht noch",
+      "corrected": "reichen",
+      "prior": [
+        {
+          "head": "reichen, reichte, gereicht (für + A.)",
+          "level": "Aspekte_B1+/B2::24_B2:_3_–_Arbeit_ist_das_halbe_Leben?",
+          "source_line": 1848,
+          "example": "(jmd. die Hand reichen) (Das Essen reicht noch für morgen.) (Ich habe eingesehen, dass mein Talent nicht r eicht.)"
+        }
+      ]
+    },
+    {
+      "id": "C1-P27-E050",
+      "chapter": 7,
+      "raw": "der Detektiv, -e",
+      "previous_normalized": "detektiv",
+      "corrected": "detektiv",
+      "prior": [
+        {
+          "head": "der/die Detektiv/in, -e/-nen",
+          "level": "Aspekte_B1+/B2::31_B2:_7_–_Kulturwelten",
+          "source_line": 2620,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P27-E070",
+      "chapter": 7,
+      "raw": "auslegen (Waren im Schaufenster auslegen)",
+      "previous_normalized": "auslegen (waren im schaufenster",
+      "corrected": "auslegen",
+      "prior": [
+        {
+          "head": "auslegen, legte aus/auslegte, ausgelegt",
+          "level": "Aspekte_B1+/B2::10_B1+:_5_–_Alles_will_gelernt_sein_2",
+          "source_line": 629,
+          "example": "Legen Sie die Texte im Kurs aus."
+        }
+      ]
+    },
+    {
+      "id": "C1-P28-E002",
+      "chapter": 7,
+      "raw": "der Liebhaber, -",
+      "previous_normalized": "liebhaber",
+      "corrected": "liebhaber",
+      "prior": [
+        {
+          "head": "der/die Liebhaber/in, -/-nen",
+          "level": "Aspekte_B1+/B2::12_B1+:_6_–_Berufsbilder_2",
+          "source_line": 832,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P28-E066",
+      "chapter": 7,
+      "raw": "Überblick (über + A.) (den Überblick behalten über)",
+      "previous_normalized": "überblick (den überblick",
+      "corrected": "überblick",
+      "prior": [
+        {
+          "head": "der Überblick (Sg.)",
+          "level": "Aspekte_B1+/B2::20_B1+:_10_–_Natürlich_Natur!_2",
+          "source_line": 1518,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P29-E029",
+      "chapter": 8,
+      "raw": "der Mut (Sg.) (jmd. Mut machen)",
+      "previous_normalized": "mut",
+      "corrected": "mut",
+      "prior": [
+        {
+          "head": "der Mut (Sg.) jmd. Mut machen",
+          "level": "Aspekte_B1+/B2::11_B1+:_6_–_Berufsbilder",
+          "source_line": 712,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P30-E055",
+      "chapter": 8,
+      "raw": "vermitteln (jmd. eine Perspektive vermitteln)",
+      "previous_normalized": "vermitteln (jmd. eine perspektive",
+      "corrected": "vermitteln",
+      "prior": [
+        {
+          "head": "vermitteln, vermittelte, vermittelt",
+          "level": "Aspekte_B1+/B2::15_B1+:_8_–_Kaufen,_kaufen,_kaufen",
+          "source_line": 1045,
+          "example": "Wir müssen unseren Kindern gesellschaftliche Werte vermitteln."
+        }
+      ]
+    },
+    {
+      "id": "C1-P32-E058",
+      "chapter": 9,
+      "raw": "der Drehbuchautor, -en",
+      "previous_normalized": "drehbuchautor",
+      "corrected": "drehbuchautor",
+      "prior": [
+        {
+          "head": "der/die Drehbuchautor/in, -en/-nen",
+          "level": "Aspekte_B1+/B2::22_B2:_1_–_Heimat_ist_…_2",
+          "source_line": 1685,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P33-E022",
+      "chapter": 9,
+      "raw": "der Eventmanager, -",
+      "previous_normalized": "eventmanager",
+      "corrected": "eventmanager",
+      "prior": [
+        {
+          "head": "der/die Eventmanager/in, -/-nen",
+          "level": "Aspekte_B1+/B2::25_B2:_3_–_Arbeit_ist_das_halbe_Leben?_2",
+          "source_line": 1960,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P35-E009",
+      "chapter": 10,
+      "raw": "die Verfügung (Sg.) (zur Verfügung stehen)",
+      "previous_normalized": "verfügung (zur verfügung",
+      "corrected": "verfügung",
+      "prior": [
+        {
+          "head": "die Verfügung (Sg.)",
+          "level": "Aspekte_B1+/B2::26_B2:_4_–_Zusammen_leben",
+          "source_line": 2092,
+          "example": "zur Verfügung haben"
+        }
+      ]
+    },
+    {
+      "id": "C1-P36-E005",
+      "chapter": 10,
+      "raw": "handeln (von + D.) (Der Roman handelt von einer jungen Frau, die …)",
+      "previous_normalized": "handeln (der roman handelt",
+      "corrected": "handeln",
+      "prior": [
+        {
+          "head": "handeln, handelte, gehandelt (sich) (um + A.)",
+          "level": "Aspekte_B1+/B2::08_B1+:_4_–_Viel_Spaß!_2",
+          "source_line": 460,
+          "example": "Es handelt sich hier um eine schwierige Situation."
+        },
+        {
+          "head": "handeln (von + D. )",
+          "level": "Aspekte_B1+/B2::08_B1+:_4_–_Viel_Spaß!_2",
+          "source_line": 461,
+          "example": "Der Film handelt von einer Frau, die ..."
+        }
+      ]
+    },
+    {
+      "id": "C1-P36-E010",
+      "chapter": 10,
+      "raw": "der Bibliothekar, -e",
+      "previous_normalized": "bibliothekar",
+      "corrected": "bibliothekar",
+      "prior": [
+        {
+          "head": "der/die Bibliothekar/in, -e/-nen",
+          "level": "Aspekte_B1+/B2::23_B2:_2_–_Sprich_mit_mir!",
+          "source_line": 1791,
+          "example": ""
+        }
+      ]
+    },
+    {
+      "id": "C1-P37-E012",
+      "chapter": 10,
+      "raw": "spritzen (Das Wasser spritzte ziemlich hoch.)",
+      "previous_normalized": "spritzen (das wasser spritzte ziemlich",
+      "corrected": "spritzen",
+      "prior": [
+        {
+          "head": "spritzen, spritzte, gespritzt",
+          "level": "Aspekte_B1+/B2::28_B2:_5_–_Wer_Wissen_schafft,_macht_Wissenschaft",
+          "source_line": 2231,
+          "example": "(Das Wasser spritzte ziemlich hoch.) (Gemüse und Obst spritzen)"
+        }
+      ]
+    },
+    {
+      "id": "C1-P37-E052",
+      "chapter": 10,
+      "raw": "richten (seine Anstrengungen auf etwas richten)",
+      "previous_normalized": "richten (seine anstrengungen auf etwas",
+      "corrected": "richten",
+      "prior": [
+        {
+          "head": "richten, richtete, gerichtet (sich) (nach + D.)",
+          "level": "Aspekte_B1+/B2::26_B2:_4_–_Zusammen_leben",
+          "source_line": 2036,
+          "example": "Ich richte mich ganz nach den Wünschen meiner Kunden."
+        },
+        {
+          "head": "richten (an + A.)",
+          "level": "Aspekte_B1+/B2::26_B2:_4_–_Zusammen_leben",
+          "source_line": 2081,
+          "example": "Richten Sie Ihre Bestellung bitte an die folgende Adresse: ..."
+        }
+      ]
+    }
+  ],
+  "warning": "A normalized headword collision is a candidate for sense-level comparison, not an automatically excluded card. Original Menschen 9109 not freshly readable; Stage1 not PASS."
+}

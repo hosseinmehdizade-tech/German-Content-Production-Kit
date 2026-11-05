@@ -1,0 +1,52 @@
+name: GFP-OPT Native Lesen Stage1 Derived Evidence Replay
+on:
+  push:
+    paths:
+      - 'Verification/replay_lesen_stage1_native_v1.py'
+      - 'Verification/tests/test_lesen_native_stage1_replay_v1.py'
+      - 'Workspaces/lesen-praesentation/**'
+      - 'SOURCE-REGISTRY.json'
+      - '.github/workflows/gfp-opt-p1-native-reading-stage1.yml'
+  pull_request:
+    paths:
+      - 'Verification/replay_lesen_stage1_native_v1.py'
+      - 'Verification/tests/test_lesen_native_stage1_replay_v1.py'
+      - 'Workspaces/lesen-praesentation/**'
+      - 'SOURCE-REGISTRY.json'
+      - '.github/workflows/gfp-opt-p1-native-reading-stage1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage1-native:
+    name: Independent real Git Lesen inventory/id-map validation (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay original tracked reading Stage1 inventory and mapping bytes
+        run: python -B Verification/replay_lesen_stage1_native_v1.py --summary --new-report "${{ runner.temp }}/gfp-opt-reading-stage1-replay.json"
+      - name: Run 25 replay and tampering tests
+        run: python -B -m unittest discover -s Verification/tests -p test_lesen_native_stage1_replay_v1.py -v
+      - name: Upload scoped native Lesen structural evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gfp-opt-real-native-lesen-stage1-${{ matrix.os }}
+          path: ${{ runner.temp }}/gfp-opt-reading-stage1-replay.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: State attestation limits
+        shell: bash
+        run: |
+          echo "Original PDF source bytes are not in GitHub and are NOT validated in this job."
+          echo "Only derived Stage1 inventory, stable IDs, page accounting and QA-pinned actual Git blobs are independently replayed."
+          echo "No newly governed Stage2+ text producer, Stage4 semantic acceptance, native browser, user source CURRENT or policy adoption is certified."

@@ -82,7 +82,7 @@ class PolicyInputTests(unittest.TestCase):
             gate.check_bytes(tsv_bytes(drop_category=True))
 
     def test_invalid_utf8_fails(self):
-        with self.assertRaises(UnicodeError):
+        with self.assertRaisesRegex(gate.Stage5PolicyFailure, "TSV_DECODE_OR_STRUCTURE_FAIL"):
             gate.check_bytes(b"\xff\xff")
 
     def test_empty_tsv_fails(self):

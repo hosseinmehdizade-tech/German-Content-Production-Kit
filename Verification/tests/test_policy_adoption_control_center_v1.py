@@ -254,11 +254,11 @@ class AdoptionDashboardTests(unittest.TestCase):
 
     def test_single_dashboard_shows_branch_qualified_checkpoints_without_current_claim(self):
         preflight=self.output["nonlexical_domain_preflight"]
-        self.assertEqual(preflight["counts"]["branch_qualified_checkpoint_candidates"],4)
-        self.assertEqual(preflight["counts"]["unresolved_grammar_branch_checkpoint_candidates"],1)
+        self.assertEqual(preflight["counts"]["branch_qualified_checkpoint_candidates"],5)
+        self.assertEqual(preflight["counts"]["unresolved_grammar_branch_checkpoint_candidates"],0)
         self.assertTrue(all(r["auto_repair"] is False for r in
                             preflight["root_checkpoint_issue_triage"]))
-        self.assertIn("four historical owner-branch locators",m.markdown(self.output))
+        self.assertIn("five historical owner-branch locators",m.markdown(self.output))
         self.assertIn("SOURCE OWNER HOLD",m.markdown(self.output))
         self.assertEqual(self.output["counts"]["formally_adopted_producers"],0)
 

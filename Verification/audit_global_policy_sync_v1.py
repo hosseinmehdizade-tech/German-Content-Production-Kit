@@ -10,7 +10,7 @@ import hashlib
 import json
 import re
 import subprocess
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json"
@@ -65,8 +65,12 @@ def matches_git_blob_across_checkout_line_endings(data: bytes, expected: str) ->
 def safe_path(value: str) -> bool:
     if not isinstance(value, str) or not value.strip() or "\\" in value:
         return False
-    p = Path(value)
-    return not p.is_absolute() and ".." not in p.parts and str(p).startswith(value)
+    # Registry paths are repository-relative POSIX paths on every OS.
+    # WindowsPath canonicalizes "/" to "\\\\", which is NOT a security violation.
+    if ":" in value.split("/")[0]:
+        return False
+    p = PurePosixPath(value)
+    return not p.is_absolute() and ".." not in p.parts and str(p) == value
 
 
 def tracked_workspaces(root: Path = ROOT) -> list[str]:

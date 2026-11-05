@@ -305,7 +305,7 @@ def main():
             f.write("\n")
         view={k:v for k,v in proof.items() if k!="roots"} if a.summary else proof
         print(json.dumps(view,ensure_ascii=False,indent=2))
-        return 0 if proof["status"].startswith("PASS_FOUR_") else 3
+        return 0 if proof["status"]=="PASS_FIVE_LIVE_BRANCH_LOCATORS__ZERO_SOURCE_PROMOTION" else 3
     except (OSError,ValueError,subprocess.CalledProcessError,UnicodeError) as exc:
         print("GFP_OPT_BRANCH_RECOVERY_HOLD:"+str(exc),file=sys.stderr)
         return 2

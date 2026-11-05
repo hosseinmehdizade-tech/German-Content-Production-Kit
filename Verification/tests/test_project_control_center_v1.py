@@ -37,7 +37,7 @@ class TestProjectControlCenter(unittest.TestCase):
 
     def test_real_catalog_has_distinct_family_workspace_and_root_identity(self):
         self.assertEqual(len(self.cat["families"]), 21)
-        self.assertEqual(len(self.cat["workspaces"]), 34)
+        self.assertEqual(len(self.cat["workspaces"]), 35)
         self.assertEqual(len(self.cat["root_workstreams"]), 17)
         self.assertEqual(pcc.catalog_errors(self.cat), [])
 
@@ -47,10 +47,10 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertEqual(snapshot["counts"]["git_workspaces"], len(pcc.tracked_dirs(self.index)))
         self.assertEqual(snapshot["counts"]["root_workstreams"], len(self.state["workstreams"]))
 
-    def test_34_original_workspaces_map_to_exactly_one_family(self):
-        self.assertEqual(len(pcc.tracked_dirs(self.index)), 34)
+    def test_35_current_workspaces_map_to_exactly_one_family(self):
+        self.assertEqual(len(pcc.tracked_dirs(self.index)), 35)
         snap = self.build()
-        self.assertEqual(snap["counts"]["mapped_workspaces"], 34)
+        self.assertEqual(snap["counts"]["mapped_workspaces"], 35)
         self.assertEqual(len(snap["families"]), len({x["id"] for x in snap["families"]}))
 
     def test_canonical_a1_verben_is_not_general_menschen_a1(self):
@@ -66,10 +66,10 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertEqual(family["name"], "Menschen-Portfolio")
         self.assertEqual(ws["kind"], "CROSS_SOURCE_QA_OR_RUNTIME_WORKSPACE")
 
-    def test_missing_direct_git_directory_does_not_invalidate_library_family(self):
+    def test_nvv_just_added_workspace_still_keeps_original_root_owner(self):
         rows = self.build()["families"]
         nv = next(x for x in rows if x["name"] == "Nomen-Verb-Verbindungen")
-        self.assertEqual(nv["git_workspace_count"], 0)
+        self.assertEqual(nv["git_workspace_count"], 1)
         self.assertEqual(nv["root_summary_entries"], 1)
         self.assertEqual(nv["independent_semantic_stage_proof"], "NOT_VERIFIED_BY_THIS_TOOL")
 

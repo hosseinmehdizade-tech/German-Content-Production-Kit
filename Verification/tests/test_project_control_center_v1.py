@@ -53,6 +53,17 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertEqual(snap["counts"]["mapped_workspaces"], 35)
         self.assertEqual(len(snap["families"]), len({x["id"] for x in snap["families"]}))
 
+    def test_nvv_workspace_source_owner_is_same_existing_root_family(self):
+        path="Workspaces/nomen-verb-verbindungen"
+        workspace=next(w for w in self.cat["workspaces"] if w["git_dir"]==path)
+        self.assertEqual(workspace["id"],"workspace:nomen-verb-verbindungen")
+        self.assertEqual(workspace["parent_family_id"],"family:nomen-verb-verbindungen")
+        root=next(w for w in self.cat["root_workstreams"] if w["key"]=="nomen_verb_verbindungen")
+        self.assertEqual(root["parent_family_id"],workspace["parent_family_id"])
+        snap=self.build()
+        self.assertNotIn({"type":"UNMAPPED_NEW_WORKSPACE","path":path},snap["issues"])
+        self.assertEqual(snap["counts"]["stage4_stage5_stage6_stage7_certificates_generated"],0)
+
     def test_canonical_a1_verben_is_not_general_menschen_a1(self):
         ws = next(x for x in self.cat["workspaces"] if
                   x["git_dir"] == "Workspaces/menschen-a1-verben-wortfamilie-v336")

@@ -5,6 +5,9 @@ on:
       - 'Optimization-Program/Control-Center/**'
       - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
       - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE5-*.json'
+      - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE7-*.json'
+      - 'Tools/verify_control_center_lineage_evidence_v1.py'
+      - 'Verification/tests/test_control_center_phase7_lineage_v1.py'
       - 'Optimization-Program/Verification/PHASE4-ABER-HALLO-*.json'
       - 'PROJECT-STATE.json'
       - 'Workspaces/**'
@@ -19,6 +22,9 @@ on:
       - 'Optimization-Program/Control-Center/**'
       - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
       - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE5-*.json'
+      - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE7-*.json'
+      - 'Tools/verify_control_center_lineage_evidence_v1.py'
+      - 'Verification/tests/test_control_center_phase7_lineage_v1.py'
       - 'Optimization-Program/Verification/PHASE4-ABER-HALLO-*.json'
       - 'PROJECT-STATE.json'
       - 'Workspaces/**'
@@ -53,6 +59,10 @@ jobs:
           --check --output-dir attested-evidence-output --github-summary
       - name: Reject fake stages, broken parents, mismatched receipts and Git pin drift
         run: python -B -m unittest discover -s Verification/tests -p test_attested_evidence_overlay_v1.py -v
+      - name: Verify Phase7 Git-pinned source lineage without assuming actual binary CI
+        run: python -B Tools/verify_control_center_lineage_evidence_v1.py
+      - name: Reject fake parent edges and release promotion in Phase7 ledger
+        run: python -B -m unittest discover -s Verification/tests -p test_control_center_phase7_lineage_v1.py -v
       - name: Verify manifest dialect and source safety attacks
         run: python -B -m unittest discover -s Verification/tests -p test_attest_source_package_bytes_v1.py -v
       - name: Publish report without importing any user PDF or ZIP

@@ -1,0 +1,60 @@
+{
+  "schema": "nvv-100-batch-stage3a-durable-receipt@1.0.0",
+  "date": "2026-11-05",
+  "task": "Enrich 3 sections per 100 cards, immutable R6.1 parent",
+  "authority": {
+    "baseline": "NVV-v3.3.6-R6.1-AUDITED-BALANCED-84-LEKTIONEN-CONTENT.zip",
+    "baseline_sha256": "dd9169555a9ef2a6bd2cf73c6a0d2ec11b36b9da8d0cf931393462ac5ca85ae6",
+    "canonical_member_sha256": "4312f48f0d22dad4d7904e57f986f4fac31f195031ef9cdf2429fcaaf5bb367a",
+    "source_pdf_sha256": "a817dab76f9e78e896f596bd37b66168f04e995fd68203c045c7d87437ac258d",
+    "prior_pilot_receipt": "Workspaces/nomen-verb-verbindungen/09-successor-enrichment/R6.1-THREE-SECTIONS-STAGE3-PILOT-20261104.json"
+  },
+  "batches": {
+    "total": 25,
+    "first_24_card_count": 100,
+    "last_batch_card_count": 92,
+    "split_rule": "canonical array position, stable IDs may have noncontiguous numeric suffixes"
+  },
+  "batch_01": {
+    "positions": "1-100",
+    "first_stable_id": "dah-nvv-exp-00001",
+    "last_stable_id": "dah-nvv-exp-00098",
+    "card_count": 100,
+    "source_occurrence_identity_checks_pass": 100,
+    "source_pdf_page_literal_checks_pass": 100,
+    "four_DE_FA_EN_examples_pass": 100,
+    "qa_anomalies": 0,
+    "pilot_preexisting_cards": 9,
+    "pilot_preexisting_candidates": 22,
+    "existing_proposals_status": "ALL_PENDING_INDEPENDENT_STAGE4",
+    "accepted_new_items": 0,
+    "remaining_stage3B_semantic_research": 100,
+    "status": "STAGE3A_SOURCE_IDENTITY_AUDIT_COMPLETE__STAGE3B_PENDING"
+  },
+  "three_sections": [
+    "Kombinationen",
+    "Wortfamilie",
+    "Verwandte Wörter"
+  ],
+  "library": {
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Nomen-Verb-Verbindungen/Checkpoints/NVV-R6.1-100-CARD-BATCH-01-STAGE3A-SOURCE-AUDIT-20261105.zip",
+    "library_file_id": "libfile_06b98df55f2481919cfa864d9c8f282a",
+    "sha256": "6fe8ea2b155d3db335b1527fdfea8e2c18fec63bf68b34e6fb4496b44ede80ee",
+    "readback": "EXACT_SHA256_AND_BYTE_MATCH_PASS"
+  },
+  "next_action": "Complete Stage3B source-first research and evidence-tagged DE/FA/EN outcomes for all 100 positions before treating B01 enriched; independently review accepted candidates Stage4 then validate projection Stage5. B02 remains not started.",
+  "nonclaims": [
+    "NOT_100_CARDS_ENRICHED",
+    "NOT_STAGE3B_COMPLETE",
+    "NOT_STAGE4_PASS",
+    "NOT_IMPORT_READY",
+    "NOT_STAGE6_BROWSER_PASS",
+    "NOT_FINAL"
+  ],
+  "protection": {
+    "baseline_zip_unchanged": true,
+    "canonical_unchanged": true,
+    "source_pdf_unchanged": true,
+    "app_UI_importer_SRS_untouched": true
+  }
+}

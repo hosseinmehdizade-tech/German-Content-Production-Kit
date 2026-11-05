@@ -6,8 +6,11 @@ on:
       - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
       - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE5-*.json'
       - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE7-*.json'
+      - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE8-*.json'
       - 'Tools/verify_control_center_lineage_evidence_v1.py'
+      - 'Tools/verify_control_center_phase8_lineage_v1.py'
       - 'Verification/tests/test_control_center_phase7_lineage_v1.py'
+      - 'Verification/tests/test_control_center_phase8_lineage_v1.py'
       - 'Optimization-Program/Verification/PHASE4-ABER-HALLO-*.json'
       - 'PROJECT-STATE.json'
       - 'Workspaces/**'
@@ -23,8 +26,11 @@ on:
       - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
       - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE5-*.json'
       - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE7-*.json'
+      - 'Optimization-Program/Verification/CONTROL-CENTER-PHASE8-*.json'
       - 'Tools/verify_control_center_lineage_evidence_v1.py'
+      - 'Tools/verify_control_center_phase8_lineage_v1.py'
       - 'Verification/tests/test_control_center_phase7_lineage_v1.py'
+      - 'Verification/tests/test_control_center_phase8_lineage_v1.py'
       - 'Optimization-Program/Verification/PHASE4-ABER-HALLO-*.json'
       - 'PROJECT-STATE.json'
       - 'Workspaces/**'
@@ -63,6 +69,10 @@ jobs:
         run: python -B Tools/verify_control_center_lineage_evidence_v1.py
       - name: Reject fake parent edges and release promotion in Phase7 ledger
         run: python -B -m unittest discover -s Verification/tests -p test_control_center_phase7_lineage_v1.py -v
+      - name: Verify additive Phase8 Git-index lineage scope without private user binaries
+        run: python -B Tools/verify_control_center_phase8_lineage_v1.py
+      - name: Reject fake Phase8 source, QA mirror, stage, and parent-link claims
+        run: python -B -m unittest discover -s Verification/tests -p test_control_center_phase8_lineage_v1.py -v
       - name: Verify manifest dialect and source safety attacks
         run: python -B -m unittest discover -s Verification/tests -p test_attest_source_package_bytes_v1.py -v
       - name: Publish report without importing any user PDF or ZIP

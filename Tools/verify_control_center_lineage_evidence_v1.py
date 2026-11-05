@@ -50,7 +50,7 @@ def validate(index, receipt, historic):
            "HISTORICAL_REAL_BYTE_LINEAGE_REPORTS__NOT_LIVE_CURRENT_OR_STAGE_VERDICT",
            "FALSE_LEDGER_CURRENTNESS")
     records=index.get("evidence")
-    ensure(isinstance(records,list) and len(records)==1,"LINEAGE_INDEX_RECORD_COUNT")
+    ensure(isinstance(records,list) and len(records)>=1,"LINEAGE_INDEX_RECORD_COUNT")
     item=records[0]
     ensure(item.get("target_id") == "workspace:aber-hallo-listen-tabellen" and
            item.get("parent_family_id") == "family:aber-hallo-listen-tabellen" and

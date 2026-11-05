@@ -1,0 +1,11 @@
+# Aspekte B2 — Stage2 R3 (2026-11-05)
+
+**Source:** only user's CSV; verified sanitized B2 derivative SHA256 `e907d0f882b4b9d02f2c631d9a93b1c4e671f6231e7c0deb257ebc26434011c5`. Original raw private CSV SHA256 known historically but **not rehashed** in this pass. No dictionary entry is added as lexical source.
+
+From 160/160 lesson 01 original rows (ordinals 1549–1708), R3 examined 15 high-risk cases (11 previous HOLD + 4 previous suppression proposals). Eight previous HOLDs now have source-bound *editorial resolution proposals*: 1586,1588,1611,1616,1660,1675,1693,1697. Three still source-context HOLD: 1610 geteilt (in + D), 1647 Ausländerquote, 1671 zerreißen. Four cross-level overlap decisions 1556,1575,1609,1630 remain **conditional** because matching lower-level source text is not proof of a real accepted/visible earlier-level card.
+
+Linguistic precautions: `zerreißen` permits `hat zerrissen` (transitive) and `ist zerrissen` (intransitive); earlier B1+ is not automatically wrong (https://www.duden.de/rechtschreibung/zerreiszen). `sich in einem Punkt einig sein` with Dativ is correct (https://de.pons.com/%C3%BCbersetzung/deutsche-rechtschreibung/einigen). `Vielsprachigkeit` vs `Mehrsprachigkeit` differs only under some technical terminology, not universally (https://www.sprachenrat-bremen.de/index.php?catid=2&id=74%3Adefinition-zur-mehrsprachigkeit&view=article). `Juryvorsitz` means primarily chairship, not simply the person (https://www.duden.de/rechtschreibung/Vorsitz). `Kinokasse` appears inside A1's Kino multi-headword, but not as distinct canonical lemma in the lower-level reference index.
+
+**Quality gate:** 37/37 deterministic structural tests, 14/14 ZIP member hashes, ZIP CRC and Library byte-exact readback PASS. No human review claimed; linguistic Stage2 NOT APPROVED. No cards made, Stage3–7 NOT_STARTED.
+
+**Complete separate B2 checkpoint:** `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/Aspekte-B2-STAGE2-L01-R3-8-RESOLVED-3-HOLD-4-CONDITIONAL-20261105.zip`, SHA256 `6b97ea64736e19a8e83df56d20ceb2f309c6b7ed86be37ec91383c8f79ab75c8`, 123515 bytes, Library ID `libfile_6731c53c30308191b1305a9ebb699a4a`. Original source and B1+/C1 workspaces, runtime and earlier checkpoint files remain unchanged.

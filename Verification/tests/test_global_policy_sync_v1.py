@@ -78,6 +78,13 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         del reg["policy_bindings"]["related_taxonomy"]
         self.assertIn("MANDATORY_POLICY_BINDINGS_CHANGED", self.check_snapshot(reg=reg))
 
+    def test_repo_posix_path_is_valid_on_both_operating_systems(self):
+        self.assertTrue(auditor.safe_path("Prompt/RELATED-SECTIONS-TAXONOMY-POLICY-v1.1.0.md"))
+        self.assertFalse(auditor.safe_path("C:/outside.md"))
+        self.assertFalse(auditor.safe_path("../outside.md"))
+        self.assertFalse(auditor.safe_path("Prompt\\\\outside.md"))
+        self.assertFalse(auditor.safe_path("Prompt//ambiguous.md"))
+
     def test_unsafe_parent_reference_fails(self):
         reg = copy.deepcopy(self.base_registry)
         reg["policy_bindings"]["related_taxonomy"]["path"] = "../OTHER.md"

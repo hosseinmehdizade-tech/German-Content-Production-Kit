@@ -231,6 +231,18 @@ class AdoptionDashboardTests(unittest.TestCase):
         self.assertTrue(all(x["real_native_adapter_adopted"] is False
                             for x in report["source_families"]))
 
+    def test_unified_dashboard_has_actual_lesen_stage1_derived_byte_replay(self):
+        preflight=self.output["nonlexical_domain_preflight"]
+        self.assertEqual(preflight["counts"]["real_git_native_reading_stage1_structure_replays"],1)
+        self.assertEqual(preflight["counts"]["real_nonlexical_native_policy_adoptions"],0)
+        lesen=next(x for x in preflight["source_families"]
+                   if x["family_id"]=="family:lesen")
+        self.assertEqual(lesen["native_stage1_actual_git_derived_replay"]["replayed_counts"]["topics"],68)
+        self.assertFalse(lesen["native_stage1_actual_git_derived_replay"][
+                         "actual_independent_stage1_source_pdf_bytes_revalidated"])
+        self.assertEqual(self.output["counts"]["formally_adopted_producers"],0)
+        self.assertIn("REAL Git inventory + ID map 68 topics / 76 pages",m.markdown(self.output))
+
     def test_five_root_checkpoint_triages_explain_metadata_issues(self):
         report=self.output["nonlexical_domain_preflight"]
         self.assertEqual(self.output["counts"]["triaged_untracked_root_checkpoints"],5)

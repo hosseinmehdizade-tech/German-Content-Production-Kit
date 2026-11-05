@@ -365,14 +365,19 @@ def markdown(status:dict)->str:
        ""])
     domain=status.get("nonlexical_domain_preflight",{})
     if domain:
-        lines.extend(["", "## Nonlexical native source readiness — shadow only", "",
-          "| Source family | Native checkpoint tracked | Adapter readiness | Next safe action |",
-          "|---|---|---|---|"])
+        lines.extend(["", "## Nonlexical native source readiness — actual Lesen Stage1 derived replay; other sources shadow only", "",
+          "| Source family | Native checkpoint tracked | Real derived QA bytes | Adapter readiness | Next safe action |",
+          "|---|---|---|---|---|"])
         for item in domain["source_families"]:
+            replay=item.get("native_stage1_actual_git_derived_replay")
+            proof=("REAL Git inventory + ID map 68 topics / 76 pages (source PDF NOT reread)"
+                   if replay and replay["status"]==
+                   "PASS_ACTUAL_GIT_READING_STAGE1_DERIVED_BYTES_AND_STRUCTURE_REPLAY_ONLY"
+                   else "NOT PERFORMED")
             lines.append("| " + " | ".join(str(v).replace("|","\\|") for v in (
                 item["family_id"],
                 "YES" if item["native_checkpoint_tracked_in_git_index"] else "NO",
-                item["status"],item["next_action"]))+" |")
+                proof,item["status"],item["next_action"]))+" |")
         lines.extend(["","## Untracked root checkpoint references — no auto-repair","",
           "| Root key | Missing checkpoint reference | Diagnosis |",
           "|---|---|---|"])
@@ -380,7 +385,7 @@ def markdown(status:dict)->str:
             lines.append("| " + " | ".join(str(v).replace("|","\\|") for v in (
                 item.get("root_key","UNMAPPED"),item["reported_path"],item["status"]))+" |")
         lines.extend(["",
-          "**All domain adapters remain NONACTIVE.** Root checkpoint references must be resolved by their actual source owners; a missing Git pointer is not evidence of a content QA failure.",
+          "**Lesen Stage1 derived Git evidence has been independently replayed; original source PDF bytes and new native producer execution have NOT been verified. All source producer policy adoptions remain ZERO.** Root checkpoint references must be resolved by their actual source owners; a missing Git pointer is not evidence of a content QA failure.",
           ""])
     return "\n".join(lines)
 

@@ -2,7 +2,7 @@
   "schema": "gcpk-wortfamilie-workstream-latest@1.0.0",
   "workstream": "menschen-a1-verben-wortfamilie-v336",
   "date": "2026-11-02",
-  "status": "R10_STAGE4_PASS__STAGE5_CONTENT_PASS_R2_REFERENCE__STAGE6_PARSER_PREFLIGHT_PASS_BUT_NATIVE_BLOCKED__STAGE7_NOT_FINAL",
+  "status": "R10_STAGE4_PASS__STAGE5_CONTENT_PASS__ONE_BUNDLE_STATIC_QA_PASS__STAGE6_CURRENT_NATIVE_BLOCKED__STAGE7_NOT_FINAL",
   "latest_milestone": "STAGE4_R04_FORMAL_ACCEPTANCE_RECONCILED_2026_11_04",
   "checkpoint": "Workspaces/menschen-a1-verben-wortfamilie-v336/CHECKPOINT.json",
   "artifact": {
@@ -35,9 +35,9 @@
   },
   "stage4": "PASS_RISK_BASED_STAGE4",
   "stage5": "PASS_EXACT_R10_CONTENT_STAGE5__FOUR_MODE_RENDERER_CONTRACT_VERIFIED_R2_REFERENCE__STAGE6_CURRENT_NOT_RUN",
-  "stage6": "BLOCKED_EXACT_CURRENT_ZIP_NOT_MATERIALIZED_AND_CHROMIUM_ADMIN_BLOCKED__R10_R2_PARSER_PREFLIGHT_PASS",
+  "stage6": "BLOCKED_NATIVE_CURRENT_IMPORT_INDEXEDDB__INTEGRATED_ONE_ZIP_STATIC_QA_PASS",
   "stage7": "NOT_FINAL",
-  "next_action": "Stage6 attempted after R10 Stage5 acceptance: exact R10 TSV 310 cards imported through extracted noncurrent R2 native parseTsv function only (PASS parser, 2 negative controls). Actual official CURRENT v505-R141 committed storage ZIP 482b... could not be located/materialized; clean Chromium navigation refused by environment (ERR_BLOCKED_BY_ADMINISTRATOR), so IndexedDB/FSRS/Study-Quick real-import tests NOT RUN, not Stage6 PASS. Recover exact CURRENT ZIP and run native real-origin safe-profile import/reload with data protection; app issues #25/#31 remain independent. Do not promote R2, reset user data, or issue Stage7 final.",
+  "next_action": "One 65MB integrated QA candidate ZIP (App R2 lexical fix + R10 approved content + source + tests + safe isolated launcher) created, stored and byte-verified in Library; no app CURRENT promotion. Need exact current v505-R141 committed-storage ZIP SHA482b... and native Windows isolated real-origin import, IndexedDB reload, FSRS/SRS parity, Study/Quick/Typing/Audio, issues #25/#31 to close Stage6; Stage7 remains not final. Do not import into user's real main profile; R04 and parent R10 unchanged.",
   "parent_final_immutable": true,
   "legacy_lexical_repair_LATEST": "STALE_ROUND4_NOT_WORDFAMILIE_AUTHORITY",
   "stage6_source_preflight": {
@@ -1247,5 +1247,24 @@
     "stage6": "NOT_PASS",
     "stage7": "NOT_FINAL"
   },
-  "latest_stage6_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE6-R10-2026-11-05-SAFE-IMPORT-PREFLIGHT-ENVIRONMENT-BLOCKED.json"
+  "latest_stage6_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE6-R10-2026-11-05-ONE-BUNDLE-INTEGRATION-CANDIDATE.json",
+  "stage6_r10_integrated_bundle": {
+    "status": "PASS_ONE_ZIP_PACKAGING_AND_STATIC_QA__NATIVE_CURRENT_STAGE6_BLOCKED",
+    "date": "2026-11-05",
+    "receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE6-R10-2026-11-05-ONE-BUNDLE-INTEGRATION-CANDIDATE.json",
+    "artifact_sha256": "b401da620cf7cf636b62d84d1e4fd2f2892713782551aa3facf8ea9f09e6f6b4",
+    "library_file_id": "libfile_b450900e6bf48191ae9ddb6c922d95c5",
+    "bytes": 65102223,
+    "members": 295,
+    "payload_sha256": "PASS_293",
+    "content_parent": "R10_STAGE5_ACCEPTED_EXACT",
+    "app_parent": "UNPROMOTED_V505_R2_LEXICAL_RELATIONS",
+    "current_runtime_hash": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "current_not_in_bundle": true,
+    "isolated_launcher": true,
+    "real_windows_import": "NOT_RUN",
+    "user_progress_untouched": true,
+    "stage6": "BLOCKED",
+    "stage7": "NOT_FINAL"
+  }
 }

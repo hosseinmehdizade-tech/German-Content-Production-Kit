@@ -250,7 +250,17 @@ class AdoptionDashboardTests(unittest.TestCase):
         self.assertTrue(all(x["auto_repair"] is False for x in
                             report["root_checkpoint_issue_triage"]))
         md=m.markdown(self.output)
-        self.assertIn("Untracked root checkpoint references",md)
+        self.assertIn("Untracked main checkpoint references",md)
+
+    def test_single_dashboard_shows_branch_qualified_checkpoints_without_current_claim(self):
+        preflight=self.output["nonlexical_domain_preflight"]
+        self.assertEqual(preflight["counts"]["branch_qualified_checkpoint_candidates"],4)
+        self.assertEqual(preflight["counts"]["unresolved_grammar_branch_checkpoint_candidates"],1)
+        self.assertTrue(all(r["auto_repair"] is False for r in
+                            preflight["root_checkpoint_issue_triage"]))
+        self.assertIn("four historical owner-branch locators",m.markdown(self.output))
+        self.assertIn("SOURCE OWNER HOLD",m.markdown(self.output))
+        self.assertEqual(self.output["counts"]["formally_adopted_producers"],0)
 
     def test_no_production_files_modified_by_dry_readonly_report(self):
         targets=[m.LEDGER,m.CATALOG,m.DOMAINS,m.REGISTRY,m.SOURCE_RECEIPT]

@@ -157,8 +157,13 @@ def audit_snapshot(reg: dict, mat: dict, tracked_dirs: list[str],
         return files.get(path, b"").decode("utf-8", "replace")
     if txt(ENTRY).strip() != Path(START).name:
         errors.append("WRONG_ACTIVE_PROMPT_POINTER")
+    # The front matter may contain the mandatory prospective anti-churn and
+    # artifact safety rules before the global policy router. Check an explicit
+    # finite STARTUP window, never an arbitrary match deep in a huge file.
+    # Absence, wrong policy path, or a router buried after 4 KiB still fails.
+    ENTRYPOINT_ROUTER_MAX_PREFIX_CHARS = 4096
     for target in (START, MASTER, README, BOOTSTRAP):
-        first = txt(target)[:1600]
+        first = txt(target)[:ENTRYPOINT_ROUTER_MAX_PREFIX_CHARS]
         if REGISTRY not in first or CONTRACT not in first:
             errors.append("MISSING_ENTRYPOINT_ROUTER:" + target)
     if "Historical 2026-11-04 A1 V25 replay" not in txt(README):

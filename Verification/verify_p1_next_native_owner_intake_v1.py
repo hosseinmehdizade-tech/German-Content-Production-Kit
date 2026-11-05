@@ -69,8 +69,11 @@ def verify(root=ROOT,intake=None):
             auth["native_builder_blob"] and
             reg["policy_bindings"]["stage5_neutral_validator"]["stages"]==[5],
             "STAGE5_PIN_DRIFT")
-    _=content(root,"Tools/build_governed_clean_delivery_v1.py",
-              auth["new_governed_wrapper_blob"])
+    wrapper=root/"Tools/build_governed_clean_delivery_v1.py"
+    require(wrapper.is_file() and not wrapper.is_symlink() and
+            wrapper.resolve().is_relative_to(root.resolve()) and
+            matches_git(wrapper.read_bytes(),auth["new_governed_wrapper_blob"]),
+            "GOVERNED_WRAPPER_GIT_BLOB_DRIFT")
     dirs={w["id"]:(w["git_dir"],w["parent_family_id"])
           for w in cat["workspaces"]}
     families={f["id"] for f in cat["families"]}

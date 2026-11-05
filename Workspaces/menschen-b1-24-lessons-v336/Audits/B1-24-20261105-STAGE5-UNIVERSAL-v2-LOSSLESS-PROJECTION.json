@@ -1,0 +1,40 @@
+{
+  "schema": "gcpk-menschen-b1-stage5-independent-projection-audit@1.0.0",
+  "date": "2026-11-05",
+  "status": "PASS_CONTENT_ONLY_STAGE5__NATIVE_STAGE6_NOT_TESTED",
+  "source_stage4_archive_sha256": "35c290ad3ac8d2ba10ff33123c57614d9f3c1cb1f2cb87367eced4c356b6d72d",
+  "source_stage4_master_sha256": "d33aa73622799599f03cd8bd0651733f57d60d908aa9f846ae9c2ae35a8aa2d1",
+  "projected_zip_sha256": "f7bc7db76e88b5811946b249d23059e465439308c8c44e57975b740647b00959",
+  "projected_master_tsv_sha256": "c7e04be8956566f4ad0e7c2d92f1502ed52ff463896ad8048064878ad2042e4e",
+  "counts": {
+    "cards": 3088,
+    "distinct_ids": 3088,
+    "memberships": 3137,
+    "examples": 12548,
+    "stage3_items_retained": 5249,
+    "changed_details_rows": 603,
+    "untouched_rows": 2485,
+    "plain_L19_normalized": 145,
+    "ZIP_members": 20,
+    "manifest_payloads": 18
+  },
+  "tests": {
+    "independent_sha_and_CRC": "PASS",
+    "self_contained_parent_master": "PASS_EXACT_BYTES",
+    "plain_details_migration": "PASS_EXACT_TEXT_PRESERVED",
+    "full_tsv_roundtrip": "PASS",
+    "all_other_columns_equal": "PASS",
+    "all_sampled_overlay_items_projected": "PASS",
+    "v505_native_tsv_tokenizer": "PASS_3088X23_STATIC",
+    "native_browser_IndexedDB_SRS": "NOT_RUN",
+    "package_has_app_runtime": false
+  },
+  "external_dependencies": [
+    "Original Memrise RAR and MP3 retained outside ZIP",
+    "Stage6 needs exact current runtime/browser data safety and cross-practice-view identity decision"
+  ],
+  "known_risk": "Do not import the Stage5 transport into real personal profile; Add import skips existing stable IDs; 281 shared B1/Verben IDs and issue #25 pending.",
+  "library_readback_verified": true,
+  "Git_persistence": "PENDING_WRITE_AT_AUDIT_CREATION",
+  "next_action": "Stage5 accepted content-only. Proceed Stage6 ONLY in isolated test origin with exact CURRENT app and safe SRS backup/rollback; user-deferred multi-set B1 verbs reconciliation remains mandatory before personal-profile merge. No user-library import yet."
+}

@@ -1,0 +1,11 @@
+# Aspekte C1 — PDF Seite 35, 71 source-bound DE/FA first-pass reviews
+
+- Original source **aspekte-neu-c1-lb-kapitelwortschatz.pdf**, SHA256 `b05c90320ad75dc19be12a374087830bd2c379206a5711e604a6aea699e189cf`.
+- Page 35 has **91** source occurrences, Kapitel 10; **71** preflight NEW and **20** earlier non-NEW flags carried unchanged.
+- All **71** receive case-specific German meaning, Persian gloss, contextual/grammatical notes, and precise source fields. No final KEEP/DROP/learner cards.
+- **Correction to the previous progress indicator:** pages 1–34 contain **2026** NEW source IDs, page 35 adds **71**, leaving **72 on page 36** and **50 on page 37** = **122** for complete consecutive page review. **2097/2219 = 94.50%** after this page.
+- The older **2151 / 68** figure mixes different scoped/targeted and page-by-page review kinds and must not be interpreted as complete bilingual page-order coverage. Audit of previous ZIP Reviews/*.jsonl: **2063 unique NEW IDs** referenced in any review artifact, including **37** of the 193 source NEW entries on pages 35–37; an additional **88** pre-reviews implied by legacy arithmetic cannot be traced to row-level Reviews/*.jsonl. Do not simply add 71 to 2151.
+- Prior candidate overlap cases: **die Verfügung**, CSV ordinal **2088** (source usage **zur Verfügung stehen** vs earlier **zur Verfügung haben**) and **der Zeitzeuge**, ordinal **2911**. Related-only evidence: **zur Verfügung stellen** ordinal **2454** and **drohend** ordinal **1385**.
+- Special care: *lauter* = nur/nichts als in the exact sentence; *her* temporal; *drohen* in imminent-risk use; *anmuten* means erscheinen, not *zumuten*; specialist terms of face recognition are distinct grammatical categories.
+- Original Menschen 9109 and raw original B1/B2 3275 remain unverified. Only sanitized B1/B2 **3274** is compared. All 3270 C1 entries still need final semantic adjudication.
+- **Stage 1 IN_PROGRESS, zero learner cards released.** Next: page 36 (72 NEW), then page 37 (50 NEW).

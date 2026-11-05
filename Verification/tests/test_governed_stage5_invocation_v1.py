@@ -198,9 +198,15 @@ class GovernedIntegrationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,"GOVERNED_BUILDER_GIT_BLOB_DRIFT"):
                 build.pinned_builder(root)
 
-    def test_explicit_user_checkpoint_without_user_request_refused(self):
-        with self.assertRaisesRegex(ValueError,"ORIGINAL_OFFICIAL_BUILDER_REFUSED_INPUT"):
+    def test_checkpoint_purpose_cannot_be_issued_by_stage5_gate(self):
+        with self.assertRaisesRegex(ValueError,"INVALID_PURPOSE"):
             build.run(self.src,self.out,self.receipt,purpose="explicit_user_checkpoint")
+        self.assertFalse(self.out.exists())
+        self.assertFalse(self.receipt.exists())
+
+    def test_final_delivery_cannot_be_issued_by_stage5_gate(self):
+        with self.assertRaisesRegex(ValueError,"INVALID_PURPOSE"):
+            build.run(self.src,self.out,self.receipt,purpose="final_delivery")
         self.assertFalse(self.out.exists())
         self.assertFalse(self.receipt.exists())
 

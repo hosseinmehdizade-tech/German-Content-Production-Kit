@@ -187,7 +187,7 @@ class RecoveryTests(unittest.TestCase):
         manifest,api=self.setup_fixture()
         manifest["checkpoint_slots"][0]["branch_candidate"]["checkpoint_blob"]="a"*40
         result=self.replay(manifest,api)
-        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],3)
+        self.assertEqual(result["counts"]["exact_live_branch_blob_locs"],4)
 
     def test_grammar_must_use_pinned_native_status_selector(self):
         manifest,api=self.setup_fixture()

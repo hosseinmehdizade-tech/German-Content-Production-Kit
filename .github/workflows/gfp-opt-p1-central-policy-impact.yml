@@ -41,8 +41,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Build candidate impacts of all 15 exact pinned global policy bindings
-        run: python -B Tools/plan_central_policy_impact_v1.py --summary
+      - name: Generate full read-only impact matrix for 15 policy bindings
+        run: python -B Tools/plan_central_policy_impact_v1.py --summary --write-once-report gfp-opt-p1-impact-matrix.json
+      - name: Upload a scoped candidate-only impact matrix (not adoption evidence)
+        uses: actions/upload-artifact@v4
+        with:
+          name: gfp-opt-p1-candidate-impacts-${{ matrix.os }}
+          path: gfp-opt-p1-impact-matrix.json
+          if-no-files-found: error
+          retention-days: 30
       - name: Adversarial no-fake-adoption and source-domain coverage tests
         run: python -B -m unittest discover -s Verification/tests -p test_central_policy_impact_v1.py -v
       - name: Report precise evidence limits

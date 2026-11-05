@@ -1,0 +1,99 @@
+{
+  "schema": "gcpk-250-vmp-v18-stage6-static-merge-readiness@1.0.0",
+  "date": "2026-11-05",
+  "workstream": "250-verben-mit-praepositionen-lexical-enrichment-v1",
+  "status": "PASS_DETACHED_V505_R2_IDENTITY_MERGE_REHYDRATION__REAL_STAGE6_BLOCKED_NOT_VERIFIED",
+  "role": "SUPPLEMENTAL_STAGE6_READ_ONLY_EVIDENCE__DO_NOT_SUPERSEDE_VERIFIED_R8_STAGE5",
+  "verified_parent": {
+    "stage5_checkpoint": "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1/STAGE5-R8-OFFICIAL-CLEAN-DELIVERY-2026-11-05.json",
+    "stage5_r8_zip_sha256": "63ae8f2a3a8d2ec5dff94798db3ed060a0b4e43b1cc2699e540beb1393882e5c",
+    "original_v17_import_tsv_sha256": "962409aaff9b551a62f9991f8637d59d2acb5ddcc053f043f133906e0a150a23",
+    "v18_r8_import_tsv_sha256": "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191",
+    "tested_v505_r141_r2_unpromoted_candidate_html_sha256": "1e46bb4e2103fa3311ebb70559a331e9e7262bcc988066c8ec73269fc1d85dd8",
+    "app_current_from_git": "v505-R141",
+    "app_last_fully_verified_from_git": "v486-R120",
+    "tested_candidate_NOT_proven_installed_current": true,
+    "global_policy_registry_blob_sha": "74d24a2e0019a70b37b7f9d0ac83d0c788312ac1"
+  },
+  "full_source_differential": {
+    "cards": 292,
+    "columns": 23,
+    "changed_cards": 162,
+    "only_changed_top_level_fields": [
+      "details",
+      "custom_fields"
+    ],
+    "other_21_columns_unchanged_for_all_292": true,
+    "nested_custom_fields_changed_card_counts": {
+      "lexical_relations_v1": 110,
+      "word_family_fa_enrichment_v18_r4": 98,
+      "vnext_relations": 87,
+      "lexical_enrichment_v18": 16,
+      "kombinationen_v1": 8,
+      "word_family_semantic_correction_v18_r5": 1
+    }
+  },
+  "exact_static_tests": {
+    "source_code_functions": [
+      "tsvRowsToCards",
+      "cardSemanticIdentityV191",
+      "sameCardSemanticIdentityV191",
+      "applyStoredCardPatchV425",
+      "effectiveCardsForStoreSnapshotV230"
+    ],
+    "semantic_identical_ids": 292,
+    "semantic_identity_mismatch_count": 0,
+    "detached_merge_updates": 292,
+    "detached_merge_identity_resets": 0,
+    "detached_rehydrated_cards": 292,
+    "rehydrated_field_mismatches": 0,
+    "protected_synthetic_progress_snapshots_preserved": 2,
+    "negative_controls": "PASS_6_OF_6_LAYERED",
+    "detached_runtime_detected": 5,
+    "malformed_details_not_blocked_by_detached_runtime_parser": true,
+    "malformed_details_blocked_by_official_stage5_validator": "PASS_INVALID_DETAILS_JSON",
+    "no_browser_or_IndexedDB_test": true
+  },
+  "import_mode_risks": {
+    "add": "SKIPS_EXISTING_IDS__NOT_UPGRADE",
+    "merge": "UPDATES_EXISTING_BY_ID__IDENTITY_CONFLICT_CAN_RESET_PROGRESS__NO_AUTOMATIC_FULL_BACKUP_DOWNLOAD",
+    "replace_keep_progress": "REPLACES_WHOLE_LIBRARY__UNRELATED_CARDS_REMOVED",
+    "replace_reset_progress": "REMOVES_ALL_PROGRESS__FORBIDDEN",
+    "real_existing_user_cards_not_inspected": true,
+    "no_import_executed": true,
+    "isolated_profile_only_before_primary_user_library": true
+  },
+  "open_blockers": [
+    "real origin browser import and Verified IndexedDB commit/reload not observed; local administrator policy previously blocked navigation",
+    "user actual library may differ from frozen v1.7 baseline",
+    "current installed app may differ from unpromoted v505-R141 lexical R2 candidate"
+  ],
+  "caution": [
+    "Historic canonical freeform WORD_FAMILY 'Unterrichtung' is not equivalent to corrected visible 'der Unterricht' for card usrin-vmp-u-0234; no graph migration authorized",
+    "Do not bypass Stage5 strict details validation because detached importer does not itself reject malformed details"
+  ],
+  "evidence": {
+    "report_sha256": "b2562bd5080825a95e8350c0bbd15f4b4d213f11be698e84f6b674c5f0e7cf43",
+    "readme_sha256": "5424893617cd58b8879b1a220856e9315afb661255da6bfba49f41dbdcb85957",
+    "library_byte_readback": "PASS_EXACT_BOTH_FILES",
+    "library_json_id": "libfile_398618ba3814819180d7c6c717f4f022",
+    "library_readme_id": "libfile_5fac716303d48191adbd50f29f474da3",
+    "library_json_path": "/Flasch kart/German-Content-Production-Kit/Content/250-Verben-mit-Praepositionen/Active-Review/Lexical-Enrichment-v1.8/R8-STAGE6-READONLY-MERGE-READINESS-20261105.json",
+    "library_readme_path": "/Flasch kart/German-Content-Production-Kit/Content/250-Verben-mit-Praepositionen/Active-Review/Lexical-Enrichment-v1.8/STAGE6-READINESS-HANDOFF-DE-FA.md"
+  },
+  "gates": {
+    "Stage4": "PASS_OFFICIAL",
+    "Stage5": "PASS_OFFICIAL",
+    "Stage6": "BLOCKED_NOT_VERIFIED_REAL_BROWSER",
+    "Stage7": "NOT_RUN"
+  },
+  "no_mutations": [
+    "original source PDF",
+    "historic v1.7",
+    "Stage5 R8 ZIP/TSV",
+    "canonical graph",
+    "app runtime/UI",
+    "user library/IndexedDB/FSRS/SRS"
+  ],
+  "next": "When actual browser origin is available, test only an isolated disposable profile with verified full backups, v1.7 baseline then R8 TSV merge, committed manifest/reload, learner-visible section count and preserved review history; do not claim Stage6 until real evidence. No repeated blocked local browser attempts or additional checkpoint ZIP."
+}

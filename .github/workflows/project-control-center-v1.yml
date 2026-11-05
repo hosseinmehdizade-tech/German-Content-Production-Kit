@@ -1,0 +1,55 @@
+name: Project Control Center - Read-only Snapshot
+on:
+  push:
+    paths:
+      - 'Optimization-Program/Control-Center/**'
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**'
+      - 'Tools/build_project_control_center_v1.py'
+      - 'Verification/tests/test_project_control_center_v1.py'
+      - '.github/workflows/project-control-center-v1.yml'
+  pull_request:
+    paths:
+      - 'Optimization-Program/Control-Center/**'
+      - 'PROJECT-STATE.json'
+      - 'Workspaces/**'
+      - 'Tools/build_project_control_center_v1.py'
+      - 'Verification/tests/test_project_control_center_v1.py'
+      - '.github/workflows/project-control-center-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    name: Read-only catalog and dashboard (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile generator and regression suite
+        run: >-
+          python -B -m py_compile
+          Tools/build_project_control_center_v1.py
+          Verification/tests/test_project_control_center_v1.py
+      - name: Build snapshot and job summary from exact Git index
+        run: >-
+          python -B Tools/build_project_control_center_v1.py
+          --check --output-dir control-center-output --github-summary
+      - name: Test identity mapping, nondestructive output, misleading Stage claims
+        run: python -B -m unittest discover -s Verification/tests -p test_project_control_center_v1.py -v
+      - name: Publish dashboard files (not to workspaces)
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-control-center-${{ matrix.os }}
+          path: control-center-output/
+          if-no-files-found: error
+          retention-days: 30

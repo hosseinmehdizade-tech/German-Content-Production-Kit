@@ -32,6 +32,26 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         self.assertEqual(auditor.git_blob_sha(b"test content\n"),
                          "d670460b4b4aece5915caf5c68d12f560a9fe3e4")
 
+    def test_windows_crlf_checkout_does_not_spuriously_break_pin(self):
+        path = self.base_registry["policy_bindings"]["currentness"]["path"]
+        pin = self.base_registry["policy_bindings"]["currentness"]["blob_sha"]
+        original = self.base_files[path]
+        crlf = original.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+        self.assertTrue(auditor.matches_git_blob_across_checkout_line_endings(crlf, pin))
+        files = dict(self.base_files)
+        files[path] = crlf
+        self.assertEqual(self.check_snapshot(files=files), [])
+
+    def test_crlf_normalization_does_not_hide_actual_policy_mutation(self):
+        path = self.base_registry["policy_bindings"]["currentness"]["path"]
+        pin = self.base_registry["policy_bindings"]["currentness"]["blob_sha"]
+        original = self.base_files[path].replace(b"\r\n", b"\n")
+        changed = (original + b"\nUNAUTHORIZED CHANGE\n").replace(b"\n", b"\r\n")
+        self.assertFalse(auditor.matches_git_blob_across_checkout_line_endings(changed, pin))
+        files = dict(self.base_files)
+        files[path] = changed
+        self.assertIn("STALE_POLICY_BLOB_PIN:currentness", self.check_snapshot(files=files))
+
     def test_every_policy_is_version_pinned(self):
         self.assertEqual(len(self.base_registry["policy_bindings"]), 15)
         self.assertTrue(all(x["path"] in self.base_files for x in

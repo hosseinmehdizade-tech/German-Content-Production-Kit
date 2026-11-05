@@ -255,8 +255,27 @@ def execute(root=ROOT):
                                        profile["input_pins"]["op02_shadow"]["git_blob"]),
             "OP02_WORKTREE_NOT_EXACT_PINNED_SHADOW")
     op02=module("gfp_opt_existing_op02_nonactive",path)
-    return assessment(profile,cat,domains,sources,routes,index,
+    report=assessment(profile,cat,domains,sources,routes,index,
                       {"workstreams":op02.DOMAINS},old["issues"])
+    reader=module("gfp_opt_real_lesen_stage1_replay",
+                  "Verification/replay_lesen_stage1_native_v1.py")
+    proof=reader.execute()
+    require(proof["status"]==
+            "PASS_ACTUAL_GIT_READING_STAGE1_DERIVED_BYTES_AND_STRUCTURE_REPLAY_ONLY"
+            and proof["new_policy_adoption"]=="NOT_ADOPTED"
+            and proof["stage2_to_7"]=="NOT_APPROVED"
+            and proof["actual_independent_stage1_source_pdf_bytes_revalidated"] is False
+            and proof["replayed_counts"]["topics"]==68
+            and proof["replayed_counts"]["pages"]==76,
+            "READING_NATIVE_REPLAY_SCOPE_OR_SOURCE_CHANGED")
+    reading=[row for row in report["source_families"]
+             if row["family_id"]=="family:lesen"]
+    require(len(reading)==1 and reading[0]["native_checkpoint_tracked_in_git_index"],
+            "READING_OWNER_NO_LONGER_ELIGIBLE_FOR_STAGE1_REPLAY")
+    reading[0]["native_stage1_actual_git_derived_replay"]=proof
+    report["counts"]["real_git_native_reading_stage1_structure_replays"]=1
+    report["counts"]["real_nonlexical_native_policy_adoptions"]=0
+    return report
 
 def main():
     a=argparse.ArgumentParser(description=__doc__)

@@ -40,6 +40,16 @@ def blob_sha(data: bytes) -> str:
     """Git blob SHA-1, not a file SHA-1; supports offline exact pin readback."""
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
+def git_blob_text_matches(data: bytes, expected: str) -> bool:
+    """Exact Git text blob identity, accounting for checkout-only CRLF on Windows.
+
+    In both cases the *canonical Git blob* must match the recorded SHA. This
+    permits no content or whitespace edits other than CRLF checkout conversion.
+    """
+    return blob_sha(data) == expected or (
+        b"\r\n" in data and blob_sha(data.replace(b"\r\n", b"\n")) == expected
+    )
+
 def read_json(root: Path, relpath: str) -> dict:
     return json.loads((root / relpath).read_text(encoding="utf-8"))
 
@@ -51,8 +61,8 @@ def policy_authority(root: Path, profile: dict) -> tuple[str, Path]:
           "PROFILE_OR_POLICY_OWNER_INVALID")
     registry_file = root / POLICY_REGISTRY
     guard(registry_file.is_file()
-          and blob_sha(registry_file.read_bytes()) ==
-          profile.get("policy_registry_git_blob"),
+          and git_blob_text_matches(registry_file.read_bytes(),
+          profile.get("policy_registry_git_blob", "")),
           "REGISTRY_BLOB_NOT_EXACT")
     registry = read_json(root, POLICY_REGISTRY)
     guard(registry.get("schema") == "gcpk-global-policy-registry@1.0.0"
@@ -64,7 +74,8 @@ def policy_authority(root: Path, profile: dict) -> tuple[str, Path]:
           and binding.get("stages") == [5], "WRONG_POLICY_BINDING")
     validator = root / VALIDATOR
     guard(validator.is_file() and
-          blob_sha(validator.read_bytes()) == binding.get("blob_sha"),
+          git_blob_text_matches(validator.read_bytes(),
+          binding.get("blob_sha", "")),
           "POLICY_VALIDATOR_BLOB_DRIFT")
     return binding["blob_sha"], validator
 

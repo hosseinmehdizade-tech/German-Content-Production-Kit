@@ -1,0 +1,55 @@
+name: GFP-OPT P1 Branch-Qualified Root Checkpoint Recovery
+on:
+  push:
+    paths:
+      - 'Verification/reconcile_live_root_checkpoints_v1.py'
+      - 'Verification/tests/test_live_root_checkpoint_recovery_v1.py'
+      - 'Optimization-Program/Control-Center/ROOT-CHECKPOINT-BRANCH-CANDIDATES-v1.json'
+      - 'Optimization-Program/RESUME-ROUTES.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - '.github/workflows/gfp-opt-p1-root-branch-recovery.yml'
+  pull_request:
+    paths:
+      - 'Verification/reconcile_live_root_checkpoints_v1.py'
+      - 'Verification/tests/test_live_root_checkpoint_recovery_v1.py'
+      - 'Optimization-Program/Control-Center/ROOT-CHECKPOINT-BRANCH-CANDIDATES-v1.json'
+      - 'Optimization-Program/RESUME-ROUTES.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - '.github/workflows/gfp-opt-p1-root-branch-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-root-locators:
+    name: Actual branch-commit readback, never stage acceptance (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Adversarial candidate-owner and no-false-CURRENT tests
+        run: python -B -m unittest discover -s Verification/tests -p test_live_root_checkpoint_recovery_v1.py -v
+      - name: Independently inspect exact live GitHub main and four source-owner branch blobs
+        run: python -B Verification/reconcile_live_root_checkpoints_v1.py --summary --report "${{ runner.temp }}/gfp-opt-root-branch-evidence.json"
+      - name: Upload safe branch-qualified location evidence, NEVER a replacement checkpoint
+        uses: actions/upload-artifact@v4
+        with:
+          name: gfp-opt-root-checkpoint-evidence-${{ matrix.os }}
+          path: ${{ runner.temp }}/gfp-opt-root-branch-evidence.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Declare read-only source boundaries
+        shell: bash
+        run: |
+          echo "Four source owner branch Checkpoints are only historical navigation candidates."
+          echo "Grammar A1-C1 remains unresolved. The October 7 NVV branch checkpoint is not the newest November 5 Library evidence."
+          echo "No main CHECKPOINT files created, source/LOCKED touched, Stage4-7 or ADOPTED granted."

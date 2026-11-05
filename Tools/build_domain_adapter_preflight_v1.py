@@ -303,7 +303,7 @@ def execute(root=ROOT):
     report["counts"]["branch_qualified_checkpoint_candidates"]=sum(
          x["branch_checkpoint_historical_observation"] is not None
          for x in report["root_checkpoint_issue_triage"])
-    report["counts"]["unresolved_grammar_branch_checkpoint_candidates"]=1
+    report["counts"]["unresolved_grammar_branch_checkpoint_candidates"]=0
     report["root_branch_evidence_type"]="PINNED_HISTORICAL_BRANCH_LOCATION_ONLY__LIVE_REMOTE_WORKFLOW_SEPARATE"
     return report
 

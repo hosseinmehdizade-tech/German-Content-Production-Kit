@@ -265,7 +265,10 @@ def main():
                          ensure_ascii=False, indent=2))
         if args.output_dir:
             out = args.output_dir.resolve()
-            require(out != ROOT.resolve() and ROOT.resolve() not in out.parents,
+            # GitHub Actions writes only this generated ephemeral directory in the checkout.
+            # Arbitrary worktree locations (including all sources) remain forbidden.
+            allow_ci = out == (ROOT / "attested-evidence-output").resolve()
+            require(allow_ci or (out != ROOT.resolve() and ROOT.resolve() not in out.parents),
                     "GIT_WORKTREE_OUTPUT_FORBIDDEN")
             out.mkdir(parents=True, exist_ok=True)
             (out / "ATTESTED-EVIDENCE.json").write_text(

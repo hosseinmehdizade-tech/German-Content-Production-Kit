@@ -29,8 +29,7 @@ from check_active_stage5_policy_v1 import (check_path,check_bytes,sha256,
                                            matches_git_text,Stage5PolicyFailure)
 BUILDER="Tools/build_clean_delivery.py"
 REGISTRY="Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json"
-PURPOSES=("stage5_acceptance","final_delivery","validated_major_checkpoint",
-          "required_recovery","explicit_user_checkpoint")
+PURPOSES=("stage5_acceptance",)  # This route must never issue a FINAL certificate.
 
 class GovernedBuildError(ValueError):
     pass

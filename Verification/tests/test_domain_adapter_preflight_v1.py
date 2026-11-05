@@ -96,6 +96,19 @@ class NonLexicalDomainPreflightTests(unittest.TestCase):
         self.assertEqual(row["status"],
               "SHADOW_READING_STAGE1_METADATA_ONLY__STAGE2_TO_7_NOT_ACCEPTED")
 
+    def test_lesen_real_native_stage1_git_bytes_replayed_not_adopted(self):
+        row=next(x for x in self.actual["source_families"]
+                 if x["family_id"]=="family:lesen")
+        proof=row["native_stage1_actual_git_derived_replay"]
+        self.assertEqual(proof["status"],
+          "PASS_ACTUAL_GIT_READING_STAGE1_DERIVED_BYTES_AND_STRUCTURE_REPLAY_ONLY")
+        self.assertEqual(proof["replayed_counts"]["topics"],68)
+        self.assertEqual(proof["replayed_counts"]["pages"],76)
+        self.assertFalse(proof["actual_independent_stage1_source_pdf_bytes_revalidated"])
+        self.assertEqual(proof["new_policy_adoption"],"NOT_ADOPTED")
+        self.assertEqual(self.actual["counts"]["real_git_native_reading_stage1_structure_replays"],1)
+        self.assertEqual(self.actual["counts"]["real_nonlexical_native_policy_adoptions"],0)
+
     def test_aber_hallo_existing_op02_shadow_has_exact_pdf_identity(self):
         row=next(x for x in self.actual["source_families"]
                  if x["family_id"]=="family:aber-hallo-listen-tabellen")

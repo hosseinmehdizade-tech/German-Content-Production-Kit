@@ -283,9 +283,14 @@ def execute(root=ROOT):
     locator.validate_sources(candidate,catalog_live,route_live,
                              catalog_blob,route_blob)
     candidate_by_key={x["root_key"]:x for x in candidate["checkpoint_slots"]}
-    require({x["root_key"] for x in report["root_checkpoint_issue_triage"]}==
-            set(candidate_by_key),"ROOT_LOCATOR_TRIAGE_IDENTITY_DRIFT")
-    for x in report["root_checkpoint_issue_triage"]:
+    root_rows=[x for x in report["root_checkpoint_issue_triage"]
+               if x.get("issue_type")=="ROOT_CHECKPOINT_UNTRACKED"]
+    require(len(root_rows)==5
+            and {x.get("root_key") for x in root_rows}==set(candidate_by_key),
+            "ROOT_LOCATOR_TRIAGE_IDENTITY_DRIFT")
+    # Preserve unrelated navigation warnings, but do not mistake them for
+    # one of the five tracked root keys or silently discard them.
+    for x in root_rows:
         pinned=candidate_by_key[x["root_key"]]
         candidate_branch=pinned.get("branch_candidate")
         x["branch_checkpoint_historical_observation"]=(
@@ -302,7 +307,7 @@ def execute(root=ROOT):
             }
     report["counts"]["branch_qualified_checkpoint_candidates"]=sum(
          x["branch_checkpoint_historical_observation"] is not None
-         for x in report["root_checkpoint_issue_triage"])
+         for x in root_rows)
     report["counts"]["unresolved_grammar_branch_checkpoint_candidates"]=0
     report["root_branch_evidence_type"]="PINNED_HISTORICAL_BRANCH_LOCATION_ONLY__LIVE_REMOTE_WORKFLOW_SEPARATE"
     return report

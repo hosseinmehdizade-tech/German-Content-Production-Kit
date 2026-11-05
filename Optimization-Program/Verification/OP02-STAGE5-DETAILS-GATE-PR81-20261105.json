@@ -1,0 +1,62 @@
+{
+  "schema": "gcpk-op02-stage5-details-schema-gate-receipt@1.0",
+  "date": "2026-11-05",
+  "mission": "OP02_PROCESS_OPTIMIZATION_ONLY_NO_LEARNER_CARD_EDIT",
+  "status": "PASS_SCOPED_REGISTERED_STAGE5_VALIDATOR_AND_BUILDER_TWO_OS__NOT_ALL_PRODUCERS",
+  "pr": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/81",
+  "merged_commit": "dbfad05c3b12c12fe2f7e233f8d81379d0d4a0ec",
+  "ci_tested_head": "b1af2081ec63df14ab1adea731a004162133f365",
+  "ci": {
+    "stage5_details": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/41943634478",
+    "stage5_test_counts": {
+      "ubuntu": "18/18 PASS",
+      "windows": "18/18 PASS"
+    },
+    "content_quality": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/41943634490",
+    "content_quality_status": "PASS",
+    "zip_safety": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/41943634645",
+    "zip_safety_status": {
+      "ubuntu": "PASS",
+      "windows": "PASS"
+    },
+    "separate_op04_route_integrity": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/41943627135",
+    "separate_op04_result": "FAIL_STALE_RESUME_ROUTES__SAME_FAILURE_ON_MAIN_BEFORE_PR__NOT_DETAILS_GATE_FAILURE",
+    "main_op04_prior_failure": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/41943251797"
+  },
+  "exact_main_blob_readback": {
+    "Verification/validate_unified_vocabulary_projection_v1_1_0.py": "b6d27c0b98f44cd8b0ffad325710f24f76da95e1",
+    "Verification/tests-v3.3.6/test_stage5_details_json_shape_guard.py": "b0036ede85ac9fd48572d3e7a147c756f27575d0",
+    ".github/workflows/stage5-details-json-guard.yml": "e610f28461609df1ceb20670e172ebb8012363dc"
+  },
+  "actual_stage5_gate_explanation": "Current official Tools/build_clean_delivery.py already invokes the neutral projection validator before copy and on staged exact input. Added mandatory fail-closed details validation to that existing validator. If details field is present, it must be a JSON list of dict sections with nonempty title and list items; invalid prose, null, object, JSON scalar, blank or malformed nested sections rejected. Missing optional details column remains permitted for existing neutral profile backwards compatibility; no automatic conversion/mutation.",
+  "real_b1_sample": {
+    "workstream": "Menschen-B1-L19",
+    "reference": "Optimization-Program/Verification/RELATED-TAXONOMY-V11-REAL-OUTPUT-SMOKE-20261105.json",
+    "affected_rows": 145,
+    "total_master_rows": 3088,
+    "finding": "EXISTING_B1_L19_DETAILS_IS_GERMAN_PROSE_NOT_JSON_LIST__NOT_REPAIRED",
+    "not_claimed_as_new_content_repair": true
+  },
+  "generic_vocabulary": {
+    "source_search": "Library /Flasch kart/German-Content-Production-Kit/Content/Vocabulary-Sonstige recursively",
+    "result": "NO_CURRENT_NATIVE_GENERIC_VOCABULARY_OUTPUT_LOCATED",
+    "only_tsv": "Imported-Legacy/A2-VERBEN-UNIVERSAL-v2.tsv",
+    "disposition": "HOLD_ACTUAL_GENERIC_PRODUCER_PARITY",
+    "official_v411_projector_synthetic_qa": "PR80 scoped PASS, not real user output"
+  },
+  "scope_boundaries": {
+    "changed_paths_exactly_three": true,
+    "cards_changed": 0,
+    "locked_raw_source_changed": false,
+    "runtime_ui_srs_fsrs_changed": false,
+    "independent_semantic_stage4_pass": false,
+    "all_content_producers_proven": false,
+    "release_stage5_6_7_accepted_by_this_receipt": false
+  },
+  "next_actions": [
+    "Resolve B1-L19 native details writer/root producer in the B1 owner workstream before producing a separately authorized editable successor; no edits in this optimization-only mission.",
+    "Locate actual CURRENT neutral Vocabulary producer output for read-only parity; do not label historical A2-Verben as generic Vocabulary.",
+    "Fix pre-existing OP04 STALE_RESUME_ROUTES with safe regenerate/CI when prioritizing full optimization workflow integrity.",
+    "Retain synthetic coverage and Stage4 independent linguistic assurance as separate from shape validation."
+  ]
+}

@@ -1,0 +1,62 @@
+name: GFP-OPT P1 Cross-Domain Adapter and Checkpoint Triage
+on:
+  push:
+    paths:
+      - 'Tools/build_domain_adapter_preflight_v1.py'
+      - 'Verification/tests/test_domain_adapter_preflight_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-CROSS-DOMAIN-ADAPTER-PREFLIGHT-v1.json'
+      - 'Optimization-Program/RESUME-ROUTES.json'
+      - 'SOURCE-REGISTRY.json'
+      - 'Verification/audit_op02_typed_envelope_v2.py'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - 'PROJECT-STATE.json'
+      - '.github/workflows/gfp-opt-p1-cross-domain-preflight.yml'
+  pull_request:
+    paths:
+      - 'Tools/build_domain_adapter_preflight_v1.py'
+      - 'Verification/tests/test_domain_adapter_preflight_v1.py'
+      - 'Optimization-Program/Control-Center/Profiles/P1-CROSS-DOMAIN-ADAPTER-PREFLIGHT-v1.json'
+      - 'Optimization-Program/RESUME-ROUTES.json'
+      - 'SOURCE-REGISTRY.json'
+      - 'Verification/audit_op02_typed_envelope_v2.py'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json'
+      - 'PROJECT-STATE.json'
+      - '.github/workflows/gfp-opt-p1-cross-domain-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preflight:
+    name: Source-grounded Grammar Lesen Schreiben HOLDs (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Diagnose all nonlexical source profiles and five stale root checkpoint paths
+        run: python -B Tools/build_domain_adapter_preflight_v1.py --summary --output "${{ runner.temp }}/gfp-opt-domain-preflight.json"
+      - name: Run anchored source-and-pointer negative tests
+        run: python -B -m unittest discover -s Verification/tests -p test_domain_adapter_preflight_v1.py -v
+      - name: Publish evidence-typed HOLD report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gfp-opt-domain-preflight-${{ matrix.os }}
+          path: ${{ runner.temp }}/gfp-opt-domain-preflight.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Declare no mutation or native adoption
+        shell: bash
+        run: |
+          echo "Read-only Git-index source registry and existing OP02 SHADOW metadata only."
+          echo "Untracked root CHECKPOINT pointers are never repaired or fabricated."
+          echo "No Grammar/Lesen/Schreiben official native adapter, source CURRENT, Stage4-7, Library or app acceptance is granted."

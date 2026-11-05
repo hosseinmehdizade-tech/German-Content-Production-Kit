@@ -44,6 +44,7 @@ def load_module(name:str,path:str):
 phase=load_module("gfp_control_center_base","Tools/build_project_control_center_v1.py")
 planner=load_module("gfp_p1_impact_for_adoption","Tools/plan_central_policy_impact_v1.py")
 graph=load_module("gfp_p1_dependency_graph","Tools/build_project_dependency_evidence_v1.py")
+nonlexical=load_module("gfp_p1_source_domain_preflight","Tools/build_domain_adapter_preflight_v1.py")
 
 def require(ok:bool, code:str)->None:
     if not ok:
@@ -362,6 +363,25 @@ def markdown(status:dict)->str:
        "P1: one **new authorized source-owner run** must create a real governed native policy receipt, then pass independent GitHub main and authenticated Library readback plus source semantic/stage review before scoped ADOPTED. Continue non-neutral producer adapter work in parallel.",
        "P3: feed the typed source statuses from this report into a higher-level management dashboard. Do not auto-promote old receipts or rewrite LOCKED files.",
        ""])
+    domain=status.get("nonlexical_domain_preflight",{})
+    if domain:
+        lines.extend(["", "## Nonlexical native source readiness — shadow only", "",
+          "| Source family | Native checkpoint tracked | Adapter readiness | Next safe action |",
+          "|---|---|---|---|"])
+        for item in domain["source_families"]:
+            lines.append("| " + " | ".join(str(v).replace("|","\\|") for v in (
+                item["family_id"],
+                "YES" if item["native_checkpoint_tracked_in_git_index"] else "NO",
+                item["status"],item["next_action"]))+" |")
+        lines.extend(["","## Untracked root checkpoint references — no auto-repair","",
+          "| Root key | Missing checkpoint reference | Diagnosis |",
+          "|---|---|---|"])
+        for item in domain["root_checkpoint_issue_triage"]:
+            lines.append("| " + " | ".join(str(v).replace("|","\\|") for v in (
+                item.get("root_key","UNMAPPED"),item["reported_path"],item["status"]))+" |")
+        lines.extend(["",
+          "**All domain adapters remain NONACTIVE.** Root checkpoint references must be resolved by their actual source owners; a missing Git pointer is not evidence of a content QA failure.",
+          ""])
     return "\n".join(lines)
 
 def execute(root:Path=ROOT)->dict:
@@ -385,7 +405,18 @@ def execute(root:Path=ROOT)->dict:
             if p in index:
                 pointers[p]=phase.load_json_from_index(p,index,root)
     snapshot=phase.build(cat,index,state,pointers)
-    return build(ledger,index,snapshot,impact,cat,domains,historical)
+    report=build(ledger,index,snapshot,impact,cat,domains,historical)
+    preflight=nonlexical.execute(root)
+    require(preflight["schema"]=="gfp-opt-p1-cross-domain-native-adapter-readiness@1.0.0"
+            and preflight["status"]==
+            "PASS_DOMAIN_AND_METADATA_ROUTING_ONLY__ALL_NATIVE_ADOPTIONS_HELD"
+            and preflight["counts"]["actual_domain_adapters_adopted"]==0
+            and preflight["counts"]["source_stage_passes_certified_by_preflight"]==0,
+            "NONLEXICAL_PREFLIGHT_NOT_SHADOW")
+    report["nonlexical_domain_preflight"]=preflight
+    report["counts"]["nonlexical_source_families_profiled"]=preflight["counts"]["nonlexical_family_profiles"]
+    report["counts"]["triaged_untracked_root_checkpoints"]=preflight["counts"]["classified_existing_root_checkpoint_issues"]
+    return report
 
 def main()->int:
     p=argparse.ArgumentParser(description=__doc__)

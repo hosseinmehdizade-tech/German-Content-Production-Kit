@@ -223,6 +223,23 @@ class AdoptionDashboardTests(unittest.TestCase):
             self.assertEqual(a.returncode,2)
             self.assertIn("UNKNOWN_FAMILY",a.stderr)
 
+    def test_nonlexical_shadow_preflight_is_joined_not_adopted(self):
+        report=self.output["nonlexical_domain_preflight"]
+        self.assertEqual(report["counts"]["nonlexical_family_profiles"],8)
+        self.assertEqual(self.output["counts"]["nonlexical_source_families_profiled"],8)
+        self.assertEqual(report["counts"]["actual_domain_adapters_adopted"],0)
+        self.assertTrue(all(x["real_native_adapter_adopted"] is False
+                            for x in report["source_families"]))
+
+    def test_five_root_checkpoint_triages_explain_metadata_issues(self):
+        report=self.output["nonlexical_domain_preflight"]
+        self.assertEqual(self.output["counts"]["triaged_untracked_root_checkpoints"],5)
+        self.assertEqual(len(report["root_checkpoint_issue_triage"]),5)
+        self.assertTrue(all(x["auto_repair"] is False for x in
+                            report["root_checkpoint_issue_triage"]))
+        md=m.markdown(self.output)
+        self.assertIn("Untracked root checkpoint references",md)
+
     def test_no_production_files_modified_by_dry_readonly_report(self):
         targets=[m.LEDGER,m.CATALOG,m.DOMAINS,m.REGISTRY,m.SOURCE_RECEIPT]
         before={x:hashlib.sha256((ROOT/x).read_bytes()).hexdigest() for x in targets}

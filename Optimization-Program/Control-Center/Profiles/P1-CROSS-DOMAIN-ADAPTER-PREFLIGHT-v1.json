@@ -1,0 +1,111 @@
+{
+  "schema": "gfp-opt-p1-cross-domain-adapter-preflight@1.0.0",
+  "program_id": "GFP-OPT-2026",
+  "authority": "SHADOW_METADATA_ONLY__NO_NATIVE_ADOPTION_OR_STAGE_PASS",
+  "input_pins": {
+    "catalog": {
+      "path": "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json",
+      "git_blob": "ada9e2785ad9ecb338ae97305a063ac507c5b99e"
+    },
+    "domains": {
+      "path": "Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json",
+      "git_blob": "ecff9d82ea4597255c9cb9ce9edabcb2aa170500"
+    },
+    "source_registry": {
+      "path": "SOURCE-REGISTRY.json",
+      "git_blob": "0a32060a9a9fb5c2b5e01da0407659a9a3865ff0"
+    },
+    "resume_routes": {
+      "path": "Optimization-Program/RESUME-ROUTES.json",
+      "git_blob": "3743d7522839fe705883abe08127a41443b33ab8"
+    },
+    "op02_shadow": {
+      "path": "Verification/audit_op02_typed_envelope_v2.py",
+      "git_blob": "d77bb049506bd6a2c29fba4e279b258ae6c4d69b"
+    }
+  },
+  "profiles": [
+    {
+      "family_id": "family:grammatik-aktiv-a1-b1",
+      "native_owner": "grammatik-aktiv-a1-c1",
+      "registered_sources": [
+        "grammatik-aktiv-a1-b1"
+      ],
+      "op02_shadow_owner": null,
+      "action": "RESTORE_OR_RESOLVE_GRAMMATIK_A1_C1_NATIVE_CHECKPOINT_BEFORE_CONTENT"
+    },
+    {
+      "family_id": "family:grammatik-aktiv-a1-c1",
+      "native_owner": "grammatik-aktiv-a1-c1",
+      "registered_sources": [
+        "grammatik-aktiv-a1-b1",
+        "grammatik-aktiv-b2-c1"
+      ],
+      "op02_shadow_owner": null,
+      "action": "RESTORE_OR_RESOLVE_GRAMMATIK_A1_C1_NATIVE_CHECKPOINT_BEFORE_CONTENT"
+    },
+    {
+      "family_id": "family:grammatik-aktiv-b2-c1",
+      "native_owner": "grammatik-aktiv-a1-c1",
+      "registered_sources": [
+        "grammatik-aktiv-b2-c1"
+      ],
+      "op02_shadow_owner": null,
+      "action": "RESTORE_OR_RESOLVE_GRAMMATIK_A1_C1_NATIVE_CHECKPOINT_BEFORE_CONTENT"
+    },
+    {
+      "family_id": "family:aber-hallo-listen-tabellen",
+      "native_owner": "aber-hallo-listen-tabellen",
+      "registered_sources": [
+        "deutsch-aber-hallo-listen-tabellen-a1-a2",
+        "deutsch-aber-hallo-listen-tabellen-b1-c2"
+      ],
+      "op02_shadow_owner": "aber-hallo-listen-tabellen",
+      "action": "KEEP_WIP_SEMANTIC_STAGE4_OPEN_AND_OP02_GRAMMAR_SHADOW_ONLY"
+    },
+    {
+      "family_id": "family:menschen-portfolio",
+      "native_owner": "menschen-a1a2b1-memrise",
+      "registered_sources": [
+        "menschen-a1a2b1-memrise-full-audio"
+      ],
+      "op02_shadow_owner": null,
+      "action": "EXPLICITLY_SPLIT_PORTFOLIO_AND_AUDIO_LESSON_PRODUCER_CONTRACTS"
+    },
+    {
+      "family_id": "family:lesen",
+      "native_owner": "lesen-praesentation",
+      "registered_sources": [
+        "presentation-topics-b2-c1"
+      ],
+      "op02_shadow_owner": "lesen-praesentation",
+      "action": "PRESERVE_READING_STAGE1_ONLY_START_STAGE2_ONLY_SOURCE_OWNED"
+    },
+    {
+      "family_id": "family:schreiben",
+      "native_owner": null,
+      "registered_sources": [],
+      "op02_shadow_owner": null,
+      "action": "REGISTER_AUTHORITATIVE_SCHREIBEN_SOURCE_AND_NATIVE_OUTPUT_BEFORE_ADAPTER"
+    },
+    {
+      "family_id": "family:bildkarten-piloten",
+      "native_owner": null,
+      "registered_sources": [],
+      "op02_shadow_owner": null,
+      "action": "REGISTER_VISUAL_SOURCE_AND_IMAGE_CAPTION_PROVENANCE_BEFORE_ADAPTER"
+    }
+  ],
+  "root_checkpoint_issue_rule": "ROOT_CHECKPOINT_UNTRACKED__NOT_SOURCE_OR_CONTENT_QA_FAILURE",
+  "anti_promotion": {
+    "no_new_native_adapter_activated": true,
+    "no_stage4_stage5_stage6_stage7_pass": true,
+    "no_SOURCE_LOCKED_or_cards_changed": true,
+    "no_currentness_claim_from_git_index": true,
+    "no_migration_from_shadow_op02": true,
+    "no_automatic_fix_of_missing_checkpoints": true,
+    "no_app_ui_or_fsrs_changes": true,
+    "user_newer_portable_precedence_preserved": true
+  },
+  "next": "Confirm workstream owners and exact latest portable source before repairing the five metadata pointers. Implement only source-authorized native grammar/reading/writing adapters with actual outputs and independent QA; shadow metadata alone is never ADOPTED."
+}

@@ -42,11 +42,11 @@ class CentralPolicyImpactTests(unittest.TestCase):
         self.validate()
         self.assertEqual(self.registry["schema"],"gcpk-global-policy-registry@1.0.0")
 
-    def test_all_15_bindings_have_complete_21_34_17_coverage(self):
+    def test_all_15_bindings_have_complete_21_35_17_coverage(self):
         out=self.impact()
         self.assertEqual(len(out["selected_policy_bindings"]),15)
         self.assertEqual(len(out["family_impacts"]),315)
-        self.assertEqual(len(out["workspace_impacts"]),510)
+        self.assertEqual(len(out["workspace_impacts"]),525)
         self.assertEqual(len(out["root_workstream_impacts"]),255)
         self.assertEqual(out["catalog_baseline"]["qa_workspaces_not_direct_producers"],3)
 
@@ -71,7 +71,7 @@ class CentralPolicyImpactTests(unittest.TestCase):
             if x["workspace_kind"]=="QA_ONLY_NOT_DIRECT_PRODUCER"]
         self.assertEqual(len(qa),3)
         self.assertTrue(all(x["impact_status"]=="QA_WORKSPACE_NOT_DIRECT_PRODUCER" for x in qa))
-        self.assertEqual(len(out["workspace_impacts"]),34)
+        self.assertEqual(len(out["workspace_impacts"]),35)
 
     def test_qa_workspace_has_resume_only_even_when_policy_is_global(self):
         out=self.impact("currentness")
@@ -218,7 +218,7 @@ class CentralPolicyImpactTests(unittest.TestCase):
         self.assertEqual(len(d["per_policy"]),15)
         self.assertNotIn("workspace_impacts",d)
         self.assertEqual(d["selected_impact_rows"]["family"],315)
-        self.assertEqual(d["selected_impact_rows"]["workspace"],510)
+        self.assertEqual(d["selected_impact_rows"]["workspace"],525)
 
     def test_cli_select_policy_and_named_family(self):
         result=subprocess.run([

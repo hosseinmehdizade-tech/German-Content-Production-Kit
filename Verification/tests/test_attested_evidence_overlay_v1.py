@@ -27,6 +27,9 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
         cls.receipts.update({r["profile_path"]: mod.graph.source_json(r["profile_path"], cls.idx)
                              for r in cls.reg["records"]})
         for record in cls.reg["records"]:
+            if record.get("phase4_receipt_path"):
+                cls.receipts[record["phase4_receipt_path"]] = mod.graph.source_json(
+                    record["phase4_receipt_path"], cls.idx)
             if record.get("latest_path"):
                 cls.receipts[record["latest_path"]] = mod.graph.source_json(
                     record["latest_path"], cls.idx)
@@ -42,12 +45,14 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
         result = self.outcome()
         self.assertEqual(result["counts"]["historical_byte_receipts_git_workspaces"], 1)
         self.assertEqual(result["counts"]["historical_byte_receipts_root_workstreams"], 1)
-        self.assertEqual(result["counts"]["unattested_git_workspaces"], 33)
+        self.assertEqual(result["counts"]["unattested_git_workspaces"], 32)
+        self.assertEqual(result["counts"]["source_anchored_historical_git_workspaces"], 1)
 
-    def test_two_historical_receipts_have_independent_family_ids(self):
+    def test_three_typed_historical_receipts_have_independent_family_ids(self):
         result = self.outcome()
         self.assertEqual({e["parent_family_id"] for e in result["evidence"]},
-                         {"family:250-verben-mit-praepositionen", "family:nomen-verb-verbindungen"})
+                         {"family:250-verben-mit-praepositionen", "family:nomen-verb-verbindungen",
+                          "family:aber-hallo-listen-tabellen"})
 
     def test_nv_root_workstream_not_faked_as_git_workspace(self):
         result = self.outcome()
@@ -123,6 +128,123 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
         docs[self.reg["records"][1]["receipt_path"]]["official_stage5"] = "PASS"
         with self.assertRaisesRegex(ValueError, "NVV_FALSE_STAGE_PROMOTION"):
             self.outcome(docs=docs)
+
+    def anchor(self, result):
+        return next(e for e in result["evidence"] if
+                    e["target_id"] == "workspace:aber-hallo-listen-tabellen")
+
+    def test_aber_hallo_source_anchor_not_full_or_stage_accepted(self):
+        result = self.outcome()
+        row = self.anchor(result)
+        self.assertEqual(row["historical_evidence_status"], mod.ANCHOR_HISTORICAL)
+        self.assertFalse(row["intermediate_versions_replayed"])
+        self.assertFalse(row["source_to_card_semantics_certified"])
+        self.assertEqual(row["stage4_risk_gate"], "OPEN__NOT_STAGE4_PASS")
+        self.assertEqual(result["counts"]["historical_byte_receipts_git_workspaces"], 1)
+        self.assertEqual(result["counts"]["source_anchored_historical_git_workspaces"], 1)
+        self.assertEqual(result["counts"]["current_or_final_stage_certificates"], 0)
+        family = next(x for x in result["families"] if
+                      x["family_id"] == "family:aber-hallo-listen-tabellen")
+        self.assertEqual(len(family["source_anchor_only_receipt_ids"]), 1)
+        self.assertFalse(family["family_current_certified"])
+
+    def test_aber_hallo_phase4_git_blob_tamper_blocks(self):
+        idx = dict(self.idx)
+        reg = self.reg["records"][-1]
+        idx[reg["phase4_receipt_path"]] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_GIT_PIN_DRIFT:phase4_receipt_path"):
+            self.outcome(idx=idx)
+
+    def test_aber_hallo_phase5_git_blob_tamper_blocks(self):
+        idx = dict(self.idx)
+        reg = self.reg["records"][-1]
+        idx[reg["receipt_path"]] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_GIT_PIN_DRIFT:receipt_path"):
+            self.outcome(idx=idx)
+
+    def test_aber_hallo_profile_git_blob_tamper_blocks(self):
+        idx = dict(self.idx)
+        reg = self.reg["records"][-1]
+        idx[reg["profile_path"]] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_GIT_PIN_DRIFT:profile_path"):
+            self.outcome(idx=idx)
+
+    def test_aber_hallo_missing_phase4_path_blocks(self):
+        reg = copy.deepcopy(self.reg)
+        reg["records"][-1]["phase4_receipt_path"] = (
+            "Optimization-Program/Verification/PHASE4-ABER-HALLO-WIP92-SCOPED-BYTE-ATTESTATION-20261105.json")
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_GIT_PIN_DRIFT:phase4_receipt_path"):
+            self.outcome(reg=reg)
+
+    def test_aber_hallo_forged_family_blocks(self):
+        reg = copy.deepcopy(self.reg)
+        reg["records"][-1]["parent_family_id"] = "family:menschen-a2"
+        with self.assertRaisesRegex(ValueError, "TARGET_FAMILY_MISMATCH"):
+            self.outcome(reg=reg)
+
+    def test_aber_hallo_forged_source_digest_blocks(self):
+        reg = copy.deepcopy(self.reg)
+        reg["records"][-1]["source_sha256s"]["b1_c2"] = "f" * 64
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_SOURCE_MISMATCH:b1_c2"):
+            self.outcome(reg=reg)
+
+    def test_aber_hallo_recovery_digest_change_blocks(self):
+        reg = copy.deepcopy(self.reg)
+        reg["records"][-1]["recovery_zip_sha256"] = "a" * 64
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_ARCHIVE_SHA_MISMATCH:recovery_wip77"):
+            self.outcome(reg=reg)
+
+    def test_aber_hallo_wip72_parent_digest_change_blocks(self):
+        reg = copy.deepcopy(self.reg)
+        reg["records"][-1]["immutable_wip72_sha256"] = "a" * 64
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_ARCHIVE_SHA_MISMATCH:embedded_immutable_wip72"):
+            self.outcome(reg=reg)
+
+    def test_aber_hallo_semantic_stage4_fake_promotion_blocks(self):
+        docs = copy.deepcopy(self.receipts)
+        p = self.reg["records"][-1]["receipt_path"]
+        docs[p]["explicit_limits"]["linguistic_stage4"] = "PASS"
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_FALSE_STAGE_OR_LINEAGE_PROMOTION"):
+            self.outcome(docs=docs)
+
+    def test_aber_hallo_intermediate_lineage_false_promotion_blocks(self):
+        docs = copy.deepcopy(self.receipts)
+        p = self.reg["records"][-1]["receipt_path"]
+        docs[p]["explicit_limits"]["all_wip73_to_wip91_intermediate_artifact_bytes_replayed"] = True
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_FALSE_STAGE_OR_LINEAGE_PROMOTION"):
+            self.outcome(docs=docs)
+
+    def test_aber_hallo_source_to_card_false_promotion_blocks(self):
+        reg = copy.deepcopy(self.reg)
+        reg["records"][-1]["source_to_card_semantics_certified"] = True
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_FALSE_STAGE_OR_LINEAGE_PROMOTION"):
+            self.outcome(reg=reg)
+
+    def test_aber_hallo_phase4_source_mismatch_blocks(self):
+        docs = copy.deepcopy(self.receipts)
+        p = self.reg["records"][-1]["phase4_receipt_path"]
+        docs[p]["sources"][0]["sha256"] = "f" * 64
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_SOURCE_MISMATCH:a1_a2"):
+            self.outcome(docs=docs)
+
+    def test_aber_hallo_latest_pointer_drift_is_not_current(self):
+        idx = dict(self.idx)
+        idx[self.reg["records"][-1]["latest_path"]] = "f" * 40
+        row = self.anchor(self.outcome(idx=idx))
+        self.assertIn("REVERIFY_BEFORE_RESUME", row["git_pointer_relation"])
+        self.assertFalse(row["current_user_source_automatically_resolved"])
+
+    def test_aber_hallo_same_git_blob_but_wrong_latest_zip_blocks(self):
+        docs = copy.deepcopy(self.receipts)
+        p = self.reg["records"][-1]["latest_path"]
+        docs[p]["authority"]["current_portable"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "SOURCE_ANCHOR_LATEST_ARTIFACT_DISAGREES_WITH_RECEIPT"):
+            self.outcome(docs=docs)
+
+    def test_aber_hallo_no_binary_reread_in_ci(self):
+        row = self.anchor(self.outcome())
+        self.assertFalse(row["source_bytes_freshly_read_in_github_runner"])
+        self.assertFalse(row["current_user_source_automatically_resolved"])
 
     def test_missing_b1_attestation_remains_unverified(self):
         result = self.outcome()

@@ -52,7 +52,7 @@ class SevenSourceOwnerIntake(unittest.TestCase):
                    lambda d:d["candidates"][0].__setitem__("family_id","family:aspekte-b2"))
     def test_status_changed_without_review_refused(self):
         self.fails("OWNER_STAGE_STATUS_CHANGED_REVIEW_REQUIRED",
-                   lambda d:d["candidates"][2]["observed_assertions"].__setitem__("stage4_formal_acceptance",True))
+                   lambda d:d["candidates"][2]["observed_assertions"].__setitem__("independent_stage4_qa_completed",True))
     def test_synthetic_ready_status_does_not_promise_producer(self):
         self.fails("FALSE_READY_STATUS",
                    lambda d:d["candidates"][2].__setitem__("status","ADOPTED"))

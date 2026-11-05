@@ -1,0 +1,49 @@
+name: GFP-OPT Unified Governance Roadmap Routing
+on:
+  push:
+    paths:
+      - 'PROJECT-BOOTSTRAP.md'
+      - 'Optimization-Program/CONTROL-CENTER-UNIFIED-GOVERNANCE-ROADMAP-v1.0.0.*'
+      - 'Optimization-Program/README.md'
+      - 'Optimization-Program/STATE.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Tools/check_unified_governance_roadmap_v1.py'
+      - 'Verification/tests/test_unified_governance_roadmap_v1.py'
+      - '.github/workflows/gfp-opt-unified-governance-roadmap.yml'
+  pull_request:
+    paths:
+      - 'PROJECT-BOOTSTRAP.md'
+      - 'Optimization-Program/CONTROL-CENTER-UNIFIED-GOVERNANCE-ROADMAP-v1.0.0.*'
+      - 'Optimization-Program/README.md'
+      - 'Optimization-Program/STATE.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Tools/check_unified_governance_roadmap_v1.py'
+      - 'Verification/tests/test_unified_governance_roadmap_v1.py'
+      - '.github/workflows/gfp-opt-unified-governance-roadmap.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  route-and-guard:
+    name: Cross-project roadmap startup contract (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve user-approved single source of roadmap truth and reject fake adoption
+        run: python -B Tools/check_unified_governance_roadmap_v1.py
+      - name: Fail closed on broken startup, false stage approval, and priority drift
+        run: python -B -m unittest discover -s Verification/tests -p test_unified_governance_roadmap_v1.py -v

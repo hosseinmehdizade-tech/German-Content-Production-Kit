@@ -402,12 +402,12 @@ def main()->int:
             report["source_families"]=selection
             report["display_filtered_family_only"]=True
         dest=args.output_dir.resolve()
-        forbid=[ROOT,ROOT/"Workspaces",ROOT/"Prompt",
-                ROOT/"Optimization-Program",ROOT/"Verification",
-                ROOT/"Tools",ROOT/"Data",ROOT/"Content",ROOT/"Source"]
+        protected=[ROOT/"Workspaces",ROOT/"Prompt",
+                   ROOT/"Optimization-Program",ROOT/"Verification",
+                   ROOT/"Tools",ROOT/"Data",ROOT/"Content",ROOT/"Source"]
         require(dest != ROOT.resolve() and
-                not any(root.resolve()==dest or
-                        root.resolve() in dest.parents for root in forbid)
+                not any(folder.resolve()==dest or
+                        folder.resolve() in dest.parents for folder in protected)
                 and not dest.is_symlink(),
                 "UNSAFE_DASHBOARD_DESTINATION")
         dest.mkdir(parents=True,exist_ok=True)

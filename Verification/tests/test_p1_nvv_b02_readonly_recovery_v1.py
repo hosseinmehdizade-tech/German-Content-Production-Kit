@@ -1,6 +1,6 @@
 """Negative tests: NVV B02 parent recovery must never become Stage3/4 or P1 ADOPTED."""
 from __future__ import annotations
-import copy,importlib.util,json,unittest
+import copy,importlib.util,json,unittest,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 script=ROOT/"Verification/verify_p1_nvv_b02_readonly_recovery_v1.py"
@@ -41,6 +41,16 @@ class NVVB02RecoveryReadOnly(unittest.TestCase):
         self.deny("RECOVERED_PARENT_BASELINE_SCOPE_INVALID",lambda d:d["recovered_baseline"].__setitem__("no_proposals_applied",False))
     def test_owner_pin_not_replaced(self):
         self.deny("OWNER_RECOVERY_PIN_INVALID",lambda d:d["source_owner"].__setitem__("git_blob","0"*40))
+    def test_exact_git_blob_with_checkout_crlf_and_real_tamper(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);p=root/"source.json"
+            original=b'{"one":1,\n"two":2}\n'
+            p.write_bytes(original.replace(b"\n",b"\r\n"))
+            out=gate.load_pinned(root,"source.json",gate.git_blob(original))
+            self.assertEqual(out,{"one":1,"two":2})
+            p.write_bytes(original.replace(b'"two":2',b'"two":3').replace(b"\n",b"\r\n"))
+            with self.assertRaisesRegex(gate.VerificationError,"GIT_SOURCE_BLOB_DRIFT"):
+                gate.load_pinned(root,"source.json",gate.git_blob(original))
     def test_no_app_or_learner_srs_claim(self):
         self.deny("FALSE_STAGE4_OR_RELEASE_PROMOTION",lambda d:d["nonclaims"].__setitem__("source_LOCKED_app_SRS_FSRS_modified",True))
 if __name__=="__main__":unittest.main()

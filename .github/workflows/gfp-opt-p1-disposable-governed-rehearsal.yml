@@ -1,0 +1,41 @@
+name: GFP-OPT P1 Disposable Governed Wrapper Rehearsal
+
+on:
+  pull_request:
+    paths:
+      - 'Tools/rehearse_existing_stage5_archive_v1.py'
+      - 'Verification/tests/test_disposable_real_source_governed_wrapper_v1.py'
+      - '.github/workflows/gfp-opt-p1-disposable-governed-rehearsal.yml'
+      - 'Tools/build_governed_clean_delivery_v1.py'
+      - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Tools/build_clean_delivery.py'
+      - 'Tools/content_package_guard.py'
+      - 'Verification/validate_unified_vocabulary_projection_v1_1_0.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  disposable-rehearsal:
+    name: Exact governed wrapper + no-publication negatives (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout exact PR branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test read-only archive provenance and actual synthetic governed wrapper
+        run: python -B -m unittest discover -s Verification/tests -p test_disposable_real_source_governed_wrapper_v1.py -v
+      - name: Explain real user archive boundary
+        run: |
+          echo "Only synthetic source fixtures in GitHub CI."
+          echo "No private user Library archive, source currentness or ADOPTED is claimed."
+          echo "Actual Library source ZIP rehearsal must be executed separately with exact raw files."

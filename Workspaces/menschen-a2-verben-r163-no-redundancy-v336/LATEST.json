@@ -1,9 +1,9 @@
 {
-  "schema": "gcpk-a2-r163-file-audited-integrated-latest@4.2.0",
+  "schema": "gcpk-r163-stage7-content-final-latest@5.0.0",
   "date": "2026-11-05",
   "workstream": "menschen-a2-verben-r163-no-redundancy-v336",
-  "status": "AUDITED_SINGLE_CONTENT_ZIP_70_FILES_NO_APP_PASS__FORMAL_FINAL_LOCK_PENDING",
-  "latest_completed_milestone": "R163_FULL_FILE_INVENTORY_AND_ALL_CORRECTIONS_AUDIT_2026_11_05",
+  "status": "STAGE7_CONTENT_ONLY_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY__USER_ACCEPTED_FINAL",
+  "latest_completed_milestone": "R163_STAGE7_CONTENT_FINAL_USER_ACCEPTED",
   "receipt": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE5-CONTENT-PRODUCTION-PASS-2026-11-04.json",
   "prior_stage4_receipt": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE4-RISK-BASED-PASS-2026-11-04.json",
   "parent_stage4_sha256": "468984f23bf2f4103e2345f59cf78cf4aec2e2083b9d484a150d403f201581b6",
@@ -33,15 +33,16 @@
     "native_root_memory": "NOT_RUN_FULL_CHECKOUT"
   },
   "boundaries": {
-    "stage6": "USER_IMPORT_AND_REOPEN_PASS__NATIVE_BROWSER_NOT_RUN",
-    "stage7": "FILE_BY_FILE_AUDIT_PASS_CONTENT_ZIP__FORMAL_LOCK_PENDING",
+    "stage6": "USER_IMPORT_REOPEN_PASS__INDEPENDENT_NATIVE_INDEXEDDB_NOT_RUN",
+    "stage7": "CONTENT_ONLY_LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
     "app_release_final": false,
     "no_ui_or_srs_change": true,
     "root_native_memory": "NOT_RUN_FULL_CHECKOUT",
     "stage4": "PASS",
-    "stage5": "PASS"
+    "stage5": "PASS",
+    "full_root_native_memory": "NOT_RUN"
   },
-  "next": "Audited R163 ZIP is current content archive with one active TSV and no App. No reimport needed. Native exact CURRENT browser/IDB and full root memory boundary remain before formal FINAL/LOCKED.",
+  "next": "R163 content FINAL USER ACCEPTED and immutable. Future changes require new successor. Do not repeat Import. Global runtime/IndexedDB independent QA remains a separate technical boundary; no Google-wide WIP mirror claim.",
   "stage6_user_field": {
     "status": "PASS_USER_REPORTED_IMPORT_AND_REOPEN",
     "receipt": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE6-FIELD-ACCEPTED-STAGE7-RELEASE-CANDIDATE-2026-11-04.json",
@@ -83,5 +84,20 @@
     "parent_archive_sha256": "abd586cf57ad2366b74ef84f31c49066bf4c70020aedde263d085c6c2351f8c1",
     "audit_checkpoint": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-FULL-ARCHIVE-FILE-INVENTORY-AUDIT-2026-11-05.json",
     "original_card_bytes_unmodified": true
+  },
+  "stage7_content_final": {
+    "status": "LOCKED_PASS_WITH_ENVIRONMENT_BOUNDARY",
+    "checkpoint": "Workspaces/menschen-a2-verben-r163-no-redundancy-v336/R163-STAGE7-USER-ACCEPTED-CONTENT-FINAL-2026-11-05.json",
+    "filename": "Menschen-A2-Verben-R163-v3.3.6-CONTENT-FINAL-USER-ACCEPTED-20261105.zip",
+    "sha256": "dc7041076c22225f6571a41ae97dbea357929d54183b16f93cb7e83474e2ef46",
+    "bytes": 14037965,
+    "library_stable_id": "libfile_437f4bc6a4448191aa06641005f2b561",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2-Verben/Releases/Menschen-A2-Verben-R163-v3.3.6-CONTENT-FINAL-USER-ACCEPTED-20261105.zip",
+    "google_drive_file_id": "1DbUgP8xANA72JIYjZHp11iVASE19J_9K",
+    "google_drive_url": "https://drive.google.com/file/d/1DbUgP8xANA72JIYjZHp11iVASE19J_9K/view?usp=drivesdk",
+    "google_drive_folder": "08-Menschen-A2-Verben-FINAL-KEEP",
+    "original_import_sha256": "32554697a79dc07e42627618af4bcffb5d353056ffdac70853b171d8f6c7e4d3",
+    "user_import_and_reopen": "CONFIRMED",
+    "no_app": true
   }
 }

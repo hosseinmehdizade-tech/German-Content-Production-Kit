@@ -1,0 +1,40 @@
+{
+  "schema": "gcpk-250-vmp-v18-r3-import-helper-parity@1.0.0",
+  "date": "2026-11-04",
+  "status": "PASS_REAL_V505_TSV_PARSE_AND_NEUTRAL_IMPORT_HELPERS__NO_REAL_BROWSER_COMMIT",
+  "input": {
+    "r3_tsv_sha256": "a226969ccf457854481d8f3f3065bf1820287c41568255a1a5490cbcfafeba42",
+    "v505_candidate_zip_sha256": "99137590901a2c2086521867e128f8deb0dd6a8f694e4f0fcfc905f1060a6569",
+    "v505_index_html_sha256": "1e46bb4e2103fa3311ebb70559a331e9e7262bcc988066c8ec73269fc1d85dd8",
+    "exact_real_source_helper_functions": [
+      "parseTsv",
+      "parseJsonValue",
+      "normalizeTextList",
+      "normalizeDetails",
+      "parseStructuredTsvCell",
+      "universalRawFromRow",
+      "neutralVocabularyCustomFieldsV451"
+    ]
+  },
+  "results": {
+    "parsed_tsv_rows": 292,
+    "columns": 23,
+    "preserved_vnext_graph_items": 87,
+    "preserved_structured_lexical_relation_sidecars": 15,
+    "preserved_rich_trilingual_example_groups": 1168,
+    "legacy_opaque_ids_in_visible_details": 0,
+    "visible_detail_items_after_normalization": 3205
+  },
+  "negative_and_environment_boundaries": {
+    "full_normalizeImportedCard": "NOT_RUN",
+    "tsvRowsToCards_full_import_validation": "NOT_RUN",
+    "actual_library_commit": "NOT_RUN",
+    "IndexedDB": "NOT_RUN",
+    "real_browser": "PRIOR_ATTEMPT_BLOCKED_BY_ADMINISTRATOR",
+    "SRS_or_FSRS_user_data_mutated": false,
+    "app_source_modified": false,
+    "source_pdf_modified": false
+  },
+  "method": "Node v22 executes exact extracted pure functions from immutable v505-R141 R2 index.html, not invented duplicate implementations. Python generated test-only R3 TSV separately, Node checked JSON deep-equivalence of canonical_relations, vnext_relations, lexical_relations_v1 and presentation_examples after universalRawFromRow plus neutral custom field normalization. No real browser navigation, storage/commit or DOM work performed.",
+  "scope_note": "The original app has a larger importer path; passing helper parity must NOT be promoted to Stage6."
+}

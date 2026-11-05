@@ -25,6 +25,7 @@ VALIDATOR = "Verification/validate_unified_vocabulary_projection_v1_1_0.py"
 SCHEMA = "gfp-opt-policy-real-producer-conformance-profiles@1.0.0"
 MAX_ZIP_UNCOMPRESSED = 150_000_000
 MAX_TSV_BYTES = 35_000_000
+PROFILE_GIT_BLOB = "c6275de91bce2be7c2d1d187519a83cc40bb4370"
 
 class PolicyConformanceError(ValueError):
     pass
@@ -52,6 +53,13 @@ def git_blob_text_matches(data: bytes, expected: str) -> bool:
 
 def read_json(root: Path, relpath: str) -> dict:
     return json.loads((root / relpath).read_text(encoding="utf-8"))
+
+def load_authoritative_profile(root: Path, requested: str) -> dict:
+    guard(requested == PROFILE, "UNAUTHORIZED_PROFILE_OVERRIDE")
+    payload = (root / PROFILE).read_bytes()
+    guard(git_blob_text_matches(payload, PROFILE_GIT_BLOB),
+          "PROFILE_GIT_BLOB_DRIFT")
+    return json.loads(payload.decode("utf-8-sig"))
 
 def policy_authority(root: Path, profile: dict) -> tuple[str, Path]:
     guard(profile.get("schema") == SCHEMA
@@ -249,7 +257,7 @@ def main() -> int:
     ap.add_argument("--report", type=Path)
     args = ap.parse_args()
     try:
-        profile = read_json(ROOT, args.profile)
+        profile = load_authoritative_profile(ROOT, args.profile)
         targets: dict[str, Path] = {}
         for a in args.archive:
             ident, sep, p = a.partition("=")

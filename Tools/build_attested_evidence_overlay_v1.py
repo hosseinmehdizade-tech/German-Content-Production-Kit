@@ -25,6 +25,8 @@ spec.loader.exec_module(graph)
 SCHEMA = "gcpk-attested-evidence-overlay@1.0.0"
 BYTES_HISTORICAL = "PINNED_HISTORICAL_EXTERNAL_READBACK_RECEIPT__NOT_FRESH_GITHUB_BINARY_QA"
 NONE = "NO_REAL_BYTE_ATTESTATION_REGISTERED"
+ANCHOR_KIND = "SOURCE_ANCHORED_HISTORICAL__INTERMEDIATE_LINEAGE_GAP"
+ANCHOR_HISTORICAL = "PINNED_HISTORICAL_SOURCE_ANCHOR__WIP73_TO_WIP91_GAP__NOT_STAGE_PASS"
 
 
 def require(ok, code):
@@ -82,6 +84,186 @@ def extract_receipt(rec):
     raise ValueError("UNRECOGNIZED_HISTORICAL_RECEIPT_SCHEMA")
 
 
+
+def validate_source_anchor(record, expected, idx, fetch_json):
+    """Admit a dated real-byte source anchor separately from full packaged-source evidence.
+
+    The WIP92 compact ZIP has no embedded original PDF and the intermediate
+    WIP73..WIP91 edit chain was not replayed. Git verifies pinned *reports*
+    rather than repeating real PDF/Library ZIP readback.
+    """
+    require(record.get("evidence_kind") == ANCHOR_KIND, "INVALID_SOURCE_ANCHOR_KIND")
+    require(record.get("target_type") == "GIT_WORKSPACE"
+            and record.get("target_id") == "workspace:aber-hallo-listen-tabellen"
+            and expected["git_dir"] == "Workspaces/aber-hallo-listen-tabellen",
+            "SOURCE_ANCHOR_WRONG_OWNER")
+    documents = {}
+    for key, sha_key in (("receipt_path", "receipt_git_blob_sha"),
+                         ("profile_path", "profile_git_blob_sha"),
+                         ("phase4_receipt_path", "phase4_receipt_git_blob_sha")):
+        path, pin = record.get(key), record.get(sha_key)
+        require(graph.safe_relative(path), "UNSAFE_SOURCE_ANCHOR_PATH:" + key)
+        require(isinstance(pin, str) and re.fullmatch("[0-9a-f]{40}", pin),
+                "SOURCE_ANCHOR_INVALID_PIN:" + key)
+        require(idx.get(path) == pin, "SOURCE_ANCHOR_GIT_PIN_DRIFT:" + key)
+        documents[key] = fetch_json(path)
+        require(isinstance(documents[key], dict),
+                "SOURCE_ANCHOR_MISSING_DOCUMENT:" + key)
+    receipt, profile, phase4 = (documents["receipt_path"],
+                                documents["profile_path"],
+                                documents["phase4_receipt_path"])
+    require(profile.get("schema") == "gcpk-source-anchor-historical-profile@1.0.0"
+            and receipt.get("schema") == "gcpk-control-center-phase5-source-anchor-checkpoint@1.0.0"
+            and phase4.get("schema") == "gcpk-control-center-phase4-aber-hallo-source-archive-readback@1.0.0",
+            "SOURCE_ANCHOR_SCHEMA_MISMATCH")
+    require(receipt.get("status") ==
+            "PASS_SCOPED_REAL_EMBEDDED_SOURCES_AND_STABLE_PROVENANCE__NOT_FULL_LINEAGE_OR_STAGE_PASS"
+            and phase4.get("status") ==
+            "PASS_EXACT_SOURCE_HASHES_AND_COMPACT_ARCHIVE_INTEGRITY__NOT_EMBEDDED_SOURCE_ATTESTATION"
+            and profile.get("scope") ==
+            "PINNED_HISTORICAL_SOURCE_ANCHOR_WITH_INTERMEDIATE_LINEAGE_GAP__NO_STAGE_CERTIFICATION",
+            "SOURCE_ANCHOR_SCOPE_NOT_PINNED")
+    require(profile.get("target_id") == record["target_id"] == receipt.get("target_id") ==
+            phase4.get("target_id") and
+            profile.get("parent_family_id") == record["parent_family_id"] ==
+            receipt.get("parent_family_id") == phase4.get("parent_family_id"),
+            "SOURCE_ANCHOR_IDENTITY_MISMATCH")
+    require(profile.get("phase4_receipt_path") == record["phase4_receipt_path"]
+            and profile.get("phase4_receipt_git_blob_sha") == record["phase4_receipt_git_blob_sha"]
+            and profile.get("phase5_receipt_path") == record["receipt_path"]
+            and profile.get("phase5_receipt_git_blob_sha") == record["receipt_git_blob_sha"],
+            "SOURCE_ANCHOR_CROSS_RECEIPT_PIN_MISMATCH")
+    require(profile.get("phase5_internal_phase4_pointer") ==
+            "KNOWN_STALE_NONEXISTENT_REFERENCE__PHASE4_RECEIPT_RESOLVED_SEPARATELY_BY_PIN"
+            and receipt.get("git_authority", {}).get("phase4_receipt_path") !=
+            record["phase4_receipt_path"],
+            "SOURCE_ANCHOR_STALE_PHASE4_ALIAS_NOT_ISOLATED")
+
+    source_hashes = record.get("source_sha256s")
+    sources = receipt.get("historical_source_pdf_bytes", {})
+    source_list = phase4.get("sources", [])
+    require(isinstance(source_hashes, dict) and
+            set(source_hashes) == {"a1_a2", "b1_c2"} and
+            isinstance(source_list, list) and len(source_list) == 2,
+            "SOURCE_ANCHOR_WRONG_SOURCE_UNIVERSE")
+    for key, role, ix in (("a1_a2", "A1-A2", 0), ("b1_c2", "B1-C2", 1)):
+        actual_hash = source_hashes[key]
+        require(isinstance(actual_hash, str) and
+                re.fullmatch("[0-9a-f]{64}", actual_hash) and
+                actual_hash == profile.get("source_sha256s", {}).get(key) ==
+                sources.get(key, {}).get("sha256") == source_list[ix].get("sha256")
+                and source_list[ix].get("role") == role
+                and sources[key].get("bytes") == profile.get("source_sizes", {}).get(key) ==
+                source_list[ix].get("bytes")
+                and sources[key].get("same_actual_bytes_in_recovery_base_and_wip72") is True,
+                "SOURCE_ANCHOR_SOURCE_MISMATCH:" + key)
+
+    archives = receipt.get("verified_archive_bytes", {})
+    for key, profile_key, record_key in (
+        ("recovery_wip77", "recovery_zip_sha256", "recovery_zip_sha256"),
+        ("embedded_immutable_wip72", "embedded_wip72_sha256", "immutable_wip72_sha256"),
+        ("current_at_preflight_wip92", "artifact_sha256", "artifact_sha256")):
+        observed = archives.get(key, {}).get("sha256")
+        require(observed == profile.get(profile_key) == record.get(record_key) and
+                isinstance(observed, str) and re.fullmatch("[0-9a-f]{64}", observed),
+                "SOURCE_ANCHOR_ARCHIVE_SHA_MISMATCH:" + key)
+    require(archives.get("embedded_base_v336", {}).get("sha256") ==
+            profile.get("embedded_base_sha256"), "SOURCE_ANCHOR_BASE_SHA_MISMATCH")
+    require(receipt.get("payload_crosschecks", {}).get("wip92_canonical_sha256") ==
+            record.get("canonical_sha256") == profile.get("canonical_sha256") ==
+            phase4.get("payload", {}).get("canonical_sha256") and
+            receipt.get("payload_crosschecks", {}).get("wip92_tsv_sha256") ==
+            record.get("content_sha256") == profile.get("content_sha256") ==
+            phase4.get("payload", {}).get("tsv_sha256"),
+            "SOURCE_ANCHOR_CONTENT_SHA_MISMATCH")
+    require(phase4.get("artifact", {}).get("sha256") == record["artifact_sha256"]
+            and phase4.get("artifact", {}).get("zip_crc") == "PASS"
+            and phase4.get("artifact", {}).get("sha256sums_verified") ==
+            "102_OF_102_EXACT_COVERAGE"
+            and archives.get("current_at_preflight_wip92", {}).get("sha256sums") ==
+            "102_OF_102" and archives.get("embedded_immutable_wip72", {}).get("sha256sums") ==
+            "483_OF_483" and archives.get("recovery_wip77", {}).get("content_hash_manifest") ==
+            "9_OF_9_EXACT",
+            "SOURCE_ANCHOR_PACKAGING_EVIDENCE_MISMATCH")
+    require(receipt.get("payload_crosschecks", {}).get(
+            "canonical_788_provenance_sources_arrays_exactly_identical_wip72_wip92") is True
+            and receipt.get("payload_crosschecks", {}).get(
+            "canonical_788_ids_types_headwords_order_identical_wip72_wip92") is True
+            and receipt.get("payload_crosschecks", {}).get(
+            "lexical_tsv_787_ids_same_order_wip72_wip92") is True
+            and receipt.get("reproducible_report", {}).get("sha256") ==
+            profile.get("phase5_library_zip_sha256")
+            and receipt.get("reproducible_report", {}).get("library_file_id") ==
+            profile.get("phase5_library_file_id"),
+            "SOURCE_ANCHOR_PROVENANCE_EVIDENCE_MISMATCH")
+
+    limits = receipt.get("explicit_limits", {})
+    require(limits.get("all_wip73_to_wip91_intermediate_artifact_bytes_replayed") is False
+            and limits.get("all_transitive_edit_deltas_proven") is False
+            and limits.get("original_pdf_to_card_semantic_fidelity_certified") is False
+            and limits.get("linguistic_stage4") == "OPEN"
+            and limits.get("stage5_final") == "NOT_RUN"
+            and limits.get("native_stage6_browser_and_indexeddb") == "NOT_RUN"
+            and limits.get("stage7_release") == "NOT_RUN"
+            and limits.get("current_or_final_certificates") == 0
+            and limits.get("added_to_control_center_full_evidence_registry") is False
+            and receipt.get("payload_crosschecks", {}).get(
+            "wip92_compact_zip_embeds_original_pdf_bytes") is False
+            and phase4.get("evidence_limits", {}).get("source_pdfs_embedded_in_compact_zip") is False
+            and phase4.get("evidence_limits", {}).get("semantic_source_to_card_fidelity") ==
+            "NOT_ATTESTED"
+            and record.get("continuous_lineage_verified") is False
+            and record.get("source_to_card_semantics_certified") is False
+            and record.get("stage4_semantic_approval") == "OPEN_NOT_ACCEPTED"
+            and record.get("stage5_6_7_status") == "NOT_RUN"
+            and profile.get("not_current_or_final") is True
+            and profile.get("raw_sources_embedded_in_wip92") is False
+            and all(profile.get(k) == v for k, v in (
+                ("stage4", "OPEN"), ("stage5", "NOT_RUN"),
+                ("stage6", "NOT_RUN"), ("stage7", "NOT_RUN"))),
+            "SOURCE_ANCHOR_FALSE_STAGE_OR_LINEAGE_PROMOTION")
+    expected_latest = expected["git_dir"] + "/LATEST.json"
+    require(record.get("latest_path") == expected_latest ==
+            profile.get("latest_path") == receipt.get("git_authority", {}).get("latest_path") ==
+            phase4.get("github_at_preflight", {}).get("latest_path")
+            and record.get("latest_git_blob_at_readback") ==
+            profile.get("latest_git_blob_at_readback") ==
+            receipt.get("git_authority", {}).get("latest_blob_at_preflight") ==
+            phase4.get("github_at_preflight", {}).get("latest_git_blob"),
+            "SOURCE_ANCHOR_LATEST_PREIMAGE_MISMATCH")
+    latest_relation = "GIT_POINTER_CHANGED_OR_MISSING__REVERIFY_BEFORE_RESUME"
+    if idx.get(expected_latest) == record["latest_git_blob_at_readback"]:
+        latest = fetch_json(expected_latest)
+        require(isinstance(latest, dict) and
+                latest.get("authority", {}).get("current_portable", {}).get("sha256") ==
+                record["artifact_sha256"] and
+                latest.get("authority", {}).get("current_portable", {}).get("stage4") ==
+                "OPEN",
+                "SOURCE_ANCHOR_LATEST_ARTIFACT_DISAGREES_WITH_RECEIPT")
+        latest_relation = "GIT_POINTER_UNCHANGED_SINCE_READBACK__STILL_NOT_CERTIFIED_CURRENT"
+    return {
+        "evidence_id": record["evidence_id"],
+        "target_id": record["target_id"],
+        "parent_family_id": record["parent_family_id"],
+        "historical_evidence_status": ANCHOR_HISTORICAL,
+        "readback_receipt_path": record["receipt_path"],
+        "readback_receipt_git_blob_sha": record["receipt_git_blob_sha"],
+        "source_sha256_historically_attested": dict(source_hashes),
+        "artifact_sha256_historically_attested": record["artifact_sha256"],
+        "immutable_full_source_parent_sha256": record["immutable_wip72_sha256"],
+        "manifest_entries_historically_attested": "SOURCE_CHAIN_PARTIAL_V1",
+        "stage4_risk_gate": "OPEN__NOT_STAGE4_PASS",
+        "stage5_final": "NOT_ATTESTED_BY_OVERLAY",
+        "stage6_browser": "NOT_ATTESTED_BY_OVERLAY",
+        "stage7_release": "NOT_ATTESTED_BY_OVERLAY",
+        "git_pointer_relation": latest_relation,
+        "intermediate_versions_replayed": False,
+        "source_to_card_semantics_certified": False,
+        "current_user_source_automatically_resolved": False,
+        "source_bytes_freshly_read_in_github_runner": False,
+    }
+
+
 def validate_one(record, catalog, idx, fetch_json):
     require(isinstance(record, dict), "RECORD_NOT_OBJECT")
     ident = record.get("evidence_id", "")
@@ -101,6 +283,8 @@ def validate_one(record, catalog, idx, fetch_json):
         raise ValueError("INVALID_TARGET_TYPE")
     require(expected["parent_family_id"] == record.get("parent_family_id"),
             "TARGET_FAMILY_MISMATCH")
+    if record.get("evidence_kind") == ANCHOR_KIND:
+        return validate_source_anchor(record, expected, idx, fetch_json)
     loaded = {}
     for key, pin_key in (("receipt_path", "receipt_git_blob_sha"),
                          ("profile_path", "profile_git_blob_sha")):
@@ -184,7 +368,7 @@ def build(reg, catalog, idx, fetch_json):
     for x in catalog["workspaces"]:
         r = next((r for r in rows if r["target_id"] == x["id"]), None)
         workspaces.append({"target_id": x["id"], "family_id": x["parent_family_id"],
-                           "evidence_status": BYTES_HISTORICAL if r else NONE,
+                           "evidence_status": r["historical_evidence_status"] if r else NONE,
                            "evidence_id": r["evidence_id"] if r else None,
                            "current_or_stage_verified": False})
     roots = []
@@ -192,7 +376,7 @@ def build(reg, catalog, idx, fetch_json):
         identifier = "root:" + x["key"]
         r = next((r for r in rows if r["target_id"] == identifier), None)
         roots.append({"target_id": identifier, "family_id": x["parent_family_id"],
-                      "evidence_status": BYTES_HISTORICAL if r else NONE,
+                      "evidence_status": r["historical_evidence_status"] if r else NONE,
                       "evidence_id": r["evidence_id"] if r else None,
                       "current_or_stage_verified": False})
     families = []
@@ -200,16 +384,21 @@ def build(reg, catalog, idx, fetch_json):
         attached = [r["evidence_id"] for r in rows if r["parent_family_id"] == x["id"]]
         families.append({"family_id": x["id"], "name": x["name"],
                          "historical_real_byte_receipt_ids": attached,
+                         "source_anchor_only_receipt_ids": [r["evidence_id"] for r in rows
+                             if r["parent_family_id"] == x["id"] and
+                             r["historical_evidence_status"] == ANCHOR_HISTORICAL],
                          "family_current_certified": False,
                          "family_stage4_5_6_7_certified": False})
     return {
         "schema": SCHEMA,
-        "status": "PINNED_TWO_HISTORICAL_BYTE_RECEIPTS__ALL_OTHER_TARGETS_UNATTESTED",
+        "status": "PINNED_TWO_FULL_HISTORICAL_BYTE_RECEIPTS_PLUS_ONE_SOURCE_ANCHOR__NOT_CURRENT",
         "counts": {
             "catalog_families": len(families),
             "catalog_git_workspaces": len(workspaces),
             "catalog_root_workstreams": len(roots),
-            "historical_byte_receipts_git_workspaces": sum(x["evidence_id"] is not None for x in workspaces),
+            "historical_byte_receipts_git_workspaces": sum(x["evidence_status"] == BYTES_HISTORICAL for x in workspaces),
+            "source_anchored_historical_git_workspaces": sum(
+                x["evidence_status"] == ANCHOR_HISTORICAL for x in workspaces),
             "historical_byte_receipts_root_workstreams": sum(x["evidence_id"] is not None for x in roots),
             "unattested_git_workspaces": sum(x["evidence_id"] is None for x in workspaces),
             "fresh_pdf_zip_bytes_rehashed_by_github_ci": 0,
@@ -220,6 +409,7 @@ def build(reg, catalog, idx, fetch_json):
         "limits": [
             "Git-index pin verifies registered receipt unchanged, not the PDF/ZIP bytes again",
             "Historical R7 and R6.1 may be superseded by newer user-provided verified source",
+            "Aber Hallo WIP72-WIP92 provenance anchor is not a verified continuous WIP73-WIP91 edit chain",
             "A root-workstream without Git workspace must not create a fictitious Git pointer",
             "No Stage5, browser Stage6 or final release inferred from byte-level integrity",
         ],
@@ -231,7 +421,7 @@ def markdown(result):
     lines = ["# Project Control Center — Scoped Attested Evidence Overlay", "",
              "**Historical exact-byte readback receipts, NOT CURRENT and NOT full Stage acceptance.**", "",
              f"Families: {c['catalog_families']} | Git workspaces: {c['catalog_git_workspaces']} | Root keys: {c['catalog_root_workstreams']}.",
-             f"Git workspace historical byte receipts: {c['historical_byte_receipts_git_workspaces']}; root-only: {c['historical_byte_receipts_root_workstreams']}.",
+             f"Full historical Git workspace receipts: {c['historical_byte_receipts_git_workspaces']}; root-only: {c['historical_byte_receipts_root_workstreams']}; source-anchor only: {c['source_anchored_historical_git_workspaces']}.",
              f"Git workspaces without such receipt: {c['unattested_git_workspaces']}.",
              "", "| Target | Evidence | Stage4 boundary | Latest relation |",
              "|---|---|---|---|"]

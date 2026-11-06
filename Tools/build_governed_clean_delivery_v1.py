@@ -27,6 +27,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"Verification"))
 from check_active_stage5_policy_v1 import (check_path,check_bytes,sha256,
                                            matches_git_text,Stage5PolicyFailure)
+from check_mem009_native_stage5_v1 import audit_tsv_bytes as audit_mem009_native_tsv
 BUILDER="Tools/build_clean_delivery.py"
 REGISTRY="Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json"
 PURPOSES=("stage5_acceptance",)  # This route must never issue a FINAL certificate.
@@ -77,7 +78,8 @@ def pinned_builder(root=ROOT):
             "GOVERNED_BUILDER_GIT_BLOB_DRIFT")
     return path,b["blob_sha"]
 
-def verify_stage_zip(path:Path,source_pins:dict[str,str],roles:dict[str,Path]):
+def verify_stage_zip(path:Path,source_pins:dict[str,str],roles:dict[str,Path],
+                     include_mem009:bool=False):
     require(path.is_file() and not path.is_symlink(),"NO_STAGE5_ZIP_AFTER_BUILD")
     bytes_before=path.read_bytes()
     with zipfile.ZipFile(path,"r") as z:
@@ -122,9 +124,18 @@ def verify_stage_zip(path:Path,source_pins:dict[str,str],roles:dict[str,Path]):
         require(governed_output["input_tsv_sha256"]==
                 source_pins["direct-import-tsv"],
                 "GOVERNED_STAGED_IMPORT_SHA_MISMATCH")
+        mem009_output=audit_mem009_native_tsv(import_data)
+        require(mem009_output["status"]=="PASS_MEM009_NATIVE_STRUCTURE_ONLY",
+                "MEM009_STAGED_STRUCTURAL_FAIL:"+str(mem009_output.get("errors",[])[:3]))
+        require(mem009_output["input_tsv_sha256"]==
+                source_pins["direct-import-tsv"],
+                "MEM009_STAGED_IMPORT_SHA_MISMATCH")
     require(path.is_file() and not path.is_symlink() and
             path.read_bytes()==bytes_before,"OUTPUT_ZIP_CHANGED_ON_READBACK")
-    return governed_output,sha256(bytes_before)
+    # Keep the historical two-value API for existing source-owner and remote
+    # verifier callers; only the updated governed run opts into three values.
+    return ((governed_output,mem009_output,sha256(bytes_before)) if include_mem009
+            else (governed_output,sha256(bytes_before)))
 
 def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
         milestone_evidence:Path|None=None,user_request:str|None=None,
@@ -147,6 +158,11 @@ def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
     before=check_path(roles["direct-import-tsv"],root)
     require(before["input_tsv_sha256"]==pins["direct-import-tsv"],
             "INPUT_NOT_THE_PINNED_SNAPSHOT")
+    mem009_before=audit_mem009_native_tsv(roles["direct-import-tsv"].read_bytes())
+    require(mem009_before["status"]=="PASS_MEM009_NATIVE_STRUCTURE_ONLY",
+            "MEM009_SOURCE_STRUCTURAL_FAIL:"+str(mem009_before.get("errors",[])[:3]))
+    require(mem009_before["input_tsv_sha256"]==pins["direct-import-tsv"],
+            "MEM009_SOURCE_SHA_MISMATCH")
     args=[sys.executable,"-B",str(builder),str(source),str(out),
           "--purpose",purpose]
     if milestone_evidence is not None:
@@ -162,7 +178,13 @@ def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
         require(path.is_file() and not path.is_symlink() and
                 sha256(path.read_bytes())==pins[role],
                 "SOURCE_CHANGED_AFTER_BUILDER:"+role)
-    after,output_sha=verify_stage_zip(out,pins,roles)
+    after,mem009_after,output_sha=verify_stage_zip(out,pins,roles,include_mem009=True)
+    require(mem009_before["input_tsv_sha256"]==mem009_after["input_tsv_sha256"] and
+            mem009_before["cards_seen"]==mem009_after["cards_seen"] and
+            mem009_before["structured_sense_cards"]==mem009_after["structured_sense_cards"] and
+            mem009_before["per_sense_example_missing_info_only"]==
+            mem009_after["per_sense_example_missing_info_only"],
+            "MEM009_SOURCE_STAGED_PARITY_MISMATCH")
     require(before["registry_git_blob"]==after["registry_git_blob"] and
             before["validator_git_blob"]==after["validator_git_blob"] and
             before["input_tsv_sha256"]==after["input_tsv_sha256"],
@@ -179,6 +201,20 @@ def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
       "output_zip_name":out.name,
       "output_zip_sha256":output_sha,
       "staged_policy":after,
+      "mem009_structural_gate":{
+          "status":mem009_before["status"],
+          "source_import_tsv_sha256":mem009_before["input_tsv_sha256"],
+          "packaged_import_tsv_sha256":mem009_after["input_tsv_sha256"],
+          "cards_seen":mem009_before["cards_seen"],
+          "structured_sense_cards":mem009_before["structured_sense_cards"],
+          "untyped_sense_cards":mem009_before["untyped_sense_cards"],
+          "per_sense_example_missing_info_only":
+              mem009_before["per_sense_example_missing_info_only"],
+          "no_mandatory_per_sense_example_quota":True,
+          "full_meaning_retention_verified":False,
+          "native_producer_scope":"THIS_GOVERNED_STAGE5_ROUTE_ONLY",
+          "semantic_stage4_or_runtime6_certified":False
+      },
       "independent_zip_sha256sums_and_crc":"PASS",
       "original_source_files_unchanged":True,
       "linguistic_stage4":"NOT_CERTIFIED",

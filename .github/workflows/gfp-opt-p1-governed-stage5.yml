@@ -4,6 +4,8 @@ on:
     paths:
       - 'Tools/build_governed_clean_delivery_v1.py'
       - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Verification/check_mem009_native_stage5_v1.py'
+      - 'Verification/audit_multi_meaning_one_card_v1.py'
       - 'Verification/tests/test_governed_stage5_invocation_v1.py'
       - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
       - 'Tools/build_clean_delivery.py'
@@ -14,6 +16,8 @@ on:
     paths:
       - 'Tools/build_governed_clean_delivery_v1.py'
       - 'Verification/check_active_stage5_policy_v1.py'
+      - 'Verification/check_mem009_native_stage5_v1.py'
+      - 'Verification/audit_multi_meaning_one_card_v1.py'
       - 'Verification/tests/test_governed_stage5_invocation_v1.py'
       - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
       - 'Tools/build_clean_delivery.py'
@@ -39,6 +43,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Compile active native MEM-009 pipeline and test suite
+        run: >-
+          python -B -m py_compile
+          Verification/check_mem009_native_stage5_v1.py
+          Verification/audit_multi_meaning_one_card_v1.py
+          Tools/build_governed_clean_delivery_v1.py
+          Verification/tests/test_governed_stage5_invocation_v1.py
       - name: Stage5 governed producer pipeline, package readback and adversarial tests
         run: python -B -m unittest discover -s Verification/tests -p test_governed_stage5_invocation_v1.py -v
       - name: Assert provenance boundary

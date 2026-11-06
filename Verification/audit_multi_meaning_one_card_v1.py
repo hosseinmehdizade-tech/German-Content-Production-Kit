@@ -16,6 +16,7 @@ import csv
 import json
 from pathlib import Path
 from typing import Any
+import unicodedata
 
 
 def finding(code: str, severity: str, card_id: str, detail: str) -> dict[str, str]:
@@ -44,6 +45,10 @@ def audit_cards(cards: list[dict[str, Any]], profile: str,
     advisories: list[dict[str, str]] = []
     seen_cards: set[str] = set()
     seen_lexical_targets: dict[str, str] = {}
+    # Genuine duplicate-surface candidates are DISCOVERY ONLY, never identity
+    # proof. NFC + collapsed whitespace is the existing global machine-exact
+    # rule. Case, umlauts, punctuation and ß must remain distinct.
+    front_to_ids: dict[str, list[str]] = {}
     structured_sense_cards = 0
     untyped_sense_cards = 0
     missing_per_sense_examples = 0
@@ -64,6 +69,10 @@ def audit_cards(cards: list[dict[str, Any]], profile: str,
         if cid in seen_cards:
             errors.append(finding("CARD_ID_DUPLICATE", "ERROR", cid, "same stable card ID repeated"))
         seen_cards.add(cid)
+        surface = card.get("front") or card.get("front_de_preview") or card.get("headword")
+        if isinstance(surface, str) and surface.strip():
+            surface = " ".join(unicodedata.normalize("NFC", surface).split())
+            front_to_ids.setdefault(surface, []).append(cid)
 
         # Only a trusted, explicit lexical-target identity can show two cards were
         # generated from the SAME target. Never auto-merge equal-looking fronts.
@@ -180,6 +189,20 @@ def audit_cards(cards: list[dict[str, Any]], profile: str,
                     advisories.append(finding("RELATION_SENSE_UNVERIFIABLE", "INFO", cid,
                                              f"{section}: {sid}"))
 
+    same_front_candidates = [
+        {"front": surface, "card_ids": ids}
+        for surface, ids in front_to_ids.items()
+        if len(set(ids)) > 1
+    ]
+    for group in same_front_candidates:
+        advisories.append(finding(
+            "SAME_FRONT_MULTIPLE_CARD_IDS_REVIEW", "INFO",
+            group["card_ids"][0],
+            "Exact front also appears on other card IDs; lexical identity and "
+            "SRS-safe successor require separate review. No automatic merge. "
+            "Card IDs: " + ",".join(group["card_ids"]),
+        ))
+
     return {
         "schema": "mem009-one-card-multi-meaning-audit@1.0.0",
         "status": ("STRUCTURAL_PASS_NOT_STAGE4_5_6_7"
@@ -187,6 +210,8 @@ def audit_cards(cards: list[dict[str, Any]], profile: str,
         "profile": profile,
         "cards_seen": len(cards),
         "unique_card_ids": len(seen_cards),
+        "same_front_multi_id_review_groups": same_front_candidates,
+        "same_front_multi_id_review_count": len(same_front_candidates),
         "structured_sense_cards": structured_sense_cards,
         "untyped_sense_cards": untyped_sense_cards,
         "examples_paired": examples_checked,

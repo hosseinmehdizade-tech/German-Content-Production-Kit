@@ -103,7 +103,7 @@ def scope_contract(latest):
            "FALSE_APPROVAL_OR_IMPORT_CLAIM")
     demand(str(scope.get("global_portable_project_checkpoint", "")).startswith("L05_R25_"),
            "SCOPED_L01_CONFUSED_WITH_GLOBAL_L05")
-    demand(bool(scope.get("noncard_2_current_path", "")).endswith("-NONIMPORT.csv")
+    demand(str(scope.get("noncard_2_current_path", "")).endswith("-NONIMPORT.csv")
            and "/Aspekte-B2/Current/" in scope["noncard_2_current_path"],
            "NONCARD_OWNER_OR_DRAFT_BOUNDARY_MISSING")
     demand(scope.get("identity_or_target_HOLDs") and

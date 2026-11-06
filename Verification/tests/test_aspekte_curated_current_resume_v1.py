@@ -58,11 +58,13 @@ def issues(b1, b1_readme, b2, b2_readme, c1, c1_readme, receipt):
              if (m:=re.fullmatch(r"parent_R([1-9][0-9]*)_158_current_sha256",key))]
     check(len(parents)==1 and revision is not None
           and parents[0][0]==revision-1
-          and re.fullmatch(r"[0-9a-f]{64}",str(parents[0][1])) is not None,
+          and re.fullmatch(r"[0-9a-f]{64}",str(parents[0][1])) is not None
+          and parents[0][1] != "0"*64,
           "B2_IMMEDIATE_CURATED_PARENT_INVALID")
     curr_sha=scope.get("current_158_draft_preview_sha256","")
     curr_path=scope.get("current_158_draft_preview_path","")
     check(re.fullmatch(r"[0-9a-f]{64}",str(curr_sha)) is not None
+          and curr_sha != "0"*64
           and str(curr_path).endswith(f"-R{revision}-NONIMPORT.csv")
           and "/Aspekte-B2/Current/" in curr_path,
           "B2_CURRENT_BYTE_PIN_INVALID")

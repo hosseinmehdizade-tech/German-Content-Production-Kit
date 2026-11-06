@@ -37,3 +37,13 @@ See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), and [Part05 
 
 Private report SHA256: `d1100805558e826946c4110c3c9a12a9dffd1b7f6f1e8e5a5ec31708cc845c5c`.
 Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
+
+## Stage4 editorial adjudication — Kapitel 2 Wohnwelten (2026-11-06)
+
+- **18/18 L02 HOLD source rows** now have specific source-preserving content and morphological decisions (additional **28 contextual sense facets** under those existing entries).
+- **14** prior L02 editorial overlays individually reviewed. **1 old proposal rejected as written:** figurative harsh film criticism was incorrectly assigned to `zerreißen` rather than `verreißen`; the latter is only a dictionary distinction, **not** an added source headword.
+- **12** contextual bilingual example pairs proposed. One Duden-confirmed adjective correction: `menschenscheu — menschenscheuer — am menschenscheuesten`; also `meterdick` and two forms of `umbauen` reviewed.
+- Field-level exact matching of all 18 archived Stage3 source rows to the sanitized B1+ CSV passed. **0** exact primary-lemma matches against 1,778 cards in the **issued final Menschen A2 TSV** for the 18 entries. Full B1/A1/C1 semantic comparisons pending.
+- **43/340** editorial content decisions cumulatively (L01 25 + L02 18), **297** yet to receive editorial content decisions. **All 340 HOLDs remain blocked for release**, all 383 historical overlays still require final-card signoff, **0 formally approved cards**.
+- Private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L02-18-HOLD-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`. SHA256: `11900e3983978ce53ea7baa373ed10971d0eec956c54bc5e8b45fb74a91445f7`. Readback SHA256 + CRC + 6 manifest hashes verified. The Gate2D Part05 master archive remains unchanged.
+- Next: complete L03 editorial decisions in one coherent lesson-scoped batch. Do not repeat source extraction or auto-drop by simple lemma match.

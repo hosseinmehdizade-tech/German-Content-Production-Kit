@@ -247,6 +247,21 @@ class GovernedIntegrationTests(unittest.TestCase):
             self.run_governed()
         self.assertFalse(self.receipt.exists())
 
+    def test_legacy_verify_stage_zip_api_remains_two_values(self):
+        result=self.run_governed()
+        roles=build.select_roles(self.src)
+        legacy=build.verify_stage_zip(
+            self.out,result["source_role_sha256"],roles)
+        self.assertEqual(len(legacy),2)
+        self.assertEqual(legacy[0]["status"],
+                         "PASS_EXACT_ACTIVE_STAGE5_NEUTRAL_FORMAT_ONLY")
+        self.assertEqual(legacy[1],result["output_zip_sha256"])
+        opted=build.verify_stage_zip(
+            self.out,result["source_role_sha256"],roles,include_mem009=True)
+        self.assertEqual(len(opted),3)
+        self.assertEqual(opted[1]["status"],"PASS_MEM009_NATIVE_STRUCTURE_ONLY")
+        self.assertEqual(opted[2],result["output_zip_sha256"])
+
     def test_existing_output_refused_pre_build(self):
         self.out.write_bytes(b"historic")
         with self.assertRaisesRegex(ValueError,"OUTPUT_ALREADY_EXISTS"):

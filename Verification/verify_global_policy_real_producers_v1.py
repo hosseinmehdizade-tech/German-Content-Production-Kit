@@ -13,6 +13,8 @@ import hashlib
 import importlib.util
 import io
 import json
+import re
+import subprocess
 from pathlib import Path
 import sys
 import zipfile
@@ -61,6 +63,21 @@ def load_authoritative_profile(root: Path, requested: str) -> dict:
           "PROFILE_GIT_BLOB_DRIFT")
     return json.loads(payload.decode("utf-8-sig"))
 
+def checked_out_live_registry_sha() -> str:
+    """Only the module's authenticated checkout HEAD may select a live Registry.
+
+    The historical profile's 2026-11-05 registry SHA remains an immutable
+    lineage fact, not an authorization to block all later user-approved rules.
+    """
+    proc=subprocess.run(["git","rev-parse","--verify","HEAD:" + POLICY_REGISTRY],
+                        cwd=ROOT,text=True,capture_output=True,encoding="utf-8")
+    guard(proc.returncode==0,"REGISTRY_BLOB_NOT_EXACT")
+    sha=proc.stdout.strip()
+    guard(re.fullmatch(r"[0-9a-f]{40}",sha) is not None,
+          "REGISTRY_BLOB_NOT_EXACT")
+    return sha
+
+
 def policy_authority(root: Path, profile: dict) -> tuple[str, Path]:
     guard(profile.get("schema") == SCHEMA
           and profile.get("program_id") == "GFP-OPT-2026"
@@ -70,7 +87,7 @@ def policy_authority(root: Path, profile: dict) -> tuple[str, Path]:
     registry_file = root / POLICY_REGISTRY
     guard(registry_file.is_file()
           and git_blob_text_matches(registry_file.read_bytes(),
-          profile.get("policy_registry_git_blob", "")),
+                                    checked_out_live_registry_sha()),
           "REGISTRY_BLOB_NOT_EXACT")
     registry = read_json(root, POLICY_REGISTRY)
     guard(registry.get("schema") == "gcpk-global-policy-registry@1.0.0"

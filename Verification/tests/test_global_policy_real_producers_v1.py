@@ -82,6 +82,18 @@ class CrossProducerTests(unittest.TestCase):
         self.assertEqual(sha, "b6d27c0b98f44cd8b0ffad325710f24f76da95e1")
         self.assertTrue(validator.is_file())
 
+    def test_historical_producer_registry_pin_not_live_policy_rollback(self):
+        historical=self.profile["policy_registry_git_blob"]
+        live=m.checked_out_live_registry_sha()
+        self.assertNotEqual(historical,live)
+        data=(ROOT/m.POLICY_REGISTRY).read_bytes()
+        self.assertTrue(m.git_blob_text_matches(data,live))
+        self.assertTrue(m.git_blob_text_matches(
+            (ROOT/m.PROFILE).read_bytes(),m.PROFILE_GIT_BLOB))
+        sha, validator=m.policy_authority(ROOT,self.profile)
+        self.assertTrue(validator.is_file())
+        self.assertEqual(sha,"b6d27c0b98f44cd8b0ffad325710f24f76da95e1")
+
     def test_cli_cannot_use_an_unregistered_source_profile(self):
         with self.assertRaisesRegex(ValueError, "UNAUTHORIZED_PROFILE_OVERRIDE"):
             m.load_authoritative_profile(ROOT, "../my-unregistered-profile.json")

@@ -69,6 +69,13 @@ class PolicyInputTests(unittest.TestCase):
         self.assertEqual(result["structured_sense_cards"],0)
         self.assertEqual(result["per_sense_example_missing_info_only"],0)
 
+    def test_mem009_native_reports_same_front_but_preserves_both_cards(self):
+        result = build.audit_mem009_native_tsv(tsv_bytes())
+        self.assertEqual(result["status"], "PASS_MEM009_NATIVE_STRUCTURE_ONLY")
+        self.assertEqual(result["same_front_multi_id_review_count"], 1)
+        self.assertEqual(result["same_front_multi_id_review_groups"][0]["card_ids"],
+                         ["c-001", "c-002"])
+
     def test_mem009_native_duplicate_card_id_is_rejected(self):
         result=build.audit_mem009_native_tsv(tsv_bytes(duplicate=True))
         self.assertEqual(result["status"],"FAIL_MEM009_NATIVE_STRUCTURE_ONLY")
@@ -180,6 +187,12 @@ class GovernedIntegrationTests(unittest.TestCase):
         self.assertEqual(result["mem009_structural_gate"]["status"],
                          "PASS_MEM009_NATIVE_STRUCTURE_ONLY")
         self.assertEqual(result["mem009_structural_gate"]["cards_seen"],2)
+        # Existing synthetic cards deliberately share the same visible front,
+        # but without proven common lexical_target_id must NOT be auto-merged.
+        self.assertEqual(len(result["mem009_structural_gate"]
+                             ["identical_front_multi_id_review_only"]),1)
+        self.assertTrue(result["mem009_structural_gate"]
+                        ["duplicate_front_is_never_auto_merge"])
         self.assertEqual(result["mem009_structural_gate"]["untyped_sense_cards"],2)
         self.assertFalse(result["mem009_structural_gate"]["full_meaning_retention_verified"])
         self.assertEqual(result["source_role_sha256"]["direct-import-tsv"],

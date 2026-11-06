@@ -36,7 +36,7 @@ def issues(b1, b1_readme, b2, b2_readme, c1, c1_readme, receipt):
           "B1+_VERIFIED_CURRENT_BASELINE_NOT_IN_RESUME")
     check("NONIMPORT" in str(base.get("name","")) and "340" in b1_readme,
           "B1+_NONIMPORT_OR_HOLDS_MISSING")
-    check("Stage 4" in b1_readme and "raw source" in b1_readme,
+    check("Stage 4" in b1_readme and "bounded exact-attribution" in b1_readme,
           "B1+_BOUNDED_PROVENANCE_NOT_EXPLAINED")
 
     scope=b2.get("latest_scoped_audit",{})
@@ -90,7 +90,7 @@ def issues(b1, b1_readme, b2, b2_readme, c1, c1_readme, receipt):
           "79" in c1_readme,
           "C1_CURATED_LOWER_BASELINE_OR_GATE_MISSING")
     check("NO PRODUCTION START" not in c1_readme and
-          "original Menschen 9,109-row" not in c1_readme,
+          "**Read-only lower references:** Menschen original" not in c1_readme,
           "C1_STALE_RAW_SOURCE_AUTHORITY_REINTRODUCED")
     return errors
 

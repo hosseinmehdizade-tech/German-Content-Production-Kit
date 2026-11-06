@@ -1,0 +1,97 @@
+{
+  "schema": "gcpk-r163-front-back-readonly-audit@1.0.0",
+  "date": "2026-11-06",
+  "workstream": "menschen-a2-verben-r163-no-redundancy-v336",
+  "mode": "READ_ONLY__NO_CONTENT_REWRITE__NO_LIBRARY_UPLOAD__NO_APP_UI_CHANGE",
+  "authority": {
+    "file": "Menschen-A2-Verben-R163-v3.3.6-CONTENT-FINAL-USER-ACCEPTED-20261105.zip",
+    "sha256": "dc7041076c22225f6571a41ae97dbea357929d54183b16f93cb7e83474e2ef46",
+    "active_tsv_sha256": "32554697a79dc07e42627618af4bcffb5d353056ffdac70853b171d8f6c7e4d3",
+    "locked_user_accepted": true
+  },
+  "normative_policy": {
+    "global": "Prompt/GLOBAL-FLASHCARD-FRONT-BACK-PRESENTATION-CONTRACT-v1.0.0.md",
+    "hf2": "Prompt/LEARNER-VISIBLE-LEXICAL-FRONT-POLICY-v1.1.0.md",
+    "relations": "Prompt/LEXICAL-RELATION-PRESENTATION-AND-SENSE-POLICY-v1.0.0.md",
+    "related": "Prompt/RELATED-SECTIONS-TAXONOMY-POLICY-v1.1.0.md",
+    "mem009": "Prompt/MEM-009-ONE-CARD-MULTI-MEANING-EXAMPLES-CLARIFICATION-20261106.md",
+    "registry": "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json",
+    "scope": "CURRENT Nov 6 prospective governance; no automatic retrofit to Nov 5 LOCKED R163"
+  },
+  "front": {
+    "hf2_validator": "PASS",
+    "neutral_validator": "PASS",
+    "cards": 292,
+    "verbs": 228,
+    "expressions": 64,
+    "canonical_front_exact": 292,
+    "typing_core_verb_exact": 228,
+    "duplicate_exact_full_front": 0
+  },
+  "back": {
+    "persian_back_canonical_parity": 292,
+    "examples_trilingual": 1168,
+    "visible_kombinationen_de_fa": 676,
+    "missing_examples_or_glosses": 0,
+    "stored_formen_exact_overlap_with_front": 682,
+    "overlap_display_status": "CONDITIONAL_APP_SIDE_FILTER_NOT_PROVEN_ON_USER_CURRENT",
+    "important_nonduplicate_formen": [
+      {
+        "id": "ma2-lu-0013",
+        "gloss": "passieren — sein/haben transitiv split"
+      },
+      {
+        "id": "ma2-lu-0060",
+        "gloss": "lassen — Ersatzinfinitiv"
+      }
+    ],
+    "legacy_relation_items_without_persian": {
+      "Synonyme": 255,
+      "Wortfamilie": 197,
+      "Verwandt": 127,
+      "Antonyme": 23,
+      "total": 602
+    },
+    "relation_typed_sidecar": {
+      "cards_with_lexical_relations_v1": 0,
+      "assessment": "HISTORICAL_LEGACY_TRANSPORT__CURRENT_PROSPECTIVE_TYPED_AUTHORING_NOT_ADOPTED"
+    },
+    "legacy_related_title": "Verwandt",
+    "verwandt_argument_pattern_review_candidates": 48,
+    "verwandt_equal_another_card_front_review_candidates": 52,
+    "exact_cross_tile_duplicate": [
+      {
+        "id": "ma2-lu-0201",
+        "phrase": "von jdm./etw. (Dat.) sprechen",
+        "sections": [
+          "Verwandt",
+          "Struktur"
+        ]
+      },
+      {
+        "id": "ma2-lu-0276",
+        "phrase": "von etw. (Dat.) berichten",
+        "sections": [
+          "Verwandt",
+          "Struktur"
+        ]
+      }
+    ],
+    "nonstandard_detail_section_titles": 6,
+    "nonstandard_detail_card_ids": [
+      "ma2-lu-0113",
+      "ma2-lu-0140",
+      "ma2-lu-0164",
+      "ma2-lu-0169",
+      "ma2-lu-0230"
+    ]
+  },
+  "verdict": "FRONT_SOURCED_HF2_STRUCTURAL_PASS__BACK_CONTENT_INTEGRITY_PASS_WITH_LEGACY_FORMAT_AND_DUPLICATION_REVIEW_SIGNALS__CONSUMER_VISUAL_LEAN_FORMEN_NOT_VERIFIED__NO_RETROACTIVE_LOCK_REVOCATION",
+  "limitations": [
+    "HF2 validates transported morphology against canonical, not dictionary-level correctness of all German conjugations.",
+    "Static TSV audit cannot prove Study/Quick/Card Design Studio conditional suppression on installed runtime.",
+    "Missing typed relation sidecars and missing relation-item Persian are prospective authoring gaps, not retroactive automatic BLOCKERS on locked R163.",
+    "Multi-sense completeness/sense binding needs source-curated semantic review; flat gloss alone cannot prove all senses accepted."
+  ],
+  "next": "If owner authorizes an R164 content successor, review back relation translations/classification and exact cross-tile duplicates without changing 292 IDs or examples; independently test Lean Formen in exact approved app runtime. Do not mutate immutable R163, SRS or app without approval."
+}

@@ -56,6 +56,40 @@ class Mem009Tests(unittest.TestCase):
         self.assertEqual(result["per_sense_example_missing_info_only"], 3)
         self.assertEqual(result["errors"], [])
 
+    def test_exact_same_noun_front_is_advisory_not_auto_merge(self):
+        a = card("A")
+        b = card("B")
+        a["front"] = b["front"] = "das Blatt, die Blätter"
+        a["lexical_target_id"] = "source-target-a"
+        b["lexical_target_id"] = "source-target-b"
+        result = audit.audit_cards([a, b], "structured_json")
+        self.assertEqual(result["status"], "STRUCTURAL_PASS_NOT_STAGE4_5_6_7")
+        self.assertEqual(result["same_front_multi_id_review_count"], 1)
+        self.assertEqual(result["same_front_multi_id_review_groups"][0]["card_ids"],
+                         ["A", "B"])
+        self.assertTrue(any(x["code"] == "SAME_FRONT_MULTIPLE_CARD_IDS_REVIEW"
+                            for x in result["advisories"]))
+        self.assertEqual(result["unique_card_ids"], 2)
+
+    def test_case_sensitive_ihr_and_Ihr_are_distinct(self):
+        a = card("A")
+        b = card("B")
+        a["front"], b["front"] = "ihr", "Ihr"
+        a["lexical_target_id"] = "possessive-3sg"
+        b["lexical_target_id"] = "formal-possessive"
+        result = audit.audit_cards([a, b], "structured_json")
+        self.assertEqual(result["same_front_multi_id_review_count"], 0)
+        self.assertEqual(result["status"], "STRUCTURAL_PASS_NOT_STAGE4_5_6_7")
+
+    def test_NFC_whitespace_equivalence_without_casefold(self):
+        a, b = card("A"), card("B")
+        a["front"] = "die  Erinnerung,   die Erinnerungen"
+        b["front"] = "die Erinnerung, die Erinnerungen"
+        a["lexical_target_id"] = "a"
+        b["lexical_target_id"] = "b"
+        self.assertEqual(audit.audit_cards([a, b], "structured_json")
+                         ["same_front_multi_id_review_count"], 1)
+
     def test_missing_persian_example_is_blocker(self):
         item = card()
         item["examples"][0]["fa"] = ""

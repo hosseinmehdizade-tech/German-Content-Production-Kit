@@ -1,5 +1,16 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Current source-bound corrected whole-course candidate: R21-R1 (2026-11-06)
+
+**R21-R1 is the newest exact 1,778-card/24-lesson working candidate; R21 is superseded and was non-destructively moved to History.** [Final scoped R21-R1 receipt](./C3-R21-R1-FRONT-BACK-EXACT-BYTE-RECEIPT-2026-11-06.json) · [lifecycle register](./ARTIFACT-REGISTER.json).
+
+- Filename: `Menschen-A2-R21-R1-1778-Karten-Vorderseite-Rueckseite-QA-KORRIGIERT-CONTENT-ONLY-20261106.zip`, full SHA256 `c0b448b9e063bb90a7a1f6b09a879d166d8238f0fa8f7c4ef03205bafcae4a42`, 3,555,879 bytes, 46 members, Library ID `libfile_5aea42aee73c819198f25f944e3be3a0`, stored in dedicated `Content/Menschen-A2/Current/`; independent Library raw-byte readback **PASS**.
+- Relative to R20: 49 adjective visible-front repairs, 37 adjective no-force closures, 80 noun source-bound plural/number dispositions, three legacy Formen strings normalized while original morphology retained. **Three original plural-headword entries** (`die Freizeiteinrichtungen`, `die Öffnungszeiten`, `die Schließzeiten`) are **NOT** automatically pluralia tantum; the R21-R1 fix records `plural_source_form` instead of the erroneous preliminary R21 `plural_only`. Exactly 1,778 IDs, 7,112 trilingual examples and 1,829 lesson-membership edges remain intact.
+- Built-in whole-course verification and independent static negative controls **PASS 10/10**, 46-member CRC and SHA **PASS**; official current app browser/IndexedDB/FSRS native Stage6, front/back conditional display and issue #25 remain **UNVERIFIED/OPEN**. This is a content ZIP, not an app distribution, and **NOT primary-profile import authorized**. Do not generate per-lesson Stage6 kits.
+- Preserve R20 in Releases and R19 + preliminary R21 in History, all old LOCKED lesson receipts, original registered source, L17-vNext independent lane and user SRS/FSRS. No deletion authorized.
+
+---
+
 ## Current corrected A2 24-lesson working candidate — R21 (2026-11-06)
 
 **R21 is the newest source-bound A2 1778-card whole-course content candidate, NOT native app import-authorized and NOT final Stage7.** Exact ZIP `Menschen-A2-R21-1778-Karten-Vorderseite-Rueckseite-KORRIGIERT-CONTENT-ONLY-20261106.zip`, SHA256 `8edd779b887b48101d0624df6b7f16e83267421b098f6110191e4d1349dc81ee`, Library stable ID `libfile_ce07c38bae98819182837f84b21ccf88` in `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current/`. Independent exact Library byte readback PASS. R20 in `Releases/` remains immutable and is the recovery parent; R19 retained in `History/`. See [R21 Git receipt](./C3-R21-FRONT-BACK-EXACT-BYTE-RECEIPT-2026-11-06.json) and [artifact lifecycle register](./ARTIFACT-REGISTER.json).

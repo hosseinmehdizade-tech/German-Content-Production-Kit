@@ -57,6 +57,33 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         self.assertTrue(all(x["path"] in self.base_files for x in
                             self.base_registry["policy_bindings"].values()))
 
+    def test_curated_current_policy_mandatory_and_version_pinned(self):
+        key = "curated_current_delta_qa"
+        reg = copy.deepcopy(self.base_registry)
+        policy = reg["policy_bindings"][key]
+        self.assertEqual(policy["stages"], list(range(8)))
+        self.assertEqual(policy["scope"], "ALL_WORKSTREAM_STARTUP")
+        del reg["policy_bindings"][key]
+        self.assertIn("MANDATORY_POLICY_BINDINGS_CHANGED", self.check_snapshot(reg=reg))
+        files = dict(self.base_files)
+        files[policy["path"]] += b"\\nFORGED POLICY EDIT\\n"
+        self.assertIn("STALE_POLICY_BLOB_PIN:" + key, self.check_snapshot(files=files))
+
+    def test_curated_current_startup_is_not_optional(self):
+        files = dict(self.base_files)
+        files[auditor.START] = files[auditor.START].replace(
+            b"Prompt/CURATED-CURRENT-AUTHORITY-AND-DELTA-QA-POLICY-v1.0.0.md",
+            b"Prompt/WRONG-OLD-SOURCE-RULE.md", 1)
+        self.assertIn("CURATED_CURRENT_STARTUP_POINTER_MISSING",
+                      self.check_snapshot(files=files))
+
+    def test_curated_current_policy_cannot_lose_source_protection(self):
+        path = self.base_registry["policy_bindings"]["curated_current_delta_qa"]["path"]
+        files = dict(self.base_files)
+        files[path] = files[path].replace(b"HOLD_AUTHORITY_UNRESOLVED", b"HOLD_REMOVED")
+        self.assertTrue(any("CURATED_CURRENT_PROTECTION_MISSING" in item
+                            for item in self.check_snapshot(files=files)))
+
     def test_front_back_policy_mandatory_and_pinned(self):
         reg = copy.deepcopy(self.base_registry)
         key = "global_flashcard_front_back_presentation"

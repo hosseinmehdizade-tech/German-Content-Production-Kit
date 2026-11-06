@@ -1,0 +1,95 @@
+{
+  "schema": "gcpk-a2-r21-r2-r1-v505-archive-import-route-readonly-preflight@1",
+  "date": "2026-11-06",
+  "mission": "Continue from latest curated Menschen A2 R21-R2-R1; read-only native archive-route inspection, no app modifications, no new ZIP or Stage6 kit",
+  "scope": "Archive discovery and TSV physical limits only; NOT an import/commit, NOT a native same-origin browser/IndexedDB test",
+  "source_current": {
+    "file": "Menschen-A2-R21-R2-R1-1778-Karten-CONTENT-ONLY-KORRIGIERTE-LINKS-UND-ANLEITUNG-20261106.zip",
+    "archive_sha256": "774b8b620d57a0ad64b20490f8b3fa6aa4f015f1edf3e08e31a78c040222d2f5",
+    "library_id": "libfile_9d3a6437b4a881919cee6ca672067745",
+    "file_count": 48,
+    "compressed_bytes": 3563283,
+    "declared_uncompressed_bytes": 54762081,
+    "direct_import_path": "01-Content/A2-C3-1778-cards.tsv",
+    "direct_import_sha256": "ca913c691889466dbdd807e8b8fa9b82dd5b914f73bde00c076d2ece21cf2f4c",
+    "direct_import_bytes": 31936895,
+    "direct_import_rows": 1778,
+    "direct_import_columns": 23,
+    "max_tsv_field_characters": 29040,
+    "malformed_tsv_rows": 0
+  },
+  "app_module_under_test": {
+    "archive": "GFP-v505-R141-WRITING-SCROLLBAR-STABILITY-CANDIDATE-20261103.zip",
+    "parent_zip_sha256": "3c7639a1132e6f28f620755e80eb4b1865f73318c3cb52aff2abb1fe694f617d",
+    "module": "01-App/modules/archive-reader-v454.js",
+    "module_sha256": "97383458ba2e3dafbbb372d6fa8c3bd16764a89669c64ade796b8492c914900c",
+    "execution": "Real unmodified bundled archive-reader-v454.js executed in isolated Node v22 VM with Blob/File and crypto.webcrypto; controlled header classifier recognizing id/front/back; not the entire installed runtime, no persistence",
+    "caution": "This v505 parent candidate is NOT exact CURRENT. Pinned CURRENT v505-R141 full artifact SHA 482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e. No module byte-parity proof to exact current provided by this test."
+  },
+  "positive_result": {
+    "status": "PASS_ARCHIVE_DISCOVERY_ONE_MASTER_DATASET",
+    "discovered_domain": "vocabulary",
+    "resolved_files_count": 1,
+    "resolved_file_name": "A2-C3-1778-cards.tsv",
+    "selected_via": [
+      "recognized schema",
+      "manifest role direct-import-tsv"
+    ],
+    "lesson_roster_tsv_files_selected": 0,
+    "canonical_json_files_selected": 0,
+    "scope": "Discovery only; does not include successful card parser, storage or real Chrome acceptance"
+  },
+  "parser_and_archive_budgets": {
+    "archive_max_entries": 250,
+    "actual": 48,
+    "max_compressed_bytes": 83886080,
+    "actual_compressed_bytes": 3563283,
+    "max_decompressed_bytes": 83886080,
+    "actual_decompressed_bytes": 54762081,
+    "tsv_max_file_bytes": 83886080,
+    "actual_tsv_bytes": 31936895,
+    "tsv_max_rows": 100000,
+    "actual_rows": 1778,
+    "tsv_max_field_chars": 16777216,
+    "actual_max_field_chars": 29040,
+    "budget_preflight": "PASS_ALL_LISTED_BUDGETS"
+  },
+  "negative_fixtures": [
+    {
+      "name": "BAD_ROLE_TARGET",
+      "method": "Rewrite 01-Content/DELIVERY-MANIFEST.json direct-import-tsv to not-existing.tsv, generate fresh structurally valid ZIP/CRC",
+      "expected": "FAIL_BIND_REFERENCE_MISSING",
+      "actual": "FAIL_BIND_REFERENCE_MISSING",
+      "result": "PASS_NEGATIVE"
+    },
+    {
+      "name": "BAD_MASTER_HEADER",
+      "method": "Rewrite first TSV header column id to bad_id, generate fresh structurally valid ZIP/CRC",
+      "expected": "FAIL_ROLE_SCHEMA",
+      "actual": "FAIL_ROLE_SCHEMA",
+      "result": "PASS_NEGATIVE"
+    }
+  ],
+  "qa": "PASS_1_EXACT_POSITIVE_2_OF_2_REAL_NEGATIVE_MUTANTS_REJECTED__NO_CONTENT_MUTATION",
+  "known_blockers": {
+    "primary_profile_import_regression": "OPEN_GITHUB_ISSUE_25",
+    "exact_current_module_parity": "NOT_PROVEN",
+    "user_installed_browser": "NOT_ACCESSED",
+    "committed_import_and_reload": "NOT_RUN",
+    "backup_and_FSRS_SRS_preservation": "NOT_RUN",
+    "conditional_Study_Quick_Lean_Formen": "NOT_RUN",
+    "stage6": "NOT_ACCEPTED",
+    "integrated_stage7": "NOT_RUN",
+    "import_authorized": false
+  },
+  "authorized_boundaries": {
+    "app_in_A2_zip": false,
+    "new_zip_created": false,
+    "existing_1778_cards_changed": false,
+    "original_A2_current_zip_modified": false,
+    "user_IndexedDB_SRS_FSRS_modified": false,
+    "per_lesson_Stage6_kit_created": false
+  },
+  "conclusion": "A2 ZIP selection ambiguity and importer size/row/field budgets are not currently implicated in the tested v505 archive reader candidate. The unresolved real-profile import failure (#25) is downstream or outside tested discovery scope; its cause cannot be inferred without exact underlying runtime error and current app validation.",
+  "next": "Stop making A2 ZIP variants. Continue separate exact CURRENT v505 importer diagnosis in app owner stream; real native same-profile commit/reload/backup/FSRS acceptance required to close Stage6."
+}

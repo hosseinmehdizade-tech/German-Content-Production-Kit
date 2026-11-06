@@ -46,8 +46,12 @@ class AdoptionDashboardTests(unittest.TestCase):
     def test_all_21_source_families_without_double_counting(self):
         n=self.output["counts"]
         self.assertEqual((n["families"],n["workspaces"],n["roots"]),(21,35,17))
-        self.assertEqual((n["central_policy_bindings"],n["policy_family_candidate_impacts"]),(15,315))
-        self.assertEqual((n["workspace_pointer_navigation_views"],n["root_pointer_navigation_views"]),(525,255))
+        active=len(self.reg["policy_bindings"])
+        self.assertGreaterEqual(active,22)
+        self.assertEqual((n["central_policy_bindings"],n["policy_family_candidate_impacts"]),
+                         (active,21*active))
+        self.assertEqual((n["workspace_pointer_navigation_views"],n["root_pointer_navigation_views"]),
+                         (35*active,17*active))
 
     def test_all_source_families_in_same_order_as_catalog(self):
         self.assertEqual(
@@ -102,6 +106,22 @@ class AdoptionDashboardTests(unittest.TestCase):
         bad["baseline"]["policy_registry"]["git_blob"]="f"*40
         with self.assertRaisesRegex(ValueError,"LEDGER_BASELINE_GIT_PIN_DRIFT"):
             self.check(ledger=bad)
+
+    def test_historic_ledger_pin_stays_historical_current_registry_new(self):
+        historical=self.ledger["baseline"]["policy_registry"]["git_blob"]
+        live=self.index[m.REGISTRY]
+        self.assertNotEqual(historical,live)
+        self.assertEqual(historical,
+                         self.domains["authority"]["policy_registry"]["git_blob"])
+        self.assertIn("curated_current_delta_qa",self.reg["policy_bindings"])
+        self.assertEqual(self.output["counts"]["formally_adopted_producers"],0)
+
+    def test_live_registry_scope_is_not_fabricated_native_adoption(self):
+        self.assertEqual(self.output["counts"]["central_policy_bindings"],
+                         len(self.reg["policy_bindings"]))
+        self.assertTrue(all(
+            x["key_policies"]["currentness"]=="ROUTED_PROSPECTIVE_NO_EXECUTION_PROOF"
+            for x in self.output["source_families"]))
 
     def test_fake_great_global_adoption_refused(self):
         bad=copy.deepcopy(self.ledger)

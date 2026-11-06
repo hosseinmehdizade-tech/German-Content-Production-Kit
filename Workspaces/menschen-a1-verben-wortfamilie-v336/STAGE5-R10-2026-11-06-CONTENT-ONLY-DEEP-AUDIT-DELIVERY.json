@@ -1,0 +1,104 @@
+{
+  "schema": "gcpk-a1-verben-r10-content-only-deep-audit-delivery@1.0.0",
+  "date": "2026-11-06",
+  "workstream": "menschen-a1-verben-wortfamilie-v336",
+  "status": "PASS_EXACT_R10_CONTENT_ONLY_FULL_FILE_AND_DATA_AUDIT__STAGE6_CURRENT_NATIVE_NOT_RUN__STAGE7_NOT_FINAL",
+  "user_request": "Fully audit all files, ensure orderly and no extras/missing, explicitly omit app runtime from the one delivery ZIP.",
+  "parent": {
+    "filename": "Menschen-A1-Verben-R10-CONTENT-ONLY-AUDITED-STAGE5-20261105.zip",
+    "sha256": "9b1ccd9609aadf295535a53ae6c01dbd63904477f537512bdd4e5659f4ecfba2",
+    "members": 73
+  },
+  "delivery": {
+    "filename": "Menschen-A1-Verben-R10-CONTENT-ONLY-DEEP-AUDIT-20261106.zip",
+    "sha256": "790e7a39f2c814b59e3aceccb7cc7a9658d18b8c0980187c3d7af1370a53cd47",
+    "bytes": 50580352,
+    "members": 78,
+    "manifest_payloads": 76,
+    "ordered_top_level_directories": [
+      "01-Import",
+      "02-Source",
+      "03-Quality",
+      "04-Tests-and-Tools",
+      "05-Reports-and-Handoff",
+      "06-Verify",
+      "07-Checkpoint-State",
+      "08-Docs"
+    ],
+    "app_files": 0,
+    "launcher_app_files": 0,
+    "source_textbook_pdf_audio": "EXTERNAL_NOT_BUNDLED",
+    "persisted_in_chat": true,
+    "library_upload": "FAILED_CONTAINER_SESSION_EXPIRED_NOT_CLAIMED_PERSISTED"
+  },
+  "diff": {
+    "unmodified_previous_source_data_and_QA_files": 67,
+    "modified_documentation_and_validation_files": [
+      "README-START-HERE.md",
+      "04-Tests-and-Tools/verify_content_release.py",
+      "06-Verify/Verify-Windows.cmd",
+      "06-Verify/verify-linux.sh"
+    ],
+    "added": [
+      "04-Tests-and-Tools/verify_r10_full_import_parity.py",
+      "05-Reports-and-Handoff/DEEP-AUDIT-20261106.json",
+      "07-Checkpoint-State/R10-PORTABLE-CHECKPOINT.json",
+      "08-Docs/ACTIVE-POLICY-PINS.json",
+      "08-Docs/REPRODUCTION-AND-EXTERNAL-DEPENDENCIES.md"
+    ],
+    "r10_tsv_json_source_canonical_sha_unchanged": true
+  },
+  "authority": {
+    "r10_tsv_sha256": "6f75cf9eadfe747dec406502293c2856a59f5176d9cf0d38facb23fe70a0c025",
+    "r10_json_sha256": "49c1eebb9ae6bcc9118b971ec8b1c11163074f6e3953e565b062ce19ba51f6fc",
+    "registered_original_historical_source_inside_sha256": "adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06",
+    "r04_historical_tsv_sha256": "e6c55a7ea5bc1c34517d93486d27d2d21919744dc5d6a5f3388f2d68ce2f79ed",
+    "r09_historical_tsv_sha256": "f425824691960f41e56c47d8f814325586f66b83ecae684a3db50cd00ca63349",
+    "registered_full_nov2_source_zip_sha256": "a78967f52871447693638d0e160b5dc7d5e0e40dd4bc1c7c0ffeefa32e81ec10",
+    "registered_full_nov2_source_zip_external": true
+  },
+  "checks": {
+    "self_verifier_on_fresh_zip": "PASS",
+    "self_verifier_on_fresh_extraction": "PASS",
+    "standalone_full_23_column_parity_zip_and_dir": "PASS_7130_OF_7130",
+    "typed_relation_display_translation_note_parity": "PASS_1228_OF_1228",
+    "official_hf2_tsv_json": "PASS_2_OF_2",
+    "official_neutral_tsv_json": "PASS_2_OF_2",
+    "official_source_occurrences": "PASS_312",
+    "official_identity_closure": "PASS_310",
+    "official_stage4_risk_gate": "PASS_0_BLOCKERS_383_FLAGS_22_STRATA",
+    "canonical_sources_and_records": "PRESERVED_EXACT_SHA",
+    "verb_front_forms": 247,
+    "expressions": 63,
+    "examples": 1240,
+    "lexical_relation_structured": 1228,
+    "semantic_usage_notes": 1186,
+    "stage5_reference_renderer_collocations": 2702,
+    "archive_recursive_depth_checks": "PASS_4_ZIPS_78_PLUS_814_PLUS_11_PLUS_10_MEMBERS",
+    "missing_or_unsafe_paths": 0,
+    "symlinks": 0,
+    "original_legacy_source_crc": "PASS",
+    "distinct_duplicate_payload_groups": 1,
+    "duplicate_only": "HF2 TSV and JSON separate official evidence files identical bytes; retained due separate historical attestations",
+    "adversarial_mutations": "PASS_10_OF_10_REJECTED",
+    "linux_shell_verifier": "PASS",
+    "windows_cmd": "SOURCE_INSPECTED__NOT_WINDOWS_EXECUTED"
+  },
+  "scope_limits": {
+    "stage4": "PASS_EXACT_R10",
+    "stage5": "PASS_CONTENT_AND_DECLARED_V505_R2_FOUR_MODE_RENDERER_CONTRACT",
+    "stage6": "BLOCKED_NO_ACTUAL_CURRENT_APP_NATIVE_IMPORT_INDEXEDDB_RELOAD",
+    "stage7": "NOT_FINAL_APP_RELEASE",
+    "global_german_synonyms_app_fix": "NOT_BUNDLED_AS_USER_EXPLICITLY_EXCLUDED_APP",
+    "user_profile_or_FSRS_or_SRS_touched": false,
+    "independent_word_by_word_new_external_semantic_review": "NOT_CLAIMED"
+  },
+  "note": "This delivery corrects missing portable checkpoint/policy pins and strengthens TSV/JSON and relation-field parity; no change to substantive R10 learner content. Earlier registered immutable 814-file source evidence is intentionally retained to preserve lineage despite large size. Historical parent versions not for import. No claim fully reconstructs copyrighted raw textbook/audio. The full registered 2-Nov production ZIP remains external but hash and locator preserved.",
+  "persist": {
+    "git": "THIS_RECEIPT",
+    "library": "FAILED_CONTAINER_SESSION_EXPIRED",
+    "chat_zip_verified": "YES",
+    "stage4_stage5_changed": false
+  },
+  "next_action": "Use only 01-Import exact TSV or JSON in safe test profile; investigate CURRENT v505 app issues #25/#31 and native IndexedDB import before Stage6/7. Re-upload this exact ZIP to Library when connector permits, never silently overwrite R04 historical Current or user progress."
+}

@@ -40,7 +40,7 @@ jobs:
           for role in ('policy','validator'):
               p=pathlib.Path(pin[role]['path'])
               b=p.read_bytes()
-              digest=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()
+              digest=hashlib.sha1(b'blob '+str(len(b)).encode()+bytes([0])+b).hexdigest()
               assert digest==pin[role]['git_blob_sha'],(role,digest,pin[role]['git_blob_sha'])
           print('PASS_PINNED_READONLY_POLICY_WITH_NO_FALSE_STAGE6')
           PY

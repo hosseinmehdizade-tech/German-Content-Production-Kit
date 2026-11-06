@@ -1,5 +1,7 @@
 # Aspekte B1+ — Status 2026-11-06
 
+**CURRENT STAGE4 CONTENT COVERAGE (2026-11-06): 10/10 lessons, 340/340 unique HOLD source records and 383/383 distinct archived overlays have individual editorial content rulings. All 340 HOLDs remain RELEASE-BLOCKED. Zero cards have independent final QA approval. This is a NONIMPORT state, not Stage5/6/7.**
+
 **Stage 4 / Gate2D Part05 complete (scoping only, nonimport).** The project vocabulary comes only from the user's B1+ CSV.
 
 ## Verified counts
@@ -141,3 +143,17 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Cumulative **295/340** HOLD editorial content rulings and **322/383** prior overlay content reviews. Remaining **45 HOLDs and 61 overlays**, concentrated in Kapitel 10. All **340 HOLDs still release-blocked**, no cards formally approved or importable.
 - Verified private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L09-43-HOLD-36-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`; SHA256 `b7e567349d186104dca68b924b4ad7afc59cc6070632203d96da808bd2f31279`; 45,382 bytes, 10 ZIP members, 9 SHA256 checks and exact byte readback/CRC passed.
 - [L09 metadata receipt](Reports/STAGE4-L09-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next: Kapitel 10, then final morphological front/back Formen and independent full-card bilingual QA, without reopening obsolete textbook extraction.
+
+## Kapitel 10 and L01 gap reconciliation — Stage4 content review coverage
+
+- All **207** L10 Stage3 records were compared exactly with the user-owned sanitized B1+ CSV, no source/parent master rewrite.
+- **45/45** blocked L10 source records received individualized semantic and morphology *content proposals*, with all senses of the same lemma kept together and distinct co-listed words retained as linked learning targets.
+- **57/57** official L10 editorial overlays were individually reviewed; a prior summary had mistakenly called them 61. The other **four** were missed in L01: source ordinals **4, 34, 39, 54**, and are now reviewed in the attached closure register.
+- The audited union of **nine actual previous lesson sidecar ZIPs**, the L10 45-HOLD/57-overlay layer and those four L01 records is exactly **340/340 unique official HOLD ordinals and 383/383 unique official overlay ordinals**, with no overlap or omissions.
+- The L10 layer adds **28** proposed German–Persian example pairs. Its content decisions are not final linguistically certified cards.
+- Source ordinals 1451/1452 share `Baumstamm`: retain both source links under one proposed base card. `Hochwasser`/`Überschwemmung` and `Wasserknappheit`/`Wassermangel` remain distinct lexical targets while sharing their original source-row provenance.
+- All release gates remain closed: **340/340 HOLDs still blocked**, **0** import-ready/approved cards, **383** prior overlays *content-reviewed but not formally released*, full independent DE–FA QA and front morphological rules/back `Formen` suppression pending. Use actual final project TSVs for sense-level comparator checks; do not restart outdated publisher-source extraction.
+- Private L10 Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L10-45-HOLD-57-OVERLAY-L01-4-GAP-CLOSURE-NONIMPORT-20261106.zip`.
+- Private sidecar SHA256 `8ef5e0f6c93cacf8bca5113d9f9529bcff548a35b2a1701bd0681a6870d99cfc`; **51,225 bytes**, **13 ZIP members**, **12 SHA256 manifest entries**; verified exact-byte Library readback, CRC and all manifest hashes.
+- The original Part05 1,548-row master remains at the same verified Library SHA256 `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc`.
+- [Coverage receipt](Reports/STAGE4-L10-ALL-340-HOLD-383-OVERLAY-CONTENT-COVERAGE-RECEIPT-20261106.json). **Next: independent full-card semantic, morphology, Persian translation, sense-level duplicate review and final formal release approval—not more broad source scoping.**

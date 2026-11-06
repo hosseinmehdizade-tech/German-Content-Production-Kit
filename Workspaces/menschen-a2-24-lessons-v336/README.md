@@ -1,5 +1,16 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Current corrected A2 24-lesson working candidate — R21 (2026-11-06)
+
+**R21 is the newest source-bound A2 1778-card whole-course content candidate, NOT native app import-authorized and NOT final Stage7.** Exact ZIP `Menschen-A2-R21-1778-Karten-Vorderseite-Rueckseite-KORRIGIERT-CONTENT-ONLY-20261106.zip`, SHA256 `8edd779b887b48101d0624df6b7f16e83267421b098f6110191e4d1349dc81ee`, Library stable ID `libfile_ce07c38bae98819182837f84b21ccf88` in `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current/`. Independent exact Library byte readback PASS. R20 in `Releases/` remains immutable and is the recovery parent; R19 retained in `History/`. See [R21 Git receipt](./C3-R21-FRONT-BACK-EXACT-BYTE-RECEIPT-2026-11-06.json) and [artifact lifecycle register](./ARTIFACT-REGISTER.json).
+
+- 49 adjective fronts repaired (42 existing canonical pairs, 3 existing reviewed source text pairs, 4 independently checked dictionary pairs). 37 adjective no-force comparison dispositions and 80 noun plural/status closures added; 3 legacy `Formen` items normalized without deleting canonical source wording.
+- 1778 IDs, 7112 DE–FA–EN examples, 24 lesson rosters / 1829 A2 memberships, 140 A1 IDs excluded, TypingCore and source audio references preserved; 10 deliberate adverse mutations rejected by independent static recheck.
+- **Critical app boundary:** Conditional no-duplicate back `Formen` is consumer/display behavior. All 893 physical source `Formen` sections are preserved. Runtime CURRENT v505-R141 lacks verified Lean Formen across Study/Quick/Design Studio; native same-profile import/backup/FSRS Stage6 is NOT RUN and issue #25 is open. No separate L17 Stage6 kits.
+- The older R20 prepackaging HOLD analysis below explains the defects that led to R21; it is **historical**, not a reason to ignore the new corrected candidate. The earlier per-lesson stage notes below are retained as history, not current authority.
+
+---
+
 ## Active current authority and prepackaging presentation HOLD (2026-11-06)
 
 - **Historical lesson-stage authority:** A2-L01..L24 have content-only Stage7 LOCKED receipts with their declared environment boundary. Do not infer that the newly integrated content ZIP has native app Stage6 or Stage7 finality.

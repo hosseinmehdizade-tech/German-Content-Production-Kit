@@ -62,10 +62,17 @@ def audit_tsv_bytes(payload: bytes) -> dict:
         if lexical_id is not None and not isinstance(lexical_id, str):
             return _fail("LEXICAL_TARGET_ID_NOT_STRING", cid)
         new = {"card_id": row.get("id"), "lexical_target_id": lexical_id}
-        if "meanings" in canonical:
-            new["meanings"] = canonical["meanings"]
-        elif "meanings" in custom:
-            new["meanings"] = custom["meanings"]
+        # Legacy source adapters may store meanings as plain strings, language
+        # maps or gloss objects without sense IDs. Such data is UNSTRUCTURED,
+        # not malformed; do not introduce a new Stage5 schema requirement.
+        # If any sense is explicitly typed, audit that whole typed list,
+        # including missing IDs on sibling entries.
+        raw_meanings = (canonical["meanings"] if "meanings" in canonical
+                        else custom.get("meanings"))
+        if (isinstance(raw_meanings, list) and
+                any(isinstance(item, dict) and "sense_id" in item
+                    for item in raw_meanings)):
+            new["meanings"] = raw_meanings
 
         # Canonical example objects are the source of truth, not the rendered
         # Universal v2 language-fragment list. Examples with explicit bilingual

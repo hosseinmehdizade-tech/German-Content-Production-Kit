@@ -157,3 +157,23 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Private sidecar SHA256 `8ef5e0f6c93cacf8bca5113d9f9529bcff548a35b2a1701bd0681a6870d99cfc`; **51,225 bytes**, **13 ZIP members**, **12 SHA256 manifest entries**; verified exact-byte Library readback, CRC and all manifest hashes.
 - The original Part05 1,548-row master remains at the same verified Library SHA256 `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc`.
 - [Coverage receipt](Reports/STAGE4-L10-ALL-340-HOLD-383-OVERLAY-CONTENT-COVERAGE-RECEIPT-20261106.json). **Next: independent full-card semantic, morphology, Persian translation, sense-level duplicate review and final formal release approval—not more broad source scoping.**
+
+## Independent Stage4 QA Pass01 — 2026-11-06
+
+**This is an initial independent QA preflight and targeted issue review, NOT independent completion/signoff of every card.** Stage3 source drafts remain unchanged; all 340 HOLDs remain release blocked.
+
+- Verified structural coverage of **1,548/1,548** Stage3 candidate entries; all five source-identifying fields exactly match the dedicated current sanitized B1+ CSV. This is bounded provenance checking, not obsolete textbook reconstruction.
+- All **3,098** draft bilingual example pairs are nonempty; all **1,548** candidate entries contain at least two complete DE–FA pairs. This does **not** validate the correctness of their German or Persian semantics.
+- **357** stored candidate morphology fields explicitly contain outdated/unverified source-form placeholders. These cannot appear verbatim on the learner-facing card front.
+- All 1,548 Stage3 objects lack a finalized back-of-card render field, so the project-wide suppression of a redundant `Formen` section cannot yet be independently confirmed.
+- Existing all-lesson content decisions reconciled by source ordinal: **340/340 HOLDs and 383/383 overlays**, with **no missing original decisions**. Review coverage does not mean release approval.
+- **41** targeted issue-dimensional card reviews on existing source rows: **33 corrective content requirements** plus **8 duplicate-occurrence linkage actions**. Produced **37 actually patched but NONIMPORT front/back previews** by collapsing four source-duplicate pairs, without dropping any original source record. All 37 previews place contextual forms on front and deliberately omit back-side `Formen`; these mockups do not prove complete final app rendering.
+- Drafted **26** additional German–Persian example pairs on the same attested B1+ headwords; all proposals still need final semantic QA.
+- Exactly **7** identical normalized candidate headword pairs across the 1,548 entries were flagged for sense/provenance review; do not auto-remove them.
+- **0** formally approved cards, all **340 HOLDs blocked**, **no import TSV**. Whole-project semantic verification of 1,548 effective learner cards, final cross-level TSV sense comparison, and front/back app layout QA remain open.
+
+**Verified private QA ZIP:** `Content/Aspekte-B1plus/Reports/Aspekte-B1plus-STAGE4-INDEPENDENT-CARD-QA-PASS01-1548-STRUCTURAL-41-TARGETED-NONIMPORT-20261106.zip`.
+
+SHA256: `6d0900f5935961d5c7667d864a6959dc57b0a72d8c257cc75a0a526233d8620c`; 198,860 bytes, 14 ZIP members, 13 verified SHA256 manifest entries; exact-byte Library readback and CRC pass.
+
+[QA Pass01 metadata receipt](Reports/STAGE4-INDEPENDENT-CARD-QA-PASS01-METADATA-RECEIPT-20261106.json). **Next:** merge accepted curated lesson decisions and issue-specific patches into one single effective-card view, fix 357 morphology placeholders, provide actual front/back render fields, independently review all bilingual meanings and duplicates, then sign off HOLDs before any import.

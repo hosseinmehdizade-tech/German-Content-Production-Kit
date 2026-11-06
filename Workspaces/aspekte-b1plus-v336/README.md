@@ -177,3 +177,18 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 SHA256: `6d0900f5935961d5c7667d864a6959dc57b0a72d8c257cc75a0a526233d8620c`; 198,860 bytes, 14 ZIP members, 13 verified SHA256 manifest entries; exact-byte Library readback and CRC pass.
 
 [QA Pass01 metadata receipt](Reports/STAGE4-INDEPENDENT-CARD-QA-PASS01-METADATA-RECEIPT-20261106.json). **Next:** merge accepted curated lesson decisions and issue-specific patches into one single effective-card view, fix 357 morphology placeholders, provide actual front/back render fields, independently review all bilingual meanings and duplicates, then sign off HOLDs before any import.
+
+## Independent Stage4 QA Pass02 — canonical provisional views
+
+**Nonimport only.** Stage4 QA Pass02 combines all **10 verified lesson editorial sidecars** with current Pass01 targeted patches, creating one canonical *provisional* view, without mutating master/source or treating any card as approved.
+
+- **1,548 / 1,548** source rows matched current sanitized B1+ CSV fields verbatim. **340** HOLD content rulings and **383** historic overlay content reviews linked by actual source ordinal. No source word was deleted.
+- A provisional **1,544-card-view set** (not final learner-card count) was assembled by linking exactly **4** existing source-duplicate pairs with their original source ordinals retained. Three additional same-headword pairs remain for final sense/provenance review. Distinct lemmas within a source record still require separate learner-target routing; multiple senses of one lemma remain grouped.
+- All **357** Stage3 morphology source-verification placeholders were detected and hidden from learner-facing preview fronts. **68** received a specific provisional replacement from lesson rulings or targeted patches, but **289** still lack an adequate proposed morphological front; these are flagged, not guessed or invented. Proposals are not independently certified.
+- The preview backs include Persian sense proposals and bilingual example candidates **without duplicated `Formen` blocks**. This verifies these preview fields, not the final app renderer.
+- **248** older overlay content reviews had no machine-applicable delta; their reviewed status is linked, but no change was invented. **63** old overlays are rejected or need rewrite. These risk flags can overlap each other and the morphology cases: the distinct blocker register has **498 source rows**.
+- Current effective source-row views contain **3,140** existing bilingual example pairs (L01 curated drafts included) plus **273** deduplicated extra proposals, all awaiting actual German/Persian semantic QA. Non-empty examples are not proof of correctness.
+- Source and ten lesson sidecars remain unmodified; the master Part05 SHA256 is `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc`. All **340 HOLDs are still release-blocked**, zero cards formally approved, and no Stage5 import TSV created.
+- Verified private Library ZIP: `Reports/Aspekte-B1plus-STAGE4-QA-PASS02-1544-CANONICAL-PREVIEWS-1548-ROW-PARITY-NONIMPORT-20261106.zip`.
+- ZIP SHA256 `16d15fa6be183937b4d0d8a219c9cd2e820b46f1bc1f0a55dd2f22137267863d`; 432,600 bytes, 7 members, 6 manifest SHA256 entries; byte-exact Library readback and CRC verified.
+- [QA Pass02 metadata receipt](Reports/STAGE4-INDEPENDENT-CARD-QA-PASS02-CANONICAL-PREVIEWS-METADATA-RECEIPT-20261106.json). **Next:** repair blocker source rows, independently verify all DE–FA examples and front morphology; use final actual TSVs for cross-level sense matching and test real app front/back rendering before any HOLD release.

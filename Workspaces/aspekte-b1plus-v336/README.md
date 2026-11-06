@@ -128,3 +128,16 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L08-38-HOLD-34-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
 - SHA256 `cbe583eaecd016a961dafc8a65e47ca7bf5b713deb860fdd376cb323bd2aab2d`; 42,546 bytes; 10 ZIP members; CRC, 9 SHA256 manifest entries and byte-exact Library readback verified.
 - [L08 GitHub metadata receipt](Reports/STAGE4-L08-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next Kapitel 9, Kapitel 10, then crosslevel final-card QA, front morphology and conditional back Formen suppression.
+
+## Stage4 editorial content rulings — Kapitel 9 Endlich Urlaub (2026-11-06)
+
+- **185/185** original L09 source records exactly matched the user's dedicated sanitized B1+ CSV and saved Stage3 full source records. Source SHA256 `cca32df935397a81367b38f9b51ee33aac357ea135947a131b712969f0339033`. Master Part05 SHA256 `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc` remains unchanged.
+- **43/43** L09 HOLD records received individualized content decisions, including one-card-per-lemma polysemy, morphology and German–Persian nuance. **36/36** prior L09 official overlays independently examined as source-preserving editorial proposals.
+- **41** new contextual DE–FA example pairs proposed; **none** has final independent full-card QA/signoff.
+- Source ordinals **1240 and 1241** both `zurückhaben`: one proposed base lexical card linked to both original source occurrences, with both source records and examples retained.
+- Key decisions: `Andenken` mass remembrance vs countable souvenir, `Handlung` act vs plot vs outdated shop, `Pension` lodging vs retirement payment, `Seemann` vs plural `Seeleute`, `Flieger` aircraft vs aviator, and professional `Assessor` distinct from ordinary evaluator.
+- Correct front-side verb forms: `zurücklegen – legte zurück – hat zurückgelegt`; `anführen – führte an – hat angeführt`; `entladen – entlud – hat entladen`. Recheck final lexicographic/morphological candidates independently before approval.
+- The actual **1778-card final Menschen A2 TSV** was compared for a strict normalized primary lemma against these 43 rows; **0 exact matches** found. This is only a string test, NOT semantic duplicate clearance. Final B1/A1/C1 primary project TSV sense checks still pending.
+- Cumulative **295/340** HOLD editorial content rulings and **322/383** prior overlay content reviews. Remaining **45 HOLDs and 61 overlays**, concentrated in Kapitel 10. All **340 HOLDs still release-blocked**, no cards formally approved or importable.
+- Verified private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L09-43-HOLD-36-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`; SHA256 `b7e567349d186104dca68b924b4ad7afc59cc6070632203d96da808bd2f31279`; 45,382 bytes, 10 ZIP members, 9 SHA256 checks and exact byte readback/CRC passed.
+- [L09 metadata receipt](Reports/STAGE4-L09-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next: Kapitel 10, then final morphological front/back Formen and independent full-card bilingual QA, without reopening obsolete textbook extraction.

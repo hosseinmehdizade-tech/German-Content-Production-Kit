@@ -75,14 +75,34 @@
     "path": "/Flasch kart/German-Content-Production-Kit/Content/Nomen-Verb-Verbindungen",
     "recursive": true
   },
-  "cleanup_status": "BACKUP_VERIFIED__DELETE_PENDING",
-  "delete_result": null,
-  "postdelete_verification": null,
+  "cleanup_status": "COMPLETED_SCOPED_NVVL_LIBRARY_DELETE__FULL_GOOGLE_HISTORY_BACKUP_VERIFIED",
+  "delete_result": {
+    "operation": "recursive_delete",
+    "target_folder_id": "6ae6874585b88191aca9e0486b245958",
+    "initial_timed_out_partial_delete_files": 30,
+    "remaining_deleted_in_explicit_file_batches": 231,
+    "folder_deletion_result": "succeeded",
+    "total_removed_files_from_initial_snapshot": 261,
+    "root_folder_deleted": true,
+    "deleted_utc_date": "2026-11-06",
+    "no_other_project_folder_deleted": true
+  },
+  "postdelete_verification": {
+    "parent_folder_listing_checked": true,
+    "exact_nvvl_folder_absent": true,
+    "full_library_scope_current_files": 0,
+    "google_drive_full_archive_folder_still_exists": true,
+    "google_drive_history_archive_contents": 11,
+    "other_content_project_siblings_present": true,
+    "google_archive_sha_verification_pre_delete": "PASS_7_ZIPS_261_FILES_28_DIRECTORIES__0_ERRORS",
+    "accepted_final_release_drive_retained": true
+  },
   "preserve": [
     "GitHub source repos / checkpoint history",
     "Google Drive final release and history archive",
     "Other ChatGPT Library project folders",
     "User-installed Flashcards and SRS/FSRS data"
   ],
-  "followup": "After exact-scoped recursive deletion, verify parent folder and recursive library file count, then update this receipt status. Do not misrepresent downloaded archive as deleted user data."
+  "followup": "After exact-scoped recursive deletion, verify parent folder and recursive library file count, then update this receipt status. Do not misrepresent downloaded archive as deleted user data.",
+  "resume_policy": "Library NVV folder was removed by explicit user request. The latest accepted R15 content TSV and complete historical Library backup are in the dedicated Google Drive NVV folder. GitHub remains the checkpoint store. DO NOT treat legacy Library stable IDs in historical checkpoint files as current active locators; restore from Drive only if required and user requests. Do not silently regenerate discarded historical files in ChatGPT Library."
 }

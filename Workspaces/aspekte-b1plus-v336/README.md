@@ -1,36 +1,25 @@
-# Aspekte B1+ — independent source-only production
+# Aspekte B1+ — Independent Vocabulary Production
 
-**Current: 2026-11-06, Stage4 QA Gate2D Part03 — NONIMPORT / NOT RELEASE READY.**
+**Status 2026-11-06: Stage 4 Gate2D Part04 | NONIMPORT, NOT RELEASE READY.**
 
-Definition **LOCKED v1.0**. Only the user’s exact B1+ CSV supplies vocabulary rows. Other German projects are read-only duplicate/comparator witnesses, never sources of new B1+ headwords. Do not use the old coursebook vocabulary as authority for this project.
+**Authority:** User B1+ CSV only. Final project TSVs of Menschen A1/A2/B1 and relevant Aspekte levels are read-only duplicate/sense evidence, NOT new headword sources. Original textbook comparison is not required. No auto-DROP from a string match.
 
-## Current verified content state
+## Actual state
+- Source: **1,548 user-specific B1+ CSV rows** over **10 lessons**. Sanitized source SHA-256: `cca32df935397a81367b38f9b51ee33aac357ea135947a131b712969f0339033`; original combined raw 3,275-row CSV SHA independent recheck remains open.
+- Stage3: **1,548/1,548 draft rows**. Stage4: **1,548/1,548 first-pass** linguistic/source QA. These are **not approved final flashcards**.
+- **340 distinct HOLDs**, all still blocked. **383 older editorial overlay proposals**, unapproved.
+- Gate2B/2C **90** scoped, Gate2D Part01–04 **200/250 P2** individually scoped. Overall **290/340** scoped HOLDs; 50 P2 not yet reviewed.
+- Gate2D Part04: new **50 DE–FA individual semantic risk assessments** (source ordinals 1037–1302), **31 new DE–FA example proposals**, no source or prior payload mutation. Critical flags: Drogeriemarkt ≠ Apotheke, Milliarde ≠ Billion, separable abkaufen / zurücklegen / anführen, dual-gender lemmas and different Pension/Tageskarte/Botschaft/Passage senses.
+- Menschen A2 and Menschen B1 direct released TSVs checked for **exact front-lemma** matches in these 50: 0; absence of exact match does not clear semantic duplicates. Menschen A1 / Aspekte C1 final project comparators still pending.
+- Original source ledger and Stage3 store different evidence-hash schemes; exact headword, Persian gloss, source example and source-ordinal parity was checked. Hashes must not be falsely equated.
+- No independent full-card QA; **0 final approved cards**; Stage5–7 not started; no import TSV / publication.
 
-- **1,548 source rows across 10 lessons**; sanitized source SHA-256 `cca32df935397a81367b38f9b51ee33aac357ea135947a131b712969f0339033`.
-- All 1,548 rows have nonimport Stage3 DE–FA drafts and first-pass Stage4 source-focused editorial review. This is **not** final independent QA.
-- **340 HOLD rows**, all remain release-blocked. **383** prior source-preserving editorial overlays proposed, none formally approved.
-- Earlier Gate2B/C **90** scoped HOLDs; Gate2D P2 **150/250** meaning/comparator rows individually scoped and reviewed, 100 remaining. Combined **240/340** distinct HOLDs scoped, none released.
-- Gate2D Part03 (new 50 source-ordinal-sorted cases, ordinals 701–1035) includes 50 individualized bilingual semantic assessments, 15 proposed DE–FA example pairs and a 340-row HOLD crosswalk.
-- Targeted crosslevel comparison from **actual final project files**: Menschen A2 release TSV with 1,778 rows and Menschen B1 released TSV with 3,089 rows. The latest B1 current-merged TSV (3,088 rows) was additionally inspected, yielding the same narrow exact-lemma match in this set. These string matches **do not establish semantic duplicates**. A1 and C1 primary final-file comparisons remain open.
-- No changes to the sanitized original, parent source rows or previous Stage3 draft members. No source rows committed to GitHub.
-- **0 final approved cards; no import-ready TSV; no release.**
+## Verified private Library baseline
+`/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Current/Aspekte-B1plus-STAGE4-FINAL-QA-GATE2D-PART04-200-P2-INDIVIDUAL-REVIEWS-NONIMPORT-20261106.zip`
+- SHA-256 `9194744f24e34aec5ae93f6d1664db43b234aea116f9f5495dc93dd45e37fe05`, **3,247,338 bytes**, **403 ZIP members**, **402 SHA manifest entries**, CRC passed, Library readback exact-byte SHA confirmed.
+- Previous **393** nonmanifest ZIP members retained exact-byte; old manifest preserved as a renamed archived parent manifest.
+- Only metadata and pointers committed in GitHub. No private source rows uploaded to the Git repository.
 
-## Library baseline (verified with byte-exact readback)
+See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), [Part04 metadata receipt](Reports/STAGE4-QA-GATE2D-PART04-GITHUB-SYNC-RECEIPT-20261106.json), [file lifecycle rule](FILE-LIFECYCLE-RULE.md).
 
-`/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Current/Aspekte-B1plus-STAGE4-FINAL-QA-GATE2D-PART03-150-P2-INDIVIDUAL-REVIEWS-NONIMPORT-20261106.zip`
-
-- SHA-256: `c26c093d3d58bdc0c370cc8a2b538bce6cc8b450b72c0f533c34181885c55202`.
-- 3,167,467 bytes, 394 ZIP members, 393 verified SHA-256 manifest entries, successful CRC check, 384 previous parent content members preserved.
-- Detailed editorial notes, proposed examples, final TSV narrow comparator checks and checkpoints are **inside the verified private ZIP**. GitHub is a metadata/receipt layer, not storage for private original vocabulary content.
-
-## Release blockers
-
-1. Validate the original combined private CSV binary SHA (recorded `09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1`). The sanitized file was validated; original raw 3,275-row input check remains open.
-2. Compare against actual approved final TSVs in the right project folder for Menschen A1/A2/B1, Aspekte where relevant; finish independent evidence/sense/rection comparisons. Never auto-DROP solely on identical lemma.
-3. Complete next 100 ordered Gate2D P2 reviews, adjudicate all HOLDs, review all 383 overlays.
-4. Verify front-side morphology (verb inflections, noun article and plural, adjective forms) and conditional suppression of duplicate back-side `Formen` under the centralized presentation standard; run independent full-card QA.
-5. Only then generate/validate an app-compatible final TSV, Stage5–Stage7 and release.
-
-See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), [Gate2D Part03 receipt](Reports/STAGE4-QA-GATE2D-PART03-METADATA-RECEIPT-20261106.json), [safe cleanup contract](FILE-LIFECYCLE-RULE.md).
-
-**Next:** Gate2D Part04 (next 50 P2 records), then final 50; no publication.
+**Next:** Complete Part05 final 50 P2, then resolve HOLD decisions, 383 overlays, front morphology vs back `Formen` display rule, and independent full-card QA before Stage5–7 or release.

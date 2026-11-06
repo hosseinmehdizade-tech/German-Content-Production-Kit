@@ -78,7 +78,8 @@ def pinned_builder(root=ROOT):
             "GOVERNED_BUILDER_GIT_BLOB_DRIFT")
     return path,b["blob_sha"]
 
-def verify_stage_zip(path:Path,source_pins:dict[str,str],roles:dict[str,Path]):
+def verify_stage_zip(path:Path,source_pins:dict[str,str],roles:dict[str,Path],
+                     include_mem009:bool=False):
     require(path.is_file() and not path.is_symlink(),"NO_STAGE5_ZIP_AFTER_BUILD")
     bytes_before=path.read_bytes()
     with zipfile.ZipFile(path,"r") as z:
@@ -131,7 +132,10 @@ def verify_stage_zip(path:Path,source_pins:dict[str,str],roles:dict[str,Path]):
                 "MEM009_STAGED_IMPORT_SHA_MISMATCH")
     require(path.is_file() and not path.is_symlink() and
             path.read_bytes()==bytes_before,"OUTPUT_ZIP_CHANGED_ON_READBACK")
-    return governed_output,mem009_output,sha256(bytes_before)
+    # Keep the historical two-value API for existing source-owner and remote
+    # verifier callers; only the updated governed run opts into three values.
+    return ((governed_output,mem009_output,sha256(bytes_before)) if include_mem009
+            else (governed_output,sha256(bytes_before)))
 
 def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
         milestone_evidence:Path|None=None,user_request:str|None=None,
@@ -174,7 +178,7 @@ def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
         require(path.is_file() and not path.is_symlink() and
                 sha256(path.read_bytes())==pins[role],
                 "SOURCE_CHANGED_AFTER_BUILDER:"+role)
-    after,mem009_after,output_sha=verify_stage_zip(out,pins,roles)
+    after,mem009_after,output_sha=verify_stage_zip(out,pins,roles,include_mem009=True)
     require(mem009_before["input_tsv_sha256"]==mem009_after["input_tsv_sha256"] and
             mem009_before["cards_seen"]==mem009_after["cards_seen"] and
             mem009_before["structured_sense_cards"]==mem009_after["structured_sense_cards"] and

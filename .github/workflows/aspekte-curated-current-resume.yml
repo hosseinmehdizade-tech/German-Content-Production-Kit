@@ -10,6 +10,8 @@ on:
       - 'Workspaces/aspekte-c1-v336/LATEST.json'
       - 'Workspaces/aspekte-c1-v336/README.md'
       - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
+      - 'Verification/verify_aspekte_b2_curated_unit_delta_v1.py'
+      - 'Verification/tests/test_aspekte_b2_curated_unit_delta_v1.py'
       - '.github/workflows/aspekte-curated-current-resume.yml'
   push:
     branches: [main]
@@ -21,6 +23,8 @@ on:
       - 'Workspaces/aspekte-c1-v336/LATEST.json'
       - 'Workspaces/aspekte-c1-v336/README.md'
       - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
+      - 'Verification/verify_aspekte_b2_curated_unit_delta_v1.py'
+      - 'Verification/tests/test_aspekte_b2_curated_unit_delta_v1.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -44,3 +48,5 @@ jobs:
         run: python -B Verification/audit_global_policy_sync_v1.py --check
       - name: Check actual Aspekte B1+ B2 C1 current authority and release safety
         run: python -B -m unittest discover -s Verification/tests -p test_aspekte_curated_current_resume_v1.py -v
+      - name: Verify native B2 current-to-curated-parent delta and no-import negatives
+        run: python -B -m unittest discover -s Verification/tests -p test_aspekte_b2_curated_unit_delta_v1.py -v

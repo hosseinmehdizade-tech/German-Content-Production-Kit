@@ -1,5 +1,16 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Current corrected untyped-link candidate — R21-R2-R1 (2026-11-06)
+
+**Authoritative one-ZIP content-only working candidate:** `Menschen-A2-R21-R2-R1-1778-Karten-CONTENT-ONLY-KORRIGIERTE-LINKS-UND-ANLEITUNG-20261106.zip`, SHA256 `774b8b620d57a0ad64b20490f8b3fa6aa4f015f1edf3e08e31a78c040222d2f5`, **3,563,283 bytes, 48 ZIP files**. Exact independent Library raw-byte readback **PASS**, stable ID `libfile_9d3a6437b4a881919cee6ca672067745` in `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current/`. [Source-bound correction receipt](./C3-R21-R2-R1-SINGLE-FLAT-LINK-REPAIR-STATIC-QA-2026-11-06.json) and [owner artifact register](./ARTIFACT-REGISTER.json).
+
+- This **supersedes R21-R2**, which was moved non-destructively to dedicated `History/`; earlier R21-R1 and R21 remain there; R20 remains protected in `Releases/`. Do NOT use the now-historical old R21-R1 instruction inside the parent package.
+- Found exactly one duplicate **untyped** ID in `ma2m-lu-1281` (`die Lesung`), pointing twice to `ma2m-lu-1282` (`die Dichterlesung`); the generic `related` target is now unique. **Both** separate legitimate typed edges (`RELATED` and `WORD_FAMILY`) remain byte-identical. The only changed TSV card is `ma2m-lu-1281`; the only changed TSV field is `related`. All other IDs, 22 TSV fields, fronts/backs, typing, translations, **7,112 DE/FA/EN** examples, **1,829 membership edges**, 24 rosters, and 140 externally excluded A1 refs remain unchanged.
+- Repaired the current-version instruction inside `00-READ-ME-FIRST.md`, current manifest/QA hash pointers and embedded source verifier. Full 48/48 CRC and SHA check PASS, and **3/3** newly mutated, internally rehashed ZIPs rejected (duplicate generic target; dangling A2 target; deleted typed word-family edge). Previous front and content QA remains applicable to unchanged fields.
+- **App not included by explicit user request**; audio MP3 remain external and labeled. Official current-app browser/IndexedDB/FSRS **Stage6 remains NOT RUN** and #25 import regression remains **OPEN**. Conditional `Formen` consumer display is not certified; no personal-profile import or Stage7 release promotion. No per-lesson Stage6 test kits, source/LOCKED/SRS or UI edits.
+
+---
+
 ## Current complete content-only static QA package — R21-R2 (2026-11-06)
 
 **This supersedes R21-R1 as the single current whole-course portable A2 content bundle; no app included as explicitly requested.** File `Menschen-A2-R21-R2-1778-Karten-CONTENT-ONLY-VOLLSTAENDIG-GEPRUEFT-20261106.zip`, exact SHA256 `ff30bc894892d9c975a445bc6bf2f177f9b278a24db4437f5d4bdd542d243a5c`, 3,755,640 bytes, **48 members**. In personal Library `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current/`, ID `libfile_fbdc89f0d6b881919bed8d20fd3a2188`; independent exact-byte Library readback PASS. [Independent scoped Git receipt](./C3-R21-R2-FULL-PACKAGE-INDEPENDENT-AUDIT-2026-11-06.json); [lifecycle register](./ARTIFACT-REGISTER.json).

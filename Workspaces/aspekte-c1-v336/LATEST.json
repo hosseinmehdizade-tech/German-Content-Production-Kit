@@ -4,15 +4,15 @@
   "latest_definition_status": "FINAL_SCOPE_AND_DUPLICATE_POLICY",
   "latest_completed_stage": null,
   "production_authorized": true,
-  "portable_file": "Aspekte-C1-STAGE1-GLOBAL-MENSCHEN9109-WITNESS1490-COLLISION68-20261106.zip",
-  "portable_sha256": "5ed765860dfd53ddd4c1fc31e91226517d182c75dcc4de21b40a8929d7510539",
-  "library_file_id": "libfile_54f7f1b3f5708191a015968775db25c7",
+  "portable_file": "Aspekte-C1-STAGE1-CURATED-TSV-COMPARATOR-CORRECTION-20261106.zip",
+  "portable_sha256": "f853697636340d76f4a789804b68e85a2e784428ec5abbf4e79b02d153bfd4b1",
+  "library_file_id": "libfile_2d85ea8f62108191828caac8786c9e91",
   "source_sha256": "b05c90320ad75dc19be12a374087830bd2c379206a5711e604a6aea699e189cf",
   "dependency_source_sha256": [
     "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
     "09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1"
   ],
-  "next_action": "Resolve restricted original Aspekte B1+/B2 3275 CSV binary access, verify expected SHA256 09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1, then review sense/phrase contrasts and 1051 non-NEW preflight flags across all 3270 C1 source occurrences, including 9 context HOLDs. Stage1 PASS/Stage2/cards remain blocked.",
+  "next_action": "Use corrected project TSVs for dedup: A1 V48-R1 2997; A2 corrected 1778; B1 integrated 3088, original raw Menschen 9109 for history only. Review 79 current literal front-headword hits plus collocations/senses, then remaining 3270 C1 and unresolved B1+/B2 project final TSV authority. No cards.",
   "stage1": "IN_PROGRESS",
   "semantic_holds_reviewed": 465,
   "semantic_holds_remaining": 1,
@@ -189,9 +189,11 @@
     "Workspaces/aspekte-c1-v336/04-qa/STAGE1-68-NEW-EXACT-HEADWORD-COLLISION-QUEUE-20261106.jsonl",
     "Workspaces/aspekte-c1-v336/04-qa/STAGE1-41-UNIQUE-SCOPED-SEMANTIC-REVIEW-PROPOSALS-20261106.jsonl",
     "Workspaces/aspekte-c1-v336/04-qa/STAGE1-INDEPENDENT-LIVE-RECHECK-20261106.json",
-    "Workspaces/aspekte-c1-v336/04-qa/STAGE1-GLOBAL-1490-WITNESS-PACKAGE-RECEIPT-20261106.json"
+    "Workspaces/aspekte-c1-v336/04-qa/STAGE1-GLOBAL-1490-WITNESS-PACKAGE-RECEIPT-20261106.json",
+    "Workspaces/aspekte-c1-v336/04-qa/SOURCE-AUTHORITY-CORRECTION-CURATED-TSV-20261106.md",
+    "Workspaces/aspekte-c1-v336/04-qa/C1-CURATED-TSV-OVERRIDE-QA-20261106.json"
   ],
-  "latest_stage1_subtask": "Global source authentication subgate: original user Menschen 9109 records and RAR+CSV SHA independently PASS. C1 PDF 3270/3270 coordinates PASS; 1490/1490 historical lower headword/FA/example witness matches exact (979 Menschen + 511 sanitized Aspekte). Strict headword comparison of 2219 preflight NEW found 68 lower collisions (43 in old two targeted queues, 25 outside those queues); 41 independent distinct scoped DE/FA proposals. Original B1+/B2 3275 CSV bytes inaccessible, only sanitized 3274 rows authenticated. No global meaning/idiom deduplication approval.",
+  "latest_stage1_subtask": "Curated TSV correction: source invalidation and 2997 A1 V48-R1 + 1778 A2 corrected + 3088 B1 integrated. No semantic final approval.",
   "compound_component_witnesses_scanned": 183,
   "compound_component_targeted_relative_semantic_reviews": 183,
   "compound_component_relative_semantic_reviews_remaining": 0,
@@ -708,7 +710,7 @@
     "verified": 239,
     "total": 239
   },
-  "latest_library_readback": "BYTE_EXACT_SHA256_MATCH",
+  "latest_library_readback": "SHA256_AND_CRC_PASS",
   "chapter4_explicit_bilingual": {
     "review_records": 279,
     "total": 279,
@@ -737,5 +739,29 @@
   "historical_lower_source_witnesses_aspekte_sanitized_exact": 511,
   "new_candidate_strict_same_headword_candidates": 68,
   "scoped_semantic_reviews_unique_current_batch": 41,
-  "not_in_two_old_targeted_queues": 25
+  "not_in_two_old_targeted_queues": 25,
+  "original_menschen_9109_allowed_for_current_semantic_dedupe": false,
+  "original_menschen_9109_evidence_role": "HISTORICAL_ORIGINAL_PROVENANCE_ONLY__SUPERSEDED_BY_CURATED_CURRENT_PROJECT_TSV",
+  "original_raw_1490_witnesses_currentness": "HISTORICAL_SOURCE_MATCH_ONLY_NOT_EDITED_PROJECT_CONTENT_AUTHORITY",
+  "previous_strict_68_headword_queue_is_active": false,
+  "previous_strict_68_queue_status": "SUPERSEDED_RAW_AND_SANITIZED_COMPARATOR",
+  "curated_project_tsv_baseline_verified": {
+    "Menschen_A1": {
+      "cards": 2997,
+      "tsv_sha256": "dc2f7e17aff41481f9c0c28e3afacff750182fc5b6df72093810c25c6857f91e"
+    },
+    "Menschen_A2": {
+      "cards": 1778,
+      "tsv_sha256": "b9f4ce62e5c91cb3d5f225b203e180c4007880a076b67c9f51d0800881055d76"
+    },
+    "Menschen_B1": {
+      "cards": 3088,
+      "tsv_sha256": "bcf0410a88037848bca273672dda2435aa4713efa02c1ffbe367eada5c1848d6"
+    },
+    "total_cards": 7863
+  },
+  "curated_strict_headword_queue_count": 79,
+  "curated_79_queue_status": "PROVISIONAL_LITERAL_FRONT_MATCH_ONLY__NO_SEMANTIC_DECISION",
+  "aspekte_b1plus_b2_final_project_tsv_verified": false,
+  "crosslevel_semantic_final": false
 }

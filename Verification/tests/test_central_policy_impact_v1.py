@@ -42,12 +42,14 @@ class CentralPolicyImpactTests(unittest.TestCase):
         self.validate()
         self.assertEqual(self.registry["schema"],"gcpk-global-policy-registry@1.0.0")
 
-    def test_all_15_bindings_have_complete_21_35_17_coverage(self):
+    def test_all_live_bindings_have_complete_21_35_17_coverage(self):
         out=self.impact()
-        self.assertEqual(len(out["selected_policy_bindings"]),15)
-        self.assertEqual(len(out["family_impacts"]),315)
-        self.assertEqual(len(out["workspace_impacts"]),525)
-        self.assertEqual(len(out["root_workstream_impacts"]),255)
+        n=len(self.registry["policy_bindings"])
+        self.assertGreaterEqual(n,22)
+        self.assertEqual(len(out["selected_policy_bindings"]),n)
+        self.assertEqual(len(out["family_impacts"]),21*n)
+        self.assertEqual(len(out["workspace_impacts"]),35*n)
+        self.assertEqual(len(out["root_workstream_impacts"]),17*n)
         self.assertEqual(out["catalog_baseline"]["qa_workspaces_not_direct_producers"],3)
 
     def test_no_undocumented_stage_or_adoption_pass_in_any_cell(self):
@@ -177,9 +179,19 @@ class CentralPolicyImpactTests(unittest.TestCase):
                 target.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copyfile(ROOT/location,target)
             (tmp/p.REGISTRY).write_text(json.dumps(bad),encoding="utf-8")
-            with self.assertRaisesRegex(ValueError,"GIT_BLOB_MISMATCH"):
+            with self.assertRaisesRegex(ValueError,"LIVE_GIT_SNAPSHOT_UNAVAILABLE"):
                 p.authority(tmp)
         self.assertEqual(bad_profile["program_id"],"GFP-OPT-2026")
+
+    def test_curated_current_router_reaches_35_workspace_candidates_only(self):
+        out=self.impact("curated_current_delta_qa")
+        self.assertEqual(len(out["workspace_impacts"]),35)
+        self.assertEqual(len(out["family_impacts"]),21)
+        self.assertTrue(all(x["workspace_specific_execution_verified"] is False
+                            and x["workspace_specific_real_output_verified"] is False
+                            for x in out["workspace_impacts"]))
+        self.assertTrue(all(x["actual_currentness"] == "NOT_RESOLVED"
+                            for x in out["family_impacts"]))
 
     def test_unknown_binding_rejected(self):
         with self.assertRaisesRegex(ValueError,"UNKNOWN_POLICY_BINDING"):
@@ -215,10 +227,10 @@ class CentralPolicyImpactTests(unittest.TestCase):
                               cwd=ROOT,capture_output=True,text=True,encoding="utf-8")
         self.assertEqual(result.returncode,0,result.stderr)
         d=json.loads(result.stdout)
-        self.assertEqual(len(d["per_policy"]),15)
+        self.assertEqual(len(d["per_policy"]),len(self.registry["policy_bindings"]))
         self.assertNotIn("workspace_impacts",d)
-        self.assertEqual(d["selected_impact_rows"]["family"],315)
-        self.assertEqual(d["selected_impact_rows"]["workspace"],525)
+        self.assertEqual(d["selected_impact_rows"]["family"],21*len(self.registry["policy_bindings"]))
+        self.assertEqual(d["selected_impact_rows"]["workspace"],35*len(self.registry["policy_bindings"]))
 
     def test_cli_select_policy_and_named_family(self):
         result=subprocess.run([

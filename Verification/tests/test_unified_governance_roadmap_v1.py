@@ -51,7 +51,7 @@ class RoadmapContracts(unittest.TestCase):
         self.assertEqual(out["program"], "GFP-OPT-2026")
         self.assertEqual(out["roadmap_priorities"], 7)
         self.assertEqual(out["inventory"]["git_workspaces"], 35)
-        self.assertEqual(out["policy_bundles_routed"], 15)
+        self.assertEqual(out["policy_bundles_routed"], len(self.registry["policy_bindings"]))
 
     def test_fake_all_workspaces_adopted_is_rejected(self):
         obj = copy.deepcopy(self.roadmap)
@@ -130,6 +130,19 @@ class RoadmapContracts(unittest.TestCase):
         obj["scope"]["project_inventory_baseline"]["git_workspaces"] = 100
         with self.assertRaisesRegex(ValueError, "INVENTORY_BASELINE_DRIFT_REVIEW_REQUIRED"):
             self.check(roadmap=obj)
+
+    def test_historical_15_rule_baseline_does_not_override_active_rule_registry(self):
+        out=self.check()
+        self.assertEqual(self.roadmap["scope"]["project_inventory_baseline"]
+                         ["active_pinned_policy_bindings"], 15)
+        self.assertGreaterEqual(out["policy_bundles_routed"],22)
+        self.assertIn("curated_current_delta_qa",self.registry["policy_bindings"])
+
+    def test_missing_current_curated_policy_must_fail(self):
+        reg=copy.deepcopy(self.registry)
+        reg["policy_bindings"].pop("curated_current_delta_qa")
+        with self.assertRaisesRegex(ValueError,"CURATED_CURRENT_ACTIVE_ROUTING_MISSING"):
+            self.check(registry=reg)
 
     def test_forged_state_completion_fails(self):
         obj = copy.deepcopy(self.state)

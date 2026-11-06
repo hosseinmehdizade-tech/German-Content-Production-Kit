@@ -47,3 +47,17 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - **43/340** editorial content decisions cumulatively (L01 25 + L02 18), **297** yet to receive editorial content decisions. **All 340 HOLDs remain blocked for release**, all 383 historical overlays still require final-card signoff, **0 formally approved cards**.
 - Private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L02-18-HOLD-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`. SHA256: `11900e3983978ce53ea7baa373ed10971d0eec956c54bc5e8b45fb74a91445f7`. Readback SHA256 + CRC + 6 manifest hashes verified. The Gate2D Part05 master archive remains unchanged.
 - Next: complete L03 editorial decisions in one coherent lesson-scoped batch. Do not repeat source extraction or auto-drop by simple lemma match.
+
+## Stage4 editorial content rulings — Kapitel 3 (2026-11-06)
+
+- **42/42** L03 HOLDs have distinct proposed content rulings, preserving every original CSV source row.
+- **44** prior editorial overlays in L03 were individually routed: 23 on HOLD source rows and 21 on other L03 rows.
+- **26** additional German–Persian example pairs are proposals, not approved or importable cards.
+- Source-row parity checked against sanitized B1+ CSV and saved Stage3 records; original source and parent master ZIP untouched.
+- Actual issued Menschen A2 final collection of **1,778** cards yielded **0 exact primary-lemma matches** for these 42 items (narrow check only). A1/B1/C1 crosslevel sense comparison not complete.
+- Grammar details include separable/inseparable `umgehen`, the two auxiliary patterns of `ausscheiden`, nuanced singular/plural of `Köstlichkeit`, and the potential cross-row shared lemma `nahestehen` at source ordinals 206 and 207.
+- Cumulative **85/340** HOLD content rulings (L01 25 + L02 18 + L03 42); **255** remain. All **340/340** still release-blocked, and **67/383** earlier overlays content-reviewed.
+- Verified Library sidecar (8 manifest entries, 9 ZIP members, SHA256+CRC+readback): `Reports/Aspekte-B1plus-STAGE4-L03-42-HOLD-44-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
+- Sidecar SHA256: `a3e3bb4ee3fba31ccfe2a48b3731797c535e26e9eb3e8cd675296d453d68fca7`.
+- Main Gate2D Part05 master ZIP stays unchanged; **zero** cards formally approved for release.
+- Next: Kapitel 4 editorial content decisions, then full-card independent QA and final crosslevel semantic adjudication.

@@ -1,0 +1,46 @@
+name: MEM-009 One Card Multi Meaning Structural QA
+on:
+  pull_request:
+    paths:
+      - 'Prompt/MEM-009-ONE-CARD-MULTI-MEANING-EXAMPLES-CLARIFICATION-20261106.md'
+      - 'Verification/audit_multi_meaning_one_card_v1.py'
+      - 'Verification/tests/test_audit_multi_meaning_one_card_v1.py'
+      - '.github/workflows/mem009-one-card-multi-meaning.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Prompt/MEM-009-ONE-CARD-MULTI-MEANING-EXAMPLES-CLARIFICATION-20261106.md'
+      - 'Verification/audit_multi_meaning_one_card_v1.py'
+      - 'Verification/tests/test_audit_multi_meaning_one_card_v1.py'
+      - '.github/workflows/mem009-one-card-multi-meaning.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mem009-structural:
+    name: Nonblocking per-sense examples, safe sense links
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile MEM-009 read-only validator and regression suite
+        run: >-
+          python -B -m py_compile
+          Verification/audit_multi_meaning_one_card_v1.py
+          Verification/tests/test_audit_multi_meaning_one_card_v1.py
+      - name: Run positive and negative controls
+        run: python -B -m unittest discover -s Verification/tests -p test_audit_multi_meaning_one_card_v1.py -v
+      - name: State limits
+        run: >-
+          python -c "print('This tests a scoped MEM-009 structural QA helper with synthetic fixtures. It does not certify native producer rollout, content semantics, app runtime, Stage4-7 or current user cards.')"

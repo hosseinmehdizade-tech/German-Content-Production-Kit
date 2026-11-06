@@ -192,3 +192,17 @@ SHA256: `6d0900f5935961d5c7667d864a6959dc57b0a72d8c257cc75a0a526233d8620c`; 198,
 - Verified private Library ZIP: `Reports/Aspekte-B1plus-STAGE4-QA-PASS02-1544-CANONICAL-PREVIEWS-1548-ROW-PARITY-NONIMPORT-20261106.zip`.
 - ZIP SHA256 `16d15fa6be183937b4d0d8a219c9cd2e820b46f1bc1f0a55dd2f22137267863d`; 432,600 bytes, 7 members, 6 manifest SHA256 entries; byte-exact Library readback and CRC verified.
 - [QA Pass02 metadata receipt](Reports/STAGE4-INDEPENDENT-CARD-QA-PASS02-CANONICAL-PREVIEWS-METADATA-RECEIPT-20261106.json). **Next:** repair blocker source rows, independently verify all DE–FA examples and front morphology; use final actual TSVs for cross-level sense matching and test real app front/back rendering before any HOLD release.
+
+## Independent Stage4 QA Pass03 — morphology recovery (nonimport)
+
+Pass03 addressed only the **289** morphology placeholders remaining after Pass02, all originating in **L04–L06**. It relied on the verified current user CSV and Pass02 previews, not outdated book-source audits or dictionary-based new headword discovery.
+
+- Generated **256 conservative source-derived morphology proposals**, of which **240 actually changed the displayed front** and **16 correctly classified invariable phrases/adverbs needing no inflection table.** This is a content proposal count, **not 256 independently approved inflections**.
+- The 256 proposals comprise source-explicit regular or zero/singular-only noun plurals, marked umlaut plurals, source-attested masculine/feminine pairs, 24 verb paradigms (including explicit separable source forms where provided) and source-explicit adjective degrees. Every change is linked to the exact original source ordinal.
+- **33** unresolved cases remain without a sufficiently safe morphological proposal, including **3 sentence-as-headword identity cases** and 30 adjectival/other form concerns. No arbitrary comparative or irregular form was generated for these.
+- Verified preservation of **1,544** provisional view IDs, **1,548** original source-ordinal links, all Persian sense drafts, all original and supplemental German–Persian example pairs, and all back-side `Formen` suppression fields. Original master and Pass02 package are unchanged.
+- Prior Pass02 **498 possible blocker source rows** has **not** been recomputed after this one-dimensional pass. Remaining issues also include the **248** older overlay reviews lacking machine-applicable deltas, **63** rejected/rewrite overlay flags (categories overlap), and independent semantic, lexicographic and real-app-render QA.
+- All **340 source HOLDs remain release-blocked**, **zero** cards approved, no import TSV or Stage5 release. All 256 form proposals are deliberately marked **pending independent lexicographic QA**.
+- Private Library: `Reports/Aspekte-B1plus-STAGE4-QA-PASS03-1544-PREVIEWS-289-MORPHOLOGY-REVIEW-NONIMPORT-20261106.zip`.
+- SHA256: `c428a4887239b11d95070bfb5357b5da14b25653ede50ac116e53609e28959ce`; **447,660 bytes**, **8 ZIP members**, **7 SHA256 manifest entries**, exact-byte Library readback, CRC and manifest verified.
+- [Pass03 metadata receipt](Reports/STAGE4-INDEPENDENT-QA-PASS03-MORPHOLOGY-RECOVERY-METADATA-RECEIPT-20261106.json). Next: independently validate these proposed inflections and 33 open forms/identity entries, then multilingual example semantics, overlays and final app front/back QA.

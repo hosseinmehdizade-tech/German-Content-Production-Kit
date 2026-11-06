@@ -53,3 +53,7 @@ If an upstream authoritative artifact changes, dependent downstream stages must 
 - Final delivery may be mirrored as a GitHub Release artifact when binary ZIP size or repository policy makes direct Git storage undesirable; `CHECKPOINT.json` must record the release/tag/asset identity and SHA-256.
 
 See `Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md` §2A and `Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md` for the normative checkpoint policy.
+
+## Automatic file lifecycle contract (all projects)
+
+**FILE_LIFECYCLE_RULE_V1_0_0**: Every workstream must use `Library-Organization/FILE-LIFECYCLE-AND-SAFE-CLEANUP-v1.0.0.md` and its own `FILE-LIFECYCLE-RULE.md` before saving new file versions, after each validated milestone and when resuming. A new workstream must add the anchor at creation. Keep one compact per-project artifact registry within existing checkpoint or one separate manifest if necessary; proactively identify exact redundant/superseded files in normal handoff. The assistant must not wait for a cleanup reminder; **deletion still requires user confirmation for the exact candidates**. Source/LOCKED/final and recovery checkpoints are protected.

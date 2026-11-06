@@ -153,3 +153,7 @@ A completed source run should deliver, at minimum:
 - separate Git persistence status.
 
 Only call the package `Final` when every applicable hard quality gate actually executed and passed. Only call it **Git-backed Final** when the required Git synchronization also completed.
+
+## File production and cleanup — all sources (mandatory)
+
+**FILE_LIFECYCLE_RULE_V1_0_0**: For every new or resumed content project, read `Library-Organization/FILE-LIFECYCLE-AND-SAFE-CLEANUP-v1.0.0.md` and the local `Workspaces/<slug>/FILE-LIFECYCLE-RULE.md`. Automatically keep a compact artifact lifecycle record, re-use current files, propose exact redundant files at each validated lesson/milestone, and retain authoritative sources and recovery. Never delete on a generic cleanup preference; secure an explicit deletion-list approval. New workspaces must create the local policy anchor before first Library delivery. No new manual form is required.

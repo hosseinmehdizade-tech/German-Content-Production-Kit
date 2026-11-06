@@ -61,7 +61,8 @@ def audit_tsv_bytes(payload: bytes) -> dict:
         lexical_id = canonical.get("lexical_target_id") or custom.get("lexical_target_id")
         if lexical_id is not None and not isinstance(lexical_id, str):
             return _fail("LEXICAL_TARGET_ID_NOT_STRING", cid)
-        new = {"card_id": row.get("id"), "lexical_target_id": lexical_id}
+        new = {"card_id": row.get("id"), "front": row.get("front"),
+               "lexical_target_id": lexical_id}
         # Legacy source adapters may store meanings as plain strings, language
         # maps or gloss objects without sense IDs. Such data is UNSTRUCTURED,
         # not malformed; do not introduce a new Stage5 schema requirement.

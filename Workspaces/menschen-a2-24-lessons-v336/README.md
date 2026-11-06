@@ -1,5 +1,17 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Current complete content-only static QA package — R21-R2 (2026-11-06)
+
+**This supersedes R21-R1 as the single current whole-course portable A2 content bundle; no app included as explicitly requested.** File `Menschen-A2-R21-R2-1778-Karten-CONTENT-ONLY-VOLLSTAENDIG-GEPRUEFT-20261106.zip`, exact SHA256 `ff30bc894892d9c975a445bc6bf2f177f9b278a24db4437f5d4bdd542d243a5c`, 3,755,640 bytes, **48 members**. In personal Library `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current/`, ID `libfile_fbdc89f0d6b881919bed8d20fd3a2188`; independent exact-byte Library readback PASS. [Independent scoped Git receipt](./C3-R21-R2-FULL-PACKAGE-INDEPENDENT-AUDIT-2026-11-06.json); [lifecycle register](./ARTIFACT-REGISTER.json).
+
+- Preserves **1,778 A2 cards, 7,112 DE/FA/EN example groups, 24 lesson readonly rosters, 1,829 unique A2 lesson membership pairs, 140 A1 external owner exclusions, all typingCore and all original source audio references.**
+- Relative to R21-R1, **only six extra learner-visible fronts** changed using exact already curated morphology/examples: `genau` comparative/superlative; `die Donau`; `der Erwachsene / die Erwachsene, die Erwachsenen`; `der Deutsche / die Deutsche, die Deutschen`; `der Große Wagen`; `der Kleine Wagen`. No new cards, lexeme, learner translation or SRS action. Five read-only rosters and canonical current front synchronized; no other card TSV columns changed.
+- **Every 48 archive member and 47 SHA256SUMS entry PASS**, ZIP CRC and inner 4 SHA checks PASS, schema/parity and **45 independent tests PASS**. Ten real tampered/rehashed ZIP mutations rejected 10/10. The previously embedded R21-R1 source verifier's adjective-front blind spot is repaired. Current A2 QA `new_cards_tsv_sha256` matches current master. Prior R20 tamper report is retained explicitly **historical**, not a claim for current bytes.
+- Scope excludes any app executable/HTML/CSS/JS, service worker or MP3/audio binaries; external A1 relations and source MP3 remain intentional provenance/dependencies, not missing A2 owned cards. Only one direct import TSV; other 24 rosters explicitly READONLY-NOT-IMPORT.
+- **Static complete content-package QA PASS does NOT mean native app Stage6/Import/FSRS or conditional Study/Quick back-display PASS.** Runtime CURRENT v505-R141 remains separate and user issue #25 OPEN; do not import into personal primary profile until resolved. No per-lesson Stage6 kits. R21-R1 safely moved to `History/`; R20 protected in `Releases/`, R19/R21/R21-R1 in `History/`. No deletion.
+
+---
+
 ## Current source-bound corrected whole-course candidate: R21-R1 (2026-11-06)
 
 **R21-R1 is the newest exact 1,778-card/24-lesson working candidate; R21 is superseded and was non-destructively moved to History.** [Final scoped R21-R1 receipt](./C3-R21-R1-FRONT-BACK-EXACT-BYTE-RECEIPT-2026-11-06.json) · [lifecycle register](./ARTIFACT-REGISTER.json).

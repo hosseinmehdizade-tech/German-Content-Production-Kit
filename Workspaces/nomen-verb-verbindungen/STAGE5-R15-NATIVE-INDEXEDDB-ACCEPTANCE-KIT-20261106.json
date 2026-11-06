@@ -1,0 +1,64 @@
+{
+  "schema": "nvv-stage5-native-indexeddb-acceptance-kit-readiness@1.0.0",
+  "date": "2026-11-06",
+  "workstream": "nomen-verb-verbindungen",
+  "scope": "ISOLATED_WINDOWS_CHROME_OR_EDGE_NATIVE_ACCEPTANCE_KIT__ARCHIVED_V505_R141_NOT_OWNER_CURRENT",
+  "status": "PASS_STATIC_PREPARED_KIT__NATIVE_NOT_RUN",
+  "stage5_latest_parent_git_blob": "1e59c82bc3b78b9de556c7e9b02e16387f919380",
+  "stage4_r15_curated_gz_sha256": "3560500cbdfff022fac76f0316982809f176b5e5f6f8077db3885cd92c667278",
+  "baseline_stage5_gzip_sha256": "65ee6e05cdcf22c70429315ab273680cf91b1843aaf4888e1e9561c7e0a73a11",
+  "note_visibility_experiment_gzip_sha256": "9647b2c79204d61cdcb74ccad5e20791ea90bc00eac9d5bfd68a5a71a4e4f712",
+  "examined_app_zip": "GFP-v505-R141-GLOBAL-LEXICAL-RELATIONS-SENSE-BIDI-QA-R2-CANDIDATE-20261104.zip",
+  "examined_app_zip_sha256": "99137590901a2c2086521867e128f8deb0dd6a8f694e4f0fcfc905f1060a6569",
+  "app_index_sha256": "1e46bb4e2103fa3311ebb70559a331e9e7262bcc988066c8ec73269fc1d85dd8",
+  "library_kit": {
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Nomen-Verb-Verbindungen/Workstreams/Stage5-Projection/Experiments/NVV-R15-NATIVE-INDEXEDDB-ACCEPTANCE-KIT-20261106.zip",
+    "library_file_id": "libfile_ab277b8c05f481919a23cfc879e2bee0",
+    "sha256": "330bb6527403b75a6ef0941008d44f24825186e72d8053f0e998189b33b4d3ee",
+    "bytes": 6594200,
+    "archive_files": 91,
+    "source_app_files": 83
+  },
+  "static_checks": {
+    "archived_app_files_exact": "PASS_83_OF_83",
+    "source_tsv_gzip_sha256": "PASS_2_OF_2",
+    "native_runner_py_compile": "PASS",
+    "inline_js_node_syntax": "PASS",
+    "html_parser": "PASS",
+    "stdlib_loopback_http_server_GET": "PASS_4_OF_4",
+    "zip_crc": "PASS",
+    "package_manifest_sha256": "PASS_90_OF_90"
+  },
+  "designed_native_test": {
+    "isolation": "Temp user-data-dir, bind only 127.0.0.1, no existing user profile",
+    "source": "2,492 baseline cards and 2,492 experiment cards (476 note visibility changes)",
+    "steps": [
+      "Exact app normal ADD import",
+      "native IndexedDB full committed read",
+      "page reload and re-read",
+      "normal MERGE experiment",
+      "native IndexedDB full committed read",
+      "page reload and re-read",
+      "real Universal TSV export to in-memory Blob and reparse"
+    ],
+    "data_gate": "2,492 identities/fields, 476 structured combo sidecars, 476 notes; commit generations, DB and export",
+    "fsrs_real_user_state": "NOT_TOUCHED_NOT_PROVEN",
+    "reports_after_execution": "reports/NVV-NATIVE-INDEXEDDB-RESULT.json",
+    "headless_or_native_test_executed": false
+  },
+  "blocker": "Authoring environment Chromium loopback/file navigation is blocked net::ERR_BLOCKED_BY_ADMINISTRATOR; no owner CURRENT app ZIP/installed hash pinned. Kit requires actual Windows native execution to generate report.",
+  "risks": [
+    "Quick Review shows first three detail sections; 6 notes currently in fourth",
+    "full merge write amplification tracked in app issue #37"
+  ],
+  "no_code_change_in_app": true,
+  "no_approved_content_modified": true,
+  "no_UI_UX_change": true,
+  "no_user_profile_or_srs_fsrs_touched": true,
+  "stage5_full": "HOLD",
+  "stage6": "NOT_RUN",
+  "stage7": "NOT_RUN",
+  "ready_to_import": false,
+  "stage5_latest_pointer_unchanged": true,
+  "next": "Run isolated kit on Windows and evaluate generated JSON. Resolve exact CURRENT app separately; do not promote native Stage6 or release until current and full gates pass."
+}

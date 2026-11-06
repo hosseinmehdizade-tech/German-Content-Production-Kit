@@ -183,7 +183,9 @@ def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
             mem009_before["cards_seen"]==mem009_after["cards_seen"] and
             mem009_before["structured_sense_cards"]==mem009_after["structured_sense_cards"] and
             mem009_before["per_sense_example_missing_info_only"]==
-            mem009_after["per_sense_example_missing_info_only"],
+            mem009_after["per_sense_example_missing_info_only"] and
+            mem009_before["same_front_multi_id_review_groups"]==
+            mem009_after["same_front_multi_id_review_groups"],
             "MEM009_SOURCE_STAGED_PARITY_MISMATCH")
     require(before["registry_git_blob"]==after["registry_git_blob"] and
             before["validator_git_blob"]==after["validator_git_blob"] and
@@ -210,6 +212,9 @@ def run(source:Path,out:Path,receipt:Path,purpose:str="stage5_acceptance",
           "untyped_sense_cards":mem009_before["untyped_sense_cards"],
           "per_sense_example_missing_info_only":
               mem009_before["per_sense_example_missing_info_only"],
+          "identical_front_multi_id_review_only":
+              mem009_before["same_front_multi_id_review_groups"],
+          "duplicate_front_is_never_auto_merge":True,
           "no_mandatory_per_sense_example_quota":True,
           "full_meaning_retention_verified":False,
           "native_producer_scope":"THIS_GOVERNED_STAGE5_ROUTE_ONLY",

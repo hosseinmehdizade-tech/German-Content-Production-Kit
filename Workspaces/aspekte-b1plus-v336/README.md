@@ -61,3 +61,17 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Sidecar SHA256: `a3e3bb4ee3fba31ccfe2a48b3731797c535e26e9eb3e8cd675296d453d68fca7`.
 - Main Gate2D Part05 master ZIP stays unchanged; **zero** cards formally approved for release.
 - Next: Kapitel 4 editorial content decisions, then full-card independent QA and final crosslevel semantic adjudication.
+
+## Stage4 editorial dispositions — Kapitel 4 Viel Spaß! (2026-11-06)
+
+- 158 original B1+ source rows reconciled with the existing Stage3 L04 draft: exact field-level source parity checked, original CSV and parent master ZIP unchanged.
+- **31/31 L04 source HOLDs** have detailed **nonimport content dispositions**, including full source verbatim rows, corrected contextual Persian glosses, proposed front morphology and grammatical constructions.
+- **62/62 previous L04 editorial overlays** individually reviewed; **12 require revision before independent QA**. No old overlay auto-approved as a final card.
+- **32** additional context-specific DE–FA example pairs proposed, no release signoff.
+- A2 authoritative **1,778-card final release TSV** strict front-lemma precheck found an overlap for **stehen** (source ordinal 487, A2 card `ma2m-lu-0087`). The meaning **stehen für + Akk.** requires sense-based comparison; no deletion authorized.
+- Provenance links 442/443 (same source **schätzen**) consolidated as a single proposed lexical base while retaining both source ordinals and their example evidence. Separate meanings kept for entfallen, Karte, würfeln, Dokumentation and neben.
+- Source gloss risks include national ≠ nationalistisch, Wasserrauschen ≠ flowing water, Familienbetrieb ≠ 'family jobs'; bound irgend- and Partizip I ermordend are explicitly special-case, not silent new lemmas.
+- Cumulative **116/340 HOLD content dispositions**, **129/383 previous overlay reviews** across lessons 01–04. **All 340 HOLDs remain release-blocked**, zero final approved/import-ready cards.
+- Private Library report: `Reports/Aspekte-B1plus-STAGE4-L04-31-HOLD-62-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
+- ZIP: 57,597 bytes; 9 members, 8 SHA256 manifest entries; Library exact-byte SHA256 + CRC + manifest verified; SHA256 `edc080d4485265cdb26ad1851cb751df3827fe0682e4912fe21ebeaf107e4844`.
+- See [L04 GitHub metadata receipt](Reports/STAGE4-L04-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next **Kapitel 5**, then remaining lesson content decisions and final bilingual/morphology/crosslevel QA before any release.

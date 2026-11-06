@@ -2,7 +2,7 @@
 
 This is a read-only checkpoint/metadata contract. It is NOT private Library
 byte re-download, German/Persian semantic approval, Stage5 acceptance or Stage6.
-The real Library byte checks are recorded in B2 R43's scoped evidence receipt.
+The R43 receipt is historical and cannot be a live B2 L01 current-source pin.
 """
 from __future__ import annotations
 
@@ -39,45 +39,72 @@ def issues(b1, b1_readme, b2, b2_readme, c1, c1_readme, receipt):
     check("Stage 4" in b1_readme and "bounded exact-attribution" in b1_readme,
           "B1+_BOUNDED_PROVENANCE_NOT_EXPLAINED")
 
+    # Never freeze the active B2 lesson at R43. LATEST can advance to R48+;
+    # old R43 evidence continues to attest R43 only, not currentness.
+    import re
     scope=b2.get("latest_scoped_audit",{})
-    check(str(scope.get("label","")).startswith("L01_R43_"),
-          "B2_L01_R43_SCOPE_MISSING")
-    check(scope.get("source_rows")==160 and
-          scope.get("provisional_new_bilingual_card_units")==158 and
-          scope.get("noncard_full_content_objects")==2,
-          "B2_R43_COVERAGE_OR_PREVIEW_COUNT")
-    check(scope.get("importable") is False and scope.get("final_cards_created")==0
-          and scope.get("stage2_approved") is False,
-          "B2_R43_FALSE_RELEASE")
-    check(str(scope.get("library_preview_sha256","")) in b2_readme and
-          str(scope.get("parent_R42_canonical_sha256","")) in b2_readme,
-          "B2_VERIFIED_CURATED_WORKING_NOT_IN_RESUME")
-    check("R43" in b2_readme and "R25" in b2_readme and
-          "LATEST.json.latest_scoped_audit" in b2_readme,
-          "B2_SEPARATE_SCOPED_AND_GLOBAL_AUTHORITY_MISSING")
+    match=re.match(r"^L01_R([1-9][0-9]*)_",str(scope.get("label","")))
+    check(match is not None, "B2_L01_CURRENT_SCOPED_LABEL_INVALID")
+    revision=int(match.group(1)) if match else None
+    check(scope.get("source_rows_coverage")==160 and
+          scope.get("draft_unique_ids")==158,
+          "B2_L01_CURATED_SCOPE_COUNTS_INVALID")
+    check(scope.get("importable") is False and
+          scope.get("stage2_approved") is False and
+          scope.get("imported_cards")==0 and
+          scope.get("stage3_to_stage7")=="NOT_STARTED",
+          "B2_CURRENT_FALSE_RELEASE")
+    parents=[(int(m.group(1)),val) for key,val in scope.items()
+             if (m:=re.fullmatch(r"parent_R([1-9][0-9]*)_158_current_sha256",key))]
+    check(len(parents)==1 and revision is not None
+          and parents[0][0]==revision-1
+          and re.fullmatch(r"[0-9a-f]{64}",str(parents[0][1])) is not None,
+          "B2_IMMEDIATE_CURATED_PARENT_INVALID")
+    curr_sha=scope.get("current_158_draft_preview_sha256","")
+    curr_path=scope.get("current_158_draft_preview_path","")
+    check(re.fullmatch(r"[0-9a-f]{64}",str(curr_sha)) is not None
+          and str(curr_path).endswith(f"-R{revision}-NONIMPORT.csv")
+          and "/Aspekte-B2/Current/" in curr_path,
+          "B2_CURRENT_BYTE_PIN_INVALID")
+    check(re.fullmatch(r"[0-9a-f]{64}",
+                       str(scope.get("noncard_2_current_sha256",""))) is not None
+          and str(scope.get("noncard_2_current_path","")).endswith("-NONIMPORT.csv"),
+          "B2_NONCARD_CURRENT_PIN_INVALID")
+    check(scope.get("R44_legacy_HOLDs",0)>=17 and
+          len(scope.get("identity_or_target_HOLDs",[]))>=4,
+          "B2_RELEASE_HOLDS_NOT_CARRIED")
+    check("LATEST.json#latest_scoped_audit" in b2_readme
+          and "verification/verify_aspekte_b2_curated_unit_delta_v1.py" in b2_readme.lower()
+          and "R25" in b2_readme
+          and "do not pin lesson progress" in b2_readme.lower(),
+          "B2_DYNAMIC_CURRENT_STARTUP_MISSING")
+    check("is the **newer L01 R43 scoped work**" not in b2_readme,
+          "B2_STALE_R43_AS_CURRENT_REINTRODUCED")
+
+    # The 2026-11-06 R43 evidence receipt remains historically immutable.
     check(receipt.get("status")==
           "PASS_READONLY_LIBRARY_BYTES_AND_SOURCE_TO_DRAFT_UNIT_COVERAGE__NOT_SEMANTIC_OR_RELEASE",
-          "B2_READBACK_RECEIPT_SCOPE_CHANGED")
+          "B2_HISTORIC_R43_READBACK_RECEIPT_CHANGED")
     ev=receipt.get("evidence_checks",{})
     check(ev.get("distinct_immutable_source_ordinals")==160
           and ev.get("distinct_preview_unit_ids")==158
           and ev.get("noncard_supplementary_objects_preserved")==2,
-          "B2_READBACK_RECEIPT_COUNTS_CHANGED")
+          "B2_HISTORIC_R43_COUNTS_CHANGED")
     for flag in ("every_coverage_source_changed_false",
                  "every_coverage_imported_false",
                  "every_preview_export_importable_false",
                  "every_preview_linguistic_release_approved_false"):
-        check(ev.get(flag) is True, "B2_IMPORT_SAFETY_LOST:"+flag)
+        check(ev.get(flag) is True,"B2_HISTORIC_R43_IMPORT_SAFETY_LOST:"+flag)
     checks={x.get("name"):x for x in receipt.get("verified_library_artifacts",[])}
     check(len(checks)==6 and
           checks.get("L01-158-UNIT-CARD-PREVIEW-NONIMPORT.csv",{}).get("sha256")==
-          scope.get("library_preview_sha256") and
-          checks.get("L01-CANONICAL-WORKING-NONIMPORT.csv",{}).get("sha256")==
-          scope.get("parent_R42_canonical_sha256"),
-          "B2_SOURCE_TO_CURATED_BYTE_PIN_MISMATCH")
-    check(receipt.get("no_content_edits") is True and
-          receipt.get("no_original_source_reimport") is True and
-          receipt.get("no_app_or_srs_changes") is True,
+          "720154fe304c990aeec4dc7b69c70bc36fa22784f8e769d7f208d2724b0b50c3"
+          and checks.get("L01-CANONICAL-WORKING-NONIMPORT.csv",{}).get("sha256")==
+          "9da4568db9edc592429d35d2ddac4a91fb5369cfff1a5782ce1ce5ef74b88d0b",
+          "B2_HISTORIC_R43_BLOB_PINS_CHANGED")
+    check(receipt.get("no_content_edits") is True
+          and receipt.get("no_original_source_reimport") is True
+          and receipt.get("no_app_or_srs_changes") is True,
           "B2_NONDESTRUCTIVE_BOUNDARY_LOST")
 
     check(c1.get("stage1")=="IN_PROGRESS" and c1.get("approved_cards")==0,
@@ -123,18 +150,41 @@ class AspekteCuratedResume(unittest.TestCase):
     def test_B2_no_automatic_card_publication(self):
         b2=copy.deepcopy(self.b2)
         b2["latest_scoped_audit"]["importable"]=True
-        self.assertIn("B2_R43_FALSE_RELEASE",self.inspect(b2=b2))
+        self.assertIn("B2_CURRENT_FALSE_RELEASE",self.inspect(b2=b2))
 
     def test_B2_missing_curated_byte_reference_detected(self):
         b2=copy.deepcopy(self.b2)
-        b2["latest_scoped_audit"]["parent_R42_canonical_sha256"]="0"*64
-        self.assertIn("B2_VERIFIED_CURATED_WORKING_NOT_IN_RESUME",self.inspect(b2=b2))
+        b2["latest_scoped_audit"]["current_158_draft_preview_sha256"]="0"*64
+        self.assertIn("B2_CURRENT_BYTE_PIN_INVALID",self.inspect(b2=b2))
 
     def test_B2_source_mutation_or_import_flag_is_detected(self):
         r=copy.deepcopy(self.receipt)
         r["evidence_checks"]["every_coverage_source_changed_false"]=False
-        self.assertIn("B2_IMPORT_SAFETY_LOST:every_coverage_source_changed_false",
+        self.assertIn("B2_HISTORIC_R43_IMPORT_SAFETY_LOST:every_coverage_source_changed_false",
                       self.inspect(receipt=r))
+
+    def test_B2_immediate_parent_cannot_be_skipped(self):
+        b2=copy.deepcopy(self.b2)
+        orig=[k for k in b2["latest_scoped_audit"]
+              if k.startswith("parent_R") and k.endswith("_158_current_sha256")]
+        self.assertEqual(len(orig),1)
+        b2["latest_scoped_audit"]["parent_R44_158_current_sha256"]=(
+            b2["latest_scoped_audit"].pop(orig[0]))
+        self.assertIn("B2_IMMEDIATE_CURATED_PARENT_INVALID",self.inspect(b2=b2))
+
+    def test_B2_future_revision_must_not_be_blocked_by_R43_receipt(self):
+        b2=copy.deepcopy(self.b2)
+        scope=b2["latest_scoped_audit"]
+        old_key=[k for k in scope if k.startswith("parent_R") and
+                 k.endswith("_158_current_sha256")][0]
+        old_rev=int(old_key.split("_")[1][1:])
+        new_rev=old_rev+2
+        scope[f"parent_R{old_rev+1}_158_current_sha256"]=scope.pop(old_key)
+        scope["label"]=f"L01_R{new_rev}_SAFE_NEXT_SCOPED_DRAFT"
+        scope["current_158_draft_preview_path"]=scope[
+            "current_158_draft_preview_path"].replace(
+            f"-R{old_rev+1}-NONIMPORT.csv",f"-R{new_rev}-NONIMPORT.csv")
+        self.assertEqual(self.inspect(b2=b2),[])
 
     def test_C1_does_not_fall_back_to_raw_Menschen(self):
         c1_md=self.c1_md.replace("3,088","3,089").replace("Stage1 IN_PROGRESS","NO PRODUCTION START")

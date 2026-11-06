@@ -194,7 +194,7 @@ def audit_snapshot(reg: dict, mat: dict, tracked_dirs: list[str],
     for phrase in ("ORIGINAL_SOURCE", "CURATED_CURRENT", "NEXT_CURATED",
                    "HOLD_AUTHORITY_UNRESOLVED", "SOURCE_EXACT",
                    "do not re-inventory the textbook", "full current-state structural",
-                   "accepted additions/removals"):
+                   "historical additions/removals"):
         if phrase not in curated_text:
             errors.append("CURATED_CURRENT_PROTECTION_MISSING:" + phrase)
     if curated_path not in files.get(START, b"").decode("utf-8", "replace")[:4096]:

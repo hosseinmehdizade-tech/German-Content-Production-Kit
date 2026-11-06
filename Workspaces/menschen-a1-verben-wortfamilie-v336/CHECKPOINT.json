@@ -3,7 +3,7 @@
   "date": "2026-11-02",
   "workstream": "menschen-a1-verben-wortfamilie-v336",
   "milestone": "CONTENT_RC1_ONE_PORTABLE_HANDOFF_310_IMPORT_PREFLIGHT_PASS_214_WORDFAMILIE_ONLY_DELTA",
-  "status": "R10_STAGE4_PASS__STAGE5_CONTENT_PASS__ONE_BUNDLE_STATIC_QA_PASS__STAGE6_CURRENT_NATIVE_BLOCKED__STAGE7_NOT_FINAL",
+  "status": "R10_STAGE4_PASS__STAGE5_CONTENT_PASS__LIBRARY_VERIFIED__STAGE6_CURRENT_SCHEMA7_EMULATED_PASS_NATIVE_BLOCKED__STAGE7_NOT_FINAL",
   "artifact": {
     "name": "Menschen-A1-Verben-Wortfamilie-CONTENT-RC1.zip",
     "sha256": "5585dbf92695e7b8cf83846a4f7d2c3882c4ec8160d7c88e1392ff49308bb8f5",
@@ -60,7 +60,7 @@
     "book_page_origin_for_424": "NOT_PROVEN",
     "six_curated_Duden_extensions_not_original_course_origin": true
   },
-  "next_action": "Content-only R10 deep-audit ZIP is now stored and byte-replayed in Library; no more ZIP churn. Stage4 and Stage5 content accepted on exact R10, Stage6 still blocked because the actual CURRENT v505-R141 exact app and native isolated-origin IndexedDB import/reload not proven; app issue #25 Import and #31 Synonyme remain open. No source, UI, app CURRENT, SRS or user profile changes. Continue real Stage6 test only when exact app and runnable isolated browser are available, then Stage7 if proven.",
+  "next_action": "R10 immutable content-only 78-file Library ZIP preserved, hash 790e..., no package churn. 20/20 synthetic functional tests on byte-exact CURRENT v505 schema7 storage module PASS: merge all 310 R10 with synthetic card and preexisting review state, reload 311, reject duplicate, rollback prepublish/txn failure. This is NOT native IndexedDB or actual full CURRENT app import; Chromium even localhost navigation ERR_BLOCKED_BY_ADMINISTRATOR and exact CURRENT ZIP SHA 482b... not available. Stage6 remains blocked pending genuine clean-profile full app import/IndexedDB and issues #25/#31, Stage7 NOT FINAL.",
   "parent_wip15_sha256": "69e16cd40eca9234a02e421cc8886c3a23826535f808b5eef77d876a52a70ed5",
   "parent_wip16_sha256": "c5a7a87848db6371a5d0d49f9212f1cefd022a25841c55dd428eaa250487f2ce",
   "parent_accepted_original_final_sha256": "adc6579d9e39eb3e795697f5ece4fcbf1acded98f7b216e5fd3959bbed1f1d06",
@@ -999,7 +999,7 @@
   "latest_milestone": "STAGE4_R04_FORMAL_ACCEPTANCE_RECONCILED_2026_11_04",
   "stage4": "PASS_RISK_BASED_STAGE4",
   "stage5": "PASS_EXACT_R10_CONTENT_STAGE5__FOUR_MODE_RENDERER_CONTRACT_VERIFIED_R2_REFERENCE__STAGE6_CURRENT_NOT_RUN",
-  "stage6": "BLOCKED_NATIVE_CURRENT_IMPORT_INDEXEDDB__INTEGRATED_ONE_ZIP_STATIC_QA_PASS",
+  "stage6": "BLOCKED_NATIVE_CURRENT_RUNTIME_INDEXEDDB_IMPORT__EXACT_SCHEMA7_MODULE_EMULATED_20_OF_20_PASS",
   "stage7": "NOT_FINAL",
   "stage4_r04_formal_acceptance": {
     "status": "PASS_RISK_BASED_STAGE4",
@@ -1294,7 +1294,7 @@
     "stage6": "NOT_PASS",
     "stage7": "NOT_FINAL"
   },
-  "latest_stage6_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE6-R10-2026-11-05-ONE-BUNDLE-INTEGRATION-CANDIDATE.json",
+  "latest_stage6_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE6-R10-2026-11-06-EXACT-CURRENT-STORAGE-MODULE-EMULATED-ROUNDTRIP.json",
   "stage6_r10_integrated_bundle": {
     "status": "PASS_ONE_ZIP_PACKAGING_AND_STATIC_QA__NATIVE_CURRENT_STAGE6_BLOCKED",
     "date": "2026-11-05",
@@ -1382,5 +1382,29 @@
     "stage6": "BLOCKED_CURRENT_NATIVE_IMPORT_INDEXEDDB_NOT_RUN",
     "stage7": "NOT_FINAL"
   },
-  "latest_delivery_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE5-R10-2026-11-06-CONTENT-ONLY-DEEP-AUDIT-DELIVERY.json"
+  "latest_delivery_milestone": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE5-R10-2026-11-06-CONTENT-ONLY-DEEP-AUDIT-DELIVERY.json",
+  "stage6_r10_schema7_exact_current_module": {
+    "date": "2026-11-06",
+    "receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE6-R10-2026-11-06-EXACT-CURRENT-STORAGE-MODULE-EMULATED-ROUNDTRIP.json",
+    "status": "PASS_20_OF_20_EXACT_CURRENT_STORAGE_JS_WITH_EMULATED_IDB__NOT_NATIVE_STAGE6",
+    "current_storage_git_blob_sha": "6604da72e5b1c71943036ab690157cf32c9810a5",
+    "current_storage_source_sha256": "461d357a253c3ceeabd4e9146373aab81ffea7490c527654c2295db22c55c47e",
+    "exact_current_app_zip_retrieved": false,
+    "actual_R10_cards": 310,
+    "synthetic_seed_card": 1,
+    "merged_and_read_back": 311,
+    "existing_review_state_preserved": true,
+    "all_310_canonical_cards_roundtrip_exact": true,
+    "negative_duplicate_id_rejected": true,
+    "prepublish_failure_rollback": true,
+    "transaction_abort_rollback": true,
+    "new_good_commit_after_faults": true,
+    "negative_tests": "PASS_20_OF_20_TOTAL",
+    "browser_test": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "IndexedDB_native": "NOT_RUN",
+    "stage6": "BLOCKED_NATIVE_BROWSER_AND_EXACT_CURRENT_ZIP_UNAVAILABLE",
+    "source_content_unchanged": true,
+    "no_new_zip_created": true,
+    "stage7": "NOT_FINAL"
+  }
 }

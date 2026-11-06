@@ -18,11 +18,13 @@
 SHA256: `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc`.
 Size 3,313,224 bytes; 412 members; 411 checked manifest entries; CRC and Library byte-exact readback passed; previous 403 members retained.
 
+**Curated-current resume readback (2026-11-06):** `LATEST.json` and `CHECKPOINT.json` identify the private Library Gate2D Part05 250-P2-review **NONIMPORT** working ZIP, SHA256 `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc` (3,313,224 bytes; 412 ZIP members). Its current materialized Library bytes and ZIP CRC were rechecked; neither this proof nor "FINAL-QA" in the filename makes it a final learner-card TSV or releases 340 HOLDs. On each resume, prefer the newest independently verified owner-local curated editorial successor to stale initial CSV; check changed lesson decisions and their dependencies only, plus remaining semantic/release gates. `Prompt/CURATED-CURRENT-AUTHORITY-AND-DELTA-QA-POLICY-v1.0.0.md` controls the source-versus-curated distinction. No user words were restored/removed by this routing check.
+
 ## Open gates
 - Resolve the actual semantic and duplicate decisions on all 340 HOLDs and approve or reject 383 editorial overlays.
 - Use the **final TSVs in their project folders**, not stale textbooks, for comparison. Verify A1/C1 and context-level matches.
 - Enforce article/plural, verb forms, adjective comparisons on front, no redundant back-side Formen.
-- Complete independent bilingual QA and raw source provenance check; do not restart vocabulary extraction from obsolete source files.
+- Complete independent bilingual QA against the **accepted current B1+ editorial content**, and inspect original source only for bounded exact-attribution, disputed provenance or corruption cases. Do **not** restart whole-book/raw-CSV fidelity auditing or vocabulary extraction from historical files.
 - No import or release until these checks pass.
 
 See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), and [Part05 metadata](Reports/STAGE4-QA-GATE2D-PART05-METADATA-RECEIPT-20261106.json).

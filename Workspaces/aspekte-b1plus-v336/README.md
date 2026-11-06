@@ -1,25 +1,28 @@
-# Aspekte B1+ — Independent Vocabulary Production
+# Aspekte B1+ — Status 2026-11-06
 
-**Status 2026-11-06: Stage 4 Gate2D Part04 | NONIMPORT, NOT RELEASE READY.**
+**Stage 4 / Gate2D Part05 complete (scoping only, nonimport).** The project vocabulary comes only from the user's B1+ CSV.
 
-**Authority:** User B1+ CSV only. Final project TSVs of Menschen A1/A2/B1 and relevant Aspekte levels are read-only duplicate/sense evidence, NOT new headword sources. Original textbook comparison is not required. No auto-DROP from a string match.
+## Verified counts
+- Source-only B1+ rows across 10 lessons: **1,548**.
+- Stage3 drafts and Stage4 first-pass reviews: **1,548 / 1,548**.
+- Individual P2 semantic/comparator scopes: **250 / 250**, including 50 in Part05.
+- Distinct HOLD rows scoped: **340 / 340**; formally released **0**. All HOLDs remain blocked.
+- Earlier editorial overlays: **383**, still unapproved.
+- Part05 additionally proposes **22** German–Persian example pairs; none authorized for import.
+- Exact lemma check against actual final Menschen A2 (1,778) and B1 (3,089) TSVs found **das Umfeld** in B1 (ordinal 1337), not an automatic duplicate decision.
+- Independent final-card QA incomplete. Stages 5–7 have not started; zero published cards.
 
-## Actual state
-- Source: **1,548 user-specific B1+ CSV rows** over **10 lessons**. Sanitized source SHA-256: `cca32df935397a81367b38f9b51ee33aac357ea135947a131b712969f0339033`; original combined raw 3,275-row CSV SHA independent recheck remains open.
-- Stage3: **1,548/1,548 draft rows**. Stage4: **1,548/1,548 first-pass** linguistic/source QA. These are **not approved final flashcards**.
-- **340 distinct HOLDs**, all still blocked. **383 older editorial overlay proposals**, unapproved.
-- Gate2B/2C **90** scoped, Gate2D Part01–04 **200/250 P2** individually scoped. Overall **290/340** scoped HOLDs; 50 P2 not yet reviewed.
-- Gate2D Part04: new **50 DE–FA individual semantic risk assessments** (source ordinals 1037–1302), **31 new DE–FA example proposals**, no source or prior payload mutation. Critical flags: Drogeriemarkt ≠ Apotheke, Milliarde ≠ Billion, separable abkaufen / zurücklegen / anführen, dual-gender lemmas and different Pension/Tageskarte/Botschaft/Passage senses.
-- Menschen A2 and Menschen B1 direct released TSVs checked for **exact front-lemma** matches in these 50: 0; absence of exact match does not clear semantic duplicates. Menschen A1 / Aspekte C1 final project comparators still pending.
-- Original source ledger and Stage3 store different evidence-hash schemes; exact headword, Persian gloss, source example and source-ordinal parity was checked. Hashes must not be falsely equated.
-- No independent full-card QA; **0 final approved cards**; Stage5–7 not started; no import TSV / publication.
+## Private Library baseline
+`/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Current/Aspekte-B1plus-STAGE4-FINAL-QA-GATE2D-PART05-250-P2-INDIVIDUAL-REVIEWS-NONIMPORT-20261106.zip`
 
-## Verified private Library baseline
-`/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Current/Aspekte-B1plus-STAGE4-FINAL-QA-GATE2D-PART04-200-P2-INDIVIDUAL-REVIEWS-NONIMPORT-20261106.zip`
-- SHA-256 `9194744f24e34aec5ae93f6d1664db43b234aea116f9f5495dc93dd45e37fe05`, **3,247,338 bytes**, **403 ZIP members**, **402 SHA manifest entries**, CRC passed, Library readback exact-byte SHA confirmed.
-- Previous **393** nonmanifest ZIP members retained exact-byte; old manifest preserved as a renamed archived parent manifest.
-- Only metadata and pointers committed in GitHub. No private source rows uploaded to the Git repository.
+SHA256: `61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc`.
+Size 3,313,224 bytes; 412 members; 411 checked manifest entries; CRC and Library byte-exact readback passed; previous 403 members retained.
 
-See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), [Part04 metadata receipt](Reports/STAGE4-QA-GATE2D-PART04-GITHUB-SYNC-RECEIPT-20261106.json), [file lifecycle rule](FILE-LIFECYCLE-RULE.md).
+## Open gates
+- Resolve the actual semantic and duplicate decisions on all 340 HOLDs and approve or reject 383 editorial overlays.
+- Use the **final TSVs in their project folders**, not stale textbooks, for comparison. Verify A1/C1 and context-level matches.
+- Enforce article/plural, verb forms, adjective comparisons on front, no redundant back-side Formen.
+- Complete independent bilingual QA and raw source provenance check; do not restart vocabulary extraction from obsolete source files.
+- No import or release until these checks pass.
 
-**Next:** Complete Part05 final 50 P2, then resolve HOLD decisions, 383 overlays, front morphology vs back `Formen` display rule, and independent full-card QA before Stage5–7 or release.
+See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), and [Part05 metadata](Reports/STAGE4-QA-GATE2D-PART05-METADATA-RECEIPT-20261106.json).

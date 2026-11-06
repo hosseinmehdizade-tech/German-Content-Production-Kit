@@ -25,7 +25,7 @@ gate=__import__("check_active_stage5_policy_v1")
 
 HEAD=("id","front","back","card_type","category","details","custom_fields","source")
 def tsv_bytes(details=None, duplicate=False, invalid_selector=False,
-              drop_category=False):
+              drop_category=False, custom_override=None):
     if details is None: details=[{"title":"Bedeutung","items":["gehen"]}]
     out=io.StringIO(newline="")
     fields=[x for x in HEAD if not (drop_category and x=="category")]
@@ -37,7 +37,8 @@ def tsv_bytes(details=None, duplicate=False, invalid_selector=False,
               "category":"Verb",
               "details":json.dumps(details,ensure_ascii=False),
               "custom_fields":json.dumps({"presentation_contract":"gfp-vocabulary-neutral@1",
-                  **({"layout_template":"another UI"} if invalid_selector else {})}),
+                  **({"layout_template":"another UI"} if invalid_selector else {}),
+                  **(custom_override or {})}),
               "source":"Synthetic Producer"}
         writer.writerow({k:item[k] for k in fields})
     return out.getvalue().encode("utf-8")
@@ -149,6 +150,11 @@ class GovernedIntegrationTests(unittest.TestCase):
         self.assertEqual(result["stage5_content_acceptance"],"NOT_CERTIFIED")
         self.assertEqual(result["stage6_browser"],"NOT_RUN")
         self.assertEqual(result["global_adoption"],"NOT_PROVEN")
+        self.assertEqual(result["mem009_structural_gate"]["status"],
+                         "PASS_MEM009_NATIVE_STRUCTURE_ONLY")
+        self.assertEqual(result["mem009_structural_gate"]["cards_seen"],2)
+        self.assertEqual(result["mem009_structural_gate"]["untyped_sense_cards"],2)
+        self.assertFalse(result["mem009_structural_gate"]["full_meaning_retention_verified"])
         self.assertEqual(result["source_role_sha256"]["direct-import-tsv"],
                          result["active_policy"]["input_tsv_sha256"])
         self.assertEqual(json.loads(self.receipt.read_text(encoding="utf-8")),
@@ -160,6 +166,59 @@ class GovernedIntegrationTests(unittest.TestCase):
             self.assertIsNone(z.testzip())
             self.assertEqual(z.read("CONTENT-DELIVERY/TEST-IMPORT.tsv"),
                              self.files["TEST-IMPORT.tsv"])
+
+
+    def test_mem009_native_three_senses_one_example_is_not_blocked(self):
+        """Real four-role Stage5 builder; per-sense examples are informational."""
+        unit={"meanings":[
+              {"sense_id":"s1","fa":"محل"},
+              {"sense_id":"s2","fa":"شغل"},
+              {"sense_id":"s3","fa":"قسمتی از متن"}],
+              "examples":[{"sense_id":"s2",
+                           "de":"Sie hat eine neue Stelle gefunden.",
+                           "fa":"او شغل جدیدی پیدا کرده است."}]}
+        (self.src/"TEST-IMPORT.tsv").write_bytes(
+            tsv_bytes(custom_override={"canonical_unit":unit}))
+        result=self.run_governed()
+        self.assertEqual(result["mem009_structural_gate"]["structured_sense_cards"],2)
+        self.assertEqual(result["mem009_structural_gate"]
+                         ["per_sense_example_missing_info_only"],4)
+        self.assertTrue(result["mem009_structural_gate"]
+                        ["no_mandatory_per_sense_example_quota"])
+        with zipfile.ZipFile(self.out) as archive:
+            self.assertEqual(
+                archive.read("CONTENT-DELIVERY/TEST-IMPORT.tsv"),
+                (self.src/"TEST-IMPORT.tsv").read_bytes())
+
+    def test_mem009_bad_example_sense_fails_before_production(self):
+        unit={"meanings":[{"sense_id":"s1","fa":"محل"}],
+              "examples":[{"sense_id":"s9",
+                           "de":"Hier ist die Stelle.",
+                           "fa":"این محل است."}]}
+        (self.src/"TEST-IMPORT.tsv").write_bytes(
+            tsv_bytes(custom_override={"canonical_unit":unit}))
+        with self.assertRaisesRegex(ValueError,"MEM009_SOURCE_STRUCTURAL_FAIL"):
+            self.run_governed()
+        self.assertFalse(self.out.exists())
+        self.assertFalse(self.receipt.exists())
+
+    def test_mem009_wrong_synonym_sense_fails_before_production(self):
+        unit={"meanings":[{"sense_id":"s1","fa":"محل"}],
+              "synonyms":[{"sense_id":"s9","de":"der Ort"}]}
+        (self.src/"TEST-IMPORT.tsv").write_bytes(
+            tsv_bytes(custom_override={"canonical_unit":unit}))
+        with self.assertRaisesRegex(ValueError,"MEM009_SOURCE_STRUCTURAL_FAIL"):
+            self.run_governed()
+        self.assertFalse(self.out.exists())
+
+    def test_mem009_explicit_one_target_two_card_ids_rejected(self):
+        unit={"lexical_target_id":"verified-lexical-identity",
+              "meanings":[{"sense_id":"s1","fa":"محل"}]}
+        (self.src/"TEST-IMPORT.tsv").write_bytes(
+            tsv_bytes(custom_override={"canonical_unit":unit}))
+        with self.assertRaisesRegex(ValueError,"MEM009_SOURCE_STRUCTURAL_FAIL"):
+            self.run_governed()
+        self.assertFalse(self.receipt.exists())
 
     def test_existing_output_refused_pre_build(self):
         self.out.write_bytes(b"historic")

@@ -1,0 +1,46 @@
+name: Aspekte Curated Current Resume
+on:
+  pull_request:
+    paths:
+      - 'Workspaces/aspekte-b1plus-v336/LATEST.json'
+      - 'Workspaces/aspekte-b1plus-v336/README.md'
+      - 'Workspaces/aspekte-b2-v336/LATEST.json'
+      - 'Workspaces/aspekte-b2-v336/README.md'
+      - 'Workspaces/aspekte-b2-v336/Reports/R43-CURATED-CURRENT-RESUME-READBACK-20261106.json'
+      - 'Workspaces/aspekte-c1-v336/LATEST.json'
+      - 'Workspaces/aspekte-c1-v336/README.md'
+      - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
+      - '.github/workflows/aspekte-curated-current-resume.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Workspaces/aspekte-b1plus-v336/LATEST.json'
+      - 'Workspaces/aspekte-b1plus-v336/README.md'
+      - 'Workspaces/aspekte-b2-v336/LATEST.json'
+      - 'Workspaces/aspekte-b2-v336/README.md'
+      - 'Workspaces/aspekte-c1-v336/LATEST.json'
+      - 'Workspaces/aspekte-c1-v336/README.md'
+      - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  current-over-raw:
+    name: Aspekte curated current / nonimport (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check central current authority registry
+        run: python -B Verification/audit_global_policy_sync_v1.py --check
+      - name: Check actual Aspekte B1+ B2 C1 current authority and release safety
+        run: python -B -m unittest discover -s Verification/tests -p test_aspekte_curated_current_resume_v1.py -v

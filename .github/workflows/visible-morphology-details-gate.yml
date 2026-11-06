@@ -39,7 +39,7 @@ jobs:
           assert pin['claims']['app_current_changed'] is False
           for role in ('policy','validator'):
               p=pathlib.Path(pin[role]['path'])
-              b=p.read_bytes()
+              b=p.read_bytes().replace(bytes([13,10]),bytes([10]))  # Git LF normalized across Windows
               digest=hashlib.sha1(b'blob '+str(len(b)).encode()+bytes([0])+b).hexdigest()
               assert digest==pin[role]['git_blob_sha'],(role,digest,pin[role]['git_blob_sha'])
           print('PASS_PINNED_READONLY_POLICY_WITH_NO_FALSE_STAGE6')

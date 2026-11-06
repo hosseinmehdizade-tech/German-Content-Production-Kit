@@ -1,0 +1,81 @@
+{
+  "schema": "gcpk-menschen-a1-verben-r10-stage6-schema7-module-functional-preflight@1.0.0",
+  "date": "2026-11-06",
+  "workstream": "menschen-a1-verben-wortfamilie-v336",
+  "status": "PASS_EXACT_CURRENT_STORAGE_MODULE_EMULATED_ROUNDTRIP_20_OF_20__NATIVE_INDEXEDDB_IMPORT_BLOCKED__NO_FINAL",
+  "authority": {
+    "current_app": "v505-R141",
+    "app_runtime_pin": "hosseinmehdizade-tech/German-Flashcards-Pro/RUNTIME-AUTHORITY-PIN.json",
+    "exact_current_app_zip_expected_sha256": "482b285bc4a1364e5595f721ecbf0caddcb95ba0eb2cdf9958d9aa11c889416e",
+    "exact_current_app_zip_available": false,
+    "committed_storage_module": "01-App/modules/committed-storage-v505.js",
+    "current_source_branch": "candidate/v505-r141-committed-storage-20261101",
+    "github_current_storage_blob_sha": "6604da72e5b1c71943036ab690157cf32c9810a5",
+    "R2_storage_module_git_blob_sha_verified_locally": "6604da72e5b1c71943036ab690157cf32c9810a5",
+    "local_source_sha256": "461d357a253c3ceeabd4e9146373aab81ffea7490c527654c2295db22c55c47e",
+    "exact_module_bytes_verified": true,
+    "content_zip_sha256": "790e7a39f2c814b59e3aceccb7cc7a9658d18b8c0980187c3d7af1370a53cd47",
+    "content_zip_library_id": "libfile_194394ba86e48191b20afabf34b99101",
+    "content_tsv_sha256": "6f75cf9eadfe747dec406502293c2856a59f5176d9cf0d38facb23fe70a0c025",
+    "content_json_sha256": "49c1eebb9ae6bcc9118b971ec8b1c11163074f6e3953e565b062ce19ba51f6fc",
+    "stage4": "PASS_EXACT_R10",
+    "stage5": "PASS_CONTENT_R2_DECLARED_FOUR_MODE_CONTRACT"
+  },
+  "test": {
+    "method": "The byte-for-byte exact CURRENT Schema-7 storage JavaScript module executes unmodified in Node 22 using an authored in-memory IndexedDB API emulator that emulates asynchronous get/put/add/delete/count, transaction complete/abort, multi-store heads, generations and CAS. This is NOT a native browser IndexedDB engine or end-to-end UI import.",
+    "test_script_sha256": "d0af19ff40f3ceaecd536c06233a4dba3145f20144f7a27039d9fbe45c1b232d",
+    "raw_output_sha256": "4fea69cbe95a902a48086f0127ee2a842c0029f65dcab40032acebf536a74353",
+    "test_script_chat_path": "/mnt/data/stage6_current_contract_analysis/test_schema7_R10_emulated_IDB.cjs",
+    "output_chat_path": "/mnt/data/stage6_current_contract_analysis/schema7_emulated_test_result.json",
+    "result": "PASS_20_OF_20",
+    "total_checks": 20,
+    "passed": 20,
+    "inputs": {
+      "r10_cards": 310,
+      "r10_unique_ids": 310,
+      "seed_existing_cards": 1,
+      "seed_existing_review_states": 1,
+      "merged_expected_cards": 311
+    },
+    "functional_findings": [
+      "Schema7 baseline one seeded card and nonempty user review state committed",
+      "All 310 R10 canonical cards merged with a seeded preexisting card into 311-card generation",
+      "Exactly one preexisting review state retained and unmodified",
+      "All 310 R10 JSON source cards round-tripped byte-equivalent in normalized JSON form",
+      "New factory instance reloaded 311 canonical cards and existing review state",
+      "Duplicate R10 ID rejected without changing committed head",
+      "Fault injection before publication rejected and original generation head unchanged",
+      "Fault injection while publishing transaction rejected and original generation head unchanged",
+      "A subsequent valid commit succeeded after both injected failures",
+      "Readback after recovery preserved the committed cards"
+    ],
+    "limitations": [
+      "The in-memory emulator does not implement native IndexedDB timing/durability/origin quota/browser security exactly",
+      "No native browser origin startup, UI file import, fsrs scheduler, offline Service Worker, PWA reload, or real user profile was involved",
+      "Uses the exact schema-7 module matching CURRENT Git but the full exact CURRENT ZIP is unavailable; no claim about entire current runtime or its importer",
+      "No user SRS/FSRS data was read or modified",
+      "The simulated progress record is synthetic; existing user progress preservation in their real browser remains unverified"
+    ]
+  },
+  "environment": {
+    "browser": "Chromium installed",
+    "native_local_origin_probe": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+    "exact_current_runtime_zip_materialized": false,
+    "source_registry": "EXACT_GIT_CURRENT_STORAGE_BLOB_ONLY",
+    "previous_parser_reference": "PASS_310_R10_FROM_NONCURRENT_R2",
+    "app_issues": {
+      "import": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/25",
+      "synonyms": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/31"
+    },
+    "real_user_profile_untouched": true,
+    "no_new_zip_created": true,
+    "no_library_file_added": true
+  },
+  "gates": {
+    "stage4": "PASS",
+    "stage5": "PASS_CONTENT_REFERENCE_R2",
+    "stage6": "BLOCKED_NATIVE_CURRENT_APP_BROWSER_IMPORT_AND_INDEXEDDB__EMULATED_STORAGE_PASS",
+    "stage7": "NOT_FINAL"
+  },
+  "next_action": "Obtain exact CURRENT runtime ZIP SHA 482b... or verified exact runtime tree; run isolated native Chrome Windows same-origin full R10 import, IndexedDB transaction and reload, verify existing sample FSRS/SRS and item identities, 310 R10 cards, Study/Quick/Typing/Audio, ensure issues #25/#31 corrected. Preserve content-only library ZIP and avoid release churn."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "gcpk-artifact-lifecycle-register@1.0.0",
+  "policy": "Library-Organization/FILE-LIFECYCLE-AND-SAFE-CLEANUP-v1.0.0.md",
+  "status": "ACTIVE_USER_DIRECTIVE_PROSPECTIVE",
+  "required_fields": [
+    "owner",
+    "lesson_or_stage",
+    "name",
+    "library_file_id",
+    "library_path",
+    "sha256",
+    "bytes",
+    "created_or_updated_at",
+    "status",
+    "supersedes_ids",
+    "depends_on_ids",
+    "recovery_copy_id",
+    "decision_reason",
+    "source_or_release_authority"
+  ],
+  "states": [
+    "SOURCE_PROTECTED",
+    "FINAL_PROTECTED",
+    "CURRENT_ACTIVE",
+    "RECOVERY_CHECKPOINT_PINNED",
+    "HOLD_UNRESOLVED",
+    "TEMP_ACTIVE",
+    "SUPERSEDED_CANDIDATE",
+    "EXACT_DUPLICATE_CANDIDATE",
+    "DELETE_APPROVED",
+    "DELETED_OR_TRASHED"
+  ],
+  "recording_precedence": [
+    "existing_CHECKPOINT.json_or_LATEST.json_additive_only_if_schema_permits",
+    "one_project_ARTIFACT-REGISTER.json_if_not"
+  ],
+  "deletion_gate": {
+    "user_specific_authorization_required": true,
+    "exact_full_byte_sha256_for_duplicate_claim": true,
+    "dependency_and_recovery_check_required": true,
+    "post_delete_preserved_ids_readback_required": true
+  },
+  "no_blanket_existing_file_reclassification": true,
+  "applies_to": "all 35 pre-existing Workspaces, all 22 registered Content Library project folders, all future owners, runtime artifacts with separate app authority",
+  "refs": [
+    "Library-Organization/LIBRARY-DIRECT-SAVE-ENFORCEMENT-v1.1.0.json",
+    "Library-Organization/CONTENT-PROJECT-FOLDERS.json",
+    "Library-Organization/PROTECTED-CHECKPOINTS-INVENTORY-2026-11-01.json",
+    "GIT-SYNC-POLICY.json"
+  ]
+}

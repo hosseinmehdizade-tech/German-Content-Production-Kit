@@ -1,0 +1,43 @@
+name: Live Policy Impact and Roadmap
+on:
+  pull_request:
+    paths:
+      - 'Tools/plan_central_policy_impact_v1.py'
+      - 'Tools/check_unified_governance_roadmap_v1.py'
+      - 'Verification/tests/test_central_policy_impact_v1.py'
+      - 'Verification/tests/test_unified_governance_roadmap_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - '.github/workflows/live-policy-impact-and-roadmap.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Tools/plan_central_policy_impact_v1.py'
+      - 'Tools/check_unified_governance_roadmap_v1.py'
+      - 'Verification/tests/test_central_policy_impact_v1.py'
+      - 'Verification/tests/test_unified_governance_roadmap_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  active-policy-snapshot:
+    name: Current policy vs historical evidence (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail-closed live current authority policy audit
+        run: python -B Verification/audit_global_policy_sync_v1.py --check
+      - name: Test historical/live policy impact and native non-adoption
+        run: python -B -m unittest discover -s Verification/tests -p test_central_policy_impact_v1.py -v
+      - name: Test historical roadmap/live rule distinction
+        run: python -B -m unittest discover -s Verification/tests -p test_unified_governance_roadmap_v1.py -v

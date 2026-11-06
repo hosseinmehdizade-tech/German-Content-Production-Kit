@@ -1,0 +1,23 @@
+name: Content workspace file lifecycle policy
+on:
+  pull_request:
+    paths:
+      - 'Workspaces/**'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Prompt/NEW-SOURCE-AGENTIC-RUNBOOK-v1.0.0.md'
+      - 'Library-Organization/FILE-LIFECYCLE-*'
+      - 'Verification/check_file_lifecycle_policy_v1.py'
+      - '.github/workflows/workspace-file-lifecycle-rule.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  workspace-file-lifecycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Every existing and new workspace must point to active cleanup contract
+        run: python -B Verification/check_file_lifecycle_policy_v1.py

@@ -55,6 +55,33 @@ def fixture(path:Path,**kwargs):
     return files
 
 class PolicyInputTests(unittest.TestCase):
+
+    def test_mem009_native_legacy_string_meanings_are_not_forced_schema(self):
+        unit={"meanings":["محل","شغل"],
+              "examples":[{"text":"Sie hat eine neue Stelle gefunden.",
+                           "lang":"de-DE",
+                           "translations":[{"lang":"fa-IR",
+                                            "text":"او شغل جدیدی پیدا کرده است."}]}]}
+        result=build.audit_mem009_native_tsv(
+            tsv_bytes(custom_override={"canonical_unit":unit}))
+        self.assertEqual(result["status"],"PASS_MEM009_NATIVE_STRUCTURE_ONLY")
+        self.assertEqual(result["untyped_sense_cards"],2)
+        self.assertEqual(result["structured_sense_cards"],0)
+        self.assertEqual(result["per_sense_example_missing_info_only"],0)
+
+    def test_mem009_native_duplicate_card_id_is_rejected(self):
+        result=build.audit_mem009_native_tsv(tsv_bytes(duplicate=True))
+        self.assertEqual(result["status"],"FAIL_MEM009_NATIVE_STRUCTURE_ONLY")
+        self.assertIn("CARD_ID_DUPLICATE",
+                      {finding["code"] for finding in result["errors"]})
+
+    def test_mem009_native_does_not_infer_senses_from_back_string(self):
+        result=build.audit_mem009_native_tsv(tsv_bytes())
+        self.assertEqual(result["status"],"PASS_MEM009_NATIVE_STRUCTURE_ONLY")
+        self.assertEqual(result["structured_sense_cards"],0)
+        self.assertEqual(result["untyped_sense_cards"],2)
+        self.assertFalse(result["full_meaning_retention_verified"])
+
     def test_active_exact_git_registry_policy_can_load(self):
         module,binding=gate.load_authority()
         self.assertTrue(callable(module.validate))

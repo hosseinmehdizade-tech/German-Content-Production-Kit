@@ -75,3 +75,17 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Private Library report: `Reports/Aspekte-B1plus-STAGE4-L04-31-HOLD-62-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
 - ZIP: 57,597 bytes; 9 members, 8 SHA256 manifest entries; Library exact-byte SHA256 + CRC + manifest verified; SHA256 `edc080d4485265cdb26ad1851cb751df3827fe0682e4912fe21ebeaf107e4844`.
 - See [L04 GitHub metadata receipt](Reports/STAGE4-L04-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next **Kapitel 5**, then remaining lesson content decisions and final bilingual/morphology/crosslevel QA before any release.
+
+## Stage4 editorial dispositions — Kapitel 5 Alles will gelernt sein (2026-11-06)
+
+- **156/156** lesson Stage3 source records have exact-field parity against the dedicated B1+ sanitized CSV. Source data and the current Gate2D Part05 master ZIP are unchanged.
+- **29/29** L05 HOLD records now have individualized content/sense/grammar decisions; **all distinct senses of each lemma remain grouped within one source-aligned card proposal**. Only the exact duplicate row 611 links to base row 610; neither source occurrence was deleted.
+- **44/44** earlier L05 editorial overlays individually reviewed; **22 flagged for revision before final-card QA**.
+- **44** new contextual German–Persian example pairs proposed, with independent QA still pending.
+- Real final Menschen A2 **1,778-card release TSV** checked for exact base lemma matches. `die Teilnahme` (source ordinal 546; A2 `ma2m-lu-1274`) is a match but has not been approved as a semantic duplicate because B1+ has additional usage domains.
+- Full Menschen B1 final TSV was not programmatically available in this run (returned 43 MB path was not present on disk). A1/C1 final comparator checks remain pending. Do not infer zero overlap from a missing file.
+- Front morphology proposals include article/plural or verb inflections; avoid duplicate `Formen` on the back when already on the front. That contract has **not yet passed independent app-card QA**.
+- Cumulative **145/340** HOLD content rulings after lessons 01–05. **195** require content rulings. **173/383** editorial overlays reviewed. **All 340 HOLDs remain release-blocked** and **zero** final approved cards.
+- Verified private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L05-29-HOLD-44-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip` (36,783 bytes, 8 ZIP members, 7 SHA256 entries, exact-byte Library readback and CRC passed).
+- Sidecar SHA256: `1b50588e8a355068e675b2c45ce948a0493f8dba29dd93fcddc20593f9f35065`.
+- See [L05 GitHub metadata receipt](Reports/STAGE4-L05-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next Kapitel 6, then L07–L10 and independent comprehensive full-card QA before import.

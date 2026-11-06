@@ -116,3 +116,15 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L07-37-HOLD-32-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
 - Report SHA256: `faf64ed1b7b8d0fea2fa723f503169af51de40aeba837741d2181f41a1260795`; size **42,190** bytes, **10 ZIP members** and **9** SHA256 manifest entries; verified byte-exact Library readback and CRC PASS.
 - [L07 GitHub metadata receipt](Reports/STAGE4-L07-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next Kapitel 8, then L09–L10 and independent full-card QA before import.
+
+## Stage4 editorial decisions — Kapitel 8 Kaufen, kaufen, kaufen (2026-11-06)
+
+- Exact source parity: **157/157** source rows with authoritative B1+ sanitized CSV and the archived L08 Stage3 draft. Original source and verified master ZIP unchanged.
+- **38/38** source HOLDs received individual proposed DE–FA sense, front morphology, rationale and disposition; **34/34** official L08 overlay proposals received individually authored content review.
+- **36** additional DE–FA example pairs proposed; these are not independent QA-approved cards.
+- Cases: `umschreiben` separable `schrieb um/umgeschrieben` for rewriting vs inseparable `umschrieb/umschrieben` for paraphrasing, `abkaufen` separable, `Zoom` der/das with plural Zooms, `Milliarde` 10^9 distinct from `Billion` 10^12, source duplicate `Panorama` ordinals 1085 and 1086 linked with both original rows retained.
+- Strict exact-lemma comparator on real released Menschen A2 **1778-card** TSV: `Größe` (A2 `ma2m-lu-0117`) and `bestellen` (A2 `ma2m-lu-0597`) flagged; **no final semantic duplicate/deletion decision**. 43MB B1 final TSV connector materialization not present on runtime filesystem; A1/C1 final semantic comparator QA pending.
+- Cumulative **252/340** HOLD content dispositions, **286/383** earlier overlays reviewed after L01–L08; **88 HOLD** content rulings and **97 overlay** reviews remain. **All 340 HOLDs retain release block**; 0 formally approved cards and no import.
+- Private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L08-38-HOLD-34-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
+- SHA256 `cbe583eaecd016a961dafc8a65e47ca7bf5b713deb860fdd376cb323bd2aab2d`; 42,546 bytes; 10 ZIP members; CRC, 9 SHA256 manifest entries and byte-exact Library readback verified.
+- [L08 GitHub metadata receipt](Reports/STAGE4-L08-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next Kapitel 9, Kapitel 10, then crosslevel final-card QA, front morphology and conditional back Formen suppression.

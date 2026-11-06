@@ -8,7 +8,7 @@
   "artifact_library_file_id": null,
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "R20 remains unchanged and only CONTENT-ONLY release (SHA b8cffeeb25553eb254f410583ecda85041c2547a69ed9e99d8ef683e19590548). Exact current v505 source test and 1779 synthetic Merge states passed; local Chromium URLBlocklist=* blocks true IndexedDB origin. Built a separate Windows-compatible disposable-profile Chrome Stage6 executable Python runner in A2/Tools; SHA d612b5..., three exact/negative preflight cases PASS, Library binary readback PASS. Real-browser Stage6 remains NOT RUN. User must run script with R20 and exact v505/A1 V24 runtime in a permitted Chrome environment and share JSON for final result. No more report/ZIP churn.",
+  "next_action": "Current A2 content release remains immutable R20 SHA b8cffeeb... no app inside. Hardened same named Stage6 isolated Chrome Python helper in A2 Tools, SHA 4b71a20dd2be824c8bb9e328a94f0fba87ece80dfddb004ab5ab5282a026ab91, exact Library binary readback PASS, 3/3 archive/app preflight and 9/9 injected state/FSRS/daily/card/membership tests PASS. V2 checks entire state and persistent IDB across 3 Chrome cold sessions, commits, 1829 course memberships. True browser remains blocked by current managed Chrome URLBlocklist, not Stage6 PASS; only user isolated Windows Chrome run can complete. No R20 changes, no new ZIP, no installed app edits, no SRS/profile access.",
   "central_checkpoint_sha": "efc1c584e27787837f181e26f0a37a15b4f1532f",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
   "last_git_coordination": "A2_L24_STAGE7_CONTENT_LOCKED__A2_L01_TO_L24_LOCKED__GLOBAL_RUNTIME_FINAL_PENDING",
@@ -11246,12 +11246,12 @@
     "import_authorized": false
   },
   "stage6_local_chrome_runner": {
-    "status": "LOCAL_STAGE6_RUNNER_CREATED_AND_SHA_VERIFIED__HASH_PREFLIGHT_PASS__REAL_BROWSER_BLOCKED_BY_ADMIN_POLICY__FULL_STAGE6_NOT_RUN",
+    "status": "HARDENED_V2_ACTUAL_ZIP_AND_APP_SHA_PREFLIGHT_3_OF_3_PASS__NINE_OF_NINE_FAULT_INJECTION_REJECTED__REAL_STAGE6_NOT_RUN",
     "name": "Menschen-A2-R20-Stage6-Isolated-Chrome-Test.py",
     "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Tools/Menschen-A2-R20-Stage6-Isolated-Chrome-Test.py",
     "library_file_id": "libfile_04a38998d9f88191aaad85c53b82b915",
-    "sha256": "d612b56e2057d1da234120f52160d5edcc8d4cf0a6584b5e0a406b7856c287ac",
-    "library_bytes": 17296,
+    "sha256": "4b71a20dd2be824c8bb9e328a94f0fba87ece80dfddb004ab5ab5282a026ab91",
+    "library_bytes": 21611,
     "library_binary_readback": "PASS",
     "exact_current_app_index_sha256": "0b7358d2755a80d1563e5b4791f62ec72c6a42279914739d551aef1f4d2a0ea5",
     "exact_current_app_sw_sha256": "25bc71cea11675262a49a102980c12600d16dbebb0bbcb1b0f67ec2abd582810",
@@ -11264,6 +11264,27 @@
     "no_content_zip_changes": true,
     "no_app_bundled_in_content_zip": true,
     "primary_Chrome_profile_never_accessed": true,
-    "next_action": "Run the separately saved Stage6 local runner on a permitted Windows Chrome with exact R20 and exact v505-R141 runtime/A1 V24 source ZIP, return result JSON. Any PASS is isolated-profile proof only, not primary-profile SRS acceptance; do not claim Stage7 or direct Import-ready until independently verified."
+    "next_action": "Run the hardened V2 tool on permitted Windows Chrome in a disposable profile, inspect its report before any main profile import. Only real browser PASS can clear Stage6; no more content ZIPs or report-only Library files.",
+    "schema": "a2-r20-disposable-local-browser-stage6@2",
+    "library_exact_binary_readback": "PASS_21611_BYTES_SHA256_IDENTICAL",
+    "tool_updated_in_place_no_new_library_file": true,
+    "positive_preflight": "PASS_PINNED_V505_R141_AND_R20",
+    "two_negative_sha_preflight": "PASS_MODIFIED_CONTENT_AND_MODIFIED_RUNTIME_BOTH_REJECTED",
+    "nine_failure_injections": "PASS_ALL_REJECTED",
+    "new_fail_closed_gates": [
+      "wait_for_CURRENT_file_parsing_1778_rows_before_click",
+      "require_new_commit_revision_and_native_1778_count_report",
+      "compare_all_review_states_memory_vs_durable_IndexedDB",
+      "preserve_all_review_states_across_merge_and_cold_restarts",
+      "preserve_full_FSRS_review_log",
+      "preserve_daily_stats_and_prior_activity_prefix",
+      "verify_1778_unique_cards_and_1829_course_memberships",
+      "verify_memory_disk_parity_at_all_three_browser_rounds",
+      "verify_full_card_roster_and_test_frontal_morphology_after_cold_restart"
+    ],
+    "real_browser_run_current_environment": "BLOCKED_BY_MANAGED_CHROMIUM_URLBLOCKLIST; USER_CHROME_STILL_NOT_EXECUTED",
+    "native_stage6_verified": false,
+    "no_change_to_R20_content": true,
+    "no_app_runtime_or_user_SRS_changed": true
   }
 }

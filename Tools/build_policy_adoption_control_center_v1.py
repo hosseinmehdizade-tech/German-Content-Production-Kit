@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read-only GFP-OPT Control Center policy-adoption status over live Git INDEX.
 
-Combines the existing 21-family identity dashboard, the authoritative 15-rule
+Combines the existing 21-family identity dashboard, the current active-policy
 candidate impact planner and a typed, exact-Git-pinned admission ledger.
 Never turns Git status hints, old ZIP bytes or synthetic tests into ADOPTED.
 """
@@ -65,11 +65,26 @@ def source_proof(ledger:dict, index:dict, cat:dict, reg:dict):
         "source_domains":DOMAINS,
         "policy_registry":REGISTRY
     }
+    # The adopted ledger is an immutable 2026-11-05 *historical witness*.
+    # Its original Registry SHA must agree with the separately stored historical
+    # source-family profile, not with today's expanded live Registry SHA.
+    # This preserves attribution and prevents yesterday's 15 rules from
+    # vetoing today's user-approved curated-current rule.
+    historic_profile=phase.load_json_from_index(DOMAINS,index)
+    historic_registry=historic_profile.get("authority",{}).get("policy_registry",{})
     for key,path in declared.items():
         target=ledger.get("baseline",{}).get(key,{})
-        require(target.get("path")==path and valid_sha(target.get("git_blob"))
-                and target.get("git_blob")==index.get(path),
-                "LEDGER_BASELINE_GIT_PIN_DRIFT:"+key)
+        ok=(target.get("path")==path and valid_sha(target.get("git_blob")))
+        if key=="policy_registry":
+            ok=ok and (historic_registry.get("path")==path and
+                       target["git_blob"]==historic_registry.get("git_blob") and
+                       valid_sha(index.get(path)))
+        else:
+            ok=ok and target["git_blob"]==index.get(path)
+        require(ok,"LEDGER_BASELINE_GIT_PIN_DRIFT:"+key)
+    require(reg.get("schema")=="gcpk-global-policy-registry@1.0.0"
+            and "curated_current_delta_qa" in reg.get("policy_bindings",{}),
+            "LIVE_CURATED_CURRENT_REGISTRY_NOT_ACTIVE")
     require(ledger.get("adoption_status")==
             "ZERO_NAMED_NATIVE_PRODUCERS_FORMALLY_ADOPTED__PROSPECTIVE_POLICY_ROUTING_EXISTS"
             and ledger.get("adoption_claims")==[],
@@ -179,16 +194,20 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
             and impact.get("status")==
             "PASS_CONSERVATIVE_IMPACT_ROUTING_ONLY__ACTUAL_ADOPTION_OPEN",
             "IMPACT_PLAN_PROMOTED_TO_ADOPTION")
-    require(len(impact.get("selected_policy_bindings",[]))==15
-            and len(impact.get("family_impacts",[]))==315
-            and len(impact.get("workspace_impacts",[]))==525
-            and len(impact.get("root_workstream_impacts",[]))==255,
+    selected=impact.get("selected_policy_bindings",[])
+    active=phase.load_json_from_index(REGISTRY,index).get("policy_bindings",{})
+    n=len(active)
+    require(n>=22 and isinstance(selected,list) and len(selected)==n
+            and len(set(selected))==n and set(selected)==set(active)
+            and len(impact.get("family_impacts",[]))==len(cat["families"])*n
+            and len(impact.get("workspace_impacts",[]))==len(cat["workspaces"])*n
+            and len(impact.get("root_workstream_impacts",[]))==len(cat["root_workstreams"])*n,
             "POLICY_IMPACT_CARDINALITY_MISMATCH")
     fbyid={f["id"]:f for f in snapshot["families"]}
     prof={p["id"]:p for p in domains["families"]}
     impactby={(r["family_id"],r["policy_binding_id"]):r
               for r in impact["family_impacts"]}
-    require(len(impactby)==315,"DUPLICATE_FAMILY_POLICY_IMPACT")
+    require(len(impactby)==len(cat["families"])*n,"DUPLICATE_FAMILY_POLICY_IMPACT")
     groups=defaultdict(list)
     for w in snapshot["workspaces"]:
         groups[w["parent_family_id"]].append(w)
@@ -284,10 +303,10 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
         "families":len(rows),
         "workspaces":35,
         "roots":17,
-        "central_policy_bindings":15,
-        "policy_family_candidate_impacts":315,
-        "workspace_pointer_navigation_views":525,
-        "root_pointer_navigation_views":255,
+        "central_policy_bindings":n,
+        "policy_family_candidate_impacts":len(cat["families"])*n,
+        "workspace_pointer_navigation_views":len(cat["workspaces"])*n,
+        "root_pointer_navigation_views":len(cat["root_workstreams"])*n,
         "explicit_historical_remote_byte_witnesses":1,
         "historical_neutral_format_families":
            sum(bool(prof[r["family_id"]]["historical_neutral_format_witnesses"]) for r in rows),

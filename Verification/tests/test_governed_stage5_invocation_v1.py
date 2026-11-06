@@ -59,6 +59,14 @@ class PolicyInputTests(unittest.TestCase):
         self.assertTrue(callable(module.validate))
         self.assertEqual(binding["scope"],"NEUTRAL_VOCABULARY_PROJECTION")
 
+    def test_registry_authority_comes_from_live_checkout_not_20261105_pin(self):
+        import subprocess
+        resolved = subprocess.check_output(
+            ["git", "rev-parse", "--verify", "HEAD:" + gate.REGISTRY],
+            cwd=ROOT, text=True).strip()
+        self.assertEqual(gate.active_registry_blob_from_checkout(), resolved)
+        self.assertEqual(gate.check_bytes(tsv_bytes())["registry_git_blob"], resolved)
+
     def test_valid_source_projects_with_canonical_same_rule(self):
         result=gate.check_bytes(tsv_bytes())
         self.assertEqual(result["status"],"PASS_EXACT_ACTIVE_STAGE5_NEUTRAL_FORMAT_ONLY")

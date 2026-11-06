@@ -103,3 +103,16 @@ Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.
 - Cumulative **177/340** HOLD content rulings and **220/383** prior-overlay content reviews for L01–L06. **163** HOLDs and **163** old overlays still need content rulings. **ALL 340 HOLDs remain release-blocked; 0 final approved cards.**
 - Verified private Library report: `Reports/Aspekte-B1plus-STAGE4-L06-32-HOLD-47-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`; SHA256 `48eafb1926c18d4bfba7480d98eff61b0ff0cc7b6d6018192df497da68107059`; 26,701 bytes; 9 ZIP members, 8 SHA256 entries, CRC and byte-exact Library readback pass.
 - [Private report metadata receipt](Reports/STAGE4-L06-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next lesson: **Kapitel 7 Für immer und ewig**; independent QA, final TSV comparators, morphological front and conditional back Forms suppression are outstanding.
+
+## Stage4 editorial decisions — Kapitel 7 Für immer und ewig (2026-11-06)
+
+- **153/153** original source records exactly matched the saved Stage3 L07 source evidence and the sanitized B1+ CSV; neither source rows nor the verified Part05 master ZIP were mutated.
+- **37/37** official L07 source HOLDs received individualized DE–FA content decisions, grouping multiple meanings of one lemma in the same proposed card and keeping distinct lexemes on the same source row linked rather than silently dropped.
+- **32/32** prior official Stage4 overlays on L07 records received individually authored content review outcomes. This is not independent release approval.
+- **39** additional contextual DE–FA examples proposed; examples and release candidates still require independent whole-card QA.
+- Source corrections: `verzeihen` is forgiving, not apologizing; `millionenfach` means millions of times, not precisely one million; `das Liebe` is not a normal independent noun; use `die Liebe` and greeting `Alles Liebe!`. Related meanings for `der Teil` vs `das Teil`, `verschlingen`, `ausgelassen` and two adverbs `jemals / niemals` are retained in appropriately structured proposed cards.
+- Final Menschen A2 release of **1,778** cards was used only for exact primary-lemma screening; primary headword overlaps are `halten` and `der Versuch`, with related expressions `Verzeihen Sie!` and `außer Dienst`. No semantic duplicate was approved, no B1/A1/C1 final semantic crosslevel QA is complete.
+- Cumulative **214/340** HOLDs have L01–L07 lesson-level content dispositions; **126** remain. **252/383** old editorial overlays reviewed; **131** remain. Every one of the 340 HOLDs stays release-blocked and **0** cards formally approved.
+- Private Library sidecar: `Reports/Aspekte-B1plus-STAGE4-L07-37-HOLD-32-OVERLAY-EDITORIAL-DISPOSITIONS-NONIMPORT-20261106.zip`.
+- Report SHA256: `faf64ed1b7b8d0fea2fa723f503169af51de40aeba837741d2181f41a1260795`; size **42,190** bytes, **10 ZIP members** and **9** SHA256 manifest entries; verified byte-exact Library readback and CRC PASS.
+- [L07 GitHub metadata receipt](Reports/STAGE4-L07-EDITORIAL-CONTENT-DECISIONS-RECEIPT-20261106.json). Next Kapitel 8, then L09–L10 and independent full-card QA before import.

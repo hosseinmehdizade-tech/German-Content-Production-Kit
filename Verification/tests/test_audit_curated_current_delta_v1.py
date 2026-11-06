@@ -31,6 +31,44 @@ class TestCuratedCurrentDelta(unittest.TestCase):
         self.assertEqual(result["added"], ["b"])
         self.assertEqual(result["review_scope"], ["b"])
 
+    def test_added_editorial_proposal_columns_do_not_modify_prior_fields(self):
+        before = {"a": {"id": "a", "front": "Haus", "back": "خانه"},
+                  "b": {"id": "b", "front": "gehen", "back": "رفتن"}}
+        after = {"a": {**before["a"], "R37_proposal": "das Haus, Häuser"},
+                 "b": {**before["b"], "R37_proposal": "geht, ging, ist gegangen"}}
+        r = mod.analyze(after, before)
+        self.assertEqual(r["existing_field_changed_ids"], [])
+        self.assertEqual(r["prior_fields_unchanged_count"], 2)
+        self.assertEqual(r["new_field_only_ids"], ["a", "b"])
+        self.assertEqual(r["new_field_nonempty_counts"], {"R37_proposal": 2})
+        self.assertEqual(r["review_scope"], ["a", "b"])
+        self.assertFalse(r["original_book_row_equality_required"])
+
+    def test_existing_linguistic_field_change_still_gets_reviewed(self):
+        before = {"a": {"id": "a", "front": "falsch", "back": "اشتباه"}}
+        after = {"a": {"id": "a", "front": "richtig", "back": "اشتباه", "note": ""}}
+        r = mod.analyze(after, before)
+        self.assertEqual(r["existing_field_changed_ids"], ["a"])
+        self.assertEqual(r["prior_fields_unchanged_count"], 0)
+        self.assertEqual(r["new_field_only_ids"], [])
+        self.assertEqual(r["new_field_nonempty_counts"], {})
+
+    def test_dropping_previously_populated_field_blocks(self):
+        before = {"a": {"id": "a", "front": "Haus", "back": "خانه"}}
+        after = {"a": {"id": "a", "front": "Haus"}}
+        r = mod.analyze(after, before)
+        self.assertEqual(r["status"], "HOLD_NONEMPTY_FIELD_LOSS")
+        self.assertEqual(r["lost_nonempty_fields"], {"a": ["back"]})
+        self.assertIn("a", r["review_scope"])
+
+    def test_adding_empty_metadata_column_needs_no_per_card_review(self):
+        before = {"a": {"id": "a", "front": "Haus"}}
+        after = {"a": {"id": "a", "front": "Haus", "qa_note": ""}}
+        r = mod.analyze(after, before)
+        self.assertEqual(r["modified"], [])
+        self.assertEqual(r["unchanged"], 1)
+        self.assertEqual(r["review_scope"], [])
+
     def test_unreviewed_new_deletion_fails_closed(self):
         before = {"a": {"id": "a", "front": "alt"}, "b": {"id": "b", "front": "keep"}}
         after = {"b": before["b"]}

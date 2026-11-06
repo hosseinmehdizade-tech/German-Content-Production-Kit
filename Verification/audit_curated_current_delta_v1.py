@@ -89,17 +89,43 @@ def decisions_from_bytes(blob):
 
 
 def analyze(current, predecessor=None, decisions=None):
-    """Operate on **already parsed verified** owner-local curated records."""
+    """Compare exact curated revisions; separate *old field changes* from new columns.
+
+    New columns/proposals are QA work, NOT proof that older accepted German,
+    translations or examples changed. Never compare to the raw publisher source.
+    """
     if predecessor is None:
         return {"status": "BASELINE_STRUCTURAL_PASS_NOT_SEMANTIC", "current_count": len(current),
                 "added": [], "removed": [], "modified": [], "unchanged": len(current),
-                "decision_holds": [], "review_scope": [],
+                "existing_field_changed_ids": [], "prior_fields_unchanged_count": len(current),
+                "new_field_only_ids": [], "new_field_nonempty_counts": {},
+                "lost_nonempty_fields": {}, "decision_holds": [], "review_scope": [],
                 "original_book_row_equality_required": False}
     before, after = set(predecessor), set(current)
-    added = sorted(after - before)
-    removed = sorted(before - after)
-    modified = sorted(i for i in (before & after) if current[i] != predecessor[i])
-    unchanged = len(before & after) - len(modified)
+    added, removed = sorted(after - before), sorted(before - after)
+    common = before & after
+    changed_old = []
+    extended_only = []
+    added_field_counts = {}
+    lost_nonempty = {}
+    modified = []
+    for card_id in sorted(common):
+        old, new = predecessor[card_id], current[card_id]
+        old_delta = [key for key in old if key not in new or old[key] != new[key]]
+        new_delta = [key for key in new if key not in old and
+                     new[key] is not None and str(new[key]).strip()]
+        if old_delta:
+            changed_old.append(card_id)
+        if new_delta and not old_delta:
+            extended_only.append(card_id)
+        for key in new_delta:
+            added_field_counts[key] = added_field_counts.get(key, 0) + 1
+        lost = [key for key in old if key not in new and
+                old[key] is not None and str(old[key]).strip()]
+        if lost:
+            lost_nonempty[card_id] = lost
+        if old_delta or new_delta:
+            modified.append(card_id)
     d = decisions or {}
     holds = []
     for card_id in removed:
@@ -108,11 +134,20 @@ def analyze(current, predecessor=None, decisions=None):
                 and item.get("disposition") in APPROVED
                 and isinstance(item.get("reason"), str) and item["reason"].strip()):
             holds.append(card_id)
-    return {"status": "HOLD_REMOVAL_DECISION" if holds else "DELTA_STRUCTURAL_PASS_NOT_SEMANTIC",
-            "current_count": len(current), "previous_count": len(predecessor),
-            "added": added, "removed": removed, "modified": modified,
-            "unchanged": unchanged, "decision_holds": holds,
+    status = ("HOLD_NONEMPTY_FIELD_LOSS" if lost_nonempty else
+              "HOLD_REMOVAL_DECISION" if holds else
+              "DELTA_STRUCTURAL_PASS_NOT_SEMANTIC")
+    return {"status": status, "current_count": len(current),
+            "previous_count": len(predecessor), "added": added, "removed": removed,
+            "modified": modified, "unchanged": len(common) - len(modified),
+            "existing_field_changed_ids": changed_old,
+            "prior_fields_unchanged_count": len(common) - len(changed_old),
+            "new_field_only_ids": extended_only,
+            "new_field_nonempty_counts": dict(sorted(added_field_counts.items())),
+            "lost_nonempty_fields": lost_nonempty,
+            "decision_holds": holds,
             "review_scope": sorted(set(added + modified + removed)),
+            "review_method": "CHANGED_EXISTING_FIELDS_AND_NEW_FIELDS_ONLY_NOT_RAW_SOURCE_REAUDIT",
             "original_book_row_equality_required": False}
 
 
@@ -149,7 +184,7 @@ def main(argv=None):
                        "full_language_qa_stage4": "NOT_EVALUATED",
                        "runtime_stage6": "NOT_EVALUATED"})
         print(json.dumps(result, ensure_ascii=False))
-        return 2 if result["decision_holds"] else 0
+        return 2 if result["decision_holds"] or result["lost_nonempty_fields"] else 0
     except (DeltaError, ValueError, csv.Error, UnicodeError) as exc:
         print(json.dumps({"status": "BLOCKED", "error": str(exc)}, ensure_ascii=False))
         return 2

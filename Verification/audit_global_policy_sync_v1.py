@@ -43,6 +43,7 @@ REQUIRED_POLICIES = {
     "lexical_front_transport_adapter",
     "stage5_front_gated_clean_builder",
     "global_flashcard_front_back_presentation",
+    "curated_current_delta_qa",
 }
 REQUIRED_INVARIANTS = {
     "user_explicit_newer_validated_source_precedes_stale_git",
@@ -183,6 +184,21 @@ def audit_snapshot(reg: dict, mat: dict, tracked_dirs: list[str],
             errors.append("FRONT_BACK_PROTECTION_MISSING:" + required)
     if fb not in files.get(START, b"").decode("utf-8", "replace")[:4096]:
         errors.append("FRONT_BACK_ACTIVE_STARTUP_POINTER_MISSING")
+
+    # The curated current authority rule prevents raw-textbook re-audits on mature content.
+    curated_path = "Prompt/CURATED-CURRENT-AUTHORITY-AND-DELTA-QA-POLICY-v1.0.0.md"
+    curated_binding = policies.get("curated_current_delta_qa", {})
+    if curated_binding.get("path") != curated_path or curated_binding.get("stages") != list(range(8)):
+        errors.append("CURATED_CURRENT_CENTRAL_ROUTING_OR_STAGES_MISMATCH")
+    curated_text = files.get(curated_path, b"").decode("utf-8", "replace")
+    for phrase in ("ORIGINAL_SOURCE", "CURATED_CURRENT", "NEXT_CURATED",
+                   "HOLD_AUTHORITY_UNRESOLVED", "SOURCE_EXACT",
+                   "do not re-inventory the textbook", "full current-state structural",
+                   "historical additions/removals"):
+        if phrase not in curated_text:
+            errors.append("CURATED_CURRENT_PROTECTION_MISSING:" + phrase)
+    if curated_path not in files.get(START, b"").decode("utf-8", "replace")[:4096]:
+        errors.append("CURATED_CURRENT_STARTUP_POINTER_MISSING")
 
     for name in (ENTRY, START, MASTER, CONTRACT, README, BOOTSTRAP):
         if name not in files:

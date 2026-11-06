@@ -1,0 +1,56 @@
+name: Curated Current Authority and Delta QA
+on:
+  pull_request:
+    paths:
+      - 'Prompt/CURATED-CURRENT-AUTHORITY-AND-DELTA-QA-POLICY-v1.0.0.md'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Verification/audit_curated_current_delta_v1.py'
+      - 'Verification/audit_global_policy_sync_v1.py'
+      - 'Verification/tests/test_audit_curated_current_delta_v1.py'
+      - 'Verification/tests/test_global_policy_sync_v1.py'
+      - '.github/workflows/curated-current-authority.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Prompt/CURATED-CURRENT-AUTHORITY-AND-DELTA-QA-POLICY-v1.0.0.md'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Prompt/START-PROMPT-v3.3.6.md'
+      - 'Verification/audit_curated_current_delta_v1.py'
+      - 'Verification/audit_global_policy_sync_v1.py'
+      - 'Verification/tests/test_audit_curated_current_delta_v1.py'
+      - 'Verification/tests/test_global_policy_sync_v1.py'
+      - '.github/workflows/curated-current-authority.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  curated-source-governance:
+    name: Verified current not raw textbook (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile source policy and delta audit
+        run: >-
+          python -B -m py_compile
+          Verification/audit_curated_current_delta_v1.py
+          Verification/audit_global_policy_sync_v1.py
+          Verification/tests/test_audit_curated_current_delta_v1.py
+          Verification/tests/test_global_policy_sync_v1.py
+      - name: Fail-closed exact central registry and version pin
+        run: python -B Verification/audit_global_policy_sync_v1.py --check
+      - name: Audit preservation, additions, deletions, negative cases
+        run: python -B -m unittest discover -s Verification/tests -p test_audit_curated_current_delta_v1.py -v
+      - name: Audit global routing and negative controls
+        run: python -B -m unittest discover -s Verification/tests -p test_global_policy_sync_v1.py -v

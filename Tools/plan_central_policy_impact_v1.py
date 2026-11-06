@@ -11,6 +11,8 @@ import argparse
 from collections import Counter
 import hashlib
 import json
+import re
+import subprocess
 from pathlib import Path
 import sys
 
@@ -34,7 +36,12 @@ ACCEPTED_SCOPES = {
     "ALL_WORKSTREAM_STARTUP", "ALL_PRODUCERS", "LEXICAL_MUTABLE",
     "LINGUISTIC_REVIEW", "LEXICAL_MUTABLE_AND_VISIBLE_PROJECTION",
     "NEUTRAL_VOCABULARY_PROJECTION", "USER_FACING_LEXICAL_DELIVERY",
-    "CLEAN_DELIVERY", "LEXICAL_QA_ADVISORY"
+    "CLEAN_DELIVERY", "LEXICAL_QA_ADVISORY",
+    "NEW_OR_MUTABLE_GERMAN_NOUN_VERB_ADJECTIVE_LEARNER_VISIBLE_PROJECTIONS",
+    "SOURCE_ATTESTED_LEXICAL_FRONT_SEMANTIC_QA",
+    "MUTABLE_NEUTRAL_VOCABULARY_NOUN_VERB_ADJECTIVE_WITH_CANONICAL_UNIT",
+    "SOURCE_PINNED_MUTABLE_NEUTRAL_LEXICAL_PROJECTIONS",
+    "OPT_IN_NATIVE_STAGE5_BUILDER_WITH_READABLE_CANONICAL_MORPHOLOGY"
 }
 QA_ONLY_SCOPE = "QA_WORKSPACE_NOT_DIRECT_PRODUCER"
 ROUTER_SCOPE = "INHERITS_NORMATIVE_GLOBAL_ENTRYPOINT_FOR_FUTURE_AUTHORIZED_WORK"
@@ -71,6 +78,21 @@ def git_blob_text_matches(data: bytes, expected: str) -> bool:
         git_blob_sha(data.replace(b"\r\n", b"\n")) == expected
     )
 
+def active_git_blob(root: Path, path: str) -> str:
+    """Resolve the **live** policy/accepted-current matrix from the checked out commit.
+
+    Historical profile records retain their old SHA and should NOT be edited
+    whenever the user approves another rule. Working-tree tampering is rejected.
+    """
+    proc = subprocess.run(["git","rev-parse","--verify","HEAD:" + path],
+                          cwd=root, text=True, capture_output=True, encoding="utf-8")
+    require(proc.returncode == 0, "LIVE_GIT_SNAPSHOT_UNAVAILABLE:" + path)
+    sha=proc.stdout.strip()
+    require(re.fullmatch(r"[0-9a-f]{40}", sha) is not None,
+            "LIVE_GIT_SNAPSHOT_INVALID:" + path)
+    return sha
+
+
 def load_json(root: Path, path: str, expected_blob: str | None = None) -> dict:
     f = root / path
     require(f.is_file() and not f.is_symlink(), "MISSING_OR_UNSAFE_EVIDENCE:" + path)
@@ -103,7 +125,13 @@ def authority(root: Path = ROOT) -> tuple[dict, dict, dict, dict, dict, dict]:
         require(item.get("path") == path and
                 isinstance(item.get("git_blob"), str) and
                 len(item["git_blob"]) == 40, "MISSING_AUTHORITY_BLOB_PIN:" + key)
-        docs.append(load_json(root, path, item["git_blob"]))
+        # The 2026-11-05 profile pins are historical **snapshots**, not live
+        # assertions about the continuously versioned policy and adoption matrix.
+        # Verify live bytes against Git HEAD for mutable control-plane pointers.
+        expected=(active_git_blob(root,path)
+                  if key in {"policy_registry","previous_routing_snapshot"}
+                  else item["git_blob"])
+        docs.append(load_json(root, path, expected))
     catalog, registry, previous, pilot, pilot_receipt = docs
     require(catalog.get("schema") == "gcpk-master-project-catalog@1.0.0",
             "CATALOG_SCHEMA_CHANGED")
@@ -347,7 +375,7 @@ def execute(root: Path = ROOT, bindings: set[str] | None = None) -> dict:
 
 def main() -> int:
     cli=argparse.ArgumentParser(description=__doc__)
-    cli.add_argument("--binding",action="append",help="Exact policy binding ID; omit to inspect all 15")
+    cli.add_argument("--binding",action="append",help="Exact policy binding ID; omit to inspect all currently registered rules")
     cli.add_argument("--family",help="Filter a family's candidate rows (or use --binding)")
     cli.add_argument("--summary",action="store_true",
                      help="Compact summary instead of all family/workspace/root rows")

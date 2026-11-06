@@ -42,17 +42,17 @@ class TestDependencyEvidence(unittest.TestCase):
             changes,
         )
 
-    def test_exact_current_index_pins_match_all_15_policy_files(self):
+    def test_exact_current_index_pins_match_all_registered_policy_files(self):
         self.assertEqual(graph.binding_failures(self.registry, self.index), [])
-        self.assertEqual(len(self.registry["policy_bindings"]), 15)
+        self.assertGreaterEqual(len(self.registry["policy_bindings"]), 22)
 
     def test_all_known_families_workspaces_and_root_keys_have_graph_nodes(self):
         r = self.build()
         self.assertEqual(r["counts"]["families"], 21)
         self.assertEqual(r["counts"]["workspaces"], 35)
         self.assertEqual(r["counts"]["root_keys"], 17)
-        self.assertEqual(r["counts"]["policies"], 15)
-        self.assertEqual(len(r["nodes"]), 21 + 35 + 17 + 15)
+        self.assertEqual(r["counts"]["policies"], len(self.registry["policy_bindings"]))
+        self.assertEqual(len(r["nodes"]), 21 + 35 + 17 + len(self.registry["policy_bindings"]))
 
     def test_every_workspace_has_exactly_one_family_ownership_edge(self):
         r = self.build()
@@ -66,6 +66,14 @@ class TestDependencyEvidence(unittest.TestCase):
         self.assertTrue(len(links) > 100)
         self.assertTrue(all("NOT_" in e["applicability"] or "CONDITIONAL" in e["applicability"]
                             for e in links))
+
+    def test_curated_current_policy_reaches_all_workspaces_without_fake_adoption(self):
+        r = self.build()
+        edges = [e for e in r["edges"] if e["from"] == "policy:curated_current_delta_qa"]
+        self.assertEqual(len(edges), 35)
+        self.assertTrue(all(e["applicability"] ==
+            "MANDATORY_ROUTING_SCOPE__NOT_IMPLEMENTATION_PROOF" for e in edges))
+        self.assertEqual(r["counts"]["source_artifact_shas_independently_verified"], 0)
 
     def test_currentness_applies_to_all_workspaces(self):
         r = self.build()

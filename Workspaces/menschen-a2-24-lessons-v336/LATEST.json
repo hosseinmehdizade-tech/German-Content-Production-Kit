@@ -8,7 +8,7 @@
   "artifact_library_file_id": "libfile_9d3a6437b4a881919cee6ca672067745",
   "stieftante_hold_id": null,
   "prior_central_checkpoint_state": "A2_L01_TO_L06_STAGE7_LOCKED__A2_L07_STAGE1_PASS_STAGE2_NEXT",
-  "next_action": "Exact current A2-only whole-course ZIP R21-R2-R1 SHA 774b8b..., Library libfile_9d3a6437b4a881919cee6ca672067745. Unique untyped related target ma2m-lu-1281 -> ma2m-lu-1282 with both RELATED and WORD_FAMILY typed edges preserved, README former R21-R1 currentness error fixed. 48 ZIP hashes and CRC, independent source delta 1 TSV field/1778 cards and 3 valid-hash mutated negative tests PASS. Previous R21-R2 safely History. No app bundled by user request, no native Stage6, primary-profile import remains held by open v505 issue #25, no per-lesson test kits. STOP creating report-only ZIPs; await actual app-consumer native evidence.",
+  "next_action": "A2 R21-R2-R1 remains exact CURRENT content-only ZIP SHA 774b8b... and Library libfile_9d3a6437b4a881919cee6ca672067745; no more A2 repackage/re-audit without material content delta. v505 2026-11-03 candidate storage function VM tests 4/4 show post-commit read/verify errors can falsely report that commit was unchanged; compare exact CURRENT full HTML before asserting cross-build defect. Issue #25 stays open but 2026-11-04 user reported Import recovered and B1 import persisted after close/reopen. Do not treat that open issue as proof Import currently broken for user. Exact A2 R21-R2-R1 same-profile import/reload/FSRS remains NOT_OBSERVED; no automatic user-data retries or per-lesson Chrome kits. Further progress requires actual exact-current runtime evidence or a real new observed failure, not another content ZIP.",
   "central_checkpoint_sha": "efc1c584e27787837f181e26f0a37a15b4f1532f",
   "root_project_state_sha": "1c76118e60e3f6f9058af78f743ea46fb942a0e8",
   "last_git_coordination": "A2_L24_STAGE7_CONTENT_LOCKED__A2_L01_TO_L24_LOCKED__GLOBAL_RUNTIME_FINAL_PENDING",
@@ -11381,5 +11381,45 @@
     "issue_25": "OPEN",
     "app_in_zip": false,
     "new_a2_zip_generated": false
+  },
+  "course_C3_R21_R2_R1_v505_durable_error_truth_diagnostic": {
+    "date": "2026-11-06",
+    "status": "PASS_4_OF_4_CONTROLLED_SOURCE_FUNCTION_VM_TESTS__MISLEADING_POST_COMMIT_ERROR_MESSAGE_PROVEN__USER_REPORTED_IMPORT_RECOVERED_IN_OTHER_CONTENT__EXACT_CURRENT_AND_A2_NATIVE_STAGE6_UNVERIFIED",
+    "source_scope": "Original runDurableMutationUnlockedV453 function extracted unchanged from 2026-11-03 v505 writing-scrollbar candidate ZIP, SHA256 3c7639a1132e6f28f620755e80eb4b1865f73318c3cb52aff2abb1fe694f617d; isolated Node VM mocked committed store, NOT real IndexedDB or full CURRENT HTML",
+    "mock_test_harness_sha256": "b7a1556ca84ac4dffe03ee01c7e97c6048f1e71738a3bf2e5d521920ef298e5a",
+    "negative_and_positive_scenarios": {
+      "success": "commit->postcommit_read->activate->verify, PASS",
+      "precommit_failure": "commit not published, catch reports error, PASS",
+      "postcommit_read_failure": "commit published, postcommit read threw, catch reports error, PASS",
+      "postcommit_verify_failure": "commit published, verification threw, catch reports error, PASS"
+    },
+    "actual_import_handler_message": "Import انجام نشد؛ نسل commit‌شده تغییر نکرد.",
+    "conclusion": "The catch's promise that committed generation did not change is not universally true after successful publish. This is a demonstrated error-reporting defect in the tested source, not proof of a present user Import failure/root cause.",
+    "git_branch_module_parity": {
+      "current_candidate_branch": "candidate/v505-r141-committed-storage-20261101",
+      "comparison_branch": "candidate/v505-r141-writing-scrollbar-stability-exact-20261103",
+      "committed_storage_v505_js_same_git_blob": "6604da72e5b1c71943036ab690157cf32c9810a5",
+      "archive_reader_v454_js_same_git_blob": "a59700fe0b90275465ca6e5abe4f5c114ba565d8",
+      "actual_full_CURRENT_HTML_sha256": "0b7358d2755a80d1563e5b4791f62ec72c6a42279914739d551aef1f4d2a0ea5",
+      "current_html_exact_bytes_compared": "NOT_AVAILABLE_THIS_TURN"
+    },
+    "user_field_evidence": {
+      "github_issue": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/25",
+      "reported_2026_11_04_import_recovered": true,
+      "reported_2026_11_04_other_B1_content_import_survived_close_reopen": true,
+      "user_A2_R21_R2_R1_exact_zip_import_observed": false,
+      "issue_still_open": true,
+      "status": "POSITIVE_USER_REPORTS_EXIST__CODE_ROOT_CAUSE_STILL_NOT_VERIFIED"
+    },
+    "explicit_boundaries": {
+      "A2_current_content_sha256": "774b8b620d57a0ad64b20490f8b3fa6aa4f015f1edf3e08e31a78c040222d2f5",
+      "A2_zip_modified": false,
+      "runtime_ui_or_importer_modified": false,
+      "user_profile_IndexedDB_FSRS_SRS_touched": false,
+      "new_Stage6_per_lesson_kit": false,
+      "new_ZIP_created": false,
+      "native_Stage6": "NOT_RUN",
+      "full_integrated_Stage7": "NOT_RUN"
+    }
   }
 }

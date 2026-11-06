@@ -12,6 +12,8 @@ on:
       - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
       - 'Verification/verify_aspekte_b2_curated_unit_delta_v1.py'
       - 'Verification/tests/test_aspekte_b2_curated_unit_delta_v1.py'
+      - 'Verification/verify_aspekte_b2_l02_curated_subset_v1.py'
+      - 'Verification/tests/test_aspekte_b2_l02_curated_subset_v1.py'
       - '.github/workflows/aspekte-curated-current-resume.yml'
   push:
     branches: [main]
@@ -25,6 +27,8 @@ on:
       - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
       - 'Verification/verify_aspekte_b2_curated_unit_delta_v1.py'
       - 'Verification/tests/test_aspekte_b2_curated_unit_delta_v1.py'
+      - 'Verification/verify_aspekte_b2_l02_curated_subset_v1.py'
+      - 'Verification/tests/test_aspekte_b2_l02_curated_subset_v1.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -50,3 +54,5 @@ jobs:
         run: python -B -m unittest discover -s Verification/tests -p test_aspekte_curated_current_resume_v1.py -v
       - name: Verify native B2 current-to-curated-parent delta and no-import negatives
         run: python -B -m unittest discover -s Verification/tests -p test_aspekte_b2_curated_unit_delta_v1.py -v
+      - name: Verify B2 L02 current 12-of-108 curated pilot vs accepted R14 parent
+        run: python -B -m unittest discover -s Verification/tests -p test_aspekte_b2_l02_curated_subset_v1.py -v

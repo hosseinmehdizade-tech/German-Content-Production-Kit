@@ -26,3 +26,14 @@ Size 3,313,224 bytes; 412 members; 411 checked manifest entries; CRC and Library
 - No import or release until these checks pass.
 
 See [LATEST.json](LATEST.json), [CHECKPOINT.json](CHECKPOINT.json), and [Part05 metadata](Reports/STAGE4-QA-GATE2D-PART05-METADATA-RECEIPT-20261106.json).
+
+## Stage 4 final editorial content decisions — Lesson 1 (2026-11-06)
+
+- All **25 L01 HOLD source rows** received explicit content and learner-target dispositions in a 49,277-byte private report stored in the B1+ Library `Reports` directory.
+- **9** previous editorial overlays were reviewed and superseded by explicit content decisions; **51** source-contained targets specified, **13** new DE–FA examples and **2** translation corrections.
+- 5 exact lemma hits against actual final Menschen A2 content were identified but **not** automatically removed. A1/B1 and sense-level comparisons are not fully signed off.
+- Main Gate2D Part05 ZIP baseline is **unchanged**. **All 340 HOLDs still release-blocked**, **zero formally approved cards**, no import.
+- Next: complete the **18 HOLD editorial content rulings in L02**; then L03–L10. Run final QA and front morphology/back Formen contract before publication.
+
+Private report SHA256: `d1100805558e826946c4110c3c9a12a9dffd1b7f6f1e8e5a5ec31708cc845c5c`.
+Private report Library id: `libfile_62cb235c1c1c8191b663df956a0e730f`.

@@ -34,6 +34,10 @@ Each step needs source-bound independently checked evidence. No automatic promot
 
 Existing observations: PR #80 synthetic adapter QA 65/65 on Ubuntu/Windows; A1 2,997 and A2 L17 112 rows parsed read-only; 250 Verben 292, NVV 2,492 schema-only; B1 master 3,088 rows **fail-closed** because 145 B1-L19 `details` cells contain prose not JSON; PR #81 central Stage5 future gate 18/18 on both OS; PR #82 refreshed navigation-only routes. See the exact receipts in `Optimization-Program/Verification/`; **none of these proves all-native adapters, full Stage4 or global release**.
 
+## One central Vorderseite / Rückseite contract (2026-11-06)
+
+Resolve the registry's `global_flashcard_front_back_presentation` binding at every new or resumed applicable German lexical owner. The version-pinned `Prompt/GLOBAL-FLASHCARD-FRONT-BACK-PRESENTATION-CONTRACT-v1.0.0.md` coordinates **existing** HF2 front-production policy with **conditional** Lean Formen back presentation. These govern **different sides of the producer/consumer boundary**: Stage5 must source-bind article/plural, verb principal forms and evidenced adjective comparison, while Stage6 must compare actually visible front values before hiding only redundant display facts from `Formen`. Preserve source-pinned HF2 v1.2 governed constructions, plural-only and non-gradable exceptions, all extra forms, card settings, typing, SOURCE/LOCKED/SRS. The 2026-11-04 app candidate is STATIC/NOT FULLY CORRECT, not a proven CURRENT/FINAL app implementation; independent browser validation and native-adapter QA remain pending.
+
 ## Source-specific and historical boundaries
 
 - Current `RELATED-SECTIONS-TAXONOMY-POLICY-v1.1.0.md` supersedes v1.0 only for prospective mutable production. v1.0 and historical README paragraphs remain for exact replay, not the active selector.

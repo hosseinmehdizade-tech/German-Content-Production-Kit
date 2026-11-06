@@ -22,11 +22,27 @@ ENTRY = "Prompt/ACTIVE-PROMPT.txt"
 README = "README.md"
 BOOTSTRAP = "PROJECT-BOOTSTRAP.md"
 REQUIRED_POLICIES = {
-    "currentness", "seven_stages", "stage3_onepass", "linguistic_qa",
-    "risk_based_stage4", "kombinationen_pointer", "kombinationen_source_first",
-    "related_taxonomy", "lexical_relation_display", "stage5_neutral_validator",
-    "stage5_clean_builder", "stage5_delivery", "stage5_hygiene",
-    "related_advisory", "lexical_relation_advisory",
+    "currentness",
+    "seven_stages",
+    "stage3_onepass",
+    "linguistic_qa",
+    "risk_based_stage4",
+    "kombinationen_pointer",
+    "kombinationen_source_first",
+    "related_taxonomy",
+    "lexical_relation_display",
+    "stage5_neutral_validator",
+    "stage5_clean_builder",
+    "stage5_delivery",
+    "stage5_hygiene",
+    "related_advisory",
+    "lexical_relation_advisory",
+    "learner_visible_front_hf2",
+    "learner_visible_front_hf2_validator",
+    "lexical_front_transport_gate",
+    "lexical_front_transport_adapter",
+    "stage5_front_gated_clean_builder",
+    "global_flashcard_front_back_presentation",
 }
 REQUIRED_INVARIANTS = {
     "user_explicit_newer_validated_source_precedes_stale_git",
@@ -143,12 +159,30 @@ def audit_snapshot(reg: dict, mat: dict, tracked_dirs: list[str],
             "LINGUISTIC_REVIEW", "LEXICAL_MUTABLE_AND_VISIBLE_PROJECTION",
             "NEUTRAL_VOCABULARY_PROJECTION", "USER_FACING_LEXICAL_DELIVERY",
             "CLEAN_DELIVERY", "LEXICAL_QA_ADVISORY",
+            "NEW_OR_MUTABLE_GERMAN_NOUN_VERB_ADJECTIVE_LEARNER_VISIBLE_PROJECTIONS",
+            "SOURCE_ATTESTED_LEXICAL_FRONT_SEMANTIC_QA",
+            "MUTABLE_NEUTRAL_VOCABULARY_NOUN_VERB_ADJECTIVE_WITH_CANONICAL_UNIT",
+            "SOURCE_PINNED_MUTABLE_NEUTRAL_LEXICAL_PROJECTIONS",
+            "OPT_IN_NATIVE_STAGE5_BUILDER_WITH_READABLE_CANONICAL_MORPHOLOGY",
         }:
             errors.append("INVALID_POLICY_SCOPE:" + key)
         stages = obj.get("stages")
         if not isinstance(stages, list) or not stages or any(
                 type(v) is not int or v < 0 or v > 7 for v in stages):
             errors.append("INVALID_POLICY_STAGE:" + key)
+
+    # Central front/back contract has a unique version-pinned policy and visible entrypoint.
+    fb = "Prompt/GLOBAL-FLASHCARD-FRONT-BACK-PRESENTATION-CONTRACT-v1.0.0.md"
+    routed = policies.get("global_flashcard_front_back_presentation", {})
+    if routed.get("path") != fb or routed.get("stages") != [5, 6]:
+        errors.append("FRONT_BACK_CENTRAL_ROUTING_OR_STAGE_MISMATCH")
+    fb_text = files.get(fb, b"").decode("utf-8", "replace")
+    for required in ("HF2 v1.1.0", "Lean Formen", "plural_only",
+                     "NOT CURRENT/FINAL", "Typing/Audio", "Konjunktiv II"):
+        if required not in fb_text:
+            errors.append("FRONT_BACK_PROTECTION_MISSING:" + required)
+    if fb not in files.get(START, b"").decode("utf-8", "replace")[:4096]:
+        errors.append("FRONT_BACK_ACTIVE_STARTUP_POINTER_MISSING")
 
     for name in (ENTRY, START, MASTER, CONTRACT, README, BOOTSTRAP):
         if name not in files:

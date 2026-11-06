@@ -53,9 +53,29 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         self.assertIn("STALE_POLICY_BLOB_PIN:currentness", self.check_snapshot(files=files))
 
     def test_every_policy_is_version_pinned(self):
-        self.assertEqual(len(self.base_registry["policy_bindings"]), 15)
+        self.assertEqual(len(self.base_registry["policy_bindings"]), len(auditor.REQUIRED_POLICIES))
         self.assertTrue(all(x["path"] in self.base_files for x in
                             self.base_registry["policy_bindings"].values()))
+
+    def test_front_back_policy_mandatory_and_pinned(self):
+        reg = copy.deepcopy(self.base_registry)
+        key = "global_flashcard_front_back_presentation"
+        binding = reg["policy_bindings"][key]
+        self.assertEqual(binding["stages"], [5, 6])
+        self.assertIn("GLOBAL-FLASHCARD-FRONT-BACK", binding["path"])
+        del reg["policy_bindings"][key]
+        self.assertIn("MANDATORY_POLICY_BINDINGS_CHANGED", self.check_snapshot(reg=reg))
+        files = dict(self.base_files)
+        files[binding["path"]] += b"\\nUNAUTHORIZED_POLICY_REWRITE\\n"
+        self.assertIn("STALE_POLICY_BLOB_PIN:" + key, self.check_snapshot(files=files))
+
+    def test_front_back_cannot_be_hidden_from_startup(self):
+        files = dict(self.base_files)
+        files[auditor.START] = files[auditor.START].replace(
+            b"Prompt/GLOBAL-FLASHCARD-FRONT-BACK-PRESENTATION-CONTRACT-v1.0.0.md",
+            b"Prompt/WRONG-FRONT-BACK-CONTRACT.md", 1)
+        self.assertIn("FRONT_BACK_ACTIVE_STARTUP_POINTER_MISSING",
+                      self.check_snapshot(files=files))
 
     def test_registry_pin_mutation_fails(self):
         data = copy.deepcopy(self.base_registry)

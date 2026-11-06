@@ -11,12 +11,13 @@ import hashlib
 import importlib.util
 import io
 import json
+import re
+import subprocess
 from pathlib import Path
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 REGISTRY="Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json"
-REGISTRY_BLOB="74d24a2e0019a70b37b7f9d0ac83d0c788312ac1"
 BINDING="stage5_neutral_validator"
 VALIDATOR="Verification/validate_unified_vocabulary_projection_v1_1_0.py"
 MAX_TSV=35_000_000
@@ -38,11 +39,29 @@ def matches_git_text(blob, digest):
     return git_blob(blob)==digest or (
         b"\r\n" in blob and git_blob(blob.replace(b"\r\n",b"\n"))==digest)
 
+def active_registry_blob_from_checkout():
+    """Resolve the **actual checked-out Git commit**'s approved registry bytes.
+
+    This avoids invalidating every native Stage5 run whenever a new central
+    policy is merged; fail-closed on non-Git/uncommitted tampering. The central
+    registry audit still validates every binding, path, safety invariant and
+    stage scope independently. Never infer source CURRENT or Stage4/6 here.
+    """
+    proc=subprocess.run(["git","rev-parse","--verify","HEAD:"+REGISTRY],
+                        cwd=ROOT,capture_output=True,text=True,encoding="utf-8")
+    require(proc.returncode==0, "ACTIVE_GIT_REGISTRY_UNAVAILABLE")
+    sha=proc.stdout.strip()
+    require(re.fullmatch(r"[0-9a-f]{40}",sha) is not None,
+            "ACTIVE_GIT_REGISTRY_BLOB_INVALID")
+    return sha
+
+
 def load_authority(root=ROOT):
     file=root/REGISTRY
     require(file.is_file() and not file.is_symlink(), "MISSING_REGISTRY_FILE")
     blob=file.read_bytes()
-    require(matches_git_text(blob,REGISTRY_BLOB),"REGISTRY_GIT_BLOB_MISMATCH")
+    require(matches_git_text(blob,active_registry_blob_from_checkout()),
+            "REGISTRY_GIT_BLOB_MISMATCH")
     reg=json.loads(blob.decode("utf-8-sig"))
     require(reg.get("schema")=="gcpk-global-policy-registry@1.0.0" and
             reg.get("status")=="ACTIVE_PROSPECTIVE_POLICY_ROUTER_NOT_BULK_CONTENT_MIGRATION",
@@ -87,7 +106,7 @@ def check_bytes(data:bytes, root=ROOT):
     return {
       "schema":"gfp-opt-p1-stage5-active-policy-input-gate@1.0.0",
       "status":"PASS_EXACT_ACTIVE_STAGE5_NEUTRAL_FORMAT_ONLY",
-      "registry_git_blob":REGISTRY_BLOB,
+      "registry_git_blob":active_registry_blob_from_checkout(),
       "policy_binding":BINDING,
       "validator_git_blob":binding["blob_sha"],
       "input_tsv_sha256":sha256(data),

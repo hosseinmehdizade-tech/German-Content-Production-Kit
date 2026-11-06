@@ -1,0 +1,48 @@
+name: Global visible morphology details gate
+
+on:
+  pull_request:
+    paths:
+      - 'Prompt/LEARNER-VISIBLE-MORPHOLOGY-SECTIONS-POLICY-v1.0.0.md'
+      - 'Prompt/VISIBLE-MORPHOLOGY-DETAILS-ACTIVE-PIN-20261106.json'
+      - 'Verification/audit_visible_morphology_details_v1.py'
+      - 'Verification/tests/test_audit_visible_morphology_details_v1.py'
+      - '.github/workflows/visible-morphology-details-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Prompt/LEARNER-VISIBLE-MORPHOLOGY-SECTIONS-POLICY-v1.0.0.md'
+      - 'Prompt/VISIBLE-MORPHOLOGY-DETAILS-ACTIVE-PIN-20261106.json'
+      - 'Verification/audit_visible_morphology_details_v1.py'
+      - 'Verification/tests/test_audit_visible_morphology_details_v1.py'
+      - '.github/workflows/visible-morphology-details-gate.yml'
+
+jobs:
+  morphology-readonly:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin and invariant verification
+        shell: bash
+        run: |
+          python -B - <<'PY'
+          import hashlib, json, pathlib
+          pin=json.loads(pathlib.Path('Prompt/VISIBLE-MORPHOLOGY-DETAILS-ACTIVE-PIN-20261106.json').read_text(encoding='utf8'))
+          assert pin['claims']['all_native_producers_adopted'] is False
+          assert pin['claims']['app_current_changed'] is False
+          for role in ('policy','validator'):
+              p=pathlib.Path(pin[role]['path'])
+              b=p.read_bytes().replace(bytes([13,10]),bytes([10]))  # Git LF normalized across Windows
+              digest=hashlib.sha1(b'blob '+str(len(b)).encode()+bytes([0])+b).hexdigest()
+              assert digest==pin[role]['git_blob_sha'],(role,digest,pin[role]['git_blob_sha'])
+          print('PASS_PINNED_READONLY_POLICY_WITH_NO_FALSE_STAGE6')
+          PY
+      - name: Synthetic positive and negative controls
+        run: python -B -m unittest discover -s Verification/tests -p 'test_audit_visible_morphology_details_v1.py' -v

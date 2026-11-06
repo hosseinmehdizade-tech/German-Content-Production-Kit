@@ -1,5 +1,12 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Scoped Morphologie section cleanup candidate — M1 (2026-11-06; NOT CURRENT / NOT IMPORT)
+
+Exact parent **R21-R2-R1 remains the active owner CURRENT**. New reversible candidate `Menschen-A2-R21-R2-R1-M1-1778-Karten-MORPHOLOGIE-STANDARDISIERT-CANDIDATE-20261106.zip` SHA-256 `e42e3c28283a4e2a97d6e1c4e7a4b4f12c9ab5fc9a856a47a88000a65dbc26c1`, 3,582,442 bytes, 50 members, Library `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Candidates/`, stable `libfile_55c3ce48365c81918cee8f07a657c6e5`, exact Library SHA readback PASS. 214 `details[].title=Morphologie` eliminated; 175 entirely redundant front copies suppressed, 39 sections with additional facts retained in existing `Formen` or `Register`. All 286 original source items from these sections are in a full keyed reversible ledger within the ZIP; 1,778 IDs, 7,112 trilingual examples, 1,829 course memberships, 22 non-details TSV fields, canonical semantic rows and typing remain unchanged. Embedded scoped ZIP verifier PASS; real native Stage5 builder, actual v505 Study/Quick/FSRS/Import Stage6 and global Stage7 NOT RUN. Do not promote via policy routing alone. Git exact receipt: [M1 scoped candidate](./MORPHOLOGIE-214-M1-SCOPED-CANDIDATE-20261106.json).
+
+---
+
+
 ## Current corrected untyped-link candidate — R21-R2-R1 (2026-11-06)
 
 **Authoritative one-ZIP content-only working candidate:** `Menschen-A2-R21-R2-R1-1778-Karten-CONTENT-ONLY-KORRIGIERTE-LINKS-UND-ANLEITUNG-20261106.zip`, SHA256 `774b8b620d57a0ad64b20490f8b3fa6aa4f015f1edf3e08e31a78c040222d2f5`, **3,563,283 bytes, 48 ZIP files**. Exact independent Library raw-byte readback **PASS**, stable ID `libfile_9d3a6437b4a881919cee6ca672067745` in `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Current/`. [Source-bound correction receipt](./C3-R21-R2-R1-SINGLE-FLAT-LINK-REPAIR-STATIC-QA-2026-11-06.json) and [owner artifact register](./ARTIFACT-REGISTER.json).

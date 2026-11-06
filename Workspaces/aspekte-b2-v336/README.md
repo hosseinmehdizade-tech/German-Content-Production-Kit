@@ -1,5 +1,16 @@
 # Aspekte B2 — independent German–Persian lexical project from user's CSV only
 
+## Active curated-current resume route — 2026-11-06 R43
+
+**Read this before continuing B2:** `LATEST.json.latest_scoped_audit` is the **newer L01 R43 scoped work**; `CHECKPOINT.json.latest_scoped_audit` is an older R32 lesson snapshot, and the L05 R25 ZIP remains the **separate global portable project checkpoint**. Do **not** downgrade lesson-one progress to R25/R32 or treat a dated original CSV as an approved-card baseline. Follow `Prompt/CURATED-CURRENT-AUTHORITY-AND-DELTA-QA-POLICY-v1.0.0.md`; reference the verified owner-local R42 `Current/L01-CANONICAL-WORKING-NONIMPORT.csv` (SHA256 `9da4568db9edc592429d35d2ddac4a91fb5369cfff1a5782ce1ce5ef74b88d0b`) and R43 `Current/L01-158-UNIT-CARD-PREVIEW-NONIMPORT.csv` (SHA256 `720154fe304c990aeec4dc7b69c70bc36fa22784f8e769d7f208d2724b0b50c3`). These are **curated working evidence, not FINAL or importable cards**.
+
+**Real Library readback in this continuation:** 160/160 source ordinals 1549–1708 are represented in the R43 coverage table (SHA256 `d1bd551c71306247eaedd71de6827c0e4cb4e5b619f8977a184dfa37b71f9bea`), 158 distinct draft card units, 2 preserved non-card content objects, and 4 typed exceptions. All preview cards are `export_importable=FALSE` and `linguistic_release_approved=FALSE`; no original source rows removed, zero imports, 17 existing release HOLDs. The 32,316-byte R43 chapter ZIP (SHA256 `ea98525737b06ce8dcb223c0d1de9ebe364c9a9b61690f2dc56fea8a66623e0c`) passes readback SHA256 and CRC; the old L05 R25 project ZIP remains unchanged.
+
+**Next native work:** review only R43's unresolved learner-unit decisions/17 HOLDs and changed draft fields plus affected dependent senses; independently QA DE/FA example pairs and front/back morphology. **No full original textbook/CSV word-for-word re-audit**, no retroactive restoration of removed words, no automatic duplicate dropping. Original user CSV is historical lineage and exact-attribution/recovery evidence. No Stage2 semantic signoff, Stage3–7 or app release claimed. Compare other levels only against their *accepted curated project content*, never raw Menschen 9109.
+
+Verified read-only technical receipt: `Reports/R43-CURATED-CURRENT-RESUME-READBACK-20261106.json`.
+
+
 **Definition approved v1.0.0.** Stage1 PASS_VERIFIED_SANITIZED_LINEAGE (1,726 user CSV B2 rows; ten lessons). **Stage2 IN_PROGRESS_NOT_APPROVED. Stage3–7 NOT_STARTED. 0 released/importable flashcards.**
 
 **Single vocabulary authority:** user-owned six-column privacy-sanitized B2 CSV SHA256 `e907d0f882b4b9d02f2c631d9a93b1c4e671f6231e7c0deb257ebc26434011c5` freshly byte-verified in R25. Original seven-column private raw SHA256 `09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1` historical only, not newly hashed. Selected external dictionaries corroborate existing source-listed German forms; **they do not add words to the project inventory**. No source German, Persian, example, audio, tags, ordinals, learner app or personal SRS modified.

@@ -107,6 +107,10 @@ def inspect(root:Path)->dict:
         safe_dir(home,path)
     if not baseline_set.issubset(catalog_by_dir):
         raise ValueError("Original workspace directory removed or renamed")
+    new_paths=set(catalog_by_dir)-baseline_set
+    migrations={r["family_id"]:r for r in rfams if r.get("initial_canonical_git_workspace")!=r.get("canonical_git_workspace")}
+    if not new_paths.issubset({r["canonical_git_workspace"] for r in migrations.values()}):
+        raise ValueError("New top-level workspace is not an approved canonical route change")
     for route in rfams:
         fid=route["family_id"]
         if route.get("canonical_library_root")!=family_by_id[fid].get("library_path"):
@@ -119,8 +123,8 @@ def inspect(root:Path)->dict:
                 raise ValueError("No-Git family must not silently have workspace/current "+fid)
         elif selected not in mapped or len(role_canonical)!=1 or role_canonical[0]["git_dir"]!=selected:
             raise ValueError("Family must have exactly one catalogued canonical Git workspace "+fid)
-        if route.get("no_new_git_workspace_created") is not True:
-            raise ValueError("Cannot claim migrated dirs in routing seed")
+        if route.get("no_new_git_workspace_created") is not (selected not in new_paths):
+            raise ValueError("Workspace creation flag contradicts the actual approved new path")
     for path,role in role_by_dir.items():
         original=catalog_by_dir[path]
         if role.get("workspace_id")!=original.get("id") or role.get("family_id")!=original.get("parent_family_id"):
@@ -153,26 +157,24 @@ def inspect(root:Path)->dict:
     for route in rfams:
         if route["family_id"] not in seen and (route.get("canonical_source_owner_document") or route.get("active_content_sha256")):
             raise ValueError("Noncurated family cannot assert a current accepted artifact")
-    new_paths=set(catalog_by_dir)-baseline_set
     authorizations=routing.get("migration_authorizations",[])
-    if not isinstance(authorizations,list):
-        raise ValueError("Missing authorization list")
-    if new_paths and len(authorizations)!=len(new_paths):
-        raise ValueError("New workspace requires one exact reviewed approval receipt")
+    if not isinstance(authorizations,list) or len(authorizations)!=len(migrations):
+        raise ValueError("Every changed canonical route requires its own explicit approval receipt")
     registered=set()
     for authorization in authorizations:
-        path=authorization.get("new_git_workspace")
-        if path not in new_paths or path in registered:
-            raise ValueError("Unmatched/duplicate workspace creation receipt")
-        registered.add(path)
-        role=role_by_dir[path]
-        if role["role"]!="CANONICAL":
-            raise ValueError("New noncanonical sibling workspace forbidden: "+path)
-        fid=role["family_id"]
-        former=authorization.get("previous_git_workspace")
+        fid=authorization.get("family_id")
+        if fid not in migrations or fid in registered:
+            raise ValueError("Unknown/duplicate canonical migration family")
+        registered.add(fid)
+        target=migrations[fid]["canonical_git_workspace"]
+        former=migrations[fid]["initial_canonical_git_workspace"]
+        if authorization.get("new_git_workspace")!=target or authorization.get("previous_git_workspace")!=former:
+            raise ValueError("Canonical migration cannot silently replace the original route")
+        if role_by_dir[target]["role"]!="CANONICAL":
+            raise ValueError("Only an explicitly reviewed canonical replacement is permitted")
         if former is not None and (former not in baseline_set or role_by_dir[former]["family_id"]!=fid):
-            raise ValueError("Canonical replacement must name historical same-family folder")
-        authority_approval(home,authorization,fid,path,former)
+            raise ValueError("Historical canonical predecessor must remain in the same family")
+        authority_approval(home,authorization,fid,target,former)
     work=root/"Workspaces"
     observed={("Workspaces/"+p.name) for p in work.iterdir() if p.is_dir()} if work.is_dir() else set()
     if observed!=set(catalog_by_dir):
@@ -194,7 +196,8 @@ def inspect(root:Path)->dict:
         ("legacy_compatibility_directories","preserved_legacy"))}:
         raise ValueError("Published routing summary counters drifted")
     return {"schema":"gcpk-canonical-family-routing-gate@1.0.0",
-        "status":"PASS_ROUTING_ONE_CANONICAL_PER_FAMILY__ZERO_PHYSICAL_CHANGES",
+        "status":("PASS_ROUTING_ONE_CANONICAL_PER_FAMILY__APPROVED_CHANGES_CHECKED" if migrations
+                  else "PASS_ROUTING_ONE_CANONICAL_PER_FAMILY__ZERO_PHYSICAL_CHANGES"),
         "counts":counts,"new_git_workspace_creation":"BLOCKED_UNLESS_EXPLICIT_REVIEWED_APPROVAL",
         "runtime_or_content_final_claims":"NONE",
         "live_library_or_drive_scanned":False,"automatic_source_content_or_srs_changes":False}

@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+"""R13 -> R14: 14 individually authored p03 trilingual anti-template edits.
+Source of truth: current R13 curated content, not old book/PDF. Does not run native nine-lens grammar engine.
+"""
+import pathlib,json,hashlib,collections,copy
+P=pathlib.Path('/mnt/data/lesen_r14_20261107');P.mkdir(exist_ok=True)
+BASE=pathlib.Path('/mnt/data/lesen_r13_20261107/Lesen-Production-Master-v1.3.0-R13-16P04-TRILINGUAL-CANDIDATE.json')
+OUT=P/'Lesen-Production-Master-v1.3.0-R14-14P03-TRILINGUAL-CANDIDATE.json'
+LED=P/'LESEN-R14-14P03-TRILINGUAL-GRAMMAR-LEDGER.json'
+BASESHA='d619d7d9777849a25a154b52574b66a3dd92fc4f4d045e7b4ceb4e0fbc16b30f'
+sha=lambda b:hashlib.sha256(b).hexdigest()
+canon=lambda x:json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode('utf8')
+write=lambda p,x:p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+# Each four-sentence translation deliberately includes unchanged s02 and s03, rather than replacing their meaning.
+EDITS={
+13:dict(s01='Begegnungen auf Reisen bedeuten noch nicht, dass Besucher die Lebensweise der Menschen vor Ort verstehen.',s04='Wer nur touristische Attraktionen sieht, kann kulturelle Unterschiede leicht auf Klischees reduzieren.',fa='رویارویی با مردم در سفر هنوز به این معنا نیست که بازدیدکنندگان شیوهٔ زندگی مردم محلی را درک می‌کنند. همچنین گفته می‌شود گردشگری انبوه می‌تواند فرهنگ محلی را ساده‌سازی و تجاری‌سازی کند یا حتی به حاشیه براند. این نکته مهم است، زیرا تماس کوتاه گردشگران خودبه‌خود به شناخت واقعی منجر نمی‌شود. کسی که فقط جاذبه‌های گردشگری را می‌بیند، ممکن است تفاوت‌های فرهنگی را به کلیشه‌ها تقلیل دهد.',en='Encounters while travelling do not yet mean that visitors understand how local people live. It is also pointed out that mass tourism can simplify, commercialize and even displace local culture. This matters because brief tourist contact does not automatically lead to genuine understanding. Someone who sees only tourist attractions may easily reduce cultural differences to stereotypes.',grammar=('subordinate_clauses_all','dass Besucher die Lebensweise der Menschen vor Ort verstehen','Nebensatz mit dass')),
+17:dict(s01='Naturwissenschaftlicher Unterricht kann Kinder fördern, darf aber nicht wie eine frühe Berufswahl behandelt werden.',s04='Fehlt Zeit für freies Ausprobieren, verlieren manche Kinder eher die Freude am Entdecken.',fa='آموزش علوم طبیعی می‌تواند به رشد کودکان کمک کند، اما نباید مانند انتخاب زودهنگام یک حرفه با آن برخورد کرد. همچنین گفته می‌شود تخصصی‌شدن بیش از حدِ زودهنگام ممکن است علاقه‌های دیگر را کنار بزند و فشار عملکردی بیشتری ایجاد کند. این موضوع مهم است، زیرا دبستان بیش از هر چیز باید پایه‌های عمومی و شوق کشف را تقویت کند. اگر زمانی برای تجربه‌کردن آزادانه نباشد، ممکن است بعضی کودکان حتی لذت کشف‌کردن را از دست بدهند.',en='Science education can help children develop, but it should not be treated as an early career choice. It is also argued that specializing too early can crowd out other interests and create additional performance pressure. This matters because primary school should above all provide broad foundations and a joy of discovery. When there is no time to experiment freely, some children may actually lose their enthusiasm for discovering things.'),
+21:dict(s01='Berufliche Kontakte können ungleich verteilt sein, auch wenn sie über offizielle Alumni-Vereine entstehen.',s04='Ein Verein, der nur ohnehin gut vernetzte Mitglieder erreicht, könnte bestehende Chancenunterschiede verstärken.',fa='ارتباط‌های شغلی ممکن است نابرابر توزیع شوند، حتی اگر از طریق انجمن‌های رسمی فارغ‌التحصیلان شکل بگیرند. همچنین اشاره می‌شود که این شبکه‌ها ممکن است نخبه‌گرایانه به نظر برسند یا بیشتر در خدمت منافع اقتصادی باشند. این مسئله مهم است، زیرا همهٔ فارغ‌التحصیلان فرصت یکسانی برای شبکه‌سازی ندارند. انجمنی که فقط به اعضای از قبل دارای ارتباطات خوب دسترسی پیدا کند، می‌تواند نابرابری فرصت‌های موجود را تشدید کند.',en='Professional contacts can be distributed unequally even when they arise through official alumni associations. It is also noted that such networks can appear elitist or primarily serve economic interests. This matters because not all graduates have equal opportunities to build networks. An association that reaches only members who are already well connected could reinforce existing inequalities of opportunity.',grammar=('konjunktiv_ii','könnte','Konjunktiv II: mögliche Folge')),
+25:dict(s01='Ein bis zur letzten Minute durchgetakteter Lernplan kann den Alltag unnötig einengen.',s04='Wer jede Abweichung als Scheitern deutet, gerät trotz guter Planung unter Druck.',fa='برنامهٔ مطالعه‌ای که تا آخرین دقیقه زمان‌بندی شده باشد، می‌تواند زندگی روزمره را بی‌دلیل محدود کند. همچنین گفته می‌شود برنامه‌های بیش از حد سخت انعطاف را از بین می‌برند و استرس اضافی ایجاد می‌کنند. این نکته مهم است، زیرا کارهای پیش‌بینی‌نشده و تغییر سطح انرژی بخشی از زندگی روزمره‌اند. کسی که هر انحراف از برنامه را شکست تلقی کند، با وجود برنامه‌ریزی خوب باز هم تحت فشار قرار می‌گیرد.',en='A study schedule planned down to the last minute can make everyday life unnecessarily restrictive. It is also pointed out that overly rigid plans can make people inflexible and cause extra stress. This matters because unexpected tasks and fluctuating energy are part of daily life. Anyone who sees every deviation as failure can feel under pressure despite having a good plan.',grammar=('relative_clauses_all','Wer jede Abweichung als Scheitern deutet','Freier Relativsatz mit wer')),
+29:dict(s01='Eine modernisierte Fassung ist oft leichter zu lesen, kann aber den Blick auf die Entstehungszeit verändern.',s04='Ohne transparente Hinweise auf Änderungen verlieren Leserinnen und Leser wichtige historische Orientierung.',fa='نسخه‌ای با زبان امروزی اغلب خواندن را آسان‌تر می‌کند، اما می‌تواند نگاه خواننده به دورهٔ پیدایش اثر را تغییر دهد. همچنین اشاره می‌شود که دست‌بردن در متن می‌تواند ویژگی تاریخی اثر را دگرگون کند و تعارض‌های اجتماعی زمان نگارش آن را پنهان سازد. این نکته مهم است، زیرا ادبیات سندی از زمانهٔ خود نیز هست. بدون توضیح شفاف دربارهٔ تغییرات، خوانندگان بخش مهمی از راهنمایی تاریخی برای فهم متن را از دست می‌دهند.',en='A modernized version is often easier to read, but it can change how readers see the time in which a work was written. It is also noted that interventions can alter a work’s historical character and hide the social conflicts of its period. This matters because literature is also a record of its time. Without transparent information about changes, readers lose important historical context.'),
+33:dict(s01='Mehr Musikstunden lösen nicht automatisch das Problem ungleicher Lernbedingungen.',s04='Fehlende Instrumente und Fachkräfte könnten die Unterschiede zwischen Schulen sogar vergrößern.',fa='افزایش ساعت‌های موسیقی به‌خودی‌خود مشکل نابرابری شرایط یادگیری را حل نمی‌کند. همچنین گفته می‌شود برنامهٔ درسی مدارس از قبل فشرده است و همهٔ دانش‌آموزان به موسیقی علاقه ندارند. این موضوع مهم است، زیرا سازها، فضاهای مناسب و معلمان واجد شرایط به منابع اضافی نیاز دارند. کمبود ساز و نیروی متخصص حتی ممکن است تفاوت میان مدارس را بیشتر کند.',en='Adding more music classes does not automatically solve unequal learning conditions. It is also pointed out that timetables are already full and not all pupils are interested in music. This matters because instruments, rooms and qualified teachers require additional resources. A lack of instruments and specialist teachers could even widen the differences between schools.',grammar=('konjunktiv_ii','könnten','Konjunktiv II: mögliche Folge')),
+37:dict(s01='An der Universität ist eigenständiges Lernen sinnvoll, auch wenn Lehrveranstaltungen didaktische Unterstützung brauchen.',s04='Eine gute Vorlesung sollte Studierende zu eigenständigem Denken anregen, statt jeden Schritt vorzugeben.',fa='در دانشگاه یادگیری مستقل کار ارزشمندی است، حتی اگر کلاس‌ها به پشتیبانی آموزشیِ مناسب نیاز داشته باشند. همچنین گفته می‌شود دانشجویان بزرگسال‌اند و در دانشگاه باید مسئولیت بیشتری برای فرایند یادگیری خود بپذیرند. این نکته مهم است، زیرا آموزش دانشگاهی باید هم‌زمان با پژوهش، تعمیق دانش تخصصی و کلاس‌های پرجمعیت کنار بیاید. یک سخنرانی آموزشی خوب باید دانشجویان را به فکرکردن مستقل تشویق کند، نه اینکه هر قدم را برایشان تعیین کند.',en='At university, independent learning is valuable even though classes need appropriate didactic support. It is also argued that students are adults and must take more responsibility for their own learning process at university. This matters because university teaching must also balance research, advanced subject knowledge and large groups. A good lecture should encourage students to think independently rather than prescribe every step.',grammar=('subordinate_clauses_all','auch wenn Lehrveranstaltungen didaktische Unterstützung brauchen','Konzessiver Nebensatz mit auch wenn')),
+41:dict(s01='Professionelle Pflege entlastet Familien, doch persönliche Zuwendung lässt sich nicht vollständig organisieren.',s04='Beide Seiten müssen deshalb zusammenarbeiten, ohne Angehörigen die gesamte Verantwortung aufzubürden.',fa='مراقبت حرفه‌ای بار خانواده‌ها را سبک‌تر می‌کند، اما محبت و توجه شخصی را نمی‌توان به‌طور کامل سازمان‌دهی کرد. همچنین گفته می‌شود نظام‌های دولتی بدون نزدیکی و همراهی خانواده نمی‌توانند تمام نیازهای فردی را پاسخ دهند. این موضوع مهم است، زیرا مراقبت علاوه بر خدمات، رابطهٔ عاطفی و تداوم ارتباط شخصی را نیز دربرمی‌گیرد. بنابراین هر دو طرف باید همکاری کنند، بی‌آنکه تمام مسئولیت به دوش اعضای خانواده گذاشته شود.',en='Professional care eases the burden on families, but personal affection cannot be fully organized. It is also pointed out that state systems without family closeness cannot fully meet individual needs. This matters because care also includes emotional relationships and personal continuity. Both sides must therefore work together without placing the entire responsibility on relatives.',grammar=('infinitive_with_zu','ohne Angehörigen die gesamte Verantwortung aufzubürden','Infinitivgruppe mit ohne ... zu')),
+45:dict(s01='Bildungserfolg hängt nicht allein von Motivation und Fleiß ab.',s04='Eine faire Beurteilung muss individuelle Anstrengung und ungleiche Startbedingungen zugleich berücksichtigen.',fa='موفقیت تحصیلی فقط به انگیزه و پشتکار وابسته نیست. همچنین اشاره می‌شود که شانس، پیشینهٔ خانوادگی، سلامت و شرایط اقتصادی تأثیر زیادی بر فرصت‌های افراد دارند. این نکته مهم است، زیرا انسان‌ها با شرایط آغازین یکسانی شروع نمی‌کنند. یک ارزیابی منصفانه باید هم تلاش فردی و هم نابرابری شرایط اولیه را در نظر بگیرد.',en='Educational success does not depend solely on motivation and hard work. It is also pointed out that chance, background, health and economic conditions strongly shape opportunities. This matters because people do not start from equal circumstances. A fair assessment must take account of both individual effort and unequal starting conditions.'),
+49:dict(s01='Soziales Engagement ist besonders wertvoll, wenn junge Menschen sich bewusst dafür entscheiden.',s04='Eine allgemeine Pflicht könnte gerade Jugendliche überlasten, die zu Hause bereits viel Verantwortung tragen.',fa='فعالیت اجتماعی به‌ویژه زمانی ارزشمند است که جوانان آگاهانه آن را انتخاب کنند. همچنین گفته می‌شود فعالیت اجباری ماهیت داوطلبانهٔ خود را از دست می‌دهد و می‌تواند فشار زمانی بیشتری ایجاد کند. این نکته مهم است، زیرا مدرسه، آموزش حرفه‌ای و وظایف خانوادگی از پیش بار متفاوتی بر دوش افراد می‌گذارند. الزام همگانی ممکن است به‌خصوص نوجوانانی را زیر فشار ببرد که در خانه مسئولیت زیادی دارند.',en='Community engagement is particularly valuable when young people choose it consciously. It is also argued that compulsory involvement loses its voluntary character and can create additional time pressure. This matters because school, vocational training and family duties already place very different demands on individuals. A general obligation could especially overburden young people who already carry considerable responsibility at home.',grammar=('konjunktiv_ii','könnte','Konjunktiv II: mögliche Folge')),
+53:dict(s01='Schulen sollen viele Fähigkeiten fördern, können aber nicht jede gesellschaftliche Erwartung erfüllen.',s04='Wenn alles gleichzeitig zum Lernziel wird, fehlen Zeit und Aufmerksamkeit für gründliches Verstehen.',fa='مدارس باید توانایی‌های زیادی را تقویت کنند، اما نمی‌توانند تمام انتظارهای جامعه را برآورده سازند. همچنین گفته می‌شود هدف‌گذاری بیش از حد گسترده ممکن است مدارس را زیر فشار ببرد و استانداردهای روشن تخصصی را تضعیف کند. این نکته مهم است، زیرا زمان تدریس محدود است و باید اولویت‌بندی کرد. اگر همه‌چیز هم‌زمان به هدف یادگیری تبدیل شود، زمان و توجه کافی برای فهم عمیق باقی نمی‌ماند.',en='Schools are expected to develop many skills, but they cannot meet every expectation society places on them. It is also noted that setting goals too broadly can overburden schools and dilute clear academic standards. This matters because teaching time is limited and priorities are necessary. If everything becomes a learning goal at the same time, too little time and attention remain for deep understanding.',grammar=('subordinate_clauses_all','Wenn alles gleichzeitig zum Lernziel wird','Konditionaler Nebensatz mit wenn')),
+57:dict(s01='Unterschiedliche Studienmodelle erleichtern Teilhabe, können aber auch neue Verwaltungshürden schaffen.',s04='Wer zwischen Vollzeit und Teilzeit wechseln muss, braucht klare Regeln statt starrer Schubladen.',fa='شیوه‌های متفاوت تحصیل مشارکت را آسان‌تر می‌کنند، اما ممکن است مانع‌های اداری تازه‌ای هم ایجاد کنند. همچنین گفته می‌شود استثناهای بیش از حد می‌توانند ادارهٔ امور را پیچیده‌تر کنند و دانشجویان را در دسته‌بندی‌های خشک قرار دهند. این نکته مهم است، زیرا شرایط زندگی در طول تحصیل ممکن است تغییر کند. کسی که ناچار است میان تحصیل تمام‌وقت و پاره‌وقت جابه‌جا شود، به قوانین روشن نیاز دارد، نه دسته‌بندی‌های انعطاف‌ناپذیر.',en='Different study models make participation easier, but can also create new administrative hurdles. It is also argued that too many special rules can complicate administration and put students into rigid categories. This matters because life circumstances can change during a degree programme. Someone who has to switch between full-time and part-time study needs clear rules rather than rigid categories.',grammar=('relative_clauses_all','Wer zwischen Vollzeit und Teilzeit wechseln muss','Freier Relativsatz mit wer')),
+61:dict(s01='Fantasy-Geschichten laden dazu ein, über Werte und Verantwortung nachzudenken, ersetzen aber keine kritische Auseinandersetzung.',s04='Ohne Gespräche über die Handlung bleibt selbst eine vielschichtige Geschichte womöglich bloße Unterhaltung.',fa='داستان‌های فانتزی خواننده را به اندیشیدن دربارهٔ ارزش‌ها و مسئولیت دعوت می‌کنند، اما جای بررسی انتقادی را نمی‌گیرند. همچنین گفته می‌شود سرگرم‌کننده بودن یک اثر لزوماً به معنی درستی علمی یا ارزش آموزشی آن نیست. این نکته مهم است، زیرا تأثیر یادگیری به آن بستگی دارد که محتوا تا چه اندازه با دقت و تأمل بررسی شود. بدون گفت‌وگو دربارهٔ رویدادهای داستان، حتی یک روایت چندلایه هم ممکن است فقط سرگرمی باقی بماند.',en='Fantasy stories invite reflection on values and responsibility, but do not replace critical examination. It is also pointed out that entertainment value does not automatically mean factual accuracy or educational value. This matters because learning depends on how attentively and reflectively the content is considered. Without discussing the plot, even a multilayered story may remain mere entertainment.'),
+65:dict(s01='Vorlesen schafft wertvolle Sprachanlässe, ist jedoch kein automatisches Erfolgsrezept.',s04='Erst im Gespräch über Bilder und Figuren wird aus dem Zuhören häufig aktives Sprachlernen.',fa='بلندخوانی فرصت‌های ارزشمندی برای استفاده از زبان ایجاد می‌کند، اما دستورالعمل تضمینی برای موفقیت نیست. همچنین گفته می‌شود بلندخوانی به‌تنهایی مهارت خواندن آینده را تضمین نمی‌کند و رسانه‌های دیجیتال نیز می‌توانند محرک‌های زبانی مناسبی داشته باشند. این نکته مهم است، زیرا کودکان زبان را پیش از هر چیز از راه تعامل‌های گوناگون یاد می‌گیرند. اغلب تنها با گفت‌وگو دربارهٔ تصویرها و شخصیت‌های داستان است که گوش‌دادن به یادگیری فعال زبان تبدیل می‌شود.',en='Reading aloud creates valuable opportunities for language use, but it is not an automatic recipe for success. It is also noted that reading aloud alone does not guarantee later reading competence, and that digital media can provide useful language input too. This matters because children learn language primarily through varied interaction. It is often only through discussing pictures and characters that listening becomes active language learning.')
+}
+# Avoid inventing grammar annotations to hit a numerical target: 9 source-exact, meaningful cases only.
+def explain(key,phrase):
+ if key=='konjunktiv_ii':
+  return (f'„{phrase}“ ist Konjunktiv II. Hier wird eine mögliche Folge beschrieben, nicht eine sichere Vorhersage.',
+          f'«{phrase}» ساخت Konjunktiv II است و پیامدی احتمالی را بیان می‌کند، نه نتیجه‌ای قطعی.')
+ if key=='relative_clauses_all':
+  return (f'„{phrase}“ ist ein freier Relativsatz mit „wer“ und bezeichnet eine beliebige Person, auf die die Aussage zutrifft.',
+          f'«{phrase}» یک جملهٔ موصولیِ آزاد با «wer» است و به هر کسی اشاره می‌کند که این ویژگی را داشته باشد.')
+ if key=='infinitive_with_zu':
+  return ('„ohne ... aufzubürden“ ist eine Infinitivgruppe mit zu und beschreibt, was bei der Zusammenarbeit vermieden werden soll.',
+          'ساخت «ohne ... aufzubürden» یک عبارت مصدری با zu است و نشان می‌دهد در همکاری باید از چه چیزی جلوگیری شود.')
+ if key=='subordinate_clauses_all':
+  if phrase.startswith('dass '):
+   return ('„dass“ leitet hier einen Inhaltssatz ein; das finite Verb „verstehen“ steht am Satzende.',
+           '«dass» جملهٔ وابستهٔ محتوایی می‌سازد و فعل صرف‌شدهٔ «verstehen» در پایان آن قرار می‌گیرد.')
+  if phrase.startswith('auch wenn '):
+   return ('„auch wenn“ leitet einen konzessiven Nebensatz ein: Die Hauptaussage gilt trotz der genannten Einschränkung.',
+           '«auch wenn» جملهٔ وابستهٔ امتیازی می‌سازد؛ گزارهٔ اصلی با وجود محدودیت بیان‌شده برقرار می‌ماند.')
+  if phrase.startswith('Wenn '):
+   return ('„wenn“ leitet hier einen konditionalen Nebensatz ein: Die Folge hängt von der genannten Bedingung ab.',
+           '«wenn» در اینجا جملهٔ شرطی می‌سازد؛ پیامد به برقرار بودن شرط وابسته است.')
+ raise ValueError((key,phrase))
+EXPECTED=set(EDITS)
+assert EXPECTED=={13,17,21,25,29,33,37,41,45,49,53,57,61,65}
+
+def main():
+ assert sha(BASE.read_bytes())==BASESHA
+ A=json.loads(BASE.read_text());B=copy.deepcopy(A)
+ assert len(A['items'])==68
+ ledger=[];retired=0;shifted=0;retained=0;added=0
+ for n,ed in EDITS.items():
+  old=A['items'][n-1];u=B['items'][n-1];assert old['id']==u['id']==f'LES-PRES-{n:03d}'
+  oldsec=old['reading']['sections'][2];sec=u['reading']['sections'][2]
+  assert sec['id']=='p03' and len(sec['sentences'])==4
+  assert oldsec['sentences'][0]['text']=='Dem stehen jedoch gewichtige Einwände gegenüber.'
+  assert oldsec['sentences'][3]['text']=='Ein Vorteil auf der einen Seite kann also durchaus neue Probleme auf der anderen Seite erzeugen.'
+  assert oldsec['sentences'][1]==sec['sentences'][1] and oldsec['sentences'][2]==sec['sentences'][2]
+  sec['sentences'][0]['text']=ed['s01'];sec['sentences'][3]['text']=ed['s04']
+  sec['text']=' '.join(s['text'] for s in sec['sentences']);sec['translations']={'fa':ed['fa'],'en':ed['en']}
+  assert len(ed['fa'])>170 and len(ed['en'])>185,(n,len(ed['fa']),len(ed['en']))
+  old_start={s['id']:len(' '.join(t['text'] for t in oldsec['sentences'][:i]))+ (1 if i else 0) for i,s in enumerate(oldsec['sentences'])}
+  new_start={s['id']:len(' '.join(t['text'] for t in sec['sentences'][:i]))+ (1 if i else 0) for i,s in enumerate(sec['sentences'])}
+  # Offsets are zero-based character indexes WITHIN p03, not within sentences.
+  accepted=[];drops=[];moves=[]
+  for occ in old['grammar']['full_text_occurrences']:
+   if occ['section_id']!='p03':accepted.append(copy.deepcopy(occ));continue
+   assert oldsec['text'][occ['start']:occ['end']]==occ['target_text']
+   if occ['sentence_id'] not in ('p03-s02','p03-s03'):
+    retired+=1; drops.append({'id':occ['id'],'sentence_id':occ['sentence_id'],'target_text':occ['target_text'],'grammar_key':occ['grammar_key']});continue
+   copy_occ=copy.deepcopy(occ);sid=occ['sentence_id'];rel=occ['start']-old_start[sid]
+   sent=next(s for s in sec['sentences'] if s['id']==sid)
+   assert sent['text'][rel:rel+len(occ['target_text'])]==occ['target_text'],(n,sid,occ['id'])
+   copy_occ['start']=new_start[sid]+rel;copy_occ['end']=copy_occ['start']+len(occ['target_text'])
+   assert sec['text'][copy_occ['start']:copy_occ['end']]==copy_occ['target_text']
+   shifted+=int(copy_occ['start']!=occ['start']);retained+=1;accepted.append(copy_occ)
+   moves.append({'id':occ['id'],'sentence_id':sid,'old_start':occ['start'],'new_start':copy_occ['start']})
+  annotation=None
+  if 'grammar' in ed:
+   key,phrase,label=ed['grammar'];sentence_id='p03-s01' if phrase in ed['s01'] else 'p03-s04'
+   source=ed['s01'] if sentence_id=='p03-s01' else ed['s04']
+   assert source.count(phrase)==1,(n,phrase)
+   pos=new_start[sentence_id]+source.index(phrase)
+   exp_de,exp_fa=explain(key,phrase)
+   annotation={'id':f'ftg-r14-{n:03d}-p03-manual','grammar_key':key,'label_de':label,'section_id':'p03','sentence_id':sentence_id,'start':pos,'end':pos+len(phrase),'target_text':phrase,'explanation_de':exp_de, 'explanation_fa':exp_fa, 'details':{'scope':'manual_scoped_r14_p03','source_sentence_id':sentence_id},'confidence':'high','annotation_source':'editorial_scoped_r14','derivation_method':'manual_exact_span_not_native_nine_lens'}
+   assert sec['text'][pos:pos+len(phrase)]==phrase
+   accepted.append(annotation);added+=1
+  u['grammar']['full_text_occurrences']=accepted
+  summ=u['grammar']['full_text_lens_summary'];summ['occurrences']=len(accepted);summ['counts']=dict(collections.Counter(x['grammar_key'] for x in accepted))
+  summ['scope_note_de']='R14: alte Marker der ersetzten p03-s01/s04 entfernt, Marker der unveränderten p03-s02/s03 exakt verschoben; punktuell geprüfte neue Marker. Keine erneute vollständige Neun-Linsen-Ableitung.'
+  summ['scope_note_fa']='R14: نشانگرهای جملات جایگزین‌شده حذف، ارجاع‌های دو جملهٔ حفظ‌شده با موقعیت دقیق منتقل و چند نمونهٔ جدید به‌صورت دستی بررسی شد؛ استخراج کامل گرامر انجام نشده است.'
+  # Existing curated p03 examples refer to unchanged p03-s03; they are kept completely unchanged.
+  for cur in u['grammar']['curated_annotations']:
+   s=next(t for t in u['reading']['sections'] if t['id']==cur['section_id']);z=next(q for q in s['sentences'] if q['id']==cur['sentence_id']);assert cur['target_text'] in z['text'],(n,cur['id'])
+  u['reading']['word_count_de']=len(' '.join(s['text'] for s in u['reading']['sections']).split())
+  u['quality']['content_hash']=sha(' '.join(s['text'] for s in u['reading']['sections']).encode())[:16]
+  u['quality']['app_mapping_status']='r14_scoped_p03_candidate_preentry_only'
+  ledger.append({'unit_id':u['id'],'title_de':u['title_de'],'before_p03':oldsec,'after_p03':sec,'retired_grammar':drops,'reanchored_original':moves,'new_manual_annotation':annotation,'content_parent_sha256':sha(canon(old)),'content_candidate_sha256':sha(canon(u))})
+ assert [i+1 for i,(x,y) in enumerate(zip(A['items'],B['items'])) if x!=y]==sorted(EDITS)
+ assert all(A['items'][i]==B['items'][i] for i in range(68) if (i+1) not in EXPECTED)
+ gr=[x for u in B['items'] for x in u['grammar']['full_text_occurrences']]
+ fq=B['full_text_grammar_qa'];fq['occurrences']=len(gr);fq['counts']=dict(collections.Counter(x['grammar_key'] for x in gr));fq['offset_exact_matches']=len(gr)
+ fq['result']='R14_EXACT_SCOPED_P03_OFFSETS__NATIVE_NINE_LENS_NOT_RERUN__SEMANTIC_STAGE4_HOLD'
+ fq['r14_scope']={'units':len(EDITS),'removed_old_context_anchors':retired,'retained_original_p03_s02_s03':retained,'moved_existing_exact_anchors':shifted,'new_editorial_scoped_annotations':added,'native_nine_lens_rerun':False}
+ wc=[u['reading']['word_count_de'] for u in B['items']];B['qa_summary']['word_count_de']={'min':min(wc),'mean':round(sum(wc)/len(wc),1),'max':max(wc)}
+ B['qa_summary']['r14_scope']='FOURTEEN_P03_TRILINGUAL_S01_S04_REWRITES__MIDDLE_SENTENCES_PRESERVED'
+ B['translation_qa']['r14_review_status']='AI_SOURCE_BOUND_SCOPED_TRANSLATION_REVIEW_NOT_FORMAL_STAGE4'
+ B['content_version']='1.3.0-R14-CANDIDATE'
+ B['status']='R14_14_P03_SCOPED_TRILINGUAL_EDITORIAL_AND_OFFSET_QA__STAGE4_6_7_HOLD'
+ for u in B['items']:
+  for occ in u['grammar']['full_text_occurrences']:
+   s=next(t for t in u['reading']['sections'] if t['id']==occ['section_id'])
+   assert s['text'][occ['start']:occ['end']]==occ['target_text'],(u['id'],occ['id'])
+ assert not any(u['reading']['sections'][2]['sentences'][0]['text']=='Dem stehen jedoch gewichtige Einwände gegenüber.' for u in B['items'])
+ write(OUT,B)
+ record={'schema':'lesen-r14-14-p03-trilingual-grammar-ledger@1.0.0','date':'2026-11-07','parent_r13_sha256':BASESHA,'r14_master_sha256':sha(OUT.read_bytes()),'r14_master_bytes':OUT.stat().st_size,'changed_unit_ids':[f'LES-PRES-{n:03d}' for n in sorted(EDITS)],'revised_de_sentences':28,'edited_trilingual_sections':14,'preserved_original_middle_sentences':28,'untouched_units':54,'old_fulltext_count':sum(len(u['grammar']['full_text_occurrences']) for u in A['items']),'new_fulltext_count':len(gr),'old_context_markers_removed':retired,'old_mid_markers_retained':retained,'old_mid_markers_shifted':shifted,'new_manual_scoped_markers':added,'remaining_exact_original_p03_opening':0,'native_full_nine_lens_grammar_rerun':False,'independent_semantic_stage4':'HOLD','native_browser_stage6':'NOT_RUN','stage7':'NOT_RELEASED','before_after':ledger}
+ write(LED,record)
+ print(json.dumps({k:v for k,v in record.items() if k!='before_after'},ensure_ascii=False,indent=2))
+if __name__=='__main__': main()

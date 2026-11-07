@@ -1,3 +1,7 @@
+## ACTIVE shared Aspekte anti-loop policy — 2026-11-07
+
+**Read [central Aspekte resume/persistence circuit breaker](../../Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md)** before work. It complements the existing B2 `RUN-CONTROL.json`, `EXECUTION-EXIT-GUARD-v1.0.0.md` and maximum three-pass lesson contract; those remain authoritative for choosing the next lesson/pass. The GitHub control-plane is distinct from latest verified owner-Library **curated lesson content**. Never overwrite a Library roadmap as a startup step, repeatedly repair stale LATEST/CHECKPOINT, or retry a provider permission prompt. One failed destination write => `SYNC_PENDING`, then a terminal response; preserve accepted L01–L05 content and continue the actual RUN-CONTROL next task.
+
 # Aspekte B2 — independent German–Persian lexical project from user's edited content
 
 ## MANDATORY FIRST READ — anti-loop and terminal-response guard (2026-11-07)

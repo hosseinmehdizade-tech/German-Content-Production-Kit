@@ -76,10 +76,10 @@ def evaluate(root: Path, *, registry: dict | None = None,
     require(reg.get("schema") == "gcpk-global-policy-registry@1.0.0"
             and reg.get("status"), "REGISTRY_NOT_ACTIVE")
     bindings = reg.get("policy_bindings")
-    require(isinstance(bindings, dict) and len(bindings) >= 22,
-            "CENTRAL_BINDING_INVENTORY_INCOMPLETE")
+    require(isinstance(bindings, dict), "CENTRAL_BINDING_INVENTORY_INCOMPLETE")
     require(MANDATORY_STAGE4.issubset(bindings),
             "MANDATORY_STAGE4_POLICY_MISSING")
+    require(len(bindings) >= 22, "CENTRAL_BINDING_INVENTORY_INCOMPLETE")
     for key, rule in bindings.items():
         require(isinstance(rule, dict) and isinstance(rule.get("stages"), list),
                 "MALFORMED_POLICY_BINDING:" + str(key))

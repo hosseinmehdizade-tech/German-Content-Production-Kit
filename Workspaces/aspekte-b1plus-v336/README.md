@@ -1,3 +1,7 @@
+## ACTIVE RESUME OVERRIDE — No more Library roadmap overwrite loop (2026-11-07)
+
+**Read [ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md](../../Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md) BEFORE any «ادامه بده».** This instruction supersedes this README's older historical statements that a Library roadmap must be updated in place on every batch. Resume **G2 directly from the latest verified Batch11 content**; GitHub `ROADMAP-TEMP.md` v0.14 is the sole live roadmap/control-plane reference. The old Library `Plans/ROADMAP-TEMP.md` is an archival snapshot, **not** a sync blocker; NEVER overwrite it automatically and NEVER retry a pending provider permission request. Current 257/321 German morphology checks, 64 remain (63 older + `Kaffeeservice`), 0 approved cards, 340 release HOLDs. Focus on actual review and targeted repairs; no per-small-batch full ZIP proliferation. Project user-curated CSV remains the lexical source.
+
 # Aspekte B1+ — Status 2026-11-06
 
 ## G2 lexical morphology Batch03 — 98 cumulative checks, 51 new, 3 front corrections (2026-11-07)

@@ -47,10 +47,10 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertEqual(snapshot["counts"]["git_workspaces"], len(pcc.tracked_dirs(self.index)))
         self.assertEqual(snapshot["counts"]["root_workstreams"], len(self.state["workstreams"]))
 
-    def test_35_current_workspaces_map_to_exactly_one_family(self):
-        self.assertEqual(len(pcc.tracked_dirs(self.index)), 35)
+    def test_36_current_workspaces_map_to_exactly_one_family(self):
+        self.assertEqual(len(pcc.tracked_dirs(self.index)), 36)
         snap = self.build()
-        self.assertEqual(snap["counts"]["mapped_workspaces"], 35)
+        self.assertEqual(snap["counts"]["mapped_workspaces"], 36)
         self.assertEqual(len(snap["families"]), len({x["id"] for x in snap["families"]}))
 
     def test_nvv_workspace_source_owner_is_same_existing_root_family(self):

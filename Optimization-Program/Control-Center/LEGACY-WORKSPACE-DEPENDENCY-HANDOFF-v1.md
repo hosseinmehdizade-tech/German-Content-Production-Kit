@@ -25,3 +25,7 @@ At the next authorized edit to a family:
 - **Not completed / not claimed:** raw private provider dependency search; binary archive nested-path scan; runtime import regression for source-specific paths; physical historical file move; legacy directory deletion; source owner relocation or release promotion.
 
 **Policy:** No safe-delete recommendation can be derived from absence of a literal tracked Git reference.
+
+## Verified first Git reference scan (2026-11-07)
+
+The [durable PR146 snapshot](Legacy-Dependencies/2026-11-07-PR146-GIT-REFERENCE-SNAPSHOT.json) records **120** distinct `(legacy Workspace, referring tracked Git text file)` edges across the 20 historical directories; all 20 have at least one exact full-path textual reference, while ten have code/CI or canonical-workspace references requiring closer review. The first raw search reported 659 because the short `menschen-a2` path falsely matched a longer directory name; this was corrected using a strict path-boundary test and independently rerun in CI. The snapshot retains source Git HEAD and workflow provenance and does **not** prove future live references, binary/archive dependencies or deletion safety.

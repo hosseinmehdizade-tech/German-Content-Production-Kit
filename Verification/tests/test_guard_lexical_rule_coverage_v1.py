@@ -129,6 +129,26 @@ class ReleaseEvidenceTests(unittest.TestCase):
             r=evaluate(self.input,stage,review,root=ROOT,policy_checks=False)
         self.assertEqual(r["status"],"PASS_FOR_GOVERNED_STAGE5_CANDIDATE_ONLY")
         self.assertIn("NATIVE_APP_STAGE6",r["does_not_prove"])
+    def test_actual_candidate_builder_refuses_without_policy_evidence(self):
+        import subprocess
+        src=self.directory/"four-roles";src.mkdir()
+        (src/"TEST-IMPORT.tsv").write_bytes(self.input.read_bytes())
+        (src/"TEST-CANONICAL.json").write_text('{"cards":[]}\n')
+        (src/"TEST-SOURCE-OUTPUT-MAP.tsv").write_text("id\tsource\n")
+        (src/"TEST-VERIFICATION.json").write_text('{"status":"synthetic"}\n')
+        out=self.directory/"candidate.zip"
+        receipt=self.directory/"governed.json"
+        policy=self.directory/"policy.json"
+        cmd=[sys.executable,str(ROOT/"Tools/build_quality_gated_lexical_candidate_v1.py"),
+             str(src),str(out),"--receipt",str(receipt),"--policy-report",str(policy),
+             "--stage4-receipt",str(self.directory/"MISSING-stage4.json"),
+             "--cross-tile-review",str(self.directory/"MISSING-review.json")]
+        run=subprocess.run(cmd,capture_output=True,text=True,encoding="utf-8")
+        self.assertEqual(run.returncode,2,run.stderr)
+        self.assertFalse(out.exists())
+        self.assertFalse(receipt.exists())
+        self.assertFalse(policy.exists())
+
     def test_stage4_failure_not_overridden_by_review(self):
         stage,review=self.fake_review()
         fake=types.SimpleNamespace(accept_existing_stage4=lambda *a:{"status":"BLOCKED","blockers":["HOLD"]})

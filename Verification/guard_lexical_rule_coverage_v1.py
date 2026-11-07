@@ -21,9 +21,9 @@ STOP={"das","der","die","den","dem","des","ein","eine","einen","einem",
  "für","über","etwas","jemanden","jemandem","sich","sein"}
 
 def sha(b):return hashlib.sha256(b).hexdigest()
-def blob(b):return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\\0"+b).hexdigest()
+def blob(b):return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
 def norm(s):return " ".join(unicodedata.normalize("NFC",str(s)).casefold().split())
-def words(s):return re.findall(r"[^\\W_]+",norm(s),flags=re.UNICODE)
+def words(s):return re.findall(r"[^\W_]+",norm(s),flags=re.UNICODE)
 def stem(w):
     if len(w)<6:return w
     for suf in ("erten","ertet","erte","est","ete","ten","tet","te","en","et","er","es","em","e","t","n","s"):
@@ -51,13 +51,13 @@ def pinned(root):
         if not p.is_file() or p.is_symlink() or not p.resolve().is_relative_to(root.resolve()):
             raise ValueError("MISSING_POLICY_FILE:"+name)
         b=p.read_bytes()
-        if blob(b)!=pin and (b"\\r\\n" not in b or blob(b.replace(b"\\r\\n",b"\\n"))!=pin):
+        if blob(b)!=pin and (b"\\r\n" not in b or blob(b.replace(b"\\r\n",b"\n"))!=pin):
             raise ValueError("CENTRAL_POLICY_CONTENT_DRIFT:"+name)
     return {"bindings_checked":len(entries),"registry_sha256":sha((root/REGISTRY).read_bytes()),
             "scope":"BYTE_PINS_ONLY_NOT_SEMANTIC_ADOPTION"}
 
 def native_rows(raw):
-    rdr=csv.DictReader(io.StringIO(raw.decode("utf-8-sig"),newline=""),delimiter="\\t")
+    rdr=csv.DictReader(io.StringIO(raw.decode("utf-8-sig"),newline=""),delimiter="\t")
     if not rdr.fieldnames or not {"id","front","details","examples"}.issubset(rdr.fieldnames):
         raise ValueError("UNSUPPORTED_NATIVE_LEXICAL_TSV")
     rows=list(rdr)
@@ -107,7 +107,7 @@ def review_signals(rows):
                     break
     output=[]
     for cid,code,c,e,severity in findings:
-        fp=sha(("\\0".join([cid,code,c,e])).encode())
+        fp=sha(("\0".join([cid,code,c,e])).encode())
         output.append({"id":fp,"card_id":cid,"code":code,"combination":c,
                        "example":e,"severity":severity})
     return {"examples":tot_ex,"combinations":tot_co,"issues":output}
@@ -187,7 +187,7 @@ def main():
             if a.report.exists() or a.report.is_symlink() or a.report.resolve()==a.tsv.resolve():
                 raise ValueError("REPORT_NOT_WRITE_ONCE")
             with a.report.open("x",encoding="utf-8") as fh:
-                json.dump(result,fh,ensure_ascii=False,indent=2);fh.write("\\n")
+                json.dump(result,fh,ensure_ascii=False,indent=2);fh.write("\n")
     except (ValueError,OSError,UnicodeError) as e:
         print("LEXICAL_RELEASE_POLICY_ERROR:"+str(e),file=sys.stderr);return 2
     print(json.dumps({"status":result["status"],"cards":result["cards"],

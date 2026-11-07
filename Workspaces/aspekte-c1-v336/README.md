@@ -1,3 +1,7 @@
+## ACTIVE shared Aspekte anti-loop policy — 2026-11-07
+
+**Read [central Aspekte resume/persistence circuit breaker](../../Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md)** before work. GitHub's local workstream LATEST/CHECKPOINT controls coordination, while the newest hash-verified owner-specific **C1 curated Stage1 portable state** remains the learner-data authority. Do not recreate historical PDF/source inventory or overwrite Library roadmap snapshots to reconcile metadata. On a provider permission prompt/capture error: once per destination only; record `SYNC_PENDING` and proceed with substantive Stage1 semantic/dedup review from the accepted current dataset. No automatic release or destruction of historical evidence.
+
 # Aspekte neu C1 — current curated-comparator Stage1 (2026-11-06)
 
 **Authority / single project owner:** `Workspaces/aspekte-c1-v336/LATEST.json` + `CHECKPOINT.json` and the verified C1 Library checkpoint named below. The project source is the user's Kapitelwortschatz C1 PDF (3,270 source occurrences), which remains **historical ingestion/provenance evidence for C1**; the project is **Stage1 IN_PROGRESS**, not "definition only" and not Stage2/3/4/5/6/7 complete. **0 approved/importable cards**; C1 language and duplicate decisions remain nonfinal.

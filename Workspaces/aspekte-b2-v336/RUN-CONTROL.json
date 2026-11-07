@@ -1,0 +1,67 @@
+{
+  "schema": "aspekte-b2-run-control@1.0.0",
+  "date": "2026-11-07",
+  "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
+  "status": "ACTIVE",
+  "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
+  "max_passes_per_lesson": 3,
+  "sync_attempts_per_destination_per_response": 1,
+  "sync_failure_action": "STOP_WITH_SYNC_PENDING_NO_RETRY_LOOP",
+  "response_end_required": [
+    "LESSON",
+    "PASS",
+    "ACTUAL_OUTPUT",
+    "PASS_OR_BLOCKED",
+    "NEXT_ACTION"
+  ],
+  "legacy_latest_json_policy": "SECONDARY_ONLY__DO_NOT_SPEND_MULTIPLE_CHAT_TURNS_REPAIRING",
+  "lesson_status": {
+    "L01": {
+      "last": "R47",
+      "draft_units": 158,
+      "pass1": "DONE",
+      "pass2": "NOT_INDEPENDENTLY_APPROVED",
+      "pass3": "NOT_STARTED",
+      "release": "NONIMPORT"
+    },
+    "L02": {
+      "draft_units": 110,
+      "pass1": "DONE",
+      "pass2": "AI_EDITORIAL_DONE",
+      "pass3": "BLOCKED_NONIMPORT",
+      "release": "0_IMPORTABLE"
+    },
+    "L03": {
+      "draft_units": 186,
+      "pass1": "DONE",
+      "pass2": "AI_EDITORIAL_DONE",
+      "pass3": "BLOCKED_NONIMPORT",
+      "release": "0_IMPORTABLE",
+      "verified_current_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L03-PASS2-186-CURATED-REVIEW-NONIMPORT.csv",
+      "verified_current_sha256": "c0cfeffa7b1b678336c42b3f8b226d2e2410a643455bf43d10bea71c4bcbd576"
+    },
+    "L04": {
+      "source_rows": 184,
+      "pass1": "ACTIVE_NOT_COMPLETED",
+      "pass2": "NOT_STARTED",
+      "pass3": "NOT_STARTED",
+      "release": "NONIMPORT",
+      "exact_curated_input_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/R22-L04-184-ONE-MORPHOLOGY-EDITORIAL-RESOLUTION.jsonl",
+      "exact_curated_input_sha256": "32176c1775445854633a968823a4b3abfd8c920b9fa60ca08c8520781f69f78a"
+    }
+  },
+  "next_task": {
+    "lesson": 4,
+    "pass": 1,
+    "goal": "COMPLETE_ALL_184_CURATED_ROWS_IN_ONE_VERIFIED_LESSON_DRAFT",
+    "blocked_on_release": false,
+    "do_not_do": [
+      "RECHECK_FULL_ORIGINAL_TEXTBOOK",
+      "LEGACY_LATEST_POINTER_REPAIR_LOOP",
+      "12_CARD_MICROBATCHES"
+    ]
+  },
+  "global_checkpoint": "L05_R25_UNCHANGED",
+  "changes_to_content_cards": 0,
+  "imported_cards_by_this_change": 0
+}

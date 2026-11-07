@@ -34,12 +34,12 @@ def require(condition: bool, reason: str) -> None:
         raise P1GateError(reason)
 
 def git_blob(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 def is_blob(data: bytes, expected: str) -> bool:
     return bool(re.fullmatch(r"[a-f0-9]{40}", str(expected))) and (
         git_blob(data) == expected or
-        (b"\\r\\n" in data and git_blob(data.replace(b"\\r\\n", b"\\n")) == expected)
+        (b"\r\n" in data and git_blob(data.replace(b"\r\n", b"\n")) == expected)
     )
 
 def file_bytes(root: Path, rel: str) -> bytes:
@@ -125,7 +125,7 @@ def evaluate(root: Path, *, registry: dict | None = None,
             and 4 in bindings["curated_current_delta_qa"]["stages"]
             and 4 in bindings["seven_stages"]["stages"],
             "STAGE4_POLICY_ROUTING_GAP")
-    visible = re.search(r"_(\\d+)_REMAIN_NONIMPORT", lat["current_stage"])
+    visible = re.search(r"_(\d+)_REMAIN_NONIMPORT", lat["current_stage"])
     remaining = int(visible.group(1)) if visible else None
     active = sorted(key for key, rule in bindings.items() if 4 in rule["stages"])
     return {

@@ -1,5 +1,10 @@
 # AGENTS.md — German Flashcards cross-project work
 
+## Mandatory Aspekte-specific anti-loop routing — 2026-11-07
+
+Before resuming **Aspekte B1+, B2 or C1** (including Persian «ادامه بده»), read [the active Aspekte resume/persistence circuit breaker](Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md). **Do substantive work before cosmetic sync.** Never attempt to overwrite a project Library roadmap as a condition of continuing; GitHub is the live control-plane roadmap, while newest verified owner-specific Library/Project data is the content authority. On Library consent/capture failure, stop that write and record SYNC_PENDING; one attempt, no re-request loop. Keep the required QA and release gates. The existing B2 three-pass terminal guard remains active.
+
+
 These repo-root rules apply to coding assistants, agents, and ChatGPT sessions working with this repository.
 
 1. First read `PROJECT-BOOTSTRAP.md`, `PROJECT-STATE.json`, `EXECUTION-SAFETY-POLICY.json`, and **`EXECUTION-OUTCOME-EFFICIENCY-POLICY.json`**. When relevant, check both German-Flashcards-Pro and German-Content-Production-Kit repositories before substantial work.

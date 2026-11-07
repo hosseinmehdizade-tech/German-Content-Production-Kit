@@ -122,6 +122,8 @@ def analyze(root: Path) -> dict:
     inbound: dict[str, list[str]] = {p: [] for p in legacy_dirs}
     unreadable_but_matched: dict[str, list[str]] = {p: [] for p in legacy_dirs}
     for source in text_matches:
+        if source == ROUTING:
+            continue  # the baseline self-register is an identity map, not an inbound dependency
         if source not in all_git_paths:
             raise ValueError("Git grep found missing tracked file")
         content = git(root, ["show", "HEAD:" + source])

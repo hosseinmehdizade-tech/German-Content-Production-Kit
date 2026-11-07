@@ -1,0 +1,83 @@
+{
+  "schema": "lesen-v505-native-source-preentry-r18@1",
+  "date": "2026-11-07",
+  "module_sha256": "b03f954a9e617d918d42eeddbf0cd4da5a3c1bc3d43d9e57977312dbbde071bc",
+  "source_module": "exact pinned v505 Wordlinks R3 01-App/modules/reading-content-import-v38.js",
+  "checks": {
+    "baseline_pack_status": "PASS",
+    "candidate_pack_status": "PASS",
+    "candidate_warnings": [],
+    "actual_native_counts": {
+      "entries": 68,
+      "passages": 478,
+      "questions": 340,
+      "vocabulary": 350,
+      "translationsFa": 478,
+      "translationsEn": 478,
+      "fullTextGrammar": 4041,
+      "lexicalTargets": 0
+    },
+    "negative_cases": [
+      {
+        "name": "duplicate lesson source id",
+        "rejected": true,
+        "errors": [
+          "entries[1].source_item_id تکراری است: LES-PRES-001"
+        ]
+      },
+      {
+        "name": "missing Persian translation",
+        "rejected": true,
+        "errors": [
+          "LES-PRES-053.passages[1].translations.fa خالی است."
+        ]
+      },
+      {
+        "name": "wrong comprehension exercise id",
+        "rejected": true,
+        "errors": [
+          "LES-PRES-053: comprehension_exercise_ids با exercises سازگار نیست."
+        ]
+      },
+      {
+        "name": "corrupt grammar position",
+        "rejected": true,
+        "errors": [
+          "LES-PRES-053.ftg-0001: offset/target_text نامعتبر است."
+        ]
+      },
+      {
+        "name": "remove model answer",
+        "rejected": true,
+        "errors": [
+          "LES-PRES-053.lesen_LES-PRES-053_q04.answer_spec.model_answer خالی است."
+        ]
+      },
+      {
+        "name": "corrupt grammar declared total",
+        "rejected": true,
+        "errors": [
+          "counts.full_text_grammar=4042 ولی actual=4041."
+        ]
+      },
+      {
+        "name": "corrupt new r18 manual relative span",
+        "rejected": true,
+        "errors": [
+          "LES-PRES-053.ftg-r18-053-p02-scoped: offset/target_text نامعتبر است."
+        ]
+      }
+    ],
+    "all_7_negative_rejected": true,
+    "isolated_record_validation": "PASS",
+    "in_memory_projection": {
+      "units": 68,
+      "exercises": 340,
+      "lexicalTargets": 0,
+      "bundled": 0
+    },
+    "actual_db_transaction": "NOT_RUN"
+  },
+  "status": "PASS_EXACT_CURRENT_V505_JS_VALIDATOR_ONLY__NO_BROWSER_STAGE6",
+  "source_import_or_db_mutations": false
+}

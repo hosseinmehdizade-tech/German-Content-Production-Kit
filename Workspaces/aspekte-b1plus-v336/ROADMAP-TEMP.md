@@ -1,9 +1,13 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.14 · **Stand:** 2026-11-07 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.15 · **Stand:** 2026-11-07 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE CONTROL-PLANE OVERRIDE — 2026-11-07 (governance-only; no card/QA progress)
+
+**Active source:** GitHub `ROADMAP-TEMP.md` + `LATEST.json` / `CHECKPOINT.json` for control metadata; the newest SHA-verified B1+ Library ZIP for edited learner data. The older Library `Plans/ROADMAP-TEMP.md` is a retained **historical snapshot**, not a second live roadmap. **Never overwrite or reconcile that Library roadmap on an `ادامه بده` request**, and never get stuck in an app permission dialog or repeated failed upload. Follow [`../../Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md`](../../Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md) before resuming work. No new morphology scopes counted by this governance change.
 
 ## Zweck / هدف
-این فایل «نقطهٔ مرجع ثابت» برای ادامهٔ پروژهٔ Aspekte B1+ است. در هر نوبت کار روی این پروژه، وضعیت واقعی فایل‌های GitHub `LATEST.json` و `CHECKPOINT.json`، آخرین بستهٔ تأییدشدهٔ Library و همین رودمپ خوانده و مقایسه می‌شوند. پس از کار واقعی، همین فایل و Checkpoint در جای خود به‌روزرسانی می‌شوند، نه اینکه هر بار رودمپ جدیدی تولید شود.
+این فایل «نقطهٔ مرجع ثابت» برای ادامهٔ پروژهٔ Aspekte B1+ است. در هر نوبت کار روی این پروژه، وضعیت واقعی فایل‌های GitHub `LATEST.json` و `CHECKPOINT.json`، آخرین بستهٔ تأییدشدهٔ Library و همین رودمپ خوانده و مقایسه می‌شوند. پس از پیشرفت واقعی فقط مسیر GitHub برای رودمپ و Checkpoint به‌روزرسانی می‌شود؛ کپی قدیمی Library آرشیوی است و هرگز برای ادامهٔ کار بازنویسی اجباری نمی‌شود.
 
 ## خط مبنای تأییدشده — Baseline
 - منبع جاری: **۱٬۵۴۸ ردیف** CSV اختصاصیِ اصلاح‌شدهٔ کاربر؛ ده درس. بازگشت به PDF کتاب یا استخراج مجدد ممنوع است مگر خرابی مشخص و قابل‌اثبات.

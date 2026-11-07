@@ -1,5 +1,10 @@
 # Aspekte B2 — independent German–Persian lexical project from user's edited content
 
+## Mandatory lesson execution — MAX THREE passes (user directive 2026-11-07)
+
+**Read [`LESSON-3-PASS-QUALITY-PROTOCOL-v1.0.0.md`](LESSON-3-PASS-QUALITY-PROTOCOL-v1.0.0.md) before each lesson/resume.** Each lesson has at most three substantive execution milestones: **(1) complete all lesson learner units and enrichment, (2) rigorous DE–FA and independent QA plus corrections, (3) actual delivery/runtime/final release gates, or accurately BLOCKED.** The inherited 7 technical stages still apply; never lower linguistic or structural quality, counterfeit independent QA or split a 108-row lesson into endless mini-rounds. Hold only actual blockers and move to next lesson without re-reviewing unchanged curated content. Pass 1 for L02 currently requires the **remaining 96 of 108** units in a *single substantial production pass*. Preserve accepted R47 L01 work and its unresolved safety gates.
+
+
 ## Mandatory current-content route (always resolve dynamically)
 
 **Do not pin lesson progress to an old R-number in this README.** Every new/resumed B2 session must read `Workspaces/aspekte-b2-v336/LATEST.json#latest_scoped_audit` and validate the exact owner-local accepted/current draft bytes, its parent hash, and the latest scoped QA report. For lesson 1, `CHECKPOINT.json` still contains an older R32 scoped snapshot and the **L05 R25** portable archive is a separate, valid but **different-lesson** global checkpoint. Neither overrides newer L01 curated work. If latest Library bytes cannot be independently verified, HOLD instead of restarting from raw CSV.

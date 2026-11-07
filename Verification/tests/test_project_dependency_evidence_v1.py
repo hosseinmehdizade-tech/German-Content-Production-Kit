@@ -83,7 +83,7 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_lexical_policy_does_not_imply_cross_source_audit_is_content_producer(self):
         r = self.build()
         edges = [x for x in r["edges"] if x["from"] == "policy:related_taxonomy"]
-        self.assertEqual(len(edges), 32)
+        self.assertEqual(len(edges), 33)
         self.assertFalse(any("menschen-verben-aud006" in x["to"] for x in edges))
 
     def test_neutral_builder_application_is_conditional_not_34_verified(self):
@@ -140,7 +140,7 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_changed_lexical_policy_produces_scoped_possible_impacts(self):
         path = self.registry["policy_bindings"]["related_taxonomy"]["path"]
         impact = self.build(changes=[path])["prospective_impact"][0]
-        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 32)
+        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 33)
         self.assertTrue(impact["impact_is_prospective_only"])
         self.assertFalse(impact["locked_sources_reopened"])
 

@@ -3,7 +3,7 @@
   "program_id": "GFP-OPT-2026",
   "scope": "TEN_REQUESTED_CURATED_CONTENT_FAMILIES__NOT_ALL_21_FAMILIES",
   "observed_date": "2026-11-07",
-  "registry_state": "INITIAL_OBSERVED_BASELINE__READ_ONLY_METADATA__NO_AUTO_PROMOTION",
+  "registry_state": "RECONCILED_ACCEPTED_CURATED_BASELINES_10_OF_10__MANAGEMENT_ONLY_NO_AUTO_PROMOTION",
   "authority_hierarchy": [
     "explicit newer user-accepted artifact with byte evidence",
     "verified source-owner current/final and its exact SHA",
@@ -58,26 +58,37 @@
       "name": "Menschen A1 Verben",
       "owner_locator": {
         "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
-        "path": "Workspaces/menschen-a1-verben-repair4-v336/CHECKPOINT.json",
-        "git_blob_observed": "8c5a38add955c3b77751a3516012ad4e1d234c06",
+        "path": "Workspaces/menschen-a1-verben-wortfamilie-v336/LATEST.json",
+        "git_blob_observed": "9c8bc052dc2274eec5a85479e98d816da8f3e2f2",
         "artifact_sha_json_pointer": "/artifact/sha256"
       },
       "active_baseline": {
-        "label": "Repair4 content re-locked",
-        "artifact_name": "Menschen-A1-Verben-v3.3.6-Repair4-GFP-v455-CONTENT-RELOCKED.zip",
-        "artifact_sha256": "d048120f4e7de9f021eb9465fd4c4bd587d433ff5bedcc4fda2dfb5fa1b41a20",
-        "artifact_location": "Source-owned Repair4 checkpoint; confirm current Library/Drive location before moving",
-        "selection": "LATEST_SOURCE_OWNER_SELECTED_CURATED_CONTENT",
-        "byte_reverification_this_registry_pass": "NOT_PERFORMED",
-        "artifact_size_bytes": 807130,
-        "size_provenance": "SOURCE_OWNER_RECEIPT__NOT_NEW_BINARY_REHASH"
+        "label": "R10_USER_ACCEPTED_CONTENT_FINAL_2026_11_06",
+        "artifact_name": "Menschen-A1-Verben-R10-CONTENT-ONLY-DEEP-AUDIT-20261106.zip",
+        "artifact_sha256": "790e7a39f2c814b59e3aceccb7cc7a9658d18b8c0980187c3d7af1370a53cd47",
+        "artifact_size_bytes": 50580352,
+        "artifact_location": "Google Drive 1FraH6tao4PwPHdQlKfkscJVewS409qL0; personal Library previous release trashed with approved cleanup",
+        "selection": "SOURCE_OWNER_R10_EXPLICIT_USER_ACCEPTED_CONTENT_FINAL__EXACT_DRIVE_BYTES_REHASHED_2026_11_07",
+        "byte_reverification_this_registry_pass": "PASS_DIRECT_RAW_DRIVE_SHA256_AND_ZIP_CRC_78",
+        "size_provenance": "DIRECT_REHASHED_GOOGLE_DRIVE_SOURCE_ARCHIVE"
       },
       "metrics": {
-        "cards": 310
+        "cards": 310,
+        "examples": 1240,
+        "kombinationen": 1934,
+        "wordfamily_members": 430
       },
-      "content_stage": "CONTENT_RELOCKED",
-      "runtime_stage": "EXACT_CURRENT_RUNTIME_ACCEPTANCE_PENDING",
-      "next_action": "Exact current-runtime import and display acceptance"
+      "content_stage": "R10_USER_ACCEPTED_CONTENT_FINAL__STAGE4_5_PASS",
+      "runtime_stage": "USER_REPORTED_REAL_IMPORT_SUCCESS__INDEPENDENT_RELOAD_FSRS_AND_NATIVE_STAGE7_PENDING",
+      "next_action": "Preserve accepted R10 current content; no re-import needed. Full exact runtime Stage6/7 remains separate; no old Repair4 fallback.",
+      "previous_management_baseline": {
+        "artifact_sha256": "d048120f4e7de9f021eb9465fd4c4bd587d433ff5bedcc4fda2dfb5fa1b41a20",
+        "artifact_name": "Menschen-A1-Verben-v3.3.6-Repair4-GFP-v455-CONTENT-RELOCKED.zip",
+        "owner_path": "Workspaces/menschen-a1-verben-repair4-v336/CHECKPOINT.json",
+        "owner_git_blob": "8c5a38add955c3b77751a3516012ad4e1d234c06",
+        "note": "Historical Repair4 content relock; do not delete or substitute"
+      },
+      "note": "2026-11-07 central registry corrected from older Repair4; content owner LATEST and CHECKPOINT 2026-11-06 already recorded accepted R10. Library cleanup authorized; Drive is primary live artifact."
     },
     {
       "id": "family:menschen-a2",
@@ -327,19 +338,22 @@
   },
   "byte_evidence_bridge": {
     "as_of": "2026-11-07",
-    "receipt": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07-EXACT-BYTE-EVIDENCE.json",
+    "receipt": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07-R10-RECONCILED-EXACT-BYTE-EVIDENCE.json",
     "local_exact_sha_crc_verifier": "Tools/verify_portfolio_archive_bytes_v1.py",
-    "distinct_families_externally_rehashed": 9,
-    "provider_binary_observations": 11,
-    "drive": 7,
+    "distinct_families_externally_rehashed": 10,
+    "provider_binary_observations": 12,
+    "drive": 8,
     "library": 4,
     "library_drive_bit_identical_families": [
       "family:menschen-a2-verben",
       "family:nomen-verb-verbindungen"
     ],
-    "not_located": "family:menschen-a1-verben",
+    "not_located": null,
     "scope": "EXACT_BINARY_SHA256_AND_ZIP_CRC_ONLY__NOT_SEMANTIC_QA_OR_APP_STAGE6",
     "github_ci_rehashes_live_user_bytes": false,
-    "auto_promote": false
+    "auto_promote": false,
+    "prior_receipt": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07-EXACT-BYTE-EVIDENCE.json",
+    "currentness_correction": "family:menschen-a1-verben -> USER_ACCEPTED_R10_SOURCE_OWNER_WORFAMILIE_2026_11_06",
+    "no_new_content_publication": true
   }
 }

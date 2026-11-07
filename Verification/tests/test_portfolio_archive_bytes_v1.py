@@ -61,30 +61,13 @@ class ExactZipTests(unittest.TestCase):
             m.verify_file(self.root/"absent.zip",self.sha,self.size)
 
     def fixture_report(self):
-        ids=["family:menschen-a1-verben"]+[f"family:test-{i}" for i in range(9)]
-        reg={"items":[]}
-        items=[]
-        for fid in ids:
-            reg["items"].append({"id":fid,"active_baseline":{"artifact_name":"fixture.zip",
-                                     "artifact_sha256":self.sha,
-                                     "artifact_size_bytes":self.size}})
-            if fid=="family:menschen-a1-verben":
-                continue
-            providers=["google_drive","library"] if fid in ("family:test-1","family:test-4") else ["google_drive"]
-            for prov in providers:
-                items.append({"family_id":fid,"provider":prov,"artifact_name":"fixture.zip",
-                  "expected_sha256":self.sha,"measured_sha256":self.sha,
-                  "measured_size_bytes":self.size,"comparison":"PASS_EXACT_SOURCE_ACCEPTED_SHA256",
-                  "zip_entries":1,"zip_crc_test":"PASS_ALL_MEMBERS"})
-        # Need exact provider cross-family accounting expected by the production receipt.
-        # Rebuild with the real ten IDs to test the static historical contract.
         ids=["family:menschen-a1","family:menschen-a1-verben","family:menschen-a2",
              "family:menschen-a2-verben","family:menschen-b1","family:menschen-b1-verben",
              "family:aber-hallo-listen-tabellen","family:nomen-verb-verbindungen",
              "family:250-verben-mit-praepositionen","family:unregelmaessige-verben"]
         library={"family:menschen-a2","family:menschen-a2-verben",
                  "family:nomen-verb-verbindungen","family:unregelmaessige-verben"}
-        drive={"family:menschen-a1","family:menschen-a2-verben","family:menschen-b1",
+        drive={"family:menschen-a1","family:menschen-a1-verben","family:menschen-a2-verben","family:menschen-b1",
                "family:menschen-b1-verben","family:aber-hallo-listen-tabellen",
                "family:nomen-verb-verbindungen","family:250-verben-mit-praepositionen"}
         reg={"items":[{"id":fid,"active_baseline":{"artifact_name":"fixture.zip",
@@ -95,9 +78,9 @@ class ExactZipTests(unittest.TestCase):
                   "zip_entries":1,"zip_crc_test":"PASS_ALL_MEMBERS"}
                  for fid in ids for prov,allowed in (("google_drive",drive),("library",library)) if fid in allowed]
         evidence={"schema":"gfp-opt-curated-portfolio-exact-byte-evidence@1.0.0",
-                  "distinct_families_reverified":9,
+                  "distinct_families_reverified":10,
                   "all_measured_sha256_and_zip_crc_pass":True,
-                  "unresolved_families":[{"family_id":"family:menschen-a1-verben"}],
+                  "unresolved_families":[],
                   "evidence":entries}
         return reg,evidence
 

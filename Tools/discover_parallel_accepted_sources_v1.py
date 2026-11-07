@@ -31,6 +31,7 @@ SOURCE_FIELDS = (
     ("final_content_only_v18", ("sha256",), ("filename", "name")),
 )
 ACCEPTED = re.compile(r"USER[_-]ACCEPTED|USER[_-]IMPORT[_-]ACCEPTED", re.I)
+NEGATED_ACCEPTED = re.compile(r"(?:^|[_-])(?:NOT|PENDING|UNVERIFIED)[_-]USER[_-]ACCEPTED", re.I)
 DRAFT_FILENAME = re.compile(r"(?:^|[-_])(WIP|PREVIEW|CANDIDATE|NOT[-_]IMPORT)(?:[-_.]|$)", re.I)
 
 
@@ -80,7 +81,7 @@ def source_date(doc: dict) -> str | None:
 def qualifying(doc: dict, path: str, family_id: str) -> list[dict]:
     # These are evidence leads, not automatic acceptance/promotion decisions.
     status = str(doc.get("status") or doc.get("state") or "")
-    if not ACCEPTED.search(status):
+    if not ACCEPTED.search(status) or NEGATED_ACCEPTED.search(status):
         return []
     found = []
     for field, hash_fields, name_fields in SOURCE_FIELDS:

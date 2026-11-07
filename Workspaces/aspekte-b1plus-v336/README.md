@@ -1,5 +1,21 @@
 # Aspekte B1+ — Status 2026-11-06
 
+## G1 completed for the current B1+ source corpus — 2026-11-07
+
+**Current work gate:** G2 ACTIVE. The same [temporary roadmap](ROADMAP-TEMP.md) was updated in place to v0.2; the Library mirror remains at `Aspekte-B1plus/Plans/ROADMAP-TEMP.md` with the same library file id, SHA256 `f5fa4d26c2a821fd6f332a74069ba4528cbf71b560eee187d0e70fcfd7db99b4`.
+
+A source-to-learner-unit **content routing patch** has been applied to the existing Pass04 1,544 provisional preview views and verified against all **1,548 source CSV rows**: **1,573 provisional learner units** now have stable identities, with zero missing source links. All original source ordinals, attested examples, and source meanings are preserved. A provisional learner-unit view count is not the final import count and is not a release claim.
+
+This corrected an important earlier underestimate: the 20-source-row Gate2B review is a subset; **120** multi-signal source records were classified after scanning the actual candidate corpus, including **110** existing preview fronts and **35** original source headwords with spaced slash separators (overlapping). **31** shared source rows with genuinely different lexemes were split into linked learner targets. **59** male/female paired word forms stay within one lexical-family card, as do two same-lemma gender alternatives. Source rows 14, 15 and 57 are linked as collocation evidence to existing Kontakt or greifen headwords; two independent targets with other existing primary cards (`beschäftigt` ordinal 296 and `Wohlstand` ordinal 405) were linked instead of duplicated.
+
+All **seven** official same-lemma duplicate pairs are linked to single provisional headword targets. Pass04 already linked three; G1 linked the remaining **four** (18+733, 761+762, 1085+1086, 1240+1241). The earlier independently linked 206+207 pair also remains preserved. No source rows were dropped.
+
+**G2/G4 dependency:** the new split yields **67** learner-unit views whose independent morphology and lexeme-specific bilingual examples are *not yet checked*. Their original combined source examples remain in the evidence field, not shown under an arbitrary separate lemma. No morphology guesses or fabricated examples were added. All **340 HOLDs remain release-blocked**, and **zero** cards have formal approval.
+
+Verified private Library sidecar: `Reports/Aspekte-B1plus-G1-CARD-IDENTITY-ROUTING-1548-SOURCE-ROWS-NONIMPORT-20261107.zip`, SHA256 `ee2487479b5e2cc9feb308aeff9397d94e2102ba8cce3bd0237b2ba6174efc0e`, 427,830 bytes, seven ZIP members, six SHA256 manifest entries, exact-byte Library readback and CRC PASS. [G1 receipt](Reports/G1-IDENTITY-ROUTING-1548-SOURCE-1573-VIEWS-RECEIPT-20261107.json).
+
+**Next:** G2 first verifies individual German morphology of all 67 new lemma targets and 256 Pass03 source-derived form proposals, then G3 overlays, G4 bilingual semantic example QA, G5 final crosslevel TSV sense/render test, and G6 only after formal HOLD release signoff.
+
 ## Temporary six-gate roadmap and compulsory progress footer (2026-11-07)
 
 **[ROADMAP-TEMP.md](ROADMAP-TEMP.md)** is the single in-place working roadmap for finishing Aspekte B1+. Its exact-byte Library mirror is at `Content/Aspekte-B1plus/Plans/ROADMAP-TEMP.md` (SHA256 `729a7bfe8c5c896a88e23a97c2a62e21655444582f61c1efb5a10a2a6bb250b3`). The same paths are linked in `LATEST.json` and `CHECKPOINT.json`.

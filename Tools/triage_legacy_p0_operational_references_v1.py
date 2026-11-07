@@ -86,8 +86,8 @@ def analyze(root: Path) -> dict:
     by_source={}
     edges=[]
     for source in candidate_sources:
-        if source==ROUTING:
-            continue
+        if source==ROUTING or source.startswith("Optimization-Program/Control-Center/Legacy-Dependencies/"):
+            continue  # Do not let the auditor's own historical receipts inflate the live inbound count
         # Read the Git object, not CRLF-normalized checkout files.
         raw=base.git(root,["show","HEAD:"+source])
         if b"\0" in raw:

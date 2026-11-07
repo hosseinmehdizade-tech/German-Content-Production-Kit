@@ -15,8 +15,8 @@
   "contract_path": "Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-CONTRACT-v1.md",
   "total_cards_including_cross_family_overlap": 12605,
   "unique_cards_deduplicated": null,
-  "auto_run_enabled": false,
-  "program_refresh_trigger": "AT_NEXT_AUTHORIZED_REVIEW_OR_SOURCE_RELEASE_OR_CONTROL_CENTER_START; not a background service",
+  "auto_run_enabled": true,
+  "program_refresh_trigger": "AUTOMATIC_GIT_POINTER_RECONCILIATION_ON_RELEVANT_PUSH_AND_PR_PLUS_MANUAL_DISPATCH; accepted CURATED_CURRENT promotion only at authorized owner milestone",
   "promotion_rule": "Evidence-based manual/authorized source-owner accepted successor; compare expected parent SHA and current owner pointer; preserve history; never auto-promote candidates from timestamp alone",
   "publication_rules": {
     "no_card_edit": true,
@@ -292,6 +292,9 @@
     "library_drive_live_sync": false,
     "library_drive_bytes_verified_by_tool": false,
     "app_native_stage6_verified_by_tool": false,
-    "registered_families": 10
-  }
+    "registered_families": 10,
+    "auto_release_promotion": false
+  },
+  "auto_run_scope": "GITHUB_PUSH_PR_OR_MANUAL_READ_ONLY_GIT_REFERENCE_CHECKS_ONLY",
+  "auto_release_promotion_enabled": false
 }

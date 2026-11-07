@@ -1,5 +1,25 @@
 # Aspekte B1+ — Status 2026-11-06
 
+## G2 independent split-lexeme morphology front proposals and G1 form-family corrections — 2026-11-07
+
+**Roadmap version 0.3, G2 ACTIVE (nonimport).** The existing G1 identity-routing ZIP and its 1,573 provisional views were checked against direct German grammatical relations. Two G1 views had represented forms of the same word as independent cards:
+
+- Source ordinal **65** `weitestgehend` was merged as a Duden-attested superlative into the `weitgehend` learner family; `weitergehend` stays a separate semantic candidate pending G4.
+- Source ordinal **1256** `die Seeleute` was merged as a Duden-attested plural/collective form into `der Seemann`, retaining the plural's Persian gloss and source-evidence links for G4.
+
+Consequently **1,573 → 1,571 provisional learner views** with **1,548/1,548** source rows mapped. All **67** previously source-split candidate units received an *individual* disposition: **65** surviving independent lexeme units had their front morphology/part-of-speech information directly updated in the candidate views; **two** became same-lemma grammatical-form links. The surviving 65 are classified as 30 nouns, 15 verbs, 15 adjectives, 3 prepositions and 2 adverbs. No existing back-side Persian meanings or source DE–FA examples in surviving views were modified; source examples are still awaiting lexeme-specific G4 review, never blindly assigned to a different lemma.
+
+**Verification boundary:** 30 distinct surviving candidate fronts have a reference URL recorded, and 23 had scope-limited reference pages directly returned in this session. Neither a dictionary link nor a regular morphology transformation means the entire card/word has been independently approved. All 65 front forms remain provisionally staged; earlier 256 source-derived Pass03 forms still need per-word lexicographic review. The infrequent/disputed plural of `das Kaffeeservice` is explicitly kept as an unresolved lexical QA issue without an invented learner-facing plural. Both plural senses of `Schlüsselwort` and `Stichwort` were considered rather than forcing one plural across all senses.
+
+All **340 source HOLDs remain release-blocked**. There are **zero formally approved cards**, no final TSV import and no app release.
+
+Private Library report: `Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G2-67-SPLIT-MORPHOLOGY-2-IDENTITY-REPAIRS-1571-PREVIEWS-NONIMPORT-20261107.zip`.
+SHA256 `dbf129adf51f24713596b99cb6e72f559fa3a1336dc680fa9d482844e1df2fdd`, 484,991 bytes, 8 ZIP entries, 7 verified internal SHA256SUMS, byte-exact Library readback and CRC verified.
+
+The **same** [temporary roadmap](ROADMAP-TEMP.md) was overwritten in Library/GitHub in-place at version 0.3 (Library id `libfile_01c5b33ec05881918a21b124acf5eac8`, SHA256 `6fa096b9e9f2aae44be6b328042ead952262ba5601728243f38d22c20955afc9`). [G2 metadata receipt](Reports/G2-67-SPLIT-INFLECTION-2-FORM-FAMILY-MERGES-RECEIPT-20261107.json).
+
+**Next:** G2 individual independent lexicographic verification of 65 new front proposals and 256 older proposals, followed by G3 overlay edits, G4 full DE–FA semantics/examples, G5 actual renderer/TSV import QA and only then G6 release.
+
 ## G1 completed for the current B1+ source corpus — 2026-11-07
 
 **Current work gate:** G2 ACTIVE. The same [temporary roadmap](ROADMAP-TEMP.md) was updated in place to v0.2; the Library mirror remains at `Aspekte-B1plus/Plans/ROADMAP-TEMP.md` with the same library file id, SHA256 `f5fa4d26c2a821fd6f332a74069ba4528cbf71b560eee187d0e70fcfd7db99b4`.

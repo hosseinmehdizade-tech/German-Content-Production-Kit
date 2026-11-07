@@ -1,3 +1,7 @@
+## Aspekte B1+ / B2 / C1 execution exception — 2026-11-07
+
+For these three workstreams, **apply [ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md](ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md)** as a scoped implementation of existing anti-loop, workstream-currentness and Library routing rules. GitHub workstream roadmap is the control-plane current; owner-specific verified content remains in Library/Project. Older Library roadmap copies are historical and must not be overwritten automatically. A failed/consent-gated Library write is terminal for that destination in the turn, not a reason to block subsequent lexical work or spin a retry loop. No changes to final QA, source preservation, Stage5–7 or the global policy registry's pinned semantic rules.
+
 # Global Policy Synchronization Contract v1.0.0
 **Status:** ACTIVE PROSPECTIVE ROUTING — process optimization only, 2026-11-05.
 

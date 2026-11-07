@@ -22,9 +22,9 @@ sys.path.insert(0,str(ROOT/"Tools"))
 import build_governed_clean_delivery_v1 as governed
 
 CATALOG = "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json"
-CATALOG_BLOB = "b803b0d13c1b406f8034b471ae94d5f0d2c2f57b"
+CATALOG_BLOB = "f2e86dcd2bc04599f4936e47ebfe1d6919e0234e"
 FAMILIES = "Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json"
-FAMILIES_BLOB = "3f1d5060434191f3d425ee6a72dee4725819e669"
+FAMILIES_BLOB = "ddc461eaafb5ef4f1cabf0d53cde6797db823310"
 RECEIPT_SCHEMA = "gfp-opt-p1-governed-stage5-producer-invocation@1.0.0"
 
 class AdoptionError(ValueError):

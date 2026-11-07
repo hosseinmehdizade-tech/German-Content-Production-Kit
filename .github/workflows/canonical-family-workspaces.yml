@@ -1,0 +1,71 @@
+name: Canonical Family Workspace Guard - Read-only
+on:
+  push:
+    paths:
+      - 'Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json'
+      - 'Optimization-Program/Control-Center/Approvals/**'
+      - 'Workspaces/**'
+      - 'Tools/validate_canonical_family_workspaces_v1.py'
+      - 'Verification/tests/test_canonical_family_workspaces_v1.py'
+      - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
+      - '.github/workflows/canonical-family-workspaces.yml'
+  pull_request:
+    paths:
+      - 'Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json'
+      - 'Optimization-Program/Control-Center/Approvals/**'
+      - 'Workspaces/**'
+      - 'Tools/validate_canonical_family_workspaces_v1.py'
+      - 'Verification/tests/test_canonical_family_workspaces_v1.py'
+      - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
+      - '.github/workflows/canonical-family-workspaces.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  canonical-family-routing:
+    name: Enforce non-destructive single canonical route (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test canonical ownership, no-second-CURRENT and anti-deletion safeguards
+        run: python -B -m unittest discover -s Verification/tests -p test_canonical_family_workspaces_v1.py -v
+      - name: Fail closed if family routing, Workspace catalog or new directories drift
+        shell: bash
+        run: |
+          python -B Tools/validate_canonical_family_workspaces_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/canonical-family-guard" \
+            --github-summary
+      - name: Block competing newly accepted release leads in sibling Workspaces (historical older siblings exempt)
+        shell: bash
+        run: |
+          python -B Tools/discover_parallel_accepted_sources_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/canonical-family-guard" \
+            --fail-on-review \
+            --github-summary
+      - name: Save derived routing gate report without editing source
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-family-routing-${{ matrix.os }}
+          path: ${{ runner.temp }}/canonical-family-guard/
+          if-no-files-found: error
+          retention-days: 14

@@ -1,8 +1,10 @@
 # Persistent Production Workspaces
 
+> **2026-11-07 canonical Workspace routing (prospective, non-destructive):** Before starting a new content task or creating any `Workspaces/*` directory, resolve the family in [the 21-family canonical routing registry](../Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json). Each family has **at most one canonical Git Workspace** and one stable Library family folder. Existing noncanonical Workspace directories are preserved for historical QA, source evidence and necessary compatibility, not second CURRENT owners; **no folder was moved/deleted by this policy**. Five families with no Git Workspace yet stay Library-only; first Git Workspace creation requires a reviewed routing change and a real user-approval receipt. New work for represented families belongs inside the canonical Workspace's own workstream subfolders or Git branches, rather than another top-level Workspace. The [read-only CI guard](../.github/workflows/canonical-family-workspaces.yml) rejects silent sibling creation and contradictory canonical ownership; it does not auto-promote content or alter app/UI/SRS/FSRS.
+
 `Workspaces/` is the durable Git-backed checkpoint area for active content-production datasets.
 
-Every production source gets a stable folder:
+For new canonical content work, use **the existing family-selected canonical folder**, not an automatically generated source-/repair-specific sibling. A canonical folder may organize tasks internally as follows:
 
 ```text
 Workspaces/<source-slug>/

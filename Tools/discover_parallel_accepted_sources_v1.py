@@ -15,6 +15,7 @@ import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 REGISTRY = "Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json"
@@ -45,6 +46,19 @@ def below(root: Path, rel: str) -> Path:
     if not path.is_relative_to(home):
         raise ValueError("Path escapes checkout")
     return path
+
+
+def git_owner_bytes(root: Path, rel: str) -> bytes:
+    """Read raw committed Git Blob, not Checkout bytes converted to CRLF on Windows."""
+    path = below(root, rel)
+    if (root / ".git").exists():
+        result = subprocess.run(["git", "show", "HEAD:" + rel],
+                                cwd=root, capture_output=True, check=False)
+        if result.returncode != 0:
+            raise ValueError("Selected source owner absent from Git HEAD: " + rel)
+        return result.stdout
+    # Synthetic fixture fallback: tests have no Git repository.
+    return path.read_bytes()
 
 
 def load(path: Path) -> dict:
@@ -154,7 +168,7 @@ def investigate(root: Path) -> dict:
         owner_file = below(root, chosen_path)
         if not owner_file.is_file():
             raise ValueError("Missing selected source owner " + chosen_path)
-        owner_bytes = owner_file.read_bytes()
+        owner_bytes = git_owner_bytes(root, chosen_path)
         owner = json.loads(owner_bytes)
         owner_sha = pointer(owner, current_owner["artifact_sha_json_pointer"])
         owner_blob_matches = blob(owner_bytes) == current_owner["git_blob_observed"]

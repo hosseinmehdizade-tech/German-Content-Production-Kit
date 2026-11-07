@@ -1,7 +1,7 @@
 {
   "schema": "aspekte-project-definition-git-checkpoint@2.0.0",
   "project_id": "aspekte-b1plus",
-  "status": "STAGE4_G2_INDIVIDUAL_LEXICAL_MORPHOLOGY_BATCH01_27_OF_321_2_FRONT_CORRECTIONS_294_REMAIN_ALL_HOLDS_BLOCKED_NONIMPORT",
+  "status": "STAGE4_G2_LEXICAL_BATCH02_47_OF_321_MORPHOLOGY_SCOPE_CHECKS_274_PENDING_ALL_HOLDS_BLOCKED_NONIMPORT",
   "production_authorized": true,
   "source_sha256": "09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1",
   "source_rows": 1548,
@@ -15,7 +15,7 @@
   "stage7": "NOT_STARTED",
   "prior_provisional_stage1": "NOT_ADOPTED",
   "git_status": "GITHUB_POINTER_TO_LIBRARY_EXACT_BYTE_VERIFIED_PART05_NONIMPORT",
-  "next_action": "Independently validate remaining 237 Pass04 plus 57 G2 morphology candidates, note context-dependent 404/418/666 and rare Kaffeeservice plural, then complete G2 signoff before G3. No release.",
+  "next_action": "Continue G2: 217 older and 57 newly split wordform candidates remain (274 total). G3 to start only when G2 acceptance tests pass.",
   "library_definition_receipt": {
     "status": "VERIFIED_BYTE_EXACT_READBACK",
     "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Checkpoints/Aspekte-B1plus-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip",
@@ -1652,16 +1652,16 @@
   },
   "independent_qa_pass04_receipt": "Workspaces/aspekte-b1plus-v336/Reports/STAGE4-QA-PASS04-256-RULE-AUDIT-33-MANUAL-DISPOSITIONS-RECEIPT-20261106.json",
   "temporary_roadmap": {
-    "version": "0.4",
+    "version": "0.5",
     "status": "ACTIVE_NONIMPORT",
     "github_path": "Workspaces/aspekte-b1plus-v336/ROADMAP-TEMP.md",
     "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Plans/ROADMAP-TEMP.md",
     "library_file_id": "libfile_01c5b33ec05881918a21b124acf5eac8",
-    "verified_sha256": "337e2c07c91f94e9597906f0f843914d6b6f01e2446f2874438a9f254113ab34",
+    "verified_sha256": "f3a1bc8673cebac8fda8dfdbcccaba222f6a04c3e4fe8bff12c85edf54d59bc7",
     "gate_count": 6,
     "current_gate": "G2",
     "gate_status": {
-      "G1": "DONE_INTERNAL_IDENTITY",
+      "G1": "DONE_INTERNAL_WITH_CORRECTIONS",
       "G2": "ACTIVE",
       "G3": "PENDING",
       "G4": "PENDING",
@@ -1678,9 +1678,12 @@
     "G2_67_split_lexical_unit_dispositions": 67,
     "G2_65_form_proposals": 65,
     "G2_2_grammatical_identity_corrections": 2,
-    "G2_lexical_checked": 27,
+    "G2_lexical_checked": 47,
     "G2_lexical_target": 321,
-    "G2_lexical_remaining": 294
+    "G2_lexical_remaining": 274,
+    "G2_older_forms_checked": 39,
+    "G2_new_split_forms_checked": 8,
+    "G2_total_front_corrections": 9
   },
   "latest_identity_routing_layer": {
     "name": "G1_IDENTITY_ROUTING",
@@ -1735,41 +1738,28 @@
   "G1_corrected_grammatical_merges": 2,
   "G2_receipt_path": "Workspaces/aspekte-b1plus-v336/Reports/G2-67-SPLIT-INFLECTION-2-FORM-FAMILY-MERGES-RECEIPT-20261107.json",
   "latest_G2_lexical_layer": {
-    "status": "G2_DICTIONARY_SPECIFIC_FORM_BATCH01_NONIMPORT",
-    "library_id": "libfile_4a714f9627cc81918c55a36f739ee73e",
-    "sha256": "b4cd7ebd0ceda144fd3abdaa70583d2cdf1accf338399f436a59850f04fd7d63",
-    "bytes": 404130,
-    "zip_members": 8,
-    "manifest_entries_verified": 7,
+    "status": "G2_LEXICAL_BATCH02_FORM_SCOPE_REVIEW_NONIMPORT",
+    "library_file_id": "libfile_d536f24968a88191b84b188612c6c4d1",
+    "sha256": "8c121ae271d68a0b707c3028902782d23384ffde40060789f9cba72f7703fd69",
+    "bytes": 406744,
+    "zip_members": 9,
+    "manifest_verified": 8,
     "library_byte_readback_passed": true,
-    "parent_sha256": "dbf129adf51f24713596b99cb6e72f559fa3a1336dc680fa9d482844e1df2fdd",
-    "candidate_form_check_counts": {
-      "older_Pass04": 19,
-      "new_G2": 8,
-      "total": 27,
-      "target": 321,
-      "remaining_old": 237,
-      "remaining_new": 57,
-      "remaining_total": 294
-    },
-    "actual_front_morphology_corrections": 2,
-    "source_ordinals_corrected": [
-      516,
-      778
-    ],
-    "special_flags_pending_word_sense_review": [
-      404,
-      418,
-      666,
-      714
-    ],
-    "provisional_learner_views": 1571,
-    "source_rows_covered": 1548,
-    "original_Persian_meanings_and_DE_FA_examples_preserved": true,
-    "no_source_or_master_file_mutation": true,
-    "all_340_HOLDs_still_blocked": true,
+    "new_specific_form_checks": 20,
+    "cumulative_specific_form_checks": 47,
+    "total_target_forms": 321,
+    "prior_256_form_checks_remaining": 217,
+    "new_65_form_checks_remaining": 57,
+    "remaining_total": 274,
+    "actual_front_corrections_this_batch": 7,
+    "cumulative_front_corrections": 9,
+    "provisional_card_count": 1571,
+    "source_row_count": 1548,
+    "backside_fa_and_examples_unchanged": true,
     "formal_approved_cards": 0,
-    "release_ready": false
+    "release_HOLDs_blocked": 340,
+    "import_ready": false
   },
-  "G2_lexical_batch01_receipt": "Workspaces/aspekte-b1plus-v336/Reports/G2-LEXICAL-BATCH01-27-FORMS-2-CORRECTIONS-RECEIPT-20261107.json"
+  "G2_lexical_batch01_receipt": "Workspaces/aspekte-b1plus-v336/Reports/G2-LEXICAL-BATCH01-27-FORMS-2-CORRECTIONS-RECEIPT-20261107.json",
+  "G2_lexical_batch02_receipt": "Workspaces/aspekte-b1plus-v336/Reports/G2-LEXICAL-BATCH02-20-NEW-47-CUMULATIVE-7-FRONT-FIXES-RECEIPT-20261107.json"
 }

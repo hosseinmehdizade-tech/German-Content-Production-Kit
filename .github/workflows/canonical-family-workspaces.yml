@@ -9,6 +9,8 @@ on:
       - 'Workspaces/**'
       - 'Tools/validate_canonical_family_workspaces_v1.py'
       - 'Verification/tests/test_canonical_family_workspaces_v1.py'
+      - 'Tools/audit_legacy_workspace_dependencies_v1.py'
+      - 'Verification/tests/test_legacy_workspace_dependencies_v1.py'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
@@ -21,6 +23,8 @@ on:
       - 'Workspaces/**'
       - 'Tools/validate_canonical_family_workspaces_v1.py'
       - 'Verification/tests/test_canonical_family_workspaces_v1.py'
+      - 'Tools/audit_legacy_workspace_dependencies_v1.py'
+      - 'Verification/tests/test_legacy_workspace_dependencies_v1.py'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
@@ -61,6 +65,16 @@ jobs:
             --repo-root . \
             --out-dir "$RUNNER_TEMP/canonical-family-guard" \
             --fail-on-review \
+            --github-summary
+      - name: Test no-deletion legacy dependency inventory and exact Git reference detection
+        run: python -B -m unittest discover -s Verification/tests -p test_legacy_workspace_dependencies_v1.py -v
+      - name: Audit inbound references to all grandfathered legacy workspaces (Git-only)
+        shell: bash
+        run: |
+          python -B Tools/audit_legacy_workspace_dependencies_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/canonical-family-guard" \
+            --expect-legacy 20 \
             --github-summary
       - name: Save derived routing gate report without editing source
         uses: actions/upload-artifact@v4

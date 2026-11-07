@@ -9,6 +9,8 @@ on:
       - 'Workspaces/**'
       - 'Tools/validate_canonical_family_workspaces_v1.py'
       - 'Verification/tests/test_canonical_family_workspaces_v1.py'
+      - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
   pull_request:
     paths:
@@ -19,6 +21,8 @@ on:
       - 'Workspaces/**'
       - 'Tools/validate_canonical_family_workspaces_v1.py'
       - 'Verification/tests/test_canonical_family_workspaces_v1.py'
+      - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
   workflow_dispatch:
 permissions:
@@ -49,6 +53,14 @@ jobs:
           python -B Tools/validate_canonical_family_workspaces_v1.py \
             --repo-root . \
             --out-dir "$RUNNER_TEMP/canonical-family-guard" \
+            --github-summary
+      - name: Block competing newly accepted release leads in sibling Workspaces (historical older siblings exempt)
+        shell: bash
+        run: |
+          python -B Tools/discover_parallel_accepted_sources_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/canonical-family-guard" \
+            --fail-on-review \
             --github-summary
       - name: Save derived routing gate report without editing source
         uses: actions/upload-artifact@v4

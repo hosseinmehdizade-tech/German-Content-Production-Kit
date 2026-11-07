@@ -49,16 +49,16 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_all_known_families_workspaces_and_root_keys_have_graph_nodes(self):
         r = self.build()
         self.assertEqual(r["counts"]["families"], 21)
-        self.assertEqual(r["counts"]["workspaces"], 35)
+        self.assertEqual(r["counts"]["workspaces"], 36)
         self.assertEqual(r["counts"]["root_keys"], 17)
         self.assertEqual(r["counts"]["policies"], len(self.registry["policy_bindings"]))
-        self.assertEqual(len(r["nodes"]), 21 + 35 + 17 + len(self.registry["policy_bindings"]))
+        self.assertEqual(len(r["nodes"]), 21 + 36 + 17 + len(self.registry["policy_bindings"]))
 
     def test_every_workspace_has_exactly_one_family_ownership_edge(self):
         r = self.build()
         ownership = [e for e in r["edges"] if e["kind"] == "WORKSPACE_OWNERSHIP_EXPLICIT"]
-        self.assertEqual(len(ownership), 35)
-        self.assertEqual(len({x["from"] for x in ownership}), 35)
+        self.assertEqual(len(ownership), 36)
+        self.assertEqual(len({x["from"] for x in ownership}), 36)
 
     def test_policy_edges_label_potential_impact_not_verified_adoption(self):
         r = self.build()
@@ -70,7 +70,7 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_curated_current_policy_reaches_all_workspaces_without_fake_adoption(self):
         r = self.build()
         edges = [e for e in r["edges"] if e["from"] == "policy:curated_current_delta_qa"]
-        self.assertEqual(len(edges), 35)
+        self.assertEqual(len(edges), 36)
         self.assertTrue(all(e["applicability"] ==
             "MANDATORY_ROUTING_SCOPE__NOT_IMPLEMENTATION_PROOF" for e in edges))
         self.assertEqual(r["counts"]["source_artifact_shas_independently_verified"], 0)
@@ -78,7 +78,7 @@ class TestDependencyEvidence(unittest.TestCase):
     def test_currentness_applies_to_all_workspaces(self):
         r = self.build()
         edges = [x for x in r["edges"] if x["from"] == "policy:currentness"]
-        self.assertEqual(len(edges), 35)
+        self.assertEqual(len(edges), 36)
 
     def test_lexical_policy_does_not_imply_cross_source_audit_is_content_producer(self):
         r = self.build()
@@ -157,7 +157,7 @@ class TestDependencyEvidence(unittest.TestCase):
 
     def test_changing_registry_requires_all_policy_scope_review(self):
         impact = self.build(changes=[graph.REGISTRY])["prospective_impact"][0]
-        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 35)
+        self.assertEqual(len(impact["possibly_affected_workspace_ids"]), 36)
         self.assertFalse(impact["locked_sources_reopened"])
 
     def test_change_path_traversal_is_rejected_as_unsafe(self):

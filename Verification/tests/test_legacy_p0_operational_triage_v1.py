@@ -97,6 +97,11 @@ class TriageTests(unittest.TestCase):
         self.assertEqual(m.source_bucket("Verification/tests/test_a.py","x=open('foo')"),
                          "TEST_OR_REGRESSION_EVIDENCE_NOT_RUNTIME_PROOF")
 
+    def test_versioned_verification_tests_are_not_runtime_callsite_candidates(self):
+        name="Verification/tests-v3.3.6/test_content_zip_guard.py"
+        self.assertEqual(m.source_bucket(name,"Path('Workspaces/hist-0/CHECKPOINT.json').read_text()"),
+                         "TEST_OR_REGRESSION_EVIDENCE_NOT_RUNTIME_PROOF")
+
     def test_disallow_reporting_inside_checkout(self):
         dest=self.root/"output"
         with contextlib.redirect_stdout(io.StringIO()):

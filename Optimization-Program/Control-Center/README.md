@@ -1,3 +1,5 @@
+**LESEN OWNER WORKSPACE SYNC (2026-11-07; NAVIGATION/STATIC QA ONLY):** `family:lesen` now has an exact-byte-verified v1.3.0 portable reading baseline (68 texts, ZIP SHA256 `558c165df7603c26b775781f9c9bbd508c456b4b24f68979ebe0edecf3b46565`) under Library `/Flasch kart/German-Content-Production-Kit/Content/Lesen/Current/`. Source-owner metadata: `Workspaces/lesen-praesentation/CURRENT-ARTIFACT.json`, `ARTIFACT-REGISTER.json`, `POLICY-ALIGNMENT-20261107.md`; central navigation: [LESEN-CONTENT-CURRENTNESS-PIN-20261107.json](LESEN-CONTENT-CURRENTNESS-PIN-20261107.json). ZIP/CRC/manifest/hash and reading ID/translation structural QA PASS; native v505 Stage6, independent semantic Stage4 and Stage7 FINAL not claimed. Original seven-stage Git checkpoint Stage1 PASS, Stage2–7 NOT_STARTED unchanged; no app UI/SRS/card mutation; 10-family dynamic portfolio unchanged. Historical v413 external import is not v1.3.0 current content.
+
 # Project Control Center v1 — Phase 1
 
 This is a read-only project identity catalog and live Git-index navigation report, not a new content authority or an app UI change.

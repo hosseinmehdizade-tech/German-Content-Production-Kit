@@ -11,6 +11,7 @@ import argparse
 from collections import Counter, defaultdict
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -119,6 +120,10 @@ def analyze(root: Path) -> dict:
     if missing:
         raise ValueError("Grandfathered Workspace has no tracked Git files: " + repr(missing[:4]))
 
+    # A short directory name must not match a longer sibling name; e.g.
+    # Workspaces/menschen-a2 is NOT a reference to Workspaces/menschen-a2-24-lessons-v336.
+    path_patterns = {name: re.compile(re.escape(name.encode('utf-8')) + rb'(?![A-Za-z0-9_.-])')
+                     for name in legacy_dirs}
     inbound: dict[str, list[str]] = {p: [] for p in legacy_dirs}
     unreadable_but_matched: dict[str, list[str]] = {p: [] for p in legacy_dirs}
     for source in text_matches:
@@ -132,7 +137,7 @@ def analyze(root: Path) -> dict:
                 unreadable_but_matched[directory].append(source)
             continue
         for directory in legacy_dirs:
-            if directory.encode("utf-8") not in content:
+            if not path_patterns[directory].search(content):
                 continue
             if source.startswith(directory + "/"):
                 continue  # a path describing itself is not an inbound dependency

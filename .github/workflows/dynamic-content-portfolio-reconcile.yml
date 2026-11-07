@@ -15,6 +15,8 @@ on:
       - 'Optimization-Program/Control-Center/Provider-Observations/2026-11-07-A1-VERBEN-R10-CURRENT-RECONCILIATION.json'
       - 'Tools/verify_portfolio_archive_bytes_v1.py'
       - 'Verification/tests/test_portfolio_archive_bytes_v1.py'
+      - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
   pull_request:
     paths:
@@ -31,6 +33,8 @@ on:
       - 'Optimization-Program/Control-Center/Provider-Observations/2026-11-07-A1-VERBEN-R10-CURRENT-RECONCILIATION.json'
       - 'Tools/verify_portfolio_archive_bytes_v1.py'
       - 'Verification/tests/test_portfolio_archive_bytes_v1.py'
+      - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
   workflow_dispatch:
 permissions:
@@ -75,6 +79,15 @@ jobs:
         run: python -B -m unittest discover -s Verification/tests -p test_portfolio_archive_bytes_v1.py -v
       - name: Validate historic exact-byte audit receipt against selected source pins (NOT raw file rehash in CI)
         run: python -B Tools/verify_portfolio_archive_bytes_v1.py --check-recorded --repo-root .
+      - name: Test sibling acceptance detection and source-owner safety
+        run: python -B -m unittest discover -s Verification/tests -p test_parallel_accepted_source_discovery_v1.py -v
+      - name: Detect catalog-mapped parallel accepted sources (no auto-promotion)
+        shell: bash
+        run: |
+          python -B Tools/discover_parallel_accepted_sources_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/dynamic-content-portfolio" \
+            --github-summary
       - name: Retain derived status outside version-controlled workspaces
         uses: actions/upload-artifact@v4
         with:

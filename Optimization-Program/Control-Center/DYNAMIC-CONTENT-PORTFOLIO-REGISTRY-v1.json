@@ -355,5 +355,20 @@
     "prior_receipt": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07-EXACT-BYTE-EVIDENCE.json",
     "currentness_correction": "family:menschen-a1-verben -> USER_ACCEPTED_R10_SOURCE_OWNER_WORFAMILIE_2026_11_06",
     "no_new_content_publication": true
+  },
+  "parallel_source_discovery": {
+    "version": "1.0.0",
+    "tool": "Tools/discover_parallel_accepted_sources_v1.py",
+    "test": "Verification/tests/test_parallel_accepted_source_discovery_v1.py",
+    "workflow": ".github/workflows/dynamic-content-portfolio-reconcile.yml",
+    "scope": "ALL_CATALOG_MAPPED_WORKSPACES_OF_SELECTED_TEN_FAMILIES__TOP_LEVEL_LATEST_CHECKPOINT_STAGE7_LATEST_POINTER_DOCS",
+    "unmapped_workspace_action": "REVIEW_NO_FAMILY_GUESS",
+    "date_trust": "TRIAGE_HINT_ONLY_NOT_ACCEPTANCE_OR_PROMOTION",
+    "on_accepted_alternative": "HUMAN_REVIEW_REQUIRED_NO_AUTOPROMOTION",
+    "auto_run_on_git_change": true,
+    "scans_live_library_or_drive": false,
+    "writes_source_owner": false,
+    "auto_promote": false,
+    "user_srs_fsrs_untouched": true
   }
 }

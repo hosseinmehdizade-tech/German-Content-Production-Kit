@@ -1,0 +1,161 @@
+{
+  "schema": "gcpk-p0-legacy-operational-evidence@1.0.0",
+  "observed_date": "2026-11-07",
+  "status": "SOURCE_LINES_REVIEWED__OPERATIONAL_POTENTIAL_CLASSIFIED__NO_RUNTIME_EXECUTION_VERIFIED",
+  "inputs": {
+    "canonical_routing": "Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json",
+    "previous_git_reference_snapshot": "Optimization-Program/Control-Center/Legacy-Dependencies/2026-11-07-PR146-GIT-REFERENCE-SNAPSHOT.json",
+    "p0_git_head_from_scoped_ubuntu_ci": "01c84ed8b3152e83302ac25a2edfecc61c79fb28",
+    "ci_workflow_run_id": 42371009470,
+    "dedicated_scan_tool": "Tools/triage_legacy_p0_operational_references_v1.py",
+    "source_verification": "Live GitHub main branch code file + SHA-1 blob from API; committed Git HEAD CI scan",
+    "selected_current_artifact_authority": "DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json plus each source-owner checkpoint; no app release claim"
+  },
+  "counts": {
+    "original_p0_workspaces": 10,
+    "original_p0_source_file_reference_edges": 78,
+    "original_code_ci_and_test_candidate_files": 9,
+    "regression_test_references_reclassified_as_nonruntime": 3,
+    "source_file_execution_candidates_after_test_exclusion": 6,
+    "p0_workspaces_with_remaining_execution_candidates": 3,
+    "confirmed_live_run_invocations": 0
+  },
+  "reviewed_references": [
+    {
+      "legacy": "Workspaces/250-verben-mit-praepositionen-kombinationen-repair1-v336",
+      "canonical": "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1",
+      "source": "Verification/validate_stage3_stage4_unification.py",
+      "source_git_blob": "79e05c45610a1c11e8152c19aeaebaf6df5a3fd0",
+      "lines": [
+        1,
+        24
+      ],
+      "observed": "Prospective Stage3/4 metadata dry-run; legacy LATEST.json listed in SAMPLES; no card release in this file.",
+      "classification": "OPTIONAL_READ_ONLY_COMPATIBILITY_SAMPLE__NOT_AUTOMATIC_CONTENT_PRODUCER",
+      "risk": "PRESERVE_SAMPLE_WHILE_RUNNABILITY_EXISTS",
+      "action": "Leave reference intact until a verified compatibility test replaces the historical sample"
+    },
+    {
+      "legacy": "Workspaces/menschen-a1-reaudit-v336",
+      "canonical": "Workspaces/menschen-a1-final-consolidation-v336",
+      "source": ".github/workflows/menschen-portfolio-refresh.yml",
+      "source_git_blob": "24d9a9a0d92bb2794ab584d4ae1929b01086e970",
+      "lines": [
+        1,
+        6,
+        10,
+        39,
+        43
+      ],
+      "observed": "Push trigger on historical A1 Reaudit, plus workflow_dispatch. Commits derived Portfolio/Menschen/LIVE dashboard files to main; not accepted card TSV/ZIP based on the declared steps.",
+      "classification": "ENABLED_CI_TRIGGER_FOR_READ_ONLY_PORTFOLIO_DATA_WITH_DERIVED_GIT_OUTPUT",
+      "risk": "CHANGE_OF_OLD_DIRECTORY_CAN_TRIGGER_DASHBOARD_REFRESH",
+      "action": "Preserve trigger until dashboard refresh behavior and replacement canonical triggers are verified. Do not assume no main write: derived dashboard Git commit is explicitly declared"
+    },
+    {
+      "legacy": "Workspaces/menschen-a2",
+      "canonical": "Workspaces/menschen-a2-24-lessons-v336",
+      "source": ".github/workflows/content-zip-guard.yml",
+      "source_git_blob": "8158ab583a5eb9e624b5d3582625440e83078a4b",
+      "lines": [
+        1,
+        6,
+        34,
+        36
+      ],
+      "observed": "Current Content ZIP safety workflow compiles old v354 packaging tool files and runs package guard regression; this is an intentionally operational compatibility CI dependency, not current A2 source authority.",
+      "classification": "ACTIVE_CI_COMPATIBILITY_CHECK__REQUIRES_OLD_FILE_PATHS",
+      "risk": "MIGRATION_WOULD_BREAK_EXISTING_SAFETY_CI",
+      "action": "Retain historical builders and their paths; do not rewrite or delete without equivalent tested CI coverage"
+    },
+    {
+      "legacy": "Workspaces/menschen-a2",
+      "canonical": "Workspaces/menschen-a2-24-lessons-v336",
+      "source": ".github/workflows/menschen-a2-e2e.yml",
+      "source_git_blob": "83f97f0279354e3fb10efdac8d12bf785b0a8944",
+      "lines": [
+        1,
+        4,
+        6,
+        8,
+        11,
+        40,
+        47,
+        53,
+        55
+      ],
+      "observed": "Workflow_dispatch plus push on its own workflow YAML; reconstructs pinned old orchestrator, executes seven-stage production, uploads v354 artifacts from old A2 folder. Declares contents:write. Last actual execution and side effects were not audited.",
+      "classification": "MANUALLY_RUNNABLE_HISTORIC_V354_RELEASE_WORKFLOW__NOT_CURRENT_A2",
+      "risk": "HIGH_IF_MANUALLY_TRIGGERED__POTENTIAL_OLD_RELEASE_PRODUCTION",
+      "action": "Do not invoke or repoint without explicit scoped approval. Keep isolated from current A2 1778-card accepted artifact; review historical workflow deactivation separately"
+    },
+    {
+      "legacy": "Workspaces/menschen-a2",
+      "canonical": "Workspaces/menschen-a2-24-lessons-v336",
+      "source": ".github/workflows/menschen-a2-stage7-corrective.yml",
+      "source_git_blob": "5674ff7316cdec935131a28800bebaf1ddcf9edc",
+      "lines": [
+        1,
+        4,
+        6,
+        8,
+        11,
+        25,
+        26,
+        68,
+        235,
+        237
+      ],
+      "observed": "Workflow_dispatch plus push on its own workflow YAML; executes old Stage7 corrective packaging using v354-specific TSV/manifest hash pins and old A2 source path, declares contents:write. No recent run or actual runtime side effect independently confirmed.",
+      "classification": "MANUALLY_RUNNABLE_HISTORIC_V354_STAGE7_WORKFLOW__NOT_CURRENT_A2",
+      "risk": "HIGH_IF_MANUALLY_TRIGGERED__POTENTIAL_OLD_RELEASE_REPLAY",
+      "action": "Do not invoke or auto-route into current A2 canonical folder. Any disabling/rewiring is a separate authorized workflow-architecture change"
+    },
+    {
+      "legacy": "Workspaces/menschen-a2",
+      "canonical": "Workspaces/menschen-a2-24-lessons-v336",
+      "source": "Workspaces/menschen-verben-bounded-repair-2026-10-03/prepare_repair.py",
+      "source_git_blob": "a3cc026a9823731cabfc3bb80d4bd05e5c37a126",
+      "lines": [
+        1,
+        24,
+        55
+      ],
+      "observed": "Historical bounded repair Python script loads SOURCE-MANIFEST.json from older A2 path through a relative Git project root. No Git CI callsite or execution evidence was established in this scoped audit.",
+      "classification": "HISTORICAL_REPAIR_SCRIPT_READ_DEPENDENCY__MANUAL_EXECUTION_NOT_EXCLUDED",
+      "risk": "MIGRATING_OLD_A2_CAN_BREAK_ARCHIVAL_REPAIR_REPRODUCIBILITY",
+      "action": "Retain exact historical path; do not edit script's source locator without verified lineage and reproducible test"
+    }
+  ],
+  "test_only_provenance": [
+    {
+      "source": "Verification/tests-v3.3.6/test_content_zip_guard.py",
+      "source_git_blob": "bad7f30ed864aa6229b14d5847a6a9a4df91c8e9",
+      "lines": [
+        75,
+        77,
+        78,
+        131,
+        139,
+        140,
+        147
+      ],
+      "referenced_p0": [
+        "Workspaces/menschen-a2",
+        "Workspaces/menschen-a2-verben-kombinationen-v336",
+        "Workspaces/menschen-verben-bounded-repair-2026-10-03"
+      ],
+      "classification": "INTENTIONALLY_GRANDFATHERED_PACKAGE_GUARD_REGRESSION_OR_LEGACY_EXEMPTION",
+      "why_not_runtime_current": "Test reads old package builders to assert they use guarded_zip; separately exempts historical ZIP writer tools from prospective new-writer rule. This is CI test dependency, not accepted current content source."
+    }
+  ],
+  "safe_decisions": {
+    "preserve_all_20_legacy_dirs": true,
+    "no_physical_move_or_delete": true,
+    "no_current_release_promotion": true,
+    "no_user_srs_fsrs_or_ui_change": true,
+    "no_workflow_deactivation_without_approval": true,
+    "next_scoped_work": "Assess and optionally protect obsolete manually runnable v354 workflows separately; replacing their legacy paths without historical runtime parity risks data loss or false currentness."
+  },
+  "limit": "GitHub file content and committed Git text matching establish declared executable pathways, not that a workflow was recently executed, that any user app was changed, or that external Library/Drive archives are duplicate."
+}

@@ -51,7 +51,7 @@ def pinned(root):
         if not p.is_file() or p.is_symlink() or not p.resolve().is_relative_to(root.resolve()):
             raise ValueError("MISSING_POLICY_FILE:"+name)
         b=p.read_bytes()
-        if blob(b)!=pin and (b"\\r\n" not in b or blob(b.replace(b"\\r\n",b"\n"))!=pin):
+        if blob(b)!=pin and (b"\r\n" not in b or blob(b.replace(b"\r\n",b"\n"))!=pin):
             raise ValueError("CENTRAL_POLICY_CONTENT_DRIFT:"+name)
     return {"bindings_checked":len(entries),"registry_sha256":sha((root/REGISTRY).read_bytes()),
             "scope":"BYTE_PINS_ONLY_NOT_SEMANTIC_ADOPTION"}

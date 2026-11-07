@@ -160,6 +160,10 @@ def evaluate(tsv,stage4=None,review=None,root=ROOT,policy_checks=True):
                 blockers.append("NO_INDEPENDENT_CROSS_TILE_REVIEW")
             decisions={d.get("id"):d for d in ev.get("high_decisions",[]) if isinstance(d,dict)}
             for i in sc["issues"]:
+                if i["code"]=="EXACT_COMBO_DUPLICATE":
+                    # An identical second combination is not a new lesson.
+                    blockers.append("DUPLICATE_COMBO_REQUIRES_SOURCE_CORRECTION:"+i["id"][:12])
+                    continue
                 if i["severity"]=="HIGH":
                     d=decisions.get(i["id"],{})
                     if d.get("decision") not in ("KEEP_WITH_SPECIFIC_TEACHING_DELTA","CORRECTED_IN_EXACT_SOURCE") or not str(d.get("reason","")).strip():

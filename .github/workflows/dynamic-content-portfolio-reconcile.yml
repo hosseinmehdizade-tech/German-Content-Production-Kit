@@ -1,0 +1,55 @@
+name: Dynamic Content Portfolio - Read-only Reconciliation
+on:
+  push:
+    paths:
+      - 'Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Workspaces/**'
+      - 'Tools/reconcile_dynamic_content_portfolio_v1.py'
+      - 'Verification/tests/test_dynamic_content_portfolio_reconciler_v1.py'
+      - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
+  pull_request:
+    paths:
+      - 'Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json'
+      - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
+      - 'Workspaces/**'
+      - 'Tools/reconcile_dynamic_content_portfolio_v1.py'
+      - 'Verification/tests/test_dynamic_content_portfolio_reconciler_v1.py'
+      - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-reconcile:
+    name: Verify source pointers without release promotion (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test exact source links, drift/hold, and no-write safeguards
+        run: python -B -m unittest discover -s Verification/tests -p test_dynamic_content_portfolio_reconciler_v1.py -v
+      - name: Produce read-only reconciliation (not acceptance or auto-promotion)
+        shell: bash
+        run: |
+          python -B Tools/reconcile_dynamic_content_portfolio_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/dynamic-content-portfolio" \
+            --github-summary
+      - name: Retain derived status outside version-controlled workspaces
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynamic-content-portfolio-${{ matrix.os }}
+          path: ${{ runner.temp }}/dynamic-content-portfolio/
+          if-no-files-found: error
+          retention-days: 14

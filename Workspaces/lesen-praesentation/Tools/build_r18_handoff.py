@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""R18 handoff: source-backed scoped editorial evidence, next-stage risks, checkpoint."""
+import json,pathlib,hashlib,collections,re
+P=pathlib.Path('/mnt/data/lesen_r18_20261107');read=lambda s:json.loads((P/s).read_text())
+sha=lambda s:hashlib.sha256((P/s).read_bytes()).hexdigest()
+write=lambda s,x:(P/s).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+master='Lesen-Production-Master-v1.3.0-R18-26CONCLUSIONS-TRILINGUAL-CANDIDATE.json';runtime='Lesen-R18-v505-26CONCLUSIONS-RUNTIME-PREENTRY-CANDIDATE.json'
+ledger='LESEN-R18-26CONCLUSIONS-EDITORIAL-GRAMMAR-LEDGER.json';qa='LESEN-R18-INDEPENDENT-SOURCE-QA.json';native='LESEN-R18-v505-NATIVE-PREENTRY.json';transport='LESEN-R18-V505-TRANSPORT-EVIDENCE.json'
+M=read(master);L=read(ledger);Q=read(qa);N=read(native);R=read(transport)
+assert Q['status'].startswith('PASS') and Q['error_count']==0 and Q['all_negative_cases_rejected'];assert N['status'].startswith('PASS') and N['checks']['candidate_warnings']==[]
+review={'schema':'lesen-r18-editorial-scoped-de-fa-en-review@1','date':'2026-11-07','scope':'26 p02/p03 concluding sentences in 15 lessons, unchanged first two source sentences and question/vocab/curated IDs','stage4_independence':'NOT_FORMAL_STAGE4',
+'expected_change_count':26,'preserved_specific_fa_en_pairs':7,'revised_prior_generic_fa_en_pairs':19,
+'methodology':['Manually authored German conclusions from each lesson’s already-curated prior two German sentences.','Where FA/EN final meaning was already specific and suitable, preserved verbatim and matched German.','Where FA/EN final meaning was as generic as German, both languages rewritten to match the new claim.','Manual scope and grammar marker validity independently checked as structure/offsets, not a separate external bilingual reviewer.'],
+'per_change':[{'lesson':x['lesson_id'],'topic_de':x['title_de'],'section':x['section_id'],'old_de':x['before_de'],'new_de':x['after_de'],'new_fa':x['after_fa_tail'],'new_en':x['after_en_tail'],'translation_action':x['translation_action'],'grammar_key':x['new_manually_attested_grammar_key']} for x in L['changes']],
+'exclusions':['Holistic translation accuracy across all 478 sections is NOT certified.','Full nine-lens native grammar generator was NOT rerun.','Real browser IndexedDB import and user-state preservation Stage6 were NOT tested.'],
+'current_status':'R18_CANDIDATE_ONLY'}
+write('LESEN-R18-TRILINGUAL-SCOPED-REVIEW.json',review)
+# Report exact repeated sentence positions across 68 lessons, beyond the two fixed conclusion templates.
+positions={};flags=[]
+for section_id in ('p01','p02','p03','p04','p05','p06','p07'):
+ for pos in range(4):
+  v=collections.defaultdict(list)
+  for u in M['items']:
+   sec=next(s for s in u['reading']['sections'] if s['id']==section_id)
+   if len(sec['sentences'])>pos:
+    v[sec['sentences'][pos]['text']].append(u['id'])
+  duplicates=[{'count':len(ids),'sentence_de':text,'lesson_ids':ids} for text,ids in v.items() if len(ids)>1]
+  duplicates.sort(key=lambda z:(-z['count'],z['sentence_de']))
+  if duplicates:
+   key=f'{section_id}-s{pos+1:02d}'
+   positions[key]={'total_lessons':sum(len(ids) for ids in v.values()),'duplicate_patterns':len(duplicates),'repeated_occurrences':sum(z['count'] for z in duplicates),'max_same_sentence_count':duplicates[0]['count'],'top_examples':duplicates[:8]}
+   if duplicates[0]['count']>=10:flags.append({'location':key,'max_exact_repeats':duplicates[0]['count'],'sample':duplicates[0]['sentence_de'][:180]})
+for sid,old in {'p02':'Dadurch kann ein Nutzen entstehen, der über den unmittelbaren Einzelfall hinausgeht.','p03':'Ein Vorteil auf der einen Seite kann also durchaus neue Probleme auf der anderen Seite erzeugen.'}.items():
+ assert sum(next(s for s in u['reading']['sections'] if s['id']==sid)['sentences'][-1]['text']==old for u in M['items'])==0
+risk={'schema':'lesen-r18-wholepack-text-repetition-risk-audit@1','date':'2026-11-07','source_master_sha256':sha(master),
+'audit_scope':'Exact identical German sentence strings by passage ID and position across 68 curated lesson masters. No semantic certification.',
+'original_p02_p03_generic_conclusions_remaining':0,'exact_repetition_positions':positions,'prioritized_flags':sorted(flags,key=lambda z:-z['max_exact_repeats']),
+'priority_next':['Review 58 identical p06-s02 sentences for pedagogical specificity and coherence, not mass replacement.','Review generic p07 synthesis, many repeated identical sentences and opinion-rubric quality.','Review p01 templated contexts and possible rhetorical overgeneralization.','Run independent trilingual semantic/argument QA on each unit, then full native nine-lens grammar and browser IndexedDB import, keeping candidate separate from CURRENT.'],
+'not_a_stage4_or_rewrite_approval':True}
+write('LESEN-R18-WHOLEPACK-TEXT-RISK-AUDIT.json',risk)
+assert len(M['items'])==68 and sum(len(u['grammar']['full_text_occurrences']) for u in M['items'])==4041
+checkpoint={'schema':'lesen-quality-review-checkpoint-r18@1','date':'2026-11-07','owner':'Workspaces/lesen-praesentation','family_id':'family:lesen',
+'status':'R18_ALL_26_ORIGINAL_GENERIC_CONCLUSIONS_REVISED__INDEPENDENT_STRUCTURE_PASS__CURRENT_V505_PREENTRY_PASS__STAGE4_6_7_HOLD',
+'original_current':{'sha256':'558c165df7603c26b775781f9c9bbd508c456b4b24f68979ebe0edecf3b46565','library_file_id':'libfile_9b768265ff3c8191aca371baa38551d7','state':'CURATED_CURRENT_UNCHANGED'},
+'parent_r17':{'master_sha256':'593deb6e5ec7cdba2d95f7445589ae5bf6cf17750eb0f8cdbb9c3f4f1a605ad7','runtime_sha256':'b6258670d91951c05fdc409886c538558388889f3ea0217533aa08c5dd7d1ccd'},
+'candidate_content':{'name':master,'sha256':sha(master),'bytes':(P/master).stat().st_size,'role':'CANDIDATE_NOT_CURRENT'},
+'candidate_runtime':{'name':runtime,'sha256':sha(runtime),'bytes':(P/runtime).stat().st_size,'role':'V505_PREENTRY_NOT_BROWSER_STAGE6'},
+'changes':{'revised_lessons':[f'LES-PRES-{n:03d}' for n in L['changed_units']],'changed_de_conclusions':26,'existing_de_fa_en_first_two_sentences_preserved':52,'accepted_existing_fa_en_conclusion_pairs_preserved':7,'specific_fa_en_conclusion_pairs_revised':19,'untouched_units':53,'questions':340,'vocab':350,'curated_grammar':669,'fulltext_old':4097,'invalid_grammar_spans_retired':82,'new_scoped_real_grammar_annotations':26,'existing_curated_relative_examples_retargeted':11,'fulltext_new':4041,'original_generic_p02_s03_remaining':0,'original_generic_p03_s03_remaining':0},
+'qa':{'independent_structure':f"{Q['checks_total']}/{Q['checks_total']}_PASS",'negative_source_probes':'9/9_REJECTED','exact_v505_source_preentry':'PASS_ZERO_WARNINGS_7_NEGATIVES','native_module_sha256':N['module_sha256'],'isolated_in_memory':'PASS_68_UNITS_340_EXERCISES','wholepack_independent_de_fa_en_semantic_stage4':'HOLD','original_native_full_nine_lens_grammar':'NOT_RERUN','actual_browser_indexeddb_stage6':'NOT_RUN','final_stage7':'NOT_RELEASED'},
+'evidence':{'report':'Reports/LESEN-R18-EDITORIAL-AND-V505-REPORT-20261107.md','ledger':ledger,'scoped_trilingual_review':'LESEN-R18-TRILINGUAL-SCOPED-REVIEW.json','wholepack_risks':'LESEN-R18-WHOLEPACK-TEXT-RISK-AUDIT.json','independent_qa':qa,'native_v505':native,'runtime_transport':transport},
+'next_actions':['Full wholepack editorial argument and trilingual semantic review focused on p01/p06/p07, not additional blind exact-template substitutions.','Independent semantic Stage4, full native nine-lens grammar if compatible, isolated native browser Stage6 only when environment supports it.'],
+'no_current_promotion':True,'no_app_ui_or_user_srs_fsrs_change':True,'no_auto_cleanup':True}
+write('QUALITY-REVIEW-CHECKPOINT-R18-20261107.json',checkpoint)
+md=f'''# Lesen R18 — 26 Schlussfolgerungen in 15 Lerneinheiten (053–068)\n\n**Status:** Scoped authoring and structural QA PASS; content remains **CANDIDATE**, not native/final release.\n\n## Source and scope\n\n- Parent is user-curated R17 (SHA256 `{checkpoint['parent_r17']['master_sha256']}`), **not** an older textbook PDF.\n- 26 previously identical concluding German sentences in p02-s03/p03-s03 rewritten individually in units 053–058 and 060–068. Already improved unit 059 preserved.\n- Seven already-specific Persian and English concluding pairs preserved exactly; 19 generic pairs rewritten in both FA and EN. The original first two sentences in all 26 sections remain unchanged in all three languages.\n- 53 of 68 units and all 340 question identities, 350 vocabulary entries, and 669 curated grammar IDs remain exact.\n- **All previously identified identical generic conclusions p02/p03 now absent (0 + 0).** This is an exact-string observation, not a declaration that every passage has high educational quality.\n\n## Grammar (scoped)\n\n- Previously: 4,097 full-text grammar occurrences. Removed **82 obsolete** spans formerly attached to replaced generic sentences.\n- Added **26** manually checked, actually occurring relative clauses, subordinate clauses, or `ohne … zu` infinitive groups, with exact offsets; **11** existing g06 relative-clause curated examples retargeted to real new relative clauses.\n- **Now 4,041 exact fulltext occurrences.** Original full nine-lens grammar extraction was **not** rerun.\n\n## QA and compatibility\n\n- Independent structural/source/runtime checks: **{Q['checks_total']:,} / {Q['checks_total']:,} PASS**, 0 errors. Adversarial mutation probes: **9/9 rejected**.\n- Exact current v505 source `reading-content-import-v38.js`: **PASS**, 0 warnings, 7 malformed-input probes rejected; isolated in-memory projection 68 units and 340 exercises.\n- No browser IndexedDB transaction; no Stage6 or independent holistic Stage4, no Stage7 final release.\n- Both main candidates must pass independent post-upload Library SHA and byte CMP prior to durable Git checkpoint finalization.\n\n## Remaining issues after eliminating the old p02/p03 generic endings\n\n- Wholepack exact repetition audit found **58 identical occurrences in p06-s02** and many repeated p07 synthesis formulations and p01 framing sentences. Those require topic-by-topic semantic review rather than mass synonym replacement.\n- The DE/FA/EN wholepack semantic Stage4 and original complete nine-lens grammar regeneration remain open, along with real native browser Stage6.\n\n## Candidate outputs\n\n- Content: `{master}`, SHA256 `{sha(master)}`\n- Runtime preentry: `{runtime}`, SHA256 `{sha(runtime)}`\n- Source-specific before/after: `{ledger}`\n- Trilingual scoped ledger: `LESEN-R18-TRILINGUAL-SCOPED-REVIEW.json`\n- Wholepack repetition/risk audit: `LESEN-R18-WHOLEPACK-TEXT-RISK-AUDIT.json`\n- Independent and v505 machine reports: `{qa}` and `{native}`\n\n**Original current v1.3.0 ZIP remains unchanged:** SHA256 `{checkpoint['original_current']['sha256']}`. No app UI, user SRS/FSRS or other family changes.\n'''
+(P/'LESEN-R18-EDITORIAL-AND-V505-REPORT-20261107.md').write_text(md,encoding='utf8')
+print(json.dumps({'candidate_master_sha':sha(master),'candidate_runtime_sha':sha(runtime),'structural_QA':Q['checks_total'],'remaining_original_generic':0,'new_audit_priority_flags':risk['prioritized_flags'][:5]},ensure_ascii=False,indent=2))

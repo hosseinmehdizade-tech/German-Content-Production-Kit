@@ -1,0 +1,54 @@
+name: GFP Lexical Mandatory Release Policy Coverage
+on:
+  pull_request:
+    paths:
+      - 'Verification/guard_lexical_rule_coverage_v1.py'
+      - 'Verification/tests/test_guard_lexical_rule_coverage_v1.py'
+      - 'Tools/build_quality_gated_lexical_candidate_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Verification/audit_kombinationen_lean_v1_1.py'
+      - 'Verification/audit_related_sections_taxonomy_v1_1.py'
+      - 'Verification/audit_lexical_relation_fields_v1.py'
+      - '.github/workflows/gfp-lexical-release-policy-coverage.yml'
+  push:
+    paths:
+      - 'Verification/guard_lexical_rule_coverage_v1.py'
+      - 'Verification/tests/test_guard_lexical_rule_coverage_v1.py'
+      - 'Tools/build_quality_gated_lexical_candidate_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'Verification/audit_kombinationen_lean_v1_1.py'
+      - 'Verification/audit_related_sections_taxonomy_v1_1.py'
+      - 'Verification/audit_lexical_relation_fields_v1.py'
+      - '.github/workflows/gfp-lexical-release-policy-coverage.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  negative-controls:
+    name: Policy pins and fail-closed cross-tile check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile release preflight and candidate entrypoint
+        run: >-
+          python -B -m py_compile
+          Verification/guard_lexical_rule_coverage_v1.py
+          Tools/build_quality_gated_lexical_candidate_v1.py
+          Verification/tests/test_guard_lexical_rule_coverage_v1.py
+      - name: Exact registry and adversarial source-proof coverage
+        run: python -B -m unittest discover -s Verification/tests -p test_guard_lexical_rule_coverage_v1.py -v
+      - name: Explain bounded conclusion
+        shell: bash
+        run: |
+          echo "Synthetic CI validates detection and fail-closed proof behavior."
+          echo "It does NOT independently approve German, Persian, owner Stage4, Library sources or the actual app."

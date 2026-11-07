@@ -1,11 +1,53 @@
 {
   "schema": "aspekte-b2-run-control@1.0.0",
   "date": "2026-11-07",
-  "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
   "status": "ACTIVE",
-  "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
-  "max_passes_per_lesson": 3,
+  "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
+  "full_policy_github": "Workspaces/aspekte-b2-v336/EXECUTION-EXIT-GUARD-v1.0.0.md",
+  "library_policy": "Current/EXECUTION-EXIT-GUARD-v1.0.0.md",
   "sync_attempts_per_destination_per_response": 1,
+  "sync_error_action": "SYNC_PENDING_AND_END_RESPONSE_NO_RETRIES",
+  "max_passes_per_lesson": 3,
+  "mandatory_terminal_fields": [
+    "LESSON",
+    "PASS",
+    "ACTUAL_OUTPUT",
+    "PASS_OR_BLOCKED",
+    "NEXT_ACTION"
+  ],
+  "next_task": {
+    "lesson": 4,
+    "pass": 2,
+    "status": "PENDING_INDEPENDENT_QA",
+    "goal": "FULL_183_CARD_366_DEFA_PAIR_LINGUISTIC_QA_AND_CORRECTIONS",
+    "verified_draft_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L04-PASS1-183-UNIT-WORKING-NONIMPORT.csv",
+    "verified_draft_sha256": "c9bfad5513daa980321d72b679a4fa83b3eae007b98a58abc2583dc94e914237",
+    "source_rows": 184,
+    "draft_cards": 183,
+    "next_gate": "INDEPENDENT_LINGUISTIC_RELEASE_QA_NOT_YET_APPROVED"
+  },
+  "completed_or_blocked": {
+    "L01": "R47_DRAFT_158_NOT_RELEASED",
+    "L02": "PASS3_BLOCKED_NONIMPORT_110_DRAFTS",
+    "L03": "PASS3_BLOCKED_NONIMPORT_186_DRAFTS",
+    "L04": "PASS1_COMPLETE_183_DRAFTS_184_ROWS_NONIMPORT"
+  },
+  "lesson3_current_sha256": "c0cfeffa7b1b678336c42b3f8b226d2e2410a643455bf43d10bea71c4bcbd576",
+  "latest_json_status": "LEGACY_POINTER_STALE_FOR_L03_BUT_NOT_NEXT_ACTION_AUTHORITY",
+  "old_global_checkpoint": "L05_R25_UNCHANGED",
+  "content_mutations": 0,
+  "imported_cards": 0,
+  "last_completed": {
+    "lesson": 4,
+    "pass": 1,
+    "status": "PASS_COMPLETE_DRAFT_NONIMPORT",
+    "source_rows": 184,
+    "learner_units": 183,
+    "bilingual_example_pairs": 366,
+    "importable": false,
+    "qa_receipt_sha256": "3d07a7bfbcb6af7664df59bc794fb87083bce286e6d9ac52a0c6a982595383df"
+  },
+  "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
   "sync_failure_action": "STOP_WITH_SYNC_PENDING_NO_RETRY_LOOP",
   "response_end_required": [
     "LESSON",
@@ -42,24 +84,24 @@
     },
     "L04": {
       "source_rows": 184,
-      "pass1": "ACTIVE_NOT_COMPLETED",
-      "pass2": "NOT_STARTED",
+      "pass1": "PASS_COMPLETE_DRAFT_NONIMPORT",
+      "pass2": "PENDING_INDEPENDENT_LINGUISTIC_QA",
       "pass3": "NOT_STARTED",
       "release": "NONIMPORT",
-      "exact_curated_input_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/R22-L04-184-ONE-MORPHOLOGY-EDITORIAL-RESOLUTION.jsonl",
-      "exact_curated_input_sha256": "32176c1775445854633a968823a4b3abfd8c920b9fa60ca08c8520781f69f78a"
+      "draft_units": 183,
+      "bilingual_example_pairs": 366,
+      "current_draft_sha256": "c9bfad5513daa980321d72b679a4fa83b3eae007b98a58abc2583dc94e914237",
+      "coverage_sha256": "b486ca97f63e5ef6d5ed40a10e82385c77019eb0614f956978fc7fb179a913ed",
+      "current_draft_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L04-PASS1-183-UNIT-WORKING-NONIMPORT.csv",
+      "one_card_multi_meaning_lexeme": {
+        "source_ordinals": [
+          2032,
+          2077
+        ],
+        "card_id": "ab2-l04-u-2032"
+      },
+      "independent_release_qa": false
     }
-  },
-  "next_task": {
-    "lesson": 4,
-    "pass": 1,
-    "goal": "COMPLETE_ALL_184_CURATED_ROWS_IN_ONE_VERIFIED_LESSON_DRAFT",
-    "blocked_on_release": false,
-    "do_not_do": [
-      "RECHECK_FULL_ORIGINAL_TEXTBOOK",
-      "LEGACY_LATEST_POINTER_REPAIR_LOOP",
-      "12_CARD_MICROBATCHES"
-    ]
   },
   "global_checkpoint": "L05_R25_UNCHANGED",
   "changes_to_content_cards": 0,

@@ -1,5 +1,16 @@
 # Aspekte B1+ — Status 2026-11-06
 
+## G2 lexical morphology Batch02 — 47 cumulative form checks and 7 new front fixes (2026-11-07)
+
+**Active Gate:** G2 / 6. Current one-file [temporary roadmap](ROADMAP-TEMP.md) is v0.5, updated in place in GitHub and Library. Baseline remains the current user-curated B1+ source CSV, never a new obsolete textbook extraction.
+
+- Independent Duden-backed **form-specific** review for **20 additional source headwords**; cumulative **47 / 321** checks against the targeted Pass04+G2 morphology proposals (older 39 / 256; new split 8 / 65). **274** checks remain (217 old; 57 new).
+- Exactly **7 learner-facing front proposals edited** in this batch; 9 actual front corrections over both lexical batches. Ordinals: **371 Spieltrieb**, **375 Geselligkeit**, **379 Lust**, **381 Motorik**, **385 Soziologe/Soziologin**, **401 Schach**, **415 Paradies**. Duden-supported plural behavior was recorded by sense where appropriate; Soziologe's weak singular declension was made explicit. These are grammar/front corrections, **not** independent bilingual semantic or complete-card approvals.
+- Current **1,571** nonimport learner view IDs and **1,548** exact source-row links retained; no original source, Persian meanings or bilingual example arrays changed. Six of this batch's cases have sense-specific follow-up flags for Gate G4, and four from the earlier lexical batch remain marked.
+- All **340 HOLDs remain blocked**, **0** formally approved cards, no import TSV, G3 not started.
+- Verified private Library sidecar: `Reports/Aspekte-B1plus-G2-LEXICAL-BATCH02-47-CUMULATIVE-20-NEW-7-CORRECTIONS-NONIMPORT-20261107.zip` SHA256 `8c121ae271d68a0b707c3028902782d23384ffde40060789f9cba72f7703fd69`, **406,744 bytes**, **9** ZIP members, **8** verified manifest hashes; exact-byte Library readback and CRC passed.
+- [Batch02 receipt](Reports/G2-LEXICAL-BATCH02-20-NEW-47-CUMULATIVE-7-FRONT-FIXES-RECEIPT-20261107.json). Next: 217 older + 57 newly split individual forms, then decide G2 formal closure and only then move to G3.
+
 ## G2 lexical morphology Batch01 — 27 specific form checks, 2 front fixes (2026-11-07)
 
 **Gate G2 remains ACTIVE / NONIMPORT.** This sidecar extends the latest 1,571 view G2 source-row ledger and preserves all 1,548 source ordinals. It does not replace the parent master or edit the dedicated user vocabulary CSV.

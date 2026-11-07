@@ -1,5 +1,18 @@
 # Aspekte B1+ — Status 2026-11-06
 
+## G2 lexical morphology Batch01 — 27 specific form checks, 2 front fixes (2026-11-07)
+
+**Gate G2 remains ACTIVE / NONIMPORT.** This sidecar extends the latest 1,571 view G2 source-row ledger and preserves all 1,548 source ordinals. It does not replace the parent master or edit the dedicated user vocabulary CSV.
+
+- Of **321 targeted source-derived front-form proposals** (256 older Pass04 cases + 65 G2 source-split lexeme candidates), **27 individual forms** were checked against specific Duden entries for the relevant part of speech, declension, conjugation or valid inflection: 19 older and eight new. **294** still require individual lexical form verification (237 older + 57 new). A form-specific Duden match is not whole-card QA, semantic duplicate resolution, bilingual example signoff or an app release approval.
+- Exactly **two actual user-facing front candidate fixes**: ordinal 516 `der Albtraum` now also retains accepted spelling `Alptraum` and `Alpträume`; ordinal 778 `Hektar` now distinguishes both `das/der Hektar`, the noun plural `Hektare`, and count-unit form `10 Hektar` with `ha`. The old source's `der` spelling was not discarded.
+- **Four separate meaning-sensitive risks** were explicitly flagged but not falsely approved: G2 source ordinal 404 `virtuell`, 666 `zufällig`, 418 `endlos`, 714 `das Kaffeeservice`. The first three retain the user-source degree candidates pending sense-specific usage QA; no plural was invented for `Kaffeeservice`, whose Duden entry confirmed its gender but did not explicitly state a plural.
+- Independent structural before/after assertions proved **all 1,571 existing provisional learner-view IDs**, all **1,548 source links**, exact source-to-card map bytes, all Persian meanings, all German–Persian example arrays, source identity, and back-side redundant-`Formen` suppression unchanged. Only the two cited front display strings and explicit QA metadata changed.
+- All **340 HOLDs remain blocked**. Formally approved learner cards: **0**. Import TSV or Stage5 release: **not started**.
+- Verified Library package: `Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G2-LEXICAL-BATCH01-27-VERIFIED-2-CORRECTED-1571-PREVIEWS-NONIMPORT-20261107.zip`; SHA256 `b4cd7ebd0ceda144fd3abdaa70583d2cdf1accf338399f436a59850f04fd7d63`; 404,130 bytes; eight ZIP members; seven verified internal manifest hashes; exact Library byte readback + CRC pass.
+- **Current one-file roadmap:** [ROADMAP-TEMP.md](ROADMAP-TEMP.md) updated *in place* to **v0.4** in GitHub and Library, same library file ID `libfile_01c5b33ec05881918a21b124acf5eac8`, SHA256 `337e2c07c91f94e9597906f0f843914d6b6f01e2446f2874438a9f254113ab34`.
+- [G2 lexical Batch01 receipt](Reports/G2-LEXICAL-BATCH01-27-FORMS-2-CORRECTIONS-RECEIPT-20261107.json). **Next:** continue targeted individual lexical verification of 294 remaining form cases, then finish morphology Gate G2; only afterward proceed to G3 overlays, G4 DE–FA meanings/examples, G5 crosslevel TSV/app-card QA and G6 release.
+
 ## G2 independent split-lexeme morphology front proposals and G1 form-family corrections — 2026-11-07
 
 **Roadmap version 0.3, G2 ACTIVE (nonimport).** The existing G1 identity-routing ZIP and its 1,573 provisional views were checked against direct German grammatical relations. Two G1 views had represented forms of the same word as independent cards:

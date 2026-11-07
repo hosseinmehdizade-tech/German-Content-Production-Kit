@@ -10,6 +10,11 @@ on:
       - 'Workspaces/aspekte-c1-v336/LATEST.json'
       - 'Workspaces/aspekte-c1-v336/README.md'
       - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
+      - 'Verification/tests/test_aspekte_sync_loop_guard_v1.py'
+      - 'Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md'
+      - 'Workspaces/aspekte-b1plus-v336/ROADMAP-TEMP.md'
+      - 'Workspaces/aspekte-b2-v336/RUN-CONTROL.json'
+      - 'Workspaces/aspekte-c1-v336/CHECKPOINT.json'
       - 'Verification/verify_aspekte_b2_curated_unit_delta_v1.py'
       - 'Verification/tests/test_aspekte_b2_curated_unit_delta_v1.py'
       - 'Verification/verify_aspekte_b2_l02_curated_subset_v1.py'
@@ -25,6 +30,11 @@ on:
       - 'Workspaces/aspekte-c1-v336/LATEST.json'
       - 'Workspaces/aspekte-c1-v336/README.md'
       - 'Verification/tests/test_aspekte_curated_current_resume_v1.py'
+      - 'Verification/tests/test_aspekte_sync_loop_guard_v1.py'
+      - 'Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md'
+      - 'Workspaces/aspekte-b1plus-v336/ROADMAP-TEMP.md'
+      - 'Workspaces/aspekte-b2-v336/RUN-CONTROL.json'
+      - 'Workspaces/aspekte-c1-v336/CHECKPOINT.json'
       - 'Verification/verify_aspekte_b2_curated_unit_delta_v1.py'
       - 'Verification/tests/test_aspekte_b2_curated_unit_delta_v1.py'
       - 'Verification/verify_aspekte_b2_l02_curated_subset_v1.py'
@@ -48,6 +58,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Guard against stale Library roadmap overwrite / resume loop (B1+ B2 C1)
+        run: python -B -m unittest discover -s Verification/tests -p test_aspekte_sync_loop_guard_v1.py -v
       - name: Check central current authority registry
         run: python -B Verification/audit_global_policy_sync_v1.py --check
       - name: Check actual Aspekte B1+ B2 C1 current authority and release safety

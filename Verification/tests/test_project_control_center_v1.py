@@ -37,7 +37,7 @@ class TestProjectControlCenter(unittest.TestCase):
 
     def test_real_catalog_has_distinct_family_workspace_and_root_identity(self):
         self.assertEqual(len(self.cat["families"]), 21)
-        self.assertEqual(len(self.cat["workspaces"]), 35)
+        self.assertEqual(len(self.cat["workspaces"]), 36)
         self.assertEqual(len(self.cat["root_workstreams"]), 17)
         self.assertEqual(pcc.catalog_errors(self.cat), [])
 

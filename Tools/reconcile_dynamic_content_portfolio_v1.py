@@ -43,7 +43,7 @@ def load_json(root: Path, relative: str) -> dict:
 
 
 def git_blob_sha(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + bytes([0]) + data).hexdigest()
 
 
 def json_pointer(obj: dict, pointer: str):

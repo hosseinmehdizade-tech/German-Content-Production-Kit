@@ -1,0 +1,154 @@
+{
+  "schema": "lesen-r2-independent-scoped-structural-qa@1.0.0",
+  "date": "2026-11-07",
+  "input_master_sha256": "bbeec4c3823879b5037c3669edbc41f2a441662312887f84a8f0ee9bb2e61549",
+  "baseline_master_sha256": "195e2f8ed09237fd3eee61ef9640d8c1cdc8c2a0c9beba8a3f57d65a1a93eb9d",
+  "checks": [
+    {
+      "check": "parent ZIP member exact matches separately extracted master",
+      "status": "PASS"
+    },
+    {
+      "check": "parent ZIP SHA matches pinned immutable authority",
+      "status": "PASS"
+    },
+    {
+      "check": "68 complete units",
+      "status": "PASS"
+    },
+    {
+      "check": "same stable unit ID and order",
+      "status": "PASS"
+    },
+    {
+      "check": "only 035/051/059 differ",
+      "status": "PASS"
+    },
+    {
+      "check": "65 other items identical",
+      "status": "PASS"
+    },
+    {
+      "check": "all questions stable identifiers and 5 per unit",
+      "status": "PASS"
+    },
+    {
+      "check": "all sentences preserve original IDs",
+      "status": "PASS"
+    },
+    {
+      "check": "German section text is exact sentence concatenation",
+      "status": "PASS"
+    },
+    {
+      "check": "all DE/FA/EN reading sections present",
+      "status": "PASS"
+    },
+    {
+      "check": "grammar fulltext old survivors exact offsets and sentence matches",
+      "status": "PASS"
+    },
+    {
+      "check": "all manually curated grammar anchors still live",
+      "status": "PASS"
+    },
+    {
+      "check": "original grammar task quotes remain in lesson text",
+      "status": "PASS"
+    },
+    {
+      "check": "all question answer and evidence references nonempty/valid",
+      "status": "PASS"
+    },
+    {
+      "check": "all 3 R2-edited German word counts exact and 300-500",
+      "status": "PASS"
+    },
+    {
+      "check": "8 inherited baseline wordcount inconsistencies are explicitly tracked",
+      "status": "PASS"
+    },
+    {
+      "check": "derived aggregate full-text count is honest",
+      "status": "PASS"
+    },
+    {
+      "check": "derived aggregate type counts are honest",
+      "status": "PASS"
+    },
+    {
+      "check": "no false full-text engine PASS",
+      "status": "PASS"
+    },
+    {
+      "check": "no false release status",
+      "status": "PASS"
+    }
+  ],
+  "failed_checks": [],
+  "scope": {
+    "changed_units": [
+      "LES-PRES-035",
+      "LES-PRES-051",
+      "LES-PRES-059"
+    ],
+    "untouched_units": 65,
+    "questions_preserved": 340,
+    "passage_count": 478,
+    "curated_grammar_count": 669,
+    "surviving_fulltext_grammar": 4578,
+    "fulltext_grammar_removed_pending_engine_regen": 34,
+    "inherited_word_count_drift": [
+      {
+        "unit": "LES-PRES-004",
+        "declared": 325,
+        "observed": 327
+      },
+      {
+        "unit": "LES-PRES-005",
+        "declared": 313,
+        "observed": 314
+      },
+      {
+        "unit": "LES-PRES-012",
+        "declared": 309,
+        "observed": 310
+      },
+      {
+        "unit": "LES-PRES-025",
+        "declared": 317,
+        "observed": 318
+      },
+      {
+        "unit": "LES-PRES-031",
+        "declared": 317,
+        "observed": 318
+      },
+      {
+        "unit": "LES-PRES-038",
+        "declared": 322,
+        "observed": 324
+      },
+      {
+        "unit": "LES-PRES-048",
+        "declared": 328,
+        "observed": 329
+      },
+      {
+        "unit": "LES-PRES-055",
+        "declared": 309,
+        "observed": 310
+      }
+    ],
+    "question_template_cohort_after_3_units": 55,
+    "exact_extra_sentence_duplicates_after_3_units": 467
+  },
+  "boundaries": [
+    "Deterministic checks only; no independent full semantic Stage4 PASS",
+    "DE/FA/EN translations were drafted and spot-reviewed, not independently certified over all 68",
+    "34 grammar annotations were removed only because their old literal anchors disappeared, re-derive before import",
+    "Runtime still v1.3.0, cannot import this candidate master directly",
+    "Current ZIP untouched; no app browser test or SRS data mutation"
+  ],
+  "outcome": "SCOPED_STRUCTURAL_PASS_WITH_GRAMMAR_REGEN_HOLD"
+}

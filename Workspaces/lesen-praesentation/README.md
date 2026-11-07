@@ -1,3 +1,5 @@
+**QA HOLD R1 (2026-11-07):** Fresh all-68-unit audit uncovered a repeated template cohort in 58 units (`LES-PRES-011..068`, 479 extra duplicate sentence occurrences) and real multilingual semantic drift in unit 051 p02. Exact current app v505-R141 source validator accepts the extracted `lesen.runtime.v1.0.0` JSON (68 entries; 4 negative controls fail appropriately), but direct browser import is **NOT_RUN** (`ERR_BLOCKED_BY_ADMINISTRATOR`); Production Master is not directly importable. Resume `QUALITY-REVIEW-CHECKPOINT-20261107.json` and `Reports/LESEN-v1.3.0-QUALITY-AND-COMPATIBILITY-R1-20261107.md` BEFORE any Stage4/5/6 claim. Current v1.3.0 ZIP unchanged and byte-pinned; owner Stage1 PASS/Stage2-7 NOT_STARTED unchanged, no app UI/SRS mutation.
+
 # Lesen – Präsentation B2–C1 · owner workspace
 
 **Status 2026-11-07:** curated portable master v1.3.0 located + byte-verified in the owner Library `/Flasch kart/German-Content-Production-Kit/Content/Lesen/Current/`; **68** reading units. Runtime v505 app import **NOT_RUN**, formal reading Git Stage1 PASS only; no FINAL.

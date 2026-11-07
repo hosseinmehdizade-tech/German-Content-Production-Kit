@@ -15,7 +15,7 @@ import sys
 import zipfile
 
 REGISTRY="Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json"
-EVIDENCE="Optimization-Program/Control-Center/Provider-Observations/2026-11-07-EXACT-BYTE-EVIDENCE.json"
+EVIDENCE="Optimization-Program/Control-Center/Provider-Observations/2026-11-07-R10-RECONCILED-EXACT-BYTE-EVIDENCE.json"
 
 def records(root:Path):
     p=json.loads((root/REGISTRY).read_text(encoding="utf-8"))
@@ -58,8 +58,8 @@ def verify_recorded_as_of(root:Path):
     if report.get("schema")!="gfp-opt-curated-portfolio-exact-byte-evidence@1.0.0":
         raise ValueError("Unexpected evidence schema")
     entries=report.get("evidence")
-    if not isinstance(entries,list) or len(entries)!=11:
-        raise ValueError("Expected eleven historic binary observations")
+    if not isinstance(entries,list) or len(entries)!=12:
+        raise ValueError("Expected twelve independent binary observations")
     seen=set()
     for entry in entries:
         key=(entry.get("family_id"),entry.get("provider"))
@@ -75,21 +75,21 @@ def verify_recorded_as_of(root:Path):
             or entry.get("zip_crc_test")!="PASS_ALL_MEMBERS"
             or type(entry.get("zip_entries")) is not int or entry["zip_entries"]<=0):
             raise ValueError("Recorded observation disagrees with accepted baseline")
-    if {x[0] for x in seen}!={x for x in known if x!="family:menschen-a1-verben"}:
+    if {x[0] for x in seen}!=set(known):
         raise ValueError("Unexpected verified-family set")
-    if len([k for k in seen if k[1]=="library"])!=4 or len([k for k in seen if k[1]=="google_drive"])!=7:
+    if len([k for k in seen if k[1]=="library"])!=4 or len([k for k in seen if k[1]=="google_drive"])!=8:
         raise ValueError("Unexpected provider observation counts")
     for fam in ("family:menschen-a2-verben","family:nomen-verb-verbindungen"):
         if (fam,"google_drive") not in seen or (fam,"library") not in seen:
             raise ValueError("Missing cross-provider repeat")
-    if report.get("distinct_families_reverified")!=9 or not report.get("all_measured_sha256_and_zip_crc_pass"):
+    if report.get("distinct_families_reverified")!=10 or not report.get("all_measured_sha256_and_zip_crc_pass"):
         raise ValueError("Evidence statement mismatch")
-    if report.get("unresolved_families",[{}])[0].get("family_id")!="family:menschen-a1-verben":
-        raise ValueError("Unresolved family not preserved")
+    if report.get("unresolved_families")!=[]:
+        raise ValueError("Accepted R10 authority correction still incorrectly unresolved")
     return {"status":"PASS_RECORDED_AS_OF_METADATA_CONSISTENCY__NO_LIVE_BINARY_REHASH",
-            "families_with_measured_zip_bytes":9,"provider_byte_observations":11,
+            "families_with_measured_zip_bytes":10,"provider_byte_observations":12,
             "current_source_bytes_rehashed_now":False,
-            "unresolved":"family:menschen-a1-verben"}
+            "unresolved":None}
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)

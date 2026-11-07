@@ -1,0 +1,42 @@
+name: GFP-OPT P1 Aspekte B1plus real source-owner gate
+
+on:
+  pull_request:
+    paths:
+      - "Tools/p1_aspekte_b1plus_real_owner_gate_v1.py"
+      - "Verification/tests/test_p1_aspekte_b1plus_real_owner_gate_v1.py"
+      - "Optimization-Program/Control-Center/P1-PILOTS/ASPEKTE-B1PLUS-REAL-STAGE4-GATE-20261107.json"
+      - ".github/workflows/gfp-opt-p1-aspekte-b1plus-real-owner-gate.yml"
+      - "Prompt/**"
+      - "Workspaces/aspekte-b1plus-v336/LATEST.json"
+      - "Workspaces/aspekte-b1plus-v336/CHECKPOINT.json"
+  push:
+    branches: [main]
+    paths:
+      - "Tools/p1_aspekte_b1plus_real_owner_gate_v1.py"
+      - "Verification/tests/test_p1_aspekte_b1plus_real_owner_gate_v1.py"
+      - "Prompt/**"
+      - "Workspaces/aspekte-b1plus-v336/LATEST.json"
+      - "Workspaces/aspekte-b1plus-v336/CHECKPOINT.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  owner-policy-preflight:
+    name: Real source owner and byte-pinned policies (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Real owner read-only preflight
+        run: python -B Tools/p1_aspekte_b1plus_real_owner_gate_v1.py
+      - name: Fail-closed independent negatives
+        run: python -B -m unittest Verification.tests.test_p1_aspekte_b1plus_real_owner_gate_v1 -v

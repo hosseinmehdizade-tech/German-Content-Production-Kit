@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
+from types import SimpleNamespace
 
 SCRIPT=Path(__file__).resolve().parents[2]/"Tools"/"discover_parallel_accepted_sources_v1.py"
 spec=importlib.util.spec_from_file_location("parallel_accepted_discovery",SCRIPT)
@@ -140,6 +142,17 @@ class ParallelDiscoveryTests(unittest.TestCase):
             self.skipTest("symlinks unavailable")
         with self.assertRaises(ValueError):
             m.investigate(self.root)
+
+    def test_git_blob_ignores_windows_checkout_crlf_normalization(self):
+        owner="Workspaces/owner-0/LATEST.json"
+        committed=(self.root/owner).read_bytes()
+        (self.root/owner).write_bytes(committed.replace(b"\\n", b"\\r\\n"))
+        (self.root/".git").mkdir()
+        with mock.patch.object(m.subprocess, "run",
+              return_value=SimpleNamespace(returncode=0, stdout=committed, stderr=b"")) as proc:
+            self.assertEqual(m.git_owner_bytes(self.root,owner),committed)
+            self.assertEqual(m.investigate(self.root)["status"],"NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED")
+            self.assertTrue(proc.called)
 
     def test_same_sha_in_sibling_not_alarm(self):
         self.add_sibling(sha=OLD)

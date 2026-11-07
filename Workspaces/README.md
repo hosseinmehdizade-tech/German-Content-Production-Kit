@@ -19,6 +19,10 @@ Workspaces/<source-slug>/
   CHECKPOINT.json
 ```
 
+## Prior Workspace dependency preservation
+
+Before any cleanup or link rewrite for a historical Workspace, use the [canonical family route](../Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json) and the [legacy inbound reference audit](../Tools/audit_legacy_workspace_dependencies_v1.py). A Workspace with **zero exact tracked-text inbound references** is **not deletion-safe**; binary ZIP interiors, Library, Drive, and untracked references are not covered. New task outputs belong under the canonical destination; existing historical references can remain stable. The [preservation handoff](../Optimization-Program/Control-Center/LEGACY-WORKSPACE-DEPENDENCY-HANDOFF-v1.md) records this boundary.
+
 ## Seven-stage production model
 
 All current and future content sources use the same human-trackable seven-stage model defined in:

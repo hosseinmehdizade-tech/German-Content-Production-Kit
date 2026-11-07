@@ -1,0 +1,320 @@
+{
+  "schema": "gcpk-legacy-git-reference-baseline@1.0.0",
+  "date": "2026-11-07",
+  "status": "LIVE_GIT_HEAD_TEXT_REFERENCE_AUDIT__PRESERVE_ALL_LEGACY_WORKSPACES",
+  "origin": {
+    "pr_number": 146,
+    "workflow_run_id": 42367982410,
+    "successful_ubuntu_job_id": 128389997763,
+    "git_head_scanned": "6ad59571d7db3ead8bb7fae9ae9836c29b8c7fd2",
+    "script": "Tools/audit_legacy_workspace_dependencies_v1.py",
+    "scan_method": "committed git ls-tree objects and Git grep candidates with exact basename boundary regex",
+    "direct_provider_bytes_scanned": false,
+    "git_untracked_scanned": false
+  },
+  "counts": {
+    "legacy_workspaces": 20,
+    "canonical_target_workspaces": 16,
+    "legacy_tracked_files": 1391,
+    "legacy_tracked_blob_bytes": 7735198,
+    "legacy_with_any_text_inbound": 20,
+    "legacy_with_code_or_canonical_inbound": 10,
+    "legacy_with_unresolved_big_text_ref": 0,
+    "exact_textual_reference_file_edges": 120
+  },
+  "interpretation": [
+    "Every historical Workspace has at least one exact tracked textual reference after prefix-boundary correction.",
+    "P0 is a triage priority for references from code/CI or a canonical Workspace, NOT proof of active execution.",
+    "The old 659-edge preliminary grep count was invalid; 120 edges after basename boundary correction is the verified Git-only observation.",
+    "No directory is safe to delete from this inventory alone. Binary archive interior references, external Library/Drive, and app/runtime sources have not been audited."
+  ],
+  "reference_scope": "GIT_HEAD_TRACKED_TEXT_ONLY",
+  "no_migration_or_delete": true,
+  "rows": [
+    {
+      "workspace_id": "workspace:250-verben-mit-praepositionen-kombinationen-repair1-v336",
+      "family_id": "family:250-verben-mit-praepositionen",
+      "tracked_files": 36,
+      "literal_inbound_reference_file_count": 9,
+      "source_classes": {
+        "CANONICAL_WORKSPACE": 2,
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 5
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "250-verben-mit-praepositionen-lexical-enrichment-v1",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-24-lesson-lexical-enrichment-v336",
+      "family_id": "family:menschen-a1",
+      "tracked_files": 31,
+      "literal_inbound_reference_file_count": 4,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 3
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-final-consolidation-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-reaudit-v336",
+      "family_id": "family:menschen-a1",
+      "tracked_files": 505,
+      "literal_inbound_reference_file_count": 18,
+      "source_classes": {
+        "CANONICAL_WORKSPACE": 6,
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_LEGACY_WORKSPACE": 1,
+        "OTHER_TRACKED_REFERENCE": 8,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-final-consolidation-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-sequential-review-v336",
+      "family_id": "family:menschen-a1",
+      "tracked_files": 30,
+      "literal_inbound_reference_file_count": 3,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 2
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-final-consolidation-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-verben-kombinationen-v336",
+      "family_id": "family:menschen-a1-verben",
+      "tracked_files": 3,
+      "literal_inbound_reference_file_count": 2,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 1
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-verben-wortfamilie-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-verben-lexical-repair-v336",
+      "family_id": "family:menschen-a1-verben",
+      "tracked_files": 328,
+      "literal_inbound_reference_file_count": 6,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 5
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-verben-wortfamilie-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-verben-repair-v336",
+      "family_id": "family:menschen-a1-verben",
+      "tracked_files": 12,
+      "literal_inbound_reference_file_count": 5,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 2,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-verben-wortfamilie-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-verben-repair2-v336",
+      "family_id": "family:menschen-a1-verben",
+      "tracked_files": 8,
+      "literal_inbound_reference_file_count": 5,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 2,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-verben-wortfamilie-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a1-verben-repair4-v336",
+      "family_id": "family:menschen-a1-verben",
+      "tracked_files": 3,
+      "literal_inbound_reference_file_count": 4,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 3,
+        "OTHER_TRACKED_REFERENCE": 1
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1-verben-wortfamilie-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2",
+      "family_id": "family:menschen-a2",
+      "tracked_files": 71,
+      "literal_inbound_reference_file_count": 11,
+      "source_classes": {
+        "CODE_OR_CI": 5,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_LEGACY_WORKSPACE": 1,
+        "OTHER_TRACKED_REFERENCE": 3,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-24-lessons-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2-verben-kombinationen-v336",
+      "family_id": "family:menschen-a2-verben",
+      "tracked_files": 219,
+      "literal_inbound_reference_file_count": 9,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 6,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-verben-r164-front-back-successor-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2-verben-r162-batched-enrichment-v336",
+      "family_id": "family:menschen-a2-verben",
+      "tracked_files": 21,
+      "literal_inbound_reference_file_count": 4,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 3
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-verben-r164-front-back-successor-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2-verben-r163-no-redundancy-v336",
+      "family_id": "family:menschen-a2-verben",
+      "tracked_files": 12,
+      "literal_inbound_reference_file_count": 4,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 3
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-verben-r164-front-back-successor-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2-verben-repair-v336",
+      "family_id": "family:menschen-a2-verben",
+      "tracked_files": 18,
+      "literal_inbound_reference_file_count": 5,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 2,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-verben-r164-front-back-successor-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2-verben-repair2-v336",
+      "family_id": "family:menschen-a2-verben",
+      "tracked_files": 6,
+      "literal_inbound_reference_file_count": 4,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 2
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-verben-r164-front-back-successor-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-a2-verben-wortfamilie-v336",
+      "family_id": "family:menschen-a2-verben",
+      "tracked_files": 15,
+      "literal_inbound_reference_file_count": 4,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 3
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a2-verben-r164-front-back-successor-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-b1-verben-migration",
+      "family_id": "family:menschen-b1-verben",
+      "tracked_files": 18,
+      "literal_inbound_reference_file_count": 5,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 1,
+        "OTHER_TRACKED_REFERENCE": 2,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-b1-verben-kombinationen-v336",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-verben-aud006-runtime-acceptance-2026-10-04",
+      "family_id": "family:menschen-portfolio",
+      "tracked_files": 17,
+      "literal_inbound_reference_file_count": 5,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 2,
+        "OTHER_TRACKED_REFERENCE": 2,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1a2b1-memrise",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-verben-bounded-repair-2026-10-03",
+      "family_id": "family:menschen-portfolio",
+      "tracked_files": 26,
+      "literal_inbound_reference_file_count": 7,
+      "source_classes": {
+        "CODE_OR_CI": 1,
+        "GOVERNANCE_ROUTING_OR_REPORT": 2,
+        "OTHER_TRACKED_REFERENCE": 3,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P0_REVIEW_CODE_OR_CANONICAL_INBOUND",
+      "canonical_git_target_slug": "menschen-a1a2b1-memrise",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    },
+    {
+      "workspace_id": "workspace:menschen-verben-independent-final-audit-2026-10-01",
+      "family_id": "family:menschen-portfolio",
+      "tracked_files": 12,
+      "literal_inbound_reference_file_count": 6,
+      "source_classes": {
+        "GOVERNANCE_ROUTING_OR_REPORT": 2,
+        "OTHER_LEGACY_WORKSPACE": 2,
+        "OTHER_TRACKED_REFERENCE": 1,
+        "ROOT_ENTRYPOINT_OR_STATE": 1
+      },
+      "priority": "P1_REVIEW_OTHER_INBOUND",
+      "canonical_git_target_slug": "menschen-a1a2b1-memrise",
+      "decision": "PRESERVE_AND_ROUTE_FUTURE_WORK_TO_CANONICAL"
+    }
+  ]
+}

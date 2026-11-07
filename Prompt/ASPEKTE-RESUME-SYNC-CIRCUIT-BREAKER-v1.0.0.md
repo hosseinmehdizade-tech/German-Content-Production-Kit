@@ -1,0 +1,34 @@
+# Aspekte B1+ / B2 / C1 — Resume & Persistence Circuit Breaker v1.0.0
+
+**ACTIVE — 2026-11-07 — User-authorized root-cause repair.**
+**Scope:** Only `Workspaces/aspekte-b1plus-v336`, `Workspaces/aspekte-b2-v336`, `Workspaces/aspekte-c1-v336`. Inherited together with central `AGENTS.md`, project README and current-workstream governance. Existing production, quality, and provenance requirements remain mandatory.
+
+## Root cause / actual incident
+Repeated "ادامه بده" turns became attempts to overwrite `Content/Aspekte-B1plus/Plans/ROADMAP-TEMP.md` through an app operation requiring user approval. The upload attempts produced `container_file_capture_failed` and/or unresolved permission without successful readback. Meanwhile GitHub `ROADMAP-TEMP.md`, `LATEST.json`, `CHECKPOINT.json` and the newest owner-local portable ZIP were already aligned for Batch11 (257/321). Retrying the stale Library roadmap caused an unbounded `continue → attempted overwrite → no content work` loop. The underlying global contracts already discourage tiny per-edit ZIPs and heavy sync loops; this project-specific guard makes their application unambiguous.
+
+## Correct separation of authority (do not conflate)
+- **Control plane:** workstream GitHub `LATEST.json` / `CHECKPOINT.json` and, where applicable, `RUN-CONTROL.json` and `ROADMAP-TEMP.md`. They determine next action and provenance, after checking for a newer verified portable content state.
+- **Content/data plane:** the newest SHA-verified, owner-local edited learner dataset or recoverable portable artifact in the project's designated Library/Project; never replace it with GitHub summary text or an obsolete raw textbook export. A newer verified portable artifact outranks a stale Git pointer under `WORKSTREAM-RESUME-CURRENTNESS-POLICY.json`.
+- **Historical Library roadmap copies:** non-authoritative convenience snapshots. They are NOT a second mutable control plane and must never be a startup blocker. No further automatic overwrite/update/reconciliation of `Plans/ROADMAP-TEMP.md` in Library for any Aspekte project. GitHub owns the live roadmap.
+- **Git is not binary transport.** Preserve ZIP/CSV/TSV provenance in the exact existing owner Library folder. Historical Library records and `libfile_` IDs remain intact; no deletion/migration and no claim that a Git commit saved binary data in Library.
+
+## Mandatory resume sequence (including "ادامه بده")
+1. Read this contract + project's README; read the **one** actual next-action source: B1+ GitHub `LATEST.json` and current portable ZIP; B2 `RUN-CONTROL.json` and its verified lesson-current CSV; C1 latest verified Stage1 curated comparison artifact and its LATEST. Only inspect other pointers when material inconsistencies affect content, release safety or identity.
+2. Choose the next substantive unfinished content/QA task. **Perform edits, review, validation or an actual BLOCKED disposition first.** Do not begin by trying to repair a stale Library copy of a roadmap, cosmetic metadata, or a past sync error.
+3. Keep a **single mutable working content state per project/lesson**. Perform substantial bounded batches (B2 maximum three lesson passes; B1+ complete G2 queue before G3). Record precise reviewed/corrected/held counts and stable IDs. No tiny new ZIP/report per handful of edits. Retain necessary recovery and final milestone artifacts; source, LOCKED, and HOLD safeguards stay in force.
+4. Persist **one meaningful content milestone** to the exact owner Library folder only if a new byte-identifiable artifact and required milestone/recovery evidence warrant it. Check existing file catalog, avoid duplicate uploads, verify exact Library ID, bytes, SHA/CRC where relevant. On an app permission prompt, `container_file_capture_failed`, missing authorization or upload error: **STOP THAT DESTINATION**. Mark `LIBRARY_SYNC_PENDING`, retain original bytes and exact path, never retry the same operation in the same turn and never ask for repeated "continue" just to retry. Do NOT choose an unauthorized alternate folder, fabricate upload success or delete files.
+5. Git sync at a validated milestone only: one attempt per affected path per turn with current blob SHA/CAS. No repeated metadata repair rounds, no heavy historical rewrite. If a Git write fails, mark `GIT_SYNC_PENDING` and continue safe content work from newest validated portable state. For B2 honor the stricter existing `EXECUTION-EXIT-GUARD-v1.0.0.md` and `RUN-CONTROL.json`.
+6. End with a **terminal, explicit result**: `project/stage`, real content edits or read-only work, saved artifact and QA evidence, unsynced destination if any, remaining blockers and single next substantive action. Never imply Stage4/5/6/7 PASS, import approval or release without their own independent evidence.
+
+## Idempotent control and terminal guarantees
+- A prior completed BatchXX pointer is not a reason to re-run its upload, recopy its roadmap or regenerate the same full ZIP.
+- Metadata difference confined to an older Library roadmap is classified `LIBRARY_ROADMAP_HISTORICAL_NONBLOCKING`; no retry queue and no mandatory synchronization.
+- An upload requiring a user permission dialog is `NEEDS_USER_ACTION`, not an instruction to keep the chat in-progress. State it once; persist normal progress elsewhere where authorized; do not request broad permanent app access.
+- B1+ verified recovery: Batch11, **257/321** morphology scopes, 64 remaining (63 older, 1 split `Kaffeeservice`), 51 actual front corrections, 1,571 provisional previews, 1,548 source rows, 0 approved cards, 340 release HOLDs. GitHub roadmap **v0.14** is control-plane current; Library `Plans/ROADMAP-TEMP.md` v11 is a historical snapshot, not to be overwritten.
+- B2 recovery: **read `RUN-CONTROL.json` dynamically** (observed 2026-11-07: L05 pass 3); do not pin a stale lesson/pass here.
+- C1 recovery: read owner-local current curated Stage1 artifact and LATEST; no source-PDF re-extraction solely to re-prove historical fidelity.
+
+## Precedence, safety and limitations
+This is a scoped implementation of `AGENTS.md`, `PROJECT-OPERATING-MODE-v2.md`, `WORKSTREAM-LEAN-EDIT-POLICY.json`, `GIT-SYNC-POLICY.json`, the project folder routing policy, `PROJECT-MEMORY.json#MEM-005/MEM-006/MEM-008/MEM-025`, and safe cleanup. It does **not** change the global currentness order, license deletion of user assets, bypass user approval dialogs, silently rewrite source/LOCKED data or force other already-running chats to refresh. Other sessions must read the new instructions on their next resume.
+
+**Success test:** a user "ادامه بده" starting from the Batch11 GitHub state proceeds directly to substantive G2 review without attempting a Library roadmap overwrite, regardless of Library roadmap version. Errors produce one terminal `SYNC_PENDING`, not a loop.

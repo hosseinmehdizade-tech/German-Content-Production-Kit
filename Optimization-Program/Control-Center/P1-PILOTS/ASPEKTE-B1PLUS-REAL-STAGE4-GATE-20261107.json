@@ -1,0 +1,60 @@
+{
+  "schema": "gfp-opt-p1-real-owner-pilot-snapshot@1.0.0",
+  "program_id": "GFP-OPT-2026",
+  "observed_date": "2026-11-07",
+  "status": "REAL_SOURCE_OWNER_SNAPSHOT__EXECUTION_AND_CI_EVIDENCE_TRACKED_BY_WORKFLOW",
+  "decision": "Pilot source-specific read-only P1 lexical Stage4 preflight, NOT a new Stage5 publication",
+  "scope": "CURRENT_CURATED_GITHUB_SOURCE_METADATA__NOT_ORIGINAL_TEXTBOOK_REINVENTORY",
+  "source_owner": {
+    "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
+    "workspace": "Workspaces/aspekte-b1plus-v336",
+    "family_id": "family:aspekte-b1plus",
+    "workspace_id": "workspace:aspekte-b1plus-v336",
+    "project_id": "aspekte-b1plus",
+    "latest_path": "Workspaces/aspekte-b1plus-v336/LATEST.json",
+    "latest_git_blob": "8fae7d5a9d8e7fd17216391ac7d29f36f052a1f1",
+    "checkpoint_path": "Workspaces/aspekte-b1plus-v336/CHECKPOINT.json",
+    "checkpoint_git_blob": "c8695437b5be66c445290e33376548e00d428bc8",
+    "source_sha256": "09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1",
+    "source_rows": 1548,
+    "stage4_current_state": "STAGE4_G2_LEXICAL_BATCH02_47_OF_321_FORM_SCOPES_VERIFIED_7_NEW_FRONT_CORRECTIONS_274_REMAIN_NONIMPORT",
+    "G2_form_checks_remaining": 274,
+    "stage4_formal_acceptance": false,
+    "stage5": "NOT_STARTED",
+    "stage6": "NOT_STARTED",
+    "stage7": "NOT_STARTED",
+    "import_ready": false
+  },
+  "central_policy": {
+    "registry_path": "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json",
+    "registry_git_blob": "84cf2250e3489e24a55cf15a8cb7fe528c62f77d",
+    "bindings_count": 22,
+    "catalog_path": "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json",
+    "catalog_git_blob": "a73e06a3b6ac13425c523851b5d046a360683db3",
+    "family_profile_path": "Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json",
+    "family_profile_git_blob": "7e919f5b5a07e12c6f060a6aad59a16906b9fb41",
+    "required_stage4_policy_bindings": [
+      "curated_current_delta_qa",
+      "linguistic_qa",
+      "risk_based_stage4",
+      "seven_stages"
+    ]
+  },
+  "execution": {
+    "entrypoint": "Tools/p1_aspekte_b1plus_real_owner_gate_v1.py",
+    "test": "Verification/tests/test_p1_aspekte_b1plus_real_owner_gate_v1.py",
+    "github_actions": ".github/workflows/gfp-opt-p1-aspekte-b1plus-real-owner-gate.yml",
+    "checks": "all 22 central policy file Git blobs + source owner/catalog/domain/curated SHA + Stage4/Stage5 boundaries + nine in-memory negative attack controls",
+    "write_scope": "PROGRAM_METADATA_AND_TESTS_ONLY",
+    "no_card_or_stage_mutation": true
+  },
+  "acceptance": {
+    "gate_preflight_eligible": true,
+    "new_governed_stage5_adoption": false,
+    "new_formal_producer_adoptions": 0,
+    "no_verified_new_library_publication": true,
+    "no_claim_native_stage6_or_full_stage7": true
+  },
+  "next": "Aspekte B1+ owner finishes outstanding G2 forms, resolves independent Stage4 semantic QA and explicitly authorizes a genuinely NEW Stage5 boundary with four original source roles. Then run governed-native builder plus exact GitHub-main/Library readback; only then consider formal adopted ledger v2.",
+  "freshness": "Dated immutable observation. On owner-current change, rerun the executable gate. A later CURRENT supersedes this snapshot for stage decisions."
+}

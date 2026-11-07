@@ -1,5 +1,10 @@
 # Aspekte B2 — independent German–Persian lexical project from user's edited content
 
+## MANDATORY FIRST READ — anti-loop and terminal-response guard (2026-11-07)
+
+**Before any `ادامه بده` or resumed B2 work, read [`RUN-CONTROL.json`](RUN-CONTROL.json) and [`EXECUTION-EXIT-GUARD-v1.0.0.md`](EXECUTION-EXIT-GUARD-v1.0.0.md).** This takes precedence over stale `LATEST.json` or older `CHECKPOINT.json` *for next-action selection only*. Source-owned accepted current content/QA authority remains unchanged. Never spend a whole response repairing legacy metadata, looping on failed sync, or doing many micro-rounds. One turn = one substantive objective + one final terminal result; max one sync attempt per destination in the turn, then explicit `SYNC_PENDING` if failed. The three-pass quality/stage contract remains mandatory. Current target: **L04 PASS 1 / 3** with 184 curated R22 rows. Previous L03 PASS 3 is `BLOCKED_NONIMPORT` and must not be re-run just to update pointers.
+
+
 ## Mandatory lesson execution — MAX THREE passes (user directive 2026-11-07)
 
 **Read [`LESSON-3-PASS-QUALITY-PROTOCOL-v1.0.0.md`](LESSON-3-PASS-QUALITY-PROTOCOL-v1.0.0.md) before each lesson/resume.** Each lesson has at most three substantive execution milestones: **(1) complete all lesson learner units and enrichment, (2) rigorous DE–FA and independent QA plus corrections, (3) actual delivery/runtime/final release gates, or accurately BLOCKED.** The inherited 7 technical stages still apply; never lower linguistic or structural quality, counterfeit independent QA or split a 108-row lesson into endless mini-rounds. Hold only actual blockers and move to next lesson without re-reviewing unchanged curated content. Pass 1 for L02 currently requires the **remaining 96 of 108** units in a *single substantial production pass*. Preserve accepted R47 L01 work and its unresolved safety gates.

@@ -1,5 +1,13 @@
 # Aspekte B1+ — Status 2026-11-06
 
+## Temporary six-gate roadmap and compulsory progress footer (2026-11-07)
+
+**[ROADMAP-TEMP.md](ROADMAP-TEMP.md)** is the single in-place working roadmap for finishing Aspekte B1+. Its exact-byte Library mirror is at `Content/Aspekte-B1plus/Plans/ROADMAP-TEMP.md` (SHA256 `729a7bfe8c5c896a88e23a97c2a62e21655444582f61c1efb5a10a2a6bb250b3`). The same paths are linked in `LATEST.json` and `CHECKPOINT.json`.
+
+Current gate: **G1 / 6 — source row → learner card identity and duplicate routing**. Next actions: 20 multi-lexeme source rows and seven exact candidate headword-repeat groups. G2 morphology, G3 overlay reconciliation, G4 full DE–FA semantic QA, G5 crosslevel TSV/app rendering/import testing, G6 formal release and temporary-file cleanup follow in order. Gate status changes only after measurable acceptance criteria pass; no invented overall completion percentage. Stage4 QA Pass04 is still NONIMPORT, with 1,544 provisional preview views and 1,548 preserved source rows, all 340 HOLDs blocked, zero approved cards.
+
+**Required behavior for all further B1+-related replies:** first read the roadmap and current GitHub/Library checkpoint; after any actual work update the SAME roadmap file in GitHub and Library (do not fork dated roadmaps), and finish the reply with a short Persian roadmap progress summary: current gate, this turn's measured change or explicit zero change, current blockers, one next action, formal approvals/HOLD release count. No progress credit for reports alone.
+
 **CURRENT STAGE4 CONTENT COVERAGE (2026-11-06): 10/10 lessons, 340/340 unique HOLD source records and 383/383 distinct archived overlays have individual editorial content rulings. All 340 HOLDs remain RELEASE-BLOCKED. Zero cards have independent final QA approval. This is a NONIMPORT state, not Stage5/6/7.**
 
 **Stage 4 / Gate2D Part05 complete (scoping only, nonimport).** The project vocabulary comes only from the user's B1+ CSV.

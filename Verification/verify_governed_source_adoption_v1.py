@@ -56,7 +56,7 @@ def catalog_authority(root: Path=ROOT):
           and profiles.get("schema")=="gfp-opt-p1-source-domain-applicability-profiles@1.0.0",
           "CATALOG_PROFILE_SCHEMA_NOT_ACTIVE")
     guard(len(catalog.get("families",[]))==21
-          and len(catalog.get("workspaces",[]))==35
+          and len(catalog.get("workspaces",[]))==36
           and len(profiles.get("families",[]))==21,
           "CATALOG_COVERAGE_DRIFT")
     return catalog,profiles

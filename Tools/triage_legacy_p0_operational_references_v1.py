@@ -38,7 +38,7 @@ def path_boundary(pattern: str) -> re.Pattern[bytes]:
 def source_bucket(source: str, text_line: str) -> str:
     p=Path(source)
     line=text_line.strip()
-    if source.startswith(("Verification/tests/","Tests/")):
+    if source.startswith(("Verification/tests/","Verification/tests-","Tests/")) or "/tests/" in source:
         return "TEST_OR_REGRESSION_EVIDENCE_NOT_RUNTIME_PROOF"
     if p.suffix in CI_EXT and source.startswith(".github/workflows/"):
         return "CI_DECLARATION_REVIEW_REQUIRED"

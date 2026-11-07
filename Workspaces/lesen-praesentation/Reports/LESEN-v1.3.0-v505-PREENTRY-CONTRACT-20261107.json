@@ -1,0 +1,65 @@
+{
+  "schema": "lesen-v505-native-validator-preentry-evidence@1.0.0",
+  "audit_date": "2026-11-07",
+  "app_current": "v505-R141 WORDLINKS R3 exact stored source",
+  "app_zip_sha256": "6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef",
+  "app_source_module": "01-App/modules/reading-content-import-v38.js",
+  "app_module_sha256": "b03f954a9e617d918d42eeddbf0cd4da5a3c1bc3d43d9e57977312dbbde071bc",
+  "runtime_member_sha256": "8e0c876eed6f09a5fb25fe36cae6526226b429be7664460b74d0fdf3367df23d",
+  "master_member_sha256": "195e2f8ed09237fd3eee61ef9640d8c1cdc8c2a0c9beba8a3f57d65a1a93eb9d",
+  "runtime_schema": "lesen.runtime.v1.0.0",
+  "master_schema": "lesen.content.v1.3.0",
+  "master_is_legacy_content_pack": true,
+  "master_is_direct_runtime_pack": false,
+  "compiled_is_runtime_pack": true,
+  "baseline": {
+    "status": "PASS",
+    "errors": [],
+    "warnings": [
+      "integrity.payload_sha256 موجود نیست؛ payload کامل باید با Validator آفلاین بررسی شود."
+    ],
+    "counts": {
+      "entries": 68,
+      "passages": 478,
+      "questions": 340,
+      "vocabulary": 350,
+      "translationsFa": 478,
+      "translationsEn": 478,
+      "fullTextGrammar": 4612,
+      "lexicalTargets": 0
+    }
+  },
+  "negative_controls": [
+    {
+      "name": "DUPLICATE_SOURCE_ID",
+      "status": "FAIL",
+      "errors": 1,
+      "first_error": "entries[1].source_item_id تکراری است: LES-PRES-001"
+    },
+    {
+      "name": "MISSING_FA_PASSAGE",
+      "status": "FAIL",
+      "errors": 1,
+      "first_error": "LES-PRES-001.passages[0].translations.fa خالی است."
+    },
+    {
+      "name": "MISMATCH_QUESTION_REFERENCES",
+      "status": "FAIL",
+      "errors": 1,
+      "first_error": "LES-PRES-001: comprehension_exercise_ids با exercises سازگار نیست."
+    },
+    {
+      "name": "BROKEN_FULLTEXT_GRAMMAR_OFFSET",
+      "status": "FAIL",
+      "errors": 1,
+      "first_error": "LES-PRES-001.ftg-0001: offset/target_text نامعتبر است."
+    }
+  ],
+  "negative_controls_pass": true,
+  "browser_attempts": [
+    "file:// blocked ERR_BLOCKED_BY_ADMINISTRATOR",
+    "http://127.0.0.1 blocked ERR_BLOCKED_BY_ADMINISTRATOR"
+  ],
+  "native_app_import_persistence_render": "NOT_RUN",
+  "user_srs_fsrs_mutation": false
+}

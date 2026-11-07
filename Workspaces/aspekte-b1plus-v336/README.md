@@ -1,5 +1,19 @@
 # Aspekte B1+ — Status 2026-11-06
 
+## G2 lexical morphology Batch03 — 98 cumulative checks, 51 new, 3 front corrections (2026-11-07)
+
+**Roadmap gate G2 remains ACTIVE; NO import / NO release.** The same [ROADMAP-TEMP.md](ROADMAP-TEMP.md) was updated *in place* to v0.6 in GitHub and Library (same Library ID `libfile_01c5b33ec05881918a21b124acf5eac8`, byte-exact verified SHA256 `32492897c471b5e53bbb556c973bbbff181a3587c8a8d7888caf9b36358d595b`).
+
+- **51 additional individual Duden-backed lexical-grammar form checks**, with every exact page URL retained in the QA register: 33 from older Pass04's 256 forms and 18 from G2's 65 newer source-split lexemes. **98/321 cumulative** (72 older + 26 newer), **223 still pending** (184 older + 39 newer). This is specifically part-of-speech and German inflection scope, *not* bilingual/whole-card verification.
+- **Three actual corrected learner-facing front views** (total 12 real front corrections across G2 lexical batches):
+  - Source ordinal **460** `der Scheich`: keep both Duden plurals `Scheichs` / `Scheiche`, with an explicit sense-bound note that some title use has no plural.
+  - Ordinal **483** `der Prinz / die Prinzessin`: weak masculine singular `den Prinzen` (Akk.) and `des Prinzen` (Gen.) added while retaining the one lexical-family card.
+  - Ordinal **504** `der Dozent / die Dozentin`: weak masculine singular `den Dozenten` (Akk.) and `des Dozenten` (Gen.) added, keeping feminine forms.
+- **Strict full-object assertion:** all **1,571 original preview IDs** and **1,548 source ordinal links** persist; all Persian senses, all DE–FA example arrays, all source text and existing 47 QA ledger entries are untouched. Only three intended front display strings plus explicit metadata on 51 reviewed entries were introduced; no source/master change, no redundant `Formen` on preview backs.
+- **Source and form/sense discipline:** Duden checks grammar only; source remains the user's *current edited B1+ CSV* and existing curated project ZIPs, never newly re-extracted textbook PDF. Plural differences for title vs person and other sense-dependent usages remain G4 semantic QA questions. Zero cards have full DE–FA signoff; all 340 HOLDs stay blocked. No final app import file.
+- **Library sidecar:** `Reports/Aspekte-B1plus-G2-LEXICAL-BATCH03-98-CUMULATIVE-51-NEW-3-CORRECTIONS-NONIMPORT-20261107.zip`. SHA256 `b74757b60ecdb18b8f07645883111a2358ecc389076f6e4b5a09e02ffe5e14f3`; 410,370 bytes, nine ZIP members, eight verified manifest hashes, exact-byte Library readback and ZIP CRC pass.
+- [Batch03 metadata receipt](Reports/G2-LEXICAL-BATCH03-51-NEW-98-CUMULATIVE-3-FRONT-CORRECTIONS-RECEIPT-20261107.json). **Next:** 184 old + 39 new wordform cases to finish G2, then the acceptance gate before starting G3. Stage G4 full semantic/example verification and G5 real app render/import remain outstanding.
+
 ## G2 lexical morphology Batch02 — 47 cumulative form checks and 7 new front fixes (2026-11-07)
 
 **Active Gate:** G2 / 6. Current one-file [temporary roadmap](ROADMAP-TEMP.md) is v0.5, updated in place in GitHub and Library. Baseline remains the current user-curated B1+ source CSV, never a new obsolete textbook extraction.

@@ -84,6 +84,17 @@ class TriageTests(unittest.TestCase):
         data=m.analyze(self.root)
         self.assertEqual(data["counters"]["p0_workspaces_with_execution_candidate"],2)
 
+    def test_governance_receipts_do_not_inflate_operational_reference_counts(self):
+        original=m.analyze(self.root)
+        self.write("Optimization-Program/Control-Center/Legacy-Dependencies/auto-report.json",
+                   json.dumps({"legacy":"Workspaces/hist-0/CHECKPOINT.json"}))
+        self.commit()
+        updated=m.analyze(self.root)
+        self.assertEqual(updated["counters"]["p0_inbound_source_file_edges"],
+                         original["counters"]["p0_inbound_source_file_edges"])
+        self.assertEqual(updated["counters"]["p0_baseline_changed"],
+                         original["counters"]["p0_baseline_changed"])
+
     def test_short_path_rejects_sibling_prefix(self):
         q=m.path_boundary("Workspaces/hist-6")
         self.assertIsNone(q.search(b"Workspaces/hist-6-longer/checkpoint.json"))

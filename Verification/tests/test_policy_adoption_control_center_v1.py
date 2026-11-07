@@ -45,13 +45,13 @@ class AdoptionDashboardTests(unittest.TestCase):
 
     def test_all_21_source_families_without_double_counting(self):
         n=self.output["counts"]
-        self.assertEqual((n["families"],n["workspaces"],n["roots"]),(21,35,17))
+        self.assertEqual((n["families"],n["workspaces"],n["roots"]),(21,36,17))
         active=len(self.reg["policy_bindings"])
         self.assertGreaterEqual(active,22)
         self.assertEqual((n["central_policy_bindings"],n["policy_family_candidate_impacts"]),
                          (active,21*active))
         self.assertEqual((n["workspace_pointer_navigation_views"],n["root_pointer_navigation_views"]),
-                         (35*active,17*active))
+                         (36*active,17*active))
 
     def test_all_source_families_in_same_order_as_catalog(self):
         self.assertEqual(
@@ -97,7 +97,7 @@ class AdoptionDashboardTests(unittest.TestCase):
     def test_qa_workspaces_stay_nav_only(self):
         paths=[w["git_dir"] for f in self.output["source_families"]
                for w in f["git_workspaces"] if w["kind"]=="CROSS_SOURCE_QA_OR_RUNTIME_WORKSPACE"]
-        self.assertLessEqual(len(paths),35)
+        self.assertLessEqual(len(paths),36)
         self.assertTrue(all("pointer_adoption_proof" in w for f in self.output["source_families"]
                             for w in f["git_workspaces"]))
 
@@ -199,7 +199,7 @@ class AdoptionDashboardTests(unittest.TestCase):
 
     def test_report_contains_usable_workspace_hints(self):
         arr=[w for f in self.output["source_families"] for w in f["git_workspaces"]]
-        self.assertEqual(len(arr),35)
+        self.assertEqual(len(arr),36)
         self.assertTrue(all(w["git_dir"].startswith("Workspaces/") for w in arr))
         self.assertTrue(any(w["selected_pointer"] for w in arr))
         self.assertTrue(all(w["pointer_adoption_proof"]=="NOT_CERTIFIED" for w in arr))

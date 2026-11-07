@@ -51,7 +51,24 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
     historical={k:baseline.get(k) for k in
                 ("library_content_families","git_workspaces","root_workstreams")}
     today={k:observed[k] for k in historical}
-    check(today==historical and isinstance(baseline.get("active_pinned_policy_bindings"), int)
+    # The original 21/35/17 inventory remains historical. Only a separately
+    # reviewed, exact R164 identity addition permits the current 36th directory.
+    reconciliation=r.get("scope",{}).get("inventory_reconciliation_20261107",{})
+    current_workspace_ok=(
+        today["git_workspaces"]==historical["git_workspaces"]
+        or (
+            historical["git_workspaces"]==35
+            and today["git_workspaces"]==36
+            and reconciliation.get("previous_catalog_count_before_r164")==35
+            and reconciliation.get("live_catalog_git_workspace_count")==36
+            and reconciliation.get("last_added_git_dir")==
+                "Workspaces/menschen-a2-verben-r164-front-back-successor-v336"
+        )
+    )
+    check(today["library_content_families"]==historical["library_content_families"]
+          and today["root_workstreams"]==historical["root_workstreams"]
+          and current_workspace_ok
+          and isinstance(baseline.get("active_pinned_policy_bindings"), int)
           and observed["active_pinned_policy_bindings"] >= baseline["active_pinned_policy_bindings"],
           "INVENTORY_BASELINE_DRIFT_REVIEW_REQUIRED")
     check("curated_current_delta_qa" in registry.get("policy_bindings",{}),

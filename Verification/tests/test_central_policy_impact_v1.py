@@ -48,7 +48,7 @@ class CentralPolicyImpactTests(unittest.TestCase):
         self.assertGreaterEqual(n,22)
         self.assertEqual(len(out["selected_policy_bindings"]),n)
         self.assertEqual(len(out["family_impacts"]),21*n)
-        self.assertEqual(len(out["workspace_impacts"]),35*n)
+        self.assertEqual(len(out["workspace_impacts"]),36*n)
         self.assertEqual(len(out["root_workstream_impacts"]),17*n)
         self.assertEqual(out["catalog_baseline"]["qa_workspaces_not_direct_producers"],3)
 
@@ -73,7 +73,7 @@ class CentralPolicyImpactTests(unittest.TestCase):
             if x["workspace_kind"]=="QA_ONLY_NOT_DIRECT_PRODUCER"]
         self.assertEqual(len(qa),3)
         self.assertTrue(all(x["impact_status"]=="QA_WORKSPACE_NOT_DIRECT_PRODUCER" for x in qa))
-        self.assertEqual(len(out["workspace_impacts"]),35)
+        self.assertEqual(len(out["workspace_impacts"]),36)
 
     def test_qa_workspace_has_resume_only_even_when_policy_is_global(self):
         out=self.impact("currentness")
@@ -185,7 +185,7 @@ class CentralPolicyImpactTests(unittest.TestCase):
 
     def test_curated_current_router_reaches_35_workspace_candidates_only(self):
         out=self.impact("curated_current_delta_qa")
-        self.assertEqual(len(out["workspace_impacts"]),35)
+        self.assertEqual(len(out["workspace_impacts"]),36)
         self.assertEqual(len(out["family_impacts"]),21)
         self.assertTrue(all(x["workspace_specific_execution_verified"] is False
                             and x["workspace_specific_real_output_verified"] is False
@@ -230,7 +230,7 @@ class CentralPolicyImpactTests(unittest.TestCase):
         self.assertEqual(len(d["per_policy"]),len(self.registry["policy_bindings"]))
         self.assertNotIn("workspace_impacts",d)
         self.assertEqual(d["selected_impact_rows"]["family"],21*len(self.registry["policy_bindings"]))
-        self.assertEqual(d["selected_impact_rows"]["workspace"],35*len(self.registry["policy_bindings"]))
+        self.assertEqual(d["selected_impact_rows"]["workspace"],36*len(self.registry["policy_bindings"]))
 
     def test_cli_select_policy_and_named_family(self):
         result=subprocess.run([

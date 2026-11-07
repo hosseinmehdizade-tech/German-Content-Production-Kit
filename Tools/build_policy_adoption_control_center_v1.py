@@ -281,7 +281,7 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
           "source_currentness":"NOT_VERIFIED_BY_THIS_LEDGER",
           "next_action":next_action(spec["declared_domain"],stage5)
         })
-    require(len(rows)==21 and sum(len(f["git_workspaces"]) for f in rows)==35
+    require(len(rows)==21 and sum(len(f["git_workspaces"]) for f in rows)==36
             and sum(len(f["root_summary_hints"]) for f in rows)==17,
             "DASHBOARD_CATALOG_CARDINALITY_DRIFT")
     return {
@@ -301,7 +301,7 @@ def build(ledger:dict,index:dict,snapshot:dict,impact:dict,cat:dict,domains:dict
       },
       "counts":{
         "families":len(rows),
-        "workspaces":35,
+        "workspaces":36,
         "roots":17,
         "central_policy_bindings":n,
         "policy_family_candidate_impacts":len(cat["families"])*n,

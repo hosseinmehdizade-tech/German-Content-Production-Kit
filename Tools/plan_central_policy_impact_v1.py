@@ -153,7 +153,7 @@ def verify_catalog_and_profiles(profile: dict, catalog: dict, previous: dict,
     families = catalog.get("families", [])
     workspaces = catalog.get("workspaces", [])
     roots = catalog.get("root_workstreams", [])
-    require(len(families) == 21 and len(workspaces) == 35
+    require(len(families) == 21 and len(workspaces) == 36
             and len(roots) == 17, "CATALOG_COUNT_DRIFT_STOP_FOR_REVIEW")
     family_ids = [x.get("id") for x in families]
     require(len(family_ids) == len(set(family_ids)) and

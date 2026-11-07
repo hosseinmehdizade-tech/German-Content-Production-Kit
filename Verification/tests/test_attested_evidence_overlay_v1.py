@@ -45,7 +45,7 @@ class AttestedEvidenceOverlayTests(unittest.TestCase):
         result = self.outcome()
         self.assertEqual(result["counts"]["historical_byte_receipts_git_workspaces"], 1)
         self.assertEqual(result["counts"]["historical_byte_receipts_root_workstreams"], 1)
-        self.assertEqual(result["counts"]["unattested_git_workspaces"], 33)
+        self.assertEqual(result["counts"]["unattested_git_workspaces"], 34)
         self.assertEqual(result["counts"]["source_anchored_historical_git_workspaces"], 1)
 
     def test_three_typed_historical_receipts_have_independent_family_ids(self):

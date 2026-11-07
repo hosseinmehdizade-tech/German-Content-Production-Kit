@@ -11,6 +11,15 @@ on:
       - 'Verification/tests/test_canonical_family_workspaces_v1.py'
       - 'Tools/audit_legacy_workspace_dependencies_v1.py'
       - 'Verification/tests/test_legacy_workspace_dependencies_v1.py'
+      - 'Verification/validate_stage3_stage4_unification.py'
+      - 'Verification/tests-v3.3.6/test_content_zip_guard.py'
+      - '.github/workflows/menschen-portfolio-refresh.yml'
+      - '.github/workflows/content-zip-guard.yml'
+      - '.github/workflows/menschen-a2-e2e.yml'
+      - '.github/workflows/menschen-a2-stage7-corrective.yml'
+      - 'Tools/triage_legacy_p0_operational_references_v1.py'
+      - 'Verification/tests/test_legacy_p0_operational_triage_v1.py'
+      - 'Optimization-Program/Control-Center/Legacy-Dependencies/**'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
@@ -25,6 +34,15 @@ on:
       - 'Verification/tests/test_canonical_family_workspaces_v1.py'
       - 'Tools/audit_legacy_workspace_dependencies_v1.py'
       - 'Verification/tests/test_legacy_workspace_dependencies_v1.py'
+      - 'Verification/validate_stage3_stage4_unification.py'
+      - 'Verification/tests-v3.3.6/test_content_zip_guard.py'
+      - '.github/workflows/menschen-portfolio-refresh.yml'
+      - '.github/workflows/content-zip-guard.yml'
+      - '.github/workflows/menschen-a2-e2e.yml'
+      - '.github/workflows/menschen-a2-stage7-corrective.yml'
+      - 'Tools/triage_legacy_p0_operational_references_v1.py'
+      - 'Verification/tests/test_legacy_p0_operational_triage_v1.py'
+      - 'Optimization-Program/Control-Center/Legacy-Dependencies/**'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
@@ -75,6 +93,15 @@ jobs:
             --repo-root . \
             --out-dir "$RUNNER_TEMP/canonical-family-guard" \
             --expect-legacy 20 \
+            --github-summary
+      - name: Test P0 candidate callsite versus historical evidence
+        run: python -B -m unittest discover -s Verification/tests -p test_legacy_p0_operational_triage_v1.py -v
+      - name: Triage high-priority legacy references without runtime execution claims
+        shell: bash
+        run: |
+          python -B Tools/triage_legacy_p0_operational_references_v1.py \
+            --repo-root . \
+            --out-dir "$RUNNER_TEMP/canonical-family-guard" \
             --github-summary
       - name: Save derived routing gate report without editing source
         uses: actions/upload-artifact@v4

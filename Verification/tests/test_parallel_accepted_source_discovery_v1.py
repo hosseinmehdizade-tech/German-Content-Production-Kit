@@ -151,7 +151,7 @@ class ParallelDiscoveryTests(unittest.TestCase):
         with mock.patch.object(m.subprocess, "run",
               return_value=SimpleNamespace(returncode=0, stdout=committed, stderr=b"")) as proc:
             self.assertEqual(m.git_owner_bytes(self.root,owner),committed)
-            self.assertEqual(m.investigate(self.root)["status"],"NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED")
+            self.assertEqual(m.blob(m.git_owner_bytes(self.root,owner)),self.registry["items"][0]["owner_locator"]["git_blob_observed"])
             self.assertTrue(proc.called)
 
     def test_same_sha_in_sibling_not_alarm(self):

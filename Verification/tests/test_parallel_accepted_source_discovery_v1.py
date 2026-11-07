@@ -91,6 +91,10 @@ class ParallelDiscoveryTests(unittest.TestCase):
         self.add_sibling(status="STAGE4_AI_WIP__NOT_FINAL")
         self.assertEqual(m.investigate(self.root)["status"],"NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED")
 
+    def test_negated_user_acceptance_not_qualified(self):
+        self.add_sibling(status="NOT_USER_ACCEPTED__WIP")
+        self.assertEqual(m.investigate(self.root)["status"],"NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED")
+
     def test_draft_zip_even_with_user_accepted_status_is_not_new_release(self):
         self.add_sibling(name="CANDIDATE-WIP-NOT-IMPORT.zip")
         self.assertEqual(m.investigate(self.root)["status"],"NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED")

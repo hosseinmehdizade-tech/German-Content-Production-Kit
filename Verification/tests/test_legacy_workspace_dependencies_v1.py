@@ -92,6 +92,16 @@ class AuditLegacyDependenciesTests(unittest.TestCase):
             self.assertIn("NOT_DELETION_SAFE",x["priority"])
             self.assertTrue(x["delete_decision"].startswith("PROHIBITED"))
 
+    def test_short_legacy_path_must_not_match_longer_sibling_name(self):
+        self.write("README.md","The new canonical target is Workspaces/old-b-24-lessons-v336; no old-b path")
+        self.write(self.canonical+"/CHECKPOINT.json","Canonical successor")
+        self.write("Tools/import_records.py","New importer uses Workspaces/old-a-repair-v336 and nothing old-a")
+        self.commit()
+        r=m.analyze(self.home)
+        self.assertEqual(r["counts"]["exact_textual_reference_file_edges"],0)
+        self.assertEqual(r["counts"]["legacy_with_any_text_inbound"],0)
+        self.assertTrue(all("NOT_DELETION_SAFE" in x["priority"] for x in r["workspaces"]))
+
     def test_binary_git_blobs_do_not_create_false_exact_text(self):
         raw=(self.home/"Tools/blob.bin")
         raw.write_bytes(b"\x00Workspaces/old-a/legacy\xff\x00")

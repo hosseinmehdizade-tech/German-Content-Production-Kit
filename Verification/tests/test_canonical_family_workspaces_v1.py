@@ -35,7 +35,7 @@ class CanonicalWorkspaceGateTests(unittest.TestCase):
             self.catalog["families"].append({"id":fid,"library_path":library})
             selected=(("b"*63)+str(i%10)) if i<10 else None
             self.routing["families"].append({"family_id":fid,"canonical_library_root":library,
-                "canonical_git_workspace":active,"active_content_sha256":selected,
+                "canonical_git_workspace":active,"initial_canonical_git_workspace":active,"active_content_sha256":selected,
                 "canonical_source_owner_document":active+"/LATEST.json" if i<10 else None,
                 "no_new_git_workspace_created":True})
             if active:
@@ -187,6 +187,64 @@ class CanonicalWorkspaceGateTests(unittest.TestCase):
         self.assertEqual(result,0)
         self.assertTrue((dest/"CANONICAL-WORKSPACE-GATE.json").exists())
         self.assertEqual(json.loads((dest/"CANONICAL-WORKSPACE-GATE.json").read_text())["counts"]["families"],21)
+
+    def approve(self,fid,new,former,short):
+        path=f"Optimization-Program/Control-Center/Approvals/{short}.json"
+        receipt={"schema":m.NEW_AUTHORIZATION_SCHEMA,
+            "user_explicit_approval":True,"family_id":fid,
+            "new_git_workspace":new,"previous_git_workspace":former,
+            "approval_scope":"CANONICAL_WORKSPACE_ROUTE_ONLY_NO_DATA_DELETION"}
+        dest=self.home/path
+        dest.parent.mkdir(parents=True,exist_ok=True)
+        dest.write_text(json.dumps(receipt))
+        self.routing["migration_authorizations"].append({
+            "family_id":fid,"new_git_workspace":new,
+            "previous_git_workspace":former,"approval_receipt":path})
+
+    def test_approved_first_git_workspace_for_library_only_family_passes(self):
+        fid="family:demo-20"
+        new="Workspaces/family-demo-20"
+        self.add_workdir(fid,new,canonical=True)
+        self.route(20)["canonical_git_workspace"]=new
+        self.route(20)["no_new_git_workspace_created"]=False
+        self.routing["counts"]["canonical_git_workspaces"]=17
+        self.routing["counts"]["library_only_families"]=4
+        self.approve(fid,new,None,"first")
+        self.persist()
+        x=m.inspect(self.home)
+        self.assertEqual(x["counts"]["approved_new_dirs"],1)
+        self.assertEqual(x["counts"]["canonical_git"],17)
+        self.assertIn("APPROVED_CHANGES_CHECKED",x["status"])
+
+    def test_approved_canonical_reassignment_to_existing_legacy_dir_passes(self):
+        fid="family:demo-0"
+        former="Workspaces/family-demo-0"
+        replacement="Workspaces/legacy-demo-0"
+        self.route(0)["canonical_git_workspace"]=replacement
+        self.route(0)["canonical_source_owner_document"]=replacement+"/LATEST.json"
+        self.portfolio["items"][0]["owner_locator"]["path"]=replacement+"/LATEST.json"
+        for w in self.routing["workspaces"]:
+            if w["family_id"]==fid:
+                w["future_accepted_current_pointer_location"]=replacement
+                w["role"]="CANONICAL" if w["git_dir"]==replacement else "COMPATIBILITY_LEGACY"
+        self.approve(fid,replacement,former,"existing-reassign")
+        self.persist()
+        r=m.inspect(self.home)
+        self.assertEqual(r["counts"]["approved_new_dirs"],0)
+        self.assertIn("APPROVED_CHANGES_CHECKED",r["status"])
+
+    def test_existing_legacy_reassignment_without_approval_rejected(self):
+        fid="family:demo-0"
+        former="Workspaces/family-demo-0"
+        replacement="Workspaces/legacy-demo-0"
+        self.route(0)["canonical_git_workspace"]=replacement
+        self.route(0)["canonical_source_owner_document"]=replacement+"/LATEST.json"
+        self.portfolio["items"][0]["owner_locator"]["path"]=replacement+"/LATEST.json"
+        for w in self.routing["workspaces"]:
+            if w["family_id"]==fid:
+                w["future_accepted_current_pointer_location"]=replacement
+                w["role"]="CANONICAL" if w["git_dir"]==replacement else "COMPATIBILITY_LEGACY"
+        self.expect_hold()
 
     def test_no_report_written_into_checkout(self):
         dest=self.home/"output"

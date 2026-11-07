@@ -1,0 +1,82 @@
+{
+  "schema": "lesen-quality-review-checkpoint-r4@1.0.0",
+  "date": "2026-11-07",
+  "owner": "Workspaces/lesen-praesentation",
+  "family": "family:lesen",
+  "status": "R4_V505_RUNTIME_PREENTRY_VALIDATED__CURATED_CURRENT_UNCHANGED__STAGE4_6_7_HOLD",
+  "immutable_current": {
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Lesen/Current/Lesen-Praesentation-B2-C1-v1.3.0-CONTENT-PRODUCTION-DELIVERY.zip",
+    "sha256": "558c165df7603c26b775781f9c9bbd508c456b4b24f68979ebe0edecf3b46565",
+    "library_file_id": "libfile_9b768265ff3c8191aca371baa38551d7",
+    "status": "CURRENT_ACTIVE_UNCHANGED"
+  },
+  "r3_content_parent": {
+    "sha256": "2b7e29acb973d34e878f76df5135be740c0819934b457265a1fd281ca97c2a8e",
+    "library_file_id": "libfile_16bbed759dc081919715af486c87f6b3"
+  },
+  "r4_candidate": {
+    "name": "Lesen-R3-v505-PREENTRY-RUNTIME-CANDIDATE.json",
+    "library_folder": "/Flasch kart/German-Content-Production-Kit/Content/Lesen/Candidates",
+    "library_file_id": "libfile_6e4143b48a388191a26807fd6f2749c9",
+    "sha256": "53b2746c2ed2ee6938773d850ccc8a287f2d81608422a38aba481ef059ebc683",
+    "bytes": 7124419,
+    "post_upload_sha256_readback": "PASS",
+    "entries_hash": "c727a2fbf2096c409c2494e0618dfd6f720e126bc268829af8f0764d4c9747fd",
+    "whole_payload_hash": "ad81e0c20b982e3a1ae417e5cf5e4efefdc434dbd3f757816b1b61971fcb25ae",
+    "status": "VALIDATED_PREENTRY_CANDIDATE_NOT_CURRENT_NOT_FINAL"
+  },
+  "app_current": {
+    "version": "v505-R141 WORDLINKS R3",
+    "sha256": "6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef",
+    "source_validator_js_sha256": "b03f954a9e617d918d42eeddbf0cd4da5a3c1bc3d43d9e57977312dbbde071bc"
+  },
+  "scope": {
+    "changed_content_units": [
+      "LES-PRES-035",
+      "LES-PRES-051",
+      "LES-PRES-059"
+    ],
+    "untouched_compiled_entries_exact": 65,
+    "units": 68,
+    "sections": 478,
+    "questions": 340,
+    "vocabulary_inline": 350,
+    "curated_grammar": 669,
+    "fulltext_grammar_offsets_checked": 4620
+  },
+  "qa": {
+    "original_source_master_to_runtime_mapping": "68/68 SOURCE EXACT",
+    "r3_master_to_runtime_mapping": "68/68 SOURCE EXACT",
+    "native_v505_source_validator": "PASS_0_WARNINGS",
+    "negative_controls": "6/6 REJECTED",
+    "isolated_in_memory_record": "PASS_68_UNITS_340_QUESTIONS",
+    "whole_pack_semantic_stage4": "HOLD",
+    "source_nine_lens_grammar_rebuild": "NOT_PERFORMED",
+    "native_browser_indexeddb_stage6": "NOT_RUN",
+    "release_stage7": "NOT_RELEASED"
+  },
+  "evidence": {
+    "report": "Workspaces/lesen-praesentation/Reports/LESEN-R4-RUNTIME-PREENTRY-REPORT-20261107.md",
+    "proof_library_ids": {
+      "transport": "libfile_9bf3e2207ac481918594e625228a6185",
+      "exact_js": "libfile_ca80e532afac819195fbcebc7ce195e3",
+      "independent": "libfile_c1d3f3203ca08191b84a82f85993c309",
+      "report": "libfile_65c3b94f11dc8191abcf53cd6f7c69e2"
+    },
+    "tools": "Content/Lesen/Tools (source-aware delta builder + independent verifier + exact v505 Node VM harness)"
+  },
+  "blockers": [
+    "55 templated original lessons remain editorial review queue",
+    "Full native nine-lens grammar generator not rerun",
+    "Browser/IndexedDB Stage6 import and preservation/reload absent",
+    "Full trilingual semantic independent Stage4 absent"
+  ],
+  "next_bounded_outcome": "Test candidate in isolated browser/IndexedDB, not user's main profile; then review content batches and rerun scoped linguistic QA before formal release.",
+  "protected": {
+    "no_runtime_code_change": true,
+    "no_library_current_promotion": true,
+    "no_source_change": true,
+    "no_user_srs_fsrs_change": true,
+    "no_user_browser_import": true
+  }
+}

@@ -176,6 +176,20 @@ class BackendCombinationCoverageTests(unittest.TestCase):
         self.assertEqual(scan["combinations"],1)
         self.assertTrue(any(x["code"]=="EXACT_EXAMPLE_CLONE" for x in scan["issues"]))
 
+    def test_eszett_is_not_folded_to_ss_for_exact_backend_duplicate(self):
+        out=self.scan({"kombinationen_v1":{"items":[
+            {"de":"Maße nehmen","fa":"اندازه گرفتن"},
+            {"de":"Masse nehmen","fa":"جرم گرفتن"}]}},examples=[])
+        self.assertEqual(out["combinations"],2)
+        self.assertFalse(any(x["code"]=="EXACT_COMBO_DUPLICATE" for x in out["issues"]))
+
+    def test_eszett_vs_ss_is_not_suppressed_as_backend_display_mirror(self):
+        out=self.scan({"kombinationen_v1":{"items":[{"de":"die Masse bestimmen","fa":"جرم را تعیین کردن"}]}},
+                      visible=["die Maße bestimmen — اندازه‌ها را تعیین کردن"],examples=[])
+        self.assertEqual(out["combinations"],2)
+        self.assertEqual(out["issues"][0]["code"],"BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW")
+        self.assertEqual(out["issues"][0]["severity"],"MEDIUM")
+
     def test_no_forced_combinations_when_backend_empty(self):
         out=self.scan({"kombinationen_v1":{"items":[]},"kombinationen_v336":{"items":[]}},
                       examples=EXAMPLES)

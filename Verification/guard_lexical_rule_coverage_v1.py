@@ -144,6 +144,19 @@ def review_signals(rows):
                 if n not in all_seen:
                     combos.append(c)
                     all_seen.add(n)
+        # Distinct authorized backend and learner-visible projections can differ.
+        # Report that tension for semantic Stage4 review; no automatic rewrite
+        # or unconditional HIGH, because a shorter view may be deliberate.
+        visible_items=sources[0][1]
+        backend_items=[item for _,items in sources[1:] for item in items]
+        if visible_items and backend_items:
+            exact=lambda x:" ".join(unicodedata.normalize("NFC",x).split())
+            a_set={exact(x) for x in visible_items}
+            b_set={exact(x) for x in backend_items}
+            if a_set!=b_set:
+                candidate=sorted(b_set-a_set) or sorted(a_set-b_set)
+                findings.append([row["id"],"BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW",
+                                 candidate[0],"","MEDIUM"])
         ex=[]
         for e in es:
             if not isinstance(e,dict):raise ValueError("UNKNOWN_EXAMPLE_FORMAT")

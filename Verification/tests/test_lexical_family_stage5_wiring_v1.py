@@ -84,10 +84,19 @@ class CanonicalFamilyReleaseTests(unittest.TestCase):
         self.assertIn("family-id",proc.stderr)
         self.assertFalse(output.exists())
     def test_front_wrapper_native_stage5_uses_quality_launcher(self):
-        text=(ROOT/"Tools/build_front_gated_clean_delivery_v1.py").read_text(encoding="utf-8")
+        text=(ROOT/"Tools/build_quality_gated_front_stage5_v1.py").read_text(encoding="utf-8")
         self.assertIn("build_quality_gated_lexical_candidate_v1.py",text)
         self.assertIn("LEXICAL_QUALITY_EVIDENCE_REQUIRED_BEFORE_STAGE5",text)
         self.assertIn("'stage5_acceptance'",text)
         self.assertIn("FRONT_GATE_BLOCKED",text)
+        old=(ROOT/"Tools/build_front_gated_clean_delivery_v1.py").read_text(encoding="utf-8")
+        self.assertNotIn("build_quality_gated_lexical_candidate_v1.py",old)
+        reg=self.registry
+        # The old front builder stays exactly pinned for historical replay.
+        import hashlib
+        raw=(ROOT/"Tools/build_front_gated_clean_delivery_v1.py").read_bytes()
+        git_blob=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+        registry=json.loads((ROOT/"Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json").read_text(encoding="utf-8"))
+        self.assertEqual(git_blob,registry["policy_bindings"]["stage5_front_gated_clean_builder"]["blob_sha"])
 
 if __name__=="__main__":unittest.main()

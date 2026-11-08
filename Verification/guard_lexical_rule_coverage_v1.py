@@ -173,6 +173,12 @@ def review_signals(rows):
                                  candidate[0],"","MEDIUM"])
         ex=[]
         for e in es:
+            # Existing user-accepted native lexical packages may serialize
+            # German examples as strings. Do not rewrite their source TSV.
+            if isinstance(e,str):
+                if not e.strip():raise ValueError("EMPTY_GERMAN_EXAMPLE")
+                ex.append(e)
+                continue
             if not isinstance(e,dict):raise ValueError("UNKNOWN_EXAMPLE_FORMAT")
             if str(e.get("lang","de")).lower().startswith("de"):
                 t=e.get("text",e.get("text_de",e.get("de","")))

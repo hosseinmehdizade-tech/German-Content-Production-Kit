@@ -1,6 +1,15 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.56 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.57 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L04 PHASE2 COMPLETED WITH TARGETED EDITS — NEXT PHASE3 (2026-11-08)
+
+Current L04 owner: B1+ Library `libfile_e1d6e3a7045c81918bf679544a3fa2f0`, SHA256 `a3b9166fa670c14b3c0c40cc381c5b0ae96402b080a63c8a1934e19c18aee792`, 3,422,632 bytes; exact SHA256 Library readback, all 228 internal member hashes and CRC PASS. Existing original 1548-row source map and all 1571 learner-card IDs retained; untouched non-L04 cards byte-equal at data-object level.
+
+**L04 Phase2:** 160 of 160 decision rows; **62 existing cards modified** in content, example-to-meaning routing, or pending-QA metadata; 13 newly structured meaning networks, 36 new sense blocks, 112 sense-example links. One duplicated example in `schätzen` consolidated, both Persian paraphrases retained. L04 examples 365 → 364, 31 missing example status entries explicitly marked PENDING (one original missing entry removed with duplicate). 32 legacy L04 HOLDs intact; G2 scoped attestations remain 376 globally and 106 in L04; five exact duplicate-example groups remain elsewhere. No app import or full-card language approval claimed. **NONIMPORT**.
+
+Next: L04 Phase3 case-level final QA and real app render/import gate where available; unresolved items are marked HOLD / RELEASE_BLOCKED, not moved to another 10-card review cycle. No fictional external person/independent human review is demanded. Persisted GitHub receipt: `Lessons/L04/PHASE2-160-CARD-EDITORIAL-RECEIPT-20261108.json`; verified curated owner is in Library.
+
 
 ## LIVE MILESTONE L04 — Phase 1/3 COMPLETE; next L04 Phase 2/3 (2026-11-08)
 

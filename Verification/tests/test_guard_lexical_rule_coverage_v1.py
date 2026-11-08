@@ -186,6 +186,15 @@ class RightSideCrossSectionSafetyTests(unittest.TestCase):
                   "reason":"Distinct contextual usage independently checked in the approved Stage4 review"}
         self.assertEqual(review_high_findings(scan,high,self.evidence(scan,high,[decision])),[])
 
+    def test_kombination_repeated_as_verwandt_cannot_pass_unreviewed(self):
+        high=self.taxonomy([
+            {"title":"Kombinationen","items":["alte Möbel versteigern — اثاثیه را به مزایده گذاشتن"]},
+            {"title":"Verwandte Wörter","items":["alte Möbel versteigern — اثاثیه را به مزایده گذاشتن"]}])
+        self.assertEqual([x["code"] for x in high],["RELATED_EXACT_CROSS_SECTION_DUPLICATE"])
+        scan={"issues":[]}
+        blockers=review_high_findings(scan,high,self.evidence(scan,high))
+        self.assertTrue(any(x.startswith("HIGH_UNRESOLVED:") for x in blockers))
+
     def test_opaque_internal_id_cannot_be_excused_by_keep(self):
         high=self.taxonomy([{"title":"Verwandte Wörter","items":["ma1m-lu-0001"]}])
         self.assertEqual(high[0]["code"],"OPAQUE_TARGET_ID_IN_RELATED")

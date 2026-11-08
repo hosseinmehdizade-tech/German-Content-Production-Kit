@@ -143,7 +143,7 @@ def review_high_findings(cross_tile, taxonomy_high, evidence):
     supplied=evidence.get("flagged_card_ids")
     if not isinstance(supplied,list) or any(not isinstance(x,str) for x in supplied) or \
         len(supplied)!=len(set(supplied)) or set(supplied)!=flagged:
-        blockers.append("RIGHT_SIDE_REVIEW_SCOPE_MISSING_CARDS")
+        blockers.append("CROSS_TILE_SCOPE_MISSING_CARDS")
     if evidence.get("risk_based_independent_review") is not True:
         blockers.append("NO_INDEPENDENT_CROSS_TILE_REVIEW")
     raw=evidence.get("high_decisions",[])

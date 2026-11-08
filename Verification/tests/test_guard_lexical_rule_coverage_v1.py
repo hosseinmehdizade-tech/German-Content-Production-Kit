@@ -129,7 +129,10 @@ class BackendCombinationCoverageTests(unittest.TestCase):
                       visible=["etwas an den Meistbietenden versteigern — حراج‌کردن"],
                       examples=EXAMPLES)
         self.assertEqual(out["combinations"],2)
-        self.assertEqual(out["issues"][0]["code"],"EXACT_EXAMPLE_CLONE")
+        self.assertIn("BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW",
+                      {x["code"] for x in out["issues"]})
+        self.assertIn("EXACT_EXAMPLE_CLONE",
+                      {x["code"] for x in out["issues"]})
 
     def test_backend_duplicate_within_one_source_is_high(self):
         term="etwas an den Meistbietenden versteigern"

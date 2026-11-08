@@ -95,7 +95,8 @@ class CanonicalFamilyReleaseTests(unittest.TestCase):
         # The old front builder stays exactly pinned for historical replay.
         import hashlib
         raw=(ROOT/"Tools/build_front_gated_clean_delivery_v1.py").read_bytes()
-        git_blob=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+        normalized=raw.replace(b"\r\n",b"\n")
+        git_blob=hashlib.sha1(b"blob "+str(len(normalized)).encode()+b"\0"+normalized).hexdigest()
         registry=json.loads((ROOT/"Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json").read_text(encoding="utf-8"))
         self.assertEqual(git_blob,registry["policy_bindings"]["stage5_front_gated_clean_builder"]["blob_sha"])
 

@@ -81,6 +81,22 @@ class SemanticSignalTests(unittest.TestCase):
         self.assertEqual(out["examples"],2)
         self.assertEqual(out["issues"],[])
 
+    def test_lean_advisory_scans_native_string_examples_not_zero(self):
+        from audit_kombinationen_lean_v1_1 import german_examples,analyze_rows
+        ex=["Es hängt von dir ab, was wir machen.",
+            "Das Ergebnis hängt von der Vorbereitung ab."]
+        rows=native_rows(data(combos=["hängt von dir ab — به تو بستگی دارد"],examples=ex))
+        self.assertEqual(list(german_examples(rows[0])),ex)
+        diag=analyze_rows(rows,"real-v18-shape.tsv","0"*64)
+        self.assertEqual(diag["cards"],1)
+        self.assertTrue(any(x["rule"]=="LITERAL_EXAMPLE_SUBSPAN" for x in diag["flags"]))
+
+    def test_lean_advisory_rejects_invalid_native_example_type(self):
+        from audit_kombinationen_lean_v1_1 import german_examples
+        rows=native_rows(data(combos=[],examples=[123]))
+        with self.assertRaisesRegex(ValueError,"UNKNOWN_EXAMPLE_FORMAT"):
+            list(german_examples(rows[0]))
+
     def test_native_empty_string_examples_fail_closed(self):
         with self.assertRaisesRegex(ValueError,"EMPTY_GERMAN_EXAMPLE"):
             review_signals(native_rows(data(combos=[],examples=[" "])))

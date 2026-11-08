@@ -1,0 +1,67 @@
+{
+  "schema": "aspekte-b2-l03-single-card-duplicate-fix@1.0.0",
+  "date": "2026-11-08",
+  "project": "Aspekte B2",
+  "phase": "PROJECT_RELEASE_QA_REMEDIATION",
+  "source_policy": "LATEST_OWNER_CURATED_L03_CSV_ONLY__NO_PUBLISHER_REINGEST",
+  "input": {
+    "filename": "L03-PASS2-186-CURATED-REVIEW-NONIMPORT.csv",
+    "sha256": "c0cfeffa7b1b678336c42b3f8b226d2e2410a643455bf43d10bea71c4bcbd576",
+    "rows": 186
+  },
+  "output": {
+    "filename": "L03-PASS2-186-CURATED-REVIEW-NONIMPORT.csv",
+    "sha256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
+    "rows": 186,
+    "size_bytes": 207498
+  },
+  "mutation": {
+    "unit_id": "ab2-l03-u-1865",
+    "source_ordinal": "1865",
+    "field": "collocations_de",
+    "before": "Arbeitslose unterstützen; die Zahl der Arbeitslosen; die Zahl der Arbeitslosen",
+    "after": "Arbeitslose unterstützen; die Zahl der Arbeitslosen",
+    "removed_repeated_phrase": "die Zahl der Arbeitslosen",
+    "occurrences_before": 2,
+    "occurrences_after": 1,
+    "unchanged_cards": 185,
+    "changed_cards": 1,
+    "changed_fields": 1
+  },
+  "byte_safety": {
+    "single_exact_raw_utf8_replacement": true,
+    "full_old_bytes_recovered_by_reverse_patch": true,
+    "all_other_columns_and_rows_byte_preserved": true,
+    "all_source_ids_preserved": true,
+    "release_flags_unchanged_false": true,
+    "de_fa_examples_preserved": true
+  },
+  "quality_gate": {
+    "old_gate_zero_duplicates_crash_reproduced": true,
+    "fix": "explicit_empty_csv_headers_for_duplicate_flags",
+    "script_baseline": "1.1",
+    "script_updated": "1.2",
+    "all_ten_source_files_tested": true,
+    "source_rows_covered": 1726,
+    "card_units": 1719,
+    "example_pairs": 3438,
+    "collocation_proposals_before": 4575,
+    "collocation_proposals_after": 4574,
+    "remaining_exact_internal_duplicates": 0,
+    "duplicate_gate": "PASS_NO_INTERNAL_DUPLICATES",
+    "literal_overlap_policy": "ADVISORY_ONLY",
+    "release_check_exit_code": 2
+  },
+  "release": {
+    "status": "BLOCKED_NONIMPORT",
+    "independent_de_fa_signoff": false,
+    "live_accepted_card_srs_overlap_verified": false,
+    "native_import_rollback_tested": false,
+    "approved_cards": 0,
+    "importable_cards": 0,
+    "app_imports": 0,
+    "srs_mutations": 0
+  },
+  "next": "L01 collocations schema enrichment from owner-current edited cards without inventing fill, then independent QA and native SRS checks",
+  "script_sha256": "80a4d17c5403c90b2106f0b9e74759c2065b38fa117b9d6096986c8407e68890"
+}

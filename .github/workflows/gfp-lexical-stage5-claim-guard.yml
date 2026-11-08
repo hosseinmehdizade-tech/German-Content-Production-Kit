@@ -4,6 +4,10 @@ on:
     paths:
       - 'Workspaces/**'
       - 'Verification/check_new_lexical_stage5_claims_v1.py'
+      - 'Verification/check_new_lexical_producer_bypass_v1.py'
+      - 'Verification/tests/test_new_lexical_producer_bypass_v1.py'
+      - 'Tools/**'
+      - '.github/workflows/**'
       - 'Verification/tests/test_new_lexical_stage5_claims_v1.py'
       - 'Tools/build_quality_gated_lexical_candidate_v1.py'
       - '.github/workflows/gfp-lexical-stage5-claim-guard.yml'
@@ -12,6 +16,10 @@ on:
     paths:
       - 'Workspaces/**'
       - 'Verification/check_new_lexical_stage5_claims_v1.py'
+      - 'Verification/check_new_lexical_producer_bypass_v1.py'
+      - 'Verification/tests/test_new_lexical_producer_bypass_v1.py'
+      - 'Tools/**'
+      - '.github/workflows/**'
       - 'Verification/tests/test_new_lexical_stage5_claims_v1.py'
       - 'Tools/build_quality_gated_lexical_candidate_v1.py'
       - '.github/workflows/gfp-lexical-stage5-claim-guard.yml'
@@ -32,7 +40,9 @@ jobs:
           python-version: '3.12'
       - name: New Stage5 claim positive and adversarial tests
         run: python -B -m unittest discover -s Verification/tests -p test_new_lexical_stage5_claims_v1.py -v
-      - name: Verify newly changed lexical acceptance claims are backed by exact quality receipt
+      - name: Reject new executable legacy lexical producer bypasses (negative tests)
+        run: python -B -m unittest discover -s Verification/tests -p test_new_lexical_producer_bypass_v1.py -v
+      - name: Verify newly changed lexical acceptance claims and new producer routes
         if: github.event_name != 'workflow_dispatch'
         shell: bash
         env:
@@ -50,5 +60,6 @@ jobs:
             fi
           fi
           python -B Verification/check_new_lexical_stage5_claims_v1.py --base "$BASE" --head HEAD
+          python -B Verification/check_new_lexical_producer_bypass_v1.py --base "$BASE" --head HEAD
       - name: Scope
-        run: echo "This guards NEW repository Stage5 claims, not historical replay, GitHub branch protection, Library, native Stage6 or Stage7."
+        run: echo "This guards NEW Stage5 claims and NEW producer entrypoints, not historical replay, branch protection, Library or app Stage6/7."

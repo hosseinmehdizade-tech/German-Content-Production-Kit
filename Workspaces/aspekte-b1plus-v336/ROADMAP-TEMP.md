@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.38 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.39 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE CONTROL-PLANE OVERRIDE — 2026-11-07 (governance-only; no card/QA progress)
 
@@ -373,3 +373,12 @@
 - Neues Paket in Library `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW12-8-PHRASE-CLASSIFICATIONS-5-CARDS-NONIMPORT-20261108.zip`, ID `libfile_032f228f57108191bce588a157db7253`, SHA256 `a3c53ef3446b519b606fe2caeeab26b8669831dd5cf02c0f7bd55ba5d883526f`, 850.087 bytes, 103 ZIP-Mitglieder/102 Manifest-Prüfsummen; exakter Library-Byte-Readback, CRC, alle Hashes PASS. GitHub-Metadaten: `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW12-8-PHRASES-5-CARDS-20261108.json`.
 - **Offener wichtiger Render-Gate:** `Feste_Wendungen_DE_FA` und `Satzmuster_DE_FA` müssen in G5 tatsächlich im front/back angezeigt werden, sonst keine Release-Freigabe.
 - **G2: 305 verifiziert / 1.266 ohne unabhängige Attestierung; G4: 0 komplette Kartenfreigaben; 340 HOLD gesperrt; kein importierbares TSV.** Nächste konkrete Arbeit: G4 weitere Sinn-/Beziehungschecks auf echten Karten, G2 evidenzbasierte Formen, G5 Feldprojektion testen. 
+
+## G4 Review13 — 2026-11-08 · G5 Front/Back-Projektionspilot (NONIMPORT)
+
+- Zuletzt als Quelleninhalt nur die aus Library byte-genau verifizierte Review12 ZIP benutzt (Parent-SHA `a3c53ef3446b519b606fe2caeeab26b8669831dd5cf02c0f7bd55ba5d883526f`). Die darin enthaltene **1.571-Karten-JSONL ist byte-identisch erhalten geblieben**, sämtliche 1.548 ursprünglichen Quellzeilen wurden durch Source-Map und Linked-Ordinal-Kette abgedeckt; keine Karte oder bestehende Übersetzung verändert.
+- Neuer **wirklich ausgeführter** QA-Projektionscode im neuen Library-ZIP: `Tools/qa_front_back_projection_v1.py`; erstellt HTML für front/back aller 1.571 Kandidaten, ein vollständig maschinenlesbares QA-JSONL und eine lesbare Vorschau der fünf Review12-Karten. **3.442 DE–FA-Beispielpaare, 197 Sinnblöcke, 366 Kombinationen, vier Feste Wendungen und drei Satzmuster** sind ohne Inhaltsverlust in der **Testprojektion** nachweisbar. G2-Formen ausschließlich front; keine redundante Formen-Rückseite.
+- Negative Regressionstests nach absichtlicher Weglassung jeweils einer neuen Kategorie **schlagen an** (beide verdeckten Feldverluste werden erkannt); HTML-Escaping-Simulation PASSED. `Tools/qa_combinationen_strict_v2.py` erneut PASS für 366 Paarungen, null direkte Beispiele-Kopien und null Satzformen in Kombinationen. QA-Fehler = **0**. **App-Importer und App-Rendering wurden nicht verbunden oder live getestet**; G5 bleibt PENDING.
+- Besitzerpaket (Archiv mit historischem Quellinhalt + neuen QA-Dateien): `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW13-G5-PROJECTION-PILOT-1571-CARDS-7-NEW-ITEMS-NONIMPORT-20261108.zip`. Library `libfile_9436ac2d09508191962189c801f851ec`, SHA256 `6be2f08a9ee83e51d43500cf81b89e4b7347a1ed15625b91332b82b87bd2fd8d`, 1.229.478 Bytes, 111 ZIP-Mitglieder/110 SHA-Einträge, SHA/ZIP-CRC/Library-Readback PASS. GitHub receipt `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW13-G5-PROJECTION-PILOT-20261108.json`.
+- Gesamtzustand bleibt **G1 DONE; G2 ACTIVE (305 bestätigt, 1.266 unbestätigt); G3/G4 ACTIVE; G5 PENDING, G6 BLOCKED**. **0 endgültig freigegebene Karten, 340 HOLDs**. G4 im Review13: null neue Textänderungen; Fortschritt ausschließlich bewiesene Render-/QA-Projektion.
+- **Nächste Arbeit**: Die neuen Sections im **echten Flashcards-Importer/Renderer** mappen und mit App-Runtime prüfen, oder bis dahin G4 echte unabhängige DE–FA-/Sinnprüfungen für konkrete Karten sowie G2-Form-Validierung fortsetzen. Testprojektion nie als Release ausgeben.

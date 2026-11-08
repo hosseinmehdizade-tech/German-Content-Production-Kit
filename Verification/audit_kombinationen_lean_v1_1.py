@@ -37,6 +37,19 @@ def extract_rows(data):
         ids.add(cid)
         if None in row:raise ValueError('INVALID_TSV_FIELD_COUNT')
     return rows
+def split_lexical_bilingual_surface(item):
+    """Keep German internal en dashes; split only real DE/FA display delimiters.
+
+    An en dash inside a German pattern (e.g. 'wohin? – wo?') is not a
+    translation separator. A spaced em dash remains the legacy fallback.
+    """
+    for match in re.finditer(r"\s+[—–]\s+",item):
+        following=item[match.end():].lstrip()
+        if following and re.match(r"[\u0600-\u06ff\u0750-\u077f]",following):
+            return item[:match.start()].strip()
+    return item.split(" — ",1)[0].strip()
+
+
 def combos(row):
     sections=decode_json(row['details'],'details')
     if not isinstance(sections,list):raise ValueError('INVALID_DETAILS_SECTIONS')
@@ -47,7 +60,7 @@ def combos(row):
         if not isinstance(items,list):raise ValueError('INVALID_COMBINATION_LIST')
         for item in items:
             if isinstance(item,dict):de=item.get('de') or item.get('text') or ''
-            elif isinstance(item,str):de=re.split(r'\s+[—–]\s+',item,maxsplit=1)[0]
+            elif isinstance(item,str):de=split_lexical_bilingual_surface(item)
             else:raise ValueError('INVALID_COMBINATION_ITEM')
             if str(de).strip():yield str(de).strip()
 def german_examples(row):

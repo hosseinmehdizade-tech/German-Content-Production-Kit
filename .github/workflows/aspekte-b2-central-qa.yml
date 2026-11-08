@@ -5,6 +5,9 @@ on:
     paths:
       - 'Workspaces/aspekte-b2-v336/Current/**'
       - 'Workspaces/aspekte-b2-v336/QA/**'
+      - 'Verification/check_no_external_human_qa_gate_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'LINGUISTIC-QA-AUTHORITY-POLICY.json'
       - '.github/workflows/aspekte-b2-central-qa.yml'
     tags:
       - 'aspekte-b2-release-*'
@@ -12,6 +15,9 @@ on:
     paths:
       - 'Workspaces/aspekte-b2-v336/Current/**'
       - 'Workspaces/aspekte-b2-v336/QA/**'
+      - 'Verification/check_no_external_human_qa_gate_v1.py'
+      - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
+      - 'LINGUISTIC-QA-AUTHORITY-POLICY.json'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +30,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Enforce MEM-031 AI+user QA policy without external reviewer
+        run: python Verification/check_no_external_human_qa_gate_v1.py
       - name: Run deterministic central QA audit
         run: |
           python Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py \

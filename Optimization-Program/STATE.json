@@ -3823,15 +3823,18 @@
       "cards": 310,
       "visible_kombinationen": 2702,
       "backend_kombinationen_v1": 2702,
-      "exact_surface_matching_cards": 308,
-      "medium_divergence_card_ids": [
-        "ma1m-lu-2694",
-        "ma1m-lu-2733"
-      ],
+      "exact_surface_matching_cards": 310,
+      "medium_divergence_card_ids": [],
       "verified_library_zip_bytes_and_crc": "PASS",
       "user_cards_changed": 0,
       "app_runtime_changed": false,
-      "original_CURRENTS_unchanged": true
+      "original_CURRENTS_unchanged": true,
+      "false_positive_delimiter_findings_rescinded": [
+        "ma1m-lu-2694",
+        "ma1m-lu-2733"
+      ],
+      "correction_receipt": "Workspaces/menschen-a1-verben-wortfamilie-v336/QA/R16-STRUCTURED-KOMBINATIONEN-PARITY-CORRECTED-20261108.json",
+      "correction_reason": "German internal spaced en dash was incorrectly split as bilingual separator; all 2702 display and structured items align after the actual spaced em dash separator"
     },
     "limitations": [
       "No independent R16 Stage4/Stage5 acceptance",
@@ -3840,6 +3843,28 @@
       "No native app Stage6/7 promotion and no learner SRS/FSRS change",
       "Main branch protection still not configured"
     ],
-    "next": "Review two R16 presentation/grammar role differences with independent sense QA, then register and test one real mutable source-owner producer using actual accepted curated CURRENT, exact Stage4, same-card review, Stage5 quality launcher, authenticated release byte readback. Apply to additional families only after source-owner attestation; no retroactive edits to accepted cards."
+    "next": "R16 source has 310/310 exact German-surface parity; no learner card correction needed for false flags. Follow through on independent Stage4 grammar/role review only if a successor is authorized, then integrate source-owner verified current into Stage5 quality gate. Global producer ADOPTION remains pending."
+  },
+  "right_side_delimiter_false_positive_correction_20261108": {
+    "status": "MERGED_PROSPECTIVE_QA_FIX__R16_2_FALSE_POSITIVES_RETRACTED__CURRENT_CONTENT_UNCHANGED",
+    "date": "2026-11-08",
+    "merged_pull_request": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/154",
+    "merged_commit": "adfdc3793eb5a80e0a208f5b6ac8c19b4f0465db",
+    "corrected_report": "Workspaces/menschen-a1-verben-wortfamilie-v336/QA/R16-STRUCTURED-KOMBINATIONEN-PARITY-CORRECTED-20261108.json",
+    "exact_R16_source_sha256": "5fa6b59f7d81c65be722a9852598cd930d0b83fb38285e9555bf9bc5426046cf",
+    "exact_R16_tsv_sha256": "1b32d52b50e41127b53c98ced9178b2b923203114f52cff90bd6f5e9664c457d",
+    "cards": 310,
+    "displayed_german_combinations": 2702,
+    "structured_german_combinations": 2702,
+    "exact_surface_matching_cards": 310,
+    "remaining_surface_divergence": 0,
+    "retracted_previous_two_ids": [
+      "ma1m-lu-2694",
+      "ma1m-lu-2733"
+    ],
+    "impact": "QA scanner + advisory scanner fixed; source/original cards/R10 accepted/app/SRS/FSRS untouched; no false Stage4/Stage5/adoption claim",
+    "qa": "GFP Lexical Mandatory Release Policy Coverage Ubuntu+Windows, Lexical New Stage5 Claim Guard, Canonical Workspace Guard Ubuntu+Windows, Policy Adoption Truth and Global Policy Sync all green",
+    "ci_url": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/42517992935",
+    "next": "Pilot actual owner-authorized independent Stage4 candidate on latest curated CURRENT and register native producer adoption only with verified source owner and Library/Git byte readback; handle taxonomy question Rektion versus Kombinationen within normal Stage4."
   }
 }

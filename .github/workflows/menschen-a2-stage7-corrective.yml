@@ -1,3 +1,6 @@
+# Archived v354 workflow: source retained for reproducibility, execution disabled.
+# The current A2 owner is Workspaces/menschen-a2-24-lessons-v336.
+# To reactivate legacy release requires a dedicated, reviewed PR and source-exact Stage4+5+6+7.
 name: Menschen A2 Corrective Stage 7 Release
 
 on:
@@ -8,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: menschen-a2-corrective-stage7
@@ -16,6 +19,7 @@ concurrency:
 
 jobs:
   release-and-verify:
+    if: false  # Immutable historical v354 release; do not produce or push to main
     name: Package + Independent Post-Package Verification
     runs-on: ubuntu-latest
     timeout-minutes: 20

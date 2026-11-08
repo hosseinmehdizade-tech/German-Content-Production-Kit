@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "project_id": "aspekte-b1plus",
   "definition": "LOCKED_v1.0",
-  "current_stage": "L06_PHASE1_177_CARD_AUDIT_DONE_PHASE2_NEXT_NONIMPORT",
+  "current_stage": "L06_PHASE2_WHOLE_177_CARD_EDITED_45_TARGETED_CHANGES_PHASE3_NEXT_NONIMPORT",
   "baseline": {
     "name": "Aspekte-B1plus-STAGE4-FINAL-QA-GATE2D-PART05-250-P2-INDIVIDUAL-REVIEWS-NONIMPORT-20261106.zip",
     "sha256": "61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc",
@@ -121,7 +121,7 @@
     ],
     "raw_csv_sha_open": true
   },
-  "next_step": "L06 Phase2: one whole-lesson editorial pass on all 177 cards; first address 33 HOLDs, four cards without examples, two repeated DE example groups, 36 unrouted example/sense links, 16 statusless examples and 69 morphology evidence gaps; preserve source map and test actual saved primary JSONL.",
+  "next_step": "L06 Phase3 (one whole lesson): case-level quality decisions on 177 cards; retain 33 unresolved HOLDs, 69 morphology evidence gaps and 3 remaining corpus example duplicates; run real app importer/render gate if available; otherwise RELEASE_BLOCKED; no 10-card Reviews.",
   "stage2_L01_second_bilingual_context_pass": 71,
   "stage2_L01_high_priority_qa_proposals": 37,
   "stage3_L01_new_editorial_example_pairs": 10,
@@ -3158,7 +3158,7 @@
     ],
     "no_microbatch_review_milestones": true,
     "source_authority": "LATEST_SHA_VERIFIED_CURATED_LIBRARY_OWNER",
-    "next_production_lesson": "L06_PHASE2"
+    "next_production_lesson": "L06_PHASE3"
   },
   "latest_L05_phase2_owner": {
     "status": "L05_PHASE2_OF_3_COMPLETE_ALL_155_EDITORIAL_DISPOSITIONS_30_ACTUAL_CONTENT_EDITS_56_SENSE_BLOCKS_NONIMPORT",
@@ -3981,10 +3981,10 @@
   },
   "current_production_lesson": "L06",
   "lesson06_three_phase_workflow": {
-    "phase": 1,
+    "phase": 2,
     "phases_total": 3,
     "lesson": "L06",
-    "status": "PHASE1_WHOLE_LESSON_177_CARD_AUDIT_DONE_PHASE2_NEXT_NONIMPORT",
+    "status": "PHASE2_WHOLE_LESSON_EDITORIAL_COMPLETED_PHASE3_NEXT_NONIMPORT",
     "date": "2026-11-09",
     "parent_lesson": "L04_PHASE3",
     "source_owner_sha256": "31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4",
@@ -4046,8 +4046,24 @@
     "github_plan": "Workspaces/aspekte-b1plus-v336/Lessons/L06/THREE-PHASE-PLAN.md",
     "github_replayable_script": "Workspaces/aspekte-b1plus-v336/Tools/qa_L06_phase1_v1.py",
     "github_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE1-PERSISTENCE-RECEIPT-20261109.json",
-    "next": "PHASE2_ALL_177_EXISTING_CARDS_EDITORIAL_NO_MICROBATCH",
-    "import_ready": false
+    "next": "L06_PHASE3_STRICT_CASE_LEVEL_LANGUAGE_AND_APP_RUNTIME_GATE",
+    "import_ready": false,
+    "phase2_status": "ALL_177_DECISION_METADATA_45_TARGETED_CARD_DATA_OR_QA_CHANGES_NOT_FULL_BILINGUAL_APPROVAL",
+    "phase2_library_owner_id": "libfile_3832285495208191a078ee53fc37feb7",
+    "phase2_library_owner_sha256": "bba74617aae6abfb849c28a03b2f279ed75171075c9717c2e6f3ad4c2d9f7d8f",
+    "phase2_lesson_examples_after": 378,
+    "phase2_new_examples": 10,
+    "phase2_duplicate_groups_removed": 2,
+    "phase2_new_sense_networks": 19,
+    "phase2_new_sense_blocks": 42,
+    "phase2_new_sense_routes": 89,
+    "phase2_new_bilingual_collocations": 57,
+    "phase2_statusless_examples_remaining": 0,
+    "phase2_existing_HOLD_markers_retained": 33,
+    "phase2_missing_form_attestations": 69,
+    "phase2_language_release_QA": "PENDING_FULL_CARD_CONTEXT_QA",
+    "real_app_import_render_tested": false,
+    "all_cards_release_blocked": true
   },
   "lesson06_phase1_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE1-PERSISTENCE-RECEIPT-20261109.json",
   "latest_L06_phase1_audit_bundle": {
@@ -4057,5 +4073,39 @@
     "kind": "AUDIT_ONLY_DOES_NOT_REPLACE_LEARNER_DATA_OWNER",
     "verification": "EXACT_BYTE_READBACK_SHA256_ALL_7_MANIFESTS_ZIP_CRC_PASS"
   },
-  "next_action": "L06_PHASE2_WHOLE_LESSON_EDITORIAL_ALL_177_CARDS_FROM_VERIFIED_L04_PHASE3_OWNER_NO_TEN_WORD_REVIEWS"
+  "next_action": "L06_PHASE3_WHOLE_177_CARD_STRICT_G2_G4_HOLD_QA_G5_REAL_APP_IMPORT_TEST_OR_EXPLICIT_RELEASE_BLOCKED",
+  "latest_L06_phase2_owner": {
+    "status": "L06_PHASE2_WHOLE_177_CARD_EDITORIAL_45_TARGETED_DATA_OR_QA_CHANGES_NONIMPORT",
+    "library_file_id": "libfile_3832285495208191a078ee53fc37feb7",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-L06-PHASE2-177-CARDS-CURATED-CORRECTED-NONIMPORT-20261109.zip",
+    "sha256": "bba74617aae6abfb849c28a03b2f279ed75171075c9717c2e6f3ad4c2d9f7d8f",
+    "bytes": 3605537,
+    "zip_members": 241,
+    "verified_manifest_entries": 240,
+    "source_parent_sha256": "31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4",
+    "verification": "EXACT_LIBRARY_BYTE_READBACK_SHA256_ZIP_CRC_AND_240_MEMBER_HASHES_PASS",
+    "old_primary_main_sha256": "8271f00d2ae686c835e1b489cf1385b82705a7290fd26781f7f7017932a0bed1",
+    "new_primary_main_sha256": "3766d3bbd7e85809f79719db758857e2deac2a5363982b863d878086a44cd059",
+    "saved_main_card_objects_changed": 177,
+    "targeted_content_or_QA_status_cards_changed_before_disposition_metadata": 45,
+    "lesson_examples": 378,
+    "new_example_pairs": 10,
+    "duplicate_groups_removed": 2,
+    "new_sense_network_cards": 19,
+    "new_sense_blocks": 42,
+    "new_example_to_sense_links": 89,
+    "updated_statusless_to_PENDING": 14,
+    "global_combinationen_count": 722,
+    "global_duplicate_example_groups_remaining": 3,
+    "original_1548_source_rows_and_1571_card_ids_unchanged": true,
+    "non_L06_cards_unchanged": true,
+    "inherited_L06_HOLDs": 33,
+    "L06_form_evidence_gaps": 69,
+    "imported_in_real_app": false,
+    "formal_card_release_approved": 0,
+    "import_ready": false
+  },
+  "lesson06_phase2_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-PERSISTENCE-RECEIPT-20261109.json",
+  "latest_L06_phase2_git_report": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-WHOLE-177-CARD-REPORT-20261109.json",
+  "latest_L06_phase2_before_after": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-CONTENT-BEFORE-AFTER.json"
 }

@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.36 · **Stand:** 2026-11-07 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.37 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE CONTROL-PLANE OVERRIDE — 2026-11-07 (governance-only; no card/QA progress)
 
@@ -355,3 +355,11 @@
 - **G2 فقط چهار مورد مستند:** Duden صورت و محدودیت جمع `der Rat`، `der Anteil`، `die Eile`، `tierisch` را تأیید می‌کند. چهار front روشن‌تر شد؛ تأییدِ صورت مستقل **۳۰۱→۳۰۵**، فاقد تأیید **۱۲۷۰→۱۲۶۶**، مجموع تغییرات front قبلی **۷۳→۷۷**. سایر نشانگرها دست‌نخورده‌اند.
 - **آزمون سلامت و مالک:** `۱۵۷۱` شناسه و `۱۵۴۸` ردیف منبع، همهٔ مثال‌های قبلی و ریشهٔ CSV محفوظ؛ ۳۱۹ کارت متمایز قبلاً ویرایش‌شده، بدون افزایش شمارشی کاذب. ۳۴۰ HOLD مسدود، هیچ TSV import. ZIP در `Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW10-7-SENSE-RICH-CARDS-8-NEW-SENSES-4-G2-FORMS-NONIMPORT-20261107.zip`، Library `libfile_4e8080bd6adc8191884eda009adb1073`، SHA256 `31259a6c0013d700085ccab526e469829712a0b4a9eb227131ef05e29e96a9d4`؛ ۸۳۶۰۴۱ بایت، ۹۳ عضو و ۹۲ هش، CRC و Library byte readback PASS. GitHub report: `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW10-7-CARDS-8-SENSES-7-EXAMPLES-4-G2-FORMS-20261107.json`.
 - **گام بعد:** بازبینی مستقل هفت مثال تازه و ادامهٔ G4 در روابط معنی‌محور دیگر؛ تأیید مستند صرف برای ۱۲۶۶ front باقیمانده؛ G5/G6 هنوز مسدود.
+
+## G4 Review11 — 2026-11-08 · Scoped DE–FA QA + global Noncopy-Gate (NONIMPORT)
+
+- از آخرین بستهٔ معتبر Review10 با SHA256 `31259a6c0013d700085ccab526e469829712a0b4a9eb227131ef05e29e96a9d4` ادامه داده شد؛ **۷ مثال تازه DE–FA** به‌صورت موردی از نظر دستور، معنی، کاربرد طبیعی و ترجمهٔ فارسی بررسی و وضعیتِ همان مثال‌ها در فایل JSONL واقعی تغییر کرد: ۷ مورد `G4R11_SCOPED_DE_FA_QA_PASS_FULL_CARD_SIGNOFF_PENDING`. بدون ادعای تأیید کامل کارت.
+- **آزمون بازاستفاده‌پذیر عدم کپی:** در تمام **۱٬۵۷۱** واحد موقت، **۳۷۳ ترکیب** از **۱۴۸ کارت دارای Wortnetz** بررسی شد: کپی دقیق از مثال‌ها **۰**؛ حضور ترکیب کامل درون جملهٔ مثال **۰**. **۸ عبارت جمله‌مانند** در ۵ ردیف (۱۸۵، ۲۹۵، ۴۵۶، ۷۲۲، ۱۰۹۶) برای تصمیم‌گیری انسانی ثبت شدند؛ همه لزوماً خطا نیستند (ممکن است عبارت ثابت باشند). مسیر کد: `Tools/qa_combinationen_nocopy_v1.py`. این gate باید در تولیدهای بعدی اجباری باشد، نه صرفاً توصیه.
+- مالک جدید: `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW11-7-EXAMPLES-SCOPED-QA-NONCOPY-GATE-20261108-NONIMPORT.zip`، Library ID `libfile_e798bd9b2788819180934268c5833536`، SHA256 `997aad16b317e505d8ca7fd2e4bcbd08dda5f5d358f409e3f7393f668bed6bbb`، **۸۴۸٬۳۹۰ بایت، ۹۸ عضو، ۹۷ هش داخلی**؛ بازخوانی بایتی Library و CRC پاس شد. گزارش GitHub: `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW11-7-EXAMPLES-NONCOPY-20261108.json`.
+- **ثابت مانده:** ۱٬۵۴۸ ردیف منبع؛ ۱٬۵۷۱ کاندید؛ ۳۱۹ کارت دارای اصلاح محتواییِ قبلی، ۱۴۸ شبکه و ۱۹۷ بلوک معنایی؛ G2 = ۳۰۵ تأیید و ۱٬۲۶۶ مورد باز؛ **۰ کارت با تأیید نهایی، ۳۴۰ HOLD مسدود، بدون import TSV**.
+- **گام بعد:** ۸ عبارت جمله‌مانند را یکی‌یکی بررسی و ثابت/اصلاح کن؛ سپس QA بقیه کارت‌ها و مدارک صرف را ادامه بده. در این نوبت «تغییر معنایی جدید» = صفر، «تأیید محدود مثال» = ۷.

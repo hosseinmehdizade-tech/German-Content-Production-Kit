@@ -49,6 +49,8 @@ def main():
                 "status":"PASS_STAGE5_CANDIDATE_WITH_EXACT_SOURCE_STAGE4_AND_RULE_COVERAGE",
                 "quality_gate":quality,"family_authority":family,
                 "governed_format_build":output,
+                "exact_stage4_receipt_sha256":sha256(a.stage4_receipt.read_bytes()),
+                "exact_cross_tile_review_sha256":sha256(a.cross_tile_review.read_bytes()),
                 "stage6":"NOT_RUN","stage7":"NOT_FINAL",
                 "source_and_srs_untouched":True}
         with a.policy_report.open("x",encoding="utf-8") as f:

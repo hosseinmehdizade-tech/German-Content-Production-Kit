@@ -1,0 +1,138 @@
+{
+  "schema": "gcpk-b1-verben-rightside-audit-checkpoint@1.0.0",
+  "date": "2026-11-08",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "status": "READONLY_ALL_395_STRUCTURAL_AUDIT_PASS__TARGETED_ENRICHMENT_PROPOSALS_OPEN__NO_NEW_STAGE4_STAGE5_OR_RELEASE",
+  "authority": {
+    "name": "Menschen-B1-Verben-v3.3.6-STAGE7-CONTENT-ONLY-2000-KOMBINATIONEN-VERIFIED-20261104.zip",
+    "sha256": "48b995c14e5f12584a11b945c6c312309c719669569051ac309fe17b0d38258c",
+    "cards": 395,
+    "zip_members": 35,
+    "zip_crc": "PASS"
+  },
+  "sections": {
+    "Kombinationen": {
+      "cards": 394,
+      "items": 2000
+    },
+    "Synonyme": {
+      "cards": 367,
+      "items": 1045
+    },
+    "Antonyme": {
+      "cards": 130,
+      "items": 135
+    },
+    "Wortfamilie": {
+      "cards": 336,
+      "items": 716
+    }
+  },
+  "graph_fa_translation_coverage": {
+    "SYNONYM": {
+      "relations": 1046,
+      "explicit_fa": 115
+    },
+    "ANTONYM": {
+      "relations": 132,
+      "explicit_fa": 117
+    },
+    "WORD_FAMILY": {
+      "relations": 716,
+      "explicit_fa": 465
+    },
+    "note": "Not all absent inline translations are missing; targeted-ID relations may resolve otherwise."
+  },
+  "scoped_auto_flags": {
+    "literal_combo_example_overlaps": 6,
+    "synonym_word_family_same_term": 1,
+    "hold_decision": "All 7 individually reviewed, no automatic deletion"
+  },
+  "decisions": [
+    [
+      "mb1m-lu-0007",
+      "KEEP_CORE_SUBJECT_PATTERN"
+    ],
+    [
+      "mb1m-lu-0096",
+      "KEEP_CORE_WUNSCH_PATTERN"
+    ],
+    [
+      "mb1m-lu-0153",
+      "REVIEW_REDUNDANT_KLIMASCHUTZ_AND_PROPOSE_FINANCIAL_VARIANT"
+    ],
+    [
+      "mb1m-lu-0240",
+      "KEEP_REQUIRED_ARGUMENT_PATTERN"
+    ],
+    [
+      "mb1m-lu-0304",
+      "KEEP_CORE_DOCUMENT_SENSE_AND_LABEL_SYNONYMS"
+    ],
+    [
+      "mb1m-lu-0347",
+      "PROPOSE_DEDUPLICATE_AUFBLUEHEN_ACROSS_TILES_WITHOUT_DESTROYING_TYPED_GRAPH"
+    ],
+    [
+      "mb1m-lu-0458",
+      "KEEP_DUDEN_CORE_CUSTOMER_PATTERN"
+    ]
+  ],
+  "candidate_additions": [
+    {
+      "card_id": "mb1m-lu-0001",
+      "section": "Kombinationen",
+      "term_de": "sich mit einem Händedruck verabschieden",
+      "translation_fa": "با دست دادن خداحافظی کردن",
+      "evidence": "https://www.duden.de/rechtschreibung/verabschieden"
+    },
+    {
+      "card_id": "mb1m-lu-0001",
+      "section": "Synonyme",
+      "term_de": "Auf Wiedersehen sagen",
+      "translation_fa": "خداحافظی کردن؛ گفتن «به امید دیدار»",
+      "evidence": "https://www.duden.de/rechtschreibung/verabschieden"
+    },
+    {
+      "card_id": "mb1m-lu-0153",
+      "section": "Kombinationen",
+      "term_de": "einen finanziellen Beitrag leisten",
+      "translation_fa": "مشارکت مالی داشتن؛ کمک مالی کردن",
+      "evidence": "https://www.hochschule-bochum.de/deutschlandstipendium-foerderer/"
+    },
+    {
+      "card_id": "mb1m-lu-0347",
+      "section": "Wortfamilie",
+      "term_de": "verblühen",
+      "translation_fa": "گل‌دهی‌اش تمام شدن؛ رو به پژمردگی رفتن",
+      "evidence": "https://www.duden.de/rechtschreibung/verbluehen"
+    },
+    {
+      "card_id": "mb1m-lu-0458",
+      "section": "Wortfamilie",
+      "term_de": "die Zufriedenstellung",
+      "translation_fa": "تأمین رضایت؛ برآورده‌کردن خواسته‌ها",
+      "evidence": "https://www.duden.de/rechtschreibung/Zufriedenstellung"
+    }
+  ],
+  "other_proposals": [
+    "mb1m-lu-0304 sense-specific five Synonyme labels and FA glosses",
+    "mb1m-lu-0347 aufblühen visible de-dup across Synonyme and Wortfamilie",
+    "mb1m-lu-0418 intentionally 0 Kombinationen due rare historical usage"
+  ],
+  "locally_verified_report_hashes": {
+    "FULL_AUDIT_SUMMARY.json": "2cbb456c6a6db395b7d7585e5724b98fca8a96467c4286b192c6d150a0783840",
+    "CARD_RIGHT_SIDE_INVENTORY.csv": "96b7217b0f88d542863cadbbc946a82c5fd13dcdc010716812af9b70b5dc0c0d",
+    "SCOPED_ENRICHMENT_PROPOSALS.json": "c1be5403087c56c1bd699070779c4cfd4f18cc93f7628946f23de83e080dfc9f"
+  },
+  "boundaries": {
+    "source_data_mutated": false,
+    "all_2000_individually_semantically_reviewed": false,
+    "successor_stage4": false,
+    "successor_stage5": false,
+    "successor_stage6": false,
+    "successor_stage7": false,
+    "user_import_or_srs_changed": false
+  },
+  "next": "Create a new synchronized exact-parent canonical+TSV+custom-fields Stage3 successor; run lexical QA gate and Stage4 on that exact artifact. Old Library files/LOCKED/current remain unchanged."
+}

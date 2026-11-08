@@ -1,0 +1,46 @@
+{
+  "schema": "aspekte-b2-l01-readonly-id-tool-validation@1.0.0",
+  "date": "2026-11-08",
+  "outcome": "SELF_CONTAINED_UNIT_TESTS_PASS_AND_REAL_CURATED_L01_READONLY_GATE_BLOCKED",
+  "tool_name": "b2_identity_readonly_preflight.py",
+  "source_app_runtime_pin": "v505-R141_CURRENT_NOT_FULL_LIVE_BROWSER_ATTESTED",
+  "tool_sha256": "affe190b39722f7a348f53c55cf26970c5bcb867980d2d2ac5354f00f761a512",
+  "tests_sha256": "8559accd7c94b9fa4bff2c1b59a7a1f892348c6a2247dfc7823cf39ef9158d08",
+  "readme_sha256": "ea8f9bb668d7075687371b40ba3bc61bb75ace167c5d8cbfee75cf3c1db6457b",
+  "inputs": {
+    "l01_curated_library_current_sha256": "72bddff2d900322b8fb3b3b7094d59281636c5bc6be390aae46d74d35ed32716",
+    "seven_case_matrix_sha256": "f87cf7de704958e74c0e1e1929dab13492da4cb5197dbcdea69aeeb052a47991",
+    "actual_user_SRS_export_supplied": false
+  },
+  "tests": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "test_basis": "SYNTHETIC_FIxtures_ONLY",
+    "run_command": "python -m unittest discover -s . -p test_b2_identity_readonly.py -v"
+  },
+  "real_l01_integration": {
+    "read_only_execution": true,
+    "status": "BLOCKED_NONIMPORT",
+    "exit_code": 2,
+    "cases": 7,
+    "B2_draft_cases": 6,
+    "conditional_noncard_cases": 1,
+    "source_card_mutations": 0,
+    "SRS_mutations": 0,
+    "report_sha256": "36e5468cd89961af7b3854c1ed93ab989cdf83060e04e42d6d74b60d3ee653fc"
+  },
+  "what_is_not_proven": {
+    "live_app_accepted_card_IDs_verified": false,
+    "native_current_profile_verified": false,
+    "independent_DE_FA_QA_signed": false,
+    "native_import_persistence_rollback_tested": false,
+    "release_approved": false
+  },
+  "release": "BLOCKED_NONIMPORT",
+  "source_repository_paths_proposed": {
+    "code": "Workspaces/aspekte-b2-v336/Tools/b2_identity_readonly_preflight.py",
+    "test": "Workspaces/aspekte-b2-v336/Tests/test_b2_identity_readonly.py"
+  },
+  "privacy": "NO_RAW_USER_SRS_EXPORT_OBTAINED_OR_PERSISTED"
+}

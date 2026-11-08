@@ -1,6 +1,21 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.57 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.58 · **Stand:** 2026-11-08 · **Typ:** fortlaufender Plan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L04 PHASE3 — GATE EVALUATED / RELEASE_BLOCKED · NEXT L06 PHASE1
+
+**CRITICAL DATA-PERSISTENCE CORRECTION:** Earlier L04 Phase2 owner `libfile_e1d6e3a7045c81918bf679544a3fa2f0` (SHA `a3b9166fa670c14b3c0c40cc381c5b0ae96402b080a63c8a1934e19c18aee792`) incorrectly preserved the *unchanged primary 1571-card JSONL*, despite 62 edit claims in sidecars. That old owner and receipt are SUPERSEDED; **never use as current learner data**. New mandatory invariant: verify current primary-card-member hash changes, actual per-object differences and all claimed edits are reflected in saved ZIP bytes; sidecar counts alone are insufficient.
+
+- **Repaired actual Phase2 owner:** B1+ Library `libfile_b56dcf2878648191a36919b6322c5a31`, SHA256 `49146d3266c5b802136d41cace941c986c39f0d00c82eb02897fa02ade5f53d9`, 3,427,079 bytes. All **62 existing card objects actually changed in the live main JSONL**, including 112 new example→sense links, 13 new semantic networks, and corrected `schätzen` example deduplication. The Library exact SHA256 readback, 228 manifest entries and ZIP CRC pass. GitHub repair receipt: `Lessons/L04/PHASE2-CORRECTED-MAIN-DATA-REPAIR-20261108.json`.
+- **Current / latest curated owner = L04 Phase3:** B1+ Library `libfile_10c0072c60b881919cfb3ce2cfaab2fb`, SHA256 `31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4`, 3,512,353 bytes. 235 ZIP members, 234 internal manifest hashes, CRC and Library exact byte readback verified. The current primary 1571-card JSONL SHA256 is `8271f00d2ae686c835e1b489cf1385b82705a7290fd26781f7f7017932a0bed1`. 1548 source rows and every non-L04 card preserved.
+- **L04 Phase3 complete as RELEASE_GATE_EVALUATED_BLOCKED:** 160/160 card blockers recorded, three targeted actual additional German–Persian sense/meaning edits (`recherchieren`, `quasi`, `der Ball`). L04 = 365 DE–FA examples, 44 sense-network cards, 115 examples with verified structural sense ID, one genuine dual-meaning example intentionally unassigned; 32 legacy HOLD cards, 54 form-evidence gaps. 5 exact duplicate DE-example groups remain outside L04.
+- **Deterministic checks actually run:** 1571-card/665-combination strict noncopy/sentence-like gate PASS, corpus duplicate non-regression PASS (5), zero-duplicate release gate FAIL (5), 160-card L04 release gate correctly fails closed, 160 TSV records correctly parsed offline and all 365 examples projected into one QA-only HTML. These are not a successful application import test.
+- **No released cards:** real `German-Flashcards-Pro` application runtime import/render has not been executed; full bilingual content QA is not signed off. Zero full-card release approvals, NONIMPORT. **Separate external human/independent reviewer is not required**; user and assistant can edit with evidence and deterministic controls, but missing content checks still cannot be misrepresented as approved.
+- The three-milestone L04 lesson workflow is **complete with status RELEASE_BLOCKED**, not interminable 10-word cycles. **NEXT whole-lesson production: L06 Phase1** from latest verified L04 Phase3 Library owner; unresolved L04 conditions remain a release backlog rather than another repeated microbatch. The original edited card corpus remains sole learner-data source, not the textbook CSV.
+- Current evidence: `Lessons/L04/PHASE3-160-CARD-QUALITY-GATE-20261108.json`; `Lessons/L04/PHASE2-CORRECTED-MAIN-DATA-REPAIR-20261108.json`.
+
+---
+## HISTORICAL ROADMAP NOTES (before 2026-11-08 L04 Phase3)
 
 ## LIVE L04 PHASE2 COMPLETED WITH TARGETED EDITS — NEXT PHASE3 (2026-11-08)
 

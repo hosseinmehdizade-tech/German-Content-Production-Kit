@@ -1,6 +1,18 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.55 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.56 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE MILESTONE L04 — Phase 1/3 COMPLETE; next L04 Phase 2/3 (2026-11-08)
+
+**This section supersedes older Phase1 status notes below.** Work unit = one whole lesson, not 10-word Review loops. **Current curated learner-data ZIP is unchanged**: B1+ Library `libfile_7b408389b9648191b2667d207adf96b6`, SHA256 `ea0bde4b38aebca9973f9b8d90e201f627edd8c1c491d752006792991b2a34e6`. Verified 1,571 cards, original 1,548-row source-map SHA `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`, all 224 legacy ZIP manifest entries and CRC PASS. Do not re-import original publisher CSV.
+
+- **L04 160 cards / all 158 original source ordinals 358–515** preserved. Correct splits: ordinal 358 = 3 separate Freizeit-lemmas, ordinal 436 = `plaudern` / `schwatzen`. Correct source merger: original ordinal 443 belongs in the existing `schätzen` card at ordinal 442. Correct cross-lesson link: ordinal 44 in `Wohlstand` card at ordinal 405. No lost rows, no incorrect de-duplication.
+- **365 DE/FA examples**, zero empty translations and zero cards without examples. **32 example QA statuses missing across 29 cards**, existing scoped-only PASS flags do not mean independent full-card release. **106/160 independent scoped forms already evidenced; 54** not yet individually evidenced (not necessarily errors). **32 curated L04 HOLD markers** remain. **31 existing word-network cards, 45 sense blocks; 67/69 examples in these cards lack valid sense_id**; only two currently routed.
+- **One true intra-card identical DE example** in `schätzen` ordinal 442 appears with two different, near-equivalent Persian paraphrases; Phase2 must adjudicate without discarding useful translation context. Six corpus-wide duplicate groups currently remain including this one. No card is approved for release.
+- All **160-card dispositions** stored in whole-lesson queue: P1=**63**, P2=**5**, P3=**92**. Priority is a repair queue, not language signoff. Per-card actions address inflection (front), senses, collocations, bilingual examples, source mappings and HOLDs. **Phase1 did not edit any learner-card text**, so current data owner remains SHA-verified L03 Phase3 ZIP.
+- Persistent outputs: library bundle `libfile_a6152f62cad081919e19f7f6f94fe230`, SHA256 `75e4540147d07447734dc4612eddc47c4ebe47a6f52a07dc046bad533c80b46f`, 87,884 bytes, 6 ZIP members / all 5 internal hashes verified; standalone JSON report, all 160 JSONL decisions, L04 3-phase plan, replayable `qa_whole_lesson_phase1_v3.py` and full searchable HTML saved in **Aspekte-B1plus Library**, all six byte-for-byte read back. GitHub report `Workspaces/aspekte-b1plus-v336/Lessons/L04/PHASE1-FULL-LESSON-AUDIT.json`, complete decision queue `Workspaces/aspekte-b1plus-v336/Lessons/L04/PHASE1-160-CARD-DECISION-QUEUE.jsonl`, plan `Workspaces/aspekte-b1plus-v336/Lessons/L04/THREE-PHASE-PLAN.md`, script `Workspaces/aspekte-b1plus-v336/Tools/qa_whole_lesson_phase1_v3.py`. HTML is preserved in Library/bundle; GitHub HTML not asserted.
+- **NEXT Phase2:** one whole-lesson editorial pass on all **160** cards, first P1 63, then P2 5, then P3 92, only count genuine content changes and preserve existing senses and source mapping. Correct proven duplicate, missing QA metadata, sense routes and meaning-specific combinations. Phase3 later must run independent full bilingual and actual app import/render gates or conclude RELEASE_BLOCKED. Current global scoped G2 attested **376/1571**; formal complete card releases **0**, global release HOLD markers **340**, app importer not tested. **NONIMPORT.**
+
 
 ## LIVE L01 PHASE1/3 STATUS — 2026-11-08 (NONIMPORT)
 

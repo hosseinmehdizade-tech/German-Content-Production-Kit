@@ -13,6 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"Verification"))
 sys.path.insert(0,str(ROOT/"Tools"))
 from guard_lexical_rule_coverage_v1 import evaluate
+from verify_lexical_family_release_route_v1 import verify_family
 from build_governed_clean_delivery_v1 import run as format_build,select_roles,sha256
 
 def main():
@@ -23,6 +24,7 @@ def main():
     p.add_argument("--policy-report",type=Path,required=True)
     p.add_argument("--stage4-receipt",type=Path,required=True)
     p.add_argument("--cross-tile-review",type=Path,required=True)
+    p.add_argument("--family-id",required=True,help="Registered canonical family:... ID")
     a=p.parse_args()
     try:
         selected=(a.output_zip,a.receipt,a.policy_report)
@@ -30,6 +32,7 @@ def main():
             raise ValueError("OUTPUT_OR_RECEIPT_ALREADY_EXISTS")
         if len({x.resolve() for x in selected})!=3:
             raise ValueError("OUTPUT_PATH_ROLE_COLLISION")
+        family=verify_family(a.family_id,a.cross_tile_review)
         roles=select_roles(a.source_dir)
         tsv=roles["direct-import-tsv"]
         quality=evaluate(tsv,a.stage4_receipt,a.cross_tile_review)
@@ -44,7 +47,10 @@ def main():
             raise ValueError("SOURCE_CHANGED_AFTER_POLICY_GATE")
         report={"schema":"gcpk-lexical-quality-gated-stage5-candidate@1.0.0",
                 "status":"PASS_STAGE5_CANDIDATE_WITH_EXACT_SOURCE_STAGE4_AND_RULE_COVERAGE",
-                "quality_gate":quality,"governed_format_build":output,
+                "quality_gate":quality,"family_authority":family,
+                "governed_format_build":output,
+                "exact_stage4_receipt_sha256":sha256(a.stage4_receipt.read_bytes()),
+                "exact_cross_tile_review_sha256":sha256(a.cross_tile_review.read_bytes()),
                 "stage6":"NOT_RUN","stage7":"NOT_FINAL",
                 "source_and_srs_untouched":True}
         with a.policy_report.open("x",encoding="utf-8") as f:

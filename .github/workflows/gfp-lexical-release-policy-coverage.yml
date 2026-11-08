@@ -4,6 +4,10 @@ on:
     paths:
       - 'Verification/guard_lexical_rule_coverage_v1.py'
       - 'Verification/tests/test_guard_lexical_rule_coverage_v1.py'
+      - 'Verification/tests/test_lexical_family_stage5_wiring_v1.py'
+      - 'Verification/verify_lexical_family_release_route_v1.py'
+      - 'Tools/build_quality_gated_front_stage5_v1.py'
+      - 'Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json'
       - 'Tools/build_quality_gated_lexical_candidate_v1.py'
       - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
       - 'Verification/audit_kombinationen_lean_v1_1.py'
@@ -14,6 +18,10 @@ on:
     paths:
       - 'Verification/guard_lexical_rule_coverage_v1.py'
       - 'Verification/tests/test_guard_lexical_rule_coverage_v1.py'
+      - 'Verification/tests/test_lexical_family_stage5_wiring_v1.py'
+      - 'Verification/verify_lexical_family_release_route_v1.py'
+      - 'Tools/build_quality_gated_front_stage5_v1.py'
+      - 'Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json'
       - 'Tools/build_quality_gated_lexical_candidate_v1.py'
       - 'Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json'
       - 'Verification/audit_kombinationen_lean_v1_1.py'
@@ -45,8 +53,13 @@ jobs:
           Verification/guard_lexical_rule_coverage_v1.py
           Tools/build_quality_gated_lexical_candidate_v1.py
           Verification/tests/test_guard_lexical_rule_coverage_v1.py
+          Verification/tests/test_lexical_family_stage5_wiring_v1.py
+          Verification/verify_lexical_family_release_route_v1.py
+          Tools/build_quality_gated_front_stage5_v1.py
       - name: Exact registry and adversarial source-proof coverage
         run: python -B -m unittest discover -s Verification/tests -p test_guard_lexical_rule_coverage_v1.py -v
+      - name: Test canonical family source-owner routing and front-stage5 mandatory gate
+        run: python -B -m unittest discover -s Verification/tests -p test_lexical_family_stage5_wiring_v1.py -v
       - name: Explain bounded conclusion
         shell: bash
         run: |

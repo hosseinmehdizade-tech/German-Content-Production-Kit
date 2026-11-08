@@ -1,0 +1,48 @@
+name: GFP Lexical New Stage5 Acceptance Claim Guard
+on:
+  pull_request:
+    paths:
+      - 'Workspaces/**'
+      - 'Verification/check_new_lexical_stage5_claims_v1.py'
+      - 'Verification/tests/test_new_lexical_stage5_claims_v1.py'
+      - 'Tools/build_quality_gated_lexical_candidate_v1.py'
+      - '.github/workflows/gfp-lexical-stage5-claim-guard.yml'
+  push:
+    paths:
+      - 'Workspaces/**'
+      - 'Verification/check_new_lexical_stage5_claims_v1.py'
+      - 'Verification/tests/test_new_lexical_stage5_claims_v1.py'
+      - 'Tools/build_quality_gated_lexical_candidate_v1.py'
+      - '.github/workflows/gfp-lexical-stage5-claim-guard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proof-regression:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: New Stage5 claim positive and adversarial tests
+        run: python -B -m unittest discover -s Verification/tests -p test_new_lexical_stage5_claims_v1.py -v
+      - name: Verify newly changed lexical acceptance claims are backed by exact quality receipt
+        if: github.event_name != 'workflow_dispatch'
+        shell: bash
+        env:
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          ${{ github.event_name }}: EVENT_NAME
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            BASE="$PR_BASE"
+          else
+            BASE="$(git rev-parse HEAD^)"
+          fi
+          python -B Verification/check_new_lexical_stage5_claims_v1.py --base "$BASE" --head HEAD
+      - name: Scope
+        run: echo "This guards NEW repository Stage5 claims, not historical replay, GitHub branch protection, Library, native Stage6 or Stage7."

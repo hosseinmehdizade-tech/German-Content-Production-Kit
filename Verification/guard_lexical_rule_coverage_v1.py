@@ -23,6 +23,7 @@ STOP={"das","der","die","den","dem","des","ein","eine","einen","einem",
 def sha(b):return hashlib.sha256(b).hexdigest()
 def blob(b):return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
 def norm(s):return " ".join(unicodedata.normalize("NFC",str(s)).casefold().split())
+def exact_surface(s):return " ".join(unicodedata.normalize("NFC",str(s)).split()) # machine-exact: no ß/ss or case folding
 def words(s):return re.findall(r"[^\W_]+",norm(s),flags=re.UNICODE)
 def stem(w):
     if len(w)<6:return w
@@ -67,41 +68,112 @@ def native_rows(raw):
     if len(ids)!=len(set(ids)):raise ValueError("DUPLICATE_CARD_IDS")
     return rows
 
+def _lexical_de(item, source):
+    """German surface only; do not mistake FA/EN metadata for a new phrase."""
+    if isinstance(item,str):
+        value=re.split(r"\s+[—–]\s+",item,maxsplit=1)[0]
+    elif isinstance(item,dict):
+        value=item.get("de",item.get("text_de",item.get("text","")))
+    else:
+        raise ValueError("INVALID_COMBINATION_ITEM:"+source)
+    if not isinstance(value,str) or not value.strip():
+        raise ValueError("EMPTY_COMBO:"+source)
+    return value.strip()
+
+
+def _combination_sources(row, details):
+    """Scan learner-visible and supported structured native combinations.
+
+    A synchronized backend mirror is one learner phrase, not a second visible
+    tile. Duplicates *within* one actual source remain reviewable HIGH risks.
+    No backend item is invented or projected into the original TSV.
+    """
+    visible=[]
+    for section in details:
+        if not isinstance(section,dict):raise ValueError("INVALID_DETAIL_SECTION")
+        if norm(section.get("title","")) not in ("kombinationen","kollokationen"):
+            continue
+        items=section.get("items",[])
+        if not isinstance(items,list):raise ValueError("INVALID_COMBO_ITEMS")
+        visible.extend(_lexical_de(item,"details") for item in items)
+    result=[("details",visible)]
+
+    raw_fields=[row.get(key) for key in ("custom_fields","customFields")
+                if row.get(key) not in (None,"")]
+    fields=[]
+    for raw in raw_fields:
+        try:parsed=json.loads(raw,object_pairs_hook=unique) if isinstance(raw,str) else raw
+        except (ValueError,TypeError) as exc:raise ValueError("INVALID_NATIVE_CUSTOM_FIELDS_JSON") from exc
+        if not isinstance(parsed,dict):raise ValueError("INVALID_NATIVE_CUSTOM_FIELDS_OBJECT")
+        fields.append(parsed)
+    if len(fields)==2 and fields[0] and fields[1] and fields[0]!=fields[1]:
+        raise ValueError("CONFLICTING_CUSTOM_FIELDS_ALIASES")
+    custom=next((f for f in fields if f),{})
+    for key in ("kombinationen_v1","kombinationen_v336"):
+        payload=custom.get(key,[])
+        if payload is None:payload=[]
+        if isinstance(payload,dict):
+            if not isinstance(payload.get("items"),list):
+                raise ValueError("INVALID_BACKEND_COMBINATION_ITEMS:"+key)
+            payload=payload["items"]
+        if not isinstance(payload,list):
+            raise ValueError("INVALID_BACKEND_COMBINATION_LIST:"+key)
+        result.append((key,[_lexical_de(item,key) for item in payload]))
+    return result
+
+
 def review_signals(rows):
     findings=[];tot_ex=tot_co=0
     for row in rows:
-        ds=json.loads(row["details"]);es=json.loads(row["examples"])
-        if not isinstance(ds,list) or not isinstance(es,list):raise ValueError("INVALID_LEXICAL_TILES")
-        combos=[]
-        for sec in ds:
-            if not isinstance(sec,dict):raise ValueError("INVALID_DETAIL_SECTION")
-            if norm(sec.get("title","")) in ("kombinationen","kollokationen"):
-                its=sec.get("items",[])
-                if not isinstance(its,list):raise ValueError("INVALID_COMBO_ITEMS")
-                for item in its:
-                    if isinstance(item,str):s=item.split(" — ",1)[0]
-                    elif isinstance(item,dict):s=item.get("de",item.get("text_de",item.get("text","")))
-                    else:raise ValueError("UNKNOWN_COMBO_FORMAT")
-                    if not isinstance(s,str) or not s.strip():raise ValueError("EMPTY_COMBO")
-                    combos.append(s.strip())
+        try:
+            ds=json.loads(row["details"],object_pairs_hook=unique)
+            es=json.loads(row["examples"],object_pairs_hook=unique)
+        except (ValueError,TypeError) as exc:raise ValueError("INVALID_LEXICAL_TILES_JSON") from exc
+        if not isinstance(ds,list) or not isinstance(es,list):
+            raise ValueError("INVALID_LEXICAL_TILES")
+        sources=_combination_sources(row,ds)
+        # Exact German surfaces are compared once across *mirrored* backends.
+        # A real duplicate *within* a source is still a defect.
+        combos=[];all_seen=set()
+        for source,items in sources:
+            local_seen=set()
+            for c in items:
+                n=exact_surface(c)
+                if n in local_seen:
+                    findings.append([row["id"],"EXACT_COMBO_DUPLICATE",c,"","HIGH"])
+                local_seen.add(n)
+                if n not in all_seen:
+                    combos.append(c)
+                    all_seen.add(n)
+        # Distinct authorized backend and learner-visible projections can differ.
+        # Report that tension for semantic Stage4 review; no automatic rewrite
+        # or unconditional HIGH, because a shorter view may be deliberate.
+        visible_items=sources[0][1]
+        backend_items=[item for _,items in sources[1:] for item in items]
+        if visible_items and backend_items:
+            exact=lambda x:" ".join(unicodedata.normalize("NFC",x).split())
+            a_set={exact(x) for x in visible_items}
+            b_set={exact(x) for x in backend_items}
+            if a_set!=b_set:
+                candidate=sorted(b_set-a_set) or sorted(a_set-b_set)
+                findings.append([row["id"],"BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW",
+                                 candidate[0],"","MEDIUM"])
         ex=[]
         for e in es:
             if not isinstance(e,dict):raise ValueError("UNKNOWN_EXAMPLE_FORMAT")
             if str(e.get("lang","de")).lower().startswith("de"):
                 t=e.get("text",e.get("text_de",e.get("de","")))
-                if not isinstance(t,str) or not t.strip():raise ValueError("EMPTY_GERMAN_EXAMPLE")
+                if not isinstance(t,str) or not t.strip():
+                    raise ValueError("EMPTY_GERMAN_EXAMPLE")
                 ex.append(t)
         tot_ex+=len(ex);tot_co+=len(combos)
-        seen=set()
         for c in combos:
-            n=norm(c)
-            if n in seen:findings.append([row["id"],"EXACT_COMBO_DUPLICATE",c,"","HIGH"])
-            seen.add(n)
+            n=exact_surface(c)
             ct={stem(x) for x in words(c) if x not in STOP and len(x)>=4}
             for e in ex:
                 et={stem(x) for x in words(e) if x not in STOP and len(x)>=4}
                 common={x for x in ct if any(related_stem(x,y) for y in et)}
-                exact=n==norm(e)
+                exact=n==exact_surface(e)
                 if exact or (len(common)>=2 and len(common)>=len(ct)-1):
                     findings.append([row["id"],"EXACT_EXAMPLE_CLONE" if exact else "EXAMPLE_REUSE_REVIEW",c,e,"HIGH" if exact else "MEDIUM"])
                     break
@@ -111,6 +183,7 @@ def review_signals(rows):
         output.append({"id":fp,"card_id":cid,"code":code,"combination":c,
                        "example":e,"severity":severity})
     return {"examples":tot_ex,"combinations":tot_co,"issues":output}
+
 
 def high_taxonomy_signals(taxonomy, source_sha):
     """Turn exact-source right-side HIGH diagnostics into stable review obligations."""

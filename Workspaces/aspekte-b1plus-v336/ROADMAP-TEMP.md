@@ -1,6 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.60 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.61 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L06 PHASE3 — 177-CARD STRICT RELEASE GATE EVALUATED / RELEASE_BLOCKED · NEXT L07 PHASE1
+
+**CURRENT AND ONLY VALID NEW CURATED LEARNER-DATA OWNER:** Library `libfile_714e7e818a4881919c2639503c928bc8`, ZIP SHA256 `cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990`, 3,656,592 bytes, 251 ZIP members and 250 verified internal member hashes, CRC PASS and **exact Library readback SHA256 PASS**. 1571 original card IDs and 1548 original source row mappings preserved. Parent L06 Phase2 owner `libfile_3832285495208191a078ee53fc37feb7` is historical; NEVER return to textbook source CSV or buggy old L04 owner.
+
+- **L06 Phase3** strict case-level nonimport QA performed on all 177 current cards; actual editorial changes in the reopened **primary saved card JSONL** for exactly **5** card objects (ordinal 737, 742, 750, 751, 846), all 1394 non-L06 card objects byte-equivalent at data-object level and original source map byte-identical. Three complete unpunctuated German clauses wrongly parked under `Kombinationen` were replaced with true collocations (Bewerber/in, Personalchef/in, Projektleiter/in). `formal` no longer conflates `formell` (Duden: `https://www.duden.de/rechtschreibung/formal` and `https://www.duden.de/rechtschreibung/formell`). Preposition `per` independently case-government attested as Akkusativ or Dativ per Duden; specific forms-attested L06 108→**109**, open case-evidence gaps 69→**68**. No examples lost or added; **378 DE/FA example pairs** across 177 cards.
+- **Whole-lesson blockers actually evaluated:** **33 inherited L06 HOLDs**, **68 forms without independently recorded scoped evidence**, all examples require complete G4 bilingual approval, full-card approval and a real `German-Flashcards-Pro` import/render receipt. Actual app import **NOT RUN**. **177 of 177 RELEASE_BLOCKED**, **0 formally released**; this means tested as blocked, not falsely signed off as 177 linguistically perfect cards.
+- **Meaning and preview integrity:** 37 L06 semantic-network cards; no L06 examples in semantic-network cards left without matching sense IDs. Independent QA-only HTML check **PASS 177 cards / 378 examples**, no loss or duplicate projection; **177-row TSV offline roundtrip PASS**, this is NOT the app runtime.
+- **CRITICAL Kombinations QA bug and improvement:** old structural v2 and finite-verb v3 accidentally allowed short unpunctuated full sentences. New `Tools/qa_combinationen_finite_clause_v4.py` detects them. **0 L06 candidate sentences remain**, but corpus-wide v4 gate is **FAIL: 3** known candidates in other lessons: L02 ordinal 158 `ein Weg läuft fort`, L03 ordinal 232 `die Konsumentin entscheidet über den Kauf`, L09 ordinal 1266 `ein Ozeanriese läuft im Hafen ein`. Preserve these cases in global release backlog; do NOT silently modify other lessons from L06. Inherited corpus exact duplicated-example groups = **3**. The previous `722 Kombinationen structural PASS` is only a limited legacy test, not a fully clean global verdict.
+- **Evidence:** `Lessons/L06/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json` is the canonical receipt with owner SHA and Library ID; whole 177-card blocker ledger, before/after 5-card evidence, V4 corpus fail report and replayable scripts in Library ZIP and GitHub. Mandatory primary card persistence gate still enforced. QA v4 code resides in this project and owner; **not yet proven integrated into all external content generators or projects**, so don't claim universal coverage.
+- **NEXT whole-lesson production:** **L07 Phase1/3**, using only this latest SHA-verified Library owner as input. L06 3-phase workflow is complete with explicit **RELEASE_BLOCKED_NONIMPORT** (not another 10-word Review cycle); unresolved L06 quality/release blockers persist in an independent release backlog. No fictional separate human examiner is mandatory.
+
+---
+## HISTORICAL ROADMAP NOTES (before L06 Phase3)
 
 ## LIVE L06 PHASE2 DONE — 177-CARD WHOLE-LESSON PASS · NEXT L06 PHASE3
 

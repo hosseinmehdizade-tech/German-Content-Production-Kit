@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.48 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.49 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE L01 PHASE1/3 STATUS — 2026-11-08 (NONIMPORT)
 
@@ -489,4 +489,15 @@
 - Laufende QA: gesamte 1571-Karten-JSONL, Originalsource-Map und andere Lektionen unverändert, 499 Kombinationen unter konservativem Noncopy-Finite-Clause-Filter 0 erkannte Probleme, 0 exakte Beispielfehldubletten in L01. **7 Altdubletten außerhalb L01** weiterhin Release-Blocker. HTML QA-only für **alle 90 L01-Karten**, Vorher/Nachher-Ledger, 90 einzeln nachvollziehbare Dispositionen, QA-Skript im Owner.
 - **PHASE3 NÄCHSTE ARBEIT:** vollständige unabhängige Deutsch–Persisch-Kartenfreigabe (nicht bloße maschinelle Statusfelder); 84 L01-Karten ohne externen G2-Formbeleg sowie 42 kuratierte HOLDs mit Belegen/Regelausnahmen beurteilen; echten `German-Flashcards-Pro`-TSV-Import/Renderer prüfen, bevor ein Released-Deck genehmigt wird. Die 30 neuen Beispiele und 62 Sinnblöcke bleiben explizit redaktionelle **Kandidaten**. Global 334/1571 G2 attestiert, 340 Release-HOLDs, 0 Karten vollständig freigegeben. G5 runtime pending. **NONIMPORT.**
 - GitHub-Report: `Workspaces/aspekte-b1plus-v336/Lessons/L01/PHASE2-COMPLETE-90-CARDS-REPORT.json`; L01 Drei-Phasen-Plan in `Lessons/L01/THREE-PHASE-PLAN.md`. Kein Rückfall zu Review18 usw.
+
+
+
+## L01 Phase 3/3 — whole-lesson RELEASE GATE evaluated and BLOCKED (2026-11-08)
+
+- The L01 work cycle has now completed **all three phases as evaluations**: Phase1 90/90 card audit DONE; Phase2 90/90 editorial decisions DONE (55 genuinely edited); Phase3 **full 90-card fail-closed release gate RUN, outcome BLOCKED**. **0 of 90 L01 cards approved**, no false release claims. Do not reopen ten-word Review18 batches.
+- **Current curated owner** is L01 Phase3 Library `libfile_d5a43c53f89c81919d8eb6d071a7a60a`, SHA256 `dccda4967101f6c0ec4b3df49f3f9e050fd56c4bf20b14be3805899c3e9d8522`, bytes `3092241`, 184 ZIP entries/183 internal SHA hashes, exact Library byte readback/CRC PASS. Parent Phase2 SHA `3060b35afb9779e8f88ee7064ec4f7ff0d35b7218f1fa0888cfa9dd6063dd9d7`. **1,548 source map rows byte-identical**, 1,571 card IDs preserved; no content changes outside L01.
+- **Real targeted improvements across all-lesson QA:** 8 missing example→sense routes repaired in `Kontakt`, `behindert`, `aushängen`, `Aberglaube`; now **73 of 73 examples inside existing L01 semantic networks** appropriately linked. One slightly awkward figurative `umkreisen` example rewritten to an idiomatic Duden-supported Gedanken construction; `weitgehend` comparative/superlative front wording clarified. Duden-backed **4 new scoped form attestations**: `heißen`, `umkreisen`, `aushängen` (weak transitive/strong intransitive), `weitgehend` / `weitestgehend`.
+- **Remaining blockers:** L01 80/90 without independently evidenced specific front form (global scoped attested now 338/1571, 1,233 unevidenced; this does not prove errors), 42 legacy L01 curated HOLD markers, 90/90 lacking independently signed-off complete DE–FA cards, 90/90 lacking actual German-Flashcards-Pro import/render receipt. Seven global exact DE example duplicates outside L01 remain release-blocking. Real app import NOT tested.
+- **Automated nonimport QA:** all 1571 cards projected losslessly, no new errors in the conservative 499-collocation no-copy/finite-sentence checker; 90-row TSV readback PASS **offline only**; independent exact example duplicate release gate globally FAIL due to seven old duplicates (expected). The strict per-card release gate explicitly returns **BLOCKED**; no archive member or formal card release flag marked approved.
+- Detailed GitHub proof `Workspaces/aspekte-b1plus-v336/Lessons/L01/PHASE3-RELEASE-BLOCKED-90-CARDS-REPORT-20261108.json`; Library owner contains the 90-card gate ledger and reusable executable QA, individual before/after records, HTML-only 90-card preview, TSV **NONIMPORT**. **Next production unit: L02 Phase1 whole-lesson audit**, without resets to original textbook or ten-card Review loops. L01 release blockers are retained separately for independent QA/app runtime dependency resolution.
 

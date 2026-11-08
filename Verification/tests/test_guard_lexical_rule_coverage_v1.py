@@ -7,7 +7,7 @@ import types
 
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/"Verification"))
-from guard_lexical_rule_coverage_v1 import native_rows,review_signals,evaluate,pinned,blob,sha
+from guard_lexical_rule_coverage_v1 import native_rows,review_signals,evaluate,pinned,blob,sha,high_taxonomy_signals,review_high_findings
 
 EXAMPLES=[
  {"lang":"de-DE","text":"Das Haus wird morgen versteigert."},
@@ -155,5 +155,71 @@ class ReleaseEvidenceTests(unittest.TestCase):
         with patch.dict(sys.modules,{"audit_kombinationen_lean_v1_1":fake}):
             r=evaluate(self.input,stage,review,root=ROOT,policy_checks=False)
         self.assertIn("EXACT_SOURCE_OFFICIAL_STAGE4_FAILED",r["blockers"])
+
+
+class RightSideCrossSectionSafetyTests(unittest.TestCase):
+    """Real taxonomy diagnostic + release-review decision contract, no card writes."""
+    def taxonomy(self, details):
+        from audit_related_sections_taxonomy_v1_1 import audit,load_cards
+        rows=native_rows(data(combos=[],examples=[]))
+        rows[0]["details"]=json.dumps(details,ensure_ascii=False)
+        raw=data(combos=[],examples=[])
+        # The taxonomy parser runs on the exact same projected card representation.
+        return high_taxonomy_signals(audit(load_cards(
+            json.dumps({"cards":rows},ensure_ascii=False).encode("utf-8"),".json"),
+            sha(raw)),sha(raw))
+
+    def evidence(self, issues, high, decisions=()):
+        return {"flagged_card_ids":sorted({x["card_id"] for x in issues["issues"]+high}),
+                "risk_based_independent_review":True,"high_decisions":list(decisions)}
+
+    def test_real_related_synonym_duplicate_requires_independent_disposition(self):
+        high=self.taxonomy([
+            {"title":"Verwandte Wörter","items":["Möbel — مبلمان"]},
+            {"title":"Synonyme","items":["Möbel — مبلمان"]}])
+        self.assertEqual(len(high),1)
+        self.assertEqual(high[0]["code"],"RELATED_EXACT_CROSS_SECTION_DUPLICATE")
+        scan={"issues":[]}
+        b=review_high_findings(scan,high,self.evidence(scan,high))
+        self.assertTrue(any(x.startswith("HIGH_UNRESOLVED:") for x in b))
+        decision={"id":high[0]["id"],"decision":"KEEP_WITH_SPECIFIC_TEACHING_DELTA",
+                  "reason":"Distinct contextual usage independently checked in the approved Stage4 review"}
+        self.assertEqual(review_high_findings(scan,high,self.evidence(scan,high,[decision])),[])
+
+    def test_opaque_internal_id_cannot_be_excused_by_keep(self):
+        high=self.taxonomy([{"title":"Verwandte Wörter","items":["ma1m-lu-0001"]}])
+        self.assertEqual(high[0]["code"],"OPAQUE_TARGET_ID_IN_RELATED")
+        scan={"issues":[]}
+        keep={"id":high[0]["id"],"decision":"KEEP_WITH_SPECIFIC_TEACHING_DELTA",
+              "reason":"Purported exception"}
+        blockers=review_high_findings(scan,high,self.evidence(scan,high,[keep]))
+        self.assertTrue(any(x.startswith("RELATED_STRUCTURAL_HIGH_REQUIRES_CORRECTION:") for x in blockers))
+
+    def test_exact_example_clone_not_cured_by_claiming_source_corrected(self):
+        scan=review_signals(native_rows(data(combos=["Sie versteigern alte Möbel. — ..."])))
+        high=[x for x in scan["issues"] if x["severity"]=="HIGH"]
+        self.assertEqual(high[0]["code"],"EXACT_EXAMPLE_CLONE")
+        record={"id":high[0]["id"],"decision":"CORRECTED_IN_EXACT_SOURCE",
+                "reason":"Marked corrected despite unchanged projected TSV"}
+        blockers=review_high_findings(scan,[],self.evidence(scan,[],[record]))
+        self.assertTrue(any(x.startswith("CORRECTION_STILL_PRESENT_IN_EXACT_SOURCE:") for x in blockers))
+
+    def test_stale_finding_decision_cannot_be_reused_after_source_changes(self):
+        scan=review_signals(native_rows(data(combos=["etwas an den Meistbietenden versteigern — ..."])))
+        self.assertEqual(scan["issues"],[])
+        record={"id":"1"*64,"decision":"KEEP_WITH_SPECIFIC_TEACHING_DELTA","reason":"Stale"}
+        blockers=review_high_findings(scan,[],self.evidence(scan,[],[record]))
+        self.assertTrue(any(x.startswith("STALE_OR_UNKNOWN_HIGH_DECISION:") for x in blockers))
+
+    def test_duplicate_review_record_rejected(self):
+        scan=review_signals(native_rows(data(combos=["Sie versteigern alte Möbel. — ..."])))
+        record={"id":scan["issues"][0]["id"],"decision":"KEEP_WITH_SPECIFIC_TEACHING_DELTA",
+                "reason":"Example is explicitly scoped to a separate teaching objective"}
+        blockers=review_high_findings(scan,[],self.evidence(scan,[],[record,record]))
+        self.assertTrue(any(x.startswith("DUPLICATE_HIGH_DECISION:") for x in blockers))
+
+    def test_no_quota_and_clean_right_side_pass(self):
+        scan={"issues":[]}
+        self.assertEqual(review_high_findings(scan,[],self.evidence(scan,[])),[])
 
 if __name__=="__main__":unittest.main()

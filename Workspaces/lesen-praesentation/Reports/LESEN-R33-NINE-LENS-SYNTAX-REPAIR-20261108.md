@@ -1,0 +1,25 @@
+# Lesen R33 — verified scoped nine-lens syntax repairs (2026-11-08)
+
+**State:** R33 is a new, exact-R32-derived content candidate. Scoped grammar evidence corrections PASS, native v505 JavaScript source-preentry PASS, Library byte readback/replay PASS. **Independent wholepack trilingual Stage4 HOLD**; original complete nine-lens grammar producer **NOT RERUN**; actual installed browser/IndexedDB Stage6 **NOT RUN**, Stage7 **NOT RELEASED**, original curated v1.3.0 CURRENT unchanged.
+
+## Exact source authority
+- R32 parent master SHA256 `fd174e4fa08290b061001c791c6b7550513abe33a02747ffa426f0935aaf8362` and compiled runtime SHA256 `f54550882719813bdb7b90bbeb982ed00af5b54c895c9ed057cc9d0cd3a171c5` (owner recovery archive Library `libfile_471aabe9561c8191b3ae7362c062ca4f`). New R33 master SHA256 `28e4b00d83b3899b144e908dfded66f35d8f75695c58671cfee2b230a2559c85` and compiled runtime SHA256 `cb1086fccbbf054eb1741aaaf96e08d065fc6ca6dda7b114a522f1901a2a926f`. Never regenerate from original publisher PDFs.
+
+## Confirmed category defects and constrained changes
+- **Nine invalid fulltext grammar examples retired**, with original IDs preserved in the before/after ledger: two false `Infinitiv mit zu` (prepositional `zu den`, lexical `hinzufügen` after `lassen sich`), three false Passiv descriptions of copular `werden`/`verloren gehen`, and four false Relativsätze (accusative articles `die/das` or reported-content clause `die Aufgabe sei erledigt`).
+- **Twenty exact text spans reanchored**: three short relative-clause fragments expanded to include the genuine clause, two target adjectives `offen` replaced by the correct subordinate finite verbs, and **15** `Verbposition im Nebensatz` instances where the original main-clause participle `diskutiert` was wrongly presented as the finite verb of the `ob` clause. In lesson 052, the true subordinate finite verb happens to be `wird`; the repaired offset is anchored specifically inside the `ob` clause, not the later main-clause auxiliary.
+- All **478 DE/FA/EN sections** byte-identical to R32, and all 68 reading units, 340 questions, 350 vocabulary and 669 curated grammar records untouched. 3,548 → **3,539** fulltext grammar occurrences is an intentional removal of false evidence, not a source inventory loss. All changed source `full_text_occurrences` are mirrored in compiled R33 runtime. Full before/after + sentence provenance and exact offsets are inside `03-Reports/LESEN-R33-EXACT-GRAMMAR-REPAIR-LEDGER.json`.
+
+## Tests and remaining scope
+- Independent read-only verification: **9,254/9,254 checks PASS**, zero errors, **7/7** adversarial mutations correctly blocked. 3,539/3,539 exact section-relative offsets, 669/669 unchanged curated references, questions, translations and untouched occurrence identities verified.
+- New deliberately conservative counterexample syntax gate **expected FAIL 29 on exact R32 parent** and **PASS 0 on R33**; older R32 currentness gate still PASS on R33. It is **not** a morphological parser or complete nine-lens validator; automatic wiring into every producer not yet proven.
+- Actual current v505 `reading-content-import-v38.js` JS module SHA `b03f954a9e617d918d42eeddbf0cd4da5a3c1bc3d43d9e57977312dbbde071bc`: isolated Node VM native preentry PASS, **0 errors and warnings**, **10/10** malformed runtime packs rejected, 68 reading units and 340 exercises projected in memory. **No real Chrome/IndexedDB transaction.**
+- All 478 sections passed **availability, numeric-token agreement and gross translation-length screening** (2,868 mechanical checks, no flags). These do **not** establish natural, accurate, semantically equivalent Persian/English translations. **Full section-by-section Stage4 has not been completed.**
+- No original exhaustive nine-lens grammar re-extraction. Other undiscovered category errors remain possible. Do not conflate substring-location/structural checks with semantic validity.
+
+## Durable recovery
+- Self-contained ZIP `Lesen-R33-SCOPED-NINE-LENS-SYNTAX-REPAIR-CANDIDATE-20261108.zip`, SHA256 `4684e842ccefa5c95b52e2748d23a500718ff10b5c9b64931186b0369ea33ec2`, 3,421,634 bytes, 21 ZIP entries, 20/20 member SHA256 checks, CRC PASS.
+- Owner Library `/Flasch kart/German-Content-Production-Kit/Content/Lesen/Checkpoints/Lesen-R33-SCOPED-NINE-LENS-SYNTAX-REPAIR-CANDIDATE-20261108.zip`, stable ID `libfile_149314f1a5d88191b5d1377a4fad0338`. Independent rematerialization matched full SHA256 and **byte-for-byte**, followed by fresh extraction and `python 04-Tools/verify_portable_r33.py`: exact parent→R33 rebuild, independent QA, source native v505 validation and negative probes **PASS**.
+- No mutation of official curated v1.3.0 CURRENT SHA `558c165df7603c26b775781f9c9bbd508c456b4b24f68979ebe0edecf3b46565`; app runtime/UI, learner state SRS/FSRS, other families and original PDFs untouched; no Library cleanup.
+
+**Next:** real section-by-section trilingual semantic Stage4 and original full nine-lens re-extraction/reconciliation. Current R33 is a **scoped repair candidate**, not a completed language release.

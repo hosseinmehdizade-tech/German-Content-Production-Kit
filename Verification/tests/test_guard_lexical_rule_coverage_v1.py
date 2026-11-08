@@ -22,7 +22,7 @@ COMBOS=[
  "etwas öffentlich versteigern — مزایده عمومی کردن",
  "etwas an den Meistbietenden versteigern — به بالاترین پیشنهاددهنده فروختن"]
 
-def data(combos=None,examples=None,ids=("c1",)):
+def data(combos=None,examples=None,ids=("c1",),backend=None):
     if combos is None:combos=COMBOS
     if examples is None:examples=EXAMPLES
     out=io.StringIO(newline="")
@@ -33,7 +33,7 @@ def data(combos=None,examples=None,ids=("c1",)):
         w.writerow({"id":cid,"front":"versteigern","back":"حراج کردن",
           "card_type":"de-vocabulary","category":"Verb","source":"synthetic",
           "details":json.dumps([{"title":"Kombinationen","items":combos}],ensure_ascii=False),
-          "examples":json.dumps(examples,ensure_ascii=False),"custom_fields":"{}"})
+          "examples":json.dumps(examples,ensure_ascii=False),"custom_fields":json.dumps(backend if backend is not None else {},ensure_ascii=False)})
     return out.getvalue().encode("utf-8")
 
 class SemanticSignalTests(unittest.TestCase):
@@ -76,6 +76,91 @@ class SemanticSignalTests(unittest.TestCase):
             (root/"Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json").write_text(json.dumps(original))
             with self.assertRaisesRegex(ValueError,"MISSING_POLICY_FILE"):
                 pinned(root)
+
+class BackendCombinationCoverageTests(unittest.TestCase):
+    """Future mutable source projections must not hide structured collocations."""
+    def scan(self,backend,visible=None,examples=None):
+        return review_signals(native_rows(data(combos=visible if visible is not None else [],
+                                               examples=examples,backend=backend)))
+    def test_backend_v1_only_exact_example_clone_is_high(self):
+        combo="Sie versteigern alte Möbel."
+        out=self.scan({"kombinationen_v1":{"visible_section":"Kombinationen",
+                  "items":[{"de":combo,"fa":"وسایل قدیمی را به مزایده می‌گذارند","en":"auction old furniture",
+                            "kind":"collocation"}]}},examples=EXAMPLES)
+        self.assertEqual(out["combinations"],1)
+        self.assertEqual([(x["code"],x["severity"]) for x in out["issues"]],
+                         [("EXACT_EXAMPLE_CLONE","HIGH")])
+
+    def test_backend_v336_only_is_not_silently_ignored(self):
+        out=self.scan({"kombinationen_v336":{"items":["Sie versteigern alte Möbel. — مزایده"]}},
+                      examples=EXAMPLES)
+        self.assertEqual(out["combinations"],1)
+        self.assertEqual(out["issues"][0]["code"],"EXACT_EXAMPLE_CLONE")
+
+    def test_structured_and_visible_mirrors_count_only_one_learner_item(self):
+        term="etwas an den Meistbietenden versteigern"
+        backend={"kombinationen_v1":{"visible_section":"Kombinationen",
+                     "items":[{"de":term,"fa":"به بالاترین پیشنهاددهنده فروختن"}]},
+                 "kombinationen_v336":{"items":[{"de":term,"fa":"به بالاترین پیشنهاددهنده فروختن"}]}}
+        out=self.scan(backend,visible=[term+" — به بالاترین پیشنهاددهنده فروختن"],examples=EXAMPLES)
+        self.assertEqual(out["combinations"],1)
+        self.assertEqual(out["issues"],[])
+
+    def test_backend_distinct_from_visible_is_still_checked(self):
+        out=self.scan({"kombinationen_v1":{"items":[{"de":"Sie versteigern alte Möbel.",
+                                                         "fa":"وسایل قدیمی را حراج می‌کنند"}]}},
+                      visible=["etwas an den Meistbietenden versteigern — حراج‌کردن"],
+                      examples=EXAMPLES)
+        self.assertEqual(out["combinations"],2)
+        self.assertEqual(out["issues"][0]["code"],"EXACT_EXAMPLE_CLONE")
+
+    def test_backend_duplicate_within_one_source_is_high(self):
+        term="etwas an den Meistbietenden versteigern"
+        out=self.scan({"kombinationen_v1":{"items":[{"de":term,"fa":"فروختن"},
+                                                       {"de":term,"fa":"به مزایده گذاشتن"}]}},
+                      examples=EXAMPLES)
+        self.assertEqual(out["combinations"],1)
+        self.assertTrue(any(x["code"]=="EXACT_COMBO_DUPLICATE"
+                            and x["severity"]=="HIGH" for x in out["issues"]))
+
+    def test_backend_malformed_list_fail_closed(self):
+        with self.assertRaisesRegex(ValueError,"INVALID_BACKEND_COMBINATION_ITEMS"):
+            self.scan({"kombinationen_v336":{"visible_section":"Kombinationen"}},examples=EXAMPLES)
+
+    def test_backend_missing_german_surface_fail_closed(self):
+        with self.assertRaisesRegex(ValueError,"EMPTY_COMBO"):
+            self.scan({"kombinationen_v1":{"items":[{"fa":"فقط فارسی"}]}},examples=EXAMPLES)
+
+    def test_conflicting_camel_and_snake_custom_fields_fail_closed(self):
+        raw=data(combos=[],backend={"kombinationen_v1":{"items":[{"de":"Satz A"}]}})
+        reader=csv.DictReader(io.StringIO(raw.decode("utf-8")),delimiter="\t")
+        rows=list(reader)
+        cols=reader.fieldnames+["customFields"]
+        rows[0]["customFields"]=json.dumps({"kombinationen_v1":{"items":[{"de":"Satz B"}]}})
+        out=io.StringIO(newline="")
+        writer=csv.DictWriter(out,fieldnames=cols,delimiter="\t",lineterminator="\n")
+        writer.writeheader();writer.writerows(rows)
+        with self.assertRaisesRegex(ValueError,"CONFLICTING_CUSTOM_FIELDS_ALIASES"):
+            review_signals(native_rows(out.getvalue().encode("utf-8")))
+
+    def test_camel_custom_fields_only_supported(self):
+        raw=data(combos=[],backend={})
+        reader=csv.DictReader(io.StringIO(raw.decode("utf-8")),delimiter="\t")
+        rows=list(reader)
+        cols=reader.fieldnames+["customFields"]
+        rows[0]["customFields"]=json.dumps({"kombinationen_v1":{"items":[{"de":"Sie versteigern alte Möbel."}]}})
+        out=io.StringIO(newline="")
+        writer=csv.DictWriter(out,fieldnames=cols,delimiter="\t",lineterminator="\n")
+        writer.writeheader();writer.writerows(rows)
+        scan=review_signals(native_rows(out.getvalue().encode("utf-8")))
+        self.assertEqual(scan["combinations"],1)
+        self.assertTrue(any(x["code"]=="EXACT_EXAMPLE_CLONE" for x in scan["issues"]))
+
+    def test_no_forced_combinations_when_backend_empty(self):
+        out=self.scan({"kombinationen_v1":{"items":[]},"kombinationen_v336":{"items":[]}},
+                      examples=EXAMPLES)
+        self.assertEqual(out["combinations"],0)
+        self.assertEqual(out["issues"],[])
 
 class ReleaseEvidenceTests(unittest.TestCase):
     def setUp(self):

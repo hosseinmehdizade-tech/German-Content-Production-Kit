@@ -1,6 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.43 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.44 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L05 THREE-PHASE GOVERNANCE OVERRIDE — 2026-11-08 (Phase 1 complete / 3; NONIMPORT)
+
+**Binding workflow change:** NO MORE `Review18/Review19` microbatches of 7–12 words as project milestones. Work unit = a **whole lesson**; at most **three milestone stages per lesson** (1 audit, 2 correction, 3 independent QA + actual app/export test). The phase may internally use automated and risk-based checks, but **cannot** advance by renaming 10-word edits as a new Review. Preserve all accepted curated edits from the last Library owner, no textbook-source restart or historical ZIP regression.
+
+- **Phase 1/3 DONE for L05 on current Review17 owner; Owner data was NOT changed:** `730b8f7b3d9fa6d96d566032f89cdead12167cce83417dd5ba216905846aaee9` / Library `libfile_f92f59633bf081918a34509b2e51d7eb`. Full 1571-card owner and all 1548 source rows verified; L05 = **155 provisional card views / 156 source rows** (confirmed ordinals 610/611 merged into one learned unit), **0 missing source rows**.
+- **Real scope of audit:** structurally inspected all 155 cards, 377 DE/FA pairs, 49 missing independent morphology attestations, 21 likely multi-meaning cases with no sense-networks (only *candidates*, not automatic errors), 28 curated HOLD markers. 106 previously attested forms and 22 examples with scoped QA still **do not** amount to complete card approval; 316 examples explicit PENDING and 39 without status. No exact duplicate example within L05; global remaining seven are elsewhere. Zero structural missing fields. Every card has a traceable priority/next action; P1=30, P2=42, P3=83; **every P3 still requires full language QA.**
+- **Artifacts persisted and verified in B1+ Library:** audit JSON `libfile_5d725392d82481918612fc3aef471437` SHA `3427fa12705c5dffd2e5fcbe132945d9880193ff209d20bbebfcfe9522e3cd93`, 155-card decision JSONL `libfile_5a411ccfc77c819194efe7609296ffe4` SHA `762ccb9c6dd8b1592958e0434252451567b658ae8a698f154936e6b885f68378`, management plan `libfile_415dc8b691908191ae73399c8ad2fb07`, reusable QA script `libfile_e66b66a0d910819198f1a06668d86b62`. GitHub: `Workspaces/aspekte-b1plus-v336/Lessons/L05/PHASE1-COMPLETE-LESSON-AUDIT.json`, `Workspaces/aspekte-b1plus-v336/Lessons/L05/THREE-PHASE-PLAN.md`, `Workspaces/aspekte-b1plus-v336/Tools/qa_full_lesson_v1.py`. All four Library artifacts passed exact byte readback (not inferred from upload success).
+- **Phase 2/3 NEXT, mandatory:** edit/review all **155 L05** cards using the unified queue and semantic/morphology policies, risk-prioritized (30/42/83). Fix genuine lexical/grammar errors, add missing sense routing only where needed, avoid duplicate card creation, keep all meanings on the same card. **One whole-lesson correction package** and a full per-card disposition; no per-10 messaging cycles. All 377 example pairs must be accounted for with explicit source/evidence/decision.
+- **Phase 3/3 LAST, conditional on Phase2 completion:** independent full-card German/Persian QA and G2/semantic structural gates, real app import and rendered-card check. Release only genuinely approved L05 cards; unresolved ones stay explicit HOLD. Corpus-wide seven legacy example duplications and 340 release HOLDs remain separate global blockers.
+- **Global project remains NONIMPORT:** G1 DONE; G2 active 331/1571, G3/G4 active; G5 runtime pending, G6 blocked; zero completely approved cards. This lesson phase1 does not increase 331 or alter edited word counts.
+
+**Next resume must start at L05 PHASE2**, never re-run this full audit unless owner bytes or schema materially change. This control overrides older Review17 microbatch next-actions.
+
 
 ## LIVE CONTROL-PLANE OVERRIDE — 2026-11-07 (governance-only; no card/QA progress)
 

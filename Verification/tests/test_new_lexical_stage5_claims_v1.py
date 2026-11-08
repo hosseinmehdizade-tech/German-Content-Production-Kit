@@ -87,4 +87,85 @@ class NewClaimProofTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"DUPLICATE_JSON_KEY"):
             json_obj(b'{"status":"PASS","status":"BLOCKED"}')
 
+
+class FullGitRangeRegressionTests(unittest.TestCase):
+    def setUp(self):
+        import subprocess
+        self.subprocess=subprocess
+        tmp=tempfile.TemporaryDirectory();self.addCleanup(tmp.cleanup)
+        self.repo=Path(tmp.name)/"repo"
+        self.repo.mkdir()
+        self.g("init","-q")
+        self.g("config","user.email","ci@example.invalid")
+        self.g("config","user.name","Synthetic CI")
+        path=self.repo/"Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json"
+        path.parent.mkdir(parents=True)
+        ref=ROOT/"Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json"
+        path.write_bytes(ref.read_bytes())
+        (self.repo/"README").write_text("baseline")
+        self.g("add",".")
+        self.g("commit","-qm","synthetic base")
+        self.base=self.g("rev-parse","HEAD").strip()
+    def g(self,*args):
+        return self.subprocess.run(["git",*args],cwd=self.repo,check=True,
+            capture_output=True,text=True,encoding="utf-8").stdout
+    def commit(self,path,content):
+        p=self.repo/path
+        p.parent.mkdir(parents=True,exist_ok=True)
+        p.write_text(content,encoding="utf-8")
+        self.g("add",str(path))
+        self.g("commit","-qm","synthetic change")
+        return self.g("rev-parse","HEAD").strip()
+    def test_full_pr_base_detects_claim_hidden_in_earlier_commit(self):
+        from check_new_lexical_stage5_claims_v1 import run
+        stage="Workspaces/menschen-a1-verben-wortfamilie-v336/STAGE5-TEST.json"
+        self.commit(stage,json.dumps({"status":"PASS_STAGE5_CONTENT_DELIVERY",
+            "artifact":{"sha256":"a"*64}}))
+        previous=self.g("rev-parse","HEAD").strip()
+        head=self.commit("Workspaces/menschen-a1-verben-wortfamilie-v336/notes.txt",
+                        "separate later commit")
+        self.assertEqual(run(previous,head,self.repo)["new_claims_verified"],0)
+        with self.assertRaisesRegex(ValueError,"RELEASE_QUALITY_RECEIPT_REQUIRED"):
+            run(self.base,head,self.repo)
+    def test_new_latest_promotion_requires_quality_proof(self):
+        from check_new_lexical_stage5_claims_v1 import run
+        path="Workspaces/menschen-a1-verben-wortfamilie-v336/LATEST.json"
+        self.commit(path,json.dumps({"status":"STAGE4_PENDING","import_ready":False}))
+        baseline=self.g("rev-parse","HEAD").strip()
+        latest=self.commit(path,json.dumps({"status":"PASS_STAGE5","import_ready":True,
+            "source_sha256":"1"*64}))
+        with self.assertRaisesRegex(ValueError,"RELEASE_QUALITY_RECEIPT_REQUIRED"):
+            run(baseline,latest,self.repo)
+    def test_approved_latest_repointed_to_different_zip_requires_proof(self):
+        from check_new_lexical_stage5_claims_v1 import run
+        path="Workspaces/menschen-a1-verben-wortfamilie-v336/LATEST.json"
+        self.commit(path,json.dumps({"status":"PASS_STAGE5","import_ready":True,
+            "artifact":{"sha256":"1"*64}}))
+        baseline=self.g("rev-parse","HEAD").strip()
+        latest=self.commit(path,json.dumps({"status":"PASS_STAGE5","import_ready":True,
+            "artifact":{"sha256":"2"*64}}))
+        with self.assertRaisesRegex(ValueError,"RELEASE_QUALITY_RECEIPT_REQUIRED"):
+            run(baseline,latest,self.repo)
+    def test_unchanged_accepted_pointer_metadata_edit_not_release(self):
+        from check_new_lexical_stage5_claims_v1 import run
+        path="Workspaces/menschen-a1-verben-wortfamilie-v336/LATEST.json"
+        self.commit(path,json.dumps({"status":"PASS_STAGE5","import_ready":True,
+            "artifact":{"sha256":"1"*64},"date":"2026-11-01"}))
+        base=self.g("rev-parse","HEAD").strip()
+        head=self.commit(path,json.dumps({"status":"PASS_STAGE5","import_ready":True,
+            "artifact":{"sha256":"1"*64},"date":"2026-11-08"}))
+        self.assertEqual(run(base,head,self.repo)["new_claims_verified"],0)
+    def test_unrelated_workspace_json_array_not_a_release(self):
+        from check_new_lexical_stage5_claims_v1 import run
+        head=self.commit("Workspaces/menschen-a1-verben-wortfamilie-v336/QA-DATA.json",
+                         '[{"term":"sprechen"},{"term":"hören"}]')
+        self.assertEqual(run(self.base,head,self.repo)["new_claims_verified"],0)
+    def test_real_workflow_uses_event_name_and_full_before_sha(self):
+        y=(ROOT/".github/workflows/gfp-lexical-stage5-claim-guard.yml").read_text()
+        self.assertIn("EVENT_NAME: "+"${{ github.event_name }}",y)
+        self.assertIn("PUSH_BEFORE: "+"${{ github.event.before }}",y)
+        self.assertIn('BASE="$PUSH_BEFORE"',y)
+        self.assertIn('BASE="$PR_BASE"',y)
+        self.assertNotIn("BAD_${{ github.event_name }}",y)
+
 if __name__=="__main__":unittest.main()

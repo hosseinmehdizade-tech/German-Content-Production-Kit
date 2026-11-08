@@ -6,6 +6,7 @@ on:
       - 'Verification/check_new_lexical_stage5_claims_v1.py'
       - 'Verification/check_new_lexical_producer_bypass_v1.py'
       - 'Verification/tests/test_new_lexical_producer_bypass_v1.py'
+      - 'Verification/tests/test_legacy_a2_v354_archive_hold_v1.py'
       - 'Tools/**'
       - '.github/workflows/**'
       - 'Verification/tests/test_new_lexical_stage5_claims_v1.py'
@@ -18,6 +19,7 @@ on:
       - 'Verification/check_new_lexical_stage5_claims_v1.py'
       - 'Verification/check_new_lexical_producer_bypass_v1.py'
       - 'Verification/tests/test_new_lexical_producer_bypass_v1.py'
+      - 'Verification/tests/test_legacy_a2_v354_archive_hold_v1.py'
       - 'Tools/**'
       - '.github/workflows/**'
       - 'Verification/tests/test_new_lexical_stage5_claims_v1.py'
@@ -42,6 +44,8 @@ jobs:
         run: python -B -m unittest discover -s Verification/tests -p test_new_lexical_stage5_claims_v1.py -v
       - name: Reject new executable legacy lexical producer bypasses (negative tests)
         run: python -B -m unittest discover -s Verification/tests -p test_new_lexical_producer_bypass_v1.py -v
+      - name: Both historical Menschen A2 v354 publishing workflows remain disabled
+        run: python -B -m unittest discover -s Verification/tests -p test_legacy_a2_v354_archive_hold_v1.py -v
       - name: Verify newly changed lexical acceptance claims and new producer routes
         if: github.event_name != 'workflow_dispatch'
         shell: bash

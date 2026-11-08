@@ -1,7 +1,7 @@
 {
   "schema": "aspekte-b2-run-control@1.0.0",
   "date": "2026-11-08",
-  "status": "DRAFT_SOURCE_COVERAGE_COMPLETE__L03_DUPLICATE_FIXED__RELEASE_BLOCKED",
+  "status": "DRAFT_COVERAGE_COMPLETE__L01_COLLOCATION_SCHEMA_FIXED_CONTENT_REVIEW_PENDING__RELEASE_BLOCKED",
   "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
   "full_policy_github": "Workspaces/aspekte-b2-v336/EXECUTION-EXIT-GUARD-v1.0.0.md",
   "library_policy": "Current/EXECUTION-EXIT-GUARD-v1.0.0.md",
@@ -17,8 +17,8 @@
   ],
   "next_task": {
     "phase": "PROJECT_RELEASE_QA_REMEDIATION",
-    "status": "L03_DUPLICATE_FIXED_WITH_VERIFIED_LIBRARY_READBACK__L01_SCHEMA_NEXT",
-    "goal": "L03 duplicate ab2-l03-u-1865 was repaired in one field with old bytes reversible; central QA updated to handle zero duplicates and verified across 10 Library-curated lessons. Next: L01 158 cards missing collocations_de column — apply non-destructive schema correction only, do not invent collocations or silently satisfy content completeness. Then independent DEFA QA and actual accepted-card SRS/native rollback safety tests; no source textbook reingest.",
+    "status": "L01_SCHEMA_FIXED__158_EMPTY_COLLOCATIONS_PENDING_EDITORIAL_QA",
+    "goal": "L01 158-card CSV now has an empty collocations_de column on every card with all preexisting data byte-equivalent at the cell level. Do not consider 158 blank collocation entries done or invent combinations to fill. Next focus on full-lesson semantic collocation editorial review against curated learner entries, then independent DEFA QA, real accepted-card live SRS identity verification, and safe native app rollback tests. Do not reread publisher textbook or import unapproved cards.",
     "source_rows": 1726,
     "draft_units": 1719,
     "complete_primary_DEFA_pairs": 3438,
@@ -26,7 +26,7 @@
     "collocation_proposals": 4574,
     "literal_overlap_flags": 295,
     "literal_overlap_cards": 270,
-    "cards_with_no_collocation_field": 158,
+    "cards_with_no_collocation_field": 0,
     "intra_card_duplicate_collocation_items": 0,
     "QA_manifest_library_file_id": "libfile_8e600f45a64081918619ad405acf276c",
     "overlap_flags_library_file_id": "libfile_884e45d5fd1481918950a73ba8d6a375",
@@ -38,7 +38,7 @@
     "approved_importable_cards": 0,
     "qa_workflow_git_path": ".github/workflows/aspekte-b2-central-qa.yml",
     "qa_workflow_policy": "READ_ONLY_AUDIT_ON_B2_CURRENT_OR_QA_UPDATES__HARD_FAIL_FOR_B2_RELEASE_TAGS__DOES_NOT_TOUCH_SRS",
-    "github_actions_runtime_execution_status": "NOT_VERIFIED_DATA_CSV_ONLY_IN_LIBRARY",
+    "github_actions_runtime_execution_status": "NOT_VERIFIED__CURRENT_FULL_DATA_LIBRARY_ONLY",
     "context_long_sentence": 270,
     "context_short_sentence": 24,
     "whole_utterance_example": 1,
@@ -56,13 +56,21 @@
     "triage_script_sha256": "deb22546b2b598b775655e5f95fe35633d4e1fbab1b1338f6553f957c176dd89",
     "triage_classification_basis": "READ_ONLY_MATCHED_EXAMPLE_CONTEXT_AND_LENGTH__NOT_INDEPENDENT_LINGUISTIC_SIGNOFF",
     "duplicate_collocation_gate": "PASS_NO_INTERNAL_DUPLICATES",
-    "qa_checker_version": "v1.2",
-    "qa_checker_script_sha256": "80a4d17c5403c90b2106f0b9e74759c2065b38fa117b9d6096986c8407e68890",
+    "qa_checker_version": "v1.3",
+    "qa_checker_script_sha256": "1abd38a2d2e049f6ba8be27ca371a8a047973a3517a62f2622933849709beb8b",
     "l03_canonical_library_sha256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
     "l03_canonical_library_file_id": "libfile_e4ead6088be48191998cc322792d2c74",
     "l03_github_receipt_path": "Workspaces/aspekte-b2-v336/Reports/B2-L03-DUPLICATE-FIX-RECEIPT-20261108.json",
     "l03_library_readback": "BYTE_EXACT_SHA256_MATCH",
-    "linguistic_release_approval": false
+    "linguistic_release_approval": false,
+    "cards_with_empty_collocations_pending_review": 158,
+    "collocation_schema_status": "PRESENT_ALL_1719_CARDS__L01_158_VALUES_EMPTY_PENDING_REVIEW",
+    "l01_canonical_library_sha256": "2c9b149beab668b7f25c0e61e0683487c2ded4a03f1ae07cc6b7d768abc338f1",
+    "l01_canonical_library_file_id": "libfile_7047a0521d348191ba67dedf461afc3f",
+    "l01_library_readback": "BYTE_EXACT_SHA256_MATCH",
+    "l01_schema_receipt_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-L01-COLLOCATION-SCHEMA-RECEIPT-20261108.json",
+    "l01_schema_receipt_library_file_id": "libfile_79826f0a41d48191a2a12c7fcc1d15ef",
+    "l01_schema_rollback_libfile": "libfile_7b5ce2edb72c8191a5a962259eda42de"
   },
   "completed_or_blocked": {
     "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
@@ -83,24 +91,25 @@
   "imported_cards": 0,
   "last_completed": {
     "phase": "PROJECT_RELEASE_QA_REMEDIATION",
-    "lesson": 3,
-    "pass": "POST_PASS3_QA_REMEDIATION_SINGLE_EDIT",
-    "status": "L03_DUPLICATE_CORRECTED_AND_CENTRAL_QA_0_DUPLICATE_CASE_FIXED__NONIMPORT",
-    "actual_output": "ONE_COLLOCATION_FIELD_CHANGE__QA_SCRIPT_ZERO_DUPLICATE_CASE_FIX__RECEIPT",
+    "lesson": 1,
+    "pass": "POST_PASS3_NONDESTRUCTIVE_SCHEMA_FIX",
+    "status": "L01_ALL_158_COLLLOCATION_COLUMNS_PRESENT_BUT_EMPTY__RELEASE_BLOCKED",
+    "actual_output": "ONE_EMPTY_COLLATIONS_COLUMN_ALL_158_CARDS__NO_ORIGINAL_CELL_CHANGED__10_LESSON_QA_V1.3_REGRESSION",
     "source_rows": 1726,
     "draft_cards": 1719,
     "DEFA_pairs": 3438,
     "collocations": 4574,
-    "verified_internal_duplicate_collocations": 0,
+    "missing_collocation_columns": 0,
+    "l01_empty_collocations_pending_editorial_review": 158,
+    "internal_duplicate_collocations": 0,
     "literal_overlaps_advisory": 295,
     "cards_approved": 0,
     "imports": 0,
     "SRS_changes": 0,
-    "changed_card_unit_id": "ab2-l03-u-1865",
-    "current_L03_SHA256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
-    "github_receipt": "Workspaces/aspekte-b2-v336/Reports/B2-L03-DUPLICATE-FIX-RECEIPT-20261108.json",
-    "library_readback": "PASS_SHA256_MATCH",
-    "qa_release_check_exit_code": 2
+    "current_L01_SHA256": "2c9b149beab668b7f25c0e61e0683487c2ded4a03f1ae07cc6b7d768abc338f1",
+    "qa_release_check_exit_code": 2,
+    "github_receipt": "Workspaces/aspekte-b2-v336/Reports/B2-L01-COLLOCATION-SCHEMA-RECEIPT-20261108.json",
+    "library_readback": "PASS_SHA256_MATCH"
   },
   "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
   "sync_failure_action": "STOP_WITH_SYNC_PENDING_NO_RETRY_LOOP",
@@ -131,7 +140,7 @@
         1630,
         1660
       ],
-      "current_draft_sha256": "3c6c3b279c0974b3cbbba2e0a14624af6d22894f7b5d8f1bc7de81623a809c53",
+      "current_draft_sha256": "2c9b149beab668b7f25c0e61e0683487c2ded4a03f1ae07cc6b7d768abc338f1",
       "current_draft_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L01-CURRENT-158-UNIT-REVIEW-R47-NONIMPORT.csv",
       "current_draft_library_file_id": "libfile_7047a0521d348191ba67dedf461afc3f",
       "pass3_disposition_sha256": "4c1a57e50c4ce362c4517b5a265dbedcdbaa2ce59d93551cb2417a2beadae300",
@@ -140,7 +149,7 @@
         "INDEPENDENT_DE_FA_LINGUISTIC_SIGNOFF",
         "ACTUAL_B1_A2_ACCEPTED_CARD_IDENTITIES_AND_SRS",
         "NATIVE_APP_SRS_ROUNDTRIP_ROLLBACK",
-        "COLLOCATION_FIELD_MISSING_FOR_158_CARDS"
+        "L01_COLLOCATION_CONTENT_REVIEW_PENDING_158_CARDS"
       ],
       "known_identity_hold_source_ordinals": [
         1575,
@@ -151,7 +160,11 @@
       "importable_cards": 0,
       "actual_imports": 0,
       "personal_SRS_mutations": 0,
-      "next_reopen_only_with_new_release_evidence": true
+      "next_reopen_only_with_new_release_evidence": true,
+      "collocations_column_available": true,
+      "empty_collocations_pending_editorial_review": 158,
+      "schema_migration_receipt": "Workspaces/aspekte-b2-v336/Reports/B2-L01-COLLOCATION-SCHEMA-RECEIPT-20261108.json",
+      "status_note": "STRUCTURAL_SCHEMA_PASS__COLLOCATION_CONTENT_UNREVIEWED__BLOCKED_NONIMPORT"
     },
     "L02": {
       "draft_units": 110,
@@ -658,6 +671,21 @@
     "all_10_lessons_regression_pass": true,
     "QA_checker_zero_duplicate_edge_case_fixed": true,
     "independent_linguistic_qa_signed": false,
+    "release_blocked": true
+  },
+  "l01_schema_integrity": {
+    "original_sha256": "3c6c3b279c0974b3cbbba2e0a14624af6d22894f7b5d8f1bc7de81623a809c53",
+    "current_sha256": "2c9b149beab668b7f25c0e61e0683487c2ded4a03f1ae07cc6b7d768abc338f1",
+    "original_source_backup_library_file_id": "libfile_7b5ce2edb72c8191a5a962259eda42de",
+    "current_library_file_id": "libfile_7047a0521d348191ba67dedf461afc3f",
+    "receipt_library_file_id": "libfile_79826f0a41d48191a2a12c7fcc1d15ef",
+    "cells_changed_from_original": 0,
+    "new_columns": [
+      "collocations_de"
+    ],
+    "cards_added": 0,
+    "cards_removed": 0,
+    "independent_QA_approved": false,
     "release_blocked": true
   }
 }

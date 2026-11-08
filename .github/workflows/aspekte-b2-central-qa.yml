@@ -1,0 +1,53 @@
+name: Aspekte B2 — central quality gate
+
+on:
+  push:
+    paths:
+      - 'Workspaces/aspekte-b2-v336/Current/**'
+      - 'Workspaces/aspekte-b2-v336/QA/**'
+      - '.github/workflows/aspekte-b2-central-qa.yml'
+    tags:
+      - 'aspekte-b2-release-*'
+  pull_request:
+    paths:
+      - 'Workspaces/aspekte-b2-v336/Current/**'
+      - 'Workspaces/aspekte-b2-v336/QA/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Scan curated B2 card files (read-only)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Run deterministic central QA audit
+        run: |
+          python Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py \
+            --inputs Workspaces/aspekte-b2-v336/Current \
+            --outputs '${{ runner.temp }}/b2-central-audit'
+      - name: Preserve machine-readable audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aspekte-b2-central-qa
+          path: '${{ runner.temp }}/b2-central-audit'
+          if-no-files-found: ignore
+
+  release_gate:
+    name: Stop B2 release tags until all release evidence exists
+    if: startsWith(github.ref, 'refs/tags/aspekte-b2-release-')
+    needs: audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Hard release check — fail closed, preserve SRS
+        run: |
+          python Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py \
+            --inputs Workspaces/aspekte-b2-v336/Current \
+            --outputs '${{ runner.temp }}/b2-release-check' \
+            --release-check

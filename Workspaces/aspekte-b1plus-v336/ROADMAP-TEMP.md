@@ -1,6 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.59 · **Stand:** 2026-11-09 · **Typ:** fortlaufender Plan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.60 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L06 PHASE2 DONE — 177-CARD WHOLE-LESSON PASS · NEXT L06 PHASE3
+
+**Canonical CURRENT edited learner-data owner:** `libfile_3832285495208191a078ee53fc37feb7`, SHA256 `bba74617aae6abfb849c28a03b2f279ed75171075c9717c2e6f3ad4c2d9f7d8f`, 3,605,537 bytes, 241 ZIP entries, 240 signed manifest entries. The uploaded Library ZIP was materialized and compared byte-for-byte with the local output; exact SHA256 readback and ZIP CRC PASS. Parent L04 Phase3 SHA `31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4`.
+
+- **L06 Phase2** finished as a **single whole-lesson editorial/structural decision unit for all 177 cards**; NOT a claim of 177 fully language-approved cards. Every one of 177 cards has disposition metadata and is changed as a JSON object, while precisely **45 cards had targeted edited content, example routing, meaning networks or QA status before the metadata pass**. Four zero-example cards received 8 new DE–FA examples; two additional specific-sense examples were added. L06 example pairs **370→378** after removal of two exact duplicate German example groups, preserving Persian alternatives when different. **14 remaining missing example statuses explicitly marked PENDING**, two prior missing-status example records were removed as exact duplicates; zero statusless examples now remain in L06.
+- **Right-side meaning networks:** 18 pre-existing L06 networks retained, **19 new meaning networks with 42 meaning blocks**, **89 new explicit example→sense routes**. Meaning groups are within the same learner card, not split into duplicate cards. Conservatively edited near-identical examples for `verlegen` and `handwerklich`, retaining the correct grammar and meanings. 57 new meaning-specific bilingual collocations. Globally **722 Kombinationen** across 1571 cards, strict structural noncopy / no sentence-like / required-field gate PASS and conservative finite-clause check PASS (zero issues). **Semantic naturalness is not independently certified by these scripts**.
+- **Saved-primary-member verification, mandatory:** SHA of primary JSONL changed from `8271f00d2ae686c835e1b489cf1385b82705a7290fd26781f7f7017932a0bed1` to `3766d3bbd7e85809f79719db758857e2deac2a5363982b863d878086a44cd059`. Reopened actual child ZIP confirms 177 changed lesson-card JSON objects with exactly the 45 targeted-content/QA subset, all 1394 other-lesson card objects unchanged, all 1571 stable card IDs and exact 1548 source links preserved. No reprise of the L04 report-only ghost-edit defect.
+- **Blockers stay open:** L06 **33 inherited curated HOLDs**, **69 missing individual morphology attestations**, full-card German–Persian language review pending and real `German-Flashcards-Pro` application import/render untested. Corpus-wide exact same-card example duplicate groups reduced **5→3**, still a release blocker. Zero cards approved for release. **NONIMPORT**.
+- **Evidence:** GitHub `Lessons/L06/PHASE2-PERSISTENCE-RECEIPT-20261109.json`, `Lessons/L06/PHASE2-WHOLE-177-CARD-REPORT-20261109.json`, `Lessons/L06/PHASE2-177-CARD-DISPOSITIONS.jsonl`, `Lessons/L06/PHASE2-CONTENT-BEFORE-AFTER.json`, source code `Tools/build_L06_phase2_v1.py`. Full dynamic 177-card HTML QA view, current primary JSONL and existing legacy project content are in the one verified owner ZIP. Do not reimport obsolete book/source CSV.
+- **NEXT L06 Phase3:** strict case-level linguistic/grammar and meaning-linked combinations review, hold decisions, actual importer and renderer test if accessible. Without a real test or complete evidence, finish Phase3 explicitly **RELEASE_BLOCKED**; avoid repeating ten-word Reviews or inventing an external human examiner requirement.
+
+---
+## HISTORICAL ROADMAP (before L06 Phase2)
 
 ## LIVE L06 PHASE1 COMPLETE — 177-CARD WHOLE-LESSON AUDIT · NEXT PHASE2 (2026-11-09)
 

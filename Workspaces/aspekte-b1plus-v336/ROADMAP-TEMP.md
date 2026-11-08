@@ -1,6 +1,19 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.46 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.47 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L01 PHASE1/3 STATUS — 2026-11-08 (NONIMPORT)
+
+**Whole-lesson progress only:** the next production lesson is now **L01**, with **Phase 1 complete** as a structural inventory and risk/decision queue for **all 90 cards**. No 10-card Review cycles. **The learner-data owner remains the exact verified L05 Phase3 Library ZIP** SHA256 `b5e470617bd72a34e6ab6236ba3232d247d2a1ee0a45f35126e5c7beed6e41f6`; **no content revisions in L01 Phase1 and no false release approvals.**
+
+- **71 original L01 source rows → 90 curated provisional cards**. Ordinals 14/15 are correctly consolidated into `der Kontakt`; 57 into `greifen`. G1 cross-lesson duplicate ordinal 733 belongs to the existing `Darauf kommt's an` card (primary ordinal 18); it is NOT a missing row or extra headword. 0 missing original source rows; 0 intra-card duplicate DE examples; 0 empty DE–FA pair fields.
+- **139 DE–FA pairs**, all explicitly still `PENDING_INDEPENDENT_DE_FA_SEMANTIC_QA`; **24 zero-example cards**, **6/90 previously scope-attested forms**, **84/90 lacking independent form evidence**, **42 curated HOLD markers**, 3 semantic-network cards with four blocks. 67 semicolon-suggested ambiguous-sense cards without a network are heuristic review candidates, not proven errors. Two full-sentence Fronts, ordinals 60/61, need deliberate classification.
+- Per-card machine-readable **90-card priority queue**, GitHub `Workspaces/aspekte-b1plus-v336/Lessons/L01/PHASE1-90-CARD-PRIORITY-QUEUE.jsonl`: P1 **49**, P2 **41**, P3 **0** (none is yet a full-card approval). Full audit `Workspaces/aspekte-b1plus-v336/Lessons/L01/PHASE1-90-CARD-AUDIT.json`, policy and steps `Workspaces/aspekte-b1plus-v336/Lessons/L01/THREE-PHASE-PLAN.md`.
+- **Library write limitation:** the newly created L01 audit/queue/plan/tools are presently saved in GitHub and conversation-local artifacts only; Library uploads returned `container_session_expired` after bounded retries. The **existing latest authoritative L05 Phase3 Library owner is unchanged and remains byte-verified**. Never claim new L01 Library sync/ownership until a real successful upload and readback. Resume content work from the owner plus GitHub queue, not from a fresh source scan.
+- **NEXT PHASE 2:** use all 90 GitHub queue entries to review/edit 139 examples, 84 missing attestations, meaning networks only where useful and 42 HOLD markers, with a single full-lesson before/after ledger. Keep valid G1 merges and cross-links. **Phase 3** requires independent full-card QA and actual app importer/TSV rendering test, or explicit RELEASE_BLOCKED.
+- **Separate L05 status remains unchanged:** its three-phase release gate was evaluated as BLOCKED (155 cards; 46 missing form attestations and 28 curated HOLD markers). Global project still 0 fully approved cards, 340 older release HOLDs, G5 runtime untested, G6 blocked.
+
+
 
 ## LIVE L05 THREE-PHASE GOVERNANCE OVERRIDE — 2026-11-08 (Phase 1 complete / 3; NONIMPORT)
 

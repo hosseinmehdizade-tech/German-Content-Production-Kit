@@ -1,6 +1,6 @@
 # Aspekte B1+ / Lektion 02 — Drei-Phasen-Plan
 
-**Stand:** 2026-11-08 — Phase 1/3 DONE; Phase 2 NEXT; NONIMPORT.
+**Stand:** 2026-11-08 — Phase 2/3 editorial DONE; Phase 3 full-card QA next; NONIMPORT.
 
 **Source of truth:** SHA-verified curated Library L01-Phase3 ZIP, SHA256 `dccda4967101f6c0ec4b3df49f3f9e050fd56c4bf20b14be3805899c3e9d8522`. Existing learner data are read-only in Phase1. No textbook re-import.
 
@@ -23,3 +23,15 @@ Handle **all 91** cards and **all 197 examples** in one L02 whole-lesson stage. 
 Independent complete German/Persian release QA + morphologic and sense-routing gates + case-by-case HOLD decisions. Real German-Flashcards-Pro application TSV import and rendered Front/Back must be demonstrated rather than simulated. Failure → `RELEASE_BLOCKED`, never pretend the lesson is approved.
 
 **Global unchanged:** 338/1571 prior G2 form attestations, 340 legacy release HOLD markers, seven exact duplicate groups across corpus (one L02); zero formal full-card release approvals. This L02 Phase1 creates **no new attestations or released cards**.
+
+## LIVE — Phase 2/3 abgeschlossen (2026-11-08); Phase 3 NEXT; NONIMPORT
+
+**Neuer SHA-verifizierter Karten-Owner:** Library `libfile_3f51fa99c0148191b34d7f4fafb5e4de`; SHA256 `2c11f7ab269edae7b07a2c1445845e8f48d88370f919224ec0f216ad6e91e5d3`. Ersetzt als aktuelle Kartendaten den oben aufgeführten historischen L01-Phase3-Owner; Parent bleibt verifizierbar. Archiv: 3.115.061 Bytes, 192 Members, 191 Hashes; Library-Readback/CRC/Hashes PASS.
+
+**Alle 91 L02 Karten wurden in einer einzigen redaktionellen Lektionseinheit geprüft:** 32 mit wirklicher Inhaltsänderung, 59 unverändert nach Prüfung. 91 Dispositionen im JSONL. 27 zusätzliche Wortnetz-Karten mit 60 Sinnblöcken; die drei bestehenden Wortnetze bekommen alle 6 bisher nicht verknüpften Beispiele an ihren passenden Sinn gebunden. 3 neue DE–FA Beispiele; eine `Kastellan`-Dopplung entfernt mit vollständiger Vorher/Nachher-Dokumentation; Beispiele 197→199, null L02-Dubletten. Alle 12 bisher statuslosen Beispiele nun ausdrücklich PENDING, nicht freigegeben.
+
+**11 Duden-scope-limited G2-Form-/Lexikbelege**: `vorbeikommen`, `zerreißen`, `umbauen` (zwei Duden-Homographen), `eintreten`, `dringen`, `Kastellan`, `Kulisse`, `meterdick`, `speisen`, `Fall`, `fortlaufen`; 11 Karten, 80 ohne neuen externen Nachweis. `dringen`: `ist gedrungen` vs `hat gedrungen` nach Bedeutung; `meterdick`: persische Beispiele präzisiert. 338→349 global begrenzt attestiert. Keine komplette Kartenfreigabe daraus ableiten.
+
+**Technische QA ohne Release:** `Tools/qa_L02_phase2_verify_v1.py` überprüft Parent/current: 1571 Karteneinheiten, 1548 Original-Source-Map-Zeilen **byteidentisch**, alle 1480 nicht-L02 Karten **unverändert**; 91 aktuelle Dispositionen. Konservativer Copy/finite-clause-Gate auf 559 Kombinationen: 0 erkannte Fehler; global bleiben 6 exakte Alt-Dubletten außerhalb L02 Release-Hindernisse. 91-Karten Front/Back HTML sowie parsergetestete 91-Zeilen NONIMPORT-TSV im ZIP. **Kein echter German-Flashcards-Pro-Importer-/Rendertest**.
+
+**Phase 3 NEXT:** 91 Karten und 199 DE–FA-Beispiele unabhängig vollständig überprüfen, die 80 offenen Formsachen und 18 kuratierten HOLD-Marker begründet bewerten, den echten App-Import/Renderer testen. Fehlende Evidenz → explizit RELEASE_BLOCKED. Keine 10-Wort-Reviews, keine fingierte Freigabe. Globale 340 ererbte Release-HOLD-Marker, 0 formal genehmigte Karten.

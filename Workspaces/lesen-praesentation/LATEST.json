@@ -3,35 +3,38 @@
   "updated_date": "2026-11-08",
   "family_id": "family:lesen",
   "owner": "Workspaces/lesen-praesentation",
-  "latest_scoped_checkpoint": "QUALITY-REVIEW-CHECKPOINT-R20-20261108.json",
-  "latest_scoped_report": "Reports/LESEN-R20-EDITORIAL-AND-V505-REPORT-20261108.md",
+  "latest_scoped_checkpoint": "QUALITY-REVIEW-CHECKPOINT-R21-20261108.json",
+  "latest_scoped_report": "Reports/LESEN-R21-EDITORIAL-AND-V505-REPORT-20261108.md",
   "latest_editable_candidate": {
+    "revision": "R21",
+    "content_sha256": "004f3dca2110c2177fb2e830ef08fb0d45d201c289152df81958fb20f82d6919",
+    "runtime_sha256": "5179344690ac3f5ecc5b8d72703f664402b1d210cdcf9ff351e652f6192d02ad",
+    "portable_recovery_zip_sha256": "113f54723c1ca817a47167374844afe7c4e17402fb41a8fed9f0fbc8d29b4115",
+    "portable_location": "/Flasch kart/German-Content-Production-Kit/Content/Lesen/Checkpoints/Lesen-R21-10P06-CONTENT-RECOVERY-CHECKPOINT-20261108.zip",
+    "library_file_id": "libfile_8181264342e88191b17f771a14385fd5",
+    "library_saved": true,
+    "library_readback": "PASS_EXACT_SHA256_BYTE_COMPARE",
+    "status": "SCOPED_QA_PASS__LIBRARY_PERSISTED__NOT_CURRENT_NOT_FINAL"
+  },
+  "latest_library_persisted_parent": {
     "revision": "R20",
     "content_sha256": "a9a440f184bc9d771e7820b066c6097ab7e5fea62d41d283266bac3ba7cefa98",
     "runtime_sha256": "ac8acd6b7dec495451751d8e12032c034a39eea3819065f7d9cc198abe38b8b2",
-    "portable_recovery_zip_sha256": "63880331de1723c4bf6ced12bd62f630dde944c92907c81fdd2cd28b227bc448",
-    "portable_location": "current conversation artifact only",
-    "library_saved": false,
-    "git_source_materialization": false,
-    "status": "LOCAL_SCOPED_QA_PASS__LIBRARY_SAVE_BLOCKED__NOT_CURRENT_NOT_FINAL"
-  },
-  "latest_library_persisted_parent": {
-    "revision": "R19",
-    "content_sha256": "1a1fa9be4f61dd34a04264050cf12531168cd75920517f3d9315780b11acf4ff",
-    "runtime_sha256": "365b774d8478bd98f6e111cafa66677abc1688cad76674102f6061109825254f",
-    "content_library_id": "libfile_74cb63a2ec84819191908243c70bcd16",
-    "runtime_library_id": "libfile_8e980e361f14819180b059014e63e3d5"
+    "recovery_zip_sha256": "63880331de1723c4bf6ced12bd62f630dde944c92907c81fdd2cd28b227bc448",
+    "portable_location": "earlier same-chat recovery artifact only",
+    "library_saved": false
   },
   "curated_current_unchanged": {
     "sha256": "558c165df7603c26b775781f9c9bbd508c456b4b24f68979ebe0edecf3b46565",
     "promoted": false
   },
   "gates": {
-    "scoped_structural": "18701/18701 PASS",
-    "exact_current_v505_preentry": "PASS zero warnings",
+    "scoped_structural": "18581/18581 PASS",
+    "exact_current_v505_preentry": "PASS ZERO WARNINGS; 10/10 negative rejects",
+    "portable_replay": "PASS exact re-build from R20 parent + QA, 14/14 archive hashes",
     "stage4": "HOLD",
     "stage6": "NOT_RUN",
     "stage7": "NOT_RELEASED"
   },
-  "next": "Resolve exact R20 ZIP from current conversation and verify SHA; if unavailable recover from byte-verified R19 Library parent using Git delta, never silently claim R20 content bytes exist."
+  "next": "R22: selectively review p06-s02 in LES-PRES-041..050; then remaining p06, p01/p07, full semantic Stage4 and original nine-lens re-run; Stage6 only when browser IndexedDB test is possible."
 }

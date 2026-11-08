@@ -1,3 +1,24 @@
+# Aspekte B1+ · Lektion 04 · Drei-Phasen-Plan
+
+**Stand: 2026-11-08 · Phase 2/3 editorial/structural work DONE WITH DOCUMENTED HOLDS · Next Phase 3 QA · NONIMPORT**
+
+## Current Phase2 owner (supersedes the earlier Phase1 note)
+- Library ID: `libfile_e1d6e3a7045c81918bf679544a3fa2f0`.
+- SHA256: `a3b9166fa670c14b3c0c40cc381c5b0ae96402b080a63c8a1934e19c18aee792`.
+- **160/160 decisions**, of which **62 existing cards received targeted edits**: 13 new semantic networks, 36 new sense blocks, 112 new example-to-sense links, four Persian meaning refinements and 31 example pending-status repairs.
+- One exact German example repetition in `schätzen` removed while preserving both Persian translations. Original 365 examples now 364, and remaining five exact DE example duplicate groups are outside L04.
+- All 1571 source-derived card IDs, all 1548 original source mappings and non-L04 card contents preserved. All 32 L04 curated HOLD markers kept. No new form attestations or release approvals. **No external 'independent reviewer' prerequisite** beyond grounded content decisions and deterministic QA.
+- 98 other cards were preserved on structural review; this is not a claim that all their DE/FA content has received final language validation.
+
+## Phase 3 — next work unit
+1. Case-level German–Persian meaning, example, grammar and collocation decisions for all 160 cards, prioritizing unresolved cases, not repetitive microbatches.
+2. Re-evaluate 32 curated HOLDs and 54 form-attestation gaps without treating lack of reference metadata as proof of a linguistic mistake. Retain ambiguous mixed-sense example unlinked unless justified.
+3. Strict corpus regression, complete HTML/TSV projections and an **actual app import/render test** if accessible; offline simulation does not count.
+4. Finish with **RELEASED only for proven, app-tested cases**, else clearly label remaining as **RELEASE_BLOCKED/NONIMPORT**. Do not invent another person to perform a second review.
+
+---
+## Historical Phase1 plan (retained for traceability)
+
 # Aspekte B1+ L04 — Drei-Phasen-Plan
 
 **Stand:** 2026-11-08 — Phase 1/3 vollständige 160-Karten-Gesamtinventur **DONE**; Phase 2 NEXT; **NONIMPORT**.

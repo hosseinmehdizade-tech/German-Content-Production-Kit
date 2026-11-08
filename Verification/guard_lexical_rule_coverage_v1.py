@@ -68,10 +68,23 @@ def native_rows(raw):
     if len(ids)!=len(set(ids)):raise ValueError("DUPLICATE_CARD_IDS")
     return rows
 
+def split_lexical_bilingual_surface(item):
+    """Keep German internal en dashes; split only real DE/FA display delimiters.
+
+    An en dash inside a German pattern (e.g. 'wohin? – wo?') is not a
+    translation separator. A spaced em dash remains the legacy fallback.
+    """
+    for match in re.finditer(r"\s+[—–]\s+",item):
+        following=item[match.end():].lstrip()
+        if following and re.match(r"[\u0600-\u06ff\u0750-\u077f]",following):
+            return item[:match.start()].strip()
+    return item.split(" — ",1)[0].strip()
+
+
 def _lexical_de(item, source):
     """German surface only; do not mistake FA/EN metadata for a new phrase."""
     if isinstance(item,str):
-        value=re.split(r"\s+[—–]\s+",item,maxsplit=1)[0]
+        value=split_lexical_bilingual_surface(item)
     elif isinstance(item,dict):
         value=item.get("de",item.get("text_de",item.get("text","")))
     else:

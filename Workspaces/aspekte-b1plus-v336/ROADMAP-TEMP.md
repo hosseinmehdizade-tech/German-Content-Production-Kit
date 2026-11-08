@@ -4,6 +4,8 @@
 
 ## LIVE L04 PHASE3 — GATE EVALUATED / RELEASE_BLOCKED · NEXT L06 PHASE1
 
+**Mandatory pre-commit gate for all future curated ZIP owners:** [`Tools/qa_owner_primary_member_persistence_v1.py`](Tools/qa_owner_primary_member_persistence_v1.py) must compare the actual stored primary 1571-card JSONL against its parent and verify the claimed count of modified objects. L04 invalid v1 reproduces FAIL (claimed 62 / actual 0), corrected v2 PASS (62/62), Phase3 PASS (3/3). A report-only edit does not count as a data edit.
+
 **CRITICAL DATA-PERSISTENCE CORRECTION:** Earlier L04 Phase2 owner `libfile_e1d6e3a7045c81918bf679544a3fa2f0` (SHA `a3b9166fa670c14b3c0c40cc381c5b0ae96402b080a63c8a1934e19c18aee792`) incorrectly preserved the *unchanged primary 1571-card JSONL*, despite 62 edit claims in sidecars. That old owner and receipt are SUPERSEDED; **never use as current learner data**. New mandatory invariant: verify current primary-card-member hash changes, actual per-object differences and all claimed edits are reflected in saved ZIP bytes; sidecar counts alone are insufficient.
 
 - **Repaired actual Phase2 owner:** B1+ Library `libfile_b56dcf2878648191a36919b6322c5a31`, SHA256 `49146d3266c5b802136d41cace941c986c39f0d00c82eb02897fa02ade5f53d9`, 3,427,079 bytes. All **62 existing card objects actually changed in the live main JSONL**, including 112 new example→sense links, 13 new semantic networks, and corrected `schätzen` example deduplication. The Library exact SHA256 readback, 228 manifest entries and ZIP CRC pass. GitHub repair receipt: `Lessons/L04/PHASE2-CORRECTED-MAIN-DATA-REPAIR-20261108.json`.

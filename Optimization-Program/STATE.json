@@ -3,7 +3,7 @@
   "program_id": "GFP-OPT-2026",
   "title": "German Flashcards Pro & Production Kit — Continuous Optimization",
   "created_date": "2026-10-29",
-  "last_verified_update_date": "2026-11-07",
+  "last_verified_update_date": "2026-11-08",
   "state": "ACTIVE_OPTIMIZATION_MISSION__CONTROL_CENTER_SNAPSHOT_20261107__POLICY_BINDINGS_22__WORKSPACES_36__APP_CURRENT_V505_R141_NONFINAL__VERIFIED_V486_R120__P1_ADOPTED_ZERO__OP01_OP02_OPEN__OP05_HOLD",
   "canonical_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
   "tracker_issue": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/issues/25",
@@ -86,7 +86,7 @@
     }
   ],
   "active_priority": "OP-01_OP-02",
-  "next_exact_action": "P1 OPEN: first real owner-authorized governed native producer on newest verified curated CURRENT, source-specific QA, exact GitHub-main and authenticated Library readback, then reviewed ADOPTED. App CURRENT is v505-R141 NON-FINAL; last fully verified v486-R120. The historical app Git mirror references v486 plus a stale v503 target: do not claim current Git source, Stage6/7 or FINAL. Keep OP01 DENY_ALL/security and OP05 cleanup HOLD separate; do not modify cards, LOCKED or runtime for metadata sync.",
+  "next_exact_action": "P1 RIGHT-SIDE QA AFTER PR152: run first real owner-authorized native producer through exact-source Kombinationen/Kollokationen ↔ Beispiele + related-section HIGH gate, independent Stage4, exact GitHub-main and authenticated Library readback, then reviewed ADOPTED. App CURRENT is v505-R141 NON-FINAL; last fully verified v486-R120. The historical app Git mirror references v486 plus a stale v503 target: do not claim current Git source, Stage6/7 or FINAL. Keep OP01 DENY_ALL/security and OP05 cleanup HOLD separate; do not modify cards, LOCKED or runtime for metadata sync.",
   "constraints": [
     "Source/LOCKED immutable",
     "Newer explicit user artifact outranks stale Git state",
@@ -3756,5 +3756,36 @@
     "new_p1_producer_adoptions": 0,
     "historical_state_retained": true,
     "new_workspace_mapped": "menschen-a2-verben-r164-front-back-successor-v336 (WIP, not import)"
+  },
+  "right_side_lexical_qa_milestone_20261108": {
+    "milestone": "MERGED_EXACT_SCOPE_CENTRAL_RIGHT_SIDE_CONTENT_GATE",
+    "date": "2026-11-08",
+    "scope": "PROSPECTIVE_SOURCE_NEUTRAL_NEW_MUTABLE_LEXICAL_STAGE5_ONLY",
+    "pull_request": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/152",
+    "merged_commit": "706f7bd37bd8a30a51c00dad0eaa28b09852ec0f",
+    "source_files": [
+      "Verification/guard_lexical_rule_coverage_v1.py",
+      "Verification/tests/test_guard_lexical_rule_coverage_v1.py",
+      "Optimization-Program/Control-Center/LEXICAL-POLICY-EXECUTION-GATE-20261107.md"
+    ],
+    "proof": "main Git readback guard+policy; CI latest PR head 68fa925d8247a8e0e10a23bf32ed7dbf790961df",
+    "qa_linux_windows": "PASS_GFP_LEXICAL_MANDATORY_RELEASE_POLICY_COVERAGE",
+    "qa_run": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/actions/runs/42508926891",
+    "other_ci": "Content quality, Global Policy Synchronization, Project Dependency Graph, Policy Adoption Dashboard, Scoped Evidence Overlay, Project Control Center all green at PR head",
+    "enforced": [
+      "Kombinationen/Kollokationen vs own Beispiele: existing same-card source-bound checks",
+      "new HIGH taxonomy union across Verwandte Wörter, Synonyme, Antonyme, Wortfamilie, Kombinationen, Rektion etc",
+      "exact source correction claim cannot pass if matching issue still present",
+      "opaque learner-visible IDs, invisible formatting controls, repeated related values, contradictory typed roles require correction",
+      "stale/duplicate/high decisions and missing affected cards block"
+    ],
+    "new_negative_positive_regressions": 7,
+    "claim_limits": [
+      "Not all 21 families formally ADOPTED",
+      "No changed historical LOCKED/cards/current app/import/SRS/FSRS",
+      "Does not replace independent Stage4 or native Stage6/Stage7",
+      "GitHub main protection remains open"
+    ],
+    "next": "Validate at least one genuine source-owner authorized editable current TSV and Stage4 review under the merged gate; register per-producer source/byte evidence and then roll out source by source; avoid reporting synthetic QA as universal adoption."
   }
 }

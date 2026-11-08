@@ -1,3 +1,22 @@
+# Aspekte B1+ Lektion 04 — Drei-Phasen-Abschluss
+
+**Stand 2026-11-08 · Phase 1 DONE · Phase 2 DONE (AFTER CRITICAL PERSISTENCE FIX) · Phase 3 RELEASE GATE EVALUATED → BLOCKED / NONIMPORT**
+
+**Datenintegritäts-Vorfall:** Der ursprüngliche Phase2-ZIP-Inhalt hat nur Sidecar-Berichte und Statuszählungen gespeichert, nicht die tatsächlichen 62 card-edits im primären JSONL. Dieses Paket (Library `libfile_e1d6e3a7045c81918bf679544a3fa2f0`) ist als falsch/superseded markiert. Die korrekt gespeicherten 62 Änderungen sind im reparierten ZIP `libfile_b56dcf2878648191a36919b6322c5a31`, SHA `49146d3266c5b802136d41cace941c986c39f0d00c82eb02897fa02ade5f53d9`, nachgewiesen. Beim Schreiben jedes künftigen Owners: vollständiges JSONL aus bearbeiteten Karten neu schreiben, wieder einlesen, tatsächliche Objekt-Diffs nachweisen und Manifest/CRC mit Readback prüfen.
+
+**Current L04 Phase3 owner:** Library `libfile_10c0072c60b881919cfb3ce2cfaab2fb`, SHA `31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4`. Exactly **160 cards**, **365 DE–FA examples**, **44 sense networks**, **115 linked examples** (1 dual-meaning sentence unlinked by design), **3 additional verified-context meaning edits** (`recherchieren`, `quasi`, `der Ball`). All other lesson card objects and the original 1548-row map unchanged. Exact Library readback, 234 internal manifest hashes and CRC pass.
+
+**Actual strict QA:** the whole-lesson 160-card release gate was run and returned BLOCKED, with 54 scoped form-evidence gaps, 32 inherited editorial HOLDs, unfinished bilingual QA, 1 ambiguous example, no actual application importer receipt, and five old duplicate examples outside L04. 665 global structured Kombinationen pass the structural noncopy gate; this is not evidence that every combination is natural or fully context-checked. Complete QA-only HTML and 160-card offline TSV parser roundtrip are inside the owner archive. **Zero formally released cards.**
+
+**Final workflow state: `RELEASE_BLOCKED_NONIMPORT` (not a reopened Phase2/another small Review cycle).** No fictional external human examiner prerequisite; explicitly verified content and deterministic checks are sufficient in principle, but current release evidence is incomplete. Next general production milestone is **L06 Phase1 whole-lesson inventory**, from the current L04 Phase3 SHA-verified Library owner. Preserve this L04 unresolved release backlog until actual issues can be resolved; don't pretend app runtime was tested.
+
+Linked receipts:
+- `Lessons/L04/PHASE2-CORRECTED-MAIN-DATA-REPAIR-20261108.json`
+- `Lessons/L04/PHASE3-160-CARD-QUALITY-GATE-20261108.json`
+
+---
+## Historische Phasenpläne / prior notes
+
 # Aspekte B1+ · Lektion 04 · Drei-Phasen-Plan
 
 **Stand: 2026-11-08 · Phase 2/3 editorial/structural work DONE WITH DOCUMENTED HOLDS · Next Phase 3 QA · NONIMPORT**

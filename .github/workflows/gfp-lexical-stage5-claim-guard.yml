@@ -8,6 +8,7 @@ on:
       - 'Tools/build_quality_gated_lexical_candidate_v1.py'
       - '.github/workflows/gfp-lexical-stage5-claim-guard.yml'
   push:
+    branches: [main]
     paths:
       - 'Workspaces/**'
       - 'Verification/check_new_lexical_stage5_claims_v1.py'
@@ -36,12 +37,17 @@ jobs:
         shell: bash
         env:
           PR_BASE: ${{ github.event.pull_request.base.sha }}
-          ${{ github.event_name }}: EVENT_NAME
+          EVENT_NAME: ${{ github.event_name }}
+          PUSH_BEFORE: ${{ github.event.before }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
             BASE="$PR_BASE"
           else
-            BASE="$(git rev-parse HEAD^)"
+            BASE="$PUSH_BEFORE"
+            if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+              echo "Cannot prove full push comparison range; refusing Stage5 acceptance check" >&2
+              exit 2
+            fi
           fi
           python -B Verification/check_new_lexical_stage5_claims_v1.py --base "$BASE" --head HEAD
       - name: Scope

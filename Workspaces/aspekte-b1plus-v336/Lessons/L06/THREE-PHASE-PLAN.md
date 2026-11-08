@@ -1,3 +1,15 @@
+# Aspekte B1+ · L06 — Drei-Phasen-Abschluss
+
+**2026-11-09 · Phase 1 DONE · Phase 2 DONE · Phase 3 strict QA evaluated → RELEASE_BLOCKED_NONIMPORT**
+
+Canonical, verified curated Library owner `libfile_714e7e818a4881919c2639503c928bc8`, SHA `cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990`. 177 cards, 378 bilingual examples, 5 actual card changes in saved primary data (ordinal 737, 742, 750, 751, 846); 1571 corpus IDs and 1548 mapped source rows preserved. Three finite-clause `Kombinationen` corrected in L06; `formal` vs `formell` fixed; `per` Duden-scoped Akk./Dat. attestation gained. 109 scoped forms attested, 68 without such evidence, 33 curated HOLDs retained. 177 of 177 release-gate decisions **BLOCKED**, no real app import. Global finite-clause v4 **FAIL 3 candidates in L02/L03/L09**; old strict 722-combination structural gate alone is insufficient. 177-card QA HTML + 378 examples and offline 177 TSV records passed but are not the application runtime.
+
+**Next: L07 Phase1 whole-lesson audit.** L06 stays in a separate release-blocked backlog. Do not restart per-10-word reviews. Do not invent 177 full bilingual linguistic signoffs or independent external reviewer.
+
+Authoritative receipt: `Lessons/L06/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json`. Strict finite gate `Tools/qa_combinationen_finite_clause_v4.py`; main saved-card integrity is mandatory. Wider cross-project wiring is NOT yet verified.
+
+---
+## Historical Phase1–2 plans
 # Aspekte B1+ · Lektion 06 — Drei-Phasen-Plan (LIVE)
 
 **2026-11-09 · Phase 1 DONE · Phase 2 DONE (editorial, 45 targeted data/status cards) · Phase 3 NEXT · NONIMPORT**

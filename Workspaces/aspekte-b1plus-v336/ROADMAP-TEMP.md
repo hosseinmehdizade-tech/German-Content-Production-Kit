@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.37 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.38 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE CONTROL-PLANE OVERRIDE — 2026-11-07 (governance-only; no card/QA progress)
 
@@ -363,3 +363,13 @@
 - مالک جدید: `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW11-7-EXAMPLES-SCOPED-QA-NONCOPY-GATE-20261108-NONIMPORT.zip`، Library ID `libfile_e798bd9b2788819180934268c5833536`، SHA256 `997aad16b317e505d8ca7fd2e4bcbd08dda5f5d358f409e3f7393f668bed6bbb`، **۸۴۸٬۳۹۰ بایت، ۹۸ عضو، ۹۷ هش داخلی**؛ بازخوانی بایتی Library و CRC پاس شد. گزارش GitHub: `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW11-7-EXAMPLES-NONCOPY-20261108.json`.
 - **ثابت مانده:** ۱٬۵۴۸ ردیف منبع؛ ۱٬۵۷۱ کاندید؛ ۳۱۹ کارت دارای اصلاح محتواییِ قبلی، ۱۴۸ شبکه و ۱۹۷ بلوک معنایی؛ G2 = ۳۰۵ تأیید و ۱٬۲۶۶ مورد باز؛ **۰ کارت با تأیید نهایی، ۳۴۰ HOLD مسدود، بدون import TSV**.
 - **گام بعد:** ۸ عبارت جمله‌مانند را یکی‌یکی بررسی و ثابت/اصلاح کن؛ سپس QA بقیه کارت‌ها و مدارک صرف را ادامه بده. در این نوبت «تغییر معنایی جدید» = صفر، «تأیید محدود مثال» = ۷.
+
+## G4 Review12 — 2026-11-08 · 8 Kombinationen-Entscheidungen auf 5 echten Karten (NONIMPORT)
+
+- Fortsetzung ausschließlich von SHA-bestätigtem Review11 `997aad16b317e505d8ca7fd2e4bcbd08dda5f5d358f409e3f7393f668bed6bbb`, ohne CSV-/Master-Neuaufbau.
+- **Acht** konkrete vollständige Satz-/Ausruf-Kandidaten wurden in den fünf Karten 185 (also), 295 (zudem), 456 (es handelt sich um), 722 (nix) und 1096 (Typ) bearbeitet. **Vier** feste Äußerungen unter `Feste_Wendungen_DE_FA`, **drei** Satzschablonen unter `Satzmuster_DE_FA`, **eine** redundante volle Frage zu echter Kollokation `einen geeigneten Druckertyp auswählen` umgeschrieben. Entscheidungen mit before/after im neuen Besitzerpaket.
+- **Strenges automatisiertes Struktur-Gate:** `Tools/qa_combinationen_strict_v2.py <owner.zip>`. Regressionstest Review11 EXIT 1 (8 Problemfälle), Review12 EXIT 0. Abdeckung: **1.571 Kartenvorschauen**, **148 Wortnetz-Karten**, **197 Sinnblöcke**, verbleibende **366 Kombinationen**; **0 exakte Kopien**, **0 vollständige Beispiel-Substrings**, **0 vollständige Satz-/Ausruf-Einträge in Kombinationen**. Dieser Test ist fortan zwingende manuelle Aufrufbedingung **vor jedem künftigen QA-Paket/Release**; keine ungeprüfte Behauptung eines bereits eingebauten CI-Hooks.
+- Quelle und Fronts, akzeptierte FA-Bedeutungen und alle früheren Beispiele samt Übersetzungen unverändert; 1.548 Quellzeilen/Source-Map und 1.571 Kandidaten-IDs behalten. **5 Karten in dieser Runde tatsächlich geändert**. Das alte kumulative Distinct-Edited-Zählergebnis `319` wurde **nicht** blind erhöht, weil Überlappung nicht neu gegengeprüft wurde.
+- Neues Paket in Library `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW12-8-PHRASE-CLASSIFICATIONS-5-CARDS-NONIMPORT-20261108.zip`, ID `libfile_032f228f57108191bce588a157db7253`, SHA256 `a3c53ef3446b519b606fe2caeeab26b8669831dd5cf02c0f7bd55ba5d883526f`, 850.087 bytes, 103 ZIP-Mitglieder/102 Manifest-Prüfsummen; exakter Library-Byte-Readback, CRC, alle Hashes PASS. GitHub-Metadaten: `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW12-8-PHRASES-5-CARDS-20261108.json`.
+- **Offener wichtiger Render-Gate:** `Feste_Wendungen_DE_FA` und `Satzmuster_DE_FA` müssen in G5 tatsächlich im front/back angezeigt werden, sonst keine Release-Freigabe.
+- **G2: 305 verifiziert / 1.266 ohne unabhängige Attestierung; G4: 0 komplette Kartenfreigaben; 340 HOLD gesperrt; kein importierbares TSV.** Nächste konkrete Arbeit: G4 weitere Sinn-/Beziehungschecks auf echten Karten, G2 evidenzbasierte Formen, G5 Feldprojektion testen. 

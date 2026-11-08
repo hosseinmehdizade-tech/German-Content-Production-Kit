@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "project_id": "aspekte-b1plus",
   "definition": "LOCKED_v1.0",
-  "current_stage": "L06_PHASE2_WHOLE_177_CARD_EDITED_45_TARGETED_CHANGES_PHASE3_NEXT_NONIMPORT",
+  "current_stage": "L06_PHASE3_177_CARD_RELEASE_GATE_EVALUATED_BLOCKED_NEXT_L07_PHASE1_NONIMPORT",
   "baseline": {
     "name": "Aspekte-B1plus-STAGE4-FINAL-QA-GATE2D-PART05-250-P2-INDIVIDUAL-REVIEWS-NONIMPORT-20261106.zip",
     "sha256": "61c71d2bfc106ceb3355f174e0f68acf12b4fb532b7ffcaf6cd15e2c7b3f75bc",
@@ -121,7 +121,7 @@
     ],
     "raw_csv_sha_open": true
   },
-  "next_step": "L06 Phase3 (one whole lesson): case-level quality decisions on 177 cards; retain 33 unresolved HOLDs, 69 morphology evidence gaps and 3 remaining corpus example duplicates; run real app importer/render gate if available; otherwise RELEASE_BLOCKED; no 10-card Reviews.",
+  "next_step": "L07 Phase1: audit entire lesson from SHA-verified L06 Phase3 Library owner. Preserve L06 33 HOLDs, 68 form evidence gaps and global 3 finite-clause combination candidates in release backlog. No 10-card loops.",
   "stage2_L01_second_bilingual_context_pass": 71,
   "stage2_L01_high_priority_qa_proposals": 37,
   "stage3_L01_new_editorial_example_pairs": 10,
@@ -3158,7 +3158,9 @@
     ],
     "no_microbatch_review_milestones": true,
     "source_authority": "LATEST_SHA_VERIFIED_CURATED_LIBRARY_OWNER",
-    "next_production_lesson": "L06_PHASE3"
+    "next_production_lesson": "L07_PHASE1",
+    "source_library_id": "libfile_714e7e818a4881919c2639503c928bc8",
+    "source_sha256": "cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990"
   },
   "latest_L05_phase2_owner": {
     "status": "L05_PHASE2_OF_3_COMPLETE_ALL_155_EDITORIAL_DISPOSITIONS_30_ACTUAL_CONTENT_EDITS_56_SENSE_BLOCKS_NONIMPORT",
@@ -3979,12 +3981,12 @@
     "L04_phase3_test": "PASS_CLAIMED_3_ACTUAL_3",
     "notes": "Primary current card member must actually contain claimed edits; sidecar counts are not authoritative."
   },
-  "current_production_lesson": "L06",
+  "current_production_lesson": "L07",
   "lesson06_three_phase_workflow": {
-    "phase": 2,
+    "phase": 3,
     "phases_total": 3,
     "lesson": "L06",
-    "status": "PHASE2_WHOLE_LESSON_EDITORIAL_COMPLETED_PHASE3_NEXT_NONIMPORT",
+    "status": "PHASE3_EVALUATED_ALL_177_RELEASE_BLOCKED_NONIMPORT",
     "date": "2026-11-09",
     "parent_lesson": "L04_PHASE3",
     "source_owner_sha256": "31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4",
@@ -4046,7 +4048,7 @@
     "github_plan": "Workspaces/aspekte-b1plus-v336/Lessons/L06/THREE-PHASE-PLAN.md",
     "github_replayable_script": "Workspaces/aspekte-b1plus-v336/Tools/qa_L06_phase1_v1.py",
     "github_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE1-PERSISTENCE-RECEIPT-20261109.json",
-    "next": "L06_PHASE3_STRICT_CASE_LEVEL_LANGUAGE_AND_APP_RUNTIME_GATE",
+    "next": "L07_PHASE1",
     "import_ready": false,
     "phase2_status": "ALL_177_DECISION_METADATA_45_TARGETED_CARD_DATA_OR_QA_CHANGES_NOT_FULL_BILINGUAL_APPROVAL",
     "phase2_library_owner_id": "libfile_3832285495208191a078ee53fc37feb7",
@@ -4063,7 +4065,24 @@
     "phase2_missing_form_attestations": 69,
     "phase2_language_release_QA": "PENDING_FULL_CARD_CONTEXT_QA",
     "real_app_import_render_tested": false,
-    "all_cards_release_blocked": true
+    "all_cards_release_blocked": true,
+    "phase3_status": "CASE_LEVEL_QA_177_FAIL_CLOSED_5_PERSISTED_TARGETED_CHANGES_NO_FULL_177_BILINGUAL_SIGNOFF",
+    "phase3_owner_library_id": "libfile_714e7e818a4881919c2639503c928bc8",
+    "phase3_owner_sha256": "cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990",
+    "phase3_owner_primary_member_sha256": "eaa8205368528e0be128b3eef79c4ce441b8682abdad1fb56cdd300c696b4694",
+    "phase3_real_card_changes": 5,
+    "phase3_lesson_cards": 177,
+    "phase3_lesson_examples": 378,
+    "phase3_form_attested_L06": 109,
+    "phase3_form_gaps_L06": 68,
+    "phase3_curated_HOLDs_L06": 33,
+    "phase3_formal_approved_cards": 0,
+    "phase3_lesson_release_gate": "BLOCKED_ALL_177",
+    "phase3_app_runtime_tested": false,
+    "phase3_v4_L06_finite_clause_candidates": 0,
+    "phase3_v4_global_candidates": 3,
+    "phase3_v4_global_gate": "FAILED_NON_L06_3",
+    "final_lesson_release_status": "RELEASE_BLOCKED_NONIMPORT"
   },
   "lesson06_phase1_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE1-PERSISTENCE-RECEIPT-20261109.json",
   "latest_L06_phase1_audit_bundle": {
@@ -4073,7 +4092,7 @@
     "kind": "AUDIT_ONLY_DOES_NOT_REPLACE_LEARNER_DATA_OWNER",
     "verification": "EXACT_BYTE_READBACK_SHA256_ALL_7_MANIFESTS_ZIP_CRC_PASS"
   },
-  "next_action": "L06_PHASE3_WHOLE_177_CARD_STRICT_G2_G4_HOLD_QA_G5_REAL_APP_IMPORT_TEST_OR_EXPLICIT_RELEASE_BLOCKED",
+  "next_action": "L07_PHASE1_FULL_LESSON_AUDIT_FROM_L06_PHASE3_VERIFIED_OWNER_NO_REVIEW_MICROBATCH",
   "latest_L06_phase2_owner": {
     "status": "L06_PHASE2_WHOLE_177_CARD_EDITORIAL_45_TARGETED_DATA_OR_QA_CHANGES_NONIMPORT",
     "library_file_id": "libfile_3832285495208191a078ee53fc37feb7",
@@ -4107,5 +4126,83 @@
   },
   "lesson06_phase2_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-PERSISTENCE-RECEIPT-20261109.json",
   "latest_L06_phase2_git_report": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-WHOLE-177-CARD-REPORT-20261109.json",
-  "latest_L06_phase2_before_after": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-CONTENT-BEFORE-AFTER.json"
+  "latest_L06_phase2_before_after": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE2-CONTENT-BEFORE-AFTER.json",
+  "latest_L06_phase3_owner": {
+    "status": "L06_PHASE3_STRICT_RELEASE_GATE_EVALUATED_BLOCKED_NONIMPORT",
+    "library_file_id": "libfile_714e7e818a4881919c2639503c928bc8",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-L06-PHASE3-FINAL-177-CARD-RELEASE-BLOCKED-NONIMPORT-20261109.zip",
+    "sha256": "cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990",
+    "bytes": 3656592,
+    "zip_members": 251,
+    "verified_manifest_entries": 250,
+    "primary_jsonl_sha256": "eaa8205368528e0be128b3eef79c4ce441b8682abdad1fb56cdd300c696b4694",
+    "source_parent_library_id": "libfile_3832285495208191a078ee53fc37feb7",
+    "source_parent_sha256": "bba74617aae6abfb849c28a03b2f279ed75171075c9717c2e6f3ad4c2d9f7d8f",
+    "verification": "ZIP_CRC_SHA256_MEMBER_MANIFEST_EXACT_LIBRARY_BYTE_READBACK_PASS",
+    "all_cards": 1571,
+    "original_source_mapping_rows": 1548,
+    "L06_cards": 177,
+    "L06_examples": 378,
+    "actual_targeted_edited_L06_card_objects": 5,
+    "edited_source_ordinals": [
+      737,
+      742,
+      750,
+      751,
+      846
+    ],
+    "non_L06_cards_unchanged": true,
+    "source_map_byteidentical": true,
+    "L06_forms_scoped_attested": 109,
+    "L06_forms_evidence_gaps": 68,
+    "L06_curated_HOLDs": 33,
+    "L06_sense_network_cards": 37,
+    "global_structured_combinationen": 722,
+    "L06_v4_finite_clause_candidates": 0,
+    "global_v4_finite_clause_candidates_remaining": 3,
+    "global_v4_strict_gate": "FAIL_OUTSIDE_L06",
+    "global_exact_duplicate_example_groups_remaining": 3,
+    "QA_only_HTML_177_cards_378_examples": "PASS",
+    "offline_TSV_177_cards": "PASS_NOT_APPLICATION_TEST",
+    "formal_full_card_bilingual_release_approved": 0,
+    "app_real_import_render_tested": false,
+    "all_L06_release_blocked": 177,
+    "release_allowed": false,
+    "import_ready": false
+  },
+  "lesson06_phase3_receipt": "Workspaces/aspekte-b1plus-v336/Lessons/L06/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json",
+  "release_blockers_L06": {
+    "status": "RELEASE_BLOCKED",
+    "cards": 177,
+    "curated_HOLDs": 33,
+    "missing_scope_form_evidence": 68,
+    "full_bilingual_examples_unapproved": 177,
+    "real_app_import_render_unverified": 177,
+    "local_finite_clause_collocations_remaining": 0,
+    "global_finite_clause_candidates_remaining": 3,
+    "global_exact_example_duplicate_groups_remaining": 3
+  },
+  "mandatory_combinationen_finite_clause_gate_v4": {
+    "version": "4.0",
+    "github_path": "Workspaces/aspekte-b1plus-v336/Tools/qa_combinationen_finite_clause_v4.py",
+    "activated_in_B1plus_current_owner": true,
+    "universal_cross_project_generator_integration_verified": false,
+    "L06_result": "PASS_0",
+    "global_result": "FAIL_3",
+    "blocker_cases": [
+      {
+        "lesson": "L02",
+        "ordinal": 158
+      },
+      {
+        "lesson": "L03",
+        "ordinal": 232
+      },
+      {
+        "lesson": "L09",
+        "ordinal": 1266
+      }
+    ],
+    "QA_note": "This is a conservative finite-clause detector, not a certification of all 722 collocations."
+  }
 }

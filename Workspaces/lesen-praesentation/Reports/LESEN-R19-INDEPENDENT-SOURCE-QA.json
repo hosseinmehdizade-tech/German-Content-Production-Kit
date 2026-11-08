@@ -1,0 +1,109 @@
+{
+  "schema": "lesen-r19-independent-qa@1",
+  "date": "2026-11-08",
+  "status": "PASS_SCOPED_STRUCTURE_ONLY",
+  "source_master_sha256": "1a1fa9be4f61dd34a04264050cf12531168cd75920517f3d9315780b11acf4ff",
+  "runtime_sha256": "365b774d8478bd98f6e111cafa66677abc1688cad76674102f6061109825254f",
+  "structural_checks": 15569,
+  "failures": [],
+  "negative_probes": [
+    {
+      "name": "bad count",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "wrong lesson count"
+      ]
+    },
+    {
+      "name": "duplicate lesson",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "duplicate source item"
+      ]
+    },
+    {
+      "name": "no fa",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "missing translation"
+      ]
+    },
+    {
+      "name": "no en",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "missing translation"
+      ]
+    },
+    {
+      "name": "wrong sentence",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "broken sentence projection"
+      ]
+    },
+    {
+      "name": "bad question count",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "invalid question number"
+      ]
+    },
+    {
+      "name": "duplicate grammar ID",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "duplicate grammar id"
+      ]
+    },
+    {
+      "name": "corrupt offset",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "corrupt grammar offset"
+      ]
+    },
+    {
+      "name": "wrong target",
+      "rejected": true,
+      "error_count": 1,
+      "examples": [
+        "corrupt grammar offset"
+      ]
+    }
+  ],
+  "counts": {
+    "lesson_count": 68,
+    "translation_sections": 478,
+    "questions": 340,
+    "vocab_items": 350,
+    "curated_grammar": 669,
+    "grammar_fulltext_occurrences": 4011,
+    "changed_lessons": 10,
+    "unchanged_lessons": 58,
+    "new_grammar": 10,
+    "retired_old_grammar": 40,
+    "generic_p06_s02_remaining": 48,
+    "fa_en_changed_pairs": 8,
+    "fa_en_preserved_pairs": 2
+  },
+  "scope_limitations": {
+    "independent_full_semantic_stage4": "HOLD",
+    "original_full_nine_lens_grammar_engine": "NOT_RERUN",
+    "browser_indexeddb_stage6": "NOT_RUN",
+    "final_stage7": "NOT_RELEASED"
+  },
+  "notes": [
+    "All other 58 lesson objects and runtime entries retained exactly.",
+    "All fulltext offsets exact in complete section text, and target phrase present in designated sentence.",
+    "Grammar annotation source explicit for manual scoped additions."
+  ]
+}

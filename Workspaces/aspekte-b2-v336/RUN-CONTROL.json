@@ -1,6 +1,6 @@
 {
   "schema": "aspekte-b2-run-control@1.0.0",
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "status": "DRAFT_SOURCE_COVERAGE_COMPLETE__RELEASE_BLOCKED",
   "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
   "full_policy_github": "Workspaces/aspekte-b2-v336/EXECUTION-EXIT-GUARD-v1.0.0.md",
@@ -17,25 +17,28 @@
   ],
   "next_task": {
     "phase": "PROJECT_RELEASE_READINESS",
-    "lesson": 1,
-    "pass": 3,
-    "status": "NEXT_L01_CLOSE_AND_CENTRAL_RELEASE_GATE_AUDIT",
-    "goal": "Close L01 three-pass status as BLOCKED_NONIMPORT unless new evidence exists; then build ONE consolidated accepted-card-ID/SRS-aware release manifest for all 1719 candidate units, applying common linguistic QA, collocation-independence and native app rollback gates. Do not repeat lessons 2–10 editorial micro-passes or search the original book.",
-    "provisional_card_units": 1719,
-    "source_rows_covered": 1726,
-    "approved_importable_cards": 0,
-    "current_portfolio_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-PORTFOLIO-STATUS-20261108.md",
-    "previous_closed_lesson": 10,
-    "previous_release_status": "BLOCKED_NONIMPORT",
-    "missing_prerequisites": [
-      "L01_3PASS_CLOSURE",
-      "INDEPENDENT_DEFA_QA",
-      "LIVE_ACCEPTED_SRS_CROSSLEVEL_IDENTITIES",
-      "NATIVE_APP_IMPORT_ROUNDTRIP_ROLLBACK"
-    ]
+    "status": "CENTRAL_AUDIT_COMPLETE_RELEASE_BLOCKED__REMEDIATION_AND_LIVE_APP_EVIDENCE_NEXT",
+    "goal": "Use a single reproducible cross-lesson release QA gate to repair or justify 295 literal collocation/example overlaps on 270 distinct cards, resolve L01 missing collocations field for 158 cards, and 1 duplicated intra-card collocation. Then require independent DEFA linguistic approval, verified accepted live card IDs/SRS and native app rollback test. Do not reread original textbook, do not auto-rewrite flagged collocations, do not modify imported SRS cards.",
+    "source_rows": 1726,
+    "draft_units": 1719,
+    "complete_primary_DEFA_pairs": 3438,
+    "extra_pilot_pairs_L05": 12,
+    "collocation_proposals": 4575,
+    "literal_overlap_flags": 295,
+    "literal_overlap_cards": 270,
+    "cards_with_no_collocation_field": 158,
+    "intra_card_duplicate_collocation_items": 1,
+    "QA_manifest_library_file_id": "libfile_8e600f45a64081918619ad405acf276c",
+    "overlap_flags_library_file_id": "libfile_884e45d5fd1481918950a73ba8d6a375",
+    "report_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-CENTRAL-RELEASE-READINESS-AUDIT-20261108.json",
+    "checker_github_path": "Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py",
+    "independent_QA_signed": false,
+    "live_app_card_IDs_verified": false,
+    "native_SRS_test_passed": false,
+    "approved_importable_cards": 0
   },
   "completed_or_blocked": {
-    "L01": "R47_DRAFT_158_NOT_RELEASED",
+    "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
     "L02": "PASS3_BLOCKED_NONIMPORT_110_DRAFTS",
     "L03": "PASS3_BLOCKED_NONIMPORT_186_DRAFTS",
     "L04": "PASS3_BLOCKED_NONIMPORT_183_DRAFTS",
@@ -47,26 +50,27 @@
     "L10": "PASS3_BLOCKED_NONIMPORT_151_DRAFTS__THREE_PASS_CYCLE_CLOSED"
   },
   "lesson3_current_sha256": "c0cfeffa7b1b678336c42b3f8b226d2e2410a643455bf43d10bea71c4bcbd576",
-  "latest_json_status": "LEGACY_POINTER_STALE__GITHUB_RUN_CONTROL_AUTHORITATIVE",
+  "latest_json_status": "LEGACY_POINTER_STALE__GITHUB_RUN_CONTROL_PRIMARY",
   "old_global_checkpoint": "L05_R25_UNCHANGED",
   "content_mutations": 0,
   "imported_cards": 0,
   "last_completed": {
-    "lesson": 10,
+    "phase": "PROJECT_RELEASE_READINESS",
+    "lesson": 1,
     "pass": 3,
-    "status": "CLOSED_WITH_BLOCKERS__BLOCKED_NONIMPORT",
-    "source_rows": 153,
-    "draft_cards": 151,
-    "bilingual_pairs": 302,
-    "collocations": 453,
-    "pass2_changed_cards": 57,
-    "pass2_edits": 116,
+    "status": "ALL_TEN_CYCLES_CLOSED_WITH_BLOCKERS__CENTRAL_GATE_FAILED_NONIMPORT",
+    "audited_source_rows": 1726,
+    "provisional_cards": 1719,
+    "DEFA_pairs": 3438,
+    "collocation_proposals": 4575,
+    "collocation_example_literal_overlap_flags": 295,
+    "distinct_cards_flagged": 270,
+    "no_collocation_field_cards": 158,
+    "intra_card_duplicate_collocation_items": 1,
     "approved_cards": 0,
-    "importable_cards": 0,
     "imports": 0,
     "SRS_changes": 0,
-    "pass3_content_edits": 0,
-    "retained_pass2_csv_sha256": "c1acbd41371c4cf1bcc7d7bdcbf92d3cdf0b217fbd6aac85248202681f80b0b0"
+    "learner_content_edits_this_pass": 0
   },
   "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
   "sync_failure_action": "STOP_WITH_SYNC_PENDING_NO_RETRY_LOOP",
@@ -82,10 +86,42 @@
     "L01": {
       "last": "R47",
       "draft_units": 158,
-      "pass1": "DONE",
-      "pass2": "NOT_INDEPENDENTLY_APPROVED",
-      "pass3": "NOT_STARTED",
-      "release": "NONIMPORT"
+      "pass1": "R43_DONE_158_CARD_DRAFTS_2_NONCARD_SIDECARS",
+      "pass2": "R47_AI_EDITORIAL_REVIEW_COMPLETED__INDEPENDENT_DEFA_QA_OPEN",
+      "pass3": "BLOCKED_NONIMPORT__CYCLE_CLOSED",
+      "release": "BLOCKED_NONIMPORT",
+      "title": "Heimat ist …",
+      "source_rows": 160,
+      "source_ordinals_range": [
+        1549,
+        1708
+      ],
+      "noncard_objects": 2,
+      "noncard_ordinals": [
+        1630,
+        1660
+      ],
+      "current_draft_sha256": "3c6c3b279c0974b3cbbba2e0a14624af6d22894f7b5d8f1bc7de81623a809c53",
+      "current_draft_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L01-CURRENT-158-UNIT-REVIEW-R47-NONIMPORT.csv",
+      "current_draft_library_file_id": "libfile_7047a0521d348191ba67dedf461afc3f",
+      "pass3_disposition_sha256": "4c1a57e50c4ce362c4517b5a265dbedcdbaa2ce59d93551cb2417a2beadae300",
+      "pass3_disposition_library_file_id": "libfile_4104f9197368819191841822010de18e",
+      "release_blockers": [
+        "INDEPENDENT_DE_FA_LINGUISTIC_SIGNOFF",
+        "ACTUAL_B1_A2_ACCEPTED_CARD_IDENTITIES_AND_SRS",
+        "NATIVE_APP_SRS_ROUNDTRIP_ROLLBACK",
+        "COLLOCATION_FIELD_MISSING_FOR_158_CARDS"
+      ],
+      "known_identity_hold_source_ordinals": [
+        1575,
+        1616,
+        1630
+      ],
+      "independent_release_qa": false,
+      "importable_cards": 0,
+      "actual_imports": 0,
+      "personal_SRS_mutations": 0,
+      "next_reopen_only_with_new_release_evidence": true
     },
     "L02": {
       "draft_units": 110,
@@ -454,7 +490,7 @@
       "reopen_only_with_new_evidence": true
     }
   },
-  "global_checkpoint": "L05_R25_UNCHANGED",
+  "global_checkpoint": "B2_20261108_ALL_10_DRAFT_CYCLES_CLOSED__CENTRAL_RELEASE_AUDIT_295_FLAGS__BLOCKED_NONIMPORT",
   "changes_to_content_cards": 0,
   "imported_cards_by_this_change": 0,
   "last_completed_date": "2026-11-08",
@@ -463,7 +499,7 @@
     "L05_PASS2_QA": "libfile_88ba219c331c8191ae550496d09292b4",
     "L05_PASS2_DELTA": "libfile_0dba8b6ae2608191b13d599c95df2042",
     "L05_PASS2_REPORT": "libfile_5ca95b94fd08819192af0214fa0a6f36",
-    "status": "L10_PASS3_2_MARKDOWN_FILES_SAVED_LIBRARY__THREE_JSON_PENDING__GITHUB_CURRENT",
+    "status": "CENTRAL_AUDIT_9_OUTPUT_FILES_SAVED_LIBRARY__CURRENT_RUN_CONTROL_LIBRARY_STALE__GITHUB_PRIMARY",
     "L06_PASS1_CSV": "libfile_3c15358accfc81918a927c50ba5d7a1e",
     "L06_PASS1_QA": "libfile_a325a85ca56081918518a6bf9bb4b7dd",
     "L06_PASS1_REPORT": "libfile_92cbb3f50f9081918f7f99ac5f320e0a",
@@ -515,7 +551,16 @@
     "L10_PASS3_REPORT": "SYNC_PENDING_CONTAINER_SESSION_EXPIRED",
     "L10_PASS3_SUMMARY": "libfile_a14530ff23ec81918f5bf06f58d2d5bd",
     "PROJECT_PORTFOLIO_JSON": "SYNC_PENDING_CONTAINER_SESSION_EXPIRED",
-    "PROJECT_PORTFOLIO_MARKDOWN": "libfile_01388ccac98481918640a24bfe6b98bd"
+    "PROJECT_PORTFOLIO_MARKDOWN": "libfile_01388ccac98481918640a24bfe6b98bd",
+    "L01_PASS3_DISPOSITION": "libfile_4104f9197368819191841822010de18e",
+    "L01_PASS3_REPORT": "libfile_cc3bd5cc6a8c81918b51bcab44538644",
+    "CENTRAL_AUDIT_JSON": "libfile_85f6afaaec548191b9e505576108fd4e",
+    "CENTRAL_AUDIT_MD": "libfile_3cf305423dd48191a74ea3502223e152",
+    "CENTRAL_MANIFEST_1719": "libfile_8e600f45a64081918619ad405acf276c",
+    "CENTRAL_COLLOCATION_OVERLAP_FLAGS": "libfile_884e45d5fd1481918950a73ba8d6a375",
+    "CENTRAL_EXCEPTIONS": "libfile_1bf8f4f784e881919f487ce0edd4df02",
+    "CENTRAL_ONE_INTERNAL_DUPLICATE": "libfile_ad84ec9732508191850b6b6f6a09acff",
+    "CENTRAL_QA_SCRIPT": "libfile_73b5bf1ae2e0819186edd975fcab3480"
   },
   "aspekte_sync_guard": {
     "policy_path": "Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md",
@@ -529,11 +574,11 @@
     "sync_attempts_max_per_destination_per_turn": 1,
     "release_approval_unmodified": true
   },
-  "library_and_github_sync_status": "L10_PASS3_AND_PORTFOLIO_GITHUB_ALL_SYNCED__LIBRARY_TWO_MARKDOWN_SAVED_JSON_PENDING__GITHUB_RUN_CONTROL_PRIMARY",
+  "library_and_github_sync_status": "CENTRAL_REPORT_FLAGS_CHECKER_AND_L01_GITHUB_SAVED__FULL_1719_MANIFEST_LIBRARY_SAVED_REGENERABLE_VIA_GITHUB_CHECKER__LIBRARY_RUN_CONTROL_STALE",
   "grammatical_category_corrections": 67,
   "project_portfolio": {
     "as_of": "2026-11-08",
-    "status": "ALL_1726_SOURCE_ROWS_HAVE_DRAFT_OR_NONCARD__RELEASE_NOT_APPROVED",
+    "status": "TEN_DRAFT_CYCLES_CLOSED_WITH_BLOCKERS__CENTRAL_QUALITY_AUDIT_FAILED__RELEASE_BLOCKED",
     "source_rows": 1726,
     "draft_card_units": 1719,
     "lessons_with_pass3_closed": 9,
@@ -541,6 +586,17 @@
     "unfinished_content_cycle": "L01_PASS3",
     "release_approved_cards": 0,
     "portfolio_report_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-PORTFOLIO-STATUS-20261108.json",
-    "portfolio_summary_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-PORTFOLIO-STATUS-20261108.md"
+    "portfolio_summary_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-PORTFOLIO-STATUS-20261108.md",
+    "total_source_rows": 1726,
+    "provisional_cards": 1719,
+    "all_10_three_pass_cycles_closed": true,
+    "collocation_overlaps_to_review": 295,
+    "distinct_collocation_overlap_cards": 270,
+    "L01_no_collocation_field_cards": 158,
+    "global_unit_ID_duplicates": 0,
+    "central_audit_report": "Workspaces/aspekte-b2-v336/Reports/B2-CENTRAL-RELEASE-READINESS-AUDIT-20261108.json",
+    "central_QA_checker": "Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py",
+    "manifest_library_file_id": "libfile_8e600f45a64081918619ad405acf276c",
+    "approved_importable_cards": 0
   }
 }

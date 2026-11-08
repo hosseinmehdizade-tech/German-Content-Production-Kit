@@ -38,9 +38,19 @@ def promoted(new,old,path):
         o=claimed_status(old.get("status",old.get("stage5"))) if old else False
         return n and (not o or new.get("artifact")!=old.get("artifact") or new.get("source_sha256")!=old.get("source_sha256"))
     if filename in ("LATEST.JSON","CHECKPOINT.JSON","STAGE7-LATEST.JSON"):
-        n=bool(new.get("import_ready") is True or claimed_status(new.get("stage5")))
-        o=bool(old and (old.get("import_ready") is True or claimed_status(old.get("stage5"))))
-        return n and not o
+        def content_release_claim(d):
+            if not isinstance(d,dict):return False
+            st=d.get("status","")
+            approved_in_status=(isinstance(st,str) and "STAGE5" in st.upper()
+                                and claimed_status(st))
+            return d.get("import_ready") is True or claimed_status(d.get("stage5")) or approved_in_status
+        if not content_release_claim(new):return False
+        if not content_release_claim(old):return True
+        # An already-approved pointer can be updated cosmetically without a new
+        # release. Any newly pointed source/content/ZIP is a *new* claim.
+        identity=("source_sha256","artifact","latest_archive_sha256",
+                  "latest_archive","stage5","release_quality_receipt")
+        return any(new.get(k)!=old.get(k) for k in identity)
     return False
 def workspace_for(path):
     parts=Path(path).parts
@@ -104,6 +114,12 @@ def run(base,head,root=ROOT):
     records=[]
     for path in changed:
         if not path.endswith(".json") or "/." in path:continue
+        name=Path(path).name.upper()
+        if not (name.startswith("STAGE5") or
+                name in ("LATEST.JSON","CHECKPOINT.JSON","STAGE7-LATEST.JSON")):
+            # Other receipts can be lists, tables or model QA artifacts;
+            # they must not be misparsed as release pointers.
+            continue
         raw=at(root,head,path)
         if raw is None:continue
         new=json_obj(raw)

@@ -15,6 +15,11 @@ parser.add_argument('--purpose',choices=['stage5_acceptance','final_delivery','v
 parser.add_argument('--min-checked',type=int,default=1)
 parser.add_argument('--milestone-evidence',type=Path)
 parser.add_argument('--user-request')
+parser.add_argument('--family-id')
+parser.add_argument('--receipt',type=Path)
+parser.add_argument('--policy-report',type=Path)
+parser.add_argument('--stage4-receipt',type=Path)
+parser.add_argument('--cross-tile-review',type=Path)
 args=parser.parse_args()
 root=Path(__file__).resolve().parent.parent
 sourcedir=args.source_dir.resolve()
@@ -34,9 +39,34 @@ if gate.returncode or result.get('status')!='PASS':
 if result.get('checked_source_attested_cards',0)<args.min_checked:
     raise SystemExit('FRONT_GATE_INSUFFICIENT_COVERAGE')
 print('FRONT_GATE_PASS '+json.dumps({'checked':result['checked_source_attested_cards'],'source_attested_fields':result['source_attested_form_fields']},ensure_ascii=False),flush=True)
-builder=root/'Tools'/'build_clean_delivery.py'
-cmd=[sys.executable,str(builder),str(sourcedir),str(args.output_zip.resolve()),'--purpose',args.purpose]
-if args.milestone_evidence:cmd.extend(['--milestone-evidence',str(args.milestone_evidence)])
-if args.user_request:cmd.extend(['--user-request',args.user_request])
+# The morphology transport PASS is not content/semantic approval.
+# New lexical acceptance MUST go via the cross-family source-owner + Stage4 gate.
+if args.purpose == 'stage5_acceptance':
+    required={
+        'family-id':args.family_id,
+        'receipt':args.receipt,
+        'policy-report':args.policy_report,
+        'stage4-receipt':args.stage4_receipt,
+        'cross-tile-review':args.cross_tile_review}
+    missing=[name for name,value in required.items() if value is None or value=='']
+    if missing:
+        raise SystemExit('LEXICAL_QUALITY_EVIDENCE_REQUIRED_BEFORE_STAGE5:'+','.join(missing))
+    cmd=[sys.executable,str(root/'Tools'/'build_quality_gated_lexical_candidate_v1.py'),
+         str(sourcedir),str(args.output_zip.resolve()),
+         '--family-id',args.family_id,
+         '--receipt',str(args.receipt),'--policy-report',str(args.policy_report),
+         '--stage4-receipt',str(args.stage4_receipt),
+         '--cross-tile-review',str(args.cross_tile_review)]
+elif args.purpose in ('required_recovery','explicit_user_checkpoint'):
+    # Archival/recovery copies retain their existing immutable package guard.
+    # They do NOT constitute Stage4/Stage5 acceptance.
+    print('RECOVERY_OR_USER_CHECKPOINT_ONLY_NOT_CONTENT_ACCEPTANCE',flush=True)
+    cmd=[sys.executable,str(root/'Tools'/'build_clean_delivery.py'),str(sourcedir),
+         str(args.output_zip.resolve()),'--purpose',args.purpose]
+    if args.milestone_evidence:
+        cmd.extend(['--milestone-evidence',str(args.milestone_evidence)])
+    if args.user_request:cmd.extend(['--user-request',args.user_request])
+else:
+    raise SystemExit('FINAL_OR_VALIDATED_STAGE5_REQUIRES_DISTINCT_GOVERNED_RELEASE_PROOF')
 completed=subprocess.run(cmd,check=False)
 raise SystemExit(completed.returncode)

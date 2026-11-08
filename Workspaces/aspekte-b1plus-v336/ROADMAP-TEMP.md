@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.44 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.45 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE L05 THREE-PHASE GOVERNANCE OVERRIDE — 2026-11-08 (Phase 1 complete / 3; NONIMPORT)
 
@@ -438,3 +438,16 @@
 - **G5-NONIMPORT-HTML-Projektion mit dynamischen 12 Zielkarten**: Alle 1571 Karten / 216 Sinne / 3456 Beispiele / 385 Kombinationen / 4 Feste Wendungen / 5 Satzmuster abgebildet, kein Feldverlust. Zuvor fest codierter `len(tested_cards)==5`-Bug durch `len(targeted)` in `Tools/qa_front_back_projection_v3.py` repariert. Echte App-Laufzeit und TSV-Import nicht getestet.
 - **Besitzerarchiv** `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-G4-REVIEW17-12-L05-CARDS-10-SENSE-ROUTES-12-G2-ATTESTATIONS-20261108-NONIMPORT.zip`, ID `libfile_f92f59633bf081918a34509b2e51d7eb`, SHA256 `730b8f7b3d9fa6d96d566032f89cdead12167cce83417dd5ba216905846aaee9`, 2.821.472 Bytes / 149 ZIP-Member / 148 Prüfsummen; Library bytegenau zurückgelesen, ZIP-CRC und jedes Hash PASS. GitHub Report `Workspaces/aspekte-b1plus-v336/Reports/G4-REVIEW17-12-CARDS-10-SENSE-ROUTES-12-G2-ATTESTATIONS-20261108.json`, Duplikaten-Gate im GitHub Tool-Verzeichnis.
 - **G1 DONE; G2 ACTIVE (331/1571); G3/G4 ACTIVE; G5 PENDING, G6 BLOCKED; 340 HOLDs, 0 vollständige Kartenfreigaben**. Nächster konkreter Schritt: die 7 verbleibenden karteneigenen Dubletten einzeln klassifizieren und ohne Verlust akzeptierter Beispiele bereinigen; anschließend echte G4/G2-Karten-Reviews. Release bleibt verboten.
+
+
+## L05 Phase 2/3 — COMPLETE EDITORIAL CORRECTION OF ALL 155 CARDS (2026-11-08)
+
+**Governance:** The project now advances by whole lessons, never by 10-word Review numbers. The audited **L05 Phase1** is complete and its **L05 Phase2 is now completed as a single 155-card editorial correction pass**. This is *not* formal independent language QA and is **NONIMPORT**.
+
+- Latest current data owner: SHA256 `e7e2a1c6437043b929fef601f69e4742a7e368c81d80706585f04f9b7e9de493`, Library `libfile_5128a8d9a1f481919358b40ecd2468ea`, path `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-L05-PHASE2-WHOLE-LESSON-155-CARDS-CORRECTED-NONIMPORT-20261108.zip`. Parent Review17 SHA `730b8f7b3d9fa6d96d566032f89cdead12167cce83417dd5ba216905846aaee9`. Original 1548-line source map **byte-identical**; all other lessons' candidate objects unchanged. Owner Library byte-identical readback, ZIP CRC and 155 member hashes PASS.
+- **155/155 per-card editorial dispositions** with explicit next decisions; 30 cards actually changed learner content, 125 editor-screened without changing learner text; 44 real before/after field changes. **21** previously multisense-but-unrouted entries now have **56** genuinely sense-bound blocks on the same cards; **7** new bilingual examples. L05 now 384 example pairs, all editorially screened, none independently formally release-approved.
+- Full corpus owner remains **1571 cards / 1548 original source rows**; 272 sense blocks / 3463 example pairs / 437 combinations / 6 Feste Wendungen / 6 Satzmuster. Noncopy/finite-sentence structural gate PASS with 0 detected cases; whole-corpus QA-only Front/Back projection PASS. The finite-sentence detector is conservative and the projection does **not** exercise the real app importer.
+- **Unresolved Phase3 release obligations:** 49 L05 G2 form attestations still not recorded independently (globally 331/1571 attested, 1240 pending), 28 old L05 curated HOLD markers retained. Seven previously duplicated DE example pairs elsewhere in corpus retained; global release-HOLD count 340, formal independent G4 full-card releases 0, G5 actual app/TSV import not tested.
+- GitHub phase2 receipt `Workspaces/aspekte-b1plus-v336/Lessons/L05/PHASE2-COMPLETE-155-CARDS-REPORT.json`; L05 phase plan `Lessons/L05/THREE-PHASE-PLAN.md`. Package includes all 155-card decisions, all field before/after records, complete lesson HTML front/back QA visualization, repeatable source/ZIP validator. No original textbook rescanning, no new 10-card milestones.
+- **Next definitive step — L05 Phase 3/3:** independently resolve semantics/grammar/DE–FA for all 155 cards, handle G2 49 + old HOLD 28, enforce structural gates and real app-import/render check; release only truly approved cards or explicitly list blocked cases without implying that the whole lesson is completed for import.
+

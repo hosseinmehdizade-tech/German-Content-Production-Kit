@@ -1,6 +1,6 @@
 # Aspekte B1+ · L01 · Drei-Phasen-Plan
 
-**Stand 2026-11-08 — Phase 1/3 DONE (Gesamtaudit), NONIMPORT.**
+**Stand 2026-11-08 — Phase 2/3 DONE (Gesamtkorrektur), Phase 3 NEXT; NONIMPORT.**
 
 ## Source of truth
 The current learner-data owner remains the SHA-verified L05 Phase3 Library ZIP (`libfile_8e25215035b48191a9481393e7856510`), SHA256 `b5e470617bd72a34e6ab6236ba3232d247d2a1ee0a45f35126e5c7beed6e41f6`. It contains 1,571 provisional learner cards and 1,548 original-source mapping rows. **No learner data edited in Phase 1.** Never restart from the textbook or original raw CSV.
@@ -19,3 +19,16 @@ Review **all 90 cards** in ONE lesson correction milestone, first P1 then P2; gi
 Run independent **full-card DE–FA / morphological** checks on the whole lesson; enforce global source-map, example, noncopy, sense and no-back-Formen gates. Check *actual* app importer and rendered cards, not just an offline HTML/TSV projection. Publish only independently approved units, otherwise mark explicit RELEASE_BLOCKED. Current project 0 full-card approvals, 340 historical global release HOLDs, no proven app import.
 
 **Control policy:** whole lesson, at most three milestone stages; each stage must represent real work, and no fake release approval.
+
+## AKTUELLER VERBINDLICHER STAND — L01 Phase 2/3 DONE (2026-11-08)
+
+**Der oben genannte L05-Owner ist nur die historische PHASE1-Basis.** Neuester kuratierter Daten-Owner ist **L01 PHASE2**:
+Library `libfile_7fa4ce8f2df4819197d1a894598e9035`, SHA256 `3060b35afb9779e8f88ee7064ec4f7ff0d35b7218f1fa0888cfa9dd6063dd9d7`, 3.051.031 Bytes; exakter Library-Readback PASS, ZIP-CRC PASS und alle 172 SHA256-Member-Hashes PASS. Alle 1.548 Source-Map-Zeilen unverändert; keine Karten aus anderen Lektionen verändert.
+
+**Phase1:** Gesamtprüfung 90/90 Karten aus 71 Originalzeilen, inkl. bestätigter Zusammenführungen 14/15/57 und Cross-Lesson-Verknüpfung 18→733. DONE.
+
+**Phase2:** 90/90 Karten mit begründeter redaktioneller Entscheidung — **55 echte inhaltliche Kartenänderungen**, 35 kontrolliert ohne Textänderung. **30 neu verfasste DE–FA-Beispielpaare**, also **139→169 Beispiele**, **24→0 Karten ohne Beispiel**; **33 Karten mit neuem Sinnnetz / 62 neue Sinnblöcke** und **65 explizite Beispiel-zu-Sinn-Verknüpfungen**. 1 kontextspezifische FA-Beispielübersetzung verbessert. Beide Original-Satzkarten (`Der Vater schimpfte mit dem Kind.`, `Das Glas hat einen Sprung.`) unter Wahrung der Original-Quellbelege ausdrücklich klassifiziert statt blind gelöscht. `aushängen` mit zwei bisherigen Formen und zwei Bedeutungen nicht überschrieben. Keine erzwungenen Synonyme/Antonyme. In den **499 gesamten Kombinationen** erkannte der Noncopy-/finite-clause-Gate null Probleme (Heuristik hat Grenzen); L01 0 exakte lokale Beispieldubletten, außerhalb bleiben 7 globale Alt-Dubletten.
+
+**Phase3 NEXT:** alle 90 Karten vollständige DE/FA- und Grammatik-QA unabhängig absichern; 84 fehlende externe G2-Formatteste entweder nachweisen oder regelbasiert begründet klären; 42 kuratierte HOLD-Karten differenziert prüfen; reale App-TSV-Import- und Front/Back-Anzeige tatsächlich testen. Die 30 neuen Beispiele und 62 Sinnblöcke sind hochwertige redaktionelle Kandidaten, **noch nicht unabhängig freigegeben**. Bei offenen Blockern als `RELEASE_BLOCKED` abschließen und zum nächsten vollen Unterricht wechseln; keine 10-Wort-Reviews.
+
+**Aktuell weiterhin NONIMPORT, global 0 vollständige Kartenfreigaben; 340 Release-HOLDs.** Berichtsquelle: `Lessons/L01/PHASE2-COMPLETE-90-CARDS-REPORT.json`; QA-Skript, vollständiges Vorher/Nachher-Ledger, alle 90 Dispositionen und QA-HTML im aktuellen Library-ZIP.

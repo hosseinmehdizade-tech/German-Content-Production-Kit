@@ -1,6 +1,18 @@
 # Aspekte B1+ · Lektion 03 — verbindlicher Drei-Phasen-Plan
 
-**Stand: 2026-11-08 · Phase 2/3 DONE (reale sinnbezogene Gesamtkorrektur); Phase 3 QA/Release NEXT; NONIMPORT**
+**Stand: 2026-11-08 · Phase 3/3 evaluiert; 194/194 RELEASE BLOCKED; NONIMPORT**
+
+
+
+## FINALER PHASE3 STATUS — alle 194 Karten bewertet; Freigabe BLOCKED (2026-11-08)
+
+- **Verbindliche aktuelle Bibliotheksquelle:** `libfile_7b408389b9648191b2667d207adf96b6` / SHA256 `ea0bde4b38aebca9973f9b8d90e201f627edd8c1c491d752006792991b2a34e6` / 3.398.590 Bytes / 225 ZIP-Einträge und 224 geprüfte interne SHA256-Checks. Vollständiger SHA256/ZIP-CRC/Library-Readback PASS. Der zuvor im Plan genannte Phase2-Owner bleibt nachvollziehbarer Parent, **ist nicht der neueste Karten-Owner**. Originale 1548 Source-Map-Zeilen byte-identisch und alle Nicht-L03-Karten unverändert.
+- **194/194 Karten in einem ganzen QA-Release-Gate evaluiert; 10 tatsächliche Duden-belegte Form-/Bedeutungsinterventionen (Ordinals 187,196,201,219,241,247,298,333,334,349).** `heilen`: transitiv `hat geheilt`, intransitiv `ist geheilt`; `landen`: intransitiv `ist gelandet`, transitiv `hat gelandet`. Drei neue Netzwerkkarten und ein zusätzliches Sinnsegment auf `landen` = **7 neue Sinnblöcke**, **4 neue DE–FA-Beispiele**, **6 nachträgliche Verknüpfungen für bestehende Beispiele**. `enthalten` mit reflexivem `sich der Stimme enthalten`, `gestehen` mit Gefühlsgeständnis und `erbauen` mit `von etwas nicht erbaut sein`; alle Bedeutungen bleiben auf derselben jeweiligen Karte.
+- **L03 jetzt:** 440 DE–FA-Beispielpaare, 59 Netzwerk-Karten, 122 Sinnblöcke, 166 explizit Sinn-verknüpfte Beispielpaare. G2 Duden-belegt 12→22, weitere **172 L03** ohne Einzelnachweis; global 366→376 / 1571, 1195 noch nicht einzeln attestiert (fehlender Nachweis bedeutet nicht fehlerhafte Flexion). Sämtliche **41 L03 kuratierten HOLD-Marker** erhalten und in **194 einzelnen begründeten Release-Entscheidungen** erfasst.
+- **Audits:** Exakt **663** corpusweite `Kombinationen` durch drei QA-Filter auf Satz-/Beispielkopie und problematische finite Sätze geprüft: PASS/0 erkannte Probleme nach Korrektur eines in dieser Phase entdeckten Beispiel-Substrings. **6 andere ältere exakt doppelte DE-Beispielgruppen** weiterhin im Gesamtkorpus; strenger globaler Dubletten-Release-Test FAIL (erwartet), Nonregression-PASS. L03 194-Zeilen TSV **offline** wieder eingelesen und 440 Beispiele einmal pro Karte/sinngebunden im eigens erzeugten QA-HTML gerendert; **kein echter App-Import oder Renderlauf**.
+- **Freigabeentscheidung:** strenger 194-Karten-Release-Gate ausgeführt, **194/194 BLOCKED**. Neben 172 fehlenden spezifischen G2-Quellbelegen und 41 weiter offenen kuratierten HOLDs existiert kein vollständiger dokumentierter DE–FA-Release-Nachweis und kein tatsächliches `German-Flashcards-Pro` Import-/Render-Receipt. Keine künstliche `formal_release_approved`- oder `import_ready`-Markierung, weltweit / in diesem Datensatz 0 freigegebene Karten. Der Nutzer muss keinen externen menschlichen Gutachter einsetzen; dieser Schritt darf trotzdem fehlende Belege nicht durch Automatisierung erfinden.
+- **Persistente QA-Nachweise:** GitHub `Lessons/L03/PHASE3-194-CARD-RELEASE-GATE-RECEIPT-20261108.json`, im neuesten Besitzer-ZIP die 194 individuellen Blocker-Entscheidungen, 10-Karten-Vorher/Nachher, Quelllinks, QA-Skripte, HTML, offline TSV und globale Prüfberichte. **Fertig evaluierter Drei-Phasen-Zyklus mit Freigabeentscheidung BLOCKED** statt unendlich vieler 10-Wort-Reviews.
+- **Nächste Produktionseinheit:** `L04 Phase1/3` aus dem neuen aktuellen L03-Phase3-Owner. Freigabesperren der Lektionen L01, L02, L03, L05 separat bis zur nachgewiesenen Auflösung behalten; keinen Lektionsreview blind wiederholen.
 
 
 ## AKTUELL: Phase 2/3 WHOLE-LESSON EDITORIAL DONE — maßgeblicher Owner

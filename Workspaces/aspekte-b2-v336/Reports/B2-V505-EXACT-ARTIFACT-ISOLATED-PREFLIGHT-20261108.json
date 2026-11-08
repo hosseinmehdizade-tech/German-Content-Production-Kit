@@ -1,0 +1,86 @@
+{
+  "schema": "aspekte-b2-native-isolated-preflight@1.0.0",
+  "date": "2026-11-08",
+  "scope": "EXACT_CURRENT_V505_R141_ARTIFACT_STATIC_INTEGRITY_AND_NATIVE_ISOLATED_ATTEMPT",
+  "app": {
+    "version": "v505-R141",
+    "artifact_name": "GFP-v505-R141-WORDLINKS-FRONT-BACK-R3-SCREENSHOT-REGRESSION-CANDIDATE-20261107.zip",
+    "artifact_sha256": "6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef",
+    "archive_crc": "PASS",
+    "archive_entry_count": 287,
+    "library_stable_id": "libfile_ae33f334c1bc8191aa65dd079f710d01",
+    "library_path": "/Flasch kart/German-Flashcards-Pro/Current/GFP-v505-R141-WORDLINKS-FRONT-BACK-R3-SCREENSHOT-REGRESSION-CANDIDATE-20261107.zip",
+    "root_index_sha256": "f38877d7ff39ad24294303125ae60d77955c251768fffa059cf7452a0a3aef26",
+    "storage_module_sha256": "461d357a253c3ceeabd4e9146373aab81ffea7490c527654c2295db22c55c47e"
+  },
+  "static": {
+    "status": "PASS",
+    "checks": [
+      {
+        "check": "test-runtime-assets.py",
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "check": "test-shell-cohort.py",
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "check": "test-sw-shell-hashes-v505.py",
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "check": "node --check 01-App/modules/committed-storage-v505.js",
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "check": "node --check 03-Tests/native-flow.cjs",
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "check": "node --check 03-Tests/browser-common.cjs",
+        "exit_code": 0,
+        "status": "PASS"
+      }
+    ],
+    "checks_count": 6,
+    "html_resource_cohort_count": 70,
+    "service_worker_shell_hashes_count": 82,
+    "negative_static_controls": 6
+  },
+  "native_browser": {
+    "status": "ENVIRONMENT_BLOCKED_BEFORE_APP_LOAD",
+    "official_script": "03-Tests/native-flow.cjs",
+    "test_label": "b2-isolated-native-20261108",
+    "test_profile_type": "DISPOSABLE_NEW_PROFILE",
+    "error_code": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "attempted_origin": "http://127.0.0.1:<ephemeral>/index.html?gfp-test=1",
+    "official_check_count_executed": 0,
+    "observed_failure": "page.goto failed before app boot; local Chromium administrator restriction",
+    "native_import_tested": false,
+    "native_SRS_roundtrip_tested": false,
+    "native_backup_restore_tested": false,
+    "native_shell_rollback_tested": false
+  },
+  "protection": {
+    "user_live_profile_accessed": false,
+    "user_SRS_mutations": 0,
+    "user_existing_card_mutations": 0,
+    "current_b2_card_source_mutations": 0,
+    "app_source_mutations": 0,
+    "synthetic_test_profile_only": true
+  },
+  "release": {
+    "status": "BLOCKED_NONIMPORT",
+    "static_integrity_verified": true,
+    "native_runtime_gate_verified": false,
+    "independent_de_fa_linguistic_QA_signed": false,
+    "live_SRS_card_id_evidence_available": false,
+    "approved_importable_cards": 0
+  },
+  "next_action": "Run packaged official 03-Tests/native-flow.cjs on a browser environment that permits localhost, with separate disposable profile and pinned exact artifact, then independently verify live current profile IDs via an authorized read-only snapshot; do not import B2 or mutate learner SRS."
+}

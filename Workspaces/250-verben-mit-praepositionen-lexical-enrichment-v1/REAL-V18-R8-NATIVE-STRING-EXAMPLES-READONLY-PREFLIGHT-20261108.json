@@ -1,0 +1,48 @@
+{
+  "schema": "gcpk-real-lexical-native-example-compatibility-readonly@1.0.0",
+  "date": "2026-11-08",
+  "workstream": "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1",
+  "family_id": "family:250-verben-mit-praepositionen",
+  "status": "REAL_ACCEPTED_CURRENT_BYTES_VERIFIED__SCHEMA_COMPATIBILITY_REPAIRED__NEW_STAGE5_ADOPTION_UNATTESTED",
+  "sources": {
+    "drive_url": "https://drive.google.com/file/d/1r76GKGPz2hRJthJUScQxWshT_6Ua7lkj/view?usp=drivesdk",
+    "drive_filename": "250-Verben-v1.8-FINAL-CONTENT-ONLY-VERIFIED-20261105.zip",
+    "drive_file_metadata_mime": "application/zip",
+    "drive_bytes": 3211844,
+    "drive_raw_sha256": "be38b32a6665b4281db752db9d2ba6498b6a37408a42ab7166030639bdcb53aa",
+    "canonical_router_current_sha256": "be38b32a6665b4281db752db9d2ba6498b6a37408a42ab7166030639bdcb53aa",
+    "archive_crc": "PASS",
+    "archive_members": 31,
+    "tsv_member": "01-Content/CLEAN-DELIVERY/250-Verben-v1.8-R7-IMPORT.tsv",
+    "tsv_sha256": "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191",
+    "stage4_archive_receipt": "04-Reports/OFFICIAL-STAGE4-GATE-RESULT.json",
+    "historic_stage4_status": "PASS_RISK_BASED_STAGE4",
+    "historic_stage4_source_tsv_hash": "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191",
+    "note": "Historical Stage4 PASS is not a new centrally governed Stage4 acceptance and cannot be represented as such."
+  },
+  "read_only_scan": {
+    "cards": 292,
+    "german_examples": 1168,
+    "examples_representation": "ALL_1168_ARE_JSON_STRING_ITEMS",
+    "visible_Kombinationen": 439,
+    "backend_kombinationen_v1": 439,
+    "same_card_exact_german_visible_backend_sets": 292,
+    "exact_display_backend_differences": 0,
+    "exact_german_combination_vs_same_card_example_clones": 0,
+    "exact_within_card_visible_combinations_duplicates": 0,
+    "scan_boundary": "Exact NFC whitespace matching and one-pass source review only; no dictionary-based sense judgement, no novel Stage4 decision and no altered cards."
+  },
+  "root_cause": "Mandatory lexical review_signals required each examples[] element to be dict and raised UNKNOWN_EXAMPLE_FORMAT for any string; advisory german_examples ignored all string examples silently, creating a false zero-overlap audit on a real authoritative v1.8 source.",
+  "repair": "Support both native string and typed German example objects in mandatory and advisory scanners, retaining fail-closed behavior on empty/non-string examples and original bilingual schema. Do not rewrite accepted TSV.",
+  "adoption_truth": {
+    "synthetic_regression": "REQUIRED_AND_CI_VERIFIED_ON_PR",
+    "first_real_new_governed_stage5_candidate": "NOT_RUN",
+    "reason": "No NEW exact-current family-specific Stage4 source-owner + matched cross-tile acceptance under the central gate; historical official R7/R8 cannot automatically be relabeled as new central adoption.",
+    "source_modified": false,
+    "drive_file_modified": false,
+    "historic_user_accepted_version_modified": false,
+    "app_ui_or_fsrs_srs_modified": false,
+    "all_family_adoption": "NOT_CLAIMED"
+  },
+  "next": "Use unchanged authenticated v1.8 current as an input to the central source-bound Stage4 review and cross-tile dispositions. Only if these checks and new governed Stage5 packaging produce authenticated exact byte receipts may this producer be named as adopted. No book-source fidelity replay and no forced combinations quotas."
+}

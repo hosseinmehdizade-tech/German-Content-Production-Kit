@@ -67,8 +67,17 @@ def german_examples(row):
     entries=decode_json(row['examples'],'examples')
     if not isinstance(entries,list):raise ValueError('INVALID_EXAMPLES')
     for item in entries:
-        if isinstance(item,dict) and str(item.get('lang','de-DE')).lower().startswith('de') and item.get('text'):
-            yield str(item['text'])
+        if isinstance(item,str):
+            if not item.strip():raise ValueError('EMPTY_GERMAN_EXAMPLE')
+            yield item
+        elif isinstance(item,dict):
+            if str(item.get('lang','de-DE')).lower().startswith('de'):
+                de=item.get('text',item.get('text_de',item.get('de','')))
+                if not isinstance(de,str) or not de.strip():
+                    raise ValueError('EMPTY_GERMAN_EXAMPLE')
+                yield de
+        else:
+            raise ValueError('UNKNOWN_EXAMPLE_FORMAT')
 def analyze_rows(rows,name,source_sha):
     flags=[];total=0
     for row in rows:

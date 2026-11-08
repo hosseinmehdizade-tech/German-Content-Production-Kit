@@ -53,6 +53,58 @@ class SemanticSignalTests(unittest.TestCase):
         self.assertTrue(any(x["code"]=="EXACT_COMBO_DUPLICATE" for x in r["issues"]))
     def test_no_quota_zero_combinations(self):
         self.assertEqual(review_signals(native_rows(data(combos=[],examples=[])))["issues"],[])
+    def test_accepted_250_verben_native_string_examples_scan_without_rewriting(self):
+        # Real source shape: v1.8 official direct-import TSV stores 4 German examples
+        # as JSON strings rather than v336 language-tagged example objects.
+        ex=["Es hängt von dir ab, was wir machen.",
+            "Das Ergebnis hängt von der Vorbereitung ab.",
+            "Ob wir fahren, hängt vom Wetter ab.",
+            "Viele Studierende hängen finanziell von ihren Eltern ab."]
+        ts=native_rows(data(combos=["von etwas abhängen — به چیزی بستگی داشتن"],examples=ex))
+        out=review_signals(ts)
+        self.assertEqual(out["examples"],4)
+        self.assertEqual(out["combinations"],1)
+        self.assertFalse(any(x["code"]=="EXACT_EXAMPLE_CLONE" for x in out["issues"]))
+
+    def test_native_string_example_exact_clone_is_high(self):
+        ex=["Es hängt von dir ab, was wir machen."]
+        out=review_signals(native_rows(data(combos=[ex[0]+" — بستگی دارد"],examples=ex)))
+        self.assertEqual(out["examples"],1)
+        self.assertEqual(out["issues"][0]["code"],"EXACT_EXAMPLE_CLONE")
+        self.assertEqual(out["issues"][0]["severity"],"HIGH")
+
+    def test_native_string_examples_and_structured_examples_both_count(self):
+        ex=["Das Ergebnis hängt von der Vorbereitung ab.",
+            {"lang":"de-DE","text":"Es hängt von dir ab."},
+            {"lang":"fa-IR","text":"این به تو بستگی دارد."}]
+        out=review_signals(native_rows(data(combos=[],examples=ex)))
+        self.assertEqual(out["examples"],2)
+        self.assertEqual(out["issues"],[])
+
+    def test_lean_advisory_scans_native_string_examples_not_zero(self):
+        from audit_kombinationen_lean_v1_1 import german_examples,analyze_rows
+        ex=["Es hängt von dir ab, was wir machen.",
+            "Das Ergebnis hängt von der Vorbereitung ab."]
+        rows=native_rows(data(combos=["hängt von dir ab — به تو بستگی دارد"],examples=ex))
+        self.assertEqual(list(german_examples(rows[0])),ex)
+        diag=analyze_rows(rows,"real-v18-shape.tsv","0"*64)
+        self.assertEqual(diag["cards"],1)
+        self.assertTrue(any(x["rule"]=="LITERAL_EXAMPLE_SUBSPAN" for x in diag["flags"]))
+
+    def test_lean_advisory_rejects_invalid_native_example_type(self):
+        from audit_kombinationen_lean_v1_1 import german_examples
+        rows=native_rows(data(combos=[],examples=[123]))
+        with self.assertRaisesRegex(ValueError,"UNKNOWN_EXAMPLE_FORMAT"):
+            list(german_examples(rows[0]))
+
+    def test_native_empty_string_examples_fail_closed(self):
+        with self.assertRaisesRegex(ValueError,"EMPTY_GERMAN_EXAMPLE"):
+            review_signals(native_rows(data(combos=[],examples=[" "])))
+
+    def test_native_nonstring_nonobject_examples_fail_closed(self):
+        with self.assertRaisesRegex(ValueError,"UNKNOWN_EXAMPLE_FORMAT"):
+            review_signals(native_rows(data(combos=[],examples=[12])))
+
     def test_malformed_details_fail_closed(self):
         rows=native_rows(data())
         rows[0]["details"]='"not sections"'

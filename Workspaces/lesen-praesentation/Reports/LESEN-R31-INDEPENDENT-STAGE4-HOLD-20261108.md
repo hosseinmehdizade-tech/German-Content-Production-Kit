@@ -1,0 +1,20 @@
+# Lesen R31 independent Stage4 / grammar preflight — BLOCKED (2026-11-08)
+
+**Latest editable content is still the exact R30 source/runtime candidate.** This R31 milestone is **read-only independent QA**, not a content rewrite, not official CURRENT and not release FINAL.
+
+**Source authority:** R30 content SHA256 `63fc11fa572c0e4bf5c13e69b9fba9530b781474c205649ad1b7bf02cac934bd`; v505 runtime candidate SHA256 `87db4b325137f0dad6d889560afc2432d9e91625b830f7a1b1f7fe23cfeda8ce`; recovery ZIP SHA256 `7d687ddd5f0303e59f6e99286a866c8787ee4ee15f7e700e42ef551cbc4a8abc`.
+
+## New material findings
+
+- All **68 units**, **478 reading sections**, **340 question records** with **411 question-to-section ID references**, **350 vocabulary entries**, **669 curated grammar annotations**, **3,548 fulltext grammar occurrences** checked for structural access. Native fulltext offsets must be interpreted **relative to their whole section**, and **3,548/3,548 exact spans PASS**. Parent ZIP CRC and **19/19 member SHA256 PASS**. These checks do **not** certify full trilingual meaning or question-answer correctness.
+- Independent grammar semantic / anchor check found **89 confirmed invalid annotation instances across 48 lessons**, including **63 curated target snippets no longer present in the declared current sentence** after p01/p07 editorial revisions; **14** comparative `als` examples (such as `als es zunächst scheint`) wrongly labeled **Temporalsatz mit als**; **seven** invalid curated adjective-declension snippets (e.g. `sein könnte als`); **three** false passive constructions (e.g. `korrekt anzugeben`); **two** pronominal `damit` expressions wrongly classified as final clauses. None of these 89 records overlap. The 63 bad targets reveal a missing cross-edit dependency invariant that structural tests, preserving 669 record IDs, and the v505 native preentry did not cover.
+- Four confirmed *German v. Persian/English discourse-logic conflicts* in p06 lessons **015, 023, 024, 026**: German `obwohl` is concessive but matching FA/EN use causal `چون/زیرا` / `because`. Some German conjunctions may be wrong in context: **do not blindly change translations**.
+- These are an independently proven **minimum blocking inventory**, not a claim that all 68 lessons have passed semantic review. The 478 whole sections were not independently adjudicated meaning-by-meaning. **Stage4 HOLD**, original full nine-lens grammar **NOT_RERUN**, actual Chrome/IndexedDB Stage6 **NOT_RUN**, Stage7 **NOT_RELEASED**.
+
+## Reproducibility and source truth
+
+- Full 89-entry ledger with exact sentence texts plus four complete DE/FA/EN conflicting sections, independent source and grammar preflight tool, checkpoint and report archived as `Lesen-R31-STAGE4-INDEPENDENT-AUDIT-HOLD-20261108.zip`; SHA256 `7af234f89c7c2900b7f1651449ca212e1b10727acb7f593dcee62b985ccfdb72`, 17822 bytes, owner Library `/Flasch kart/German-Content-Production-Kit/Content/Lesen/Checkpoints/Lesen-R31-STAGE4-INDEPENDENT-AUDIT-HOLD-20261108.zip` stable ID `libfile_6af077a4cf848191b8bb7a193190d377`.
+- Upload readback is **byte-for-byte / SHA256 identical**, ZIP CRC and **4/4 internal hashes PASS**; running the audit from the independently rematerialized Library ZIP against exact R30 reproduced identical JSON and the **expected nonzero exit code (1)**. This is a successful reproduction of a **blocking** quality test, **not** a passing semantic gate.
+- All original R30 master/runtime bytes and original curated v1.3.0 CURRENT ZIP SHA256 `558c165df7603c26b775781f9c9bbd508c456b4b24f68979ebe0edecf3b46565` untouched. No app UI, FSRS/SRS or learner data changes; no source-family cross-write or Library deletion.
+
+**Next:** repair target-to-current-sentence grammar checks at the producer/QA entrypoint and semantically repair 89 invalid examples; adjudicate four concession/causality conflicts with original DE argument context; then independent section-by-section DE/FA/EN Stage4 and nine-lens grammar, only then real browser Stage6. Keep R30 as candidate with an R31 audit BLOCKER pointer; do not mislabel QA milestone as R31 content revision.

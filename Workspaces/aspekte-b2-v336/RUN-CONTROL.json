@@ -1,7 +1,7 @@
 {
   "schema": "aspekte-b2-run-control@1.0.0",
   "date": "2026-11-08",
-  "status": "DRAFT_SOURCE_COVERAGE_COMPLETE__RELEASE_BLOCKED",
+  "status": "DRAFT_SOURCE_COVERAGE_COMPLETE__CONTEXTUAL_COLLLOCATION_TRIAGE_COMPLETE__RELEASE_BLOCKED",
   "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
   "full_policy_github": "Workspaces/aspekte-b2-v336/EXECUTION-EXIT-GUARD-v1.0.0.md",
   "library_policy": "Current/EXECUTION-EXIT-GUARD-v1.0.0.md",
@@ -16,9 +16,9 @@
     "NEXT_ACTION"
   ],
   "next_task": {
-    "phase": "PROJECT_RELEASE_READINESS",
-    "status": "CENTRAL_AUDIT_COMPLETE_RELEASE_BLOCKED__REMEDIATION_AND_LIVE_APP_EVIDENCE_NEXT",
-    "goal": "Use a single reproducible cross-lesson release QA gate to repair or justify 295 literal collocation/example overlaps on 270 distinct cards, resolve L01 missing collocations field for 158 cards, and 1 duplicated intra-card collocation. Then require independent DEFA linguistic approval, verified accepted live card IDs/SRS and native app rollback test. Do not reread original textbook, do not auto-rewrite flagged collocations, do not modify imported SRS cards.",
+    "phase": "PROJECT_RELEASE_QA_REMEDIATION",
+    "status": "CONTEXTUAL_OVERLAP_TRIAGE_COMPLETE__VERIFY_DUPLICATE_AND_L01_NEXT",
+    "goal": "Do not rewrite 295 literal collocation/example overlaps simply for substring overlap: normal learner examples often intentionally use collocations. Mechanical context triage: 270 embedded longer sentences, 24 short sentence examples, 1 entire utterance also used as full example. Actual duplicate: L03 ab2-l03-u-1865 repeats 'die Zahl der Arbeitslosen' within one card. Correct this duplicate with versioned byte-safe delta, address L01 missing collocations schema for 158 draft cards, then independently sign off DE/FA meanings/forms/examples and test cross-level accepted live IDs plus native SRS persistence rollback. Never auto-import or overwrite imported cards.",
     "source_rows": 1726,
     "draft_units": 1719,
     "complete_primary_DEFA_pairs": 3438,
@@ -38,7 +38,23 @@
     "approved_importable_cards": 0,
     "qa_workflow_git_path": ".github/workflows/aspekte-b2-central-qa.yml",
     "qa_workflow_policy": "READ_ONLY_AUDIT_ON_B2_CURRENT_OR_QA_UPDATES__HARD_FAIL_FOR_B2_RELEASE_TAGS__DOES_NOT_TOUCH_SRS",
-    "github_actions_runtime_execution_status": "NOT_VERIFIED_BY_THIS_COMMIT"
+    "github_actions_runtime_execution_status": "NOT_VERIFIED_BY_THIS_COMMIT",
+    "context_long_sentence": 270,
+    "context_short_sentence": 24,
+    "whole_utterance_example": 1,
+    "literal_overlap_policy": "ADVISORY_OBSERVATION_ONLY__NOT_SEMANTIC_DEFECT_OR_STANDALONE_RELEASE_BLOCKER",
+    "confirmed_intra_card_duplicate": {
+      "lesson": 3,
+      "unit_id": "ab2-l03-u-1865",
+      "phrase": "die Zahl der Arbeitslosen",
+      "occurrence_count": 2
+    },
+    "triage_summary_created": true,
+    "triage_library_sync": "SYNC_PENDING_CONTAINER_SESSION_UNAVAILABLE",
+    "triage_report_sha256": "2e48be3f04b8cf09271bf05818180c9d3175d018617715d84467890b89e9a170",
+    "triage_csv_sha256": "28476795f3f1dacca805c825ac3d2d56523b6f4c5ed30117cff632ffb2961698",
+    "triage_script_sha256": "deb22546b2b598b775655e5f95fe35633d4e1fbab1b1338f6553f957c176dd89",
+    "triage_classification_basis": "READ_ONLY_MATCHED_EXAMPLE_CONTEXT_AND_LENGTH__NOT_INDEPENDENT_LINGUISTIC_SIGNOFF"
   },
   "completed_or_blocked": {
     "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
@@ -73,7 +89,18 @@
     "approved_cards": 0,
     "imports": 0,
     "SRS_changes": 0,
-    "learner_content_edits_this_pass": 0
+    "learner_content_edits_this_pass": 0,
+    "follow_on_audit": "B2-295-COLLOCATION-CONTEXT-TRIAGE-20261108",
+    "follow_on_result": "295_LITERAL_OVERLAP_FLAGS_RECLASSIFIED_AS_CONTEXTUAL_ADVISORIES__RELEASE_REMAINS_BLOCKED",
+    "context_long_sentence": 270,
+    "context_short_sentence": 24,
+    "whole_utterance_exact_match": 1,
+    "confirmed_repeated_intra_card_collocation": 1,
+    "linguistic_QA_signed": false,
+    "cards_approved": 0,
+    "cards_imported": 0,
+    "source_card_edits": 0,
+    "library_sync": "SYNC_PENDING"
   },
   "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
   "sync_failure_action": "STOP_WITH_SYNC_PENDING_NO_RETRY_LOOP",
@@ -604,5 +631,14 @@
     "github_actions_qa_workflow": ".github/workflows/aspekte-b2-central-qa.yml",
     "github_actions_release_behavior": "RELEASE_TAG_GATE_FAIL_CLOSED_UNTIL_SIGNOFF_AND_NATIVE_SRS",
     "github_actions_runtime_execution_status": "NOT_VERIFIED"
+  },
+  "triage_integrity": {
+    "source_data_mutations": 0,
+    "original_literal_overlap_report_retained": true,
+    "obsolete_report_warning": "Older audit report labels literal overlap gate FAILED_CANDIDATES_DETECTED; do not interpret those as 295 proven defects. Current triage policy is contextual advisory. Central checker code still needs to be updated; no claim that its runtime policy was changed.",
+    "evidence": "All 295 exact match indices matched eight verified owner-curated PASS2 CSVs; L03 duplicate repeated exactly twice; no independent semantic QA performed.",
+    "run_type": "READ_ONLY",
+    "github_checkpoint_committed_by_this_turn": "PENDING",
+    "library_upload_status": "SYNC_PENDING_CONTAINER_SESSION_UNAVAILABLE"
   }
 }

@@ -106,6 +106,23 @@ class BackendCombinationCoverageTests(unittest.TestCase):
         self.assertEqual(out["combinations"],1)
         self.assertEqual(out["issues"],[])
 
+    def test_shortened_display_source_needs_review_not_automatic_deletion(self):
+        surface="über + Akkusativ abstimmen; worüber?"
+        full=surface+" – darüber (Pronominaladverb)"
+        out=self.scan({"kombinationen_v1":{"items":[{"de":full,"fa":"دربارهٔ چیزی رأی دادن"}]}},
+                      visible=[surface+" — دربارهٔ چیزی رأی دادن"],examples=[])
+        self.assertEqual(out["combinations"],2)
+        self.assertEqual([(x["code"],x["severity"]) for x in out["issues"]],
+                         [("BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW","MEDIUM")])
+
+    def test_r16_setzen_and_sitzen_short_display_detected_as_review(self):
+        short="sich auf / neben + Akkusativ setzen (wohin?)"
+        full=short+" – auf / neben + Dativ sitzen (wo?)"
+        out=self.scan({"kombinationen_v1":{"items":[{"de":full,"fa":"نشستن در یک مکان"}]}},
+                      visible=[short+" — جایی نشستن"],examples=[])
+        self.assertEqual(out["issues"][0]["code"],"BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW")
+        self.assertEqual(out["issues"][0]["severity"],"MEDIUM")
+
     def test_backend_distinct_from_visible_is_still_checked(self):
         out=self.scan({"kombinationen_v1":{"items":[{"de":"Sie versteigern alte Möbel.",
                                                          "fa":"وسایل قدیمی را حراج می‌کنند"}]}},

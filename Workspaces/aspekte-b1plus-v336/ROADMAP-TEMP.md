@@ -1,6 +1,23 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.58 · **Stand:** 2026-11-08 · **Typ:** fortlaufender Plan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.59 · **Stand:** 2026-11-09 · **Typ:** fortlaufender Plan · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L06 PHASE1 COMPLETE — 177-CARD WHOLE-LESSON AUDIT · NEXT PHASE2 (2026-11-09)
+
+**No source reset or ghost changes:** Curated learner-data authority remains the exact SHA-verified B1+ Library L04 Phase3 ZIP (Library `libfile_10c0072c60b881919cfb3ce2cfaab2fb`, SHA256 `31d8d0640d5bacdb080f0a379aa926542498a905c82b4e3d2f3d670d7bb2aca4`). **Phase1 made ZERO changes to its 1571 primary learner-card objects** or 1548 source-row links; no new primary-owner ZIP was fabricated. Do not re-import the old publisher CSV.
+
+**Complete L06 Phase1 inventory (not full language approval):**
+- `177` existing learner cards / `175` original source ordinal rows `672–846`. All original rows mapped: four legitimate two-lemma splits `679,714,771,773`; ordinal `762` already merged in L06 `761 einhalten`; ordinal `733` points to existing L01 card `18 Darauf kommt's an`. Do not treat these as missing or duplicate records.
+- `370` current DE–FA examples (345 existing + 25 supplementary), no blank DE/FA fields; 4 cards have zero examples (`denkbar, undenkbar, erwünscht, unerwünscht`), 16 example QA statuses missing on 14 cards. 2 exact intra-card repeated DE example groups (`die Besprechung`, `hin und her`). Corpus total remains 5 inherited duplicate groups; no false fixes in Phase1.
+- `108/177` existing scope-specific morphology flags, `69` without individual recorded evidence (not necessarily invalid forms). `33` inherited curated HOLD markers. `18` word-network cards with 26 meaning blocks; 36 of 37 DE–FA examples on those network cards have no valid sense link; 1 already linked. 48 current L06 meaning-level combinations.
+- Case-specific complete **177-card Phase2 action queue** with priorities **P1 51 / P2 46 / P3 80**. P1/P2/P3 are triage priorities, not linguistic correctness or release approval. No old 10-card Review loops.
+- Central structural QA on the source owner: **665 corpus-wide Kombinationen / 1571 cards PASS** (strict noncopy/sentence-like/invalid-field checks); this does NOT validate naturalness for each combination. Corpus duplicate non-regression gate PASS `5<=5`; zero-duplicate release gate remains blocked by 5 known groups.
+- Phase1 compact owner report ZIP stored in the **Aspekte-B1plus Library**: `libfile_1e0a1b510bc88191bb9f9bcddbee072f`, SHA256 `71544896c5dbf4bea2cf79a17acdd08d6c3708f6ba8eb88048ea1187179aedc7`, 88,327 bytes, 8 ZIP members, 7 internal SHA256s, CRC and exact Library readback PASS. Per-card queue, QA-only searchable HTML, report, plan, scripts and exact check results included. GitHub mirrors the report, full queue, plan and replayable QA script under `Lessons/L06/` and `Tools/qa_L06_phase1_v1.py`. Receipt `Lessons/L06/PHASE1-PERSISTENCE-RECEIPT-20261109.json`.
+- **NEXT Phase2:** one editorial sweep over all 177 cards (P1 then P2 then P3). First target inherited HOLDs, four zero-example cards, two duplicate example groups, 36 meaning routes, 16 statusless DE–FA examples and 69 morphology evidence gaps. Preserve accepted meanings together in one lemma card. Record only genuine text edits or documented no-change decisions and run mandatory saved-primary-member before/after regression proof.
+- **Phase3 later:** complete case-level bilingual/grammar/relations QA; real `German-Flashcards-Pro` TSV import and front/back render if available. Otherwise finish with an explicit RELEASE_BLOCKED ledger. **No released cards, NONIMPORT**. No fictional additional human reviewer prerequisite; deterministic QA and explicit language evidence are required.
+
+---
+## HISTORICAL ROADMAP RECORDS (before L06 Phase1)
 
 ## LIVE L04 PHASE3 — GATE EVALUATED / RELEASE_BLOCKED · NEXT L06 PHASE1
 

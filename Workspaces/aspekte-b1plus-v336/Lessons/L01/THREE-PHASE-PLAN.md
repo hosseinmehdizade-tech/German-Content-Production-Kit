@@ -1,6 +1,6 @@
 # Aspekte B1+ · L01 · Drei-Phasen-Plan
 
-**Stand 2026-11-08 — Phase 2/3 DONE (Gesamtkorrektur), Phase 3 NEXT; NONIMPORT.**
+**Stand 2026-11-08 — Phase 3/3 evaluated, release BLOCKED; NONIMPORT.**
 
 ## Source of truth
 The current learner-data owner remains the SHA-verified L05 Phase3 Library ZIP (`libfile_8e25215035b48191a9481393e7856510`), SHA256 `b5e470617bd72a34e6ab6236ba3232d247d2a1ee0a45f35126e5c7beed6e41f6`. It contains 1,571 provisional learner cards and 1,548 original-source mapping rows. **No learner data edited in Phase 1.** Never restart from the textbook or original raw CSV.
@@ -32,3 +32,14 @@ Library `libfile_7fa4ce8f2df4819197d1a894598e9035`, SHA256 `3060b35afb9779e8f88e
 **Phase3 NEXT:** alle 90 Karten vollständige DE/FA- und Grammatik-QA unabhängig absichern; 84 fehlende externe G2-Formatteste entweder nachweisen oder regelbasiert begründet klären; 42 kuratierte HOLD-Karten differenziert prüfen; reale App-TSV-Import- und Front/Back-Anzeige tatsächlich testen. Die 30 neuen Beispiele und 62 Sinnblöcke sind hochwertige redaktionelle Kandidaten, **noch nicht unabhängig freigegeben**. Bei offenen Blockern als `RELEASE_BLOCKED` abschließen und zum nächsten vollen Unterricht wechseln; keine 10-Wort-Reviews.
 
 **Aktuell weiterhin NONIMPORT, global 0 vollständige Kartenfreigaben; 340 Release-HOLDs.** Berichtsquelle: `Lessons/L01/PHASE2-COMPLETE-90-CARDS-REPORT.json`; QA-Skript, vollständiges Vorher/Nachher-Ledger, alle 90 Dispositionen und QA-HTML im aktuellen Library-ZIP.
+
+## Phase 3/3 — Release-Gate evaluated: BLOCKED (2026-11-08)
+
+**The three-phase L01 cycle has now been evaluated for all 90 cards. This does not mean 90 cards are export-approved.** Phase1 90/90 audited, Phase2 90/90 editorial decisions (55 cards actually edited), Phase3 fail-closed QA over 90 cards, resulting in **90/90 BLOCKED / 0 formally approved**. Do not restart numbered ten-word Review loops.
+
+- Starting point L01 Phase2 owner SHA256 `3060b35afb9779e8f88ee7064ec4f7ff0d35b7218f1fa0888cfa9dd6063dd9d7`. Current master is L01 Phase3 owner `libfile_d5a43c53f89c81919d8eb6d071a7a60a`, SHA256 `dccda4967101f6c0ec4b3df49f3f9e050fd56c4bf20b14be3805899c3e9d8522`, 3,092,241 bytes and 184 ZIP members. Library upload, exact SHA256 byte-readback, ZIP CRC and 183 internal member hashes verified.
+- Genuine source-preserving card improvements: eight previously missing **example→specific-sense links** completed for four current cards `Kontakt`, `behindert`, `aushängen`, `Aberglaube`; **73/73 examples** within L01 networked cards now sense-routed. The other L01 cards without Wortnetz are not automatically erroneous. One marginal figurative `umkreisen` example was replaced with a natural Duden-supported subject `Gedanken`; `weitgehend` front comparative/superlative wording was made clearer.
+- Four additional **dictionary-scoped front form checks**: `heißen` (Duden), `umkreisen` (Duden), strong/intransitive and weak/transitive `aushängen` (separate Duden homographs), `weitgehend` / `weitestgehend` (Duden). L01 G2 verified 6→10, still **80** without independent scoped G2 form evidence (not necessarily 80 errors); global 334→338 verified, 1233 outstanding.
+- **Release still blocked** by all 90 lacking independent full German–Persian example/card approval and a verified real `German-Flashcards-Pro` import/render receipt. 42 inherited L01 curated HOLD markers remain explicit. **Offline** candidate TSV with 90 rows passed parser roundtrip but is not an app import; full 1571-card QA-only projection passed without field loss. Corpus-wide finite-clause/noncopy heuristic detected 0 of 499 combination items; global exact duplicate-example release check still **FAIL (7 preexisting duplicates outside L01)**.
+- Current owner ZIP includes the 90-card final gate ledger, before/after source-backed changes, actual runnable gate and provisional HTML/TSV, with all other lesson card content and 1548 source-map rows unchanged. All cards remain `NONIMPORT`. GitHub decision report `Lessons/L01/PHASE3-RELEASE-BLOCKED-90-CARDS-REPORT-20261108.json`.
+- **Next production unit is L02 Phase1/3**, a whole lesson, from the L01-Phase3-current SHA owner. L01 release-blocking dependencies remain in the control plane until genuine independent DE/FA QA and actual app runtime import/render are possible. No 10-word micro-Reviews and no fabricated approval flags.

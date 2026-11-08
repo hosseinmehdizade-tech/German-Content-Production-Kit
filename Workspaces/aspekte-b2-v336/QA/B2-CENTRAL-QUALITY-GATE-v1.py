@@ -159,7 +159,8 @@ def inspect(inputs, outputs, release_check=False):
     write_csv(outputs/'B2-1719-CARD-CENTRAL-NONIMPORT-MANIFEST.csv',records,list(records[0]))
     write_csv(outputs/'B2-COLLOCATION-EXAMPLE-LITERAL-OVERLAP-FLAGS.csv',flags,list(flags[0]))
     write_csv(outputs/'B2-NONCARD-AND-ALIAS-SOURCE-EXCEPTIONS.csv',source_exceptions,list(source_exceptions[0]))
-    write_csv(outputs/'B2-INTRA-CARD-DUPLICATE-COLLOCATION-FLAGS.csv',duplicate_collocations,list(duplicate_collocations[0]))
+    write_csv(outputs/'B2-INTRA-CARD-DUPLICATE-COLLOCATION-FLAGS.csv',duplicate_collocations,
+              ['lesson','unit_id','front','collocation','issue'])
     counts = Counter(x['severity'] for x in flags)
     result = {
         "schema": SCHEMA,"policy_revision":POLICY_REVISION,"audit_date":"2026-11-08","project":"Aspekte B2",

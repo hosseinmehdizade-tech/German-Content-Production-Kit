@@ -1,0 +1,111 @@
+{
+  "schema": "lesen-r19-current-v505-native-source-preentry@1",
+  "date": "2026-11-08",
+  "status": "PASS_EXACT_CURRENT_V505_JS_VALIDATOR_ONLY__NO_BROWSER_STAGE6",
+  "current_v505_source_sha256": "b03f954a9e617d918d42eeddbf0cd4da5a3c1bc3d43d9e57977312dbbde071bc",
+  "candidate_runtime_sha256": "365b774d8478bd98f6e111cafa66677abc1688cad76674102f6061109825254f",
+  "validation": {
+    "status": "PASS",
+    "errors": [],
+    "warnings": [],
+    "counts": {
+      "entries": 68,
+      "passages": 478,
+      "questions": 340,
+      "vocabulary": 350,
+      "translationsFa": 478,
+      "translationsEn": 478,
+      "fullTextGrammar": 4011,
+      "lexicalTargets": 0
+    }
+  },
+  "negative_probes": [
+    {
+      "name": "wrong schema",
+      "rejected": true,
+      "errors": [
+        "schema_version باید از خانواده lesen.runtime.v1.x باشد و entries آرایه باشد."
+      ]
+    },
+    {
+      "name": "duplicate item id",
+      "rejected": true,
+      "errors": [
+        "entries[11].source_item_id تکراری است: LES-PRES-011"
+      ]
+    },
+    {
+      "name": "duplicate runtime unit",
+      "rejected": true,
+      "errors": [
+        "entries[11].unit.reading_unit_id تکراری است: lesen_LES-PRES-011",
+        "LES-PRES-012.lesen_LES-PRES-012_q01: target_object_ids ناسازگار است."
+      ]
+    },
+    {
+      "name": "missing Persian",
+      "rejected": true,
+      "errors": [
+        "LES-PRES-011.passages[5].translations.fa خالی است."
+      ]
+    },
+    {
+      "name": "missing English",
+      "rejected": true,
+      "errors": [
+        "LES-PRES-011.passages[5].translations.en خالی است."
+      ]
+    },
+    {
+      "name": "broken p06 fulltext offset",
+      "rejected": true,
+      "errors": [
+        "LES-PRES-011.ftg-0001: offset/target_text نامعتبر است."
+      ]
+    },
+    {
+      "name": "wrong question count",
+      "rejected": true,
+      "errors": [
+        "LES-PRES-011: Runtime باید دقیقاً 5 سؤال داشته باشد؛ فعلی 4.",
+        "LES-PRES-011: comprehension_exercise_ids با exercises سازگار نیست."
+      ]
+    },
+    {
+      "name": "wrong exercise target",
+      "rejected": true,
+      "errors": [
+        "LES-PRES-011.lesen_LES-PRES-011_q01: target_object_ids ناسازگار است."
+      ]
+    },
+    {
+      "name": "wrong grammar count",
+      "rejected": true,
+      "errors": [
+        "counts.full_text_grammar=4012 ولی actual=4011."
+      ]
+    },
+    {
+      "name": "invalid source title",
+      "rejected": true,
+      "errors": [
+        "LES-PRES-011: title خالی است."
+      ]
+    }
+  ],
+  "in_memory_projection": {
+    "units": 68,
+    "exercises": 340,
+    "lexicalTargets": 0,
+    "bundled": 0
+  },
+  "diagnostics": {
+    "units": 68,
+    "exercises": 340
+  },
+  "boundaries": [
+    "Exact current v505 JS source validated (not emulated hand-written importer)",
+    "Node VM only; no live browser, IndexedDB persistence, user data or Stage6 transaction",
+    "No full independent semantic Stage4 or final Stage7 release"
+  ]
+}

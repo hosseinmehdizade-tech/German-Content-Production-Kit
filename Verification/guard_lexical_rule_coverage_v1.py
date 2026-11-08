@@ -23,6 +23,7 @@ STOP={"das","der","die","den","dem","des","ein","eine","einen","einem",
 def sha(b):return hashlib.sha256(b).hexdigest()
 def blob(b):return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
 def norm(s):return " ".join(unicodedata.normalize("NFC",str(s)).casefold().split())
+def exact_surface(s):return " ".join(unicodedata.normalize("NFC",str(s)).split()) # machine-exact: no ß/ss or case folding
 def words(s):return re.findall(r"[^\W_]+",norm(s),flags=re.UNICODE)
 def stem(w):
     if len(w)<6:return w
@@ -137,7 +138,7 @@ def review_signals(rows):
         for source,items in sources:
             local_seen=set()
             for c in items:
-                n=norm(c)
+                n=exact_surface(c)
                 if n in local_seen:
                     findings.append([row["id"],"EXACT_COMBO_DUPLICATE",c,"","HIGH"])
                 local_seen.add(n)
@@ -167,12 +168,12 @@ def review_signals(rows):
                 ex.append(t)
         tot_ex+=len(ex);tot_co+=len(combos)
         for c in combos:
-            n=norm(c)
+            n=exact_surface(c)
             ct={stem(x) for x in words(c) if x not in STOP and len(x)>=4}
             for e in ex:
                 et={stem(x) for x in words(e) if x not in STOP and len(x)>=4}
                 common={x for x in ct if any(related_stem(x,y) for y in et)}
-                exact=n==norm(e)
+                exact=n==exact_surface(e)
                 if exact or (len(common)>=2 and len(common)>=len(ct)-1):
                     findings.append([row["id"],"EXACT_EXAMPLE_CLONE" if exact else "EXAMPLE_REUSE_REVIEW",c,e,"HIGH" if exact else "MEDIUM"])
                     break

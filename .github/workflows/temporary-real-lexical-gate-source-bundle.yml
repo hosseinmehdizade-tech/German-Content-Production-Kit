@@ -1,0 +1,33 @@
+name: TEMP read-only real lexical gate source bundle
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/temporary-real-lexical-gate-source-bundle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checkout-source-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Assemble exact public repository policy sources only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          tar -czf out/lexical-quality-source.tar.gz \
+            Verification Tools Prompt Optimization-Program \
+            WORKSTREAM-RESUME-CURRENTNESS-POLICY.json \
+            LINGUISTIC-QA-AUTHORITY-POLICY.json \
+            STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json \
+            CONTENT-OUTPUT-DELIVERY-POLICY.json
+          sha256sum out/lexical-quality-source.tar.gz | tee out/sha256sums.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: temporary-real-lexical-gate-source
+          path: out/
+          if-no-files-found: error
+          retention-days: 1

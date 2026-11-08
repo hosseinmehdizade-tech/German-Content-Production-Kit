@@ -41,6 +41,30 @@ class ProducerBypassTests(unittest.TestCase):
              "with guarded_zip('CONTENT-NEW.zip',purpose='stage5_acceptance') as z:\n    pass\n")
         with self.assertRaisesRegex(ValueError,"NEW_UNGATED_LEXICAL_PRODUCER_REFERENCE"):
             inspect(self.root,self.base,h)
+    def test_new_dotted_python_m_legacy_builder_refused(self):
+        h=self.write_commit(".github/workflows/new-module-producer.yml",
+            "jobs:\n  release:\n    steps:\n      - run: python -m Tools.build_governed_clean_delivery_v1 source output\n")
+        with self.assertRaisesRegex(ValueError,"NEW_UNGATED_LEXICAL_PRODUCER_REFERENCE"):
+            inspect(self.root,self.base,h)
+
+    def test_new_direct_import_of_legacy_builder_refused(self):
+        h=self.write_commit("Workspaces/menschen-b1-verben-kombinationen-v336/build.py",
+            "from Tools.build_governed_clean_delivery_v1 import run as publish\npublish(source,output,receipt)\n")
+        with self.assertRaisesRegex(ValueError,"NEW_UNGATED_LEXICAL_PRODUCER_REFERENCE"):
+            inspect(self.root,self.base,h)
+
+    def test_new_importlib_legacy_builder_refused(self):
+        h=self.write_commit("Tools/alternate_lexical_producer.py",
+            "import importlib\npublisher=importlib.import_module('Tools.build_clean_delivery')\n")
+        with self.assertRaisesRegex(ValueError,"NEW_UNGATED_LEXICAL_PRODUCER_REFERENCE"):
+            inspect(self.root,self.base,h)
+
+    def test_new_bare_import_of_historical_builder_refused(self):
+        h=self.write_commit("Tools/adapt_content.py",
+            "import build_front_gated_clean_delivery_v1 as bare_builder\n")
+        with self.assertRaisesRegex(ValueError,"NEW_UNGATED_LEXICAL_PRODUCER_REFERENCE"):
+            inspect(self.root,self.base,h)
+
     def test_historical_unchanged_wrapper_not_retroactively_blocked(self):
         p="Workspaces/menschen-a2/tools/package_release.py"
         self.write_commit(p,"with guarded_zip(out,purpose='final_delivery') as z: pass\n")

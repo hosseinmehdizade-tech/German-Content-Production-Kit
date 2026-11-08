@@ -2,7 +2,8 @@
 """Prevent NEW executable producer bypasses of the source-owned lexical gate.
 
 Historical scripts are preserved; only ADDED executable lines in the compared
-commit range can introduce a new bypass. Format-only regression tests live in
+commit range can introduce a new bypass. Include Python module imports and
+python -m launches, not merely literal *.py filename invocations. Format-only regression tests live in
 Verification and remain valid. Does not prove branch protection or semantic QA.
 """
 from __future__ import annotations
@@ -12,10 +13,13 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 # Deliberately exact filenames, not arbitrary "stage5" substrings.
 UNGUARDED=(
-    re.compile(r"\bbuild_clean_delivery\.py\b",re.I),
-    re.compile(r"\bbuild_front_gated_clean_delivery_v1\.py\b",re.I),
-    re.compile(r"\bbuild_governed_clean_delivery_v1\.py\b",re.I),
-    re.compile(r"\bpackage_release(?:_corrective)?\.py\b",re.I),
+    # Both direct filenames and Python module/import spellings are producer
+    # references. A .py-only regex missed python -m Tools.build_...,
+    # from Tools.build_... import run, and importlib module loading.
+    re.compile(r"\b(?:Tools\.)?build_clean_delivery(?:\.py)?\b",re.I),
+    re.compile(r"\b(?:Tools\.)?build_front_gated_clean_delivery_v1(?:\.py)?\b",re.I),
+    re.compile(r"\b(?:Tools\.)?build_governed_clean_delivery_v1(?:\.py)?\b",re.I),
+    re.compile(r"\b(?:Tools\.)?package_release(?:_corrective)?(?:\.py)?\b",re.I),
     re.compile(r"\bguarded_zip\s*\(",re.I),
 )
 EXTS={".py",".sh",".bash",".yml",".yaml"}

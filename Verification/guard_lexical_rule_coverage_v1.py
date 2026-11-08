@@ -112,10 +112,79 @@ def review_signals(rows):
                        "example":e,"severity":severity})
     return {"examples":tot_ex,"combinations":tot_co,"issues":output}
 
+def high_taxonomy_signals(taxonomy, source_sha):
+    """Turn exact-source right-side HIGH diagnostics into stable review obligations."""
+    if not isinstance(taxonomy, dict) or taxonomy.get("schema")!="gcpk-related-taxonomy-audit@1.1.0":
+        raise ValueError("INVALID_RELATED_TAXONOMY_RESULT")
+    if taxonomy.get("source_sha256")!=source_sha or not isinstance(taxonomy.get("findings"), list):
+        raise ValueError("RELATED_TAXONOMY_NOT_BOUND_TO_EXACT_SOURCE")
+    found={}
+    for item in taxonomy["findings"]:
+        if not isinstance(item,dict):raise ValueError("INVALID_TAXONOMY_FINDING")
+        if item.get("severity")!="HIGH":continue
+        cid,code,section,value=(item.get(k) for k in ("card_id","code","section","value"))
+        if not all(isinstance(x,str) and x for x in (cid,code,section,value)):
+            raise ValueError("INVALID_HIGH_TAXONOMY_IDENTITY")
+        fingerprint=sha(("\0".join(("TAXONOMY",cid,code,section,value))).encode("utf-8"))
+        found[fingerprint]={"id":fingerprint,"card_id":cid,"code":code,
+                            "section":section,"value":value,"severity":"HIGH"}
+    return [found[k] for k in sorted(found)]
+
+
+def review_high_findings(cross_tile, taxonomy_high, evidence):
+    """One existing independent review, never a new per-flag editorial phase.
+
+    A claimed CORRECTED_IN_EXACT_SOURCE is invalid while that exact finding
+    remains detectable. Historical content is not edited by this function.
+    """
+    blockers=[]
+    issues=cross_tile["issues"]
+    flagged={x["card_id"] for x in issues}|{x["card_id"] for x in taxonomy_high}
+    supplied=evidence.get("flagged_card_ids")
+    if not isinstance(supplied,list) or any(not isinstance(x,str) for x in supplied) or \
+        len(supplied)!=len(set(supplied)) or set(supplied)!=flagged:
+        blockers.append("CROSS_TILE_SCOPE_MISSING_CARDS")
+    if evidence.get("risk_based_independent_review") is not True:
+        blockers.append("NO_INDEPENDENT_CROSS_TILE_REVIEW")
+    raw=evidence.get("high_decisions",[])
+    if not isinstance(raw,list):
+        return blockers+["INVALID_HIGH_DECISION_LIST"]
+    decisions={}
+    for item in raw:
+        if not isinstance(item,dict) or not isinstance(item.get("id"),str):
+            blockers.append("INVALID_HIGH_DECISION_RECORD")
+            continue
+        if item["id"] in decisions:
+            blockers.append("DUPLICATE_HIGH_DECISION:"+item["id"][:12])
+        decisions[item["id"]]=item
+    current={x["id"] for x in issues if x["severity"]=="HIGH"}|{x["id"] for x in taxonomy_high}
+    for fp in decisions:
+        if fp not in current:
+            blockers.append("STALE_OR_UNKNOWN_HIGH_DECISION:"+fp[:12])
+    for item in issues+taxonomy_high:
+        if item["severity"]!="HIGH":continue
+        fingerprint=item["id"]
+        code=item["code"]
+        if code=="EXACT_COMBO_DUPLICATE":
+            blockers.append("DUPLICATE_COMBO_REQUIRES_SOURCE_CORRECTION:"+fingerprint[:12])
+            continue
+        if code in ("OPAQUE_TARGET_ID_IN_RELATED","INVISIBLE_FORMAT_CONTROL",
+                    "DUPLICATE_WITHIN_RELATED","CONFLICTING_TYPED_TARGET"):
+            blockers.append("RELATED_STRUCTURAL_HIGH_REQUIRES_CORRECTION:"+fingerprint[:12])
+            continue
+        decision=decisions.get(fingerprint,{})
+        if decision.get("decision")=="CORRECTED_IN_EXACT_SOURCE":
+            blockers.append("CORRECTION_STILL_PRESENT_IN_EXACT_SOURCE:"+fingerprint[:12])
+        elif decision.get("decision")!="KEEP_WITH_SPECIFIC_TEACHING_DELTA" or \
+            not isinstance(decision.get("reason"),str) or not decision["reason"].strip():
+            blockers.append("HIGH_UNRESOLVED:"+fingerprint[:12])
+    return blockers
+
+
 def evaluate(tsv,stage4=None,review=None,root=ROOT,policy_checks=True):
     if not tsv.is_file() or tsv.is_symlink():raise ValueError("INVALID_CURRENT_TSV")
     original=tsv.read_bytes();rows=native_rows(original);sc=review_signals(rows)
-    blockers=[];extra={}
+    blockers=[];extra={};taxonomy_high=[]
     authority=pinned(root) if policy_checks else {"mode":"SYNTHETIC_UNIT_TEST_ONLY"}
     if policy_checks:
         sys.path.insert(0,str(root/"Verification"))
@@ -125,10 +194,11 @@ def evaluate(tsv,stage4=None,review=None,root=ROOT,policy_checks=True):
         from check_mem009_native_stage5_v1 import audit_tsv_bytes
         from check_active_stage5_policy_v1 import check_bytes
         rel=lexical(tsv);tax=related(load_cards(original,".tsv"),sha(original))
+        taxonomy_high=high_taxonomy_signals(tax,sha(original))
         did=analyze_rows(rows,tsv.name,sha(original));mem=audit_tsv_bytes(original)
         neutral=check_bytes(original,root)
         extra={"lexical_relation":rel["status"],
-          "related_taxonomy_high":tax["severity_counts"].get("HIGH",0),
+          "related_taxonomy_high":len(taxonomy_high),
           "kombinationen_advisory_count":len(did["flags"]),
           "mem009":mem["status"],"neutral_projection":neutral["status"]}
         if rel["issue_counts"]["BLOCKER"]:blockers.append("LEXICAL_RELATION_STRUCTURAL_ERROR")
@@ -153,21 +223,7 @@ def evaluate(tsv,stage4=None,review=None,root=ROOT,policy_checks=True):
                 blockers.append("CURRENT_OWNER_NOT_BOUND")
             if stage4 and stage4.is_file() and ev.get("stage4_receipt_sha256")!=sha(stage4.read_bytes()):
                 blockers.append("CROSS_TILE_REVIEW_STAGE4_MISMATCH")
-            flagged={i["card_id"] for i in sc["issues"]}
-            if set(ev.get("flagged_card_ids",[]))!=flagged:
-                blockers.append("CROSS_TILE_SCOPE_MISSING_CARDS")
-            if ev.get("risk_based_independent_review") is not True:
-                blockers.append("NO_INDEPENDENT_CROSS_TILE_REVIEW")
-            decisions={d.get("id"):d for d in ev.get("high_decisions",[]) if isinstance(d,dict)}
-            for i in sc["issues"]:
-                if i["code"]=="EXACT_COMBO_DUPLICATE":
-                    # An identical second combination is not a new lesson.
-                    blockers.append("DUPLICATE_COMBO_REQUIRES_SOURCE_CORRECTION:"+i["id"][:12])
-                    continue
-                if i["severity"]=="HIGH":
-                    d=decisions.get(i["id"],{})
-                    if d.get("decision") not in ("KEEP_WITH_SPECIFIC_TEACHING_DELTA","CORRECTED_IN_EXACT_SOURCE") or not str(d.get("reason","")).strip():
-                        blockers.append("HIGH_UNRESOLVED:"+i["id"][:12])
+            blockers.extend(review_high_findings(sc,taxonomy_high,ev))
     if tsv.read_bytes()!=original:raise ValueError("SOURCE_CHANGED_DURING_AUDIT")
     return {"schema":"gcpk-mandatory-lexical-release-coverage@1.0.0",
         "status":"BLOCKED" if blockers else "PASS_FOR_GOVERNED_STAGE5_CANDIDATE_ONLY",
@@ -175,8 +231,10 @@ def evaluate(tsv,stage4=None,review=None,root=ROOT,policy_checks=True):
         "policy_authority":authority,"executed_scanners":extra,
         "cross_tile":{"examples":sc["examples"],"combinations":sc["combinations"],
              "issues":len(sc["issues"]),"by_code":{c:sum(x["code"]==c for x in sc["issues"]) for c in sorted({x["code"] for x in sc["issues"]})},
-             "affected_cards":len({x["card_id"] for x in sc["issues"]}),
-             "first_12":sc["issues"][:12]},
+             "affected_cards":len({x["card_id"] for x in sc["issues"]}|{x["card_id"] for x in taxonomy_high}),
+             "first_12":sc["issues"][:12],
+             "related_taxonomy_high":len(taxonomy_high),
+             "related_taxonomy_first_12":taxonomy_high[:12]},
         "blockers":blockers,"does_not_prove":["ALL_22_LINGUISTIC_POLICIES",
              "TRUE_SEMANTIC_CORRECTNESS","NATIVE_APP_STAGE6","FINAL_STAGE7"]}
 

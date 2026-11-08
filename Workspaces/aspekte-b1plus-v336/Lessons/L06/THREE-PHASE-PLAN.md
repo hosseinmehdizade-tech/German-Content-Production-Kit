@@ -1,3 +1,25 @@
+# Aspekte B1+ · Lektion 06 — Drei-Phasen-Plan (LIVE)
+
+**2026-11-09 · Phase 1 DONE · Phase 2 DONE (editorial, 45 targeted data/status cards) · Phase 3 NEXT · NONIMPORT**
+
+## Latest verified owner
+- B1+ Library `libfile_3832285495208191a078ee53fc37feb7` / SHA256 `bba74617aae6abfb849c28a03b2f279ed75171075c9717c2e6f3ad4c2d9f7d8f` / 3,605,537 bytes.
+- Original curated source has **1571 learner IDs / 1548 mapped source rows**. L06 **177 learner cards from 175 source rows**; all original IDs and source links preserved; all 1394 non-L06 card objects unchanged.
+- **177/177 Phase2 disposition decisions** written to active card objects plus independent decision JSONL. **45 targeted content / QA status card changes** (not 177 language fixes). 89 new example-to-sense links and 19 new meaning networks containing 42 sense blocks; no separation of meanings into new cards. L06 example count **378** after 10 new examples and 2 duplicate-removals. 14 previously statusless examples marked **PENDING**, with two previous statusless exact duplicates removed.
+- Primary 1571-card JSONL actually changed and was byte-reopened and compared: SHA256 `8271f00d2ae686c835e1b489cf1385b82705a7290fd26781f7f7017932a0bed1` → `3766d3bbd7e85809f79719db758857e2deac2a5363982b863d878086a44cd059`. Mandatory regression guard PASS; Library exact readback and ZIP CRC PASS.
+- 722 global structured bilingual combinations, zero exact copy / finite-clause / required-field failures in deterministic QA. This does NOT certify every collocation's linguistic naturalness.
+- Existing 33 L06 curated HOLD markers and 69 unverified scoped morphology forms intentionally preserved. Corpus exact same-card example duplicate groups 5→3, remaining three still block release. **Zero fully approved learner cards, no real app import tested.**
+
+## Phase 3 — final release gate, NOT a new micro-review loop
+1. Examine unresolved L06 case-level German/Persian grammar, senses, idiomatic combination accuracy, and all examples, explicitly addressing original 33 HOLD cases, 69 morphology evidence gaps and any lexeme-specific hazards. Do not treat absent external dictionary evidence as proof of a wrong form, and do not invent a required second external human reviewer.
+2. Validate all 177 original card identities/156? **Correct required 175 source rows**; compare exact canonical primary saved JSONL, unchanged other lessons, 1548 ordinal links, 378 bilingual examples, 37 meaning-network cards and 722 global combinations.
+3. Run fail-closed duplicate and semantic link gates; perform an actual `German-Flashcards-Pro` TSV import/front/back renderer test when accessible, not just an offline HTML screenshot/TSV parser simulation.
+4. For unresolved QA or unavailable real runtime app test, conclude Phase 3 with explicit **RELEASE_BLOCKED_NONIMPORT** and preserve blockers as an actionable ledger. Do not restart 10-word `ReviewXX` loops. Next general lesson after this is L07 Phase1 if the normal sequence remains unchanged.
+
+Evidence: `Lessons/L06/PHASE2-PERSISTENCE-RECEIPT-20261109.json`; `Lessons/L06/PHASE2-WHOLE-177-CARD-REPORT-20261109.json`; `Lessons/L06/PHASE2-177-CARD-DISPOSITIONS.jsonl`; `Lessons/L06/PHASE2-CONTENT-BEFORE-AFTER.json`; `Tools/build_L06_phase2_v1.py`.
+
+---
+## Historical Phase1 plan
 # Aspekte B1+ · Lektion 06 · verbindlicher Drei-Phasen-Plan
 
 **Stand 2026-11-09 · Phase 1 of 3 DONE (whole lesson structural inventory); Phase 2 NEXT; NONIMPORT.**

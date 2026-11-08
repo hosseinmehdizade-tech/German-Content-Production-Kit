@@ -12,7 +12,7 @@
 
 ## Phase 3 — final release gate, NOT a new micro-review loop
 1. Examine unresolved L06 case-level German/Persian grammar, senses, idiomatic combination accuracy, and all examples, explicitly addressing original 33 HOLD cases, 69 morphology evidence gaps and any lexeme-specific hazards. Do not treat absent external dictionary evidence as proof of a wrong form, and do not invent a required second external human reviewer.
-2. Validate all 177 original card identities/156? **Correct required 175 source rows**; compare exact canonical primary saved JSONL, unchanged other lessons, 1548 ordinal links, 378 bilingual examples, 37 meaning-network cards and 722 global combinations.
+2. Validate all 177 existing L06 card identities and the 175 original source rows; compare exact canonical primary saved JSONL, unchanged other lessons, 1548 ordinal links, 378 bilingual examples, 37 meaning-network cards and 722 global combinations.
 3. Run fail-closed duplicate and semantic link gates; perform an actual `German-Flashcards-Pro` TSV import/front/back renderer test when accessible, not just an offline HTML screenshot/TSV parser simulation.
 4. For unresolved QA or unavailable real runtime app test, conclude Phase 3 with explicit **RELEASE_BLOCKED_NONIMPORT** and preserve blockers as an actionable ledger. Do not restart 10-word `ReviewXX` loops. Next general lesson after this is L07 Phase1 if the normal sequence remains unchanged.
 

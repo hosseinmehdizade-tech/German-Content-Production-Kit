@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.47 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.48 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE L01 PHASE1/3 STATUS — 2026-11-08 (NONIMPORT)
 
@@ -476,4 +476,17 @@
 - **Exact L05 release blockers**: no fully independent DE–FA/card approval for any of 155; real app import/render receipt missing for 155; specific G2 form attestations missing for 46; 28 old curated HOLDs unresolved; one ambiguous example link held. **0 formally released cards; global 340 release HOLDs remain.**
 - Current receipt `Workspaces/aspekte-b1plus-v336/Lessons/L05/PHASE3-155-CARD-RELEASE-GATE-BLOCKERS-20261108.json`; fail-closed validation script `Tools/qa_lesson_release_gate_v1.py`; detailed 155-card gate ledger inside owner. This is a legitimate BLOCKED conclusion to the three-phase cycle, not a promise to repeat it.
 - **Next project-production work:** L01 Phase1/3 whole-lesson audit, while L05 release dependencies remain in the blocker ledger for independent bilingual QA and real app runtime connection. Do not manufacture release approvals or insist every remaining G2 flag means actual morphological error.
+
+
+
+## L01 Phase 2/3 — GANZE LEKTION REDAKTIONELL ABGESCHLOSSEN (2026-11-08, NONIMPORT)
+
+**Keine neuen 10-Wort-Reviews.** Nach L01 Phase1 (90/90 strukturell inventarisiert) ist die **gesamte L01 Phase2 (90/90 redaktionelle Einzelentscheidungen) als EINE Arbeitseinheit abgeschlossen.** Der alte L05-Phase3-Owner bleibt als geprüfter Parent erhalten, ist aber nicht mehr der aktuelle Karteninhalt.
+
+- **Aktuell gültiger Library-Owner:** `/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Reports/Aspekte-B1plus-L01-PHASE2-WHOLE-LESSON-90-CARDS-EDITORIAL-NONIMPORT-20261108.zip`, ID `libfile_7fa4ce8f2df4819197d1a894598e9035`, SHA256 `3060b35afb9779e8f88ee7064ec4f7ff0d35b7218f1fa0888cfa9dd6063dd9d7`, 3.051.031 Bytes / 173 ZIP-Einträge / 172 SHA-Manifesteinträge. Library-Readback byteidentisch, CRC und alle Member-Hashes PASS. Original 1.548 Source-Map-Zeilen byteidentisch; 1.571 Karteneinheiten unverändert, andere Lektionen ebenfalls unverändert; Quelle nicht rekonstruiert.
+- **90 Karten vollständig redaktionell dispositioniert; 55 mit echter Änderung des Lerninhalts**, 35 ohne neue Textänderung. **30 zusätzliche Deutsch–Persisch-Beispiele** (L01 139→169; ohne Beispiel 24→0), **33 neue Wortnetz-Karten / 62 Sinnblöcke** mit **65 expliziten Verbindungen zwischen konkreten Beispielen und Bedeutungen**, eine konkrete persische Beispielübersetzung präzisiert. Alle akzeptierten Bedeutungen in ihren bisherigen Karten bewahrt; deutsche Original-Quellbelege und ordinale Zusammenführungen erhalten.
+- `abschließen` jetzt mit drei Sinnverwendungen (Ausbildung beenden, Tür abschließen, Versicherung abschließen), `schlagen`, `die Kraft`, `ansehen`, `widersprechen`, `durchsehen` etc. mit situationsgebundenen Beispielen; `aushängen`-Sinntrennung nicht überschrieben. Die zwei Quellsatz-Karten `Der Vater schimpfte mit dem Kind.` und `Das Glas hat einen Sprung.` bewusst als Satz-/Wendungsbelege behalten, nicht blind zu Duplikatkarten gewandelt.
+- Laufende QA: gesamte 1571-Karten-JSONL, Originalsource-Map und andere Lektionen unverändert, 499 Kombinationen unter konservativem Noncopy-Finite-Clause-Filter 0 erkannte Probleme, 0 exakte Beispielfehldubletten in L01. **7 Altdubletten außerhalb L01** weiterhin Release-Blocker. HTML QA-only für **alle 90 L01-Karten**, Vorher/Nachher-Ledger, 90 einzeln nachvollziehbare Dispositionen, QA-Skript im Owner.
+- **PHASE3 NÄCHSTE ARBEIT:** vollständige unabhängige Deutsch–Persisch-Kartenfreigabe (nicht bloße maschinelle Statusfelder); 84 L01-Karten ohne externen G2-Formbeleg sowie 42 kuratierte HOLDs mit Belegen/Regelausnahmen beurteilen; echten `German-Flashcards-Pro`-TSV-Import/Renderer prüfen, bevor ein Released-Deck genehmigt wird. Die 30 neuen Beispiele und 62 Sinnblöcke bleiben explizit redaktionelle **Kandidaten**. Global 334/1571 G2 attestiert, 340 Release-HOLDs, 0 Karten vollständig freigegeben. G5 runtime pending. **NONIMPORT.**
+- GitHub-Report: `Workspaces/aspekte-b1plus-v336/Lessons/L01/PHASE2-COMPLETE-90-CARDS-REPORT.json`; L01 Drei-Phasen-Plan in `Lessons/L01/THREE-PHASE-PLAN.md`. Kein Rückfall zu Review18 usw.
 

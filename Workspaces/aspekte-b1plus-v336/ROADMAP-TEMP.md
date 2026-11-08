@@ -1,6 +1,6 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.45 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.46 · **Stand:** 2026-11-08 · **Typ:** vorläufiger, fortlaufend aktualisierter Arbeitsplan · **Status:** ACTIVE / NONIMPORT
 
 ## LIVE L05 THREE-PHASE GOVERNANCE OVERRIDE — 2026-11-08 (Phase 1 complete / 3; NONIMPORT)
 
@@ -450,4 +450,17 @@
 - **Unresolved Phase3 release obligations:** 49 L05 G2 form attestations still not recorded independently (globally 331/1571 attested, 1240 pending), 28 old L05 curated HOLD markers retained. Seven previously duplicated DE example pairs elsewhere in corpus retained; global release-HOLD count 340, formal independent G4 full-card releases 0, G5 actual app/TSV import not tested.
 - GitHub phase2 receipt `Workspaces/aspekte-b1plus-v336/Lessons/L05/PHASE2-COMPLETE-155-CARDS-REPORT.json`; L05 phase plan `Lessons/L05/THREE-PHASE-PLAN.md`. Package includes all 155-card decisions, all field before/after records, complete lesson HTML front/back QA visualization, repeatable source/ZIP validator. No original textbook rescanning, no new 10-card milestones.
 - **Next definitive step — L05 Phase 3/3:** independently resolve semantics/grammar/DE–FA for all 155 cards, handle G2 49 + old HOLD 28, enforce structural gates and real app-import/render check; release only truly approved cards or explicitly list blocked cases without implying that the whole lesson is completed for import.
+
+
+
+## LIVE L05 PHASE3 FAIL-CLOSED RELEASE DECISION — 2026-11-08
+
+- **Three-phase work unit L05 is now evaluated, but NOT released:** Phase1 structured audit DONE; Phase2 155-card editorial correction DONE; Phase3 full-lesson release gates executed, result **BLOCKED** for all 155 cards. Keep this definitive state; do not restart Review18 10-word substeps.
+- Derived exclusively from byte-verified Phase2 L05 owner, no textbook/original-CSV rebuild. New current 1,571-card **NONIMPORT OWNER**: Library `libfile_8e25215035b48191a9481393e7856510`, SHA256 `b5e470617bd72a34e6ab6236ba3232d247d2a1ee0a45f35126e5c7beed6e41f6` (2,995,170 B; 167 ZIP members, 166 validated SHA entries; exact Library readback/CRC PASS); 1,548 source-map rows preserved byte-identically; outside L05 cards unchanged.
+- **Meaning/example routing genuinely improved:** L05 46 sense-network cards, 100 sense blocks, 384 DE–FA examples. **140 new example→specific-sense links** curated (151 total explicit links), **one** `sich verständigen` example left ambiguous and held rather than forced to one meaning. The QA-only 155-card HTML preview groups linked examples under their proper sense; this is not actual app runtime. All DE/FA example text and order preserved.
+- **G2 external form evidence:** `Muse`, `Gesprächspartner/in`, `Kraftfutter` Duden-backed front grammar repaired; L05 106→109 attested, 49→46 still unconfirmed; global 331→334 attested, 1240→1237 pending. Attestation of a form never constitutes approval of an entire card.
+- Full-corpus conservative no-example-copy/finite-clause gate **PASS (1,571 cards; 437 combinations, zero detected)**; global duplicate-example release gate **FAIL** on seven old duplicates outside L05 (expected); generated/nonimport Front/Back QA projection **PASS**, L05 155-row TSV-only parser roundtrip **PASS**, real `German-Flashcards-Pro` importer and visual runtime **NOT TESTED**.
+- **Exact L05 release blockers**: no fully independent DE–FA/card approval for any of 155; real app import/render receipt missing for 155; specific G2 form attestations missing for 46; 28 old curated HOLDs unresolved; one ambiguous example link held. **0 formally released cards; global 340 release HOLDs remain.**
+- Current receipt `Workspaces/aspekte-b1plus-v336/Lessons/L05/PHASE3-155-CARD-RELEASE-GATE-BLOCKERS-20261108.json`; fail-closed validation script `Tools/qa_lesson_release_gate_v1.py`; detailed 155-card gate ledger inside owner. This is a legitimate BLOCKED conclusion to the three-phase cycle, not a promise to repeat it.
+- **Next project-production work:** L01 Phase1/3 whole-lesson audit, while L05 release dependencies remain in the blocker ledger for independent bilingual QA and real app runtime connection. Do not manufacture release approvals or insist every remaining G2 flag means actual morphological error.
 

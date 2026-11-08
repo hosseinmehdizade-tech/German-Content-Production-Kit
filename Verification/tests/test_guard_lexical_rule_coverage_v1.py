@@ -123,6 +123,37 @@ class BackendCombinationCoverageTests(unittest.TestCase):
         self.assertEqual(out["issues"][0]["code"],"BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW")
         self.assertEqual(out["issues"][0]["severity"],"MEDIUM")
 
+    def test_exact_r16_abstimmen_en_dash_is_not_a_display_divergence(self):
+        de="über + Akkusativ abstimmen; worüber? – darüber (Pronominaladverb)"
+        tr="دربارهٔ چیزی رأی دادن؛ پرسش worüber و ضمیر اشارهٔ darüber"
+        out=self.scan({"kombinationen_v1":{"items":[{"de":de,"fa":tr}]}},
+                      visible=[de+" — "+tr],examples=[])
+        self.assertEqual(out["combinations"],1)
+        self.assertFalse(any(x["code"]=="BACKEND_VISIBLE_SURFACE_DIVERGENCE_REVIEW"
+                             for x in out["issues"]))
+
+    def test_exact_r16_setzen_en_dash_is_not_a_display_divergence(self):
+        de="sich auf / neben + Akkusativ setzen (wohin?) – auf / neben + Dativ sitzen (wo?)"
+        tr="نشستن به سمت یک مکان با آکوزاتیو؛ در حالت نشسته بودن مکان با داتیو"
+        out=self.scan({"kombinationen_v1":{"items":[{"de":de,"fa":tr}]}},
+                      visible=[de+" — "+tr],examples=[])
+        self.assertEqual(out["combinations"],1)
+        self.assertEqual(out["issues"],[])
+
+    def test_lean_advisory_preserves_en_dash_before_persian_translation(self):
+        from audit_kombinationen_lean_v1_1 import combos
+        full="sich auf + Akkusativ setzen (wohin?) – auf + Dativ sitzen (wo?)"
+        row={"details":json.dumps([{"title":"Kombinationen",
+                        "items":[full+" — حرکت به مکان", "auf dem Weg – در راه"]}],ensure_ascii=False)}
+        self.assertEqual(list(combos(row)),[full,"auf dem Weg"])
+
+    def test_lean_advisory_keeps_entire_real_r16_abstimmen_grammar(self):
+        from audit_kombinationen_lean_v1_1 import combos
+        full="über + Akkusativ abstimmen; worüber? – darüber (Pronominaladverb)"
+        row={"details":json.dumps([{"title":"Kombinationen",
+                        "items":[full+" — رأی دادن"]}],ensure_ascii=False)}
+        self.assertEqual(list(combos(row)),[full])
+
     def test_backend_distinct_from_visible_is_still_checked(self):
         out=self.scan({"kombinationen_v1":{"items":[{"de":"Sie versteigern alte Möbel.",
                                                          "fa":"وسایل قدیمی را حراج می‌کنند"}]}},

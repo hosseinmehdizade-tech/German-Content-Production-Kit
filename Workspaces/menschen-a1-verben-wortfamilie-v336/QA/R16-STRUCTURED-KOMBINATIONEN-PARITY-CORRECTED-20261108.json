@@ -1,0 +1,86 @@
+{
+  "schema": "gcpk-source-bound-r16-right-side-parity-correction@1.0.0",
+  "date": "2026-11-08",
+  "workstream": "Workspaces/menschen-a1-verben-wortfamilie-v336",
+  "status": "READ_ONLY_EXACT_R16_PARITY_PASS__CORRECTS_TWO_FALSE_POSITIVE_QA_FINDINGS__NONIMPORT",
+  "supersedes_wrong_findings_in": "Workspaces/menschen-a1-verben-wortfamilie-v336/QA/R16-STRUCTURED-KOMBINATIONEN-DISPLAY-PARITY-READONLY-20261108.json",
+  "reason": "Previous scanner split German phrase at first spaced en dash (–) as though it were German–Persian translation delimiter. Both real cards use an internal German grammar explanation joined by en dash, followed by a separate em dash (—) before the Persian translation. Earlier visible_only was an incorrectly truncated German expression.",
+  "source": {
+    "name": "Menschen-A1-Verben-R16-Wortnetz-Sinn-und-Duplikate-NONIMPORT-20261107.zip",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1-Verben/Drafts/Wortnetz/Menschen-A1-Verben-R16-Wortnetz-Sinn-und-Duplikate-NONIMPORT-20261107.zip",
+    "zip_sha256": "5fa6b59f7d81c65be722a9852598cd930d0b83fb38285e9555bf9bc5426046cf",
+    "tsv_member": "R16-DRAFT-NONIMPORT/310-Cards-R16.tsv",
+    "tsv_sha256": "1b32d52b50e41127b53c98ced9178b2b923203114f52cff90bd6f5e9664c457d",
+    "verification": "READ_ONLY_RAW_LIBRARY_ZIP_AND_TSV_CSV_JSON_PARITY; ZIP_SOURCE_UNCHANGED"
+  },
+  "scope": {
+    "cards": 310,
+    "visible_phrase_items": 2702,
+    "custom_fields_kombinationen_v1_items": 2702,
+    "all_card_exact_german_phrase_sets_equal": 310,
+    "card_set_divergences": 0,
+    "visible_items_with_internal_german_spaced_en_dash": 2,
+    "visible_bilingual_translation_delimiters_em_dash": 2702,
+    "exact_identity": "German surface before spaced em dash; NFC+whitespace; do not fold ß/ss or case"
+  },
+  "corrected_dispositions": [
+    {
+      "id": "ma1m-lu-2694",
+      "front": "über etw. abstimmen",
+      "german_surface": "über + Akkusativ abstimmen; worüber? – darüber (Pronominaladverb)",
+      "previous": "FALSE_POSITIVE_BACKEND_VISIBLE_DIVERGENCE",
+      "new": "EXACT_SURFACE_PARITY_PASS_NO_CARD_EDIT"
+    },
+    {
+      "id": "ma1m-lu-2733",
+      "front": "sich setzen",
+      "german_surface": "sich auf / neben + Akkusativ setzen (wohin?) – auf / neben + Dativ sitzen (wo?)",
+      "previous": "FALSE_POSITIVE_BACKEND_VISIBLE_DIVERGENCE",
+      "new": "EXACT_SURFACE_PARITY_PASS_NO_CARD_EDIT"
+    }
+  ],
+  "verification_replay": "For each of 310 TSV rows parse details JSON; collect items in Kombinationen + Kollokationen; extract German before spaced em dash (—); parse custom_fields.kombinationen_v1.items[].de; compare per-card unordered German surface sets after NFC and whitespace normalization, preserving inner en dash; assert equal. Check Zip SHA256, CRC, exact TSV SHA256 before pass. Additional tests exercise guard_lexical_rule_coverage_v1.py and audit_kombinationen_lean_v1_1.py.",
+  "release_boundaries": {
+    "source_mutated": false,
+    "old_R10_final_mutated": false,
+    "current_app_modified": false,
+    "srs_fsrs_modified": false,
+    "independent_stage4_for_R16": "NOT_RUN",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL",
+    "canonical_family_global_adoption": "NOT_ATTESTED",
+    "statement": "This is German-surface parity only; does not certify DE/FA semantic correctness, collocation appropriateness, translations, or release acceptance"
+  },
+  "next": "Treat old two MEDIUM flags as rescinded false positives, preserve correct R16, gate future actual native owner submissions with corrected delimiter parsing and independently reviewed exact current Stage4 before Stage5.",
+  "semantic_role_triage": {
+    "scope": "EDITORIAL_RECOMMENDATION_NOT_FORMAL_STAGE4_OR_SOURCE_EDIT",
+    "items": [
+      {
+        "card_id": "ma1m-lu-2694",
+        "term": "über etw. abstimmen",
+        "grammar": "über + Akkusativ; darüber/worüber as pronominal forms",
+        "source_pages": [
+          "https://www.duden.de/rechtschreibung/abstimmen",
+          "https://www.duden.de/rechtschreibung/darueber"
+        ],
+        "assessment": "GERMAN_GRAMMAR_PLAUSIBLE_IN_VOTING_SENSE; current full visible text and backend agree",
+        "didactic_role_question": "The abstract preposition/case statement may be better in existing Struktur/Rektion rather than as an additional concrete Kombination; source already has a Struktur tile, so independently check duplicate teaching value.",
+        "decision": "NO_CHANGE_PENDING_OWNER_STAGE4"
+      },
+      {
+        "card_id": "ma1m-lu-2733",
+        "term": "sich setzen",
+        "grammar": "sich auf/neben + Akkusativ setzen (direction, wohin?) versus auf/neben + Dativ sitzen (static, wo?)",
+        "source_pages": [
+          "https://www.duden.de/rechtschreibung/setzen",
+          "https://dict.leo.org/grammatik/deutsch/Wort/Praeposition/Kasus/2Kasus.xml?lang=de"
+        ],
+        "assessment": "GERMAN_GRAMMAR_PLAUSIBLE_WITH_CORRECT_DIRECTION_VS_STATE_CONTRAST; full visible/backend text agrees",
+        "didactic_role_question": "This is a grammar contrast, not a typical independent lexical collocation. Review whether it belongs to Struktur/Rektion or another grammar section while keeping useful information.",
+        "decision": "NO_CHANGE_PENDING_OWNER_STAGE4"
+      }
+    ],
+    "warning": "This role triage does not require extra editorial rounds and is not a verdict on all German/Persian senses across 310 cards."
+  }
+}

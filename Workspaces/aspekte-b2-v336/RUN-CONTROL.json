@@ -1,7 +1,7 @@
 {
   "schema": "aspekte-b2-run-control@1.0.0",
   "date": "2026-11-08",
-  "status": "GLOBAL_MEM031_NO_EXTERNAL_HUMAN_QA_GATE_ACTIVE_IN_B2__AI_STAGE4_AND_NATIVE_STAGE6_NOT_AUTOMATICALLY_PASSED",
+  "status": "B2_AI_SEMANTIC_BATCH01_32_RISK_CASES_REVIEWED_6_CARDS_REPAIRED__FULL_STAGE4_SRS_OPEN",
   "authority": "USER_THREE_PASSES_AND_SINGLE_TURN_EXIT_GUARD",
   "full_policy_github": "Workspaces/aspekte-b2-v336/EXECUTION-EXIT-GUARD-v1.0.0.md",
   "library_policy": "Current/EXECUTION-EXIT-GUARD-v1.0.0.md",
@@ -16,9 +16,9 @@
     "NEXT_ACTION"
   ],
   "next_task": {
-    "phase": "RISK_SCOPED_AI_SEMANTIC_QA_WITH_SEPARATE_TECHNICAL_RELEASE_GATES",
-    "status": "NO_THIRD_PARTY_QA_GATE__DOCUMENTED_AI_QA_REQUIRED__LIVE_SRS_NATIVE_IMPORT_EVIDENCE_SEPARATE",
-    "goal": "Respect active central user decision MEM-031 (2026-10-25): NO mandatory external human reviewer, independent specialist signature, or routine user signoff in ANY current/future lexical workstream. Resume B2 lexical QA from owner-curated Current, use documented AI editorial review with an adversarial separate second pass, high-risk case dispositions and deterministic full-corpus checks; do not wait for third party or rebuild unused handoff packs. A machine-only PASS is not a linguistic Stage4 PASS; do not claim complete language approval without actual scoped QA evidence. Technical SRS identity and native app import/rollback remain separate Stage6 gates and do not halt content editing. Do not modify user's SRS/import cards; preserve legacy reports as history. Current B2 1719 draft, 3438 DEFA pairs, 4886 collocations, zero importable until Stage4 and safe technical evidence.",
+    "phase": "NEW_SEMANTIC_RISK_DISCOVERY_L04_L10",
+    "status": "BATCH01_81_FOCUS_FLAGS_CLASSIFIED_32_LANGUAGE_CASES_REVIEWED_6_CARDS_CORRECTED",
+    "goal": "From latest owner-curated Library Current, identify NEW real semantic or sense-scoped right-card issues outside the already reviewed 32. Work primarily L04-L10, use evidence-backed AI QA (no external reviewer signature), preserve all already accepted forms and lesson identities, check full 1719-card structural regression, then sync Library/GitHub. The old all10 external reviewer handoff sheet is historical and stale. Live SRS/native import is separate technical work, not a blocker for content improvements. No invented full Stage4 PASS; 0 cards imported or user SRS changed.",
     "source_rows": 1726,
     "draft_units": 1719,
     "complete_primary_DEFA_pairs": 3438,
@@ -58,14 +58,14 @@
     "duplicate_collocation_gate": "PASS_NO_INTERNAL_DUPLICATES",
     "qa_checker_version": "v1.4",
     "qa_checker_script_sha256": "1088795693e4a5af270bb94da1ce6775846c0c3116c588fd536bff0f99609c7f",
-    "l03_canonical_library_sha256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
+    "l03_canonical_library_sha256": "d35e6d02e0821a64d43525af647968f923ed79f6b550fa8a2d6011de44dcc03f",
     "l03_canonical_library_file_id": "libfile_e4ead6088be48191998cc322792d2c74",
     "l03_github_receipt_path": "Workspaces/aspekte-b2-v336/Reports/B2-L03-DUPLICATE-FIX-RECEIPT-20261108.json",
     "l03_library_readback": "BYTE_EXACT_SHA256_MATCH",
     "linguistic_release_approval": false,
     "cards_with_empty_collocations_pending_review": 0,
     "collocation_schema_status": "PRESENT_ALL_1719_CARDS__AI_SENSE_AWARE_LANGUAGE_QA_EVIDENCE_PENDING",
-    "l01_canonical_library_sha256": "aa755ae0e3b73ca8bc1f2aec20a32306bdb4216363dd249e74d0166f9a76e837",
+    "l01_canonical_library_sha256": "82161e2f8ceb4e34e61fff86e5be6d26c5d964d57e522a8daf2b2c574a67dafe",
     "l01_canonical_library_file_id": "libfile_7047a0521d348191ba67dedf461afc3f",
     "l01_library_readback": "SHA256_BYTE_EXACT",
     "l01_schema_receipt_github_path": "Workspaces/aspekte-b2-v336/Reports/B2-L01-COLLOCATION-SCHEMA-RECEIPT-20261108.json",
@@ -136,7 +136,14 @@
     "B2_quality_gate_git_path": "Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py",
     "MEM031_anti_regression_test": "Verification/check_no_external_human_qa_gate_v1.py",
     "MEM031_global_QA_reviewer_requirement": "EXTERNAL_HUMAN_SIGNATURE_NOT_REQUIRED",
-    "l01_AI_content_QA_evidence_pending_cards": 158
+    "l01_AI_content_QA_evidence_pending_cards": 158,
+    "l02_canonical_library_sha256": "c2f36c5e74a89f6f55da2ff7c14f48c6b48b9615d8006772bcbe1bdaaccead24",
+    "semantic_batch01_ledger_github": "Workspaces/aspekte-b2-v336/Reports/B2-81-FOCUS-CASE-AI-ADJUDICATION-20261108.csv",
+    "semantic_batch01_report_github": "Workspaces/aspekte-b2-v336/Reports/B2-BATCH01-SEMANTIC-QA-RECEIPT-20261108.json",
+    "semantic_batch01_reviewed": 32,
+    "semantic_batch01_changed_cards": 6,
+    "external_all10_review_sheet_current": false,
+    "full_AI_stage4_semantic_pass": false
   },
   "completed_or_blocked": {
     "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
@@ -150,30 +157,31 @@
     "L09": "PASS3_BLOCKED_NONIMPORT_161_DRAFT_CARDS_AND_NONCARD__CYCLE_CLOSED",
     "L10": "PASS3_BLOCKED_NONIMPORT_151_DRAFTS__THREE_PASS_CYCLE_CLOSED"
   },
-  "lesson3_current_sha256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
+  "lesson3_current_sha256": "d35e6d02e0821a64d43525af647968f923ed79f6b550fa8a2d6011de44dcc03f",
   "latest_json_status": "LEGACY_POINTER_STALE__GITHUB_RUN_CONTROL_PRIMARY",
   "old_global_checkpoint": "L05_R25_UNCHANGED",
   "content_mutations": 1,
   "imported_cards": 0,
   "last_completed": {
-    "phase": "MEM031_REMOVE_EXTERNAL_REVIEWER_BLOCKER_CENTRAL_AND_B2",
-    "status": "CENTRAL_BINDING_CONFIRMED__REGRESSION_GUARD_CREATED__B2_QUALITY_GATE_PATCHED__FULL_TEN_LESSON_MACHINE_QA_PASS",
-    "actual_output": "NO_EXTERNAL_HUMAN_REVIEWER_GATE__AI_SEMANTIC_QA_EVIDENCE_STILL_REQUIRED__FULL_CSV_INTEGRITY_1719_UNCHANGED__NATIVE_SRS_GATES_PRESERVED",
+    "phase": "B2_AI_SEMANTIC_QA_BATCH01",
+    "status": "32_SCOPED_LANGUAGE_CASES_REVIEWED__6_CARDS_FIXED__FULL10_QA_PASS",
+    "focus_cases_classified": 81,
+    "language_cases_reviewed": 32,
+    "kept_with_reason": 26,
+    "corrected_cards": 6,
+    "corrected_cells": 7,
+    "nonsemantic_advisories": 49,
     "source_rows": 1726,
     "draft_cards": 1719,
     "DEFA_pairs": 3438,
     "collocations": 4886,
-    "quality_gate_release_check_exit_code": 2,
-    "external_human_reviewer_required": false,
-    "content_stage4_AI_QA_proven": false,
-    "native_srs_identity_proven": false,
-    "source_card_changes": 0,
+    "stage4_projectwide_approved": false,
+    "external_reviewer_required": false,
     "SRS_changes": 0,
+    "card_identity_changes": 0,
     "imports": 0,
-    "cards_approved": 0,
-    "project_commit_intent": "B2_CHECKER_AND_CENTRAL_REGISTRY_GIT_UPDATED__LIBRARY_B2_SCRIPT_MIRROR_EXACT",
-    "active_policy": "LINGUISTIC-QA-AUTHORITY-POLICY.json",
-    "root_guard": "Verification/check_no_external_human_qa_gate_v1.py"
+    "approved_cards": 0,
+    "library_byte_exact_verified": true
   },
   "policy": "EXECUTION-EXIT-GUARD-v1.0.0.md",
   "sync_failure_action": "STOP_WITH_SYNC_PENDING_NO_RETRY_LOOP",
@@ -204,7 +212,7 @@
         1630,
         1660
       ],
-      "current_draft_sha256": "aa755ae0e3b73ca8bc1f2aec20a32306bdb4216363dd249e74d0166f9a76e837",
+      "current_draft_sha256": "82161e2f8ceb4e34e61fff86e5be6d26c5d964d57e522a8daf2b2c574a67dafe",
       "current_draft_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L01-CURRENT-158-UNIT-REVIEW-R47-NONIMPORT.csv",
       "current_draft_library_file_id": "libfile_7047a0521d348191ba67dedf461afc3f",
       "pass3_disposition_sha256": "4c1a57e50c4ce362c4517b5a265dbedcdbaa2ce59d93551cb2417a2beadae300",
@@ -226,7 +234,7 @@
       "collocations_column_available": true,
       "empty_collocations_pending_editorial_review": 0,
       "schema_migration_receipt": "Workspaces/aspekte-b2-v336/Reports/B2-L01-COLLOCATION-SCHEMA-RECEIPT-20261108.json",
-      "status_note": "L01_158_CURATED_DRAFT_CARDS_312_COLLOCATIONS_5_MORPHOLOGY_CORRECTIONS__AI_SEMANTIC_QA_RISK_BASED_PENDING__NO_EXTERNAL_REVIEWER_GATE",
+      "status_note": "L01_158_DRAFT_312_COLLOCATIONS__2_ADDITIONAL_COUNTABILITY_FIXES__FULL_STAGE4_OPEN",
       "collocation_editorial_proposals": 312,
       "collocation_editorial_candidate_cards": 158,
       "collocation_report_github": "Workspaces/aspekte-b2-v336/Reports/B2-L01-COLLOCATION-EDITORIAL-RECEIPT-20261108.json",
@@ -329,11 +337,17 @@
         "external_independent_linguistic_QA": "NOT_SIGNED",
         "source_card_mutations": 0,
         "personal_srs_mutations": 0,
-        "release": "BLOCKED_NONIMPORT"
+        "release": "BLOCKED_NONIMPORT",
+        "status": "HISTORICAL_STALE_AFTER_BATCH01__NOT_MANDATORY",
+        "source_sha256_matches_current": false
       },
       "linguistic_QA_authority": "MEM-031-AI-AND-USER-LINGUISTIC-QA-NO-EXTERNAL-HUMAN-GATE",
       "external_human_signoff_required": false,
-      "AI_semantic_QA_status": "EVIDENCE_PENDING__NO_BLANKET_APPROVAL"
+      "AI_semantic_QA_status": "EVIDENCE_PENDING__NO_BLANKET_APPROVAL",
+      "semantic_batch01_prior_sha256": "aa755ae0e3b73ca8bc1f2aec20a32306bdb4216363dd249e74d0166f9a76e837",
+      "semantic_batch01_edited_cells": 2,
+      "semantic_batch01_review": "SCOPED_AI_LINGUISTIC_REVIEW__NO_EXTERNAL_HUMAN_GATE",
+      "semantic_batch01_focus_reviewed": 2
     },
     "L02": {
       "draft_units": 110,
@@ -343,7 +357,12 @@
       "release": "0_IMPORTABLE",
       "linguistic_QA_authority": "MEM-031-AI-AND-USER-LINGUISTIC-QA-NO-EXTERNAL-HUMAN-GATE",
       "external_human_signoff_required": false,
-      "AI_semantic_QA_status": "EVIDENCE_PENDING__NO_BLANKET_APPROVAL"
+      "AI_semantic_QA_status": "EVIDENCE_PENDING__NO_BLANKET_APPROVAL",
+      "current_draft_sha256": "c2f36c5e74a89f6f55da2ff7c14f48c6b48b9615d8006772bcbe1bdaaccead24",
+      "semantic_batch01_prior_sha256": "22abe6ea86c492644681d118227161f523e093a3a3fc247a163ecd8d05a28cea",
+      "semantic_batch01_edited_cells": 3,
+      "semantic_batch01_review": "SCOPED_AI_LINGUISTIC_REVIEW__NO_EXTERNAL_HUMAN_GATE",
+      "semantic_batch01_focus_reviewed": 16
     },
     "L03": {
       "draft_units": 186,
@@ -352,7 +371,7 @@
       "pass3": "BLOCKED_NONIMPORT",
       "release": "0_IMPORTABLE",
       "verified_current_library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/L03-PASS2-186-CURATED-REVIEW-NONIMPORT.csv",
-      "verified_current_sha256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
+      "verified_current_sha256": "d35e6d02e0821a64d43525af647968f923ed79f6b550fa8a2d6011de44dcc03f",
       "verified_current_library_file_id": "libfile_e4ead6088be48191998cc322792d2c74",
       "duplicate_collocation_corrected": true,
       "updated_collocations_de": "Arbeitslose unterstützen; die Zahl der Arbeitslosen",
@@ -360,7 +379,12 @@
       "current_scope": "ONE_FIELD_CHANGE_POST_PASS3_QA_REMEDIATION__RELEASE_BLOCKED",
       "linguistic_QA_authority": "MEM-031-AI-AND-USER-LINGUISTIC-QA-NO-EXTERNAL-HUMAN-GATE",
       "external_human_signoff_required": false,
-      "AI_semantic_QA_status": "EVIDENCE_PENDING__NO_BLANKET_APPROVAL"
+      "AI_semantic_QA_status": "EVIDENCE_PENDING__NO_BLANKET_APPROVAL",
+      "current_draft_sha256": "d35e6d02e0821a64d43525af647968f923ed79f6b550fa8a2d6011de44dcc03f",
+      "semantic_batch01_prior_sha256": "7f514e8d3c0404a259c7521987c3a6d310d68d23f480289bb982e796b9723cc3",
+      "semantic_batch01_edited_cells": 2,
+      "semantic_batch01_review": "SCOPED_AI_LINGUISTIC_REVIEW__NO_EXTERNAL_HUMAN_GATE",
+      "semantic_batch01_focus_reviewed": 14
     },
     "L04": {
       "source_rows": 184,
@@ -926,7 +950,7 @@
     "srs_mutations": 0
   },
   "external_independent_review_handoff_all10": {
-    "status": "SINGLE_REVIEW_SHEET_READY_UNREVIEWED",
+    "status": "HISTORICAL_OPTIONAL_STALE_AFTER_BATCH01__NOT_CURRENT",
     "cards": 1719,
     "lessons": 10,
     "DEFA_example_pairs": 3438,
@@ -958,8 +982,9 @@
     "source_mutations": 0,
     "SRS_mutations": 0,
     "release": "BLOCKED_NONIMPORT",
-    "current_requirement": "HISTORICAL_OPTIONAL_WORKSHEET_ONLY__NOT_MANDATORY__NO_EXTERNAL_HUMAN_SIGNATURE",
-    "external_human_reviewer_required": false
+    "current_requirement": "NO_EXTERNAL_HUMAN_SIGNOFF__USE_LATEST_LIBRARY_CURRENT",
+    "external_human_reviewer_required": false,
+    "source_sha256_matches_current": false
   },
   "no_external_review_authority": {
     "status": "ENFORCED_IN_ACTIVE_CENTRAL_REGISTRY_AND_B2_QA_GENERATOR",
@@ -976,5 +1001,46 @@
     "current_source_files_mutated": 0,
     "current_user_SRS_mutations": 0,
     "previous_external_reviewer_handoff": "HISTORICAL_OPTIONAL_NOT_RELEASE_CONDITION"
+  },
+  "semantic_batch01_risk_scoped": {
+    "date": "2026-11-08",
+    "focus_flags_classified": 81,
+    "language_focus_reviewed": 32,
+    "corrected_cards": 6,
+    "corrected_cells": 7,
+    "kept_with_reason": 26,
+    "nonsemantic_identity_flags_separated": 49,
+    "current_sha256": {
+      "L01": "82161e2f8ceb4e34e61fff86e5be6d26c5d964d57e522a8daf2b2c574a67dafe",
+      "L02": "c2f36c5e74a89f6f55da2ff7c14f48c6b48b9615d8006772bcbe1bdaaccead24",
+      "L03": "d35e6d02e0821a64d43525af647968f923ed79f6b550fa8a2d6011de44dcc03f"
+    },
+    "library_current_ids": [
+      "libfile_7047a0521d348191ba67dedf461afc3f",
+      "libfile_c1e7bbed6b488191ab49d2cad110c0e0",
+      "libfile_e4ead6088be48191998cc322792d2c74"
+    ],
+    "library_backup_ids": [
+      "libfile_1178829e3f5481919b795b1a7b9a5b73",
+      "libfile_0fa1bc9bce3c81918cee3c5b083143c8",
+      "libfile_78e3782417b88191a864890dcc9a221f"
+    ],
+    "library_readback": "SHA256_BYTE_EXACT",
+    "ledger_library_id": "libfile_cf768eb16bd08191ac3332cb994102c2",
+    "diff_library_id": "libfile_fd48e5b223c88191b23232e142ca9950",
+    "receipt_library_id": "libfile_3851c68803708191a997a6a01f3ef5dc",
+    "qa_library_id": "libfile_2d2af0e7779c81919542f37af3f2720b",
+    "github_report": "Workspaces/aspekte-b2-v336/Reports/B2-BATCH01-SEMANTIC-QA-RECEIPT-20261108.json",
+    "github_ledger": "Workspaces/aspekte-b2-v336/Reports/B2-81-FOCUS-CASE-AI-ADJUDICATION-20261108.csv",
+    "github_delta": "Workspaces/aspekte-b2-v336/Reports/B2-7-CELL-CORRECTIONS-6-CARDS-20261108.csv",
+    "all_ten_machine_QA": "PASS_1719_UNITS_3438_BILINGUAL_PAIRS_4886_COLLOCATIONS_NO_INTERNAL_DUPLICATES",
+    "external_reviewer_required": false,
+    "full_stage4_AI_approved": false,
+    "live_SRS_verified": false,
+    "native_rollback_verified": false,
+    "card_identity_changes": 0,
+    "imports": 0,
+    "SRS_changes": 0,
+    "release": "BLOCKED_NONIMPORT"
   }
 }

@@ -1,6 +1,21 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.61 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.62 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L07 PHASE1 — FULL 154-CARD WHOLE-LESSON AUDIT DONE · NEXT L07 PHASE2
+
+**CANONICAL LEARNER-DATA OWNER UNCHANGED:** Library `libfile_714e7e818a4881919c2639503c928bc8`, SHA256 `cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990`; primary 1571-card JSONL SHA256 `eaa8205368528e0be128b3eef79c4ce441b8682abdad1fb56cdd300c696b4694`; original 1548-row map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. Phase1 was strictly read-only: **zero edited learner-card objects**. The new small audit ZIP below is NOT a new curated learner owner. Never reimport an older publisher CSV.
+
+- **L07 whole-lesson mapping:** 154 learner cards, 153 original source rows ordinals 847–999, all mapped. Row 956 correctly has two separate lemmas `jemals` and `niemals`. No missing source IDs. L07 label `Für immer und ewig`.
+- **Current evidence, no invented language signoff:** 348 bilingual DE/FA examples, 0 zero-example cards, 0 blank bilingual fields; 41 examples have missing explicit QA status on 35 cards; 38 inherited curated HOLD markers preserved. One exact DE example repetition inside `Alles Liebe!` ordinal 971 (two near-equivalent Persian versions; preserve useful variants). Six semantic-network cards, seven meaning blocks, 12 DE/FA examples in those networks lacking sense_id link; 14 L07 combinations. Front-scoped independently approved morphology entries: 0/154; two legacy form proposals are still NOT attestations. Absence of an attestation does not mean the German form is wrong.
+- **154 structured Phase2 decisions:** P1=44, P2=14, P3=96, all with explicit actions and current text/examples/meaning-network evidence; P1 is risk triage, not definitive error; P3 not a full approval.
+- **Global v4 finite-clause test:** 0 known-pattern hits on L07 14 combinations, but **FAIL GLOBAL (3)** in other lessons L02 ordinal 158, L03 ordinal 232, L09 ordinal 1266. Exactly 3 inherited same-card duplicate German-example groups globally; 1 in L07. No release approval or actual app import.
+- **Verified audit-only Library bundle:** `libfile_ac51645712a48191a220524cfca00934`, SHA256 `0c6cac38097636700f24458e19b32d0c49bd9a89526119e7366adabb8c572375`, 79,793 bytes, 9 ZIP members, 8 manifest SHA256 hashes and CRC pass, exact Library readback pass. Members: full 154-card JSONL decision queue (SHA256 `a9c27ba555ae8294afa9464ca75d5fe62685a1bd0ccb43c6463f8d8b9ca91719`), original source mapping coverage, whole-lesson report, global v4 report, 154-card searchable QA-only HTML, 3-phase plan and deterministic replay script. GitHub receipt `Lessons/L07/PHASE1-VERIFIED-AUDIT-RECEIPT-20261109.json`; plan `Lessons/L07/THREE-PHASE-PLAN.md`, and explicit GitHub decision queue pointer; complete queue is kept within Library audit ZIP, not misleadingly claimed a standalone GitHub mirror.
+- **NEXT L07 Phase2:** complete all 154 cards in one lesson-wide editorial pass, not 10-word microbatches. Resolve or retain 38 HOLDs; correct one duplicate German sentence while preserving useful Persian translations; mark 41 missing QA statuses as PENDING (not automatic PASS); route 12 examples with meaning evidence; check grammar/idiomatic combinations and avoid new duplicate lemma cards. For any edits, rebuild actual primary 1571-card JSONL, validate per-card diffs and untouched other lessons, all 1548 mapping rows, corpus QA and exact Library write-readback. Do not claim 154 card language signoffs from structural review.
+- **Phase3 later:** final case-level bilingual/grammar quality and strict real importer/render availability; RELEASE_BLOCKED if unavailable or unresolved; no fictional external reviewer prerequisite.
+
+---
+## HISTORICAL ROADMAP NOTES (before L07 Phase1)
 
 ## LIVE L06 PHASE3 — 177-CARD STRICT RELEASE GATE EVALUATED / RELEASE_BLOCKED · NEXT L07 PHASE1
 

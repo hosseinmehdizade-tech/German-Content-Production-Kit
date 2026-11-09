@@ -1,6 +1,22 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.64 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.65 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L08 PHASE1 DONE — 157-CARD WHOLE-LESSON AUDIT · NEXT L08 PHASE2
+
+**CANONICAL CURATED LEARNER-DATA OWNER UNCHANGED:** Library `libfile_4e8d3ac0eac481919bc8627f21f0f2bd` (L07 Phase3), SHA256 `14841de70a121551121c6c1bced5cca987a659e006d0b225d980f302939dac81`, current primary 1571-card JSONL SHA256 `e979959fd3b10885ed8d05266e6c17101fb29302a9d626d606252aa9e684046e`. This L08 Phase1 is AUDIT_ONLY: **0 saved learner-card edits** and no change to the 1548-row original source map. Never reimport the old publisher CSV.
+
+- **L08 157 provisional cards**, **157 original source ordinals 1000–1156** fully covered. Original ordinal 1086 belongs in existing `das Panorama` card 1085, not a lost row. Original ordinal 1142 legitimately yields two distinct learner cards `die Milliarde` (10^9) and `die Billion` (10^12); no unapproved identity merge or duplication.
+- **359 DE/FA example pairs**, 0 cards without examples, 0 empty translations, **38 entries without an example QA status** across 30 cards (do not auto-PASS), and **38 inherited L08 curated HOLD markers**. **15 existing semantic-network cards**, **17 sense blocks**, **31 examples in sense-network cards lack correct sense_id**. Existing L08 structured collocations **32**; globally **834** combinations. No L08 candidates flagged by known finite-clause v4 pattern; global v4 gate **FAIL 3 old cases in L02/L03/L09** (not silently modified in Phase1).
+- **One true L08 intra-card exact repeated German example** `der Appell` ordinal 1065: `Die Organisation richtete einen Appell an die Verbraucher.` occurs with two Persian paraphrases; Phase2 must compare both, merge only redundant DE, preserve useful Persian alternatives. Corpus-wide exact duplicate groups **2**, L08 Appell plus L09 `das Andenken`.
+- **0 of 157 current L08 front cards have independent scoped morphology validation recorded**. Two older G2 proposals for `die Milliarde` and `die Billion` are not final attestations or DE/FA card approval. Lack of a cited attestation is not proof of incorrect inflection. Existing content and all 157 cards remain provisional / NONIMPORT.
+- **Complete 157-card decision ledger:** **P1 38 / P2 15 / P3 104**. This is one whole-lesson decision queue with real examples and meaning-network data, **not** approval of untouched P3 cards and not 10-word microbatch loops. Per-card priorities and next actions cover morphology, bilingual senses, collocations, duplicates, QA status, HOLDs and source-row mapping.
+- **Persisted Phase1 AUDIT-ONLY evidence:** Library archive `libfile_a655b276a79c819197e1ed40de40f884`, SHA256 `2015b955ba52ecfff59712530f3f7da5a44f9c505d1f31ee0e055d2c78e2c6de`, 83,216 bytes, 11 ZIP members with 10 internal hashes, CRC PASS and byte-exact Library readback PASS. Contains all 157 editorial decision rows, structured report, source map coverage, duplicate and global finite clause findings, HTML review view, replayable script and 3-phase plan. GitHub mirrored report, 157-card queue, plan, script and verified receipt `Lessons/L08/PHASE1-VERIFIED-AUDIT-RECEIPT-20261109.json`.
+- **NEXT L08 Phase2:** one complete lesson editorial/correction stage for all 157 cards using exact SHA-verified existing L07 Phase3 curated owner, never the AUDIT_ONLY ZIP as learner data. First address `der Appell` duplicate, 38 statuses, 38 HOLDs, 31 missing sense routes, split `Milliarde`/`Billion` scopes, forms and meaningful bilingual collocations. For the next curated ZIP, enforce actually changed PRIMARY 1571-card JSONL proof, preserve all non-L08 objects and exact source mapping. Don't count sidecar changes as real edits.
+- **Phase3 later:** independent deterministic and case-level language QA plus actual application importer/frontend render if accessible; fail closed RELEASE_BLOCKED_NONIMPORT if not verifiable. ZERO formally approved cards and no real `German-Flashcards-Pro` import receipt now.
+
+---
+## HISTORICAL ROADMAP NOTES (before L08 Phase1)
 
 ## LIVE L07 PHASE3 DONE — 154-CARD RELEASE GATE EVALUATED / RELEASE_BLOCKED · NEXT L08 PHASE1
 

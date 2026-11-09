@@ -1,6 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.63 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.64 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L07 PHASE3 DONE — 154-CARD RELEASE GATE EVALUATED / RELEASE_BLOCKED · NEXT L08 PHASE1
+
+**Current SHA-verified canonical curated learner-data owner:** Personal Library `libfile_4e8d3ac0eac481919bc8627f21f0f2bd`, SHA256 `14841de70a121551121c6c1bced5cca987a659e006d0b225d980f302939dac81`, 3,808,231 bytes, 269 ZIP members, 268 SHA256 member checks, CRC PASS and exact byte-for-byte Library readback PASS. The parent is L07 Phase2 (`libfile_913f640e14848191ab5c158bfc5cbcf7`, SHA `fa13137b65c7e071da8eb857a01a82e0709c60874978df42ceb00d021e66ead6`). **Never use textbook CSV or old incorrect ZIP owners as current learner data.**
+
+- **Whole-lesson L07 Phase3 = strict release gate evaluated (BLOCKED, NOT full language signoff)** on 154 card IDs / 153 original rows (847–999). Exactly **10 L07 primary saved card objects changed**, independently reopened after export; all 1417 non-L07 card objects and original 1548 source mapping rows unchanged. Current global 1571-card JSONL SHA `e979959fd3b10885ed8d05266e6c17101fb29302a9d626d606252aa9e684046e`.
+- **Real corrections and grammatical evidence:** source ordinals `852 Lebensgefährte/-in`, `855 Elternteil`, `860 sich zusammenraufen`, `861 sich verloben`, `889 durchlesen`, `891 schweben`, `904 schmieden`, `948 elementar`, `987 pendeln`, `999 verschweigen`. Direct Duden evidence supports **10 individual grammar scopes** only (not complete DE/FA content). Corrected `schmieden`: the future plans example belonged to meaning S2 (planning), NOT meaning S1 (working metal). `schweben` now separates static hovering (`hat geschwebt`) and directional motion (`ist geschwebt`) in one learner card; `pendeln` uses `ist gependelt` for commuting and `hat gependelt` for swinging. Three bilingual examples added with PENDING QA: **348→351**. All **41 current L07 sense-network cards** have valid explicit sense links for their examples, but this does NOT prove semantic correctness of all links.
+- **Remaining quality evidence gaps:** `10/154` cards have case-scoped morphology evidence, **144** lack that evidence (not automatically incorrect forms); all **38 L07 inherited curated HOLD markers** preserved. 154/154 official lesson release-gate records **BLOCKED**: missing full bilingual examples/meaning signoff, no formal approval, and **real German Flashcards Pro application import/render untested**. Offline QA-only HTML exactly 154 cards/351 examples and 154-row TSV parsing both PASS; these are **NOT** real app runtime tests.
+- **Global regression:** 834 structured combinations in 1571-card corpus; conservative finite-clause v4 gate still **FAIL 3 legacy candidates outside L07** (L02 ordinal 158, L03 ordinal 232, L09 ordinal 1266). Exactly **2 same-card duplicate DE example groups remain** (L08 ordinal 1065, L09 ordinal 1157). None silently altered in L07. No app release; global **NONIMPORT**.
+- **Evidence and replay:** `Lessons/L07/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json`; `Lessons/L07/PHASE3-INDEPENDENT-154-CARD-RELEASE-GATE-20261109.json`; complete 154-row blocker ledger, 10 full before/after card objects, Duden source scope URLs, finite clause report and `Tools/build_L07_phase3_v1.py` + `Tools/finalize_L07_phase3.py` persisted on GitHub and in single Library ZIP.
+- **Next production unit:** **L08 Phase1**, ONE WHOLE LESSON; the L07 three-phase cycle is closed as `RELEASE_BLOCKED_NONIMPORT`, retaining unresolved blockers in the release backlog. No 10-word Review loops, invented second-human signoffs, publisher CSV reimport or release claims without real importer evidence.
+
+---
+## HISTORICAL ROADMAP NOTES (before L07 Phase3)
 
 ## LIVE L07 PHASE2 — 154 WHOLE-LESSON EDITORIAL DISPOSITIONS / 54 PERSISTED CARD EDITS · NEXT L07 PHASE3
 

@@ -1,8 +1,23 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.69 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.70 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L09 PHASE2 DONE — ALL 185 CARD EDITORIAL, 182 REAL PRIMARY EDITS · NEXT L09 PHASE3
+## LIVE L09 PHASE3 DONE — 185-CARD CYCLE CLOSED / RELEASE_BLOCKED · NEXT L10 PHASE1
+
+**CURRENT AUTHORITATIVE CURATED LEARNER OWNER:** Library `libfile_86637c8d99a481919e42ac12cd9243f1`, ZIP SHA256 `0ac34c8178984511d28d4400ff5efe56036d8c8f31aca0d85c1e70f4661a0054`, actual saved PRIMARY 1571-card JSONL SHA256 `7eef147f679fec8dea922fefe4a350fafc059277dcfa3a8664c93d1ceddf5e33`, unchanged 1548-row source map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 4,230,003 bytes, 298 ZIP members, 297 internal manifest entries verified, ZIP CRC PASS, exact Library byte readback PASS.
+
+- **L09 Phase3, whole lesson:** 185/185 individual case-level structural, sense-routing, collocation-shape and release-blocker QA records in the saved ZIP. 423 bilingual DE–FA examples, 237 L09 combinations, 1086 global combinations. Zero missing L09 examples/statuses, zero orphan sense routes, no L09 same-card duplicate German examples and zero known finite-verb clauses in L09 combinations. Structural PASS is NOT a full bilingual semantics/idiomatic judgment.
+- **Five actual corrected PRIMARY learner card objects:** source 1203 `Flugdaten` vs `Flugdatum` front distinction; 1214 `eingehen` canonical base lemma (bei + Dativ only one sense); 1254 `Reeder/Reederin` precise Persian shipping-owner meaning; 1257 `vornehm` superlative `unsere vornehmste Aufgabe`; 1310 `Assessor/Assessorin` second state exam versus older public-service meaning. Exact complete five before/after JSON objects and scoped lexicographic evidence are in the ZIP. All 180 other L09 cards unchanged; 1386 outside-L09 cards identical. All 1571 IDs and 1548 source map rows retained, no publisher CSV reimport.
+- **Nine negative mutation tests:** 9/9 blocked deliberate invalid data (duplicate/missing IDs, premature import, empty QA/FA, invalid sense route, duplicate DE example, finite clause in combination, back Formen repetition). Synthetic guards and structural pass **cannot** certify 237 combinations' idiomaticity or examples' bilingual truth.
+- **Release:** 43 original L09 curated HOLDs remain. Full case-specific DE–FA and morphological signoff pending. 0 formally approved new cards. No real German-Flashcards-Pro app importer/frontend render tested. Known old global finite-clause candidates 2: L02/158 and L03/232, not changed during L09 work. **RELEASE_BLOCKED_NONIMPORT**. Do not invent external independent human reviewers.
+- **Evidence:** GitHub receipt `Lessons/L09/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json`, full QA report `Lessons/L09/PHASE3-FINAL-QUALITY-REPORT-20261109.json`, reproducible `Tools/build_L09_phase3_v1.py`. Library owner archive contains 185-card JSONL case ledger, 5 exact before/after objects, offline QA-only HTML (not real app), and 9 test results.
+- **NEXT:** L10 Phase1 full-lesson audit from exact SHA-verified L09 Phase3 curated owner, one lesson-wide phase, no 10-word loops. Carry L01–L09 unresolved content gates and the global two historical finite-verb violations forward. L10 drafted already but never reset to original textbook CSV. Then L10 Phase2 real primary-data edits and L10 Phase3 fail-closed QA; app-import release decision remains separate.
+
+---
+
+## HISTORICAL L09 PHASE2 — DONE
+
+## L09 PHASE2 DONE (HISTORICAL) — ALL 185 CARD EDITORIAL, 182 REAL PRIMARY EDITS · NEXT L09 PHASE3
 
 **CURRENT AUTHORITY (CURATED LEARNER-DATA OWNER):** Library `libfile_b6ba3493c0c8819190412d3fffd75ad3`, ZIP SHA256 `d0fa7a144065ef49536f359fe17d23a6c2edca95f0ad6d6ce3cea396b42618d6`, primary 1571-card JSONL SHA256 `063cdebed6bcf10c2b50adba205b1907d8574c2d8dfbd1bc76edcf339593962b`, original 1548-row map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. Exact Library byte readback PASS; 292 ZIP members / 291 SHA256 records and ZIP CRC PASS.
 

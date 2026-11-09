@@ -1,8 +1,24 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.68 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.69 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L09 PHASE1 DONE — ALL 185 CARD AUDIT · NEXT L09 PHASE2
+## LIVE L09 PHASE2 DONE — ALL 185 CARD EDITORIAL, 182 REAL PRIMARY EDITS · NEXT L09 PHASE3
+
+**CURRENT AUTHORITY (CURATED LEARNER-DATA OWNER):** Library `libfile_b6ba3493c0c8819190412d3fffd75ad3`, ZIP SHA256 `d0fa7a144065ef49536f359fe17d23a6c2edca95f0ad6d6ce3cea396b42618d6`, primary 1571-card JSONL SHA256 `063cdebed6bcf10c2b50adba205b1907d8574c2d8dfbd1bc76edcf339593962b`, original 1548-row map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. Exact Library byte readback PASS; 292 ZIP members / 291 SHA256 records and ZIP CRC PASS.
+
+- **All 185 L09 cards addressed in one editorial phase:** 185 per-card dispositions, 182 actually changed, all 182 full before/after primary card objects stored in the ZIP, 3 untouched L09, all 1386 other-lesson objects byte-for-byte the same. All original IDs/source links maintained. Never substitute old publisher/source CSV.
+- **New sense-scoped bilingual enrichment:** 174 additional semantic-network cards, 215 meaning blocks, 216 new meaningful DE–FA Kombinationen. L09 structured collocations 21→237, global 870→1086. No forced synonym/antonym lists. Multiple meanings stay on ONE lemma card; existing 8 network cards' examples explicitly routed and added new networks route examples to sense_ids.
+- **Examples:** L09 DE–FA pairs 419→423, including two new examples for each of `die Kochshow` and `die Kochsendung` and a finite-verb `Ozeanriese` sentence moved from Kombinationen to Beispiele; one exact `Andenken` duplicate German example removed with Persian alternative retained; all 41 missing QA statuses marked **PENDING**, never PASS. After Phase2: zero missing status, zero same-card DE duplicate example groups, zero zero-example cards, zero orphan sense IDs among example pairs for cards with semantic networks. All 43 curated HOLD flags retained and 0 formal card publication approvals.
+- **Kombinationen whole-corpus regression:** old 3 finite-verb known cases now 2, because L09/1266 was corrected; older L02/158 and L03/232 remain open. New combinations disallow known finite clauses and terminal sentence punctuation; this is structural, not exhaustive idiomatic certification.
+- **Verification:** 185-row final disposition JSONL, all 182 exact before/after cards, 9/9 synthetic negative-guard checks PASS plus positive structural validator PASS. Sources scoped to `Andenken`, `Pension`, `zurückhaben`, `Ozeanriese`, `Kochshow`, `Kochsendung`; do not claim 216 new collocations are linguistically signed off or app-import rendered. ZIP itself and readback verified, `RELEASE_BLOCKED_NONIMPORT`. The full data package is saved in dedicated Library Reports, not GitHub as a ZIP.
+- **GitHub evidence:** `Lessons/L09/PHASE2-VERIFIED-CURATED-OWNER-RECEIPT-20261109.json`, `Lessons/L09/PHASE2-WHOLE-185-CARD-REPORT.json`, `Lessons/L09/PHASE2-STRICT-REGRESSIONS-20261109.json`, reproducible `Tools/build_L09_phase2_v1.py` and separate validator `Tools/verify_L09_phase2_v1.py`. `LATEST.json`/`CHECKPOINT.json` pinned to the same new main owner and next stage.
+- **NEXT:** L09 Phase3 strict whole-185-card case-level German–Persian and morphology QA, pass/fail closed release gate and if technically possible actual German Flashcards Pro app importer+UI rendering, otherwise explicitly block. No extra sub-batches. Then L10 Phase1. Preserve 43 HOLDs unless addressed with specific evidence; do not invent external human reviewers.
+
+---
+
+## HISTORICAL L09 PHASE1 AUDIT — DONE (NO CONTENT EDITS)
+
+## L09 PHASE1 DONE (HISTORICAL) — ALL 185 CARD AUDIT · NEXT L09 PHASE2
 
 **CANONICAL CURATED LEARNER OWNER UNCHANGED:** Library `libfile_417fe423eb6c8191bb50a3ba7b6f6352`, SHA256 `577770549cf2a93feb86bc0197079c3580c8b73becaa20d7b65decf0f6d437e0`; 1571-card primary SHA256 `89171eeea1e5b0aba9182ebe36418265b756ae6caab8fa45b0878579120608e0`. Source map 1548 rows SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. Audit-only: zero card edits; do NOT promote audit ZIP as learner-data owner.
 

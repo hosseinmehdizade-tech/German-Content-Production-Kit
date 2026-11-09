@@ -1,3 +1,19 @@
+# Aspekte B1+ · L07 „Für immer und ewig“ — Drei-Phasen-Abschluss
+
+**2026-11-09 · Phase 1 DONE · Phase 2 DONE · Phase 3 strict QA EVALUATED → RELEASE_BLOCKED_NONIMPORT**
+
+**Canonical curated owner:** Library `libfile_4e8d3ac0eac481919bc8627f21f0f2bd`; SHA256 `14841de70a121551121c6c1bced5cca987a659e006d0b225d980f302939dac81`; 269 ZIP members / 268 SHA256 member hashes plus CRC and exact Library readback PASS. 154 L07 learner card IDs retained, 153 mapped original source rows, 1571 corpus card IDs / 1548 map rows unchanged, and all 1417 other-lesson card objects unchanged.
+
+**Actual Phase3 content result:** 10 modified saved L07 card objects (ordinal 852,855,860,861,889,891,904,948,987,999). Each has **case-scoped Duden grammar attestation** only, not full DE/FA learner-card approval. Fixed inverted example→meaning link on `schmieden`, separated `schweben` and `pendeln` auxiliary usages, added 3 still-pending DE/FA examples. 348→351 total L07 example pairs; 41 semantic network cards with no structurally unrouted examples. Exactly 10 scoped G2 forms attested, 144 L07 cards without case-specific G2 evidence; 38 legacy curated HOLDs preserved.
+
+**Release gate:** real `qa_lesson_release_gate_v1.py` run against persisted ZIP as a separate validation from the editing script and returned `release_allowed=false`, all 154 records BLOCKED; blockers include 154 full-card approvals absent, 154 example/translation independent signoffs absent, 154 real app imports not tested, 144 individual form attestations missing, and 38 curated HOLDs. Complete QA-only HTML 154 cards/351 examples and offline 154-row TSV roundtrip PASS, **NOT actual German Flashcards Pro app runtime import**. Finite-clause v4 global FAIL 3 legacy examples wrongly filed as Kombinationen in L02/L03/L09; exact duplicate-example groups 2 in L08/L09. Preserve as release backlog without editing other lessons during L07.
+
+**Normal next production: L08 Phase1 ONE-WHOLE-LESSON audit**. Keep L07 `RELEASE_BLOCKED_NONIMPORT`; do not reopen microreviews or claim full-card signoff from limited scoped proof. No separate external human reviewer is mandatory.
+
+Receipt: `Lessons/L07/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json`; full blocker ledger `Lessons/L07/PHASE3-154-CARD-BLOCKER-LEDGER.jsonl`, language evidence `Lessons/L07/PHASE3-SCOPED-DUDEN-FORM-EVIDENCE-20261109.json` and scripts under `Tools/`.
+
+---
+## Historical L07 Phase1/Phase2 plan
 # Aspekte B1+ · L07 „Für immer und ewig“ — Drei-Phasen-Plan
 
 **2026-11-09 · Phase1 DONE · Phase2 DONE (154 case dispositions / 54 real card changes) · Phase3 NEXT · NONIMPORT**

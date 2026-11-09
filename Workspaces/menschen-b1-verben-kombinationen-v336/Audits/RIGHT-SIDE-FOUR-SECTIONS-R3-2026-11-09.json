@@ -1,0 +1,92 @@
+{
+  "schema": "gcpk-b1-verben-rightside-r3-durable-checkpoint@1.0.0",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "date": "2026-11-09",
+  "status": "STAGE3_R3_STRUCTURAL_QA_PASS__AI_GLOSS_STAGE4_PENDING__NOT_IMPORT_READY",
+  "accepted_current": {
+    "filename": "Menschen-B1-Verben-v3.3.6-STAGE7-CONTENT-ONLY-2000-KOMBINATIONEN-VERIFIED-20261104.zip",
+    "sha256": "48b995c14e5f12584a11b945c6c312309c719669569051ac309fe17b0d38258c",
+    "unchanged": true
+  },
+  "parent_r2": {
+    "filename": "Menschen-B1-Verben-RIGHTSIDE-R2-STAGE3-6-ADDITIONS-FA-ENRICHMENT-NOT-IMPORT-READY-20261109.zip",
+    "sha256": "601abc5c8d5352667bd67c7e1d305620d42bed586448e20354c7973cc482841d",
+    "library_stable_id": "libfile_c89293e4722c81919a56b81b561d3a29"
+  },
+  "candidate_r3": {
+    "filename": "Menschen-B1-Verben-RIGHTSIDE-R3-STAGE3-SENSE-GLOSSES-SCOPED-CANDIDATE-20261109.zip",
+    "sha256": "315ec0423054b77e025d96a1318c25adf984cf70844e1e702c692c3ce25e6ce1",
+    "size_bytes": 2109808,
+    "zip_members": 6,
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1-Verben/Checkpoints/Menschen-B1-Verben-RIGHTSIDE-R3-STAGE3-SENSE-GLOSSES-SCOPED-CANDIDATE-20261109.zip",
+    "library_file_id": "file_00000000199c81f4a0c0caadbdbdcd3c",
+    "library_stable_id": "libfile_d3c91ff224c8819181864bcd4935155b",
+    "readback": "PASS_RAW_SHA256_BYTE_IDENTITY_AND_ZIP_CRC"
+  },
+  "delta": {
+    "changed_cards": 37,
+    "existing_relation_persian_glosses_added": 71,
+    "by_relation_type": {
+      "SYNONYM": 41,
+      "WORD_FAMILY": 28,
+      "ANTONYM": 2
+    },
+    "new_relations": 0,
+    "deleted_relations": 0,
+    "changed_visible_details": 0,
+    "changed_card_front_or_back": 0,
+    "changed_examples": 0,
+    "changed_ids": 0,
+    "changed_app_runtime_or_srs": false
+  },
+  "qa": {
+    "all_395_ID_PARITY": "PASS",
+    "all_1580_examples_unchanged": "PASS",
+    "all_4398_relation_id_type_target_parity": "PASS",
+    "all_canonical_vnext_relation_gloss_sync": "PASS",
+    "all_395_visible_details_unchanged": "PASS",
+    "r3_zip_manifest_crc": "PASS",
+    "cross_section_exact_overlap": [
+      {
+        "card_id": "mb1m-lu-0347",
+        "term": "aufblühen",
+        "sections": [
+          "Synonyme",
+          "Wortfamilie"
+        ],
+        "status": "EDITORIAL_REVIEW_OPEN"
+      }
+    ]
+  },
+  "relation_scope": {
+    "SYNONYM": {
+      "total": 1048,
+      "explicit_translation_fa": 181
+    },
+    "ANTONYM": {
+      "total": 133,
+      "explicit_translation_fa": 124
+    },
+    "WORD_FAMILY": {
+      "total": 719,
+      "explicit_translation_fa": 522
+    }
+  },
+  "policy": "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json and governed lexical-quality-gate",
+  "QA_distinctions": {
+    "semantic_risk_based_stage4": "NOT_RUN_FOR_R3",
+    "official_stage5": "NOT_RUN_FOR_R3",
+    "native_stage6": "NOT_RUN_FOR_R3",
+    "stage7": "NOT_RUN_FOR_R3",
+    "consumer_bilingual_display": "NOT_OBSERVED; metadata enriched only"
+  },
+  "outstanding": [
+    "Review R2 and R3 FA glosses and contextual sense notes with risk-based AI Stage4; do not claim full source evidence of all terms from limited Duden pages",
+    "Run central current-parent lexical quality gate including backend Kombinationen and cross-tile examples",
+    "Resolve aufblühen same-word dual role for card mb1m-lu-0347 only if learner-visible delta is defensible",
+    "Prioritize additional ~867 SYNONYM entries without explicit relation-level FA where linked target cannot provide a translation",
+    "Never auto-promote to latest or reimport user cards before actual Stage5/6/7"
+  ],
+  "next_action": "Continue bounded data-enrichment and risk review; synchronize the next approved exact-source candidate only when gates pass.",
+  "git_persistence_note": "R3 metadata checkpoint is committed; full content bytes in independent verified ChatGPT Library ZIP; original user-accepted Stage7 remains unchanged."
+}

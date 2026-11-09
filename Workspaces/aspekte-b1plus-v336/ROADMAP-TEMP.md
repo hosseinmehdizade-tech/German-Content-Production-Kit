@@ -1,8 +1,24 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.70 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.71 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L09 PHASE3 DONE — 185-CARD CYCLE CLOSED / RELEASE_BLOCKED · NEXT L10 PHASE1
+## LIVE L10 PHASE1 DONE — ALL 208 CURRENT CARDS AUDITED · NEXT L10 PHASE2
+
+**Current authoritative curated LEARNER-DATA owner UNCHANGED:** Library `libfile_86637c8d99a481919e42ac12cd9243f1`, ZIP SHA256 `0ac34c8178984511d28d4400ff5efe56036d8c8f31aca0d85c1e70f4661a0054`, PRIMARY 1571-card JSONL SHA256 `7eef147f679fec8dea922fefe4a350fafc059277dcfa3a8664c93d1ceddf5e33`, 1548-row source map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. The new Phase1 ZIP is AUDIT ONLY; 0 primary learner-card changes and 0 formal release approvals.
+
+- **Whole L10 audit:** 208/208 existing learner-card objects covering original source ordinals 1342–1548 (207 unique original rows); one combined Baumstamm card maps source 1451/1452; two distinct card-splits at 1487 (Hochwasser / Überschwemmung) and 1494 (Wasserknappheit / Wassermangel). No original source rows lost and no approved distinct lemmas auto-merged.
+- **Current bilingual/exemplar issues:** 450 DE–FA examples, 0 zero-example cards, 0 empty example fields, **29 missing explicit QA statuses on 29 cards**. Treat these as PENDING until meaning-specific review; NEVER auto PASS. There are 46 inherited curated HOLDs. Thirty cards have sense networks / 40 sense blocks, and all 30 networks contain 60 examples lacking valid sense-id routes; review senses one-by-one, especially multisense cards.
+- **Kombinationen:** 76 structured L10 / 1086 corpus. **Five known likely full finite clauses in 4 L10 cards** (Forscher/Forscherin, Umweltexperte/Umweltexpertin, Talkmaster/Talkmasterin, austrocknen) require Phase2 lexical rewrite or transfer to Beispiele, retaining useful bilingual content. Plus 2 inherited v5 finite-pattern findings at L02/158 and L03/232; total 7 known flagged global cases. This pattern detector is narrow, not a certificate that other phrases are natural. No same-card exact DE-example duplicate groups detected in L10.
+- **Finite 208-card decision queue:** **P1=50 / P2=26 / P3=132**; priority is triage, NOT wrong/approved counts. 206 front cards lack a separately recorded scoped morphology attestation (NOT automatically erroneous forms). One comprehensive one-phase queue with entire DE/FA examples, semantic network senses and combinations, stable card IDs, source linkage, contextual actions, owner per-object SHA; no 10-card microcycles.
+- **Verified Library AUDIT_ONLY ZIP:** `libfile_ffb0e98d3fcc81918c6e45209f03d56c`, SHA256 `21544e84b424fb228b93d084a767db0f1befcba50b9c18966e772d8247e7881a`, 118,972 bytes, 10 ZIP members, 9 SHA manifest entries, CRC PASS and exact Library byte-by-byte readback PASS. 7/7 finite-pattern and source-cover regression guards PASS. Six core text evidence files copied byte-for-byte to GitHub, including the 208-row queue.
+- **GitHub authoritative receipts/evidence:** `Lessons/L10/PHASE1-VERIFIED-AUDIT-RECEIPT-20261109.json`, `Lessons/L10/PHASE1-FULL-LESSON-AUDIT.json`, `Lessons/L10/PHASE1-208-CARD-DECISION-QUEUE.jsonl`, `Lessons/L10/THREE-PHASE-PLAN.md`, `Lessons/L10/PHASE1-7-REGRESSION-TESTS.json`, `Lessons/L10/PHASE1-SOURCE-ROW-COVERAGE.json`, `Tools/qa_L10_phase1_v1.py`. Full offline 208-card QA HTML remains inside Library audit archive. All pointers to latest learner owner in `LATEST.json` and `CHECKPOINT.json` retained unchanged.
+- **NEXT L10 Phase2:** do ONE WHOLE 208-card editorial pass with the latest SHA-verified L09 Phase3 curated owner. Fix 29 statuses explicitly PENDING, 60 sense routes with meaning evidence, 5 full-clause collocations, front noun/verb morphology, correct prioritized primary/secondary meaning grouping and meaningful German–Persian combinations. Preserve 46 HOLDs absent evidence and preserve multi-lemma/single-lemma distinctions. Save a NEW curated ZIP only after actual **PRIMARY 1571-card JSONL** content edits and full per-object before/after; check 1363 non-L10 cards identical, 1548 source map identical; ZIP hashes/CRC and Library exact readback. Phase3 is later complete QA and fail-closed app importer/release check. No fabricated independent human examiner, no old book/source CSV reinventory.
+
+---
+
+## HISTORICAL L09 PHASE3 DONE — RELEASE_BLOCKED
+
+## L09 PHASE3 DONE (HISTORICAL) — 185-CARD CYCLE CLOSED / RELEASE_BLOCKED · NEXT L10 PHASE1
 
 **CURRENT AUTHORITATIVE CURATED LEARNER OWNER:** Library `libfile_86637c8d99a481919e42ac12cd9243f1`, ZIP SHA256 `0ac34c8178984511d28d4400ff5efe56036d8c8f31aca0d85c1e70f4661a0054`, actual saved PRIMARY 1571-card JSONL SHA256 `7eef147f679fec8dea922fefe4a350fafc059277dcfa3a8664c93d1ceddf5e33`, unchanged 1548-row source map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 4,230,003 bytes, 298 ZIP members, 297 internal manifest entries verified, ZIP CRC PASS, exact Library byte readback PASS.
 

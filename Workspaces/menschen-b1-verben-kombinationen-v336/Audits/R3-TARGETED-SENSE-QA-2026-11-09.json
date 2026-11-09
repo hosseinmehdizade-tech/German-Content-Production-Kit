@@ -1,0 +1,108 @@
+{
+  "schema": "gcpk-b1-verben-r3-ai-partial-risk-review@1",
+  "date": "2026-11-09",
+  "parent_r3_sha256": "315ec0423054b77e025d96a1318c25adf984cf70844e1e702c692c3ce25e6ce1",
+  "review_scope": "Risk-based first semantic sample, NOT official complete Stage4",
+  "decision_method": "AI reviewed terms against current accepted card senses and publicly browsed dictionary page examples. Exact source terms preserved; no human specialist signature.",
+  "decision_total": 11,
+  "keep_with_scope": 9,
+  "hold": 2,
+  "decisions": [
+    {
+      "card_id": "mb1m-lu-0033",
+      "target": "sich unterhalten",
+      "risk": "HOMONYM/SEPARATE_MEANING",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "sich auf unterhaltsame Weise die Zeit vertreiben, nicht nur miteinander reden",
+      "source": "https://www.duden.de/rechtschreibung/unterhalten_unterhalten"
+    },
+    {
+      "card_id": "mb1m-lu-0044",
+      "target": "bewahren",
+      "risk": "POLYSEMY",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "erhalten = in seinem Bestand bewahren; not erhalten = bekommen",
+      "source": "https://www.duden.de/rechtschreibung/erhalten"
+    },
+    {
+      "card_id": "mb1m-lu-0047",
+      "target": "erwarten",
+      "risk": "VALENCY_AND_SENSE",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "rechnen mit + Dativ in expectation sense only, not arithmetic",
+      "source": "https://www.duden.de/rechtschreibung/rechnen"
+    },
+    {
+      "card_id": "mb1m-lu-0056",
+      "target": "sich zur Verfügung stellen",
+      "risk": "LEXICAL_CONSTRUCTION_NOT_FULLY_EQUIVALENT",
+      "disposition": "HOLD_LEARNER_VISIBLE_ROLE",
+      "sense": "Duden directly equates sich zu jemandes Verfügung halten to sich bereithalten, not necessarily sich zur Verfügung stellen. Keep accepted source untouched while preparing targeted role repair.",
+      "source": "https://www.duden.de/rechtschreibung/Verfuegung"
+    },
+    {
+      "card_id": "mb1m-lu-0066",
+      "target": "handhaben",
+      "risk": "POLYSEMY",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "bedienen = Gerät bedienen only; no customer service sense",
+      "source": "https://www.duden.de/rechtschreibung/bedienen"
+    },
+    {
+      "card_id": "mb1m-lu-0066",
+      "target": "steuern",
+      "risk": "POLYSEMY",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "bedienen = Gerät / Fahrzeug steuern only",
+      "source": "https://www.duden.de/rechtschreibung/bedienen"
+    },
+    {
+      "card_id": "mb1m-lu-0074",
+      "target": "bangen",
+      "risk": "REGISTER_AND_CONSTRUCTION",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "gehobene Sprache, oft um + Akkusativ; not all fear of persons/objects as sich fürchten vor",
+      "source": "https://www.duden.de/rechtschreibung/bangen"
+    },
+    {
+      "card_id": "mb1m-lu-0076",
+      "target": "zusagen",
+      "risk": "POLYSEMY",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "only verbindlich zusichern, not jemandem gefallen",
+      "source": "https://www.duden.de/rechtschreibung/zusagen"
+    },
+    {
+      "card_id": "mb1m-lu-0004",
+      "target": "hinnehmen",
+      "risk": "CONTEXTUAL_SYNONYM",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "widerwillig eine unangenehme Tatsache akzeptieren",
+      "source": "https://www.duden.de/rechtschreibung/akzeptieren"
+    },
+    {
+      "card_id": "mb1m-lu-0010",
+      "target": "behindern",
+      "risk": "CONTEXTUAL_ANTONYM",
+      "disposition": "KEEP_WITH_SCOPE",
+      "sense": "Fortschritt behindern ↔ Fortschritt unterstützen; no blanket lexical opposite",
+      "source": "https://www.duden.de/rechtschreibung/behindern"
+    },
+    {
+      "card_id": "mb1m-lu-0347",
+      "target": "aufblühen",
+      "risk": "EXACT_CROSS_SECTION_DUPLICATE",
+      "disposition": "HOLD_VISIBLE_DEDUP",
+      "sense": "same term appears under SYNONYM and WORD_FAMILY; duplicate visibility needs sense-based review; do not damage typed graph",
+      "source": null
+    }
+  ],
+  "status": "PARTIAL_AI_RISK_TRIAGE_COMPLETED__2_HOLDS__FULL_STAGE4_PENDING",
+  "preservation": {
+    "source_current_untouched": true,
+    "R3_archive_untouched": true,
+    "app_runtime_untouched": true,
+    "SRS_untouched": true
+  },
+  "next": "Resolve 0056 role and 0347 duplication in a separate exact source successor if warranted; continue sampled semantic R3 review before Stage4 formal gate."
+}

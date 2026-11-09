@@ -1,6 +1,21 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.62 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.63 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L07 PHASE2 — 154 WHOLE-LESSON EDITORIAL DISPOSITIONS / 54 PERSISTED CARD EDITS · NEXT L07 PHASE3
+
+**Current canonical curated learner-data owner:** personal B1+ Library `libfile_913f640e14848191ab5c158bfc5cbcf7`; SHA256 `fa13137b65c7e071da8eb857a01a82e0709c60874978df42ceb00d021e66ead6`, **3,751,605 bytes**, 258 ZIP members, 257 verified per-member SHA256 signatures and CRC PASS, plus byte-exact Library readback PASS. Source parent is the verified L06 Phase3 Library `libfile_714e7e818a4881919c2639503c928bc8`, SHA256 `cc964921ac68e2dabac96e7074a72101c4cf47beda7f14b876ff248aff029990`. Previous L07 Phase1 archive (`libfile_ac51645712a48191a220524cfca00934`) remains AUDIT_ONLY, **not** a learner-data owner. Never reimport old publisher/source CSV.
+
+- **Exactly 154 L07 cards / 153 original source rows (ordinal 847–999)**, with two accepted distinct learner cards for source ordinal 956 `jemals` and `niemals`. All 1571 original card IDs and original 1548 source-map rows maintained; all 1417 cards outside L07 object-identical to parent.
+- **154/154 editorial dispositions persisted** with priority and phase3 action. **54/154 primary saved learner-card JSON objects materially changed**, not merely changed sidecars; all 100 untouched lesson cards remain unapproved, not silently certified. Actual primary JSONL member SHA `eaa8205368528e0be128b3eef79c4ce441b8682abdad1fb56cdd300c696b4694` → `567005150e40cf8987f815e38f70c999802f58a9dc4677121182430b347d48ef`. Exact reopened-child per-object diff and manifest/CRC PASS. Current builder `Tools/build_L07_phase2_v1.py`, report `Lessons/L07/PHASE2-WHOLE-154-CARD-REPORT-20261109.json`, all dispositions `Lessons/L07/PHASE2-154-CARD-DISPOSITIONS.jsonl`, content detail `Lessons/L07/PHASE2-CONTENT-EDIT-DETAILS-20261109.json`.
+- Meaning-connected enrichment: **34 new sense-network cards**, **55 new meaning blocks**, **105 example-to-sense bindings**, **110 new German–Persian idiomatic combinations**, taking global corpus **722 → 832 combinations**; no L07 exact example copies/obvious v4 finite-clause candidates/unrouted network examples. This structural success does **not** prove full linguistic naturalness, relation correctness or full-card bilingual signoff.
+- Example integrity: L07 **348 DE–FA examples before and after**. Existing paired cards `jemals`/`niemals` previously carried each other's mismatched example: 2 incorrect copy placements removed, new context-specific DE/FA examples added while preserving distinct lemma cards. One extra example for the neglected colloquial idiom `etwas Dummes anstellen`. One exact duplicate `Alles Liebe zum Geburtstag!` merged while both very similar Persian translation variants preserved as `fa_alternatives`. **38 inherited statusless example entries labeled PENDING** rather than auto-approved.
+- Outstanding **38 inherited L07 curated HOLDs**, **0/154 L07 independent per-form morphology attestations currently recorded** (absence of attestations is not evidence of wrong forms), full case-level meaning/synonym/grammar/example approval pending, real `German-Flashcards-Pro` importer/front/back render **NOT TESTED**. Corpus same-card exact DE example duplicate groups now **2**, both outside L07: L08 `der Appell` (1065) and L09 `das Andenken` (1157). Corpus finite-clause v4 global gate remains **FAIL 3 old cases** L02/158, L03/232 and L09/1266. **No cards released; NONIMPORT**.
+- Evidence: `Lessons/L07/PHASE2-VERIFIED-CURATED-OWNER-RECEIPT-20261109.json`, current Library owner ZIP containing saved primary 1571-card JSONL, 54 full before/after card snapshots, all 154 dispositions, reproducible builder, quality-only 154-card HTML preview. Mandatory primary-member persistence regression is satisfied; no ghost changes.
+- **NEXT: L07 Phase3/3** whole-lesson strict language, morphology, sense-linked usage and exact importer/render release gate **if app runtime is actually accessible**. If some checks cannot be proven, record explicit `RELEASE_BLOCKED_NONIMPORT`; do not claim released cards, no invented separate human examiner, no 10-card review loops.
+
+---
+## HISTORICAL ROADMAP NOTES (before L07 Phase2)
 
 ## LIVE L07 PHASE1 — FULL 154-CARD WHOLE-LESSON AUDIT DONE · NEXT L07 PHASE2
 

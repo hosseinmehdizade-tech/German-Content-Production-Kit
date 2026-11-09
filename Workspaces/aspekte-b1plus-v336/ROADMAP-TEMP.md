@@ -1,8 +1,23 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.66 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.67 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L08 PHASE2 DONE — 157-CARD EDITORIAL · NEXT L08 PHASE3
+## LIVE L08 PHASE3 CLOSED — 157 CARD GATE EVALUATED / RELEASE_BLOCKED · NEXT L09 PHASE1
+
+**AUTHORITATIVE CURATED LEARNER-DATA OWNER:** Library `libfile_417fe423eb6c8191bb50a3ba7b6f6352`, ZIP SHA256 `577770549cf2a93feb86bc0197079c3580c8b73becaa20d7b65decf0f6d437e0`, primary 1571-card JSONL SHA256 `89171eeea1e5b0aba9182ebe36418265b756ae6caab8fa45b0878579120608e0`; original 1548-row map unchanged SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 285 members / 284 SHA256 verified, CRC PASS and byte-for-byte Library readback PASS.
+
+- **Whole-lesson Phase3:** 157/157 current L08 cards each received a case-level structural/meaning-route/release-blocker record (actual JSONL has exactly 157 newline-separated valid JSON records). 357 bilingual examples, 68 current L08 Kombinationen, 870 corpus combinations. Offline HTML QA for 157 cards / 357 examples passed; no L08 missing example statuses, missing sense IDs, exact example repetitions or duplicate Formen back sections; no real app runtime was used.
+- **Actual saved-primary content changes:** 7 L08 cards, each with exact before/after and scoped Duden evidence: 1000 Eiskasten outdated regional usage; 1007 entfernen, 1008 ertönen (ist ertönt), 1040 beurteilen, 1091 servieren, 1145 subventionieren, 1153 wehen (hat/ist geweht by use). All 150 other L08 card objects and 1414 other-lesson card objects unchanged; original source IDs and source map intact. Scoped evidence does NOT mean all seven bilingual cards are fully semantically approved.
+- **Regression:** six deliberate negative cases correctly rejected. Combination structural v2 PASS 870, v4 global finite-clause gate FAIL on 3 inherited candidates L02/158, L03/232, L09/1266; one inherited same-card DE-example duplication remains at L09/1157. Do NOT silently edit other lessons while finalizing L08.
+- **Release blockers remain:** 38 L08 inherited curated HOLDs, full bilingual/sense/idiomatic case-level linguistic signoff not proven, 149 L08 cards without *recorded scoped morphology attestation* (not equivalent to 149 wrong forms), no actual German-Flashcards-Pro importer/render receipt, plus global regression backlog above. **0 formally approved cards, release BLOCKED_NONIMPORT.** No invented second-human reviewer requirement.
+- **Evidence:** `Lessons/L08/PHASE3-FINAL-VERIFIED-OWNER-RECEIPT-20261109.json`, replayable `Tools/build_L08_phase3_v1.py`, 157 card-specific JSONL QA records and exact 7 before/after card edits in Library owner. Main source history preserved; Phase2 owner is now historical.
+- **NEXT, once only:** L09 Phase1 whole-lesson audit using exact SHA-verified L08 Phase3 owner, no 10-card loops. Keep global release-blocker backlog and final import gate separate from lesson throughput. L09 and L10 already have provisional drafts but need full three-phase cycle; do not re-extract textbook CSV.
+
+---
+
+## L08 PHASE2 — COMPLETED HISTORICAL
+
+## L08 PHASE2 DONE (HISTORICAL) — 157-CARD EDITORIAL · NEXT L08 PHASE3
 
 **CANONICAL CURATED LEARNER-DATA OWNER UPDATED:** Library `libfile_c5ddb410213c819191aa5f18a6121401`, ZIP SHA256 `10eb382da2a246ada7cdbac31dc15ea4ec1cc75dbcf7d3102f9f450ecfeac5f5`, primary 1571-card JSONL SHA256 `689dda1db5ef43e1f0174ad65643393cfe535fa67b35e3dacbcb3cfaad26028c`. Source map 1548 rows unchanged SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 277 ZIP members, 276 verified SHA256 entries, CRC PASS, **Library readback byte-exact PASS**.
 

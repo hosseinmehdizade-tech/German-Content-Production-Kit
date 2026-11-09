@@ -1,8 +1,23 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.65 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.66 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L08 PHASE1 DONE — 157-CARD WHOLE-LESSON AUDIT · NEXT L08 PHASE2
+## LIVE L08 PHASE2 DONE — 157-CARD EDITORIAL · NEXT L08 PHASE3
+
+**CANONICAL CURATED LEARNER-DATA OWNER UPDATED:** Library `libfile_c5ddb410213c819191aa5f18a6121401`, ZIP SHA256 `10eb382da2a246ada7cdbac31dc15ea4ec1cc75dbcf7d3102f9f450ecfeac5f5`, primary 1571-card JSONL SHA256 `689dda1db5ef43e1f0174ad65643393cfe535fa67b35e3dacbcb3cfaad26028c`. Source map 1548 rows unchanged SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 277 ZIP members, 276 verified SHA256 entries, CRC PASS, **Library readback byte-exact PASS**.
+
+- **Whole L08 157/157 editorial dispositions:** 46 actually changed SAVED primary card objects, 111 unchanged L08 cards, all 1414 non-L08 card objects unchanged. No loss of source IDs, no textbook CSV reimport, no sidecar-only fake changes.
+- **Semantic right-side repairs:** 14 new sense networks, 34 meaning blocks, 36 new German–Persian sense-scoped combinations (L08 32→68; global 834→870). Existing network example routes 31/31 resolved; 38 missing example QA statuses explicitly set PENDING, not PASS. No forced synonyms/antonyms. Back Formen remains empty; forms on front.
+- **Examples:** L08 359→357 after one exact German duplicate merged (`der Appell`, Persian alternative retained) and one near-duplicate medical complaint example removed. `umschreiben` separable/unseparable example corrected, `Größe` variety improved; `Milliarde`/`Billion` separately partitioned and 2 scoped Duden grammatical checks recorded. All 157 have at least one DE–FA example, zero blanks or statusless after Phase2; zero L08 exact duplicate groups.
+- **QA regression:** v2 combination structure PASS on 870; v4 finite-clause corpus FAIL 3 inherited outside L08 (L02 158, L03 232, L09 1266); zero newly flagged L08. Global exact same-card DE example duplicate groups 1 (L09). All 38 L08 curated HOLDs **remain**; not misleadingly cleared. No formal card signoff and NO actual Flashcards Pro app import/render.
+- **Receipt:** `Lessons/L08/PHASE2-VERIFIED-OWNER-RECEIPT-20261109.json`; replayable source `Tools/build_L08_phase2_v1.py`; complete 157 disposition ledger, all 46 before/after card objects, QA-only HTML/TSV, global v2/v4 tests contained in the verified Library owner. Script also uploaded separately to owner-scoped Library Tools.
+- **NEXT L08 Phase3 (final third stage):** case-level G4 review for all 157 cards, front/meaning/explanation/relations/exemplars/idiomatic combos, validate remaining 38 HOLDs, run whole-corpus regressions and attempt real app import/render only if available; otherwise persist explicit RELEASE_BLOCKED_NONIMPORT and then proceed to L09 Phase1 without extra microcycles. No invented separate human reviewer.
+
+---
+
+## HISTORICAL L08 PHASE1 — DONE
+
+## L08 PHASE1 WHOLE-LESSON AUDIT (HISTORICAL) — 157-CARD WHOLE-LESSON AUDIT · NEXT L08 PHASE2
 
 **CANONICAL CURATED LEARNER-DATA OWNER UNCHANGED:** Library `libfile_4e8d3ac0eac481919bc8627f21f0f2bd` (L07 Phase3), SHA256 `14841de70a121551121c6c1bced5cca987a659e006d0b225d980f302939dac81`, current primary 1571-card JSONL SHA256 `e979959fd3b10885ed8d05266e6c17101fb29302a9d626d606252aa9e684046e`. This L08 Phase1 is AUDIT_ONLY: **0 saved learner-card edits** and no change to the 1548-row original source map. Never reimport the old publisher CSV.
 

@@ -1,8 +1,22 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.67 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.68 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L08 PHASE3 CLOSED — 157 CARD GATE EVALUATED / RELEASE_BLOCKED · NEXT L09 PHASE1
+## LIVE L09 PHASE1 DONE — ALL 185 CARD AUDIT · NEXT L09 PHASE2
+
+**CANONICAL CURATED LEARNER OWNER UNCHANGED:** Library `libfile_417fe423eb6c8191bb50a3ba7b6f6352`, SHA256 `577770549cf2a93feb86bc0197079c3580c8b73becaa20d7b65decf0f6d437e0`; 1571-card primary SHA256 `89171eeea1e5b0aba9182ebe36418265b756ae6caab8fa45b0878579120608e0`. Source map 1548 rows SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. Audit-only: zero card edits; do NOT promote audit ZIP as learner-data owner.
+
+- **Full L09 lesson audit:** 185/185 cards and source ordinals **1157–1341**, all covered; source 1302 legitimately splits into `die Kochshow` and `die Kochsendung`, both presently without examples. Original 1240/1241 belongs to one `zurückhaben` learner card. All 1571 global IDs preserved, all 1548 mapped rows preserved.
+- **Current issues:** 419 DE–FA examples; 41 missing explicit QA statuses on 36 cards, 0 empty bilingual fields. **43 inherited HOLDs**, 8 semantic-network cards with 11 sense blocks and 16 examples missing correct sense_id; L09 21 combinationen / global 870. One exact repeated DE example in ordinal 1157 `das Andenken` with two useful Persian variants; one full finite clause wrongly under L09 ordinal 1266 `der Ozeanriese`. Global v4 old cases L02/158, L03/232, L09/1266 still open. Recorded independently scoped morphology front attestations 0/185 (metadata gap, not a declaration of 185 wrong forms).
+- **Full 185 decision queue:** **P1 44 / P2 18 / P3 123**; priority is triage, not linguistic approval. No 10-word batches, no publisher/source CSV reset, no fabricated human examiner.
+- **Verified audit-only Library ZIP:** `libfile_2e5be33e9eb0819193127a8f7712b946`, SHA256 `3e786e12e03a591d265f85933e24947276518e70017b2634e807851a319621fe`, 97,390 bytes; 9 ZIP members (8 manifest hashes), CRC PASS, exact Library readback PASS. Contains complete 185-card JSONL decisions, source mapping coverage, risk queues, 185-card HTML, v4 diagnostic, plan and reproducible script. In GitHub: `Lessons/L09/PHASE1-FULL-LESSON-AUDIT.json`, verified receipt `Lessons/L09/PHASE1-VERIFIED-AUDIT-RECEIPT-20261109.json`, plan `Lessons/L09/THREE-PHASE-PLAN.md`, script `Tools/qa_L09_phase1_v1.py`. Detailed queue stored within SHA-verified Library archive; do not assert independent Git mirror of queue.
+- **NEXT L09 Phase2, single complete 185-card editorial pass:** Correct 2 missing-example lemmas, 41 statuses by marking PENDING not PASS, 16 sense-route gaps, Andenken duplicate preserving Persian variants, Ozeanriese full-clause collocation and meaning-scoped combinations, preserve 43 inherited HOLDs unless actual linguistic evidence resolves them. Save real edited PRIMARY 1571-card JSONL and demonstrate per-card diff, unchanged 1386 non-L09 card objects, unchanged 1548 source rows, exact SHA/CRC Library readback. Stage3 importer/semantic gate later; 0 formal approvals and NONIMPORT remain.
+
+---
+
+## HISTORICAL L08 PHASE3 — DONE / RELEASE_BLOCKED
+
+## L08 PHASE3 CLOSED (HISTORICAL) — 157 CARD GATE EVALUATED / RELEASE_BLOCKED · NEXT L09 PHASE1
 
 **AUTHORITATIVE CURATED LEARNER-DATA OWNER:** Library `libfile_417fe423eb6c8191bb50a3ba7b6f6352`, ZIP SHA256 `577770549cf2a93feb86bc0197079c3580c8b73becaa20d7b65decf0f6d437e0`, primary 1571-card JSONL SHA256 `89171eeea1e5b0aba9182ebe36418265b756ae6caab8fa45b0878579120608e0`; original 1548-row map unchanged SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 285 members / 284 SHA256 verified, CRC PASS and byte-for-byte Library readback PASS.
 

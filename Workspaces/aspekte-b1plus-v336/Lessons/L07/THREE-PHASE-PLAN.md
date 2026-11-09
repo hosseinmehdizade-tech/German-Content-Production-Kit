@@ -1,3 +1,22 @@
+# Aspekte B1+ · L07 „Für immer und ewig“ — Drei-Phasen-Plan
+
+**2026-11-09 · Phase1 DONE · Phase2 DONE (154 case dispositions / 54 real card changes) · Phase3 NEXT · NONIMPORT**
+
+**Current curated owner:** personal Library `libfile_913f640e14848191ab5c158bfc5cbcf7` (ZIP SHA256 `fa13137b65c7e071da8eb857a01a82e0709c60874978df42ceb00d021e66ead6`). Actual 1571-card primary JSONL SHA `567005150e40cf8987f815e38f70c999802f58a9dc4677121182430b347d48ef`. Library readback byte-identical; ZIP CRC / all 257 manifest hashes PASS. Source mapping 1548 rows unchanged, all 1417 non-L07 card objects unchanged.
+
+**Phase2 actual outcome:** all 154 cards classified, 54 saved learner-card objects changed; 34 new sense networks, 55 sense blocks, 105 explicit DE/FA example-to-sense bindings, 110 new bilingual combinations (global count now 832). Misrouted `jemals`/`niemals` examples corrected without splitting either lemma; one exact `Alles Liebe!` German example deduplicated, two Persian alternatives kept, 38 example status entries marked PENDING. 348 current bilingual example objects, same count as Phase1. 38 original L07 HOLDs retained; zero proven per-form morphology attestations in primary L07 data. No full-card signoff or actual app import test.
+
+**Phase3 / next whole-lesson action:** verify unresolved linguistic ambiguity and 38 HOLD cases, inspect all 54 targeted modifications plus untouched 100 cards in proper contextual QA, independently check actual morphology (without treating missing provenance as a wrong German form), compare collocations/sense examples to German/Farsi meanings, apply strict regression gate and test real app importer/front/back if available. Whole-lesson 154-card gate must end either RELEASED with proof or explicit RELEASE_BLOCKED_NONIMPORT; never invent human/external reviewer or repeat 10-word cycles. Keep unresolved global finite clause candidate cases in L02/L03/L09 (3), and duplicate groups in L08/L09 (2), without editing them as part of L07.
+
+Canonical evidence:
+- `Lessons/L07/PHASE2-VERIFIED-CURATED-OWNER-RECEIPT-20261109.json`
+- `Lessons/L07/PHASE2-WHOLE-154-CARD-REPORT-20261109.json`
+- `Lessons/L07/PHASE2-154-CARD-DISPOSITIONS.jsonl`
+- `Lessons/L07/PHASE2-CONTENT-EDIT-DETAILS-20261109.json`
+- `Tools/build_L07_phase2_v1.py`
+
+---
+## Historical Phase1 plan (preserved for evidence)
 # Aspekte B1+ · L07 „Für immer und ewig“ · Drei-Phasen-Plan
 
 **Stand 2026-11-09 · Phase 1 / 3 DONE · Phase 2 NEXT · Phase 3 planned · NONIMPORT**

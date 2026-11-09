@@ -1,0 +1,63 @@
+{
+  "schema": "aspekte-b1plus-l09-phase2-separate-structural-regressions@1",
+  "source_archive_sha256": "d0fa7a144065ef49536f359fe17d23a6c2edca95f0ad6d6ce3cea396b42618d6",
+  "all_185_card_structural_positive_check": "PASS",
+  "negative_synthetic_checks": [
+    {
+      "name": "reject_premature_release",
+      "expected_detection": "PREMATURE_RELEASE",
+      "actual_detection": "PREMATURE_RELEASE",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_back_formen",
+      "expected_detection": "BACK_FORMEN_DUPLICATE",
+      "actual_detection": "BACK_FORMEN_DUPLICATE",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_missing_example_status",
+      "expected_detection": "EXAMPLE_BLANK_OR_STATUS_MISSING",
+      "actual_detection": "EXAMPLE_BLANK_OR_STATUS_MISSING",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_intra_card_duplicate",
+      "expected_detection": "DUPLICATE_EXAMPLE",
+      "actual_detection": "DUPLICATE_EXAMPLE",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_wrong_sense_link",
+      "expected_detection": "ORPHAN_EXAMPLE_SENSE_ID",
+      "actual_detection": "ORPHAN_EXAMPLE_SENSE_ID",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_full_sentence_combination",
+      "expected_detection": "FULL_SENTENCE_IN_COMBINATION",
+      "actual_detection": "FULL_SENTENCE_IN_COMBINATION",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_mutation_other_lesson",
+      "expected_detection": "OTHER_LESSON_MUTATION",
+      "actual_detection": "OTHER_LESSON_MUTATION",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_lost_hold",
+      "expected_detection": "HOLD_LOST",
+      "actual_detection": "HOLD_LOST",
+      "result": "PASS"
+    },
+    {
+      "name": "reject_renamed_card_id",
+      "expected_detection": "CARD_IDENTITY",
+      "actual_detection": "CARD_IDENTITY",
+      "result": "PASS"
+    }
+  ],
+  "negative_pass_count": 9,
+  "limitations": "These are structural and identity checks; cannot prove naturalness or exact semantic translations. App importer not exercised."
+}

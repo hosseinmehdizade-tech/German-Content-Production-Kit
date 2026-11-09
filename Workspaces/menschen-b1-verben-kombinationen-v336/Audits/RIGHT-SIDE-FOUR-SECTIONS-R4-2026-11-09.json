@@ -1,0 +1,103 @@
+{
+  "schema": "gcpk-menschen-b1-verben-rightside-stage3-r4@1",
+  "date": "2026-11-09",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "status": "STAGE3_R4_SCOPED_GLOSS_ENRICHMENT__STRUCTURAL_QA_AND_LIBRARY_READBACK_PASS__STAGE4_PENDING__NOT_IMPORT_READY",
+  "accepted_current": {
+    "name": "Menschen-B1-Verben-v3.3.6-STAGE7-CONTENT-ONLY-2000-KOMBINATIONEN-VERIFIED-20261104.zip",
+    "sha256": "48b995c14e5f12584a11b945c6c312309c719669569051ac309fe17b0d38258c",
+    "role": "IMMUTABLE_USER_ACCEPTED_CONTENT_ONLY_RELEASE",
+    "unchanged": true
+  },
+  "parent_r3": {
+    "name": "Menschen-B1-Verben-RIGHTSIDE-R3-STAGE3-SENSE-GLOSSES-SCOPED-CANDIDATE-20261109.zip",
+    "sha256": "315ec0423054b77e025d96a1318c25adf984cf70844e1e702c692c3ce25e6ce1",
+    "library_stable_id": "libfile_d3c91ff224c8819181864bcd4935155b",
+    "lifecycle": "RECOVERY_CHECKPOINT_PINNED_HISTORICAL_PARENT"
+  },
+  "r4": {
+    "name": "Menschen-B1-Verben-RIGHTSIDE-R4-STAGE3-CONTEXTUAL-GLOSSES-20261109-CANDIDATE.zip",
+    "sha256": "68bc8c0a304d802a7b73224664af8627e9de174b1cb96c3dfd20234643b8d933",
+    "bytes": 2117799,
+    "members": 6,
+    "library_file_id": "file_00000000c5c48210858b8156138bde66",
+    "library_stable_id": "libfile_142687b54f4c8191bfebda243d06adf2",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-B1-Verben/Checkpoints/Menschen-B1-Verben-RIGHTSIDE-R4-STAGE3-CONTEXTUAL-GLOSSES-20261109-CANDIDATE.zip",
+    "lifecycle": "TEMP_ACTIVE_STAGE3_CANDIDATE_NOT_RELEASE",
+    "hash_and_bytes_readback": "PASS_IDENTICAL_SIZE_SHA256_BYTE_COMPARE_ZIP_CRC_AND_ALL_SHA256SUMS"
+  },
+  "delta": {
+    "parent": "R3",
+    "scanned_card_ids": 395,
+    "changed_cards": 31,
+    "added_relation_persian_glosses": 68,
+    "new_synonym_glosses": 48,
+    "new_wordfamily_glosses": 19,
+    "new_antonym_glosses": 1,
+    "card_ids_added_or_removed": 0,
+    "changed_front_back_or_examples": 0,
+    "changed_learner_visible_details": 0,
+    "changed_relations_count_or_types": 0,
+    "changed_srs_or_app": false,
+    "cumulative_r2_r3_r4_relation_gloss_additions": 192
+  },
+  "counts": {
+    "cards": 395,
+    "examples": 1580,
+    "visible_kombinationen": 2005,
+    "visible_synonyms": 1047,
+    "visible_antonyms": 136,
+    "visible_wordfamily": 719,
+    "canonical_typed_relations": {
+      "SYNONYM": 1048,
+      "ANTONYM": 133,
+      "WORD_FAMILY": 719
+    },
+    "canonical_explicit_persian_translations": {
+      "SYNONYM": 229,
+      "ANTONYM": 125,
+      "WORD_FAMILY": 541
+    },
+    "canonical_without_explicit_persian": {
+      "SYNONYM": 819,
+      "ANTONYM": 8,
+      "WORD_FAMILY": 178
+    }
+  },
+  "review": {
+    "scope": "AI editorial translations of existing accepted relations, no source dictionary individual verification implied",
+    "independent_deterministic_source_delta": "PASS_FULL_395_FIELD_PARITY__68_TRANSLATION_FA_ONLY",
+    "stage4": "PENDING",
+    "central_lexical_quality_gate": "NOT_RUN",
+    "stage5": "NOT_RUN",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_RUN"
+  },
+  "risk_holds": [
+    {
+      "card_id": "mb1m-lu-0056",
+      "issue": "sich zur Verfügung stellen volunteer willingness vs sich bereithalten standby; SYNONYM retype/scope",
+      "sources": [
+        "https://www.duden.de/rechtschreibung/Verfuegung",
+        "https://www.duden.de/rechtschreibung/bereithalten"
+      ]
+    },
+    {
+      "card_id": "mb1m-lu-0347",
+      "issue": "aufblühen is both correct synonym and word-family; show only once per card without damaging typed relation graph",
+      "sources": [
+        "https://www.duden.de/rechtschreibung/aufbluehen",
+        "https://www.duden.de/rechtschreibung/bluehen"
+      ]
+    },
+    {
+      "card_id": "mb1m-lu-0102",
+      "issue": "einstellen auf missing reflexive argument; do not force gloss until grammar verified"
+    },
+    {
+      "card_id": "mb1m-lu-0113",
+      "issue": "zu viel trinken insufficient to entail sich betrinken; relation role/scope requires correction before Stage4 pass"
+    }
+  ],
+  "next_action": "Perform risk-based AI Stage4 on R1-R4 cumulative 192 gloss changes and 11 new relation items; resolve four held roles and run exact-source lexical gates before Stage5. Preserve immutable user-final and personal FSRS/SRS. New metadata not automatically displayed in Study/Quick."
+}

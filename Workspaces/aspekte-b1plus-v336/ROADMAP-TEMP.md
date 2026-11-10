@@ -1,8 +1,19 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.78 · **Stand:** 2026-11-10 · **Status:** GLOBAL GATE04 BOUNDED ISOLATED PROOF DONE / APP NATIVE + DURABLE BLOCKED / NONIMPORT
+**Version:** 0.79 · **Stand:** 2026-11-10 · **Status:** GATE05 RAW TSV INGRESS PROOF DONE / APP NATIVE INTEGRATION BLOCKED NONIMPORT
 
-## LIVE: GATE04 EXACT CANONICAL-RICH IDENTITY + NETWORK PREFLIGHT, NEXT GATE05
+## LIVE: GLOBAL GATE05 — EXACT-CURRENT PRE-PARSE INGRESs GUARD, NEXT GATE06
+
+- **AUTHORITATIVE CURATED OWNER STILL Gate01, UNCHANGED:** Library `libfile_261160dae9508191904f55a410076d40`; ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, primary 1571-card JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. No card edits, no new curated learner owner. Original current app v505-R141 R3 ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef` remains unchanged.
+- **Evidenced native parser fault (ordinal 363):** a deliberately altered *QA-only* raw Universal TSV has two rich examples with the **same ID but conflicting sense_ids**. Current parser silently condenses 4 raw entries to 3 in normalized output, losing evidence of ambiguity. Thus a post-parse guard does not suffice.
+- **Actual tested NONPROD solution:** reuse current native `parseTsv` to inspect RAW `custom_fields` before `GFP_CONTENT_V360.parseTsvText`. Fail-closed checks include duplicate example identity, plural sense consistency, canonical vs rich conflicts and a production `BLOCKED_NONIMPORT` fence. 26/26 isolated current-source browser controls PASS; source-exact preview and submit hooks each match exactly once, modified inline JS syntax PASS. Whole 1571-card QA raw preflight, 3524 examples, 1097 sense blocks PASS (test-only permit). Ordinary production mode rejects preview data; **no deployed code or actual import**.
+- **Verified evidence:** Library ZIP `libfile_6fa7e4a4629c81918ac7bd488dc69e73`, SHA256 `ffee4505ca9fba2de8fe7e632bc32fbacc30273334bd6180556d0f183b9bfcb8`, CRC and manifest, exact Library byte readback PASS. `Global-Backlog/GATE05-RAW-INGRESS-GUARD-20261110.md`; `Tools/gfp-b1plus-ingress-guard-v1.NONPROD.js` in GitHub. App Issue #40 updated.
+- **Not fixed/attested:** native IndexedDB/committed import and restart (origin blocked), typed right-card/Wortnetz visible meaning network and stable targets, canonical/rich production precedence, SRS migration preservation, full semantic acceptance and all 359 HOLDs. The native durability audit module was not available in isolated test; DO NOT claim it passed or failed any test.
+- **NEXT GATE06:** app owner decide and integrate mandatory raw import guard plus exact identity transport/typed right card, then origin-backed UI/durable save/restart tests where permitted. Avoid re-running Gate01–05 tests or rebuilding from old textbook or CSV. **RELEASE_BLOCKED_NONIMPORT** remains.
+
+---
+
+## HISTORICAL: GATE04 EXACT CANONICAL-RICH IDENTITY + NETWORK PREFLIGHT
 
 - **Unchanged content owner:** Library `libfile_261160dae9508191904f55a410076d40` (1571-card Gate01 curated ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, PRIMARY SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`). No data edits. App v505-R141 R3 unchanged, reference ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`.
 - **Verified Gate04 evidence archive:** Library `libfile_d284c7df656081919defd543111c0954`, ZIP SHA256 `c209efe020a60951b8284d7fca426e5f26947edbb16211420a449b9b83a1af1f`; CRC / 7 file SHA256 entries / exact Library byte readback PASS. Git report `Global-Backlog/GATE04-CANONICAL-PRECEDENCE-TYPED-SENSE-ADAPTER-20261110.md`.

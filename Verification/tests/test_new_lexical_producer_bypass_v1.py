@@ -98,8 +98,8 @@ class ProducerBypassTests(unittest.TestCase):
             "PASS_NO_NEW_UNGATED_PRODUCTION_ENTRYPOINT_REFERENCES")
     def test_real_nonimport_writer_is_exact_sha_pinned(self):
         path="Workspaces/aspekte-b1plus-v336/Tools/build_P1_remaining83_v1.py"
-        raw=(ROOT/path).read_bytes().replace(b"\\r\\n",b"\\n")
-        blob=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+        raw=(ROOT/path).read_bytes().replace(b"\r\n",b"\n")
+        blob=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
         self.assertEqual(blob,PINNED_NONIMPORT_GUARDED_CHECKPOINTS[path])
         self.assertIn(b"with guarded_zip(OUT,purpose='validated_major_checkpoint',",raw)
         self.assertIn(b"'formal_release_approvals':0",raw)
@@ -108,7 +108,7 @@ class ProducerBypassTests(unittest.TestCase):
     def test_exact_pinned_nonimport_guard_passes_scoped_synthetic(self):
         path="Workspaces/aspekte-b1plus-v336/Tools/build_P1_remaining83_v1.py"
         head=self.write_commit(path,
-            "with guarded_zip(out,purpose='validated_major_checkpoint',evidence=proof) as z:\\n    pass\\n")
+            "with guarded_zip(out,purpose='validated_major_checkpoint',evidence=proof) as z:\n    pass\n")
         blob=self.g("rev-parse",f"HEAD:{path}").strip()
         with patch.dict(PINNED_NONIMPORT_GUARDED_CHECKPOINTS,{path:blob}):
             self.assertEqual(inspect(self.root,self.base,head)["status"],
@@ -117,7 +117,7 @@ class ProducerBypassTests(unittest.TestCase):
     def test_changed_pinned_nonimport_writer_fails_closed(self):
         path="Workspaces/aspekte-b1plus-v336/Tools/build_P1_remaining83_v1.py"
         head=self.write_commit(path,
-            "with guarded_zip(out,purpose='final_delivery') as z:\\n    pass\\n")
+            "with guarded_zip(out,purpose='final_delivery') as z:\n    pass\n")
         with self.assertRaisesRegex(ValueError,
               "FROZEN_NONIMPORT_GUARDED_CHECKPOINT_BLOB_DRIFT"):
             inspect(self.root,self.base,head)
@@ -125,7 +125,7 @@ class ProducerBypassTests(unittest.TestCase):
     def test_unpinned_nonimport_guarded_zip_still_refused(self):
         path="Workspaces/aspekte-b1plus-v336/Tools/new_checkpoint.py"
         head=self.write_commit(path,
-            "with guarded_zip(out,purpose='validated_major_checkpoint',evidence=proof) as z:\\n    pass\\n")
+            "with guarded_zip(out,purpose='validated_major_checkpoint',evidence=proof) as z:\n    pass\n")
         with self.assertRaisesRegex(ValueError,"NEW_UNGATED_LEXICAL_PRODUCER_REFERENCE"):
             inspect(self.root,self.base,head)
 

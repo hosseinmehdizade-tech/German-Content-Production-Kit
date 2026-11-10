@@ -1,0 +1,68 @@
+{
+  "schema": "aspekte-b1plus-global-hold-gate02-verifier@1",
+  "status": "PASS",
+  "baseline_zip_sha256": "a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b",
+  "checked_archive_sha256": "0d4f4716c2df5df5670c5262d28ed73cf0c9fdb01fd868e4dbb27d8690583d2e",
+  "archive_bytes": 4760100,
+  "member_count": 326,
+  "verified_manifest_entries": 325,
+  "primary_sha256": "150dd8da7a30107e87dc328f533bf52b75cea2c26699d497bc4c1bba795702e8",
+  "source_map_sha256": "c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882",
+  "cards": 1571,
+  "hold_before": 359,
+  "hold_after": 351,
+  "hold_closed": 8,
+  "actual_primary_edits": 23,
+  "risk_ledger_rows": 359,
+  "risk_tiers": {
+    "P1": 138,
+    "P3": 30,
+    "P2": 191
+  },
+  "negative_test_count": 10,
+  "negative_tests": [
+    {
+      "name": "duplicate_card_id",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "missing_card",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "premature_import_ready",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "premature_formal_approval",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "card_source_id_changed",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "clear_unreviewed_HOLD",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "secretly_edit_non_target",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "zero_card_identity",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "corrupt_member_hash_detected",
+      "invalid_data_rejected": true
+    },
+    {
+      "name": "missing_359th_case_detected",
+      "invalid_data_rejected": true
+    }
+  ],
+  "no_actual_app_import": true,
+  "full_semantic_signoff": false,
+  "release": "RELEASE_BLOCKED_NONIMPORT"
+}

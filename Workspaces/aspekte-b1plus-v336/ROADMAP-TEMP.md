@@ -1,6 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.85 · **Stand:** 2026-11-10 · **Status:** P1 131-CASE HOLD RESOLUTION VERIFIED / PR #41 APP DRAFT SEPARATE / RELEASE_BLOCKED_NONIMPORT
+**Version:** 0.86 · **Stand:** 2026-11-10 · **Status:** REMAINING 83 P1 CASES REVIEWED / 41 SCOPED CONTENT HOLD CLOSURES / 262 OPEN / PR41 APP SEPARATE / RELEASE_BLOCKED_NONIMPORT
+
+## LIVE: P1 83 CASE FOLLOW-UP DONE — 41 scoped HOLDs truly closed, 42 P1 remain
+
+**One and only authoritative current curated 1571-card learner owner:** Library `libfile_d6d44661577c8191a0f84c16e33dc62c`, ZIP SHA256 `8112f618e6d90412215fe087dfee72f213eee9e871ac9991a2af993cf3d40816`, primary 1571 JSONL SHA256 `91567aa4124fe02b42a6f41ef35dc6091671efbd63c15eb503dfd141afaf70d6`, 1548-row source map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. ZIP 342 members, 341 internal SHA256 checks PASS, CRC PASS, exact Library byte readback PASS, separate on-download validator plus 16 deliberate negative mutation tests PASS. Both `CHECKPOINT.json` and `LATEST.json` active owner and baseline pinned to identical new SHA. Prior owner `d7550a83387b41d3f1efa61297b926c24fdca692ea8a8d5b5288743ef20d563d` kept for rollback.
+
+- **Measurable content HOLD progress:** The remaining 83 P1 cases were reviewed individually. 41 additional scope-specific content HOLDs were closed with case and semantic evidence; 42 remain P1 (plus P2 190, P3 30), hence global open HOLDs **303→262**. Cumulative 97 out of inherited 359 scoped content HOLDs closed (8 Gate02 + 48 previous P1 + 41 current). No blanket card signoff, no false human reviewer, no app release.
+- **Actual 1571-JSONL data edits:** 41 card objects REALLY changed, 1530 other card objects byte-for-byte preserved, IDs all unchanged, 1548-row source mapping untouched, and 14 new DE–FA examples (all PENDING) added, raising corpus examples **3539→3553** with all old examples preserved except one justified Persian translation correction. Full 41 before/after primary card objects and fresh all-359 status ledger saved in Library ZIP and standalone before/after JSON Library evidence.
+- **Specific linguistic fixes:** `Seemann`/plural `Seeleute` without invented sibling card; `verschlingen` eating vs interweaving homographs; `Gästebuch` corrected Persian sense; `begeisterungsfähig` comparative/superlative; `Träger/Trägerin` human vs technical girder; `Pflanzen gehen ein` changed to nonfinite combination; `zurücklegen` head-tilt sense example; `schimpfen` stray metadata label `Lernersatz`; `alle/alles` sense IDs; `ausgelassen` Partizip-II combination. Additional meaning-linked examples for `ablegen`, `das Stück`, `treiben`, `vorgehen`, `auslegen`, `wiedergeben`, `der Gipfel`, `der Träger`, `die Passage` etc.
+- **Auditable evidence:** GitHub `Global-Backlog/P1-REMAINING83-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`; 83 case-specific decisions, 41 evidence-backed closure explanations, 14 example log, semantic report, separate structural regression, exact reproducible build/verify scripts. All 7 GitHub mirrored text evidence files individually git-blob byte-identical to uploaded Library files. Full current all-359 HOLD state and 41 complete primary A/B objects inside the Library ZIP.
+- **Next actual content work:** prioritize only **42 remaining high-risk P1**, then 190 P2 and 30 P3, cases by **real German–Persian meaning, grammar and idiomatic mistakes** rather than lack-of-attestation metadata; do not revive closed lesson passes or textbook source comparisons. Real native app PR #41 integration, true trusted provenance manifest and Import/UI/SRS testing remain an **independent** stream. `RELEASE_BLOCKED_NONIMPORT` until actually proven.
+
+---
+
+## HISTORICAL: P1 131 CASES TRIAGED, 48 SCOPED HOLD CLOSED / APP PR41 TRACK PRESERVED
 
 ## LIVE: P1 131 cases dispositioned, 48 scoped HOLDs closed, 303 total remain
 

@@ -2,7 +2,7 @@
 
 **Checkpoint:** 2026-11-10 · owner-curated current is authoritative · no original textbook reconciliation.
 
-**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `88b3cc571d210facd7b14bcce579d7544ba86a71ff2d501d469ffe8119281a7c`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
+**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `0e3c902b4ed09b91d20f609140cf0df88fac3f2eadcd0dc1c129aa1fe683e73d`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
 
 ## Completed — do not reopen
 - [x] HF2 morphological front-form remediation: **643/643** completed across all lessons.
@@ -19,12 +19,12 @@
 
 **Accountability / Definition of done:** exactly 1719 card decisions in one Stage4 ledger: `PASS`, `CORRECTED`, or `DOCUMENTED_EXCEPTION` (with explicit reason). A lesson is closed when its full roster has a decision, its edits are applied to the Master and validated, and its count is reconciled. No external independent human signature, no textbook-source comparison. Old QA status labels mentioning “independent” are historical only, not operative gates.
 
-**Progress now:** all 1719 cards machine-screened; **L01 CLOSED (max 3 phases honored): 158/158 editorial semantic decisions, 117 CORRECTED and 41 PASS; 116 sense-scoped synonym fields and 34 antonym fields enriched, 1 collocation and 1 Persian example translation corrected.** Full all10 structural QA and 5 negative tests passed; 1561 other cards unchanged. **Next exact batch: L02 110 cards, Phase 1/≤3.**
+**Progress now:** 1719 cards machine-screened; **L01 CLOSED 158/158 (117 CORRECTED, 41 PASS)**; **L02 CLOSED 110/110 (90 CORRECTED, 20 PASS; 117 field values changed, 5 negative mutation tests PASS)**. **268/1719 semantic editorial decisions complete; 1451 still open.** All other 1609 Master cards unchanged byte-for-byte during L02; **Next exact batch: L03 186 cards, max 3 phases.**
 
 | Lektion | Karten | Stage 4 semantic decisions |
 |:--|--:|--:|
 | L01 | 158 | 158 / 158 (CLOSED: 117 CORRECTED, 41 PASS) |
-| L02 | 110 | 0 / 110 |
+| L02 | 110 | 110 / 110 (CLOSED: 90 CORRECTED, 20 PASS) |
 | L03 | 186 | 0 / 186 |
 | L04 | 183 | 0 / 183 |
 | L05 | 227 | 0 / 227 |
@@ -33,10 +33,10 @@
 | L08 | 180 | 0 / 180 |
 | L09 | 161 | 0 / 161 |
 | L10 | 151 | 0 / 151 |
-| **TOTAL** | **1719** | **158 / 1719** |
+| **TOTAL** | **1719** | **268 / 1719** |
 
 ## Stage 5 — final regression & risk disposition (NOT STARTED)
-One **single all-1719** regression: Master schema/IDs/counts, absence of unintended diffs, 3438 bilingual examples, 4891 collocations (or documented content revisions), semantic decision coverage 1719/1719. Every remaining `DOCUMENTED_EXCEPTION` has an explicit decision (hold/exclude/resolve). Produce one release-candidate QA receipt and reproducible hash. No new rounds merely for confirming original publisher fidelity.
+One **single all-1719** regression: Master schema/IDs/counts, absence of unintended diffs, 3438 bilingual examples, 4892 collocations (or documented content revisions), semantic decision coverage 1719/1719. Every remaining `DOCUMENTED_EXCEPTION` has an explicit decision (hold/exclude/resolve). Produce one release-candidate QA receipt and reproducible hash. No new rounds merely for confirming original publisher fidelity.
 
 ## Stage 6 — isolated technical import/SRS readiness (NOT STARTED; no automatic import)
 Run **one documented native-app import dry-run** and ID/SRS continuity/rollback test using exact target app and existing accepted-card IDs, when supported. Until tests pass, file remains `NONIMPORT` and **zero cards are marked release approved**. If environment cannot access the native app/IDs, record the concrete blocker once; stop and hand off the runnable artifact to Codex / app environment instead of looping. Live SRS import is not performed without an explicit request.
@@ -54,3 +54,12 @@ Run **one documented native-app import dry-run** and ID/SRS continuity/rollback 
 - L01 final semantic decisions: 158/158, all other lessons still pending (1561).
 - Raw preimage master SHA: `85159cecc31fc09df066715777f362dbbac1f7e3f34428e74e2ce325c55cc4e5`; current master SHA: `88b3cc571d210facd7b14bcce579d7544ba86a71ff2d501d469ffe8119281a7c`. Backup and byte-exact Library readback verified; 1719 IDs/3438 example pairs and 4892 collocations preserved (1 new useful collocation).
 - **Next task: L02 all 110 cards, Phase 1/3. No L01 re-review or new process.** Stage5/6 not started, release status NONIMPORT.
+
+
+## 2026-11-10 Stage4 L02 closure (110/110, bounded to three phases)
+- Owner-curated Master v2 SHA: `88b3cc571d210facd7b14bcce579d7544ba86a71ff2d501d469ffe8119281a7c` → Master v3 SHA: `0e3c902b4ed09b91d20f609140cf0df88fac3f2eadcd0dc1c129aa1fe683e73d`.
+- **All 110 L02 cards editorially completed:** 90 CORRECTED, 20 PASS; 84 new sense-scoped synonym entries, 25 new sense-scoped antonyms, 5 collocation repairs, 2 German→Persian translation repairs and 1 fixed-expression front correction (117 field values in 90 cards). Existing 20 synonym and 11 antonym values retained; 104 L02 cards now have synonym entries, 36 have antonym entries; empty values remain when no safe equivalent.
+- Specific issues fixed: `nach der Hand greifen` describes reaching **toward** the hand (not necessarily taking it); collocation of `deuten` now uses the actual verb `deuten`, not `hindeuten`; `es ernst meinen` front has the complete grammatical expression. For `ungefragt`, the Persian example no longer incorrectly requires prior permission when the German says unsolicited/without being asked.
+- Full 1719 IDs preserved, 3438 bilingual pairs preserved, 4892 collocations preserved. Every cell and raw-byte record of the 1609 cards outside L02 unchanged. Backup in Library checkpoint folder; new master re-downloaded and exactly SHA verified. **Five deliberately mutated inputs blocked by fail-closed QA** (wrong SHA, duplicated ID, mutation outside lesson, unauthorized back edit, missing card).
+- `Reports/B2-STAGE4-CARD-STATUS-1719-20261110.tsv` records 268 completed Stage4 decisions; **1451 remaining**. Stage5 and Stage6 remain NOT_STARTED. No automatic import or live SRS mutation; no mandatory external human review.
+- **Next exactly: Stage4 L03, all 186 cards, max 3 coherent phases, from single Master v3**. No HF2 or L01/L02 restart.

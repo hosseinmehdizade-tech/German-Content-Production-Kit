@@ -69,7 +69,7 @@ def preflight(root: Path, source: Path, output: Path, receipt: Path,
             "STAGE4_RECEIPT_BYTES_NOT_REVIEWED")
 
     sys.path.insert(0, str(root / "Tools"))
-    from build_governed_clean_delivery_v1 import select_roles
+    from build_quality_gated_lexical_candidate_v1 import select_roles
     roles = select_roles(source)
     tsv_digest = digest(roles["direct-import-tsv"])
     require(review.get("source_tsv_sha256") == tsv_digest,
@@ -127,11 +127,14 @@ def main() -> int:
                 "CENTRAL_QUALITY_FAMILY_MISMATCH")
         require(digest(ROOT / OWNER / "LATEST.json") == proof["latest_source_sha256"],
                 "CURRENT_OWNER_MOVED_DURING_BUILD")
-        require(digest(args.source_dir / next(
-                p.name for p in args.source_dir.iterdir()
-                if p.is_file() and "import" in p.name.lower() and p.suffix == ".tsv"))
-                == proof["candidate_tsv_sha256"],
-                "CANDIDATE_TSV_MOVED_DURING_BUILD")
+        sys.path.insert(0, str(ROOT / "Tools"))
+        from build_quality_gated_lexical_candidate_v1 import select_roles
+        require(digest(select_roles(args.source_dir)["direct-import-tsv"]) ==
+                proof["candidate_tsv_sha256"], "CANDIDATE_TSV_MOVED_DURING_BUILD")
+        require(digest(args.stage4_receipt) == proof["stage4_receipt_sha256"],
+                "STAGE4_RECEIPT_MOVED_DURING_BUILD")
+        require(digest(args.cross_tile_review) == proof["cross_tile_review_sha256"],
+                "CROSS_TILE_REVIEW_MOVED_DURING_BUILD")
         print(json.dumps({"status": "OWNER_NATIVE_STAGE5_CANDIDATE_PASS_NOT_ADOPTED",
                           "family_id": FAMILY,
                           "candidate_sha256": digest(args.output_zip),

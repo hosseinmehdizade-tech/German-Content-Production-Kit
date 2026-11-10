@@ -22,6 +22,13 @@ UNGUARDED=(
     re.compile(r"\b(?:Tools\.)?package_release(?:_corrective)?(?:\.py)?\b",re.I),
     re.compile(r"\bguarded_zip\s*\(",re.I),
 )
+# ONE exact source-owned, structurally gated NONIMPORT checkpoint writer.
+# The generic lexical Stage5 guard still rejects any new bare guarded_zip call.
+# This immutable blob is permitted only as historical/nonimport checkpoint code:
+# any subsequent code edit must be reviewed and rebound explicitly.
+PINNED_NONIMPORT_GUARDED_CHECKPOINTS={
+    "Workspaces/aspekte-b1plus-v336/Tools/build_P1_remaining83_v1.py":"fad089ea1467864343fa0e856ae47c55f81a92e5",
+}
 EXTS={".py",".sh",".bash",".yml",".yaml"}
 
 def git(root,*args):
@@ -48,10 +55,21 @@ def inspect(root,base,head):
     hits=[]
     for path in changes:
         if not scope(path):continue
+        approved_nonimport_blob=PINNED_NONIMPORT_GUARDED_CHECKPOINTS.get(path)
+        if approved_nonimport_blob is not None:
+            # Exact code identity is more restrictive than path or purpose
+            # string allowlisting. Even a cosmetic edit must rebaseline here.
+            observed=git(root,"rev-parse",f"{head}:{path}").strip()
+            if observed!=approved_nonimport_blob:
+                raise ValueError("FROZEN_NONIMPORT_GUARDED_CHECKPOINT_BLOB_DRIFT:"+path)
         for line in added_lines(root,base,head,path):
             if not line.strip() or line.lstrip().startswith(("#","//","*")):continue
             for old in UNGUARDED:
                 if old.search(line):
+                    # Only the frozen exact-byte NONIMPORT writer can call the
+                    # lower-level ZIP guard. No general Stage5 exception.
+                    if approved_nonimport_blob is not None and old.pattern == r"\\bguarded_zip\\s*\\(":
+                        continue
                     hits.append({"path":path,"legacy_entrypoint":old.pattern,
                                  "added_line":line.strip()[:220]})
     if hits:

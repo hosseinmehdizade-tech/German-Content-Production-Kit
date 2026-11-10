@@ -68,7 +68,7 @@ def inspect(root,base,head):
                 if old.search(line):
                     # Only the frozen exact-byte NONIMPORT writer can call the
                     # lower-level ZIP guard. No general Stage5 exception.
-                    if approved_nonimport_blob is not None and old.pattern == r"\\bguarded_zip\\s*\\(":
+                    if approved_nonimport_blob is not None and old is UNGUARDED[-1]:
                         continue
                     hits.append({"path":path,"legacy_entrypoint":old.pattern,
                                  "added_line":line.strip()[:220]})

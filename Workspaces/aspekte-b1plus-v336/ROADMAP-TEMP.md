@@ -1,6 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.83 · **Stand:** 2026-11-10 · **Status:** PR #41 NESTED NATIVE JSON GUARD HARDENED / DRAFT UNMERGED / NONIMPORT
+**Version:** 0.84 · **Stand:** 2026-11-10 · **Status:** CONTENT HOLD GATE02 VERIFIED / APP PR #41 DRAFT UNMERGED / RELEASE_BLOCKED_NONIMPORT
+
+## LIVE: 359 inherited curated HOLDs triaged; 8 case-level closed; 351 remain
+
+- **New authoritative content owner:** Library `libfile_513f914e06448191bfc5ac66481f2263`, ZIP SHA256 `0d4f4716c2df5df5670c5262d28ed73cf0c9fdb01fd868e4dbb27d8690583d2e`; primary 1571 JSONL SHA256 `150dd8da7a30107e87dc328f533bf52b75cea2c26699d497bc4c1bba795702e8`; unchanged source map 1548 original rows SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. CRC / 325 SHA256 manifest entries and byte-exact Library download PASS.
+- **Repair, not just another audit:** 359 old HOLD card IDs individually recorded with specific priority and reason; actual new PRIMARY objects changed: **23**, including 15 canonical headwords with old slash/abbreviation/sentence source forms corrected; `die Pension` gained missing Ruhestand sense with age-specific example and noncount grammar; `das Hochwasser` gained coastal-tidal high-water sense; `die Billion` Persian interpretation clarified as 10^12, not 10^9. Two new DE–FA examples left PENDING, not auto-PASS. Existing 3524 example pairs fully retained.
+- **Eight scoped content HOLDs closed with written case evidence:** L01/10 Stichpunkt, L03/253 umgehen (separable vs inseparable), L08/1027 umschreiben (two paradigms), L08/1142 Milliarde and Billion (10^9 vs 10^12), L10/1487 Überschwemmung, L10/1494 Wasserknappheit and Wassermangel. **No formal card release approvals**, no fabricated external second reviewer. `die Pension` and `das Hochwasser` remain HOLD after newly authored senses and examples pending review.
+- **Still-open 351 HOLDs sorted**: P1 **131** meaningful high-risk candidates (rejected old overlay, source-lemma split or 3+ senses, plus cases with current edits), P2 **190** contextual semantic follow-ups, P3 **30** inherited legacy low-evidence metadata flags. Original tier ledger over 359: P1 138 / P2 191 / P3 30, of which 7 P1 + 1 P2 closed. Risk tiers are **not proof** of 351 definite mistakes. No old publisher CSV re-inventory.
+- **Verification:** all 1571 card identities unchanged, 1548 original source map rows unchanged; 1548 nonedited card objects exactly unchanged; 23 complete before/after card objects in ZIP; ten negative mutation guards PASS; 326 ZIP members, 325 manifests, CRC and Library readback PASS. Full 359 case-level decision queue and replayable scripts mirrored in dedicated Library and GitHub.
+- **Evidence:** `Global-Backlog/HOLD-GATE02-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`, `Global-Backlog/HOLD-GATE02-359-CASE-RISK-DECISION-LEDGER-20261110.jsonl`, `Global-Backlog/HOLD-GATE02-359-HOLD-REPAIR-REPORT-20261110.json`, `Tools/build_hold_priority_gate02.py`, `Tools/verify_hold_priority_gate02.py`. CURRENT and baseline pointers in both `CHECKPOINT.json` and `LATEST.json` pinned to exact current Gate02 owner; app PR #41 separate stage and next-step fields retained.
+- **Next:** real case-by-case editorial fixes of the 131 remaining P1 candidates (high-risk *candidates*, not 131 errors), without artificial ten-card loops or redoing closed L01–L10 audits; continue PR #41 source integration, manifest/provenance and actual app import/render/SRS acceptance as separate technical stream. `RELEASE_BLOCKED_NONIMPORT`.
+
+---
+
+## HISTORICAL / PARALLEL APP TRACK — PR #41 STILL DRAFT, NO RELEASE
 
 ## LIVE: PR #41 nested marker fix verified — no change to user CURRENT
 

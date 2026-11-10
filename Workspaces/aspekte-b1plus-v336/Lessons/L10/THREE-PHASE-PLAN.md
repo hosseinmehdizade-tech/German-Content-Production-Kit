@@ -1,27 +1,29 @@
-# Aspekte B1+ — Lektion 10 three-phase plan
+# Aspekte B1+ — Lektion 10: final three-phase closure
 
-**Stand:** 2026-11-10 · **Phase 1 DONE** · **Phase 2 DONE** · **Phase 3 NEXT** · **RELEASE_BLOCKED_NONIMPORT**.
+**Stand:** 2026-11-10 · **Phase 1 DONE** · **Phase 2 DONE, newest merged baseline reconciled** · **Phase 3 DONE (fail-closed QA)** · **RELEASE_BLOCKED_NONIMPORT**.
 
-## Current owner — Phase 2 verified, actual learner edits
+## Current authoritative curated owner — verified Phase 3
 
-- Library archive: `Aspekte-B1plus-L10-PHASE2-WHOLE-208-CARD-CURATED-NONIMPORT-20261110.zip`
-- Library ID `libfile_8994942fe9888191af408b0a53a9cced`; ZIP SHA256 `0726c7daa1df91fb6198b8936ec95cf31617c358497022e7ee5e8b87ef049636`.
-- Primary 1,571-card JSONL SHA256 `290179d3a84051cf4817c2f9bf8070b46d68ac285cee4c5876c72244ac29a60c`. Source-to-card map 1,548 original rows: SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882` unchanged.
-- ZIP: 302 members / 301 SHA256 manifest entries, CRC PASS, exact Library byte-for-byte readback PASS.
-- Verified control receipt: `PHASE2-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`.
+- Library: `libfile_e8f5c865d7e08191b0541f223360521d`
+- Archive: `Aspekte-B1plus-L10-PHASE3-FINAL-208-CARD-RELEASE-GATE-NONIMPORT-20261110.zip`, SHA256 `f096557010f10578a6dc0ab770d4a27fca0c7c48fe8b53789bf9652899e83a0d`.
+- 1,571-card primary JSONL SHA256: `b490021134ce2ccc13d55f2b3037d82239828710b41877c18c7d911efb05d8dd`.
+- 1,548-row source map SHA256: `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882` (unchanged).
+- Parent **newer merged Phase2**, not obsolete 453-example ZIP: Library `libfile_98793d878490819192a077b2f5c53764`, SHA256 `58ba2aef6e35efad947a6132b66c122fe545b16eb4af02159846cef08996b05b`. This parent contains 457 DE–FA examples, 208 network cards, 253 semantic sense blocks and 288 collocations in L10.
+- CRC, 310-entry SHA manifest, ZIP archive, exact Library byte readback all PASS. Receipt: `PHASE3-FINAL-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`.
 
-## Phase 1 DONE
+## Phase 1: DONE (historical)
+Audited 208 current L10 objects / 207 source rows, identified missing statuses, sense routing, and finite clause misuse.
 
-208 original learner cards / 207 distinct source rows, 450 bilingual examples, 29 missing status entries, 60 missing/invalid sense routes, 5 full finite clauses wrongly used as Kombinationen and 46 inherited HOLDs. Phase1 package was AUDIT_ONLY and did not become the primary owner.
+## Phase 2: DONE (merged latest owner)
+The later verified **merged** learner-data owner contains 208 real edited L10 primary objects, 457 bilingual examples, semantic networks for all 208 L10 cards (253 sense blocks), 288 combination entries, eight scoped morphological attestations, and preserves all 46 inherited L10 HOLDs. The original 453-example, 30-network Phase2 archive is historical, **not** authoritative.
 
-## Phase 2 DONE — substantive full-lesson screen
+## Phase 3: DONE, nonimport
+- Applied 6 meaning/relevance/idiomaticity improvements to actual `Kombinationen_DE_FA` in **five primary L10 cards**: appellieren 1382, Forscher/Forscherin 1387, Umweltexperte/Umweltexpertin 1398, Talkmaster/Talkmasterin 1439 (2), einhaken 1444.
+- 208/208 L10 card-level structural checks passed, 18/18 negative synthetic mutation tests rejected. 1,363 non-L10 card objects untouched and 203 other L10 objects untouched. All 457 DE–FA examples and 46 inherited L10 HOLDs remain. No import flags flipped.
+- All L10 example sense IDs valid. Zero known L10 finite-clause collocations, duplicate German examples, or exact collocation/example copies. Two known finite-clause collocations persist **outside** L10: L02/158, L03/232. Two inherited unassigned example sense IDs exist outside L10.
+- **Do not equate successful structure QA with full 208-card bilingual / morphology / collocation idiomaticity certification.** 198 L10 fronts still lack recorded attestation; the 212 newly added collocations from merged Phase2 are not globally signed off. 457 L10 examples remain PENDING as to full language QA, and all 46 curated HOLDs remain. No real app import/render or end-to-end SRS test performed.
+- No external independent human reviewer required or claimed; no original publisher textbook re-inventory.
 
-- All 208 L10 card objects passed one bounded per-card structural/editorial disposition; **59 actual primary learner cards were changed**. Other 1,363 cards in the 1,571-card dataset are unchanged as full JSON objects.
-- 29 missing DE–FA QA statuses explicitly set to PENDING, not PASS; 60 examples routed to existing case-specific sense IDs, including ten polysemous records.
-- Five full clauses in combination fields rewritten to non-finite useful collocations; two shared-source split-lemma examples rewritten to match the actual learner lemma; three newly authored DE–FA examples illustrate otherwise unused sense IDs. 450 → 453 examples.
-- All 46 inherited HOLDs remain, no source ordinal/preview ID lost, no front morphology silently attested, no formal approvals, no original publisher re-inventory. Global known finite-pattern findings: 2 **outside** L10 in L02/158 and L03/232, **0 in L10**. No corpus-wide exact duplicate DE examples or exact collocation/example copies.
-- Scope limit: the 208-row screen is **not** full German–Persian semantic certification. No independent human review is claimed, and real app import/render has not been tested. All retained flags stay unresolved as appropriate.
+## Next workstream
 
-## Phase 3 NEXT — whole-208 final fail-closed QA
-
-Conduct a case-level release/blocker disposition across all 208 cards, targeted bilingual/semantic/idiomatic challenges for risky forms and translations, sense routing tests, 29 prior PENDING statuses, 5 repaired collocations and the three new examples. Verify no regressions in 1,363 other cards and all 1,548 source rows. Run negative mutation tests. Retain `RELEASE_BLOCKED_NONIMPORT` if technical app import, language quality, or older blockers cannot be conclusively verified. No external independent human reviewer, no microlots and no textbook-source CSV rebuild.
+Close project-wide B1+ blockers and test actual app import/render only when safe technical access exists. Never repeat L10 Phase1–3 or accidentally overwrite this owner with the older Phase2 ZIP. `RELEASE_BLOCKED_NONIMPORT` remains active until substantive blockers are resolved.

@@ -86,6 +86,26 @@ class NewClaimProofTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_MALFORMED"):
             self.check(c)
 
+    def test_unpinned_named_artifact_is_not_hidden_by_other_good_digest(self):
+        c=self.claim()
+        c["artifact"]={"filename":"DIFFERENT-UNHASHED.zip"}
+        c["latest_archive_sha256"]=self.zip_sha
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_REQUIRED:artifact"):
+            self.check(c)
+
+    def test_unpinned_nested_stage5_artifact_is_not_hidden_by_root_digest(self):
+        c=self.claim()
+        c["stage5"]={"status":"PASS","artifact":{"filename":"UNHASHED.zip"}}
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_REQUIRED:stage5.artifact"):
+            self.check(c)
+
+    def test_all_explicit_artifact_hashes_must_agree(self):
+        c=self.claim()
+        c["latest_archive_sha256"]=self.zip_sha
+        c["stage5"]={"status":"PASS","output_zip_sha256":self.zip_sha}
+        x=self.check(c)
+        self.assertEqual(len(x["bound_artifact_pointers"]),3)
+
     def test_missing_quality_gate_output_zip_digest_blocks_claim(self):
         self.report["governed_format_build"].pop("output_zip_sha256")
         with self.assertRaisesRegex(ValueError,"QUALITY_GATE_OUTPUT_SHA256_MISSING"):

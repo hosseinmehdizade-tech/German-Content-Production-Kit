@@ -76,6 +76,16 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "CROSS_TILE_REVIEW_NOT_FOR_CURRENT_OWNER"):
             self.check()
 
+    def test_stage4_receipt_missing_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "MISSING_OR_UNSAFE_STAGE4_RECEIPT"):
+            self.check(stage4=self.dir / "absent-stage4.json")
+
+    def test_stage4_receipt_directory_fails_closed(self):
+        directory=self.dir / "fake-stage4.json"
+        directory.mkdir()
+        with self.assertRaisesRegex(ValueError, "MISSING_OR_UNSAFE_STAGE4_RECEIPT"):
+            self.check(stage4=directory)
+
     def test_stage4_receipt_bytes_tampering_fails_closed(self):
         self.stage4.write_text('{"status":"CHANGED"}', encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "STAGE4_RECEIPT_BYTES_NOT_REVIEWED"):

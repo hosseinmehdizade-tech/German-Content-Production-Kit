@@ -24,7 +24,10 @@ class TestProjectControlCenter(unittest.TestCase):
         cls.state = pcc.load_json_from_index(pcc.STATE, cls.index)
         cls.pointers = {}
         for d in pcc.tracked_dirs(cls.index):
-            for name in ("LATEST.json", "CHECKPOINT.json"):
+            names = ["LATEST.json", "CHECKPOINT.json"]
+            if d in pcc.OWNER_CONTROL_PRIMARY:
+                names.append(pcc.OWNER_CONTROL_PRIMARY[d][0])
+            for name in names:
                 p = d + "/" + name
                 if p in cls.index:
                     cls.pointers[p] = pcc.load_json_from_index(p, cls.index)
@@ -88,6 +91,52 @@ class TestProjectControlCenter(unittest.TestCase):
         snap = self.build()
         self.assertTrue(any(x["type"] == "ROOT_CHECKPOINT_UNTRACKED" for x in snap["issues"]))
         self.assertEqual(snap["counts"]["stage4_stage5_stage6_stage7_certificates_generated"], 0)
+
+    def test_real_b2_owner_control_supersedes_stale_latest_as_hint_only(self):
+        d="Workspaces/aspekte-b2-v336"
+        snap=self.build()
+        w=next(x for x in snap["workspaces"] if x["git_dir"]==d)
+        self.assertEqual(w["display_pointer"],d+"/RUN-CONTROL.json")
+        self.assertIn("864_FINAL_OF_1719",w["reported_status_hint"])
+        self.assertIn("637_OF_1719",w["superseded_latest_stage_hint"])
+        self.assertTrue(w["authority"].startswith("EXPLICIT_OWNER_RUN_CONTROL_HINT"))
+        self.assertFalse(w["stage_pass_or_release_attested_by_control_center"])
+        self.assertTrue(any(x["type"]=="OWNER_LATEST_SUPERSEDED_FOR_STATUS_HINT"
+                            and x["primary"]==d+"/RUN-CONTROL.json"
+                            for x in snap["issues"]))
+
+    def test_owner_run_control_cannot_override_without_exact_marker(self):
+        d="Workspaces/aspekte-b2-v336"
+        p=d+"/RUN-CONTROL.json"
+        pointers=copy.deepcopy(self.pointers)
+        pointers[p]["latest_json_status"]="FAKE_NEW_OWNER_PRIMARY"
+        snap=self.build(pointers=pointers)
+        w=next(x for x in snap["workspaces"] if x["git_dir"]==d)
+        self.assertEqual(w["display_pointer"],d+"/LATEST.json")
+        self.assertFalse(w["stage_pass_or_release_attested_by_control_center"])
+
+    def test_other_family_cannot_override_latest_with_fake_run_control(self):
+        d="Workspaces/menschen-b1-24-lessons-v336"
+        p=d+"/RUN-CONTROL.json"
+        idx=dict(self.index)
+        idx[p]="a"*40
+        ptr=copy.deepcopy(self.pointers)
+        ptr[p]={"status":"FAKE_PASS_STAGE7",
+                "latest_json_status":"LEGACY_POINTER_STALE__GITHUB_RUN_CONTROL_PRIMARY"}
+        snap=self.build(index=idx,pointers=ptr)
+        w=next(x for x in snap["workspaces"] if x["git_dir"]==d)
+        self.assertEqual(w["display_pointer"],d+"/LATEST.json")
+
+    def test_unreadable_b2_run_control_does_not_fabricate_progress(self):
+        d="Workspaces/aspekte-b2-v336"
+        ptr=copy.deepcopy(self.pointers)
+        ptr[d+"/RUN-CONTROL.json"]=None
+        snap=self.build(pointers=ptr)
+        w=next(x for x in snap["workspaces"] if x["git_dir"]==d)
+        self.assertEqual(w["display_pointer"],d+"/LATEST.json")
+        self.assertTrue(any(x["type"]=="OWNER_CONTROL_UNPARSEABLE"
+                            and x["path"]==d+"/RUN-CONTROL.json"
+                            for x in snap["issues"]))
 
     def test_root_summary_does_not_override_workstream_latest(self):
         snap = self.build()

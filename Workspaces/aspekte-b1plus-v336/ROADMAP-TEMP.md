@@ -1,8 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.79 · **Stand:** 2026-11-10 · **Status:** GATE05 RAW TSV INGRESS PROOF DONE / APP NATIVE INTEGRATION BLOCKED NONIMPORT
+**Version:** 0.80 · **Stand:** 2026-11-10 · **Status:** GATE06 REAL HANDLER + STAGED CURRENT APP PASS / PRODUCTION RELEASE BLOCKED NONIMPORT
 
-## LIVE: GLOBAL GATE05 — EXACT-CURRENT PRE-PARSE INGRESs GUARD, NEXT GATE06
+## LIVE: GATE06 EXACT CURRENT PREVIEW AND IMPORT NATIVE HANDLER TESTS, NEXT GATE07
+
+- **CURATED OWNER UNCHANGED:** Library `libfile_261160dae9508191904f55a410076d40`, 1,571-card ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`; PRIMARY SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`; all 359 inherited HOLDs preserved.
+- **APP CURRENT UNCHANGED:** `v505-R141 WORDLINKS_FRONTBACK_R3`, immutable Library ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`. Historical main v486 NOT used. No app source branch deployment or promotion.
+- **Actual native functions executed in isolated Chromium:** `handleTsvSelection` and `importPendingTsv` with the Gate05 raw preparse guard, test-only counters, exact source. Curated 3-card, conflicting duplicate-ID 3-card, missing guard dependency, and full 1,571-card NONIMPORT data all rejected before original Parser and durable mutation. Unrelated incomplete TSV passed guard but failed in original parser — do not claim valid TSV success-path acceptance.
+- **Two-file staged candidate:** one new head-loaded guard JS plus two changed callsites in current `index.html`. Required script loaded with **39 exact-current runtime JS assets** in disposable Chromium. Both native handlers rejected forbidden files, zero page JS errors. Modified original inline JS `node --check` PASS. **20/20 scoped negative and structural assertions PASS**, no real import commit or profile write.
+- **Evidence ZIP:** Library `libfile_c98a133b51d081919aacc592011bc12d` `Aspekte-B1plus-GATE06-REAL-IMPORT-HANDLERS-NONPROD-20261110.zip`, SHA256 `8bc615fb95fb16e64eee97e331ad98d5beb1379c443471a27ff4d87854d459d0`, 11 entries/10 manifest hashes, CRC and exact Library readback PASS. Git `Global-Backlog/GATE06-EXACT-APP-PREVIEW-IMPORT-INTEGRATION-20261110.md`; app Issue #40 comment updated.
+- **OPEN:** marker-based release fence is not tamper-proof; independent trusted release authorization is outstanding. ZIP/JSON/Reading Pack import paths untested. A valid allowed TSV has not yet completed native import, no stable-origin IndexedDB save/restart, no user-facing Wortnetz sense-identity or SRS acceptance. Original 359 HOLDs remain. **RELEASE_BLOCKED_NONIMPORT**.
+- **NEXT GATE07 (app owner #40):** coordinate source branch review; test valid TSV success and all alternate import routes, trusted manifest-based authorization, right-card typed sense links, and origin-backed durable restart, only when supported. Do not repeat closed L10 Phases 1–3 or Global Gate01–Gate06.
+
+---
+
+## HISTORICAL: GLOBAL GATE05 — EXACT-CURRENT PRE-PARSE INGRESS GUARD
 
 - **AUTHORITATIVE CURATED OWNER STILL Gate01, UNCHANGED:** Library `libfile_261160dae9508191904f55a410076d40`; ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, primary 1571-card JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. No card edits, no new curated learner owner. Original current app v505-R141 R3 ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef` remains unchanged.
 - **Evidenced native parser fault (ordinal 363):** a deliberately altered *QA-only* raw Universal TSV has two rich examples with the **same ID but conflicting sense_ids**. Current parser silently condenses 4 raw entries to 3 in normalized output, losing evidence of ambiguity. Thus a post-parse guard does not suffice.

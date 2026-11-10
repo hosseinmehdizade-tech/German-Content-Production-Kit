@@ -1,7 +1,7 @@
 {
   "schema": "aspekte-project-definition-git-checkpoint@2.0.0",
   "project_id": "aspekte-b1plus",
-  "status": "ACTIVE_NONIMPORT_APP_PR41_DRAFT_STAGED__PRODUCTION_AND_NATIVE_DURABLE_BLOCKED",
+  "status": "ACTIVE_NONIMPORT_APP_PR41_NESTED_GUARD_HARDENED_BUT_UNMERGED",
   "production_authorized": true,
   "source_sha256": "09478483886661527b24bf00d9c375234d5877ac9189f01f1aa6ec467b85e0f1",
   "source_rows": 1548,
@@ -15,7 +15,7 @@
   "stage7": "NOT_STARTED",
   "prior_provisional_stage1": "NOT_ADOPTED",
   "git_status": "APP_PR41_REAL_REVIEW_BRANCH_6_FILES_SOURCE_UNCHANGED_INDEX_40_JS_RUNTIME_ISOLATED_10_CHECKS_PASS",
-  "next_action": "REVIEW_APP_PR41_ISSUE40_FINAL_TRUSTED_MANIFEST_AND_SOURCE_INTEGRATION__ORIGIN_AND_RIGHT_CARD_ACCEPTANCE",
+  "next_action": "PR41_APP_OWNER_FINAL_SOURCE_INTEGRATION_AND_REAL_NATIVE_IMPORT_RESTART_RIGHT_CARD_QA",
   "library_definition_receipt": {
     "status": "VERIFIED_BYTE_EXACT_READBACK",
     "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B1plus/Checkpoints/Aspekte-B1plus-Project-Definition-CSV-ONLY-CONFIRMED-20261104.zip",
@@ -4714,6 +4714,38 @@
     "curated_1571_data_modified": false,
     "tested_end_to_end_durable_import": false,
     "typed_right_card_accepted": false,
+    "release": "BLOCKED_NONIMPORT"
+  },
+  "app_pr41_hardening": {
+    "date": "2026-11-10",
+    "app_pr": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/pull/41",
+    "issue": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/40",
+    "state": "DRAFT_UNMERGED_NONIMPORT",
+    "actual_bug": "Unit-level nested custom_fields NONIMPORT marker bypassed old candidate Native JSON/ZIP guard",
+    "change": "Bounded recursive pre-normalization Native JSON marker scan in draft guard; app current/runtime not changed",
+    "verified_git_blobs": {
+      "native_guard": "808a17695cb5d16f8437cba5c7a95158b369524a",
+      "staged_builder": "99466d7817e142fe4bfaa2a0d6ca20a756a9583a",
+      "node_tests": "9bdd272dd0a3ee52da3a8308cfc0b742ff3171d3",
+      "real_browser_harness": "e96d1bcbe6f7b8523226c7e0f94b58c09224d841",
+      "browser_evidence": "f79bcb343bc48ffed1bb3591a47ca4301e187d25"
+    },
+    "checks": {
+      "unit_guard": "20/20 PASS",
+      "source_exact_preview_import": "10/10 PASS",
+      "real_nested_JSON_ZIP": "6/6 PASS",
+      "app_current_original_unchanged": true,
+      "staged_index_sha256": "5ed1b188586e97e1fd5cae755b843c5ed5dca879c0ffb90adfabe209e798fcf4"
+    },
+    "workflow": "B1+ scoped CI succeeded in one observed run; newer PR head CI runs were in progress at time of checkpoint",
+    "remaining": [
+      "trusted source release authorization beyond editable markers",
+      "large index.html source integration still via exact staging patch",
+      "approved normal origin-backed durable import and restart",
+      "multi-sense right-card native projection",
+      "SRS preservation",
+      "other repo-wide CI gates and 359 curated HOLDs"
+    ],
     "release": "BLOCKED_NONIMPORT"
   }
 }

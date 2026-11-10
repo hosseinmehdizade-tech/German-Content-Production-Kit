@@ -1,8 +1,19 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.81 · **Stand:** 2026-11-10 · **Status:** GLOBAL GATE07 SOURCE-EXACT QA COMPLETE / APP OWNER INTEGRATION + RELEASE BLOCKED NONIMPORT
+**Version:** 0.82 · **Stand:** 2026-11-10 · **Status:** APP DRAFT PR #41 CREATED / PROD NONIMPORT
 
-## CURRENT: GATE07 REAL NATIVE JSON AND ZIP RELEASE-STATE GAP — NEXT: APP OWNER ISSUE #40
+## CURRENT: Real app-side review branch and Draft PR #41 — no more synthetic gate loops
+
+- **User-curated learner owner unchanged:** Library `libfile_261160dae9508191904f55a410076d40`; 1571-card archive SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, PRIMARY JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. No new cards imported, 359 HOLDs unchanged, all 3524 DE–FA examples preserved.
+- **App current runtime unchanged:** v505-R141 WORDLINKS_FRONTBACK_R3, immutable app ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`; exact-mirror branch base commit `02b83543e46aebaa6fc345818930406b1607a83c`. Do not modify historical main v486 or silently promote app.
+- **New real cross-project deliverable:** **[App Draft PR #41](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/pull/41)** from `candidate/b1plus-preimport-guards-review-20261110` against exact-current R3 mirror. Contains two actual NONPROD guard JS modules, SHA-pinned build script, exact integration diff, README and browser QA results; source branch original `index.html` remains unchanged, because connector cannot transfer the huge monolithic patched blob. The builder creates precisely the tested index SHA256 `5ed1b188586e97e1fd5cae755b843c5ed5dca879c0ffb90adfabe209e798fcf4` locally with no source overwrite.
+- **Executed QA:** current complete source plus **40 JS assets** in isolated Chromium; **10/10 targeted expected Preview/Submit behavior checks** passed for blocked TSV, duplicate-example source, blocked Native JSON, ZIP Native JSON and allowed generic JSON Preview. NO real import, no user profile, no persistence restart.
+- **Release safety and blocker:** markers can be edited so they are NOT trusted authorization. No approved B1+ deck, no origin-backed durable Import/IndexedDB restart/SRS acceptance, no native multi-sense right-card/Wortnetz. Versioned app HTML alias, service worker and integrity/release manifests not updated. **Do NOT merge PR #41 or install its staged output** without app owner integration and the full release test suite.
+- **Next substantive action:** App-side owner reviews [Issue #40](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/40) and Draft PR #41, applies the source patch, designs trusted release provenance, and runs real stable-origin full import/save/restart and rich sense-level UI acceptance. Content Kit handoff: `Global-Backlog/APP-REVIEW-PR41-CURRENT-RUNTIME-INTEGRATION-20261110.md`. No repetitive Gate01–07 and no publisher-original re-inventory.
+
+---
+
+## HISTORICAL: GATE07 REAL NATIVE JSON AND ZIP RELEASE-STATE GAP
 
 - **UNCHANGED CURRENT B1+ learner data:** Library `libfile_261160dae9508191904f55a410076d40`, 1,571-card curated ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b` and primary JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. All 359 HOLDs preserved, zero learner edits this gate. Exact current app v505-R141 R3 ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef` untouched; historical main 01-App not used.
 - **DISCOVERED VERIFIED DIFFERENCE:** actual current native JSON Preview, direct and ZIP-contained, accepts a deliberately `BLOCKED_NONIMPORT`-marked, schema-valid synthetic 1-card dataset. Both are **Preview OK**, NOT demonstrated durable Commits. Current Gate06 draft TSV guard correctly blocks `NONIMPORT` TSV directly and inside ZIP; unrelated valid TSV + unrelated Native JSON both preview OK.

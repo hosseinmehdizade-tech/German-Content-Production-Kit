@@ -67,17 +67,21 @@ def require_exact_release_zip_pins(pointer, governed_zip_sha):
         if not isinstance(value,str) or not re.fullmatch(r"[0-9a-f]{64}",value):
             raise ValueError("RELEASE_ARTIFACT_SHA256_MALFORMED:"+name)
         observed.append((name,value))
-    a=pointer.get("artifact")
-    if isinstance(a,dict):add("artifact.sha256",a.get("sha256"))
+    def named_artifact(name,value):
+        if isinstance(value,dict):
+            # A separately declared artifact is another release lead: all
+            # claimed archive objects must bind to the SAME exact ZIP bytes.
+            if "sha256" not in value or value["sha256"] is None:
+                raise ValueError("RELEASE_ARTIFACT_SHA256_REQUIRED:"+name)
+            add(name+".sha256",value["sha256"])
+    named_artifact("artifact",pointer.get("artifact"))
     add("latest_archive_sha256",pointer.get("latest_archive_sha256"))
-    la=pointer.get("latest_archive")
-    if isinstance(la,dict):add("latest_archive.sha256",la.get("sha256"))
+    named_artifact("latest_archive",pointer.get("latest_archive"))
     stage=pointer.get("stage5")
     if isinstance(stage,dict):
         for k in ("output_zip_sha256","artifact_sha256","zip_sha256"):
             add("stage5."+k,stage.get(k))
-        a=stage.get("artifact")
-        if isinstance(a,dict):add("stage5.artifact.sha256",a.get("sha256"))
+        named_artifact("stage5.artifact",stage.get("artifact"))
     if not observed:raise ValueError("RELEASE_ARTIFACT_SHA256_REQUIRED")
     if any(value!=governed_zip_sha for _,value in observed):
         raise ValueError("RELEASE_ARTIFACT_NOT_QUALITY_GATED_ZIP")

@@ -1,8 +1,19 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.75 · **Stand:** 2026-11-10 · **Status:** GLOBAL BACKLOG GATE01 DONE / NONIMPORT
+**Version:** 0.76 · **Stand:** 2026-11-10 · **Status:** GLOBAL BACKLOG GATE02 TECHNICAL PREFLIGHT EXECUTED / MULTISENSE RUNTIME BLOCKED / NONIMPORT
 
-## CURRENT: GLOBAL BACKLOG GATE01 VERIFIED, NEXT GATE02
+## LIVE: GATE02 EXACT CURRENT APP PARSER PASS, MULTISENSE RUNTIME PROJECTION FAIL
+
+- **Curated learner owner UNCHANGED from Gate01:** Library `libfile_261160dae9508191904f55a410076d40`, SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, 1571-card primary JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. No primary card edits this gate.
+- **CURRENT app evidence:** exact Library v505-R141 R3 ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`, not historical main runtime. Isolated headless Chromium with original JS modules; no user profile or production import.
+- **Whole dataset parser-only:** exact `GFP_CONTENT_V360.parseTsvText` parsed all 1571 QA-only universal TSV-projected cards, 3524 DE–FA examples, 713 semantic-network cards, 1097 sense blocks and 359 inherited HOLDs preserved in custom metadata. Zero parser invalid/warnings. Passing this does NOT approve app import or guarantee visible details.
+- **Critical real case (ordinal 363):** one example on `alle / alles / aller-` links senses S1 and S2. Parser and full authority preserve both. Actual `compactRuntimeV425ForTest` strips `sense_ids` from the runtime rich example, retaining only `sense_id` S1. Test used 3 isolated cards and passed reproduction without changing production. Runtime preview also did not render QA adapter's nested semantic networks as lexical details. **BLOCKER: lossless multi-sense presentation not supported by this QA adapter/current runtime projection.**
+- **Verified report:** Library `libfile_d608cfdf65e4819195f195f834fea2d6`, JSON SHA256 `14e3b4c2f25de109f72d478aee75e321c2c3e05778bb49e59db7725bbd4f2cf5`, exact readback PASS; GitHub `Global-Backlog/GATE02-IMPORT-MULTISENSE-COMPATIBILITY-20261110.md`.
+- **NEXT GATE03:** agree typed multi-sense transport/renderer mapping with German Flashcards Pro Deep Audit; test parse→compact→visible right card→durable reload without dropping S2. Only then continue true meaning-quality remediation / import release QA. Do NOT delete sense S2, split a single lemma by default, mass-approve HOLDs, or rerun completed Gate01/L10 QA. Current release remains `BLOCKED_NONIMPORT`.
+
+---
+
+## HISTORICAL: GLOBAL BACKLOG GATE01 VERIFIED
 
 - **Authoritative curated learner owner:** Library `libfile_261160dae9508191904f55a410076d40`; archive `Aspekte-B1plus-GLOBAL-BACKLOG-GATE01-1571-CARD-REPAIRS-NONIMPORT-20261110.zip`; SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`; 1,571-card PRIMARY JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`; source map 1,548 rows unchanged SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 319 ZIP members, 318 manifest hashes, CRC and Library exact-byte readback PASS.
 - **Parent and rollback:** verified L10 Phase3 Library `libfile_e8f5c865d7e08191b0541f223360521d`, ZIP SHA256 `f096557010f10578a6dc0ab770d4a27fca0c7c48fe8b53789bf9652899e83a0d`. Never overwrite or re-run L10 phases; all 208 L10 card objects and 457 L10 DE–FA examples are fully unchanged in Gate01.

@@ -2,7 +2,7 @@
 
 **Checkpoint:** 2026-11-10 · owner-curated current is authoritative · no original textbook reconciliation.
 
-**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `12c9efc665309e59f96effa0f5a380569c1c22e1040c83963d9caa592a050850`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
+**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `b87f1924826e394e995cf2f9651d3505d4de4300c1d1fac1b0f578f9e5972d92`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
 
 ## Completed — do not reopen
 - [x] HF2 morphological front-form remediation: **643/643** completed across all lessons.
@@ -19,7 +19,7 @@
 
 **Accountability / Definition of done:** exactly 1719 card decisions in one Stage4 ledger: `PASS`, `CORRECTED`, or `DOCUMENTED_EXCEPTION` (with explicit reason). A lesson is closed when its full roster has a decision, its edits are applied to the Master and validated, and its count is reconciled. No external independent human signature, no textbook-source comparison. Old QA status labels mentioning “independent” are historical only, not operative gates.
 
-**Progress now:** 1719 cards machine-screened; **L01 CLOSED 158/158 (117 CORRECTED, 41 PASS)**, **L02 CLOSED 110/110 (90 CORRECTED, 20 PASS)**, **L03 CLOSED 186/186 (114 CORRECTED, 72 PASS)**, **L04 CLOSED 183/183 (156 CORRECTED, 27 PASS; 243 sense-scoped field changes)**. **637/1719 editorial decisions complete; 1082 remain.** All 1536 cards outside L04 unchanged; **next: L05 227 cards, max 3 phases.**
+**Progress now:** L01–L05 **CLOSED**: L01 158/158 (117 CORRECTED, 41 PASS), L02 110/110 (90 CORRECTED, 20 PASS), L03 186/186 (114 CORRECTED, 72 PASS), L04 183/183 (156 CORRECTED, 27 PASS), L05 227/227 (189 CORRECTED, 38 PASS; 254 exact field changes). **864/1719 editorial decisions complete; 855 remain** in five lessons L06–L10. All 1492 non-L05 records byte-exact preserved. **Next: L06 141 cards (max three bounded passes).**
 
 | Lektion | Karten | Stage 4 semantic decisions |
 |:--|--:|--:|
@@ -27,16 +27,16 @@
 | L02 | 110 | 110 / 110 (CLOSED: 90 CORRECTED, 20 PASS) |
 | L03 | 186 | 186 / 186 (CLOSED: 114 CORRECTED, 72 PASS) |
 | L04 | 183 | 183 / 183 (CLOSED: 156 CORRECTED, 27 PASS) |
-| L05 | 227 | 0 / 227 |
+| L05 | 227 | 227 / 227 (CLOSED: 189 CORRECTED, 38 PASS) |
 | L06 | 141 | 0 / 141 |
 | L07 | 222 | 0 / 222 |
 | L08 | 180 | 0 / 180 |
 | L09 | 161 | 0 / 161 |
 | L10 | 151 | 0 / 151 |
-| **TOTAL** | **1719** | **637 / 1719** |
+| **TOTAL** | **1719** | **864 / 1719** |
 
 ## Stage 5 — final regression & risk disposition (NOT STARTED)
-One **single all-1719** regression: Master schema/IDs/counts, absence of unintended diffs, 3438 bilingual examples, 4893 collocations (or documented content revisions), semantic decision coverage 1719/1719. Every remaining `DOCUMENTED_EXCEPTION` has an explicit decision (hold/exclude/resolve). Produce one release-candidate QA receipt and reproducible hash. No new rounds merely for confirming original publisher fidelity.
+One **single all-1719** regression: Master schema/IDs/counts, absence of unintended diffs, 3438 bilingual examples, 4895 collocations (or documented content revisions), semantic decision coverage 1719/1719. Every remaining `DOCUMENTED_EXCEPTION` has an explicit decision (hold/exclude/resolve). Produce one release-candidate QA receipt and reproducible hash. No new rounds merely for confirming original publisher fidelity.
 
 ## Stage 6 — isolated technical import/SRS readiness (NOT STARTED; no automatic import)
 Run **one documented native-app import dry-run** and ID/SRS continuity/rollback test using exact target app and existing accepted-card IDs, when supported. Until tests pass, file remains `NONIMPORT` and **zero cards are marked release approved**. If environment cannot access the native app/IDs, record the concrete blocker once; stop and hand off the runnable artifact to Codex / app environment instead of looping. Live SRS import is not performed without an explicit request.
@@ -79,3 +79,11 @@ Run **one documented native-app import dry-run** and ID/SRS continuity/rollback 
 - Specific verified grammar cases: `einwerfen → wirft ein, warf ein, hat eingeworfen`; `zusammenhängen → hängt zusammen, hing zusammen, hat zusammengehangen`; `sich anschließen` with Dativ; `ausleihen` includes both lending and borrowing senses; `sicherstellen` distinguishes guarantee from police seizure.
 - Master and ledger before/after snapshots retained in `Checkpoints/STAGE4-L04-MASTER-LEDGER-BACKUP-20261110`. Master v5 and ledger v5 readback SHA byte-exact. 1719 cards and 3438 DE/FA primary example pairs preserved; 4893 combinations; all 1536 non-L04 card rows preserved byte-exact. Six actually corrupted cases rejected in fail-closed QA. No live SRS or import mutations; `NONIMPORT`.
 - **Stage4 now 637/1719 editorial decisions complete, 1082 remain. Next exact: L05 227 cards (up to 3 coherent passes).** Stage5/Stage6 not started and no new review loop opened.
+
+
+## 2026-11-10 Stage4 L05 closure (227/227; no new review loop)
+- One owner-curated 1719-card master, v5 SHA `12c9efc665309e59f96effa0f5a380569c1c22e1040c83963d9caa592a050850` → **v6 SHA `b87f1924826e394e995cf2f9651d3505d4de4300c1d1fac1b0f578f9e5972d92`**. Master and 1719-card ledger both SHA read back byte-exact from Library.
+- **All 227 L05 decisions closed:** 189 CORRECTED, 38 PASS. 254 exact scoped field edits: 187 meaning-restricted synonyms, 49 explicit context-scoped antonyms/contrasts, 7 front grammar/plural repairs, 5 collocation improvements, 1 first example Persian translation, 1 German+2 Persian second-example changes, 2 Persian back sense repairs. Empty semantic cells remain when exact equivalence cannot be defended.
+- Notable fixes: `übereinstimmen, stimmte überein, hat übereingestimmt` (Duden); full article/plural on `Nachwuchskraft`, `Schneeball`, `Damm`, `Laus`, `Ruheraum`; `einen Beitrag leisten` complete tense forms; `Ingenieurwissenschaft` sentence Persian grammatical number; `Strauß` second example now teaches ostrich vs flower bouquet; `Ruf` includes university appointment sense.
+- Exact byte-preserving master patch; **all 1492 other-lesson records unchanged**; 1719 unique IDs, 3438 DEFA primary example pairs, 4895 combinations, release flags FALSE. Six actually corrupted candidates rejected. Original master+ledger snapshots retained in `Checkpoints/STAGE4-L05-MASTER-LEDGER-BACKUP-20261110`. No live app imports/SRS mutations.
+- **Stage4: 864/1719 reviewed and decided, 855 remain. Next L06 141 cards**. Stage5 one regression and Stage6 one native app/SRS dry-run remain NOT_STARTED. NONIMPORT.

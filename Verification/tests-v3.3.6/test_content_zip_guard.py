@@ -147,6 +147,31 @@ def test_no_new_unguarded_python_zip_writers():
       "Workspaces/menschen-a2-verben-kombinationen-v336/Verification/TEST_SOURCE_PERFEKT_NEGATIVE.py",
       "Tools/content_package_guard.py",
     }
+    # Historical B1+ editorial/QA ZIP writers require a separate source-owner
+    # migration. They are NOT governed Stage5, NOT import-ready, and NOT approved
+    # for NEW publication. Exact frozen Git blob pins prevent any modification
+    # or new direct-writer call in this already-tracked legacy cohort. Any change
+    # must remove a pin and use the centralized guarded publisher instead.
+    frozen_legacy_aspekte_b1plus = {
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L03_phase2_v1.py": "5c36aa5c5c7e2417ad36b09057c584bc4aca431b",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L06_phase2_v1.py": "e0237ee37ea3e2a7962d9088919d39eedaea152c",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L06_phase3_v1.py": "05c3e36913307e4e900b1b0b2d788afe3bb69100",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L06_phase3_v4_finalize.py": "4d5ab102f01ec2b02dd3dcfe42ddd5becdb07914",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L07_phase2_v1.py": "07cb1deb9e38ebc425c2c28aa3efac13ab914353",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L07_phase3_v1.py": "715b44b5a748ed469f190b89d5cc991b07f9177c",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L08_phase2_v1.py": "f50ec935f317a356b359ab440029b0d7a0d985c7",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L08_phase3_v1.py": "75050ac4a4d7d03e1ec74e438b655fd8da06b926",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L09_phase2_v1.py": "80301ae144a324f7bb524a284aa82579ace86e60",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L09_phase3_v1.py": "89571199020440f745375e3874a33685c5865423",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L10_phase2_v1.py": "012284cb33c59399afd7c75cd325cab6807d284e",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_L10_phase2_v2_merged.py": "88b9e9097a4aa4f47396090fb04d4e9e944023a7",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_P1_scope_v1.py": "50755431314daa8ae5fa9e63400a02cfb13f8365",
+      "Workspaces/aspekte-b1plus-v336/Tools/build_hold_priority_gate02.py": "cbc532633e1337349755c1059a65ce60b4b00a85",
+      "Workspaces/aspekte-b1plus-v336/Tools/finalize_L07_phase3.py": "c6ac2dd2e35d6d1c20c67cecf6f3a4fba8412ec0",
+      "Workspaces/aspekte-b1plus-v336/Tools/qa_L08_phase1_v1.py": "c3d207ecd75b8d5f666966867a01ba55a6093b67",
+      "Workspaces/aspekte-b1plus-v336/Tools/qa_L09_phase1_v1.py": "b2693a199fa3558a5756f85c279bd868f495e4fd",
+      "Workspaces/aspekte-b1plus-v336/Tools/qa_L10_phase1_v1.py": "31dd8e5846828667b26a7c04f9b01b6ddfecadbc",
+    }
     tracked=subprocess.check_output(["git","ls-files","-z"],cwd=ROOT).decode("utf-8").split("\0")
     violations=[]
     for relative in tracked:
@@ -156,6 +181,13 @@ def test_no_new_unguarded_python_zip_writers():
             continue
         file=ROOT/relative
         if not file.is_file():
+            continue
+        if relative in frozen_legacy_aspekte_b1plus:
+            record=subprocess.check_output(
+                ["git","ls-files","--stage","--",relative],cwd=ROOT,
+                text=True,encoding="utf-8").strip().split()
+            if len(record)<4 or record[1]!=frozen_legacy_aspekte_b1plus[relative] or record[2]!="0":
+                violations.append(relative+":FROZEN_LEGACY_DIRECT_WRITER_BLOB_DRIFT")
             continue
         source=file.read_text(encoding="utf-8-sig")
         if "ZipFile" not in source and "make_archive" not in source:

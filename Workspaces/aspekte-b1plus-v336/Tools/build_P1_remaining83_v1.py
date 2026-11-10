@@ -3,7 +3,11 @@
 Use: python build_P1_remaining83_v1.py
 No old publisher content restoration. Does not assert app import or blanket language approval.
 """
-import copy, hashlib, json, pathlib, re, zipfile, collections, itertools
+import copy, hashlib, json, pathlib, re, zipfile, collections, itertools, sys, tempfile
+# The project-level anti-churn guard is mandatory for every NEW, NONIMPORT
+# validated checkpoint; this writer is NOT a Stage5 release adapter.
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[3] / "Tools"))
+from content_package_guard import guarded_zip
 ROOT=pathlib.Path(__file__).parent
 PARENT=ROOT/'Aspekte-B1plus-P1-SCOPED-131-HOLD-RESOLUTION-CURATED-NONIMPORT-20261110.zip'
 LEDGER=ROOT/'P1-131-CASE-DECISION-LEDGER-20261110.jsonl'
@@ -349,9 +353,31 @@ def build():
   'G2-LEXICAL-BATCH13-1571-FRONT-BACK-PREVIEWS-NONIMPORT.jsonl':primary_bytes}
   for k,v in new_members.items():old_member[k]=v
   manifest=''.join(sha(b)+'  '+n+'\n' for n,b in sorted(old_member.items())).encode()
-  with zipfile.ZipFile(OUT,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True) as dest:
-   for n,b in sorted(old_member.items()):dest.writestr(n,b)
-   dest.writestr('SHA256SUMS.txt',manifest)
+  # These are *scoped structural assertions*, not linguistic Stage4 or
+  # import approval. The already asserted parent/source-mapping identity,
+  # unchanged 1571 IDs and explicit NONIMPORT flags justify only a major
+  # nonimport checkpoint. Verify the milestone before any new ZIP is written.
+  package_evidence={
+   'schema':'aspekte-b1plus-P1-remaining83-structural-package-gate@1',
+   'status':'PASS',
+   'scope':'EXACT_PARENT_AND_1571_CARD_STRUCTURAL_CHECKS_ONLY_NONIMPORT',
+   'purpose':'validated_major_checkpoint',
+   'parent_zip_sha256':EXPECT_PARENT,
+   'parent_primary_sha256':EXPECT_PRIMARY,
+   'parent_source_map_sha256':EXPECT_MAP,
+   'new_primary_sha256':sha(primary_bytes),
+   'all_1571_card_ids_preserved':True,
+   'formal_release_approvals':0,
+   'stage4_linguistic_acceptance':'NOT_CLAIMED',
+   'stage5_import_ready':False,
+   'real_app_stage6':'NOT_RUN'}
+  with tempfile.TemporaryDirectory(prefix='gfp-aspekte-nonimport-evidence-') as td:
+   evidence_path=pathlib.Path(td)/'structural-milestone.json'
+   evidence_path.write_text(dump(package_evidence),encoding='utf8')
+   with guarded_zip(OUT,purpose='validated_major_checkpoint',
+                    evidence=evidence_path,compresslevel=6) as dest:
+    for n,b in sorted(old_member.items()):dest.writestr(n,b)
+    dest.writestr('SHA256SUMS.txt',manifest)
   with zipfile.ZipFile(OUT) as val:
    assert val.testzip() is None
    for row in val.read('SHA256SUMS.txt').decode().splitlines():

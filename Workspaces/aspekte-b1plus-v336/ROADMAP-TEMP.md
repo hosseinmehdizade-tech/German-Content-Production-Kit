@@ -1,8 +1,19 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.76 · **Stand:** 2026-11-10 · **Status:** GLOBAL BACKLOG GATE02 TECHNICAL PREFLIGHT EXECUTED / MULTISENSE RUNTIME BLOCKED / NONIMPORT
+**Version:** 0.77 · **Stand:** 2026-11-10 · **Status:** GLOBAL GATE03 EXACT-CURRENT ISOLATED CANDIDATE TESTED, RELEASE BLOCKED/NONIMPORT
 
-## LIVE: GATE02 EXACT CURRENT APP PARSER PASS, MULTISENSE RUNTIME PROJECTION FAIL
+## LIVE: GATE03 RUNTIME PROJECTION CANDIDATE — NEXT GATE04
+
+- **DATA OWNER remains unchanged:** 1,571-card Global Gate01 curated archive Library `libfile_261160dae9508191904f55a410076d40`; ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`; primary JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. Never re-import obsolete CSV/ebook. All 359 HOLD markers remain.
+- **Exact CURRENT app reference untouched:** `v505-R141 WORDLINKS_FRONTBACK_R3`, immutable Library `libfile_ae33f334c1bc8191aa65dd079f710d01`, ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`. Do NOT apply the candidate to historical main/01-App v486 or silently promote it.
+- **Executed isolated candidate:** Actual `runtimeExampleProjectionV483` dropped `sense_ids`; candidate copies the full array. Its duplicate-coverage rule now requires matching sense identity, and `normalizeCanonicalExampleGroupV348` preserves explicitly authored `sense_ids`. Real ordinal 363 case retains S1 + S2 through runtime and canonical model after compaction, without losing Persian translation. Headless Chromium **15/15** focused runtime assertions + **7/7** canonical assertions match expectations. Includes negative baseline controls; NOT 22 release approvals.
+- **Verified Gate03 evidence:** one owner-local Library ZIP `libfile_eea7e5081ec88191b171d67b1660d0f5`, SHA256 `3401226b57dea8321461ace17830f8a571e765dedd7e7be1cf7034fd5f6a0dd7`, 8 entries/7 SHA manifests/CRC/byte-exact Library readback PASS. Git report `Global-Backlog/GATE03-MULTISENSE-RUNTIME-CANDIDATE-20261110.md`. Cross-app triage issue: https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/40 .
+- **BLOCKED release: NEVER claim complete.** Canonical examples that omit meaning links can shadow richer two-sense data; QA-only semantic networks still do not become displayed right-card typed relation sections; stable-origin IndexedDB save/restart could not be tested because navigation was blocked/opaque origin denied storage; no production import, semantic signoff, or approved current app code patch. Keep all 359 HOLDs. **RELEASE_BLOCKED_NONIMPORT**.
+- **NEXT GLOBAL GATE04:** decide canonical/rich meaning precedence without text-only fuzzy matching, add a typed meaning-anchored relation Presentation adapter and test user-visible right card plus stable-origin durable persistence/regression. Do not redo L10 Phase1-3, Gate01, Gate02, or Gate03's completed tests.
+
+---
+
+## HISTORICAL: GATE02 EXACT CURRENT APP PARSER PASS, MULTISENSE RUNTIME PROJECTION FAIL
 
 - **Curated learner owner UNCHANGED from Gate01:** Library `libfile_261160dae9508191904f55a410076d40`, SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, 1571-card primary JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. No primary card edits this gate.
 - **CURRENT app evidence:** exact Library v505-R141 R3 ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`, not historical main runtime. Isolated headless Chromium with original JS modules; no user profile or production import.

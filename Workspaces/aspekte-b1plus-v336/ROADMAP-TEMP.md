@@ -1,8 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.80 · **Stand:** 2026-11-10 · **Status:** GATE06 REAL HANDLER + STAGED CURRENT APP PASS / PRODUCTION RELEASE BLOCKED NONIMPORT
+**Version:** 0.81 · **Stand:** 2026-11-10 · **Status:** GLOBAL GATE07 SOURCE-EXACT QA COMPLETE / APP OWNER INTEGRATION + RELEASE BLOCKED NONIMPORT
 
-## LIVE: GATE06 EXACT CURRENT PREVIEW AND IMPORT NATIVE HANDLER TESTS, NEXT GATE07
+## CURRENT: GATE07 REAL NATIVE JSON AND ZIP RELEASE-STATE GAP — NEXT: APP OWNER ISSUE #40
+
+- **UNCHANGED CURRENT B1+ learner data:** Library `libfile_261160dae9508191904f55a410076d40`, 1,571-card curated ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b` and primary JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. All 359 HOLDs preserved, zero learner edits this gate. Exact current app v505-R141 R3 ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef` untouched; historical main 01-App not used.
+- **DISCOVERED VERIFIED DIFFERENCE:** actual current native JSON Preview, direct and ZIP-contained, accepts a deliberately `BLOCKED_NONIMPORT`-marked, schema-valid synthetic 1-card dataset. Both are **Preview OK**, NOT demonstrated durable Commits. Current Gate06 draft TSV guard correctly blocks `NONIMPORT` TSV directly and inside ZIP; unrelated valid TSV + unrelated Native JSON both preview OK.
+- **Tested isolated remediation:** source-exact Native JSON check in Preview and Submit, covering ZIP→JSON alias, alongside Gate06 raw TSV Guard. **9/9 scoped expectations** match: direct JSON and ZIP JSON preview/submit reject, missing Guard fails closed twice, ordinary Native JSON still passes Preview, zero page errors. Original index syntax, Guard syntax, combined NONPROD patch checked. This is only isolated QA, not installed or released.
+- **VERIFIED new evidence owner:** Library `libfile_880e95e6923c8191bd529acd840a3b6a`, ZIP `Aspekte-B1plus-GATE07-JSON-ZIP-IMPORT-ROUTE-FENCE-NONPROD-20261110.zip` SHA256 `5729c5ea63c6c161be6d38acced1ab3f4d1c233570b8790f768bf02af070e634`, ZIP CRC / 9 SHA manifest / Library exact byte readback PASS. Full decision and case results in `Global-Backlog/GATE07-JSON-ZIP-RELEASE-ROUTE-FENCE-20261110.md`. Cross-project [App Issue #40](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/40) updated.
+- **Critical unclosed security boundary:** `b1plus_release_gate` and `AB1P-` IDs are editable and may be stripped. Marker-based guards are **not** trusted release authorization. Need app-owner-controlled signed/verified manifest or explicit trusted approval. Do not claim this candidate solves source authenticity or publication safety.
+- **Real origin/browser blocked:** localhost navigation returns `ERR_BLOCKED_BY_ADMINISTRATOR` in this runtime. No actual native successful persisted Import, IndexedDB restart, user-profile or SRS history test, nor live Wortnetz/right-card sense presentation. DO NOT claim these are resolved; release `BLOCKED_NONIMPORT`.
+- **STOP repeating synthetic gate loops.** Next true milestone is app owner integration review on Issue #40, trusted release authority contract and supported-origin full Import+right-card+durability acceptance, plus targeted human-in-the-loop bilingual QA for all withheld content as needed. Continue substantive content improvements separately only if validated and not overwriting current curated owner. No return to obsolete publisher source.
+
+---
+
+## HISTORICAL: GATE06 EXACT CURRENT PREVIEW AND IMPORT NATIVE HANDLER TESTS
 
 - **CURATED OWNER UNCHANGED:** Library `libfile_261160dae9508191904f55a410076d40`, 1,571-card ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`; PRIMARY SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`; all 359 inherited HOLDs preserved.
 - **APP CURRENT UNCHANGED:** `v505-R141 WORDLINKS_FRONTBACK_R3`, immutable Library ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`. Historical main v486 NOT used. No app source branch deployment or promotion.

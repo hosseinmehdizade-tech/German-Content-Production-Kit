@@ -12,6 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json"
 STATE = "PROJECT-STATE.json"
 SCHEMA = "gcpk-control-center-snapshot@1.0.0"
+# Explicit B2 owner RUN-CONTROL marker can supersede a historical LATEST for
+# a display HINT only. Never infer a Stage4 or content acceptance from it.
+OWNER_CONTROL_PRIMARY = {
+    "Workspaces/aspekte-b2-v336": (
+        "RUN-CONTROL.json", "LEGACY_POINTER_STALE__GITHUB_RUN_CONTROL_PRIMARY"),
+}
 
 
 def git(*args, root=ROOT):
@@ -159,11 +165,26 @@ def build(cat, index, root_state, pointers):
         ent = registered.get(directory)
         latest, checkpoint = directory + "/LATEST.json", directory + "/CHECKPOINT.json"
         lp, cp = pointers.get(latest), pointers.get(checkpoint)
+        controlled = OWNER_CONTROL_PRIMARY.get(directory)
+        control_path = directory + "/" + controlled[0] if controlled else None
+        control = pointers.get(control_path) if control_path else None
+        primary_control = bool(
+            controlled and control_path in index and isinstance(control, dict)
+            and control.get("latest_json_status") == controlled[1]
+            and isinstance(control.get("status"), str) and control["status"].strip()
+        )
+        if control_path in index and not isinstance(control, dict):
+            issues.append({"type": "OWNER_CONTROL_UNPARSEABLE", "path": control_path})
         if latest in index and not isinstance(lp, dict):
             issues.append({"type": "INVALID_LATEST_JSON", "path": latest})
         if checkpoint in index and not isinstance(cp, dict):
             issues.append({"type": "INVALID_CHECKPOINT_JSON", "path": checkpoint})
-        if isinstance(lp, dict):
+        if primary_control:
+            selected, obj, trust = (
+                control_path, control, "EXPLICIT_OWNER_RUN_CONTROL_HINT__RECEIPT_NOT_CHECKED")
+            issues.append({"type": "OWNER_LATEST_SUPERSEDED_FOR_STATUS_HINT",
+                           "path": latest, "primary": control_path})
+        elif isinstance(lp, dict):
             selected, obj, trust = latest, lp, "LATEST_INDEX_HINT__RECEIPT_NOT_CHECKED"
         elif isinstance(cp, dict):
             selected, obj, trust = checkpoint, cp, "CHECKPOINT_INDEX_HINT__RECEIPT_NOT_CHECKED"
@@ -177,6 +198,11 @@ def build(cat, index, root_state, pointers):
             "kind": ent.get("kind") if ent else "UNMAPPED",
             "latest_index_blob_sha": index.get(latest),
             "checkpoint_index_blob_sha": index.get(checkpoint),
+            "owner_run_control_index_blob_sha": index.get(control_path) if control_path else None,
+            "owner_run_control_path": control_path if control_path in index else None,
+            "superseded_latest_stage_hint": (
+                short_text(lp, "stage3_to_stage7", "status", "current_stage", limit=160)
+                if primary_control and isinstance(lp, dict) else None),
             "display_pointer": selected,
             "reported_status_hint": short_text(
                 obj, "status", "current_stage", "latest_completed_milestone",
@@ -271,7 +297,10 @@ def main():
             raise ValueError("MISSING_OR_INVALID_CATALOG_OR_ROOT_STATE")
         pointers = {}
         for directory in tracked_dirs(index):
-            for part in ("LATEST.json", "CHECKPOINT.json"):
+            selected_controls = OWNER_CONTROL_PRIMARY.get(directory)
+            names = ["LATEST.json", "CHECKPOINT.json"]
+            if selected_controls: names.append(selected_controls[0])
+            for part in names:
                 path = directory + "/" + part
                 if path in index:
                     pointers[path] = load_json_from_index(path, index)

@@ -52,6 +52,41 @@ def promoted(new,old,path):
                   "latest_archive","stage5","release_quality_receipt")
         return any(new.get(k)!=old.get(k) for k in identity)
     return False
+def require_exact_release_zip_pins(pointer, governed_zip_sha):
+    """Fail closed on an unbound or contradictory new Stage5 publication pointer.
+
+    A filename and a PASS receipt do not establish that the referenced ZIP is
+    the same binary built by the quality gate. The standard owner shape is
+    artifact.sha256; support only explicit SHA256 aliases, never a bare name.
+    """
+    if not isinstance(governed_zip_sha,str) or not re.fullmatch(r"[0-9a-f]{64}",governed_zip_sha):
+        raise ValueError("QUALITY_GATE_OUTPUT_SHA256_MISSING")
+    observed=[]
+    def add(name,value):
+        if value is None:return
+        if not isinstance(value,str) or not re.fullmatch(r"[0-9a-f]{64}",value):
+            raise ValueError("RELEASE_ARTIFACT_SHA256_MALFORMED:"+name)
+        observed.append((name,value))
+    def named_artifact(name,value):
+        if isinstance(value,dict):
+            # A separately declared artifact is another release lead: all
+            # claimed archive objects must bind to the SAME exact ZIP bytes.
+            if "sha256" not in value or value["sha256"] is None:
+                raise ValueError("RELEASE_ARTIFACT_SHA256_REQUIRED:"+name)
+            add(name+".sha256",value["sha256"])
+    named_artifact("artifact",pointer.get("artifact"))
+    add("latest_archive_sha256",pointer.get("latest_archive_sha256"))
+    named_artifact("latest_archive",pointer.get("latest_archive"))
+    stage=pointer.get("stage5")
+    if isinstance(stage,dict):
+        for k in ("output_zip_sha256","artifact_sha256","zip_sha256"):
+            add("stage5."+k,stage.get(k))
+        named_artifact("stage5.artifact",stage.get("artifact"))
+    if not observed:raise ValueError("RELEASE_ARTIFACT_SHA256_REQUIRED")
+    if any(value!=governed_zip_sha for _,value in observed):
+        raise ValueError("RELEASE_ARTIFACT_NOT_QUALITY_GATED_ZIP")
+    return {"bound_paths":[name for name,_ in observed],"zip_sha256":governed_zip_sha}
+
 def workspace_for(path):
     parts=Path(path).parts
     if len(parts)<3 or parts[0]!="Workspaces" or ".." in parts:
@@ -89,18 +124,23 @@ def release_check(path,new,old,loader,router):
        native.get("status")!="PASS_GOVERNED_STAGE5_FORMAT_AND_BYTE_PARITY_ONLY":
         raise ValueError("CONTENT_QA_OR_NATIVE_FORMAT_GATE_NOT_PASS")
     digest=qq.get("source_tsv_sha256")
+    if not isinstance(digest,str) or not re.fullmatch(r"[0-9a-f]{64}",digest):
+        raise ValueError("RELEASE_SOURCE_TSV_SHA256_INVALID")
     if digest!=native.get("source_role_sha256",{}).get("direct-import-tsv"):
         raise ValueError("RELEASE_SOURCE_TSV_HASH_MISMATCH")
+    for name in ("source_tsv_sha256","content_tsv_sha256"):
+        if name in new and new[name]!=digest:
+            raise ValueError("RELEASE_POINTER_TSV_HASH_MISMATCH:"+name)
     if not re.fullmatch("[0-9a-f]{64}",str(q.get("exact_stage4_receipt_sha256",""))) or \
        not re.fullmatch("[0-9a-f]{64}",str(q.get("exact_cross_tile_review_sha256",""))):
         raise ValueError("EXACT_STAGE4_OR_CROSS_TILE_PROOF_MISSING")
     if native.get("linguistic_stage4")!="NOT_CERTIFIED":
         raise ValueError("FORMAT_WRAPPER_FAKES_STAGE4")
-    if isinstance(new.get("artifact"),dict) and new["artifact"].get("sha256") and \
-       new["artifact"]["sha256"]!=native.get("output_zip_sha256"):
-        raise ValueError("RELEASE_ARTIFACT_NOT_QUALITY_GATED_ZIP")
+    archive=require_exact_release_zip_pins(new,native.get("output_zip_sha256"))
     return {"path":path,"status":"PASS_EXACT_SOURCE_LEXICAL_STAGE5_CLAIM_RECEIPT_BOUND",
-        "family":family["family_id"],"receipt_sha256":pin}
+        "family":family["family_id"],"receipt_sha256":pin,
+        "release_zip_sha256":archive["zip_sha256"],
+        "bound_artifact_pointers":archive["bound_paths"]}
 def git(root,*parts):
     x=subprocess.run(["git",*parts],cwd=root,capture_output=True)
     if x.returncode!=0:raise ValueError("GIT_COMMAND_FAILED:"+x.stderr.decode(errors="replace")[-300:])

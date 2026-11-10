@@ -71,6 +71,80 @@ class NewClaimProofTests(unittest.TestCase):
     def test_wrong_zip_in_acceptance_claim_blocked(self):
         c=self.claim();c["artifact"]["sha256"]="a"*64
         with self.assertRaisesRegex(ValueError,"NOT_QUALITY_GATED_ZIP"):self.check(c)
+    def test_filename_only_artifact_is_not_byte_identity_proof(self):
+        c=self.claim();c["artifact"]="UNVERIFIED-CONTENT.zip"
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_REQUIRED"):
+            self.check(c)
+
+    def test_empty_artifact_object_has_no_exact_zip_pin(self):
+        c=self.claim();c["artifact"]={"filename":"no-digest.zip"}
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_REQUIRED"):
+            self.check(c)
+
+    def test_malformed_artifact_digest_is_rejected(self):
+        c=self.claim();c["artifact"]["sha256"]="not-sha256"
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_MALFORMED"):
+            self.check(c)
+
+    def test_unpinned_named_artifact_is_not_hidden_by_other_good_digest(self):
+        c=self.claim()
+        c["artifact"]={"filename":"DIFFERENT-UNHASHED.zip"}
+        c["latest_archive_sha256"]=self.zip_sha
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_REQUIRED:artifact"):
+            self.check(c)
+
+    def test_unpinned_nested_stage5_artifact_is_not_hidden_by_root_digest(self):
+        c=self.claim()
+        c["stage5"]={"status":"PASS","artifact":{"filename":"UNHASHED.zip"}}
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_SHA256_REQUIRED:stage5.artifact"):
+            self.check(c)
+
+    def test_all_explicit_artifact_hashes_must_agree(self):
+        c=self.claim()
+        c["latest_archive_sha256"]=self.zip_sha
+        c["stage5"]={"status":"PASS","output_zip_sha256":self.zip_sha}
+        x=self.check(c)
+        self.assertEqual(len(x["bound_artifact_pointers"]),3)
+
+    def test_missing_quality_gate_output_zip_digest_blocks_claim(self):
+        self.report["governed_format_build"].pop("output_zip_sha256")
+        with self.assertRaisesRegex(ValueError,"QUALITY_GATE_OUTPUT_SHA256_MISSING"):
+            self.check()
+
+    def test_quality_gate_output_must_be_sha256(self):
+        self.report["governed_format_build"]["output_zip_sha256"]="short"
+        with self.assertRaisesRegex(ValueError,"QUALITY_GATE_OUTPUT_SHA256_MISSING"):
+            self.check()
+
+    def test_contradictory_zip_pointers_must_not_pass(self):
+        c=self.claim();c["latest_archive_sha256"]="a"*64
+        with self.assertRaisesRegex(ValueError,"RELEASE_ARTIFACT_NOT_QUALITY_GATED_ZIP"):
+            self.check(c)
+
+    def test_wrong_explicit_source_tsv_pin_must_not_pass(self):
+        c=self.claim();c["content_tsv_sha256"]="9"*64
+        with self.assertRaisesRegex(ValueError,"RELEASE_POINTER_TSV_HASH_MISMATCH"):
+            self.check(c)
+
+    def test_quality_report_source_digest_must_be_sha256(self):
+        self.report["quality_gate"]["source_tsv_sha256"]="invalid"
+        self.report["governed_format_build"]["source_role_sha256"]["direct-import-tsv"]="invalid"
+        with self.assertRaisesRegex(ValueError,"RELEASE_SOURCE_TSV_SHA256_INVALID"):
+            self.check()
+
+    def test_explicit_latest_archive_sha_alternative_is_valid(self):
+        c=self.claim();c["artifact"]="SAME-CONTENT.zip"
+        c["latest_archive_sha256"]=self.zip_sha
+        x=self.check(c)
+        self.assertEqual(x["release_zip_sha256"],self.zip_sha)
+        self.assertEqual(x["bound_artifact_pointers"],["latest_archive_sha256"])
+
+    def test_nested_stage5_sha_alternative_is_valid(self):
+        c=self.claim();c.pop("artifact")
+        c["stage5"]={"status":"PASS", "output_zip_sha256":self.zip_sha}
+        x=self.check(c)
+        self.assertEqual(x["bound_artifact_pointers"],["stage5.output_zip_sha256"])
+
     def test_old_accepted_unchanged_status_not_retroactive(self):
         c=self.claim();self.assertFalse(promoted(c,c,self.path()))
     def test_new_nonimport_draft_not_promotion(self):

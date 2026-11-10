@@ -2,7 +2,7 @@
 
 **Checkpoint:** 2026-11-10 · owner-curated current is authoritative · no original textbook reconciliation.
 
-**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `0e3c902b4ed09b91d20f609140cf0df88fac3f2eadcd0dc1c129aa1fe683e73d`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
+**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `244513cc7acd1958b7f8e048def38f1290e6416670f44de121c4aee9283408da`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
 
 ## Completed — do not reopen
 - [x] HF2 morphological front-form remediation: **643/643** completed across all lessons.
@@ -19,13 +19,13 @@
 
 **Accountability / Definition of done:** exactly 1719 card decisions in one Stage4 ledger: `PASS`, `CORRECTED`, or `DOCUMENTED_EXCEPTION` (with explicit reason). A lesson is closed when its full roster has a decision, its edits are applied to the Master and validated, and its count is reconciled. No external independent human signature, no textbook-source comparison. Old QA status labels mentioning “independent” are historical only, not operative gates.
 
-**Progress now:** 1719 cards machine-screened; **L01 CLOSED 158/158 (117 CORRECTED, 41 PASS)**; **L02 CLOSED 110/110 (90 CORRECTED, 20 PASS; 117 field values changed, 5 negative mutation tests PASS)**. **268/1719 semantic editorial decisions complete; 1451 still open.** All other 1609 Master cards unchanged byte-for-byte during L02; **Next exact batch: L03 186 cards, max 3 phases.**
+**Progress now:** 1719 cards machine-screened; **L01 CLOSED 158/158 (117 CORRECTED, 41 PASS)**, **L02 CLOSED 110/110 (90 CORRECTED, 20 PASS)**, **L03 CLOSED 186/186 (114 CORRECTED, 72 PASS; 140 scoped field edits including 91 sense-scoped synonym and 15 antonym entries).** **454/1719 editorial decisions complete; 1265 remain.** All 1533 cards outside L03 byte-for-byte unchanged; **next: L04 183 cards, max 3 phases.**
 
 | Lektion | Karten | Stage 4 semantic decisions |
 |:--|--:|--:|
 | L01 | 158 | 158 / 158 (CLOSED: 117 CORRECTED, 41 PASS) |
 | L02 | 110 | 110 / 110 (CLOSED: 90 CORRECTED, 20 PASS) |
-| L03 | 186 | 0 / 186 |
+| L03 | 186 | 186 / 186 (CLOSED: 114 CORRECTED, 72 PASS) |
 | L04 | 183 | 0 / 183 |
 | L05 | 227 | 0 / 227 |
 | L06 | 141 | 0 / 141 |
@@ -33,7 +33,7 @@
 | L08 | 180 | 0 / 180 |
 | L09 | 161 | 0 / 161 |
 | L10 | 151 | 0 / 151 |
-| **TOTAL** | **1719** | **268 / 1719** |
+| **TOTAL** | **1719** | **454 / 1719** |
 
 ## Stage 5 — final regression & risk disposition (NOT STARTED)
 One **single all-1719** regression: Master schema/IDs/counts, absence of unintended diffs, 3438 bilingual examples, 4892 collocations (or documented content revisions), semantic decision coverage 1719/1719. Every remaining `DOCUMENTED_EXCEPTION` has an explicit decision (hold/exclude/resolve). Produce one release-candidate QA receipt and reproducible hash. No new rounds merely for confirming original publisher fidelity.
@@ -63,3 +63,11 @@ Run **one documented native-app import dry-run** and ID/SRS continuity/rollback 
 - Full 1719 IDs preserved, 3438 bilingual pairs preserved, 4892 collocations preserved. Every cell and raw-byte record of the 1609 cards outside L02 unchanged. Backup in Library checkpoint folder; new master re-downloaded and exactly SHA verified. **Five deliberately mutated inputs blocked by fail-closed QA** (wrong SHA, duplicated ID, mutation outside lesson, unauthorized back edit, missing card).
 - `Reports/B2-STAGE4-CARD-STATUS-1719-20261110.tsv` records 268 completed Stage4 decisions; **1451 remaining**. Stage5 and Stage6 remain NOT_STARTED. No automatic import or live SRS mutation; no mandatory external human review.
 - **Next exactly: Stage4 L03, all 186 cards, max 3 coherent phases, from single Master v3**. No HF2 or L01/L02 restart.
+
+
+## 2026-11-10 Stage4 L03 closure (186/186, one bounded review)
+- Master v3 SHA `0e3c902b4ed09b91d20f609140cf0df88fac3f2eadcd0dc1c129aa1fe683e73d` → **Master v4 SHA `244513cc7acd1958b7f8e048def38f1290e6416670f44de121c4aee9283408da`**. One owner-curated master remains the only editable source.
+- All 186 L03 cards completed: **114 CORRECTED, 72 PASS**. 140 field edits: 91 contextual Synonyme, 15 meaning-scoped Antonyme, 27 front morphology/declension repairs, 2 collocation repairs, 2 Persian meaning repairs, 1 Persian example repair, 1 German example repair, 1 Persian translation paired with that example. No invented antonyms to fill other blank cells.
+- Lexical examples: Duden-verified `avancieren → ist avanciert`, `zutrauen → hat zugetraut`, `sich aufreiben → hat sich aufgerieben`; `Projektleitung` gains the team/person-leadership sense; `sich beschäftigen` example translation no longer implies professional employment; `Catering` stays in its example.
+- Complete 1719 row/ID/schema QA; all 1533 other lesson records byte-exact preserved, both German/Persian primary pairs preserved (3438), collocations remain 4892; five **actually corrupted** inputs rejected, Library SHA readback exact for **Master v4 and ledger v4**. Raw backup snapshots stored in dedicated Checkpoints.
+- **Stage4 progress: 454/1719 editorial decisions completed, 1265 remaining. Next exact step: L04 183 cards.** Stage5/6 remain unopened; NONIMPORT / no app or SRS mutations.

@@ -1,8 +1,20 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.77 · **Stand:** 2026-11-10 · **Status:** GLOBAL GATE03 EXACT-CURRENT ISOLATED CANDIDATE TESTED, RELEASE BLOCKED/NONIMPORT
+**Version:** 0.78 · **Stand:** 2026-11-10 · **Status:** GLOBAL GATE04 BOUNDED ISOLATED PROOF DONE / APP NATIVE + DURABLE BLOCKED / NONIMPORT
 
-## LIVE: GATE03 RUNTIME PROJECTION CANDIDATE — NEXT GATE04
+## LIVE: GATE04 EXACT CANONICAL-RICH IDENTITY + NETWORK PREFLIGHT, NEXT GATE05
+
+- **Unchanged content owner:** Library `libfile_261160dae9508191904f55a410076d40` (1571-card Gate01 curated ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, PRIMARY SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`). No data edits. App v505-R141 R3 unchanged, reference ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`.
+- **Verified Gate04 evidence archive:** Library `libfile_d284c7df656081919defd543111c0954`, ZIP SHA256 `c209efe020a60951b8284d7fca426e5f26947edbb16211420a449b9b83a1af1f`; CRC / 7 file SHA256 entries / exact Library byte readback PASS. Git report `Global-Backlog/GATE04-CANONICAL-PRECEDENCE-TYPED-SENSE-ADAPTER-20261110.md`.
+- **Actual runtime experiment:** exact match on ID, DE text, language, translation and compatible scalar sense can preserve S1+S2 across canonical and rich for real ordinal 363 (before/after compaction). Conflicts explicitly fail closed at pre-compaction. 16/16 expected browser test observations included one reproduced **OPEN FAILURE**: source duplicate identity collapse after compaction removes evidence of ambiguity. Native ingress preflight must reject this before transform. NOT a product acceptance pass.
+- **Whole corpus proof:** 1571 cards, 3524 examples, 713 network cards, 1097 sense blocks, 2122 sense-anchored lexical relation entries, 359 inherited HOLDs. 9/9 data preflight tests PASS; no contradictory same-DE/FA example entries or orphan sense routes in current curated dataset.
+- **Typed right-card:** separate QA-only DOM sketch with stable `data-sense-id` and no fake clickable targets, NOT native integrated renderer or real lexical/Wortnetz click acceptance.
+- **Durability blocked by environment:** HTTP(S) page origins blocked with ERR_BLOCKED_BY_ADMINISTRATOR; about:blank is non-durable. No actual IndexedDB durable save/restart, no end-to-end user profile import, no app patch. Release `BLOCKED_NONIMPORT`.
+- **NEXT GATE05:** coordinate app integration under https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/issues/40 : native ingress duplicate and meaning guard, canonical/rich precedence, typed right-card sections/click targets, stable-origin durability tests if available. Do not cycle already closed content phases or repeat blocked browser navigation.
+
+---
+
+## HISTORICAL: GATE03 RUNTIME PROJECTION CANDIDATE
 
 - **DATA OWNER remains unchanged:** 1,571-card Global Gate01 curated archive Library `libfile_261160dae9508191904f55a410076d40`; ZIP SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`; primary JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. Never re-import obsolete CSV/ebook. All 359 HOLD markers remain.
 - **Exact CURRENT app reference untouched:** `v505-R141 WORDLINKS_FRONTBACK_R3`, immutable Library `libfile_ae33f334c1bc8191aa65dd079f710d01`, ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`. Do NOT apply the candidate to historical main/01-App v486 or silently promote it.

@@ -43,7 +43,9 @@ def preflight(root: Path, source: Path, output: Path, receipt: Path,
     latest = document(latest_path)
     routes = document(root / ROUTES)
     review = document(review_path)
-    stage4_digest = digest(stage4)  # Require the actual Stage4 bytes, not a filename.
+    require(stage4.is_file() and not stage4.is_symlink(),
+            "MISSING_OR_UNSAFE_STAGE4_RECEIPT")
+    stage4_digest = digest(stage4)  # Require actual immutable bytes, not a filename.
 
     require(latest.get("workstream") == OWNER.removeprefix("Workspaces/"),
             "SOURCE_OWNER_LATEST_MISMATCH")

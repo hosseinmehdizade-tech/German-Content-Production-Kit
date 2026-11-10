@@ -1,0 +1,96 @@
+name: GFP Required Governance Gate
+
+# No paths/paths-ignore filters: this is the single stable job a repository
+# ruleset may require for EVERY pull request targeting main. Other, specialized
+# path-filtered workflows remain diagnostic and cannot safely be required.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gfp-required-governance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  required-governance:
+    name: GFP-Required-Governance-Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Check out the full comparison history without persisting credentials
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use pinned Python runtime family
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install existing packaging-test dependency
+        run: python -m pip install pytest
+
+      - name: Resolve exact PR or push comparison base (fail closed)
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            BASE="$PR_BASE"
+          elif [ "$EVENT_NAME" = "push" ]; then
+            BASE="$PUSH_BEFORE"
+          else
+            echo "Unsupported event for mandatory governance" >&2
+            exit 2
+          fi
+          if ! [[ "$BASE" =~ ^[0-9a-f]{40}$ ]] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            echo "No exact Git comparison base; refusing to claim protected merge" >&2
+            exit 2
+          fi
+          git cat-file -e "$BASE^{commit}" || { echo "Missing required base commit" >&2; exit 2; }
+          printf 'GFP_GATE_BASE=%s\n' "$BASE" >> "$GITHUB_ENV"
+          printf 'GFP_GATE_HEAD=%s\n' "$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Protect this mandatory job's always-run contract
+        run: python -B -m unittest discover -s Verification/tests -p test_gfp_required_governance_gate_contract_v1.py -v
+
+      - name: Enforce exact central policy registry and protected bootstrap header
+        run: python -B Verification/audit_global_policy_sync_v1.py --check
+
+      - name: Test the prospective Stage5 release and guarded producer controls
+        shell: bash
+        run: |
+          python -B -m unittest discover -s Verification/tests -p test_new_lexical_stage5_claims_v1.py -v
+          python -B -m unittest discover -s Verification/tests -p test_new_lexical_producer_bypass_v1.py -v
+
+      - name: Block NEW false Stage5 claims and ungoverned producer invocations
+        shell: bash
+        run: |
+          python -B Verification/check_new_lexical_stage5_claims_v1.py --base "$GFP_GATE_BASE" --head "$GFP_GATE_HEAD"
+          python -B Verification/check_new_lexical_producer_bypass_v1.py --base "$GFP_GATE_BASE" --head "$GFP_GATE_HEAD"
+
+      - name: Block unguarded ZIP writers and test immutable publication
+        run: python -B -m pytest -q Verification/tests-v3.3.6/test_content_zip_guard.py
+
+      - name: Fail closed on canonical or competing family owners
+        shell: bash
+        run: |
+          python -B Tools/validate_canonical_family_workspaces_v1.py --repo-root . --out-dir "$RUNNER_TEMP/gfp-required-governance"
+          python -B Tools/discover_parallel_accepted_sources_v1.py --repo-root . --out-dir "$RUNNER_TEMP/gfp-required-governance" --fail-on-review
+
+      - name: Scope and security boundary
+        run: |
+          echo "PASS means these repo code/metadata guards passed on the exact event range."
+          echo "Actual enforcement REQUIRES an owner-enabled branch ruleset selecting GFP-Required-Governance-Gate."
+          echo "It does not certify Stage4 semantics, Library provider bytes, new native ADOPTED or Stage6/7."

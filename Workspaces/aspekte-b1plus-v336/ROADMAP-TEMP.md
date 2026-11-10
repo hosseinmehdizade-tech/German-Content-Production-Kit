@@ -1,8 +1,19 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.74 · **Stand:** 2026-11-10 · **Status:** L10 PHASE3 COMPLETED / NONIMPORT
+**Version:** 0.75 · **Stand:** 2026-11-10 · **Status:** GLOBAL BACKLOG GATE01 DONE / NONIMPORT
 
-## LIVE: L10 PHASE3 FINAL DONE — NEWEST MERGED PHASE2 RECONCILED
+## CURRENT: GLOBAL BACKLOG GATE01 VERIFIED, NEXT GATE02
+
+- **Authoritative curated learner owner:** Library `libfile_261160dae9508191904f55a410076d40`; archive `Aspekte-B1plus-GLOBAL-BACKLOG-GATE01-1571-CARD-REPAIRS-NONIMPORT-20261110.zip`; SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`; 1,571-card PRIMARY JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`; source map 1,548 rows unchanged SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 319 ZIP members, 318 manifest hashes, CRC and Library exact-byte readback PASS.
+- **Parent and rollback:** verified L10 Phase3 Library `libfile_e8f5c865d7e08191b0541f223360521d`, ZIP SHA256 `f096557010f10578a6dc0ab770d4a27fca0c7c48fe8b53789bf9652899e83a0d`. Never overwrite or re-run L10 phases; all 208 L10 card objects and 457 L10 DE–FA examples are fully unchanged in Gate01.
+- **Global actual content repair:** 30 learner-card objects changed across L02 (1), L03 (1), L04 (1), L05 (27), 1,541 unchanged. 43 scoped actions: 2 entire finite clauses removed from combinations (L02/158 and L03/232), 2 orphan examples routed, including one clearly two-sense example (L04/363) using `sense_ids` plus legacy `sense_id`, and 39 missing L05 example status fields explicitly set to PENDING not PASS. 3,524 global examples and all 359 inherited curated HOLD markers preserved.
+- **Whole corpus QA:** 1,571/1,571 structural case ledger, 15/15 negative mutation tests rejected, no missing example status, no orphan example sense IDs, zero known narrow-pattern finite clauses, all IDs and 1,548 source mapping intact. No imported app or semantic certification claimed.
+- **No structural auto-approval:** 1,168 front morphology attestations not recorded; 858 cards without structured networks (not automatically errors). Potential idiomatic bilingual deficiencies and 359 HOLDs require scoped editorial work, NOT obsessive rechecking of obsolete original coursebook. Release stays `RELEASE_BLOCKED_NONIMPORT`.
+- **Next substantive gate:** GATE02 validate current real app importer/render handling for `sense_ids` (multi-sense relation), prioritize genuine semantic and UX errors, do not pretend a test was run without access. Per-project reusable validator: `Tools/qa_global_backlog_gate01.py`. Authoritative Git receipt: `Global-Backlog/GATE01-VERIFIED-OWNER-RECEIPT-20261110.json`.
+
+---
+
+## HISTORICAL: L10 PHASE3 FINAL DONE — NEWEST MERGED PHASE2 RECONCILED
 
 - **Current verified curated owner:** Library `libfile_e8f5c865d7e08191b0541f223360521d`, ZIP SHA256 `f096557010f10578a6dc0ab770d4a27fca0c7c48fe8b53789bf9652899e83a0d`, primary SHA256 `b490021134ce2ccc13d55f2b3037d82239828710b41877c18c7d911efb05d8dd`. ZIP CRC, SHA manifest (310 members), exact Library readback PASS.
 - **Never revert to older 453-example Phase2:** reconciled `libfile_98793d878490819192a077b2f5c53764` (merged SHA `58ba2aef6e35efad947a6132b66c122fe545b16eb4af02159846cef08996b05b`). New owner retains 457 L10 examples / 208 sense networks / 253 senses / 288 collocations.

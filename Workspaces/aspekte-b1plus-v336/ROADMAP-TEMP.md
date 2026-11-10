@@ -1,6 +1,21 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.84 · **Stand:** 2026-11-10 · **Status:** CONTENT HOLD GATE02 VERIFIED / APP PR #41 DRAFT UNMERGED / RELEASE_BLOCKED_NONIMPORT
+**Version:** 0.85 · **Stand:** 2026-11-10 · **Status:** P1 131-CASE HOLD RESOLUTION VERIFIED / PR #41 APP DRAFT SEPARATE / RELEASE_BLOCKED_NONIMPORT
+
+## LIVE: P1 131 cases dispositioned, 48 scoped HOLDs closed, 303 total remain
+
+**Only authoritative current 1571-card learner-data owner:** Library `libfile_dc515951945081919b92804902119079`, ZIP SHA256 `d7550a83387b41d3f1efa61297b926c24fdca692ea8a8d5b5288743ef20d563d`, current PRIMARY JSONL SHA256 `dd229a97dcfe82d82361ab417f048a43bb3185a946c94046b11b0ef2ea44b96b`, original 1548-row source map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. 333 ZIP members, 332 internal SHA256 entries, CRC PASS, exact Library readback PASS, independent verifier on readback plus 11 negative mutation tests PASS. Pinned identical current owner and baseline in both GitHub `CHECKPOINT.json`/`LATEST.json`.
+
+- **Actual durable HOLD progress:** 351 inherited open after prior Gate02 → **303 remain** after 48 additional case-scoped closures; original 359 cumulative 8 Gate02 + 48 this phase = 56 closed. All **131 remaining P1 cases** from Gate02 accounted for with per-case evidence ledger; now 83 P1, 190 P2 and 30 P3 are open.
+- **Scope of 48 closures:** 50 previous P1 flags claimed different independent lemmas shared an old source row; 48 currently have distinct canonical lemma identity, DE–FA context and no copied cross-lemma example, so legacy source-partition HOLD scope is closed with evidence. **2 NOT closed:** `der Seemann` at original 1256 has no real separate sibling in canonical owner despite historical split flag; `das Hochwasser` at 1487 has a newly added tidal sense whose DE–FA example still needs semantic QA. Old rejected-overlay flags are historical and retained, not misrepresented as active proven errors. These 48 closures do not prove all meanings/idioms/morphology are signed off, nor import readiness.
+- **Real primary content remediation:** **58 card objects actually changed** (48 scoped closures + 11 meaning/editorial card improvements with 1 overlap), **1513 remaining card JSONL lines byte-for-byte unchanged**. Original 3526 bilingual examples all retained, 13 idiomatic sense-specific German–Persian examples newly added (total **3539**, all NEW examples marked PENDING); an existing `romantisch` example moved to the proper idealizing S2 sense, and two distinct new semantic blocks for `schimpfen` (complaining über + Akkusativ vs scolding mit + Dativ) and `romantisch` (romantic affect vs idealization) added. Additional meaning coverage: `die Karte` 3 separate identity/menu/ticket examples; `eingehen` perish and partnership; physical `ergreifen`, continued `anhalten`, `Kleider` one-piece dresses vs generic clothes, `verbrennen` calories, `kippen` liquid and `anlassen` motor. Preserved 0 formal publication approvals and `import_ready=false`.
+- **Verification and audit trail:** exact complete 58 before/after card objects, full 131-item P1 case-level ledger, 48 closure rationales with DE/FA examples, 11 semantic card edits, plus 359-case status ledger are saved **inside Library ZIP**. Mirrored script, independent verifier, 131-case ledger and reports in GitHub exactly matched by Git blob SHA (no invented file references).
+- **App work separately preserved:** PR #41 draft-source/native JSON validation is tracked by its pre-existing `current_stage`/`next_action` in `LATEST.json`; neither the native app nor SRS have been accepted using this content owner. `RELEASE_BLOCKED_NONIMPORT` still in force. No mandatory outside human reviewer.
+- **Next real content action:** focus only on **83 remaining P1** where true morphology, multi-sense pairing, contextual German–Persian meaning, or legacy overlay may affect learning quality; do not create another blanket 1571-card audit, auto-approve card content, or reimport obsolete publisher originals. Keep P2 and P3 as explicit backlog. GitHub receipt `Global-Backlog/P1-SCOPED-131-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`.
+
+---
+
+## HISTORICAL: CONTENT HOLD GATE02 AND APP PR #41 NESTED JSON TRACK
 
 ## LIVE: 359 inherited curated HOLDs triaged; 8 case-level closed; 351 remain
 

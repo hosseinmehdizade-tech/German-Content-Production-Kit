@@ -1,6 +1,16 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.73 · **Stand:** 2026-11-10 · **Status:** ACTIVE / NONIMPORT
+**Version:** 0.74 · **Stand:** 2026-11-10 · **Status:** L10 PHASE3 COMPLETED / NONIMPORT
+
+## LIVE: L10 PHASE3 FINAL DONE — NEWEST MERGED PHASE2 RECONCILED
+
+- **Current verified curated owner:** Library `libfile_e8f5c865d7e08191b0541f223360521d`, ZIP SHA256 `f096557010f10578a6dc0ab770d4a27fca0c7c48fe8b53789bf9652899e83a0d`, primary SHA256 `b490021134ce2ccc13d55f2b3037d82239828710b41877c18c7d911efb05d8dd`. ZIP CRC, SHA manifest (310 members), exact Library readback PASS.
+- **Never revert to older 453-example Phase2:** reconciled `libfile_98793d878490819192a077b2f5c53764` (merged SHA `58ba2aef6e35efad947a6132b66c122fe545b16eb4af02159846cef08996b05b`). New owner retains 457 L10 examples / 208 sense networks / 253 senses / 288 collocations.
+- **Phase3 facts:** 208/208 case-level structural QA dispositions, six real edits on five primary L10 card objects, 18/18 negative guards blocked, 1,363 other-lesson objects identical, 203 other L10 objects identical; all 46 inherited HOLDs intact, source map intact.
+- **Release:** BLOCKED_NONIMPORT. 198 not-yet-attested L10 front forms, all 457 DE–FA examples still pending full QA, 212 newly introduced combinations not blanket-certified; two old L02/L03 finite candidates and two old outside-L10 orphan sense IDs; no actual app rendering/import tested.
+- **Next substantive work:** GLOBAL B1+ RELEASE BACKLOG and app compatibility when runtime access is possible. Do not rerun closed L10 phases, sync old Library roadmaps, compare against publisher book or create tiny ZIPs. Current receipt: `Lessons/L10/PHASE3-FINAL-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`.
+
+---
 
 ## LIVE L10 PHASE2 MERGED AND VERIFIED — ALL 208 PRIMARY LEARNER OBJECTS SAVED · NEXT L10 PHASE3
 

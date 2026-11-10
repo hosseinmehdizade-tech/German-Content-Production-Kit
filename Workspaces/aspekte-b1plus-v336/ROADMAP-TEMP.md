@@ -1,8 +1,24 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
+**Version:** 0.72 · **Stand:** 2026-11-10 · **Status:** ACTIVE / NONIMPORT
+
+## LIVE L10 PHASE2 DONE — 208 CARD WHOLE-LESSON EDITORIAL · NEXT L10 PHASE3
+
+**Authoritative new curated learner owner:** Library `libfile_8994942fe9888191af408b0a53a9cced`, ZIP SHA256 `0726c7daa1df91fb6198b8936ec95cf31617c358497022e7ee5e8b87ef049636`, actual PRIMARY 1571-card JSONL SHA256 `290179d3a84051cf4817c2f9bf8070b46d68ac285cee4c5876c72244ac29a60c`. Exact owner Library byte readback / 301 SHA manifest entries / ZIP CRC PASS. Prior parent L09 Phase3 SHA `0ac34c8178984511d28d4400ff5efe56036d8c8f31aca0d85c1e70f4661a0054` retained as rollback provenance.
+
+- **Reviewed:** all 208 L10 cards / 207 original source ordinals / full source map 1548 retained, one comprehensive pass, no microcycles.
+- **REAL PRIMARY edits:** 59 cards changed. 1363 non-L10 learner card objects unchanged. 29 unmarked example statuses changed to explicit PENDING, 60 network sense routes assigned using existing meaning context and no false PASS, five finite-sentence combinations made genuine nonfinite phrases, two split-lemma examples repaired, three sense-specific example pairs added. L10 example pairs 450→453.
+- **Safety:** 46 inherited L10 HOLDs preserved, no morphology claims silently attested, all import flags false. Corpus known finite clause candidates remain 2 from L02/158 and L03/232, zero inside L10; corpus intra-card DE example duplicate groups 0; exact example/copied combination pairs 0. This is not complete idiomatic/bilingual signoff.
+- **Receipt:** `Lessons/L10/PHASE2-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json`; detailed 208-case dispositions and full changed-card before/after objects are inside ZIP.
+- **NEXT:** L10 Phase3 ONE WHOLE 208-card case-level fail-closed QA, semantics/idiomatic quality challenges, negative regression guards and explicit release blockers. `RELEASE_BLOCKED_NONIMPORT` without actual app importer verification. Do not revisit original publisher coursebook or edit a historical Library ROADMAP copy.
+
+---
+
+# Aspekte B1+ — ROADMAP-TEMP
+
 **Version:** 0.71 · **Stand:** 2026-11-09 · **Status:** ACTIVE / NONIMPORT
 
-## LIVE L10 PHASE1 DONE — ALL 208 CURRENT CARDS AUDITED · NEXT L10 PHASE2
+## HISTORICAL L10 PHASE1 DONE — ALL 208 CURRENT CARDS AUDITED
 
 **Current authoritative curated LEARNER-DATA owner UNCHANGED:** Library `libfile_86637c8d99a481919e42ac12cd9243f1`, ZIP SHA256 `0ac34c8178984511d28d4400ff5efe56036d8c8f31aca0d85c1e70f4661a0054`, PRIMARY 1571-card JSONL SHA256 `7eef147f679fec8dea922fefe4a350fafc059277dcfa3a8664c93d1ceddf5e33`, 1548-row source map SHA256 `c8177816bc27004ca574f0011a03a880e4aa6505487847dc28a2af43afa09882`. The new Phase1 ZIP is AUDIT ONLY; 0 primary learner-card changes and 0 formal release approvals.
 

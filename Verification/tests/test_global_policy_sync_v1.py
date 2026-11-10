@@ -171,6 +171,20 @@ class TestGlobalPolicyIntegrity(unittest.TestCase):
         self.assertIn("MISSING_ENTRYPOINT_ROUTER:" + auditor.START,
                       self.check_snapshot(files=files))
 
+    def test_bootstrap_policy_router_is_literal_first_line(self):
+        raw=self.base_files[auditor.BOOTSTRAP].decode("utf-8")
+        self.assertTrue(raw.startswith(auditor.BOOTSTRAP_FIRST_LINE))
+        self.assertIn(auditor.REGISTRY,raw[:4096])
+        self.assertIn(auditor.CONTRACT,raw[:4096])
+
+    def test_a_short_new_status_above_bootstrap_anchor_is_rejected(self):
+        files=dict(self.base_files)
+        files[auditor.BOOTSTRAP]=(
+            b"**NEW CONTENT PROGRESS: PENDING**\\n\\n"+
+            self.base_files[auditor.BOOTSTRAP])
+        self.assertIn("BOOTSTRAP_ENTRYPOINT_NOT_FIRST",
+                      self.check_snapshot(files=files))
+
     def test_registry_not_in_bootstrap_fails(self):
         files = dict(self.base_files)
         files[auditor.BOOTSTRAP] = b"Not routed"

@@ -21,6 +21,7 @@ CONTRACT = "Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md"
 ENTRY = "Prompt/ACTIVE-PROMPT.txt"
 README = "README.md"
 BOOTSTRAP = "PROJECT-BOOTSTRAP.md"
+BOOTSTRAP_FIRST_LINE = "**GLOBAL POLICY ENTRYPOINT — P0 PROTECTED:**"
 REQUIRED_POLICIES = {
     "currentness",
     "seven_stages",
@@ -207,6 +208,10 @@ def audit_snapshot(reg: dict, mat: dict, tracked_dirs: list[str],
         return files.get(path, b"").decode("utf-8", "replace")
     if txt(ENTRY).strip() != Path(START).name:
         errors.append("WRONG_ACTIVE_PROMPT_POINTER")
+    # Unlike a 4096-char window, the first-line invariant catches future
+    # status-prepend drift *before* it can bury the mandatory policy router.
+    if not txt(BOOTSTRAP).startswith(BOOTSTRAP_FIRST_LINE):
+        errors.append("BOOTSTRAP_ENTRYPOINT_NOT_FIRST")
     # The front matter may contain the mandatory prospective anti-churn and
     # artifact safety rules before the global policy router. Check an explicit
     # finite STARTUP window, never an arbitrary match deep in a huge file.

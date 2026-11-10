@@ -1,5 +1,7 @@
 # AGENTS.md — German Flashcards cross-project work
 
+**Protected bootstrap header (P0):** Keep the first line of `PROJECT-BOOTSTRAP.md` as `**GLOBAL POLICY ENTRYPOINT — P0 PROTECTED:**` and keep the two versioned policy paths immediately there. **Never prepend** an owner/version/status paragraph above it. Put newest family status in its own `LATEST.json` / `CHECKPOINT.json`, and if a bootstrap summary is necessary, insert it *after* the protected entrypoint. The global-policy CI intentionally rejects any displacement, including a short insertion that still fits within 4096 characters. No change to content currentness or Stage4–7 is implied.
+
 ## Mandatory Aspekte-specific anti-loop routing — 2026-11-07
 
 Before resuming **Aspekte B1+, B2 or C1** (including Persian «ادامه بده»), read [the active Aspekte resume/persistence circuit breaker](Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md). **Do substantive work before cosmetic sync.** Never attempt to overwrite a project Library roadmap as a condition of continuing; GitHub is the live control-plane roadmap, while newest verified owner-specific Library/Project data is the content authority. On Library consent/capture failure, stop that write and record SYNC_PENDING; one attempt, no re-request loop. Keep the required QA and release gates. The existing B2 three-pass terminal guard remains active.

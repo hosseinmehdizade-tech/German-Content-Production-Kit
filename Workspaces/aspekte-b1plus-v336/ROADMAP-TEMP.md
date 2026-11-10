@@ -1,8 +1,18 @@
 # Aspekte B1+ — ROADMAP-TEMP
 
-**Version:** 0.82 · **Stand:** 2026-11-10 · **Status:** APP DRAFT PR #41 CREATED / PROD NONIMPORT
+**Version:** 0.83 · **Stand:** 2026-11-10 · **Status:** PR #41 NESTED NATIVE JSON GUARD HARDENED / DRAFT UNMERGED / NONIMPORT
 
-## CURRENT: Real app-side review branch and Draft PR #41 — no more synthetic gate loops
+## LIVE: PR #41 nested marker fix verified — no change to user CURRENT
+
+- **Actual newly reproduced defect:** the earlier JSON guard allowed `BLOCKED_NONIMPORT` when nested at `learning_units[0].custom_fields` or deeper in `content.custom_fields`; direct Native JSON and ZIP→JSON Preview could proceed, and Submit reached the isolated test environment's denied IndexedDB path. This is **not** proof of a successful import.
+- **Fixed in DRAFT ONLY:** the two-file staged v505-R141 R3 candidate now traverses the parsed JSON tree before adapter/normalization, with bounded size/depth and fail-closed markers. **20/20 Node guard checks**, **10/10 exact-current Preview/Submit checks**, **6/6 native nested-marker Chromium checks** PASS (including ordinary JSON Preview). The exact staged index SHA256 remains `5ed1b188586e97e1fd5cae755b843c5ed5dca879c0ffb90adfabe209e798fcf4`.
+- **Concrete project code in [Draft PR #41](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/pull/41):** updated native release guard, SHA-pinned builder, 20-check Node regression script, actual current-runtime Python/Chromium browser harness, machine-readable browser result and scoped GitHub Actions review workflow. The original enormous `01-App/index.html` is **still unmodified in Git**; exact integration Patch and builder remain review-only. CI scoped workflow was observed passing on an earlier revision, with latest revision status pending at this checkpoint; repo-wide CURRENT and immutable ZIP workflows have separate observed failures and are NOT resolved.
+- **Actual learner owner unchanged:** Library `libfile_261160dae9508191904f55a410076d40`; SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`. 1,571 cards, 3,524 DE–FA examples and 359 HOLDs preserved; **RELEASE_BLOCKED_NONIMPORT**.
+- **Next real step:** review and integrate the source Patch, define trusted provenance beyond editable markers, test valid native TSV/JSON/ZIP durable Import→restart and right-card/SRS behavior on supported origin. Do not create more parallel content gates or redo old lexical work.
+
+---
+
+## HISTORICAL: Real app-side review branch and Draft PR #41 — no more synthetic gate loops
 
 - **User-curated learner owner unchanged:** Library `libfile_261160dae9508191904f55a410076d40`; 1571-card archive SHA256 `a2fa93f3389b43db12e562331cc3302e24e51f0cb028a494ce61b3e825e6a50b`, PRIMARY JSONL SHA256 `829a1d9e16df96cf1467659835f7fcaa14aefa705f7d639910a150e9d37bfe22`. No new cards imported, 359 HOLDs unchanged, all 3524 DE–FA examples preserved.
 - **App current runtime unchanged:** v505-R141 WORDLINKS_FRONTBACK_R3, immutable app ZIP SHA256 `6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef`; exact-mirror branch base commit `02b83543e46aebaa6fc345818930406b1607a83c`. Do not modify historical main v486 or silently promote app.

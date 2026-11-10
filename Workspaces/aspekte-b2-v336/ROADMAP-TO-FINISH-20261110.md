@@ -2,7 +2,7 @@
 
 **Checkpoint:** 2026-11-10 · owner-curated current is authoritative · no original textbook reconciliation.
 
-**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `1b77fe453aff2084c6fd91baa0f0dd47cbdd3c4c8f5eced5f0842b84bd2312cc`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
+**Einzige Inhaltsquelle / تنها مرجع داده:** `Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv` (1719 rows, 66 columns, SHA-256 `85159cecc31fc09df066715777f362dbbac1f7e3f34428e74e2ce325c55cc4e5`). The 10 lesson-level Current CSVs are preserved as validated recovery snapshots, not parallel work branches. At the end of each accepted content edit, update *this* Master, preserve a backup, verify row/ID/cell differences and update GitHub checkpoint.
 
 ## Completed — do not reopen
 - [x] HF2 morphological front-form remediation: **643/643** completed across all lessons.
@@ -19,11 +19,11 @@
 
 **Accountability / Definition of done:** exactly 1719 card decisions in one Stage4 ledger: `PASS`, `CORRECTED`, or `DOCUMENTED_EXCEPTION` (with explicit reason). A lesson is closed when its full roster has a decision, its edits are applied to the Master and validated, and its count is reconciled. No external independent human signature, no textbook-source comparison. Old QA status labels mentioning “independent” are historical only, not operative gates.
 
-**Progress now:** all 1719 cards machine-screened; **0 of 1719 receive a newly claimed semantic signoff** until actual review. The screening is a risk sorter, not a semantic judgement. Stage4 first active batch: **L01, all 158 cards, pass 1/≤3**.
+**Progress now:** all 1719 cards machine-screened; **L01 Phase 1: 158/158 front/back pairings reviewed, 1 verified noun plural correction applied to the Master; examples, collocations and final decisions still pending.** No card is yet fully content-approved (0/1719). Next exact batch is **L01 Phase 2/≤3**, covering bilingual examples and sense-linked Kombinationen on all 158 L01 cards.
 
 | Lektion | Karten | Stage 4 semantic decisions |
 |:--|--:|--:|
-| L01 | 158 | 0 / 158 |
+| L01 | 158 | 0 / 158 (Phase 1 front/back 158/158) |
 | L02 | 110 | 0 / 110 |
 | L03 | 186 | 0 / 186 |
 | L04 | 183 | 0 / 183 |
@@ -42,3 +42,8 @@ One **single all-1719** regression: Master schema/IDs/counts, absence of uninten
 Run **one documented native-app import dry-run** and ID/SRS continuity/rollback test using exact target app and existing accepted-card IDs, when supported. Until tests pass, file remains `NONIMPORT` and **zero cards are marked release approved**. If environment cannot access the native app/IDs, record the concrete blocker once; stop and hand off the runnable artifact to Codex / app environment instead of looping. Live SRS import is not performed without an explicit request.
 
 **Terminal rule:** no new HF/Phase/Scenario may be opened without a verified new defect and a measurable impact on the above acceptance criteria. After each message report `master SHA / lesson / reviewed / edited / remaining / blocker / next exact batch`. Don't claim success for tests that were not actually executed.
+
+## Latest Stage 4 applied patch — 2026-11-10
+- `ab2-l01-u-1692`: `die Hommage (an + Akk.)` → `die Hommage, die Hommagen (an + Akk.)` (Duden: https://www.duden.de/rechtschreibung/Hommage).
+- Changed exactly one `front_de_preview` cell in 1719-row unified Master; all other cells unchanged; original master backed up at `Checkpoints/STAGE4-L01-P1-MASTER-BACKUP-20261110`.
+- Updated master SHA256: `85159cecc31fc09df066715777f362dbbac1f7e3f34428e74e2ce325c55cc4e5`; Library readback byte-exact. Ledger: `Reports/B2-STAGE4-CARD-STATUS-1719-20261110.tsv`.

@@ -107,7 +107,7 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
     # inside the unchanged OP-01/OP-02 optimization mission, not producer
     # admission or an invitation to release content.
     management = r.get("management_first_campaign_20261111", {})
-    check(management.get("active_phase") == "MGMT_READINESS_G0_TO_G5__NOT_COMPLETE",
+    check(management.get("active_phase") == "MGMT_G0_G5_CONTROL_PLANE_COMPLETED_WITH_EXPLICIT_HOLDS__NO_NATIVE_WRITES",
           "MANAGEMENT_FIRST_NOT_ACTIVE")
     gate_ids = [item.get("id") for item in management.get("management_gates", [])]
     check(gate_ids == ["G0", "G1", "G2", "G3", "G4", "G5"],
@@ -456,13 +456,218 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
           and "EXACT_PORTABLE_PARENT_SHA" in g3.get("admission_contract", {}).get("compare_and_swap", ""),
           "G3_WRITER_RISK_CONTRACT_REMOVED")
 
+    # G4: keep external security observations honest. CI checks the exact
+    # tracked evidence and fail-closed claims, NOT remote GitHub/Drive live state.
+    g4 = management.get("g4_security_retention_provider_boundaries_20261111", {})
+    git_sec = g4.get("git_hard_boundary", {})
+    expected_sec = [
+        {"context": "GFP-Required-Governance-Gate", "integration_id": 15368},
+        {"context": "Mergify Merge Protections", "integration_id": 10562},
+    ]
+    check(git_sec.get("main_ruleset_id") == 27024820
+          and git_sec.get("main_ruleset_enforcement") == "active"
+          and git_sec.get("main_protected") is True
+          and git_sec.get("bypass_actors") == 0
+          and git_sec.get("main_pr_rule_required") is True
+          and git_sec.get("required_review_count") == 0
+          and git_sec.get("strict_required_checks_policy") is False
+          and git_sec.get("required_checks") == expected_sec
+          and git_sec.get("external_freeze_config_path") == ".mergify.yml"
+          and git_sec.get("external_freeze_config_git_blob") ==
+              git_head_blob(".mergify.yml")
+          and git_sec.get("external_negative_pr") ==
+              {"pr": 183, "merged": False,
+               "mergeable_state": "blocked", "closed": True}
+          and git_sec.get("no_claim_of_atomic_cross_provider_security") is True
+          and "HOLD" in git_sec.get("check_origin_issuer_for_content_current_separately", ""),
+          "G4_CONTENT_MAIN_SECURITY_OR_ISSUER_CLAIM_CHANGED")
+    app_sec = g4.get("application_boundary", {})
+    check(app_sec.get("repo") == "hosseinmehdizade-tech/German-Flashcards-Pro"
+          and app_sec.get("main_protected_flag_from_provider") is False
+          and app_sec.get("rulesets_api_status") ==
+              "FORBIDDEN_403__UPGRADE_PRO_OR_PUBLIC_REQUIRED"
+          and app_sec.get("app_main_security") ==
+              "UNPROTECTED_OR_UNATTESTED__NO_DEPLOYMENT_ISSUER_APPROVAL"
+          and app_sec.get("current_runtime") ==
+              "v505-R141 WORDLINKS_FRONTBACK_R3"
+          and app_sec.get("current_runtime_release_final") is False
+          and app_sec.get("current_main_is_exact_current_runtime") is False
+          and app_sec.get("current_source_mirror_file_count") == 169
+          and app_sec.get("no_live_app_import_or_srs_certification") is True,
+          "G4_APP_MAIN_UNPROTECTED_OR_NONFINAL_BOUNDARY_REMOVED")
+    retention = g4.get("provider_retention", {})
+    known_git_paths = {
+       "source_owner_contract_path":
+          "Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-CONTRACT-v1.md",
+       "curated_portfolio_path":
+          "Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json",
+       "library_dashboard_pointer_path":
+          "Optimization-Program/Control-Center/Dashboard/DASHBOARD-LATEST.json"
+    }
+    for attr, path in known_git_paths.items():
+        check(retention.get(attr) == path and
+              retention.get(attr.replace("_path", "_git_blob")) ==
+              git_head_blob(path),
+              "G4_RETENTION_TRUSTED_POINTER_DRIFT:" + attr)
+    check(retention.get("curated_portfolio_entries_10_snapshot_not_all_families") is True
+          and retention.get("current_raw_library_rehash_of_all_21_completed") is False
+          and retention.get("verified_reclaimable_duplicate_bytes") == 0
+          and retention.get("op05_cleanup_status") ==
+              "ON_HOLD_INDEPENDENT_LIBRARY_COPY_SHA_UNAVAILABLE"
+          and retention.get("op05_confirmed_duplicate_groups") == 0
+          and retention.get("op05_deleted_files_in_program") == 0
+          and retention.get("matching_filenames_or_sizes_not_duplicate_proof") is True
+          and retention.get("preserve_original_source_pdfs_and_audio") is True
+          and retention.get("preserve_locked_final_current_and_protected_history") is True
+          and retention.get("no_cleanup_or_trash_in_this_campaign") is True
+          and retention.get("no_rewrite_accepted_source_zip") is True
+          and retention.get("immutable_library_files_natively_checked_in_this_work") is False,
+          "G4_FALSE_PROVIDER_DEDUP_OR_RELEASE_CLAIM")
+    check("SHA256" in retention.get("deletion_requires", "")
+          and "EXPLICIT_USER_SCOPE" in retention.get("deletion_requires", ""),
+          "G4_DELETION_GUARD_REMOVED")
+    program_op05 = next((pkg for pkg in state.get("work_packages", [])
+                         if pkg.get("id") == "OP-05"), {})
+    check(program_op05.get("status") ==
+          retention["op05_cleanup_status"],
+          "G4_OP05_STORAGE_HOLD_UNSYNCED")
+    drive = g4.get("new_direct_drive_metadata_observations", [])
+    check(len(drive) == 2
+          and {v.get("family_id") for v in drive} ==
+          {"family:menschen-a1", "family:menschen-a1-verben"}
+          and all(v.get("status") ==
+                  "METADATA_ID_NAME_SIZE_EXISTS__NO_NEW_RAW_SHA256"
+                  and type(v.get("bytes")) is int and v["bytes"] > 0
+                  for v in drive),
+          "G4_DRIVE_METADATA_MISLABELED_RAW_HASH")
+    curated = json.loads(
+        (ROOT / known_git_paths["curated_portfolio_path"]).read_text(encoding="utf-8"))
+    curated_by_id = {z["id"]: z for z in curated.get("items", [])}
+    check(len(curated_by_id) == 10,
+          "G4_CURATED_PORTFOLIO_OBSERVATION_COUNT_DRIFT")
+    g4_rows = g4.get("per_family_preservation", [])
+    check(len(g4_rows) == 21
+          and {z.get("family_id") for z in g4_rows} == set(family_ids),
+          "G4_FAMILY_RETENTION_COVERAGE_MISSING")
+    g1_index = {z["family_id"]: z for z in family_rows}
+    for row in g4_rows:
+        fid = row["family_id"]
+        owner = g1_index[fid]
+        entry = row.get("accepted_portfolio_observation")
+        historical = curated_by_id.get(fid)
+        check(row.get("management_class") == owner["management_class"]
+              and row.get("owner_document") ==
+              owner["source_status_document"]
+              and row.get("current_provider_raw_bytes_verified_by_this_g4") is False
+              and row.get("current_content_promotion_by_this_g4") is False
+              and row.get("can_delete_source_or_archive") is False
+              and row.get("operation_before_verified_source") ==
+              "READ_ONLY_MANAGEMENT_INTAKE"
+              and isinstance(row.get("blocker"), str)
+              and row["blocker"].startswith("HOLD_"),
+              "G4_UNSAFE_FAMILY_RETENTION_OR_PROMOTION:" + fid)
+        if historical is None:
+            check(entry is None, "G4_UNATTESTED_HISTORICAL_ARTIFACT:" + fid)
+        else:
+            check(entry is not None and
+                  entry.get("artifact_name") ==
+                  historical["active_baseline"]["artifact_name"] and
+                  entry.get("prior_observed_artifact_sha256") ==
+                  historical["active_baseline"]["artifact_sha256"] and
+                  entry.get("historical_provider_evidence") ==
+                  historical["active_baseline"]["byte_reverification_this_registry_pass"] and
+                  entry.get("source_registry_as_of_snapshot") is True,
+                  "G4_HISTORICAL_PORTFOLIO_SOURCE_DRIFT:" + fid)
+    check(g4.get("management_completion") ==
+          "G4_SAFE_RETENTION_AND_SECURITY_HOLDS_DECLARED_FOR_ALL_21__APP_MAIN_NOT_PROTECTED__NO_AUTO_RELEASE",
+          "G4_FALSE_MANAGEMENT_SECURITY_CLAIM")
+
+    # G5: the single campaign is a conditional, read-only intake for ALL 21
+    # families, not a covert writer grant, stage advance or mass ZIP release.
+    g5 = management.get("g5_coordinated_portfolio_kickoff_20261111", {})
+    check(g5.get("launch_state") ==
+          "COORDINATED_PORTFOLIO_INTAKE_ROUTED_WITH_EXPLICIT_OWNER_RELEASE_HOLDS__NO_CONTENT_PRODUCTION"
+          and g5.get("all_families_in_one_plan") is True
+          and g5.get("all_21_simultaneous_writing") is False
+          and g5.get("all_21_simultaneous_stage5_release") is False
+          and g5.get("original_accepted_sources_immutable") is True
+          and g5.get("formal_native_adoption_count") == 0,
+          "G5_FALSE_PORTFOLIO_GO_LIVE_CLAIM")
+    kickoff_rows = g5.get("stage_matrix", [])
+    check(isinstance(kickoff_rows, list)
+          and len(kickoff_rows) == 21
+          and len({z.get("family_id") for z in kickoff_rows}) == 21
+          and {z.get("family_id") for z in kickoff_rows} == set(family_ids),
+          "G5_MISSING_FAMILY_KICKOFF")
+    stage_names = {"stage" + str(n) for n in range(1, 8)}
+    for row in kickoff_rows:
+        fid = row["family_id"]
+        owner = g1_index[fid]
+        class_ = owner["management_class"]
+        stage = row.get("stage_disposition", {})
+        expected_first = (
+            "CONDITIONAL_READ_ONLY_OWNER_INTAKE__NEW_WRITE_NOT_AUTHORIZED"
+            if class_ == "OWNER_POINTER_RECORDED"
+            else "HOLD_SOURCE_RELEASE_OWNER__READ_ONLY_TRIAGE"
+            if class_ == "RELEASE_AUTHORITY_UNATTESTED"
+            else "HOLD_LIBRARY_CURRENT_SOURCE_OWNER_AND_GIT_ROUTE__READ_ONLY_TRIAGE")
+        check(row.get("source_management_class") == class_
+              and row.get("canonical_git_workspace") ==
+              owner["canonical_git_workspace"]
+              and row.get("owner_status_document") ==
+              owner["source_status_document"]
+              and row.get("owner_status_git_blob") ==
+              owner["source_status_git_blob"]
+              and row.get("common_portfolio_intake") ==
+              "INCLUDED_IN_SINGLE_COORDINATED_CAMPAIGN",
+              "G5_FAMILY_SOURCE_ROUTE_WRONG:" + fid)
+        check(isinstance(stage, dict) and set(stage) == stage_names
+              and stage.get("stage1") == expected_first
+              and all(isinstance(stage["stage" + str(n)], str)
+                      and stage["stage" + str(n)].startswith("HOLD_")
+                      for n in range(2, 8)),
+              "G5_UNAUTHORIZED_STAGE_GO:" + fid)
+        check(all(row.get(key) is val for key, val in (
+             ("no_learner_card_mutation", True),
+             ("no_new_stage5", True),
+             ("no_automatic_zip", True),
+             ("no_app_current_promotion", True),
+             ("new_native_adoption_claim", False),
+             ("source_current_provider_raw_approval", False)))
+             and row.get("requires_preflight") ==
+             next(v["blocker"] for v in g4_rows if v["family_id"] == fid),
+             "G5_FALSE_FAMILY_RELEASE_PERMISSION:" + fid)
+    blockers = g5.get("blocker_types", {})
+    check(blockers.get("conditional_read_only_intake") == 10
+          and blockers.get("existing_git_authority_hold") == 6
+          and blockers.get("library_only_hold") == 5
+          and blockers.get("total_writer_grants") == 0
+          and blockers.get("op05_library_cleanup_hold") is True
+          and blockers.get("app_main_unprotected") is True
+          and blockers.get("publisher_current_issuer_hold") is True
+          and g5.get("management_decision") ==
+              "MANAGEMENT_FRAMEWORK_BOUNDARIES_CLOSED_AND_21_FAMILY_CONDITIONAL_INTAKE_MATRIX_ATTESTED__OPERATIONAL_RELEASES_NOT_READY",
+          "G5_FALSE_MANAGEMENT_COMPLETION")
+    manager_close = state.get("management_first_sequencing_20261111", {})
+    close_report = manager_close.get("g4_g5_scoped_closeout_20261111", {})
+    check(close_report.get("management_status") ==
+          "SCOPE_COMPLETE_WITH_UNRESOLVED_EXTERNAL_HOLDS"
+          and close_report.get("security_content_main_pass") is True
+          and close_report.get("security_app_main_protected") is False
+          and close_report.get("op05_library_cleanup_hold") is True
+          and close_report.get("all_families_in_campaign") == 21
+          and close_report.get("all_stages_mapped") == 147
+          and close_report.get("direct_write_grants") == 0
+          and close_report.get("new_content_or_release") is False,
+          "G5_STATE_FALSE_PREMATURE_SOURCE_EXECUTION")
+
     rollout = management.get("rollout_after_management", {})
     check(rollout.get("activate_all_families_in_common_plan") is True
           and rollout.get("simultaneous_content_edit_or_release") is False
           and rollout.get("no_new_artifacts_or_zip_until_source_authorized") is True,
           "MANAGEMENT_ROLLOUT_UNSAFE")
     manager_state = state.get("management_first_sequencing_20261111", {})
-    check(manager_state.get("status") == "ACTIVE_MANAGEMENT_ONLY__G0_G5_OPEN__NOT_COMPLETE"
+    check(manager_state.get("status") == "MANAGEMENT_G0_G5_SCOPED_COMPLETED_WITH_HOLDS__COORDINATED_INTAKE_ONLY"
           and manager_state.get("roadmap_path") == ROUTE
           and manager_state.get("all_family_scope") == 21
           and manager_state.get("native_producers_formally_adopted") == 0
@@ -510,6 +715,11 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "management_writer_family_holds_verified": 21,
         "active_writer_grants_verified": 0,
         "cross_provider_atomic_writer_locks_proven": False,
+        "management_g4_family_retention_holds_verified": 21,
+        "management_g5_kickoff_families_verified": 21,
+        "management_g5_stage_dispositions_verified": 147,
+        "app_main_branch_protected_claimed": False,
+        "independent_content_provider_sha256_rehashed_by_this_test": 0,
         "real_producer_adoption_proven_by_this_test": 0,
         "learner_card_edits_authorized_by_this_test": 0,
         "Stage4_5_6_7_or_CURRENT_FINAL_certificates": 0,

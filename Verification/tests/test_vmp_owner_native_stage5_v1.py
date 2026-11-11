@@ -93,6 +93,88 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
         self.assertEqual(self.check()["status"],
                          "OWNER_AND_SOURCE_PREFLIGHT_PASS_NOT_STAGE5_OR_ADOPTED")
 
+    def synthetic_central_receipts(self):
+        # This is NOT a valid release ZIP; the real central builder verifies
+        # the archive and its contents before owner postbuild is invoked.
+        self.output.write_bytes(b"synthetic-postcentral-output")
+        from build_quality_gated_lexical_candidate_v1 import select_roles
+        roles = select_roles(self.src)
+        pins = {name: sha(path) for name, path in roles.items()}
+        expected = sha(self.output)
+        format_build = {
+            "status": "PASS_GOVERNED_STAGE5_FORMAT_AND_BYTE_PARITY_ONLY",
+            "output_zip_sha256": expected, "source_role_sha256": pins}
+        self.receipt.write_text(json.dumps(format_build), encoding="utf-8")
+        report = {
+            "exact_governed_output_zip_sha256": expected,
+            "governed_format_build": format_build,
+            "exact_all_source_roles_sha256": pins,
+            "family_authority": {
+                "family_id": vmp.FAMILY,
+                "route_file_sha256": sha(ROOT / vmp.ROUTES)}}
+        return report
+
+    def test_postbuild_exact_output_and_receipt_success(self):
+        report = self.synthetic_central_receipts()
+        self.assertEqual(
+            vmp.verify_postbuild_snapshot(ROOT, self.src, self.output,
+                                          self.receipt, report),
+            sha(self.output))
+
+    def test_postbuild_zip_mutation_blocks_owner_pass(self):
+        report = self.synthetic_central_receipts()
+        self.output.write_bytes(b"changed-after-central")
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_ZIP_CHANGED_AFTER_CENTRAL_QA"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+
+    def test_postbuild_missing_or_symlink_zip_blocks_owner_pass(self):
+        report = self.synthetic_central_receipts()
+        self.output.unlink()
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_ZIP_MISSING_OR_UNSAFE"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+        self.output.symlink_to(self.src / "SYNTHETIC-import.tsv")
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_ZIP_MISSING_OR_UNSAFE"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+
+    def test_postbuild_receipt_forgery_blocks_owner_pass(self):
+        report = self.synthetic_central_receipts()
+        self.receipt.write_text('{"status":"PASS"}', encoding="utf-8")
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_FORMAT_RECEIPT_CHANGED_OR_FORGED"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+
+    def test_postbuild_other_source_role_mutation_blocks_owner_pass(self):
+        report = self.synthetic_central_receipts()
+        (self.src / "SYNTHETIC-canonical.json").write_text(
+            '{"cards":[{"id":"forged"}]}', encoding="utf-8")
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_SOURCE_ROLE_BYTES_MOVED"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+
+    def test_postbuild_router_attestation_mismatch_blocks_owner_pass(self):
+        report = self.synthetic_central_receipts()
+        report["family_authority"]["route_file_sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_CANONICAL_ROUTER_MOVED"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+
+    def test_postbuild_unpinned_zip_hash_blocks_owner_pass(self):
+        report = self.synthetic_central_receipts()
+        report["exact_governed_output_zip_sha256"] = "not-a-hash"
+        with self.assertRaisesRegex(ValueError,
+                                    "POSTBUILD_ZIP_SHA_UNATTESTED"):
+            vmp.verify_postbuild_snapshot(
+                ROOT, self.src, self.output, self.receipt, report)
+
     def test_stale_current_parent_fails_closed(self):
         self.evidence["curated_current_parent_sha256"] = "f" * 64
         self.save_review()

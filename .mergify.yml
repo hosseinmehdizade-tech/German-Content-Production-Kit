@@ -1,33 +1,25 @@
-# OP01: PROPOSED independent GitHub App check, NOT ACTIVE until the owner
-# installs Mergify, enables Merge Protections, and verifies its app identity.
-# No merge queue, automation, or auto-merge. Rules read from default branch.
-#
-# Recovery if this check later becomes required: repo owner must explicitly
-# suspend/remove the external required check in GitHub Ruleset BEFORE editing
-# this locked config or workflow paths, then verify and restore protection.
+# OP01: PROPOSED independent GitHub App check, NOT ACTIVE until owner
+# installs Mergify, enables Merge Protections, and verifies App identity.
+# The default-branch configuration, not PR-head code, supplies the conditions.
+# NO automatic merge/queue and NO change to the existing main Ruleset.
+# Future edits to these frozen trust-root paths require explicit owner
+# maintenance/recovery of the external Required Check.
 merge_protections_settings:
   reporting_method: check-runs
   post_comment: false
 
 merge_protections:
   - name: OP01 freeze PR-authored security control files
-    description: Require a separately authorized security change for any PR touching protected workflow, rule or verifier paths.
+    description: Block PR edits to governance workflows, security checks and issuer policy unless the owner deliberately changes this external trust boundary.
     if:
       - base = main
     success_conditions:
-      # Negated conditions are ANDed: every sensitive path class must stay unchanged.
-      # A workflow filename alone is not a trust root if its called code is mutable.
+      # Separate negated conditions are ANDed: each category must stay unchanged.
       - '-files ~= ^\.github/workflows/'
       - '-files ~= ^(\.mergify|\.github/mergify\.ya?ml$)'
-      - '-files ~= ^Optimization-Program/WRITER-SCOPES\.json
-
-      - '-files ~= ^Prompt/GLOBAL-POLICY-REGISTRY-v1\.0\.0\.json
-
-      - '-files ~= ^Verification/(check_op01_trusted_base_pr_paths_v1|audit_global_policy_sync_v1|check_new_lexical_stage5_claims_v1|check_new_lexical_producer_bypass_v1)\.py
-
-      - '-files ~= ^Verification/tests/(test_gfp_required_governance_gate_contract_v1|test_new_lexical_stage5_claims_v1|test_new_lexical_producer_bypass_v1)\.py
-
-      - '-files ~= ^Verification/tests-v3\.3\.6/test_content_zip_guard\.py
-
-      - '-files ~= ^Tools/(validate_canonical_family_workspaces_v1|discover_parallel_accepted_sources_v1|content_package_guard|library_publish_preflight)\.py
-
+      - '-files ~= ^Optimization-Program/WRITER-SCOPES\.json$'
+      - '-files ~= ^Prompt/GLOBAL-POLICY-REGISTRY-v1\.0\.0\.json$'
+      - '-files ~= ^Verification/(check_op01_trusted_base_pr_paths_v1|audit_global_policy_sync_v1|check_new_lexical_stage5_claims_v1|check_new_lexical_producer_bypass_v1)\.py$'
+      - '-files ~= ^Verification/tests/(test_gfp_required_governance_gate_contract_v1|test_new_lexical_stage5_claims_v1|test_new_lexical_producer_bypass_v1)\.py$'
+      - '-files ~= ^Verification/tests-v3\.3\.6/test_content_zip_guard\.py$'
+      - '-files ~= ^Tools/(validate_canonical_family_workspaces_v1|discover_parallel_accepted_sources_v1|content_package_guard|library_publish_preflight)\.py$'

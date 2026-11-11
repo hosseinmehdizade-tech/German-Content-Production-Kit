@@ -133,6 +133,54 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G2_GATE_BLOB_OR_FALSE_ADOPTION"):
             self.check(roadmap=wrong)
 
+    def test_g3_default_deny_all_family_writer_admissions(self):
+        out = self.check()
+        self.assertEqual(out["management_writer_family_holds_verified"], 21)
+        self.assertEqual(out["active_writer_grants_verified"], 0)
+        self.assertFalse(out["cross_provider_atomic_writer_locks_proven"])
+
+    def test_g3_fake_active_family_writer_is_rejected(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["g3_parallel_writer_isolation_20261111"]["family_routes"][0]
+        row["approved_git_writer_grants"] = 1
+        with self.assertRaisesRegex(ValueError, "G3_UNAUTHORIZED_FAMILY_WRITE_CLAIM"):
+            self.check(roadmap=wrong)
+
+    def test_g3_default_deny_git_writer_registry_must_not_be_forged(self):
+        wrong = copy.deepcopy(self.roadmap)
+        auth = wrong["management_first_campaign_20261111"]["g3_parallel_writer_isolation_20261111"]["authority"]
+        auth["writer_allowlist_state"] = "ACTIVE_SCOPED_GRANTS"
+        with self.assertRaisesRegex(ValueError, "G3_WRITER_SCOPE_DENY_ALL_BROKEN"):
+            self.check(roadmap=wrong)
+
+    def test_g3_cannot_swap_family_writer_workspace(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["g3_parallel_writer_isolation_20261111"]["family_routes"][0]
+        row["canonical_git_workspace"] = "Workspaces/aspekte-b2-v336"
+        with self.assertRaisesRegex(ValueError, "G3_WRITER_CROSSES_SOURCE_FAMILY"):
+            self.check(roadmap=wrong)
+
+    def test_g3_cannot_skip_library_only_family(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["g3_parallel_writer_isolation_20261111"]["family_routes"]
+        rows.pop()
+        with self.assertRaisesRegex(ValueError, "G3_FAMILY_WRITER_MATRIX_INCOMPLETE"):
+            self.check(roadmap=wrong)
+
+    def test_g3_no_fake_atomic_github_library_lock(self):
+        wrong = copy.deepcopy(self.roadmap)
+        claims = wrong["management_first_campaign_20261111"]["g3_parallel_writer_isolation_20261111"]["actual_enforcement_verified"]
+        claims["github_and_library_atomic_cross_provider_transaction"] = True
+        with self.assertRaisesRegex(ValueError, "G3_FALSE_UNIVERSAL_WRITER_ENFORCEMENT"):
+            self.check(roadmap=wrong)
+
+    def test_g3_no_fake_external_writer_issuer(self):
+        wrong = copy.deepcopy(self.roadmap)
+        auth = wrong["management_first_campaign_20261111"]["g3_parallel_writer_isolation_20261111"]["authority"]
+        auth["independent_required_status_check_sources"][1]["app_id"] = 15368
+        with self.assertRaisesRegex(ValueError, "G3_REQUIRED_CHECK_TRUST_ORIGIN_CHANGED"):
+            self.check(roadmap=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

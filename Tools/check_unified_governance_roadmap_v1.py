@@ -334,6 +334,128 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
           "MANAGEMENT_FIELD_AND_GATE_MAPPING_ONLY__SOURCE_SPECIFIC_IMPLEMENTATION_AND_TESTED_ADOPTION_HOLD",
           "G2_IMPROPER_RELEASE_CLAIM")
 
+    # G3: classify all family source-writer admission as DENY by default;
+    # a PR rule is NOT an atomic lock across Git, Library or app runtime.
+    g3 = management.get("g3_parallel_writer_isolation_20261111", {})
+    g3_auth = g3.get("authority", {})
+    expected_g3_paths = {
+        "writer_allowlist_path": "Optimization-Program/WRITER-SCOPES.json",
+        "tracked_writer_implementation_path":
+            "Verification/persist_verified_git_edit.py",
+        "synthetic_writer_negative_test_path":
+            "Verification/test_persist_verified_git_edit.py",
+        "canonical_router_path":
+            "Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json"
+    }
+    for key, path in expected_g3_paths.items():
+        check(g3_auth.get(key) == path and
+              g3_auth.get(key.replace("_path", "_git_blob")) ==
+              git_head_blob(path),
+              "G3_WRITER_TRUST_ROOT_GIT_DRIFT:" + key)
+    scopes_path = ROOT / expected_g3_paths["writer_allowlist_path"]
+    scopes = json.loads(scopes_path.read_text(encoding="utf-8"))
+    check(scopes.get("schema") == "gcpk-remote-git-writer-scopes@1"
+          and scopes.get("status") == "DENY_ALL_PENDING_EXPLICIT_SCOPE_APPROVAL"
+          and scopes.get("scopes") == []
+          and g3_auth.get("writer_allowlist_state") == scopes["status"]
+          and g3_auth.get("approved_scopes") == 0,
+          "G3_WRITER_SCOPE_DENY_ALL_BROKEN")
+    required_checks = g3_auth.get("independent_required_status_check_sources")
+    check(g3_auth.get("main_ruleset_id") == 27024820
+          and g3_auth.get("enforcement") == "active"
+          and g3_auth.get("bypass_actor_count") == 0
+          and required_checks == [
+              {"name": "GFP-Required-Governance-Gate", "app_id": 15368},
+              {"name": "Mergify Merge Protections", "app_id": 10562}],
+          "G3_REQUIRED_CHECK_TRUST_ORIGIN_CHANGED")
+    claims = g3.get("actual_enforcement_verified", {})
+    required_true = (
+        "content_kit_main_pull_request_required",
+        "content_kit_main_no_bypass_actors",
+        "merge_check_two_apps_required",
+        "writer_scope_changes_mergify_blocked",
+        "opt_in_direct_contents_writer_denies_all_without_scoped_grant",
+        "synthetic_preimage_parent_cas_and_postwrite_readback_existing"
+    )
+    required_false = (
+        "per_family_native_writer_permission_proven",
+        "automatic_single_writer_lock_all_sources",
+        "github_and_library_atomic_cross_provider_transaction",
+        "app_repository_matching_ruleset_proven",
+        "source_stage4_5_6_7_or_current_acceptance_from_this_stage"
+    )
+    check(all(claims.get(key) is True for key in required_true)
+          and all(claims.get(key) is False for key in required_false),
+          "G3_FALSE_UNIVERSAL_WRITER_ENFORCEMENT")
+    family_routes = g3.get("family_routes", [])
+    check(isinstance(family_routes, list) and len(family_routes) == 21,
+          "G3_FAMILY_WRITER_MATRIX_INCOMPLETE")
+    route_ids = [item.get("family_id") for item in family_routes]
+    check(len(set(route_ids)) == 21 and set(route_ids) == set(family_ids),
+          "G3_WRITER_IDENTITY_COVERAGE_DRIFT")
+    g1_index = {item["family_id"]: item for item in family_rows}
+    g2_index = {item["family_id"]: item for item in g2_rows}
+    for item in family_routes:
+        fid = item["family_id"]
+        existing = g1_index[fid]
+        domain = g2_index[fid]["declared_domain"]
+        klass = existing["management_class"]
+        check(item.get("source_domain") == domain
+              and item.get("management_class") == klass
+              and item.get("canonical_git_workspace") ==
+              existing["canonical_git_workspace"]
+              and item.get("source_status_document") ==
+              existing["source_status_document"]
+              and item.get("source_status_git_blob") ==
+              existing["source_status_git_blob"],
+              "G3_WRITER_CROSSES_SOURCE_FAMILY:" + fid)
+        if klass == "LIBRARY_ONLY_CATALOG":
+            expected_route = "NO_TRACKED_CANONICAL_GIT_WRITER"
+            expected_admission = "HOLD_LIBRARY_CURRENT_AUTHORITY_AND_NATIVE_OWNER"
+        elif klass == "RELEASE_AUTHORITY_UNATTESTED":
+            expected_route = "ONE_DECLARED_CANONICAL_WORKSPACE_NOT_AN_ACTIVE_WRITER"
+            expected_admission = "HOLD_SOURCE_OWNER_AND_STAGE_RELEASE_AUTHORIZATION"
+        else:
+            expected_route = "CANONICAL_GIT_WORKSPACE_FOR_PROPOSED_OWNER_CONTROLLED_PR"
+            expected_admission = "HOLD_NO_EXACT_APPROVED_WRITER_SCOPE_OR_VALID_NEW_MUTABLE_DELTA"
+        check(item.get("write_route_status") == expected_route
+              and item.get("admission_status") == expected_admission,
+              "G3_FAMILY_ADMISSION_NOT_HELD:" + fid)
+        check(item.get("approved_git_writer_grants") == 0
+              and item.get("grant_authority") == "WRITER-SCOPES_DENY_ALL"
+              and item.get("parallel_writers_allowed") == 0
+              and item.get("approved_grant_ref") is None
+              and item.get("expected_current_parent_blob") is None
+              and item.get("expected_portable_artifact_sha256") is None
+              and item.get("mutable_target") ==
+              "UNSELECTED_NO_OWNER_AUTHORIZED_PATH"
+              and item.get("source_content_write_started") is False
+              and item.get("stage5_or_current_promotion") is False,
+              "G3_UNAUTHORIZED_FAMILY_WRITE_CLAIM:" + fid)
+        check(isinstance(item.get("gate_before_any_future_write"), str)
+              and "READBACK" in item["gate_before_any_future_write"]
+              and ("CAS" in item["gate_before_any_future_write"] or
+                   "EXACT_PARENT" in item["gate_before_any_future_write"]),
+              "G3_MISSING_WRITER_CAS_GATE:" + fid)
+    g3_totals = g3.get("totals", {})
+    check(g3_totals.get("families") == 21
+          and g3_totals.get("owner_pointers_recorded") == 10
+          and g3_totals.get("release_authority_unattested") == 6
+          and g3_totals.get("library_only") == 5
+          and g3_totals.get("authorized_active_writer_grants") == 0
+          and g3_totals.get("actively_admitted_family_writers") == 0
+          and g3_totals.get("management_routed_family_holds") == 21
+          and g3_totals.get("content_stage5_proofs_from_G3") == 0
+          and g3.get("completion") ==
+              "G3_MANAGEMENT_DISPOSITION_PASS_WITH_21_DEFAULT_DENY_HOLDS__NOT_UNIVERSAL_PRODUCTION_ENFORCEMENT",
+          "G3_FALSE_FAMILY_WRITER_COMPLETION")
+    check(len(g3.get("unavoidable_limits", [])) >= 5
+          and "FRESH_BRANCH" in g3.get("admission_contract", {}).get("branch", "")
+          and "PROTECTED_MAIN_PR" in g3.get("admission_contract", {}).get("pr", "")
+          and "EXPECTED_GIT_BLOB" in g3.get("admission_contract", {}).get("compare_and_swap", "")
+          and "EXACT_PORTABLE_PARENT_SHA" in g3.get("admission_contract", {}).get("compare_and_swap", ""),
+          "G3_WRITER_RISK_CONTRACT_REMOVED")
+
     rollout = management.get("rollout_after_management", {})
     check(rollout.get("activate_all_families_in_common_plan") is True
           and rollout.get("simultaneous_content_edit_or_release") is False
@@ -385,6 +507,9 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "management_release_authority_or_library_holds": 11,
         "management_policy_family_classifications_verified": 462,
         "management_source_type_native_gates_pinned": 4,
+        "management_writer_family_holds_verified": 21,
+        "active_writer_grants_verified": 0,
+        "cross_provider_atomic_writer_locks_proven": False,
         "real_producer_adoption_proven_by_this_test": 0,
         "learner_card_edits_authorized_by_this_test": 0,
         "Stage4_5_6_7_or_CURRENT_FINAL_certificates": 0,

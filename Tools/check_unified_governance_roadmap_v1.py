@@ -6,6 +6,7 @@ acceptance requires separate real-output parity and stage-specific receipts.
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 from pathlib import Path
 import subprocess
@@ -197,6 +198,142 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
           family_matrix.get("no_new_native_producer_adoptions") is True,
           "G1_FAMILY_COUNTS_OR_RELEASE_CLAIM")
 
+    # G2: the EXISTING policy-impact planner supplies all 462 source-specific
+    # classifications. Verify typed producer lanes and actual Git-pinned
+    # candidate gates; do not infer native adoption from routing metadata.
+    g2 = management.get("g2_policy_to_native_producer_20261111", {})
+    g2_sources = g2.get("source_of_truth", {})
+    expected_sources = {
+        "registry_path": "Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json",
+        "source_profile_path":
+            "Optimization-Program/Control-Center/Profiles/P1-ALL-FAMILY-APPLICABILITY-v1.json",
+        "planner_path": "Tools/plan_central_policy_impact_v1.py",
+    }
+    for key, path in expected_sources.items():
+        check(g2_sources.get(key) == path and
+              g2_sources.get(key.replace("_path", "_git_blob")) ==
+              git_head_blob(path),
+              "G2_SOURCE_PIN_DRIFT:" + key)
+    planner_path = ROOT / expected_sources["planner_path"]
+    spec = importlib.util.spec_from_file_location(
+        "gfp_existing_policy_planner_for_management", planner_path)
+    check(spec is not None and spec.loader is not None,
+          "G2_PLANNER_UNAVAILABLE")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source_profile = json.loads(
+        (ROOT / expected_sources["source_profile_path"]).read_text(encoding="utf-8"))
+    profiles = source_profile.get("families", [])
+    check(len(profiles) == 21 and
+          {row.get("id") for row in profiles} == set(family_ids),
+          "G2_PROFILE_COVERAGE_CHANGED")
+    declared_domains = {f["id"]: f for f in profiles}
+    g2_bindings = g2.get("policy_bindings", {})
+    bindings = registry.get("policy_bindings", {})
+    check(isinstance(g2_bindings, dict) and
+          set(g2_bindings) == set(bindings) and len(bindings) == 22,
+          "G2_POLICY_BINDING_SET_DRIFT")
+    for key, policy_binding in bindings.items():
+        expected = {
+            "scope": policy_binding["scope"],
+            "stages": policy_binding["stages"],
+            "path": policy_binding["path"],
+            "git_blob": policy_binding["blob_sha"]
+        }
+        check(g2_bindings[key] == expected,
+              "G2_POLICY_BINDING_CHANGED:" + key)
+    gates = g2.get("tested_existing_entrypoints", [])
+    expected_gate_roles = {
+        "NEW_AUTHORIZED_LEXICAL_STAGE5_CANDIDATE_ONLY":
+            "Tools/build_quality_gated_lexical_candidate_v1.py",
+        "OPTIONAL_SOURCE_ATTESTED_FRONT_TRANSPORT":
+            "Tools/build_quality_gated_front_stage5_v1.py",
+        "LEXICAL_STAGE4_SOURCE_AND_CROSS_TILE_GUARD":
+            "Verification/guard_lexical_rule_coverage_v1.py",
+        "LEXICAL_CANONICAL_FAMILY_SCOPE_CHECK":
+            "Verification/verify_lexical_family_release_route_v1.py"
+    }
+    check(isinstance(gates, list) and len(gates) == 4 and
+          {g.get("role") for g in gates} == set(expected_gate_roles),
+          "G2_MISSING_CANDIDATE_FAIL_CLOSED_GATE")
+    for gate in gates:
+        role = gate["role"]
+        path = expected_gate_roles[role]
+        check(gate.get("path") == path and
+              gate.get("git_blob") == git_head_blob(path) and
+              gate.get("adoption") not in ("ADOPTED", "FINAL", "STAGE5_PASS"),
+              "G2_GATE_BLOB_OR_FALSE_ADOPTION:" + role)
+    g2_rows = g2.get("families", [])
+    check(isinstance(g2_rows, list) and len(g2_rows) == 21,
+          "G2_FAMILY_COVERAGE_INCOMPLETE")
+    g2_ids = [item.get("family_id") for item in g2_rows]
+    check(len(set(g2_ids)) == 21 and set(g2_ids) == set(family_ids),
+          "G2_FAMILY_ID_DRIFT")
+    g1_by_id = {item["family_id"]: item for item in family_rows}
+    exact_lanes = {
+      "LEXICAL_SOURCE_CANDIDATE": (
+       "CANDIDATE_CENTRAL_LEXICAL_FAIL_CLOSED_GATE_NOT_NATIVE_ADOPTED",
+       "HOLD_LEXICAL_SOURCE_OWNER_AND_RELEASE_AUTHORIZATION"),
+      "MIXED_SOURCE_NEEDS_OUTPUT_SPLIT":
+       "HOLD_FIELD_LEVEL_SPLIT_AND_NATIVE_ADAPTER",
+      "VISUAL_MEDIA_NEEDS_PROFILE": "HOLD_VISUAL_SOURCE_NATIVE_ADAPTER",
+      "GRAMMAR_NEEDS_PROFILE": "HOLD_GRAMMAR_SOURCE_NATIVE_ADAPTER",
+      "READING_SKILLS_NEEDS_PROFILE": "HOLD_READING_SOURCE_NATIVE_ADAPTER",
+      "WRITING_SKILLS_NEEDS_PROFILE": "HOLD_WRITING_SOURCE_NATIVE_ADAPTER",
+      "GENERIC_IMPORT_NATIVE_OUTPUT_UNRESOLVED":
+       "HOLD_GENERIC_NATIVE_OUTPUT_AND_SOURCE_OWNER"
+    }
+    total_cells = 0
+    for item in g2_rows:
+        fid = item["family_id"]
+        prof = declared_domains[fid]
+        src = g1_by_id[fid]
+        domain = prof["declared_domain"]
+        check(item.get("declared_domain") == domain and
+              item.get("management_class") == src["management_class"] and
+              item.get("owner_status_git_blob") ==
+              src.get("source_status_git_blob"),
+              "G2_FAMILY_SOURCE_AUTHORITY_DRIFT:" + fid)
+        lane = item.get("producer_lane", {})
+        status = lane.get("status")
+        klass = src["management_class"]
+        if klass == "LIBRARY_ONLY_CATALOG":
+            expected_lane = "HOLD_LIBRARY_OWNER_AND_EXACT_CURRENT_BYTES"
+        elif domain == "LEXICAL_SOURCE_CANDIDATE":
+            expected_lane = exact_lanes[domain][
+                0 if klass == "OWNER_POINTER_RECORDED" else 1]
+        else:
+            expected_lane = exact_lanes[domain]
+        check(status == expected_lane and
+              isinstance(lane.get("required"), str) and
+              bool(lane["required"]) and
+              lane.get("central_entrypoint") == (
+                  "Tools/build_quality_gated_lexical_candidate_v1.py"
+                  if domain == "LEXICAL_SOURCE_CANDIDATE"
+                  and klass != "LIBRARY_ONLY_CATALOG" else None),
+              "G2_NATIVE_LANE_UNSAFE:" + fid)
+        check(item.get("native_producer_adopted") is False and
+              item.get("stage5_accepted_by_this_matrix") is False,
+              "G2_FALSE_NATIVE_ADOPTION:" + fid)
+        policies = item.get("policy_impact", {})
+        check(isinstance(policies, dict) and set(policies) == set(bindings),
+              "G2_FAMILY_POLICY_COVERAGE:" + fid)
+        for binding_id, binding in bindings.items():
+            expected_impact = module.family_decision(prof, binding)
+            check(policies[binding_id] == expected_impact,
+                  "G2_RULE_SOURCE_TYPE_MISCLASSIFIED:" + fid + ":" + binding_id)
+            total_cells += 1
+    totals = g2.get("totals", {})
+    check(total_cells == 462 and totals.get("families") == 21
+          and totals.get("bindings") == 22
+          and totals.get("expected_policy_family_cells") == total_cells
+          and totals.get("new_formal_native_adoption_count") == 0
+          and totals.get("prospective_routes_only") is True,
+          "G2_POLICY_MATRIX_FALSE_COMPLETION")
+    check(g2.get("completion") ==
+          "MANAGEMENT_FIELD_AND_GATE_MAPPING_ONLY__SOURCE_SPECIFIC_IMPLEMENTATION_AND_TESTED_ADOPTION_HOLD",
+          "G2_IMPROPER_RELEASE_CLAIM")
+
     rollout = management.get("rollout_after_management", {})
     check(rollout.get("activate_all_families_in_common_plan") is True
           and rollout.get("simultaneous_content_edit_or_release") is False
@@ -246,6 +383,8 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "management_family_routes_verified": 21,
         "management_git_status_document_blobs_verified": 16,
         "management_release_authority_or_library_holds": 11,
+        "management_policy_family_classifications_verified": 462,
+        "management_source_type_native_gates_pinned": 4,
         "real_producer_adoption_proven_by_this_test": 0,
         "learner_card_edits_authorized_by_this_test": 0,
         "Stage4_5_6_7_or_CURRENT_FINAL_certificates": 0,

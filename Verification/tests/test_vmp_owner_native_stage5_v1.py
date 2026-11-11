@@ -97,6 +97,7 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
         # This is NOT a valid release ZIP; the real central builder verifies
         # the archive and its contents before owner postbuild is invoked.
         self.output.write_bytes(b"synthetic-postcentral-output")
+        sys.path.insert(0, str(ROOT / "Tools"))
         from build_quality_gated_lexical_candidate_v1 import select_roles
         roles = select_roles(self.src)
         pins = {name: sha(path) for name, path in roles.items()}
@@ -136,7 +137,10 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
                                     "POSTBUILD_ZIP_MISSING_OR_UNSAFE"):
             vmp.verify_postbuild_snapshot(
                 ROOT, self.src, self.output, self.receipt, report)
-        self.output.symlink_to(self.src / "SYNTHETIC-import.tsv")
+        try:
+            self.output.symlink_to(self.src / "SYNTHETIC-import.tsv")
+        except (OSError, NotImplementedError):
+            return  # Windows CI may lack symlink privilege; missing ZIP checked.
         with self.assertRaisesRegex(ValueError,
                                     "POSTBUILD_ZIP_MISSING_OR_UNSAFE"):
             vmp.verify_postbuild_snapshot(

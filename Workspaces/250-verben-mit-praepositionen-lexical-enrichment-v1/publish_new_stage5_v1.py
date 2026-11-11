@@ -106,6 +106,48 @@ def preflight(root: Path, source: Path, output: Path, receipt: Path,
         "status": "OWNER_AND_SOURCE_PREFLIGHT_PASS_NOT_STAGE5_OR_ADOPTED"
     }
 
+def verify_postbuild_snapshot(root: Path, source: Path, output: Path,
+                              receipt: Path, report: dict) -> str:
+    """One last owner-side byte check AFTER the central Stage5 subprocess.
+
+    Central QA checks the ZIP and proofs during packaging; the owner must not
+    claim success if the output, format receipt, source roles or route then
+    change before the final source-owned handoff. No file is edited here.
+    """
+    require(isinstance(report, dict), "POSTBUILD_REPORT_NOT_OBJECT")
+    require(output.is_file() and not output.is_symlink(),
+            "POSTBUILD_ZIP_MISSING_OR_UNSAFE")
+    expected = report.get("exact_governed_output_zip_sha256")
+    require(isinstance(expected, str) and re.fullmatch(r"[a-f0-9]{64}", expected),
+            "POSTBUILD_ZIP_SHA_UNATTESTED")
+    require(digest(output) == expected, "POSTBUILD_ZIP_CHANGED_AFTER_CENTRAL_QA")
+
+    format_build = report.get("governed_format_build")
+    require(isinstance(format_build, dict)
+            and format_build.get("status") ==
+            "PASS_GOVERNED_STAGE5_FORMAT_AND_BYTE_PARITY_ONLY"
+            and format_build.get("output_zip_sha256") == expected,
+            "POSTBUILD_CENTRAL_RECEIPT_NOT_BOUND")
+    format_receipt = document(receipt)
+    require(format_receipt == format_build,
+            "POSTBUILD_FORMAT_RECEIPT_CHANGED_OR_FORGED")
+
+    sys.path.insert(0, str(root / "Tools"))
+    from build_quality_gated_lexical_candidate_v1 import select_roles
+    role_paths = select_roles(source)
+    actual = {name: digest(path) for name, path in role_paths.items()}
+    require(report.get("exact_all_source_roles_sha256") == actual
+            and format_receipt.get("source_role_sha256") == actual,
+            "POSTBUILD_SOURCE_ROLE_BYTES_MOVED")
+    family_authority = report.get("family_authority")
+    require(isinstance(family_authority, dict)
+            and family_authority.get("family_id") == FAMILY
+            and family_authority.get("route_file_sha256") ==
+            digest(root / ROUTES),
+            "POSTBUILD_CANONICAL_ROUTER_MOVED")
+    return expected
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source_dir", type=Path)
@@ -145,9 +187,11 @@ def main() -> int:
                 "STAGE4_RECEIPT_MOVED_DURING_BUILD")
         require(digest(args.cross_tile_review) == proof["cross_tile_review_sha256"],
                 "CROSS_TILE_REVIEW_MOVED_DURING_BUILD")
+        verified_output_sha256 = verify_postbuild_snapshot(
+            ROOT, args.source_dir, args.output_zip, args.receipt, report)
         print(json.dumps({"status": "OWNER_NATIVE_STAGE5_CANDIDATE_PASS_NOT_ADOPTED",
                           "family_id": FAMILY,
-                          "candidate_sha256": digest(args.output_zip),
+                          "candidate_sha256": verified_output_sha256,
                           "stage6": "NOT_RUN", "stage7": "NOT_FINAL"}))
         return 0
     except (OSError, ValueError, UnicodeError, json.JSONDecodeError) as error:

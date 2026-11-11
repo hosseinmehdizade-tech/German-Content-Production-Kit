@@ -661,6 +661,87 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
           and close_report.get("new_content_or_release") is False,
           "G5_STATE_FALSE_PREMATURE_SOURCE_EXECUTION")
 
+    # Live source intake: source-owned currentness overrides historical
+    # management routing; no content write or producer acceptance is implied.
+    intake = management.get("coordinated_source_intake_20261111", {})
+    check(intake.get("status") ==
+          "ONE_21_FAMILY_LIVE_STATUS_INTAKE_RECORDED__NO_CONTENT_WRITES"
+          and intake.get("source_git_status_documents_live_readback_verified") == 16
+          and intake.get("source_git_status_documents_matching_previous_G1_sha") == 16
+          and intake.get("library_only_canonical_root_inventory_completed") == 5
+          and intake.get("global_source_production_authorized_by_this_intake") is False
+          and intake.get("source_provider_current_raw_bytes_reverified_by_this_intake") == 0,
+          "G5_INTAKE_FALSE_SOURCE_PROOF")
+    override = intake.get("actual_currentness_override", {})
+    check(override.get("family_id") == "family:aspekte-b2"
+          and override.get("preferred_authority") ==
+              "Workspaces/aspekte-b2-v336/RUN-CONTROL.json"
+          and override.get("git_blob") ==
+              git_head_blob("Workspaces/aspekte-b2-v336/RUN-CONTROL.json")
+          and override.get("master_version") == "7"
+          and override.get("next_lesson") == "L06"
+          and override.get("next_phase") == 2
+          and override.get("lesson_cards") == 141
+          and override.get("already_final_stage4_cards") == 864
+          and override.get("total_unique_cards") == 1719
+          and override.get("old_owner_LATEST_and_CHECKPOINT_outdated_for_operational_progress") is True
+          and override.get("release_status") == "NONIMPORT"
+          and override.get("no_source_mutation_by_this_intake") is True,
+          "G5_B2_LIVE_CURRENTNESS_DOWNGRADED")
+    actual_b2 = json.loads((ROOT / override["preferred_authority"]).read_text(encoding="utf-8"))
+    check(actual_b2.get("next_task", {}).get("master_version") ==
+          override["master_version"]
+          and actual_b2["next_task"].get("authority_sha256") ==
+          override.get("master_sha256")
+          and actual_b2["next_task"].get("semantic_completed_total") ==
+          override["already_final_stage4_cards"]
+          and actual_b2["next_task"].get("current_lesson") ==
+          override["next_lesson"]
+          and actual_b2["next_task"].get("lesson_phase") ==
+          override["next_phase"],
+          "G5_B2_RUN_CONTROL_RECONCILIATION_BROKEN")
+    inventory = intake.get("source_specific_paths", [])
+    check(isinstance(inventory, list) and len(inventory) == 21
+          and {f.get("family_id") for f in inventory} == set(family_ids)
+          and len({f.get("family_id") for f in inventory}) == 21,
+          "G5_INTAKE_FAMILY_COVERAGE_INCOMPLETE")
+    previous_g1 = {f["family_id"]: f for f in family_rows}
+    library_count = 0
+    for item in inventory:
+        fid = item["family_id"]
+        source = previous_g1[fid]
+        check(item.get("current_source_management_class") ==
+              source["management_class"]
+              and item.get("source_status_document") ==
+              source["source_status_document"]
+              and item.get("source_status_git_blob_verified_in_read_only_intake") ==
+              source["source_status_git_blob"]
+              and item.get("canonical_git_workspace") ==
+              source["canonical_git_workspace"]
+              and isinstance(item.get("read_only_action"), str)
+              and bool(item["read_only_action"])
+              and item.get("current_raw_source_bytes_verified_this_intake") is False
+              and item.get("writer_approved_by_this_intake") is False
+              and item.get("native_stage5_adopted_by_this_intake") is False,
+              "G5_INTAKE_OWNER_OR_WRITE_AUTHORITY_FALSE:" + fid)
+        if source["source_status_document"]:
+            check(git_head_blob(source["source_status_document"]) ==
+                  item["source_status_git_blob_verified_in_read_only_intake"],
+                  "G5_INTAKE_OWNER_GIT_BLOB_DRIFT:" + fid)
+        else:
+            library_count += 1
+            check(item.get("library_observation", {}).get("current_exact_source")
+                  is False,
+                  "G5_INTAKE_LIBRARY_CURRENT_FALSE_CLAIM:" + fid)
+    check(library_count == 5 and
+          intake.get("canonical_owner_counts") ==
+          {"accepted_owner_pointer": 10,
+           "release_owner_unattested": 6,
+           "library_only_no_current": 5}
+          and intake.get("safety", {}).get("no_new_adopter_or_stage5") is True
+          and intake.get("safety", {}).get("originals_and_final_portables_unchanged") is True,
+          "G5_INTAKE_NO_MASS_SOURCE_PROMOTION")
+
     rollout = management.get("rollout_after_management", {})
     check(rollout.get("activate_all_families_in_common_plan") is True
           and rollout.get("simultaneous_content_edit_or_release") is False
@@ -718,6 +799,8 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "management_g4_family_retention_holds_verified": 21,
         "management_g5_kickoff_families_verified": 21,
         "management_g5_stage_dispositions_verified": 147,
+        "coordinated_readonly_intake_families": 21,
+        "b2_live_stage4_completed_cards": 864,
         "app_main_branch_protected_claimed": False,
         "independent_content_provider_sha256_rehashed_by_this_test": 0,
         "real_producer_adoption_proven_by_this_test": 0,

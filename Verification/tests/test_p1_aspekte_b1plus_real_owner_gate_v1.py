@@ -147,9 +147,11 @@ class SourceOwnerGateTests(unittest.TestCase):
     def test_nonimport_boundary_required(self):
         tampered = copy.deepcopy(self.latest)
         tampered["current_stage"] = "STAGE5_RELEASED"
+        companion = copy.deepcopy(self.checkpoint)
+        companion["current_stage"] = tampered["current_stage"]
         with self.assertRaisesRegex(gate.P1GateError,
                                     "UNEXPECTED_SOURCE_STAGE_REVIEW_REQUIRED"):
-            self.check(latest=tampered)
+            self.check(latest=tampered, checkpoint=companion)
 
 
 if __name__ == "__main__":

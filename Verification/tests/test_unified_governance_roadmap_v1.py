@@ -37,6 +37,32 @@ class RoadmapContracts(unittest.TestCase):
             copy.deepcopy(self.routes if routes is None else routes),
             self.markdown if markdown is None else markdown)
 
+    def test_management_first_campaign_is_live_and_all_families_in_scope(self):
+        out = self.check()
+        self.assertEqual(out["real_producer_adoption_proven_by_this_test"], 0)
+        mg = self.roadmap["management_first_campaign_20261111"]
+        self.assertEqual([g["id"] for g in mg["management_gates"]],
+                         ["G0", "G1", "G2", "G3", "G4", "G5"])
+        self.assertEqual(mg["baseline_provenance"]["families_total"], 21)
+
+    def test_unqualified_optimizer_continuation_cannot_skip_management(self):
+        wrong = copy.deepcopy(self.roadmap)
+        wrong["management_first_campaign_20261111"]["active_phase"] = "ALL_DONE"
+        with self.assertRaisesRegex(ValueError, "MANAGEMENT_FIRST_NOT_ACTIVE"):
+            self.check(roadmap=wrong)
+
+    def test_mass_release_cannot_be_mistaken_for_one_portfolio_campaign(self):
+        wrong = copy.deepcopy(self.roadmap)
+        wrong["management_first_campaign_20261111"]["rollout_after_management"]["simultaneous_content_edit_or_release"] = True
+        with self.assertRaisesRegex(ValueError, "MANAGEMENT_ROLLOUT_UNSAFE"):
+            self.check(roadmap=wrong)
+
+    def test_manager_status_cannot_claim_new_adopted_producers_without_evidence(self):
+        wrong = copy.deepcopy(self.state)
+        wrong["management_first_sequencing_20261111"]["native_producers_formally_adopted"] = 21
+        with self.assertRaisesRegex(ValueError, "MANAGEMENT_STATE_UNSYNCED"):
+            self.check(state=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

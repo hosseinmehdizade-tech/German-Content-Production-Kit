@@ -246,6 +246,35 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G5_STATE_FALSE_PREMATURE_SOURCE_EXECUTION"):
             self.check(state=wrong)
 
+    def test_g5_live_source_intake_21_not_released(self):
+        result = self.check()
+        self.assertEqual(result["coordinated_readonly_intake_families"], 21)
+        self.assertEqual(result["b2_live_stage4_completed_cards"], 864)
+        self.assertEqual(result["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_g5_b2_run_control_not_downgraded_to_old_l05(self):
+        wrong = copy.deepcopy(self.roadmap)
+        latest = wrong["management_first_campaign_20261111"]["coordinated_source_intake_20261111"]["actual_currentness_override"]
+        latest["next_lesson"] = "L05"
+        latest["already_final_stage4_cards"] = 637
+        with self.assertRaisesRegex(ValueError, "G5_B2_LIVE_CURRENTNESS_DOWNGRADED"):
+            self.check(roadmap=wrong)
+
+    def test_g5_intake_cannot_enable_source_writer(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["coordinated_source_intake_20261111"]["source_specific_paths"][0]
+        row["writer_approved_by_this_intake"] = True
+        with self.assertRaisesRegex(ValueError, "G5_INTAKE_OWNER_OR_WRITE_AUTHORITY_FALSE"):
+            self.check(roadmap=wrong)
+
+    def test_g5_intake_cannot_claim_library_source_without_bytes(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["coordinated_source_intake_20261111"]["source_specific_paths"]
+        row = next(x for x in rows if x["family_id"] == "family:schreiben")
+        row["library_observation"]["current_exact_source"] = True
+        with self.assertRaisesRegex(ValueError, "G5_INTAKE_LIBRARY_CURRENT_FALSE_CLAIM"):
+            self.check(roadmap=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

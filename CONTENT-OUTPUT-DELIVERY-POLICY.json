@@ -29,7 +29,7 @@
       "full Flashcards Pro app/release workstream",
       "standalone Grammar/Lesen/Schreiben nonlexical deliverables unless their own policy explicitly opts in"
     ],
-    "default_trigger": "When authorized to deliver a newly produced or changed vocabulary, lexical card, word, lesson or vocabulary workstream output. Do NOT rebuild or reissue an already accepted unchanged content ZIP solely because Stage6 browser tests are blocked.",
+    "default_trigger": "When delivering/uploading/completing a vocabulary, lexical card, word, lesson, or vocabulary workstream output",
     "user_override": "Explicit scoped request for a single-file import, app release, alternate archive layout, or separate artifacts overrides this default only for the specified delivery."
   },
   "default_delivery": {
@@ -78,39 +78,23 @@
       "Verify no Flashcards app/runtime bits are bundled",
       "Verify retained import output SHA256 identical to upstream accepted content and no unwanted source/identity changes",
       "Record source rights/external dependencies accurately",
-      "Record app CURRENT and app-owned Stage6 status separately; never make a blocked browser integration gate prevent otherwise verified CONTENT_ONLY handoff or claim native import/FSRS safety",
+      "Record app CURRENT and Stage6 status separately if runtime compatibility matters",
       "Re-extract ZIP into a fresh directory and run applicable tests before PASS",
       "Store one verified complete production ZIP to Library/Project and compact hash + checkpoint to Git"
     ],
-    "do_not_claim": "A verified CONTENT_ONLY release is NOT a live browser import, installed-app compatibility, SRS/FSRS safety, or APP_INTEGRATED final release. A blocked Stage6 must remain BLOCKED; do not repeat an unchanged blocked browser test or promote native PASS from parser/static QA."
+    "do_not_claim": "A complete content-production ZIP is NOT automatic live browser import/SRS/production app approval."
   },
   "artifact_separation": {
     "user_receives": "One complete production/content ZIP (all necessary workstream files, NOT just final TSV)",
     "git": "Small text contract/metadata/checkpoints only; no binary ZIP reconstruction",
-    "app_release": "APP_INTEGRATED/whole-app release is a distinct app-owner gate: required exact native Stage6 import+IndexedDB reload+SRS continuity PASS and app CURRENT release approval; never copied from a content-only receipt.",
+    "app_release": "The Flashcards-Pro whole-app release remains a distinct delivery contract, unchanged",
     "specialized_import_only": "If explicitly requested, a small import-only ZIP/TSV may additionally or instead be produced, but it must never silently replace the complete vocabulary-production handoff."
   },
   "compatibility": {
-    "framework": "For applicable CONTENT_ONLY delivery, Stage4/Stage5 and exact package/source QA remain mandatory; app-owned Stage6 native import/IndexedDB/SRS proof is tracked independently and gates APP_INTEGRATED release only. Stages 1-7 remain in the checkpoint but have separate content vs app release scopes, see pinned Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md.",
+    "framework": "v3.3.6 Stage1-Stage7 content quality and exact CURRENT runtime acceptance gates remain unchanged",
     "previous_l01_example": "Menschen-A1-L01-v3.3.6-CONTENT-ONLY-SOURCE-AUDITED.zip was a prior content-only organized archive; FINAL-OUTPUT-ONLY.zip was a simplified variant and must not become the template for future complete production releases.",
     "historical_artifact_rule": "Do not overwrite/delete already-locked outputs; apply to next vocabulary delivery or explicit repackage request.",
     "prompt_entrypoint": "Prompt/START-PROMPT-v3.3.6.md",
     "bootstrap": "PROJECT-BOOTSTRAP.md"
-  },
-  "runtime_acceptance_separation_20261112": {
-    "policy": "CENTRAL_ALL_21_CONTENT_FAMILIES__PROSPECTIVE_AND_NON_DESTRUCTIVE",
-    "content_only_release_gate": "STAGE4_CONTENT_SEMANTIC_PASS_PLUS_STAGE5_EXACT_PROJECTION_PASS_PLUS_PACKAGING_AND_PERSISTENCE_INTEGRITY_PASS",
-    "requires_app_stage6_for_content_only": false,
-    "app_integrated_release_gate": "APP_OWNER_STAGE6_REAL_NATIVE_IMPORT_INDEXEDDB_SRS_FSRS_PASS_AND_EXACT_CURRENT_APP_PLUS_CONTENT_SHA_AND_RELEASE_APPROVAL",
-    "requires_app_stage6_for_app_integrated": true,
-    "stage6_owner": "hosseinmehdizade-tech/German-Flashcards-Pro",
-    "stage6_per_family_job": "REPORT_EXISTING_APP_OWNED_RECEIPT_OR_SINGLE_BLOCKED_CAPABILITY_NOTE__NO_DUPLICATE_BROWSER_RUNS",
-    "blocked_runtime_state": "BLOCKED",
-    "blocked_runtime_release": "NOT_VERIFIED",
-    "blocked_browser_once_per_unchanged_environment": true,
-    "retest_only_if": "REAL_RUNNABLE_ENVIRONMENT_OR_PERMISSION_CHANGE_OR_MATERIALLY_AFFECTED_RUNTIME_IMPORT_FORMAT_WITH_RUNNABLE_BROWSER",
-    "preserve_accepted_outputs": true,
-    "no_full_rebuild_from_stage6_block": true,
-    "no_new_app_release_or_content_acceptance_inferred_from_policy_change": true
   }
 }

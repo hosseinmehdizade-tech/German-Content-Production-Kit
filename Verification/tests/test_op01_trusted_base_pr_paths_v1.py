@@ -45,6 +45,21 @@ class TrustedBasePathGuardTests(unittest.TestCase):
                                     "TRUSTED_GOVERNANCE_CONTROL_PATH_EDIT"):
             self.check([".github/workflows/gfp-op01-trusted-base-guard.yml"])
 
+    def test_fresh_workflow_can_not_spoof_a_required_job_name(self):
+        # A NEW filename can claim an old check context with GitHub Actions as
+        # its source; protecting only the original workflow name is unsound.
+        with self.assertRaisesRegex(ValueError,
+                                    "TRUSTED_GOVERNANCE_CONTROL_PATH_EDIT"):
+            self.check([".github/workflows/new-fake-required-status.yml"])
+
+    def test_renamed_filename_into_workflows_is_also_denied(self):
+        pr, files = snapshot([".github/workflows/fake-from-docs.yaml"])
+        files[0]["status"] = "renamed"
+        files[0]["previous_filename"] = "docs/notes.yaml"
+        with self.assertRaisesRegex(ValueError,
+                                    "TRUSTED_GOVERNANCE_CONTROL_PATH_EDIT"):
+            guard.assess(pr, files, REPO, 178, HEAD)
+
     def test_self_verifier_edit_denied(self):
         with self.assertRaisesRegex(ValueError,
                                     "TRUSTED_GOVERNANCE_CONTROL_PATH_EDIT"):

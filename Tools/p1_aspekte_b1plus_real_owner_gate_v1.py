@@ -25,6 +25,15 @@ MANDATORY_STAGE4 = {"curated_current_delta_qa", "seven_stages",
                     "risk_based_stage4", "linguistic_qa"}
 # Current was curated for three months; never use raw textbook re-inventory as a gate.
 STAGE4_NONIMPORT = "STAGE4_G2_"
+# Exact source-owner state observed on current Git main; not a Stage4/5 approval.
+GATE08_NONIMPORT = (
+    "APP_GATE08_MULTISENSE_SOURCE_PATCH_AND_GITHUB_CI_PASS__"
+    "BROADER_CI_AND_NATIVE_IMPORT_BLOCKED"
+)
+GATE08_STAGE5_PENDING = (
+    "PENDING_REAL_NATIVE_APP_IMPORT_TRUSTED_AUTHORIZATION_"
+    "RIGHTCARD_DURABLE_SRS_ACCEPTANCE_NONIMPORT"
+)
 
 class P1GateError(ValueError):
     pass
@@ -111,22 +120,39 @@ def evaluate(root: Path, *, registry: dict | None = None,
     require(lat.get("stage1_lexical_records_processed") == cp.get("source_rows")
             and isinstance(cp.get("source_rows"), int)
             and cp["source_rows"] > 0, "SOURCE_ROW_COVERAGE_DRIFT")
-    require(str(lat.get("current_stage", "")).startswith(STAGE4_NONIMPORT),
-            "UNEXPECTED_SOURCE_STAGE_REVIEW_REQUIRED")
     require(lat.get("import_ready") is False
             and lat.get("stage4_formal_acceptance") is False
-            and cp.get("stage5") == cp.get("stage6") == cp.get("stage7") == "NOT_STARTED",
+            and cp.get("import_ready") is False
+            and cp.get("stage5") in ("NOT_STARTED", GATE08_STAGE5_PENDING)
+            and cp.get("stage6") == cp.get("stage7") == "NOT_STARTED",
             "FALSE_STAGE4_5_6_7_OR_IMPORT_PROMOTION")
-    require("NONIMPORT" in str(lat["current_stage"])
-            and "NONIMPORT" in str(cp.get("status", "")),
+    current_stage = str(lat.get("current_stage", ""))
+    current_status = str(lat.get("status", ""))
+    require(current_stage == cp.get("current_stage")
+            and current_status == cp.get("status"),
+            "OWNER_LATEST_CHECKPOINT_STAGE_OR_STATUS_DRIFT")
+    historical_stage4 = (current_stage.startswith(STAGE4_NONIMPORT)
+                         and "NONIMPORT" in current_stage
+                         and cp.get("stage5") == "NOT_STARTED")
+    current_gate08 = (
+        current_stage == GATE08_NONIMPORT
+        and "NONIMPORT" in current_status
+        and str(cp.get("stage4", "")).endswith("HOLDS_STILL_UNAPPROVED")
+        and cp.get("stage5") == GATE08_STAGE5_PENDING
+    )
+    require(historical_stage4 or current_gate08,
+            "UNEXPECTED_SOURCE_STAGE_REVIEW_REQUIRED")
+    require("NONIMPORT" in current_status and "NONIMPORT" in str(cp.get("status", "")),
             "OWNER_NONIMPORT_BOUNDARY_LOST")
     require(4 in bindings["risk_based_stage4"]["stages"]
             and 4 in bindings["linguistic_qa"]["stages"]
             and 4 in bindings["curated_current_delta_qa"]["stages"]
             and 4 in bindings["seven_stages"]["stages"],
             "STAGE4_POLICY_ROUTING_GAP")
-    visible = re.search(r"_(\d+)_REMAIN_NONIMPORT", lat["current_stage"])
+    visible = re.search(r"_(\d+)_REMAIN_NONIMPORT", current_stage)
     remaining = int(visible.group(1)) if visible else None
+    hold = re.search(r"(\d+)_HOLDS_STILL_UNAPPROVED", str(cp.get("stage4", "")))
+    reported_stage4_holds = int(hold.group(1)) if hold else None
     active = sorted(key for key, rule in bindings.items() if 4 in rule["stages"])
     return {
         "schema": "gfp-opt-p1-real-owner-stage4-preflight@1.0.0",
@@ -134,7 +160,8 @@ def evaluate(root: Path, *, registry: dict | None = None,
                   "curated_source_sha256": lat["source_sha256"],
                   "source_rows": cp["source_rows"],
                   "pending_form_scope_checks_from_latest": remaining,
-                  "current_stage": lat["current_stage"]},
+                  "reported_stage4_holds_from_checkpoint": reported_stage4_holds,
+                  "current_stage": current_stage},
         "scope": "REAL_SOURCE_OWNER_CURRENT_GIT_CHECKOUT_READONLY",
         "policy": {"registry_git_blob": reg_blob, "catalog_git_blob": cat_blob,
                    "domain_profile_git_blob": domain_blob,
@@ -148,7 +175,10 @@ def evaluate(root: Path, *, registry: dict | None = None,
         "stage7": "NOT_RUN",
         "new_formal_policy_adoptions": 0,
         "report_status": "PASS_REAL_OWNER_AND_ALL_POLICY_BYTES__NO_STAGE5_ADOPTION",
-        "next": "Complete source-owned 274 remaining G2 form checks and independent semantic Stage4; after a NEW explicit owner Stage5 decision, verify original four roles, live Git main and Library bytes. Do not reuse historic ZIPs."
+        "next": ("Resolve the CURRENT source-owned Stage4 HOLDs and native "
+                 "app/CI import blockers; require a fresh authorized Stage4 "
+                 "receipt and governed Stage5 execution before any adoption. "
+                 "Do not reimport or repackage accepted historical ZIPs.")
     }
 
 def main() -> int:

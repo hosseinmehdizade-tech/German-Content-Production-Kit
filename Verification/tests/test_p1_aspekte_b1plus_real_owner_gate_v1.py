@@ -34,6 +34,9 @@ class SourceOwnerGateTests(unittest.TestCase):
                          "PASS_REAL_OWNER_AND_ALL_POLICY_BYTES__NO_STAGE5_ADOPTION")
         self.assertEqual(output["owner"]["source_rows"], 1548)
         self.assertEqual(output["owner"]["project_id"], "aspekte-b1plus")
+        self.assertEqual(output["owner"]["current_stage"], gate.GATE08_NONIMPORT)
+        self.assertEqual(output["owner"]["reported_stage4_holds_from_checkpoint"], 340)
+        self.assertNotIn("274 remaining G2", output["next"])
         self.assertEqual(output["policy"]["registered_bindings"],
                          len(self.registry["policy_bindings"]))
         self.assertEqual(output["policy"]["byte_pinned_bindings_verified"],
@@ -46,6 +49,43 @@ class SourceOwnerGateTests(unittest.TestCase):
         self.assertEqual(output["stage5"],
                          "BLOCKED_NO_NEW_SOURCE_OWNER_STAGE4_APPROVAL")
         self.assertEqual(output["new_formal_policy_adoptions"], 0)
+
+    def test_checkpoint_and_latest_stage_must_agree(self):
+        tampered = copy.deepcopy(self.checkpoint)
+        tampered["current_stage"] = "STAGE4_G2_274_REMAIN_NONIMPORT"
+        with self.assertRaisesRegex(gate.P1GateError,
+                                    "OWNER_LATEST_CHECKPOINT_STAGE_OR_STATUS_DRIFT"):
+            self.check(checkpoint=tampered)
+
+    def test_gate08_without_explicit_stage4_holds_is_not_approved(self):
+        tampered = copy.deepcopy(self.checkpoint)
+        tampered["stage4"] = "STAGE4_ALL_APPROVED"
+        with self.assertRaisesRegex(gate.P1GateError,
+                                    "UNEXPECTED_SOURCE_STAGE_REVIEW_REQUIRED"):
+            self.check(checkpoint=tampered)
+
+    def test_gate08_ambiguous_blocked_name_is_rejected(self):
+        tampered = copy.deepcopy(self.latest)
+        tampered["current_stage"] = "APP_GATE08_MAYBE_OK_NONIMPORT"
+        companion = copy.deepcopy(self.checkpoint)
+        companion["current_stage"] = tampered["current_stage"]
+        with self.assertRaisesRegex(gate.P1GateError,
+                                    "UNEXPECTED_SOURCE_STAGE_REVIEW_REQUIRED"):
+            self.check(latest=tampered, checkpoint=companion)
+
+    def test_gate08_fake_checkpoint_import_ready_is_rejected(self):
+        tampered = copy.deepcopy(self.checkpoint)
+        tampered["import_ready"] = True
+        with self.assertRaisesRegex(gate.P1GateError,
+                                    "FALSE_STAGE4_5_6_7_OR_IMPORT_PROMOTION"):
+            self.check(checkpoint=tampered)
+
+    def test_gate08_fake_stage6_pass_is_rejected(self):
+        tampered = copy.deepcopy(self.checkpoint)
+        tampered["stage6"] = "PASS_WITHOUT_REAL_IMPORT"
+        with self.assertRaisesRegex(gate.P1GateError,
+                                    "FALSE_STAGE4_5_6_7_OR_IMPORT_PROMOTION"):
+            self.check(checkpoint=tampered)
 
     def test_fake_formal_stage4_approval_is_rejected(self):
         tampered = copy.deepcopy(self.latest)
@@ -107,9 +147,11 @@ class SourceOwnerGateTests(unittest.TestCase):
     def test_nonimport_boundary_required(self):
         tampered = copy.deepcopy(self.latest)
         tampered["current_stage"] = "STAGE5_RELEASED"
+        companion = copy.deepcopy(self.checkpoint)
+        companion["current_stage"] = tampered["current_stage"]
         with self.assertRaisesRegex(gate.P1GateError,
                                     "UNEXPECTED_SOURCE_STAGE_REVIEW_REQUIRED"):
-            self.check(latest=tampered)
+            self.check(latest=tampered, checkpoint=companion)
 
 
 if __name__ == "__main__":

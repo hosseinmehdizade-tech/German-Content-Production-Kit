@@ -450,8 +450,10 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
               "G3_MANAGEMENT_DISPOSITION_PASS_WITH_21_DEFAULT_DENY_HOLDS__NOT_UNIVERSAL_PRODUCTION_ENFORCEMENT",
           "G3_FALSE_FAMILY_WRITER_COMPLETION")
     check(len(g3.get("unavoidable_limits", [])) >= 5
-          and "PR" in g3.get("admission_contract", {}).get("branch", "")
-          and "CAS" in g3.get("admission_contract", {}).get("compare_and_swap", ""),
+          and "FRESH_BRANCH" in g3.get("admission_contract", {}).get("branch", "")
+          and "PROTECTED_MAIN_PR" in g3.get("admission_contract", {}).get("pr", "")
+          and "EXPECTED_GIT_BLOB" in g3.get("admission_contract", {}).get("compare_and_swap", "")
+          and "EXACT_PORTABLE_PARENT_SHA" in g3.get("admission_contract", {}).get("compare_and_swap", ""),
           "G3_WRITER_RISK_CONTRACT_REMOVED")
 
     rollout = management.get("rollout_after_management", {})

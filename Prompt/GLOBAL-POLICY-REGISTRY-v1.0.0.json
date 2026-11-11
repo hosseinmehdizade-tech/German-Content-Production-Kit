@@ -2,7 +2,7 @@
   "schema": "gcpk-global-policy-registry@1.0.0",
   "version": "1.0.0",
   "status": "ACTIVE_PROSPECTIVE_POLICY_ROUTER_NOT_BULK_CONTENT_MIGRATION",
-  "date": "2026-11-12",
+  "date": "2026-11-05",
   "owner": "German-Content-Production-Kit",
   "workflow": "Prompt/ACTIVE-PROMPT.txt -> Prompt/START-PROMPT-v3.3.6.md -> Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md -> this registry -> version-pinned domain policies",
   "active_entrypoint": "Prompt/START-PROMPT-v3.3.6.md",
@@ -28,10 +28,7 @@
     "cross_workstream_state_isolation": true,
     "evidence_sha_and_exact_stage_scope_required": true,
     "write_once_report_and_compare_and_swap": true,
-    "no_mandatory_external_human_linguistic_QA_reviewer": true,
-    "content_only_package_not_blocked_by_unrunnable_app_browser": true,
-    "app_integrated_release_requires_real_native_stage6": true,
-    "blocked_browser_tests_deduplicated_when_environment_unchanged": true
+    "no_mandatory_external_human_linguistic_QA_reviewer": true
   },
   "precedence": {
     "source_authority": "newer explicit validated user artifact > newest validated portable workstream artifact > LATEST plus receipt > workstream CHECKPOINT > global PROJECT-STATE summary > historical",
@@ -56,7 +53,7 @@
     },
     "seven_stages": {
       "path": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
-      "blob_sha": "1fe490b47212b8d21d1fe3945c2f0ebf601466a4",
+      "blob_sha": "58e7b6e2d6abe462569725fe81e02111aba5d074",
       "scope": "ALL_PRODUCERS",
       "stages": [
         1,
@@ -150,7 +147,7 @@
     },
     "stage5_delivery": {
       "path": "CONTENT-OUTPUT-DELIVERY-POLICY.json",
-      "blob_sha": "1ff567336c49aa97e25a8a777729668edfcf49ff",
+      "blob_sha": "8c79dee99a67f4113f7e0320662d78ada03ff4cc",
       "scope": "USER_FACING_LEXICAL_DELIVERY",
       "stages": [
         5,
@@ -291,36 +288,5 @@
     "legacy_rule_precedence": "MANDATORY_THIRD_PARTY_SIGNATURE_IN_OLD_STAGES_AND_WORKSTREAM_CHECKPOINTS_IS_SUPERSEDED_FOR_ALL_MUTABLE_CURRENT_AND_FUTURE_PRODUCTION__KEEP_HISTORICAL_RECEIPTS_IMMUTABLE",
     "active_regression_guard": "Verification/check_no_external_human_qa_gate_v1.py",
     "first_repaired_consumer": "Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py"
-  },
-  "stage6_content_app_separation_20261112": {
-    "status": "ACTIVE_PROSPECTIVE_BOUNDARY__NO_RETROACTIVE_PROMOTION",
-    "scope": "ALL_21_CANONICAL_CONTENT_FAMILIES",
-    "normative_source": "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md",
-    "normative_source_blob": "1fe490b47212b8d21d1fe3945c2f0ebf601466a4",
-    "vocabulary_delivery_policy": "CONTENT-OUTPUT-DELIVERY-POLICY.json",
-    "vocabulary_delivery_policy_blob": "1ff567336c49aa97e25a8a777729668edfcf49ff",
-    "source_pipeline_stages_for_content_only": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      7
-    ],
-    "content_only_stage7_requires_real_app_stage6": false,
-    "app_integrated_stage7_requires_real_app_stage6": true,
-    "app_runtime_owner_repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
-    "runtime_browser_block_state": "BLOCKED",
-    "browser_block_dedup_key": [
-      "APP_RUNTIME_SHA256",
-      "CONTENT_DELIVERY_SHA256",
-      "ENVIRONMENT_ID",
-      "AFFECTED_IMPORTER_PRESENTATION_CAPABILITY"
-    ],
-    "retry_same_blocked_environment_and_same_app_contents": false,
-    "native_srs_fsrs_acceptance_cannot_be_inferred": true,
-    "no_lock_or_content_current_mutation": true,
-    "zero_native_adapter_adoption_from_policy_only": true,
-    "historical_seven_stage_enums_unchanged": true
   }
 }

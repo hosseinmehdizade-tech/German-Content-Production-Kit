@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1/publish_new_stage5_v1.py"
@@ -63,6 +64,34 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
                          "OWNER_AND_SOURCE_PREFLIGHT_PASS_NOT_STAGE5_OR_ADOPTED")
         self.assertFalse(self.output.exists())
         self.assertFalse(self.receipt.exists())
+
+    def test_same_accepted_current_import_tsv_cannot_be_repackaged(self):
+        accepted = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(
+            encoding="utf-8"))["final_content_only_v18"]["source_tsv_sha256"]
+        self.assertEqual(len(accepted), 64)
+        actual_digest = vmp.digest
+        def simulate_unchanged_current(path):
+            if Path(path).name == "SYNTHETIC-import.tsv":
+                return accepted
+            return actual_digest(path)
+        # Synthetic exact-current identity, never copy/edit private user cards.
+        with patch.object(vmp, "digest", side_effect=simulate_unchanged_current):
+            with self.assertRaisesRegex(ValueError,
+                    "NO_NEW_IMPORT_TSV_DELTA_FROM_ACCEPTED_CURRENT"):
+                self.check()
+        self.assertFalse(self.output.exists())
+        self.assertFalse(self.receipt.exists())
+        self.assertFalse(self.policy.exists())
+
+    def test_real_accepted_import_sha_is_present_and_distinct_from_candidate(self):
+        latest = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(
+            encoding="utf-8"))
+        accepted = latest["final_content_only_v18"]["source_tsv_sha256"]
+        self.assertEqual(accepted,
+            "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191")
+        self.assertNotEqual(accepted, sha(self.src / "SYNTHETIC-import.tsv"))
+        self.assertEqual(self.check()["status"],
+                         "OWNER_AND_SOURCE_PREFLIGHT_PASS_NOT_STAGE5_OR_ADOPTED")
 
     def test_stale_current_parent_fails_closed(self):
         self.evidence["curated_current_parent_sha256"] = "f" * 64

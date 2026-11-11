@@ -100,6 +100,40 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         check(policy.get(k) is v, "FALSE_PRODUCER_OR_ADOPTION_CLAIM:" + k)
     check("OP-01/OP-02" in policy.get("dispatch_in_optimizer_chat", ""),
           "OPTIMIZER_MISSION_CONTINUITY_BROKEN")
+
+    # 2026-11-11 user's management-first campaign is a stricter order of work
+    # inside the unchanged OP-01/OP-02 optimization mission, not producer
+    # admission or an invitation to release content.
+    management = r.get("management_first_campaign_20261111", {})
+    check(management.get("active_phase") == "MGMT_READINESS_G0_TO_G5__NOT_COMPLETE",
+          "MANAGEMENT_FIRST_NOT_ACTIVE")
+    gate_ids = [item.get("id") for item in management.get("management_gates", [])]
+    check(gate_ids == ["G0", "G1", "G2", "G3", "G4", "G5"],
+          "MANAGEMENT_GATE_ORDER_OR_COVERAGE_CHANGED")
+    baseline = management.get("baseline_provenance", {})
+    check(baseline.get("families_total") == 21
+          and baseline.get("family_authority_classes", {}).get("accepted_owner_pointer_present") == 10
+          and baseline.get("family_authority_classes", {}).get("stage_release_authority_unattested") == 6
+          and baseline.get("family_authority_classes", {}).get("library_only_no_git_workspace") == 5
+          and baseline.get("registered_policy_bindings") == len(registry.get("policy_bindings", {}))
+          and baseline.get("formally_adopted_native_producers") == 0,
+          "MANAGEMENT_BASELINE_FALSE_COVERAGE")
+    rollout = management.get("rollout_after_management", {})
+    check(rollout.get("activate_all_families_in_common_plan") is True
+          and rollout.get("simultaneous_content_edit_or_release") is False
+          and rollout.get("no_new_artifacts_or_zip_until_source_authorized") is True,
+          "MANAGEMENT_ROLLOUT_UNSAFE")
+    manager_state = state.get("management_first_sequencing_20261111", {})
+    check(manager_state.get("status") == "ACTIVE_MANAGEMENT_ONLY__G0_G5_OPEN__NOT_COMPLETE"
+          and manager_state.get("roadmap_path") == ROUTE
+          and manager_state.get("all_family_scope") == 21
+          and manager_state.get("native_producers_formally_adopted") == 0
+          and manager_state.get("no_stage5_source_execution_during_management") is True,
+          "MANAGEMENT_STATE_UNSYNCED")
+    check("MANAGEMENT-FIRST" in policy.get("dispatch_in_optimizer_chat", "")
+          and "MANAGEMENT-FIRST" in r.get("immediate_next_action", "")
+          and "MANAGEMENT-FIRST" in state.get("next_exact_action", ""),
+          "MANAGEMENT_FIRST_PRIORITY_DRIFT")
     statuses = r.get("roll_out_states", [])
     check(statuses == ["NOT_ROUTED", "ROUTED_ONLY", "ADAPTER_IMPLEMENTED_SYNTHETIC",
                        "REAL_OUTPUT_PARITY_VERIFIED", "QA_GATE_ENFORCED_AT_ELIGIBLE_BOUNDARY",

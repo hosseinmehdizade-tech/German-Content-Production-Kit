@@ -742,6 +742,70 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
           and intake.get("safety", {}).get("originals_and_final_portables_unchanged") is True,
           "G5_INTAKE_NO_MASS_SOURCE_PROMOTION")
 
+    # Scope-compatible content-only closure (2026-11-12): source work ends at
+    # Stage5 without re-running an inaccessible app browser. Formal Stage6/7
+    # remain protected and require genuine app-side evidence.
+    boundary = management.get("content_completion_app_stage6_boundary_20261112", {})
+    check(boundary.get("status") ==
+          "ACTIVE_SYNC_CONTRACT_INTERPRETATION__REGISTRY_AND_PROTECTED_PIPELINE_IMMUTABLE"
+          and boundary.get("source_family_coverage") == 21
+          and len(boundary.get("family_ids", [])) == 21
+          and set(boundary.get("family_ids", [])) == set(family_ids),
+          "CONTENT_APP_BOUNDARY_NOT_ALL_21_FAMILIES")
+    sync_path = "Prompt/GLOBAL-POLICY-SYNCHRONIZATION-v1.0.0.md"
+    check(boundary.get("active_sync_contract_path") == sync_path
+          and boundary.get("active_sync_contract_git_blob") ==
+          git_head_blob(sync_path)
+          and boundary.get("protected_registry_path") == REGISTRY
+          and boundary.get("protected_registry_git_blob") ==
+          git_head_blob(REGISTRY)
+          and boundary.get("protected_pipeline_path") ==
+          "Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md"
+          and boundary.get("protected_pipeline_git_blob") ==
+          git_head_blob("Prompt/SEVEN-STAGE-PRODUCTION-PIPELINE-v1.0.0.md"),
+          "CONTENT_APP_BOUNDARY_PROTECTED_POLICY_OR_SYNC_DRIFT")
+    check(boundary.get("content_source_completion_stage") == 5
+          and boundary.get("content_owner_terminal_status") ==
+          "CONTENT_ACCEPTED_AFTER_VERIFIED_STAGE4_5_AND_CONTENT_PACKAGE_QA"
+          and boundary.get("formal_stage6_owner") ==
+          "hosseinmehdizade-tech/German-Flashcards-Pro"
+          and boundary.get("native_stage6_not_run_state") == "BLOCKED"
+          and boundary.get("formal_app_stage7_requires_native_stage6_pass") is True
+          and boundary.get("formal_stage7_pass_claim_from_content_only") is False
+          and boundary.get("content_owner_stage5_may_finish_while_stage6_unavailable") is True,
+          "CONTENT_APP_BOUNDARY_FALSE_FINAL_OR_SOURCE_GATE")
+    check(boundary.get("same_blocked_environment_browser_attempt_must_not_repeat") is True
+          and boundary.get("browser_block_case") == "ERR_BLOCKED_BY_ADMINISTRATOR"
+          and boundary.get("previously_accepted_content_immutable") is True
+          and boundary.get("zero_card_or_accepted_portable_rewrites") is True
+          and boundary.get("application_current_ui_or_srs_unchanged") is True
+          and boundary.get("no_new_formal_native_adapter_adoptions") is True
+          and boundary.get("no_new_app_final_or_runtime_pass") is True
+          and boundary.get("historical_families_source_stage6_7_status_not_promoted") is True,
+          "CONTENT_APP_BOUNDARY_BLOCKED_LOOP_OR_MUTATION")
+    sync_body = (ROOT / sync_path).read_text(encoding="utf-8")
+    for fragment in (
+        "all 21",
+        "Stage5",
+        "CONTENT_ACCEPTED",
+        "ERR_BLOCKED_BY_ADMINISTRATOR",
+        "Stage6",
+        "Stage7",
+        "do not attempt the same inaccessible browser again",
+        "git",
+    ):
+        check(fragment.lower() in sync_body.lower(),
+              "CONTENT_APP_BOUNDARY_ACTIVE_RESOLVER_UNCLEAR:" + fragment)
+    split_state = state.get("management_first_sequencing_20261111", {}).get(
+        "content_completion_app_stage6_20261112", {})
+    check(split_state.get("sources") == 21
+          and split_state.get("stage5_content_can_complete_without_browser") is True
+          and split_state.get("app_owned_stage6_still_required_for_formal_final") is True
+          and split_state.get("retry_identical_blocked_browser") is False
+          and split_state.get("protected_registry_unchanged") is True
+          and split_state.get("no_source_mutations") is True,
+          "CONTENT_APP_BOUNDARY_STATE_NOT_SYNCED")
+
     rollout = management.get("rollout_after_management", {})
     check(rollout.get("activate_all_families_in_common_plan") is True
           and rollout.get("simultaneous_content_edit_or_release") is False
@@ -800,6 +864,9 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "management_g5_kickoff_families_verified": 21,
         "management_g5_stage_dispositions_verified": 147,
         "coordinated_readonly_intake_families": 21,
+        "content_completion_without_native_browser_families": 21,
+        "formal_stage6_app_owner_still_required": True,
+        "same_blocked_browser_retry_allowed": False,
         "b2_live_stage4_completed_cards": 864,
         "app_main_branch_protected_claimed": False,
         "independent_content_provider_sha256_rehashed_by_this_test": 0,

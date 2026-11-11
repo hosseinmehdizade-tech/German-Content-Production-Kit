@@ -275,6 +275,48 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G5_INTAKE_LIBRARY_CURRENT_FALSE_CLAIM"):
             self.check(roadmap=wrong)
 
+    def test_content_only_closure_no_browser_for_all_21(self):
+        x = self.check()
+        self.assertEqual(x["content_completion_without_native_browser_families"], 21)
+        self.assertTrue(x["formal_stage6_app_owner_still_required"])
+        self.assertFalse(x["same_blocked_browser_retry_allowed"])
+        self.assertEqual(x["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_content_close_cannot_fake_app_final(self):
+        bad = copy.deepcopy(self.roadmap)
+        path = bad["management_first_campaign_20261111"]["content_completion_app_stage6_boundary_20261112"]
+        path["formal_app_stage7_requires_native_stage6_pass"] = False
+        with self.assertRaisesRegex(ValueError, "CONTENT_APP_BOUNDARY_FALSE_FINAL_OR_SOURCE_GATE"):
+            self.check(roadmap=bad)
+
+    def test_blocked_browser_retry_must_stay_off(self):
+        bad = copy.deepcopy(self.roadmap)
+        path = bad["management_first_campaign_20261111"]["content_completion_app_stage6_boundary_20261112"]
+        path["same_blocked_environment_browser_attempt_must_not_repeat"] = False
+        with self.assertRaisesRegex(ValueError, "CONTENT_APP_BOUNDARY_BLOCKED_LOOP_OR_MUTATION"):
+            self.check(roadmap=bad)
+
+    def test_cannot_skip_one_source_from_content_completeness_boundary(self):
+        bad = copy.deepcopy(self.roadmap)
+        path = bad["management_first_campaign_20261111"]["content_completion_app_stage6_boundary_20261112"]
+        path["family_ids"].pop()
+        with self.assertRaisesRegex(ValueError, "CONTENT_APP_BOUNDARY_NOT_ALL_21_FAMILIES"):
+            self.check(roadmap=bad)
+
+    def test_cannot_rename_protected_pipeline_without_owner_approval(self):
+        bad = copy.deepcopy(self.roadmap)
+        path = bad["management_first_campaign_20261111"]["content_completion_app_stage6_boundary_20261112"]
+        path["protected_registry_git_blob"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "CONTENT_APP_BOUNDARY_PROTECTED_POLICY_OR_SYNC_DRIFT"):
+            self.check(roadmap=bad)
+
+    def test_runtime_boundary_cannot_mutate_accepted_sources(self):
+        bad = copy.deepcopy(self.state)
+        path = bad["management_first_sequencing_20261111"]["content_completion_app_stage6_20261112"]
+        path["no_source_mutations"] = False
+        with self.assertRaisesRegex(ValueError, "CONTENT_APP_BOUNDARY_STATE_NOT_SYNCED"):
+            self.check(state=bad)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

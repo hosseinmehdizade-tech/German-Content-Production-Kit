@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "project_id": "aspekte-b1plus",
   "definition": "LOCKED_v1.0",
-  "current_stage": "APP_PRESENTATION_STATIC_PREFLIGHT_COMPLETE_TRUSTED_RELEASE_AND_NATIVE_IMPORT_SRS_STILL_BLOCKED",
+  "current_stage": "APP_GATE08_MULTISENSE_SOURCE_PATCH_AND_GITHUB_CI_PASS__BROADER_CI_AND_NATIVE_IMPORT_BLOCKED",
   "baseline": {
     "name": "Aspekte-B1plus-FINAL-QA-23-EXAMPLE-REPAIRS-NONIMPORT-20261111.zip",
     "library_file_id": "libfile_e100cde8f1c081919e4aa0ac1a6644f6",
@@ -123,7 +123,7 @@
     ],
     "raw_csv_sha_open": true
   },
-  "next_step": "Canonical 1571-card B1+ Master unchanged and NONIMPORT. QA-only typed Presentation snapshot for all cards passed 8 negative projection tests and source SHA; preserves 3607 DE/FA examples, 297 multi-sense cards and explicit two-sense example at source ordinal 363. App PR41 still DRAFT/UNMERGED with unchanged index; no stable-origin native TSV/JSON/ZIP durable import, IndexedDB restart, SRS preservation or owner-approved release manifest. Continue app integration only.",
+  "next_step": "Gate08 actual v505 source-exact multisense patch preserves sense_ids and exact canonical/rich sense links, 15/15 local and GitHub Actions success. Existing v505 index remains unchanged; staged only in PR41, Draft and unmerged. CURRENT engineering CI fails portable v503 vs checkout v505 SHA/contract; OP03 CI fails missing archive_publish_transaction on Windows+Ubuntu. Local Chromium origin blocked ERR_BLOCKED_BY_ADMINISTRATOR, no verified real successful TSV/JSON/ZIP native import, IndexedDB reload, SRS retention, signed owner authorization. Keep content NONIMPORT, do not restart P1/P2/P3.",
   "stage2_L01_second_bilingual_context_pass": 71,
   "stage2_L01_high_priority_qa_proposals": 37,
   "stage3_L01_new_editorial_example_pairs": 10,
@@ -289,7 +289,7 @@
     1086
   ],
   "original_private_csv_SHA_reverified": false,
-  "git_status": "APP_PREFLIGHT_QA_FIXTURE_LIB_READBACK_GITHUB_RECEIPT_SYNC_CURRENT_CONTENT_OWNER_UNCHANGED_PR41_DRAFT",
+  "git_status": "B1PLUS_GATE08_SOURCE_EXACT_PATCH_15_15_CI_PASS_LIBRARY_READBACK_PR41_DRAFT_BROADER_TWO_CI_FAILURES",
   "latest_full_l08_report": "Workspaces/aspekte-b1plus-v336/Reports/L08-157-STAGE3-COMPLETE-REPORT-20261106.json",
   "L09_source_rows_total": 185,
   "L09_stage3_drafts": 185,
@@ -4094,7 +4094,7 @@
     "kind": "AUDIT_ONLY_DOES_NOT_REPLACE_LEARNER_DATA_OWNER",
     "verification": "EXACT_BYTE_READBACK_SHA256_ALL_7_MANIFESTS_ZIP_CRC_PASS"
   },
-  "next_action": "GFP_PR41_SOURCE_EXACT_NATIVE_IMPORT_RIGHTCARD_SRS_ROLLBACK_AND_TRUSTED_RELEASE_APPROVAL__NO_MORE_HISTORICAL_HOLD_LOOPS",
+  "next_action": "GFP_PR41_APP_OWNER_REVIEW_EXACT_SOURCE_PATCH__FIX_CI_PORTABLE_CURRENT_SHA_CONTRACT_AND_MISSING_ARCHIVE_PUBLISH_TRANSACTION__THEN_REAL_HTTP_ORIGIN_NATIVE_IMPORT_RIGHT_CARD_SRS_ROLLBACK",
   "latest_L06_phase2_owner": {
     "status": "L06_PHASE2_WHOLE_177_CARD_EDITORIAL_45_TARGETED_DATA_OR_QA_CHANGES_NONIMPORT",
     "library_file_id": "libfile_3832285495208191a078ee53fc37feb7",
@@ -5093,7 +5093,7 @@
     "real_app_import_tested": false,
     "receipt": "Workspaces/aspekte-b1plus-v336/Global-Backlog/P1-REMAINING83-VERIFIED-CURATED-OWNER-RECEIPT-20261110.json"
   },
-  "status": "CONTENT_SCOPED_HOLD_DONE_APP_PRESENTATION_QA_PASS_NATIVE_ACCEPTANCE_BLOCKED_NONIMPORT",
+  "status": "ACTIVE_NONIMPORT_CONTENT_QA_DONE_APP_PATCH_TESTED_NONPROD_PR41_DRAFT",
   "global_hold_P1_next42_verified": {
     "targeted_cases": 42,
     "actually_modified_primary_cards": 7,
@@ -5309,5 +5309,33 @@
     },
     "acceptance_report": "Workspaces/aspekte-b1plus-v336/Global-Backlog/APP-PRESENTATION-PREFLIGHT-CODEX-ACCEPTANCE-20261111.md",
     "canonical_source_unchanged": true
+  },
+  "app_gate08_multisense_source_patch_20261111": {
+    "schema": "aspekte-b1plus-gate08-exact-current-multisense-candidate@1",
+    "scope": "NONPROD_SOURCE_EXACT_ONLY",
+    "test_passed": 15,
+    "test_count": 15,
+    "app_current_index_sha256": "f38877d7ff39ad24294303125ae60d77955c251768fffa059cf7452a0a3aef26",
+    "staged_candidate_index_sha256": "76edb04b8c97ac08efd44263e52704b8aa722c49e8a08b242c3ed5be7a3a3052",
+    "patch_sha256": "65bd86545c2a275ab71021f2e728e057eb98bcf0bbdc49ebb2590e94239b9083",
+    "library_evidence": {
+      "name": "Aspekte-B1plus-GATE08-EXACT-CURRENT-MULTISENSE-PATCH-NONIMPORT-20261111.zip",
+      "library_file_id": "libfile_b55d5676e6808191b54dc9a0973c6029",
+      "sha256": "35b39c3a0a2e241e3962e492fd67371ea1cbb8cb06fa30cbf82146d9a2f3ec83",
+      "bytes": 11709,
+      "members": 8,
+      "manifest_verified": 7,
+      "library_exact_byte_readback": true
+    },
+    "verified_receipt": "Workspaces/aspekte-b1plus-v336/Global-Backlog/GATE08-SOURCE-EXACT-MULTISENSE-RECEIPT-20261111.json",
+    "github_actions_success_run": 42934103308,
+    "app_PR41_state": "OPEN_DRAFT_UNMERGED",
+    "production_app_unchanged": true,
+    "canonical_content_unchanged": true,
+    "broader_ci": {
+      "current_engineering": "FAILED_SOURCE_PORTABILITY_CONTRACT_V503_V505",
+      "immutable_zip": "FAILED_MISSING_archive_publish_transaction"
+    },
+    "release": "BLOCKED_NONIMPORT"
   }
 }

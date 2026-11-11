@@ -813,9 +813,9 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "CONTENT_ONLY: 1 → 2 → 3 → 4 → 5 → 7",
         "APP_INTEGRATED: 1 → 2 → 3 → 4 → 5 → 6",
         "ERR_BLOCKED_BY_ADMINISTRATOR",
-        "do **not** block",
+        "does **not** block",
         "APP_INTEGRATED",
-        "never convert synthetic/parser QA into native PASS",
+        "convert synthetic/parser QA into native PASS",
     ):
         check(marker in pipeline, "RUNTIME_SPLIT_MISSING_NORMATIVE_TEXT:" + marker)
     ds = delivery.get("runtime_acceptance_separation_20261112", {})

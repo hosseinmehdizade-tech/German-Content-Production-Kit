@@ -6,9 +6,9 @@ acceptance requires separate real-output parity and stage-specific receipts.
 """
 from __future__ import annotations
 
-import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 ROUTE = "Optimization-Program/CONTROL-CENTER-UNIFIED-GOVERNANCE-ROADMAP-v1.0.0.json"
@@ -134,12 +134,15 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
     check(family_matrix.get("router_path") == router_path,
           "G1_FAMILY_ROUTER_WRONG")
     router_file = ROOT / router_path
-    router_bytes = router_file.read_bytes()
-    git_blob = lambda value: hashlib.sha1(
-        ("blob %s" % len(value)).encode("ascii") + bytes([0]) + value).hexdigest()
-    check(git_blob(router_bytes) == family_matrix.get("router_blob"),
+    # Git tree objects are authoritative; Windows checkout may transform LF
+    # to CRLF, so hashing working-tree bytes causes false failures.
+    def git_head_blob(path: str) -> str:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD:" + path], cwd=ROOT,
+            text=True, encoding="utf-8").strip()
+    check(git_head_blob(router_path) == family_matrix.get("router_blob"),
           "G1_FAMILY_ROUTER_CHANGED")
-    router = json.loads(router_bytes)
+    router = json.loads(router_file.read_text(encoding="utf-8"))
     by_family = {item["family_id"]: item for item in router["families"]}
     check(set(by_family) == set(family_ids), "G1_ROUTER_FAMILY_MISMATCH")
     examined = 0
@@ -184,7 +187,7 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
                   "G1_UNATTESTED_RELEASE_FALSE_PROMOTION:" + fam_id)
         source_file = ROOT / doc
         check(source_file.is_file() and not source_file.is_symlink() and
-              git_blob(source_file.read_bytes()) == blob,
+              git_head_blob(doc) == blob,
               "G1_SOURCE_DOCUMENT_BLOB_CHANGED:" + fam_id)
         examined += 1
     check(kinds == {"OWNER_POINTER_RECORDED": 10,

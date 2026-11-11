@@ -1,0 +1,47 @@
+name: GFP OP01 Trusted Base Guard Pilot
+
+# Prospective non-required companion. This workflow executes BASE branch code
+# only and treats PR metadata/file paths as UNTRUSTED DATA, never as scripts.
+# Before making this job required: prove real negative PR blocking AND have the
+# repository owner allow-list pull_request_target in GitHub Actions event policy
+# (GitHub default public-repo enforcement begins 2026-12-02).
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: gfp-op01-trusted-base-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  trusted-base-control-paths:
+    name: GFP-Trusted-Base-Workflow-Guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout trusted default-branch code ONLY (never PR head)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Python from the trusted job
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Regress read-only guard using BASE code only
+        run: python -B -m unittest discover -s Verification/tests -p test_op01_trusted_base_pr_paths_v1.py -v
+
+      - name: Read GitHub PR file list as data; deny edits to security gate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python -B Verification/check_op01_trusted_base_pr_paths_v1.py

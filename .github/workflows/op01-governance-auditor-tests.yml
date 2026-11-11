@@ -8,6 +8,9 @@ on:
       - 'Verification/test_op01_pr_staging_simulation.py'
       - 'Verification/audit_op01_pr_rest_adapter.py'
       - 'Verification/test_op01_pr_rest_adapter.py'
+      - 'Verification/check_op01_trusted_base_pr_paths_v1.py'
+      - 'Verification/tests/test_op01_trusted_base_pr_paths_v1.py'
+      - '.github/workflows/gfp-op01-trusted-base-guard.yml'
       - '.github/workflows/op01-governance-auditor-tests.yml'
   push:
     branches: [main]
@@ -18,6 +21,9 @@ on:
       - 'Verification/test_op01_pr_staging_simulation.py'
       - 'Verification/audit_op01_pr_rest_adapter.py'
       - 'Verification/test_op01_pr_rest_adapter.py'
+      - 'Verification/check_op01_trusted_base_pr_paths_v1.py'
+      - 'Verification/tests/test_op01_trusted_base_pr_paths_v1.py'
+      - '.github/workflows/gfp-op01-trusted-base-guard.yml'
       - '.github/workflows/op01-governance-auditor-tests.yml'
 permissions:
   contents: read
@@ -42,3 +48,5 @@ jobs:
         run: python -B -m unittest discover -s Verification -p test_op01_pr_staging_simulation.py
       - name: Validate actual nested GitHub REST PR/file response shape and exact head blob (nonactive)
         run: python -B -m unittest discover -s Verification -p test_op01_pr_rest_adapter.py
+      - name: Regress nonpublishing trusted-base path pilot and hostile PR fixture
+        run: python -B -m unittest discover -s Verification/tests -p test_op01_trusted_base_pr_paths_v1.py -v

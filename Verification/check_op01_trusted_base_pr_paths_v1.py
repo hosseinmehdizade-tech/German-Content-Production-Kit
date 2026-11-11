@@ -15,6 +15,10 @@ import urllib.request
 # Exact sensitive paths: a verified, protected branch's trusted workflow must
 # decide any future edits to these. This is deliberately NOT a generic change
 # freeze across every ordinary content/source-owner workspace.
+# Protect ALL workflow definitions, not only known filenames: a PR can
+# introduce a fresh workflow that emits the SAME job name and GitHub Actions
+# source. A path-only check cannot authenticate a third-party issuer.
+PROTECTED_PREFIXES = (".github/workflows/",)
 PROTECTED = frozenset({
     ".github/workflows/gfp-required-governance-gate.yml",
     ".github/workflows/gfp-op01-trusted-base-guard.yml",
@@ -72,7 +76,9 @@ def assess(pr: dict, files: list, repository: str, expected_number: int,
         for field in ("filename", "previous_filename"):
             if item.get(field) is not None:
                 changed.add(safe_path(item[field]))
-    blocked = sorted(PROTECTED.intersection(changed))
+    blocked = sorted(path for path in changed if
+                     path in PROTECTED or
+                     any(path.startswith(prefix) for prefix in PROTECTED_PREFIXES))
     require(not blocked,
             "TRUSTED_GOVERNANCE_CONTROL_PATH_EDIT_REQUIRES_SEPARATE_OWNER_DECISION:"+
             ",".join(blocked))

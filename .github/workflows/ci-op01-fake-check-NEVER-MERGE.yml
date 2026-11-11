@@ -1,0 +1,14 @@
+# NEGATIVE SECURITY TEST ONLY. THIS WORKFLOW MUST NEVER REACH MAIN.
+name: OP01 NEVER MERGE Same-Name Check Spoof Probe
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  spoofed-status:
+    name: GFP-Trusted-Base-Workflow-Guard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Synthetic same-GitHub-Actions-source job name collision
+        run: echo "NEVER_MERGE_FAKE_TRUSTED_BASE_JOB__NO_POLICY_VALIDATION"

@@ -74,6 +74,14 @@ def preflight(root: Path, source: Path, output: Path, receipt: Path,
     from build_quality_gated_lexical_candidate_v1 import select_roles
     roles = select_roles(source)
     tsv_digest = digest(roles["direct-import-tsv"])
+    # An unchanged accepted v1.8 import is a recovery baseline, NOT a NEW
+    # content delta. Do not generate another 292-card candidate ZIP from it.
+    accepted_import = latest.get("final_content_only_v18", {}).get("source_tsv_sha256")
+    require(isinstance(accepted_import, str) and
+            re.fullmatch(r"[0-9a-f]{64}", accepted_import),
+            "ACCEPTED_CURRENT_IMPORT_TSV_NOT_PINNED")
+    require(tsv_digest != accepted_import,
+            "NO_NEW_IMPORT_TSV_DELTA_FROM_ACCEPTED_CURRENT")
     require(review.get("source_tsv_sha256") == tsv_digest,
             "DIRECT_IMPORT_TSV_NOT_EXACT_REVIEWED_SOURCE")
 

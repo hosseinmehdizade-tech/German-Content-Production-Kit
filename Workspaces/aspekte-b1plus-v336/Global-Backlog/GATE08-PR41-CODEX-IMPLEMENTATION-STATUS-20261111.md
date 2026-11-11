@@ -20,7 +20,7 @@ Four precise source modifications: (1) preserve source `sense_ids` in canonical 
 
 ## Broader red CI: two distinct blockers, not an excuse to merge
 
-- [CURRENT engineering and artifact gate](https://github.com/hosseinmehdizadeh-tech/German-Flashcards-Pro/actions/runs/42934103252) **FAILED** at portability SHA contract: the workflow expected older v503-R137 portable hashes while the app PR checks out actual v505-R141.
+- [CURRENT engineering and artifact gate](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/42934103252) **FAILED** at portability SHA contract: the workflow expected older v503-R137 portable hashes while the app PR checks out actual v505-R141.
 - [OP-03 Immutable ZIP publication](https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/actions/runs/42934103293) **FAILED** on Ubuntu and Windows because `03-Tests/test_release_archive_publish.py` imports `archive_publish_transaction` which the checked-out `08-Release-Tools/release_contract_lib.py` does not export.
 - Current dedicated nonprod guard workflow also green, but that is **not** the overall release gate.
 

@@ -181,6 +181,71 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G3_REQUIRED_CHECK_TRUST_ORIGIN_CHANGED"):
             self.check(roadmap=wrong)
 
+    def test_g4_g5_complete_management_without_source_adoption(self):
+        result = self.check()
+        self.assertEqual(result["management_g4_family_retention_holds_verified"], 21)
+        self.assertEqual(result["management_g5_kickoff_families_verified"], 21)
+        self.assertEqual(result["management_g5_stage_dispositions_verified"], 147)
+        self.assertEqual(result["independent_content_provider_sha256_rehashed_by_this_test"], 0)
+        self.assertFalse(result["app_main_branch_protected_claimed"])
+        self.assertEqual(result["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_g4_app_main_unprotected_cannot_be_misreported(self):
+        wrong = copy.deepcopy(self.roadmap)
+        app = wrong["management_first_campaign_20261111"]["g4_security_retention_provider_boundaries_20261111"]["application_boundary"]
+        app["main_protected_flag_from_provider"] = True
+        with self.assertRaisesRegex(ValueError, "G4_APP_MAIN_UNPROTECTED_OR_NONFINAL_BOUNDARY_REMOVED"):
+            self.check(roadmap=wrong)
+
+    def test_g4_never_claim_library_duplicate_without_bytes(self):
+        wrong = copy.deepcopy(self.roadmap)
+        record = wrong["management_first_campaign_20261111"]["g4_security_retention_provider_boundaries_20261111"]["provider_retention"]
+        record["verified_reclaimable_duplicate_bytes"] = 213216245
+        with self.assertRaisesRegex(ValueError, "G4_FALSE_PROVIDER_DEDUP_OR_RELEASE_CLAIM"):
+            self.check(roadmap=wrong)
+
+    def test_g4_no_source_archive_delete_permission(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["g4_security_retention_provider_boundaries_20261111"]["per_family_preservation"]
+        rows[0]["can_delete_source_or_archive"] = True
+        with self.assertRaisesRegex(ValueError, "G4_UNSAFE_FAMILY_RETENTION_OR_PROMOTION"):
+            self.check(roadmap=wrong)
+
+    def test_g4_drive_metadata_not_raw_sha(self):
+        wrong = copy.deepcopy(self.roadmap)
+        docs = wrong["management_first_campaign_20261111"]["g4_security_retention_provider_boundaries_20261111"]["new_direct_drive_metadata_observations"]
+        docs[0]["status"] = "PASS_DIRECT_SHA256"
+        with self.assertRaisesRegex(ValueError, "G4_DRIVE_METADATA_MISLABELED_RAW_HASH"):
+            self.check(roadmap=wrong)
+
+    def test_g5_single_campaign_cannot_auto_edit_all_families(self):
+        wrong = copy.deepcopy(self.roadmap)
+        decision = wrong["management_first_campaign_20261111"]["g5_coordinated_portfolio_kickoff_20261111"]
+        decision["all_21_simultaneous_writing"] = True
+        with self.assertRaisesRegex(ValueError, "G5_FALSE_PORTFOLIO_GO_LIVE_CLAIM"):
+            self.check(roadmap=wrong)
+
+    def test_g5_cannot_promote_a_family_stage5_without_real_owner_qa(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["g5_coordinated_portfolio_kickoff_20261111"]["stage_matrix"]
+        rows[0]["stage_disposition"]["stage5"] = "GO_AUTOMATIC"
+        with self.assertRaisesRegex(ValueError, "G5_UNAUTHORIZED_STAGE_GO"):
+            self.check(roadmap=wrong)
+
+    def test_g5_cannot_omit_an_unready_library_family(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["g5_coordinated_portfolio_kickoff_20261111"]["stage_matrix"]
+        rows.pop()
+        with self.assertRaisesRegex(ValueError, "G5_MISSING_FAMILY_KICKOFF"):
+            self.check(roadmap=wrong)
+
+    def test_g5_no_fake_writer_grants_in_state(self):
+        wrong = copy.deepcopy(self.state)
+        record = wrong["management_first_sequencing_20261111"]["g4_g5_scoped_closeout_20261111"]
+        record["direct_write_grants"] = 21
+        with self.assertRaisesRegex(ValueError, "G5_STATE_FALSE_PREMATURE_SOURCE_EXECUTION"):
+            self.check(state=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

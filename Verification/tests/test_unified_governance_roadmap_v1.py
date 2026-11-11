@@ -91,6 +91,48 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G1_FAMILY_AUTHORITY_PROMOTION"):
             self.check(roadmap=wrong)
 
+    def test_g2_matrix_covers_every_family_and_policy_without_adoption(self):
+        result = self.check()
+        self.assertEqual(result["management_policy_family_classifications_verified"], 462)
+        self.assertEqual(result["management_source_type_native_gates_pinned"], 4)
+        self.assertEqual(result["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_g2_wrong_lexical_rule_scope_is_rejected(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["g2_policy_to_native_producer_20261111"]["families"][0]
+        row["policy_impact"]["kombinationen_source_first"] = "ROUTED_PROSPECTIVE_NO_EXECUTION_PROOF"
+        with self.assertRaisesRegex(ValueError, "G2_RULE_SOURCE_TYPE_MISCLASSIFIED"):
+            self.check(roadmap=wrong)
+
+    def test_g2_missing_rule_one_family_is_rejected(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["g2_policy_to_native_producer_20261111"]["families"][0]
+        row["policy_impact"].pop("curated_current_delta_qa")
+        with self.assertRaisesRegex(ValueError, "G2_FAMILY_POLICY_COVERAGE"):
+            self.check(roadmap=wrong)
+
+    def test_g2_unapproved_family_cannot_claim_native_adoption(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["g2_policy_to_native_producer_20261111"]["families"][0]
+        row["native_producer_adopted"] = True
+        with self.assertRaisesRegex(ValueError, "G2_FALSE_NATIVE_ADOPTION"):
+            self.check(roadmap=wrong)
+
+    def test_g2_library_only_domain_cannot_use_lexical_gate(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["g2_policy_to_native_producer_20261111"]["families"]
+        row = next(x for x in rows if x["family_id"] == "family:schreiben")
+        row["producer_lane"]["central_entrypoint"] = "Tools/build_quality_gated_lexical_candidate_v1.py"
+        with self.assertRaisesRegex(ValueError, "G2_NATIVE_LANE_UNSAFE"):
+            self.check(roadmap=wrong)
+
+    def test_g2_cannot_fake_central_gate_git_blob(self):
+        wrong = copy.deepcopy(self.roadmap)
+        rows = wrong["management_first_campaign_20261111"]["g2_policy_to_native_producer_20261111"]["tested_existing_entrypoints"]
+        rows[0]["git_blob"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "G2_GATE_BLOB_OR_FALSE_ADOPTION"):
+            self.check(roadmap=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

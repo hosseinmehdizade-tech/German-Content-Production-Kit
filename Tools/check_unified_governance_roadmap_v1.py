@@ -136,7 +136,7 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
     router_file = ROOT / router_path
     router_bytes = router_file.read_bytes()
     git_blob = lambda value: hashlib.sha1(
-        ("blob %s\\0" % len(value)).encode("ascii") + value).hexdigest()
+        ("blob %s" % len(value)).encode("ascii") + bytes([0]) + value).hexdigest()
     check(git_blob(router_bytes) == family_matrix.get("router_blob"),
           "G1_FAMILY_ROUTER_CHANGED")
     router = json.loads(router_bytes)

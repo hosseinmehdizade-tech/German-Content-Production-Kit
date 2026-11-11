@@ -63,6 +63,34 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "MANAGEMENT_STATE_UNSYNCED"):
             self.check(state=wrong)
 
+    def test_g1_all_family_paths_and_git_blobs_attested_without_release(self):
+        out = self.check()
+        self.assertEqual(out["management_family_routes_verified"], 21)
+        self.assertEqual(out["management_git_status_document_blobs_verified"], 16)
+        self.assertEqual(out["management_release_authority_or_library_holds"], 11)
+        self.assertEqual(out["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_g1_detects_forged_owner_git_blob(self):
+        wrong = copy.deepcopy(self.roadmap)
+        row = wrong["management_first_campaign_20261111"]["family_management_matrix_20261111"]["families"][0]
+        row["source_status_git_blob"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "G1_SOURCE_DOCUMENT_BLOB_CHANGED"):
+            self.check(roadmap=wrong)
+
+    def test_g1_cannot_drop_library_only_families(self):
+        wrong = copy.deepcopy(self.roadmap)
+        wrong["management_first_campaign_20261111"]["family_management_matrix_20261111"]["families"].pop()
+        with self.assertRaisesRegex(ValueError, "G1_INCOMPLETE_FAMILY_MATRIX"):
+            self.check(roadmap=wrong)
+
+    def test_g1_library_only_fake_owner_promotion_fails(self):
+        wrong = copy.deepcopy(self.roadmap)
+        fams = wrong["management_first_campaign_20261111"]["family_management_matrix_20261111"]["families"]
+        row = next(x for x in fams if x["family_id"] == "family:vocabulary-sonstige")
+        row["management_class"] = "OWNER_POINTER_RECORDED"
+        with self.assertRaisesRegex(ValueError, "G1_FAMILY_AUTHORITY_PROMOTION"):
+            self.check(roadmap=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

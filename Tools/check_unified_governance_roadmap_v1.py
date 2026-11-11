@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 ROUTE = "Optimization-Program/CONTROL-CENTER-UNIFIED-GOVERNANCE-ROADMAP-v1.0.0.json"
@@ -118,6 +119,84 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
           and baseline.get("registered_policy_bindings") == len(registry.get("policy_bindings", {}))
           and baseline.get("formally_adopted_native_producers") == 0,
           "MANAGEMENT_BASELINE_FALSE_COVERAGE")
+    # G1 live Git evidence guard: a routed family is not a released producer.
+    # Verify the same 21 IDs and exact Git-file blobs recorded in the existing
+    # management roadmap, without contacting private Library or reading cards.
+    family_matrix = management.get("family_management_matrix_20261111", {})
+    family_rows = family_matrix.get("families", [])
+    check(isinstance(family_rows, list) and len(family_rows) == 21,
+          "G1_INCOMPLETE_FAMILY_MATRIX")
+    family_ids = [entry.get("family_id") for entry in family_rows]
+    catalog_ids = [entry.get("id") for entry in catalog.get("families", [])]
+    check(len(set(family_ids)) == 21 and set(family_ids) == set(catalog_ids),
+          "G1_FAMILY_IDENTITIES_DRIFT")
+    router_path = "Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json"
+    check(family_matrix.get("router_path") == router_path,
+          "G1_FAMILY_ROUTER_WRONG")
+    router_file = ROOT / router_path
+    # Git tree objects are authoritative; Windows checkout may transform LF
+    # to CRLF, so hashing working-tree bytes causes false failures.
+    def git_head_blob(path: str) -> str:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD:" + path], cwd=ROOT,
+            text=True, encoding="utf-8").strip()
+    check(git_head_blob(router_path) == family_matrix.get("router_blob"),
+          "G1_FAMILY_ROUTER_CHANGED")
+    router = json.loads(router_file.read_text(encoding="utf-8"))
+    by_family = {item["family_id"]: item for item in router["families"]}
+    check(set(by_family) == set(family_ids), "G1_ROUTER_FAMILY_MISMATCH")
+    examined = 0
+    kinds = {"OWNER_POINTER_RECORDED": 0,
+             "RELEASE_AUTHORITY_UNATTESTED": 0,
+             "LIBRARY_ONLY_CATALOG": 0}
+    for entry in family_rows:
+        fam_id = entry["family_id"]
+        authority = by_family[fam_id]
+        kind = entry.get("management_class")
+        check(kind in kinds, "G1_UNSUPPORTED_CLASS:" + fam_id)
+        kinds[kind] += 1
+        check(entry.get("canonical_git_workspace") ==
+              authority.get("canonical_git_workspace") and
+              entry.get("canonical_library_root") ==
+              authority.get("canonical_library_root"),
+              "G1_FAMILY_ROUTE_CHANGED:" + fam_id)
+        expected_kind = (
+            "OWNER_POINTER_RECORDED" if
+            "USER_ACCEPTED_CURATED_OWNER_PIN" in authority.get("route_state", "")
+            else "LIBRARY_ONLY_CATALOG" if
+            "LIBRARY_CANONICAL_ONLY" in authority.get("route_state", "")
+            else "RELEASE_AUTHORITY_UNATTESTED")
+        check(kind == expected_kind, "G1_FAMILY_AUTHORITY_PROMOTION:" + fam_id)
+        doc = entry.get("source_status_document")
+        blob = entry.get("source_status_git_blob")
+        if kind == "LIBRARY_ONLY_CATALOG":
+            check(doc is None and blob is None and
+                  entry.get("release_authority", "").startswith("HOLD_"),
+                  "G1_LIBRARY_ONLY_FALSE_PROOF:" + fam_id)
+            continue
+        check(isinstance(doc, str) and
+              doc.startswith(authority["canonical_git_workspace"] + "/") and
+              ".." not in Path(doc).parts and
+              isinstance(blob, str) and len(blob) == 40,
+              "G1_STATUS_SOURCE_UNSAFE:" + fam_id)
+        if kind == "OWNER_POINTER_RECORDED":
+            check(doc == authority.get("canonical_source_owner_document"),
+                  "G1_OWNER_POINTER_CHANGED:" + fam_id)
+        else:
+            check(entry.get("release_authority") == "HOLD_RELEASE_AUTHORITY_UNATTESTED",
+                  "G1_UNATTESTED_RELEASE_FALSE_PROMOTION:" + fam_id)
+        source_file = ROOT / doc
+        check(source_file.is_file() and not source_file.is_symlink() and
+              git_head_blob(doc) == blob,
+              "G1_SOURCE_DOCUMENT_BLOB_CHANGED:" + fam_id)
+        examined += 1
+    check(kinds == {"OWNER_POINTER_RECORDED": 10,
+                    "RELEASE_AUTHORITY_UNATTESTED": 6,
+                    "LIBRARY_ONLY_CATALOG": 5} and examined == 16 and
+          family_matrix.get("source_status_documents_checked_from_live_git") == 16 and
+          family_matrix.get("no_new_native_producer_adoptions") is True,
+          "G1_FAMILY_COUNTS_OR_RELEASE_CLAIM")
+
     rollout = management.get("rollout_after_management", {})
     check(rollout.get("activate_all_families_in_common_plan") is True
           and rollout.get("simultaneous_content_edit_or_release") is False
@@ -164,6 +243,9 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         "content_repo_startup_files_checked": len(REQUIRED_STARTUPS),
         "inventory": observed,
         "policy_bundles_routed": observed["active_pinned_policy_bindings"],
+        "management_family_routes_verified": 21,
+        "management_git_status_document_blobs_verified": 16,
+        "management_release_authority_or_library_holds": 11,
         "real_producer_adoption_proven_by_this_test": 0,
         "learner_card_edits_authorized_by_this_test": 0,
         "Stage4_5_6_7_or_CURRENT_FINAL_certificates": 0,

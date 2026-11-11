@@ -275,6 +275,62 @@ class RoadmapContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G5_INTAKE_LIBRARY_CURRENT_FALSE_CLAIM"):
             self.check(roadmap=wrong)
 
+    def test_global_runtime_split_21_families_and_no_false_final(self):
+        x = self.check()
+        self.assertEqual(x["runtime_split_policy_applies_to_families"], 21)
+        self.assertFalse(x["content_only_stage7_requires_real_browser"])
+        self.assertTrue(x["app_integrated_stage7_requires_real_browser"])
+        self.assertFalse(x["repeat_identical_blocked_browser_attempt"])
+        self.assertEqual(x["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_content_only_stage7_cannot_be_reblocked_by_browser(self):
+        wrong = copy.deepcopy(self.roadmap)
+        x = wrong["management_first_campaign_20261111"]["central_content_runtime_split_20261112"]
+        x["content_only_stage7_may_pass_while_stage6_blocked"] = False
+        with self.assertRaisesRegex(ValueError, "RUNTIME_SPLIT_FALSE_DELIVERY_SCOPE"):
+            self.check(roadmap=wrong)
+
+    def test_full_app_final_must_still_require_real_stage6(self):
+        wrong = copy.deepcopy(self.roadmap)
+        x = wrong["management_first_campaign_20261111"]["central_content_runtime_split_20261112"]
+        x["app_integrated_stage7_must_not_pass_unless_stage6_real_pass"] = False
+        with self.assertRaisesRegex(ValueError, "RUNTIME_SPLIT_FALSE_DELIVERY_SCOPE"):
+            self.check(roadmap=wrong)
+
+    def test_browser_same_blocked_environment_cannot_repeat(self):
+        wrong = copy.deepcopy(self.roadmap)
+        x = wrong["management_first_campaign_20261111"]["central_content_runtime_split_20261112"]
+        x["repeat_same_blocked_browser_attempt"] = True
+        with self.assertRaisesRegex(ValueError, "RUNTIME_SPLIT_BLOCKED_BROWSER_RETRY_OR_FALSE_PASS"):
+            self.check(roadmap=wrong)
+
+    def test_one_source_family_cannot_be_excluded_from_runtime_split(self):
+        wrong = copy.deepcopy(self.roadmap)
+        x = wrong["management_first_campaign_20261111"]["central_content_runtime_split_20261112"]
+        x["family_ids"].pop()
+        with self.assertRaisesRegex(ValueError, "GLOBAL_RUNTIME_SPLIT_NOT_ALL_FAMILIES"):
+            self.check(roadmap=wrong)
+
+    def test_app_browser_policy_cannot_claim_native_stage6_pass(self):
+        wrong = copy.deepcopy(self.registry)
+        x = wrong["stage6_content_app_separation_20261112"]
+        x["content_only_stage7_requires_real_app_stage6"] = True
+        with self.assertRaisesRegex(ValueError, "RUNTIME_SPLIT_FALSE_DELIVERY_SCOPE"):
+            self.check(registry=wrong)
+
+    def test_runtime_split_pinned_stage_pipeline_cannot_be_forged(self):
+        wrong = copy.deepcopy(self.registry)
+        wrong["policy_bindings"]["seven_stages"]["blob_sha"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "G2_POLICY_BINDING_CHANGED"):
+            self.check(registry=wrong)
+
+    def test_runtime_split_no_false_user_state_or_source_adoption(self):
+        wrong = copy.deepcopy(self.state)
+        x = wrong["management_first_sequencing_20261111"]["global_content_runtime_split_20261112"]
+        x["source_content_mutations"] = 21
+        with self.assertRaisesRegex(ValueError, "RUNTIME_SPLIT_STATE_SYNC_MISSING"):
+            self.check(state=wrong)
+
     def test_real_cli_has_explicit_zero_adoption_claim(self):
         run = subprocess.run([sys.executable, str(FILE)], cwd=ROOT, capture_output=True,
                              text=True, timeout=60, encoding="utf-8")

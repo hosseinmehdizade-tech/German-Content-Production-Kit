@@ -1,5 +1,11 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Five-section enrichment — source-owned editable workstream (2026-11-12)
+
+For Kombinationen, Wortfamilie, Verwandte Wörter, Synonyme and Antonyme, follow `Enrichment/FIVE-SECTIONS-LATEST.json`. L01: 71 reviewed, 55 changed, 88 new sense-bound relations, 9 weak combinations removed, 1707 other cards unchanged. Exact Library raw-byte readback and scoped structural/6 negative tests PASS. Stage4/Stage5 acceptance NOT RUN; R21-R2-R1 owner CURRENT remains unchanged; no app Stage6 claimed. Next: complete A2-L02 on the existing working master, preserving separate M1/M2 morphology history. No extra ZIP.
+
+---
+
 ## Scoped Morphologie section cleanup candidate — M1 (2026-11-06; NOT CURRENT / NOT IMPORT)
 
 Exact parent **R21-R2-R1 remains the active owner CURRENT**. New reversible candidate `Menschen-A2-R21-R2-R1-M1-1778-Karten-MORPHOLOGIE-STANDARDISIERT-CANDIDATE-20261106.zip` SHA-256 `e42e3c28283a4e2a97d6e1c4e7a4b4f12c9ab5fc9a856a47a88000a65dbc26c1`, 3,582,442 bytes, 50 members, Library `/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Candidates/`, stable `libfile_55c3ce48365c81918cee8f07a657c6e5`, exact Library SHA readback PASS. 214 `details[].title=Morphologie` eliminated; 175 entirely redundant front copies suppressed, 39 sections with additional facts retained in existing `Formen` or `Register`. All 286 original source items from these sections are in a full keyed reversible ledger within the ZIP; 1,778 IDs, 7,112 trilingual examples, 1,829 course memberships, 22 non-details TSV fields, canonical semantic rows and typing remain unchanged. Embedded scoped ZIP verifier PASS; real native Stage5 builder, actual v505 Study/Quick/FSRS/Import Stage6 and global Stage7 NOT RUN. Do not promote via policy routing alone. Git exact receipt: [M1 scoped candidate](./MORPHOLOGIE-214-M1-SCOPED-CANDIDATE-20261106.json).

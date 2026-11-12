@@ -1,13 +1,14 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
 
-## Five-section enrichment — active source-owned editable stream (2026-11-12)
+## Five-section enrichment — active source-owned editable workstream (2026-11-12)
 
-Single exact working pointer: `Enrichment/FIVE-SECTIONS-LATEST.json` → **L05 checkpoint** → 1,778-card S5 Master, Canonical and 307-decision cumulative Ledger in Library Candidates. **L01–L05: 307/307 reviewed, 288 cards content-edited**, source-owned first pass only. **L05: 50 reviewed, 50 real edits; 31 Wortfamilie, 20 Verwandte Wörter, 26 Synonyme, 6 Antonyme (83 new sense-scoped relations), 29 source-specific Kombinationen repairs** (6 hidden-only example clones removed; 4 Rektion, 11 Struktur and 2 Grammatik transfers; 6 visible no-gain items removed). Missing relations stay unfilled when not defensibly justified; no numerical quota.
+Authoritative scoped pointer: `Enrichment/FIVE-SECTIONS-LATEST.json` → **L06 owner Checkpoint** → exact Library Candidates S6 Master + Canonical + cumulative 360-card Ledger. **L01–L06: 360/360 cards reviewed; 341 genuinely edited** in the five-category source-owned Stage3 first-pass. L06 alone: 53 reviewed and edited; **41 Wortfamilie + 22 Verwandte Wörter + 23 Synonyme + 9 Antonyme** (95 new sense-bound trilingual relation items); **47** existing-source Kombinationen corrections (5 ghost removals, 1 existing useful hidden combo promotion, 1 visible-only miscategorized compound transfer, 21 to Struktur, 3 to Rektion, 16 low-gain removals). No quota: 44 L06 cards received no new Antonym, 31 no new Synonym, and other unsupported categories stayed empty. The full original learner content outside edited details and combination backend is preserved, with full reversibility in the ledger.
 
-Entire 1778-card parent stays stable outside exact L05: **1728 other rows**, 21 unrelated TSV columns, all 7112 original DE/FA/EN examples, 257 prior lesson decisions unchanged. **4877 independently executed structural/provenance assertions, 10 of 10 negative mutations rejected**; Master/Canonical/Ledger exact Library raw-byte readback PASS. Explicit Duden references provide lemma/sense background only, not blanket attestation for every AI-editorial item.
+Independent actual-delta structural/provenance QA **5739 assertions plus 12/12 negative mutation rejections**. All 1725 non-L06 cards, 7112 original DE/FA/EN examples, exact IDs/order, all 307 prior decisions preserved. All three S6 files **uploaded and read back exactly byte- and SHA256-identical**. Source-backed verified sense-bound Duden snippets do not confer bulk lexical Stage4 acceptance.
 
-**NEXT: A2-L06**, entire lesson review on exact S5 working Master and 307-decision cumulative Ledger. Historical R21-R2-R1 accepted CURATED_CURRENT unchanged; original LOCKED and separate M1/M2 morphology candidates preserved. Source-specific linguistic Stage4 and official central quality-gated Stage5 are **NOT RUN**, as are app-owner Stage6/Stage7. No ZIP, no UI/runtime/SRS edits and no blocked browser retry.
+**NEXT: A2-L07 whole-lesson five-section editorial review** on the exact S6 full 1778-card Master and 360-card cumulative ledger. This is **not official Stage4 or quality-gated Stage5**, and source-side work does not run app Stage6. Original accepted R21-R2-R1 CURRENT, all historical LOCKED, M1/M2 nonpromoted morphology, app runtime, user SRS/FSRS remain immutable. No new ZIP.
+
 
 ---
 

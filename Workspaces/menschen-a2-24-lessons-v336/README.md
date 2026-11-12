@@ -2,7 +2,7 @@
 
 ## Five-section enrichment — source-owned editable workstream (2026-11-12)
 
-For Kombinationen, Wortfamilie, Verwandte Wörter, Synonyme and Antonyme, follow `Enrichment/FIVE-SECTIONS-LATEST.json`. L01: 71 reviewed, 55 changed, 88 new sense-bound relations, 9 weak combinations removed, 1707 other cards unchanged. Exact Library raw-byte readback and scoped structural/6 negative tests PASS. Stage4/Stage5 acceptance NOT RUN; R21-R2-R1 owner CURRENT remains unchanged; no app Stage6 claimed. Next: complete A2-L02 on the existing working master, preserving separate M1/M2 morphology history. No extra ZIP.
+For Kombinationen, Wortfamilie, Verwandte Wörter, Synonyme and Antonyme, follow `Enrichment/FIVE-SECTIONS-LATEST.json`. L01+L02: 130 reviewed, 113 changed in the editable source-owned five-section successor. L02 specifically: 59 reviewed/58 changed, 28 Wortfamilie, 17 related, 26 synonyms, 10 antonyms; 24 combination source/role corrections, including one hidden-only backend inconsistency. All 1,719 non-L02 cards and 7,112 examples preserved. Exact Library bytes for the three cumulative files PASS; next A2-L03. Official exact-source Stage4/quality-gated Stage5 NOT RUN; accepted R21-R2-R1 unchanged. Exact Library raw-byte readback and scoped structural/6 negative tests PASS. Stage4/Stage5 acceptance NOT RUN; R21-R2-R1 owner CURRENT remains unchanged; no app Stage6 claimed. Next: complete A2-L02 on the existing working master, preserving separate M1/M2 morphology history. No extra ZIP.
 
 ---
 

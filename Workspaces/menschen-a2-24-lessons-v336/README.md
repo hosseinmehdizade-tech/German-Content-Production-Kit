@@ -1,11 +1,13 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+
 ## Five-section enrichment — active source-owned editable stream (2026-11-12)
 
-Authoritative branch WIP pointer: `Enrichment/FIVE-SECTIONS-LATEST.json` → exact L03 checkpoint → Library current working Master/Canonical/Cumulative Ledger. **L01–L03: 190/190 cards reviewed, 171 edited across three complete lessons**. For **L03: 60 reviewed, 58 edited, two CLOSED_NO_FORCE**, 49 Wortfamilie +16 Verwandte Wörter +28 Synonyme +10 Antonyme new items and 54 total source Combination operations (including one Duden-attested new independent collocation and four existing synonyms moved to the correct section). All **1718 other-lesson cards and 7112 multilingual examples** preserved. Scoped independent integrity QA **5127 assertions / 8 of 8 negative mutations detected** and exact raw-byte Library Master+Canonical+Ledger readback PASS.
+Authoritative branch WIP pointer: `Enrichment/FIVE-SECTIONS-LATEST.json` → exact **L04** checkpoint → byte-verified Library Master/Canonical/Cumulative Ledger. **L01–L04: 257/257 source-owned cards reviewed; 238 actually edited**. **L04: 67 reviewed, 67 content-edited**, 47 Wortfamilie, 34 Verwandte Wörter, 27 Synonyme, 11 Antonyme (**119 sense-bound relations**) and 47 separate `Kombinationen` classification/promotion/removal actions. Six prior course-wide accepted values were not invented or guessed; all original L04 combo items are reversible in the ledger.
 
-**NEXT: A2-L04 (67 cards), source-specific five-section editing on exact L03 WIP successor.** R21-R2-R1 remains owner accepted **CURRENT** unchanged. All historical LOCKED data and separate nonpromoted M1/M2 morphology candidates stay immutable. Source linguistic Stage4, global quality-gated Stage5, app native Stage6, and Stage7 are **NOT RUN / NOT CLAIMED**. Do not create ZIPs or rerun blocked browser Stage6 for source work.
+The single 1778-card L04 WIP master remains exact order/IDs, keeps **1711 other-lesson rows** byte-identical, preserves all original examples and **190 prior lesson decisions**. **5933 independent structural/delta assertions and 10 of 10 negative mutations detected**; Master/Canonical/Ledger exact raw-byte Library readback PASS. No new ZIP, app data mutation or promotion of accepted owner current.
 
+**NEXT: A2-L05**, continue five-section source/sense enrichment on exact S4 source-owned WIP. Accepted R21-R2-R1 CURATED_CURRENT unchanged; M1/M2 morphology candidates separate, historical LOCKED content immutable. Exact-source linguistic Stage4, official quality-gated Stage5 and app native Stage6/Stage7 remain NOT RUN / NOT CLAIMED. Do not retry blocked browser Stage6 in the content workstream.
 
 ---
 

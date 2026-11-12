@@ -1,8 +1,11 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
-## Five-section enrichment — source-owned editable workstream (2026-11-12)
+## Five-section enrichment — active source-owned editable stream (2026-11-12)
 
-For Kombinationen, Wortfamilie, Verwandte Wörter, Synonyme and Antonyme, follow `Enrichment/FIVE-SECTIONS-LATEST.json`. L01+L02: 130 reviewed, 113 changed in the editable source-owned five-section successor. L02 specifically: 59 reviewed/58 changed, 28 Wortfamilie, 17 related, 26 synonyms, 10 antonyms; 24 combination source/role corrections, including one hidden-only backend inconsistency. All 1,719 non-L02 cards and 7,112 examples preserved. Exact Library bytes for the three cumulative files PASS; next A2-L03. Official exact-source Stage4/quality-gated Stage5 NOT RUN; accepted R21-R2-R1 unchanged. Exact Library raw-byte readback and scoped structural/6 negative tests PASS. Stage4/Stage5 acceptance NOT RUN; R21-R2-R1 owner CURRENT remains unchanged; no app Stage6 claimed. Next: complete A2-L02 on the existing working master, preserving separate M1/M2 morphology history. No extra ZIP.
+Authoritative branch WIP pointer: `Enrichment/FIVE-SECTIONS-LATEST.json` → exact L03 checkpoint → Library current working Master/Canonical/Cumulative Ledger. **L01–L03: 190/190 cards reviewed, 171 edited across three complete lessons**. For **L03: 60 reviewed, 58 edited, two CLOSED_NO_FORCE**, 49 Wortfamilie +16 Verwandte Wörter +28 Synonyme +10 Antonyme new items and 54 total source Combination operations (including one Duden-attested new independent collocation and four existing synonyms moved to the correct section). All **1718 other-lesson cards and 7112 multilingual examples** preserved. Scoped independent integrity QA **5127 assertions / 8 of 8 negative mutations detected** and exact raw-byte Library Master+Canonical+Ledger readback PASS.
+
+**NEXT: A2-L04 (67 cards), source-specific five-section editing on exact L03 WIP successor.** R21-R2-R1 remains owner accepted **CURRENT** unchanged. All historical LOCKED data and separate nonpromoted M1/M2 morphology candidates stay immutable. Source linguistic Stage4, global quality-gated Stage5, app native Stage6, and Stage7 are **NOT RUN / NOT CLAIMED**. Do not create ZIPs or rerun blocked browser Stage6 for source work.
+
 
 ---
 

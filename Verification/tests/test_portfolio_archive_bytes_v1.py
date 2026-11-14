@@ -119,6 +119,36 @@ class ExactZipTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             m.verify_recorded_as_of(self.root)
 
+    def test_new_current_keeps_old_asof_receipt_byte_proof_without_rewriting_it(self):
+        reg,receipt=self.fixture_report()
+        receipt["observation_date"]="2026-11-07"
+        row=next(x for x in reg["items"] if x["id"]=="family:250-verben-mit-praepositionen")
+        row["active_baseline"]={
+            "artifact_name":"new-user-approved.zip",
+            "artifact_sha256":"f"*64,
+            "artifact_size_bytes":self.size+100,
+            "historical_asof_observation":{
+                "observation_date":"2026-11-07",
+                "receipt_path":m.EVIDENCE,
+                "artifact_name":"fixture.zip",
+                "artifact_sha256":self.sha,
+                "artifact_size_bytes":self.size
+            }
+        }
+        self.save_report(reg,receipt)
+        result=m.verify_recorded_as_of(self.root)
+        self.assertTrue(result["status"].startswith("PASS_RECORDED_AS_OF"))
+        # A forged historical SHA cannot borrow approval from a newer CURRENT.
+        row["active_baseline"]["historical_asof_observation"]["artifact_sha256"]="a"*64
+        self.save_report(reg,receipt)
+        with self.assertRaisesRegex(ValueError,"Recorded observation disagrees"):
+            m.verify_recorded_as_of(self.root)
+        row["active_baseline"]["historical_asof_observation"]["artifact_sha256"]=self.sha
+        row["active_baseline"]["historical_asof_observation"]["observation_date"]="2026-11-14"
+        self.save_report(reg,receipt)
+        with self.assertRaisesRegex(ValueError,"Untrusted historical"):
+            m.verify_recorded_as_of(self.root)
+
     def test_cli_exact_file_pass_and_tamper_fails(self):
         r,j=self.fixture_report()
         self.save_report(r,j)

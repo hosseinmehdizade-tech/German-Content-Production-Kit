@@ -36,7 +36,7 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
         self.evidence = {
             "schema": "gcpk-lexical-cross-tile-acceptance@1.0.0",
             "workstream": vmp.OWNER,
-            "curated_current_parent_sha256": latest["final_content_only_v18"]["sha256"],
+            "curated_current_parent_sha256": vmp.selected_accepted_current(latest)["sha256"],
             "source_tsv_sha256": sha(self.src / "SYNTHETIC-import.tsv"),
             "stage4_receipt_sha256": sha(self.stage4)
         }
@@ -67,7 +67,7 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
 
     def test_same_accepted_current_import_tsv_cannot_be_repackaged(self):
         accepted = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(
-            encoding="utf-8"))["final_content_only_v18"]["source_tsv_sha256"]
+            encoding="utf-8"))["final_content_only_r9_r2"]["source_tsv_sha256"]
         self.assertEqual(len(accepted), 64)
         actual_digest = vmp.digest
         def simulate_unchanged_current(path):
@@ -86,8 +86,10 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
     def test_real_accepted_import_sha_is_present_and_distinct_from_candidate(self):
         latest = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(
             encoding="utf-8"))
-        accepted = latest["final_content_only_v18"]["source_tsv_sha256"]
+        accepted = vmp.selected_accepted_current(latest)["source_tsv_sha256"]
         self.assertEqual(accepted,
+            "9d7e560d1b437a2e5ec6cf42cd690c32f716ee46788e5ef1c994fe14e23104d0")
+        self.assertEqual(latest["final_content_only_v18"]["source_tsv_sha256"],
             "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191")
         self.assertNotEqual(accepted, sha(self.src / "SYNTHETIC-import.tsv"))
         self.assertEqual(self.check()["status"],

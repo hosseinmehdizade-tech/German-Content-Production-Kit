@@ -20,7 +20,7 @@
   },
   "immutable_parent_sha256": "8f729bd65bf6101007d68911e6bc0c358325a953875ceadceb026333ae5cc7fb",
   "step": "STAGE7_R9_R2_METADATA_CORRECTED_CONTENT_ONLY_FINAL__LIBRARY_EXACT_PASS",
-  "next_action": "Packaging-only fix final/current; user already imported exact same R9-R2 TSV so do not reimport. Stage7 prior ZIP held as historical, v1.8 final retained. Git protected PR pending; after merge the CURRENT ZIP SHA becomes new verified packaging SHA. Native IndexedDB/FSRS remains unverified separately.",
+  "next_action": "Single verified current R9-R2 content-only ZIP is the only retained generated content release in family Library; old WIP/Stage4/Stage5/old final Library and Drive artifacts physically deleted per user authorization 2026-11-15. Preserve user-supplied originals/shared policies and cross-workstream app releases. Do not assume historical Library IDs accessible; use final ZIP SHA a82bd893... for any future work.",
   "content_tsv_sha256": "9d7e560d1b437a2e5ec6cf42cd690c32f716ee46788e5ef1c994fe14e23104d0",
   "review_scope": "R6_FULL_292_RISK_DISCOVERY_24_48_16_HASH_SAMPLES_87_LINKS_1_MEDIUM_HOLD",
   "last_runtime_reference_sha256": "99137590901a2c2086521867e128f8deb0dd6a8f694e4f0fcfc905f1060a6569",
@@ -222,5 +222,59 @@
     "status": "CONTENT_ONLY_USER_IMPORT_ACCEPTED__NO_INDEPENDENT_INDEXEDDB_FSRS",
     "archive_role": "IMMUTABLE_PRIOR_STAGE7_PACKAGE_SUPERSEDED_ONLY_FOR_BROKEN_DELIVERY_METADATA",
     "replaces_by": "a82bd89329033813e41198cb76199b4a6a0b7c1e8bea0000368dc8a6e560e843"
+  },
+  "physical_asset_cleanup_20261115": {
+    "date": "2026-11-15",
+    "user_instruction": "تمام فایل های تولید شده همین پروژه رو شناسایی کنی و غیر از فایل نهایی همه رو حذف کنی",
+    "scope": "USER_AUTHORIZED_PROJECT_GENERATED_ARTIFACT_CLEANUP__NOT_ORIGINAL_USER_INPUT_OR_APP_SHARED_RUNTIME",
+    "current_content_only_release": {
+      "library_file_id": "libfile_f7781a41ae3881918727d8d4b635a0ab",
+      "zip_sha256": "a82bd89329033813e41198cb76199b4a6a0b7c1e8bea0000368dc8a6e560e843",
+      "library_exact_sha256_readback": "PASS_AFTER_CLEANUP",
+      "zip_crc": "PASS_36",
+      "cards": 292
+    },
+    "library_files_deleted": 313,
+    "library_nominal_deleted_bytes": 242491211,
+    "library_deleted_scopes": [
+      {
+        "path": "Content/250-Verben-mit-Praepositionen",
+        "count": 83
+      },
+      {
+        "path": "Current/250-verben-mit-praepositionen",
+        "count": 9
+      },
+      {
+        "path": "Current/stage34-real-250verben-pilot",
+        "count": 79
+      },
+      {
+        "path": "Checkpoints",
+        "count": 142
+      }
+    ],
+    "google_drive_generated_files_deleted": 23,
+    "google_drive_nominal_deleted_bytes": 7164559,
+    "google_drive_deleted_scopes": {
+      "stage4_repair1_wip_reports": 21,
+      "old_v18_backup_content_zip": 1,
+      "old_v18_stage5_zip": 1
+    },
+    "deleted_total_cloud_file_records": 336,
+    "deleted_total_nominal_bytes": 249655770,
+    "local_ephemeral_old_generated_files_deleted": 73,
+    "local_ephemeral_nominal_deleted_bytes": 46972612,
+    "protected_library_files_in_family_folder": 11,
+    "protected_reason": "4 original screenshots, 5 uncertain provenance original/imported source inputs, 2 active lexical policy/validator documents",
+    "protected_cross_workstream_app_artifacts": 3,
+    "cross_workstream_apps_unchanged": true,
+    "user_source_pdf_preserved_inside_current_release": true,
+    "all_historical_library_ids_are_metadata_only": "Historical IDs in earlier checkpoints may no longer resolve; never treat them as current available files or roll back to them",
+    "historical_google_drive_v18_backup_removed": true,
+    "repository_git_checkpoint_history_preserved": true,
+    "library_storage_quota_reclaimed_bytes": "NOT_MEASURED__nominal_deleted_bytes_not_equivalent_to_actual_quota_free",
+    "status": "PASS_DELETED_CONFIRMED_FILES__CURRENT_RELEASE_VERIFIED__SOURCE_AND_CROSS_APP_EXCLUSIONS_RETAINED",
+    "next": "Continue ONLY from current corrected R9-R2 content-only ZIP and Git source-owner; no old content ZIP, standalone R9-R2 TSV or Stage5 Library receipt should be assumed to exist."
   }
 }

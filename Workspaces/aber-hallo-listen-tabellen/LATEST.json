@@ -1,8 +1,8 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "aber-hallo-listen-tabellen",
-  "status": "CONSOLIDATED_CONTENT_STATIC_QA_PASS__USER_FACING_PRESENTATION_HOLD_303_OF_787",
-  "latest_milestone": "CONSOLIDATED_CONTENT_PERSISTED__PRESENTATION_COMPATIBILITY_REGRESSION_FOUND__NOT_USER_FINAL",
+  "status": "CONSOLIDATED_CONTENT_STAGE4_SCOPED_AND_STAGE5_STATIC_PASS__USER_FIELD_ACCEPTED_LEXICAL_RELATIONS_DISPLAY",
+  "latest_milestone": "USER_REPORTED_IMPORT_AND_LEXICAL_RELATIONS_DISPLAY_CORRECT_V506__NO_NEW_ZIP",
   "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/110-consolidated-content-20261115/CONTENT-RELEASE-CHECKPOINT-20261115.json",
   "latest_receipt_commit_sha": "9d438524ae5d6c04a397a8f545bb61e864e00acf",
   "authority": {
@@ -4222,11 +4222,11 @@
     "app_import_stage6": "NOT_RUN_NEW_PROFILE",
     "app_stage7": "NOT_CLAIMED",
     "user_prior_accepted_release_sha256": "0754b55046a73c608c103f8d6b6f45bc11577c8403b75b8f2af9a6a627d6fb49",
-    "presentation_compatibility": "HOLD_USER_INSTALLED_V506_HOTFIX_ACCEPTANCE",
-    "do_not_reimport_until_fixed": true
+    "presentation_compatibility": "USER_FIELD_ACCEPTED_SCOPED_V506_LEXICAL_RELATIONS_DISPLAY",
+    "do_not_reimport_until_fixed": false
   },
   "presentation_compatibility_hold_20261115": {
-    "status": "BLOCKED_USER_FACING_PRESENTATION__NO_NEW_FINAL_IMPORT",
+    "status": "RESOLVED_SCOPED_BY_USER_REPORTED_IMPORT_AND_DISPLAY_ACCEPTANCE",
     "origin": "User screenshot 2026-11-15 v505 study card ahl-lu-0280 abbringen",
     "confirmed_cause": "GFP v505 study renderer presentationProjectedDetailsV459 returns null when visible Kombinationen items empty, falls back to canonical_unit.details; canonicalDetailItemsV348 flattens typed lexical_relations object fields as learner-facing 'lexical relations' metadata. Current import TSV already has well-formed Synonyme/Antonyme/Verwandt learner-facing sections which are skipped.",
     "current_release_sha256": "522b4fe36e216f293a17db5b1cfa3d9d93f8431bdb7b5616ce028b4973e8d883",
@@ -4235,7 +4235,7 @@
     "next": "Fix GFP display adapter to prefer card.details even for empty Kombinationen and preserve Rektion/other valid canonical details; never print internal lexical_relations IDs/provenance. Verify 303 affected rows plus unaffected cases in Study and Quick on exact user runtime before user-facing release. Preserve canonical graph and SRS/FSRS; no reimport/delete.",
     "source": "Uploaded screenshot and local exact SHA source ZIP comparison; exact user-installed runtime binary not independently hashed",
     "candidate_fix": {
-      "status": "SCOPED_PORTABLE_HOTFIX_PASS__USER_INSTALLED_PROFILE_ACCEPTANCE_PENDING",
+      "status": "USER_FIELD_ACCEPTED_SCOPED__FULL_APP_RELEASE_NOT_ATTESTED",
       "app_version": "v506-R142",
       "app_artifact": "GFP-v506-R142-LEXICAL-RELATIONS-DISPLAY-FIX-CANDIDATE-20261115.zip",
       "app_sha256": "2e88c7e87baa168e86dc3a561401b047003b849164fa28d024cef58ae7891a9a",
@@ -4244,7 +4244,13 @@
       "scoped_QA": "787_CARD_303_AT_RISK_STUDY_QUICK_PASS_AND_FRESH_ZIP_PASS",
       "user_same_profile": "NOT_ATTESTED",
       "data_migration": false,
-      "reimport_not_required": true
+      "reimport_not_required": true,
+      "user_reported_import_completed": true,
+      "user_reported_display_correct": true,
+      "user_observed_date": "2026-11-15",
+      "user_field_acceptance_receipt": "https://github.com/hosseinmehdizade-tech/German-Flashcards-Pro/blob/fix/v506-r142-lexical-display-20261115/04-Reports/Lexical-Display-v506/USER-FIELD-ACCEPTANCE-20261115.json",
+      "user_installed_binary_hash": "NOT_MEASURED",
+      "full_srs_fsrs_regression": "NOT_ATTESTED"
     }
   }
 }

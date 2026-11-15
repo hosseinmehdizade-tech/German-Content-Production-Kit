@@ -27,3 +27,17 @@ This patch **adds an executable evidence checker to the existing workstream-resu
 - If a real current/accepted file is unavailable, report the **specific incomplete evidence**, not an old version as current.
 - Run only once at a meaningful status/handoff; no repeat per card, no full Stage4 rerun, and no mutation of content/LOCKED/app/SRS.
 - Test pilot first. Do not advertise this as universal automated enforcement until all relevant startup/reporting adapters call the gate and provider enumeration has been evidenced.
+
+
+## Live provider recheck after the currentness integration (2026-11-15)
+
+**Result:** `PASS_OBSERVED_STATUS_CLAIM` for the observed working/master vs accepted baseline split. This recheck uses fresh connected-source calls during a resumed turn in the current ChatGPT conversation. It is **not** evidence of automatic invocation in an independent new chat.
+
+- Re-fetched source-owned Git pointers: `Workspaces/menschen-a1-verben-wortfamilie-v336/LATEST.json` (Git blob `9c8bc052dc2274eec5a85479e98d816da8f3e2f2`) still names the accepted content-only R10. Other family workspace LATEST/CHECKPOINT files were inspected as **historical navigation**, not as authority to downgrade current work.
+- Scoped Library search returned R16-P19 QA report, Stage5 compatibility receipt and delta ledger; canonical family folder listing found older draft R16-P10. Its first recursive page had 100 entries **with a nonempty continuation cursor**. Therefore the Library discovery is *not exhaustive* and cannot prove that no newer working artifact exists.
+- General Drive search for `Menschen-A1-Verben` returned older reports and folders, but not the R16-P19 JSON. The previously grounded exact Drive file ID `1HszAmBPwbPs5Ahg1IIZNoKmYyjJeuiEi` worked with authenticated raw-file fetch, returning the correct **6,995,017 bytes**. This is evidence that name search alone is insufficient.
+- The downloaded R16-P19 master was inspected locally and produced SHA-256 `5f832f62f5a8dac980d46855bfbc14b41d87d91504abfc1115edadab67be11cb` with **310 cards and 310 unique IDs**, equal to the earlier independent receipt. No cards were edited.
+- The **exact same** `Tools/status_currentness_gate_v1.py` as GitHub `main` (Git blob SHA `c193abfec23d35b398b822ad552fc5a06c9c1c62`, byte-for-byte identity verified locally) evaluated the live evidence manifest: `PASS_OBSERVED_STATUS_CLAIM`; selected `working=R16-P19` (**BYTE_VERIFIED**) and `accepted=R10` (**METADATA_ONLY**, earlier receipt only). Errors 0; holds 0; warning `ACCEPTED_BASELINE_PRIOR_RECEIPT_ONLY:R10`.
+- Real negative cases: incorrectly claiming `working=R10` returned `FAIL_STALE_OR_CORRUPT`; deleting the Library provider observation returned `HOLD_INCOMPLETE_EVIDENCE`.
+
+**Evidence boundary and next action:** This proves the connected tools can be used on a resumed turn and that the existing gate rejects the specific stale-Git regression. It **does not** prove an exhaustive cross-provider latest-version search (Library cursor remained), automatic tool invocation in any arbitrary new chat, automatic acceptance of R16-P19, or a new application release. Resume agents should use the existing family folder/known exact Drive ID and repeat this light provenance check only at a meaningful new status handoff, not as a recurring audit. No separate testing framework or Stage6/browser test is required.

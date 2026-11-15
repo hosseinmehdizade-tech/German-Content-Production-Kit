@@ -33,11 +33,13 @@ class TestProjectControlCenter(unittest.TestCase):
                 if p in cls.index:
                     cls.pointers[p] = pcc.load_json_from_index(p, cls.index)
 
-    def build(self, cat=None, index=None, state=None, pointers=None):
+    def build(self, cat=None, index=None, state=None, pointers=None,
+              currentness_reports=None):
         return pcc.build(copy.deepcopy(self.cat) if cat is None else cat,
                          dict(self.index) if index is None else index,
                          copy.deepcopy(self.state) if state is None else state,
-                         copy.deepcopy(self.pointers) if pointers is None else pointers)
+                         copy.deepcopy(self.pointers) if pointers is None else pointers,
+                         currentness_reports=currentness_reports)
 
     def test_real_catalog_has_distinct_family_workspace_and_root_identity(self):
         self.assertEqual(len(self.cat["families"]), 21)

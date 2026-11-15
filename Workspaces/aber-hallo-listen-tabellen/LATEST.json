@@ -1,8 +1,8 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "aber-hallo-listen-tabellen",
-  "status": "CONSOLIDATED_CONTENT_CURRENT_SCOPED_STAGE4_AI_AND_STAGE5_STATIC_PASS__NEW_PROFILE_IMPORT_NOT_RUN",
-  "latest_milestone": "ONE_CONSOLIDATED_CURRENT_CONTENT_ONLY_787_21__SCOPED_STAGE4_AI_RISK_PASS__STAGE5_STATIC_PASS__LIBRARY_SHA_BYTE_READBACK_PASS",
+  "status": "CONSOLIDATED_CONTENT_STATIC_QA_PASS__USER_FACING_PRESENTATION_HOLD_303_OF_787",
+  "latest_milestone": "CONSOLIDATED_CONTENT_PERSISTED__PRESENTATION_COMPATIBILITY_REGRESSION_FOUND__NOT_USER_FINAL",
   "latest_receipt_path": "Workspaces/aber-hallo-listen-tabellen/110-consolidated-content-20261115/CONTENT-RELEASE-CHECKPOINT-20261115.json",
   "latest_receipt_commit_sha": "9d438524ae5d6c04a397a8f545bb61e864e00acf",
   "authority": {
@@ -4221,6 +4221,18 @@
     "stage5_scope": "PASS_FULL_STATIC_CONTENT_AND_INDEPENDENT_IMPORT_CANONICAL_MIRROR",
     "app_import_stage6": "NOT_RUN_NEW_PROFILE",
     "app_stage7": "NOT_CLAIMED",
-    "user_prior_accepted_release_sha256": "0754b55046a73c608c103f8d6b6f45bc11577c8403b75b8f2af9a6a627d6fb49"
+    "user_prior_accepted_release_sha256": "0754b55046a73c608c103f8d6b6f45bc11577c8403b75b8f2af9a6a627d6fb49",
+    "presentation_compatibility": "HOLD_GFP_V505_FALLBACK_RAW_LEXICAL_RELATIONS",
+    "do_not_reimport_until_fixed": true
+  },
+  "presentation_compatibility_hold_20261115": {
+    "status": "BLOCKED_USER_FACING_PRESENTATION__NO_NEW_FINAL_IMPORT",
+    "origin": "User screenshot 2026-11-15 v505 study card ahl-lu-0280 abbringen",
+    "confirmed_cause": "GFP v505 study renderer presentationProjectedDetailsV459 returns null when visible Kombinationen items empty, falls back to canonical_unit.details; canonicalDetailItemsV348 flattens typed lexical_relations object fields as learner-facing 'lexical relations' metadata. Current import TSV already has well-formed Synonyme/Antonyme/Verwandt learner-facing sections which are skipped.",
+    "current_release_sha256": "522b4fe36e216f293a17db5b1cfa3d9d93f8431bdb7b5616ce028b4973e8d883",
+    "scope": "303/787 import rows hit fallback with canonical_unit.details.lexical_relations on v505; baseline 20261105 9/787",
+    "acceptance_reassessment": "STATIC_STAGE5_PASS_RETAINED__USER_FACING_COMPATIBILITY_HOLD",
+    "next": "Fix GFP display adapter to prefer card.details even for empty Kombinationen and preserve Rektion/other valid canonical details; never print internal lexical_relations IDs/provenance. Verify 303 affected rows plus unaffected cases in Study and Quick on exact user runtime before user-facing release. Preserve canonical graph and SRS/FSRS; no reimport/delete.",
+    "source": "Uploaded screenshot and local exact SHA source ZIP comparison; exact user-installed runtime binary not independently hashed"
   }
 }

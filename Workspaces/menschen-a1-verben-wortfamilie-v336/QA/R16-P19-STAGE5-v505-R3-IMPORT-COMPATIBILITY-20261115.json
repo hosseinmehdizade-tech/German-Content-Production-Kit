@@ -1,0 +1,75 @@
+{
+  "schema": "gcpk-menschen-a1-verben-r16-p19-stage5-current-v505-r3-compatibility@1.0.0",
+  "date": "2026-11-15",
+  "status": "STAGE5_EXACT_CURRENT_RUNTIME_IMPORT_AND_FOUR_MODE_PRESENTATION_PREFLIGHT_PASS__NONIMPORT_CANDIDATE__PERSISTENCE_UNTESTED",
+  "source_workstream": "Menschen A1 Verben",
+  "master_version": "R16-P19",
+  "master_content_changed": false,
+  "master_json_source": {
+    "file": "Menschen-A1-Verben-R16-P19-STAGE4-SELF-QA-310-Work-Master-NONIMPORT.json",
+    "bytes": 6995017,
+    "sha256": "5f832f62f5a8dac980d46855bfbc14b41d87d91504abfc1115edadab67be11cb",
+    "drive_id": "1HszAmBPwbPs5Ahg1IIZNoKmYyjJeuiEi"
+  },
+  "original_stage4_tsv": {
+    "file": "Menschen-A1-Verben-R16-P19-STAGE4-SELF-QA-310-Work-Master-NONIMPORT.tsv",
+    "sha256": "8c547ef23c309f5e62d130b09a81438f8193d6d1451e3c23375782adf9e1f412",
+    "unchanged": true
+  },
+  "delivery": {
+    "file": "Menschen-A1-Verben-R16-P19-STAGE5-LOSSLESS-V505-R3-DELIVERY.tsv",
+    "bytes": 7543215,
+    "sha256": "dbf0131faa968faa5099db727b89ed11a3b1c2d207897887466d9b7c3e579fe4",
+    "format": "gfp-universal-card-v2-23-columns",
+    "changes": "ONE_ESCAPED_DOUBLE_SPACE_IN_nested_CANONICAL_FA_SOURCE_SEED__NO_SEMANTIC_CONTENT_CHANGE"
+  },
+  "app_runtime": {
+    "zip": "GFP-v505-R141-WORDLINKS-FRONT-BACK-R3-SCREENSHOT-REGRESSION-CANDIDATE-20261107.zip",
+    "sha256": "6f64c7de6027169595bdf18f73dad633a2990bce5270471a95216378474dc7ef",
+    "version": "v505-R141",
+    "current_authority": "USER_ACCEPTED_R3_20261107",
+    "exact_zip_source": "Library /Flasch kart/German-Flashcards-Pro/Current/",
+    "app_source": "01-App/index.html"
+  },
+  "tests": {
+    "source_310_full_custom_fields_data_roundtrip": "PASS",
+    "source_310_full_details_roundtrip": "PASS",
+    "source_1240_examples_roundtrip": "PASS",
+    "original_json_and_stage4_tsv_immutable": "PASS",
+    "exact_current_app_import_facade_v360_offline": "PASS_310_23_COLS_0_ERRORS_0_WARNINGS",
+    "exact_current_app_presentation_facade_v359_4_modes": "PASS_1240_RENDER_MODEL_CHECKS",
+    "exact_current_app_negative_controls": "PASS_8_OF_8",
+    "all_2548_combinations_present": "PASS",
+    "official_v336_neutral_projection": "PASS_310_OF_310",
+    "official_hf2_front_policy": "PASS_247_VERB_63_EXPRESSION",
+    "isolated_app_real_indexeddb_commit": "NOT_RUN__OPAQUE_ORIGIN_IDB_DENIED",
+    "installed_browser_native_stage6": "NOT_RUN__NOT_REQUIRED_FOR_SCOPED_STAGE5_PREFLIGHT",
+    "stage7_release": "NOT_FINAL"
+  },
+  "counts": {
+    "cards": 310,
+    "verb_cards": 247,
+    "expression_cards": 63,
+    "exemplar_trilingual_examples": 1240,
+    "visible_typed_combinations": 2548,
+    "source_strata": 22,
+    "modes": 4,
+    "render_model_checks": 1240,
+    "negative_import_cases": 8,
+    "runtime_import_warnings": 0,
+    "runtime_import_errors": 0,
+    "field_content_loss_after_delivery_encoding": 0
+  },
+  "fidelity": {
+    "canonical_source_untouched": true,
+    "accepted_R10_untouched_sha256": "790e7a39f2c814b59e3aceccb7cc7a9658d18b8c0980187c3d7af1370a53cd47",
+    "note": "Raw Runtime universal TSV parser calls sanitizeTsvCell which collapses repeated whitespace even inside quoted JSON; original master kept unmodified, Stage5-only TSV encodes two meaningful source spaces as JSON \\u0020 escapes to prevent loss; byte-after-JSON-parse matches exact source. Missing optional lexical_relations_v1 field in one card is an expected absence, not null data loss."
+  },
+  "runtime_limitations": {
+    "opaque_synthetic_origin_indexeddb_denied": true,
+    "origin_navigation_blocked_ERR_BLOCKED_BY_ADMINISTRATOR": true,
+    "what_was_exercised": "Actual v505-R141 JS importer parseTsvText facade plus actual presentation details and backHtml in 4 modes for 310 normalized cards, no user app/profile access",
+    "what_was_not_exercised": "IndexedDB persistence, real installed app import or original user SRS/FSRS, native Stage6, Stage7, formal whole-project independent linguistic certification"
+  },
+  "next": "No more content batches or self-review loops. Adopt this tested TSV only through explicit safe import/release workflow; never call this a FULL installed-app import PASS until that action is actually run."
+}

@@ -20,7 +20,7 @@ ROOT=Path(__file__).resolve().parents[1]
 REGISTRY="Prompt/GLOBAL-POLICY-REGISTRY-v1.0.0.json"
 BINDING="stage5_neutral_validator"
 VALIDATOR="Verification/validate_unified_vocabulary_projection_v1_1_0.py"
-MAX_TSV=35_000_000
+MAX_TSV=64_000_000  # bounded A1 V49 full-source payload; all neutral format and identity checks remain
 
 class Stage5PolicyFailure(ValueError):
     pass

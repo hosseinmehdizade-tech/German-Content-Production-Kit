@@ -1,5 +1,14 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Five-section enrichment S13 — A2-L13 (2026-11-15; Stage3 editable WIP, NOT CURATED CURRENT)
+
+**Latest exact source-owned Stage3 candidate**: `Menschen-A2-L01-L13-S13-1778-CARD-FIVE-SECTIONS-STAGE3-WIP-20261115.zip`, SHA256 `e1e0d6257ea6cdfc6da8c545b9a1a8cf69b4cbb04f188b1cd390b9e1421b45ff`; Library `libfile_748a65d6bc748191b7928ceb6fe6483d`, in `Content/Menschen-A2/Candidates/`. Library post-upload exact byte/hash readback **PASS**. Parent exact S12 archive SHA `c63a6f6bd63225728fa73708c40c12f88fcadd18c1c57e80f88782a05999358b`, all inner hashes verified.
+
+L13: **61 reviewed, 53 `details`-only edits, 8 CLOSED_NO_FORCE**, **119 editorial additions**: Wortfamilie 28; Verwandte Wörter 16; Synonyme 32; Antonyme 8; Kombinationen 35. All 1,717 cards outside lesson 13, all 22 non-details fields, 1,778 IDs, 4 examples/card, original canonical graph and L01–L12 ledger decisions remain unchanged. Scoped structural QA and clean ZIP extraction/CRC + five member hashes PASS; no new exact combo copies from examples. This is an **AI linguistic Stage3 first-pass only**, **not** independent linguistic Stage4, governed Stage5, real app Stage6, or accepted Stage7. Official curated CURRENT R21-R2-R1 (SHA `774b8b...`) remains unchanged. [S13 exact checkpoint](./L13-FIVE-SECTIONS-S13-SOURCE-OWNED-CHECKPOINT-20261115.json).
+
+**Next:** A2-L14 from exact S13 ZIP Master/Canonical/Cumulative Ledger. Do not repeat L01–L13, reset to old Git default LATEST or original source, or create per-lesson Stage6 browser kits.
+
+
 ## Five-section enrichment S12 — A2-L12 (2026-11-15; Stage3 WIP, NOT CURRENT)
 
 Newest exactly verified **editable Stage3** package: `Menschen-A2-L01-L12-S12-1778-CARD-FIVE-SECTIONS-STAGE3-WIP-20261115.zip`, full SHA256 `c63a6f6bd63225728fa73708c40c12f88fcadd18c1c57e80f88782a05999358b`, Library `libfile_6c4c791bacfc81918780bc9ee3dfc88f` under `Content/Menschen-A2/Candidates/`. Post-upload raw-byte equality and SHA readback PASS, internal six ZIP members / five SHA entries PASS. Source is exact preceding S11 ZIP SHA `d9e307c16a4275ed8da80a5cf29dc128a47942aaf4bd401312cd93a211cd4707`.

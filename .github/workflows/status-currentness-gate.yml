@@ -1,0 +1,24 @@
+name: Status Currentness Gate Pilot
+on:
+  pull_request:
+    paths:
+      - 'Tools/status_currentness_gate_v1.py'
+      - 'Verification/test_status_currentness_gate_v1.py'
+      - '.github/workflows/status-currentness-gate.yml'
+  push:
+    paths:
+      - 'Tools/status_currentness_gate_v1.py'
+      - 'Verification/test_status_currentness_gate_v1.py'
+      - '.github/workflows/status-currentness-gate.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test status currentness evidence gate
+        run: python -m unittest discover -s Verification -p 'test_status_currentness_gate_v1.py' -v

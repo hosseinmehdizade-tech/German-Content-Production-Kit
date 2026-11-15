@@ -1,5 +1,16 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Five-section enrichment S12 — A2-L12 (2026-11-15; Stage3 WIP, NOT CURRENT)
+
+Newest exactly verified **editable Stage3** package: `Menschen-A2-L01-L12-S12-1778-CARD-FIVE-SECTIONS-STAGE3-WIP-20261115.zip`, full SHA256 `c63a6f6bd63225728fa73708c40c12f88fcadd18c1c57e80f88782a05999358b`, Library `libfile_6c4c791bacfc81918780bc9ee3dfc88f` under `Content/Menschen-A2/Candidates/`. Post-upload raw-byte equality and SHA readback PASS, internal six ZIP members / five SHA entries PASS. Source is exact preceding S11 ZIP SHA `d9e307c16a4275ed8da80a5cf29dc128a47942aaf4bd401312cd93a211cd4707`.
+
+**L12 Stage3:** 75/75 curated cards reviewed, 72 `details`-only edits, 3 CLOSED_NO_FORCE, 120 sense-aware learner-visible additions (Wortfamilie 39; Verwandte Wörter 29; Synonyme 29; Antonyme 18; Kombinationen 5). One duplicate proposal removed. All 1,703 outside-L12 rows, all 22 non-details fields, 1,778 card IDs, examples, unchanged Canonical graph and prior L01–L11 decisions preserved. No quotas or fabricated typed edges. **AI editorial first-pass only; no independent linguistic Stage4, governed lexical Stage5, installed app Stage6, or Stage7 release.** Curated official CURRENT R21-R2-R1 remains unchanged.
+
+**S11 Git metadata errata:** The Git S11 checkpoint recorded incorrect *internal* Master and Ledger hashes; exact S11 ZIP itself verifies its own `SHA256SUMS`. Correct actual S11 inner Master SHA is `235458737742c1a55a54f3d36711d825b8b0c347c8dae0e4f53ba2b9a006f417`, inner Ledger SHA `81f9ab545442ed14a339a3ec10afd29b21ff80e4bede984ad960763bdad881ea`. No S11 bytes were rewritten. [S12 owner checkpoint / errata](./L12-FIVE-SECTIONS-S12-SOURCE-OWNED-CHECKPOINT-20261115.json).
+
+**Next safe continuation: A2-L13 from exact S12 Master/Canonical/Ledger.** Do not restart L01–L12, repopulate original source, or build separate Stage6 kits.
+
+
 ## Five-section enrichment S11 — A2-L11 (2026-11-15; editable Stage3 WIP, NOT CURRENT)
 
 **Latest verified editable working state:** `Menschen-A2-L01-L11-S11-1778-CARD-FIVE-SECTIONS-STAGE3-WIP-20261115.zip`, SHA256 `d9e307c16a4275ed8da80a5cf29dc128a47942aaf4bd401312cd93a211cd4707`, personal Library `libfile_a34176a59fc081919fce1b45e97536b4` in `Content/Menschen-A2/Candidates/`. Original ZIP and exact Library raw-byte readback match. All 6 ZIP members pass CRC and 5/5 payload hashes. L11 **74 reviewed, 72 changed in `details` only, 2 NO_FORCE**, **167** added first-pass pedagogic items (44 Wortfamilie, 41 Verwandte Wörter, 35 Synonyme, 13 Antonyme, 34 Kombinationen); 8 low-delta/redundant proposals rejected. All 1,704 other cards, all other 22 TSV fields, 1,778 IDs, trilingual examples, typed canonical graph and previously recorded L01–L10 decisions are unchanged. Polysemy (Stoff, Artikel, unterhalten) marked for distinct Stage4 scrutiny. [S11 exact SHA-bound checkpoint](./L11-FIVE-SECTIONS-S11-SOURCE-OWNED-CHECKPOINT-20261115.json). These are **AI Stage3 editable proposals**, NOT independent Stage4/official Stage5/native Stage6 or imported FINAL. The owner CURATED_CURRENT R21-R2-R1 SHA `774b8b...` remains unchanged. **Next: A2-L12 from exact S11 Master/Canonical/Ledger**, not an older Git main LATEST or raw source. No per-lesson Stage6 browser kits.

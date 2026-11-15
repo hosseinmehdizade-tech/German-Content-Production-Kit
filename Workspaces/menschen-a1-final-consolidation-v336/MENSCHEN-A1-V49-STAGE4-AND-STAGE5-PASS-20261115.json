@@ -1,0 +1,77 @@
+{
+  "schema": "gcpk-menschen-a1-v49-risk-stage4-stage5-content-acceptance@1.0.0",
+  "date": "2026-11-15",
+  "family": "family:menschen-a1",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "accepted_baseline": {
+    "version": "V48-R1",
+    "zip_sha256": "3005b24a8928bee6eab28a3d8c1a8fe13d2c5ff6eb7975d7ed470d822a22ccac",
+    "untouched": true
+  },
+  "v49_current_content": {
+    "master_tsv_sha256": "510f024705b10039537c0e4b3edb11912cecd15cccf7b03142166ea96c0aa5b4",
+    "cards": 2997,
+    "lessons": 24,
+    "examples_preserved_exact_from_v48": 11988,
+    "last_scoped_cleanup": {
+      "cards_changed": 5,
+      "edit_field": "details.Kombinationen",
+      "reason": "case/punctuation-normalized exact learner-visible clone of unchanged same-card German example; accepted archived source and graph unchanged",
+      "unaffected_rows_data_parity": "PASS"
+    }
+  },
+  "stage4": {
+    "status": "PASS_RISK_BASED_STAGE4",
+    "policy_version": "STAGE4-RISK-BASED-ACCEPTANCE-POLICY-v1.0.1.json",
+    "official_gate_result_sha256": "98f4bc649391b0468091cda2856b128100fde3f23fceeba6f62f53928ed4bae0",
+    "risk_based_receipt_sha256": "a4943b7381129b49eea4ccf9add7bec69a4ff7f4d798a9be094249a00a06c015",
+    "evidence": "Full 2997-card V48→V49 source and data preservation, 24 deterministic strata, 288 cards, 576 unchanged accepted examples, 192 combos, 11 individually adjudicated HIGH inherited scanner signals, 2185 medium family classified with 224 representative risk reviews, 5 negative controls. All official Stage4 gate blockers = 0.",
+    "zero_semantic_error_asserted": false
+  },
+  "stage5": {
+    "status": "PASS_STAGE5_CANDIDATE_WITH_EXACT_SOURCE_STAGE4_AND_RULE_COVERAGE",
+    "quality_gate_sha256": "1c16309f7697e2488cf9d5d1b87aa242dea7885e4b65809918359a7f6cb6f6fb",
+    "governed_format_receipt_sha256": "9025e54ec5d2e912eb4436f25a8c4431ded1478353c45a439bb83da2aa29a014",
+    "cross_tile_review_sha256": "6d901ab02c3e6efc35d38d1b0d4f5ff3a5c7e549f15a42ade0ba82be9a53078c",
+    "governed_stage5_zip_sha256": "a15688f0a32b6d6efc8c6c2b8b4e9250c2bb8b65ef6f1b83143729c32f0b3852",
+    "status_scope": "Exact 2997-card source-bound content Stage5; stage6 real app import, native SRS and stage7 final not claimed",
+    "official_cap_persistence": {
+      "pr": 235,
+      "merged": true,
+      "merge_commit": "8704907cb13bddfeec8fc175ac0def49d5c4fbf1",
+      "main_file_blob_verified": "af34e7363e321904528cec1d98b4de06654aaa19",
+      "bounded_cap_bytes": 64000000
+    }
+  },
+  "single_delivery": {
+    "name": "Menschen-A1-V49-STAGE5-VERIFIED-CONTENT-20261115.zip",
+    "sha256": "56db7fedc0cf9f02f939b443c6ca2cba7d3a437e326ac1fdc50dd1dce17cceef",
+    "bytes": 6895608,
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Stage5/Menschen-A1-V49-STAGE5-VERIFIED-CONTENT-20261115.zip",
+    "library_stable_id": "libfile_0361a7712aec81919b876c375d056872",
+    "library_latest_file_id": "file_00000000faac820a8d2c3fe6b0116463",
+    "library_sha256_and_byte_readback": "PASS_EXACT",
+    "contents": [
+      "Content official governed Stage5 ZIP",
+      "Ledger cumulative",
+      "Source authority pin",
+      "QA Stage4 and Stage5 exact evidence",
+      "Reports",
+      "Docs FA/DE",
+      "Tools verifier",
+      "Launcher Windows and shell",
+      "SHA256SUMS.txt"
+    ],
+    "separate_unused_zip_generation": false
+  },
+  "stage6": {
+    "status": "NOT_RUN",
+    "reason": "Separate application/runtime and user-import boundary, not a content Stage5 blocker; do not repeat blocked browser test in content workflow"
+  },
+  "stage7": {
+    "status": "NOT_FINAL"
+  },
+  "app_ui_and_user_fsrs_srs_untouched": true,
+  "import_authorized": false,
+  "next_action": "Content stream Stage4 and Stage5 are CLOSED/PASS. Do not regenerate lessons, restart Stage4, invent another audit or ZIP. Only runtime-native Stage6 when authorized/available under German-Flashcards-Pro; Stage7 remains separate."
+}

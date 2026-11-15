@@ -60,6 +60,20 @@ class MissionContinuityContract(unittest.TestCase):
         self.assertIn("user explicitly", self.policy["mission_continuity"]["safe_exception"].lower())
         self.assertIn("explicit user", self.readme.lower())
 
+    def test_stage6_reporting_owned_by_app_not_routine_content_or_cop(self):
+        policy = self.policy["stage6_ownership_and_reporting_20261115"]
+        self.assertEqual(policy["status"], "ACTIVE_USER_APPROVED_2026-11-15")
+        self.assertEqual(policy["source_families"], 21)
+        self.assertIn("Suppress recurring", policy["rule_1"])
+        self.assertIn("German-Flashcards-Pro", policy["rule_2"])
+        self.assertIn("Skip a known inaccessible browser", policy["rule_3"])
+        self.assertIn("CONTENT_ONLY_READY", policy["rule_4"])
+        self.assertIn("APP_INTEGRATED", policy["rule_4"])
+        self.assertIn("only if", policy["material_exception"])
+        self.assertIn("STAGE6 REPORTING OWNERSHIP", self.readme)
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("stage6_ownership_and_reporting_20261115", agents)
+
 
 if __name__ == "__main__":
     unittest.main()

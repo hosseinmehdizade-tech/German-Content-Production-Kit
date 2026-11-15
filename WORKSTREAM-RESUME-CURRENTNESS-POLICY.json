@@ -46,5 +46,20 @@
     "lesson": "A2-L01",
     "note": "Example paths only; do not pin Stage3C Batch0008 as a permanently current result"
   },
-  "automation_boundary": "Rules are enforced whenever a connected agent begins/resumes work and reads startup policy. This does not launch unattended periodic jobs or force other live chats to refresh automatically."
+  "automation_boundary": "Rules are enforced whenever a connected agent begins/resumes work and reads startup policy. This does not launch unattended periodic jobs or force other live chats to refresh automatically.",
+  "status_evidence_gate": {
+    "status": "PILOT_PROPOSED__NOT_YET_MAIN_ACTIVE",
+    "executable": "Tools/status_currentness_gate_v1.py",
+    "tests": "Verification/test_status_currentness_gate_v1.py",
+    "requirement": "Before asserting current progress, distinguish newest observed mutable work from separately accepted/final baseline, and verify claimed working artifact bytes when accessible. Library/Drive/current chat discovery cannot be replaced with old Git registry pointers.",
+    "source_discovery": "Inspect live conversation/project/Library/Drive candidate artifacts plus owner Git LATEST and receipt. Metadata/read-only Git index is not proof that private providers contain no newer artifact.",
+    "evidence_input": "gcpk-status-currentness-evidence@1 JSON with provider observations, artifact roles, exact working raw-file SHA and path, accepted proof, and claim IDs.",
+    "on_pass": "PASS_OBSERVED_STATUS_CLAIM establishes only the observed claim, not exhaustive discovery or linguistic/Stage7 acceptance.",
+    "on_hold": "Say CURRENT_NOT_VERIFIED with exact missing provider/bytes or conflicting active working versions; do not claim old Git baseline is newest.",
+    "on_fail": "Do not issue stale status report; fix role selection or raw hash mismatch before publication.",
+    "performance": "Run once per substantive status/handoff; reuse same checked hash during that task; no full repeat of Stage4/Stage5, no per-card Git commits, no extra release ZIPs.",
+    "compatibility": "Read-only; no changes to learner cards, app runtime, project source, LOCKED, user FSRS/SRS, or content-owner promotion.",
+    "limitations": "This script evaluates supplied evidence and reads local bytes only; agent must actually query private providers. No GitHub CI or written policy alone can enforce all live ChatGPT answers.",
+    "sample_regression": "A1 Verben Git R10 accepted vs Drive R16-P19 working: current_working_id=R10 FAIL; R16-P19 PASS with exact SHA checked."
+  }
 }

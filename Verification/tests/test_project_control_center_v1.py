@@ -259,6 +259,8 @@ class TestProjectControlCenter(unittest.TestCase):
     def _sample_currentness_docs(self, directory):
         base = Path(directory)
         raw = base / "working-master.json"
+        evidence_dir = base / "currentness-evidence"
+        evidence_dir.mkdir()
         raw.write_text(json.dumps({"cards": [{"id": "1"}, {"id": "2"}]}),
                        encoding="utf-8")
         digest = hashlib.sha256(raw.read_bytes()).hexdigest()
@@ -282,14 +284,14 @@ class TestProjectControlCenter(unittest.TestCase):
             "claims": {"current_working_id": "R16-P19",
                        "accepted_baseline_id": "R10"}
         }
-        manifest = base / "menschen-a1-verben.json"
+        manifest = evidence_dir / "menschen-a1-verben.json"
         manifest.write_text(json.dumps(doc), encoding="utf-8")
         return doc, manifest, raw
 
     def test_real_byte_evidence_identifies_working_and_accepted_separately(self):
         with tempfile.TemporaryDirectory() as directory:
-            self._sample_currentness_docs(directory)
-            evidence = pcc.load_currentness_evidence_dir(directory, self.cat)
+            _, manifest, _ = self._sample_currentness_docs(directory)
+            evidence = pcc.load_currentness_evidence_dir(manifest.parent, self.cat)
             snapshot = self.build(currentness_reports=evidence)
             family = next(f for f in snapshot["families"]
                           if f["id"] == "family:menschen-a1-verben")
@@ -306,7 +308,7 @@ class TestProjectControlCenter(unittest.TestCase):
             doc, path, _ = self._sample_currentness_docs(directory)
             doc["claims"]["current_working_id"] = "R10"
             path.write_text(json.dumps(doc), encoding="utf-8")
-            evidence = pcc.load_currentness_evidence_dir(directory, self.cat)
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
             family = next(f for f in self.build(currentness_reports=evidence)["families"]
                           if f["id"] == "family:menschen-a1-verben")
             self.assertEqual(family["currentness"]["status"], "FAIL_STALE_OR_CORRUPT")
@@ -317,14 +319,14 @@ class TestProjectControlCenter(unittest.TestCase):
             doc, path, raw = self._sample_currentness_docs(directory)
             del doc["provider_observations"]["library"]
             path.write_text(json.dumps(doc), encoding="utf-8")
-            evidence = pcc.load_currentness_evidence_dir(directory, self.cat)
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
             self.assertEqual(evidence["family:menschen-a1-verben"]["status"],
                              "HOLD_INCOMPLETE_EVIDENCE")
             doc["provider_observations"]["library"] = {
                 "status": "checked", "locator": "source-receipt://library"}
             raw.write_text("corrupt", encoding="utf-8")
             path.write_text(json.dumps(doc), encoding="utf-8")
-            evidence = pcc.load_currentness_evidence_dir(directory, self.cat)
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
             self.assertEqual(evidence["family:menschen-a1-verben"]["status"],
                              "FAIL_STALE_OR_CORRUPT")
             self.assertIsNone(evidence["family:menschen-a1-verben"]["working_current_id"])
@@ -335,11 +337,11 @@ class TestProjectControlCenter(unittest.TestCase):
             doc["family_id"] = "family:menschen-a1"
             path.write_text(json.dumps(doc), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "CURRENTNESS_FAMILY_BINDING_MISMATCH"):
-                pcc.load_currentness_evidence_dir(directory, self.cat)
+                pcc.load_currentness_evidence_dir(path.parent, self.cat)
             path.unlink()
-            (Path(directory) / "not-a-family.json").write_text("{}", encoding="utf-8")
+            (path.parent / "not-a-family.json").write_text("{}", encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "UNKNOWN_OR_SYMLINKED_CURRENTNESS_EVIDENCE"):
-                pcc.load_currentness_evidence_dir(directory, self.cat)
+                pcc.load_currentness_evidence_dir(path.parent, self.cat)
 
 
 if __name__ == "__main__":

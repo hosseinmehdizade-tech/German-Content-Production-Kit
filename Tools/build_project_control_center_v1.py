@@ -2,6 +2,7 @@
 """Read-only Control Center: identity catalog + exact Git-index status hints."""
 from __future__ import annotations
 import argparse
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -12,6 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json"
 STATE = "PROJECT-STATE.json"
 SCHEMA = "gcpk-control-center-snapshot@1.0.0"
+CURRENTNESS_GATE_PATH = ROOT / "Tools/status_currentness_gate_v1.py"
+CURRENTNESS_UNVERIFIED = "CURRENT_NOT_VERIFIED__GIT_METADATA_ONLY"
+OBSERVED_PASS = "PASS_OBSERVED_STATUS_CLAIM"
 # Explicit B2 owner RUN-CONTROL marker can supersede a historical LATEST for
 # a display HINT only. Never infer a Stage4 or content acceptance from it.
 OWNER_CONTROL_PRIMARY = {
@@ -124,10 +128,71 @@ def short_text(data, *keys, limit=200):
     return None
 
 
-def build(cat, index, root_state, pointers):
+
+def load_currentness_evidence_dir(folder, catalog):
+    """Consume externally gathered, byte-checkable evidence; never crawl providers.
+
+    Each optional <family-slug>.json uses the existing status-currentness gate
+    schema plus an explicit family_id. Omitted families remain NOT VERIFIED.
+    The output intentionally excludes provider locators and raw file paths.
+    """
+    if folder is None:
+        return {}
+    folder = Path(folder)
+    if not folder.is_dir():
+        raise ValueError("CURRENTNESS_EVIDENCE_DIRECTORY_MISSING")
+    family_ids = {item["id"] for item in catalog["families"]}
+    workspaces = {}
+    for ws in catalog["workspaces"]:
+        workspaces.setdefault(ws["parent_family_id"], set()).add(
+            ws["git_dir"].rsplit("/", 1)[-1])
+    expected_names = {fid.removeprefix("family:") + ".json": fid
+                      for fid in family_ids}
+    for candidate in folder.glob("*.json"):
+        if candidate.name not in expected_names or candidate.is_symlink():
+            raise ValueError("UNKNOWN_OR_SYMLINKED_CURRENTNESS_EVIDENCE:" + candidate.name)
+    spec = importlib.util.spec_from_file_location("pcc_status_currentness", CURRENTNESS_GATE_PATH)
+    if spec is None or spec.loader is None:
+        raise ValueError("CURRENTNESS_GATE_UNAVAILABLE")
+    gate = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gate)
+    reports = {}
+    for filename, fid in sorted(expected_names.items()):
+        path = folder / filename
+        if not path.exists():
+            continue
+        if not path.is_file() or path.is_symlink():
+            raise ValueError("UNSAFE_CURRENTNESS_EVIDENCE:" + filename)
+        doc = json.loads(path.read_text(encoding="utf-8-sig"))
+        if not isinstance(doc, dict) or doc.get("family_id") != fid:
+            raise ValueError("CURRENTNESS_FAMILY_BINDING_MISMATCH:" + filename)
+        valid_workstreams = {fid.removeprefix("family:")} | workspaces.get(fid, set())
+        if doc.get("workstream") not in valid_workstreams:
+            raise ValueError("CURRENTNESS_WORKSTREAM_BINDING_MISMATCH:" + filename)
+        verdict = gate.evaluate(doc, path.parent)
+        passed = verdict["status"] == OBSERVED_PASS
+        reports[fid] = {
+            "status": verdict["status"],
+            "working_current_id": verdict["selected"].get("working") if passed else None,
+            "accepted_baseline_id": verdict["selected"].get("accepted") if passed else None,
+            "working_actual_bytes_verified": (
+                passed and verdict["byte_evidence"].get(
+                    verdict["selected"].get("working")) == "BYTE_VERIFIED"),
+            "warnings": verdict["warnings"],
+            "errors": verdict["errors"],
+            "holds": verdict["holds"],
+            "proof_scope": "OBSERVED_FILES_ONLY__NOT_GLOBAL_NEWEST_OR_RELEASE",
+        }
+    return reports
+
+def build(cat, index, root_state, pointers, currentness_reports=None):
     errors = catalog_errors(cat)
     if errors:
         raise ValueError("INVALID_CATALOG:" + ",".join(errors))
+    currentness_reports = currentness_reports or {}
+    known_families = {item["id"] for item in cat["families"]}
+    if set(currentness_reports) - known_families:
+        raise ValueError("CURRENTNESS_UNKNOWN_FAMILY")
     root_ws = root_state.get("workstreams")
     if not isinstance(root_ws, dict):
         raise ValueError("ROOT_WORKSTREAMS_NOT_OBJECT")
@@ -216,7 +281,17 @@ def build(cat, index, root_state, pointers):
         fid = fam["id"]
         descendants = [r for r in rows if r["parent_family_id"] == fid]
         parent_roots = [r for r in root_rows if r["family_id"] == fid]
+        result = currentness_reports.get(fid)
+        currentness = result if result is not None else {
+            "status": CURRENTNESS_UNVERIFIED,
+            "working_current_id": None,
+            "accepted_baseline_id": None,
+            "working_actual_bytes_verified": False,
+            "warnings": [], "errors": [], "holds": [],
+            "proof_scope": "GIT_ONLY__NO_LIVE_PROVIDER_EVIDENCE",
+        }
         family_rows.append({
+            "currentness": currentness,
             "id": fid, "name": fam["name"], "library_path": fam["library_path"],
             "library_proof": "CATALOGED_SNAPSHOT_NOT_LIVE_LIBRARY_SCAN",
             "git_workspace_count": len(descendants),
@@ -231,9 +306,14 @@ def build(cat, index, root_state, pointers):
                    "root_state_git_blob_sha": index.get(STATE),
                    "git_index_not_working_tree": True,
                    "newer_user_artifact_not_checked": True,
-                   "library_list_is_snapshotted_not_live": True},
+                   "library_list_is_snapshotted_not_live": True,
+                   "currentness_evidence_is_external_and_observed_scope_only": True},
         "counts": {
             "families": len(family_rows),
+            "source_currentness_observed_pass": sum(
+                x["currentness"]["status"] == OBSERVED_PASS for x in family_rows),
+            "source_currentness_unverified_or_hold": sum(
+                x["currentness"]["status"] != OBSERVED_PASS for x in family_rows),
             "git_workspaces": len(observed),
             "mapped_workspaces": sum(x["id"] is not None for x in rows),
             "root_workstreams": len(root_ws),
@@ -252,6 +332,9 @@ def dashboard_md(snapshot):
         "# German Content Production — Project Control Center",
         "",
         "**READ-ONLY GIT METADATA. This is not content/Stage4–7 acceptance.**",
+        "**Git LATEST/CHECKPOINT hints are NOT the newest working version.**",
+        "Only externally supplied source evidence that passes the byte-bound currentness gate can identify a WORKING_CURRENT within the OBSERVED files.",
+        "A missing/failed evidence gate means CURRENT_NOT_VERIFIED, not an old Git version promoted as newest.",
         "Newer user-supplied artifacts and verified portable sources may outrank Git.",
         "",
         f"Families cataloged: **{count['families']}**; Git workspace directories: **{count['git_workspaces']}**; mapped: **{count['mapped_workspaces']}**.",
@@ -259,13 +342,18 @@ def dashboard_md(snapshot):
         "",
         "## Family navigation",
         "",
-        "| Family | Git workspace directories | Parseable pointers | Central root entries |",
-        "|---|---:|---:|---:|",
+        "| Family | Git workspaces | Currentness evidence | Working current (observed only) | Accepted baseline |",
+        "|---|---:|---|---|---|",
     ]
     for fam in snapshot["families"]:
-        lines.append(f"| {fam['name']} | {fam['git_workspace_count']} | {fam['parseable_pointer_count']} | {fam['root_summary_entries']} |")
+        proof = fam["currentness"]
+        lines.append("| " + " | ".join(
+            str(value).replace("|", "\\|") for value in (
+                fam["name"], fam["git_workspace_count"], proof["status"],
+                proof["working_current_id"] or "—",
+                proof["accepted_baseline_id"] or "—")) + " |")
     lines.extend(["", "## Workspace status hints — NOT verified Stage PASS", "",
-                  "| Workspace | Parent ID | Reported status | Display source |",
+                  "| Workspace | Parent ID | Old Git status hint (NOT CURRENT) | Git pointer only |",
                   "|---|---|---|---|"])
     for ws in snapshot["workspaces"]:
         def esc(s):
@@ -288,6 +376,8 @@ def main():
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--github-summary", action="store_true")
+    parser.add_argument("--currentness-evidence-dir", type=Path,
+                        help="Optional existing <family-slug>.json manifests from independently queried providers; no automatic Library/Drive crawl")
     args = parser.parse_args()
     try:
         index = git_index()
@@ -304,10 +394,12 @@ def main():
                 path = directory + "/" + part
                 if path in index:
                     pointers[path] = load_json_from_index(path, index)
-        snapshot = build(cat, index, state, pointers)
+        evidence = load_currentness_evidence_dir(args.currentness_evidence_dir, cat)
+        snapshot = build(cat, index, state, pointers, currentness_reports=evidence)
         report = dashboard_md(snapshot)
         print(json.dumps({"schema": SCHEMA, "status": "CATALOG_INTEGRITY_OK_NOT_CONTENT_QA",
-                          "counts": snapshot["counts"], "issue_count": len(snapshot["issues"])},
+                          "counts": snapshot["counts"], "issue_count": len(snapshot["issues"]),
+                          "currentness_scope": "OBSERVED_EVIDENCE_ONLY__NO_PRIVATE_PROVIDER_CRAWL"},
                          ensure_ascii=False, indent=2))
         if args.output_dir:
             out = args.output_dir.resolve()

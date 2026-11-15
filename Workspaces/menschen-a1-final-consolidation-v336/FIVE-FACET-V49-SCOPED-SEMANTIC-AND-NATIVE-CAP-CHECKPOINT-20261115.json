@@ -1,0 +1,81 @@
+{
+  "schema": "gcpk-menschen-a1-v49-scoped-semantic-native-policy@1.0.0",
+  "date": "2026-11-15",
+  "workstream": "menschen-a1-final-consolidation-v336",
+  "family": "family:menschen-a1",
+  "accepted_content": {
+    "release": "V48-R1",
+    "zip_sha256": "3005b24a8928bee6eab28a3d8c1a8fe13d2c5ff6eb7975d7ed470d822a22ccac",
+    "immutable": true
+  },
+  "working_parent": {
+    "archive": "Menschen-A1-V49-STAGE4-NATIVE-SCANNER-SCOPED-REPAIRS-20261115.zip",
+    "sha256": "9e14957ae6f1c01d55475edf4921962203f554916e6ba2a8c0a12bd9dd733758"
+  },
+  "current_working": {
+    "archive": "Menschen-A1-V49-STAGE4-SCOPED-RECONCILED-WORKING-20261115.zip",
+    "sha256": "fc33064c572583357f7b0ffb8a3e58fab1e4b4fa0a2855cd4f1ef048577dd4c7",
+    "bytes": 5256371,
+    "master": "Content/Menschen-A1-V49-2997-CARDS-STAGE4-EXACT-RELATION-CLEANUP.tsv",
+    "master_sha256": "981b1a1931ac218231c3457446a2a815383ef61d44963caf27784279db78ac11",
+    "master_bytes": 54021588,
+    "ledger": "Ledger/Menschen-A1-V49-STAGE4-CUMULATIVE-LEDGER.json",
+    "ledger_sha256": "b4ca643fae080f0213a42d2ef719ebd37a9b594324757c53482658ac36cebf63",
+    "library_stable_id": "libfile_67bc010772608191b8b8c1d596420431",
+    "library_file_id": "file_000000005b6081f498a2ddcded0387b9",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A1/Checkpoints/Menschen-A1-V49-STAGE4-SCOPED-RECONCILED-WORKING-20261115.zip",
+    "readback": "PASS_EXACT_BYTE_SHA256_CRC"
+  },
+  "bounded_delta": {
+    "unique_cards_with_learner_visible_changes": 18,
+    "deleted_exact_example_sentence_clone_from_related": 3,
+    "moved_existing_bilingual_backend_phrases_to_kombinationen": 18,
+    "suppressed_literal_unattested_dach_des_mundes_in_related": 1,
+    "completed_accepted_backend_fa_en_for_related": 3,
+    "remaining_11_source_bound_semantic_reviews_in_cumulative_ledger": true,
+    "all_prior_2997_card_ids_and_order_preserved": true,
+    "all_original_11988_example_items_unchanged": true,
+    "original_canonical_graph_backend_legacy_metadata_unchanged": true,
+    "user_srs_fsrs_and_ui_unchanged": true
+  },
+  "official_native_qa_on_exact_master": {
+    "program_source": "Current German-Content-Production-Kit main exact GitHub file snapshots; core native scanners SHA verified locally",
+    "lexical_relation_status": "PASS_STRUCTURAL",
+    "lexical_relation_blockers": 0,
+    "mem009_status": "PASS_MEM009_NATIVE_STRUCTURE_ONLY",
+    "native_related_high_before": 33,
+    "native_related_high_now": 11,
+    "native_related_medium_now": 22,
+    "remaining_high_character": "11 exact inherited backend-RELATED same-surface flags, no new V49 defect proven; item reasons in cumulative ledger",
+    "native_cross_tile_high": 0,
+    "same_card_example_reuse_medium": 1342,
+    "backend_visible_surface_divergence_medium": 821,
+    "semantic_stage4_full": "NOT_ATTESTED_RISK_BASED_24_STRATA_AND_INDEPENDENT_REVIEW_RECEIPT",
+    "native_stage5_main": "BLOCKED_35000000_BYTE_LIMIT"
+  },
+  "size_gate_candidate": {
+    "draft_pr_url": "https://github.com/hosseinmehdizade-tech/German-Content-Production-Kit/pull/235",
+    "branch": "candidate/stage5-native-64mb-cap-a1-20261115",
+    "state": "DRAFT_UNMERGED_NOT_OFFICIAL",
+    "scope": "Verification/check_active_stage5_policy_v1.py byte cap only 35000000 -> 64000000; all validation and identity checks retained",
+    "exact_current_tsv_trial": "PASS_EXACT_ACTIVE_STAGE5_NEUTRAL_FORMAT_ONLY_ON_SEPARATE_LOCAL_GIT_POLICY_TEST_ENV",
+    "validated_cards": 2997,
+    "negative_controls": [
+      "EMPTY_INPUT_REJECTED",
+      "OVERSIZE_64MB_REJECTED",
+      "DUPLICATE_ID_REJECTED",
+      "MISSING_CATEGORY_REJECTED",
+      "INVALID_PRESENTATION_CONTRACT_REJECTED"
+    ],
+    "not_official_stage5_release": true
+  },
+  "status": {
+    "source_content": "WORKING_VERIFIED_STABLE_RECOVERABLE",
+    "stage4": "HOLD_FULL_LINGUISTIC_AND_RISK_GATE",
+    "stage5": "BLOCKED_MAIN_NATIVE_SIZE_GATE_AND_STAGE4",
+    "stage6": "NOT_RUN",
+    "stage7": "NOT_FINAL",
+    "import_authorized": false
+  },
+  "next_action": "Reuse existing V49 scoped AI and lineage; do not re-enrich lessons. Complete exact master hash-bound 24-stratum risk-based Stage4 receipt with 11 individually explained historical scanner signal decisions, then governed security/architecture approval and merge of separate PR #235; only afterwards run exact official Stage5 quality-gated builder. Never conflate draft code test with certified Stage5."
+}

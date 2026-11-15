@@ -345,6 +345,43 @@ class TestProjectControlCenter(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "UNKNOWN_OR_SYMLINKED_CURRENTNESS_EVIDENCE"):
                 pcc.load_currentness_evidence_dir(path.parent, self.cat)
 
+    def test_family_discovery_routes_are_complete_and_nonpromotional(self):
+        snapshot = self.build()
+        self.assertEqual(len(snapshot["families"]), 21)
+        for fam in snapshot["families"]:
+            target = fam["provider_discovery_targets"]
+            self.assertEqual(target["family_id"], fam["id"])
+            self.assertEqual(target["library_root"], fam["library_path"])
+            self.assertIn("NESTED_SUBFOLDERS", target["library_scope"])
+            self.assertIn("VERIFIED_FILE_ID", target["drive_scope"])
+            self.assertEqual(
+                len(target["github_workspace_roots"]), fam["git_workspace_count"])
+            self.assertEqual(target["provider_reconciliation"],
+                             "CURRENT_NOT_VERIFIED__QUERY_LIVE_PROVIDERS_BEFORE_LATEST_CLAIM")
+            self.assertIsNone(fam["currentness"]["working_current_id"])
+        self.assertIn("exact known folder/file ID", pcc.dashboard_md(snapshot))
+
+    def test_menschen_a1_verben_discovery_does_not_mix_general_menschen_a1(self):
+        snapshot = self.build()
+        verb = next(f for f in snapshot["families"]
+                    if f["id"] == "family:menschen-a1-verben")
+        general = next(f for f in snapshot["families"]
+                       if f["id"] == "family:menschen-a1")
+        self.assertTrue(verb["provider_discovery_targets"]["library_root"].endswith("/Menschen-A1-Verben"))
+        self.assertNotEqual(verb["provider_discovery_targets"]["library_root"],
+                            general["provider_discovery_targets"]["library_root"])
+        self.assertTrue(all("menschen-a1-verben" in root
+                            for root in verb["provider_discovery_targets"]["github_workspace_roots"]))
+
+    def test_observed_currentness_does_not_claim_global_latest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, path, _ = self._sample_currentness_docs(directory)
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
+            family = next(f for f in self.build(currentness_reports=evidence)["families"]
+                          if f["id"] == "family:menschen-a1-verben")
+            self.assertIn("OBSERVED_CURRENT_ONLY", family["provider_discovery_targets"]["provider_reconciliation"])
+            self.assertIn("NOT_GLOBAL_NEWEST", family["provider_discovery_targets"]["provider_reconciliation"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,5 +1,14 @@
 # Menschen A2 — 24 lessons · v3.3.6
 
+## Five-section enrichment S14 — A2-L14 (2026-11-15; Stage3 editable WIP, NOT CURATED CURRENT)
+
+**Latest verified editable Stage3 artifact:** `Menschen-A2-L01-L14-S14-1778-CARD-FIVE-SECTIONS-STAGE3-WIP-20261115.zip` SHA256 `2ec2d6a2f983853206ee25a3470f0cdf1a0ef24710ea895937fd0845284795ff`, Library `libfile_8353d09ce868819199a830442e0f92a4` in `Content/Menschen-A2/Candidates/`. Post-upload raw bytes, SHA256 and all inner 6 CRC/5 payload SHA checks **PASS**. Exact parent S13 ZIP SHA `e1e0d6257ea6cdfc6da8c545b9a1a8cf69b4cbb04f188b1cd390b9e1421b45ff`.
+
+A2-L14 **54/54 cards reviewed, 46 `details`-only edits, 8 CLOSED_NO_FORCE**, 110 AI-first-pass entries (Wortfamilie 28; Verwandte Wörter 29; Synonyme 13; Antonyme 5; Kombinationen 35). All 1,724 outside-L14 cards, 22 non-details TSV fields, 1,778 stable IDs, original trilingual examples, Canonical graph and historical L01–L13 cumulative ledger decisions preserved. Scoped structural QA and independent diff check PASS; full independent semantic/linguistic Stage4 and governed Stage5 **NOT RUN**. No app Stage6, Stage7/FINAL/import, or FSRS/SRS alterations. Source accepted R21-R2-R1 remains official CURRENT. [S14 exact owner checkpoint](./L14-FIVE-SECTIONS-S14-SOURCE-OWNED-CHECKPOINT-20261115.json).
+
+**Next content continuation:** A2-L15 from exact S14 ZIP Master/Canonical/Cumulative Ledger; do not regenerate L01–L14 or start from main-branch historical LATEST. No per-lesson browser tests/kits.
+
+
 ## Five-section enrichment S13 — A2-L13 (2026-11-15; Stage3 editable WIP, NOT CURATED CURRENT)
 
 **Latest exact source-owned Stage3 candidate**: `Menschen-A2-L01-L13-S13-1778-CARD-FIVE-SECTIONS-STAGE3-WIP-20261115.zip`, SHA256 `e1e0d6257ea6cdfc6da8c545b9a1a8cf69b4cbb04f188b1cd390b9e1421b45ff`; Library `libfile_748a65d6bc748191b7928ceb6fe6483d`, in `Content/Menschen-A2/Candidates/`. Library post-upload exact byte/hash readback **PASS**. Parent exact S12 archive SHA `c63a6f6bd63225728fa73708c40c12f88fcadd18c1c57e80f88782a05999358b`, all inner hashes verified.

@@ -290,7 +290,20 @@ def build(cat, index, root_state, pointers, currentness_reports=None):
             "warnings": [], "errors": [], "holds": [],
             "proof_scope": "GIT_ONLY__NO_LIVE_PROVIDER_EVIDENCE",
         }
+        discovery_targets = {
+            "family_id": fid,
+            "library_root": fam["library_path"],
+            "library_scope": "EXACT_FAMILY_FOLDER_AND_NESTED_SUBFOLDERS__NOT_GLOBAL_NAME_ONLY",
+            "drive_scope": "SOURCE_FOLDER_OR_VERIFIED_FILE_ID__BROAD_NAME_SEARCH_NOT_EXHAUSTIVE",
+            "github_workspace_roots": [r["git_dir"] for r in descendants],
+            "github_pointer_role": "NAVIGATION_AND_HISTORICAL_BASELINE__NOT_WORKING_BYTES",
+            "provider_reconciliation": (
+                "OBSERVED_CURRENT_ONLY__BYTE_CHECKED_NOT_GLOBAL_NEWEST"
+                if currentness["status"] == OBSERVED_PASS
+                else "CURRENT_NOT_VERIFIED__QUERY_LIVE_PROVIDERS_BEFORE_LATEST_CLAIM"),
+        }
         family_rows.append({
+            "provider_discovery_targets": discovery_targets,
             "currentness": currentness,
             "id": fid, "name": fam["name"], "library_path": fam["library_path"],
             "library_proof": "CATALOGED_SNAPSHOT_NOT_LIVE_LIBRARY_SCAN",
@@ -335,6 +348,7 @@ def dashboard_md(snapshot):
         "**Git LATEST/CHECKPOINT hints are NOT the newest working version.**",
         "Only externally supplied source evidence that passes the byte-bound currentness gate can identify a WORKING_CURRENT within the OBSERVED files.",
         "A missing/failed evidence gate means CURRENT_NOT_VERIFIED, not an old Git version promoted as newest.",
+        "Live provider check: search exact canonical Library family folder INCLUDING nested subfolders; resolve Drive's exact known folder/file ID if name search misses it; Git pointers are historical navigation until corroborated.",
         "Newer user-supplied artifacts and verified portable sources may outrank Git.",
         "",
         f"Families cataloged: **{count['families']}**; Git workspace directories: **{count['git_workspaces']}**; mapped: **{count['mapped_workspaces']}**.",

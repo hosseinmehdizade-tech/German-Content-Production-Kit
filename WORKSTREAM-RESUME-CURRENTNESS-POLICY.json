@@ -46,5 +46,35 @@
     "lesson": "A2-L01",
     "note": "Example paths only; do not pin Stage3C Batch0008 as a permanently current result"
   },
-  "automation_boundary": "Rules are enforced whenever a connected agent begins/resumes work and reads startup policy. This does not launch unattended periodic jobs or force other live chats to refresh automatically."
+  "automation_boundary": "Rules are enforced whenever a connected agent begins/resumes work and reads startup policy. This does not launch unattended periodic jobs or force other live chats to refresh automatically.",
+  "live_provider_discovery_20261115": {
+    "status": "ACTIVE_FOR_TOOL_CAPABLE_RESUMED_AGENT__SOURCE_OBSERVATIONS_REQUIRED",
+    "purpose": "Before reporting 'latest' after chat rollover, actually query current accessible providers, verify exact working master bytes and only then apply the already-integrated status-currentness gate.",
+    "scope": "Named source family status/resume in one user request; no global background crawl, forced 21-family audit or repeated per-card checks.",
+    "search_order": [
+      "Use user's current conversation/Project references and any explicitly named artifact first.",
+      "Resolve the exact family id and canonical Library root from existing MASTER-PROJECT-CATALOG-v1.json; search Library scoped to that folder and descend Current, Drafts, Checkpoints and other real subfolders as necessary. A name-only global search may omit large or nested files.",
+      "Search connected Google Drive by short source tokens and the relevant known Drive folder; additionally follow an exact existing owner/receipt Drive file ID if a name-only search misses it. Verify the fetched ID/title; an empty general search does NOT prove absence.",
+      "Read latest source-owned Git LATEST, CHECKPOINT, RUN-CONTROL and referenced receipt only for the relevant workstream. Git snapshots and root summaries remain comparisons, never a substitute for actual newer working bytes.",
+      "Check available candidate lineage/stage and raw SHA-256 for the selected working master, then feed the existing Tools/status_currentness_gate_v1.py or Tools/build_project_control_center_v1.py --currentness-evidence-dir. Distinguish WORKING_CURRENT, ACCEPTED_BASELINE, GIT_SYNC."
+    ],
+    "provider_tools_when_available": {
+      "library": "files.search using scope.surfaces=['library'] and/or files.list with canonical library_path; browse nested folder or locate exact Library file ID before materializing selected bytes",
+      "drive": "Google_Drive.search and Google_Drive.list_folder with verified exact folder URL; Google_Drive.fetch by verified exact file ID/URL for the selected candidate; raw bytes must be obtained for SHA when required",
+      "github": "GitHub.fetch_file on exact named source-owned LATEST, CHECKPOINT and RUN-CONTROL; use blob SHA as metadata not master SHA-256"
+    },
+    "evidence_boundary": "A tool result is evidence of the files actually returned only. Never mark an unqueried provider 'checked'; unreturned files are not proven absent. Validated hash of one observed candidate means OBSERVED_CURRENT, not guaranteed globally newest.",
+    "blocked_behavior": "If provider unavailable, listing incomplete, selected source bytes unavailable, or candidates conflict, set CURRENT_NOT_VERIFIED/HOLD with the actual missing evidence. Do not silently report R10 as latest working because R16 or later cannot be accessed.",
+    "output": "Concise current working (observed), accepted baseline, source locator/proof, true blocker and next action; no repetitive Stage6, no ZIP, no retroactive promotion.",
+    "real_pilot_20261115": {
+      "family_id": "family:menschen-a1-verben",
+      "lesson": "Generic Drive title search missed exact R16-P19 master; exact verified Drive file ID from prior receipt resolved file",
+      "observed_working": "R16-P19",
+      "actual_master_sha256": "5f832f62f5a8dac980d46855bfbc14b41d87d91504abfc1115edadab67be11cb",
+      "unique_cards": 310,
+      "accepted_baseline_reference": "R10 historical receipt; not a claim of latest working",
+      "exact_file_id": "1HszAmBPwbPs5Ahg1IIZNoKmYyjJeuiEi",
+      "qualifier": "As-of 2026-11-15 observed source only. No proof that no later file exists. Source card content unchanged."
+    }
+  }
 }

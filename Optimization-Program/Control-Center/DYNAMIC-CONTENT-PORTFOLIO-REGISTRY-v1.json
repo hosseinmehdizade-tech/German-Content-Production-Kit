@@ -2,8 +2,8 @@
   "schema": "gfp-opt-dynamic-content-portfolio-registry@1.0.0",
   "program_id": "GFP-OPT-2026",
   "scope": "TEN_REQUESTED_CURATED_CONTENT_FAMILIES__NOT_ALL_21_FAMILIES",
-  "observed_date": "2026-11-07",
-  "registry_state": "RECONCILED_ACCEPTED_CURATED_BASELINES_10_OF_10__MANAGEMENT_ONLY_NO_AUTO_PROMOTION",
+  "observed_date": "2026-11-16",
+  "registry_state": "RECONCILED_ACCEPTED_BASELINES_10_OF_10__B1_NEWER_WORKING_STAGE5_AND_APP_STAGE6_SCOPED_20261116__NO_AUTOPROMOTION",
   "authority_hierarchy": [
     "explicit newer user-accepted artifact with byte evidence",
     "verified source-owner current/final and its exact SHA",
@@ -173,8 +173,49 @@
       },
       "content_stage": "USER_ACCEPTED_CONTENT_FINAL__STATIC_PACKAGING_QA_PASS__FORMAL_STAGE7_NOT_CLAIMED",
       "runtime_stage": "USER_REPORTED_IMPORT_SUCCESS__INDEPENDENT_NATIVE_SRS_NOT_ATTESTED",
-      "next_action": "Preserve accepted import and user SRS; independently check 281 shared B1/Verben identities only when authorized; no reimport",
-      "note": "Newer 2026-11-06 Stage7 owner packaging supersedes the 2026-11-05 Stage5 artifact; issue #25 separately CLOSED by user 2026-11-06."
+      "next_action": "Keep source content Stage4/5 PASS and newer working Stage5 distinct from immutable user-accepted Nov6 baseline. Source PR #199 is Draft/unmerged. Do not restart L19/L20, reimport or rerun blocked browser. Future native app+SRS verification is separate.",
+      "note": "Newer 2026-11-06 Stage7 owner packaging supersedes the 2026-11-05 Stage5 artifact; issue #25 separately CLOSED by user 2026-11-06. | 2026-11-16 live binary comparison: Nov15 differs from Nov6 in 864/3088 cards, all ids/order preserved; app-owner Stage6 8 offline PASS, native BLOCKED.",
+      "working_current": {
+        "label": "NOV15_STAGE5_CONTENT_PASS_NOV16_USER_IMPORT_ACKNOWLEDGED",
+        "artifact_name": "Menschen-B1-24-Stage5-CONTENT-ONLY-ACCEPTED-20261115.zip",
+        "artifact_sha256": "077f48ebefa070bcf4a0919897e31ac9a3703ffdb601a05ecbcd435b08872b81",
+        "artifact_size_bytes": 8615881,
+        "import_tsv_sha256": "a16d37adc44f8efaf4eaae1fdbd015c20ef18fbd14fb8c3ad89bc1ff7390a200",
+        "artifact_location": "Library libfile_3848b055eb2c8191a4e7442382b6accc (Candidates)",
+        "byte_reverification": "PASS_FRESH_MATERIALIZATION_SHA256_AND_ZIP_CRC_AND_EMBEDDED_TSV_20261116",
+        "source_owner_repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
+        "source_owner_pr": 199,
+        "source_owner_branch": "content/menschen-b1-five-sections-l01-20261112",
+        "source_owner_pointer": "Workspaces/menschen-b1-24-lessons-v336/LATEST.json",
+        "source_owner_stage5_pointer": "Workspaces/menschen-b1-24-lessons-v336/Enrichment/STAGE5-LATEST.json",
+        "currentness_receipt": "Workspaces/menschen-b1-24-lessons-v336/CURRENTNESS/B1-SOURCE-AND-APP-STAGE6-CURRENTNESS-20261116.json",
+        "comparison_vs_accepted_baseline": {
+          "same_3088_ids": true,
+          "changed_cards": 864,
+          "front_changed": 5,
+          "back_changed": 10,
+          "details_changed": 860,
+          "custom_fields_changed": 184
+        },
+        "content_stage4": "PASS",
+        "content_stage5": "PASS",
+        "user_import": "PASS_REPORTED_20261116__DEVICE_HASH_NOT_MEASURED",
+        "authority_note": "NEWER_WORKING_CURRENT_NOT_FORMAL_STAGE7_FINAL__OLDER_USER_ACCEPTED_BASELINE_PRESERVED"
+      },
+      "scoped_app_stage6": {
+        "date": "2026-11-16",
+        "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+        "branch": "verification/menschen-b1-stage6-v505-20261116",
+        "report": "04-Reports/Menschen-B1-Stage6/STAGE6-MENSCHEN-B1-V505-SCOPED-20261116.json",
+        "runtime": "v505-R141",
+        "offline_checks": 8,
+        "offline_status": "PASS",
+        "native_browser": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR",
+        "indexeddb_srs_fsrs": "NOT_VERIFIED",
+        "formal_stage6": "BLOCKED",
+        "formal_stage7": "NOT_FINAL",
+        "user_import": "USER_REPORTED_SUCCESS"
+      }
     },
     {
       "id": "family:menschen-b1-verben",

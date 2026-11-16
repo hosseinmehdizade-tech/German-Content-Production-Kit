@@ -1,6 +1,7 @@
 name: Project Dependency and Evidence Graph - Read-only
 on:
   push:
+    branches: [main]
     paths:
       - 'Optimization-Program/Control-Center/**'
       - 'PROJECT-STATE.json'
@@ -29,6 +30,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   graph:
     name: Pinned policies and metadata evidence (${{ matrix.os }})

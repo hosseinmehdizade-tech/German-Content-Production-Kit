@@ -1,6 +1,7 @@
 name: Global Policy Synchronization and Adoption Truth
 on:
   push:
+    branches: [main]
     paths:
       - 'Prompt/**'
       - 'Verification/**'
@@ -33,6 +34,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   failclosed-global-router:
     name: Global policy snapshot + negatives (${{ matrix.os }})

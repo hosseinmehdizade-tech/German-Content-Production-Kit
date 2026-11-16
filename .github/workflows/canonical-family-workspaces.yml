@@ -1,6 +1,7 @@
 name: Canonical Family Workspace Guard - Read-only
 on:
   push:
+    branches: [main]
     paths:
       - 'Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json'
       - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
@@ -49,6 +50,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   canonical-family-routing:
     name: Enforce non-destructive single canonical route (${{ matrix.os }})

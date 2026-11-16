@@ -1,6 +1,7 @@
 name: Control Center - Scoped Evidence Overlay
 on:
   push:
+    branches: [main]
     paths:
       - 'Optimization-Program/Control-Center/**'
       - 'Optimization-Program/Verification/PHASE3-*-REAL-SOURCE-PACKAGE-BYTE-ATTESTATION-*.json'
@@ -43,6 +44,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify-evidence:
     name: Pinned receipt overlay + attack tests (${{ matrix.os }})

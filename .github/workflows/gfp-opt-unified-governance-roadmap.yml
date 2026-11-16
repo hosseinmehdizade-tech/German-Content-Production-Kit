@@ -1,6 +1,7 @@
 name: GFP-OPT Unified Governance Roadmap Routing
 on:
   push:
+    branches: [main]
     paths:
       - 'PROJECT-BOOTSTRAP.md'
       - 'Optimization-Program/CONTROL-CENTER-UNIFIED-GOVERNANCE-ROADMAP-v1.0.0.*'
@@ -27,6 +28,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   route-and-guard:
     name: Cross-project roadmap startup contract (${{ matrix.os }})

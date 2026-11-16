@@ -1,6 +1,7 @@
 name: Dynamic Content Portfolio - Read-only Reconciliation
 on:
   push:
+    branches: [main]
     paths:
       - 'Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json'
       - 'Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json'
@@ -39,6 +40,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   read-only-reconcile:
     name: Verify source pointers without release promotion (${{ matrix.os }})

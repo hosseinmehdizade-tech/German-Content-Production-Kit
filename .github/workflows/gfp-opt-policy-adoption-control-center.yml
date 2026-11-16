@@ -1,6 +1,7 @@
 name: GFP-OPT Policy Adoption Control Center
 on:
   push:
+    branches: [main]
     paths:
       - 'Optimization-Program/Control-Center/**'
       - 'Optimization-Program/Verification/P1-REAL-LIVE-CONNECTOR-R8-NONADOPTION-20261105.json'
@@ -47,6 +48,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   status:
     name: Read-only policy adoption report (${{ matrix.os }})

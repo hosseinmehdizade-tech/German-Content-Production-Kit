@@ -1,6 +1,7 @@
 name: Project Control Center - Read-only Snapshot
 on:
   push:
+    branches: [main]
     paths:
       - 'Optimization-Program/Control-Center/**'
       - 'PROJECT-STATE.json'
@@ -19,6 +20,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   snapshot:
     name: Read-only catalog and dashboard (${{ matrix.os }})

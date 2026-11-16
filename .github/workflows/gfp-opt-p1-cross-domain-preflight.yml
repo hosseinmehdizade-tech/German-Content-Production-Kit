@@ -1,6 +1,7 @@
 name: GFP-OPT P1 Cross-Domain Adapter and Checkpoint Triage
 on:
   push:
+    branches: [main]
     paths:
       - 'Tools/build_domain_adapter_preflight_v1.py'
       - 'Verification/tests/test_domain_adapter_preflight_v1.py'
@@ -39,6 +40,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   preflight:
     name: Source-grounded Grammar Lesen Schreiben HOLDs (${{ matrix.os }})

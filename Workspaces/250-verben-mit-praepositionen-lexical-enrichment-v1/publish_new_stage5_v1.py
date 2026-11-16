@@ -35,6 +35,31 @@ def require(value: bool, code: str) -> None:
     if not value:
         raise ValueError(code)
 
+def selected_accepted_current(latest: dict) -> dict:
+    """Choose only an explicitly accepted, source-owner-pinned content CURRENT.
+
+    v1.8 remains immutable historic evidence once R9-R2 becomes accepted.
+    This adapter protects NEXT successor candidates, never republishes CURRENT.
+    """
+    status = latest.get("status", "")
+    if status.startswith("FINAL_USER_ACCEPTED_R9_R2_CONTENT_ONLY__"):
+        chosen = latest.get("final_content_only_r9_r2")
+        require(isinstance(chosen, dict) and
+                chosen.get("sha256") == latest.get("artifact", {}).get("sha256"),
+                "CURRENT_OWNER_CONTENT_STATUS_UNATTESTED")
+    elif "FINAL_USER_ACCEPTED_CONTENT_ONLY_V1_8" in status:
+        chosen = latest.get("final_content_only_v18")
+        require(isinstance(chosen, dict), "CURRENT_OWNER_CONTENT_STATUS_UNATTESTED")
+    else:
+        raise ValueError("CURRENT_OWNER_CONTENT_STATUS_UNATTESTED")
+    require(isinstance(chosen.get("sha256"), str) and
+            re.fullmatch(r"[0-9a-f]{64}", chosen["sha256"]),
+            "CURATED_PARENT_NOT_PINNED")
+    require(isinstance(chosen.get("source_tsv_sha256"), str) and
+            re.fullmatch(r"[0-9a-f]{64}", chosen["source_tsv_sha256"]),
+            "ACCEPTED_CURRENT_IMPORT_TSV_NOT_PINNED")
+    return chosen
+
 def preflight(root: Path, source: Path, output: Path, receipt: Path,
               policy_report: Path, stage4: Path, review_path: Path) -> dict:
     root = root.resolve()
@@ -49,11 +74,8 @@ def preflight(root: Path, source: Path, output: Path, receipt: Path,
 
     require(latest.get("workstream") == OWNER.removeprefix("Workspaces/"),
             "SOURCE_OWNER_LATEST_MISMATCH")
-    require("FINAL_USER_ACCEPTED_CONTENT_ONLY_V1_8" in latest.get("status", ""),
-            "CURRENT_OWNER_CONTENT_STATUS_UNATTESTED")
-    parent = latest.get("final_content_only_v18", {}).get("sha256")
-    require(isinstance(parent, str) and re.fullmatch(r"[0-9a-f]{64}", parent),
-            "CURATED_PARENT_NOT_PINNED")
+    accepted_current = selected_accepted_current(latest)
+    parent = accepted_current["sha256"]
     families = [x for x in routes.get("families", [])
                 if x.get("family_id") == FAMILY]
     require(len(families) == 1, "CANONICAL_FAMILY_NOT_UNIQUE")
@@ -74,9 +96,9 @@ def preflight(root: Path, source: Path, output: Path, receipt: Path,
     from build_quality_gated_lexical_candidate_v1 import select_roles
     roles = select_roles(source)
     tsv_digest = digest(roles["direct-import-tsv"])
-    # An unchanged accepted v1.8 import is a recovery baseline, NOT a NEW
-    # content delta. Do not generate another 292-card candidate ZIP from it.
-    accepted_import = latest.get("final_content_only_v18", {}).get("source_tsv_sha256")
+    # Existing accepted v1.8 or R9-R2 content is a recovery baseline,
+    # never a NEW Stage5 delta. Freeze exact owner-current TSV identity.
+    accepted_import = accepted_current["source_tsv_sha256"]
     require(isinstance(accepted_import, str) and
             re.fullmatch(r"[0-9a-f]{64}", accepted_import),
             "ACCEPTED_CURRENT_IMPORT_TSV_NOT_PINNED")

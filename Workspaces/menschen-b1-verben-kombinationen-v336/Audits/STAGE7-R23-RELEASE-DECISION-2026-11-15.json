@@ -1,0 +1,44 @@
+{
+  "schema": "menschen-b1-verben-r23-stage7-release-decision@1",
+  "date": "2026-11-15",
+  "decision": "BLOCKED_APP_INTEGRATED_FINAL",
+  "scope": "STAGE5_CONTENT_ONLY_READY__APP_STAGE6_STATIC_PASS_NATIVE_BLOCKED",
+  "r23": {
+    "file": "German-Flashcards-Pro-Menschen-B1-Verben-R23-STAGE6-INTEGRATED-CANDIDATE-20261115.zip",
+    "sha256": "acb44d622c71571cb344a9996ebb6d6057fa6c9625029f3942390f6794351a3f",
+    "bytes": 12767360,
+    "library_stable_id": "libfile_a5813a4c828881918f9a0d7edcda47a1",
+    "verification": {
+      "zip_entries": 319,
+      "sha256_verified_members": 318,
+      "zip_crc": "PASS",
+      "index_alias_sha256": "cbf023413cc3313b3e0b8856205217a6aa426c5bd375382a0850d664950e941b",
+      "worker_sha256": "c1c048ed5091084cff37a7b023e943474587276c58ee1fd363d639a3e7c891ad",
+      "sw_shell_hashes": 82,
+      "post_zip_real_parser": 395,
+      "post_zip_trilingual_examples": 1580,
+      "visible_combinations": 1921,
+      "typed_combinations": 839,
+      "unchanged_other_cards": 394,
+      "negative_controls": 5
+    }
+  },
+  "stage7_gates": {
+    "post_zip_integrity": "PASS",
+    "post_zip_exact_adapter": "PASS",
+    "content_stage5": "PASS",
+    "strict_original_app_only_release_hygiene": "FAIL_18_CHECKS_APP_ONLY_ALLOWLIST_AND_STALE_MANIFEST",
+    "runtime_control_consistency": "FAIL_9_STALE_APP_FINGERPRINT_MANIFEST_REFERENCES",
+    "native_chromium_import_reload_indexeddb": "BLOCKED_ERR_BLOCKED_BY_ADMINISTRATOR__DO_NOT_RETRY_UNCHANGED_ENV",
+    "actual_runtime_profile_srs_fsrs": "NOT_VERIFIED",
+    "official_APP_INTEGRATED_final": "BLOCKED"
+  },
+  "governance": {
+    "accepted_owner_latest": "PRESERVED_BYTE_EXACT_MAIN",
+    "previous_failure_root_cause": "registry selected owner blob drift from modifying LATEST; accepted source artifact sha unchanged",
+    "correction": "restore accepted latest blob; use Audits for newer scoped candidate, not silently change accepted current pointer",
+    "accepted_stage7_old_2000": "IMMUTABLE",
+    "app_current_pin": "UNTOUCHED"
+  },
+  "next": "App-owner handles native Stage6 when reachable; a final integrated release requires an updated combined release policy and metadata and exact post-package verification. Do not call R23 FINAL. No need to re-review all cards or repeat blocked browser."
+}

@@ -1,6 +1,7 @@
 """Control Center identity and read-only metadata contracts, including negative cases."""
 from __future__ import annotations
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -32,11 +33,13 @@ class TestProjectControlCenter(unittest.TestCase):
                 if p in cls.index:
                     cls.pointers[p] = pcc.load_json_from_index(p, cls.index)
 
-    def build(self, cat=None, index=None, state=None, pointers=None):
+    def build(self, cat=None, index=None, state=None, pointers=None,
+              currentness_reports=None):
         return pcc.build(copy.deepcopy(self.cat) if cat is None else cat,
                          dict(self.index) if index is None else index,
                          copy.deepcopy(self.state) if state is None else state,
-                         copy.deepcopy(self.pointers) if pointers is None else pointers)
+                         copy.deepcopy(self.pointers) if pointers is None else pointers,
+                         currentness_reports=currentness_reports)
 
     def test_real_catalog_has_distinct_family_workspace_and_root_identity(self):
         self.assertEqual(len(self.cat["families"]), 21)
@@ -243,6 +246,141 @@ class TestProjectControlCenter(unittest.TestCase):
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("UNSAFE_OUTPUT_ALIASES_CONTENT_OR_SOURCE", proc.stderr)
         self.assertFalse((ROOT / "Workspaces" / "reserved-test-output").exists())
+
+    def test_all_21_families_without_provider_evidence_marked_unverified(self):
+        snapshot = self.build()
+        self.assertEqual(snapshot["counts"]["source_currentness_observed_pass"], 0)
+        self.assertEqual(snapshot["counts"]["source_currentness_unverified_or_hold"], 21)
+        self.assertTrue(all(f["currentness"]["status"] == pcc.CURRENTNESS_UNVERIFIED
+                            and f["currentness"]["working_current_id"] is None
+                            for f in snapshot["families"]))
+        rendered = pcc.dashboard_md(snapshot)
+        self.assertIn("NOT the newest working version", rendered)
+        self.assertIn("Old Git status hint (NOT CURRENT)", rendered)
+
+    def _sample_currentness_docs(self, directory):
+        base = Path(directory)
+        raw = base / "working-master.json"
+        evidence_dir = base / "currentness-evidence"
+        evidence_dir.mkdir()
+        raw.write_text(json.dumps({"cards": [{"id": "1"}, {"id": "2"}]}),
+                       encoding="utf-8")
+        digest = hashlib.sha256(raw.read_bytes()).hexdigest()
+        doc = {
+            "schema": "gcpk-status-currentness-evidence@1",
+            "family_id": "family:menschen-a1-verben",
+            "workstream": "menschen-a1-verben",
+            "provider_observations": {
+                p: {"status": "checked", "locator": "source-receipt://" + p}
+                for p in ("conversation", "library", "google_drive", "github")
+            },
+            "artifacts": [
+                {"id": "R10", "role": "accepted", "active": True,
+                 "sha256": "a" * 64, "provider": "google_drive",
+                 "locator": "previous-accepted-receipt"},
+                {"id": "R16-P19", "role": "working", "active": True,
+                 "sha256": digest, "provider": "google_drive",
+                 "locator": "verified working bytes", "path": str(raw),
+                 "expected_cards": 2}
+            ],
+            "claims": {"current_working_id": "R16-P19",
+                       "accepted_baseline_id": "R10"}
+        }
+        manifest = evidence_dir / "menschen-a1-verben.json"
+        manifest.write_text(json.dumps(doc), encoding="utf-8")
+        return doc, manifest, raw
+
+    def test_real_byte_evidence_identifies_working_and_accepted_separately(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest, _ = self._sample_currentness_docs(directory)
+            evidence = pcc.load_currentness_evidence_dir(manifest.parent, self.cat)
+            snapshot = self.build(currentness_reports=evidence)
+            family = next(f for f in snapshot["families"]
+                          if f["id"] == "family:menschen-a1-verben")
+            self.assertEqual(family["currentness"]["status"], pcc.OBSERVED_PASS)
+            self.assertEqual(family["currentness"]["working_current_id"], "R16-P19")
+            self.assertEqual(family["currentness"]["accepted_baseline_id"], "R10")
+            self.assertTrue(family["currentness"]["working_actual_bytes_verified"])
+            self.assertEqual(snapshot["counts"]["source_currentness_observed_pass"], 1)
+            self.assertEqual(snapshot["counts"]["source_currentness_unverified_or_hold"], 20)
+            self.assertIn("R16-P19", pcc.dashboard_md(snapshot))
+
+    def test_old_accepted_baseline_cannot_be_reported_as_working_current(self):
+        with tempfile.TemporaryDirectory() as directory:
+            doc, path, _ = self._sample_currentness_docs(directory)
+            doc["claims"]["current_working_id"] = "R10"
+            path.write_text(json.dumps(doc), encoding="utf-8")
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
+            family = next(f for f in self.build(currentness_reports=evidence)["families"]
+                          if f["id"] == "family:menschen-a1-verben")
+            self.assertEqual(family["currentness"]["status"], "FAIL_STALE_OR_CORRUPT")
+            self.assertIsNone(family["currentness"]["working_current_id"])
+
+    def test_provider_not_checked_and_bad_bytes_do_not_claim_working(self):
+        with tempfile.TemporaryDirectory() as directory:
+            doc, path, raw = self._sample_currentness_docs(directory)
+            del doc["provider_observations"]["library"]
+            path.write_text(json.dumps(doc), encoding="utf-8")
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
+            self.assertEqual(evidence["family:menschen-a1-verben"]["status"],
+                             "HOLD_INCOMPLETE_EVIDENCE")
+            doc["provider_observations"]["library"] = {
+                "status": "checked", "locator": "source-receipt://library"}
+            raw.write_text("corrupt", encoding="utf-8")
+            path.write_text(json.dumps(doc), encoding="utf-8")
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
+            self.assertEqual(evidence["family:menschen-a1-verben"]["status"],
+                             "FAIL_STALE_OR_CORRUPT")
+            self.assertIsNone(evidence["family:menschen-a1-verben"]["working_current_id"])
+
+    def test_misbound_or_unknown_family_evidence_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            doc, path, _ = self._sample_currentness_docs(directory)
+            doc["family_id"] = "family:menschen-a1"
+            path.write_text(json.dumps(doc), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "CURRENTNESS_FAMILY_BINDING_MISMATCH"):
+                pcc.load_currentness_evidence_dir(path.parent, self.cat)
+            path.unlink()
+            (path.parent / "not-a-family.json").write_text("{}", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "UNKNOWN_OR_SYMLINKED_CURRENTNESS_EVIDENCE"):
+                pcc.load_currentness_evidence_dir(path.parent, self.cat)
+
+    def test_family_discovery_routes_are_complete_and_nonpromotional(self):
+        snapshot = self.build()
+        self.assertEqual(len(snapshot["families"]), 21)
+        for fam in snapshot["families"]:
+            target = fam["provider_discovery_targets"]
+            self.assertEqual(target["family_id"], fam["id"])
+            self.assertEqual(target["library_root"], fam["library_path"])
+            self.assertIn("NESTED_SUBFOLDERS", target["library_scope"])
+            self.assertIn("VERIFIED_FILE_ID", target["drive_scope"])
+            self.assertEqual(
+                len(target["github_workspace_roots"]), fam["git_workspace_count"])
+            self.assertEqual(target["provider_reconciliation"],
+                             "CURRENT_NOT_VERIFIED__QUERY_LIVE_PROVIDERS_BEFORE_LATEST_CLAIM")
+            self.assertIsNone(fam["currentness"]["working_current_id"])
+        self.assertIn("exact known folder/file ID", pcc.dashboard_md(snapshot))
+
+    def test_menschen_a1_verben_discovery_does_not_mix_general_menschen_a1(self):
+        snapshot = self.build()
+        verb = next(f for f in snapshot["families"]
+                    if f["id"] == "family:menschen-a1-verben")
+        general = next(f for f in snapshot["families"]
+                       if f["id"] == "family:menschen-a1")
+        self.assertTrue(verb["provider_discovery_targets"]["library_root"].endswith("/Menschen-A1-Verben"))
+        self.assertNotEqual(verb["provider_discovery_targets"]["library_root"],
+                            general["provider_discovery_targets"]["library_root"])
+        self.assertTrue(all("menschen-a1-verben" in root
+                            for root in verb["provider_discovery_targets"]["github_workspace_roots"]))
+
+    def test_observed_currentness_does_not_claim_global_latest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, path, _ = self._sample_currentness_docs(directory)
+            evidence = pcc.load_currentness_evidence_dir(path.parent, self.cat)
+            family = next(f for f in self.build(currentness_reports=evidence)["families"]
+                          if f["id"] == "family:menschen-a1-verben")
+            self.assertIn("OBSERVED_CURRENT_ONLY", family["provider_discovery_targets"]["provider_reconciliation"])
+            self.assertIn("NOT_GLOBAL_NEWEST", family["provider_discovery_targets"]["provider_reconciliation"])
 
 
 if __name__ == "__main__":

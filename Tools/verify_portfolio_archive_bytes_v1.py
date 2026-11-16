@@ -66,7 +66,23 @@ def verify_recorded_as_of(root:Path):
         if key in seen or key[0] not in known or key[1] not in ("google_drive","library"):
             raise ValueError("Duplicate/unknown provider observation")
         seen.add(key)
-        base=known[key[0]]
+        active=known[key[0]]
+        # Historical as-of observations are immutable. After a verified,
+        # user-accepted CURRENT successor, compare the dated receipt with its
+        # explicitly source-pinned historical baseline, not today's release.
+        # Live CURRENT bytes remain independently checked by --family --file.
+        historic=active.get("historical_asof_observation")
+        if historic is not None:
+            if (not isinstance(historic,dict)
+                or historic.get("receipt_path")!=EVIDENCE
+                or historic.get("observation_date")!=report.get("observation_date")
+                or historic.get("artifact_sha256")==active.get("artifact_sha256")
+                or not all(historic.get(k) for k in
+                           ("artifact_name","artifact_sha256","artifact_size_bytes"))):
+                raise ValueError("Untrusted historical as-of source pin")
+            base=historic
+        else:
+            base=active
         if (entry.get("artifact_name")!=base.get("artifact_name")
             or entry.get("measured_size_bytes")!=base.get("artifact_size_bytes")
             or entry.get("expected_sha256")!=base.get("artifact_sha256")

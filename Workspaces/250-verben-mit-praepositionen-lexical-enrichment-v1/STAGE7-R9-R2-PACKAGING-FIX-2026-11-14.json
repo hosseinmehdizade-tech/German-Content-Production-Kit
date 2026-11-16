@@ -1,0 +1,62 @@
+{
+  "schema": "gcpk-vmp-r9r2-content-only-packaging-ref-fix@1.0.0",
+  "date": "2026-11-14",
+  "family_id": "family:250-verben-mit-praepositionen",
+  "owner": "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1",
+  "status": "PASS_PACKAGING_ONLY_FIX__LIBRARY_BYTE_READBACK_EXACT__USER_IMPORT_CONTENT_UNCHANGED__NO_FULL_NATIVE_STAGE6_CLAIM",
+  "superseded_zip": {
+    "name": "250-Verben-R9-R2-FINAL-CONTENT-ONLY-20261114.zip",
+    "sha256": "25983a6340c108c6ea5197c54643d595e2d7898a5dd24a19dda90a57fffce11e",
+    "bytes": 3271567,
+    "former_library_id": "libfile_dfa42667fea481919998792c55945f20",
+    "preserve": true
+  },
+  "current_zip": {
+    "name": "250-Verben-R9-R2-FINAL-CONTENT-ONLY-PACKAGING-FIX-20261114.zip",
+    "sha256": "a82bd89329033813e41198cb76199b4a6a0b7c1e8bea0000368dc8a6e560e843",
+    "bytes": 3286458,
+    "member_files": 36,
+    "library_file_id": "libfile_f7781a41ae3881918727d8d4b635a0ab",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/250-Verben-mit-Praepositionen/Current/250-Verben-R9-R2-FINAL-CONTENT-ONLY-PACKAGING-FIX-20261114.zip",
+    "library_roundtrip_sha256": "a82bd89329033813e41198cb76199b4a6a0b7c1e8bea0000368dc8a6e560e843"
+  },
+  "changed_members": [
+    "01-Content/CLEAN-DELIVERY/DELIVERY-MANIFEST.json",
+    "01-Content/CLEAN-DELIVERY/SHA256SUMS.txt",
+    "MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "correction": "Clean-delivery roles now resolve to actual four distributed filenames. Regenerated clean-delivery and outer SHA256SUMS plus outer MANIFEST after metadata repair; no other ZIP entry bytes modified.",
+  "proof": {
+    "metadata_members_modified": 4,
+    "byte_identical_members": 32,
+    "clean_delivery_sha256sum_c": "PASS_5_OF_5",
+    "outer_sha256sum_c": "PASS_35_OF_35",
+    "archive_crc": "PASS_36_OF_36",
+    "unique_member_paths": 36,
+    "folder_structure": "PASS_7_EXPECTED",
+    "independent_zip_and_extracted_verifier": "PASS_2_OF_2",
+    "independent_library_readback_zip_and_verifier": "PASS",
+    "no_missing_or_extra_members": true,
+    "no_nested_zip": true
+  },
+  "immutable_content": {
+    "tsv_sha256": "9d7e560d1b437a2e5ec6cf42cd690c32f716ee46788e5ef1c994fe14e23104d0",
+    "cards": 292,
+    "columns": 23,
+    "trilingual_examples": 1168,
+    "changed_cards_vs_v18": 87,
+    "changed_lexical_facet_items_vs_v18": 94,
+    "source_pdf_sha256": "4ba6c979f2350a986f92969cfbcacf1bad4ed0502a79ab3ae8632fd2d87b5560",
+    "frozen_canonical_sha256": "8eeb2ff7446dae7bfdd6174bb7bd3e7d1041a7c02631c7f5118c67074fd6de53",
+    "source_map_sha256": "8933e63454366e56884782f9ab23502d866ab947d8d777e2ff7652fef0c0990f",
+    "stage4_and_stage5_and_ledger_bytes_unchanged": true
+  },
+  "historical_notes": {
+    "qa_duplicate": "The clean-delivery QA and reports QA are byte-identical intentionally because the two evidence roles are distinct; do not delete either without changing their consumers.",
+    "stage5_role_readiness": "Readiness receipt is historical preflight; later official Stage5 quality receipt is the actual PASS. The historical receipt remains byte-identical.",
+    "stage6": "User-reported import and visible display accepted; no independently proven full IndexedDB/FSRS test."
+  },
+  "packaging_policy": "CONTENT_ONLY_NO_APP_NO_RUNTIME_NO_USER_PERSONAL_DATA",
+  "next": "Use corrected 36-member content-only ZIP as official CURRENT packaging. Preserve accepted TSV and user import. Do not reimport. Keep earlier v1.8 and R9-R2 Stage7 originals immutable as restore/historical evidence. GitHub source-owner and central routing register the corrected ZIP SHA as CURRENT after protected PR merge."
+}

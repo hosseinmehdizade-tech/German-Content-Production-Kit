@@ -60,6 +60,38 @@ class MissionContinuityContract(unittest.TestCase):
         self.assertIn("user explicitly", self.policy["mission_continuity"]["safe_exception"].lower())
         self.assertIn("explicit user", self.readme.lower())
 
+    def test_stage6_reporting_owned_by_app_not_routine_content_or_cop(self):
+        policy = self.policy["stage6_ownership_and_reporting_20261115"]
+        self.assertEqual(policy["status"], "ACTIVE_USER_APPROVED_2026-11-15")
+        self.assertEqual(policy["source_families"], 21)
+        self.assertIn("Suppress recurring", policy["rule_1"])
+        self.assertIn("German-Flashcards-Pro", policy["rule_2"])
+        self.assertIn("Skip a known inaccessible browser", policy["rule_3"])
+        self.assertIn("CONTENT_ONLY_READY", policy["rule_4"])
+        self.assertIn("APP_INTEGRATED", policy["rule_4"])
+        self.assertIn("only if", policy["material_exception"])
+        self.assertIn("STAGE6 REPORTING OWNERSHIP", self.readme)
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("stage6_ownership_and_reporting_20261115", agents)
+
+
+    def test_new_chat_currentness_gate_eight_regressions(self):
+        """Existing OP-04 workflow executes the eight evidence-bound tests.
+        Do not introduce a new protected workflow file just to run this pilot.
+        """
+        import subprocess
+        import sys
+        result = subprocess.run(
+            [sys.executable, "-B", "-m", "unittest", "discover", "-s",
+             "Verification", "-p", "test_status_currentness_gate_v1.py", "-v"],
+            cwd=ROOT, capture_output=True, text=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("Ran 8 tests", result.stderr)
+        prompt = (ROOT / "Prompt/START-PROMPT-v3.3.6.md").read_text(encoding="utf-8")
+        self.assertIn("Tools/status_currentness_gate_v1.py", prompt)
+        self.assertIn("WORKING_CURRENT", prompt)
+        self.assertIn("ACCEPTED_BASELINE", prompt)
+
 
 if __name__ == "__main__":
     unittest.main()

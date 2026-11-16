@@ -1,0 +1,71 @@
+{
+  "schema": "gcpk-b1-verben-stage4-r21-continuation-evidence@1",
+  "date": "2026-11-14",
+  "workstream": "menschen-b1-verben-kombinationen-v336",
+  "status": "SCOPED_SOURCE_AND_PATCH_QA_PASS__OFFICIAL_STAGE4_STILL_BLOCKED__NOT_IMPORT_READY",
+  "authority": {
+    "r21_master_sha256": "07662433bc60853a2fa5f021a3b639b4efd4e18b62740dad72f5aba9068f7bbc",
+    "r20_parent_sha256": "dc9ff49b996fbd49804586a4632bd40796fa0915cafb53f6a69c87ea787ab3d6",
+    "accepted_immutable_content_zip_sha256": "48b995c14e5f12584a11b945c6c312309c719669569051ac309fe17b0d38258c",
+    "accepted_content_tsv_sha256": "683379cf1ca71779a90d583231bf2500376baf0d7af04a7fd3ce0c7ef42be3bf",
+    "original_memrise_csv_sha_from_accepted_manifest": "52f8bb896f5aa1c8f878aeb0ea74ef07ddbeee75261af89dfb2fcad624fc1222",
+    "r21_master_drive": "https://drive.google.com/file/d/1IoKOMuLaZKdW5N2Zl0m7WnRRW-_yaRBy/view",
+    "r21_official_gate_drive": "https://drive.google.com/file/d/1oHeKzGQRyEI5ggvplPiD1daQxz9NaBWR/view"
+  },
+  "source_lineage": {
+    "test_method": "Read-only independent row-by-row R21 vs R20 and accepted 2026-11-04 content TSV; source occurrence/source-output map and audio membership match; six intentional mutations each detected",
+    "card_ids_order_and_source_fields": "395/395 PRESERVED",
+    "trilingual_example_records": "1580/1580 BYTE_IDENTICAL",
+    "registered_source_occurrences": "441/441 LINKED",
+    "source_output_map": "441/441 LINKED",
+    "original_source_fields_changed": 0,
+    "negative_controls_rejected": 6,
+    "original_source_raw_csv_opened": false,
+    "historical_15_screenshots_reviewed": false,
+    "scope_note": "Per already-accepted 2026-11-02 source-scope exception, historical screenshots are not the editable-curated source; no claim to directly inspect them or raw CSV."
+  },
+  "second_method": {
+    "strategy": "Separately extracted source-local data and adversarially inspected three hash-planned strata: German sense/form, Persian-English meaning and reusable combinations, without accepting prior author's per-item rationales blindly",
+    "sampled_cards": 36,
+    "sampled_de_fa_en_examples": 72,
+    "sampled_visible_combinations": 24,
+    "coverage": "3/3 decks",
+    "risk_dispositions_existing": "709/709",
+    "unresolved_CRITICAL_HIGH": 0,
+    "managed_MEDIUM": 1,
+    "medium_detail": "mb1m-lu-0420 gegen eine Politik protestieren: user-uploaded 250 Verben PDF page 3 corroborates protestieren gegen + Akk. and die Politik, but not exact indefinite phrase, original RAW-B1 source not independently inspected; remain managed HOLD"
+  },
+  "app_patch": {
+    "repository": "hosseinmehdizade-tech/German-Flashcards-Pro",
+    "pr": 50,
+    "branch": "fix/r21-b1-0418-details-fallback-20261114",
+    "base_exact_r3_index_git_blob": "82feb57a09372256727a1fd179e8c676b5a1a25f",
+    "one_line_patch_commit": "8b9748d2307518ebd484df1ddba926ee0873dace",
+    "new_index_blob": "9692631a0834a891a6d533cf92c16dba46a2ce66",
+    "regression": "395/395 actual R21 cards; only mb1m-lu-0418 changes, 394 untouched; four hidden detail sections restored; 1921 visible and 839 typed combinations unchanged",
+    "negative_controls": 7,
+    "installed_runtime_or_browser_acceptance": "NOT_RUN",
+    "promoted_to_CURRENT": false
+  },
+  "official_gate": {
+    "source": "R21-STAGE4-OFFICIAL-GATE.json",
+    "status": "BLOCKED_RISK_BASED_STAGE4",
+    "blockers": [
+      "MECHANICAL_RENDER_PROJECTION",
+      "MECHANICAL_SOURCE_FIDELITY",
+      "NO_INDEPENDENT_METHOD_REVIEW",
+      "SYSTEMIC_ERROR_CLUSTER_OPEN"
+    ],
+    "note": "Original gate is unchanged; scoped source and second-method evidence require source-governance acknowledgment and an official rerun, app PR unmerged. Never edit blockers by hand to claim PASS."
+  },
+  "boundaries": {
+    "master_changed": false,
+    "canonical_graph_changed": false,
+    "user_srs_fsrs_changed": false,
+    "ui_redesigned": false,
+    "stage5": "NOT_RUN",
+    "release": "NOT_FINAL",
+    "version_accepted_immutable": true
+  },
+  "next": "Retain R21 exact SHA and approved 2026-11-02 source scope; complete app-side current-variant promotion/test of PR #50 and clear systemic 0418 cluster, independently rerun official risk gate on precise approved evidence. No Stage4 PASS until gate PASS."
+}

@@ -5,7 +5,7 @@
   "authority_role": "EDITABLE_NONFINAL_WORKING_SUCCESSOR__NOT_ACCEPTED_BASELINE",
   "working_current": {
     "id": "B10",
-    "status": "PASS_EXACT_M1_MORPHOLOGY_DELTA__STAGE4_AND_STAGE5_RENEWAL_PENDING",
+    "status": "PASS_COMPLETE_CONTENT_ONLY_DELIVERY__APP_OUTSIDE_SCOPE",
     "parent_id": "B9",
     "parent_master_sha256": "6b59754ef54f9ab510d89d93d0acf72181e3f24a6825f42519f774b81c784640",
     "parent_official_stage5_zip_sha256": "a10987fefc5d41cf90e99de29fbaeb8cf11c635a8466a94db7c35c6c842b713a",
@@ -27,13 +27,30 @@
     "original_items_in_reversible_ledger": true,
     "previous_B9_Stage4": "PASS_FOR_B9_ONLY",
     "previous_B9_Stage5": "PASS_FOR_B9_ONLY",
-    "B10_stage4": "NOT_RERUN",
-    "B10_stage5": "NOT_RERUN",
-    "app_stage6": "NOT_VERIFIED_NATIVE",
-    "app_stage7": "NOT_FINAL",
+    "B10_stage4": "PASS_RISK_BASED_STAGE4__INHERITED_B9_AND_EXACT_214_M1_DELTA",
+    "B10_stage5": "PASS_STAGE5_CANDIDATE_WITH_EXACT_SOURCE_STAGE4_AND_RULE_COVERAGE",
+    "app_stage6": "NOT_RUN_IN_CONTENT_WORKSTREAM",
+    "app_stage7": "NOT_CLAIMED",
     "validated_local_preflight": "PASS_NO_STANDALONE_MORPHOLOGIE",
-    "cross_tile_low_risk_dispositions": "NEED_B10_DELTA_BOUND_NEW_QA",
-    "unresolved_runtime_front_regressions": "SEPARATE_GFP_APP_OWNER"
+    "cross_tile_low_risk_dispositions": "B9_2117_FLAGS_EXACT_UNCHANGED_IN_B10_WITH_212_GROUP_SAMPLE_REANCHOR__ONE_MANAGED_MEDIUM_HOLD",
+    "unresolved_runtime_front_regressions": "SEPARATE_GFP_APP_OWNER",
+    "official_stage5_candidate_sha256": "dddffbb405baa5f631abd9b0657e8be5ec9b914a45eafa613803b500386d5cd6",
+    "official_stage5_quality_receipt_sha256": "de9459c9b23709f61815c9bc6e5926dbbf8c4eccde879e07af06c91664f3c975",
+    "content_production_delivery": {
+      "status": "PASS_FINAL_CONTENT_ONLY_ARCHIVE_VERIFIED",
+      "sha256": "6e84fd7bf4c0aff5a88f1c34fb6ab2abb1f6f9a85823c6b043d051bc49c5e0cd",
+      "bytes": 4508103,
+      "library_file_id": "libfile_ec261a0647108191bcde629178e411a6",
+      "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Menschen-A2/Releases/Menschen-A2-B10-1778-CONTENT-PRODUCTION-DELIVERY-20261116.zip",
+      "members": 21,
+      "source_role_hashes_and_full_214_ledger_verified": true,
+      "library_exact_byte_roundtrip": "PASS",
+      "negative_tests": "4_OF_4_REJECTED",
+      "raw_original_source_external": true
+    },
+    "content_only_stage6": "PASS_STATIC_PACKAGE_AUDIT__NO_APP_ASSERTION",
+    "package_release_receipt": "Workspaces/menschen-a2-24-lessons-v336/B10-CONTENT-PRODUCTION-DELIVERY-VERIFIED-20261116.json",
+    "quality_stage5_receipt_scope": "B10_REBIND__NO_FRESH_ALL_CARD_SEMANTIC_REVIEW"
   },
   "accepted_baseline": {
     "id": "R21-R2-R1",
@@ -48,6 +65,6 @@
     "sha256": "a10987fefc5d41cf90e99de29fbaeb8cf11c635a8466a94db7c35c6c842b713a",
     "quality_receipt_sha256": "46392c61e30903532cb5151a0d3c05a41535f9b2413ff2f3d4fc43722c6f2107"
   },
-  "next": "Run B10 delta-bound Stage4 then official Stage5; address exact current-app front defects on app-owner branch without UI redesign or user-data changes. Do not redo original 1778-card review, previous 288 Stage4 samples, or blocked browser attempt.",
+  "next": "Content-production B10 delivery completed as one verified ZIP and persisted to Library. Keep accepted R21 source-owner current unchanged for rollback; all future app/browser/FSRS tasks remain separate GFP owner work. No Stage1-5 repeat.",
   "cross_workstream_mutation": false
 }

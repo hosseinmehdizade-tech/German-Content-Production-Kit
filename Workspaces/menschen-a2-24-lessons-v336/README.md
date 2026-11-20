@@ -1,3 +1,5 @@
+**MENSCHEN A2 S15 (2026-11-15, editable Stage3, NOT CURRENT):** Exact S15 Library WIP ZIP `libfile_7922207694688191835a94a865d4b2da`, SHA256 `eb0e792a09c0719f79655fd5eb59e05e74eaa14c4771c7be2b04767a218be896`. L15 110 cards reviewed, 93 details-only changes, 17 no-force, 117 lexical items. All 1,778 IDs, all other card fields, 1,668 non-L15 rows and L01–L14 ledger decisions preserved. Byte-readback + CRC/SHA PASS; Stage4/Stage5/Stage6 not run. R21-R2-R1 owner CURRENT unchanged. Next L16 from S15. [Exact S15 Stage3 receipt](./FIVE-SECTIONS-STAGE3-S15-20261115.json).
+
 # Menschen A2 — 24 lessons · v3.3.6
 
 ## Scoped Morphologie section cleanup candidate — M1 (2026-11-06; NOT CURRENT / NOT IMPORT)

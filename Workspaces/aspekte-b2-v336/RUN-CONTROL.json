@@ -1,7 +1,7 @@
 {
   "schema": "aspekte-b2-run-control@1.0.0",
-  "date": "2026-11-10",
-  "status": "B2_SINGLE_MASTER_V7__STAGE4_L06_PHASE1_141_REVIEWED_16_EDITED__NEXT_L06_PHASE2__864_FINAL_OF_1719__NONIMPORT",
+  "date": "2026-11-20",
+  "status": "B2_STAGE4_L06_PHASE2_CANDIDATE_LOCAL_QA_PASS__LIBRARY_PERSISTENCE_NOT_VERIFIED__SYNC_HOLD",
   "authority": {
     "primary": "LIBRARY_SINGLE_FINAL_MASTER_CURRENT",
     "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv",
@@ -35,9 +35,9 @@
     "NEXT_ACTION"
   ],
   "next_task": {
-    "phase": "B2_STAGE4_L06_ALL141_EXAMPLES_TRANSLATIONS_SENSE_SCOPED_RELATIONS_PHASE2_OF_MAX3_FROM_SINGLE_MASTER",
-    "status": "PHASE1_141_OF_141_REVIEWED_16_CORRECTED_125_RETAINED__NO_FINAL_L06_LEDGER_DECISIONS__PHASE2_NEXT",
-    "goal": "Continue fixed Stage4 L06 Phase 2/3 on all 141 from Library Master v7 pinned SHA 983bb1d... (byte-exact readback). Review/correct two German–Persian example pairs, sense-scoped synonyms, antonyms and collocations across entire lesson. Preserve 1578 non-L06 records byte exact, prior 864 final decisions, 1719 unique IDs and NONIMPORT/SRS flags. Only defensible field-level diffs, one validated working master and ledger, backups, QA. Phase3 closes all 141 decisions. No new QA scenario or repeated Stage2.",
+    "phase": "L06_PHASE2_PERSISTENCE_GATE_HOLD",
+    "status": "PHASE2_LOCAL_QA_PASS__SYNC_HOLD_DO_NOT_REPEAT_UPLOAD",
+    "goal": "Do NOT repeat identical files__manage_library uploads across turns. The L06 phase2 candidate exists locally and passes QA but its persistence to Library was NOT verified. Master and Ledger remain v7, 864 final Stage4 decisions. Before resuming phase3, establish a different evidence-backed persistence mechanism, successfully save BOTH Master and Ledger, and verify hashes by fresh readback. If this cannot be done, report the blocker once and STOP. Do not restart L01-L05 or re-review L06 phase1/phase2.",
     "authority_file": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv",
     "authority_sha256": "983bb1d77073f343fc1630d11ed1a2d3d9e44bbe9b43e9175d3f7d52c6d6df15",
     "authority_library_id": "libfile_2b5e1f62d7fc819192ed8d4e1c6eac3e",
@@ -1825,5 +1825,35 @@
     "no_import": true,
     "no_srs_changes": true,
     "next": "L06 Phase2/3 all141 examples translations sense-scoped relations"
+  },
+  "loop_breaker_20261120": {
+    "status": "ACTIVE_HOLD_NO_REPEAT",
+    "scope": "ASPEKTE_B2_L06_PHASE2",
+    "confirmed_problem": "REPEATED_SAME_SAVE_ATTEMPT_WITHOUT_SUCCESS_OR_ERROR_CAPTURE",
+    "technical_provider_cause": "NOT_ESTABLISHED",
+    "github_main_write_block": "409_BRANCH_RULE_REQUIRES_PULL_REQUEST",
+    "master_version": "7",
+    "master_library_id": "libfile_2b5e1f62d7fc819192ed8d4e1c6eac3e",
+    "master_sha256": "983bb1d77073f343fc1630d11ed1a2d3d9e44bbe9b43e9175d3f7d52c6d6df15",
+    "ledger_version": "7",
+    "ledger_library_id": "libfile_ccd6c34531d88191b9bb506b820037d1",
+    "ledger_sha256": "8245a56b5689f7c01d1aa68499c69075d4388794cc8807eb0cbdfcf51d8cdeed",
+    "candidate_master_sha256": "c788581724cf214e2452616c545db111a43c5d984b02895dffdd0aee80fe5df7",
+    "candidate_ledger_sha256": "4b021cd0134e1c24ecde6f55e06e5d7c626f2620d7526657ebd383b9e8e65f99",
+    "phase2_changed_cards": 124,
+    "phase2_changed_fields": 160,
+    "phase2_change_list_library_id": "libfile_b4a3091acd78819197bf098e7979cff5",
+    "phase2_qa_library_id": "libfile_f21b9e26432c81919b25487074670709",
+    "current_content_release": "NONIMPORT",
+    "previous_final_decisions": 864,
+    "never_repeat_same_upload_without_new_evidence": true,
+    "on_continue": "CHECK_IF_HOLD_UNLOCKED; IF_NOT, EXPLAIN_BLOCKER AND STOP; NEVER CALL IDENTICAL_UPLOAD",
+    "unblock_requirements": [
+      "new concrete technical evidence or different safe provider write path",
+      "both canonical Master and Ledger persisted",
+      "independent remote readback hashes match candidate",
+      "no non-L06 changes"
+    ],
+    "local_candidate_paths_not_durable_across_sessions": true
   }
 }

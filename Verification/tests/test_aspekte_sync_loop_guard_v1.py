@@ -54,8 +54,8 @@ class AspekteAntiLoop(unittest.TestCase):
             self.assertNotIn("verified_sha256", obj["temporary_roadmap"])
             self.assertFalse(obj["latest_G2_lexical_layer"]["import_ready"])
             self.assertEqual(obj["latest_G2_lexical_layer"]["full_card_QA_approved"], 0)
-            self.assertEqual(obj["latest_G2_lexical_layer"]["cumulative_checked"],
-                             latest["latest_G2_lexical_layer"]["cumulative_checked"])
+            self.assertEqual(obj["latest_G2_lexical_layer"]["G2_exception_scopes_checked"],
+                             latest["latest_G2_lexical_layer"]["G2_exception_scopes_checked"])
         self.assertEqual(latest["aspekte_sync_guard"]["library_roadmap_last_observed_version"], 11)
 
     def test_b2_existing_lesson_guard_not_overridden(self):

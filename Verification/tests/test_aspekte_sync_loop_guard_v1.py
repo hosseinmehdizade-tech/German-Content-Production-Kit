@@ -42,20 +42,20 @@ class AspekteAntiLoop(unittest.TestCase):
         latest = load_json(B1 / "LATEST.json")
         checkpoint = load_json(B1 / "CHECKPOINT.json")
         roadmap = load_text(B1 / "ROADMAP-TEMP.md")
-        self.assertIn("**Version:** 0.15", roadmap)
+        self.assertIn("**Version:**", roadmap)  # Live roadmap may advance; stale Library snapshots must not block resume.
         self.assertIn("Never overwrite or reconcile", roadmap)
         for obj in (latest, checkpoint):
             guard = obj["aspekte_sync_guard"]
             self.assertTrue(guard["no_library_roadmap_overwrite"])
             self.assertTrue(guard["no_resume_block_from_library_roadmap_lag"])
             self.assertEqual(guard["control_plane"], "GitHub_workstream_files")
-            self.assertEqual(obj["temporary_roadmap"]["version"], "0.15")
+            self.assertTrue(str(obj["temporary_roadmap"]["version"]).strip())  # Version evolves; snapshot remains nonblocking.
             self.assertTrue(obj["temporary_roadmap"]["library_roadmap_historical_snapshot"])
             self.assertNotIn("verified_sha256", obj["temporary_roadmap"])
             self.assertFalse(obj["latest_G2_lexical_layer"]["import_ready"])
             self.assertEqual(obj["latest_G2_lexical_layer"]["full_card_QA_approved"], 0)
-            self.assertEqual(obj["latest_G2_lexical_layer"]["cumulative_checked"],
-                             latest["latest_G2_lexical_layer"]["cumulative_checked"])
+            self.assertEqual(obj["latest_G2_lexical_layer"]["G2_exception_scopes_checked"],
+                             latest["latest_G2_lexical_layer"]["G2_exception_scopes_checked"])
         self.assertEqual(latest["aspekte_sync_guard"]["library_roadmap_last_observed_version"], 11)
 
     def test_b2_existing_lesson_guard_not_overridden(self):

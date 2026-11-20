@@ -140,10 +140,24 @@ class CuratedL02Subset(unittest.TestCase):
 
     def test_real_git_pointer_does_not_reset_l01_or_approve_l02(self):
         latest=json.loads((ROOT/"Workspaces/aspekte-b2-v336/LATEST.json").read_text(encoding="utf8"))
-        l02=m.scope(latest)
-        self.assertEqual(l02["current_draft_rows"],12)
-        self.assertEqual(l02["next_ordinal_to_curate"],1721)
-        self.assertFalse(l02["importable"])
+        l02=latest["latest_l02_scoped_audit"]
+        if str(l02.get("label","")).startswith("L02_PASS3_"):
+            # R15 synthetic fixtures remain tested above; current L02 has
+            # progressed to the 110-unit Pass3 fail-closed disposition.
+            self.assertEqual(l02["chapter"],2)
+            self.assertEqual(l02["draft_unique_unit_ids"],110)
+            self.assertEqual(l02["source_ordinal_rows"],108)
+            self.assertEqual(l02["bilingual_example_pairs"],220)
+            self.assertEqual(l02["current_pass"],"3_OF_3_BLOCKED_DISPOSITION")
+            self.assertFalse(l02["formal_independent_linguistic_release"])
+            self.assertEqual(l02["approved_cards"],0)
+            self.assertEqual(l02["importable_cards"],0)
+            self.assertEqual(l02["app_SRS_changes"],0)
+        else:
+            l02=m.scope(latest)
+            self.assertEqual(l02["current_draft_rows"],12)
+            self.assertEqual(l02["next_ordinal_to_curate"],1721)
+            self.assertFalse(l02["importable"])
         self.assertTrue(latest["latest_scoped_audit"]["label"].startswith("L01_R"))
 
 

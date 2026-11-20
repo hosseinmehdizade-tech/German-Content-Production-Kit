@@ -101,7 +101,7 @@ class TestProjectControlCenter(unittest.TestCase):
         w=next(x for x in snap["workspaces"] if x["git_dir"]==d)
         self.assertEqual(w["display_pointer"],d+"/RUN-CONTROL.json")
         self.assertEqual(w["reported_status_hint"], self.pointers[d+"/RUN-CONTROL.json"]["status"])
-        self.assertRegex(w["reported_status_hint"], r"\\d+_FINAL_OF_1719")
+        self.assertRegex(w["reported_status_hint"], r"\d+_FINAL_OF_1719")
         self.assertIn("637_OF_1719",w["superseded_latest_stage_hint"])
         self.assertTrue(w["authority"].startswith("EXPLICIT_OWNER_RUN_CONTROL_HINT"))
         self.assertFalse(w["stage_pass_or_release_attested_by_control_center"])

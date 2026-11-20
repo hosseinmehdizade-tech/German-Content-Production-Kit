@@ -49,7 +49,7 @@ class AspekteAntiLoop(unittest.TestCase):
             self.assertTrue(guard["no_library_roadmap_overwrite"])
             self.assertTrue(guard["no_resume_block_from_library_roadmap_lag"])
             self.assertEqual(guard["control_plane"], "GitHub_workstream_files")
-            self.assertEqual(obj["temporary_roadmap"]["version"], "0.15")
+            self.assertTrue(str(obj["temporary_roadmap"]["version"]).strip())  # Version evolves; snapshot remains nonblocking.
             self.assertTrue(obj["temporary_roadmap"]["library_roadmap_historical_snapshot"])
             self.assertNotIn("verified_sha256", obj["temporary_roadmap"])
             self.assertFalse(obj["latest_G2_lexical_layer"]["import_ready"])

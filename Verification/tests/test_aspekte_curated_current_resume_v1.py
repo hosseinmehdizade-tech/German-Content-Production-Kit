@@ -109,19 +109,41 @@ def issues(b1, b1_readme, b2, b2_readme, c1, c1_readme, receipt):
           and receipt.get("no_app_or_srs_changes") is True,
           "B2_NONDESTRUCTIVE_BOUNDARY_LOST")
 
-    # Chapter 2 is a separate tracked scope. R15 is the current first-12
-    # card preview, R14 remains the exact accepted 108-row editorial parent.
+    # L02 R15 was the historical 12-unit preview. Later owner-scoped
+    # L02 Pass3 covers 110 curated units from 108 source rows; neither
+    # preview is the current Stage4 decision authority (see RUN-CONTROL).
     l02=b2.get("latest_l02_scoped_audit",{})
-    check(str(l02.get("label","")).startswith("L02_R") and
-          l02.get("lesson")==2 and l02.get("source_rows")==108 and
-          l02.get("current_draft_rows")==12 and
-          l02.get("remaining_parent_records_not_yet_curated_to_units")==96 and
-          l02.get("next_ordinal_to_curate")==1721,
-          "B2_L02_PARTIAL_CURRENT_SCOPE_MISSING_OR_STALE")
-    check(l02.get("importable") is False and
-          l02.get("stage2_approved") is False and
-          l02.get("source_rows_unchanged") is True,
-          "B2_L02_FALSE_APPROVAL_OR_SOURCE_MUTATION")
+    if str(l02.get("label","")).startswith("L02_PASS3_"):
+        valid_scope=(l02.get("chapter")==2 and
+            l02.get("current_pass")=="3_OF_3_BLOCKED_DISPOSITION" and
+            l02.get("draft_unique_unit_ids")==110 and
+            l02.get("source_ordinal_rows")==108 and
+            l02.get("bilingual_example_pairs")==220 and
+            l02.get("current_draft_rows") is None and
+            l02.get("corrections_learner_visible_fields")==15 and
+            l02.get("latest_110_draft_csv_path","").endswith(
+                "/L02-PASS2-110-UNIT-REVIEW-NONIMPORT.csv") and
+            re.fullmatch(r"[0-9a-f]{64}",str(
+                l02.get("latest_110_draft_csv_sha256",""))) is not None and
+            l02.get("pass3")=="BLOCKED_NONIMPORT_NO_NATIVE_RELEASE")
+        valid_release=(l02.get("approved_cards")==0 and
+            l02.get("importable_cards")==0 and
+            l02.get("app_SRS_changes")==0 and
+            l02.get("formal_independent_linguistic_release") is False and
+            l02.get("importable") is not True and
+            l02.get("stage2_approved") is not True and
+            l02.get("source_rows_unchanged") is not False)
+    else:
+        valid_scope=(str(l02.get("label","")).startswith("L02_R") and
+            l02.get("lesson")==2 and l02.get("source_rows")==108 and
+            l02.get("current_draft_rows")==12 and
+            l02.get("remaining_parent_records_not_yet_curated_to_units")==96 and
+            l02.get("next_ordinal_to_curate")==1721)
+        valid_release=(l02.get("importable") is False and
+            l02.get("stage2_approved") is False and
+            l02.get("source_rows_unchanged") is True)
+    check(valid_scope,"B2_L02_PARTIAL_CURRENT_SCOPE_MISSING_OR_STALE")
+    check(valid_release,"B2_L02_FALSE_APPROVAL_OR_SOURCE_MUTATION")
     check("LATEST.json#latest_l02_scoped_audit" in b2_readme and
           "Verification/verify_aspekte_b2_l02_curated_subset_v1.py" in b2_readme,
           "B2_L02_CURRENT_ROUTE_NOT_IN_OWNER_README")

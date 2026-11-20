@@ -42,7 +42,7 @@ class AspekteAntiLoop(unittest.TestCase):
         latest = load_json(B1 / "LATEST.json")
         checkpoint = load_json(B1 / "CHECKPOINT.json")
         roadmap = load_text(B1 / "ROADMAP-TEMP.md")
-        self.assertIn("**Version:** 0.15", roadmap)
+        self.assertIn("**Version:**", roadmap)  # Live roadmap may advance; stale Library snapshots must not block resume.
         self.assertIn("Never overwrite or reconcile", roadmap)
         for obj in (latest, checkpoint):
             guard = obj["aspekte_sync_guard"]

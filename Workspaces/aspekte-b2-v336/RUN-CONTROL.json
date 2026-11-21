@@ -35,9 +35,9 @@
     "NEXT_ACTION"
   ],
   "next_task": {
-    "phase": "B2_STAGE4_AND_SCOPED_QA_COMPLETE_V22__IMPORT_MAPPING_NEXT",
-    "status": "1719_CASE_DECISIONS_AND_GLOBAL_FOUR_CLASSES_CLOSED__NONIMPORT",
-    "goal": "Continue only to actual German Flashcards Pro import schema mapping/export if requested. Canonical Library owner Master v22 SHA a3fe0c19... and Ledger v22 SHA eacdba5b... . Preserve 1719 IDs, historical lessons, no new Stage4 phases, no browser SRS gate, no premature release flag change.",
+    "phase": "B2_USER_CONFIRMED_4_EXAMPLE_TRILINGUAL_CONTENT_REPAIR_BEFORE_STAGE5",
+    "status": "CONTENT_CONTRACT_BINDING_RECORDED__V22_FAIL__STAGE5_SUSPENDED__NONIMPORT",
+    "goal": "Preserve Master v22 baseline. Directly enrich all 1719 cards: English gloss and English translations for all preserved examples, add missing DE/FA/EN examples until exactly 4 per card; complete five right-side facets with independent combinations and explicit source-backed dispositions. Use real content deltas only; no Stage4 re-review; no runtime import.",
     "authority_file": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv",
     "authority_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
     "authority_library_id": "libfile_2b5e1f62d7fc819192ed8d4e1c6eac3e",
@@ -64,7 +64,15 @@
     "last_phase1_QA_library_id": "libfile_6686558fbb208191a503fe14e56a8631",
     "global_qa_status": "PASSED_FOUR_REPORTED_SCOPED_CLASSES",
     "global_qa_findings": 0,
-    "global_qa_flagged_distinct_cards": 0
+    "global_qa_flagged_distinct_cards": 0,
+    "stage5_library_id": "libfile_f14b8925df788191be3b2440007fb3e7",
+    "stage5_archive_sha256": "0b7cc2db5e2f5e024acc7823547e0219f807be54698469dec65b11a3baafaf09",
+    "stage5_report": "Workspaces/aspekte-b2-v336/Reports/B2-STAGE5-PREIMPORT-1719-V22-RECEIPT-20261121.json",
+    "stage5_mapping_status": "SUSPENDED_UNTIL_USER_CONFIRMED_CONTENT_GATE_PASS",
+    "content_completeness_gate": "FAIL_20261121",
+    "authoritative_contract": "Workspaces/aspekte-b2-v336/Docs/ASPEKTE-B2-USER-CONFIRMED-CARD-CONTRACT-20261121.md",
+    "required_completeness_gate": "Workspaces/aspekte-b2-v336/QA/b2_card_completeness_gate_v1.py",
+    "completeness": "FAIL_V22_USER_CONFIRMED_REQUIREMENTS"
   },
   "completed_or_blocked": {
     "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
@@ -2317,5 +2325,79 @@
     "remaining_same_class_findings": 0,
     "actual_master_cards_changed": 406,
     "negative_mutation_tests": 16
+  },
+  "stage5_preimport_20261121": {
+    "date": "2026-11-21",
+    "state": "SCOPED_TRANSPORT_PARSER_PASS__NOT_APP_IMPORT_APPROVED",
+    "source_master_version": 22,
+    "source_master_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "delivery_library_id": "libfile_f14b8925df788191be3b2440007fb3e7",
+    "delivery_zip_sha256": "0b7cc2db5e2f5e024acc7823547e0219f807be54698469dec65b11a3baafaf09",
+    "receipt": "Workspaces/aspekte-b2-v336/Reports/B2-STAGE5-PREIMPORT-1719-V22-RECEIPT-20261121.json",
+    "mapped_card_count": 1719,
+    "preserved_bilingual_example_pairs": 3438,
+    "app": "GFP v507-R143",
+    "actual_parser": "PASS_1719",
+    "import_commit": "NOT_RUN",
+    "unresolved_HF2_type_binding": 1244,
+    "release": "NONIMPORT",
+    "app_or_FSRS_changes": 0
+  },
+  "content_completeness_recheck_20261121": {
+    "source": "DIRECT_MASTER_V22_AND_STAGE5_TRANSPORT_RECHECK_2026-11-21",
+    "master_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "scope": "CONTENT_COMPLETENESS_VS_USER_DESIRED_MULTILINGUAL_ENRICHMENT",
+    "cards": 1719,
+    "english_word_glosses_present": 0,
+    "english_example_translations_present": 0,
+    "cards_with_2_de_fa_examples": 1707,
+    "cards_with_3_de_fa_examples": 12,
+    "synonyms_any_sense_scoped_or_proposed": 1423,
+    "antonyms_any_sense_scoped_or_proposed": 444,
+    "word_family_nonempty": 574,
+    "related_words_nonempty": 710,
+    "word_family_coverage_l01_to_l06": 0,
+    "related_words_coverage_l01_to_l06": 0,
+    "combinations_nonempty": 1719,
+    "root_cause": "B2-specific definition and QA required only two DE/FA example pairs and omitted EN and five-facet completeness; central master prompt specifies configurable profile-dependent multilingual coverage, not blanket two-example certification.",
+    "verdict": "PRODUCT_ENRICHMENT_INCOMPLETE__DO_NOT_PRESENT_STAGE4_SCOPED_PASS_AS_FINAL_CARD_COMPLETENESS",
+    "no_new_card_writes": true,
+    "source_master_ledger_unchanged": true
+  },
+  "user_confirmed_card_contract_20261121": {
+    "authority": "EXPLICIT_USER_B2_CONTRACT_2026-11-21",
+    "contract_github": "Workspaces/aspekte-b2-v336/Docs/ASPEKTE-B2-USER-CONFIRMED-CARD-CONTRACT-20261121.md",
+    "gate_github": "Workspaces/aspekte-b2-v336/QA/b2_card_completeness_gate_v1.py",
+    "exact_de_examples_per_card": 4,
+    "required_translations_each": [
+      "fa-IR",
+      "en-US"
+    ],
+    "english_headword_gloss_required": true,
+    "five_facets": [
+      "synonyms",
+      "antonyms",
+      "word_family",
+      "related_words",
+      "combinations"
+    ],
+    "facet_completion_states": [
+      "VERIFIED_PRESENT",
+      "CLOSED_NO_FORCE",
+      "NOT_APPLICABLE"
+    ],
+    "combinations_must_be_independent_from_examples": true,
+    "no_example_derived_or_sentence_copied_combinations": true,
+    "preserve_all_existing_valid_card_example_ids_and_accepted_content": true,
+    "v22_baseline_source_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "baseline_completeness_result": "FAIL_1719_CARDS",
+    "missing_english_headword_gloss_cards": 1719,
+    "missing_example_en_1": 1719,
+    "missing_example_en_2": 1719,
+    "missing_example_3_complete_triplets": 1719,
+    "missing_example_4_complete_triplets": 1719,
+    "facets_unreviewed_statuses": 8595,
+    "existing_master_mutated": false,
+    "source_and_ledger_protected": true
   }
 }

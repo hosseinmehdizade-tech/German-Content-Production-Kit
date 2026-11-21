@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-21",
+  "status": "GLOBAL_QA_NOT_PASSED__L01_L05_LEGACY_GAPS__NONIMPORT",
+  "scope": "Full 1719-card all-10-lesson regression on exact Library Master v21 and Ledger v21",
+  "master_sha256": "8cd45f15690a290c61775e186c069415654c8e83058b6dfe0eb5c12f4b42f97a",
+  "ledger_sha256": "68b6c988ad9693f85f48b479b059d41345f20c19575b5097133693cc33243b6a",
+  "all_cards": 1719,
+  "distinct_IDs": 1719,
+  "case_decisions_assigned": 1719,
+  "decision_distribution": {
+    "CORRECTED": 1473,
+    "PASS": 246
+  },
+  "all_four_DE_FA_example_fields_present": true,
+  "all_import_and_linguistic_release_flags_false": true,
+  "source_provenance_links_present_in_alternative_fields": true,
+  "findings": {
+    "cards_with_fewer_than_three_collocations": 261,
+    "literal_example_collocation_overlap_candidates": 202,
+    "ledger_front_or_back_disagreements_with_master": 75,
+    "synonym_and_word_family_duplicate_entries": 1
+  },
+  "findings_total": 539,
+  "distinct_cards_flagged": 468,
+  "findings_by_lesson": {
+    "L01": 161,
+    "L02": 141,
+    "L03": 89,
+    "L04": 83,
+    "L05": 63,
+    "L07": 1,
+    "L09": 1
+  },
+  "high_priority_technical_gaps": [
+    "75 old Ledger preview fields not synchronized with authoritative Master — exact matching by ID required",
+    "261 cards in L01/L02 and one in L03 have fewer than 3 combinations; do not fabricate filler",
+    "One duplicate between Synonyme and Wortfamilie in L09 unit ab2-l09-u-2999"
+  ],
+  "contextual_review_needed": [
+    "202 literal combination/example phrase overlaps across L01–L05 and one in L07; some naturally occur in example text and must be adjudicated, not all auto-errors"
+  ],
+  "classification": "261 three-combination minimum rule gaps, 75 ledger synchronization inconsistencies, 1 cross-field duplicate; 202 literal overlap CANDIDATES, not proof each collocation is wrong.",
+  "false_positives_removed": "Prior crude check reported 1386 missing provenance, but alternative source-id and source-lineage fields show provenance is present; this was a false alarm and is not included.",
+  "immediate_release_status": "NONIMPORT",
+  "qa_limit": "No human independent reviewer, browser/SRS app test, or native import signoff implied. No post-L10 lesson phase invented.",
+  "next": "One scoped remediation of exact confirmed global QA discrepancies, with ledger synchronized and central combination rule checked, without reopening accepted lesson phases or making a new roadmap.",
+  "local_report": "/mnt/data/aspekte_b2_l10_p3/B2-STAGE4-GLOBAL-QA-1719-20261121.json",
+  "local_case_candidates": "/mnt/data/aspekte_b2_l10_p3/B2-STAGE4-GLOBAL-QA-CANDIDATES-20261121.tsv"
+}

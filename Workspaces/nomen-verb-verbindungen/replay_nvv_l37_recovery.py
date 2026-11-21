@@ -3,11 +3,14 @@
 Usage: python replay_nvv_l37_recovery.py L36.tsv L36-LEDGER.json L37-COMPACT-RECOVERY.json OUTPUT_DIR
 No original file overwritten. Verifies SHA256, IDs, source scope, and final bytes.
 """
-import csv,json,hashlib,pathlib,io,sys
+import csv,json,hashlib,pathlib,io,sys,base64,gzip
 SHA=lambda b:hashlib.sha256(b).hexdigest()
 if len(sys.argv)!=5: raise SystemExit('Usage: replay_nvv_l37_recovery.py PARENT.tsv PARENT-LEDGER.json RECOVERY.json OUTPUT_DIR')
 a,b,d,o=map(pathlib.Path,sys.argv[1:]);outdir=o;outdir.mkdir(parents=True,exist_ok=True)
-p=json.loads(d.read_text(encoding='utf8'))
+data=d.read_bytes()
+if d.name.endswith('.gz.b64.txt'):
+ data=gzip.decompress(base64.b64decode(data))
+p=json.loads(data.decode('utf8'))
 parent=a.read_bytes();parent_ld=b.read_bytes()
 assert SHA(parent)==p['parent_master_sha256'] and SHA(parent_ld)==p['ledger_parent_sha256']
 assert p['scope']==[1069,1098] and p['reviewed']==30

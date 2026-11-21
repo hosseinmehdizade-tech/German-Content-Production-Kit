@@ -35,9 +35,9 @@
     "NEXT_ACTION"
   ],
   "next_task": {
-    "phase": "B2_STAGE5_TRANSPORT_BUILT__HF2_TYPE_BINDING_PENDING__NONIMPORT",
-    "status": "1719_UNIVERSAL_V2_CANDIDATE_ROWS_AND_V507_PARSER_PASS__STILL_NONIMPORT",
-    "goal": "Resolve source-grounded typed/HF2 front binding for the 1244 generic-fallback complex or ambiguous rows, then perform bounded isolated v507 import/roundtrip acceptance. Do not re-open Stage4, import to live library, or change SRS/FSRS.",
+    "phase": "B2_CONTENT_COMPLETENESS_GAP_BEFORE_IMPORT",
+    "status": "SCOPED_STAGE4_DECISIONS_1719_RETAINED__EN_GLOSSES_0__EN_EXAMPLE_TRANSLATIONS_0__ENRICHMENT_INCOMPLETE__NONIMPORT",
+    "goal": "Correct source-profile requirements explicitly against current user goals (English gloss, English translations for each example, target example count and five-facet right-side completeness), then one bounded 1719-card completeness-oriented enrichment pass with QA. Preserve original Master v22 and all historical decisions; do NOT promote Stage5 transport or native import prior to content gate.",
     "authority_file": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv",
     "authority_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
     "authority_library_id": "libfile_2b5e1f62d7fc819192ed8d4e1c6eac3e",
@@ -68,7 +68,8 @@
     "stage5_library_id": "libfile_f14b8925df788191be3b2440007fb3e7",
     "stage5_archive_sha256": "0b7cc2db5e2f5e024acc7823547e0219f807be54698469dec65b11a3baafaf09",
     "stage5_report": "Workspaces/aspekte-b2-v336/Reports/B2-STAGE5-PREIMPORT-1719-V22-RECEIPT-20261121.json",
-    "stage5_mapping_status": "SCOPED_TRANSPORT_PARSER_PASS_NOT_IMPORT_CERTIFIED"
+    "stage5_mapping_status": "PARSER_PASS_ONLY__CONTENT_COMPLETENESS_BLOCKED",
+    "content_completeness_gate": "FAIL_20261121"
   },
   "completed_or_blocked": {
     "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
@@ -2338,5 +2339,26 @@
     "unresolved_HF2_type_binding": 1244,
     "release": "NONIMPORT",
     "app_or_FSRS_changes": 0
+  },
+  "content_completeness_recheck_20261121": {
+    "source": "DIRECT_MASTER_V22_AND_STAGE5_TRANSPORT_RECHECK_2026-11-21",
+    "master_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "scope": "CONTENT_COMPLETENESS_VS_USER_DESIRED_MULTILINGUAL_ENRICHMENT",
+    "cards": 1719,
+    "english_word_glosses_present": 0,
+    "english_example_translations_present": 0,
+    "cards_with_2_de_fa_examples": 1707,
+    "cards_with_3_de_fa_examples": 12,
+    "synonyms_any_sense_scoped_or_proposed": 1423,
+    "antonyms_any_sense_scoped_or_proposed": 444,
+    "word_family_nonempty": 574,
+    "related_words_nonempty": 710,
+    "word_family_coverage_l01_to_l06": 0,
+    "related_words_coverage_l01_to_l06": 0,
+    "combinations_nonempty": 1719,
+    "root_cause": "B2-specific definition and QA required only two DE/FA example pairs and omitted EN and five-facet completeness; central master prompt specifies configurable profile-dependent multilingual coverage, not blanket two-example certification.",
+    "verdict": "PRODUCT_ENRICHMENT_INCOMPLETE__DO_NOT_PRESENT_STAGE4_SCOPED_PASS_AS_FINAL_CARD_COMPLETENESS",
+    "no_new_card_writes": true,
+    "source_master_ledger_unchanged": true
   }
 }

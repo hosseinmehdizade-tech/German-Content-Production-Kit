@@ -35,9 +35,9 @@
     "NEXT_ACTION"
   ],
   "next_task": {
-    "phase": "B2_CONTENT_COMPLETENESS_GAP_BEFORE_IMPORT",
-    "status": "SCOPED_STAGE4_DECISIONS_1719_RETAINED__EN_GLOSSES_0__EN_EXAMPLE_TRANSLATIONS_0__ENRICHMENT_INCOMPLETE__NONIMPORT",
-    "goal": "Correct source-profile requirements explicitly against current user goals (English gloss, English translations for each example, target example count and five-facet right-side completeness), then one bounded 1719-card completeness-oriented enrichment pass with QA. Preserve original Master v22 and all historical decisions; do NOT promote Stage5 transport or native import prior to content gate.",
+    "phase": "B2_USER_CONFIRMED_4_EXAMPLE_TRILINGUAL_CONTENT_REPAIR_BEFORE_STAGE5",
+    "status": "CONTENT_CONTRACT_BINDING_RECORDED__V22_FAIL__STAGE5_SUSPENDED__NONIMPORT",
+    "goal": "Preserve Master v22 baseline. Directly enrich all 1719 cards: English gloss and English translations for all preserved examples, add missing DE/FA/EN examples until exactly 4 per card; complete five right-side facets with independent combinations and explicit source-backed dispositions. Use real content deltas only; no Stage4 re-review; no runtime import.",
     "authority_file": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/ASPEKTE-B2-FINAL-MASTER-1719-CURATED-NONIMPORT.tsv",
     "authority_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
     "authority_library_id": "libfile_2b5e1f62d7fc819192ed8d4e1c6eac3e",
@@ -68,8 +68,11 @@
     "stage5_library_id": "libfile_f14b8925df788191be3b2440007fb3e7",
     "stage5_archive_sha256": "0b7cc2db5e2f5e024acc7823547e0219f807be54698469dec65b11a3baafaf09",
     "stage5_report": "Workspaces/aspekte-b2-v336/Reports/B2-STAGE5-PREIMPORT-1719-V22-RECEIPT-20261121.json",
-    "stage5_mapping_status": "PARSER_PASS_ONLY__CONTENT_COMPLETENESS_BLOCKED",
-    "content_completeness_gate": "FAIL_20261121"
+    "stage5_mapping_status": "SUSPENDED_UNTIL_USER_CONFIRMED_CONTENT_GATE_PASS",
+    "content_completeness_gate": "FAIL_20261121",
+    "authoritative_contract": "Workspaces/aspekte-b2-v336/Docs/ASPEKTE-B2-USER-CONFIRMED-CARD-CONTRACT-20261121.md",
+    "required_completeness_gate": "Workspaces/aspekte-b2-v336/QA/b2_card_completeness_gate_v1.py",
+    "completeness": "FAIL_V22_USER_CONFIRMED_REQUIREMENTS"
   },
   "completed_or_blocked": {
     "L01": "PASS3_BLOCKED_NONIMPORT__158_DRAFTS_2_NONCARD__CYCLE_CLOSED",
@@ -2360,5 +2363,41 @@
     "verdict": "PRODUCT_ENRICHMENT_INCOMPLETE__DO_NOT_PRESENT_STAGE4_SCOPED_PASS_AS_FINAL_CARD_COMPLETENESS",
     "no_new_card_writes": true,
     "source_master_ledger_unchanged": true
+  },
+  "user_confirmed_card_contract_20261121": {
+    "authority": "EXPLICIT_USER_B2_CONTRACT_2026-11-21",
+    "contract_github": "Workspaces/aspekte-b2-v336/Docs/ASPEKTE-B2-USER-CONFIRMED-CARD-CONTRACT-20261121.md",
+    "gate_github": "Workspaces/aspekte-b2-v336/QA/b2_card_completeness_gate_v1.py",
+    "exact_de_examples_per_card": 4,
+    "required_translations_each": [
+      "fa-IR",
+      "en-US"
+    ],
+    "english_headword_gloss_required": true,
+    "five_facets": [
+      "synonyms",
+      "antonyms",
+      "word_family",
+      "related_words",
+      "combinations"
+    ],
+    "facet_completion_states": [
+      "VERIFIED_PRESENT",
+      "CLOSED_NO_FORCE",
+      "NOT_APPLICABLE"
+    ],
+    "combinations_must_be_independent_from_examples": true,
+    "no_example_derived_or_sentence_copied_combinations": true,
+    "preserve_all_existing_valid_card_example_ids_and_accepted_content": true,
+    "v22_baseline_source_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "baseline_completeness_result": "FAIL_1719_CARDS",
+    "missing_english_headword_gloss_cards": 1719,
+    "missing_example_en_1": 1719,
+    "missing_example_en_2": 1719,
+    "missing_example_3_complete_triplets": 1719,
+    "missing_example_4_complete_triplets": 1719,
+    "facets_unreviewed_statuses": 8595,
+    "existing_master_mutated": false,
+    "source_and_ledger_protected": true
   }
 }

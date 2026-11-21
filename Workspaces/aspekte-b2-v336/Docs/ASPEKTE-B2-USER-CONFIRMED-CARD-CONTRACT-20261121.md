@@ -1,0 +1,28 @@
+# Aspekte B2 — confirmed learner-card contract (2026-11-21)
+
+**Authority:** direct user clarification in the Aspekte B2 project on 2026-11-21. This is an explicit source-specific, prospective completion requirement and takes precedence over the *two-example goal* in historical `Docs/PROJECT-DEFINITION-v1.0.0.md`. It does NOT replace or edit the central Master Prompt, global registry, source CSV, or existing curated Master v22.
+
+## Card content required for a genuinely complete card
+
+1. **Card front:** authentic, correct German headword/lexical expression; preserve verified identity and all accepted meanings. For nouns show reviewed article-bearing singular and plural where applicable; for verbs clean infinitive plus verified 3sg Präsens/Präteritum/Perfekt; for adjectives verified comparison forms where applicable. Don't invent unavailable morphology; nonapplicability needs a reviewed closure.
+2. **Card meaning:** accurate Persian meaning(s) AND **English gloss of the headword**, sense-aligned. English gloss is a separate field, not the translation of an example sentence. German definition (`definition_de`) and usage labels according to the applicable typed contract are preserved / checked.
+3. **Examples:** **exactly four natural, distinct German example sentences per learner card** with **a faithful Persian translation and a faithful English translation for every German sentence**, each bound to the same stable Example ID. 4 × (DE+FA+EN). Respect grammar, register, intended sense, CEFR B2 and varied contexts. Preserve all valid existing example IDs, German text and Persian translations; append missing examples with fresh IDs, and translate existing DE sentences instead of rewriting them. Any count reduction requires existing migration safeguards.
+4. **Five right-side areas:** `Synonyme`, `Antonyme`, `Wortfamilie`, `Verwandte Wörter`, `Kombinationen` are individually reviewed with sense-aware lexical accuracy and source/evidence support. Each applicable dimension must end as `VERIFIED_PRESENT`, or as a *genuinely reviewed* `CLOSED_NO_FORCE` / `NOT_APPLICABLE` with an explicit reason. Blank/unreviewed is never PASS. No artificial fillers, invented graph targets or fixed quantities for these areas.
+5. **Kombinationen independence:** every combination is a genuine, useful, independent lexical combination. **Do not take or copy combinations from the German example sentences**, do not duplicate an entire example as a combination and do not duplicate entries within the same card. Distinguish them from Rektion and NVV. Simple substring overlap with a naturally illustrative example is *not by itself* evidence of copying or a defect; real provenance/editorial independence must be checked.
+6. **Other linguistic requirements:** correct word class, morphological forms, Rektion, valency, grammar, register, and all accepted multiple senses. Synonym/antonym/combination relationships must relate to the correct sense. Preserve all accepted corrections and original provenances. No forced splitting of a polysemous card.
+7. **Data safety:** retain exactly the same 1,719 card IDs and all previously validated content except explicitly justified editorial fixes. Historical SOURCE/LOCKED and user app/SRS/FSRS must not be changed by this work.
+
+## Acceptance: NO FALSE COMPLETE
+
+A card is `CONTENT_COMPLETE` only after real content is present, all four aligned trilingual examples are checked, all five right-side dimensions are explicitly dispositioned, morphology/Rektion/senses are reviewed as applicable, and linguistic QA has evidence. Machine structural PASS is necessary but never sufficient for linguistic quality.
+
+**Executable structural preflight:** `QA/b2_card_completeness_gate_v1.py` on the exact current TSV, with a source SHA-256. This enforces 1,719 stable IDs, English glosses, four DE/FA/EN example triplets, five explicit facet dispositions and independent-combination review. Its limitations: it does not prove naturalness, sense fidelity, or native import. Do not count `qa_status` or Stage4 historical closure as card completeness.
+
+## Baseline and next work
+
+- **Immutable accepted working baseline for repair:** 1,719-card curated Master v22, SHA-256 `a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8`. Ledger v22 and all previous approved source/fact edits retained.
+- **Initial gate outcome:** `FAIL` on v22 because English glosses and English example translations are absent, third/fourth complete trilingual examples are missing, and per-facet completion decisions are not recorded. This is an *expected and honest* result for the historical baseline.
+- **Next:** One bounded content enrichment pass over the existing 1,719 cards, preserving valid DE/FA examples; translate existing examples and add missing third/fourth examples; fill EN gloss; review facet decisions. Update the same authoritative Master and ledger through an exact-hash, overwrite-in-place guarded successor with new required columns and delta QA; report real modified-card counts, not another historical Stage4 cycle.
+- **Stage5 and Stage6:** Stopped until content completeness and actual target projection gates pass. Do not import to live GFP or touch SRS. No external third-party linguistic reviewer required, but semantic adversarial and deterministic QA remain required.
+
+**Central authority:** `Prompt/START-PROMPT-v3.3.6.md` -> `Prompt/CONTENT-GENERATION-MASTER-PROMPT-v3.1.9.md` -> applicable pinned global lexical policies; this specific confirmed B2 profile/target overlays only dataset-level target fields, never authorizes breaking global preservation/source rules.

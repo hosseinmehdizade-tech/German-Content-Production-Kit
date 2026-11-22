@@ -159,5 +159,32 @@ class ProviderSnapshotTests(unittest.TestCase):
         self.assertEqual(strict, 2)
 
 
+    def test_registry_selected_snapshot_respects_v49_and_historical_dates(self):
+        self.save()
+        successor = copy.deepcopy(self.snap)
+        successor["observed_date"] = "2026-11-23"
+        successor["entries"][0]["observed_date"] = "2026-11-22"
+        for x in successor["entries"][1:]:
+            x["observed_date"] = "2026-11-07"
+        new_path = "Optimization-Program/Control-Center/Provider-Observations/2026-11-23-test.json"
+        self.registry["provider_observation_bridge"] = {"latest_as_of": new_path}
+        (self.root / m.REGISTRY).write_text(json.dumps(self.registry), encoding="utf8")
+        target = self.root / new_path
+        target.write_text(json.dumps(successor), encoding="utf8")
+        old_snapshot = (self.root / m.SNAPSHOT).read_bytes()
+        report = m.reconcile(self.root)
+        self.assertNotIn("METADATA_MISMATCH_REVIEW", report["counts"])
+        self.assertEqual(report["items"][0]["observed_date"], "2026-11-22")
+        self.assertEqual(report["items"][1]["observed_date"], "2026-11-07")
+        self.assertEqual(old_snapshot, (self.root / m.SNAPSHOT).read_bytes())
+
+    def test_bad_registry_snapshot_path_rejected(self):
+        self.save()
+        self.registry["provider_observation_bridge"] = {"latest_as_of": "../../unsafe.json"}
+        (self.root / m.REGISTRY).write_text(json.dumps(self.registry), encoding="utf8")
+        with self.assertRaises(ValueError):
+            m.reconcile(self.root)
+
+
 if __name__ == "__main__":
     unittest.main()

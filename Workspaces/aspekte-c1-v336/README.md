@@ -1,3 +1,7 @@
+## ACTIVE C1 rich-card content contract (2026-11-22)
+
+All **new/mutable Aspekte C1 cards** MUST satisfy [the source-local four-example, DE/FA/EN meanings, five-right-sections and grammar contract](01-plan/C1-RICH-CARD-PRODUCTION-CONTRACT-v1.0.0.md). This is a stricter compatible **per-card** example rule; MEM-009 has no per-meaning quota. Run [C1 structural preflight](04-qa/validate_c1_rich_card.py) before/after actual future Stage5 projection, plus mandatory independent linguistic Stage4 QA. This does not approve cards or change existing Stage1 status, source/Library ZIP, app or SRS. **Native C1 producer/Stage5 adoption still needs actual-output proof; fail closed until then.**
+
 ## ACTIVE shared Aspekte anti-loop policy — 2026-11-07
 
 **Read [central Aspekte resume/persistence circuit breaker](../../Prompt/ASPEKTE-RESUME-SYNC-CIRCUIT-BREAKER-v1.0.0.md)** before work. GitHub's local workstream LATEST/CHECKPOINT controls coordination, while the newest hash-verified owner-specific **C1 curated Stage1 portable state** remains the learner-data authority. Do not recreate historical PDF/source inventory or overwrite Library roadmap snapshots to reconcile metadata. On a provider permission prompt/capture error: once per destination only; record `SYNC_PENDING` and proceed with substantive Stage1 semantic/dedup review from the accepted current dataset. No automatic release or destruction of historical evidence.

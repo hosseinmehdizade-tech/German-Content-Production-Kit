@@ -1,0 +1,92 @@
+{
+  "schema": "aspekte-b2-v25-l01-30-verified-content-enrichment-receipt@1",
+  "date": "2026-11-22",
+  "status": "WORKING_PARTIAL_TRILINGUAL_CONTENT__NONIMPORT",
+  "parent": {
+    "version": "v24-WORKING",
+    "master_sha256": "667aa4bf70a9b187f9eedb0a7561975a16ebaddf06d68c1d84dc2bd38f5dc212",
+    "registry_sha256": "e8389c35f415dc8b65defa5c9e2b4d412f315824818ade1b9afb2329211bc352"
+  },
+  "working_master": {
+    "version": "v25-WORKING",
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Current/ASPEKTE-B2-V25-WORKING-1719-CURATED-NONIMPORT.tsv",
+    "library_id": "libfile_70f61b714e948191b43690b0d72f8bba",
+    "sha256": "983498e9d2b019e29f6a7661696b5aee62573fee48ed55a73b49f67c0458a18a",
+    "rows": 1719
+  },
+  "example_id_registry": {
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/ASPEKTE-B2-V25-EXAMPLE-ID-REGISTRY.tsv",
+    "library_id": "libfile_1b6967b17c748191a3c66942dd48b63d",
+    "sha256": "7b34445a7cca4308e69ee8392f094745dd07086d73e0d824188e5d4abcd550d8",
+    "ids": 3588
+  },
+  "scoped_QA": {
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/B2-V25-L01-30-CONTENT-QA.json",
+    "library_id": "libfile_3473c2c5e1dc8191acb108fb898b4eba",
+    "sha256": "f8d33b9decd232abd51857172066bde10044ec6bae9fa9237ac2f44590bf38c3"
+  },
+  "delta_ledger": {
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/B2-V25-L01-30-CONTENT-DELTA.json",
+    "library_id": "libfile_7c29c8bef9588191b95155f00a9ea2b3",
+    "sha256": "88261de44114f575206be5be88f271583860b704195ed710c34249effb29caab"
+  },
+  "source_baseline_v22": {
+    "sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "preserved_immutable": true
+  },
+  "changes": {
+    "lesson": "L01",
+    "first": "ab2-l01-u-1593",
+    "last": "ab2-l01-u-1622",
+    "newly_enriched": 30,
+    "cumulative_structural_4_trilingual": 75,
+    "unenriched": 1644,
+    "unmodified_card_rows_in_this_batch": 1689,
+    "prior_example_ids_preserved": 3528,
+    "new_example_ids": 60,
+    "total_example_ids": 3588,
+    "new_english_glosses": 30,
+    "EN_translations_of_preserved_two_sentences": 60,
+    "new_DE_FA_EN_example_triplets": 60,
+    "five_facet_dispositions": 150,
+    "corrections_of_preexisting_content": 4
+  },
+  "corrected_old_content": [
+    {
+      "id": "ab2-l01-u-1597",
+      "type": "WRONG_SEMANTIC_SYNONYM_REMOVED",
+      "detail": "Tagung is not a synonym of Geschäftsverhandlung"
+    },
+    {
+      "id": "ab2-l01-u-1616",
+      "type": "EXAMPLE_DERIVED_COMBINATION_REPLACED",
+      "detail": "Fragen jeder Art replaced with die Art des Vorgehens"
+    },
+    {
+      "id": "ab2-l01-u-1619",
+      "type": "EXAMPLE_DERIVED_COMBINATION_REPLACED",
+      "detail": "Begrüßen mit einem breiten Lächeln replaced with alternative non-sentence teaching pattern"
+    },
+    {
+      "id": "ab2-l01-u-1611",
+      "type": "EXAMPLE_CLOSE_COMBINATION_REPLACED",
+      "detail": "hilfreich bei der Vorbereitung changed to hilfreich bei der Fehlersuche"
+    }
+  ],
+  "checks": {
+    "all_four_library_artifacts_exact_sha_readback": "PASS",
+    "all_1719_card_ids_unchanged": "PASS",
+    "source_DE_FA_first_two_examples_preserved": "PASS",
+    "cumulative_75_structural_examples": "PASS",
+    "global_1719_completeness": "FAIL_EXPECTED_1644",
+    "independent_semantic_evidence": "NOT_ATTESTED",
+    "official_release": "BLOCKED_NONIMPORT",
+    "installed_app_SRS_changes": 0
+  },
+  "next": {
+    "authoritative_working_sha256": "983498e9d2b019e29f6a7661696b5aee62573fee48ed55a73b49f67c0458a18a",
+    "registry_sha256": "7b34445a7cca4308e69ee8392f094745dd07086d73e0d824188e5d4abcd550d8",
+    "next_card": "ab2-l01-u-1623",
+    "action": "Continue content-only enrichment from v25 and registry, no repeat of prior 75 cards; maintain 1719 identities and release gate."
+  }
+}

@@ -113,7 +113,7 @@ def reconcile(root: Path, observation_path: Path | None = None) -> dict:
         relative = bridge.get("latest_as_of", SNAPSHOT)
         if (not isinstance(relative, str)
                 or not relative.startswith("Optimization-Program/Control-Center/Provider-Observations/")
-                or ".." in Path(relative).parts or "\\\\" in relative or not relative.endswith(".json")):
+                or ".." in Path(relative).parts or "\\" in relative or not relative.endswith(".json")):
             raise ValueError("Unsafe portfolio provider snapshot pointer")
         selected_path = root / relative
     snapshot = read_object(selected_path)

@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -178,6 +179,32 @@ def summary_md(report: dict) -> str:
     return "\n".join(rows)
 
 
+
+def cop_all_family_gate(root: Path):
+    """Re-use existing trusted workflow without editing protected workflow YAML.
+
+    Synthetic unit fixtures have neither 21-family route nor COP ledger. In
+    the real repo, either appearing requires both plus the review tool.
+    """
+    rel_obs = "Optimization-Program/Control-Center/COP-CURRENTNESS-OBSERVATIONS-v1.json"
+    rel_route = "Optimization-Program/Control-Center/CANONICAL-FAMILY-WORKSPACE-ROUTING-v1.json"
+    has_obs = (root / rel_obs).is_file()
+    has_route = (root / rel_route).is_file()
+    if not has_obs and not has_route:
+        return None, None
+    if not has_obs or not has_route:
+        raise ValueError("COP currentness ledger and canonical routing must both exist")
+    target = Path(__file__).resolve().with_name("reconcile_cop_family_currentness_v1.py")
+    if not target.is_file():
+        raise ValueError("COP 21-family guard missing from working tree")
+    spec = importlib.util.spec_from_file_location("cop_21_family_currentness", target)
+    if spec is None or spec.loader is None:
+        raise ValueError("COP 21-family guard cannot be loaded")
+    gate = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gate)
+    return gate, gate.inspect(root)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -187,7 +214,9 @@ def main(argv=None) -> int:
                         help="Opt-in strict mode; never modifies repository")
     args = parser.parse_args(argv)
     try:
-        report = reconcile(args.repo_root)
+        root = args.repo_root.resolve()
+        report = reconcile(root)
+        cop, cop_result = cop_all_family_gate(root)
         if args.out_dir:
             root = args.repo_root.resolve()
             out = args.out_dir.resolve()
@@ -197,10 +226,26 @@ def main(argv=None) -> int:
             (out / "RECONCILIATION.json").write_text(
                 json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             (out / "RECONCILIATION.md").write_text(summary_md(report), encoding="utf-8")
+            if cop_result is not None:
+                (out / "COP-CURRENTNESS-21-FAMILY.json").write_text(
+                    json.dumps(cop_result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                (out / "COP-CURRENTNESS-21-FAMILY.md").write_text(
+                    cop.markdown(cop_result), encoding="utf-8")
         if args.github_summary and os.environ.get("GITHUB_STEP_SUMMARY"):
             with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh:
                 fh.write(summary_md(report))
+                if cop_result is not None:
+                    fh.write("\n" + cop.markdown(cop_result))
         print(json.dumps(report, ensure_ascii=False, indent=2))
+        if cop_result is not None:
+            print(json.dumps({"cop_21_family_status": cop_result["status"],
+                              "cop_catalog_families": cop_result["total_catalog_families"],
+                              "cop_selected_accepted": cop_result["selected_accepted_baselines"],
+                              "cop_observed_working": cop_result["recorded_as_of_families"],
+                              "cop_counts": cop_result["counts"],
+                              "cop_blocking_families": cop_result["blocking_families"]}, ensure_ascii=False))
+            if cop_result["blocking_families"]:
+                return 2
         return 2 if args.fail_on_review and not report["status"].startswith("GIT_REFERENCES_MATCH") else 0
     except (ValueError, OSError, json.JSONDecodeError) as exc:
         print(json.dumps({"status": "INVALID_REGISTRY_HOLD",

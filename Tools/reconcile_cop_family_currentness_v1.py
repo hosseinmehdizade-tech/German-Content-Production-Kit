@@ -14,6 +14,7 @@ import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 CATALOG = "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json"
@@ -50,6 +51,18 @@ def read_json(root: Path, relative: str) -> dict:
 
 def git_blob(raw: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
+
+
+def source_git_bytes(root: Path, relative: str) -> bytes:
+    """Use HEAD's immutable Git blob, not checkout bytes rewritten to CRLF on Windows."""
+    file = source_path(root, relative)
+    if (root / ".git").exists():
+        run = subprocess.run(["git", "show", "HEAD:" + relative], cwd=root,
+                             capture_output=True, check=False)
+        if run.returncode != 0:
+            raise ValueError("Owner file not in checked-out Git HEAD: " + relative)
+        return run.stdout
+    return file.read_bytes()
 
 
 def pointer(obj: dict, route: str):
@@ -134,7 +147,7 @@ def inspect(root: Path, observations: str = OBSERVATIONS) -> dict:
                     or not relative.startswith(canonical + "/")):
                 failures.append("CANONICAL_OWNER_ROUTE_DRIFT")
             try:
-                raw = source_path(root, relative).read_bytes()
+                raw = source_git_bytes(root, relative)
                 owner_doc = json.loads(raw)
                 owner_sha = pointer(owner_doc, owner["artifact_sha_json_pointer"])
                 if owner_sha != accepted:

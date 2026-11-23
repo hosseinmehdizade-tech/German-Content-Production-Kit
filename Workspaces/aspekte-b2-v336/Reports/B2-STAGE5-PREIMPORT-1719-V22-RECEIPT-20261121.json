@@ -1,0 +1,67 @@
+{
+  "schema": "aspekte-b2-stage5-transport-preimport@1.0.0",
+  "date": "2026-11-21",
+  "status": "STAGE5_TRANSPORT_PARSER_PASS__CONTENT_COMPLETENESS_GATE_FAIL__NONIMPORT",
+  "source": {
+    "master_version": 22,
+    "master_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "ledger_sha256": "eacdba5be8e41a27464211ca790d8d6e4b74fbe3a17ae3fd02ff69a08a5b179e",
+    "source_mutated": false
+  },
+  "delivery": {
+    "name": "Aspekte-B2-v22-STAGE5-CONTENT-PREIMPORT-NONIMPORT-20261121.zip",
+    "library_id": "libfile_f14b8925df788191be3b2440007fb3e7",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-B2/Checkpoints/Aspekte-B2-v22-STAGE5-CONTENT-PREIMPORT-NONIMPORT-20261121.zip",
+    "sha256": "0b7cc2db5e2f5e024acc7823547e0219f807be54698469dec65b11a3baafaf09",
+    "bytes": 2212901,
+    "library_readback": "SHA256_MATCH",
+    "archive_crc_and_manifest": "PASS",
+    "fresh_deterministic_replay": "SHA256_MATCH"
+  },
+  "transport": {
+    "schema": "universal-v2",
+    "columns": 23,
+    "card_count": 1719,
+    "unique_ids": 1719,
+    "bilingual_example_pairs": 3438,
+    "exact_66_master_source_cells_embedded": true,
+    "transport_tsv_sha256": "f4e74eacd819ee1c05e40d2b3f495bd58c502228c7f4bd738197cec372f0c61c",
+    "example_ids_persisted": 3438
+  },
+  "target": {
+    "runtime": "GFP v507-R143",
+    "sha256": "2df83709c3b1d8359f796ee12cab4afe5fc28b3eee663516caa57428160ba871",
+    "parser": "EXACT_V507_PARSE_TSV_PASS_ALL_1719",
+    "import_commit": "NOT_RUN",
+    "SRS_FSRS_mutations": 0
+  },
+  "QA": {
+    "negative_corruptions_rejected": 5,
+    "safe_consumer_type_bindings": 475,
+    "consumer_generic_fallback_pending": 1244,
+    "all_1719_release_flags_false": true,
+    "content_release_approved": false
+  },
+  "next": "Resolve user-required English glosses, EN translations for existing DE examples, example-count target and missing cross-lesson right-side enrichment before final transport/HF2 binding; preserve 1719 IDs and v22. No app/SRS actions.",
+  "content_completeness_recheck_20261121": {
+    "source": "DIRECT_MASTER_V22_AND_STAGE5_TRANSPORT_RECHECK_2026-11-21",
+    "master_sha256": "a3fe0c19735ce63211f91f223a14274f682979b6a9ee6114ef99ad9b5050d9e8",
+    "scope": "CONTENT_COMPLETENESS_VS_USER_DESIRED_MULTILINGUAL_ENRICHMENT",
+    "cards": 1719,
+    "english_word_glosses_present": 0,
+    "english_example_translations_present": 0,
+    "cards_with_2_de_fa_examples": 1707,
+    "cards_with_3_de_fa_examples": 12,
+    "synonyms_any_sense_scoped_or_proposed": 1423,
+    "antonyms_any_sense_scoped_or_proposed": 444,
+    "word_family_nonempty": 574,
+    "related_words_nonempty": 710,
+    "word_family_coverage_l01_to_l06": 0,
+    "related_words_coverage_l01_to_l06": 0,
+    "combinations_nonempty": 1719,
+    "root_cause": "B2-specific definition and QA required only two DE/FA example pairs and omitted EN and five-facet completeness; central master prompt specifies configurable profile-dependent multilingual coverage, not blanket two-example certification.",
+    "verdict": "PRODUCT_ENRICHMENT_INCOMPLETE__DO_NOT_PRESENT_STAGE4_SCOPED_PASS_AS_FINAL_CARD_COMPLETENESS",
+    "no_new_card_writes": true,
+    "source_master_ledger_unchanged": true
+  }
+}

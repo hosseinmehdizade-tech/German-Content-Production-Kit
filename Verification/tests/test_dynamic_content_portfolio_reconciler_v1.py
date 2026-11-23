@@ -9,6 +9,9 @@ from pathlib import Path
 import tempfile
 import unittest
 
+# Existing CI runner also executes the new all-21-family adversarial tests.
+from test_cop_family_currentness_v1 import FamilyCurrentnessTests
+
 MOD_PATH = Path(__file__).resolve().parents[2] / "Tools" / "reconcile_dynamic_content_portfolio_v1.py"
 spec = importlib.util.spec_from_file_location("portfolio_reconciler", MOD_PATH)
 module = importlib.util.module_from_spec(spec)

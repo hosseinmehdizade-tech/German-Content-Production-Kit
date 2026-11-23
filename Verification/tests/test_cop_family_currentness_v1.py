@@ -149,6 +149,20 @@ class FamilyCurrentnessTests(unittest.TestCase):
                                      "--out-dir", str(self.root / "bad")]), 2)
         self.assertFalse((self.root / "bad").exists())
 
+    def test_git_head_raw_bytes_not_checkout_crlf(self):
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        path = "Workspaces/source-0/LATEST.json"
+        native = (self.root / path).read_bytes()
+        (self.root / path).write_bytes(native.replace(b"\\n", b"\\r\\n"))
+        (self.root / ".git").mkdir()
+        with patch.object(m.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=native)) as call:
+            self.assertEqual(m.source_git_bytes(self.root, path), native)
+            call.assert_called_once()
+        (self.root / ".git").rmdir()
+        # A Windows-modified checkout is not the Git blob authority.
+        self.assertNotEqual((self.root / path).read_bytes(), native)
+
     def test_parent_path_traversal_rejected(self):
         with self.assertRaises(ValueError):
             m.source_path(self.root, "Workspaces/../secrets")

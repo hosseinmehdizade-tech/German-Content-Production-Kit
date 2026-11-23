@@ -154,7 +154,7 @@ class FamilyCurrentnessTests(unittest.TestCase):
         from unittest.mock import patch
         path = "Workspaces/source-0/LATEST.json"
         native = (self.root / path).read_bytes()
-        (self.root / path).write_bytes(native.replace(b"\\n", b"\\r\\n"))
+        (self.root / path).write_bytes(native.replace(b"\n", b"\r\n"))
         (self.root / ".git").mkdir()
         with patch.object(m.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=native)) as call:
             self.assertEqual(m.source_git_bytes(self.root, path), native)

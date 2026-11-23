@@ -62,6 +62,9 @@ def check_observations(registry: dict, snapshot: dict) -> tuple[list[dict], dict
         if fid not in expected or provider not in PROVIDERS or key in seen:
             raise ValueError("unknown, missing or duplicate provider/family")
         seen.add(key)
+        entry_date = entry.get("observed_date", snapshot["observed_date"])
+        if not isinstance(entry_date, str) or len(entry_date) != 10:
+            raise ValueError("Invalid entry-level provider observation date")
         if obs not in set(OBSERVED.values()) | OTHER:
             raise ValueError("unsupported observation status: " + str(obs))
         if "sha256_of_bytes" in entry and entry["sha256_of_bytes"] not in ("NOT_REMEASURED", None):
@@ -92,7 +95,7 @@ def check_observations(registry: dict, snapshot: dict) -> tuple[list[dict], dict
                      "expected_name": expected_name, "expected_size_bytes": expected_size,
                      "observed_name": entry.get("name"),
                      "observed_size_bytes": entry.get("size_bytes"),
-                     "observation": obs, "observed_date": snapshot["observed_date"],
+                     "observation": obs, "observed_date": entry.get("observed_date", snapshot["observed_date"]),
                      "content_sha256_remeasured": False})
     if seen != {(fid, prov) for fid in expected for prov in PROVIDERS}:
         raise ValueError("missing family/provider pair")
@@ -103,7 +106,17 @@ def check_observations(registry: dict, snapshot: dict) -> tuple[list[dict], dict
 def reconcile(root: Path, observation_path: Path | None = None) -> dict:
     root = root.resolve()
     registry = read_object(root / REGISTRY)
-    snapshot = read_object(observation_path or root / SNAPSHOT)
+    if observation_path is not None:
+        selected_path = observation_path
+    else:
+        bridge = registry.get("provider_observation_bridge", {})
+        relative = bridge.get("latest_as_of", SNAPSHOT)
+        if (not isinstance(relative, str)
+                or not relative.startswith("Optimization-Program/Control-Center/Provider-Observations/")
+                or ".." in Path(relative).parts or "\\" in relative or not relative.endswith(".json")):
+            raise ValueError("Unsafe portfolio provider snapshot pointer")
+        selected_path = root / relative
+    snapshot = read_object(selected_path)
     rows, counts = check_observations(registry, snapshot)
     status = "METADATA_MISMATCH_REVIEW" if counts.get("METADATA_MISMATCH_REVIEW") else "METADATA_ONLY_PARTIAL_PROVIDER_VISIBILITY"
     return {"schema": "gfp-opt-portfolio-provider-reconciliation@1.0.0",

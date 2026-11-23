@@ -2,7 +2,7 @@
   "schema": "gfp-opt-dynamic-content-portfolio-registry@1.0.0",
   "program_id": "GFP-OPT-2026",
   "scope": "TEN_REQUESTED_CURATED_CONTENT_FAMILIES__NOT_ALL_21_FAMILIES",
-  "observed_date": "2026-11-15",
+  "observed_date": "2026-11-23",
   "registry_state": "RECONCILED_ACCEPTED_CURATED_BASELINES_10_OF_10__MANAGEMENT_ONLY_NO_AUTO_PROMOTION",
   "authority_hierarchy": [
     "explicit newer user-accepted artifact with byte evidence",
@@ -33,10 +33,37 @@
       "owner_locator": {
         "repository": "hosseinmehdizade-tech/German-Content-Production-Kit",
         "path": "Workspaces/menschen-a1-final-consolidation-v336/LATEST.json",
-        "git_blob_observed": "5a05cf814bc8125bf57579efe66f6e4bc7612733",
+        "git_blob_observed": "4e2d84f1b1089ae12b919fd37f702e15b3095318",
         "artifact_sha_json_pointer": "/current_content_only_delivery/sha256"
       },
       "active_baseline": {
+        "label": "V49",
+        "artifact_name": "Menschen-A1-V49-CONTENT-PRODUCTION-FINAL-20261115.zip",
+        "artifact_sha256": "21c14a82972f2b3a42eae0067d0d6b73bee6e4f759d444e47983045e001a158b",
+        "artifact_location": "https://drive.google.com/file/d/11LiH1TccI5ruImXNHmOcgCY8c67e71qp/view",
+        "selection": "BYTE_VERIFIED_NEWER_LIVE_DRIVE_OWNER_CURRENT__EXPLICIT_OWNER_POINTER",
+        "byte_reverification_this_registry_pass": "PASS_DIRECT_GOOGLE_DRIVE_RAW_BYTES_SHA256_20261122",
+        "artifact_size_bytes": 13799234,
+        "size_provenance": "DIRECT_PROVIDER_METADATA_AND_LOCAL_RAW_SHA256",
+        "import_tsv_sha256": "510f024705b10039537c0e4b3edb11912cecd15cccf7b03142166ea96c0aa5b4",
+        "canonical_json_sha256": "f223bf6e78c3d884bae821594d98722b381ed85f35ea43f2fb005b6a7df92598",
+        "source_receipt": "Workspaces/menschen-a1-final-consolidation-v336/V49-CURRENTNESS-AND-CONTENT-QA-20261122.json",
+        "historical_asof_observation": {
+          "artifact_name": "Menschen-A1-V48-R1-COMPLETE-CONTENT-ONLY-24-LESSONS-NO-IMPORT-20261104.zip",
+          "artifact_sha256": "3005b24a8928bee6eab28a3d8c1a8fe13d2c5ff6eb7975d7ed470d822a22ccac",
+          "artifact_size_bytes": 12458558,
+          "receipt_path": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07-R10-RECONCILED-EXACT-BYTE-EVIDENCE.json",
+          "observation_date": "2026-11-07",
+          "note": "Historical V48-R1 byte evidence remains immutable and must not be miscompared to live V49; separate V49 SHA receipt already passed."
+        }
+      },
+      "metrics": {
+        "cards": 2997
+      },
+      "content_stage": "V49_CONTENT_PRODUCTION_FINAL__BUNDLED_STAGE4_STAGE5_PASS",
+      "runtime_stage": "NATIVE_V507_STAGE6_SRS_NOT_ATTESTED",
+      "next_action": "Keep V49 content final; app team owns any subsequent native v507 SRS/FSRS evidence, not repeated content import QA.",
+      "previous_accepted_baseline": {
         "label": "V48-R1",
         "artifact_name": "Menschen-A1-V48-R1-COMPLETE-CONTENT-ONLY-24-LESSONS-NO-IMPORT-20261104.zip",
         "artifact_sha256": "3005b24a8928bee6eab28a3d8c1a8fe13d2c5ff6eb7975d7ed470d822a22ccac",
@@ -44,14 +71,9 @@
         "selection": "LATEST_SOURCE_OWNER_SELECTED_CURATED_CONTENT",
         "byte_reverification_this_registry_pass": "NOT_PERFORMED",
         "artifact_size_bytes": 12458558,
-        "size_provenance": "SOURCE_OWNER_RECEIPT__NOT_NEW_BINARY_REHASH"
-      },
-      "metrics": {
-        "cards": 2997
-      },
-      "content_stage": "STAGE5_CONTENT_PASS_24_LESSONS",
-      "runtime_stage": "STAGE6_NOT_RUN",
-      "next_action": "Exact current app Stage6 import and SRS preservation; no unapproved import"
+        "size_provenance": "SOURCE_OWNER_RECEIPT__NOT_NEW_BINARY_REHASH",
+        "status": "HISTORICAL_V48_R1_RETAINED_NO_REPACK"
+      }
     },
     {
       "id": "family:menschen-a1-verben",
@@ -512,11 +534,13 @@
   "auto_release_promotion_enabled": false,
   "provider_observation_bridge": {
     "schema": "gfp-opt-provider-observation@1.0.0",
-    "latest_as_of": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07.json",
+    "latest_as_of": "Optimization-Program/Control-Center/Provider-Observations/2026-11-23-A1-V49-ROLLFORWARD.json",
     "mode": "ON_DEMAND_AUTHENTICATED_CHAT_CONNECTOR_METADATA__NOT_CI_LIVE_PROVIDER_ACCESS",
     "validator": "Tools/reconcile_portfolio_provider_observations_v1.py",
     "byte_hash_automation": false,
-    "promotion_automation": false
+    "promotion_automation": false,
+    "previous_snapshot": "Optimization-Program/Control-Center/Provider-Observations/2026-11-07.json",
+    "active_snapshot_semantics": "HISTORICAL_18_PROVIDER_OBSERVATIONS_PLUS_TWO_A1_V49_SCOPED_OBSERVATIONS_NOT_GLOBAL_LIVE_RESURVEY"
   },
   "byte_evidence_bridge": {
     "as_of": "2026-11-07",
@@ -565,5 +589,15 @@
       "stage6": "BLOCKED",
       "stage7": "NOT_FINAL"
     }
+  },
+  "menschen_a1_v49_selection_receipt": {
+    "date": "2026-11-23",
+    "family_id": "family:menschen-a1",
+    "source_owner": "Workspaces/menschen-a1-final-consolidation-v336/LATEST.json",
+    "source_owner_git_blob": "4e2d84f1b1089ae12b919fd37f702e15b3095318",
+    "verification_receipt": "Workspaces/menschen-a1-final-consolidation-v336/V49-CURRENTNESS-AND-CONTENT-QA-20261122.json",
+    "exact_zip_sha256": "21c14a82972f2b3a42eae0067d0d6b73bee6e4f759d444e47983045e001a158b",
+    "previous_accepted_v48_sha256": "3005b24a8928bee6eab28a3d8c1a8fe13d2c5ff6eb7975d7ed470d822a22ccac",
+    "scope": "METADATA_CAS_ONLY_NO_APP_OR_CARD_MUTATION"
   }
 }

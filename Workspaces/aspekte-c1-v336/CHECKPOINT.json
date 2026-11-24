@@ -15,13 +15,13 @@
   "stage2": "NOT_STARTED",
   "stage3": "NOT_STARTED",
   "stage4": "EDITORIAL_CONTENT_COMPLETE__STAGE5_NOT_APPROVED",
-  "stage5": "BLOCKED_NATIVE_PARSE_IMPORT_NOT_EXECUTED__TRANSPORT_PROBE_PASSED",
+  "stage5": "USER_OBSERVED_PREVIOUS_IMPORT_DISPLAY_DEFECT__R1_PRESENTATION_FUNCTIONS_PASS__R1_IMPORT_UNVERIFIED",
   "stage6": "NOT_STARTED",
   "stage7": "NOT_STARTED",
   "production_authorized": true,
   "library_id": "libfile_2d85ea8f62108191828caac8786c9e91",
   "library_package_sha256": "f853697636340d76f4a789804b68e85a2e784428ec5abbf4e79b02d153bfd4b1",
-  "next_action": "Stage4 251/251 editorial content passes are COMPLETE AND FROZEN; do not reopen. Stage5 has one actual nonmutating 251-row Universal v2 transport probe with exact fields/IDs/source-object equality, but real v507 native parser/import/commit is UNVERIFIED (0 approvals). Next perform exactly ONE bounded GFP-v507-R143 native parser test on exact TSV SHA 008cc3be9863e65cf7184287ea41b0c86483b5b88e6fe89d38c2785725e05d23 in isolated NON-PERSONAL environment, compare IDs, 4 DE/FA/EN examples, five sections, grammar and C1 source custom_fields, then decide whether extra POS/morphology source facts are required. If parser isn't accessible, record precise BLOCKED result and stop; no new Stage4, source card changes, independent review, Stage6 browser or SRS loop. Do not import into user's profile or claim Stage5 approved until actual native evidence.",
+  "next_action": "Use latest R1 replacement TSV, not previous probe. Back up app before updating same IDs; confirm import preview updates existing rather than duplicates. Confirm corrected learner UI and EN example-language mode with user. No Stage4 reopening; full Stage5 approval only after evidence. No deletion or reset of progress. The 251 source cards are frozen.",
   "definition_complete": true,
   "semantic_final": false,
   "portable_checkpoint_current": {
@@ -251,7 +251,8 @@
     "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE4-K01-220-CARDS-POSITIONS201-220-REAL-EDITORIAL-20261123.md",
     "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE4-K01-240-CARDS-POSITIONS221-240-REAL-EDITORIAL-20261123.md",
     "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE4-K01-251-CARDS-POSITIONS241-251-EDITORIAL-TERMINAL-20261123.md",
-    "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE5-K01-251-CARD-UNIVERSAL-V2-TRANSPORT-PROBE-20261123.md"
+    "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE5-K01-251-CARD-UNIVERSAL-V2-TRANSPORT-PROBE-20261123.md",
+    "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE5-K01-251-DISPLAY-FIX-R1-20261124.md"
   ],
   "compound_component_witnesses_scanned": 183,
   "compound_component_targeted_relative_semantic_reviews": 183,
@@ -3522,5 +3523,26 @@
       "readback": "PASS_ALL_251_SOURCE_CARD_JSON_OBJECTS_IDENTICAL_IN_CUSTOM_FIELDS__NOT_NATIVE_IMPORTED"
     }
   },
-  "stage5_approved_cards": 0
+  "stage5_approved_cards": 0,
+  "stage5_latest_display_repair": {
+    "name": "Aspekte-C1-K01-251-CARDS-DISPLAY-FIX-R1.zip",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Content/Aspekte-C1/Checkpoints/Aspekte-C1-K01-251-CARDS-DISPLAY-FIX-R1.zip",
+    "library_file_id": "libfile_3caa80afac0c8191bd68627caa3bd3ee",
+    "sha256": "6ffb0f01352b29202ba195425107d75099b61165771c26398d007d426d91334f",
+    "bytes": 5438486,
+    "members": 139,
+    "tsv_member": "01-Final-Import/Aspekte-C1-Kapitel1-251-CARDS-UNIVERSAL-v2-DISPLAY-FIX-R1.tsv",
+    "tsv_sha256": "d362d05917f51da8dbd71441a70debf86c711b149d3dfbd48c9bf85ba93da9e9",
+    "tsv_bytes": 3702803,
+    "parent_sha256": "ce56b404e39358aeba73b625804b86b2e99973273ee97fb2ba148431e3d8e37b",
+    "status": "PASS_ISOLATED_NATIVE_PRESENTATION_FUNCTIONS_NOT_APP_IMPORT",
+    "source_cards": 251,
+    "examples": 1004,
+    "example_translations": 2008,
+    "relations": 583,
+    "previous_133_members_preserved": true,
+    "user_previous_import_observation": "Screenshot shows Gutenachtkuss rendered, with internal review metadata leak; durable complete import not proven",
+    "r1_user_import_verified": false,
+    "git_report": "Workspaces/aspekte-c1-v336/04-qa/C1-STAGE5-K01-251-DISPLAY-FIX-R1-20261124.md"
+  }
 }

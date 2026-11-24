@@ -80,5 +80,20 @@
     "rule": "For each approved safe mutable edit, modify the current working content in the same turn, run QA on the actual modified content, persist it, and only then report APPLIED; source originals/LOCKED never mutated; absent exact v037 means separate labeled editable source-derived authority and v037 BLOCKED.",
     "no_candidate_only_report_when_writable": true,
     "missing_authority_no_downgrade": true
+  },
+  "user_visible_interim_artifact_policy": {
+    "status": "ACTIVE_USER_DIRECTIVE",
+    "effective_date": "2026-11-24",
+    "applies_to": "ALL_ACTIVE_AND_FUTURE_PROJECTS_AND_WORKSTREAMS__ASPEKTE_B1PLUS_B2_C1__NVV__MENSCHEN__VERBEN__GRAMMAR__VOCABULARY__LESEN__SCHREIBEN__COP__DAEL__GFP_APP_AND_MOBILE",
+    "default_for_continue_or_status": "SILENT_FILE_PERSISTENCE__TEXT_ONLY_HANDOFF__NO_AUTOMATIC_FILE_PREVIEW",
+    "intermediate_report": "Do not include attached/exported TSV, JSON, XLSX, CSV, sandbox download links, file cards, FileNavList or inline spreadsheet/document viewers in routine response. Only short progress, QA, stored checkpoint locator in plain text, remaining work and real blockers.",
+    "persistence": "Continue creating/QA-testing and durably storing working masters, ledgers, reports, exact recoverable checkpoints and Git synchronization exactly as before; no reduction of validation, backup or final delivery contracts.",
+    "exceptions": [
+      "EXPLICIT_USER_REQUEST_TO_SHOW_OR_DOWNLOAD_FILE",
+      "EXPLICIT_ARTIFACT_INSPECTION_REQUEST",
+      "AGREED_FINAL_RELEASE_OR_REQUIRED_FORMAL_HANDOFF"
+    ],
+    "platform_limit": "The ChatGPT UI might open a preview independently; policy controls authored output, not the platform viewer.",
+    "scope_future_sessions": "Existing chats are not broadcast; active agents must reread the updated repository rule on next resume/bootstrap."
   }
 }

@@ -5,10 +5,37 @@
 ## Purpose and authority
 The adjacent `DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json` is the compact **observed, read-only management index** of the curated accepted/usable content per family. It is **not** the new source of truth for a TSV, a semantic acceptance, a release, a Library file, an app runtime, or learner FSRS/SRS. Resolve the live source-owner LATEST/CHECKPOINT, user-approved exact TSV/ZIP, current Library/Drive bytes and app runtime pin independently. A newer accepted user artifact outranks stale Git. The seed records source-reported prior hashes, **not** new independent byte verifications. For Menschen B1, the current selected content is the user-accepted 2026-11-06 complete content ZIP; this still does not confer independent native Stage6 or global Stage7.
 
+## Publication entry point — one transaction (2026-11-24)
+
+The source-owner accepted pointer remains the **only release authority**. For an existing registered family, do not independently hand-edit the owner pointer, portfolio registry and canonical route. Once the owner acceptance decision and exact ZIP are available, use `Tools/publish_accepted_content_v1.py` for the entire publication. It derives the two management mirrors from the proposed owner JSON and native acceptance receipt, checks the exact old owner blob and parent artifact SHA against all three current references, verifies ZIP SHA/CRC, preserves the previous baseline and historical byte observations, and limits the changes to that family. Existing PR/Ruleset checks still apply; this is not acceptance issuance, a runtime gate, or an auto-merge service.
+
+Example for an NVV-style successor (use the actual values from the current Git base; receipt field pointers differ by native producer):
+
+```bash
+python Tools/publish_accepted_content_v1.py \
+  --base EXACT_BASE_COMMIT \
+  --family family:nomen-verb-verbindungen \
+  --expected-parent EXACT_CURRENT_ARCHIVE_SHA256 \
+  --expected-owner-blob EXACT_CURRENT_OWNER_GIT_BLOB \
+  --new-owner /path/to/proposed-owner.json \
+  --receipt-path Workspaces/nomen-verb-verbindungen/NEW-ACCEPTANCE.json \
+  --receipt-file /path/to/native-acceptance.json \
+  --receipt-sha-pointer /release/zip_sha256 \
+  --receipt-name-pointer /release/name \
+  --receipt-cards-pointer /counts/cards \
+  --archive /path/to/exact-approved.zip \
+  --location "verified Library/Drive locator" \
+  --publish-branch content/nvv-next-accepted
+```
+
+No extra user approval document is required: reuse the already-recorded source-owner explicit user acceptance. Use a fresh exact base after checking the remote owner pointer; never use a stale or mismatched base. With `--publish-branch` the tool creates one local commit and a new branch (create-only ref CAS) without touching the current checkout or main; push that branch and use the normal protected PR. Without that flag it emits the full deterministic change set and expected/new Git blobs for a single GitHub tree/commit/ref transaction. Connector callers must use the same base and CAS, not sequential per-file pushes. For owner metadata changes that do not change the selected artifact SHA use `--metadata-only` (no archive or receipt; only the owner file and its derived blob pin change). No new quality or runtime acceptance follows from metadata-only synchronization.
+
+Initial family enrollment, canonical workspace reassignment, and non-user-accepted production evidence are deliberately outside this command; keep their existing reviewed workflows. CI read-only reconciliation continues to detect unauthorized drift, not to manufacture a release from a candidate. Until each native producer invokes this entry point, do not claim universal adapter adoption. Regression tests run in the existing portfolio CI, including a real temporary Git repository and negative parent/receipt/branch-collision cases.
+
 ## Dynamic update contract
 1. On each **new source review, enrichment, released successor, user acceptance, or explicit Control Center audit**, read the active repo bootstraps, central policy registry, project catalog, source-owned LATEST/CHECKPOINT, and its most recent accepted curated TSV/ZIP. Reconcile Library/Drive evidence; flag missing or moved files. An opened chat must re-resolve; old open chats are not updated in real time.
 2. Separate `candidate`, `working`, `user_accepted_with_exceptions`, `content_final` and `runtime_final`. A new ZIP/date alone is **not** a promotion. Verify actual user acceptance or applicable gates, exact SHA, cards, source and stable IDs before updating the selected baseline. Never change another family.
-3. **Compare-and-swap**: record expected immediate parent artifact SHA and Git owner-LATEST blob at the beginning of a change. Before publication re-fetch both; if either changed, **HOLD_CONCURRENT_UPDATE**, reconcile (never overwrite). For a new accepted baseline, append a small promotion receipt with `family_id`, `parent_sha256`, `successor_sha256`, `evidence`, `decision`, `date` and update only that family's entry.
+3. **Compare-and-swap**: record expected immediate parent artifact SHA and Git owner-LATEST blob at the beginning of a change. Before publication re-fetch both; if either changed, **HOLD_CONCURRENT_UPDATE**, reconcile (never overwrite). For a new accepted baseline, reuse the native acceptance receipt and use the atomic publication entry point above; do not manually update duplicate current references.
 4. Measure **delta** from the immediate accepted curated TSV, not the months-old publisher source. Review changed IDs, semantic dependencies and required structural/runtime gates; reuse still-valid evidence for unchanged rows. Never repopulate removed vocabulary for publisher fidelity.
 5. If source Git LATEST is older than an accepted Library/Drive release, show `STALE_OWNER_POINTER`, do not downgrade. If current artifact cannot be verified, `HOLD_AUTHORITY_UNRESOLVED`. Do not substitute original PDFs.
 6. Track content semantic/Stage4, packaged/Stage5, actual app import and persistence/Stage6, content-only Stage7 and **full runtime FINAL independently**. User-reported browser success is not independent native verification.

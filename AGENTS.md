@@ -18,6 +18,17 @@ For every named source project status/resume request, **before** reporting the l
 
 These repo-root rules apply to coding assistants, agents, and ChatGPT sessions working with this repository.
 
+## Quiet interim artifact handoffs — user directive 2026-11-24 (GLOBAL)
+
+**Applies across every Flasch kart workstream, including Aspekte B1+, B2, C1; NVV; Menschen; Verben; Grammar; Vocabulary; Lesen; Schreiben; source ingestion; QA; app/runtime; mobile; COP and DAEL.** It is a **response/presentation rule**, not a change to content files, QA, recovery, validation, release or acceptance gates.
+
+For ordinary status, progress, "ادامه بده" / "continue", lesson/batch completion and agent handoffs: **do not render intermediate artifacts in the assistant reply**. No attached or exported TSV/CSV/XLSX/JSON, no sandbox download links, no file cards/previews, no spreadsheet viewer, no FileNavList, and no embedded artifact widgets that could cause a document to open alongside the chat. Keep working Master/Ledger/QA, source, tests and exact recoverable checkpoints persisted in their existing proper authority (Library/Drive/Git as appropriate), with hash/readback QA unchanged. Reply with brief progress, semantic/technical QA state, durable checkpoint locator **as plain text if useful**, next step and actual blockers.
+
+**Exceptions:** when the user explicitly asks to see/download/export/open a file, when an artifact must be examined together, or when delivering the formal agreed final release/handoff, show exactly the needed artifact(s). Do not suppress mandatory final release or user-requested output. A GitHub PR URL and an ordinary plain-text status are permitted, but avoid linkified file previews when not requested.
+
+This mitigates auto-opening side panes triggered by assistant-file outputs. ChatGPT's app UI may independently open previews; an agent cannot guarantee or control the platform's viewer behavior. This rule does not turn off file creation, persistence, code execution, ordinary QA or final delivery. Existing running conversations do not receive a live broadcast; on their **next bootstrap/resume** apply this same rule without recreating or re-auditing already accepted content.
+
+
 1. First read `PROJECT-BOOTSTRAP.md`, `PROJECT-STATE.json`, `EXECUTION-SAFETY-POLICY.json`, and **`EXECUTION-OUTCOME-EFFICIENCY-POLICY.json`**. When relevant, check both German-Flashcards-Pro and German-Content-Production-Kit repositories before substantial work.
 2. When told **continue / ادامه بده**, continue the current *major* stage or explicitly bounded deliverable. Do not terminate simply after 3–5 card edits, another small QA pass, ZIP, Git commit, or status report. Work through all evidence-supported reviewable items until stage PASS/CLOSED, a concrete BLOCKER, a material conflict, or hard safety/tool boundary. Never fabricate edits to fill a quota.
 3. Report work-item outcomes (reviewed unique / corrected / kept / held / unreviewed) separately from overall Stage completion. Scoped PASS or Git sync does **not** mean Stage4-7 or final release PASS. Use validated outcome receipts at significant milestones: `python Verification/validate_execution_outcome_receipt.py <receipt.json>`.

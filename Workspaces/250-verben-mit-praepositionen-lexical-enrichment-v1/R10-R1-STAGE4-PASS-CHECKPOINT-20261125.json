@@ -1,0 +1,59 @@
+{
+  "schema": "gcpk-vmp-r10-r1-stage4-checkpoint@1",
+  "date": "2026-11-25",
+  "family_id": "family:250-verben-mit-praepositionen",
+  "status": "STAGE4_RISK_GATE_PASS__STAGE5_CENTRAL_TOOLCHAIN_NOT_MATERIALIZED__NONIMPORT",
+  "parent_checkpoint": "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1/R10-R1-DELTA-REVIEW-CHECKPOINT-20261125.json",
+  "accepted_baseline_zip_sha256": "a82bd89329033813e41198cb76199b4a6a0b7c1e8bea0000368dc8a6e560e843",
+  "accepted_baseline_tsv_sha256": "9d7e560d1b437a2e5ec6cf42cd690c32f716ee46788e5ef1c994fe14e23104d0",
+  "accepted_latest_unchanged": true,
+  "working_master": {
+    "library_file_id": "libfile_27ddd37f3ec881918b7d291d0349ea7f",
+    "sha256": "6a7ab2f31c6608d64adcd2da5172b89af59fd8d598a97c505161a3305e5d0b5c",
+    "bytes": 3769013
+  },
+  "ledger": {
+    "library_file_id": "libfile_73a71e3327508191a7a1b35812bdd7fc",
+    "sha256": "96e1ab720415c611673dd6f4861190b85ec79031d67ebc199fb8b8eeec790342"
+  },
+  "stage4_receipt": {
+    "library_file_id": "libfile_ae2fe9aa91b4819185ffc19b578049ea",
+    "file_id": "file_00000000c67c81f492d3f3a3b3dd8f02",
+    "sha256": "de7779c50897105ca6e5dbb4908e6e03398f72e8a6736c8a29ecbf8ccae96d06",
+    "bytes": 331122,
+    "readback": "EXACT_AND_RERUN_PASS"
+  },
+  "stage4_gate": {
+    "status": "PASS_RISK_BASED_STAGE4",
+    "source_sha256": "6a7ab2f31c6608d64adcd2da5172b89af59fd8d598a97c505161a3305e5d0b5c",
+    "blockers": [],
+    "counts": {
+      "risk_ids": 225,
+      "risk_dispositions": 138,
+      "sampled_strata": 4
+    },
+    "gate_git_blob": "b4ddb6c1e1e82e575265641b5c8cf43c6426c4f8",
+    "gate_result_sha256": "9f3d3e819f4819c216d06f487eb1c4b3b7f2c282d2284476fd2316cc5e61128a"
+  },
+  "evidence_scope": {
+    "cards": 292,
+    "changed_cards": 43,
+    "examples": 1168,
+    "combinations": 444,
+    "added_word_family": 28,
+    "added_related_words": 15,
+    "negative_controls": "7/7",
+    "inherited_risk_records": 182,
+    "new_risk_records": 43,
+    "new_graph_representatives": 9,
+    "sampling": "Inherited exact parent stratified plan with dependency reconciliation, not a newly selected full sample; 43 changes separately reviewed.",
+    "historical_noncritical_hold_preserved": true
+  },
+  "neutral_projection": {
+    "status": "PASS",
+    "cards": 292,
+    "validator_git_blob": "b6d27c0b98f44cd8b0ffad325710f24f76da95e1"
+  },
+  "stage5": "NOT_RUN_CENTRAL_BUILDER_DEPENDENCIES_UNAVAILABLE_IN_EXECUTION_ENVIRONMENT",
+  "next": "Materialize complete current central repository toolchain; run exact-source cross-tile review and build_quality_gated_lexical_candidate_v1.py with family ID, retained canonical/map/QA roles, this exact Stage4 receipt. Do not repeat Stage4 or editorial reviews. No release promotion until Stage5 PASS and acceptance."
+}

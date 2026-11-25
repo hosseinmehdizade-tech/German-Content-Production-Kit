@@ -47,6 +47,12 @@ class AcceptedPublicationTests(unittest.TestCase):
             "byte_evidence_bridge": {"receipt": "historical.json"}})
         self.files[pub.CATALOG] = pub.encode(self.catalog)
         self.files[pub.ROUTING] = pub.encode({"families": self.routes})
+        self.files["historical.json"]=pub.encode({"schema":"gfp-opt-curated-portfolio-exact-byte-evidence@1.0.0",
+            "observation_date":"2026-11-07","evidence":[{"family_id":self.family,"artifact_name":"old.zip",
+            "expected_sha256":self.old,"measured_sha256":self.old,"measured_size_bytes":100,
+            "comparison":"PASS_EXACT_SOURCE_ACCEPTED_SHA256","zip_crc_test":"PASS_ALL_MEMBERS"}]})
+        self.files[pub.OBSERVATIONS]=pub.encode({"schema":"gcpk-cop-currentness-observations@1.0.0",
+            "date":"2026-11-07","data_edit_authorized":False,"items":[]})
         buf = io.BytesIO()
         with zipfile.ZipFile(buf, "w") as z:
             z.writestr("Content/test.tsv", "one\ttwo\n")
@@ -61,7 +67,7 @@ class AcceptedPublicationTests(unittest.TestCase):
                        receipt_path=self.receipt_path, receipt_bytes=pub.encode(self.receipt),
                        archive=self.archive, sha_pointer="/release/zip_sha256",
                        name_pointer="/release/name", cards_pointer="/counts/cards",
-                       location="Library fixture")
+                       location="Library fixture", provider="library", observed_as_of="2026-11-25")
 
     def plan(self, **kw):
         return pub.build_plan(self.files.get, **(self.kw | kw))
@@ -70,7 +76,7 @@ class AcceptedPublicationTests(unittest.TestCase):
         snapshot = copy.deepcopy(self.files)
         plan = self.plan()
         result = {f["path"]: f["content"].encode() for f in plan["files"]}
-        self.assertEqual(set(result), {self.owner, self.receipt_path, pub.REGISTRY, pub.ROUTING})
+        self.assertEqual(set(result), {self.owner, self.receipt_path, pub.REGISTRY, pub.ROUTING, pub.OBSERVATIONS})
         self.assertEqual(self.files, snapshot)
         r = pub.obj(result[pub.REGISTRY])
         t = pub.obj(result[pub.ROUTING])
@@ -85,6 +91,30 @@ class AcceptedPublicationTests(unittest.TestCase):
         self.assertEqual(r["items"][0]["active_baseline"]["historical_asof_observation"]["artifact_sha256"],
                          self.old)
         self.assertEqual(r["items"][0]["runtime_stage"], "NO_NEW_INDEPENDENT_RUNTIME_OR_SRS_ATTESTATION")
+        self.assertEqual(r["items"][0]["active_baseline"]["historical_asof_observation"]["observation_date"],"2026-11-07")
+        o=pub.obj(result[pub.OBSERVATIONS])["items"][0]
+        self.assertEqual(o["sha256"],self.sha)
+        self.assertEqual(o["approval_receipt"],self.receipt_path)
+        self.assertEqual(o["observed_as_of"],"2026-11-25")
+
+    def test_missing_provider_observation_rejected(self):
+        with self.assertRaisesRegex(ValueError,"provider and observation date"):
+            self.plan(provider=None)
+
+    def test_historical_pin_must_match_immutable_evidence(self):
+        h=pub.obj(self.files["historical.json"])
+        h["evidence"][0]["measured_sha256"]="f"*64
+        self.files["historical.json"]=pub.encode(h)
+        with self.assertRaisesRegex(ValueError,"historical evidence does not match"):
+            self.plan()
+
+    def test_existing_working_observation_cannot_be_overwritten_by_older_date(self):
+        self.files[pub.OBSERVATIONS]=pub.encode({"schema":"gcpk-cop-currentness-observations@1.0.0",
+            "date":"2026-11-26","data_edit_authorized":False,
+            "items":[{"family_id":self.family,"observed_as_of":"2026-11-26"}]})
+        with self.assertRaisesRegex(ValueError,"predates existing evidence"):
+            self.plan()
+
 
     def test_stale_blob_and_parent_rejected(self):
         for overrides in ({"expected_owner_blob": "f"*40}, {"expected_parent": "f"*64}):
@@ -156,7 +186,7 @@ class AcceptedPublicationTests(unittest.TestCase):
             self.assertEqual(git("status", "--porcelain"), b"")
             self.assertEqual(git("rev-parse", "content/fixture-release").decode().strip(), commit)
             self.assertEqual(set(git("diff", "--name-only", base, commit).decode().splitlines()),
-                             {self.owner, self.receipt_path, pub.REGISTRY, pub.ROUTING})
+                             {self.owner, self.receipt_path, pub.REGISTRY, pub.ROUTING, pub.OBSERVATIONS})
             for f in plan["files"]:
                 self.assertEqual(git("show", commit + ":" + f["path"]), f["content"].encode())
             with self.assertRaises(subprocess.CalledProcessError):

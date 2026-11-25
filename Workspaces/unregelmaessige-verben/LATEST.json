@@ -1,7 +1,7 @@
 {
   "schema": "gcpk-workstream-latest@1.0.0",
   "workstream": "unregelmaessige-verben",
-  "date": "2026-11-17",
+  "date": "2026-11-25",
   "milestone": "R9-M1_METADATA_TITLE_CORRECTED_WORKING_CURRENT_VERIFIED__R8_FINAL_HISTORICAL_UNCHANGED",
   "current_artifact": {
     "name": "Unregelmaessige-Verben-v1.3.1-R8-STAGE7-FINAL-CONTENT-ONLY-2026-11-01.zip",
@@ -30,7 +30,7 @@
   "final": true,
   "library_readback": "PASS_EXACT_BYTE_SHA256_CRC",
   "current_canonical_sha256": "7d00adb69b4ce25c6419fb4d15faacd5813a9a6f7cd546fc9a8d04cf4eb689cf",
-  "next_action": "Drive has only H1 in the UV content project folder. Historical R9 reference preserved by SHA in Git, but the external R9 ZIP was deleted from Drive by user instruction; H1's standalone import remains valid and user need not reimport. No app changes.",
+  "next_action": "Resume R10-P1 Library working checkpoint for Rektion and final bounded delta QA; accepted H1 archive remains unchanged. See R10-P1-REPAIR-CHECKPOINT-20261125.json.",
   "root_state": "OLDER_SUMMARY_MAY_LAG_LOCAL_LATEST",
   "predecessor_stage5_blocked_sha256": "45b4a0e1b1b36264a11146ea8db253fdb45271b4be88743dfb47b914185ba06a",
   "raw_source_images": "7_ORIGINAL_PNG_NOT_AVAILABLE__NOT_PIXEL_REATTESTED",
@@ -282,5 +282,58 @@
     "internal_history_preserved": true
   },
   "cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-OLD-ARTIFACT-CLEANUP-20261117.json",
-  "latest_drive_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-DRIVE-ONLY-FINAL-CLEANUP-20261120.json"
+  "latest_drive_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-DRIVE-ONLY-FINAL-CLEANUP-20261120.json",
+  "latest_repair_working_checkpoint": {
+    "schema": "gcpk-uv-r10-repair-checkpoint@1",
+    "date": "2026-11-25",
+    "status": "WORKING_CHECKPOINT_SCOPED_QA_PASS_NOT_FINAL",
+    "parent": {
+      "version": "R9-M1-H1",
+      "sha256": "1060973570d2045bafd162afc26c8d72dd3cf3165e16da06bf38521e2bac7d8b",
+      "accepted_baseline_unchanged": true
+    },
+    "working": {
+      "version": "R10-P1",
+      "name": "Unregelmaessige-Verben-R10-P1-WORKING-20261125.zip",
+      "library_file_id": "libfile_5bd03610d5588191ab28afdd8f0e4f9b",
+      "path": "/Flasch kart/German-Content-Production-Kit/Content/Unregelmaessige-Verben/Current/Unregelmaessige-Verben-R10-P1-WORKING-20261125.zip",
+      "sha256": "30f48f5ec713c43bfbf82fa5f84c7e6b80db6630f617e9a0543dfac20ca440b6",
+      "bytes": 862350,
+      "library_raw_readback": "PASS_BYTE_EXACT",
+      "master_sha256": "5c88c9dff0c295bfddae6c09e1645fb66bf03744574b9c6220cdb7469343c494",
+      "ledger_sha256": "3a3530e2946e3ec18c1b9e85aab581e23351435a529bdb66c4cb05675732d258",
+      "import_sha256": "d78231c7a9e4fd56175884e83510ac625069e5da067445cd7d63d14a44ce9ccc"
+    },
+    "counts": {
+      "cards": 174,
+      "examples": 696,
+      "relations": 1208,
+      "combinations": 414,
+      "technical_notes_removed_cards": 174,
+      "hinweise_reviewed_cards": 48,
+      "hinweise_before_items": 76,
+      "hinweise_after_items": 45,
+      "variant_items_cleaned": 18,
+      "variant_cards": 16,
+      "examples_replaced": 15,
+      "derivative_annotations_retired": 17,
+      "hidden_qa_note_removed_cards": 1
+    },
+    "qa": {
+      "zip_crc": "PASS",
+      "exact_library_bytes": "PASS",
+      "unified_vocabulary_projection": "PASS_174",
+      "learner_visible_lexical_front": "PASS_174",
+      "example_alignment": "PASS_696",
+      "original_ids_order_front_back_relations_source_preserved": true
+    },
+    "limits": {
+      "not_final": true,
+      "no_new_full_stage4_or_stage5_claim": true,
+      "source_variant_register_not_reverified": true,
+      "installed_browser_not_tested": true,
+      "old_final_unchanged": true
+    },
+    "next": "Review actual Rektion patterns (148 cards have legacy rection) for valid base-lemma and didactic role; use R10-P1 working artifact. Then bounded delta QA and final packaging. No redoing R9 or app changes."
+  }
 }

@@ -3,7 +3,7 @@
 These gates verify controlled contracts and exact evidence bindings, not general
 German linguistic truth. Canonical relations are never deleted or rewritten.
 """
-import argparse, csv, hashlib, io, json, pathlib, copy
+import argparse, csv, hashlib, io, json, pathlib, copy, re
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
@@ -19,8 +19,29 @@ def unique_display(items):
         out.append(value)
     return out
 
-def projection_errors(rows):
+# Exact production-marker families, not a general German-language blacklist.
+# Inspect only explicit learner-facing details, never canonical audit metadata.
+LEARNER_REVIEW_MARKER = re.compile(
+    r'\b(?:Synonym-Grenze|Argument-Rahmen)\s*\(R\d+\)'
+    r'|\bscreenshot-\d+\s+row-\d+\b'
+    r'|\b(?:Originalquelle|Quellenzeile|Lehrwerkszeile|Kurszeile)\b.{0,100}\b(?:belegt|dokumentiert|enthält|formuliert)\b',
+    re.I,
+)
+
+def learner_review_marker_errors(rows):
     errors = []
+    for row in rows:
+        details = row.get('details') or []
+        if isinstance(details, str):
+            details = json.loads(details)
+        for section in details:
+            for index, item in enumerate(section.get('items', [])):
+                if isinstance(item, str) and LEARNER_REVIEW_MARKER.search(item):
+                    errors.append(f'{row.get("id")}: LEARNER_INTERNAL_REVIEW_MARKER:{section.get("title")}:{index}')
+    return errors
+
+def projection_errors(rows):
+    errors = learner_review_marker_errors(rows)
     for row in rows:
         cf = row.get('custom_fields') or row.get('customFields') or {}
         if isinstance(cf, str):
@@ -82,7 +103,19 @@ def self_test():
     assert source_errors(occ,bind)==[]
     bad=copy.deepcopy(occ);bad['occurrences'][0]['raw_text']='fasziniert';assert source_errors(bad,bind)
     bad=copy.deepcopy(occ);bad['occurrences'][0]['locator']['source_order']=71;assert source_errors(bad,bind)
-    return {'status':'PASS','negative_fixtures':6,'positive_sein_and_distinct_scopes':'PASS'}
+    # Learner output vs internal evidence: reject markers without rewriting data.
+    for marker in ['Synonym-Grenze (R23): beide mit Akkusativ',
+                   'Argument-Rahmen (R43): an + Dat.',
+                   'Originalquelle in screenshot-10 row-2 enthält die Kollokation',
+                   'Die Kurszeile ist im Original belegt.']:
+        bad=copy.deepcopy(fixture);bad['details']=[{'title':'Grammatik','items':[marker]}]
+        assert learner_review_marker_errors([bad]) and projection_errors([bad])
+    good=copy.deepcopy(fixture)
+    good['details']=[{'title':'Grammatik','items':['Synonym-Grenze: beide mit Akkusativ','hoffen, dass ...','Modell R2','Rektion: auf + Akkusativ']}]
+    good['custom_fields']['internal_review']='Synonym-Grenze (R23): screenshot-10 row-2'
+    assert not learner_review_marker_errors([good])
+    assert not projection_errors([good])
+    return {'status':'PASS','negative_fixtures':10,'positive_sein_and_distinct_scopes':'PASS','learner_review_marker_positive':'PASS'}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('mode',choices=['projection','source','self-test']);p.add_argument('path',nargs='?');p.add_argument('--binding');p.add_argument('--binding-sha256');p.add_argument('--evidence-root');a=p.parse_args()

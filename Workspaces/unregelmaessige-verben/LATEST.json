@@ -30,7 +30,7 @@
   "final": true,
   "library_readback": "PASS_EXACT_BYTE_SHA256_CRC",
   "current_canonical_sha256": "7d00adb69b4ce25c6419fb4d15faacd5813a9a6f7cd546fc9a8d04cf4eb689cf",
-  "next_action": "Resume R10-P2 for bounded delta QA and final packaging; H1 accepted baseline unchanged.",
+  "next_action": "R10 content repairs complete. User import acceptance of exact R10 artifact pending; H1 accepted archive unchanged. No routine re-audit.",
   "root_state": "OLDER_SUMMARY_MAY_LAG_LOCAL_LATEST",
   "predecessor_stage5_blocked_sha256": "45b4a0e1b1b36264a11146ea8db253fdb45271b4be88743dfb47b914185ba06a",
   "raw_source_images": "7_ORIGINAL_PNG_NOT_AVAILABLE__NOT_PIXEL_REATTESTED",
@@ -286,6 +286,57 @@
   "latest_repair_working_checkpoint": {
     "schema": "gcpk-uv-r10-repair-checkpoint@1",
     "date": "2026-11-25",
+    "status": "IMPORT_READY_CANDIDATE__STATIC_7_OF_7__USER_ACCEPTANCE_PENDING",
+    "parent": {
+      "version": "R10-P2",
+      "sha256": "8fce5717eafd4a0c3568b090610511337615f0583f27d714e82fa21db3366031",
+      "accepted_H1_sha256": "1060973570d2045bafd162afc26c8d72dd3cf3165e16da06bf38521e2bac7d8b"
+    },
+    "working": {
+      "version": "R10",
+      "name": "Unregelmaessige-Verben-R10-IMPORT-READY-20261125.zip",
+      "library_file_id": "libfile_31af7f759c748191932cf069e55c2923",
+      "path": "/Flasch kart/German-Content-Production-Kit/Content/Unregelmaessige-Verben/Current/Unregelmaessige-Verben-R10-IMPORT-READY-20261125.zip",
+      "sha256": "5f042daffc4770667ebc336230323ed02b3a961e179bc00ed0715c52f69a973e",
+      "bytes": 1312831,
+      "library_raw_readback": "PASS_BYTE_EXACT",
+      "master_sha256": "7b529da52ec9fbb0237b0828cc46eabcc30a08e1ec0d6ca5a9b22920ea4f90e2",
+      "canonical_sha256": "7b529da52ec9fbb0237b0828cc46eabcc30a08e1ec0d6ca5a9b22920ea4f90e2",
+      "ledger_sha256": "c0b9fa879f86a334bfb2b5e0ff1e65e964ae258a12d75d0e55bc6dac2caa2ee5",
+      "import_sha256": "067c0963918c59118e1924ecd4bc799ca829034bf454f35a2f9df797a0fcb364"
+    },
+    "counts": {
+      "cards": 174,
+      "examples": 696,
+      "relations": 1208,
+      "combinations": 414,
+      "rektion_cards": 59,
+      "rektion_items": 87,
+      "p3_changed_cards": 25,
+      "p3_example_updates": 4,
+      "variant_review_cards": 18,
+      "package_payloads": 52
+    },
+    "qa": {
+      "official_static_gates": "7/7",
+      "raw_tsv_transport": "PASS_175_LINES_23_COLUMNS_174_VALID_JSON_ROWS",
+      "zip_crc": "PASS",
+      "payload_manifest": "PASS_52",
+      "library_readback": "PASS_BYTE_EXACT",
+      "stable_ids_and_source_graph": "PRESERVED"
+    },
+    "limits": [
+      "R10 changed content requires new user acceptance; H1 remains accepted baseline",
+      "No new whole-dataset Stage4 or native Stage6/7 claim",
+      "Seven original source PNGs unavailable; no fresh dictionary attestation for all relations/Rektion",
+      "App and SRS unchanged",
+      "Central governed publication not claimed"
+    ],
+    "next": "User imports exact R10 TSV and confirms presentation/acceptance; then update accepted final pointer, central governance and retire working copies if authorized. No further routine audit."
+  },
+  "previous_repair_working_checkpoint": {
+    "schema": "gcpk-uv-r10-repair-checkpoint@1",
+    "date": "2026-11-25",
     "status": "WORKING_CHECKPOINT_SCOPED_QA_PASS_NOT_FINAL",
     "parent": {
       "version": "R10-P1",
@@ -330,58 +381,5 @@
       "H1 accepted baseline unchanged"
     ],
     "next": "Bounded delta language QA on modified examples/variants/Rektion, check presentation consistency, then final packaging using applicable official gates. No new review loop."
-  },
-  "previous_repair_working_checkpoint": {
-    "schema": "gcpk-uv-r10-repair-checkpoint@1",
-    "date": "2026-11-25",
-    "status": "WORKING_CHECKPOINT_SCOPED_QA_PASS_NOT_FINAL",
-    "parent": {
-      "version": "R9-M1-H1",
-      "sha256": "1060973570d2045bafd162afc26c8d72dd3cf3165e16da06bf38521e2bac7d8b",
-      "accepted_baseline_unchanged": true
-    },
-    "working": {
-      "version": "R10-P1",
-      "name": "Unregelmaessige-Verben-R10-P1-WORKING-20261125.zip",
-      "library_file_id": "libfile_5bd03610d5588191ab28afdd8f0e4f9b",
-      "path": "/Flasch kart/German-Content-Production-Kit/Content/Unregelmaessige-Verben/Current/Unregelmaessige-Verben-R10-P1-WORKING-20261125.zip",
-      "sha256": "30f48f5ec713c43bfbf82fa5f84c7e6b80db6630f617e9a0543dfac20ca440b6",
-      "bytes": 862350,
-      "library_raw_readback": "PASS_BYTE_EXACT",
-      "master_sha256": "5c88c9dff0c295bfddae6c09e1645fb66bf03744574b9c6220cdb7469343c494",
-      "ledger_sha256": "3a3530e2946e3ec18c1b9e85aab581e23351435a529bdb66c4cb05675732d258",
-      "import_sha256": "d78231c7a9e4fd56175884e83510ac625069e5da067445cd7d63d14a44ce9ccc"
-    },
-    "counts": {
-      "cards": 174,
-      "examples": 696,
-      "relations": 1208,
-      "combinations": 414,
-      "technical_notes_removed_cards": 174,
-      "hinweise_reviewed_cards": 48,
-      "hinweise_before_items": 76,
-      "hinweise_after_items": 45,
-      "variant_items_cleaned": 18,
-      "variant_cards": 16,
-      "examples_replaced": 15,
-      "derivative_annotations_retired": 17,
-      "hidden_qa_note_removed_cards": 1
-    },
-    "qa": {
-      "zip_crc": "PASS",
-      "exact_library_bytes": "PASS",
-      "unified_vocabulary_projection": "PASS_174",
-      "learner_visible_lexical_front": "PASS_174",
-      "example_alignment": "PASS_696",
-      "original_ids_order_front_back_relations_source_preserved": true
-    },
-    "limits": {
-      "not_final": true,
-      "no_new_full_stage4_or_stage5_claim": true,
-      "source_variant_register_not_reverified": true,
-      "installed_browser_not_tested": true,
-      "old_final_unchanged": true
-    },
-    "next": "Review actual Rektion patterns (148 cards have legacy rection) for valid base-lemma and didactic role; use R10-P1 working artifact. Then bounded delta QA and final packaging. No redoing R9 or app changes."
   }
 }

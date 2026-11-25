@@ -72,10 +72,73 @@ def archive_identity(raw):
     return digest, len(raw)
 
 
+
+OBSERVATIONS = "Optimization-Program/Control-Center/COP-CURRENTNESS-OBSERVATIONS-v1.json"
+
+def historical_pin(read, registry, family, prior):
+    """Keep immutable dated byte evidence bound to its own historical artifact."""
+    evidence_path = valid_path(registry["byte_evidence_bridge"]["receipt"])
+    report = obj(read(evidence_path))
+    require(report.get("schema") == "gfp-opt-curated-portfolio-exact-byte-evidence@1.0.0",
+            "historical evidence schema")
+    date = report.get("observation_date")
+    require(isinstance(date,str) and re.fullmatch(r"20\d{2}-\d{2}-\d{2}",date),
+            "historical evidence date missing")
+    stored = prior.get("historical_asof_observation")
+    pin = copy.deepcopy(stored) if stored is not None else {
+        "artifact_name":prior["artifact_name"], "artifact_sha256":prior["artifact_sha256"],
+        "artifact_size_bytes":prior["artifact_size_bytes"], "receipt_path":evidence_path,
+        "observation_date":date,
+    }
+    require(pin.get("receipt_path")==evidence_path and pin.get("observation_date")==date,
+            "historical evidence pointer/date mismatch")
+    entries=[x for x in report["evidence"] if x.get("family_id")==family]
+    require(bool(entries) and all(
+        x.get("artifact_name")==pin.get("artifact_name") and
+        x.get("expected_sha256")==x.get("measured_sha256")==pin.get("artifact_sha256") and
+        x.get("measured_size_bytes")==pin.get("artifact_size_bytes") and
+        x.get("comparison")=="PASS_EXACT_SOURCE_ACCEPTED_SHA256" and
+        x.get("zip_crc_test")=="PASS_ALL_MEMBERS" for x in entries),
+        "historical evidence does not match pinned prior artifact")
+    return pin
+
+def sync_observation(read, family, owner_path, new_owner, *, metadata_only, receipt_path,
+                     sha_pointer, successor, name=None, location=None, provider=None, observed_as_of=None):
+    """Derive existing COP mirror; never invent a provider readback."""
+    raw=read(OBSERVATIONS)
+    require(raw is not None,"COP observation ledger missing")
+    evidence=obj(raw)
+    require(evidence.get("schema")=="gcpk-cop-currentness-observations@1.0.0"
+            and evidence.get("data_edit_authorized") is False,"COP observation schema")
+    items=evidence["items"]
+    rows=[x for x in items if x.get("family_id")==family]
+    require(len(rows)<=1,"duplicate family observation")
+    previous=rows[0] if rows else None
+    if metadata_only:
+        if previous and previous.get("evidence_path")==owner_path:
+            require(json_pointer(obj(new_owner),previous["evidence_json_pointer"])==previous["sha256"],
+                    "metadata edit would invalidate recorded working evidence")
+        return raw,raw
+    require(provider in ("conversation","library","google_drive") and isinstance(observed_as_of,str)
+            and re.fullmatch(r"20\d{2}-\d{2}-\d{2}",observed_as_of),
+            "accepted successor needs explicit provider and observation date")
+    if previous:
+        require(observed_as_of>=previous["observed_as_of"],"new observation predates existing evidence")
+    current={"family_id":family,"kind":"accepted_successor","provider":provider,
+             "observed_as_of":observed_as_of,"name":name,"sha256":successor,
+             "evidence_path":receipt_path,"evidence_json_pointer":sha_pointer,
+             "evidence_scope":"LOCAL_RAW_ZIP_SHA256_AND_CRC__OWNER_ACCEPTANCE__AS_OF_ONLY",
+             "locator":location,"accepted_successor_decision":True,"approval_receipt":receipt_path}
+    if previous: items[items.index(previous)]=current
+    else: items.append(current)
+    evidence["date"]=max(evidence.get("date",observed_as_of),observed_as_of)
+    return raw,encode(evidence)
+
 def build_plan(read, *, family, expected_parent, expected_owner_blob,
                new_owner, receipt_path=None, receipt_bytes=None, archive=None,
                sha_pointer=None, name_pointer=None, cards_pointer=None,
-               status_pointer="/status", location=None, metadata_only=False):
+               status_pointer="/status", location=None, metadata_only=False,
+               provider=None, observed_as_of=None):
     """Pure, fail-closed plan over an immutable base reader (path -> bytes/None).
 
     Native source receipt fields are mapped explicitly; no generic guessed SHA.
@@ -116,6 +179,8 @@ def build_plan(read, *, family, expected_parent, expected_owner_blob,
         require(successor == expected_parent, "metadata-only cannot change accepted artifact")
         require(all(x is None for x in (archive, receipt_path, receipt_bytes)),
                 "metadata-only does not issue new acceptance evidence")
+        sync_observation(read, family, owner_path, new_owner, metadata_only=True,
+                         receipt_path=None,sha_pointer=None,successor=successor)
         # Preserve all selected release details and the canonical route exactly.
     else:
         require(successor != expected_parent, "same artifact: use metadata-only")
@@ -141,13 +206,7 @@ def build_plan(read, *, family, expected_parent, expected_owner_blob,
         prior = copy.deepcopy(prior)
         item["previous_accepted_baseline"] = prior
         # Keep historical byte-audit compatibility; never rewrite a past observation.
-        historical = prior.get("historical_asof_observation")
-        if historical is None:
-            historical = {k: prior[k] for k in
-                          ("artifact_name", "artifact_sha256", "artifact_size_bytes")}
-            historical.update({
-                "receipt_path": registry.get("byte_evidence_bridge", {}).get("receipt"),
-                "note": "Historical baseline; not evidence of the successor."})
+        historical = historical_pin(read,registry,family,prior)
         item["active_baseline"] = {
             "label": "User-accepted content",
             "artifact_name": name,
@@ -172,6 +231,10 @@ def build_plan(read, *, family, expected_parent, expected_owner_blob,
         if existing is None:
             changes[receipt_path], old[receipt_path] = receipt_bytes, None
         changes[ROUTING], old[ROUTING] = encode(routing), route_raw
+        obs_old,obs_new=sync_observation(read,family,owner_path,new_owner,metadata_only=False,
+            receipt_path=receipt_path,sha_pointer=sha_pointer,successor=successor,name=name,
+            location=location,provider=provider,observed_as_of=observed_as_of)
+        changes[OBSERVATIONS],old[OBSERVATIONS]=obs_new,obs_old
     validate_registry(registry, obj(read(CATALOG)))
     changes[REGISTRY], old[REGISTRY] = encode(registry), reg_raw
     return {
@@ -255,6 +318,8 @@ def main(argv=None):
     p.add_argument("--receipt-cards-pointer")
     p.add_argument("--receipt-status-pointer", default="/status")
     p.add_argument("--location")
+    p.add_argument("--provider", choices=("conversation","library","google_drive"))
+    p.add_argument("--observed-as-of", help="Date of actual raw artifact observation (YYYY-MM-DD)")
     p.add_argument("--metadata-only", action="store_true")
     p.add_argument("--publish-branch", help="Optional new local content/ or release/ branch")
     a = p.parse_args(argv)
@@ -268,7 +333,8 @@ def main(argv=None):
                           receipt_bytes=receipt, archive=a.archive.read_bytes() if a.archive else None,
                           sha_pointer=a.receipt_sha_pointer, name_pointer=a.receipt_name_pointer,
                           cards_pointer=a.receipt_cards_pointer, status_pointer=a.receipt_status_pointer,
-                          location=a.location, metadata_only=a.metadata_only)
+                          location=a.location, metadata_only=a.metadata_only,
+                          provider=a.provider, observed_as_of=a.observed_as_of)
         plan["base_commit"] = a.base
         if a.publish_branch:
             commit = publish_branch(a.repo_root, a.base, plan, a.publish_branch)

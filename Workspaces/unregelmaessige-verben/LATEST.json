@@ -30,7 +30,7 @@
   "final": true,
   "library_readback": "PASS_EXACT_BYTE_SHA256_CRC",
   "current_canonical_sha256": "7d00adb69b4ce25c6419fb4d15faacd5813a9a6f7cd546fc9a8d04cf4eb689cf",
-  "next_action": "Resume R10-P1 Library working checkpoint for Rektion and final bounded delta QA; accepted H1 archive remains unchanged. See R10-P1-REPAIR-CHECKPOINT-20261125.json.",
+  "next_action": "Resume R10-P2 for bounded delta QA and final packaging; H1 accepted baseline unchanged.",
   "root_state": "OLDER_SUMMARY_MAY_LAG_LOCAL_LATEST",
   "predecessor_stage5_blocked_sha256": "45b4a0e1b1b36264a11146ea8db253fdb45271b4be88743dfb47b914185ba06a",
   "raw_source_images": "7_ORIGINAL_PNG_NOT_AVAILABLE__NOT_PIXEL_REATTESTED",
@@ -284,6 +284,54 @@
   "cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-OLD-ARTIFACT-CLEANUP-20261117.json",
   "latest_drive_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-DRIVE-ONLY-FINAL-CLEANUP-20261120.json",
   "latest_repair_working_checkpoint": {
+    "schema": "gcpk-uv-r10-repair-checkpoint@1",
+    "date": "2026-11-25",
+    "status": "WORKING_CHECKPOINT_SCOPED_QA_PASS_NOT_FINAL",
+    "parent": {
+      "version": "R10-P1",
+      "sha256": "30f48f5ec713c43bfbf82fa5f84c7e6b80db6630f617e9a0543dfac20ca440b6"
+    },
+    "working": {
+      "version": "R10-P2",
+      "name": "Unregelmaessige-Verben-R10-P2-WORKING-20261125.zip",
+      "library_file_id": "libfile_3b06110c17e48191a2ae70f6f955efac",
+      "sha256": "8fce5717eafd4a0c3568b090610511337615f0583f27d714e82fa21db3366031",
+      "bytes": 871584,
+      "library_raw_readback": "PASS_BYTE_EXACT",
+      "master_sha256": "e42073dc662dbe4e1d8f15a0129e6d6efe24300ee716b23c4d218a6b53722160",
+      "ledger_sha256": "199fddd80598cdcb699c4bdadf34557d5603317828b3f447c5f0e4b880ffb44e",
+      "import_sha256": "ce0af1e8fc156c804e6b9ee98d53a38f25acbeb137f1ffeeb82dc9c0acf579c5"
+    },
+    "counts": {
+      "cards_reviewed": 174,
+      "legacy_rektion_cards": 148,
+      "legacy_rektion_items": 230,
+      "visible_rektion_cards": 61,
+      "visible_rektion_items": 91,
+      "legacy_not_projected_cards": 87,
+      "no_force_cards": 113,
+      "cards": 174,
+      "examples": 696,
+      "relations": 1208,
+      "combinations": 414
+    },
+    "qa": {
+      "serialized_readback": "PASS",
+      "master_canonical_import_rektion_alignment": "PASS_174",
+      "other_card_fields_and_relations": "UNCHANGED",
+      "exact_duplicate_rektion_combination": "ZERO",
+      "neutral_projection": "PASS",
+      "learner_visible_front": "PASS"
+    },
+    "limits": [
+      "AI review, not newly dictionary attested",
+      "17 historical REKTION graph records preserved; no graph promotion",
+      "not full Stage4/5 or new final",
+      "H1 accepted baseline unchanged"
+    ],
+    "next": "Bounded delta language QA on modified examples/variants/Rektion, check presentation consistency, then final packaging using applicable official gates. No new review loop."
+  },
+  "previous_repair_working_checkpoint": {
     "schema": "gcpk-uv-r10-repair-checkpoint@1",
     "date": "2026-11-25",
     "status": "WORKING_CHECKPOINT_SCOPED_QA_PASS_NOT_FINAL",

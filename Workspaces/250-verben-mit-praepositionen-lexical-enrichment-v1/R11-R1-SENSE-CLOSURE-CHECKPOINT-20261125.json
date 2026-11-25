@@ -1,0 +1,51 @@
+{
+  "schema": "gcpk-vmp-r11-r1-checkpoint@1",
+  "date": "2026-11-25",
+  "family_id": "family:250-verben-mit-praepositionen",
+  "status": "EDITORIAL_FIVE_HOLDS_CLOSED__STAGE4_5_PENDING_NONIMPORT",
+  "parent_checkpoint": "Workspaces/250-verben-mit-praepositionen-lexical-enrichment-v1/R11-EXTERNAL-AUDIT-REPAIR-CHECKPOINT-20261125.json",
+  "accepted_baseline_unchanged": true,
+  "working_master": {
+    "library_file_id": "libfile_0b4a56d190f881918ea8a4c6470661ee",
+    "name": "250-Verben-R11-R1-WORKING-MASTER-NONIMPORT.tsv",
+    "sha256": "e01a3247b590101122f4604a6606d996276efce68f009a2566b13623228a60ff",
+    "bytes": 3947953
+  },
+  "ledger": {
+    "library_file_id": "libfile_845b66cac17c8191a1bd6e0d5ad58653",
+    "sha256": "f5ddabac97058bdae49383c23a8903d34430e011a17188aa4198698b488b1aab",
+    "bytes": 16605
+  },
+  "counts": {
+    "cards": 292,
+    "changed_since_r11": 6,
+    "examples_preserved": 1168,
+    "combinations_preserved": 444,
+    "synonyms": 259,
+    "antonyms": 47,
+    "word_family": 208,
+    "related_words": 30
+  },
+  "checks": {
+    "neutral_projection": "PASS_292",
+    "lexical_audit": "PASS_STRUCTURAL_544_ENTRIES_ZERO_BLOCKER_ZERO_ADVISORY",
+    "all_stable_ids_source_examples_and_graph_targets_preserved": true
+  },
+  "sense_decisions": {
+    "kept_with_context": 1,
+    "reclassified_related": 3,
+    "removed_wrong_sense": 1,
+    "new_abmelden_von_usage_note": 1,
+    "dictionary_meaning_checks": 4,
+    "ai_only_decision": 278
+  },
+  "trainer": {
+    "runtime": "Git CURRENT v507-R143 exact ZIP SHA256 2df83709c3b1d8359f796ee12cab4afe5fc28b3eee663516caa57428160ba871",
+    "isolated_resolver_test": "raw neutral TSV cards mapped to card/customFields plus canonical_unit, null structured verb adapter: 201 Verb and 91 Expression yield no forms; this is not a full imported runtime test",
+    "root_cause": "resolver requires pos verb, a separately resolved lemma and explicit principal forms. Expression maps to phrase; governed HF2 nested lemma and vnext morphology not consumed directly. No category migration or app edit.",
+    "scope": "separate runtime follow-up; actual installed version not verified"
+  },
+  "stage4": "NOT_RUN",
+  "stage5": "NOT_RUN",
+  "next": "Run bounded separate-method risk-based Stage4 delta QA on exact R11/R1 gloss/morph/notes/reclassified relations and retained evidence; central Stage5 only if evidence sufficient. Do not reopen the five resolved decisions or repeat old whole-deck work."
+}

@@ -95,7 +95,7 @@
   "latest_scoped_working_candidate": {
     "id": "B16",
     "date": "2026-11-25",
-    "status": "USER_ACCEPTED_B16_IMPORT_AND_DISPLAY__CENTRAL_HF2_ADOPTION_PENDING",
+    "status": "USER_ACCEPTED_B16_PACKAGE_REVERIFIED__CONTENT_EDITING_CLOSED__CENTRAL_ADOPTION_PENDING",
     "parent": "B15",
     "parent_zip_sha256": "28069e6edf1a9327add87c031285dd067dd8a2546130c806742c51e1c7d6f016",
     "library_file_id": "libfile_54b20fdb79d48191b0a1494d27a47aa3",
@@ -124,12 +124,28 @@
       "test_blob": "8cac8dbd06fb44f91e9f5c5f1c5cfe0c77e3d069",
       "negative_controls": "38_OF_38_REJECTED",
       "candidate_and_test_location": "05-QA-Tests/Verification/ inside exact B16 Library ZIP",
-      "global_registry_unchanged": true
+      "global_registry_unchanged": true,
+      "candidate_git_path": "Verification/validate_learner_visible_lexical_front_v1_1_1.py",
+      "test_git_path": "Verification/test_hf2_v1_1_1_candidate.py",
+      "git_blob_readback": "PASS_EXACT_B16_BLOBS",
+      "cross_source_readonly": {
+        "source": "Menschen A1 V49",
+        "source_tsv_sha256": "510f024705b10039537c0e4b3edb11912cecd15cccf7b03142166ea96c0aa5b4",
+        "cards": 2997,
+        "legacy_errors": 1,
+        "candidate_errors": 2,
+        "additional_detection": {
+          "id": "ma1m-lu-1589",
+          "front": "die Nebenkosten, Nebenkosten",
+          "expected": "die Nebenkosten"
+        },
+        "disposition": "No A1 mutation; candidate detects actual repeated plural. Global repin not authorized by A2-only evidence."
+      }
     },
     "library_readback": "EXACT_BYTE_COMPARE_CRC_AND_78_MEMBER_HASHES",
     "stage5": "OFFICIAL_BUILDER_PASS__FULL_PINNED_HF2_GATE_PENDING_ADOPTION",
     "native_stage6": "NOT_RUN",
-    "next": "Preserve exact user-accepted B16; content editing and repeat import checks closed unless concrete defect reported. Central HF2 v1.1.1 adoption and PR merge/final registration are separate governance tasks. Do not create B17 simply for status changes.",
+    "next": "B16 is the user-accepted, exact portable final content handoff. No new content revision, packaging, or repeat review required. Merge owner acceptance and validator candidate via PR; central global HF2 pin adoption remains separate and must not reopen A2.",
     "user_acceptance": {
       "date": "2026-11-25",
       "status": "PASS_USER_REPORTED_IMPORT_AND_DISPLAY",
@@ -137,6 +153,22 @@
       "artifact": "B16",
       "artifact_sha256": "4eba4e92058d75ba19a5d52530be75dd25509775d272ef2f0a5337061ef4f968",
       "evidence": "User confirmation in project conversation following B16 handoff; no independent app instrumentation, exact installed runtime version, persistence or FSRS checks attested."
+    },
+    "final_package_review": {
+      "date": "2026-11-25",
+      "status": "PASS",
+      "members": 79,
+      "verified_member_hashes": 78,
+      "unique_import_tsv": 1,
+      "unique_card_ids": 1778,
+      "examples_per_card": 4,
+      "examples": 7112,
+      "source_memberships": 1829,
+      "history_members": 51,
+      "history_compressed_bytes": 477373,
+      "history_disposition": "Retain version-scoped cumulative QA evidence; no duplicated import or nested archives. Preserve exact user-accepted B16.",
+      "runtime_or_cache_files": 0,
+      "library_readback_exact": true
     }
   },
   "previous_scoped_working_candidate_B11": {
@@ -321,8 +353,10 @@
     "master_sha256": "4faa16bcf35f06d73e5bdcaf40dcad42152ed5c3083fa73520d2c762210ba6d0",
     "cards": 1778,
     "date": "2026-11-25",
-    "status": "USER_ACCEPTED_IMPORT_AND_DISPLAY",
+    "status": "USER_ACCEPTED_IMPORT_AND_DISPLAY__PACKAGE_REVERIFIED__CONTENT_EDITING_CLOSED",
     "formal_global_stage5": "PENDING_PINNED_HF2_ADOPTION",
-    "formal_native_stage6": "USER_REPORT_ONLY_NOT_INDEPENDENTLY_ATTESTED"
+    "formal_native_stage6": "USER_REPORT_ONLY_NOT_INDEPENDENTLY_ATTESTED",
+    "final_package_review": "PASS_78_HASHES_79_MEMBERS_ONE_ACTIVE_IMPORT",
+    "central_validator_candidate_git": "EXACT_BLOBS_PERSISTED_ON_PR_316"
   }
 }

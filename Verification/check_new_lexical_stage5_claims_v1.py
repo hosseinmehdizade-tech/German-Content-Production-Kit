@@ -49,8 +49,8 @@ def promoted(new,old,path):
         # An already-approved pointer can be updated cosmetically without a new
         # release. Any newly pointed source/content/ZIP is a *new* claim.
         identity=("source_sha256","artifact","latest_archive_sha256",
-                  "latest_archive","stage5","release_quality_receipt")
-        return any(new.get(k)!=old.get(k) for k in identity)
+                  "latest_archive","stage5","release_quality_receipt","source_tsv_sha256","current_import_sha256")
+        return any(new.get(k)!=old.get(k) for k in identity) or (new.get("content_release") or {}).get("sha256")!=(old.get("content_release") or {}).get("sha256")
     return False
 def require_exact_release_zip_pins(pointer, governed_zip_sha):
     """Fail closed on an unbound or contradictory new Stage5 publication pointer.
@@ -92,8 +92,94 @@ def workspace_for(path):
     if len(parts)<3 or parts[0]!="Workspaces" or ".." in parts:
         raise ValueError("INVALID_RELEASE_WORKSPACE_PATH")
     return "/".join(parts[:2])
-def release_check(path,new,old,loader,router):
+
+MAINT_STATUS="PASS_CONTENT_ONLY_DISPLAY_DELTA"
+MAINT_ACCEPTED="CONTENT_ONLY_ACCEPTED_DISPLAY_DELTA"
+
+def git_blob_sha(raw):
+    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+
+def maintenance_check(path,new,old,loader,router,base_loader,base_router):
+    """Validate an already-reviewed maintenance receipt, never a fresh Stage5 PASS.
+
+    Proof must already exist on the protected base, byte-identical at head.
+    CI checks its binding, not private archive contents or linguistic truth.
+    """
+    def need(ok,code):
+        if not ok: raise ValueError("DISPLAY_MAINTENANCE_"+code+":"+path)
+    owner=workspace_for(path)
+    need(base_loader is not None and base_router is not None,"BASE_PROOF_REQUIRED")
+    current=[x for x in router["families"] if x.get("canonical_git_workspace")==owner]
+    prior=[x for x in base_router["families"] if x.get("canonical_git_workspace")==owner]
+    need(len(current)==len(prior)==1 and current[0]["family_id"]==prior[0]["family_id"],"CANONICAL_OWNER")
+    family=current[0]; parent=prior[0]["active_content_sha256"]
+    release=new.get("content_release") or {}; stage=new.get("stage5") or {}
+    decision=new.get("display_maintenance_acceptance") or {}
+    previous=(old or {}).get("content_release") or {}
+    digest=release.get("sha256"); tsv=new.get("current_import_sha256")
+    need(all(isinstance(x,str) and re.fullmatch(r"[a-f0-9]{64}",x) for x in (parent,digest,tsv)) and parent!=digest,"HASH_FORMAT")
+    need(previous.get("sha256")==parent and family.get("active_content_sha256")==digest,"PARENT_OR_SELECTED_SHA")
+    need(new.get("family_id")==family["family_id"] and new.get("status","").endswith(MAINT_ACCEPTED)
+         and stage.get("status")==MAINT_STATUS and release.get("acceptance")==MAINT_ACCEPTED
+         and release.get("scope")=="LEARNER_VISIBLE_EXPLANATORY_NOTES_ONLY"
+         and release.get("parent_accepted_content_sha256")==parent
+         and new.get("stage4")=="INHERITED_UNCHANGED_SCOPE_ONLY__DISPLAY_DELTA_REVIEW_PASS"
+         and new.get("source_tsv_sha256")==tsv and new.get("user_import")=="PASS_USER_REPORTED"
+         and new.get("stage6_native")=="NOT_ATTESTED" and new.get("stage7_integrated")=="NOT_ATTESTED"
+         and "release_quality_receipt" not in new,"SCOPE_OR_FALSE_STAGE_CLAIM")
+    need(decision.get("status")==MAINT_ACCEPTED and decision.get("prior_release_sha256")==parent
+         and decision.get("accepted_release_sha256")==digest and decision.get("accepted_import_sha256")==tsv
+         and decision.get("user_import")=="PASS_USER_REPORTED"
+         and decision.get("new_full_stage4_stage5")=="NOT_CLAIMED"
+         and decision.get("native_stage6_stage7")=="NOT_CLAIMED","DECISION_BINDING")
+    receipt=stage.get("receipt_path")
+    need(isinstance(receipt,str) and receipt.startswith(owner+"/") and receipt.endswith(".json")
+         and ".." not in Path(receipt).parts and receipt==decision.get("maintenance_receipt"),"RECEIPT_OWNER")
+    raw=base_loader(receipt)
+    need(raw is not None and loader(receipt)==raw,"PREMERGED_RECEIPT_REQUIRED")
+    need(git_blob_sha(raw)==stage.get("receipt_git_blob")==decision.get("maintenance_receipt_git_blob"),"RECEIPT_BLOB")
+    q=json_obj(raw.decode("utf-8-sig"))
+    need(q.get("schema")=="gcpk-display-delta-maintenance@1" and q.get("status")==MAINT_STATUS
+         and q.get("family_id")==family["family_id"] and q.get("parent_zip_sha256")==parent
+         and q.get("candidate_zip_sha256")==digest and q.get("candidate_import_sha256")==tsv
+         and q.get("parent_import_sha256")==old.get("current_import_sha256")
+         and q.get("user_import")=="PASS_USER_REPORTED" and q.get("new_full_stage4_stage5")=="NOT_CLAIMED"
+         and q.get("prior_stage4_stage5")=="INHERITED_UNCHANGED_SCOPE_ONLY"
+         and q.get("native_stage6_stage7")=="NOT_CLAIMED","RECEIPT_BINDING")
+    tool=base_loader("Verification/verify_display_delta.py")
+    need(tool is not None and git_blob_sha(tool)==q.get("tool_git_blob") and sha(tool)==q.get("tool_sha256"),"REVIEW_TOOL_PIN")
+    review=q.get("review_input") or {}
+    need(all(review.get(k)==q.get(k) for k in ("parent_zip_sha256","candidate_zip_sha256","parent_import_sha256","candidate_import_sha256","user_import"))
+         and review.get("user_import_sha256")==tsv,"REVIEW_BINDING")
+    need(all(type(q.get(k)) is int and q[k]>0 for k in ("cards","changed_cards","changed_items","parent_manifest_checks","candidate_manifest_checks","example_sets"))
+         and type(q.get("unchanged_cards")) is int and q["unchanged_cards"]>=0
+         and q["changed_cards"]+q["unchanged_cards"]==q["cards"]
+         and type(q.get("manual_note_reviews")) is int and 0<=q["manual_note_reviews"]<=q["changed_items"]
+         and isinstance(review.get("manual_decisions"),dict) and len(review["manual_decisions"])==q["manual_note_reviews"]
+         and all(isinstance(v,str) and v.strip() for v in review["manual_decisions"].values()),"REVIEW_COUNTS")
+    tests=q.get("negative_tests") or {}
+    required={"id_change","meaning_change","example_change","metadata_change","unrecorded_details","missing_manual_review","wrong_owner_hash","wrong_user_import"}
+    need(required.issubset(tests) and all(isinstance(tests[k],str) and tests[k].startswith("PASS_REJECTED:") for k in required),"NEGATIVE_TESTS")
+    checkpoint=q.get("source_owner_user_import_receipt")
+    need(isinstance(checkpoint,str) and checkpoint.startswith(owner+"/") and ".." not in Path(checkpoint).parts
+         and checkpoint==new.get("checkpoint"),"USER_RECEIPT_OWNER")
+    b=base_loader(checkpoint); h=loader(checkpoint)
+    need(b is not None and h is not None,"USER_RECEIPT_MISSING")
+    a=json_obj(b.decode("utf-8-sig")); z=json_obj(h.decode("utf-8-sig"))
+    user=a.get("user_field_acceptance") or {}; working=a.get("working_candidate") or {}
+    need(user.get("status")=="PASS_USER_REPORTED" and user.get("delivered_zip_sha256")==digest
+         and user.get("delivered_import_sha256")==tsv and bool(user.get("reported_text_fa"))
+         and working.get("zip_sha256")==digest and working.get("import_sha256")==tsv
+         and working.get("library_id")==release.get("library_id") and working.get("filename")==release.get("filename")
+         and working.get("bytes")==release.get("bytes")
+         and z.get("user_field_acceptance")==user and z.get("working_candidate")==working
+         and z.get("accepted_maintenance_successor")==decision,"USER_OR_PACKAGE_BINDING")
+    return {"path":path,"status":"PASS_DISPLAY_MAINTENANCE_RECEIPT_BOUND","family":family["family_id"],"release_zip_sha256":digest}
+
+def release_check(path,new,old,loader,router,base_loader=None,base_router=None):
     if not promoted(new,old,path):return {"path":path,"status":"NOT_A_NEW_LEXICAL_STAGE5_PROMOTION"}
+    if isinstance(new.get("stage5"),dict) and new["stage5"].get("status")==MAINT_STATUS:
+        return maintenance_check(path,new,old,loader,router,base_loader,base_router)
     owner=workspace_for(path)
     eligible={f["canonical_git_workspace"]:f for f in router["families"]
               if f.get("canonical_git_workspace")}
@@ -150,6 +236,8 @@ def at(root,commit,path):
     except ValueError:return None
 def run(base,head,root=ROOT):
     reg=json_obj((root/ROUTE).read_bytes())
+    base_reg_raw=at(root,base,ROUTE)
+    base_reg=json_obj(base_reg_raw) if base_reg_raw is not None else None
     changed=git(root,"diff","--name-only","--diff-filter=AMR",base,head,"--","Workspaces").decode().splitlines()
     records=[]
     for path in changed:
@@ -165,7 +253,7 @@ def run(base,head,root=ROOT):
         new=json_obj(raw)
         old_raw=at(root,base,path)
         old=json_obj(old_raw) if old_raw is not None else None
-        records.append(release_check(path,new,old,lambda p:at(root,head,p),reg))
+        records.append(release_check(path,new,old,lambda p:at(root,head,p),reg,lambda p:at(root,base,p),base_reg))
     return {"schema":"gcpk-prospective-stage5-claim-guard@1.0.0",
         "checked_changed_json":len(records),
         "new_claims_verified":sum(r["status"].startswith("PASS_") for r in records),

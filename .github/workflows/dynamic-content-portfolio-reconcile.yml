@@ -17,6 +17,8 @@ on:
       - 'Verification/tests/test_portfolio_archive_bytes_v1.py'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
       - 'Tools/reconcile_cop_family_currentness_v1.py'
+      - 'Tools/publish_accepted_content_v1.py'
+      - 'Verification/tests/test_accepted_publication_v1.py'
       - 'Verification/tests/test_cop_family_currentness_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
@@ -37,6 +39,8 @@ on:
       - 'Verification/tests/test_portfolio_archive_bytes_v1.py'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
       - 'Tools/reconcile_cop_family_currentness_v1.py'
+      - 'Tools/publish_accepted_content_v1.py'
+      - 'Verification/tests/test_accepted_publication_v1.py'
       - 'Verification/tests/test_cop_family_currentness_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
@@ -64,6 +68,8 @@ jobs:
           python-version: '3.12'
       - name: Test exact source links, drift/hold, and no-write safeguards
         run: python -B -m unittest discover -s Verification/tests -p test_dynamic_content_portfolio_reconciler_v1.py -v
+      - name: Test existing atomic owner publication and metadata-only synchronization
+        run: python -B -m unittest discover -s Verification/tests -p test_accepted_publication_v1.py -v
       - name: Produce read-only reconciliation (not acceptance or auto-promotion)
         shell: bash
         run: |

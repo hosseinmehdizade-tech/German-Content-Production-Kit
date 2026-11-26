@@ -66,8 +66,8 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
         self.assertFalse(self.receipt.exists())
 
     def test_same_accepted_current_import_tsv_cannot_be_repackaged(self):
-        accepted = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(
-            encoding="utf-8"))["final_content_only_r9_r2"]["source_tsv_sha256"]
+        latest = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(encoding="utf-8"))
+        accepted = vmp.selected_accepted_current(latest)["source_tsv_sha256"]
         self.assertEqual(len(accepted), 64)
         actual_digest = vmp.digest
         def simulate_unchanged_current(path):
@@ -87,13 +87,30 @@ class VMPSourceOwnedAdapterTests(unittest.TestCase):
         latest = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(
             encoding="utf-8"))
         accepted = vmp.selected_accepted_current(latest)["source_tsv_sha256"]
-        self.assertEqual(accepted,
-            "9d7e560d1b437a2e5ec6cf42cd690c32f716ee46788e5ef1c994fe14e23104d0")
+        self.assertEqual(accepted, latest["content_tsv_sha256"])
+        self.assertEqual(vmp.selected_accepted_current(latest)["sha256"],
+                         latest["artifact"]["sha256"])
         self.assertEqual(latest["final_content_only_v18"]["source_tsv_sha256"],
             "d23a5b9865d9e35b7ec24fa4f94fe8d94ee9f65fb990f8da7ffed41c75435191")
         self.assertNotEqual(accepted, sha(self.src / "SYNTHETIC-import.tsv"))
         self.assertEqual(self.check()["status"],
                          "OWNER_AND_SOURCE_PREFLIGHT_PASS_NOT_STAGE5_OR_ADOPTED")
+
+    def test_r11_r2_missing_user_acceptance_fails_closed(self):
+        latest = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(encoding="utf-8"))
+        if latest.get("final_content_only_r11_r2") is None:
+            self.skipTest("R11-R2 not selected in this fixture")
+        latest.pop("user_acceptance_r11_r2", None)
+        with self.assertRaisesRegex(ValueError, "CURRENT_OWNER_CONTENT_STATUS_UNATTESTED"):
+            vmp.selected_accepted_current(latest)
+
+    def test_r11_r2_mismatched_import_hash_fails_closed(self):
+        latest = json.loads((ROOT / vmp.OWNER / "LATEST.json").read_text(encoding="utf-8"))
+        if latest.get("final_content_only_r11_r2") is None:
+            self.skipTest("R11-R2 not selected in this fixture")
+        latest["final_content_only_r11_r2"]["import_sha256"] = "0"*64
+        with self.assertRaisesRegex(ValueError, "CURRENT_OWNER_CONTENT_STATUS_UNATTESTED"):
+            vmp.selected_accepted_current(latest)
 
     def synthetic_central_receipts(self):
         # This is NOT a valid release ZIP; the real central builder verifies

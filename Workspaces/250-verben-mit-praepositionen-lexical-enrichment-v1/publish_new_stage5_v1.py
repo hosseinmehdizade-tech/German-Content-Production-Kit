@@ -42,7 +42,19 @@ def selected_accepted_current(latest: dict) -> dict:
     This adapter protects NEXT successor candidates, never republishes CURRENT.
     """
     status = latest.get("status", "")
-    if status.startswith("FINAL_USER_ACCEPTED_R9_R2_CONTENT_ONLY__"):
+    if status == "FINAL_CONTENT_ONLY__USER_IMPORT_ACCEPTED__STAGE4_5_7_PASS__FULL_NATIVE_STAGE6_UNVERIFIED":
+        chosen = latest.get("final_content_only_r11_r2")
+        acceptance = latest.get("user_acceptance_r11_r2")
+        require(isinstance(chosen, dict) and isinstance(acceptance, dict) and
+                chosen.get("sha256") == latest.get("artifact", {}).get("sha256") and
+                chosen.get("import_sha256") == latest.get("content_tsv_sha256") and
+                acceptance.get("scope") == "USER_REPORTED_IMPORT_AND_DISPLAY_CORRECT" and
+                bool(acceptance.get("statement")) and
+                latest.get("stage4_official_risk_gate") == "PASS_RISK_BASED_STAGE4" and
+                latest.get("stage5_final") == "PASS_EXACT_QUALITY_GATED_CANDIDATE",
+                "CURRENT_OWNER_CONTENT_STATUS_UNATTESTED")
+        chosen = dict(chosen, source_tsv_sha256=chosen.get("import_sha256"))
+    elif status.startswith("FINAL_USER_ACCEPTED_R9_R2_CONTENT_ONLY__"):
         chosen = latest.get("final_content_only_r9_r2")
         require(isinstance(chosen, dict) and
                 chosen.get("sha256") == latest.get("artifact", {}).get("sha256"),

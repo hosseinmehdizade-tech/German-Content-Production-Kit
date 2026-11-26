@@ -121,7 +121,7 @@ def qualifying(doc: dict, path: str, family_id: str) -> list[dict]:
     return found
 
 
-def investigate(root: Path) -> dict:
+def investigate(root: Path, scope: set[str] | None = None) -> dict:
     root = root.resolve()
     reg = load(root / REGISTRY)
     cat = load(root / CATALOG)
@@ -158,6 +158,8 @@ def investigate(root: Path) -> dict:
                 "ignored_unqualified_or_draft_candidates": 0,
                 "unmapped_workspaces": len(unexpected)}
     for fid, entry in sorted(families.items()):
+        if scope is not None and fid not in scope:
+            continue
         selected = entry["active_baseline"]["artifact_sha256"]
         if not SHA256.fullmatch(selected):
             raise ValueError("Bad selected SHA " + fid)
@@ -234,6 +236,8 @@ def investigate(root: Path) -> dict:
         "scope":"CATALOG_MAPPED_PARALLEL_WORKSPACE_POINTER_DOCS__READ_ONLY",
         "all_catalog_workspaces":len(workspaces),
         "portfolio_families":len(families),
+        "guard_family_scope": sorted(scope) if scope is not None else "ALL",
+        "checked_portfolio_families": len(results),
         "counters":counters,
         "unmapped_workspace_names":unexpected,
         "limits":[
@@ -251,6 +255,7 @@ def investigate(root: Path) -> dict:
 def summary(report: dict) -> str:
     lines=["# Parallel Accepted Source Discovery — read-only",
            "", "**Status:** `"+report["status"]+"`",
+           "", "**Guard scope:** `"+str(report["guard_family_scope"])+"`",
            "", "Family | Status | Accepted sibling versions requiring review | Older hints",
            "--- | --- | ---: | ---:"]
     for row in report["families"]:
@@ -269,9 +274,18 @@ def main(argv=None):
     ap.add_argument("--out-dir",type=Path)
     ap.add_argument("--github-summary",action="store_true")
     ap.add_argument("--fail-on-review",action="store_true")
+    ap.add_argument("--base", help="Exact tested Git comparison base")
+    ap.add_argument("--scope-event", action="store_true", help="Use exact PR merge scope; full otherwise")
     args=ap.parse_args(argv)
     try:
-        report=investigate(args.repo_root)
+        scope = None
+        if args.base or args.scope_event:
+            if args.base and args.scope_event:
+                raise ValueError("Choose explicit base or CI scope, not both")
+            from reconcile_cop_family_currentness_v1 import affected_families, ci_comparison_base
+            base = ci_comparison_base(args.repo_root) if args.scope_event else args.base
+            scope = affected_families(args.repo_root, base)
+        report=investigate(args.repo_root, scope)
         if args.out_dir:
             folder=args.out_dir.resolve()
             if folder.is_relative_to(args.repo_root.resolve()):
@@ -284,7 +298,7 @@ def main(argv=None):
                 out.write(summary(report))
         print(json.dumps(report,ensure_ascii=False,indent=2))
         return 2 if args.fail_on_review and report["status"] != "NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED" else 0
-    except (OSError,ValueError,KeyError,TypeError,json.JSONDecodeError) as exc:
+    except (OSError,ValueError,KeyError,TypeError,json.JSONDecodeError,subprocess.CalledProcessError) as exc:
         print(json.dumps({"status":"INVALID_SOURCE_DISCOVERY_HOLD",
                           "reason":type(exc).__name__+": "+str(exc)[:250]}))
         return 2

@@ -193,12 +193,14 @@
       "note": "HF2 remains a normative policy; producer usage must be implemented and tested separately."
     },
     "learner_visible_front_hf2_validator": {
-      "path": "Verification/validate_learner_visible_lexical_front_v1_1_0.py",
-      "blob_sha": "ea67592b68d245ed3069bcd84ac08fc375423e66",
+      "path": "Verification/validate_learner_visible_lexical_front_v1_1_2.py",
+      "blob_sha": "ad50b4242ba3357a1064b7dee51fb403c1f0cda6",
       "scope": "SOURCE_ATTESTED_LEXICAL_FRONT_SEMANTIC_QA",
       "stages": [
         5
-      ]
+      ],
+      "adoption": "PROSPECTIVE_CENTRAL_VALIDATOR__7_REAL_ARTIFACT_COMPARISON__NO_RETROACTIVE_CONTENT_MIGRATION",
+      "note": "v1.1.2 imports immutable v1.1.0 base (blob ea67592b68d245ed3069bcd84ac08fc375423e66); replaces false mismatches for explicit canonical gendered, plural-only, reviewed no-plural and inflected adjective shapes. Source-dependent adapters and governed-expression exceptions remain independently gated. No historical accepted file is reopened."
     },
     "lexical_front_transport_gate": {
       "path": "Verification/validate_lexical_front_projection_transport_v1.py",
@@ -288,5 +290,13 @@
     "legacy_rule_precedence": "MANDATORY_THIRD_PARTY_SIGNATURE_IN_OLD_STAGES_AND_WORKSTREAM_CHECKPOINTS_IS_SUPERSEDED_FOR_ALL_MUTABLE_CURRENT_AND_FUTURE_PRODUCTION__KEEP_HISTORICAL_RECEIPTS_IMMUTABLE",
     "active_regression_guard": "Verification/check_no_external_human_qa_gate_v1.py",
     "first_repaired_consumer": "Workspaces/aspekte-b2-v336/QA/B2-CENTRAL-QUALITY-GATE-v1.py"
+  },
+  "hf2_validator_update_20261125": {
+    "status": "PROSPECTIVE_ON_MERGE",
+    "supersedes_validator": "Verification/validate_learner_visible_lexical_front_v1_1_0.py",
+    "base_dependency_blob": "ea67592b68d245ed3069bcd84ac08fc375423e66",
+    "policy_version_unchanged": true,
+    "receipt": "Optimization-Program/Verification/HF2-V112-REAL-OUTPUT-COMPARISON-20261125.json",
+    "no_retroactive_reaudit": true
   }
 }

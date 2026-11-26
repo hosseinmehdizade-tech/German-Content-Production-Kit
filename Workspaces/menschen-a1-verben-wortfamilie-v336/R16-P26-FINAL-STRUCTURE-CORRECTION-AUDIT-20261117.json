@@ -1,0 +1,67 @@
+{
+  "schema": "gcpk-ma1v-final-structure-correction-audit@1",
+  "date": "2026-11-17",
+  "workstream": "menschen-a1-verben-wortfamilie-v336",
+  "status": "VERIFIED_STRUCTURE_AND_POSTPACKAGE_READBACK__NOT_FORMAL_STAGE4_OR_GLOBAL_APP_STAGE7",
+  "content_version": "R16-P26",
+  "change_class": "PACKAGING_AND_VERIFICATION_ONLY_NO_CARD_CHANGE",
+  "old_handoff": {
+    "filename": "Menschen-A1-Verben-R16-P26-USER-FIELD-ACCEPTED-CONTENT-PRODUCTION-DELIVERY-20261117.zip",
+    "sha256": "84fc679dd32821394e1f1a95567607ee5e351e334f16d207282a2e623841ed14",
+    "library_file_id": "libfile_adf2391f46d481919543b9b74e9b0483",
+    "preserved_immutable": true
+  },
+  "corrected_handoff": {
+    "filename": "Menschen-A1-Verben-R16-P26-CONTENT-DELIVERY-CORRECTED-STRUCTURE-20261117.zip",
+    "sha256": "f1e0c59189af234d652ea71a22b6f86c79e106a2ac1453bbc70de65243ac0b22",
+    "bytes": 2980323,
+    "files": 43,
+    "folders": 8,
+    "verified_manifest_entries": 41,
+    "library_file_id": "libfile_1da8964560a48191a2252339c06c6ba2",
+    "library_path": "/Flasch kart/German-Content-Production-Kit/Current/menschen-a1-verben-wortfamilie-v336/Menschen-A1-Verben-R16-P26-CONTENT-DELIVERY-CORRECTED-STRUCTURE-20261117.zip",
+    "library_readback_sha256": "PASS_EXACT",
+    "library_cleanroom_script": "PASS"
+  },
+  "preserved_payloads": {
+    "current_working_source_zip_sha256": "e2484fe6a3cc5bd7e8359efbe73c77f5a3f341f0a45527c906b82fef9315a431",
+    "master_sha256": "f3032ee41f3b9da1f6f0b8e27f6939fb51dc377c9af30550966b5733fc99991f",
+    "direct_import_tsv_sha256": "328c6f9c3cf37839ba03241bc8816ae9951987a9c8df31860f2141707ece099e",
+    "exact_import_zip_sha256": "8b8be4ae860e644bbbff240c4ce63f4e4093ef6210462e71a85bdcb6c0a9dd01",
+    "cards": 310,
+    "trilingual_example_groups": 1240,
+    "combinations": 2546,
+    "tsv_columns": 23,
+    "tsv_field_values": 7130,
+    "accepted_historical_R10_sha256": "790e7a39f2c814b59e3aceccb7cc7a9658d18b8c0980187c3d7af1370a53cd47"
+  },
+  "defects_corrected": [
+    "Two original content-only test scripts failed standalone because package directory layout differed: replaced root tests with portable runners; source original test preserved under Internal and import original still in nested ZIP",
+    "Recovered six exact prior QA+delta ledgers P20–P25 and the P24 editorial review sidecar, with lineage index; omitted superseded large Masters/TSVs intentionally",
+    "Added exact 310-card source mapping and explicit original source/audio external dependency catalog (275 MP3 filename refs, no actual audio bundled or unverified raw hashes)",
+    "Moved two pre-user-acceptance handoffs to History with explicit supersession note",
+    "Added current checkpoint, exact inventory and manifest proof; all files purpose bound"
+  ],
+  "quality": {
+    "crc": "PASS",
+    "path_security": "PASS_NO_TRAVERSAL_OR_SYMLINKS",
+    "no_extra_unmanifested": "PASS",
+    "manifest_and_sha256sums": "PASS_41_PLUS_2_CONTROL_FILES",
+    "direct_content_verifier": "PASS",
+    "direct_import_verifier": "PASS",
+    "fresh_root_release_verifier": "PASS",
+    "mutation_detection": "PASS_6_OF_6",
+    "library_reextraction": "PASS"
+  },
+  "remaining_external_dependency": "Original licensed source and 275 audio refs are external; raw-source/MP3 fully standalone reconstruction cannot be claimed.",
+  "user_observation": "User stated real import successful and FSRS preserved. No new app import or FSRS change performed in this archive audit.",
+  "stage_boundaries": {
+    "stage4": "FULL_SEMANTIC_NOT_CERTIFIED_PER_PREVIOUS_EXCEPTION",
+    "stage5": "SOURCE_NATIVE_SCOPED_PASS_UNCHANGED",
+    "stage6": "PASS_USER_REPORTED_2026-11-17_UNCHANGED",
+    "stage7_content": "POSTPACKAGE_STRUCTURAL_VERIFIED",
+    "stage7_formal_app": "NOT_PROMOTED"
+  },
+  "next_action": "Use corrected handoff as canonical content-production archive. Do NOT import the outer archive into the app, and do not repeat Stage4/FSRS without an actual regression.",
+  "git_persistence": "PR_BRANCH_PENDING_MAIN_MERGE"
+}

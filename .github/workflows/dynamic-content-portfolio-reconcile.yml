@@ -16,6 +16,10 @@ on:
       - 'Tools/verify_portfolio_archive_bytes_v1.py'
       - 'Verification/tests/test_portfolio_archive_bytes_v1.py'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Tools/reconcile_cop_family_currentness_v1.py'
+      - 'Tools/publish_accepted_content_v1.py'
+      - 'Verification/tests/test_accepted_publication_v1.py'
+      - 'Verification/tests/test_cop_family_currentness_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
   pull_request:
@@ -34,6 +38,10 @@ on:
       - 'Tools/verify_portfolio_archive_bytes_v1.py'
       - 'Verification/tests/test_portfolio_archive_bytes_v1.py'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Tools/reconcile_cop_family_currentness_v1.py'
+      - 'Tools/publish_accepted_content_v1.py'
+      - 'Verification/tests/test_accepted_publication_v1.py'
+      - 'Verification/tests/test_cop_family_currentness_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/dynamic-content-portfolio-reconcile.yml'
   workflow_dispatch:
@@ -54,15 +62,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Test exact source links, drift/hold, and no-write safeguards
         run: python -B -m unittest discover -s Verification/tests -p test_dynamic_content_portfolio_reconciler_v1.py -v
+      - name: Test existing atomic owner publication and metadata-only synchronization
+        run: python -B -m unittest discover -s Verification/tests -p test_accepted_publication_v1.py -v
       - name: Produce read-only reconciliation (not acceptance or auto-promotion)
         shell: bash
         run: |
-          python -B Tools/reconcile_dynamic_content_portfolio_v1.py \
+          python -B Tools/reconcile_dynamic_content_portfolio_v1.py --scope-event \
             --repo-root . \
             --out-dir "$RUNNER_TEMP/dynamic-content-portfolio" \
             --github-summary
@@ -84,7 +95,7 @@ jobs:
       - name: Detect catalog-mapped parallel accepted sources (no auto-promotion)
         shell: bash
         run: |
-          python -B Tools/discover_parallel_accepted_sources_v1.py \
+          python -B Tools/discover_parallel_accepted_sources_v1.py --scope-event \
             --repo-root . \
             --out-dir "$RUNNER_TEMP/dynamic-content-portfolio" \
             --github-summary

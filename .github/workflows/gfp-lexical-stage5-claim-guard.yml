@@ -51,11 +51,22 @@ jobs:
         shell: bash
         env:
           PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
           EVENT_NAME: ${{ github.event_name }}
           PUSH_BEFORE: ${{ github.event.before }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
-            BASE="$PR_BASE"
+            # Match the required gate: compare the tree actually being tested.
+            read -r -a PARENTS <<< "$(git rev-list --parents -n 1 HEAD)"
+            if [ "${#PARENTS[@]}" -ne 3 ] || [ "${PARENTS[2]}" != "$PR_HEAD" ]; then
+              echo "Expected the exact GitHub PR merge commit" >&2
+              exit 2
+            fi
+            BASE="${PARENTS[1]}"
+            if ! [[ "$PR_BASE" =~ ^[0-9a-f]{40}$ ]] || ! git merge-base --is-ancestor "$PR_BASE" "$BASE"; then
+              echo "Tested merge base is not descended from event base; refresh PR" >&2
+              exit 2
+            fi
           else
             BASE="$PUSH_BEFORE"
             if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then

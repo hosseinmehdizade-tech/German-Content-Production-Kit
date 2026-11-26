@@ -239,7 +239,86 @@ class FullGitRangeRegressionTests(unittest.TestCase):
         self.assertIn("EVENT_NAME: "+"${{ github.event_name }}",y)
         self.assertIn("PUSH_BEFORE: "+"${{ github.event.before }}",y)
         self.assertIn('BASE="$PUSH_BEFORE"',y)
-        self.assertIn('BASE="$PR_BASE"',y)
+        self.assertIn("PR_HEAD: "+"${{ github.event.pull_request.head.sha }}",y)
+        self.assertIn('BASE="${PARENTS[1]}"',y)
+        self.assertIn('"${PARENTS[2]}" != "$PR_HEAD"',y)
+        self.assertIn('git merge-base --is-ancestor "$PR_BASE" "$BASE"',y)
+        self.assertNotIn('BASE="$PR_BASE"',y)
         self.assertNotIn("BAD_${{ github.event_name }}",y)
+
+
+class DisplayMaintenanceTests(unittest.TestCase):
+    def setUp(self):
+        from check_new_lexical_stage5_claims_v1 import git_blob_sha
+        self.owner="Workspaces/test-maintenance"
+        self.path=self.owner+"/LATEST.json"
+        self.proof=self.owner+"/MAINTENANCE.json"
+        self.checkpoint=self.owner+"/USER.json"
+        self.parent="1"*64; self.parent_tsv="2"*64
+        self.zip="3"*64; self.tsv="4"*64
+        self.tool=b"verified maintenance tool fixture"
+        self.family="family:test-maintenance"
+        self.old={"current_import_sha256":self.parent_tsv,"content_release":{"sha256":self.parent},"stage5":"PASS"}
+        self.router={"families":[{"family_id":self.family,"canonical_git_workspace":self.owner,"active_content_sha256":self.zip}]}
+        self.base_router={"families":[{**self.router["families"][0],"active_content_sha256":self.parent}]}
+        self.review={"parent_zip_sha256":self.parent,"candidate_zip_sha256":self.zip,
+                     "parent_import_sha256":self.parent_tsv,"candidate_import_sha256":self.tsv,
+                     "user_import_sha256":self.tsv,"user_import":"PASS_USER_REPORTED","manual_decisions":{"example":"Provenance-only edit"}}
+        self.q={"schema":"gcpk-display-delta-maintenance@1","status":"PASS_CONTENT_ONLY_DISPLAY_DELTA",
+                "family_id":self.family,**{k:v for k,v in self.review.items() if k!="manual_decisions"},
+                "review_input":self.review,"tool_git_blob":git_blob_sha(self.tool),"tool_sha256":sha(self.tool),
+                "cards":2,"changed_cards":1,"unchanged_cards":1,"changed_items":1,"manual_note_reviews":1,
+                "parent_manifest_checks":2,"candidate_manifest_checks":2,"example_sets":8,
+                "new_full_stage4_stage5":"NOT_CLAIMED","prior_stage4_stage5":"INHERITED_UNCHANGED_SCOPE_ONLY",
+                "native_stage6_stage7":"NOT_CLAIMED","source_owner_user_import_receipt":self.checkpoint,
+                "negative_tests":{k:"PASS_REJECTED: test" for k in ("id_change","meaning_change","example_change",
+                "metadata_change","unrecorded_details","missing_manual_review","wrong_owner_hash","wrong_user_import")}}
+        self.working={"zip_sha256":self.zip,"import_sha256":self.tsv,"library_id":"library-fixture","filename":"fixture.zip","bytes":100}
+        self.user={"status":"PASS_USER_REPORTED","delivered_zip_sha256":self.zip,"delivered_import_sha256":self.tsv,"reported_text_fa":"import OK"}
+        self.base_checkpoint={"working_candidate":self.working,"user_field_acceptance":self.user}
+        self.base={self.proof:json.dumps(self.q).encode(),self.checkpoint:json.dumps(self.base_checkpoint).encode(),
+                   "Verification/verify_display_delta.py":self.tool}
+        pin=git_blob_sha(self.base[self.proof])
+        self.decision={"status":"CONTENT_ONLY_ACCEPTED_DISPLAY_DELTA","prior_release_sha256":self.parent,
+                       "accepted_release_sha256":self.zip,"accepted_import_sha256":self.tsv,"user_import":"PASS_USER_REPORTED",
+                       "new_full_stage4_stage5":"NOT_CLAIMED","native_stage6_stage7":"NOT_CLAIMED",
+                       "maintenance_receipt":self.proof,"maintenance_receipt_git_blob":pin}
+        self.new={"family_id":self.family,"status":"CONTENT_ONLY_ACCEPTED_DISPLAY_DELTA","checkpoint":self.checkpoint,
+                  "stage4":"INHERITED_UNCHANGED_SCOPE_ONLY__DISPLAY_DELTA_REVIEW_PASS",
+                  "stage5":{"status":"PASS_CONTENT_ONLY_DISPLAY_DELTA","receipt_path":self.proof,"receipt_git_blob":pin},
+                  "content_release":{"sha256":self.zip,"acceptance":"CONTENT_ONLY_ACCEPTED_DISPLAY_DELTA",
+                  "scope":"LEARNER_VISIBLE_EXPLANATORY_NOTES_ONLY","parent_accepted_content_sha256":self.parent,
+                  "filename":"fixture.zip","library_id":"library-fixture","bytes":100},
+                  "display_maintenance_acceptance":self.decision,"current_import_sha256":self.tsv,"source_tsv_sha256":self.tsv,
+                  "user_import":"PASS_USER_REPORTED","stage6_native":"NOT_ATTESTED","stage7_integrated":"NOT_ATTESTED"}
+        self.head=dict(self.base)
+        self.head[self.checkpoint]=json.dumps({**self.base_checkpoint,"accepted_maintenance_successor":self.decision}).encode()
+
+    def check(self):
+        return release_check(self.path,self.new,self.old,self.head.get,self.router,self.base.get,self.base_router)
+    def test_premerged_exact_maintenance_receipt_accepted(self):
+        self.assertEqual(self.check()["status"],"PASS_DISPLAY_MAINTENANCE_RECEIPT_BOUND")
+    def test_self_issued_same_pr_proof_rejected(self):
+        del self.base[self.proof]
+        with self.assertRaisesRegex(ValueError,"PREMERGED_RECEIPT_REQUIRED"): self.check()
+    def test_tampered_receipt_rejected(self):
+        self.head[self.proof]+=b" "
+        with self.assertRaisesRegex(ValueError,"PREMERGED_RECEIPT_REQUIRED"): self.check()
+    def test_wrong_current_parent_rejected(self):
+        self.base_router["families"][0]["active_content_sha256"]="9"*64
+        with self.assertRaisesRegex(ValueError,"PARENT_OR_SELECTED_SHA"): self.check()
+    def test_wrong_candidate_tsv_rejected(self):
+        self.new["source_tsv_sha256"]="9"*64
+        with self.assertRaisesRegex(ValueError,"SCOPE_OR_FALSE_STAGE_CLAIM"): self.check()
+    def test_missing_user_approval_rejected(self):
+        del self.base[self.checkpoint]
+        with self.assertRaisesRegex(ValueError,"USER_RECEIPT_MISSING"): self.check()
+    def test_fresh_full_stage4_claim_rejected(self):
+        self.new["stage4"]="PASS"
+        with self.assertRaisesRegex(ValueError,"SCOPE_OR_FALSE_STAGE_CLAIM"): self.check()
+    def test_content_release_digest_change_is_detected(self):
+        old={"stage5":"PASS","content_release":{"sha256":self.parent}}
+        new={"stage5":"PASS","content_release":{"sha256":self.zip}}
+        self.assertTrue(promoted(new,old,self.path))
 
 if __name__=="__main__":unittest.main()

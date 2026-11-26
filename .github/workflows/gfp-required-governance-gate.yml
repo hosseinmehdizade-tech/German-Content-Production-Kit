@@ -44,10 +44,22 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
           PUSH_BEFORE: ${{ github.event.before }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
-            BASE="$PR_BASE"
+            # checkout uses GitHub's tested synthetic merge, not the source branch.
+            # Its first parent is the base actually present in the tested tree.
+            read -r -a PARENTS <<< "$(git rev-list --parents -n 1 HEAD)"
+            if [ "${#PARENTS[@]}" -ne 3 ] || [ "${PARENTS[2]}" != "$PR_HEAD" ]; then
+              echo "Expected the exact GitHub PR merge commit" >&2
+              exit 2
+            fi
+            BASE="${PARENTS[1]}"
+            if ! [[ "$PR_BASE" =~ ^[0-9a-f]{40}$ ]] || ! git merge-base --is-ancestor "$PR_BASE" "$BASE"; then
+              echo "Tested merge base is not descended from event base; refresh PR" >&2
+              exit 2
+            fi
           elif [ "$EVENT_NAME" = "push" ]; then
             BASE="$PUSH_BEFORE"
           else

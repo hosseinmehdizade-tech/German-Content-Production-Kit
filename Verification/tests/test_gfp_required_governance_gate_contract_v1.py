@@ -1,6 +1,10 @@
 """Stable required CI job contract; no source content, ZIP or release writes."""
 from __future__ import annotations
+import os
 import re
+import shutil
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -39,6 +43,9 @@ def problems(source: str) -> list[str]:
         errors.append("EXACT_BASE_OR_TOKEN_HARDENING_MISSING")
     if "github.event.pull_request.base.sha" not in source or "github.event.before" not in source:
         errors.append("FULL_COMPARISON_RANGE_MISSING")
+    if ('BASE="${PARENTS[1]}"' not in source or '"${PARENTS[2]}" != "$PR_HEAD"' not in source
+            or 'git merge-base --is-ancestor "$PR_BASE" "$BASE"' not in source):
+        errors.append("ACTUAL_TESTED_MERGE_BASE_NOT_PROVEN")
     if 'git cat-file -e "$BASE^{commit}"' not in source:
         errors.append("MISSING_BASE_OBJECT_NOT_REJECTED")
     if "continue-on-error:" in source:
@@ -81,6 +88,48 @@ class RequiredGovernanceGateContractTests(unittest.TestCase):
     def test_duplicate_status_test_can_run_only_on_merge_range(self):
         text = self.source.replace("github.event.pull_request.base.sha","github.sha")
         self.assertIn("FULL_COMPARISON_RANGE_MISSING",problems(text))
+
+    @unittest.skipUnless(shutil.which("git") and shutil.which("bash"), "Git and Bash required")
+    def test_stale_event_base_does_not_replay_unrelated_family(self):
+        """Execute both workflow PR base selectors against a real synthetic merge."""
+        workflows = [WORKFLOW, ROOT / ".github/workflows/gfp-lexical-stage5-claim-guard.yml"]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            def git(*args):
+                return subprocess.check_output(["git", "-C", directory, *args], text=True, stderr=subprocess.STDOUT).strip()
+            git("init", "-b", "main")
+            git("config", "user.name", "Regression")
+            git("config", "user.email", "regression@example.invalid")
+            (root / "initial").write_text("initial")
+            git("add", ".")
+            git("commit", "-m", "original base")
+            old_base = git("rev-parse", "HEAD")
+            git("checkout", "-b", "a1")
+            (root / "A1.json").write_text("{}")
+            git("add", ".")
+            git("commit", "-m", "A1 change")
+            head = git("rev-parse", "HEAD")
+            git("checkout", "main")
+            (root / "A2.json").write_text("{}")
+            git("add", ".")
+            git("commit", "-m", "unrelated A2 maintenance")
+            actual_base = git("rev-parse", "HEAD")
+            git("merge", "--no-ff", "a1", "-m", "GitHub synthetic merge")
+            self.assertEqual(git("diff", "--name-only", old_base, "HEAD").splitlines(), ["A1.json", "A2.json"])
+            for workflow in workflows:
+                with self.subTest(workflow=workflow.name):
+                    source = workflow.read_text(encoding="utf-8")
+                    match = re.search(r'(?ms)^          if \[ "\$EVENT_NAME" = "pull_request" \]; then\n(.*?)(?=^          (?:elif|else)\b)', source)
+                    self.assertIsNotNone(match)
+                    script = match.group(1) + '\nprintf "%s\\n" "$BASE"\n'
+                    env = dict(os.environ, PR_BASE=old_base, PR_HEAD=head)
+                    run = subprocess.run(["bash", "-e", "-c", script], cwd=root, env=env, text=True, capture_output=True)
+                    self.assertEqual(run.returncode, 0, run.stderr)
+                    self.assertEqual(run.stdout.strip(), actual_base)
+                    self.assertEqual(git("diff", "--name-only", run.stdout.strip(), "HEAD"), "A1.json")
+                    env["PR_HEAD"] = old_base
+                    rejected = subprocess.run(["bash", "-e", "-c", script], cwd=root, env=env, text=True, capture_output=True)
+                    self.assertNotEqual(rejected.returncode, 0)
 
 if __name__ == "__main__":
     unittest.main()

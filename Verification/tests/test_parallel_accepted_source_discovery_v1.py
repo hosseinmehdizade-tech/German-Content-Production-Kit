@@ -185,5 +185,16 @@ class ParallelDiscoveryTests(unittest.TestCase):
         self.assertFalse((self.root/"bad-output").exists())
 
 
+    def test_scoped_discovery_keeps_local_blocker_and_does_not_scan_other_families(self):
+        self.add_sibling()
+        local = m.investigate(self.root, {"family:test-0"})
+        self.assertEqual(local["status"], "REVIEW_PARALLEL_ACCEPTED_SOURCE")
+        other = m.investigate(self.root, {"family:test-1"})
+        self.assertEqual(other["status"], "NO_QUALIFIED_NEWER_ACCEPTED_SOURCE_OBSERVED")
+        self.assertEqual(other["guard_family_scope"], ["family:test-1"])
+        self.assertEqual(other["checked_portfolio_families"], 1)
+        self.assertEqual(m.investigate(self.root)["status"], "REVIEW_PARALLEL_ACCEPTED_SOURCE")
+
+
 if __name__=="__main__":
     unittest.main()

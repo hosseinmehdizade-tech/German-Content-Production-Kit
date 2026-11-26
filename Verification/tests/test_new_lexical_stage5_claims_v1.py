@@ -239,7 +239,11 @@ class FullGitRangeRegressionTests(unittest.TestCase):
         self.assertIn("EVENT_NAME: "+"${{ github.event_name }}",y)
         self.assertIn("PUSH_BEFORE: "+"${{ github.event.before }}",y)
         self.assertIn('BASE="$PUSH_BEFORE"',y)
-        self.assertIn('BASE="$PR_BASE"',y)
+        self.assertIn("PR_HEAD: "+"${{ github.event.pull_request.head.sha }}",y)
+        self.assertIn('BASE="${PARENTS[1]}"',y)
+        self.assertIn('"${PARENTS[2]}" != "$PR_HEAD"',y)
+        self.assertIn('git merge-base --is-ancestor "$PR_BASE" "$BASE"',y)
+        self.assertNotIn('BASE="$PR_BASE"',y)
         self.assertNotIn("BAD_${{ github.event_name }}",y)
 
 

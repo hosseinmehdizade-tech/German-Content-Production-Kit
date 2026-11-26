@@ -77,6 +77,111 @@ def pointer(obj: dict, route: str):
     return out
 
 
+def git_exact(root: Path, *args: str) -> bytes:
+    return subprocess.check_output(["git", "-C", str(root), *args], stderr=subprocess.PIPE)
+
+
+def ci_comparison_base(root: Path) -> str | None:
+    """PR: use the base actually merged into the checked-out synthetic commit.
+
+    On push/manual/local runs retain the full portfolio audit. Never use a
+    stale event base as the diff endpoint, or assume a source-only checkout.
+    """
+    if os.environ.get("GITHUB_EVENT_NAME") != "pull_request":
+        return None
+    event_path = os.environ.get("GITHUB_EVENT_PATH")
+    if not event_path:
+        raise ValueError("Missing PR event for scoped comparison")
+    event = json.loads(Path(event_path).read_text(encoding="utf-8"))
+    pr = event["pull_request"]
+    old, head = pr["base"]["sha"], pr["head"]["sha"]
+    parents = git_exact(root, "rev-list", "--parents", "-n", "1", "HEAD").decode().split()
+    if (not BLOB.fullmatch(old) or not BLOB.fullmatch(head)
+            or len(parents) != 3 or parents[2] != head):
+        raise ValueError("Expected exact GitHub PR merge commit")
+    actual = parents[1]
+    if subprocess.run(["git", "-C", str(root), "merge-base", "--is-ancestor", old, actual],
+                      capture_output=True).returncode != 0:
+        raise ValueError("Tested merge base is not descended from event base")
+    return actual
+
+
+def affected_families(root: Path, base: str | None) -> set[str] | None:
+    """None = shared/unknown change: run the full guard.
+
+    For a workspace-only delta, scope by the existing catalog (not inferred
+    slugs). For the three central indexes, allow ONLY family-row changes with
+    all other top-level fields identical. Unknown paths/identity/shape changes
+    conservatively use the full guard. Keep all global structural validation.
+    """
+    if base is None:
+        return None
+    if not BLOB.fullmatch(base):
+        raise ValueError("Expected exact comparison base commit SHA")
+    root = root.resolve()
+    if git_exact(root, "rev-parse", base + "^{commit}").decode().strip() != base:
+        raise ValueError("Comparison base is not an exact commit")
+    if subprocess.run(["git", "-C", str(root), "merge-base", "--is-ancestor", base, "HEAD"],
+                      capture_output=True).returncode != 0:
+        raise ValueError("Comparison base is not an ancestor of tested HEAD")
+
+    def at(ref, path):
+        return json.loads(git_exact(root, "show", ref + ":" + path))
+
+    paths = git_exact(root, "diff", "--name-only", "--no-renames", "-z", base, "HEAD").decode("utf-8").split("\0")
+    paths = [p for p in paths if p]
+    catalog = at("HEAD", CATALOG)
+    families = {item["id"] for item in catalog["families"]}
+    workspace_map = {row["git_dir"]: row["parent_family_id"] for row in catalog["workspaces"]}
+    if (len(workspace_map) != len(catalog["workspaces"]) or not set(workspace_map.values()) <= families):
+        return None
+
+    def owner_of(path):
+        if not isinstance(path, str):
+            return None
+        parts = path.split("/")
+        if len(parts) < 3 or any(x in ("", ".", "..") for x in parts) or "\\" in path:
+            return None
+        return workspace_map.get("/".join(parts[:2]))
+
+    tables = {PORTFOLIO: ("items", "id"), ROUTING: ("families", "family_id"),
+              OBSERVATIONS: ("items", "family_id")}
+    selected = set()
+    for path in paths:
+        fid = owner_of(path)
+        if fid:
+            selected.add(fid)
+            continue
+        if path not in tables:
+            return None
+        key, identity = tables[path]
+        old, new = at(base, path), at("HEAD", path)
+        if {k:v for k,v in old.items() if k != key} != {k:v for k,v in new.items() if k != key}:
+            return None
+        prior, current = old[key], new[key]
+        a, b = ({r[identity]: r for r in rows} for rows in (prior, current))
+        if (len(a) != len(prior) or len(b) != len(current) or not (set(a) | set(b)) <= families):
+            return None
+        if path != OBSERVATIONS and set(a) != set(b):
+            return None
+        selected.update(fid for fid in set(a) | set(b) if a.get(fid) != b.get(fid))
+
+    # Cross-family or non-workspace evidence references are conservatively
+    # full-scope: never skip a dependent family because only its source changed.
+    for ref in (base, "HEAD"):
+        for item in at(ref, PORTFOLIO)["items"]:
+            if owner_of(item["owner_locator"]["path"]) != item["id"]:
+                return None
+        for item in at(ref, OBSERVATIONS)["items"]:
+            if owner_of(item["evidence_path"]) != item["family_id"]:
+                return None
+    return selected
+
+
+def blockers_in_scope(report: dict, scope: set[str] | None) -> list[str]:
+    return [fid for fid in report["blocking_families"] if scope is None or fid in scope]
+
+
 def inspect(root: Path, observations: str = OBSERVATIONS) -> dict:
     root = root.resolve()
     catalog = read_json(root, CATALOG)
@@ -235,10 +340,17 @@ def main(argv=None) -> int:
     ap.add_argument("--out-dir", type=Path)
     ap.add_argument("--github-summary", action="store_true")
     ap.add_argument("--fail-on-drift", action="store_true")
+    ap.add_argument("--base", help="Exact tested Git base; shared changes retain full audit")
+    ap.add_argument("--scope-event", action="store_true", help="Derive PR scope from tested merge; full otherwise")
     args = ap.parse_args(argv)
     try:
         root = args.repo_root.resolve()
+        if args.base and args.scope_event:
+            raise ValueError("Choose explicit base or CI scope, not both")
+        scope = affected_families(root, ci_comparison_base(root) if args.scope_event else args.base)
         result = inspect(root, args.observations)
+        result["blocking_families_in_scope"] = blockers_in_scope(result, scope)
+        result["guard_family_scope"] = sorted(scope) if scope is not None else "ALL"
         if args.out_dir:
             dest = args.out_dir.resolve()
             if dest.is_relative_to(root):
@@ -251,8 +363,8 @@ def main(argv=None) -> int:
             with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fp:
                 fp.write(markdown(result))
         print(json.dumps(result, ensure_ascii=False, indent=2))
-        return 2 if args.fail_on_drift and result["blocking_families"] else 0
-    except (ValueError, OSError, TypeError, KeyError, json.JSONDecodeError) as exc:
+        return 2 if args.fail_on_drift and result["blocking_families_in_scope"] else 0
+    except (ValueError, OSError, TypeError, KeyError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
         print(json.dumps({"status": "CURRENTNESS_INPUT_HOLD",
                           "reason": type(exc).__name__ + ": " + str(exc)[:380]}))
         return 2

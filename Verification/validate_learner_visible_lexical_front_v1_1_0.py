@@ -49,8 +49,45 @@ def closure(core,morph,key):
         v=norm(src.get(key+'_status') if isinstance(src,dict) else '').upper()
         if v in CLOSURES:return v
     return ''
+
+def normalized_legacy_noun_headword(row,cf,unit,headword):
+    """Fail-closed reading of legacy complete noun headwords; never change source.
+
+    Exactly matches article, lemma and plural already visible on front to the
+    recorded canonical core or legacy vnext morphology. Does NOT supply missing
+    plurals, override semantically distinct forms, or approve missing metadata.
+    """
+    headword=norm(headword);front=norm(row.get('front'))
+    if front.count(', ')!=1:return headword
+    singular,plural=front.split(', ',1)
+    if not plural or ',' in plural or ' ' not in singular:return headword
+    article,lemma=singular.split(' ',1)
+    if article not in ARTICLES or not lemma or lemma.startswith(('der ','die ','das ')):
+        return headword
+    core=unit.get('core',{}) if isinstance(unit.get('core'),dict) else {}
+    morph=cf.get('vnext_morphology',{}) if isinstance(cf.get('vnext_morphology'),dict) else {}
+    for src in (core,morph):
+        if any(k in src for k in ('singular_forms','person_forms','thing_forms')):
+            return headword
+        if norm(src.get('article')) not in ('',article):
+            return headword
+        if norm(src.get('plural')) not in ('',plural):
+            return headword
+    if headword:
+        if headword!=front or norm(core.get('article'))!=article or norm(core.get('plural'))!=plural:
+            return headword
+        if cf.get('lemma') not in (None,'') or cf.get('infinitiveDisplay') not in (None,''):
+            return headword
+    else:
+        if norm(morph.get('article'))!=article or norm(morph.get('plural'))!=plural:
+            return headword
+        if core.get('article') not in (None,'') or core.get('plural') not in (None,''):
+            return headword
+    return lemma
+
 def noun_model(row,cf,u):
-    core,morph=core_of(cf,u); head=headword(row,cf,u); forms=[]
+    core,morph=core_of(cf,u); head=headword(row,cf,u)
+    head=normalized_legacy_noun_headword(row,cf,u,head); forms=[]
     for src in (core,morph):
         vals=src.get('singular_forms') if isinstance(src,dict) else None
         if isinstance(vals,list): forms += [v for v in vals if article_bearing(v)]

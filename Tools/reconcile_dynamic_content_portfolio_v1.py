@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import subprocess
 
 REGISTRY = "Optimization-Program/Control-Center/DYNAMIC-CONTENT-PORTFOLIO-REGISTRY-v1.json"
 CATALOG = "Optimization-Program/Control-Center/MASTER-PROJECT-CATALOG-v1.json"
@@ -212,11 +213,23 @@ def main(argv=None) -> int:
     parser.add_argument("--github-summary", action="store_true")
     parser.add_argument("--fail-on-review", action="store_true",
                         help="Opt-in strict mode; never modifies repository")
+    parser.add_argument("--scope-event", action="store_true", help="Use exact PR merge scope; full otherwise")
     args = parser.parse_args(argv)
     try:
         root = args.repo_root.resolve()
         report = reconcile(root)
         cop, cop_result = cop_all_family_gate(root)
+        scope = None
+        if args.scope_event:
+            if cop is None:
+                raise ValueError("Scoped reconciliation requires COP currentness inputs")
+            scope = cop.affected_families(root, cop.ci_comparison_base(root))
+        report["guard_family_scope"] = sorted(scope) if scope is not None else "ALL"
+        report["blocking_families_in_scope"] = [row["family_id"] for row in report["items"]
+            if row["classification"] != "GIT_REFERENCES_MATCH" and (scope is None or row["family_id"] in scope)]
+        if cop_result is not None:
+            cop_result["guard_family_scope"] = report["guard_family_scope"]
+            cop_result["blocking_families_in_scope"] = cop.blockers_in_scope(cop_result, scope)
         if args.out_dir:
             root = args.repo_root.resolve()
             out = args.out_dir.resolve()
@@ -244,10 +257,10 @@ def main(argv=None) -> int:
                               "cop_observed_working": cop_result["recorded_as_of_families"],
                               "cop_counts": cop_result["counts"],
                               "cop_blocking_families": cop_result["blocking_families"]}, ensure_ascii=False))
-            if cop_result["blocking_families"]:
+            if cop_result["blocking_families_in_scope"]:
                 return 2
-        return 2 if args.fail_on_review and not report["status"].startswith("GIT_REFERENCES_MATCH") else 0
-    except (ValueError, OSError, json.JSONDecodeError) as exc:
+        return 2 if args.fail_on_review and report["blocking_families_in_scope"] else 0
+    except (ValueError, OSError, KeyError, TypeError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
         print(json.dumps({"status": "INVALID_REGISTRY_HOLD",
                           "error": type(exc).__name__ + ": " + str(exc)}))
         return 2

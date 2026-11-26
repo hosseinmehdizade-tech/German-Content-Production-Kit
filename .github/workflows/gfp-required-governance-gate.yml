@@ -95,11 +95,14 @@ jobs:
       - name: Block unguarded ZIP writers and test immutable publication
         run: python -B -m pytest -q Verification/tests-v3.3.6/test_content_zip_guard.py
 
+      - name: Test affected-family scope with conservative shared fallback
+        run: python -B -m unittest discover -s Verification/tests -p test_cop_family_currentness_v1.py -v
+
       - name: Fail closed on canonical or competing family owners
         shell: bash
         run: |
           python -B Tools/validate_canonical_family_workspaces_v1.py --repo-root . --out-dir "$RUNNER_TEMP/gfp-required-governance"
-          python -B Tools/discover_parallel_accepted_sources_v1.py --repo-root . --out-dir "$RUNNER_TEMP/gfp-required-governance" --fail-on-review
+          python -B Tools/discover_parallel_accepted_sources_v1.py --repo-root . --out-dir "$RUNNER_TEMP/gfp-required-governance" --fail-on-review --scope-event
 
       - name: Scope and security boundary
         run: |

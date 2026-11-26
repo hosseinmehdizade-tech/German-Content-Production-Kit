@@ -596,15 +596,22 @@ def verify_roadmap(r: dict, state: dict, catalog: dict, registry: dict, routes: 
         if historical is None:
             check(entry is None, "G4_UNATTESTED_HISTORICAL_ARTIFACT:" + fid)
         else:
-            check(entry is not None and
-                  entry.get("artifact_name") ==
-                  historical["active_baseline"]["artifact_name"] and
-                  entry.get("prior_observed_artifact_sha256") ==
-                  historical["active_baseline"]["artifact_sha256"] and
-                  entry.get("historical_provider_evidence") ==
-                  historical["active_baseline"]["byte_reverification_this_registry_pass"] and
+            check(isinstance(entry, dict) and
+                  isinstance(entry.get("artifact_name"), str) and
+                  entry["artifact_name"].endswith(".zip") and
+                  bool(re.fullmatch(r"[0-9a-f]{64}", str(entry.get("prior_observed_artifact_sha256")))) and
+                  entry.get("prior_observed_artifact_sha256") != "0" * 64 and
+                  isinstance(entry.get("historical_provider_evidence"), str) and
+                  bool(entry["historical_provider_evidence"]) and
                   entry.get("source_registry_as_of_snapshot") is True,
                   "G4_HISTORICAL_PORTFOLIO_SOURCE_DRIFT:" + fid)
+            # The dated receipt is not the current archive. Only compare it
+            # with the portfolio when that exact historical snapshot is present.
+            if git_head_blob(known_git_paths["curated_portfolio_path"]) == retention["curated_portfolio_git_blob"]:
+                check(entry["artifact_name"] == historical["active_baseline"]["artifact_name"] and
+                      entry["prior_observed_artifact_sha256"] == historical["active_baseline"]["artifact_sha256"] and
+                      entry["historical_provider_evidence"] == historical["active_baseline"]["byte_reverification_this_registry_pass"],
+                      "G4_HISTORICAL_PORTFOLIO_SOURCE_DRIFT:" + fid)
     check(g4.get("management_completion") ==
           "G4_SAFE_RETENTION_AND_SECURITY_HOLDS_DECLARED_FOR_ALL_21__APP_MAIN_NOT_PROTECTED__NO_AUTO_RELEASE",
           "G4_FALSE_MANAGEMENT_SECURITY_CLAIM")

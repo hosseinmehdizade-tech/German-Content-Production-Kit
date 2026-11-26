@@ -21,6 +21,8 @@ on:
       - 'Verification/tests/test_legacy_p0_operational_triage_v1.py'
       - 'Optimization-Program/Control-Center/Legacy-Dependencies/**'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Tools/reconcile_cop_family_currentness_v1.py'
+      - 'Verification/tests/test_cop_family_currentness_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
   pull_request:
@@ -44,6 +46,8 @@ on:
       - 'Verification/tests/test_legacy_p0_operational_triage_v1.py'
       - 'Optimization-Program/Control-Center/Legacy-Dependencies/**'
       - 'Tools/discover_parallel_accepted_sources_v1.py'
+      - 'Tools/reconcile_cop_family_currentness_v1.py'
+      - 'Verification/tests/test_cop_family_currentness_v1.py'
       - 'Verification/tests/test_parallel_accepted_source_discovery_v1.py'
       - '.github/workflows/canonical-family-workspaces.yml'
   workflow_dispatch:
@@ -64,6 +68,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -79,7 +84,7 @@ jobs:
       - name: Block competing newly accepted release leads in sibling Workspaces (historical older siblings exempt)
         shell: bash
         run: |
-          python -B Tools/discover_parallel_accepted_sources_v1.py \
+          python -B Tools/discover_parallel_accepted_sources_v1.py --scope-event \
             --repo-root . \
             --out-dir "$RUNNER_TEMP/canonical-family-guard" \
             --fail-on-review \

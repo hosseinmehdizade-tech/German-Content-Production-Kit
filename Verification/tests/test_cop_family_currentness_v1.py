@@ -7,6 +7,7 @@ import io
 import json
 from pathlib import Path
 import tempfile
+import subprocess
 import unittest
 
 SCRIPT = Path(__file__).resolve().parents[2] / "Tools" / "reconcile_cop_family_currentness_v1.py"
@@ -20,7 +21,7 @@ class FamilyCurrentnessTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name) / "repo"
         self.root.mkdir()
-        self.catalog = {"families": []}
+        self.catalog = {"families": [], "workspaces": []}
         self.portfolio = {"items": []}
         self.routing = {"families": []}
         self.evidence = {"schema": m.SCHEMA, "date": "2026-11-23",
@@ -32,6 +33,7 @@ class FamilyCurrentnessTests(unittest.TestCase):
             workspace = "Workspaces/source-" + str(i)
             libpath = "/Flasch kart/Content/Source-" + str(i)
             self.catalog["families"].append({"id": fid, "library_path": libpath})
+            self.catalog["workspaces"].append({"git_dir": workspace, "parent_family_id": fid})
             route = {"family_id": fid, "canonical_library_root": libpath,
                      "canonical_git_workspace": workspace, "canonical_source_owner_document": None,
                      "active_content_sha256": None}
@@ -170,6 +172,64 @@ class FamilyCurrentnessTests(unittest.TestCase):
             m.source_path(self.root, "/etc/passwd")
         with self.assertRaises(ValueError):
             m.source_path(self.root, "Workspaces\\bad")
+
+    def git(self, *args):
+        return subprocess.check_output(["git", "-C", str(self.root), *args],
+                                       stderr=subprocess.STDOUT, text=True).strip()
+
+    def commit(self, label):
+        self.git("add", ".")
+        self.git("commit", "-m", label)
+        return self.git("rev-parse", "HEAD")
+
+    def init_git(self):
+        self.git("init", "-b", "main")
+        self.git("config", "user.email", "test@example.invalid")
+        self.git("config", "user.name", "COP scope test")
+        self.git("config", "core.autocrlf", "false")
+        return self.commit("base")
+
+    def test_local_scope_preserves_unrelated_hold_but_does_not_block(self):
+        self.write("Workspaces/source-1/LATEST.json", {"selected": {"sha256": self.work_sha}})
+        base = self.init_git()
+        self.write("Workspaces/source-0/CHECKPOINT.json", {"progress": "new"})
+        self.commit("A1 only")
+        scope = m.affected_families(self.root, base)
+        self.assertEqual(scope, {"family:test-0"})
+        report = m.inspect(self.root)
+        self.assertIn("family:test-1", report["blocking_families"])
+        self.assertEqual(m.blockers_in_scope(report, scope), [])
+        self.assertIn("family:test-1", m.blockers_in_scope(report, None))
+        self.write("Workspaces/source-0/LATEST.json", {"selected": {"sha256": self.work_sha}})
+        self.commit("A1 drift")
+        self.assertIn("family:test-0", m.blockers_in_scope(m.inspect(self.root), scope))
+
+    def test_registry_row_change_is_local_shared_metadata_is_global(self):
+        base = self.init_git()
+        self.portfolio["items"][0]["note"] = "local annotation"
+        self.write(m.PORTFOLIO, self.portfolio)
+        self.commit("one registry row")
+        self.assertEqual(m.affected_families(self.root, base), {"family:test-0"})
+        self.portfolio["shared_policy"] = "changed"
+        self.write(m.PORTFOLIO, self.portfolio)
+        self.commit("shared change")
+        self.assertIsNone(m.affected_families(self.root, base))
+
+    def test_unknown_or_cross_family_dependency_keeps_global_scope(self):
+        base = self.init_git()
+        self.write("Workspaces/source-0/CHECKPOINT.json", {"progress": "new"})
+        self.commit("local")
+        self.evidence["items"][1]["evidence_path"] = "Workspaces/source-0/CHECKPOINT.json"
+        self.write(m.OBSERVATIONS, self.evidence)
+        self.commit("cross family dependency")
+        self.assertIsNone(m.affected_families(self.root, base))
+
+    def test_shared_code_change_keeps_global_scope(self):
+        base = self.init_git()
+        self.raw("Tools/shared.py", b"# shared change\n")
+        self.commit("shared code")
+        self.assertIsNone(m.affected_families(self.root, base))
+
 
 if __name__ == "__main__":
     unittest.main()

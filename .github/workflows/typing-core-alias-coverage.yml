@@ -1,0 +1,24 @@
+name: Typing core alias coverage
+on:
+  pull_request:
+    paths:
+      - 'Verification/validate_typing_core_alias_coverage.py'
+      - 'Verification/test_typing_core_alias_coverage.py'
+      - '.github/workflows/typing-core-alias-coverage.yml'
+  push:
+    branches:
+      - 'qa/typing-core-accepted-answers-gate-20261024'
+    paths:
+      - 'Verification/validate_typing_core_alias_coverage.py'
+      - 'Verification/test_typing_core_alias_coverage.py'
+      - '.github/workflows/typing-core-alias-coverage.yml'
+jobs:
+  synthetic-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run isolated Typing core alias regression
+        run: python Verification/test_typing_core_alias_coverage.py

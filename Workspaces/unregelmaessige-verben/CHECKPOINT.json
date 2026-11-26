@@ -1,9 +1,9 @@
 {
   "schema": "gcpk-uv-workstream-checkpoint@1.0.0",
   "workstream": "unregelmaessige-verben",
-  "checkpoint_date": "2026-11-20",
-  "current_scope": "UV R9-M1-H1 is sole Google Drive content file after user-directed deletion of original R9 parent ZIP. Content-only final H1 unchanged and valid; byte-reproduction helper now needs an externally supplied R9 copy. Historical Library R8 and four locked records untouched; real app Stage6/7 unverified.",
-  "latest_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-FINAL-CONTENT-ONLY-ARCHIVE-VERIFIED-20261117.json",
+  "checkpoint_date": "2026-11-25",
+  "current_scope": "Owner-local R10 accepted content-only archive; historical H1 and central R8 preserved; formal runtime acceptance separate.",
+  "latest_receipt": "Workspaces/unregelmaessige-verben/R10-USER-ACCEPTED-CONTENT-HANDOFF-20261125.json",
   "stage4": {
     "status": "PASS_AI_DERIVED_R8_REBASELINE",
     "zip_sha256": "d8a6a55b4a918d86226238a03e158460d577751f0ae8c31952d6c107fe3f26b2",
@@ -43,7 +43,7 @@
   "stage7": "PASS_FINAL_PRIVATE_CONTENT_ONLY",
   "release_final": true,
   "status_boundary": "Final content-only package preserves all approved Stage5 import/canonical bytes. User Stage6 behavioral acceptance; uploaded v505 HTML/SW match pin but whole QA corrected app ZIP parity not claimed.",
-  "next_action": "Use only H1. Original R9 parent ZIP no longer on Drive, so old-source byte replay requires a separately provided R9 ZIP; this does not affect the 174 installed M1 cards or final content Import. No additional ZIP or app changes.",
+  "next_action": "No content work or repeat import required. Merge owner-local acceptance checkpoint subject to CI; preserve older artifacts until separately authorized cleanup.",
   "raw_source_original_png": "UNAVAILABLE_7_NO_PIXEL_REATTESTATION",
   "legacy_ledgers_preserved": true,
   "stage6_diagnostic": "Workspaces/unregelmaessige-verben/STAGE6-R8-CURRENT-v503-ENVIRONMENT-BLOCKED-20261030.json",
@@ -124,6 +124,22 @@
     "reproduction_helper_needs_external_parent_R9": true
   },
   "current_content_only_archive": {
+    "status": "USER_ACCEPTED_PRIVATE_CONTENT_ONLY_R10",
+    "name": "Unregelmaessige-Verben-R10-IMPORT-READY-20261125.zip",
+    "sha256": "5f042daffc4770667ebc336230323ed02b3a961e179bc00ed0715c52f69a973e",
+    "size_bytes": 1312831,
+    "library_file_id": "libfile_31af7f759c748191932cf069e55c2923",
+    "path": "/Flasch kart/German-Content-Production-Kit/Content/Unregelmaessige-Verben/Final/Unregelmaessige-Verben-R10-IMPORT-READY-20261125.zip",
+    "user_import": "PASS_USER_REPORTED_20261125",
+    "direct_import_sha256": "067c0963918c59118e1924ecd4bc799ca829034bf454f35a2f9df797a0fcb364",
+    "official_static_replay": "7/7",
+    "members": 54,
+    "reimport_required": false,
+    "central_R8_baseline_unchanged": true
+  },
+  "last_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-OLD-ARTIFACT-CLEANUP-20261117.json",
+  "latest_drive_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-DRIVE-ONLY-FINAL-CLEANUP-20261120.json",
+  "previous_H1_content_only_archive": {
     "status": "PASS_ARCHIVE_FINAL_PRIVATE_CONTENT_ONLY__NOT_APP_FINAL",
     "name": "Unregelmaessige-Verben-R9-M1-H1-FINAL-CONTENT-ONLY-20261117.zip",
     "sha256": "1060973570d2045bafd162afc26c8d72dd3cf3165e16da06bf38521e2bac7d8b",
@@ -143,6 +159,55 @@
     "external_seven_PNGs": "UNAVAILABLE_NOT_BUNDLED",
     "historical_R8_selected_baseline_unchanged": true
   },
-  "last_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-OLD-ARTIFACT-CLEANUP-20261117.json",
-  "latest_drive_cleanup_receipt": "Workspaces/unregelmaessige-verben/R9-M1-H1-DRIVE-ONLY-FINAL-CLEANUP-20261120.json"
+  "active_R10": {
+    "schema": "gcpk-uv-r10-user-content-acceptance@1",
+    "date": "2026-11-25",
+    "status": "USER_ACCEPTED_PRIVATE_CONTENT_ONLY__OWNER_TASK_CLOSED",
+    "user_report": "ایمپورت کردم\nدرست بود",
+    "scope": "Successful import and user-reported correct result; not an independent browser, persistence, SRS or exact runtime build attestation.",
+    "artifact": {
+      "version": "R10",
+      "name": "Unregelmaessige-Verben-R10-IMPORT-READY-20261125.zip",
+      "library_file_id": "libfile_31af7f759c748191932cf069e55c2923",
+      "path": "/Flasch kart/German-Content-Production-Kit/Content/Unregelmaessige-Verben/Final/Unregelmaessige-Verben-R10-IMPORT-READY-20261125.zip",
+      "sha256": "5f042daffc4770667ebc336230323ed02b3a961e179bc00ed0715c52f69a973e",
+      "bytes": 1312831,
+      "library_raw_readback": "PASS_BYTE_EXACT",
+      "master_sha256": "7b529da52ec9fbb0237b0828cc46eabcc30a08e1ec0d6ca5a9b22920ea4f90e2",
+      "canonical_sha256": "7b529da52ec9fbb0237b0828cc46eabcc30a08e1ec0d6ca5a9b22920ea4f90e2",
+      "ledger_sha256": "c0b9fa879f86a334bfb2b5e0ff1e65e964ae258a12d75d0e55bc6dac2caa2ee5",
+      "import_sha256": "067c0963918c59118e1924ecd4bc799ca829034bf454f35a2f9df797a0fcb364"
+    },
+    "counts": {
+      "cards": 174,
+      "examples": 696,
+      "relations": 1208,
+      "combinations": 414,
+      "rektion_cards": 59,
+      "rektion_items": 87,
+      "p3_changed_cards": 25,
+      "p3_example_updates": 4,
+      "variant_review_cards": 18,
+      "package_payloads": 52
+    },
+    "qa": {
+      "official_static_gates": "7/7",
+      "raw_tsv_transport": "PASS_175_LINES_23_COLUMNS_174_VALID_JSON_ROWS",
+      "zip_crc": "PASS",
+      "payload_manifest": "PASS_52",
+      "library_readback": "PASS_BYTE_EXACT",
+      "stable_ids_and_source_graph": "PRESERVED",
+      "sha256sums_verified": "53/53 including manifest",
+      "zip_members": 54,
+      "user_import": "PASS_USER_REPORTED_20261125"
+    },
+    "historical_H1_preserved": true,
+    "central_selected_R8_baseline_unchanged": true,
+    "central_governed_publication": "NOT_CLAIMED__STRICT_QUALITY_GATED_LAUNCHER_RECEIPT_NOT_AVAILABLE",
+    "formal_app_stage6": "NOT_ATTESTED",
+    "formal_app_stage7": "NOT_CLAIMED",
+    "no_reimport_required": true,
+    "content_task": "CLOSED",
+    "next": "No content work or repeat import required. Merge owner-local acceptance checkpoint subject to CI; preserve older artifacts until separately authorized cleanup."
+  }
 }

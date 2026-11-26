@@ -1,0 +1,61 @@
+{
+  "schema": "gcpk-ma1-verben-working-current-checkpoint@1.0.0",
+  "workstream": "menschen-a1-verben-wortfamilie-v336",
+  "family_id": "family:menschen-a1-verben",
+  "date": "2026-11-15",
+  "status": "WORKING_CURRENT_R16_P20__SCOPED_CONTENT_DELTA_PASS__NOT_USER_ACCEPTED_FINAL",
+  "source_of_truth": "USER_CURRENT_VALIDATED_PORTABLE_DRIVE_ARTIFACT",
+  "working_current": {
+    "version": "R16-P20",
+    "artifact_file": "Menschen-A1-Verben-R16-P20-CONTENT-QA-DELTA-20261115.zip",
+    "sha256": "fb7f0facbba1d356aa8002b1036cd757ad639f7bf66b682d713e307d599cf672",
+    "bytes": 1341560,
+    "member_count": 7,
+    "drive_id": "1C9XrfoDILFS9PXspi79UGQDyl1AQKF8T",
+    "drive_url": "https://drive.google.com/file/d/1C9XrfoDILFS9PXspi79UGQDyl1AQKF8T/view",
+    "master_json_sha256": "e506057af650dcaeb3daf4e2fc1b79c28a63f9437d4cca1848863a2b1ca6e17c",
+    "stage5_tsv_sha256": "f6f4d8690a16821bb0242c8909017b6289da8a801cadfcce14a3e029b3608a96",
+    "package_qa_report": "Reports/R16-P20-QA.json",
+    "package_delta_ledger": "Reports/R16-P20-DELTA-LEDGER.json",
+    "package_verifier": "Tests/verify_content.py",
+    "counts": {
+      "cards": 310,
+      "unique_ids": 310,
+      "verbs": 247,
+      "expressions": 63,
+      "examples": 1240,
+      "kombinationen": 2546,
+      "tsv_columns": 23,
+      "tsv_values": 7130
+    }
+  },
+  "parent_working": {
+    "version": "R16-P19",
+    "master_sha256": "5f832f62f5a8dac980d46855bfbc14b41d87d91504abfc1115edadab67be11cb",
+    "stage5_tsv_sha256": "dbf0131faa968faa5099db727b89ed11a3b1c2d207897887466d9b7c3e579fe4"
+  },
+  "accepted_baseline": {
+    "version": "R10",
+    "status": "USER_ACCEPTED_CONTENT_FINAL__IMMUTABLE",
+    "zip_sha256": "790e7a39f2c814b59e3aceccb7cc7a9658d18b8c0980187c3d7af1370a53cd47",
+    "drive_id": "1FraH6tao4PwPHdQlKfkscJVewS409qL0"
+  },
+  "evidence": {
+    "recovered_actual_zip_sha256": "PASS",
+    "live_drive_readback_and_metadata": "PASS_EXACT_FILE_BYTES",
+    "cleanroom_replay": "PASS_310_IDS_7130_FIELDS_1240_EXAMPLES_2546_COMBINATIONS",
+    "direct_parent_json_delta": "PASS_EXACT_TWO_CARD_REMOVALS_ONLY",
+    "changed_card_ids": [
+      "ma1m-lu-1882",
+      "ma1m-lu-1940"
+    ],
+    "other_308_objects_unchanged": true,
+    "all_examples_unchanged": true,
+    "stage4": "SCOPED_RISK_QA_DELTA_PASS__NOT_FULL_LINGUISTIC_CERTIFICATION",
+    "stage5": "23_COLUMN_LOSSLESS_DATA_PARITY_PASS__R16_P19_RUNTIME_PREFLIGHT_REUSED",
+    "stage6": "APP_OWNED_NOT_RUN__NOT_CONTENT_CLOSE_BLOCKER",
+    "stage7": "NOT_RELEASED"
+  },
+  "next_action": "Close exact evidence-bound pending linguistic decisions where real unresolved defects exist; formally accept working R16-P20 as content successor only after adequate linguistic Stage4 evidence. Keep R10 accepted until promotion. Do not repeat browser Stage6 or untouched 310-card structural review.",
+  "git_sync": "PENDING_PR_NOT_MAIN_UNTIL_MERGED"
+}

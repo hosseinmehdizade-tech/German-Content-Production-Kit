@@ -66,9 +66,28 @@ class RoadmapContracts(unittest.TestCase):
     def test_g1_all_family_paths_and_git_blobs_attested_without_release(self):
         out = self.check()
         self.assertEqual(out["management_family_routes_verified"], 21)
-        self.assertEqual(out["management_git_status_document_blobs_verified"], 16)
+        self.assertEqual(out["historical_management_status_document_pins_recorded"], 16)
+        self.assertFalse(out["historical_management_blobs_rehashed_by_this_check"])
+        self.assertEqual(out["live_selected_owner_pointers_checked"], 10)
+        self.assertEqual(out["live_currentness_blocking_families"], [])
         self.assertEqual(out["management_release_authority_or_library_holds"], 11)
         self.assertEqual(out["real_producer_adoption_proven_by_this_test"], 0)
+
+    def test_dated_roadmap_does_not_require_old_router_as_current(self):
+        result = self.check()
+        matrix = self.roadmap["management_first_campaign_20261111"]["family_management_matrix_20261111"]
+        live = subprocess.check_output(["git","rev-parse","HEAD:"+matrix["router_path"]],
+                                      cwd=ROOT,text=True).strip()
+        # Both exact same snapshot and a valid later owner update are legal.
+        self.assertEqual(len(live), 40)
+        self.assertFalse(result["historical_management_blobs_rehashed_by_this_check"])
+        self.assertEqual(result["live_currentness_blocking_families"], [])
+
+    def test_current_policy_blob_cannot_be_forged(self):
+        wrong = copy.deepcopy(self.registry)
+        wrong["policy_bindings"]["learner_visible_front_hf2_validator"]["blob_sha"] = "a"*40
+        with self.assertRaisesRegex(ValueError, "G2_POLICY_BINDING_CHANGED"):
+            self.check(registry=wrong)
 
     def test_g1_detects_forged_owner_git_blob(self):
         wrong = copy.deepcopy(self.roadmap)
@@ -249,7 +268,7 @@ class RoadmapContracts(unittest.TestCase):
     def test_g5_live_source_intake_21_not_released(self):
         result = self.check()
         self.assertEqual(result["coordinated_readonly_intake_families"], 21)
-        self.assertEqual(result["b2_live_stage4_completed_cards"], 864)
+        self.assertEqual(result["b2_historical_stage4_completed_cards_as_of_20261111"], 864)
         self.assertEqual(result["real_producer_adoption_proven_by_this_test"], 0)
 
     def test_g5_b2_run_control_not_downgraded_to_old_l05(self):
